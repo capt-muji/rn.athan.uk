@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "athan",
+    "slug": "athan",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon-512x512.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mugtaba.athan",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio", "fetch", "remote-notification"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon-512x512.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon-512x512.png",
+          "color": "#ffffff",
+          "defaultChannel": "default",
+          "sounds": [
+            "./assets/athan.wav"
+          ]
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "feadd49a-8467-4860-95c5-8ae0c8bc119b"
+      }
+    }
+  }
+}
