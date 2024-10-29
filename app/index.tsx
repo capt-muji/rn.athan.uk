@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Pressable, Text, SafeAreaView, View } from 'react-native';
+import { StyleSheet, Pressable, Text, SafeAreaView, View, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Notifications from 'expo-notifications';
 import Icon from '../assets/mosque.svg';
+import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 
 // Set notification behavior for iOS
 Notifications.setNotificationHandler({
@@ -54,8 +55,8 @@ export default function Index() {
       colors={['#031a4c', '#660ca1']}
       style={styles.gradient}
     >
-
       <SafeAreaView style={styles.safeArea}>
+        <StatusBar barStyle="light-content" />
 
         <Text style={[styles.prayerIn,]}>Dhuhr in</Text>
         <Text style={[styles.timer]}>3h 19m 12s</Text>
@@ -70,42 +71,58 @@ export default function Index() {
 
         <Pressable style={[styles.prayer, styles.passed]}>
           <Text style={[styles.text, styles.english]}>Fajr</Text>
-          <Text style={[styles.text, styles.time]}>05:09</Text>
           <Text style={[styles.text, styles.arabic]}>الفجر</Text>
+          <Text style={[styles.text, styles.time]}>05:09</Text>
+          <PiBellSimpleSlash color={'white'} size={20} />
         </Pressable>
 
         <Pressable style={[styles.prayer, styles.passed]}>
           <Text style={[styles.text, styles.english]}>Sunrise</Text>
-          <Text style={[styles.text, styles.time]}>06:45</Text>
           <Text style={[styles.text, styles.arabic]}>الشروق</Text>
+          <Text style={[styles.text, styles.time]}>06:45</Text>
+          <PiBellSimpleRinging color={'white'} size={20} />
+        </Pressable>
+
+        <Pressable style={[styles.prayer, styles.passed]}>
+          <Text style={[styles.text, styles.english]}>Duha</Text>
+          <Text style={[styles.text, styles.arabic]}>الضحى</Text>
+          <Text style={[styles.text, styles.time]}>07:05</Text>
+          <PiVibrate color={'white'} size={20} />
         </Pressable>
 
         <Pressable style={[styles.prayer, styles.next]} onPress={scheduleNotification}>
           <Text style={[styles.text, styles.english]}>Dhuhr</Text>
-          <Text style={[styles.text, styles.time]}>11:49</Text>
           <Text style={[styles.text, styles.arabic]}>الظهر</Text>
+          <Text style={[styles.text, styles.time]}>11:49</Text>
+          <PiSpeakerSimpleHigh color={'white'} size={20} />
         </Pressable>
 
         <Pressable style={[styles.prayer]}>
           <Text style={[styles.text, styles.english]}>Asr</Text>
-          <Text style={[styles.text, styles.time]}>14:11</Text>
           <Text style={[styles.text, styles.arabic]}>العصر</Text>
+          <Text style={[styles.text, styles.time]}>14:11</Text>
+          <PiVibrate color={'white'} size={20} />
         </Pressable>
 
         <Pressable style={[styles.prayer]}>
           <Text style={[styles.text, styles.english]}>Magrib</Text>
-          <Text style={[styles.text, styles.time]}>16:43</Text>
           <Text style={[styles.text, styles.arabic]}>المغرب</Text>
+          <Text style={[styles.text, styles.time]}>16:43</Text>
+          <PiSpeakerSimpleHigh color={'white'} size={20} />
         </Pressable>
 
         <Pressable style={[styles.prayer]}>
           <Text style={[styles.text, styles.english]}>Isha</Text>
-          <Text style={[styles.text, styles.time]}>18:10</Text>
           <Text style={[styles.text, styles.arabic]}>العشاء</Text>
+          <Text style={[styles.text, styles.time]}>18:10</Text>
+          <PiBellSimpleSlash color={'white'} size={20} />
         </Pressable>
 
-      </SafeAreaView>
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>East London Mosque</Text>
+        </View>
 
+      </SafeAreaView>
     </LinearGradient>
   );
 }
@@ -159,8 +176,10 @@ const styles = StyleSheet.create({
   },
   prayer: {
     flexDirection: 'row',
-    padding: 15,
-    opacity: 0.5
+    paddingVertical: 15,
+    opacity: 0.5,
+    paddingHorizontal: 20,
+    paddingLeft: 15
   },
   passed: {
     opacity: 1,
@@ -172,22 +191,30 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    borderRadius: 3,
+    borderRadius: 5,
   },
   text: {
     fontSize: 17,
-    textAlign: 'center',
     color: 'white',
   },
   english: {
     flex: 1,
-    textAlign: 'left'
   },
   time: {
-    flex: 1,
+    flex: 2,
+    textAlign: 'center',
   },
   arabic: {
     flex: 1,
-    textAlign: 'right'
+    textAlign: 'right',
   },
+  footer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    opacity: 0.10,
+    alignSelf: 'center',
+  },
+  footerText: {
+    color: 'white',
+  }
 });
