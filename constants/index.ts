@@ -11,4 +11,5 @@ export const COLORS = {
   textPrimary: '#ffffff',
   gradientStart: '#031a4c',
   gradientEnd: '#660ca1',
+  transparentBlack: '#000000bf'
 } as const;

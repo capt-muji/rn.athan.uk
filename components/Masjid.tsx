@@ -8,8 +8,8 @@ type MasjidProps = {
   height?: number;
 };
 
-export default function Masjid({ width = 55, height = 55 }: MasjidProps) {
-  return <Icon style={styles.icon} width={width} height={height} />;
+export default function Masjid({ height = 55, width = 55 }: MasjidProps) {
+  return <Icon style={styles.icon} height={height} width={width} />;
 }
 
 const styles = StyleSheet.create({
