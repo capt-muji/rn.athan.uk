@@ -1,27 +1,4 @@
-export interface ISinglePrayer {
-  date: string;
-  fajr: string;
-  fajr_jamat: string;
-  sunrise: string;
-  dhuhr: string;
-  dhuhr_jamat: string;
-  asr: string;
-  asr_2: string;
-  asr_jamat: string;
-  magrib: string;
-  magrib_jamat: string;
-  isha: string;
-  isha_jamat: string;
-}
-
-export interface IAllTimes {
-  [date: string]: ISinglePrayer;
-}
-
-export interface IGetPrayersApiResponse {
-  city: string;
-  times: Record<string, ISinglePrayer>;
-}
+import { IApiResponse } from "@/types/api";
 
 const config = {
   key: "2a99f189-6e3b-4015-8fb8-ff277642561d",
@@ -42,18 +19,7 @@ const urls = {
   getPrayersUrl: `${config.baseUrl}/api/${config.path}?${config.queries}`
 };
 
-// export const get = async (): Promise<IGetPrayersApiResponse> => {
-//   const response = await useFetch<IGetPrayersApiResponse>(urls.getPrayersUrl, { cache: 'no-cache' });
-
-//   if (response.data?.value?.city) return response.data.value;
-
-//   console.error('Error full:', response)
-//   console.error('Error partial:', response.data.value)
-
-//   throw response;
-// };
-
-export const get = async (): Promise<IGetPrayersApiResponse> => {
+export const get = async (): Promise<IApiResponse> => {
   try {
     const response = await fetch(urls.getPrayersUrl, {
       method: 'GET',
@@ -65,7 +31,7 @@ export const get = async (): Promise<IGetPrayersApiResponse> => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = (await response.json()) as IGetPrayersApiResponse;
+    const data = (await response.json()) as IApiResponse;
 
     if (data?.city) return data;
     else {

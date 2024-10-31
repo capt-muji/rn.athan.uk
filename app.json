@@ -7,7 +7,6 @@
     "icon": "./assets/icon-512x512.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -17,14 +16,19 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.mugtaba.athan",
       "infoPlist": {
-        "UIBackgroundModes": ["audio", "fetch", "remote-notification"]
+        "UIBackgroundModes": [
+          "audio",
+          "fetch",
+          "remote-notification"
+        ]
       }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-512x512.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mugtaba.athan"
     },
     "plugins": [
       [
@@ -36,17 +40,6 @@
           "sounds": [
             "./assets/athan.wav"
           ]
-        }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "newArchEnabled": true
-          },
-          "android": {
-            "newArchEnabled": true
-          }
         }
       ]
     ],

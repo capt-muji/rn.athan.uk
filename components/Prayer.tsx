@@ -1,21 +1,22 @@
 import React from 'react';
 import { StyleSheet, Pressable, Text} from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
+import { useAtom } from 'jotai';
+import { todaysPrayersAtom } from '@/store';
 
 import { COLORS } from '../constants';
 
-type PrayerProps = {
-  english: string;
-  arabic: string;
-  time: string;
-};
+interface Props { index: number }
 
-export default function Prayer({ english, arabic, time }: PrayerProps) {
+export default function Prayer({ index }: Props) {
+  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const prayer = todaysPrayers[index];
+
   return (
-    <Pressable style={[styles.container, styles.next]}>
-      <Text style={[styles.text, styles.english]}>{english}</Text>
-      <Text style={[styles.text, styles.arabic]}>{arabic}</Text>
-      <Text style={[styles.text, styles.time]}>{time}</Text>
+    <Pressable style={[styles.container, styles.passed]}>
+      <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
+      <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
+      <Text style={[styles.text, styles.time]}>{prayer.time}</Text>
       <PiBellSimpleSlash color={'white'} size={20} />
     </Pressable>
   );

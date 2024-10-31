@@ -1,6 +1,5 @@
 import { MMKV } from 'react-native-mmkv';
-import { IAllTimes, ISinglePrayer } from '../api';
-import { isTodayOrFuture } from '../utils/isTodayOrFuture';
+import { ISingleScheduleTransformed } from '../types/prayers';
 
 class MMKVManager {
   private storage: MMKV;
@@ -8,23 +7,22 @@ class MMKVManager {
   constructor() {
     this.storage = new MMKV();
   }
-
-  // Save prayer times for today and future days as single records
-  public storeAllPrayerRecords(times: IAllTimes) {
-    Object.keys(times).forEach(date => {
-      if (!isTodayOrFuture(date)) return;
-      this.storage.set(date, JSON.stringify(times[date]));
-
-      console.log('====================================');
-      console.log('stored allllll');
-      console.log(this.storage.getAllKeys());
-      console.log('====================================');
+  
+  public storeManyDays(times: ISingleScheduleTransformed[]) {
+    times.forEach(transformedPrayer => {
+      const date = transformedPrayer.date;
+      this.storage.set(date, JSON.stringify(transformedPrayer));
     });
   }
 
-  public getPrayersByDate(date: string): ISinglePrayer | null {
+  public getTodaysPrayers(): ISingleScheduleTransformed | null {
+    const [ today ] = new Date().toISOString().split('T'); 
+    return this.getPrayersByDate(today);
+  }
+
+  public getPrayersByDate(date: string): ISingleScheduleTransformed | null {
     const data = this.storage.getString(date);
-    return data ? JSON.parse(data) as ISinglePrayer : null;
+    return data ? JSON.parse(data) as ISingleScheduleTransformed : null;
   }
 
   public clearAllRecords() {
