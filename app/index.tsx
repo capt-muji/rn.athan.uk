@@ -10,7 +10,7 @@ import Date from '../components/Date';
 import Prayer from '../components/Prayer';
 import Footer from '../components/Footer';
 import { storage } from '../storage/mmkv';
-import { filterTodayOrFutureDays } from '@/utils/filterTodayOrFutureDays';
+import { filterValidDates } from '@/utils/filterValidDates';
 import { transformPrayerSchedule } from '@/utils/transformPrayerSchedule';
 import { transformTodaysStructure } from '@/utils/transformTodaysStructure';
 import { ENGLISH } from '../constants';
@@ -24,8 +24,8 @@ export default function Index() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Step 1: Filter the mock data to only include today's and future prayer times
-        const filteredDays = filterTodayOrFutureDays(MOCK_DATA_FULL.times);
+        // Step 1: Filter the data to only include today's and future prayer times
+        const filteredDays = filterValidDates(MOCK_DATA_FULL.times);
         
         // Step 2: Modify the schedules to remove unwanted keys and include duha prayer
         const transformedSchedules = transformPrayerSchedule(filteredDays);
