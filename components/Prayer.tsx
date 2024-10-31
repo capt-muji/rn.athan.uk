@@ -4,12 +4,18 @@ import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh 
 
 import { COLORS } from '../constants';
 
-export default function Prayer() {
+type PrayerProps = {
+  english: string;
+  arabic: string;
+  time: string;
+};
+
+export default function Prayer({ english, arabic, time }: PrayerProps) {
   return (
     <Pressable style={[styles.container, styles.next]}>
-      <Text style={[styles.text, styles.english]}>Fajr</Text>
-      <Text style={[styles.text, styles.arabic]}>الفجر</Text>
-      <Text style={[styles.text, styles.time]}>05:09</Text>
+      <Text style={[styles.text, styles.english]}>{english}</Text>
+      <Text style={[styles.text, styles.arabic]}>{arabic}</Text>
+      <Text style={[styles.text, styles.time]}>{time}</Text>
       <PiBellSimpleSlash color={'white'} size={20} />
     </Pressable>
   );
