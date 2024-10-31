@@ -9,12 +9,14 @@ import Timer from '../components/Timer';
 import Date from '../components/Date';
 import Prayer from '../components/Prayer';
 import Footer from '../components/Footer';
+import Error from '../components/Error';
 import { storage } from '../storage/mmkv';
 import { filterValidDates } from '@/utils/filterValidDates';
 import { transformPrayerSchedule } from '@/utils/transformPrayerSchedule';
 import { transformTodaysStructure } from '@/utils/transformTodaysStructure';
 import { ENGLISH } from '../constants';
 import { todaysPrayersAtom } from '@/store';
+import { WaveIndicator } from 'react-native-indicators';
 
 
 export default function Index() {
@@ -66,7 +68,11 @@ export default function Index() {
       <SafeAreaView style={styles.safeArea}>
         <StatusBar barStyle="light-content" />
 
-        <Timer/>
+        <Error/>
+        {/* <WaveIndicator color={'white'}/> */}
+
+        
+        {/* <Timer/>
         <Date />
 
         {isLoading ? (
@@ -77,7 +83,7 @@ export default function Index() {
           ))
         )}
 
-        <Footer />
+        <Footer /> */}
 
       </SafeAreaView>
     </LinearGradient>
