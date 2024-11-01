@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
-import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
 import { todaysPrayersAtom } from '@/store';
 import Tooltip from 'react-native-walkthrough-tooltip';
 import Timer from './Timer';
+import Alert from './Alert';
 
 import { COLORS, TEXT } from '../constants';
 
@@ -32,7 +32,7 @@ export default function Prayer({ index }: Props) {
         <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
         <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
         <Text style={[styles.text, styles.time]}>{prayer.time}</Text>
-        <PiBellSimpleSlash color={'white'} size={20} />
+        <Alert />
       </Pressable>
     </Tooltip >
   );
