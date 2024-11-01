@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
   timer: {
     color: COLORS.textPrimary,
+    fontWeight: '500',
     fontSize: TEXT.size + 8,
     textAlign: 'center',
     marginBottom: 45,

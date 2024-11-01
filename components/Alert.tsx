@@ -3,12 +3,26 @@ import { StyleSheet, Pressable, View, Text } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import Tooltip from 'react-native-walkthrough-tooltip';
 import { COLORS, TEXT } from '@/constants';
+import * as Haptics from 'expo-haptics';
 
 export default function Alert() {
   const [innerTooltipVisible, setInnerTooltipVisible] = useState(false);
+  const [iconIndex, setIconIndex] = useState(0);
+
+  const icons = [PiBellSimpleSlash, PiBellSimpleRinging, PiVibrate, PiSpeakerSimpleHigh];
+  const labels = ["Off", "Notification", "Vibrate", "Sound"];
+  const IconComponent = icons[iconIndex];
+  const labelText = labels[iconIndex];
 
   const handleInnerTooltipPress = () => {
-    setInnerTooltipVisible((prev) => !prev);
+    // Ensure the tooltip is visible
+    if (!innerTooltipVisible) {
+      setInnerTooltipVisible(true);
+    }
+
+    // Update the icon index and label text
+    setIconIndex((prevIndex) => (prevIndex + 1) % icons.length);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   };
 
   return (
@@ -17,18 +31,16 @@ export default function Alert() {
       isVisible={innerTooltipVisible}
       content={
         <View style={styles.tooltip}>
-          <PiBellSimpleRinging style={styles.icon} color={'white'} size={20} />
-          <Text style={styles.text}> Notification </Text>
-          {/* <Text style={styles.text}> Off </Text> */}
+          <IconComponent style={styles.icon} color={'white'} size={20} />
+          <Text style={styles.text}>{labelText}</Text>
         </View>
       }
       onClose={() => setInnerTooltipVisible(false)}
-      // backgroundColor={'black'}
       placement={'left'}
       contentStyle={styles.contentStyle}
     >
       <Pressable onPress={handleInnerTooltipPress} style={styles.iconContainer}>
-        <PiBellSimpleRinging color={'white'} size={20} />
+        <IconComponent color={'white'} size={20} />
       </Pressable>
     </Tooltip>
   );
@@ -36,7 +48,8 @@ export default function Alert() {
 
 const styles = StyleSheet.create({
   iconContainer: {
-    padding: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   contentStyle: {
     paddingHorizontal: 35,
@@ -45,16 +58,13 @@ const styles = StyleSheet.create({
   },
   tooltip: {
     flexDirection: 'row',
-    // backgroundColor: 'green',
-    // justifyContent: 'center',
-    // alignContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   icon: {
-    marginRight: 15
+    marginRight: 15,
   },
   text: {
     color: COLORS.textPrimary,
-    fontSize: TEXT.size
-  }
+    fontSize: TEXT.size,
+  },
 });
