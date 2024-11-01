@@ -5,6 +5,7 @@ import { todaysPrayersAtom } from '@/store';
 import Tooltip from 'react-native-walkthrough-tooltip';
 import Timer from './Timer';
 import Alert from './Alert';
+import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT } from '../constants';
 
@@ -15,6 +16,11 @@ export default function Prayer({ index }: Props) {
   const prayer = todaysPrayers[index];
 
   const [toolTipVisible, setToolTipVisible] = useState(false);
+
+  const toggleTooltip = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    setToolTipVisible((prev) => !prev)
+  }
 
   return (
     // @ts-ignore
@@ -27,7 +33,7 @@ export default function Prayer({ index }: Props) {
     >
       <Pressable
         style={[styles.container, styles.passed]}
-        onPress={() => setToolTipVisible((prev) => !prev)}
+        onPress={toggleTooltip}
       >
         <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
         <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
@@ -44,7 +50,8 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     opacity: 0.5,
     paddingHorizontal: 20,
-    paddingLeft: 15
+    paddingLeft: 15,
+    alignItems: 'center'
   },
   passed: {
     opacity: 1,

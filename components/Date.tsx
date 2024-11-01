@@ -32,5 +32,6 @@ const styles = StyleSheet.create({
   date: {
     color: COLORS.textPrimary,
     fontSize: TEXT.size + 3,
+    fontWeight: '500'
   }
 });
