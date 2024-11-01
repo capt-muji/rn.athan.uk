@@ -16,11 +16,8 @@ export default function Prayer({ index }: Props) {
 
   const [toolTipVisible, setToolTipVisible] = useState(false);
 
-  const toggleTooltip = () => {
-    setToolTipVisible((prev) => !prev);
-  };
-
   return (
+    // @ts-ignore
     <Tooltip
       isVisible={toolTipVisible}
       content={<Timer />}
@@ -30,7 +27,7 @@ export default function Prayer({ index }: Props) {
     >
       <Pressable
         style={[styles.container, styles.passed]}
-        onPress={toggleTooltip}
+        onPress={() => setToolTipVisible((prev) => !prev)}
       >
         <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
         <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
