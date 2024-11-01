@@ -2,7 +2,7 @@ export const ENGLISH: Readonly<string[]> = ["Fajr", "Sunrise", "Duha", "Dhuhr", 
 export const ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "العصر", "الظهر", "الضحى", "الشروق", "الفجر"].reverse();
 
 export const TEXT = {
-  size: 16,
+  size: 18,
 } as const;
 
 export const COLORS = {

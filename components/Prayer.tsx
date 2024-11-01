@@ -1,10 +1,12 @@
-import React from 'react';
-import { StyleSheet, Pressable, Text} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
 import { todaysPrayersAtom } from '@/store';
+import Tooltip from 'react-native-walkthrough-tooltip';
+import Timer from './Timer';
 
-import { COLORS } from '../constants';
+import { COLORS, TEXT } from '../constants';
 
 interface Props { index: number }
 
@@ -12,13 +14,30 @@ export default function Prayer({ index }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const prayer = todaysPrayers[index];
 
+  const [toolTipVisible, setToolTipVisible] = useState(false);
+
+  const toggleTooltip = () => {
+    setToolTipVisible((prev) => !prev);
+  };
+
   return (
-    <Pressable style={[styles.container, styles.passed]}>
-      <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
-      <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
-      <Text style={[styles.text, styles.time]}>{prayer.time}</Text>
-      <PiBellSimpleSlash color={'white'} size={20} />
-    </Pressable>
+    <Tooltip
+      isVisible={toolTipVisible}
+      content={<Timer />}
+      onClose={() => setToolTipVisible(false)}
+      backgroundColor={'black'}
+      contentStyle={styles.contentStyle}
+    >
+      <Pressable
+        style={[styles.container, styles.passed]}
+        onPress={toggleTooltip}
+      >
+        <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
+        <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
+        <Text style={[styles.text, styles.time]}>{prayer.time}</Text>
+        <PiBellSimpleSlash color={'white'} size={20} />
+      </Pressable>
+    </Tooltip >
   );
 }
 
@@ -43,7 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   text: {
-    fontSize: 17,
+    fontSize: TEXT.size,
     color: COLORS.textPrimary,
   },
   english: {
@@ -56,5 +75,10 @@ const styles = StyleSheet.create({
   time: {
     flex: 2,
     textAlign: 'center',
+  },
+  contentStyle: {
+    paddingHorizontal: 35,
+    paddingVertical: 20,
+    backgroundColor: 'black'
   },
 });

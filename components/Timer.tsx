@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { COLORS } from '../constants';
+import { COLORS, TEXT } from '../constants';
 
 export default function Timer() {
   return (
     <View>
       <Text style={styles.text}>Dhuhr in</Text>
-      <Text style={styles.timer}>3h 19m 12s</Text>
+      <Text style={styles.timer}>99h 99m 99s</Text>
     </View>
   );
 }
@@ -17,11 +17,12 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     textAlign: 'center',
     marginBottom: 5,
+    fontSize: TEXT.size - 2,
   },
   timer: {
     color: COLORS.textPrimary,
-    fontSize: 24,
+    fontSize: TEXT.size + 8,
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom: 45,
   },
 });
