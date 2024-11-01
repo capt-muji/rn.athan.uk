@@ -12,7 +12,10 @@ export default function Date() {
       <Text style={[styles.subtext, styles.first]}> Something went wrong. </Text>
       <Text style={[styles.subtext, styles.last]}> We are investigating! </Text>
       <Masjid height={65} width={60} />
-      <Pressable style={[styles.button]}>
+      <Pressable style={({ pressed }) => [
+        styles.button,
+        { opacity: pressed ? 1 : 0.75 },
+      ]}>
         <BsArrowClockwise style={styles.icon} size={16} color={'white'} />
         <Text style={[styles.subtext]}> Refresh </Text>
       </Pressable>

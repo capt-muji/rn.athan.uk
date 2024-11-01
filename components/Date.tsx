@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
   },
   date: {
     color: COLORS.textPrimary,
-    fontSize: 18,
+    fontSize: TEXT.size + 3,
   }
 });
