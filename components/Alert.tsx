@@ -1,48 +1,56 @@
-import React, { useState } from 'react';
-import { StyleSheet, Pressable, View, Text } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { StyleSheet, Pressable, Text, View } from 'react-native';
+import Popover from 'react-native-popover-view';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
-import Tooltip from 'react-native-walkthrough-tooltip';
 import { COLORS, TEXT } from '@/constants';
-// import * as Haptics from 'expo-haptics';
 
 export default function Alert() {
-  const [innerTooltipVisible, setInnerTooltipVisible] = useState(false);
   const [iconIndex, setIconIndex] = useState(0);
+  const [showPopover, setShowPopover] = useState(false);
+  const timeoutRef = useRef(null);
 
   const icons = [PiBellSimpleSlash, PiBellSimpleRinging, PiVibrate, PiSpeakerSimpleHigh];
   const labels = ["Off", "Notification", "Vibrate", "Sound"];
   const IconComponent = icons[iconIndex];
-  const labelText = labels[iconIndex];
 
-  const handleInnerTooltipPress = () => {
-    // Ensure the tooltip is visible
-    if (!innerTooltipVisible) {
-      setInnerTooltipVisible(true);
-    }
+  const handlePress = () => {
+    const nextIndex = (iconIndex + 1) % icons.length;
+    setIconIndex(nextIndex);
+    setShowPopover(true);
 
-    // Update the icon index and label text
-    setIconIndex((prevIndex) => (prevIndex + 1) % icons.length);
-    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    // Clear any existing timeout
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    // Hide after 2 seconds
+    timeoutRef.current = setTimeout(() => {
+      setShowPopover(false);
+    }, 2000);
   };
 
   return (
-    // @ts-ignore
-    <Tooltip
-      isVisible={innerTooltipVisible}
-      content={
-        <View style={styles.tooltip}>
-          <IconComponent style={styles.icon} color={'white'} size={20} />
-          <Text style={styles.text}>{labelText}</Text>
-        </View>
-      }
-      onClose={() => setInnerTooltipVisible(false)}
-      placement={'left'}
-      contentStyle={styles.contentStyle}
+    <Popover
+      isVisible={showPopover}
+      onRequestClose={() => setShowPopover(false)}
+      from={(
+        <Pressable onPress={handlePress} style={styles.iconContainer}>
+          <IconComponent color="white" size={20} />
+        </Pressable>
+      )}
+      popoverStyle={styles.popover}
+      placement="left"
+      animationConfig={{
+        duration: 200,
+        delay: 0
+      }}
+      arrowSize={{ width: 16, height: 8 }}  // wider width, shorter height
+      arrowStyle={{ borderTopColor: 'black' }}
+      arrowShift={-2}  // center the arrow
     >
-      <Pressable onPress={handleInnerTooltipPress} style={styles.iconContainer}>
-        <IconComponent color={'white'} size={20} />
-      </Pressable>
-    </Tooltip>
+      <View style={styles.popoverContent}>
+        <IconComponent color="white" size={20} />
+        <Text style={styles.label}>{labels[iconIndex]}</Text>
+      </View>
+    </Popover>
   );
 }
 
@@ -51,19 +59,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
   },
-  contentStyle: {
-    paddingHorizontal: 35,
-    paddingVertical: 20,
+  popover: {
     backgroundColor: 'black',
+    borderRadius: 50,
+    paddingVertical: 15,
+    paddingHorizontal: 30,
   },
-  tooltip: {
+  popoverContent: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 10,
   },
-  icon: {
-    marginRight: 15,
-  },
-  text: {
+  label: {
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
   },
