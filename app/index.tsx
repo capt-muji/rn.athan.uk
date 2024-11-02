@@ -27,7 +27,6 @@ export default function Index() {
     init(setIsLoading, setHasError, setTodaysPrayers);
   }, []);
 
-
   return (
     <>
       {overlayVisible !== -1 && (
