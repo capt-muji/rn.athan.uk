@@ -52,10 +52,7 @@ export default function Alert({ defaultOpacity = 1 }: Props) {
 
     timeoutRef.current = setTimeout(() => {
       fadeAnim.setValue(0);
-      // Reset opacity after popup disappears
-      opacityTimeoutRef.current = setTimeout(() => {
-        setIsActive(false);
-      }, 200); // Small delay after popup fades
+      setIsActive(false); // Reset opacity immediately when popup fades
     }, 1500);
   }, [alertConfigs.length]);
 
