@@ -24,7 +24,7 @@ export default function Alert() {
   const handlePress = useCallback(() => {
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
     setShowPopover(true);
-    
+
     // Auto-hide popover after delay
     const timer = setTimeout(() => setShowPopover(false), 2000);
     return () => clearTimeout(timer);
@@ -65,6 +65,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
   },
+  popoverIcon: {
+    marginRight: 15
+  },
   popover: {
     backgroundColor: 'black',
     borderRadius: 50,
@@ -73,7 +76,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  // Remove popoverContent style and merge into popover
   label: {
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
