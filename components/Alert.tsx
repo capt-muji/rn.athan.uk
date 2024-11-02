@@ -3,7 +3,7 @@ import { StyleSheet, Pressable, View, Text } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import Tooltip from 'react-native-walkthrough-tooltip';
 import { COLORS, TEXT } from '@/constants';
-import * as Haptics from 'expo-haptics';
+// import * as Haptics from 'expo-haptics';
 
 export default function Alert() {
   const [innerTooltipVisible, setInnerTooltipVisible] = useState(false);
@@ -22,7 +22,7 @@ export default function Alert() {
 
     // Update the icon index and label text
     setIconIndex((prevIndex) => (prevIndex + 1) % icons.length);
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    // // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
   };
 
   return (
