@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '../constants';
 import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom } from '../store';
+
+interface TimerAnimation {
+  scale: Animated.AnimatedInterpolation;
+  translateY: Animated.AnimatedInterpolation;
+}
 
 export default function Timer() {
   const [timerName, setTimerName] = useState('Dhuhr');
@@ -11,34 +16,36 @@ export default function Timer() {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
 
-  const scaleInterpolation = overlayAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, 1.5]
-  });
+  // Memoize animation values to prevent recalculation
+  const animations: TimerAnimation = useMemo(() => ({
+    scale: overlayAnimation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, 1.5]
+    }),
+    translateY: overlayAnimation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 10]
+    })
+  }), [overlayAnimation]);
 
-  const translateYInterpolation = overlayAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 10]
-  });
-
+  // Update timer name when overlay visibility changes
   useEffect(() => {
-    if (overlayVisible > -1) {
-      setTimerName(todaysPrayers[overlayVisible].english);
-    } else {
-      setTimerName('Dhuhr');
-    }
-  }, [overlayVisible]);
+    setTimerName(overlayVisible > -1 
+      ? todaysPrayers[overlayVisible].english 
+      : 'Dhuhr'
+    );
+  }, [overlayVisible, todaysPrayers]);
 
   return (
-    <View style={[styles.container, { zIndex: overlayVisible > -1 && 1 }]}>
+    <View style={[styles.container, overlayVisible > -1 && styles.visible]}>
       <Text style={styles.text}>{timerName} in</Text>
       <Animated.Text
         style={[
           styles.timer,
           {
             transform: [
-              { scale: scaleInterpolation },
-              { translateY: translateYInterpolation }
+              { scale: animations.scale },
+              { translateY: animations.translateY }
             ]
           }
         ]}
@@ -67,4 +74,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 45,
   },
+  visible: {
+    zIndex: 1
+  }
 });

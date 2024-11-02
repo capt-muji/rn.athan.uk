@@ -1,32 +1,37 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import Popover from 'react-native-popover-view';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { COLORS, TEXT } from '@/constants';
 
+interface AlertConfig {
+  icon: typeof PiBellSimpleSlash;
+  label: string;
+}
+
 export default function Alert() {
   const [iconIndex, setIconIndex] = useState(0);
   const [showPopover, setShowPopover] = useState(false);
-  const timeoutRef = useRef(null);
 
-  const icons = [PiBellSimpleSlash, PiBellSimpleRinging, PiVibrate, PiSpeakerSimpleHigh];
-  const labels = ["Off", "Notification", "Vibrate", "Sound"];
-  const IconComponent = icons[iconIndex];
+  // Memoize alert configurations
+  const alertConfigs: AlertConfig[] = useMemo(() => [
+    { icon: PiBellSimpleSlash, label: "Off" },
+    { icon: PiBellSimpleRinging, label: "Notification" },
+    { icon: PiVibrate, label: "Vibrate" },
+    { icon: PiSpeakerSimpleHigh, label: "Sound" }
+  ], []);
 
-  const handlePress = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+  const handlePress = useCallback(() => {
+    setIconIndex(prev => (prev + 1) % alertConfigs.length);
+    setShowPopover(true);
+    
+    // Auto-hide popover after delay
+    const timer = setTimeout(() => setShowPopover(false), 2000);
+    return () => clearTimeout(timer);
+  }, [alertConfigs.length]);
 
-    // Update both states together
-    setIconIndex((prevIndex) => {
-      const nextIndex = (prevIndex + 1) % icons.length;
-      setShowPopover(true);
-      return nextIndex;
-    });
-
-    timeoutRef.current = setTimeout(() => setShowPopover(false), 2000);
-  };
+  const currentConfig = alertConfigs[iconIndex];
+  const IconComponent = currentConfig.icon;
 
   return (
     <Popover
@@ -49,8 +54,8 @@ export default function Alert() {
       arrowStyle={{ borderTopColor: 'black' }}
       arrowShift={-2}
     >
-      <IconComponent color="white" size={20} style={{ marginRight: 10 }} />
-      <Text style={styles.label}>{labels[iconIndex]}</Text>
+      <IconComponent color="white" size={20} style={styles.popoverIcon} />
+      <Text style={styles.label}>{currentConfig.label}</Text>
     </Popover>
   );
 }

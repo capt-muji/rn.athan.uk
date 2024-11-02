@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 // import * as Haptics from 'expo-haptics';
@@ -8,32 +8,45 @@ import Alert from './Alert';
 import { COLORS, TEXT, SCREEN } from '../constants';
 import { overlayVisibleAtom, overlayAnimationAtom } from '../store';
 
-interface Props { index: number }
+interface Props { 
+  index: number;
+}
+
+interface PrayerStyles {
+  container: ViewStyle;
+  passed: ViewStyle;
+  next: ViewStyle;
+  // ...other styles
+}
 
 export default function Prayer({ index }: Props) {
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
 
-  const toggleOverlay = () => {
-    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    if (overlayVisible === index) {
-      Animated.timing(overlayAnimation, {
-        toValue: 0,
-        duration: 100,
-        useNativeDriver: true
-      }).start(() => {
-        setOverlayVisible(-1);
-      });
-    } else {
-      setOverlayVisible(index);
-    }
-  };
+  // Memoize toggle handler to prevent recreation
+  const toggleOverlay = useCallback(() => {
+    const isVisible = overlayVisible === index;
+    
+    Animated.timing(overlayAnimation, {
+      toValue: isVisible ? 0 : 1,
+      duration: 100,
+      useNativeDriver: true
+    }).start(() => {
+      if (isVisible) setOverlayVisible(-1);
+    });
+
+    if (!isVisible) setOverlayVisible(index);
+  }, [overlayVisible, index, overlayAnimation]);
 
   const prayer = todaysPrayers[index];
+  const isActive = overlayVisible > -1 && overlayVisible === index;
 
   return (
-    <Pressable style={[styles.container, { zIndex: overlayVisible > -1 && overlayVisible === index && 1 }]} onPress={toggleOverlay}>
+    <Pressable 
+      style={[styles.container, isActive && styles.active]} 
+      onPress={toggleOverlay}
+    >
       <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
       <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
       <Text style={[styles.text, styles.time]}>{prayer.time}</Text>
@@ -80,4 +93,7 @@ const styles = StyleSheet.create({
     flex: 2,
     textAlign: 'center',
   },
+  active: {
+    zIndex: 1
+  }
 });
