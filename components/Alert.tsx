@@ -14,17 +14,18 @@ export default function Alert() {
   const IconComponent = icons[iconIndex];
 
   const handlePress = () => {
-    const nextIndex = (iconIndex + 1) % icons.length;
-    setIconIndex(nextIndex);
-    setShowPopover(true);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
 
-    // Clear any existing timeout
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    // Update both states together
+    setIconIndex((prevIndex) => {
+      const nextIndex = (prevIndex + 1) % icons.length;
+      setShowPopover(true);
+      return nextIndex;
+    });
 
-    // Hide after 2 seconds
-    timeoutRef.current = setTimeout(() => {
-      setShowPopover(false);
-    }, 2000);
+    timeoutRef.current = setTimeout(() => setShowPopover(false), 2000);
   };
 
   return (
@@ -40,16 +41,17 @@ export default function Alert() {
       placement="left"
       animationConfig={{
         duration: 200,
+        useNativeDriver: true,
         delay: 0
       }}
-      arrowSize={{ width: 16, height: 8 }}  // wider width, shorter height
+      backgroundColor="rgba(0, 0, 0, 0.25)"
+      arrowSize={{ width: 16, height: 8 }}
       arrowStyle={{ borderTopColor: 'black' }}
-      arrowShift={-2}  // center the arrow
+      arrowShift={-2}
     >
-      <View style={styles.popoverContent}>
-        <IconComponent color="white" size={20} />
-        <Text style={styles.label}>{labels[iconIndex]}</Text>
-      </View>
+      {/* Move content into immediate render to avoid any potential delays */}
+      <IconComponent color="white" size={20} style={{ marginRight: 10 }} />
+      <Text style={styles.label}>{labels[iconIndex]}</Text>
     </Popover>
   );
 }
@@ -64,12 +66,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     paddingVertical: 15,
     paddingHorizontal: 30,
-  },
-  popoverContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
   },
+  // Remove popoverContent style and merge into popover
   label: {
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
