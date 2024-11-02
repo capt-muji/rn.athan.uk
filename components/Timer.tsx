@@ -6,7 +6,7 @@ export default function Timer() {
   return (
     <View>
       <Text style={styles.text}>Dhuhr in</Text>
-      <Text style={styles.timer}>99h 99m 99s</Text>
+      <Text style={styles.timer}>3h 44m 13s</Text>
     </View>
   );
 }

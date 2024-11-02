@@ -1,96 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, StatusBar, ActivityIndicator } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, SafeAreaView, StatusBar, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 
-import { MOCK_DATA_FULL } from '../mocks/data';
 import { COLORS } from '../constants';
-import Timer from '../components/Timer';
-import Date from '../components/Date';
-import Prayer from '../components/Prayer';
-import Footer from '../components/Footer';
+import Main from '../components/Main';
 import Error from '../components/Error';
-import { storage } from '../storage/mmkv';
-import { filterValidDates } from '@/utils/filterValidDates';
-import { transformPrayerSchedule } from '@/utils/transformPrayerSchedule';
-import { transformTodaysStructure } from '@/utils/transformTodaysStructure';
-import { ENGLISH } from '../constants';
-import { todaysPrayersAtom } from '@/store';
+import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom } from '@/store';
+// @ts-ignore
 import { WaveIndicator } from 'react-native-indicators';
+import { init } from '../controllers';
 
 export default function Index() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  const [_, setTodaysPrayers] = useAtom(todaysPrayersAtom);
+  const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
+  const [hasError, setHasError] = useAtom(hasErrorAtom);
+  const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Step 1: Filter the data to only include today's and future prayer times
-        const filteredDays = filterValidDates(MOCK_DATA_FULL.times);
-
-        // Step 2: Modify the schedules to remove unwanted keys and include duha prayer
-        const transformedSchedules = transformPrayerSchedule(filteredDays);
-
-        // Step 3: Store the transformed schedules in storage
-        storage.storeManyDays(transformedSchedules);
-
-        // Step 4: Retrieve today's prayers from storage
-        const todaysPrayers = storage.getTodaysPrayers();
-
-        // Step 5: Handle the case where no today's prayers are found
-        if (!todaysPrayers) {
-          console.log('No prayers found for today');
-          setHasError(true)
-          return;
-        };
-
-        // Step 6: Transform today's prayers into a structured format
-        const todaysPrayersStructured = transformTodaysStructure(todaysPrayers);
-
-        // Step 7: Update the state with today's structured prayers
-        setTodaysPrayers(todaysPrayersStructured);
-        setHasError(false);
-      } catch (error) {
-        console.log('No prayers found for today');
-        setHasError(true)
-      } finally {
-        // Delay the loading state change by 1 second
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
-      }
-    };
-
-    fetchData();
+    init(setIsLoading, setHasError, setTodaysPrayers);
   }, []);
-
 
   return (
     <LinearGradient
       colors={[COLORS.gradientStart, COLORS.gradientEnd]}
       style={styles.gradient}
     >
+      {/* <View style={styles.overlay} /> */}
+
       <SafeAreaView style={styles.safeArea}>
         <StatusBar barStyle="light-content" />
 
         {hasError && <Error />}
         {isLoading && <WaveIndicator color={'white'} />}
-        {!hasError && !isLoading && (
-          <>
-            <Timer />
-            <Date />
-            {ENGLISH.map((_, index) => (
-              <Prayer key={index} index={index} />
-            ))}
-            <Footer />
-          </>
-        )}
+        {!hasError && !isLoading && <Main />}
 
       </SafeAreaView>
     </LinearGradient>
-
   );
 }
 
@@ -106,5 +51,14 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15,
     marginTop: 60,
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    zIndex: 1,
   },
 });
