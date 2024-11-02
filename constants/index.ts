@@ -3,7 +3,11 @@ export const ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "ال
 
 export const TEXT = {
   size: 18,
-} as const;
+};
+
+export const SCREEN = {
+  paddingHorizontal: 15,
+};
 
 export const COLORS = {
   primary: '#0d6cda',
@@ -12,4 +16,4 @@ export const COLORS = {
   gradientStart: '#031a4c',
   gradientEnd: '#660ca1',
   transparentBlack: '#000000bf'
-} as const;
+};

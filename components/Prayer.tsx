@@ -1,24 +1,33 @@
 import React from 'react';
-import { StyleSheet, Pressable, Text } from 'react-native';
+import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { todaysPrayersAtom } from '@/store';
 import Alert from './Alert';
-import { COLORS, TEXT } from '../constants';
+import { COLORS, TEXT, SCREEN } from '../constants';
+import { overlayVisibleAtom } from '../store';
 
 interface Props { index: number }
 
 export default function Prayer({ index }: Props) {
+  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
+
+  const toggleOverlay = () => {
+    setOverlayVisible((prev) => (prev === index ? -1 : index));
+  };
+
   const prayer = todaysPrayers[index];
 
   return (
-    <Pressable style={[styles.container]}>
-      <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
-      <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
-      <Text style={[styles.text, styles.time]}>{prayer.time}</Text>
-      <Alert />
-    </Pressable>
+    <>
+      <Pressable style={[styles.container, { zIndex: overlayVisible > -1 && overlayVisible === index && 1 }]} onPress={toggleOverlay}>
+        <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
+        <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
+        <Text style={[styles.text, styles.time]}>{prayer.time}</Text>
+        <Alert />
+      </Pressable>
+    </>
   );
 }
 
@@ -30,6 +39,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingLeft: 20,
     alignItems: 'center',
+    marginHorizontal: SCREEN.paddingHorizontal
   },
   passed: {
     opacity: 1,
@@ -58,5 +68,5 @@ const styles = StyleSheet.create({
   time: {
     flex: 2,
     textAlign: 'center',
-  }
+  },
 });
