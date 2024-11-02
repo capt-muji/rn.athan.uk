@@ -47,10 +47,10 @@ export default function Prayer({ index }: Props) {
       style={[styles.container, isActive && styles.active]}
       onPress={toggleOverlay}
     >
-      <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
-      <Text style={[styles.text, styles.arabic]}>{prayer.arabic}</Text>
-      <Text style={[styles.text, styles.time]}>{prayer.time}</Text>
-      <Alert />
+      <Text style={[styles.text, styles.english, styles.dim]}>{prayer.english}</Text>
+      <Text style={[styles.text, styles.arabic, styles.dim]}>{prayer.arabic}</Text>
+      <Text style={[styles.text, styles.time, styles.dim]}>{prayer.time}</Text>
+      <Alert defaultOpacity={0.5} />
     </Pressable>
   );
 }
@@ -59,11 +59,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     paddingVertical: 15,
-    opacity: 0.5,
     paddingRight: 10,
     paddingLeft: 20,
     alignItems: 'center',
     marginHorizontal: SCREEN.paddingHorizontal
+  },
+  dim: {
+    opacity: 0.5
   },
   passed: {
     opacity: 1,
