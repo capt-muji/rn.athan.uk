@@ -11,27 +11,6 @@ import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, ove
 // @ts-ignore
 import { WaveIndicator } from 'react-native-indicators';
 import { init } from '../controllers';
-import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
-
-const toastConfig = {
-  info: (props) => (
-    <BaseToast
-      {...props}
-      style={{
-        borderLeftColor: COLORS.primary,
-        backgroundColor: 'black',
-        height: 60,
-      }}
-      contentContainerStyle={{
-        paddingHorizontal: 15,
-      }}
-      text1Style={{
-        fontSize: 15,
-        color: 'white',
-      }}
-    />
-  ),
-};
 
 export default function Index() {
   const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
@@ -97,7 +76,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.99)',
+    backgroundColor: 'black',
     zIndex: 1,
   },
   gradient: {
