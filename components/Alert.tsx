@@ -44,12 +44,11 @@ export default function Alert() {
         useNativeDriver: true,
         delay: 0
       }}
-      backgroundColor="rgba(0, 0, 0, 0.25)"
+      backgroundStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.25)' }} // Add this line to reduce dimming
       arrowSize={{ width: 16, height: 8 }}
       arrowStyle={{ borderTopColor: 'black' }}
       arrowShift={-2}
     >
-      {/* Move content into immediate render to avoid any potential delays */}
       <IconComponent color="white" size={20} style={{ marginRight: 10 }} />
       <Text style={styles.label}>{labels[iconIndex]}</Text>
     </Popover>
