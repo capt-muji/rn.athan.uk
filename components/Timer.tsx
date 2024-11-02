@@ -30,8 +30,8 @@ export default function Timer() {
 
   // Update timer name when overlay visibility changes
   useEffect(() => {
-    setTimerName(overlayVisible > -1 
-      ? todaysPrayers[overlayVisible].english 
+    setTimerName(overlayVisible > -1
+      ? todaysPrayers[overlayVisible].english
       : 'Dhuhr'
     );
   }, [overlayVisible, todaysPrayers]);

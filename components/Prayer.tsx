@@ -8,7 +8,7 @@ import Alert from './Alert';
 import { COLORS, TEXT, SCREEN } from '../constants';
 import { overlayVisibleAtom, overlayAnimationAtom } from '../store';
 
-interface Props { 
+interface Props {
   index: number;
 }
 
@@ -27,7 +27,7 @@ export default function Prayer({ index }: Props) {
   // Memoize toggle handler to prevent recreation
   const toggleOverlay = useCallback(() => {
     const isVisible = overlayVisible === index;
-    
+
     Animated.timing(overlayAnimation, {
       toValue: isVisible ? 0 : 1,
       duration: 100,
@@ -43,8 +43,8 @@ export default function Prayer({ index }: Props) {
   const isActive = overlayVisible > -1 && overlayVisible === index;
 
   return (
-    <Pressable 
-      style={[styles.container, isActive && styles.active]} 
+    <Pressable
+      style={[styles.container, isActive && styles.active]}
       onPress={toggleOverlay}
     >
       <Text style={[styles.text, styles.english]}>{prayer.english}</Text>
