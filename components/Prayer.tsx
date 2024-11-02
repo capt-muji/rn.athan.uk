@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
+import * as Haptics from 'expo-haptics';
 
 import { todaysPrayersAtom } from '@/store';
 import Alert from './Alert';
@@ -14,6 +15,7 @@ export default function Prayer({ index }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
 
   const toggleOverlay = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setOverlayVisible((prev) => (prev === index ? -1 : index));
   };
 

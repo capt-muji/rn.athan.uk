@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, StatusBar, View, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
+import * as Haptics from 'expo-haptics';
 
 import { COLORS } from '../constants';
 import Main from '../components/Main';
@@ -18,6 +19,7 @@ export default function Index() {
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
 
   const removeOverlay = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setOverlayVisible(-1);
   };
 
