@@ -8,11 +8,17 @@ interface AlertConfig {
   label: string;
 }
 
-export default function Alert() {
+interface Props {
+  defaultOpacity?: number;
+}
+
+export default function Alert({ defaultOpacity = 1 }: Props) {
   const [iconIndex, setIconIndex] = useState(0);
+  const [isActive, setIsActive] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const bounceAnim = useRef(new Animated.Value(0)).current;
   const timeoutRef = useRef<NodeJS.Timeout>();
+  const opacityTimeoutRef = useRef<NodeJS.Timeout>();
 
   const alertConfigs = useMemo(() => [
     { icon: PiBellSimpleSlash, label: "Off" },
@@ -22,8 +28,12 @@ export default function Alert() {
   ], []);
 
   const handlePress = useCallback(() => {
+    setIsActive(true);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
+    }
+    if (opacityTimeoutRef.current) {
+      clearTimeout(opacityTimeoutRef.current);
     }
 
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
@@ -42,22 +52,27 @@ export default function Alert() {
 
     timeoutRef.current = setTimeout(() => {
       fadeAnim.setValue(0);
+      // Reset opacity after popup disappears
+      opacityTimeoutRef.current = setTimeout(() => {
+        setIsActive(false);
+      }, 200); // Small delay after popup fades
     }, 1500);
   }, [alertConfigs.length]);
 
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (opacityTimeoutRef.current) clearTimeout(opacityTimeoutRef.current);
     };
   }, []);
 
   const currentConfig = alertConfigs[iconIndex];
   const IconComponent = currentConfig.icon;
 
+  const opacityStyle = { opacity: isActive ? 1 : defaultOpacity };
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, opacityStyle]}>
       <Pressable onPress={handlePress} style={styles.iconContainer}>
         <IconComponent color="white" size={20} />
       </Pressable>
