@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '../constants';
-import { overlayVisibleAtom, todaysPrayersAtom } from '../store';
+import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom } from '../store';
 
 export default function Timer() {
   const [timerName, setTimerName] = useState('Dhuhr');
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayAnimation] = useAtom(overlayAnimationAtom);
+
+  const scaleInterpolation = overlayAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 1.5]
+  });
+
+  const translateYInterpolation = overlayAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 10]
+  });
 
   useEffect(() => {
     if (overlayVisible > -1) {
@@ -21,7 +32,19 @@ export default function Timer() {
   return (
     <View style={[styles.container, { zIndex: overlayVisible > -1 && 1 }]}>
       <Text style={styles.text}>{timerName} in</Text>
-      <Text style={styles.timer}>3h 44m 13s</Text>
+      <Animated.Text
+        style={[
+          styles.timer,
+          {
+            transform: [
+              { scale: scaleInterpolation },
+              { translateY: translateYInterpolation }
+            ]
+          }
+        ]}
+      >
+        3h 44m 13s
+      </Animated.Text>
     </View>
   );
 }
