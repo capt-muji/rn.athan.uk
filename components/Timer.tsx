@@ -4,6 +4,7 @@ import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '../constants';
 import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom } from '../store';
+import { getTimeDifference, formatTimeRemaining } from '../utils/time';
 
 interface TimerAnimation {
   scale: Animated.AnimatedInterpolation;
@@ -11,7 +12,8 @@ interface TimerAnimation {
 }
 
 export default function Timer() {
-  const [timerName, setTimerName] = useState('Dhuhr');
+  const [timerName, setTimerName] = useState('');
+  const [timeRemaining, setTimeRemaining] = useState('...');
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
@@ -28,12 +30,44 @@ export default function Timer() {
     })
   }), [overlayAnimation]);
 
-  // Update timer name when overlay visibility changes
   useEffect(() => {
-    setTimerName(overlayVisible > -1
-      ? todaysPrayers[overlayVisible].english
-      : 'Dhuhr'
-    );
+    let intervalId: NodeJS.Timeout;
+    let animationFrameId: number;
+
+    const updateTimer = (prayer: ITransformedPrayer) => {
+      const update = () => {
+        const diff = getTimeDifference(prayer.time);
+        setTimeRemaining(formatTimeRemaining(diff));
+        
+        // Schedule next update aligned with the next second
+        const now = Date.now();
+        const delay = 1000 - (now % 1000);
+        intervalId = setTimeout(() => {
+          animationFrameId = requestAnimationFrame(update);
+        }, delay);
+      };
+
+      update();
+    };
+
+    if (overlayVisible > -1) {
+      const prayer = todaysPrayers[overlayVisible];
+      setTimerName(prayer.english);
+      updateTimer(prayer);
+    } else {
+      const nextPrayer = Object.values(todaysPrayers).find(prayer => prayer.isNext);
+      if (nextPrayer) {
+        setTimerName(nextPrayer.english);
+        updateTimer(nextPrayer);
+      }
+    }
+
+    return () => {
+      clearTimeout(intervalId);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, [overlayVisible, todaysPrayers]);
 
   return (
@@ -50,7 +84,7 @@ export default function Timer() {
           }
         ]}
       >
-        3h 44m 13s
+        {timeRemaining}
       </Animated.Text>
     </View>
   );
