@@ -63,7 +63,7 @@ export default function Index() {
       <StatusBar barStyle="light-content" />
 
       {isLoading && <WaveIndicator color="white" />}
-      {hasError && <Error />}
+      {hasError && !isLoading && <Error />}
       {!hasError && !isLoading && <Main />}
     </>
   );

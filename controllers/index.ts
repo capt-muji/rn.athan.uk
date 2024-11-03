@@ -2,13 +2,13 @@ import { storage } from '../storage/mmkv';
 import { filterValidDates } from '@/utils/filterValidDates';
 import { transformPrayerSchedule } from '@/utils/transformPrayerSchedule';
 import { transformTodaysStructure } from '@/utils/transformTodaysStructure';
-import { MOCK_DATA_FULL } from '../mocks/data';
+import { MOCK_DATA_SIMPLE } from '../mocks/data';
 
 // @ts-ignore
 export const init = async (setIsLoading, setHasError, setTodaysPrayers) => {
   try {
     // Step 1: Filter the data to only include today's and future prayer times
-    const filteredDays = filterValidDates(MOCK_DATA_FULL.times);
+    const filteredDays = filterValidDates(MOCK_DATA_SIMPLE.times);
 
     // Step 2: Modify the schedules to remove unwanted keys and include duha prayer
     const transformedSchedules = transformPrayerSchedule(filteredDays);
