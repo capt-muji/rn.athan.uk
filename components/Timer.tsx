@@ -18,6 +18,10 @@ export default function Timer() {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
 
+  const allPrayersPassed = useMemo(() => {
+    return Object.values(todaysPrayers).every(prayer => prayer.passed);
+  }, [todaysPrayers]);
+
   // Memoize animation values to prevent recalculation
   const animations: TimerAnimation = useMemo(() => ({
     scale: overlayAnimation.interpolate({
@@ -31,6 +35,12 @@ export default function Timer() {
   }), [overlayAnimation]);
 
   useEffect(() => {
+    if (allPrayersPassed) {
+      setTimerName('All prayers passed');
+      setTimeRemaining('');
+      return;
+    }
+
     let intervalId: NodeJS.Timeout;
     let animationFrameId: number;
 
@@ -38,7 +48,7 @@ export default function Timer() {
       const update = () => {
         const diff = getTimeDifference(prayer.time);
         setTimeRemaining(formatTimeRemaining(diff));
-        
+
         // Schedule next update aligned with the next second
         const now = Date.now();
         const delay = 1000 - (now % 1000);
@@ -68,31 +78,36 @@ export default function Timer() {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [overlayVisible, todaysPrayers]);
+  }, [overlayVisible, todaysPrayers, allPrayersPassed]);
 
   return (
     <View style={[styles.container, overlayVisible > -1 && styles.visible]}>
-      <Text style={styles.text}>{timerName} in</Text>
-      <Animated.Text
-        style={[
-          styles.timer,
-          {
-            transform: [
-              { scale: animations.scale },
-              { translateY: animations.translateY }
-            ]
-          }
-        ]}
-      >
-        {timeRemaining}
-      </Animated.Text>
+      <Text style={styles.text}>
+        {allPrayersPassed ? timerName : `${timerName} in`}
+      </Text>
+      {!allPrayersPassed && (
+        <Animated.Text
+          style={[
+            styles.timer,
+            {
+              transform: [
+                { scale: animations.scale },
+                { translateY: animations.translateY }
+              ]
+            }
+          ]}
+        >
+          {timeRemaining}
+        </Animated.Text>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: SCREEN.paddingHorizontal
+    paddingTop: SCREEN.paddingHorizontal,
+    marginBottom: 45,
   },
   text: {
     color: COLORS.textPrimary,
@@ -106,7 +121,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: TEXT.size + 8,
     textAlign: 'center',
-    marginBottom: 45,
   },
   visible: {
     zIndex: 1
