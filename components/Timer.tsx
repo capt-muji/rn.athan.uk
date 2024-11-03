@@ -200,7 +200,7 @@ export default function Timer() {
   return (
     <View style={[styles.container]}>
       <Text style={[styles.text]}>
-        {allPrayersPassed ? timerName : `${timerName || 'Loading...'} in`}
+        {allPrayersPassed ? timerName : `${timerName || '...'} in`}
       </Text>
       {!allPrayersPassed && timeRemaining && (
         <Animated.Text
@@ -218,7 +218,7 @@ export default function Timer() {
                 {
                   translateY: overlayAnimation.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [5, 15]
+                    outputRange: [5, 10]
                   })
                 }
               ]
