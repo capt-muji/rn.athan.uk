@@ -14,6 +14,8 @@ export interface ITransformedPrayer {
   english: string;
   index: number;
   time: string;
+  passed: boolean;
+  isNext: boolean;
 }
 
 export type ITransformedToday = {
