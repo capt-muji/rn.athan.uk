@@ -44,12 +44,29 @@ export default function Prayer({ index }: Props) {
 
   return (
     <Pressable
-      style={[styles.container, isActive && styles.active]}
+      style={[
+        styles.container,
+        isActive && styles.active,
+        prayer.passed && styles.passed,
+        prayer.isNext && styles.next
+      ]}
       onPress={toggleOverlay}
     >
-      <Text style={[styles.text, styles.english, styles.dim]}>{prayer.english}</Text>
-      <Text style={[styles.text, styles.arabic, styles.dim]}>{prayer.arabic}</Text>
-      <Text style={[styles.text, styles.time, styles.dim]}>{prayer.time}</Text>
+      <Text style={[
+        styles.text,
+        styles.english,
+        !prayer.passed && !prayer.isNext && styles.dim
+      ]}>{prayer.english}</Text>
+      <Text style={[
+        styles.text,
+        styles.arabic,
+        !prayer.passed && !prayer.isNext && styles.dim
+      ]}>{prayer.arabic}</Text>
+      <Text style={[
+        styles.text,
+        styles.time,
+        !prayer.passed && !prayer.isNext && styles.dim
+      ]}>{prayer.time}</Text>
       <Alert defaultOpacity={0.5} />
     </Pressable>
   );
