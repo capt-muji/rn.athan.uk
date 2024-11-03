@@ -2,6 +2,7 @@ import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { COLORS, TEXT } from '@/constants';
+// import * as Haptics from 'expo-haptics';
 
 interface AlertConfig {
   icon: typeof PiBellSimpleSlash;
@@ -28,6 +29,7 @@ export default function Alert({ defaultOpacity = 1 }: Props) {
   ], []);
 
   const handlePress = useCallback(() => {
+    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setIsActive(true);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);

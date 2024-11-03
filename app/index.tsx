@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     backgroundColor: 'black',
-    zIndex: 1,
+    zIndex: 1, // Lower than Timer's z-index
   },
   gradient: {
     position: 'absolute',

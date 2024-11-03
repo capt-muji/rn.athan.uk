@@ -26,6 +26,7 @@ export default function Prayer({ index }: Props) {
 
   // Memoize toggle handler to prevent recreation
   const toggleOverlay = useCallback(() => {
+    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const isVisible = overlayVisible === index;
 
     Animated.timing(overlayAnimation, {
