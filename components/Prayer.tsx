@@ -41,6 +41,7 @@ export default function Prayer({ index }: Props) {
 
   const prayer = todaysPrayers[index];
   const isActive = overlayVisible > -1 && overlayVisible === index;
+  const defaultOpacity = prayer.passed || prayer.isNext ? 1 : 0.5;
 
   return (
     <Pressable
@@ -67,7 +68,7 @@ export default function Prayer({ index }: Props) {
         styles.time,
         !prayer.passed && !prayer.isNext && styles.dim
       ]}>{prayer.time}</Text>
-      <Alert defaultOpacity={0.5} />
+      <Alert defaultOpacity={defaultOpacity} />
     </Pressable>
   );
 }
