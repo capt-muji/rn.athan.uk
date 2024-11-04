@@ -101,16 +101,18 @@ const styles = StyleSheet.create({
   },
   english: {
     flex: 1,
+    marginLeft: 20,
     marginRight: 15,
-    paddingLeft: 20,
   },
   arabic: {
     flex: 1,
     textAlign: 'right',
+    marginRight: 36,
   },
   time: {
-    flex: 2,
+    flex: 1,
     textAlign: 'center',
+    marginRight: 10,
   },
   active: {
     zIndex: 1
