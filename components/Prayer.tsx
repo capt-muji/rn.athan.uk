@@ -11,22 +11,11 @@ interface Props {
   index: number;
 }
 
-interface PrayerStyles {
-  container: ViewStyle;
-  passed: ViewStyle;
-  next: ViewStyle;
-  // ...other styles
-}
-
 export default function Prayer({ index }: Props) {
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-
-  console.log('=====nextPrayerIndex===============================');
-  console.log(nextPrayerIndex);
-  console.log('=====nextPrayerIndex===============================');
 
   const toggleOverlay = useCallback(() => {
     // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -43,30 +32,11 @@ export default function Prayer({ index }: Props) {
     if (!isVisible) setOverlayVisible(index);
   }, [overlayVisible, index, overlayAnimation]);
 
-  console.log('111111');
-
   const prayer = todaysPrayers[index];
   const isActive = overlayVisible > -1 && overlayVisible === index;
   const isPassed = index < nextPrayerIndex;
-
   const isNext = index === nextPrayerIndex;
-
-  console.log('222222');
-
-
-  const getAlertState = () => {
-    if (isPassed) return 'passed';
-    if (isNext) return 'next';
-    return 'upcoming';
-  };
-
-  console.log('333333');
-
-
   const opacity = isPassed || isNext ? 1 : 0.5;
-
-  console.log('44444');
-
 
   return (
     <Pressable

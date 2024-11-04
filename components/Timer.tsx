@@ -5,11 +5,6 @@ import { COLORS, SCREEN, TEXT } from '../constants';
 import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '../store/store';
 import { getTimeDifference } from '../utils/time';
 
-interface TimerAnimation {
-  scale: Animated.AnimatedInterpolation;
-  translateY: Animated.AnimatedInterpolation;
-}
-
 export default function Timer() {
   const [timerName, setTimerName] = useState('');
   const [timeDisplay, setTimeDisplay] = useState('');
