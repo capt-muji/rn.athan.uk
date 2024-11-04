@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 import { COLORS, SCREEN, TEXT } from '../constants';
 import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '../store/store';
-import { getTimeDifference } from '../utils/time';
+import { handleTimerUpdate } from '../controllers/time';
 
 export default function Timer() {
   const [timerName, setTimerName] = useState('');
@@ -16,72 +16,17 @@ export default function Timer() {
   useEffect(() => {
     if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
 
-    const formatTime = (ms: number) => {
-      if (ms <= 0) return '0s';
-
-      const hours = Math.floor(ms / 3600000);
-      const minutes = Math.floor((ms % 3600000) / 60000);
-      const seconds = Math.floor((ms % 60000) / 1000);
-
-      const parts = [];
-      if (hours > 0) parts.push(`${hours}h`);
-      if (minutes > 0) parts.push(`${minutes}m`);
-      if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
-
-      return parts.join(' ');
-    };
-
     const updateTimer = () => {
-      console.log('⏰ Timer Update:', new Date().toLocaleTimeString());
-
-      const currentPrayer = overlayVisible > -1
-        ? todaysPrayers[overlayVisible]
-        : todaysPrayers[nextPrayerIndex];
-
-      if (!currentPrayer) {
-        console.log('⚠️ No current prayer found');
-        setTimerName('All prayers passed');
-        setTimeDisplay('');
-        return;
-      }
-
-      console.log('📍 Current Prayer:', {
-        name: currentPrayer.english,
-        time: currentPrayer.time,
-        index: nextPrayerIndex
-      });
-
-      const diff = getTimeDifference(currentPrayer.time);
-      console.log('⌛ Time difference:', diff, 'ms');
-
-      setTimerName(currentPrayer.english);
-      setTimeDisplay(formatTime(diff));
-
-      if (diff <= 0) {
-        console.log('✨ Prayer time reached!');
-        console.log('Prayer:', currentPrayer.english);
-        console.log('Index:', nextPrayerIndex);
-
-        // Mark current prayer as passed
-        if (todaysPrayers[nextPrayerIndex]) {
-          todaysPrayers[nextPrayerIndex].passed = true;
-        }
-
-        // If it's Isha (last prayer, index 6)
-        if (nextPrayerIndex === 6) {
-          console.log('🌙 Last prayer (Isha) completed');
-          setNextPrayerIndex(-1); // All prayers done for the day
-        } else {
-          console.log('⏭️ Moving to next prayer');
-          setNextPrayerIndex(prev => {
-            console.log('Updating index from', prev, 'to', prev + 1);
-            return prev + 1;
-          });
-        }
-      }
+      handleTimerUpdate(
+        todaysPrayers,
+        overlayVisible,
+        nextPrayerIndex,
+        setTimerName,
+        setTimeDisplay,
+        setNextPrayerIndex
+      );
     };
 
-    console.log('🔄 Setting up timer interval');
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
