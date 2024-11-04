@@ -248,6 +248,7 @@ const styles = StyleSheet.create({
   },
   timer: {
     color: COLORS.textPrimary,
+    fontWeight: '500',
     fontSize: TEXT.size + 5,
     textAlign: 'center',
   }
