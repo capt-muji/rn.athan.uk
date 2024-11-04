@@ -1,7 +1,5 @@
-import { storage } from '../storage/storage';
+import storage from '../storage/storage';
 import { transformApiData, createTodayStructure } from '../utils/prayer';
-import { SetStateAction } from 'jotai';
-import { ITransformedToday } from '@/types/prayers';
 
 export const initializePrayers = async (
   setIsLoading: any,
@@ -12,9 +10,9 @@ export const initializePrayers = async (
 ) => {
   try {
     const transformedPrayers = transformApiData(apiData);
-    storage.storePrayers(transformedPrayers);
+    storage.prayers.storePrayers(transformedPrayers);
 
-    const todayRaw = storage.getTodaysPrayers();
+    const todayRaw = storage.prayers.getTodaysPrayers();
     if (!todayRaw) throw new Error('No prayers found for today');
 
     const todaysPrayers = createTodayStructure(todayRaw);
@@ -34,18 +32,4 @@ export const initializePrayers = async (
     setHasError(true);
     return null;
   }
-};
-
-export const updatePrayerStates = (
-  setTodaysPrayers: (update: SetStateAction<ITransformedToday>) => void,
-  setNextPrayerIndex: (update: SetStateAction<number>) => void
-) => {
-  const todayRaw = storage.getTodaysPrayers();
-  if (!todayRaw) return;
-
-  const prayers = createTodayStructure(todayRaw);
-  const nextPrayer = Object.values(prayers).find(p => !p.passed);
-  
-  setTodaysPrayers(prayers);
-  setNextPrayerIndex(nextPrayer?.index ?? -1);
 };

@@ -1,5 +1,7 @@
-import { IApiAllTimes, ISingleScheduleTransformed, ITransformedToday } from '@/types/prayers';
+import { ISingleScheduleTransformed, ITransformedToday } from '@/types/prayers';
+import { IApiAllTimes } from '@/types/api';
 import { ENGLISH, ARABIC } from '../constants';
+import { isDateTodayOrFuture } from './time';
 import { isTimePassed, addMinutes } from './time';
 
 export const transformApiData = (apiData: IApiAllTimes): ISingleScheduleTransformed[] => {
@@ -29,12 +31,4 @@ export const createTodayStructure = (prayers: ISingleScheduleTransformed): ITran
     };
     return acc;
   }, {} as ITransformedToday);
-};
-
-const isDateTodayOrFuture = (date: string): boolean => {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const checkDate = new Date(date);
-  checkDate.setHours(0, 0, 0, 0);
-  return checkDate >= today;
 };
