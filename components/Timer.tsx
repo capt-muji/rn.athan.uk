@@ -34,11 +34,18 @@ export default function Timer() {
     if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
 
     const formatTime = (ms: number) => {
-      if (ms <= 0) return '00:00:00';
+      if (ms <= 0) return '0s';
+      
       const hours = Math.floor(ms / 3600000);
       const minutes = Math.floor((ms % 3600000) / 60000);
       const seconds = Math.floor((ms % 60000) / 1000);
-      return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+      const parts = [];
+      if (hours > 0) parts.push(`${hours}h`);
+      if (minutes > 0) parts.push(`${minutes}m`);
+      if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
+
+      return parts.join(' ');
     };
 
     const updateTimer = () => {
