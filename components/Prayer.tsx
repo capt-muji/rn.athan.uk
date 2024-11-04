@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-    marginRight: 36,
+    marginRight: 34,
   },
   time: {
     flex: 1,
