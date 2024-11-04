@@ -3,7 +3,7 @@
 <br/>
 
 <div align="center">
-  <img src="./assets/masjid.svg" width="100" height="100" alt="Mosque icon" />
+  <img src="./assets/icons/masjid.svg" width="100" height="100" alt="Mosque icon" />
 </div>
 
 <br/>
