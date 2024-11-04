@@ -12,11 +12,12 @@ For web version, visit https://athan.uk.
   - Off (no notifications)
   - Notification only (silent banner)
   - Vibration + notification
-  - Sound + vibration + notification
+  - Sound (athan) + vibration + notification
 - 🌙 Smart prayer tracking system
 - 💾 Efficient data management with yearly prayer times cached locally
 - 🔄 Automatic yearly data refresh
 - 🎯 Precise timing synchronization with system clock
+- 📱 Full offline support after initial data download
 
 ## Technical Implementation
 
