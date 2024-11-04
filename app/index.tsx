@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, StatusBar, View, Animated, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
+import { useFonts } from 'expo-font';
 // import * as Haptics from 'expo-haptics';
 
 import { COLORS } from '../constants';
@@ -13,6 +14,11 @@ import { WaveIndicator } from 'react-native-indicators';
 import { init } from '../controllers';
 
 export default function Index() {
+  const [fontsLoaded] = useFonts({
+    'Roboto': require('../assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
+  });
+
   const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
   const [hasError, setHasError] = useAtom(hasErrorAtom);
   const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
@@ -41,6 +47,10 @@ export default function Index() {
       useNativeDriver: true
     }).start();
   }, [overlayVisible]);
+
+  if (!fontsLoaded) {
+    return <WaveIndicator color="white" />;
+  }
 
   return (
     <>

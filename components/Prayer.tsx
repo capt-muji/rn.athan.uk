@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   text: {
+    fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
     color: COLORS.textPrimary,
   },

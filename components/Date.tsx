@@ -28,9 +28,11 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     color: COLORS.textPrimary,
     fontSize: TEXT.size - 2,
+    fontFamily: TEXT.famiy.regular,
     marginBottom: 5,
   },
   date: {
+    fontFamily: TEXT.famiy.regular,
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
   }

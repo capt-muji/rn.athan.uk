@@ -236,19 +236,20 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: SCREEN.paddingHorizontal,
     marginBottom: 35,
-    zIndex: 2,
-    elevation: 2,
-    position: 'relative',
+    zIndex: 1,
+    elevation: 2, // is this needed?
+    position: 'relative', // is this needed?
   },
   text: {
+    fontFamily: TEXT.famiy.regular,
     color: COLORS.textPrimary,
     opacity: 0.5,
     textAlign: 'center',
     fontSize: TEXT.size - 2,
   },
   timer: {
+    fontFamily: TEXT.famiy.regular,
     color: COLORS.textPrimary,
-    fontWeight: '500',
     fontSize: TEXT.size + 5,
     textAlign: 'center',
   }
