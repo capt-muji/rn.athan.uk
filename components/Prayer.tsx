@@ -77,9 +77,6 @@ export default function Prayer({ index }: Props) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    paddingVertical: 15,
-    paddingRight: 10,
-    paddingLeft: 20,
     alignItems: 'center',
     marginHorizontal: SCREEN.paddingHorizontal
   },
@@ -105,6 +102,7 @@ const styles = StyleSheet.create({
   english: {
     flex: 1,
     marginRight: 15,
+    paddingLeft: 20,
   },
   arabic: {
     flex: 1,

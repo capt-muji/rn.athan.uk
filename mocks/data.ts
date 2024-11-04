@@ -3,14 +3,14 @@ import { IApiAllTimes } from "./types/api";
 export const MOCK_DATA_SIMPLE: { city: string; times: IApiAllTimes } = {
   city: "london",
   times: {
-    "2024-11-03": {
-      date: "2024-11-03",
-      fajr: "04:52",
+    "2024-11-04": {
+      date: "2024-11-04",
+      fajr: "00:01",
       fajr_jamat: "06:46",
-      sunrise: "09:21",
-      dhuhr: "13:09",
+      sunrise: "00:02",
+      dhuhr: "00:03",
       dhuhr_jamat: "12:45",
-      asr: "22:31",
+      asr: "01:34",
       asr_jamat: "14:45",
       asr_2: "14:16",
       magrib: "22:33",
