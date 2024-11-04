@@ -37,8 +37,7 @@ export default function Prayer({ index }: Props) {
   // Change this line to use the prayer's passed status directly
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
-  // Modified opacity logic - a prayer should be dim only if it hasn't passed and isn't next
-  const opacity = isPassed || isNext ? 1 : 0.5;
+  const shouldDim = !isPassed && !isNext && styles.dim;
 
   return (
     <Pressable
@@ -50,21 +49,9 @@ export default function Prayer({ index }: Props) {
       ]}
       onPress={toggleOverlay}
     >
-      <Text style={[
-        styles.text,
-        styles.english,
-        !isPassed && !isNext && styles.dim
-      ]}>{prayer.english}</Text>
-      <Text style={[
-        styles.text,
-        styles.arabic,
-        !isPassed && !isNext && styles.dim
-      ]}>{prayer.arabic}</Text>
-      <Text style={[
-        styles.text,
-        styles.time,
-        !isPassed && !isNext && styles.dim
-      ]}>{prayer.time}</Text>
+      <Text style={[styles.text, styles.english, shouldDim]}> {prayer.english} </Text>
+      <Text style={[styles.text, styles.arabic, shouldDim]}> {prayer.arabic} </Text>
+      <Text style={[styles.text, styles.time, shouldDim]}> {prayer.time} </Text>
       <Alert index={index} />
     </Pressable>
   );
