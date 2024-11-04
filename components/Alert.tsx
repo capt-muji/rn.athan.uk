@@ -1,8 +1,10 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
+import { useAtom } from 'jotai';
 
 import { COLORS, TEXT } from '@/constants';
+import { overlayVisibleAtom } from '@/store/store';
 // import * as Haptics from 'expo-haptics';
 
 interface Props {
@@ -10,6 +12,7 @@ interface Props {
 }
 
 export default function Alert({ opacity }: Props) {
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -64,6 +67,8 @@ export default function Alert({ opacity }: Props) {
   const currentConfig = alertConfigs[iconIndex];
   const IconComponent = currentConfig.icon;
 
+  const isOverlayActive = overlayVisible !== -1;
+
   const opacityStyle = {
     opacity: isActive ? 1 : opacity
   };
@@ -77,6 +82,7 @@ export default function Alert({ opacity }: Props) {
       <Animated.View
         style={[
           styles.popup,
+          isOverlayActive ? styles.popupLight : styles.popupDark,
           {
             opacity: fadeAnim,
             transform: [
@@ -96,8 +102,17 @@ export default function Alert({ opacity }: Props) {
           }
         ]}
       >
-        <IconComponent color="white" size={20} style={styles.popupIcon} />
-        <Text style={styles.label}>{currentConfig.label}</Text>
+        <IconComponent 
+          color={isOverlayActive ? "black" : "white"} 
+          size={20} 
+          style={styles.popupIcon} 
+        />
+        <Text style={[
+          styles.label,
+          isOverlayActive ? styles.labelDark : styles.labelLight
+        ]}>
+          {currentConfig.label}
+        </Text>
       </Animated.View>
     </View>
   );
@@ -116,7 +131,6 @@ const styles = StyleSheet.create({
   popup: {
     position: 'absolute',
     right: '100%',
-    backgroundColor: 'black',
     borderRadius: 50,
     paddingVertical: 15,
     paddingHorizontal: 30,
@@ -128,11 +142,22 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
+  popupDark: {
+    backgroundColor: 'black',
+  },
+  popupLight: {
+    backgroundColor: 'white',
+  },
   popupIcon: {
     marginRight: 15
   },
   label: {
-    color: COLORS.textPrimary,
     fontSize: TEXT.size,
+  },
+  labelLight: {
+    color: COLORS.textPrimary,
+  },
+  labelDark: {
+    color: 'black',
   },
 });
