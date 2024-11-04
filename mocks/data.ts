@@ -23,9 +23,9 @@ export const MOCK_DATA_SIMPLE: { city: string; times: IApiAllTimes } = {
       fajr: "00:01",
       sunrise: "00:01",
       dhuhr: "00:01",
-      asr: "02:10",
-      magrib: "23:01",
-      isha: "23:02",
+      asr: "03:43",
+      magrib: "03:55",
+      isha: "03:56",
     },
   },
 };

@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { StyleSheet, Text, View, Animated, AppState } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 import * as Notifications from 'expo-notifications';
-import { storage } from '../storage/mmkv';
-
 import { COLORS, SCREEN, TEXT } from '../constants';
-import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom } from '../store';
-import { getTimeDifference, formatTimeRemaining } from '../utils/time';
+import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '../store';
+import { getTimeDifference } from '../utils/time';
 
 // 1. Configure notification handler for how notifications should appear
 Notifications.setNotificationHandler({
@@ -25,189 +23,90 @@ interface TimerAnimation {
 }
 
 export default function Timer() {
-  // 2. Initialize states:
-  // - Timer display states
-  const [timerName, setTimerName] = useState('');         // Name of prayer being counted down to
-  const [timeRemaining, setTimeRemaining] = useState(''); // Time remaining display
+  const [timerName, setTimerName] = useState('');
+  const [timeDisplay, setTimeDisplay] = useState('');
+  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayAnimation] = useAtom(overlayAnimationAtom);
+  const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
-  // - System states
-  const [appState, setAppState] = useState(AppState.currentState); // For detecting if app is active/background
-  const [notificationState, setNotificationState] = useState('off'); // Notification settings (off/notification/vibrate/sound)
-
-  // - Global states from Jotai
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);     // All prayers for today
-  const [overlayVisible] = useAtom(overlayVisibleAtom);   // Which prayer is selected (-1 means none)
-  const [overlayAnimation] = useAtom(overlayAnimationAtom); // Animation values for overlay
-
-  // Create separate animation value for timer
-  const timerAnimation = useMemo(() => new Animated.Value(1), []);
-
-  // 3. On component mount:
-  // - Load saved notification preferences
   useEffect(() => {
-    const state = storage.storage.getString(NOTIFICATION_STATE_KEY);
-    if (state) setNotificationState(state);
-  }, []);
+    if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
 
-  // Memoize finding the current prayer to display
-  const currentPrayer = useMemo(() => {
-    if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) {
-      return null;
-    }
-
-    return overlayVisible > -1
-      ? todaysPrayers[overlayVisible]
-      : Object.values(todaysPrayers).find(p => p.isNext);
-  }, [overlayVisible, todaysPrayers]);
-
-  // Memoize checking if all prayers have passed
-  const allPrayersPassed = useMemo(() => {
-    if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) {
-      return false;
-    }
-    return Object.values(todaysPrayers).every(prayer => prayer.passed);
-  }, [todaysPrayers]);
-
-  // 5. Handle prayer transitions (when one prayer time is reached)
-  const handlePrayerTransition = async (nextPrayer) => {
-    if (!nextPrayer) return;
-
-    // Clear existing notifications
-    await Notifications.cancelAllScheduledNotificationsAsync();
-
-    // Schedule notification for next prayer if notifications are enabled
-    if (notificationState !== 'off') {
-      await scheduleNotification(nextPrayer, notificationState);
-    }
-  };
-
-  // 6. Handle scheduling next day's Fajr prayer
-  const scheduleNextDayFajr = async () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const tomorrowPrayers = storage.getPrayersByDate(tomorrow.toISOString().split('T')[0]);
-
-    if (tomorrowPrayers && notificationState !== 'off') {
-      await scheduleNotification(tomorrowPrayers.fajr, notificationState);
-    }
-  };
-
-  // 7. Set up app state listener (active/background)
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
-      setAppState(nextAppState);
-    });
-
-    Notifications.requestPermissionsAsync();
-
-    return () => {
-      subscription.remove();
+    const formatTime = (ms: number) => {
+      if (ms <= 0) return '00:00:00';
+      const hours = Math.floor(ms / 3600000);
+      const minutes = Math.floor((ms % 3600000) / 60000);
+      const seconds = Math.floor((ms % 60000) / 1000);
+      return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
-  }, []);
-
-  // Modified findNextPrayer function with null checks
-  const findNextPrayer = useCallback((prayers, currentPrayer) => {
-    if (!prayers || !currentPrayer) return null;
-
-    const orderedPrayers = ['fajr', 'sunrise', 'duha', 'dhuhr', 'asr', 'magrib', 'isha'];
-    const currentIndex = orderedPrayers.indexOf(currentPrayer.english.toLowerCase());
-
-    if (currentIndex === -1 || currentIndex === orderedPrayers.length - 1) return null;
-
-    const nextPrayerName = orderedPrayers[currentIndex + 1];
-    return Object.values(prayers).find(p =>
-      p.english.toLowerCase() === nextPrayerName
-    );
-  }, []);
-
-  // Modify the main timer effect
-  useEffect(() => {
-    if (allPrayersPassed) {
-      setTimerName('All prayers passed');
-      setTimeRemaining('');
-      scheduleNextDayFajr();
-      return;
-    }
-
-    if (!currentPrayer) {
-      setTimerName('Loading...');
-      setTimeRemaining('');
-      return;
-    }
-
-    let intervalId: NodeJS.Timeout;
 
     const updateTimer = () => {
-      const diff = getTimeDifference(currentPrayer.time);
+      console.log('⏰ Timer Update:', new Date().toLocaleTimeString());
 
-      if (diff <= 0) {
-        handlePrayerTransition(findNextPrayer(todaysPrayers, currentPrayer));
-        clearTimeout(intervalId);
+      const currentPrayer = overlayVisible > -1
+        ? todaysPrayers[overlayVisible]
+        : todaysPrayers[nextPrayerIndex];
+
+      if (!currentPrayer) {
+        console.log('⚠️ No current prayer found');
+        setTimerName('All prayers passed');
+        setTimeDisplay('');
         return;
       }
 
+      console.log('📍 Current Prayer:', {
+        name: currentPrayer.english,
+        time: currentPrayer.time,
+        index: nextPrayerIndex
+      });
+
+      const diff = getTimeDifference(currentPrayer.time);
+      console.log('⌛ Time difference:', diff, 'ms');
+
       setTimerName(currentPrayer.english);
-      setTimeRemaining(formatTimeRemaining(diff));
+      setTimeDisplay(formatTime(diff));
 
-      const now = Date.now();
-      const delay = 1000 - (now % 1000);
-      intervalId = setTimeout(updateTimer, delay);
+      if (diff <= 0) {
+        console.log('✨ Prayer time reached!');
+        console.log('Prayer:', currentPrayer.english);
+        console.log('Index:', nextPrayerIndex);
+        
+        // Mark current prayer as passed
+        if (todaysPrayers[nextPrayerIndex]) {
+          todaysPrayers[nextPrayerIndex].passed = true;
+        }
+
+        // If it's Isha (last prayer, index 6)
+        if (nextPrayerIndex === 6) {
+          console.log('🌙 Last prayer (Isha) completed');
+          setNextPrayerIndex(-1); // All prayers done for the day
+        } else {
+          console.log('⏭️ Moving to next prayer');
+          setNextPrayerIndex(prev => {
+            console.log('Updating index from', prev, 'to', prev + 1);
+            return prev + 1;
+          });
+        }
+      }
     };
 
+    console.log('🔄 Setting up timer interval');
     updateTimer();
+    const intervalId = setInterval(updateTimer, 1000);
+    return () => clearInterval(intervalId);
+  }, [nextPrayerIndex, overlayVisible, todaysPrayers]);
 
-    return () => {
-      clearTimeout(intervalId);
-    };
-  }, [currentPrayer, allPrayersPassed, todaysPrayers]);
-
-  // 9. Notification scheduling helper
-  const scheduleNotification = async (prayer, notificationState) => {
-    const [hours, minutes] = prayer.time.split(':').map(Number);
-    const prayerTime = new Date();
-    prayerTime.setHours(hours, minutes, 0, 0);
-
-    if (prayerTime.getTime() <= Date.now()) return;
-
-    const notification = {
-      content: {
-        title: 'Prayer Time',
-        body: `It's time for ${prayer.english}`,
-      },
-      trigger: {
-        date: prayerTime,
-      },
-    };
-
-    // Configure notification based on state
-    switch (notificationState) {
-      case 'notification':
-        notification.content.sound = null;
-        break;
-      case 'vibrate':
-        notification.content.sound = null;
-        // Add vibration pattern
-        break;
-      case 'sound':
-        notification.content.sound = 'default';
-        break;
-    }
-
-    await Notifications.scheduleNotificationAsync(notification);
-  };
-
-  // 11. Render timer display
   return (
-    <View style={[styles.container]}>
-      <Text style={[styles.text]}>
-        {allPrayersPassed ? timerName : `${timerName || '...'} in`}
+    <View style={styles.container}>
+      <Text style={styles.text}>
+        {nextPrayerIndex === -1 ? timerName : `${timerName || '...'} in`}
       </Text>
-      {!allPrayersPassed && timeRemaining && (
+      {nextPrayerIndex !== -1 && timeDisplay && (
         <Animated.Text
           style={[
             styles.timer,
             {
-              opacity: 1,
               transform: [
                 {
                   scale: overlayAnimation.interpolate({
@@ -225,7 +124,7 @@ export default function Timer() {
             }
           ]}
         >
-          {timeRemaining}
+          {timeDisplay}
         </Animated.Text>
       )}
     </View>

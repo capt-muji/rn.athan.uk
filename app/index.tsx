@@ -8,7 +8,7 @@ import { useFonts } from 'expo-font';
 import { COLORS } from '../constants';
 import Main from '../components/Main';
 import Error from '../components/Error';
-import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, overlayAnimationAtom } from '@/store';
+import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store';
 // @ts-ignore
 import { WaveIndicator } from 'react-native-indicators';
 import { init } from '../controllers';
@@ -25,6 +25,7 @@ export default function Index() {
   const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
+  const [, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
   const removeOverlay = () => {
     // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -38,7 +39,7 @@ export default function Index() {
   };
 
   useEffect(() => {
-    init(setIsLoading, setHasError, setTodaysPrayers);
+    init(setIsLoading, setHasError, setTodaysPrayers, setNextPrayerIndex);
   }, []);
 
   useEffect(() => {

@@ -11,11 +11,16 @@ export const getTimeDifference = (targetTime: string): number => {
     0
   );
 
-  if (target.getTime() < now.getTime()) {
+  const diff = target.getTime() - now.getTime();
+  
+  // Only add a day if we're actually past the time
+  // and not exactly at the time
+  if (diff < -1000) { // using -1000 to account for millisecond precision
     target.setDate(target.getDate() + 1);
+    return target.getTime() - now.getTime();
   }
 
-  return Math.max(0, target.getTime() - now.getTime());
+  return diff;
 };
 
 export const formatTimeRemaining = (ms: number): string => {

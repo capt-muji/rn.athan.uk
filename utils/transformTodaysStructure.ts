@@ -13,16 +13,11 @@ const hasTimePassed = (prayerTime: string): boolean => {
 
 export const transformTodaysStructure = (day: ISingleScheduleTransformed): ITransformedToday => {
   const transformedDay: ITransformedToday = {};
-  let nextPrayerFound = false;
 
   ENGLISH.forEach((name, index) => {
     const prayerName = name.toLowerCase() as keyof ISingleScheduleTransformed;
     const time = day[prayerName];
     const passed = hasTimePassed(time);
-    
-    // First prayer that hasn't passed yet is the next prayer
-    const isNext = !passed && !nextPrayerFound;
-    if (isNext) nextPrayerFound = true;
 
     transformedDay[index.toString()] = {
       index,
@@ -30,7 +25,6 @@ export const transformTodaysStructure = (day: ISingleScheduleTransformed): ITran
       arabic: ARABIC[index],
       time,
       passed,
-      isNext,
     };
   });
 

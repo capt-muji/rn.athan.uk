@@ -1,28 +1,23 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
 import { todaysPrayersAtom } from '../store';
 import { COLORS } from '../constants';
-import { storage } from '../storage/mmkv';
-
-const NOTIFICATION_STATE_KEY = 'notification_state';
 
 export default function DebugOverlay() {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
 
-  const { current, next, alertState } = useMemo(() => {
-    const state = storage.storage.getString(NOTIFICATION_STATE_KEY) || 'off';
-    
+  const { current, next } = useMemo(() => {
     if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) {
-      return { current: null, next: null, alertState: state };
+      return { current: null, next: null };
     }
 
     const currentPrayer = Object.values(todaysPrayers).find(p => p.isNext);
-    const nextPrayer = currentPrayer ? 
-      Object.values(todaysPrayers).find(p => p.index > currentPrayer.index && !p.passed) 
+    const nextPrayer = currentPrayer ?
+      Object.values(todaysPrayers).find(p => p.index > currentPrayer.index && !p.passed)
       : null;
 
-    return { current: currentPrayer, next: nextPrayer, alertState: state };
+    return { current: currentPrayer, next: nextPrayer };
   }, [todaysPrayers]);
 
   return (
@@ -31,16 +26,16 @@ export default function DebugOverlay() {
       <View style={styles.section}>
         <Text style={styles.text}>Current Prayer:</Text>
         <Text style={styles.value}>
-          {current ? 
-            `${current.english} (index: ${current.index}) - Alert: ${alertState}` : 
+          {current ?
+            `${current.english} (index: ${current.index})` :
             'None'}
         </Text>
       </View>
       <View style={styles.section}>
         <Text style={styles.text}>Next Prayer:</Text>
         <Text style={styles.value}>
-          {next ? 
-            `${next.english} (index: ${next.index}) - Alert: ${alertState}` : 
+          {next ?
+            `${next.english} (index: ${next.index})` :
             'None'}
         </Text>
       </View>
