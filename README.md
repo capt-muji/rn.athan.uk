@@ -88,6 +88,12 @@ Notifications are scheduled:
    npx expo start -c
    ```
 
+3. Install new dependencies
+
+   ```bash
+   npx expo install <package-name>
+   ```
+
 In the output, you'll find options to open the app in a:
 - Development build
 - Android emulator
