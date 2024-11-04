@@ -27,13 +27,14 @@ export const transformApiData = (apiData: IApiResponse): ISingleScheduleTransfor
  */
 export const createTodayStructure = (prayers: ISingleScheduleTransformed): ITransformedToday => {
   return ENGLISH.reduce((acc, name, index) => {
-    const prayerTime = prayers[name.toLowerCase()];
+    const prayerTime = prayers[name.toLowerCase() as keyof ISingleScheduleTransformed];
     acc[index] = {
       index,
       english: name,
       arabic: ARABIC[index],
       time: prayerTime,
-      passed: isTimePassed(prayerTime)
+      passed: isTimePassed(prayerTime),
+      isNext: false
     };
     return acc;
   }, {} as ITransformedToday);
