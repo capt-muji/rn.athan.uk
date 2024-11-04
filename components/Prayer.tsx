@@ -29,7 +29,6 @@ export default function Prayer({ index }: Props) {
   console.log(nextPrayerIndex);
   console.log('=====nextPrayerIndex===============================');
 
-  // Memoize toggle handler to prevent recreation
   const toggleOverlay = useCallback(() => {
     // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const isVisible = overlayVisible === index;
@@ -47,34 +46,44 @@ export default function Prayer({ index }: Props) {
 
   const prayer = todaysPrayers[index];
   const isActive = overlayVisible > -1 && overlayVisible === index;
-  const defaultOpacity = prayer.passed || prayer.isNext ? 1 : 0.5;
+  const isPassed = index < nextPrayerIndex;
+
+  const isNext = index === nextPrayerIndex;
+
+  const getAlertState = () => {
+    if (isPassed) return 'passed';
+    if (isNext) return 'next';
+    return 'upcoming';
+  };
+
+  const opacity = isPassed || isNext ? 1 : 0.5;
 
   return (
     <Pressable
       style={[
         styles.container,
         isActive && styles.active,
-        prayer.passed && styles.passed,
-        index === nextPrayerIndex && styles.next
+        isPassed && styles.passed,
+        isNext && styles.next
       ]}
       onPress={toggleOverlay}
     >
       <Text style={[
         styles.text,
         styles.english,
-        !prayer.passed && index !== nextPrayerIndex && styles.dim
+        !isPassed && !isNext && styles.dim
       ]}>{prayer.english}</Text>
       <Text style={[
         styles.text,
         styles.arabic,
-        !prayer.passed && index !== nextPrayerIndex && styles.dim
+        !isPassed && !isNext && styles.dim
       ]}>{prayer.arabic}</Text>
       <Text style={[
         styles.text,
         styles.time,
-        !prayer.passed && index !== nextPrayerIndex && styles.dim
+        !isPassed && !isNext && styles.dim
       ]}>{prayer.time}</Text>
-      <Alert defaultOpacity={defaultOpacity} />
+      <Alert opacity={opacity} />
     </Pressable>
   );
 }

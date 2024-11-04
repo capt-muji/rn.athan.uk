@@ -10,10 +10,10 @@ interface AlertConfig {
 }
 
 interface Props {
-  defaultOpacity?: number;
+  opacity: number;
 }
 
-export default function Alert({ defaultOpacity = 1 }: Props) {
+export default function Alert({ opacity }: Props) {
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -68,7 +68,9 @@ export default function Alert({ defaultOpacity = 1 }: Props) {
   const currentConfig = alertConfigs[iconIndex];
   const IconComponent = currentConfig.icon;
 
-  const opacityStyle = { opacity: isActive ? 1 : defaultOpacity };
+  const opacityStyle = { 
+    opacity: isActive ? 1 : opacity
+  };
 
   return (
     <View style={[styles.container, opacityStyle]}>
