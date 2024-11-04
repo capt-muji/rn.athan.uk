@@ -8,11 +8,11 @@ import { useFonts } from 'expo-font';
 import { COLORS } from '../constants';
 import Main from '../components/Main';
 import Error from '../components/Error';
-import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store';
+import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
 // @ts-ignore
 import { WaveIndicator } from 'react-native-indicators';
-import { init } from '../controllers';
-import DebugOverlay from '../components/DebugOverlay';
+import { initializePrayers } from '../controllers/prayer';
+import { MOCK_DATA_FULL, MOCK_DATA_SIMPLE } from '../mocks/data';
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
@@ -39,20 +39,10 @@ export default function Index() {
   };
 
   useEffect(() => {
-    init(setIsLoading, setHasError, setTodaysPrayers, setNextPrayerIndex);
+    initializePrayers(setIsLoading, setHasError, setTodaysPrayers, setNextPrayerIndex, MOCK_DATA_SIMPLE);
   }, []);
 
-  useEffect(() => {
-    Animated.timing(overlayAnimation, {
-      toValue: overlayVisible !== -1 ? 1 : 0,
-      duration: 100,
-      useNativeDriver: true
-    }).start();
-  }, [overlayVisible]);
-
-  if (!fontsLoaded) {
-    return <WaveIndicator color="white" />;
-  }
+  if (!fontsLoaded) return <WaveIndicator color="white" />;
 
   return (
     <>
@@ -77,7 +67,6 @@ export default function Index() {
       {isLoading && <WaveIndicator color="white" />}
       {hasError && !isLoading && <Error />}
       {!hasError && !isLoading && <Main />}
-      <DebugOverlay />
     </>
   );
 }

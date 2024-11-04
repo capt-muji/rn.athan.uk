@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 import { COLORS, SCREEN, TEXT } from '../constants';
-import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '../store';
+import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '../store/store';
 import { getTimeDifference } from '../utils/time';
 
 interface TimerAnimation {
@@ -23,7 +23,7 @@ export default function Timer() {
 
     const formatTime = (ms: number) => {
       if (ms <= 0) return '0s';
-      
+
       const hours = Math.floor(ms / 3600000);
       const minutes = Math.floor((ms % 3600000) / 60000);
       const seconds = Math.floor((ms % 60000) / 1000);
@@ -66,7 +66,7 @@ export default function Timer() {
         console.log('✨ Prayer time reached!');
         console.log('Prayer:', currentPrayer.english);
         console.log('Index:', nextPrayerIndex);
-        
+
         // Mark current prayer as passed
         if (todaysPrayers[nextPrayerIndex]) {
           todaysPrayers[nextPrayerIndex].passed = true;

@@ -1,18 +1,32 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { BsArrowClockwise } from "rn-icons/bs";
+import { initializePrayers } from '../controllers/prayer';
+import { prayerStateAtom } from '@/store/store';
+import { useAtom } from 'jotai';
 
 import { COLORS, TEXT } from '../constants';
 import Masjid from './Masjid';
 
 export default function Date() {
+  const [prayerState, setPrayerState] = useAtom(prayerStateAtom);
+
+  const handleRefresh = () => {
+    initializePrayers(
+      (loading) => setPrayerState(prev => ({ ...prev, isLoading: loading })),
+      (error) => setPrayerState(prev => ({ ...prev, hasError: error })),
+      (prayers) => setPrayerState(prev => ({ ...prev, todaysPrayers: prayers })),
+      (index) => setPrayerState(prev => ({ ...prev, nextPrayerIndex: index }))
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Text style={[styles.heading]}> Oh no! </Text>
       <Text style={[styles.subtext, styles.first]}> Something went wrong. </Text>
       <Text style={[styles.subtext, styles.last]}> We are investigating! </Text>
       <Masjid height={65} width={60} />
-      <Pressable style={({ pressed }) => [
+      <Pressable onPress={handleRefresh} style={({ pressed }) => [
         styles.button,
         { opacity: pressed ? 1 : 0.75 },
       ]}>
