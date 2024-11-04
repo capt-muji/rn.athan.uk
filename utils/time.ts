@@ -79,3 +79,31 @@ export const addMinutes = (time: string, minutes: number): string => {
   date.setHours(h, m + minutes);
   return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 };
+
+export const getCurrentPrayerInfo = (
+  todaysPrayers: ITransformedToday,
+  overlayVisible: number,
+  nextPrayerIndex: number
+) => {
+  if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) {
+    return { timerName: '', timeDisplay: '' };
+  }
+
+  const currentPrayer = overlayVisible > -1
+    ? todaysPrayers[overlayVisible]
+    : todaysPrayers[nextPrayerIndex];
+
+  if (!currentPrayer) {
+    return { timerName: 'All prayers passed', timeDisplay: '' };
+  }
+
+  const diff = getTimeDifference(currentPrayer.time);
+  const timeDisplay = formatTime(diff);
+
+  return {
+    timerName: currentPrayer.english,
+    timeDisplay,
+    timeDifference: diff,
+    currentPrayer
+  };
+};
