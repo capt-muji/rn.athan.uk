@@ -3,10 +3,9 @@ import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 // import * as Haptics from 'expo-haptics';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, overlayAnimationAtom } from '@/store/store';
 import Alert from './Alert';
 import { COLORS, TEXT, SCREEN } from '../constants';
-import { overlayVisibleAtom, overlayAnimationAtom } from '../store';
 
 interface Props {
   index: number;
@@ -44,11 +43,16 @@ export default function Prayer({ index }: Props) {
     if (!isVisible) setOverlayVisible(index);
   }, [overlayVisible, index, overlayAnimation]);
 
+  console.log('111111');
+
   const prayer = todaysPrayers[index];
   const isActive = overlayVisible > -1 && overlayVisible === index;
   const isPassed = index < nextPrayerIndex;
 
   const isNext = index === nextPrayerIndex;
+
+  console.log('222222');
+
 
   const getAlertState = () => {
     if (isPassed) return 'passed';
@@ -56,7 +60,13 @@ export default function Prayer({ index }: Props) {
     return 'upcoming';
   };
 
+  console.log('333333');
+
+
   const opacity = isPassed || isNext ? 1 : 0.5;
+
+  console.log('44444');
+
 
   return (
     <Pressable
