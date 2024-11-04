@@ -1,3 +1,15 @@
+<br/>
+<br/>
+<br/>
+
+<div align="center">
+  <img src="./assets/masjid.svg" width="100" height="100" alt="Mosque icon" />
+</div>
+
+<br/>
+<br/>
+<br/>
+
 # Athan.uk
 
 A React Native IOS and Android mobile application for Muslim prayer times in the UK.
@@ -86,13 +98,6 @@ You can start developing by editing the files inside the **app** directory. This
 
 ## Icons Used
 
-### Phosphor Icons
-- `PiVibrate` - Vibration mode
-- `PiBellSimpleSlash` - Notifications off
-- `PiBellSimpleRinging` - Notification mode
-- `PiSpeakerSimpleHigh` - Sound mode
-
-### Other Icons
 - Masjid icon by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
 
 ## Tech Stack
