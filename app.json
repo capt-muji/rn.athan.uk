@@ -4,11 +4,11 @@
     "slug": "athan",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon-512x512.png",
+    "icon": "./assets/images/icon-512x512.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -18,14 +18,13 @@
       "infoPlist": {
         "UIBackgroundModes": [
           "audio",
-          "fetch",
-          "remote-notification"
+          "fetch"
         ]
       }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon-512x512.png",
+        "foregroundImage": "./assets/images/icon-512x512.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.mugtaba.athan"
@@ -34,11 +33,11 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/icon-512x512.png",
+          "icon": "./assets/images/icon-512x512.png",
           "color": "#ffffff",
           "defaultChannel": "default",
           "sounds": [
-            "./assets/athan.wav"
+            "./assets/audio/athan.wav"
           ]
         }
       ],
