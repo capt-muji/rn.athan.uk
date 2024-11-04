@@ -111,8 +111,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconContainer: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingHorizontal: 15,
+    paddingVertical: 20,
+    paddingRight: 20,
   },
   popup: {
     position: 'absolute',
