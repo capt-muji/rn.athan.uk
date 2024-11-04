@@ -235,7 +235,7 @@ export default function Timer() {
 const styles = StyleSheet.create({
   container: {
     paddingTop: SCREEN.paddingHorizontal,
-    marginBottom: 45,
+    marginBottom: 35,
     zIndex: 2,
     elevation: 2,
     position: 'relative',
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   timer: {
     color: COLORS.textPrimary,
     fontWeight: '500',
-    fontSize: TEXT.size + 8,
+    fontSize: TEXT.size + 5,
     textAlign: 'center',
   }
 });

@@ -5,10 +5,10 @@ export const MOCK_DATA_SIMPLE: { city: string; times: IApiAllTimes } = {
   times: {
     "2024-11-04": {
       date: "2024-11-04",
-      fajr: "00:01",
+      fajr: "03:01",
       fajr_jamat: "06:46",
       sunrise: "00:02",
-      dhuhr: "00:03",
+      dhuhr: "00:00",
       dhuhr_jamat: "12:45",
       asr: "01:34",
       asr_jamat: "14:45",
