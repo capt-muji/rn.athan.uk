@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { COLORS, SCREEN, TEXT } from '../constants';
+import { COLORS, SCREEN, TEXT } from '@/constants';
 import Masjid from './Masjid';
 
 export default function Date() {

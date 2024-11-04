@@ -1,6 +1,7 @@
 import { MMKV } from 'react-native-mmkv';
+
 import { ISingleScheduleTransformed } from '@/types/prayers';
-import { getTodaysDate } from '../utils/time';
+import { getTodaysDate } from '@/utils/time';
 
 const storage = new MMKV();
 

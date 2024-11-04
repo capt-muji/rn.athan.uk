@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
-import { COLORS, SCREEN, TEXT } from '../constants';
-import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '../store/store';
-import { handleTimerUpdate } from '../controllers/time';
+
+import { COLORS, SCREEN, TEXT } from '@/constants';
+import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
+import { handleTimerUpdate } from '@/controllers/time';
 
 export default function Timer() {
   const [timerName, setTimerName] = useState('');

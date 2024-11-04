@@ -4,8 +4,8 @@ import { useAtom } from 'jotai';
 // import * as Haptics from 'expo-haptics';
 
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, overlayAnimationAtom } from '@/store/store';
+import { COLORS, TEXT, SCREEN } from '@/constants';
 import Alert from './Alert';
-import { COLORS, TEXT, SCREEN } from '../constants';
 
 interface Props {
   index: number;
