@@ -1,5 +1,5 @@
 import { ISingleScheduleTransformed, ITransformedToday } from '@/types/prayers';
-import { IApiAllTimes } from '@/types/api';
+import { IApiResponse } from '@/types/api';
 import { ENGLISH, ARABIC } from '@/constants';
 import { isDateTodayOrFuture } from './time';
 import { isTimePassed, addMinutes } from './time';
@@ -7,7 +7,7 @@ import { isTimePassed, addMinutes } from './time';
 /**
  * Transforms API response data into normalized prayer schedule format. Filters out past dates and adds calculated Duha time.
  */
-export const transformApiData = (apiData: IApiAllTimes): ISingleScheduleTransformed[] => {
+export const transformApiData = (apiData: IApiResponse): ISingleScheduleTransformed[] => {
   return Object.entries(apiData.times)
     .filter(([date]) => isDateTodayOrFuture(date))
     .map(([date, times]) => ({

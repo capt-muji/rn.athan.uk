@@ -1,13 +1,14 @@
+import { IApiResponse } from '@/types/api';
+import { ITransformedToday } from '@/types/prayers';
 import storage from '@/storage/storage';
 import { transformApiData, createTodayStructure } from '@/utils/prayer';
 
-// import setAtom from jotai and setAtom from jotai
 export const initializePrayers = async (
-  setIsLoading: setAtom,
-  setHasError: any,
-  setTodaysPrayers: any,
-  setNextPrayerIndex: any,
-  apiData: any
+  setIsLoading: (value: boolean) => void,
+  setHasError: (value: boolean) => void,
+  setTodaysPrayers: (value: ITransformedToday) => void,
+  setNextPrayerIndex: (value: number) => void,
+  apiData: IApiResponse
 ) => {
   try {
     const transformedPrayers = transformApiData(apiData);
