@@ -12,6 +12,7 @@ import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, ove
 // @ts-ignore
 import { WaveIndicator } from 'react-native-indicators';
 import { init } from '../controllers';
+import DebugOverlay from '../components/DebugOverlay';
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
@@ -75,6 +76,7 @@ export default function Index() {
       {isLoading && <WaveIndicator color="white" />}
       {hasError && !isLoading && <Error />}
       {!hasError && !isLoading && <Main />}
+      <DebugOverlay />
     </>
   );
 }
