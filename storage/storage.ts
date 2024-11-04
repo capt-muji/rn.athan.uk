@@ -1,20 +1,24 @@
 import { MMKV } from 'react-native-mmkv';
 import { ISingleScheduleTransformed } from '@/types/prayers';
+import { getTodaysDate } from '../utils/time';
 
 const mmkv = new MMKV();
 
-export const storage = {
-  storePrayers: (prayers: ISingleScheduleTransformed[]) => {
-    prayers.forEach(prayer => {
-      mmkv.set(prayer.date, JSON.stringify(prayer));
-    });
-  },
+const storePrayers = (prayers: ISingleScheduleTransformed[]) => {
+  prayers.forEach(prayer => {
+    mmkv.set(prayer.date, JSON.stringify(prayer));
+  });
+};
 
-  getTodaysPrayers: (): ISingleScheduleTransformed | null => {
-    const today = new Date().toISOString().split('T')[0];
-    const data = mmkv.getString(today);
-    return data ? JSON.parse(data) : null;
-  },
+const getTodaysPrayers = (): ISingleScheduleTransformed | null => {
+  const data = mmkv.getString(getTodaysDate());
+  return data ? JSON.parse(data) : null;
+};
 
+export default {
+  prayers: {
+    storePrayers,
+    getTodaysPrayers
+  },
   clear: () => mmkv.clearAll()
 };

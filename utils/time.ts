@@ -1,3 +1,5 @@
+export const getTodaysDate = (): string => new Date().toISOString().split('T')[0];
+
 export const getTimeDifference = (targetTime: string): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
   const now = new Date();
@@ -106,4 +108,12 @@ export const getCurrentPrayerInfo = (
     timeDifference: diff,
     currentPrayer
   };
+};
+
+export const isDateTodayOrFuture = (date: string): boolean => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const checkDate = new Date(date);
+  checkDate.setHours(0, 0, 0, 0);
+  return checkDate >= today;
 };
