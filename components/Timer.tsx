@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
-import * as Notifications from 'expo-notifications';
 import { COLORS, SCREEN, TEXT } from '../constants';
 import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '../store';
 import { getTimeDifference } from '../utils/time';
-
-// 1. Configure notification handler for how notifications should appear
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: false,
-  }),
-});
-
-const NOTIFICATION_STATE_KEY = 'notification_state';
 
 interface TimerAnimation {
   scale: Animated.AnimatedInterpolation;
