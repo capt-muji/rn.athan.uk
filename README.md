@@ -83,14 +83,6 @@ In the output, you'll find options to open the app in a:
 
 You can start developing by editing the files inside the **app** directory. This project uses file-based routing.
 
-## Tech Stack
-
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
-![Jotai](https://img.shields.io/badge/Jotai-000000?style=for-the-badge)
-
 ## Icons Used
 
 ### Phosphor Icons
@@ -101,3 +93,11 @@ You can start developing by editing the files inside the **app** directory. This
 
 ### Other Icons
 - Masjid icon by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+
+## Tech Stack
+
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
+![Jotai](https://img.shields.io/badge/Jotai-000000?style=for-the-badge)
