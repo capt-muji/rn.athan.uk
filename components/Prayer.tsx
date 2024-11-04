@@ -3,7 +3,7 @@ import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 // import * as Haptics from 'expo-haptics';
 
-import { todaysPrayersAtom } from '@/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store';
 import Alert from './Alert';
 import { COLORS, TEXT, SCREEN } from '../constants';
 import { overlayVisibleAtom, overlayAnimationAtom } from '../store';
@@ -23,6 +23,11 @@ export default function Prayer({ index }: Props) {
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+
+  console.log('=====nextPrayerIndex===============================');
+  console.log(nextPrayerIndex);
+  console.log('=====nextPrayerIndex===============================');
 
   // Memoize toggle handler to prevent recreation
   const toggleOverlay = useCallback(() => {
@@ -50,24 +55,24 @@ export default function Prayer({ index }: Props) {
         styles.container,
         isActive && styles.active,
         prayer.passed && styles.passed,
-        prayer.isNext && styles.next
+        index === nextPrayerIndex && styles.next
       ]}
       onPress={toggleOverlay}
     >
       <Text style={[
         styles.text,
         styles.english,
-        !prayer.passed && !prayer.isNext && styles.dim
+        !prayer.passed && index !== nextPrayerIndex && styles.dim
       ]}>{prayer.english}</Text>
       <Text style={[
         styles.text,
         styles.arabic,
-        !prayer.passed && !prayer.isNext && styles.dim
+        !prayer.passed && index !== nextPrayerIndex && styles.dim
       ]}>{prayer.arabic}</Text>
       <Text style={[
         styles.text,
         styles.time,
-        !prayer.passed && !prayer.isNext && styles.dim
+        !prayer.passed && index !== nextPrayerIndex && styles.dim
       ]}>{prayer.time}</Text>
       <Alert defaultOpacity={defaultOpacity} />
     </Pressable>

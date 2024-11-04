@@ -5,7 +5,7 @@ import { transformTodaysStructure } from '@/utils/transformTodaysStructure';
 import { MOCK_DATA_SIMPLE } from '../mocks/data';
 
 // @ts-ignore
-export const init = async (setIsLoading, setHasError, setTodaysPrayers) => {
+export const init = async (setIsLoading, setHasError, setTodaysPrayers, setNextPrayerIndex) => {
   try {
     // Step 1: Filter the data to only include today's and future prayer times
     const filteredDays = filterValidDates(MOCK_DATA_SIMPLE.times);
@@ -29,7 +29,14 @@ export const init = async (setIsLoading, setHasError, setTodaysPrayers) => {
     // Step 6: Transform today's prayers into a structured format
     const todaysPrayersStructured = transformTodaysStructure(todaysPrayers);
 
-    // Step 7: Update the state with today's structured prayers
+    // Step 7: Find the first non-passed prayer to set as next
+    const firstNonPassedPrayer = Object.values(todaysPrayersStructured)
+      .find(prayer => !prayer.passed);
+
+    // Set nextPrayerIndex to the found prayer's index or -1 if all passed
+    setNextPrayerIndex(firstNonPassedPrayer ? firstNonPassedPrayer.index : -1);
+
+    // Step 8: Update the state with today's structured prayers
     setTodaysPrayers(todaysPrayersStructured);
     setHasError(false);
   } catch (error) {
