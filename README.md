@@ -22,9 +22,9 @@ For web version, visit https://athan.uk.
 - ⏰ Real-time countdown timer until next prayer
 - 🔔 Customizable prayer notifications with multiple alert modes:
   - Off (no notifications)
-  - Notification only (silent banner)
-  - Vibration + notification
-  - Sound (athan) + vibration + notification
+  - Notification (silent banner)
+  - Vibrate (vibration + notification banner)
+  - Sound (athan + vibration + notification banner)
 - 🌙 Smart prayer tracking system
 - 💾 Efficient data management with yearly prayer times cached locally
 - 🔄 Automatic yearly data refresh
