@@ -4,22 +4,27 @@ import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh 
 import { useAtom } from 'jotai';
 
 import { COLORS, TEXT } from '@/constants';
-import { overlayVisibleAtom } from '@/store/store';
-// import * as Haptics from 'expo-haptics';
+import { overlayVisibleAtom, todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
 
 interface Props {
-  opacity: number;
-  isNext: boolean;
+  index: number;
 }
 
-export default function Alert({ opacity, isNext }: Props) {
+export default function Alert({ index }: Props) {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const bounceAnim = useRef(new Animated.Value(0)).current;
   const timeoutRef = useRef<NodeJS.Timeout>();
   const opacityTimeoutRef = useRef<NodeJS.Timeout>();
+
+  const prayer = todaysPrayers[index];
+  const isPassed = prayer.passed;
+  const isNext = index === nextPrayerIndex;
+  const opacity = isPassed || isNext ? 1 : 0.5;
 
   const alertConfigs = useMemo(() => [
     { icon: PiBellSimpleSlash, label: "Off" },

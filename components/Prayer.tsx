@@ -65,7 +65,7 @@ export default function Prayer({ index }: Props) {
         styles.time,
         !isPassed && !isNext && styles.dim
       ]}>{prayer.time}</Text>
-      <Alert opacity={opacity} isNext={isNext} />
+      <Alert index={index} />
     </Pressable>
   );
 }
