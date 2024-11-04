@@ -34,8 +34,10 @@ export default function Prayer({ index }: Props) {
 
   const prayer = todaysPrayers[index];
   const isActive = overlayVisible > -1 && overlayVisible === index;
-  const isPassed = index < nextPrayerIndex;
+  // Change this line to use the prayer's passed status directly
+  const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
+  // Modified opacity logic - a prayer should be dim only if it hasn't passed and isn't next
   const opacity = isPassed || isNext ? 1 : 0.5;
 
   return (
