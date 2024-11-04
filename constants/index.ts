@@ -2,6 +2,10 @@ export const ENGLISH: Readonly<string[]> = ["Fajr", "Sunrise", "Duha", "Dhuhr", 
 export const ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "العصر", "الظهر", "الضحى", "الشروق", "الفجر"].reverse();
 
 export const TEXT = {
+  famiy: {
+    regular: 'Roboto',
+    medium: 'Roboto-Medium',
+  },
   size: 18,
 };
 
