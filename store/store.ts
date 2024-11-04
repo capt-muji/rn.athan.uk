@@ -1,6 +1,7 @@
 import { atom } from 'jotai';
-import { ITransformedToday } from '@/types/prayers';
 import { Animated } from 'react-native';
+
+import { ITransformedToday } from '@/types/prayers';
 
 export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);

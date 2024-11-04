@@ -1,13 +1,9 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
+
 import { COLORS, TEXT } from '@/constants';
 // import * as Haptics from 'expo-haptics';
-
-interface AlertConfig {
-  icon: typeof PiBellSimpleSlash;
-  label: string;
-}
 
 interface Props {
   opacity: number;
@@ -68,7 +64,7 @@ export default function Alert({ opacity }: Props) {
   const currentConfig = alertConfigs[iconIndex];
   const IconComponent = currentConfig.icon;
 
-  const opacityStyle = { 
+  const opacityStyle = {
     opacity: isActive ? 1 : opacity
   };
 

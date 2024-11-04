@@ -18,6 +18,13 @@ export interface ITransformedPrayer {
   isNext: boolean;
 }
 
-export type ITransformedToday = {
+export interface ITransformedToday {
   [number: string]: ITransformedPrayer;
 };
+
+export interface IPrayerInfo {
+  timerName: string;
+  timeDisplay: string;
+  timeDifference?: number;
+  currentPrayer?: ITransformedPrayer;
+}

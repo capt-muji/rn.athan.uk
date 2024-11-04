@@ -1,5 +1,5 @@
 import { ITransformedToday } from '@/types/prayers';
-import { getCurrentPrayerInfo } from '../utils/time';
+import { getCurrentPrayerInfo } from '@/utils/time';
 
 export const handleTimerUpdate = (
   todaysPrayers: ITransformedToday,

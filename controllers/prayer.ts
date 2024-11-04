@@ -1,8 +1,9 @@
-import storage from '../storage/storage';
-import { transformApiData, createTodayStructure } from '../utils/prayer';
+import storage from '@/storage/storage';
+import { transformApiData, createTodayStructure } from '@/utils/prayer';
 
+// import setAtom from jotai and setAtom from jotai
 export const initializePrayers = async (
-  setIsLoading: any,
+  setIsLoading: setAtom,
   setHasError: any,
   setTodaysPrayers: any,
   setNextPrayerIndex: any,
@@ -24,12 +25,13 @@ export const initializePrayers = async (
     setTodaysPrayers(todaysPrayers);
     setNextPrayerIndex(nextPrayerIndex);
 
-    console.log('🙏 Todays prayers');
     return { todaysPrayers, nextPrayerIndex };
   } catch (error) {
     console.error('Prayer initialization failed:', error);
+
     setIsLoading(false);
     setHasError(true);
+
     return null;
   }
 };

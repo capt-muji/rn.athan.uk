@@ -3,21 +3,21 @@ import { StyleSheet, StatusBar, View, Animated, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
-// import * as Haptics from 'expo-haptics';
-
-import { COLORS } from '../constants';
-import Main from '../components/Main';
-import Error from '../components/Error';
-import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
 // @ts-ignore
 import { WaveIndicator } from 'react-native-indicators';
-import { initializePrayers } from '../controllers/prayer';
-import { MOCK_DATA_FULL, MOCK_DATA_SIMPLE } from '../mocks/data';
+// import * as Haptics from 'expo-haptics';
+
+import { COLORS } from '@/constants';
+import Main from '@/components/Main';
+import Error from '@/components/Error';
+import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
+import { initializePrayers } from '@/controllers/prayer';
+import { MOCK_DATA_FULL, MOCK_DATA_SIMPLE } from '@/mocks/data';
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
-    'Roboto': require('../assets/fonts/Roboto-Regular.ttf'),
-    'Roboto-Medium': require('../assets/fonts/Roboto-Medium.ttf'),
+    'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf'),
   });
 
   const [isLoading, setIsLoading] = useAtom(isLoadingAtom);

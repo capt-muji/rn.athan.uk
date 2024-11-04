@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import Icon from '../assets/icons/masjid.svg';
+import Icon from '@/assets/icons/masjid.svg';
 
 type MasjidProps = {
   width?: number;
