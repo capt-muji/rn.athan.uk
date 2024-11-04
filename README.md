@@ -1,6 +1,6 @@
 # Athan.uk
 
-A React Native mobile application for Muslim prayer times in the UK.
+A React Native IOS and Android mobile application for Muslim prayer times in the UK.
 
 For web version, visit https://athan.uk.
 
