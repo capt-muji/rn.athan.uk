@@ -18,7 +18,7 @@ export default function Date() {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 35,
+    marginBottom: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -27,12 +27,11 @@ const styles = StyleSheet.create({
   location: {
     opacity: 0.5,
     color: COLORS.textPrimary,
-    fontSize: TEXT.size,
+    fontSize: TEXT.size - 2,
     marginBottom: 5,
   },
   date: {
     color: COLORS.textPrimary,
-    fontSize: TEXT.size + 3,
-    fontWeight: '500'
+    fontSize: TEXT.size,
   }
 });
