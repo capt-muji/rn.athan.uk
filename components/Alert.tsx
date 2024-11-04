@@ -9,9 +9,10 @@ import { overlayVisibleAtom } from '@/store/store';
 
 interface Props {
   opacity: number;
+  isNext: boolean;
 }
 
-export default function Alert({ opacity }: Props) {
+export default function Alert({ opacity, isNext }: Props) {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -73,6 +74,9 @@ export default function Alert({ opacity }: Props) {
     opacity: isActive ? 1 : opacity
   };
 
+  // Modify the styling logic for popup and label
+  const shouldUseDarkTheme = isOverlayActive && !isNext;
+
   return (
     <View style={[styles.container, opacityStyle]}>
       <Pressable onPress={handlePress} style={styles.iconContainer}>
@@ -82,7 +86,7 @@ export default function Alert({ opacity }: Props) {
       <Animated.View
         style={[
           styles.popup,
-          isOverlayActive ? styles.popupLight : styles.popupDark,
+          shouldUseDarkTheme ? styles.popupLight : styles.popupDark,
           {
             opacity: fadeAnim,
             transform: [
@@ -102,14 +106,14 @@ export default function Alert({ opacity }: Props) {
           }
         ]}
       >
-        <IconComponent 
-          color={isOverlayActive ? "black" : "white"} 
-          size={20} 
-          style={styles.popupIcon} 
+        <IconComponent
+          color={shouldUseDarkTheme ? "black" : "white"}
+          size={20}
+          style={styles.popupIcon}
         />
         <Text style={[
           styles.label,
-          isOverlayActive ? styles.labelDark : styles.labelLight
+          shouldUseDarkTheme ? styles.labelDark : styles.labelLight
         ]}>
           {currentConfig.label}
         </Text>
@@ -126,7 +130,6 @@ const styles = StyleSheet.create({
   iconContainer: {
     paddingHorizontal: 20,
     paddingVertical: 20,
-    // backgroundColor: COLORS.primary,
   },
   popup: {
     position: 'absolute',
