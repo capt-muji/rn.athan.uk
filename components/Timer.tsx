@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
+import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom, tomorrowsPrayersAtom, selectedPrayerDateAtom } from '@/store/store';
 import { handleTimerUpdate } from '@/controllers/time';
 
 export default function Timer() {
@@ -13,13 +13,16 @@ export default function Timer() {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [selectedDate] = useAtom(selectedPrayerDateAtom);
+  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
 
   useEffect(() => {
-    if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
+    const prayers = selectedDate === 'tomorrow' ? tomorrowsPrayers : todaysPrayers;
+    if (!prayers || Object.keys(prayers).length === 0) return;
 
     const updateTimer = () => {
       handleTimerUpdate(
-        todaysPrayers,
+        prayers,
         overlayVisible,
         nextPrayerIndex,
         setTimerName,
@@ -31,7 +34,7 @@ export default function Timer() {
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
-  }, [nextPrayerIndex, overlayVisible, todaysPrayers]);
+  }, [nextPrayerIndex, overlayVisible, todaysPrayers, tomorrowsPrayers, selectedDate]);
 
   return (
     <View style={styles.container}>

@@ -3,7 +3,7 @@ import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 // import * as Haptics from 'expo-haptics';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, overlayAnimationAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, overlayAnimationAtom, tomorrowsPrayersAtom, selectedPrayerDateAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN } from '@/constants';
 import Alert from './Alert';
 
@@ -16,25 +16,37 @@ export default function Prayer({ index }: Props) {
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
+  const [selectedDate, setSelectedDate] = useAtom(selectedPrayerDateAtom);
 
   const toggleOverlay = useCallback(() => {
-    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    const prayer = todaysPrayers[index];
     const isVisible = overlayVisible === index;
+    const shouldShowTomorrow = prayer.passed;
+
+    if (!isVisible) {
+      setSelectedDate(shouldShowTomorrow ? 'tomorrow' : 'today');
+    }
 
     Animated.timing(overlayAnimation, {
       toValue: isVisible ? 0 : 1,
       duration: 100,
       useNativeDriver: true
     }).start(() => {
-      if (isVisible) setOverlayVisible(-1);
+      if (isVisible) {
+        setOverlayVisible(-1);
+        setSelectedDate('today');
+      }
     });
 
     if (!isVisible) setOverlayVisible(index);
-  }, [overlayVisible, index, overlayAnimation]);
+  }, [overlayVisible, index, todaysPrayers]);
 
-  const prayer = todaysPrayers[index];
+  const prayer = selectedDate === 'tomorrow' && overlayVisible === index
+    ? tomorrowsPrayers[index]
+    : todaysPrayers[index];
+
   const isActive = overlayVisible > -1 && overlayVisible === index;
-  // Change this line to use the prayer's passed status directly
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
   const shouldDim = !isPassed && !isNext && styles.dim;

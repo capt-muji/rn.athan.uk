@@ -1,15 +1,33 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
+import { overlayVisibleAtom, selectedPrayerDateAtom } from '@/store/store';
 import Masjid from './Masjid';
 
-export default function Date() {
+export default function DateDisplay() {
+  const [selectedDate] = useAtom(selectedPrayerDateAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
+
+  const today = new Date();
+  const date = selectedDate === 'tomorrow' ? new Date(today.setDate(today.getDate() + 1)) : today;
+
+  const formattedDate = date.toLocaleDateString('en-GB', {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  });
+
   return (
-    <View style={styles.container}>
+    <View style={[
+      styles.container,
+      overlayVisible > -1 && styles.overlayVisible
+    ]}>
       <View>
         <Text style={[styles.location]}>London, UK</Text>
-        <Text style={[styles.date]}>Mon, 28 Oct 2024</Text>
+        <Text style={[styles.date]}>{formattedDate}</Text>
       </View>
       <Masjid />
     </View>
@@ -35,5 +53,8 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.famiy.regular,
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
+  },
+  overlayVisible: {
+    zIndex: 2,
   }
 });
