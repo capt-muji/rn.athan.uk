@@ -12,7 +12,7 @@ export default function DateDisplay() {
 
   const today = new Date();
   const date = selectedDate === 'tomorrow' ? new Date(today.setDate(today.getDate() + 1)) : today;
-
+  
   const formattedDate = date.toLocaleDateString('en-GB', {
     weekday: 'short',
     day: '2-digit',

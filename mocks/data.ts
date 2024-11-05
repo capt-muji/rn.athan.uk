@@ -3,6 +3,8 @@ import { IApiResponse } from "@/types/api";
 const now = new Date();
 const oneMinuteInFuture = new Date(now.getTime() + 1 * 60000);
 const twoMinutesInFuture = new Date(now.getTime() + 2 * 60000);
+const threeMinutesInFuture = new Date(now.getTime() + 3 * 60000);
+const fourMinutesInFuture = new Date(now.getTime() + 4 * 60000);
 
 const formatTime = (date: Date) => {
   const hours = date.getHours().toString().padStart(2, '0');
@@ -11,6 +13,7 @@ const formatTime = (date: Date) => {
 };
 
 const today = new Date().toISOString().split('T')[0];
+const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 
 export const MOCK_DATA_SIMPLE: IApiResponse = {
   city: "london",
@@ -30,6 +33,21 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       magrib_jamat: "00:00",
       isha_jamat: "00:00",
     },
+    [tomorrow]: {
+      date: tomorrow,
+      fajr: "00:02",
+      sunrise: "00:03",
+      dhuhr: "00:04",
+      asr: "00:05",
+      magrib: formatTime(threeMinutesInFuture),
+      isha: formatTime(fourMinutesInFuture),
+      fajr_jamat: "00:00",
+      dhuhr_jamat: "00:00",
+      asr_2: "00:00",
+      asr_jamat: "00:00",
+      magrib_jamat: "00:00",
+      isha_jamat: "00:00",
+    }
   },
 };
 

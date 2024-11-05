@@ -10,7 +10,7 @@ import { WaveIndicator } from 'react-native-indicators';
 import { COLORS } from '@/constants';
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, tomorrowsPrayersAtom, overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
 import { initializePrayers } from '@/controllers/prayer';
 import { MOCK_DATA_FULL, MOCK_DATA_SIMPLE } from '@/mocks/data';
 
@@ -23,6 +23,7 @@ export default function Index() {
   const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
   const [hasError, setHasError] = useAtom(hasErrorAtom);
   const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
+  const [, setTomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
   const [, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
@@ -39,7 +40,14 @@ export default function Index() {
   };
 
   useEffect(() => {
-    initializePrayers(setIsLoading, setHasError, setTodaysPrayers, setNextPrayerIndex, MOCK_DATA_SIMPLE);
+    initializePrayers(
+      setIsLoading,
+      setHasError,
+      setTodaysPrayers,
+      setTomorrowsPrayers,
+      setNextPrayerIndex,
+      MOCK_DATA_SIMPLE
+    );
   }, []);
 
   if (!fontsLoaded) return <WaveIndicator color="white" />;

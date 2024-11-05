@@ -7,6 +7,7 @@ export const initializePrayers = async (
   setIsLoading: (value: boolean) => void,
   setHasError: (value: boolean) => void,
   setTodaysPrayers: (value: ITransformedToday) => void,
+  setTomorrowsPrayers: (value: ITransformedToday) => void,
   setNextPrayerIndex: (value: number) => void,
   apiData: IApiResponse
 ) => {
@@ -15,24 +16,27 @@ export const initializePrayers = async (
     storage.prayers.storePrayers(transformedPrayers);
 
     const todayRaw = storage.prayers.getTodaysPrayers();
-    if (!todayRaw) throw new Error('No prayers found for today');
+    const tomorrowRaw = storage.prayers.getTomorrowsPrayers();
+    
+    if (!todayRaw || !tomorrowRaw) throw new Error('Prayers not found');
 
     const todaysPrayers = createTodayStructure(todayRaw);
+    const tomorrowsPrayers = createTodayStructure(tomorrowRaw);
+    
     const nextPrayer = Object.values(todaysPrayers).find(p => !p.passed);
     const nextPrayerIndex = nextPrayer?.index ?? -1;
 
     setIsLoading(false);
     setHasError(false);
     setTodaysPrayers(todaysPrayers);
+    setTomorrowsPrayers(tomorrowsPrayers);
     setNextPrayerIndex(nextPrayerIndex);
 
-    return { todaysPrayers, nextPrayerIndex };
+    return { todaysPrayers, tomorrowsPrayers, nextPrayerIndex };
   } catch (error) {
     console.error('Prayer initialization failed:', error);
-
     setIsLoading(false);
     setHasError(true);
-
     return null;
   }
 };
