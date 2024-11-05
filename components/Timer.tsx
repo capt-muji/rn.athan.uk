@@ -62,7 +62,7 @@ export default function Timer() {
                     {
                       translateY: overlayAnimation.interpolate({
                         inputRange: [0, 1],
-                        outputRange: [5, 10]
+                        outputRange: [5, 6]
                       })
                     }
                   ]
