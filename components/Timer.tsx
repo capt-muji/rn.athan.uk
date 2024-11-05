@@ -35,33 +35,41 @@ export default function Timer() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        {nextPrayerIndex === -1 ? timerName : `${timerName || '...'} in`}
-      </Text>
-      {nextPrayerIndex !== -1 && timeDisplay && (
-        <Animated.Text
-          style={[
-            styles.timer,
-            {
-              transform: [
+      {nextPrayerIndex === -1 ? (
+        <Text style={styles.text}>
+          {timerName}
+        </Text>
+      ) : (
+        <>
+          <Text style={styles.text}>
+            {`${timerName || '...'} in`}
+          </Text>
+          {timeDisplay && (
+            <Animated.Text
+              style={[
+                styles.timer,
                 {
-                  scale: overlayAnimation.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [1, 1.5]
-                  })
-                },
-                {
-                  translateY: overlayAnimation.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [5, 10]
-                  })
+                  transform: [
+                    {
+                      scale: overlayAnimation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [1, 1.5]
+                      })
+                    },
+                    {
+                      translateY: overlayAnimation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [5, 10]
+                      })
+                    }
+                  ]
                 }
-              ]
-            }
-          ]}
-        >
-          {timeDisplay}
-        </Animated.Text>
+              ]}
+            >
+              {timeDisplay}
+            </Animated.Text>
+          )}
+        </>
       )}
     </View>
   );
@@ -69,11 +77,11 @@ export default function Timer() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: SCREEN.paddingHorizontal,
+    height: 50, // Fixed height that accommodates both states
+    marginTop: SCREEN.paddingHorizontal,
     marginBottom: 35,
     zIndex: 1,
-    elevation: 2, // is this needed?
-    position: 'relative', // is this needed?
+    justifyContent: 'center',
   },
   text: {
     fontFamily: TEXT.famiy.regular,
