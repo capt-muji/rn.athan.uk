@@ -6,20 +6,14 @@ import { IPrayerInfo, ITransformedToday } from "@/types/prayers";
 export const getTodaysDate = (): string => new Date().toISOString().split('T')[0];
 
 /**
- * Calculates milliseconds between current time and target time. Handles rollover to next day if time has passed.
+ * Calculates milliseconds between current time and target time. 
+ * Now accepts a date parameter to handle tomorrow's prayers correctly.
  */
-export const getTimeDifference = (targetTime: string): number => {
+export const getTimeDifference = (targetTime: string, date: string = getTodaysDate()): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
   const now = new Date();
-  const target = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate(),
-    hours,
-    minutes,
-    0,
-    0
-  );
+  const target = new Date(date);
+  target.setHours(hours, minutes, 0, 0);
 
   const diff = target.getTime() - now.getTime();
   
@@ -111,12 +105,14 @@ export const addMinutes = (time: string, minutes: number): string => {
 };
 
 /**
- * Gets current prayer information including name and countdown. Handles both overlay and normal display modes.
+ * Gets current prayer information including name and countdown.
+ * Modified to handle tomorrow's prayers correctly.
  */
 export const getCurrentPrayerInfo = (
   todaysPrayers: ITransformedToday,
   overlayVisible: number,
-  nextPrayerIndex: number
+  nextPrayerIndex: number,
+  selectedDate: 'today' | 'tomorrow' = 'today'
 ): IPrayerInfo => {
   if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) {
     return { timerName: '', timeDisplay: '' };
@@ -130,7 +126,14 @@ export const getCurrentPrayerInfo = (
     return { timerName: 'All prayers passed', timeDisplay: '' };
   }
 
-  const diff = getTimeDifference(currentPrayer.time);
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowDate = tomorrow.toISOString().split('T')[0];
+
+  const diff = getTimeDifference(
+    currentPrayer.time, 
+    selectedDate === 'tomorrow' ? tomorrowDate : getTodaysDate()
+  );
   const timeDisplay = formatTime(diff);
 
   return {

@@ -27,7 +27,8 @@ export default function Timer() {
         nextPrayerIndex,
         setTimerName,
         setTimeDisplay,
-        setNextPrayerIndex
+        setNextPrayerIndex,
+        selectedDate
       );
     };
 
