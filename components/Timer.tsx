@@ -52,6 +52,7 @@ export default function Timer() {
               style={[
                 styles.timer,
                 {
+                  fontFamily: overlayVisible !== -1 ? TEXT.famiy.medium : TEXT.famiy.regular,
                   transform: [
                     {
                       scale: overlayAnimation.interpolate({
