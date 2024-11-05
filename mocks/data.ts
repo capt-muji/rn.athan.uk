@@ -13,8 +13,8 @@ const formatTime = (date: Date) => {
 export const MOCK_DATA_SIMPLE: IApiResponse = {
   city: "london",
   times: {
-    "2024-11-04": {
-      date: "2024-11-04",
+    "2024-11-05": {
+      date: "2024-11-05",
       fajr: "00:01",
       sunrise: "00:02",
       dhuhr: "00:03",
