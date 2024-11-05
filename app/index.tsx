@@ -11,8 +11,8 @@ import { COLORS } from '@/constants';
 import Main from '@/components/Main';
 import Error from '@/components/Error';
 import { isLoadingAtom, hasErrorAtom, todaysPrayersAtom, tomorrowsPrayersAtom, overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
-import { initializePrayers } from '@/controllers/prayer';
-import { MOCK_DATA_FULL, MOCK_DATA_SIMPLE } from '@/mocks/data';
+import { MOCK_DATA_SIMPLE } from '@/mocks/data';
+import { usePrayers } from '@/hooks/usePrayers';
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
@@ -39,15 +39,10 @@ export default function Index() {
     });
   };
 
+  const { initialize } = usePrayers();
+  
   useEffect(() => {
-    initializePrayers(
-      setIsLoading,
-      setHasError,
-      setTodaysPrayers,
-      setTomorrowsPrayers,
-      setNextPrayerIndex,
-      MOCK_DATA_SIMPLE
-    );
+    initialize(MOCK_DATA_SIMPLE);
   }, []);
 
   if (!fontsLoaded) return <WaveIndicator color="white" />;

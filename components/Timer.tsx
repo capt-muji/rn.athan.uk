@@ -1,41 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { overlayVisibleAtom, todaysPrayersAtom, overlayAnimationAtom, nextPrayerIndexAtom, tomorrowsPrayersAtom, selectedPrayerDateAtom } from '@/store/store';
-import { handleTimerUpdate } from '@/controllers/time';
+import { overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
+import { useTimer } from '@/hooks/useTimer';
 
 export default function Timer() {
-  const [timerName, setTimerName] = useState('');
-  const [timeDisplay, setTimeDisplay] = useState('');
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const { timerName, timeDisplay } = useTimer();
+  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
-  const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [selectedDate] = useAtom(selectedPrayerDateAtom);
-  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
-
-  useEffect(() => {
-    const prayers = selectedDate === 'tomorrow' ? tomorrowsPrayers : todaysPrayers;
-    if (!prayers || Object.keys(prayers).length === 0) return;
-
-    const updateTimer = () => {
-      handleTimerUpdate(
-        prayers,
-        overlayVisible,
-        nextPrayerIndex,
-        setTimerName,
-        setTimeDisplay,
-        setNextPrayerIndex,
-        selectedDate
-      );
-    };
-
-    updateTimer();
-    const intervalId = setInterval(updateTimer, 1000);
-    return () => clearInterval(intervalId);
-  }, [nextPrayerIndex, overlayVisible, todaysPrayers, tomorrowsPrayers, selectedDate]);
 
   return (
     <View style={styles.container}>
