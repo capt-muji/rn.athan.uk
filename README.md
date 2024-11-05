@@ -5,21 +5,28 @@
 <div align="center">
   <img src="./assets/icons/masjid.svg" width="100" height="100" alt="Mosque icon" />
 </div>
-
-<br/>
-<br/>
 <br/>
 
+<div align="center">
+  
 # Athan.uk
 
-A React Native IOS and Android mobile application for Muslim prayer times in the London, UK.
+[![Platform - Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat&logo=android&logoColor=white)](https://athan.uk)
+[![Platform - iOS](https://img.shields.io/badge/Platform-iOS-000000?style=flat&logo=apple&logoColor=white)](https://athan.uk)
 
-For web version, visit https://athan.uk.
+A beautiful React Native mobile app for Muslim prayer times in London, UK
 
-## Features
+[🌐 Web Version Available](https://athan.uk)
+
+</div>
+
+<br/>
+
+## ⚡ Features
 
 - 📅 Displays daily prayer times including Fajr, Sunrise, Duha, Dhuhr, Asr, Magrib, and Isha
 - ⏰ Real-time countdown timer until next prayer
+- 🔄 View tomorrow's prayer times
 - 🔔 Customizable prayer notifications with multiple alert modes:
   - Off (no notifications)
   - Notification (silent banner)
@@ -31,7 +38,7 @@ For web version, visit https://athan.uk.
 - 🎯 Precise timing synchronization with system clock
 - 📱 Full offline support after initial data download
 
-## Technical Implementation
+## 🛠 Technical Implementation
 
 ### Data Flow
 
@@ -66,7 +73,7 @@ Notifications are scheduled:
 - Automatically schedules next day's Fajr after Isha
 - Persists through app restarts
 
-## Development
+## 🚀 Development
 
 ### Prerequisites
 
@@ -102,14 +109,16 @@ In the output, you'll find options to open the app in a:
 
 You can start developing by editing the files inside the **app** directory. This project uses file-based routing.
 
-## Icons Used
-
-- Masjid icon by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-
-## Tech Stack
+## 🎨 Tech Stack
 
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
-![Jotai](https://img.shields.io/badge/Jotai-000000?style=for-the-badge)
+![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)
+![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
+
+
+## Icons Used
+
+- Masjid icon by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
