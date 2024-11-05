@@ -62,7 +62,7 @@ export default function Timer() {
                     {
                       translateY: overlayAnimation.interpolate({
                         inputRange: [0, 1],
-                        outputRange: [5, 6]
+                        outputRange: [1, 6]
                       })
                     }
                   ]
@@ -80,7 +80,7 @@ export default function Timer() {
 
 const styles = StyleSheet.create({
   container: {
-    height: 50, // Fixed height that accommodates both states
+    height: 50,
     marginTop: SCREEN.paddingHorizontal,
     marginBottom: 35,
     zIndex: 1,
