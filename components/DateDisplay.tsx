@@ -1,18 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { overlayVisibleAtom, selectedPrayerDateAtom } from '@/store/store';
+import { overlayVisibleAtom, selectedPrayerDateAtom, overlayAnimationAtom } from '@/store/store';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [selectedDate] = useAtom(selectedPrayerDateAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayAnimation] = useAtom(overlayAnimationAtom);
 
   const today = new Date();
   const date = selectedDate === 'tomorrow' ? new Date(today.setDate(today.getDate() + 1)) : today;
-  
+
   const formattedDate = date.toLocaleDateString('en-GB', {
     weekday: 'short',
     day: '2-digit',
@@ -21,15 +21,39 @@ export default function DateDisplay() {
   });
 
   return (
-    <View style={[
-      styles.container,
-      overlayVisible > -1 && styles.overlayVisible
-    ]}>
+    <View style={[styles.container]}>
       <View>
-        <Text style={[styles.location]}>London, UK</Text>
-        <Text style={[styles.date]}>{formattedDate}</Text>
+        <Animated.Text style={[
+          styles.location,
+          {
+            opacity: overlayAnimation.interpolate({
+              inputRange: [0, 1],
+              outputRange: [0.5, 0]
+            })
+          }
+        ]}>
+          London, UK
+        </Animated.Text>
+        <Animated.Text style={[
+          styles.date,
+          {
+            opacity: overlayAnimation.interpolate({
+              inputRange: [0, 1],
+              outputRange: [1, 0.5]
+            })
+          }
+        ]}>
+          {formattedDate}
+        </Animated.Text>
       </View>
-      <Masjid />
+      <Animated.View style={{
+        opacity: overlayAnimation.interpolate({
+          inputRange: [0, 1],
+          outputRange: [1, 0]
+        })
+      }}>
+        <Masjid />
+      </Animated.View>
     </View>
   );
 }
@@ -40,7 +64,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: SCREEN.paddingHorizontal
+    paddingHorizontal: SCREEN.paddingHorizontal,
+    zIndex: 1,
   },
   location: {
     opacity: 0.5,
@@ -54,7 +79,4 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
   },
-  overlayVisible: {
-    zIndex: 2,
-  }
 });
