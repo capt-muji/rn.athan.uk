@@ -49,7 +49,11 @@ export default function Prayer({ index }: Props) {
   const isActive = overlayVisible > -1 && overlayVisible === index;
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
-  const shouldDim = !isPassed && !isNext && styles.dim;
+  
+  // Updated shouldDim logic to only show full opacity for selected prayer when showing tomorrow
+  const shouldDim = !isPassed && !isNext && 
+    !(selectedDate === 'tomorrow' && overlayVisible === index) && 
+    styles.dim;
 
   return (
     <Pressable
