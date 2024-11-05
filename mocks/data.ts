@@ -1,15 +1,13 @@
 import { IApiResponse } from "@/types/api";
 
 const now = new Date();
-const oneMinuteInFuture = new Date(now.getTime() + 1 * 60000);
-const twoMinutesInFuture = new Date(now.getTime() + 2 * 60000);
-const threeMinutesInFuture = new Date(now.getTime() + 3 * 60000);
-const fourMinutesInFuture = new Date(now.getTime() + 4 * 60000);
 
-const formatTime = (date: Date) => {
-  const hours = date.getHours().toString().padStart(2, '0');
-  const minutes = date.getMinutes().toString().padStart(2, '0');
-  return `${hours}:${minutes}`;
+const addMinutes = (minutesToAdd: number) => {
+  const date = new Date(now.getTime() + minutesToAdd * 60000);
+  return date.toLocaleTimeString('en-GB', { 
+    hour: '2-digit', 
+    minute: '2-digit' 
+  });
 };
 
 const today = new Date().toISOString().split('T')[0];
@@ -21,11 +19,11 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     [today]: {
       date: today,
       fajr: "00:01",
-      sunrise: "00:02",
+      sunrise: "00:02", 
       dhuhr: "00:03",
-      asr: "00:04",
-      magrib: formatTime(oneMinuteInFuture),
-      isha: formatTime(twoMinutesInFuture),
+      asr: addMinutes(1),
+      magrib: addMinutes(2),
+      isha: addMinutes(3),
       fajr_jamat: "00:00",
       dhuhr_jamat: "00:00",
       asr_2: "00:00",
@@ -35,12 +33,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [tomorrow]: {
       date: tomorrow,
-      fajr: "00:02",
-      sunrise: "00:03",
-      dhuhr: "00:04",
-      asr: "00:05",
-      magrib: formatTime(threeMinutesInFuture),
-      isha: formatTime(fourMinutesInFuture),
+      fajr: addMinutes(10),
+      sunrise: addMinutes(11),
+      dhuhr: addMinutes(12), 
+      asr: addMinutes(13),
+      magrib: addMinutes(14),
+      isha: addMinutes(15),
       fajr_jamat: "00:00",
       dhuhr_jamat: "00:00",
       asr_2: "00:00",
