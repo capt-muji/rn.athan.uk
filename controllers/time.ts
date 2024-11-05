@@ -7,12 +7,14 @@ export const handleTimerUpdate = (
   nextPrayerIndex: number,
   setTimerName: (name: string) => void,
   setTimeDisplay: (time: string) => void,
-  setNextPrayerIndex: (index: number | ((prev: number) => number)) => void
+  setNextPrayerIndex: (index: number | ((prev: number) => number)) => void,
+  selectedDate: 'today' | 'tomorrow'
 ) => {
   const { timerName, timeDisplay, timeDifference, currentPrayer } = getCurrentPrayerInfo(
     todaysPrayers,
     overlayVisible,
-    nextPrayerIndex
+    nextPrayerIndex,
+    selectedDate
   );
 
   setTimerName(timerName);
