@@ -30,7 +30,7 @@ export default function Alert({ index }: Props) {
     const baseOpacity = isPassed || isNext ? 1 : 0.5;
     return {
       opacity: withTiming(
-        isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity, 
+        isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity,
         { duration: ANIMATION.duration }
       ),
     };
@@ -62,13 +62,13 @@ export default function Alert({ index }: Props) {
             <IconComponent color="white" size={20} />
           </Animated.View>
         </Pressable>
+        {isActive && (
+          <View style={styles.popup}>
+            <IconComponent color="white" size={20} style={styles.popupIcon} />
+            <Text style={styles.label}>{currentConfig.label}</Text>
+          </View>
+        )}
       </View>
-      {isActive && (
-        <View style={styles.popup}>
-          <IconComponent color="white" size={20} style={styles.popupIcon} />
-          <Text style={styles.label}>{currentConfig.label}</Text>
-        </View>
-      )}
     </>
   );
 }
@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 10,
     backgroundColor: 'black',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
