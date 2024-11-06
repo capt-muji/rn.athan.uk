@@ -112,17 +112,16 @@ const styles = StyleSheet.create({
   },
   english: {
     flex: 1,
-    marginLeft: 18,
-    marginRight: 15,
+    marginLeft: 16,
   },
   arabic: {
     flex: 1,
     textAlign: 'right',
-    marginRight: 34,
   },
   time: {
     flex: 1,
     textAlign: 'center',
+    marginLeft: 25,
     marginRight: 10,
   },
   active: {
