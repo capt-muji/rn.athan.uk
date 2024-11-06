@@ -2,6 +2,8 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { ANIMATION } from '@/constants/animations';
 
 import { COLORS, TEXT } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom } from '@/store/store';
@@ -23,7 +25,16 @@ export default function Alert({ index }: Props) {
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
-  const opacity = isOverlay && selectedPrayerIndex !== index ? 0 : (isPassed || isNext ? 1 : 0.5);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    const baseOpacity = isPassed || isNext ? 1 : 0.5;
+    return {
+      opacity: withTiming(
+        isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity, 
+        { duration: ANIMATION.duration }
+      ),
+    };
+  });
 
   const alertConfigs = useMemo(() => [
     { icon: PiBellSimpleSlash, label: "Off" },
@@ -47,7 +58,9 @@ export default function Alert({ index }: Props) {
     <>
       <View style={styles.container}>
         <Pressable onPress={handlePress} style={styles.iconContainer}>
-          <IconComponent color="white" size={20} style={{ opacity }} />
+          <Animated.View style={animatedStyle}>
+            <IconComponent color="white" size={20} />
+          </Animated.View>
         </Pressable>
       </View>
       {isActive && (

@@ -1,26 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import { nextPrayerIndexAtom, overlayAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
+import { ANIMATION } from '@/constants/animations';
 
 export default function Timer() {
   const { timerName, timeDisplay } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(0.5, { duration: ANIMATION.duration }),
+  }));
+
   return (
     <View style={styles.container}>
       {nextPrayerIndex === -1 ? (
-        <Text style={styles.text}>
+        <Animated.Text style={[styles.text, animatedStyle]}>
           {timerName}
-        </Text>
+        </Animated.Text>
       ) : (
         <>
-          <Text style={styles.text}>
+          <Animated.Text style={[styles.text, animatedStyle]}>
             {`${timerName || '...'} in`}
-          </Text>
+          </Animated.Text>
           {timeDisplay && (
             <Text style={styles.timer}>
               {timeDisplay}
