@@ -65,8 +65,7 @@ export default function Alert({ index }: Props) {
     bounceAnim.value = withSpring(1, {
       damping: 12,
       stiffness: 500,
-      mass: 0.5,
-      duration: 250
+      mass: 0.5
     });
 
     // Set timeout to hide
