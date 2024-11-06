@@ -6,11 +6,13 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-  interpolate
+  interpolate,
+  withTiming
 } from 'react-native-reanimated';
 
 import { COLORS, TEXT } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom } from '@/store/store';
+import { ANIMATION } from '@/constants/animations';
 
 interface Props {
   index: number;
@@ -91,12 +93,14 @@ export default function Alert({ index }: Props) {
   const currentConfig = alertConfigs[iconIndex];
   const IconComponent = currentConfig.icon;
 
-  const animatedStyle = useCallback(() => {
+  const animatedStyle = useAnimatedStyle(() => {
     const baseOpacity = isActive || isPassed || isNext ? 1 : 0.5;
+    const opacity = isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity;
+    
     return {
-      opacity: isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity
+      opacity: withTiming(opacity, { duration: ANIMATION.duration })
     };
-  }, [isPassed, isNext, isOverlay, selectedPrayerIndex, index, isActive]);
+  });
 
   const popupAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -114,7 +118,9 @@ export default function Alert({ index }: Props) {
         style={styles.iconContainer}
         pointerEvents={isOverlay && selectedPrayerIndex !== index ? 'none' : 'auto'}
       >
-        <IconComponent color="white" size={20} style={animatedStyle()} />
+        <Animated.View style={animatedStyle}>
+          <IconComponent color="white" size={20} />
+        </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle]}>
