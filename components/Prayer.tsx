@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { ANIMATION } from '@/constants/animations';
 
 import {
   todaysPrayersAtom,
@@ -39,6 +40,7 @@ export default function Prayer({ index }: Props) {
     if (isOverlay && selectedPrayerIndex === index) {
       setIsOverlay(false);
       setSelectedPrayerIndex(null);
+      setSelectedDate('today'); // Add this line
     } else {
       toggleDate();
       setIsOverlay(true);
@@ -46,32 +48,31 @@ export default function Prayer({ index }: Props) {
     }
   }, [toggleDate, index, isOverlay, selectedPrayerIndex]);
 
-  const animatedStyle = useAnimatedStyle(() => {
-    const isHidden = isOverlay && selectedPrayerIndex !== index;
-    return {
-      opacity: withTiming(isHidden ? 0 : 1, { duration: 200 }),
-      pointerEvents: isHidden ? 'none' : 'auto' as const,
-    };
-  });
-
   const prayer = selectedDate === 'tomorrow' ? tomorrowsPrayers[index] : todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
-  const shouldDim = !isPassed && !isNext && styles.dim;
+
+  const animatedStyle = useAnimatedStyle(() => {
+    const isHidden = isOverlay && selectedPrayerIndex !== index;
+    const baseOpacity = isPassed || isNext ? 1 : 0.5;
+    return {
+      opacity: withTiming(isHidden ? 0 : baseOpacity, { duration: ANIMATION.duration }),
+      pointerEvents: isHidden ? 'none' : 'auto' as const,
+    };
+  });
 
   return (
     <Animated.View style={animatedStyle}>
       <Pressable
         style={[
           styles.container,
-          isPassed && styles.passed,
           isNext && styles.next
         ]}
         onPress={handlePress}
       >
-        <Text style={[styles.text, styles.english, shouldDim]}> {prayer.english} </Text>
-        <Text style={[styles.text, styles.arabic, shouldDim]}> {prayer.arabic} </Text>
-        <Text style={[styles.text, styles.time, shouldDim]}> {prayer.time} </Text>
+        <Text style={[styles.text, styles.english]}> {prayer.english} </Text>
+        <Text style={[styles.text, styles.arabic]}> {prayer.arabic} </Text>
+        <Text style={[styles.text, styles.time]}> {prayer.time} </Text>
         <Alert index={index} />
       </Pressable>
     </Animated.View>
@@ -83,12 +84,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginHorizontal: SCREEN.paddingHorizontal
-  },
-  dim: {
-    opacity: 0.5
-  },
-  passed: {
-    opacity: 1,
   },
   next: {
     opacity: 1,
