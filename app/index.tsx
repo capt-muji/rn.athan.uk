@@ -5,7 +5,12 @@ import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 // @ts-ignore
 import { WaveIndicator } from 'react-native-indicators';
-// import * as Haptics from 'expo-haptics';
+import Reanimated, {
+  useAnimatedStyle,
+  withRepeat,
+  withSpring,
+  useSharedValue
+} from 'react-native-reanimated';
 
 import { COLORS } from '@/constants';
 import Main from '@/components/Main';
@@ -40,10 +45,17 @@ export default function Index() {
   };
 
   const { initialize } = usePrayers();
-  
+
+  const offset = useSharedValue(0);
+
   useEffect(() => {
     initialize(MOCK_DATA_SIMPLE);
+    offset.value = withRepeat(withSpring(100), -1, true);
   }, []);
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateY: offset.value }],
+  }));
 
   if (!fontsLoaded) return <WaveIndicator color="white" />;
 
@@ -70,6 +82,19 @@ export default function Index() {
       {isLoading && <WaveIndicator color="white" />}
       {hasError && !isLoading && <Error />}
       {!hasError && !isLoading && <Main />}
+
+      <Reanimated.View
+        style={[{
+          width: 50,
+          height: 50,
+          backgroundColor: 'white',
+          borderRadius: 25,
+          position: 'absolute',
+          bottom: 100,
+          left: 20,
+          zIndex: 2,
+        }, animatedStyles]}
+      />
     </>
   );
 }
