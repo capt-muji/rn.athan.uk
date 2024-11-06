@@ -50,16 +50,6 @@
       "eas": {
         "projectId": "feadd49a-8467-4860-95c5-8ae0c8bc119b"
       }
-    },
-    "fonts": [
-      {
-        "asset": "assets/fonts/Roboto-Regular.ttf",
-        "family": "Roboto"
-      },
-      {
-        "asset": "assets/fonts/Roboto-Medium.ttf",
-        "family": "Roboto-Medium"
-      }
-    ]
+    }
   }
 }

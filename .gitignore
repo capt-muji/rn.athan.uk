@@ -12,6 +12,7 @@ web-build/
 /ios
 /android
 .vscode
+yarn.lock
 
 # macOS
 .DS_Store
