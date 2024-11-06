@@ -6,7 +6,10 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "clean": "rm -rf node_modules && yarn cache clean && yarn install",
+    "pod-install": "cd ios && pod install",
+    "clear-metro": "rm -rf /tmp/metro-*"
   },
   "dependencies": {
     "expo": "^51.0.38",
