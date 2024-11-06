@@ -2,9 +2,9 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
-import Animated, { 
-  useAnimatedStyle, 
-  withSpring, 
+import Animated, {
+  useAnimatedStyle,
+  withSpring,
   withTiming,
   useSharedValue,
   cancelAnimation,
@@ -12,7 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, TEXT } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom } from '@/store/store';
 
 interface Props {
   index: number;
@@ -24,7 +24,10 @@ export default function Alert({ index }: Props) {
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [isOverlay] = useAtom(overlayAtom);
   const [iconIndex, setIconIndex] = useState(0);
-  
+  const [, setIsOverlay] = useAtom(overlayAtom);
+  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [, setSelectedDate] = useAtom(selectedPrayerDateAtom);
+
   const opacity = useSharedValue(0);
   const scale = useSharedValue(0.95);
   const translateX = useSharedValue(-20);
@@ -41,7 +44,15 @@ export default function Alert({ index }: Props) {
     { icon: PiSpeakerSimpleHigh, label: "Sound" }
   ], []);
 
-  const handlePress = useCallback(() => {
+  const handlePress = useCallback((e) => {
+    e?.stopPropagation();
+
+    // Always reset overlay state first
+    setIsOverlay(false);
+    setSelectedPrayerIndex(null);
+    setSelectedDate('today');
+
+    // Continue with existing alert logic
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
 
     if (timeoutId.value) {
@@ -49,12 +60,12 @@ export default function Alert({ index }: Props) {
     }
 
     opacity.value = withTiming(1, { duration: 150 });
-    scale.value = withSpring(1, { 
+    scale.value = withSpring(1, {
       damping: 12,
       stiffness: 150,
       mass: 0.5
     });
-    translateX.value = withSpring(0, { 
+    translateX.value = withSpring(0, {
       damping: 12,
       stiffness: 150,
       mass: 0.5
@@ -95,7 +106,7 @@ export default function Alert({ index }: Props) {
           <IconComponent color="white" size={20} />
         </Animated.View>
       </Pressable>
-      
+
       <Animated.View style={[styles.popup, popupAnimatedStyle]}>
         <IconComponent color="white" size={20} style={styles.popupIcon} />
         <Text style={styles.label}>{currentConfig.label}</Text>
