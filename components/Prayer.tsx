@@ -35,10 +35,16 @@ export default function Prayer({ index }: Props) {
 
   const handlePress = useCallback((e) => {
     e.stopPropagation();
-    toggleDate();
-    setIsOverlay(true);
-    setSelectedPrayerIndex(index);
-  }, [toggleDate, index]);
+    
+    if (isOverlay && selectedPrayerIndex === index) {
+      setIsOverlay(false);
+      setSelectedPrayerIndex(null);
+    } else {
+      toggleDate();
+      setIsOverlay(true);
+      setSelectedPrayerIndex(index);
+    }
+  }, [toggleDate, index, isOverlay, selectedPrayerIndex]);
 
   const animatedStyle = useAnimatedStyle(() => {
     const isHidden = isOverlay && selectedPrayerIndex !== index;

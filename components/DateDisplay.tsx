@@ -25,11 +25,15 @@ export default function DateDisplay() {
     opacity: withTiming(isOverlay ? 0 : 1, { duration: 200 }),
   }));
 
+  const dateAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(isOverlay ? 0.5 : 1, { duration: 200 }),
+  }));
+
   return (
     <View style={styles.container}>
       <View>
         <Animated.Text style={[styles.location, animatedStyle]}>London, UK</Animated.Text>
-        <Text style={styles.date}>{formattedDate}</Text>
+        <Animated.Text style={[styles.date, dateAnimatedStyle]}>{formattedDate}</Animated.Text>
       </View>
       <Animated.View style={animatedStyle}>
         <Masjid />
