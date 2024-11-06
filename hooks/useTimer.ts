@@ -5,7 +5,9 @@ import {
   todaysPrayersAtom, 
   nextPrayerIndexAtom, 
   selectedPrayerDateAtom,
-  tomorrowsPrayersAtom 
+  tomorrowsPrayersAtom,
+  selectedPrayerIndexAtom,
+  overlayAtom
 } from '@/store/store';
 
 export const useTimer = () => {
@@ -15,6 +17,8 @@ export const useTimer = () => {
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [selectedDate] = useAtom(selectedPrayerDateAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [isOverlay] = useAtom(overlayAtom);
 
   useEffect(() => {
     const prayers = selectedDate === 'tomorrow' ? tomorrowsPrayers : todaysPrayers;
@@ -24,13 +28,15 @@ export const useTimer = () => {
       const { timerName, timeDisplay, timeDifference, currentPrayer } = getCurrentPrayerInfo(
         prayers,
         nextPrayerIndex,
-        selectedDate
+        selectedDate,
+        isOverlay ? selectedPrayerIndex : null
       );
 
       setTimerName(timerName);
       setTimeDisplay(timeDisplay);
 
-      if (timeDifference <= 0 && currentPrayer) {
+      // Only update next prayer index when not in overlay mode
+      if (timeDifference <= 0 && currentPrayer && !isOverlay) {
         if (prayers[nextPrayerIndex]) {
           prayers[nextPrayerIndex].passed = true;
         }
@@ -41,7 +47,7 @@ export const useTimer = () => {
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
-  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedDate]);
+  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedDate, selectedPrayerIndex, isOverlay]);
 
   return { timerName, timeDisplay };
 };
