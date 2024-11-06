@@ -1,7 +1,13 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
+import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
+import Animated, { 
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  interpolate
+} from 'react-native-reanimated';
 
 import { COLORS, TEXT } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom } from '@/store/store';
@@ -21,8 +27,8 @@ export default function Alert({ index }: Props) {
   const [, setSelectedDate] = useAtom(selectedPrayerDateAtom);
   const [isActive, setIsActive] = useState(false);
 
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const bounceAnim = useRef(new Animated.Value(0)).current;
+  const fadeAnim = useSharedValue(0);
+  const bounceAnim = useSharedValue(0);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const prayer = todaysPrayers[index];
@@ -50,20 +56,19 @@ export default function Alert({ index }: Props) {
 
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
 
-    fadeAnim.setValue(1);
-    bounceAnim.setValue(0);
+    // Reset animations
+    bounceAnim.value = 0;
+    fadeAnim.value = 1;
 
-    Animated.sequence([
-      Animated.spring(bounceAnim, {
-        toValue: 1,
-        tension: 300,
-        friction: 10,
-        useNativeDriver: true
-      })
-    ]).start();
+    // Start bounce animation
+    bounceAnim.value = withSpring(1, {
+      damping: 10,
+      stiffness: 300
+    });
 
     timeoutRef.current = setTimeout(() => {
-      fadeAnim.setValue(0);
+      // Instant fade out
+      fadeAnim.value = 0;
       setIsActive(false);
     }, 1500);
   }, [alertConfigs.length]);
@@ -84,6 +89,15 @@ export default function Alert({ index }: Props) {
     };
   }, [isPassed, isNext, isOverlay, selectedPrayerIndex, index]);
 
+  const popupAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: fadeAnim.value,
+      transform: [{
+        scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
+      }]
+    };
+  });
+
   return (
     <View style={styles.container}>
       <Pressable
@@ -94,28 +108,7 @@ export default function Alert({ index }: Props) {
         <IconComponent color="white" size={20} style={animatedStyle()} />
       </Pressable>
 
-      <Animated.View
-        style={[
-          styles.popup,
-          {
-            opacity: fadeAnim,
-            transform: [
-              {
-                scale: bounceAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0.95, 1]
-                })
-              },
-              {
-                translateX: fadeAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [-20, 0]
-                })
-              }
-            ]
-          }
-        ]}
-      >
+      <Animated.View style={[styles.popup, popupAnimatedStyle]}>
         <IconComponent
           color="white"
           size={20}
