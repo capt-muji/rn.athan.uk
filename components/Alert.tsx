@@ -4,7 +4,7 @@ import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh 
 import { useAtom } from 'jotai';
 
 import { COLORS, TEXT } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom } from '@/store/store';
 
 interface Props {
   index: number;
@@ -15,6 +15,8 @@ export default function Alert({ index }: Props) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [, setIsOverlay] = useAtom(overlayAtom);
+  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
@@ -28,10 +30,13 @@ export default function Alert({ index }: Props) {
     { icon: PiSpeakerSimpleHigh, label: "Sound" }
   ], []);
 
-  const handlePress = useCallback(() => {
+  const handlePress = useCallback((e) => {
+    e.stopPropagation(); // Stop event from bubbling to Prayer
     setIsActive(true);
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
     setTimeout(() => setIsActive(false), 1500);
+    setIsOverlay(false);
+    setSelectedPrayerIndex(null);
   }, [alertConfigs.length]);
 
   const currentConfig = alertConfigs[iconIndex];
