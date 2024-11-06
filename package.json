@@ -3,13 +3,12 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
-    "android": "expo run:android",
+    "start": "expo start -c",
     "ios": "expo run:ios",
-    "lint": "expo lint",
-    "clean": "rm -rf node_modules && yarn cache clean && yarn install",
-    "pod-install": "cd ios && pod install",
-    "clear-metro": "rm -rf /tmp/metro-*"
+    "android": "expo run:android",
+    "reset": "yarn clean && yarn install && yarn start",
+    "clean": "rm -rf ios android node_modules yarn.lock .expo .vscode && yarn cache clean && rm -rf /tmp/metro-*",
+    "add": "echo 'Use: `npx expo install <package>` for Expo/RN packages, yarn add <package> for others'"
   },
   "dependencies": {
     "expo": "^51.0.38",
