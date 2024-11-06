@@ -7,6 +7,7 @@ export const TEXT = {
     medium: 'Roboto-Medium',
   },
   size: 18,
+  opacity: 0.65,
 };
 
 export const SCREEN = {
@@ -17,6 +18,7 @@ export const COLORS = {
   primary: '#0d6cda',
   primaryShadow: '#0a296a',
   textPrimary: '#ffffff',
+  textSecondary: '#8BA3C7',
   gradientStart: '#031a4c',
   gradientEnd: '#660ca1',
   transparentBlack: '#000000bf'

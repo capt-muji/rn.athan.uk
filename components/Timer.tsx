@@ -4,7 +4,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, overlayAtom } from '@/store/store';
+import { nextPrayerIndexAtom, overlayAtom, overlayDateColorAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 import { ANIMATION } from '@/constants/animations';
 
@@ -16,7 +16,7 @@ export default function Timer() {
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
       { scale: withTiming(isOverlay ? 1.5 : 1, { duration: ANIMATION.duration }) },
-      { translateY: withTiming(isOverlay ? 4 : 0, { duration: ANIMATION.duration }) }
+      { translateY: withTiming(isOverlay ? 5 : 0, { duration: ANIMATION.duration }) }
     ],
     fontFamily: isOverlay ? TEXT.famiy.medium : TEXT.famiy.regular
   }));
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: TEXT.famiy.regular,
-    color: COLORS.textPrimary,
-    opacity: 0.5,
+    color: COLORS.textSecondary,
+    opacity: TEXT.opacity,
     textAlign: 'center',
     fontSize: TEXT.size - 2,
   },

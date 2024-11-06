@@ -18,3 +18,8 @@ export const backgroundColorsAtom = atom((get) => {
     ? ['black', 'black']
     : [COLORS.gradientStart, COLORS.gradientEnd];
 });
+
+export const overlayDateColorAtom = atom((get) => {
+  const isOverlay = get(overlayAtom);
+  return isOverlay ? COLORS.textSecondary : COLORS.textPrimary;
+});
