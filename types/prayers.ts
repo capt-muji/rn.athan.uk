@@ -28,3 +28,29 @@ export interface IPrayerInfo {
   timeDifference?: number;
   currentPrayer?: ITransformedPrayer;
 }
+
+export type DaySelection = 'today' | 'tomorrow';
+
+export interface ITimeString {
+  time: string;
+}
+
+export interface IDateString {
+  date: string;
+}
+
+export interface IMinutesConfig {
+  time: string;
+  minutes: number;
+}
+
+export interface IPrayerConfig {
+  prayers: ITransformedToday;
+  prayerIndex: number;
+  selectedDate?: DaySelection;
+}
+
+export interface ITimeDifferenceConfig {
+  targetTime: string;
+  date?: string;
+}
