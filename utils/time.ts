@@ -1,12 +1,18 @@
-import { IPrayerInfo, ITransformedToday } from "@/types/prayers";
+import { IPrayerInfo, ITransformedToday, DaySelection } from "@/types/prayers";
 
-// Returns current date string in YYYY-MM-DD format from system time.
-// Example output: "2024-01-20". Uses ISO string for consistent formatting.
-export const getTodaysDate = (): string => new Date().toISOString().split('T')[0];
+// Takes 'today' or 'tomorrow' and returns date in YYYY-MM-DD format.
+// Used for prayer time calculations and date display formatting.
+export const getTodayOrTomorrow = (day: DaySelection = 'today'): string => {
+  const date = new Date();
+  if (day === 'tomorrow') {
+    date.setDate(date.getDate() + 1);
+  }
+  return date.toISOString().split('T')[0];
+};
 
-// Returns milliseconds between current time and target time (format: HH:mm).
-// Handles both today's and tomorrow's times, auto-adjusts if time has passed.
-export const getTimeDifference = (targetTime: string, date: string = getTodaysDate()): number => {
+// Calculates time difference in milliseconds between now and target prayer time.
+// Handles edge cases like passing midnight and adjusts for tomorrow's prayers.
+export const getTimeDifference = (targetTime: string, date: string = getTodayOrTomorrow('today')): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
   const now = new Date();
   const target = new Date(date);
@@ -26,8 +32,8 @@ export const getTimeDifference = (targetTime: string, date: string = getTodaysDa
   return diff;
 };
 
-// Takes time string in HH:mm format and compares with current system time.
-// Returns true if given time has already passed today, false if time is still upcoming.
+// Compares given time string with current time to check if it's passed.
+// Used to determine prayer status and handle UI state changes.
 export const isTimePassed = (time: string): boolean => {
   const [hours, minutes] = time.split(':').map(Number);
   const now = new Date();
@@ -38,8 +44,8 @@ export const isTimePassed = (time: string): boolean => {
   return now > target;
 };
 
-// Converts milliseconds into human readable format like "1h 30m 45s".
-// Optimizes display by removing zero values and handling negative inputs.
+// Formats milliseconds into readable time units (hours, minutes, seconds).
+// Handles edge cases like zero values and returns condensed format (e.g., "1h 30m 5s").
 export const formatTime = (ms: number): string => {
   if (ms < 0) return '0s';
 
@@ -54,8 +60,8 @@ export const formatTime = (ms: number): string => {
   return [h && `${h}h`, m && `${m}m`, `${s}s`].filter(Boolean).join(' ');
 };
 
-// Takes time string (HH:mm) and number of minutes to add.
-// Returns new time string in HH:mm format, handles day wraparound.
+// Adds specified minutes to a time string and handles day wraparound.
+// Returns formatted time string in 24-hour format (HH:mm).
 export const addMinutes = (time: string, minutes: number): string => {
   const [h, m] = time.split(':').map(Number);
   const date = new Date();
@@ -63,43 +69,30 @@ export const addMinutes = (time: string, minutes: number): string => {
   return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 };
 
-// Returns prayer info object with name, countdown, and timing details.
-// Handles prayer transitions and tomorrow's prayer times based on index.
+// Gets prayer information including name, time remaining, and current status.
+// Returns formatted object with timer display and prayer details.
 export const getCurrentPrayerInfo = (
-  todaysPrayers: ITransformedToday,
+  prayers: ITransformedToday,
   prayerIndex: number,
-  selectedDate: 'today' | 'tomorrow' = 'today'
+  selectedDate: DaySelection = 'today'
 ): IPrayerInfo => {
-  if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) {
-    return { timerName: '', timeDisplay: '' };
-  }
+  if (!prayers || Object.keys(prayers).length === 0) return { timerName: '', timeDisplay: '' };
 
-  const currentPrayer = todaysPrayers[prayerIndex];
+  const prayer = prayers[prayerIndex];
+  if (!prayer) return { timerName: 'All prayers passed', timeDisplay: '' };
 
-  if (!currentPrayer) {
-    return { timerName: 'All prayers passed', timeDisplay: '' };
-  }
-
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const tomorrowDate = tomorrow.toISOString().split('T')[0];
-
-  const diff = getTimeDifference(
-    currentPrayer.time, 
-    selectedDate === 'tomorrow' ? tomorrowDate : getTodaysDate()
-  );
-  const timeDisplay = formatTime(diff);
+  const diff = getTimeDifference(prayer.time, getTodayOrTomorrow(selectedDate));
 
   return {
-    timerName: currentPrayer.english,
-    timeDisplay,
+    timerName: prayer.english,
+    timeDisplay: formatTime(diff),
     timeDifference: diff,
-    currentPrayer
+    currentPrayer: prayer
   };
 };
 
-// Validates if a date string (YYYY-MM-DD) is either today or a future date.
-// Returns true for today/future dates, false for past dates. Used for prayer filtering.
+// Checks if provided date is either today or in the future.
+// Used to filter past prayer times and validate date selections.
 export const isDateTodayOrFuture = (date: string): boolean => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
