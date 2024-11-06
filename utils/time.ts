@@ -64,20 +64,17 @@ export const addMinutes = (time: string, minutes: number): string => {
 };
 
 // Returns prayer info object with name, countdown, and timing details.
-// Handles overlay state, prayer transitions, and tomorrow's prayer times.
+// Handles prayer transitions and tomorrow's prayer times based on index.
 export const getCurrentPrayerInfo = (
   todaysPrayers: ITransformedToday,
-  overlayVisible: number,
-  nextPrayerIndex: number,
+  prayerIndex: number,
   selectedDate: 'today' | 'tomorrow' = 'today'
 ): IPrayerInfo => {
   if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) {
     return { timerName: '', timeDisplay: '' };
   }
 
-  const currentPrayer = overlayVisible > -1
-    ? todaysPrayers[overlayVisible]
-    : todaysPrayers[nextPrayerIndex];
+  const currentPrayer = todaysPrayers[prayerIndex];
 
   if (!currentPrayer) {
     return { timerName: 'All prayers passed', timeDisplay: '' };

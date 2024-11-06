@@ -24,10 +24,10 @@ export const useTimer = () => {
     if (!prayers || Object.keys(prayers).length === 0) return;
 
     const updateTimer = () => {
+      const prayerIndex = overlayVisible > -1 ? overlayVisible : nextPrayerIndex;
       const { timerName, timeDisplay, timeDifference, currentPrayer } = getCurrentPrayerInfo(
         prayers,
-        overlayVisible,
-        nextPrayerIndex,
+        prayerIndex,
         selectedDate
       );
 
