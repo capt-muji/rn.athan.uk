@@ -94,19 +94,13 @@ Notifications are scheduled:
 
 ### Installation
 
-1. Install dependencies
+1. Start the app (this will clear cache, install dependencies and start the server)
 
    ```bash
-   yarn
+   yarn reset
    ```
 
-2. Start the app
-
-   ```bash
-   npx expo start -c
-   ```
-
-3. Install new dependencies
+2. How to nstall new dependencies
 
    ```bash
    npx expo install <package-name>
@@ -118,8 +112,6 @@ In the output, you'll find options to open the app in a:
 - iOS simulator
 - Expo Go
 
-You can start developing by editing the files inside the **app** directory. This project uses file-based routing.
-
 ## 🎨 Tech Stack
 
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -127,6 +119,7 @@ You can start developing by editing the files inside the **app** directory. This
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
 ![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)
+![Reanimated](https://img.shields.io/badge/Reanimated_3-6B52AE?style=for-the-badge)
 ![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
 
 
