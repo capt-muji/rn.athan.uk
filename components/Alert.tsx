@@ -28,6 +28,7 @@ export default function Alert({ index }: Props) {
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setSelectedDate] = useAtom(selectedPrayerDateAtom);
   const [isActive, setIsActive] = useState(false);
+  const [showPopupContent, setShowPopupContent] = useState(false);
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
@@ -57,13 +58,17 @@ export default function Alert({ index }: Props) {
       clearTimeout(timeoutRef.current);
     }
 
+    // Update content first
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
+    setShowPopupContent(true);
 
-    // Reset animations
+    // Then start animations
     bounceAnim.value = 0;
-    fadeAnim.value = 1;
-
-    // Animate in
+    fadeAnim.value = withSpring(1, {
+      damping: 12,
+      stiffness: 500,
+      mass: 0.5
+    });
     bounceAnim.value = withSpring(1, {
       damping: 12,
       stiffness: 500,
@@ -96,7 +101,7 @@ export default function Alert({ index }: Props) {
   const animatedStyle = useAnimatedStyle(() => {
     const baseOpacity = isActive || isPassed || isNext ? 1 : 0.5;
     const opacity = isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity;
-    
+
     return {
       opacity: withTiming(opacity, { duration: ANIMATION.duration })
     };
@@ -124,14 +129,18 @@ export default function Alert({ index }: Props) {
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle]}>
-        <IconComponent
-          color="white"
-          size={20}
-          style={styles.popupIcon}
-        />
-        <Text style={styles.label}>
-          {currentConfig.label}
-        </Text>
+        {showPopupContent && (
+          <>
+            <IconComponent
+              color="white"
+              size={20}
+              style={styles.popupIcon}
+            />
+            <Text style={styles.label}>
+              {currentConfig.label}
+            </Text>
+          </>
+        )}
       </Animated.View>
     </View>
   );
