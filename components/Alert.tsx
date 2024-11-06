@@ -2,7 +2,7 @@ import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
-import Animated, { 
+import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
@@ -50,6 +50,7 @@ export default function Alert({ index }: Props) {
     setSelectedDate('today');
     setIsActive(true);
 
+    // Clear any existing timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
@@ -60,22 +61,31 @@ export default function Alert({ index }: Props) {
     bounceAnim.value = 0;
     fadeAnim.value = 1;
 
-    // Start bounce animation
+    // Animate in
     bounceAnim.value = withSpring(1, {
-      damping: 10,
-      stiffness: 300
+      damping: 12,
+      stiffness: 500,
+      mass: 0.5,
+      duration: 250
     });
 
+    // Set timeout to hide
     timeoutRef.current = setTimeout(() => {
-      // Instant fade out
-      fadeAnim.value = 0;
+      fadeAnim.value = withSpring(0, { duration: 1 });
+      bounceAnim.value = withSpring(0);
       setIsActive(false);
-    }, 1500);
+    }, 2000);
   }, [alertConfigs.length]);
 
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      // Reset animations on unmount
+      fadeAnim.value = 0;
+      bounceAnim.value = 0;
+      setIsActive(false);
     };
   }, []);
 
