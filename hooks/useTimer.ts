@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
-import { ITransformedToday } from '@/types/prayers';
 import { getCurrentPrayerInfo } from '@/utils/time';
 import { 
-  overlayVisibleAtom, 
   todaysPrayersAtom, 
   nextPrayerIndexAtom, 
   selectedPrayerDateAtom,
@@ -15,7 +13,6 @@ export const useTimer = () => {
   const [timeDisplay, setTimeDisplay] = useState('');
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [selectedDate] = useAtom(selectedPrayerDateAtom);
 
@@ -24,10 +21,9 @@ export const useTimer = () => {
     if (!prayers || Object.keys(prayers).length === 0) return;
 
     const updateTimer = () => {
-      const prayerIndex = overlayVisible > -1 ? overlayVisible : nextPrayerIndex;
       const { timerName, timeDisplay, timeDifference, currentPrayer } = getCurrentPrayerInfo(
         prayers,
-        prayerIndex,
+        nextPrayerIndex,
         selectedDate
       );
 
@@ -45,7 +41,7 @@ export const useTimer = () => {
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
-  }, [nextPrayerIndex, overlayVisible, todaysPrayers, tomorrowsPrayers, selectedDate]);
+  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedDate]);
 
   return { timerName, timeDisplay };
 };
