@@ -4,12 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
-import Animated, { useAnimatedProps, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedProps } from 'react-native-reanimated';
 
 import { COLORS } from '@/constants';
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom, overlayAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom, overlayAtom, backgroundColorsAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
 
@@ -25,6 +25,7 @@ export default function Index() {
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
   const [isOverlay] = useAtom(overlayAtom);
+  const [colors] = useAtom(backgroundColorsAtom);
 
   const { initialize } = usePrayers();
 
@@ -37,9 +38,7 @@ export default function Index() {
   }, []);
 
   const animatedProps = useAnimatedProps(() => ({
-    colors: isOverlay 
-      ? ['black', 'black']
-      : [COLORS.gradientStart, COLORS.gradientEnd]
+    colors
   }));
 
   if (!fontsLoaded || !isInitialized) return <WaveIndicator color="white" />;

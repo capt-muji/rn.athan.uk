@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { ANIMATION } from '@/constants/animations';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import { selectedPrayerDateAtom, overlayAtom } from '@/store/store';
@@ -22,17 +23,21 @@ export default function DateDisplay() {
   });
 
   const animatedStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(isOverlay ? 0 : 1, { duration: 200 }),
+    opacity: withTiming(isOverlay ? 0 : 1, { duration: ANIMATION.duration }),
+  }));
+
+  const locationAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(isOverlay ? 0 : 0.5, { duration: ANIMATION.duration }),
   }));
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(isOverlay ? 0.5 : 1, { duration: 200 }),
+    opacity: withTiming(isOverlay ? 0.5 : 1, { duration: ANIMATION.duration }),
   }));
 
   return (
     <View style={styles.container}>
       <View>
-        <Animated.Text style={[styles.location, animatedStyle]}>London, UK</Animated.Text>
+        <Animated.Text style={[styles.location, locationAnimatedStyle]}>London, UK</Animated.Text>
         <Animated.Text style={[styles.date, dateAnimatedStyle]}>{formattedDate}</Animated.Text>
       </View>
       <Animated.View style={animatedStyle}>
