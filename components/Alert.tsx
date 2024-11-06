@@ -93,11 +93,11 @@ export default function Alert({ index }: Props) {
   const IconComponent = currentConfig.icon;
 
   const animatedStyle = useCallback(() => {
-    const baseOpacity = isPassed || isNext ? 1 : 0.5;
+    const baseOpacity = isActive || isPassed || isNext ? 1 : 0.5;
     return {
       opacity: isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity
     };
-  }, [isPassed, isNext, isOverlay, selectedPrayerIndex, index]);
+  }, [isPassed, isNext, isOverlay, selectedPrayerIndex, index, isActive]);
 
   const popupAnimatedStyle = useAnimatedStyle(() => {
     return {
