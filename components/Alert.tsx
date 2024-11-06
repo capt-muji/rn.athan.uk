@@ -13,6 +13,7 @@ import Animated, {
 
 import { COLORS, TEXT } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom } from '@/store/store';
+import { ANIMATION } from '@/constants/animations';
 
 interface Props {
   index: number;
@@ -29,8 +30,7 @@ export default function Alert({ index }: Props) {
   const [, setSelectedDate] = useAtom(selectedPrayerDateAtom);
 
   const opacity = useSharedValue(0);
-  const scale = useSharedValue(0.95);
-  const translateX = useSharedValue(-20);
+  const rotate = useSharedValue(0);
   const timeoutId = useSharedValue<NodeJS.Timeout | null>(null);
 
   const prayer = todaysPrayers[index];
@@ -47,34 +47,31 @@ export default function Alert({ index }: Props) {
   const handlePress = useCallback((e) => {
     e?.stopPropagation();
 
-    // Always reset overlay state first
     setIsOverlay(false);
     setSelectedPrayerIndex(null);
     setSelectedDate('today');
-
-    // Continue with existing alert logic
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
 
     if (timeoutId.value) {
       clearTimeout(timeoutId.value);
     }
 
-    opacity.value = withTiming(1, { duration: 150 });
-    scale.value = withSpring(1, {
-      damping: 12,
-      stiffness: 150,
-      mass: 0.5
-    });
-    translateX.value = withSpring(0, {
-      damping: 12,
-      stiffness: 150,
-      mass: 0.5
+    // Instant appear
+    opacity.value = 1;
+
+    // Quick bounce animation for first 50ms
+    rotate.value = withSpring(11, {
+      mass: 111,
+      stiffness: 1,
+      damping: 110,
+    }, () => {
+      // Immediately reset to 0 after bounce
+      rotate.value = 0;
     });
 
+    // Instant disappear after timeout
     timeoutId.value = setTimeout(() => {
-      opacity.value = withTiming(0, { duration: 150 });
-      scale.value = withTiming(0.95);
-      translateX.value = withTiming(-20);
+      opacity.value = 0;
     }, 2000);
   }, [alertConfigs.length]);
 
@@ -83,7 +80,7 @@ export default function Alert({ index }: Props) {
     return {
       opacity: withTiming(
         isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity,
-        { duration: 300 }
+        { duration: ANIMATION.duration }
       ),
     };
   });
@@ -91,8 +88,7 @@ export default function Alert({ index }: Props) {
   const popupAnimatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
     transform: [
-      { scale: scale.value },
-      { translateX: translateX.value }
+      { rotate: `${rotate.value}deg` }
     ]
   }));
 
@@ -100,7 +96,10 @@ export default function Alert({ index }: Props) {
   const IconComponent = currentConfig.icon;
 
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      pointerEvents={isOverlay && selectedPrayerIndex !== index ? 'none' : 'auto'}
+    >
       <Pressable onPress={handlePress} style={styles.iconContainer}>
         <Animated.View style={animatedStyle}>
           <IconComponent color="white" size={20} />
