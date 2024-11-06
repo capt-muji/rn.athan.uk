@@ -1,16 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
+import { nextPrayerIndexAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 export default function Timer() {
   const { timerName, timeDisplay } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [overlayAnimation] = useAtom(overlayAnimationAtom);
 
   return (
     <View style={styles.container}>
@@ -24,30 +22,9 @@ export default function Timer() {
             {`${timerName || '...'} in`}
           </Text>
           {timeDisplay && (
-            <Animated.Text
-              style={[
-                styles.timer,
-                {
-                  fontFamily: overlayVisible !== -1 ? TEXT.famiy.medium : TEXT.famiy.regular,
-                  transform: [
-                    {
-                      scale: overlayAnimation.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [1, 1.5]
-                      })
-                    },
-                    {
-                      translateY: overlayAnimation.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [1, 6]
-                      })
-                    }
-                  ]
-                }
-              ]}
-            >
+            <Text style={styles.timer}>
               {timeDisplay}
-            </Animated.Text>
+            </Text>
           )}
         </>
       )}
