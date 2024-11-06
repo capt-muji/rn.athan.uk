@@ -36,17 +36,17 @@ export default function Prayer({ index }: Props) {
 
   const handlePress = useCallback((e) => {
     e.stopPropagation();
-    
-    if (isOverlay && selectedPrayerIndex === index) {
+
+    if (isOverlay) {
       setIsOverlay(false);
       setSelectedPrayerIndex(null);
-      setSelectedDate('today'); // Add this line
+      setSelectedDate('today');
     } else {
       toggleDate();
       setIsOverlay(true);
       setSelectedPrayerIndex(index);
     }
-  }, [toggleDate, index, isOverlay, selectedPrayerIndex]);
+  }, [toggleDate, index, isOverlay]);
 
   const prayer = selectedDate === 'tomorrow' ? tomorrowsPrayers[index] : todaysPrayers[index];
   const isPassed = prayer.passed;
@@ -54,36 +54,47 @@ export default function Prayer({ index }: Props) {
 
   const animatedStyle = useAnimatedStyle(() => {
     const isHidden = isOverlay && selectedPrayerIndex !== index;
-    const baseOpacity = isPassed || isNext ? 1 : 0.5;
+    const isTomorrow = selectedDate === 'tomorrow';
+    const shouldBeFullOpacity = isTomorrow || isPassed || isNext;
+    const baseOpacity = shouldBeFullOpacity ? 1 : 0.5;
+
     return {
       opacity: withTiming(isHidden ? 0 : baseOpacity, { duration: ANIMATION.duration }),
-      pointerEvents: isHidden ? 'none' : 'auto' as const,
     };
   });
 
   return (
-    <Animated.View style={animatedStyle}>
+    <View style={styles.container}>
       <Pressable
         style={[
-          styles.container,
+          styles.pressable,
           isNext && styles.next
         ]}
         onPress={handlePress}
       >
-        <Text style={[styles.text, styles.english]}> {prayer.english} </Text>
-        <Text style={[styles.text, styles.arabic]}> {prayer.arabic} </Text>
-        <Text style={[styles.text, styles.time]}> {prayer.time} </Text>
+        <Animated.View style={[styles.content, animatedStyle]}>
+          <Text style={[styles.text, styles.english]}> {prayer.english} </Text>
+          <Text style={[styles.text, styles.arabic]}> {prayer.arabic} </Text>
+          <Text style={[styles.text, styles.time]}> {prayer.time} </Text>
+        </Animated.View>
         <Alert index={index} />
       </Pressable>
-    </Animated.View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginHorizontal: SCREEN.paddingHorizontal
+  },
+  pressable: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: SCREEN.paddingHorizontal
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   next: {
     opacity: 1,
@@ -101,7 +112,7 @@ const styles = StyleSheet.create({
   },
   english: {
     flex: 1,
-    marginLeft: 20,
+    marginLeft: 18,
     marginRight: 15,
   },
   arabic: {
