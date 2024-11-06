@@ -11,26 +11,31 @@ import { ANIMATION } from '@/constants/animations';
 export default function Timer() {
   const { timerName, timeDisplay } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [isOverlay] = useAtom(overlayAtom);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(0.5, { duration: ANIMATION.duration }),
+    transform: [
+      { scale: withTiming(isOverlay ? 1.5 : 1, { duration: ANIMATION.duration }) },
+      { translateY: withTiming(isOverlay ? 4 : 0, { duration: ANIMATION.duration }) }
+    ],
+    fontFamily: isOverlay ? TEXT.famiy.medium : TEXT.famiy.regular
   }));
 
   return (
     <View style={styles.container}>
       {nextPrayerIndex === -1 ? (
-        <Animated.Text style={[styles.text, animatedStyle]}>
+        <Text style={styles.text}>
           {timerName}
-        </Animated.Text>
+        </Text>
       ) : (
         <>
-          <Animated.Text style={[styles.text, animatedStyle]}>
+          <Text style={styles.text}>
             {`${timerName || '...'} in`}
-          </Animated.Text>
+          </Text>
           {timeDisplay && (
-            <Text style={styles.timer}>
+            <Animated.Text style={[styles.timer, animatedStyle]}>
               {timeDisplay}
-            </Text>
+            </Animated.Text>
           )}
         </>
       )}
