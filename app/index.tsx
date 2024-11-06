@@ -19,13 +19,10 @@ export default function Index() {
     'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf'),
   });
 
-  const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
-  const [hasError, setHasError] = useAtom(hasErrorAtom);
-  const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
-  const [, setTomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
+  const [isLoading] = useAtom(isLoadingAtom);
+  const [hasError] = useAtom(hasErrorAtom);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [overlayAnimation] = useAtom(overlayAnimationAtom);
-  const [, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
   const removeOverlay = () => {
     // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);

@@ -19,7 +19,6 @@ export default function Alert({ index }: Props) {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const bounceAnim = useRef(new Animated.Value(0)).current;
   const timeoutRef = useRef<NodeJS.Timeout>();
-  const opacityTimeoutRef = useRef<NodeJS.Timeout>();
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
@@ -38,9 +37,6 @@ export default function Alert({ index }: Props) {
     setIsActive(true);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
-    }
-    if (opacityTimeoutRef.current) {
-      clearTimeout(opacityTimeoutRef.current);
     }
 
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
@@ -66,7 +62,6 @@ export default function Alert({ index }: Props) {
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      if (opacityTimeoutRef.current) clearTimeout(opacityTimeoutRef.current);
     };
   }, []);
 

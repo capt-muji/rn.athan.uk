@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Animated } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { overlayVisibleAtom, selectedPrayerDateAtom, overlayAnimationAtom } from '@/store/store';
+import { selectedPrayerDateAtom, overlayAnimationAtom } from '@/store/store';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
