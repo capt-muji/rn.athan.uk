@@ -5,12 +5,13 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import { ANIMATION } from '@/constants/animations';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { selectedPrayerDateAtom, overlayAtom } from '@/store/store';
+import { selectedPrayerDateAtom, overlayAtom, overlayDateColorAtom } from '@/store/store';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [selectedDate] = useAtom(selectedPrayerDateAtom);
   const [isOverlay] = useAtom(overlayAtom);
+  const [overlayDateColor] = useAtom(overlayDateColorAtom);
 
   const today = new Date();
   const date = selectedDate === 'tomorrow' ? new Date(today.setDate(today.getDate() + 1)) : today;
@@ -27,11 +28,12 @@ export default function DateDisplay() {
   }));
 
   const locationAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(isOverlay ? 0 : 0.5, { duration: ANIMATION.duration }),
+    opacity: withTiming(isOverlay ? 0 : TEXT.opacity, { duration: ANIMATION.duration }),
   }));
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(isOverlay ? 0.5 : 1, { duration: ANIMATION.duration }),
+    opacity: withTiming(isOverlay ? TEXT.opacity : 1, { duration: ANIMATION.duration }),
+    color: withTiming(overlayDateColor, { duration: ANIMATION.duration }),
   }));
 
   return (
@@ -57,8 +59,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   location: {
-    opacity: 0.5,
-    color: COLORS.textPrimary,
+    color: COLORS.textSecondary,
     fontSize: TEXT.size - 2,
     fontFamily: TEXT.famiy.regular,
     marginBottom: 5,

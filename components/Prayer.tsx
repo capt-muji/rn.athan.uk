@@ -10,7 +10,8 @@ import {
   tomorrowsPrayersAtom,
   selectedPrayerDateAtom,
   overlayAtom,
-  selectedPrayerIndexAtom
+  selectedPrayerIndexAtom,
+  overlayDateColorAtom
 } from '@/store/store';
 import { COLORS, TEXT, SCREEN } from '@/constants';
 import Alert from './Alert';
@@ -27,6 +28,7 @@ export default function Prayer({ index }: Props) {
   const [, setIsOverlay] = useAtom(overlayAtom);
   const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [isOverlay] = useAtom(overlayAtom);
+  const [overlayDateColor] = useAtom(overlayDateColorAtom);
 
   const toggleDate = useCallback(() => {
     const prayer = todaysPrayers[index];
@@ -56,12 +58,15 @@ export default function Prayer({ index }: Props) {
     const isHidden = isOverlay && selectedPrayerIndex !== index;
     const isTomorrow = selectedDate === 'tomorrow';
     const shouldBeFullOpacity = isTomorrow || isPassed || isNext;
-    const baseOpacity = shouldBeFullOpacity ? 1 : 0.5;
+    const baseOpacity = shouldBeFullOpacity ? 1 : TEXT.opacity;
 
     return {
       opacity: withTiming(isHidden ? 0 : baseOpacity, { duration: ANIMATION.duration }),
+      color: withTiming(overlayDateColor, { duration: ANIMATION.duration }),
     };
   });
+
+  const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textSecondary;
 
   return (
     <View style={styles.container}>
@@ -73,9 +78,9 @@ export default function Prayer({ index }: Props) {
         onPress={handlePress}
       >
         <Animated.View style={[styles.content, animatedStyle]}>
-          <Text style={[styles.text, styles.english]}> {prayer.english} </Text>
-          <Text style={[styles.text, styles.arabic]}> {prayer.arabic} </Text>
-          <Text style={[styles.text, styles.time]}> {prayer.time} </Text>
+          <Animated.Text style={[styles.text, styles.english, { color: textColor }]}> {prayer.english} </Animated.Text>
+          <Animated.Text style={[styles.text, styles.arabic, { color: textColor }]}> {prayer.arabic} </Animated.Text>
+          <Animated.Text style={[styles.text, styles.time, { color: textColor }]}> {prayer.time} </Animated.Text>
         </Animated.View>
         <Alert index={index} />
       </Pressable>

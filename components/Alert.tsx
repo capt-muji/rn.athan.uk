@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, TEXT } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom, overlayDateColorAtom } from '@/store/store';
 import { ANIMATION } from '@/constants/animations';
 
 interface Props {
@@ -29,6 +29,7 @@ export default function Alert({ index }: Props) {
   const [, setSelectedDate] = useAtom(selectedPrayerDateAtom);
   const [isActive, setIsActive] = useState(false);
   const [showPopupContent, setShowPopupContent] = useState(false);
+  const [overlayDateColor] = useAtom(overlayDateColorAtom);
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
@@ -99,7 +100,7 @@ export default function Alert({ index }: Props) {
   const IconComponent = currentConfig.icon;
 
   const animatedStyle = useAnimatedStyle(() => {
-    const baseOpacity = isActive || isPassed || isNext ? 1 : 0.5;
+    const baseOpacity = isActive || isPassed || isNext ? 1 : TEXT.opacity;
     const opacity = isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity;
 
     return {
@@ -112,9 +113,14 @@ export default function Alert({ index }: Props) {
       opacity: fadeAnim.value,
       transform: [{
         scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
-      }]
+      }],
+      color: withTiming(overlayDateColor, { duration: ANIMATION.duration }),
     };
   });
+
+  const iconColor = isActive
+    ? COLORS.textPrimary
+    : (isPassed || isNext ? COLORS.textPrimary : COLORS.textSecondary);
 
   return (
     <View style={styles.container}>
@@ -124,7 +130,7 @@ export default function Alert({ index }: Props) {
         pointerEvents={isOverlay && selectedPrayerIndex !== index ? 'none' : 'auto'}
       >
         <Animated.View style={animatedStyle}>
-          <IconComponent color="white" size={20} />
+          <IconComponent color={iconColor} size={20} />
         </Animated.View>
       </Pressable>
 
@@ -132,7 +138,7 @@ export default function Alert({ index }: Props) {
         {showPopupContent && (
           <>
             <IconComponent
-              color="white"
+              color={COLORS.textPrimary}
               size={20}
               style={styles.popupIcon}
             />
