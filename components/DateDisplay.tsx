@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { selectedPrayerDateAtom } from '@/store/store';
+import { selectedPrayerDateAtom, overlayAtom } from '@/store/store';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [selectedDate] = useAtom(selectedPrayerDateAtom);
+  const [isOverlay] = useAtom(overlayAtom);
 
   const today = new Date();
   const date = selectedDate === 'tomorrow' ? new Date(today.setDate(today.getDate() + 1)) : today;
@@ -19,15 +21,19 @@ export default function DateDisplay() {
     year: 'numeric'
   });
 
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(isOverlay ? 0 : 1, { duration: 200 }),
+  }));
+
   return (
-    <View style={[styles.container]}>
+    <View style={styles.container}>
       <View>
-        <Text style={styles.location}>London, UK</Text>
+        <Animated.Text style={[styles.location, animatedStyle]}>London, UK</Animated.Text>
         <Text style={styles.date}>{formattedDate}</Text>
       </View>
-      <View>
+      <Animated.View style={animatedStyle}>
         <Masjid />
-      </View>
+      </Animated.View>
     </View>
   );
 }

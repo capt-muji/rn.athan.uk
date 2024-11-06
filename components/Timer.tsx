@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { nextPrayerIndexAtom } from '@/store/store';
+import { nextPrayerIndexAtom, overlayAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 export default function Timer() {
