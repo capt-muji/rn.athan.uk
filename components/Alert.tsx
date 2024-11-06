@@ -13,6 +13,8 @@ interface Props {
 export default function Alert({ index }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [isOverlay] = useAtom(overlayAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [, setIsOverlay] = useAtom(overlayAtom);
@@ -21,7 +23,7 @@ export default function Alert({ index }: Props) {
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
-  const opacity = isPassed || isNext ? 1 : 0.5;
+  const opacity = isOverlay && selectedPrayerIndex !== index ? 0 : (isPassed || isNext ? 1 : 0.5);
 
   const alertConfigs = useMemo(() => [
     { icon: PiBellSimpleSlash, label: "Off" },
@@ -30,8 +32,7 @@ export default function Alert({ index }: Props) {
     { icon: PiSpeakerSimpleHigh, label: "Sound" }
   ], []);
 
-  const handlePress = useCallback((e) => {
-    e.stopPropagation(); // Stop event from bubbling to Prayer
+  const handlePress = useCallback(() => {
     setIsActive(true);
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
     setTimeout(() => setIsActive(false), 1500);
@@ -43,17 +44,19 @@ export default function Alert({ index }: Props) {
   const IconComponent = currentConfig.icon;
 
   return (
-    <View style={[styles.container, { opacity: isActive ? 1 : opacity }]}>
-      <Pressable onPress={handlePress} style={styles.iconContainer}>
-        <IconComponent color="white" size={20} />
-      </Pressable>
+    <>
+      <View style={styles.container}>
+        <Pressable onPress={handlePress} style={styles.iconContainer}>
+          <IconComponent color="white" size={20} style={{ opacity }} />
+        </Pressable>
+      </View>
       {isActive && (
         <View style={styles.popup}>
           <IconComponent color="white" size={20} style={styles.popupIcon} />
           <Text style={styles.label}>{currentConfig.label}</Text>
         </View>
       )}
-    </View>
+    </>
   );
 }
 
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconContainer: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 23,
     paddingVertical: 20,
   },
   popup: {

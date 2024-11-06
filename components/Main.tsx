@@ -14,14 +14,14 @@ export default function Main() {
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setSelectedDate] = useAtom(selectedPrayerDateAtom);
 
-  const handlePress = () => {
+  const handleOverlay = () => {
     setIsOverlay(false);
     setSelectedPrayerIndex(null);
     setSelectedDate('today');
   };
 
   return (
-    <Pressable style={styles.container} onPress={handlePress}>
+    <Pressable style={styles.container} onPress={handleOverlay}>
       <Timer />
       <DateDisplay />
       {ENGLISH.map((_, index) => (
