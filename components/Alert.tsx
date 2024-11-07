@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { StyleSheet, Pressable, Text, View } from 'react-native';
+import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import { StyleSheet, Pressable, Text, View, GestureResponderEvent } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
 import Animated, {
@@ -46,7 +46,7 @@ export default function Alert({ index }: Props) {
     { icon: PiSpeakerSimpleHigh, label: "Sound" }
   ], []);
 
-  const handlePress = useCallback((e) => {
+  const handlePress = useCallback((e: GestureResponderEvent) => {
     e?.stopPropagation();
 
     setIsOverlay(false);
