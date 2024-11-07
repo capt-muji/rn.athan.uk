@@ -10,15 +10,21 @@ import {
   overlayAtom
 } from '@/store/store';
 
+const THRESHOLD = 1000; // 1 second threshold
+
 export const useTimer = () => {
-  const [timerName, setTimerName] = useState('');
-  const [timeDisplay, setTimeDisplay] = useState('');
+  // Timer states for both next prayer and overlay
+  const [nextPrayerName, setNextPrayerName] = useState('');
+  const [nextPrayerTime, setNextPrayerTime] = useState('');
+  const [overlayTimerName, setOverlayTimerName] = useState('');
+  const [overlayTimeDisplay, setOverlayTimeDisplay] = useState('');
+  
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [selectedDate] = useAtom(selectedPrayerDateAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [isOverlay, setIsOverlay] = useAtom(overlayAtom);
+  const [isOverlay] = useAtom(overlayAtom);
 
   useEffect(() => {
     const displayPrayers = selectedDate === 'tomorrow' ? tomorrowsPrayers : todaysPrayers;
@@ -33,23 +39,24 @@ export const useTimer = () => {
         null
       );
 
-      // Get display info based on selected prayer/date
-      const displayInfo = getCurrentPrayerInfo(
-        displayPrayers,
-        nextPrayerIndex,
-        selectedDate,
-        isOverlay ? selectedPrayerIndex : null
-      );
+      // Update next prayer timer (always running)
+      setNextPrayerName(nextPrayerInfo.timerName);
+      setNextPrayerTime(nextPrayerInfo.timeDisplay);
 
-      setTimerName(displayInfo.timerName);
-      setTimeDisplay(displayInfo.timeDisplay);
+      // Update overlay timer if active
+      if (isOverlay && selectedPrayerIndex !== null) {
+        const overlayInfo = getCurrentPrayerInfo(
+          displayPrayers,
+          selectedPrayerIndex,
+          selectedDate,
+          selectedPrayerIndex
+        );
+        setOverlayTimerName(overlayInfo.timerName);
+        setOverlayTimeDisplay(overlayInfo.timeDisplay);
+      }
 
-      // If next prayer's timer completes, disable overlay first
-      if (nextPrayerInfo.timeDifference <= 0 && nextPrayerInfo.currentPrayer) {
-        // Always disable overlay first
-        setIsOverlay(false);
-
-        // Then update prayer status
+      // Update prayer status when next prayer timer completes
+      if (nextPrayerInfo.timeDifference <= THRESHOLD && nextPrayerInfo.currentPrayer) {
         if (todaysPrayers[nextPrayerIndex]) {
           todaysPrayers[nextPrayerIndex].passed = true;
         }
@@ -62,5 +69,8 @@ export const useTimer = () => {
     return () => clearInterval(intervalId);
   }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedDate, selectedPrayerIndex, isOverlay]);
 
-  return { timerName, timeDisplay };
+  return {
+    nextPrayer: { timerName: nextPrayerName, timeDisplay: nextPrayerTime },
+    overlayTimer: { timerName: overlayTimerName, timeDisplay: overlayTimeDisplay }
+  };
 };
