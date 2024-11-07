@@ -18,27 +18,40 @@ export const useTimer = () => {
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [selectedDate] = useAtom(selectedPrayerDateAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [isOverlay] = useAtom(overlayAtom);
+  const [isOverlay, setIsOverlay] = useAtom(overlayAtom);
 
   useEffect(() => {
-    const prayers = selectedDate === 'tomorrow' ? tomorrowsPrayers : todaysPrayers;
-    if (!prayers || Object.keys(prayers).length === 0) return;
+    const displayPrayers = selectedDate === 'tomorrow' ? tomorrowsPrayers : todaysPrayers;
+    if (!displayPrayers || Object.keys(displayPrayers).length === 0) return;
 
     const updateTimer = () => {
-      const { timerName, timeDisplay, timeDifference, currentPrayer } = getCurrentPrayerInfo(
-        prayers,
+      // Always track next prayer from today's prayers
+      const nextPrayerInfo = getCurrentPrayerInfo(
+        todaysPrayers,
+        nextPrayerIndex,
+        'today',
+        null
+      );
+
+      // Get display info based on selected prayer/date
+      const displayInfo = getCurrentPrayerInfo(
+        displayPrayers,
         nextPrayerIndex,
         selectedDate,
         isOverlay ? selectedPrayerIndex : null
       );
 
-      setTimerName(timerName);
-      setTimeDisplay(timeDisplay);
+      setTimerName(displayInfo.timerName);
+      setTimeDisplay(displayInfo.timeDisplay);
 
-      // Only update next prayer index when not in overlay mode
-      if (timeDifference <= 0 && currentPrayer && !isOverlay) {
-        if (prayers[nextPrayerIndex]) {
-          prayers[nextPrayerIndex].passed = true;
+      // If next prayer's timer completes, disable overlay first
+      if (nextPrayerInfo.timeDifference <= 0 && nextPrayerInfo.currentPrayer) {
+        // Always disable overlay first
+        setIsOverlay(false);
+
+        // Then update prayer status
+        if (todaysPrayers[nextPrayerIndex]) {
+          todaysPrayers[nextPrayerIndex].passed = true;
         }
         setNextPrayerIndex(nextPrayerIndex === 6 ? -1 : nextPrayerIndex + 1);
       }
