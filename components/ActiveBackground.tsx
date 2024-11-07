@@ -10,8 +10,8 @@ export default function ActiveBackground() {
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{
       translateY: withSpring(nextPrayerIndex * PRAYER.height, {
-        damping: 7,        // Lower = more bouncy
-        stiffness: 100,    // Higher = faster movement
+        damping: 8,        // Lower = more bouncy
+        stiffness: 125,    // Higher = faster movement
         mass: 0.5,         // Lower = less inertia
         velocity: 0,
         restDisplacementThreshold: 0.01,
