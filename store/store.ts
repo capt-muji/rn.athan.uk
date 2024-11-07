@@ -12,6 +12,8 @@ export const selectedPrayerDateAtom = atom<'today' | 'tomorrow'>('today');
 export const overlayAtom = atom<boolean>(false);
 export const selectedPrayerIndexAtom = atom<number | null>(null);
 
+export const lastValidPositionAtom = atom<number>(0);
+
 export const backgroundColorsAtom = atom((get) => {
   const isOverlay = get(overlayAtom);
   return isOverlay 
