@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+  useSharedValue,
+} from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
 import { nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom } from '@/store/store';
@@ -12,43 +17,75 @@ export default function Timer() {
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [isOverlay] = useAtom(overlayAtom);
 
-  // Use next prayer timer if selected prayer is the next prayer
-  const displayTimer = (isOverlay && selectedPrayerIndex !== nextPrayerIndex) 
-    ? overlayTimer 
-    : nextPrayer;
+  // Separate opacity values for each timer
+  const defaultOpacity = useSharedValue(1);
+  const overlayOpacity = useSharedValue(0);
+  const scale = useSharedValue(1);
+  const translateY = useSharedValue(0);
 
-  const animatedStyle = useAnimatedStyle(() => ({
+  // Handle animations when overlay changes
+  useEffect(() => {
+    if (isOverlay) {
+      // Fade out default timer and smoothly scale up
+      defaultOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+      overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+      scale.value = withTiming(1.5, { 
+        duration: ANIMATION.duration * 2 // Longer duration for smoother scale
+      });
+      translateY.value = withTiming(5, { 
+        duration: ANIMATION.duration * 2
+      });
+    } else {
+      // Reset when overlay is inactive
+      overlayOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+      defaultOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+      scale.value = withTiming(1, { 
+        duration: ANIMATION.duration * 2 // Longer duration for smoother scale
+      });
+      translateY.value = withTiming(0, { 
+        duration: ANIMATION.duration * 2
+      });
+    }
+  }, [isOverlay]);
+
+  const defaultStyle = useAnimatedStyle(() => ({
+    opacity: defaultOpacity.value,
     transform: [
-      {
-        scale: withTiming(isOverlay ? 1.5 : 1, {
-          duration: ANIMATION.duration
-        })
-      },
-      {
-        translateY: withTiming(isOverlay ? 5 : 0, {
-          duration: ANIMATION.duration
-        })
-      }
+      { scale: scale.value },
+      { translateY: translateY.value }
+    ]
+  }));
+
+  const overlayStyle = useAnimatedStyle(() => ({
+    opacity: overlayOpacity.value,
+    transform: [
+      { scale: scale.value },
+      { translateY: translateY.value }
     ],
-    fontFamily: isOverlay ? TEXT.famiy.medium : TEXT.famiy.regular
+    position: 'absolute',
+    width: '100%',
+    fontFamily: TEXT.famiy.medium
   }));
 
   return (
     <View style={styles.container}>
       {nextPrayerIndex === -1 ? (
         <Text style={styles.text}>
-          {displayTimer.timerName}
+          {nextPrayer.timerName}
         </Text>
       ) : (
         <>
           <Text style={styles.text}>
-            {`${displayTimer.timerName || '...'} in`}
+            {`${nextPrayer.timerName || '...'} in`}
           </Text>
-          {displayTimer.timeDisplay && (
-            <Animated.Text style={[styles.timer, animatedStyle]}>
-              {displayTimer.timeDisplay}
+          <View style={styles.timerContainer}>
+            <Animated.Text style={[styles.timer, defaultStyle]}>
+              {nextPrayer.timeDisplay}
             </Animated.Text>
-          )}
+            <Animated.Text style={[styles.timer, overlayStyle]}>
+              {overlayTimer.timeDisplay}
+            </Animated.Text>
+          </View>
         </>
       )}
     </View>
@@ -75,5 +112,10 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     fontSize: TEXT.size + 5,
     textAlign: 'center',
-  }
+  },
+  timerContainer: {
+    height: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
