@@ -29,3 +29,7 @@ export const COLORS = {
 export const ANIMATION = {
   duration: 100,
 };
+
+export const PRAYER = {
+  height: 60
+};
