@@ -8,7 +8,7 @@ import Animated, { useAnimatedProps } from 'react-native-reanimated';
 
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom, overlayAtom, backgroundColorsAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom, backgroundColorsAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
 

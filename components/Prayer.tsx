@@ -1,18 +1,8 @@
-import { useCallback } from 'react';
-import { StyleSheet, Pressable, View, GestureResponderEvent } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import {
-  todaysPrayersAtom,
-  nextPrayerIndexAtom,
-  tomorrowsPrayersAtom,
-  selectedPrayerDateAtom,
-  overlayAtom,
-  selectedPrayerIndexAtom,
-  overlayDateColorAtom
-} from '@/store/store';
-import { COLORS, TEXT, SCREEN, ANIMATION, PRAYER } from '@/constants';
+import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
+import { COLORS, TEXT, SCREEN, PRAYER } from '@/constants';
 import Alert from './Alert';
 
 interface Props {
@@ -22,74 +12,21 @@ interface Props {
 export default function Prayer({ index }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
-  const [selectedDate, setSelectedDate] = useAtom(selectedPrayerDateAtom);
-  const [, setIsOverlay] = useAtom(overlayAtom);
-  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [isOverlay] = useAtom(overlayAtom);
-  const [overlayDateColor] = useAtom(overlayDateColorAtom);
 
-  const toggleDate = useCallback(() => {
-    const prayer = todaysPrayers[index];
-    const shouldShowTomorrow = prayer.passed;
-    setSelectedDate(shouldShowTomorrow ? 'tomorrow' : 'today');
-  }, [index, todaysPrayers]);
-
-  const handlePress = useCallback((event: GestureResponderEvent) => {
-    event.stopPropagation();
-
-    if (isOverlay) {
-      setIsOverlay(false);
-      setSelectedPrayerIndex(null);
-      setSelectedDate('today');
-    } else {
-      toggleDate();
-      setIsOverlay(true);
-      setSelectedPrayerIndex(index);
-    }
-  }, [toggleDate, index, isOverlay]);
-
-  const prayer = selectedDate === 'tomorrow' ? tomorrowsPrayers[index] : todaysPrayers[index];
+  const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
 
-  const animatedStyle = useAnimatedStyle(() => {
-    const isHidden = isOverlay && selectedPrayerIndex !== index;
-    const isSelected = selectedPrayerIndex === index && isOverlay;
-    const isTomorrow = selectedDate === 'tomorrow';
-    const shouldBeFullOpacity = isSelected || isTomorrow || isPassed || isNext;
-    const baseOpacity = shouldBeFullOpacity ? 1 : (isOverlay ? TEXT.opacity : TEXT.opacityOverlayPrayer);
-
-    return {
-      opacity: withTiming(isHidden ? 0 : baseOpacity, { duration: ANIMATION.duration }),
-      color: withTiming(overlayDateColor, { duration: ANIMATION.duration }),
-    };
-  });
-
-  const textColor = selectedPrayerIndex === index && isOverlay 
-    ? COLORS.textPrimary
-    : isPassed || isNext
-      ? COLORS.textPrimary
-      : isOverlay
-        ? COLORS.textSecondary
-        : COLORS.textOverlayPrayer;
+  const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textSecondary;
 
   return (
     <View style={styles.container}>
-      <Pressable
-        style={[
-          styles.pressable,
-          isNext && styles.next
-        ]}
-        onPress={handlePress}
-      >
-        <Animated.View style={[styles.content, animatedStyle]}>
-          <Animated.Text style={[styles.text, styles.english, { color: textColor }]}> {prayer.english} </Animated.Text>
-          <Animated.Text style={[styles.text, styles.arabic, { color: textColor }]}> {prayer.arabic} </Animated.Text>
-          <Animated.Text style={[styles.text, styles.time, { color: textColor }]}> {prayer.time} </Animated.Text>
-        </Animated.View>
+      <View style={[styles.content, isNext && styles.next]}>
+        <Text style={[styles.text, styles.english, { color: textColor }]}>{prayer.english}</Text>
+        <Text style={[styles.text, styles.arabic, { color: textColor }]}>{prayer.arabic}</Text>
+        <Text style={[styles.text, styles.time, { color: textColor }]}>{prayer.time}</Text>
         <Alert index={index} />
-      </Pressable>
+      </View>
     </View>
   );
 }
@@ -129,8 +66,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: 25,
     marginRight: 10,
-  },
-  active: {
-    zIndex: 1
   }
 });

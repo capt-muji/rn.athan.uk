@@ -74,14 +74,11 @@ export const addMinutes = (time: string, minutes: number): string => {
 export const getCurrentPrayerInfo = (
   prayers: ITransformedToday,
   prayerIndex: number,
-  selectedDate: DaySelection = 'today',
-  selectedPrayerIndex: number | null = null
+  selectedDate: DaySelection = 'today'
 ): IPrayerInfo => {
   if (!prayers || Object.keys(prayers).length === 0) return { timerName: '', timeDisplay: '' };
 
-  // Use selected prayer index if in overlay mode, otherwise use next prayer index
-  const indexToUse = selectedPrayerIndex !== null ? selectedPrayerIndex : prayerIndex;
-  const prayer = prayers[indexToUse];
+  const prayer = prayers[prayerIndex];
   
   if (!prayer) return { timerName: 'All prayers passed', timeDisplay: '' };
 

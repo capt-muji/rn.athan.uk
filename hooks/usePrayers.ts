@@ -1,8 +1,5 @@
 import { useCallback } from 'react';
 import { useAtom } from 'jotai';
-import { IApiResponse } from '@/types/prayers';
-import storage from '@/storage/storage';
-import { transformApiData, createTodayStructure } from '@/utils/prayer';
 import { 
   isLoadingAtom, 
   hasErrorAtom, 
@@ -10,6 +7,9 @@ import {
   tomorrowsPrayersAtom, 
   nextPrayerIndexAtom 
 } from '@/store/store';
+import { createTodayStructure, transformApiData } from '@/utils/prayer';
+import { IApiResponse } from '@/types/api';
+import storage from '@/storage/storage';
 
 export const usePrayers = () => {
   const [, setIsLoading] = useAtom(isLoadingAtom);

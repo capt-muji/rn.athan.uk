@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, TEXT, ANIMATION } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom, overlayDateColorAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
 
 interface Props {
   index: number;
@@ -20,15 +20,9 @@ interface Props {
 export default function Alert({ index }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [isOverlay] = useAtom(overlayAtom);
   const [iconIndex, setIconIndex] = useState(0);
-  const [, setIsOverlay] = useAtom(overlayAtom);
-  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [, setSelectedDate] = useAtom(selectedPrayerDateAtom);
   const [isActive, setIsActive] = useState(false);
   const [showPopupContent, setShowPopupContent] = useState(false);
-  const [overlayDateColor] = useAtom(overlayDateColorAtom);
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
@@ -49,9 +43,6 @@ export default function Alert({ index }: Props) {
   const handlePress = useCallback((e: GestureResponderEvent) => {
     e?.stopPropagation();
 
-    setIsOverlay(false);
-    setSelectedPrayerIndex(null);
-    setSelectedDate('today');
     setIsActive(true);
 
     // Clear any existing timeout
@@ -116,13 +107,11 @@ export default function Alert({ index }: Props) {
   const IconComponent = currentConfig.icon;
 
   const animatedStyle = useAnimatedStyle(() => {
-    const isHidden = isOverlay && selectedPrayerIndex !== index;
-    const isSelected = selectedPrayerIndex === index && isOverlay;
-    const shouldBeFullOpacity = isSelected || isActive || isPassed || isNext;
-    const baseOpacity = shouldBeFullOpacity ? 1 : (isOverlay ? TEXT.opacity : TEXT.opacityOverlayPrayer);
+    const shouldBeFullOpacity = isActive || isPassed || isNext;
+    const baseOpacity = shouldBeFullOpacity ? 1 : TEXT.opacity;
 
     return {
-      opacity: withTiming(isHidden ? 0 : baseOpacity, { duration: ANIMATION.duration })
+      opacity: withTiming(baseOpacity, { duration: ANIMATION.duration })
     };
   });
 
@@ -132,7 +121,6 @@ export default function Alert({ index }: Props) {
       transform: [{
         scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
       }],
-      color: withTiming(overlayDateColor, { duration: ANIMATION.duration }),
     };
   });
 
@@ -142,13 +130,9 @@ export default function Alert({ index }: Props) {
     };
   });
 
-  const iconColor = selectedPrayerIndex === index && isOverlay
+  const iconColor = isActive || isPassed || isNext
     ? COLORS.textPrimary
-    : isActive || isPassed || isNext
-      ? COLORS.textPrimary
-      : isOverlay
-        ? COLORS.textSecondary
-        : COLORS.textOverlayPrayer;
+    : COLORS.textSecondary;
 
   return (
     <View style={styles.container}>
@@ -157,7 +141,6 @@ export default function Alert({ index }: Props) {
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         style={styles.iconContainer}
-        pointerEvents={isOverlay && selectedPrayerIndex !== index ? 'none' : 'auto'}
       >
         <Animated.View style={[animatedStyle, pressableAnimatedStyle]}>
           <IconComponent color={iconColor} size={20} />
