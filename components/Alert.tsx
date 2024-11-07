@@ -116,11 +116,12 @@ export default function Alert({ index }: Props) {
   const IconComponent = currentConfig.icon;
 
   const animatedStyle = useAnimatedStyle(() => {
-    const baseOpacity = isActive || isPassed || isNext ? 1 : TEXT.opacity;
-    const opacity = isOverlay && selectedPrayerIndex !== index ? 0 : baseOpacity;
+    const isHidden = isOverlay && selectedPrayerIndex !== index;
+    const shouldBeFullOpacity = isActive || isPassed || isNext;
+    const baseOpacity = shouldBeFullOpacity ? 1 : (isOverlay ? TEXT.opacity : TEXT.opacityOverlayPrayer);
 
     return {
-      opacity: withTiming(opacity, { duration: ANIMATION.duration })
+      opacity: withTiming(isHidden ? 0 : baseOpacity, { duration: ANIMATION.duration })
     };
   });
 
@@ -142,7 +143,9 @@ export default function Alert({ index }: Props) {
 
   const iconColor = isActive
     ? COLORS.textPrimary
-    : (isPassed || isNext ? COLORS.textPrimary : COLORS.textSecondary);
+    : (isPassed || isNext
+      ? COLORS.textPrimary
+      : (isOverlay ? COLORS.textSecondary : COLORS.textOverlayPrayer));
 
   return (
     <View style={styles.container}>
