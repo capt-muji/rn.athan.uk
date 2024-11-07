@@ -3,13 +3,19 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
-import { nextPrayerIndexAtom, overlayAtom } from '@/store/store';
+import { nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 export default function Timer() {
-  const { timerName, timeDisplay } = useTimer();
+  const { nextPrayer, overlayTimer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [isOverlay] = useAtom(overlayAtom);
+
+  // Use next prayer timer if selected prayer is the next prayer
+  const displayTimer = (isOverlay && selectedPrayerIndex !== nextPrayerIndex) 
+    ? overlayTimer 
+    : nextPrayer;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -31,16 +37,16 @@ export default function Timer() {
     <View style={styles.container}>
       {nextPrayerIndex === -1 ? (
         <Text style={styles.text}>
-          {timerName}
+          {displayTimer.timerName}
         </Text>
       ) : (
         <>
           <Text style={styles.text}>
-            {`${timerName || '...'} in`}
+            {`${displayTimer.timerName || '...'} in`}
           </Text>
-          {timeDisplay && (
+          {displayTimer.timeDisplay && (
             <Animated.Text style={[styles.timer, animatedStyle]}>
-              {timeDisplay}
+              {displayTimer.timeDisplay}
             </Animated.Text>
           )}
         </>
