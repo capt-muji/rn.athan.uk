@@ -23,3 +23,7 @@ export const COLORS = {
   gradientEnd: '#660ca1',
   transparentBlack: '#000000bf'
 };
+
+export const ANIMATION = {
+  duration: 100,
+};

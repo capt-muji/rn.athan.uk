@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { ANIMATION } from '@/constants/animations';
 
-import { COLORS, SCREEN, TEXT } from '@/constants';
+import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
 import { selectedPrayerDateAtom, overlayAtom, overlayDateColorAtom } from '@/store/store';
 import Masjid from './Masjid';
 

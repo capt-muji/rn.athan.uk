@@ -10,9 +10,8 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated';
 
-import { COLORS, TEXT } from '@/constants';
+import { COLORS, TEXT, ANIMATION } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom, overlayDateColorAtom } from '@/store/store';
-import { ANIMATION } from '@/constants/animations';
 
 interface Props {
   index: number;
