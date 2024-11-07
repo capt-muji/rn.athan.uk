@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
 import { nextPrayerIndexAtom, overlayAtom } from '@/store/store';
@@ -13,8 +13,26 @@ export default function Timer() {
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
-      { scale: withTiming(isOverlay ? 1.5 : 1, { duration: ANIMATION.duration }) },
-      { translateY: withTiming(isOverlay ? 5 : 0, { duration: ANIMATION.duration }) }
+      { 
+        scale: withSpring(isOverlay ? 1.5 : 1, {
+          mass: 1,
+          damping: 12,
+          stiffness: 100,
+          overshootClamping: false,
+          restDisplacementThreshold: 0.01,
+          restSpeedThreshold: 2,
+        }) 
+      },
+      { 
+        translateY: withSpring(isOverlay ? 5 : 0, {
+          mass: 1,
+          damping: 12,
+          stiffness: 100,
+          overshootClamping: false,
+          restDisplacementThreshold: 0.01,
+          restSpeedThreshold: 2,
+        }) 
+      }
     ],
     fontFamily: isOverlay ? TEXT.famiy.medium : TEXT.famiy.regular
   }));

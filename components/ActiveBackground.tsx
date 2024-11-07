@@ -1,16 +1,21 @@
 import { StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import { nextPrayerIndexAtom } from '@/store/store';
-import { COLORS, PRAYER, SCREEN, ANIMATION } from '@/constants';
+import { COLORS, PRAYER, SCREEN } from '@/constants';
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{
-      translateY: withTiming(nextPrayerIndex * PRAYER.height, {
-        duration: ANIMATION.duration * 3
+      translateY: withSpring(nextPrayerIndex * PRAYER.height, {
+        damping: 7,        // Lower = more bouncy
+        stiffness: 100,    // Higher = faster movement
+        mass: 0.5,         // Lower = less inertia
+        velocity: 0,
+        restDisplacementThreshold: 0.01,
+        restSpeedThreshold: 2,
       })
     }]
   }));
