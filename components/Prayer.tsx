@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { StyleSheet, Pressable, View, GestureResponderEvent } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { ANIMATION } from '@/constants/animations';
 
 import {
   todaysPrayersAtom,
@@ -13,7 +12,7 @@ import {
   selectedPrayerIndexAtom,
   overlayDateColorAtom
 } from '@/store/store';
-import { COLORS, TEXT, SCREEN } from '@/constants';
+import { COLORS, TEXT, SCREEN, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
 interface Props {
