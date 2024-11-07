@@ -22,7 +22,7 @@ export const COLORS = {
   textSecondary: '#8BA3C7',
   textTransparent: '#aab8cd',
   gradientStart: '#031a4c',
-  gradientEnd: '#660ca1',
+  gradientEnd: '#5b1eaa',
   transparentBlack: '#000000bf'
 };
 

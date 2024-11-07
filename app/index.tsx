@@ -4,15 +4,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
-import Animated, { useAnimatedProps } from 'react-native-reanimated';
 
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom, backgroundColorsAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
-
-const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
+import { COLORS } from '@/constants';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -23,7 +21,6 @@ export default function Index() {
 
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
-  const [colors] = useAtom(backgroundColorsAtom);
 
   const { initialize } = usePrayers();
 
@@ -35,17 +32,15 @@ export default function Index() {
     init();
   }, []);
 
-  const animatedProps = useAnimatedProps(() => ({
-    colors
-  }));
-
   if (!fontsLoaded || !isInitialized) return <WaveIndicator color="white" />;
 
   return (
     <>
-      <AnimatedLinearGradient
-        animatedProps={animatedProps}
-        style={styles.gradient}
+      <LinearGradient
+      colors={[COLORS.gradientStart, COLORS.gradientEnd]}
+      style={styles.gradient}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
       />
       <StatusBar barStyle="light-content" />
 

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size - 2,
   },
   timer: {
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.famiy.medium,
     color: COLORS.textPrimary,
     fontSize: TEXT.size + 5,
     textAlign: 'center',
