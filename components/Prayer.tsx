@@ -36,7 +36,6 @@ export default function Prayer({ index }: Props) {
   }, [index, todaysPrayers]);
 
   const handlePress = useCallback((event: GestureResponderEvent) => {
-    console.log('eeeee');
     event.stopPropagation();
 
     if (isOverlay) {
@@ -108,16 +107,6 @@ const styles = StyleSheet.create({
   },
   next: {
     opacity: 1,
-    backgroundColor: COLORS.primary,
-    shadowColor: COLORS.primaryShadow,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    borderRadius: 5,
   },
   text: {
     fontFamily: TEXT.famiy.regular,
