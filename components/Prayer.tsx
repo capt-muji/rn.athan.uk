@@ -55,8 +55,9 @@ export default function Prayer({ index }: Props) {
 
   const animatedStyle = useAnimatedStyle(() => {
     const isHidden = isOverlay && selectedPrayerIndex !== index;
+    const isSelected = selectedPrayerIndex === index && isOverlay;
     const isTomorrow = selectedDate === 'tomorrow';
-    const shouldBeFullOpacity = isTomorrow || isPassed || isNext;
+    const shouldBeFullOpacity = isSelected || isTomorrow || isPassed || isNext;
     const baseOpacity = shouldBeFullOpacity ? 1 : (isOverlay ? TEXT.opacity : TEXT.opacityOverlayPrayer);
 
     return {
@@ -65,9 +66,9 @@ export default function Prayer({ index }: Props) {
     };
   });
 
-  const textColor = isPassed || isNext
+  const textColor = selectedPrayerIndex === index && isOverlay 
     ? COLORS.textPrimary
-    : selectedPrayerIndex === index && isOverlay && selectedDate === 'tomorrow'
+    : isPassed || isNext
       ? COLORS.textPrimary
       : isOverlay
         ? COLORS.textSecondary

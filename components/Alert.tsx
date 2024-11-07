@@ -117,7 +117,8 @@ export default function Alert({ index }: Props) {
 
   const animatedStyle = useAnimatedStyle(() => {
     const isHidden = isOverlay && selectedPrayerIndex !== index;
-    const shouldBeFullOpacity = isActive || isPassed || isNext;
+    const isSelected = selectedPrayerIndex === index && isOverlay;
+    const shouldBeFullOpacity = isSelected || isActive || isPassed || isNext;
     const baseOpacity = shouldBeFullOpacity ? 1 : (isOverlay ? TEXT.opacity : TEXT.opacityOverlayPrayer);
 
     return {
@@ -141,11 +142,13 @@ export default function Alert({ index }: Props) {
     };
   });
 
-  const iconColor = isActive
+  const iconColor = selectedPrayerIndex === index && isOverlay
     ? COLORS.textPrimary
-    : (isPassed || isNext
+    : isActive || isPassed || isNext
       ? COLORS.textPrimary
-      : (isOverlay ? COLORS.textSecondary : COLORS.textOverlayPrayer));
+      : isOverlay
+        ? COLORS.textSecondary
+        : COLORS.textOverlayPrayer;
 
   return (
     <View style={styles.container}>
