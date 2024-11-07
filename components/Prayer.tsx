@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   english: {
     flex: 1,
-    marginLeft: 16,
+    marginLeft: 20,
   },
   arabic: {
     flex: 1,
