@@ -67,9 +67,11 @@ export default function Prayer({ index }: Props) {
 
   const textColor = isPassed || isNext
     ? COLORS.textPrimary
-    : isOverlay
-      ? COLORS.textSecondary
-      : COLORS.textOverlayPrayer;
+    : selectedPrayerIndex === index && isOverlay && selectedDate === 'tomorrow'
+      ? COLORS.textPrimary
+      : isOverlay
+        ? COLORS.textSecondary
+        : COLORS.textOverlayPrayer;
 
   return (
     <View style={styles.container}>
