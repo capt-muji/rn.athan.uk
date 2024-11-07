@@ -33,6 +33,7 @@ export default function Alert({ index }: Props) {
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
   const timeoutRef = useRef<NodeJS.Timeout>();
+  const pressAnim = useSharedValue(1);
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
@@ -83,6 +84,22 @@ export default function Alert({ index }: Props) {
     }, 2000);
   }, [alertConfigs.length]);
 
+  const handlePressIn = useCallback(() => {
+    pressAnim.value = withSpring(0.9, {
+      damping: 12,
+      stiffness: 500,
+      mass: 0.5
+    });
+  }, []);
+
+  const handlePressOut = useCallback(() => {
+    pressAnim.value = withSpring(1, {
+      damping: 12,
+      stiffness: 500,
+      mass: 0.5
+    });
+  }, []);
+
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
@@ -117,6 +134,12 @@ export default function Alert({ index }: Props) {
     };
   });
 
+  const pressableAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: pressAnim.value }]
+    };
+  });
+
   const iconColor = isActive
     ? COLORS.textPrimary
     : (isPassed || isNext ? COLORS.textPrimary : COLORS.textSecondary);
@@ -125,10 +148,12 @@ export default function Alert({ index }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
         style={styles.iconContainer}
         pointerEvents={isOverlay && selectedPrayerIndex !== index ? 'none' : 'auto'}
       >
-        <Animated.View style={animatedStyle}>
+        <Animated.View style={[animatedStyle, pressableAnimatedStyle]}>
           <IconComponent color={iconColor} size={20} />
         </Animated.View>
       </Pressable>
