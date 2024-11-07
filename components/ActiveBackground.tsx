@@ -1,14 +1,18 @@
 import { StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withSpring, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  Easing
+} from 'react-native-reanimated';
 import { nextPrayerIndexAtom, lastValidPositionAtom } from '@/store/store';
-import { COLORS, PRAYER, SCREEN, ANIMATION } from '@/constants';
+import { COLORS, PRAYER, ANIMATION, SCREEN } from '@/constants';
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [lastPosition, setLastPosition] = useAtom(lastValidPositionAtom);
 
-  // Update last valid position when we have a real index
   if (nextPrayerIndex !== -1) {
     setLastPosition(nextPrayerIndex);
   }
@@ -19,24 +23,25 @@ export default function ActiveBackground() {
     return {
       transform: [{
         translateY: withSpring(currentPosition * PRAYER.height, {
-          damping: 8,
-          stiffness: 125,
-          mass: 0.5,
-          velocity: 0,
-          restDisplacementThreshold: 0.01,
-          restSpeedThreshold: 2,
+          damping: 10,        // Reduced damping for more bounce
+          stiffness: 150,     // Increased stiffness for more "snap"
+          mass: 0.3,          // Reduced mass for quicker movement
+          velocity: 100,      // Added initial velocity for more momentum
+          restSpeedThreshold: 0.5,  // Lower threshold to ensure animation completes
+          restDisplacementThreshold: 0.5
         })
       }],
       opacity: withTiming(
         nextPrayerIndex === -1 ? 0 : 1,
-        { duration: ANIMATION.duration }
+        {
+          duration: 300,
+          easing: Easing.bezier(0.4, 0.0, 0.2, 1)
+        }
       )
     };
   });
 
-  return (
-    <Animated.View style={[styles.background, animatedStyle]} />
-  );
+  return <Animated.View style={[styles.background, animatedStyle]} />;
 }
 
 const styles = StyleSheet.create({
@@ -48,7 +53,6 @@ const styles = StyleSheet.create({
     height: PRAYER.height,
     backgroundColor: COLORS.primary,
     borderRadius: PRAYER.borderRadius,
-    opacity: 0,
     shadowColor: COLORS.primaryShadow,
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.5,

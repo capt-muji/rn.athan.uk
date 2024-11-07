@@ -1,8 +1,9 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useAtom } from 'jotai';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
-import { COLORS, TEXT, SCREEN, PRAYER } from '@/constants';
+import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
 interface Props {
@@ -17,14 +18,29 @@ export default function Prayer({ index }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
 
-  const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textSecondary;
+  const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
+
+  const animatedStyle = useAnimatedStyle(() => {
+    const shouldBeFullOpacity = isPassed || isNext;
+    const baseOpacity = shouldBeFullOpacity ? 1 : TEXT.transparent;
+
+    return {
+      opacity: withTiming(baseOpacity, { duration: ANIMATION.duration })
+    };
+  });
 
   return (
     <View style={styles.container}>
       <View style={[styles.content, isNext && styles.next]}>
-        <Text style={[styles.text, styles.english, { color: textColor }]}>{prayer.english}</Text>
-        <Text style={[styles.text, styles.arabic, { color: textColor }]}>{prayer.arabic}</Text>
-        <Text style={[styles.text, styles.time, { color: textColor }]}>{prayer.time}</Text>
+        <Animated.Text style={[styles.text, styles.english, { color: textColor }, animatedStyle]}>
+          {prayer.english}
+        </Animated.Text>
+        <Animated.Text style={[styles.text, styles.arabic, { color: textColor }, animatedStyle]}>
+          {prayer.arabic}
+        </Animated.Text>
+        <Animated.Text style={[styles.text, styles.time, { color: textColor }, animatedStyle]}>
+          {prayer.time}
+        </Animated.Text>
         <Alert index={index} />
       </View>
     </View>

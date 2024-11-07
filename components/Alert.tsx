@@ -108,7 +108,7 @@ export default function Alert({ index }: Props) {
 
   const animatedStyle = useAnimatedStyle(() => {
     const shouldBeFullOpacity = isActive || isPassed || isNext;
-    const baseOpacity = shouldBeFullOpacity ? 1 : TEXT.opacity;
+    const baseOpacity = shouldBeFullOpacity ? 1 : TEXT.transparent;
 
     return {
       opacity: withTiming(baseOpacity, { duration: ANIMATION.duration })
@@ -132,7 +132,7 @@ export default function Alert({ index }: Props) {
 
   const iconColor = isActive || isPassed || isNext
     ? COLORS.textPrimary
-    : COLORS.textSecondary;
+    : COLORS.textTransparent;
 
   return (
     <View style={styles.container}>

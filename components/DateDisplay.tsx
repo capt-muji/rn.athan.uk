@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size - 2,
     fontFamily: TEXT.famiy.regular,
     marginBottom: 5,
+    opacity: TEXT.opacity
   },
   date: {
     fontFamily: TEXT.famiy.regular,
