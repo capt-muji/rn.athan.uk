@@ -12,7 +12,7 @@ import {
   selectedPrayerIndexAtom,
   overlayDateColorAtom
 } from '@/store/store';
-import { COLORS, TEXT, SCREEN, ANIMATION } from '@/constants';
+import { COLORS, TEXT, SCREEN, ANIMATION, PRAYER } from '@/constants';
 import Alert from './Alert';
 
 interface Props {
@@ -36,6 +36,7 @@ export default function Prayer({ index }: Props) {
   }, [index, todaysPrayers]);
 
   const handlePress = useCallback((event: GestureResponderEvent) => {
+    console.log('eeeee');
     event.stopPropagation();
 
     if (isOverlay) {
@@ -93,7 +94,8 @@ export default function Prayer({ index }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: SCREEN.paddingHorizontal
+    marginHorizontal: SCREEN.paddingHorizontal,
+    height: PRAYER.height,
   },
   pressable: {
     flexDirection: 'row',
@@ -108,9 +110,13 @@ const styles = StyleSheet.create({
     opacity: 1,
     backgroundColor: COLORS.primary,
     shadowColor: COLORS.primaryShadow,
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
     borderRadius: 5,
   },
   text: {

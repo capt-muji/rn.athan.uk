@@ -3,9 +3,8 @@ import { useAtom } from 'jotai';
 
 import Timer from '@/components/Timer';
 import DateDisplay from '@/components/DateDisplay';
-import Prayer from '@/components/Prayer';
+import PrayersList from '@/components/PrayersList';
 import Footer from '@/components/Footer';
-import { ENGLISH } from '@/constants';
 import { overlayAtom, selectedPrayerIndexAtom, selectedPrayerDateAtom } from '@/store/store';
 
 export default function Main() {
@@ -23,9 +22,7 @@ export default function Main() {
     <Pressable style={styles.container} onPress={handleOverlay}>
       <Timer />
       <DateDisplay />
-      {ENGLISH.map((_, index) => (
-        <Prayer key={index} index={index} />
-      ))}
+      <PrayersList />
       <Footer />
     </Pressable>
   );
