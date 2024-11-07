@@ -8,6 +8,7 @@ export const TEXT = {
   },
   size: 18,
   opacity: 0.65,
+  opacityOverlayPrayer: 0.5,
 };
 
 export const SCREEN = {
@@ -19,6 +20,7 @@ export const COLORS = {
   primaryShadow: '#0a296a',
   textPrimary: '#ffffff',
   textSecondary: '#8BA3C7',
+  textOverlayPrayer: '#aeb7d8',
   gradientStart: '#031a4c',
   gradientEnd: '#660ca1',
   transparentBlack: '#000000bf'
