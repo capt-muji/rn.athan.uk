@@ -8,20 +8,8 @@ export const hasErrorAtom = atom<boolean>(false);
 export const todaysPrayersAtom = atom<ITransformedToday>({});
 export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
-export const selectedPrayerDateAtom = atom<'today' | 'tomorrow'>('today');
-export const overlayAtom = atom<boolean>(false);
-export const selectedPrayerIndexAtom = atom<number | null>(null);
-
 export const lastValidPositionAtom = atom<number>(0);
 
 export const backgroundColorsAtom = atom((get) => {
-  const isOverlay = get(overlayAtom);
-  return isOverlay 
-    ? ['black', 'black']
-    : [COLORS.gradientStart, COLORS.gradientEnd];
-});
-
-export const overlayDateColorAtom = atom((get) => {
-  const isOverlay = get(overlayAtom);
-  return isOverlay ? COLORS.textSecondary : COLORS.textPrimary;
+  return [COLORS.gradientStart, COLORS.gradientEnd];
 });
