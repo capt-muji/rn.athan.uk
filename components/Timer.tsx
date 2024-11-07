@@ -1,10 +1,9 @@
-import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, overlayAtom, overlayDateColorAtom } from '@/store/store';
+import { nextPrayerIndexAtom, overlayAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 import { ANIMATION } from '@/constants/animations';
 

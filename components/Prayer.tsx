@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { StyleSheet, Pressable, Text, View } from 'react-native';
+import { useCallback } from 'react';
+import { StyleSheet, Pressable, View, GestureResponderEvent } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { ANIMATION } from '@/constants/animations';
@@ -36,8 +36,8 @@ export default function Prayer({ index }: Props) {
     setSelectedDate(shouldShowTomorrow ? 'tomorrow' : 'today');
   }, [index, todaysPrayers]);
 
-  const handlePress = useCallback((e) => {
-    e.stopPropagation();
+  const handlePress = useCallback((event: GestureResponderEvent) => {
+    event.stopPropagation();
 
     if (isOverlay) {
       setIsOverlay(false);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
@@ -6,7 +6,6 @@ import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import Animated, { useAnimatedProps } from 'react-native-reanimated';
 
-import { COLORS } from '@/constants';
 import Main from '@/components/Main';
 import Error from '@/components/Error';
 import { isLoadingAtom, hasErrorAtom, overlayAtom, backgroundColorsAtom } from '@/store/store';
@@ -24,7 +23,6 @@ export default function Index() {
 
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
-  const [isOverlay] = useAtom(overlayAtom);
   const [colors] = useAtom(backgroundColorsAtom);
 
   const { initialize } = usePrayers();
