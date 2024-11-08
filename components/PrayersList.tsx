@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
 import { nextPrayerIndexAtom } from '@/store/store';
 import Prayer from './Prayer';
@@ -9,7 +9,7 @@ export default function PrayersList() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
   return (
-    <View>
+    <View style={styles.container}>
       <ActiveBackground />
       {ENGLISH.map((_, index) => (
         <Prayer key={index} index={index} />
@@ -17,3 +17,10 @@ export default function PrayersList() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    width: '100%',
+  }
+});

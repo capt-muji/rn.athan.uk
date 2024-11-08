@@ -6,31 +6,28 @@ import Animated, {
   withTiming,
   Easing
 } from 'react-native-reanimated';
-import { nextPrayerIndexAtom, lastValidPositionAtom } from '@/store/store';
-import { COLORS, PRAYER, ANIMATION, SCREEN } from '@/constants';
+import { nextPrayerIndexAtom, prayerMeasurementsAtom } from '@/store/store';
+import { COLORS, PRAYER, SCREEN } from '@/constants';
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [lastPosition, setLastPosition] = useAtom(lastValidPositionAtom);
-
-  if (nextPrayerIndex !== -1) {
-    setLastPosition(nextPrayerIndex);
-  }
+  // Access our dictionary of all prayer measurements
+  const [measurements] = useAtom(prayerMeasurementsAtom);
 
   const animatedStyle = useAnimatedStyle(() => {
-    const currentPosition = nextPrayerIndex === -1 ? lastPosition : nextPrayerIndex;
+    // Look up the measurements for the active prayer
+    const activePrayer = measurements[nextPrayerIndex];
+    if (!activePrayer) return { opacity: 0 };
 
+    // Animate to the pre-measured position
     return {
-      transform: [{
-        translateY: withSpring(currentPosition * PRAYER.height, {
-          damping: 10,        // Reduced damping for more bounce
-          stiffness: 150,     // Increased stiffness for more "snap"
-          mass: 0.3,          // Reduced mass for quicker movement
-          velocity: 100,      // Added initial velocity for more momentum
-          restSpeedThreshold: 0.5,  // Lower threshold to ensure animation completes
-          restDisplacementThreshold: 0.5
-        })
-      }],
+      top: withSpring(activePrayer.y, {
+        damping: 10,
+        stiffness: 150,
+        mass: 0.3,
+      }),
+      width: withSpring(activePrayer.width),
+      height: withSpring(activePrayer.height),
       opacity: withTiming(
         nextPrayerIndex === -1 ? 0 : 1,
         {
@@ -49,8 +46,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: SCREEN.paddingHorizontal,
-    right: SCREEN.paddingHorizontal,
-    height: PRAYER.height,
     backgroundColor: COLORS.primary,
     borderRadius: PRAYER.borderRadius,
     shadowColor: COLORS.primaryShadow,

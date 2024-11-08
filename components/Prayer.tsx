@@ -1,8 +1,9 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, LayoutChangeEvent } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, prayerMeasurementsAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
@@ -13,10 +14,26 @@ interface Props {
 export default function Prayer({ index }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [, setActiveMeasurements] = useAtom(activePrayerMeasurementsAtom);
+  const [, setPrayerMeasurements] = useAtom(prayerMeasurementsAtom);
+  const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
+
+  const handleLayout = (event: LayoutChangeEvent) => {
+    const { x, y, width, height } = event.nativeEvent.layout;
+    // Store this prayer's measurements in global dictionary
+    setPrayerMeasurements(prev => ({
+      ...prev,
+      [index]: { x, y, width, height }
+    }));
+    // Also update active measurements if this is the active prayer
+    if (isNext) {
+      setActiveMeasurements({ x, y, width, height });
+    }
+  };
 
   const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 
@@ -30,7 +47,10 @@ export default function Prayer({ index }: Props) {
   });
 
   return (
-    <View style={styles.container}>
+    <View 
+      onLayout={handleLayout}
+      style={styles.container}
+    >
       <View style={[styles.content, isNext && styles.next]}>
         <Animated.Text style={[styles.text, styles.english, { color: textColor }, animatedStyle]}>
           {prayer.english}
