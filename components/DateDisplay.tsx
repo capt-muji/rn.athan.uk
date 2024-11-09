@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: SCREEN.paddingHorizontal,
-    zIndex: 1,
   },
   location: {
     color: COLORS.textSecondary,

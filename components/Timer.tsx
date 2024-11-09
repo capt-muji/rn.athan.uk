@@ -6,7 +6,11 @@ import { COLORS, SCREEN, TEXT } from '@/constants';
 import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
-export default function Timer() {
+interface TimerProps {
+  isOverlay?: boolean;
+}
+
+export default function Timer({ isOverlay = false }: TimerProps) {
   const { nextPrayer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [_, setTimerMeasurements] = useAtom(absoluteTimerMeasurementsAtom);
@@ -16,7 +20,7 @@ export default function Timer() {
   const measurementsRef = useRef<PageCoordinates | null>(null);
 
   const handleLayout = () => {
-    if (!timerRef.current) return;
+    if (isOverlay || !timerRef.current) return;
 
     timerRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
@@ -27,11 +31,16 @@ export default function Timer() {
 
   useEffect(() => {
     if (overlayVisible) {
-      setOverlayContent(prev => [...prev, {
-        name: 'timer',
-        component: timerComponent,
-        measurements: measurementsRef.current!
-      }]);
+      setOverlayContent(prev => {
+        const exists = prev.some(item => item.name === 'timer');
+        if (exists) return prev;
+
+        return [...prev, {
+          name: 'timer',
+          component: <Timer isOverlay={true} />,
+          measurements: measurementsRef.current!
+        }];
+      });
     }
   }, [overlayVisible]);
 
@@ -68,7 +77,6 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: SCREEN.paddingHorizontal,
     marginBottom: 35,
-    zIndex: 1,
     justifyContent: 'center',
   },
   text: {
