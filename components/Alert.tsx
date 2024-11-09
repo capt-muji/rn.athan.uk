@@ -15,9 +15,11 @@ import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
 
 interface Props {
   index: number;
+  isOverlay?: boolean;
+  isSelected?: boolean;  // Add this prop
 }
 
-export default function Alert({ index }: Props) {
+export default function Alert({ index, isOverlay = false, isSelected = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [iconIndex, setIconIndex] = useState(0);
@@ -41,7 +43,9 @@ export default function Alert({ index }: Props) {
   ], []);
 
   const handlePress = useCallback((e: GestureResponderEvent) => {
-    e?.stopPropagation();
+    if (!isOverlay) {
+      e?.stopPropagation();
+    }
 
     setIsActive(true);
 
@@ -73,7 +77,7 @@ export default function Alert({ index }: Props) {
       bounceAnim.value = withSpring(0);
       setIsActive(false);
     }, 2000);
-  }, [alertConfigs.length]);
+  }, [alertConfigs.length, isOverlay]);
 
   const handlePressIn = useCallback(() => {
     pressAnim.value = withSpring(0.9, {
@@ -107,7 +111,7 @@ export default function Alert({ index }: Props) {
   const IconComponent = currentConfig.icon;
 
   const animatedStyle = useAnimatedStyle(() => {
-    const shouldBeFullOpacity = isActive || isPassed || isNext;
+    const shouldBeFullOpacity = isSelected || isActive || isPassed || isNext;
     const baseOpacity = shouldBeFullOpacity ? 1 : TEXT.transparent;
 
     return {
@@ -130,9 +134,9 @@ export default function Alert({ index }: Props) {
     };
   });
 
-  const iconColor = isActive || isPassed || isNext
-    ? COLORS.textPrimary
-    : COLORS.textTransparent;
+  const iconColor = isSelected 
+    ? 'white'
+    : isActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 
   return (
     <View style={styles.container}>
