@@ -5,7 +5,7 @@ import { dateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom } from '@/
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import Masjid from './Masjid';
 
-export default function DateDisplay({ isOverlay }: { isOverlay?: boolean }) {
+export default function DateDisplay() {
   const [_, setDateMeasurements] = useAtom(dateMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [__, setOverlayContent] = useAtom(overlayContentAtom);
@@ -19,16 +19,15 @@ export default function DateDisplay({ isOverlay }: { isOverlay?: boolean }) {
     year: 'numeric'
   });
 
-
   useEffect(() => {
-    if (overlayVisible && !isOverlay && measurementsRef.current) {
+    if (overlayVisible && measurementsRef.current) {
       setOverlayContent(prev => [...prev, {
         name: 'date',
         component: dateComponent,
         measurements: measurementsRef.current!
       }]);
     }
-  }, [overlayVisible, isOverlay]);
+  }, [overlayVisible]);
 
   const handleLayout = () => {
     if (!dateRef.current) return;

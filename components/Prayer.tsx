@@ -9,10 +9,9 @@ import Alert from './Alert';
 
 interface Props {
   index: number;
-  isOverlay?: boolean;
 }
 
-export default function Prayer({ index, isOverlay }: Props) {
+export default function Prayer({ index }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setActiveMeasurements] = useAtom(activePrayerMeasurementsAtom);
@@ -59,14 +58,12 @@ export default function Prayer({ index, isOverlay }: Props) {
   };
 
   const handlePress = () => {
-    if (!isOverlay) {
-      setOverlayContent(prev => [...prev, {
-        name: `prayer-${index}`,
-        component: <Prayer index={index} isOverlay />,
-        measurements: prayerMeasurements[index]
-      }]);
-      setOverlayVisible(true);
-    }
+    setOverlayContent(prev => [...prev, {
+      name: `prayer-${index}`,
+      component: <Prayer index={index} />,
+      measurements: prayerMeasurements[index]
+    }]);
+    setOverlayVisible(true);
   };
 
   const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
