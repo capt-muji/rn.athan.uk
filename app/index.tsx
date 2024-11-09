@@ -11,6 +11,7 @@ import { isLoadingAtom, hasErrorAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
 import { COLORS } from '@/constants';
+import ActiveBackground from '@/components/ActiveBackground';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -37,12 +38,13 @@ export default function Index() {
   return (
     <>
       <LinearGradient
-      colors={[COLORS.gradientStart, COLORS.gradientEnd]}
-      style={styles.gradient}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
+        colors={[COLORS.gradientStart, COLORS.gradientEnd]}
+        style={styles.gradient}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
       />
       <StatusBar barStyle="light-content" />
+      <ActiveBackground />
 
       {isLoading && <WaveIndicator color="white" />}
       {hasError && !isLoading && <Error />}
