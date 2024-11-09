@@ -9,6 +9,9 @@ export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
 export const lastValidPositionAtom = atom<number>(0);
 
+export const overlayVisibleAtom = atom<boolean>(false);
+export const selectedPrayerIndexAtom = atom<number | null>(null);
+
 interface PageCoordinates {
   pageX: number;
   pageY: number;

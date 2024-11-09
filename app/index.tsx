@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
+import { Portal } from 'react-native-paper';
 
 import Main from '@/components/Main';
 import Error from '@/components/Error';
@@ -12,6 +13,7 @@ import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
 import { COLORS } from '@/constants';
 import ActiveBackground from '@/components/ActiveBackground';
+import Overlay from '@/components/Overlay';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -43,12 +45,15 @@ export default function Index() {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-      <StatusBar barStyle="light-content" />
-      <ActiveBackground />
+      <Portal.Host>
+        <StatusBar barStyle="light-content" />
+        <ActiveBackground />
 
-      {isLoading && <WaveIndicator color="white" />}
-      {hasError && !isLoading && <Error />}
-      {!hasError && !isLoading && <Main />}
+        {isLoading && <WaveIndicator color="white" />}
+        {hasError && !isLoading && <Error />}
+        {!hasError && !isLoading && <Main />}
+        <Overlay />
+      </Portal.Host>
     </>
   );
 }
