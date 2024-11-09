@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import { dateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom } from '@/store/store';
+import { dateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom, PageCoordinates } from '@/store/store';
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import Masjid from './Masjid';
 
