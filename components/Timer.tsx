@@ -1,6 +1,11 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
+import Animated, { 
+  useAnimatedStyle, 
+  useSharedValue,
+  withSpring 
+} from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
@@ -18,6 +23,15 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   const [__, setOverlayContent] = useAtom(overlayContentAtom);
   const timerRef = useRef<View>(null);
   const measurementsRef = useRef<PageCoordinates | null>(null);
+  const scale = useSharedValue(1);
+  const translateY = useSharedValue(0);
+  
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      { scale: scale.value },
+      { translateY: translateY.value }
+    ]
+  }));
 
   const handleLayout = () => {
     if (isOverlay || !timerRef.current) return;
@@ -44,6 +58,16 @@ export default function Timer({ isOverlay = false }: TimerProps) {
     }
   }, [overlayVisible]);
 
+  useEffect(() => {
+    if (isOverlay) {
+      scale.value = withSpring(1.5, { mass: 0.5 });
+      translateY.value = withSpring(5, { mass: 0.5 });
+    } else {
+      scale.value = withSpring(1, { mass: 0.5 });
+      translateY.value = withSpring(0, { mass: 0.5 });
+    }
+  }, [isOverlay]);
+
   const timerComponent = (
     <View 
       ref={timerRef} 
@@ -58,9 +82,9 @@ export default function Timer({ isOverlay = false }: TimerProps) {
       ) : (
         <>
           <Text style={styles.text}> {`${nextPrayer.timerName || '...'} in`} </Text>
-          <View style={styles.timerContainer}>
+          <Animated.View style={[styles.timerContainer, animatedStyle]}>
             <Text style={styles.timer}> {nextPrayer.timeDisplay} </Text>
-          </View>
+          </Animated.View>
         </>
       )}
     </View>

@@ -1,5 +1,5 @@
 import { StyleSheet, Pressable, View } from 'react-native';
-import Reanimated from 'react-native-reanimated';
+import Reanimated, { withSpring } from 'react-native-reanimated';
 import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { BlurView } from 'expo-blur';
@@ -59,7 +59,7 @@ export default function Overlay() {
 
   return (
     <Portal>
-      <AnimatedBlur animatedProps={animatedProps} tint="systemThickMaterialDark" style={StyleSheet.absoluteFill}>
+      <AnimatedBlur animatedProps={animatedProps} tint="light" style={StyleSheet.absoluteFill}>
         <Pressable style={styles.overlay} onPress={handleClose}>
           {uniqueContent.map(({ name, component, measurements }) => (
             <View
