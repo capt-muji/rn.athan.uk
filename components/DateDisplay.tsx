@@ -1,13 +1,21 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import { absoluteDateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom, PageCoordinates } from '@/store/store';
+import { absoluteDateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom, overlayClosingAtom, PageCoordinates } from '@/store/store';
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import Masjid from './Masjid';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-export default function DateDisplay() {
+interface DateDisplayProps {
+  isOverlay?: boolean;
+}
+
+const AnimatedText = Animated.createAnimatedComponent(Text);
+
+export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
   const [_, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayClosing] = useAtom(overlayClosingAtom);
   const [__, setOverlayContent] = useAtom(overlayContentAtom);
   const dateRef = useRef<Text>(null);
   const measurementsRef = useRef<PageCoordinates | null>(null);
@@ -39,10 +47,19 @@ export default function DateDisplay() {
     });
   };
 
+  const dateTextStyle = useAnimatedStyle(() => ({
+    color: isOverlay || (overlayVisible && !overlayClosing) ? COLORS.textSecondary : COLORS.textPrimary,
+    opacity: isOverlay || (overlayVisible && !overlayClosing) ? TEXT.opacity : 1
+  }));
+
   const dateComponent = (
-    <Text ref={dateRef} onLayout={handleLayout} style={styles.date}>
+    <AnimatedText
+      ref={dateRef}
+      onLayout={handleLayout}
+      style={[styles.date, dateTextStyle]}
+    >
       {formattedDate}
-    </Text>
+    </AnimatedText>
   );
 
   return (
