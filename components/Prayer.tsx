@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, prayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, prayerRelativeMeasurementsAtom, overlayContentAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
@@ -15,10 +15,10 @@ export default function Prayer({ index }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setActiveMeasurements] = useAtom(activePrayerMeasurementsAtom);
-  const [prayerMeasurements, setPrayerMeasurements] = useAtom(prayerMeasurementsAtom);
+  const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
+  const [, setRelativePrayerMeasurements] = useAtom(relativePrayerMeasurementsAtom);
   const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [, setPrayerRelativeMeasurements] = useAtom(prayerRelativeMeasurementsAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const viewRef = useRef<View>(null);
 
@@ -29,7 +29,7 @@ export default function Prayer({ index }: Props) {
   const handleLayout = () => {
     if (!viewRef.current) return;
 
-    // Measure window coordinates for overlay
+    // Measure absolute window coordinates to display text in overlay
     viewRef.current.measureInWindow((x, y, width, height) => {
       const windowMeasurements = {
         pageX: x,
@@ -38,10 +38,11 @@ export default function Prayer({ index }: Props) {
         height
       };
 
-      setPrayerMeasurements(prev => ({
-        ...prev,
-        [index]: windowMeasurements
-      }));
+      setAbsolutePrayerMeasurements(prev => {
+        const measurements = [...prev];
+        measurements[index] = windowMeasurements;
+        return measurements;
+      });
 
       if (isNext) {
         setActiveMeasurements(windowMeasurements);
@@ -50,10 +51,17 @@ export default function Prayer({ index }: Props) {
 
     // Measure relative coordinates for active background
     viewRef.current.measure((x, y, width, height) => {
-      setPrayerRelativeMeasurements(prev => ({
-        ...prev,
-        [index]: { x, y, width, height }
-      }));
+      setRelativePrayerMeasurements(prev => {
+        const relativeMeasurements = [...prev];
+        relativeMeasurements[index] = {
+          x,
+          y,
+          width,
+          height,
+          name: prayer.english
+        };
+        return relativeMeasurements;
+      });
     });
   };
 
@@ -62,11 +70,11 @@ export default function Prayer({ index }: Props) {
     setOverlayContent(prev => {
       const exists = prev.some(item => item.name === `prayer-${index}`);
       if (exists) return prev;
-      
+
       return [...prev, {
         name: `prayer-${index}`,
         component: <Prayer index={index} />,
-        measurements: prayerMeasurements[index]
+        measurements: absolutePrayerMeasurements[index]
       }];
     });
     setOverlayVisible(true);
