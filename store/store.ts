@@ -19,3 +19,6 @@ interface PrayerMeasurements {
 export const activePrayerMeasurementsAtom = atom<PrayerMeasurements | null>(null);
 
 export const prayerMeasurementsAtom = atom<Record<number, PrayerMeasurements>>({});
+
+export const timerMeasurementsAtom = atom<PrayerMeasurements | null>(null);
+export const dateMeasurementsAtom = atom<PrayerMeasurements | null>(null);
