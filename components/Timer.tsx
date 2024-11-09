@@ -45,7 +45,14 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   }, [overlayVisible]);
 
   const timerComponent = (
-    <View ref={timerRef} onLayout={handleLayout} style={styles.container}>
+    <View 
+      ref={timerRef} 
+      onLayout={handleLayout} 
+      style={[
+        styles.container,
+        { opacity: isOverlay ? (overlayVisible ? 1 : 0) : (overlayVisible ? 0 : 1) }
+      ]}
+    >
       {nextPrayerIndex === -1 ? (
         <Text style={styles.text}> {nextPrayer.timerName} </Text>
       ) : (
