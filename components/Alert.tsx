@@ -118,11 +118,17 @@ export default function Alert({ index, isOverlay = false, isSelected = false }: 
       };
     }
 
-    const shouldBeFullOpacity = isSelected || isActive || isPassed || isNext;
-    const baseOpacity = shouldBeFullOpacity && !overlayClosing ? 1 : 0;
+    // Skip animation for passed/next prayers in overlay
+    if (isPassed || isNext) return {};
+
+    const shouldBeFullOpacity = isSelected || isActive;
+    const duration = overlayClosing ? ANIMATION.duration : 0;
 
     return {
-      opacity: withTiming(baseOpacity, { duration: ANIMATION.duration })
+      opacity: withTiming(
+        shouldBeFullOpacity && !overlayClosing ? 1 : 0,
+        { duration }
+      )
     };
   });
 

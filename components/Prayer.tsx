@@ -131,7 +131,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       };
     }
 
-    const shouldBeVisible = isSelected || isPassed || isNext;
+    // Skip animation for passed/next prayers in overlay
+    if (isPassed || isNext) return {};
+
+    const shouldBeVisible = isSelected;
     const duration = overlayClosing ? ANIMATION.duration : 0;
 
     return {
