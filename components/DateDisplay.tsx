@@ -28,26 +28,26 @@ export default function DateDisplay({ isOverlay }: { isOverlay?: boolean }) {
       if (!isOverlay) {
         setOverlayContent([{
           name: 'date',
-          component: <Text style={[styles.date, styles.red]}>{formattedDate}</Text>,
+          component: dateComponent,
           measurements
         }]);
       }
     });
   };
 
+  const dateComponent = (
+    <Text ref={dateRef} onLayout={handleLayout} style={styles.date}>
+      {formattedDate}
+    </Text>
+  );
+
   return (
     <View style={styles.container}>
       <View>
-        {!isOverlay && <Text style={styles.location}>London, UK</Text>}
-        <Text
-          ref={dateRef}
-          onLayout={handleLayout}
-          style={styles.date}
-        >
-          {formattedDate}
-        </Text>
+        <Text style={styles.location}>London, UK</Text>
+        {dateComponent}
       </View>
-      {!isOverlay && <Masjid />}
+      <Masjid />
     </View>
   );
 }
