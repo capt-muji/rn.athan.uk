@@ -27,7 +27,7 @@ export const COLORS = {
 };
 
 export const ANIMATION = {
-  duration: 100,
+  duration: 300,
 };
 
 export const PRAYER = {
@@ -42,5 +42,5 @@ export const PRAYER = {
     shadowRadius: 3.84,
     elevation: 5,
   },
-  borderRadius: 5,
+  borderRadius: 8,
 };

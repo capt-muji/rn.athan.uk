@@ -1,6 +1,6 @@
 import { StyleSheet, View, Pressable, ScrollView } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
 import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom } from '@/store/store';
@@ -9,9 +9,12 @@ import Alert from './Alert';
 
 interface Props {
   index: number;
+  isOverlay?: boolean;  // Add this prop
 }
 
-export default function Prayer({ index }: Props) {
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+export default function Prayer({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setActiveMeasurements] = useAtom(absoluteActivePrayerMeasurementsAtom);
@@ -25,6 +28,21 @@ export default function Prayer({ index }: Props) {
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
+
+  const backgroundOpacity = useSharedValue(0);
+
+  useEffect(() => {
+    if (isOverlay) {
+      backgroundOpacity.value = withTiming(0.60, { duration: 750 });
+    }
+  }, [isOverlay]);
+
+  const containerStyle = useAnimatedStyle(() => ({
+    backgroundColor: `rgba(0,0,0,${backgroundOpacity.value})`,
+    borderRadius: PRAYER.borderRadius,
+    flexDirection: 'row',
+    alignItems: 'center',
+  }));
 
   const handleLayout = () => {
     if (!viewRef.current) return;
@@ -73,7 +91,7 @@ export default function Prayer({ index }: Props) {
 
       return [...prev, {
         name: `prayer-${index}`,
-        component: <Prayer index={index} />,
+        component: <Prayer index={index} isOverlay={true} />, // Pass isOverlay prop here
         measurements: absolutePrayerMeasurements[index]
       }];
     });
@@ -92,10 +110,10 @@ export default function Prayer({ index }: Props) {
   });
 
   return (
-    <Pressable
+    <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={styles.container}
+      style={containerStyle}
       onPress={handlePress}
     >
       <Animated.Text style={[styles.text, styles.english, { color: textColor }, animatedStyle]}>
@@ -108,15 +126,12 @@ export default function Prayer({ index }: Props) {
         {prayer.time}
       </Animated.Text>
       <Alert index={index} />
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
+  // Remove container and overlayContainer styles as they're now handled by containerStyle
   pressable: {
     flexDirection: 'row',
     alignItems: 'center',
