@@ -15,7 +15,7 @@ export default function ActiveBackground() {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
 
   const animatedStyle = useAnimatedStyle(() => {
-    if (overlayVisible || nextPrayerIndex === -1 || !relativeMeasurements[nextPrayerIndex]) {
+    if (nextPrayerIndex === -1 || !relativeMeasurements[nextPrayerIndex]) {
       return { opacity: 0 };
     }
 
