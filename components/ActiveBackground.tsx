@@ -17,26 +17,19 @@ export default function ActiveBackground() {
   const animatedStyle = useAnimatedStyle(() => {
     const activePrayer = relativeMeasurements[nextPrayerIndex];
 
-    if (nextPrayerIndex === -1 || !activePrayer || overlayVisible) {
+    if (nextPrayerIndex === -1 || !activePrayer) {
       return { opacity: 0 };
     }
 
     return {
-      opacity: withTiming(1, {
-        duration: 300,
-        easing: Easing.bezier(0.4, 0.0, 0.2, 1),
-      }),
+      opacity: overlayVisible ? withTiming(0) : withTiming(1),
       position: 'absolute',
-      top: withSpring(activePrayer.y, {
-        damping: 15,
-        stiffness: 150,
-        mass: 0.5,
-      }),
+      top: withSpring(activePrayer.y),
       left: activePrayer.x,
       width: withSpring(activePrayer.width),
       height: withSpring(activePrayer.height),
     };
-  }, [nextPrayerIndex, relativeMeasurements, overlayVisible]);
+  });
 
   return <Animated.View style={[styles.background, animatedStyle]} />;
 }
