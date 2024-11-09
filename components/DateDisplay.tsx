@@ -27,19 +27,30 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
     year: 'numeric'
   });
 
-  const baseTextOpacity = useSharedValue(1);
-  const overlayTextOpacity = useSharedValue(0);
-
   useEffect(() => {
     if (overlayVisible && !isOverlay) {
-      baseTextOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+      baseTextStyle.opacity = withTiming(0, { duration: ANIMATION.duration });
     } else if (!overlayVisible && !isOverlay) {
-      baseTextOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+      baseTextStyle.opacity = withTiming(1, { duration: ANIMATION.duration });
     }
   }, [overlayVisible, isOverlay]);
 
   const overlayAnimatedStyle = useAnimatedStyle(() => ({
     opacity: overlayClosing ? withTiming(0, { duration: ANIMATION.duration }) : withTiming(1, { duration: ANIMATION.duration })
+  }));
+
+  const overlayTextStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(overlayClosing ? 0 : TEXT.opacity, { 
+      duration: ANIMATION.duration 
+    }),
+    color: COLORS.textSecondary,
+  }));
+
+  const baseTextStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(overlayVisible && !overlayClosing ? 0 : 1, { 
+      duration: ANIMATION.duration 
+    }),
+    color: COLORS.textPrimary,
   }));
 
   useEffect(() => {
@@ -54,13 +65,7 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
         return [...prev, {
           name: 'date',
           component: (
-            <Animated.Text style={[
-              styles.date,
-              {
-                color: COLORS.textSecondary,
-                opacity: overlayClosing ? 0 : 0.5
-              }
-            ]}>
+            <Animated.Text style={[styles.date, overlayTextStyle]}>
               {prayer.passed ? 'Tomorrow' : 'Today'}
             </Animated.Text>
           ),
@@ -80,11 +85,6 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
     });
   };
 
-  const dateTextStyle = useAnimatedStyle(() => ({
-    color: isOverlay || (overlayVisible && !overlayClosing) ? COLORS.textSecondary : COLORS.textPrimary,
-    opacity: isOverlay ? overlayTextOpacity.value : baseTextOpacity.value
-  }));
-
   const getDisplayText = () => {
     if (!isOverlay) return formattedDate;
     if (selectedPrayerIndex === null) return formattedDate;
@@ -100,7 +100,7 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
         <Animated.Text
           ref={dateRef}
           onLayout={handleLayout}
-          style={[styles.date, dateTextStyle]}
+          style={[styles.date, baseTextStyle]}
         >
           {formattedDate}
         </Animated.Text>
