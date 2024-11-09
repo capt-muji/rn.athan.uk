@@ -3,7 +3,7 @@ import Reanimated, { withSpring } from 'react-native-reanimated';
 import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { BlurView } from 'expo-blur';
-import { overlayVisibleAtom, overlayContentAtom, overlayAnimatingAtom } from '@/store/store';
+import { overlayVisibleAtom, overlayContentAtom, overlayAnimatingAtom, overlayClosingAtom } from '@/store/store';
 import { COLORS } from '@/constants';
 import { useEffect } from 'react';
 import {
@@ -19,6 +19,7 @@ export default function Overlay() {
   const [visible, setVisible] = useAtom(overlayVisibleAtom);
   const [content, setOverlayContent] = useAtom(overlayContentAtom);
   const [, setAnimating] = useAtom(overlayAnimatingAtom);
+  const [, setClosing] = useAtom(overlayClosingAtom);
 
   const intensity = useSharedValue(0);
 
@@ -41,12 +42,14 @@ export default function Overlay() {
 
   const handleClose = () => {
     setAnimating(true);
+    setClosing(true);
     intensity.value = withTiming(0, {
       duration: 300
     }, () => {
       runOnJS(setVisible)(false);
       runOnJS(setOverlayContent)([]);
       runOnJS(setAnimating)(false);
+      runOnJS(setClosing)(false);
     });
   };
 
