@@ -43,3 +43,5 @@ export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
 
 export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates | null>(null);
+
+export const shadowOpacityAtom = atom<number>(0.5);

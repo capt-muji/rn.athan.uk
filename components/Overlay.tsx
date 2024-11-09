@@ -4,7 +4,7 @@ import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
-import { overlayVisibleAtom, overlayContentAtom, overlayAnimatingAtom, overlayClosingAtom } from '@/store/store';
+import { overlayVisibleAtom, overlayContentAtom, overlayAnimatingAtom, overlayClosingAtom, shadowOpacityAtom } from '@/store/store';
 import { COLORS } from '@/constants';
 import { useEffect } from 'react';
 import {
@@ -23,9 +23,11 @@ export default function Overlay() {
   const [content, setOverlayContent] = useAtom(overlayContentAtom);
   const [, setAnimating] = useAtom(overlayAnimatingAtom);
   const [, setClosing] = useAtom(overlayClosingAtom);
+  const [, setShadowOpacity] = useAtom(shadowOpacityAtom);
 
   const intensity = useSharedValue(0);
   const gradientOpacity = useSharedValue(0);
+  const shadowOpacity = useSharedValue(0.5);
 
   const animatedProps = useAnimatedProps(() => ({
     intensity: intensity.value,
@@ -38,6 +40,7 @@ export default function Overlay() {
   useEffect(() => {
     if (visible) {
       setAnimating(true);
+      setShadowOpacity(0.5);
       intensity.value = withTiming(10, {
         duration: 300
       }, () => {
@@ -50,6 +53,8 @@ export default function Overlay() {
   const handleClose = () => {
     setAnimating(true);
     setClosing(true);
+    setShadowOpacity(0);
+    shadowOpacity.value = withTiming(0, { duration: 300 });
     intensity.value = withTiming(0, {
       duration: 300
     });

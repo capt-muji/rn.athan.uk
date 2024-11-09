@@ -3,13 +3,14 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayClosingAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayClosingAtom, shadowOpacityAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
 interface Props {
   index: number;
-  isOverlay?: boolean;  // Add this prop
+  isOverlay?: boolean;
+  shadowOpacity?: SharedValue<number>;
 }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -27,6 +28,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [overlayClosing] = useAtom(overlayClosingAtom);
   const viewRef = useRef<View>(null);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom); // Add this line
+  const [shadowOpacity] = useAtom(shadowOpacityAtom);
 
   const prayer = todaysPrayers[index];
   const tomorrowPrayer = tomorrowsPrayers[index];
@@ -56,7 +58,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       backgroundColor: COLORS.primary,
       shadowColor: COLORS.primaryShadow,
       shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: 0.5,
+      shadowOpacity: shadowOpacity,
       shadowRadius: 5,
     })
   }));
@@ -116,7 +118,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   };
 
   // Update the textColor logic
-  const textColor = isSelected 
+  const textColor = isSelected
     ? 'white'
     : isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 
@@ -143,10 +145,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       <Animated.Text style={[styles.text, styles.time, { color: textColor }, animatedStyle]}>
         {displayTime}
       </Animated.Text>
-      <Alert 
-        index={index} 
-        isOverlay={isOverlay} 
-        isSelected={isSelected} 
+      <Alert
+        index={index}
+        isOverlay={isOverlay}
+        isSelected={isSelected}
       />
     </AnimatedPressable>
   );
