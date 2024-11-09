@@ -47,22 +47,20 @@ export default function Prayer({ index }: Props) {
   });
 
   return (
-    <Pressable 
+    <Pressable
       onLayout={handleLayout}
       style={styles.container}
     >
-      <View style={[styles.content, isNext && styles.next]}>
-        <Animated.Text style={[styles.text, styles.english, { color: textColor }, animatedStyle]}>
-          {prayer.english}
-        </Animated.Text>
-        <Animated.Text style={[styles.text, styles.arabic, { color: textColor }, animatedStyle]}>
-          {prayer.arabic}
-        </Animated.Text>
-        <Animated.Text style={[styles.text, styles.time, { color: textColor }, animatedStyle]}>
-          {prayer.time}
-        </Animated.Text>
-        <Alert index={index} />
-      </View>
+      <Animated.Text style={[styles.text, styles.english, { color: textColor }, animatedStyle]}>
+        {prayer.english}
+      </Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, { color: textColor }, animatedStyle]}>
+        {prayer.arabic}
+      </Animated.Text>
+      <Animated.Text style={[styles.text, styles.time, { color: textColor }, animatedStyle]}>
+        {prayer.time}
+      </Animated.Text>
+      <Alert index={index} />
     </Pressable>
   );
 }
@@ -70,7 +68,8 @@ export default function Prayer({ index }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-    height: PRAYER.height,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   pressable: {
     flexDirection: 'row',
@@ -80,9 +79,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  next: {
-    opacity: 1,
   },
   text: {
     fontFamily: TEXT.famiy.regular,
