@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, TEXT, ANIMATION } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayClosingAtom } from '@/store/store';
 
 interface Props {
   index: number;
@@ -22,6 +22,7 @@ interface Props {
 export default function Alert({ index, isOverlay = false, isSelected = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [overlayClosing] = useAtom(overlayClosingAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [showPopupContent, setShowPopupContent] = useState(false);
@@ -111,8 +112,14 @@ export default function Alert({ index, isOverlay = false, isSelected = false }: 
   const IconComponent = currentConfig.icon;
 
   const animatedStyle = useAnimatedStyle(() => {
+    if (!isOverlay) {
+      return {
+        opacity: isActive || isPassed || isNext ? 1 : TEXT.transparent
+      };
+    }
+
     const shouldBeFullOpacity = isSelected || isActive || isPassed || isNext;
-    const baseOpacity = shouldBeFullOpacity ? 1 : TEXT.transparent;
+    const baseOpacity = shouldBeFullOpacity && !overlayClosing ? 1 : 0;
 
     return {
       opacity: withTiming(baseOpacity, { duration: ANIMATION.duration })
@@ -134,7 +141,7 @@ export default function Alert({ index, isOverlay = false, isSelected = false }: 
     };
   });
 
-  const iconColor = isSelected 
+  const iconColor = isSelected
     ? 'white'
     : isActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 

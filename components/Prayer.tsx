@@ -120,14 +120,27 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   // Update the textColor logic
   const textColor = isSelected
     ? 'white'
-    : isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
+    : isPassed || isNext 
+      ? COLORS.textPrimary 
+      : COLORS.textTransparent;
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(
-      isSelected || isPassed || isNext ? 1 : TEXT.transparent,
-      { duration: ANIMATION.duration }
-    )
-  }));
+  const animatedStyle = useAnimatedStyle(() => {
+    if (!isOverlay) {
+      return {
+        opacity: isPassed || isNext ? 1 : TEXT.transparent
+      };
+    }
+
+    const shouldBeVisible = isSelected || isPassed || isNext;
+    const duration = overlayClosing ? ANIMATION.duration : 0;
+
+    return {
+      opacity: withTiming(
+        shouldBeVisible && !overlayClosing ? 1 : 0,
+        { duration }
+      )
+    };
+  });
 
   return (
     <AnimatedPressable
@@ -168,7 +181,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
-    color: COLORS.textPrimary,
+    // color: COLORS.textPrimary,
   },
   english: {
     flex: 1,
