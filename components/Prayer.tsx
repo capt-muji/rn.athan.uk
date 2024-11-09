@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayClosingAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayClosingAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
@@ -16,6 +16,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setActiveMeasurements] = useAtom(absoluteActivePrayerMeasurementsAtom);
   const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
@@ -27,8 +28,12 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
+  const tomorrowPrayer = tomorrowsPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
+
+  // Show tomorrow's time only when the prayer is in overlay and has passed
+  const displayTime = isOverlay && isPassed ? tomorrowPrayer?.time : prayer.time;
 
   const backgroundOpacity = useSharedValue(0);
 
@@ -127,7 +132,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
         {prayer.arabic}
       </Animated.Text>
       <Animated.Text style={[styles.text, styles.time, { color: textColor }, animatedStyle]}>
-        {prayer.time}
+        {displayTime}
       </Animated.Text>
       <Alert index={index} />
     </AnimatedPressable>
