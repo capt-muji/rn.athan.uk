@@ -3,19 +3,22 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, prayerMeasurementsAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, prayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
 interface Props {
   index: number;
+  isOverlay?: boolean;
 }
 
-export default function Prayer({ index }: Props) {
+export default function Prayer({ index, isOverlay }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setActiveMeasurements] = useAtom(activePrayerMeasurementsAtom);
   const [, setPrayerMeasurements] = useAtom(prayerMeasurementsAtom);
+  const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
+  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -44,6 +47,13 @@ export default function Prayer({ index }: Props) {
     });
   };
 
+  const handlePress = () => {
+    if (!isOverlay) {
+      setSelectedPrayerIndex(index);
+      setOverlayVisible(true);
+    }
+  };
+
   const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -60,6 +70,7 @@ export default function Prayer({ index }: Props) {
       ref={viewRef}
       onLayout={handleLayout}
       style={styles.container}
+      onPress={handlePress}
     >
       <Animated.Text style={[styles.text, styles.english, { color: textColor }, animatedStyle]}>
         {prayer.english}
