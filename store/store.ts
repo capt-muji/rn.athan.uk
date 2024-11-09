@@ -35,6 +35,7 @@ interface OverlayItem {
 export const overlayContentAtom = atom<OverlayItem[]>([]);
 export const overlayAnimatingAtom = atom<boolean>(false);
 export const overlayClosingAtom = atom<boolean>(false);
+export const overlayTransitioningAtom = atom<boolean>(false);
 
 export const absoluteActivePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 

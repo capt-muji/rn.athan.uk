@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { StyleSheet, View } from 'react-native';
+import Animated, { useAnimatedStyle, withTiming, withSequence, withDelay } from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/constants';
 import { todaysPrayersAtom, tomorrowsPrayersAtom, overlayClosingAtom, nextPrayerIndexAtom } from '@/store/store';
@@ -9,6 +9,22 @@ interface Props {
   isOverlay: boolean;
   isSelected: boolean;
 }
+
+const TodayTime = ({ time, style, isVisible }: { time: string, style: any[], isVisible: boolean }) => {
+  return (
+    <Animated.Text style={[style, { opacity: isVisible ? 1 : 0 }]}>
+      {time}
+    </Animated.Text>
+  );
+};
+
+const TomorrowTime = ({ time, style, isVisible }: { time: string, style: any[], isVisible: boolean }) => {
+  return (
+    <Animated.Text style={[style, { position: 'absolute', opacity: isVisible ? 1 : 0 }]}>
+      {time}
+    </Animated.Text>
+  );
+};
 
 export default function PrayerTime({
   index,
@@ -34,7 +50,7 @@ export default function PrayerTime({
       ? COLORS.textPrimary
       : COLORS.textTransparent;
 
-  const baseStyle = [styles.text, styles.time, { color: textColor }];
+  const baseStyle = [];
 
   const todayAnimatedStyle = useAnimatedStyle(() => {
     if (!isOverlay) {
@@ -62,14 +78,25 @@ export default function PrayerTime({
 
     const duration = overlayClosing ? ANIMATION.duration : 0;
     return {
-      opacity: withTiming(overlayClosing ? 0 : 1, { duration })
+      opacity: withSequence(
+        withTiming(0, { duration: 100 }), // First hide
+        withDelay(100, withTiming(1, { duration })) // Then show after delay
+      )
     };
   });
 
   return (
-    <Animated.Text style={[baseStyle, isOverlay && isPassed ? tomorrowAnimatedStyle : todayAnimatedStyle]}>
-      {isOverlay && isPassed ? tomorrowTime : todayTime}
-    </Animated.Text>
+    <View style={{ flex: 1 }}>
+      {(isSelected && isPassed) ? (
+        <Animated.Text style={[styles.text, { color: textColor, opacity: 1 }, tomorrowAnimatedStyle]}>
+          {tomorrowTime}
+        </Animated.Text>
+      ) : (
+        <Animated.Text style={[styles.text, { color: textColor, opacity: 1 }, todayAnimatedStyle]}>
+          {todayTime}
+        </Animated.Text>
+      )}
+    </View>
   );
 }
 
@@ -77,15 +104,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
-  },
-  time: {
-    flex: 1,
     textAlign: 'center',
-    marginLeft: 25,
-    marginRight: 10,
   },
-  tomorrow: {
-    position: 'absolute',
-    right: 10,
-  }
 });
