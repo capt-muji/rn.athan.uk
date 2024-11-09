@@ -15,10 +15,17 @@ export default function Overlay() {
     setOverlayContent([]); // Reset overlay content when closing
   };
 
+  // Ensure unique items by name
+  const uniqueContent = content.reduce((acc, current) => {
+    const exists = acc.find(item => item.name === current.name);
+    if (!exists) acc.push(current);
+    return acc;
+  }, [] as typeof content);
+
   return (
     <Portal>
       <Pressable style={styles.overlay} onPress={handleClose}>
-        {content.map(({ name, component, measurements }) => (
+        {uniqueContent.map(({ name, component, measurements }) => (
           <View
             key={name}
             style={[

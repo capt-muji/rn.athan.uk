@@ -58,11 +58,17 @@ export default function Prayer({ index }: Props) {
   };
 
   const handlePress = () => {
-    setOverlayContent(prev => [...prev, {
-      name: `prayer-${index}`,
-      component: <Prayer index={index} />,
-      measurements: prayerMeasurements[index]
-    }]);
+    // Check if this prayer is already in overlay content
+    setOverlayContent(prev => {
+      const exists = prev.some(item => item.name === `prayer-${index}`);
+      if (exists) return prev;
+      
+      return [...prev, {
+        name: `prayer-${index}`,
+        component: <Prayer index={index} />,
+        measurements: prayerMeasurements[index]
+      }];
+    });
     setOverlayVisible(true);
   };
 
