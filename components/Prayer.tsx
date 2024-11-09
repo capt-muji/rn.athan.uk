@@ -60,7 +60,7 @@ export default function Prayer({ index, isOverlay }: Props) {
 
   const handlePress = () => {
     if (!isOverlay) {
-      setOverlayContent([{
+      setOverlayContent(prev => [...prev, {
         name: `prayer-${index}`,
         component: <Prayer index={index} isOverlay />,
         measurements: prayerMeasurements[index]

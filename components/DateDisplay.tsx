@@ -1,14 +1,16 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import { dateMeasurementsAtom, overlayContentAtom } from '@/store/store';
+import { dateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import Masjid from './Masjid';
 
 export default function DateDisplay({ isOverlay }: { isOverlay?: boolean }) {
   const [_, setDateMeasurements] = useAtom(dateMeasurementsAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [__, setOverlayContent] = useAtom(overlayContentAtom);
   const dateRef = useRef<Text>(null);
+  const measurementsRef = useRef<PageCoordinates | null>(null);
   const today = new Date();
   const formattedDate = today.toLocaleDateString('en-GB', {
     weekday: 'short',
@@ -17,21 +19,24 @@ export default function DateDisplay({ isOverlay }: { isOverlay?: boolean }) {
     year: 'numeric'
   });
 
+
+  useEffect(() => {
+    if (overlayVisible && !isOverlay && measurementsRef.current) {
+      setOverlayContent(prev => [...prev, {
+        name: 'date',
+        component: dateComponent,
+        measurements: measurementsRef.current!
+      }]);
+    }
+  }, [overlayVisible, isOverlay]);
+
   const handleLayout = () => {
     if (!dateRef.current) return;
 
     dateRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
-
+      measurementsRef.current = measurements;
       setDateMeasurements(measurements);
-
-      if (!isOverlay) {
-        setOverlayContent([{
-          name: 'date',
-          component: dateComponent,
-          measurements
-        }]);
-      }
     });
   };
 
