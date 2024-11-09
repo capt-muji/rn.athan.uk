@@ -36,13 +36,13 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     if (isOverlay && overlayClosing) {
       backgroundOpacity.value = withTiming(0, { duration: 300 });
     } else if (isOverlay) {
-      backgroundOpacity.value = withTiming(0.60, { duration: 300 });
+      backgroundOpacity.value = withTiming(0, { duration: 300 });
     }
   }, [isOverlay, overlayClosing]);
 
   const containerStyle = useAnimatedStyle(() => ({
     // backgroundColor: `rgba(0,0,0,${backgroundOpacity.value})`,
-    backgroundColor: `rgba(44,19,84,${backgroundOpacity.value})`,
+    // backgroundColor: `rgba(44,19,84,${backgroundOpacity.value})`,
     borderRadius: PRAYER.borderRadius,
     flexDirection: 'row',
     alignItems: 'center',
