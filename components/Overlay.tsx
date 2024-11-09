@@ -55,6 +55,5 @@ const styles = StyleSheet.create({
   },
   content: {
     zIndex: 1001,
-    backgroundColor: 'blue',
   }
 });

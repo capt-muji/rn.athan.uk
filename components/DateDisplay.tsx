@@ -77,7 +77,4 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
   },
-  red: {
-    color: 'red'
-  }
 });

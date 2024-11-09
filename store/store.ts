@@ -24,6 +24,7 @@ interface Coordinates {
   y: number;
   width: number;
   height: number;
+  name: string;
 }
 
 interface OverlayItem {
@@ -35,7 +36,9 @@ interface OverlayItem {
 export const overlayContentAtom = atom<OverlayItem[]>([]);
 
 export const activePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
-export const prayerMeasurementsAtom = atom<Record<number, PageCoordinates>>({});
-export const prayerRelativeMeasurementsAtom = atom<Record<number, Coordinates>>({});
+
+export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
+export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
+
 export const timerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const dateMeasurementsAtom = atom<PageCoordinates | null>(null);

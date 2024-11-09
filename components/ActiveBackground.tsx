@@ -6,16 +6,16 @@ import Animated, {
   withTiming,
   Easing,
 } from 'react-native-reanimated';
-import { nextPrayerIndexAtom, prayerRelativeMeasurementsAtom } from '@/store/store';
+import { nextPrayerIndexAtom, relativePrayerMeasurementsAtom } from '@/store/store';
 import { COLORS, PRAYER } from '@/constants';
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [measurements] = useAtom(prayerRelativeMeasurementsAtom);
+  const [relativeMeasurements] = useAtom(relativePrayerMeasurementsAtom);
 
   const animatedStyle = useAnimatedStyle(() => {
-    const activePrayer = measurements[nextPrayerIndex];
-    
+    const activePrayer = relativeMeasurements[nextPrayerIndex];
+
     if (nextPrayerIndex === -1 || !activePrayer) {
       return { opacity: 0 };
     }
@@ -35,7 +35,7 @@ export default function ActiveBackground() {
       width: withSpring(activePrayer.width),
       height: withSpring(activePrayer.height),
     };
-  }, [nextPrayerIndex, measurements]);
+  }, [nextPrayerIndex, relativeMeasurements]);
 
   return <Animated.View style={[styles.background, animatedStyle]} />;
 }
