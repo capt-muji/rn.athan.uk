@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
+import { StyleSheet, Text, View, LayoutChangeEvent, findNodeHandle } from 'react-native';
 import { useAtom } from 'jotai';
+import { useRef } from 'react';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import { nextPrayerIndexAtom, timerMeasurementsAtom } from '@/store/store';
@@ -9,14 +10,19 @@ export default function Timer() {
   const { nextPrayer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [_, setTimerMeasurements] = useAtom(timerMeasurementsAtom);
+  const viewRef = useRef<View>(null);
 
-  const handleLayout = (event: LayoutChangeEvent) => {
-    const { x, y, width, height } = event.nativeEvent.layout;
-    setTimerMeasurements({ x, y, width, height });
+  const handleLayout = () => {
+    if (!viewRef.current) return;
+    
+    viewRef.current.measureInWindow((x, y, width, height) => {
+      setTimerMeasurements({ pageX: x, pageY: y, width, height });
+    });
   };
 
   return (
     <View 
+      ref={viewRef}
       style={styles.container}
       onLayout={handleLayout}
     >

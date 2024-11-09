@@ -1,4 +1,4 @@
-import { StyleSheet, View, LayoutChangeEvent, Pressable } from 'react-native';
+import { StyleSheet, View, Pressable, ScrollView } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
@@ -22,17 +22,26 @@ export default function Prayer({ index }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
 
-  const handleLayout = (event: LayoutChangeEvent) => {
-    const { x, y, width, height } = event.nativeEvent.layout;
-    // Store this prayer's measurements in global dictionary
-    setPrayerMeasurements(prev => ({
-      ...prev,
-      [index]: { x, y, width, height }
-    }));
-    // Also update active measurements if this is the active prayer
-    if (isNext) {
-      setActiveMeasurements({ x, y, width, height });
-    }
+  const handleLayout = () => {
+    if (!viewRef.current) return;
+    
+    viewRef.current.measureInWindow((x, y, width, height) => {
+      const measurements = {
+        pageX: x,
+        pageY: y,
+        width,
+        height
+      };
+      
+      setPrayerMeasurements(prev => ({
+        ...prev,
+        [index]: measurements
+      }));
+      
+      if (isNext) {
+        setActiveMeasurements(measurements);
+      }
+    });
   };
 
   const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
@@ -48,6 +57,7 @@ export default function Prayer({ index }: Props) {
 
   return (
     <Pressable
+      ref={viewRef}
       onLayout={handleLayout}
       style={styles.container}
     >

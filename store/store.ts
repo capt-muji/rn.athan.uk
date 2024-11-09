@@ -9,16 +9,14 @@ export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
 export const lastValidPositionAtom = atom<number>(0);
 
-interface PrayerMeasurements {
-  x: number;
-  y: number;
+interface PageCoordinates {
+  pageX: number;
+  pageY: number;
   width: number;
   height: number;
 }
 
-export const activePrayerMeasurementsAtom = atom<PrayerMeasurements | null>(null);
-
-export const prayerMeasurementsAtom = atom<Record<number, PrayerMeasurements>>({});
-
-export const timerMeasurementsAtom = atom<PrayerMeasurements | null>(null);
-export const dateMeasurementsAtom = atom<PrayerMeasurements | null>(null);
+export const activePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
+export const prayerMeasurementsAtom = atom<Record<number, PageCoordinates>>({});
+export const timerMeasurementsAtom = atom<PageCoordinates | null>(null);
+export const dateMeasurementsAtom = atom<PageCoordinates | null>(null);
