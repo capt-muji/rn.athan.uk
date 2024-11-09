@@ -20,7 +20,7 @@ export default function DateDisplay() {
   });
 
   useEffect(() => {
-    if (overlayVisible && measurementsRef.current) {
+    if (overlayVisible) {
       setOverlayContent(prev => [...prev, {
         name: 'date',
         component: dateComponent,

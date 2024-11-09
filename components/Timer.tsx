@@ -1,24 +1,39 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom } from '@/store/store';
+import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 export default function Timer() {
   const { nextPrayer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [_, setTimerMeasurements] = useAtom(absoluteTimerMeasurementsAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [__, setOverlayContent] = useAtom(overlayContentAtom);
   const timerRef = useRef<View>(null);
+  const measurementsRef = useRef<PageCoordinates | null>(null);
 
   const handleLayout = () => {
     if (!timerRef.current) return;
 
     timerRef.current.measureInWindow((x, y, width, height) => {
-      setTimerMeasurements({ pageX: x, pageY: y, width, height });
+      const measurements = { pageX: x, pageY: y, width, height };
+      measurementsRef.current = measurements;
+      setTimerMeasurements(measurements);
     });
   };
+
+  useEffect(() => {
+    if (overlayVisible) {
+      setOverlayContent(prev => [...prev, {
+        name: 'timer',
+        component: timerComponent,
+        measurements: measurementsRef.current!
+      }]);
+    }
+  }, [overlayVisible]);
 
   const timerComponent = (
     <View style={styles.container}>
