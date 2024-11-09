@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable } from 'react-native';
+import { StyleSheet, Pressable, View } from 'react-native';
 import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { overlayVisibleAtom, overlayContentAtom } from '@/store/store';
@@ -18,7 +18,7 @@ export default function Overlay() {
     <Portal>
       <Pressable style={styles.overlay} onPress={handleClose}>
         {content.map(({ name, component, measurements }) => (
-          <Pressable
+          <View
             key={name}
             style={[
               styles.content,
@@ -27,13 +27,11 @@ export default function Overlay() {
                 top: measurements.pageY,
                 left: measurements.pageX,
                 width: measurements.width,
-                padding: 0,
-                margin: 0,
               }
             ]}
           >
             {component}
-          </Pressable>
+          </View>
         ))}
       </Pressable>
     </Portal>
