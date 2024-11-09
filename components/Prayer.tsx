@@ -54,7 +54,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   }));
 
   const handleLayout = () => {
-    if (!viewRef.current) return;
+    if (!viewRef.current || isOverlay) return;  // Add isOverlay check here
 
     // Measure absolute window coordinates to display text in overlay
     viewRef.current.measureInWindow((x, y, width, height) => {
