@@ -1,14 +1,15 @@
-import { StyleSheet, Pressable, View } from 'react-native';
+import { StyleSheet, Pressable, View, Text } from 'react-native';
 import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
-import { overlayVisibleAtom, selectedPrayerIndexAtom, prayerMeasurementsAtom } from '@/store/store';
+import { overlayVisibleAtom, selectedPrayerIndexAtom, prayerMeasurementsAtom, dateMeasurementsAtom } from '@/store/store';
 import Prayer from './Prayer';
-import { COLORS } from '@/constants';
+import { COLORS, TEXT } from '@/constants';
 
 export default function Overlay() {
   const [visible, setVisible] = useAtom(overlayVisibleAtom);
   const [selectedIndex, setSelectedIndex] = useAtom(selectedPrayerIndexAtom);
   const [measurements] = useAtom(prayerMeasurementsAtom);
+  const [dateMeasurements] = useAtom(dateMeasurementsAtom);
 
   if (!visible || selectedIndex === null) return null;
 
@@ -18,10 +19,30 @@ export default function Overlay() {
   };
 
   const prayerPosition = measurements[selectedIndex];
-  
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString('en-GB', {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  });
+
   return (
     <Portal>
       <Pressable style={styles.overlay} onPress={handleClose}>
+        {dateMeasurements && (
+          <View style={[
+            styles.dateContainer,
+            {
+              position: 'absolute',
+              top: dateMeasurements.pageY,
+              left: dateMeasurements.pageX,
+              width: dateMeasurements.width,
+            }
+          ]}>
+            <Text style={styles.dateText}>{formattedDate}</Text>
+          </View>
+        )}
         <View style={[
           styles.prayerContainer,
           {
@@ -46,5 +67,13 @@ const styles = StyleSheet.create({
   },
   prayerContainer: {
     zIndex: 1001,
+  },
+  dateContainer: {
+    zIndex: 1001,
+  },
+  dateText: {
+    fontFamily: TEXT.famiy.regular,
+    color: COLORS.textPrimary,
+    fontSize: TEXT.size,
   }
 });
