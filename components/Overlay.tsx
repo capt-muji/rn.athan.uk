@@ -11,7 +11,6 @@ import {
   useSharedValue,
   withTiming,
   useAnimatedProps,
-  runOnJS,
   useAnimatedStyle
 } from 'react-native-reanimated';
 
@@ -21,13 +20,14 @@ const AnimatedGradient = Reanimated.createAnimatedComponent(LinearGradient);
 export default function Overlay() {
   const [visible, setVisible] = useAtom(overlayVisibleAtom);
   const [content, setOverlayContent] = useAtom(overlayContentAtom);
-  const [, setAnimating] = useAtom(overlayAnimatingAtom);
-  const [, setClosing] = useAtom(overlayClosingAtom);
+  const [animating, setAnimating] = useAtom(overlayAnimatingAtom);
+  const [closing, setClosing] = useAtom(overlayClosingAtom);
   const [, setShadowOpacity] = useAtom(shadowOpacityAtom);
 
   const intensity = useSharedValue(0);
   const gradientOpacity = useSharedValue(0);
   const shadowOpacity = useSharedValue(0.5);
+  const isAnimationComplete = useSharedValue(false);
 
   const animatedProps = useAnimatedProps(() => ({
     intensity: intensity.value,
@@ -43,12 +43,18 @@ export default function Overlay() {
       setShadowOpacity(0.5);
       intensity.value = withTiming(10, {
         duration: 300
-      }, () => {
-        runOnJS(setAnimating)(false);
       });
       gradientOpacity.value = withTiming(1, { duration: 300 });
+      isAnimationComplete.value = false;
     }
   }, [visible]);
+
+  useEffect(() => {
+    if (!animating && !isAnimationComplete.value) {
+      setAnimating(false);
+      isAnimationComplete.value = true;
+    }
+  }, [animating]);
 
   const handleClose = () => {
     setAnimating(true);
@@ -58,12 +64,15 @@ export default function Overlay() {
     intensity.value = withTiming(0, {
       duration: 300
     });
-    gradientOpacity.value = withTiming(0, { duration: 300 }, () => {
-      runOnJS(setVisible)(false);
-      runOnJS(setOverlayContent)([]);
-      runOnJS(setAnimating)(false);
-      runOnJS(setClosing)(false);
-    });
+    gradientOpacity.value = withTiming(0, { duration: 300 });
+
+    // Use a regular setTimeout instead of animation callback
+    setTimeout(() => {
+      setVisible(false);
+      setOverlayContent([]);
+      setAnimating(false);
+      setClosing(false);
+    }, 300);
   };
 
   // Ensure unique items by name
