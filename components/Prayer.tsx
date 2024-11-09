@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'react';
 import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayClosingAtom, shadowOpacityAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
+import PrayerTime from './PrayerTime';
 
 interface Props {
   index: number;
@@ -158,9 +159,11 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       <Animated.Text style={[styles.text, styles.arabic, { color: textColor }, animatedStyle]}>
         {prayer.arabic}
       </Animated.Text>
-      <Animated.Text style={[styles.text, styles.time, { color: textColor }, animatedStyle]}>
-        {displayTime}
-      </Animated.Text>
+      <PrayerTime
+        index={index}
+        isOverlay={isOverlay}
+        isSelected={isSelected}
+      />
       <Alert
         index={index}
         isOverlay={isOverlay}
