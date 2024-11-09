@@ -45,24 +45,14 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   }, [overlayVisible]);
 
   const timerComponent = (
-    <View style={styles.container}>
+    <View ref={timerRef} onLayout={handleLayout} style={styles.container}>
       {nextPrayerIndex === -1 ? (
-        <Text style={styles.text}>
-          {nextPrayer.timerName}
-        </Text>
+        <Text style={styles.text}> {nextPrayer.timerName} </Text>
       ) : (
         <>
-          <Text style={styles.text}>
-            {`${nextPrayer.timerName || '...'} in`}
-          </Text>
-          <View
-            ref={timerRef}
-            onLayout={handleLayout}
-            style={styles.timerContainer}
-          >
-            <Text style={styles.timer}>
-              {nextPrayer.timeDisplay}
-            </Text>
+          <Text style={styles.text}> {`${nextPrayer.timerName || '...'} in`} </Text>
+          <View style={styles.timerContainer}>
+            <Text style={styles.timer}> {nextPrayer.timeDisplay} </Text>
           </View>
         </>
       )}
@@ -75,7 +65,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    marginTop: SCREEN.paddingHorizontal,
+    // marginTop: SCREEN.paddingHorizontal,
     marginBottom: 35,
     justifyContent: 'center',
   },
