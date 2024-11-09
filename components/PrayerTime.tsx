@@ -1,8 +1,10 @@
 import { StyleSheet, View } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming, withSequence, withDelay } from 'react-native-reanimated';
+import { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/constants';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, overlayClosingAtom, nextPrayerIndexAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, overlayClosingAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom } from '@/store/store';
+import { useEffect } from 'react';
 
 interface Props {
   index: number;
@@ -10,27 +12,7 @@ interface Props {
   isSelected: boolean;
 }
 
-const TodayTime = ({ time, style, isVisible }: { time: string, style: any[], isVisible: boolean }) => {
-  return (
-    <Animated.Text style={[style, { opacity: isVisible ? 1 : 0 }]}>
-      {time}
-    </Animated.Text>
-  );
-};
-
-const TomorrowTime = ({ time, style, isVisible }: { time: string, style: any[], isVisible: boolean }) => {
-  return (
-    <Animated.Text style={[style, { position: 'absolute', opacity: isVisible ? 1 : 0 }]}>
-      {time}
-    </Animated.Text>
-  );
-};
-
-export default function PrayerTime({
-  index,
-  isOverlay,
-  isSelected,
-}: Props) {
+export default function PrayerTime({ index, isOverlay, isSelected }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
@@ -39,73 +21,65 @@ export default function PrayerTime({
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
-
   const todayTime = todaysPrayers[index].time;
   const tomorrowTime = tomorrowsPrayers[index]?.time;
 
-  // Calculate textColor internally
-  const textColor = isSelected
-    ? 'white'
-    : isPassed || isNext
-      ? COLORS.textPrimary
-      : COLORS.textTransparent;
+  const opacity = useSharedValue(TEXT.transparent);
+  const textColor = useSharedValue(COLORS.textTransparent);
 
-  const baseStyle = [];
-
-  const todayAnimatedStyle = useAnimatedStyle(() => {
-    if (!isOverlay) {
-      return {
-        opacity: isPassed || isNext ? 1 : TEXT.transparent
-      };
+  useEffect(() => {
+    // Non-selected state
+    if (!isSelected && !isOverlay) {
+      if (isPassed && !isNext) {
+        opacity.value = 1;
+        textColor.value = 'white';
+      } else if (!isPassed && isNext) {
+        opacity.value = 1;
+        textColor.value = 'white';
+      } else if (!isPassed && !isNext) {
+        opacity.value = TEXT.transparent;
+        textColor.value = COLORS.textTransparent;
+      }
     }
+  }, [isSelected, isOverlay, isPassed, isNext]);
 
-    // Skip animation for passed/next prayers in overlay
-    if (isPassed || isNext) return {};
+  useEffect(() => {
+    // Selected state
+    if (isSelected) {
+      textColor.value = 'white';
+      opacity.value = isOverlay ? 1 : 0;
+    }
+  }, [isSelected, isOverlay]);
 
-    const shouldBeVisible = isSelected;
-    const duration = overlayClosing ? ANIMATION.duration : 0;
-
-    return {
-      opacity: withTiming(
-        shouldBeVisible && !overlayClosing ? 1 : 0,
-        { duration }
-      )
-    };
-  });
-
-  const tomorrowAnimatedStyle = useAnimatedStyle(() => {
-    if (!isOverlay || !isPassed) return { opacity: 0 };
-
+  useEffect(() => {
+    // Overlay closing state
     if (overlayClosing) {
-      return {
-        opacity: withTiming(0, { duration: 250 })
-      };
+      if (isOverlay) {
+        opacity.value = 0;
+      } else {
+        opacity.value = isPassed || isNext ? 1 : TEXT.transparent;
+      }
     }
+  }, [overlayClosing, isOverlay, isPassed, isNext]);
 
-    return {
-      opacity: withSequence(
-        withTiming(0, { duration: 1 }),
-        withDelay(100, withTiming(1, { duration: 500 }))
-      )
-    };
-  });
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(opacity.value, { duration: ANIMATION.duration }),
+    color: withTiming(textColor.value, { duration: ANIMATION.duration }),
+  }));
 
   return (
-    <View style={{ flex: 1 }}>
-      {(isSelected && isPassed) ? (
-        <Animated.Text style={[styles.text, { color: textColor, opacity: 1 }, tomorrowAnimatedStyle]}>
-          {tomorrowTime}
-        </Animated.Text>
-      ) : (
-        <Animated.Text style={[styles.text, { color: textColor, opacity: 1 }, todayAnimatedStyle]}>
-          {todayTime}
-        </Animated.Text>
-      )}
+    <View style={styles.container}>
+      <Animated.Text style={[styles.text, animatedStyle]}>
+        {isOverlay && isPassed ? tomorrowTime : todayTime}
+      </Animated.Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
