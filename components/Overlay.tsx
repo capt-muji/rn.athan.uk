@@ -6,12 +6,13 @@ import { COLORS } from '@/constants';
 
 export default function Overlay() {
   const [visible, setVisible] = useAtom(overlayVisibleAtom);
-  const [content] = useAtom(overlayContentAtom);
+  const [content, setOverlayContent] = useAtom(overlayContentAtom);
 
   if (!visible) return null;
 
   const handleClose = () => {
     setVisible(false);
+    setOverlayContent([]); // Reset overlay content when closing
   };
 
   return (

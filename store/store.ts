@@ -26,11 +26,6 @@ interface Coordinates {
   height: number;
 }
 
-interface OverlayContent {
-  component: React.ReactNode;
-  measurements: PageCoordinates;
-}
-
 interface OverlayItem {
   name: string;
   component: React.ReactNode;
