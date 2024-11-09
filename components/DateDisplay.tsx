@@ -2,15 +2,13 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import { absoluteDateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom, overlayClosingAtom, PageCoordinates, selectedPrayerIndexAtom, todaysPrayersAtom } from '@/store/store';
-import { COLORS, SCREEN, TEXT } from '@/constants';
+import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 
 interface DateDisplayProps {
   isOverlay?: boolean;
 }
-
-const AnimatedText = Animated.createAnimatedComponent(Text);
 
 export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
   const [_, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
@@ -29,6 +27,21 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
     year: 'numeric'
   });
 
+  const baseTextOpacity = useSharedValue(1);
+  const overlayTextOpacity = useSharedValue(0);
+
+  useEffect(() => {
+    if (overlayVisible && !isOverlay) {
+      baseTextOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+    } else if (!overlayVisible && !isOverlay) {
+      baseTextOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    }
+  }, [overlayVisible, isOverlay]);
+
+  const overlayAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: overlayClosing ? withTiming(0, { duration: ANIMATION.duration }) : withTiming(1, { duration: ANIMATION.duration })
+  }));
+
   useEffect(() => {
     if (overlayVisible && selectedPrayerIndex !== null) {
       const prayer = todaysPrayers[selectedPrayerIndex];
@@ -40,11 +53,17 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
 
         return [...prev, {
           name: 'date',
-          component: <AnimatedText
-            style={[styles.date, dateTextStyle]}
-          >
-            {prayer.passed ? 'Tomorrow' : 'Today'}
-          </AnimatedText>,
+          component: (
+            <Animated.Text style={[
+              styles.date,
+              {
+                color: COLORS.textSecondary,
+                opacity: overlayClosing ? 0 : 0.5
+              }
+            ]}>
+              {prayer.passed ? 'Tomorrow' : 'Today'}
+            </Animated.Text>
+          ),
           measurements: measurementsRef.current!
         }];
       });
@@ -63,7 +82,7 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
 
   const dateTextStyle = useAnimatedStyle(() => ({
     color: isOverlay || (overlayVisible && !overlayClosing) ? COLORS.textSecondary : COLORS.textPrimary,
-    opacity: isOverlay || (overlayVisible && !overlayClosing) ? TEXT.opacity : 1
+    opacity: isOverlay ? overlayTextOpacity.value : baseTextOpacity.value
   }));
 
   const getDisplayText = () => {
@@ -74,21 +93,17 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
     return prayer?.passed ? 'Tomorrow' : 'Today';
   };
 
-  const dateComponent = (
-    <AnimatedText
-      ref={dateRef}
-      onLayout={handleLayout}
-      style={[styles.date, dateTextStyle]}
-    >
-      {getDisplayText()}
-    </AnimatedText>
-  );
-
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.location}>London, UK</Text>
-        {dateComponent}
+        <Animated.Text
+          ref={dateRef}
+          onLayout={handleLayout}
+          style={[styles.date, dateTextStyle]}
+        >
+          {formattedDate}
+        </Animated.Text>
       </View>
       <Masjid />
     </View>
