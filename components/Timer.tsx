@@ -65,7 +65,6 @@ export default function Timer({ isOverlay = false }: TimerProps) {
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    // marginTop: SCREEN.paddingHorizontal,
     marginBottom: 35,
     justifyContent: 'center',
   },
