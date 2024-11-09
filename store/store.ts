@@ -19,7 +19,15 @@ interface PageCoordinates {
   height: number;
 }
 
+interface Coordinates {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
 export const activePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const prayerMeasurementsAtom = atom<Record<number, PageCoordinates>>({});
+export const prayerRelativeMeasurementsAtom = atom<Record<number, Coordinates>>({});
 export const timerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const dateMeasurementsAtom = atom<PageCoordinates | null>(null);

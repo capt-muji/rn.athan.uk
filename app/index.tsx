@@ -12,7 +12,6 @@ import { isLoadingAtom, hasErrorAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
 import { COLORS } from '@/constants';
-import ActiveBackground from '@/components/ActiveBackground';
 import Overlay from '@/components/Overlay';
 
 export default function Index() {
@@ -47,8 +46,6 @@ export default function Index() {
       />
       <Portal.Host>
         <StatusBar barStyle="light-content" />
-        <ActiveBackground />
-
         {isLoading && <WaveIndicator color="white" />}
         {hasError && !isLoading && <Error />}
         {!hasError && !isLoading && <Main />}
