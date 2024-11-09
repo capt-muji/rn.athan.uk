@@ -143,7 +143,11 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       <Animated.Text style={[styles.text, styles.time, { color: textColor }, animatedStyle]}>
         {displayTime}
       </Animated.Text>
-      <Alert index={index} />
+      <Alert 
+        index={index} 
+        isOverlay={isOverlay} 
+        isSelected={isSelected} 
+      />
     </AnimatedPressable>
   );
 }
