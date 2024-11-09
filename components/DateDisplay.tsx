@@ -1,12 +1,13 @@
 import { useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import { dateMeasurementsAtom } from '@/store/store';
+import { dateMeasurementsAtom, overlayContentAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import Masjid from './Masjid';
 
-export default function DateDisplay() {
+export default function DateDisplay({ isOverlay }: { isOverlay?: boolean }) {
   const [_, setDateMeasurements] = useAtom(dateMeasurementsAtom);
+  const [__, setOverlayContent] = useAtom(overlayContentAtom);
   const dateRef = useRef<Text>(null);
   const today = new Date();
   const formattedDate = today.toLocaleDateString('en-GB', {
@@ -21,13 +22,22 @@ export default function DateDisplay() {
 
     dateRef.current.measureInWindow((x, y, width, height) => {
       setDateMeasurements({ pageX: x, pageY: y, width, height });
+      if (!isOverlay) {
+        setOverlayContent(prev => ({
+          ...prev,
+          date: {
+            component: <DateDisplay isOverlay />,
+            measurements: { pageX: x, pageY: y, width, height }
+          }
+        }));
+      }
     });
   };
 
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.location}>London, UK</Text>
+        {!isOverlay && <Text style={styles.location}>London, UK</Text>}
         <Text
           ref={dateRef}
           onLayout={handleLayout}
@@ -36,7 +46,7 @@ export default function DateDisplay() {
           {formattedDate}
         </Text>
       </View>
-      <Masjid />
+      {!isOverlay && <Masjid />}
     </View>
   );
 }

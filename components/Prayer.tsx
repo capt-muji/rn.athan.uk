@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, prayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, prayerRelativeMeasurementsAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, prayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, prayerRelativeMeasurementsAtom, overlayContentAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
@@ -20,6 +20,7 @@ export default function Prayer({ index, isOverlay }: Props) {
   const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setPrayerRelativeMeasurements] = useAtom(prayerRelativeMeasurementsAtom);
+  const [_, setOverlayContent] = useAtom(overlayContentAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -58,9 +59,17 @@ export default function Prayer({ index, isOverlay }: Props) {
   };
 
   const handlePress = () => {
-    if (!isOverlay) {
-      setSelectedPrayerIndex(index);
-      setOverlayVisible(true);
+    if (!isOverlay && viewRef.current) {
+      viewRef.current.measureInWindow((x, y, width, height) => {
+        setOverlayContent(prev => ({
+          ...prev,
+          prayer: {
+            component: <Prayer index={index} isOverlay />,
+            measurements: { pageX: x, pageY: y, width, height }
+          }
+        }));
+        setOverlayVisible(true);
+      });
     }
   };
 
