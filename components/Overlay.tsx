@@ -1,6 +1,7 @@
 import { StyleSheet, Pressable, View } from 'react-native';
 import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
+import { BlurView } from 'expo-blur';
 import { overlayVisibleAtom, overlayContentAtom } from '@/store/store';
 import { COLORS } from '@/constants';
 
@@ -24,25 +25,27 @@ export default function Overlay() {
 
   return (
     <Portal>
-      <Pressable style={styles.overlay} onPress={handleClose}>
-        {uniqueContent.map(({ name, component, measurements }) => (
-          <View
-            key={name}
-            style={[
-              styles.content,
-              {
-                position: 'absolute',
-                top: measurements.pageY,
-                left: measurements.pageX,
-                width: measurements.width,
-                height: measurements.height,
-              }
-            ]}
-          >
-            {component}
-          </View>
-        ))}
-      </Pressable>
+      <BlurView intensity={50} tint="light" style={StyleSheet.absoluteFill}>
+        <Pressable style={styles.overlay} onPress={handleClose}>
+          {uniqueContent.map(({ name, component, measurements }) => (
+            <View
+              key={name}
+              style={[
+                styles.content,
+                {
+                  position: 'absolute',
+                  top: measurements.pageY,
+                  left: measurements.pageX,
+                  width: measurements.width,
+                  height: measurements.height,
+                }
+              ]}
+            >
+              {component}
+            </View>
+          ))}
+        </Pressable>
+      </BlurView>
     </Portal>
   );
 }
@@ -50,7 +53,7 @@ export default function Overlay() {
 const styles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: `${COLORS.gradientStart}e6`,
+    backgroundColor: 'transparent',
     zIndex: 1000,
   },
   content: {
