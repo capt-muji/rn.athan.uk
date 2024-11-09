@@ -21,15 +21,14 @@ export default function DateDisplay({ isOverlay }: { isOverlay?: boolean }) {
     if (!dateRef.current) return;
 
     dateRef.current.measureInWindow((x, y, width, height) => {
-      setDateMeasurements({ pageX: x, pageY: y, width, height });
+      const measurements = { pageX: x, pageY: y, width, height };
+      setDateMeasurements(measurements);
       if (!isOverlay) {
-        setOverlayContent(prev => ({
-          ...prev,
-          date: {
-            component: <DateDisplay isOverlay />,
-            measurements: { pageX: x, pageY: y, width, height }
-          }
-        }));
+        setOverlayContent([{
+          name: 'date',
+          component: <DateDisplay isOverlay />,
+          measurements
+        }]);
       }
     });
   };

@@ -31,7 +31,13 @@ interface OverlayContent {
   measurements: PageCoordinates;
 }
 
-export const overlayContentAtom = atom<Record<string, OverlayContent>>({});
+interface OverlayItem {
+  name: string;
+  component: React.ReactNode;
+  measurements: PageCoordinates;
+}
+
+export const overlayContentAtom = atom<OverlayItem[]>([]);
 
 export const activePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const prayerMeasurementsAtom = atom<Record<number, PageCoordinates>>({});

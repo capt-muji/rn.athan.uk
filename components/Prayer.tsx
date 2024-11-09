@@ -16,11 +16,11 @@ export default function Prayer({ index, isOverlay }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setActiveMeasurements] = useAtom(activePrayerMeasurementsAtom);
-  const [, setPrayerMeasurements] = useAtom(prayerMeasurementsAtom);
+  const [prayerMeasurements, setPrayerMeasurements] = useAtom(prayerMeasurementsAtom);
   const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setPrayerRelativeMeasurements] = useAtom(prayerRelativeMeasurementsAtom);
-  const [_, setOverlayContent] = useAtom(overlayContentAtom);
+  const [, setOverlayContent] = useAtom(overlayContentAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -29,7 +29,7 @@ export default function Prayer({ index, isOverlay }: Props) {
 
   const handleLayout = () => {
     if (!viewRef.current) return;
-    
+
     // Measure window coordinates for overlay
     viewRef.current.measureInWindow((x, y, width, height) => {
       const windowMeasurements = {
@@ -38,12 +38,12 @@ export default function Prayer({ index, isOverlay }: Props) {
         width,
         height
       };
-      
+
       setPrayerMeasurements(prev => ({
         ...prev,
         [index]: windowMeasurements
       }));
-      
+
       if (isNext) {
         setActiveMeasurements(windowMeasurements);
       }
@@ -59,17 +59,13 @@ export default function Prayer({ index, isOverlay }: Props) {
   };
 
   const handlePress = () => {
-    if (!isOverlay && viewRef.current) {
-      viewRef.current.measureInWindow((x, y, width, height) => {
-        setOverlayContent(prev => ({
-          ...prev,
-          prayer: {
-            component: <Prayer index={index} isOverlay />,
-            measurements: { pageX: x, pageY: y, width, height }
-          }
-        }));
-        setOverlayVisible(true);
-      });
+    if (!isOverlay) {
+      setOverlayContent([{
+        name: `prayer-${index}`,
+        component: <Prayer index={index} isOverlay />,
+        measurements: prayerMeasurements[index]
+      }]);
+      setOverlayVisible(true);
     }
   };
 
