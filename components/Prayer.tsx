@@ -103,7 +103,6 @@ export default function Prayer({ index, isOverlay }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: SCREEN.paddingHorizontal,
     flexDirection: 'row',
     alignItems: 'center',
   },
