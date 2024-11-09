@@ -30,8 +30,8 @@ export default function PrayerTime({
   // Calculate textColor internally
   const textColor = isSelected
     ? 'white'
-    : isPassed || isNext 
-      ? COLORS.textPrimary 
+    : isPassed || isNext
+      ? COLORS.textPrimary
       : COLORS.textTransparent;
 
   const baseStyle = [styles.text, styles.time, { color: textColor }];
@@ -67,16 +67,9 @@ export default function PrayerTime({
   });
 
   return (
-    <>
-      <Animated.Text style={[baseStyle, todayAnimatedStyle]}>
-        {todayTime}
-      </Animated.Text>
-      {isOverlay && isPassed && (
-        <Animated.Text style={[baseStyle, tomorrowAnimatedStyle, styles.tomorrow]}>
-          {tomorrowTime}
-        </Animated.Text>
-      )}
-    </>
+    <Animated.Text style={[baseStyle, isOverlay && isPassed ? tomorrowAnimatedStyle : todayAnimatedStyle]}>
+      {isOverlay && isPassed ? tomorrowTime : todayTime}
+    </Animated.Text>
   );
 }
 
