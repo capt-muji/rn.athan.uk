@@ -17,9 +17,9 @@ export default function Overlay() {
   return (
     <Portal>
       <Pressable style={styles.overlay} onPress={handleClose}>
-        {Object.entries(content).map(([key, { component, measurements }]) => (
+        {content.map(({ name, component, measurements }) => (
           <Pressable
-            key={key}
+            key={name}
             style={[
               styles.content,
               {
@@ -29,7 +29,6 @@ export default function Overlay() {
                 width: measurements.width,
                 padding: 0,
                 margin: 0,
-                backgroundColor: 'gree',
               }
             ]}
           >
