@@ -44,3 +44,4 @@ export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates | null>(null);
 
 export const overlayAnimatingAtom = atom<boolean>(false);
+export const overlayClosingAtom = atom<boolean>(false);
