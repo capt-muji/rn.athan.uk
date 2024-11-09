@@ -121,8 +121,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   // Update the textColor logic
   const textColor = isSelected
     ? 'white'
-    : isPassed || isNext 
-      ? COLORS.textPrimary 
+    : isPassed || isNext
+      ? COLORS.textPrimary
       : COLORS.textTransparent;
 
   const animatedStyle = useAnimatedStyle(() => {
