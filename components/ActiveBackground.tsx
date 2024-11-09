@@ -15,14 +15,13 @@ export default function ActiveBackground() {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
 
   const animatedStyle = useAnimatedStyle(() => {
-    const activePrayer = relativeMeasurements[nextPrayerIndex];
-
-    if (nextPrayerIndex === -1 || !activePrayer) {
+    if (overlayVisible || nextPrayerIndex === -1 || !relativeMeasurements[nextPrayerIndex]) {
       return { opacity: 0 };
     }
 
+    const activePrayer = relativeMeasurements[nextPrayerIndex];
     return {
-      opacity: overlayVisible ? withTiming(0) : withTiming(1),
+      opacity: withTiming(1),
       position: 'absolute',
       top: withSpring(activePrayer.y),
       left: activePrayer.x,

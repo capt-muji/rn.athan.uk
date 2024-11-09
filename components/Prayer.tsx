@@ -46,11 +46,16 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   }, [isOverlay, overlayClosing]);
 
   const containerStyle = useAnimatedStyle(() => ({
-    // backgroundColor: `rgba(0,0,0,${backgroundOpacity.value})`,
-    // backgroundColor: `rgba(44,19,84,${backgroundOpacity.value})`,
     borderRadius: PRAYER.borderRadius,
     flexDirection: 'row',
     alignItems: 'center',
+    ...(isOverlay && isNext && {
+      backgroundColor: COLORS.primary,
+      shadowColor: COLORS.primaryShadow,
+      shadowOffset: { width: 0, height: 10 },
+      shadowOpacity: 0.5,
+      shadowRadius: 5,
+    })
   }));
 
   const handleLayout = () => {
