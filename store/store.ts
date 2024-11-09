@@ -7,7 +7,6 @@ export const hasErrorAtom = atom<boolean>(false);
 export const todaysPrayersAtom = atom<ITransformedToday>({});
 export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
-export const lastValidPositionAtom = atom<number>(0);
 
 export const overlayVisibleAtom = atom<boolean>(false);
 export const selectedPrayerIndexAtom = atom<number | null>(null);
@@ -34,6 +33,8 @@ interface OverlayItem {
 }
 
 export const overlayContentAtom = atom<OverlayItem[]>([]);
+export const overlayAnimatingAtom = atom<boolean>(false);
+export const overlayClosingAtom = atom<boolean>(false);
 
 export const absoluteActivePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 
@@ -42,6 +43,3 @@ export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
 
 export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates | null>(null);
-
-export const overlayAnimatingAtom = atom<boolean>(false);
-export const overlayClosingAtom = atom<boolean>(false);

@@ -74,10 +74,8 @@ export default function Overlay() {
     <Portal>
       <AnimatedBlur animatedProps={animatedProps} tint="light" style={StyleSheet.absoluteFill}>
         <AnimatedGradient
-          colors={['rgba(25,0,40,0.99)', 'rgba(8,0,12,0.9)', 'rgba(0,0,0,0.98)']}
+          colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(0,0,0,1)']}
           style={[StyleSheet.absoluteFill, animatedGradientStyle]}
-          // start={{ x: 0, y: 0 }}
-          // end={{ x: 1, y: 1 }}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
         />
