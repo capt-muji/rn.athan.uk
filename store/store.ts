@@ -26,6 +26,13 @@ interface Coordinates {
   height: number;
 }
 
+interface OverlayContent {
+  component: React.ReactNode;
+  measurements: PageCoordinates;
+}
+
+export const overlayContentAtom = atom<Record<string, OverlayContent>>({});
+
 export const activePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const prayerMeasurementsAtom = atom<Record<number, PageCoordinates>>({});
 export const prayerRelativeMeasurementsAtom = atom<Record<number, Coordinates>>({});
