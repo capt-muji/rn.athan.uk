@@ -35,10 +35,10 @@ interface OverlayItem {
 
 export const overlayContentAtom = atom<OverlayItem[]>([]);
 
-export const activePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
+export const absoluteActivePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 
 export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
 export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
 
-export const timerMeasurementsAtom = atom<PageCoordinates | null>(null);
-export const dateMeasurementsAtom = atom<PageCoordinates | null>(null);
+export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
+export const absoluteDateMeasurementsAtom = atom<PageCoordinates | null>(null);
