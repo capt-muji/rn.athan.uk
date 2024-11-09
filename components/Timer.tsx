@@ -1,10 +1,10 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { 
-  useAnimatedStyle, 
+import Animated, {
+  useAnimatedStyle,
   useSharedValue,
-  withSpring 
+  withSpring
 } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
@@ -26,7 +26,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   const measurementsRef = useRef<PageCoordinates | null>(null);
   const scale = useSharedValue(1);
   const translateY = useSharedValue(0);
-  
+
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
       { scale: scale.value },
@@ -73,9 +73,9 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   }, [isOverlay, overlayClosing]);
 
   const timerComponent = (
-    <View 
-      ref={timerRef} 
-      onLayout={handleLayout} 
+    <View
+      ref={timerRef}
+      onLayout={handleLayout}
       style={[
         styles.container,
         { opacity: isOverlay ? (overlayVisible ? 1 : 0) : (overlayVisible ? 0 : 1) }
