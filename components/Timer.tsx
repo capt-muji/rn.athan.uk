@@ -16,7 +16,7 @@ interface TimerProps {
 }
 
 export default function Timer({ isOverlay = false }: TimerProps) {
-  const { nextPrayer } = useTimer();
+  const { nextPrayer } = useTimer({ isOverlay });
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [_, setTimerMeasurements] = useAtom(absoluteTimerMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);

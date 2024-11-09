@@ -5,32 +5,42 @@ import {
   todaysPrayersAtom, 
   nextPrayerIndexAtom, 
   tomorrowsPrayersAtom,
+  selectedPrayerIndexAtom,
+  overlayVisibleAtom,
 } from '@/store/store';
 
 const THRESHOLD = 1000; // 1 second threshold
 
-export const useTimer = () => {
+export const useTimer = ({ isOverlay = false } = {}) => {
   const [nextPrayerName, setNextPrayerName] = useState('');
   const [nextPrayerTime, setNextPrayerTime] = useState('');
   
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
 
   useEffect(() => {
     if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
 
     const updateTimer = () => {
-      const nextPrayerInfo = getCurrentPrayerInfo(
-        todaysPrayers,
+      const prayers = isOverlay && todaysPrayers[selectedPrayerIndex!]?.passed ? 
+        tomorrowsPrayers : todaysPrayers;
+      const date = isOverlay && todaysPrayers[selectedPrayerIndex!]?.passed ? 
+        'tomorrow' : 'today';
+
+      const prayerInfo = getCurrentPrayerInfo(
+        prayers,
         nextPrayerIndex,
-        'today'
+        date,
+        isOverlay ? selectedPrayerIndex : undefined
       );
 
-      setNextPrayerName(nextPrayerInfo.timerName);
-      setNextPrayerTime(nextPrayerInfo.timeDisplay);
+      setNextPrayerName(prayerInfo.timerName);
+      setNextPrayerTime(prayerInfo.timeDisplay);
 
-      if (nextPrayerInfo.timeDifference <= THRESHOLD && nextPrayerInfo.currentPrayer) {
+      if (!isOverlay && prayerInfo.timeDifference <= THRESHOLD && prayerInfo.currentPrayer) {
         if (todaysPrayers[nextPrayerIndex]) {
           todaysPrayers[nextPrayerIndex].passed = true;
         }
@@ -41,7 +51,7 @@ export const useTimer = () => {
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
-  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers]);
+  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedPrayerIndex, isOverlay, overlayVisible]);
 
   return {
     nextPrayer: { timerName: nextPrayerName, timeDisplay: nextPrayerTime }
