@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, LayoutChangeEvent, findNodeHandle } from 'react-native';
-import { useAtom } from 'jotai';
 import { useRef } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import { nextPrayerIndexAtom, timerMeasurementsAtom } from '@/store/store';
@@ -10,22 +10,18 @@ export default function Timer() {
   const { nextPrayer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [_, setTimerMeasurements] = useAtom(timerMeasurementsAtom);
-  const viewRef = useRef<View>(null);
+  const timerRef = useRef<View>(null);
 
   const handleLayout = () => {
-    if (!viewRef.current) return;
-    
-    viewRef.current.measureInWindow((x, y, width, height) => {
+    if (!timerRef.current) return;
+
+    timerRef.current.measureInWindow((x, y, width, height) => {
       setTimerMeasurements({ pageX: x, pageY: y, width, height });
     });
   };
 
   return (
-    <View 
-      ref={viewRef}
-      style={styles.container}
-      onLayout={handleLayout}
-    >
+    <View style={styles.container}>
       {nextPrayerIndex === -1 ? (
         <Text style={styles.text}>
           {nextPrayer.timerName}
@@ -35,7 +31,11 @@ export default function Timer() {
           <Text style={styles.text}>
             {`${nextPrayer.timerName || '...'} in`}
           </Text>
-          <View style={styles.timerContainer}>
+          <View
+            ref={timerRef}
+            onLayout={handleLayout}
+            style={styles.timerContainer}
+          >
             <Text style={styles.timer}>
               {nextPrayer.timeDisplay}
             </Text>

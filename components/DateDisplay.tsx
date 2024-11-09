@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
-import { COLORS, SCREEN, TEXT } from '@/constants';
-import Masjid from './Masjid';
+import { useRef } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import { dateMeasurementsAtom } from '@/store/store';
+import { COLORS, SCREEN, TEXT } from '@/constants';
+import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [_, setDateMeasurements] = useAtom(dateMeasurementsAtom);
+  const dateRef = useRef<Text>(null);
   const today = new Date();
   const formattedDate = today.toLocaleDateString('en-GB', {
     weekday: 'short',
@@ -14,16 +16,25 @@ export default function DateDisplay() {
     year: 'numeric'
   });
 
-  const handleLayout = (event: LayoutChangeEvent) => {
-    const { x, y, width, height } = event.nativeEvent.layout;
-    setDateMeasurements({ x, y, width, height });
+  const handleLayout = () => {
+    if (!dateRef.current) return;
+
+    dateRef.current.measureInWindow((x, y, width, height) => {
+      setDateMeasurements({ pageX: x, pageY: y, width, height });
+    });
   };
 
   return (
     <View style={styles.container}>
-      <View onLayout={handleLayout}>
+      <View>
         <Text style={styles.location}>London, UK</Text>
-        <Text style={styles.date}>{formattedDate}</Text>
+        <Text
+          ref={dateRef}
+          onLayout={handleLayout}
+          style={styles.date}
+        >
+          {formattedDate}
+        </Text>
       </View>
       <Masjid />
     </View>
