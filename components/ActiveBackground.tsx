@@ -6,12 +6,12 @@ import Animated, {
   withTiming,
   Easing,
 } from 'react-native-reanimated';
-import { nextPrayerIndexAtom, prayerMeasurementsAtom } from '@/store/store';
-import { COLORS, PRAYER, SCREEN } from '@/constants';
+import { nextPrayerIndexAtom, prayerRelativeMeasurementsAtom } from '@/store/store';
+import { COLORS, PRAYER } from '@/constants';
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [measurements] = useAtom(prayerMeasurementsAtom);
+  const [measurements] = useAtom(prayerRelativeMeasurementsAtom);
 
   const animatedStyle = useAnimatedStyle(() => {
     const activePrayer = measurements[nextPrayerIndex];
@@ -26,12 +26,12 @@ export default function ActiveBackground() {
         easing: Easing.bezier(0.4, 0.0, 0.2, 1),
       }),
       position: 'absolute',
-      top: withSpring(activePrayer.pageY, {
+      top: withSpring(activePrayer.y, {
         damping: 15,
         stiffness: 150,
         mass: 0.5,
       }),
-      left: activePrayer.pageX,
+      left: activePrayer.x,
       width: withSpring(activePrayer.width),
       height: withSpring(activePrayer.height),
     };

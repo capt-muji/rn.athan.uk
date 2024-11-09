@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, prayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, activePrayerMeasurementsAtom, prayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, prayerRelativeMeasurementsAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
@@ -19,6 +19,7 @@ export default function Prayer({ index, isOverlay }: Props) {
   const [, setPrayerMeasurements] = useAtom(prayerMeasurementsAtom);
   const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [, setPrayerRelativeMeasurements] = useAtom(prayerRelativeMeasurementsAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -28,8 +29,9 @@ export default function Prayer({ index, isOverlay }: Props) {
   const handleLayout = () => {
     if (!viewRef.current) return;
     
+    // Measure window coordinates for overlay
     viewRef.current.measureInWindow((x, y, width, height) => {
-      const measurements = {
+      const windowMeasurements = {
         pageX: x,
         pageY: y,
         width,
@@ -38,12 +40,20 @@ export default function Prayer({ index, isOverlay }: Props) {
       
       setPrayerMeasurements(prev => ({
         ...prev,
-        [index]: measurements
+        [index]: windowMeasurements
       }));
       
       if (isNext) {
-        setActiveMeasurements(measurements);
+        setActiveMeasurements(windowMeasurements);
       }
+    });
+
+    // Measure relative coordinates for active background
+    viewRef.current.measure((x, y, width, height) => {
+      setPrayerRelativeMeasurements(prev => ({
+        ...prev,
+        [index]: { x, y, width, height }
+      }));
     });
   };
 
