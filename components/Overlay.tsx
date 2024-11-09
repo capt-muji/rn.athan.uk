@@ -4,7 +4,7 @@ import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
-import { overlayVisibleAtom, overlayContentAtom, overlayAnimatingAtom, overlayClosingAtom, shadowOpacityAtom } from '@/store/store';
+import { overlayVisibleAtom, overlayContentAtom, overlayAnimatingAtom, overlayClosingAtom, shadowOpacityAtom, selectedPrayerIndexAtom } from '@/store/store';
 import { COLORS } from '@/constants';
 import { useEffect } from 'react';
 import {
@@ -21,7 +21,8 @@ export default function Overlay() {
   const [visible, setVisible] = useAtom(overlayVisibleAtom);
   const [content, setOverlayContent] = useAtom(overlayContentAtom);
   const [animating, setAnimating] = useAtom(overlayAnimatingAtom);
-  const [closing, setClosing] = useAtom(overlayClosingAtom);
+  const [, setClosing] = useAtom(overlayClosingAtom);
+  const [, setSelectedPrayerIndexAtom] = useAtom(selectedPrayerIndexAtom);
   const [, setShadowOpacity] = useAtom(shadowOpacityAtom);
 
   const intensity = useSharedValue(0);
@@ -57,6 +58,7 @@ export default function Overlay() {
   }, [animating]);
 
   const handleClose = () => {
+    setSelectedPrayerIndexAtom(null);
     setAnimating(true);
     setClosing(true);
     setShadowOpacity(0);
