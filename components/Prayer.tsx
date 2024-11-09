@@ -26,6 +26,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const [overlayClosing] = useAtom(overlayClosingAtom);
   const viewRef = useRef<View>(null);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom); // Add this line
 
   const prayer = todaysPrayers[index];
   const tomorrowPrayer = tomorrowsPrayers[index];
@@ -45,11 +46,13 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     }
   }, [isOverlay, overlayClosing]);
 
+  const isSelected = isOverlay && index === selectedPrayerIndex;
+
   const containerStyle = useAnimatedStyle(() => ({
     borderRadius: PRAYER.borderRadius,
     flexDirection: 'row',
     alignItems: 'center',
-    ...(isOverlay && isNext && {
+    ...(isSelected && isNext && {
       backgroundColor: COLORS.primary,
       shadowColor: COLORS.primaryShadow,
       shadowOffset: { width: 0, height: 10 },
@@ -112,16 +115,17 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     setOverlayVisible(true);
   };
 
-  const textColor = isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
+  // Update the textColor logic
+  const textColor = isSelected 
+    ? 'white'
+    : isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 
-  const animatedStyle = useAnimatedStyle(() => {
-    const shouldBeFullOpacity = isPassed || isNext;
-    const baseOpacity = shouldBeFullOpacity ? 1 : TEXT.transparent;
-
-    return {
-      opacity: withTiming(baseOpacity, { duration: ANIMATION.duration })
-    };
-  });
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(
+      isSelected || isPassed || isNext ? 1 : TEXT.transparent,
+      { duration: ANIMATION.duration }
+    )
+  }));
 
   return (
     <AnimatedPressable
