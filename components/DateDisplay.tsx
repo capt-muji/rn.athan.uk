@@ -1,12 +1,12 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import { dateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom, PageCoordinates } from '@/store/store';
+import { absoluteDateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom, PageCoordinates } from '@/store/store';
 import { COLORS, SCREEN, TEXT } from '@/constants';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
-  const [_, setDateMeasurements] = useAtom(dateMeasurementsAtom);
+  const [_, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [__, setOverlayContent] = useAtom(overlayContentAtom);
   const dateRef = useRef<Text>(null);
