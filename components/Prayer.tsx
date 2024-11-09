@@ -1,4 +1,4 @@
-import { StyleSheet, View, LayoutChangeEvent } from 'react-native';
+import { StyleSheet, View, LayoutChangeEvent, Pressable } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
@@ -47,7 +47,7 @@ export default function Prayer({ index }: Props) {
   });
 
   return (
-    <View 
+    <Pressable 
       onLayout={handleLayout}
       style={styles.container}
     >
@@ -63,7 +63,7 @@ export default function Prayer({ index }: Props) {
         </Animated.Text>
         <Alert index={index} />
       </View>
-    </View>
+    </Pressable>
   );
 }
 
