@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayClosingAtom } from '@/store/store';
 import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 
@@ -23,6 +23,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
+  const [overlayClosing] = useAtom(overlayClosingAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -32,13 +33,16 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const backgroundOpacity = useSharedValue(0);
 
   useEffect(() => {
-    if (isOverlay) {
-      backgroundOpacity.value = withTiming(0.60, { duration: 750 });
+    if (isOverlay && overlayClosing) {
+      backgroundOpacity.value = withTiming(0, { duration: 300 });
+    } else if (isOverlay) {
+      backgroundOpacity.value = withTiming(0.60, { duration: 300 });
     }
-  }, [isOverlay]);
+  }, [isOverlay, overlayClosing]);
 
   const containerStyle = useAnimatedStyle(() => ({
-    backgroundColor: `rgba(0,0,0,${backgroundOpacity.value})`,
+    // backgroundColor: `rgba(0,0,0,${backgroundOpacity.value})`,
+    backgroundColor: `rgba(44,19,84,${backgroundOpacity.value})`,
     borderRadius: PRAYER.borderRadius,
     flexDirection: 'row',
     alignItems: 'center',
