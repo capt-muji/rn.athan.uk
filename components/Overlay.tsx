@@ -27,6 +27,7 @@ export default function Overlay() {
                 top: measurements.pageY,
                 left: measurements.pageX,
                 width: measurements.width,
+                height: measurements.height,
               }
             ]}
           >

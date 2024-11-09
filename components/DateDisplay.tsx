@@ -22,11 +22,13 @@ export default function DateDisplay({ isOverlay }: { isOverlay?: boolean }) {
 
     dateRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
+
       setDateMeasurements(measurements);
+
       if (!isOverlay) {
         setOverlayContent([{
           name: 'date',
-          component: <DateDisplay isOverlay />,
+          component: <Text style={[styles.date, styles.red]}>{formattedDate}</Text>,
           measurements
         }]);
       }
@@ -71,4 +73,7 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
   },
+  red: {
+    color: 'red'
+  }
 });
