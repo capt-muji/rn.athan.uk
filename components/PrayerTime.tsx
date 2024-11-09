@@ -76,11 +76,16 @@ export default function PrayerTime({
   const tomorrowAnimatedStyle = useAnimatedStyle(() => {
     if (!isOverlay || !isPassed) return { opacity: 0 };
 
-    const duration = overlayClosing ? ANIMATION.duration : 0;
+    if (overlayClosing) {
+      return {
+        opacity: withTiming(0, { duration: 250 })
+      };
+    }
+
     return {
       opacity: withSequence(
-        withTiming(0, { duration: 100 }), // First hide
-        withDelay(100, withTiming(1, { duration })) // Then show after delay
+        withTiming(0, { duration: 1 }),
+        withDelay(100, withTiming(1, { duration: 500 }))
       )
     };
   });
