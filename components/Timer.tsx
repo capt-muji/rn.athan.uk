@@ -1,16 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { nextPrayerIndexAtom } from '@/store/store';
+import { nextPrayerIndexAtom, timerMeasurementsAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 export default function Timer() {
   const { nextPrayer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [_, setTimerMeasurements] = useAtom(timerMeasurementsAtom);
+
+  const handleLayout = (event: LayoutChangeEvent) => {
+    const { x, y, width, height } = event.nativeEvent.layout;
+    setTimerMeasurements({ x, y, width, height });
+  };
 
   return (
-    <View style={styles.container}>
+    <View 
+      style={styles.container}
+      onLayout={handleLayout}
+    >
       {nextPrayerIndex === -1 ? (
         <Text style={styles.text}>
           {nextPrayer.timerName}
