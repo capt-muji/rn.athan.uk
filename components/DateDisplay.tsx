@@ -6,11 +6,7 @@ import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 
-interface DateDisplayProps {
-  isOverlay?: boolean;
-}
-
-export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
+export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [overlayStartOpening] = useAtom(overlayStartOpeningAtom);
   const [overlayFinishedOpening] = useAtom(overlayFinishedOpeningAtom);
@@ -45,28 +41,19 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
 
   // original date
   useEffect(() => {
-    if (overlayStartOpening && !isOverlay) {
+    if (overlayStartOpening) {
       originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
     }
   }, [overlayStartOpening]);
 
   useEffect(() => {
-    if (overlayFinishedClosing && !isOverlay) {
+    if (overlayFinishedClosing) {
       originalOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     }
   }, [overlayFinishedClosing]);
 
-
-
-  // 
-  //
-  //
-
-  // overlay date
-
   useEffect(() => {
-    if (overlayFinishedOpening && isOverlay) {
-      console.log('11111');
+    if (overlayFinishedOpening) {
       overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
 
       setOverlayContent(prev => {
