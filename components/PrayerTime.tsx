@@ -27,14 +27,14 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const todayTime = todaysPrayers[index].time;
   const tomorrowTime = tomorrowsPrayers[index]?.time;
 
-  const originalOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
-  const overlayOpacity = useSharedValue(0);
+  const originalOpacity = useSharedValue(!isOverlay && (isPassed || isNext) ? 1 : TEXT.opacity);
+  const overlayOpacity = useSharedValue(isOverlay ? 0 : originalOpacity.value);
 
   const animatedStyle = useAnimatedStyle(() => {
     // is selected
     if (isOverlay) return {
       color: 'white',
-      opacity: 1,
+      opacity: overlayOpacity.value,
     };
 
     // today and is passed or next
@@ -73,15 +73,15 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
   useEffect(() => {
     if (isOverlay && selectedPrayerIndex !== -1 && overlayStartOpening && overlayVisibleToggle) {
-      originalOpacity.value = withTiming(0, { duration: 5000 });
-      overlayOpacity.value = withDelay(150, withTiming(TEXT.opacity, { duration: 5000 }));
+      originalOpacity.value = withTiming(0, { duration: 10 });
+      // overlayOpacity.value = withDelay(150, withTiming(0, { duration: 5000 }));
     }
   }, [overlayStartOpening]);
 
   useEffect(() => {
     if (isOverlay && overlayStartClosing) {
-      overlayOpacity.value = withTiming(0, { duration: 5000 });
-      originalOpacity.value = withDelay(250, withTiming(1, { duration: 5000 }));
+      // overlayOpacity.value = withTiming(0, { duration: 5000 });
+      // originalOpacity.value = withDelay(250, withTiming(1, { duration: 5000 }));
     }
   }, [overlayStartClosing]);
 
