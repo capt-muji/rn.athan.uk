@@ -34,6 +34,16 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const tomorrowPrayer = tomorrowsPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
+  const textOpacity = useSharedValue(isPassed ? 1 : TEXT.opacity);
+
+  // fade next prayer text opacity when it becomes the next prayer
+  useEffect(() => {
+    if (index === nextPrayerIndex) {
+      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    } else if (!isPassed) {
+      textOpacity.value = TEXT.opacity;
+    }
+  }, [nextPrayerIndex]);
 
   const animatedContainerStyle = useAnimatedStyle(() => {
     if (!isOverlay || !isNext) return {};
@@ -111,13 +121,13 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     // is passed or next
     if (isPassed || isNext) return {
       color: COLORS.textPrimary,
-      opacity: 1,
+      opacity: textOpacity.value,
     };
 
     // is not passed or next
     return {
       color: COLORS.textTransparent,
-      opacity: TEXT.opacity,
+      opacity: textOpacity.value,
     };
   });
 
