@@ -71,7 +71,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
     }
   }, [isOverlay, overlayVisible]);
 
-  const timerComponent = (
+  return (
     <View
       ref={timerRef}
       onLayout={handleLayout}
@@ -92,8 +92,6 @@ export default function Timer({ isOverlay = false }: TimerProps) {
       )}
     </View>
   );
-
-  return timerComponent;
 }
 
 const styles = StyleSheet.create({

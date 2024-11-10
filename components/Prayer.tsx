@@ -19,23 +19,22 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [, setRelativePrayerMeasurements] = useAtom(relativePrayerMeasurementsAtom);
   const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const viewRef = useRef<View>(null);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom); // Add this line
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
 
   const prayer = todaysPrayers[index];
   const tomorrowPrayer = tomorrowsPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
 
-  // Show tomorrow's time only when the prayer is in overlay and has passed
-  const displayTime = isOverlay && isPassed ? tomorrowPrayer?.time : prayer.time;
+  // Remove unused displayTime variable
 
   const backgroundOpacity = useSharedValue(0);
 
@@ -169,20 +168,9 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 }
 
 const styles = StyleSheet.create({
-  // Remove container and overlayContainer styles as they're now handled by containerStyle
-  pressable: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  content: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
-    // color: COLORS.textPrimary,
   },
   english: {
     flex: 1,
@@ -191,11 +179,5 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-  },
-  time: {
-    flex: 1,
-    textAlign: 'center',
-    marginLeft: 25,
-    marginRight: 10,
   }
 });
