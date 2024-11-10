@@ -11,9 +11,9 @@ interface DateDisplayProps {
 }
 
 export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
-  const [_, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
+  const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [__, setOverlayContent] = useAtom(overlayContentAtom);
+  const [, setOverlayContent] = useAtom(overlayContentAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const dateRef = useRef<Text>(null);
@@ -27,10 +27,8 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
   });
 
   useEffect(() => {
-    if (overlayVisible && !isOverlay) {
-      baseTextStyle.opacity = withTiming(0, { duration: ANIMATION.duration });
-    } else if (!overlayVisible && !isOverlay) {
-      baseTextStyle.opacity = withTiming(1, { duration: ANIMATION.duration });
+    if (!isOverlay && baseTextStyle?.opacity) {
+      baseTextStyle.opacity = withTiming(overlayVisible ? 0 : 1, { duration: ANIMATION.duration });
     }
   }, [overlayVisible, isOverlay]);
 
@@ -78,14 +76,6 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
       measurementsRef.current = measurements;
       setDateMeasurements(measurements);
     });
-  };
-
-  const getDisplayText = () => {
-    if (!isOverlay) return formattedDate;
-    if (selectedPrayerIndex === -1) return formattedDate;  // Changed from null to -1
-
-    const prayer = todaysPrayers[selectedPrayerIndex];
-    return prayer?.passed ? 'Tomorrow' : 'Today';
   };
 
   return (

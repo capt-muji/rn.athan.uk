@@ -1,13 +1,9 @@
 import { View, StyleSheet } from 'react-native';
-import { useAtom } from 'jotai';
-import { nextPrayerIndexAtom } from '@/store/store';
+import { ENGLISH, SCREEN } from '@/constants';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
-import { ENGLISH, SCREEN } from '@/constants';
 
 export default function PrayersList() {
-  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-
   return (
     <View style={styles.container}>
       <ActiveBackground />
