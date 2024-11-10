@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue, runOnJS } from 'react-native-reanimated';
 import { useEffect, useRef, useState } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -27,6 +27,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [, setOverlayStartOpening] = useAtom(overlayStartOpeningAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const viewRef = useRef<View>(null);
 
@@ -100,6 +101,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const handlePress = () => {
     if (selectedPrayerIndex !== -1) return;
     setSelectedPrayerIndex(index);
+    setLastSelectedPrayerIndex(index);
 
     setOverlayContent(prev => {
       return [...prev, {
