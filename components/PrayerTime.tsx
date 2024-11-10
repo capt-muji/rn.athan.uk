@@ -52,7 +52,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     if (isPassed || isNext) {
       return {
         // color: COLORS.textPrimary,
-        color: 'green',
+        color: 'white',
         opacity: originalOpacity.value,
       };
     }
@@ -60,6 +60,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     // today and is not passed or next
     return {
       color: COLORS.textTransparent,
+      // color: 'red',
       opacity: originalOpacity.value,
     };
   });
@@ -90,6 +91,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
       }
 
       if (!isPassed || isNext) {
+        overlayOpacity.value = TEXT.transparent;
         overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
         return;
       }
