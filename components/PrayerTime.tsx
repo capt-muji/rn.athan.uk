@@ -27,21 +27,35 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const todayTime = todaysPrayers[index].time;
   const tomorrowTime = tomorrowsPrayers[index]?.time;
 
-  const originalOpacity = useSharedValue(!isOverlay && (isPassed || isNext) ? 1 : TEXT.opacity);
+  const originalOpac = !isOverlay && (isPassed || isNext) ? 1 : TEXT.opacity;
+
+  const originalOpacity = useSharedValue(originalOpac);
   const overlayOpacity = useSharedValue(isOverlay ? 0 : originalOpacity.value);
 
   const animatedStyle = useAnimatedStyle(() => {
     // is selected
-    if (isOverlay) return {
-      color: 'white',
-      opacity: overlayOpacity.value,
-    };
+    if (isOverlay) {
+      if (isPassed) {
+        return {
+          color: 'orange',
+          opacity: overlayOpacity.value  // Changed from originalOpacity to overlayOpacity
+        }
+      }
 
-    // today and is passed or next
-    if (isPassed || isNext) return {
-      color: COLORS.textPrimary,
-      opacity: originalOpacity.value,
-    };
+      return {
+        color: 'white',
+        opacity: overlayOpacity.value  // Changed from originalOpacity to overlayOpacity
+      };
+    }
+
+    // today and is passed next
+    if (isPassed || isNext) {
+      return {
+        // color: COLORS.textPrimary,
+        color: 'green',
+        opacity: originalOpacity.value,
+      };
+    }
 
     // today and is not passed or next
     return {
@@ -50,41 +64,62 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     };
   });
 
-  // const tomorrowAnimatedStyle = useAnimatedStyle(() => {
-  //   // is selected
-  //   if (isOverlay) return {
-  //     color: 'white',
-  //     opacity: 0,
-  //   };
-
-  //   // is passed or next
-  //   if (isPassed || isNext) return {
-  //     color: COLORS.textPrimary,
-  //     opacity: originalOpacity.value,
-  //   };
-
-  //   // is not passed or next
-  //   return {
-  //     color: COLORS.textTransparent,
-  //     opacity: originalOpacity.value,
-  //   };
-  // });
-
 
   useEffect(() => {
-    if (isOverlay && selectedPrayerIndex !== -1 && overlayStartOpening && overlayVisibleToggle) {
-      originalOpacity.value = withTiming(0, { duration: 10 });
-      // overlayOpacity.value = withDelay(150, withTiming(0, { duration: 5000 }));
+    if (!isOverlay) {
+      if (overlayVisibleToggle && selectedPrayerIndex === index) {
+        console.log('original - about to check pass...');
+        if (isPassed) {
+          console.log('original - passed. hide original to show tomorrow');
+          originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+          return;
+        }
+
+        console.log('original - not passed. hide original to show tomorrow');
+        originalOpacity.value = 1;
+        return;
+      }
     }
+
+    if (isOverlay) {
+
+      if (isPassed) {
+        console.log('overlay - passed. show tomorrow');
+        overlayOpacity.value = withDelay(150, withTiming(1, { duration: ANIMATION.duration }));
+        return;
+      }
+
+      if (!isPassed || isNext) {
+        overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+        return;
+      }
+
+      overlayOpacity.value = 1;
+
+      console.log('xxxoverlay - passed. hide original and show tomorrow');
+
+      return;
+    }
+
+
+    // if (isOverlay && overlayVisibleToggle && selectedPrayerIndex === index) {
+    //   overlayOpacity.value = withDelay(150, withTiming(1, { duration: 5000 }));
+    // }
+
+
   }, [overlayStartOpening]);
 
   useEffect(() => {
-    if (isOverlay && overlayStartClosing) {
-      // overlayOpacity.value = withTiming(0, { duration: 5000 });
-      // originalOpacity.value = withDelay(250, withTiming(1, { duration: 5000 }));
+    if (isOverlay && !overlayVisibleToggle) {
+      overlayOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+    }
+
+    if (!isOverlay) {
+      // Restore original opacity based on isPassed or isNext state
+      const targetOpacity = (isPassed || isNext) ? 1 : TEXT.opacity;
+      originalOpacity.value = withDelay(250, withTiming(targetOpacity, { duration: ANIMATION.duration }));
     }
   }, [overlayStartClosing]);
-
 
   const time = () => {
     if (isOverlay) {
