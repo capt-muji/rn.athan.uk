@@ -10,7 +10,8 @@ import {
   selectedPrayerIndexAtom,
   overlayStartOpeningAtom,
   overlayStartClosingAtom,
-  overlayAnimationCompleteAtom
+  overlayFinishedClosingAtom,
+  overlayFinishedOpeningAtom
 } from '@/store/store';
 import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
 import {
@@ -31,7 +32,8 @@ export default function Overlay() {
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setOverlayStartOpening] = useAtom(overlayStartOpeningAtom);
   const [, setOverlayStartClosing] = useAtom(overlayStartClosingAtom);
-  const [, setOverlayAnimationComplete] = useAtom(overlayAnimationCompleteAtom);
+  const [, setOverlayFinishedClosing] = useAtom(overlayFinishedClosingAtom);
+  const [, setOverlayFinishedOpening] = useAtom(overlayFinishedOpeningAtom);
 
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
@@ -39,20 +41,22 @@ export default function Overlay() {
   // Helper functions for animation state management
   const handleOpenStart = () => {
     setOverlayStartOpening(true);
+    setOverlayFinishedOpening(false);
   };
 
   const handleOpenComplete = () => {
     setOverlayStartOpening(false);
+    setOverlayFinishedOpening(true);
   };
 
   const handleCloseStart = () => {
     setOverlayStartClosing(true);
-    setOverlayAnimationComplete(false);
+    setOverlayFinishedClosing(false);
   };
 
   const handleCloseComplete = () => {
     setOverlayStartClosing(false);
-    setOverlayAnimationComplete(true);
+    setOverlayFinishedClosing(true);
     setOverlayContent([]);
     setOverlayVisibleToggle(false);
   };
