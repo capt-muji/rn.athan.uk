@@ -29,7 +29,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [iconIndex, setIconIndex] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+  const [isPopupActive, setIsPopupActive] = useState(false);
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
@@ -49,7 +49,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   const handlePress = useCallback((e) => {
     if (!isOverlay) e?.stopPropagation();
-    setIsActive(true);
+    setIsPopupActive(true);
     timeoutRef.current && clearTimeout(timeoutRef.current);
 
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
@@ -62,9 +62,23 @@ export default function Alert({ index, isOverlay = false }: Props) {
     timeoutRef.current = setTimeout(() => {
       fadeAnim.value = withSpring(0, { duration: 1 });
       bounceAnim.value = withSpring(0);
-      setIsActive(false);
+      setIsPopupActive(false);
     }, 2000);
   }, [isOverlay, alertConfigs.length]);
+
+  const alertAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: !isOverlay
+      ? (isPopupActive || isPassed || isNext ? 1 : TEXT.transparent)
+      : withTiming(overlayVisibleToggle ? 1 : 0, { duration: ANIMATION.duration }),
+    transform: [{ scale: pressAnim.value }]
+  }));
+
+  const popupAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: fadeAnim.value,
+    transform: [{
+      scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
+    }]
+  }));
 
   useEffect(() => {
     return () => {
@@ -78,7 +92,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   const iconColor = isOverlay
     ? 'white'
-    : isActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
+    : isPopupActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 
   return (
     <View style={styles.container}>
@@ -88,27 +102,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
         onPressOut={() => { pressAnim.value = withSpring(1, SPRING_CONFIG); }}
         style={styles.iconContainer}
       >
-        <Animated.View style={[
-          useAnimatedStyle(() => ({
-            opacity: !isOverlay
-              ? (isActive || isPassed || isNext ? 1 : TEXT.transparent)
-              : withTiming(overlayVisibleToggle ? 1 : 0, { duration: ANIMATION.duration }),
-            transform: [{ scale: pressAnim.value }]
-          }))
-        ]}>
+        <Animated.View style={alertAnimatedStyle}>
           <IconComponent color={iconColor} size={20} />
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[
-        styles.popup,
-        useAnimatedStyle(() => ({
-          opacity: fadeAnim.value,
-          transform: [{
-            scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
-          }]
-        }))
-      ]}>
+      <Animated.View style={[styles.popup, popupAnimatedStyle]}>
         <IconComponent color={COLORS.textPrimary} size={20} style={styles.popupIcon} />
         <Text style={styles.label}>{alertConfigs[iconIndex].label}</Text>
       </Animated.View>
