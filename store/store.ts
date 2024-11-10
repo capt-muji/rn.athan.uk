@@ -10,6 +10,13 @@ export const todaysPrayersAtom = atom<ITransformedToday>({});
 export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
 
+// Overlay
+interface OverlayItem {
+  name: string;
+  component: React.ReactNode;
+  measurements: PageCoordinates;
+}
+
 // Overlay State
 export const overlayVisibleAtom = atom<boolean>(false);
 export const overlayContentAtom = atom<OverlayItem[]>([]);
@@ -31,14 +38,8 @@ interface Coordinates {
   name: string;
 }
 
-interface OverlayItem {
-  name: string;
-  component: React.ReactNode;
-  measurements: PageCoordinates;
-}
-
-// Measurements
-export const absoluteActivePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
+// Measurements State
+export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 
 export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
 export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
