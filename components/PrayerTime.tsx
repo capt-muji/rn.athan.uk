@@ -40,25 +40,44 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     if (isOverlay) {
       if (isPassed) {
         return {
-          color: 'white',
-          opacity: overlayOpacity.value  // Changed from originalOpacity to overlayOpacity
+          color: 'yellow',
+          opacity: overlayOpacity.value
         }
       }
 
+      if (isNext) {
+        return {
+          color: COLORS.textPrimary,
+          // color: 'white',
+          opacity: overlayOpacity.value,
+        };
+      }
+
       return {
-        color: 'white',
-        opacity: overlayOpacity.value  // Changed from originalOpacity to overlayOpacity
+        color: COLORS.textPrimary,
+        // color: 'white',
+        opacity: overlayOpacity.value
       };
     }
 
-    // today and is passed next
-    if (isPassed || isNext) {
+    if (isPassed) {
       return {
-        // color: COLORS.textPrimary,
-        color: 'white',
+        color: COLORS.textPrimary,
+        // color: 'black',
         opacity: originalOpacity.value,
       };
     }
+
+    if (isNext) {
+      return {
+        color: COLORS.textPrimary,
+        // color: 'white',
+        opacity: originalOpacity.value,
+      };
+    }
+
+
+
 
     // today and is not passed or next
     return {
@@ -69,38 +88,37 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   });
 
   useEffect(() => {
+    if (!isOverlay) {
+      if (!isPassed && !isNext && overlayVisibleToggle && selectedPrayerIndex === index) {
+        originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+        return;
+      }
+    }
+
     if (isOverlay) {
       if (isPassed) {
         overlayOpacity.value = withDelay(150, withTiming(1, { duration: ANIMATION.duration }));
         return;
       }
 
-      // Don't set initial value, just animate from TEXT.opacity to 1
-      overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-      return;
-    }
-
-    if (!isOverlay) {
-      if (overlayVisibleToggle && selectedPrayerIndex === index) {
-        if (isPassed) {
-          originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-          return;
-        }
-        originalOpacity.value = 1;
+      if (isNext) {
+        overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
         return;
       }
+
+      overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     }
   }, [overlayStartOpening]);
 
   useEffect(() => {
     if (isOverlay && !overlayVisibleToggle) {
-      overlayOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+      overlayOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.duration });
     }
 
     if (!isOverlay) {
-      // Restore original opacity based on isPassed or isNext state
       const targetOpacity = (isPassed || isNext) ? 1 : TEXT.opacity;
-      originalOpacity.value = withDelay(250, withTiming(targetOpacity, { duration: ANIMATION.duration }));
+      // Remove delay to prevent flicker
+      originalOpacity.value = withTiming(targetOpacity, { duration: ANIMATION.duration });
     }
   }, [overlayStartClosing]);
 
