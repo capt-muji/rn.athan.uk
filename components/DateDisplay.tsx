@@ -39,7 +39,6 @@ export default function DateDisplay() {
     opacity: overlayOpacity.value
   }));
 
-  // original date
   useEffect(() => {
     if (overlayStartOpening) {
       originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
@@ -53,14 +52,14 @@ export default function DateDisplay() {
   }, [overlayFinishedClosing]);
 
   useEffect(() => {
-    if (overlayFinishedOpening) {
-      overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    if (selectedPrayerIndex !== -1 && overlayFinishedOpening && overlayVisibleToggle) {
+      overlayOpacity.value = withTiming(0.5, { duration: ANIMATION.duration });
 
       setOverlayContent(prev => {
         return [...prev, {
           name: 'date',
           component: (
-            <Animated.Text style={[styles.date, overlayStyle]}>
+            <Animated.Text style={[styles.date, styles.overlayText, overlayStyle]}>
               {prayer.passed ? 'Tomorrow' : 'Today'}
             </Animated.Text>
           ),
@@ -70,6 +69,11 @@ export default function DateDisplay() {
     }
   }, [overlayFinishedOpening]);
 
+  useEffect(() => {
+    if (overlayStartClosing) {
+      overlayOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+    }
+  }, [overlayStartClosing]);
 
   const handleLayout = () => {
     if (!dateRef.current) return;
@@ -118,4 +122,7 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
   },
+  overlayText: {
+    color: COLORS.textSecondary,
+  }
 });
