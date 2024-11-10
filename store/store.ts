@@ -9,6 +9,7 @@ export const hasErrorAtom = atom<boolean>(false);
 export const todaysPrayersAtom = atom<ITransformedToday>({});
 export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
+export const selectedPrayerIndexAtom = atom<number>(-1);
 
 // Overlay
 interface OverlayItem {
@@ -20,10 +21,10 @@ interface OverlayItem {
 // Overlay State
 export const overlayVisibleToggleAtom = atom<boolean>(false);
 export const overlayContentAtom = atom<OverlayItem[]>([]);
-export const selectedPrayerIndexAtom = atom<number>(-1);
 export const overlayStartOpeningAtom = atom<boolean>(false);
+export const overlayFinishedOpeningAtom = atom<boolean>(false);
 export const overlayStartClosingAtom = atom<boolean>(false);
-export const overlayAnimationCompleteAtom = atom<boolean>(false);
+export const overlayFinishedClosingAtom = atom<boolean>(false);
 
 // Measurement Types
 export interface PageCoordinates {

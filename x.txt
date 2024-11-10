@@ -1,0 +1,42 @@
+  // DO NOT DELETE COMMENTED CODE
+  // useEffect(() => {
+  //   if (!isOverlay && baseTextStyle?.opacity) {
+  //     baseTextStyle.opacity = withTiming(overlayVisibleToggle ? 0 : 1, { duration: ANIMATION.duration });
+  //   }
+  // }, [overlayVisibleToggle, isOverlay]);
+
+  // const overlayTextStyle = useAnimatedStyle(() => ({
+  //   opacity: withTiming(overlayVisibleToggle ? TEXT.opacity : 0, {
+  //     duration: ANIMATION.duration
+  //   }),
+  //   color: COLORS.textSecondary,
+  // }));
+
+  // const baseTextStyle = useAnimatedStyle(() => ({
+  //   opacity: withTiming(overlayVisibleToggle ? 0 : 1, {
+  //     duration: ANIMATION.duration
+  //   }),
+  //   color: COLORS.textPrimary,
+  // }));
+
+  // useEffect(() => {
+  //   if (overlayVisibleToggle && selectedPrayerIndex !== -1) {  // Changed from null to -1
+  //     const prayer = todaysPrayers[selectedPrayerIndex];
+  //     if (!prayer) return;
+
+  //     setOverlayContent(prev => {
+  //       const exists = prev.some(item => item.name === 'date');
+  //       if (exists) return prev;
+
+  //       return [...prev, {
+  //         name: 'date',
+  //         component: (
+  //           <Animated.Text style={[styles.date, overlayTextStyle]}>
+  //             {prayer.passed ? 'Tomorrow' : 'Today'}
+  //           </Animated.Text>
+  //         ),
+  //         measurements: measurementsRef.current!
+  //       }];
+  //     });
+  //   }
+  // }, [overlayVisibleToggle, selectedPrayerIndex]);
