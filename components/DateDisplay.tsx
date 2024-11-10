@@ -40,7 +40,7 @@ export default function DateDisplay() {
   useEffect(() => {
     if (selectedPrayerIndex !== -1 && overlayStartOpening && overlayVisibleToggle) {
       originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-      overlayOpacity.value = withDelay(150, withTiming(0.5, { duration: ANIMATION.duration }));
+      overlayOpacity.value = withDelay(150, withTiming(TEXT.opacity, { duration: ANIMATION.duration }));
 
       setOverlayContent(prev => {
         return [...prev, {
