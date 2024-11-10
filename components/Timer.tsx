@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
+import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleToggleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 interface TimerProps {
@@ -19,7 +19,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   const { nextPrayer } = useTimer({ isOverlay });
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setTimerMeasurements] = useAtom(absoluteTimerMeasurementsAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const timerRef = useRef<View>(null);
   const measurementsRef = useRef<PageCoordinates | null>(null);
@@ -44,7 +44,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   };
 
   useEffect(() => {
-    if (overlayVisible) {
+    if (overlayVisibleToggle) {
       setOverlayContent(prev => {
         const exists = prev.some(item => item.name === 'timer');
         if (exists) return prev;
@@ -56,10 +56,10 @@ export default function Timer({ isOverlay = false }: TimerProps) {
         }];
       });
     }
-  }, [overlayVisible]);
+  }, [overlayVisibleToggle]);
 
   useEffect(() => {
-    if (isOverlay && !overlayVisible) {
+    if (isOverlay && !overlayVisibleToggle) {
       scale.value = withSpring(1, { mass: 0.5 });
       translateY.value = withSpring(0, { mass: 0.5 });
     } else if (isOverlay) {
@@ -69,7 +69,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
       scale.value = withSpring(1, { mass: 0.5 });
       translateY.value = withSpring(0, { mass: 0.5 });
     }
-  }, [isOverlay, overlayVisible]);
+  }, [isOverlay, overlayVisibleToggle]);
 
   return (
     <View
@@ -77,7 +77,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
       onLayout={handleLayout}
       style={[
         styles.container,
-        { opacity: isOverlay ? (overlayVisible ? 1 : 0) : (overlayVisible ? 0 : 1) }
+        { opacity: isOverlay ? (overlayVisibleToggle ? 1 : 0) : (overlayVisibleToggle ? 0 : 1) }
       ]}
     >
       {nextPrayerIndex === -1 ? (

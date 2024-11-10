@@ -18,9 +18,12 @@ interface OverlayItem {
 }
 
 // Overlay State
-export const overlayVisibleAtom = atom<boolean>(false);
+export const overlayVisibleToggleAtom = atom<boolean>(false);
 export const overlayContentAtom = atom<OverlayItem[]>([]);
 export const selectedPrayerIndexAtom = atom<number>(-1);
+export const overlayStartOpeningAtom = atom<boolean>(false);
+export const overlayStartClosingAtom = atom<boolean>(false);
+export const overlayAnimationCompleteAtom = atom<boolean>(false);
 
 // Measurement Types
 export interface PageCoordinates {

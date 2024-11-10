@@ -1,9 +1,9 @@
 import { StyleSheet, View, Pressable } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
-import { useEffect, useRef } from 'react';
+import Animated, { useAnimatedStyle, withTiming, useSharedValue, runOnJS } from 'react-native-reanimated';
+import { useEffect, useRef, useState } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -21,10 +21,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [, setRelativePrayerMeasurements] = useAtom(relativePrayerMeasurementsAtom);
-  const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
+  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const viewRef = useRef<View>(null);
@@ -110,7 +110,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
         measurements: absolutePrayerMeasurements[index]
       }];
     });
-    setOverlayVisible(true);
+    setOverlayVisibleToggle(true);
   };
 
   // Update the textColor logic
@@ -134,11 +134,28 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
     return {
       opacity: withTiming(
-        shouldBeVisible && overlayVisible ? 1 : 0,
-        { duration: ANIMATION.duration }
+        shouldBeVisible && overlayVisibleToggle ? 1 : 0,
+        { duration: ANIMATION.duration },
+        // Add finished callback
+        (finished) => {
+          if (finished) {
+            // Animation finished
+            runOnJS(setAnimationComplete)(true);
+          }
+        }
       )
     };
   });
+
+  // Add animation state tracking
+  const [animationComplete, setAnimationComplete] = useState(false);
+
+  // Reset animation state when overlay visibility changes
+  useEffect(() => {
+    if (!overlayVisibleToggle) {
+      setAnimationComplete(false);
+    }
+  }, [overlayVisibleToggle]);
 
   return (
     <AnimatedPressable

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import { absoluteDateMeasurementsAtom, overlayContentAtom, overlayVisibleAtom, PageCoordinates, selectedPrayerIndexAtom, todaysPrayersAtom } from '@/store/store';
+import { absoluteDateMeasurementsAtom, overlayContentAtom, overlayVisibleToggleAtom, PageCoordinates, selectedPrayerIndexAtom, todaysPrayersAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
@@ -12,7 +12,7 @@ interface DateDisplayProps {
 
 export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
@@ -28,26 +28,26 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
 
   useEffect(() => {
     if (!isOverlay && baseTextStyle?.opacity) {
-      baseTextStyle.opacity = withTiming(overlayVisible ? 0 : 1, { duration: ANIMATION.duration });
+      baseTextStyle.opacity = withTiming(overlayVisibleToggle ? 0 : 1, { duration: ANIMATION.duration });
     }
-  }, [overlayVisible, isOverlay]);
+  }, [overlayVisibleToggle, isOverlay]);
 
   const overlayTextStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(overlayVisible ? TEXT.opacity : 0, {
+    opacity: withTiming(overlayVisibleToggle ? TEXT.opacity : 0, {
       duration: ANIMATION.duration
     }),
     color: COLORS.textSecondary,
   }));
 
   const baseTextStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(overlayVisible ? 0 : 1, {
+    opacity: withTiming(overlayVisibleToggle ? 0 : 1, {
       duration: ANIMATION.duration
     }),
     color: COLORS.textPrimary,
   }));
 
   useEffect(() => {
-    if (overlayVisible && selectedPrayerIndex !== -1) {  // Changed from null to -1
+    if (overlayVisibleToggle && selectedPrayerIndex !== -1) {  // Changed from null to -1
       const prayer = todaysPrayers[selectedPrayerIndex];
       if (!prayer) return;
 
@@ -66,7 +66,7 @@ export default function DateDisplay({ isOverlay = false }: DateDisplayProps) {
         }];
       });
     }
-  }, [overlayVisible, selectedPrayerIndex]);
+  }, [overlayVisibleToggle, selectedPrayerIndex]);
 
   const handleLayout = () => {
     if (!dateRef.current) return;

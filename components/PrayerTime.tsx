@@ -3,7 +3,7 @@ import { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reani
 import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/constants';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleToggleAtom } from '@/store/store';
 import { useEffect } from 'react';
 
 interface Props {
@@ -16,7 +16,7 @@ export default function PrayerTime({ index, isOverlay, isSelected }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
@@ -53,14 +53,14 @@ export default function PrayerTime({ index, isOverlay, isSelected }: Props) {
 
   useEffect(() => {
     // Overlay visibility state
-    if (!overlayVisible) {
+    if (!overlayVisibleToggle) {
       if (isOverlay) {
         opacity.value = 0;
       } else {
         opacity.value = isPassed || isNext ? 1 : TEXT.transparent;
       }
     }
-  }, [overlayVisible, isOverlay, isPassed, isNext]);
+  }, [overlayVisibleToggle, isOverlay, isPassed, isNext]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: withTiming(opacity.value, { duration: ANIMATION.duration }),

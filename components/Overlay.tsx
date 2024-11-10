@@ -4,13 +4,21 @@ import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
-import { overlayVisibleAtom, overlayContentAtom, selectedPrayerIndexAtom } from '@/store/store';
-import { useEffect, useCallback, useLayoutEffect } from 'react';
+import {
+  overlayVisibleToggleAtom,
+  overlayContentAtom,
+  selectedPrayerIndexAtom,
+  overlayStartOpeningAtom,
+  overlayStartClosingAtom,
+  overlayAnimationCompleteAtom
+} from '@/store/store';
+import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
 import {
   useSharedValue,
   withTiming,
   useAnimatedProps,
-  useAnimatedStyle
+  useAnimatedStyle,
+  runOnJS
 } from 'react-native-reanimated';
 import RadialGlow from './RadialGlow';
 import { ANIMATION } from '@/constants';
@@ -18,11 +26,14 @@ import { ANIMATION } from '@/constants';
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
-  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayVisibleToggle, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [content, setOverlayContent] = useAtom(overlayContentAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [, setOverlayStartOpening] = useAtom(overlayStartOpeningAtom);
+  const [, setOverlayStartClosing] = useAtom(overlayStartClosingAtom);
+  const [, setOverlayAnimationComplete] = useAtom(overlayAnimationCompleteAtom);
 
-  // default values
+  // Remove local state since we now use atoms
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
 
@@ -34,33 +45,41 @@ export default function Overlay() {
     opacity: opacity.value
   }));
 
-  // when overlayVisible opens
+  // when overlayVisibleToggle opens
   useEffect(() => {
-    if (overlayVisible) {
+    if (overlayVisibleToggle) {
       opacity.value = withTiming(1, { duration: ANIMATION.duration });
       intensity.value = withTiming(10, { duration: ANIMATION.duration });
     }
-  }, [overlayVisible]);
+  }, [overlayVisibleToggle]);
 
   const cleanupOverlay = () => {
     setOverlayContent([]);
-    setOverlayVisible(false);
+    setOverlayVisibleToggle(false);
   };
 
   const handleClose = () => {
-    // setSelectedPrayerIndex(1);
+    setOverlayStartClosing(true);
+    setOverlayAnimationComplete(false);
 
-    // Start animations
-    opacity.value = withTiming(0, { duration: ANIMATION.duration });
-    intensity.value = withTiming(0, { duration: ANIMATION.duration });
+    // Start closing animations
+    opacity.value = withTiming(0,
+      { duration: ANIMATION.duration },
+      (finished) => {
+        if (finished) {
+          runOnJS(setOverlayStartClosing)(false);
+          runOnJS(setOverlayAnimationComplete)(true);
+          runOnJS(cleanupOverlay)();
+        }
+      }
+    );
 
-    // Clean up after animations complete
-    setTimeout(() => {
-      cleanupOverlay();
-    }, ANIMATION.duration);
+    intensity.value = withTiming(0,
+      { duration: ANIMATION.duration }
+    );
   };
 
-  if (!overlayVisible) return null;
+  if (!overlayVisibleToggle) return null;
 
   return (
     <Portal>
