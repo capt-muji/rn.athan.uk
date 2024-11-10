@@ -36,6 +36,57 @@ export default function Overlay() {
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
 
+  // Helper functions for animation state management
+  const handleOpenStart = () => {
+    setOverlayStartOpening(true);
+  };
+
+  const handleOpenComplete = () => {
+    setOverlayStartOpening(false);
+  };
+
+  const handleCloseStart = () => {
+    setOverlayStartClosing(true);
+    setOverlayAnimationComplete(false);
+  };
+
+  const handleCloseComplete = () => {
+    setOverlayStartClosing(false);
+    setOverlayAnimationComplete(true);
+    setOverlayContent([]);
+    setOverlayVisibleToggle(false);
+  };
+
+  // Animation helpers
+  const animateOpen = () => {
+    handleOpenStart();
+
+    opacity.value = withTiming(1, { duration: ANIMATION.duration }, (finished) => {
+      if (finished) runOnJS(handleOpenComplete)();
+    });
+
+    intensity.value = withTiming(10, { duration: ANIMATION.duration });
+  };
+
+  const animateClose = () => {
+    handleCloseStart();
+
+    opacity.value = withTiming(0, { duration: ANIMATION.duration }, (finished) => {
+      if (finished) runOnJS(handleCloseComplete)();
+    });
+
+    intensity.value = withTiming(0, { duration: ANIMATION.duration });
+  };
+
+  // Visibility effect
+  useEffect(() => {
+    if (overlayVisibleToggle) {
+      animateOpen();
+    } else {
+      animateClose();
+    }
+  }, [overlayVisibleToggle]);
+
   const animatedProps = useAnimatedProps(() => ({
     intensity: intensity.value,
   }));
@@ -44,38 +95,8 @@ export default function Overlay() {
     opacity: opacity.value
   }));
 
-  // when overlayVisibleToggle opens
-  useEffect(() => {
-    if (overlayVisibleToggle) {
-      opacity.value = withTiming(1, { duration: ANIMATION.duration });
-      intensity.value = withTiming(10, { duration: ANIMATION.duration });
-    }
-  }, [overlayVisibleToggle]);
-
-  const cleanupOverlay = () => {
-    setOverlayContent([]);
-    setOverlayVisibleToggle(false);
-  };
-
   const handleClose = () => {
-    setOverlayStartClosing(true);
-    setOverlayAnimationComplete(false);
-
-    // Start closing animations
-    opacity.value = withTiming(0,
-      { duration: ANIMATION.duration },
-      (finished) => {
-        if (finished) {
-          runOnJS(setOverlayStartClosing)(false);
-          runOnJS(setOverlayAnimationComplete)(true);
-          runOnJS(cleanupOverlay)();
-        }
-      }
-    );
-
-    intensity.value = withTiming(0,
-      { duration: ANIMATION.duration }
-    );
+    animateClose();
   };
 
   if (!overlayVisibleToggle) return null;
