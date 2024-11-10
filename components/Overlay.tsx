@@ -33,7 +33,6 @@ export default function Overlay() {
   const [, setOverlayStartClosing] = useAtom(overlayStartClosingAtom);
   const [, setOverlayAnimationComplete] = useAtom(overlayAnimationCompleteAtom);
 
-  // Remove local state since we now use atoms
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
 

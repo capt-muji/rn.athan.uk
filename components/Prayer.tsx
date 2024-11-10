@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue, runOnJS } from 'react-native-reanimated';
 import { useEffect, useRef, useState } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -25,6 +25,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [, setRelativePrayerMeasurements] = useAtom(relativePrayerMeasurementsAtom);
   const [, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [, setOverlayStartOpening] = useAtom(overlayStartOpeningAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const viewRef = useRef<View>(null);
@@ -111,6 +112,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       }];
     });
     setOverlayVisibleToggle(true);
+    setOverlayStartOpening(true);
+    // we also need to setOverlayStartOpening to true
   };
 
   // Update the textColor logic
