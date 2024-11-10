@@ -35,8 +35,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
 
-  // Remove unused displayTime variable
-
   const backgroundOpacity = useSharedValue(0);
 
   useEffect(() => {
@@ -107,13 +105,11 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
       return [...prev, {
         name: `prayer-${index}`,
-        component: <Prayer index={index} isOverlay={true} />, // Pass isOverlay prop here
+        component: <Prayer index={index} isOverlay={true} />,
         measurements: absolutePrayerMeasurements[index]
       }];
     });
     setOverlayVisibleToggle(true);
-    setOverlayStartOpening(true);
-    // we also need to setOverlayStartOpening to true
   };
 
   // Update the textColor logic
