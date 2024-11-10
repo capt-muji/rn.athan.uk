@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
@@ -13,16 +13,16 @@ import Animated, {
 import { COLORS, TEXT, ANIMATION } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleToggleAtom } from '@/store/store';
 
-const SPRING_CONFIG = {
-  damping: 12,
-  stiffness: 500,
-  mass: 0.5
-};
+const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 
-interface Props {
-  index: number;
-  isOverlay?: boolean;
-}
+const ALERT_CONFIGS = [
+  { icon: PiBellSimpleSlash, label: "Off" },
+  { icon: PiBellSimpleRinging, label: "Notification" },
+  { icon: PiVibrate, label: "Vibrate" },
+  { icon: PiSpeakerSimpleHigh, label: "Sound" }
+];
+
+interface Props { index: number; isOverlay?: boolean; }
 
 export default function Alert({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
@@ -36,25 +36,15 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const pressAnim = useSharedValue(1);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
-  const prayer = todaysPrayers[index];
-  const isPassed = prayer.passed;
+  const { passed: isPassed } = todaysPrayers[index];
   const isNext = index === nextPrayerIndex;
-
-  const alertConfigs = useMemo(() => [
-    { icon: PiBellSimpleSlash, label: "Off" },
-    { icon: PiBellSimpleRinging, label: "Notification" },
-    { icon: PiVibrate, label: "Vibrate" },
-    { icon: PiSpeakerSimpleHigh, label: "Sound" }
-  ], []);
 
   const handlePress = useCallback((e) => {
     if (!isOverlay) e?.stopPropagation();
     setIsPopupActive(true);
     timeoutRef.current && clearTimeout(timeoutRef.current);
+    setIconIndex(prev => (prev + 1) % ALERT_CONFIGS.length);
 
-    setIconIndex(prev => (prev + 1) % alertConfigs.length);
-
-    // Animation sequence
     bounceAnim.value = 0;
     fadeAnim.value = withSpring(1, SPRING_CONFIG);
     bounceAnim.value = withSpring(1, SPRING_CONFIG);
@@ -64,7 +54,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
       bounceAnim.value = withSpring(0);
       setIsPopupActive(false);
     }, 2000);
-  }, [isOverlay, alertConfigs.length]);
+  }, [isOverlay]);
 
   const alertAnimatedStyle = useAnimatedStyle(() => ({
     opacity: !isOverlay
@@ -80,26 +70,22 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }]
   }));
 
-  useEffect(() => {
-    return () => {
-      timeoutRef.current && clearTimeout(timeoutRef.current);
-      fadeAnim.value = 0;
-      bounceAnim.value = 0;
-    };
+  useEffect(() => () => {
+    timeoutRef.current && clearTimeout(timeoutRef.current);
+    fadeAnim.value = 0;
+    bounceAnim.value = 0;
   }, []);
 
-  const { icon: IconComponent } = alertConfigs[iconIndex];
-
-  const iconColor = isOverlay
-    ? 'white'
-    : isPopupActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
+  const { icon: IconComponent } = ALERT_CONFIGS[iconIndex];
+  const iconColor = isOverlay ? 'white'
+    : (isPopupActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent);
 
   return (
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onPressIn={() => { pressAnim.value = withSpring(0.9, SPRING_CONFIG); }}
-        onPressOut={() => { pressAnim.value = withSpring(1, SPRING_CONFIG); }}
+        onPressIn={() => pressAnim.value = withSpring(0.9, SPRING_CONFIG)}
+        onPressOut={() => pressAnim.value = withSpring(1, SPRING_CONFIG)}
         style={styles.iconContainer}
       >
         <Animated.View style={alertAnimatedStyle}>
@@ -109,7 +95,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
       <Animated.View style={[styles.popup, popupAnimatedStyle]}>
         <IconComponent color={COLORS.textPrimary} size={20} style={styles.popupIcon} />
-        <Text style={styles.label}>{alertConfigs[iconIndex].label}</Text>
+        <Text style={styles.label}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
     </View>
   );
