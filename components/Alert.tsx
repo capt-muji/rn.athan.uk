@@ -19,7 +19,7 @@ interface Props {
   isSelected?: boolean;  // Add this prop
 }
 
-export default function Alert({ index, isOverlay = false, isSelected = false }: Props) {
+export default function Alert({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
@@ -121,7 +121,7 @@ export default function Alert({ index, isOverlay = false, isSelected = false }: 
     // Skip animation for passed/next prayers in overlay
     if (isPassed || isNext) return {};
 
-    const shouldBeFullOpacity = isSelected || isActive;
+    const shouldBeFullOpacity = isOverlay;
 
     return {
       opacity: withTiming(
@@ -146,7 +146,7 @@ export default function Alert({ index, isOverlay = false, isSelected = false }: 
     };
   });
 
-  const iconColor = isSelected
+  const iconColor = isOverlay
     ? 'white'
     : isActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 
