@@ -12,7 +12,7 @@ interface Props {
   isSelected: boolean;
 }
 
-export default function PrayerTime({ index, isOverlay, isSelected }: Props) {
+export default function PrayerTime({ index, isOverlay }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
