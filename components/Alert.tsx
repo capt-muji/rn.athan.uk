@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { StyleSheet, Pressable, Text, View, GestureResponderEvent } from 'react-native';
+import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
 import Animated, {
@@ -13,10 +13,15 @@ import Animated, {
 import { COLORS, TEXT, ANIMATION } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleToggleAtom } from '@/store/store';
 
+const SPRING_CONFIG = {
+  damping: 12,
+  stiffness: 500,
+  mass: 0.5
+};
+
 interface Props {
   index: number;
   isOverlay?: boolean;
-  isSelected?: boolean;  // Add this prop
 }
 
 export default function Alert({ index, isOverlay = false }: Props) {
@@ -25,12 +30,11 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [showPopupContent, setShowPopupContent] = useState(false);
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
-  const timeoutRef = useRef<NodeJS.Timeout>();
   const pressAnim = useSharedValue(1);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
@@ -43,108 +47,34 @@ export default function Alert({ index, isOverlay = false }: Props) {
     { icon: PiSpeakerSimpleHigh, label: "Sound" }
   ], []);
 
-  const handlePress = useCallback((e: GestureResponderEvent) => {
-    if (!isOverlay) {
-      e?.stopPropagation();
-    }
-
+  const handlePress = useCallback((e) => {
+    if (!isOverlay) e?.stopPropagation();
     setIsActive(true);
+    timeoutRef.current && clearTimeout(timeoutRef.current);
 
-    // Clear any existing timeout
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    // Update content first
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
-    setShowPopupContent(true);
 
-    // Then start animations
+    // Animation sequence
     bounceAnim.value = 0;
-    fadeAnim.value = withSpring(1, {
-      damping: 12,
-      stiffness: 500,
-      mass: 0.5
-    });
-    bounceAnim.value = withSpring(1, {
-      damping: 12,
-      stiffness: 500,
-      mass: 0.5
-    });
+    fadeAnim.value = withSpring(1, SPRING_CONFIG);
+    bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
-    // Set timeout to hide
     timeoutRef.current = setTimeout(() => {
       fadeAnim.value = withSpring(0, { duration: 1 });
       bounceAnim.value = withSpring(0);
       setIsActive(false);
     }, 2000);
-  }, [alertConfigs.length, isOverlay]);
-
-  const handlePressIn = useCallback(() => {
-    pressAnim.value = withSpring(0.9, {
-      damping: 12,
-      stiffness: 500,
-      mass: 0.5
-    });
-  }, []);
-
-  const handlePressOut = useCallback(() => {
-    pressAnim.value = withSpring(1, {
-      damping: 12,
-      stiffness: 500,
-      mass: 0.5
-    });
-  }, []);
+  }, [isOverlay, alertConfigs.length]);
 
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      // Reset animations on unmount
+      timeoutRef.current && clearTimeout(timeoutRef.current);
       fadeAnim.value = 0;
       bounceAnim.value = 0;
-      setIsActive(false);
     };
   }, []);
 
-  const currentConfig = alertConfigs[iconIndex];
-  const IconComponent = currentConfig.icon;
-
-  const animatedStyle = useAnimatedStyle(() => {
-    if (!isOverlay) {
-      return {
-        opacity: isActive || isPassed || isNext ? 1 : TEXT.transparent
-      };
-    }
-
-    // Skip animation for passed/next prayers in overlay
-    if (isPassed || isNext) return {};
-
-    const shouldBeFullOpacity = isOverlay;
-
-    return {
-      opacity: withTiming(
-        shouldBeFullOpacity && overlayVisibleToggle ? 1 : 0,
-        { duration: ANIMATION.duration }
-      )
-    };
-  });
-
-  const popupAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: fadeAnim.value,
-      transform: [{
-        scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
-      }],
-    };
-  });
-
-  const pressableAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: pressAnim.value }]
-    };
-  });
+  const { icon: IconComponent } = alertConfigs[iconIndex];
 
   const iconColor = isOverlay
     ? 'white'
@@ -154,28 +84,33 @@ export default function Alert({ index, isOverlay = false }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
+        onPressIn={() => { pressAnim.value = withSpring(0.9, SPRING_CONFIG); }}
+        onPressOut={() => { pressAnim.value = withSpring(1, SPRING_CONFIG); }}
         style={styles.iconContainer}
       >
-        <Animated.View style={[animatedStyle, pressableAnimatedStyle]}>
+        <Animated.View style={[
+          useAnimatedStyle(() => ({
+            opacity: !isOverlay
+              ? (isActive || isPassed || isNext ? 1 : TEXT.transparent)
+              : withTiming(overlayVisibleToggle ? 1 : 0, { duration: ANIMATION.duration }),
+            transform: [{ scale: pressAnim.value }]
+          }))
+        ]}>
           <IconComponent color={iconColor} size={20} />
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[styles.popup, popupAnimatedStyle]}>
-        {showPopupContent && (
-          <>
-            <IconComponent
-              color={COLORS.textPrimary}
-              size={20}
-              style={styles.popupIcon}
-            />
-            <Text style={styles.label}>
-              {currentConfig.label}
-            </Text>
-          </>
-        )}
+      <Animated.View style={[
+        styles.popup,
+        useAnimatedStyle(() => ({
+          opacity: fadeAnim.value,
+          transform: [{
+            scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
+          }]
+        }))
+      ]}>
+        <IconComponent color={COLORS.textPrimary} size={20} style={styles.popupIcon} />
+        <Text style={styles.label}>{alertConfigs[iconIndex].label}</Text>
       </Animated.View>
     </View>
   );
