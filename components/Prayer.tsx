@@ -35,28 +35,18 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
 
-  const backgroundOpacity = useSharedValue(0);
+  const animatedContainerStyle = useAnimatedStyle(() => {
+    if (!isOverlay || !isNext) return {};
 
-  useEffect(() => {
-    if (isOverlay) {
-      backgroundOpacity.value = withTiming(0, { duration: 300 });
-    }
-  }, [isOverlay]);
-
-  const isSelected = isOverlay && index === selectedPrayerIndex;
-
-  const containerStyle = useAnimatedStyle(() => ({
-    borderRadius: PRAYER.borderRadius,
-    flexDirection: 'row',
-    alignItems: 'center',
-    ...(isSelected && isNext && {
+    // apply blue background to next prayer on overlay
+    return {
       backgroundColor: COLORS.primary,
       shadowColor: COLORS.primaryShadow,
       shadowOffset: { width: 0, height: 10 },
       shadowOpacity: 0.5,
       shadowRadius: 5,
-    })
-  }));
+    };
+  });
 
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;  // Add isOverlay check here
@@ -102,9 +92,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     setSelectedPrayerIndex(index);
 
     setOverlayContent(prev => {
-      const exists = prev.some(item => item.name === `prayer-${index}`);
-      if (exists) return prev;
-
       return [...prev, {
         name: `prayer-${index}`,
         component: <Prayer index={index} isOverlay={true} />,
@@ -114,39 +101,23 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     setOverlayVisibleToggle(true);
   };
 
-  // Update the textColor logic
-  const textColor = isSelected
-    ? 'white'
-    : isPassed || isNext
-      ? COLORS.textPrimary
-      : COLORS.textTransparent;
+  const animatedTextStyle = useAnimatedStyle(() => {
+    // is selected
+    if (isOverlay) return {
+      color: 'white',
+      opacity: 1,
+    };
 
-  const animatedStyle = useAnimatedStyle(() => {
-    if (!isOverlay) {
-      return {
-        opacity: isPassed || isNext ? 1 : TEXT.transparent
-      };
-    }
+    // is passed or next
+    if (isPassed || isNext) return {
+      color: COLORS.textPrimary,
+      opacity: 1,
+    };
 
-    // Skip animation for non-visible prayers
-    if (!isPassed && !isNext && !isSelected) {
-      return {
-        opacity: 0
-      };
-    }
-
-    // Skip animation for passed/next prayers in overlay
-    if (isPassed || isNext) {
-      return {
-        opacity: 1
-      };
-    }
-
+    // is not passed or next
     return {
-      opacity: withTiming(
-        overlayVisibleToggle ? 1 : 0,
-        { duration: ANIMATION.duration }
-      )
+      color: COLORS.textTransparent,
+      opacity: TEXT.opacity,
     };
   });
 
@@ -154,30 +125,33 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={containerStyle}
+      style={[styles.container, animatedContainerStyle]}
       onPress={handlePress}
     >
-      <Animated.Text style={[styles.text, styles.english, { color: textColor }, animatedStyle]}>
+      <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}>
         {prayer.english}
       </Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, { color: textColor }, animatedStyle]}>
+      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}>
         {prayer.arabic}
       </Animated.Text>
-      <PrayerTime
+      {/* <PrayerTime
         index={index}
         isOverlay={isOverlay}
-        isSelected={isSelected}
-      />
+      /> */}
       <Alert
         index={index}
         isOverlay={isOverlay}
-        isSelected={isSelected}
       />
     </AnimatedPressable>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    borderRadius: PRAYER.borderRadius,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
