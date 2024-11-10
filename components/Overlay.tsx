@@ -5,13 +5,15 @@ import { useAtom } from 'jotai';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
 import { overlayVisibleAtom, overlayContentAtom, selectedPrayerIndexAtom } from '@/store/store';
-import { useEffect } from 'react';
+import { useEffect, useCallback, useLayoutEffect } from 'react';
 import {
   useSharedValue,
   withTiming,
-  useAnimatedProps
+  useAnimatedProps,
+  useAnimatedStyle
 } from 'react-native-reanimated';
 import RadialGlow from './RadialGlow';
+import { ANIMATION } from '@/constants';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -20,86 +22,88 @@ export default function Overlay() {
   const [content, setOverlayContent] = useAtom(overlayContentAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
 
+  // default values
   const intensity = useSharedValue(0);
+  const opacity = useSharedValue(0);
 
   const animatedProps = useAnimatedProps(() => ({
     intensity: intensity.value,
   }));
 
+  const containerStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value
+  }));
+
+  // when overlayVisible opens
   useEffect(() => {
     if (overlayVisible) {
-      intensity.value = withTiming(10, { duration: 300 });
+      opacity.value = withTiming(1, { duration: ANIMATION.duration });
+      intensity.value = withTiming(10, { duration: ANIMATION.duration });
     }
   }, [overlayVisible]);
 
-  const handleClose = () => {
-    setSelectedPrayerIndex(-1);
-    intensity.value = withTiming(0, { duration: 300 });
-    setOverlayVisible(false);
+  const cleanupOverlay = () => {
     setOverlayContent([]);
+    setOverlayVisible(false);
   };
 
-  // Ensure unique items by name
-  const uniqueContent = content.reduce((acc, current) => {
-    const exists = acc.find(item => item.name === current.name);
-    if (!exists) acc.push(current);
-    return acc;
-  }, [] as typeof content);
+  const handleClose = () => {
+    // setSelectedPrayerIndex(1);
+
+    // Start animations
+    opacity.value = withTiming(0, { duration: ANIMATION.duration });
+    intensity.value = withTiming(0, { duration: ANIMATION.duration });
+
+    // Clean up after animations complete
+    setTimeout(() => {
+      cleanupOverlay();
+    }, ANIMATION.duration);
+  };
 
   if (!overlayVisible) return null;
 
   return (
     <Portal>
-      <AnimatedBlur animatedProps={animatedProps} tint="light" style={StyleSheet.absoluteFill}>
-        <LinearGradient
-          colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(0,0,0,1)']}
-          style={StyleSheet.absoluteFill}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-        />
-        <RadialGlow
-          size={Dimensions.get('window').height / 3}
-          style={styles.radialGradient}
-        />
-        <Pressable style={styles.overlay} onPress={handleClose}>
-          {uniqueContent.map(({ name, component, measurements }) => (
-            <View
-              key={name}
-              style={[
-                styles.content,
-                {
+      <Reanimated.View style={[StyleSheet.absoluteFillObject, containerStyle]}>
+        <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
+          <LinearGradient
+            colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(0,0,0,1)']}
+            style={StyleSheet.absoluteFill}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+          />
+          <RadialGlow
+            size={Dimensions.get('window').height / 3}
+            style={styles.radialGradient}
+          />
+          <Pressable style={StyleSheet.absoluteFillObject} onPress={handleClose}>
+            {content.map(({ name, component, measurements }) => (
+              <View
+                key={name}
+                style={{
                   position: 'absolute',
                   top: measurements.pageY,
                   left: measurements.pageX,
                   width: measurements.width,
                   height: measurements.height,
-                }
-              ]}
-            >
-              {component}
-            </View>
-          ))}
-        </Pressable>
-      </AnimatedBlur>
+                }}
+              >
+                {component}
+              </View>
+            ))}
+          </Pressable>
+        </AnimatedBlur>
+      </Reanimated.View>
     </Portal>
   );
 }
 
 const styles = StyleSheet.create({
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'transparent',
-    zIndex: 1000,
-  },
-  content: {
-    zIndex: 1002,
-  },
   radialGradient: {
     position: 'absolute',
-    top: -Dimensions.get('window').height / 2,  // Move up by half the height
-    left: -Dimensions.get('window').height / 10,  // Move left by half the width
+    top: -Dimensions.get('window').height / 2,
+    left: -Dimensions.get('window').height / 10,
     width: Dimensions.get('window').height / 1,
     height: Dimensions.get('window').height / 1,
-    zIndex: 1001,  // between overlay and content
-  }
+  },
 });
