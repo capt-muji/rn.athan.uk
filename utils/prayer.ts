@@ -14,7 +14,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleScheduleTransfor
       date,
       fajr: times.fajr,
       sunrise: times.sunrise,
-      duha: addMinutes(times.sunrise, 20),
+      duha: addMinutes(times.sunrise, 1),
       dhuhr: times.dhuhr,
       asr: times.asr,
       magrib: times.magrib,

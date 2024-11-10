@@ -1,54 +1,93 @@
-import React from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import { useRef, useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring
+} from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { overlayVisibleAtom, overlayAnimationAtom, nextPrayerIndexAtom } from '@/store/store';
+import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleToggleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
-export default function Timer() {
-  const { timerName, timeDisplay } = useTimer();
+interface TimerProps {
+  isOverlay?: boolean;
+}
+
+export default function Timer({ isOverlay = false }: TimerProps) {
+  const { nextPrayer } = useTimer({ isOverlay });
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [overlayAnimation] = useAtom(overlayAnimationAtom);
+  const [, setTimerMeasurements] = useAtom(absoluteTimerMeasurementsAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [, setOverlayContent] = useAtom(overlayContentAtom);
+  const timerRef = useRef<View>(null);
+  const measurementsRef = useRef<PageCoordinates | null>(null);
+  const scale = useSharedValue(1);
+  const translateY = useSharedValue(0);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      { scale: scale.value },
+      { translateY: translateY.value }
+    ]
+  }));
+
+  const handleLayout = () => {
+    if (isOverlay || !timerRef.current) return;
+
+    timerRef.current.measureInWindow((x, y, width, height) => {
+      const measurements = { pageX: x, pageY: y, width, height };
+      measurementsRef.current = measurements;
+      setTimerMeasurements(measurements);
+    });
+  };
+
+  useEffect(() => {
+    if (overlayVisibleToggle) {
+      setOverlayContent(prev => {
+        const exists = prev.some(item => item.name === 'timer');
+        if (exists) return prev;
+
+        return [...prev, {
+          name: 'timer',
+          component: <Timer isOverlay={true} />,
+          measurements: measurementsRef.current!
+        }];
+      });
+    }
+  }, [overlayVisibleToggle]);
+
+  useEffect(() => {
+    if (isOverlay && !overlayVisibleToggle) {
+      scale.value = withSpring(1, { mass: 0.5 });
+      translateY.value = withSpring(0, { mass: 0.5 });
+    } else if (isOverlay) {
+      scale.value = withSpring(1.5, { mass: 0.5 });
+      translateY.value = withSpring(5, { mass: 0.5 });
+    } else {
+      scale.value = withSpring(1, { mass: 0.5 });
+      translateY.value = withSpring(0, { mass: 0.5 });
+    }
+  }, [isOverlay, overlayVisibleToggle]);
 
   return (
-    <View style={styles.container}>
+    <View
+      ref={timerRef}
+      onLayout={handleLayout}
+      style={[
+        styles.container,
+        { opacity: isOverlay ? (overlayVisibleToggle ? 1 : 0) : (overlayVisibleToggle ? 0 : 1) }
+      ]}
+    >
       {nextPrayerIndex === -1 ? (
-        <Text style={styles.text}>
-          {timerName}
-        </Text>
+        <Text style={styles.text}> {nextPrayer.timerName} </Text>
       ) : (
         <>
-          <Text style={styles.text}>
-            {`${timerName || '...'} in`}
-          </Text>
-          {timeDisplay && (
-            <Animated.Text
-              style={[
-                styles.timer,
-                {
-                  fontFamily: overlayVisible !== -1 ? TEXT.famiy.medium : TEXT.famiy.regular,
-                  transform: [
-                    {
-                      scale: overlayAnimation.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [1, 1.5]
-                      })
-                    },
-                    {
-                      translateY: overlayAnimation.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [1, 6]
-                      })
-                    }
-                  ]
-                }
-              ]}
-            >
-              {timeDisplay}
-            </Animated.Text>
-          )}
+          <Text style={styles.text}> {`${nextPrayer.timerName || '...'} in`} </Text>
+          <Animated.View style={[styles.timerContainer, animatedStyle]}>
+            <Text style={styles.timer}> {nextPrayer.timeDisplay} </Text>
+          </Animated.View>
         </>
       )}
     </View>
@@ -58,22 +97,25 @@ export default function Timer() {
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    marginTop: SCREEN.paddingHorizontal,
     marginBottom: 35,
-    zIndex: 1,
     justifyContent: 'center',
   },
   text: {
     fontFamily: TEXT.famiy.regular,
-    color: COLORS.textPrimary,
-    opacity: 0.5,
+    color: COLORS.textSecondary,
+    opacity: TEXT.opacity,
     textAlign: 'center',
     fontSize: TEXT.size - 2,
   },
   timer: {
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.famiy.medium,
     color: COLORS.textPrimary,
     fontSize: TEXT.size + 5,
     textAlign: 'center',
-  }
+  },
+  timerContainer: {
+    height: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

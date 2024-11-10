@@ -1,42 +1,48 @@
 import { useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
-import { ITransformedToday } from '@/types/prayers';
 import { getCurrentPrayerInfo } from '@/utils/time';
 import { 
-  overlayVisibleAtom, 
   todaysPrayersAtom, 
   nextPrayerIndexAtom, 
-  selectedPrayerDateAtom,
-  tomorrowsPrayersAtom 
+  tomorrowsPrayersAtom,
+  selectedPrayerIndexAtom,
+  overlayVisibleToggleAtom,
 } from '@/store/store';
 
-export const useTimer = () => {
-  const [timerName, setTimerName] = useState('');
-  const [timeDisplay, setTimeDisplay] = useState('');
+const THRESHOLD = 1000; // 1 second threshold
+
+export const useTimer = ({ isOverlay = false } = {}) => {
+  const [nextPrayerName, setNextPrayerName] = useState('');
+  const [nextPrayerTime, setNextPrayerTime] = useState('');
+  
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [selectedDate] = useAtom(selectedPrayerDateAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
 
   useEffect(() => {
-    const prayers = selectedDate === 'tomorrow' ? tomorrowsPrayers : todaysPrayers;
-    if (!prayers || Object.keys(prayers).length === 0) return;
+    if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
 
     const updateTimer = () => {
-      const prayerIndex = overlayVisible > -1 ? overlayVisible : nextPrayerIndex;
-      const { timerName, timeDisplay, timeDifference, currentPrayer } = getCurrentPrayerInfo(
+      const prayers = isOverlay && todaysPrayers[selectedPrayerIndex!]?.passed ? 
+        tomorrowsPrayers : todaysPrayers;
+      const date = isOverlay && todaysPrayers[selectedPrayerIndex!]?.passed ? 
+        'tomorrow' : 'today';
+
+      const prayerInfo = getCurrentPrayerInfo(
         prayers,
-        prayerIndex,
-        selectedDate
+        nextPrayerIndex,
+        date,
+        isOverlay ? selectedPrayerIndex : undefined
       );
 
-      setTimerName(timerName);
-      setTimeDisplay(timeDisplay);
+      setNextPrayerName(prayerInfo.timerName);
+      setNextPrayerTime(prayerInfo.timeDisplay);
 
-      if (timeDifference <= 0 && currentPrayer) {
-        if (prayers[nextPrayerIndex]) {
-          prayers[nextPrayerIndex].passed = true;
+      if (!isOverlay && prayerInfo.timeDifference <= THRESHOLD && prayerInfo.currentPrayer) {
+        if (todaysPrayers[nextPrayerIndex]) {
+          todaysPrayers[nextPrayerIndex].passed = true;
         }
         setNextPrayerIndex(nextPrayerIndex === 6 ? -1 : nextPrayerIndex + 1);
       }
@@ -45,7 +51,9 @@ export const useTimer = () => {
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
-  }, [nextPrayerIndex, overlayVisible, todaysPrayers, tomorrowsPrayers, selectedDate]);
+  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedPrayerIndex, isOverlay, overlayVisibleToggle]);
 
-  return { timerName, timeDisplay };
+  return {
+    nextPrayer: { timerName: nextPrayerName, timeDisplay: nextPrayerTime }
+  };
 };
