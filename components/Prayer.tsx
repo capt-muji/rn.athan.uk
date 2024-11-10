@@ -128,35 +128,27 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       };
     }
 
-    // Skip animation for passed/next prayers in overlay
-    if (isPassed || isNext) return {};
+    // Skip animation for non-visible prayers
+    if (!isPassed && !isNext && !isSelected) {
+      return {
+        opacity: 0
+      };
+    }
 
-    const shouldBeVisible = isSelected;
+    // Skip animation for passed/next prayers in overlay
+    if (isPassed || isNext) {
+      return {
+        opacity: 1
+      };
+    }
 
     return {
       opacity: withTiming(
-        shouldBeVisible && overlayVisibleToggle ? 1 : 0,
-        { duration: ANIMATION.duration },
-        // Add finished callback
-        (finished) => {
-          if (finished) {
-            // Animation finished
-            runOnJS(setAnimationComplete)(true);
-          }
-        }
+        overlayVisibleToggle ? 1 : 0,
+        { duration: ANIMATION.duration }
       )
     };
   });
-
-  // Add animation state tracking
-  const [animationComplete, setAnimationComplete] = useState(false);
-
-  // Reset animation state when overlay visibility changes
-  useEffect(() => {
-    if (!overlayVisibleToggle) {
-      setAnimationComplete(false);
-    }
-  }, [overlayVisibleToggle]);
 
   return (
     <AnimatedPressable
