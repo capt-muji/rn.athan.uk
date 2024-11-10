@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, StatusBar, View, Animated, Pressable } from 'react-native';
+import { useEffect, useState } from 'react';
+import { StyleSheet, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
-// @ts-ignore
 import { WaveIndicator } from 'react-native-indicators';
+import { Portal } from 'react-native-paper';
 
-import { COLORS } from '@/constants';
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom, overlayVisibleAtom, overlayAnimationAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
+import { COLORS } from '@/constants';
+import Overlay from '@/components/Overlay';
 
 export default function Index() {
+  const [isInitialized, setIsInitialized] = useState(false);
   const [fontsLoaded] = useFonts({
     'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
     'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf'),
@@ -21,74 +23,44 @@ export default function Index() {
 
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
-  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const [overlayAnimation] = useAtom(overlayAnimationAtom);
-
-  const removeOverlay = () => {
-    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    Animated.timing(overlayAnimation, {
-      toValue: 0,
-      duration: 100,
-      useNativeDriver: true
-    }).start(() => {
-      setOverlayVisible(-1);
-    });
-  };
 
   const { initialize } = usePrayers();
 
   useEffect(() => {
-    initialize(MOCK_DATA_SIMPLE);
+    const init = async () => {
+      await initialize(MOCK_DATA_SIMPLE);
+      setIsInitialized(true);
+    };
+    init();
   }, []);
 
-  if (!fontsLoaded) return <WaveIndicator color="white" />;
+  if (!fontsLoaded || !isInitialized) return <WaveIndicator color="white" />;
 
   return (
     <>
-      <Animated.View
-        style={[
-          styles.overlay,
-          {
-            opacity: overlayAnimation,
-            pointerEvents: overlayVisible !== -1 ? 'auto' : 'none'
-          }
-        ]}
-      >
-        <Pressable style={styles.overlayPressable} onPress={removeOverlay} />
-      </Animated.View>
-
       <LinearGradient
         colors={[COLORS.gradientStart, COLORS.gradientEnd]}
         style={styles.gradient}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
       />
-      <StatusBar barStyle="light-content" />
-
-      {isLoading && <WaveIndicator color="white" />}
-      {hasError && !isLoading && <Error />}
-      {!hasError && !isLoading && <Main />}
+      <Portal.Host>
+        <StatusBar barStyle="light-content" />
+        {isLoading && <WaveIndicator color="white" />}
+        {hasError && !isLoading && <Error />}
+        {!hasError && !isLoading && <Main />}
+        <Overlay />
+      </Portal.Host>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'black',
-    zIndex: 1, // Lower than Timer's z-index
-  },
   gradient: {
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-  },
-  overlayPressable: {
-    width: '100%',
-    height: '100%'
-  },
+  }
 });
