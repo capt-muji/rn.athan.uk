@@ -30,14 +30,17 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const originalOpac = !isOverlay && (isPassed || isNext) ? 1 : TEXT.opacity;
 
   const originalOpacity = useSharedValue(originalOpac);
-  const overlayOpacity = useSharedValue(isOverlay ? 0 : originalOpacity.value);
+  const overlayOpacity = useSharedValue(isOverlay ?
+    (isPassed ? 0 : TEXT.opacity) :
+    originalOpacity.value
+  );
 
   const animatedStyle = useAnimatedStyle(() => {
     // is selected
     if (isOverlay) {
       if (isPassed) {
         return {
-          color: 'orange',
+          color: 'white',
           opacity: overlayOpacity.value  // Changed from originalOpacity to overlayOpacity
         }
       }
@@ -65,50 +68,28 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     };
   });
 
-
   useEffect(() => {
-    if (!isOverlay) {
-      if (overlayVisibleToggle && selectedPrayerIndex === index) {
-        console.log('original - about to check pass...');
-        if (isPassed) {
-          console.log('original - passed. hide original to show tomorrow');
-          originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-          return;
-        }
-
-        console.log('original - not passed. hide original to show tomorrow');
-        originalOpacity.value = 1;
-        return;
-      }
-    }
-
     if (isOverlay) {
-
       if (isPassed) {
-        console.log('overlay - passed. show tomorrow');
         overlayOpacity.value = withDelay(150, withTiming(1, { duration: ANIMATION.duration }));
         return;
       }
 
-      if (!isPassed || isNext) {
-        overlayOpacity.value = TEXT.transparent;
-        overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-        return;
-      }
-
-      overlayOpacity.value = 1;
-
-      console.log('xxxoverlay - passed. hide original and show tomorrow');
-
+      // Don't set initial value, just animate from TEXT.opacity to 1
+      overlayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
       return;
     }
 
-
-    // if (isOverlay && overlayVisibleToggle && selectedPrayerIndex === index) {
-    //   overlayOpacity.value = withDelay(150, withTiming(1, { duration: 5000 }));
-    // }
-
-
+    if (!isOverlay) {
+      if (overlayVisibleToggle && selectedPrayerIndex === index) {
+        if (isPassed) {
+          originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+          return;
+        }
+        originalOpacity.value = 1;
+        return;
+      }
+    }
   }, [overlayStartOpening]);
 
   useEffect(() => {
