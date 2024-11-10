@@ -4,14 +4,12 @@ import { useAtom } from 'jotai';
 import { absoluteDateMeasurementsAtom, overlayContentAtom, PageCoordinates, selectedPrayerIndexAtom, todaysPrayersAtom, overlayStartOpeningAtom, overlayStartClosingAtom, overlayFinishedClosingAtom, overlayFinishedOpeningAtom, overlayVisibleToggleAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
-import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [overlayStartOpening] = useAtom(overlayStartOpeningAtom);
-  const [overlayFinishedOpening] = useAtom(overlayFinishedOpeningAtom);
   const [overlayStartClosing] = useAtom(overlayStartClosingAtom);
-  const [overlayFinishedClosing] = useAtom(overlayFinishedClosingAtom);
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
@@ -40,20 +38,9 @@ export default function DateDisplay() {
   }));
 
   useEffect(() => {
-    if (overlayStartOpening) {
+    if (selectedPrayerIndex !== -1 && overlayStartOpening && overlayVisibleToggle) {
       originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-    }
-  }, [overlayStartOpening]);
-
-  useEffect(() => {
-    if (overlayFinishedClosing) {
-      originalOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-    }
-  }, [overlayFinishedClosing]);
-
-  useEffect(() => {
-    if (selectedPrayerIndex !== -1 && overlayFinishedOpening && overlayVisibleToggle) {
-      overlayOpacity.value = withTiming(0.5, { duration: ANIMATION.duration });
+      overlayOpacity.value = withDelay(150, withTiming(0.5, { duration: ANIMATION.duration }));
 
       setOverlayContent(prev => {
         return [...prev, {
@@ -67,11 +54,12 @@ export default function DateDisplay() {
         }];
       });
     }
-  }, [overlayFinishedOpening]);
+  }, [overlayStartOpening]);
 
   useEffect(() => {
     if (overlayStartClosing) {
       overlayOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+      originalOpacity.value = withDelay(250, withTiming(1, { duration: ANIMATION.duration }));
     }
   }, [overlayStartClosing]);
 
