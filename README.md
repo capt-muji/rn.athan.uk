@@ -25,8 +25,9 @@ A beautiful React Native mobile app for Muslim prayer times in London, UK
 <br/>
 
 <div align="center">
-  <img src="./assets/screenshots/screen1.png" height="500" alt="Prayer Times" />
-  <img src="./assets/screenshots/screen2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/screen1.png" height="750" alt="Prayer Details" style="margin: 0 20px"/>
+  <img src="./assets/screenshots/screen2.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/screen3.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
 </div>
 
 <br/>
@@ -97,13 +98,35 @@ Notifications are scheduled:
 1. Start the app (this will clear cache, install dependencies and start the server)
 
    ```bash
+   # Clears cache, installs packages and starts server
    yarn reset
    ```
 
-2. How to nstall new dependencies
+2. How to install new dependencies
 
    ```bash
+   # Install package
    npx expo install <package-name>
+   ```
+
+3. When installing new dependencies that require native modules
+
+   ```bash
+   # Install package
+   npx expo install <package-name>
+
+   # Build for iOS
+   eas build --profile development --platform ios
+
+   # For physical device:
+   # 1. After build success, scan QR code from expo website to install on device
+   # 2. Start server
+   yarn reset
+   # 3. Open installed app that was installed from the QR code
+
+   # For iOS simulator:
+   yarn ios # builds native modules for simulator
+   yarn reset
    ```
 
 In the output, you'll find options to open the app in a:

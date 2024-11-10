@@ -5,7 +5,7 @@ import { BsArrowClockwise } from "rn-icons/bs";
 import { COLORS, TEXT } from '@/constants';
 import Masjid from './Masjid';
 
-export default function Date() {
+export default function Error() {
   return (
     <View style={styles.container}>
       <Text style={[styles.heading]}> Oh no! </Text>

@@ -1,29 +1,40 @@
-import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { StyleSheet, Pressable, Text, View, Animated } from 'react-native';
+import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import { StyleSheet, Pressable, Text, View, GestureResponderEvent } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  interpolate,
+  withTiming
+} from 'react-native-reanimated';
 
-import { COLORS, TEXT } from '@/constants';
-import { overlayVisibleAtom, todaysPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
+import { COLORS, TEXT, ANIMATION } from '@/constants';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleToggleAtom } from '@/store/store';
 
 interface Props {
   index: number;
+  isOverlay?: boolean;
+  isSelected?: boolean;  // Add this prop
 }
 
-export default function Alert({ index }: Props) {
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
+export default function Alert({ index, isOverlay = false, isSelected = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const bounceAnim = useRef(new Animated.Value(0)).current;
+  const [showPopupContent, setShowPopupContent] = useState(false);
+
+  const fadeAnim = useSharedValue(0);
+  const bounceAnim = useSharedValue(0);
   const timeoutRef = useRef<NodeJS.Timeout>();
+  const pressAnim = useSharedValue(1);
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
-  const opacity = isPassed || isNext ? 1 : 0.5;
 
   const alertConfigs = useMemo(() => [
     { icon: PiBellSimpleSlash, label: "Off" },
@@ -32,91 +43,139 @@ export default function Alert({ index }: Props) {
     { icon: PiSpeakerSimpleHigh, label: "Sound" }
   ], []);
 
-  const handlePress = useCallback(() => {
-    // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  const handlePress = useCallback((e: GestureResponderEvent) => {
+    if (!isOverlay) {
+      e?.stopPropagation();
+    }
+
     setIsActive(true);
+
+    // Clear any existing timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
 
+    // Update content first
     setIconIndex(prev => (prev + 1) % alertConfigs.length);
+    setShowPopupContent(true);
 
-    fadeAnim.setValue(1);
-    bounceAnim.setValue(0);
+    // Then start animations
+    bounceAnim.value = 0;
+    fadeAnim.value = withSpring(1, {
+      damping: 12,
+      stiffness: 500,
+      mass: 0.5
+    });
+    bounceAnim.value = withSpring(1, {
+      damping: 12,
+      stiffness: 500,
+      mass: 0.5
+    });
 
-    Animated.sequence([
-      Animated.spring(bounceAnim, {
-        toValue: 1,
-        tension: 300,
-        friction: 10,
-        useNativeDriver: true
-      })
-    ]).start();
-
+    // Set timeout to hide
     timeoutRef.current = setTimeout(() => {
-      fadeAnim.setValue(0);
-      setIsActive(false); // Reset opacity immediately when popup fades
-    }, 1500);
-  }, [alertConfigs.length]);
+      fadeAnim.value = withSpring(0, { duration: 1 });
+      bounceAnim.value = withSpring(0);
+      setIsActive(false);
+    }, 2000);
+  }, [alertConfigs.length, isOverlay]);
+
+  const handlePressIn = useCallback(() => {
+    pressAnim.value = withSpring(0.9, {
+      damping: 12,
+      stiffness: 500,
+      mass: 0.5
+    });
+  }, []);
+
+  const handlePressOut = useCallback(() => {
+    pressAnim.value = withSpring(1, {
+      damping: 12,
+      stiffness: 500,
+      mass: 0.5
+    });
+  }, []);
 
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      // Reset animations on unmount
+      fadeAnim.value = 0;
+      bounceAnim.value = 0;
+      setIsActive(false);
     };
   }, []);
 
   const currentConfig = alertConfigs[iconIndex];
   const IconComponent = currentConfig.icon;
 
-  const isOverlayActive = overlayVisible !== -1;
+  const animatedStyle = useAnimatedStyle(() => {
+    if (!isOverlay) {
+      return {
+        opacity: isActive || isPassed || isNext ? 1 : TEXT.transparent
+      };
+    }
 
-  const opacityStyle = {
-    opacity: isActive ? 1 : opacity
-  };
+    // Skip animation for passed/next prayers in overlay
+    if (isPassed || isNext) return {};
 
-  // Modify the styling logic for popup and label
-  const shouldUseDarkTheme = isOverlayActive && !isNext;
+    const shouldBeFullOpacity = isSelected || isActive;
+
+    return {
+      opacity: withTiming(
+        shouldBeFullOpacity && overlayVisibleToggle ? 1 : 0,
+        { duration: ANIMATION.duration }
+      )
+    };
+  });
+
+  const popupAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: fadeAnim.value,
+      transform: [{
+        scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
+      }],
+    };
+  });
+
+  const pressableAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: pressAnim.value }]
+    };
+  });
+
+  const iconColor = isSelected
+    ? 'white'
+    : isActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent;
 
   return (
-    <View style={[styles.container, opacityStyle]}>
-      <Pressable onPress={handlePress} style={styles.iconContainer}>
-        <IconComponent color="white" size={20} />
+    <View style={styles.container}>
+      <Pressable
+        onPress={handlePress}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        style={styles.iconContainer}
+      >
+        <Animated.View style={[animatedStyle, pressableAnimatedStyle]}>
+          <IconComponent color={iconColor} size={20} />
+        </Animated.View>
       </Pressable>
 
-      <Animated.View
-        style={[
-          styles.popup,
-          shouldUseDarkTheme ? styles.popupLight : styles.popupDark,
-          {
-            opacity: fadeAnim,
-            transform: [
-              {
-                scale: bounceAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0.95, 1]
-                })
-              },
-              {
-                translateX: fadeAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [-20, 0]
-                })
-              }
-            ]
-          }
-        ]}
-      >
-        <IconComponent
-          color={shouldUseDarkTheme ? "black" : "white"}
-          size={20}
-          style={styles.popupIcon}
-        />
-        <Text style={[
-          styles.label,
-          shouldUseDarkTheme ? styles.labelDark : styles.labelLight
-        ]}>
-          {currentConfig.label}
-        </Text>
+      <Animated.View style={[styles.popup, popupAnimatedStyle]}>
+        {showPopupContent && (
+          <>
+            <IconComponent
+              color={COLORS.textPrimary}
+              size={20}
+              style={styles.popupIcon}
+            />
+            <Text style={styles.label}>
+              {currentConfig.label}
+            </Text>
+          </>
+        )}
       </Animated.View>
     </View>
   );
@@ -144,23 +203,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-  },
-  popupDark: {
     backgroundColor: 'black',
-  },
-  popupLight: {
-    backgroundColor: 'white',
   },
   popupIcon: {
     marginRight: 15
   },
   label: {
     fontSize: TEXT.size,
-  },
-  labelLight: {
     color: COLORS.textPrimary,
-  },
-  labelDark: {
-    color: 'black',
   },
 });

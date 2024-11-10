@@ -1,15 +1,52 @@
 import { atom } from 'jotai';
-import { Animated } from 'react-native';
-
 import { ITransformedToday } from '@/types/prayers';
 
+// App Status
 export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
 
-export const overlayVisibleAtom = atom<number>(-1);
-export const overlayAnimationAtom = atom<Animated.Value>(new Animated.Value(0));
-
+// Prayer Data
 export const todaysPrayersAtom = atom<ITransformedToday>({});
 export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
-export const selectedPrayerDateAtom = atom<'today' | 'tomorrow'>('today');
+export const selectedPrayerIndexAtom = atom<number>(-1);
+
+// Overlay
+interface OverlayItem {
+  name: string;
+  component: React.ReactNode;
+  measurements: PageCoordinates;
+}
+
+// Overlay State
+export const overlayVisibleToggleAtom = atom<boolean>(false);
+export const overlayContentAtom = atom<OverlayItem[]>([]);
+export const overlayStartOpeningAtom = atom<boolean>(false);
+export const overlayFinishedOpeningAtom = atom<boolean>(false);
+export const overlayStartClosingAtom = atom<boolean>(false);
+export const overlayFinishedClosingAtom = atom<boolean>(false);
+
+// Measurement Types
+export interface PageCoordinates {
+  pageX: number;
+  pageY: number;
+  width: number;
+  height: number;
+}
+
+interface Coordinates {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  name: string;
+}
+
+// Measurements State
+export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
+
+export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
+export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
+
+export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
+export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);

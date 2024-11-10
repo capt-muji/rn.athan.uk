@@ -74,11 +74,15 @@ export const addMinutes = (time: string, minutes: number): string => {
 export const getCurrentPrayerInfo = (
   prayers: ITransformedToday,
   prayerIndex: number,
-  selectedDate: DaySelection = 'today'
+  selectedDate: DaySelection = 'today',
+  overrideIndex?: number  // Add this parameter
 ): IPrayerInfo => {
   if (!prayers || Object.keys(prayers).length === 0) return { timerName: '', timeDisplay: '' };
 
-  const prayer = prayers[prayerIndex];
+  // Use overrideIndex if provided, otherwise use prayerIndex
+  const index = typeof overrideIndex === 'number' ? overrideIndex : prayerIndex;
+  const prayer = prayers[index];
+  
   if (!prayer) return { timerName: 'All prayers passed', timeDisplay: '' };
 
   const diff = getTimeDifference(prayer.time, getTodayOrTomorrow(selectedDate));
