@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, TEXT, ANIMATION } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayClosingAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 
 interface Props {
   index: number;
@@ -22,7 +22,7 @@ interface Props {
 export default function Alert({ index, isOverlay = false, isSelected = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayClosing] = useAtom(overlayClosingAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [showPopupContent, setShowPopupContent] = useState(false);
@@ -122,12 +122,11 @@ export default function Alert({ index, isOverlay = false, isSelected = false }: 
     if (isPassed || isNext) return {};
 
     const shouldBeFullOpacity = isSelected || isActive;
-    const duration = overlayClosing ? ANIMATION.duration : 0;
 
     return {
       opacity: withTiming(
-        shouldBeFullOpacity && !overlayClosing ? 1 : 0,
-        { duration }
+        shouldBeFullOpacity && overlayVisible ? 1 : 0,
+        { duration: ANIMATION.duration }
       )
     };
   });
