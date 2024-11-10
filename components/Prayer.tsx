@@ -98,7 +98,9 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   };
 
   const handlePress = () => {
+    if (selectedPrayerIndex !== -1) return;
     setSelectedPrayerIndex(index);
+
     setOverlayContent(prev => {
       const exists = prev.some(item => item.name === `prayer-${index}`);
       if (exists) return prev;

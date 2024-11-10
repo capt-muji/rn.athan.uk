@@ -57,6 +57,7 @@ export default function Overlay() {
   const handleCloseComplete = () => {
     setOverlayStartClosing(false);
     setOverlayFinishedClosing(true);
+    setSelectedPrayerIndex(-1);
     setOverlayContent([]);
     setOverlayVisibleToggle(false);
   };
