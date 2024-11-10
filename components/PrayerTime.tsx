@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 interface Props {
   index: number;
   isOverlay: boolean;
-  isSelected: boolean;
 }
 
 export default function PrayerTime({ index, isOverlay }: Props) {
@@ -29,7 +28,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
   useEffect(() => {
     // Non-selected state
-    if (!isSelected && !isOverlay) {
+    if (!isOverlay) {
       if (isPassed && !isNext) {
         opacity.value = 1;
         textColor.value = 'white';
@@ -41,15 +40,15 @@ export default function PrayerTime({ index, isOverlay }: Props) {
         textColor.value = COLORS.textTransparent;
       }
     }
-  }, [isSelected, isOverlay, isPassed, isNext]);
+  }, [isOverlay, isPassed, isNext]);
 
   useEffect(() => {
     // Selected state
-    if (isSelected) {
+    if (isOverlay) {
       textColor.value = 'white';
       opacity.value = isOverlay ? 1 : 0;
     }
-  }, [isSelected, isOverlay]);
+  }, [isOverlay]);
 
   useEffect(() => {
     // Overlay visibility state
