@@ -1,17 +1,16 @@
-import { StyleSheet, View, Pressable, ScrollView } from 'react-native';
+import { StyleSheet, View, Pressable } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayClosingAtom, shadowOpacityAtom } from '@/store/store';
-import { COLORS, TEXT, SCREEN, PRAYER, ANIMATION } from '@/constants';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteActivePrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom } from '@/store/store';
+import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 
 interface Props {
   index: number;
   isOverlay?: boolean;
-  shadowOpacity?: SharedValue<number>;
 }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -26,10 +25,9 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
-  const [overlayClosing] = useAtom(overlayClosingAtom);
   const viewRef = useRef<View>(null);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom); // Add this line
-  const [shadowOpacity] = useAtom(shadowOpacityAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
 
   const prayer = todaysPrayers[index];
   const tomorrowPrayer = tomorrowsPrayers[index];
@@ -42,12 +40,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const backgroundOpacity = useSharedValue(0);
 
   useEffect(() => {
-    if (isOverlay && overlayClosing) {
-      backgroundOpacity.value = withTiming(0, { duration: 300 });
-    } else if (isOverlay) {
+    if (isOverlay) {
       backgroundOpacity.value = withTiming(0, { duration: 300 });
     }
-  }, [isOverlay, overlayClosing]);
+  }, [isOverlay]);
 
   const isSelected = isOverlay && index === selectedPrayerIndex;
 
@@ -59,7 +55,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       backgroundColor: COLORS.primary,
       shadowColor: COLORS.primaryShadow,
       shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: shadowOpacity,
+      shadowOpacity: 0.5,
       shadowRadius: 5,
     })
   }));
@@ -136,12 +132,11 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     if (isPassed || isNext) return {};
 
     const shouldBeVisible = isSelected;
-    const duration = overlayClosing ? ANIMATION.duration : 0;
 
     return {
       opacity: withTiming(
-        shouldBeVisible && !overlayClosing ? 1 : 0,
-        { duration }
+        shouldBeVisible && overlayVisible ? 1 : 0,
+        { duration: ANIMATION.duration }
       )
     };
   });

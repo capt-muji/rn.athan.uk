@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, SCREEN, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleAtom, overlayContentAtom, PageCoordinates, overlayClosingAtom } from '@/store/store';
+import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 interface TimerProps {
@@ -18,10 +18,9 @@ interface TimerProps {
 export default function Timer({ isOverlay = false }: TimerProps) {
   const { nextPrayer } = useTimer({ isOverlay });
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [_, setTimerMeasurements] = useAtom(absoluteTimerMeasurementsAtom);
+  const [, setTimerMeasurements] = useAtom(absoluteTimerMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [__, setOverlayContent] = useAtom(overlayContentAtom);
-  const [overlayClosing] = useAtom(overlayClosingAtom);
+  const [, setOverlayContent] = useAtom(overlayContentAtom);
   const timerRef = useRef<View>(null);
   const measurementsRef = useRef<PageCoordinates | null>(null);
   const scale = useSharedValue(1);
@@ -60,7 +59,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   }, [overlayVisible]);
 
   useEffect(() => {
-    if (isOverlay && overlayClosing) {
+    if (isOverlay && !overlayVisible) {
       scale.value = withSpring(1, { mass: 0.5 });
       translateY.value = withSpring(0, { mass: 0.5 });
     } else if (isOverlay) {
@@ -70,7 +69,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
       scale.value = withSpring(1, { mass: 0.5 });
       translateY.value = withSpring(0, { mass: 0.5 });
     }
-  }, [isOverlay, overlayClosing]);
+  }, [isOverlay, overlayVisible]);
 
   const timerComponent = (
     <View

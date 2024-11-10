@@ -1,16 +1,21 @@
 import { atom } from 'jotai';
 import { ITransformedToday } from '@/types/prayers';
 
+// App Status
 export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
 
+// Prayer Data
 export const todaysPrayersAtom = atom<ITransformedToday>({});
 export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
 
+// Overlay State
 export const overlayVisibleAtom = atom<boolean>(false);
-export const selectedPrayerIndexAtom = atom<number | null>(null);
+export const overlayContentAtom = atom<OverlayItem[]>([]);
+export const selectedPrayerIndexAtom = atom<number>(-1);
 
+// Measurement Types
 export interface PageCoordinates {
   pageX: number;
   pageY: number;
@@ -32,17 +37,11 @@ interface OverlayItem {
   measurements: PageCoordinates;
 }
 
-export const overlayContentAtom = atom<OverlayItem[]>([]);
-export const overlayAnimatingAtom = atom<boolean>(false);
-export const overlayClosingAtom = atom<boolean>(false);
-export const overlayTransitioningAtom = atom<boolean>(false);
-
+// Measurements
 export const absoluteActivePrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 
 export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
 export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
 
 export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
-export const absoluteDateMeasurementsAtom = atom<PageCoordinates | null>(null);
-
-export const shadowOpacityAtom = atom<number>(0.5);
+export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);
