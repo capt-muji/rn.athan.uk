@@ -30,68 +30,75 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const originalOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const overlayOpacity = useSharedValue(0);
 
-  const todayAnimatedStyle = useAnimatedStyle(() => {
+  const animatedStyle = useAnimatedStyle(() => {
     // is selected
     if (isOverlay) return {
       color: 'white',
       opacity: 1,
     };
 
-    // is passed or next
+    // today and is passed or next
     if (isPassed || isNext) return {
       color: COLORS.textPrimary,
       opacity: originalOpacity.value,
     };
 
-    // is not passed or next
+    // today and is not passed or next
     return {
       color: COLORS.textTransparent,
       opacity: originalOpacity.value,
     };
   });
 
-  const tomorrowAnimatedStyle = useAnimatedStyle(() => {
-    // is selected
-    if (isOverlay) return {
-      color: 'white',
-      opacity: 0,
-    };
+  // const tomorrowAnimatedStyle = useAnimatedStyle(() => {
+  //   // is selected
+  //   if (isOverlay) return {
+  //     color: 'white',
+  //     opacity: 0,
+  //   };
 
-    // is passed or next
-    if (isPassed || isNext) return {
-      color: COLORS.textPrimary,
-      opacity: originalOpacity.value,
-    };
+  //   // is passed or next
+  //   if (isPassed || isNext) return {
+  //     color: COLORS.textPrimary,
+  //     opacity: originalOpacity.value,
+  //   };
 
-    // is not passed or next
-    return {
-      color: COLORS.textTransparent,
-      opacity: originalOpacity.value,
-    };
-  });
+  //   // is not passed or next
+  //   return {
+  //     color: COLORS.textTransparent,
+  //     opacity: originalOpacity.value,
+  //   };
+  // });
 
 
   useEffect(() => {
     if (isOverlay && selectedPrayerIndex !== -1 && overlayStartOpening && overlayVisibleToggle) {
-      originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-      overlayOpacity.value = withDelay(150, withTiming(TEXT.opacity, { duration: ANIMATION.duration }));
+      originalOpacity.value = withTiming(0, { duration: 5000 });
+      overlayOpacity.value = withDelay(150, withTiming(TEXT.opacity, { duration: 5000 }));
     }
   }, [overlayStartOpening]);
 
   useEffect(() => {
     if (isOverlay && overlayStartClosing) {
-      overlayOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-      originalOpacity.value = withDelay(250, withTiming(1, { duration: ANIMATION.duration }));
+      overlayOpacity.value = withTiming(0, { duration: 5000 });
+      originalOpacity.value = withDelay(250, withTiming(1, { duration: 5000 }));
     }
   }, [overlayStartClosing]);
 
+
+  const time = () => {
+    if (isOverlay) {
+      if (isPassed) {
+        return tomorrowTime;
+      }
+      return todayTime;
+    }
+    return todayTime;
+  }
   return (
     <View style={styles.container}>
-      <Animated.Text style={[styles.text, todayAnimatedStyle]}>
-        {todayTime}
-      </Animated.Text>
-      <Animated.Text style={[styles.text, tomorrowAnimatedStyle]}>
-        {tomorrowTime}
+      <Animated.Text style={[styles.text, animatedStyle]}>
+        {time()}
       </Animated.Text>
     </View>
   );
