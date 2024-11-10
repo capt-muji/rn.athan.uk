@@ -11,6 +11,8 @@
   
 # Athan.uk
 
+<!-- TODO: derive the date from the prayer data, not from today -->
+
 [![Platform - Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat&logo=android&logoColor=white)](https://athan.uk)
 [![Platform - iOS](https://img.shields.io/badge/Platform-iOS-000000?style=flat&logo=apple&logoColor=white)](https://athan.uk)
 
