@@ -116,19 +116,22 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const animatedTextStyle = useAnimatedStyle(() => {
     // is selected
     if (isOverlay) return {
-      color: 'white',
+      // color: 'white',
+      color: 'purple',
       opacity: 1,
     };
 
     // is passed or next
     if (isPassed || isNext) return {
-      color: COLORS.textPrimary,
+      // color: COLORS.textPrimary,
+      color: 'black',
       opacity: textOpacity.value,
     };
 
     // is not passed or next
     return {
-      color: COLORS.textTransparent,
+      // color: COLORS.textTransparent,
+      color: 'pink',
       opacity: textOpacity.value,
     };
   });

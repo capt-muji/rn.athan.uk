@@ -55,11 +55,11 @@ export default function Overlay() {
   };
 
   const handleCloseComplete = () => {
+    setOverlayVisibleToggle(false);
     setOverlayStartClosing(false);
     setOverlayFinishedClosing(true);
     setSelectedPrayerIndex(-1);
     setOverlayContent([]);
-    setOverlayVisibleToggle(false);
   };
 
   // Animation helpers

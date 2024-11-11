@@ -3,7 +3,7 @@ import { useAnimatedStyle, withTiming, useSharedValue, withDelay } from 'react-n
 import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/constants';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleToggleAtom, overlayStartOpeningAtom, overlayStartClosingAtom, overlayContentAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleToggleAtom, overlayStartOpeningAtom, overlayStartClosingAtom, lastSelectedPrayerIndexAtom, overlayFinishedClosingAtom } from '@/store/store';
 import { useEffect } from 'react';
 
 interface Props {
@@ -15,11 +15,12 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [selectedPrayerIndex, setSelectedPrayerIndexAtom] = useAtom(selectedPrayerIndexAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [lastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [overlayStartOpening] = useAtom(overlayStartOpeningAtom);
   const [overlayStartClosing] = useAtom(overlayStartClosingAtom);
-  const [, setOverlayContent] = useAtom(overlayContentAtom);
+  const [overlayFinishedClosing] = useAtom(overlayFinishedClosingAtom);
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
@@ -47,31 +48,31 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
       if (isNext) {
         return {
-          color: COLORS.textPrimary,
-          // color: 'white',
+          // color: COLORS.textPrimary,
+          color: 'black',
           opacity: overlayOpacity.value,
         };
       }
 
       return {
-        color: COLORS.textPrimary,
-        // color: 'white',
+        // color: COLORS.textPrimary,
+        color: 'orange',
         opacity: overlayOpacity.value
       };
     }
 
     if (isPassed) {
       return {
-        color: COLORS.textPrimary,
-        // color: 'black',
+        // color: COLORS.textPrimary,
+        color: 'blue',
         opacity: originalOpacity.value,
       };
     }
 
     if (isNext) {
       return {
-        color: COLORS.textPrimary,
-        // color: 'white',
+        // color: COLORS.textPrimary,
+        color: 'cyan',
         opacity: originalOpacity.value,
       };
     }
@@ -116,11 +117,30 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     }
 
     if (!isOverlay) {
+      console.log('NOT OVERLAY');
       const targetOpacity = (isPassed || isNext) ? 1 : TEXT.opacity;
-      // Remove delay to prevent flicker
-      originalOpacity.value = withTiming(targetOpacity, { duration: ANIMATION.duration });
+
+      if (overlayStartClosing && !overlayFinishedClosing && isPassed && lastSelectedPrayerIndex === index) {
+        console.log(prayer.english);
+        console.log('first', originalOpacity.value);
+
+        // Set initial opacity to 0 using withTiming for proper animation
+        originalOpacity.value = withTiming(0, {
+          duration: 0,  // immediate
+        }, () => {
+          console.log('second', originalOpacity.value);
+          // After setting to 0, animate to target opacity with delay
+          originalOpacity.value = withDelay(
+            250,
+            withTiming(targetOpacity, { duration: ANIMATION.duration })
+          );
+          console.log('third', originalOpacity.value);
+        });
+      } else {
+        originalOpacity.value = withTiming(targetOpacity, { duration: ANIMATION.duration });
+      }
     }
-  }, [overlayStartClosing]);
+  }, [overlayStartClosing, isOverlay, overlayVisibleToggle]);
 
   const time = () => {
     if (isOverlay) {
