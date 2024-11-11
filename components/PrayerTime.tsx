@@ -41,38 +41,39 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     if (isOverlay) {
       if (isPassed) {
         return {
-          color: 'yellow',
+          color: COLORS.textPrimary,
+          // color: 'yellow',
           opacity: overlayOpacity.value
         }
       }
 
       if (isNext) {
         return {
-          // color: COLORS.textPrimary,
-          color: 'black',
+          color: COLORS.textPrimary,
+          // color: 'black',
           opacity: overlayOpacity.value,
         };
       }
 
       return {
-        // color: COLORS.textPrimary,
-        color: 'orange',
+        color: COLORS.textPrimary,
+        // color: 'orange',
         opacity: overlayOpacity.value
       };
     }
 
     if (isPassed) {
       return {
-        // color: COLORS.textPrimary,
-        color: 'blue',
+        color: COLORS.textPrimary,
+        // color: 'blue',
         opacity: originalOpacity.value,
       };
     }
 
     if (isNext) {
       return {
-        // color: COLORS.textPrimary,
-        color: 'cyan',
+        color: COLORS.textPrimary,
+        // color: 'cyan',
         opacity: originalOpacity.value,
       };
     }
@@ -82,8 +83,8 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
     // today and is not passed or next
     return {
-      // color: COLORS.textTransparent,
-      color: 'red',
+      color: COLORS.textTransparent,
+      // color: 'red',
       opacity: originalOpacity.value,
     };
   });
