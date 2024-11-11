@@ -40,9 +40,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const isNext = index === nextPrayerIndex;
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const initialBackgroundColor = useSharedValue(isInitialAppLoad && isNext ? COLORS.primary : 'transparent');
-  const initialShadowOpacity = useSharedValue(isInitialAppLoad && isNext ? 0.5 : 0);
 
-  // fade next prayer text opacity when it becomes the next prayer
   useEffect(() => {
     if (index === nextPrayerIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
@@ -54,7 +52,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   useEffect(() => {
     if (isInitialAppLoad && isNext && activeBackgroundReady) {
       initialBackgroundColor.value = 'transparent';
-      initialShadowOpacity.value = 0;
       setIsInitialAppLoad(false);
     }
   }, [activeBackgroundReady]);
@@ -72,10 +69,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
     return {
       backgroundColor: initialBackgroundColor.value,
-      shadowColor: COLORS.primaryShadow,
-      shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: initialShadowOpacity.value,
-      shadowRadius: 5,
     };
   });
 
