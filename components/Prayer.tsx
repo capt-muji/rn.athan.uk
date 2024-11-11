@@ -39,13 +39,18 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
-  const initialBackgroundColor = useSharedValue(isInitialAppLoad && isNext ? COLORS.primary : 'transparent');
+  const initialBackgroundColor = useSharedValue('transparent');
 
   useEffect(() => {
-    if (index === nextPrayerIndex) {
-      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-    } else if (!isPassed) {
-      textOpacity.value = TEXT.opacity;
+    if (isInitialAppLoad && isNext) {
+      initialBackgroundColor.value = COLORS.primary;
+    }
+  }, []);
+
+  useEffect(() => {
+    // Update background color when nextPrayerIndex changes
+    if (isInitialAppLoad) {
+      initialBackgroundColor.value = isNext ? COLORS.primary : 'transparent';
     }
   }, [nextPrayerIndex]);
 
@@ -55,6 +60,14 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       setIsInitialAppLoad(false);
     }
   }, [activeBackgroundReady]);
+
+  useEffect(() => {
+    if (index === nextPrayerIndex) {
+      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    } else if (!isPassed) {
+      textOpacity.value = TEXT.opacity;
+    }
+  }, [nextPrayerIndex]);
 
   const animatedContainerStyle = useAnimatedStyle(() => {
     if (isOverlay && isNext) {
@@ -117,17 +130,16 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       return;
     }
 
-    if (selectedPrayerIndex !== -1) return;
+    // Remove the selectedPrayerIndex check to allow re-clicking
     setSelectedPrayerIndex(index);
     setLastSelectedPrayerIndex(index);
 
-    setOverlayContent(prev => {
-      return [...prev, {
-        name: `prayer-${index}`,
-        component: <Prayer index={index} isOverlay={true} />,
-        measurements: absolutePrayerMeasurements[index]
-      }];
-    });
+    setOverlayContent([{
+      name: `prayer-${index}`,
+      component: <Prayer index={index} isOverlay={true} />,
+      measurements: absolutePrayerMeasurements[index]
+    }]);
+
     overlayControls.open?.();
   };
 
