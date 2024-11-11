@@ -26,6 +26,10 @@ export const overlayStartOpeningAtom = atom<boolean>(false);
 export const overlayFinishedOpeningAtom = atom<boolean>(false);
 export const overlayStartClosingAtom = atom<boolean>(false);
 export const overlayFinishedClosingAtom = atom<boolean>(false);
+export const overlayControlsAtom = atom<{
+  open?: () => void;
+  close?: () => void;
+}>({});
 
 // Measurement Types
 export interface PageCoordinates {
