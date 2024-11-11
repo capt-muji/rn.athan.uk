@@ -4,6 +4,7 @@ import { ITransformedToday } from '@/types/prayers';
 // App Status
 export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
+export const isInitialAppLoadAtom = atom<boolean>(true);
 
 // Prayer Data
 export const todaysPrayersAtom = atom<ITransformedToday>({});
