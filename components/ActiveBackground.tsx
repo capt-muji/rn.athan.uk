@@ -9,14 +9,20 @@ import { nextPrayerIndexAtom, relativePrayerMeasurementsAtom } from '@/store/sto
 import { COLORS, PRAYER } from '@/constants';
 
 export default function ActiveBackground() {
+  console.log('aaa - active background rendering');
+
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [relativeMeasurements] = useAtom(relativePrayerMeasurementsAtom);
+
+  console.log('bbb - reading nextPrayerIndex');
+  console.log(nextPrayerIndex);
 
   const animatedStyle = useAnimatedStyle(() => {
     if (nextPrayerIndex === -1 || !relativeMeasurements[nextPrayerIndex]) {
       return { opacity: 0 };
     }
 
+    console.log('ccc - active background now showing');
     const activePrayer = relativeMeasurements[nextPrayerIndex];
     return {
       opacity: withTiming(1),
