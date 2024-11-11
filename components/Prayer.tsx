@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue, runOnJS } from 'react-native-reanimated';
 import { useEffect, useRef, useState } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom, overlayControlsAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom, overlayControlsAtom, isInitialAppLoadAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -30,13 +30,16 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const [overlayControls] = useAtom(overlayControlsAtom);
+  const [isInitialAppLoad, setIsInitialAppLoad] = useAtom(isInitialAppLoadAtom);
   const viewRef = useRef<View>(null);
+  const hasShownInitialBackground = useRef(false);
 
   const prayer = todaysPrayers[index];
   const tomorrowPrayer = tomorrowsPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
+  const initialBackgroundColor = useSharedValue(isInitialAppLoad && isNext ? 'red' : 'transparent');
 
   // fade next prayer text opacity when it becomes the next prayer
   useEffect(() => {
@@ -47,16 +50,38 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     }
   }, [nextPrayerIndex]);
 
-  const animatedContainerStyle = useAnimatedStyle(() => {
-    if (!isOverlay || !isNext) return {};
+  // Add new effect after other effects
+  useEffect(() => {
+    if (!hasShownInitialBackground.current && !isOverlay && isNext) {
+      hasShownInitialBackground.current = true;
+      setTimeout(() => {
+        hasShownInitialBackground.current = true;
+      }, 1000);
+    }
+  }, []);
 
-    // apply blue background to next prayer on overlay
+  useEffect(() => {
+    if (isInitialAppLoad && isNext) {
+      setTimeout(() => {
+        initialBackgroundColor.value = withTiming('transparent');
+        setIsInitialAppLoad(false);
+      }, 1000);
+    }
+  }, []);
+
+  const animatedContainerStyle = useAnimatedStyle(() => {
+    if (isOverlay && isNext) {
+      return {
+        backgroundColor: COLORS.primary,
+        shadowColor: COLORS.primaryShadow,
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+      };
+    }
+
     return {
-      backgroundColor: COLORS.primary,
-      shadowColor: COLORS.primaryShadow,
-      shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: 0.5,
-      shadowRadius: 5,
+      backgroundColor: initialBackgroundColor.value,
     };
   });
 
