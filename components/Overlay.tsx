@@ -11,7 +11,8 @@ import {
   overlayStartOpeningAtom,
   overlayStartClosingAtom,
   overlayFinishedClosingAtom,
-  overlayFinishedOpeningAtom
+  overlayFinishedOpeningAtom,
+  overlayControlsAtom
 } from '@/store/store';
 import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
 import {
@@ -34,12 +35,14 @@ export default function Overlay() {
   const [, setOverlayStartClosing] = useAtom(overlayStartClosingAtom);
   const [, setOverlayFinishedClosing] = useAtom(overlayFinishedClosingAtom);
   const [, setOverlayFinishedOpening] = useAtom(overlayFinishedOpeningAtom);
+  const [, setOverlayControls] = useAtom(overlayControlsAtom);
 
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
 
   // Helper functions for animation state management
   const handleOpenStart = () => {
+    setOverlayVisibleToggle(true);
     setOverlayStartOpening(true);
     setOverlayFinishedOpening(false);
   };
@@ -91,6 +94,13 @@ export default function Overlay() {
       animateClose();
     }
   }, [overlayVisibleToggle]);
+
+  useEffect(() => {
+    setOverlayControls({
+      open: animateOpen,
+      close: animateClose
+    });
+  }, []);
 
   const animatedProps = useAnimatedProps(() => ({
     intensity: intensity.value,
