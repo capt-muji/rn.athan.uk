@@ -43,14 +43,14 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   useEffect(() => {
     if (isInitialAppLoad && isNext) {
-      initialBackgroundColor.value = COLORS.primary;
+      initialBackgroundColor.value = withTiming(COLORS.primary, { duration: 100 });
     }
   }, []);
 
   useEffect(() => {
     // Update background color when nextPrayerIndex changes
     if (isInitialAppLoad) {
-      initialBackgroundColor.value = isNext ? COLORS.primary : 'transparent';
+      initialBackgroundColor.value = withTiming(isNext ? COLORS.primary : 'transparent', { duration: ANIMATION.duration });
     }
 
     // Update text opacity
