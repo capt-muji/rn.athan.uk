@@ -81,6 +81,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       if (isNext) {
         setNextPrayerMeasurements(windowMeasurements);
       }
+
+      console.log(prayer.english, 'setting absolute measurements');
     });
 
     // Measure relative coordinates for active background
@@ -96,6 +98,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
         };
         return relativeMeasurements;
       });
+
+      console.log(prayer.english, 'setting relative measurements');
     });
   };
 
