@@ -27,7 +27,7 @@ export const COLORS = {
 };
 
 export const ANIMATION = {
-  duration: 300,
+  duration: 200,
 };
 
 export const PRAYER = {
