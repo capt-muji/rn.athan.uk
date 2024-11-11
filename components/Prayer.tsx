@@ -52,6 +52,13 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     if (isInitialAppLoad) {
       initialBackgroundColor.value = isNext ? COLORS.primary : 'transparent';
     }
+
+    // Update text opacity
+    if (index === nextPrayerIndex) {
+      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    } else if (!isPassed) {
+      textOpacity.value = TEXT.opacity;
+    }
   }, [nextPrayerIndex]);
 
   useEffect(() => {
@@ -60,14 +67,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       setIsInitialAppLoad(false);
     }
   }, [activeBackgroundReady]);
-
-  useEffect(() => {
-    if (index === nextPrayerIndex) {
-      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-    } else if (!isPassed) {
-      textOpacity.value = TEXT.opacity;
-    }
-  }, [nextPrayerIndex]);
 
   const animatedContainerStyle = useAnimatedStyle(() => {
     if (isOverlay && isNext) {
