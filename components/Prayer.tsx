@@ -73,7 +73,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   });
 
   const handleLayout = () => {
-    if (!viewRef.current || isOverlay) return;  // Add isOverlay check here
+    if (!viewRef.current || isOverlay) return;
 
     // Measure absolute window coordinates to display text in overlay
     viewRef.current.measureInWindow((x, y, width, height) => {
@@ -93,8 +93,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       if (isNext) {
         setNextPrayerMeasurements(windowMeasurements);
       }
-
-      console.log(prayer.english, 'setting absolute measurements');
     });
 
     // Measure relative coordinates for active background
@@ -110,8 +108,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
         };
         return relativeMeasurements;
       });
-
-      console.log(prayer.english, 'setting relative measurements');
     });
   };
 
