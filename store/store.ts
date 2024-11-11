@@ -4,6 +4,8 @@ import { ITransformedToday } from '@/types/prayers';
 // App Status
 export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
+export const isInitialAppLoadAtom = atom<boolean>(true);
+export const activeBackgroundReadyAtom = atom<boolean>(false);
 
 // Prayer Data
 export const todaysPrayersAtom = atom<ITransformedToday>({});
@@ -26,6 +28,10 @@ export const overlayStartOpeningAtom = atom<boolean>(false);
 export const overlayFinishedOpeningAtom = atom<boolean>(false);
 export const overlayStartClosingAtom = atom<boolean>(false);
 export const overlayFinishedClosingAtom = atom<boolean>(false);
+export const overlayControlsAtom = atom<{
+  open?: () => void;
+  close?: () => void;
+}>({});
 
 // Measurement Types
 export interface PageCoordinates {
