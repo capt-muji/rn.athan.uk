@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue, runOnJS } from 'react-native-reanimated';
 import { useEffect, useRef, useState } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom, overlayControlsAtom, isInitialAppLoadAtom, activeBackgroundReadyAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -29,6 +29,9 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
+  const [overlayControls] = useAtom(overlayControlsAtom);
+  const [isInitialAppLoad, setIsInitialAppLoad] = useAtom(isInitialAppLoadAtom);
+  const [activeBackgroundReady] = useAtom(activeBackgroundReadyAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -36,8 +39,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
+  const initialBackgroundColor = useSharedValue(isInitialAppLoad && isNext ? COLORS.primary : 'transparent');
 
-  // fade next prayer text opacity when it becomes the next prayer
   useEffect(() => {
     if (index === nextPrayerIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
@@ -46,16 +49,26 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     }
   }, [nextPrayerIndex]);
 
-  const animatedContainerStyle = useAnimatedStyle(() => {
-    if (!isOverlay || !isNext) return {};
+  useEffect(() => {
+    if (isInitialAppLoad && isNext && activeBackgroundReady) {
+      initialBackgroundColor.value = 'transparent';
+      setIsInitialAppLoad(false);
+    }
+  }, [activeBackgroundReady]);
 
-    // apply blue background to next prayer on overlay
+  const animatedContainerStyle = useAnimatedStyle(() => {
+    if (isOverlay && isNext) {
+      return {
+        backgroundColor: COLORS.primary,
+        shadowColor: COLORS.primaryShadow,
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+      };
+    }
+
     return {
-      backgroundColor: COLORS.primary,
-      shadowColor: COLORS.primaryShadow,
-      shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: 0.5,
-      shadowRadius: 5,
+      backgroundColor: initialBackgroundColor.value,
     };
   });
 
@@ -80,6 +93,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       if (isNext) {
         setNextPrayerMeasurements(windowMeasurements);
       }
+
+      console.log(prayer.english, 'setting absolute measurements');
     });
 
     // Measure relative coordinates for active background
@@ -95,10 +110,17 @@ export default function Prayer({ index, isOverlay = false }: Props) {
         };
         return relativeMeasurements;
       });
+
+      console.log(prayer.english, 'setting relative measurements');
     });
   };
 
   const handlePress = () => {
+    if (isOverlay) {
+      overlayControls.close?.();
+      return;
+    }
+
     if (selectedPrayerIndex !== -1) return;
     setSelectedPrayerIndex(index);
     setLastSelectedPrayerIndex(index);
@@ -110,7 +132,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
         measurements: absolutePrayerMeasurements[index]
       }];
     });
-    setOverlayVisibleToggle(true);
+    overlayControls.open?.();
   };
 
   const animatedTextStyle = useAnimatedStyle(() => {
