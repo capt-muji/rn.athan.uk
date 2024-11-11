@@ -85,7 +85,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
     if (isOverlay) {
       if (isPassed) {
-        overlayOpacity.value = withDelay(150, withTiming(1, { duration: ANIMATION.duration }));
+        overlayOpacity.value = withDelay(100, withTiming(1, { duration: ANIMATION.duration }));
         return;
       }
 
