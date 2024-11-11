@@ -82,8 +82,8 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
     // today and is not passed or next
     return {
-      color: COLORS.textTransparent,
-      // color: 'red',
+      // color: COLORS.textTransparent,
+      color: 'red',
       opacity: originalOpacity.value,
     };
   });
@@ -112,6 +112,11 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   }, [overlayStartOpening]);
 
   useEffect(() => {
+    if (isOverlay && !overlayVisibleToggle && overlayFinishedClosing) {
+      console.log('1111');
+      return;
+    };
+
     if (isOverlay && !overlayVisibleToggle) {
       overlayOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.duration });
     }
@@ -140,7 +145,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
         originalOpacity.value = withTiming(targetOpacity, { duration: ANIMATION.duration });
       }
     }
-  }, [overlayStartClosing, isOverlay, overlayVisibleToggle]);
+  }, [overlayStartClosing]);
 
   const time = () => {
     if (isOverlay) {
