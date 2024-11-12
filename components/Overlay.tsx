@@ -174,7 +174,7 @@ export default function Overlay() {
 
 const styles = StyleSheet.create({
   container: {
-    zIndex: 1
+    zIndex: OVERLAY.zindexes.overlay
   },
   radialGradient: {
     position: 'absolute',
