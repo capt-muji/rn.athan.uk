@@ -14,8 +14,8 @@ import {
   overlayFinishedOpeningAtom,
   overlayControlsAtom,
   absoluteDateMeasurementsAtom,
+  absolutePrayerMeasurementsAtom,
   todaysPrayersAtom,
-  absolutePrayerListMeasurementsAtom
 } from '@/store/store';
 import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
 import {
@@ -41,9 +41,9 @@ export default function Overlay() {
   const [, setOverlayFinishedOpening] = useAtom(overlayFinishedOpeningAtom);
   const [, setOverlayControls] = useAtom(overlayControlsAtom);
   const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
+  const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
-  const [prayerListMeasurements] = useAtom(absolutePrayerListMeasurementsAtom);
 
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
@@ -152,18 +152,25 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {prayerListMeasurements && (
-            <View style={{
-              position: 'absolute',
-              top: prayerListMeasurements.pageY,
-              left: prayerListMeasurements.pageX,
-              width: prayerListMeasurements.width,
-            }}>
-              {ENGLISH.map((_, index) => (
-                <Prayer key={index} index={index} isOverlay={true} />
-              ))}
-            </View>
-          )}
+          {ENGLISH.map((_, index) => {
+            const measurements = prayerMeasurements[index];
+            if (!measurements) return null;
+
+            return (
+              <View
+                key={index}
+                style={{
+                  position: 'absolute',
+                  top: measurements.pageY,
+                  left: measurements.pageX,
+                  width: measurements.width,
+                  height: measurements.height,
+                }}
+              >
+                <Prayer index={index} isOverlay={true} />
+              </View>
+            );
+          })}
         </Pressable>
       </AnimatedBlur>
     </Reanimated.View>
