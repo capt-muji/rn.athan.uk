@@ -189,7 +189,4 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
     fontFamily: TEXT.famiy.regular,
   },
-  prayerListContainer: {
-    position: 'absolute',
-  },
 });
