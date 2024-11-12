@@ -119,7 +119,6 @@ export default function Overlay() {
   }));
 
   const handleClose = () => {
-    console.log('11111');
     animateClose();
   };
 
