@@ -26,7 +26,7 @@ import {
   runOnJS
 } from 'react-native-reanimated';
 import RadialGlow from './RadialGlow';
-import { ANIMATION, COLORS, TEXT, ENGLISH } from '@/constants';
+import { ANIMATION, COLORS, TEXT, ENGLISH, OVERLAY } from '@/constants';
 import Prayer from './Prayer';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
@@ -107,7 +107,7 @@ export default function Overlay() {
     intensity: intensity.value,
   }));
 
-  const containerStyle = useAnimatedStyle(() => ({
+  const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value
   }));
 
@@ -120,7 +120,7 @@ export default function Overlay() {
   if (!overlayVisibleToggle) return null;
 
   return (
-    <Reanimated.View style={[StyleSheet.absoluteFillObject, containerStyle]}>
+    <Reanimated.View style={[styles.container, StyleSheet.absoluteFillObject, containerAnimatedStyle]}>
       <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
         <LinearGradient
           colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
@@ -145,6 +145,7 @@ export default function Overlay() {
                   left: dateMeasurements.pageX,
                   width: dateMeasurements.width,
                   height: dateMeasurements.height,
+
                 }
               ]}
             >
@@ -152,26 +153,19 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {ENGLISH.map((_, index) => {
-            const measurements = prayerMeasurements[index];
-            if (selectedPrayerIndex !== index) return null;
-            if (!measurements) return null;
-
-            return (
-              <View
-                key={index}
-                style={{
-                  position: 'absolute',
-                  top: measurements.pageY,
-                  left: measurements.pageX,
-                  width: measurements.width,
-                  height: measurements.height,
-                }}
-              >
-                <Prayer index={index} isOverlay={true} />
-              </View>
-            );
-          })}
+          {selectedPrayerIndex !== -1 && prayerMeasurements[selectedPrayerIndex] && (
+            <View
+              style={{
+                position: 'absolute',
+                top: prayerMeasurements[selectedPrayerIndex].pageY,
+                left: prayerMeasurements[selectedPrayerIndex].pageX,
+                width: prayerMeasurements[selectedPrayerIndex].width,
+                height: prayerMeasurements[selectedPrayerIndex].height,
+              }}
+            >
+              <Prayer index={selectedPrayerIndex} isOverlay={true} />
+            </View>
+          )}
         </Pressable>
       </AnimatedBlur>
     </Reanimated.View>
@@ -179,6 +173,9 @@ export default function Overlay() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    zIndex: 1
+  },
   radialGradient: {
     position: 'absolute',
     top: -Dimensions.get('window').height / 2,
