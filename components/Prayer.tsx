@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-na
 import { useEffect, useRef } from 'react';
 
 import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayControlsAtom } from '@/store/store';
-import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/constants';
+import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN, OVERLAY } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 
@@ -91,7 +91,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       onLayout={handleLayout}
       style={[
         styles.container,
-        !isOverlay && styles.spacing
+        !isOverlay && styles.spacing,
+        { zIndex: !isOverlay ? OVERLAY.zindexes.below.prayer : OVERLAY.zindexes.above.prayer }
       ]}
       onPress={handlePress}
     >
@@ -117,8 +118,7 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: PRAYER.borderRadius,
     flexDirection: 'row',
-    alignItems: 'center',
-    zIndex: 11111
+    alignItems: 'center'
   },
   spacing: {
     marginHorizontal: SCREEN.paddingHorizontal,

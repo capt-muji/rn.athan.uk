@@ -33,12 +33,19 @@ export const ANIMATION = {
 export const OVERLAY = {
   closeThreshold: 2000,
    zindexes: {
-    below: -1,
-    overlay: 1,
-    activeBackground: 2,
-    date: 2,
-    timer: 2,
-    prayer: 3,
+    overlay: 0,
+    above: {
+      date: 1,
+      timer: 1,
+      prayer: 1,
+      activeBackground: -1,
+    },
+    below: {
+      activeBackground: 1,
+      date: 1,
+      timer: 1,
+      prayer: 2,
+    },
   },
 };
 
