@@ -1,9 +1,9 @@
 import { StyleSheet, View, Pressable } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withTiming, useSharedValue, runOnJS } from 'react-native-reanimated';
-import { useEffect, useRef, useState } from 'react';
+import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
+import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom, overlayControlsAtom, isInitialAppLoadAtom, activeBackgroundReadyAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom, overlayControlsAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -30,8 +30,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
   const [, setOverlayContent] = useAtom(overlayContentAtom);
   const [overlayControls] = useAtom(overlayControlsAtom);
-  const [isInitialAppLoad, setIsInitialAppLoad] = useAtom(isInitialAppLoadAtom);
-  const [activeBackgroundReady] = useAtom(activeBackgroundReadyAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -39,50 +37,15 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
-  const initialBackgroundColor = useSharedValue('transparent');
 
   useEffect(() => {
-    if (isInitialAppLoad && isNext) {
-      initialBackgroundColor.value = withTiming(COLORS.primary, { duration: 100 });
-    }
-  }, []);
-
-  useEffect(() => {
-    // Update background color when nextPrayerIndex changes
-    if (isInitialAppLoad) {
-      initialBackgroundColor.value = withTiming(isNext ? COLORS.primary : 'transparent', { duration: ANIMATION.duration });
-    }
-
-    // Update text opacity
+    // Update text opacity only
     if (index === nextPrayerIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     } else if (!isPassed) {
       textOpacity.value = TEXT.opacity;
     }
   }, [nextPrayerIndex]);
-
-  useEffect(() => {
-    if (isInitialAppLoad && isNext && activeBackgroundReady) {
-      initialBackgroundColor.value = 'transparent';
-      setIsInitialAppLoad(false);
-    }
-  }, [activeBackgroundReady]);
-
-  const animatedContainerStyle = useAnimatedStyle(() => {
-    if (isOverlay && isNext) {
-      return {
-        backgroundColor: COLORS.primary,
-        shadowColor: COLORS.primaryShadow,
-        shadowOffset: { width: 0, height: 10 },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      };
-    }
-
-    return {
-      backgroundColor: initialBackgroundColor.value,
-    };
-  });
 
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
@@ -163,7 +126,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={[styles.container, animatedContainerStyle]}
+      style={[styles.container]}
       onPress={handlePress}
     >
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}>
