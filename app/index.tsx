@@ -44,8 +44,8 @@ export default function Index() {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-      <RadialGlow color="rgb(128,0,255)" baseOpacity={0.3} />
-      <RadialGlow color="rgb(128,0,255)" baseOpacity={1} visible={overlayVisibleToggle} />
+      <RadialGlow />
+      <RadialGlow baseOpacity={1} visible={overlayVisibleToggle} />
       <StatusBar barStyle="light-content" />
 
       {isLoading && <WaveIndicator color="white" />}

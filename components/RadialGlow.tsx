@@ -11,11 +11,7 @@ type Props = {
   visible?: boolean;
 }
 
-export default function RadialGlow({
-  color = 'rgb(128,0,255)',
-  baseOpacity = 0.3,
-  visible = true,
-}: Props) {
+export default function RadialGlow({ color = 'rgb(128,0,255)', baseOpacity = 0.3, visible = true }: Props) {
   const size = Dimensions.get('window').width * (visible ? 1.2 : 1);
   const zindex = visible ? OVERLAY.zindexes.on.glow : OVERLAY.zindexes.off.glow;
   const effectiveOpacity = visible ? baseOpacity : baseOpacity * 10;
