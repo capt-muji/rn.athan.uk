@@ -89,7 +89,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={[styles.container]}
+      style={[
+        styles.container,
+        !isOverlay && styles.spacing
+      ]}
       onPress={handlePress}
     >
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}>
@@ -115,8 +118,10 @@ const styles = StyleSheet.create({
     borderRadius: PRAYER.borderRadius,
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: SCREEN.paddingHorizontal,
     zIndex: 11111
+  },
+  spacing: {
+    marginHorizontal: SCREEN.paddingHorizontal,
   },
   text: {
     fontFamily: TEXT.famiy.regular,

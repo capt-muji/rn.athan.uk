@@ -43,4 +43,3 @@ export interface PageCoordinates {
 export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);
-export const absolutePrayerListMeasurementsAtom = atom<PageCoordinates | null>(null);
