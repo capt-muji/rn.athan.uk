@@ -158,13 +158,12 @@ export default function Overlay() {
               </Reanimated.Text>
             )}
             {prayerListMeasurements && (
-              <View style={[styles.prayerListContainer, {
+              <View style={{
                 position: 'absolute',
                 top: prayerListMeasurements.pageY,
                 left: prayerListMeasurements.pageX,
                 width: prayerListMeasurements.width,
-                height: prayerListMeasurements.height,
-              }]}>
+              }}>
                 {ENGLISH.map((_, index) => (
                   <Prayer key={index} index={index} isOverlay={true} />
                 ))}
