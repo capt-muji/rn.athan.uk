@@ -34,17 +34,17 @@ export const OVERLAY = {
   closeThreshold: 2000,
    zindexes: {
     overlay: 0,
-    above: {
-      date: 1,
-      timer: 1,
-      prayer: 1,
-      activeBackground: -1,
+    off: {
+      timer: 999,
+      longDate: -1,
+      prayerNotSelected: -1,
+      activeBackground: -2,
     },
-    below: {
+    on: {
+      timer: 999,
+      longDate: -1,
       activeBackground: 1,
-      date: 1,
-      timer: 1,
-      prayer: 2,
+      prayerSelected: 2,
     },
   },
 };

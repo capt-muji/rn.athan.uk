@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: SCREEN.paddingHorizontal,
-    zIndex: OVERLAY.zindexes.below
+    zIndex: OVERLAY.zindexes.off.longDate,
   },
   location: {
     color: COLORS.textSecondary,

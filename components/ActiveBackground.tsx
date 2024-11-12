@@ -9,10 +9,10 @@ export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absoluteMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
-  const zIndex = useSharedValue(OVERLAY.zindexes.below.activeBackground);
+  const zIndex = useSharedValue(OVERLAY.zindexes.off.activeBackground);
 
   useEffect(() => {
-    zIndex.value = overlayVisibleToggle ? OVERLAY.zindexes.below.activeBackground : OVERLAY.zindexes.above.activeBackground;
+    zIndex.value = overlayVisibleToggle ? OVERLAY.zindexes.on.activeBackground : OVERLAY.zindexes.off.activeBackground;
   }, [overlayVisibleToggle]);
 
   const animatedStyle = useAnimatedStyle(() => {
