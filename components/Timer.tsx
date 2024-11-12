@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     height: 50,
     marginBottom: 25,
     justifyContent: 'center',
-    zIndex: OVERLAY.zindexes.off.timer
+    zIndex: OVERLAY.zindexes.off.timer,
+    pointerEvents: 'none',
   },
   text: {
     fontFamily: TEXT.famiy.regular,
