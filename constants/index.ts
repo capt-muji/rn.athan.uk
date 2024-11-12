@@ -30,6 +30,10 @@ export const ANIMATION = {
   duration: 200,
 };
 
+export const OVERLAY = {
+  closeThreshold: 2000, // 2 seconds in milliseconds
+};
+
 export const PRAYER = {
   height: 60,
   shadow: {
