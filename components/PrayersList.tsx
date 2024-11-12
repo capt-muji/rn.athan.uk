@@ -15,6 +15,7 @@ export default function PrayersList({ isOverlay = false }: Props) {
   const viewRef = useRef<View>(null);
 
   const handleLayout = () => {
+    console.log('11111');
     if (!viewRef.current || isOverlay) return;
 
     viewRef.current.measureInWindow((x, y, width, height) => {
@@ -23,7 +24,10 @@ export default function PrayersList({ isOverlay = false }: Props) {
   };
 
   return (
-    <View ref={viewRef} onLayout={handleLayout} style={styles.container}>
+    <View
+      ref={viewRef}
+      onLayout={handleLayout}
+      style={!isOverlay && styles.margin}>
       {!isOverlay && <ActiveBackground />}
       {ENGLISH.map((_, index) => (
         <Prayer key={index} index={index} isOverlay={isOverlay} />
@@ -33,8 +37,7 @@ export default function PrayersList({ isOverlay = false }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
+  margin: {
     marginHorizontal: SCREEN.paddingHorizontal,
   }
 });
