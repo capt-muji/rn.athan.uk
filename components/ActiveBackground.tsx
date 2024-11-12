@@ -1,27 +1,25 @@
 import { StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, {
-  useAnimatedStyle,
-  withSpring,
-} from 'react-native-reanimated';
-import { nextPrayerIndexAtom, relativePrayerMeasurementsAtom } from '@/store/store';
-import { COLORS, PRAYER } from '@/constants';
+import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
+import { nextPrayerIndexAtom, absolutePrayerMeasurementsAtom } from '@/store/store';
+import { COLORS, PRAYER, SCREEN } from '@/constants';
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [relativeMeasurements] = useAtom(relativePrayerMeasurementsAtom);
+  const [absoluteMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
 
   const animatedStyle = useAnimatedStyle(() => {
-    if (nextPrayerIndex === -1 || !relativeMeasurements[nextPrayerIndex]) {
+    if (nextPrayerIndex === -1 || !absoluteMeasurements[nextPrayerIndex]) {
       return { opacity: 0 };
     }
 
-    const activePrayer = relativeMeasurements[nextPrayerIndex];
+    const activePrayer = absoluteMeasurements[nextPrayerIndex];
+
     return {
       opacity: 1,
       position: 'absolute',
-      top: withSpring(activePrayer.y),
-      left: activePrayer.x,
+      top: withSpring(activePrayer.pageY - SCREEN.paddingHorizontal),
+      left: activePrayer.pageX,
       width: withSpring(activePrayer.width),
       height: withSpring(activePrayer.height),
     };
@@ -39,5 +37,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
+    zIndex: -1,
   }
 });
