@@ -16,6 +16,7 @@ import {
   absoluteDateMeasurementsAtom,
   absolutePrayerMeasurementsAtom,
   todaysPrayersAtom,
+  nextPrayerIndexAtom
 } from '@/store/store';
 import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
 import {
@@ -28,6 +29,7 @@ import {
 import RadialGlow from './RadialGlow';
 import { ANIMATION, COLORS, TEXT, ENGLISH, OVERLAY } from '@/constants';
 import Prayer from './Prayer';
+import ActiveBackground from './ActiveBackground';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -44,6 +46,7 @@ export default function Overlay() {
   const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
@@ -153,7 +156,8 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {selectedPrayerIndex !== -1 && prayerMeasurements[selectedPrayerIndex] && (
+          {selectedPrayerIndex === nextPrayerIndex && <ActiveBackground />}
+          {prayerMeasurements[selectedPrayerIndex] && (
             <View
               style={{
                 position: 'absolute',
