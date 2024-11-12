@@ -34,6 +34,7 @@ export const OVERLAY = {
   closeThreshold: 2000,
    zindexes: {
     overlay: 1,
+    background: -999,
     off: {
       timer: 999,
       glow: 998,
