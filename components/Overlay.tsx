@@ -154,6 +154,7 @@ export default function Overlay() {
 
           {ENGLISH.map((_, index) => {
             const measurements = prayerMeasurements[index];
+            if (selectedPrayerIndex !== index) return null;
             if (!measurements) return null;
 
             return (
@@ -186,7 +187,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height / 1,
   },
   overlay: {
-    backgroundColor: '#00028419'
+    backgroundColor: '#00028419',
   },
   date: {
     color: COLORS.textSecondary,

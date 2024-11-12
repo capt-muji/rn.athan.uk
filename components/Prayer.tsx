@@ -92,7 +92,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       style={[
         styles.container,
         !isOverlay && styles.spacing,
-        { zIndex: !isOverlay ? OVERLAY.zindexes.below.prayer : OVERLAY.zindexes.above.prayer }
+        { zIndex: !isOverlay ? OVERLAY.zindexes.off.prayerNotSelected : OVERLAY.zindexes.on.prayerSelected }
       ]}
       onPress={handlePress}
     >
