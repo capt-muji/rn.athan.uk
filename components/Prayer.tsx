@@ -21,7 +21,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
-  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [overlayControls] = useAtom(overlayControlsAtom);
   const viewRef = useRef<View>(null);
 
@@ -92,7 +92,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       style={[
         styles.container,
         !isOverlay && styles.spacing,
-        { zIndex: !isOverlay ? OVERLAY.zindexes.off.prayerNotSelected : OVERLAY.zindexes.on.prayerSelected }
       ]}
       onPress={handlePress}
     >
