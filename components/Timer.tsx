@@ -7,7 +7,7 @@ import Animated, {
   withSpring
 } from 'react-native-reanimated';
 
-import { COLORS, SCREEN, TEXT } from '@/constants';
+import { COLORS, OVERLAY, SCREEN, TEXT } from '@/constants';
 import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleToggleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
@@ -18,68 +18,17 @@ interface TimerProps {
 export default function Timer({ isOverlay = false }: TimerProps) {
   const { nextPrayer } = useTimer({ isOverlay });
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [, setTimerMeasurements] = useAtom(absoluteTimerMeasurementsAtom);
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
-  const [, setOverlayContent] = useAtom(overlayContentAtom);
-  const timerRef = useRef<View>(null);
-  const measurementsRef = useRef<PageCoordinates | null>(null);
-  const scale = useSharedValue(1);
-  const translateY = useSharedValue(0);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
-      { scale: scale.value },
-      { translateY: translateY.value }
+      { scale: overlayVisibleToggle ? 1.5 : 1 },
+      { translateY: overlayVisibleToggle ? 5 : 0 }
     ]
   }));
 
-  const handleLayout = () => {
-    if (isOverlay || !timerRef.current) return;
-
-    timerRef.current.measureInWindow((x, y, width, height) => {
-      const measurements = { pageX: x, pageY: y, width, height };
-      measurementsRef.current = measurements;
-      setTimerMeasurements(measurements);
-    });
-  };
-
-  useEffect(() => {
-    if (overlayVisibleToggle) {
-      setOverlayContent(prev => {
-        const exists = prev.some(item => item.name === 'timer');
-        if (exists) return prev;
-
-        return [...prev, {
-          name: 'timer',
-          component: <Timer isOverlay={true} />,
-          measurements: measurementsRef.current!
-        }];
-      });
-    }
-  }, [overlayVisibleToggle]);
-
-  useEffect(() => {
-    if (isOverlay && !overlayVisibleToggle) {
-      scale.value = withSpring(1, { mass: 0.5 });
-      translateY.value = withSpring(0, { mass: 0.5 });
-    } else if (isOverlay) {
-      scale.value = withSpring(1.5, { mass: 0.5 });
-      translateY.value = withSpring(5, { mass: 0.5 });
-    } else {
-      scale.value = withSpring(1, { mass: 0.5 });
-      translateY.value = withSpring(0, { mass: 0.5 });
-    }
-  }, [isOverlay, overlayVisibleToggle]);
-
   return (
-    <View
-      ref={timerRef}
-      onLayout={handleLayout}
-      style={[
-        styles.container,
-        { opacity: isOverlay ? (overlayVisibleToggle ? 1 : 0) : (overlayVisibleToggle ? 0 : 1) }
-      ]}
-    >
+    <View style={styles.container}>
       {nextPrayerIndex === -1 ? (
         <Text style={styles.text}> {nextPrayer.timerName} </Text>
       ) : (
@@ -99,6 +48,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginBottom: 35,
     justifyContent: 'center',
+    zIndex: OVERLAY.zindexes.timer
   },
   text: {
     fontFamily: TEXT.famiy.regular,
