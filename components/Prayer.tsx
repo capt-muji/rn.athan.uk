@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom, overlayControlsAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayControlsAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -20,15 +20,9 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [, setRelativePrayerMeasurements] = useAtom(relativePrayerMeasurementsAtom);
-  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
-  const [, setOverlayStartOpening] = useAtom(overlayStartOpeningAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
-  const [, setOverlayContent] = useAtom(overlayContentAtom);
   const [overlayControls] = useAtom(overlayControlsAtom);
   const viewRef = useRef<View>(null);
 
@@ -92,16 +86,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       return;
     }
 
-    // Remove the selectedPrayerIndex check to allow re-clicking
     setSelectedPrayerIndex(index);
-    setLastSelectedPrayerIndex(index);
-
-    setOverlayContent([{
-      name: `prayer-${index}`,
-      component: <Prayer index={index} isOverlay={true} />,
-      measurements: absolutePrayerMeasurements[index]
-    }]);
-
     overlayControls.open?.();
   };
 
