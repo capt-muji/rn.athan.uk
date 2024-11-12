@@ -1,16 +1,12 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import { absoluteDateMeasurementsAtom, overlayStartOpeningAtom, overlayStartClosingAtom, overlayVisibleToggleAtom } from '@/store/store';
-import { COLORS, SCREEN, TEXT, ANIMATION, OVERLAY } from '@/constants';
+import { absoluteDateMeasurementsAtom } from '@/store/store';
+import { COLORS, SCREEN, TEXT, OVERLAY } from '@/constants';
 import Masjid from './Masjid';
-import Animated, { useAnimatedStyle, withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
-  const [overlayStartOpening] = useAtom(overlayStartOpeningAtom);
-  const [overlayStartClosing] = useAtom(overlayStartClosingAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const dateRef = useRef<Text>(null);
   const today = new Date();
   const formattedDate = today.toLocaleDateString('en-GB', {
@@ -19,24 +15,6 @@ export default function DateDisplay() {
     month: 'short',
     year: 'numeric'
   });
-
-  const originalOpacity = useSharedValue(1);
-
-  const todaysStyle = useAnimatedStyle(() => ({
-    opacity: originalOpacity.value
-  }));
-
-  useEffect(() => {
-    if (overlayStartOpening && overlayVisibleToggle) {
-      originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-    }
-  }, [overlayStartOpening]);
-
-  useEffect(() => {
-    if (overlayStartClosing) {
-      originalOpacity.value = withDelay(250, withTiming(1, { duration: ANIMATION.duration }));
-    }
-  }, [overlayStartClosing]);
 
   const handleLayout = () => {
     if (!dateRef.current) return;
@@ -50,13 +28,13 @@ export default function DateDisplay() {
     <View style={styles.container}>
       <View>
         <Text style={styles.location}>London, UK</Text>
-        <Animated.Text
+        <Text
           ref={dateRef}
           onLayout={handleLayout}
-          style={[styles.date, todaysStyle]}
+          style={styles.date}
         >
           {formattedDate}
-        </Animated.Text>
+        </Text>
       </View>
       <Masjid />
     </View>
