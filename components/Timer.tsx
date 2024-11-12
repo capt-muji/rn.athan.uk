@@ -40,7 +40,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    marginBottom: 35,
+    marginBottom: 25,
     justifyContent: 'center',
     zIndex: OVERLAY.zindexes.off.timer
   },
