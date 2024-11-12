@@ -14,7 +14,8 @@ import {
   overlayFinishedOpeningAtom,
   overlayControlsAtom,
   absoluteDateMeasurementsAtom,
-  todaysPrayersAtom
+  todaysPrayersAtom,
+  absolutePrayerListMeasurementsAtom
 } from '@/store/store';
 import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
 import {
@@ -26,6 +27,7 @@ import {
 } from 'react-native-reanimated';
 import RadialGlow from './RadialGlow';
 import { ANIMATION, COLORS, TEXT } from '@/constants';
+import PrayersList from './PrayersList';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -41,6 +43,7 @@ export default function Overlay() {
   const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [prayerListMeasurements] = useAtom(absolutePrayerListMeasurementsAtom);
 
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
@@ -154,7 +157,17 @@ export default function Overlay() {
                 {prayer?.passed ? 'Tomorrow' : 'Today'}
               </Reanimated.Text>
             )}
-            {/* Add other fixed position elements here */}
+            {prayerListMeasurements && (
+              <View style={[styles.prayerListContainer, {
+                position: 'absolute',
+                top: prayerListMeasurements.pageY,
+                left: prayerListMeasurements.pageX,
+                width: prayerListMeasurements.width,
+                height: prayerListMeasurements.height,
+              }]}>
+                <PrayersList isOverlay={true} />
+              </View>
+            )}
           </Pressable>
         </AnimatedBlur>
       </Reanimated.View>
@@ -174,5 +187,8 @@ const styles = StyleSheet.create({
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.famiy.regular,
+  },
+  prayerListContainer: {
+    position: 'absolute',
   },
 });
