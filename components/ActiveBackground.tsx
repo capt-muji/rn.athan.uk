@@ -1,19 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withSpring, useSharedValue, runOnJS } from 'react-native-reanimated';
-import { useEffect } from 'react';
+import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import { nextPrayerIndexAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom } from '@/store/store';
 import { COLORS, OVERLAY, PRAYER } from '@/constants';
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absoluteMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
-  const zIndex = useSharedValue(OVERLAY.zindexes.off.activeBackground);
-
-  useEffect(() => {
-    zIndex.value = overlayVisibleToggle ? OVERLAY.zindexes.on.activeBackground : OVERLAY.zindexes.off.activeBackground;
-  }, [overlayVisibleToggle]);
 
   const animatedStyle = useAnimatedStyle(() => {
     if (nextPrayerIndex === -1 || !absoluteMeasurements[nextPrayerIndex]) {
@@ -29,7 +22,7 @@ export default function ActiveBackground() {
       left: activePrayer.pageX,
       width: withSpring(activePrayer.width),
       height: withSpring(activePrayer.height),
-      zIndex: zIndex.value,
+      zIndex: OVERLAY.zindexes.off.activeBackground,
     };
   });
 
