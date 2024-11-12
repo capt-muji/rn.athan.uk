@@ -129,6 +129,7 @@ export default function Overlay() {
   return (
     <Reanimated.View style={[styles.container, StyleSheet.absoluteFillObject, containerAnimatedStyle]}>
       <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
+        <RadialGlow color="rgb(255,100,100)" baseOpacity={0.5} visible={true} />
         <LinearGradient
           colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
           style={StyleSheet.absoluteFill}
