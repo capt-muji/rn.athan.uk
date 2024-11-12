@@ -39,19 +39,9 @@ export interface PageCoordinates {
   height: number;
 }
 
-interface Coordinates {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  name: string;
-}
-
 // Measurements State
 export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
-
 export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
-export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
 
 export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);

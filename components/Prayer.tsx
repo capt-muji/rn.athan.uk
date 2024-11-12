@@ -3,8 +3,8 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayControlsAtom } from '@/store/store';
-import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayControlsAtom } from '@/store/store';
+import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 
@@ -21,7 +21,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
-  const [, setRelativePrayerMeasurements] = useAtom(relativePrayerMeasurementsAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [overlayControls] = useAtom(overlayControlsAtom);
   const viewRef = useRef<View>(null);
@@ -44,39 +43,18 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
 
-    // Measure absolute window coordinates to display text in overlay
     viewRef.current.measureInWindow((x, y, width, height) => {
-      const windowMeasurements = {
-        pageX: x,
-        pageY: y,
-        width,
-        height
-      };
+      const measurements = { pageX: x, pageY: y, width, height };
 
       setAbsolutePrayerMeasurements(prev => {
-        const measurements = [...prev];
-        measurements[index] = windowMeasurements;
-        return measurements;
+        const newMeasurements = [...prev];
+        newMeasurements[index] = measurements;
+        return newMeasurements;
       });
 
       if (isNext) {
-        setNextPrayerMeasurements(windowMeasurements);
+        setNextPrayerMeasurements(measurements);
       }
-    });
-
-    // Measure relative coordinates for active background
-    viewRef.current.measure((x, y, width, height) => {
-      setRelativePrayerMeasurements(prev => {
-        const relativeMeasurements = [...prev];
-        relativeMeasurements[index] = {
-          x,
-          y,
-          width,
-          height,
-          name: prayer.english
-        };
-        return relativeMeasurements;
-      });
     });
   };
 
@@ -137,6 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: PRAYER.borderRadius,
     flexDirection: 'row',
     alignItems: 'center',
+    marginHorizontal: SCREEN.paddingHorizontal,
   },
   text: {
     fontFamily: TEXT.famiy.regular,
