@@ -6,9 +6,7 @@ import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
 import { useRef } from 'react';
 
-interface Props {
-  isOverlay?: boolean;
-}
+interface Props { isOverlay?: boolean }
 
 export default function PrayersList({ isOverlay = false }: Props) {
   const [, setPrayerListMeasurements] = useAtom(absolutePrayerListMeasurementsAtom);
@@ -23,10 +21,7 @@ export default function PrayersList({ isOverlay = false }: Props) {
   };
 
   return (
-    <View
-      ref={viewRef}
-      onLayout={handleLayout}
-      style={!isOverlay && styles.margin}>
+    <View ref={viewRef} onLayout={handleLayout} style={!isOverlay && styles.margin}>
       {!isOverlay && <ActiveBackground />}
       {ENGLISH.map((_, index) => (
         <Prayer key={index} index={index} isOverlay={isOverlay} />
