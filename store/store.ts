@@ -42,7 +42,5 @@ export interface PageCoordinates {
 // Measurements State
 export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
-
-export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);
 export const absolutePrayerListMeasurementsAtom = atom<PageCoordinates | null>(null);

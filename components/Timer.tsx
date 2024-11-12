@@ -1,14 +1,8 @@
-import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring
-} from 'react-native-reanimated';
-
-import { COLORS, OVERLAY, SCREEN, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, absoluteTimerMeasurementsAtom, overlayVisibleToggleAtom, overlayContentAtom, PageCoordinates } from '@/store/store';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { COLORS, OVERLAY, TEXT } from '@/constants';
+import { nextPrayerIndexAtom, overlayVisibleToggleAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 interface TimerProps {
@@ -22,8 +16,8 @@ export default function Timer({ isOverlay = false }: TimerProps) {
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
-      { scale: overlayVisibleToggle ? 1.5 : 1 },
-      { translateY: overlayVisibleToggle ? 5 : 0 }
+      { scale: withTiming(overlayVisibleToggle ? 1.5 : 1) },
+      { translateY: withTiming(overlayVisibleToggle ? 5 : 0) }
     ]
   }));
 
