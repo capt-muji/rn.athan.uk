@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginHorizontal: SCREEN.paddingHorizontal,
+    zIndex: 11111
   },
   text: {
     fontFamily: TEXT.famiy.regular,
