@@ -86,7 +86,7 @@ export default function Overlay() {
       if (finished) runOnJS(handleOpenComplete)();
     });
 
-    intensity.value = withTiming(10, { duration: ANIMATION.duration });
+    intensity.value = withTiming(15, { duration: ANIMATION.duration });
   };
 
   const animateClose = () => {
@@ -175,13 +175,6 @@ export default function Overlay() {
 const styles = StyleSheet.create({
   container: {
     zIndex: OVERLAY.zindexes.overlay
-  },
-  radialGradient: {
-    position: 'absolute',
-    top: -Dimensions.get('window').height / 2,
-    left: -Dimensions.get('window').height / 10,
-    width: Dimensions.get('window').height / 1,
-    height: Dimensions.get('window').height / 1,
   },
   overlay: {
     backgroundColor: '#00028419',
