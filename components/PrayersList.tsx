@@ -15,7 +15,6 @@ export default function PrayersList({ isOverlay = false }: Props) {
   const viewRef = useRef<View>(null);
 
   const handleLayout = () => {
-    console.log('11111');
     if (!viewRef.current || isOverlay) return;
 
     viewRef.current.measureInWindow((x, y, width, height) => {
