@@ -44,5 +44,6 @@ const styles = StyleSheet.create({
     top: -Dimensions.get('window').width / 2,
     left: -Dimensions.get('window').width / 3,
     zIndex: OVERLAY.zindexes.on.glow,
+    pointerEvents: 'none',
   }
 });
