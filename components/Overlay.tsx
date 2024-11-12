@@ -138,7 +138,7 @@ export default function Overlay() {
           {dateMeasurements && (
             <Reanimated.Text
               style={[
-                styles.overlayText,
+                styles.date,
                 {
                   position: 'absolute',
                   top: dateMeasurements.pageY,
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   overlay: {
     backgroundColor: '#00028419'
   },
-  overlayText: {
+  date: {
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.famiy.regular,

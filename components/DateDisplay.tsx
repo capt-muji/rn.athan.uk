@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import { absoluteDateMeasurementsAtom, overlayStartOpeningAtom, overlayStartClosingAtom, overlayVisibleToggleAtom } from '@/store/store';
-import { COLORS, SCREEN, TEXT, ANIMATION } from '@/constants';
+import { COLORS, SCREEN, TEXT, ANIMATION, OVERLAY } from '@/constants';
 import Masjid from './Masjid';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: SCREEN.paddingHorizontal,
+    zIndex: OVERLAY.zindexes.below
   },
   location: {
     color: COLORS.textSecondary,
