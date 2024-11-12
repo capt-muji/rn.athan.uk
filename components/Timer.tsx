@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: TEXT.famiy.regular,
     color: COLORS.textSecondary,
-    opacity: TEXT.opacity,
+    opacity: TEXT.opacity + 0.15,
     textAlign: 'center',
     fontSize: TEXT.size - 2,
   },
