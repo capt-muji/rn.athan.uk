@@ -26,8 +26,8 @@ import {
   runOnJS
 } from 'react-native-reanimated';
 import RadialGlow from './RadialGlow';
-import { ANIMATION, COLORS, TEXT } from '@/constants';
-import PrayersList from './PrayersList';
+import { ANIMATION, COLORS, TEXT, ENGLISH } from '@/constants';
+import Prayer from './Prayer';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -165,7 +165,9 @@ export default function Overlay() {
                 width: prayerListMeasurements.width,
                 height: prayerListMeasurements.height,
               }]}>
-                <PrayersList isOverlay={true} />
+                {ENGLISH.map((_, index) => (
+                  <Prayer key={index} index={index} isOverlay={true} />
+                ))}
               </View>
             )}
           </Pressable>
