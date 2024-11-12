@@ -15,10 +15,7 @@ import RadialGlow from '@/components/RadialGlow';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
-  const [fontsLoaded] = useFonts({
-    'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
-    'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf'),
-  });
+  const [fontsLoaded] = useFonts({ 'Roboto': require('@/assets/fonts/Roboto-Regular.ttf') });
 
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);

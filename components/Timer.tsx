@@ -14,6 +14,8 @@ export default function Timer({ isOverlay = false }: TimerProps) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
 
+  const fontFamily = { fontFamily: overlayVisibleToggle ? TEXT.famiy.medium : TEXT.famiy.regular };
+
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
       { scale: withTiming(overlayVisibleToggle ? 1.5 : 1) },
@@ -27,9 +29,9 @@ export default function Timer({ isOverlay = false }: TimerProps) {
         <Text style={styles.text}> {nextPrayer.timerName} </Text>
       ) : (
         <>
-          <Text style={styles.text}> {`${nextPrayer.timerName || '...'} in`} </Text>
+          <Text style={styles.text}>{`${nextPrayer.timerName || '...'} in`}</Text>
           <Animated.View style={[styles.timerContainer, animatedStyle]}>
-            <Text style={styles.timer}> {nextPrayer.timeDisplay} </Text>
+            <Animated.Text style={[styles.timer, fontFamily]}>{nextPrayer.timeDisplay}</Animated.Text>
           </Animated.View>
         </>
       )}
@@ -40,7 +42,7 @@ export default function Timer({ isOverlay = false }: TimerProps) {
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    marginBottom: 25,
+    marginBottom: 40,
     justifyContent: 'center',
     zIndex: OVERLAY.zindexes.off.timer,
     pointerEvents: 'none',
@@ -51,11 +53,12 @@ const styles = StyleSheet.create({
     opacity: TEXT.opacity + 0.15,
     textAlign: 'center',
     fontSize: TEXT.size - 2,
+    marginBottom: 3,
   },
   timer: {
-    fontFamily: TEXT.famiy.medium,
+    fontFamily: TEXT.famiy.regular,
     color: COLORS.textPrimary,
-    fontSize: TEXT.size + 5,
+    fontSize: TEXT.size + 8,
     textAlign: 'center',
   },
   timerContainer: {
