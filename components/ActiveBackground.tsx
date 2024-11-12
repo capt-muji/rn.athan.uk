@@ -1,12 +1,19 @@
 import { StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
-import { nextPrayerIndexAtom, absolutePrayerMeasurementsAtom } from '@/store/store';
+import Animated, { useAnimatedStyle, withSpring, useSharedValue, runOnJS } from 'react-native-reanimated';
+import { useEffect } from 'react';
+import { nextPrayerIndexAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom } from '@/store/store';
 import { COLORS, OVERLAY, PRAYER } from '@/constants';
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absoluteMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const zIndex = useSharedValue(OVERLAY.zindexes.below.activeBackground);
+
+  useEffect(() => {
+    zIndex.value = overlayVisibleToggle ? OVERLAY.zindexes.below.activeBackground : OVERLAY.zindexes.above.activeBackground;
+  }, [overlayVisibleToggle]);
 
   const animatedStyle = useAnimatedStyle(() => {
     if (nextPrayerIndex === -1 || !absoluteMeasurements[nextPrayerIndex]) {
@@ -22,6 +29,7 @@ export default function ActiveBackground() {
       left: activePrayer.pageX,
       width: withSpring(activePrayer.width),
       height: withSpring(activePrayer.height),
+      zIndex: zIndex.value,
     };
   });
 
@@ -37,6 +45,5 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    zIndex: OVERLAY.zindexes.activeBackground
   }
 });
