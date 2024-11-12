@@ -18,9 +18,8 @@ import {
   todaysPrayersAtom,
   nextPrayerIndexAtom
 } from '@/store/store';
-import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
-import RadialGlow from './RadialGlow';
-import { ANIMATION, COLORS, TEXT, ENGLISH, OVERLAY } from '@/constants';
+import { useEffect } from 'react';
+import { ANIMATION, COLORS, TEXT, OVERLAY } from '@/constants';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
 
@@ -129,7 +128,6 @@ export default function Overlay() {
   return (
     <Reanimated.View style={[styles.container, StyleSheet.absoluteFillObject, containerAnimatedStyle]}>
       <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
-        <RadialGlow color="rgb(255,100,100)" baseOpacity={0.5} visible={true} />
         <LinearGradient
           colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
           style={StyleSheet.absoluteFill}
@@ -182,11 +180,9 @@ export default function Overlay() {
 const styles = StyleSheet.create({
   container: {
     zIndex: OVERLAY.zindexes.overlay,
-    // backgroundColor: 'green'
   },
   overlay: {
     backgroundColor: '#00028419',
-    // backgroundColor: 'silver'
   },
   date: {
     color: COLORS.textSecondary,
