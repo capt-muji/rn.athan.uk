@@ -44,7 +44,7 @@ export const OVERLAY = {
     },
     on: {
       timer: 999,
-      glow: 998,
+      glow: -1,
       longDate: -1,
       activeBackground: 2,
       prayerSelected: 3,

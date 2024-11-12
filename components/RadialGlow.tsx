@@ -17,6 +17,7 @@ export default function RadialGlow({
   visible = true,
 }: Props) {
   const size = Dimensions.get('window').width * (visible ? 1.2 : 1);
+  const zindex = visible ? OVERLAY.zindexes.on.glow : OVERLAY.zindexes.off.glow;
 
   const glowStyle = useAnimatedStyle(() => ({
     opacity: withTiming(visible ? 1 : 0, { duration: 300 })
@@ -41,8 +42,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -Dimensions.get('window').width / 2,
     left: -Dimensions.get('window').width / 3,
-    zIndex: OVERLAY.zindexes.on.glow,
-    pointerEvents: 'none',
-    // backgroundColor: 'black',
   }
 });

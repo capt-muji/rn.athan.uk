@@ -22,6 +22,7 @@ export default function Index() {
 
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
 
   const { initialize } = usePrayers();
 
@@ -44,6 +45,7 @@ export default function Index() {
         end={{ x: 1, y: 1 }}
       />
       <RadialGlow color="rgb(128,0,255)" baseOpacity={0.3} />
+      <RadialGlow color="rgb(255,100,100)" baseOpacity={5} visible={overlayVisibleToggle} />
       <StatusBar barStyle="light-content" />
 
       {isLoading && <WaveIndicator color="white" />}
