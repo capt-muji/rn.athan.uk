@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable, View, Dimensions } from 'react-native';
+import { StyleSheet, Pressable, View, Dimensions, Text } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
@@ -12,7 +12,9 @@ import {
   overlayStartClosingAtom,
   overlayFinishedClosingAtom,
   overlayFinishedOpeningAtom,
-  overlayControlsAtom
+  overlayControlsAtom,
+  absoluteDateMeasurementsAtom,
+  todaysPrayersAtom
 } from '@/store/store';
 import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
 import {
@@ -23,7 +25,7 @@ import {
   runOnJS
 } from 'react-native-reanimated';
 import RadialGlow from './RadialGlow';
-import { ANIMATION } from '@/constants';
+import { ANIMATION, COLORS, TEXT } from '@/constants';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -36,6 +38,9 @@ export default function Overlay() {
   const [, setOverlayFinishedClosing] = useAtom(overlayFinishedClosingAtom);
   const [, setOverlayFinishedOpening] = useAtom(overlayFinishedOpeningAtom);
   const [, setOverlayControls] = useAtom(overlayControlsAtom);
+  const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [todaysPrayers] = useAtom(todaysPrayersAtom);
 
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
@@ -114,6 +119,8 @@ export default function Overlay() {
     animateClose();
   };
 
+  const prayer = todaysPrayers[selectedPrayerIndex];
+
   if (!overlayVisibleToggle) return null;
 
   return (
@@ -131,20 +138,23 @@ export default function Overlay() {
             style={styles.radialGradient}
           />
           <Pressable style={StyleSheet.absoluteFillObject} onPress={handleClose}>
-            {content.map(({ name, component, measurements }) => (
-              <View
-                key={name}
-                style={{
-                  position: 'absolute',
-                  top: measurements.pageY,
-                  left: measurements.pageX,
-                  width: measurements.width,
-                  height: measurements.height,
-                }}
+            {dateMeasurements && (
+              <Reanimated.Text
+                style={[
+                  styles.overlayText,
+                  {
+                    position: 'absolute',
+                    top: dateMeasurements.pageY,
+                    left: dateMeasurements.pageX,
+                    width: dateMeasurements.width,
+                    height: dateMeasurements.height,
+                  }
+                ]}
               >
-                {component}
-              </View>
-            ))}
+                {prayer?.passed ? 'Tomorrow' : 'Today'}
+              </Reanimated.Text>
+            )}
+            {/* Add other fixed position elements here */}
           </Pressable>
         </AnimatedBlur>
       </Reanimated.View>
@@ -159,5 +169,10 @@ const styles = StyleSheet.create({
     left: -Dimensions.get('window').height / 10,
     width: Dimensions.get('window').height / 1,
     height: Dimensions.get('window').height / 1,
+  },
+  overlayText: {
+    color: COLORS.textSecondary,
+    fontSize: TEXT.size,
+    fontFamily: TEXT.famiy.regular,
   },
 });
