@@ -79,7 +79,7 @@ export default function Overlay() {
       if (finished) runOnJS(handleOpenComplete)();
     });
 
-    intensity.value = withTiming(15, { duration: ANIMATION.duration });
+    intensity.value = withTiming(25, { duration: ANIMATION.duration });
 
     // Delayed date animation
     dateOpacity.value = withDelay(250, withTiming(1, {
@@ -147,8 +147,6 @@ export default function Overlay() {
                   left: dateMeasurements.pageX,
                   width: dateMeasurements.width,
                   height: dateMeasurements.height,
-                  backgroundColor: 'pink'
-
                 },
                 dateAnimatedStyle,
               ]}

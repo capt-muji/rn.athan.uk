@@ -28,7 +28,7 @@ export default function DateDisplay() {
     <View style={styles.container}>
       <View>
         <Text style={styles.location}>London, UK</Text>
-        <Text ref={dateRef} onLayout={handleLayout} style={styles.date}> {formattedDate} </Text>
+        <Text ref={dateRef} onLayout={handleLayout} style={styles.date}>{formattedDate}</Text>
       </View>
       <Masjid />
     </View>
