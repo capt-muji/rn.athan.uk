@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Portal } from 'react-native-paper';
 import Timer from '@/components/Timer';
 import DateDisplay from '@/components/DateDisplay';
@@ -9,25 +10,27 @@ import Overlay from '@/components/Overlay';
 import { SCREEN, ENGLISH } from '@/constants';
 
 export default function Main() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <Portal.Host>
-      <View style={styles.container}>
-        <Overlay />
-        <Timer />
-        <DateDisplay />
-        {ENGLISH.map((_, index) => (
-          <Prayer key={index} index={index} />
-        ))}
-        <ActiveBackground />
-        <Footer />
-      </View>
-    </Portal.Host>
+    <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal }]}>
+      <Overlay />
+      <ActiveBackground />
+
+      <Timer />
+      <DateDisplay />
+
+      {ENGLISH.map((_, index) => (
+        <Prayer key={index} index={index} />
+      ))}
+
+      <Footer />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: SCREEN.paddingHorizontal,
+    ...StyleSheet.absoluteFillObject,
   },
 });

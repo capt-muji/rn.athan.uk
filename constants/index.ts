@@ -31,7 +31,14 @@ export const ANIMATION = {
 };
 
 export const OVERLAY = {
-  closeThreshold: 2000, // 2 seconds in milliseconds
+  closeThreshold: 2000,
+   zindexes: {
+    overlay: 1,
+    activeBackground: 2,
+    date: 2,
+    timer: 2,
+    prayer: 3,
+  },
 };
 
 export const PRAYER = {

@@ -119,6 +119,7 @@ export default function Overlay() {
   }));
 
   const handleClose = () => {
+    console.log('11111');
     animateClose();
   };
 
@@ -127,52 +128,53 @@ export default function Overlay() {
   if (!overlayVisibleToggle) return null;
 
   return (
-    <Portal>
-      <Reanimated.View style={[StyleSheet.absoluteFillObject, containerStyle]}>
-        <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
-          <LinearGradient
-            colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
-            style={StyleSheet.absoluteFill}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-          />
-          <RadialGlow
-            size={Dimensions.get('window').height / 3}
-            style={styles.radialGradient}
-          />
-          <Pressable style={StyleSheet.absoluteFillObject} onPress={handleClose}>
-            {dateMeasurements && (
-              <Reanimated.Text
-                style={[
-                  styles.overlayText,
-                  {
-                    position: 'absolute',
-                    top: dateMeasurements.pageY,
-                    left: dateMeasurements.pageX,
-                    width: dateMeasurements.width,
-                    height: dateMeasurements.height,
-                  }
-                ]}
-              >
-                {prayer?.passed ? 'Tomorrow' : 'Today'}
-              </Reanimated.Text>
-            )}
-            {prayerListMeasurements && (
-              <View style={{
-                position: 'absolute',
-                top: prayerListMeasurements.pageY,
-                left: prayerListMeasurements.pageX,
-                width: prayerListMeasurements.width,
-              }}>
-                {ENGLISH.map((_, index) => (
-                  <Prayer key={index} index={index} isOverlay={true} />
-                ))}
-              </View>
-            )}
-          </Pressable>
-        </AnimatedBlur>
-      </Reanimated.View>
-    </Portal>
+    <Reanimated.View style={[StyleSheet.absoluteFillObject, containerStyle]}>
+      <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
+        <LinearGradient
+          colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
+          style={StyleSheet.absoluteFill}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+        />
+        <RadialGlow
+          size={Dimensions.get('window').height / 3}
+          style={styles.radialGradient}
+        />
+        <Pressable style={[styles.overlay, StyleSheet.absoluteFillObject]} onPress={handleClose}>
+          {/* Timer will be zindexed here */}
+
+          {dateMeasurements && (
+            <Reanimated.Text
+              style={[
+                styles.overlayText,
+                {
+                  position: 'absolute',
+                  top: dateMeasurements.pageY,
+                  left: dateMeasurements.pageX,
+                  width: dateMeasurements.width,
+                  height: dateMeasurements.height,
+                }
+              ]}
+            >
+              {prayer?.passed ? 'Tomorrow' : 'Today'}
+            </Reanimated.Text>
+          )}
+
+          {prayerListMeasurements && (
+            <View style={{
+              position: 'absolute',
+              top: prayerListMeasurements.pageY,
+              left: prayerListMeasurements.pageX,
+              width: prayerListMeasurements.width,
+            }}>
+              {ENGLISH.map((_, index) => (
+                <Prayer key={index} index={index} isOverlay={true} />
+              ))}
+            </View>
+          )}
+        </Pressable>
+      </AnimatedBlur>
+    </Reanimated.View>
   );
 }
 
@@ -183,6 +185,9 @@ const styles = StyleSheet.create({
     left: -Dimensions.get('window').height / 10,
     width: Dimensions.get('window').height / 1,
     height: Dimensions.get('window').height / 1,
+  },
+  overlay: {
+    backgroundColor: '#00028419'
   },
   overlayText: {
     color: COLORS.textSecondary,
