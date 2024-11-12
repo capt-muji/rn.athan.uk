@@ -22,7 +22,7 @@ export default function RadialGlow({
 
   const glowStyle = useAnimatedStyle(() => ({
     opacity: withTiming(visible ? 1 : 0, { duration: 300 }),
-    zindex: zindex
+    zIndex: zindex
   }));
 
   return (
