@@ -131,10 +131,6 @@ export default function Overlay() {
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
         />
-        <RadialGlow
-          size={Dimensions.get('window').height / 3}
-          style={styles.radialGradient}
-        />
         <Pressable style={[styles.overlay, StyleSheet.absoluteFillObject]} onPress={handleClose}>
           {/* Timer will be zindexed here */}
 

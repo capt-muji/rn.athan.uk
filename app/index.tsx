@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
@@ -11,6 +11,8 @@ import { isLoadingAtom, hasErrorAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
 import { COLORS } from '@/constants';
+import RadialGlow from '@/components/RadialGlow';
+import RadialGlowOverlay from '@/components/RadialGlowOverlay';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -42,6 +44,8 @@ export default function Index() {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
+      <RadialGlow />
+      <RadialGlowOverlay />
       <StatusBar barStyle="light-content" />
       {isLoading && <WaveIndicator color="white" />}
       {hasError && !isLoading && <Error />}
@@ -57,5 +61,5 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-  }
+  },
 });
