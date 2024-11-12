@@ -1,5 +1,5 @@
 import { StyleSheet, Pressable, View, Dimensions, Text } from 'react-native';
-import Reanimated from 'react-native-reanimated';
+import Reanimated, { useSharedValue, withTiming, useAnimatedProps, useAnimatedStyle, runOnJS, withDelay } from 'react-native-reanimated';
 import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { BlurView } from 'expo-blur';
@@ -19,13 +19,6 @@ import {
   nextPrayerIndexAtom
 } from '@/store/store';
 import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
-import {
-  useSharedValue,
-  withTiming,
-  useAnimatedProps,
-  useAnimatedStyle,
-  runOnJS
-} from 'react-native-reanimated';
 import RadialGlow from './RadialGlow';
 import { ANIMATION, COLORS, TEXT, ENGLISH, OVERLAY } from '@/constants';
 import Prayer from './Prayer';
@@ -50,6 +43,7 @@ export default function Overlay() {
 
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
+  const dateOpacity = useSharedValue(0);
 
   // Helper functions for animation state management
   const handleOpenStart = () => {
@@ -87,6 +81,11 @@ export default function Overlay() {
     });
 
     intensity.value = withTiming(15, { duration: ANIMATION.duration });
+
+    // Delayed date animation
+    dateOpacity.value = withDelay(250, withTiming(1, {
+      duration: ANIMATION.duration,
+    }));
   };
 
   const animateClose = () => {
@@ -97,6 +96,7 @@ export default function Overlay() {
     });
 
     intensity.value = withTiming(0, { duration: ANIMATION.duration });
+    dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
   };
 
   useEffect(() => {
@@ -112,6 +112,10 @@ export default function Overlay() {
 
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value
+  }));
+
+  const dateAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: dateOpacity.value
   }));
 
   const handleClose = () => {
@@ -144,8 +148,10 @@ export default function Overlay() {
                   left: dateMeasurements.pageX,
                   width: dateMeasurements.width,
                   height: dateMeasurements.height,
+                  backgroundColor: 'pink'
 
-                }
+                },
+                dateAnimatedStyle,
               ]}
             >
               {prayer?.passed ? 'Tomorrow' : 'Today'}
@@ -174,14 +180,17 @@ export default function Overlay() {
 
 const styles = StyleSheet.create({
   container: {
-    zIndex: OVERLAY.zindexes.overlay
+    zIndex: OVERLAY.zindexes.overlay,
+    // backgroundColor: 'green'
   },
   overlay: {
     backgroundColor: '#00028419',
+    // backgroundColor: 'silver'
   },
   date: {
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.famiy.regular,
+    pointerEvents: 'none',
   },
 });
