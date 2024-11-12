@@ -50,7 +50,6 @@ export default function Overlay() {
 
   // Helper functions for animation state management
   const handleOpenStart = () => {
-    setOverlayVisibleToggle(true);
     setOverlayStartOpening(true);
     setOverlayFinishedOpening(false);
   };
@@ -63,10 +62,11 @@ export default function Overlay() {
   const handleCloseStart = () => {
     setOverlayStartClosing(true);
     setOverlayFinishedClosing(false);
+    // Update visibility immediately
+    setOverlayVisibleToggle(false);
   };
 
   const handleCloseComplete = () => {
-    setOverlayVisibleToggle(false);
     setOverlayStartClosing(false);
     setOverlayFinishedClosing(true);
     setSelectedPrayerIndex(-1);
@@ -75,6 +75,8 @@ export default function Overlay() {
 
   // Animation helpers
   const animateOpen = () => {
+    // Update visibility immediately
+    setOverlayVisibleToggle(true);
     handleOpenStart();
 
     opacity.value = withTiming(1, { duration: ANIMATION.duration }, (finished) => {
@@ -93,15 +95,6 @@ export default function Overlay() {
 
     intensity.value = withTiming(0, { duration: ANIMATION.duration });
   };
-
-  // Visibility effect
-  useEffect(() => {
-    if (overlayVisibleToggle) {
-      animateOpen();
-    } else {
-      animateClose();
-    }
-  }, [overlayVisibleToggle]);
 
   useEffect(() => {
     setOverlayControls({
