@@ -7,12 +7,11 @@ import { WaveIndicator } from 'react-native-indicators';
 
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom, overlayVisibleToggleAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
-import { COLORS } from '@/constants';
+import { COLORS, OVERLAY } from '@/constants';
 import RadialGlow from '@/components/RadialGlow';
-import RadialGlowOverlay from '@/components/RadialGlowOverlay';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -23,6 +22,7 @@ export default function Index() {
 
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
+  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
 
   const { initialize } = usePrayers();
 
@@ -44,9 +44,10 @@ export default function Index() {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-      <RadialGlow />
-      <RadialGlowOverlay />
+      <RadialGlow color="rgb(128,0,255)" baseOpacity={0.3} />
+      <RadialGlow color="rgb(255,100,100)" baseOpacity={0.5} visible={overlayVisible} />
       <StatusBar barStyle="light-content" />
+
       {isLoading && <WaveIndicator color="white" />}
       {hasError && !isLoading && <Error />}
       {!hasError && !isLoading && <Main />}
