@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, overlayVisibleToggleAtom } from '@/store/store';
+import { nextPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 interface TimerProps {
@@ -12,7 +12,7 @@ interface TimerProps {
 export default function Timer({ isOverlay = false }: TimerProps) {
   const { nextPrayer } = useTimer({ isOverlay });
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
 
   const fontFamily = { fontFamily: overlayVisible ? TEXT.famiy.medium : TEXT.famiy.regular };
 

@@ -1,9 +1,9 @@
 import { StyleSheet, View } from 'react-native';
-import { useAnimatedStyle, withTiming, useSharedValue, withDelay, withSpring } from 'react-native-reanimated';
+import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/constants';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleToggleAtom, overlayStartOpeningAtom, overlayStartClosingAtom, lastSelectedPrayerIndexAtom, overlayFinishedClosingAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleAtom  } from '@/store/store';
 import { useEffect } from 'react';
 
 interface Props {
@@ -15,7 +15,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
 
   const prayer = todaysPrayers[index];
@@ -51,7 +51,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     // if overlay is not visible
     if (!overlayVisible) {
       originalOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(baseOpacity, { duration: ANIMATION.duration }));
-      overlayTodayOpacity.value = withTiming(0, { duration: 50 })
+      overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration })
       overlayTomorrowOpacity.value = withTiming(0, { duration: ANIMATION.duration })
     };
 

@@ -2,13 +2,13 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
-import { absoluteDateMeasurementsAtom, overlayVisibleToggleAtom } from '@/store/store';
+import { absoluteDateMeasurementsAtom, overlayVisibleAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
-  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
 

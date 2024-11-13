@@ -6,7 +6,7 @@ import {
   nextPrayerIndexAtom, 
   tomorrowsPrayersAtom,
   selectedPrayerIndexAtom,
-  overlayVisibleToggleAtom,
+  overlayVisibleAtom,
 } from '@/store/store';
 
 const THRESHOLD = 1000; // 1 second threshold
@@ -19,7 +19,7 @@ export const useTimer = ({ isOverlay = false } = {}) => {
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
 
   useEffect(() => {
     if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
