@@ -23,7 +23,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const [lastSelectedPrayerIndex, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -42,11 +41,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   }, [nextPrayerIndex]);
 
   useEffect(() => {
-    // When overlay opens, store the last selected index
-    if (overlayVisible && selectedPrayerIndex === index) {
-      setLastSelectedPrayerIndex(index);
-    }
-
     // Only show background when it's the next prayer
     if (overlayVisible && isOverlay && selectedPrayerIndex === nextPrayerIndex) {
       backgroundOpacity.value = 1;
