@@ -18,9 +18,8 @@ export default function Main() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal }]}>
-      <Overlay />
       <RadialGlow />
-      <RadialGlow baseOpacity={1} visible={overlayVisibleToggle} />
+      <Overlay />
       <ActiveBackground />
 
       <Timer />

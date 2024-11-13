@@ -18,7 +18,6 @@ export default function RadialGlow({ color = 'rgb(128,0,255)', baseOpacity = 0.3
 
   const glowStyle = useAnimatedStyle(() => ({
     opacity: withTiming(visible ? 1 : 0, { duration: 300 }),
-    backgroundColor: visible ? 'purple' : 'green',
     zIndex
   }));
 
