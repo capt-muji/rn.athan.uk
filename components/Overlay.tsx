@@ -45,8 +45,8 @@ export default function Overlay() {
   useEffect(() => {
     if (overlayVisibleToggle) {
       backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
-      glowOpacityShared.value = withDelay(150, withTiming(1, { duration: ANIMATION.duration }));
-      dateOpacityShared.value = withDelay(150, withTiming(1, { duration: ANIMATION.duration }));
+      glowOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+      dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
     } else {
       backgroundOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
       glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
