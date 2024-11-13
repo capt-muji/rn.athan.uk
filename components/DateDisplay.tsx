@@ -8,7 +8,7 @@ import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
 
@@ -21,8 +21,8 @@ export default function DateDisplay() {
   });
 
   useEffect(() => {
-    dateOpacity.value = withTiming(overlayVisibleToggle ? 0 : 1, { duration: ANIMATION.duration });
-  }, [overlayVisibleToggle]);
+    dateOpacity.value = withTiming(overlayVisible ? 0 : 1, { duration: ANIMATION.duration });
+  }, [overlayVisible]);
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
     opacity: dateOpacity.value,

@@ -27,7 +27,7 @@ interface Props { index: number; isOverlay?: boolean; }
 export default function Alert({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
 
@@ -59,7 +59,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const alertAnimatedStyle = useAnimatedStyle(() => ({
     opacity: !isOverlay
       ? (isPopupActive || isPassed || isNext ? 1 : TEXT.transparent)
-      : withTiming(overlayVisibleToggle ? 1 : 0, { duration: ANIMATION.duration }),
+      : withTiming(overlayVisible ? 1 : 0, { duration: ANIMATION.duration }),
     transform: [{ scale: pressAnim.value }]
   }));
 

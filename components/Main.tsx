@@ -14,7 +14,6 @@ import { useAtom } from 'jotai';
 
 export default function Main() {
   const insets = useSafeAreaInsets();
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal }]}>
