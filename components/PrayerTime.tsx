@@ -25,22 +25,29 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const todayTime = todaysPrayers[index].time;
   const tomorrowTime = tomorrowsPrayers[selectedPrayerIndex]?.time;
 
-  const originalOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
+  const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
+
+  const originalOpacity = useSharedValue(baseOpacity);
   const overlayTodayOpacity = useSharedValue(0);
   const overlayTomorrowOpacity = useSharedValue(0);
 
   useEffect(() => {
     // if overlay is visible, and this prayer is selected
-    if (selectedPrayerIndex === index) {
+    if (overlayVisibleToggle && selectedPrayerIndex === index) {
 
       if (isNext) return;
 
       // upcoming prayer
       if (!isNext && !isPassed) {
         overlayTodayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-      }
+      };
 
-    };
+    }
+
+    // if overlay is visible, and this prayer is not selected
+    if (!overlayVisibleToggle && lastSelectedPrayerIndex === index) {
+      overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+    }
 
   }, [overlayVisibleToggle]);
 
