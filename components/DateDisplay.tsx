@@ -1,13 +1,17 @@
-import { useRef } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useRef, useEffect } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
-import { absoluteDateMeasurementsAtom } from '@/store/store';
-import { COLORS, SCREEN, TEXT, OVERLAY } from '@/constants';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming, withDelay } from 'react-native-reanimated';
+import { absoluteDateMeasurementsAtom, overlayVisibleAtom } from '@/store/store';
+import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
-  const dateRef = useRef<Text>(null);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const dateRef = useRef<Animated.Text>(null);
+  const dateOpacity = useSharedValue(1);
+
   const today = new Date();
   const formattedDate = today.toLocaleDateString('en-GB', {
     weekday: 'short',
@@ -15,6 +19,18 @@ export default function DateDisplay() {
     month: 'short',
     year: 'numeric'
   });
+
+  useEffect(() => {
+    if (overlayVisible) {
+      dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+    } else {
+      dateOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+    }
+  }, [overlayVisible]);
+
+  const dateAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: dateOpacity.value,
+  }));
 
   const handleLayout = () => {
     if (!dateRef.current) return;
@@ -28,7 +44,9 @@ export default function DateDisplay() {
     <View style={styles.container}>
       <View>
         <Text style={styles.location}>London, UK</Text>
-        <Text ref={dateRef} onLayout={handleLayout} style={styles.date}>{formattedDate}</Text>
+        <Animated.Text ref={dateRef} onLayout={handleLayout} style={[styles.date, dateAnimatedStyle]}>
+          {formattedDate}
+        </Animated.Text>
       </View>
       <Masjid />
     </View>

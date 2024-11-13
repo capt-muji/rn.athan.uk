@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, TEXT, ANIMATION } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleToggleAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 
@@ -27,7 +27,7 @@ interface Props { index: number; isOverlay?: boolean; }
 export default function Alert({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
 
@@ -59,7 +59,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const alertAnimatedStyle = useAnimatedStyle(() => ({
     opacity: !isOverlay
       ? (isPopupActive || isPassed || isNext ? 1 : TEXT.transparent)
-      : withTiming(overlayVisibleToggle ? 1 : 0, { duration: ANIMATION.duration }),
+      : withTiming(overlayVisible ? 1 : 0, { duration: ANIMATION.duration }),
     transform: [{ scale: pressAnim.value }]
   }));
 

@@ -9,17 +9,13 @@ import ActiveBackground from '@/components/ActiveBackground';
 import Overlay from '@/components/Overlay';
 import { SCREEN, ENGLISH } from '@/constants';
 import RadialGlow from './RadialGlow';
-import { overlayVisibleToggleAtom } from '@/store/store';
-import { useAtom } from 'jotai';
 
 export default function Main() {
   const insets = useSafeAreaInsets();
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal }]}>
       <RadialGlow />
-      <Overlay />
       <ActiveBackground />
 
       <Timer />
@@ -29,6 +25,7 @@ export default function Main() {
         <Prayer key={index} index={index} />
       ))}
 
+      <Overlay />
       <Footer />
     </View>
   );
