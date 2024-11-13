@@ -10,7 +10,8 @@ import {
   absoluteDateMeasurementsAtom,
   absolutePrayerMeasurementsAtom,
   todaysPrayersAtom,
-  nextPrayerIndexAtom
+  nextPrayerIndexAtom,
+  lastSelectedPrayerIndexAtom
 } from '@/store/store';
 import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Prayer from './Prayer';
@@ -28,8 +29,10 @@ export default function Overlay() {
   const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
 
   const handleClose = () => {
+    setLastSelectedPrayerIndex(selectedPrayerIndex);
     setOverlayVisibleToggle(false);
     setSelectedPrayerIndex(-1);
     setOverlayContent([]);
