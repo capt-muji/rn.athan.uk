@@ -13,12 +13,13 @@ type Props = {
 
 export default function RadialGlow({ color = 'rgb(128,0,255)', baseOpacity = 0.3, visible = true }: Props) {
   const size = Dimensions.get('window').width * (visible ? 1.2 : 1);
-  const zindex = visible ? OVERLAY.zindexes.on.glow : OVERLAY.zindexes.off.glow;
+  const zIndex = visible ? OVERLAY.zindexes.on.glow : OVERLAY.zindexes.off.glow;
   const effectiveOpacity = visible ? baseOpacity : baseOpacity * 10;
 
   const glowStyle = useAnimatedStyle(() => ({
     opacity: withTiming(visible ? 1 : 0, { duration: 300 }),
-    zIndex: zindex
+    backgroundColor: visible ? 'purple' : 'green',
+    zIndex
   }));
 
   return (

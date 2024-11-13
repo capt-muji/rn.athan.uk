@@ -8,13 +8,19 @@ import Footer from '@/components/Footer';
 import ActiveBackground from '@/components/ActiveBackground';
 import Overlay from '@/components/Overlay';
 import { SCREEN, ENGLISH } from '@/constants';
+import RadialGlow from './RadialGlow';
+import { overlayVisibleToggleAtom } from '@/store/store';
+import { useAtom } from 'jotai';
 
 export default function Main() {
   const insets = useSafeAreaInsets();
+  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal }]}>
       <Overlay />
+      <RadialGlow />
+      <RadialGlow baseOpacity={1} visible={overlayVisibleToggle} />
       <ActiveBackground />
 
       <Timer />
