@@ -10,7 +10,6 @@ export const todaysPrayersAtom = atom<ITransformedToday>({});
 export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
 export const selectedPrayerIndexAtom = atom<number>(-1);
-export const lastSelectedPrayerIndexAtom = atom<number>(-1);
 
 // Overlay
 interface OverlayItem {
