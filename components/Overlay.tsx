@@ -23,17 +23,14 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 export default function Overlay() {
   const [showActiveBackground, setShowActiveBackground] = useState(true);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
 
   const handleClose = () => {
-    setLastSelectedPrayerIndex(selectedPrayerIndex);
     setOverlayVisible(false);
-    setSelectedPrayerIndex(-1);
   };
 
   const glowOpacityShared = useSharedValue(0);
@@ -104,7 +101,6 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {/* Replace conditional Prayer rendering with all Prayers */}
           {ENGLISH.map((_, index) => {
             const measurement = prayerMeasurements[index];
             if (!measurement) return null;
