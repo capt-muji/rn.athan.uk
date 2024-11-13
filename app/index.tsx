@@ -7,7 +7,7 @@ import { WaveIndicator } from 'react-native-indicators';
 
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom, overlayVisibleToggleAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom, overlayVisibleAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
 import { COLORS, OVERLAY } from '@/constants';

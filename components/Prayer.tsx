@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayControlsAtom, overlayVisibleToggleAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN, OVERLAY } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -22,7 +22,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
