@@ -23,48 +23,26 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
   const todayTime = todaysPrayers[index].time;
-  const tomorrowTime = tomorrowsPrayers[index]?.time;
+  const tomorrowTime = tomorrowsPrayers[selectedPrayerIndex]?.time;
 
-  const overlayOpacity = useSharedValue(isOverlay ? 1 : 0);
-  const mainOpacity = useSharedValue(isPassed ? 1 : (isPassed || isNext ? 1 : TEXT.opacity));
-
-  useEffect(() => {
-    overlayOpacity.value = withSpring(isOverlay ? 1 : 0, {
-      mass: 1,
-      damping: 15,
-      stiffness: 100,
-    });
-  }, [isOverlay]);
+  const originalOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
+  const overlayTodayOpacity = useSharedValue(0);
+  const overlayTomorrowOpacity = useSharedValue(0);
 
   useEffect(() => {
-    if (isPassed) {
-      if (overlayVisibleToggle && index === selectedPrayerIndex) {
-        // Hide immediately when selected and overlay opens
-        mainOpacity.value = withSpring(0, {
-          mass: 1,
-          damping: 15,
-          stiffness: 100,
-        });
-      } else if (!overlayVisibleToggle && index === lastSelectedPrayerIndex) {
-        // Show with delay only when overlay closes and this was the last selected
-        mainOpacity.value = withDelay(
-          500,
-          withSpring(1, {
-            mass: 1,
-            damping: 15,
-            stiffness: 100,
-          })
-        );
-      } else if (!overlayVisibleToggle && index === selectedPrayerIndex) {
-        // Reset opacity when selecting a new prayer
-        mainOpacity.value = withSpring(1, {
-          mass: 1,
-          damping: 15,
-          stiffness: 100,
-        });
+    // if overlay is visible, and this prayer is selected
+    if (selectedPrayerIndex === index) {
+
+      if (isNext) return;
+
+      // upcoming prayer
+      if (!isNext && !isPassed) {
+        overlayTodayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
       }
-    }
-  }, [overlayVisibleToggle, isPassed, selectedPrayerIndex, lastSelectedPrayerIndex]);
+
+    };
+
+  }, [overlayVisibleToggle]);
 
   return (
     <View style={styles.container}>
@@ -73,22 +51,32 @@ export default function PrayerTime({ index, isOverlay }: Props) {
         styles.text,
         {
           color: isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent,
-          opacity: mainOpacity,
+          opacity: originalOpacity,
         }
       ]}>
         {todayTime}
       </Animated.Text>
 
-      {/* Overlay text */}
+      {/* Overlay text - Only shows today's time */}
       <Animated.Text style={[
         styles.text,
-        styles.overlay,
         {
-          opacity: overlayOpacity,
+          opacity: overlayTodayOpacity,
           color: COLORS.textPrimary,
         }
       ]}>
-        {isPassed ? tomorrowTime : todayTime}
+        {todayTime}
+      </Animated.Text>
+
+      {/* Tomorrow text - Only shows when passed */}
+      <Animated.Text style={[
+        styles.text,
+        {
+          opacity: overlayTomorrowOpacity,
+          color: COLORS.textPrimary,
+        }
+      ]}>
+        {tomorrowTime}
       </Animated.Text>
     </View>
   );
@@ -105,9 +93,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     position: 'absolute',
     width: '100%',
-  },
-  today: {
-  },
-  overlay: {
   },
 });
