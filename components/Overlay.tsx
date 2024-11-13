@@ -126,7 +126,7 @@ export default function Overlay() {
   if (!overlayVisibleToggle) return null;
 
   return (
-    <Reanimated.View style={[styles.container, StyleSheet.absoluteFillObject, containerAnimatedStyle]}>
+    <Reanimated.View style={[styles.container, containerAnimatedStyle]}>
       <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
         <LinearGradient
           colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
@@ -134,7 +134,7 @@ export default function Overlay() {
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
         />
-        <Pressable style={[styles.overlay, StyleSheet.absoluteFillObject]} onPress={handleClose}>
+        <Pressable style={[styles.overlay]} onPress={handleClose}>
           {/* Timer will be zindexed here */}
 
           {dateMeasurements && (
@@ -177,10 +177,13 @@ export default function Overlay() {
 
 const styles = StyleSheet.create({
   container: {
+    ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
   },
   overlay: {
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: '#00028419',
+    zIndex: OVERLAY.zindexes.overlay,
   },
   date: {
     color: COLORS.textSecondary,

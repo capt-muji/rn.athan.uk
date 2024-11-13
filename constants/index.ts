@@ -33,21 +33,21 @@ export const ANIMATION = {
 export const OVERLAY = {
   closeThreshold: 2000,
    zindexes: {
-    overlay: 1,
+    overlay: 2,
     background: -999,
     off: {
       timer: 999,
-      glow: 998,
-      longDate: -1,
       prayerNotSelected: -1,
       activeBackground: -2,
+      longDate: -3,
+      glow: -3,
     },
     on: {
       timer: 999,
-      glow: 1,
+      prayerSelected: 4,
+      activeBackground: 3,
       longDate: -1,
-      activeBackground: 2,
-      prayerSelected: 3,
+      glow: 1,
     },
   },
 };
