@@ -100,14 +100,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}>
         {prayer.arabic}
       </Animated.Text>
-      <PrayerTime
-        index={index}
-        isOverlay={isOverlay}
-      />
-      <Alert
-        index={index}
-        isOverlay={isOverlay}
-      />
+      <PrayerTime index={index} isOverlay={isOverlay} />
+      <Alert index={index} isOverlay={isOverlay} />
     </AnimatedPressable>
   );
 }
