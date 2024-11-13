@@ -1,5 +1,5 @@
 import { StyleSheet, Pressable, View } from 'react-native';
-import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
+import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming, withSpring } from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
 import { useAtom } from 'jotai';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -12,7 +12,7 @@ import {
   todaysPrayersAtom,
   nextPrayerIndexAtom
 } from '@/store/store';
-import { COLORS, TEXT, OVERLAY } from '@/constants';
+import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
 import RadialGlow from './RadialGlow';
@@ -35,18 +35,35 @@ export default function Overlay() {
     setOverlayContent([]);
   };
 
-  const glowSharedOpacity = useSharedValue(0);
+  const glowOpacityShared = useSharedValue(0);
+  const backgroundOpacityShared = useSharedValue(0);
 
   useEffect(() => {
     if (overlayVisibleToggle) {
-      glowSharedOpacity.value = withDelay(150, withTiming(1, { duration: 500 }))
+      backgroundOpacityShared.value = withSpring(1, {
+        mass: 1,
+        damping: 15,
+        stiffness: 100,
+      });
+      glowOpacityShared.value = withDelay(150, withTiming(1, { duration: 500 }))
     } else {
-      glowSharedOpacity.value = withTiming(0, { duration: 300 });
+      backgroundOpacityShared.value = withSpring(0, {
+        mass: 1,
+        damping: 15,
+        stiffness: 100,
+      });
+      glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
     }
   }, [overlayVisibleToggle]);
 
   const glowAnimateStyle = useAnimatedStyle(() => ({
-    opacity: glowSharedOpacity.value,
+    opacity: glowOpacityShared.value,
+  }));
+
+  const containerStyle = useAnimatedStyle(() => ({
+    ...StyleSheet.absoluteFillObject,
+    zIndex: OVERLAY.zindexes.overlay,
+    opacity: backgroundOpacityShared.value,
   }));
 
   const prayer = todaysPrayers[selectedPrayerIndex];
@@ -55,7 +72,7 @@ export default function Overlay() {
 
   return (
     <>
-      <Reanimated.View style={styles.container}>
+      <Reanimated.View style={containerStyle}>
         <AnimatedBlur intensity={25} tint="dark" style={StyleSheet.absoluteFill}>
           <LinearGradient
             colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
@@ -108,10 +125,6 @@ export default function Overlay() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: OVERLAY.zindexes.overlay,
-  },
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: '#00028419',
