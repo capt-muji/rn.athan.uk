@@ -42,13 +42,12 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   useEffect(() => {
     // Only show background when it's the next prayer
-    if (overlayVisible && isOverlay && selectedPrayerIndex === nextPrayerIndex) {
+    if (isOverlay && selectedPrayerIndex === nextPrayerIndex) {
       backgroundOpacity.value = 1;
     } else {
-      // Always reset background opacity in all other cases
       backgroundOpacity.value = 0;
     }
-  }, [overlayVisible, selectedPrayerIndex]); // Added selectedPrayerIndex as dependency
+  }, [overlayVisible, selectedPrayerIndex, nextPrayerIndex]);
 
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
