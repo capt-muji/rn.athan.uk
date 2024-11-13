@@ -22,14 +22,16 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleAtom);
+  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
   const tomorrowPrayer = tomorrowsPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
+
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
+  const backgroundOpacity = useSharedValue(0);
 
   useEffect(() => {
     if (index === nextPrayerIndex) {
@@ -38,6 +40,15 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       textOpacity.value = TEXT.opacity;
     }
   }, [nextPrayerIndex]);
+
+  useEffect(() => {
+    // Only show background when it's the next prayer
+    if (isOverlay && selectedPrayerIndex === nextPrayerIndex) {
+      backgroundOpacity.value = 1;
+    } else {
+      backgroundOpacity.value = 0;
+    }
+  }, [overlayVisible, selectedPrayerIndex, nextPrayerIndex]);
 
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
@@ -58,12 +69,12 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   const handlePress = () => {
     if (isOverlay) {
-      setOverlayVisibleToggle(false);
+      setOverlayVisible(false);
       return;
     }
 
     setSelectedPrayerIndex(index);
-    setOverlayVisibleToggle(true);
+    setOverlayVisible(true);
   };
 
   const animatedTextStyle = useAnimatedStyle(() => {
@@ -83,11 +94,29 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     };
   });
 
-  const containerStyle = [
-    styles.container,
-    isOverlay && selectedPrayerIndex !== index && styles.overlayHidden,
-    !isOverlay && styles.spacing,
-  ];
+  const containerStyle = useAnimatedStyle(() => {
+    const baseStyles = {
+      borderRadius: PRAYER.borderRadius,
+      flexDirection: 'row' as const,
+      alignItems: 'center' as const,
+      marginHorizontal: !isOverlay ? SCREEN.paddingHorizontal : 0,
+      opacity: isOverlay && selectedPrayerIndex !== index ? 0 : 1,
+    };
+
+    if (overlayVisible && isOverlay && selectedPrayerIndex === nextPrayerIndex && index === nextPrayerIndex) {
+      return {
+        ...baseStyles,
+        backgroundColor: COLORS.primary,
+        shadowColor: COLORS.primaryShadow,
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        opacity: backgroundOpacity.value,
+      };
+    }
+
+    return baseStyles;
+  });
 
   return (
     <AnimatedPressable
@@ -105,14 +134,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderRadius: PRAYER.borderRadius,
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  spacing: {
-    marginHorizontal: SCREEN.paddingHorizontal,
-  },
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
@@ -124,8 +145,5 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-  },
-  overlayHidden: {
-    opacity: 0,
   },
 });
