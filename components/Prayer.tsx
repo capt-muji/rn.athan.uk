@@ -22,7 +22,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [overlayVisibleToggle, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -59,7 +59,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   };
 
   const handlePress = () => {
-    if (overlayVisibleToggle) {
+    if (isOverlay) {
       setOverlayVisibleToggle(false);
       return;
     }
