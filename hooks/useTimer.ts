@@ -11,7 +11,7 @@ import {
 
 const THRESHOLD = 1000; // 1 second threshold
 
-export const useTimer = ({ isOverlay = false } = {}) => {
+export const useTimer = () => {
   const [nextPrayerName, setNextPrayerName] = useState('');
   const [nextPrayerTime, setNextPrayerTime] = useState('');
   
@@ -25,22 +25,22 @@ export const useTimer = ({ isOverlay = false } = {}) => {
     if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
 
     const updateTimer = () => {
-      const prayers = isOverlay && todaysPrayers[selectedPrayerIndex!]?.passed ? 
+      const prayers = overlayVisible && todaysPrayers[selectedPrayerIndex!]?.passed ? 
         tomorrowsPrayers : todaysPrayers;
-      const date = isOverlay && todaysPrayers[selectedPrayerIndex!]?.passed ? 
+      const date = overlayVisible && todaysPrayers[selectedPrayerIndex!]?.passed ? 
         'tomorrow' : 'today';
 
       const prayerInfo = getCurrentPrayerInfo(
         prayers,
         nextPrayerIndex,
         date,
-        isOverlay ? selectedPrayerIndex : undefined
+        overlayVisible ? selectedPrayerIndex : undefined
       );
 
       setNextPrayerName(prayerInfo.timerName);
       setNextPrayerTime(prayerInfo.timeDisplay);
 
-      if (!isOverlay && prayerInfo.timeDifference <= THRESHOLD && prayerInfo.currentPrayer) {
+      if (!overlayVisible && prayerInfo.timeDifference <= THRESHOLD && prayerInfo.currentPrayer) {
         if (todaysPrayers[nextPrayerIndex]) {
           todaysPrayers[nextPrayerIndex].passed = true;
         }
@@ -51,7 +51,7 @@ export const useTimer = ({ isOverlay = false } = {}) => {
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
-  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedPrayerIndex, isOverlay, overlayVisible]);
+  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedPrayerIndex, overlayVisible, overlayVisible]);
 
   return {
     nextPrayer: { timerName: nextPrayerName, timeDisplay: nextPrayerTime }
