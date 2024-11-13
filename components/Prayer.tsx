@@ -1,10 +1,10 @@
 import { StyleSheet, View, Pressable } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withTiming, useSharedValue, runOnJS } from 'react-native-reanimated';
-import { useEffect, useRef, useState } from 'react';
+import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
+import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, overlayVisibleToggleAtom, selectedPrayerIndexAtom, relativePrayerMeasurementsAtom, overlayContentAtom, overlayStartOpeningAtom, lastSelectedPrayerIndexAtom, overlayControlsAtom, isInitialAppLoadAtom, activeBackgroundReadyAtom } from '@/store/store';
-import { COLORS, TEXT, PRAYER, ANIMATION } from '@/constants';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayControlsAtom } from '@/store/store';
+import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN, OVERLAY } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 
@@ -20,18 +20,9 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
-  const [, setRelativePrayerMeasurements] = useAtom(relativePrayerMeasurementsAtom);
-  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
-  const [, setOverlayStartOpening] = useAtom(overlayStartOpeningAtom);
-  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
-  const [, setOverlayContent] = useAtom(overlayContentAtom);
+  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [overlayControls] = useAtom(overlayControlsAtom);
-  const [isInitialAppLoad, setIsInitialAppLoad] = useAtom(isInitialAppLoadAtom);
-  const [activeBackgroundReady] = useAtom(activeBackgroundReadyAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -39,21 +30,9 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
-  const initialBackgroundColor = useSharedValue('transparent');
 
   useEffect(() => {
-    if (isInitialAppLoad && isNext) {
-      initialBackgroundColor.value = withTiming(COLORS.primary, { duration: 100 });
-    }
-  }, []);
-
-  useEffect(() => {
-    // Update background color when nextPrayerIndex changes
-    if (isInitialAppLoad) {
-      initialBackgroundColor.value = withTiming(isNext ? COLORS.primary : 'transparent', { duration: ANIMATION.duration });
-    }
-
-    // Update text opacity
+    // Update text opacity only
     if (index === nextPrayerIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     } else if (!isPassed) {
@@ -61,65 +40,21 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     }
   }, [nextPrayerIndex]);
 
-  useEffect(() => {
-    if (isInitialAppLoad && isNext && activeBackgroundReady) {
-      initialBackgroundColor.value = 'transparent';
-      setIsInitialAppLoad(false);
-    }
-  }, [activeBackgroundReady]);
-
-  const animatedContainerStyle = useAnimatedStyle(() => {
-    if (isOverlay && isNext) {
-      return {
-        backgroundColor: COLORS.primary,
-        shadowColor: COLORS.primaryShadow,
-        shadowOffset: { width: 0, height: 10 },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-      };
-    }
-
-    return {
-      backgroundColor: initialBackgroundColor.value,
-    };
-  });
-
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
 
-    // Measure absolute window coordinates to display text in overlay
     viewRef.current.measureInWindow((x, y, width, height) => {
-      const windowMeasurements = {
-        pageX: x,
-        pageY: y,
-        width,
-        height
-      };
+      const measurements = { pageX: x, pageY: y, width, height };
 
       setAbsolutePrayerMeasurements(prev => {
-        const measurements = [...prev];
-        measurements[index] = windowMeasurements;
-        return measurements;
+        const newMeasurements = [...prev];
+        newMeasurements[index] = measurements;
+        return newMeasurements;
       });
 
       if (isNext) {
-        setNextPrayerMeasurements(windowMeasurements);
+        setNextPrayerMeasurements(measurements);
       }
-    });
-
-    // Measure relative coordinates for active background
-    viewRef.current.measure((x, y, width, height) => {
-      setRelativePrayerMeasurements(prev => {
-        const relativeMeasurements = [...prev];
-        relativeMeasurements[index] = {
-          x,
-          y,
-          width,
-          height,
-          name: prayer.english
-        };
-        return relativeMeasurements;
-      });
     });
   };
 
@@ -129,16 +64,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       return;
     }
 
-    // Remove the selectedPrayerIndex check to allow re-clicking
     setSelectedPrayerIndex(index);
-    setLastSelectedPrayerIndex(index);
-
-    setOverlayContent([{
-      name: `prayer-${index}`,
-      component: <Prayer index={index} isOverlay={true} />,
-      measurements: absolutePrayerMeasurements[index]
-    }]);
-
     overlayControls.open?.();
   };
 
@@ -163,7 +89,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={[styles.container, animatedContainerStyle]}
+      style={[
+        styles.container,
+        !isOverlay && styles.spacing,
+      ]}
       onPress={handlePress}
     >
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}>
@@ -188,7 +117,10 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: PRAYER.borderRadius,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
+  },
+  spacing: {
+    marginHorizontal: SCREEN.paddingHorizontal,
   },
   text: {
     fontFamily: TEXT.famiy.regular,

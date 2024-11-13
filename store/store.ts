@@ -4,8 +4,6 @@ import { ITransformedToday } from '@/types/prayers';
 // App Status
 export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
-export const isInitialAppLoadAtom = atom<boolean>(true);
-export const activeBackgroundReadyAtom = atom<boolean>(false);
 
 // Prayer Data
 export const todaysPrayersAtom = atom<ITransformedToday>({});
@@ -41,19 +39,7 @@ export interface PageCoordinates {
   height: number;
 }
 
-interface Coordinates {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  name: string;
-}
-
 // Measurements State
 export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
-
 export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
-export const relativePrayerMeasurementsAtom = atom<Coordinates[]>([]);
-
-export const absoluteTimerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);

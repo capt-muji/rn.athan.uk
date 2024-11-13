@@ -1,5 +1,5 @@
-import { StyleSheet, Pressable, View, Dimensions } from 'react-native';
-import Reanimated from 'react-native-reanimated';
+import { StyleSheet, Pressable, View, Dimensions, Text } from 'react-native';
+import Reanimated, { useSharedValue, withTiming, useAnimatedProps, useAnimatedStyle, runOnJS, withDelay } from 'react-native-reanimated';
 import { Portal } from 'react-native-paper';
 import { useAtom } from 'jotai';
 import { BlurView } from 'expo-blur';
@@ -12,18 +12,17 @@ import {
   overlayStartClosingAtom,
   overlayFinishedClosingAtom,
   overlayFinishedOpeningAtom,
-  overlayControlsAtom
+  overlayControlsAtom,
+  absoluteDateMeasurementsAtom,
+  absolutePrayerMeasurementsAtom,
+  todaysPrayersAtom,
+  nextPrayerIndexAtom
 } from '@/store/store';
-import { useEffect, useCallback, useLayoutEffect, useState } from 'react';
-import {
-  useSharedValue,
-  withTiming,
-  useAnimatedProps,
-  useAnimatedStyle,
-  runOnJS
-} from 'react-native-reanimated';
+import { useEffect } from 'react';
+import { ANIMATION, COLORS, TEXT, OVERLAY } from '@/constants';
+import Prayer from './Prayer';
+import ActiveBackground from './ActiveBackground';
 import RadialGlow from './RadialGlow';
-import { ANIMATION } from '@/constants';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -36,13 +35,18 @@ export default function Overlay() {
   const [, setOverlayFinishedClosing] = useAtom(overlayFinishedClosingAtom);
   const [, setOverlayFinishedOpening] = useAtom(overlayFinishedOpeningAtom);
   const [, setOverlayControls] = useAtom(overlayControlsAtom);
+  const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
+  const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
+  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
   const intensity = useSharedValue(0);
   const opacity = useSharedValue(0);
+  const dateOpacity = useSharedValue(0);
 
   // Helper functions for animation state management
   const handleOpenStart = () => {
-    setOverlayVisibleToggle(true);
     setOverlayStartOpening(true);
     setOverlayFinishedOpening(false);
   };
@@ -55,10 +59,11 @@ export default function Overlay() {
   const handleCloseStart = () => {
     setOverlayStartClosing(true);
     setOverlayFinishedClosing(false);
+    // Update visibility immediately
+    setOverlayVisibleToggle(false);
   };
 
   const handleCloseComplete = () => {
-    setOverlayVisibleToggle(false);
     setOverlayStartClosing(false);
     setOverlayFinishedClosing(true);
     setSelectedPrayerIndex(-1);
@@ -67,13 +72,20 @@ export default function Overlay() {
 
   // Animation helpers
   const animateOpen = () => {
+    // Update visibility immediately
+    setOverlayVisibleToggle(true);
     handleOpenStart();
 
     opacity.value = withTiming(1, { duration: ANIMATION.duration }, (finished) => {
       if (finished) runOnJS(handleOpenComplete)();
     });
 
-    intensity.value = withTiming(10, { duration: ANIMATION.duration });
+    intensity.value = withTiming(25, { duration: ANIMATION.duration });
+
+    // Delayed date animation
+    dateOpacity.value = withDelay(250, withTiming(1, {
+      duration: ANIMATION.duration,
+    }));
   };
 
   const animateClose = () => {
@@ -84,16 +96,8 @@ export default function Overlay() {
     });
 
     intensity.value = withTiming(0, { duration: ANIMATION.duration });
+    dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
   };
-
-  // Visibility effect
-  useEffect(() => {
-    if (overlayVisibleToggle) {
-      animateOpen();
-    } else {
-      animateClose();
-    }
-  }, [overlayVisibleToggle]);
 
   useEffect(() => {
     setOverlayControls({
@@ -106,58 +110,89 @@ export default function Overlay() {
     intensity: intensity.value,
   }));
 
-  const containerStyle = useAnimatedStyle(() => ({
+  const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value
+  }));
+
+  const dateAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: dateOpacity.value
   }));
 
   const handleClose = () => {
     animateClose();
   };
 
+  const prayer = todaysPrayers[selectedPrayerIndex];
+
   if (!overlayVisibleToggle) return null;
 
   return (
-    <Portal>
-      <Reanimated.View style={[StyleSheet.absoluteFillObject, containerStyle]}>
+    <>
+      <Reanimated.View style={[styles.container, containerAnimatedStyle]}>
         <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
           <LinearGradient
-            colors={['rgba(25,0,40,1)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
+            colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
             style={StyleSheet.absoluteFill}
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
           />
-          <RadialGlow
-            size={Dimensions.get('window').height / 3}
-            style={styles.radialGradient}
-          />
-          <Pressable style={StyleSheet.absoluteFillObject} onPress={handleClose}>
-            {content.map(({ name, component, measurements }) => (
+          <Pressable style={[styles.overlay]} onPress={handleClose}>
+            {/* Timer will be zindexed here */}
+
+            {dateMeasurements && (
+              <Reanimated.Text
+                style={[
+                  styles.date,
+                  {
+                    position: 'absolute',
+                    top: dateMeasurements.pageY,
+                    left: dateMeasurements.pageX,
+                    width: dateMeasurements.width,
+                    height: dateMeasurements.height,
+                  },
+                  dateAnimatedStyle,
+                ]}
+              >
+                {prayer?.passed ? 'Tomorrow' : 'Today'}
+              </Reanimated.Text>
+            )}
+
+            {selectedPrayerIndex === nextPrayerIndex && <ActiveBackground />}
+            {prayerMeasurements[selectedPrayerIndex] && (
               <View
-                key={name}
                 style={{
                   position: 'absolute',
-                  top: measurements.pageY,
-                  left: measurements.pageX,
-                  width: measurements.width,
-                  height: measurements.height,
+                  top: prayerMeasurements[selectedPrayerIndex].pageY,
+                  left: prayerMeasurements[selectedPrayerIndex].pageX,
+                  width: prayerMeasurements[selectedPrayerIndex].width,
+                  height: prayerMeasurements[selectedPrayerIndex].height,
                 }}
               >
-                {component}
+                <Prayer index={selectedPrayerIndex} isOverlay={true} />
               </View>
-            ))}
+            )}
           </Pressable>
         </AnimatedBlur>
       </Reanimated.View>
-    </Portal>
+      <RadialGlow baseOpacity={1} visible={overlayVisibleToggle} />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  radialGradient: {
-    position: 'absolute',
-    top: -Dimensions.get('window').height / 2,
-    left: -Dimensions.get('window').height / 10,
-    width: Dimensions.get('window').height / 1,
-    height: Dimensions.get('window').height / 1,
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: OVERLAY.zindexes.overlay,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: '#00028419',
+    zIndex: OVERLAY.zindexes.overlay,
+  },
+  date: {
+    color: COLORS.textSecondary,
+    fontSize: TEXT.size,
+    fontFamily: TEXT.famiy.regular,
+    pointerEvents: 'none',
   },
 });
