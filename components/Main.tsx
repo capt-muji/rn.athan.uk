@@ -9,8 +9,6 @@ import ActiveBackground from '@/components/ActiveBackground';
 import Overlay from '@/components/Overlay';
 import { SCREEN, ENGLISH } from '@/constants';
 import RadialGlow from './RadialGlow';
-import { overlayVisibleToggleAtom } from '@/store/store';
-import { useAtom } from 'jotai';
 
 export default function Main() {
   const insets = useSafeAreaInsets();

@@ -20,7 +20,7 @@ interface OverlayItem {
 }
 
 // Overlay State
-export const overlayVisibleToggleAtom = atom<boolean>(false);
+export const overlayVisibleAtom = atom<boolean>(false);
 export const overlayContentAtom = atom<OverlayItem[]>([]);
 export const overlayStartOpeningAtom = atom<boolean>(false);
 export const overlayFinishedOpeningAtom = atom<boolean>(false);
