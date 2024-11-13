@@ -1,5 +1,5 @@
 import { StyleSheet, Pressable, View } from 'react-native';
-import Reanimated from 'react-native-reanimated';
+import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
 import { useAtom } from 'jotai';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -16,6 +16,7 @@ import { COLORS, TEXT, OVERLAY } from '@/constants';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
 import RadialGlow from './RadialGlow';
+import { useEffect } from 'react';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -33,6 +34,20 @@ export default function Overlay() {
     setSelectedPrayerIndex(-1);
     setOverlayContent([]);
   };
+
+  const glowAnimateStyle = useSharedValue(0);
+
+  useEffect(() => {
+    if (overlayVisibleToggle) {
+      glowAnimateStyle.value = withDelay(150, withTiming(1, { duration: 500 }))
+    } else {
+      glowAnimateStyle.value = withTiming(0, { duration: 300 });
+    }
+  }, [overlayVisibleToggle]);
+
+  const bobStyles = useAnimatedStyle(() => ({
+    opacity: glowAnimateStyle.value,
+  }));
 
   const prayer = todaysPrayers[selectedPrayerIndex];
 
@@ -85,7 +100,9 @@ export default function Overlay() {
           </Pressable>
         </AnimatedBlur>
       </Reanimated.View>
-      <RadialGlow baseOpacity={1} visible={overlayVisibleToggle} />
+      <Reanimated.View style={[styles.bob, bobStyles]}>
+        <RadialGlow baseOpacity={1} visible={overlayVisibleToggle} />
+      </Reanimated.View>
     </>
   );
 }
@@ -106,4 +123,7 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.famiy.regular,
     pointerEvents: 'none',
   },
+  bob: {
+    opacity: 1,
+  }
 });
