@@ -37,6 +37,7 @@ export default function Overlay() {
 
   const glowOpacityShared = useSharedValue(0);
   const backgroundOpacityShared = useSharedValue(0);
+  const dateOpacityShared = useSharedValue(0);
 
   useEffect(() => {
     if (overlayVisibleToggle) {
@@ -45,7 +46,12 @@ export default function Overlay() {
         damping: 15,
         stiffness: 100,
       });
-      glowOpacityShared.value = withDelay(150, withTiming(1, { duration: 500 }))
+      glowOpacityShared.value = withDelay(150, withTiming(1, { duration: 500 }));
+      dateOpacityShared.value = withDelay(150, withSpring(1, {
+        mass: 1,
+        damping: 15,
+        stiffness: 100,
+      }));
     } else {
       backgroundOpacityShared.value = withSpring(0, {
         mass: 1,
@@ -53,6 +59,11 @@ export default function Overlay() {
         stiffness: 100,
       });
       glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
+      dateOpacityShared.value = withSpring(0, {
+        mass: 1,
+        damping: 15,
+        stiffness: 100,
+      });
     }
   }, [overlayVisibleToggle]);
 
@@ -64,6 +75,10 @@ export default function Overlay() {
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
     opacity: backgroundOpacityShared.value,
+  }));
+
+  const dateAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: dateOpacityShared.value,
   }));
 
   const prayer = todaysPrayers[selectedPrayerIndex];
@@ -87,6 +102,7 @@ export default function Overlay() {
               <Reanimated.Text
                 style={[
                   styles.date,
+                  dateAnimatedStyle,
                   {
                     position: 'absolute',
                     top: dateMeasurements.pageY,
