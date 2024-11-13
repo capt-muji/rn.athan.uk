@@ -24,7 +24,7 @@ export default function ActiveBackground({ isOverlay = false }) {
       left: activePrayer.pageX,
       width: withSpring(activePrayer.width),
       height: withSpring(activePrayer.height),
-      zIndex: isOverlay ? OVERLAY.zindexes.on.activeBackground : OVERLAY.zindexes.off.activeBackground,
+      zIndex: OVERLAY.zindexes.off.activeBackground,
     };
   });
 
