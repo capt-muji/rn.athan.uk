@@ -38,13 +38,23 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
   const pressAnim = useSharedValue(1);
-  const textOpacity = useSharedValue(isPopupActive || isPassed || isNext ? 1 : TEXT.opacity);
+
+  const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
+  const textOpacity = useSharedValue(isPopupActive ? 1 : baseOpacity);
+
+  useEffect(() => {
+    if (isPopupActive) {
+      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    } else if (!isPassed) {
+      textOpacity.value = withTiming(baseOpacity, { duration: ANIMATION.duration });
+    }
+  }, [isPopupActive]);
 
   useEffect(() => {
     if (index === nextPrayerIndex) {
-      textOpacity.value = withTiming(1, { duration: 5000 });
+      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     } else if (!isPassed) {
-      textOpacity.value = TEXT.opacity;
+      textOpacity.value = baseOpacity;
     }
   }, [nextPrayerIndex]);
 
@@ -72,7 +82,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
     };
 
     return {
-      opacity: isPopupActive || isPassed || isNext ? 1 : TEXT.transparent,
+      opacity: textOpacity.value,
       transform: [{ scale: pressAnim.value }]
     };
   });
