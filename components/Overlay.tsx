@@ -4,8 +4,7 @@ import { BlurView } from 'expo-blur';
 import { useAtom } from 'jotai';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
-  overlayVisibleToggleAtom,
-  overlayContentAtom,
+  overlayVisibleAtom,
   selectedPrayerIndexAtom,
   absoluteDateMeasurementsAtom,
   absolutePrayerMeasurementsAtom,
@@ -13,7 +12,7 @@ import {
   nextPrayerIndexAtom,
   lastSelectedPrayerIndexAtom
 } from '@/store/store';
-import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/constants';
+import { COLORS, TEXT, OVERLAY, ANIMATION, ENGLISH } from '@/constants';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
 import RadialGlow from './RadialGlow';
@@ -23,8 +22,7 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
   const [showActiveBackground, setShowActiveBackground] = useState(true);
-  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleToggleAtom);
-  const [content, setOverlayContent] = useAtom(overlayContentAtom);
+  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
@@ -36,7 +34,6 @@ export default function Overlay() {
     setLastSelectedPrayerIndex(selectedPrayerIndex);
     setOverlayVisible(false);
     setSelectedPrayerIndex(-1);
-    setOverlayContent([]);
   };
 
   const glowOpacityShared = useSharedValue(0);
@@ -82,42 +79,55 @@ export default function Overlay() {
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
           />
-          <Pressable style={styles.overlay} onPress={handleClose}>
-            {/* Timer will be zindexed here */}
 
-            {dateMeasurements && (
-              <Reanimated.Text
-                style={[
-                  styles.date,
-                  dateAnimatedStyle,
-                  {
-                    position: 'absolute',
-                    top: dateMeasurements.pageY,
-                    left: dateMeasurements.pageX,
-                    width: dateMeasurements.width,
-                    height: dateMeasurements.height,
-                  }
-                ]}
-              >
-                {prayer?.passed ? 'Tomorrow' : 'Today'}
-              </Reanimated.Text>
-            )}
+          {/* Close overlay anywhere on screen */}
+          <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-            {selectedPrayerIndex === nextPrayerIndex && <ActiveBackground />}
-            {prayerMeasurements[selectedPrayerIndex] && (
+
+
+          {/* Content layer */}
+          {dateMeasurements && (
+            <Reanimated.Text
+              style={[
+                styles.date,
+                dateAnimatedStyle,
+                {
+                  position: 'absolute',
+                  top: dateMeasurements.pageY,
+                  left: dateMeasurements.pageX,
+                  width: dateMeasurements.width,
+                  height: dateMeasurements.height,
+                }
+              ]}
+            >
+              {prayer?.passed ? 'Tomorrow' : 'Today'}
+            </Reanimated.Text>
+          )}
+
+          {/* Replace conditional Prayer rendering with all Prayers */}
+          {ENGLISH.map((_, index) => {
+            const measurement = prayerMeasurements[index];
+            if (!measurement) return null;
+
+            return (
               <View
+                key={index}
                 style={{
                   position: 'absolute',
-                  top: prayerMeasurements[selectedPrayerIndex].pageY,
-                  left: prayerMeasurements[selectedPrayerIndex].pageX,
-                  width: prayerMeasurements[selectedPrayerIndex].width,
-                  height: prayerMeasurements[selectedPrayerIndex].height,
+                  top: measurement.pageY,
+                  left: measurement.pageX,
+                  width: measurement.width,
+                  height: measurement.height,
+                  zIndex: OVERLAY.zindexes.on.prayerSelected,
                 }}
               >
-                <Prayer index={selectedPrayerIndex} isOverlay={true} />
+                <Prayer index={index} isOverlay={true} />
               </View>
-            )}
-          </Pressable>
+            );
+          })}
+
+          {/* <ActiveBackground isOverlay /> */}
+
         </AnimatedBlur>
       </Reanimated.View>
       <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
@@ -128,11 +138,6 @@ export default function Overlay() {
 }
 
 const styles = StyleSheet.create({
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#00028419',
-    zIndex: OVERLAY.zindexes.overlay,
-  },
   date: {
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
