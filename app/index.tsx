@@ -11,11 +11,13 @@ import { isLoadingAtom, hasErrorAtom, overlayVisibleToggleAtom } from '@/store/s
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
 import { COLORS, OVERLAY } from '@/constants';
-import RadialGlow from '@/components/RadialGlow';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
-  const [fontsLoaded] = useFonts({ 'Roboto': require('@/assets/fonts/Roboto-Regular.ttf') });
+  const [fontsLoaded] = useFonts({
+    'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf')
+  });
 
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
