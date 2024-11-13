@@ -29,6 +29,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const tomorrowPrayer = tomorrowsPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
+
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const backgroundOpacity = useSharedValue(0);
 
