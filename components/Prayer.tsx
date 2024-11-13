@@ -49,10 +49,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
     // Only show background when it's the next prayer
     if (overlayVisible && isOverlay && selectedPrayerIndex === nextPrayerIndex) {
-      backgroundOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+      backgroundOpacity.value = 1;
     } else {
       // Always reset background opacity in all other cases
-      backgroundOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+      backgroundOpacity.value = 0;
     }
   }, [overlayVisible, selectedPrayerIndex]); // Added selectedPrayerIndex as dependency
 
@@ -100,22 +100,29 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     };
   });
 
-  const backgroundStyle = useAnimatedStyle(() => ({
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: COLORS.primary,
-    borderRadius: PRAYER.borderRadius,
-    shadowColor: COLORS.primaryShadow,
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    opacity: backgroundOpacity.value,
-  }));
+  const containerStyle = useAnimatedStyle(() => {
+    const baseStyles = {
+      borderRadius: PRAYER.borderRadius,
+      flexDirection: 'row' as const,
+      alignItems: 'center' as const,
+      marginHorizontal: !isOverlay ? SCREEN.paddingHorizontal : 0,
+      opacity: isOverlay && selectedPrayerIndex !== index ? 0 : 1,
+    };
 
-  const containerStyle = [
-    styles.container,
-    isOverlay && selectedPrayerIndex !== index && styles.overlayHidden,
-    !isOverlay && styles.spacing,
-  ];
+    if (overlayVisible && isOverlay && selectedPrayerIndex === nextPrayerIndex && index === nextPrayerIndex) {
+      return {
+        ...baseStyles,
+        backgroundColor: COLORS.primary,
+        shadowColor: COLORS.primaryShadow,
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        opacity: backgroundOpacity.value,
+      };
+    }
+
+    return baseStyles;
+  });
 
   return (
     <AnimatedPressable
@@ -124,7 +131,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       style={containerStyle}
       onPress={handlePress}
     >
-      <Animated.View style={backgroundStyle} />
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} />
@@ -134,14 +140,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderRadius: PRAYER.borderRadius,
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  spacing: {
-    marginHorizontal: SCREEN.paddingHorizontal,
-  },
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
@@ -153,8 +151,5 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-  },
-  overlayHidden: {
-    opacity: 0,
   },
 });
