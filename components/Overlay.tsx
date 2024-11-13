@@ -101,7 +101,7 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {selectedPrayerIndex > -1 && prayerMeasurements[selectedPrayerIndex] && (
+          {selectedPrayerIndex > -1 && (
             <View
               style={{
                 position: 'absolute',
@@ -112,7 +112,7 @@ export default function Overlay() {
                 zIndex: OVERLAY.zindexes.on.prayerSelected,
               }}
             >
-              <Prayer index={selectedPrayerIndex} isOverlay />
+              <Prayer index={selectedPrayerIndex} isOverlay={true} />
             </View>
           )}
 
