@@ -3,7 +3,7 @@ import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/constants';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleAtom  } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 import { useEffect } from 'react';
 
 interface Props {
@@ -34,7 +34,9 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     // if overlay is visible, and this prayer is selected
     if (overlayVisible && selectedPrayerIndex === index) {
 
-      if (isNext) return;
+      if (isNext) {
+        overlayTodayOpacity.value = 0;
+      };
 
       // upcoming prayer
       if (!isPassed) {
