@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     pointerEvents: 'none',
   },
   text: {
-    fontFamily: TEXT.famiy.regular,
     color: COLORS.textSecondary,
     opacity: TEXT.opacity + 0.15,
     textAlign: 'center',
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   timer: {
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.famiy.medium,
     color: COLORS.textPrimary,
     fontSize: TEXT.size + 8,
     textAlign: 'center',
