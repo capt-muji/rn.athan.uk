@@ -48,7 +48,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     } else {
       backgroundOpacity.value = 0;
     }
-  }, [overlayVisible, selectedPrayerIndex, nextPrayerIndex]);
+  }, [overlayVisible]);
 
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
