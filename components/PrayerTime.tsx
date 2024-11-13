@@ -24,51 +24,16 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const todayTime = todaysPrayers[index].time;
   const tomorrowTime = tomorrowsPrayers[index]?.time;
 
-  const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
-  const opacity = useSharedValue(baseOpacity);
-
-  useEffect(() => {
-    if (!isOverlay && !isNext && index === selectedPrayerIndex) {
-      opacity.value = withSpring(baseOpacity, {
-        mass: 1,
-        damping: 15,
-        stiffness: 100,
-      });
-    }
-  }, [overlayVisibleToggle, baseOpacity, selectedPrayerIndex]);
-
-  const animatedStyle = useAnimatedStyle(() => {
-    // Handle selected prayer (both overlay and non-overlay)
-    if (index === selectedPrayerIndex) {
-      if (isOverlay) return {
-        color: COLORS.textPrimary,
-        opacity: 1
-      };
-
-      return {
-        color: COLORS.textPrimary,
-        opacity: opacity.value,
-      };
-    }
-
-    // Default behavior for non-selected prayers
-    if (isPassed || isNext) return {
-      color: COLORS.textPrimary,
-      opacity: baseOpacity,
-    };
-
-    return {
-      color: COLORS.textTransparent,
-      opacity: baseOpacity,
-    };
-  });
-
-  const time = () => isOverlay ? (isPassed ? tomorrowTime : todayTime) : todayTime;
-
   return (
     <View style={styles.container}>
-      <Animated.Text style={[styles.text, animatedStyle]}>
-        {time()}
+      {/* Main text (non-overlay) */}
+      <Animated.Text style={[styles.text]}>
+        {todayTime}
+      </Animated.Text>
+
+      {/* Overlay text */}
+      <Animated.Text style={[styles.text]}>
+        {isPassed ? tomorrowTime : todayTime}
       </Animated.Text>
     </View>
   );
@@ -77,10 +42,13 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
   },
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
+    position: 'absolute',
+    width: '100%',
   },
 });
