@@ -1,25 +1,18 @@
-import { StyleSheet, Pressable, View, Dimensions, Text } from 'react-native';
-import Reanimated, { useSharedValue, withTiming, useAnimatedProps, useAnimatedStyle, runOnJS, withDelay } from 'react-native-reanimated';
-import { Portal } from 'react-native-paper';
-import { useAtom } from 'jotai';
+import { StyleSheet, Pressable, View } from 'react-native';
+import Reanimated from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
+import { useAtom } from 'jotai';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
   overlayVisibleToggleAtom,
   overlayContentAtom,
   selectedPrayerIndexAtom,
-  overlayStartOpeningAtom,
-  overlayStartClosingAtom,
-  overlayFinishedClosingAtom,
-  overlayFinishedOpeningAtom,
-  overlayControlsAtom,
   absoluteDateMeasurementsAtom,
   absolutePrayerMeasurementsAtom,
   todaysPrayersAtom,
   nextPrayerIndexAtom
 } from '@/store/store';
-import { useEffect } from 'react';
-import { ANIMATION, COLORS, TEXT, OVERLAY } from '@/constants';
+import { COLORS, TEXT, OVERLAY } from '@/constants';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
 import RadialGlow from './RadialGlow';
@@ -29,97 +22,16 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 export default function Overlay() {
   const [overlayVisibleToggle, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [content, setOverlayContent] = useAtom(overlayContentAtom);
-  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [, setOverlayStartOpening] = useAtom(overlayStartOpeningAtom);
-  const [, setOverlayStartClosing] = useAtom(overlayStartClosingAtom);
-  const [, setOverlayFinishedClosing] = useAtom(overlayFinishedClosingAtom);
-  const [, setOverlayFinishedOpening] = useAtom(overlayFinishedOpeningAtom);
-  const [, setOverlayControls] = useAtom(overlayControlsAtom);
+  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
-  const intensity = useSharedValue(0);
-  const opacity = useSharedValue(0);
-  const dateOpacity = useSharedValue(0);
-
-  // Helper functions for animation state management
-  const handleOpenStart = () => {
-    setOverlayStartOpening(true);
-    setOverlayFinishedOpening(false);
-  };
-
-  const handleOpenComplete = () => {
-    setOverlayStartOpening(false);
-    setOverlayFinishedOpening(true);
-  };
-
-  const handleCloseStart = () => {
-    setOverlayStartClosing(true);
-    setOverlayFinishedClosing(false);
-    // Update visibility immediately
+  const handleClose = () => {
     setOverlayVisibleToggle(false);
-  };
-
-  const handleCloseComplete = () => {
-    setOverlayStartClosing(false);
-    setOverlayFinishedClosing(true);
     setSelectedPrayerIndex(-1);
     setOverlayContent([]);
-  };
-
-  // Animation helpers
-  const animateOpen = () => {
-    // Update visibility immediately
-    setOverlayVisibleToggle(true);
-    handleOpenStart();
-
-    opacity.value = withTiming(1, { duration: ANIMATION.duration }, (finished) => {
-      if (finished) runOnJS(handleOpenComplete)();
-    });
-
-    intensity.value = withTiming(25, { duration: ANIMATION.duration });
-
-    // Delayed date animation
-    dateOpacity.value = withDelay(250, withTiming(1, {
-      duration: ANIMATION.duration,
-    }));
-  };
-
-  const animateClose = () => {
-    handleCloseStart();
-
-    opacity.value = withTiming(0, { duration: ANIMATION.duration }, (finished) => {
-      if (finished) runOnJS(handleCloseComplete)();
-    });
-
-    intensity.value = withTiming(0, { duration: ANIMATION.duration });
-    dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-  };
-
-  useEffect(() => {
-    setOverlayControls({
-      open: animateOpen,
-      close: animateClose
-    });
-  }, []);
-
-  const animatedProps = useAnimatedProps(() => ({
-    intensity: intensity.value,
-  }));
-
-  const containerAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value
-  }));
-
-  const dateAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: dateOpacity.value
-  }));
-
-  const handleClose = () => {
-    animateClose();
   };
 
   const prayer = todaysPrayers[selectedPrayerIndex];
@@ -128,15 +40,15 @@ export default function Overlay() {
 
   return (
     <>
-      <Reanimated.View style={[styles.container, containerAnimatedStyle]}>
-        <AnimatedBlur animatedProps={animatedProps} tint="dark" style={StyleSheet.absoluteFill}>
+      <Reanimated.View style={styles.container}>
+        <AnimatedBlur intensity={25} tint="dark" style={StyleSheet.absoluteFill}>
           <LinearGradient
             colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
             style={StyleSheet.absoluteFill}
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
           />
-          <Pressable style={[styles.overlay]} onPress={handleClose}>
+          <Pressable style={styles.overlay} onPress={handleClose}>
             {/* Timer will be zindexed here */}
 
             {dateMeasurements && (
@@ -149,8 +61,7 @@ export default function Overlay() {
                     left: dateMeasurements.pageX,
                     width: dateMeasurements.width,
                     height: dateMeasurements.height,
-                  },
-                  dateAnimatedStyle,
+                  }
                 ]}
               >
                 {prayer?.passed ? 'Tomorrow' : 'Today'}
