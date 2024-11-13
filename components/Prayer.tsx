@@ -68,7 +68,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   const animatedTextStyle = useAnimatedStyle(() => {
     if (isOverlay) return {
-      color: 'white',
+      color: 'red',
       opacity: 1,
     };
 
