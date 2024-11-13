@@ -31,6 +31,14 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const overlayTomorrowOpacity = useSharedValue(0);
 
   useEffect(() => {
+    if (index === nextPrayerIndex) {
+      originalOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    } else if (!isPassed) {
+      originalOpacity.value = TEXT.opacity;
+    }
+  }, [nextPrayerIndex]);
+
+  useEffect(() => {
     // if overlay is visible, and this prayer is selected
     if (overlayVisible && selectedPrayerIndex === index) {
 

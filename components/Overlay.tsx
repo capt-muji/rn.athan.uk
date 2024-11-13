@@ -80,8 +80,6 @@ export default function Overlay() {
           {/* Close overlay anywhere on screen */}
           <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-
-
           {/* Content layer */}
           {dateMeasurements && (
             <Reanimated.Text
@@ -101,23 +99,21 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {selectedPrayerIndex > -1 && (
+          {ENGLISH.map((_, index) => (
             <View
+              key={index}
               style={{
                 position: 'absolute',
-                top: prayerMeasurements[selectedPrayerIndex].pageY,
-                left: prayerMeasurements[selectedPrayerIndex].pageX,
-                width: prayerMeasurements[selectedPrayerIndex].width,
-                height: prayerMeasurements[selectedPrayerIndex].height,
+                top: prayerMeasurements[index]?.pageY,
+                left: prayerMeasurements[index]?.pageX,
+                width: prayerMeasurements[index]?.width,
+                height: prayerMeasurements[index]?.height,
                 zIndex: OVERLAY.zindexes.on.prayerSelected,
               }}
             >
-              <Prayer index={selectedPrayerIndex} isOverlay={true} />
+              <Prayer index={index} isOverlay />
             </View>
-          )}
-
-          {/* <ActiveBackground isOverlay /> */}
-
+          ))}
         </AnimatedBlur>
       </Reanimated.View>
       <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
