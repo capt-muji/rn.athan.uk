@@ -101,26 +101,20 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {ENGLISH.map((_, index) => {
-            const measurement = prayerMeasurements[index];
-            if (!measurement) return null;
-
-            return (
-              <View
-                key={index}
-                style={{
-                  position: 'absolute',
-                  top: measurement.pageY,
-                  left: measurement.pageX,
-                  width: measurement.width,
-                  height: measurement.height,
-                  zIndex: OVERLAY.zindexes.on.prayerSelected,
-                }}
-              >
-                <Prayer index={index} isOverlay={true} />
-              </View>
-            );
-          })}
+          {selectedPrayerIndex > -1 && prayerMeasurements[selectedPrayerIndex] && (
+            <View
+              style={{
+                position: 'absolute',
+                top: prayerMeasurements[selectedPrayerIndex].pageY,
+                left: prayerMeasurements[selectedPrayerIndex].pageX,
+                width: prayerMeasurements[selectedPrayerIndex].width,
+                height: prayerMeasurements[selectedPrayerIndex].height,
+                zIndex: OVERLAY.zindexes.on.prayerSelected,
+              }}
+            >
+              <Prayer index={selectedPrayerIndex} isOverlay />
+            </View>
+          )}
 
           {/* <ActiveBackground isOverlay /> */}
 
