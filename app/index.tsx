@@ -1,25 +1,21 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
-import { Portal } from 'react-native-paper';
 
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom, overlayVisibleToggleAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { usePrayers } from '@/hooks/usePrayers';
-import { COLORS } from '@/constants';
-import Overlay from '@/components/Overlay';
+import { COLORS, OVERLAY } from '@/constants';
+import RadialGlow from '@/components/RadialGlow';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
-  const [fontsLoaded] = useFonts({
-    'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
-    'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf'),
-  });
+  const [fontsLoaded] = useFonts({ 'Roboto': require('@/assets/fonts/Roboto-Regular.ttf') });
 
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
@@ -44,13 +40,11 @@ export default function Index() {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-      <Portal.Host>
-        <StatusBar barStyle="light-content" />
-        {isLoading && <WaveIndicator color="white" />}
-        {hasError && !isLoading && <Error />}
-        {!hasError && !isLoading && <Main />}
-        <Overlay />
-      </Portal.Host>
+      <StatusBar barStyle="light-content" />
+
+      {isLoading && <WaveIndicator color="white" />}
+      {hasError && !isLoading && <Error />}
+      {!hasError && !isLoading && <Main />}
     </>
   );
 }
@@ -62,5 +56,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-  }
+    zIndex: OVERLAY.zindexes.background
+  },
 });
