@@ -21,7 +21,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
-  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setOverlayVisibleToggle] = useAtom(overlayVisibleAtom);
   const viewRef = useRef<View>(null);
 
@@ -45,11 +45,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     viewRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
 
-      setAbsolutePrayerMeasurements(prev => {
-        const newMeasurements = [...prev];
-        newMeasurements[index] = measurements;
-        return newMeasurements;
-      });
+      setAbsolutePrayerMeasurements(prev => ({
+        ...prev,
+        [index]: measurements
+      }));
 
       if (isNext) {
         setNextPrayerMeasurements(measurements);
@@ -84,14 +83,17 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     };
   });
 
+  const containerStyle = [
+    styles.container,
+    isOverlay && selectedPrayerIndex !== index && styles.overlayHidden,
+    !isOverlay && styles.spacing,
+  ];
+
   return (
     <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={[
-        styles.container,
-        !isOverlay && styles.spacing,
-      ]}
+      style={containerStyle}
       onPress={handlePress}
     >
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
@@ -122,5 +124,8 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-  }
+  },
+  overlayHidden: {
+    opacity: 0,
+  },
 });
