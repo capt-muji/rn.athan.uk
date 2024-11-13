@@ -44,9 +44,11 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
     }
 
-    // if overlay is visible, and this prayer is not selected
+    // if overlay is off, and prayer is not selected
     if (!overlayVisibleToggle && lastSelectedPrayerIndex === index) {
-      overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+      overlayTodayOpacity.value = 0;
+      overlayTomorrowOpacity.value = 0;
+      originalOpacity.value = baseOpacity;
     }
 
   }, [overlayVisibleToggle]);
@@ -68,8 +70,8 @@ export default function PrayerTime({ index, isOverlay }: Props) {
       <Animated.Text style={[
         styles.text,
         {
-          opacity: overlayTodayOpacity,
           color: COLORS.textPrimary,
+          opacity: overlayTodayOpacity,
         }
       ]}>
         {todayTime}
@@ -79,8 +81,8 @@ export default function PrayerTime({ index, isOverlay }: Props) {
       <Animated.Text style={[
         styles.text,
         {
-          opacity: overlayTomorrowOpacity,
           color: COLORS.textPrimary,
+          opacity: overlayTomorrowOpacity,
         }
       ]}>
         {tomorrowTime}
