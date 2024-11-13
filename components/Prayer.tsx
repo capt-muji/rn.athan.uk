@@ -19,9 +19,9 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
+  const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
-  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const viewRef = useRef<View>(null);
 
@@ -32,7 +32,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
 
   useEffect(() => {
-    // Update text opacity only
     if (index === nextPrayerIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     } else if (!isPassed) {
