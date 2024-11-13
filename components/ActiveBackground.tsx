@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withSpring, withTiming } from 'react-native-reanimated';
 import { nextPrayerIndexAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom } from '@/store/store';
-import { COLORS, OVERLAY, PRAYER } from '@/constants';
+import { ANIMATION, COLORS, OVERLAY, PRAYER } from '@/constants';
 
 export default function ActiveBackground({ isOverlay = false }) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
@@ -18,7 +18,7 @@ export default function ActiveBackground({ isOverlay = false }) {
     const activePrayer = absoluteMeasurements[nextPrayerIndex];
 
     return {
-      opacity: 1,
+      opacity: withTiming(1, { duration: ANIMATION.overlayDelay }),
       position: 'absolute',
       top: withSpring(activePrayer.pageY),
       left: activePrayer.pageX,
