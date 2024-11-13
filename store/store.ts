@@ -20,8 +20,7 @@ interface OverlayItem {
 }
 
 // Overlay State
-export const overlayVisibleToggleAtom = atom<boolean>(false);
-export const overlayContentAtom = atom<OverlayItem[]>([]);
+export const overlayVisibleAtom = atom<boolean>(false);
 export const overlayStartOpeningAtom = atom<boolean>(false);
 export const overlayFinishedOpeningAtom = atom<boolean>(false);
 export const overlayStartClosingAtom = atom<boolean>(false);
@@ -41,5 +40,5 @@ export interface PageCoordinates {
 
 // Measurements State
 export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
-export const absolutePrayerMeasurementsAtom = atom<PageCoordinates[]>([]);
+export const absolutePrayerMeasurementsAtom = atom<Record<number, PageCoordinates>>({});
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);

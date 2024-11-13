@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayControlsAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN, OVERLAY } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -19,10 +19,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [absolutePrayerMeasurements, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
+  const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [overlayControls] = useAtom(overlayControlsAtom);
+  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -32,7 +32,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
 
   useEffect(() => {
-    // Update text opacity only
     if (index === nextPrayerIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     } else if (!isPassed) {
@@ -46,11 +45,10 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     viewRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
 
-      setAbsolutePrayerMeasurements(prev => {
-        const newMeasurements = [...prev];
-        newMeasurements[index] = measurements;
-        return newMeasurements;
-      });
+      setAbsolutePrayerMeasurements(prev => ({
+        ...prev,
+        [index]: measurements
+      }));
 
       if (isNext) {
         setNextPrayerMeasurements(measurements);
@@ -60,12 +58,12 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   const handlePress = () => {
     if (isOverlay) {
-      overlayControls.close?.();
+      setOverlayVisibleToggle(false);
       return;
     }
 
     setSelectedPrayerIndex(index);
-    overlayControls.open?.();
+    setOverlayVisibleToggle(true);
   };
 
   const animatedTextStyle = useAnimatedStyle(() => {
@@ -85,30 +83,23 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     };
   });
 
+  const containerStyle = [
+    styles.container,
+    isOverlay && selectedPrayerIndex !== index && styles.overlayHidden,
+    !isOverlay && styles.spacing,
+  ];
+
   return (
     <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={[
-        styles.container,
-        !isOverlay && styles.spacing,
-      ]}
+      style={containerStyle}
       onPress={handlePress}
     >
-      <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}>
-        {prayer.english}
-      </Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}>
-        {prayer.arabic}
-      </Animated.Text>
-      <PrayerTime
-        index={index}
-        isOverlay={isOverlay}
-      />
-      <Alert
-        index={index}
-        isOverlay={isOverlay}
-      />
+      <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
+      <PrayerTime index={index} isOverlay={isOverlay} />
+      <Alert index={index} isOverlay={isOverlay} />
     </AnimatedPressable>
   );
 }
@@ -133,5 +124,8 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-  }
+  },
+  overlayHidden: {
+    opacity: 0,
+  },
 });
