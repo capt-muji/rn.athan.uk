@@ -1,5 +1,5 @@
 import { StyleSheet, Pressable, View } from 'react-native';
-import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming, withSpring } from 'react-native-reanimated';
+import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming, withSpring, runOnJS } from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
 import { useAtom } from 'jotai';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -17,12 +17,13 @@ import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
 import RadialGlow from './RadialGlow';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
-  const [overlayVisibleToggle, setOverlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [showActiveBackground, setShowActiveBackground] = useState(true);
+  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleToggleAtom);
   const [content, setOverlayContent] = useAtom(overlayContentAtom);
   const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
@@ -33,7 +34,7 @@ export default function Overlay() {
 
   const handleClose = () => {
     setLastSelectedPrayerIndex(selectedPrayerIndex);
-    setOverlayVisibleToggle(false);
+    setOverlayVisible(false);
     setSelectedPrayerIndex(-1);
     setOverlayContent([]);
   };
@@ -43,7 +44,7 @@ export default function Overlay() {
   const dateOpacityShared = useSharedValue(0);
 
   useEffect(() => {
-    if (overlayVisibleToggle) {
+    if (overlayVisible) {
       backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
       glowOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
       dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
@@ -52,7 +53,7 @@ export default function Overlay() {
       glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
       dateOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
     }
-  }, [overlayVisibleToggle]);
+  }, [overlayVisible]);
 
   const glowAnimateStyle = useAnimatedStyle(() => ({
     opacity: glowOpacityShared.value,
@@ -62,6 +63,7 @@ export default function Overlay() {
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
     opacity: backgroundOpacityShared.value,
+    pointerEvents: overlayVisible ? 'auto' : 'none',
   }));
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
@@ -69,8 +71,6 @@ export default function Overlay() {
   }));
 
   const prayer = todaysPrayers[selectedPrayerIndex];
-
-  if (!overlayVisibleToggle) return null;
 
   return (
     <>
@@ -120,8 +120,8 @@ export default function Overlay() {
           </Pressable>
         </AnimatedBlur>
       </Reanimated.View>
-      <Reanimated.View style={glowAnimateStyle}>
-        <RadialGlow baseOpacity={0.5} visible={overlayVisibleToggle} />
+      <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
+        <RadialGlow baseOpacity={0.5} visible={overlayVisible} />
       </Reanimated.View>
     </>
   );
