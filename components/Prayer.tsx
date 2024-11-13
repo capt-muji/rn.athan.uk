@@ -34,7 +34,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const backgroundOpacity = useSharedValue(0);
 
   useEffect(() => {
-    if (index === nextPrayerIndex) {
+    if (!isOverlay && index === nextPrayerIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     } else if (!isPassed) {
       textOpacity.value = TEXT.opacity;
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   arabic: {
-    flex: 1,
+    flex: 0.75,
     textAlign: 'right',
   },
 });

@@ -116,5 +116,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     position: 'absolute',
     width: '100%',
+    paddingLeft: 25,
   },
 });
