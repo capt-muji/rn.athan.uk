@@ -16,7 +16,6 @@ export default function Main() {
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal }]}>
       <RadialGlow />
-      <Overlay />
       <ActiveBackground />
 
       <Timer />
@@ -26,6 +25,7 @@ export default function Main() {
         <Prayer key={index} index={index} />
       ))}
 
+      <Overlay />
       <Footer />
     </View>
   );

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming, withDelay } from 'react-native-reanimated';
 import { absoluteDateMeasurementsAtom, overlayVisibleAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
@@ -21,7 +21,11 @@ export default function DateDisplay() {
   });
 
   useEffect(() => {
-    dateOpacity.value = withTiming(overlayVisible ? 0 : 1, { duration: ANIMATION.duration });
+    if (overlayVisible) {
+      dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+    } else {
+      dateOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+    }
   }, [overlayVisible]);
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
