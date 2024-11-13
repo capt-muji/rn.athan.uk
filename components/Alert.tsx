@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginRight: 5,
   },
   iconContainer: {
     paddingHorizontal: 20,
