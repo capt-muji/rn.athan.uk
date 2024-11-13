@@ -15,7 +15,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
 
   const prayer = todaysPrayers[index];
@@ -32,7 +32,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
   useEffect(() => {
     // if overlay is visible, and this prayer is selected
-    if (overlayVisibleToggle && selectedPrayerIndex === index) {
+    if (overlayVisible && selectedPrayerIndex === index) {
 
       if (isNext) return;
 
@@ -49,13 +49,13 @@ export default function PrayerTime({ index, isOverlay }: Props) {
     }
 
     // if overlay is not visible
-    if (!overlayVisibleToggle) {
+    if (!overlayVisible) {
       originalOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(baseOpacity, { duration: ANIMATION.duration }));
       overlayTodayOpacity.value = withTiming(0, { duration: 50 })
       overlayTomorrowOpacity.value = withTiming(0, { duration: ANIMATION.duration })
     };
 
-  }, [overlayVisibleToggle]);
+  }, [overlayVisible]);
 
   return (
     <View style={styles.container}>
