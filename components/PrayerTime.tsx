@@ -17,7 +17,6 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [lastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
@@ -49,12 +48,12 @@ export default function PrayerTime({ index, isOverlay }: Props) {
       };
     }
 
-    // if overlay is off, and prayer is not selected, reset opacity
-    if (!overlayVisibleToggle && lastSelectedPrayerIndex === index) {
+    // if overlay is not visible
+    if (!overlayVisibleToggle) {
       originalOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(baseOpacity, { duration: ANIMATION.duration }));
-      overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration })
+      overlayTodayOpacity.value = withTiming(0, { duration: 50 })
       overlayTomorrowOpacity.value = withTiming(0, { duration: ANIMATION.duration })
-    }
+    };
 
   }, [overlayVisibleToggle]);
 
