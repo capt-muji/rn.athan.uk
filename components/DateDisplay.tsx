@@ -1,9 +1,9 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
 import { absoluteDateMeasurementsAtom, overlayVisibleToggleAtom } from '@/store/store';
-import { COLORS, SCREEN, TEXT, OVERLAY } from '@/constants';
+import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
@@ -21,11 +21,7 @@ export default function DateDisplay() {
   });
 
   useEffect(() => {
-    dateOpacity.value = withSpring(overlayVisibleToggle ? 0.3 : 1, {
-      mass: 1,
-      damping: 15,
-      stiffness: 100,
-    });
+    dateOpacity.value = withTiming(overlayVisibleToggle ? 0 : 1, { duration: ANIMATION.duration });
   }, [overlayVisibleToggle]);
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
