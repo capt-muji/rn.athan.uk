@@ -30,14 +30,23 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  const isNext = index === nextPrayerIndex;
+  const { passed: isPassed } = todaysPrayers[index];
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
   const pressAnim = useSharedValue(1);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const textOpacity = useSharedValue(isPopupActive || isPassed || isNext ? 1 : TEXT.opacity);
 
-  const { passed: isPassed } = todaysPrayers[index];
-  const isNext = index === nextPrayerIndex;
+  useEffect(() => {
+    if (index === nextPrayerIndex) {
+      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    } else if (!isPassed) {
+      textOpacity.value = TEXT.opacity;
+    }
+  }, [nextPrayerIndex]);
 
   const handlePress = useCallback((e) => {
     if (!isOverlay) e?.stopPropagation();
@@ -56,12 +65,17 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }, 2000);
   }, [isOverlay]);
 
-  const alertAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: !isOverlay
-      ? (isPopupActive || isPassed || isNext ? 1 : TEXT.transparent)
-      : withTiming(overlayVisible ? 1 : 0, { duration: ANIMATION.duration }),
-    transform: [{ scale: pressAnim.value }]
-  }));
+  const alertAnimatedStyle = useAnimatedStyle(() => {
+    if (isOverlay) return {
+      color: 'white',
+      opacity: 1,
+    };
+
+    return {
+      opacity: isPopupActive || isPassed || isNext ? 1 : TEXT.transparent,
+      transform: [{ scale: pressAnim.value }]
+    };
+  });
 
   const popupAnimatedStyle = useAnimatedStyle(() => ({
     opacity: fadeAnim.value,
