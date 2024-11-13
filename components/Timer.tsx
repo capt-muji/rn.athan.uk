@@ -9,8 +9,8 @@ interface TimerProps {
   isOverlay?: boolean;
 }
 
-export default function Timer({ isOverlay = false }: TimerProps) {
-  const { nextPrayer } = useTimer({ isOverlay });
+export default function Timer() {
+  const { nextPrayer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
 
