@@ -80,8 +80,6 @@ export default function Overlay() {
           {/* Close overlay anywhere on screen */}
           <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-
-
           {/* Content layer */}
           {dateMeasurements && (
             <Reanimated.Text
@@ -116,9 +114,6 @@ export default function Overlay() {
               <Prayer index={index} isOverlay />
             </View>
           ))}
-
-          {/* <ActiveBackground isOverlay /> */}
-
         </AnimatedBlur>
       </Reanimated.View>
       <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
