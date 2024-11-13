@@ -42,7 +42,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   useEffect(() => {
     if (index === nextPrayerIndex) {
-      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+      textOpacity.value = withTiming(1, { duration: 5000 });
     } else if (!isPassed) {
       textOpacity.value = TEXT.opacity;
     }
