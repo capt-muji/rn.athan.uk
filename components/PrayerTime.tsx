@@ -45,13 +45,13 @@ export default function PrayerTime({ index, isOverlay }: Props) {
       // tomorrow's prayer
       if (isPassed) {
         originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-        overlayTomorrowOpacity.value = withDelay(150, withTiming(1, { duration: ANIMATION.duration }));
+        overlayTomorrowOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
       };
     }
 
     // if overlay is off, and prayer is not selected, reset opacity
     if (!overlayVisibleToggle && lastSelectedPrayerIndex === index) {
-      originalOpacity.value = withDelay(150, withTiming(baseOpacity, { duration: ANIMATION.duration }));
+      originalOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(baseOpacity, { duration: ANIMATION.duration }));
       overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration })
       overlayTomorrowOpacity.value = withTiming(0, { duration: ANIMATION.duration })
     }
