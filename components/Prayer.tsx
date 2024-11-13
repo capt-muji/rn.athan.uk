@@ -94,12 +94,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       ]}
       onPress={handlePress}
     >
-      <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}>
-        {prayer.english}
-      </Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}>
-        {prayer.arabic}
-      </Animated.Text>
+      <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} />
       <Alert index={index} isOverlay={isOverlay} />
     </AnimatedPressable>
