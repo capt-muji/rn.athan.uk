@@ -32,7 +32,7 @@ export default function PrayerTime({ index, isOverlay }: Props) {
 
   useEffect(() => {
     if (index === nextPrayerIndex) {
-      originalOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+      originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     } else if (!isPassed) {
       originalOpacity.value = TEXT.opacity;
     }

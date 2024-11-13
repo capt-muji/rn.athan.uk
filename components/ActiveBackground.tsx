@@ -4,11 +4,11 @@ import Animated, { useAnimatedStyle, withSpring, withTiming } from 'react-native
 import { nextPrayerIndexAtom, absolutePrayerMeasurementsAtom, overlayVisibleAtom } from '@/store/store';
 import { ANIMATION, COLORS, OVERLAY, PRAYER } from '@/constants';
 
-export default function ActiveBackground({ isOverlay = false }) {
+const SPRING_CONFIG = { damping: 10, stiffness: 100, mass: 1 };
+
+export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [absoluteMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
-
 
   const animatedStyle = useAnimatedStyle(() => {
     if (nextPrayerIndex === -1 || !absoluteMeasurements[nextPrayerIndex]) {
@@ -20,10 +20,10 @@ export default function ActiveBackground({ isOverlay = false }) {
     return {
       opacity: withTiming(1, { duration: ANIMATION.overlayDelay }),
       position: 'absolute',
-      top: withSpring(activePrayer.pageY),
+      top: withSpring(activePrayer.pageY, SPRING_CONFIG),
       left: activePrayer.pageX,
-      width: withSpring(activePrayer.width),
-      height: withSpring(activePrayer.height),
+      width: activePrayer.width,
+      height: activePrayer.height,
       zIndex: OVERLAY.zindexes.off.activeBackground,
     };
   });
