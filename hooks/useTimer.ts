@@ -19,7 +19,7 @@ export const useTimer = ({ isOverlay = false } = {}) => {
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
 
   useEffect(() => {
     if (!todaysPrayers || Object.keys(todaysPrayers).length === 0) return;
@@ -51,7 +51,7 @@ export const useTimer = ({ isOverlay = false } = {}) => {
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
-  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedPrayerIndex, isOverlay, overlayVisibleToggle]);
+  }, [nextPrayerIndex, todaysPrayers, tomorrowsPrayers, selectedPrayerIndex, isOverlay, overlayVisible]);
 
   return {
     nextPrayer: { timerName: nextPrayerName, timeDisplay: nextPrayerTime }

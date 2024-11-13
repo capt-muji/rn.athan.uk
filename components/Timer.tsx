@@ -12,14 +12,14 @@ interface TimerProps {
 export default function Timer({ isOverlay = false }: TimerProps) {
   const { nextPrayer } = useTimer({ isOverlay });
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisibleToggle] = useAtom(overlayVisibleToggleAtom);
+  const [overlayVisible] = useAtom(overlayVisibleToggleAtom);
 
-  const fontFamily = { fontFamily: overlayVisibleToggle ? TEXT.famiy.medium : TEXT.famiy.regular };
+  const fontFamily = { fontFamily: overlayVisible ? TEXT.famiy.medium : TEXT.famiy.regular };
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
-      { scale: withTiming(overlayVisibleToggle ? 1.5 : 1) },
-      { translateY: withTiming(overlayVisibleToggle ? 5 : 0) }
+      { scale: withTiming(overlayVisible ? 1.5 : 1) },
+      { translateY: withTiming(overlayVisible ? 5 : 0) }
     ]
   }));
 
