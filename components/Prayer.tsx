@@ -3,7 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom, lastSelectedPrayerIndexAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN, OVERLAY } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -22,7 +22,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
   const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [, setOverlayVisibleToggle] = useAtom(overlayVisibleAtom);
+  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
+  const [lastSelectedPrayerIndex, setLastSelectedPrayerIndex] = useAtom(lastSelectedPrayerIndexAtom);
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
@@ -30,6 +31,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
+  const backgroundOpacity = useSharedValue(0);
 
   useEffect(() => {
     if (index === nextPrayerIndex) {
@@ -38,6 +40,21 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       textOpacity.value = TEXT.opacity;
     }
   }, [nextPrayerIndex]);
+
+  useEffect(() => {
+    // When overlay opens, store the last selected index
+    if (overlayVisible && selectedPrayerIndex === index) {
+      setLastSelectedPrayerIndex(index);
+    }
+
+    // Only show background when it's the next prayer
+    if (overlayVisible && isOverlay && selectedPrayerIndex === nextPrayerIndex) {
+      backgroundOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    } else {
+      // Always reset background opacity in all other cases
+      backgroundOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+    }
+  }, [overlayVisible, selectedPrayerIndex]); // Added selectedPrayerIndex as dependency
 
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
@@ -58,17 +75,17 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   const handlePress = () => {
     if (isOverlay) {
-      setOverlayVisibleToggle(false);
+      setOverlayVisible(false);
       return;
     }
 
     setSelectedPrayerIndex(index);
-    setOverlayVisibleToggle(true);
+    setOverlayVisible(true);
   };
 
   const animatedTextStyle = useAnimatedStyle(() => {
     if (isOverlay) return {
-      color: 'red',
+      color: 'white',
       opacity: 1,
     };
 
@@ -83,6 +100,17 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     };
   });
 
+  const backgroundStyle = useAnimatedStyle(() => ({
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: COLORS.primary,
+    borderRadius: PRAYER.borderRadius,
+    shadowColor: COLORS.primaryShadow,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    opacity: backgroundOpacity.value,
+  }));
+
   const containerStyle = [
     styles.container,
     isOverlay && selectedPrayerIndex !== index && styles.overlayHidden,
@@ -96,6 +124,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       style={containerStyle}
       onPress={handlePress}
     >
+      <Animated.View style={backgroundStyle} />
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} />
