@@ -23,8 +23,8 @@ export const usePrayers = () => {
       const transformedPrayers = transformApiData(apiData);
       storage.prayers.storePrayers(transformedPrayers);
 
-      const todayRaw = storage.prayers.getTodaysPrayers();
-      const tomorrowRaw = storage.prayers.getTomorrowsPrayers();
+      const todayRaw = storage.prayers.getTodayOrTomorrowPrayers('today');
+      const tomorrowRaw = storage.prayers.getTodayOrTomorrowPrayers('tomorrow');
       
       if (!todayRaw || !tomorrowRaw) throw new Error('Prayers not found');
 
@@ -34,11 +34,12 @@ export const usePrayers = () => {
       const nextPrayer = Object.values(todaysPrayers).find(p => !p.passed);
       const nextPrayerIndex = nextPrayer?.index ?? -1;
 
-      setIsLoading(false);
-      setHasError(false);
       setTodaysPrayers(todaysPrayers);
       setTomorrowsPrayers(tomorrowsPrayers);
       setNextPrayerIndex(nextPrayerIndex);
+
+      setIsLoading(false);
+      setHasError(false);
 
       return { todaysPrayers, tomorrowsPrayers, nextPrayerIndex };
     } catch (error) {
