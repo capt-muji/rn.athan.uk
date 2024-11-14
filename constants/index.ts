@@ -16,8 +16,8 @@ export const SCREEN = {
 };
 
 export const COLORS = {
-  primary: '#0d6cda',
-  primaryShadow: '#0a296a',
+  primary: '#005dd5',
+  primaryShadow: '#04439e',
   textPrimary: '#ffffff',
   textSecondary: '#8BA3C7',
   textTransparent: '#aab8cd',
