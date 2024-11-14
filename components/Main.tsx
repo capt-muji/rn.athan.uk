@@ -33,6 +33,5 @@ export default function Main() {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    // backgroundColor: 'black',
   },
 });
