@@ -74,7 +74,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
     setIconIndex(prev => (prev + 1) % ALERT_CONFIGS.length);
 
     bounceAnim.value = 0;
-    fadeAnim.value = withSpring(1, SPRING_CONFIG);
+    fadeAnim.value = withSpring(1, { ...SPRING_CONFIG, duration: 1 });
     bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
     timeoutRef.current = setTimeout(() => {
@@ -96,11 +96,8 @@ export default function Alert({ index, isOverlay = false }: Props) {
     };
   });
 
-  const popupOpacityStyle = useAnimatedStyle(() => ({
-    opacity: fadeAnim.value
-  }));
-
-  const popupBounceStyle = useAnimatedStyle(() => ({
+  const popupAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: fadeAnim.value,
     transform: [{
       scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
     }]
@@ -129,12 +126,11 @@ export default function Alert({ index, isOverlay = false }: Props) {
         </Animated.View>
       </Pressable>
 
-      <Animated.View 
+      <Animated.View
         style={[
-          styles.popup, 
-          popupOpacityStyle,
-          popupBounceStyle,
-          isOverlay && !isNext && styles.popupOverlay
+          popupAnimatedStyle,
+          styles.popup,
+          isOverlay && !isNext && styles.popupOverlay,
         ]}
       >
         <IconComponent color={(isOverlay && !isNext) ? 'white' : COLORS.textPrimary} size={20} style={styles.popupIcon} />
