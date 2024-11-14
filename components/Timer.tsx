@@ -2,13 +2,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
+import { nextPrayerIndexAtom, overlayVisibleAtom, todaysPrayersAtom, tomorrowsPrayersAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
 export default function Timer() {
   const { nextPrayer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
 
   const fontFamily = { fontFamily: overlayVisible ? TEXT.famiy.medium : TEXT.famiy.regular };
 
