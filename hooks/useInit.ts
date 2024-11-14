@@ -5,11 +5,13 @@ import {
   hasErrorAtom, 
   todaysPrayersAtom, 
   tomorrowsPrayersAtom, 
-  nextPrayerIndexAtom 
+  nextPrayerIndexAtom,
+  dateAtom 
 } from '@/store/store';
 import { createSchedule, transformApiData } from '@/utils/prayer';
 import { IApiResponse } from '@/types/api';
 import storage from '@/storage/storage';
+import { formatDate } from '@/utils/time';
 
 export const useInit = () => {
   const [, setIsLoading] = useAtom(isLoadingAtom);
@@ -17,6 +19,7 @@ export const useInit = () => {
   const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
   const [, setTomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [, setDate] = useAtom(dateAtom);
 
   const initialize = useCallback(async (apiData: IApiResponse) => {
     try {
@@ -37,6 +40,9 @@ export const useInit = () => {
       setTodaysPrayers(todaysPrayers);
       setTomorrowsPrayers(tomorrowsPrayers);
       setNextPrayerIndex(nextPrayerIndex);
+
+      const formattedDate = formatDate(Object.values(todaysPrayers)[0].date);
+      setDate(formattedDate);
 
       setIsLoading(false);
       setHasError(false);
