@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
@@ -7,34 +7,18 @@ import { nextPrayerIndexAtom, overlayVisibleAtom, todaysPrayersAtom, tomorrowsPr
 import { usePrayerCountdown } from '@/hooks/useCountdown';
 
 export default function Timer() {
-  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
+  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
 
-  const nextPrayerName = useRef(todaysPrayers[nextPrayerIndex]?.english);
-  const selectedPrayerCountdown = useRef('');
-  const selectedPrayerName = useRef('');
-
-  // Get countdown for next or selected prayer
   const prayers = overlayVisible && todaysPrayers[selectedPrayerIndex]?.passed ? tomorrowsPrayers : todaysPrayers;
-
-  // today or tomorrow
   const day = overlayVisible && todaysPrayers[selectedPrayerIndex]?.passed ? 'tomorrow' : 'today';
-
-  // Use selected prayer index if overlay is visible, otherwise use next prayer index
   const prayerIndex = overlayVisible ? selectedPrayerIndex : nextPrayerIndex;
 
-  // Get countdown for index prayer
-  const countdown = usePrayerCountdown(prayerIndex, day);
-
-  useEffect(() => {
-    if (overlayVisible && selectedPrayerIndex !== -1) {
-      selectedPrayerName.current = prayers[selectedPrayerIndex].english;
-      selectedPrayerCountdown.current = countdown;
-    }
-  }, [overlayVisible, selectedPrayerIndex]);
+  const prayerName = prayers[prayerIndex]?.english;
+  const prayerCountdown = usePrayerCountdown(prayerIndex, day);
 
   const fontFamily = { fontFamily: overlayVisible ? TEXT.famiy.medium : TEXT.famiy.regular };
 
@@ -46,18 +30,14 @@ export default function Timer() {
   }));
 
   return (
-    <View style={styles.container}>
+    <View style={styles.componentContainer}>
       {!overlayVisible && nextPrayerIndex === -1 ? (
-        <Text style={styles.text}> {'All prayers passed'} </Text>
+        <Text style={styles.text}>All prayers passed</Text>
       ) : (
-        <Animated.View style={styles.wrapper}>
-          <Text style={styles.text}>
-            {overlayVisible ? selectedPrayerName.current : nextPrayerName.current} in
-          </Text>
-          <Animated.View style={[styles.timerContainer, animatedStyle]}>
-            <Animated.Text style={[styles.timer, fontFamily]}>
-              {countdown}
-            </Animated.Text>
+        <Animated.View style={styles.contentContainer}>
+          <Text style={styles.text}>{prayerName} in</Text>
+          <Animated.View style={[styles.countdownContainer, animatedStyle]}>
+            <Animated.Text style={[styles.countdown, fontFamily]}>{prayerCountdown}</Animated.Text>
           </Animated.View>
         </Animated.View>
       )}
@@ -66,14 +46,14 @@ export default function Timer() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  componentContainer: {
     height: 50,
     marginBottom: 40,
     justifyContent: 'center',
-    zIndex: OVERLAY.zindexes.off.timer,
+    zIndex: OVERLAY.zindexes.off.countdown,
     pointerEvents: 'none',
   },
-  wrapper: {
+  contentContainer: {
 
   },
   text: {
@@ -82,14 +62,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: TEXT.size - 2,
     marginBottom: 3,
+    fontFamily: TEXT.famiy.regular,
   },
-  timer: {
+  countdown: {
     fontFamily: TEXT.famiy.medium,
     color: COLORS.textPrimary,
     fontSize: TEXT.size + 8,
     textAlign: 'center',
   },
-  timerContainer: {
+  countdownContainer: {
     height: 35,
     justifyContent: 'center',
     alignItems: 'center',

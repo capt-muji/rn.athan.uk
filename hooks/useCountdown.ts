@@ -14,6 +14,11 @@ export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
 
   useEffect(() => {
     const updateCountdown = () => {
+      if (prayerIndex === -1) {
+        setCountdown('');
+        return;
+      }
+
       const prayers = day === 'today' ? todaysPrayers : tomorrowsPrayers;
       const prayer = prayers[prayerIndex];
 
