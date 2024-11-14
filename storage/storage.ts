@@ -1,6 +1,6 @@
 import { MMKV } from 'react-native-mmkv';
 
-import { ISingleScheduleTransformed } from '@/types/prayers';
+import { DaySelection, ISingleScheduleTransformed } from '@/types/prayers';
 import { getTodayOrTomorrow } from '@/utils/time';
 
 const storage = new MMKV();
@@ -11,13 +11,8 @@ const storePrayers = (prayers: ISingleScheduleTransformed[]) => {
   });
 };
 
-const getTodaysPrayers = (): ISingleScheduleTransformed | null => {
-  const data = storage.getString(getTodayOrTomorrow('today'));
-  return data ? JSON.parse(data) : null;
-};
-
-const getTomorrowsPrayers = (): ISingleScheduleTransformed | null => {
-  const data = storage.getString(getTodayOrTomorrow('tomorrow'));
+const getTodayOrTomorrowPrayers = (day: DaySelection = 'today'): ISingleScheduleTransformed | null => {
+  const data = storage.getString(getTodayOrTomorrow(day));
   return data ? JSON.parse(data) : null;
 };
 
@@ -38,8 +33,7 @@ export const jotaiStorage = {
 export default {
   prayers: {
     storePrayers,
-    getTodaysPrayers,
-    getTomorrowsPrayers
+    getTodayOrTomorrowPrayers
   },
   clear: () => storage.clearAll()
 };
