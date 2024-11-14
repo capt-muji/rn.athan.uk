@@ -1,5 +1,8 @@
 import { atom } from 'jotai';
 import { ITransformedToday } from '@/types/prayers';
+import { atomWithStorage, createJSONStorage } from 'jotai/utils';
+import { jotaiStorage } from '@/storage/storage';
+import { ENGLISH } from '@/constants';
 
 // App Status
 export const isLoadingAtom = atom<boolean>(true);
@@ -34,3 +37,31 @@ export interface PageCoordinates {
 export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(null);
 export const absolutePrayerMeasurementsAtom = atom<Record<number, PageCoordinates>>({});
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);
+
+// Alert Preferences
+export enum AlertType {
+  Off = 0,
+  Notification = 1,
+  Vibrate = 2,
+  Sound = 3
+}
+
+export interface AlertPreferences {
+  [prayerIndex: number]: AlertType;
+}
+
+const createInitialAlertPreferences = (): AlertPreferences => {
+  const preferences: AlertPreferences = {};
+  
+  ENGLISH.forEach((_, index) => {
+    preferences[index] = AlertType.Off;
+  });
+
+  return preferences;
+};
+
+export const alertPreferencesAtom = atomWithStorage<AlertPreferences>(
+  'alert_preferences',
+  createInitialAlertPreferences(),
+  createJSONStorage(() => jotaiStorage)
+);

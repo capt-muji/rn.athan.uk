@@ -21,6 +21,20 @@ const getTomorrowsPrayers = (): ISingleScheduleTransformed | null => {
   return data ? JSON.parse(data) : null;
 };
 
+// Add storage interface for Jotai
+export const jotaiStorage = {
+  getItem: (key: string) => {
+    const value = storage.getString(key);
+    return value ? JSON.parse(value) : null;
+  },
+  setItem: (key: string, value: any) => {
+    storage.set(key, JSON.stringify(value));
+  },
+  removeItem: (key: string) => {
+    storage.delete(key);
+  },
+};
+
 export default {
   prayers: {
     storePrayers,
