@@ -10,9 +10,10 @@ export interface ISingleScheduleTransformed {
 }
 
 export interface ITransformedPrayer {
-  arabic: string;
-  english: string;
   index: number;
+  date: string;
+  english: string;
+  arabic: string;
   time: string;
   passed: boolean;
   isNext: boolean;

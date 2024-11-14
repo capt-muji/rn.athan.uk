@@ -9,7 +9,7 @@ import Main from '@/components/Main';
 import Error from '@/components/Error';
 import { isLoadingAtom, hasErrorAtom, overlayVisibleAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
-import { usePrayers } from '@/hooks/usePrayers';
+import { useInit } from '@/hooks/useInit';
 import { COLORS, OVERLAY } from '@/constants';
 
 export default function Index() {
@@ -22,7 +22,7 @@ export default function Index() {
   const [isLoading] = useAtom(isLoadingAtom);
   const [hasError] = useAtom(hasErrorAtom);
 
-  const { initialize } = usePrayers();
+  const { initialize } = useInit();
 
   useEffect(() => {
     const init = async () => {
