@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { StyleSheet, Pressable, Text, View } from 'react-native';
+import { StyleSheet, Pressable, Text, View, GestureResponderEvent } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
 import Animated, {
@@ -68,7 +68,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }
   }, [overlayVisible]);
 
-  const handlePress = useCallback((e) => {
+  const handlePress = useCallback((e?: GestureResponderEvent) => {
     if (!isOverlay) e?.stopPropagation();
     setIsPopupActive(true);
     timeoutRef.current && clearTimeout(timeoutRef.current);
