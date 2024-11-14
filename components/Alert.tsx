@@ -9,6 +9,7 @@ import Animated, {
   interpolate,
   withTiming
 } from 'react-native-reanimated';
+import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/store/store';
@@ -75,6 +76,8 @@ export default function Alert({ index, isOverlay = false }: Props) {
   }, [alertPreferences, index]);
 
   const handlePress = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
     setIconIndex(nextIndex);
 

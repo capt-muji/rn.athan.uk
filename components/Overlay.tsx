@@ -14,6 +14,7 @@ import { COLORS, TEXT, OVERLAY, ANIMATION, ENGLISH } from '@/constants';
 import Prayer from './Prayer';
 import RadialGlow from './RadialGlow';
 import { useEffect, useState } from 'react';
+import * as Haptics from 'expo-haptics';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -26,6 +27,7 @@ export default function Overlay() {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
 
   const handleClose = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setOverlayVisible(false);
   };
 
