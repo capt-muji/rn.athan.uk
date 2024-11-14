@@ -99,21 +99,21 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {ENGLISH.map((_, index) => (
+          {/* Replace the ENGLISH.map with conditional rendering */}
+          {prayerMeasurements[selectedPrayerIndex] && (
             <View
-              key={index}
               style={{
                 position: 'absolute',
-                top: prayerMeasurements[index]?.pageY,
-                left: prayerMeasurements[index]?.pageX,
-                width: prayerMeasurements[index]?.width,
-                height: prayerMeasurements[index]?.height,
+                top: prayerMeasurements[selectedPrayerIndex]?.pageY,
+                left: prayerMeasurements[selectedPrayerIndex]?.pageX,
+                width: prayerMeasurements[selectedPrayerIndex]?.width,
+                height: prayerMeasurements[selectedPrayerIndex]?.height,
                 zIndex: OVERLAY.zindexes.on.prayerSelected,
               }}
             >
-              <Prayer index={index} isOverlay />
+              <Prayer index={selectedPrayerIndex} isOverlay />
             </View>
-          ))}
+          )}
         </AnimatedBlur>
       </Reanimated.View>
       <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
