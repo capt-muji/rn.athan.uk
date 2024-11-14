@@ -126,19 +126,9 @@ export default function Alert({ index, isOverlay = false }: Props) {
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[
-        styles.popup,
-        popupAnimatedStyle,
-        isOverlay && !isNext && styles.popupOverlay
-      ]}>
-        <IconComponent
-          color={(isOverlay && !isNext) ? 'black' : COLORS.textPrimary}
-          size={20}
-          style={styles.popupIcon}
-        />
-        <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>
-          {ALERT_CONFIGS[iconIndex].label}
-        </Text>
+      <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
+        <IconComponent color={(isOverlay && !isNext) ? 'black' : COLORS.textPrimary} size={20} style={styles.popupIcon} />
+        <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
     </View>
   );
