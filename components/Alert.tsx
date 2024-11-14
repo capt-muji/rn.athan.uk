@@ -14,7 +14,7 @@ import { COLORS, TEXT, ANIMATION } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
-const TIMING_CONFIG = { duration: 1 };
+const TIMING_CONFIG = { duration: 5 };
 
 const ALERT_CONFIGS = [
   { icon: PiBellSimpleSlash, label: "Off" },
@@ -62,26 +62,26 @@ export default function Alert({ index, isOverlay = false }: Props) {
   useEffect(() => {
     if (isOverlay && !overlayVisible) {
       setIsPopupActive(false);
-      fadeAnim.value = 0
-      bounceAnim.value = 0
+      fadeAnim.value = 0;
+      bounceAnim.value = 0;
       timeoutRef.current && clearTimeout(timeoutRef.current);
     }
   }, [overlayVisible]);
 
-  const handlePress = useCallback((e?: GestureResponderEvent) => {
-    if (!isOverlay) e?.stopPropagation();
-    setIsPopupActive(true);
-    timeoutRef.current && clearTimeout(timeoutRef.current);
+  const handlePress = useCallback(() => {
     setIconIndex(prev => (prev + 1) % ALERT_CONFIGS.length);
+
+    timeoutRef.current && clearTimeout(timeoutRef.current);
 
     bounceAnim.value = 0;
     fadeAnim.value = withTiming(1, TIMING_CONFIG);
     bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
+    setIsPopupActive(true);
     timeoutRef.current = setTimeout(() => {
-      fadeAnim.value = withTiming(0, TIMING_CONFIG);
-      bounceAnim.value = withSpring(0, SPRING_CONFIG);
       setIsPopupActive(false);
+      fadeAnim.value = 0;
+      bounceAnim.value = 0;
     }, 2000);
   }, [isOverlay]);
 
