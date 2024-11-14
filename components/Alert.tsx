@@ -96,8 +96,11 @@ export default function Alert({ index, isOverlay = false }: Props) {
     };
   });
 
-  const popupAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: fadeAnim.value,
+  const popupOpacityStyle = useAnimatedStyle(() => ({
+    opacity: fadeAnim.value
+  }));
+
+  const popupBounceStyle = useAnimatedStyle(() => ({
     transform: [{
       scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
     }]
@@ -126,7 +129,14 @@ export default function Alert({ index, isOverlay = false }: Props) {
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
+      <Animated.View 
+        style={[
+          styles.popup, 
+          popupOpacityStyle,
+          popupBounceStyle,
+          isOverlay && !isNext && styles.popupOverlay
+        ]}
+      >
         <IconComponent color={(isOverlay && !isNext) ? 'white' : COLORS.textPrimary} size={20} style={styles.popupIcon} />
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
