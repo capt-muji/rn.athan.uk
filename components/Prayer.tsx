@@ -38,6 +38,13 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     } else if (!isPassed) {
       textOpacity.value = TEXT.opacity;
+    };
+
+
+    if (isPassed) {
+      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+    } else if (isOverlay && selectedPrayerIndex !== index) {
+      textOpacity.value = withTiming(0, { duration: ANIMATION.duration });
     }
   }, [nextPrayerIndex]);
 
@@ -100,23 +107,15 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       flexDirection: 'row' as const,
       alignItems: 'center' as const,
       marginHorizontal: !isOverlay ? SCREEN.paddingHorizontal : 0,
-      opacity: isOverlay && selectedPrayerIndex !== index ? 0 : 1,
+      display: isOverlay && selectedPrayerIndex !== index ? 'none' : 'flex',
     };
-
-    if (overlayVisible && isOverlay && selectedPrayerIndex === nextPrayerIndex && index === nextPrayerIndex) {
-      return {
-        ...baseStyles,
-        backgroundColor: COLORS.primary,
-        shadowColor: COLORS.primaryShadow,
-        shadowOffset: { width: 0, height: 10 },
-        shadowOpacity: 0.5,
-        shadowRadius: 5,
-        opacity: backgroundOpacity.value,
-      };
-    }
 
     return baseStyles;
   });
+
+  const animatedBackgroundStyle = useAnimatedStyle(() => ({
+    opacity: backgroundOpacity.value,
+  }));
 
   return (
     <AnimatedPressable
@@ -125,6 +124,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       style={containerStyle}
       onPress={handlePress}
     >
+      <Animated.View style={[styles.background, animatedBackgroundStyle]} />
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} />
@@ -146,4 +146,15 @@ const styles = StyleSheet.create({
     flex: 0.75,
     textAlign: 'right',
   },
+  background: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    borderRadius: PRAYER.borderRadius,
+    backgroundColor: COLORS.primary,
+    shadowColor: COLORS.primaryShadow,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  }
 });
