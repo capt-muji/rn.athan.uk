@@ -5,10 +5,6 @@ import { COLORS, OVERLAY, TEXT } from '@/constants';
 import { nextPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 import { useTimer } from '@/hooks/useTimer';
 
-interface TimerProps {
-  isOverlay?: boolean;
-}
-
 export default function Timer() {
   const { nextPrayer } = useTimer();
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
@@ -28,12 +24,12 @@ export default function Timer() {
       {nextPrayerIndex === -1 ? (
         <Text style={styles.text}> {nextPrayer.timerName} </Text>
       ) : (
-        <>
+        <Animated.View style={styles.wrapper}>
           <Text style={styles.text}>{`${nextPrayer.timerName || '...'} in`}</Text>
           <Animated.View style={[styles.timerContainer, animatedStyle]}>
             <Animated.Text style={[styles.timer, fontFamily]}>{nextPrayer.timeDisplay}</Animated.Text>
           </Animated.View>
-        </>
+        </Animated.View>
       )}
     </View>
   );
@@ -46,6 +42,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: OVERLAY.zindexes.off.timer,
     pointerEvents: 'none',
+  },
+  wrapper: {
+
   },
   text: {
     color: COLORS.textSecondary,
