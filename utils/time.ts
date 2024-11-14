@@ -81,7 +81,8 @@ export const isDateTodayOrFuture = (date: string): boolean => {
   return checkDate >= today;
 };
 
-
+// Formats date string into human readable format.
+// Returns date in format "Wed, 24 Jan 2024" (GB locale).
 export const formatDate = (date: string): string => new Date(date).toLocaleDateString('en-GB', {
   weekday: 'short',
   day: '2-digit',
