@@ -38,14 +38,14 @@ export const OVERLAY = {
     overlay: 2,
     background: -999,
     off: {
-      timer: 999,
+      countdown: 999,
       prayerNotSelected: -1,
       activeBackground: -2,
       longDate: -3,
       glow: -3,
     },
     on: {
-      timer: 999,
+      countdown: 999,
       prayerSelected: 4,
       longDate: -1,
       glow: 1,
