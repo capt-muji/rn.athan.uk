@@ -12,7 +12,7 @@ export default function ActiveBackground() {
 
   const animatedStyle = useAnimatedStyle(() => {
     if (nextPrayerIndex === -1 || !absoluteMeasurements[nextPrayerIndex]) {
-      return { opacity: 0 };
+      return { opacity: withTiming(0, { duration: ANIMATION.overlayDelay }) };
     }
 
     const activePrayer = absoluteMeasurements[nextPrayerIndex];
