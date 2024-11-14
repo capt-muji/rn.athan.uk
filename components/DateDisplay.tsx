@@ -2,23 +2,28 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming, withDelay } from 'react-native-reanimated';
-import { absoluteDateMeasurementsAtom, overlayVisibleAtom } from '@/store/store';
+import { absoluteDateMeasurementsAtom, overlayVisibleAtom, todaysPrayersAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
 
-  const today = new Date();
-  const formattedDate = today.toLocaleDateString('en-GB', {
-    weekday: 'short',
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-  });
+  // Get first prayer's date from storage data
+  const storedDate = Object.values(todaysPrayers)[0]?.date;
+
+  const formattedDate = storedDate
+    ? new Date(storedDate).toLocaleDateString('en-GB', {
+      weekday: 'short',
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    })
+    : '';
 
   useEffect(() => {
     if (overlayVisible) {

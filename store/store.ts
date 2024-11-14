@@ -9,6 +9,7 @@ export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
 
 // Prayer Data
+export const dateAtom = atom<string>('');
 export const todaysPrayersAtom = atom<ITransformedToday>({});
 export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
