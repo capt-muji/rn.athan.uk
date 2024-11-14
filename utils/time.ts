@@ -1,36 +1,21 @@
 import { IPrayerInfo, ITransformedToday, DaySelection } from "@/types/prayers";
 
-// Creates a new Date object with UK timezone
-// Handles BST/GMT transitions automatically
-export const createUKDate = (date?: string | number | Date): Date => {
-  if (!date) {
-    return new Date();
-  }
-  return new Date(date);
-};
-
 // Takes 'today' or 'tomorrow' and returns date in YYYY-MM-DD format.
 // Used for prayer time calculations and date display formatting.
-export const getTodayOrTomorrowDate = (daySelect: DaySelection = 'today'): string => {
+export const getTodayOrTomorrowDate = (day: DaySelection = 'today'): string => {
   const date = new Date();
-  
-  if (daySelect === 'tomorrow') {
+  if (day === 'tomorrow') {
     date.setDate(date.getDate() + 1);
   }
-  
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  
-  return `${year}-${month}-${day}`;
+  return date.toISOString().split('T')[0];
 };
 
 // Calculates time difference in milliseconds between now and target prayer time.
 // Handles edge cases like passing midnight and adjusts for tomorrow's prayers.
 export const getTimeDifference = (targetTime: string, date: string = getTodayOrTomorrowDate('today')): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
-  const now = createUKDate();
-  const target = createUKDate(date);
+  const now = new Date();
+  const target = new Date(date);
   target.setHours(hours, minutes, 0, 0);
 
   const diff = target.getTime() - now.getTime();
@@ -51,8 +36,8 @@ export const getTimeDifference = (targetTime: string, date: string = getTodayOrT
 // Used to determine prayer status and handle UI state changes.
 export const isTimePassed = (time: string): boolean => {
   const [hours, minutes] = time.split(':').map(Number);
-  const now = createUKDate();
-  const target = createUKDate();
+  const now = new Date();
+  const target = new Date();
   
   target.setHours(hours, minutes, 0);
 
@@ -79,7 +64,7 @@ export const formatTime = (ms: number): string => {
 // Returns formatted time string in 24-hour format (HH:mm).
 export const addMinutes = (time: string, minutes: number): string => {
   const [h, m] = time.split(':').map(Number);
-  const date = createUKDate();
+  const date = new Date();
   date.setHours(h, m + minutes);
   return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 };
@@ -87,10 +72,10 @@ export const addMinutes = (time: string, minutes: number): string => {
 // Checks if provided date is either today or in the future.
 // Used to filter past prayer times and validate date selections.
 export const isDateTodayOrFuture = (date: string): boolean => {
-  const today = createUKDate();
+  const today = new Date();
   today.setHours(0, 0, 0, 0);
   
-  const checkDate = createUKDate(date);
+  const checkDate = new Date();
   checkDate.setHours(0, 0, 0, 0);
 
   return checkDate >= today;
@@ -98,12 +83,9 @@ export const isDateTodayOrFuture = (date: string): boolean => {
 
 // Formats date string into UK-localized human readable format.
 // Returns date in format like "Mon, 01 Jan 2024" with proper timezone handling.
-export const formatDate = (date: string): string => {
-  return new Intl.DateTimeFormat("en-GB", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "2-digit",
-    timeZone: "Europe/London"
-  }).format(createUKDate(date));
-};
+export const formatDate = (date: string): string => new Date(date).toLocaleDateString('en-GB', {
+  weekday: 'short',
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric'
+});
