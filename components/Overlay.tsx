@@ -9,8 +9,7 @@ import {
   absoluteDateMeasurementsAtom,
   absolutePrayerMeasurementsAtom,
   todaysPrayersAtom,
-  nextPrayerIndexAtom,
-  lastSelectedPrayerIndexAtom
+  nextPrayerIndexAtom
 } from '@/store/store';
 import { COLORS, TEXT, OVERLAY, ANIMATION, ENGLISH } from '@/constants';
 import Prayer from './Prayer';
@@ -28,6 +27,7 @@ export default function Overlay() {
   const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [display, setDisplay] = useState('flex');
 
   const handleClose = () => {
     setOverlayVisible(false);
@@ -39,11 +39,14 @@ export default function Overlay() {
 
   useEffect(() => {
     if (overlayVisible) {
+      setDisplay('flex');
       backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
       glowOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
       dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
     } else {
-      backgroundOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
+      backgroundOpacityShared.value = withTiming(0, { duration: ANIMATION.duration }, () => {
+        runOnJS(setDisplay)('none');
+      });
       glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
       dateOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
     }
@@ -57,7 +60,7 @@ export default function Overlay() {
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
     opacity: backgroundOpacityShared.value,
-    pointerEvents: overlayVisible ? 'auto' : 'none',
+    display: display as 'flex' | 'none',
   }));
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
