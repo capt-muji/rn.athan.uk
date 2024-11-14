@@ -13,7 +13,7 @@ export default function Main() {
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal }]}>
+    <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal, paddingBottom: insets.bottom }]}>
       <RadialGlow />
       <ActiveBackground />
 
