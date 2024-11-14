@@ -89,6 +89,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
     if (isOverlay) return {
       color: 'white',
       opacity: 1,
+      transform: [{ scale: pressAnim.value }]
     };
 
     return {
