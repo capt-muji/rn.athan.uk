@@ -1,29 +1,17 @@
 import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming, withDelay } from 'react-native-reanimated';
-import { absoluteDateMeasurementsAtom, overlayVisibleAtom, todaysPrayersAtom } from '@/store/store';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
+import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [date] = useAtom(dateAtom);
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
-
-  // Get first prayer's date from storage data
-  const storedDate = Object.values(todaysPrayers)[0]?.date;
-
-  const formattedDate = storedDate
-    ? new Date(storedDate).toLocaleDateString('en-GB', {
-      weekday: 'short',
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric'
-    })
-    : '';
 
   useEffect(() => {
     if (overlayVisible) {
@@ -50,7 +38,7 @@ export default function DateDisplay() {
       <View>
         <Text style={styles.location}>London, UK</Text>
         <Animated.Text ref={dateRef} onLayout={handleLayout} style={[styles.date, dateAnimatedStyle]}>
-          {formattedDate}
+          {date}
         </Animated.Text>
       </View>
       <Masjid />
