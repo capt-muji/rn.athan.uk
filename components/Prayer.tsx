@@ -3,8 +3,8 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
-import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN, OVERLAY } from '@/constants';
+import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
+import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 
@@ -17,7 +17,6 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
-  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
@@ -26,30 +25,25 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const viewRef = useRef<View>(null);
 
   const prayer = todaysPrayers[index];
-  const tomorrowPrayer = tomorrowsPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
 
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const backgroundOpacity = useSharedValue(0);
 
+  // handle non-overlay animations
   useEffect(() => {
-    if (!isOverlay && index === nextPrayerIndex) {
-      textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-    } else if (!isPassed) {
-      textOpacity.value = TEXT.opacity;
-    };
-
-
     if (isPassed) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-    } else if (isOverlay && selectedPrayerIndex !== index) {
-      textOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-    }
+    };
+
+    if (index === nextPrayerIndex) {
+      textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
+    };
   }, [nextPrayerIndex]);
 
+  // handle overlay animations
   useEffect(() => {
-    // Only show background when it's the next prayer
     if (isOverlay && selectedPrayerIndex === nextPrayerIndex) {
       backgroundOpacity.value = 1;
     } else {
@@ -62,21 +56,15 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
     viewRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
-
-      setAbsolutePrayerMeasurements(prev => ({
-        ...prev,
-        [index]: measurements
-      }));
-
-      if (isNext) {
-        setNextPrayerMeasurements(measurements);
-      }
+      setAbsolutePrayerMeasurements(prev => ({ ...prev, [index]: measurements }));
+      if (isNext) setNextPrayerMeasurements(measurements);
     });
   };
 
   const handlePress = () => {
     if (isOverlay) {
       setOverlayVisible(false);
+      setSelectedPrayerIndex(-1);
       return;
     }
 
