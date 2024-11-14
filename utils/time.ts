@@ -1,4 +1,4 @@
-import { IPrayerInfo, ITransformedToday, DaySelection } from "@/types/prayers";
+import { DaySelection } from "@/types/prayers";
 
 // Takes 'today' or 'tomorrow' and returns date in YYYY-MM-DD format.
 // Used for prayer time calculations and date display formatting.
