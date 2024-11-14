@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
 import { DaySelection } from '@/types/prayers';
-import { getTimeDifference, getTodayOrTomorrow, formatTime } from '@/utils/time';
+import { getTimeDifference, getTodayOrTomorrowDate, formatTime } from '@/utils/time';
 
 const THRESHOLD = 1000; // 1 second threshold
 
@@ -22,7 +22,7 @@ export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
       const prayers = day === 'today' ? todaysPrayers : tomorrowsPrayers;
       const prayer = prayers[prayerIndex];
 
-      const diff = getTimeDifference(prayer.time, getTodayOrTomorrow(day));
+      const diff = getTimeDifference(prayer.time, getTodayOrTomorrowDate(day));
       
       if (diff <= THRESHOLD && day === 'today') {
         prayer.passed = true;
