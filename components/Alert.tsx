@@ -77,10 +77,10 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const handlePress = useCallback(() => {
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
     setIconIndex(nextIndex);
-    
-    setAlertPreferences(prev => ({ 
-      ...prev, 
-      [index]: ALERT_CONFIGS[nextIndex].type 
+
+    setAlertPreferences(prev => ({
+      ...prev,
+      [index]: ALERT_CONFIGS[nextIndex].type
     }));
 
     timeoutRef.current && clearTimeout(timeoutRef.current);
@@ -91,9 +91,9 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
     setIsPopupActive(true);
     timeoutRef.current = setTimeout(() => {
+      fadeAnim.value = withTiming(0, TIMING_CONFIG);
+      bounceAnim.value = withSpring(0, SPRING_CONFIG);
       setIsPopupActive(false);
-      fadeAnim.value = 0;
-      bounceAnim.value = 0;
     }, 2000);
   }, [iconIndex, index]);
 
