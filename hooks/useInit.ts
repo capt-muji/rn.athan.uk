@@ -7,11 +7,11 @@ import {
   tomorrowsPrayersAtom, 
   nextPrayerIndexAtom 
 } from '@/store/store';
-import { createTodayStructure, transformApiData } from '@/utils/prayer';
+import { createSchedule, transformApiData } from '@/utils/prayer';
 import { IApiResponse } from '@/types/api';
 import storage from '@/storage/storage';
 
-export const usePrayers = () => {
+export const useInit = () => {
   const [, setIsLoading] = useAtom(isLoadingAtom);
   const [, setHasError] = useAtom(hasErrorAtom);
   const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
@@ -28,8 +28,8 @@ export const usePrayers = () => {
       
       if (!todayRaw || !tomorrowRaw) throw new Error('Prayers not found');
 
-      const todaysPrayers = createTodayStructure(todayRaw);
-      const tomorrowsPrayers = createTodayStructure(tomorrowRaw);
+      const todaysPrayers = createSchedule(todayRaw);
+      const tomorrowsPrayers = createSchedule(tomorrowRaw);
       
       const nextPrayer = Object.values(todaysPrayers).find(p => !p.passed);
       const nextPrayerIndex = nextPrayer?.index ?? -1;
