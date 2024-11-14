@@ -4,20 +4,18 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/constants';
 import { nextPrayerIndexAtom, overlayVisibleAtom, todaysPrayersAtom, tomorrowsPrayersAtom } from '@/store/store';
-import { useTimer } from '@/hooks/useTimer';
+import { usePrayerCountdown } from '@/hooks/useCountdown';
 
 export default function Timer() {
-  const { nextPrayer } = useTimer();
-
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
 
-  const nextPrayerCountdown = useRef<String>();
-  const nextPrayerName = useRef<String>(todaysPrayers[nextPrayerIndex].english);
-  const selectedPrayerCountdown = useRef<String>('');
-  const selectedPrayerName = useRef<String>('');
+  const nextPrayerName = useRef(todaysPrayers[nextPrayerIndex].english);
+  const nextPrayerCountdown = usePrayerCountdown(nextPrayerIndex, 'today');
+  const selectedPrayerCountdown = useRef('');
+  const selectedPrayerName = useRef('');
 
   const fontFamily = { fontFamily: overlayVisible ? TEXT.famiy.medium : TEXT.famiy.regular };
 
@@ -34,9 +32,9 @@ export default function Timer() {
         <Text style={styles.text}> {'All prayers passed'} </Text>
       ) : (
         <Animated.View style={styles.wrapper}>
-          <Text style={styles.text}>{`${nextPrayerName} in`}</Text>
+          <Text style={styles.text}>{`${nextPrayerName.current} in`}</Text>
           <Animated.View style={[styles.timerContainer, animatedStyle]}>
-            <Animated.Text style={[styles.timer, fontFamily]}>{nextPrayer.timeDisplay}</Animated.Text>
+            <Animated.Text style={[styles.timer, fontFamily]}>{nextPrayerCountdown}</Animated.Text>
           </Animated.View>
         </Animated.View>
       )}
