@@ -11,17 +11,17 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { COLORS, TEXT, ANIMATION } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/store/store';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
 
 const ALERT_CONFIGS = [
-  { icon: PiBellSimpleSlash, label: "Off" },
-  { icon: PiBellSimpleRinging, label: "Notification" },
-  { icon: PiVibrate, label: "Vibrate" },
-  { icon: PiSpeakerSimpleHigh, label: "Sound" }
-];
+  { icon: PiBellSimpleSlash, label: "Off", type: AlertType.Off },
+  { icon: PiBellSimpleRinging, label: "Notification", type: AlertType.Notification },
+  { icon: PiVibrate, label: "Vibrate", type: AlertType.Vibrate },
+  { icon: PiSpeakerSimpleHigh, label: "Sound", type: AlertType.Sound }
+] as const;
 
 interface Props { index: number; isOverlay?: boolean; }
 
@@ -29,6 +29,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [alertPreferences, setAlertPreferences] = useAtom(alertPreferencesAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -68,8 +69,19 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }
   }, [overlayVisible]);
 
+  // Use stored preference or default to 0 (Off)
+  useEffect(() => {
+    setIconIndex(alertPreferences[index] || 0);
+  }, [alertPreferences, index]);
+
   const handlePress = useCallback(() => {
-    setIconIndex(prev => (prev + 1) % ALERT_CONFIGS.length);
+    const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
+    setIconIndex(nextIndex);
+    
+    setAlertPreferences(prev => ({ 
+      ...prev, 
+      [index]: ALERT_CONFIGS[nextIndex].type 
+    }));
 
     timeoutRef.current && clearTimeout(timeoutRef.current);
 
@@ -83,7 +95,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
       fadeAnim.value = 0;
       bounceAnim.value = 0;
     }, 2000);
-  }, [isOverlay]);
+  }, [iconIndex, index]);
 
   const alertAnimatedStyle = useAnimatedStyle(() => {
     if (isOverlay) return {
