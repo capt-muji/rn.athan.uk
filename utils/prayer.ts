@@ -25,11 +25,13 @@ export const transformApiData = (apiData: IApiResponse): ISingleScheduleTransfor
 /**
  * Creates structured prayer times object for today with status information. Maps prayer times to both English and Arabic names.
  */
-export const createTodayStructure = (prayers: ISingleScheduleTransformed): ITransformedToday => {
+export const createSchedule = (prayers: ISingleScheduleTransformed): ITransformedToday => {
   return ENGLISH.reduce((acc, name, index) => {
     const prayerTime = prayers[name.toLowerCase() as keyof ISingleScheduleTransformed];
+
     acc[index] = {
       index,
+      date: prayers.date,
       english: name,
       arabic: ARABIC[index],
       time: prayerTime,

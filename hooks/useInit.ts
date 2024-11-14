@@ -5,18 +5,21 @@ import {
   hasErrorAtom, 
   todaysPrayersAtom, 
   tomorrowsPrayersAtom, 
-  nextPrayerIndexAtom 
+  nextPrayerIndexAtom,
+  dateAtom 
 } from '@/store/store';
-import { createTodayStructure, transformApiData } from '@/utils/prayer';
+import { createSchedule, transformApiData } from '@/utils/prayer';
 import { IApiResponse } from '@/types/api';
 import storage from '@/storage/storage';
+import { formatDate } from '@/utils/time';
 
-export const usePrayers = () => {
+export const useInit = () => {
   const [, setIsLoading] = useAtom(isLoadingAtom);
   const [, setHasError] = useAtom(hasErrorAtom);
   const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
   const [, setTomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [, setDate] = useAtom(dateAtom);
 
   const initialize = useCallback(async (apiData: IApiResponse) => {
     try {
@@ -28,8 +31,8 @@ export const usePrayers = () => {
       
       if (!todayRaw || !tomorrowRaw) throw new Error('Prayers not found');
 
-      const todaysPrayers = createTodayStructure(todayRaw);
-      const tomorrowsPrayers = createTodayStructure(tomorrowRaw);
+      const todaysPrayers = createSchedule(todayRaw);
+      const tomorrowsPrayers = createSchedule(tomorrowRaw);
       
       const nextPrayer = Object.values(todaysPrayers).find(p => !p.passed);
       const nextPrayerIndex = nextPrayer?.index ?? -1;
@@ -37,6 +40,9 @@ export const usePrayers = () => {
       setTodaysPrayers(todaysPrayers);
       setTomorrowsPrayers(tomorrowsPrayers);
       setNextPrayerIndex(nextPrayerIndex);
+
+      const formattedDate = formatDate(Object.values(todaysPrayers)[0].date);
+      setDate(formattedDate);
 
       setIsLoading(false);
       setHasError(false);

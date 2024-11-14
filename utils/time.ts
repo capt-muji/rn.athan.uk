@@ -69,32 +69,6 @@ export const addMinutes = (time: string, minutes: number): string => {
   return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 };
 
-// Gets prayer information including name, time remaining, and current status.
-// Returns formatted object with timer display and prayer details.
-export const getCurrentPrayerInfo = (
-  prayers: ITransformedToday,
-  prayerIndex: number,
-  selectedDate: DaySelection = 'today',
-  overrideIndex?: number  // Add this parameter
-): IPrayerInfo => {
-  if (!prayers || Object.keys(prayers).length === 0) return { timerName: '', timeDisplay: '' };
-
-  // Use overrideIndex if provided, otherwise use prayerIndex
-  const index = typeof overrideIndex === 'number' ? overrideIndex : prayerIndex;
-  const prayer = prayers[index];
-  
-  if (!prayer) return { timerName: 'All prayers passed', timeDisplay: '' };
-
-  const diff = getTimeDifference(prayer.time, getTodayOrTomorrow(selectedDate));
-
-  return {
-    timerName: prayer.english,
-    timeDisplay: formatTime(diff),
-    timeDifference: diff,
-    currentPrayer: prayer
-  };
-};
-
 // Checks if provided date is either today or in the future.
 // Used to filter past prayer times and validate date selections.
 export const isDateTodayOrFuture = (date: string): boolean => {
@@ -106,3 +80,12 @@ export const isDateTodayOrFuture = (date: string): boolean => {
 
   return checkDate >= today;
 };
+
+// Formats date string into human readable format.
+// Returns date in format "Wed, 24 Jan 2024" (GB locale).
+export const formatDate = (date: string): string => new Date(date).toLocaleDateString('en-GB', {
+  weekday: 'short',
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric'
+});
