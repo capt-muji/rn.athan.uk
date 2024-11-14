@@ -14,6 +14,7 @@ import { COLORS, TEXT, ANIMATION } from '@/constants';
 import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
+const TIMING_CONFIG = { duration: 1 };
 
 const ALERT_CONFIGS = [
   { icon: PiBellSimpleSlash, label: "Off" },
@@ -74,12 +75,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
     setIconIndex(prev => (prev + 1) % ALERT_CONFIGS.length);
 
     bounceAnim.value = 0;
-    fadeAnim.value = withSpring(1, { ...SPRING_CONFIG, duration: 1 });
+    fadeAnim.value = withTiming(1, TIMING_CONFIG);
     bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
     timeoutRef.current = setTimeout(() => {
-      fadeAnim.value = withSpring(0, { duration: 1 });
-      bounceAnim.value = withSpring(0);
+      fadeAnim.value = withTiming(0, TIMING_CONFIG);
+      bounceAnim.value = withSpring(0, SPRING_CONFIG);
       setIsPopupActive(false);
     }, 2000);
   }, [isOverlay]);
@@ -126,13 +127,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
         </Animated.View>
       </Pressable>
 
-      <Animated.View
-        style={[
-          popupAnimatedStyle,
-          styles.popup,
-          isOverlay && !isNext && styles.popupOverlay,
-        ]}
-      >
+      <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
         <IconComponent color={(isOverlay && !isNext) ? 'white' : COLORS.textPrimary} size={20} style={styles.popupIcon} />
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
