@@ -1,7 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Portal } from 'react-native-paper';
-import Timer from '@/components/Timer';
+import Countdown from '@/components/Countdown';
 import DateDisplay from '@/components/DateDisplay';
 import Prayer from '@/components/Prayer';
 import Footer from '@/components/Footer';
@@ -18,7 +17,7 @@ export default function Main() {
       <RadialGlow />
       <ActiveBackground />
 
-      <Timer />
+      <Countdown />
       <DateDisplay />
 
       {ENGLISH.map((_, index) => (
