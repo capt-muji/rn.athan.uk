@@ -1,7 +1,7 @@
 import { MMKV } from 'react-native-mmkv';
 
 import { DaySelection, ISingleScheduleTransformed } from '@/types/prayers';
-import { getTodayOrTomorrow } from '@/utils/time';
+import { getTodayOrTomorrowDate } from '@/utils/time';
 
 const storage = new MMKV();
 
@@ -12,7 +12,8 @@ const storePrayers = (prayers: ISingleScheduleTransformed[]) => {
 };
 
 const getTodayOrTomorrowPrayers = (day: DaySelection = 'today'): ISingleScheduleTransformed | null => {
-  const data = storage.getString(getTodayOrTomorrow(day));
+  const date = getTodayOrTomorrowDate(day);
+  const data = storage.getString(date);
   return data ? JSON.parse(data) : null;
 };
 
