@@ -58,6 +58,15 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }
   }, [nextPrayerIndex]);
 
+  useEffect(() => {
+    if (isOverlay && !overlayVisible) {
+      setIsPopupActive(false);
+      fadeAnim.value = 0
+      bounceAnim.value = 0
+      timeoutRef.current && clearTimeout(timeoutRef.current);
+    }
+  }, [overlayVisible]);
+
   const handlePress = useCallback((e) => {
     if (!isOverlay) e?.stopPropagation();
     setIsPopupActive(true);
