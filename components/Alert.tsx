@@ -127,7 +127,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
-        <IconComponent color={(isOverlay && !isNext) ? 'black' : COLORS.textPrimary} size={20} style={styles.popupIcon} />
+        <IconComponent color={(isOverlay && !isNext) ? 'white' : COLORS.textPrimary} size={20} style={styles.popupIcon} />
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
     </View>
@@ -155,12 +155,16 @@ const styles = StyleSheet.create({
     marginRight: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.5,
     shadowRadius: 3.84,
     backgroundColor: 'black',
   },
   popupOverlay: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.primary,
+    shadowColor: COLORS.primaryShadow,
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.35,
+    shadowRadius: 10,
   },
   popupIcon: {
     marginRight: 15
@@ -170,6 +174,6 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
   },
   labelOverlay: {
-    color: 'black',
+    color: 'white',
   },
 });
