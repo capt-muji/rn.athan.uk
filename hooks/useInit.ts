@@ -22,10 +22,10 @@ export const useInit = () => {
   const [, setDate] = useAtom(dateAtom);
 
   const initialize = useCallback(async (apiData: IApiResponse) => {
+    
     try {
       const transformedPrayers = transformApiData(apiData);
       storage.prayers.storePrayers(transformedPrayers);
-
       const todayRaw = storage.prayers.getTodayOrTomorrowPrayers('today');
       const tomorrowRaw = storage.prayers.getTodayOrTomorrowPrayers('tomorrow');
       
