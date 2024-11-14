@@ -58,6 +58,15 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }
   }, [nextPrayerIndex]);
 
+  useEffect(() => {
+    if (isOverlay && !overlayVisible) {
+      setIsPopupActive(false);
+      fadeAnim.value = 0
+      bounceAnim.value = 0
+      timeoutRef.current && clearTimeout(timeoutRef.current);
+    }
+  }, [overlayVisible]);
+
   const handlePress = useCallback((e) => {
     if (!isOverlay) e?.stopPropagation();
     setIsPopupActive(true);
@@ -117,9 +126,9 @@ export default function Alert({ index, isOverlay = false }: Props) {
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[styles.popup, popupAnimatedStyle]}>
-        <IconComponent color={COLORS.textPrimary} size={20} style={styles.popupIcon} />
-        <Text style={styles.label}>{ALERT_CONFIGS[iconIndex].label}</Text>
+      <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
+        <IconComponent color={(isOverlay && !isNext) ? 'white' : COLORS.textPrimary} size={20} style={styles.popupIcon} />
+        <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
     </View>
   );
@@ -146,9 +155,16 @@ const styles = StyleSheet.create({
     marginRight: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.5,
     shadowRadius: 3.84,
     backgroundColor: 'black',
+  },
+  popupOverlay: {
+    backgroundColor: COLORS.primary,
+    shadowColor: COLORS.primaryShadow,
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.35,
+    shadowRadius: 10,
   },
   popupIcon: {
     marginRight: 15
@@ -156,5 +172,8 @@ const styles = StyleSheet.create({
   label: {
     fontSize: TEXT.size,
     color: COLORS.textPrimary,
+  },
+  labelOverlay: {
+    color: 'white',
   },
 });

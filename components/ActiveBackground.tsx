@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: PRAYER.borderRadius,
     shadowColor: COLORS.primaryShadow,
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.35,
     shadowRadius: 5,
   }
 });
