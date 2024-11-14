@@ -2,6 +2,7 @@ import { StyleSheet, View, Pressable } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
+import * as Haptics from 'expo-haptics';
 
 import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/constants';
@@ -62,6 +63,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   };
 
   const handlePress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
     if (isOverlay) {
       setOverlayVisible(false);
       return;
