@@ -107,7 +107,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       flexDirection: 'row' as const,
       alignItems: 'center' as const,
       marginHorizontal: !isOverlay ? SCREEN.paddingHorizontal : 0,
-      opacity: isOverlay && selectedPrayerIndex !== index ? 0 : 1,
+      display: isOverlay && selectedPrayerIndex !== index ? 'none' : 'flex',
     };
 
     return baseStyles;
