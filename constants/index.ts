@@ -17,7 +17,7 @@ export const SCREEN = {
 
 export const COLORS = {
   primary: '#005dd5',
-  activeBackground: '005dd5',
+  activeBackground: '#005dd5',
   inactiveBackground: '#8caeff', // make full color then add opacity
   primaryShadow: '#04439e',
   textPrimary: '#ffffff',
