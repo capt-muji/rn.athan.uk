@@ -31,8 +31,8 @@ export default function Timer() {
 
   return (
     <Animated.View style={[styles.container]}>
-      <Text style={[styles.text]}>{prayerName} in</Text>
-      <Animated.Text style={[styles.countdown, fontFamily, animatedStyle]}>{prayerCountdown}</Animated.Text>
+      <Text style={[styles.text]}>{prayerName || ''} in</Text>
+      <Animated.Text style={[styles.countdown, fontFamily, animatedStyle]}>{prayerCountdown || ' '}</Animated.Text>
     </Animated.View>
   );
 }
