@@ -32,7 +32,7 @@ export default function Timer() {
   return (
     <View style={styles.componentContainer}>
       {!overlayVisible && nextPrayerIndex === -1 ? (
-        <Text style={styles.text}>All prayers passed</Text>
+        <Text style={styles.text}>Refreshing at midnight</Text>
       ) : (
         <Animated.View style={styles.contentContainer}>
           <Text style={styles.text}>{prayerName} in</Text>
