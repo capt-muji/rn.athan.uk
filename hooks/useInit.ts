@@ -35,7 +35,7 @@ export const useInit = () => {
       const tomorrowsPrayers = createSchedule(tomorrowRaw);
       
       const nextPrayer = Object.values(todaysPrayers).find(p => !p.passed);
-      const nextPrayerIndex = nextPrayer?.index ?? -1;
+      const nextPrayerIndex = nextPrayer?.index ?? 0; // Fallback to Fajr if all prayers have passed
 
       setTodaysPrayers(todaysPrayers);
       setTomorrowsPrayers(tomorrowsPrayers);
