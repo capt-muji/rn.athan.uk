@@ -17,7 +17,7 @@ import { ANIMATION, COLORS, OVERLAY, PRAYER } from '@/constants';
 import { getTodayOrTomorrowDate } from '@/utils/time';
 
 const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };
-const SPRING_CONFIG = { damping: 10, stiffness: 100, mass: 1 };
+const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };
 
 export default function ActiveBackground() {
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
