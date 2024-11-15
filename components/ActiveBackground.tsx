@@ -18,6 +18,7 @@ export default function ActiveBackground() {
     const activePrayer = absoluteMeasurements[nextPrayerIndex];
 
     return {
+      // opacity: withTiming(0.1, { duration: ANIMATION.overlayDelay }),
       opacity: withTiming(1, { duration: ANIMATION.overlayDelay }),
       position: 'absolute',
       top: withSpring(activePrayer.pageY, SPRING_CONFIG),
@@ -34,7 +35,8 @@ export default function ActiveBackground() {
 const styles = StyleSheet.create({
   background: {
     position: 'absolute',
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.activeBackground,
+    // backgroundColor: COLORS.inactiveBackground,
     borderRadius: PRAYER.borderRadius,
     shadowColor: COLORS.primaryShadow,
     shadowOffset: { width: 0, height: 10 },
