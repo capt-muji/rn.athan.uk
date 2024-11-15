@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size - 2,
     fontFamily: TEXT.famiy.regular,
     marginBottom: 5,
-    opacity: TEXT.opacity
+    opacity: TEXT.opacityHigher
   },
   date: {
     fontFamily: TEXT.famiy.regular,
