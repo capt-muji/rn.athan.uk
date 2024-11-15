@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, dateAtom } from '@/store/store';
 import { DaySelection } from '@/types/prayers';
 import { getTimeDifference, getTodayOrTomorrowDate, formatTime } from '@/utils/time';
 
@@ -10,6 +10,7 @@ export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
   const [countdown, setCountdown] = useState('');
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
+  const [date] = useAtom(dateAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
 
   useEffect(() => {
@@ -21,17 +22,18 @@ export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
       
       if (diff <= THRESHOLD && day === 'today') {
         prayer.passed = true;
-        setNextPrayerIndex(nextPrayerIndex === 6 ? 0 : nextPrayerIndex + 1);
+        setNextPrayerIndex(nextPrayerIndex === 6 ? 1 : nextPrayerIndex + 1);
         return;
       }
 
+      const nowDate = getTodayOrTomorrowDate('today');
       setCountdown(formatTime(diff));
     };
 
     updateCountdown();
     const intervalId = setInterval(updateCountdown, 1000);
     return () => clearInterval(intervalId);
-  }, [prayerIndex, day, todaysPrayers, tomorrowsPrayers, nextPrayerIndex]);
+  }, []);
 
   return countdown;
 };
