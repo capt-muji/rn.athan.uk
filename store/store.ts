@@ -64,5 +64,6 @@ const createInitialAlertPreferences = (): AlertPreferences => {
 export const alertPreferencesAtom = atomWithStorage<AlertPreferences>(
   'alert_preferences',
   createInitialAlertPreferences(),
-  createJSONStorage(() => jotaiStorage)
+  createJSONStorage(() => jotaiStorage),
+  { getOnInit: true }
 );
