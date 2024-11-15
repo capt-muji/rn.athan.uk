@@ -2,12 +2,22 @@ import { DaySelection } from "@/types/prayers";
 
 // Takes 'today' or 'tomorrow' and returns date in YYYY-MM-DD format.
 // Used for prayer time calculations and date display formatting.
-export const getTodayOrTomorrowDate = (day: DaySelection = 'today'): string => {
+export const getTodayOrTomorrowDate = (daySelection: DaySelection = 'today'): string => {
   const date = new Date();
-  if (day === 'tomorrow') {
+
+  if (daySelection === 'tomorrow') {
     date.setDate(date.getDate() + 1);
   }
-  return date.toISOString().split('T')[0];
+
+  const londonDate = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(date);
+
+  const [day, month, year] = londonDate.split('/');
+  return `${year}-${month}-${day}`;
 };
 
 // Calculates time difference in milliseconds between now and target prayer time.
