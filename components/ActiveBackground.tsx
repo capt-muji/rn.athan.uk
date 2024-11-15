@@ -6,8 +6,6 @@ import Animated, {
   withSpring,
   withTiming,
   useSharedValue,
-  runOnUI,
-  runOnJS
 } from 'react-native-reanimated';
 import {
   nextPrayerIndexAtom,
