@@ -31,16 +31,12 @@ export default function Timer() {
 
   return (
     <View style={styles.componentContainer}>
-      {!overlayVisible && nextPrayerIndex === -1 ? (
-        <Text style={styles.text}>Refreshing at midnight</Text>
-      ) : (
-        <Animated.View style={styles.contentContainer}>
-          <Text style={styles.text}>{prayerName} in</Text>
-          <Animated.View style={[styles.countdownContainer, animatedStyle]}>
-            <Animated.Text style={[styles.countdown, fontFamily]}>{prayerCountdown}</Animated.Text>
-          </Animated.View>
+      <Animated.View style={styles.contentContainer}>
+        <Text style={styles.text}>{prayerName} in</Text>
+        <Animated.View style={[styles.countdownContainer, animatedStyle]}>
+          <Animated.Text style={[styles.countdown, fontFamily]}>{prayerCountdown}</Animated.Text>
         </Animated.View>
-      )}
+      </Animated.View>
     </View>
   );
 }
