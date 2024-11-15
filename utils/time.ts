@@ -3,7 +3,8 @@ import { DaySelection } from "@/types/prayers";
 // Takes 'today' or 'tomorrow' and returns date in YYYY-MM-DD format.
 // Used for prayer time calculations and date display formatting.
 export const getTodayOrTomorrowDate = (daySelection: DaySelection = 'today'): string => {
-  const date = new Date();
+  // const date = new Date();
+  const date = getAlmostMidnightDate(); 
 
   if (daySelection === 'tomorrow') {
     date.setDate(date.getDate() + 1);
@@ -98,4 +99,12 @@ export const formatDate = (date: string): string => new Date(date).toLocaleDateS
   day: '2-digit',
   month: 'short',
   year: 'numeric'
+
 });
+// TEMPORARY: Returns a date object set to 5 seconds before midnight
+// Used for testing midnight transitions
+export const getAlmostMidnightDate = (): Date => {
+  const date = new Date();
+  date.setHours(23, 59, 55, 0);
+  return date;
+};
