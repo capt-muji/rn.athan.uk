@@ -41,8 +41,8 @@ export const useInit = () => {
       setTomorrowsPrayers(tomorrowsPrayers);
       setNextPrayerIndex(nextPrayerIndex);
 
-      const formattedDate = formatDate(Object.values(todaysPrayers)[0].date);
-      setDate(formattedDate);
+      const dataDate = Object.values(todaysPrayers)[0].date;
+      setDate(dataDate);
 
       setIsLoading(false);
       setHasError(false);
