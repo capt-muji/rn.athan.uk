@@ -1,5 +1,5 @@
 import { StyleSheet, Pressable, View } from 'react-native';
-import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming, withSpring, runOnJS } from 'react-native-reanimated';
+import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 import { BlurView } from 'expo-blur';
 import { useAtom } from 'jotai';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -10,16 +10,15 @@ import {
   absolutePrayerMeasurementsAtom,
   todaysPrayersAtom,
 } from '@/store/store';
-import { COLORS, TEXT, OVERLAY, ANIMATION, ENGLISH } from '@/constants';
+import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Prayer from './Prayer';
 import RadialGlow from './RadialGlow';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import * as Haptics from 'expo-haptics';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
-  const [showActiveBackground, setShowActiveBackground] = useState(true);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
   const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
