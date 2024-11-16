@@ -24,7 +24,9 @@ export const useInit = () => {
   const initialize = useCallback(async (apiData: IApiResponse) => {
     
     try {
+      console.log('11111x');
       const transformedPrayers = transformApiData(apiData);
+      console.log('222222');
       storage.prayers.storePrayers(transformedPrayers);
       const todayRaw = storage.prayers.getTodayOrTomorrowPrayers('today');
       const tomorrowRaw = storage.prayers.getTodayOrTomorrowPrayers('tomorrow');
