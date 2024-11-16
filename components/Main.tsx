@@ -14,18 +14,18 @@ export default function Main() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal, paddingBottom: insets.bottom }]}>
-      <RadialGlow />
-      <ActiveBackground />
+      {/* <RadialGlow /> */}
+      {/* <ActiveBackground /> */}
 
-      <Countdown />
-      <DateDisplay />
+      {/* <Countdown /> */}
+      {/* <DateDisplay /> */}
 
       {PRAYERS_ENGLISH.map((_, index) => (
         <Prayer key={index} index={index} />
       ))}
 
-      <Overlay />
-      <Footer />
+      {/* <Overlay /> */}
+      {/* <Footer /> */}
     </View>
   );
 }
