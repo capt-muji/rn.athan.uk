@@ -11,6 +11,8 @@
     "add": "echo 'Use: `npx expo install <package>` for Expo/RN packages, yarn add <package> for others'"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
     "expo": "^51.0.38",
     "expo-blur": "~13.0.2",
     "expo-dev-client": "~4.0.28",
