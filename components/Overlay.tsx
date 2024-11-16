@@ -96,7 +96,7 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {/* Replace the ENGLISH.map with conditional rendering */}
+          {/* Replace the PRAYERS_ENGLISH.map with conditional rendering */}
           {prayerMeasurements[selectedPrayerIndex] && (
             <View
               style={{
