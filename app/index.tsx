@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, StatusBar, Dimensions } from 'react-native';
+import { StyleSheet, StatusBar, Pressable, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
+import { router } from 'expo-router';
 
 import Main from '@/components/Main';
 import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom, overlayVisibleAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom } from '@/store/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { useInit } from '@/hooks/useInit';
 import { COLORS, OVERLAY } from '@/constants';
@@ -43,7 +44,6 @@ export default function Index() {
         end={{ x: 1, y: 1 }}
       />
       <StatusBar barStyle="light-content" />
-
       {isLoading && <WaveIndicator color="white" />}
       {hasError && !isLoading && <Error />}
       {!hasError && !isLoading && <Main />}
@@ -59,5 +59,5 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: OVERLAY.zindexes.background
-  },
+  }
 });
