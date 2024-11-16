@@ -40,30 +40,19 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
 export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTransformed[] => {
   const transformations: ISingleApiResponseTransformed[] = [];
 
-  console.log('O1');
   const entries = Object.entries(apiData.times);
 
-  console.log('O2');
-
-  entries.forEach((entry, index) => {
-    console.log('O3');
-
-    const [date, times] = entry;
-
-    const x = getLastThirdOfNight(times.magrib, times.fajr);
-    console.log('date: ', date, x);
-    console.log('====');
-
+  entries.forEach(([date, times]) => {
     const schedule: ISingleApiResponseTransformed = {
       date,
+      thirdOfNight: getLastThirdOfNight(times.magrib, times.fajr),
       fajr: times.fajr,
       sunrise: times.sunrise,
       duha: addMinutes(times.sunrise, 1),
       dhuhr: times.dhuhr,
       asr: times.asr,
       magrib: times.magrib,
-      isha: times.isha,
-      thirdOfNight: getLastThirdOfNight(times.magrib, times.fajr)
+      isha: times.isha
     };
 
     transformations.push(schedule);
