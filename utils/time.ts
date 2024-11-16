@@ -2,12 +2,16 @@ import { DaySelection } from "@/types/prayers";
 import { format, addDays, setHours, setMinutes, isAfter, addMinutes as addMins, intervalToDuration, isFuture, isToday, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 
+// Creates a new Date object in London timezone
+// Converts input date or current date to London time
 export const createLondonDate = (date?: Date | string): Date => {
   const targetDate = date ? new Date(date) : new Date();
   const londonTime = formatInTimeZone(targetDate, 'Europe/London', 'yyyy-MM-dd HH:mm:ssXXX');
   return new Date(londonTime);
 };
 
+// Returns formatted date string for today or tomorrow
+// Based on the provided day selection parameter
 export const getTodayOrTomorrowDate = (daySelection: DaySelection = 'today'): string => {
   let date = createLondonDate();
   
@@ -18,6 +22,8 @@ export const getTodayOrTomorrowDate = (daySelection: DaySelection = 'today'): st
   return format(date, 'yyyy-MM-dd');
 };
 
+// Calculates time difference in milliseconds between now and target time
+// Returns adjusted time difference if the target time has passed
 export const getTimeDifference = (targetTime: string, date: string = getTodayOrTomorrowDate('today')): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
   const now = createLondonDate();
@@ -36,6 +42,8 @@ export const getTimeDifference = (targetTime: string, date: string = getTodayOrT
   return diff;
 };
 
+// Checks if a given time has already passed today
+// Compares target time with current London time
 export const isTimePassed = (time: string): boolean => {
   const [hours, minutes] = time.split(':').map(Number);
   const now = createLondonDate();
@@ -45,8 +53,8 @@ export const isTimePassed = (time: string): boolean => {
   return isAfter(now, target);
 };
 
-// Formats milliseconds into readable time units (hours, minutes, seconds).
-// Handles edge cases like zero values and returns condensed format (e.g., "1h 30m 5s").
+// Converts milliseconds into human-readable time format
+// Returns formatted string with hours, minutes, and seconds
 export const formatTime = (ms: number): string => {
   if (ms < 0) return '0s';
   
@@ -60,6 +68,8 @@ export const formatTime = (ms: number): string => {
   ].filter(Boolean).join(' ');
 };
 
+// Adds specified minutes to a given time string
+// Returns new time in HH:mm format
 export const addMinutes = (time: string, minutes: number): string => {
   const [h, m] = time.split(':').map(Number);
   let date = createLondonDate();
@@ -68,11 +78,15 @@ export const addMinutes = (time: string, minutes: number): string => {
   return format(date, 'HH:mm');
 };
 
+// Checks if a date is either today or in the future
+// Returns true for today and future dates, false for past dates
 export const isDateTodayOrFuture = (date: string): boolean => {
   const parsedDate = createLondonDate(date);
   return isToday(parsedDate) || isFuture(parsedDate);
 };
 
+// Formats a date string into a readable format
+// Returns date in format: "Day, DD MMM YYYY"
 export const formatDate = (date: string): string => {
   return format(createLondonDate(date), 'EEE, dd MMM yyyy');
 };
