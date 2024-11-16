@@ -8,10 +8,9 @@ import {
   nextPrayerIndexAtom,
   dateAtom 
 } from '@/store/store';
-import { createSchedule, transformApiData } from '@/utils/prayer';
+import { createSchedule, filterApiData, transformApiData } from '@/utils/prayer';
 import { IApiResponse } from '@/types/api';
 import storage from '@/storage/storage';
-import { formatDate } from '@/utils/time';
 
 export const useInit = () => {
   const [, setIsLoading] = useAtom(isLoadingAtom);
@@ -24,10 +23,15 @@ export const useInit = () => {
   const initialize = useCallback(async (apiData: IApiResponse) => {
     
     try {
-      console.log('11111x');
-      const transformedPrayers = transformApiData(apiData);
-      console.log('222222');
+      const filteredData = filterApiData(apiData);
+      const transformedPrayers = transformApiData(filteredData);
+
+      console.log('<user>: 🐳 ↼↼↼ transformedPrayers :: start ⇀⇀⇀ 🐳');
+      console.log(JSON.stringify(transformedPrayers, null, 2));
+      console.log('<user>: 🐳 ↽↽↽ transformedPrayers :: end   ⇁⇁⇁ 🐳');
+
       storage.prayers.storePrayers(transformedPrayers);
+
       const todayRaw = storage.prayers.getTodayOrTomorrowPrayers('today');
       const tomorrowRaw = storage.prayers.getTodayOrTomorrowPrayers('tomorrow');
       

@@ -10,23 +10,12 @@ import { isTimePassed, addMinutes } from './time';
 export const filterApiData = (apiData: IApiResponse): IApiResponse => {
   const timesFiltered: IApiTimes = {};
 
-  console.log('eeeeex');
-  
   const entries = Object.entries(apiData.times);
-
-  console.log('<user>: 🐳 ↼↼↼ entries :: start ⇀⇀⇀ 🐳');
-  console.log(JSON.stringify(entries, null, 2));
-  console.log('<user>: 🐳 ↽↽↽ entries :: end   ⇁⇁⇁ 🐳');
 
   entries.forEach(([date, times]) => {
     if (!isDateTodayOrFuture(date)) return;
     timesFiltered[date] = times;
   });
-
-  console.log('<user>: 🐳 ↼↼↼ entries :: start ⇀⇀⇀ 🐳');
-  console.log(JSON.stringify(timesFiltered, null, 2));
-  console.log('<user>: 🐳 ↽↽↽ entries :: end   ⇁⇁⇁ 🐳');
-
 
   return {
     city: apiData.city,
