@@ -118,7 +118,7 @@ Notifications are scheduled:
    # Install package
    npx expo install <package-name>
 
-   # Build for iOS
+   # Development build for iOS
    eas build --profile development --platform ios
 
    # For physical device:
