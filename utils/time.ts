@@ -78,12 +78,11 @@ export const addMinutes = (time: string, minutes: number): string => {
   return format(date, 'HH:mm');
 };
 
-// Checks if a date is yesterday, today or in the future
-// Returns true for yesterday, today and future dates, false for older dates
-export const isYesterdayOrFuture = (date: string): boolean => {
+// Checks if a date is either today or in the future
+// Returns true for today and future dates, false for past dates
+export const isDateTodayOrFuture = (date: string): boolean => {
   const parsedDate = createLondonDate(date);
-  const yesterday = subDays(createLondonDate(), 2);
-  return isAfter(parsedDate, yesterday);
+  return isToday(parsedDate) || isFuture(parsedDate);
 };
 
 // Formats a date string into a readable format
@@ -94,23 +93,28 @@ export const formatDate = (date: string): string => {
 
 // Calculates the start time of the last third of the night
 // Uses Maghrib and Fajr times to determine night duration
-export const getLastThirdOfNight = (maghribTime: string, fajrTime: string, date: string = getTodayOrTomorrowDate('today')): string => {
-  const [mHours, mMinutes] = maghribTime.split(':').map(Number);
+export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
+  const [mHours, mMinutes] = magribTime.split(':').map(Number);
   const [fHours, fMinutes] = fajrTime.split(':').map(Number);
   
-  let maghrib = createLondonDate(date);
+  // create a new date object in London timezone for maghrib and fajr times
+  let maghrib = createLondonDate();
   maghrib = setHours(setMinutes(maghrib, mMinutes), mHours);
-  
-  let fajr = createLondonDate(date);
+
+  let fajr = createLondonDate();
   fajr = setHours(setMinutes(fajr, fMinutes), fHours);
-  
-  // If Fajr time is earlier than Maghrib, it means it's for the next day
-  if (fajr < maghrib) {
-    fajr = addDays(fajr, 1);
-  }
-  
+
+  // calculate the duration of the night from Maghrib to Fajr
   const nightDuration = fajr.getTime() - maghrib.getTime();
+  // calculate the start time of the last third of the night
   const lastThirdStart = new Date(maghrib.getTime() + (nightDuration * 2/3));
-  
+
+  // add 10 minutes to the last third start time
+  // to ensure we are within the last third of the night
+  const minutesToAdd = 0;
+  lastThirdStart.setMinutes(lastThirdStart.getMinutes() + minutesToAdd);
+
+
+  // return the formatted time string in 24-hour format (HH:mm)
   return format(lastThirdStart, 'HH:mm');
 };

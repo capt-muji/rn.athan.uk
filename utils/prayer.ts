@@ -1,16 +1,60 @@
-import { ISingleScheduleTransformed, ITransformedToday } from '@/types/prayers';
-import { IApiResponse } from '@/types/api';
+import { ISingleApiResponseTransformed, IScheduleNow } from '@/types/prayers';
+import { IApiResponse, IApiTimes } from '@/types/api';
 import { ENGLISH, ARABIC } from '@/constants';
-import { isDateTodayOrFuture } from './time';
+import { isDateTodayOrFuture, getLastThirdOfNight } from './time';
 import { isTimePassed, addMinutes } from './time';
 
 /**
- * Transforms API response data into normalized prayer schedule format. Filters out past dates and adds calculated Duha time.
+ * Filters API response data to only include today and future dates
  */
-export const transformApiData = (apiData: IApiResponse): ISingleScheduleTransformed[] => {
-  return Object.entries(apiData.times)
-    .filter(([date]) => isDateTodayOrFuture(date))
-    .map(([date, times]) => ({
+export const filterApiData = (apiData: IApiResponse): IApiResponse => {
+  const timesFiltered: IApiTimes = {};
+
+  console.log('eeeeex');
+  
+  const entries = Object.entries(apiData.times);
+
+  console.log('muji: 🐳 ↼↼↼ entries :: start ⇀⇀⇀ 🐳');
+  console.log(JSON.stringify(entries, null, 2));
+  console.log('muji: 🐳 ↽↽↽ entries :: end   ⇁⇁⇁ 🐳');
+
+  entries.forEach(([date, times]) => {
+    if (!isDateTodayOrFuture(date)) return;
+    timesFiltered[date] = times;
+  });
+
+  console.log('muji: 🐳 ↼↼↼ entries :: start ⇀⇀⇀ 🐳');
+  console.log(JSON.stringify(timesFiltered, null, 2));
+  console.log('muji: 🐳 ↽↽↽ entries :: end   ⇁⇁⇁ 🐳');
+
+
+  return {
+    city: apiData.city,
+    times: timesFiltered
+  };
+};
+
+/**
+ * Transforms API response data into normalized prayer schedule format and adds calculated Duha time.
+ */
+export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTransformed[] => {
+  const transformations: ISingleApiResponseTransformed[] = [];
+
+  console.log('O1');
+  const entries = Object.entries(apiData.times);
+
+  console.log('O2');
+
+  entries.forEach((entry, index) => {
+    console.log('O3');
+
+    const [date, times] = entry;
+
+    const x = getLastThirdOfNight(times.magrib, times.fajr);
+    console.log('date: ', date, x);
+    console.log('====');
+
+    const schedule: ISingleApiResponseTransformed = {
       date,
       fajr: times.fajr,
       sunrise: times.sunrise,
@@ -18,18 +62,26 @@ export const transformApiData = (apiData: IApiResponse): ISingleScheduleTransfor
       dhuhr: times.dhuhr,
       asr: times.asr,
       magrib: times.magrib,
-      isha: times.isha
-    }));
+      isha: times.isha,
+      thirdOfNight: getLastThirdOfNight(times.magrib, times.fajr)
+    };
+
+    transformations.push(schedule);
+  });
+
+  return transformations;
 };
 
 /**
  * Creates structured prayer times object for today with status information. Maps prayer times to both English and Arabic names.
  */
-export const createSchedule = (prayers: ISingleScheduleTransformed): ITransformedToday => {
-  return ENGLISH.reduce((acc, name, index) => {
-    const prayerTime = prayers[name.toLowerCase() as keyof ISingleScheduleTransformed];
+export const createSchedule = (prayers: ISingleApiResponseTransformed): IScheduleNow => {
+  const schedule: IScheduleNow = {};
 
-    acc[index] = {
+  ENGLISH.forEach((name, index) => {
+    const prayerTime = prayers[name.toLowerCase() as keyof ISingleApiResponseTransformed];
+    
+    schedule[index] = {
       index,
       date: prayers.date,
       english: name,
@@ -38,6 +90,7 @@ export const createSchedule = (prayers: ISingleScheduleTransformed): ITransforme
       passed: isTimePassed(prayerTime),
       isNext: false
     };
-    return acc;
-  }, {} as ITransformedToday);
+  });
+
+  return schedule;
 };
