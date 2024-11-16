@@ -1,5 +1,8 @@
-export const ENGLISH: Readonly<string[]> = ["Last Third", "Fajr", "Sunrise", "Duha", "Dhuhr", "Asr", "Magrib", "Isha"];
-export const ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "العصر", "الظهر", "الضحى", "الشروق", "الفجر", "الثلث الأخير"].reverse();
+export const PRAYERS_ENGLISH: Readonly<string[]> = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Magrib", "Isha"];
+export const PRAYERS_ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "العصر", "الظهر", "الشروق", "الفجر"].reverse();
+
+export const EXTRAS_ENGLISH: Readonly<string[]> = ["Last Third", "Duha"];
+export const EXTRAS_ARABIC: Readonly<string[]> = ["الضحى", "الثلث الأخير"].reverse();
 
 export const TEXT = {
   famiy: {
@@ -7,6 +10,7 @@ export const TEXT = {
     medium: 'Roboto-Medium',
   },
   size: 18,
+  sizeSmall: 16,
   opacity: 0.65,
   opacityHigher: 0.75,
 };
