@@ -1,4 +1,4 @@
-export interface ISingleScheduleTransformed {
+export interface ISingleApiResponseTransformed {
   date: string;
   fajr: string;
   sunrise: string;
@@ -19,7 +19,7 @@ export interface ITransformedPrayer {
   isNext: boolean;
 }
 
-export interface ITransformedToday {
+export interface IScheduleNow {
   [number: string]: ITransformedPrayer;
 };
 
@@ -46,7 +46,7 @@ export interface IMinutesConfig {
 }
 
 export interface IPrayerConfig {
-  prayers: ITransformedToday;
+  prayers: IScheduleNow;
   prayerIndex: number;
   selectedDate?: DaySelection;
 }
