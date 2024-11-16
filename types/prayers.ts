@@ -7,6 +7,7 @@ export interface ISingleApiResponseTransformed {
   asr: string;
   magrib: string;
   isha: string;
+  thirdOfNight: string;
 }
 
 export interface ITransformedPrayer {
