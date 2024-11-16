@@ -4,8 +4,9 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 
 export default function Layout() {
+  console.log('[Layout] Rendering layout');
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'blue' }}>
       <Stack
         screenOptions={{
           headerShown: false,
@@ -20,11 +21,16 @@ export default function Layout() {
       >
         <Stack.Screen
           name="index"
+          options={{
+            gestureEnabled: true,
+          }}
         />
         <Stack.Screen
           name="extras"
           options={{
+            gestureEnabled: true,
             gestureDirection: 'horizontal',
+            presentation: 'card',
           }}
         />
       </Stack>
