@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 import { IScheduleNow } from '@/types/prayers';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 import { jotaiStorage } from '@/storage/storage';
-import { ENGLISH } from '@/constants';
+import { PRAYERS_ENGLISH } from '@/constants';
 
 // App Status
 export const isLoadingAtom = atom<boolean>(true);
@@ -54,7 +54,7 @@ export interface AlertPreferences {
 const createInitialAlertPreferences = (): AlertPreferences => {
   const preferences: AlertPreferences = {};
   
-  ENGLISH.forEach((_, index) => {
+  PRAYERS_ENGLISH.forEach((_, index) => {
     preferences[index] = AlertType.Off;
   });
 
