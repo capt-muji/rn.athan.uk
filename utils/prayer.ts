@@ -34,14 +34,14 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
   entries.forEach(([date, times]) => {
     const schedule: ISingleApiResponseTransformed = {
       date,
-      "last third": getLastThirdOfNight(times.magrib, times.fajr),
       fajr: times.fajr,
       sunrise: times.sunrise,
       duha: addMinutes(times.sunrise, 1),
       dhuhr: times.dhuhr,
       asr: times.asr,
       magrib: times.magrib,
-      isha: times.isha
+      isha: times.isha,
+      "last third": getLastThirdOfNight(times.magrib, times.fajr),
     };
 
     transformations.push(schedule);
