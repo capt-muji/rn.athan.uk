@@ -8,10 +8,9 @@ import {
   nextPrayerIndexAtom,
   dateAtom 
 } from '@/store/store';
-import { createSchedule, transformApiData } from '@/utils/prayer';
+import { createSchedule, filterApiData, transformApiData } from '@/utils/prayer';
 import { IApiResponse } from '@/types/api';
 import storage from '@/storage/storage';
-import { formatDate } from '@/utils/time';
 
 export const useInit = () => {
   const [, setIsLoading] = useAtom(isLoadingAtom);
@@ -24,8 +23,15 @@ export const useInit = () => {
   const initialize = useCallback(async (apiData: IApiResponse) => {
     
     try {
-      const transformedPrayers = transformApiData(apiData);
+      const filteredData = filterApiData(apiData);
+      const transformedPrayers = transformApiData(filteredData);
+
+      console.log('muji: 🐳 ↼↼↼ transformedPrayers :: start ⇀⇀⇀ 🐳');
+      console.log(JSON.stringify(transformedPrayers, null, 2));
+      console.log('muji: 🐳 ↽↽↽ transformedPrayers :: end   ⇁⇁⇁ 🐳');
+
       storage.prayers.storePrayers(transformedPrayers);
+
       const todayRaw = storage.prayers.getTodayOrTomorrowPrayers('today');
       const tomorrowRaw = storage.prayers.getTodayOrTomorrowPrayers('tomorrow');
       
@@ -35,14 +41,14 @@ export const useInit = () => {
       const tomorrowsPrayers = createSchedule(tomorrowRaw);
       
       const nextPrayer = Object.values(todaysPrayers).find(p => !p.passed);
-      const nextPrayerIndex = nextPrayer?.index ?? -1;
+      const nextPrayerIndex = nextPrayer?.index ?? 0; // Fallback to Fajr if all prayers have passed
 
       setTodaysPrayers(todaysPrayers);
       setTomorrowsPrayers(tomorrowsPrayers);
       setNextPrayerIndex(nextPrayerIndex);
 
-      const formattedDate = formatDate(Object.values(todaysPrayers)[0].date);
-      setDate(formattedDate);
+      const dataDate = Object.values(todaysPrayers)[0].date;
+      setDate(dataDate);
 
       setIsLoading(false);
       setHasError(false);

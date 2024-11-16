@@ -14,7 +14,7 @@ export interface IApiSingleTime {
   isha_jamat: string;
 }
 
-export interface IApiAllTimes {
+export interface IApiTimes {
   [date: string]: IApiSingleTime;
 }
 
