@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
-import { ITransformedToday } from '@/types/prayers';
+import { IScheduleNow } from '@/types/prayers';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 import { jotaiStorage } from '@/storage/storage';
 import { ENGLISH } from '@/constants';
@@ -10,8 +10,8 @@ export const hasErrorAtom = atom<boolean>(false);
 
 // Prayer Data
 export const dateAtom = atom<string>('');
-export const todaysPrayersAtom = atom<ITransformedToday>({});
-export const tomorrowsPrayersAtom = atom<ITransformedToday>({});
+export const todaysPrayersAtom = atom<IScheduleNow>({});
+export const tomorrowsPrayersAtom = atom<IScheduleNow>({});
 export const nextPrayerIndexAtom = atom<number>(-1);
 export const selectedPrayerIndexAtom = atom<number>(-1);
 

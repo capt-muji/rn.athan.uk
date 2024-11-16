@@ -1,91 +1,118 @@
 import { DaySelection } from "@/types/prayers";
+import { format, addDays, setHours, setMinutes, isAfter, addMinutes as addMins, intervalToDuration, isFuture, isToday, parseISO, subDays } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 
-// Takes 'today' or 'tomorrow' and returns date in YYYY-MM-DD format.
-// Used for prayer time calculations and date display formatting.
-export const getTodayOrTomorrowDate = (day: DaySelection = 'today'): string => {
-  const date = new Date();
-  if (day === 'tomorrow') {
-    date.setDate(date.getDate() + 1);
-  }
-  return date.toISOString().split('T')[0];
+// Creates a new Date object in London timezone
+// Converts input date or current date to London time
+export const createLondonDate = (date?: Date | string): Date => {
+  const targetDate = date ? new Date(date) : new Date();
+  const londonTime = formatInTimeZone(targetDate, 'Europe/London', 'yyyy-MM-dd HH:mm:ssXXX');
+  return new Date(londonTime);
 };
 
-// Calculates time difference in milliseconds between now and target prayer time.
-// Handles edge cases like passing midnight and adjusts for tomorrow's prayers.
+// Returns formatted date string for today or tomorrow
+// Based on the provided day selection parameter
+export const getTodayOrTomorrowDate = (daySelection: DaySelection = 'today'): string => {
+  let date = createLondonDate();
+  
+  if (daySelection === 'tomorrow') {
+    date = addDays(date, 1);
+  }
+
+  return format(date, 'yyyy-MM-dd');
+};
+
+// Calculates time difference in milliseconds between now and target time
+// Returns adjusted time difference if the target time has passed
 export const getTimeDifference = (targetTime: string, date: string = getTodayOrTomorrowDate('today')): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
-  const now = new Date();
-  const target = new Date(date);
-  target.setHours(hours, minutes, 0, 0);
+  const now = createLondonDate();
+  let target = createLondonDate(date);
+  target = setHours(setMinutes(target, minutes), hours);
 
   const diff = target.getTime() - now.getTime();
   
   const threshold = -1000;
   
-  // Only add a day if we're actually past the time and not exactly at the time
-  // using threshold to account for millisecond precision
-  if (diff < threshold) { 
-    target.setDate(target.getDate() + 1);
+  if (diff < threshold) {
+    target = addDays(target, 1);
     return target.getTime() - now.getTime();
   }
 
   return diff;
 };
 
-// Compares given time string with current time to check if it's passed.
-// Used to determine prayer status and handle UI state changes.
+// Checks if a given time has already passed today
+// Compares target time with current London time
 export const isTimePassed = (time: string): boolean => {
   const [hours, minutes] = time.split(':').map(Number);
-  const now = new Date();
-  const target = new Date();
-  
-  target.setHours(hours, minutes, 0);
+  const now = createLondonDate();
+  let target = createLondonDate();
+  target = setHours(setMinutes(target, minutes), hours);
 
-  return now > target;
+  return isAfter(now, target);
 };
 
-// Formats milliseconds into readable time units (hours, minutes, seconds).
-// Handles edge cases like zero values and returns condensed format (e.g., "1h 30m 5s").
+// Converts milliseconds into human-readable time format
+// Returns formatted string with hours, minutes, and seconds
 export const formatTime = (ms: number): string => {
   if (ms < 0) return '0s';
-
-  const MS_IN_HOUR = 3600000;
-  const MS_IN_MINUTE = 60000;
-  const MS_IN_SECOND = 1000;
-
-  const h = Math.floor(ms / MS_IN_HOUR);
-  const m = Math.floor((ms % MS_IN_HOUR) / MS_IN_MINUTE);
-  const s = Math.floor((ms % MS_IN_MINUTE) / MS_IN_SECOND);
-
-  return [h && `${h}h`, m && `${m}m`, `${s}s`].filter(Boolean).join(' ');
+  
+  const duration = intervalToDuration({ start: 0, end: ms });
+  const { hours, minutes, seconds } = duration;
+  
+  return [
+    hours && `${hours}h`,
+    minutes && `${minutes}m`,
+    seconds !== undefined ? `${seconds}s` : '0s'
+  ].filter(Boolean).join(' ');
 };
 
-// Adds specified minutes to a time string and handles day wraparound.
-// Returns formatted time string in 24-hour format (HH:mm).
+// Adds specified minutes to a given time string
+// Returns new time in HH:mm format
 export const addMinutes = (time: string, minutes: number): string => {
   const [h, m] = time.split(':').map(Number);
-  const date = new Date();
-  date.setHours(h, m + minutes);
-  return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+  let date = createLondonDate();
+  date = setHours(setMinutes(date, m), h);
+  date = addMins(date, minutes);
+  return format(date, 'HH:mm');
 };
 
-// Checks if provided date is either today or in the future.
-// Used to filter past prayer times and validate date selections.
+// Checks if a date is either today or in the future
+// Returns true for today and future dates, false for past dates
 export const isDateTodayOrFuture = (date: string): boolean => {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  
-  const checkDate = new Date();
-  checkDate.setHours(0, 0, 0, 0);
-
-  return checkDate >= today;
+  const parsedDate = createLondonDate(date);
+  return isToday(parsedDate) || isFuture(parsedDate);
 };
 
-// Formats date string into UK-localized human readable format.
-// Returns date in format like "Mon, 01 Jan 2024" with proper timezone handling.
-export const formatDate = (date: string): string => new Date(date).toLocaleDateString('en-GB', {
-  weekday: 'short',
-  day: '2-digit',
-  month: 'short',
-  year: 'numeric'
-});
+// Formats a date string into a readable format
+// Returns date in format: "Day, DD MMM YYYY"
+export const formatDate = (date: string): string => {
+  return format(createLondonDate(date), 'EEE, dd MMM yyyy');
+};
+
+// Calculates the start time of the last third of the night
+// Uses Maghrib and Fajr times to determine night duration
+export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
+  const [mHours, mMinutes] = magribTime.split(':').map(Number);
+  const [fHours, fMinutes] = fajrTime.split(':').map(Number);
+  
+  // Maghrib from yesterday
+  let maghrib = createLondonDate();
+  maghrib = subDays(setHours(setMinutes(maghrib, mMinutes), mHours), 1);
+
+  // Fajr from today
+  let fajr = createLondonDate();
+  fajr = setHours(setMinutes(fajr, fMinutes), fHours);
+
+  // Calculate night duration and last third start
+  const nightDuration = fajr.getTime() - maghrib.getTime();
+  const lastThirdStart = new Date(maghrib.getTime() + (nightDuration * 2/3));
+
+  // add 10 minutes to the last third start time
+  const minutesToAdd = 10;
+  lastThirdStart.setMinutes(lastThirdStart.getMinutes() + minutesToAdd);
+
+  // Return formatted time string in 24-hour format (HH:mm)
+  return format(lastThirdStart, 'HH:mm');
+};

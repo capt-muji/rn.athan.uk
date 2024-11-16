@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/constants';
@@ -30,49 +29,32 @@ export default function Timer() {
   }));
 
   return (
-    <View style={styles.componentContainer}>
-      {!overlayVisible && nextPrayerIndex === -1 ? (
-        <Text style={styles.text}>Refreshing at midnight</Text>
-      ) : (
-        <Animated.View style={styles.contentContainer}>
-          <Text style={styles.text}>{prayerName} in</Text>
-          <Animated.View style={[styles.countdownContainer, animatedStyle]}>
-            <Animated.Text style={[styles.countdown, fontFamily]}>{prayerCountdown}</Animated.Text>
-          </Animated.View>
-        </Animated.View>
-      )}
-    </View>
+    <Animated.View style={[styles.container]}>
+      <Text style={[styles.text]}>{prayerName || ''} in</Text>
+      <Animated.Text style={[styles.countdown, fontFamily, animatedStyle]}>{prayerCountdown || ' '}</Animated.Text>
+    </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
-  componentContainer: {
-    height: 50,
+  container: {
     marginBottom: 40,
     justifyContent: 'center',
     zIndex: OVERLAY.zindexes.off.countdown,
     pointerEvents: 'none',
   },
-  contentContainer: {
-
-  },
   text: {
-    color: COLORS.textSecondary,
-    opacity: TEXT.opacity + 0.15,
     textAlign: 'center',
     fontSize: TEXT.size - 2,
-    marginBottom: 3,
+    marginBottom: 5,
     fontFamily: TEXT.famiy.regular,
+    color: COLORS.textSecondary,
+    opacity: TEXT.opacity
   },
   countdown: {
     fontFamily: TEXT.famiy.medium,
     color: COLORS.textPrimary,
     fontSize: TEXT.size + 8,
     textAlign: 'center',
-  },
-  countdownContainer: {
-    height: 35,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
