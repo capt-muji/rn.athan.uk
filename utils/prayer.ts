@@ -34,7 +34,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
   entries.forEach(([date, times]) => {
     const schedule: ISingleApiResponseTransformed = {
       date,
-      thirdOfNight: getLastThirdOfNight(times.magrib, times.fajr),
+      "last third": getLastThirdOfNight(times.magrib, times.fajr),
       fajr: times.fajr,
       sunrise: times.sunrise,
       duha: addMinutes(times.sunrise, 1),
