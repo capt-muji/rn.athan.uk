@@ -13,7 +13,7 @@ import {
   dateAtom,
   todaysPrayersAtom,
 } from '@/store/store';
-import { ANIMATION, COLORS, ENGLISH, OVERLAY, PRAYER } from '@/constants';
+import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/constants';
 import { getTodayOrTomorrowDate } from '@/utils/time';
 
 const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };
@@ -32,7 +32,7 @@ export default function ActiveBackground() {
     if (!absoluteMeasurements[nextPrayerIndex]) return;
 
     const nowDate = getTodayOrTomorrowDate('today');
-    const lastPrayerIndex = ENGLISH.length - 1;
+    const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
     const isActive = date === nowDate && !todaysPrayers[lastPrayerIndex]?.passed;
     const isActiveOpacity = isActive ? 1 : 0.1;
     const isActiveBackgroundColor = isActive ? COLORS.activeBackground : COLORS.inactiveBackground;

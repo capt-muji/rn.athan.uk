@@ -28,11 +28,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;
   const isNext = index === nextPrayerIndex;
-  const isLastThird = prayer.english.toLowerCase() === 'last third';
 
-  const textOpacity = useSharedValue(
-    isPassed || isNext || isLastThird ? 1 : TEXT.opacity
-  );
+  const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const backgroundOpacity = useSharedValue(0);
 
   // handle non-overlay animations
@@ -83,7 +80,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       opacity: 1,
     };
 
-    if (isPassed || isNext || isLastThird) return {
+    if (isPassed || isNext) return {
       color: COLORS.textPrimary,
       opacity: textOpacity.value,
     };

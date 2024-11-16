@@ -1,6 +1,6 @@
 import { ISingleApiResponseTransformed, IScheduleNow } from '@/types/prayers';
 import { IApiResponse, IApiTimes } from '@/types/api';
-import { ENGLISH, ARABIC } from '@/constants';
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC } from '@/constants';
 import { isDateTodayOrFuture, getLastThirdOfNight, getTimeDifference } from './time';
 import { isTimePassed, addMinutes } from './time';
 
@@ -56,22 +56,16 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 export const createSchedule = (prayers: ISingleApiResponseTransformed): IScheduleNow => {
   const schedule: IScheduleNow = {};
 
-  ENGLISH.forEach((name, index) => {
+  PRAYERS_ENGLISH.forEach((name, index) => {
     const prayerTime = prayers[name.toLowerCase() as keyof ISingleApiResponseTransformed];
-    const isLastThird = name.toLowerCase() === 'last third';
-    
-    // For last third, we need to check if it's passed relative to tomorrow's time
-    const passed = isLastThird 
-      ? getTimeDifference(prayerTime) < 0
-      : isTimePassed(prayerTime);
 
     schedule[index] = {
       index,
       date: prayers.date,
       english: name,
-      arabic: ARABIC[index],
+      arabic: PRAYERS_ARABIC[index],
       time: prayerTime,
-      passed,
+      passed: isTimePassed(prayerTime),
       isNext: false
     };
   });
