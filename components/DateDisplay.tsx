@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   location: {
     color: COLORS.textSecondary,
-    fontSize: TEXT.size - 2,
+    fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.famiy.regular,
     marginBottom: 5,
     opacity: TEXT.opacityHigher
