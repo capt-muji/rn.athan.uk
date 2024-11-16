@@ -1,5 +1,5 @@
 import { DaySelection } from "@/types/prayers";
-import { format, addDays, setHours, setMinutes, isAfter, addMinutes as addMins, intervalToDuration } from 'date-fns';
+import { format, addDays, setHours, setMinutes, isAfter, addMinutes as addMins, intervalToDuration, isFuture, isToday, parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 
 export const createLondonDate = (date?: Date | string): Date => {
@@ -69,9 +69,8 @@ export const addMinutes = (time: string, minutes: number): string => {
 };
 
 export const isDateTodayOrFuture = (date: string): boolean => {
-  const today = setHours(setMinutes(createLondonDate(), 0), 0);
-  const checkDate = setHours(setMinutes(createLondonDate(date), 0), 0);
-  return !isAfter(today, checkDate);
+  const parsedDate = createLondonDate(date);
+  return isToday(parsedDate) || isFuture(parsedDate);
 };
 
 export const formatDate = (date: string): string => {

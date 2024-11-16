@@ -1,4 +1,3 @@
-import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { BsArrowClockwise } from "rn-icons/bs";
 
@@ -32,12 +31,13 @@ const styles = StyleSheet.create({
   heading: {
     color: COLORS.textPrimary,
     fontSize: 28,
-    fontWeight: '600',
-    marginBottom: 18
+    marginBottom: 18,
+    fontFamily: TEXT.famiy.medium
   },
   subtext: {
     color: COLORS.textPrimary,
     fontSize: TEXT.size,
+    fontFamily: TEXT.famiy.regular,
   },
   first: {
     marginBottom: 4
