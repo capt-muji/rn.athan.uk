@@ -26,7 +26,7 @@ export default function Index() {
 
   useEffect(() => {
     const init = async () => {
-      await initialize(MOCK_DATA_SIMPLE);
+      await initialize({ ...MOCK_DATA_SIMPLE });
       setIsInitialized(true);
     };
     init();

@@ -1,5 +1,5 @@
-export const ENGLISH: Readonly<string[]> = ["Fajr", "Sunrise", "Duha", "Dhuhr", "Asr", "Magrib", "Isha"];
-export const ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "العصر", "الظهر", "الضحى", "الشروق", "الفجر"].reverse();
+export const ENGLISH: Readonly<string[]> = ["Last Third", "Fajr", "Sunrise", "Duha", "Dhuhr", "Asr", "Magrib", "Isha"];
+export const ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "العصر", "الظهر", "الضحى", "الشروق", "الفجر", "الثلث الأخير"].reverse();
 
 export const TEXT = {
   famiy: {
@@ -8,7 +8,7 @@ export const TEXT = {
   },
   size: 18,
   opacity: 0.65,
-  transparent: 0.5,
+  opacityHigher: 0.75,
 };
 
 export const SCREEN = {
@@ -17,6 +17,8 @@ export const SCREEN = {
 
 export const COLORS = {
   primary: '#005dd5',
+  activeBackground: '#005dd5',
+  inactiveBackground: '#8caeff', // make full color then add opacity
   primaryShadow: '#04439e',
   textPrimary: '#ffffff',
   textSecondary: '#8BA3C7',

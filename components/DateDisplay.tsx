@@ -5,6 +5,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } fro
 import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateAtom } from '@/store/store';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
+import { formatDate } from '@/utils/time';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
@@ -38,7 +39,7 @@ export default function DateDisplay() {
       <View>
         <Text style={styles.location}>London, UK</Text>
         <Animated.Text ref={dateRef} onLayout={handleLayout} style={[styles.date, dateAnimatedStyle]}>
-          {date}
+          {formatDate(date)}
         </Animated.Text>
       </View>
       <Masjid />
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size - 2,
     fontFamily: TEXT.famiy.regular,
     marginBottom: 5,
-    opacity: TEXT.opacity
+    opacity: TEXT.opacityHigher
   },
   date: {
     fontFamily: TEXT.famiy.regular,
