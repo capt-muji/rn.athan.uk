@@ -1,5 +1,5 @@
 import { DaySelection } from "@/types/prayers";
-import { format, addDays, setHours, setMinutes, isAfter, addMinutes as addMins, intervalToDuration, isFuture, isToday, parseISO } from 'date-fns';
+import { format, addDays, setHours, setMinutes, isAfter, addMinutes as addMins, intervalToDuration, isFuture, isToday, parseISO, subDays } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 
 // Creates a new Date object in London timezone
@@ -78,15 +78,39 @@ export const addMinutes = (time: string, minutes: number): string => {
   return format(date, 'HH:mm');
 };
 
-// Checks if a date is either today or in the future
-// Returns true for today and future dates, false for past dates
-export const isDateTodayOrFuture = (date: string): boolean => {
+// Checks if a date is yesterday, today or in the future
+// Returns true for yesterday, today and future dates, false for older dates
+export const isYesterdayOrFuture = (date: string): boolean => {
   const parsedDate = createLondonDate(date);
-  return isToday(parsedDate) || isFuture(parsedDate);
+  const yesterday = subDays(createLondonDate(), 2);
+  return isAfter(parsedDate, yesterday);
 };
 
 // Formats a date string into a readable format
 // Returns date in format: "Day, DD MMM YYYY"
 export const formatDate = (date: string): string => {
   return format(createLondonDate(date), 'EEE, dd MMM yyyy');
+};
+
+// Calculates the start time of the last third of the night
+// Uses Maghrib and Fajr times to determine night duration
+export const getLastThirdOfNight = (maghribTime: string, fajrTime: string, date: string = getTodayOrTomorrowDate('today')): string => {
+  const [mHours, mMinutes] = maghribTime.split(':').map(Number);
+  const [fHours, fMinutes] = fajrTime.split(':').map(Number);
+  
+  let maghrib = createLondonDate(date);
+  maghrib = setHours(setMinutes(maghrib, mMinutes), mHours);
+  
+  let fajr = createLondonDate(date);
+  fajr = setHours(setMinutes(fajr, fMinutes), fHours);
+  
+  // If Fajr time is earlier than Maghrib, it means it's for the next day
+  if (fajr < maghrib) {
+    fajr = addDays(fajr, 1);
+  }
+  
+  const nightDuration = fajr.getTime() - maghrib.getTime();
+  const lastThirdStart = new Date(maghrib.getTime() + (nightDuration * 2/3));
+  
+  return format(lastThirdStart, 'HH:mm');
 };
