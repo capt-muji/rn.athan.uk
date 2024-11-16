@@ -7,12 +7,6 @@ import { useEffect } from 'react';
 export default function ExtrasScreen() {
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={[COLORS.gradientStart, COLORS.gradientEnd]}
-        style={styles.gradient}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
       <Extras />
     </View>
   );
