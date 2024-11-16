@@ -3,6 +3,7 @@ import { useAtom } from 'jotai';
 import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, dateAtom } from '@/store/store';
 import { DaySelection } from '@/types/prayers';
 import { getTimeDifference, getTodayOrTomorrowDate, formatTime } from '@/utils/time';
+import { ENGLISH } from '@/constants';
 
 const THRESHOLD = 1000; // seconds
 
@@ -18,7 +19,7 @@ export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
       const prayers = day === 'today' ? todaysPrayers : tomorrowsPrayers;
       const prayer = prayers[prayerIndex];
       const nowDate = getTodayOrTomorrowDate('today');
-      const lastPrayerIndex = 6;
+      const lastPrayerIndex = ENGLISH.length - 1;
 
       // Check if date has changed and last prayer has passed
       if (date !== nowDate && todaysPrayers[lastPrayerIndex]?.passed) {

@@ -1,5 +1,5 @@
-export const ENGLISH: Readonly<string[]> = ["Fajr", "Sunrise", "Duha", "Dhuhr", "Asr", "Magrib", "Isha"];
-export const ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "العصر", "الظهر", "الضحى", "الشروق", "الفجر"].reverse();
+export const ENGLISH: Readonly<string[]> = ["Last Third", "Fajr", "Sunrise", "Duha", "Dhuhr", "Asr", "Magrib", "Isha"];
+export const ARABIC: Readonly<string[]> = ["العشاء", "المغرب", "العصر", "الظهر", "الضحى", "الشروق", "الفجر", "الثلث الأخير"].reverse();
 
 export const TEXT = {
   famiy: {
