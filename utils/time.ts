@@ -97,24 +97,22 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
   const [mHours, mMinutes] = magribTime.split(':').map(Number);
   const [fHours, fMinutes] = fajrTime.split(':').map(Number);
   
-  // create a new date object in London timezone for maghrib and fajr times
+  // Maghrib from yesterday
   let maghrib = createLondonDate();
-  maghrib = setHours(setMinutes(maghrib, mMinutes), mHours);
+  maghrib = subDays(setHours(setMinutes(maghrib, mMinutes), mHours), 1);
 
+  // Fajr from today
   let fajr = createLondonDate();
   fajr = setHours(setMinutes(fajr, fMinutes), fHours);
 
-  // calculate the duration of the night from Maghrib to Fajr
+  // Calculate night duration and last third start
   const nightDuration = fajr.getTime() - maghrib.getTime();
-  // calculate the start time of the last third of the night
   const lastThirdStart = new Date(maghrib.getTime() + (nightDuration * 2/3));
 
   // add 10 minutes to the last third start time
-  // to ensure we are within the last third of the night
-  const minutesToAdd = 0;
+  const minutesToAdd = 10;
   lastThirdStart.setMinutes(lastThirdStart.getMinutes() + minutesToAdd);
 
-
-  // return the formatted time string in 24-hour format (HH:mm)
+  // Return formatted time string in 24-hour format (HH:mm)
   return format(lastThirdStart, 'HH:mm');
 };
