@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, StatusBar, Pressable, Text } from 'react-native';
+import { StyleSheet, StatusBar, Pressable, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { router } from 'expo-router';
+import { Gesture, GestureDetector, Directions } from 'react-native-gesture-handler';
+import { runOnJS } from 'react-native-reanimated';
 
 import Main from '@/components/Main';
 import Error from '@/components/Error';
@@ -25,6 +27,13 @@ export default function Index() {
 
   const { initialize } = useInit();
 
+  const swipeGesture = Gesture.Fling()
+    .direction(Directions.LEFT)
+    .onEnd(() => {
+      'worklet';
+      runOnJS(router.push)('/extras');
+    });
+
   useEffect(() => {
     const init = async () => {
       await initialize({ ...MOCK_DATA_SIMPLE });
@@ -36,22 +45,27 @@ export default function Index() {
   if (!fontsLoaded || !isInitialized) return <WaveIndicator color="white" />;
 
   return (
-    <>
-      <LinearGradient
-        colors={[COLORS.gradientStart, COLORS.gradientEnd]}
-        style={styles.gradient}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
-      <StatusBar barStyle="light-content" />
-      {isLoading && <WaveIndicator color="white" />}
-      {hasError && !isLoading && <Error />}
-      {!hasError && !isLoading && <Main />}
-    </>
+    <GestureDetector gesture={swipeGesture}>
+      <View style={styles.container}>
+        <LinearGradient
+          colors={[COLORS.gradientStart, COLORS.gradientEnd]}
+          style={styles.gradient}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+        />
+        <StatusBar barStyle="light-content" />
+        {isLoading && <WaveIndicator color="white" />}
+        {hasError && !isLoading && <Error />}
+        {!hasError && !isLoading && <Main />}
+      </View>
+    </GestureDetector>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   gradient: {
     position: 'absolute',
     top: 0,
