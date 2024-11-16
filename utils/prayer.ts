@@ -1,7 +1,7 @@
 import { ISingleApiResponseTransformed, IScheduleNow } from '@/types/prayers';
 import { IApiResponse, IApiTimes } from '@/types/api';
-import { ENGLISH, ARABIC } from '@/constants';
-import { isDateTodayOrFuture, getLastThirdOfNight } from './time';
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC } from '@/constants';
+import { isDateTodayOrFuture, getLastThirdOfNight, getTimeDifference } from './time';
 import { isTimePassed, addMinutes } from './time';
 
 /**
@@ -56,14 +56,14 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 export const createSchedule = (prayers: ISingleApiResponseTransformed): IScheduleNow => {
   const schedule: IScheduleNow = {};
 
-  ENGLISH.forEach((name, index) => {
+  PRAYERS_ENGLISH.forEach((name, index) => {
     const prayerTime = prayers[name.toLowerCase() as keyof ISingleApiResponseTransformed];
-    
+
     schedule[index] = {
       index,
       date: prayers.date,
       english: name,
-      arabic: ARABIC[index],
+      arabic: PRAYERS_ARABIC[index],
       time: prayerTime,
       passed: isTimePassed(prayerTime),
       isNext: false

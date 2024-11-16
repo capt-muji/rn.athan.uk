@@ -26,10 +26,6 @@ export const useInit = () => {
       const filteredData = filterApiData(apiData);
       const transformedPrayers = transformApiData(filteredData);
 
-      console.log('<user>: 🐳 ↼↼↼ transformedPrayers :: start ⇀⇀⇀ 🐳');
-      console.log(JSON.stringify(transformedPrayers, null, 2));
-      console.log('<user>: 🐳 ↽↽↽ transformedPrayers :: end   ⇁⇁⇁ 🐳');
-
       storage.prayers.storePrayers(transformedPrayers);
 
       const todayRaw = storage.prayers.getTodayOrTomorrowPrayers('today');
