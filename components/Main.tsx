@@ -6,7 +6,7 @@ import Prayer from '@/components/Prayer';
 import Footer from '@/components/Footer';
 import ActiveBackground from '@/components/ActiveBackground';
 import Overlay from '@/components/Overlay';
-import { SCREEN, ENGLISH } from '@/constants';
+import { SCREEN, PRAYERS_ENGLISH } from '@/constants';
 import RadialGlow from './RadialGlow';
 
 export default function Main() {
@@ -20,7 +20,7 @@ export default function Main() {
       <Countdown />
       <DateDisplay />
 
-      {ENGLISH.map((_, index) => (
+      {PRAYERS_ENGLISH.map((_, index) => (
         <Prayer key={index} index={index} />
       ))}
 
