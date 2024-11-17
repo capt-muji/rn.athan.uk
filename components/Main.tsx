@@ -9,7 +9,7 @@ import Overlay from '@/components/Overlay';
 import { SCREEN, PRAYERS_ENGLISH } from '@/constants';
 import RadialGlow from './RadialGlow';
 
-export default function Main() {
+export default function Main({ list }) {
   const insets = useSafeAreaInsets();
 
   return (
@@ -17,15 +17,15 @@ export default function Main() {
       {/* <RadialGlow /> */}
       {/* <ActiveBackground /> */}
 
-      {/* <Countdown /> */}
-      {/* <DateDisplay /> */}
+      <Countdown />
+      <DateDisplay />
 
-      {PRAYERS_ENGLISH.map((_, index) => (
+      {list.map((_, index) => (
         <Prayer key={index} index={index} />
       ))}
 
       {/* <Overlay /> */}
-      {/* <Footer /> */}
+      <Footer />
     </View>
   );
 }
