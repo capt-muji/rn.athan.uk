@@ -11,8 +11,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, ANIMATION } from '@/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/stores/store';
+import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
+import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/stores/state';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };

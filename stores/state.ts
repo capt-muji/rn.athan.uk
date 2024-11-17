@@ -1,8 +1,8 @@
 import { atom } from 'jotai';
-import { IScheduleNow } from '@/types/prayers';
+import { IScheduleNow } from '@/shared/types';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
-import { jotaiStorage } from '@/storage/storage';
-import { PRAYERS_ENGLISH } from '@/constants';
+import { jotaiStorage } from '@/stores/database';
+import { PRAYERS_ENGLISH } from '@/shared/constants';
 
 // App Status
 export const isLoadingAtom = atom<boolean>(true);

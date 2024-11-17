@@ -7,10 +7,10 @@ import {
   tomorrowsPrayersAtom, 
   nextPrayerIndexAtom,
   dateAtom 
-} from '@/stores/store';
+} from '@/stores/state';
 import { createSchedule, filterApiData, transformApiData } from '@/shared/prayer';
-import { IApiResponse } from '@/types/api';
-import storage from '@/storage/storage';
+import { IApiResponse } from '@/shared/types';
+import storage from '@/stores/database';
 
 export const useInit = () => {
   const [, setIsLoading] = useAtom(isLoadingAtom);

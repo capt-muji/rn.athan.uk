@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
 import Reanimated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { OVERLAY } from '@/constants';
+import { OVERLAY } from '@/shared/constants';
 
 const AnimatedSvg = Reanimated.createAnimatedComponent(Svg);
 
