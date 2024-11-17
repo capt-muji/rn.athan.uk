@@ -5,8 +5,7 @@ import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { MOCK_DATA_SIMPLE } from '@/mocks/data';
-import { useApp } from '@/hooks/useApp';
+import { useAppState } from '@/hooks/useAppState';
 import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
 
@@ -17,11 +16,11 @@ export default function Index() {
     'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf')
   });
 
-  const { initialize } = useApp();
+  const { initialize } = useAppState();
 
   useEffect(() => {
     const init = async () => {
-      await initialize({ ...MOCK_DATA_SIMPLE });
+      await initialize();
       setIsInitialized(true);
     };
     init();

@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useAtom } from 'jotai';
 import {  isLoadingAtom, hasErrorAtom } from '@/stores/store';
-import { IApiResponse } from '@/shared/types';
 import usePrayer from '@/hooks/usePrayer';
 
 export const useAppState = () => {
@@ -9,18 +8,21 @@ export const useAppState = () => {
   const [, setHasError] = useAtom(hasErrorAtom);
   const PrayerHook = usePrayer();
 
-  const initialize = useCallback(async (apiData: IApiResponse) => {
-    
-    try {
-      const prayerData = await PrayerHook.fetch();
+  const initialize = useCallback(async () => {
+    console.log('Initializing app');
 
-      PrayerHook.saveAll(prayerData);
+    try {
+      const data = await PrayerHook.fetch();
+
+      PrayerHook.saveAll(data);
       PrayerHook.setTodayAndTomorrow();
       PrayerHook.setNextIndex();
       PrayerHook.setDate();
 
       setIsLoading(false);
       setHasError(false);
+
+      console.log('Successfully initialized app');
     } catch (error) {
       console.error('Error initializing app:', error);
 

@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, dateAtom } from '@/stores/state';
+import { prayersTodayAtom, prayersTomorrowAtom, prayersNextIndexAtom, dateTodayAtom } from '@/stores/store';
 import { DaySelection } from '@/shared/types';
 import { getTimeDifference, getTodayOrTomorrowDate, formatTime } from '@/shared/time';
 import { PRAYERS_ENGLISH } from '@/shared/constants';
-import { usePrayerState } from './usePrayer';
+import PrayerHook from '@/hooks/usePrayer';
 
 const THRESHOLD = 1000; // seconds
 
 export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
   const [countdown, setCountdown] = useState('');
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
-  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
-  const [date, setDate] = useAtom(dateAtom);
-  const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const { incrementNextPrayer, markPrayerAsPassed } = usePrayerState();
+  const [todaysPrayers] = useAtom(prayersTodayAtom);
+  const [tomorrowsPrayers] = useAtom(prayersTomorrowAtom);
+  const [date, setDate] = useAtom(dateTodayAtom);
+  const [nextPrayerIndex, setNextPrayerIndex] = useAtom(prayersNextIndexAtom);
+  const { incrementNextPrayer, markPrayerAsPassed } = PrayerHook();
 
   useEffect(() => {
     const updateCountdown = () => {

@@ -1,8 +1,6 @@
-import { ISingleApiResponseTransformed, IScheduleNow } from '@/types/prayers';
-import { IApiResponse, IApiTimes } from '@/types/api';
+import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes } from '@/shared/types';
 import { PRAYERS_ENGLISH, PRAYERS_ARABIC } from '@/shared/constants';
-import { isDateTodayOrFuture, getLastThirdOfNight, getTimeDifference } from './time';
-import { isTimePassed, addMinutes } from './time';
+import { isDateTodayOrFuture, getLastThirdOfNight, isTimePassed, addMinutes } from '@/shared/time';
 
 /**
  * Filters API response data to only include today and future dates
@@ -69,6 +67,9 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed): ISchedul
       isNext: false
     };
   });
+
+  console.log('11111');
+  console.log(schedule);
 
   return schedule;
 };

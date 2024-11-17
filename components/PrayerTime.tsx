@@ -3,7 +3,7 @@ import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/stores/state';
+import { prayersTodayAtom, prayersTomorrowAtom, prayersNextIndexAtom, prayersSelectedIndexAtom, overlayVisibleAtom } from '@/stores/store';
 import { useEffect } from 'react';
 
 interface Props {
@@ -12,11 +12,11 @@ interface Props {
 }
 
 export default function PrayerTime({ index, isOverlay }: Props) {
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
-  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
-  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [todaysPrayers] = useAtom(prayersTodayAtom);
+  const [tomorrowsPrayers] = useAtom(prayersTomorrowAtom);
+  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [selectedPrayerIndex] = useAtom(prayersSelectedIndexAtom);
 
   const prayer = todaysPrayers[index];
   const isPassed = prayer.passed;

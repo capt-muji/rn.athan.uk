@@ -1,4 +1,4 @@
-import { IApiResponse } from "@/types/api";
+import { IApiResponse } from "@/shared/types";
 import { addDays, subDays, format } from "date-fns";
 
 const now = new Date();

@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
-import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateAtom } from '@/stores/state';
+import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateTodayAtom } from '@/stores/store';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import Masjid from './Masjid';
 import { formatDate } from '@/shared/time';
@@ -10,7 +10,7 @@ import { formatDate } from '@/shared/time';
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [date] = useAtom(dateAtom);
+  const [date] = useAtom(dateTodayAtom);
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
 
