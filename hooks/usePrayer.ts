@@ -3,12 +3,12 @@ import * as Api from '@/api/client';
 import Storage from '@/stores/database';
 import { isDateTodayOrFuture } from '@/shared/time';
 import { transformApiData, createSchedule } from '@/shared/prayer';
-import { IApiResponse, ISingleApiResponseTransformed, IScheduleNow } from '@/shared/types';
+import { PrayerType, IApiResponse, ISingleApiResponseTransformed, IScheduleNow } from '@/shared/types';
 
-export default function usePrayer() {
-  const [prayersToday, setPrayersToday] = useState<IScheduleNow>({});
-  const [prayersTomorrow, setPrayersTomorrow] = useState<IScheduleNow>({});
-  const [prayersNextIndex, setPrayersNextIndex] = useState<number>(-1);
+export default function usePrayer(type: PrayerType) {
+  const [schedule, setSchedule] = useState<IScheduleNow>({});
+  const [prayerNextIndex, setPrayerNextIndex] = useState<number>(-1);
+  const [extraNextIndex, setExtraNextIndex] = useState<number>(-1);
   const [dateToday, setDateToday] = useState<string>('');
 
   // Fetch, filter and transform prayer times
@@ -34,21 +34,20 @@ export default function usePrayer() {
 
   // Set today and tomorrow prayers in the store
   const setTodayAndTomorrow = () => {
-    console.log('Setting today and tomorrow prayers');
+    console.log(`Setting ${type} schedule`);
 
     const todayRaw = Storage.prayers.getTodayOrTomorrow('today');
     const tomorrowRaw = Storage.prayers.getTodayOrTomorrow('tomorrow');
     
-    if (!todayRaw || !tomorrowRaw) throw new Error('Prayers not found');
+    if (!todayRaw || !tomorrowRaw) throw new Error('Data not found');
     
-    const todaysPrayers = createSchedule(todayRaw);
-    const tomorrowsPrayers = createSchedule(tomorrowRaw);
+    const todaySchedule = createSchedule(todayRaw, type);
+    const tomorrowSchedule = createSchedule(tomorrowRaw, type);
 
-    setPrayersToday(todaysPrayers);
-    setPrayersTomorrow(tomorrowsPrayers);
+    setSchedule(todaySchedule);
 
-    console.log('Finished setting today and tomorrow prayers');
-    return { today: todaysPrayers, tomorrow: tomorrowsPrayers };
+    console.log(`Finished setting ${type} schedule`);
+    return { today: todaySchedule, tomorrow: tomorrowSchedule };
   }
 
   // Initialize next prayer index
@@ -57,7 +56,13 @@ export default function usePrayer() {
 
     const schedule = Object.values(prayers);
     const nextPrayer = schedule.find(prayer => !prayer.passed) || prayers[0];
-    setPrayersNextIndex(nextPrayer.index);
+    
+    // Store next index in the appropriate atom based on type
+    if (type === 'standard') {
+      setPrayerNextIndex(nextPrayer.index);
+    } else {
+      setExtraNextIndex(nextPrayer.index);
+    }
 
     console.log('Finished setting next prayer');
     return nextPrayer;
@@ -75,6 +80,9 @@ export default function usePrayer() {
   };
 
   return {
+    schedule,
+    nextIndex: type === 'standard' ? prayerNextIndex : extraNextIndex,
+    dateToday,
     fetch,
     saveAll,
     setTodayAndTomorrow,

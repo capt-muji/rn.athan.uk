@@ -37,6 +37,8 @@ export interface ISingleApiResponseTransformed {
   "last third": string;
 }
 
+export type PrayerType = 'standard' | 'extra';
+
 export interface ITransformedPrayer {
   index: number;
   date: string;
@@ -45,6 +47,7 @@ export interface ITransformedPrayer {
   time: string;
   passed: boolean;
   isNext: boolean;
+  type: PrayerType;
 }
 
 export interface IScheduleNow {
