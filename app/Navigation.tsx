@@ -35,10 +35,11 @@ export default function Navigation() {
         overScrollMode="never"
         onPageScroll={handlePageScroll}
       >
-        <View key="1"><Settings /></View>
-        <View key="2"><Prayers list={PRAYERS_ENGLISH} /></View>
-        <View key="3"><Prayers list={EXTRAS_ENGLISH} /></View>
+        <Settings key="1" />
+        <Prayers key="2" list={PRAYERS_ENGLISH} />
+        <Prayers key="3" list={EXTRAS_ENGLISH} />
       </PagerView>
+
       <View style={[styles.dotsContainer, { bottom: bottom + 5 }]}>
         {[0, 1, 2].map((index) => (
           <Animated.View key={index} style={[styles.dot, dotStyle(index)]} />
