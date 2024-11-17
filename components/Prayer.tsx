@@ -23,9 +23,11 @@ export default function Prayer({ index, isOverlay = false, type }: Props) {
   const { scheduleToday, scheduleTomorrow, nextIndex, selectedIndex, setSelectedIndex } = useSchedule(type);
 
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
+  const viewRef = useRef(null);
 
   const prayer = scheduleToday[index];
-  const isPassed = prayer?.passed;
+  console.log('prayer', prayer);
+  const isPassed = prayer.passed;
   const isNext = index === nextIndex;
 
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
