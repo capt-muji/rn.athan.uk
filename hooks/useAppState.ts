@@ -15,9 +15,9 @@ export const useAppState = () => {
       const data = await PrayerHook.fetch();
 
       PrayerHook.saveAll(data);
-      PrayerHook.setTodayAndTomorrow();
-      PrayerHook.setNextIndex();
-      PrayerHook.setDate();
+      const { today } = PrayerHook.setTodayAndTomorrow();
+      PrayerHook.setNextIndex(today);
+      PrayerHook.setDate(today);
 
       setIsLoading(false);
       setHasError(false);
