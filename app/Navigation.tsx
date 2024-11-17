@@ -3,12 +3,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import PagerView from 'react-native-pager-view';
 import { useState } from 'react';
 
-import { COLORS, OVERLAY } from '@/constants';
-import Main from '@/components/Main';
-import Settings from '@/components/Settings';
-import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '../constants';
-
-const { width } = Dimensions.get('window');
+import { COLORS, OVERLAY, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
+import Prayers from '@/screens/Prayers';
+import Settings from '@/screens/Settings';
 
 export default function Navigation() {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -41,19 +38,18 @@ export default function Navigation() {
         initialPage={1}
         pageMargin={0}
         overdrag={false}
-        overdragEnabled={false}
         scrollEnabled={!isScrolling}
         layoutDirection="ltr"
         overScrollMode="never"
         onPageScrollStateChanged={(state) => {
-          setIsScrolling(state === 'dragging');
+          setIsScrolling(state.nativeEvent.pageScrollState === 'dragging');
         }}
         onPageScroll={handlePageScroll}
         onPageSelected={handlePageSelected}
       >
         <View key="1"><Settings /></View>
-        <View key="2"><Main list={PRAYERS_ENGLISH} /></View>
-        <View key="3"><Main list={EXTRAS_ENGLISH} /></View>
+        <View key="2"><Prayers list={PRAYERS_ENGLISH} /></View>
+        <View key="3"><Prayers list={EXTRAS_ENGLISH} /></View>
       </PagerView>
       <View style={styles.dotsContainer}>
         {[0, 1, 2].map((index) => (

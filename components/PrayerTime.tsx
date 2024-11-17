@@ -2,8 +2,8 @@ import { StyleSheet, View } from 'react-native';
 import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
-import { TEXT, ANIMATION, COLORS } from '@/constants';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/stores/store';
+import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/stores/state';
 import { useEffect } from 'react';
 
 interface Props {

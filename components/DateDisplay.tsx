@@ -2,8 +2,8 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
-import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateAtom } from '@/stores/store';
-import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
+import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateAtom } from '@/stores/state';
+import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import Masjid from './Masjid';
 import { formatDate } from '@/shared/time';
 

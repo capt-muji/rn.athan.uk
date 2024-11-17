@@ -6,8 +6,8 @@ import Prayer from '@/components/Prayer';
 import Footer from '@/components/Footer';
 import ActiveBackground from '@/components/ActiveBackground';
 import Overlay from '@/components/Overlay';
-import { SCREEN, PRAYERS_ENGLISH } from '@/constants';
-import RadialGlow from './RadialGlow';
+import { SCREEN, PRAYERS_ENGLISH } from '@/shared/constants';
+import RadialGlow from '@/components/RadialGlow';
 
 export default function Prayers({ list }) {
   const insets = useSafeAreaInsets();

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { COLORS } from '@/constants';
+import { COLORS } from '@/shared/constants';
 
 export default function Footer() {
   return (

@@ -12,8 +12,8 @@ import {
   absolutePrayerMeasurementsAtom,
   dateAtom,
   todaysPrayersAtom,
-} from '@/stores/store';
-import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/constants';
+} from '@/stores/state';
+import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/shared/constants';
 import { getTodayOrTomorrowDate } from '@/shared/time';
 
 const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };

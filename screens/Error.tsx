@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { BsArrowClockwise } from "rn-icons/bs";
 
-import { COLORS, TEXT } from '@/constants';
+import { COLORS, TEXT } from '@/shared/constants';
 import Masjid from './Masjid';
 
 export default function Error() {
