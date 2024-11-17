@@ -9,7 +9,7 @@ export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
 
 // Remove these atoms
-export const dateTodayAtom = atom<string>('');
+export const dateAtom = atom<string>('');
 export const prayersTodayAtom = atom<IScheduleNow>({});
 export const prayersTomorrowAtom = atom<IScheduleNow>({});
 export const prayersNextIndexAtom = atom<number>(-1);
@@ -40,7 +40,7 @@ export const absolutePrayerMeasurementsAtom = atom<Record<number, PageCoordinate
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);
 
 export const prayerNextIndexAtom = atom<number>(-1);
-export const extraNextIndexAtom = atom<number>(-1);
+// export const extraNextIndexAtom = atom<number>(-1);
 
 export const prayerMeasurementsAtom = atom<Record<number, Measurements>>({});
 export const extraMeasurementsAtom = atom<Record<number, Measurements>>({});
@@ -73,3 +73,13 @@ export const alertPreferencesAtom = atomWithStorage<AlertPreferences>(
   createJSONStorage(() => jotaiStorage),
   { getOnInit: true }
 );
+
+// New atoms for better state sharing
+export const standardScheduleAtom = atom<IScheduleNow>({});
+export const extraScheduleAtom = atom<IScheduleNow>({});
+
+export const standardNextIndexAtom = atom<number>(-1);
+export const extraNextIndexAtom = atom<number>(-1);
+
+export const standardDateAtom = atom<string>('');
+export const extraDateAtom = atom<string>('');

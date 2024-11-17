@@ -9,6 +9,7 @@ import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
 import { PrayerType } from '@/shared/types';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
+import usePrayer from '@/hooks/usePrayer';
 
 interface Props {
   index: number;
@@ -22,7 +23,7 @@ export default function Prayer({ index, isOverlay = false, type }: Props) {
   const { schedule, nextIndex } = usePrayer(type);
   const [selectedIndex, setSelectedIndex] = useAtom(selectedIndexAtom);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  
+
   const prayer = schedule[index];
   const isPassed = prayer?.passed;
   const isNext = index === nextIndex;
