@@ -58,7 +58,6 @@ export default function useSchedule(type: PrayerType) {
   return {
     schedule,
     nextIndex,
-    fetch,
     setTodayAndTomorrow,
     updateNextIndex
   };

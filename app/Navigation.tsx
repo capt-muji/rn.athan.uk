@@ -37,7 +37,7 @@ export default function Navigation() {
       >
         <Settings key="1" />
         <Prayers key="2" type="standard" />
-        <Prayers key="3" type="extra" />
+        {/* <Prayers key="3" type="extra" /> */}
       </PagerView>
 
       <View style={[styles.dotsContainer, { bottom: bottom + 5 }]}>
