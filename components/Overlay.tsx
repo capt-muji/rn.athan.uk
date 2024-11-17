@@ -5,11 +5,11 @@ import { useAtom } from 'jotai';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
   overlayVisibleAtom,
-  selectedPrayerIndexAtom,
+  prayersSelectedIndexAtom,
   absoluteDateMeasurementsAtom,
   absolutePrayerMeasurementsAtom,
-  todaysPrayersAtom,
-} from '@/stores/state';
+  prayersTodayAtom,
+} from '@/stores/store';
 import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import Prayer from './Prayer';
 import RadialGlow from './RadialGlow';
@@ -20,10 +20,10 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [selectedPrayerIndex] = useAtom(prayersSelectedIndexAtom);
   const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
   const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const [todaysPrayers] = useAtom(prayersTodayAtom);
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);

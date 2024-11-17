@@ -2,15 +2,15 @@ import { StyleSheet, Text } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
-import { nextPrayerIndexAtom, overlayVisibleAtom, todaysPrayersAtom, tomorrowsPrayersAtom, selectedPrayerIndexAtom } from '@/stores/state';
+import { prayersNextIndexAtom, overlayVisibleAtom, prayersTodayAtom, prayersTomorrowAtom, prayersSelectedIndexAtom } from '@/stores/store';
 import { usePrayerCountdown } from '@/hooks/useCountdown';
 
-export default function Timer() {
+export default function Countdown() {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
-  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
-  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [todaysPrayers] = useAtom(prayersTodayAtom);
+  const [tomorrowsPrayers] = useAtom(prayersTomorrowAtom);
+  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
+  const [selectedPrayerIndex] = useAtom(prayersSelectedIndexAtom);
 
   const prayers = overlayVisible && todaysPrayers[selectedPrayerIndex]?.passed ? tomorrowsPrayers : todaysPrayers;
   const day = overlayVisible && todaysPrayers[selectedPrayerIndex]?.passed ? 'tomorrow' : 'today';

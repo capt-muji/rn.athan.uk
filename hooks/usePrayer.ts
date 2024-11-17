@@ -1,17 +1,15 @@
-import { useAtom } from 'jotai';
-
+import { useState } from 'react';
 import * as Api from '@/api/client';
 import Storage from '@/stores/database';
 import { isDateTodayOrFuture } from '@/shared/time';
 import { transformApiData, createSchedule } from '@/shared/prayer';
-import { prayersTodayAtom, prayersTomorrowsAtom, prayersNextIndexAtom, dateTodayAtom } from '@/stores/store';
-import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
+import { IApiResponse, ISingleApiResponseTransformed, IScheduleNow } from '@/shared/types';
 
 export default function usePrayer() {
-  const [prayersToday, setPrayersTodayAtom] = useAtom(prayersTodayAtom);
-  const [, setPrayersTomorrowAtom] = useAtom(prayersTomorrowsAtom);
-  const [prayersNextIndex, setPrayersNextIndex] = useAtom(prayersNextIndexAtom);
-  const [, setDateToday] = useAtom(dateTodayAtom);
+  const [prayersToday, setPrayersToday] = useState<IScheduleNow>({});
+  const [prayersTomorrow, setPrayersTomorrow] = useState<IScheduleNow>({});
+  const [prayersNextIndex, setPrayersNextIndex] = useState<number>(-1);
+  const [dateToday, setDateToday] = useState<string>('');
 
   // Fetch, filter and transform prayer times
   const fetch = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
@@ -36,38 +34,48 @@ export default function usePrayer() {
 
   // Set today and tomorrow prayers in the store
   const setTodayAndTomorrow = () => {
+    console.log('Setting today and tomorrow prayers');
+
     const todayRaw = Storage.prayers.getTodayOrTomorrow('today');
     const tomorrowRaw = Storage.prayers.getTodayOrTomorrow('tomorrow');
-
+    
     if (!todayRaw || !tomorrowRaw) throw new Error('Prayers not found');
-
+    
     const todaysPrayers = createSchedule(todayRaw);
     const tomorrowsPrayers = createSchedule(tomorrowRaw);
 
-    setPrayersTodayAtom(todaysPrayers);
-    setPrayersTomorrowAtom(tomorrowsPrayers);
+    console.log('muji: 🐳 ↼↼↼ todaysPrayers :: start ⇀⇀⇀ 🐳');
+    console.log(JSON.stringify(todaysPrayers, null, 2));
+    console.log('muji: 🐳 ↽↽↽ todaysPrayers :: end   ⇁⇁⇁ 🐳');
+
+    setPrayersToday(todaysPrayers);
+    setPrayersTomorrow(tomorrowsPrayers);
+
+
   }
 
-  // Set next prayer index
+  // Mark as passed and set next prayer index
   const setNextIndex = () => {
-    if (prayersNextIndex === -1) {
-      // During app initialization, find first upcoming prayer
-      const nextPrayer = Object.values(prayersToday).find(p => !p.passed);
-      setPrayersNextIndex(nextPrayer?.index ?? 0);
-      return;
-    }
+    console.log('Setting next prayer');
+
+
+    const prayers = Object.values(prayersToday);
+
+
+    const nextPrayer = prayers.find(prayer => !prayer.passed) || prayers[0];
+    
+    setPrayersNextIndex(nextPrayer.index);
 
     // Reset to Fajr if last prayer has passed
-    setPrayersNextIndex(prayersNextIndex === 5 ? 0 : prayersNextIndex + 1);
+    // setPrayersNextIndex(prayersNextIndex === 5 ? 0 : prayersNextIndex + 1);
+    console.log('Finished setting next prayer');
   };
 
-    // Set date in the store from the today's prayers
+  // Set date in the store from the today's prayers
   const setDate = () => {
     const dataDate = Object.values(prayersToday)[0].date;
     setDateToday(dataDate);
   };
-  
-  
 
   return {
     fetch,

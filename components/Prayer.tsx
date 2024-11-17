@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-na
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/stores/state';
+import { prayersTodayAtom, prayersNextIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, prayersSelectedIndexAtom, overlayVisibleAtom } from '@/stores/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -17,11 +17,11 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, isOverlay = false }: Props) {
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
-  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [todaysPrayers] = useAtom(prayersTodayAtom);
+  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
   const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
   const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
-  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(prayersSelectedIndexAtom);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const viewRef = useRef<View>(null);
 

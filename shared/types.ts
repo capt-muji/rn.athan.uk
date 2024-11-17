@@ -48,7 +48,7 @@ export interface ITransformedPrayer {
 }
 
 export interface IScheduleNow {
-  [number: string]: ITransformedPrayer;
+  [number: number]: ITransformedPrayer;
 };
 
 export interface IPrayerInfo {

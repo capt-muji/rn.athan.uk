@@ -8,12 +8,12 @@ import { PRAYERS_ENGLISH } from '@/shared/constants';
 export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
 
-// Prayer Data
-export const dateAtom = atom<string>('');
-export const todaysPrayersAtom = atom<IScheduleNow>({});
-export const tomorrowsPrayersAtom = atom<IScheduleNow>({});
-export const nextPrayerIndexAtom = atom<number>(-1);
-export const selectedPrayerIndexAtom = atom<number>(-1);
+// Remove these atoms
+export const dateTodayAtom = atom<string>('');
+export const prayersTodayAtom = atom<IScheduleNow>({});
+export const prayersTomorrowAtom = atom<IScheduleNow>({});
+export const prayersNextIndexAtom = atom<number>(-1);
+export const prayersSelectedIndexAtom = atom<number>(-1);
 
 // Overlay State
 export const overlayVisibleAtom = atom<boolean>(false);
