@@ -6,28 +6,26 @@ import * as Haptics from 'expo-haptics';
 
 import { prayersTodayAtom, prayersNextIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, prayersSelectedIndexAtom, overlayVisibleAtom } from '@/stores/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
+import { PrayerType } from '@/shared/types';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 
 interface Props {
   index: number;
   isOverlay?: boolean;
+  type: PrayerType;
 }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-export default function Prayer({ index, isOverlay = false }: Props) {
-  const [todaysPrayers] = useAtom(prayersTodayAtom);
-  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
-  const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [, setNextPrayerMeasurements] = useAtom(absoluteNextPrayerMeasurementsAtom);
-  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(prayersSelectedIndexAtom);
+export default function Prayer({ index, isOverlay = false, type }: Props) {
+  const { schedule, nextIndex } = usePrayer(type);
+  const [selectedIndex, setSelectedIndex] = useAtom(selectedIndexAtom);
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const viewRef = useRef<View>(null);
-
-  const prayer = todaysPrayers[index];
-  const isPassed = prayer.passed;
-  const isNext = index === nextPrayerIndex;
+  
+  const prayer = schedule[index];
+  const isPassed = prayer?.passed;
+  const isNext = index === nextIndex;
 
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const backgroundOpacity = useSharedValue(0);
@@ -57,8 +55,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
     viewRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
-      setAbsolutePrayerMeasurements(prev => ({ ...prev, [index]: measurements }));
-      if (isNext) setNextPrayerMeasurements(measurements);
+      const setMeasurements = type === 'prayer' ? setPrayerMeasurements : setExtraMeasurements;
+      setMeasurements(prev => ({ ...prev, [index]: measurements }));
     });
   };
 

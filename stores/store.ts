@@ -39,6 +39,12 @@ export const absoluteNextPrayerMeasurementsAtom = atom<PageCoordinates | null>(n
 export const absolutePrayerMeasurementsAtom = atom<Record<number, PageCoordinates>>({});
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);
 
+export const prayerNextIndexAtom = atom<number>(-1);
+export const extraNextIndexAtom = atom<number>(-1);
+
+export const prayerMeasurementsAtom = atom<Record<number, Measurements>>({});
+export const extraMeasurementsAtom = atom<Record<number, Measurements>>({});
+
 // Alert Preferences
 export enum AlertType {
   Off = 0,

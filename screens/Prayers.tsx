@@ -6,26 +6,23 @@ import Prayer from '@/components/Prayer';
 import Footer from '@/components/Footer';
 import ActiveBackground from '@/components/ActiveBackground';
 import Overlay from '@/components/Overlay';
-import { SCREEN, PRAYERS_ENGLISH } from '@/shared/constants';
+import { SCREEN, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import RadialGlow from '@/components/RadialGlow';
+import { PrayerType } from '@/shared/types';
 
-export default function Prayers({ list }) {
+interface Props {
+  type: PrayerType;
+}
+
+export default function Prayers({ type }: Props) {
+  const { schedule } = usePrayer(type);
   const insets = useSafeAreaInsets();
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal, paddingBottom: insets.bottom }]}>
-      {/* <RadialGlow /> */}
-      {/* <ActiveBackground /> */}
-
-      {/* <Countdown /> */}
-      {/* <DateDisplay /> */}
-
-      {list.map((_, index) => (
-        <Prayer key={index} index={index} />
+      {Object.keys(schedule).map((_, index) => (
+        <Prayer key={index} index={index} type={type} />
       ))}
-
-      {/* <Overlay /> */}
-      {/* <Footer /> */}
     </View>
   );
 }

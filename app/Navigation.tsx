@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import { COLORS, PRAYERS_ENGLISH, EXTRAS_ENGLISH, ANIMATION } from '@/shared/constants';
+import { COLORS, ANIMATION } from '@/shared/constants';
 import Prayers from '@/screens/Prayers';
 import Settings from '@/screens/Settings';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -36,8 +36,8 @@ export default function Navigation() {
         onPageScroll={handlePageScroll}
       >
         <Settings key="1" />
-        <Prayers key="2" list={PRAYERS_ENGLISH} />
-        {/* <Prayers key="3" list={PRAYERS_ENGLISH} /> */}
+        <Prayers key="2" type="standard" />
+        <Prayers key="3" type="extra" />
       </PagerView>
 
       <View style={[styles.dotsContainer, { bottom: bottom + 5 }]}>
