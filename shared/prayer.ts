@@ -1,5 +1,5 @@
-import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes } from '@/shared/types';
-import { PRAYERS_ENGLISH, PRAYERS_ARABIC } from '@/shared/constants';
+import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, PrayerType } from '@/shared/types';
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC, EXTRAS_ENGLISH, EXTRAS_ARABIC } from '@/shared/constants';
 import { isDateTodayOrFuture, getLastThirdOfNight, isTimePassed, addMinutes } from '@/shared/time';
 
 /**
@@ -51,25 +51,25 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 /**
  * Creates structured prayer times object for today with status information. Maps prayer times to both English and Arabic names.
  */
-export const createSchedule = (prayers: ISingleApiResponseTransformed): IScheduleNow => {
+export const createSchedule = (prayers: ISingleApiResponseTransformed, type: PrayerType): IScheduleNow => {
   const schedule: IScheduleNow = {};
+  const names = type === 'standard' ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  const arabicNames = type === 'standard' ? PRAYERS_ARABIC : EXTRAS_ARABIC;
 
-  PRAYERS_ENGLISH.forEach((name, index) => {
+  names.forEach((name, index) => {
     const prayerTime = prayers[name.toLowerCase() as keyof ISingleApiResponseTransformed];
 
     schedule[index] = {
       index,
       date: prayers.date,
       english: name,
-      arabic: PRAYERS_ARABIC[index],
+      arabic: arabicNames[index],
       time: prayerTime,
       passed: isTimePassed(prayerTime),
-      isNext: false
+      isNext: false,
+      type
     };
   });
-
-  console.log('11111');
-  console.log(schedule);
 
   return schedule;
 };
