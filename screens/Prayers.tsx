@@ -18,8 +18,6 @@ interface Props {
 export default function Prayers({ type }: Props) {
   const { schedule } = useSchedule(type);
 
-  console.log(schedule);
-
   const insets = useSafeAreaInsets();
 
   return (
