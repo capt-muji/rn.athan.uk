@@ -74,12 +74,13 @@ export const alertPreferencesAtom = atomWithStorage<AlertPreferences>(
   { getOnInit: true }
 );
 
-// New atoms for better state sharing
-export const standardScheduleAtom = atom<IScheduleNow>({});
-export const extraScheduleAtom = atom<IScheduleNow>({});
 
-export const standardNextIndexAtom = atom<number>(-1);
-export const extraNextIndexAtom = atom<number>(-1);
+export const scheduleStandardTodayAtom = atom<IScheduleNow>({});
+export const scheduleStandardTomorrowAtom = atom<IScheduleNow>({});
+export const scheduleStandardNextIndexAtom = atom<number>(-1);
+export const scheduleStandardSelectedIndexAtom = atom<number>(-1);
 
-export const standardDateAtom = atom<string>('');
-export const extraDateAtom = atom<string>('');
+export const scheduleExtraTodayAtom = atom<IScheduleNow>({});
+export const scheduleExtraTomorrowAtom = atom<IScheduleNow>({});
+export const scheduleExtraNextIndexAtom = atom<number>(-1);
+export const scheduleExtraSelectedIndexAtom = atom<number>(-1);
