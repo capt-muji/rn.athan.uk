@@ -6,7 +6,7 @@ import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
-import { useInit } from '@/hooks/useInit';
+import { useApp } from '@/hooks/useApp';
 import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
 
@@ -17,7 +17,7 @@ export default function Index() {
     'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf')
   });
 
-  const { initialize } = useInit();
+  const { initialize } = useApp();
 
   useEffect(() => {
     const init = async () => {
