@@ -10,23 +10,21 @@ import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
 
 export default function Index() {
-  const [isInitialized, setIsInitialized] = useState(false);
+  const { initialize, isLoading } = useAppState();
+
   const [fontsLoaded] = useFonts({
     'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
     'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf')
   });
 
-  const { initialize } = useAppState();
-
   useEffect(() => {
     const init = async () => {
       await initialize();
-      setIsInitialized(true);
     };
     init();
   }, []);
 
-  if (!fontsLoaded || !isInitialized) return <WaveIndicator color="white" />;
+  if (!fontsLoaded || isLoading) return <WaveIndicator color="white" />;
 
   return (
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
