@@ -8,21 +8,10 @@ import Prayers from '@/screens/Prayers';
 import Settings from '@/screens/Settings';
 
 export default function Navigation() {
-  const [isScrolling, setIsScrolling] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageScroll = (e: any) => {
-    if (isScrolling) {
-      const newPage = e.nativeEvent.position;
-      if (Math.abs(newPage - currentPage) > 1) {
-        e.preventDefault();
-      }
-    }
-  };
 
   const handlePageSelected = (e: any) => {
     setCurrentPage(e.nativeEvent.position);
-    setIsScrolling(false);
   };
 
   return (
@@ -38,13 +27,8 @@ export default function Navigation() {
         initialPage={1}
         pageMargin={0}
         overdrag={false}
-        scrollEnabled={!isScrolling}
         layoutDirection="ltr"
         overScrollMode="never"
-        onPageScrollStateChanged={(state) => {
-          setIsScrolling(state.nativeEvent.pageScrollState === 'dragging');
-        }}
-        onPageScroll={handlePageScroll}
         onPageSelected={handlePageSelected}
       >
         <View key="1"><Settings /></View>
