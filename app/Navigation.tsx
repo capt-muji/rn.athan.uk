@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import { COLORS, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
+import { COLORS, PRAYERS_ENGLISH, EXTRAS_ENGLISH, ANIMATION } from '@/shared/constants';
 import Prayers from '@/screens/Prayers';
 import Settings from '@/screens/Settings';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -21,7 +21,7 @@ export default function Navigation() {
     return {
       opacity: withTiming(
         Math.abs(position.value - index) < 0.5 ? 1 : 0.25,
-        { duration: 200 }
+        { duration: ANIMATION.duration }
       )
     };
   });
