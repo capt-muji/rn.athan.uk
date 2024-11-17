@@ -9,6 +9,7 @@ import Overlay from '@/components/Overlay';
 import { SCREEN, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import RadialGlow from '@/components/RadialGlow';
 import { PrayerType } from '@/shared/types';
+import usePrayer from '@/hooks/usePrayer';
 
 interface Props {
   type: PrayerType;
