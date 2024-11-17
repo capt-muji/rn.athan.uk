@@ -9,7 +9,7 @@ import {
   absoluteDateMeasurementsAtom,
   absolutePrayerMeasurementsAtom,
   todaysPrayersAtom,
-} from '@/store/store';
+} from '@/stores/store';
 import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Prayer from './Prayer';
 import RadialGlow from './RadialGlow';

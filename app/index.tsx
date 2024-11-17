@@ -1,26 +1,23 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, StatusBar, Dimensions } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import Main from '@/components/Main';
-import Error from '@/components/Error';
-import { isLoadingAtom, hasErrorAtom, overlayVisibleAtom } from '@/store/store';
+import { isLoadingAtom, hasErrorAtom } from '@/stores/store';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { useInit } from '@/hooks/useInit';
 import { COLORS, OVERLAY } from '@/constants';
+import Navigation from './Navigation';
 
-export default function Index({ list }) {
+export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [fontsLoaded] = useFonts({
     'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
     'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf')
   });
-
-  const [isLoading] = useAtom(isLoadingAtom);
-  const [hasError] = useAtom(hasErrorAtom);
 
   const { initialize } = useInit();
 
@@ -36,28 +33,16 @@ export default function Index({ list }) {
 
   return (
     <>
-      {/* <LinearGradient
-        colors={[COLORS.gradientStart, COLORS.gradientEnd]}
-        style={styles.gradient}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      /> */}
-      <StatusBar barStyle="light-content" />
-
-      {isLoading && <WaveIndicator color="white" />}
-      {hasError && !isLoading && <Error />}
-      {!hasError && !isLoading && <Main list={list} />}
+      <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
+        <LinearGradient
+          colors={[COLORS.gradientStart, COLORS.gradientEnd]}
+          style={[StyleSheet.absoluteFillObject, { zIndex: OVERLAY.zindexes.background }]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+        />
+        <StatusBar barStyle="light-content" />
+        <Navigation />
+      </GestureHandlerRootView>
     </>
   );
-}
-
-const styles = StyleSheet.create({
-  gradient: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: OVERLAY.zindexes.background
-  },
-});
+};

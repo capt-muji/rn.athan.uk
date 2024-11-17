@@ -2,10 +2,10 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
-import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateAtom } from '@/store/store';
+import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateAtom } from '@/stores/store';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/constants';
 import Masjid from './Masjid';
-import { formatDate } from '@/utils/time';
+import { formatDate } from '@/shared/time';
 
 export default function DateDisplay() {
   const [, setDateMeasurements] = useAtom(absoluteDateMeasurementsAtom);

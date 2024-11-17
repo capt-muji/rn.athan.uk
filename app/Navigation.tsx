@@ -4,8 +4,8 @@ import PagerView from 'react-native-pager-view';
 import { useState } from 'react';
 
 import { COLORS, OVERLAY } from '@/constants';
-import Main from '../app/index';
-import Settings from './Settings';
+import Main from '@/components/Main';
+import Settings from '@/components/Settings';
 import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '../constants';
 
 const { width } = Dimensions.get('window');

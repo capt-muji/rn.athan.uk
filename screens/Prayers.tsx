@@ -9,7 +9,7 @@ import Overlay from '@/components/Overlay';
 import { SCREEN, PRAYERS_ENGLISH } from '@/constants';
 import RadialGlow from './RadialGlow';
 
-export default function Main({ list }) {
+export default function Prayers({ list }) {
   const insets = useSafeAreaInsets();
 
   return (
