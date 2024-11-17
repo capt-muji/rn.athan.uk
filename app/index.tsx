@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useAtom } from 'jotai';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { isLoadingAtom, hasErrorAtom } from '@/stores/state';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { useInit } from '@/hooks/useInit';
 import { COLORS, OVERLAY } from '@/shared/constants';
-import Navigation from './Navigation';
+import Navigation from '@/app/Navigation';
 
 export default function Index() {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -32,17 +30,15 @@ export default function Index() {
   if (!fontsLoaded || !isInitialized) return <WaveIndicator color="white" />;
 
   return (
-    <>
-      <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
-        <LinearGradient
-          colors={[COLORS.gradientStart, COLORS.gradientEnd]}
-          style={[StyleSheet.absoluteFillObject, { zIndex: OVERLAY.zindexes.background }]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-        />
-        <StatusBar barStyle="light-content" />
-        <Navigation />
-      </GestureHandlerRootView>
-    </>
+    <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
+      <LinearGradient
+        colors={[COLORS.gradientStart, COLORS.gradientEnd]}
+        style={[StyleSheet.absoluteFillObject, { zIndex: OVERLAY.zindexes.background }]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      />
+      <StatusBar barStyle="light-content" />
+      <Navigation />
+    </GestureHandlerRootView>
   );
 };
