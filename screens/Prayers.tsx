@@ -9,14 +9,17 @@ import Overlay from '@/components/Overlay';
 import { SCREEN, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import RadialGlow from '@/components/RadialGlow';
 import { PrayerType } from '@/shared/types';
-import usePrayer from '@/hooks/usePrayer';
+import useSchedule from '@/hooks/useSchedule';
 
 interface Props {
   type: PrayerType;
 }
 
 export default function Prayers({ type }: Props) {
-  const { schedule } = usePrayer(type);
+  const { schedule } = useSchedule(type);
+
+  console.log(schedule);
+
   const insets = useSafeAreaInsets();
 
   return (
