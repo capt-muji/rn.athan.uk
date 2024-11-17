@@ -7,8 +7,8 @@ import {
   tomorrowsPrayersAtom, 
   nextPrayerIndexAtom,
   dateAtom 
-} from '@/store/store';
-import { createSchedule, filterApiData, transformApiData } from '@/utils/prayer';
+} from '@/stores/store';
+import { createSchedule, filterApiData, transformApiData } from '@/shared/prayer';
 import { IApiResponse } from '@/types/api';
 import storage from '@/storage/storage';
 
