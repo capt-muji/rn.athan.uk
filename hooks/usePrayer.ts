@@ -28,7 +28,7 @@ export default function usePrayer() {
   };
 
   // Stores prayers in the database
-  const storeAll = (prayers: ISingleApiResponseTransformed[]) => {
+  const saveAll = (prayers: ISingleApiResponseTransformed[]) => {
     Storage.prayers.storePrayers(prayers);
   };
 
@@ -48,7 +48,7 @@ export default function usePrayer() {
   }
 
   // Set next prayer index
-  const setNextPrayerIndex = () => {
+  const setNextIndex = () => {
     if (prayersNextIndex === -1) {
       // During app initialization, find first upcoming prayer
       const nextPrayer = Object.values(prayersToday).find(p => !p.passed);
@@ -60,11 +60,11 @@ export default function usePrayer() {
     setPrayersNextIndex(prayersNextIndex === 5 ? 0 : prayersNextIndex + 1);
   };
   
-  
+
   return {
     fetch,
-    storeAll,
+    saveAll,
     setTodayAndTomorrow,
-    setNextPrayerIndex
+    setNextIndex
   };
 };
