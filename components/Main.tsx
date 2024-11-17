@@ -25,7 +25,7 @@ export default function Main({ list }) {
       ))}
 
       {/* <Overlay /> */}
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 }
