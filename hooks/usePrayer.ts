@@ -1,46 +1,35 @@
+import * as Api from '@/api/client';
+import { IApiResponse, IApiTimes, ISingleApiResponseTransformed } from '@/shared/types';
+import { isDateTodayOrFuture } from '@/shared/time';
+import storage from '@/stores/database';
+import { transformApiData } from '@/shared/prayer';
 
-import { useAtom } from 'jotai';
-import { 
-  nextPrayerIndexAtom,
-  selectedPrayerIndexAtom,
-  overlayVisibleAtom,
-  todaysPrayersAtom
-} from '@/stores/state';
+export default function usePrayer() {
+  // Fetch, filter and transform prayer times
+  const fetch = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
+    const apiData = await Api.fetch(year);
+    const apiDataFiltered: IApiResponse = {
+      city: apiData.city,
+      times: {}
+    };
 
-export const usePrayerState = () => {
-  const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [selectedPrayerIndex, setSelectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const [todaysPrayers, setTodaysPrayers] = useAtom(todaysPrayersAtom);
+    const entries = Object.entries(apiData.times);
 
-  const incrementNextPrayer = () => {
-    const lastPrayerIndex = Object.keys(todaysPrayers).length - 1;
-    setNextPrayerIndex(nextPrayerIndex === lastPrayerIndex ? 0 : nextPrayerIndex + 1);
+    entries.forEach(([date, data]) => {
+      if (!isDateTodayOrFuture(date)) return;
+      apiDataFiltered.times[date] = data;
+    });
+
+    return transformApiData(apiDataFiltered);
   };
 
-  const selectPrayer = (index: number) => {
-    setSelectedPrayerIndex(index);
-    setOverlayVisible(true);
-  };
-
-  const closeOverlay = () => {
-    setOverlayVisible(false);
-  };
-
-  const markPrayerAsPassed = (index: number) => {
-    setTodaysPrayers(prayers => ({
-      ...prayers,
-      [index]: { ...prayers[index], passed: true }
-    }));
+  // Stores prayers in the database
+  const storeAll = (prayers: ISingleApiResponseTransformed[]) => {
+    storage.prayers.storePrayers(prayers);
   };
 
   return {
-    nextPrayerIndex,
-    selectedPrayerIndex,
-    overlayVisible,
-    incrementNextPrayer,
-    selectPrayer,
-    closeOverlay,
-    markPrayerAsPassed
+    fetch,
+    storeAll,
   };
 };

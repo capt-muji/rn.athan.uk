@@ -1,11 +1,12 @@
-import { IApiResponse } from "@/types/api";
+import { IApiResponse } from "@/shared/types";
 import { API_CONFIG } from "./config";
+import { createLondonDate } from "@/shared/time";
 
-const buildUrl = (): string => {
+const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
   const queries = [
     `format=${API_CONFIG.format}`,
     `key=${API_CONFIG.key}`,
-    `year=${new Date().getFullYear()}`,
+    `year=${year}`,
     '24hours=true'
   ].join("&");
 
@@ -21,9 +22,9 @@ const parseResponse = async (response: Response): Promise<IApiResponse> => {
   return data;
 }
 
-export const fetch = async (): Promise<IApiResponse> => {
+export const fetch = async (year?: number): Promise<IApiResponse> => {
   try {
-    const response = await globalThis.fetch(buildUrl(), {
+    const response = await globalThis.fetch(buildUrl(year), {
       method: 'GET',
       headers: { 'Cache-Control': 'no-cache' },
     });
