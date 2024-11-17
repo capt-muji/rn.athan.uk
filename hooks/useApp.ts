@@ -12,7 +12,7 @@ import { createSchedule, filterApiData, transformApiData } from '@/shared/prayer
 import { IApiResponse } from '@/shared/types';
 import storage from '@/stores/database';
 
-export const useInit = () => {
+export const useApp = () => {
   const [, setIsLoading] = useAtom(isLoadingAtom);
   const [, setHasError] = useAtom(hasErrorAtom);
   const [, setTodaysPrayers] = useAtom(todaysPrayersAtom);
