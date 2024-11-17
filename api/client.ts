@@ -24,7 +24,7 @@ const parseResponse = async (response: Response): Promise<IApiResponse> => {
 }
 
 export const fetch = async (year?: number): Promise<IApiResponse> => {
-  if (process.env.ENV !== 'prod') return MOCK_DATA_SIMPLE;
+  if (process.env.EXPO_PUBLIC_ENV !== 'prod') return MOCK_DATA_SIMPLE;
 
   console.log('We are in production mode');
 
