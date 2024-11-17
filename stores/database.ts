@@ -1,6 +1,6 @@
 import { MMKV } from 'react-native-mmkv';
 
-import { DaySelection, ISingleApiResponseTransformed } from '@/types/prayers';
+import { DaySelection, ISingleApiResponseTransformed } from '@/shared/types';
 import { getTodayOrTomorrowDate } from '@/shared/time';
 
 const storage = new MMKV();
@@ -11,7 +11,7 @@ const storePrayers = (prayers: ISingleApiResponseTransformed[]) => {
   });
 };
 
-const getTodayOrTomorrowPrayers = (day: DaySelection = 'today'): ISingleApiResponseTransformed | null => {
+const getTodayOrTomorrow = (day: DaySelection = 'today'): ISingleApiResponseTransformed | null => {
   const date = getTodayOrTomorrowDate(day);
   const data = storage.getString(date);
   return data ? JSON.parse(data) : null;
@@ -34,7 +34,7 @@ export const jotaiStorage = {
 export default {
   prayers: {
     storePrayers,
-    getTodayOrTomorrowPrayers
+    getTodayOrTomorrow
   },
   clear: () => storage.clearAll()
 };

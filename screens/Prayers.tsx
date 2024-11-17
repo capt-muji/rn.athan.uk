@@ -17,8 +17,8 @@ export default function Prayers({ list }) {
       {/* <RadialGlow /> */}
       {/* <ActiveBackground /> */}
 
-      <Countdown />
-      <DateDisplay />
+      {/* <Countdown /> */}
+      {/* <DateDisplay /> */}
 
       {list.map((_, index) => (
         <Prayer key={index} index={index} />

@@ -12,7 +12,7 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
-import { todaysPrayersAtom, nextPrayerIndexAtom, overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/stores/state';
+import { prayersTodayAtom, prayersNextIndexAtom, overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/stores/store';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
@@ -27,8 +27,8 @@ const ALERT_CONFIGS = [
 interface Props { index: number; isOverlay?: boolean; }
 
 export default function Alert({ index, isOverlay = false }: Props) {
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
-  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const [todaysPrayers] = useAtom(prayersTodayAtom);
+  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [alertPreferences, setAlertPreferences] = useAtom(alertPreferencesAtom);
   const [iconIndex, setIconIndex] = useState(0);

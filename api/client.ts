@@ -1,6 +1,7 @@
 import { IApiResponse } from "@/shared/types";
 import { API_CONFIG } from "./config";
 import { createLondonDate } from "@/shared/time";
+import { MOCK_DATA_SIMPLE } from '@/mocks/data_simple';
 
 const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
   const queries = [
@@ -23,6 +24,10 @@ const parseResponse = async (response: Response): Promise<IApiResponse> => {
 }
 
 export const fetch = async (year?: number): Promise<IApiResponse> => {
+  if (process.env.ENV !== 'prod') return MOCK_DATA_SIMPLE;
+
+  console.log('We are in production mode');
+
   try {
     const response = await globalThis.fetch(buildUrl(year), {
       method: 'GET',
