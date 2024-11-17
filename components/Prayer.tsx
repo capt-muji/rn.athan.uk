@@ -20,11 +20,11 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, isOverlay = false, type }: Props) {
-  const { schedule, nextIndex } = useSchedule(type);
-  const [selectedIndex, setSelectedIndex] = useAtom(selectedIndexAtom);
+  const { scheduleToday, scheduleTomorrow, nextIndex, selectedIndex, setSelectedIndex } = useSchedule(type);
+
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
 
-  const prayer = schedule[index];
+  const prayer = scheduleToday[index];
   const isPassed = prayer?.passed;
   const isNext = index === nextIndex;
 
@@ -37,14 +37,14 @@ export default function Prayer({ index, isOverlay = false, type }: Props) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     };
 
-    if (index === nextPrayerIndex) {
+    if (index === nextIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     };
-  }, [nextPrayerIndex]);
+  }, [nextIndex]);
 
   // handle overlay animations
   useEffect(() => {
-    if (isOverlay && selectedPrayerIndex === nextPrayerIndex) {
+    if (isOverlay && selectedIndex === nextIndex) {
       backgroundOpacity.value = 1;
     } else {
       backgroundOpacity.value = 0;

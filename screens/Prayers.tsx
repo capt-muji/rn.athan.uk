@@ -16,13 +16,13 @@ interface Props {
 }
 
 export default function Prayers({ type }: Props) {
-  const { schedule } = useSchedule(type);
+  const { scheduleToday } = useSchedule(type);
 
   const insets = useSafeAreaInsets();
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal, paddingBottom: insets.bottom }]}>
-      {Object.keys(schedule).map((_, index) => (
+      {Object.keys(scheduleToday).map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>

@@ -73,6 +73,7 @@ export default function useSchedule(type: PrayerType) {
     scheduleTomorrow,
     nextIndex,
     selectedIndex,
+    setSelectedIndex,
     setTodayAndTomorrow,
     updateNextIndex
   };
