@@ -3,6 +3,7 @@ import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
+import { usePrayerState } from '@/hooks/usePrayer';
 
 import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/stores/state';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
@@ -17,6 +18,7 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, isOverlay = false }: Props) {
+  const { selectPrayer, closeOverlay } = usePrayerState();
   const [todaysPrayers] = useAtom(todaysPrayersAtom);
   const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
   const [, setAbsolutePrayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
@@ -66,12 +68,11 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     if (isOverlay) {
-      setOverlayVisible(false);
+      closeOverlay();
       return;
     }
 
-    setSelectedPrayerIndex(index);
-    setOverlayVisible(true);
+    selectPrayer(index);
   };
 
   const animatedTextStyle = useAnimatedStyle(() => {

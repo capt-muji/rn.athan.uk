@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, dateAtom } from '@/stores/state';
-import { DaySelection } from '@/types/prayers';
+import { DaySelection } from '@/shared/types';
 import { getTimeDifference, getTodayOrTomorrowDate, formatTime } from '@/shared/time';
 import { PRAYERS_ENGLISH } from '@/shared/constants';
+import { usePrayerState } from './usePrayer';
 
 const THRESHOLD = 1000; // seconds
 
@@ -13,6 +14,7 @@ export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
   const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
   const [date, setDate] = useAtom(dateAtom);
   const [nextPrayerIndex, setNextPrayerIndex] = useAtom(nextPrayerIndexAtom);
+  const { incrementNextPrayer, markPrayerAsPassed } = usePrayerState();
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -30,8 +32,8 @@ export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
       
       // Check if prayer has passed
       if (diff <= THRESHOLD && day === 'today') {
-        prayer.passed = true;
-        setNextPrayerIndex(nextPrayerIndex === lastPrayerIndex ? 0 : nextPrayerIndex + 1);
+        markPrayerAsPassed(prayerIndex);
+        incrementNextPrayer();
         return;
       }
 
