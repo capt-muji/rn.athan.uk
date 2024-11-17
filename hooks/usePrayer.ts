@@ -44,36 +44,33 @@ export default function usePrayer() {
     const todaysPrayers = createSchedule(todayRaw);
     const tomorrowsPrayers = createSchedule(tomorrowRaw);
 
-    console.log('muji: 🐳 ↼↼↼ todaysPrayers :: start ⇀⇀⇀ 🐳');
-    console.log(JSON.stringify(todaysPrayers, null, 2));
-    console.log('muji: 🐳 ↽↽↽ todaysPrayers :: end   ⇁⇁⇁ 🐳');
-
     setPrayersToday(todaysPrayers);
     setPrayersTomorrow(tomorrowsPrayers);
 
-
+    console.log('Finished setting today and tomorrow prayers');
+    return { today: todaysPrayers, tomorrow: tomorrowsPrayers };
   }
 
-  // Mark as passed and set next prayer index
-  const setNextIndex = () => {
+  // Initialize next prayer index
+  const setNextIndex = (prayers: IScheduleNow) => {
     console.log('Setting next prayer');
 
-
-    const prayers = Object.values(prayersToday);
-
-
-    const nextPrayer = prayers.find(prayer => !prayer.passed) || prayers[0];
-    
+    const schedule = Object.values(prayers);
+    const nextPrayer = schedule.find(prayer => !prayer.passed) || prayers[0];
     setPrayersNextIndex(nextPrayer.index);
 
-    // Reset to Fajr if last prayer has passed
-    // setPrayersNextIndex(prayersNextIndex === 5 ? 0 : prayersNextIndex + 1);
     console.log('Finished setting next prayer');
+    return nextPrayer;
   };
 
+  // Mark next prayer as passed and set next prayer index
+  // setPrayersNextIndex(nextPrayer.index === 5 ? 0 : prayersNextIndex + 1);
+  // Reset to Fajr if last prayer has passed
+  // console.log('Finished setting next prayer');
+
   // Set date in the store from the today's prayers
-  const setDate = () => {
-    const dataDate = Object.values(prayersToday)[0].date;
+  const setDate = (prayers: IScheduleNow) => {
+    const dataDate = Object.values(prayers)[0].date;
     setDateToday(dataDate);
   };
 
