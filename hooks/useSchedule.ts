@@ -69,8 +69,10 @@ export default function useSchedule(type: PrayerType) {
   // console.log('Finished setting next prayer');
 
   return {
-    schedule,
+    scheduleToday,
+    scheduleTomorrow,
     nextIndex,
+    selectedIndex,
     setTodayAndTomorrow,
     updateNextIndex
   };
