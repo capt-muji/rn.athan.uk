@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, dateAtom } from '@/store/store';
+import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, dateAtom } from '@/stores/store';
 import { DaySelection } from '@/types/prayers';
-import { getTimeDifference, getTodayOrTomorrowDate, formatTime } from '@/utils/time';
+import { getTimeDifference, getTodayOrTomorrowDate, formatTime } from '@/shared/time';
 import { PRAYERS_ENGLISH } from '@/constants';
 
 const THRESHOLD = 1000; // seconds

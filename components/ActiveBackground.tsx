@@ -12,9 +12,9 @@ import {
   absolutePrayerMeasurementsAtom,
   dateAtom,
   todaysPrayersAtom,
-} from '@/store/store';
+} from '@/stores/store';
 import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/constants';
-import { getTodayOrTomorrowDate } from '@/utils/time';
+import { getTodayOrTomorrowDate } from '@/shared/time';
 
 const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };
 const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };

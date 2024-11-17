@@ -1,7 +1,7 @@
 import { MMKV } from 'react-native-mmkv';
 
 import { DaySelection, ISingleApiResponseTransformed } from '@/types/prayers';
-import { getTodayOrTomorrowDate } from '@/utils/time';
+import { getTodayOrTomorrowDate } from '@/shared/time';
 
 const storage = new MMKV();
 

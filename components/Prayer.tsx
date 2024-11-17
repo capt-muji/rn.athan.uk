@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-na
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
+import { todaysPrayersAtom, nextPrayerIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/stores/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
