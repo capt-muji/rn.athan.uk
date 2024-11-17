@@ -6,10 +6,10 @@ import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { isLoadingAtom, hasErrorAtom } from '@/stores/store';
+import { isLoadingAtom, hasErrorAtom } from '@/stores/state';
 import { MOCK_DATA_SIMPLE } from '@/mocks/data';
 import { useInit } from '@/hooks/useInit';
-import { COLORS, OVERLAY } from '@/constants';
+import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from './Navigation';
 
 export default function Index() {

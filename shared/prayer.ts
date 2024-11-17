@@ -1,6 +1,6 @@
 import { ISingleApiResponseTransformed, IScheduleNow } from '@/types/prayers';
 import { IApiResponse, IApiTimes } from '@/types/api';
-import { PRAYERS_ENGLISH, PRAYERS_ARABIC } from '@/constants';
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC } from '@/shared/constants';
 import { isDateTodayOrFuture, getLastThirdOfNight, getTimeDifference } from './time';
 import { isTimePassed, addMinutes } from './time';
 

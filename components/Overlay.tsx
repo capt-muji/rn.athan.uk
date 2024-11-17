@@ -9,8 +9,8 @@ import {
   absoluteDateMeasurementsAtom,
   absolutePrayerMeasurementsAtom,
   todaysPrayersAtom,
-} from '@/stores/store';
-import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/constants';
+} from '@/stores/state';
+import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import Prayer from './Prayer';
 import RadialGlow from './RadialGlow';
 import { useEffect } from 'react';

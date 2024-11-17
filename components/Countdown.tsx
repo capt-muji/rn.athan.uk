@@ -1,8 +1,8 @@
 import { StyleSheet, Text } from 'react-native';
 import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { COLORS, OVERLAY, TEXT } from '@/constants';
-import { nextPrayerIndexAtom, overlayVisibleAtom, todaysPrayersAtom, tomorrowsPrayersAtom, selectedPrayerIndexAtom } from '@/stores/store';
+import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
+import { nextPrayerIndexAtom, overlayVisibleAtom, todaysPrayersAtom, tomorrowsPrayersAtom, selectedPrayerIndexAtom } from '@/stores/state';
 import { usePrayerCountdown } from '@/hooks/useCountdown';
 
 export default function Timer() {
