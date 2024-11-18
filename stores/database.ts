@@ -3,38 +3,18 @@ import { MMKV } from 'react-native-mmkv';
 import { DaySelection, ISingleApiResponseTransformed } from '@/shared/types';
 import { getTodayOrTomorrowDate } from '@/shared/time';
 
-const storage = new MMKV();
+export const database = new MMKV();
 
-const storePrayers = (prayers: ISingleApiResponseTransformed[]) => {
+export const clear = () => database.clearAll();
+
+export const storePrayers = (prayers: ISingleApiResponseTransformed[]) => {
   prayers.forEach(prayer => {
-    storage.set(prayer.date, JSON.stringify(prayer));
+    database.set(prayer.date, JSON.stringify(prayer));
   });
 };
 
-const getTodayOrTomorrow = (day: DaySelection = 'today'): ISingleApiResponseTransformed | null => {
+export const getTodayOrTomorrow = (day: DaySelection = DaySelection.Today): ISingleApiResponseTransformed | null => {
   const date = getTodayOrTomorrowDate(day);
-  const data = storage.getString(date);
+  const data = database.getString(date);
   return data ? JSON.parse(data) : null;
-};
-
-// Add storage interface for Jotai
-export const jotaiStorage = {
-  getItem: (key: string) => {
-    const value = storage.getString(key);
-    return value ? JSON.parse(value) : null;
-  },
-  setItem: (key: string, value: any) => {
-    storage.set(key, JSON.stringify(value));
-  },
-  removeItem: (key: string) => {
-    storage.delete(key);
-  },
-};
-
-export default {
-  prayers: {
-    storePrayers,
-    getTodayOrTomorrow
-  },
-  clear: () => storage.clearAll()
 };
