@@ -4,7 +4,7 @@ import useSchedule from '@/hooks/useSchedule';
 import useBaseStore from '@/hooks/useBaseStore';
 
 export const useAppState = () => {
-  const base = useBaseStore('standard');
+  const { app, date, schedule } = useBaseStore('standard');
   const prayer = usePrayer();
   const standardSchedule = useSchedule('standard');
   const extraSchedule = useSchedule('extra');
@@ -17,22 +17,22 @@ export const useAppState = () => {
       const { today: standardToday } = standardSchedule.setTodayAndTomorrow();
       const { today: extraToday } = extraSchedule.setTodayAndTomorrow();
 
-      standardSchedule.updateNextIndex(standardToday);
-      extraSchedule.updateNextIndex(extraToday);
-      base.setDate(new Date().toISOString());
+      schedule.updateNextIndex(standardToday);
+      extraSchedule.schedule.updateNextIndex(extraToday);
+      date.setCurrent(new Date().toISOString());
 
-      base.setIsLoading(false);
-      base.setHasError(false);
+      app.setIsLoading(false);
+      app.setHasError(false);
     } catch (error) {
       console.error('Error initializing app:', error);
-      base.setIsLoading(false);
-      base.setHasError(true);
+      app.setIsLoading(false);
+      app.setHasError(true);
     }
   }, []);
 
   return { 
-    isLoading: base.isLoading, 
-    hasError: base.hasError, 
+    isLoading: app.isLoading, 
+    hasError: app.hasError, 
     initialize 
   };
 };

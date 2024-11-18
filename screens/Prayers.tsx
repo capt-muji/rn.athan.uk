@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function Prayers({ type }: Props) {
-  const { today } = useSchedule(type);
+  const { schedule } = useSchedule(type);
 
   const insets = useSafeAreaInsets();
 
@@ -24,7 +24,7 @@ export default function Prayers({ type }: Props) {
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal, paddingBottom: insets.bottom }]}>
       <Countdown type={type} />
       <DateDisplay />
-      {Object.keys(today).map((_, index) => (
+      {Object.keys(schedule.today).map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>

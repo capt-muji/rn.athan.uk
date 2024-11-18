@@ -8,7 +8,7 @@ import PrayerHook from '@/hooks/usePrayer';
 
 const THRESHOLD = 1000; // seconds
 
-export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
+export const useCountdown = (prayerIndex: number, day: DaySelection) => {
   const [countdown, setCountdown] = useState('');
   const [todaysPrayers] = useAtom(Store.schedules.standard.today);
   const [tomorrowsPrayers] = useAtom(Store.schedules.standard.tomorrow);
