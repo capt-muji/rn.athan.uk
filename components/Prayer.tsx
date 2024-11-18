@@ -20,13 +20,13 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, type, isOverlay = false }: Props) {
-  const { app, schedule } = useSchedule(type);
+  const { schedule, updateScheduleMeasurements } = useSchedule(type);
+  const [overlayVisible, setOverlayVisible] = useAtom(Store.app.isOverlayOn);
 
   const prayer = schedule.today[index];
   const isPassed = prayer.passed;
   const isNext = index === schedule.nextIndex;
 
-  const [overlayVisible, setOverlayVisible] = useAtom(Store.app.isOverlayOn);
   const viewRef = useRef<View>(null);
 
   const isStandard = type === 'standard';
@@ -59,7 +59,7 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
 
     viewRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
-      schedule.setMeasurements(prev => ({ ...prev, [index]: measurements }));
+      updateScheduleMeasurements(index, measurements);
     });
   };
 

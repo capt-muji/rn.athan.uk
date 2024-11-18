@@ -1,28 +1,52 @@
+import { useAtom } from 'jotai';
 import Storage from '@/stores/database';
 import { createSchedule } from '@/shared/prayer';
-import { PrayerType } from '@/shared/types';
-import useStore from '@/hooks/useStore';
+import { PrayerType, Measurements, IScheduleNow, DaySelection } from '@/shared/types';
+import Store from '@/stores/store';
 
 export default function useSchedule(type: PrayerType) {
-  const Store = useStore(type);
+  const scheduleStore = Store.schedules[type];
+  const [today, setToday] = useAtom(scheduleStore.today);
+  const [tomorrow, setTomorrow] = useAtom(scheduleStore.tomorrow);
+  const [nextIndex, setNextIndex] = useAtom(scheduleStore.nextIndex);
+  const [selectedIndex, setSelectedIndex] = useAtom(scheduleStore.selectedIndex);
+  const [measurements, setMeasurementsAtom] = useAtom(scheduleStore.measurements);
 
-  const setTodayAndTomorrow = () => {
-    const todayRaw = Storage.prayers.getTodayOrTomorrow('today');
-    const tomorrowRaw = Storage.prayers.getTodayOrTomorrow('tomorrow');
-
-    if (!todayRaw || !tomorrowRaw) throw new Error('Data not found');
+  const setScheduleDay = (day: DaySelection) => {
+    const raw = Storage.prayers.getTodayOrTomorrow(day);
+    if (!raw) throw new Error('Data not found');
     
-    const todaySchedule = createSchedule(todayRaw, type);
-    const tomorrowSchedule = createSchedule(tomorrowRaw, type);
+    const schedule = createSchedule(raw, type);
+    day === DaySelection.Today ? setToday(schedule) : setTomorrow(schedule);
 
-    Store.schedule.setToday(todaySchedule);
-    Store.schedule.setTomorrow(tomorrowSchedule);
-
-    return { today: todaySchedule, tomorrow: tomorrowSchedule };
+    return schedule;
   };
 
+  const setMeasurements = (index: number, measurements: Measurements) => {
+    setMeasurementsAtom(prev => ({ ...prev, [index]: measurements }));
+  };
+
+  const setSelectPrayer = (index: number) => {
+    setSelectedIndex(index);
+  };
+
+
+  const updateNextIndex = (prayers: IScheduleNow) => {
+    const schedule = Object.values(prayers);
+    const nextPrayer = schedule.find(prayer => !prayer.passed) || prayers[0];
+    setNextIndex(nextPrayer.index);
+    return nextPrayer;
+  }
+
   return {
-    ...Store,
-    setTodayAndTomorrow,
+    today,
+    tomorrow,
+    nextIndex,
+    selectedIndex,
+    measurements,
+    setScheduleDay,
+    setMeasurements,
+    setSelectPrayer,
+    setNextIndex,
   };
 }

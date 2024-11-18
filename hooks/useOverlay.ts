@@ -1,20 +1,26 @@
+import { useAtom } from 'jotai';
 import { PrayerType, DaySelection } from '@/shared/types';
-import useStore from '@/hooks/useStore';
+import Store from '@/stores/store';
 
 export default function useOverlay(type: PrayerType) {
-  const { app, schedule } = useStore(type);
+  const [isOverlayOn, setIsOverlayOn] = useAtom(Store.app.isOverlayOn);
+  const scheduleStore = Store.schedules[type];
+  const [today] = useAtom(scheduleStore.today);
+  const [tomorrow] = useAtom(scheduleStore.tomorrow);
+  const [selectedIndex] = useAtom(scheduleStore.selectedIndex);
+  const [nextIndex] = useAtom(scheduleStore.nextIndex);
 
-  const isSelectedPrayerTomorrow = app.isOverlayOn && schedule.today[schedule.selectedIndex]?.passed;
-  const prayers = isSelectedPrayerTomorrow ? schedule.tomorrow : schedule.today;
+  const isSelectedPrayerTomorrow = isOverlayOn && today[selectedIndex]?.passed;
+  const prayers = isSelectedPrayerTomorrow ? tomorrow : today;
   const day: DaySelection = isSelectedPrayerTomorrow ? 'tomorrow' : 'today';
-  const currentIndex = app.isOverlayOn ? schedule.selectedIndex : schedule.nextIndex;
+  const currentIndex = isOverlayOn ? selectedIndex : nextIndex;
 
   return {
-    isOverlayOn: app.isOverlayOn,
+    isOverlayOn,
     currentPrayers: prayers,
     currentDay: day,
     currentIndex,
-    setIsOverlayOn: app.setIsOverlayOn,
-    setSelectedIndex: schedule.setSelectedIndex
+    setIsOverlayOn,
+    setSelectedIndex: (index: number) => scheduleStore.selectedIndex[1](index)
   };
 }

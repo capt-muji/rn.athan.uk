@@ -61,7 +61,10 @@ export interface IPrayerInfo {
   currentPrayer?: ITransformedPrayer;
 }
 
-export type DaySelection = 'today' | 'tomorrow';
+export enum DaySelection {
+  Today = 'today',
+  Tomorrow = 'tomorrow'
+}
 
 export interface ITimeString {
   time: string;
