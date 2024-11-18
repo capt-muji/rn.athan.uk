@@ -103,8 +103,8 @@ const useSchedulesStore = create<SchedulesStore>((set) => ({
 }));
 
 const useOverlayStore = create<OverlayStore>((set) => ({
-  isOverlayOn: false,
-  setIsOverlayOn: (value) => set({ isOverlayOn: value }),
+  isOn: false,
+  setIsOn: (value) => set({ isOn: value }),
 }));
 
 const useStore = () => ({
