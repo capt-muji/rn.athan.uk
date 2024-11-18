@@ -4,7 +4,7 @@ import { PrayerType } from '@/shared/types';
 import useBaseStore from './useBaseStore';
 
 export default function useSchedule(type: PrayerType) {
-  const base = useBaseStore(type);
+  const Base = useBaseStore(type);
 
   const setTodayAndTomorrow = () => {
     const todayRaw = Storage.prayers.getTodayOrTomorrow('today');
@@ -15,14 +15,14 @@ export default function useSchedule(type: PrayerType) {
     const todaySchedule = createSchedule(todayRaw, type);
     const tomorrowSchedule = createSchedule(tomorrowRaw, type);
 
-    base.setToday(todaySchedule);
-    base.setTomorrow(tomorrowSchedule);
+    Base.schedule.setToday(todaySchedule);
+    Base.schedule.setTomorrow(tomorrowSchedule);
 
     return { today: todaySchedule, tomorrow: tomorrowSchedule };
   };
 
   return {
-    ...base,
+    ...Base,
     setTodayAndTomorrow,
   };
 }

@@ -1,31 +1,19 @@
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
-import { usePrayerCountdown } from '@/hooks/useCountdown';
-import useBaseStore from '@/hooks/useBaseStore';
+import { useCountdown } from '@/hooks/useCountdown';
 import { PrayerType } from '@/shared/types';
+import useOverlay from '@/hooks/useOverlay';
 
 interface Props {
   type: PrayerType;
 }
 
 export default function Countdown({ type }: Props) {
-  const {
-    isOverlayOn,
-    today: todaysPrayers,
-    tomorrow: tomorrowsPrayers,
-    nextIndex: nextPrayerIndex,
-    selectedIndex: selectedPrayerIndex
-  } = useBaseStore(type);
+  const { currentPrayers, currentDay, currentIndex, isOverlayOn } = useOverlay(type);
 
-  const prayers = isOverlayOn && todaysPrayers[selectedPrayerIndex]?.passed ? tomorrowsPrayers : todaysPrayers;
-  const day = isOverlayOn && todaysPrayers[selectedPrayerIndex]?.passed ? 'tomorrow' : 'today';
-  const prayerIndex = isOverlayOn ? selectedPrayerIndex : nextPrayerIndex;
-
-  const prayerName = prayers[prayerIndex]?.english;
-  const prayerCountdown = usePrayerCountdown(prayerIndex, day);
-
-  const fontFamily = { fontFamily: isOverlayOn ? TEXT.famiy.medium : TEXT.famiy.regular };
+  const prayerName = currentPrayers[currentIndex]?.english;
+  const prayerCountdown = useCountdown(currentIndex, currentDay);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -37,7 +25,15 @@ export default function Countdown({ type }: Props) {
   return (
     <Animated.View style={[styles.container]}>
       <Text style={[styles.text]}>{prayerName || ''} in</Text>
-      <Animated.Text style={[styles.countdown, fontFamily, animatedStyle]}>{prayerCountdown || ' '}</Animated.Text>
+      <Animated.Text
+        style={[
+          styles.countdown,
+          { fontFamily: isOverlayOn ? TEXT.famiy.medium : TEXT.famiy.regular },
+          animatedStyle
+        ]}
+      >
+        {prayerCountdown || ' '}
+      </Animated.Text>
     </Animated.View>
   );
 }
