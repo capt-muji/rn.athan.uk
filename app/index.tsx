@@ -8,6 +8,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useAppState } from '@/hooks/useAppState';
 import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
+import RadialGlow from '@/components/RadialGlow';
 
 export default function Index() {
   const { initialize, isLoading } = useAppState();
@@ -35,6 +36,7 @@ export default function Index() {
         end={{ x: 1, y: 1 }}
       />
       <StatusBar barStyle="light-content" />
+      <RadialGlow />
       <Navigation />
     </GestureHandlerRootView>
   );
