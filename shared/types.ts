@@ -86,3 +86,22 @@ export interface ITimeDifferenceConfig {
   targetTime: string;
   date?: string;
 }
+
+// Store Types
+export interface PageCoordinates {
+  pageX: number;
+  pageY: number;
+  width: number;
+  height: number;
+}
+
+export enum AlertType {
+  Off = 0,
+  Notification = 1,
+  Vibrate = 2,
+  Sound = 3
+}
+
+export interface AlertPreferences {
+  [prayerIndex: number]: AlertType;
+}

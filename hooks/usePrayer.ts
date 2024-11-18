@@ -4,10 +4,10 @@ import { isDateTodayOrFuture } from '@/shared/time';
 import { transformApiData } from '@/shared/prayer';
 import { IApiResponse, ISingleApiResponseTransformed, IScheduleNow } from '@/shared/types';
 import { useAtom } from 'jotai';
-import { dateAtom } from '@/stores/store';
+import Store from '@/stores/store';
 
 export default function usePrayer() {
-  const [date, setDate] = useAtom(dateAtom);
+  const [date, setDate] = useAtom(Store.app.date);
 
   // Fetch, filter and transform prayer times
   const fetch = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {

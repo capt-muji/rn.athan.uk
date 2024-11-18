@@ -3,7 +3,7 @@ import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
-import { overlayVisibleAtom } from '@/stores/store';
+import Store from '@/stores/store';
 import { useEffect } from 'react';
 import useSchedule from '@/hooks/useSchedule';
 import { PrayerType } from '@/shared/types';
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function PrayerTime({ index, type, isOverlay = false }: Props) {
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayVisible] = useAtom(Store.app.overlayVisible);
 
   const { scheduleToday, scheduleTomorrow, nextIndex, selectedIndex, setMeasurements, } = useSchedule(type);
 
