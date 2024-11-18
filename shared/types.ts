@@ -132,29 +132,29 @@ export interface ScheduleStore {
   setMeasurements: (value: Record<number, PageCoordinates>) => void;
   setNextIndexMeasurements: (value: PageCoordinates | null) => void;
 }
-
-export interface StoreState {
-  app: {
-    isLoading: boolean;
-    isOverlayOn: boolean;
-    hasError: boolean;
-    setIsLoading: (value: boolean) => void;
-    setIsOverlayOn: (value: boolean) => void;
-    setHasError: (value: boolean) => void;
-  };
-  date: {
-    current: string;
-    measurements: PageCoordinates | null;
-    setCurrent: (value: string) => void;
-    setMeasurements: (value: PageCoordinates | null) => void;
-  };
-  preferences: Preferences;
-  setPreferences: (value: Preferences) => void;
-  schedules: {
-    standard: ScheduleStore;
-    extra: ScheduleStore;
-  };
-}
+// Remove this interface as it's duplicated
+// export interface StoreState {
+//   app: {
+//     isLoading: boolean;
+//     isOverlayOn: boolean;
+//     hasError: boolean;
+//     setIsLoading: (value: boolean) => void;
+//     setIsOverlayOn: (value: boolean) => void;
+//     setHasError: (value: boolean) => void;
+//   };
+//   date: {
+//     current: string;
+//     measurements: PageCoordinates | null;
+//     setCurrent: (value: string) => void;
+//     setMeasurements: (value: PageCoordinates | null) => void;
+//   };
+//   preferences: Preferences;
+//   setPreferences: (value: Preferences) => void;
+//   schedules: {
+//     standard: ScheduleStore;
+//     extra: ScheduleStore;
+//   };
+// }
 
 // New store interfaces
 export interface PreferencesStore {
@@ -181,4 +181,18 @@ export interface DateStore {
 export interface SchedulesStore {
   standard: ScheduleStore;
   extra: ScheduleStore;
+}
+
+export interface OverlayStore {
+  isOverlayOn: boolean;
+  setIsOverlayOn: (value: boolean) => void;
+}
+
+// Update the final StoreState interface
+export interface StoreState {
+  app: AppStore;
+  date: DateStore;
+  preferences: PreferencesStore;
+  schedules: SchedulesStore;
+  overlay: OverlayStore;
 }
