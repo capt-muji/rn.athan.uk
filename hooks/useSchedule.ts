@@ -30,6 +30,7 @@ export default function useSchedule(type: PrayerType) {
     measurements: schedule.measurements,
     setScheduleDay,
     setNextIndex,
-    setMeasurements: schedule.setMeasurements
+    setMeasurements: schedule.setMeasurements,
+    setSelectedIndex: schedule.setSelectedIndex
   };
 }
