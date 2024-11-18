@@ -61,6 +61,8 @@ export default {
   app: createAppAtoms(),
   date: createDateAtoms(),
   preferences: createPreferencesAtom(),
-  standard: createScheduleAtoms(),
-  extra: createScheduleAtoms(),
+  schedules: {
+    standard: createScheduleAtoms(),
+    extra: createScheduleAtoms(),
+  },
 };
