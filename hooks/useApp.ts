@@ -40,6 +40,7 @@ export const useApp = () => {
   return { 
     initialize,
     isLoading: app.isLoading,
-    hasError: app.hasError 
+    hasError: app.hasError,
+    date
   };
 };

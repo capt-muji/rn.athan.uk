@@ -6,20 +6,22 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } fro
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import Masjid from './Masjid';
 import { formatDate } from '@/shared/time';
-import useStore from '@/hooks/useStore';
+import { useApp } from '@/hooks/useApp';
 
 export default function DateDisplay() {
-  const { app, date } = useStore('standard');
+  const isOverlayOn = false;
+
+  const { date } = useApp();
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
 
   useEffect(() => {
-    if (app.isOverlayOn) {
+    if (isOverlayOn) {
       dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
     } else {
       dateOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
     }
-  }, [app.isOverlayOn]);
+  }, [isOverlayOn]);
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
     opacity: dateOpacity.value,
