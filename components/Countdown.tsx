@@ -13,7 +13,7 @@ export default function Countdown({ type }: Props) {
   const countdown = useCountdown(type);
   const overlay = useOverlay();
 
-  const countdownName = schedule.today[schedule.nextIndex]?.english;
+  const countdownName = schedule.today()[schedule.nextIndex]?.english;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [

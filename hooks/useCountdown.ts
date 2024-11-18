@@ -11,7 +11,7 @@ export const useCountdown = (type: PrayerType) => {
   useEffect(() => {
     const updateCountdown = () => {
 
-      const prayer = today[nextIndex];
+      const prayer = today()[nextIndex];
 
       const diff = getTimeDifference(prayer.time, getRecentDate(DaySelection.Today));
       setCountdown(formatTime(diff));

@@ -24,8 +24,8 @@ export default function useSchedule(type: PrayerType) {
   };
 
   return {
-    today: schedule.getToday(),         // using getter instead of direct access
-    tomorrow: schedule.getTomorrow(),    // using getter instead of direct access
+    today: schedule.getToday,         // using getter instead of direct access
+    tomorrow: schedule.getTomorrow,    // using getter instead of direct access
     nextIndex: schedule.nextIndex,      // this is fine as is (primitive value)
     selectedIndex: schedule.selectedIndex,
     measurements: schedule.measurements,

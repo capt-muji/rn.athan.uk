@@ -19,11 +19,11 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
 
   const { today, tomorrow, nextIndex, selectedIndex } = useSchedule(type);
 
-  const prayer = today[index];
+  const prayer = today()[index];
   const isPassed = prayer.passed;
   const isNext = index === nextIndex;
-  const todayTime = today[index].time;
-  const tomorrowTime = tomorrow[selectedIndex]?.time;
+  const todayTime = today()[index].time;
+  const tomorrowTime = tomorrow()[selectedIndex]?.time;
 
   const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
 

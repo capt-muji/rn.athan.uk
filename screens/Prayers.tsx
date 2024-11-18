@@ -24,8 +24,8 @@ export default function Prayers({ type }: Props) {
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal, paddingBottom: insets.bottom }]}>
       <Countdown type={type} />
       <DateDisplay />
-      <ActiveBackground />
-      {Object.keys(today).map((_, index) => (
+      <ActiveBackground type={type} />
+      {Object.keys(today()).map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>

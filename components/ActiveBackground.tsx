@@ -24,8 +24,6 @@ export default function ActiveBackground({ type }: Props) {
   const { date } = useApp();
   const { today, nextIndex, measurements } = useSchedule(type);
 
-
-
   const opacityShared = useSharedValue(0);
   const backgroundColorShared = useSharedValue(COLORS.activeBackground);
 
@@ -34,7 +32,7 @@ export default function ActiveBackground({ type }: Props) {
 
     const nowDate = getRecentDate(DaySelection.Today);
     const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
-    const isActive = date.current === nowDate && !today[lastPrayerIndex]?.passed;
+    const isActive = date.current === nowDate && !today()[lastPrayerIndex]?.passed;
     const isActiveOpacity = isActive ? 1 : 0.1;
     const isActiveBackgroundColor = isActive ? COLORS.activeBackground : COLORS.inactiveBackground;
 

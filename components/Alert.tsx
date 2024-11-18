@@ -45,7 +45,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const isNext = index === nextIndex;
-  const { passed: isPassed } = today[index];
+  const { passed: isPassed } = today()[index];
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);

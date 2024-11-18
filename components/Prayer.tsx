@@ -23,7 +23,7 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
 
   const { today, nextIndex, measurements, setMeasurements, selectedIndex } = useSchedule(type);
 
-  const prayer = today[index];
+  const prayer = today()[index];
   const isPassed = prayer.passed;
   const isNext = index === nextIndex;
 
