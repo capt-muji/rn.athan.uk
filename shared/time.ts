@@ -1,4 +1,4 @@
-import { DaySelection } from "@/types/prayers";
+import { DaySelection } from "@/shared/types";
 import { format, addDays, setHours, setMinutes, isAfter, addMinutes as addMins, intervalToDuration, isFuture, isToday, parseISO, subDays } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 
@@ -12,7 +12,7 @@ export const createLondonDate = (date?: Date | string): Date => {
 
 // Returns formatted date string for today or tomorrow
 // Based on the provided day selection parameter
-export const getTodayOrTomorrowDate = (daySelection: DaySelection = 'today'): string => {
+export const getRecentDate = (daySelection: DaySelection): string => {
   let date = createLondonDate();
   
   if (daySelection === 'tomorrow') {
@@ -24,7 +24,7 @@ export const getTodayOrTomorrowDate = (daySelection: DaySelection = 'today'): st
 
 // Calculates time difference in milliseconds between now and target time
 // Returns adjusted time difference if the target time has passed
-export const getTimeDifference = (targetTime: string, date: string = getTodayOrTomorrowDate('today')): number => {
+export const getTimeDifference = (targetTime: string, date: string): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
   const now = createLondonDate();
   let target = createLondonDate(date);

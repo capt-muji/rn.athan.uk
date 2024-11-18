@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import useStore from '@/stores/store';
-import usePrayer from '@/hooks/usePrayer';
+import useData from '@/hooks/useData';
 import useSchedule from '@/hooks/useSchedule';
 import { DaySelection } from '@/shared/types';
 
@@ -8,12 +8,12 @@ export const useApp = () => {
   const { app, date } = useStore();
   const standardSchedule = useSchedule('standard');
   const extraSchedule = useSchedule('extra');
-  const prayer = usePrayer();
+  const data = useData();
 
   const initialize = useCallback(async () => {
     try {
-      const data = await prayer.fetchAll();
-      prayer.saveAll(data);
+      const prayers = await data.fetchAll();
+      data.saveAll(prayers);
 
       // Set all current schedules 
       standardSchedule.setScheduleDay(DaySelection.Today);
