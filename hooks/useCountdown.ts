@@ -1,41 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import Store from '@/stores/store';
-import { DaySelection } from '@/shared/types';
-import { getTimeDifference, getTodayOrTomorrowDate, formatTime } from '@/shared/time';
+import { DaySelection, PrayerType } from '@/shared/types';
+import { getTimeDifference, getRecentDate, formatTime } from '@/shared/time';
 import { PRAYERS_ENGLISH } from '@/shared/constants';
-import PrayerHook from '@/hooks/usePrayer';
+import useSchedule from '@/hooks/useSchedule';
 
 const THRESHOLD = 1000; // seconds
 
-export const useCountdown = (prayerIndex: number, day: DaySelection) => {
+export const useCountdown = (type: PrayerType) => {
+  const { today, tomorrow, nextIndex } = useSchedule('standard');
+  
   const [countdown, setCountdown] = useState('');
-  const [todaysPrayers] = useAtom(Store.schedules.standard.today);
-  const [tomorrowsPrayers] = useAtom(Store.schedules.standard.tomorrow);
-  const [date, setDate] = useAtom(Store.date.current);
-  const [nextPrayerIndex] = useAtom(Store.schedules.standard.nextIndex);
-  // const { incrementNextPrayer, markPrayerAsPassed } = PrayerHook();
 
   useEffect(() => {
     const updateCountdown = () => {
-      const prayers = day === 'today' ? todaysPrayers : tomorrowsPrayers;
-      const prayer = prayers[prayerIndex];
-      const nowDate = getTodayOrTomorrowDate('today');
-      const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
 
-      // Check if date has changed and last prayer has passed
-      if (date !== nowDate && todaysPrayers[lastPrayerIndex]?.passed) {
-        setDate(nowDate);
-      }
+      const prayer = today[nextIndex];
 
-      const diff = getTimeDifference(prayer.time, getTodayOrTomorrowDate(day));
-      
-      // Check if prayer has passed
-      if (diff <= THRESHOLD && day === 'today') {
-        // markPrayerAsPassed(prayerIndex);
-        // incrementNextPrayer();
-        return;
-      }
+      const diff = getTimeDifference(prayer.time, getRecentDate(DaySelection.Today));
 
       setCountdown(formatTime(diff));
     };
@@ -44,7 +27,7 @@ export const useCountdown = (prayerIndex: number, day: DaySelection) => {
     updateCountdown();
     const intervalId = setInterval(updateCountdown, 1000);
     return () => clearInterval(intervalId);
-  }, [prayerIndex, day, todaysPrayers, tomorrowsPrayers, nextPrayerIndex, date]);
+  }, [today, tomorrow, nextIndex]);
 
   return countdown;
 };

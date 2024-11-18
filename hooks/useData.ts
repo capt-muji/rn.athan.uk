@@ -2,9 +2,9 @@ import * as Api from '@/api/client';
 import { storePrayers } from '@/stores/database';
 import { isDateTodayOrFuture } from '@/shared/time';
 import { transformApiData } from '@/shared/prayer';
-import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
+import { ISingleApiResponseTransformed } from '@/shared/types';
 
-export default function usePrayer() {
+export default function useData() {
   const fetchAll = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
     const apiData = await Api.fetch(year);
     const filteredTimes = Object.fromEntries(

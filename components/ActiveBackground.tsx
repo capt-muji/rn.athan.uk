@@ -14,7 +14,7 @@ import {
   prayersTodayAtom,
 } from '@/stores/store';
 import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/shared/constants';
-import { getTodayOrTomorrowDate } from '@/shared/time';
+import { getRecentDate } from '@/shared/time';
 
 const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };
 const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };
@@ -31,7 +31,7 @@ export default function ActiveBackground() {
   useEffect(() => {
     if (!absoluteMeasurements[nextPrayerIndex]) return;
 
-    const nowDate = getTodayOrTomorrowDate('today');
+    const nowDate = getRecentDate('today');
     const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
     const isActive = date === nowDate && !todaysPrayers[lastPrayerIndex]?.passed;
     const isActiveOpacity = isActive ? 1 : 0.1;
