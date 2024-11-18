@@ -33,21 +33,19 @@ interface Props {
 }
 
 export default function Alert({ index, type, isOverlay = false }: Props) {
-  const {
-    schedule: {
-      today: scheduleToday,
-      nextIndex
-    }
-  } = useSchedule(type);
+  const overlayVisible = false;
 
-  const [overlayVisible] = useAtom(Store.app.isOverlayOn);
-  const [preferences, setPreferences] = useAtom(Store.preferences);
+  const { today, nextIndex } = useSchedule(type);
+
+  // const [overlayVisible] = useAtom(Store.app.isOverlayOn);
+  // const [preferences, setPreferences] = useAtom(Store.preferences);
+
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const isNext = index === nextIndex;
-  const { passed: isPassed } = scheduleToday[index];
+  const { passed: isPassed } = today[index];
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
@@ -82,37 +80,37 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   }, [overlayVisible]);
 
   // Use stored preference or default to 0 (Off)
-  useEffect(() => {
-    setIconIndex(preferences.alert[index] || 0);
-  }, [preferences.alert, index]);
+  // useEffect(() => {
+  //   setIconIndex(preferences.alert[index] || 0);
+  // }, [preferences.alert, index]);
 
-  const handlePress = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  // const handlePress = useCallback(() => {
+  //   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
-    setIconIndex(nextIndex);
+  //   const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
+  //   setIconIndex(nextIndex);
 
-    setPreferences(prev => ({
-      ...prev,
-      alert: {
-        ...prev.alert,
-        [index]: ALERT_CONFIGS[nextIndex].type
-      }
-    }));
+  //   setPreferences(prev => ({
+  //     ...prev,
+  //     alert: {
+  //       ...prev.alert,
+  //       [index]: ALERT_CONFIGS[nextIndex].type
+  //     }
+  //   }));
 
-    timeoutRef.current && clearTimeout(timeoutRef.current);
+  //   timeoutRef.current && clearTimeout(timeoutRef.current);
 
-    bounceAnim.value = 0;
-    fadeAnim.value = withTiming(1, TIMING_CONFIG);
-    bounceAnim.value = withSpring(1, SPRING_CONFIG);
+  //   bounceAnim.value = 0;
+  //   fadeAnim.value = withTiming(1, TIMING_CONFIG);
+  //   bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
-    setIsPopupActive(true);
-    timeoutRef.current = setTimeout(() => {
-      fadeAnim.value = withTiming(0, TIMING_CONFIG);
-      bounceAnim.value = withSpring(0, SPRING_CONFIG);
-      setIsPopupActive(false);
-    }, 2000);
-  }, [iconIndex, index]);
+  //   setIsPopupActive(true);
+  //   timeoutRef.current = setTimeout(() => {
+  //     fadeAnim.value = withTiming(0, TIMING_CONFIG);
+  //     bounceAnim.value = withSpring(0, SPRING_CONFIG);
+  //     setIsPopupActive(false);
+  //   }, 2000);
+  // }, [iconIndex, index]);
 
   const alertAnimatedStyle = useAnimatedStyle(() => {
     if (isOverlay) return {
@@ -147,7 +145,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={handlePress}
+        // onPress={handlePress}
         onPressIn={() => pressAnim.value = withSpring(0.9, SPRING_CONFIG)}
         onPressOut={() => pressAnim.value = withSpring(1, SPRING_CONFIG)}
         style={styles.iconContainer}
