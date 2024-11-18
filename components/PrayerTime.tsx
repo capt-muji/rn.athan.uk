@@ -15,14 +15,15 @@ interface Props {
 }
 
 export default function PrayerTime({ index, type, isOverlay = false }: Props) {
-  const [overlayVisible] = useAtom(Store.app.isOverlayOn);
-  const { schedule } = useSchedule(type);
+  const overlayVisible = false;
 
-  const prayer = schedule.today[index];
+  const { today, tomorrow, nextIndex, selectedIndex } = useSchedule(type);
+
+  const prayer = today[index];
   const isPassed = prayer.passed;
-  const isNext = index === schedule.nextIndex;
-  const todayTime = schedule.today[index].time;
-  const tomorrowTime = schedule.tomorrow[schedule.selectedIndex]?.time;
+  const isNext = index === nextIndex;
+  const todayTime = today[index].time;
+  const tomorrowTime = tomorrow[selectedIndex]?.time;
 
   const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
 
@@ -31,16 +32,16 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
   const overlayTomorrowOpacity = useSharedValue(0);
 
   useEffect(() => {
-    if (index === schedule.nextIndex) {
+    if (index === nextIndex) {
       originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     } else if (!isPassed) {
       originalOpacity.value = TEXT.opacity;
     }
-  }, [schedule.nextIndex]);
+  }, [nextIndex]);
 
   useEffect(() => {
     // if overlay is visible, and this prayer is selected
-    if (overlayVisible && schedule.selectedIndex === index) {
+    if (overlayVisible && selectedIndex === index) {
 
       if (isNext) {
         overlayTodayOpacity.value = 0;
