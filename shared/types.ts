@@ -95,6 +95,7 @@ export interface PageCoordinates {
   height: number;
 }
 
+// Preferences Types
 export enum AlertType {
   Off = 0,
   Notification = 1,
@@ -105,3 +106,10 @@ export enum AlertType {
 export interface AlertPreferences {
   [prayerIndex: number]: AlertType;
 }
+
+export interface Preferences {
+  alert: AlertPreferences;
+  language: Language;
+  athan: number;
+}
+export type Language = 'en' | 'ar';
