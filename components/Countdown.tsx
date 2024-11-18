@@ -1,30 +1,36 @@
 import { StyleSheet, Text } from 'react-native';
-import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
-import { prayersNextIndexAtom, overlayVisibleAtom, prayersTodayAtom, prayersTomorrowAtom, prayersSelectedIndexAtom } from '@/stores/store';
 import { usePrayerCountdown } from '@/hooks/useCountdown';
+import useBaseStore from '@/hooks/useBaseStore';
+import { PrayerType } from '@/shared/types';
 
-export default function Countdown() {
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [todaysPrayers] = useAtom(prayersTodayAtom);
-  const [tomorrowsPrayers] = useAtom(prayersTomorrowAtom);
-  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
-  const [selectedPrayerIndex] = useAtom(prayersSelectedIndexAtom);
+interface Props {
+  type: PrayerType;
+}
 
-  const prayers = overlayVisible && todaysPrayers[selectedPrayerIndex]?.passed ? tomorrowsPrayers : todaysPrayers;
-  const day = overlayVisible && todaysPrayers[selectedPrayerIndex]?.passed ? 'tomorrow' : 'today';
-  const prayerIndex = overlayVisible ? selectedPrayerIndex : nextPrayerIndex;
+export default function Countdown({ type }: Props) {
+  const {
+    isOverlayOn,
+    today: todaysPrayers,
+    tomorrow: tomorrowsPrayers,
+    nextIndex: nextPrayerIndex,
+    selectedIndex: selectedPrayerIndex
+  } = useBaseStore(type);
+
+  const prayers = isOverlayOn && todaysPrayers[selectedPrayerIndex]?.passed ? tomorrowsPrayers : todaysPrayers;
+  const day = isOverlayOn && todaysPrayers[selectedPrayerIndex]?.passed ? 'tomorrow' : 'today';
+  const prayerIndex = isOverlayOn ? selectedPrayerIndex : nextPrayerIndex;
 
   const prayerName = prayers[prayerIndex]?.english;
   const prayerCountdown = usePrayerCountdown(prayerIndex, day);
 
-  const fontFamily = { fontFamily: overlayVisible ? TEXT.famiy.medium : TEXT.famiy.regular };
+  const fontFamily = { fontFamily: isOverlayOn ? TEXT.famiy.medium : TEXT.famiy.regular };
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
-      { scale: withTiming(overlayVisible ? 1.5 : 1) },
-      { translateY: withTiming(overlayVisible ? 5 : 0) }
+      { scale: withTiming(isOverlayOn ? 1.5 : 1) },
+      { translateY: withTiming(isOverlayOn ? 5 : 0) }
     ]
   }));
 
