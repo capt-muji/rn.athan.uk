@@ -39,7 +39,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   } = useSchedule(type);
 
   const [overlayVisible] = useAtom(Store.overlayVisible);
-  const [alertPreferences, setAlertPreferences] = useAtom(Store.alertPreferences);
+  const [preferences, setPreferences] = useAtom(Store.preferences);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -81,8 +81,8 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
 
   // Use stored preference or default to 0 (Off)
   useEffect(() => {
-    setIconIndex(alertPreferences[index] || 0);
-  }, [alertPreferences, index]);
+    setIconIndex(preferences.alert[index] || 0);
+  }, [preferences.alert, index]);
 
   const handlePress = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -90,9 +90,12 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
     setIconIndex(nextIndex);
 
-    setAlertPreferences(prev => ({
+    setPreferences(prev => ({
       ...prev,
-      [index]: ALERT_CONFIGS[nextIndex].type
+      alert: {
+        ...prev.alert,
+        [index]: ALERT_CONFIGS[nextIndex].type
+      }
     }));
 
     timeoutRef.current && clearTimeout(timeoutRef.current);
