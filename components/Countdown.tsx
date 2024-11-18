@@ -4,35 +4,35 @@ import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
 import { useCountdown } from '@/hooks/useCountdown';
 import { PrayerType } from '@/shared/types';
 import useOverlay from '@/hooks/useOverlay';
+import useSchedule from '@/hooks/useSchedule';
 
-interface Props {
-  type: PrayerType;
-}
+interface Props { type: PrayerType }
 
 export default function Countdown({ type }: Props) {
-  const { currentPrayers, currentDay, currentIndex, isOverlayOn } = useOverlay(type);
+  const schedule = useSchedule(type);
+  const countdown = useCountdown(type);
+  const overlay = useOverlay();
 
-  const prayerName = currentPrayers[currentIndex]?.english;
-  const prayerCountdown = useCountdown(currentIndex, currentDay);
+  const countdownName = schedule.today[schedule.nextIndex]?.english;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
-      { scale: withTiming(isOverlayOn ? 1.5 : 1) },
-      { translateY: withTiming(isOverlayOn ? 5 : 0) }
+      { scale: withTiming(overlay.isOn ? 1.5 : 1) },
+      { translateY: withTiming(overlay.isOn ? 5 : 0) }
     ]
   }));
 
   return (
     <Animated.View style={[styles.container]}>
-      <Text style={[styles.text]}>{prayerName || ''} in</Text>
+      <Text style={[styles.text]}>{countdownName || ''} in</Text>
       <Animated.Text
         style={[
           styles.countdown,
-          { fontFamily: isOverlayOn ? TEXT.famiy.medium : TEXT.famiy.regular },
+          { fontFamily: overlay.isOn ? TEXT.famiy.medium : TEXT.famiy.regular },
           animatedStyle
         ]}
       >
-        {prayerCountdown || ' '}
+        {countdown || ' '}
       </Animated.Text>
     </Animated.View>
   );

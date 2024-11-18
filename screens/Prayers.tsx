@@ -22,7 +22,7 @@ export default function Prayers({ type }: Props) {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal, paddingBottom: insets.bottom }]}>
-      {/* <Countdown type={type} /> */}
+      <Countdown type={type} />
       <DateDisplay />
       {Object.keys(today).map((_, index) => (
         <Prayer key={index} index={index} type={type} />
