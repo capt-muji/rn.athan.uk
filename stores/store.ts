@@ -11,7 +11,8 @@ import {
   AppStore,
   DateStore,
   SchedulesStore,
-  OverlayStore
+  OverlayStore,
+  PrayerType
 } from '@/shared/types';
 
 const zustandStorage = {
@@ -70,13 +71,15 @@ const useDateStore = create<DateStore>((set) => ({
   setMeasurements: (value) => set({ measurements: value }),
 }));
 
-const createScheduleStore = (set: any, path: 'standard' | 'extra'): ScheduleStore => ({
+const createScheduleStore = (set: any, get: any, path: PrayerType): ScheduleStore => ({
   today: {},
   tomorrow: {},
   nextIndex: -1,
   selectedIndex: -1,
   measurements: {},
   nextIndexMeasurements: null,
+  getToday: () => get()[path].today,
+  getTomorrow: () => get()[path].tomorrow,
   setToday: (value) => set((state: SchedulesStore) => ({ 
     [path]: { ...state[path], today: value } 
   })),
@@ -97,9 +100,9 @@ const createScheduleStore = (set: any, path: 'standard' | 'extra'): ScheduleStor
   })),
 });
 
-const useSchedulesStore = create<SchedulesStore>((set) => ({
-  standard: createScheduleStore(set, 'standard'),
-  extra: createScheduleStore(set, 'extra')
+const useSchedulesStore = create<SchedulesStore>((set, get) => ({
+  standard: createScheduleStore(set, get, 'standard'),
+  extra: createScheduleStore(set, get, 'extra')
 }));
 
 const useOverlayStore = create<OverlayStore>((set) => ({
