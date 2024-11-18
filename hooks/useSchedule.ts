@@ -1,7 +1,7 @@
 import useStore from '@/stores/store';
 import { getTodayOrTomorrow } from '@/stores/database';
 import { createSchedule } from '@/shared/prayer';
-import { PrayerType, IScheduleNow, DaySelection } from '@/shared/types';
+import { PrayerType, DaySelection } from '@/shared/types';
 
 export default function useSchedule(type: PrayerType) {
   const { schedules } = useStore();
