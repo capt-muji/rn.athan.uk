@@ -10,7 +10,8 @@ import {
   PreferencesStore,
   AppStore,
   DateStore,
-  SchedulesStore
+  SchedulesStore,
+  OverlayStore
 } from '@/shared/types';
 
 const zustandStorage = {
@@ -101,11 +102,17 @@ const useSchedulesStore = create<SchedulesStore>((set) => ({
   extra: createScheduleStore(set, 'extra')
 }));
 
+const useOverlayStore = create<OverlayStore>((set) => ({
+  isOverlayOn: false,
+  setIsOverlayOn: (value) => set({ isOverlayOn: value }),
+}));
+
 const useStore = () => ({
   app: useAppStore(),
   date: useDateStore(),
   preferences: usePreferencesStore(),
-  schedules: useSchedulesStore()
+  schedules: useSchedulesStore(),
+  overlay: useOverlayStore()
 });
 
 export default useStore;
