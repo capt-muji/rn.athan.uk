@@ -16,6 +16,7 @@ export default function useBaseStore(type: PrayerType) {
   const [selectedIndex, setSelectedIndex] = useAtom(store.selectedIndex);
   const [measurements, setMeasurements] = useAtom(store.measurements);
   const [nextIndexMeasurements, setNextIndexMeasurements] = useAtom(store.nextIndexMeasurements);
+  const [dateMeasurements, setDateMeasurements] = useAtom(Store.date.measurements);
   
   const updateNextIndex = (prayers: IScheduleNow) => {
     const schedule = Object.values(prayers);
@@ -35,6 +36,7 @@ export default function useBaseStore(type: PrayerType) {
     selectedIndex,
     measurements,
     nextIndexMeasurements,
+    dateMeasurements,
     setIsLoading,
     setIsOverlayOn,
     setHasError,
@@ -44,6 +46,7 @@ export default function useBaseStore(type: PrayerType) {
     setSelectedIndex,
     setMeasurements,
     setNextIndexMeasurements,
+    setDateMeasurements,
     updateNextIndex,
   };
 }
