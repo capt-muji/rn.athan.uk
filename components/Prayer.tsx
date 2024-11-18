@@ -19,8 +19,9 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, type, isOverlay = false }: Props) {
-  const { today, nextIndex, measurements, setMeasurements } = useSchedule(type);
-  // const { app } = useApp();
+  const isOverlayOn = false;
+
+  const { today, nextIndex, measurements, setMeasurements, selectedIndex } = useSchedule(type);
 
   const prayer = today[index];
   const isPassed = prayer.passed;
@@ -45,13 +46,13 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
   }, [nextIndex]);
 
   // handle overlay animations
-  // useEffect(() => {
-  //   if (isOverlay && selectedIndex === nextIndex) {
-  //     backgroundOpacity.value = 1;
-  //   } else {
-  //     backgroundOpacity.value = 0;
-  //   }
-  // }, [app.isOverlayOn]);
+  useEffect(() => {
+    if (isOverlay && selectedIndex === nextIndex) {
+      backgroundOpacity.value = 1;
+    } else {
+      backgroundOpacity.value = 0;
+    }
+  }, [isOverlayOn]);
 
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
@@ -116,7 +117,7 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} type={type} />
-      {/* <Alert index={index} isOverlay={isOverlay} type={type} /> */}
+      <Alert index={index} isOverlay={isOverlay} type={type} />
     </AnimatedPressable>
   );
 }
