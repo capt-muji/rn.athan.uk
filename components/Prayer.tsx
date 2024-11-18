@@ -19,7 +19,7 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, type, isOverlay = false }: Props) {
-  const { today, nextIndex, selectedIndex, measurements, setMeasurements } = useSchedule(type);
+  const { today, nextIndex, measurements, setMeasurements } = useSchedule(type);
   // const { app } = useApp();
 
   const prayer = today[index];
@@ -115,7 +115,7 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
       <Animated.View style={[styles.background, animatedBackgroundStyle]} />
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
-      {/* <PrayerTime index={index} isOverlay={isOverlay} type={type} /> */}
+      <PrayerTime index={index} isOverlay={isOverlay} type={type} />
       {/* <Alert index={index} isOverlay={isOverlay} type={type} /> */}
     </AnimatedPressable>
   );
