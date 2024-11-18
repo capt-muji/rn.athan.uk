@@ -125,6 +125,8 @@ export interface ScheduleStore {
   selectedIndex: number;
   measurements: Record<number, PageCoordinates>;
   nextIndexMeasurements: PageCoordinates | null;
+  getToday: () => IScheduleNow;
+  getTomorrow: () => IScheduleNow;
   setToday: (value: IScheduleNow) => void;
   setTomorrow: (value: IScheduleNow) => void;
   setNextIndex: (value: number) => void;
@@ -132,29 +134,6 @@ export interface ScheduleStore {
   setMeasurements: (value: Record<number, PageCoordinates>) => void;
   setNextIndexMeasurements: (value: PageCoordinates | null) => void;
 }
-// Remove this interface as it's duplicated
-// export interface StoreState {
-//   app: {
-//     isLoading: boolean;
-//     isOverlayOn: boolean;
-//     hasError: boolean;
-//     setIsLoading: (value: boolean) => void;
-//     setIsOverlayOn: (value: boolean) => void;
-//     setHasError: (value: boolean) => void;
-//   };
-//   date: {
-//     current: string;
-//     measurements: PageCoordinates | null;
-//     setCurrent: (value: string) => void;
-//     setMeasurements: (value: PageCoordinates | null) => void;
-//   };
-//   preferences: Preferences;
-//   setPreferences: (value: Preferences) => void;
-//   schedules: {
-//     standard: ScheduleStore;
-//     extra: ScheduleStore;
-//   };
-// }
 
 // New store interfaces
 export interface PreferencesStore {
