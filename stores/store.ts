@@ -5,10 +5,16 @@ import { PRAYERS_ENGLISH } from '@/shared/constants';
 import { 
   IScheduleNow, 
   PageCoordinates, 
-  AlertPreferences, 
+  AlertPreferences,
   AlertType,
   PrayerType 
 } from '@/shared/types';
+
+interface Preferences {
+  alert: AlertPreferences;
+  language: 'en' | 'ar';
+  athan: number;
+}
 
 const createInitialAlertPreferences = (): AlertPreferences => {
   const preferences: AlertPreferences = {};
@@ -16,6 +22,12 @@ const createInitialAlertPreferences = (): AlertPreferences => {
     preferences[index] = AlertType.Off;
   });
   return preferences;
+};
+
+const initialPreferences: Preferences = {
+  alert: createInitialAlertPreferences(),
+  language: 'en',
+  athan: 0
 };
 
 const createScheduleAtoms = (type: PrayerType) => ({
@@ -32,9 +44,9 @@ export default {
   hasError: atom<boolean>(false),
   overlayVisible: atom<boolean>(false),
   date: atom<string>(''),
-  alertPreferences: atomWithStorage<AlertPreferences>(
-    'alert_preferences',
-    createInitialAlertPreferences(),
+  preferences: atomWithStorage<Preferences>(
+    'preferences',
+    initialPreferences,
     createJSONStorage(() => jotaiStorage),
     { getOnInit: true }
   ),
