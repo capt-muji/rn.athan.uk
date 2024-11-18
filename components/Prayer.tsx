@@ -128,12 +128,13 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
   },
   english: {
-    flex: 1,
     marginLeft: 20,
+    backgroundColor: 'silver',
   },
   arabic: {
-    flex: 0.75,
+    flex: 1,
     textAlign: 'right',
+    backgroundColor: 'blue',
   },
   background: {
     position: 'absolute',
