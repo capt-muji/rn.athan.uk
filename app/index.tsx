@@ -5,13 +5,15 @@ import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import useBaseStore from '@/hooks/useBaseStore';
 import { useAppState } from '@/hooks/useAppState';
 import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
 import RadialGlow from '@/components/RadialGlow';
 
 export default function Index() {
-  const { initialize, isLoading } = useAppState();
+  const { app } = useBaseStore('standard');
+  const { initialize } = useAppState();
 
   const [fontsLoaded] = useFonts({
     'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
@@ -25,7 +27,7 @@ export default function Index() {
     init();
   }, []);
 
-  if (!fontsLoaded || isLoading) return <WaveIndicator color="white" />;
+  if (!fontsLoaded || app.isLoading) return <WaveIndicator color="white" />;
 
   return (
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
