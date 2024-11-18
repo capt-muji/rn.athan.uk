@@ -6,14 +6,13 @@ import { DaySelection } from '@/shared/types';
 
 export const useApp = () => {
   const { app, date } = useStore();
-
   const standardSchedule = useSchedule('standard');
   const extraSchedule = useSchedule('extra');
   const prayer = usePrayer();
 
   const initialize = useCallback(async () => {
     try {
-      const data = await prayer.fetch();
+      const data = await prayer.fetchAll();
       prayer.saveAll(data);
 
       // Set all current schedules 
@@ -38,5 +37,9 @@ export const useApp = () => {
     }
   }, []);
 
-  return { initialize };
+  return { 
+    initialize,
+    isLoading: app.isLoading,
+    hasError: app.hasError 
+  };
 };

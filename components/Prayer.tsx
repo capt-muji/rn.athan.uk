@@ -1,15 +1,14 @@
 import { StyleSheet, View, Pressable } from 'react-native';
-import { useAtom } from 'jotai';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import Store from '@/stores/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
 import { PrayerType } from '@/shared/types';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import useSchedule from '@/hooks/useSchedule';
+import { useApp } from '@/hooks/useApp';
 
 interface Props {
   index: number;
@@ -20,12 +19,12 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, type, isOverlay = false }: Props) {
-  const { schedule, updateScheduleMeasurements } = useSchedule(type);
-  const [overlayVisible, setOverlayVisible] = useAtom(Store.app.isOverlayOn);
+  const { today, nextIndex, selectedIndex, measurements, setMeasurements } = useSchedule(type);
+  // const { app } = useApp();
 
-  const prayer = schedule.today[index];
+  const prayer = today[index];
   const isPassed = prayer.passed;
-  const isNext = index === schedule.nextIndex;
+  const isNext = index === nextIndex;
 
   const viewRef = useRef<View>(null);
 
@@ -40,40 +39,39 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     };
 
-    if (index === schedule.nextIndex) {
+    if (index === nextIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     };
-  }, [schedule.nextIndex]);
+  }, [nextIndex]);
 
   // handle overlay animations
-  useEffect(() => {
-    if (isOverlay && schedule.selectedIndex === schedule.nextIndex) {
-      backgroundOpacity.value = 1;
-    } else {
-      backgroundOpacity.value = 0;
-    }
-  }, [overlayVisible]);
+  // useEffect(() => {
+  //   if (isOverlay && selectedIndex === nextIndex) {
+  //     backgroundOpacity.value = 1;
+  //   } else {
+  //     backgroundOpacity.value = 0;
+  //   }
+  // }, [app.isOverlayOn]);
 
   const handleLayout = () => {
     if (!viewRef.current || isOverlay) return;
 
     viewRef.current.measureInWindow((x, y, width, height) => {
-      const measurements = { pageX: x, pageY: y, width, height };
-      updateScheduleMeasurements(index, measurements);
+      const measurement = { pageX: x, pageY: y, width, height };
+      setMeasurements({ ...measurements, [index]: measurement });
     });
   };
 
-  const handlePress = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  // const handlePress = () => {
+  //   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    if (isOverlay) {
-      setOverlayVisible(false);
-      return;
-    }
+  //   if (isOverlay) {
+  //     app.setIsOverlayOn(false);
+  //     return;
+  //   }
 
-    // setSelectedPrayerIndex(index);
-    setOverlayVisible(true);
-  };
+  //   app.setIsOverlayOn(true);
+  // };
 
   const animatedTextStyle = useAnimatedStyle(() => {
     if (isOverlay) return {
@@ -112,13 +110,13 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
       ref={viewRef}
       onLayout={handleLayout}
       style={containerStyle}
-      onPress={handlePress}
+    // onPress={handlePress}
     >
       <Animated.View style={[styles.background, animatedBackgroundStyle]} />
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
-      <PrayerTime index={index} isOverlay={isOverlay} type={type} />
-      <Alert index={index} isOverlay={isOverlay} type={type} />
+      {/* <PrayerTime index={index} isOverlay={isOverlay} type={type} /> */}
+      {/* <Alert index={index} isOverlay={isOverlay} type={type} /> */}
     </AnimatedPressable>
   );
 }
