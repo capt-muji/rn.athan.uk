@@ -38,7 +38,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     nextIndex
   } = useSchedule(type);
 
-  const [overlayVisible] = useAtom(Store.overlayVisible);
+  const [overlayVisible] = useAtom(Store.app.isOverlayOn);
   const [preferences, setPreferences] = useAtom(Store.preferences);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);

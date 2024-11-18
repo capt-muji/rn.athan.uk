@@ -27,7 +27,7 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
     setMeasurements
   } = useSchedule(type);
 
-  const [overlayVisible, setOverlayVisible] = useAtom(Store.overlayVisible);
+  const [overlayVisible, setOverlayVisible] = useAtom(Store.app.isOverlayOn);
   const viewRef = useRef<View>(null);
 
   const isStandard = type === 'standard';
