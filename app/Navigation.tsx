@@ -4,7 +4,6 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-na
 
 import { COLORS, ANIMATION } from '@/shared/constants';
 import Prayers from '@/screens/Prayers';
-import Settings from '@/screens/Settings';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Navigation() {
@@ -30,18 +29,17 @@ export default function Navigation() {
     <View style={{ flex: 1 }}>
       <PagerView
         style={{ flex: 1 }}
-        initialPage={1}
+        initialPage={0}
         overdrag={true}
         overScrollMode="never"
         onPageScroll={handlePageScroll}
       >
-        <Settings key="1" />
-        <Prayers key="2" type="standard" />
-        <Prayers key="3" type="extra" />
+        <Prayers key="1" type="standard" />
+        <Prayers key="2" type="extra" />
       </PagerView>
 
       <View style={[styles.dotsContainer, { bottom: bottom + 5 }]}>
-        {[0, 1, 2].map((index) => (
+        {[0, 1].map((index) => (
           <Animated.View key={index} style={[styles.dot, dotStyle(index)]} />
         ))}
       </View>
