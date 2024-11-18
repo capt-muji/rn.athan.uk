@@ -9,7 +9,7 @@ import { formatDate } from '@/shared/time';
 import useBaseStore from '@/hooks/useBaseStore';
 
 export default function DateDisplay() {
-  const { date, isOverlayOn } = useBaseStore('standard');
+  const { date, isOverlayOn, setDateMeasurements } = useBaseStore('standard');
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
 
