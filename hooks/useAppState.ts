@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import { useAtom } from 'jotai';
-import {  isLoadingAtom, hasErrorAtom } from '@/stores/store';
+import Store from '@/stores/store';
 import usePrayer from '@/hooks/usePrayer';
 import useSchedule from '@/hooks/useSchedule';
 
 export const useAppState = () => {
-  const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
-  const [hasError, setHasError] = useAtom(hasErrorAtom);
+  const [isLoading, setIsLoading] = useAtom(Store.app.isLoading);
+  const [hasError, setHasError] = useAtom(Store.app.hasError);
 
   const PrayerHook = usePrayer();
   const ScheduleStandardHook = useSchedule('standard');

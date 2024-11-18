@@ -1,49 +1,19 @@
+import { useAtom } from 'jotai';
 import Storage from '@/stores/database';
 import { createSchedule } from '@/shared/prayer';
 import { PrayerType, IScheduleNow } from '@/shared/types';
-import { useAtom } from 'jotai';
-import { scheduleExtraNextIndexAtom, scheduleExtraSelectedIndexAtom, scheduleExtraTodayAtom, scheduleExtraTomorrowAtom, scheduleStandardNextIndexAtom, scheduleStandardSelectedIndexAtom, scheduleStandardTodayAtom, scheduleStandardTomorrowAtom, absoluteStandardMeasurementsAtom, absoluteStandardNextIndexMeasurementsAtom, absoluteExtraNextIndexMeasurementsAtom, absoluteExtraMeasurementsAtom } from '@/stores/store';
+import Store from '@/stores/store';
 
 export default function useSchedule(type: PrayerType) {
-  const isStandard = type === 'standard';
+  const scheduleStore = Store.schedule[type];
+  
+  const [today, setToday] = useAtom(scheduleStore.today);
+  const [tomorrow, setTomorrow] = useAtom(scheduleStore.tomorrow);
+  const [nextIndex, setNextIndex] = useAtom(scheduleStore.nextIndex);
+  const [selectedIndex, setSelectedIndex] = useAtom(scheduleStore.selectedIndex);
+  const [measurements, setMeasurements] = useAtom(scheduleStore.measurements);
+  const [nextIndexMeasurements, setNextIndexMeasurements] = useAtom(scheduleStore.nextIndexMeasurements);
 
-  const [standardToday, setStandardToday] = useAtom(scheduleStandardTodayAtom);
-  const [scheduleExtraToday, setScheduleExtraToday] = useAtom(scheduleExtraTodayAtom);
-
-  const [standardTomorrow, setStandardTomorrow] = useAtom(scheduleStandardTomorrowAtom);
-  const [extraTomorrow, setExtraTomorrow] = useAtom(scheduleExtraTomorrowAtom);
-
-  const [standardNextIndex, setStandardNextIndex] = useAtom(scheduleStandardNextIndexAtom);
-  const [extraNextIndex, setExtraNextIndex] = useAtom(scheduleExtraNextIndexAtom);
-
-  const [standardSelectedIndex, setStandardSelectedIndex] = useAtom(scheduleStandardSelectedIndexAtom);
-  const [extraSelectedIndex, setExtraSelectedIndex] = useAtom(scheduleExtraSelectedIndexAtom);
-
-  const [standardMeasurements, setStandardMeasurements] = useAtom(absoluteStandardMeasurementsAtom);
-  const [extraMeasurements, setExtraMeasurements] = useAtom(absoluteExtraMeasurementsAtom);
-
-  const [standardNextIndexMeasurements, setStandardNextIndexMeasurements] = useAtom(absoluteStandardNextIndexMeasurementsAtom);
-  const [extraNextIndexMeasurements, setExtraNextIndexMeasurements] = useAtom(absoluteExtraNextIndexMeasurementsAtom);
-
-  const scheduleToday = isStandard ? standardToday : scheduleExtraToday;
-  const setScheduleToday = isStandard ? setStandardToday : setScheduleExtraToday;
-
-  const scheduleTomorrow = isStandard ? standardTomorrow : extraTomorrow
-  const setScheduleTomorrow = isStandard ? setStandardTomorrow : setExtraTomorrow;
-
-  const nextIndex = isStandard ? standardNextIndex : extraNextIndex;
-  const setNextIndex = isStandard ? setStandardNextIndex : setExtraNextIndex;
-
-  const selectedIndex = isStandard ? standardSelectedIndex : extraSelectedIndex;
-  const setSelectedIndex = isStandard ? setStandardSelectedIndex : setExtraSelectedIndex;
-
-  const measurements = isStandard ? standardMeasurements : extraMeasurements;
-  const setMeasurements = isStandard ? setStandardMeasurements : setExtraMeasurements;
-
-  const nextIndexMeasurements = isStandard ? standardNextIndexMeasurements : extraNextIndexMeasurements;
-  const setNextIndexMeasurements = isStandard ? setStandardNextIndexMeasurements : setExtraNextIndexMeasurements;
-
-  // Set today and tomorrow prayers in the store
   const setTodayAndTomorrow = () => {
     console.log(`Setting ${type} schedule`);
 
@@ -55,34 +25,22 @@ export default function useSchedule(type: PrayerType) {
     const todaySchedule = createSchedule(todayRaw, type);
     const tomorrowSchedule = createSchedule(tomorrowRaw, type);
 
-    setScheduleToday(todaySchedule);
-    setScheduleTomorrow(tomorrowSchedule);
+    setToday(todaySchedule);
+    setTomorrow(tomorrowSchedule);
 
-    console.log(`Finished setting ${type} schedule`);
     return { today: todaySchedule, tomorrow: tomorrowSchedule };
-  }
+  };
 
-  // Initialize next prayer index
   const updateNextIndex = (prayers: IScheduleNow) => {
-    console.log('Setting next prayer');
-
     const schedule = Object.values(prayers);
     const nextPrayer = schedule.find(prayer => !prayer.passed) || prayers[0];
-    
     setNextIndex(nextPrayer.index);
-
-    console.log('Finished setting next prayer');
     return nextPrayer;
   };
-  
-  // Mark next prayer as passed and set next prayer index
-  // setPrayersNextIndex(nextPrayer.index === 5 ? 0 : prayersNextIndex + 1);
-  // Reset to Fajr if last prayer has passed
-  // console.log('Finished setting next prayer');
 
   return {
-    scheduleToday,
-    scheduleTomorrow,
+    scheduleToday: today,
+    scheduleTomorrow: tomorrow,
     nextIndex,
     selectedIndex,
     measurements,
@@ -93,4 +51,4 @@ export default function useSchedule(type: PrayerType) {
     setSelectedIndex,
     updateNextIndex
   };
-};
+}

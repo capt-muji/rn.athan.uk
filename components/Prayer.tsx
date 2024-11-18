@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-na
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import { overlayVisibleAtom } from '@/stores/store';
+import Store from '@/stores/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
 import { PrayerType } from '@/shared/types';
 import Alert from './Alert';
@@ -22,7 +22,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 export default function Prayer({ index, type, isOverlay = false }: Props) {
   const { scheduleToday, nextIndex, selectedIndex, setMeasurements } = useSchedule(type);
 
-  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
+  const [overlayVisible, setOverlayVisible] = useAtom(Store.app.overlayVisible);
   const viewRef = useRef<View>(null);
 
   const isStandard = type === 'standard';

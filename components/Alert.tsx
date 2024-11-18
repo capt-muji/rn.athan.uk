@@ -12,8 +12,8 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
-import { overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/stores/store';
-import { PrayerType } from '@/shared/types';
+import Store from '@/stores/store';
+import { PrayerType, AlertType } from '@/shared/types';
 import useSchedule from '@/hooks/useSchedule';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
@@ -35,8 +35,8 @@ interface Props {
 export default function Alert({ index, type, isOverlay = false }: Props) {
   const { nextIndex, scheduleToday } = useSchedule(type);
 
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [alertPreferences, setAlertPreferences] = useAtom(alertPreferencesAtom);
+  const [overlayVisible] = useAtom(Store.app.overlayVisible);
+  const [alertPreferences, setAlertPreferences] = useAtom(Store.alerts.preferences);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
