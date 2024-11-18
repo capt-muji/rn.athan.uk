@@ -12,7 +12,9 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
-import { prayersTodayAtom, prayersNextIndexAtom, overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/stores/store';
+import { overlayVisibleAtom, alertPreferencesAtom, AlertType } from '@/stores/store';
+import { PrayerType } from '@/shared/types';
+import useSchedule from '@/hooks/useSchedule';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
@@ -24,19 +26,23 @@ const ALERT_CONFIGS = [
   { icon: PiSpeakerSimpleHigh, label: "Sound", type: AlertType.Sound }
 ] as const;
 
-interface Props { index: number; isOverlay?: boolean; }
+interface Props {
+  index: number;
+  type: PrayerType;
+  isOverlay?: boolean;
+}
 
-export default function Alert({ index, isOverlay = false }: Props) {
-  const [todaysPrayers] = useAtom(prayersTodayAtom);
-  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
+export default function Alert({ index, type, isOverlay = false }: Props) {
+  const { nextIndex, scheduleToday } = useSchedule(type);
+
   const [overlayVisible] = useAtom(overlayVisibleAtom);
   const [alertPreferences, setAlertPreferences] = useAtom(alertPreferencesAtom);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
-  const isNext = index === nextPrayerIndex;
-  const { passed: isPassed } = todaysPrayers[index];
+  const isNext = index === nextIndex;
+  const { passed: isPassed } = scheduleToday[index];
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
@@ -54,12 +60,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
   }, [isPopupActive]);
 
   useEffect(() => {
-    if (index === nextPrayerIndex) {
+    if (index === nextIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     } else if (!isPassed) {
       textOpacity.value = baseOpacity;
     }
-  }, [nextPrayerIndex]);
+  }, [nextIndex]);
 
   useEffect(() => {
     if (isOverlay && !overlayVisible) {
