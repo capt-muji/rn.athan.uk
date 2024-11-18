@@ -5,14 +5,14 @@ import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import useBaseStore from '@/hooks/useBaseStore';
+import useStore from '@/hooks/useStore';
 import { useAppState } from '@/hooks/useAppState';
 import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
 import RadialGlow from '@/components/RadialGlow';
 
 export default function Index() {
-  const { app } = useBaseStore('standard');
+  const { app } = useStore('standard');
   const { initialize } = useAppState();
 
   const [fontsLoaded] = useFonts({

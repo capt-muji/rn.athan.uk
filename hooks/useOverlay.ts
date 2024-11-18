@@ -1,8 +1,8 @@
 import { PrayerType, DaySelection } from '@/shared/types';
-import useBaseStore from './useBaseStore';
+import useStore from '@/hooks/useStore';
 
 export default function useOverlay(type: PrayerType) {
-  const { app, schedule } = useBaseStore(type);
+  const { app, schedule } = useStore(type);
 
   const isSelectedPrayerTomorrow = app.isOverlayOn && schedule.today[schedule.selectedIndex]?.passed;
   const prayers = isSelectedPrayerTomorrow ? schedule.tomorrow : schedule.today;
