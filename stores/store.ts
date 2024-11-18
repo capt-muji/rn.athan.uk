@@ -67,7 +67,7 @@ const useAppStore = create<AppStore>((set) => ({
 const useDateStore = create<DateStore>((set) => ({
   current: '',
   measurements: null,
-  setCurrent: (value) => set({ current: value }),
+  setCurrent: (value: string) => set({ current: value }),
   setMeasurements: (value) => set({ measurements: value }),
 }));
 
