@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import usePrayer from '@/hooks/usePrayer';
 import useSchedule from '@/hooks/useSchedule';
-import useBaseStore from '@/hooks/useBaseStore';
+import useStore from '@/hooks/useStore';
 
 export const useAppState = () => {
-  const { app, date, schedule } = useBaseStore('standard');
-  const prayer = usePrayer();
+  const { app, date, schedule } = useStore('standard');
   const standardSchedule = useSchedule('standard');
   const extraSchedule = useSchedule('extra');
+  const prayer = usePrayer();
 
   const initialize = useCallback(async () => {
     try {

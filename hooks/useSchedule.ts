@@ -1,10 +1,10 @@
 import Storage from '@/stores/database';
 import { createSchedule } from '@/shared/prayer';
 import { PrayerType } from '@/shared/types';
-import useBaseStore from './useBaseStore';
+import useStore from '@/hooks/useStore';
 
 export default function useSchedule(type: PrayerType) {
-  const Base = useBaseStore(type);
+  const Store = useStore(type);
 
   const setTodayAndTomorrow = () => {
     const todayRaw = Storage.prayers.getTodayOrTomorrow('today');
@@ -15,14 +15,14 @@ export default function useSchedule(type: PrayerType) {
     const todaySchedule = createSchedule(todayRaw, type);
     const tomorrowSchedule = createSchedule(tomorrowRaw, type);
 
-    Base.schedule.setToday(todaySchedule);
-    Base.schedule.setTomorrow(tomorrowSchedule);
+    Store.schedule.setToday(todaySchedule);
+    Store.schedule.setTomorrow(tomorrowSchedule);
 
     return { today: todaySchedule, tomorrow: tomorrowSchedule };
   };
 
   return {
-    ...Base,
+    ...Store,
     setTodayAndTomorrow,
   };
 }
