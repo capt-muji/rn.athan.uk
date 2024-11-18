@@ -1,13 +1,10 @@
 import { useCallback } from 'react';
-import { useAtom } from 'jotai';
-import Store from '@/stores/store';
 import usePrayer from '@/hooks/usePrayer';
 import useSchedule from '@/hooks/useSchedule';
+import useBaseStore from '@/hooks/useBaseStore';
 
 export const useAppState = () => {
-  const [isLoading, setIsLoading] = useAtom(Store.app.isLoading);
-  const [hasError, setHasError] = useAtom(Store.app.hasError);
-  
+  const base = useBaseStore('standard');
   const prayer = usePrayer();
   const standardSchedule = useSchedule('standard');
   const extraSchedule = useSchedule('extra');
@@ -22,16 +19,20 @@ export const useAppState = () => {
 
       standardSchedule.updateNextIndex(standardToday);
       extraSchedule.updateNextIndex(extraToday);
-      prayer.updateDate(standardToday);
+      base.setDate(new Date().toISOString());
 
-      setIsLoading(false);
-      setHasError(false);
+      base.setIsLoading(false);
+      base.setHasError(false);
     } catch (error) {
       console.error('Error initializing app:', error);
-      setIsLoading(false);
-      setHasError(true);
+      base.setIsLoading(false);
+      base.setHasError(true);
     }
   }, []);
 
-  return { isLoading, hasError, initialize };
+  return { 
+    isLoading: base.isLoading, 
+    hasError: base.hasError, 
+    initialize 
+  };
 };
