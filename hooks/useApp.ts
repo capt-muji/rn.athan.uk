@@ -6,6 +6,7 @@ import { DaySelection } from '@/shared/types';
 
 export const useApp = () => {
   const { app, date } = useStore();
+
   const standardSchedule = useSchedule('standard');
   const extraSchedule = useSchedule('extra');
   const data = useData();

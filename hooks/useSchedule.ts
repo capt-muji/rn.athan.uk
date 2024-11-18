@@ -5,6 +5,7 @@ import { PrayerType, IScheduleNow, DaySelection } from '@/shared/types';
 
 export default function useSchedule(type: PrayerType) {
   const { schedules } = useStore();
+  
   const schedule = schedules[type];
 
   const setScheduleDay = (day: DaySelection) => {
@@ -16,16 +17,16 @@ export default function useSchedule(type: PrayerType) {
   };
 
   const setNextIndex = () => {
-    const scheduleToday = Object.values(schedule.today);
+    const scheduleToday = Object.values(schedule.getToday());
 
     const nextPrayer = scheduleToday.find(prayer => !prayer.passed) || scheduleToday[0];
     schedule.setNextIndex(nextPrayer.index);
   };
 
   return {
-    today: schedule.today,
-    tomorrow: schedule.tomorrow,
-    nextIndex: schedule.nextIndex,
+    today: schedule.getToday(),         // using getter instead of direct access
+    tomorrow: schedule.getTomorrow(),    // using getter instead of direct access
+    nextIndex: schedule.nextIndex,      // this is fine as is (primitive value)
     selectedIndex: schedule.selectedIndex,
     measurements: schedule.measurements,
     setScheduleDay,
