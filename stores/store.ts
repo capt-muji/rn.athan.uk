@@ -7,14 +7,10 @@ import {
   PageCoordinates, 
   AlertPreferences,
   AlertType,
-  PrayerType 
+  PrayerType,
+  Language,
+  Preferences 
 } from '@/shared/types';
-
-interface Preferences {
-  alert: AlertPreferences;
-  language: 'en' | 'ar';
-  athan: number;
-}
 
 const createInitialAlertPreferences = (): AlertPreferences => {
   const preferences: AlertPreferences = {};
@@ -40,7 +36,7 @@ const createScheduleAtoms = (type: PrayerType) => ({
 });
 
 export default {
-  isLoading: atom<boolean>(true),
+  isLoading: atom(true),
   hasError: atom<boolean>(false),
   overlayVisible: atom<boolean>(false),
   date: atom<string>(''),
