@@ -23,10 +23,10 @@ export default function Prayer({ index, isOverlay = false, type }: Props) {
   const { scheduleToday, scheduleTomorrow, nextIndex, selectedIndex, setSelectedIndex } = useSchedule(type);
 
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const viewRef = useRef(null);
+  const viewRef = useRef<View>(null);
 
+  const isStandard = type === 'standard';
   const prayer = scheduleToday[index];
-  console.log('prayer', prayer);
   const isPassed = prayer.passed;
   const isNext = index === nextIndex;
 
@@ -58,7 +58,7 @@ export default function Prayer({ index, isOverlay = false, type }: Props) {
 
     viewRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
-      const setMeasurements = type === 'prayer' ? setPrayerMeasurements : setExtraMeasurements;
+      const setMeasurements = isStandard ? setPrayerMeasurements : setExtraMeasurements;
       setMeasurements(prev => ({ ...prev, [index]: measurements }));
     });
   };
