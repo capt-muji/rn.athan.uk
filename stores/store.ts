@@ -12,6 +12,30 @@ import {
   Preferences 
 } from '@/shared/types';
 
+// App
+const createAppAtoms = () => ({
+  isLoading: atom(true),
+  isOverlayOn: atom(false),
+  hasError: atom(false),
+});
+
+// Date
+const createDateAtoms = () => ({
+  current: atom(''),
+  measurements: atom<PageCoordinates | null>(null),
+});
+
+// Schedules
+const createScheduleAtoms = () => ({
+  today: atom<IScheduleNow>({}),
+  tomorrow: atom<IScheduleNow>({}),
+  nextIndex: atom(-1),
+  selectedIndex: atom(-1),
+  measurements: atom<Record<number, PageCoordinates>>({}),
+  nextIndexMeasurements: atom<PageCoordinates | null>(null),
+});
+
+// Preferences
 const createInitialAlertPreferences = (): AlertPreferences => {
   const preferences: AlertPreferences = {};
   PRAYERS_ENGLISH.forEach((_, index) => {
@@ -26,27 +50,17 @@ const initialPreferences: Preferences = {
   athan: 0
 };
 
-const createScheduleAtoms = (type: PrayerType) => ({
-  today: atom<IScheduleNow>({}),
-  tomorrow: atom<IScheduleNow>({}),
-  nextIndex: atom<number>(-1),
-  selectedIndex: atom<number>(-1),
-  measurements: atom<Record<number, PageCoordinates>>({}),
-  nextIndexMeasurements: atom<PageCoordinates | null>(null),
-});
+const createPreferencesAtom = () => atomWithStorage<Preferences>(
+  'preferences',
+  initialPreferences,
+  createJSONStorage(() => jotaiStorage),
+  { getOnInit: true }
+);
 
 export default {
-  isLoading: atom(true),
-  hasError: atom<boolean>(false),
-  overlayVisible: atom<boolean>(false),
-  date: atom<string>(''),
-  preferences: atomWithStorage<Preferences>(
-    'preferences',
-    initialPreferences,
-    createJSONStorage(() => jotaiStorage),
-    { getOnInit: true }
-  ),
-  standard: createScheduleAtoms('standard'),
-  extra: createScheduleAtoms('extra'),
-  dateMeasurements: atom<PageCoordinates | null>(null),
+  app: createAppAtoms(),
+  date: createDateAtoms(),
+  preferences: createPreferencesAtom(),
+  standard: createScheduleAtoms(),
+  extra: createScheduleAtoms(),
 };
