@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-na
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import { prayersTodayAtom, prayersNextIndexAtom, absoluteNextPrayerMeasurementsAtom, absolutePrayerMeasurementsAtom, prayersSelectedIndexAtom, overlayVisibleAtom } from '@/stores/store';
+import { overlayVisibleAtom } from '@/stores/store';
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
 import { PrayerType } from '@/shared/types';
 import Alert from './Alert';
@@ -13,14 +13,14 @@ import useSchedule from '@/hooks/useSchedule';
 
 interface Props {
   index: number;
-  isOverlay?: boolean;
   type: PrayerType;
+  isOverlay?: boolean;
 }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-export default function Prayer({ index, isOverlay = false, type }: Props) {
-  const { scheduleToday, scheduleTomorrow, nextIndex, selectedIndex, setSelectedIndex } = useSchedule(type);
+export default function Prayer({ index, type, isOverlay = false }: Props) {
+  const { scheduleToday, nextIndex, selectedIndex, setMeasurements } = useSchedule(type);
 
   const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
   const viewRef = useRef<View>(null);
@@ -58,7 +58,6 @@ export default function Prayer({ index, isOverlay = false, type }: Props) {
 
     viewRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
-      const setMeasurements = isStandard ? setPrayerMeasurements : setExtraMeasurements;
       setMeasurements(prev => ({ ...prev, [index]: measurements }));
     });
   };
@@ -117,8 +116,8 @@ export default function Prayer({ index, isOverlay = false, type }: Props) {
       <Animated.View style={[styles.background, animatedBackgroundStyle]} />
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
-      <PrayerTime index={index} isOverlay={isOverlay} />
-      <Alert index={index} isOverlay={isOverlay} />
+      <PrayerTime index={index} isOverlay={isOverlay} type={type} />
+      <Alert index={index} isOverlay={isOverlay} type={type} />
     </AnimatedPressable>
   );
 }

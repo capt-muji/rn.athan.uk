@@ -3,26 +3,28 @@ import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
-import { prayersTodayAtom, prayersTomorrowAtom, prayersNextIndexAtom, prayersSelectedIndexAtom, overlayVisibleAtom } from '@/stores/store';
+import { overlayVisibleAtom } from '@/stores/store';
 import { useEffect } from 'react';
+import useSchedule from '@/hooks/useSchedule';
+import { PrayerType } from '@/shared/types';
 
 interface Props {
   index: number;
+  type: PrayerType;
   isOverlay: boolean;
 }
 
-export default function PrayerTime({ index, isOverlay }: Props) {
-  const [todaysPrayers] = useAtom(prayersTodayAtom);
-  const [tomorrowsPrayers] = useAtom(prayersTomorrowAtom);
-  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
+export default function PrayerTime({ index, type, isOverlay = false }: Props) {
   const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [selectedPrayerIndex] = useAtom(prayersSelectedIndexAtom);
 
-  const prayer = todaysPrayers[index];
+  const { scheduleToday, scheduleTomorrow, nextIndex, selectedIndex, setMeasurements, } = useSchedule(type);
+
+
+  const prayer = scheduleToday[index];
   const isPassed = prayer.passed;
-  const isNext = index === nextPrayerIndex;
-  const todayTime = todaysPrayers[index].time;
-  const tomorrowTime = tomorrowsPrayers[selectedPrayerIndex]?.time;
+  const isNext = index === nextIndex;
+  const todayTime = scheduleToday[index].time;
+  const tomorrowTime = scheduleTomorrow[selectedIndex]?.time;
 
   const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
 
@@ -31,16 +33,16 @@ export default function PrayerTime({ index, isOverlay }: Props) {
   const overlayTomorrowOpacity = useSharedValue(0);
 
   useEffect(() => {
-    if (index === nextPrayerIndex) {
+    if (index === nextIndex) {
       originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     } else if (!isPassed) {
       originalOpacity.value = TEXT.opacity;
     }
-  }, [nextPrayerIndex]);
+  }, [nextIndex]);
 
   useEffect(() => {
     // if overlay is visible, and this prayer is selected
-    if (overlayVisible && selectedPrayerIndex === index) {
+    if (overlayVisible && selectedIndex === index) {
 
       if (isNext) {
         overlayTodayOpacity.value = 0;

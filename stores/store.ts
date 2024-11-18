@@ -8,23 +8,8 @@ import { PRAYERS_ENGLISH } from '@/shared/constants';
 export const isLoadingAtom = atom<boolean>(true);
 export const hasErrorAtom = atom<boolean>(false);
 
-// Remove these atoms
-export const dateAtom = atom<string>('');
-// export const prayersTodayAtom = atom<IScheduleNow>({});
-// export const prayersTomorrowAtom = atom<IScheduleNow>({});
-// export const prayersNextIndexAtom = atom<number>(-1);
-// export const prayersSelectedIndexAtom = atom<number>(-1);
-
 // Overlay State
 export const overlayVisibleAtom = atom<boolean>(false);
-// export const overlayStartOpeningAtom = atom<boolean>(false);
-// export const overlayFinishedOpeningAtom = atom<boolean>(false);
-// export const overlayStartClosingAtom = atom<boolean>(false);
-// export const overlayFinishedClosingAtom = atom<boolean>(false);
-// export const overlayControlsAtom = atom<{
-//   open?: () => void;
-//   close?: () => void;
-// }>({});
 
 // Measurement Types
 export interface PageCoordinates {
@@ -33,14 +18,6 @@ export interface PageCoordinates {
   width: number;
   height: number;
 }
-
-
-
-// export const prayerNextIndexAtom = atom<number>(-1);
-// export const extraNextIndexAtom = atom<number>(-1);
-
-// export const prayerMeasurementsAtom = atom<Record<number, Measurements>>({});
-// export const extraMeasurementsAtom = atom<Record<number, Measurements>>({});
 
 // Alert Preferences
 export enum AlertType {
@@ -81,6 +58,8 @@ export const scheduleExtraTodayAtom = atom<IScheduleNow>({});
 export const scheduleExtraTomorrowAtom = atom<IScheduleNow>({});
 export const scheduleExtraNextIndexAtom = atom<number>(-1);
 export const scheduleExtraSelectedIndexAtom = atom<number>(-1);
+
+export const dateAtom = atom<string>('');
 
 // Measurements
 export const absoluteDateMeasurementsAtom = atom<PageCoordinates| null>(null);
