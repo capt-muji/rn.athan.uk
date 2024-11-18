@@ -184,8 +184,8 @@ export interface SchedulesStore {
 }
 
 export interface OverlayStore {
-  isOverlayOn: boolean;
-  setIsOverlayOn: (value: boolean) => void;
+  isOn: boolean;
+  setIsOn: (value: boolean) => void;
 }
 
 // Update the final StoreState interface
