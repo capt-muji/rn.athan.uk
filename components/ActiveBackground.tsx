@@ -7,44 +7,45 @@ import Animated, {
   withTiming,
   useSharedValue,
 } from 'react-native-reanimated';
-import {
-  prayersNextIndexAtom,
-  absolutePrayerMeasurementsAtom,
-  dateTodayAtom,
-  prayersTodayAtom,
-} from '@/stores/store';
 import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/shared/constants';
 import { getRecentDate } from '@/shared/time';
+import { DaySelection, PrayerType } from '@/shared/types';
+import useSchedule from '@/hooks/useSchedule';
+import { useApp } from '@/hooks/useApp';
 
 const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };
 const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };
 
-export default function ActiveBackground() {
-  const [nextPrayerIndex] = useAtom(prayersNextIndexAtom);
-  const [absoluteMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [date] = useAtom(dateTodayAtom);
-  const [todaysPrayers] = useAtom(prayersTodayAtom);
+interface Props {
+  type: PrayerType;
+}
+
+export default function ActiveBackground({ type }: Props) {
+  const { date } = useApp();
+  const { today, nextIndex, measurements } = useSchedule(type);
+
+
 
   const opacityShared = useSharedValue(0);
   const backgroundColorShared = useSharedValue(COLORS.activeBackground);
 
   useEffect(() => {
-    if (!absoluteMeasurements[nextPrayerIndex]) return;
+    if (!measurements[nextIndex]) return;
 
-    const nowDate = getRecentDate('today');
+    const nowDate = getRecentDate(DaySelection.Today);
     const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
-    const isActive = date === nowDate && !todaysPrayers[lastPrayerIndex]?.passed;
+    const isActive = date.current === nowDate && !today[lastPrayerIndex]?.passed;
     const isActiveOpacity = isActive ? 1 : 0.1;
     const isActiveBackgroundColor = isActive ? COLORS.activeBackground : COLORS.inactiveBackground;
 
     opacityShared.value = withTiming(isActiveOpacity, TIMING_CONFIG);
     backgroundColorShared.value = withTiming(isActiveBackgroundColor, TIMING_CONFIG);
-  }, [absoluteMeasurements, nextPrayerIndex, date, todaysPrayers]);
+  }, [measurements, nextIndex, date, today]);
 
   const animatedStyle = useAnimatedStyle(() => {
-    if (!absoluteMeasurements[nextPrayerIndex]) return { opacity: opacityShared.value };
+    if (!measurements[nextIndex]) return { opacity: opacityShared.value };
 
-    const activePrayer = absoluteMeasurements[nextPrayerIndex];
+    const activePrayer = measurements[nextIndex];
 
     return {
       opacity: opacityShared.value,
