@@ -5,8 +5,8 @@ import usePrayer from '@/hooks/usePrayer';
 import useSchedule from '@/hooks/useSchedule';
 
 export const useAppState = () => {
-  const [isLoading, setIsLoading] = useAtom(Store.isLoading);
-  const [hasError, setHasError] = useAtom(Store.hasError);
+  const [isLoading, setIsLoading] = useAtom(Store.app.isLoading);
+  const [hasError, setHasError] = useAtom(Store.app.hasError);
   
   const prayer = usePrayer();
   const standardSchedule = useSchedule('standard');

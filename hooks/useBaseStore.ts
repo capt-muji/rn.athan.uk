@@ -1,10 +1,9 @@
-
 import { useAtom } from 'jotai';
 import Store from '@/stores/store';
 import { PrayerType, IScheduleNow, PageCoordinates } from '@/shared/types';
 
 export default function useBaseStore(type: PrayerType) {
-  const store = Store[type];
+  const store = Store.schedules[type];
   
   const [today, setToday] = useAtom(store.today);
   const [tomorrow, setTomorrow] = useAtom(store.tomorrow);

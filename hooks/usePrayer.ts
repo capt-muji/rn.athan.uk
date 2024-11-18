@@ -7,7 +7,7 @@ import { IScheduleNow } from '@/shared/types';
 import Store from '@/stores/store';
 
 export default function usePrayer() {
-  const [date, setDate] = useAtom(Store.date);
+  const [date, setDate] = useAtom(Store.date.current);
 
   const fetch = async (year?: number) => {
     const apiData = await Api.fetch(year);
