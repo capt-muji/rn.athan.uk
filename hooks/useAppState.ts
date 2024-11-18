@@ -30,9 +30,5 @@ export const useAppState = () => {
     }
   }, []);
 
-  return { 
-    isLoading: app.isLoading, 
-    hasError: app.hasError, 
-    initialize 
-  };
+  return { initialize };
 };
