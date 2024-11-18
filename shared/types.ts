@@ -116,3 +116,69 @@ export interface Preferences {
   athan: number;
 }
 export type Language = 'en' | 'ar';
+
+// ScheduleStore and StoreState interfaces
+export interface ScheduleStore {
+  today: IScheduleNow;
+  tomorrow: IScheduleNow;
+  nextIndex: number;
+  selectedIndex: number;
+  measurements: Record<number, PageCoordinates>;
+  nextIndexMeasurements: PageCoordinates | null;
+  setToday: (value: IScheduleNow) => void;
+  setTomorrow: (value: IScheduleNow) => void;
+  setNextIndex: (value: number) => void;
+  setSelectedIndex: (value: number) => void;
+  setMeasurements: (value: Record<number, PageCoordinates>) => void;
+  setNextIndexMeasurements: (value: PageCoordinates | null) => void;
+}
+
+export interface StoreState {
+  app: {
+    isLoading: boolean;
+    isOverlayOn: boolean;
+    hasError: boolean;
+    setIsLoading: (value: boolean) => void;
+    setIsOverlayOn: (value: boolean) => void;
+    setHasError: (value: boolean) => void;
+  };
+  date: {
+    current: string;
+    measurements: PageCoordinates | null;
+    setCurrent: (value: string) => void;
+    setMeasurements: (value: PageCoordinates | null) => void;
+  };
+  preferences: Preferences;
+  setPreferences: (value: Preferences) => void;
+  schedules: {
+    standard: ScheduleStore;
+    extra: ScheduleStore;
+  };
+}
+
+// New store interfaces
+export interface PreferencesStore {
+  preferences: Preferences;
+  setPreferences: (value: Preferences) => void;
+}
+
+export interface AppStore {
+  isLoading: boolean;
+  isOverlayOn: boolean;
+  hasError: boolean;
+  setIsLoading: (value: boolean) => void;
+  setIsOverlayOn: (value: boolean) => void;
+  setHasError: (value: boolean) => void;
+}
+
+export interface DateStore {
+  current: string;
+  measurements: PageCoordinates | null;
+  setCurrent: (value: string) => void;
+  setMeasurements: (value: PageCoordinates | null) => void;
+}
+
+export interface SchedulesStore {
+  standard: ScheduleStore;
+  extra: ScheduleStore;
+}
