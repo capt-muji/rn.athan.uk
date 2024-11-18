@@ -34,8 +34,10 @@ interface Props {
 
 export default function Alert({ index, type, isOverlay = false }: Props) {
   const {
-    today: scheduleToday,
-    nextIndex
+    schedule: {
+      today: scheduleToday,
+      nextIndex
+    }
   } = useSchedule(type);
 
   const [overlayVisible] = useAtom(Store.app.isOverlayOn);
