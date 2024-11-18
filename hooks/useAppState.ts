@@ -5,41 +5,33 @@ import usePrayer from '@/hooks/usePrayer';
 import useSchedule from '@/hooks/useSchedule';
 
 export const useAppState = () => {
-  const [isLoading, setIsLoading] = useAtom(Store.app.isLoading);
-  const [hasError, setHasError] = useAtom(Store.app.hasError);
-
-  const PrayerHook = usePrayer();
-  const ScheduleStandardHook = useSchedule('standard');
-  const ScheduleExtraHook = useSchedule('extra');
+  const [isLoading, setIsLoading] = useAtom(Store.isLoading);
+  const [hasError, setHasError] = useAtom(Store.hasError);
+  
+  const prayer = usePrayer();
+  const standardSchedule = useSchedule('standard');
+  const extraSchedule = useSchedule('extra');
 
   const initialize = useCallback(async () => {
-    console.log('Initializing app');
-
     try {
-      const data = await PrayerHook.fetch();
-      PrayerHook.saveAll(data);
+      const data = await prayer.fetch();
+      prayer.saveAll(data);
 
-      const { today: standardToday } = ScheduleStandardHook.setTodayAndTomorrow();
-      const { today: extraToday } = ScheduleExtraHook.setTodayAndTomorrow();
+      const { today: standardToday } = standardSchedule.setTodayAndTomorrow();
+      const { today: extraToday } = extraSchedule.setTodayAndTomorrow();
 
-      ScheduleStandardHook.updateNextIndex(standardToday);
-      ScheduleExtraHook.updateNextIndex(extraToday);
-
-      PrayerHook.updateDate(standardToday);
+      standardSchedule.updateNextIndex(standardToday);
+      extraSchedule.updateNextIndex(extraToday);
+      prayer.updateDate(standardToday);
 
       setIsLoading(false);
       setHasError(false);
-
-      console.log('Successfully initialized app');
     } catch (error) {
       console.error('Error initializing app:', error);
-
       setIsLoading(false);
       setHasError(true);
-      
-      return null;
     }
   }, []);
 
-  return { isLoading, hasError, initialize, };
+  return { isLoading, hasError, initialize };
 };

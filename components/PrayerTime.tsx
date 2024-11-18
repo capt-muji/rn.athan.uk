@@ -15,10 +15,13 @@ interface Props {
 }
 
 export default function PrayerTime({ index, type, isOverlay = false }: Props) {
-  const [overlayVisible] = useAtom(Store.app.overlayVisible);
-
-  const { scheduleToday, scheduleTomorrow, nextIndex, selectedIndex, setMeasurements, } = useSchedule(type);
-
+  const [overlayVisible] = useAtom(Store.overlayVisible);
+  const {
+    today: scheduleToday,
+    tomorrow: scheduleTomorrow,
+    nextIndex,
+    selectedIndex
+  } = useSchedule(type);
 
   const prayer = scheduleToday[index];
   const isPassed = prayer.passed;

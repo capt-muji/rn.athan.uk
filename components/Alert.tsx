@@ -33,10 +33,13 @@ interface Props {
 }
 
 export default function Alert({ index, type, isOverlay = false }: Props) {
-  const { nextIndex, scheduleToday } = useSchedule(type);
+  const {
+    today: scheduleToday,
+    nextIndex
+  } = useSchedule(type);
 
-  const [overlayVisible] = useAtom(Store.app.overlayVisible);
-  const [alertPreferences, setAlertPreferences] = useAtom(Store.alerts.preferences);
+  const [overlayVisible] = useAtom(Store.overlayVisible);
+  const [alertPreferences, setAlertPreferences] = useAtom(Store.alertPreferences);
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
