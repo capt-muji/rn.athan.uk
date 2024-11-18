@@ -6,10 +6,10 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } fro
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import Masjid from './Masjid';
 import { formatDate } from '@/shared/time';
-import useBaseStore from '@/hooks/useBaseStore';
+import useStore from '@/hooks/useStore';
 
 export default function DateDisplay() {
-  const { app, date } = useBaseStore('standard');
+  const { app, date } = useStore('standard');
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
 
