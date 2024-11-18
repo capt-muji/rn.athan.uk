@@ -167,11 +167,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 5,
+    justifyContent: 'flex-end',
+    // marginRight: 5,
   },
   iconContainer: {
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+    // paddingHorizontal: 20,
+    // paddingVertical: 20,
   },
   popup: {
     position: 'absolute',
