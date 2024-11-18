@@ -20,9 +20,14 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, type, isOverlay = false }: Props) {
-  const { scheduleToday, nextIndex, selectedIndex, setMeasurements } = useSchedule(type);
+  const {
+    today: scheduleToday,
+    nextIndex,
+    selectedIndex,
+    setMeasurements
+  } = useSchedule(type);
 
-  const [overlayVisible, setOverlayVisible] = useAtom(Store.app.overlayVisible);
+  const [overlayVisible, setOverlayVisible] = useAtom(Store.overlayVisible);
   const viewRef = useRef<View>(null);
 
   const isStandard = type === 'standard';

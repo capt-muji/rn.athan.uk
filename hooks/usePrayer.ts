@@ -1,42 +1,27 @@
+import { useAtom } from 'jotai';
 import * as Api from '@/api/client';
 import Storage from '@/stores/database';
 import { isDateTodayOrFuture } from '@/shared/time';
 import { transformApiData } from '@/shared/prayer';
-import { IApiResponse, ISingleApiResponseTransformed, IScheduleNow } from '@/shared/types';
-import { useAtom } from 'jotai';
+import { IScheduleNow } from '@/shared/types';
 import Store from '@/stores/store';
 
 export default function usePrayer() {
-  const [date, setDate] = useAtom(Store.app.date);
+  const [date, setDate] = useAtom(Store.date);
 
-  // Fetch, filter and transform prayer times
-  const fetch = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
+  const fetch = async (year?: number) => {
     const apiData = await Api.fetch(year);
-    const apiDataFiltered: IApiResponse = { city: apiData.city, times: {}};
+    const filteredTimes = Object.fromEntries(
+      Object.entries(apiData.times)
+        .filter(([date]) => isDateTodayOrFuture(date))
+    );
 
-    const entries = Object.entries(apiData.times);
-
-    entries.forEach(([date, data]) => {
-      if (!isDateTodayOrFuture(date)) return;
-      apiDataFiltered.times[date] = data;
-    });
-
-    return transformApiData(apiDataFiltered);
-  };
-
-  // Stores prayers in the database
-  const saveAll = (prayers: ISingleApiResponseTransformed[]) => {
-    Storage.prayers.storePrayers(prayers);
-  };
-
-  const updateDate = (prayers: IScheduleNow) => {
-    const dataDate = Object.values(prayers)[0].date;
-    setDate(dataDate);
+    return transformApiData({ ...apiData, times: filteredTimes });
   };
 
   return {
     fetch,
-    saveAll,
-    updateDate,
+    saveAll: Storage.prayers.storePrayers,
+    updateDate: (prayers: IScheduleNow) => setDate(Object.values(prayers)[0].date),
   };
-};
+}

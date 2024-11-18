@@ -6,7 +6,8 @@ import {
   IScheduleNow, 
   PageCoordinates, 
   AlertPreferences, 
-  AlertType 
+  AlertType,
+  PrayerType 
 } from '@/shared/types';
 
 const createInitialAlertPreferences = (): AlertPreferences => {
@@ -17,40 +18,27 @@ const createInitialAlertPreferences = (): AlertPreferences => {
   return preferences;
 };
 
+const createScheduleAtoms = (type: PrayerType) => ({
+  today: atom<IScheduleNow>({}),
+  tomorrow: atom<IScheduleNow>({}),
+  nextIndex: atom<number>(-1),
+  selectedIndex: atom<number>(-1),
+  measurements: atom<Record<number, PageCoordinates>>({}),
+  nextIndexMeasurements: atom<PageCoordinates | null>(null),
+});
+
 export default {
-  app: {
-    isLoading: atom<boolean>(true),
-    hasError: atom<boolean>(false),
-    overlayVisible: atom<boolean>(false),
-    date: atom<string>(''),
-  },
-
-  alerts: {
-    preferences: atomWithStorage<AlertPreferences>(
-      'alert_preferences',
-      createInitialAlertPreferences(),
-      createJSONStorage(() => jotaiStorage),
-      { getOnInit: true }
-    ),
-  },
-
-  schedule: {
-    standard: {
-      today: atom<IScheduleNow>({}),
-      tomorrow: atom<IScheduleNow>({}),
-      nextIndex: atom<number>(-1),
-      selectedIndex: atom<number>(-1),
-      measurements: atom<Record<number, PageCoordinates>>({}),
-      nextIndexMeasurements: atom<PageCoordinates | null>(null),
-    },
-    extra: {
-      today: atom<IScheduleNow>({}),
-      tomorrow: atom<IScheduleNow>({}),
-      nextIndex: atom<number>(-1),
-      selectedIndex: atom<number>(-1),
-      measurements: atom<Record<number, PageCoordinates>>({}),
-      nextIndexMeasurements: atom<PageCoordinates | null>(null),
-    },
-    dateMeasurements: atom<PageCoordinates | null>(null),
-  },
+  isLoading: atom<boolean>(true),
+  hasError: atom<boolean>(false),
+  overlayVisible: atom<boolean>(false),
+  date: atom<string>(''),
+  alertPreferences: atomWithStorage<AlertPreferences>(
+    'alert_preferences',
+    createInitialAlertPreferences(),
+    createJSONStorage(() => jotaiStorage),
+    { getOnInit: true }
+  ),
+  standard: createScheduleAtoms('standard'),
+  extra: createScheduleAtoms('extra'),
+  dateMeasurements: atom<PageCoordinates | null>(null),
 };
