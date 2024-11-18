@@ -110,16 +110,14 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
     <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={[containerStyle, styles.ok]}
+      style={containerStyle}
     // onPress={handlePress}
     >
       <Animated.View style={[styles.background, animatedBackgroundStyle]} />
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
-      {/* <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text> */}
+      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} type={type} />
-      <View style={styles.bob}>
-        <Alert index={index} isOverlay={isOverlay} type={type} />
-      </View>
+      <Alert index={index} isOverlay={isOverlay} type={type} />
     </AnimatedPressable>
   );
 }
@@ -131,8 +129,7 @@ const styles = StyleSheet.create({
   },
   english: {
     flex: 1,
-    // marginLeft: 20,
-    // backgroundColor: 'silver'
+    marginLeft: 20,
   },
   arabic: {
     flex: 0.75,
@@ -148,13 +145,5 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.4,
     shadowRadius: 20,
-  },
-  bob: {
-    flex: 1,
-    // backgroundColor: 'green'
-  },
-  ok: {
-    // backgroundColor: 'red',
-    padding: 20
   }
 });

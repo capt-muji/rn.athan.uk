@@ -110,14 +110,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    backgroundColor: 'silver'
   },
   text: {
-    // backgroundColor: 'blue',
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
     position: 'absolute',
     width: '100%',
-    // paddingLeft: 25,
+    paddingLeft: 25,
   },
 });
