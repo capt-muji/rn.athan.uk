@@ -10,10 +10,10 @@ const THRESHOLD = 1000; // seconds
 
 export const usePrayerCountdown = (prayerIndex: number, day: DaySelection) => {
   const [countdown, setCountdown] = useState('');
-  const [todaysPrayers] = useAtom(Store.schedule.standard.today);
-  const [tomorrowsPrayers] = useAtom(Store.schedule.standard.tomorrow);
-  const [date, setDate] = useAtom(Store.app.date);
-  const [nextPrayerIndex] = useAtom(Store.schedule.standard.nextIndex);
+  const [todaysPrayers] = useAtom(Store.schedules.standard.today);
+  const [tomorrowsPrayers] = useAtom(Store.schedules.standard.tomorrow);
+  const [date, setDate] = useAtom(Store.date.current);
+  const [nextPrayerIndex] = useAtom(Store.schedules.standard.nextIndex);
   // const { incrementNextPrayer, markPrayerAsPassed } = PrayerHook();
 
   useEffect(() => {
