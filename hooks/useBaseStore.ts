@@ -4,6 +4,9 @@ import { PrayerType, IScheduleNow, PageCoordinates } from '@/shared/types';
 
 export default function useBaseStore(type: PrayerType) {
   const store = Store.schedules[type];
+  const [date, setDate] = useAtom(Store.date.current);
+  const [isLoading, setIsLoading] = useAtom(Store.app.isLoading);
+  const [hasError, setHasError] = useAtom(Store.app.hasError);
   
   const [today, setToday] = useAtom(store.today);
   const [tomorrow, setTomorrow] = useAtom(store.tomorrow);
@@ -20,12 +23,18 @@ export default function useBaseStore(type: PrayerType) {
   };
 
   return {
+    isLoading,
+    hasError,
+    date,
     today,
     tomorrow,
     nextIndex,
     selectedIndex,
     measurements,
     nextIndexMeasurements,
+    setIsLoading,
+    setHasError,
+    setDate,
     setToday,
     setTomorrow,
     setSelectedIndex,
