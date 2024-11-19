@@ -1,15 +1,15 @@
 import useStore from '@/stores/store';
-import { getTodayOrTomorrow } from '@/stores/database';
+import * as database from '@/stores/database';
 import { createSchedule } from '@/shared/prayer';
-import { PrayerType, DaySelection } from '@/shared/types';
+import { ScheduleType, DaySelection } from '@/shared/types';
 
-export default function useSchedule(type: PrayerType) {
+export default function useSchedule(type: ScheduleType) {
   const { schedules } = useStore();
   
   const schedule = schedules[type];
 
   const setScheduleDay = (day: DaySelection) => {
-    const raw = getTodayOrTomorrow(day);
+    const raw = database.getTodayOrTomorrow(day);
     if (!raw) throw new Error('Data not found');
     
     const scheduleDay = createSchedule(raw, type);

@@ -6,12 +6,12 @@ import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
 import Store from '@/stores/store';
 import { useEffect } from 'react';
 import useSchedule from '@/hooks/useSchedule';
-import { PrayerType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import useStore from '@/stores/store';
 
 interface Props {
   index: number;
-  type: PrayerType;
+  type: ScheduleType;
   isOverlay: boolean;
 }
 export default function PrayerTime({ index, type, isOverlay = false }: Props) {

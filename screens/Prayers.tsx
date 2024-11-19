@@ -8,11 +8,11 @@ import ActiveBackground from '@/components/ActiveBackground';
 import Overlay from '@/components/Overlay';
 import { SCREEN, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import RadialGlow from '@/components/RadialGlow';
-import { PrayerType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import useSchedule from '@/hooks/useSchedule';
 
 interface Props {
-  type: PrayerType;
+  type: ScheduleType;
 }
 
 export default function Prayers({ type }: Props) {

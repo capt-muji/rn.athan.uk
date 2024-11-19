@@ -10,7 +10,7 @@ import {
   AppStore,
   DateStore,
   OverlayStore,
-  PrayerType
+  ScheduleType
 } from '@/shared/types';
 
 // Custom storage for MMKV
@@ -38,7 +38,6 @@ const createInitialAlertPreferences = (): AlertPreferences => {
 
 const initialPreferences: Preferences = {
   alert: createInitialAlertPreferences(),
-  language: 'en',
   athan: 0
 };
 
@@ -55,18 +54,19 @@ export const dateAtom = atom<DateStore>({
   measurements: null
 });
 
-const createScheduleAtom = (scheduleType: PrayerType) => atom<ScheduleStore>({
+const createScheduleAtom = (scheduleType: ScheduleType) => atom<ScheduleStore>({
   type: scheduleType,
   today: {},
   tomorrow: {},
-  nextIndex: -1,
+  nextIndex: 0,
   selectedIndex: -1,
+  // ui states below
   measurements: {},
   nextIndexMeasurements: null
 });
 
-export const standardScheduleAtom = createScheduleAtom(PrayerType.Standard);
-export const extraScheduleAtom = createScheduleAtom(PrayerType.Extra);
+export const standardScheduleAtom = createScheduleAtom(ScheduleType.Standard);
+export const extraScheduleAtom = createScheduleAtom(ScheduleType.Extra);
 
 export const overlayAtom = atom<OverlayStore>({
   isOn: false
