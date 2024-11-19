@@ -170,8 +170,9 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   iconContainer: {
-    paddingHorizontal: 20,
     paddingVertical: 20,
+    paddingRight: 20,
+    paddingLeft: 13,
   },
   popup: {
     position: 'absolute',
