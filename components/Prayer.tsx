@@ -129,12 +129,11 @@ const styles = StyleSheet.create({
   },
   english: {
     marginLeft: 20,
-    // backgroundColor: 'silver',
   },
   arabic: {
     flex: 1,
     textAlign: 'right',
-    // backgroundColor: 'blue',
+    paddingRight: 13,
   },
   background: {
     position: 'absolute',
