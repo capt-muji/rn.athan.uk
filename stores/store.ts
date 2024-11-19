@@ -12,7 +12,7 @@ import {
   DateStore,
   SchedulesStore,
   OverlayStore,
-  PrayerType
+  ScheduleType
 } from '@/shared/types';
 
 const zustandStorage = {
@@ -71,7 +71,7 @@ const useDateStore = create<DateStore>((set) => ({
   setMeasurements: (value) => set({ measurements: value }),
 }));
 
-const createScheduleStore = (set: any, get: any, path: PrayerType): ScheduleStore => ({
+const createScheduleStore = (set: any, get: any, path: ScheduleType): ScheduleStore => ({
   today: {},
   tomorrow: {},
   nextIndex: -1,

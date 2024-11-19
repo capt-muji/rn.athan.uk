@@ -7,7 +7,7 @@ export const database = new MMKV();
 
 export const clear = () => database.clearAll();
 
-export const storePrayers = (prayers: ISingleApiResponseTransformed[]) => {
+export const saveAll = (prayers: ISingleApiResponseTransformed[]) => {
   prayers.forEach(prayer => {
     database.set(prayer.date, JSON.stringify(prayer));
   });

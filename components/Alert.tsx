@@ -13,7 +13,7 @@ import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
 import Store from '@/stores/store';
-import { PrayerType, AlertType } from '@/shared/types';
+import { ScheduleType, AlertType } from '@/shared/types';
 import useSchedule from '@/hooks/useSchedule';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
@@ -28,7 +28,7 @@ const ALERT_CONFIGS = [
 
 interface Props {
   index: number;
-  type: PrayerType;
+  type: ScheduleType;
   isOverlay?: boolean;
 }
 

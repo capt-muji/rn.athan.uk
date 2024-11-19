@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
-import { PrayerType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import useSchedule from '@/hooks/useSchedule';
@@ -12,7 +12,7 @@ import { useApp } from '@/hooks/useApp';
 
 interface Props {
   index: number;
-  type: PrayerType;
+  type: ScheduleType;
   isOverlay?: boolean;
 }
 

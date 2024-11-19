@@ -37,7 +37,7 @@ export interface ISingleApiResponseTransformed {
   "last third": string;
 }
 
-export enum PrayerType {
+export enum ScheduleType {
   Standard = 'standard',
   Extra = 'extra'
 }
@@ -50,7 +50,7 @@ export interface ITransformedPrayer {
   time: string;
   passed: boolean;
   isNext: boolean;
-  type: PrayerType;
+  type: ScheduleType;
 }
 
 export interface IScheduleNow {
@@ -115,14 +115,12 @@ export interface AlertPreferences {
 
 export interface Preferences {
   alert: AlertPreferences;
-  language: Language;
   athan: number;
 }
-export type Language = 'en' | 'ar';
 
 // ScheduleStore and StoreState interfaces
 export interface ScheduleStore {
-  type: PrayerType;
+  type: ScheduleType;
   today: IScheduleNow;
   tomorrow: IScheduleNow;
   nextIndex: number;
