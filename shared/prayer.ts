@@ -52,7 +52,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
  * Creates structured prayer times object for today with status information. Maps prayer times to both English and Arabic names.
  */
 export const createSchedule = (prayers: ISingleApiResponseTransformed, type: ScheduleType): IScheduleNow => {
-  const isStandard = type === 'standard';
+  const isStandard = type === ScheduleType.Standard;
   const namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   const namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
   

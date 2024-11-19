@@ -17,7 +17,8 @@ interface Props {
 }
 
 export default function Prayers({ type }: Props) {
-  const schedule = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+  const isStandard = type === ScheduleType.Standard;
+  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
   const insets = useSafeAreaInsets();
 
@@ -25,7 +26,7 @@ export default function Prayers({ type }: Props) {
     <View style={[styles.container, { paddingTop: insets.top + SCREEN.paddingHorizontal, paddingBottom: insets.bottom }]}>
       <Countdown type={type} />
       <DateDisplay />
-      <ActiveBackground type={type} />
+      {/* <ActiveBackground type={type} /> */}
       {Object.keys(schedule.today).map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
