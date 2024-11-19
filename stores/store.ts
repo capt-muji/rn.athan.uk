@@ -106,8 +106,7 @@ const useSchedulesStore = create<SchedulesStore>((set, get) => ({
 }));
 
 const useOverlayStore = create<OverlayStore>((set) => ({
-  isOn: false,
-  setIsOn: (value) => set({ isOn: value }),
+  isOn: false
 }));
 
 const useStore = () => ({
