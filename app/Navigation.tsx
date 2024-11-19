@@ -5,6 +5,7 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-na
 import { COLORS, ANIMATION } from '@/shared/constants';
 import Prayers from '@/screens/Prayers';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ScheduleType } from '@/shared/types';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
@@ -34,8 +35,8 @@ export default function Navigation() {
         overScrollMode="never"
         onPageScroll={handlePageScroll}
       >
-        <Prayers key="1" type="standard" />
-        <Prayers key="2" type="extra" />
+        <Prayers key="1" type={ScheduleType.Standard} />
+        <Prayers key="2" type={ScheduleType.Extra} />
       </PagerView>
 
       <View style={[styles.dotsContainer, { bottom: bottom + 5 }]}>

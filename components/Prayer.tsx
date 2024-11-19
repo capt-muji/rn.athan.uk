@@ -9,6 +9,8 @@ import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import useSchedule from '@/hooks/useSchedule';
 import { useApp } from '@/hooks/useApp';
+import { useAtomValue } from 'jotai';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store_jotai';
 
 interface Props {
   index: number;
@@ -19,11 +21,13 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, type, isOverlay = false }: Props) {
+  const { today, nextIndex, selectedIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+
   const isOverlayOn = false;
 
-  const { today, nextIndex, measurements, setMeasurements, selectedIndex } = useSchedule(type);
+  // const { today, nextIndex, measurements, setMeasurements, selectedIndex } = useSchedule(type);
 
-  const prayer = today()[index];
+  const prayer = today[index];
   const isPassed = prayer.passed;
   const isNext = index === nextIndex;
 
@@ -59,7 +63,7 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
 
     viewRef.current.measureInWindow((x, y, width, height) => {
       const measurement = { pageX: x, pageY: y, width, height };
-      setMeasurements({ ...measurements, [index]: measurement });
+      // setMeasurements({ ...measurements, [index]: measurement });
     });
   };
 

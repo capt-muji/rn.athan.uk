@@ -9,14 +9,15 @@ import Overlay from '@/components/Overlay';
 import { SCREEN, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import RadialGlow from '@/components/RadialGlow';
 import { ScheduleType } from '@/shared/types';
-import useSchedule from '@/hooks/useSchedule';
+import { standardScheduleAtom, extraScheduleAtom } from '@/stores/store_jotai';
+import { useAtomValue } from 'jotai';
 
 interface Props {
   type: ScheduleType;
 }
 
 export default function Prayers({ type }: Props) {
-  const { today } = useSchedule(type);
+  const schedule = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
 
   const insets = useSafeAreaInsets();
 
@@ -25,7 +26,7 @@ export default function Prayers({ type }: Props) {
       <Countdown type={type} />
       <DateDisplay />
       <ActiveBackground type={type} />
-      {Object.keys(today()).map((_, index) => (
+      {Object.keys(schedule.today).map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>
