@@ -5,15 +5,18 @@ import { useCountdown } from '@/hooks/useCountdown';
 import { ScheduleType } from '@/shared/types';
 import useOverlay from '@/hooks/useOverlay';
 import useSchedule from '@/hooks/useSchedule';
+import { useAtomValue } from 'jotai';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store_jotai';
 
 interface Props { type: ScheduleType }
 
 export default function Countdown({ type }: Props) {
-  const schedule = useSchedule(type);
+  const { today, nextIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+
   const countdown = useCountdown(type);
   const overlay = useOverlay();
 
-  const countdownName = schedule.today()[schedule.nextIndex]?.english;
+  const countdownName = today[nextIndex]?.english;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [

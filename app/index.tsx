@@ -47,7 +47,7 @@ export default function Index() {
       />
       <StatusBar barStyle="light-content" />
       <RadialGlow />
-      {/* <Navigation /> */}
+      <Navigation />
     </GestureHandlerRootView>
   );
 };

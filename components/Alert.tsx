@@ -15,6 +15,8 @@ import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
 import Store from '@/stores/store';
 import { ScheduleType, AlertType } from '@/shared/types';
 import useSchedule from '@/hooks/useSchedule';
+import { useAtomValue } from 'jotai';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store_jotai';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
@@ -33,9 +35,11 @@ interface Props {
 }
 
 export default function Alert({ index, type, isOverlay = false }: Props) {
+  const { today, nextIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+
   const overlayVisible = false;
 
-  const { today, nextIndex } = useSchedule(type);
+  // const { today, nextIndex } = useSchedule(type);
 
   // const [overlayVisible] = useAtom(Store.app.isOverlayOn);
   // const [preferences, setPreferences] = useAtom(Store.preferences);
@@ -45,7 +49,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const isNext = index === nextIndex;
-  const { passed: isPassed } = today()[index];
+  const { passed: isPassed } = today[index];
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
