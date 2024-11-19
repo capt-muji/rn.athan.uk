@@ -37,7 +37,10 @@ export interface ISingleApiResponseTransformed {
   "last third": string;
 }
 
-export type PrayerType = 'standard' | 'extra';
+export enum PrayerType {
+  Standard = 'standard',
+  Extra = 'extra'
+}
 
 export interface ITransformedPrayer {
   index: number;
@@ -125,36 +128,20 @@ export interface ScheduleStore {
   selectedIndex: number;
   measurements: Record<number, PageCoordinates>;
   nextIndexMeasurements: PageCoordinates | null;
-  getToday: () => IScheduleNow;
-  getTomorrow: () => IScheduleNow;
-  setToday: (value: IScheduleNow) => void;
-  setTomorrow: (value: IScheduleNow) => void;
-  setNextIndex: (value: number) => void;
-  setSelectedIndex: (value: number) => void;
-  setMeasurements: (value: Record<number, PageCoordinates>) => void;
-  setNextIndexMeasurements: (value: PageCoordinates | null) => void;
 }
 
-// New store interfaces
 export interface PreferencesStore {
   preferences: Preferences;
-  setPreferences: (value: Preferences) => void;
 }
 
 export interface AppStore {
   isLoading: boolean;
-  isOverlayOn: boolean;
   hasError: boolean;
-  setIsLoading: (value: boolean) => void;
-  setIsOverlayOn: (value: boolean) => void;
-  setHasError: (value: boolean) => void;
 }
 
 export interface DateStore {
   current: string;
   measurements: PageCoordinates | null;
-  setCurrent: (value: string) => void;
-  setMeasurements: (value: PageCoordinates | null) => void;
 }
 
 export interface SchedulesStore {
@@ -164,14 +151,4 @@ export interface SchedulesStore {
 
 export interface OverlayStore {
   isOn: boolean;
-  setIsOn: (value: boolean) => void;
-}
-
-// Update the final StoreState interface
-export interface StoreState {
-  app: AppStore;
-  date: DateStore;
-  preferences: PreferencesStore;
-  schedules: SchedulesStore;
-  overlay: OverlayStore;
 }
