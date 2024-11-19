@@ -10,8 +10,6 @@ export const clear = () => database.clearAll();
 
 export const saveAll = (prayers: ISingleApiResponseTransformed[]) => {
   prayers.forEach(prayer => {
-    const x = prayer;
-    console.log(prayer.date);
     database.set(prayer.date, JSON.stringify(prayer));
   });
 };

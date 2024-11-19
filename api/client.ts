@@ -42,10 +42,20 @@ const fetch = async (year?: number): Promise<IApiResponse> => {
   }
 }
 
-export const process = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
-  const data = await fetch(year);
-  const dataFiltered = prayerUtils.filterApiData(data);
-  const dataTransformed = prayerUtils.transformApiData(dataFiltered);
-
-  return dataTransformed;
+export const handle = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
+  try {
+    const data = await fetch(year);
+    console.log('API data fetched successfully');
+    
+    const dataFiltered = prayerUtils.filterApiData(data);
+    console.log('Data filtered successfully');
+    
+    const dataTransformed = prayerUtils.transformApiData(dataFiltered);
+    console.log('Data transformed successfully');
+    
+    return dataTransformed;
+  } catch (error) {
+    console.error('Error processing data:', error);
+    throw error;
+  }
 };
