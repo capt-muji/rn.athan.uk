@@ -29,12 +29,23 @@ export const getSchedule = (type: ScheduleType) =>
     ? store.get(standardScheduleAtom) 
     : store.get(extraScheduleAtom);
 
+export const getDate = () => store.get(dateAtom);
 export const getOverlay = () => store.get(overlayAtom);
 
 // Setters
 export const toggleOverlay = () => {
   const overlay = getOverlay();
   store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
+};
+
+export const setDate = () => {
+  const date = getDate();
+  const schedule = getSchedule(ScheduleType.Standard);
+  
+  const lastPrayerIndex = Object.values(schedule.today).length -1;
+  const currentDate = schedule.today[lastPrayerIndex].date;
+
+  store.set(dateAtom, { ...date, current: currentDate });
 };
 
 // set standard schedule for today and tomorrow
