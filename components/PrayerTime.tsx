@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import useSchedule from '@/hooks/useSchedule';
 import { ScheduleType } from '@/shared/types';
 import useStore from '@/stores/store';
+import { useAtomValue } from 'jotai';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store_jotai';
 
 interface Props {
   index: number;
@@ -15,15 +17,17 @@ interface Props {
   isOverlay: boolean;
 }
 export default function PrayerTime({ index, type, isOverlay = false }: Props) {
+  const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+
   const overlayVisible = false;
 
-  const { today, tomorrow, nextIndex, selectedIndex } = useSchedule(type);
+  // const { today, tomorrow, nextIndex, selectedIndex } = useSchedule(type);
 
-  const prayer = today()[index];
+  const prayer = today[index];
   const isPassed = prayer.passed;
   const isNext = index === nextIndex;
-  const todayTime = today()[index].time;
-  const tomorrowTime = tomorrow()[selectedIndex]?.time;
+  const todayTime = today[index].time;
+  const tomorrowTime = tomorrow[selectedIndex]?.time;
 
   const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
 
