@@ -1,20 +1,25 @@
 import { useEffect } from 'react';
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useAtomValue } from 'jotai';
 
+import { standardScheduleAtom } from '@/stores/store_jotai';
+import { setSchedule } from '@/stores/utils_jotai';
 import { useApp } from '@/hooks/useApp';
 import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
 import RadialGlow from '@/components/RadialGlow';
 import * as prayerUtils from '@/shared/prayer';
-import * as database from '@/stores/database';
+import * as Database from '@/stores/database';
 import * as Data from '@/mocks/data_simple';
+import * as Api from '@/api/client';
+import { ScheduleType } from '@/shared/types';
 
 export default function Index() {
-  // const { initialize, isLoading } = useApp();
+  const standardSchedule = useAtomValue(standardScheduleAtom);
 
   const [fontsLoaded] = useFonts({
     'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
@@ -22,18 +27,19 @@ export default function Index() {
   });
 
   useEffect(() => {
-    console.log('EEE1111');
-    const dataFiltered = prayerUtils.filterApiData(Data.MOCK_DATA_SIMPLE);
-    const dataTransformed = prayerUtils.transformApiData(dataFiltered);
+    const init = async () => {
+      const data = await Api.process();
+      Database.saveAll(data);
 
-    database.saveAll(dataTransformed);
-
-
-    // const init = async () => {
-    //   // await initialize();
-    // };
-    // init();
+      setSchedule(ScheduleType.Standard);
+      setSchedule(ScheduleType.Extra);
+    };
+    init();
   }, []);
+
+  useEffect(() => {
+    console.log('Schedule updated:', standardSchedule);
+  }, [standardSchedule]);
 
   if (!fontsLoaded) return <WaveIndicator color="white" />;
 
