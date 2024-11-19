@@ -2,11 +2,11 @@ import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
 import { useCountdown } from '@/hooks/useCountdown';
-import { PrayerType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import useOverlay from '@/hooks/useOverlay';
 import useSchedule from '@/hooks/useSchedule';
 
-interface Props { type: PrayerType }
+interface Props { type: ScheduleType }
 
 export default function Countdown({ type }: Props) {
   const schedule = useSchedule(type);

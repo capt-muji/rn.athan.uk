@@ -1,4 +1,4 @@
-import { getDefaultStore } from 'jotai/vanilla';
+import { atom, getDefaultStore } from 'jotai/vanilla';
 import {
   preferencesAtom,
   appAtom,
@@ -12,23 +12,49 @@ import {
   AppStore,
   DateStore,
   ScheduleStore,
-  OverlayStore
+  OverlayStore,
+  DaySelection,
+  ScheduleType
 } from '@/shared/types';
+import * as prayerUtils from '@/shared/prayer';
+import * as Data from '@/mocks/data_simple';
+import * as database from '@/stores/database';
 
 const store = getDefaultStore();
 
 // Getters
-export const getPreferences = (): Preferences => store.get(preferencesAtom);
-export const getApp = (): AppStore => store.get(appAtom);
-export const getDate = (): DateStore => store.get(dateAtom);
-export const getStandardSchedule = (): ScheduleStore => store.get(standardScheduleAtom);
-export const getExtraSchedule = (): ScheduleStore => store.get(extraScheduleAtom);
-export const getOverlay = (): OverlayStore => store.get(overlayAtom);
+export const getSchedule = (type: ScheduleType) => 
+  type === ScheduleType.Standard 
+    ? store.get(standardScheduleAtom) 
+    : store.get(extraScheduleAtom);
+
+export const getOverlay = () => store.get(overlayAtom);
 
 // Setters
-export const setPreferences = (value: Preferences) => store.set(preferencesAtom, value);
-export const setApp = (value: AppStore) => store.set(appAtom, value);
-export const setDate = (value: DateStore) => store.set(dateAtom, value);
-export const setStandardSchedule = (value: ScheduleStore) => store.set(standardScheduleAtom, value);
-export const setExtraSchedule = (value: ScheduleStore) => store.set(extraScheduleAtom, value);
-export const setOverlay = (value: OverlayStore) => store.set(overlayAtom, value);
+export const toggleOverlay = () => {
+  const overlay = getOverlay();
+  store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
+};
+
+// set standard schedule for today and tomorrow
+export const setSchedule = (type: ScheduleType) => {
+  const currentSchedule = getSchedule(type);
+  
+  const dataToday = database.getTodayOrTomorrow(DaySelection.Today);
+  const dataTomorrow = database.getTodayOrTomorrow(DaySelection.Tomorrow);
+  
+  const scheduleToday = prayerUtils.createSchedule(dataToday!, ScheduleType.Standard);
+  const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!, ScheduleType.Standard);
+  
+  const scheduleTodayValues = Object.values(scheduleToday);
+  const nextPrayer = scheduleTodayValues.find(prayer => !prayer.passed) || scheduleToday[0];
+  
+  const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
+  store.set(scheduleAtom, { 
+    ...currentSchedule, 
+    type: ScheduleType.Standard,  
+    today: scheduleToday,
+    tomorrow: scheduleTomorrow,
+    nextIndex: nextPrayer.index,
+  });
+};

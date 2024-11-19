@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { DaySelection, PrayerType } from '@/shared/types';
+import { DaySelection, ScheduleType } from '@/shared/types';
 import { getTimeDifference, getRecentDate, formatTime } from '@/shared/time';
 import useSchedule from '@/hooks/useSchedule';
 
-export const useCountdown = (type: PrayerType) => {
+export const useCountdown = (type: ScheduleType) => {
   const { today, tomorrow, nextIndex } = useSchedule(type);
   
   const [countdown, setCountdown] = useState('');

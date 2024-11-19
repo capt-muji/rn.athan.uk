@@ -9,9 +9,12 @@ import { useApp } from '@/hooks/useApp';
 import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
 import RadialGlow from '@/components/RadialGlow';
+import * as prayerUtils from '@/shared/prayer';
+import * as database from '@/stores/database';
+import * as Data from '@/mocks/data_simple';
 
 export default function Index() {
-  const { initialize, isLoading } = useApp();
+  // const { initialize, isLoading } = useApp();
 
   const [fontsLoaded] = useFonts({
     'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
@@ -19,13 +22,20 @@ export default function Index() {
   });
 
   useEffect(() => {
-    const init = async () => {
-      await initialize();
-    };
-    init();
+    console.log('EEE1111');
+    const dataFiltered = prayerUtils.filterApiData(Data.MOCK_DATA_SIMPLE);
+    const dataTransformed = prayerUtils.transformApiData(dataFiltered);
+
+    database.saveAll(dataTransformed);
+
+
+    // const init = async () => {
+    //   // await initialize();
+    // };
+    // init();
   }, []);
 
-  if (!fontsLoaded || isLoading) return <WaveIndicator color="white" />;
+  if (!fontsLoaded) return <WaveIndicator color="white" />;
 
   return (
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
@@ -37,7 +47,7 @@ export default function Index() {
       />
       <StatusBar barStyle="light-content" />
       <RadialGlow />
-      <Navigation />
+      {/* <Navigation /> */}
     </GestureHandlerRootView>
   );
 };

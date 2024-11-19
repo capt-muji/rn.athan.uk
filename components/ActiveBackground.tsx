@@ -9,7 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/shared/constants';
 import { getRecentDate } from '@/shared/time';
-import { DaySelection, PrayerType } from '@/shared/types';
+import { DaySelection, ScheduleType } from '@/shared/types';
 import useSchedule from '@/hooks/useSchedule';
 import { useApp } from '@/hooks/useApp';
 
@@ -17,7 +17,7 @@ const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };
 const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };
 
 interface Props {
-  type: PrayerType;
+  type: ScheduleType;
 }
 
 export default function ActiveBackground({ type }: Props) {
