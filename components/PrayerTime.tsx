@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    backgroundColor: 'brown',
+    // backgroundColor: 'brown',
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
