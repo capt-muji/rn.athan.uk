@@ -19,6 +19,7 @@ import {
 import * as prayerUtils from '@/shared/prayer';
 import * as Data from '@/mocks/data_simple';
 import * as database from '@/stores/database';
+import { createLondonDate } from '@/shared/time';
 
 const store = getDefaultStore();
 
@@ -40,8 +41,12 @@ export const toggleOverlay = () => {
 export const setSchedule = (type: ScheduleType) => {
   const currentSchedule = getSchedule(type);
   
-  const dataToday = database.getTodayOrTomorrow(DaySelection.Today);
-  const dataTomorrow = database.getTodayOrTomorrow(DaySelection.Tomorrow);
+  const today = createLondonDate();
+  const tomorrow = createLondonDate();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  
+  const dataToday = database.getByDate(today);
+  const dataTomorrow = database.getByDate(tomorrow);
   
   const scheduleToday = prayerUtils.createSchedule(dataToday!, ScheduleType.Standard);
   const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!, ScheduleType.Standard);
