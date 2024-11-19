@@ -59,8 +59,8 @@ export const setSchedule = (type: ScheduleType) => {
   const dataToday = database.getByDate(today);
   const dataTomorrow = database.getByDate(tomorrow);
   
-  const scheduleToday = prayerUtils.createSchedule(dataToday!, ScheduleType.Standard);
-  const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!, ScheduleType.Standard);
+  const scheduleToday = prayerUtils.createSchedule(dataToday!, type);
+  const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!, type);
   
   const scheduleTodayValues = Object.values(scheduleToday);
   const nextPrayer = scheduleTodayValues.find(prayer => !prayer.passed) || scheduleToday[0];
@@ -68,7 +68,7 @@ export const setSchedule = (type: ScheduleType) => {
   const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { 
     ...currentSchedule, 
-    type: ScheduleType.Standard,  
+    type,
     today: scheduleToday,
     tomorrow: scheduleTomorrow,
     nextIndex: nextPrayer.index,

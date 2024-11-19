@@ -21,19 +21,19 @@ interface Props {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Prayer({ index, type, isOverlay = false }: Props) {
-  const { today, nextIndex, selectedIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+  const isStandard = type === ScheduleType.Standard;
+  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+
 
   const isOverlayOn = false;
 
   // const { today, nextIndex, measurements, setMeasurements, selectedIndex } = useSchedule(type);
 
-  const prayer = today[index];
+  const prayer = schedule.today[index];
   const isPassed = prayer.passed;
-  const isNext = index === nextIndex;
+  const isNext = index === schedule.nextIndex;
 
   const viewRef = useRef<View>(null);
-
-  const isStandard = type === 'standard';
 
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const backgroundOpacity = useSharedValue(0);
@@ -44,14 +44,14 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     };
 
-    if (index === nextIndex) {
+    if (index === schedule.nextIndex) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     };
-  }, [nextIndex]);
+  }, [schedule.nextIndex]);
 
   // handle overlay animations
   useEffect(() => {
-    if (isOverlay && selectedIndex === nextIndex) {
+    if (isOverlay && schedule.selectedIndex === schedule.nextIndex) {
       backgroundOpacity.value = 1;
     } else {
       backgroundOpacity.value = 0;
