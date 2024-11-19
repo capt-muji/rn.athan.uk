@@ -1,7 +1,8 @@
-import { IApiResponse } from "@/shared/types";
+import { IApiResponse, ISingleApiResponseTransformed } from "@/shared/types";
 import { API_CONFIG } from "./config";
 import { createLondonDate } from "@/shared/time";
 import { MOCK_DATA_SIMPLE } from '@/mocks/data_simple';
+import * as prayerUtils from '@/shared/prayer';
 
 const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
   const queries = [
@@ -23,7 +24,7 @@ const parseResponse = async (response: Response): Promise<IApiResponse> => {
   return data;
 }
 
-export const fetch = async (year?: number): Promise<IApiResponse> => {
+const fetch = async (year?: number): Promise<IApiResponse> => {
   if (process.env.EXPO_PUBLIC_ENV !== 'prod') return MOCK_DATA_SIMPLE;
 
   console.log('We are in production mode');
@@ -40,3 +41,11 @@ export const fetch = async (year?: number): Promise<IApiResponse> => {
     throw error;
   }
 }
+
+export const process = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
+  const data = await fetch(year);
+  const dataFiltered = prayerUtils.filterApiData(data);
+  const dataTransformed = prayerUtils.transformApiData(dataFiltered);
+
+  return dataTransformed;
+};
