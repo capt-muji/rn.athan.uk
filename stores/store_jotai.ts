@@ -9,7 +9,6 @@ import {
   ScheduleStore,
   AppStore,
   DateStore,
-  SchedulesStore,
   OverlayStore,
   PrayerType
 } from '@/shared/types';
@@ -56,7 +55,7 @@ export const dateAtom = atom<DateStore>({
   measurements: null
 });
 
-const createScheduleAtom = (scheduleType: PrayerType) => atom({
+const createScheduleAtom = (scheduleType: PrayerType) => atom<ScheduleStore>({
   type: scheduleType,
   today: {},
   tomorrow: {},

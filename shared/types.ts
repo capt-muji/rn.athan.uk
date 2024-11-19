@@ -122,6 +122,7 @@ export type Language = 'en' | 'ar';
 
 // ScheduleStore and StoreState interfaces
 export interface ScheduleStore {
+  type: PrayerType;
   today: IScheduleNow;
   tomorrow: IScheduleNow;
   nextIndex: number;
@@ -142,11 +143,6 @@ export interface AppStore {
 export interface DateStore {
   current: string;
   measurements: PageCoordinates | null;
-}
-
-export interface SchedulesStore {
-  standard: ScheduleStore;
-  extra: ScheduleStore;
 }
 
 export interface OverlayStore {
