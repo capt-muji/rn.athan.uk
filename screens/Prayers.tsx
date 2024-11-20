@@ -9,7 +9,7 @@ import Overlay from '@/components/Overlay';
 import { SCREEN, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import RadialGlow from '@/components/RadialGlow';
 import { ScheduleType } from '@/shared/types';
-import { standardScheduleAtom, extraScheduleAtom } from '@/stores/store_jotai';
+import { standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import { useAtomValue } from 'jotai';
 
 interface Props {

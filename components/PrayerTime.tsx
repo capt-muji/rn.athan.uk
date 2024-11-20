@@ -1,15 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
-import { useAtom } from 'jotai';
 import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
-import Store from '@/stores/store';
 import { useEffect } from 'react';
-import useSchedule from '@/hooks/useSchedule';
 import { ScheduleType } from '@/shared/types';
-import useStore from '@/stores/store';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store_jotai';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 
 interface Props {
   index: number;
@@ -21,8 +17,6 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
   const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
   const overlayVisible = false;
-
-  // const { today, tomorrow, nextIndex, selectedIndex } = useSchedule(type);
 
   const prayer = today[index];
   const isPassed = prayer.passed;

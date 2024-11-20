@@ -5,7 +5,7 @@ import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { setSchedule, setDate } from '@/stores/utils_jotai';
+import { setSchedule, setDate } from '@/stores/actions';
 import { COLORS, OVERLAY } from '@/shared/constants';
 import Navigation from '@/app/Navigation';
 import RadialGlow from '@/components/RadialGlow';

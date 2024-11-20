@@ -1,33 +1,33 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { atom } from 'jotai';
+import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 import { database } from '@/stores/database';
 import { PRAYERS_ENGLISH } from '@/shared/constants';
-import { 
+import {
   AlertPreferences,
   AlertType,
   Preferences,
   ScheduleStore,
-  PreferencesStore,
   AppStore,
   DateStore,
-  SchedulesStore,
   OverlayStore,
   ScheduleType
 } from '@/shared/types';
 
-const zustandStorage = {
-  getItem: (name: string) => {
-    const value = database.getString(name);
+// Custom storage for MMKV
+const mmkvStorage = createJSONStorage(() => ({
+  getItem: (key: string) => {
+    const value = database.getString(key);
     return value ? JSON.parse(value) : null;
   },
-  setItem: (name: string, value: string) => {
-    database.set(name, value);
+  setItem: (key: string, value: unknown) => {
+    database.set(key, JSON.stringify(value));
   },
-  removeItem: (name: string) => {
-    database.delete(name);
+  removeItem: (key: string) => {
+    database.delete(key);
   },
-};
+}));
 
+// Initial states
 const createInitialAlertPreferences = (): AlertPreferences => {
   const preferences: AlertPreferences = {};
   PRAYERS_ENGLISH.forEach((_, index) => {
@@ -38,83 +38,36 @@ const createInitialAlertPreferences = (): AlertPreferences => {
 
 const initialPreferences: Preferences = {
   alert: createInitialAlertPreferences(),
-  language: 'en',
   athan: 0
 };
 
-const usePreferencesStore = create<PreferencesStore>()(
-  persist(
-    (set) => ({
-      preferences: initialPreferences,
-      setPreferences: (value) => set({ preferences: value }),
-    }),
-    {
-      name: 'preferences',
-      storage: createJSONStorage(() => zustandStorage),
-    }
-  )
-);
+// Core atoms
+export const preferencesAtom = atomWithStorage('preferences', initialPreferences, mmkvStorage);
 
-const useAppStore = create<AppStore>((set) => ({
+export const appAtom = atom<AppStore>({
   isLoading: true,
-  isOverlayOn: false,
-  hasError: false,
-  setIsLoading: (value) => set({ isLoading: value }),
-  setIsOverlayOn: (value) => set({ isOverlayOn: value }),
-  setHasError: (value) => set({ hasError: value }),
-}));
+  hasError: false
+});
 
-const useDateStore = create<DateStore>((set) => ({
+export const dateAtom = atom<DateStore>({
   current: '',
-  measurements: null,
-  setCurrent: (value: string) => set({ current: value }),
-  setMeasurements: (value) => set({ measurements: value }),
-}));
+  measurements: null
+});
 
-const createScheduleStore = (set: any, get: any, path: ScheduleType): ScheduleStore => ({
+const createScheduleAtom = (scheduleType: ScheduleType) => atom<ScheduleStore>({
+  type: scheduleType,
   today: {},
   tomorrow: {},
-  nextIndex: -1,
+  nextIndex: 0,
   selectedIndex: -1,
+  // ui states below
   measurements: {},
-  nextIndexMeasurements: null,
-  getToday: () => get()[path].today,
-  getTomorrow: () => get()[path].tomorrow,
-  setToday: (value) => set((state: SchedulesStore) => ({ 
-    [path]: { ...state[path], today: value } 
-  })),
-  setTomorrow: (value) => set((state: SchedulesStore) => ({ 
-    [path]: { ...state[path], tomorrow: value } 
-  })),
-  setNextIndex: (value) => set((state: SchedulesStore) => ({ 
-    [path]: { ...state[path], nextIndex: value } 
-  })),
-  setSelectedIndex: (value) => set((state: SchedulesStore) => ({ 
-    [path]: { ...state[path], selectedIndex: value } 
-  })),
-  setMeasurements: (value) => set((state: SchedulesStore) => ({ 
-    [path]: { ...state[path], measurements: value } 
-  })),
-  setNextIndexMeasurements: (value) => set((state: SchedulesStore) => ({ 
-    [path]: { ...state[path], nextIndexMeasurements: value } 
-  })),
+  nextIndexMeasurements: null
 });
 
-const useSchedulesStore = create<SchedulesStore>((set, get) => ({
-  standard: createScheduleStore(set, get, 'standard'),
-  extra: createScheduleStore(set, get, 'extra')
-}));
+export const standardScheduleAtom = createScheduleAtom(ScheduleType.Standard);
+export const extraScheduleAtom = createScheduleAtom(ScheduleType.Extra);
 
-const useOverlayStore = create<OverlayStore>((set) => ({
+export const overlayAtom = atom<OverlayStore>({
   isOn: false
-}));
-
-const useStore = () => ({
-  app: useAppStore(),
-  date: useDateStore(),
-  preferences: usePreferencesStore(),
-  schedules: useSchedulesStore(),
-  overlay: useOverlayStore()
 });
-
-export default useStore;
