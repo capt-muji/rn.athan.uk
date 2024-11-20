@@ -20,8 +20,10 @@ export default function ActiveBackground({ type, dimensions }: Props) {
   const totalPrayers = Object.keys(schedule.today).length;
   const prayerHeight = dimensions.height / totalPrayers;
 
+  const color = isStandard ? COLORS.standardActiveBackground : COLORS.extraActiveBackground;
   const computedStyles: ViewStyle = {
     height: dimensions.height / totalPrayers,
+    backgroundColor: color,
   };
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -35,11 +37,10 @@ const styles = StyleSheet.create({
   background: {
     position: 'absolute',
     width: '100%',
-    backgroundColor: COLORS.activeBackground,
     borderRadius: PRAYER.borderRadius,
-    shadowColor: COLORS.primaryShadow,
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.35,
-    shadowRadius: 5,
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    shadowColor: COLORS.primaryShadow
   }
 });
