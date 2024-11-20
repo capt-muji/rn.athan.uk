@@ -12,11 +12,9 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
-import Store from '@/stores/store';
 import { ScheduleType, AlertType } from '@/shared/types';
-import useSchedule from '@/hooks/useSchedule';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store_jotai';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };

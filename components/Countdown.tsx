@@ -1,20 +1,34 @@
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
-import { useCountdown } from '@/hooks/useCountdown';
-import { ScheduleType } from '@/shared/types';
-import useOverlay from '@/hooks/useOverlay';
-import useSchedule from '@/hooks/useSchedule';
+import { DaySelection, ScheduleType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store_jotai';
+import { extraScheduleAtom, standardScheduleAtom, overlayAtom } from '@/stores/store';
+import { useEffect, useState } from 'react';
+import { formatTime, getRecentDate, getTimeDifference } from '@/shared/time';
 
 interface Props { type: ScheduleType }
 
 export default function Countdown({ type }: Props) {
   const { today, nextIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+  const overlay = useAtomValue(overlayAtom);
 
-  const countdown = useCountdown(type);
-  const overlay = useOverlay();
+  const [countdown, setCountdown] = useState('');
+
+  useEffect(() => {
+    const updateCountdown = () => {
+
+      const prayer = today[nextIndex];
+
+      const diff = getTimeDifference(prayer.time, getRecentDate(DaySelection.Today));
+      setCountdown(formatTime(diff));
+    };
+
+    // Update countdown every second
+    updateCountdown();
+    const intervalId = setInterval(updateCountdown, 1000);
+    return () => clearInterval(intervalId);
+  }, [nextIndex]);
 
   const countdownName = today[nextIndex]?.english;
 

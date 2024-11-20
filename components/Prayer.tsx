@@ -7,10 +7,8 @@ import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
-import useSchedule from '@/hooks/useSchedule';
-import { useApp } from '@/hooks/useApp';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store_jotai';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 
 interface Props {
   index: number;
