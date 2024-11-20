@@ -9,6 +9,7 @@ import Animated, {
 import { COLORS, PRAYER } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
+import { SpringConfig } from 'react-native-reanimated/lib/typescript/reanimated2/animation/springUtils';
 
 interface Props {
   type: ScheduleType;
@@ -29,11 +30,7 @@ export default function ActiveBackground({ type, dimensions }: Props) {
 
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [{
-      translateY: withSpring(translateY.value, {
-        damping: 15,
-        stiffness: 90,
-        mass: 0.8
-      })
+      translateY: withSpring(translateY.value, { damping: 12, stiffness: 90, mass: 0.8 })
     }],
   }));
 
