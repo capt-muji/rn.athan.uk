@@ -18,15 +18,10 @@ export default function Countdown({ type }: Props) {
 
   useEffect(() => {
     const updateCountdown = () => {
-
       const prayer = today[nextIndex];
-
       const diff = getTimeDifference(prayer.time, getRecentDate(DaySelection.Today));
 
-      if (diff <= 1000) {
-        incrementNextIndex(type);
-      }
-
+      if (diff <= 1000) incrementNextIndex(type);
       setCountdown(formatTime(diff));
     };
 
