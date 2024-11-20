@@ -1,7 +1,7 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 import { useAtomValue } from 'jotai';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
-import { COLORS, OVERLAY, PRAYER } from '@/shared/constants';
+import { COLORS, PRAYER } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 
@@ -22,7 +22,7 @@ export default function ActiveBackground({ type, dimensions }: Props) {
 
   const computedStyles: ViewStyle = {
     height: dimensions.height / totalPrayers,
-    backgroundColor: isStandard ? COLORS.standardActiveBackground : COLORS.extraActiveBackground;,
+    backgroundColor: isStandard ? COLORS.standardActiveBackground : COLORS.extraActiveBackground
   };
 
   const animatedStyle = useAnimatedStyle(() => ({
