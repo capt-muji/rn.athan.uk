@@ -98,7 +98,6 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
       borderRadius: PRAYER.borderRadius,
       flexDirection: 'row' as const,
       alignItems: 'center' as const,
-      marginHorizontal: !isOverlay ? SCREEN.paddingHorizontal : 0,
     };
 
     return baseStyles;
