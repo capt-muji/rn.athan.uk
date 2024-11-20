@@ -9,17 +9,10 @@ import Animated, {
 import { COLORS, PRAYER } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
-import { SpringConfig } from 'react-native-reanimated/lib/typescript/reanimated2/animation/springUtils';
 
-interface Props {
-  type: ScheduleType;
-  dimensions: {
-    width: number;
-    height: number;
-  };
-}
+interface Props { type: ScheduleType };
 
-export default function ActiveBackground({ type, dimensions }: Props) {
+export default function ActiveBackground({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
