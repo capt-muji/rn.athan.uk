@@ -34,7 +34,7 @@ export const setDate = () => {
 
 // set standard schedule for today and tomorrow
 export const setSchedule = (type: ScheduleType) => {
-  const currentSchedule = getSchedule(type);
+  const schedule = getSchedule(type);
   
   const today = createLondonDate();
   const tomorrow = createLondonDate();
@@ -51,12 +51,23 @@ export const setSchedule = (type: ScheduleType) => {
   
   const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { 
-    ...currentSchedule, 
+    ...schedule, 
     type,
     today: scheduleToday,
     tomorrow: scheduleTomorrow,
     nextIndex: nextPrayer.index,
   });
+};
+
+export const incrementNextIndex = (type: ScheduleType) => {
+  const schedule = getSchedule(type);
+  const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
+  
+  const todayPrayers = Object.values(schedule.today);
+  const isLastPrayer = schedule.nextIndex === todayPrayers.length - 1;
+  const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
+  
+  store.set(scheduleAtom, { ...schedule, nextIndex });
 };
 
 // TODO: remove ui measurements from schedule

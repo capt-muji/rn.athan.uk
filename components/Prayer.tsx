@@ -93,28 +93,13 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
     };
   });
 
-  const containerStyle = useAnimatedStyle(() => {
-    const baseStyles = {
-      borderRadius: PRAYER.borderRadius,
-      flexDirection: 'row' as const,
-      alignItems: 'center' as const,
-    };
-
-    return baseStyles;
-  });
-
-  const animatedBackgroundStyle = useAnimatedStyle(() => ({
-    opacity: backgroundOpacity.value,
-  }));
-
   return (
     <AnimatedPressable
       ref={viewRef}
       onLayout={handleLayout}
-      style={containerStyle}
+      style={styles.container}
     // onPress={handlePress}
     >
-      <Animated.View style={[styles.background, animatedBackgroundStyle]} />
       <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} type={type} />
@@ -124,6 +109,11 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: PRAYER.height,
+  },
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
@@ -136,15 +126,4 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     paddingRight: 13,
   },
-  background: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    borderRadius: PRAYER.borderRadius,
-    backgroundColor: COLORS.primary,
-    shadowColor: COLORS.primaryShadow,
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.4,
-    shadowRadius: 20,
-  }
 });
