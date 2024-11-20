@@ -27,7 +27,6 @@ export default function ActiveBackground({ type, dimensions }: Props) {
   const schedule = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
 
-  const opacityShared = useSharedValue(0);
   const backgroundColorShared = useSharedValue(COLORS.activeBackground);
 
   const totalPrayers = Object.keys(schedule.today).length;
@@ -36,21 +35,10 @@ export default function ActiveBackground({ type, dimensions }: Props) {
   useEffect(() => {
     const nowDate = getRecentDate(DaySelection.Today);
     const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
-    const isActive = date.current === nowDate && !schedule.today[lastPrayerIndex]?.passed;
-    const isActiveOpacity = isActive ? 1 : 0.1;
-    const isActiveBackgroundColor = isActive ? COLORS.activeBackground : COLORS.inactiveBackground;
-
-    opacityShared.value = withTiming(isActiveOpacity, TIMING_CONFIG);
-    backgroundColorShared.value = withTiming(isActiveBackgroundColor, TIMING_CONFIG);
   }, [date, schedule.today]);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacityShared.value,
-    backgroundColor: backgroundColorShared.value,
-    position: 'absolute',
     top: schedule.nextIndex * prayerHeight,
-    left: SCREEN.paddingHorizontal,
-    width: dimensions.width - (SCREEN.paddingHorizontal * 2),
     height: prayerHeight,
     zIndex: OVERLAY.zindexes.off.activeBackground,
   }));
@@ -62,6 +50,7 @@ const styles = StyleSheet.create({
   background: {
     position: 'absolute',
     width: '100%',
+    backgroundColor: COLORS.activeBackground,
     borderRadius: PRAYER.borderRadius,
     shadowColor: COLORS.primaryShadow,
     shadowOffset: { width: 0, height: 10 },

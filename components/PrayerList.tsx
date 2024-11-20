@@ -5,6 +5,7 @@ import { ScheduleType } from '@/shared/types';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
 import { useState } from 'react';
+import { SCREEN } from '@/shared/constants';
 
 interface Props {
   type: ScheduleType;
@@ -17,6 +18,7 @@ export default function PrayerList({ type }: Props) {
 
   return (
     <View
+      style={styles.container}
       onLayout={(e) => {
         const { width, height } = e.nativeEvent.layout;
         setDimensions({ width, height });
@@ -28,4 +30,10 @@ export default function PrayerList({ type }: Props) {
       ))}
     </View>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: SCREEN.paddingHorizontal,
+  }
+});
