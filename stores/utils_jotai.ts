@@ -74,3 +74,8 @@ export const setSchedule = (type: ScheduleType) => {
     nextIndex: nextPrayer.index,
   });
 };
+
+// TODO: remove ui measurements from schedule
+export const setUIMeasurements = () => {
+
+};
