@@ -86,33 +86,33 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   //   setIconIndex(preferences.alert[index] || 0);
   // }, [preferences.alert, index]);
 
-  // const handlePress = useCallback(() => {
-  //   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  const handlePress = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-  //   const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
-  //   setIconIndex(nextIndex);
+    const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
+    setIconIndex(nextIndex);
 
-  //   setPreferences(prev => ({
-  //     ...prev,
-  //     alert: {
-  //       ...prev.alert,
-  //       [index]: ALERT_CONFIGS[nextIndex].type
-  //     }
-  //   }));
+    // setPreferences(prev => ({
+    //   ...prev,
+    //   alert: {
+    //     ...prev.alert,
+    //     [index]: ALERT_CONFIGS[nextIndex].type
+    //   }
+    // }));
 
-  //   timeoutRef.current && clearTimeout(timeoutRef.current);
+    timeoutRef.current && clearTimeout(timeoutRef.current);
 
-  //   bounceAnim.value = 0;
-  //   fadeAnim.value = withTiming(1, TIMING_CONFIG);
-  //   bounceAnim.value = withSpring(1, SPRING_CONFIG);
+    bounceAnim.value = 0;
+    fadeAnim.value = withTiming(1, TIMING_CONFIG);
+    bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
-  //   setIsPopupActive(true);
-  //   timeoutRef.current = setTimeout(() => {
-  //     fadeAnim.value = withTiming(0, TIMING_CONFIG);
-  //     bounceAnim.value = withSpring(0, SPRING_CONFIG);
-  //     setIsPopupActive(false);
-  //   }, 2000);
-  // }, [iconIndex, index]);
+    setIsPopupActive(true);
+    timeoutRef.current = setTimeout(() => {
+      fadeAnim.value = withTiming(0, TIMING_CONFIG);
+      bounceAnim.value = withSpring(0, SPRING_CONFIG);
+      setIsPopupActive(false);
+    }, 2000);
+  }, [iconIndex, index]);
 
   const alertAnimatedStyle = useAnimatedStyle(() => {
     if (isOverlay) return {
@@ -147,7 +147,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   return (
     <View style={styles.container}>
       <Pressable
-        // onPress={handlePress}
+        onPress={handlePress}
         onPressIn={() => pressAnim.value = withSpring(0.9, SPRING_CONFIG)}
         onPressOut={() => pressAnim.value = withSpring(1, SPRING_CONFIG)}
         style={styles.iconContainer}
