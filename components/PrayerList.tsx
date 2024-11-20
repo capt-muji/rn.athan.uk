@@ -11,26 +11,21 @@ interface Props {
 }
 
 export default function PrayerList({ type }: Props) {
-  const [listHeight, setListHeight] = useState(0);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
   return (
     <View
-      style={styles.container}
-      onLayout={(e) => setListHeight(e.nativeEvent.layout.height)}
+      onLayout={(e) => {
+        const { width, height } = e.nativeEvent.layout;
+        setDimensions({ width, height });
+      }}
     >
-      <ActiveBackground type={type} listHeight={listHeight} />
+      <ActiveBackground type={type} dimensions={dimensions} />
       {Object.keys(schedule.today).map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    width: '100%',
-  }
-});
+};
