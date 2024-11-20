@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { useAtom, useAtomValue } from 'jotai';
 import Animated, {
   useAnimatedStyle,
@@ -7,7 +7,7 @@ import Animated, {
   withTiming,
   useSharedValue,
 } from 'react-native-reanimated';
-import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/shared/constants';
+import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER, SCREEN } from '@/shared/constants';
 import { getRecentDate } from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
 import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
@@ -17,46 +17,43 @@ const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };
 
 interface Props {
   type: ScheduleType;
+  listHeight: number;
 }
 
-export default function ActiveBackground({ type }: Props) {
-  const { today, nextIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+export default function ActiveBackground({ type, listHeight }: Props) {
+  const schedule = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
-
-  const { measurements } = useSchedule(type);
 
   const opacityShared = useSharedValue(0);
   const backgroundColorShared = useSharedValue(COLORS.activeBackground);
 
-  useEffect(() => {
-    if (!measurements[nextIndex]) return;
+  // Calculate dimensions
+  const windowHeight = Dimensions.get('window').height;
+  const windowWidth = Dimensions.get('window').width;
+  const totalPrayers = Object.keys(schedule.today).length;
+  const prayerHeight = listHeight / totalPrayers;
 
+  useEffect(() => {
     const nowDate = getRecentDate(DaySelection.Today);
     const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
-    const isActive = date.current === nowDate && !today[lastPrayerIndex]?.passed;
+    const isActive = date.current === nowDate && !schedule.today[lastPrayerIndex]?.passed;
     const isActiveOpacity = isActive ? 1 : 0.1;
     const isActiveBackgroundColor = isActive ? COLORS.activeBackground : COLORS.inactiveBackground;
 
     opacityShared.value = withTiming(isActiveOpacity, TIMING_CONFIG);
     backgroundColorShared.value = withTiming(isActiveBackgroundColor, TIMING_CONFIG);
-  }, [measurements, nextIndex, date, today]);
+  }, [date, schedule.today]);
 
-  const animatedStyle = useAnimatedStyle(() => {
-    if (!measurements[nextIndex]) return { opacity: opacityShared.value };
-
-    const activePrayer = measurements[nextIndex];
-
-    return {
-      opacity: opacityShared.value,
-      backgroundColor: backgroundColorShared.value,
-      position: 'absolute',
-      top: withSpring(activePrayer.pageY, SPRING_CONFIG),
-      left: activePrayer.pageX,
-      width: activePrayer.width,
-      height: activePrayer.height,
-      zIndex: OVERLAY.zindexes.off.activeBackground,
-    };
-  });
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: opacityShared.value,
+    backgroundColor: backgroundColorShared.value,
+    position: 'absolute',
+    top: schedule.nextIndex * prayerHeight,
+    left: SCREEN.paddingHorizontal,
+    width: windowWidth - (SCREEN.paddingHorizontal * 2),
+    height: prayerHeight,
+    zIndex: OVERLAY.zindexes.off.activeBackground,
+  }));
 
   return <Animated.View style={[styles.background, animatedStyle]} />;
 }
@@ -64,6 +61,7 @@ export default function ActiveBackground({ type }: Props) {
 const styles = StyleSheet.create({
   background: {
     position: 'absolute',
+    width: '100%',
     borderRadius: PRAYER.borderRadius,
     shadowColor: COLORS.primaryShadow,
     shadowOffset: { width: 0, height: 10 },
