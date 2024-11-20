@@ -22,13 +22,10 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
-
   const isOverlayOn = false;
 
-  // const { today, nextIndex, measurements, setMeasurements, selectedIndex } = useSchedule(type);
-
   const prayer = schedule.today[index];
-  const isPassed = prayer.passed;
+  const isPassed = index < schedule.nextIndex
   const isNext = index === schedule.nextIndex;
 
   const viewRef = useRef<View>(null);
@@ -42,7 +39,7 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
     };
 
-    if (index === schedule.nextIndex) {
+    if (isNext) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
     };
   }, [schedule.nextIndex]);

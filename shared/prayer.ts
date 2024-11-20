@@ -67,9 +67,7 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
       date: prayers.date,
       english: name,
       arabic: namesArabic[index],
-      time: prayerTime,
-      passed: isTimePassed(prayerTime),
-      isNext: false,
+      time: prayerTime
     };
   });
 

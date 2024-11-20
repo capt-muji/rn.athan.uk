@@ -48,8 +48,6 @@ export interface ITransformedPrayer {
   english: string;
   arabic: string;
   time: string;
-  passed: boolean;
-  isNext: boolean;
   type: ScheduleType;
 }
 

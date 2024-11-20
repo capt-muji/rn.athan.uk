@@ -3,7 +3,7 @@ import { dateAtom, standardScheduleAtom, extraScheduleAtom, overlayAtom } from '
 import { ScheduleType } from '@/shared/types';
 import * as prayerUtils from '@/shared/prayer';
 import * as database from '@/stores/database';
-import { createLondonDate } from '@/shared/time';
+import { createLondonDate, isTimePassed } from '@/shared/time';
 
 const store = getDefaultStore();
 
@@ -47,7 +47,7 @@ export const setSchedule = (type: ScheduleType) => {
   const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!, type);
   
   const scheduleTodayValues = Object.values(scheduleToday);
-  const nextPrayer = scheduleTodayValues.find(prayer => !prayer.passed) || scheduleToday[0];
+  const nextPrayer = scheduleTodayValues.find(prayer => !isTimePassed(prayer.time)) || scheduleToday[0];
   
   const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { 
@@ -67,14 +67,5 @@ export const incrementNextIndex = (type: ScheduleType) => {
   const isLastPrayer = schedule.nextIndex === todayPrayers.length - 1;
   const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
   
-  store.set(scheduleAtom, { ...schedule, nextIndex });
-};
-
-// TODO: remove ui measurements from schedule
-export const setUIMeasurementsAllPrayers = () => {
-
-};
-
-export const setUIMeasurementsNextPrayer = () => {
-
+  store.set(scheduleAtom, {  ...schedule, nextIndex });
 };
