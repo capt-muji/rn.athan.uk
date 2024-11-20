@@ -20,10 +20,9 @@ export default function ActiveBackground({ type, dimensions }: Props) {
   const totalPrayers = Object.keys(schedule.today).length;
   const prayerHeight = dimensions.height / totalPrayers;
 
-  const color = isStandard ? COLORS.standardActiveBackground : COLORS.extraActiveBackground;
   const computedStyles: ViewStyle = {
     height: dimensions.height / totalPrayers,
-    backgroundColor: color,
+    backgroundColor: isStandard ? COLORS.standardActiveBackground : COLORS.extraActiveBackground;,
   };
 
   const animatedStyle = useAnimatedStyle(() => ({
