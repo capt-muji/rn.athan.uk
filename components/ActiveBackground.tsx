@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import { useAtomValue } from 'jotai';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { COLORS, OVERLAY, PRAYER } from '@/shared/constants';
@@ -20,13 +20,15 @@ export default function ActiveBackground({ type, dimensions }: Props) {
   const totalPrayers = Object.keys(schedule.today).length;
   const prayerHeight = dimensions.height / totalPrayers;
 
+  const computedStyles: ViewStyle = {
+    height: dimensions.height / totalPrayers,
+  };
+
   const animatedStyle = useAnimatedStyle(() => ({
-    top: schedule.nextIndex * prayerHeight,
-    height: prayerHeight,
-    zIndex: OVERLAY.zindexes.off.activeBackground,
+    transform: [{ translateY: schedule.nextIndex * prayerHeight }],
   }));
 
-  return <Animated.View style={[styles.background, animatedStyle]} />;
+  return <Animated.View style={[styles.background, computedStyles, animatedStyle]} />;
 }
 
 const styles = StyleSheet.create({
