@@ -11,15 +11,13 @@ import RadialGlow from '@/components/RadialGlow';
 import { ScheduleType } from '@/shared/types';
 import { standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import { useAtomValue } from 'jotai';
+import PrayerList from '@/components/PrayerList';
 
 interface Props {
   type: ScheduleType;
 }
 
 export default function Prayers({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
-
   const insets = useSafeAreaInsets();
 
   return (
@@ -27,9 +25,7 @@ export default function Prayers({ type }: Props) {
       <Countdown type={type} />
       <DateDisplay />
       {/* <ActiveBackground type={type} /> */}
-      {Object.keys(schedule.today).map((_, index) => (
-        <Prayer key={index} index={index} type={type} />
-      ))}
+      <PrayerList type={type} />
     </View>
   );
 }
