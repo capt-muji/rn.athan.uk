@@ -26,11 +26,11 @@ export default function ActiveBackground({ type, dimensions }: Props) {
     shadowColor: isStandard ? '#072670' : '#020005'
   };
 
-  const animatedStyle = useAnimatedStyle(() => ({
+  const animatedStyles = useAnimatedStyle(() => ({
     transform: [{ translateY: schedule.nextIndex * prayerHeight }],
   }));
 
-  return <Animated.View style={[styles.background, computedStyles, animatedStyle]} />;
+  return <Animated.View style={[styles.background, computedStyles, animatedStyles]} />;
 }
 
 const styles = StyleSheet.create({
