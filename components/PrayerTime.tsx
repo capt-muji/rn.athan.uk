@@ -17,7 +17,8 @@ interface Props {
   isOverlay: boolean;
 }
 export default function PrayerTime({ index, type, isOverlay = false }: Props) {
-  const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+  const isStandard = type === ScheduleType.Standard;
+  const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
   const overlayVisible = false;
 
@@ -73,7 +74,7 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
   }, [overlayVisible]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width: isStandard ? 90 : 75 }]}>
       {/* Main text (non-overlay) */}
       <Animated.Text style={[
         styles.text,
@@ -112,7 +113,6 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    width: 75,
     justifyContent: 'center',
   },
   text: {
