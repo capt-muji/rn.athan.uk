@@ -22,8 +22,6 @@ export default function ActiveBackground({ type, dimensions }: Props) {
 
   const computedStyles: ViewStyle = {
     height: dimensions.height / totalPrayers,
-    backgroundColor: isStandard ? '#005dd5' : '#00031d',
-    shadowColor: isStandard ? '#072670' : '#020005'
   };
 
   const animatedStyles = useAnimatedStyle(() => ({
@@ -40,6 +38,8 @@ const styles = StyleSheet.create({
     borderRadius: PRAYER.borderRadius,
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.5,
-    shadowRadius: 10
+    shadowRadius: 10,
+    backgroundColor: COLORS.primary,
+    shadowColor: COLORS.primaryShadow
   }
 });

@@ -21,9 +21,7 @@ export const SCREEN = {
 
 export const COLORS = {
   primary: '#005dd5',
-  standardActiveBackground: '#005dd5',
-  extraActiveBackground: '#a800bf',
-  primaryShadow: '#1e114e',
+  primaryShadow: '#072670',
   textPrimary: '#ffffff',
   textSecondary: '#8BA3C7',
   textTransparent: '#aab8cd',
