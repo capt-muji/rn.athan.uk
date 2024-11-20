@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import Animated, {
   useAnimatedStyle,
   withSpring,
@@ -10,8 +10,7 @@ import Animated, {
 import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER } from '@/shared/constants';
 import { getRecentDate } from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
-import useSchedule from '@/hooks/useSchedule';
-import { useApp } from '@/hooks/useApp';
+import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 
 const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };
 const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };
@@ -21,8 +20,10 @@ interface Props {
 }
 
 export default function ActiveBackground({ type }: Props) {
-  const { date } = useApp();
-  const { today, nextIndex, measurements } = useSchedule(type);
+  const { today, nextIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+  const date = useAtomValue(dateAtom);
+
+  const { measurements } = useSchedule(type);
 
   const opacityShared = useSharedValue(0);
   const backgroundColorShared = useSharedValue(COLORS.activeBackground);
@@ -32,7 +33,7 @@ export default function ActiveBackground({ type }: Props) {
 
     const nowDate = getRecentDate(DaySelection.Today);
     const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
-    const isActive = date.current === nowDate && !today()[lastPrayerIndex]?.passed;
+    const isActive = date.current === nowDate && !today[lastPrayerIndex]?.passed;
     const isActiveOpacity = isActive ? 1 : 0.1;
     const isActiveBackgroundColor = isActive ? COLORS.activeBackground : COLORS.inactiveBackground;
 
