@@ -21,9 +21,11 @@ export const SCREEN = {
 
 export const COLORS = {
   primary: '#005dd5',
-  activeBackground: '#005dd5',
-  inactiveBackground: '#8caeff', // make full color then add opacity
-  primaryShadow: '#04439e',
+  standardActiveBackground: '#005dd5',
+  extraActiveBackground: '#a800bf',
+  // inactiveBackground: '#8caeff', // make full color then add opacity
+  // primaryShadow: '#04439e',
+  primaryShadow: '#1e114e',
   textPrimary: '#ffffff',
   textSecondary: '#8BA3C7',
   textTransparent: '#aab8cd',
@@ -71,5 +73,5 @@ export const PRAYER = {
     shadowRadius: 3.84,
     elevation: 5,
   },
-  borderRadius: 8,
+  borderRadius: 7,
 };
