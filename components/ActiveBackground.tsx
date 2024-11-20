@@ -17,21 +17,21 @@ const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };
 
 interface Props {
   type: ScheduleType;
-  listHeight: number;
+  dimensions: {
+    width: number;
+    height: number;
+  };
 }
 
-export default function ActiveBackground({ type, listHeight }: Props) {
+export default function ActiveBackground({ type, dimensions }: Props) {
   const schedule = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
 
   const opacityShared = useSharedValue(0);
   const backgroundColorShared = useSharedValue(COLORS.activeBackground);
 
-  // Calculate dimensions
-  const windowHeight = Dimensions.get('window').height;
-  const windowWidth = Dimensions.get('window').width;
   const totalPrayers = Object.keys(schedule.today).length;
-  const prayerHeight = listHeight / totalPrayers;
+  const prayerHeight = dimensions.height / totalPrayers;
 
   useEffect(() => {
     const nowDate = getRecentDate(DaySelection.Today);
@@ -50,7 +50,7 @@ export default function ActiveBackground({ type, listHeight }: Props) {
     position: 'absolute',
     top: schedule.nextIndex * prayerHeight,
     left: SCREEN.paddingHorizontal,
-    width: windowWidth - (SCREEN.paddingHorizontal * 2),
+    width: dimensions.width - (SCREEN.paddingHorizontal * 2),
     height: prayerHeight,
     zIndex: OVERLAY.zindexes.off.activeBackground,
   }));
