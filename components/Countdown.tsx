@@ -21,7 +21,7 @@ export default function Countdown({ type }: Props) {
       const prayer = today[nextIndex];
       const diff = getTimeDifference(prayer.time, getRecentDate(DaySelection.Today));
 
-      if (diff <= 1000) incrementNextIndex(type);
+      if (diff <= 0) incrementNextIndex(type);
       setCountdown(formatTime(diff));
     };
 
