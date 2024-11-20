@@ -1,23 +1,7 @@
-import { atom, getDefaultStore } from 'jotai/vanilla';
-import {
-  preferencesAtom,
-  appAtom,
-  dateAtom,
-  standardScheduleAtom,
-  extraScheduleAtom,
-  overlayAtom
-} from './store_jotai';
-import {
-  Preferences,
-  AppStore,
-  DateStore,
-  ScheduleStore,
-  OverlayStore,
-  DaySelection,
-  ScheduleType
-} from '@/shared/types';
+import { getDefaultStore } from 'jotai/vanilla';
+import { dateAtom, standardScheduleAtom, extraScheduleAtom, overlayAtom } from './store';
+import { ScheduleType } from '@/shared/types';
 import * as prayerUtils from '@/shared/prayer';
-import * as Data from '@/mocks/data_simple';
 import * as database from '@/stores/database';
 import { createLondonDate } from '@/shared/time';
 
@@ -76,6 +60,10 @@ export const setSchedule = (type: ScheduleType) => {
 };
 
 // TODO: remove ui measurements from schedule
-export const setUIMeasurements = () => {
+export const setUIMeasurementsAllPrayers = () => {
+
+};
+
+export const setUIMeasurementsNextPrayer = () => {
 
 };
