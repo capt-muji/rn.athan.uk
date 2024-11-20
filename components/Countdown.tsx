@@ -6,6 +6,7 @@ import { useAtomValue } from 'jotai';
 import { extraScheduleAtom, standardScheduleAtom, overlayAtom } from '@/stores/store';
 import { useEffect, useState } from 'react';
 import { formatTime, getRecentDate, getTimeDifference } from '@/shared/time';
+import { incrementNextIndex } from '@/stores/actions';
 
 interface Props { type: ScheduleType }
 
@@ -21,6 +22,11 @@ export default function Countdown({ type }: Props) {
       const prayer = today[nextIndex];
 
       const diff = getTimeDifference(prayer.time, getRecentDate(DaySelection.Today));
+
+      if (diff <= 1000) {
+        incrementNextIndex(type);
+      }
+
       setCountdown(formatTime(diff));
     };
 
