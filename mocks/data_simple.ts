@@ -19,7 +19,7 @@ const dayAfterTomorrow = formatDate(addDays(now, 2));
 export const MOCK_DATA_SIMPLE: IApiResponse = {
   city: "london",
   times: {
-    [dayBeforeYesterday]: {  // Nov 14
+    [dayBeforeYesterday]: {
       date: dayBeforeYesterday,
       fajr: "05:34",
       sunrise: "07:15",
@@ -34,7 +34,7 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       magrib_jamat: "00:00",
       isha_jamat: "00:00",
     },
-    [yesterday]: {  // Nov 15
+    [yesterday]: {
       date: yesterday,
       fajr: "05:35",
       sunrise: "07:16",
@@ -49,14 +49,14 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       magrib_jamat: "00:00",
       isha_jamat: "00:00",
     },
-    [today]: {  // Nov 16
+    [today]: {
       date: today,
       fajr: "01:36",
       sunrise: "07:18",
-      dhuhr: addMinutes(1),
-      asr: addMinutes(2),
-      magrib: addMinutes(3),
-      isha: addMinutes(4),
+      dhuhr: "11:50",
+      asr: "13:49",
+      magrib: "22:30",
+      isha: "23:47",
       fajr_jamat: "00:00",
       dhuhr_jamat: "00:00",
       asr_2: "00:00",
@@ -64,7 +64,7 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       magrib_jamat: "00:00",
       isha_jamat: "00:00",
     },
-    [tomorrow]: {  // Nov 17
+    [tomorrow]: {
       date: tomorrow,
       fajr: "01:38",
       sunrise: "07:20",
@@ -79,7 +79,7 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       magrib_jamat: "00:00",
       isha_jamat: "00:00",
     },
-    [dayAfterTomorrow]: {  // Nov 18
+    [dayAfterTomorrow]: {
       date: dayAfterTomorrow,
       fajr: "05:39",
       sunrise: "07:22",

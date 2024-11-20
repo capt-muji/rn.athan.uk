@@ -3,7 +3,7 @@ import { dateAtom, standardScheduleAtom, extraScheduleAtom, overlayAtom } from '
 import { ScheduleType } from '@/shared/types';
 import * as prayerUtils from '@/shared/prayer';
 import * as database from '@/stores/database';
-import { createLondonDate, isTimePassed } from '@/shared/time';
+import { createLondonDate, isLastThirdPassed, isTimePassed } from '@/shared/time';
 
 const store = getDefaultStore();
 
@@ -47,7 +47,22 @@ export const setSchedule = (type: ScheduleType) => {
   const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!, type);
   
   const scheduleTodayValues = Object.values(scheduleToday);
-  const nextPrayer = scheduleTodayValues.find(prayer => !isTimePassed(prayer.time)) || scheduleToday[0];
+  let nextPrayer;
+
+  if (type === ScheduleType.Extra) {
+    const lastIndex = scheduleTodayValues.length - 1;
+    const secondLastIndex = lastIndex - 1;
+    const isSecondLastPassed = isTimePassed(scheduleTodayValues[secondLastIndex].time);
+
+    // If second last prayer has passed, next prayer should be last third
+    if (isSecondLastPassed) {
+      nextPrayer = scheduleTodayValues[lastIndex];
+    } else {
+      nextPrayer = scheduleTodayValues.find(prayer => !isTimePassed(prayer.time)) || scheduleToday[0];
+    }
+  } else {
+    nextPrayer = scheduleTodayValues.find(prayer => !isTimePassed(prayer.time)) || scheduleToday[0];
+  }
   
   const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { 
