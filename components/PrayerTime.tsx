@@ -18,8 +18,7 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
 
   const overlayVisible = false;
 
-  const prayer = today[index];
-  const isPassed = prayer.passed;
+  const isPassed = index < nextIndex
   const isNext = index === nextIndex;
   const todayTime = today[index].time;
   const tomorrowTime = tomorrow[selectedIndex]?.time;

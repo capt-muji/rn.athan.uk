@@ -33,11 +33,10 @@ interface Props {
 }
 
 export default function Alert({ index, type, isOverlay = false }: Props) {
-  const { today, nextIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+  const isStandard = type === ScheduleType.Standard;
+  const { nextIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
   const overlayVisible = false;
-
-  // const { today, nextIndex } = useSchedule(type);
 
   // const [overlayVisible] = useAtom(Store.app.isOverlayOn);
   // const [preferences, setPreferences] = useAtom(Store.preferences);
@@ -46,8 +45,8 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
+  const isPassed = index < nextIndex
   const isNext = index === nextIndex;
-  const { passed: isPassed } = today[index];
 
   const fadeAnim = useSharedValue(0);
   const bounceAnim = useSharedValue(0);
