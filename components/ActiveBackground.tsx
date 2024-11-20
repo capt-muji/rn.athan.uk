@@ -1,19 +1,9 @@
-import { useEffect, useState } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
-import { useAtom, useAtomValue } from 'jotai';
-import Animated, {
-  useAnimatedStyle,
-  withSpring,
-  withTiming,
-  useSharedValue,
-} from 'react-native-reanimated';
-import { ANIMATION, COLORS, PRAYERS_ENGLISH, OVERLAY, PRAYER, SCREEN } from '@/shared/constants';
-import { getRecentDate } from '@/shared/time';
-import { DaySelection, ScheduleType } from '@/shared/types';
-import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
-
-const TIMING_CONFIG = { duration: ANIMATION.overlayDelay };
-const SPRING_CONFIG = { damping: 15, stiffness: 90, mass: 0.8 };
+import { StyleSheet } from 'react-native';
+import { useAtomValue } from 'jotai';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import { COLORS, OVERLAY, PRAYER } from '@/shared/constants';
+import { ScheduleType } from '@/shared/types';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 
 interface Props {
   type: ScheduleType;
@@ -25,17 +15,9 @@ interface Props {
 
 export default function ActiveBackground({ type, dimensions }: Props) {
   const schedule = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
-  const date = useAtomValue(dateAtom);
-
-  const backgroundColorShared = useSharedValue(COLORS.activeBackground);
 
   const totalPrayers = Object.keys(schedule.today).length;
   const prayerHeight = dimensions.height / totalPrayers;
-
-  useEffect(() => {
-    const nowDate = getRecentDate(DaySelection.Today);
-    const lastPrayerIndex = PRAYERS_ENGLISH.length - 1;
-  }, [date, schedule.today]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     top: schedule.nextIndex * prayerHeight,
