@@ -14,7 +14,8 @@ interface Props {
 }
 
 export default function ActiveBackground({ type, dimensions }: Props) {
-  const schedule = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+  const isStandard = type === ScheduleType.Standard;
+  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
   const totalPrayers = Object.keys(schedule.today).length;
   const prayerHeight = dimensions.height / totalPrayers;
