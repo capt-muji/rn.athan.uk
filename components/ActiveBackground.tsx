@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import { StyleSheet, ViewStyle } from 'react-native';
 import { useAtomValue } from 'jotai';
-import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring
+} from 'react-native-reanimated';
 import { COLORS, PRAYER } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
@@ -16,27 +21,32 @@ interface Props {
 export default function ActiveBackground({ type, dimensions }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
 
-  const totalPrayers = Object.keys(schedule.today).length;
-  const prayerHeight = dimensions.height / totalPrayers;
-
-  const computedStyles: ViewStyle = {
-    height: dimensions.height / totalPrayers,
-  };
+  useEffect(() => {
+    translateY.value = schedule.nextIndex * PRAYER.height;
+  }, [schedule.nextIndex]);
 
   const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateY: schedule.nextIndex * prayerHeight }],
+    transform: [{
+      translateY: withSpring(translateY.value, {
+        damping: 15,
+        stiffness: 90,
+        mass: 0.8
+      })
+    }],
   }));
 
-  return <Animated.View style={[styles.background, computedStyles, animatedStyles]} />;
+  return <Animated.View style={[styles.background, animatedStyles]} />;
 }
 
 const styles = StyleSheet.create({
   background: {
     position: 'absolute',
     width: '100%',
-    borderRadius: PRAYER.borderRadius,
-    shadowOffset: { width: 0, height: 10 },
+    height: PRAYER.height,
+    borderRadius: 8,
+    shadowOffset: { width: 1, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
     backgroundColor: COLORS.primary,

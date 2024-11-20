@@ -58,16 +58,5 @@ export const OVERLAY = {
 };
 
 export const PRAYER = {
-  height: 60,
-  shadow: {
-    shadowColor: '#0a296a',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  borderRadius: 7,
+  height: 60
 };
