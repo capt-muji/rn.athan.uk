@@ -1,8 +1,8 @@
 export const PRAYERS_ENGLISH = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Magrib", "Isha"];
-export const PRAYERS_ARABIC = ["العشاء", "المغرب", "العصر", "الظهر", "الشروق", "الفجر"].reverse();
+export const PRAYERS_ARABIC = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
 
-export const EXTRAS_ENGLISH = ["Last Third", "Duha"];
-export const EXTRAS_ARABIC = ["الضحى", "آخر ثلث"].reverse();
+export const EXTRAS_ENGLISH = ["Duha", "Last Third"];
+export const EXTRAS_ARABIC = ["الضحى", "آخر ثلث"];
 
 export const TEXT = {
   famiy: {
