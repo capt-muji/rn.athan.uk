@@ -10,7 +10,6 @@ import {
   AppStore,
   DateStore,
   OverlayStore,
-  ScheduleType
 } from '@/shared/types';
 
 // Custom storage for MMKV
@@ -54,19 +53,12 @@ export const dateAtom = atom<DateStore>({
   measurements: null
 });
 
-const createScheduleAtom = (scheduleType: ScheduleType) => atom<ScheduleStore>({
-  type: scheduleType,
+export const scheduleAtom = atom<ScheduleStore>({
   today: {},
   tomorrow: {},
   nextIndex: 0,
   selectedIndex: -1,
-  // ui states below
-  measurements: {},
-  nextIndexMeasurements: null
 });
-
-export const standardScheduleAtom = createScheduleAtom(ScheduleType.Standard);
-export const extraScheduleAtom = createScheduleAtom(ScheduleType.Extra);
 
 export const overlayAtom = atom<OverlayStore>({
   isOn: false

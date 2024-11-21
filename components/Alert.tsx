@@ -12,9 +12,9 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
-import { ScheduleType, AlertType } from '@/shared/types';
+import { AlertType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
+import { scheduleAtom } from '@/stores/store';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
@@ -26,15 +26,10 @@ const ALERT_CONFIGS = [
   { icon: PiSpeakerSimpleHigh, label: "Sound", type: AlertType.Sound }
 ] as const;
 
-interface Props {
-  index: number;
-  type: ScheduleType;
-  isOverlay?: boolean;
-}
+interface Props { index: number; isOverlay?: boolean; }
 
-export default function Alert({ index, type, isOverlay = false }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-  const { nextIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+export default function Alert({ index, isOverlay = false }: Props) {
+  const { today, nextIndex } = useAtomValue(scheduleAtom);
 
   const overlayVisible = false;
 
@@ -140,8 +135,14 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   }, []);
 
   const { icon: IconComponent } = ALERT_CONFIGS[iconIndex];
-  const iconColor = isOverlay ? 'white'
+  let iconColor = isOverlay ? 'white'
     : (isPopupActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent);
+
+
+  if (today[index].index === 7) {
+    iconColor = 'white'
+    textOpacity.value = 1;
+  }
 
   return (
     <View style={styles.container}>
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   iconContainer: {
-    paddingVertical: 20,
+    paddingVertical: 15,
     paddingRight: 20,
     paddingLeft: 13,
   },
@@ -184,18 +185,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 3.84,
+    // shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 2 },
+    // shadowOpacity: 0.5,
+    // shadowRadius: 3.84,
     backgroundColor: 'black',
   },
   popupOverlay: {
     backgroundColor: COLORS.primary,
-    shadowColor: COLORS.primaryShadow,
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.35,
-    shadowRadius: 10,
+    // shadowColor: COLORS.primaryShadow,
+    // shadowOffset: { width: 0, height: 5 },
+    // shadowOpacity: 0.35,
+    // shadowRadius: 10,
   },
   popupIcon: {
     marginRight: 15

@@ -3,18 +3,13 @@ import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
 import { useEffect } from 'react';
-import { ScheduleType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
+import { scheduleAtom } from '@/stores/store';
 
-interface Props {
-  index: number;
-  type: ScheduleType;
-  isOverlay: boolean;
-}
-export default function PrayerTime({ index, type, isOverlay = false }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-  const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+interface Props { index: number; isOverlay: boolean; }
+
+export default function PrayerTime({ index, isOverlay = false }: Props) {
+  const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(scheduleAtom);
 
   const overlayVisible = false;
 
@@ -66,16 +61,20 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
 
   }, [overlayVisible]);
 
+  const computedStyles = {
+    color: isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent,
+    opacity: originalOpacity,
+  };
+
+  if (today[index].english.toLowerCase() === 'last third') {
+    originalOpacity.value = 1;
+    computedStyles.color = 'white';
+  }
+
   return (
-    <View style={[styles.container, { width: isStandard ? 90 : 75 }]}>
+    <View style={[styles.container, { width: 95 }]}>
       {/* Main text (non-overlay) */}
-      <Animated.Text style={[
-        styles.text,
-        {
-          color: isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent,
-          opacity: originalOpacity,
-        }
-      ]}>
+      <Animated.Text style={[styles.text, computedStyles]}>
         {todayTime}
       </Animated.Text>
 

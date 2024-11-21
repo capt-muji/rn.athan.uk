@@ -1,20 +1,15 @@
 import { getDefaultStore } from 'jotai/vanilla';
-import { dateAtom, standardScheduleAtom, extraScheduleAtom, overlayAtom } from './store';
-import { ScheduleType } from '@/shared/types';
+import { dateAtom, scheduleAtom, overlayAtom } from './store';
 import * as prayerUtils from '@/shared/prayer';
 import * as database from '@/stores/database';
-import { createLondonDate, isLastThirdPassed, isTimePassed } from '@/shared/time';
+import { createLondonDate, isTimePassed } from '@/shared/time';
 
 const store = getDefaultStore();
 
 // Getters
-export const getSchedule = (type: ScheduleType) => 
-  type === ScheduleType.Standard 
-    ? store.get(standardScheduleAtom) 
-    : store.get(extraScheduleAtom);
-
 export const getDate = () => store.get(dateAtom);
 export const getOverlay = () => store.get(overlayAtom);
+export const getSchedule = () => store.get(scheduleAtom);
 
 // Setters
 export const toggleOverlay = () => {
@@ -24,7 +19,7 @@ export const toggleOverlay = () => {
 
 export const setDate = () => {
   const date = getDate();
-  const schedule = getSchedule(ScheduleType.Standard);
+  const schedule = getSchedule();
   
   const lastPrayerIndex = Object.values(schedule.today).length -1;
   const currentDate = schedule.today[lastPrayerIndex].date;
@@ -33,8 +28,8 @@ export const setDate = () => {
 };
 
 // set standard schedule for today and tomorrow
-export const setSchedule = (type: ScheduleType) => {
-  const schedule = getSchedule(type);
+export const setSchedule = () => {
+  const schedule = getSchedule();
   
   const today = createLondonDate();
   const tomorrow = createLondonDate();
@@ -43,40 +38,24 @@ export const setSchedule = (type: ScheduleType) => {
   const dataToday = database.getByDate(today);
   const dataTomorrow = database.getByDate(tomorrow);
   
-  const scheduleToday = prayerUtils.createSchedule(dataToday!, type);
-  const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!, type);
+  const scheduleToday = prayerUtils.createSchedule(dataToday!);
+  const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!);
   
   const scheduleTodayValues = Object.values(scheduleToday);
   let nextPrayer;
 
-  if (type === ScheduleType.Extra) {
-    const lastIndex = scheduleTodayValues.length - 1;
-    const secondLastIndex = lastIndex - 1;
-    const isSecondLastPassed = isTimePassed(scheduleTodayValues[secondLastIndex].time);
+  nextPrayer = scheduleTodayValues.find(prayer => !isTimePassed(prayer.time)) || scheduleToday[0];
 
-    // If second last prayer has passed, next prayer should be last third
-    if (isSecondLastPassed) {
-      nextPrayer = scheduleTodayValues[lastIndex];
-    } else {
-      nextPrayer = scheduleTodayValues.find(prayer => !isTimePassed(prayer.time)) || scheduleToday[0];
-    }
-  } else {
-    nextPrayer = scheduleTodayValues.find(prayer => !isTimePassed(prayer.time)) || scheduleToday[0];
-  }
-  
-  const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { 
     ...schedule, 
-    type,
     today: scheduleToday,
     tomorrow: scheduleTomorrow,
     nextIndex: nextPrayer.index,
   });
 };
 
-export const incrementNextIndex = (type: ScheduleType) => {
-  const schedule = getSchedule(type);
-  const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
+export const incrementNextIndex = () => {
+  const schedule = getSchedule();
   
   const todayPrayers = Object.values(schedule.today);
   const isLastPrayer = schedule.nextIndex === todayPrayers.length - 1;

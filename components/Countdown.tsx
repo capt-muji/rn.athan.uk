@@ -1,17 +1,16 @@
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
-import { DaySelection, ScheduleType } from '@/shared/types';
+import { DaySelection } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom, overlayAtom } from '@/stores/store';
+import { scheduleAtom, overlayAtom } from '@/stores/store';
 import { useEffect, useState } from 'react';
 import { formatTime, getRecentDate, getTimeDifference } from '@/shared/time';
 import { incrementNextIndex } from '@/stores/actions';
 
-interface Props { type: ScheduleType }
 
-export default function Countdown({ type }: Props) {
-  const { today, nextIndex } = useAtomValue(type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom);
+export default function Countdown() {
+  const { today, nextIndex } = useAtomValue(scheduleAtom);
   const overlay = useAtomValue(overlayAtom);
 
   const [countdown, setCountdown] = useState('');
@@ -58,7 +57,7 @@ export default function Countdown({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 40,
+    marginBottom: 30,
     justifyContent: 'center',
     zIndex: OVERLAY.zindexes.off.countdown,
     pointerEvents: 'none',

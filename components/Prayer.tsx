@@ -1,26 +1,22 @@
-import { StyleSheet, View, Pressable } from 'react-native';
+import { StyleSheet, View, Pressable, ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, PRAYER, ANIMATION, SCREEN } from '@/shared/constants';
-import { ScheduleType } from '@/shared/types';
+import { COLORS, TEXT, PRAYER, ANIMATION } from '@/shared/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
+import { scheduleAtom } from '@/stores/store';
 
-interface Props {
-  index: number;
-  type: ScheduleType;
-  isOverlay?: boolean;
-}
+interface Props { index: number; isOverlay?: boolean; }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-export default function Prayer({ index, type, isOverlay = false }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+export default function Prayer({ index, isOverlay = false }: Props) {
+  const schedule = useAtomValue(scheduleAtom);
+
+  const isLastThird = schedule.today[index].english.toLowerCase() === 'last third';
 
   const isOverlayOn = false;
 
@@ -53,15 +49,6 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
     }
   }, [isOverlayOn]);
 
-  const handleLayout = () => {
-    if (!viewRef.current || isOverlay) return;
-
-    viewRef.current.measureInWindow((x, y, width, height) => {
-      const measurement = { pageX: x, pageY: y, width, height };
-      // setMeasurements({ ...measurements, [index]: measurement });
-    });
-  };
-
   // const handlePress = () => {
   //   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
@@ -74,7 +61,7 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
   // };
 
   const animatedTextStyle = useAnimatedStyle(() => {
-    if (isOverlay) return {
+    if (isOverlay || isLastThird) return {
       color: 'white',
       opacity: 1,
     };
@@ -90,17 +77,18 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
     };
   });
 
+  const computedStyles: ViewStyle = {};
+
   return (
     <AnimatedPressable
       ref={viewRef}
-      onLayout={handleLayout}
       style={styles.container}
     // onPress={handlePress}
     >
-      <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}> {prayer.english} </Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
-      <PrayerTime index={index} isOverlay={isOverlay} type={type} />
-      <Alert index={index} isOverlay={isOverlay} type={type} />
+      <Animated.Text style={[styles.text, styles.english, computedStyles, animatedTextStyle]}> {prayer.english} </Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, computedStyles, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
+      <PrayerTime index={index} isOverlay={isOverlay} />
+      <Alert index={index} isOverlay={isOverlay} />
     </AnimatedPressable>
   );
 }

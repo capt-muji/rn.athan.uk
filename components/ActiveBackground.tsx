@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useAtomValue } from 'jotai';
 import Animated, {
   useAnimatedStyle,
@@ -7,14 +7,10 @@ import Animated, {
   withSpring
 } from 'react-native-reanimated';
 import { COLORS, PRAYER } from '@/shared/constants';
-import { ScheduleType } from '@/shared/types';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
+import { scheduleAtom } from '@/stores/store';
 
-interface Props { type: ScheduleType };
-
-export default function ActiveBackground({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+export default function ActiveBackground() {
+  const schedule = useAtomValue(scheduleAtom);
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
 
   useEffect(() => {
