@@ -36,19 +36,12 @@ export interface ISingleApiResponseTransformed {
   isha: string;
   "last third": string;
 }
-
-export enum ScheduleType {
-  Standard = 'standard',
-  Extra = 'extra'
-}
-
 export interface ITransformedPrayer {
   index: number;
   date: string;
   english: string;
   arabic: string;
   time: string;
-  type: ScheduleType;
 }
 
 export interface IScheduleNow {
@@ -118,13 +111,10 @@ export interface Preferences {
 
 // ScheduleStore and StoreState interfaces
 export interface ScheduleStore {
-  type: ScheduleType;
   today: IScheduleNow;
   tomorrow: IScheduleNow;
   nextIndex: number;
   selectedIndex: number;
-  measurements: Record<number, PageCoordinates>;
-  nextIndexMeasurements: PageCoordinates | null;
 }
 
 export interface PreferencesStore {

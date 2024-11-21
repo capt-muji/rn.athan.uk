@@ -1,24 +1,16 @@
 import { View, StyleSheet } from 'react-native';
-import { useAtomValue } from 'jotai';
-import { standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
-import { ScheduleType } from '@/shared/types';
 import Prayer from './Prayer';
 import ActiveBackground from './ActiveBackground';
-import { SCREEN } from '@/shared/constants';
+import { PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
 
-interface Props {
-  type: ScheduleType;
-}
-
-export default function PrayerList({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+export default function PrayerList() {
+  const allIndexesButLast = PRAYERS_ENGLISH.length - 1;
 
   return (
     <View style={styles.container}>
-      <ActiveBackground type={type} />
-      {Object.keys(schedule.today).map((_, index) => (
-        <Prayer key={index} index={index} type={type} />
+      <ActiveBackground />
+      {Array.from({ length: allIndexesButLast }).map((_, index) => (
+        <Prayer key={index} index={index} />
       ))}
     </View>
   );
@@ -27,5 +19,5 @@ export default function PrayerList({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-  }
+  },
 });

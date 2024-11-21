@@ -1,8 +1,5 @@
-export const PRAYERS_ENGLISH = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Magrib", "Isha"];
-export const PRAYERS_ARABIC = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
-
-export const EXTRAS_ENGLISH = ["Duha", "Last Third"];
-export const EXTRAS_ARABIC = ["الضحى", "آخر ثلث"];
+export const PRAYERS_ENGLISH = ["Fajr", "Sunrise", "Duha", "Dhuhr", "Asr", "Magrib", "Isha", "Last Third"];
+export const PRAYERS_ARABIC = ["الفجر", "الشروق", "الضحى", "الظهر", "العصر", "المغرب", "العشاء", "آخر ثلث"];
 
 export const TEXT = {
   famiy: {
@@ -11,12 +8,13 @@ export const TEXT = {
   },
   size: 18,
   sizeSmall: 16,
-  opacity: 0.65,
+  sizeSmaller: 14,
+  opacity: 0.5,
   opacityHigher: 0.75,
 };
 
 export const SCREEN = {
-  paddingHorizontal: 15,
+  paddingHorizontal: 10,
 };
 
 export const COLORS = {
@@ -24,7 +22,7 @@ export const COLORS = {
   primaryShadow: '#072670',
   textPrimary: '#ffffff',
   textSecondary: '#8BA3C7',
-  textTransparent: '#aab8cd',
+  textTransparent: '#a1b6d5',
   gradientStart: '#031a4c',
   gradientEnd: '#5b1eaa',
   transparentBlack: '#000000bf'
@@ -58,5 +56,14 @@ export const OVERLAY = {
 };
 
 export const PRAYER = {
-  height: 60
+  height: 57,
+  border: {
+    borderRadius: 7,
+  },
+  shadow: {
+    shadowOffset: { width: 1, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    shadowColor: COLORS.primaryShadow,
+  }
 };
