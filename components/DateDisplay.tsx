@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtomValue } from 'jotai';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
-// import { absoluteDateMeasurementsAtom, overlayVisibleAtom, dateTodayAtom } from '@/stores/store';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import Masjid from './Masjid';
 import { formatDate } from '@/shared/time';
@@ -50,7 +49,7 @@ export default function DateDisplay() {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 30,
+    marginBottom: 25,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
