@@ -27,7 +27,7 @@ export const COLORS = {
   activeBackground: '#005dd5',
   activeBackgroundShadow: '#072670',
   inactiveBackground: '#5f96e3',
-  
+
   textSecondary: '#8BA3C7',
 };
 
@@ -72,6 +72,6 @@ export const PRAYER = {
     shadowOffset: { width: 1, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-    shadowColor: COLORS.activeShadow,
+    shadowColor: COLORS.activeBackgroundShadow,
   }
 };
