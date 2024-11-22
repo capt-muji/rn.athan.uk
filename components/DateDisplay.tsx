@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   date: {
     fontFamily: TEXT.famiy.regular,
-    color: COLORS.textPrimary,
+    color: COLORS.activePrayer,
     fontSize: TEXT.size,
   },
   overlayText: {
