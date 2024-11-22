@@ -5,20 +5,39 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-  Easing
+  Easing,
+  interpolateColor
 } from 'react-native-reanimated';
 import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
-import { scheduleAtom } from '@/stores/store';
+import { dateAtom, scheduleAtom } from '@/stores/store';
 
 export default function ActiveBackground() {
+  const date = useAtomValue(dateAtom);
   const schedule = useAtomValue(scheduleAtom);
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
+  const opacity = useSharedValue(1);
+  const colorProgress = useSharedValue(0);
 
   useEffect(() => {
     translateY.value = schedule.nextIndex * PRAYER.height;
-  }, [schedule.nextIndex]);
+
+    // Check if it's midnight reset on the same day
+    if (schedule.nextIndex === 0 && date.current === date.current) {
+      opacity.value = withTiming(0.1, { duration: ANIMATION.durationSlow });
+      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
+    } else {
+      opacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
+      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
+    }
+  }, [schedule.nextIndex, date]);
 
   const animatedStyles = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+    backgroundColor: interpolateColor(
+      colorProgress.value,
+      [0, 1],
+      [COLORS.active, '#5f96e3']
+    ),
     transform: [{
       translateY: withTiming(translateY.value, {
         duration: ANIMATION.durationSlower,
@@ -39,7 +58,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-    backgroundColor: COLORS.primary,
-    shadowColor: COLORS.primaryShadow
+    backgroundColor: COLORS.active,
+    shadowColor: COLORS.activeShadow
   }
 });

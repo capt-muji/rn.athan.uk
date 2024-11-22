@@ -18,8 +18,9 @@ export const SCREEN = {
 };
 
 export const COLORS = {
-  primary: '#005dd5',
-  primaryShadow: '#072670',
+  active: '#005dd5',
+  activeShadow: '#072670',
+  inactive: '#5f96e3',
   textPrimary: '#ffffff',
   textSecondary: '#8BA3C7',
   textTransparent: '#a1b6d5',
@@ -69,6 +70,6 @@ export const PRAYER = {
     shadowOffset: { width: 1, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-    shadowColor: COLORS.primaryShadow,
+    shadowColor: COLORS.activeShadow,
   }
 };

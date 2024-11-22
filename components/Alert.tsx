@@ -181,8 +181,8 @@ const styles = StyleSheet.create({
     ...PRAYER.shadow
   },
   popupOverlay: {
-    backgroundColor: COLORS.primary,
-    shadowColor: COLORS.primaryShadow,
+    backgroundColor: COLORS.active,
+    shadowColor: COLORS.activeShadow,
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.35,
     shadowRadius: 10,
