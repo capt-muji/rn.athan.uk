@@ -96,7 +96,7 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
     const color = interpolateColor(
       textColor.value,
       [0, 1],
-      [COLORS.textTransparent, COLORS.textPrimary]
+      [COLORS.inactivePrayer, COLORS.activePrayer]
     );
 
     return {
@@ -116,7 +116,7 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
       <Animated.Text style={[
         styles.text,
         {
-          color: COLORS.textPrimary,
+          color: COLORS.activePrayer,
           opacity: overlayTodayOpacity,
         }
       ]}>
@@ -127,7 +127,7 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
       <Animated.Text style={[
         styles.text,
         {
-          color: COLORS.textPrimary,
+          color: COLORS.activePrayer,
           opacity: overlayTomorrowOpacity,
         }
       ]}>

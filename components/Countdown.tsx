@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   countdown: {
     fontFamily: TEXT.famiy.medium,
-    color: COLORS.textPrimary,
+    color: COLORS.activePrayer,
     fontSize: TEXT.size + 8,
     textAlign: 'center',
   },

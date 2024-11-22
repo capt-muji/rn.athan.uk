@@ -18,15 +18,17 @@ export const SCREEN = {
 };
 
 export const COLORS = {
-  active: '#005dd5',
-  activeShadow: '#072670',
-  inactive: '#5f96e3',
-  textPrimary: '#ffffff',
-  textSecondary: '#8BA3C7',
-  textTransparent: '#a1b6d5',
   gradientStart: '#031a4c',
   gradientEnd: '#5b1eaa',
-  transparentBlack: '#000000bf'
+
+  activePrayer: '#ffffff',
+  inactivePrayer: '#a1b6d5',
+
+  activeBackground: '#005dd5',
+  activeBackgroundShadow: '#072670',
+  inactiveBackground: '#5f96e3',
+  
+  textSecondary: '#8BA3C7',
 };
 
 export const ANIMATION = {

@@ -88,14 +88,14 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   const animatedTextStyle = useAnimatedStyle(() => {
     if (isOverlay || isLastThird || isNext) return {
-      color: COLORS.textPrimary,
+      color: COLORS.activePrayer,
       opacity: 1,
     };
 
     const color = interpolateColor(
       textColor.value,
       [0, 1],
-      [COLORS.textTransparent, COLORS.textPrimary]
+      [COLORS.inactivePrayer, COLORS.activePrayer]
     );
 
     return {

@@ -37,7 +37,7 @@ export default function ActiveBackground() {
     backgroundColor: interpolateColor(
       colorProgress.value,
       [0, 1],
-      [COLORS.active, '#5f96e3']
+      [COLORS.activeBackground, COLORS.inactiveBackground]
     ),
     transform: [{
       translateY: withTiming(translateY.value, {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-    backgroundColor: COLORS.active,
-    shadowColor: COLORS.activeShadow
+    backgroundColor: COLORS.activeBackground,
+    shadowColor: COLORS.activeBackgroundShadow
   }
 });
