@@ -27,7 +27,7 @@ export const COLORS = {
   gradientEnd: '#5b1eaa',
 
   activePrayer: '#ffffff',
-  inactivePrayer: '#a1b6d57f',
+  inactivePrayer: '#8aa9d662',
 
   activeBackground: '#005dd5',
   activeBackgroundShadow: '#132063',
