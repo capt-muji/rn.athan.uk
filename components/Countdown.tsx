@@ -5,7 +5,7 @@ import { DaySelection } from '@/shared/types';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom, overlayAtom } from '@/stores/store';
 import { useEffect, useState } from 'react';
-import { formatTime, getRecentDate, getTimeDifference } from '@/shared/time';
+import { formatTime, getDateTodayOrTomorrow, getTimeDifference } from '@/shared/time';
 import { incrementNextIndex } from '@/stores/actions';
 
 
@@ -18,9 +18,9 @@ export default function Countdown() {
   useEffect(() => {
     const updateCountdown = () => {
       const prayer = today[nextIndex];
-      const diff = getTimeDifference(prayer.time, getRecentDate(DaySelection.Today));
+      const diff = getTimeDifference(prayer.time, getDateTodayOrTomorrow(DaySelection.Today));
 
-      if (diff <= 0) incrementNextIndex(type);
+      if (diff <= 0) incrementNextIndex();
       setCountdown(formatTime(diff));
     };
 
