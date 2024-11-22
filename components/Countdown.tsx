@@ -16,9 +16,11 @@ export default function Countdown() {
   const [countdown, setCountdown] = useState('');
 
   useEffect(() => {
+    const prayer = today[nextIndex];
+    const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
+
     const updateCountdown = () => {
-      const prayer = today[nextIndex];
-      const diff = getTimeDifference(prayer.time, getDateTodayOrTomorrow(DaySelection.Today));
+      const diff = getTimeDifference(prayer.time, prayerDate);
 
       if (diff <= 0) incrementNextIndex();
       setCountdown(formatTime(diff));
