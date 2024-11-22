@@ -31,7 +31,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   // Add this function to calculate delay based on index
   const getCascadeDelay = (currentIndex: number) => {
-    const delay = 50;
+    const delay = 100;
     const totalPrayers = 7;
     return (totalPrayers - currentIndex) * delay;
   };
