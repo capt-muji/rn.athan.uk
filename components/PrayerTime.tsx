@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { withTiming, useSharedValue, withDelay, useAnimatedStyle, interpolateColor } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
-import { TEXT, ANIMATION, COLORS, PRAYERS_ENGLISH } from '@/shared/constants';
+import { TEXT, ANIMATION, COLORS, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
 import { useEffect } from 'react';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom } from '@/stores/store';
@@ -9,10 +9,10 @@ import { scheduleAtom } from '@/stores/store';
 interface Props { index: number; isOverlay: boolean; }
 
 export default function PrayerTime({ index, isOverlay = false }: Props) {
-  const isLastThird = index === PRAYERS_ENGLISH.length - 1;
+  const isLastThird = index === PRAYER_INDEX_LAST_THIRD;
   const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(scheduleAtom);
 
-  const overlayVisible = false;
+  // const overlayVisible = false;
 
   const isPassed = index < nextIndex
   const isNext = index === nextIndex;
@@ -34,13 +34,14 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
   };
 
   useEffect(() => {
-    if (index === nextIndex) {
-      originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-      textColor.value = withTiming(1, { duration: ANIMATION.durationSlow });
+    if (isNext || isPassed) {
+      originalOpacity.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
+      textColor.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
       return;
-    }
+    };
 
-    if (nextIndex === 0) {
+    // Isha prayer just finished
+    if (nextIndex === PRAYER_INDEX_FAJR) {
       originalOpacity.value = withDelay(
         getCascadeDelay(index),
         withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
@@ -51,41 +52,61 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
       );
       return;
     }
-
-    if (!isPassed) {
-      originalOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow });
-      textColor.value = withTiming(0, { duration: ANIMATION.durationSlow });
-    }
   }, [nextIndex]);
 
-  useEffect(() => {
-    // if overlay is visible, and this prayer is selected
-    if (overlayVisible && selectedIndex === index) {
+  // useEffect(() => {
+  //   if (isNext) {
+  //     originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
+  //     textColor.value = withTiming(1, { duration: ANIMATION.durationSlow });
+  //     return;
+  //   }
 
-      if (isNext) {
-        overlayTodayOpacity.value = 0;
-      };
+  //   if (nextIndex === 0) {
+  //     originalOpacity.value = withDelay(
+  //       getCascadeDelay(index),
+  //       withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
+  //     );
+  //     textColor.value = withDelay(
+  //       getCascadeDelay(index),
+  //       withTiming(0, { duration: ANIMATION.durationSlow })
+  //     );
+  //     return;
+  //   }
 
-      // upcoming prayer
-      if (!isPassed) {
-        overlayTodayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-      };
+  //   if (!isPassed) {
+  //     originalOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow });
+  //     textColor.value = withTiming(0, { duration: ANIMATION.durationSlow });
+  //   }
+  // }, [nextIndex]);
 
-      // tomorrow's prayer
-      if (isPassed) {
-        originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-        overlayTomorrowOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
-      };
-    }
+  // useEffect(() => {
+  //   // if overlay is visible, and this prayer is selected
+  //   if (overlayVisible && selectedIndex === index) {
 
-    // if overlay is not visible
-    if (!overlayVisible) {
-      originalOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(baseOpacity, { duration: ANIMATION.duration }));
-      overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration })
-      overlayTomorrowOpacity.value = withTiming(0, { duration: ANIMATION.duration })
-    };
+  //     if (isNext) {
+  //       overlayTodayOpacity.value = 0;
+  //     };
 
-  }, [overlayVisible]);
+  //     // upcoming prayer
+  //     if (!isPassed) {
+  //       overlayTodayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+  //     };
+
+  //     // tomorrow's prayer
+  //     if (isPassed) {
+  //       originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+  //       overlayTomorrowOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+  //     };
+  //   }
+
+  //   // if overlay is not visible
+  //   if (!overlayVisible) {
+  //     originalOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(baseOpacity, { duration: ANIMATION.duration }));
+  //     overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration })
+  //     overlayTomorrowOpacity.value = withTiming(0, { duration: ANIMATION.duration })
+  //   };
+
+  // }, [overlayVisible]);
 
   const mainTextStyle = useAnimatedStyle(() => {
     if (isLastThird) return {

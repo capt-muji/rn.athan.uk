@@ -3,7 +3,7 @@ import Animated, { useAnimatedStyle, withTiming, withDelay, useSharedValue, inte
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, PRAYER, ANIMATION, PRAYERS_ENGLISH } from '@/shared/constants';
+import { COLORS, TEXT, PRAYER, ANIMATION, PRAYERS_ENGLISH, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import { useAtomValue } from 'jotai';
@@ -20,7 +20,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const prayer = schedule.today[index];
   const isPassed = index < schedule.nextIndex
   const isNext = index === schedule.nextIndex;
-  const isLastThird = index === PRAYERS_ENGLISH.length - 1;
+  const isLastThird = index === PRAYER_INDEX_LAST_THIRD;
 
   const viewRef = useRef<View>(null);
 
@@ -36,7 +36,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     };
 
     // Isha prayer just finished
-    if (schedule.nextIndex === 0) {
+    if (schedule.nextIndex === PRAYER_INDEX_FAJR) {
       textOpacity.value = withDelay(
         getCascadeDelay(index),
         withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
