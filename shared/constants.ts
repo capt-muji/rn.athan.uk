@@ -1,6 +1,11 @@
 export const PRAYERS_ENGLISH = ["Fajr", "Sunrise", "Duha", "Dhuhr", "Asr", "Magrib", "Isha", "Last Third"];
 export const PRAYERS_ARABIC = ["الفجر", "الشروق", "الضحى", "الظهر", "العصر", "المغرب", "العشاء", "آخر ثلث"];
 
+export const PRAYER_INDEX_FAJR = 0;
+export const PRAYER_INDEX_ISHA = 6;
+export const PRAYER_INDEX_LAST_THIRD = 7;
+export const PRAYERS_LENGTH_FAJR_TO_ISHA = 7;
+
 export const TEXT = {
   famiy: {
     regular: 'Roboto',
@@ -35,6 +40,7 @@ export const ANIMATION = {
   duration: 200,
   durationSlow: 1000,
   durationSlower: 1500,
+  durationSlowest: 2250,
   overlayDelay: 150,
   cascadeDelay: 150,
 };

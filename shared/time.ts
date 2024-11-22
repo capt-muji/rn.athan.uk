@@ -15,7 +15,7 @@ export const createLondonDate = (date?: Date | string): Date => {
 export const getDateTodayOrTomorrow = (daySelection: DaySelection): string => {
   let date = createLondonDate();
   
-  if (daySelection === 'tomorrow') {
+  if (daySelection === DaySelection.Tomorrow) {
     date = addDays(date, 1);
   }
 

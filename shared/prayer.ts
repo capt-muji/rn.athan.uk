@@ -1,5 +1,5 @@
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes } from '@/shared/types';
-import { PRAYERS_ENGLISH, PRAYERS_ARABIC, ANIMATION } from '@/shared/constants';
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC, ANIMATION, PRAYERS_LENGTH_FAJR_TO_ISHA } from '@/shared/constants';
 import { isDateTodayOrFuture, getLastThirdOfNight, isTimePassed, addMinutes } from '@/shared/time';
 
 /**
@@ -69,9 +69,8 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed): ISchedul
   return schedule;
 };
 
-
+// UI Helpers
 export const getCascadeDelay = (index: number) => {
   const delay = ANIMATION.cascadeDelay;
-  const totalPrayers = PRAYERS_ENGLISH.length - 2;
-  return (totalPrayers - index) * delay;
+  return (PRAYERS_LENGTH_FAJR_TO_ISHA - index) * delay;
 };
