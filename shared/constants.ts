@@ -27,11 +27,11 @@ export const COLORS = {
   gradientEnd: '#5b1eaa',
 
   activePrayer: '#ffffff',
-  inactivePrayer: '#a1b6d5',
+  inactivePrayer: '#a1b6d57f',
 
   activeBackground: '#005dd5',
-  activeBackgroundShadow: '#072670',
-  inactiveBackground: '#5f96e3',
+  activeBackgroundShadow: '#132063',
+  inactiveBackground: '#272b7c',
 
   textSecondary: '#8BA3C7',
 };
