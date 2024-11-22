@@ -4,9 +4,10 @@ import { useAtomValue } from 'jotai';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withSpring
+  withTiming,
+  Easing
 } from 'react-native-reanimated';
-import { COLORS, PRAYER } from '@/shared/constants';
+import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
 import { scheduleAtom } from '@/stores/store';
 
 export default function ActiveBackground() {
@@ -19,7 +20,10 @@ export default function ActiveBackground() {
 
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [{
-      translateY: withSpring(translateY.value, { damping: 12, stiffness: 90, mass: 0.8 })
+      translateY: withTiming(translateY.value, {
+        duration: ANIMATION.durationSlower,
+        easing: Easing.elastic(0.75)
+      })
     }],
   }));
 
