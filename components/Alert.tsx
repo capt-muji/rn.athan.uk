@@ -48,7 +48,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const bounceAnim = useSharedValue(0);
   const pressAnim = useSharedValue(1);
 
-  const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
+  const baseOpacity = isPassed || isNext || isLastThird ? 1 : TEXT.opacity;
   const textOpacity = useSharedValue(isPopupActive ? 1 : baseOpacity);
 
   useEffect(() => {
@@ -139,13 +139,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   const { icon: IconComponent } = ALERT_CONFIGS[iconIndex];
   let iconColor = isOverlay ? 'white'
-    : (isPopupActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent);
-
-
-  if (isLastThird) {
-    iconColor = 'white'
-    textOpacity.value = 1;
-  }
+    : (isPopupActive || isPassed || isNext || isLastThird ? COLORS.textPrimary : COLORS.textTransparent);
 
   return (
     <View style={styles.container}>
