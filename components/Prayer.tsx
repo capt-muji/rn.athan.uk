@@ -107,6 +107,6 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-    paddingRight: 13,
+    paddingRight: 15,
   },
 });
