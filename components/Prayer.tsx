@@ -29,6 +29,13 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   // handle non-overlay animations
   useEffect(() => {
+    if (isNext || isPassed) {
+      textOpacity.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
+      textColor.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
+      return;
+    };
+
+    // Isha prayer just finished
     if (schedule.nextIndex === 0) {
       textOpacity.value = withDelay(
         getCascadeDelay(index),
@@ -40,21 +47,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       );
       return;
     }
-
-    if (isPassed) {
-      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-      textColor.value = withTiming(1, { duration: ANIMATION.duration });
-      return;
-    }
-
-    if (isNext) {
-      textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-      textColor.value = withTiming(1, { duration: ANIMATION.durationSlow });
-      return;
-    }
-
-    textOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow });
-    textColor.value = withTiming(0, { duration: ANIMATION.durationSlow });
   }, [schedule.nextIndex]);
 
   // handle overlay animations
