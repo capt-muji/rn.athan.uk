@@ -7,37 +7,41 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
   interpolate,
-  withTiming
+  withTiming,
+  interpolateColor,
+  useAnimatedProps
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
+import Svg from 'react-native-svg';
 
 import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD } from '@/shared/constants';
 import { AlertType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom, alertPreferencesAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
+import { BellSlash, BellRing, Vibrate, Speaker } from '@/icons';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
 
 const ALERT_CONFIGS = [
   {
-    icon: PiBellSimpleSlash,
+    icon: Animated.createAnimatedComponent(BellSlash),
     label: "Off",
     type: AlertType.Off
   },
   {
-    icon: PiBellSimpleRinging,
+    icon: Animated.createAnimatedComponent(BellRing),
     label: "Notification",
     type: AlertType.Notification
   },
   {
-    icon: PiVibrate,
+    icon: Animated.createAnimatedComponent(Vibrate),
     label: "Vibrate",
     type: AlertType.Vibrate
   },
   {
-    icon: PiSpeakerSimpleHigh,
+    icon: Animated.createAnimatedComponent(Speaker),
     label: "Sound",
     type: AlertType.Sound
   }
@@ -66,12 +70,18 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const baseOpacity = isPassed || isNext || isLastThird ? 1 : TEXT.opacity;
   const textOpacity = useSharedValue(isPopupActive ? 1 : baseOpacity);
 
+  const defaultColorProgress = isPopupActive || isPassed || isNext ? 1 : 0;
+  const colorProgress = useSharedValue(defaultColorProgress);
+
 
   useEffect(() => {
-    if (isPopupActive) {
-      textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-    } else if (!isPassed) {
-      textOpacity.value = withTiming(baseOpacity, { duration: ANIMATION.duration });
+    if (isPopupActive === true) {
+      colorProgress.value = 1;
+      return;
+    };
+
+    if (isPopupActive === false) {
+      colorProgress.value = 0;
     }
   }, [isPopupActive]);
 
@@ -146,17 +156,17 @@ export default function Alert({ index, isOverlay = false }: Props) {
     bounceAnim.value = 0;
   }, []);
 
-  const iconStyle = useAnimatedStyle(() => {
-    const targetColor = isOverlay
-      ? 'green'
-      : ((isPassed || isNext || isLastThird) ? 'black' : 'orange');
-
-    return {
-      color: withTiming(targetColor, { duration: 2000 })
-    };
-  });
+  const iconAnimatedProps = useAnimatedProps(() => ({
+    color: interpolateColor(
+      colorProgress.value,
+      [0, 1],
+      ['red', 'green']
+    )
+  }));
 
   const Icon = ALERT_CONFIGS[iconIndex].icon;
+  // const econ = forwardRef(ALERT_CONFIGS[iconIndex].icon);
+  // const AnimatedIcon = Animated.createAnimatedComponent(econ);
 
   return (
     <View style={styles.container}>
@@ -167,12 +177,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
         style={styles.iconContainer}
       >
         <Animated.View style={alertAnimatedStyle}>
-          <Icon style={iconStyle} size={20} />
+          <Icon animatedProps={iconAnimatedProps} color={'orange'} size={20} />
         </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
-        <Icon color={'white'} size={20} style={styles.popupIcon} />
+        <Icon color={'white'} size={20} />
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>
           {ALERT_CONFIGS[iconIndex].label}
         </Text>
