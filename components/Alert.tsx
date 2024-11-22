@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, useEffect, forwardRef } from 'react';
 import { StyleSheet, Pressable, Text, View, GestureResponderEvent } from 'react-native';
-import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
 import Animated, {
   useSharedValue,
@@ -12,14 +11,16 @@ import Animated, {
   useAnimatedProps
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
-import Svg from 'react-native-svg';
 
 import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD } from '@/shared/constants';
 import { AlertType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom, alertPreferencesAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
-import { BellSlash, BellRing, Vibrate, Speaker } from '@/icons';
+import BellSlash from '@/icons/BellSlash';
+import BellRing from '@/icons/BellRing';
+import Vibrate from '@/icons/Vibrate';
+import Speaker from '@/icons/Speaker';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
@@ -165,8 +166,6 @@ export default function Alert({ index, isOverlay = false }: Props) {
   }));
 
   const Icon = ALERT_CONFIGS[iconIndex].icon;
-  // const econ = forwardRef(ALERT_CONFIGS[iconIndex].icon);
-  // const AnimatedIcon = Animated.createAnimatedComponent(econ);
 
   return (
     <View style={styles.container}>
