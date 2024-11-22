@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text } from 'react-native';
 import Prayer from './Prayer';
-import { TEXT, PRAYER, SCREEN, PRAYERS_ENGLISH } from '@/shared/constants';
+import { TEXT, PRAYER, SCREEN, PRAYERS_ENGLISH, COLORS } from '@/shared/constants';
 
 export default function PrayerLastThird() {
   const lastThirdIndex = PRAYERS_ENGLISH.length - 1;
