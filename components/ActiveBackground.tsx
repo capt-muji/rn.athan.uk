@@ -9,11 +9,12 @@ import Animated, {
   interpolateColor
 } from 'react-native-reanimated';
 import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
-import { dateAtom, scheduleAtom } from '@/stores/store';
+import { dateAtom, scheduleAtom, isBackgroundActiveAtom } from '@/stores/store';
 
 export default function ActiveBackground() {
   const date = useAtomValue(dateAtom);
   const schedule = useAtomValue(scheduleAtom);
+  const isActive = useAtomValue(isBackgroundActiveAtom);
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
   const opacity = useSharedValue(1);
   const colorProgress = useSharedValue(0);
@@ -29,7 +30,7 @@ export default function ActiveBackground() {
       opacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
       colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
     }
-  }, [schedule.nextIndex, date]);
+  }, [isActive]);
 
   const animatedStyles = useAnimatedStyle(() => ({
     opacity: opacity.value,
