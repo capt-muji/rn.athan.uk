@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
   },
   popup: {
     position: 'absolute',
+    alignSelf: 'center',
     right: '100%',
     borderRadius: 50,
     paddingVertical: 15,
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 10,
     backgroundColor: 'black',
-    ...PRAYER.shadow
+    ...PRAYER.shadow,
   },
   popupOverlay: {
     backgroundColor: COLORS.active,
