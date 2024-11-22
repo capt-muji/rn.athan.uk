@@ -8,7 +8,7 @@ export default function PrayerLastThird() {
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.text}>Wed, 20th</Text>
+        <Text style={styles.text}>Fri, 20th</Text>
         <Text style={styles.text}>8h 32m 28s</Text>
       </View>
       <Prayer index={lastThirdIndex} />
@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
     ...PRAYER.shadow,
   },
   heading: {
-    paddingTop: 17,
-    paddingLeft: 23,
-    paddingRight: 26,
+    paddingTop: 15,
+    paddingLeft: PRAYER.padding.left,
+    paddingRight: PRAYER.padding.right,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
