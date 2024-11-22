@@ -3,11 +3,12 @@ import Animated, { useAnimatedStyle, withTiming, withDelay, useSharedValue, inte
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, PRAYER, ANIMATION } from '@/shared/constants';
+import { COLORS, TEXT, PRAYER, ANIMATION, PRAYERS_ENGLISH } from '@/shared/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom } from '@/stores/store';
+import { getCascadeDelay } from '@/shared/prayer';
 
 interface Props { index: number; isOverlay?: boolean; }
 
@@ -16,24 +17,15 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 export default function Prayer({ index, isOverlay = false }: Props) {
   const schedule = useAtomValue(scheduleAtom);
 
-  const isLastThird = schedule.today[index].english.toLowerCase() === 'last third';
-
-  // const isOverlayOn = false;
-
   const prayer = schedule.today[index];
   const isPassed = index < schedule.nextIndex
   const isNext = index === schedule.nextIndex;
+  const isLastThird = index === PRAYERS_ENGLISH.length - 1;
 
   const viewRef = useRef<View>(null);
 
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const textColor = useSharedValue(isPassed || isNext ? 1 : 0);
-
-  const getCascadeDelay = (currentIndex: number) => {
-    const delay = 100;
-    const totalPrayers = 7;
-    return (totalPrayers - currentIndex) * delay;
-  };
 
   // handle non-overlay animations
   useEffect(() => {
