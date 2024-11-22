@@ -31,6 +31,7 @@ export const COLORS = {
 export const ANIMATION = {
   duration: 200,
   durationSlow: 1000,
+  durationSlower: 1500,
   overlayDelay: 150,
 };
 
