@@ -57,7 +57,7 @@ export default function Countdown() {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 30,
+    marginBottom: 25,
     justifyContent: 'center',
     zIndex: OVERLAY.zindexes.off.countdown,
     pointerEvents: 'none',

@@ -14,7 +14,7 @@ export const TEXT = {
 };
 
 export const SCREEN = {
-  paddingHorizontal: 10,
+  paddingHorizontal: 12,
 };
 
 export const COLORS = {
