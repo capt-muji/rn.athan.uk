@@ -29,7 +29,6 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
   const textColor = useSharedValue(isPassed || isNext ? 1 : 0);
 
-  // Add this function to calculate delay based on index
   const getCascadeDelay = (currentIndex: number) => {
     const delay = 100;
     const totalPrayers = 7;
@@ -87,7 +86,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   // };
 
   const animatedTextStyle = useAnimatedStyle(() => {
-    if (isOverlay || isLastThird || isNext) return {
+    if (isOverlay || isLastThird) return {
       color: COLORS.activePrayer,
       opacity: 1,
     };
