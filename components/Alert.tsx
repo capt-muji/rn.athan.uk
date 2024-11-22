@@ -34,10 +34,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const { nextIndex } = useAtomValue(scheduleAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom);
 
-  const overlayVisible = false;
-
-  // const [overlayVisible] = useAtom(Store.app.isOverlayOn);
-  // const [preferences, setPreferences] = useAtom(Store.preferences);
+  // const overlayVisible = false;
 
   const [iconIndex, setIconIndex] = useState(0);
   const [isPopupActive, setIsPopupActive] = useState(false);
@@ -70,14 +67,14 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }
   }, [nextIndex]);
 
-  useEffect(() => {
-    if (isOverlay && !overlayVisible) {
-      setIsPopupActive(false);
-      fadeAnim.value = 0;
-      bounceAnim.value = 0;
-      timeoutRef.current && clearTimeout(timeoutRef.current);
-    }
-  }, [overlayVisible]);
+  // useEffect(() => {
+  //   if (isOverlay && !overlayVisible) {
+  //     setIsPopupActive(false);
+  //     fadeAnim.value = 0;
+  //     bounceAnim.value = 0;
+  //     timeoutRef.current && clearTimeout(timeoutRef.current);
+  //   }
+  // }, [overlayVisible]);
 
   // Use stored preference or default to 0 (Off)
   useEffect(() => {
