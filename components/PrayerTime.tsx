@@ -5,6 +5,7 @@ import { TEXT, ANIMATION, COLORS, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } f
 import { useEffect } from 'react';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom } from '@/stores/store';
+import { getCascadeDelay } from '@/shared/prayer';
 
 interface Props { index: number; isOverlay: boolean; }
 
@@ -21,31 +22,18 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
 
   const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
 
-  const originalOpacity = useSharedValue(baseOpacity);
-  const overlayTodayOpacity = useSharedValue(0);
-  const overlayTomorrowOpacity = useSharedValue(0);
   const textColor = useSharedValue(isPassed || isNext ? 1 : 0);
-
-  // Add cascade delay helper function
-  const getCascadeDelay = (currentIndex: number) => {
-    const delay = 100;
-    const totalPrayers = 7;
-    return (totalPrayers - currentIndex) * delay;
-  };
+  const overlayTodayColor = useSharedValue(0);
+  const overlayTomorrowColor = useSharedValue(0);
 
   useEffect(() => {
     if (isNext || isPassed) {
-      originalOpacity.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
       textColor.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
       return;
     };
 
     // Isha prayer just finished
     if (nextIndex === PRAYER_INDEX_FAJR) {
-      originalOpacity.value = withDelay(
-        getCascadeDelay(index),
-        withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
-      );
       textColor.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
@@ -110,19 +98,15 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
 
   const mainTextStyle = useAnimatedStyle(() => {
     if (isLastThird) return {
-      color: 'white',
-      opacity: 1,
+      color: COLORS.activePrayer,
     };
 
-    const color = interpolateColor(
-      textColor.value,
-      [0, 1],
-      [COLORS.inactivePrayer, COLORS.activePrayer]
-    );
-
     return {
-      color,
-      opacity: originalOpacity.value,
+      color: interpolateColor(
+        textColor.value,
+        [0, 1],
+        [COLORS.inactivePrayer, COLORS.activePrayer]
+      ),
     };
   });
 
@@ -137,8 +121,11 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
       <Animated.Text style={[
         styles.text,
         {
-          color: COLORS.activePrayer,
-          opacity: overlayTodayOpacity,
+          color: interpolateColor(
+            overlayTodayColor.value,
+            [0, 1],
+            ['transparent', COLORS.activePrayer]
+          ),
         }
       ]}>
         {todayTime}
@@ -148,8 +135,11 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
       <Animated.Text style={[
         styles.text,
         {
-          color: COLORS.activePrayer,
-          opacity: overlayTomorrowOpacity,
+          color: interpolateColor(
+            overlayTomorrowColor.value,
+            [0, 1],
+            ['transparent', COLORS.activePrayer]
+          ),
         }
       ]}>
         {tomorrowTime}
