@@ -85,8 +85,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       style={styles.container}
     // onPress={handlePress}
     >
-      <Animated.Text style={[styles.text, styles.english, computedStyles, animatedTextStyle]}> {prayer.english} </Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, computedStyles, animatedTextStyle]}> {prayer.arabic} </Animated.Text>
+      <Animated.Text style={[styles.text, styles.english, computedStyles, animatedTextStyle]}>{prayer.english}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, computedStyles, animatedTextStyle]}>{prayer.arabic}</Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} />
       <Alert index={index} isOverlay={isOverlay} />
     </AnimatedPressable>
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
   },
   english: {
-    marginLeft: 20,
+    paddingLeft: PRAYER.padding.left,
   },
   arabic: {
     flex: 1,

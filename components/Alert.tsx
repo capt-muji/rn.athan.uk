@@ -171,13 +171,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 5,
+    height: '100%',
   },
   iconContainer: {
-    paddingVertical: 15,
-    paddingRight: 20,
+    paddingRight: PRAYER.padding.right,
     paddingLeft: 13,
+    justifyContent: 'center',
   },
   popup: {
     position: 'absolute',

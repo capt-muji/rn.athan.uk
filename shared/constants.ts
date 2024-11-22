@@ -57,6 +57,10 @@ export const OVERLAY = {
 
 export const PRAYER = {
   height: 57,
+  padding: {
+    left: 20,
+    right: 25,
+  },
   border: {
     borderRadius: 7,
   },
