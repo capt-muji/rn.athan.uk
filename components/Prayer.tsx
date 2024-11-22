@@ -1,5 +1,5 @@
 import { StyleSheet, View, Pressable, ViewStyle } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming, useSharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming, withDelay, useSharedValue, interpolateColor } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
@@ -27,21 +27,43 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const viewRef = useRef<View>(null);
 
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
-  // const backgroundOpacity = useSharedValue(0);
+  const textColor = useSharedValue(isPassed || isNext ? 1 : 0);
+
+  // Add this function to calculate delay based on index
+  const getCascadeDelay = (currentIndex: number) => {
+    const delay = 50;
+    const totalPrayers = 7;
+    return (totalPrayers - currentIndex) * delay;
+  };
 
   // handle non-overlay animations
   useEffect(() => {
+    if (schedule.nextIndex === 0) {
+      textOpacity.value = withDelay(
+        getCascadeDelay(index),
+        withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
+      );
+      textColor.value = withDelay(
+        getCascadeDelay(index),
+        withTiming(0, { duration: ANIMATION.durationSlow })
+      );
+      return;
+    }
+
     if (isPassed) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+      textColor.value = withTiming(1, { duration: ANIMATION.duration });
       return;
-    };
+    }
 
     if (isNext) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
+      textColor.value = withTiming(1, { duration: ANIMATION.durationSlow });
       return;
-    };
+    }
 
     textOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow });
+    textColor.value = withTiming(0, { duration: ANIMATION.durationSlow });
   }, [schedule.nextIndex]);
 
   // handle overlay animations
@@ -65,18 +87,19 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   // };
 
   const animatedTextStyle = useAnimatedStyle(() => {
-    if (isOverlay || isLastThird) return {
+    if (isOverlay || isLastThird || isNext) return {
       color: COLORS.textPrimary,
       opacity: 1,
     };
 
-    if (isPassed || isNext) return {
-      color: COLORS.textPrimary,
-      opacity: textOpacity.value,
-    };
+    const color = interpolateColor(
+      textColor.value,
+      [0, 1],
+      [COLORS.textTransparent, COLORS.textPrimary]
+    );
 
     return {
-      color: COLORS.textTransparent,
+      color,
       opacity: textOpacity.value,
     };
   });
