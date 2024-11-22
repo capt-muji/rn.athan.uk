@@ -135,7 +135,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   const { icon: IconComponent } = ALERT_CONFIGS[iconIndex];
   let iconColor = isOverlay ? 'white'
-    : (isPopupActive || isPassed || isNext || isLastThird ? COLORS.textPrimary : COLORS.textTransparent);
+    : (isPopupActive || isPassed || isNext || isLastThird ? COLORS.activePrayer : COLORS.inactivePrayer);
 
   return (
     <View style={styles.container}>
@@ -151,7 +151,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
-        <IconComponent color={(isOverlay && !isNext) ? 'white' : COLORS.textPrimary} size={20} style={styles.popupIcon} />
+        <IconComponent color={(isOverlay && !isNext) ? 'white' : COLORS.activePrayer} size={20} style={styles.popupIcon} />
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
     </View>
@@ -182,8 +182,8 @@ const styles = StyleSheet.create({
     ...PRAYER.shadow,
   },
   popupOverlay: {
-    backgroundColor: COLORS.active,
-    shadowColor: COLORS.activeShadow,
+    backgroundColor: COLORS.activeBackground,
+    shadowColor: COLORS.activeBackgroundShadow,
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.35,
     shadowRadius: 10,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: TEXT.size,
-    color: COLORS.textPrimary,
+    color: COLORS.activePrayer,
   },
   labelOverlay: {
     color: 'white',
