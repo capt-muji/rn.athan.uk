@@ -5,11 +5,11 @@ import { PRAYERS_ENGLISH } from '@/shared/constants';
 import {
   AlertPreferences,
   AlertType,
-  Preferences,
   ScheduleStore,
   AppStore,
   DateStore,
   OverlayStore,
+  SoundPreferences
 } from '@/shared/types';
 
 // Custom storage for MMKV
@@ -26,7 +26,7 @@ const mmkvStorage = createJSONStorage(() => ({
   },
 }));
 
-// Initial states
+// Initial states for alerts
 const createInitialAlertPreferences = (): AlertPreferences => {
   const preferences: AlertPreferences = {};
   PRAYERS_ENGLISH.forEach((_, index) => {
@@ -35,13 +35,23 @@ const createInitialAlertPreferences = (): AlertPreferences => {
   return preferences;
 };
 
-const initialPreferences: Preferences = {
-  alert: createInitialAlertPreferences(),
-  athan: 0
+export const alertPreferencesAtom = atomWithStorage(
+  'alertPreferences',
+  createInitialAlertPreferences(),
+  mmkvStorage
+);
+
+// Add initial state for sound
+const initialSoundPreferences: SoundPreferences = {
+  selected: 1
 };
 
-// Core atoms
-export const preferencesAtom = atomWithStorage('preferences', initialPreferences, mmkvStorage);
+export const soundPreferencesAtom = atomWithStorage(
+  'soundPreferences',
+  initialSoundPreferences,
+  mmkvStorage,
+  { getOnInit: true }
+);
 
 export const appAtom = atom<AppStore>({
   isLoading: true,

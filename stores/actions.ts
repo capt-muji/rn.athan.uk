@@ -1,8 +1,9 @@
 import { getDefaultStore } from 'jotai/vanilla';
-import { dateAtom, scheduleAtom, overlayAtom } from './store';
+import { dateAtom, scheduleAtom, overlayAtom, alertPreferencesAtom, soundPreferencesAtom } from './store';
 import * as prayerUtils from '@/shared/prayer';
 import * as database from '@/stores/database';
 import { createLondonDate, isTimePassed } from '@/shared/time';
+import { AlertType } from '@/shared/types';
 
 const store = getDefaultStore();
 
@@ -58,8 +59,31 @@ export const incrementNextIndex = () => {
   const schedule = getSchedule();
   
   const todayPrayers = Object.values(schedule.today);
-  const isLastPrayer = schedule.nextIndex === todayPrayers.length - 1;
-  const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
+  const isIshaFinished = schedule.nextIndex === todayPrayers.length - 2;
+  const nextIndex = isIshaFinished ? 0 : schedule.nextIndex + 1;
   
   store.set(scheduleAtom, {  ...schedule, nextIndex });
+};
+
+// Alert Preferences
+export const getAlertPreferences = () => store.get(alertPreferencesAtom);
+
+export const setAlertPreference = (prayerIndex: number, alertType: AlertType) => {
+  const current = getAlertPreferences();
+  store.set(alertPreferencesAtom, {
+    ...current,
+    [prayerIndex]: alertType
+  });
+};
+
+// Sound Preferences
+export const getSoundPreferences = () => store.get(soundPreferencesAtom);
+
+export const setSelectedSound = (soundIndex: number) => {
+  if (soundIndex < 1 || soundIndex > 10) return;
+  const current = getSoundPreferences();
+  store.set(soundPreferencesAtom, {
+    ...current,
+    selected: soundIndex
+  });
 };

@@ -104,6 +104,10 @@ export interface AlertPreferences {
   [prayerIndex: number]: AlertType;
 }
 
+export interface SoundPreferences {
+  selected: number;
+}
+
 export interface Preferences {
   alert: AlertPreferences;
   athan: number;

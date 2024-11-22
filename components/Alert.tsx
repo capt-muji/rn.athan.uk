@@ -14,7 +14,8 @@ import * as Haptics from 'expo-haptics';
 import { COLORS, TEXT, ANIMATION, PRAYER, PRAYERS_ENGLISH } from '@/shared/constants';
 import { AlertType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { scheduleAtom } from '@/stores/store';
+import { scheduleAtom, alertPreferencesAtom } from '@/stores/store';
+import { setAlertPreference } from '@/stores/actions';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
@@ -31,6 +32,7 @@ interface Props { index: number; isOverlay?: boolean; }
 export default function Alert({ index, isOverlay = false }: Props) {
   const isLastThird = index === PRAYERS_ENGLISH.length - 1;
   const { nextIndex } = useAtomValue(scheduleAtom);
+  const alertPreferences = useAtomValue(alertPreferencesAtom);
 
   const overlayVisible = false;
 
@@ -50,6 +52,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   const baseOpacity = isPassed || isNext || isLastThird ? 1 : TEXT.opacity;
   const textOpacity = useSharedValue(isPopupActive ? 1 : baseOpacity);
+
 
   useEffect(() => {
     if (isPopupActive) {
@@ -77,23 +80,16 @@ export default function Alert({ index, isOverlay = false }: Props) {
   }, [overlayVisible]);
 
   // Use stored preference or default to 0 (Off)
-  // useEffect(() => {
-  //   setIconIndex(preferences.alert[index] || 0);
-  // }, [preferences.alert, index]);
+  useEffect(() => {
+    setIconIndex(alertPreferences[index] || 0);
+  }, [alertPreferences, index]);
 
   const handlePress = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
     setIconIndex(nextIndex);
-
-    // setPreferences(prev => ({
-    //   ...prev,
-    //   alert: {
-    //     ...prev.alert,
-    //     [index]: ALERT_CONFIGS[nextIndex].type
-    //   }
-    // }));
+    setAlertPreference(index, ALERT_CONFIGS[nextIndex].type);
 
     timeoutRef.current && clearTimeout(timeoutRef.current);
 
