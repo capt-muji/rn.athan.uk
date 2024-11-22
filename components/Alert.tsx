@@ -5,7 +5,6 @@ import { useAtom } from 'jotai';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  useAnimatedProps,
   withSpring,
   interpolate,
   withTiming
@@ -21,38 +20,24 @@ import { setAlertPreference } from '@/stores/actions';
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
 
-const WrappedBellSlash = forwardRef((props, ref) => <PiBellSimpleSlash {...props} ref={ref} />);
-const WrappedBellRinging = forwardRef((props, ref) => <PiBellSimpleRinging {...props} ref={ref} />);
-const WrappedVibrate = forwardRef((props, ref) => <PiVibrate {...props} ref={ref} />);
-const WrappedSpeaker = forwardRef((props, ref) => <PiSpeakerSimpleHigh {...props} ref={ref} />);
-
-const AnimatedBellSlash = Animated.createAnimatedComponent(WrappedBellSlash);
-const AnimatedBellRinging = Animated.createAnimatedComponent(WrappedBellRinging);
-const AnimatedVibrate = Animated.createAnimatedComponent(WrappedVibrate);
-const AnimatedSpeaker = Animated.createAnimatedComponent(WrappedSpeaker);
-
 const ALERT_CONFIGS = [
   {
     icon: PiBellSimpleSlash,
-    animatedIcon: AnimatedBellSlash,
     label: "Off",
     type: AlertType.Off
   },
   {
     icon: PiBellSimpleRinging,
-    animatedIcon: AnimatedBellRinging,
     label: "Notification",
     type: AlertType.Notification
   },
   {
     icon: PiVibrate,
-    animatedIcon: AnimatedVibrate,
     label: "Vibrate",
     type: AlertType.Vibrate
   },
   {
     icon: PiSpeakerSimpleHigh,
-    animatedIcon: AnimatedSpeaker,
     label: "Sound",
     type: AlertType.Sound
   }
@@ -161,7 +146,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
     bounceAnim.value = 0;
   }, []);
 
-  const iconAnimatedProps = useAnimatedProps(() => {
+  const iconStyle = useAnimatedStyle(() => {
     const targetColor = isOverlay
       ? 'green'
       : ((isPassed || isNext || isLastThird) ? 'black' : 'orange');
@@ -169,10 +154,9 @@ export default function Alert({ index, isOverlay = false }: Props) {
     return {
       color: withTiming(targetColor, { duration: 2000 })
     };
-  }, [isOverlay, isPassed, isNext, isLastThird]);
+  });
 
-  const AnimatedIcon = ALERT_CONFIGS[iconIndex].animatedIcon;
-  const StaticIcon = ALERT_CONFIGS[iconIndex].icon;
+  const Icon = ALERT_CONFIGS[iconIndex].icon;
 
   return (
     <View style={styles.container}>
@@ -183,12 +167,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
         style={styles.iconContainer}
       >
         <Animated.View style={alertAnimatedStyle}>
-          <AnimatedIcon animatedProps={iconAnimatedProps} size={20} />
+          <Icon style={iconStyle} size={20} />
         </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
-        <StaticIcon color={'white'} size={20} style={styles.popupIcon} />
+        <Icon color={'white'} size={20} style={styles.popupIcon} />
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>
           {ALERT_CONFIGS[iconIndex].label}
         </Text>
