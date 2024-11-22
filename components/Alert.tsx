@@ -101,11 +101,13 @@ export default function Alert({ index, isOverlay = false }: Props) {
     bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
     setIsPopupActive(true);
+    const removeAfter = 1500;
+
     timeoutRef.current = setTimeout(() => {
       fadeAnim.value = withTiming(0, TIMING_CONFIG);
       bounceAnim.value = withSpring(0, SPRING_CONFIG);
       setIsPopupActive(false);
-    }, 2000);
+    }, removeAfter);
   }, [iconIndex, index]);
 
   const alertAnimatedStyle = useAnimatedStyle(() => {
