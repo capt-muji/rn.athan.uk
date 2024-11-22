@@ -18,7 +18,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   const isLastThird = schedule.today[index].english.toLowerCase() === 'last third';
 
-  const isOverlayOn = false;
+  // const isOverlayOn = false;
 
   const prayer = schedule.today[index];
   const isPassed = index < schedule.nextIndex
@@ -27,27 +27,31 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const viewRef = useRef<View>(null);
 
   const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
-  const backgroundOpacity = useSharedValue(0);
+  // const backgroundOpacity = useSharedValue(0);
 
   // handle non-overlay animations
   useEffect(() => {
     if (isPassed) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.duration });
+      return;
     };
 
     if (isNext) {
       textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
+      return;
     };
+
+    textOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow });
   }, [schedule.nextIndex]);
 
   // handle overlay animations
-  useEffect(() => {
-    if (isOverlay && schedule.selectedIndex === schedule.nextIndex) {
-      backgroundOpacity.value = 1;
-    } else {
-      backgroundOpacity.value = 0;
-    }
-  }, [isOverlayOn]);
+  // useEffect(() => {
+  //   if (isOverlay && schedule.selectedIndex === schedule.nextIndex) {
+  //     backgroundOpacity.value = 1;
+  //   } else {
+  //     backgroundOpacity.value = 0;
+  //   }
+  // }, [isOverlayOn]);
 
   // const handlePress = () => {
   //   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -62,7 +66,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   const animatedTextStyle = useAnimatedStyle(() => {
     if (isOverlay || isLastThird) return {
-      color: 'white',
+      color: COLORS.textPrimary,
       opacity: 1,
     };
 
@@ -77,16 +81,14 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     };
   });
 
-  const computedStyles: ViewStyle = {};
-
   return (
     <AnimatedPressable
       ref={viewRef}
       style={styles.container}
     // onPress={handlePress}
     >
-      <Animated.Text style={[styles.text, styles.english, computedStyles, animatedTextStyle]}>{prayer.english}</Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, computedStyles, animatedTextStyle]}>{prayer.arabic}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}>{prayer.english}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}>{prayer.arabic}</Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} />
       <Alert index={index} isOverlay={isOverlay} />
     </AnimatedPressable>
