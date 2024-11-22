@@ -132,8 +132,8 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   const { icon: IconComponent } = ALERT_CONFIGS[iconIndex];
 
-  let iconColor = isOverlay ? 'white'
-    : (isPopupActive || isPassed || isNext || isLastThird ? COLORS.activePrayer : COLORS.inactivePrayer);
+  let iconColor = isOverlay ? 'green'
+    : (isPopupActive || isPassed || isNext || isLastThird ? 'black' : 'orange');
 
   return (
     <View style={styles.container}>
