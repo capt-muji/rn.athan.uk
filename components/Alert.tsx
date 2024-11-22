@@ -1,17 +1,18 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, forwardRef } from 'react';
 import { StyleSheet, Pressable, Text, View, GestureResponderEvent } from 'react-native';
 import { PiVibrate, PiBellSimpleSlash, PiBellSimpleRinging, PiSpeakerSimpleHigh } from "rn-icons/pi";
 import { useAtom } from 'jotai';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  useAnimatedProps,
   withSpring,
   interpolate,
   withTiming
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, ANIMATION, PRAYER, PRAYERS_ENGLISH } from '@/shared/constants';
+import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD } from '@/shared/constants';
 import { AlertType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom, alertPreferencesAtom } from '@/stores/store';
@@ -20,17 +21,47 @@ import { setAlertPreference } from '@/stores/actions';
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
 
+const WrappedBellSlash = forwardRef((props, ref) => <PiBellSimpleSlash {...props} ref={ref} />);
+const WrappedBellRinging = forwardRef((props, ref) => <PiBellSimpleRinging {...props} ref={ref} />);
+const WrappedVibrate = forwardRef((props, ref) => <PiVibrate {...props} ref={ref} />);
+const WrappedSpeaker = forwardRef((props, ref) => <PiSpeakerSimpleHigh {...props} ref={ref} />);
+
+const AnimatedBellSlash = Animated.createAnimatedComponent(WrappedBellSlash);
+const AnimatedBellRinging = Animated.createAnimatedComponent(WrappedBellRinging);
+const AnimatedVibrate = Animated.createAnimatedComponent(WrappedVibrate);
+const AnimatedSpeaker = Animated.createAnimatedComponent(WrappedSpeaker);
+
 const ALERT_CONFIGS = [
-  { icon: PiBellSimpleSlash, label: "Off", type: AlertType.Off },
-  { icon: PiBellSimpleRinging, label: "Notification", type: AlertType.Notification },
-  { icon: PiVibrate, label: "Vibrate", type: AlertType.Vibrate },
-  { icon: PiSpeakerSimpleHigh, label: "Sound", type: AlertType.Sound }
+  {
+    icon: PiBellSimpleSlash,
+    animatedIcon: AnimatedBellSlash,
+    label: "Off",
+    type: AlertType.Off
+  },
+  {
+    icon: PiBellSimpleRinging,
+    animatedIcon: AnimatedBellRinging,
+    label: "Notification",
+    type: AlertType.Notification
+  },
+  {
+    icon: PiVibrate,
+    animatedIcon: AnimatedVibrate,
+    label: "Vibrate",
+    type: AlertType.Vibrate
+  },
+  {
+    icon: PiSpeakerSimpleHigh,
+    animatedIcon: AnimatedSpeaker,
+    label: "Sound",
+    type: AlertType.Sound
+  }
 ] as const;
 
 interface Props { index: number; isOverlay?: boolean; }
 
 export default function Alert({ index, isOverlay = false }: Props) {
-  const isLastThird = index === PRAYERS_ENGLISH.length - 1;
+  const isLastThird = index === PRAYER_INDEX_LAST_THIRD;
   const { nextIndex } = useAtomValue(scheduleAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom);
 
@@ -130,10 +161,18 @@ export default function Alert({ index, isOverlay = false }: Props) {
     bounceAnim.value = 0;
   }, []);
 
-  const { icon: IconComponent } = ALERT_CONFIGS[iconIndex];
+  const iconAnimatedProps = useAnimatedProps(() => {
+    const targetColor = isOverlay
+      ? 'green'
+      : ((isPassed || isNext || isLastThird) ? 'black' : 'orange');
 
-  let iconColor = isOverlay ? 'green'
-    : (isPopupActive || isPassed || isNext || isLastThird ? 'black' : 'orange');
+    return {
+      color: withTiming(targetColor, { duration: 2000 })
+    };
+  }, [isOverlay, isPassed, isNext, isLastThird]);
+
+  const AnimatedIcon = ALERT_CONFIGS[iconIndex].animatedIcon;
+  const StaticIcon = ALERT_CONFIGS[iconIndex].icon;
 
   return (
     <View style={styles.container}>
@@ -144,13 +183,15 @@ export default function Alert({ index, isOverlay = false }: Props) {
         style={styles.iconContainer}
       >
         <Animated.View style={alertAnimatedStyle}>
-          <IconComponent color={iconColor} size={20} />
+          <AnimatedIcon animatedProps={iconAnimatedProps} size={20} />
         </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
-        <IconComponent color={(isOverlay && !isNext) ? 'white' : COLORS.activePrayer} size={20} style={styles.popupIcon} />
-        <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>{ALERT_CONFIGS[iconIndex].label}</Text>
+        <StaticIcon color={'white'} size={20} style={styles.popupIcon} />
+        <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>
+          {ALERT_CONFIGS[iconIndex].label}
+        </Text>
       </Animated.View>
     </View>
   );
