@@ -73,3 +73,5 @@ export const scheduleAtom = atom<ScheduleStore>({
 export const overlayAtom = atom<OverlayStore>({
   isOn: false
 });
+
+export const isBackgroundActiveAtom = atom<boolean>(true);
