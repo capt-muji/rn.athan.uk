@@ -24,24 +24,18 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   const viewRef = useRef<View>(null);
 
-  const textOpacity = useSharedValue(isPassed || isNext ? 1 : TEXT.opacity);
-  const textColor = useSharedValue(isPassed || isNext ? 1 : 0);
+  const colorProgress = useSharedValue(isPassed || isNext ? 1 : 0);
 
   // handle non-overlay animations
   useEffect(() => {
     if (isNext || isPassed) {
-      textOpacity.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
-      textColor.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
+      colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
       return;
     };
 
     // Isha prayer just finished
     if (schedule.nextIndex === PRAYER_INDEX_FAJR) {
-      textOpacity.value = withDelay(
-        getCascadeDelay(index),
-        withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
-      );
-      textColor.value = withDelay(
+      colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
       );
@@ -72,18 +66,14 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   const animatedTextStyle = useAnimatedStyle(() => {
     if (isOverlay || isLastThird) return {
       color: COLORS.activePrayer,
-      opacity: 1,
     };
 
-    const color = interpolateColor(
-      textColor.value,
-      [0, 1],
-      [COLORS.inactivePrayer, COLORS.activePrayer]
-    );
-
     return {
-      color,
-      opacity: textOpacity.value,
+      color: interpolateColor(
+        colorProgress.value,
+        [0, 1],
+        [COLORS.inactivePrayer, COLORS.activePrayer]
+      ),
     };
   });
 
