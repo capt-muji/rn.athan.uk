@@ -36,6 +36,7 @@ export const ANIMATION = {
   durationSlow: 1000,
   durationSlower: 1500,
   overlayDelay: 150,
+  cascadeDelay: 150,
 };
 
 export const OVERLAY = {
