@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, ANIMATION } from '@/shared/constants';
+import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
 import { AlertType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom } from '@/stores/store';
@@ -185,18 +185,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: 10,
-    // shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowOpacity: 0.5,
-    // shadowRadius: 3.84,
     backgroundColor: 'black',
+    ...PRAYER.shadow
   },
   popupOverlay: {
     backgroundColor: COLORS.primary,
-    // shadowColor: COLORS.primaryShadow,
-    // shadowOffset: { width: 0, height: 5 },
-    // shadowOpacity: 0.35,
-    // shadowRadius: 10,
+    shadowColor: COLORS.primaryShadow,
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.35,
+    shadowRadius: 10,
   },
   popupIcon: {
     marginRight: 15
