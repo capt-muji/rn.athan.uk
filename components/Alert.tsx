@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
+import { COLORS, TEXT, ANIMATION, PRAYER, PRAYERS_ENGLISH } from '@/shared/constants';
 import { AlertType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom } from '@/stores/store';
@@ -29,7 +29,8 @@ const ALERT_CONFIGS = [
 interface Props { index: number; isOverlay?: boolean; }
 
 export default function Alert({ index, isOverlay = false }: Props) {
-  const { today, nextIndex } = useAtomValue(scheduleAtom);
+  const isLastThird = index === PRAYERS_ENGLISH.length - 1;
+  const { nextIndex } = useAtomValue(scheduleAtom);
 
   const overlayVisible = false;
 
@@ -141,7 +142,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
     : (isPopupActive || isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent);
 
 
-  if (today[index].index === 7) {
+  if (isLastThird) {
     iconColor = 'white'
     textOpacity.value = 1;
   }
