@@ -1,17 +1,15 @@
 import { View, StyleSheet, Text } from 'react-native';
 import Prayer from './Prayer';
-import { TEXT, PRAYER, SCREEN, PRAYERS_ENGLISH, COLORS } from '@/shared/constants';
+import { TEXT, PRAYER, SCREEN, PRAYERS_ENGLISH, COLORS, PRAYER_INDEX_LAST_THIRD } from '@/shared/constants';
 
 export default function PrayerLastThird() {
-  const lastThirdIndex = PRAYERS_ENGLISH.length - 1;
-
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
         <Text style={styles.text}>Fri, 20th</Text>
         <Text style={styles.text}>8h 32m 28s</Text>
       </View>
-      <Prayer index={lastThirdIndex} />
+      <Prayer index={PRAYER_INDEX_LAST_THIRD} />
     </View>
   );
 }

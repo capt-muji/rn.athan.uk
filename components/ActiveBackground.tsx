@@ -8,7 +8,7 @@ import Animated, {
   Easing,
   interpolateColor
 } from 'react-native-reanimated';
-import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
+import { ANIMATION, COLORS, PRAYER, PRAYER_INDEX_FAJR } from '@/shared/constants';
 import { dateAtom, scheduleAtom, isBackgroundActiveAtom } from '@/stores/store';
 
 export default function ActiveBackground() {
@@ -18,14 +18,14 @@ export default function ActiveBackground() {
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
   const opacity = useSharedValue(1);
   const colorProgress = useSharedValue(0);
+  const isFajr = schedule.nextIndex === PRAYER_INDEX_FAJR && date.current === date.current;
 
   useEffect(() => {
     translateY.value = schedule.nextIndex * PRAYER.height;
 
-    // Check if it's midnight reset on the same day
-    if (schedule.nextIndex === 0 && date.current === date.current) {
-      opacity.value = withTiming(0.1, { duration: ANIMATION.durationSlow });
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
+    if (isFajr) {
+      opacity.value = withTiming(0.1, { duration: ANIMATION.durationSlowest });
+      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
     } else {
       opacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
       colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
@@ -41,8 +41,8 @@ export default function ActiveBackground() {
     ),
     transform: [{
       translateY: withTiming(translateY.value, {
-        duration: ANIMATION.durationSlower,
-        easing: Easing.elastic(0.75)
+        duration: isFajr ? ANIMATION.durationSlowest : ANIMATION.durationSlower,
+        easing: Easing.elastic(0.5)
       })
     }],
   }));
