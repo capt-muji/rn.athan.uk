@@ -12,7 +12,7 @@ export const createLondonDate = (date?: Date | string): Date => {
 
 // Returns formatted date string for today or tomorrow
 // Based on the provided day selection parameter
-export const getRecentDate = (daySelection: DaySelection): string => {
+export const getDateTodayOrTomorrow = (daySelection: DaySelection): string => {
   let date = createLondonDate();
   
   if (daySelection === 'tomorrow') {
