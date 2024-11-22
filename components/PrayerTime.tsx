@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
+import { withTiming, useSharedValue, withDelay, useAnimatedStyle, interpolateColor } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
 import { TEXT, ANIMATION, COLORS, PRAYERS_ENGLISH } from '@/shared/constants';
 import { useEffect } from 'react';
@@ -24,12 +24,37 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
   const originalOpacity = useSharedValue(baseOpacity);
   const overlayTodayOpacity = useSharedValue(0);
   const overlayTomorrowOpacity = useSharedValue(0);
+  const textColor = useSharedValue(isPassed || isNext ? 1 : 0);
+
+  // Add cascade delay helper function
+  const getCascadeDelay = (currentIndex: number) => {
+    const delay = 100;
+    const totalPrayers = 7;
+    return (totalPrayers - currentIndex) * delay;
+  };
 
   useEffect(() => {
     if (index === nextIndex) {
       originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-    } else if (!isPassed) {
-      originalOpacity.value = TEXT.opacity;
+      textColor.value = withTiming(1, { duration: ANIMATION.durationSlow });
+      return;
+    }
+
+    if (nextIndex === 0) {
+      originalOpacity.value = withDelay(
+        getCascadeDelay(index),
+        withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
+      );
+      textColor.value = withDelay(
+        getCascadeDelay(index),
+        withTiming(0, { duration: ANIMATION.durationSlow })
+      );
+      return;
+    }
+
+    if (!isPassed) {
+      originalOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow });
+      textColor.value = withTiming(0, { duration: ANIMATION.durationSlow });
     }
   }, [nextIndex]);
 
@@ -62,20 +87,28 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
 
   }, [overlayVisible]);
 
-  const computedStyles = {
-    color: isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent,
-    opacity: originalOpacity,
-  };
+  const mainTextStyle = useAnimatedStyle(() => {
+    if (isLastThird) return {
+      color: 'white',
+      opacity: 1,
+    };
 
-  if (isLastThird) {
-    originalOpacity.value = 1;
-    computedStyles.color = 'white';
-  }
+    const color = interpolateColor(
+      textColor.value,
+      [0, 1],
+      [COLORS.textTransparent, COLORS.textPrimary]
+    );
+
+    return {
+      color,
+      opacity: originalOpacity.value,
+    };
+  });
 
   return (
     <View style={[styles.container, { width: 95 }]}>
       {/* Main text (non-overlay) */}
-      <Animated.Text style={[styles.text, computedStyles]}>
+      <Animated.Text style={[styles.text, mainTextStyle]}>
         {todayTime}
       </Animated.Text>
 
