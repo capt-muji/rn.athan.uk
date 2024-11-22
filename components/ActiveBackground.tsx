@@ -12,28 +12,22 @@ import { ANIMATION, COLORS, PRAYER, PRAYER_INDEX_FAJR } from '@/shared/constants
 import { dateAtom, scheduleAtom, isBackgroundActiveAtom } from '@/stores/store';
 
 export default function ActiveBackground() {
+  const isActive = useAtomValue(isBackgroundActiveAtom);
   const date = useAtomValue(dateAtom);
   const schedule = useAtomValue(scheduleAtom);
-  const isActive = useAtomValue(isBackgroundActiveAtom);
-  const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
-  const opacity = useSharedValue(1);
-  const colorProgress = useSharedValue(0);
   const isFajr = schedule.nextIndex === PRAYER_INDEX_FAJR && date.current === date.current;
+  const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
+  const colorProgress = useSharedValue(0);
 
   useEffect(() => {
     translateY.value = schedule.nextIndex * PRAYER.height;
 
-    if (isFajr) {
-      opacity.value = withTiming(0.1, { duration: ANIMATION.durationSlowest });
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
-    } else {
-      opacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
-    }
+    colorProgress.value = withTiming(isFajr ? 1 : 0, {
+      duration: isFajr ? ANIMATION.durationSlowest : ANIMATION.durationSlow
+    });
   }, [schedule.nextIndex, date, isActive]);
 
   const animatedStyles = useAnimatedStyle(() => ({
-    opacity: opacity.value,
     backgroundColor: interpolateColor(
       colorProgress.value,
       [0, 1],
@@ -56,10 +50,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: PRAYER.height,
     borderRadius: 8,
-    shadowOffset: { width: 1, height: 10 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-    backgroundColor: COLORS.activeBackground,
-    shadowColor: COLORS.activeBackgroundShadow
+    ...PRAYER.shadow,
   }
 });
