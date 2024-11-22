@@ -30,7 +30,7 @@ export default function ActiveBackground() {
       opacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
       colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
     }
-  }, [isActive]);
+  }, [schedule.nextIndex, date, isActive]);
 
   const animatedStyles = useAnimatedStyle(() => ({
     opacity: opacity.value,
