@@ -58,7 +58,5 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.famiy.regular,
     letterSpacing: 0.5,
     fontSize: TEXT.sizeSmaller,
-    // color: '#a0bcf487',
-    color: COLORS.inactivePrayer
   },
 });
