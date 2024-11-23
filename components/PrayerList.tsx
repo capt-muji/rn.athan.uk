@@ -17,6 +17,6 @@ export default function PrayerList() {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-    marginBottom: 35,
+    marginBottom: 80,
   },
 });

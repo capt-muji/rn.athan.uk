@@ -23,21 +23,24 @@ export default function PrayerLastThird() {
     color: interpolateColor(
       colorProgress.value,
       [0, 1],
-      [COLORS.inactivePrayer, '#a0bcf487']
+      [COLORS.inactivePrayer, '#8eaff1aa']
     ),
   }));
 
   const animatedContainerStyle = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(
-      colorProgress.value,
-      [0, 1],
-      ['#4d26a74d', '#6941c63f']
-    ),
-    borderColor: interpolateColor(
-      colorProgress.value,
-      [0, 1],
-      ['#5330a338', '#6941c63f']
-    ),
+    opacity: colorProgress.value,
+    // backgroundColor: interpolateColor(
+    //   colorProgress.value,
+    //   [0, 1],
+    //   // ['#4d26a74d', '#6941c63f']
+    //   ['#4d26a74d', '#0d0226d2']
+    // ),
+    // borderColor: interpolateColor(
+    //   colorProgress.value,
+    //   [0, 1],
+    //   // ['#5330a338', '#6941c63f']
+    //   ['#5330a338', '#6941c63f']
+    // ),
   }));
 
   return (
@@ -55,6 +58,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
     borderWidth: 1,
+    backgroundColor: '#0d0226d2',
     ...PRAYER.border,
     ...PRAYER.shadow,
   },
