@@ -26,8 +26,10 @@ export const SCREEN = {
 };
 
 export const COLORS = {
-  gradientStart: '#031a4c',
-  gradientEnd: '#5b1eaa',
+  gradientScreen1Start: '#031a4c',
+  gradientScreen1End: '#5b1eaa',
+  gradientScreen2Start: '#140B5D',
+  gradientScreen2End: '#06000E',
 
   activePrayer: '#ffffff',
   inactivePrayer: '#8aa9d662',
