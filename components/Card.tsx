@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { ScheduleType } from '@/shared/types';
 
-export default function PrayerLastThird() {
+export default function Card() {
   const schedule = useAtomValue(extraScheduleAtom);
 
   const colorProgress = useSharedValue(0);
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
     borderWidth: 1,
-    // backgroundColor: '#0d0226d2',
     ...PRAYER.border,
     ...PRAYER.shadow,
   },
