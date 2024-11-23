@@ -27,22 +27,22 @@ const TIMING_CONFIG = { duration: 5 };
 
 const ALERT_CONFIGS = [
   {
-    icon: Animated.createAnimatedComponent(BellSlash),
+    icon: BellSlash,
     label: "Off",
     type: AlertType.Off
   },
   {
-    icon: Animated.createAnimatedComponent(BellRing),
+    icon: BellRing,
     label: "Notification",
     type: AlertType.Notification
   },
   {
-    icon: Animated.createAnimatedComponent(Vibrate),
+    icon: Vibrate,
     label: "Vibrate",
     type: AlertType.Vibrate
   },
   {
-    icon: Animated.createAnimatedComponent(Speaker),
+    icon: Speaker,
     label: "Sound",
     type: AlertType.Sound
   }
@@ -77,12 +77,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   useEffect(() => {
     if (isPopupActive === true) {
-      colorProgress.value = 1;
+      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
       return;
     };
 
     if (isPopupActive === false) {
-      colorProgress.value = 0;
+      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
     }
   }, [isPopupActive]);
 
@@ -151,14 +151,22 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }]
   }));
 
-  useEffect(() => () => {
-    timeoutRef.current && clearTimeout(timeoutRef.current);
-    fadeAnim.value = 0;
-    bounceAnim.value = 0;
-  }, []);
+  // useEffect(() => () => {
+  //   timeoutRef.current && clearTimeout(timeoutRef.current);
+  //   fadeAnim.value = 0;
+  //   bounceAnim.value = 0;
+  // }, []);
+
+  // useEffect(() => {
+  //   return () => {
+  //     if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  //     fadeAnim.value = 0;
+  //     bounceAnim.value = 0;
+  //   };
+  // }, []);
 
   const iconAnimatedProps = useAnimatedProps(() => ({
-    color: interpolateColor(
+    fill: interpolateColor(
       colorProgress.value,
       [0, 1],
       ['red', 'green']
@@ -176,12 +184,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
         style={styles.iconContainer}
       >
         <Animated.View style={alertAnimatedStyle}>
-          <Icon animatedProps={iconAnimatedProps} color={'orange'} size={20} />
+          <Icon color='blue' animatedProps={iconAnimatedProps} size={20} />
         </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
-        <Icon color={'white'} size={20} />
+        {/* <Icon color={'white'} size={20} /> */}
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>
           {ALERT_CONFIGS[iconIndex].label}
         </Text>
