@@ -33,7 +33,7 @@ export default function GradientBackground() {
   }, [position]);
 
   return (
-    <Canvas style={[StyleSheet.absoluteFillObject, { zIndex: OVERLAY.zindexes.background }]}>
+    <Canvas style={[StyleSheet.absoluteFillObject]}>
       <Rect x={0} y={0} width={width} height={height}>
         <LinearGradient
           start={vec(0, 0)}
