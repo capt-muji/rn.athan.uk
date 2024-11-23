@@ -100,6 +100,13 @@ export enum AlertType {
   Sound = 3
 }
 
+export enum AlertIcon {
+  BELL_RING = 'BELL_RING',
+  BELL_SLASH = 'BELL_SLASH',
+  VIBRATE = 'VIBRATE',
+  SPEAKER = 'SPEAKER'
+}
+
 export interface AlertPreferences {
   [prayerIndex: number]: AlertType;
 }
