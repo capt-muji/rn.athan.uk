@@ -14,7 +14,7 @@ export default function Card({ index }: Props) {
 
   const nextIndex = 1;
   const isNext = index === nextIndex;
-  const isPassed = index < 2;
+  const isPassed = index < nextIndex;
   const colorProgress = useSharedValue(0);
 
   if (isNext) {
@@ -25,16 +25,20 @@ export default function Card({ index }: Props) {
     colorProgress.value = 1;
   }
 
+  // 1 = is passed
+  // 0.5 = is next
+  // 0 = is upcoming
+
   const animatedContainerStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      ['#4d26a74d', '#264aa74d', '#26a7534d']
+      ['#4d26a74d', COLORS.activeBackground, '#280a6a4d']
     ),
     borderColor: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      ['#5330a338', '#3053a338', '#30a35338']
+      ['#5330a338', '#3053a338', '#3815854d']
     ),
   }));
 
@@ -42,7 +46,7 @@ export default function Card({ index }: Props) {
     color: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      [COLORS.inactivePrayer, 'red', 'blue']
+      [COLORS.inactivePrayer, '#96c9ffb4', '#5892d0aa']
     ),
   }));
 
