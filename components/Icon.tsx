@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
 import { AlertIcon } from '@/shared/types';
-import { ICON_PATHS } from '@/assets/icons/icons';
+import ICON_PATHS from '@/assets/icons/icons';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
