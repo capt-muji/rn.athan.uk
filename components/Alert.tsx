@@ -88,9 +88,9 @@ export default function Alert({ index, isOverlay = false }: Props) {
     if (isNext) {
       colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
     } else if (nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
+      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
     } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
+      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
     } else if (nextIndex === PRAYER_INDEX_FAJR) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
