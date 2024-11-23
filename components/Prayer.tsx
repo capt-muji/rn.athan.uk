@@ -26,11 +26,10 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
   const prayer = schedule.today[index];
   const isPassed = index < schedule.nextIndex
   const isNext = index === schedule.nextIndex;
-  const isLastThird = !isStandard && index === PRAYER_INDEX_LAST_THIRD;
 
   const viewRef = useRef<View>(null);
 
-  const colorProgress = useSharedValue(isPassed || isLastThird || isNext ? 1 : 0);
+  const colorProgress = useSharedValue(isPassed || isNext ? 1 : 0);
 
   // handle non-overlay animations
   useEffect(() => {
