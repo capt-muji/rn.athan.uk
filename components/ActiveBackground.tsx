@@ -55,6 +55,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: PRAYER.height,
     borderRadius: 8,
-    ...PRAYER.shadow,
+    // ...PRAYER.shadow,
+    shadowOffset: { width: 1, height: 15 },
+    shadowOpacity: 0.5,
+    shadowRadius: 15,
+    shadowColor: '#001373'
   }
 });

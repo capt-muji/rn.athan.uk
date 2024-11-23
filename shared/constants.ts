@@ -38,7 +38,7 @@ export const COLORS = {
 
   // activeBackground: '#005dd5',
   activeBackground: '#0048ff',
-  activeBackgroundShadow: '#132063',
+  activeBackgroundShadow: '#001373',
   inactiveBackground: '#272b7c',
 
   textSecondary: '#8BA3C7',
@@ -84,9 +84,9 @@ export const PRAYER = {
     borderRadius: 7,
   },
   shadow: {
-    shadowOffset: { width: 1, height: 10 },
+    shadowOffset: { width: 1, height: 15 },
     shadowOpacity: 0.5,
-    shadowRadius: 10,
+    shadowRadius: 15,
     shadowColor: COLORS.activeBackgroundShadow,
   }
 };
