@@ -16,14 +16,6 @@ export default function GradientBackground() {
     end: [COLORS.gradientScreen1End, COLORS.gradientScreen2End],
   }), []);
 
-  const animatedPosition = useDerivedValue(() => {
-    return withSpring(position, {
-      damping: 20,
-      stiffness: 90,
-      mass: 0.5
-    });
-  });
-
   const startColorValue = useSharedValue(colors.start[0]);
   const endColorValue = useSharedValue(colors.end[0]);
 
