@@ -20,15 +20,15 @@ export default function ActiveBackground({ type }: Props) {
 
   const isActive = useAtomValue(isBackgroundActiveAtom);
   const date = useAtomValue(dateAtom);
-  const isFajr = schedule.nextIndex === PRAYER_INDEX_FAJR && date.current === date.current;
+  const isFirstPrayer = schedule.nextIndex === PRAYER_INDEX_FAJR && date.current === date.current;
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
   const colorProgress = useSharedValue(0);
 
   useEffect(() => {
     translateY.value = schedule.nextIndex * PRAYER.height;
 
-    colorProgress.value = withTiming(isFajr ? 1 : 0, {
-      duration: isFajr ? ANIMATION.durationSlowest : ANIMATION.durationSlow
+    colorProgress.value = withTiming(isFirstPrayer ? 1 : 0, {
+      duration: isFirstPrayer ? ANIMATION.durationSlowest : ANIMATION.durationSlow
     });
   }, [schedule.nextIndex, date, isActive]);
 
@@ -40,7 +40,7 @@ export default function ActiveBackground({ type }: Props) {
     ),
     transform: [{
       translateY: withTiming(translateY.value, {
-        duration: isFajr ? ANIMATION.durationSlowest : ANIMATION.durationSlower,
+        duration: isFirstPrayer ? ANIMATION.durationSlowest : ANIMATION.durationSlower,
         easing: Easing.elastic(0.5)
       })
     }],

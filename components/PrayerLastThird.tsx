@@ -13,7 +13,7 @@ export default function PrayerLastThird() {
   const colorProgress = useSharedValue(0);
 
   useEffect(() => {
-    if (schedule.nextIndex === PRAYER_INDEX_FAJR) {
+    if (schedule.nextIndex === 0) {
       colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
     } else {
       colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
@@ -33,14 +33,14 @@ export default function PrayerLastThird() {
     backgroundColor: interpolateColor(
       colorProgress.value,
       [0, 1],
-      // ['#4d26a74d', '#6941c63f']
-      ['#4d26a74d', '#0d0226d2']
+      ['#4d26a74d', '#5230b13e']
+      // ['#4d26a74d', '#0d0226d2']
     ),
     borderColor: interpolateColor(
       colorProgress.value,
       [0, 1],
-      // ['#5330a338', '#6941c63f']
       ['#5330a338', '#6941c63f']
+      // ['#5330a338', '#6941c63f']
     ),
   }));
 
