@@ -9,8 +9,12 @@ interface Props { type: ScheduleType }
 export default function PrayerList({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
+  const computedStyles = {
+    marginBottom: isStandard ? 0 : 25,
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, computedStyles]}>
       <ActiveBackground type={type} />
       {isStandard && <Prayer index={0} type={type} />}
       {isStandard && <Prayer index={1} type={type} />}
@@ -20,7 +24,6 @@ export default function PrayerList({ type }: Props) {
       {isStandard && <Prayer index={5} type={type} />}
       {!isStandard && <Prayer index={0} type={type} />}
       {!isStandard && <Prayer index={1} type={type} />}
-      {!isStandard && <Prayer index={2} type={type} />}
     </View>
   );
 }
@@ -28,6 +31,5 @@ export default function PrayerList({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-    marginBottom: 80,
   },
 });
