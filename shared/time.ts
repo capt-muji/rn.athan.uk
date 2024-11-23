@@ -116,3 +116,12 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
   // Return formatted time string in 24-hour format (HH:mm)
   return format(lastThirdStart, 'HH:mm');
 };
+
+// Calculates the time of Istijaba (59 minutes before Maghrib)
+export const getIstijaba = (magribTime: string): string => {
+  const [hours, minutes] = magribTime.split(':').map(Number);
+  let istijaba = createLondonDate();
+  istijaba = setHours(setMinutes(istijaba, minutes), hours);
+  istijaba = addMins(istijaba, -59);
+  return format(istijaba, 'HH:mm');
+};
