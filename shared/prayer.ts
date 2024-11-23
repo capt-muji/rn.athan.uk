@@ -1,6 +1,6 @@
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
 import { PRAYERS_ENGLISH, PRAYERS_ARABIC, ANIMATION, PRAYERS_LENGTH_FAJR_TO_ISHA, EXTRAS_ENGLISH, EXTRAS_ARABIC } from '@/shared/constants';
-import { isDateTodayOrFuture, getLastThirdOfNight, isTimePassed, addMinutes } from '@/shared/time';
+import { isDateTodayOrFuture, getLastThirdOfNight, getIstijaba, addMinutes } from '@/shared/time';
 
 /**
  * Filters API response data to only include today and future dates
@@ -37,7 +37,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       duha: addMinutes(times.sunrise, 1),
       dhuhr: times.dhuhr,
       asr: times.asr,
-      "istijaba": getLastThirdOfNight(times.magrib, times.fajr),
+      "istijaba": getIstijaba(times.magrib),
       magrib: times.magrib,
       isha: times.isha,
       "last third": getLastThirdOfNight(times.magrib, times.fajr),
