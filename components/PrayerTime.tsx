@@ -29,16 +29,15 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
   useEffect(() => {
     if (isNext) {
       colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
-      return;
-    };
-
-    // Isha prayer just finished
-    if (nextIndex === PRAYER_INDEX_FAJR) {
+    } else if (nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
+      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
+    } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
+      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
+    } else if (nextIndex === PRAYER_INDEX_FAJR) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
       );
-      return;
     }
   }, [nextIndex]);
 
