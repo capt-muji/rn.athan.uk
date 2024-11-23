@@ -2,12 +2,13 @@ import { View, StyleSheet, Text } from 'react-native';
 import Prayer from './Prayer';
 import { TEXT, PRAYER, SCREEN, COLORS, PRAYER_INDEX_LAST_THIRD, ANIMATION, PRAYER_INDEX_FAJR } from '@/shared/constants';
 import { useAtomValue } from 'jotai';
-import { scheduleAtom } from '@/stores/store';
+import { extraScheduleAtom } from '@/stores/store';
 import { useEffect } from 'react';
 import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { ScheduleType } from '@/shared/types';
 
 export default function PrayerLastThird() {
-  const schedule = useAtomValue(scheduleAtom);
+  const schedule = useAtomValue(extraScheduleAtom);
 
   const colorProgress = useSharedValue(0);
 
@@ -29,18 +30,18 @@ export default function PrayerLastThird() {
 
   const animatedContainerStyle = useAnimatedStyle(() => ({
     opacity: colorProgress.value,
-    // backgroundColor: interpolateColor(
-    //   colorProgress.value,
-    //   [0, 1],
-    //   // ['#4d26a74d', '#6941c63f']
-    //   ['#4d26a74d', '#0d0226d2']
-    // ),
-    // borderColor: interpolateColor(
-    //   colorProgress.value,
-    //   [0, 1],
-    //   // ['#5330a338', '#6941c63f']
-    //   ['#5330a338', '#6941c63f']
-    // ),
+    backgroundColor: interpolateColor(
+      colorProgress.value,
+      [0, 1],
+      // ['#4d26a74d', '#6941c63f']
+      ['#4d26a74d', '#0d0226d2']
+    ),
+    borderColor: interpolateColor(
+      colorProgress.value,
+      [0, 1],
+      // ['#5330a338', '#6941c63f']
+      ['#5330a338', '#6941c63f']
+    ),
   }));
 
   return (
@@ -49,7 +50,7 @@ export default function PrayerLastThird() {
         <Animated.Text style={[styles.text, animatedTextStyle]}>Fri, 20th</Animated.Text>
         <Animated.Text style={[styles.text, animatedTextStyle]}>8h 32m 28s</Animated.Text>
       </View>
-      <Prayer index={PRAYER_INDEX_LAST_THIRD} />
+      <Prayer type={ScheduleType.Extra} index={PRAYER_INDEX_LAST_THIRD} />
     </Animated.View>
   );
 }
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
     borderWidth: 1,
-    backgroundColor: '#0d0226d2',
+    // backgroundColor: '#0d0226d2',
     ...PRAYER.border,
     ...PRAYER.shadow,
   },
