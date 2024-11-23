@@ -13,13 +13,13 @@ export default function PrayerLastThird() {
 
   useEffect(() => {
     if (schedule.nextIndex === PRAYER_INDEX_FAJR) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
+      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
     } else {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
+      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
     }
   }, [schedule.nextIndex]);
 
-  const animatedStyle = useAnimatedStyle(() => ({
+  const animatedTextStyle = useAnimatedStyle(() => ({
     color: interpolateColor(
       colorProgress.value,
       [0, 1],
@@ -27,22 +27,33 @@ export default function PrayerLastThird() {
     ),
   }));
 
+  const animatedContainerStyle = useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(
+      colorProgress.value,
+      [0, 1],
+      ['#4d26a74d', '#6941c63f']
+    ),
+    borderColor: interpolateColor(
+      colorProgress.value,
+      [0, 1],
+      ['#5330a338', '#6941c63f']
+    ),
+  }));
+
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, animatedContainerStyle]}>
       <View style={styles.heading}>
-        <Animated.Text style={[styles.text, animatedStyle]}>Fri, 20th</Animated.Text>
-        <Animated.Text style={[styles.text, animatedStyle]}>8h 32m 28s</Animated.Text>
+        <Animated.Text style={[styles.text, animatedTextStyle]}>Fri, 20th</Animated.Text>
+        <Animated.Text style={[styles.text, animatedTextStyle]}>8h 32m 28s</Animated.Text>
       </View>
       <Prayer index={PRAYER_INDEX_LAST_THIRD} />
-    </View>
+    </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-    backgroundColor: '#6941c63f',
-    borderColor: '#6941c64a',
     borderWidth: 1,
     ...PRAYER.border,
     ...PRAYER.shadow,
