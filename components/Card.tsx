@@ -7,9 +7,12 @@ import { useEffect } from 'react';
 import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { ScheduleType } from '@/shared/types';
 
-export default function Card() {
+interface Props { index: number }
+
+export default function Card({ index }: Props) {
   const schedule = useAtomValue(extraScheduleAtom);
 
+  const isNext = index === schedule.nextIndex;
   const colorProgress = useSharedValue(0);
 
   useEffect(() => {
@@ -50,7 +53,7 @@ export default function Card() {
         <Animated.Text style={[styles.text, animatedTextStyle]}>Fri, 20th</Animated.Text>
         <Animated.Text style={[styles.text, animatedTextStyle]}>8h 32m 28s</Animated.Text>
       </View>
-      <Prayer type={ScheduleType.Extra} index={PRAYER_INDEX_LAST_THIRD} />
+      <Prayer type={ScheduleType.Extra} index={index} />
     </Animated.View>
   );
 }
