@@ -13,36 +13,33 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD } from '@/shared/constants';
-import { AlertType } from '@/shared/types';
+import { AlertType, AlertIcon } from '@/shared/types';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom, alertPreferencesAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
-import BellSlash from '@/icons/BellSlash';
-import BellRing from '@/icons/BellRing';
-import Vibrate from '@/icons/Vibrate';
-import Speaker from '@/icons/Speaker';
+import Icon from '@/components/Icon';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
 
 const ALERT_CONFIGS = [
   {
-    icon: BellSlash,
+    icon: AlertIcon.BELL_SLASH,
     label: "Off",
     type: AlertType.Off
   },
   {
-    icon: BellRing,
+    icon: AlertIcon.BELL_RING,
     label: "Notification",
     type: AlertType.Notification
   },
   {
-    icon: Vibrate,
+    icon: AlertIcon.VIBRATE,
     label: "Vibrate",
     type: AlertType.Vibrate
   },
   {
-    icon: Speaker,
+    icon: AlertIcon.SPEAKER,
     label: "Sound",
     type: AlertType.Sound
   }
@@ -173,8 +170,6 @@ export default function Alert({ index, isOverlay = false }: Props) {
     ),
   }));
 
-  const Icon = ALERT_CONFIGS[iconIndex].icon;
-
   return (
     <View style={styles.container}>
       <Pressable
@@ -184,12 +179,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
         style={styles.iconContainer}
       >
         <Animated.View style={alertAnimatedStyle}>
-          <Icon animatedProps={iconAnimatedProps} size={20} />
+          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={iconAnimatedProps} />
         </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
-        <Icon color={'white'} size={20} />
+        <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} color="white" />
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>
           {ALERT_CONFIGS[iconIndex].label}
         </Text>
