@@ -13,12 +13,13 @@ import Animated, {
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD } from '@/shared/constants';
+import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
 import { AlertType, AlertIcon } from '@/shared/types';
 import { useAtomValue } from 'jotai';
 import { scheduleAtom, alertPreferencesAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
 import Icon from '@/components/Icon';
+import { getCascadeDelay } from '@/shared/prayer';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
@@ -86,7 +87,17 @@ export default function Alert({ index, isOverlay = false }: Props) {
   useEffect(() => {
     if (isNext) {
       colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
+      return;
     };
+
+    // Isha prayer just finished
+    if (nextIndex === PRAYER_INDEX_FAJR) {
+      colorProgress.value = withDelay(
+        getCascadeDelay(index),
+        withTiming(0, { duration: ANIMATION.durationSlow })
+      );
+      return;
+    }
   }, [nextIndex]);
 
   // useEffect(() => {
