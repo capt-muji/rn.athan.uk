@@ -70,11 +70,6 @@ export const incrementNextIndex = (type: ScheduleType) => {
   const isLastPrayer = schedule.nextIndex === Object.keys(schedule.today).length - 1;
   const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
 
-  console.log('EEEEEE');
-  console.log(isLastPrayer);
-  console.log(nextIndex);
-  console.log('OOOO');
-  
   const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, {  ...schedule, nextIndex });
 };
