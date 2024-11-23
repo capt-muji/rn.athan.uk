@@ -8,7 +8,8 @@ import Animated, {
   interpolate,
   withTiming,
   interpolateColor,
-  useAnimatedProps
+  useAnimatedProps,
+  withDelay
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 
@@ -49,7 +50,7 @@ interface Props { index: number; isOverlay?: boolean; }
 
 export default function Alert({ index, isOverlay = false }: Props) {
   const isLastThird = index === PRAYER_INDEX_LAST_THIRD;
-  const { nextIndex } = useAtomValue(scheduleAtom);
+  const { nextIndex, today } = useAtomValue(scheduleAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom);
 
   // const overlayVisible = false;
@@ -71,24 +72,21 @@ export default function Alert({ index, isOverlay = false }: Props) {
   const defaultColorProgress = isPopupActive || isPassed || isNext ? 1 : 0;
   const colorProgress = useSharedValue(defaultColorProgress);
 
+  // useEffect(() => {
+  //   if (isPopupActive === true) {
+  //     colorProgress.value = withTiming(1, { duration: ANIMATION.duration });
+  //     return;
+  //   };
+
+  //   if (isPopupActive === false) {
+  //     colorProgress.value = withTiming(0, { duration: ANIMATION.duration });
+  //   }
+  // }, [isPopupActive]);
 
   useEffect(() => {
-    if (isPopupActive === true) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.duration });
-      return;
+    if (isNext) {
+      colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
     };
-
-    if (isPopupActive === false) {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.duration });
-    }
-  }, [isPopupActive]);
-
-  useEffect(() => {
-    if (index === nextIndex) {
-      textOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-    } else if (!isPassed) {
-      textOpacity.value = baseOpacity;
-    }
   }, [nextIndex]);
 
   // useEffect(() => {
@@ -136,7 +134,7 @@ export default function Alert({ index, isOverlay = false }: Props) {
     };
 
     return {
-      opacity: textOpacity.value,
+      // opacity: textOpacity.value,
       transform: [{ scale: pressAnim.value }]
     };
   });
@@ -148,39 +146,39 @@ export default function Alert({ index, isOverlay = false }: Props) {
     }]
   }));
 
-  // useEffect(() => () => {
-  //   timeoutRef.current && clearTimeout(timeoutRef.current);
-  //   fadeAnim.value = 0;
-  //   bounceAnim.value = 0;
-  // }, []);
+  useEffect(() => () => {
+    timeoutRef.current && clearTimeout(timeoutRef.current);
+    fadeAnim.value = 0;
+    bounceAnim.value = 0;
+  }, []);
 
-  // useEffect(() => {
-  //   return () => {
-  //     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-  //     fadeAnim.value = 0;
-  //     bounceAnim.value = 0;
-  //   };
-  // }, []);
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      fadeAnim.value = 0;
+      bounceAnim.value = 0;
+    };
+  }, []);
 
   const iconAnimatedProps = useAnimatedProps(() => ({
     fill: interpolateColor(
       colorProgress.value,
       [0, 1],
-      ['cyan', 'orange']
+      [COLORS.inactivePrayer, COLORS.activePrayer]
     ),
   }));
 
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={handlePress}
+        // onPress={handlePress}
         onPressIn={() => pressAnim.value = withSpring(0.9, SPRING_CONFIG)}
         onPressOut={() => pressAnim.value = withSpring(1, SPRING_CONFIG)}
         style={styles.iconContainer}
       >
-        <Animated.View style={alertAnimatedStyle}>
-          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={iconAnimatedProps} />
-        </Animated.View>
+        {/* <Animated.View style={alertAnimatedStyle}> */}
+        <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={iconAnimatedProps} />
+        {/* </Animated.View> */}
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
