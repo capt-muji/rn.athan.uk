@@ -27,7 +27,7 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
   const overlayTomorrowColor = useSharedValue(0);
 
   useEffect(() => {
-    if (isNext || isPassed) {
+    if (isNext) {
       textColor.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
       return;
     };
