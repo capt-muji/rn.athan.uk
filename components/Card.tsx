@@ -12,7 +12,9 @@ interface Props { index: number }
 export default function Card({ index }: Props) {
   const schedule = useAtomValue(extraScheduleAtom);
 
-  const isNext = index === 2;
+  const nextIndex = 2;
+  const isNext = index === nextIndex;
+  const isPassed = index < 2;
   const colorProgress = useSharedValue(0);
 
   // useEffect(() => {
