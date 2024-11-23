@@ -12,27 +12,18 @@ interface Props { index: number }
 export default function Card({ index }: Props) {
   const schedule = useAtomValue(extraScheduleAtom);
 
-  const isNext = index === schedule.nextIndex;
+  const isNext = index === 2;
   const colorProgress = useSharedValue(0);
 
-  useEffect(() => {
-    if (schedule.nextIndex === 0) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
-    } else {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    }
-  }, [schedule.nextIndex]);
-
-  const animatedTextStyle = useAnimatedStyle(() => ({
-    color: interpolateColor(
-      colorProgress.value,
-      [0, 1],
-      [COLORS.inactivePrayer, '#8eaff1aa']
-    ),
-  }));
+  // useEffect(() => {
+  //   if (schedule.nextIndex === 0) {
+  //     colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
+  //   } else {
+  //     colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
+  //   }
+  // }, [schedule.nextIndex]);
 
   const animatedContainerStyle = useAnimatedStyle(() => ({
-    opacity: colorProgress.value,
     backgroundColor: interpolateColor(
       colorProgress.value,
       [0, 1],
@@ -44,6 +35,14 @@ export default function Card({ index }: Props) {
       [0, 1],
       ['#5330a338', '#6941c63f']
       // ['#5330a338', '#6941c63f']
+    ),
+  }));
+
+  const animatedTextStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(
+      colorProgress.value,
+      [0, 1],
+      [COLORS.inactivePrayer, '#8eaff1aa']
     ),
   }));
 
