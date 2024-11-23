@@ -9,12 +9,17 @@ import Animated, {
   interpolateColor
 } from 'react-native-reanimated';
 import { ANIMATION, COLORS, PRAYER, PRAYER_INDEX_FAJR } from '@/shared/constants';
-import { dateAtom, scheduleAtom, isBackgroundActiveAtom } from '@/stores/store';
+import { dateAtom, extraScheduleAtom, isBackgroundActiveAtom, standardScheduleAtom } from '@/stores/store';
+import { ScheduleType } from '@/shared/types';
 
-export default function ActiveBackground() {
+interface Props { type: ScheduleType }
+
+export default function ActiveBackground({ type }: Props) {
+  const isStandard = type === ScheduleType.Standard;
+  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+
   const isActive = useAtomValue(isBackgroundActiveAtom);
   const date = useAtomValue(dateAtom);
-  const schedule = useAtomValue(scheduleAtom);
   const isFajr = schedule.nextIndex === PRAYER_INDEX_FAJR && date.current === date.current;
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
   const colorProgress = useSharedValue(0);

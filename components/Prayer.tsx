@@ -7,15 +7,21 @@ import { COLORS, TEXT, PRAYER, ANIMATION, PRAYERS_ENGLISH, PRAYER_INDEX_LAST_THI
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import { useAtomValue } from 'jotai';
-import { scheduleAtom } from '@/stores/store';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { getCascadeDelay } from '@/shared/prayer';
+import { ScheduleType } from '@/shared/types';
 
-interface Props { index: number; isOverlay?: boolean; }
+interface Props {
+  index: number;
+  type: ScheduleType;
+  isOverlay?: boolean;
+}
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-export default function Prayer({ index, isOverlay = false }: Props) {
-  const schedule = useAtomValue(scheduleAtom);
+export default function Prayer({ index, type, isOverlay = false }: Props) {
+  const isStandard = type === ScheduleType.Standard;
+  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
   const prayer = schedule.today[index];
   const isPassed = index < schedule.nextIndex
@@ -30,11 +36,11 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   useEffect(() => {
     if (isNext) {
       colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
-    } else if (schedule.nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
-    } else if (schedule.nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    } else if (schedule.nextIndex === PRAYER_INDEX_FAJR) {
+      // } else if (schedule.nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
+      // colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
+      // } else if (schedule.nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
+      // colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
+    } else if (schedule.nextIndex === 0) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
@@ -84,8 +90,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
     >
       <Animated.Text style={[styles.text, styles.english, animatedStyle]}>{prayer.english}</Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedStyle]}>{prayer.arabic}</Animated.Text>
-      <PrayerTime index={index} isOverlay={isOverlay} />
-      <Alert index={index} isOverlay={isOverlay} />
+      <PrayerTime index={index} isOverlay={isOverlay} type={type} />
+      <Alert index={index} isOverlay={isOverlay} type={type} />
     </AnimatedPressable>
   );
 }

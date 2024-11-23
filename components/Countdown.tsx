@@ -1,16 +1,19 @@
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
-import { DaySelection } from '@/shared/types';
+import { DaySelection, ScheduleType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { scheduleAtom, overlayAtom } from '@/stores/store';
+import { overlayAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import { useEffect, useState } from 'react';
 import { formatTime, getDateTodayOrTomorrow, getTimeDifference } from '@/shared/time';
 import { incrementNextIndex } from '@/stores/actions';
 
+interface Props { type: ScheduleType }
 
-export default function Countdown() {
-  const { today, nextIndex } = useAtomValue(scheduleAtom);
+export default function Countdown({ type }: Props) {
+  const isStandard = type === ScheduleType.Standard;
+  const { today, nextIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+
   const overlay = useAtomValue(overlayAtom);
 
   const [countdown, setCountdown] = useState('');
@@ -22,7 +25,7 @@ export default function Countdown() {
     const updateCountdown = () => {
       const diff = getTimeDifference(prayer.time, prayerDate);
 
-      if (diff <= 0) incrementNextIndex();
+      if (diff <= 0) incrementNextIndex(type);
       setCountdown(formatTime(diff));
     };
 

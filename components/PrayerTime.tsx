@@ -4,14 +4,22 @@ import Animated from 'react-native-reanimated';
 import { TEXT, ANIMATION, COLORS, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
 import { useEffect } from 'react';
 import { useAtomValue } from 'jotai';
-import { scheduleAtom } from '@/stores/store';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { getCascadeDelay } from '@/shared/prayer';
+import { ScheduleType } from '@/shared/types';
 
-interface Props { index: number; isOverlay: boolean; }
+interface Props {
+  index: number;
+  type: ScheduleType;
+  isOverlay: boolean;
+};
 
-export default function PrayerTime({ index, isOverlay = false }: Props) {
+
+export default function PrayerTime({ index, type, isOverlay = false }: Props) {
+  const isStandard = type === ScheduleType.Standard;
+  const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+
   const isLastThird = index === PRAYER_INDEX_LAST_THIRD;
-  const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(scheduleAtom);
 
   // const overlayVisible = false;
 
@@ -29,11 +37,11 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
   useEffect(() => {
     if (isNext) {
       colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
-    } else if (nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
-    } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    } else if (nextIndex === PRAYER_INDEX_FAJR) {
+      // } else if (nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
+      // colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
+      // } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
+      // colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
+    } else if (nextIndex === 0) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
