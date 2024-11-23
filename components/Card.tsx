@@ -17,13 +17,8 @@ export default function Card({ index }: Props) {
   const isPassed = index < nextIndex;
   const colorProgress = useSharedValue(0);
 
-  if (isNext) {
-    colorProgress.value = 0.5;
-  }
-
-  if (isPassed) {
-    colorProgress.value = 1;
-  }
+  if (isNext) colorProgress.value = 0.5;
+  if (isPassed) colorProgress.value = 1;
 
   // 1 = is passed
   // 0.5 = is next
@@ -33,12 +28,17 @@ export default function Card({ index }: Props) {
     backgroundColor: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      ['#4d26a74d', COLORS.activeBackground, '#280a6a4d']
+      ['#280a6a1d', '#0048ff', '#280a6a4d']
     ),
     borderColor: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      ['#5330a338', '#3053a338', '#3815854d']
+      ['#39158522', '#3053a338', '#3815854d']
+    ),
+    shadowColor: interpolateColor(
+      colorProgress.value,
+      [0, 0.5, 1],
+      ['#410a7781', '#0a0a7e', '#410a7781']
     ),
   }));
 
@@ -46,7 +46,7 @@ export default function Card({ index }: Props) {
     color: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      [COLORS.inactivePrayer, '#96c9ffb4', '#5892d0aa']
+      [COLORS.inactiveCardText, '#96c9ffb4', '#5892d0aa']
     ),
   }));
 
@@ -66,11 +66,9 @@ const styles = StyleSheet.create({
     marginHorizontal: SCREEN.paddingHorizontal,
     borderWidth: 1,
     ...PRAYER.border,
-    // ...PRAYER.shadow,
-    shadowOffset: { width: 1, height: 10 },
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    shadowColor: '#00003b',
+    shadowOffset: { width: 1, height: 5 },
+    shadowOpacity: 0.85,
+    shadowRadius: 15,
   },
   heading: {
     paddingTop: 15,

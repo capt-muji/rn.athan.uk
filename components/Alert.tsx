@@ -175,13 +175,17 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     };
   }, []);
 
-  const iconAnimatedProps = useAnimatedProps(() => ({
-    fill: interpolateColor(
-      colorProgress.value,
-      [0, 1],
-      [COLORS.inactivePrayer, COLORS.activePrayer]
-    ),
-  }));
+  const iconAnimatedProps = useAnimatedProps(() => {
+    const cardInactiveColor = COLORS.inactiveCardText;
+    const x = isStandard ? COLORS.inactivePrayer : cardInactiveColor;
+    return {
+      fill: interpolateColor(
+        colorProgress.value,
+        [0, 1],
+        [x, COLORS.activePrayer]
+      )
+    }
+  });
 
   return (
     <View style={styles.container}>
