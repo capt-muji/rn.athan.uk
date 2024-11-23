@@ -1,4 +1,4 @@
-import { StyleSheet, View, Pressable, ViewStyle } from 'react-native';
+import { StyleSheet, View, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming, withDelay, useSharedValue, interpolateColor } from 'react-native-reanimated';
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';

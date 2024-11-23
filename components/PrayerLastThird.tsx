@@ -1,13 +1,37 @@
 import { View, StyleSheet, Text } from 'react-native';
 import Prayer from './Prayer';
-import { TEXT, PRAYER, SCREEN, PRAYERS_ENGLISH, COLORS, PRAYER_INDEX_LAST_THIRD } from '@/shared/constants';
+import { TEXT, PRAYER, SCREEN, COLORS, PRAYER_INDEX_LAST_THIRD, ANIMATION, PRAYER_INDEX_FAJR } from '@/shared/constants';
+import { useAtomValue } from 'jotai';
+import { scheduleAtom } from '@/stores/store';
+import { useEffect } from 'react';
+import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 export default function PrayerLastThird() {
+  const schedule = useAtomValue(scheduleAtom);
+
+  const colorProgress = useSharedValue(0);
+
+  useEffect(() => {
+    if (schedule.nextIndex === PRAYER_INDEX_FAJR) {
+      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
+    } else {
+      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
+    }
+  }, [schedule.nextIndex]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(
+      colorProgress.value,
+      [0, 1],
+      [COLORS.inactivePrayer, '#a0bcf487']
+    ),
+  }));
+
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.text}>Fri, 20th</Text>
-        <Text style={styles.text}>8h 32m 28s</Text>
+        <Animated.Text style={[styles.text, animatedStyle]}>Fri, 20th</Animated.Text>
+        <Animated.Text style={[styles.text, animatedStyle]}>8h 32m 28s</Animated.Text>
       </View>
       <Prayer index={PRAYER_INDEX_LAST_THIRD} />
     </View>
@@ -34,6 +58,7 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.famiy.regular,
     letterSpacing: 0.5,
     fontSize: TEXT.sizeSmaller,
-    color: '#a0bcf487',
+    // color: '#a0bcf487',
+    color: COLORS.inactivePrayer
   },
 });
