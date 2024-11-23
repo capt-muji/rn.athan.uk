@@ -4,8 +4,8 @@ export const PRAYER_INDEX_FAJR = 0;
 export const PRAYER_INDEX_ISHA = 5;
 export const PRAYERS_LENGTH_FAJR_TO_ISHA = 6;
 
-export const EXTRAS_ENGLISH = ["Duha", "Last Third"];
-export const EXTRAS_ARABIC = ["الضحى", "آخر ثلث"];
+export const EXTRAS_ENGLISH = ["Duha", "Istijaba","Last Third"];
+export const EXTRAS_ARABIC = ["الضحى", "استجابة", "آخر ثلث"];
 export const PRAYER_INDEX_LAST_THIRD = 1;
 
 

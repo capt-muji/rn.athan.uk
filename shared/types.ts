@@ -32,6 +32,7 @@ export interface ISingleApiResponseTransformed {
   duha: string;
   dhuhr: string;
   asr: string;
+  "istijaba": string;
   magrib: string;
   isha: string;
   "last third": string;
