@@ -64,7 +64,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   // };
 
   const animatedTextStyle = useAnimatedStyle(() => {
-    if (isOverlay || isLastThird) return {
+    if (isOverlay) return {
       color: COLORS.activePrayer,
     };
 
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
+    color: '#a0bcf487',
   },
   english: {
     paddingLeft: PRAYER.padding.left,
