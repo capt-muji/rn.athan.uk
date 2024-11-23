@@ -22,19 +22,19 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
 
   const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
 
-  const textColor = useSharedValue(isPassed || isNext ? 1 : 0);
+  const colorProgress = useSharedValue(isPassed || isNext ? 1 : 0);
   const overlayTodayColor = useSharedValue(0);
   const overlayTomorrowColor = useSharedValue(0);
 
   useEffect(() => {
     if (isNext) {
-      textColor.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
+      colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
       return;
     };
 
     // Isha prayer just finished
     if (nextIndex === PRAYER_INDEX_FAJR) {
-      textColor.value = withDelay(
+      colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
       );
@@ -45,7 +45,7 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
   // useEffect(() => {
   //   if (isNext) {
   //     originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-  //     textColor.value = withTiming(1, { duration: ANIMATION.durationSlow });
+  //     colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
   //     return;
   //   }
 
@@ -54,7 +54,7 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
   //       getCascadeDelay(index),
   //       withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
   //     );
-  //     textColor.value = withDelay(
+  //     colorProgress.value = withDelay(
   //       getCascadeDelay(index),
   //       withTiming(0, { duration: ANIMATION.durationSlow })
   //     );
@@ -63,7 +63,7 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
 
   //   if (!isPassed) {
   //     originalOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow });
-  //     textColor.value = withTiming(0, { duration: ANIMATION.durationSlow });
+  //     colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
   //   }
   // }, [nextIndex]);
 
@@ -97,13 +97,9 @@ export default function PrayerTime({ index, isOverlay = false }: Props) {
   // }, [overlayVisible]);
 
   const mainTextStyle = useAnimatedStyle(() => {
-    if (isLastThird) return {
-      color: COLORS.activePrayer,
-    };
-
     return {
       color: interpolateColor(
-        textColor.value,
+        colorProgress.value,
         [0, 1],
         [COLORS.inactivePrayer, COLORS.activePrayer]
       ),
