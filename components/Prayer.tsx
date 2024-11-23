@@ -30,16 +30,15 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   useEffect(() => {
     if (isNext) {
       colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
-      return;
-    };
-
-    // Isha prayer just finished
-    if (schedule.nextIndex === PRAYER_INDEX_FAJR) {
+    } else if (schedule.nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
+      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
+    } else if (schedule.nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
+      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
+    } else if (schedule.nextIndex === PRAYER_INDEX_FAJR) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
       );
-      return;
     }
   }, [schedule.nextIndex]);
 
@@ -63,7 +62,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
   //   app.setIsOverlayOn(true);
   // };
 
-  const animatedTextStyle = useAnimatedStyle(() => {
+  const animatedStyle = useAnimatedStyle(() => {
     if (isOverlay) return {
       color: COLORS.activePrayer,
     };
@@ -83,8 +82,8 @@ export default function Prayer({ index, isOverlay = false }: Props) {
       style={styles.container}
     // onPress={handlePress}
     >
-      <Animated.Text style={[styles.text, styles.english, animatedTextStyle]}>{prayer.english}</Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, animatedTextStyle]}>{prayer.arabic}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.english, animatedStyle]}>{prayer.english}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, animatedStyle]}>{prayer.arabic}</Animated.Text>
       <PrayerTime index={index} isOverlay={isOverlay} />
       <Alert index={index} isOverlay={isOverlay} />
     </AnimatedPressable>
@@ -100,7 +99,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
-    color: '#a0bcf487',
   },
   english: {
     paddingLeft: PRAYER.padding.left,
