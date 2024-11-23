@@ -7,7 +7,6 @@ import { ANIMATION } from '@/shared/constants';
 import Standard from '@/screens/Standard';
 import Extra from '@/screens/Extra';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScheduleType } from '@/shared/types';
 import { pagePositionAtom } from '@/stores/store';
 
 export default function Navigation() {

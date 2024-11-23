@@ -15,7 +15,7 @@ export default function PrayerList({ type }: Props) {
 
   return (
     <View style={[styles.container, computedStyles]}>
-      <ActiveBackground type={type} />
+      {/* <ActiveBackground type={type} /> */}
       {isStandard && <Prayer index={0} type={type} />}
       {isStandard && <Prayer index={1} type={type} />}
       {isStandard && <Prayer index={2} type={type} />}
