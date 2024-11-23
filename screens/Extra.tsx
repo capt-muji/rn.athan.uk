@@ -12,6 +12,7 @@ import { ScheduleType } from '@/shared/types';
 import { standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import { useAtomValue } from 'jotai';
 import PrayerList from '@/components/PrayerList';
+import PrayerLastThird from '@/components/PrayerLastThird';
 
 export default function Prayers() {
   const insets = useSafeAreaInsets();
@@ -28,6 +29,7 @@ export default function Prayers() {
       <Countdown type={type} />
       <DateDisplay />
       <PrayerList type={type} />
+      <PrayerLastThird />
     </View>
   );
 };
