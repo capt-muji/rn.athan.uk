@@ -62,7 +62,7 @@ export default function Countdown({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 25,
+    marginBottom: 40,
     justifyContent: 'center',
     zIndex: OVERLAY.zindexes.off.countdown,
     pointerEvents: 'none',
