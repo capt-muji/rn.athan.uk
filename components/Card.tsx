@@ -66,7 +66,11 @@ const styles = StyleSheet.create({
     marginHorizontal: SCREEN.paddingHorizontal,
     borderWidth: 1,
     ...PRAYER.border,
-    ...PRAYER.shadow,
+    // ...PRAYER.shadow,
+    shadowOffset: { width: 1, height: 10 },
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    shadowColor: '#00003b',
   },
   heading: {
     paddingTop: 15,
