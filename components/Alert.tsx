@@ -77,12 +77,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
 
   useEffect(() => {
     if (isPopupActive === true) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
+      colorProgress.value = withTiming(1, { duration: ANIMATION.duration });
       return;
     };
 
     if (isPopupActive === false) {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
+      colorProgress.value = withTiming(0, { duration: ANIMATION.duration });
     }
   }, [isPopupActive]);
 
@@ -169,8 +169,8 @@ export default function Alert({ index, isOverlay = false }: Props) {
     fill: interpolateColor(
       colorProgress.value,
       [0, 1],
-      ['red', 'green']
-    )
+      ['cyan', 'orange']
+    ),
   }));
 
   const Icon = ALERT_CONFIGS[iconIndex].icon;
@@ -184,12 +184,12 @@ export default function Alert({ index, isOverlay = false }: Props) {
         style={styles.iconContainer}
       >
         <Animated.View style={alertAnimatedStyle}>
-          <Icon color='blue' animatedProps={iconAnimatedProps} size={20} />
+          <Icon animatedProps={iconAnimatedProps} size={20} />
         </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
-        {/* <Icon color={'white'} size={20} /> */}
+        <Icon color={'white'} size={20} />
         <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>
           {ALERT_CONFIGS[iconIndex].label}
         </Text>
