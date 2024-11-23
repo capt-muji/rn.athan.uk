@@ -72,11 +72,13 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
       color: COLORS.activePrayer,
     };
 
+    const cardInactiveColor = COLORS.inactiveCardText;
+    const x = isStandard ? COLORS.inactivePrayer : cardInactiveColor;
     return {
       color: interpolateColor(
         colorProgress.value,
         [0, 1],
-        [COLORS.inactivePrayer, COLORS.activePrayer]
+        [x, COLORS.activePrayer]
       ),
     };
   });
