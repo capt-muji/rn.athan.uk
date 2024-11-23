@@ -14,9 +14,9 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
-import { AlertType, AlertIcon } from '@/shared/types';
+import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { scheduleAtom, alertPreferencesAtom } from '@/stores/store';
+import { scheduleAtom, alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
 import Icon from '@/components/Icon';
 import { getCascadeDelay } from '@/shared/prayer';
@@ -47,11 +47,17 @@ const ALERT_CONFIGS = [
   }
 ] as const;
 
-interface Props { index: number; isOverlay?: boolean; }
+interface Props {
+  index: number;
+  type: ScheduleType;
+  isOverlay?: boolean;
+}
 
-export default function Alert({ index, isOverlay = false }: Props) {
+export default function Alert({ index, type, isOverlay = false }: Props) {
+  const isStandard = type === ScheduleType.Standard;
+  const { nextIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+
   const isLastThird = index === PRAYER_INDEX_LAST_THIRD;
-  const { nextIndex, today } = useAtomValue(scheduleAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom);
 
   // const overlayVisible = false;
@@ -87,11 +93,11 @@ export default function Alert({ index, isOverlay = false }: Props) {
   useEffect(() => {
     if (isNext) {
       colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
-    } else if (nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
-    } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    } else if (nextIndex === PRAYER_INDEX_FAJR) {
+      // } else if (nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
+      // colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
+      // } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
+      // colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
+    } else if (nextIndex === 0) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
