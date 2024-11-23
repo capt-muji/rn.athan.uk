@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, interpolateColor } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  interpolateColor,
+  useDerivedValue,
+  withSpring
+} from 'react-native-reanimated';
 import { useAtomValue } from 'jotai';
 import { pagePositionAtom } from '@/stores/store';
 
@@ -27,22 +32,36 @@ export default function Index() {
 
   const position = useAtomValue(pagePositionAtom);
 
+  const colors = useMemo(() => ({
+    start: [COLORS.gradientScreen1Start, COLORS.gradientScreen2Start],
+    end: [COLORS.gradientScreen1End, COLORS.gradientScreen2End],
+  }), []);
+
+  const animatedPosition = useDerivedValue(() => {
+    return withSpring(position, {
+      damping: 20,
+      stiffness: 90,
+      mass: 0.5
+    });
+  });
+
   const gradientStyle = useAnimatedStyle(() => {
+    'worklet';
     const startColor = interpolateColor(
-      position,
+      animatedPosition.value,
       [0, 1],
-      [COLORS.gradientScreen1Start, COLORS.gradientScreen2Start]
+      colors.start
     );
     const endColor = interpolateColor(
-      position,
+      animatedPosition.value,
       [0, 1],
-      [COLORS.gradientScreen1End, COLORS.gradientScreen2End]
+      colors.end
     );
 
     return {
       colors: [startColor, endColor]
     };
-  });
+  }, []);
 
   useEffect(() => {
     const init = async () => {
@@ -66,7 +85,15 @@ export default function Index() {
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
       <AnimatedLinearGradient
         animatedProps={gradientStyle}
-        style={[StyleSheet.absoluteFillObject, { zIndex: OVERLAY.zindexes.background }]}
+        style={[
+          StyleSheet.absoluteFillObject,
+          {
+            zIndex: OVERLAY.zindexes.background,
+          }
+        ]}
+        shouldRasterizeIOS={true}
+        needsOffscreenAlphaCompositing={true}
+        renderToHardwareTextureAndroid={true}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
