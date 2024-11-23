@@ -37,6 +37,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       duha: addMinutes(times.sunrise, 1),
       dhuhr: times.dhuhr,
       asr: times.asr,
+      "istijaba": getLastThirdOfNight(times.magrib, times.fajr),
       magrib: times.magrib,
       isha: times.isha,
       "last third": getLastThirdOfNight(times.magrib, times.fajr),
