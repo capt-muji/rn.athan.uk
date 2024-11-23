@@ -20,16 +20,8 @@ export default function GradientBackground() {
   const endColorValue = useSharedValue(colors.end[0]);
 
   useEffect(() => {
-    startColorValue.value = interpolateColor(
-      position,
-      [0, 1],
-      colors.start
-    );
-    endColorValue.value = interpolateColor(
-      position,
-      [0, 1],
-      colors.end
-    );
+    startColorValue.value = interpolateColor(position, [0, 1], colors.start);
+    endColorValue.value = interpolateColor(position, [0, 1], colors.end);
   }, [position]);
 
   return (
