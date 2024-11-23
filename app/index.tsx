@@ -4,6 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Animated, { useAnimatedStyle, interpolateColor } from 'react-native-reanimated';
+import { useAtomValue } from 'jotai';
+import { pagePositionAtom } from '@/stores/store';
+
+// Wrap LinearGradient with Animated
+const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
 import { setSchedule, setDate } from '@/stores/actions';
 import { COLORS, OVERLAY } from '@/shared/constants';
@@ -17,6 +23,25 @@ export default function Index() {
   const [fontsLoaded] = useFonts({
     'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
     'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf')
+  });
+
+  const position = useAtomValue(pagePositionAtom);
+
+  const gradientStyle = useAnimatedStyle(() => {
+    const startColor = interpolateColor(
+      position,
+      [0, 1],
+      [COLORS.gradientScreen1Start, COLORS.gradientScreen2Start]
+    );
+    const endColor = interpolateColor(
+      position,
+      [0, 1],
+      [COLORS.gradientScreen1End, COLORS.gradientScreen2End]
+    );
+
+    return {
+      colors: [startColor, endColor]
+    };
   });
 
   useEffect(() => {
@@ -39,8 +64,8 @@ export default function Index() {
 
   return (
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
-      <LinearGradient
-        colors={[COLORS.gradientStart, COLORS.gradientEnd]}
+      <AnimatedLinearGradient
+        animatedProps={gradientStyle}
         style={[StyleSheet.absoluteFillObject, { zIndex: OVERLAY.zindexes.background }]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -50,4 +75,4 @@ export default function Index() {
       <Navigation />
     </GestureHandlerRootView>
   );
-};
+}
