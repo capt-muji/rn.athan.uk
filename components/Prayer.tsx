@@ -28,7 +28,7 @@ export default function Prayer({ index, isOverlay = false }: Props) {
 
   // handle non-overlay animations
   useEffect(() => {
-    if (isNext || isPassed) {
+    if (isNext) {
       colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
       return;
     };
