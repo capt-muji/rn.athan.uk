@@ -3,13 +3,15 @@ import { StyleSheet, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { WaveIndicator } from 'react-native-indicators';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { setSchedule, setDate } from '@/stores/actions';
 import { COLORS, OVERLAY } from '@/shared/constants';
+import Navigation from '@/app/Navigation';
 import RadialGlow from '@/components/RadialGlow';
-import Main from '@/components/Main';
 import * as Database from '@/stores/database';
 import * as Api from '@/api/client';
+import { ScheduleType } from '@/shared/types';
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
@@ -23,7 +25,8 @@ export default function Index() {
         const data = await Api.handle();
         Database.saveAll(data);
 
-        setSchedule();
+        setSchedule(ScheduleType.Standard);
+        setSchedule(ScheduleType.Extra);
         setDate();
       } catch (error) {
         console.error('Init failed:', error);
@@ -35,7 +38,7 @@ export default function Index() {
   if (!fontsLoaded) return <WaveIndicator color="white" />;
 
   return (
-    <>
+    <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
       <LinearGradient
         colors={[COLORS.gradientStart, COLORS.gradientEnd]}
         style={[StyleSheet.absoluteFillObject, { zIndex: OVERLAY.zindexes.background }]}
@@ -44,7 +47,7 @@ export default function Index() {
       />
       <StatusBar barStyle="light-content" />
       <RadialGlow />
-      <Main />
-    </>
+      <Navigation />
+    </GestureHandlerRootView>
   );
 };

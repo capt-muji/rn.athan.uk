@@ -1,10 +1,13 @@
-export const PRAYERS_ENGLISH = ["Fajr", "Sunrise", "Duha", "Dhuhr", "Asr", "Magrib", "Isha", "Last Third"];
-export const PRAYERS_ARABIC = ["الفجر", "الشروق", "الضحى", "الظهر", "العصر", "المغرب", "العشاء", "آخر ثلث"];
-
+export const PRAYERS_ENGLISH = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Magrib", "Isha"];
+export const PRAYERS_ARABIC = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
 export const PRAYER_INDEX_FAJR = 0;
-export const PRAYER_INDEX_ISHA = 6;
-export const PRAYER_INDEX_LAST_THIRD = 7;
-export const PRAYERS_LENGTH_FAJR_TO_ISHA = 7;
+export const PRAYER_INDEX_ISHA = 5;
+export const PRAYERS_LENGTH_FAJR_TO_ISHA = 6;
+
+export const EXTRAS_ENGLISH = ["Duha", "Last Third"];
+export const EXTRAS_ARABIC = ["الضحى", "آخر ثلث"];
+export const PRAYER_INDEX_LAST_THIRD = 1;
+
 
 export const TEXT = {
   famiy: {
