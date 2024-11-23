@@ -57,7 +57,6 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const { nextIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
-  const isLastThird = index === PRAYER_INDEX_LAST_THIRD;
   const alertPreferences = useAtomValue(alertPreferencesAtom);
 
   // const overlayVisible = false;
@@ -73,7 +72,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const bounceAnim = useSharedValue(0);
   const pressAnim = useSharedValue(1);
 
-  const baseOpacity = isPassed || isNext || isLastThird ? 1 : TEXT.opacity;
+  const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
   const textOpacity = useSharedValue(isPopupActive ? 1 : baseOpacity);
 
   const defaultColorProgress = isPopupActive || isPassed || isNext ? 1 : 0;

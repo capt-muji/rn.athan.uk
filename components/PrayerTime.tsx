@@ -19,8 +19,6 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
-  const isLastThird = index === PRAYER_INDEX_LAST_THIRD;
-
   // const overlayVisible = false;
 
   const isPassed = index < nextIndex
