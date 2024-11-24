@@ -20,6 +20,7 @@ import { scheduleAtom, alertPreferencesAtom, standardScheduleAtom, extraSchedule
 import { setAlertPreference } from '@/stores/actions';
 import Icon from '@/components/Icon';
 import { getCascadeDelay } from '@/shared/prayer';
+import { isTimePassed } from '@/shared/time';
 
 const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
 const TIMING_CONFIG = { duration: 5 };
@@ -67,7 +68,8 @@ export default function Alert({ index, type, inactiveColor, isOverlay = false }:
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
-  const isPassed = index < nextIndex
+  const prayer = today[index];
+  const isPassed = isTimePassed(prayer.time);
   const isNext = index === nextIndex;
 
   const fadeAnim = useSharedValue(0);
