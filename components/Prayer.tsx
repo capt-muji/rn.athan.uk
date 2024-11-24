@@ -8,7 +8,8 @@ import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import { useAtomValue } from 'jotai';
 import { extraScheduleAtom, standardScheduleAtom, dateAtom } from '@/stores/store';
-import { getCascadeDelay } from '@/shared/prayer';
+import { getCascadeDelay, } from '@/shared/prayer';
+import { isTimePassed, } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 
 interface Props {
@@ -26,7 +27,7 @@ export default function Prayer({ index, type, inactiveColor, isOverlay = false }
   const date = useAtomValue(dateAtom);
 
   const prayer = schedule.today[index];
-  const isPassed = index < schedule.nextIndex
+  const isPassed = isTimePassed(prayer.time);
   const isNext = index === schedule.nextIndex;
 
   const viewRef = useRef<View>(null);
