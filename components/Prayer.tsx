@@ -85,7 +85,7 @@ export default function Prayer({ index, type, inactiveColor, isOverlay = false }
       color: interpolateColor(
         colorProgress.value,
         [0, 1],
-        [inactiveColor || COLORS.inactivePrayer, COLORS.activePrayer]
+        [COLORS.inactivePrayer, COLORS.activePrayer]
       ),
     };
   });
@@ -98,8 +98,8 @@ export default function Prayer({ index, type, inactiveColor, isOverlay = false }
     >
       <Animated.Text style={[styles.text, styles.english, animatedStyle]}>{prayer.english}</Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedStyle]}>{prayer.arabic}</Animated.Text>
-      <PrayerTime index={index} isOverlay={isOverlay} type={type} inactiveColor={inactiveColor} />
-      <Alert index={index} isOverlay={isOverlay} type={type} inactiveColor={inactiveColor} />
+      <PrayerTime index={index} isOverlay={isOverlay} type={type} />
+      <Alert index={index} isOverlay={isOverlay} type={type} />
     </AnimatedPressable>
   );
 }
