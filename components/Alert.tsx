@@ -13,10 +13,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
+import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { scheduleAtom, alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom, dateAtom } from '@/stores/store';
+import { alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom, dateAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
 import Icon from '@/components/Icon';
 import { getCascadeDelay } from '@/shared/prayer';
@@ -46,16 +46,15 @@ const ALERT_CONFIGS = [
     label: "Sound",
     type: AlertType.Sound
   }
-] as const;
+];
 
 interface Props {
   index: number;
   type: ScheduleType;
-  inactiveColor?: string;
   isOverlay?: boolean;
 }
 
-export default function Alert({ index, type, inactiveColor, isOverlay = false }: Props) {
+export default function Alert({ index, type, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const { nextIndex, today } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
@@ -82,16 +81,16 @@ export default function Alert({ index, type, inactiveColor, isOverlay = false }:
   const defaultColorProgress = isPopupActive || isPassed || isNext ? 1 : 0;
   const colorProgress = useSharedValue(defaultColorProgress);
 
-  // useEffect(() => {
-  //   if (isPopupActive === true) {
-  //     colorProgress.value = withTiming(1, { duration: ANIMATION.duration });
-  //     return;
-  //   };
+  useEffect(() => {
+    if (isPopupActive === true) {
+      colorProgress.value = withTiming(1, { duration: ANIMATION.duration });
+      return;
+    };
 
-  //   if (isPopupActive === false) {
-  //     colorProgress.value = withTiming(0, { duration: ANIMATION.duration });
-  //   }
-  // }, [isPopupActive]);
+    if (isPopupActive === false) {
+      colorProgress.value = withTiming(0, { duration: ANIMATION.duration });
+    }
+  }, [isPopupActive]);
 
   useEffect(() => {
     if (isNext) {
@@ -188,7 +187,7 @@ export default function Alert({ index, type, inactiveColor, isOverlay = false }:
       fill: interpolateColor(
         colorProgress.value,
         [0, 1],
-        [inactiveColor || COLORS.inactivePrayer, COLORS.activePrayer]
+        [COLORS.inactivePrayer, COLORS.activePrayer]
       )
     }
   });
@@ -196,14 +195,14 @@ export default function Alert({ index, type, inactiveColor, isOverlay = false }:
   return (
     <View style={styles.container}>
       <Pressable
-        // onPress={handlePress}
+        onPress={handlePress}
         onPressIn={() => pressAnim.value = withSpring(0.9, SPRING_CONFIG)}
         onPressOut={() => pressAnim.value = withSpring(1, SPRING_CONFIG)}
         style={styles.iconContainer}
       >
-        {/* <Animated.View style={alertAnimatedStyle}> */}
-        <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={iconAnimatedProps} />
-        {/* </Animated.View> */}
+        <Animated.View style={alertAnimatedStyle}>
+          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={iconAnimatedProps} />
+        </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>

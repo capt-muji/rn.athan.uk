@@ -12,12 +12,11 @@ import { isTimePassed } from '@/shared/time';
 interface Props {
   index: number;
   type: ScheduleType;
-  inactiveColor?: string;
   isOverlay: boolean;
 };
 
 
-export default function PrayerTime({ index, type, inactiveColor, isOverlay = false }: Props) {
+export default function PrayerTime({ index, type, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
@@ -112,7 +111,7 @@ export default function PrayerTime({ index, type, inactiveColor, isOverlay = fal
       color: interpolateColor(
         colorProgress.value,
         [0, 1],
-        [inactiveColor || COLORS.inactivePrayer, COLORS.activePrayer]
+        [COLORS.inactivePrayer, COLORS.activePrayer]
       ),
     };
   });
