@@ -61,11 +61,10 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.famiy.regular,
     marginBottom: 5,
-    opacity: TEXT.opacityHigher
   },
   date: {
     fontFamily: TEXT.famiy.regular,
-    color: COLORS.activePrayer,
+    color: 'white',
     fontSize: TEXT.size,
   },
   overlayText: {
