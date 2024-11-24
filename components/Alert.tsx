@@ -75,9 +75,6 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const bounceAnim = useSharedValue(0);
   const pressAnim = useSharedValue(1);
 
-  const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
-  const textOpacity = useSharedValue(isPopupActive ? 1 : baseOpacity);
-
   const defaultColorProgress = isPopupActive || isPassed || isNext ? 1 : 0;
   const colorProgress = useSharedValue(defaultColorProgress);
 
@@ -156,7 +153,6 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     };
 
     return {
-      // opacity: textOpacity.value,
       transform: [{ scale: pressAnim.value }]
     };
   });
