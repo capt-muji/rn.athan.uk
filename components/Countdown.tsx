@@ -50,7 +50,6 @@ export default function Countdown({ type }: Props) {
       <Animated.Text
         style={[
           styles.countdown,
-          { fontFamily: overlay.isOn ? TEXT.famiy.medium : TEXT.famiy.regular },
           animatedStyle
         ]}
       >
