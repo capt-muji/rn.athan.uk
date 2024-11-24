@@ -14,12 +14,13 @@ import { ScheduleType } from '@/shared/types';
 interface Props {
   index: number;
   type: ScheduleType;
+  inactiveColor?: string;
   isOverlay?: boolean;
 }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-export default function Prayer({ index, type, isOverlay = false }: Props) {
+export default function Prayer({ index, type, inactiveColor, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
@@ -68,17 +69,15 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
   // };
 
   const animatedStyle = useAnimatedStyle(() => {
-    if (isOverlay) return {
-      color: COLORS.activePrayer,
-    };
+    // if (isOverlay) return {
+    //   color: COLORS.activePrayer,
+    // };
 
-    const cardInactiveColor = COLORS.inactiveCardText;
-    const x = isStandard ? COLORS.inactivePrayer : cardInactiveColor;
     return {
       color: interpolateColor(
         colorProgress.value,
         [0, 1],
-        [x, COLORS.activePrayer]
+        [inactiveColor || COLORS.inactivePrayer, COLORS.activePrayer]
       ),
     };
   });
@@ -91,8 +90,8 @@ export default function Prayer({ index, type, isOverlay = false }: Props) {
     >
       <Animated.Text style={[styles.text, styles.english, animatedStyle]}>{prayer.english}</Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, animatedStyle]}>{prayer.arabic}</Animated.Text>
-      <PrayerTime index={index} isOverlay={isOverlay} type={type} />
-      <Alert index={index} isOverlay={isOverlay} type={type} />
+      <PrayerTime index={index} isOverlay={isOverlay} type={type} inactiveColor={inactiveColor} />
+      <Alert index={index} isOverlay={isOverlay} type={type} inactiveColor={inactiveColor} />
     </AnimatedPressable>
   );
 }

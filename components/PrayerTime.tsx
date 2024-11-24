@@ -11,11 +11,12 @@ import { ScheduleType } from '@/shared/types';
 interface Props {
   index: number;
   type: ScheduleType;
+  inactiveColor?: string;
   isOverlay: boolean;
 };
 
 
-export default function PrayerTime({ index, type, isOverlay = false }: Props) {
+export default function PrayerTime({ index, type, inactiveColor, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
@@ -25,8 +26,6 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
   const isNext = index === nextIndex;
   const todayTime = today[index].time;
   const tomorrowTime = tomorrow[selectedIndex]?.time;
-
-  const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
 
   const colorProgress = useSharedValue(isPassed || isNext ? 1 : 0);
   const overlayTodayColor = useSharedValue(0);
@@ -102,19 +101,17 @@ export default function PrayerTime({ index, type, isOverlay = false }: Props) {
   // }, [overlayVisible]);
 
   const mainTextStyle = useAnimatedStyle(() => {
-    const cardInactiveColor = COLORS.inactiveCardText;
-    const x = isStandard ? COLORS.inactivePrayer : cardInactiveColor;
     return {
       color: interpolateColor(
         colorProgress.value,
         [0, 1],
-        [x, COLORS.activePrayer]
+        [inactiveColor || COLORS.inactivePrayer, COLORS.activePrayer]
       ),
     };
   });
 
   return (
-    <View style={[styles.container, { width: 95 }]}>
+    <View style={[styles.container, { width: isStandard ? 95 : 85 }]}>
       {/* Main text (non-overlay) */}
       <Animated.Text style={[styles.text, mainTextStyle]}>
         {todayTime}
