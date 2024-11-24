@@ -35,11 +35,6 @@ export default function Card({ index }: Props) {
       next: '#0048ff',
       upcoming: '#2d11831d'
     },
-    border: {
-      passed: 'transparent',
-      next: 'transparent',
-      upcoming: 'transparent'
-    },
     shadow: {
       passed: '#060127',
       next: '#0a0a7e',
@@ -52,11 +47,6 @@ export default function Card({ index }: Props) {
       colorProgress.value,
       [0, 0.5, 1],
       [colors.background.upcoming, colors.background.next, colors.background.passed]
-    ),
-    borderColor: interpolateColor(
-      colorProgress.value,
-      [0, 0.5, 1],
-      [colors.border.upcoming, colors.border.next, colors.border.passed]
     ),
     shadowColor: interpolateColor(
       colorProgress.value,
@@ -86,9 +76,8 @@ export default function Card({ index }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: SCREEN.paddingHorizontal,
-    borderWidth: 1,
     ...PRAYER.border,
+    marginHorizontal: SCREEN.paddingHorizontal,
     shadowOffset: { width: 1, height: 10 },
     shadowOpacity: 0.85,
     shadowRadius: 15,
