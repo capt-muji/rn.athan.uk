@@ -10,9 +10,8 @@ import { ScheduleType } from '@/shared/types';
 interface Props { index: number }
 
 export default function Card({ index }: Props) {
-  const schedule = useAtomValue(extraScheduleAtom);
+  const { nextIndex } = useAtomValue(extraScheduleAtom);
 
-  const nextIndex = 1;
   const isNext = index === nextIndex;
   const isPassed = index < nextIndex;
   const colorProgress = useSharedValue(0);
@@ -20,25 +19,49 @@ export default function Card({ index }: Props) {
   if (isNext) colorProgress.value = 0.5;
   if (isPassed) colorProgress.value = 1;
 
-  // 1 = is passed
-  // 0.5 = is next
-  // 0 = is upcoming
+  const colors = {
+    heading: {
+      passed: '#37618faa',
+      next: '#96c9ffb4',
+      upcoming: '#5282b555'
+    },
+    text: {
+      passed: 'red',
+      next: 'green',
+      upcoming: '#5282b555'
+    },
+    background: {
+      passed: '#280a6a1d',
+      next: '#0048ff',
+      upcoming: '#2d11831d'
+    },
+    border: {
+      passed: 'transparent',
+      next: 'transparent',
+      upcoming: 'transparent'
+    },
+    shadow: {
+      passed: '#060127',
+      next: '#0a0a7e',
+      upcoming: '#0400249c'
+    },
+  };
 
   const animatedContainerStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      ['#280a6a1d', '#0048ff', '#280a6a4d']
+      [colors.background.upcoming, colors.background.next, colors.background.passed]
     ),
     borderColor: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      ['#39158522', '#3053a338', '#3815854d']
+      [colors.border.upcoming, colors.border.next, colors.border.passed]
     ),
     shadowColor: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      ['#410a7781', '#0a0a7e', '#410a7781']
+      [colors.shadow.upcoming, colors.shadow.next, colors.shadow.passed]
     ),
   }));
 
@@ -46,17 +69,17 @@ export default function Card({ index }: Props) {
     color: interpolateColor(
       colorProgress.value,
       [0, 0.5, 1],
-      [COLORS.inactiveCardText, '#96c9ffb4', '#5892d0aa']
+      [colors.heading.upcoming, colors.heading.next, colors.heading.passed]
     ),
   }));
 
   return (
     <Animated.View style={[styles.container, animatedContainerStyle]}>
       <View style={styles.heading}>
-        <Animated.Text style={[styles.text, animatedTextStyle]}>Fri, 20th</Animated.Text>
-        <Animated.Text style={[styles.text, animatedTextStyle]}>8h 32m 28s</Animated.Text>
+        <Animated.Text style={[styles.text, animatedTextStyle]}>Friday</Animated.Text>
+        <Animated.Text style={[styles.text, animatedTextStyle]}>Nov 20</Animated.Text>
       </View>
-      <Prayer type={ScheduleType.Extra} index={index} />
+      <Prayer type={ScheduleType.Extra} index={index} inactiveColor={colors.text.upcoming} />
     </Animated.View>
   );
 }
@@ -66,7 +89,7 @@ const styles = StyleSheet.create({
     marginHorizontal: SCREEN.paddingHorizontal,
     borderWidth: 1,
     ...PRAYER.border,
-    shadowOffset: { width: 1, height: 5 },
+    shadowOffset: { width: 1, height: 10 },
     shadowOpacity: 0.85,
     shadowRadius: 15,
   },
