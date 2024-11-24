@@ -3,14 +3,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Countdown from '@/components/Countdown';
 import { SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import Card from '@/components/Card';
 import DateDisplay from '@/components/DateDisplay';
 import PrayerList from '@/components/PrayerList';
 
-export default function Prayers() {
-  const insets = useSafeAreaInsets();
 
-  const type = ScheduleType.Extra;
+interface Props { type: ScheduleType }
+
+export default function Screen({ type }: Props) {
+  const insets = useSafeAreaInsets();
 
   const computedStyles = {
     paddingTop: insets.top + SCREEN.paddingHorizontal,
@@ -19,23 +19,9 @@ export default function Prayers() {
 
   return (
     <View style={[StyleSheet.absoluteFillObject, computedStyles]}>
-      {/* <Countdown type={type} /> */}
-
-      {/* <View style={styles.cards}>
-        <Card index={0} />
-        <Card index={1} />
-        <Card index={2} />
-      </View> */}
       <Countdown type={type} />
       <DateDisplay />
       <PrayerList type={type} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  cards: {
-    marginTop: 15,
-    gap: 15
-  }
-});
