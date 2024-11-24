@@ -24,6 +24,7 @@ export default function PrayerList({ type }: Props) {
       {isStandard && <Prayer index={5} type={type} />}
       {!isStandard && <Prayer index={0} type={type} />}
       {!isStandard && <Prayer index={1} type={type} />}
+      {!isStandard && <Prayer index={2} type={type} />}
     </View>
   );
 }
