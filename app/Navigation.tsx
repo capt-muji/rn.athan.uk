@@ -4,10 +4,10 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-na
 import { useSetAtom } from 'jotai';
 
 import { ANIMATION } from '@/shared/constants';
-import Standard from '@/screens/Standard';
-import Extra from '@/screens/Extra';
+import Screen from '@/components/Screen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { pagePositionAtom } from '@/stores/store';
+import { ScheduleType } from '@/shared/types';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
@@ -40,8 +40,8 @@ export default function Navigation() {
         overScrollMode="never"
         onPageScroll={handlePageScroll}
       >
-        <Standard />
-        <Extra />
+        <Screen type={ScheduleType.Standard} />
+        <Screen type={ScheduleType.Extra} />
       </PagerView>
 
       <View style={[styles.dotsContainer, { bottom: bottom + 5 }]}>
