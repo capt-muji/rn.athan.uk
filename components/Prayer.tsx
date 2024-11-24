@@ -45,10 +45,12 @@ export default function Prayer({ index, type, inactiveColor, isOverlay = false }
   }, [schedule.nextIndex]);
 
   useEffect(() => {
-    colorProgress.value = withDelay(
-      getCascadeDelay(index),
-      withTiming(0, { duration: ANIMATION.durationSlow })
-    );
+    if (index !== schedule.nextIndex && schedule.today[0].date !== date.current) {
+      colorProgress.value = withDelay(
+        getCascadeDelay(index),
+        withTiming(0, { duration: ANIMATION.durationSlow })
+      );
+    }
   }, [date.current]);
 
 
