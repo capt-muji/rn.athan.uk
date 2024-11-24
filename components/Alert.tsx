@@ -16,7 +16,7 @@ import * as Haptics from 'expo-haptics';
 import { COLORS, TEXT, ANIMATION, PRAYER, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { useAtomValue } from 'jotai';
-import { scheduleAtom, alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
+import { scheduleAtom, alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom, dateAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
 import Icon from '@/components/Icon';
 import { getCascadeDelay } from '@/shared/prayer';
@@ -56,7 +56,8 @@ interface Props {
 
 export default function Alert({ index, type, inactiveColor, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
-  const { nextIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const { nextIndex, today } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const date = useAtomValue(dateAtom);
 
   const alertPreferences = useAtomValue(alertPreferencesAtom);
 
@@ -97,13 +98,17 @@ export default function Alert({ index, type, inactiveColor, isOverlay = false }:
       // colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
       // } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
       // colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    } else if (nextIndex === 0) {
+    };
+  }, [nextIndex]);
+
+  useEffect(() => {
+    if (index !== nextIndex && today[0].date !== date.current) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
       );
     }
-  }, [nextIndex]);
+  }, [date.current]);
 
   // useEffect(() => {
   //   if (isOverlay && !overlayVisible) {

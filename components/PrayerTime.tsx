@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 import { TEXT, ANIMATION, COLORS, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
 import { useEffect } from 'react';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
+import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 
@@ -19,6 +19,7 @@ interface Props {
 export default function PrayerTime({ index, type, inactiveColor, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const date = useAtomValue(dateAtom);
 
   // const overlayVisible = false;
 
@@ -38,13 +39,17 @@ export default function PrayerTime({ index, type, inactiveColor, isOverlay = fal
       // colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
       // } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
       // colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    } else if (nextIndex === 0) {
+    };
+  }, [nextIndex]);
+
+  useEffect(() => {
+    if (index !== nextIndex && today[0].date !== date.current) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
       );
     }
-  }, [nextIndex]);
+  }, [date.current]);
 
   // useEffect(() => {
   //   if (isNext) {
