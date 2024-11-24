@@ -80,6 +80,4 @@ export const overlayAtom = atom<OverlayStore>({
   isOn: false
 });
 
-export const isBackgroundActiveAtom = atom<boolean>(true);
-
 export const pagePositionAtom = atom<number>(0);
