@@ -49,7 +49,7 @@ export default function DateDisplay() {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 25,
+    marginBottom: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
