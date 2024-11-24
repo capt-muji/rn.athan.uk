@@ -65,7 +65,7 @@ export const OVERLAY = {
       countdown: 999,
       prayerSelected: 4,
       longDate: -1,
-      glow: 1,
+      glow: 0,
     },
   },
 };
