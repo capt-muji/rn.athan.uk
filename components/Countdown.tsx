@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: COLORS.textSecondary,
   },
   countdown: {
-    fontFamily: TEXT.famiy.medium,
+    fontFamily: TEXT.famiy.regular,
     color: 'white',
     fontSize: TEXT.size + 8,
     textAlign: 'center',
