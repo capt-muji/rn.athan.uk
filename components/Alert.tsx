@@ -50,10 +50,11 @@ const ALERT_CONFIGS = [
 interface Props {
   index: number;
   type: ScheduleType;
+  inactiveColor?: string;
   isOverlay?: boolean;
 }
 
-export default function Alert({ index, type, isOverlay = false }: Props) {
+export default function Alert({ index, type, inactiveColor, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const { nextIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
@@ -176,13 +177,11 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   }, []);
 
   const iconAnimatedProps = useAnimatedProps(() => {
-    const cardInactiveColor = COLORS.inactiveCardText;
-    const x = isStandard ? COLORS.inactivePrayer : cardInactiveColor;
     return {
       fill: interpolateColor(
         colorProgress.value,
         [0, 1],
-        [x, COLORS.activePrayer]
+        [inactiveColor || COLORS.inactivePrayer, COLORS.activePrayer]
       )
     }
   });

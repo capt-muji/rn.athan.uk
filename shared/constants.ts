@@ -34,10 +34,7 @@ export const COLORS = {
   activePrayer: '#ffffff',
   inactivePrayer: '#8aa9d662',
 
-  inactiveCardText: '#6183c559',
-
-  // activeBackground: '#005dd5',
-  activeBackground: '#0048ff',
+  activeBackground: '#0847e5',
   activeBackgroundShadow: '#001373',
   inactiveBackground: '#272b7c',
 
