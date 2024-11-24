@@ -37,7 +37,7 @@ export const COLORS = {
   activeBackground: '#0847e5',
   activeBackgroundShadow: '#081a76',
 
-  textSecondary: '#8BA3C7',
+  textSecondary: '#406b93',
 };
 
 export const ANIMATION = {

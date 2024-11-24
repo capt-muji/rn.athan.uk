@@ -73,11 +73,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontFamily: TEXT.famiy.regular,
     color: COLORS.textSecondary,
-    opacity: TEXT.opacity
   },
   countdown: {
     fontFamily: TEXT.famiy.medium,
-    color: COLORS.activePrayer,
+    color: 'white',
     fontSize: TEXT.size + 8,
     textAlign: 'center',
   },
