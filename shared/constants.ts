@@ -35,9 +35,8 @@ export const COLORS = {
   inactivePrayer: '#8aa9d662',
 
   activeBackground: '#0847e5',
-  activeBackgroundShadow: '#001373',
-  inactiveBackground: '#272b7c',
-  inactiveBackgroundShadow: '#001373',
+  activeBackgroundShadow: '#081a76',
+  inactiveBackground: '#383da857',
 
   textSecondary: '#8BA3C7',
 };
