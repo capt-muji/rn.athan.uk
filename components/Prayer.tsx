@@ -3,11 +3,11 @@ import Animated, { useAnimatedStyle, withTiming, withDelay, useSharedValue, inte
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 
-import { COLORS, TEXT, PRAYER, ANIMATION, PRAYERS_ENGLISH, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
+import { COLORS, TEXT, PRAYER, ANIMATION } from '@/shared/constants';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 import { useAtomValue } from 'jotai';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
+import { extraScheduleAtom, standardScheduleAtom, dateAtom } from '@/stores/store';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 
@@ -23,6 +23,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 export default function Prayer({ index, type, inactiveColor, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const date = useAtomValue(dateAtom);
 
   const prayer = schedule.today[index];
   const isPassed = index < schedule.nextIndex
@@ -40,13 +41,17 @@ export default function Prayer({ index, type, inactiveColor, isOverlay = false }
       // colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
       // } else if (schedule.nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
       // colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    } else if (schedule.nextIndex === 0) {
-      colorProgress.value = withDelay(
-        getCascadeDelay(index),
-        withTiming(0, { duration: ANIMATION.durationSlow })
-      );
-    }
+    };
   }, [schedule.nextIndex]);
+
+  useEffect(() => {
+    colorProgress.value = withDelay(
+      getCascadeDelay(index),
+      withTiming(0, { duration: ANIMATION.durationSlow })
+    );
+  }, [date.current]);
+
+
 
   // handle overlay animations
   // useEffect(() => {
