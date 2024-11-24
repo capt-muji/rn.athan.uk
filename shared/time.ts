@@ -86,9 +86,9 @@ export const isDateTodayOrFuture = (date: string): boolean => {
 };
 
 // Formats a date string into a readable format
-// Returns date in format: "Friday 20th November 2024"
+// Returns date in format: "Fri, 20 Nov 2024"
 export const formatDate = (date: string): string => {
-  return format(createLondonDate(date), 'EEEE, MMM d');
+  return format(createLondonDate(date), 'EEE, d MMM yyyy');
 };
 
 // Calculates the start time of the last third of the night
