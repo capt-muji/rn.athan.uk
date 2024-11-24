@@ -9,7 +9,7 @@ import Animated, {
   interpolateColor
 } from 'react-native-reanimated';
 import { ANIMATION, COLORS, PRAYER, PRAYER_INDEX_FAJR } from '@/shared/constants';
-import { dateAtom, extraScheduleAtom, isBackgroundActiveAtom, standardScheduleAtom } from '@/stores/store';
+import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
 
 interface Props { type: ScheduleType }
@@ -18,25 +18,31 @@ export default function ActiveBackground({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
-  const isActive = useAtomValue(isBackgroundActiveAtom);
   const date = useAtomValue(dateAtom);
   const isFirstPrayer = schedule.nextIndex === PRAYER_INDEX_FAJR && date.current === date.current;
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
   const colorProgress = useSharedValue(0);
 
   useEffect(() => {
-    translateY.value = schedule.nextIndex * PRAYER.height;
-
-    colorProgress.value = withTiming(isFirstPrayer ? 1 : 0, {
-      duration: isFirstPrayer ? ANIMATION.durationSlowest : ANIMATION.durationSlow
-    });
-  }, [schedule.nextIndex, date, isActive]);
+    if (schedule.nextIndex === 0) {
+      colorProgress.value = withTiming(1, {
+        duration: ANIMATION.durationSlow,
+      }, (finished) => {
+        if (finished) translateY.value = 0;
+      });
+    } else {
+      translateY.value = schedule.nextIndex * PRAYER.height;
+      colorProgress.value = withTiming(isFirstPrayer ? 1 : 0, {
+        duration: isFirstPrayer ? ANIMATION.durationSlowest : ANIMATION.durationSlow
+      });
+    }
+  }, [schedule.nextIndex, date]);
 
   const animatedStyles = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       colorProgress.value,
       [0, 1],
-      [COLORS.activeBackground, COLORS.inactiveBackground]
+      [COLORS.activeBackground, 'transparent']
     ),
     transform: [{
       translateY: withTiming(translateY.value, {

@@ -36,7 +36,6 @@ export const COLORS = {
 
   activeBackground: '#0847e5',
   activeBackgroundShadow: '#081a76',
-  inactiveBackground: '#383da857',
 
   textSecondary: '#8BA3C7',
 };

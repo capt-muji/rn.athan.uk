@@ -1,5 +1,5 @@
 import { getDefaultStore } from 'jotai/vanilla';
-import { dateAtom, overlayAtom, alertPreferencesAtom, soundPreferencesAtom, isBackgroundActiveAtom, standardScheduleAtom, extraScheduleAtom } from './store';
+import { dateAtom, overlayAtom, alertPreferencesAtom, soundPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from './store';
 import * as prayerUtils from '@/shared/prayer';
 import * as database from '@/stores/database';
 import { createLondonDate, isTimePassed } from '@/shared/time';
@@ -17,8 +17,6 @@ export const getSchedule = (type: ScheduleType) =>
     ? store.get(standardScheduleAtom) 
     : store.get(extraScheduleAtom);
     
-export const getActiveBackground = () => store.get(isBackgroundActiveAtom);
-
 // Setters
 export const toggleOverlay = () => {
   const overlay = getOverlay();
@@ -96,9 +94,4 @@ export const setSelectedSound = (soundIndex: number) => {
     ...current,
     selected: soundIndex
   });
-};
-
-export const toggleActiveBackground = () => {
-  const isActive = getActiveBackground();
-  store.set(isBackgroundActiveAtom, !isActive);
 };
