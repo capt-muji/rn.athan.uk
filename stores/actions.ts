@@ -2,7 +2,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 import { dateAtom, overlayAtom, alertPreferencesAtom, soundPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from './store';
 import * as prayerUtils from '@/shared/prayer';
 import * as database from '@/stores/database';
-import { createLondonDate, isTimePassed } from '@/shared/time';
+import * as timeUtils from '@/shared/time';
 import { AlertType, ScheduleType } from '@/shared/types';
 import { PRAYER_INDEX_ISHA } from '@/shared/constants';
 
@@ -36,8 +36,8 @@ export const setDate = () => {
 export const setSchedule = (type: ScheduleType) => {
   const schedule = getSchedule(type);
   
-  const today = createLondonDate();
-  const tomorrow = createLondonDate();
+  const today = timeUtils.createLondonDate();
+  const tomorrow = timeUtils.createLondonDate();
   tomorrow.setDate(tomorrow.getDate() + 1);
   
   const dataToday = database.getByDate(today);
@@ -49,7 +49,7 @@ export const setSchedule = (type: ScheduleType) => {
   const scheduleTodayValues = Object.values(scheduleToday);
   let nextPrayer;
 
-  nextPrayer = scheduleTodayValues.find(prayer => !isTimePassed(prayer.time)) || scheduleToday[0];
+  nextPrayer = scheduleTodayValues.find(prayer => !timeUtils.isTimePassed(prayer.time)) || scheduleToday[0];
 
   const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { 
