@@ -4,7 +4,7 @@ import { useAtomValue } from 'jotai';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import Masjid from './Masjid';
-import { formatDate } from '@/shared/time';
+import { formatDateLong } from '@/shared/time';
 import { dateAtom } from '@/stores/store';
 
 export default function DateDisplay() {
@@ -39,7 +39,7 @@ export default function DateDisplay() {
       <View>
         <Text style={styles.location}>London, UK</Text>
         <Animated.Text ref={dateRef} style={[styles.date, dateAnimatedStyle]}>
-          {formatDate(date.current)}
+          {formatDateLong(date.current)}
         </Animated.Text>
       </View>
       <Masjid />
