@@ -12,8 +12,7 @@ interface Props { type: ScheduleType }
 export default function PrayerList({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const date = useAtomValue(dateAtom);
-  // const isFriday = timeUtils.isFriday(date.current);
-  const isFriday = false;
+  const isFriday = timeUtils.isFriday(date.current);
 
   const computedStyles = {
     marginBottom: isStandard ? 0 : 25,
@@ -30,7 +29,7 @@ export default function PrayerList({ type }: Props) {
       {isStandard && <Prayer index={5} type={type} />}
       {!isStandard && <Prayer index={0} type={type} />}
       {!isStandard && <Prayer index={1} type={type} />}
-      {!isStandard && isFriday && <Prayer index={2} type={type} />}
+      {!isStandard && !isFriday && <Prayer index={2} type={type} />}
     </View>
   );
 }
