@@ -13,61 +13,76 @@ import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/stor
 import { ScheduleType } from '@/shared/types';
 import * as timeUtils from '@/shared/time';
 
-interface Props {
-  type: ScheduleType
-}
+// Animation Config
+const ANIMATION_CONFIG = {
+  timing: {
+    duration: ANIMATION.durationSlow,
+    durationSlower: ANIMATION.durationSlower,
+    easing: Easing.elastic(0.5)
+  }
+};
 
-export default function ActiveBackground({ type }: Props) {
-  // Get schedule data based on standard/extra prayer type
-  const isStandard = type === ScheduleType.Standard;
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
-  const date = useAtomValue(dateAtom);
+// Animation Creators
+const createAnimations = (nextIndex: number, isLastPrayerPassed: boolean) => ({
+  translateY: useSharedValue(nextIndex * PRAYER.height),
+  colorPos: useSharedValue(isLastPrayerPassed ? 0 : 1)
+});
 
-  // Determine if we've passed the last prayer of the day
-  const lastPrayerIndex = Object.keys(schedule.today).length - 1;
-  const lastPrayerTime = schedule.today[lastPrayerIndex].time;
-  const isLastPrayerPassed = timeUtils.isTimePassed(lastPrayerTime);
-
-  // Initialize animation values for position and opacity
-  const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
-  const colorProgress = useSharedValue(isLastPrayerPassed ? 0 : 1);
-  const today = timeUtils.formatDateShort(timeUtils.createLondonDate());
-
-  const animatedStyles = useAnimatedStyle(() => {
-    // Reset position and fade out when day is complete
+const createAnimatedStyles = (
+  animations: ReturnType<typeof createAnimations>,
+  schedule: any,
+  date: any,
+  today: string
+) => ({
+  background: useAnimatedStyle(() => {
     if (schedule.nextIndex === 0 && date.current === today) {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
-      translateY.value = withSequence(
-        withTiming(translateY.value, { duration: ANIMATION.durationSlow }),
+      animations.colorPos.value = withTiming(0, { duration: ANIMATION_CONFIG.timing.duration });
+      animations.translateY.value = withSequence(
+        withTiming(animations.translateY.value, { duration: ANIMATION_CONFIG.timing.duration }),
         withTiming(0, { duration: 0 })
       );
     } else {
-      translateY.value = schedule.nextIndex * PRAYER.height;
+      animations.translateY.value = schedule.nextIndex * PRAYER.height;
     }
 
-    // Fade in background when new day starts
-    if (!isLastPrayerPassed) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
-    }
-
-    // Apply animated styles with interpolated background color and elastic movement
     return {
       backgroundColor: interpolateColor(
-        colorProgress.value,
+        animations.colorPos.value,
         [0, 1],
         ['transparent', COLORS.activeBackground]
       ),
       transform: [{
-        translateY: withTiming(translateY.value, {
-          duration: ANIMATION.durationSlower,
-          easing: Easing.elastic(0.5)
+        translateY: withTiming(animations.translateY.value, {
+          duration: ANIMATION_CONFIG.timing.durationSlower,
+          easing: ANIMATION_CONFIG.timing.easing
         })
       }]
     };
-  });
+  })
+});
 
-  // Render animated background view with shadow
-  return <Animated.View style={[styles.background, animatedStyles]} />;
+interface Props { type: ScheduleType }
+
+export default function ActiveBackground({ type }: Props) {
+  // State
+  const isStandard = type === ScheduleType.Standard;
+  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const date = useAtomValue(dateAtom);
+  const today = timeUtils.formatDateShort(timeUtils.createLondonDate());
+
+  // Derived State
+  const lastPrayerIndex = Object.keys(schedule.today).length - 1;
+  const isLastPrayerPassed = timeUtils.isTimePassed(schedule.today[lastPrayerIndex].time);
+
+  // Animations
+  const animations = createAnimations(schedule.nextIndex, isLastPrayerPassed);
+  const animatedStyles = createAnimatedStyles(animations, schedule, date, today);
+
+  if (!isLastPrayerPassed) {
+    animations.colorPos.value = withTiming(1, { duration: ANIMATION_CONFIG.timing.duration });
+  }
+
+  return <Animated.View style={[styles.background, animatedStyles.background]} />;
 }
 
 const styles = StyleSheet.create({
