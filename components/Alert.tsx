@@ -81,13 +81,10 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
 
   // Simplify popup effect to just animate to 1 and back to proper state
   useEffect(() => {
-    if (isPopupActive) {
-      colorProgress.value = withTiming(1, { duration: ANIMATION.duration });
-      return;
-    }
-
-    // When closing, determine correct state based on current prayer status
-    colorProgress.value = withTiming(defaultColorProgress, { duration: ANIMATION.duration });
+    colorProgress.value = withTiming(
+      isPopupActive ? 1 : defaultColorProgress,
+      { duration: ANIMATION.duration }
+    );
   }, [isPopupActive]);
 
   // Simplify prayer status changes
