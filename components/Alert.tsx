@@ -92,7 +92,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     }
   }, [isPopupActive]);
 
-  // Handle animations directly based on isNext and isPassed
+  // Handle animations directly based on isNext, isPassed, and date changes
   if (isNext && colorProgress.value !== 1) {
     colorProgress.value = withDelay(
       ANIMATION.duration,
@@ -102,18 +102,13 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   } else if (isPassed && colorProgress.value !== 1) {
     colorProgress.value = 1;
     previousColorProgress.current = 1;
+  } else if (index !== nextIndex && today[0].date !== date.current && colorProgress.value !== 0) {
+    colorProgress.value = withDelay(
+      getCascadeDelay(index),
+      withTiming(0, { duration: ANIMATION.durationSlow })
+    );
+    previousColorProgress.current = 0;
   }
-
-  // Handle date changes
-  useEffect(() => {
-    if (index !== nextIndex && today[0].date !== date.current) {
-      colorProgress.value = withDelay(
-        getCascadeDelay(index),
-        withTiming(0, { duration: ANIMATION.durationSlow })
-      );
-      previousColorProgress.current = 0;
-    }
-  }, [date.current]);
 
   // useEffect(() => {
   //   if (isOverlay && !overlayVisible) {
