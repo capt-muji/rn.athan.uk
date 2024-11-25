@@ -34,11 +34,11 @@ const createAnimatedStyles = (
 ) => ({
   background: useAnimatedStyle(() => {
     if (schedule.nextIndex === 0 && date.current === todayYYYMMDD) {
-      animations.colorPos.value = withTiming(0, { duration: ANIMATION_CONFIG.timing.duration });
-      animations.translateY.value = withSequence(
-        withTiming(animations.translateY.value, { duration: ANIMATION_CONFIG.timing.duration }),
-        withTiming(0, { duration: 0 })
-      );
+      animations.colorPos.value = withTiming(0, {
+        duration: ANIMATION_CONFIG.timing.duration
+      }, (finished) => {
+        if (finished) animations.translateY.value = 0;
+      });
     } else {
       animations.translateY.value = schedule.nextIndex * PRAYER.height;
     }
@@ -59,7 +59,7 @@ const createAnimatedStyles = (
   })
 });
 
-interface Props { type: ScheduleType }
+interface Props { type: ScheduleType };
 
 export default function ActiveBackground({ type }: Props) {
   // State
