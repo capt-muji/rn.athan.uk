@@ -1,154 +1,62 @@
 import { StyleSheet, View } from 'react-native';
 import { withTiming, useSharedValue, withDelay, useAnimatedStyle, interpolateColor } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
-import { TEXT, ANIMATION, COLORS, PRAYER_INDEX_LAST_THIRD, PRAYER_INDEX_FAJR } from '@/shared/constants';
-import { useEffect } from 'react';
 import { useAtomValue } from 'jotai';
-import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
-import { getCascadeDelay } from '@/shared/prayer';
+
+import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
+import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
 import { isTimePassed } from '@/shared/time';
 
-interface Props {
-  index: number;
-  type: ScheduleType;
-  isOverlay: boolean;
+const ANIMATION_CONFIG = {
+  timing: {
+    duration: ANIMATION.duration,
+    durationSlow: ANIMATION.durationSlow
+  }
 };
 
+const createAnimations = (initialColorPos: number) => ({
+  colorPos: useSharedValue(initialColorPos)
+});
 
-export default function PrayerTime({ index, type, isOverlay = false }: Props) {
+const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) => ({
+  text: useAnimatedStyle(() => ({
+    color: interpolateColor(
+      animations.colorPos.value,
+      [0, 1],
+      [COLORS.inactivePrayer, COLORS.activePrayer]
+    )
+  }))
+});
+
+interface Props { index: number; type: ScheduleType; }
+
+export default function PrayerTime({ index, type }: Props) {
+  // State
   const isStandard = type === ScheduleType.Standard;
-  const { today, tomorrow, nextIndex, selectedIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
-  const date = useAtomValue(dateAtom);
+  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
-  // const overlayVisible = false;
-
-  const prayer = today[index];
+  // Derived State
+  const prayer = schedule.today[index];
   const isPassed = isTimePassed(prayer.time);
-  const isNext = index === nextIndex;
-  const todayTime = today[index].time;
-  const tomorrowTime = tomorrow[selectedIndex]?.time;
+  const isNext = index === schedule.nextIndex;
+  const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
-  const colorProgress = useSharedValue(isPassed || isNext ? 1 : 0);
-  const overlayTodayColor = useSharedValue(0);
-  const overlayTomorrowColor = useSharedValue(0);
+  // Animations
+  const animations = createAnimations(onLoadColorPos);
+  const animatedStyles = createAnimatedStyles(animations);
 
-  useEffect(() => {
-    if (isNext) {
-      colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
-      // } else if (nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
-      // colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
-      // } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
-      // colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    };
-  }, [nextIndex]);
-
-  useEffect(() => {
-    if (index !== nextIndex && today[0].date !== date.current) {
-      colorProgress.value = withDelay(
-        getCascadeDelay(index),
-        withTiming(0, { duration: ANIMATION.durationSlow })
-      );
-    }
-  }, [date.current]);
-
-  // useEffect(() => {
-  //   if (isNext) {
-  //     originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-  //     colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlow });
-  //     return;
-  //   }
-
-  //   if (nextIndex === 0) {
-  //     originalOpacity.value = withDelay(
-  //       getCascadeDelay(index),
-  //       withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow })
-  //     );
-  //     colorProgress.value = withDelay(
-  //       getCascadeDelay(index),
-  //       withTiming(0, { duration: ANIMATION.durationSlow })
-  //     );
-  //     return;
-  //   }
-
-  //   if (!isPassed) {
-  //     originalOpacity.value = withTiming(TEXT.opacity, { duration: ANIMATION.durationSlow });
-  //     colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
-  //   }
-  // }, [nextIndex]);
-
-  // useEffect(() => {
-  //   // if overlay is visible, and this prayer is selected
-  //   if (overlayVisible && selectedIndex === index) {
-
-  //     if (isNext) {
-  //       overlayTodayOpacity.value = 0;
-  //     };
-
-  //     // upcoming prayer
-  //     if (!isPassed) {
-  //       overlayTodayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-  //     };
-
-  //     // tomorrow's prayer
-  //     if (isPassed) {
-  //       originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-  //       overlayTomorrowOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
-  //     };
-  //   }
-
-  //   // if overlay is not visible
-  //   if (!overlayVisible) {
-  //     originalOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(baseOpacity, { duration: ANIMATION.duration }));
-  //     overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration })
-  //     overlayTomorrowOpacity.value = withTiming(0, { duration: ANIMATION.duration })
-  //   };
-
-  // }, [overlayVisible]);
-
-  const mainTextStyle = useAnimatedStyle(() => {
-    return {
-      color: interpolateColor(
-        colorProgress.value,
-        [0, 1],
-        [COLORS.inactivePrayer, COLORS.activePrayer]
-      ),
-    };
-  });
+  if (isNext) {
+    animations.colorPos.value = withDelay(
+      ANIMATION_CONFIG.timing.duration,
+      withTiming(1, { duration: ANIMATION_CONFIG.timing.durationSlow })
+    );
+  }
 
   return (
     <View style={[styles.container, { width: isStandard ? 95 : 85 }]}>
-      {/* Main text (non-overlay) */}
-      <Animated.Text style={[styles.text, mainTextStyle]}>
-        {todayTime}
-      </Animated.Text>
-
-      {/* Overlay text - Only shows today's time */}
-      <Animated.Text style={[
-        styles.text,
-        {
-          color: interpolateColor(
-            overlayTodayColor.value,
-            [0, 1],
-            ['transparent', COLORS.activePrayer]
-          ),
-        }
-      ]}>
-        {todayTime}
-      </Animated.Text>
-
-      {/* Tomorrow text - Only shows when passed */}
-      <Animated.Text style={[
-        styles.text,
-        {
-          color: interpolateColor(
-            overlayTomorrowColor.value,
-            [0, 1],
-            ['transparent', COLORS.activePrayer]
-          ),
-        }
-      ]}>
-        {tomorrowTime}
+      <Animated.Text style={[styles.text, animatedStyles.text]}>
+        {prayer.time}
       </Animated.Text>
     </View>
   );
@@ -162,7 +70,6 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
-    position: 'absolute',
     width: '100%',
   },
 });
