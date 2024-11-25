@@ -1,3 +1,4 @@
+
 export const PRAYERS_ENGLISH = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Magrib", "Isha"];
 export const PRAYERS_ARABIC = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
 export const PRAYER_INDEX_FAJR = 0;
@@ -28,8 +29,9 @@ export const SCREEN = {
 export const COLORS = {
   gradientScreen1Start: '#031a4c',
   gradientScreen1End: '#5b1eaa',
+
   gradientScreen2Start: '#140B5D',
-  gradientScreen2End: '#06000E',
+  gradientScreen2End: '#150020',
 
   activePrayer: '#ffffff',
   inactivePrayer: '#8aa9d662',
