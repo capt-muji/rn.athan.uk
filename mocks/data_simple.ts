@@ -8,13 +8,13 @@ const addMinutes = (minutesToAdd: number) => {
   return date.toLocaleTimeString('en-GB', {  hour: '2-digit', minute: '2-digit' });
 };
 
-const formatDate = (date: Date) => format(date, 'yyyy-MM-dd');
+const formatDateLong = (date: Date) => format(date, 'yyyy-MM-dd');
 
-const dayBeforeYesterday = formatDate(subDays(now, 2));
-const yesterday = formatDate(subDays(now, 1));
-const today = formatDate(now);
-const tomorrow = formatDate(addDays(now, 1));
-const dayAfterTomorrow = formatDate(addDays(now, 2));
+const dayBeforeYesterday = formatDateLong(subDays(now, 2));
+const yesterday = formatDateLong(subDays(now, 1));
+const today = formatDateLong(now);
+const tomorrow = formatDateLong(addDays(now, 1));
+const dayAfterTomorrow = formatDateLong(addDays(now, 2));
 
 export const MOCK_DATA_SIMPLE: IApiResponse = {
   city: "london",
@@ -54,9 +54,9 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       fajr: addMinutes(-1),
       sunrise: addMinutes(-1),
       dhuhr: addMinutes(-1),
-      asr: addMinutes(1),
-      magrib: addMinutes(2),
-      isha: addMinutes(3),
+      asr: addMinutes(-1),
+      magrib: addMinutes(-1),
+      isha: addMinutes(1),
       fajr_jamat: "00:00",
       dhuhr_jamat: "00:00",
       asr_2: "00:00",
