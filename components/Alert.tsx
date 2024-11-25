@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, useEffect, forwardRef } from 'react';
 import { StyleSheet, Pressable, Text, View, GestureResponderEvent } from 'react-native';
-import { useAtom } from 'jotai';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -19,33 +18,23 @@ import { useAtomValue } from 'jotai';
 import { alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom, dateAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
 import Icon from '@/components/Icon';
-import { getCascadeDelay } from '@/shared/prayer';
 import { isTimePassed } from '@/shared/time';
 
-const SPRING_CONFIG = { damping: 12, stiffness: 500, mass: 0.5 };
-const TIMING_CONFIG = { duration: 5 };
+const ANIMATION_CONFIG = {
+  spring: { damping: 12, stiffness: 500, mass: 0.5 },
+  timing: { duration: 5 },
+  popup: {
+    duration: ANIMATION.duration,
+    durationSlow: ANIMATION.durationSlow,
+    removeDelay: 1500
+  }
+};
 
 const ALERT_CONFIGS = [
-  {
-    icon: AlertIcon.BELL_SLASH,
-    label: "Off",
-    type: AlertType.Off
-  },
-  {
-    icon: AlertIcon.BELL_RING,
-    label: "Notification",
-    type: AlertType.Notification
-  },
-  {
-    icon: AlertIcon.VIBRATE,
-    label: "Vibrate",
-    type: AlertType.Vibrate
-  },
-  {
-    icon: AlertIcon.SPEAKER,
-    label: "Sound",
-    type: AlertType.Sound
-  }
+  { icon: AlertIcon.BELL_SLASH, label: "Off", type: AlertType.Off },
+  { icon: AlertIcon.BELL_RING, label: "Notification", type: AlertType.Notification },
+  { icon: AlertIcon.VIBRATE, label: "Vibrate", type: AlertType.Vibrate },
+  { icon: AlertIcon.SPEAKER, label: "Sound", type: AlertType.Sound }
 ];
 
 interface Props {
@@ -70,24 +59,27 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const isPassed = isTimePassed(prayer.time);
   const isNext = index === nextIndex;
 
-  const fadeAnim = useSharedValue(0);
-  const bounceAnim = useSharedValue(0);
-  const pressAnim = useSharedValue(1);
 
   // Stores initial color state based on prayer status
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
-  const onUpdateColorPos = useSharedValue(onLoadColorPos);
+
+  const animations = {
+    fade: useSharedValue(0),
+    bounce: useSharedValue(0),
+    press: useSharedValue(1),
+    colorPos: useSharedValue(onLoadColorPos)
+  };
 
   // Simplify popup effect to just animate to 1 and back to proper state
   useEffect(() => {
     const colorPos = isPopupActive ? 1 : onLoadColorPos;
-    onUpdateColorPos.value = withTiming(colorPos, { duration: ANIMATION.duration });
+    animations.colorPos.value = withTiming(colorPos, { duration: ANIMATION_CONFIG.popup.duration });
   }, [isPopupActive]);
 
   if (isNext) {
-    onUpdateColorPos.value = withDelay(
-      ANIMATION.duration,
-      withTiming(1, { duration: ANIMATION.durationSlow })
+    animations.colorPos.value = withDelay(
+      ANIMATION_CONFIG.popup.duration,
+      withTiming(1, { duration: ANIMATION_CONFIG.popup.durationSlow })
     );
   };
 
@@ -100,42 +92,38 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
 
     timeoutRef.current && clearTimeout(timeoutRef.current);
 
-    bounceAnim.value = 0;
-    fadeAnim.value = withTiming(1, TIMING_CONFIG);
-    bounceAnim.value = withSpring(1, SPRING_CONFIG);
+    // Reset and trigger animations
+    animations.bounce.value = 0;
+    animations.fade.value = withTiming(1, ANIMATION_CONFIG.timing);
+    animations.bounce.value = withSpring(1, ANIMATION_CONFIG.spring);
 
     setIsPopupActive(true);
-    const removeAfter = 1500;
 
     timeoutRef.current = setTimeout(() => {
-      fadeAnim.value = withTiming(0, TIMING_CONFIG);
-      bounceAnim.value = withSpring(0, SPRING_CONFIG);
+      animations.fade.value = withTiming(0, ANIMATION_CONFIG.timing);
+      animations.bounce.value = withSpring(0, ANIMATION_CONFIG.spring);
       setIsPopupActive(false);
-    }, removeAfter);
+    }, ANIMATION_CONFIG.popup.removeDelay);
   }, [iconIndex, index]);
 
-  const alertAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: pressAnim.value }]
-    };
-  });
+  const alertAnimatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: animations.press.value }]
+  }));
 
   const popupAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: fadeAnim.value,
+    opacity: animations.fade.value,
     transform: [{
-      scale: interpolate(bounceAnim.value, [0, 1], [0.95, 1])
+      scale: interpolate(animations.bounce.value, [0, 1], [0.95, 1])
     }]
   }));
 
-  const iconAnimatedProps = useAnimatedProps(() => {
-    return {
-      fill: interpolateColor(
-        onUpdateColorPos.value,
-        [0, 1],
-        [COLORS.inactivePrayer, COLORS.activePrayer]
-      )
-    }
-  });
+  const iconAnimatedProps = useAnimatedProps(() => ({
+    fill: interpolateColor(
+      animations.colorPos.value,
+      [0, 1],
+      [COLORS.inactivePrayer, COLORS.activePrayer]
+    )
+  }));
 
   const computedStylesPopup = {
     ...PRAYER.shadow.common,
@@ -152,8 +140,8 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onPressIn={() => pressAnim.value = withSpring(0.9, SPRING_CONFIG)}
-        onPressOut={() => pressAnim.value = withSpring(1, SPRING_CONFIG)}
+        onPressIn={() => animations.press.value = withSpring(0.9, ANIMATION_CONFIG.spring)}
+        onPressOut={() => animations.press.value = withSpring(1, ANIMATION_CONFIG.spring)}
         style={styles.iconContainer}
       >
         <Animated.View style={alertAnimatedStyle}>
@@ -194,21 +182,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     gap: 15,
   },
-  popupOverlay: {
-    backgroundColor: COLORS.activeBackground,
-    shadowColor: COLORS.activeBackgroundShadow,
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.35,
-    shadowRadius: 10,
-  },
   popupIcon: {
     marginRight: 15
   },
   label: {
     fontSize: TEXT.size,
     color: COLORS.activePrayer,
-  },
-  labelOverlay: {
-    color: 'white',
   },
 });
