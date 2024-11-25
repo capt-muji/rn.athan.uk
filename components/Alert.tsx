@@ -79,12 +79,6 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const colorProgress = useSharedValue(defaultColorProgress);
   const previousColorProgress = useRef(defaultColorProgress);
 
-  // Set initial state
-  // useEffect(() => {
-  //   colorProgress.value = defaultColorProgress;
-  //   previousColorProgress.current = defaultColorProgress;
-  // }, [isPassed, isNext]);
-
   // Handle popup state changes
   useEffect(() => {
     if (isPopupActive === true) {
