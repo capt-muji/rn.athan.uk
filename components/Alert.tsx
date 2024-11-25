@@ -75,39 +75,34 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const bounceAnim = useSharedValue(0);
   const pressAnim = useSharedValue(1);
 
+  // Stores initial color state based on prayer status
   const defaultColorProgress = isPassed || isNext ? 1 : 0;
   const colorProgress = useSharedValue(defaultColorProgress);
-  const previousColorProgress = useRef(defaultColorProgress);
 
-  // Handle popup state changes
+  // Simplify popup effect to just animate to 1 and back to proper state
   useEffect(() => {
     if (isPopupActive === true) {
-      previousColorProgress.current = colorProgress.value;
       colorProgress.value = withTiming(1, { duration: ANIMATION.duration });
       return;
     }
 
-    if (isPopupActive === false) {
-      colorProgress.value = withTiming(previousColorProgress.current, { duration: ANIMATION.duration });
-    }
-  }, [isPopupActive]);
+    // When closing, determine correct state based on current prayer status
+    colorProgress.value = withTiming(defaultColorProgress, { duration: ANIMATION.duration });
+  }, [isPopupActive, isPassed, isNext]);
 
-  // Handle animations directly based on isNext, isPassed, and date changes
+  // Simplify prayer status changes
   if (isNext && colorProgress.value !== 1) {
     colorProgress.value = withDelay(
       ANIMATION.duration,
       withTiming(1, { duration: ANIMATION.durationSlow })
     );
-    previousColorProgress.current = 1;
   } else if (isPassed && colorProgress.value !== 1) {
     colorProgress.value = 1;
-    previousColorProgress.current = 1;
   } else if (index !== nextIndex && today[0].date !== date.current && colorProgress.value !== 0) {
     colorProgress.value = withDelay(
       getCascadeDelay(index),
       withTiming(0, { duration: ANIMATION.durationSlow })
     );
-    previousColorProgress.current = 0;
   }
 
   // useEffect(() => {
@@ -161,7 +156,6 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     }]
   }));
 
-  // Single cleanup effect
   useEffect(() => {
     return () => {
       timeoutRef.current && clearTimeout(timeoutRef.current);
