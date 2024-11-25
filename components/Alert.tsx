@@ -161,17 +161,11 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     }]
   }));
 
-  useEffect(() => () => {
-    timeoutRef.current && clearTimeout(timeoutRef.current);
-    fadeAnim.value = 0;
-    bounceAnim.value = 0;
-  }, []);
-
+  // Single cleanup effect
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current && clearTimeout(timeoutRef.current);
       fadeAnim.value = 0;
-      bounceAnim.value = 0;
     };
   }, []);
 
