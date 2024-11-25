@@ -7,8 +7,7 @@ import Animated, {
   withTiming,
   withSequence,
   Easing,
-  interpolateColor,
-  runOnJS,
+  interpolateColor
 } from 'react-native-reanimated';
 import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
 import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
@@ -26,7 +25,6 @@ export default function ActiveBackground({ type }: Props) {
 
   const translateY = useSharedValue(schedule.nextIndex * PRAYER.height);
   const colorProgress = useSharedValue(1);
-  const prevPosition = useRef(schedule.nextIndex);
 
   // Check if last prayer has passed
   const lastPrayerIndex = Object.keys(schedule.today).length - 1;
@@ -38,13 +36,10 @@ export default function ActiveBackground({ type }: Props) {
     const shouldBeTransparent = isLastPrayerPassed;
     colorProgress.value = shouldBeTransparent ? 0 : 1;
     translateY.value = schedule.nextIndex * PRAYER.height;
-    prevPosition.current = schedule.nextIndex;
   }, []);
 
   // Handle nextIndex changes
   useEffect(() => {
-    if (schedule.nextIndex === prevPosition.current) return;
-
     if (schedule.nextIndex === 0) {
       // Fade out and move to position 0 in sequence
       colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlow });
@@ -56,8 +51,6 @@ export default function ActiveBackground({ type }: Props) {
       // Just slide to new position
       translateY.value = schedule.nextIndex * PRAYER.height;
     }
-
-    prevPosition.current = schedule.nextIndex;
   }, [schedule.nextIndex]);
 
   // Handle date changes
