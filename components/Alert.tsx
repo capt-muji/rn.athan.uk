@@ -101,7 +101,6 @@ export default function Alert({ index, type }: Props) {
     animations.colorPos.value = withTiming(colorPos, { duration: ANIMATION_CONFIG.popup.duration });
   }, [isPopupActive]);
 
-  // Cleanup
   useEffect(() => () => {
     timeoutRef.current && clearTimeout(timeoutRef.current);
   }, []);
