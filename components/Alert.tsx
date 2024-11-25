@@ -165,7 +165,6 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   useEffect(() => {
     return () => {
       timeoutRef.current && clearTimeout(timeoutRef.current);
-      fadeAnim.value = 0;
     };
   }, []);
 
