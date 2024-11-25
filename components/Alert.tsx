@@ -57,7 +57,6 @@ interface Props {
 export default function Alert({ index, type, isOverlay = false }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const { nextIndex, today } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
-  const date = useAtomValue(dateAtom);
 
   const alertPreferences = useAtomValue(alertPreferencesAtom);
   const [iconIndex, setIconIndex] = useState(alertPreferences[index] || 0);
@@ -76,51 +75,21 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const pressAnim = useSharedValue(1);
 
   // Stores initial color state based on prayer status
-  const defaultColorProgress = isPassed || isNext ? 1 : 0;
-  const colorProgress = useSharedValue(defaultColorProgress);
+  const onLoadColorPos = isPassed || isNext ? 1 : 0;
+  const onUpdateColorPos = useSharedValue(onLoadColorPos);
 
   // Simplify popup effect to just animate to 1 and back to proper state
   useEffect(() => {
-    colorProgress.value = withTiming(
-      isPopupActive ? 1 : defaultColorProgress,
-      { duration: ANIMATION.duration }
-    );
+    const colorPos = isPopupActive ? 1 : onLoadColorPos;
+    onUpdateColorPos.value = withTiming(colorPos, { duration: ANIMATION.duration });
   }, [isPopupActive]);
 
-  // Simplify prayer status changes
-  const isCurrentValueOne = colorProgress.value === 1;
-  const isCurrentValueZero = colorProgress.value === 0;
-  const isNewDay = today[0].date !== date.current;
-  const needsReset = index !== nextIndex && isNewDay && !isCurrentValueZero;
-
-  switch (true) {
-    case isNext && !isCurrentValueOne:
-      colorProgress.value = withDelay(
-        ANIMATION.duration,
-        withTiming(1, { duration: ANIMATION.durationSlow })
-      );
-      break;
-
-    case isPassed && !isCurrentValueOne:
-      colorProgress.value = 1;
-      break;
-
-    case needsReset:
-      colorProgress.value = withDelay(
-        getCascadeDelay(index),
-        withTiming(0, { duration: ANIMATION.durationSlow })
-      );
-      break;
-  }
-
-  // useEffect(() => {
-  //   if (isOverlay && !overlayVisible) {
-  //     setIsPopupActive(false);
-  //     fadeAnim.value = 0;
-  //     bounceAnim.value = 0;
-  //     timeoutRef.current && clearTimeout(timeoutRef.current);
-  //   }
-  // }, [overlayVisible]);
+  if (isNext) {
+    onUpdateColorPos.value = withDelay(
+      ANIMATION.duration,
+      withTiming(1, { duration: ANIMATION.durationSlow })
+    );
+  };
 
   const handlePress = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -146,12 +115,6 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   }, [iconIndex, index]);
 
   const alertAnimatedStyle = useAnimatedStyle(() => {
-    if (isOverlay) return {
-      color: 'white',
-      opacity: 1,
-      transform: [{ scale: pressAnim.value }]
-    };
-
     return {
       transform: [{ scale: pressAnim.value }]
     };
@@ -164,16 +127,10 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     }]
   }));
 
-  useEffect(() => {
-    return () => {
-      timeoutRef.current && clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
   const iconAnimatedProps = useAnimatedProps(() => {
     return {
       fill: interpolateColor(
-        colorProgress.value,
+        onUpdateColorPos.value,
         [0, 1],
         [COLORS.inactivePrayer, COLORS.activePrayer]
       )
@@ -184,6 +141,12 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     ...PRAYER.shadow.common,
     ...(isStandard ? PRAYER.shadow.standard : PRAYER.shadow.extra)
   }
+
+  useEffect(() => {
+    return () => {
+      timeoutRef.current && clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   return (
     <View style={styles.container}>
