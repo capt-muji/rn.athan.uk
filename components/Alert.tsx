@@ -67,8 +67,9 @@ const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) =
 interface Props { index: number; type: ScheduleType }
 
 export default function Alert({ index, type }: Props) {
-  // State
   const isStandard = type === ScheduleType.Standard;
+
+  // State
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
   const [iconIndex, setIconIndex] = useState<number>(alertPreferences[index] || 0);
