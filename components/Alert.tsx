@@ -15,7 +15,7 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
-import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
+import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
 import { alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
 import Icon from '@/components/Icon';
@@ -70,8 +70,8 @@ export default function Alert({ index, type }: Props) {
   // State
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
-  const alertPreferences = useAtomValue(alertPreferencesAtom);
-  const [iconIndex, setIconIndex] = useState(alertPreferences[index] || 0);
+  const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
+  const [iconIndex, setIconIndex] = useState<number>(alertPreferences[index] || 0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
