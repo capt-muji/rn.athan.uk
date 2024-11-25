@@ -21,7 +21,6 @@ import { setAlertPreference } from '@/stores/actions';
 import Icon from '@/components/Icon';
 import { isTimePassed } from '@/shared/time';
 
-// --- Configurations ---
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: "Off", type: AlertType.Off },
   { icon: AlertIcon.BELL_RING, label: "Notification", type: AlertType.Notification },
@@ -39,7 +38,6 @@ const ANIMATION_CONFIG = {
   }
 };
 
-// --- Animation Utilities ---
 const createAnimations = (initialColorPos: number) => ({
   fade: useSharedValue(0),
   bounce: useSharedValue(0),
@@ -66,14 +64,13 @@ const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) =
   }))
 });
 
-// --- Types ---
 interface Props {
   index: number;
   type: ScheduleType;
 }
 
 export default function Alert({ index, type }: Props) {
-  // State and Atoms
+  // State
   const isStandard = type === ScheduleType.Standard;
   const { nextIndex, today } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom);
@@ -159,7 +156,6 @@ export default function Alert({ index, type }: Props) {
   );
 }
 
-// --- Styles ---
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
