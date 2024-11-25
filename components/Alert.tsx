@@ -88,18 +88,29 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   }, [isPopupActive]);
 
   // Simplify prayer status changes
-  if (isNext && colorProgress.value !== 1) {
-    colorProgress.value = withDelay(
-      ANIMATION.duration,
-      withTiming(1, { duration: ANIMATION.durationSlow })
-    );
-  } else if (isPassed && colorProgress.value !== 1) {
-    colorProgress.value = 1;
-  } else if (index !== nextIndex && today[0].date !== date.current && colorProgress.value !== 0) {
-    colorProgress.value = withDelay(
-      getCascadeDelay(index),
-      withTiming(0, { duration: ANIMATION.durationSlow })
-    );
+  const isCurrentValueOne = colorProgress.value === 1;
+  const isCurrentValueZero = colorProgress.value === 0;
+  const isNewDay = today[0].date !== date.current;
+  const needsReset = index !== nextIndex && isNewDay && !isCurrentValueZero;
+
+  switch (true) {
+    case isNext && !isCurrentValueOne:
+      colorProgress.value = withDelay(
+        ANIMATION.duration,
+        withTiming(1, { duration: ANIMATION.durationSlow })
+      );
+      break;
+
+    case isPassed && !isCurrentValueOne:
+      colorProgress.value = 1;
+      break;
+
+    case needsReset:
+      colorProgress.value = withDelay(
+        getCascadeDelay(index),
+        withTiming(0, { duration: ANIMATION.durationSlow })
+      );
+      break;
   }
 
   // useEffect(() => {
