@@ -64,24 +64,21 @@ const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) =
   }))
 });
 
-interface Props {
-  index: number;
-  type: ScheduleType;
-}
+interface Props { index: number; type: ScheduleType }
 
 export default function Alert({ index, type }: Props) {
   // State
   const isStandard = type === ScheduleType.Standard;
-  const { nextIndex, today } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom);
   const [iconIndex, setIconIndex] = useState(alertPreferences[index] || 0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   // Derived State
-  const prayer = today[index];
+  const prayer = schedule.today[index];
   const isPassed = isTimePassed(prayer.time);
-  const isNext = index === nextIndex;
+  const isNext = index === schedule.nextIndex;
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
