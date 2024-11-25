@@ -148,7 +148,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
     setIsPopupActive(true);
-    const removeAfter = 1111111500;
+    const removeAfter = 1500;
 
     timeoutRef.current = setTimeout(() => {
       fadeAnim.value = withTiming(0, TIMING_CONFIG);
