@@ -106,6 +106,9 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
         withTiming(1, { duration: ANIMATION.durationSlow })
       );
       previousColorProgress.current = 1;
+    } else if (isPassed) {
+      colorProgress.value = 1;
+      previousColorProgress.current = 1;
     }
   }, [nextIndex]);
 

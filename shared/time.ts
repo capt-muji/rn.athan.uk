@@ -50,7 +50,7 @@ export const isTimePassed = (time: string): boolean => {
   let target = createLondonDate();
   target = setHours(setMinutes(target, minutes), hours);
 
-  return isAfter(now, target);
+  return now.getTime() >= target.getTime();
 };
 
 // Converts milliseconds into human-readable time format
