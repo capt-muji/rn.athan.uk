@@ -10,10 +10,9 @@ import Animated, {
 } from 'react-native-reanimated';
 import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
 import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
-import { ScheduleType } from '@/shared/types';
+import { ScheduleType, ScheduleStore, DateStore } from '@/shared/types';
 import * as timeUtils from '@/shared/time';
 
-// Animation Config
 const ANIMATION_CONFIG = {
   timing: {
     duration: ANIMATION.durationSlow,
@@ -22,7 +21,6 @@ const ANIMATION_CONFIG = {
   }
 };
 
-// Animation Creators
 const createAnimations = (nextIndex: number, isLastPrayerPassed: boolean) => ({
   translateY: useSharedValue(nextIndex * PRAYER.height),
   colorPos: useSharedValue(isLastPrayerPassed ? 0 : 1)
@@ -30,12 +28,12 @@ const createAnimations = (nextIndex: number, isLastPrayerPassed: boolean) => ({
 
 const createAnimatedStyles = (
   animations: ReturnType<typeof createAnimations>,
-  schedule: any,
-  date: any,
-  today: string
+  schedule: ScheduleStore,
+  date: DateStore,
+  todayYYYMMDD: string
 ) => ({
   background: useAnimatedStyle(() => {
-    if (schedule.nextIndex === 0 && date.current === today) {
+    if (schedule.nextIndex === 0 && date.current === todayYYYMMDD) {
       animations.colorPos.value = withTiming(0, { duration: ANIMATION_CONFIG.timing.duration });
       animations.translateY.value = withSequence(
         withTiming(animations.translateY.value, { duration: ANIMATION_CONFIG.timing.duration }),
@@ -68,7 +66,7 @@ export default function ActiveBackground({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
-  const today = timeUtils.formatDateShort(timeUtils.createLondonDate());
+  const todayYYYMMDD = timeUtils.formatDateShort(timeUtils.createLondonDate());
 
   // Derived State
   const lastPrayerIndex = Object.keys(schedule.today).length - 1;
@@ -76,7 +74,7 @@ export default function ActiveBackground({ type }: Props) {
 
   // Animations
   const animations = createAnimations(schedule.nextIndex, isLastPrayerPassed);
-  const animatedStyles = createAnimatedStyles(animations, schedule, date, today);
+  const animatedStyles = createAnimatedStyles(animations, schedule, date, todayYYYMMDD);
 
   if (!isLastPrayerPassed) {
     animations.colorPos.value = withTiming(1, { duration: ANIMATION_CONFIG.timing.duration });
