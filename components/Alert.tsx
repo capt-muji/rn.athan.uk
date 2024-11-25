@@ -92,19 +92,17 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     }
   }, [isPopupActive]);
 
-  // Handle next prayer changes
-  useEffect(() => {
-    if (isNext) {
-      colorProgress.value = withDelay(
-        ANIMATION.duration,
-        withTiming(1, { duration: ANIMATION.durationSlow })
-      );
-      previousColorProgress.current = 1;
-    } else if (isPassed) {
-      colorProgress.value = 1;
-      previousColorProgress.current = 1;
-    }
-  }, [nextIndex]);
+  // Handle animations directly based on isNext and isPassed
+  if (isNext && colorProgress.value !== 1) {
+    colorProgress.value = withDelay(
+      ANIMATION.duration,
+      withTiming(1, { duration: ANIMATION.durationSlow })
+    );
+    previousColorProgress.current = 1;
+  } else if (isPassed && colorProgress.value !== 1) {
+    colorProgress.value = 1;
+    previousColorProgress.current = 1;
+  }
 
   // Handle date changes
   useEffect(() => {
