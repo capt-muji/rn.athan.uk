@@ -244,6 +244,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 10,
     backgroundColor: 'black',
+    gap: 15,
     ...PRAYER.shadow,
   },
   popupOverlay: {
