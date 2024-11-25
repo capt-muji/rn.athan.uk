@@ -80,9 +80,16 @@ export const PRAYER = {
     borderRadius: 7,
   },
   shadow: {
-    shadowOffset: { width: 1, height: 15 },
-    shadowOpacity: 0.5,
-    shadowRadius: 15,
-    shadowColor: COLORS.activeBackgroundShadow,
-  }
+    common: {
+      shadowOffset: { width: 1, height: 15 },
+      shadowOpacity: 0.5,
+      shadowRadius: 15,
+    },
+    standard: {
+      shadowColor: COLORS.activeBackgroundShadow,
+    },
+    extra: {
+      shadowColor: 'black',
+    },
+  },
 };

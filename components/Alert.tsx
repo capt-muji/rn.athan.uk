@@ -148,7 +148,7 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     bounceAnim.value = withSpring(1, SPRING_CONFIG);
 
     setIsPopupActive(true);
-    const removeAfter = 1500;
+    const removeAfter = 1111111500;
 
     timeoutRef.current = setTimeout(() => {
       fadeAnim.value = withTiming(0, TIMING_CONFIG);
@@ -200,6 +200,11 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
     }
   });
 
+  const computedStylesPopup = {
+    ...PRAYER.shadow.common,
+    ...(isStandard ? PRAYER.shadow.standard : PRAYER.shadow.extra)
+  }
+
   return (
     <View style={styles.container}>
       <Pressable
@@ -213,9 +218,9 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[styles.popup, popupAnimatedStyle, isOverlay && !isNext && styles.popupOverlay]}>
+      <Animated.View style={[styles.popup, computedStylesPopup, popupAnimatedStyle,]}>
         <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} color="white" />
-        <Text style={[styles.label, isOverlay && !isNext && styles.labelOverlay]}>
+        <Text style={[styles.label]}>
           {ALERT_CONFIGS[iconIndex].label}
         </Text>
       </Animated.View>
@@ -245,7 +250,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     backgroundColor: 'black',
     gap: 15,
-    ...PRAYER.shadow,
   },
   popupOverlay: {
     backgroundColor: COLORS.activeBackground,
