@@ -125,3 +125,9 @@ export const getIstijaba = (magribTime: string): string => {
   istijaba = addMins(istijaba, -59);
   return format(istijaba, 'HH:mm');
 };
+
+// Checks if a given date string is Friday
+export const isFriday = (date?: string | Date): boolean => {
+  const parsedDate = createLondonDate(date);
+  return format(parsedDate, 'EEEE') === 'Friday';
+};

@@ -1,6 +1,6 @@
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
 import { PRAYERS_ENGLISH, PRAYERS_ARABIC, ANIMATION, PRAYERS_LENGTH_FAJR_TO_ISHA, EXTRAS_ENGLISH, EXTRAS_ARABIC } from '@/shared/constants';
-import { isDateTodayOrFuture, getLastThirdOfNight, getIstijaba, addMinutes } from '@/shared/time';
+import * as timeUtils from '@/shared/time';
 
 /**
  * Filters API response data to only include today and future dates
@@ -11,7 +11,7 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
   const entries = Object.entries(apiData.times);
 
   entries.forEach(([date, times]) => {
-    if (!isDateTodayOrFuture(date)) return;
+    if (!timeUtils.isDateTodayOrFuture(date)) return;
     timesFiltered[date] = times;
   });
 
@@ -34,13 +34,13 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       date,
       fajr: times.fajr,
       sunrise: times.sunrise,
-      duha: addMinutes(times.sunrise, 1),
+      duha: timeUtils.addMinutes(times.sunrise, 1),
       dhuhr: times.dhuhr,
       asr: times.asr,
-      "istijaba": getIstijaba(times.magrib),
+      "istijaba": timeUtils.getIstijaba(times.magrib),
       magrib: times.magrib,
       isha: times.isha,
-      "last third": getLastThirdOfNight(times.magrib, times.fajr),
+      "last third": timeUtils.getLastThirdOfNight(times.magrib, times.fajr),
     };
 
     transformations.push(schedule);
@@ -54,8 +54,15 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
  */
 export const createSchedule = (prayers: ISingleApiResponseTransformed, type: ScheduleType): IScheduleNow => {
   const isStandard = type === ScheduleType.Standard;
-  const namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  const namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+  const shouldRemoveIstijaba = !isStandard && timeUtils.isFriday();
+
+  let namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  let namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+
+  if (shouldRemoveIstijaba) {
+    namesEnglish = namesEnglish.filter(name => name.toLowerCase() !== 'istijaba');
+    namesArabic = namesArabic.filter(name => name !== 'استجابة');
+  }
   
   const schedule: IScheduleNow = {};
 
