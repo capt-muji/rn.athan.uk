@@ -75,36 +75,48 @@ export default function Alert({ index, type, isOverlay = false }: Props) {
   const bounceAnim = useSharedValue(0);
   const pressAnim = useSharedValue(1);
 
-  const defaultColorProgress = isPopupActive || isPassed || isNext ? 1 : 0;
+  const defaultColorProgress = isPassed || isNext ? 1 : 0;
   const colorProgress = useSharedValue(defaultColorProgress);
+  const previousColorProgress = useRef(defaultColorProgress);
 
+  // Set initial state
+  useEffect(() => {
+    colorProgress.value = defaultColorProgress;
+    previousColorProgress.current = defaultColorProgress;
+  }, [isPassed, isNext]);
+
+  // Handle popup state changes
   useEffect(() => {
     if (isPopupActive === true) {
+      previousColorProgress.current = colorProgress.value;
       colorProgress.value = withTiming(1, { duration: ANIMATION.duration });
       return;
-    };
+    }
 
     if (isPopupActive === false) {
-      colorProgress.value = withTiming(0, { duration: ANIMATION.duration });
+      colorProgress.value = withTiming(previousColorProgress.current, { duration: ANIMATION.duration });
     }
   }, [isPopupActive]);
 
+  // Handle next prayer changes
   useEffect(() => {
     if (isNext) {
-      colorProgress.value = withDelay(ANIMATION.duration, withTiming(1, { duration: ANIMATION.durationSlow }));
-      // } else if (nextIndex === PRAYER_INDEX_FAJR && isLastThird) {
-      // colorProgress.value = withTiming(1, { duration: ANIMATION.durationSlowest });
-      // } else if (nextIndex !== PRAYER_INDEX_FAJR && isLastThird) {
-      // colorProgress.value = withTiming(0, { duration: ANIMATION.durationSlowest });
-    };
+      colorProgress.value = withDelay(
+        ANIMATION.duration,
+        withTiming(1, { duration: ANIMATION.durationSlow })
+      );
+      previousColorProgress.current = 1;
+    }
   }, [nextIndex]);
 
+  // Handle date changes
   useEffect(() => {
     if (index !== nextIndex && today[0].date !== date.current) {
       colorProgress.value = withDelay(
         getCascadeDelay(index),
         withTiming(0, { duration: ANIMATION.durationSlow })
       );
+      previousColorProgress.current = 0;
     }
   }, [date.current]);
 
