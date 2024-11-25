@@ -12,6 +12,7 @@ import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
 import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { ScheduleType, ScheduleStore, DateStore } from '@/shared/types';
 import * as timeUtils from '@/shared/time';
+import * as prayerUtils from '@/shared/prayer';
 
 const ANIMATION_CONFIG = {
   timing: {
@@ -30,7 +31,7 @@ const createAnimatedStyles = (
   animations: ReturnType<typeof createAnimations>,
   schedule: ScheduleStore,
   date: DateStore,
-  todayYYYMMDD: string
+  todayYYYMMDD: string,
 ) => ({
   background: useAnimatedStyle(() => {
     if (schedule.nextIndex === 0 && date.current === todayYYYMMDD) {
@@ -62,15 +63,15 @@ const createAnimatedStyles = (
 interface Props { type: ScheduleType };
 
 export default function ActiveBackground({ type }: Props) {
-  // State
   const isStandard = type === ScheduleType.Standard;
+
+  // State
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
-  const todayYYYMMDD = timeUtils.formatDateShort(timeUtils.createLondonDate());
 
   // Derived State
-  const lastPrayerIndex = Object.keys(schedule.today).length - 1;
-  const isLastPrayerPassed = timeUtils.isTimePassed(schedule.today[lastPrayerIndex].time);
+  const todayYYYMMDD = timeUtils.formatDateShort(timeUtils.createLondonDate());
+  const isLastPrayerPassed = prayerUtils.isLastPrayerPassed(schedule);
 
   // Animations
   const animations = createAnimations(schedule.nextIndex, isLastPrayerPassed);

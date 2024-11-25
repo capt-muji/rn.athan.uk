@@ -32,8 +32,9 @@ const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) =
 interface Props { index: number; type: ScheduleType; }
 
 export default function PrayerTime({ index, type }: Props) {
-  // State
   const isStandard = type === ScheduleType.Standard;
+
+  // State
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
 
   // Derived State

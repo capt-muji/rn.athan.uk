@@ -1,4 +1,4 @@
-import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
+import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType, ScheduleStore } from '@/shared/types';
 import { PRAYERS_ENGLISH, PRAYERS_ARABIC, ANIMATION, PRAYERS_LENGTH_FAJR_TO_ISHA, EXTRAS_ENGLISH, EXTRAS_ARABIC } from '@/shared/constants';
 import * as timeUtils from '@/shared/time';
 
@@ -80,6 +80,13 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
   });
 
   return schedule;
+};
+
+// Checks if all prayers for the day have passed by checking the last prayer time
+export const isLastPrayerPassed = (schedule: ScheduleStore): boolean => {
+  const lastIndex = Object.keys(schedule.today).length - 1;
+  const lastPrayer = schedule.today[lastIndex];
+  return timeUtils.isTimePassed(lastPrayer.time);
 };
 
 // UI Helpers
