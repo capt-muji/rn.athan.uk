@@ -5,7 +5,7 @@ import { DaySelection } from "@/shared/types";
 
 // Creates a new Date object in London timezone
 // Converts input date or current date to London time
-export const createLondonDate = (date?: Date | string): Date => {
+export const createLondonDate = (date?: Date | number | string): Date => {
   const targetDate = date ? new Date(date) : new Date();
   const londonTime = formatInTimeZone(targetDate, 'Europe/London', 'yyyy-MM-dd HH:mm:ssXXX');
   return new Date(londonTime);
@@ -113,7 +113,7 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
 
   // Calculate night duration and last third start
   const nightDuration = fajr.getTime() - maghrib.getTime();
-  const lastThirdStart = new Date(maghrib.getTime() + (nightDuration * 2/3));
+  const lastThirdStart = createLondonDate(maghrib.getTime() + (nightDuration * 2/3));
 
   // add 10 minutes to the last third start time
   const minutesToAdd = 10;
