@@ -1,35 +1,32 @@
 import { View, StyleSheet } from 'react-native';
-import Prayer from './Prayer';
-import ActiveBackground from './ActiveBackground';
+import { useAtomValue } from 'jotai';
+
+import Prayer from '@/components/Prayer';
+import ActiveBackground from '@/components/ActiveBackground';
 import { SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { useAtomValue } from 'jotai';
 import { dateAtom } from '@/stores/store';
 import * as timeUtils from '@/shared/time';
+import { usePrayer } from '@/hooks/usePrayer';
 
 interface Props { type: ScheduleType }
 
 export default function PrayerList({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
+  const { isStandard } = usePrayer(0, type);
   const date = useAtomValue(dateAtom);
+
   const isFriday = timeUtils.isFriday(date.current);
 
-  const computedStyles = {
-    marginBottom: isStandard ? 0 : 25,
-  };
+  const indices = isStandard
+    ? [0, 1, 2, 3, 4, 5]
+    : isFriday ? [0, 1] : [0, 1, 2];
 
   return (
-    <View style={[styles.container, computedStyles]}>
+    <View style={[styles.container, { marginBottom: isStandard ? 0 : 25 }]}>
       <ActiveBackground type={type} />
-      {isStandard && <Prayer index={0} type={type} />}
-      {isStandard && <Prayer index={1} type={type} />}
-      {isStandard && <Prayer index={2} type={type} />}
-      {isStandard && <Prayer index={3} type={type} />}
-      {isStandard && <Prayer index={4} type={type} />}
-      {isStandard && <Prayer index={5} type={type} />}
-      {!isStandard && <Prayer index={0} type={type} />}
-      {!isStandard && <Prayer index={1} type={type} />}
-      {!isStandard && !isFriday && <Prayer index={2} type={type} />}
+      {indices.map(index => (
+        <Prayer key={index} index={index} type={type} />
+      ))}
     </View>
   );
 }

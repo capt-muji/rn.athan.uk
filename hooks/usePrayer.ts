@@ -8,16 +8,21 @@ export const usePrayer = (index: number, type: ScheduleType) => {
   const isStandard = type === ScheduleType.Standard;
 
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
-  
+
   const prayer = schedule.today[index];
   const isPassed = isTimePassed(prayer.time);
   const isNext = index === schedule.nextIndex;
+
+  const ui = {
+    initialColorPos: isPassed || isNext ? 1 : 0
+  };
 
   return {
     isStandard,
     schedule,
     prayer,
     isPassed,
-    isNext
+    isNext,
+    ui
   };
 };
