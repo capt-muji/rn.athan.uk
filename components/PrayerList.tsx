@@ -3,7 +3,7 @@ import { useAtomValue } from 'jotai';
 
 import Prayer from '@/components/Prayer';
 import ActiveBackground from '@/components/ActiveBackground';
-import { SCREEN } from '@/shared/constants';
+import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { dateAtom } from '@/stores/store';
 import * as timeUtils from '@/shared/time';
@@ -18,13 +18,15 @@ export default function PrayerList({ type }: Props) {
   const isFriday = timeUtils.isFriday(date.current);
 
   const indices = isStandard
-    ? [0, 1, 2, 3, 4, 5]
-    : isFriday ? [0, 1] : [0, 1, 2];
+    ? PRAYERS_ENGLISH
+    : isFriday
+      ? [0, 1] // only show Istijaba on fridays
+      : EXTRAS_ENGLISH;
 
   return (
     <View style={[styles.container, { marginBottom: isStandard ? 0 : 25 }]}>
       <ActiveBackground type={type} />
-      {indices.map(index => (
+      {indices.map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>
