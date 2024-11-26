@@ -8,7 +8,8 @@ import Animated, {
   interpolate,
   withTiming,
   useAnimatedProps,
-  withDelay
+  withDelay,
+  SharedValue
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import * as animationUtils from '@/shared/animation';
@@ -37,13 +38,14 @@ const SPRING_CONFIG = {
   mass: 0.5
 }
 
-const componentSharedValues = {
-  fade: useSharedValue(0),
-  bounce: useSharedValue(0),
-  press: useSharedValue(1)
+type SharedValues = {
+  fade: SharedValue<number>;
+  bounce: SharedValue<number>;
+  press: SharedValue<number>;
+  colorPos: SharedValue<number>;
 };
 
-const createAnimatedStyles = (sharedValues: typeof componentSharedValues) => ({
+const createAnimatedStyles = (sharedValues: SharedValues) => ({
   alert: useAnimatedStyle(() => ({
     transform: [{ scale: sharedValues.press.value }]
   })),
@@ -55,9 +57,9 @@ const createAnimatedStyles = (sharedValues: typeof componentSharedValues) => ({
   }))
 });
 
-const createColorAnimatedProps = (sharedValues: ReturnType<typeof animationUtils.createColorSharedValues>) => ({
+const createColorAnimatedProps = (sharedValues: ReturnType<typeof animationUtils.colorSharedValues>) => ({
   icon: useAnimatedProps(() => ({
-    fill: animationUtils.interpolateColorSharedValue(sharedValues.colorPos.value)
+    fill: animationUtils.interpolateColorSharedValue(sharedValues.colorPos)
   }))
 });
 
@@ -81,8 +83,10 @@ export default function Alert({ index, type }: Props) {
 
   // Animations
   const sharedValues = {
-    ...componentSharedValues,
-    ...animationUtils.createColorSharedValues(onLoadColorPos)
+    fade: useSharedValue(0),
+    bounce: useSharedValue(0),
+    press: useSharedValue(1),
+    ...animationUtils.colorSharedValues(onLoadColorPos)
   };
   const animatedStyles = createAnimatedStyles(sharedValues);
   const animatedProps = createColorAnimatedProps(sharedValues);
