@@ -18,9 +18,9 @@ export const usePrayer = (index: number, type: ScheduleType) => {
   };
 
   return {
+    ...prayer,
     isStandard,
     schedule,
-    prayer,
     isPassed,
     isNext,
     ui

@@ -23,8 +23,8 @@ export default function Prayer({ index, type }: Props) {
 
   return (
     <AnimatedPressable ref={viewRef} style={styles.container}>
-      <Animated.Text style={[styles.text, styles.english, ColorAnim.style]}>{Prayer.prayer.english}</Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, ColorAnim.style]}>{Prayer.prayer.arabic}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.english, ColorAnim.style]}>{Prayer.english}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, ColorAnim.style]}>{Prayer.arabic}</Animated.Text>
       <PrayerTime index={index} type={type} />
       <Alert index={index} type={type} />
     </AnimatedPressable>
