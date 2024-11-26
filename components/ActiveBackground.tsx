@@ -21,6 +21,11 @@ const ANIMATION_CONFIG = {
   }
 };
 
+const TIMING_CONFIG = {
+  duration: ANIMATION_CONFIG.timing.duration,
+  easing: ANIMATION_CONFIG.timing.easing
+};
+
 const createAnimations = (shouldShowBackground: boolean, yPosition: number) => ({
   translateY: useSharedValue(yPosition),
   colorPos: useSharedValue(shouldShowBackground ? 1 : 0)
@@ -58,18 +63,13 @@ export default function ActiveBackground({ type }: Props) {
   const animations = createAnimations(shouldShowBackground, yPosition);
   const animatedStyles = createAnimatedStyles(animations);
 
-  const x = {
-    duration: ANIMATION_CONFIG.timing.duration,
-    easing: ANIMATION_CONFIG.timing.easing
-  }
-
   // Animation Updates
   if (shouldHide) {
-    animations.colorPos.value = withTiming(0, x, (finished) => {
-      if (finished) animations.translateY.value = withTiming(0, x);
+    animations.colorPos.value = withTiming(0, TIMING_CONFIG, (finished) => {
+      if (finished) animations.translateY.value = withTiming(0, TIMING_CONFIG);
     });
   } else {
-    animations.translateY.value = withTiming(yPosition, x);
+    animations.translateY.value = withTiming(yPosition, TIMING_CONFIG);
   }
 
   return <Animated.View style={[styles.background, animatedStyles.background]} />;
