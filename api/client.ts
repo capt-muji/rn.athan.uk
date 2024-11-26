@@ -2,7 +2,7 @@ import { IApiResponse, ISingleApiResponseTransformed } from "@/shared/types";
 import { API_CONFIG } from "./config";
 import { createLondonDate } from "@/shared/time";
 import { MOCK_DATA_SIMPLE } from '@/mocks/data_simple';
-import * as prayerUtils from '@/shared/prayer';
+import * as PrayerUtils from '@/shared/prayer';
 
 const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
   const queries = [
@@ -47,10 +47,10 @@ export const handle = async (year?: number): Promise<ISingleApiResponseTransform
     const data = await fetch(year);
     console.log('API data fetched successfully');
     
-    const dataFiltered = prayerUtils.filterApiData(data);
+    const dataFiltered = PrayerUtils.filterApiData(data);
     console.log('Data filtered successfully');
     
-    const dataTransformed = prayerUtils.transformApiData(dataFiltered);
+    const dataTransformed = PrayerUtils.transformApiData(dataFiltered);
     console.log('Data transformed successfully');
     
     return dataTransformed;

@@ -1,6 +1,6 @@
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType, ScheduleStore } from '@/shared/types';
 import { PRAYERS_ENGLISH, PRAYERS_ARABIC, ANIMATION, PRAYERS_LENGTH_FAJR_TO_ISHA, EXTRAS_ENGLISH, EXTRAS_ARABIC } from '@/shared/constants';
-import * as timeUtils from '@/shared/time';
+import * as TimeUtils from '@/shared/time';
 
 /**
  * Filters API response data to only include today and future dates
@@ -11,7 +11,7 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
   const entries = Object.entries(apiData.times);
 
   entries.forEach(([date, times]) => {
-    if (!timeUtils.isDateTodayOrFuture(date)) return;
+    if (!TimeUtils.isDateTodayOrFuture(date)) return;
     timesFiltered[date] = times;
   });
 
@@ -34,13 +34,13 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       date,
       fajr: times.fajr,
       sunrise: times.sunrise,
-      duha: timeUtils.addMinutes(times.sunrise, 1),
+      duha: TimeUtils.addMinutes(times.sunrise, 1),
       dhuhr: times.dhuhr,
       asr: times.asr,
-      "istijaba": timeUtils.getIstijaba(times.magrib),
+      "istijaba": TimeUtils.getIstijaba(times.magrib),
       magrib: times.magrib,
       isha: times.isha,
-      "last third": timeUtils.getLastThirdOfNight(times.magrib, times.fajr),
+      "last third": TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
     };
 
     transformations.push(schedule);
@@ -54,7 +54,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
  */
 export const createSchedule = (prayers: ISingleApiResponseTransformed, type: ScheduleType): IScheduleNow => {
   const isStandard = type === ScheduleType.Standard;
-  const shouldRemoveIstijaba = !isStandard && timeUtils.isFriday();
+  const shouldRemoveIstijaba = !isStandard && TimeUtils.isFriday();
 
   let namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   let namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
@@ -86,7 +86,7 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
 export const isLastPrayerPassed = (schedule: ScheduleStore): boolean => {
   const lastIndex = Object.keys(schedule.today).length - 1;
   const lastPrayer = schedule.today[lastIndex];
-  return timeUtils.isTimePassed(lastPrayer.time);
+  return TimeUtils.isTimePassed(lastPrayer.time);
 };
 
 // UI Helpers
