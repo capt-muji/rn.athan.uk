@@ -2,7 +2,7 @@ import { StyleSheet, View, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useRef } from 'react';
 
-import { useColorAnimation } from '@/hooks/useAnimations';
+import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { TEXT, PRAYER } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
@@ -15,16 +15,16 @@ interface Props { index: number; type: ScheduleType }
 
 export default function Prayer({ index, type }: Props) {
   const Prayer = usePrayer(index, type);
-  const ColorAnim = useColorAnimation(Prayer.ui.initialColorPos);
+  const AnimColor = useAnimationColor(Prayer.ui.initialColorPos);
 
   const viewRef = useRef<View>(null);
 
-  if (Prayer.isNext) ColorAnim.animate(1);
+  if (Prayer.isNext) AnimColor.animate(1);
 
   return (
     <AnimatedPressable ref={viewRef} style={styles.container}>
-      <Animated.Text style={[styles.text, styles.english, ColorAnim.style]}>{Prayer.english}</Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, ColorAnim.style]}>{Prayer.arabic}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.english, AnimColor.style]}>{Prayer.english}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
       <PrayerTime index={index} type={type} />
       <Alert index={index} type={type} />
     </AnimatedPressable>
