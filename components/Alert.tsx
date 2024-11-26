@@ -8,7 +8,7 @@ import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
 import { alertPreferencesAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
-import { useScaleAnimation, useFadeAnimation, useBounceAnimation, useFillAnimation } from '@/hooks/animations';
+import { useScaleAnimation, useFadeAnimation, useBounceAnimation, useFillAnimation } from '@/hooks/useAnimations';
 import Icon from '@/components/Icon';
 import { usePrayer } from '@/hooks/usePrayer';
 
