@@ -47,6 +47,7 @@ export default function PrayerTime({ index, type }: Props) {
   const animations = createAnimations(onLoadColorPos);
   const animatedStyles = createAnimatedStyles(animations);
 
+  // Animations Updates
   if (isNext) {
     animations.colorPos.value = withDelay(
       ANIMATION_CONFIG.timing.duration,
