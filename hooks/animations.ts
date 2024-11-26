@@ -5,7 +5,9 @@ import {
   withDelay, 
   useAnimatedStyle, 
   interpolateColor,
-  runOnJS
+  runOnJS,
+  interpolate,
+  useAnimatedProps
 } from 'react-native-reanimated';
 import { COLORS, ANIMATION } from '@/shared/constants';
 
@@ -101,12 +103,12 @@ export const useScaleAnimation = (initialValue: number = 1) => {
   return { scale, style, animate };
 };
 
-export const useFadeAnimation = (initialValue: number = 0) => {
+export const useFadeAnimation = (initialValue: number = 0, customTiming = DEFAULT_TIMING) => {
   const opacity = useSharedValue(initialValue);
 
   const animate = (toValue: number) => {
     'worklet';
-    opacity.value = withTiming(toValue, DEFAULT_TIMING);
+    opacity.value = withTiming(toValue, customTiming);
   };
 
   const style = useAnimatedStyle(() => {
@@ -117,4 +119,45 @@ export const useFadeAnimation = (initialValue: number = 0) => {
   });
 
   return { opacity, style, animate };
+};
+
+export const useBounceAnimation = (initialValue: number = 0) => {
+  const value = useSharedValue(initialValue);
+
+  const animate = (toValue: number) => {
+    'worklet';
+    value.value = withSpring(toValue, DEFAULT_SPRING);
+  };
+
+  const style = useAnimatedStyle(() => {
+    'worklet';
+    return {
+      transform: [{ scale: interpolate(value.value, [0, 1], [0.95, 1]) }]
+    };
+  });
+
+  return { value, style, animate };
+};
+
+export const useFillAnimation = (initialValue: number = 0) => {
+  const progress = useSharedValue(initialValue);
+
+  const animatedProps = useAnimatedProps(() => ({
+    fill: interpolateColor(
+      progress.value,
+      [0, 1],
+      [COLORS.inactivePrayer, COLORS.activePrayer]
+    )
+  }));
+
+  const animate = (toValue: number, delay = 0) => {
+    'worklet';
+    if (delay > 0) {
+      progress.value = withDelay(delay, withTiming(toValue, DEFAULT_TIMING));
+    } else {
+      progress.value = withTiming(toValue, DEFAULT_TIMING);
+    }
+  };
+
+  return { progress, animatedProps, animate };
 };

@@ -6,7 +6,7 @@ import { TEXT, ANIMATION } from '@/shared/constants';
 import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
 import { isTimePassed } from '@/shared/time';
-import { useColorAnimation } from '@/shared/animations/hooks';
+import { useColorAnimation } from '@/hooks/animations';
 
 interface Props { index: number; type: ScheduleType; }
 

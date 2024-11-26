@@ -1,23 +1,14 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { useAtomValue } from 'jotai';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-  interpolate,
-  withTiming,
-  useAnimatedProps,
-  withDelay,
-  SharedValue
-} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
-import * as animationUtils from '@/shared/animation';
 
 import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
 import { alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
+import { useScaleAnimation, useFadeAnimation, useBounceAnimation, useFillAnimation } from '@/hooks/animations';
 import Icon from '@/components/Icon';
 import { isTimePassed } from '@/shared/time';
 
@@ -27,41 +18,6 @@ const ALERT_CONFIGS = [
   { icon: AlertIcon.VIBRATE, label: "Vibrate", type: AlertType.Vibrate },
   { icon: AlertIcon.SPEAKER, label: "Sound", type: AlertType.Sound }
 ];
-
-const TIMING_CONFIG = {
-  duration: ANIMATION.duration
-};
-
-const SPRING_CONFIG = {
-  damping: 12,
-  stiffness: 500,
-  mass: 0.5
-}
-
-type SharedValues = {
-  fade: SharedValue<number>;
-  bounce: SharedValue<number>;
-  press: SharedValue<number>;
-  colorPos: SharedValue<number>;
-};
-
-const createAnimatedStyles = (sharedValues: SharedValues) => ({
-  alert: useAnimatedStyle(() => ({
-    transform: [{ scale: sharedValues.press.value }]
-  })),
-  popup: useAnimatedStyle(() => ({
-    opacity: sharedValues.fade.value,
-    transform: [{
-      scale: interpolate(sharedValues.bounce.value, [0, 1], [0.95, 1])
-    }]
-  }))
-});
-
-const createColorAnimatedProps = (sharedValues: ReturnType<typeof animationUtils.colorSharedValues>) => ({
-  icon: useAnimatedProps(() => ({
-    fill: animationUtils.interpolateColorSharedValue(sharedValues.colorPos)
-  }))
-});
 
 interface Props { index: number; type: ScheduleType }
 
@@ -82,27 +38,18 @@ export default function Alert({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
-  const sharedValues = {
-    fade: useSharedValue(0),
-    bounce: useSharedValue(0),
-    press: useSharedValue(1),
-    ...animationUtils.colorSharedValues(onLoadColorPos)
-  };
-  const animatedStyles = createAnimatedStyles(sharedValues);
-  const animatedProps = createColorAnimatedProps(sharedValues);
+  const { style: pressStyle, animate: animatePress } = useScaleAnimation(1);
+  const { style: fadeStyle, animate: animateFade } = useFadeAnimation(0, { duration: 5 });
+  const { value: bounceValue, style: bounceStyle, animate: animateBounce } = useBounceAnimation(0);
+  const { animatedProps: fillProps, animate: animateFill } = useFillAnimation(onLoadColorPos);
 
   // Animations Updates
-  if (isNext) {
-    sharedValues.colorPos.value = withDelay(
-      ANIMATION.duration,
-      withTiming(1, { duration: ANIMATION.durationSlow })
-    );
-  };
+  if (isNext) animateFill(1, ANIMATION.duration);
 
   // Effects
   useEffect(() => {
     const colorPos = isPopupActive ? 1 : onLoadColorPos;
-    sharedValues.colorPos.value = withTiming(colorPos, TIMING_CONFIG);
+    animateFill(colorPos);
   }, [isPopupActive]);
 
   useEffect(() => () => {
@@ -120,15 +67,13 @@ export default function Alert({ index, type }: Props) {
     timeoutRef.current && clearTimeout(timeoutRef.current);
 
     // Reset and trigger animations
-    sharedValues.bounce.value = 0;
-    sharedValues.fade.value = withTiming(1, TIMING_CONFIG);
-    sharedValues.bounce.value = withSpring(1, SPRING_CONFIG);
-
     setIsPopupActive(true);
+    bounceValue.value = 0;
+    animateFade(1);
+    animateBounce(1);
 
     timeoutRef.current = setTimeout(() => {
-      sharedValues.fade.value = withTiming(0, TIMING_CONFIG);
-      sharedValues.bounce.value = withSpring(0, SPRING_CONFIG);
+      animateFade(0);
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
   }, [iconIndex, index]);
@@ -142,16 +87,16 @@ export default function Alert({ index, type }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onPressIn={() => sharedValues.press.value = withSpring(0.9, SPRING_CONFIG)}
-        onPressOut={() => sharedValues.press.value = withSpring(1, SPRING_CONFIG)}
+        onPressIn={() => animatePress(0.9)}
+        onPressOut={() => animatePress(1)}
         style={styles.iconContainer}
       >
-        <Animated.View style={animatedStyles.alert}>
-          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={animatedProps.icon} />
+        <Animated.View style={pressStyle}>
+          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={fillProps} />
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[styles.popup, computedStylesPopup, animatedStyles.popup]}>
+      <Animated.View style={[styles.popup, computedStylesPopup, fadeStyle, bounceStyle]}>
         <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} color="white" />
         <Text style={styles.label}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
