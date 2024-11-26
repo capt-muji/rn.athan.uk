@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { useAtomValue } from 'jotai';
+
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
 import { DaySelection, ScheduleType } from '@/shared/types';
-import { useAtomValue } from 'jotai';
 import { overlayAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
-import { useEffect, useState } from 'react';
 import { formatTime, getDateTodayOrTomorrow, getTimeDifference } from '@/shared/time';
 import { incrementNextIndex } from '@/stores/actions';
 

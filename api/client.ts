@@ -1,7 +1,7 @@
 import { IApiResponse, ISingleApiResponseTransformed } from "@/shared/types";
-import { API_CONFIG } from "./config";
+import { API_CONFIG } from "@/api/config";
 import { createLondonDate } from "@/shared/time";
-import { MOCK_DATA_SIMPLE } from '@/mocks/data_simple';
+import { MOCK_DATA_SIMPLE } from '@/mocks/simple';
 import * as PrayerUtils from '@/shared/prayer';
 
 const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
