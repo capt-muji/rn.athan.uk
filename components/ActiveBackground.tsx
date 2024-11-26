@@ -5,7 +5,6 @@ import { COLORS, PRAYER } from '@/shared/constants';
 import { dateAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
 import * as TimeUtils from '@/shared/time';
-import * as PrayerUtils from '@/shared/prayer';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimations';
 
@@ -23,8 +22,12 @@ export default function ActiveBackground({ type }: Props) {
   const shouldHide = Prayer.schedule.nextIndex === 0 && date.current === todayYYYMMDD && Prayer.isLastPrayerPassed;
 
   // Animations
-  const AnimBackgroundColor = useAnimationBackgroundColor(shouldHide ? 0 : 1);
   const AnimTranslateY = useAnimationTranslateY(yPosition);
+  const initialColorPos = shouldHide ? 0 : 1;
+  const AnimBackgroundColor = useAnimationBackgroundColor(
+    initialColorPos,
+    { fromColor: 'transparent', toColor: COLORS.activeBackground }
+  );
 
   if (shouldHide) {
     AnimBackgroundColor.animate(0, {

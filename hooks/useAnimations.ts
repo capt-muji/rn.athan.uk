@@ -20,6 +20,16 @@ interface AnimationOptions {
   onFinish?: () => void;
 }
 
+interface ColorAnimationInput {
+  fromColor: string;
+  toColor: string;
+}
+
+interface BounceAnimationInput {
+  fromScale: number;
+  toScale: number;
+}
+
 const DEFAULT_TIMING: WithTimingConfig = {
   duration: ANIMATION.durationSlow
 };
@@ -30,14 +40,14 @@ const DEFAULT_SPRING: WithSpringConfig = {
   mass: 0.5
 };
 
-export const useAnimationColor = (initialValue: number = 0) => {
+export const useAnimationColor = (initialValue: number = 0, input: ColorAnimationInput) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
     color: interpolateColor(
       value.value,
       [0, 1],
-      [COLORS.inactivePrayer, COLORS.activePrayer]
+      [input.fromColor, input.toColor]
     )
   }));
 
@@ -60,14 +70,45 @@ export const useAnimationColor = (initialValue: number = 0) => {
   return { value, style, animate };
 };
 
-export const useAnimationBackgroundColor = (initialValue: number = 0) => {
+export const useAnimationFill = (initialValue: number = 0, input: ColorAnimationInput) => {
+  const value = useSharedValue(initialValue);
+
+  const animatedProps = useAnimatedProps(() => ({
+    fill: interpolateColor(
+      value.value,
+      [0, 1],
+      [input.fromColor, input.toColor]
+    )
+  }));
+
+  const animate = (toValue: number, options?: AnimationOptions) => {
+    'worklet';
+    const timing = {
+      ...DEFAULT_TIMING,
+      duration: options?.duration ?? DEFAULT_TIMING.duration
+    };
+    
+    const animation = withTiming(toValue, timing, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
+    
+    value.value = options?.delay 
+      ? withDelay(options.delay, animation)
+      : animation;
+  };
+
+  return { value, animatedProps, animate };
+};
+
+
+export const useAnimationBackgroundColor = (initialValue: number = 0, input: ColorAnimationInput) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       value.value,
       [0, 1],
-      ['transparent', COLORS.activeBackground]
+      [input.fromColor, input.toColor]
     )
   }));
 
@@ -163,34 +204,4 @@ export const useAnimationBounce = (initialValue: number = 0) => {
   };
 
   return { value, style, animate };
-};
-
-export const useAnimationFill = (initialValue: number = 0) => {
-  const value = useSharedValue(initialValue);
-
-  const animatedProps = useAnimatedProps(() => ({
-    fill: interpolateColor(
-      value.value,
-      [0, 1],
-      [COLORS.inactivePrayer, COLORS.activePrayer]
-    )
-  }));
-
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
-    const timing = {
-      ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration
-    };
-    
-    const animation = withTiming(toValue, timing, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
-    
-    value.value = options?.delay 
-      ? withDelay(options.delay, animation)
-      : animation;
-  };
-
-  return { value, animatedProps, animate };
 };

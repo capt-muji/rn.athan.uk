@@ -26,7 +26,10 @@ export default function Alert({ index, type }: Props) {
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationFill(Prayer.ui.initialColorPos);
+  const AnimFill = useAnimationFill(
+    Prayer.ui.initialColorPos,
+    { fromColor: COLORS.inactivePrayer, toColor: COLORS.activePrayer }
+  );
 
   // State
   const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
