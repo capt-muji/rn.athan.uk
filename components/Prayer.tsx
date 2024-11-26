@@ -2,6 +2,7 @@ import { StyleSheet, View, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming, withDelay, useSharedValue, interpolateColor } from 'react-native-reanimated';
 import { useRef } from 'react';
 import { useAtomValue } from 'jotai';
+import { createColorAnimation, createColorAnimatedStyle } from '@/shared/animation';
 
 import { COLORS, TEXT, PRAYER, ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
@@ -15,20 +16,6 @@ const TIMING_CONFIG = {
 };
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-
-const createAnimations = (initialColorPos: number) => ({
-  colorPos: useSharedValue(initialColorPos)
-});
-
-const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) => ({
-  text: useAnimatedStyle(() => ({
-    color: interpolateColor(
-      animations.colorPos.value,
-      [0, 1],
-      [COLORS.inactivePrayer, COLORS.activePrayer]
-    )
-  }))
-});
 
 interface Props { index: number; type: ScheduleType }
 
@@ -46,8 +33,8 @@ export default function Prayer({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
-  const animations = createAnimations(onLoadColorPos);
-  const animatedStyles = createAnimatedStyles(animations);
+  const animations = createColorAnimation(onLoadColorPos);
+  const animatedStyles = createColorAnimatedStyle(animations);
 
   // Animations Updates
   if (isNext) {
