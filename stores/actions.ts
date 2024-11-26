@@ -1,8 +1,8 @@
 import { getDefaultStore } from 'jotai/vanilla';
 import { dateAtom, overlayAtom, alertPreferencesAtom, soundPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from './store';
-import * as prayerUtils from '@/shared/prayer';
+import * as PrayerUtils from '@/shared/prayer';
 import * as database from '@/stores/database';
-import * as timeUtils from '@/shared/time';
+import * as TimeUtils from '@/shared/time';
 import { AlertType, ScheduleType } from '@/shared/types';
 import { PRAYER_INDEX_ISHA } from '@/shared/constants';
 
@@ -36,20 +36,20 @@ export const setDate = () => {
 export const setSchedule = (type: ScheduleType) => {
   const schedule = getSchedule(type);
   
-  const today = timeUtils.createLondonDate();
-  const tomorrow = timeUtils.createLondonDate();
+  const today = TimeUtils.createLondonDate();
+  const tomorrow = TimeUtils.createLondonDate();
   tomorrow.setDate(tomorrow.getDate() + 1);
   
   const dataToday = database.getByDate(today);
   const dataTomorrow = database.getByDate(tomorrow);
   
-  const scheduleToday = prayerUtils.createSchedule(dataToday!, type);
-  const scheduleTomorrow = prayerUtils.createSchedule(dataTomorrow!, type);
+  const scheduleToday = PrayerUtils.createSchedule(dataToday!, type);
+  const scheduleTomorrow = PrayerUtils.createSchedule(dataTomorrow!, type);
   
   const scheduleTodayValues = Object.values(scheduleToday);
   let nextPrayer;
 
-  nextPrayer = scheduleTodayValues.find(prayer => !timeUtils.isTimePassed(prayer.time)) || scheduleToday[0];
+  nextPrayer = scheduleTodayValues.find(prayer => !TimeUtils.isTimePassed(prayer.time)) || scheduleToday[0];
 
   const scheduleAtom = type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { 

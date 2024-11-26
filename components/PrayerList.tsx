@@ -6,7 +6,7 @@ import ActiveBackground from '@/components/ActiveBackground';
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { dateAtom } from '@/stores/store';
-import * as timeUtils from '@/shared/time';
+import * as TimeUtils from '@/shared/time';
 import { usePrayer } from '@/hooks/usePrayer';
 
 interface Props { type: ScheduleType }
@@ -15,7 +15,7 @@ export default function PrayerList({ type }: Props) {
   const { isStandard } = usePrayer(0, type);
   const date = useAtomValue(dateAtom);
 
-  const isFriday = timeUtils.isFriday(date.current);
+  const isFriday = TimeUtils.isFriday(date.current);
 
   const indices = isStandard
     ? PRAYERS_ENGLISH
