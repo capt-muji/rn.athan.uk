@@ -7,157 +7,168 @@ import {
   interpolateColor,
   runOnJS,
   interpolate,
-  useAnimatedProps
+  useAnimatedProps,
+  WithTimingConfig,
+  WithSpringConfig,
 } from 'react-native-reanimated';
 import { COLORS, ANIMATION } from '@/shared/constants';
 
-const DEFAULT_TIMING = {
+interface AnimationOptions {
+  duration?: number;
+  delay?: number;
+  onFinish?: () => void;
+}
+
+const DEFAULT_TIMING: WithTimingConfig = {
   duration: ANIMATION.durationSlow
 };
 
-const DEFAULT_SPRING = {
+const DEFAULT_SPRING: WithSpringConfig = {
   damping: 12,
   stiffness: 500,
   mass: 0.5
 };
 
 export const useColorAnimation = (initialValue: number = 0) => {
-  const progress = useSharedValue(initialValue);
+  const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
     color: interpolateColor(
-      progress.value,
+      value.value,
       [0, 1],
       [COLORS.inactivePrayer, COLORS.activePrayer]
     )
   }));
 
-  const animate = (toValue: number, delay = 0) => {
+  const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    if (delay > 0) {
-      progress.value = withDelay(delay, withTiming(toValue, DEFAULT_TIMING));
-    } else {
-      progress.value = withTiming(toValue, DEFAULT_TIMING);
-    }
+    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    const animation = withTiming(toValue, timing, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
+    
+    value.value = options?.delay 
+      ? withDelay(options.delay, animation)
+      : animation;
   };
 
-  return { progress, style, animate };
+  return { value, style, animate };
 };
 
 export const useBackgroundColorAnimation = (initialValue: number = 0) => {
-  const progress = useSharedValue(initialValue);
+  const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
-      progress.value,
+      value.value,
       [0, 1],
       ['transparent', COLORS.activeBackground]
     )
   }));
 
-  const animate = (toValue: number, onFinish?: () => void) => {
+  const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    progress.value = withTiming(toValue, DEFAULT_TIMING, (finished) => {
-      if (finished && onFinish) {
-        runOnJS(onFinish)();
-      }
+    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    value.value = withTiming(toValue, timing, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
   };
 
-  return { progress, style, animate };
+  return { value, style, animate };
 };
 
 export const useTranslateYAnimation = (initialValue: number) => {
-  const translateY = useSharedValue(initialValue);
+  const value = useSharedValue(initialValue);
 
-  const animate = (toValue: number) => {
+  const style = useAnimatedStyle(() => ({
+    transform: [{ translateY: value.value }]
+  }));
+
+  const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    translateY.value = withTiming(toValue, DEFAULT_TIMING);
+    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    value.value = withTiming(toValue, timing, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
   };
 
-  const style = useAnimatedStyle(() => {
-    'worklet';
-    return {
-      transform: [{ translateY: translateY.value }]
-    };
-  });
-
-  return { translateY, style, animate };
+  return { value, style, animate };
 };
 
 export const useScaleAnimation = (initialValue: number = 1) => {
-  const scale = useSharedValue(initialValue);
+  const value = useSharedValue(initialValue);
 
-  const animate = (toValue: number) => {
+  const style = useAnimatedStyle(() => ({
+    transform: [{ scale: value.value }]
+  }));
+
+  const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    scale.value = withSpring(toValue, DEFAULT_SPRING);
+    value.value = withSpring(toValue, DEFAULT_SPRING, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
   };
 
-  const style = useAnimatedStyle(() => {
-    'worklet';
-    return {
-      transform: [{ scale: scale.value }]
-    };
-  });
-
-  return { scale, style, animate };
+  return { value, style, animate };
 };
 
-export const useFadeAnimation = (initialValue: number = 0, customTiming = DEFAULT_TIMING) => {
-  const opacity = useSharedValue(initialValue);
+export const useFadeAnimation = (initialValue: number = 0) => {
+  const value = useSharedValue(initialValue);
 
-  const animate = (toValue: number) => {
+  const style = useAnimatedStyle(() => ({
+    opacity: value.value
+  }));
+
+  const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    opacity.value = withTiming(toValue, customTiming);
+    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    value.value = withTiming(toValue, timing, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
   };
 
-  const style = useAnimatedStyle(() => {
-    'worklet';
-    return {
-      opacity: opacity.value
-    };
-  });
-
-  return { opacity, style, animate };
+  return { value, style, animate };
 };
 
 export const useBounceAnimation = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
-  const animate = (toValue: number) => {
-    'worklet';
-    value.value = withSpring(toValue, DEFAULT_SPRING);
-  };
+  const style = useAnimatedStyle(() => ({
+    transform: [{ scale: interpolate(value.value, [0, 1], [0.95, 1]) }]
+  }));
 
-  const style = useAnimatedStyle(() => {
+  const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    return {
-      transform: [{ scale: interpolate(value.value, [0, 1], [0.95, 1]) }]
-    };
-  });
+    value.value = withSpring(toValue, DEFAULT_SPRING, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
+  };
 
   return { value, style, animate };
 };
 
 export const useFillAnimation = (initialValue: number = 0) => {
-  const progress = useSharedValue(initialValue);
+  const value = useSharedValue(initialValue);
 
   const animatedProps = useAnimatedProps(() => ({
     fill: interpolateColor(
-      progress.value,
+      value.value,
       [0, 1],
       [COLORS.inactivePrayer, COLORS.activePrayer]
     )
   }));
 
-  const animate = (toValue: number, delay = 0) => {
+  const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    if (delay > 0) {
-      progress.value = withDelay(delay, withTiming(toValue, DEFAULT_TIMING));
-    } else {
-      progress.value = withTiming(toValue, DEFAULT_TIMING);
-    }
+    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    const animation = withTiming(toValue, timing, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
+    
+    value.value = options?.delay 
+      ? withDelay(options.delay, animation)
+      : animation;
   };
 
-  return { progress, animatedProps, animate };
+  return { value, animatedProps, animate };
 };
