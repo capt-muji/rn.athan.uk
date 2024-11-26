@@ -4,7 +4,7 @@ import { useRef } from 'react';
 
 import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
-import { TEXT, PRAYER } from '@/shared/constants';
+import { TEXT, PRAYER, COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
@@ -15,7 +15,10 @@ interface Props { index: number; type: ScheduleType }
 
 export default function Prayer({ index, type }: Props) {
   const Prayer = usePrayer(index, type);
-  const AnimColor = useAnimationColor(Prayer.ui.initialColorPos);
+  const AnimColor = useAnimationColor(
+    Prayer.ui.initialColorPos,
+    { fromColor: COLORS.inactivePrayer, toColor: COLORS.activePrayer }
+  );
 
   const viewRef = useRef<View>(null);
 
