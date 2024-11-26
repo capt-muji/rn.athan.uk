@@ -1,43 +1,40 @@
-import { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { useAtomValue } from 'jotai';
 import Animated from 'react-native-reanimated';
 import { COLORS, PRAYER } from '@/shared/constants';
-import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
+import { dateAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
-import * as timeUtils from '@/shared/time';
-import * as prayerUtils from '@/shared/prayer';
+import * as TimeUtils from '@/shared/time';
+import * as PrayerUtils from '@/shared/prayer';
+import { usePrayer } from '@/hooks/usePrayer';
 import { useBackgroundColorAnimation, useTranslateYAnimation } from '@/hooks/useAnimations';
 
 interface Props { type: ScheduleType };
 
 export default function ActiveBackground({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
+  const Prayer = usePrayer(0, type);
 
   // State
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
 
   // Derived State
-  const todayYYYMMDD = timeUtils.formatDateShort(timeUtils.createLondonDate());
-  const isLastPrayerPassed = prayerUtils.isLastPrayerPassed(schedule);
-  const shouldShowBackground = !isLastPrayerPassed;
-  const yPosition = schedule.nextIndex * PRAYER.height;
-  const shouldHide = schedule.nextIndex === 0 && date.current === todayYYYMMDD && isLastPrayerPassed;
+  const todayYYYMMDD = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
+  const yPosition = Prayer.schedule.nextIndex * PRAYER.height;
+  const shouldHide = Prayer.schedule.nextIndex === 0 && date.current === todayYYYMMDD && Prayer.isLastPrayerPassed;
 
   // Animations
-  const { style: colorStyle, animate: animateColor } = useBackgroundColorAnimation(shouldShowBackground ? 1 : 0);
-  const { value: translateValue, style: translateStyle, animate: animateTranslate } = useTranslateYAnimation(yPosition);
+  const BackgroundColorAnim = useBackgroundColorAnimation(shouldHide ? 0 : 1);
+  const TranslateYAnim = useTranslateYAnimation(yPosition);
 
   if (shouldHide) {
-    animateColor(0, {
-      onFinish: () => translateValue.value = 0
+    BackgroundColorAnim.animate(0, {
+      onFinish: () => TranslateYAnim.value.value = 0
     });
   } else {
-    animateTranslate(yPosition);
+    TranslateYAnim.animate(yPosition);
   }
 
-  return <Animated.View style={[styles.background, colorStyle, translateStyle]} />;
+  return <Animated.View style={[styles.background, BackgroundColorAnim.style, TranslateYAnim.style]} />;
 }
 
 const styles = StyleSheet.create({
