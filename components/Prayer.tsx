@@ -10,11 +10,8 @@ import { isTimePassed } from '@/shared/time';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 
-const ANIMATION_CONFIG = {
-  timing: {
-    duration: ANIMATION.duration,
-    durationSlow: ANIMATION.durationSlow
-  }
+const TIMING_CONFIG = {
+  duration: ANIMATION.durationSlow
 };
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -55,8 +52,8 @@ export default function Prayer({ index, type }: Props) {
   // Animations Updates
   if (isNext) {
     animations.colorPos.value = withDelay(
-      ANIMATION_CONFIG.timing.duration,
-      withTiming(1, { duration: ANIMATION_CONFIG.timing.durationSlow })
+      ANIMATION.duration,
+      withTiming(1, TIMING_CONFIG)
     );
   }
 

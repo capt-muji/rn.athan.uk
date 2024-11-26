@@ -8,11 +8,8 @@ import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
 import { isTimePassed } from '@/shared/time';
 
-const ANIMATION_CONFIG = {
-  timing: {
-    duration: ANIMATION.duration,
-    durationSlow: ANIMATION.durationSlow
-  }
+const TIMING_CONFIG = {
+  duration: ANIMATION.durationSlow
 };
 
 const createAnimations = (initialColorPos: number) => ({
@@ -50,8 +47,8 @@ export default function PrayerTime({ index, type }: Props) {
   // Animations Updates
   if (isNext) {
     animations.colorPos.value = withDelay(
-      ANIMATION_CONFIG.timing.duration,
-      withTiming(1, { duration: ANIMATION_CONFIG.timing.durationSlow })
+      ANIMATION.duration,
+      withTiming(1, TIMING_CONFIG)
     );
   }
 
