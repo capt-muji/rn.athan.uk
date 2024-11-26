@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { useAtomValue } from 'jotai';
 import Animated from 'react-native-reanimated';
@@ -26,11 +27,11 @@ export default function ActiveBackground({ type }: Props) {
 
   // Animations
   const { style: colorStyle, animate: animateColor } = useBackgroundColorAnimation(shouldShowBackground ? 1 : 0);
-  const { style: translateStyle, animate: animateTranslate } = useTranslateYAnimation(yPosition);
+  const { value: translateValue, style: translateStyle, animate: animateTranslate } = useTranslateYAnimation(yPosition);
 
   if (shouldHide) {
-    animateColor(0, { 
-      onFinish: () => animateTranslate(0)
+    animateColor(0, {
+      onFinish: () => translateValue.value = 0
     });
   } else {
     animateTranslate(yPosition);

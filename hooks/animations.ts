@@ -10,6 +10,7 @@ import {
   useAnimatedProps,
   WithTimingConfig,
   WithSpringConfig,
+  Easing,
 } from 'react-native-reanimated';
 import { COLORS, ANIMATION } from '@/shared/constants';
 
@@ -86,8 +87,12 @@ export const useTranslateYAnimation = (initialValue: number) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
-    value.value = withTiming(toValue, timing, (finished) => {
+    const config = {
+      duration: options?.duration || ANIMATION.durationSlower,
+      easing: Easing.elastic(0.5)
+    };
+
+    value.value = withTiming(toValue, config, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
   };
