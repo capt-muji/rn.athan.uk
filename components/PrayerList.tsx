@@ -24,7 +24,7 @@ export default function PrayerList({ type }: Props) {
       : EXTRAS_ENGLISH;
 
   return (
-    <View style={[styles.container, { marginBottom: isStandard ? 0 : 25 }]}>
+    <View style={[styles.container]}>
       <ActiveBackground type={type} />
       {indices.map((_, index) => (
         <Prayer key={index} index={index} type={type} />
