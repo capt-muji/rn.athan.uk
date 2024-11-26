@@ -39,17 +39,17 @@ export default function Alert({ index, type }: Props) {
 
   // Animations
   const { style: pressStyle, animate: animatePress } = useScaleAnimation(1);
-  const { style: fadeStyle, animate: animateFade } = useFadeAnimation(0, { duration: 5 });
+  const { style: fadeStyle, animate: animateFade } = useFadeAnimation(0);
   const { value: bounceValue, style: bounceStyle, animate: animateBounce } = useBounceAnimation(0);
   const { animatedProps: fillProps, animate: animateFill } = useFillAnimation(onLoadColorPos);
 
   // Animations Updates
-  if (isNext) animateFill(1, ANIMATION.duration);
+  if (isNext) animateFill(1, { duration: ANIMATION.duration });
 
   // Effects
   useEffect(() => {
     const colorPos = isPopupActive ? 1 : onLoadColorPos;
-    animateFill(colorPos);
+    animateFill(colorPos, { duration: ANIMATION.duration });
   }, [isPopupActive]);
 
   useEffect(() => () => {
@@ -66,14 +66,15 @@ export default function Alert({ index, type }: Props) {
 
     timeoutRef.current && clearTimeout(timeoutRef.current);
 
-    // Reset and trigger animations
     setIsPopupActive(true);
+
+    // Reset and trigger animations
     bounceValue.value = 0;
-    animateFade(1);
+    animateFade(1, { duration: 5 });
     animateBounce(1);
 
     timeoutRef.current = setTimeout(() => {
-      animateFade(0);
+      animateFade(0, { duration: 5 });
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
   }, [iconIndex, index]);
