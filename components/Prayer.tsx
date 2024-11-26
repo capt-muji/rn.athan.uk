@@ -1,10 +1,10 @@
 import { StyleSheet, View, Pressable } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming, withDelay, useSharedValue, interpolateColor } from 'react-native-reanimated';
+import Animated, { withTiming, withDelay } from 'react-native-reanimated';
 import { useRef } from 'react';
 import { useAtomValue } from 'jotai';
-import { createColorAnimation, createColorAnimatedStyle } from '@/shared/animation';
+import * as animationUtils from '@/shared/animation';
 
-import { COLORS, TEXT, PRAYER, ANIMATION } from '@/shared/constants';
+import { TEXT, PRAYER, ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { isTimePassed } from '@/shared/time';
@@ -33,12 +33,12 @@ export default function Prayer({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
-  const animations = createColorAnimation(onLoadColorPos);
-  const animatedStyles = createColorAnimatedStyle(animations);
+  const sharedValues = animationUtils.createColorSharedValues(onLoadColorPos);
+  const animatedStyles = animationUtils.createColorAnimatedStyle(sharedValues);
 
   // Animations Updates
   if (isNext) {
-    animations.colorPos.value = withDelay(
+    sharedValues.colorPos.value = withDelay(
       ANIMATION.duration,
       withTiming(1, TIMING_CONFIG)
     );

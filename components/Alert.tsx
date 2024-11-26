@@ -1,4 +1,3 @@
-// --- Imports ---
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import { useAtomValue } from 'jotai';
@@ -8,11 +7,11 @@ import Animated, {
   withSpring,
   interpolate,
   withTiming,
-  interpolateColor,
   useAnimatedProps,
   withDelay
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
+import * as animationUtils from '@/shared/animation';
 
 import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
@@ -38,29 +37,27 @@ const SPRING_CONFIG = {
   mass: 0.5
 }
 
-const createAnimations = (initialColorPos: number) => ({
+const componentSharedValues = {
   fade: useSharedValue(0),
   bounce: useSharedValue(0),
-  press: useSharedValue(1),
-  colorPos: useSharedValue(initialColorPos)
-});
+  press: useSharedValue(1)
+};
 
-const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) => ({
+const createAnimatedStyles = (sharedValues: typeof componentSharedValues) => ({
   alert: useAnimatedStyle(() => ({
-    transform: [{ scale: animations.press.value }]
+    transform: [{ scale: sharedValues.press.value }]
   })),
   popup: useAnimatedStyle(() => ({
-    opacity: animations.fade.value,
+    opacity: sharedValues.fade.value,
     transform: [{
-      scale: interpolate(animations.bounce.value, [0, 1], [0.95, 1])
+      scale: interpolate(sharedValues.bounce.value, [0, 1], [0.95, 1])
     }]
-  })),
+  }))
+});
+
+const createColorAnimatedProps = (sharedValues: ReturnType<typeof animationUtils.createColorSharedValues>) => ({
   icon: useAnimatedProps(() => ({
-    fill: interpolateColor(
-      animations.colorPos.value,
-      [0, 1],
-      [COLORS.inactivePrayer, COLORS.activePrayer]
-    )
+    fill: animationUtils.interpolateColorSharedValue(sharedValues.colorPos.value)
   }))
 });
 
@@ -83,21 +80,25 @@ export default function Alert({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
-  const animations = createAnimations(onLoadColorPos);
-  const animatedStyles = createAnimatedStyles(animations);
+  const sharedValues = {
+    ...componentSharedValues,
+    ...animationUtils.createColorSharedValues(onLoadColorPos)
+  };
+  const animatedStyles = createAnimatedStyles(sharedValues);
+  const animatedProps = createColorAnimatedProps(sharedValues);
 
   // Animations Updates
   if (isNext) {
-    animations.colorPos.value = withDelay(
+    sharedValues.colorPos.value = withDelay(
       ANIMATION.duration,
       withTiming(1, { duration: ANIMATION.durationSlow })
     );
-  }
+  };
 
   // Effects
   useEffect(() => {
     const colorPos = isPopupActive ? 1 : onLoadColorPos;
-    animations.colorPos.value = withTiming(colorPos, TIMING_CONFIG);
+    sharedValues.colorPos.value = withTiming(colorPos, TIMING_CONFIG);
   }, [isPopupActive]);
 
   useEffect(() => () => {
@@ -115,15 +116,15 @@ export default function Alert({ index, type }: Props) {
     timeoutRef.current && clearTimeout(timeoutRef.current);
 
     // Reset and trigger animations
-    animations.bounce.value = 0;
-    animations.fade.value = withTiming(1, TIMING_CONFIG);
-    animations.bounce.value = withSpring(1, SPRING_CONFIG);
+    sharedValues.bounce.value = 0;
+    sharedValues.fade.value = withTiming(1, TIMING_CONFIG);
+    sharedValues.bounce.value = withSpring(1, SPRING_CONFIG);
 
     setIsPopupActive(true);
 
     timeoutRef.current = setTimeout(() => {
-      animations.fade.value = withTiming(0, TIMING_CONFIG);
-      animations.bounce.value = withSpring(0, SPRING_CONFIG);
+      sharedValues.fade.value = withTiming(0, TIMING_CONFIG);
+      sharedValues.bounce.value = withSpring(0, SPRING_CONFIG);
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
   }, [iconIndex, index]);
@@ -137,12 +138,12 @@ export default function Alert({ index, type }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onPressIn={() => animations.press.value = withSpring(0.9, SPRING_CONFIG)}
-        onPressOut={() => animations.press.value = withSpring(1, SPRING_CONFIG)}
+        onPressIn={() => sharedValues.press.value = withSpring(0.9, SPRING_CONFIG)}
+        onPressOut={() => sharedValues.press.value = withSpring(1, SPRING_CONFIG)}
         style={styles.iconContainer}
       >
         <Animated.View style={animatedStyles.alert}>
-          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={animatedStyles.icon} />
+          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={animatedProps.icon} />
         </Animated.View>
       </Pressable>
 

@@ -3,11 +3,11 @@ import { withTiming, useSharedValue, withDelay, useAnimatedStyle, interpolateCol
 import Animated from 'react-native-reanimated';
 import { useAtomValue } from 'jotai';
 
-import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
+import { TEXT, ANIMATION } from '@/shared/constants';
 import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
 import { isTimePassed } from '@/shared/time';
-import { createColorAnimation, createColorAnimatedStyle } from '@/shared/animation';
+import * as animationUtils from '@/shared/animation';
 
 const TIMING_CONFIG = {
   duration: ANIMATION.durationSlow
@@ -28,12 +28,12 @@ export default function PrayerTime({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
-  const animations = createColorAnimation(onLoadColorPos);
-  const animatedStyles = createColorAnimatedStyle(animations);
+  const sharedValues = animationUtils.createColorSharedValues(onLoadColorPos);
+  const colorAnimatedStyles = animationUtils.createColorAnimatedStyle(sharedValues);
 
   // Animations Updates
   if (isNext) {
-    animations.colorPos.value = withDelay(
+    sharedValues.colorPos.value = withDelay(
       ANIMATION.duration,
       withTiming(1, TIMING_CONFIG)
     );
@@ -41,7 +41,7 @@ export default function PrayerTime({ index, type }: Props) {
 
   return (
     <View style={[styles.container, { width: isStandard ? 95 : 85 }]}>
-      <Animated.Text style={[styles.text, animatedStyles.text]}>
+      <Animated.Text style={[styles.text, colorAnimatedStyles.text]}>
         {prayer.time}
       </Animated.Text>
     </View>
