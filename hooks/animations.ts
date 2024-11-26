@@ -43,7 +43,11 @@ export const useColorAnimation = (initialValue: number = 0) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    const timing = {
+      ...DEFAULT_TIMING,
+      duration: options?.duration ?? DEFAULT_TIMING.duration,
+    };
+    
     const animation = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
@@ -69,7 +73,11 @@ export const useBackgroundColorAnimation = (initialValue: number = 0) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    const timing = {
+      ...DEFAULT_TIMING,
+      duration: options?.duration ?? DEFAULT_TIMING.duration,
+    };
+    
     value.value = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
@@ -87,12 +95,13 @@ export const useTranslateYAnimation = (initialValue: number) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const config = {
-      duration: options?.duration || ANIMATION.durationSlower,
+    const timing = {
+      ...DEFAULT_TIMING,
+      duration: options?.duration ?? DEFAULT_TIMING.duration,
       easing: Easing.elastic(0.5)
     };
 
-    value.value = withTiming(toValue, config, (finished) => {
+    value.value = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
   };
@@ -126,7 +135,11 @@ export const useFadeAnimation = (initialValue: number = 0) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    const timing = {
+      ...DEFAULT_TIMING,
+      duration: options?.duration ?? DEFAULT_TIMING.duration
+    };
+    
     value.value = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
@@ -165,7 +178,11 @@ export const useFillAnimation = (initialValue: number = 0) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = { ...DEFAULT_TIMING, duration: options?.duration };
+    const timing = {
+      ...DEFAULT_TIMING,
+      duration: options?.duration ?? DEFAULT_TIMING.duration
+    };
+    
     const animation = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });

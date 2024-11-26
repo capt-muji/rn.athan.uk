@@ -44,12 +44,12 @@ export default function Alert({ index, type }: Props) {
   const { animatedProps: fillProps, animate: animateFill } = useFillAnimation(onLoadColorPos);
 
   // Animations Updates
-  if (isNext) animateFill(1, { duration: ANIMATION.duration });
+  if (isNext) animateFill(1);
 
   // Effects
   useEffect(() => {
     const colorPos = isPopupActive ? 1 : onLoadColorPos;
-    animateFill(colorPos, { duration: ANIMATION.duration });
+    animateFill(colorPos);
   }, [isPopupActive]);
 
   useEffect(() => () => {
