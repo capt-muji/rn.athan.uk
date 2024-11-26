@@ -16,7 +16,7 @@ export default function PrayerTime({ index, type }: Props) {
 
   return (
     <View style={[styles.container, { width: Prayer.isStandard ? 95 : 85 }]}>
-      <Animated.Text style={[styles.text, ColorAnim.style]}>{Prayer.prayer.time}</Animated.Text>
+      <Animated.Text style={[styles.text, ColorAnim.style]}>{Prayer.time}</Animated.Text>
     </View>
   );
 }
