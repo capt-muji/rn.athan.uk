@@ -8,7 +8,7 @@ import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
 import { alertPreferencesAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
-import { useAnimationScale, useAnimationFade, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimations';
+import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimations';
 import Icon from '@/components/Icon';
 import { usePrayer } from '@/hooks/usePrayer';
 
@@ -24,7 +24,7 @@ interface Props { index: number; type: ScheduleType }
 export default function Alert({ index, type }: Props) {
   const Prayer = usePrayer(index, type);
   const AnimScale = useAnimationScale(1);
-  const AnimFade = useAnimationFade(0);
+  const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
   const AnimFill = useAnimationFill(Prayer.ui.initialColorPos);
 
@@ -61,11 +61,11 @@ export default function Alert({ index, type }: Props) {
 
     // Reset and trigger animations
     AnimBounce.value.value = 0;
-    AnimFade.animate(1, { duration: 5 });
+    AnimOpacity.animate(1, { duration: 5 });
     AnimBounce.animate(1);
 
     timeoutRef.current = setTimeout(() => {
-      AnimFade.animate(0, { duration: 5 });
+      AnimOpacity.animate(0, { duration: 5 });
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
   }, [iconIndex, index]);
@@ -88,7 +88,7 @@ export default function Alert({ index, type }: Props) {
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[styles.popup, computedStylesPopup, AnimFade.style, AnimBounce.style]}>
+      <Animated.View style={[styles.popup, computedStylesPopup, AnimOpacity.style, AnimBounce.style]}>
         <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} color="white" />
         <Text style={styles.label}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>

@@ -126,7 +126,7 @@ export const useAnimationScale = (initialValue: number = 1) => {
   return { value, style, animate };
 };
 
-export const useAnimationFade = (initialValue: number = 0) => {
+export const useAnimationOpacity = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
