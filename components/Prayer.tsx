@@ -2,7 +2,7 @@ import { StyleSheet, View, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useRef } from 'react';
 import { useAtomValue } from 'jotai';
-import { useColorAnimation } from '@/shared/animations/hooks';
+import { useColorAnimation } from '@/hooks/animations';
 
 import { TEXT, PRAYER, ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
