@@ -18,12 +18,12 @@ const TIMING_CONFIG = {
   easing: Easing.elastic(0.5)
 };
 
-const createAnimations = (shouldShowBackground: boolean, yPosition: number) => ({
+const componentSharedValues = (shouldShowBackground: boolean, yPosition: number) => ({
   translateY: useSharedValue(yPosition),
   colorPos: useSharedValue(shouldShowBackground ? 1 : 0)
 });
 
-const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) => ({
+const createAnimatedStyles = (animations: ReturnType<typeof componentSharedValues>) => ({
   background: useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       animations.colorPos.value,
@@ -53,16 +53,16 @@ export default function ActiveBackground({ type }: Props) {
   const shouldHide = schedule.nextIndex === 0 && date.current === todayYYYMMDD && isLastPrayerPassed;
 
   // Animations
-  const animations = createAnimations(shouldShowBackground, yPosition);
-  const animatedStyles = createAnimatedStyles(animations);
+  const sharedValues = componentSharedValues(shouldShowBackground, yPosition);
+  const animatedStyles = createAnimatedStyles(sharedValues);
 
   // Animation Updates
   if (shouldHide) {
-    animations.colorPos.value = withTiming(0, TIMING_CONFIG, (finished) => {
-      if (finished) animations.translateY.value = withTiming(0, TIMING_CONFIG);
+    sharedValues.colorPos.value = withTiming(0, TIMING_CONFIG, (finished) => {
+      if (finished) sharedValues.translateY.value = withTiming(0, TIMING_CONFIG);
     });
   } else {
-    animations.translateY.value = withTiming(yPosition, TIMING_CONFIG);
+    sharedValues.translateY.value = withTiming(yPosition, TIMING_CONFIG);
   }
 
   return <Animated.View style={[styles.background, animatedStyles.background]} />;
