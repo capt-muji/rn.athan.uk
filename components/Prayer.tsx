@@ -2,7 +2,7 @@ import { StyleSheet, View, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useRef } from 'react';
 
-import { useColorAnimation } from '@/hooks/animations';
+import { useColorAnimation } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { TEXT, PRAYER } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';

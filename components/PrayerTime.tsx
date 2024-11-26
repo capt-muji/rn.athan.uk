@@ -3,7 +3,7 @@ import Animated from 'react-native-reanimated';
 
 import { TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { useColorAnimation } from '@/hooks/animations';
+import { useColorAnimation } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 
 interface Props { index: number; type: ScheduleType; }
