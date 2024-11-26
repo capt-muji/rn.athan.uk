@@ -12,6 +12,8 @@ const store = getDefaultStore();
 // Getters
 export const getDate = () => store.get(dateAtom);
 export const getOverlay = () => store.get(overlayAtom);
+export const getAlertPreferences = () => store.get(alertPreferencesAtom);
+export const getSoundPreferences = () => store.get(soundPreferencesAtom);
 
 export const getSchedule = (type: ScheduleType) => 
   type === ScheduleType.Standard 
@@ -73,9 +75,6 @@ export const incrementNextIndex = (type: ScheduleType) => {
   store.set(scheduleAtom, {  ...schedule, nextIndex });
 };
 
-// Alert Preferences
-export const getAlertPreferences = () => store.get(alertPreferencesAtom);
-
 export const setAlertPreference = (prayerIndex: number, alertType: AlertType) => {
   const current = getAlertPreferences();
 
@@ -85,11 +84,7 @@ export const setAlertPreference = (prayerIndex: number, alertType: AlertType) =>
   });
 };
 
-// Sound Preferences
-export const getSoundPreferences = () => store.get(soundPreferencesAtom);
-
 export const setSelectedSound = (soundIndex: number) => {
-  if (soundIndex < 1 || soundIndex > 10) return;
   const current = getSoundPreferences();
   store.set(soundPreferencesAtom, {
     ...current,
