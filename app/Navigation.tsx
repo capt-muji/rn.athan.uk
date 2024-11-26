@@ -4,7 +4,7 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-na
 import { useSetAtom } from 'jotai';
 
 import { ANIMATION } from '@/shared/constants';
-import Screen from '@/components/Screen';
+import Screen from '@/app/Screen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { pagePositionAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
