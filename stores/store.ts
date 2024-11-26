@@ -40,7 +40,8 @@ const createInitialAlertPreferences = (): AlertPreferences => {
 export const alertPreferencesAtom = atomWithStorage(
   'alertPreferences',
   createInitialAlertPreferences(),
-  mmkvStorage
+  mmkvStorage,
+  { getOnInit: true }
 );
 
 // Add initial state for sound
