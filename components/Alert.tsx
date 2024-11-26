@@ -86,6 +86,7 @@ export default function Alert({ index, type }: Props) {
   const animations = createAnimations(onLoadColorPos);
   const animatedStyles = createAnimatedStyles(animations);
 
+  // Animations Updates
   if (isNext) {
     animations.colorPos.value = withDelay(
       ANIMATION_CONFIG.popup.duration,
