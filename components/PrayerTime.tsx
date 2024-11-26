@@ -28,8 +28,8 @@ export default function PrayerTime({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
-  const sharedValues = animationUtils.createColorSharedValues(onLoadColorPos);
-  const colorAnimatedStyles = animationUtils.createColorAnimatedStyle(sharedValues);
+  const sharedValues = animationUtils.colorSharedValues(onLoadColorPos);
+  const colorAnimatedStyles = animationUtils.colorAnimatedStyle(sharedValues);
 
   // Animations Updates
   if (isNext) {
@@ -41,7 +41,7 @@ export default function PrayerTime({ index, type }: Props) {
 
   return (
     <View style={[styles.container, { width: isStandard ? 95 : 85 }]}>
-      <Animated.Text style={[styles.text, colorAnimatedStyles.text]}>
+      <Animated.Text style={[styles.text, colorAnimatedStyles]}>
         {prayer.time}
       </Animated.Text>
     </View>
