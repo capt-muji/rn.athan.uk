@@ -11,6 +11,7 @@ import { setAlertPreference } from '@/stores/actions';
 import { useScaleAnimation, useFadeAnimation, useBounceAnimation, useFillAnimation } from '@/hooks/animations';
 import Icon from '@/components/Icon';
 import { isTimePassed } from '@/shared/time';
+import { usePrayer } from '@/hooks/usePrayer';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: "Off", type: AlertType.Off },
@@ -22,20 +23,16 @@ const ALERT_CONFIGS = [
 interface Props { index: number; type: ScheduleType }
 
 export default function Alert({ index, type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
+  const Prayer = usePrayer(index, type);
 
   // State
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
   const [iconIndex, setIconIndex] = useState<number>(alertPreferences[index] || 0);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   // Derived State
-  const prayer = schedule.today[index];
-  const isPassed = isTimePassed(prayer.time);
-  const isNext = index === schedule.nextIndex;
-  const onLoadColorPos = isPassed || isNext ? 1 : 0;
+  const onLoadColorPos = Prayer.isPassed || Prayer.isNext ? 1 : 0;
 
   // Animations
   const { style: pressStyle, animate: animatePress } = useScaleAnimation(1);
@@ -44,7 +41,7 @@ export default function Alert({ index, type }: Props) {
   const { animatedProps: fillProps, animate: animateFill } = useFillAnimation(onLoadColorPos);
 
   // Animations Updates
-  if (isNext) animateFill(1);
+  if (Prayer.isNext) animateFill(1);
 
   // Effects
   useEffect(() => {
@@ -81,7 +78,7 @@ export default function Alert({ index, type }: Props) {
 
   const computedStylesPopup = {
     ...PRAYER.shadow.common,
-    ...(isStandard ? PRAYER.shadow.standard : PRAYER.shadow.extra)
+    ...(Prayer.isStandard ? PRAYER.shadow.standard : PRAYER.shadow.extra)
   }
 
   return (

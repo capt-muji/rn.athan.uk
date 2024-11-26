@@ -1,13 +1,11 @@
 import { StyleSheet, View, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useRef } from 'react';
-import { useAtomValue } from 'jotai';
 import { useColorAnimation } from '@/hooks/animations';
+import { usePrayer } from '@/hooks/usePrayer';
 
-import { TEXT, PRAYER, ANIMATION } from '@/shared/constants';
+import { TEXT, PRAYER } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
-import { isTimePassed } from '@/shared/time';
 import Alert from './Alert';
 import PrayerTime from './PrayerTime';
 
@@ -16,25 +14,18 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 interface Props { index: number; type: ScheduleType }
 
 export default function Prayer({ index, type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-
-  // State
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const Prayer = usePrayer(index, type);
   const viewRef = useRef<View>(null);
 
-  // Derived State
-  const prayer = schedule.today[index];
-  const isPassed = isTimePassed(prayer.time);
-  const isNext = index === schedule.nextIndex;
-  const onLoadColorPos = isPassed || isNext ? 1 : 0;
+  const onLoadColorPos = Prayer.isPassed || Prayer.isNext ? 1 : 0;
   const { style: colorStyle, animate: animateColor } = useColorAnimation(onLoadColorPos);
 
-  if (isNext) animateColor(1);
+  if (Prayer.isNext) animateColor(1);
 
   return (
     <AnimatedPressable ref={viewRef} style={styles.container}>
-      <Animated.Text style={[styles.text, styles.english, colorStyle]}>{prayer.english}</Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, colorStyle]}>{prayer.arabic}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.english, colorStyle]}>{Prayer.prayer.english}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, colorStyle]}>{Prayer.prayer.arabic}</Animated.Text>
       <PrayerTime index={index} type={type} />
       <Alert index={index} type={type} />
     </AnimatedPressable>
