@@ -4,13 +4,12 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-  withSequence,
   Easing,
   interpolateColor
 } from 'react-native-reanimated';
 import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
 import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
-import { ScheduleType, ScheduleStore, DateStore } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import * as timeUtils from '@/shared/time';
 import * as prayerUtils from '@/shared/prayer';
 
@@ -22,63 +21,55 @@ const ANIMATION_CONFIG = {
   }
 };
 
-const createAnimations = (nextIndex: number, isLastPrayerPassed: boolean) => ({
-  translateY: useSharedValue(nextIndex * PRAYER.height),
-  colorPos: useSharedValue(isLastPrayerPassed ? 0 : 1)
+const createAnimations = (shouldShowBackground: boolean, yPosition: number) => ({
+  translateY: useSharedValue(yPosition),
+  colorPos: useSharedValue(shouldShowBackground ? 1 : 0)
 });
 
-const createAnimatedStyles = (
-  animations: ReturnType<typeof createAnimations>,
-  schedule: ScheduleStore,
-  date: DateStore,
-  todayYYYMMDD: string,
-) => ({
-  background: useAnimatedStyle(() => {
-    if (schedule.nextIndex === 0 && date.current === todayYYYMMDD) {
-      animations.colorPos.value = withTiming(0, {
-        duration: ANIMATION_CONFIG.timing.duration
-      }, (finished) => {
-        if (finished) animations.translateY.value = 0;
-      });
-    } else {
-      animations.translateY.value = schedule.nextIndex * PRAYER.height;
-    }
-
-    return {
-      backgroundColor: interpolateColor(
-        animations.colorPos.value,
-        [0, 1],
-        ['transparent', COLORS.activeBackground]
-      ),
-      transform: [{
-        translateY: withTiming(animations.translateY.value, {
-          duration: ANIMATION_CONFIG.timing.durationSlower,
-          easing: ANIMATION_CONFIG.timing.easing
-        })
-      }]
-    };
-  })
+const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) => ({
+  background: useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(
+      animations.colorPos.value,
+      [0, 1],
+      ['transparent', COLORS.activeBackground]
+    ),
+    transform: [{
+      translateY: animations.translateY.value
+    }]
+  }))
 });
 
 interface Props { type: ScheduleType };
 
 export default function ActiveBackground({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-
   // State
+  const isStandard = type === ScheduleType.Standard;
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
 
   // Derived State
   const todayYYYMMDD = timeUtils.formatDateShort(timeUtils.createLondonDate());
   const isLastPrayerPassed = prayerUtils.isLastPrayerPassed(schedule);
+  const shouldShowBackground = !isLastPrayerPassed;
+  const yPosition = schedule.nextIndex * PRAYER.height;
+  const shouldHide = schedule.nextIndex === 0 && date.current === todayYYYMMDD && isLastPrayerPassed;
 
   // Animations
-  const animations = createAnimations(schedule.nextIndex, isLastPrayerPassed);
-  const animatedStyles = createAnimatedStyles(animations, schedule, date, todayYYYMMDD);
+  const animations = createAnimations(shouldShowBackground, yPosition);
+  const animatedStyles = createAnimatedStyles(animations);
 
-  if (!isLastPrayerPassed) {
-    animations.colorPos.value = withTiming(1, { duration: ANIMATION_CONFIG.timing.duration });
+  const x = {
+    duration: ANIMATION_CONFIG.timing.duration,
+    easing: ANIMATION_CONFIG.timing.easing
+  }
+
+  // Animation Updates
+  if (shouldHide) {
+    animations.colorPos.value = withTiming(0, x, (finished) => {
+      if (finished) animations.translateY.value = withTiming(0, x);
+    });
+  } else {
+    animations.translateY.value = withTiming(yPosition, x);
   }
 
   return <Animated.View style={[styles.background, animatedStyles.background]} />;
