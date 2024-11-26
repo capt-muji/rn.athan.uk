@@ -29,7 +29,9 @@ export default function ActiveBackground({ type }: Props) {
   const { style: translateStyle, animate: animateTranslate } = useTranslateYAnimation(yPosition);
 
   if (shouldHide) {
-    animateColor(0, () => animateTranslate(0));
+    animateColor(0, { 
+      onFinish: () => animateTranslate(0)
+    });
   } else {
     animateTranslate(yPosition);
   }
