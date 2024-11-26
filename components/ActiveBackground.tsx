@@ -47,8 +47,9 @@ const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) =
 interface Props { type: ScheduleType };
 
 export default function ActiveBackground({ type }: Props) {
-  // State
   const isStandard = type === ScheduleType.Standard;
+
+  // State
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
   const date = useAtomValue(dateAtom);
 
