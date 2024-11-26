@@ -1,5 +1,6 @@
 import { getDefaultStore } from 'jotai/vanilla';
-import { dateAtom, overlayAtom, alertPreferencesAtom, soundPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from './store';
+
+import { dateAtom, overlayAtom, alertPreferencesAtom, soundPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import * as PrayerUtils from '@/shared/prayer';
 import * as database from '@/stores/database';
 import * as TimeUtils from '@/shared/time';

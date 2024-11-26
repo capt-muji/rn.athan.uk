@@ -6,7 +6,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { setSchedule, setDate } from '@/stores/actions';
 import Navigation from '@/app/Navigation';
-import RadialGlow from '@/components/RadialGlow';
+import Glow from '@/components/Glow';
 import * as Database from '@/stores/database';
 import * as Api from '@/api/client';
 import { ScheduleType } from '@/shared/types';
@@ -40,7 +40,7 @@ export default function Index() {
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
       <GradientBackground />
       <StatusBar barStyle="light-content" />
-      <RadialGlow />
+      <Glow />
       <Navigation />
     </GestureHandlerRootView>
   );

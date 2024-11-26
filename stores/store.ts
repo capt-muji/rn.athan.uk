@@ -1,5 +1,6 @@
 import { atom } from 'jotai';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
+
 import { database } from '@/stores/database';
 import { PRAYERS_ENGLISH } from '@/shared/constants';
 import {

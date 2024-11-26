@@ -1,6 +1,7 @@
-import { DaySelection } from "@/shared/types";
-import { format, addDays, setHours, setMinutes, isAfter, addMinutes as addMins, intervalToDuration, isFuture, isToday, parseISO, subDays } from 'date-fns';
+import { format, addDays, setHours, setMinutes, addMinutes as addMins, intervalToDuration, isFuture, isToday, subDays } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
+
+import { DaySelection } from "@/shared/types";
 
 // Creates a new Date object in London timezone
 // Converts input date or current date to London time

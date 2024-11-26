@@ -11,7 +11,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 
 interface Props { type: ScheduleType }
 
-export default function PrayerList({ type }: Props) {
+export default function List({ type }: Props) {
   const { isStandard } = usePrayer(0, type);
   const date = useAtomValue(dateAtom);
 

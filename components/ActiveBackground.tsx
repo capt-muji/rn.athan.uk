@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { useAtomValue } from 'jotai';
 import Animated from 'react-native-reanimated';
+
 import { COLORS, PRAYER } from '@/shared/constants';
 import { dateAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
