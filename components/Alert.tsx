@@ -6,11 +6,10 @@ import * as Haptics from 'expo-haptics';
 
 import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
-import { alertPreferencesAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
+import { alertPreferencesAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
 import { useScaleAnimation, useFadeAnimation, useBounceAnimation, useFillAnimation } from '@/hooks/animations';
 import Icon from '@/components/Icon';
-import { isTimePassed } from '@/shared/time';
 import { usePrayer } from '@/hooks/usePrayer';
 
 const ALERT_CONFIGS = [
@@ -24,6 +23,10 @@ interface Props { index: number; type: ScheduleType }
 
 export default function Alert({ index, type }: Props) {
   const Prayer = usePrayer(index, type);
+  const ScaleAnim = useScaleAnimation(1);
+  const FadeAnim = useFadeAnimation(0);
+  const BounceAnim = useBounceAnimation(0);
+  const FillAnim = useFillAnimation(Prayer.ui.initialColorPos);
 
   // State
   const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
@@ -31,22 +34,13 @@ export default function Alert({ index, type }: Props) {
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
-  // Derived State
-  const onLoadColorPos = Prayer.isPassed || Prayer.isNext ? 1 : 0;
-
-  // Animations
-  const { style: pressStyle, animate: animatePress } = useScaleAnimation(1);
-  const { style: fadeStyle, animate: animateFade } = useFadeAnimation(0);
-  const { value: bounceValue, style: bounceStyle, animate: animateBounce } = useBounceAnimation(0);
-  const { animatedProps: fillProps, animate: animateFill } = useFillAnimation(onLoadColorPos);
-
   // Animations Updates
-  if (Prayer.isNext) animateFill(1);
+  if (Prayer.isNext) FillAnim.animate(1);
 
   // Effects
   useEffect(() => {
-    const colorPos = isPopupActive ? 1 : onLoadColorPos;
-    animateFill(colorPos);
+    const colorPos = isPopupActive ? 1 : Prayer.ui.initialColorPos;
+    FillAnim.animate(colorPos);
   }, [isPopupActive]);
 
   useEffect(() => () => {
@@ -66,12 +60,12 @@ export default function Alert({ index, type }: Props) {
     setIsPopupActive(true);
 
     // Reset and trigger animations
-    bounceValue.value = 0;
-    animateFade(1, { duration: 5 });
-    animateBounce(1);
+    BounceAnim.value.value = 0;
+    FadeAnim.animate(1, { duration: 5 });
+    BounceAnim.animate(1);
 
     timeoutRef.current = setTimeout(() => {
-      animateFade(0, { duration: 5 });
+      FadeAnim.animate(0, { duration: 5 });
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
   }, [iconIndex, index]);
@@ -85,16 +79,16 @@ export default function Alert({ index, type }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onPressIn={() => animatePress(0.9)}
-        onPressOut={() => animatePress(1)}
+        onPressIn={() => ScaleAnim.animate(0.9)}
+        onPressOut={() => ScaleAnim.animate(1)}
         style={styles.iconContainer}
       >
-        <Animated.View style={pressStyle}>
-          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={fillProps} />
+        <Animated.View style={ScaleAnim.style}>
+          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={FillAnim.animatedProps} />
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[styles.popup, computedStylesPopup, fadeStyle, bounceStyle]}>
+      <Animated.View style={[styles.popup, computedStylesPopup, FadeAnim.style, BounceAnim.style]}>
         <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} color="white" />
         <Text style={styles.label}>{ALERT_CONFIGS[iconIndex].label}</Text>
       </Animated.View>
