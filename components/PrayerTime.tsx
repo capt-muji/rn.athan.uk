@@ -23,7 +23,7 @@ export default function PrayerTime({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
   const { style: colorStyle, animate: animateColor } = useColorAnimation(onLoadColorPos);
 
-  if (isNext) animateColor(1, { duration: ANIMATION.duration });
+  if (isNext) animateColor(1);
 
   return (
     <View style={[styles.container, { width: isStandard ? 95 : 85 }]}>

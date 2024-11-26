@@ -29,7 +29,7 @@ export default function Prayer({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
   const { style: colorStyle, animate: animateColor } = useColorAnimation(onLoadColorPos);
 
-  if (isNext) animateColor(1, { duration: ANIMATION.duration });
+  if (isNext) animateColor(1);
 
   return (
     <AnimatedPressable ref={viewRef} style={styles.container}>
