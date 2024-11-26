@@ -7,7 +7,7 @@ import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/stor
 import { ScheduleType } from '@/shared/types';
 import * as timeUtils from '@/shared/time';
 import * as prayerUtils from '@/shared/prayer';
-import { useBackgroundColorAnimation, useTranslateYAnimation } from '@/hooks/animations';
+import { useBackgroundColorAnimation, useTranslateYAnimation } from '@/hooks/useAnimations';
 
 interface Props { type: ScheduleType };
 
