@@ -127,6 +127,28 @@ export const useAnimationBackgroundColor = (initialValue: number = 0, input: Col
   return { value, style, animate };
 };
 
+export const useAnimationOpacity = (initialValue: number = 0) => {
+  const value = useSharedValue(initialValue);
+
+  const style = useAnimatedStyle(() => ({
+    opacity: value.value
+  }));
+
+  const animate = (toValue: number, options?: AnimationOptions) => {
+    'worklet';
+    const timing = {
+      ...DEFAULT_TIMING,
+      duration: options?.duration ?? DEFAULT_TIMING.duration
+    };
+    
+    value.value = withTiming(toValue, timing, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
+  };
+
+  return { value, style, animate };
+};
+
 export const useAnimationTranslateY = (initialValue: number) => {
   const value = useSharedValue(initialValue);
 
@@ -160,28 +182,6 @@ export const useAnimationScale = (initialValue: number = 1) => {
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
     value.value = withSpring(toValue, DEFAULT_SPRING, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
-  };
-
-  return { value, style, animate };
-};
-
-export const useAnimationOpacity = (initialValue: number = 0) => {
-  const value = useSharedValue(initialValue);
-
-  const style = useAnimatedStyle(() => ({
-    opacity: value.value
-  }));
-
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
-    const timing = {
-      ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration
-    };
-    
-    value.value = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
   };

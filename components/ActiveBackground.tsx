@@ -23,9 +23,8 @@ export default function ActiveBackground({ type }: Props) {
 
   // Animations
   const AnimTranslateY = useAnimationTranslateY(yPosition);
-  const initialColorPos = shouldHide ? 0 : 1;
   const AnimBackgroundColor = useAnimationBackgroundColor(
-    initialColorPos,
+    shouldHide ? 0 : 1,
     { fromColor: 'transparent', toColor: COLORS.activeBackground }
   );
 
