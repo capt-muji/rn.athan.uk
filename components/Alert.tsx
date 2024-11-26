@@ -28,15 +28,15 @@ const ALERT_CONFIGS = [
   { icon: AlertIcon.SPEAKER, label: "Sound", type: AlertType.Sound }
 ];
 
-const ANIMATION_CONFIG = {
-  spring: { damping: 12, stiffness: 500, mass: 0.5 },
-  timing: { duration: 5 },
-  popup: {
-    duration: ANIMATION.duration,
-    durationSlow: ANIMATION.durationSlow,
-    autoHideDelay: 1500
-  }
+const TIMING_CONFIG = {
+  duration: ANIMATION.duration
 };
+
+const SPRING_CONFIG = {
+  damping: 12,
+  stiffness: 500,
+  mass: 0.5
+}
 
 const createAnimations = (initialColorPos: number) => ({
   fade: useSharedValue(0),
@@ -89,15 +89,15 @@ export default function Alert({ index, type }: Props) {
   // Animations Updates
   if (isNext) {
     animations.colorPos.value = withDelay(
-      ANIMATION_CONFIG.popup.duration,
-      withTiming(1, { duration: ANIMATION_CONFIG.popup.durationSlow })
+      ANIMATION.duration,
+      withTiming(1, { duration: ANIMATION.durationSlow })
     );
   }
 
   // Effects
   useEffect(() => {
     const colorPos = isPopupActive ? 1 : onLoadColorPos;
-    animations.colorPos.value = withTiming(colorPos, { duration: ANIMATION_CONFIG.popup.duration });
+    animations.colorPos.value = withTiming(colorPos, TIMING_CONFIG);
   }, [isPopupActive]);
 
   useEffect(() => () => {
@@ -116,16 +116,16 @@ export default function Alert({ index, type }: Props) {
 
     // Reset and trigger animations
     animations.bounce.value = 0;
-    animations.fade.value = withTiming(1, ANIMATION_CONFIG.timing);
-    animations.bounce.value = withSpring(1, ANIMATION_CONFIG.spring);
+    animations.fade.value = withTiming(1, TIMING_CONFIG);
+    animations.bounce.value = withSpring(1, SPRING_CONFIG);
 
     setIsPopupActive(true);
 
     timeoutRef.current = setTimeout(() => {
-      animations.fade.value = withTiming(0, ANIMATION_CONFIG.timing);
-      animations.bounce.value = withSpring(0, ANIMATION_CONFIG.spring);
+      animations.fade.value = withTiming(0, TIMING_CONFIG);
+      animations.bounce.value = withSpring(0, SPRING_CONFIG);
       setIsPopupActive(false);
-    }, ANIMATION_CONFIG.popup.autoHideDelay);
+    }, ANIMATION.popupDuration);
   }, [iconIndex, index]);
 
   const computedStylesPopup = {
@@ -137,8 +137,8 @@ export default function Alert({ index, type }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onPressIn={() => animations.press.value = withSpring(0.9, ANIMATION_CONFIG.spring)}
-        onPressOut={() => animations.press.value = withSpring(1, ANIMATION_CONFIG.spring)}
+        onPressIn={() => animations.press.value = withSpring(0.9, SPRING_CONFIG)}
+        onPressOut={() => animations.press.value = withSpring(1, SPRING_CONFIG)}
         style={styles.iconContainer}
       >
         <Animated.View style={animatedStyles.alert}>
