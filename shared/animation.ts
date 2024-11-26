@@ -1,24 +1,22 @@
-import { useSharedValue, useAnimatedStyle, interpolateColor } from 'react-native-reanimated';
+import { useSharedValue, useAnimatedStyle, interpolateColor, SharedValue } from 'react-native-reanimated';
 import { COLORS } from './constants';
 
-export const interpolateColorSharedValue = (value: number) => {
+export const interpolateColorSharedValue = (colorPos: SharedValue<number>) => {
   'worklet';
   return interpolateColor(
-    value,
+    colorPos.value,
     [0, 1],
     [COLORS.inactivePrayer, COLORS.activePrayer]
   );
 };
 
-export const createColorSharedValues = (initialColorPos: number) => ({
+export const colorSharedValues = (initialColorPos: number) => ({
   colorPos: useSharedValue(initialColorPos)
 });
 
-export const createColorAnimatedStyle = (sharedValues: ReturnType<typeof createColorSharedValues>) => ({
-  text: useAnimatedStyle(() => ({
-    color: interpolateColorSharedValue(sharedValues.colorPos.value)
-  }))
-});
+export const colorAnimatedStyle = (sharedValues: ReturnType<typeof colorSharedValues>) => useAnimatedStyle(() => ({
+  color: interpolateColorSharedValue(sharedValues.colorPos)
+}));
 
-export type ColorAnimation = ReturnType<typeof createColorSharedValues>;
-export type ColorAnimatedStyle = ReturnType<typeof createColorAnimatedStyle>;
+export type ColorAnimation = ReturnType<typeof colorSharedValues>;
+export type ColorAnimatedStyle = ReturnType<typeof colorAnimatedStyle>;

@@ -33,8 +33,8 @@ export default function Prayer({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
-  const sharedValues = animationUtils.createColorSharedValues(onLoadColorPos);
-  const animatedStyles = animationUtils.createColorAnimatedStyle(sharedValues);
+  const sharedValues = animationUtils.colorSharedValues(onLoadColorPos);
+  const animatedStyles = animationUtils.colorAnimatedStyle(sharedValues);
 
   // Animations Updates
   if (isNext) {
@@ -46,8 +46,8 @@ export default function Prayer({ index, type }: Props) {
 
   return (
     <AnimatedPressable ref={viewRef} style={styles.container}>
-      <Animated.Text style={[styles.text, styles.english, animatedStyles.text]}>{prayer.english}</Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, animatedStyles.text]}>{prayer.arabic}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.english, animatedStyles]}>{prayer.english}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, animatedStyles]}>{prayer.arabic}</Animated.Text>
       <PrayerTime index={index} type={type} />
       <Alert index={index} type={type} />
     </AnimatedPressable>
