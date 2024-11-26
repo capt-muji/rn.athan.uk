@@ -1,10 +1,10 @@
-
+import { useMemo, useEffect } from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
-import { useAtomValue } from 'jotai';
-import { pagePositionAtom } from '@/stores/store';
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import { interpolateColor, useSharedValue } from 'react-native-reanimated';
-import { useMemo, useEffect } from 'react';
+import { useAtomValue } from 'jotai';
+
+import { pagePositionAtom } from '@/stores/store';
 import { COLORS } from '@/shared/constants';
 
 export default function GradientBackground() {

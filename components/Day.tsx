@@ -2,12 +2,13 @@ import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useAtomValue } from 'jotai';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
+
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
-import Masjid from './Masjid';
+import Masjid from '@/components/Masjid';
 import { formatDateLong } from '@/shared/time';
 import { dateAtom } from '@/stores/store';
 
-export default function DateDisplay() {
+export default function Day() {
   const isOverlayOn = false;
 
   const date = useAtomValue(dateAtom);

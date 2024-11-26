@@ -12,7 +12,8 @@ import {
   WithSpringConfig,
   Easing,
 } from 'react-native-reanimated';
-import { COLORS, ANIMATION } from '@/shared/constants';
+
+import { ANIMATION } from '@/shared/constants';
 
 interface AnimationOptions {
   duration?: number;

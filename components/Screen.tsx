@@ -1,10 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import Countdown from '@/components/Countdown';
 import { SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import DateDisplay from '@/components/DateDisplay';
-import PrayerList from '@/components/PrayerList';
+import Day from '@/components/Day';
+import List from '@/components/List';
 
 
 interface Props { type: ScheduleType }
@@ -20,8 +21,8 @@ export default function Screen({ type }: Props) {
   return (
     <View style={[StyleSheet.absoluteFillObject, computedStyles]}>
       <Countdown type={type} />
-      <DateDisplay />
-      <PrayerList type={type} />
+      <Day />
+      <List type={type} />
     </View>
   );
 };

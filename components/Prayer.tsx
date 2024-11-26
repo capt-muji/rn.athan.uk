@@ -6,8 +6,8 @@ import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { TEXT, PRAYER, COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import Alert from './Alert';
-import PrayerTime from './PrayerTime';
+import Alert from '@/components/Alert';
+import PrayerTime from '@/components/PrayerTime';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
