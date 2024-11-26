@@ -13,17 +13,9 @@ import { ScheduleType } from '@/shared/types';
 import * as timeUtils from '@/shared/time';
 import * as prayerUtils from '@/shared/prayer';
 
-const ANIMATION_CONFIG = {
-  timing: {
-    duration: ANIMATION.durationSlow,
-    durationSlower: ANIMATION.durationSlower,
-    easing: Easing.elastic(0.5)
-  }
-};
-
 const TIMING_CONFIG = {
-  duration: ANIMATION_CONFIG.timing.duration,
-  easing: ANIMATION_CONFIG.timing.easing
+  duration: ANIMATION.durationSlow,
+  easing: Easing.elastic(0.5)
 };
 
 const createAnimations = (shouldShowBackground: boolean, yPosition: number) => ({
