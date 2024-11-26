@@ -1,40 +1,14 @@
 import { StyleSheet } from 'react-native';
 import { useAtomValue } from 'jotai';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-  Easing,
-  interpolateColor
-} from 'react-native-reanimated';
-import { ANIMATION, COLORS, PRAYER } from '@/shared/constants';
+import Animated from 'react-native-reanimated';
+import { COLORS, PRAYER } from '@/shared/constants';
 import { dateAtom, extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
 import * as timeUtils from '@/shared/time';
 import * as prayerUtils from '@/shared/prayer';
+import { useBackgroundColorAnimation, useTranslateYAnimation } from '@/shared/animations/hooks';
+import { useEffect } from 'react';
 
-const TIMING_CONFIG = {
-  duration: ANIMATION.durationSlow,
-  easing: Easing.elastic(0.5)
-};
-
-const componentSharedValues = (shouldShowBackground: boolean, yPosition: number) => ({
-  translateY: useSharedValue(yPosition),
-  colorPos: useSharedValue(shouldShowBackground ? 1 : 0)
-});
-
-const createAnimatedStyles = (animations: ReturnType<typeof componentSharedValues>) => ({
-  background: useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(
-      animations.colorPos.value,
-      [0, 1],
-      ['transparent', COLORS.activeBackground]
-    ),
-    transform: [{
-      translateY: animations.translateY.value
-    }]
-  }))
-});
 
 interface Props { type: ScheduleType };
 
@@ -53,19 +27,16 @@ export default function ActiveBackground({ type }: Props) {
   const shouldHide = schedule.nextIndex === 0 && date.current === todayYYYMMDD && isLastPrayerPassed;
 
   // Animations
-  const sharedValues = componentSharedValues(shouldShowBackground, yPosition);
-  const animatedStyles = createAnimatedStyles(sharedValues);
+  const { style: colorStyle, animate: animateColor } = useBackgroundColorAnimation(shouldShowBackground ? 1 : 0);
+  const { style: translateStyle, animate: animateTranslate } = useTranslateYAnimation(yPosition);
 
-  // Animation Updates
   if (shouldHide) {
-    sharedValues.colorPos.value = withTiming(0, TIMING_CONFIG, (finished) => {
-      if (finished) sharedValues.translateY.value = withTiming(0, TIMING_CONFIG);
-    });
+    animateColor(0, () => animateTranslate(0));
   } else {
-    sharedValues.translateY.value = withTiming(yPosition, TIMING_CONFIG);
+    animateTranslate(yPosition);
   }
 
-  return <Animated.View style={[styles.background, animatedStyles.background]} />;
+  return <Animated.View style={[styles.background, colorStyle, translateStyle]} />;
 }
 
 const styles = StyleSheet.create({
