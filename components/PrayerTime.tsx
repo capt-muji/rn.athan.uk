@@ -7,24 +7,11 @@ import { TEXT, ANIMATION, COLORS } from '@/shared/constants';
 import { extraScheduleAtom, standardScheduleAtom } from '@/stores/store';
 import { ScheduleType } from '@/shared/types';
 import { isTimePassed } from '@/shared/time';
+import { createColorAnimation, createColorAnimatedStyle } from '@/shared/animation';
 
 const TIMING_CONFIG = {
   duration: ANIMATION.durationSlow
 };
-
-const createAnimations = (initialColorPos: number) => ({
-  colorPos: useSharedValue(initialColorPos)
-});
-
-const createAnimatedStyles = (animations: ReturnType<typeof createAnimations>) => ({
-  text: useAnimatedStyle(() => ({
-    color: interpolateColor(
-      animations.colorPos.value,
-      [0, 1],
-      [COLORS.inactivePrayer, COLORS.activePrayer]
-    )
-  }))
-});
 
 interface Props { index: number; type: ScheduleType; }
 
@@ -41,8 +28,8 @@ export default function PrayerTime({ index, type }: Props) {
   const onLoadColorPos = isPassed || isNext ? 1 : 0;
 
   // Animations
-  const animations = createAnimations(onLoadColorPos);
-  const animatedStyles = createAnimatedStyles(animations);
+  const animations = createColorAnimation(onLoadColorPos);
+  const animatedStyles = createColorAnimatedStyle(animations);
 
   // Animations Updates
   if (isNext) {
