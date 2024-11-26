@@ -3,20 +3,20 @@ import Animated from 'react-native-reanimated';
 
 import { TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { useColorAnimation } from '@/hooks/useAnimations';
+import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 
 interface Props { index: number; type: ScheduleType; }
 
 export default function PrayerTime({ index, type }: Props) {
   const Prayer = usePrayer(index, type);
-  const ColorAnim = useColorAnimation(Prayer.ui.initialColorPos);
+  const AnimColor = useAnimationColor(Prayer.ui.initialColorPos);
 
-  if (Prayer.isNext) ColorAnim.animate(1);
+  if (Prayer.isNext) AnimColor.animate(1);
 
   return (
     <View style={[styles.container, { width: Prayer.isStandard ? 95 : 85 }]}>
-      <Animated.Text style={[styles.text, ColorAnim.style]}>{Prayer.time}</Animated.Text>
+      <Animated.Text style={[styles.text, AnimColor.style]}>{Prayer.time}</Animated.Text>
     </View>
   );
 }

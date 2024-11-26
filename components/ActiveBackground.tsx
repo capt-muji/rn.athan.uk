@@ -7,7 +7,7 @@ import { ScheduleType } from '@/shared/types';
 import * as TimeUtils from '@/shared/time';
 import * as PrayerUtils from '@/shared/prayer';
 import { usePrayer } from '@/hooks/usePrayer';
-import { useBackgroundColorAnimation, useTranslateYAnimation } from '@/hooks/useAnimations';
+import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimations';
 
 interface Props { type: ScheduleType };
 
@@ -23,18 +23,18 @@ export default function ActiveBackground({ type }: Props) {
   const shouldHide = Prayer.schedule.nextIndex === 0 && date.current === todayYYYMMDD && Prayer.isLastPrayerPassed;
 
   // Animations
-  const BackgroundColorAnim = useBackgroundColorAnimation(shouldHide ? 0 : 1);
-  const TranslateYAnim = useTranslateYAnimation(yPosition);
+  const AnimBackgroundColor = useAnimationBackgroundColor(shouldHide ? 0 : 1);
+  const AnimTranslateY = useAnimationTranslateY(yPosition);
 
   if (shouldHide) {
-    BackgroundColorAnim.animate(0, {
-      onFinish: () => TranslateYAnim.value.value = 0
+    AnimBackgroundColor.animate(0, {
+      onFinish: () => AnimTranslateY.value.value = 0
     });
   } else {
-    TranslateYAnim.animate(yPosition);
+    AnimTranslateY.animate(yPosition);
   }
 
-  return <Animated.View style={[styles.background, BackgroundColorAnim.style, TranslateYAnim.style]} />;
+  return <Animated.View style={[styles.background, AnimBackgroundColor.style, AnimTranslateY.style]} />;
 }
 
 const styles = StyleSheet.create({

@@ -30,7 +30,7 @@ const DEFAULT_SPRING: WithSpringConfig = {
   mass: 0.5
 };
 
-export const useColorAnimation = (initialValue: number = 0) => {
+export const useAnimationColor = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
@@ -60,7 +60,7 @@ export const useColorAnimation = (initialValue: number = 0) => {
   return { value, style, animate };
 };
 
-export const useBackgroundColorAnimation = (initialValue: number = 0) => {
+export const useAnimationBackgroundColor = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
@@ -86,7 +86,7 @@ export const useBackgroundColorAnimation = (initialValue: number = 0) => {
   return { value, style, animate };
 };
 
-export const useTranslateYAnimation = (initialValue: number) => {
+export const useAnimationTranslateY = (initialValue: number) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
@@ -109,7 +109,7 @@ export const useTranslateYAnimation = (initialValue: number) => {
   return { value, style, animate };
 };
 
-export const useScaleAnimation = (initialValue: number = 1) => {
+export const useAnimationScale = (initialValue: number = 1) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
@@ -126,7 +126,7 @@ export const useScaleAnimation = (initialValue: number = 1) => {
   return { value, style, animate };
 };
 
-export const useFadeAnimation = (initialValue: number = 0) => {
+export const useAnimationFade = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
@@ -148,7 +148,7 @@ export const useFadeAnimation = (initialValue: number = 0) => {
   return { value, style, animate };
 };
 
-export const useBounceAnimation = (initialValue: number = 0) => {
+export const useAnimationBounce = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
@@ -165,7 +165,7 @@ export const useBounceAnimation = (initialValue: number = 0) => {
   return { value, style, animate };
 };
 
-export const useFillAnimation = (initialValue: number = 0) => {
+export const useAnimationFill = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
   const animatedProps = useAnimatedProps(() => ({
