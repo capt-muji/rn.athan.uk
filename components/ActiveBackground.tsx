@@ -23,7 +23,7 @@ export default function ActiveBackground({ type }: Props) {
 
 
 
-  console.log('ActiveBackground', Prayer.schedule);
+  console.log('ActiveBackgrouneed', Prayer.schedule);
 
   // State
   const date = useAtomValue(dateAtom);
