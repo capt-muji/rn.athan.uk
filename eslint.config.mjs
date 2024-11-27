@@ -11,17 +11,12 @@ export default tseslint.config(eslint.configs.recommended, tseslint.configs.reco
     'import/order': [
       'warn',
       {
-        groups: [
-          ['builtin', 'external'], // Node.js and external dependencies
-          'internal', // Internal modules
-          ['parent', 'sibling'], // Parent and sibling files
-          'index', // Index files
-        ],
-        'newlines-between': 'always', // Enforce blank lines between groups
+        groups: [['builtin', 'external'], 'internal', ['parent', 'sibling'], 'index'],
+        'newlines-between': 'always',
         alphabetize: {
           order: 'asc',
           caseInsensitive: true,
-        }, // Sort imports alphabetically
+        },
       },
     ],
   },
