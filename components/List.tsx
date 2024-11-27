@@ -1,15 +1,17 @@
-import { View, StyleSheet } from 'react-native';
 import { useAtomValue } from 'jotai';
+import { View, StyleSheet } from 'react-native';
 
-import Prayer from '@/components/Prayer';
 import ActiveBackground from '@/components/ActiveBackground';
+import Prayer from '@/components/Prayer';
+import { usePrayer } from '@/hooks/usePrayer';
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
+import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { dateAtom } from '@/stores/store';
-import * as TimeUtils from '@/shared/time';
-import { usePrayer } from '@/hooks/usePrayer';
 
-interface Props { type: ScheduleType }
+interface Props {
+  type: ScheduleType;
+}
 
 export default function List({ type }: Props) {
   const { isStandard } = usePrayer(0, type);

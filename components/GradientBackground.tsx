@@ -1,20 +1,23 @@
+import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
+import { useAtomValue } from 'jotai';
 import { useMemo, useEffect } from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
-import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import { interpolateColor, useSharedValue } from 'react-native-reanimated';
-import { useAtomValue } from 'jotai';
 
-import { pagePositionAtom } from '@/stores/store';
 import { COLORS } from '@/shared/constants';
+import { pagePositionAtom } from '@/stores/store';
 
 export default function GradientBackground() {
   const { width, height } = useWindowDimensions();
   const position = useAtomValue(pagePositionAtom);
 
-  const colors = useMemo(() => ({
-    start: [COLORS.gradientScreen1Start, COLORS.gradientScreen2Start],
-    end: [COLORS.gradientScreen1End, COLORS.gradientScreen2End],
-  }), []);
+  const colors = useMemo(
+    () => ({
+      start: [COLORS.gradientScreen1Start, COLORS.gradientScreen2Start],
+      end: [COLORS.gradientScreen1End, COLORS.gradientScreen2End],
+    }),
+    []
+  );
 
   const startColorValue = useSharedValue(colors.start[0]);
   const endColorValue = useSharedValue(colors.end[0]);

@@ -1,7 +1,6 @@
 import { atom } from 'jotai';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 
-import { database } from '@/stores/database';
 import { PRAYERS_ENGLISH } from '@/shared/constants';
 import {
   AlertPreferences,
@@ -11,8 +10,9 @@ import {
   DateStore,
   OverlayStore,
   SoundPreferences,
-  ScheduleType
+  ScheduleType,
 } from '@/shared/types';
+import { database } from '@/stores/database';
 
 // Custom storage for MMKV
 const mmkvStorage = createJSONStorage(() => ({
@@ -37,49 +37,43 @@ const createInitialAlertPreferences = (): AlertPreferences => {
   return preferences;
 };
 
-export const alertPreferencesAtom = atomWithStorage(
-  'alertPreferences',
-  createInitialAlertPreferences(),
-  mmkvStorage,
-  { getOnInit: true }
-);
+export const alertPreferencesAtom = atomWithStorage('alertPreferences', createInitialAlertPreferences(), mmkvStorage, {
+  getOnInit: true,
+});
 
 // Add initial state for sound
 const initialSoundPreferences: SoundPreferences = {
-  selected: 1
+  selected: 1,
 };
 
-export const soundPreferencesAtom = atomWithStorage(
-  'soundPreferences',
-  initialSoundPreferences,
-  mmkvStorage,
-  { getOnInit: true }
-);
+export const soundPreferencesAtom = atomWithStorage('soundPreferences', initialSoundPreferences, mmkvStorage, {
+  getOnInit: true,
+});
 
 export const appAtom = atom<AppStore>({
   isLoading: true,
-  hasError: false
+  hasError: false,
 });
 
 export const dateAtom = atom<DateStore>({
   current: '',
-  measurements: null
+  measurements: null,
 });
 
-
-const createScheduleAtom = (scheduleType: ScheduleType) => atom<ScheduleStore>({
-  type: scheduleType,
-  today: {},
-  tomorrow: {},
-  nextIndex: 0,
-  selectedIndex: -1,
-});
+const createScheduleAtom = (scheduleType: ScheduleType) =>
+  atom<ScheduleStore>({
+    type: scheduleType,
+    today: {},
+    tomorrow: {},
+    nextIndex: 0,
+    selectedIndex: -1,
+  });
 
 export const standardScheduleAtom = createScheduleAtom(ScheduleType.Standard);
 export const extraScheduleAtom = createScheduleAtom(ScheduleType.Extra);
 
 export const overlayAtom = atom<OverlayStore>({
-  isOn: false
+  isOn: false,
 });
 
 export const pagePositionAtom = atom<number>(0);

@@ -1,10 +1,9 @@
-
 import { PureComponent } from 'react';
-import Animated from 'react-native-reanimated';
+import Animated, { AnimatedProps } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
-import { AlertIcon } from '@/shared/types';
 import ICON_PATHS from '@/assets/icons/icons';
+import { AlertIcon } from '@/shared/types';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
@@ -12,7 +11,7 @@ interface Props {
   type: AlertIcon;
   size: number;
   color?: string;
-  animatedProps?: any;
+  animatedProps?: AnimatedProps<Path>;
 }
 
 export default class Icon extends PureComponent<Props> {

@@ -1,35 +1,38 @@
+import * as Haptics from 'expo-haptics';
+import { useAtomValue } from 'jotai';
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
-import { useAtomValue } from 'jotai';
 import Animated from 'react-native-reanimated';
-import * as Haptics from 'expo-haptics';
 
+import Icon from '@/components/Icon';
+import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimations';
+import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
-import { alertPreferencesAtom } from '@/stores/store';
 import { setAlertPreference } from '@/stores/actions';
-import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimations';
-import Icon from '@/components/Icon';
-import { usePrayer } from '@/hooks/usePrayer';
+import { alertPreferencesAtom } from '@/stores/store';
 
 const ALERT_CONFIGS = [
-  { icon: AlertIcon.BELL_SLASH, label: "Off", type: AlertType.Off },
-  { icon: AlertIcon.BELL_RING, label: "Notification", type: AlertType.Notification },
-  { icon: AlertIcon.VIBRATE, label: "Vibrate", type: AlertType.Vibrate },
-  { icon: AlertIcon.SPEAKER, label: "Sound", type: AlertType.Sound }
+  { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
+  { icon: AlertIcon.BELL_RING, label: 'Notification', type: AlertType.Notification },
+  { icon: AlertIcon.VIBRATE, label: 'Vibrate', type: AlertType.Vibrate },
+  { icon: AlertIcon.SPEAKER, label: 'Sound', type: AlertType.Sound },
 ];
 
-interface Props { index: number; type: ScheduleType }
+interface Props {
+  index: number;
+  type: ScheduleType;
+}
 
 export default function Alert({ index, type }: Props) {
   const Prayer = usePrayer(index, type);
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationFill(
-    Prayer.ui.initialColorPos,
-    { fromColor: COLORS.inactivePrayer, toColor: COLORS.activePrayer }
-  );
+  const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
+    fromColor: COLORS.inactivePrayer,
+    toColor: COLORS.activePrayer,
+  });
 
   // State
   const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
@@ -46,9 +49,12 @@ export default function Alert({ index, type }: Props) {
     AnimFill.animate(colorPos);
   }, [isPopupActive]);
 
-  useEffect(() => () => {
-    timeoutRef.current && clearTimeout(timeoutRef.current);
-  }, []);
+  useEffect(
+    () => () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    },
+    []
+  );
 
   // Handlers
   const handlePress = useCallback(() => {
@@ -58,7 +64,7 @@ export default function Alert({ index, type }: Props) {
     setIconIndex(nextIndex);
     setAlertPreference(index, ALERT_CONFIGS[nextIndex].type);
 
-    timeoutRef.current && clearTimeout(timeoutRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
     setIsPopupActive(true);
 
@@ -75,8 +81,8 @@ export default function Alert({ index, type }: Props) {
 
   const computedStylesPopup = {
     ...PRAYER.shadow.common,
-    ...(Prayer.isStandard ? PRAYER.shadow.standard : PRAYER.shadow.extra)
-  }
+    ...(Prayer.isStandard ? PRAYER.shadow.standard : PRAYER.shadow.extra),
+  };
 
   return (
     <View style={styles.container}>
@@ -123,7 +129,7 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   popupIcon: {
-    marginRight: 15
+    marginRight: 15,
   },
   label: {
     fontSize: TEXT.size,

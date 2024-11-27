@@ -1,6 +1,20 @@
-import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType, ScheduleStore } from '@/shared/types';
-import { PRAYERS_ENGLISH, PRAYERS_ARABIC, ANIMATION, PRAYERS_LENGTH_FAJR_TO_ISHA, EXTRAS_ENGLISH, EXTRAS_ARABIC } from '@/shared/constants';
+import {
+  PRAYERS_ENGLISH,
+  PRAYERS_ARABIC,
+  ANIMATION,
+  PRAYERS_LENGTH_FAJR_TO_ISHA,
+  EXTRAS_ENGLISH,
+  EXTRAS_ARABIC,
+} from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
+import {
+  ISingleApiResponseTransformed,
+  IScheduleNow,
+  IApiResponse,
+  IApiTimes,
+  ScheduleType,
+  ScheduleStore,
+} from '@/shared/types';
 
 /**
  * Filters API response data to only include today and future dates
@@ -17,7 +31,7 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
 
   return {
     city: apiData.city,
-    times: timesFiltered
+    times: timesFiltered,
   };
 };
 
@@ -37,10 +51,10 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       duha: TimeUtils.addMinutes(times.sunrise, 1),
       dhuhr: times.dhuhr,
       asr: times.asr,
-      "istijaba": TimeUtils.getIstijaba(times.magrib),
+      istijaba: TimeUtils.getIstijaba(times.magrib),
       magrib: times.magrib,
       isha: times.isha,
-      "last third": TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
+      'last third': TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
     };
 
     transformations.push(schedule);
@@ -60,10 +74,10 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
   let namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
 
   if (shouldRemoveIstijaba) {
-    namesEnglish = namesEnglish.filter(name => name.toLowerCase() !== 'istijaba');
-    namesArabic = namesArabic.filter(name => name !== 'استجابة');
+    namesEnglish = namesEnglish.filter((name) => name.toLowerCase() !== 'istijaba');
+    namesArabic = namesArabic.filter((name) => name !== 'استجابة');
   }
-  
+
   const schedule: IScheduleNow = {};
 
   namesEnglish.forEach((name, index) => {
@@ -75,7 +89,7 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
       date: prayers.date,
       english: name,
       arabic: namesArabic[index],
-      time: prayerTime
+      time: prayerTime,
     };
   });
 

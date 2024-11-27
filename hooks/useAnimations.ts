@@ -1,9 +1,9 @@
-import { 
-  useSharedValue, 
-  withTiming, 
-  withSpring, 
-  withDelay, 
-  useAnimatedStyle, 
+import {
+  useSharedValue,
+  withTiming,
+  withSpring,
+  withDelay,
+  useAnimatedStyle,
   interpolateColor,
   runOnJS,
   interpolate,
@@ -26,30 +26,21 @@ interface ColorAnimationInput {
   toColor: string;
 }
 
-interface BounceAnimationInput {
-  fromScale: number;
-  toScale: number;
-}
-
 const DEFAULT_TIMING: WithTimingConfig = {
-  duration: ANIMATION.durationSlow
+  duration: ANIMATION.durationSlow,
 };
 
 const DEFAULT_SPRING: WithSpringConfig = {
   damping: 12,
   stiffness: 500,
-  mass: 0.5
+  mass: 0.5,
 };
 
 export const useAnimationColor = (initialValue: number = 0, input: ColorAnimationInput) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
-    color: interpolateColor(
-      value.value,
-      [0, 1],
-      [input.fromColor, input.toColor]
-    )
+    color: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
   }));
 
   const animate = (toValue: number, options?: AnimationOptions) => {
@@ -58,14 +49,12 @@ export const useAnimationColor = (initialValue: number = 0, input: ColorAnimatio
       ...DEFAULT_TIMING,
       duration: options?.duration ?? DEFAULT_TIMING.duration,
     };
-    
+
     const animation = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
-    
-    value.value = options?.delay 
-      ? withDelay(options.delay, animation)
-      : animation;
+
+    value.value = options?.delay ? withDelay(options.delay, animation) : animation;
   };
 
   return { value, style, animate };
@@ -75,42 +64,7 @@ export const useAnimationFill = (initialValue: number = 0, input: ColorAnimation
   const value = useSharedValue(initialValue);
 
   const animatedProps = useAnimatedProps(() => ({
-    fill: interpolateColor(
-      value.value,
-      [0, 1],
-      [input.fromColor, input.toColor]
-    )
-  }));
-
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
-    const timing = {
-      ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration
-    };
-    
-    const animation = withTiming(toValue, timing, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
-    
-    value.value = options?.delay 
-      ? withDelay(options.delay, animation)
-      : animation;
-  };
-
-  return { value, animatedProps, animate };
-};
-
-
-export const useAnimationBackgroundColor = (initialValue: number = 0, input: ColorAnimationInput) => {
-  const value = useSharedValue(initialValue);
-
-  const style = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(
-      value.value,
-      [0, 1],
-      [input.fromColor, input.toColor]
-    )
+    fill: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
   }));
 
   const animate = (toValue: number, options?: AnimationOptions) => {
@@ -119,7 +73,31 @@ export const useAnimationBackgroundColor = (initialValue: number = 0, input: Col
       ...DEFAULT_TIMING,
       duration: options?.duration ?? DEFAULT_TIMING.duration,
     };
-    
+
+    const animation = withTiming(toValue, timing, (finished) => {
+      if (finished && options?.onFinish) runOnJS(options.onFinish)();
+    });
+
+    value.value = options?.delay ? withDelay(options.delay, animation) : animation;
+  };
+
+  return { value, animatedProps, animate };
+};
+
+export const useAnimationBackgroundColor = (initialValue: number = 0, input: ColorAnimationInput) => {
+  const value = useSharedValue(initialValue);
+
+  const style = useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
+  }));
+
+  const animate = (toValue: number, options?: AnimationOptions) => {
+    'worklet';
+    const timing = {
+      ...DEFAULT_TIMING,
+      duration: options?.duration ?? DEFAULT_TIMING.duration,
+    };
+
     value.value = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
@@ -132,16 +110,16 @@ export const useAnimationOpacity = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
-    opacity: value.value
+    opacity: value.value,
   }));
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
     const timing = {
       ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration
+      duration: options?.duration ?? DEFAULT_TIMING.duration,
     };
-    
+
     value.value = withTiming(toValue, timing, (finished) => {
       if (finished && options?.onFinish) runOnJS(options.onFinish)();
     });
@@ -154,7 +132,7 @@ export const useAnimationTranslateY = (initialValue: number) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
-    transform: [{ translateY: value.value }]
+    transform: [{ translateY: value.value }],
   }));
 
   const animate = (toValue: number, options?: AnimationOptions) => {
@@ -162,7 +140,7 @@ export const useAnimationTranslateY = (initialValue: number) => {
     const timing = {
       ...DEFAULT_TIMING,
       duration: options?.duration ?? DEFAULT_TIMING.duration,
-      easing: Easing.elastic(0.5)
+      easing: Easing.elastic(0.5),
     };
 
     value.value = withTiming(toValue, timing, (finished) => {
@@ -177,7 +155,7 @@ export const useAnimationScale = (initialValue: number = 1) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
-    transform: [{ scale: value.value }]
+    transform: [{ scale: value.value }],
   }));
 
   const animate = (toValue: number, options?: AnimationOptions) => {
@@ -194,7 +172,7 @@ export const useAnimationBounce = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
   const style = useAnimatedStyle(() => ({
-    transform: [{ scale: interpolate(value.value, [0, 1], [0.95, 1]) }]
+    transform: [{ scale: interpolate(value.value, [0, 1], [0.95, 1]) }],
   }));
 
   const animate = (toValue: number, options?: AnimationOptions) => {
