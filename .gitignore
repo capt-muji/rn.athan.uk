@@ -1,6 +1,7 @@
-node_modules/
-.expo/
-dist/
+.expo
+.vscode
+.husky
+dist
 npm-debug.*
 *.jks
 *.p8
@@ -8,10 +9,10 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
-web-build/
+web-build
 /ios
 /android
-.vscode
+node_modules
 yarn.lock
 
 # macOS

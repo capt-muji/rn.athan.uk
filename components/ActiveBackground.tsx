@@ -12,12 +12,9 @@ import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/use
 interface Props {
   type: ScheduleType;
 }
-console.log('ActiveBackground');
 
 export default function ActiveBackground({ type }: Props) {
   const Prayer = usePrayer(0, type);
-
-  console.log('ActiveBackgrouneed', Prayer.schedule);
 
   // State
   const date = useAtomValue(dateAtom);
