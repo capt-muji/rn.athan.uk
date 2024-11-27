@@ -1,9 +1,9 @@
-import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
 import { API_CONFIG } from '@/api/config';
-import { createLondonDate } from '@/shared/time';
 import { MOCK_DATA_SIMPLE } from '@/mocks/simple';
-import * as PrayerUtils from '@/shared/prayer';
 import logger from '@/shared/logger';
+import * as PrayerUtils from '@/shared/prayer';
+import { createLondonDate } from '@/shared/time';
+import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
 
 const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
   const queries = [
@@ -33,6 +33,7 @@ const fetch = async (year?: number): Promise<IApiResponse> => {
       method: 'GET',
       headers: { 'Cache-Control': 'no-cache' },
     });
+    // lol globalThis
 
     return parseResponse(response);
   } catch (error) {
