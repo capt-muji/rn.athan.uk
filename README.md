@@ -13,7 +13,6 @@
 
 <br/>
 
-
 [![Platform - Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat&logo=android&logoColor=white)](https://athan.uk)
 [![Platform - iOS](https://img.shields.io/badge/Platform-iOS-000000?style=flat&logo=apple&logoColor=white)](https://athan.uk)
 
@@ -58,12 +57,14 @@ A beautiful React Native mobile app for Muslim prayer times in London, UK
 ### Data Flow
 
 1. First Launch:
+
    - Fetch entire year's prayer times from API
    - Strip historical dates (before today)
    - Add Duha prayer (20 mins after sunrise)
    - Cache processed data in MMKV storage
 
 2. Daily Operations:
+
    - Load current day's prayers from cache
    - Track prayer states (passed/next/upcoming)
    - Manage notifications based on user preferences
@@ -83,6 +84,7 @@ A beautiful React Native mobile app for Muslim prayer times in London, UK
 ### Notification System
 
 Notifications are scheduled:
+
 - For each prayer time
 - Maintains consistency even when app is closed
 - Automatically schedules next day's Fajr after Isha
@@ -133,21 +135,33 @@ Notifications are scheduled:
    ```
 
 In the output, you'll find options to open the app in a:
+
 - Development build
 - Android emulator
 - iOS simulator
 - Expo Go
+
+### Code Quality
+
+The project uses ESLint and Prettier for code consistency and quality:
+
+- Prettier maintains consistent code formatting
+- ESLint enforces code quality rules
+- Pre-commit hooks automatically format and lint code
+- VS Code `Prettier` and `ESLint` extensions recommended for real-time linting and formatting
 
 ## 🎨 Tech Stack
 
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
+![Skia](https://img.shields.io/badge/Skia-0D1117?style=for-the-badge&logo=skia&logoColor=white)
 ![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
 ![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)
 ![Reanimated](https://img.shields.io/badge/Reanimated_3-6B52AE?style=for-the-badge)
 ![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
-
 
 ## Icons Used
 
