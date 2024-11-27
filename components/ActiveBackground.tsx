@@ -9,10 +9,18 @@ import * as TimeUtils from '@/shared/time';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimations';
 
-interface Props { type: ScheduleType };
+interface Props {
+  type: ScheduleType;
+}
+console.log('ActiveBackground');
 
 export default function ActiveBackground({ type }: Props) {
   const Prayer = usePrayer(0, type);
+
+
+
+
+  console.log('ActiveBackground', Prayer.schedule);
 
   // State
   const date = useAtomValue(dateAtom);
@@ -20,24 +28,27 @@ export default function ActiveBackground({ type }: Props) {
   // Derived State
   const todayYYYMMDD = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
   const yPosition = Prayer.schedule.nextIndex * PRAYER.height;
-  const shouldHide = Prayer.schedule.nextIndex === 0 && date.current === todayYYYMMDD && Prayer.isLastPrayerPassed;
+  const shouldHide =
+    Prayer.schedule.nextIndex === 0 && date.current === todayYYYMMDD && Prayer.isLastPrayerPassed;
 
   // Animations
   const AnimTranslateY = useAnimationTranslateY(yPosition);
-  const AnimBackgroundColor = useAnimationBackgroundColor(
-    shouldHide ? 0 : 1,
-    { fromColor: 'transparent', toColor: COLORS.activeBackground }
-  );
+  const AnimBackgroundColor = useAnimationBackgroundColor(shouldHide ? 0 : 1, {
+    fromColor: 'transparent',
+    toColor: COLORS.activeBackground,
+  });
 
   if (shouldHide) {
     AnimBackgroundColor.animate(0, {
-      onFinish: () => AnimTranslateY.value.value = 0
+      onFinish: () => (AnimTranslateY.value.value = 0),
     });
   } else {
     AnimTranslateY.animate(yPosition);
   }
 
-  return <Animated.View style={[styles.background, AnimBackgroundColor.style, AnimTranslateY.style]} />;
+  return (
+    <Animated.View style={[styles.background, AnimBackgroundColor.style, AnimTranslateY.style]} />
+  );
 }
 
 const styles = StyleSheet.create({
@@ -49,6 +60,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 15 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-    shadowColor: COLORS.activeBackgroundShadow
-  }
+    shadowColor: COLORS.activeBackgroundShadow,
+  },
 });
