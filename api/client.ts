@@ -15,7 +15,7 @@ const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
 
   return `${API_CONFIG.endpoint}?${queries}`;
 };
-// lol
+
 const parseResponse = async (response: Response): Promise<IApiResponse> => {
   if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -25,7 +25,6 @@ const parseResponse = async (response: Response): Promise<IApiResponse> => {
   return data;
 };
 
-// lol123
 const fetch = async (year?: number): Promise<IApiResponse> => {
   if (process.env.EXPO_PUBLIC_ENV !== 'prod') return MOCK_DATA_SIMPLE;
 

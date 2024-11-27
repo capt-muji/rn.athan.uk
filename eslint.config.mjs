@@ -3,7 +3,6 @@ import importPlugin from 'eslint-plugin-import';
 import unusedImports from 'eslint-plugin-unused-imports';
 import tseslint from 'typescript-eslint';
 
-// lol
 export default tseslint.config(eslint.configs.recommended, tseslint.configs.recommended, {
   plugins: {
     import: importPlugin,
