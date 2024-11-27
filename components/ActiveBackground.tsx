@@ -20,7 +20,9 @@ export default function ActiveBackground({ type }: Props) {
 
 
 
+
   
+
   
 
 
