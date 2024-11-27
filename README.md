@@ -157,6 +157,7 @@ The project uses ESLint and Prettier for code consistency and quality:
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
+![Pino](https://img.shields.io/badge/Pino-FFF000?style=for-the-badge&logo=pino&logoColor=black)
 ![Skia](https://img.shields.io/badge/Skia-0D1117?style=for-the-badge&logo=skia&logoColor=white)
 ![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
 ![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)
