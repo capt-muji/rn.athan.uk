@@ -148,7 +148,7 @@ The project uses ESLint and Prettier for code consistency and quality:
 - Prettier maintains consistent code formatting
 - ESLint enforces code quality rules
 - Pre-commit hooks automatically format and lint code
-- VS Code `Prettier` and `ESLint` extensions recommended for real-time linting and formatting
+- VS Code `Prettier` and `ESLint` extensions recommended for real-time formatting and linting
 
 ## 🎨 Tech Stack
 
