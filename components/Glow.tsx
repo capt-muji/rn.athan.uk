@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
 import Reanimated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
 
 import { OVERLAY } from '@/shared/constants';
 
@@ -10,7 +10,7 @@ type Props = {
   color?: string;
   baseOpacity?: number;
   visible?: boolean;
-}
+};
 
 export default function Glow({ color = 'rgb(128,0,255)', baseOpacity = 0.3, visible = true }: Props) {
   const size = Dimensions.get('window').width * (visible ? 1.2 : 1);
@@ -19,7 +19,7 @@ export default function Glow({ color = 'rgb(128,0,255)', baseOpacity = 0.3, visi
 
   const glowStyle = useAnimatedStyle(() => ({
     opacity: withTiming(visible ? 1 : 0, { duration: 300 }),
-    zIndex
+    zIndex,
   }));
 
   return (
@@ -41,5 +41,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -Dimensions.get('window').width / 2,
     left: -Dimensions.get('window').width / 3,
-  }
+  },
 });

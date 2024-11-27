@@ -1,14 +1,12 @@
-
-export const PRAYERS_ENGLISH = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Magrib", "Isha"];
-export const PRAYERS_ARABIC = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
+export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
+export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
 export const PRAYER_INDEX_FAJR = 0;
 export const PRAYER_INDEX_ISHA = 5;
 export const PRAYERS_LENGTH_FAJR_TO_ISHA = 6;
 
-export const EXTRAS_ENGLISH = ["Last Third", "Duha", "Istijaba",];
-export const EXTRAS_ARABIC = ["آخر ثلث", "الضحى", "استجابة"];
+export const EXTRAS_ENGLISH = ['Last Third', 'Duha', 'Istijaba'];
+export const EXTRAS_ARABIC = ['آخر ثلث', 'الضحى', 'استجابة'];
 export const PRAYER_INDEX_LAST_THIRD = 2;
-
 
 export const TEXT = {
   famiy: {
@@ -49,12 +47,12 @@ export const ANIMATION = {
   durationSlowest: 2250,
   overlayDelay: 150,
   cascadeDelay: 150,
-  popupDuration: 1500
+  popupDuration: 1500,
 };
 
 export const OVERLAY = {
   closeThreshold: 2000,
-   zindexes: {
+  zindexes: {
     overlay: 2,
     background: -999,
     off: {

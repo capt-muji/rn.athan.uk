@@ -1,21 +1,24 @@
+import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
-import { useFonts } from 'expo-font';
-import { WaveIndicator } from 'react-native-indicators';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { WaveIndicator } from 'react-native-indicators';
 
-import { setSchedule, setDate } from '@/stores/actions';
-import Navigation from '@/app/Navigation';
-import Glow from '@/components/Glow';
-import * as Database from '@/stores/database';
 import * as Api from '@/api/client';
-import { ScheduleType } from '@/shared/types';
+import Navigation from '@/app/Navigation';
+import FontRobotoMedium from '@/assets/fonts/Roboto-Medium.ttf';
+import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
+import Glow from '@/components/Glow';
 import GradientBackground from '@/components/GradientBackground';
+import logger from '@/shared/logger';
+import { ScheduleType } from '@/shared/types';
+import { setSchedule, setDate } from '@/stores/actions';
+import * as Database from '@/stores/database';
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
-    'Roboto': require('@/assets/fonts/Roboto-Regular.ttf'),
-    'Roboto-Medium': require('@/assets/fonts/Roboto-Medium.ttf')
+    Roboto: FontRoboto,
+    'Roboto-Medium': FontRobotoMedium,
   });
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export default function Index() {
         setSchedule(ScheduleType.Extra);
         setDate();
       } catch (error) {
-        console.error('Init failed:', error);
+        logger.error('Init failed:', error);
       }
     };
     init();

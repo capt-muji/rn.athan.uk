@@ -6,12 +6,7 @@ import { createLondonDate } from '@/shared/time';
 import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
 
 const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
-  const queries = [
-    `format=${API_CONFIG.format}`,
-    `key=${API_CONFIG.key}`,
-    `year=${year}`,
-    '24hours=true',
-  ].join('&');
+  const queries = [`format=${API_CONFIG.format}`, `key=${API_CONFIG.key}`, `year=${year}`, '24hours=true'].join('&');
 
   return `${API_CONFIG.endpoint}?${queries}`;
 };

@@ -1,15 +1,17 @@
+import { useAtomValue } from 'jotai';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { useAtomValue } from 'jotai';
 
 import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
-import { DaySelection, ScheduleType } from '@/shared/types';
-import { overlayAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 import { formatTime, getDateTodayOrTomorrow, getTimeDifference } from '@/shared/time';
+import { DaySelection, ScheduleType } from '@/shared/types';
 import { incrementNextIndex } from '@/stores/actions';
+import { overlayAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
 
-interface Props { type: ScheduleType }
+interface Props {
+  type: ScheduleType;
+}
 
 export default function Countdown({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
@@ -39,23 +41,13 @@ export default function Countdown({ type }: Props) {
   const countdownName = today[nextIndex]?.english;
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [
-      { scale: withTiming(overlay.isOn ? 1.5 : 1) },
-      { translateY: withTiming(overlay.isOn ? 5 : 0) }
-    ]
+    transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
   }));
 
   return (
     <Animated.View style={[styles.container]}>
       <Text style={[styles.text]}>{countdownName || ''} in</Text>
-      <Animated.Text
-        style={[
-          styles.countdown,
-          animatedStyle
-        ]}
-      >
-        {countdown || ' '}
-      </Animated.Text>
+      <Animated.Text style={[styles.countdown, animatedStyle]}>{countdown || ' '}</Animated.Text>
     </Animated.View>
   );
 }

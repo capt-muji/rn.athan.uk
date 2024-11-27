@@ -1,24 +1,27 @@
+import { useRef } from 'react';
 import { StyleSheet, View, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { useRef } from 'react';
 
+import Alert from '@/components/Alert';
+import PrayerTime from '@/components/PrayerTime';
 import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { TEXT, PRAYER, COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import Alert from '@/components/Alert';
-import PrayerTime from '@/components/PrayerTime';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-interface Props { index: number; type: ScheduleType }
+interface Props {
+  index: number;
+  type: ScheduleType;
+}
 
 export default function Prayer({ index, type }: Props) {
   const Prayer = usePrayer(index, type);
-  const AnimColor = useAnimationColor(
-    Prayer.ui.initialColorPos,
-    { fromColor: COLORS.inactivePrayer, toColor: COLORS.activePrayer }
-  );
+  const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
+    fromColor: COLORS.inactivePrayer,
+    toColor: COLORS.activePrayer,
+  });
 
   const viewRef = useRef<View>(null);
 
