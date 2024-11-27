@@ -14,7 +14,7 @@
     "husky": "husky install && husky add .husky/pre-commit 'npx lint-staged'"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
+    "**/*.{js,jsx,ts,tsx,mjs}": [
       "prettier --write",
       "eslint --fix"
     ]
