@@ -4,6 +4,7 @@ import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import { createLondonDate } from '@/shared/time';
 import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
+// no
 
 const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
   const queries = [
