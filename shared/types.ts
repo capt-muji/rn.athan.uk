@@ -34,13 +34,13 @@ export interface ISingleApiResponseTransformed {
   asr: string;
   magrib: string;
   isha: string;
-  "last third": string;
-  "istijaba": string;
+  'last third': string;
+  istijaba: string;
 }
 
 export enum ScheduleType {
   Standard = 'standard',
-  Extra = 'extra'
+  Extra = 'extra',
 }
 
 export interface ITransformedPrayer {
@@ -54,7 +54,7 @@ export interface ITransformedPrayer {
 
 export interface IScheduleNow {
   [number: number]: ITransformedPrayer;
-};
+}
 
 export interface IPrayerInfo {
   timerName: string;
@@ -65,7 +65,7 @@ export interface IPrayerInfo {
 
 export enum DaySelection {
   Today = 'today',
-  Tomorrow = 'tomorrow'
+  Tomorrow = 'tomorrow',
 }
 
 export interface ITimeString {
@@ -105,14 +105,14 @@ export enum AlertType {
   Off = 0,
   Notification = 1,
   Vibrate = 2,
-  Sound = 3
+  Sound = 3,
 }
 
 export enum AlertIcon {
   BELL_RING = 'BELL_RING',
   BELL_SLASH = 'BELL_SLASH',
   VIBRATE = 'VIBRATE',
-  SPEAKER = 'SPEAKER'
+  SPEAKER = 'SPEAKER',
 }
 
 export interface AlertPreferences {

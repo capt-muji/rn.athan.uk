@@ -1,7 +1,17 @@
-import { format, addDays, setHours, setMinutes, addMinutes as addMins, intervalToDuration, isFuture, isToday, subDays } from 'date-fns';
+import {
+  format,
+  addDays,
+  setHours,
+  setMinutes,
+  addMinutes as addMins,
+  intervalToDuration,
+  isFuture,
+  isToday,
+  subDays,
+} from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { DaySelection } from "@/shared/types";
+import { DaySelection } from '@/shared/types';
 
 // Creates a new Date object in London timezone
 // Converts input date or current date to London time
@@ -15,7 +25,7 @@ export const createLondonDate = (date?: Date | number | string): Date => {
 // Based on the provided day selection parameter
 export const getDateTodayOrTomorrow = (daySelection: DaySelection): string => {
   let date = createLondonDate();
-  
+
   if (daySelection === DaySelection.Tomorrow) {
     date = addDays(date, 1);
   }
@@ -32,9 +42,9 @@ export const getTimeDifference = (targetTime: string, date: string): number => {
   target = setHours(setMinutes(target, minutes), hours);
 
   const diff = target.getTime() - now.getTime();
-  
+
   const threshold = -1000;
-  
+
   if (diff < threshold) {
     target = addDays(target, 1);
     return target.getTime() - now.getTime();
@@ -58,15 +68,13 @@ export const isTimePassed = (time: string): boolean => {
 // Returns formatted string with hours, minutes, and seconds
 export const formatTime = (ms: number): string => {
   if (ms < 0) return '0s';
-  
+
   const duration = intervalToDuration({ start: 0, end: ms });
   const { hours, minutes, seconds } = duration;
-  
-  return [
-    hours && `${hours}h`,
-    minutes && `${minutes}m`,
-    seconds !== undefined ? `${seconds}s` : '0s'
-  ].filter(Boolean).join(' ');
+
+  return [hours && `${hours}h`, minutes && `${minutes}m`, seconds !== undefined ? `${seconds}s` : '0s']
+    .filter(Boolean)
+    .join(' ');
 };
 
 // Adds specified minutes to a given time string
@@ -102,7 +110,7 @@ export const formatDateShort = (date: Date): string => {
 export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
   const [mHours, mMinutes] = magribTime.split(':').map(Number);
   const [fHours, fMinutes] = fajrTime.split(':').map(Number);
-  
+
   // Maghrib from yesterday
   let maghrib = createLondonDate();
   maghrib = subDays(setHours(setMinutes(maghrib, mMinutes), mHours), 1);
@@ -113,7 +121,7 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
 
   // Calculate night duration and last third start
   const nightDuration = fajr.getTime() - maghrib.getTime();
-  const lastThirdStart = createLondonDate(maghrib.getTime() + (nightDuration * 2/3));
+  const lastThirdStart = createLondonDate(maghrib.getTime() + (nightDuration * 2) / 3);
 
   // add 10 minutes to the last third start time
   const minutesToAdd = 10;

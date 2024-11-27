@@ -1,13 +1,13 @@
-import { StyleSheet, View } from 'react-native';
-import PagerView from 'react-native-pager-view';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useSetAtom } from 'jotai';
-
-import { ANIMATION } from '@/shared/constants';
-import Screen from '@/app/Screen';
+import { StyleSheet, View } from 'react-native';
+import PagerView, { PagerViewOnPageScrollEvent } from 'react-native-pager-view';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { pagePositionAtom } from '@/stores/store';
+
+import Screen from '@/app/Screen';
+import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
+import { pagePositionAtom } from '@/stores/store';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
@@ -15,21 +15,19 @@ export default function Navigation() {
   const position = useSharedValue(0);
   const setPagePosition = useSetAtom(pagePositionAtom);
 
-  const handlePageScroll = (e: any) => {
+  const handlePageScroll = (e: PagerViewOnPageScrollEvent) => {
     const { position: pos, offset } = e.nativeEvent;
     const currentPosition = pos + offset;
     position.value = currentPosition;
     setPagePosition(currentPosition);
   };
 
-  const dotStyle = (index: number) => useAnimatedStyle(() => {
-    return {
-      opacity: withTiming(
-        Math.abs(position.value - index) < 0.5 ? 1 : 0.25,
-        { duration: ANIMATION.duration }
-      )
-    };
-  });
+  const dotStyle = (index: number) =>
+    useAnimatedStyle(() => {
+      return {
+        opacity: withTiming(Math.abs(position.value - index) < 0.5 ? 1 : 0.25, { duration: ANIMATION.duration }),
+      };
+    });
 
   return (
     <View style={{ flex: 1 }}>

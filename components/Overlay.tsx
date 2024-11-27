@@ -1,8 +1,15 @@
+import { BlurView } from 'expo-blur';
+import * as Haptics from 'expo-haptics';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useAtom } from 'jotai';
+import { useEffect } from 'react';
 import { StyleSheet, Pressable, View } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
-import { BlurView } from 'expo-blur';
-import { useAtom } from 'jotai';
-import { LinearGradient } from 'expo-linear-gradient';
+
+import Prayer from './Prayer';
+import RadialGlow from './RadialGlow';
+
+import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import {
   overlayVisibleAtom,
   prayersSelectedIndexAtom,
@@ -10,11 +17,6 @@ import {
   absolutePrayerMeasurementsAtom,
   prayersTodayAtom,
 } from '@/stores/store';
-import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
-import Prayer from './Prayer';
-import RadialGlow from './RadialGlow';
-import { useEffect } from 'react';
-import * as Haptics from 'expo-haptics';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
@@ -89,7 +91,7 @@ export default function Overlay() {
                   left: dateMeasurements.pageX,
                   width: dateMeasurements.width,
                   height: dateMeasurements.height,
-                }
+                },
               ]}
             >
               {prayer?.passed ? 'Tomorrow' : 'Today'}

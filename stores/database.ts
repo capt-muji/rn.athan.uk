@@ -1,5 +1,5 @@
-import { MMKV } from 'react-native-mmkv';
 import { format } from 'date-fns';
+import { MMKV } from 'react-native-mmkv';
 
 import { createLondonDate } from '@/shared/time';
 import { ISingleApiResponseTransformed } from '@/shared/types';
@@ -9,7 +9,7 @@ export const database = new MMKV();
 export const clear = () => database.clearAll();
 
 export const saveAll = (prayers: ISingleApiResponseTransformed[]) => {
-  prayers.forEach(prayer => {
+  prayers.forEach((prayer) => {
     database.set(prayer.date, JSON.stringify(prayer));
   });
 };

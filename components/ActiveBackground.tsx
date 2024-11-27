@@ -23,8 +23,7 @@ export default function ActiveBackground({ type }: Props) {
   // Derived State
   const todayYYYMMDD = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
   const yPosition = Prayer.schedule.nextIndex * PRAYER.height;
-  const shouldHide =
-    Prayer.schedule.nextIndex === 0 && date.current === todayYYYMMDD && Prayer.isLastPrayerPassed;
+  const shouldHide = Prayer.schedule.nextIndex === 0 && date.current === todayYYYMMDD && Prayer.isLastPrayerPassed;
 
   // Animations
   const AnimTranslateY = useAnimationTranslateY(yPosition);
@@ -41,9 +40,7 @@ export default function ActiveBackground({ type }: Props) {
     AnimTranslateY.animate(yPosition);
   }
 
-  return (
-    <Animated.View style={[styles.background, AnimBackgroundColor.style, AnimTranslateY.style]} />
-  );
+  return <Animated.View style={[styles.background, AnimBackgroundColor.style, AnimTranslateY.style]} />;
 }
 
 const styles = StyleSheet.create({
