@@ -1,14 +1,23 @@
 {
   "name": "athan",
-  "main": "expo-router/entry",
   "version": "1.0.0",
+  "type": "commonjs",
+  "private": true,
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start -c",
     "ios": "expo run:ios",
     "android": "expo run:android",
-    "reset": "yarn clean && yarn install && yarn start",
-    "clean": "rm -rf ios android node_modules yarn.lock .expo .vscode && yarn cache clean && rm -rf /tmp/metro-*",
-    "add": "echo 'Use: `npx expo install <package>` for Expo/RN packages, yarn add <package> for others'"
+    "reset": "yarn clean && yarn install && yarn husky && yarn start",
+    "clean": "rm -rf ios android node_modules yarn.lock .expo .vscode .husky && yarn cache clean && rm -rf /tmp/metro-*",
+    "add": "echo 'Use: `npx expo install <package>` for Expo/RN packages, yarn add <package> for others'",
+    "husky": "husky install && husky add .husky/pre-commit 'npx lint-staged'"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@shopify/react-native-skia": "1.2.3",
@@ -40,11 +49,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "typescript-eslint": "^8.16.0",
     "@types/node": "^22.9.1",
     "@types/react": "~18.2.45",
     "@types/react-native-indicators": "0.16.6",
+    "eslint": "9.15.0",
+    "prettier": "^3.4.1",
     "react-native-svg-transformer": "^1.5.0",
-    "typescript": "~5.3.3"
-  },
-  "private": true
+    "typescript": "~5.3.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  }
 }
