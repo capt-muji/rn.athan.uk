@@ -2,6 +2,7 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
+
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, PRAYER } from '@/shared/constants';
@@ -16,7 +17,7 @@ interface Props {
 export default function ActiveBackground({ type }: Props) {
   const Prayer = usePrayer(0, type);
 
-  // State
+  // Statee
 
   const date = useAtomValue(dateAtom);
 
