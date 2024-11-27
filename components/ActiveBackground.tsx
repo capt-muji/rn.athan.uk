@@ -20,6 +20,11 @@ export default function ActiveBackground({ type }: Props) {
 
 
 
+
+
+  
+  
+
   console.log('ActiveBackground', Prayer.schedule);
 
   // State
