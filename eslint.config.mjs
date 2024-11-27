@@ -1,13 +1,16 @@
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
 import importPlugin from 'eslint-plugin-import';
+import tseslint from 'typescript-eslint';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 export default tseslint.config(eslint.configs.recommended, tseslint.configs.recommended, {
   plugins: {
     import: importPlugin,
+    'unused-imports': unusedImports,
   },
   rules: {
     'no-console': 'error',
+    'unused-imports/no-unused-imports': 'warn',
     'import/order': [
       'warn',
       {

@@ -1,13 +1,13 @@
-import { StyleSheet } from 'react-native';
 import { useAtomValue } from 'jotai';
+import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { COLORS, PRAYER } from '@/shared/constants';
-import { dateAtom } from '@/stores/store';
-import { ScheduleType } from '@/shared/types';
-import * as TimeUtils from '@/shared/time';
-import { usePrayer } from '@/hooks/usePrayer';
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimations';
+import { usePrayer } from '@/hooks/usePrayer';
+import { COLORS, PRAYER } from '@/shared/constants';
+import * as TimeUtils from '@/shared/time';
+import { ScheduleType } from '@/shared/types';
+import { dateAtom } from '@/stores/store';
 
 interface Props {
   type: ScheduleType;
@@ -17,6 +17,7 @@ export default function ActiveBackground({ type }: Props) {
   const Prayer = usePrayer(0, type);
 
   // State
+
   const date = useAtomValue(dateAtom);
 
   // Derived State
