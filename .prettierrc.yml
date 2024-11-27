@@ -9,4 +9,4 @@ embeddedLanguageFormatting: auto
 overrides:
   - files: '*.json'
     options:
-      printWidth: 80
+      printWidth: 100
