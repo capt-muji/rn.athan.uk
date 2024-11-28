@@ -27,16 +27,16 @@ export interface IApiResponse {
 // Prayers
 export interface ISingleApiResponseTransformed {
   date: string;
-  'last third': string;
-  suhoor: string;
   fajr: string;
   sunrise: string;
-  duha: string;
   dhuhr: string;
   asr: string;
-  istijaba: string;
   magrib: string;
   isha: string;
+  'last third': string;
+  suhoor: string;
+  duha: string;
+  istijaba: string;
 }
 
 export enum ScheduleType {

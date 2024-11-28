@@ -1,11 +1,4 @@
-import {
-  PRAYERS_ENGLISH,
-  PRAYERS_ARABIC,
-  ANIMATION,
-  PRAYERS_LENGTH_FAJR_TO_ISHA,
-  EXTRAS_ENGLISH,
-  EXTRAS_ARABIC,
-} from '@/shared/constants';
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC, EXTRAS_ENGLISH, EXTRAS_ARABIC, TIME_ADJUSTMENTS } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
 
@@ -39,16 +32,16 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
   entries.forEach(([date, times]) => {
     const schedule: ISingleApiResponseTransformed = {
       date,
-      'last third': TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
-      suhoor: TimeUtils.adjustTime(times.fajr, -45),
       fajr: times.fajr,
       sunrise: times.sunrise,
-      duha: TimeUtils.adjustTime(times.sunrise, 20),
       dhuhr: times.dhuhr,
       asr: times.asr,
-      istijaba: TimeUtils.adjustTime(times.magrib, -59),
       magrib: times.magrib,
       isha: times.isha,
+      'last third': TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
+      suhoor: TimeUtils.adjustTime(times.fajr, TIME_ADJUSTMENTS.suhoor),
+      duha: TimeUtils.adjustTime(times.sunrise, TIME_ADJUSTMENTS.duha),
+      istijaba: TimeUtils.adjustTime(times.magrib, TIME_ADJUSTMENTS.istijaba),
     };
 
     transformations.push(schedule);
@@ -90,8 +83,9 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
   return schedule;
 };
 
+// TODO: use this at midnight reset
 // UI Helpers
-export const getCascadeDelay = (index: number) => {
-  const delay = ANIMATION.cascadeDelay;
-  return (PRAYERS_LENGTH_FAJR_TO_ISHA - index) * delay;
-};
+// export const getCascadeDelay = (index: number) => {
+//   const delay = ANIMATION.cascadeDelay;
+//   return (PRAYERS_LENGTH_FAJR_TO_ISHA - index) * delay;
+// };
