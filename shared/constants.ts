@@ -10,7 +10,7 @@ export const TIME_ADJUSTMENTS = {
 };
 
 export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
-export const EXTRAS_ARABIC = ['آخر ثلث', 'سحور', 'الضحى', 'استجابة'];
+export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 
 export const TEXT = {
   famiy: {
