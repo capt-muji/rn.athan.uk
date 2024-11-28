@@ -77,13 +77,13 @@ export const formatTime = (ms: number): string => {
     .join(' ');
 };
 
-// Adds specified minutes to a given time string
+// Adjusts a time string by adding or subtracting minutes
 // Returns new time in HH:mm format
-export const addMinutes = (time: string, minutes: number): string => {
+export const adjustTime = (time: string, minutesDiff: number): string => {
   const [h, m] = time.split(':').map(Number);
   let date = createLondonDate();
   date = setHours(setMinutes(date, m), h);
-  date = addMins(date, minutes);
+  date = addMins(date, minutesDiff);
   return format(date, 'HH:mm');
 };
 
@@ -129,24 +129,6 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
 
   // Return formatted time string in 24-hour format (HH:mm)
   return format(lastThirdStart, 'HH:mm');
-};
-
-// Calculates the time of Istijaba (59 minutes before Maghrib)
-export const getIstijaba = (magribTime: string): string => {
-  const [hours, minutes] = magribTime.split(':').map(Number);
-  let istijaba = createLondonDate();
-  istijaba = setHours(setMinutes(istijaba, minutes), hours);
-  istijaba = addMins(istijaba, -59);
-  return format(istijaba, 'HH:mm');
-};
-
-// Calculates the time of Suhoor (45 minutes before Fajr)
-export const getSuhoor = (fajrTime: string): string => {
-  const [hours, minutes] = fajrTime.split(':').map(Number);
-  let suhoor = createLondonDate();
-  suhoor = setHours(setMinutes(suhoor, minutes), hours);
-  suhoor = addMins(suhoor, -45);
-  return format(suhoor, 'HH:mm');
 };
 
 // Checks if a given date string is Friday
