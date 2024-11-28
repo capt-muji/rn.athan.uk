@@ -38,7 +38,7 @@ A beautiful React Native mobile app for Muslim prayer times in London, UK
 
 ## ⚡ Features
 
-- 📅 Displays daily prayer times including Fajr, Sunrise, Duha, Dhuhr, Asr, Magrib, and Isha
+- 📅 Displays daily prayer times
 - ⏰ Real-time countdown timer until next prayer
 - 🔄 View tomorrow's prayer times
 - 🔔 Customizable prayer notifications with multiple alert modes:
@@ -52,9 +52,14 @@ A beautiful React Native mobile app for Muslim prayer times in London, UK
 - 🎯 Precise timing synchronization with system clock
 - 📱 Full offline support after initial data download
 
-## 🕌 Prayer Times Explained
+## 🕌 Prayer Times
 
-In addition to the standard prayer times (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha), the app includes several calculated prayer times:
+- **Fajr**
+- **Sunrise**
+- **Dhuhr**
+- **Asr**
+- **Magrib**
+- **Isha**
 
 - **Last Third (of Night)**: 10 minutes after last third (between Magrib and Fajr)
 - **Duha**: 20 minutes after Sunrise
