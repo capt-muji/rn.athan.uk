@@ -1,6 +1,5 @@
 import { useAtomValue } from 'jotai';
 
-import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
@@ -12,7 +11,7 @@ export const usePrayer = (index: number, type: ScheduleType) => {
 
   const prayer = schedule.today[index];
   const isPassed = TimeUtils.isTimePassed(prayer.time);
-  const isLastPrayerPassed = PrayerUtils.isLastPrayerPassed(schedule);
+  const isLastPrayerPassed = TimeUtils.isLastPrayerPassed(schedule);
   const isNext = index === schedule.nextIndex;
 
   const ui = {

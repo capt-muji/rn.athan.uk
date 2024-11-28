@@ -7,14 +7,7 @@ import {
   EXTRAS_ARABIC,
 } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
-import {
-  ISingleApiResponseTransformed,
-  IScheduleNow,
-  IApiResponse,
-  IApiTimes,
-  ScheduleType,
-  ScheduleStore,
-} from '@/shared/types';
+import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
 
 /**
  * Filters API response data to only include today and future dates
@@ -46,6 +39,8 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
   entries.forEach(([date, times]) => {
     const schedule: ISingleApiResponseTransformed = {
       date,
+      'last third': TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
+      suhoor: TimeUtils.getSuhoor(times.fajr),
       fajr: times.fajr,
       sunrise: times.sunrise,
       duha: TimeUtils.addMinutes(times.sunrise, 1),
@@ -54,7 +49,6 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       istijaba: TimeUtils.getIstijaba(times.magrib),
       magrib: times.magrib,
       isha: times.isha,
-      'last third': TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
     };
 
     transformations.push(schedule);
@@ -94,13 +88,6 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
   });
 
   return schedule;
-};
-
-// Checks if all prayers for the day have passed by checking the last prayer time
-export const isLastPrayerPassed = (schedule: ScheduleStore): boolean => {
-  const lastIndex = Object.keys(schedule.today).length - 1;
-  const lastPrayer = schedule.today[lastIndex];
-  return TimeUtils.isTimePassed(lastPrayer.time);
 };
 
 // UI Helpers
