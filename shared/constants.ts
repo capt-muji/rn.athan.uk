@@ -3,14 +3,10 @@ export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'ال
 export const PRAYER_INDEX_ISHA = 5;
 export const PRAYERS_LENGTH_FAJR_TO_ISHA = 6; // TODO: remove this
 
-export const TIME_ADJUSTMENTS = {
-  suhoor: -45,
-  duha: 20,
-  istijaba: -59,
-};
-
 export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
+
+export const TIME_ADJUSTMENTS = { suhoor: -45, duha: 20, istijaba: -59 };
 
 export const TEXT = {
   famiy: {
@@ -39,7 +35,8 @@ export const COLORS = {
   inactivePrayer: '#8aa9d662',
 
   activeBackground: '#0847e5',
-  activeBackgroundShadow: '#081a76',
+  standardActiveBackgroundShadow: '#081a76',
+  extraActiveBackgroundShadow: '#061e5b',
 
   textSecondary: '#a0c8ff89',
 };
@@ -75,26 +72,18 @@ export const OVERLAY = {
   },
 };
 
-export const PRAYER = {
-  height: 57,
-  padding: {
-    left: 20,
-    right: 20,
-  },
-  border: {
-    borderRadius: 7,
-  },
-  shadow: {
-    common: {
+export const STYLES = {
+  prayer: {
+    height: 57,
+    padding: {
+      left: 20,
+      right: 20,
+    },
+    // active prayer - common properties
+    shadow: {
       shadowOffset: { width: 1, height: 15 },
       shadowOpacity: 0.5,
       shadowRadius: 15,
-    },
-    standard: {
-      shadowColor: COLORS.activeBackgroundShadow,
-    },
-    extra: {
-      shadowColor: 'black',
     },
   },
 };
