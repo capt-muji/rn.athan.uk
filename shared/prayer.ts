@@ -40,13 +40,13 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
     const schedule: ISingleApiResponseTransformed = {
       date,
       'last third': TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
-      suhoor: TimeUtils.getSuhoor(times.fajr),
+      suhoor: TimeUtils.adjustTime(times.fajr, -45),
       fajr: times.fajr,
       sunrise: times.sunrise,
-      duha: TimeUtils.addMinutes(times.sunrise, 1),
+      duha: TimeUtils.adjustTime(times.sunrise, 20),
       dhuhr: times.dhuhr,
       asr: times.asr,
-      istijaba: TimeUtils.getIstijaba(times.magrib),
+      istijaba: TimeUtils.adjustTime(times.magrib, -59),
       magrib: times.magrib,
       isha: times.isha,
     };
