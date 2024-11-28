@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated';
 import Icon from '@/components/Icon';
 import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
-import { COLORS, TEXT, ANIMATION, PRAYER } from '@/shared/constants';
+import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
 import { setAlertPreference } from '@/stores/actions';
 import { alertPreferencesAtom } from '@/stores/store';
@@ -80,8 +80,8 @@ export default function Alert({ index, type }: Props) {
   }, [iconIndex, index]);
 
   const computedStylesPopup = {
-    ...PRAYER.shadow.common,
-    ...(Prayer.isStandard ? PRAYER.shadow.standard : PRAYER.shadow.extra),
+    // TODO: change shadows for both standard and extra
+    shadowColor: Prayer.isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
   };
 
   return (
@@ -111,11 +111,12 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   iconContainer: {
-    paddingRight: PRAYER.padding.right,
+    paddingRight: STYLES.prayer.padding.right,
     paddingLeft: 13,
     justifyContent: 'center',
   },
   popup: {
+    ...STYLES.prayer.shadow,
     position: 'absolute',
     alignSelf: 'center',
     right: '100%',

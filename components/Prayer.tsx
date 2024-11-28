@@ -6,7 +6,7 @@ import Alert from '@/components/Alert';
 import PrayerTime from '@/components/PrayerTime';
 import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
-import { TEXT, PRAYER, COLORS } from '@/shared/constants';
+import { TEXT, COLORS, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: PRAYER.height,
+    height: STYLES.prayer.height,
   },
   text: {
     fontFamily: TEXT.famiy.regular,
     fontSize: TEXT.size,
   },
   english: {
-    paddingLeft: PRAYER.padding.left,
+    paddingLeft: STYLES.prayer.padding.left,
   },
   arabic: {
     flex: 1,
