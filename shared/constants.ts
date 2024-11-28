@@ -3,6 +3,12 @@ export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'ال
 export const PRAYER_INDEX_ISHA = 5;
 export const PRAYERS_LENGTH_FAJR_TO_ISHA = 6; // TODO: remove this
 
+export const TIME_ADJUSTMENTS = {
+  suhoor: -45,
+  duha: 20,
+  istijaba: -59,
+};
+
 export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 export const EXTRAS_ARABIC = ['آخر ثلث', 'سحور', 'الضحى', 'استجابة'];
 
