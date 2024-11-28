@@ -28,7 +28,6 @@ const fetch = async (year?: number): Promise<IApiResponse> => {
       method: 'GET',
       headers: { 'Cache-Control': 'no-cache' },
     });
-    // lol globalThis
 
     return parseResponse(response);
   } catch (error) {
@@ -40,13 +39,13 @@ const fetch = async (year?: number): Promise<IApiResponse> => {
 export const handle = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
   try {
     const data = await fetch(year);
-    logger.info({ dataLength: data.data?.length }, 'API data fetched successfully');
+    logger.info('API data fetched successfully');
 
     const dataFiltered = PrayerUtils.filterApiData(data);
-    logger.info({ filteredLength: dataFiltered.length }, 'Data filtered successfully');
+    logger.info('Data filtered successfully');
 
     const dataTransformed = PrayerUtils.transformApiData(dataFiltered);
-    logger.info({ transformedLength: dataTransformed.length }, 'Data transformed successfully');
+    logger.info('Data transformed successfully');
 
     return dataTransformed;
   } catch (error) {

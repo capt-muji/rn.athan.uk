@@ -11,7 +11,7 @@ import {
 } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { DaySelection } from '@/shared/types';
+import { DaySelection, ScheduleStore } from '@/shared/types';
 
 // Creates a new Date object in London timezone
 // Converts input date or current date to London time
@@ -140,8 +140,24 @@ export const getIstijaba = (magribTime: string): string => {
   return format(istijaba, 'HH:mm');
 };
 
+// Calculates the time of Suhoor (45 minutes before Fajr)
+export const getSuhoor = (fajrTime: string): string => {
+  const [hours, minutes] = fajrTime.split(':').map(Number);
+  let suhoor = createLondonDate();
+  suhoor = setHours(setMinutes(suhoor, minutes), hours);
+  suhoor = addMins(suhoor, -45);
+  return format(suhoor, 'HH:mm');
+};
+
 // Checks if a given date string is Friday
 export const isFriday = (date?: string | Date): boolean => {
   const parsedDate = createLondonDate(date);
   return format(parsedDate, 'EEEE') === 'Friday';
+};
+
+// Checks if all prayers for the day have passed by checking the last prayer time
+export const isLastPrayerPassed = (schedule: ScheduleStore): boolean => {
+  const lastIndex = Object.keys(schedule.today).length - 1;
+  const lastPrayer = schedule.today[lastIndex];
+  return isTimePassed(lastPrayer.time);
 };

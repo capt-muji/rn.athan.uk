@@ -19,16 +19,16 @@ export default function List({ type }: Props) {
 
   const isFriday = TimeUtils.isFriday(date.current);
 
-  const indices = isStandard
+  const indexes = isStandard
     ? PRAYERS_ENGLISH
     : isFriday
-      ? [0, 1] // only show Istijaba on fridays
+      ? [0, 1, 2] // only show Istijaba (last index) on fridays
       : EXTRAS_ENGLISH;
 
   return (
     <View style={[styles.container]}>
       <ActiveBackground type={type} />
-      {indices.map((_, index) => (
+      {indexes.map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>
