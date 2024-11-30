@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
 
 import Masjid from '@/components/Masjid';
-import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
+import { COLORS, SCREEN, TEXT, ANIMATION } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { setMeasurement } from '@/stores/actions';
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: SCREEN.paddingHorizontal,
-    zIndex: OVERLAY.zindexes.off.longDate,
   },
   location: {
     color: COLORS.textSecondary,

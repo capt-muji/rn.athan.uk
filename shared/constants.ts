@@ -55,18 +55,7 @@ export const OVERLAY = {
   closeThreshold: 2000,
   zindexes: {
     overlay: 2,
-    background: -999,
-    off: {
-      countdown: 999,
-      prayerNotSelected: -1,
-      activeBackground: -2,
-      longDate: -3,
-    },
-    on: {
-      countdown: 999,
-      prayerSelected: 4,
-      longDate: -1,
-    },
+    glow: -1,
   },
 };
 

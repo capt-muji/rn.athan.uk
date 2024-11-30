@@ -62,10 +62,9 @@ export default function Overlay() {
   };
 
   const computedStylePrayer: ViewStyle = {
-    top: measurements.list?.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
+    top: (measurements.list?.pageY ?? 0) + overlay.selectedPrayerIndex * STYLES.prayer.height,
     left: measurements.list?.pageX,
     width: measurements.list?.width,
-    height: STYLES.prayer.height,
   };
 
   return (
@@ -112,5 +111,6 @@ const styles = StyleSheet.create({
   },
   prayer: {
     position: 'absolute',
+    height: STYLES.prayer.height,
   },
 });

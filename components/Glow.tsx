@@ -2,6 +2,8 @@ import { StyleSheet, Dimensions } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
 
+import { OVERLAY } from '@/shared/constants';
+
 const AnimatedSvg = Reanimated.createAnimatedComponent(Svg);
 
 export default function Glow() {
@@ -28,6 +30,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -Dimensions.get('window').width / 1.25,
     left: -Dimensions.get('window').width / 2,
-    backgroundColor: 'red',
+    zIndex: OVERLAY.zindexes.glow,
   },
 });
