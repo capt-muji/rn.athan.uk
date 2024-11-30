@@ -5,9 +5,9 @@ import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
 const AnimatedSvg = Reanimated.createAnimatedComponent(Svg);
 
 export default function Glow() {
-  const baseOpacity = 0.2;
+  const baseOpacity = 0.5;
   const color = 'rgb(128,0,255)';
-  const size = Dimensions.get('window').width * 1.2;
+  const size = Dimensions.get('window').width * 1.5;
 
   return (
     <AnimatedSvg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={[styles.glow]}>
@@ -26,7 +26,8 @@ export default function Glow() {
 const styles = StyleSheet.create({
   glow: {
     position: 'absolute',
-    top: -Dimensions.get('window').width / 1.75,
-    right: '5%',
+    bottom: -Dimensions.get('window').width / 1.25,
+    left: -Dimensions.get('window').width / 2,
+    pointerEvents: 'none',
   },
 });
