@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-// @ts-ignore
 import Icon from '@/assets/icons/masjid.svg';
 
 type MasjidProps = {
