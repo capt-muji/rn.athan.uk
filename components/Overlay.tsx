@@ -18,6 +18,7 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const measurements = useAtomValue(measurementsAtom);
+
   const insets = useSafeAreaInsets();
 
   const handleClose = () => {
