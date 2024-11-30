@@ -48,7 +48,7 @@ export const ANIMATION = {
   durationSlowest: 2250,
   overlayDelay: 150,
   cascadeDelay: 150,
-  popupDuration: 1500,
+  popupDuration: 15001111,
 };
 
 export const OVERLAY = {
