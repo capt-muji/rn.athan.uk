@@ -6,10 +6,15 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } fro
 import Masjid from '@/components/Masjid';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
-import { setMeasurementsDate } from '@/stores/actions';
+import { ScheduleType } from '@/shared/types';
+import { setMeasurement } from '@/stores/actions';
 import { dateAtom } from '@/stores/store';
 
-export default function Day() {
+interface Props {
+  type: ScheduleType;
+}
+
+export default function Day({ type }: Props) {
   const isOverlayOn = false;
 
   const date = useAtomValue(dateAtom);
@@ -29,10 +34,11 @@ export default function Day() {
   }));
 
   const handleLayout = () => {
-    if (!dateRef.current) return;
+    // Only measure for 1st screen
+    if (!dateRef.current || type !== ScheduleType.Standard) return;
 
     dateRef.current.measureInWindow((x, y, width, height) => {
-      setMeasurementsDate({ pageX: x, pageY: y, width, height });
+      setMeasurement('date', { pageX: x, pageY: y, width, height });
     });
   };
 
@@ -41,7 +47,7 @@ export default function Day() {
       <View>
         <Text style={styles.location}>London, UK</Text>
         <Animated.Text ref={dateRef} onLayout={handleLayout} style={[styles.date, dateAnimatedStyle]}>
-          {formatDateLong(date.current)}
+          {formatDateLong(date)}
         </Animated.Text>
       </View>
       <Masjid />
