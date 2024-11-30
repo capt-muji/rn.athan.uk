@@ -8,7 +8,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { setMeasurementsList } from '@/stores/actions';
+import { setMeasurements } from '@/stores/actions';
 import { dateAtom } from '@/stores/store';
 
 interface Props {
@@ -20,7 +20,7 @@ export default function List({ type }: Props) {
   const date = useAtomValue(dateAtom);
   const listRef = useRef<View>(null);
 
-  const isFriday = TimeUtils.isFriday(date.current);
+  const isFriday = TimeUtils.isFriday(date);
 
   const indexes = isStandard ? PRAYERS_ENGLISH : isFriday ? [0, 1, 2] : EXTRAS_ENGLISH;
 
@@ -29,7 +29,7 @@ export default function List({ type }: Props) {
     if (!listRef.current || type !== ScheduleType.Standard) return;
 
     listRef.current.measureInWindow((x, y, width, height) => {
-      setMeasurementsList({ pageX: x, pageY: y, width, height });
+      setMeasurements.list({ pageX: x, pageY: y, width, height });
     });
   };
 
