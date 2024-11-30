@@ -1,6 +1,6 @@
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { PRAYER_INDEX_ISHA } from '@/shared/constants';
+import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, Measurements, PageCoordinates, ScheduleType } from '@/shared/types';
@@ -39,7 +39,7 @@ export const toggleOverlay = () => {
 export const setDate = () => {
   const schedule = getSchedule(ScheduleType.Standard);
 
-  const currentDate = schedule.today[PRAYER_INDEX_ISHA].date;
+  const currentDate = schedule.today[PRAYER_INDEX_ASR].date;
 
   store.set(dateAtom, currentDate);
 };

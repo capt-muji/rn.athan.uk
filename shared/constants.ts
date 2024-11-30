@@ -1,7 +1,6 @@
 export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
 export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
-export const PRAYER_INDEX_ISHA = 5;
-export const PRAYERS_LENGTH_FAJR_TO_ISHA = 6; // TODO: remove this
+export const PRAYER_INDEX_ASR = 3; // Used to display the date
 
 export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
