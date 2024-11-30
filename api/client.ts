@@ -39,13 +39,13 @@ const fetch = async (year?: number): Promise<IApiResponse> => {
 export const handle = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
   try {
     const data = await fetch(year);
-    logger.info('API data fetched successfully');
+    logger.info('API data fetched');
 
     const dataFiltered = PrayerUtils.filterApiData(data);
-    logger.info('Data filtered successfully');
+    logger.info('Data filtered');
 
     const dataTransformed = PrayerUtils.transformApiData(dataFiltered);
-    logger.info('Data transformed successfully');
+    logger.info('Data transformed');
 
     return dataTransformed;
   } catch (error) {

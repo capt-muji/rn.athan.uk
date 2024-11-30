@@ -75,7 +75,7 @@ export const extraScheduleAtom = createScheduleAtom(ScheduleType.Extra);
 
 export const overlayAtom = atom<OverlayStore>({
   isOn: false,
-  selectedPrayerIndex: -1,
+  selectedPrayerIndex: 0,
   scheduleType: ScheduleType.Standard,
 });
 
