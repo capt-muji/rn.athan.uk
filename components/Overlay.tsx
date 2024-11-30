@@ -1,35 +1,27 @@
+import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useAtom } from 'jotai';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { useEffect } from 'react';
-import { StyleSheet, Pressable, View } from 'react-native';
+import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
-import Prayer from './Prayer';
-import RadialGlow from './RadialGlow';
-
+import RadialGlow from '@/components/Glow';
+import Prayer from '@/components/Prayer';
 import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
-import {
-  overlayVisibleAtom,
-  prayersSelectedIndexAtom,
-  absoluteDateMeasurementsAtom,
-  absolutePrayerMeasurementsAtom,
-  prayersTodayAtom,
-} from '@/stores/store';
+import { overlayAtom } from '@/stores/store';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
+const AnimatedCanvas = Reanimated.createAnimatedComponent(Canvas);
 
 export default function Overlay() {
-  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const [selectedPrayerIndex] = useAtom(prayersSelectedIndexAtom);
-  const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
-  const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [todaysPrayers] = useAtom(prayersTodayAtom);
+  const { width, height } = useWindowDimensions();
+  const overlay = useAtomValue(overlayAtom);
+  const setOverlay = useSetAtom(overlayAtom);
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setOverlayVisible(false);
+    setOverlay({ isOn: false });
   };
 
   const glowOpacityShared = useSharedValue(0);
@@ -37,7 +29,7 @@ export default function Overlay() {
   const dateOpacityShared = useSharedValue(0);
 
   useEffect(() => {
-    if (overlayVisible) {
+    if (overlay.isOn) {
       backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
       glowOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
       dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
@@ -46,7 +38,7 @@ export default function Overlay() {
       glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
       dateOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
     }
-  }, [overlayVisible]);
+  }, [overlay.isOn]);
 
   const glowAnimateStyle = useAnimatedStyle(() => ({
     opacity: glowOpacityShared.value,
@@ -56,7 +48,7 @@ export default function Overlay() {
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
     opacity: backgroundOpacityShared.value,
-    pointerEvents: overlayVisible ? 'auto' : 'none',
+    pointerEvents: overlay.isOn ? 'auto' : 'none',
   }));
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
@@ -69,14 +61,16 @@ export default function Overlay() {
     <>
       <Reanimated.View style={containerStyle}>
         <AnimatedBlur intensity={25} tint="dark" style={StyleSheet.absoluteFill}>
-          <LinearGradient
-            colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
-            style={StyleSheet.absoluteFill}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-          />
+          <AnimatedCanvas style={StyleSheet.absoluteFill}>
+            <Rect x={0} y={0} width={width} height={height}>
+              <LinearGradient
+                start={vec(0, 0)}
+                end={vec(0, height)}
+                colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
+              />
+            </Rect>
+          </AnimatedCanvas>
 
-          {/* Close overlay anywhere on screen */}
           <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
           {/* Content layer */}
@@ -98,7 +92,6 @@ export default function Overlay() {
             </Reanimated.Text>
           )}
 
-          {/* Replace the PRAYERS_ENGLISH.map with conditional rendering */}
           {prayerMeasurements[selectedPrayerIndex] && (
             <View
               style={{
@@ -116,7 +109,7 @@ export default function Overlay() {
         </AnimatedBlur>
       </Reanimated.View>
       <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
-        <RadialGlow baseOpacity={0.5} visible={overlayVisible} />
+        <RadialGlow baseOpacity={0.5} visible={overlay.isOn} />
       </Reanimated.View>
     </>
   );

@@ -6,6 +6,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } fro
 import Masjid from '@/components/Masjid';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
+import { setDateMeasurements } from '@/stores/actions';
 import { dateAtom } from '@/stores/store';
 
 export default function Day() {
@@ -27,19 +28,19 @@ export default function Day() {
     opacity: dateOpacity.value,
   }));
 
-  // const handleLayout = () => {
-  //   if (!dateRef.current) return;
+  const handleLayout = () => {
+    if (!dateRef.current) return;
 
-  //   dateRef.current.measureInWindow((x, y, width, height) => {
-  //     date.setMeasurements({ pageX: x, pageY: y, width, height });
-  //   });
-  // };
+    dateRef.current.measureInWindow((x, y, width, height) => {
+      setDateMeasurements({ pageX: x, pageY: y, width, height });
+    });
+  };
 
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.location}>London, UK</Text>
-        <Animated.Text ref={dateRef} style={[styles.date, dateAnimatedStyle]}>
+        <Animated.Text ref={dateRef} onLayout={handleLayout} style={[styles.date, dateAnimatedStyle]}>
           {formatDateLong(date.current)}
         </Animated.Text>
       </View>
