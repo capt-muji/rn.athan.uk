@@ -25,10 +25,11 @@ export default function List({ type }: Props) {
   const indexes = isStandard ? PRAYERS_ENGLISH : isFriday ? [0, 1, 2] : EXTRAS_ENGLISH;
 
   const handleLayout = () => {
-    if (!listRef.current) return;
+    // Only measure for 1st screen
+    if (!listRef.current || type !== ScheduleType.Standard) return;
 
     listRef.current.measureInWindow((x, y, width, height) => {
-      setMeasurementsList(type, { pageX: x, pageY: y, width, height });
+      setMeasurementsList({ pageX: x, pageY: y, width, height });
     });
   };
 

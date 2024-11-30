@@ -159,4 +159,5 @@ export interface DateStore {
 export interface OverlayStore {
   isOn: boolean;
   selectedPrayerIndex: number;
+  scheduleType: ScheduleType;
 }

@@ -27,7 +27,7 @@ export default function Prayer({ index, type }: Props) {
   const viewRef = useRef<View>(null);
 
   const handlePress = () => {
-    setSelectedPrayerIndex(index);
+    setSelectedPrayerIndex(index, type);
     toggleOverlay();
   };
 
