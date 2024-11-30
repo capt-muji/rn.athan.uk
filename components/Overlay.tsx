@@ -5,7 +5,7 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
-import RadialGlow from '@/components/Glow';
+import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import { OVERLAY, ANIMATION, STYLES } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
@@ -82,7 +82,7 @@ export default function Overlay() {
         </AnimatedBlur>
       </Reanimated.View>
       <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
-        <RadialGlow baseOpacity={0.5} visible={overlay.isOn} />
+        <Glow baseOpacity={1} visible={overlay.isOn} />
       </Reanimated.View>
     </>
   );
