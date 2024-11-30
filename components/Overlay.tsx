@@ -82,7 +82,7 @@ export default function Overlay() {
         </AnimatedBlur>
       </Reanimated.View>
       <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
-        <Glow baseOpacity={1} visible={overlay.isOn} />
+        <Glow baseOpacity={0.5} visible={overlay.isOn} />
       </Reanimated.View>
     </>
   );
