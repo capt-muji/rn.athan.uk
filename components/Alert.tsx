@@ -46,7 +46,7 @@ export default function Alert({ index, type }: Props) {
   // Effects
   useEffect(() => {
     const colorPos = isPopupActive ? 1 : Prayer.ui.initialColorPos;
-    AnimFill.animate(colorPos);
+    AnimFill.animate(colorPos, { duration: 50 });
   }, [isPopupActive]);
 
   useEffect(
@@ -70,11 +70,11 @@ export default function Alert({ index, type }: Props) {
 
     // Reset and trigger animations
     AnimBounce.value.value = 0;
-    AnimOpacity.animate(1, { duration: 5 });
+    AnimOpacity.animate(1, { duration: 50 });
     AnimBounce.animate(1);
 
     timeoutRef.current = setTimeout(() => {
-      AnimOpacity.animate(0, { duration: 5 });
+      AnimOpacity.animate(0, { duration: 50 });
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
   }, [iconIndex, index]);
