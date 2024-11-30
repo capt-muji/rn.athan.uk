@@ -6,7 +6,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } fro
 import Masjid from '@/components/Masjid';
 import { COLORS, SCREEN, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
-import { setDateMeasurements } from '@/stores/actions';
+import { setMeasurementsDate } from '@/stores/actions';
 import { dateAtom } from '@/stores/store';
 
 export default function Day() {
@@ -32,7 +32,7 @@ export default function Day() {
     if (!dateRef.current) return;
 
     dateRef.current.measureInWindow((x, y, width, height) => {
-      setDateMeasurements({ pageX: x, pageY: y, width, height });
+      setMeasurementsDate({ pageX: x, pageY: y, width, height });
     });
   };
 
