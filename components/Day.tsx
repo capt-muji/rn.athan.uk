@@ -1,9 +1,10 @@
 import { useAtomValue } from 'jotai';
 import { useRef } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
 import Masjid from '@/components/Masjid';
+import { useAnimationOpacity } from '@/hooks/useAnimations';
 import { COLORS, SCREEN, TEXT, ANIMATION } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
@@ -18,18 +19,15 @@ export default function Day({ type }: Props) {
   const date = useAtomValue(dateAtom);
   const overlay = useAtomValue(overlayAtom);
 
+  const dateOpacity = useAnimationOpacity(1);
+
   const dateRef = useRef<Animated.Text>(null);
-  const dateOpacity = useSharedValue(1);
 
   if (overlay.isOn) {
-    dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+    dateOpacity.animate(0, { duration: ANIMATION.duration });
   } else {
-    dateOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+    dateOpacity.animate(1, { duration: ANIMATION.duration, delay: ANIMATION.overlayDelay });
   }
-
-  const dateAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: dateOpacity.value,
-  }));
 
   const handleLayout = () => {
     // Only measure for 1st screen
@@ -44,7 +42,7 @@ export default function Day({ type }: Props) {
     <View style={styles.container}>
       <View>
         <Text style={styles.location}>London, UK</Text>
-        <Animated.Text ref={dateRef} onLayout={handleLayout} style={[styles.date, dateAnimatedStyle]}>
+        <Animated.Text ref={dateRef} onLayout={handleLayout} style={[styles.date, dateOpacity.style]}>
           {formatDateLong(date)}
         </Animated.Text>
       </View>
