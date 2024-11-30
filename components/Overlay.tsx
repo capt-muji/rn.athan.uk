@@ -1,27 +1,31 @@
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
 import RadialGlow from '@/components/Glow';
-import Prayer from '@/components/Prayer';
-import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/shared/constants';
-import { overlayAtom } from '@/stores/store';
+import { usePrayer } from '@/hooks/usePrayer';
+import { OVERLAY, ANIMATION, STYLES } from '@/shared/constants';
+import { ScheduleType } from '@/shared/types';
+import { toggleOverlay } from '@/stores/actions';
+import { overlayAtom, listAtom } from '@/stores/store';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 const AnimatedCanvas = Reanimated.createAnimatedComponent(Canvas);
 
 export default function Overlay() {
+  const Prayer = usePrayer(0, ScheduleType.Standard);
   const { width, height } = useWindowDimensions();
   const overlay = useAtomValue(overlayAtom);
-  const setOverlay = useSetAtom(overlayAtom);
+  const list = useAtomValue(listAtom);
+  const standardList = list.standard;
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setOverlay({ isOn: false });
+    toggleOverlay();
   };
 
   const glowOpacityShared = useSharedValue(0);
@@ -51,12 +55,6 @@ export default function Overlay() {
     pointerEvents: overlay.isOn ? 'auto' : 'none',
   }));
 
-  const dateAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: dateOpacityShared.value,
-  }));
-
-  const prayer = todaysPrayers[selectedPrayerIndex];
-
   return (
     <>
       <Reanimated.View style={containerStyle}>
@@ -73,37 +71,19 @@ export default function Overlay() {
 
           <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-          {/* Content layer */}
-          {dateMeasurements && (
-            <Reanimated.Text
-              style={[
-                styles.date,
-                dateAnimatedStyle,
-                {
-                  position: 'absolute',
-                  top: dateMeasurements.pageY,
-                  left: dateMeasurements.pageX,
-                  width: dateMeasurements.width,
-                  height: dateMeasurements.height,
-                },
-              ]}
-            >
-              {prayer?.passed ? 'Tomorrow' : 'Today'}
-            </Reanimated.Text>
-          )}
-
-          {prayerMeasurements[selectedPrayerIndex] && (
+          {overlay.isOn && overlay.selectedPrayerIndex >= 0 && standardList && (
             <View
               style={{
                 position: 'absolute',
-                top: prayerMeasurements[selectedPrayerIndex]?.pageY,
-                left: prayerMeasurements[selectedPrayerIndex]?.pageX,
-                width: prayerMeasurements[selectedPrayerIndex]?.width,
-                height: prayerMeasurements[selectedPrayerIndex]?.height,
+                top: standardList.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
+                left: standardList.pageX,
+                width: standardList.width,
+                height: STYLES.prayer.height,
                 zIndex: OVERLAY.zindexes.on.prayerSelected,
+                backgroundColor: 'green',
               }}
             >
-              <Prayer index={selectedPrayerIndex} isOverlay />
+              <Prayer index={overlay.selectedPrayerIndex} type={ScheduleType.Standard} />
             </View>
           )}
         </AnimatedBlur>
@@ -114,12 +94,3 @@ export default function Overlay() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  date: {
-    color: COLORS.textSecondary,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.famiy.regular,
-    pointerEvents: 'none',
-  },
-});
