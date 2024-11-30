@@ -5,6 +5,7 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
+import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import { OVERLAY, ANIMATION, STYLES } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
@@ -43,13 +44,13 @@ export default function Overlay() {
 
   return (
     <Reanimated.View style={containerStyle}>
-      <AnimatedBlur intensity={50} tint="dark" style={StyleSheet.absoluteFill}>
+      <AnimatedBlur intensity={25} tint="dark" style={StyleSheet.absoluteFill}>
         <AnimatedCanvas style={StyleSheet.absoluteFill}>
           <Rect x={0} y={0} width={width} height={height}>
             <LinearGradient
               start={vec(0, 0)}
               end={vec(0, height)}
-              colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
+              colors={['rgba(25,0,40,75)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
             />
           </Rect>
         </AnimatedCanvas>
@@ -71,6 +72,7 @@ export default function Overlay() {
           </View>
         )}
       </AnimatedBlur>
+      <Glow />
     </Reanimated.View>
   );
 }
