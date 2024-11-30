@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -57,7 +57,7 @@ export default function Alert({ index, type }: Props) {
   );
 
   // Handlers
-  const handlePress = useCallback(() => {
+  const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
@@ -78,7 +78,7 @@ export default function Alert({ index, type }: Props) {
       AnimOpacity.animate(0, { duration: 50 });
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
-  }, [iconIndex, index]);
+  };
 
   const computedStylesPopup = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
