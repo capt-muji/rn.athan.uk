@@ -80,8 +80,7 @@ export default function Alert({ index, type }: Props) {
   }, [iconIndex, index]);
 
   const computedStylesPopup = {
-    // TODO: change shadows for both standard and extra
-    shadowColor: Prayer.isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
+    shadowColor: Prayer.isStandard ? '#010c41' : 'black',
   };
 
   return (
