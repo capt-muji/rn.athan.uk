@@ -73,11 +73,6 @@ const createScheduleAtom = (scheduleType: ScheduleType) =>
 export const standardScheduleAtom = createScheduleAtom(ScheduleType.Standard);
 export const extraScheduleAtom = createScheduleAtom(ScheduleType.Extra);
 
-export interface OverlayStore {
-  isOn: boolean;
-  selectedPrayerIndex: number;
-}
-
 export const overlayAtom = atom<OverlayStore>({
   isOn: false,
   selectedPrayerIndex: -1,
