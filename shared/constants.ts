@@ -5,7 +5,11 @@ export const PRAYER_INDEX_ASR = 3; // Used to display the date
 export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 
-export const TIME_ADJUSTMENTS = { suhoor: -45, duha: 20, istijaba: -59 };
+export const TIME_ADJUSTMENTS = {
+  suhoor: -45, // minutes before fajr
+  duha: 20, // minutes after sunrise
+  istijaba: -59, // minutes before magrib
+};
 
 export const TEXT = {
   famiy: {
