@@ -1,4 +1,5 @@
 import { useAtomValue } from 'jotai';
+import { useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import ActiveBackground from '@/components/ActiveBackground';
@@ -7,6 +8,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
+import { setMeasurementsList } from '@/stores/actions';
 import { dateAtom } from '@/stores/store';
 
 interface Props {
@@ -16,17 +18,22 @@ interface Props {
 export default function List({ type }: Props) {
   const { isStandard } = usePrayer(0, type);
   const date = useAtomValue(dateAtom);
+  const listRef = useRef<View>(null);
 
   const isFriday = TimeUtils.isFriday(date.current);
 
-  const indexes = isStandard
-    ? PRAYERS_ENGLISH
-    : isFriday
-      ? [0, 1, 2] // only show Istijaba (last index) on fridays
-      : EXTRAS_ENGLISH;
+  const indexes = isStandard ? PRAYERS_ENGLISH : isFriday ? [0, 1, 2] : EXTRAS_ENGLISH;
+
+  const handleLayout = () => {
+    if (!listRef.current) return;
+
+    listRef.current.measureInWindow((x, y, width, height) => {
+      setMeasurementsList(type, { pageX: x, pageY: y, width, height });
+    });
+  };
 
   return (
-    <View style={[styles.container]}>
+    <View ref={listRef} onLayout={handleLayout} style={[styles.container]}>
       <ActiveBackground type={type} />
       {indexes.map((_, index) => (
         <Prayer key={index} index={index} type={type} />

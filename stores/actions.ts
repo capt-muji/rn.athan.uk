@@ -12,6 +12,7 @@ import {
   soundPreferencesAtom,
   standardScheduleAtom,
   extraScheduleAtom,
+  listAtom,
 } from '@/stores/store';
 
 const store = getDefaultStore();
@@ -21,6 +22,7 @@ export const getDate = () => store.get(dateAtom);
 export const getOverlay = () => store.get(overlayAtom);
 export const getAlertPreferences = () => store.get(alertPreferencesAtom);
 export const getSoundPreferences = () => store.get(soundPreferencesAtom);
+export const getList = () => store.get(listAtom);
 
 export const getSchedule = (type: ScheduleType) =>
   type === ScheduleType.Standard ? store.get(standardScheduleAtom) : store.get(extraScheduleAtom);
@@ -40,9 +42,15 @@ export const setDate = () => {
   store.set(dateAtom, { ...date, current: currentDate });
 };
 
-export const setDateMeasurements = (measurements: PageCoordinates) => {
+export const setMeasurementsDate = (measurements: PageCoordinates) => {
   const date = getDate();
   store.set(dateAtom, { ...date, measurements });
+};
+
+export const setMeasurementsList = (type: ScheduleType, measurements: PageCoordinates) => {
+  const list = getList();
+
+  store.set(listAtom, { ...list, [type]: measurements });
 };
 
 // set standard schedule for today and tomorrow
@@ -80,22 +88,18 @@ export const incrementNextIndex = (type: ScheduleType) => {
   const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
 
   const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
+
   store.set(scheduleAtom, { ...schedule, nextIndex });
 };
 
 export const setAlertPreference = (prayerIndex: number, alertType: AlertType) => {
   const current = getAlertPreferences();
 
-  store.set(alertPreferencesAtom, {
-    ...current,
-    [prayerIndex]: alertType,
-  });
+  store.set(alertPreferencesAtom, { ...current, [prayerIndex]: alertType });
 };
 
 export const setSelectedSound = (soundIndex: number) => {
   const current = getSoundPreferences();
-  store.set(soundPreferencesAtom, {
-    ...current,
-    selected: soundIndex,
-  });
+
+  store.set(soundPreferencesAtom, { ...current, selected: soundIndex });
 };
