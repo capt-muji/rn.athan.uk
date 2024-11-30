@@ -1,14 +1,14 @@
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { StyleSheet, Pressable, View } from 'react-native';
+import { StyleSheet, Pressable, View, ViewStyle } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Countdown from '@/components/Countdown';
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
-import { OVERLAY, ANIMATION, STYLES, COLORS, TEXT, SCREEN } from '@/shared/constants';
+import { OVERLAY, ANIMATION, COLORS, TEXT, SCREEN, STYLES } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
 import { overlayAtom, measurementsAtom } from '@/stores/store';
 
@@ -43,12 +43,30 @@ export default function Overlay() {
     backgroundColor: 'rgba(8,0,18,0.97)',
   }));
 
-  const dateStyle = useAnimatedStyle(() => ({
+  const animatedStyleDate = useAnimatedStyle(() => ({
     opacity: dateOpacityShared.value,
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.famiy.regular,
   }));
+
+  const computedStyleCountdown: ViewStyle = {
+    top: insets.top + SCREEN.paddingHorizontal,
+  };
+
+  const computedStyleDate: ViewStyle = {
+    top: measurements.date?.pageY,
+    left: measurements.date?.pageX,
+    width: measurements.date?.width,
+    height: measurements.date?.height,
+  };
+
+  const computedStylePrayer: ViewStyle = {
+    top: measurements.list?.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
+    left: measurements.list?.pageX,
+    width: measurements.list?.width,
+    height: STYLES.prayer.height,
+  };
 
   return (
     <Reanimated.View style={containerStyle}>
@@ -57,40 +75,21 @@ export default function Overlay() {
 
         {/* Countdown - using insets */}
         {overlay.isOn && (
-          <View style={[styles.countdownContainer, { top: insets.top + SCREEN.paddingHorizontal }]}>
+          <View style={[styles.countdown, computedStyleCountdown]}>
             <Countdown type={overlay.scheduleType} />
           </View>
         )}
 
         {/* Date */}
-        {overlay.isOn && measurements?.date && (
-          <Reanimated.Text
-            style={[
-              dateStyle,
-              {
-                position: 'absolute',
-                top: measurements.date.pageY,
-                left: measurements.date.pageX,
-                width: measurements.date.width,
-                height: measurements.date.height,
-              },
-            ]}
-          >
+        {overlay.isOn && measurements.date && (
+          <Reanimated.Text style={[styles.date, computedStyleDate, animatedStyleDate]}>
             {overlay.selectedPrayerIndex >= 5 ? 'Tomorrow' : 'Today'}
           </Reanimated.Text>
         )}
 
         {/* Prayer overlay */}
         {overlay.isOn && measurements?.list && (
-          <View
-            style={{
-              position: 'absolute',
-              top: measurements.list.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
-              left: measurements.list.pageX,
-              width: measurements.list.width,
-              height: STYLES.prayer.height,
-            }}
-          >
+          <View style={[styles.prayer, computedStylePrayer]}>
             <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
           </View>
         )}
@@ -101,9 +100,17 @@ export default function Overlay() {
 }
 
 const styles = StyleSheet.create({
-  countdownContainer: {
+  countdown: {
     position: 'absolute',
+    pointerEvents: 'none',
     left: 0,
     right: 0,
+  },
+  date: {
+    position: 'absolute',
+    pointerEvents: 'none',
+  },
+  prayer: {
+    position: 'absolute',
   },
 });
