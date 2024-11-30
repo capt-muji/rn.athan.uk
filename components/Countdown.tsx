@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import { COLORS, OVERLAY, TEXT } from '@/shared/constants';
+import { COLORS, TEXT } from '@/shared/constants';
 import { formatTime, getDateTodayOrTomorrow, getTimeDifference } from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
 import { incrementNextIndex } from '@/stores/actions';
@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 40,
     justifyContent: 'center',
-    zIndex: OVERLAY.zindexes.off.countdown,
     pointerEvents: 'none',
   },
   text: {
