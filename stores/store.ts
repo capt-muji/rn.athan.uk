@@ -11,6 +11,7 @@ import {
   OverlayStore,
   SoundPreferences,
   ScheduleType,
+  ListStore,
 } from '@/shared/types';
 import { database } from '@/stores/database';
 
@@ -77,3 +78,8 @@ export const overlayAtom = atom<OverlayStore>({
 });
 
 export const pagePositionAtom = atom<number>(0);
+
+export const listAtom = atom<ListStore>({
+  standard: null,
+  extra: null,
+});

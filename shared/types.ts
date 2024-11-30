@@ -101,6 +101,11 @@ export interface PageCoordinates {
   height: number;
 }
 
+export interface ListStore {
+  standard: PageCoordinates | null;
+  extra: PageCoordinates | null;
+}
+
 // Preferences Types
 export enum AlertType {
   Off = 0,
