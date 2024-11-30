@@ -1,5 +1,4 @@
 import { useFonts } from 'expo-font';
-import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -15,16 +14,12 @@ import logger from '@/shared/logger';
 import { ScheduleType } from '@/shared/types';
 import { setSchedule, setDate } from '@/stores/actions';
 import * as Database from '@/stores/database';
-import { measurementsAtom } from '@/stores/store';
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
     Roboto: FontRoboto,
     'Roboto-Medium': FontRobotoMedium,
   });
-
-  const measurements = useAtomValue(measurementsAtom);
-  const measurementsSet = measurements.date && measurements.list;
 
   useEffect(() => {
     const init = async () => {
@@ -48,7 +43,7 @@ export default function Index() {
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
       <GradientBackground />
       <StatusBar barStyle="light-content" />
-      {measurementsSet && <Overlay />}
+      <Overlay />
       <Navigation />
     </GestureHandlerRootView>
   );
