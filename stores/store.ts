@@ -7,11 +7,10 @@ import {
   AlertType,
   ScheduleStore,
   AppStore,
-  DateStore,
   OverlayStore,
   SoundPreferences,
   ScheduleType,
-  PageCoordinates,
+  Measurements,
 } from '@/shared/types';
 import { database } from '@/stores/database';
 
@@ -56,10 +55,12 @@ export const appAtom = atom<AppStore>({
   hasError: false,
 });
 
-export const dateAtom = atom<DateStore>({
-  current: '',
-  measurements: null,
+export const measurementsAtom = atom<Measurements>({
+  date: null,
+  list: null,
 });
+
+export const dateAtom = atom<string>('');
 
 const createScheduleAtom = (scheduleType: ScheduleType) =>
   atom<ScheduleStore>({
@@ -84,7 +85,3 @@ export const overlayAtom = atom<OverlayStore>({
 });
 
 export const pagePositionAtom = atom<number>(0);
-
-export const listAtom = atom<{ measurements: PageCoordinates | null }>({
-  measurements: null,
-});
