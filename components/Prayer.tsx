@@ -8,7 +8,7 @@ import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { TEXT, COLORS, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { setSelectedPrayerIndex } from '@/stores/actions';
+import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/actions';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -28,6 +28,7 @@ export default function Prayer({ index, type }: Props) {
 
   const handlePress = () => {
     setSelectedPrayerIndex(index);
+    toggleOverlay();
   };
 
   if (Prayer.isNext) AnimColor.animate(1);
