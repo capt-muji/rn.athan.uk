@@ -42,37 +42,35 @@ export default function Overlay() {
   }));
 
   return (
-    <>
-      <Reanimated.View style={containerStyle}>
-        <AnimatedBlur intensity={50} tint="dark" style={StyleSheet.absoluteFill}>
-          <AnimatedCanvas style={StyleSheet.absoluteFill}>
-            <Rect x={0} y={0} width={width} height={height}>
-              <LinearGradient
-                start={vec(0, 0)}
-                end={vec(0, height)}
-                colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
-              />
-            </Rect>
-          </AnimatedCanvas>
+    <Reanimated.View style={containerStyle}>
+      <AnimatedBlur intensity={50} tint="dark" style={StyleSheet.absoluteFill}>
+        <AnimatedCanvas style={StyleSheet.absoluteFill}>
+          <Rect x={0} y={0} width={width} height={height}>
+            <LinearGradient
+              start={vec(0, 0)}
+              end={vec(0, height)}
+              colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
+            />
+          </Rect>
+        </AnimatedCanvas>
 
-          <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
+        <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-          {overlay.isOn && overlay.selectedPrayerIndex >= 0 && measurements && (
-            <View
-              style={{
-                position: 'absolute',
-                top: measurements.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
-                left: measurements.pageX,
-                width: measurements.width,
-                height: STYLES.prayer.height,
-                zIndex: OVERLAY.zindexes.on.prayerSelected,
-              }}
-            >
-              <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
-            </View>
-          )}
-        </AnimatedBlur>
-      </Reanimated.View>
-    </>
+        {overlay.isOn && overlay.selectedPrayerIndex >= 0 && measurements && (
+          <View
+            style={{
+              position: 'absolute',
+              top: measurements.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
+              left: measurements.pageX,
+              width: measurements.width,
+              height: STYLES.prayer.height,
+              zIndex: OVERLAY.zindexes.on.prayerSelected,
+            }}
+          >
+            <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
+          </View>
+        )}
+      </AnimatedBlur>
+    </Reanimated.View>
   );
 }
