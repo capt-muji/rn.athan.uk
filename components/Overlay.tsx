@@ -9,7 +9,7 @@ import Countdown from '@/components/Countdown';
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import { useAnimationOpacity } from '@/hooks/useAnimations';
-import { OVERLAY, ANIMATION, COLORS, TEXT, SCREEN, STYLES } from '@/shared/constants';
+import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
 import { overlayAtom, measurementsAtom } from '@/stores/store';
 
@@ -72,18 +72,7 @@ export default function Overlay() {
 
         {/* Date */}
         {overlay.isOn && measurements.date && (
-          <Reanimated.Text
-            style={[
-              styles.date,
-              computedStyleDate,
-              dateOpacity.style,
-              {
-                color: COLORS.textSecondary,
-                fontSize: TEXT.size,
-                fontFamily: TEXT.famiy.regular,
-              },
-            ]}
-          >
+          <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
             {overlay.selectedPrayerIndex >= 5 ? 'Tomorrow' : 'Today'}
           </Reanimated.Text>
         )}
@@ -115,6 +104,9 @@ const styles = StyleSheet.create({
   date: {
     position: 'absolute',
     pointerEvents: 'none',
+    color: COLORS.textSecondary,
+    fontSize: TEXT.size,
+    fontFamily: TEXT.famiy.regular,
   },
   prayer: {
     position: 'absolute',
