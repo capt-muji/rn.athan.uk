@@ -62,11 +62,24 @@ export const measurementsAtom = atom<Measurements>({
 
 export const dateAtom = atom<string>('');
 
+const initialPrayer = (scheduleType: ScheduleType) => ({
+  index: 0,
+  date: '2024-11-15',
+  english: 'Fajr',
+  arabic: 'الفجر',
+  time: '05:35',
+  type: scheduleType,
+});
+
 const createScheduleAtom = (scheduleType: ScheduleType) =>
   atom<ScheduleStore>({
     type: scheduleType,
-    today: {},
-    tomorrow: {},
+    today: {
+      0: initialPrayer(scheduleType),
+    },
+    tomorrow: {
+      0: initialPrayer(scheduleType),
+    },
     nextIndex: 0,
   });
 
