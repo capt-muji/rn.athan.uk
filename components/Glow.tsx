@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -Dimensions.get('window').width / 1.25,
     left: -Dimensions.get('window').width / 2,
-    pointerEvents: 'none',
+    backgroundColor: 'red',
   },
 });
