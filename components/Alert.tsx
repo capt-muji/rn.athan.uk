@@ -73,6 +73,7 @@ export default function Alert({ index, type }: Props) {
     AnimOpacity.animate(1, { duration: 50 });
     AnimBounce.animate(1);
 
+    // Hide popup
     timeoutRef.current = setTimeout(() => {
       AnimOpacity.animate(0, { duration: 50 });
       setIsPopupActive(false);
@@ -80,7 +81,7 @@ export default function Alert({ index, type }: Props) {
   }, [iconIndex, index]);
 
   const computedStylesPopup = {
-    shadowColor: Prayer.isStandard ? '#010c41' : 'black',
+    shadowColor: Prayer.isStandard ? '#010931' : '#000416',
   };
 
   return (
@@ -115,7 +116,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   popup: {
-    ...STYLES.prayer.shadow,
+    shadowOffset: { width: 1, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
     position: 'absolute',
     alignSelf: 'center',
     right: '100%',
