@@ -69,7 +69,6 @@ export const STYLES = {
       left: 20,
       right: 20,
     },
-    // active prayer - common properties
     shadow: {
       shadowOffset: { width: 1, height: 10 },
       shadowOpacity: 0.5,
