@@ -81,9 +81,9 @@ export const STYLES = {
     },
     // active prayer - common properties
     shadow: {
-      shadowOffset: { width: 1, height: 15 },
+      shadowOffset: { width: 1, height: 10 },
       shadowOpacity: 0.5,
-      shadowRadius: 15,
+      shadowRadius: 10,
     },
   },
 };
