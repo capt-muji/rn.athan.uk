@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, withDelay } from 'react-native-reanimated';
 
@@ -8,26 +8,24 @@ import { COLORS, SCREEN, TEXT, ANIMATION } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { setMeasurement } from '@/stores/actions';
-import { dateAtom } from '@/stores/store';
+import { dateAtom, overlayAtom } from '@/stores/store';
 
 interface Props {
   type: ScheduleType;
 }
 
 export default function Day({ type }: Props) {
-  const isOverlayOn = false;
-
   const date = useAtomValue(dateAtom);
+  const overlay = useAtomValue(overlayAtom);
+
   const dateRef = useRef<Animated.Text>(null);
   const dateOpacity = useSharedValue(1);
 
-  useEffect(() => {
-    if (isOverlayOn) {
-      dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-    } else {
-      dateOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
-    }
-  }, [isOverlayOn]);
+  if (overlay.isOn) {
+    dateOpacity.value = withTiming(0, { duration: ANIMATION.duration });
+  } else {
+    dateOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+  }
 
   const dateAnimatedStyle = useAnimatedStyle(() => ({
     opacity: dateOpacity.value,
