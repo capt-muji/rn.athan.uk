@@ -5,7 +5,6 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
-import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import { OVERLAY, ANIMATION, STYLES } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
@@ -24,23 +23,16 @@ export default function Overlay() {
     toggleOverlay();
   };
 
-  const glowOpacityShared = useSharedValue(0);
   const backgroundOpacityShared = useSharedValue(0);
   const dateOpacityShared = useSharedValue(0);
 
   if (overlay.isOn) {
     backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
-    glowOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
     dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
   } else {
     backgroundOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
-    glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
     dateOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
   }
-
-  const glowAnimateStyle = useAnimatedStyle(() => ({
-    opacity: glowOpacityShared.value,
-  }));
 
   const containerStyle = useAnimatedStyle(() => ({
     ...StyleSheet.absoluteFillObject,
@@ -52,7 +44,7 @@ export default function Overlay() {
   return (
     <>
       <Reanimated.View style={containerStyle}>
-        <AnimatedBlur intensity={25} tint="dark" style={StyleSheet.absoluteFill}>
+        <AnimatedBlur intensity={50} tint="dark" style={StyleSheet.absoluteFill}>
           <AnimatedCanvas style={StyleSheet.absoluteFill}>
             <Rect x={0} y={0} width={width} height={height}>
               <LinearGradient
@@ -80,9 +72,6 @@ export default function Overlay() {
             </View>
           )}
         </AnimatedBlur>
-      </Reanimated.View>
-      <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
-        <Glow baseOpacity={0.5} visible={overlay.isOn} />
       </Reanimated.View>
     </>
   );
