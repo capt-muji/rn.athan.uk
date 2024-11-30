@@ -63,7 +63,7 @@ export default function Overlay() {
       <AnimatedBlur intensity={10} tint="dark" style={StyleSheet.absoluteFill}>
         <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-        {/* Countdown - using insets */}
+        {/* Countdown */}
         {overlay.isOn && (
           <View style={[styles.countdown, computedStyleCountdown]}>
             <Countdown type={overlay.scheduleType} />
