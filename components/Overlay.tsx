@@ -7,7 +7,7 @@ import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
 import RadialGlow from '@/components/Glow';
-import { usePrayer } from '@/hooks/usePrayer';
+import Prayer from '@/components/Prayer';
 import { OVERLAY, ANIMATION, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { toggleOverlay } from '@/stores/actions';
@@ -17,7 +17,6 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 const AnimatedCanvas = Reanimated.createAnimatedComponent(Canvas);
 
 export default function Overlay() {
-  const Prayer = usePrayer(0, ScheduleType.Standard);
   const { width, height } = useWindowDimensions();
   const overlay = useAtomValue(overlayAtom);
   const list = useAtomValue(listAtom);
