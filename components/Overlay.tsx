@@ -2,7 +2,6 @@ import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
 import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
@@ -31,17 +30,15 @@ export default function Overlay() {
   const backgroundOpacityShared = useSharedValue(0);
   const dateOpacityShared = useSharedValue(0);
 
-  useEffect(() => {
-    if (overlay.isOn) {
-      backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
-      glowOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
-      dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
-    } else {
-      backgroundOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
-      glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
-      dateOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
-    }
-  }, [overlay.isOn]);
+  if (overlay.isOn) {
+    backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
+    glowOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+    dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+  } else {
+    backgroundOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
+    glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
+    dateOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
+  }
 
   const glowAnimateStyle = useAnimatedStyle(() => ({
     opacity: glowOpacityShared.value,
