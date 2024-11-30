@@ -2,12 +2,13 @@ import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { StyleSheet, Pressable, View, ViewStyle } from 'react-native';
-import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
+import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Countdown from '@/components/Countdown';
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
+import { useAnimationOpacity } from '@/hooks/useAnimations';
 import { OVERLAY, ANIMATION, COLORS, TEXT, SCREEN, STYLES } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
 import { overlayAtom, measurementsAtom } from '@/stores/store';
@@ -24,31 +25,20 @@ export default function Overlay() {
     toggleOverlay();
   };
 
-  const backgroundOpacityShared = useSharedValue(0);
-  const dateOpacityShared = useSharedValue(0);
+  const backgroundOpacity = useAnimationOpacity(0);
+  const dateOpacity = useAnimationOpacity(0);
 
   if (overlay.isOn) {
-    backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
-    dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
+    backgroundOpacity.animate(1, { duration: ANIMATION.duration });
+    dateOpacity.animate(1, { duration: ANIMATION.duration, delay: ANIMATION.overlayDelay });
   } else {
-    backgroundOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
-    dateOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
+    backgroundOpacity.animate(0, { duration: ANIMATION.duration });
+    dateOpacity.animate(0, { duration: ANIMATION.duration });
   }
 
-  const containerStyle = useAnimatedStyle(() => ({
-    ...StyleSheet.absoluteFillObject,
-    zIndex: OVERLAY.zindexes.overlay,
-    opacity: backgroundOpacityShared.value,
+  const computedStyleContainer: ViewStyle = {
     pointerEvents: overlay.isOn ? 'auto' : 'none',
-    backgroundColor: 'rgba(8,0,18,0.97)',
-  }));
-
-  const animatedStyleDate = useAnimatedStyle(() => ({
-    opacity: dateOpacityShared.value,
-    color: COLORS.textSecondary,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.famiy.regular,
-  }));
+  };
 
   const computedStyleCountdown: ViewStyle = {
     top: insets.top + SCREEN.paddingHorizontal,
@@ -68,7 +58,7 @@ export default function Overlay() {
   };
 
   return (
-    <Reanimated.View style={containerStyle}>
+    <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
       <AnimatedBlur intensity={10} tint="dark" style={StyleSheet.absoluteFill}>
         <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
@@ -81,7 +71,18 @@ export default function Overlay() {
 
         {/* Date */}
         {overlay.isOn && measurements.date && (
-          <Reanimated.Text style={[styles.date, computedStyleDate, animatedStyleDate]}>
+          <Reanimated.Text
+            style={[
+              styles.date,
+              computedStyleDate,
+              dateOpacity.style,
+              {
+                color: COLORS.textSecondary,
+                fontSize: TEXT.size,
+                fontFamily: TEXT.famiy.regular,
+              },
+            ]}
+          >
             {overlay.selectedPrayerIndex >= 5 ? 'Tomorrow' : 'Today'}
           </Reanimated.Text>
         )}
@@ -99,6 +100,11 @@ export default function Overlay() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: OVERLAY.zindexes.overlay,
+    backgroundColor: 'rgba(8,0,18,0.97)',
+  },
   countdown: {
     position: 'absolute',
     pointerEvents: 'none',
