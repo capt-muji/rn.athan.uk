@@ -19,6 +19,9 @@ export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const measurements = useAtomValue(measurementsAtom);
 
+  // Early return if no measurements
+  if (!measurements.date || !measurements.list) return null;
+
   const insets = useSafeAreaInsets();
 
   const handleClose = () => {
@@ -28,13 +31,16 @@ export default function Overlay() {
 
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
+  const prayerOpacity = useAnimationOpacity(0);
 
   if (overlay.isOn) {
     backgroundOpacity.animate(1, { duration: ANIMATION.duration });
     dateOpacity.animate(1, { duration: ANIMATION.duration, delay: ANIMATION.overlayDelay });
+    prayerOpacity.animate(1, { duration: ANIMATION.duration });
   } else {
     backgroundOpacity.animate(0, { duration: ANIMATION.duration });
     dateOpacity.animate(0, { duration: ANIMATION.duration });
+    prayerOpacity.animate(0, { duration: ANIMATION.duration });
   }
 
   const computedStyleContainer: ViewStyle = {
@@ -46,16 +52,16 @@ export default function Overlay() {
   };
 
   const computedStyleDate: ViewStyle = {
-    top: measurements.date?.pageY,
-    left: measurements.date?.pageX,
-    width: measurements.date?.width,
-    height: measurements.date?.height,
+    top: measurements.date.pageY,
+    left: measurements.date.pageX,
+    width: measurements.date.width,
+    height: measurements.date.height,
   };
 
   const computedStylePrayer: ViewStyle = {
-    top: (measurements.list?.pageY ?? 0) + overlay.selectedPrayerIndex * STYLES.prayer.height,
-    left: measurements.list?.pageX,
-    width: measurements.list?.width,
+    top: measurements.list.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
+    left: measurements.list.pageX,
+    width: measurements.list.width,
   };
 
   return (
@@ -64,25 +70,19 @@ export default function Overlay() {
         <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
         {/* Countdown */}
-        {overlay.isOn && (
-          <View style={[styles.countdown, computedStyleCountdown]}>
-            <Countdown type={overlay.scheduleType} />
-          </View>
-        )}
+        <View style={[styles.countdown, computedStyleCountdown]}>
+          <Countdown type={overlay.scheduleType} />
+        </View>
 
         {/* Date */}
-        {overlay.isOn && measurements.date && (
-          <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
-            {overlay.selectedPrayerIndex >= 5 ? 'Tomorrow' : 'Today'}
-          </Reanimated.Text>
-        )}
+        <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
+          {overlay.selectedPrayerIndex >= 5 ? 'Tomorrow' : 'Today'}
+        </Reanimated.Text>
 
         {/* Prayer overlay */}
-        {overlay.isOn && measurements?.list && (
-          <View style={[styles.prayer, computedStylePrayer]}>
-            <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
-          </View>
-        )}
+        <Reanimated.View style={[styles.prayer, computedStylePrayer, prayerOpacity.style]}>
+          <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
+        </Reanimated.View>
       </AnimatedBlur>
       <Glow />
     </Reanimated.View>
