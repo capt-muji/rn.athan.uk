@@ -106,6 +106,11 @@ export interface ListStore {
   extra: PageCoordinates | null;
 }
 
+export interface Measurements {
+  date: PageCoordinates | null;
+  list: PageCoordinates | null;
+}
+
 // Preferences Types
 export enum AlertType {
   Off = 0,
@@ -149,11 +154,6 @@ export interface PreferencesStore {
 export interface AppStore {
   isLoading: boolean;
   hasError: boolean;
-}
-
-export interface DateStore {
-  current: string;
-  measurements: PageCoordinates | null;
 }
 
 export interface OverlayStore {

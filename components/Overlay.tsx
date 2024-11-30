@@ -9,7 +9,7 @@ import RadialGlow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import { OVERLAY, ANIMATION, STYLES } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
-import { overlayAtom, listAtom } from '@/stores/store';
+import { overlayAtom, measurementsAtom } from '@/stores/store';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 const AnimatedCanvas = Reanimated.createAnimatedComponent(Canvas);
@@ -17,7 +17,7 @@ const AnimatedCanvas = Reanimated.createAnimatedComponent(Canvas);
 export default function Overlay() {
   const { width, height } = useWindowDimensions();
   const overlay = useAtomValue(overlayAtom);
-  const { measurements } = useAtomValue(listAtom);
+  const { list: measurements } = useAtomValue(measurementsAtom);
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);

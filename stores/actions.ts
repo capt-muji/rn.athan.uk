@@ -12,7 +12,7 @@ import {
   soundPreferencesAtom,
   standardScheduleAtom,
   extraScheduleAtom,
-  listAtom,
+  measurementsAtom,
 } from '@/stores/store';
 
 const store = getDefaultStore();
@@ -22,7 +22,6 @@ export const getDate = () => store.get(dateAtom);
 export const getOverlay = () => store.get(overlayAtom);
 export const getAlertPreferences = () => store.get(alertPreferencesAtom);
 export const getSoundPreferences = () => store.get(soundPreferencesAtom);
-export const getList = () => store.get(listAtom);
 
 export const getSchedule = (type: ScheduleType) =>
   type === ScheduleType.Standard ? store.get(standardScheduleAtom) : store.get(extraScheduleAtom);
@@ -35,21 +34,22 @@ export const toggleOverlay = () => {
 };
 
 export const setDate = () => {
-  const date = getDate();
   const schedule = getSchedule(ScheduleType.Standard);
 
   const currentDate = schedule.today[PRAYER_INDEX_ISHA].date;
 
-  store.set(dateAtom, { ...date, current: currentDate });
+  store.set(dateAtom, currentDate);
 };
 
-export const setMeasurementsDate = (measurements: PageCoordinates) => {
-  const date = getDate();
-  store.set(dateAtom, { ...date, measurements });
-};
-
-export const setMeasurementsList = (measurements: PageCoordinates) => {
-  store.set(listAtom, { measurements });
+export const setMeasurements = {
+  date: (measurements: PageCoordinates) => {
+    const current = store.get(measurementsAtom);
+    store.set(measurementsAtom, { ...current, date: measurements });
+  },
+  list: (measurements: PageCoordinates) => {
+    const current = store.get(measurementsAtom);
+    store.set(measurementsAtom, { ...current, list: measurements });
+  },
 };
 
 // set standard schedule for today and tomorrow
