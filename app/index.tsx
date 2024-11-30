@@ -1,5 +1,4 @@
 import { useFonts } from 'expo-font';
-import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -9,17 +8,14 @@ import * as Api from '@/api/client';
 import Navigation from '@/app/Navigation';
 import FontRobotoMedium from '@/assets/fonts/Roboto-Medium.ttf';
 import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
-import Glow from '@/components/Glow';
 import GradientBackground from '@/components/GradientBackground';
 import Overlay from '@/components/Overlay';
 import logger from '@/shared/logger';
 import { ScheduleType } from '@/shared/types';
 import { setSchedule, setDate } from '@/stores/actions';
 import * as Database from '@/stores/database';
-import { overlayAtom } from '@/stores/store';
 
 export default function Index() {
-  const overlay = useAtomValue(overlayAtom);
   const [fontsLoaded] = useFonts({
     Roboto: FontRoboto,
     'Roboto-Medium': FontRobotoMedium,
@@ -47,7 +43,6 @@ export default function Index() {
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
       <GradientBackground />
       <StatusBar barStyle="light-content" />
-      <Glow isOverlayOn={overlay.isOn} />
       <Overlay />
       <Navigation />
     </GestureHandlerRootView>
