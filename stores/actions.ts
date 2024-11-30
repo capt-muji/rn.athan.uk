@@ -3,7 +3,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 import { PRAYER_INDEX_ISHA } from '@/shared/constants';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import { AlertType, PageCoordinates, ScheduleType } from '@/shared/types';
+import { AlertType, Measurements, PageCoordinates, ScheduleType } from '@/shared/types';
 import * as database from '@/stores/database';
 import {
   dateAtom,
@@ -41,15 +41,9 @@ export const setDate = () => {
   store.set(dateAtom, currentDate);
 };
 
-export const setMeasurements = {
-  date: (measurements: PageCoordinates) => {
-    const current = store.get(measurementsAtom);
-    store.set(measurementsAtom, { ...current, date: measurements });
-  },
-  list: (measurements: PageCoordinates) => {
-    const current = store.get(measurementsAtom);
-    store.set(measurementsAtom, { ...current, list: measurements });
-  },
+export const setMeasurement = (key: keyof Measurements, measurements: PageCoordinates) => {
+  const current = store.get(measurementsAtom);
+  store.set(measurementsAtom, { ...current, [key]: measurements });
 };
 
 // set standard schedule for today and tomorrow
