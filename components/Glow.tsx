@@ -35,6 +35,5 @@ const styles = StyleSheet.create({
   glow: {
     position: 'absolute',
     top: -Dimensions.get('window').width / 2,
-    left: -Dimensions.get('window').width / 3,
   },
 });
