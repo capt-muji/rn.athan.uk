@@ -27,7 +27,7 @@ export default function Prayer({ index, type }: Props) {
   const viewRef = useRef<View>(null);
 
   const handlePress = () => {
-    setSelectedPrayerIndex(type, index);
+    setSelectedPrayerIndex(index);
   };
 
   if (Prayer.isNext) AnimColor.animate(1);
