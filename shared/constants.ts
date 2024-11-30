@@ -61,13 +61,11 @@ export const OVERLAY = {
       prayerNotSelected: -1,
       activeBackground: -2,
       longDate: -3,
-      glow: -3,
     },
     on: {
       countdown: 999,
       prayerSelected: 4,
       longDate: -1,
-      glow: 0,
     },
   },
 };
