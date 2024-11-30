@@ -11,7 +11,7 @@ import {
   OverlayStore,
   SoundPreferences,
   ScheduleType,
-  ListStore,
+  PageCoordinates,
 } from '@/shared/types';
 import { database } from '@/stores/database';
 
@@ -80,11 +80,11 @@ export interface OverlayStore {
 export const overlayAtom = atom<OverlayStore>({
   isOn: false,
   selectedPrayerIndex: -1,
+  scheduleType: ScheduleType.Standard,
 });
 
 export const pagePositionAtom = atom<number>(0);
 
-export const listAtom = atom<ListStore>({
-  standard: null,
-  extra: null,
+export const listAtom = atom<{ measurements: PageCoordinates | null }>({
+  measurements: null,
 });

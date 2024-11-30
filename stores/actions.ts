@@ -48,10 +48,8 @@ export const setMeasurementsDate = (measurements: PageCoordinates) => {
   store.set(dateAtom, { ...date, measurements });
 };
 
-export const setMeasurementsList = (type: ScheduleType, measurements: PageCoordinates) => {
-  const list = getList();
-
-  store.set(listAtom, { ...list, [type]: measurements });
+export const setMeasurementsList = (measurements: PageCoordinates) => {
+  store.set(listAtom, { measurements });
 };
 
 // set standard schedule for today and tomorrow
@@ -105,8 +103,7 @@ export const setSelectedSound = (soundIndex: number) => {
   store.set(soundPreferencesAtom, { ...soundPreferences, selected: soundIndex });
 };
 
-export const setSelectedPrayerIndex = (index: number) => {
+export const setSelectedPrayerIndex = (index: number, scheduleType: ScheduleType) => {
   const overlay = getOverlay();
-
-  store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index });
+  store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };

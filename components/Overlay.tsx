@@ -8,7 +8,6 @@ import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } f
 import RadialGlow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import { OVERLAY, ANIMATION, STYLES } from '@/shared/constants';
-import { ScheduleType } from '@/shared/types';
 import { toggleOverlay } from '@/stores/actions';
 import { overlayAtom, listAtom } from '@/stores/store';
 
@@ -18,8 +17,7 @@ const AnimatedCanvas = Reanimated.createAnimatedComponent(Canvas);
 export default function Overlay() {
   const { width, height } = useWindowDimensions();
   const overlay = useAtomValue(overlayAtom);
-  const list = useAtomValue(listAtom);
-  const standardList = list.standard;
+  const { measurements } = useAtomValue(listAtom);
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -67,19 +65,18 @@ export default function Overlay() {
 
           <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-          {overlay.isOn && overlay.selectedPrayerIndex >= 0 && standardList && (
+          {overlay.isOn && overlay.selectedPrayerIndex >= 0 && measurements && (
             <View
               style={{
                 position: 'absolute',
-                top: standardList.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
-                left: standardList.pageX,
-                width: standardList.width,
+                top: measurements.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
+                left: measurements.pageX,
+                width: measurements.width,
                 height: STYLES.prayer.height,
                 zIndex: OVERLAY.zindexes.on.prayerSelected,
-                backgroundColor: 'green',
               }}
             >
-              <Prayer index={overlay.selectedPrayerIndex} type={ScheduleType.Standard} />
+              <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
             </View>
           )}
         </AnimatedBlur>
