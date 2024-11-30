@@ -15,11 +15,10 @@ import logger from '@/shared/logger';
 import { ScheduleType } from '@/shared/types';
 import { setSchedule, setDate, setIsLoading, setHasError } from '@/stores/actions';
 import * as Database from '@/stores/database';
-import { appAtom, measurementsAtom } from '@/stores/store';
+import { appAtom } from '@/stores/store';
 
 export default function Index() {
   const app = useAtomValue(appAtom);
-  const measurements = useAtomValue(measurementsAtom);
 
   const [fontsLoaded] = useFonts({
     Roboto: FontRoboto,
@@ -51,13 +50,11 @@ export default function Index() {
   if (app.isLoading) return <WaveIndicator color="white" />;
   if (app.hasError) return <Text>ERROR</Text>;
 
-  const measurementsReady = measurements.date !== null && measurements.list !== null;
-
   return (
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
       <GradientBackground />
       <StatusBar barStyle="light-content" />
-      {measurementsReady && <Overlay />}
+      <Overlay />
       <Navigation />
     </GestureHandlerRootView>
   );
