@@ -54,8 +54,8 @@ export default function Index() {
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
       <GradientBackground />
       <StatusBar barStyle="light-content" />
-      <Overlay />
       <Navigation />
+      <Overlay />
     </GestureHandlerRootView>
   );
 }
