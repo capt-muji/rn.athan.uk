@@ -1,24 +1,23 @@
-import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
+import { StyleSheet, Pressable, View } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Countdown from '@/components/Countdown';
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
-import { OVERLAY, ANIMATION, STYLES, COLORS, TEXT } from '@/shared/constants';
+import { OVERLAY, ANIMATION, STYLES, COLORS, TEXT, SCREEN } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
 import { overlayAtom, measurementsAtom } from '@/stores/store';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
-const AnimatedCanvas = Reanimated.createAnimatedComponent(Canvas);
 
 export default function Overlay() {
-  const { width, height } = useWindowDimensions();
   const overlay = useAtomValue(overlayAtom);
   const measurements = useAtomValue(measurementsAtom);
+  const insets = useSafeAreaInsets();
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -41,6 +40,7 @@ export default function Overlay() {
     zIndex: OVERLAY.zindexes.overlay,
     opacity: backgroundOpacityShared.value,
     pointerEvents: overlay.isOn ? 'auto' : 'none',
+    backgroundColor: 'rgba(8,0,18,0.97)',
   }));
 
   const dateStyle = useAnimatedStyle(() => ({
@@ -52,22 +52,12 @@ export default function Overlay() {
 
   return (
     <Reanimated.View style={containerStyle}>
-      <AnimatedBlur intensity={15} style={StyleSheet.absoluteFill}>
-        <AnimatedCanvas style={StyleSheet.absoluteFill}>
-          <Rect x={0} y={0} width={width} height={height}>
-            <LinearGradient
-              start={vec(0, 0)}
-              end={vec(0, height)}
-              colors={['rgba(25,0,40,0.97)', 'rgba(8,0,12,0.94)', 'rgba(2,0,4,0.95)']}
-            />
-          </Rect>
-        </AnimatedCanvas>
-
+      <AnimatedBlur intensity={10} tint="dark" style={StyleSheet.absoluteFill}>
         <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-        {/* Countdown - using fixed positioning */}
+        {/* Countdown - using insets */}
         {overlay.isOn && (
-          <View style={styles.countdownContainer}>
+          <View style={[styles.countdownContainer, { top: insets.top + SCREEN.paddingHorizontal }]}>
             <Countdown type={overlay.scheduleType} />
           </View>
         )}
@@ -113,7 +103,6 @@ export default function Overlay() {
 const styles = StyleSheet.create({
   countdownContainer: {
     position: 'absolute',
-    top: 120, // Match the top margin/padding from your layout
     left: 0,
     right: 0,
   },
