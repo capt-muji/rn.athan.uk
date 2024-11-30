@@ -13,6 +13,7 @@ import {
   standardScheduleAtom,
   extraScheduleAtom,
   measurementsAtom,
+  appAtom,
 } from '@/stores/store';
 
 const store = getDefaultStore();
@@ -25,6 +26,8 @@ export const getSoundPreferences = () => store.get(soundPreferencesAtom);
 
 export const getSchedule = (type: ScheduleType) =>
   type === ScheduleType.Standard ? store.get(standardScheduleAtom) : store.get(extraScheduleAtom);
+
+export const getApp = () => store.get(appAtom);
 
 // Setters
 export const toggleOverlay = () => {
@@ -100,4 +103,9 @@ export const setSelectedSound = (soundIndex: number) => {
 export const setSelectedPrayerIndex = (index: number, scheduleType: ScheduleType) => {
   const overlay = getOverlay();
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
+};
+
+export const setAppLoading = (isLoading: boolean) => {
+  const app = getApp();
+  store.set(appAtom, { ...app, isLoading });
 };

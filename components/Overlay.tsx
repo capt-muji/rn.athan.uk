@@ -1,7 +1,7 @@
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { StyleSheet, Pressable, View, ViewStyle } from 'react-native';
+import { StyleSheet, Pressable, View, ViewStyle, Text } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -11,18 +11,21 @@ import Prayer from '@/components/Prayer';
 import { useAnimationOpacity } from '@/hooks/useAnimations';
 import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
-import { overlayAtom, measurementsAtom } from '@/stores/store';
+import { overlayAtom, measurementsAtom, appAtom } from '@/stores/store';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const measurements = useAtomValue(measurementsAtom);
+  const app = useAtomValue(appAtom);
   const insets = useSafeAreaInsets();
 
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
   const prayerOpacity = useAnimationOpacity(0);
+
+  if (app.isLoading || measurements.date === null || measurements.list === null) return <Text>NOT READY</Text>;
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
