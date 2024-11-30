@@ -5,9 +5,10 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Pressable, View, useWindowDimensions } from 'react-native';
 import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
+import Countdown from '@/components/Countdown';
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
-import { OVERLAY, ANIMATION, STYLES } from '@/shared/constants';
+import { OVERLAY, ANIMATION, STYLES, COLORS, TEXT } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
 import { overlayAtom, measurementsAtom } from '@/stores/store';
 
@@ -17,7 +18,7 @@ const AnimatedCanvas = Reanimated.createAnimatedComponent(Canvas);
 export default function Overlay() {
   const { width, height } = useWindowDimensions();
   const overlay = useAtomValue(overlayAtom);
-  const { list: measurements } = useAtomValue(measurementsAtom);
+  const measurements = useAtomValue(measurementsAtom);
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -42,6 +43,13 @@ export default function Overlay() {
     pointerEvents: overlay.isOn ? 'auto' : 'none',
   }));
 
+  const dateStyle = useAnimatedStyle(() => ({
+    opacity: dateOpacityShared.value,
+    color: COLORS.textSecondary,
+    fontSize: TEXT.size,
+    fontFamily: TEXT.famiy.regular,
+  }));
+
   return (
     <Reanimated.View style={containerStyle}>
       <AnimatedBlur intensity={15} style={StyleSheet.absoluteFill}>
@@ -57,15 +65,40 @@ export default function Overlay() {
 
         <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
-        {overlay.isOn && overlay.selectedPrayerIndex >= 0 && measurements && (
+        {/* Countdown - using fixed positioning */}
+        {overlay.isOn && (
+          <View style={styles.countdownContainer}>
+            <Countdown type={overlay.scheduleType} />
+          </View>
+        )}
+
+        {/* Date */}
+        {overlay.isOn && measurements?.date && (
+          <Reanimated.Text
+            style={[
+              dateStyle,
+              {
+                position: 'absolute',
+                top: measurements.date.pageY,
+                left: measurements.date.pageX,
+                width: measurements.date.width,
+                height: measurements.date.height,
+              },
+            ]}
+          >
+            {overlay.selectedPrayerIndex >= 5 ? 'Tomorrow' : 'Today'}
+          </Reanimated.Text>
+        )}
+
+        {/* Prayer overlay */}
+        {overlay.isOn && measurements?.list && (
           <View
             style={{
               position: 'absolute',
-              top: measurements.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
-              left: measurements.pageX,
-              width: measurements.width,
+              top: measurements.list.pageY + overlay.selectedPrayerIndex * STYLES.prayer.height,
+              left: measurements.list.pageX,
+              width: measurements.list.width,
               height: STYLES.prayer.height,
-              zIndex: OVERLAY.zindexes.on.prayerSelected,
             }}
           >
             <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
@@ -76,3 +109,12 @@ export default function Overlay() {
     </Reanimated.View>
   );
 }
+
+const styles = StyleSheet.create({
+  countdownContainer: {
+    position: 'absolute',
+    top: 120, // Match the top margin/padding from your layout
+    left: 0,
+    right: 0,
+  },
+});
