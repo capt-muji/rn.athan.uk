@@ -44,13 +44,13 @@ export default function Overlay() {
 
   return (
     <Reanimated.View style={containerStyle}>
-      <AnimatedBlur intensity={25} tint="dark" style={StyleSheet.absoluteFill}>
+      <AnimatedBlur intensity={15} style={StyleSheet.absoluteFill}>
         <AnimatedCanvas style={StyleSheet.absoluteFill}>
           <Rect x={0} y={0} width={width} height={height}>
             <LinearGradient
               start={vec(0, 0)}
               end={vec(0, height)}
-              colors={['rgba(25,0,40,75)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
+              colors={['rgba(25,0,40,0.97)', 'rgba(8,0,12,0.94)', 'rgba(2,0,4,0.95)']}
             />
           </Rect>
         </AnimatedCanvas>
