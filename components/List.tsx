@@ -8,7 +8,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { setAppLoading, setMeasurement } from '@/stores/actions';
+import { setMeasurement } from '@/stores/actions';
 import { dateAtom } from '@/stores/store';
 
 interface Props {
@@ -30,7 +30,6 @@ export default function List({ type }: Props) {
 
     listRef.current.measureInWindow((x, y, width, height) => {
       setMeasurement('list', { pageX: x, pageY: y, width, height });
-      setAppLoading(false);
     });
   };
 

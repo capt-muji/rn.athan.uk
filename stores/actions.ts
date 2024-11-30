@@ -105,7 +105,14 @@ export const setSelectedPrayerIndex = (index: number, scheduleType: ScheduleType
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };
 
-export const setAppLoading = (isLoading: boolean) => {
+export const setHasError = (hasError: boolean) => {
   const app = getApp();
+
+  store.set(appAtom, { ...app, hasError });
+};
+
+export const setIsLoading = (isLoading: boolean) => {
+  const app = getApp();
+
   store.set(appAtom, { ...app, isLoading });
 };
