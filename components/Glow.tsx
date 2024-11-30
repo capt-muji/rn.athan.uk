@@ -14,7 +14,7 @@ export default function Glow({ color = 'rgb(128,0,255)', baseOpacity = 0.5, isOv
   const size = Dimensions.get('window').width * (isOverlayOn ? 1.2 : 1);
 
   const glowStyle = useAnimatedStyle(() => ({
-    opacity: withTiming(1, { duration: 500 }),
+    opacity: withTiming(isOverlayOn ? 1 : baseOpacity, { duration: 300 }),
   }));
 
   return (
