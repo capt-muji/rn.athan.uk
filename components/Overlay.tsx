@@ -18,20 +18,16 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const measurements = useAtomValue(measurementsAtom);
-
-  // Early return if no measurements
-  if (!measurements.date || !measurements.list) return null;
-
   const insets = useSafeAreaInsets();
+
+  const backgroundOpacity = useAnimationOpacity(0);
+  const dateOpacity = useAnimationOpacity(0);
+  const prayerOpacity = useAnimationOpacity(0);
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     toggleOverlay();
   };
-
-  const backgroundOpacity = useAnimationOpacity(0);
-  const dateOpacity = useAnimationOpacity(0);
-  const prayerOpacity = useAnimationOpacity(0);
 
   if (overlay.isOn) {
     backgroundOpacity.animate(1, { duration: ANIMATION.duration });
