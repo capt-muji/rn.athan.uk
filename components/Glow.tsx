@@ -5,7 +5,7 @@ import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
 const AnimatedSvg = Reanimated.createAnimatedComponent(Svg);
 
 export default function Glow() {
-  const baseOpacity = 0.75;
+  const baseOpacity = 0.5;
   const color = 'rgb(128,0,255)';
   const size = Dimensions.get('window').width * 1.5;
 
