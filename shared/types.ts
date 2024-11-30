@@ -140,7 +140,6 @@ export interface ScheduleStore {
   today: IScheduleNow;
   tomorrow: IScheduleNow;
   nextIndex: number;
-  selectedIndex: number;
 }
 
 export interface PreferencesStore {
@@ -159,4 +158,5 @@ export interface DateStore {
 
 export interface OverlayStore {
   isOn: boolean;
+  selectedPrayerIndex: number;
 }
