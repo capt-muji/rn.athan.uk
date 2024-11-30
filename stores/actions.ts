@@ -30,6 +30,7 @@ export const getSchedule = (type: ScheduleType) =>
 // Setters
 export const toggleOverlay = () => {
   const overlay = getOverlay();
+
   store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
 };
 
@@ -93,13 +94,19 @@ export const incrementNextIndex = (type: ScheduleType) => {
 };
 
 export const setAlertPreference = (prayerIndex: number, alertType: AlertType) => {
-  const current = getAlertPreferences();
+  const alertPreference = getAlertPreferences();
 
-  store.set(alertPreferencesAtom, { ...current, [prayerIndex]: alertType });
+  store.set(alertPreferencesAtom, { ...alertPreference, [prayerIndex]: alertType });
 };
 
 export const setSelectedSound = (soundIndex: number) => {
-  const current = getSoundPreferences();
+  const soundPreferences = getSoundPreferences();
 
-  store.set(soundPreferencesAtom, { ...current, selected: soundIndex });
+  store.set(soundPreferencesAtom, { ...soundPreferences, selected: soundIndex });
+};
+
+export const setSelectedPrayerIndex = (index: number) => {
+  const overlay = getOverlay();
+
+  store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index });
 };

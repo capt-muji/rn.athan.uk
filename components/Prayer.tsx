@@ -8,6 +8,7 @@ import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { TEXT, COLORS, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
+import { setSelectedPrayerIndex } from '@/stores/actions';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -25,10 +26,14 @@ export default function Prayer({ index, type }: Props) {
 
   const viewRef = useRef<View>(null);
 
+  const handlePress = () => {
+    setSelectedPrayerIndex(type, index);
+  };
+
   if (Prayer.isNext) AnimColor.animate(1);
 
   return (
-    <AnimatedPressable ref={viewRef} style={styles.container}>
+    <AnimatedPressable ref={viewRef} style={styles.container} onPress={handlePress}>
       <Animated.Text style={[styles.text, styles.english, AnimColor.style]}>{Prayer.english}</Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
       <PrayerTime index={index} type={type} />
