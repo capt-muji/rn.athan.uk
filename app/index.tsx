@@ -10,6 +10,7 @@ import FontRobotoMedium from '@/assets/fonts/Roboto-Medium.ttf';
 import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Glow from '@/components/Glow';
 import GradientBackground from '@/components/GradientBackground';
+import Overlay from '@/components/Overlay';
 import logger from '@/shared/logger';
 import { ScheduleType } from '@/shared/types';
 import { setSchedule, setDate } from '@/stores/actions';
@@ -44,6 +45,7 @@ export default function Index() {
       <GradientBackground />
       <StatusBar barStyle="light-content" />
       <Glow />
+      <Overlay />
       <Navigation />
     </GestureHandlerRootView>
   );
