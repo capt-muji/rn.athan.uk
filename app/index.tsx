@@ -14,7 +14,7 @@ import { refresh } from '@/stores/actions';
 import { refreshLoadable } from '@/stores/store';
 
 export default function Index() {
-  const init = useAtomValue(refreshLoadable);
+  const init = useAtomValue(refreshLoadable); // TODO: dont run this if we already have the data
 
   const [fontsLoaded] = useFonts({
     Roboto: FontRoboto,
