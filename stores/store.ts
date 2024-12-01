@@ -12,7 +12,6 @@ import {
   ScheduleType,
   Measurements,
 } from '@/shared/types';
-import { setDate, setSchedule } from '@/stores/actions';
 import { database } from '@/stores/database';
 import * as Database from '@/stores/database';
 
@@ -91,15 +90,9 @@ export const overlayAtom = atom<OverlayStore>({
 
 export const pagePositionAtom = atom<number>(0);
 
-const initializationAtom = atom(async () => {
+const refreshAtom = atom(async () => {
   const data = await Api.handle();
   Database.saveAll(data);
-
-  setSchedule(ScheduleType.Standard);
-  setSchedule(ScheduleType.Extra);
-  setDate();
-
-  return { success: true };
 });
 
-export const initializationLoadable = loadable(initializationAtom);
+export const refreshLoadable = loadable(refreshAtom);
