@@ -1,18 +1,20 @@
 import { atom } from 'jotai';
-import { atomWithStorage, createJSONStorage } from 'jotai/utils';
+import { atomWithStorage, createJSONStorage, loadable } from 'jotai/utils';
 
+import * as Api from '@/api/client';
 import { PRAYERS_ENGLISH } from '@/shared/constants';
 import {
   AlertPreferences,
   AlertType,
   ScheduleStore,
-  AppStore,
   OverlayStore,
   SoundPreferences,
   ScheduleType,
   Measurements,
 } from '@/shared/types';
+import { setDate, setSchedule } from '@/stores/actions';
 import { database } from '@/stores/database';
+import * as Database from '@/stores/database';
 
 // Custom storage for MMKV
 const mmkvStorage = createJSONStorage(() => ({
@@ -48,11 +50,6 @@ const initialSoundPreferences: SoundPreferences = {
 
 export const soundPreferencesAtom = atomWithStorage('soundPreferences', initialSoundPreferences, mmkvStorage, {
   getOnInit: true,
-});
-
-export const appAtom = atom<AppStore>({
-  isLoading: true,
-  hasError: false,
 });
 
 export const measurementsAtom = atom<Measurements>({
@@ -93,3 +90,16 @@ export const overlayAtom = atom<OverlayStore>({
 });
 
 export const pagePositionAtom = atom<number>(0);
+
+const baseInitAtom = atom(async () => {
+  const data = await Api.handle();
+  Database.saveAll(data);
+
+  setSchedule(ScheduleType.Standard);
+  setSchedule(ScheduleType.Extra);
+  setDate();
+
+  return { success: true };
+});
+
+export const initializationAtom = loadable(baseInitAtom);
