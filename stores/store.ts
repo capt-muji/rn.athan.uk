@@ -56,7 +56,7 @@ export const measurementsAtom = atom<Measurements>({
   list: null,
 });
 
-export const dateAtom = atom<string>('');
+export const dateAtom = atomWithStorage('date', '', mmkvStorage, { getOnInit: true });
 
 const initialPrayer = (scheduleType: ScheduleType) => ({
   index: 0,
