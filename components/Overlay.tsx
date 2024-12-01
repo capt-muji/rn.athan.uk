@@ -19,11 +19,12 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const PrayerHook = usePrayer(overlay.selectedPrayerIndex, overlay.scheduleType);
-  const measurements = useAtomValue(measurementsAtom);
 
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
   const prayerOpacity = useAnimationOpacity(0);
+
+  const measurements = useAtomValue(measurementsAtom);
 
   const insets = useSafeAreaInsets();
 
