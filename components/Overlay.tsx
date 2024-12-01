@@ -26,6 +26,7 @@ export default function Overlay() {
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
     toggleOverlay();
   };
 
