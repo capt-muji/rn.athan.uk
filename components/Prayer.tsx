@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics';
 import { useRef } from 'react';
 import { StyleSheet, View, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
@@ -27,6 +28,8 @@ export default function Prayer({ index, type }: Props) {
   const viewRef = useRef<View>(null);
 
   const handlePress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
     setSelectedPrayerIndex(index, type);
     toggleOverlay();
   };
