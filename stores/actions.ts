@@ -88,12 +88,12 @@ export const setSelectedPrayerIndex = (index: number, scheduleType: ScheduleType
 // --- Functions ---
 export const refresh = () => {
   const currentDate = getDate();
-  const today = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
+  const standardSchedule = getSchedule(ScheduleType.Standard);
 
-  if (currentDate === today) {
-    logger.info('Data already up to date');
-    return;
-  }
+  const today = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
+  const isInit = Object.keys(standardSchedule.today).length === 1;
+
+  if (currentDate === today && !isInit) return logger.info('Data already up to date');
 
   setSchedule(ScheduleType.Standard);
   setSchedule(ScheduleType.Extra);
