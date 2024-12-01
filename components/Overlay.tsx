@@ -63,7 +63,7 @@ export default function Overlay() {
 
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
-      <AnimatedBlur intensity={10} tint="dark" style={StyleSheet.absoluteFill}>
+      <AnimatedBlur intensity={15} tint="dark" style={StyleSheet.absoluteFill}>
         <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
 
         {/* Countdown */}
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
-    backgroundColor: 'rgba(8,0,18,0.97)',
+    backgroundColor: 'rgba(0,0,18,0.96)',
   },
   countdown: {
     position: 'absolute',
