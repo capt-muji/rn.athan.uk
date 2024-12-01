@@ -46,9 +46,13 @@ export default function Index() {
     init();
   }, []);
 
-  if (!fontsLoaded) return <WaveIndicator color="white" />;
-  if (app.isLoading) return <WaveIndicator color="white" />;
-  if (app.hasError) return <Text>ERROR</Text>;
+  if (!fontsLoaded || app.isLoading) {
+    return <WaveIndicator color="white" />;
+  }
+
+  if (app.hasError) {
+    return <Text>ERROR</Text>;
+  }
 
   return (
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
