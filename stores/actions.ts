@@ -1,9 +1,10 @@
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { PRAYER_INDEX_ASR } from '@/shared/constants';
+import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import { AlertType, Measurements, PageCoordinates, ScheduleType } from '@/shared/types';
+import { AlertType, Measurements, PageCoordinates, ScheduleType, DaySelection } from '@/shared/types';
 import * as database from '@/stores/database';
 import {
   dateAtom,
@@ -103,6 +104,14 @@ export const setSelectedPrayerIndex = (index: number, scheduleType: ScheduleType
 };
 
 export const refresh = () => {
+  const currentDate = getDate();
+  const today = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
+
+  if (currentDate === today) {
+    logger.info('Data already up to date');
+    return;
+  }
+
   setSchedule(ScheduleType.Standard);
   setSchedule(ScheduleType.Extra);
   setDate();
