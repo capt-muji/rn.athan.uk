@@ -18,7 +18,7 @@ import {
 
 const store = getDefaultStore();
 
-// Getters
+// --- Getters ---
 export const getDate = () => store.get(dateAtom);
 export const getOverlay = () => store.get(overlayAtom);
 export const getAlertPreferences = () => store.get(alertPreferencesAtom);
@@ -27,13 +27,7 @@ export const getSoundPreferences = () => store.get(soundPreferencesAtom);
 export const getSchedule = (type: ScheduleType) =>
   type === ScheduleType.Standard ? store.get(standardScheduleAtom) : store.get(extraScheduleAtom);
 
-// Setters
-export const toggleOverlay = () => {
-  const overlay = getOverlay();
-
-  store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
-};
-
+// --- Setters ---
 export const setDate = () => {
   const schedule = getSchedule(ScheduleType.Standard);
 
@@ -74,18 +68,6 @@ export const setSchedule = (type: ScheduleType) => {
   });
 };
 
-export const incrementNextIndex = (type: ScheduleType) => {
-  const isStandard = type === ScheduleType.Standard;
-  const schedule = getSchedule(type);
-
-  const isLastPrayer = schedule.nextIndex === Object.keys(schedule.today).length - 1;
-  const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
-
-  const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
-
-  store.set(scheduleAtom, { ...schedule, nextIndex });
-};
-
 export const setAlertPreference = (prayerIndex: number, alertType: AlertType) => {
   const alertPreference = getAlertPreferences();
 
@@ -103,6 +85,7 @@ export const setSelectedPrayerIndex = (index: number, scheduleType: ScheduleType
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };
 
+// --- Functions ---
 export const refresh = () => {
   const currentDate = getDate();
   const today = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
@@ -115,4 +98,22 @@ export const refresh = () => {
   setSchedule(ScheduleType.Standard);
   setSchedule(ScheduleType.Extra);
   setDate();
+};
+
+export const incrementNextIndex = (type: ScheduleType) => {
+  const isStandard = type === ScheduleType.Standard;
+  const schedule = getSchedule(type);
+
+  const isLastPrayer = schedule.nextIndex === Object.keys(schedule.today).length - 1;
+  const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
+
+  const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
+
+  store.set(scheduleAtom, { ...schedule, nextIndex });
+};
+
+export const toggleOverlay = () => {
+  const overlay = getOverlay();
+
+  store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
 };
