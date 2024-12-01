@@ -91,7 +91,7 @@ export const overlayAtom = atom<OverlayStore>({
 
 export const pagePositionAtom = atom<number>(0);
 
-const baseInitAtom = atom(async () => {
+const initializationAtom = atom(async () => {
   const data = await Api.handle();
   Database.saveAll(data);
 
@@ -102,4 +102,4 @@ const baseInitAtom = atom(async () => {
   return { success: true };
 });
 
-export const initializationAtom = loadable(baseInitAtom);
+export const initializationLoadable = loadable(initializationAtom);
