@@ -9,6 +9,7 @@ import Countdown from '@/components/Countdown';
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import { useAnimationOpacity } from '@/hooks/useAnimations';
+import { usePrayer } from '@/hooks/usePrayer';
 import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
 import { toggleOverlay } from '@/stores/actions';
 import { overlayAtom, measurementsAtom } from '@/stores/store';
@@ -17,12 +18,16 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
+  const PrayerHook = usePrayer(overlay.selectedPrayerIndex, overlay.scheduleType);
   const measurements = useAtomValue(measurementsAtom);
-  const insets = useSafeAreaInsets();
 
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
   const prayerOpacity = useAnimationOpacity(0);
+
+  const insets = useSafeAreaInsets();
+
+  const isPrayerNext = PrayerHook.schedule.nextIndex === overlay.selectedPrayerIndex;
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -59,6 +64,7 @@ export default function Overlay() {
     top: (measurements.list?.pageY ?? 0) + overlay.selectedPrayerIndex * STYLES.prayer.height,
     left: measurements.list?.pageX ?? 0,
     width: measurements.list?.width ?? 0,
+    ...(isPrayerNext && styles.activeBackground),
   };
 
   return (
@@ -108,5 +114,11 @@ const styles = StyleSheet.create({
   prayer: {
     position: 'absolute',
     height: STYLES.prayer.height,
+  },
+  activeBackground: {
+    ...STYLES.prayer.border,
+    ...STYLES.prayer.shadow,
+    backgroundColor: COLORS.activeBackground,
+    shadowColor: COLORS.standardActiveBackgroundShadow,
   },
 });

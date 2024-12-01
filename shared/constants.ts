@@ -69,6 +69,9 @@ export const STYLES = {
       left: 20,
       right: 20,
     },
+    border: {
+      borderRadius: 8,
+    },
     shadow: {
       shadowOffset: { width: 1, height: 10 },
       shadowOpacity: 0.5,
