@@ -151,11 +151,6 @@ export interface PreferencesStore {
   preferences: Preferences;
 }
 
-export interface AppStore {
-  isLoading: boolean;
-  hasError: boolean;
-}
-
 export interface OverlayStore {
   isOn: boolean;
   selectedPrayerIndex: number;
