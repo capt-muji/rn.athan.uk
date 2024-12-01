@@ -31,8 +31,8 @@ export const COLORS = {
   gradientScreen1Start: '#031a4c',
   gradientScreen1End: '#5b1eaa',
 
-  gradientScreen2Start: '#140B5D',
-  gradientScreen2End: '#150020',
+  gradientScreen2Start: '#320088',
+  gradientScreen2End: '#140035',
 
   activePrayer: '#ffffff',
   inactivePrayer: '#8aa9d662',
