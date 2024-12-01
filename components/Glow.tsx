@@ -14,7 +14,7 @@ export default function Glow() {
   return (
     <AnimatedSvg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={[styles.glow]}>
       <RadialGradient id="radialGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-        <Stop offset="0%" stopColor={color} stopOpacity={baseOpacity * 0.5} />
+        <Stop offset="0%" stopColor={color} stopOpacity={baseOpacity * 0.75} />
         <Stop offset="35%" stopColor={color} stopOpacity={baseOpacity * 0.4} />
         <Stop offset="65%" stopColor={color} stopOpacity={baseOpacity * 0.15} />
         <Stop offset="85%" stopColor={color} stopOpacity={baseOpacity * 0.05} />
