@@ -9,7 +9,7 @@ import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { TEXT, COLORS, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/actions';
+import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 

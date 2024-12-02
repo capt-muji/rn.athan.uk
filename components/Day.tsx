@@ -8,8 +8,8 @@ import { useAnimationOpacity } from '@/hooks/useAnimations';
 import { COLORS, SCREEN, TEXT, ANIMATION } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { setMeasurement } from '@/stores/actions';
-import { dateAtom, overlayAtom } from '@/stores/store';
+import { dateAtom } from '@/stores/sync';
+import { overlayAtom, setMeasurement } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;

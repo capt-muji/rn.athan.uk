@@ -6,8 +6,8 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import { COLORS, TEXT } from '@/shared/constants';
 import { formatTime, getDateTodayOrTomorrow, getTimeDifference } from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
-import { incrementNextIndex } from '@/stores/actions';
-import { overlayAtom, standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
+import { extraScheduleAtom, incrementNextIndex, standardScheduleAtom } from '@/stores/schedule';
+import { overlayAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;

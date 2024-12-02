@@ -8,8 +8,8 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { setMeasurement } from '@/stores/actions';
-import { dateAtom } from '@/stores/store';
+import { dateAtom } from '@/stores/sync';
+import { setMeasurement } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;

@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Screen from '@/app/Screen';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { pagePositionAtom } from '@/stores/store';
+import { pagePositionAtom } from '@/stores/ui';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
