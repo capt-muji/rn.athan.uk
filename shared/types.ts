@@ -160,3 +160,8 @@ export interface OverlayStore {
 export interface FetchedYears {
   [year: number]: boolean;
 }
+
+export interface CountdownStore {
+  time: string;
+  name: string;
+}
