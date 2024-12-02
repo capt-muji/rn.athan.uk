@@ -21,7 +21,7 @@ export const alertPreferencesAtom = atomWithStorage(
   { getOnInit: true }
 );
 
-export const soundPreferencesAtom = atomWithStorage('soundPreferences', { selected: 1 }, Database.mmkvStorage, {
+export const soundPreferencesAtom = atomWithStorage<number>('soundPreferences', 0, Database.mmkvStorage, {
   getOnInit: true,
 });
 
@@ -42,6 +42,5 @@ export const setAlertPreference = (prayerIndex: number, alertType: Types.AlertTy
 
 /** Updates selected notification sound */
 export const setSelectedSound = (soundIndex: number) => {
-  const soundPreferences = getSoundPreferences();
-  store.set(soundPreferencesAtom, { ...soundPreferences, selected: soundIndex });
+  store.set(soundPreferencesAtom, soundIndex);
 };
