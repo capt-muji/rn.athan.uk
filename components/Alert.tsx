@@ -48,12 +48,11 @@ export default function Alert({ index, type }: Props) {
     AnimFill.animate(colorPos, { duration: 50 });
   }, [isPopupActive]);
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    },
-    []
-  );
+    };
+  }, []);
 
   // Handlers
   const handlePress = () => {
