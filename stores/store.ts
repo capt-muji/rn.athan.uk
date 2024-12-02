@@ -1,7 +1,6 @@
 import { atom } from 'jotai';
 import { atomWithStorage, createJSONStorage, loadable } from 'jotai/utils';
 
-import * as Api from '@/api/client';
 import { PRAYERS_ENGLISH } from '@/shared/constants';
 import {
   AlertPreferences,
@@ -13,6 +12,7 @@ import {
   Measurements,
   FetchedYears,
 } from '@/shared/types';
+import * as Actions from '@/stores/actions';
 import * as Database from '@/stores/database';
 
 // Custom storage for MMKV
@@ -90,13 +90,8 @@ export const overlayAtom = atom<OverlayStore>({
 
 export const pagePositionAtom = atom<number>(0);
 
-const refreshAtom = atom(async () => {
-  const data = await Api.handle();
-  Database.saveAll(data);
-});
-
-export const refreshLoadable = loadable(refreshAtom);
-
 export const fetchedYearsAtom = atomWithStorage<FetchedYears>('fetchedYears', {}, mmkvStorage, {
   getOnInit: true,
 });
+
+export const initialiseLoadable = loadable(atom(async () => Actions.refresh()));
