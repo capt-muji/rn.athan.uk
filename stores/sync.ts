@@ -19,7 +19,7 @@ export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetchedYear
   getOnInit: true,
 });
 
-export const initialiseLoadable = loadable(atom(async () => refresh()));
+export const initialiseLoadable = loadable(atom(async () => fetchAndSaveData()));
 
 // Actions
 const store = getDefaultStore();
@@ -34,8 +34,8 @@ export const getFetchedYears = () => store.get(fetchedYearsAtom);
 export const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
   const currentDate = schedule.today[Constants.PRAYER_INDEX_ASR].date;
+
   store.set(dateAtom, currentDate);
-  logger.info({ date: currentDate }, 'Date saved to storage');
 };
 
 /** Checks if next year's data needed */
@@ -51,8 +51,15 @@ export const markYearAsFetched = (year: number) => {
   store.set(fetchedYearsAtom, { ...fetchedYears, [year]: true });
 };
 
-/** Refreshes prayer data from API */
-export const refresh = async () => {
+/** Updates schedule and date in Jotai store */
+export const updateSchedulesAndDate = () => {
+  ScheduleStore.setSchedule(Types.ScheduleType.Standard);
+  ScheduleStore.setSchedule(Types.ScheduleType.Extra);
+  setDate();
+};
+
+/** Fetches and saves prayer data */
+export const fetchAndSaveData = async () => {
   const dateSaved = getDate();
   const dateNow = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
 
@@ -78,14 +85,6 @@ export const refresh = async () => {
     }
 
     logger.info('Prayer data processed');
-
-    // TODO: break below out into a separate action
-    ScheduleStore.setSchedule(Types.ScheduleType.Standard);
-    ScheduleStore.setSchedule(Types.ScheduleType.Extra);
-    setDate();
-    // TODO: break above out into a separate action
-
-    logger.info('Finished setting up schedule and date into state');
   } catch (error) {
     logger.error({ error }, 'Failed to refresh prayer data');
     throw error;
