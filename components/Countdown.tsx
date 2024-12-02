@@ -1,13 +1,10 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT } from '@/shared/constants';
-import { formatTime, getDateTodayOrTomorrow, getTimeDifference } from '@/shared/time';
-import { DaySelection, ScheduleType } from '@/shared/types';
-import { incrementNextIndex } from '@/stores/schedule';
+import { ScheduleType } from '@/shared/types';
+import { standardCountdownAtom, extraCountdownAtom } from '@/stores/countdown';
 import { overlayAtom } from '@/stores/ui';
 
 interface Props {
@@ -15,42 +12,17 @@ interface Props {
 }
 
 export default function Countdown({ type }: Props) {
-  const { schedule } = usePrayer(0, type);
+  const countdown = useAtomValue(type === ScheduleType.Standard ? standardCountdownAtom : extraCountdownAtom);
   const overlay = useAtomValue(overlayAtom);
 
-  // Derived State
-  const prayer = schedule.today[schedule.nextIndex];
-  const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
-  const initialTimeDifference = getTimeDifference(prayer.time, prayerDate);
-  const initialTimeFormatted = formatTime(initialTimeDifference);
-  const countdownName = schedule.today[schedule.nextIndex].english;
-
-  // State
-  const [countdown, setCountdown] = useState(initialTimeFormatted);
-
-  // Animations
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
   }));
 
-  // Functions
-  const updateCountdown = () => {
-    const diff = getTimeDifference(prayer.time, prayerDate);
-    if (diff <= 500) incrementNextIndex(type);
-    setCountdown(formatTime(diff));
-  };
-
-  // Effects
-  useEffect(() => {
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <Animated.View style={[styles.container]}>
-      <Text style={[styles.text]}>{countdownName} in</Text>
-      <Animated.Text style={[styles.countdown, animatedStyle]}>{countdown}</Animated.Text>
+      <Text style={[styles.text]}>{countdown.name} in</Text>
+      <Animated.Text style={[styles.countdown, animatedStyle]}>{countdown.time}</Animated.Text>
     </Animated.View>
   );
 }
