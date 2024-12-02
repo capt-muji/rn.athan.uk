@@ -15,36 +15,36 @@ interface Props {
 }
 
 export default function Countdown({ type }: Props) {
-  const Prayer = usePrayer(0, type);
-
+  const { schedule } = usePrayer(0, type);
   const overlay = useAtomValue(overlayAtom);
 
-  const prayer = Prayer.schedule.today[Prayer.schedule.nextIndex];
+  // Derived State
+  const prayer = schedule.today[schedule.nextIndex];
   const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
   const initialTime = formatTime(getTimeDifference(prayer.time, prayerDate));
+  const countdownName = schedule.today[schedule.nextIndex].english;
 
+  // State
   const [countdown, setCountdown] = useState(initialTime);
 
-  const updateCountdown = () => {
-    const diff = getTimeDifference(prayer.time, prayerDate);
-
-    if (diff <= 500) incrementNextIndex(type);
-
-    setCountdown(formatTime(diff));
-  };
-
-  useEffect(() => {
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const countdownName = Prayer.schedule.today[Prayer.schedule.nextIndex]?.english;
-
+  // Animations
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
   }));
+
+  // Functions
+  const updateCountdown = () => {
+    const diff = getTimeDifference(prayer.time, prayerDate);
+    if (diff <= 500) incrementNextIndex(type);
+    setCountdown(formatTime(diff));
+  };
+
+  // Effects
+  useEffect(() => {
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <Animated.View style={[styles.container]}>
