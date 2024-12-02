@@ -53,16 +53,18 @@ export const markYearAsFetched = (year: number) => {
 
 /** Refreshes prayer data from API */
 export const refresh = async () => {
-  const currentDate = getDate();
+  const dateSaved = getDate();
+  const dateNow = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
+
   const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
-  const today = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
-  const isInit = Object.keys(standardSchedule.today).length === 1;
+  const isNotInit = Object.keys(standardSchedule.today).length > 1;
+
   const currentYear = TimeUtils.getCurrentYear();
   const needsNextYear = shouldFetchNextYear();
 
-  logger.info({ currentDate, today, isInit, needsNextYear }, 'Starting data refresh');
+  logger.info({ dateSaved, dateNow, isNotInit, needsNextYear }, 'Starting data refresh');
 
-  if (currentDate === today && !isInit && !needsNextYear) return logger.info('Data already up to date');
+  if (dateSaved === dateNow && isNotInit && !needsNextYear) return logger.info('Data already up to date');
 
   try {
     const currentYearData = await Api.handle(currentYear);
