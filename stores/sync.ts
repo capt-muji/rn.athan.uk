@@ -11,13 +11,9 @@ import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 
 // Atoms
-export const dateAtom = atomWithStorage<string>('date', '', Database.mmkvStorage, {
-  getOnInit: true,
-});
+export const dateAtom = atomWithStorage<string>('date', '', Database.mmkvStorage);
 
-export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetchedYears', {}, Database.mmkvStorage, {
-  getOnInit: true,
-});
+export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetchedYears', {}, Database.mmkvStorage);
 
 export const fetchAndSaveDataLoadable = loadable(atom(async () => fetchAndSaveData()));
 

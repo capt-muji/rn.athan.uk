@@ -21,9 +21,7 @@ export const alertPreferencesAtom = atomWithStorage(
   { getOnInit: true }
 );
 
-export const soundPreferencesAtom = atomWithStorage<number>('soundPreferences', 0, Database.mmkvStorage, {
-  getOnInit: true,
-});
+export const soundPreferencesAtom = atomWithStorage<number>('soundPreferences', 0, Database.mmkvStorage);
 
 // Actions
 const store = getDefaultStore();
