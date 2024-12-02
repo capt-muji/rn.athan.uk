@@ -10,11 +10,10 @@ import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Error from '@/components/Error';
 import GradientBackground from '@/components/GradientBackground';
 import Overlay from '@/components/Overlay';
-import { refresh } from '@/stores/actions';
-import { refreshLoadable } from '@/stores/store';
+import { initialiseLoadable } from '@/stores/store';
 
 export default function Index() {
-  const init = useAtomValue(refreshLoadable); // TODO: dont run this if we already have the data
+  const init = useAtomValue(initialiseLoadable);
 
   const [fontsLoaded] = useFonts({
     Roboto: FontRoboto,
@@ -23,8 +22,6 @@ export default function Index() {
 
   if (!fontsLoaded || init.state === 'loading') return <WaveIndicator color="white" />;
   if (init.state === 'hasError') return <Error />;
-
-  refresh();
 
   return (
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
