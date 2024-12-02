@@ -35,6 +35,7 @@ export const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
   const currentDate = schedule.today[Constants.PRAYER_INDEX_ASR].date;
   store.set(dateAtom, currentDate);
+  logger.info({ date: currentDate }, 'Date saved to storage');
 };
 
 /** Checks if next year's data needed */
@@ -59,9 +60,9 @@ export const refresh = async () => {
   const currentYear = TimeUtils.getCurrentYear();
   const needsNextYear = shouldFetchNextYear();
 
-  if (currentDate === today && !isInit && !needsNextYear) {
-    return logger.info('Data already up to date');
-  }
+  logger.info({ currentDate, today, isInit, needsNextYear }, 'Starting data refresh');
+
+  if (currentDate === today && !isInit && !needsNextYear) return logger.info('Data already up to date');
 
   try {
     const currentYearData = await Api.handle(currentYear);
