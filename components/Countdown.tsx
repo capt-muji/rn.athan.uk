@@ -19,19 +19,20 @@ export default function Countdown({ type }: Props) {
 
   const overlay = useAtomValue(overlayAtom);
 
-  const [countdown, setCountdown] = useState('...');
+  const prayer = Prayer.schedule.today[Prayer.schedule.nextIndex];
+  const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
+
+  const [countdown, setCountdown] = useState(formatTime(getTimeDifference(prayer.time, prayerDate)));
+
+  const updateCountdown = () => {
+    const diff = getTimeDifference(prayer.time, prayerDate);
+
+    if (diff <= 500) incrementNextIndex(type);
+
+    setCountdown(formatTime(diff));
+  };
 
   useEffect(() => {
-    const prayer = Prayer.schedule.today[Prayer.schedule.nextIndex];
-    const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
-
-    const updateCountdown = () => {
-      const diff = getTimeDifference(prayer.time, prayerDate);
-
-      if (diff <= 500) incrementNextIndex(type);
-      setCountdown(formatTime(diff));
-    };
-
     // Update countdown every second
     updateCountdown();
     const intervalId = setInterval(updateCountdown, 1000);
