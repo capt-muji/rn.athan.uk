@@ -19,11 +19,17 @@ import {
   fetchedYearsAtom,
 } from '@/stores/store';
 
+/** Global store instance */
 const store = getDefaultStore();
 
 // --- Getters ---
+/** Gets current stored date */
 export const getDate = () => store.get(dateAtom);
+
+/** Gets overlay state */
 export const getOverlay = () => store.get(overlayAtom);
+
+/** Gets alert preferences */
 export const getAlertPreferences = () => store.get(alertPreferencesAtom);
 export const getSoundPreferences = () => store.get(soundPreferencesAtom);
 
@@ -33,6 +39,9 @@ export const getSchedule = (type: ScheduleType) =>
 export const getFetchedYears = () => store.get(fetchedYearsAtom);
 
 // --- Setters ---
+/**
+ * Updates stored date based on current Asr prayer
+ */
 export const setDate = () => {
   const schedule = getSchedule(ScheduleType.Standard);
 
@@ -41,12 +50,18 @@ export const setDate = () => {
   store.set(dateAtom, currentDate);
 };
 
+/**
+ * Updates UI element measurements
+ * @param key Measurement key to update
+ * @param measurements New coordinates
+ */
 export const setMeasurement = (key: keyof Measurements, measurements: PageCoordinates) => {
   const current = store.get(measurementsAtom);
   store.set(measurementsAtom, { ...current, [key]: measurements });
 };
 
 // set standard schedule for today and tomorrow
+/** Updates prayer schedule for given type (Standard/Extra) */
 export const setSchedule = (type: ScheduleType) => {
   const schedule = getSchedule(type);
 
@@ -73,23 +88,27 @@ export const setSchedule = (type: ScheduleType) => {
   });
 };
 
+/** Updates alert preference for specific prayer */
 export const setAlertPreference = (prayerIndex: number, alertType: AlertType) => {
   const alertPreference = getAlertPreferences();
 
   store.set(alertPreferencesAtom, { ...alertPreference, [prayerIndex]: alertType });
 };
 
+/** Updates selected sound for notifications */
 export const setSelectedSound = (soundIndex: number) => {
   const soundPreferences = getSoundPreferences();
 
   store.set(soundPreferencesAtom, { ...soundPreferences, selected: soundIndex });
 };
 
+/** Updates selected prayer and schedule type in overlay */
 export const setSelectedPrayerIndex = (index: number, scheduleType: ScheduleType) => {
   const overlay = getOverlay();
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };
 
+/** Checks if next year's data should be fetched */
 export const shouldFetchNextYear = (): boolean => {
   const fetchedYears = getFetchedYears();
   const nextYear = getCurrentYear() + 1;
@@ -97,12 +116,14 @@ export const shouldFetchNextYear = (): boolean => {
   return isDecember() && !fetchedYears[nextYear];
 };
 
+/** Marks a year's data as fetched in storage */
 export const markYearAsFetched = (year: number) => {
   const fetchedYears = getFetchedYears();
   store.set(fetchedYearsAtom, { ...fetchedYears, [year]: true });
 };
 
 // --- Functions ---
+/** Refreshes prayer data from API and updates local storage */
 export const refresh = async () => {
   const currentDate = getDate();
   const standardSchedule = getSchedule(ScheduleType.Standard);
@@ -139,6 +160,7 @@ export const refresh = async () => {
   }
 };
 
+/** Increments to next prayer index in schedule */
 export const incrementNextIndex = (type: ScheduleType) => {
   const isStandard = type === ScheduleType.Standard;
   const schedule = getSchedule(type);
@@ -151,6 +173,7 @@ export const incrementNextIndex = (type: ScheduleType) => {
   store.set(scheduleAtom, { ...schedule, nextIndex });
 };
 
+/** Toggles overlay visibility state */
 export const toggleOverlay = () => {
   const overlay = getOverlay();
 

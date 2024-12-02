@@ -7,7 +7,6 @@ import {
   AlertType,
   ScheduleStore,
   OverlayStore,
-  SoundPreferences,
   ScheduleType,
   Measurements,
   FetchedYears,
@@ -15,7 +14,7 @@ import {
 import * as Actions from '@/stores/actions';
 import * as Database from '@/stores/database';
 
-// Custom storage for MMKV
+/** Custom storage implementation for MMKV with JSON serialization */
 const mmkvStorage = createJSONStorage(() => ({
   getItem: (key: string) => {
     const value = Database.database.getString(key);
@@ -29,7 +28,7 @@ const mmkvStorage = createJSONStorage(() => ({
   },
 }));
 
-// Initial states for alerts
+/** Creates initial alert preferences with all prayers set to Off */
 const createInitialAlertPreferences = (): AlertPreferences => {
   const preferences: AlertPreferences = {};
   PRAYERS_ENGLISH.forEach((_, index) => {
@@ -38,26 +37,33 @@ const createInitialAlertPreferences = (): AlertPreferences => {
   return preferences;
 };
 
+/** Atom for storing user's alert preferences for each prayer */
 export const alertPreferencesAtom = atomWithStorage('alertPreferences', createInitialAlertPreferences(), mmkvStorage, {
   getOnInit: true,
 });
 
-// Add initial state for sound
-const initialSoundPreferences: SoundPreferences = {
-  selected: 1,
-};
+/** Atom for storing user's sound preferences */
+export const soundPreferencesAtom = atomWithStorage(
+  'soundPreferences',
+  {
+    selected: 1,
+  },
+  mmkvStorage,
+  {
+    getOnInit: true,
+  }
+);
 
-export const soundPreferencesAtom = atomWithStorage('soundPreferences', initialSoundPreferences, mmkvStorage, {
-  getOnInit: true,
-});
-
+/** Atom for storing UI measurement coordinates */
 export const measurementsAtom = atom<Measurements>({
   date: null,
   list: null,
 });
 
+/** Atom for storing current date */
 export const dateAtom = atomWithStorage('date', '', mmkvStorage, { getOnInit: true });
 
+/** Creates initial prayer data */
 const initialPrayer = (scheduleType: ScheduleType) => ({
   index: 0,
   date: '2024-11-15',
@@ -67,6 +73,7 @@ const initialPrayer = (scheduleType: ScheduleType) => ({
   type: scheduleType,
 });
 
+/** Creates a prayer schedule atom with initial state */
 const createScheduleAtom = (scheduleType: ScheduleType) =>
   atom<ScheduleStore>({
     type: scheduleType,
@@ -79,19 +86,26 @@ const createScheduleAtom = (scheduleType: ScheduleType) =>
     nextIndex: 0,
   });
 
+/** Atom for standard prayer schedule */
 export const standardScheduleAtom = createScheduleAtom(ScheduleType.Standard);
+
+/** Atom for extra prayer schedule */
 export const extraScheduleAtom = createScheduleAtom(ScheduleType.Extra);
 
+/** Atom for overlay state management */
 export const overlayAtom = atom<OverlayStore>({
   isOn: false,
   selectedPrayerIndex: 0,
   scheduleType: ScheduleType.Standard,
 });
 
+/** Atom for page scroll position */
 export const pagePositionAtom = atom<number>(0);
 
+/** Atom for tracking fetched years */
 export const fetchedYearsAtom = atomWithStorage<FetchedYears>('fetchedYears', {}, mmkvStorage, {
   getOnInit: true,
 });
 
+/** Loadable atom for initializing prayer data */
 export const initialiseLoadable = loadable(atom(async () => Actions.refresh()));
