@@ -1,7 +1,5 @@
 import { useFonts } from 'expo-font';
 import { useAtomValue } from 'jotai';
-import { StyleSheet } from 'react-native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { WaveIndicator } from 'react-native-indicators';
 
 import Layout from '@/app/Layout';
@@ -36,10 +34,8 @@ export default function Index() {
 
   return (
     <Layout>
-      <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
-        <Navigation />
-        <Overlay />
-      </GestureHandlerRootView>
+      <Overlay />
+      <Navigation />
     </Layout>
   );
 }
