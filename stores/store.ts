@@ -13,20 +13,19 @@ import {
   Measurements,
   FetchedYears,
 } from '@/shared/types';
-import { database } from '@/stores/database';
 import * as Database from '@/stores/database';
 
 // Custom storage for MMKV
 const mmkvStorage = createJSONStorage(() => ({
   getItem: (key: string) => {
-    const value = database.getString(key);
+    const value = Database.database.getString(key);
     return value ? JSON.parse(value) : null;
   },
   setItem: (key: string, value: unknown) => {
-    database.set(key, JSON.stringify(value));
+    Database.database.set(key, JSON.stringify(value));
   },
   removeItem: (key: string) => {
-    database.delete(key);
+    Database.database.delete(key);
   },
 }));
 

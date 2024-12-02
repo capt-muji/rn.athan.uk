@@ -108,17 +108,25 @@ export const refresh = async () => {
   const standardSchedule = getSchedule(ScheduleType.Standard);
   const today = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
   const isInit = Object.keys(standardSchedule.today).length === 1;
+  const currentYear = getCurrentYear();
   const needsNextYear = shouldFetchNextYear();
 
   // Skip if data is current and not initialization
-  if (currentDate === today && !isInit && !needsNextYear) {
-    return logger.info('Data already up to date');
-  }
+  if (currentDate === today && !isInit && !needsNextYear) return logger.info('Data already up to date');
 
   try {
-    const yearsToFetch = needsNextYear ? [getCurrentYear(), getCurrentYear() + 1] : [getCurrentYear()];
+    // Fetch and save current year data
+    const currentYearData = await handle(currentYear);
+    database.saveAll(currentYearData);
+    markYearAsFetched(currentYear);
 
-    await Promise.all(yearsToFetch.map((year) => handle(year)));
+    // Fetch and save next year data if needed
+    if (needsNextYear) {
+      const nextYearData = await handle(currentYear + 1);
+      database.saveAll(nextYearData);
+      markYearAsFetched(currentYear + 1);
+    }
+
     logger.info('Prayer data fetched successfully');
 
     // Update schedules and date after successful fetch
