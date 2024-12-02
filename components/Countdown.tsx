@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
@@ -24,6 +24,7 @@ export default function Countdown({ type }: Props) {
   const initialTime = formatTime(getTimeDifference(prayer.time, prayerDate));
 
   const [countdown, setCountdown] = useState(initialTime);
+  const intervalRef = useRef<NodeJS.Timeout>();
 
   const updateCountdown = () => {
     const diff = getTimeDifference(prayer.time, prayerDate);
@@ -33,12 +34,21 @@ export default function Countdown({ type }: Props) {
     setCountdown(formatTime(diff));
   };
 
-  useEffect(() => {
-    // Update countdown every second
+  // Start the interval immediately
+  if (!intervalRef.current) {
     updateCountdown();
-    const intervalId = setInterval(updateCountdown, 1000);
-    return () => clearInterval(intervalId);
-  }, [Prayer.schedule.nextIndex]);
+    intervalRef.current = setInterval(updateCountdown, 1000);
+  }
+
+  useEffect(() => {
+    // Only handle cleanup
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = undefined;
+      }
+    };
+  }, []);
 
   const countdownName = Prayer.schedule.today[Prayer.schedule.nextIndex]?.english;
 
