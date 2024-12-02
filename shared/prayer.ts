@@ -4,6 +4,8 @@ import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, S
 
 /**
  * Filters API response data to only include today and future dates
+ * @param apiData Raw API response data
+ * @returns Filtered API response containing only future dates
  */
 export const filterApiData = (apiData: IApiResponse): IApiResponse => {
   const timesFiltered: IApiTimes = {};
@@ -22,7 +24,10 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
 };
 
 /**
- * Transforms API response data into normalized prayer schedule format and adds calculated Duha time.
+ * Transforms API response data into normalized prayer schedule format
+ * Adds calculated times for additional prayers and special times
+ * @param apiData Filtered API response data
+ * @returns Array of transformed prayer schedules
  */
 export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTransformed[] => {
   const transformations: ISingleApiResponseTransformed[] = [];
@@ -51,7 +56,11 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 };
 
 /**
- * Creates structured prayer times object for today with status information. Maps prayer times to both English and Arabic names.
+ * Creates structured prayer times object for today with status information
+ * Maps prayer times to both English and Arabic names
+ * @param prayers Prayer times data for a single day
+ * @param type Schedule type (Standard or Extra)
+ * @returns Structured prayer schedule with status information
  */
 export const createSchedule = (prayers: ISingleApiResponseTransformed, type: ScheduleType): IScheduleNow => {
   const isStandard = type === ScheduleType.Standard;
