@@ -40,6 +40,7 @@ export const handle = async (year?: number): Promise<ISingleApiResponseTransform
   const targetYear = year || getCurrentYear();
 
   try {
+    logger.info({ year: targetYear }, 'Fetching prayer times for year');
     const data = await fetch(targetYear);
     logger.info('API data fetched');
 
