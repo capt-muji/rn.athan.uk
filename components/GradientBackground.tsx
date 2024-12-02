@@ -5,7 +5,7 @@ import { StyleSheet, useWindowDimensions } from 'react-native';
 import { interpolateColor, useSharedValue } from 'react-native-reanimated';
 
 import { COLORS } from '@/shared/constants';
-import { pagePositionAtom } from '@/stores/store';
+import { pagePositionAtom } from '@/stores/ui';
 
 export default function GradientBackground() {
   const { width, height } = useWindowDimensions();

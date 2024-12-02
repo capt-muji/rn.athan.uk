@@ -7,7 +7,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, STYLES } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { dateAtom } from '@/stores/store';
+import { dateAtom } from '@/stores/sync';
 
 interface Props {
   type: ScheduleType;
