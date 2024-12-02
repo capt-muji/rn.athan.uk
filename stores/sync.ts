@@ -75,11 +75,13 @@ export const refresh = async () => {
       markYearAsFetched(currentYear + 1);
     }
 
-    logger.info('Prayer data fetched successfully');
+    logger.info('Prayer data processed');
 
     ScheduleStore.setSchedule(Types.ScheduleType.Standard);
     ScheduleStore.setSchedule(Types.ScheduleType.Extra);
     setDate();
+
+    logger.info('Finished setting up schedule and date into state');
   } catch (error) {
     logger.error({ error }, 'Failed to refresh prayer data');
     throw error;
