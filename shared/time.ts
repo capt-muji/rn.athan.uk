@@ -143,3 +143,7 @@ export const isLastPrayerPassed = (schedule: ScheduleStore): boolean => {
   const lastPrayer = schedule.today[lastIndex];
   return isTimePassed(lastPrayer.time);
 };
+
+export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
+
+export const getCurrentYear = (): number => createLondonDate().getFullYear();

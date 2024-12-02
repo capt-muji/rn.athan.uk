@@ -1,9 +1,11 @@
 import { getDefaultStore } from 'jotai/vanilla';
 
+import { handle } from '@/api/client';
 import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
+import { isDecember, getCurrentYear } from '@/shared/time';
 import { AlertType, Measurements, PageCoordinates, ScheduleType, DaySelection } from '@/shared/types';
 import * as database from '@/stores/database';
 import {
@@ -14,6 +16,7 @@ import {
   standardScheduleAtom,
   extraScheduleAtom,
   measurementsAtom,
+  fetchedYearsAtom,
 } from '@/stores/store';
 
 const store = getDefaultStore();
@@ -26,6 +29,8 @@ export const getSoundPreferences = () => store.get(soundPreferencesAtom);
 
 export const getSchedule = (type: ScheduleType) =>
   type === ScheduleType.Standard ? store.get(standardScheduleAtom) : store.get(extraScheduleAtom);
+
+export const getFetchedYears = () => store.get(fetchedYearsAtom);
 
 // --- Setters ---
 export const setDate = () => {
@@ -85,15 +90,33 @@ export const setSelectedPrayerIndex = (index: number, scheduleType: ScheduleType
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };
 
+export const shouldFetchNextYear = (): boolean => {
+  const fetchedYears = getFetchedYears();
+  const nextYear = getCurrentYear() + 1;
+
+  return isDecember() && !fetchedYears[nextYear];
+};
+
+export const markYearAsFetched = (year: number) => {
+  const fetchedYears = getFetchedYears();
+  store.set(fetchedYearsAtom, { ...fetchedYears, [year]: true });
+};
+
 // --- Functions ---
-export const refresh = () => {
+export const refresh = async () => {
   const currentDate = getDate();
   const standardSchedule = getSchedule(ScheduleType.Standard);
 
   const today = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
   const isInit = Object.keys(standardSchedule.today).length === 1;
 
-  if (currentDate === today && !isInit) return logger.info('Data already up to date');
+  if (currentDate === today && !isInit && !shouldFetchNextYear()) {
+    return logger.info('Data already up to date');
+  }
+
+  await handle();
+
+  if (shouldFetchNextYear()) await handle(getCurrentYear() + 1);
 
   setSchedule(ScheduleType.Standard);
   setSchedule(ScheduleType.Extra);

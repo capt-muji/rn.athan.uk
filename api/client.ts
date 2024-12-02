@@ -2,7 +2,7 @@ import { API_CONFIG } from '@/api/config';
 import { MOCK_DATA_SIMPLE } from '@/mocks/simple';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
-import { createLondonDate } from '@/shared/time';
+import { createLondonDate, getCurrentYear } from '@/shared/time';
 import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
 
 const buildUrl = (year: number = createLondonDate().getFullYear()): string => {
@@ -37,15 +37,14 @@ const fetch = async (year?: number): Promise<IApiResponse> => {
 };
 
 export const handle = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
+  const targetYear = year || getCurrentYear();
+
   try {
-    const data = await fetch(year);
+    const data = await fetch(targetYear);
     logger.info('API data fetched');
 
     const dataFiltered = PrayerUtils.filterApiData(data);
-    logger.info('Data filtered');
-
     const dataTransformed = PrayerUtils.transformApiData(dataFiltered);
-    logger.info('Data transformed');
 
     return dataTransformed;
   } catch (error) {
