@@ -41,12 +41,11 @@ export default function Countdown({ type }: Props) {
   }
 
   useEffect(() => {
-    // Only handle cleanup
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = undefined;
-      }
+      if (!intervalRef.current) return;
+
+      clearInterval(intervalRef.current);
+      intervalRef.current = undefined;
     };
   }, []);
 
