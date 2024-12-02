@@ -79,11 +79,11 @@ export const refresh = async () => {
 
     logger.info('Prayer data processed');
 
-    // TODO: break below out into a separate part
+    // TODO: break below out into a separate action
     ScheduleStore.setSchedule(Types.ScheduleType.Standard);
     ScheduleStore.setSchedule(Types.ScheduleType.Extra);
     setDate();
-    // TODO: break above out into a separate part
+    // TODO: break above out into a separate action
 
     logger.info('Finished setting up schedule and date into state');
   } catch (error) {
