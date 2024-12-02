@@ -11,7 +11,7 @@ import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 
 // Atoms
-export const dateAtom = atomWithStorage('date', '', Database.mmkvStorage, {
+export const dateAtom = atomWithStorage<string>('date', '', Database.mmkvStorage, {
   getOnInit: true,
 });
 
