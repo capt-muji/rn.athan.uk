@@ -3,7 +3,7 @@ import { atomWithStorage, loadable } from 'jotai/utils';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Api from '@/api/client';
-import * as Constants from '@/shared/constants';
+import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
@@ -29,7 +29,7 @@ export const getFetchedYears = () => store.get(fetchedYearsAtom);
 /** Updates stored date from Asr prayer */
 export const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
-  const currentDate = schedule.today[Constants.PRAYER_INDEX_ASR].date;
+  const currentDate = schedule.today[PRAYER_INDEX_ASR].date;
 
   store.set(dateAtom, currentDate);
 };

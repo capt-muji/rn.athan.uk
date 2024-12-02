@@ -1,14 +1,14 @@
 import { atomWithStorage } from 'jotai/utils';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import * as Constants from '@/shared/constants';
+import { PRAYERS_ENGLISH } from '@/shared/constants';
 import * as Types from '@/shared/types';
 import * as Database from '@/stores/database';
 
 // Atoms
 const createInitialAlertPreferences = (): Types.AlertPreferences => {
   const preferences: Types.AlertPreferences = {};
-  Constants.PRAYERS_ENGLISH.forEach((_, index) => {
+  PRAYERS_ENGLISH.forEach((_, index) => {
     preferences[index] = Types.AlertType.Off;
   });
   return preferences;
