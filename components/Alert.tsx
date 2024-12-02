@@ -9,8 +9,7 @@ import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimatio
 import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
-import { setAlertPreference } from '@/stores/actions';
-import { alertPreferencesAtom } from '@/stores/store';
+import { alertPreferencesAtom, setAlertPreference } from '@/stores/notifications';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },

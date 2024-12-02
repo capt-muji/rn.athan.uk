@@ -2,7 +2,7 @@ import { useAtomValue } from 'jotai';
 
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { standardScheduleAtom, extraScheduleAtom } from '@/stores/store';
+import { standardScheduleAtom, extraScheduleAtom } from '@/stores/schedule';
 
 export const usePrayer = (index: number, type: ScheduleType) => {
   const isStandard = type === ScheduleType.Standard;

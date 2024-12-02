@@ -10,7 +10,7 @@ import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Error from '@/components/Error';
 import GradientBackground from '@/components/GradientBackground';
 import Overlay from '@/components/Overlay';
-import { initialiseLoadable } from '@/stores/store';
+import { initialiseLoadable } from '@/stores/sync';
 
 export default function Index() {
   const init = useAtomValue(initialiseLoadable);

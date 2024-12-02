@@ -11,8 +11,7 @@ import Prayer from '@/components/Prayer';
 import { useAnimationOpacity } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
-import { toggleOverlay } from '@/stores/actions';
-import { overlayAtom, measurementsAtom } from '@/stores/store';
+import { measurementsAtom, overlayAtom, toggleOverlay } from '@/stores/ui';
 
 const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
