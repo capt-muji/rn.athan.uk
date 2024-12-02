@@ -11,6 +11,7 @@ import {
   SoundPreferences,
   ScheduleType,
   Measurements,
+  FetchedYears,
 } from '@/shared/types';
 import { database } from '@/stores/database';
 import * as Database from '@/stores/database';
@@ -96,3 +97,7 @@ const refreshAtom = atom(async () => {
 });
 
 export const refreshLoadable = loadable(refreshAtom);
+
+export const fetchedYearsAtom = atomWithStorage<FetchedYears>('fetchedYears', {}, mmkvStorage, {
+  getOnInit: true,
+});

@@ -156,3 +156,7 @@ export interface OverlayStore {
   selectedPrayerIndex: number;
   scheduleType: ScheduleType;
 }
+
+export interface FetchedYears {
+  [year: number]: boolean;
+}
