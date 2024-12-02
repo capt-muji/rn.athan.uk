@@ -19,7 +19,7 @@ export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetchedYear
   getOnInit: true,
 });
 
-export const initialiseLoadable = loadable(atom(async () => fetchAndSaveData()));
+export const fetchAndSaveDataLoadable = loadable(atom(async () => fetchAndSaveData()));
 
 // Actions
 const store = getDefaultStore();
