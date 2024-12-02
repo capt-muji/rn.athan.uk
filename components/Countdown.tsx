@@ -21,11 +21,12 @@ export default function Countdown({ type }: Props) {
   // Derived State
   const prayer = schedule.today[schedule.nextIndex];
   const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
-  const initialTime = formatTime(getTimeDifference(prayer.time, prayerDate));
+  const initialTimeDifference = getTimeDifference(prayer.time, prayerDate);
+  const initialTimeFormatted = formatTime(initialTimeDifference);
   const countdownName = schedule.today[schedule.nextIndex].english;
 
   // State
-  const [countdown, setCountdown] = useState(initialTime);
+  const [countdown, setCountdown] = useState(initialTimeFormatted);
 
   // Animations
   const animatedStyle = useAnimatedStyle(() => ({
