@@ -21,8 +21,9 @@ export default function Countdown({ type }: Props) {
 
   const prayer = Prayer.schedule.today[Prayer.schedule.nextIndex];
   const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
+  const initialTime = formatTime(getTimeDifference(prayer.time, prayerDate));
 
-  const [countdown, setCountdown] = useState(formatTime(getTimeDifference(prayer.time, prayerDate)));
+  const [countdown, setCountdown] = useState(initialTime);
 
   const updateCountdown = () => {
     const diff = getTimeDifference(prayer.time, prayerDate);
