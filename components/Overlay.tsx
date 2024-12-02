@@ -21,7 +21,6 @@ export default function Overlay() {
 
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
-  const prayerOpacity = useAnimationOpacity(0);
 
   const measurements = useAtomValue(measurementsAtom);
 
@@ -38,11 +37,9 @@ export default function Overlay() {
   if (overlay.isOn) {
     backgroundOpacity.animate(1, { duration: ANIMATION.duration });
     dateOpacity.animate(1, { duration: ANIMATION.duration, delay: ANIMATION.overlayDelay });
-    prayerOpacity.animate(1, { duration: ANIMATION.duration });
   } else {
     backgroundOpacity.animate(0, { duration: ANIMATION.duration });
     dateOpacity.animate(0, { duration: ANIMATION.duration });
-    prayerOpacity.animate(0, { duration: ANIMATION.duration });
   }
 
   const computedStyleContainer: ViewStyle = {
@@ -83,9 +80,9 @@ export default function Overlay() {
         </Reanimated.Text>
 
         {/* Prayer overlay */}
-        <Reanimated.View style={[styles.prayer, computedStylePrayer, prayerOpacity.style]}>
+        <View style={[styles.prayer, computedStylePrayer]}>
           <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
-        </Reanimated.View>
+        </View>
       </AnimatedBlur>
       <Glow />
     </Reanimated.View>
@@ -112,13 +109,14 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.famiy.regular,
   },
   prayer: {
-    position: 'absolute',
-    height: STYLES.prayer.height,
-  },
-  activeBackground: {
     ...STYLES.prayer.border,
     ...STYLES.prayer.shadow,
-    backgroundColor: COLORS.activeBackground,
+    position: 'absolute',
+    width: '100%',
+    height: STYLES.prayer.height,
     shadowColor: COLORS.standardActiveBackgroundShadow,
+  },
+  activeBackground: {
+    backgroundColor: COLORS.activeBackground,
   },
 });
