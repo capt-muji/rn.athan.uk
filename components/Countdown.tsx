@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
+import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT } from '@/shared/constants';
 import { formatTime, getDateTodayOrTomorrow, getTimeDifference } from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
-import { extraScheduleAtom, incrementNextIndex, standardScheduleAtom } from '@/stores/schedule';
+import { incrementNextIndex } from '@/stores/schedule';
 import { overlayAtom } from '@/stores/ui';
 
 interface Props {
@@ -14,21 +15,20 @@ interface Props {
 }
 
 export default function Countdown({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
-  const { today, nextIndex } = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
+  const Prayer = usePrayer(0, type);
 
   const overlay = useAtomValue(overlayAtom);
 
-  const [countdown, setCountdown] = useState('');
+  const [countdown, setCountdown] = useState('...');
 
   useEffect(() => {
-    const prayer = today[nextIndex];
+    const prayer = Prayer.schedule.today[Prayer.schedule.nextIndex];
     const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
 
     const updateCountdown = () => {
       const diff = getTimeDifference(prayer.time, prayerDate);
 
-      if (diff <= 0) incrementNextIndex(type);
+      if (diff <= 500) incrementNextIndex(type);
       setCountdown(formatTime(diff));
     };
 
@@ -36,9 +36,9 @@ export default function Countdown({ type }: Props) {
     updateCountdown();
     const intervalId = setInterval(updateCountdown, 1000);
     return () => clearInterval(intervalId);
-  }, [nextIndex]);
+  }, [Prayer.schedule.nextIndex]);
 
-  const countdownName = today[nextIndex]?.english;
+  const countdownName = Prayer.schedule.today[Prayer.schedule.nextIndex]?.english;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
