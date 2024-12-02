@@ -35,7 +35,7 @@ export default function Alert({ index, type }: Props) {
 
   // State
   const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
-  const [iconIndex, setIconIndex] = useState<number>(alertPreferences[index] || 0);
+  const [iconIndex, setIconIndex] = useState(alertPreferences[index]);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
