@@ -20,9 +20,9 @@ export default function ActiveBackground({ type }: Props) {
   const date = useAtomValue(dateAtom);
 
   // Derived State
-  const todayYYYMMDD = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
+  const today = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
   const yPosition = Prayer.schedule.nextIndex * STYLES.prayer.height;
-  const shouldHide = Prayer.schedule.nextIndex === 0 && date === todayYYYMMDD && Prayer.isLastPrayerPassed;
+  const shouldHide = Prayer.schedule.nextIndex === 0 && date === today && Prayer.isLastPrayerPassed;
 
   // Animations
   const AnimTranslateY = useAnimationTranslateY(yPosition);
