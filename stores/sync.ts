@@ -73,14 +73,14 @@ export const fetchAndSaveData = async () => {
   const dateNow = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
 
   const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
-  const isNotInit = Object.keys(standardSchedule.today).length > 1;
+  const isInit = Object.keys(standardSchedule.today).length === 0;
 
   const currentYear = TimeUtils.getCurrentYear();
   const needsNextYear = shouldFetchNextYear();
 
-  logger.info({ dateSaved, dateNow, isNotInit, needsNextYear }, 'Starting data refresh');
+  logger.info({ dateSaved, dateNow, isInit, needsNextYear }, 'Starting data refresh');
 
-  if (dateSaved === dateNow && isNotInit && !needsNextYear) return logger.info('Data already up to date');
+  if (dateSaved === dateNow && !isInit && !needsNextYear) return logger.info('Data already up to date');
 
   Database.clear();
 
