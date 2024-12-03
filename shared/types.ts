@@ -1,4 +1,3 @@
-// API
 export interface IApiSingleTime {
   date: string;
   fajr: string;
@@ -24,7 +23,6 @@ export interface IApiResponse {
   times: Record<string, IApiSingleTime>;
 }
 
-// Prayers
 export interface ISingleApiResponseTransformed {
   date: string;
   fajr: string;
@@ -93,7 +91,6 @@ export interface ITimeDifferenceConfig {
   date?: string;
 }
 
-// Store Types
 export interface PageCoordinates {
   pageX: number;
   pageY: number;
@@ -111,7 +108,6 @@ export interface Measurements {
   list: PageCoordinates | null;
 }
 
-// Preferences Types
 export enum AlertType {
   Off = 0,
   Notification = 1,
@@ -139,7 +135,6 @@ export interface Preferences {
   athan: number;
 }
 
-// ScheduleStore and StoreState interfaces
 export interface ScheduleStore {
   type: ScheduleType;
   today: IScheduleNow;
