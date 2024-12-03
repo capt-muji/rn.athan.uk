@@ -31,21 +31,15 @@ const updateCountdown = (type: Types.ScheduleType) => {
   if (countdown.hasElapsed) return incrementNextIndex(type);
 
   const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
-  store.set(countdownAtom, {
-    time: countdown.time,
-    name: countdown.name,
-  });
+  store.set(countdownAtom, { time: countdown.time, name: countdown.name });
 };
 
-export const updateOverlayCountdown = (type: Types.ScheduleType, prayerIndex: number) => {
+export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: number) => {
   const schedule = getSchedule(type);
-  const prayer = schedule.today[prayerIndex];
+  const prayer = schedule.today[selectedIndex];
 
   const countdown = TimeUtils.calculateCountdown(prayer);
-  store.set(overlayCountdownAtom, {
-    time: countdown.time,
-    name: countdown.name,
-  });
+  store.set(overlayCountdownAtom, { time: countdown.time, name: countdown.name });
 };
 
 export const startCountdowns = () => {
