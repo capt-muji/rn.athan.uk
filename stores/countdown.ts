@@ -7,7 +7,7 @@ import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
 const store = getDefaultStore();
 
-let isSetup = false;
+let isStarted = false;
 
 // Atoms
 const createCountdownAtom = () =>
@@ -37,9 +37,9 @@ const updateCountdown = (type: Types.ScheduleType) => {
   });
 };
 
-export const setupCountdowns = () => {
+export const startCountdowns = () => {
   // Prevent multiple setups
-  if (isSetup) return;
+  if (isStarted) return;
 
   // Initial countdown updates
   updateCountdown(Types.ScheduleType.Standard);
@@ -53,5 +53,5 @@ export const setupCountdowns = () => {
 
   setInterval(updateAllCountdowns, 1000);
 
-  isSetup = true;
+  isStarted = true;
 };
