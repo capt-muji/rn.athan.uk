@@ -10,6 +10,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
 import { alertPreferencesAtom, setAlertPreference } from '@/stores/notifications';
+import { overlayAtom } from '@/stores/overlay';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
@@ -34,6 +35,7 @@ export default function Alert({ type, index }: Props) {
   });
 
   // State
+  const overlay = useAtomValue(overlayAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
   const [iconIndex, setIconIndex] = useState(alertPreferences[index]);
   const [isPopupActive, setIsPopupActive] = useState(false);
@@ -80,6 +82,7 @@ export default function Alert({ type, index }: Props) {
 
   const computedStylesPopup = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
+    backgroundColor: overlay.isOn && !Prayer.isNext ? COLORS.activeBackground : 'black',
   };
 
   return (
@@ -125,7 +128,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: 10,
-    backgroundColor: 'black',
     gap: 15,
   },
   popupIcon: {
