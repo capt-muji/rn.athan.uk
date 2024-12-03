@@ -5,7 +5,7 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import { COLORS, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { standardCountdownAtom, extraCountdownAtom } from '@/stores/countdown';
-import { overlayAtom } from '@/stores/ui';
+import { overlayAtom } from '@/stores/overlay';
 
 interface Props {
   type: ScheduleType;
