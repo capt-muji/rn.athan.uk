@@ -66,8 +66,8 @@ export default function Overlay() {
 
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
-      <AnimatedBlur intensity={12} tint="dark" style={StyleSheet.absoluteFill}>
-        <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
+      <AnimatedBlur intensity={12} tint="dark" style={{ flex: 1 }}>
+        <Pressable style={{ flex: 1 }} onPress={handleClose} />
 
         {/* Countdown */}
         <View style={[styles.countdown, computedStyleCountdown]}>
