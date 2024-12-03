@@ -38,6 +38,7 @@ export default function Alert({ type, index }: Props) {
   const overlay = useAtomValue(overlayAtom);
   const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
   const [iconIndex, setIconIndex] = useState(alertPreferences[index]);
+  const [popupIconIndex, setPopupIconIndex] = useState(iconIndex);
   const [isPopupActive, setIsPopupActive] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
@@ -59,21 +60,21 @@ export default function Alert({ type, index }: Props) {
   // Handlers
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
-    setIconIndex(nextIndex);
-    setAlertPreference(index, ALERT_CONFIGS[nextIndex].type);
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    setIsPopupActive(true);
+    setPopupIconIndex(nextIndex);
+    setIconIndex(nextIndex);
+    setAlertPreference(index, ALERT_CONFIGS[nextIndex].type);
 
-    // Reset and trigger animations
+    // Reset animations
     AnimBounce.value.value = 0;
     AnimOpacity.animate(1, { duration: 50 });
     AnimBounce.animate(1);
 
-    // Hide popup
+    setIsPopupActive(true);
+
     timeoutRef.current = setTimeout(() => {
       AnimOpacity.animate(0, { duration: 50 });
       setIsPopupActive(false);
@@ -98,8 +99,8 @@ export default function Alert({ type, index }: Props) {
       </Pressable>
 
       <Animated.View style={[styles.popup, computedStylesPopup, AnimOpacity.style, AnimBounce.style]}>
-        <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} color="white" />
-        <Text style={styles.label}>{ALERT_CONFIGS[iconIndex].label}</Text>
+        <Icon type={ALERT_CONFIGS[popupIconIndex].icon} size={20} color="white" />
+        <Text style={styles.label}>{ALERT_CONFIGS[popupIconIndex].label}</Text>
       </Animated.View>
     </View>
   );
