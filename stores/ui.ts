@@ -36,3 +36,5 @@ export const setSelectedPrayerIndex = (index: number, scheduleType: Types.Schedu
   const overlay = getOverlay();
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };
+
+export const setPagePosition = (position: number) => store.set(pagePositionAtom, position);
