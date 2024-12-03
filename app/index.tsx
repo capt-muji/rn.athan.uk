@@ -7,7 +7,7 @@ import FontRobotoMedium from '@/assets/fonts/Roboto-Medium.ttf';
 import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Error from '@/components/Error';
 import Overlay from '@/components/Overlay';
-import { setupCountdowns } from '@/stores/countdown';
+import { startCountdowns } from '@/stores/countdown';
 import { fetchAndSaveDataLoadable, updateSchedulesAndDate } from '@/stores/sync';
 
 export default function Index() {
@@ -18,7 +18,7 @@ export default function Index() {
   if (state === 'hasError') return <Error />;
 
   updateSchedulesAndDate();
-  setupCountdowns();
+  startCountdowns();
 
   return (
     <>
