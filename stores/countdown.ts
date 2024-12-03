@@ -5,10 +5,12 @@ import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
+let isSetup = false;
+
 // Atoms
 const createCountdownAtom = () =>
   atom<Types.CountdownStore>({
-    time: '0h 0m 0s',
+    time: '0s',
     name: 'Fajr',
   });
 
@@ -34,15 +36,20 @@ const updateCountdown = (type: Types.ScheduleType) => {
 };
 
 export const setupCountdowns = () => {
+  // Prevent multiple setups
+  if (isSetup) return;
+
   // Initial countdown updates
   updateCountdown(Types.ScheduleType.Standard);
   updateCountdown(Types.ScheduleType.Extra);
 
   // Start timers
-  const updateBothCountdowns = () => {
+  const updateAllCountdowns = () => {
     updateCountdown(Types.ScheduleType.Standard);
     updateCountdown(Types.ScheduleType.Extra);
   };
 
-  setInterval(updateBothCountdowns, 1000);
+  setInterval(updateAllCountdowns, 1000);
+
+  isSetup = true;
 };
