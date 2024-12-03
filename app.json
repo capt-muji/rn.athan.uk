@@ -7,19 +7,11 @@
     "icon": "./assets/store/ios/AppIcon~ios-marketing.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mugtaba.athan",
       "infoPlist": {
-        "UIBackgroundModes": [
-          "audio",
-          "fetch"
-        ]
+        "UIBackgroundModes": ["audio", "fetch"]
       },
       "icon": "./assets/store/ios/AppIcon~ios-marketing.png"
     },
@@ -36,9 +28,7 @@
           "icon": "./assets/store/ios/AppIcon~ios-marketing.png",
           "color": "#ffffff",
           "defaultChannel": "default",
-          "sounds": [
-            "./assets/audio/athan.wav"
-          ]
+          "sounds": ["./assets/audio/athan.wav"]
         }
       ],
       "expo-font"
