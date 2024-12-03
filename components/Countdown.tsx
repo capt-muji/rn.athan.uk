@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
 import { COLORS, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { standardCountdownAtom, extraCountdownAtom } from '@/stores/countdown';
+import { standardCountdownAtom, extraCountdownAtom, overlayCountdownAtom } from '@/stores/countdown';
 import { overlayAtom } from '@/stores/overlay';
 
 interface Props {
@@ -13,9 +13,10 @@ interface Props {
 
 export default function Countdown({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
-
-  const countdown = useAtomValue(isStandard ? standardCountdownAtom : extraCountdownAtom);
   const overlay = useAtomValue(overlayAtom);
+
+  const countdownAtom = overlay.isOn ? overlayCountdownAtom : isStandard ? standardCountdownAtom : extraCountdownAtom;
+  const countdown = useAtomValue(countdownAtom);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],

@@ -2,6 +2,7 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Types from '@/shared/types';
+import { updateOverlayCountdown } from '@/stores/countdown';
 
 const store = getDefaultStore();
 
@@ -31,6 +32,9 @@ export const toggleOverlay = () => {
 };
 
 export const setSelectedPrayerIndex = (scheduleType: Types.ScheduleType, index: number) => {
+  updateOverlayCountdown(scheduleType, index);
+
   const overlay = getOverlay();
+
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };

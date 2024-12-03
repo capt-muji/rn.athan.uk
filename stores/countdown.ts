@@ -18,6 +18,7 @@ const createCountdownAtom = () =>
 
 export const standardCountdownAtom = createCountdownAtom();
 export const extraCountdownAtom = createCountdownAtom();
+export const overlayCountdownAtom = createCountdownAtom();
 
 // Actions
 const updateCountdown = (type: Types.ScheduleType) => {
@@ -32,6 +33,18 @@ const updateCountdown = (type: Types.ScheduleType) => {
 
   const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
   store.set(countdownAtom, {
+    time: TimeUtils.formatTime(timeDiff),
+    name: prayer.english,
+  });
+};
+
+export const updateOverlayCountdown = (type: Types.ScheduleType, prayerIndex: number) => {
+  const schedule = getSchedule(type);
+  const prayer = schedule.today[prayerIndex];
+  const prayerDate = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
+  const timeDiff = TimeUtils.getTimeDifference(prayer.time, prayerDate);
+
+  store.set(overlayCountdownAtom, {
     time: TimeUtils.formatTime(timeDiff),
     name: prayer.english,
   });
