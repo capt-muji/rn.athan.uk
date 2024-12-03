@@ -21,6 +21,8 @@ export const extraCountdownAtom = createCountdownAtom();
 const store = getDefaultStore();
 
 const updateCountdown = (type: Types.ScheduleType) => {
+  const isStandard = type === Types.ScheduleType.Standard;
+
   const schedule = getSchedule(type);
   const prayer = schedule.today[schedule.nextIndex];
   const prayerDate = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
@@ -28,7 +30,7 @@ const updateCountdown = (type: Types.ScheduleType) => {
 
   if (timeDiff <= 500) return incrementNextIndex(type);
 
-  const countdownAtom = type === Types.ScheduleType.Standard ? standardCountdownAtom : extraCountdownAtom;
+  const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
   store.set(countdownAtom, {
     time: TimeUtils.formatTime(timeDiff),
     name: prayer.english,
