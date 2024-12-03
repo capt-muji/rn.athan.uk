@@ -19,6 +19,7 @@ export default function Countdown({ type }: Props) {
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
+    fontFamily: overlay.isOn ? TEXT.famiy.medium : TEXT.famiy.regular,
   }));
 
   return (
@@ -39,11 +40,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: TEXT.sizeSmall,
     marginBottom: 5,
-    fontFamily: TEXT.famiy.regular,
     color: COLORS.textSecondary,
   },
   countdown: {
-    fontFamily: TEXT.famiy.regular,
     color: 'white',
     fontSize: TEXT.size + 8,
     textAlign: 'center',
