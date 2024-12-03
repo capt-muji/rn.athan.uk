@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Countdown from '@/components/Countdown';
@@ -20,7 +20,7 @@ export default function Screen({ type }: Props) {
   };
 
   return (
-    <View style={[StyleSheet.absoluteFillObject, computedStyles]}>
+    <View style={[{ flex: 1 }, computedStyles]}>
       <Countdown type={type} />
       <Day type={type} />
       <List type={type} />
