@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function ActiveBackground({ type }: Props) {
-  const Prayer = usePrayer(0, type);
+  const Prayer = usePrayer(type);
 
   // State
   const date = useAtomValue(dateAtom);
