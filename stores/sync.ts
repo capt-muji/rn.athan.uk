@@ -10,6 +10,8 @@ import * as Types from '@/shared/types';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 
+const store = getDefaultStore();
+
 // Atoms
 export const dateAtom = atomWithStorage<string>('date', '', Database.mmkvStorage);
 
@@ -18,8 +20,6 @@ export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetchedYear
 export const fetchAndSaveDataLoadable = loadable(atom(async () => fetchAndSaveData()));
 
 // Actions
-const store = getDefaultStore();
-
 /** Gets current stored date */
 export const getDate = () => store.get(dateAtom);
 

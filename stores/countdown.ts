@@ -5,6 +5,8 @@ import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
+const store = getDefaultStore();
+
 let isSetup = false;
 
 // Atoms
@@ -18,8 +20,6 @@ export const standardCountdownAtom = createCountdownAtom();
 export const extraCountdownAtom = createCountdownAtom();
 
 // Actions
-const store = getDefaultStore();
-
 const updateCountdown = (type: Types.ScheduleType) => {
   const isStandard = type === Types.ScheduleType.Standard;
 
