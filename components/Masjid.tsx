@@ -14,8 +14,8 @@ export default function Masjid({ height = 55, width = 55 }: MasjidProps) {
 const styles = StyleSheet.create({
   icon: {
     shadowColor: '#009dff',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
   },
 });
