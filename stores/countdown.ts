@@ -37,8 +37,9 @@ const updateCountdown = (type: Types.ScheduleType) => {
 export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: number) => {
   const schedule = getSchedule(type);
   const prayer = schedule.today[selectedIndex];
+  const isPassed = TimeUtils.isTimePassed(prayer.time);
 
-  const countdown = TimeUtils.calculateCountdown(prayer);
+  const countdown = TimeUtils.calculateCountdown(prayer, isPassed);
   store.set(overlayCountdownAtom, { time: countdown.time, name: countdown.name });
 };
 
