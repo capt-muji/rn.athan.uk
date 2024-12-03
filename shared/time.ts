@@ -201,11 +201,11 @@ export const getCurrentYear = (): number => createLondonDate().getFullYear();
 /**
  * Calculates countdown information for a prayer time
  * @param prayer Prayer object containing time and name
- * @param useTomorrow Optional boolean to use tomorrow's date
  * @returns Countdown information with formatted time and prayer name
  */
-export const calculateCountdown = (prayer: { time: string; english: string }, useTomorrow: boolean = false) => {
-  const prayerDate = getDateTodayOrTomorrow(useTomorrow ? DaySelection.Tomorrow : DaySelection.Today);
+export const calculateCountdown = (prayer: { time: string; english: string }) => {
+  const isPassed = isTimePassed(prayer.time);
+  const prayerDate = getDateTodayOrTomorrow(isPassed ? DaySelection.Tomorrow : DaySelection.Today);
   const timeDiff = getTimeDifference(prayer.time, prayerDate);
 
   return {
