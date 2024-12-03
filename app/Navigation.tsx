@@ -1,4 +1,3 @@
-import { useSetAtom } from 'jotai';
 import { StyleSheet, View } from 'react-native';
 import PagerView, { PagerViewOnPageScrollEvent } from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
@@ -8,11 +7,10 @@ import Screen from '@/app/Screen';
 import { useAnimationOpacity } from '@/hooks/useAnimations';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { pagePositionAtom } from '@/stores/ui';
+import { setPagePosition } from '@/stores/ui';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
-  const setPagePosition = useSetAtom(pagePositionAtom);
 
   const dot0Animation = useAnimationOpacity(1);
   const dot1Animation = useAnimationOpacity(0.25);
