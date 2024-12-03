@@ -16,6 +16,8 @@ interface Props {
 }
 
 export default function Day({ type }: Props) {
+  const isStandard = type === ScheduleType.Standard;
+
   const date = useAtomValue(dateAtom);
   const overlay = useAtomValue(overlayAtom);
 
@@ -23,15 +25,12 @@ export default function Day({ type }: Props) {
 
   const dateRef = useRef<Animated.Text>(null);
 
-  if (overlay.isOn) {
-    dateOpacity.animate(0, { duration: ANIMATION.duration });
-  } else {
-    dateOpacity.animate(1, { duration: ANIMATION.duration, delay: ANIMATION.overlayDelay });
-  }
+  if (overlay.isOn) dateOpacity.animate(0, { duration: ANIMATION.duration });
+  else dateOpacity.animate(1, { duration: ANIMATION.duration, delay: ANIMATION.overlayDelay });
 
   const handleLayout = () => {
-    // Only measure for 1st screen
-    if (!dateRef.current || type !== ScheduleType.Standard) return;
+    // Only measure 1st screen
+    if (!dateRef.current || !isStandard) return;
 
     dateRef.current.measureInWindow((x, y, width, height) => {
       setMeasurement('date', { pageX: x, pageY: y, width, height });
