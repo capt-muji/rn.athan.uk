@@ -63,9 +63,10 @@ export const updateSchedulesAndDate = () => {
  * 3. Check if we're in December and need next year's data
  * 4. If all conditions are met (same date, initialized, not December), exit early
  * 5. Otherwise:
- *    a. Fetch and save current year's prayer times
- *    b. Mark current year as fetched in storage
- *    c. If in December, fetch next year's data and mark as fetched
+ *    a. Clear existing database of old data
+ *    b. Fetch and save current year's prayer times
+ *    c. Mark current year as fetched in storage
+ *    d. If in December, fetch next year's data and mark as fetched
  */
 export const fetchAndSaveData = async () => {
   const dateSaved = getDate();
@@ -80,6 +81,8 @@ export const fetchAndSaveData = async () => {
   logger.info({ dateSaved, dateNow, isNotInit, needsNextYear }, 'Starting data refresh');
 
   if (dateSaved === dateNow && isNotInit && !needsNextYear) return logger.info('Data already up to date');
+
+  Database.clear();
 
   try {
     const currentYearData = await Api.handle(currentYear);
