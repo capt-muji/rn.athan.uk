@@ -197,3 +197,19 @@ export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
  * @returns Current year number
  */
 export const getCurrentYear = (): number => createLondonDate().getFullYear();
+
+/**
+ * Calculates countdown information for a prayer time
+ * @param prayer Prayer object containing time and name
+ * @returns Countdown information with formatted time and prayer name
+ */
+export const calculateCountdown = (prayer: { time: string; english: string }) => {
+  const prayerDate = getDateTodayOrTomorrow(DaySelection.Today);
+  const timeDiff = getTimeDifference(prayer.time, prayerDate);
+
+  return {
+    time: formatTime(timeDiff),
+    name: prayer.english,
+    hasElapsed: timeDiff <= 500,
+  };
+};
