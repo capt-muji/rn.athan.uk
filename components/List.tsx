@@ -4,7 +4,6 @@ import { View, StyleSheet } from 'react-native';
 
 import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
-import { usePrayer } from '@/hooks/usePrayer';
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
@@ -16,7 +15,8 @@ interface Props {
 }
 
 export default function List({ type }: Props) {
-  const { isStandard } = usePrayer(0, type);
+  const isStandard = type === ScheduleType.Standard;
+
   const date = useAtomValue(dateAtom);
   const listRef = useRef<View>(null);
 
@@ -25,8 +25,8 @@ export default function List({ type }: Props) {
   const indexes = isStandard ? PRAYERS_ENGLISH : isFriday ? [0, 1, 2] : EXTRAS_ENGLISH;
 
   const handleLayout = () => {
-    // Only measure for 1st screen
-    if (!listRef.current || type !== ScheduleType.Standard) return;
+    // Only measure 1st screen
+    if (!listRef.current || !isStandard) return;
 
     listRef.current.measureInWindow((x, y, width, height) => {
       setMeasurement('list', { pageX: x, pageY: y, width, height });

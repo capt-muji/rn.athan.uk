@@ -13,6 +13,7 @@ interface Props {
 
 export default function Countdown({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
+
   const countdown = useAtomValue(isStandard ? standardCountdownAtom : extraCountdownAtom);
   const overlay = useAtomValue(overlayAtom);
 
