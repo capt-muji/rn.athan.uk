@@ -24,30 +24,27 @@ export const overlayCountdownAtom = createCountdownAtom();
 // Actions
 const updateCountdown = (type: Types.ScheduleType) => {
   const isStandard = type === Types.ScheduleType.Standard;
-
   const schedule = getSchedule(type);
   const prayer = schedule.today[schedule.nextIndex];
-  const prayerDate = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
-  const timeDiff = TimeUtils.getTimeDifference(prayer.time, prayerDate);
 
-  if (timeDiff <= 500) return incrementNextIndex(type);
+  const countdown = TimeUtils.calculateCountdown(prayer);
+  if (countdown.hasElapsed) return incrementNextIndex(type);
 
   const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
   store.set(countdownAtom, {
-    time: TimeUtils.formatTime(timeDiff),
-    name: prayer.english,
+    time: countdown.time,
+    name: countdown.name,
   });
 };
 
 export const updateOverlayCountdown = (type: Types.ScheduleType, prayerIndex: number) => {
   const schedule = getSchedule(type);
   const prayer = schedule.today[prayerIndex];
-  const prayerDate = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
-  const timeDiff = TimeUtils.getTimeDifference(prayer.time, prayerDate);
 
+  const countdown = TimeUtils.calculateCountdown(prayer);
   store.set(overlayCountdownAtom, {
-    time: TimeUtils.formatTime(timeDiff),
-    name: prayer.english,
+    time: countdown.time,
+    name: countdown.name,
   });
 };
 
