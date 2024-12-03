@@ -1,33 +1,31 @@
 import { useSetAtom } from 'jotai';
 import { StyleSheet, View } from 'react-native';
 import PagerView, { PagerViewOnPageScrollEvent } from 'react-native-pager-view';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Screen from '@/app/Screen';
+import { useAnimationOpacity } from '@/hooks/useAnimations';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { pagePositionAtom } from '@/stores/ui';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
-
-  const position = useSharedValue(0);
   const setPagePosition = useSetAtom(pagePositionAtom);
+
+  const dot0Animation = useAnimationOpacity(1);
+  const dot1Animation = useAnimationOpacity(0.25);
 
   const handlePageScroll = (e: PagerViewOnPageScrollEvent) => {
     const { position: pos, offset } = e.nativeEvent;
     const currentPosition = pos + offset;
-    position.value = currentPosition;
+
+    dot0Animation.animate(currentPosition < 0.5 ? 1 : 0.25, { duration: ANIMATION.duration });
+    dot1Animation.animate(currentPosition >= 0.5 ? 1 : 0.25, { duration: ANIMATION.duration });
+
     setPagePosition(currentPosition);
   };
-
-  const dotStyle = (index: number) =>
-    useAnimatedStyle(() => {
-      return {
-        opacity: withTiming(Math.abs(position.value - index) < 0.5 ? 1 : 0.25, { duration: ANIMATION.duration }),
-      };
-    });
 
   return (
     <View style={{ flex: 1 }}>
@@ -36,16 +34,14 @@ export default function Navigation() {
         initialPage={0}
         overdrag={true}
         overScrollMode="never"
-        onPageScroll={handlePageScroll}
-      >
+        onPageScroll={handlePageScroll}>
         <Screen type={ScheduleType.Standard} />
         <Screen type={ScheduleType.Extra} />
       </PagerView>
 
       <View style={[styles.dotsContainer, { bottom: bottom + 5 }]}>
-        {[0, 1].map((index) => (
-          <Animated.View key={index} style={[styles.dot, dotStyle(index)]} />
-        ))}
+        <Animated.View style={[styles.dot, dot0Animation.style]} />
+        <Animated.View style={[styles.dot, dot1Animation.style]} />
       </View>
     </View>
   );
