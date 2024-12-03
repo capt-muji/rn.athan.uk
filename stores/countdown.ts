@@ -3,6 +3,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
+import { getOverlay } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
 const store = getDefaultStore();
@@ -51,7 +52,6 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, prayerIndex: nu
 };
 
 export const startCountdowns = () => {
-  // Prevent multiple setups
   if (isStarted) return;
 
   // Initial countdown updates
@@ -62,9 +62,11 @@ export const startCountdowns = () => {
   const updateAllCountdowns = () => {
     updateCountdown(Types.ScheduleType.Standard);
     updateCountdown(Types.ScheduleType.Extra);
+
+    const overlay = getOverlay();
+    updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
   };
 
   setInterval(updateAllCountdowns, 1000);
-
   isStarted = true;
 };

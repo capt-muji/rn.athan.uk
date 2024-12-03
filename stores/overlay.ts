@@ -2,7 +2,6 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Types from '@/shared/types';
-import { updateOverlayCountdown } from '@/stores/countdown';
 
 const store = getDefaultStore();
 
@@ -19,10 +18,11 @@ export const overlayAtom = atom<Types.OverlayStore>({
 });
 
 // Actions
+export const getMeasuements = () => store.get(measurementsAtom);
 export const getOverlay = () => store.get(overlayAtom);
 
 export const setMeasurement = (key: keyof Types.Measurements, measurements: Types.PageCoordinates) => {
-  const current = store.get(measurementsAtom);
+  const current = getMeasuements();
   store.set(measurementsAtom, { ...current, [key]: measurements });
 };
 
@@ -32,7 +32,7 @@ export const toggleOverlay = () => {
 };
 
 export const setSelectedPrayerIndex = (scheduleType: Types.ScheduleType, index: number) => {
-  updateOverlayCountdown(scheduleType, index);
+  // updateOverlayCountdown(scheduleType, index);
 
   const overlay = getOverlay();
 
