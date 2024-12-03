@@ -88,8 +88,7 @@ export default function Alert({ index, type }: Props) {
         onPress={handlePress}
         onPressIn={() => AnimScale.animate(0.9)}
         onPressOut={() => AnimScale.animate(1)}
-        style={styles.iconContainer}
-      >
+        style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
           <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={AnimFill.animatedProps} />
         </Animated.View>

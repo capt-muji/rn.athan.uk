@@ -28,7 +28,7 @@ export default function GradientBackground() {
   }, [position]);
 
   return (
-    <Canvas style={[StyleSheet.absoluteFillObject]}>
+    <Canvas style={StyleSheet.absoluteFill}>
       <Rect x={0} y={0} width={width} height={height}>
         <LinearGradient
           start={vec(0, 0)}
