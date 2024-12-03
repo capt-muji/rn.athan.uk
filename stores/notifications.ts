@@ -1,9 +1,11 @@
+import { getDefaultStore } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
-import { getDefaultStore } from 'jotai/vanilla';
 
 import { PRAYERS_ENGLISH } from '@/shared/constants';
 import * as Types from '@/shared/types';
 import * as Database from '@/stores/database';
+
+const store = getDefaultStore();
 
 // Atoms
 const createInitialAlertPreferences = (): Types.AlertPreferences => {
@@ -24,8 +26,6 @@ export const alertPreferencesAtom = atomWithStorage(
 export const soundPreferencesAtom = atomWithStorage<number>('soundPreferences', 0, Database.mmkvStorage);
 
 // Actions
-const store = getDefaultStore();
-
 /** Gets alert preferences */
 export const getAlertPreferences = () => store.get(alertPreferencesAtom);
 

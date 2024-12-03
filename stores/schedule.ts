@@ -6,6 +6,8 @@ import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import * as Database from '@/stores/database';
 
+const store = getDefaultStore();
+
 // Atoms
 const initialPrayer = (scheduleType: Types.ScheduleType) => ({
   index: 0,
@@ -32,8 +34,6 @@ export const standardScheduleAtom = createScheduleAtom(Types.ScheduleType.Standa
 export const extraScheduleAtom = createScheduleAtom(Types.ScheduleType.Extra);
 
 // Actions
-const store = getDefaultStore();
-
 /** Gets schedule based on type */
 export const getSchedule = (type: Types.ScheduleType) =>
   type === Types.ScheduleType.Standard ? store.get(standardScheduleAtom) : store.get(extraScheduleAtom);
