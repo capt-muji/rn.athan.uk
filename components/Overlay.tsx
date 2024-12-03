@@ -76,7 +76,7 @@ export default function Overlay() {
 
         {/* Date */}
         <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
-          {overlay.selectedPrayerIndex >= 5 ? 'Tomorrow' : 'Today'}
+          {PrayerHook.isPassed ? 'Tomorrow' : 'Today'}
         </Reanimated.Text>
 
         {/* Prayer overlay */}
