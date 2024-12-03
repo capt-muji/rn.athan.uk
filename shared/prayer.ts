@@ -64,12 +64,11 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
  */
 export const createSchedule = (prayers: ISingleApiResponseTransformed, type: ScheduleType): IScheduleNow => {
   const isStandard = type === ScheduleType.Standard;
-  const shouldRemoveIstijaba = !isStandard && TimeUtils.isFriday();
 
   let namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   let namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
 
-  if (shouldRemoveIstijaba) {
+  if (TimeUtils.isFriday()) {
     namesEnglish = namesEnglish.filter((name) => name.toLowerCase() !== 'istijaba');
     namesArabic = namesArabic.filter((name) => name !== 'استجابة');
   }
