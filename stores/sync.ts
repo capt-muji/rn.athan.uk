@@ -54,7 +54,19 @@ export const updateSchedulesAndDate = () => {
   setDate();
 };
 
-/** Fetches and saves prayer data */
+/**
+ * Fetches and saves prayer time data for the current year (and next year if needed)
+ *
+ * Flow:
+ * 1. Compare stored date with current date
+ * 2. Check if schedule is properly initialized
+ * 3. Check if we're in December and need next year's data
+ * 4. If all conditions are met (same date, initialized, not December), exit early
+ * 5. Otherwise:
+ *    a. Fetch and save current year's prayer times
+ *    b. Mark current year as fetched in storage
+ *    c. If in December, fetch next year's data and mark as fetched
+ */
 export const fetchAndSaveData = async () => {
   const dateSaved = getDate();
   const dateNow = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
