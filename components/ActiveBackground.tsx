@@ -31,39 +31,22 @@ export default function ActiveBackground({ type }: Props) {
     toColor: COLORS.activeBackground,
   });
 
-  if (shouldHide) {
-    AnimBackgroundColor.animate(0, {
-      onFinish: () => (AnimTranslateY.value.value = 0),
-    });
-  } else {
-    AnimTranslateY.animate(yPosition);
-  }
+  if (shouldHide) AnimBackgroundColor.animate(0, { onFinish: () => (AnimTranslateY.value.value = 0) });
+  else AnimTranslateY.animate(yPosition);
 
   const computedStyles = {
-    shadowColor: Prayer.isStandard ? styles.standard.shadowColor : styles.extra.shadowColor,
+    shadowColor: Prayer.isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
   };
 
-  return (
-    <Animated.View
-      style={[styles.background, styles.shadow, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style]}
-    />
-  );
+  return <Animated.View style={[styles.background, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style]} />;
 }
 
 const styles = StyleSheet.create({
   background: {
+    ...STYLES.prayer.shadow,
     position: 'absolute',
     width: '100%',
     height: STYLES.prayer.height,
     borderRadius: 8,
-  },
-  shadow: {
-    ...STYLES.prayer.shadow,
-  },
-  standard: {
-    shadowColor: COLORS.standardActiveBackgroundShadow,
-  },
-  extra: {
-    shadowColor: COLORS.extraActiveBackgroundShadow,
   },
 });
