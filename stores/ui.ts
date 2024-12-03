@@ -32,7 +32,7 @@ export const toggleOverlay = () => {
   store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
 };
 
-export const setSelectedPrayerIndex = (index: number, scheduleType: Types.ScheduleType) => {
+export const setSelectedPrayerIndex = (scheduleType: Types.ScheduleType, index: number) => {
   const overlay = getOverlay();
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };

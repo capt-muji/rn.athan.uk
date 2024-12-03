@@ -7,12 +7,12 @@ import { COLORS, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
 interface Props {
-  index: number;
   type: ScheduleType;
+  index: number;
 }
 
-export default function PrayerTime({ index, type }: Props) {
-  const Prayer = usePrayer(index, type);
+export default function PrayerTime({ type, index }: Props) {
+  const Prayer = usePrayer(type, index);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,

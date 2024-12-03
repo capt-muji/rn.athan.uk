@@ -4,7 +4,7 @@ import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardScheduleAtom, extraScheduleAtom } from '@/stores/schedule';
 
-export const usePrayer = (index: number, type: ScheduleType) => {
+export const usePrayer = (type: ScheduleType, index: number = 0) => {
   const isStandard = type === ScheduleType.Standard;
 
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);

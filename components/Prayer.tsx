@@ -14,12 +14,12 @@ import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/ui';
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 interface Props {
-  index: number;
   type: ScheduleType;
+  index: number;
 }
 
-export default function Prayer({ index, type }: Props) {
-  const Prayer = usePrayer(index, type);
+export default function Prayer({ type, index }: Props) {
+  const Prayer = usePrayer(type, index);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,
@@ -30,7 +30,7 @@ export default function Prayer({ index, type }: Props) {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    setSelectedPrayerIndex(index, type);
+    setSelectedPrayerIndex(type, index);
     toggleOverlay();
   };
 
