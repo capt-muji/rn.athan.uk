@@ -8,8 +8,8 @@ import Icon from '@/components/Icon';
 import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
-import { AlertType, AlertIcon, ScheduleType, AlertPreferences } from '@/shared/types';
-import { alertPreferencesAtom, setAlertPreference } from '@/stores/notifications';
+import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
+import { setAlertPreference, standardAlertPreferencesAtom, extraAlertPreferencesAtom } from '@/stores/notifications';
 import { overlayAtom } from '@/stores/overlay';
 
 const ALERT_CONFIGS = [
@@ -36,7 +36,9 @@ export default function Alert({ type, index }: Props) {
 
   // State
   const overlay = useAtomValue(overlayAtom);
-  const alertPreferences = useAtomValue(alertPreferencesAtom) as AlertPreferences;
+  const alertPreferences = useAtomValue(
+    type === ScheduleType.Standard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom
+  );
   const [iconIndex, setIconIndex] = useState(alertPreferences[index]);
   const [popupIconIndex, setPopupIconIndex] = useState(iconIndex);
   const [isPopupActive, setIsPopupActive] = useState(false);
@@ -66,7 +68,7 @@ export default function Alert({ type, index }: Props) {
 
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
-    setAlertPreference(index, ALERT_CONFIGS[nextIndex].type);
+    setAlertPreference(type, index, ALERT_CONFIGS[nextIndex].type);
 
     // Reset animations
     AnimBounce.value.value = 0;
