@@ -126,6 +126,11 @@ export interface AlertPreferences {
   [prayerIndex: number]: AlertType;
 }
 
+export interface AlertPreferencesStore {
+  standard: AlertPreferences;
+  extra: AlertPreferences;
+}
+
 export interface SoundPreferences {
   selected: number;
 }
