@@ -34,7 +34,9 @@ export const extraAlertPreferencesAtom = atomWithStorage(
 /** Gets alert preferences */
 export const getAlertPreferences = (type: Types.ScheduleType) => {
   const isStandard = type === Types.ScheduleType.Standard;
-  return isStandard ? store.get(standardAlertPreferencesAtom) : store.get(extraAlertPreferencesAtom);
+  const alertPreferencesAtom = isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom;
+
+  return store.get(alertPreferencesAtom);
 };
 
 /** Updates alert preference for prayer */
@@ -44,9 +46,8 @@ export const setAlertPreference = (
   alertType: Types.AlertType
 ) => {
   const isStandard = scheduleType === Types.ScheduleType.Standard;
-
   const preferences = getAlertPreferences(scheduleType);
-
   const scheduleAtom = isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom;
+
   store.set(scheduleAtom, { ...preferences, [prayerIndex]: alertType });
 };
