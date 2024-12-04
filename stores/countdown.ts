@@ -4,17 +4,23 @@ import { getDefaultStore } from 'jotai/vanilla';
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getOverlay } from '@/stores/overlay';
-import { getSchedule } from '@/stores/schedule';
+import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
 const store = getDefaultStore();
 
-let intervalId: NodeJS.Timeout;
+// Convert constants to mutable variables
+let standardCleanup: (() => void) | null = null;
+let extraCleanup: (() => void) | null = null;
+let overlayCleanup: (() => void) | null = null;
+
+// Export the cleanup variables
+export { standardCleanup, extraCleanup, overlayCleanup };
 
 // --- Atoms ---
 
 const createCountdownAtom = () =>
   atom<Types.CountdownStore>({
-    time: 1000,
+    timeLeft: 10,
     name: 'Fajr',
   });
 
@@ -26,16 +32,39 @@ export const overlayCountdownAtom = createCountdownAtom();
 
 const updateCountdown = (type: Types.ScheduleType) => {
   const isStandard = type === Types.ScheduleType.Standard;
+  const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
+
   const schedule = getSchedule(type);
   const prayer = schedule.today[schedule.nextIndex];
-
   const countdown = TimeUtils.calculateCountdown(prayer);
 
-  // TODO: Fix this
-  // if (countdown.hasElapsed) return incrementNextIndex(type);
+  // Clear any existing countdown
+  if (isStandard && standardCleanup) {
+    standardCleanup();
+    standardCleanup = null;
+  }
+  if (!isStandard && extraCleanup) {
+    extraCleanup();
+    extraCleanup = null;
+  }
 
-  const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
-  store.set(countdownAtom, { time: countdown.time, name: countdown.name });
+  // Start new countdown
+  const cleanup = TimeUtils.countdown(countdown.timeLeft, {
+    onTick: (secondsLeft) => {
+      store.set(countdownAtom, { timeLeft: secondsLeft, name: countdown.name });
+    },
+    onFinish: () => {
+      incrementNextIndex(type);
+      updateCountdown(type);
+    },
+  });
+
+  // Store cleanup function
+  if (isStandard) {
+    standardCleanup = cleanup;
+  } else {
+    extraCleanup = cleanup;
+  }
 };
 
 export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: number) => {
@@ -43,28 +72,25 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: 
   const prayer = schedule.today[selectedIndex];
 
   const countdown = TimeUtils.calculateCountdown(prayer);
-  store.set(overlayCountdownAtom, { time: countdown.time, name: countdown.name });
+  store.set(overlayCountdownAtom, { timeLeft: countdown.timeLeft, name: countdown.name });
 };
 
-const updateAllCountdowns = () => {
+export const startCountdowns = () => {
+  stopCountdowns();
+
   updateCountdown(Types.ScheduleType.Standard);
   updateCountdown(Types.ScheduleType.Extra);
 
   const overlay = getOverlay();
-  updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
-};
-
-export const startCountdowns = () => {
-  // Clean up any existing interval first
-  stopCountdowns();
-
-  // Initial countdown updates
-  updateAllCountdowns();
-
-  // Start countdown
-  intervalId = setInterval(updateAllCountdowns, 1000);
+  if (overlay.isOn) updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
 };
 
 export const stopCountdowns = () => {
-  if (intervalId) clearInterval(intervalId);
+  if (standardCleanup) standardCleanup();
+  if (extraCleanup) extraCleanup();
+  if (overlayCleanup) overlayCleanup();
+
+  standardCleanup = null;
+  extraCleanup = null;
+  overlayCleanup = null;
 };
