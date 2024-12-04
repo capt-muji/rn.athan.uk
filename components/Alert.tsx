@@ -45,6 +45,12 @@ export default function Alert({ type, index }: Props) {
 
   const timeoutRef = useRef<NodeJS.Timeout>();
 
+  // Add this effect to sync iconIndex with preferences
+  useEffect(() => {
+    setIconIndex(alertPreferences[index]);
+    setPopupIconIndex(alertPreferences[index]);
+  }, [alertPreferences, index]);
+
   // Animations Updates
   if (Prayer.isNext) AnimFill.animate(1);
 
