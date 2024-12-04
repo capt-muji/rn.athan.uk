@@ -1,5 +1,5 @@
 import { getDefaultStore } from 'jotai';
-import { atomWithStorage } from 'jotai/utils';
+import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 
 import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import * as Types from '@/shared/types';
@@ -7,9 +7,8 @@ import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
-// --- Atoms ---
-
-const createInitialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
+// --- Initial values ---
+const initialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
   const preferences: Types.AlertPreferences = {};
 
   prayers.forEach((_, index) => {
@@ -19,28 +18,18 @@ const createInitialAlertPreferences = (prayers: string[]): Types.AlertPreference
   return preferences;
 };
 
-// Add these getter functions
-const getStandardPreferences = () => {
-  const stored = Database.mmkvStorage.getItem('standardAlertPreferences');
-  return stored ? stored : createInitialAlertPreferences(PRAYERS_ENGLISH);
-};
-
-const getExtraPreferences = () => {
-  const stored = Database.mmkvStorage.getItem('extraAlertPreferences');
-  return stored ? stored : createInitialAlertPreferences(EXTRAS_ENGLISH);
-};
-
+// --- Atoms ---
 export const standardAlertPreferencesAtom = atomWithStorage(
   'standardAlertPreferences',
-  getStandardPreferences(),
-  Database.mmkvStorage,
+  initialAlertPreferences(PRAYERS_ENGLISH),
+  createJSONStorage(() => Database.mmkvStorage),
   { getOnInit: true }
 );
 
 export const extraAlertPreferencesAtom = atomWithStorage(
   'extraAlertPreferences',
-  getExtraPreferences(),
-  Database.mmkvStorage,
+  initialAlertPreferences(EXTRAS_ENGLISH),
+  createJSONStorage(() => Database.mmkvStorage),
   { getOnInit: true }
 );
 

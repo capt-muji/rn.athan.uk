@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-import { createJSONStorage } from 'jotai/utils';
 import { MMKV } from 'react-native-mmkv';
 
 import logger from '@/shared/logger';
@@ -9,19 +8,22 @@ import * as Types from '@/shared/types';
 /** Main MMKV database instance */
 export const database = new MMKV();
 
-/** Custom storage implementation for MMKV with JSON serialization */
-export const mmkvStorage = createJSONStorage(() => ({
+/** Simple storage interface */
+export const mmkvStorage = {
   getItem: (key: string) => {
     const value = database.getString(key);
+    logger.info(`Reading from storage: ${key}`, value ? JSON.parse(value) : null);
     return value ? JSON.parse(value) : null;
   },
   setItem: (key: string, value: unknown) => {
+    logger.info(`Writing to storage: ${key}`, value);
     database.set(key, JSON.stringify(value));
   },
   removeItem: (key: string) => {
+    logger.info(`Removing from storage: ${key}`);
     database.delete(key);
   },
-}));
+};
 
 /** Clears all storage */
 export const clear = () => database.clearAll();
