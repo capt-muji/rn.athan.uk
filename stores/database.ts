@@ -13,34 +13,38 @@ export const database = new MMKV();
 export const mmkvStorage = createJSONStorage(() => ({
   getItem: (key: string) => {
     const value = database.getString(key);
-    logger.info(`Reading from storage: ${key}`, value ? JSON.parse(value) : null);
+    logger.info(`MMKV: Read from storage: ${key}`, value ? JSON.parse(value) : null);
     return value ? JSON.parse(value) : null;
   },
   setItem: (key: string, value: unknown) => {
-    logger.info(`Writing to storage: ${key}`, value);
+    logger.info(`MMKV: Write to storage: ${key}`, value);
     database.set(key, JSON.stringify(value));
   },
   removeItem: (key: string) => {
-    logger.info(`Removing from storage: ${key}`);
+    logger.info(`MMKV: Delete from storage: ${key}`);
     database.delete(key);
   },
 }));
 
 /** Clears all storage */
-export const clear = () => database.clearAll();
+export const clearAllPrayers = () => database.clearAll();
 
 /** Saves prayer times */
-export const saveAll = (prayers: Types.ISingleApiResponseTransformed[]) => {
+export const saveAllPrayers = (prayers: Types.ISingleApiResponseTransformed[]) => {
   prayers.forEach((prayer) => {
-    database.set(prayer.date, JSON.stringify(prayer));
+    database.set(`prayer_${prayer.date}`, JSON.stringify(prayer));
   });
-  logger.info('Data saved');
+
+  logger.info(`MMKV: ${prayers.length} prayers saved`);
 };
 
 /** Retrieves prayer times */
-export const getByDate = (date: Date): Types.ISingleApiResponseTransformed | null => {
+export const getPrayerByDate = (date: Date): Types.ISingleApiResponseTransformed | null => {
   const londonDate = TimeUtils.createLondonDate(date);
   const dateKey = format(londonDate, 'yyyy-MM-dd');
-  const data = database.getString(dateKey);
+  const data = database.getString(`prayer_${dateKey}`);
+
+  logger.info(`MMKV: Read prayer by date ${dateKey}`);
+
   return data ? JSON.parse(data) : null;
 };

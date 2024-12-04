@@ -50,8 +50,8 @@ export const setSchedule = (type: Types.ScheduleType) => {
   const tomorrow = TimeUtils.createLondonDate();
   tomorrow.setDate(tomorrow.getDate() + 1);
 
-  const dataToday = Database.getByDate(today);
-  const dataTomorrow = Database.getByDate(tomorrow);
+  const dataToday = Database.getPrayerByDate(today);
+  const dataTomorrow = Database.getPrayerByDate(tomorrow);
 
   const scheduleToday = PrayerUtils.createSchedule(dataToday!, type);
   const scheduleTomorrow = PrayerUtils.createSchedule(dataTomorrow!, type);
