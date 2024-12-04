@@ -37,9 +37,11 @@ export default function Alert({ type, index }: Props) {
   // State
   const overlay = useAtomValue(overlayAtom);
   const alertPreferences = useAtomValue(Prayer.isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom);
+
   const [iconIndex, setIconIndex] = useState(alertPreferences[index]);
   const [popupIconIndex, setPopupIconIndex] = useState(iconIndex);
   const [isPopupActive, setIsPopupActive] = useState(false);
+
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   // Animations Updates
