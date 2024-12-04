@@ -13,15 +13,19 @@ export const database = new MMKV();
 export const mmkvStorage = createJSONStorage(() => ({
   getItem: (key: string) => {
     const value = database.getString(key);
-    logger.info(`MMKV: Read from storage: ${key}`, value ? JSON.parse(value) : null);
-    return value ? JSON.parse(value) : null;
+    const data = value ? JSON.parse(value) : null;
+
+    logger.info(`MMKV READ: ${key} ::`, data);
+    return data;
   },
   setItem: (key: string, value: unknown) => {
-    logger.info(`MMKV: Write to storage: ${key}`, value);
+    logger.info(`MMKV WRITE: ${key} ::`, value);
+
     database.set(key, JSON.stringify(value));
   },
   removeItem: (key: string) => {
-    logger.info(`MMKV: Delete from storage: ${key}`);
+    logger.info(`MMKV DELETE: ${key}`);
+
     database.delete(key);
   },
 }));
