@@ -26,6 +26,7 @@ interface Props {
 
 export default function Alert({ type, index }: Props) {
   const Prayer = usePrayer(type, index);
+
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
