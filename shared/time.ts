@@ -212,7 +212,7 @@ type CountdownCallbacks = {
 
 /**
  * Creates a countdown timer that counts down from specified seconds
- * @param seconds Number of seconds to countdown from
+ * @param timeLeft Number of seconds to countdown from
  * @param callbacks Optional callback functions for tick and finish events
  * @returns NodeJS.Timer interval ID
  */
