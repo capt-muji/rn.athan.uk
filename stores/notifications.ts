@@ -1,5 +1,5 @@
 import { getDefaultStore } from 'jotai';
-import { atomWithStorage, createJSONStorage } from 'jotai/utils';
+import { atomWithStorage } from 'jotai/utils';
 
 import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import * as Types from '@/shared/types';
@@ -22,14 +22,14 @@ const initialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
 export const standardAlertPreferencesAtom = atomWithStorage(
   'standardAlertPreferences',
   initialAlertPreferences(PRAYERS_ENGLISH),
-  createJSONStorage(() => Database.mmkvStorage),
+  Database.mmkvStorage,
   { getOnInit: true }
 );
 
 export const extraAlertPreferencesAtom = atomWithStorage(
   'extraAlertPreferences',
   initialAlertPreferences(EXTRAS_ENGLISH),
-  createJSONStorage(() => Database.mmkvStorage),
+  Database.mmkvStorage,
   { getOnInit: true }
 );
 
