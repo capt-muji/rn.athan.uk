@@ -66,9 +66,17 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: 
 };
 
 export const startCountdowns = () => {
-  updateCountdown(Types.ScheduleType.Standard);
-  updateCountdown(Types.ScheduleType.Extra);
+  const standardSchedule = getSchedule(Types.ScheduleType.Standard);
+
+  const isScheduleFinishedStandard = TimeUtils.isLastPrayerPassed(standardSchedule);
+  const isScheduleFinishedExtra = TimeUtils.isLastPrayerPassed(standardSchedule);
+
+  if (!isScheduleFinishedStandard) updateCountdown(Types.ScheduleType.Standard);
+  if (!isScheduleFinishedExtra) updateCountdown(Types.ScheduleType.Extra);
+  if (isScheduleFinishedStandard && isScheduleFinishedStandard) {
+    // setinterval to get date from store, get todays date and compare. if same, do nothing. if different, update schedule, call setSchedule twice
+  }
 
   const overlay = getOverlay();
-  if (overlay.isOn) updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
+  updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
 };
