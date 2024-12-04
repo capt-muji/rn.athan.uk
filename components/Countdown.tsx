@@ -1,8 +1,9 @@
 import { useAtomValue } from 'jotai';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import { COLORS, TEXT } from '@/shared/constants';
+import { useSchedule } from '@/hooks/useSchedule';
+import { COLORS, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardCountdownAtom, extraCountdownAtom, overlayCountdownAtom } from '@/stores/countdown';
@@ -13,7 +14,8 @@ interface Props {
 }
 
 export default function Countdown({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
+  const { isStandard, isLastPrayerPassed } = useSchedule(type);
+
   const overlay = useAtomValue(overlayAtom);
 
   const countdownAtom = overlay.isOn ? overlayCountdownAtom : isStandard ? standardCountdownAtom : extraCountdownAtom;
@@ -23,6 +25,14 @@ export default function Countdown({ type }: Props) {
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
     fontFamily: overlay.isOn ? TEXT.famiy.medium : TEXT.famiy.regular,
   }));
+
+  if (isLastPrayerPassed) {
+    return (
+      <View style={[styles.container]}>
+        <Text style={[styles.text]}>All prayers passed</Text>
+      </View>
+    );
+  }
 
   return (
     <Animated.View style={[styles.container]}>
@@ -34,6 +44,7 @@ export default function Countdown({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
+    height: STYLES.countdown.height,
     marginBottom: 40,
     justifyContent: 'center',
     pointerEvents: 'none',
