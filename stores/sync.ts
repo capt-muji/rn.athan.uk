@@ -88,10 +88,10 @@ export const fetchAndSaveData = async () => {
   const currentYear = TimeUtils.getCurrentYear();
   const needsNextYear = shouldFetchNextYear();
 
-  logger.info({ dateSaved, dateNow, isInit, needsNextYear }, 'Starting data refresh');
+  logger.info('SYNC: Starting data refresh');
   const needsUpdate = dateSaved !== dateNow || isInit || needsNextYear;
 
-  if (!needsUpdate) return logger.info('Data already up to date');
+  if (!needsUpdate) return logger.info('SYNC: Data already up to date');
 
   // Clear data (but keep preferences)
   Database.clearPrefix('prayer_');
@@ -109,9 +109,9 @@ export const fetchAndSaveData = async () => {
       markYearAsFetched(currentYear + 1);
     }
 
-    logger.info('Prayer data processed');
+    logger.info('SYNC: Prayer data processed');
   } catch (error) {
-    logger.error({ error }, 'Failed to refresh prayer data');
+    logger.error('SYNC: Failed to refresh prayer data', { error });
     throw error;
   }
 };

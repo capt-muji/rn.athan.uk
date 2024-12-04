@@ -31,7 +31,7 @@ const fetch = async (year?: number): Promise<IApiResponse> => {
 
     return parseResponse(response);
   } catch (error) {
-    logger.error({ error, year }, 'Error fetching prayer times');
+    logger.error('API: Error fetching prayer times', { error, year });
     throw error;
   }
 };
@@ -40,16 +40,16 @@ export const handle = async (year?: number): Promise<ISingleApiResponseTransform
   const targetYear = year || getCurrentYear();
 
   try {
-    logger.info({ year: targetYear }, 'Fetching prayer times for year');
+    logger.info('API: Fetching prayer times for year', { year: targetYear });
     const data = await fetch(targetYear);
-    logger.info('API data fetched');
+    logger.info('API: Data fetched');
 
     const dataFiltered = PrayerUtils.filterApiData(data);
     const dataTransformed = PrayerUtils.transformApiData(dataFiltered);
 
     return dataTransformed;
   } catch (error) {
-    logger.error({ error }, 'Error processing data');
+    logger.error('API: Error processing data', { error });
     throw error;
   }
 };
