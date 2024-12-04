@@ -49,7 +49,7 @@ export default function Alert({ type, index }: Props) {
   if (Prayer.isNext) AnimFill.animate(1);
 
   // Effects
-  // Add this effect to sync iconIndex with preferences
+  // Sync alert preferences with state
   useEffect(() => {
     setIconIndex(alertPreferences[index]);
     setPopupIconIndex(alertPreferences[index]);
