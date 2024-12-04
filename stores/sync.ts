@@ -81,8 +81,9 @@ export const fetchAndSaveData = async () => {
   const needsNextYear = shouldFetchNextYear();
 
   logger.info({ dateSaved, dateNow, isInit, needsNextYear }, 'Starting data refresh');
+  const needsUpdate = dateSaved !== dateNow || isInit || needsNextYear;
 
-  if (dateSaved === dateNow && !isInit && !needsNextYear) return logger.info('Data already up to date');
+  if (!needsUpdate) return logger.info('Data already up to date');
 
   Database.clearAllPrayers();
 
