@@ -4,7 +4,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getOverlay } from '@/stores/overlay';
-import { getSchedule, incrementNextIndex } from '@/stores/schedule';
+import { getSchedule } from '@/stores/schedule';
 
 const store = getDefaultStore();
 
@@ -14,7 +14,7 @@ let intervalId: NodeJS.Timeout;
 
 const createCountdownAtom = () =>
   atom<Types.CountdownStore>({
-    time: '0s',
+    time: 1000,
     name: 'Fajr',
   });
 
@@ -30,7 +30,9 @@ const updateCountdown = (type: Types.ScheduleType) => {
   const prayer = schedule.today[schedule.nextIndex];
 
   const countdown = TimeUtils.calculateCountdown(prayer);
-  if (countdown.hasElapsed) return incrementNextIndex(type);
+
+  // TODO: Fix this
+  // if (countdown.hasElapsed) return incrementNextIndex(type);
 
   const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
   store.set(countdownAtom, { time: countdown.time, name: countdown.name });
