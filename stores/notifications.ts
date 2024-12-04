@@ -22,12 +22,12 @@ const createInitialAlertPreferences = (prayers: string[]): Types.AlertPreference
 // Add these getter functions
 const getStandardPreferences = () => {
   const stored = Database.mmkvStorage.getItem('standardAlertPreferences');
-  return stored ? JSON.parse(stored) : createInitialAlertPreferences(PRAYERS_ENGLISH);
+  return stored ? stored : createInitialAlertPreferences(PRAYERS_ENGLISH);
 };
 
 const getExtraPreferences = () => {
   const stored = Database.mmkvStorage.getItem('extraAlertPreferences');
-  return stored ? JSON.parse(stored) : createInitialAlertPreferences(EXTRAS_ENGLISH);
+  return stored ? stored : createInitialAlertPreferences(EXTRAS_ENGLISH);
 };
 
 export const standardAlertPreferencesAtom = atomWithStorage(
