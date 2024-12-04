@@ -20,14 +20,14 @@ const initialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
 
 // --- Atoms ---
 export const standardAlertPreferencesAtom = atomWithStorage(
-  'standardAlertPreferences',
+  'alert_preferences_standard',
   initialAlertPreferences(PRAYERS_ENGLISH),
   Database.mmkvStorage,
   { getOnInit: true }
 );
 
 export const extraAlertPreferencesAtom = atomWithStorage(
-  'extraAlertPreferences',
+  'alert_preferences_extra',
   initialAlertPreferences(EXTRAS_ENGLISH),
   Database.mmkvStorage,
   { getOnInit: true }
