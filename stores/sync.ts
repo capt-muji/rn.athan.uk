@@ -16,7 +16,9 @@ const store = getDefaultStore();
 
 export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmkvStorage, { getOnInit: true });
 
-export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetched_years', {}, Database.mmkvStorage);
+export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetched_years', {}, Database.mmkvStorage, {
+  getOnInit: true,
+});
 
 export const fetchAndSaveDataLoadable = loadable(atom(async () => fetchAndSaveData()));
 
