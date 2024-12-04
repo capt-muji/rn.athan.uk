@@ -8,7 +8,7 @@ import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
 const store = getDefaultStore();
 
-let isStarted = false;
+let intervalId: NodeJS.Timeout;
 
 // --- Atoms ---
 
@@ -44,22 +44,25 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: 
   store.set(overlayCountdownAtom, { time: countdown.time, name: countdown.name });
 };
 
-export const startCountdowns = () => {
-  if (isStarted) return;
-
-  // Initial countdown updates
+const updateAllCountdowns = () => {
   updateCountdown(Types.ScheduleType.Standard);
   updateCountdown(Types.ScheduleType.Extra);
 
-  // Start timers
-  const updateAllCountdowns = () => {
-    updateCountdown(Types.ScheduleType.Standard);
-    updateCountdown(Types.ScheduleType.Extra);
+  const overlay = getOverlay();
+  updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
+};
 
-    const overlay = getOverlay();
-    updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
-  };
+export const startCountdowns = () => {
+  // Clean up any existing interval first
+  stopCountdowns();
 
-  setInterval(updateAllCountdowns, 1000);
-  isStarted = true;
+  // Initial countdown updates
+  updateAllCountdowns();
+
+  // Start countdown
+  intervalId = setInterval(updateAllCountdowns, 1000);
+};
+
+export const stopCountdowns = () => {
+  if (intervalId) clearInterval(intervalId);
 };
