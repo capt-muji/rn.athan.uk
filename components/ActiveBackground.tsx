@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimations';
-import { usePrayer } from '@/hooks/usePrayer';
+import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, STYLES } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
@@ -14,15 +14,15 @@ interface Props {
 }
 
 export default function ActiveBackground({ type }: Props) {
-  const Prayer = usePrayer(type);
+  const { schedule, isStandard, isLastPrayerPassed } = useSchedule(type);
 
   // State
   const date = useAtomValue(dateAtom);
 
   // Derived State
   const today = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
-  const yPosition = Prayer.schedule.nextIndex * STYLES.prayer.height;
-  const shouldHide = Prayer.schedule.nextIndex === 0 && date === today && Prayer.isLastPrayerPassed;
+  const yPosition = schedule.nextIndex * STYLES.prayer.height;
+  const shouldHide = schedule.nextIndex === 0 && date === today && isLastPrayerPassed;
 
   // Animations
   const AnimTranslateY = useAnimationTranslateY(yPosition);
@@ -35,7 +35,7 @@ export default function ActiveBackground({ type }: Props) {
   else AnimTranslateY.animate(yPosition);
 
   const computedStyles = {
-    shadowColor: Prayer.isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
+    shadowColor: isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
   };
 
   return <Animated.View style={[styles.background, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style]} />;
