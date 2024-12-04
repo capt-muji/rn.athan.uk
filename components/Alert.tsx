@@ -45,16 +45,16 @@ export default function Alert({ type, index }: Props) {
 
   const timeoutRef = useRef<NodeJS.Timeout>();
 
+  // Animations Updates
+  if (Prayer.isNext) AnimFill.animate(1);
+
+  // Effects
   // Add this effect to sync iconIndex with preferences
   useEffect(() => {
     setIconIndex(alertPreferences[index]);
     setPopupIconIndex(alertPreferences[index]);
   }, [alertPreferences, index]);
 
-  // Animations Updates
-  if (Prayer.isNext) AnimFill.animate(1);
-
-  // Effects
   useEffect(() => {
     const colorPos = isPopupActive ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: 50 });
