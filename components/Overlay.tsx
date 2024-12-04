@@ -17,7 +17,7 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
-  const PrayerHook = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex);
+  const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex);
 
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
@@ -25,8 +25,6 @@ export default function Overlay() {
   const measurements = useAtomValue(measurementsAtom);
 
   const insets = useSafeAreaInsets();
-
-  const isPrayerNext = PrayerHook.schedule.nextIndex === overlay.selectedPrayerIndex;
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -61,7 +59,7 @@ export default function Overlay() {
     top: (measurements.list?.pageY ?? 0) + overlay.selectedPrayerIndex * STYLES.prayer.height,
     left: measurements.list?.pageX ?? 0,
     width: measurements.list?.width ?? 0,
-    ...(isPrayerNext && styles.activeBackground),
+    ...(selectedPrayer.isNext && styles.activeBackground),
   };
 
   return (
@@ -76,7 +74,7 @@ export default function Overlay() {
 
         {/* Date */}
         <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
-          {PrayerHook.isPassed ? 'Tomorrow' : 'Today'}
+          {selectedPrayer.isPassed ? 'Tomorrow' : 'Today'}
         </Reanimated.Text>
 
         {/* Prayer overlay */}
