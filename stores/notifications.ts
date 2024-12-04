@@ -10,9 +10,11 @@ const store = getDefaultStore();
 // Atoms
 const createInitialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
   const preferences: Types.AlertPreferences = {};
+
   prayers.forEach((_, index) => {
     preferences[index] = Types.AlertType.Off;
   });
+
   return preferences;
 };
 
