@@ -199,6 +199,15 @@ export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
 export const getCurrentYear = (): number => createLondonDate().getFullYear();
 
 /**
+ * Rounds milliseconds to the nearest second
+ * @param ms Time in milliseconds
+ * @returns Rounded milliseconds
+ */
+const roundToNearestSecond = (ms: number): number => {
+  return Math.round(ms / 1000) * 1000;
+};
+
+/**
  * Calculates countdown information for a prayer time
  * @param prayer Prayer object containing time and name
  * @returns Countdown information with formatted time and prayer name
@@ -206,9 +215,9 @@ export const getCurrentYear = (): number => createLondonDate().getFullYear();
 export const calculateCountdown = (prayer: { time: string; english: string }) => {
   const isPassed = isTimePassed(prayer.time);
   const prayerDate = getDateTodayOrTomorrow(isPassed ? DaySelection.Tomorrow : DaySelection.Today);
-  const timeDiff = getTimeDifference(prayer.time, prayerDate);
+  const timeDiff = roundToNearestSecond(getTimeDifference(prayer.time, prayerDate));
 
-  const threshold = 1000; // seconds
+  const threshold = 1000; // 1 second
 
   return {
     time: formatTime(timeDiff),
