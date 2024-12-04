@@ -5,6 +5,7 @@ import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getOverlay } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
+import { getDate, isMidnightAtom } from '@/stores/sync';
 
 const store = getDefaultStore();
 
@@ -41,7 +42,10 @@ const updateCountdown = (type: Types.ScheduleType) => {
       incrementNextIndex(type);
 
       const { nextIndex } = getSchedule(type);
-      if (nextIndex === 0) return;
+      if (nextIndex === 0) {
+        checkMidnight();
+        return;
+      }
 
       updateCountdown(type);
     },
@@ -65,6 +69,15 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: 
   store.set(overlayCountdownAtom, { timeLeft: countdown.timeLeft, name: countdown.name });
 };
 
+const checkMidnight = () => {
+  const savedDate = getDate();
+
+  setInterval(() => {
+    const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
+    if (currentDate !== savedDate) store.set(isMidnightAtom, true);
+  }, 1000);
+};
+
 export const startCountdowns = () => {
   const standardSchedule = getSchedule(Types.ScheduleType.Standard);
 
@@ -73,9 +86,7 @@ export const startCountdowns = () => {
 
   if (!isScheduleFinishedStandard) updateCountdown(Types.ScheduleType.Standard);
   if (!isScheduleFinishedExtra) updateCountdown(Types.ScheduleType.Extra);
-  if (isScheduleFinishedStandard && isScheduleFinishedStandard) {
-    // setinterval to get date from store, get todays date and compare. if same, do nothing. if different, update schedule, call setSchedule twice
-  }
+  if (isScheduleFinishedStandard && isScheduleFinishedStandard) checkMidnight();
 
   const overlay = getOverlay();
   updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
