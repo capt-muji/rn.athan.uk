@@ -30,7 +30,16 @@ export const mmkvStorage = createJSONStorage(() => ({
   },
 }));
 
-export const clearAllPrayers = () => database.clearAll();
+export const clearAllPrayers = () => {
+  const keys = database.getAllKeys();
+
+  keys.forEach((key) => {
+    if (!key.startsWith('prayer_')) return;
+
+    database.delete(key);
+    logger.info(`MMKV DELETE: ${key}`);
+  });
+};
 
 export const saveAllPrayers = (prayers: Types.ISingleApiResponseTransformed[]) => {
   prayers.forEach((prayer) => {
