@@ -30,25 +30,27 @@ export const mmkvStorage = createJSONStorage(() => ({
   },
 }));
 
-/** Clears all storage */
 export const clearAllPrayers = () => database.clearAll();
 
-/** Saves prayer times */
 export const saveAllPrayers = (prayers: Types.ISingleApiResponseTransformed[]) => {
   prayers.forEach((prayer) => {
-    database.set(`prayer_${prayer.date}`, JSON.stringify(prayer));
+    const key = `prayer_${prayer.date}`;
+
+    database.set(key, JSON.stringify(prayer));
+    logger.info(`MMKV WRITE: ${key}`);
   });
 
-  logger.info(`MMKV: ${prayers.length} prayers saved`);
+  logger.info(`MMKV INFO: ${prayers.length} prayers saved`);
 };
 
-/** Retrieves prayer times */
 export const getPrayerByDate = (date: Date): Types.ISingleApiResponseTransformed | null => {
   const londonDate = TimeUtils.createLondonDate(date);
-  const dateKey = format(londonDate, 'yyyy-MM-dd');
-  const data = database.getString(`prayer_${dateKey}`);
+  const keyDate = format(londonDate, 'yyyy-MM-dd');
+  const key = `prayer_${keyDate}`;
 
-  logger.info(`MMKV: Read prayer by date ${dateKey}`);
+  const data = database.getString(key);
+
+  logger.info(`MMKV READ: ${key}`);
 
   return data ? JSON.parse(data) : null;
 };
