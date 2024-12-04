@@ -1,44 +1,52 @@
 import { getDefaultStore } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
-import { PRAYERS_ENGLISH } from '@/shared/constants';
+import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import * as Types from '@/shared/types';
 import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
 // Atoms
-const createInitialAlertPreferences = (): Types.AlertPreferences => {
+const createInitialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
   const preferences: Types.AlertPreferences = {};
-  PRAYERS_ENGLISH.forEach((_, index) => {
+  prayers.forEach((_, index) => {
     preferences[index] = Types.AlertType.Off;
   });
   return preferences;
 };
 
-export const alertPreferencesAtom = atomWithStorage(
-  'alertPreferences',
-  createInitialAlertPreferences(),
+export const standardAlertPreferencesAtom = atomWithStorage(
+  'standardAlertPreferences',
+  createInitialAlertPreferences(PRAYERS_ENGLISH),
   Database.mmkvStorage,
   { getOnInit: true }
 );
 
-export const soundPreferencesAtom = atomWithStorage<number>('soundPreferences', 0, Database.mmkvStorage);
+export const extraAlertPreferencesAtom = atomWithStorage(
+  'extraAlertPreferences',
+  createInitialAlertPreferences(EXTRAS_ENGLISH),
+  Database.mmkvStorage,
+  { getOnInit: true }
+);
 
 // Actions
 /** Gets alert preferences */
-export const getAlertPreferences = () => store.get(alertPreferencesAtom);
-
-/** Gets sound preferences */
-export const getSoundPreferences = () => store.get(soundPreferencesAtom);
-
-/** Updates alert preference for prayer */
-export const setAlertPreference = (prayerIndex: number, alertType: Types.AlertType) => {
-  const alertPreference = getAlertPreferences();
-  store.set(alertPreferencesAtom, { ...alertPreference, [prayerIndex]: alertType });
+export const getAlertPreferences = (type: Types.ScheduleType) => {
+  const isStandard = type === Types.ScheduleType.Standard;
+  return isStandard ? store.get(standardAlertPreferencesAtom) : store.get(extraAlertPreferencesAtom);
 };
 
-/** Updates selected notification sound */
-export const setSelectedSound = (soundIndex: number) => {
-  store.set(soundPreferencesAtom, soundIndex);
+/** Updates alert preference for prayer */
+export const setAlertPreference = (
+  scheduleType: Types.ScheduleType,
+  prayerIndex: number,
+  alertType: Types.AlertType
+) => {
+  const isStandard = scheduleType === Types.ScheduleType.Standard;
+
+  const preferences = getAlertPreferences(scheduleType);
+
+  const scheduleAtom = isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom;
+  store.set(scheduleAtom, { ...preferences, [prayerIndex]: alertType });
 };
