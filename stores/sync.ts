@@ -14,9 +14,9 @@ const store = getDefaultStore();
 
 // --- Atoms ---
 
-export const dateAtom = atomWithStorage<string>('date', '', Database.mmkvStorage);
+export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmkvStorage, { getOnInit: true });
 
-export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetchedYears', {}, Database.mmkvStorage);
+export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetched_years', {}, Database.mmkvStorage);
 
 export const fetchAndSaveDataLoadable = loadable(atom(async () => fetchAndSaveData()));
 
@@ -88,12 +88,12 @@ export const fetchAndSaveData = async () => {
 
   try {
     const currentYearData = await Api.handle(currentYear);
-    Database.saveAll(currentYearData);
+    Database.saveAllPrayers(currentYearData);
     markYearAsFetched(currentYear);
 
     if (needsNextYear) {
       const nextYearData = await Api.handle(currentYear + 1);
-      Database.saveAll(nextYearData);
+      Database.saveAllPrayers(nextYearData);
       markYearAsFetched(currentYear + 1);
     }
 
