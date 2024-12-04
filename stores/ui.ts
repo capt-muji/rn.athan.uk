@@ -3,8 +3,10 @@ import { getDefaultStore } from 'jotai/vanilla';
 
 const store = getDefaultStore();
 
-// Atoms
+// --- Atoms ---
+
 export const pagePositionAtom = atom<number>(0);
 
-// Actions
+// --- Actions ---
+
 export const setPagePosition = (position: number) => store.set(pagePositionAtom, position);

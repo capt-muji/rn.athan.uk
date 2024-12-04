@@ -8,7 +8,8 @@ import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
-// Atoms
+// --- Atoms ---
+
 const initialPrayer = (scheduleType: Types.ScheduleType) => ({
   index: 0,
   date: '2024-11-15',
@@ -33,7 +34,8 @@ const createScheduleAtom = (scheduleType: Types.ScheduleType) =>
 export const standardScheduleAtom = createScheduleAtom(Types.ScheduleType.Standard);
 export const extraScheduleAtom = createScheduleAtom(Types.ScheduleType.Extra);
 
-// Actions
+// --- Actions ---
+
 /** Gets schedule based on type */
 export const getSchedule = (type: Types.ScheduleType) =>
   type === Types.ScheduleType.Standard ? store.get(standardScheduleAtom) : store.get(extraScheduleAtom);

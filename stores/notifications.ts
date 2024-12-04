@@ -8,6 +8,7 @@ import * as Database from '@/stores/database';
 const store = getDefaultStore();
 
 // --- Atoms ---
+
 const createInitialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
   const preferences: Types.AlertPreferences = {};
 

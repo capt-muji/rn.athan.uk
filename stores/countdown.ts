@@ -10,7 +10,8 @@ const store = getDefaultStore();
 
 let isStarted = false;
 
-// Atoms
+// --- Atoms ---
+
 const createCountdownAtom = () =>
   atom<Types.CountdownStore>({
     time: '0s',
@@ -21,7 +22,8 @@ export const standardCountdownAtom = createCountdownAtom();
 export const extraCountdownAtom = createCountdownAtom();
 export const overlayCountdownAtom = createCountdownAtom();
 
-// Actions
+// --- Actions ---
+
 const updateCountdown = (type: Types.ScheduleType) => {
   const isStandard = type === Types.ScheduleType.Standard;
   const schedule = getSchedule(type);
