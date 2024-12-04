@@ -217,10 +217,8 @@ type CountdownCallbacks = {
  * @returns NodeJS.Timer interval ID
  */
 export const countdown = (timeLeft: number, callbacks: CountdownCallbacks): NodeJS.Timer => {
-  const ONE_SECOND = 1000;
-
   const onInterval = () => {
-    if (timeLeft <= 0) {
+    if (timeLeft <= 1) {
       clearInterval(timerId);
       callbacks.onFinish();
       return;
@@ -230,7 +228,7 @@ export const countdown = (timeLeft: number, callbacks: CountdownCallbacks): Node
     callbacks.onTick(timeLeft);
   };
 
-  const timerId = setInterval(onInterval, ONE_SECOND);
+  const timerId = setInterval(onInterval, 1000);
 
   return timerId;
 };
