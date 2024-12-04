@@ -7,7 +7,7 @@ import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
-// Atoms
+// --- Atoms ---
 const createInitialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
   const preferences: Types.AlertPreferences = {};
 
@@ -32,7 +32,8 @@ export const extraAlertPreferencesAtom = atomWithStorage(
   { getOnInit: true }
 );
 
-// Actions
+// --- Actions ---
+
 /** Gets alert preferences */
 export const getAlertPreferences = (type: Types.ScheduleType) => {
   const isStandard = type === Types.ScheduleType.Standard;
