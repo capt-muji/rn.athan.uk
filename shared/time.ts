@@ -40,12 +40,12 @@ export const getDateTodayOrTomorrow = (daySelection: DaySelection): string => {
 };
 
 /**
- * Calculates the milliseconds until a specific time on a given date
+ * Calculates the seconds until a specific time on a given date
  * @param targetTime Time to calculate difference to (HH:mm format)
  * @param date Target date (YYYY-MM-DD format)
- * @returns Difference in milliseconds (positive if target is in future, negative if passed)
+ * @returns Difference in seconds (positive if target is in future, negative if passed)
  */
-export const getTimeDifference = (targetTime: string, date: string): number => {
+export const secondsRemainingUntil = (targetTime: string, date: string): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
 
   const now = createLondonDate();
@@ -53,7 +53,7 @@ export const getTimeDifference = (targetTime: string, date: string): number => {
 
   target = setHours(setMinutes(target, minutes), hours);
 
-  return target.getTime() - now.getTime();
+  return Math.floor((target.getTime() - now.getTime()) / 1000);
 };
 
 /**
@@ -71,17 +71,18 @@ export const isTimePassed = (time: string): boolean => {
 };
 
 /**
- * Converts milliseconds into human-readable time format
- * @param ms Time in milliseconds
+ * Converts seconds into human-readable time format
+ * @param seconds Time in seconds
  * @returns Formatted time string (e.g., "1h 30m 45s")
  */
-export const formatTime = (ms: number): string => {
-  if (ms < 0) return '0s';
+export const formatTime = (seconds: number): string => {
+  if (seconds < 0) return '0s';
 
+  const ms = seconds * 1000;
   const duration = intervalToDuration({ start: 0, end: ms });
-  const { hours, minutes, seconds } = duration;
+  const { hours, minutes, seconds: secs } = duration;
 
-  return [hours && `${hours}h`, minutes && `${minutes}m`, seconds !== undefined ? `${seconds}s` : '0s']
+  return [hours && `${hours}h`, minutes && `${minutes}m`, secs !== undefined ? `${secs}s` : '0s']
     .filter(Boolean)
     .join(' ');
 };
@@ -193,16 +194,42 @@ export const getCurrentYear = (): number => createLondonDate().getFullYear();
 
 /**
  * Calculates countdown information for a prayer time
- * @param prayer Prayer object containing time and name
- * @returns Countdown information with formatted time and prayer name
+ * @param prayer Prayer object containing time and english name
+ * @returns Object containing time left until prayer (in ms) and prayer name
  */
 export const calculateCountdown = (prayer: { time: string; english: string }) => {
   const isPassed = isTimePassed(prayer.time);
   const prayerDate = getDateTodayOrTomorrow(isPassed ? DaySelection.Tomorrow : DaySelection.Today);
-  const timeDiff = getTimeDifference(prayer.time, prayerDate);
+  const timeLeft = secondsRemainingUntil(prayer.time, prayerDate);
 
-  return {
-    time: timeDiff,
-    name: prayer.english,
-  };
+  return { timeLeft, name: prayer.english };
+};
+
+type CountdownCallbacks = {
+  onTick: (secondsLeft: number) => void;
+  onFinish: () => void;
+};
+
+/**
+ * Creates a countdown timer that counts down from specified seconds
+ * @param seconds Number of seconds to countdown from
+ * @param callbacks Optional callback functions for tick and finish events
+ * @returns Function to clear the countdown
+ */
+export const countdown = (seconds: number, callbacks: CountdownCallbacks): (() => void) => {
+  let timeLeft = seconds;
+
+  const timer = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      callbacks.onFinish();
+      return;
+    }
+
+    timeLeft--;
+    callbacks.onTick(timeLeft);
+  }, 1000);
+
+  // Return cleanup function
+  return () => clearInterval(timer);
 };

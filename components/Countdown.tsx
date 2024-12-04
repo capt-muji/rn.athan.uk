@@ -27,7 +27,7 @@ export default function Countdown({ type }: Props) {
   return (
     <Animated.View style={[styles.container]}>
       <Text style={[styles.text]}>{countdown.name} in</Text>
-      <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(countdown.time)}</Animated.Text>
+      <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(countdown.timeLeft)}</Animated.Text>
     </Animated.View>
   );
 }
