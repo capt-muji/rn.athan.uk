@@ -40,27 +40,20 @@ export const getDateTodayOrTomorrow = (daySelection: DaySelection): string => {
 };
 
 /**
- * Calculates time difference in milliseconds between now and target time
- * @param targetTime Target time in HH:mm format
- * @param date Date string in YYYY-MM-DD format
- * @returns Time difference in milliseconds
+ * Calculates the milliseconds until a specific time on a given date
+ * @param targetTime Time to calculate difference to (HH:mm format)
+ * @param date Target date (YYYY-MM-DD format)
+ * @returns Difference in milliseconds (positive if target is in future, negative if passed)
  */
 export const getTimeDifference = (targetTime: string, date: string): number => {
   const [hours, minutes] = targetTime.split(':').map(Number);
+
   const now = createLondonDate();
   let target = createLondonDate(date);
+
   target = setHours(setMinutes(target, minutes), hours);
 
-  const diff = target.getTime() - now.getTime();
-
-  const threshold = -1000;
-
-  if (diff < threshold) {
-    target = addDays(target, 1);
-    return target.getTime() - now.getTime();
-  }
-
-  return diff;
+  return target.getTime() - now.getTime();
 };
 
 /**
@@ -199,15 +192,6 @@ export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
 export const getCurrentYear = (): number => createLondonDate().getFullYear();
 
 /**
- * Rounds milliseconds to the nearest second
- * @param ms Time in milliseconds
- * @returns Rounded milliseconds
- */
-const roundToNearestSecond = (ms: number): number => {
-  return Math.round(ms / 1000) * 1000;
-};
-
-/**
  * Calculates countdown information for a prayer time
  * @param prayer Prayer object containing time and name
  * @returns Countdown information with formatted time and prayer name
@@ -215,13 +199,10 @@ const roundToNearestSecond = (ms: number): number => {
 export const calculateCountdown = (prayer: { time: string; english: string }) => {
   const isPassed = isTimePassed(prayer.time);
   const prayerDate = getDateTodayOrTomorrow(isPassed ? DaySelection.Tomorrow : DaySelection.Today);
-  const timeDiff = roundToNearestSecond(getTimeDifference(prayer.time, prayerDate));
-
-  const threshold = 1000; // 1 second
+  const timeDiff = getTimeDifference(prayer.time, prayerDate);
 
   return {
-    time: formatTime(timeDiff),
+    time: timeDiff,
     name: prayer.english,
-    hasElapsed: timeDiff <= threshold,
   };
 };
