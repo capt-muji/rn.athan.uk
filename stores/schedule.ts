@@ -8,7 +8,7 @@ import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
-// --- Atoms ---
+// --- Initial values ---
 
 const initialPrayer = (scheduleType: Types.ScheduleType) => ({
   index: 0,
@@ -18,6 +18,8 @@ const initialPrayer = (scheduleType: Types.ScheduleType) => ({
   time: '05:35',
   type: scheduleType,
 });
+
+// --- Atoms ---
 
 const createScheduleAtom = (scheduleType: Types.ScheduleType) =>
   atom<Types.ScheduleStore>({
