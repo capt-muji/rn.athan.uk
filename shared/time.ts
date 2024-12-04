@@ -208,9 +208,11 @@ export const calculateCountdown = (prayer: { time: string; english: string }) =>
   const prayerDate = getDateTodayOrTomorrow(isPassed ? DaySelection.Tomorrow : DaySelection.Today);
   const timeDiff = getTimeDifference(prayer.time, prayerDate);
 
+  const threshold = 1000; // seconds
+
   return {
     time: formatTime(timeDiff),
     name: prayer.english,
-    hasElapsed: timeDiff <= 500,
+    hasElapsed: timeDiff <= threshold,
   };
 };
