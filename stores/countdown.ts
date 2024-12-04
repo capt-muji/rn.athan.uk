@@ -1,16 +1,11 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { standardCleanup, extraCleanup, overlayCleanup } from './countdown copy';
-
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
 const store = getDefaultStore();
-
-// Export the cleanup variables
-export { standardCleanup, extraCleanup, overlayCleanup };
 
 // --- Atoms ---
 
@@ -43,6 +38,10 @@ const updateCountdown = (type: Types.ScheduleType) => {
     },
     onFinish: () => {
       incrementNextIndex(type);
+
+      const { nextIndex } = getSchedule(type);
+      if (nextIndex === 0) return;
+
       updateCountdown(type);
     },
   });
