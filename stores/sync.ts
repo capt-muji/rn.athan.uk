@@ -84,7 +84,7 @@ export const fetchAndSaveData = async () => {
 
   if (dateSaved === dateNow && !isInit && !needsNextYear) return logger.info('Data already up to date');
 
-  Database.clear();
+  // Database.clear();
 
   try {
     const currentYearData = await Api.handle(currentYear);
