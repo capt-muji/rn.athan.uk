@@ -39,8 +39,12 @@ export const extraScheduleAtom = createScheduleAtom(Types.ScheduleType.Extra);
 // --- Actions ---
 
 /** Gets schedule based on type */
-export const getSchedule = (type: Types.ScheduleType) =>
-  type === Types.ScheduleType.Standard ? store.get(standardScheduleAtom) : store.get(extraScheduleAtom);
+export const getSchedule = (type: Types.ScheduleType) => {
+  const isStandard = type === Types.ScheduleType.Standard;
+  const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
+
+  return store.get(scheduleAtom);
+};
 
 /** Updates prayer schedule for given type */
 export const setSchedule = (type: Types.ScheduleType) => {
