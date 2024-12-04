@@ -12,6 +12,12 @@ import * as ScheduleStore from '@/stores/schedule';
 
 const store = getDefaultStore();
 
+// TODO: Remove below check
+Database.clearPrefix('prayer_');
+Database.clearPrefix('fetched_years');
+Database.clearPrefix('display_date');
+// TODO: Remove above check
+
 // --- Atoms ---
 
 export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmkvStorage, { getOnInit: true });
@@ -87,7 +93,10 @@ export const fetchAndSaveData = async () => {
 
   if (!needsUpdate) return logger.info('Data already up to date');
 
-  Database.clearAllPrayers();
+  // Clear data (but keep preferences)
+  Database.clearPrefix('prayer_');
+  Database.clearPrefix('display_date');
+  Database.clearPrefix('fetched_years');
 
   try {
     const currentYearData = await Api.handle(currentYear);
