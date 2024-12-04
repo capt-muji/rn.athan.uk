@@ -162,6 +162,6 @@ export interface FetchedYears {
 }
 
 export interface CountdownStore {
-  time: string;
+  time: number;
   name: string;
 }
