@@ -214,22 +214,23 @@ type CountdownCallbacks = {
  * Creates a countdown timer that counts down from specified seconds
  * @param seconds Number of seconds to countdown from
  * @param callbacks Optional callback functions for tick and finish events
- * @returns Function to clear the countdown
+ * @returns NodeJS.Timer interval ID
  */
-export const countdown = (seconds: number, callbacks: CountdownCallbacks): (() => void) => {
-  let timeLeft = seconds;
+export const countdown = (timeLeft: number, callbacks: CountdownCallbacks): NodeJS.Timer => {
+  const ONE_SECOND = 1000;
 
-  const timer = setInterval(() => {
+  const onInterval = () => {
     if (timeLeft <= 0) {
-      clearInterval(timer);
+      clearInterval(timerId);
       callbacks.onFinish();
       return;
     }
 
     timeLeft--;
     callbacks.onTick(timeLeft);
-  }, 1000);
+  };
 
-  // Return cleanup function
-  return () => clearInterval(timer);
+  const timerId = setInterval(onInterval, ONE_SECOND);
+
+  return timerId;
 };
