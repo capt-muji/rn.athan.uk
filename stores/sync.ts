@@ -12,14 +12,16 @@ import * as ScheduleStore from '@/stores/schedule';
 
 const store = getDefaultStore();
 
-// Atoms
+// --- Atoms ---
+
 export const dateAtom = atomWithStorage<string>('date', '', Database.mmkvStorage);
 
 export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetchedYears', {}, Database.mmkvStorage);
 
 export const fetchAndSaveDataLoadable = loadable(atom(async () => fetchAndSaveData()));
 
-// Actions
+// --- Actions ---
+
 /** Gets current stored date */
 export const getDate = () => store.get(dateAtom);
 

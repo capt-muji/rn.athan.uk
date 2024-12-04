@@ -6,7 +6,8 @@ import { updateOverlayCountdown } from '@/stores/countdown';
 
 const store = getDefaultStore();
 
-// Atoms
+// --- Atoms ---
+
 export const measurementsAtom = atom<Types.Measurements>({
   date: null,
   list: null,
@@ -18,7 +19,8 @@ export const overlayAtom = atom<Types.OverlayStore>({
   scheduleType: Types.ScheduleType.Standard,
 });
 
-// Actions
+// --- Actions ---
+
 export const getMeasuements = () => store.get(measurementsAtom);
 export const getOverlay = () => store.get(overlayAtom);
 
