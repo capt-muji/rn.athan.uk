@@ -24,12 +24,8 @@ const initialPrayer = (scheduleType: Types.ScheduleType) => ({
 const createScheduleAtom = (scheduleType: Types.ScheduleType) =>
   atom<Types.ScheduleStore>({
     type: scheduleType,
-    today: {
-      0: initialPrayer(scheduleType),
-    },
-    tomorrow: {
-      0: initialPrayer(scheduleType),
-    },
+    today: { 0: initialPrayer(scheduleType) },
+    tomorrow: { 0: initialPrayer(scheduleType) },
     nextIndex: 0,
   });
 
