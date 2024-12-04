@@ -30,15 +30,17 @@ export const mmkvStorage = createJSONStorage(() => ({
   },
 }));
 
-export const clearAllPrayers = () => {
+export const clearPrefix = (prefix: string) => {
   const keys = database.getAllKeys();
 
   keys.forEach((key) => {
-    if (!key.startsWith('prayer_')) return;
+    if (!key.startsWith(prefix)) return;
 
     database.delete(key);
     logger.info(`MMKV DELETE: ${key}`);
   });
+
+  logger.info(`MMKV INFO: Cleared all entries with prefix "${prefix}"`);
 };
 
 export const saveAllPrayers = (prayers: Types.ISingleApiResponseTransformed[]) => {
