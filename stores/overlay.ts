@@ -1,11 +1,8 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
-import { LogBox } from 'react-native';
 
 import * as Types from '@/shared/types';
 import { updateOverlayCountdown } from '@/stores/countdown';
-
-LogBox.ignoreLogs(['Require cycle:']);
 
 const store = getDefaultStore();
 
