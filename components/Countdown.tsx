@@ -3,6 +3,7 @@ import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import { COLORS, TEXT } from '@/shared/constants';
+import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardCountdownAtom, extraCountdownAtom, overlayCountdownAtom } from '@/stores/countdown';
 import { overlayAtom } from '@/stores/overlay';
@@ -26,7 +27,7 @@ export default function Countdown({ type }: Props) {
   return (
     <Animated.View style={[styles.container]}>
       <Text style={[styles.text]}>{countdown.name} in</Text>
-      <Animated.Text style={[styles.countdown, animatedStyle]}>{countdown.time}</Animated.Text>
+      <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(countdown.time)}</Animated.Text>
     </Animated.View>
   );
 }
