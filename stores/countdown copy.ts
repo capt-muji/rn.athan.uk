@@ -1,13 +1,17 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { standardCleanup, extraCleanup, overlayCleanup } from './countdown copy';
-
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
+import { getOverlay } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
 const store = getDefaultStore();
+
+// Convert constants to mutable variables
+let standardCleanup: (() => void) | null = null;
+let extraCleanup: (() => void) | null = null;
+const overlayCleanup: (() => void) | null = null;
 
 // Export the cleanup variables
 export { standardCleanup, extraCleanup, overlayCleanup };
@@ -34,7 +38,15 @@ const updateCountdown = (type: Types.ScheduleType) => {
   const prayer = schedule.today[schedule.nextIndex];
   const countdown = TimeUtils.calculateCountdown(prayer);
 
-  store.set(countdownAtom, { timeLeft: countdown.timeLeft, name: countdown.name });
+  // Clear any existing countdown
+  if (isStandard && standardCleanup) {
+    standardCleanup();
+    standardCleanup = null;
+  }
+  if (!isStandard && extraCleanup) {
+    extraCleanup();
+    extraCleanup = null;
+  }
 
   // Start new countdown
   TimeUtils.countdown(countdown.timeLeft, {
@@ -48,6 +60,18 @@ const updateCountdown = (type: Types.ScheduleType) => {
   });
 };
 
+export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: number) => {
+  const schedule = getSchedule(type);
+  const prayer = schedule.today[selectedIndex];
+
+  const countdown = TimeUtils.calculateCountdown(prayer);
+  store.set(overlayCountdownAtom, { timeLeft: countdown.timeLeft, name: countdown.name });
+};
+
 export const startCountdowns = () => {
   updateCountdown(Types.ScheduleType.Standard);
+  updateCountdown(Types.ScheduleType.Extra);
+
+  const overlay = getOverlay();
+  if (overlay.isOn) updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
 };
