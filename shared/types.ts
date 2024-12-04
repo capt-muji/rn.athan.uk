@@ -165,3 +165,8 @@ export interface CountdownStore {
   timeLeft: number;
   name: string;
 }
+
+export interface CountdownCallbacks {
+  onTick: (secondsLeft: number) => void;
+  onFinish: () => void;
+}
