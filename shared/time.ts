@@ -11,7 +11,7 @@ import {
 } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { DaySelection, ScheduleStore } from '@/shared/types';
+import { CountdownCallbacks, DaySelection, ScheduleStore } from '@/shared/types';
 
 /**
  * Creates a new Date object in London timezone
@@ -203,11 +203,6 @@ export const calculateCountdown = (prayer: { time: string; english: string }) =>
   const timeLeft = secondsRemainingUntil(prayer.time, prayerDate);
 
   return { timeLeft, name: prayer.english };
-};
-
-type CountdownCallbacks = {
-  onTick: (secondsLeft: number) => void;
-  onFinish: () => void;
 };
 
 /**
