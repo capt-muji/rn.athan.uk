@@ -1,3 +1,5 @@
+import { standardScheduleAtom } from '@/stores/schedule';
+
 export interface IApiSingleTime {
   date: string;
   fajr: string;
@@ -176,3 +178,5 @@ export interface FetchDataResult {
   nextYearData: ISingleApiResponseTransformed[] | null;
   currentYear: number;
 }
+
+export type ScheduleAtom = typeof standardScheduleAtom;

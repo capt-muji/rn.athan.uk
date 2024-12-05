@@ -2,17 +2,17 @@ import { getDefaultStore } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
 import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
-import * as Types from '@/shared/types';
+import { AlertPreferences, AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
 // --- Initial values ---
-const initialAlertPreferences = (prayers: string[]): Types.AlertPreferences => {
-  const preferences: Types.AlertPreferences = {};
+const initialAlertPreferences = (prayers: string[]): AlertPreferences => {
+  const preferences: AlertPreferences = {};
 
   prayers.forEach((_, index) => {
-    preferences[index] = Types.AlertType.Off;
+    preferences[index] = AlertType.Off;
   });
 
   return preferences;
@@ -35,19 +35,15 @@ export const extraAlertPreferencesAtom = atomWithStorage(
 
 // --- Actions ---
 
-export const getAlertPreferences = (type: Types.ScheduleType) => {
-  const isStandard = type === Types.ScheduleType.Standard;
+export const getAlertPreferences = (type: ScheduleType) => {
+  const isStandard = type === ScheduleType.Standard;
   const alertPreferencesAtom = isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom;
 
   return store.get(alertPreferencesAtom);
 };
 
-export const setAlertPreference = (
-  scheduleType: Types.ScheduleType,
-  prayerIndex: number,
-  alertType: Types.AlertType
-) => {
-  const isStandard = scheduleType === Types.ScheduleType.Standard;
+export const setAlertPreference = (scheduleType: ScheduleType, prayerIndex: number, alertType: AlertType) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
   const preferences = getAlertPreferences(scheduleType);
   const scheduleAtom = isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom;
 

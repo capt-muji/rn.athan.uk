@@ -1,27 +1,27 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import * as Types from '@/shared/types';
+import { Measurements, OverlayStore, PageCoordinates, ScheduleType } from '@/shared/types';
 import { updateOverlayCountdown } from '@/stores/countdown';
 
 const store = getDefaultStore();
 
 // --- Atoms ---
 
-export const measurementsAtom = atom<Types.Measurements>({
+export const measurementsAtom = atom<Measurements>({
   date: null,
   list: null,
 });
 
-export const overlayAtom = atom<Types.OverlayStore>({
+export const overlayAtom = atom<OverlayStore>({
   isOn: false,
   selectedPrayerIndex: 0,
-  scheduleType: Types.ScheduleType.Standard,
+  scheduleType: ScheduleType.Standard,
 });
 
 // --- Actions ---
 
-export const setMeasurement = (key: keyof Types.Measurements, measurements: Types.PageCoordinates) => {
+export const setMeasurement = (key: keyof Measurements, measurements: PageCoordinates) => {
   const current = store.get(measurementsAtom);
   store.set(measurementsAtom, { ...current, [key]: measurements });
 };
@@ -31,7 +31,7 @@ export const toggleOverlay = () => {
   store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
 };
 
-export const setSelectedPrayerIndex = (scheduleType: Types.ScheduleType, index: number) => {
+export const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
   updateOverlayCountdown(scheduleType, index);
 
   const overlay = store.get(overlayAtom);
