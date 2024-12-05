@@ -5,7 +5,7 @@ import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getOverlay } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
-import { getDate, updateSchedulesAndDate } from '@/stores/sync';
+import { getDate, overseer } from '@/stores/sync';
 
 const store = getDefaultStore();
 
@@ -68,7 +68,7 @@ const checkMidnight = () => {
 
   setInterval(() => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
-    if (currentDate !== savedDate) updateSchedulesAndDate();
+    if (currentDate !== savedDate) overseer();
   }, 1000);
 };
 
