@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as TimeUtils from '@/shared/time';
-import * as Types from '@/shared/types';
+import { CountdownStore, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 
@@ -19,7 +19,7 @@ export { standardCleanup, extraCleanup, overlayCleanup };
 // --- Atoms ---
 
 const createCountdownAtom = () =>
-  atom<Types.CountdownStore>({
+  atom<CountdownStore>({
     timeLeft: 10,
     name: 'Fajr',
   });
@@ -30,8 +30,8 @@ export const overlayCountdownAtom = createCountdownAtom();
 
 // --- Actions ---
 
-const updateCountdown = (type: Types.ScheduleType) => {
-  const isStandard = type === Types.ScheduleType.Standard;
+const updateCountdown = (type: ScheduleType) => {
+  const isStandard = type === ScheduleType.Standard;
   const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
 
   const schedule = getSchedule(type);
@@ -60,7 +60,7 @@ const updateCountdown = (type: Types.ScheduleType) => {
   });
 };
 
-export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: number) => {
+export const updateOverlayCountdown = (type: ScheduleType, selectedIndex: number) => {
   const schedule = getSchedule(type);
   const prayer = schedule.today[selectedIndex];
 
@@ -69,8 +69,8 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: 
 };
 
 export const startCountdowns = () => {
-  updateCountdown(Types.ScheduleType.Standard);
-  updateCountdown(Types.ScheduleType.Extra);
+  updateCountdown(ScheduleType.Standard);
+  updateCountdown(ScheduleType.Extra);
 
   const overlay = store.get(overlayAtom);
   if (overlay.isOn) updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
