@@ -32,13 +32,8 @@ const createScheduleAtom = (scheduleType: Types.ScheduleType) =>
 export const standardScheduleAtom = createScheduleAtom(Types.ScheduleType.Standard);
 export const extraScheduleAtom = createScheduleAtom(Types.ScheduleType.Extra);
 
-// export const midnightRerenderAtom = atom<number>(1);
-
 // --- Actions ---
 
-// export const getMidnightRerenders = () => store.get(midnightRerenderAtom);
-
-/** Gets schedule based on type */
 export const getSchedule = (type: Types.ScheduleType) => {
   const isStandard = type === Types.ScheduleType.Standard;
   const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
@@ -46,7 +41,6 @@ export const getSchedule = (type: Types.ScheduleType) => {
   return store.get(scheduleAtom);
 };
 
-/** Updates prayer schedule for given type */
 export const setSchedule = (type: Types.ScheduleType) => {
   const schedule = getSchedule(type);
 
@@ -73,7 +67,6 @@ export const setSchedule = (type: Types.ScheduleType) => {
   });
 };
 
-/** Increments to next prayer index */
 export const incrementNextIndex = (type: Types.ScheduleType) => {
   const isStandard = type === Types.ScheduleType.Standard;
   const schedule = getSchedule(type);
@@ -84,9 +77,3 @@ export const incrementNextIndex = (type: Types.ScheduleType) => {
   const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { ...schedule, nextIndex });
 };
-
-// export const triggerMidnightRerenders = () => {
-//   const value = getMidnightRerenders();
-
-//   store.set(midnightRerenderAtom, value + 1);
-// };
