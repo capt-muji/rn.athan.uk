@@ -5,7 +5,7 @@ import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getOverlay } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
-import { getDate, isMidnightAtom } from '@/stores/sync';
+import { getDate } from '@/stores/sync';
 
 const store = getDefaultStore();
 
