@@ -213,13 +213,14 @@ export const calculateCountdown = (prayer: { time: string; english: string }) =>
  */
 export const countdown = (timeLeft: number, callbacks: CountdownCallbacks): NodeJS.Timer => {
   const onInterval = () => {
-    if (timeLeft <= 1) {
+    timeLeft--;
+
+    if (timeLeft === 0) {
       clearInterval(timerId);
       callbacks.onFinish();
       return;
     }
 
-    timeLeft--;
     callbacks.onTick(timeLeft);
   };
 
