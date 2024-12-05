@@ -47,28 +47,6 @@ export const shouldFetchNextYear = (): boolean => {
 };
 
 /**
- * Fetches prayer time data for specified years
- * @returns Object containing prayer data for requested years
- */
-export const fetchData = async (needsNextYear: boolean) => {
-  const currentYear = TimeUtils.getCurrentYear();
-
-  try {
-    const currentYearData = await Api.handle(currentYear);
-    let nextYearData = null;
-
-    if (needsNextYear) {
-      nextYearData = await Api.handle(currentYear + 1);
-    }
-
-    return { currentYearData, nextYearData, currentYear };
-  } catch (error) {
-    logger.error('SYNC: Failed to fetch prayer data', { error });
-    throw error;
-  }
-};
-
-/**
  * App entry point and manages data synchronization
  */
 export const sync = async () => {
@@ -85,7 +63,7 @@ export const sync = async () => {
     logger.info('SYNC: Starting data refresh');
     Database.cleanup();
 
-    const { currentYearData, nextYearData, currentYear } = await fetchData(needsNextYear);
+    const { currentYearData, nextYearData, currentYear } = await Api.fetchData(needsNextYear);
 
     Database.saveAllPrayers(currentYearData);
     Database.markYearAsFetched(currentYear);
