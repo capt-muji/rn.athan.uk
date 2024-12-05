@@ -3,18 +3,14 @@ import { getDefaultStore } from 'jotai/vanilla';
 
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import * as Types from '@/shared/types';
+import { ITransformedPrayer, ScheduleAtom, ScheduleStore, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
-// --- Types ---
-
-type ScheduleAtom = typeof standardScheduleAtom;
-
 // --- Initial State ---
 
-const createInitialPrayer = (scheduleType: Types.ScheduleType): Types.ITransformedPrayer => ({
+const createInitialPrayer = (scheduleType: ScheduleType): ITransformedPrayer => ({
   index: 0,
   date: '2024-11-15',
   english: 'Fajr',
@@ -23,7 +19,7 @@ const createInitialPrayer = (scheduleType: Types.ScheduleType): Types.ITransform
   type: scheduleType,
 });
 
-const createInitialSchedule = (scheduleType: Types.ScheduleType): Types.ScheduleStore => ({
+const createInitialSchedule = (scheduleType: ScheduleType): ScheduleStore => ({
   type: scheduleType,
   today: { 0: createInitialPrayer(scheduleType) },
   tomorrow: { 0: createInitialPrayer(scheduleType) },
@@ -32,17 +28,13 @@ const createInitialSchedule = (scheduleType: Types.ScheduleType): Types.Schedule
 
 // --- Atoms ---
 
-export const standardScheduleAtom = atom<Types.ScheduleStore>(createInitialSchedule(Types.ScheduleType.Standard));
-export const extraScheduleAtom = atom<Types.ScheduleStore>(createInitialSchedule(Types.ScheduleType.Extra));
+export const standardScheduleAtom = atom<ScheduleStore>(createInitialSchedule(ScheduleType.Standard));
+export const extraScheduleAtom = atom<ScheduleStore>(createInitialSchedule(ScheduleType.Extra));
 
 // --- Helpers ---
 
-const getScheduleAtom = (type: Types.ScheduleType): ScheduleAtom => {
-  return type === Types.ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
-};
-
 // Create daily schedules based on today and tomorrow
-const buildDailySchedules = (type: Types.ScheduleType) => {
+const buildDailySchedules = (type: ScheduleType) => {
   const today = TimeUtils.createLondonDate();
   const tomorrow = TimeUtils.createLondonDate();
   tomorrow.setDate(tomorrow.getDate() + 1);
@@ -60,9 +52,13 @@ const buildDailySchedules = (type: Types.ScheduleType) => {
 
 // --- Actions ---
 
-export const getSchedule = (type: Types.ScheduleType): Types.ScheduleStore => store.get(getScheduleAtom(type));
+const getScheduleAtom = (type: ScheduleType): ScheduleAtom => {
+  return type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
+};
 
-export const setSchedule = (type: Types.ScheduleType): void => {
+export const getSchedule = (type: ScheduleType): ScheduleStore => store.get(getScheduleAtom(type));
+
+export const setSchedule = (type: ScheduleType): void => {
   const scheduleAtom = getScheduleAtom(type);
   const currentSchedule = store.get(scheduleAtom);
 
@@ -72,7 +68,7 @@ export const setSchedule = (type: Types.ScheduleType): void => {
   store.set(scheduleAtom, { ...currentSchedule, type, today, tomorrow, nextIndex });
 };
 
-export const incrementNextIndex = (type: Types.ScheduleType): void => {
+export const incrementNextIndex = (type: ScheduleType): void => {
   const scheduleAtom = getScheduleAtom(type);
   const schedule = getSchedule(type);
 
