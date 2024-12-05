@@ -42,10 +42,7 @@ const updateCountdown = (type: Types.ScheduleType) => {
       incrementNextIndex(type);
 
       const { nextIndex } = getSchedule(type);
-      if (nextIndex === 0) {
-        checkMidnight();
-        return;
-      }
+      if (nextIndex === 0) return checkMidnight();
 
       updateCountdown(type);
     },
@@ -69,6 +66,7 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: 
   store.set(overlayCountdownAtom, { timeLeft: countdown.timeLeft, name: countdown.name });
 };
 
+// Refreshes the schdules at midnight
 const checkMidnight = () => {
   const savedDate = getDate();
 

@@ -28,8 +28,6 @@ export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetched_yea
 
 export const fetchAndSaveDataLoadable = loadable(atom(async () => fetchAndSaveData()));
 
-export const isMidnightAtom = atom<boolean>(false);
-
 // --- Actions ---
 
 /** Gets current stored date */
@@ -45,8 +43,6 @@ export const setDate = () => {
 
   store.set(dateAtom, currentDate);
 };
-
-export const getIsMidnight = () => store.get(isMidnightAtom);
 
 /** Checks if next year's data needed */
 export const shouldFetchNextYear = (): boolean => {
