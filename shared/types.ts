@@ -170,3 +170,9 @@ export interface CountdownCallbacks {
   onTick: (secondsLeft: number) => void;
   onFinish: () => void;
 }
+
+export interface FetchDataResult {
+  currentYearData: ISingleApiResponseTransformed[];
+  nextYearData: ISingleApiResponseTransformed[] | null;
+  currentYear: number;
+}
