@@ -9,9 +9,11 @@ import { dateAtom, sync } from '@/stores/sync';
 
 const store = getDefaultStore();
 
-// --- Atoms ---
+// --- Initial values ---
 
 const createInitialCountdown = (): CountdownStore => ({ timeLeft: 10, name: 'Fajr' });
+
+// --- Atoms ---
 
 export const standardCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 export const extraCountdownAtom = atom<CountdownStore>(createInitialCountdown());
