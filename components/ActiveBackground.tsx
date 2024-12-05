@@ -7,7 +7,6 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, STYLES } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-// import { midnightRerenderAtom } from '@/stores/schedule';
 import { dateAtom } from '@/stores/sync';
 
 interface Props {
@@ -19,7 +18,6 @@ export default function ActiveBackground({ type }: Props) {
 
   // State
   const date = useAtomValue(dateAtom);
-  // useAtomValue(midnightRerenderAtom);
 
   // Derived State
   const today = TimeUtils.formatDateShort(TimeUtils.createLondonDate());

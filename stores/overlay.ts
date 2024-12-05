@@ -21,23 +21,20 @@ export const overlayAtom = atom<Types.OverlayStore>({
 
 // --- Actions ---
 
-export const getMeasuements = () => store.get(measurementsAtom);
-export const getOverlay = () => store.get(overlayAtom);
-
 export const setMeasurement = (key: keyof Types.Measurements, measurements: Types.PageCoordinates) => {
-  const current = getMeasuements();
+  const current = store.get(measurementsAtom);
   store.set(measurementsAtom, { ...current, [key]: measurements });
 };
 
 export const toggleOverlay = () => {
-  const overlay = getOverlay();
+  const overlay = store.get(overlayAtom);
   store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
 };
 
 export const setSelectedPrayerIndex = (scheduleType: Types.ScheduleType, index: number) => {
   updateOverlayCountdown(scheduleType, index);
 
-  const overlay = getOverlay();
+  const overlay = store.get(overlayAtom);
 
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 };
