@@ -91,6 +91,17 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
   return schedule;
 };
 
+/**
+ * Finds the index of the next prayer that hasn't passed yet
+ * @param schedule Current prayer schedule
+ * @returns Index of the next prayer (or 0 if all passed)
+ */
+export const findNextPrayerIndex = (schedule: IScheduleNow): number => {
+  const prayers = Object.values(schedule);
+  const nextPrayer = prayers.find((prayer) => !TimeUtils.isTimePassed(prayer.time)) || prayers[0];
+  return nextPrayer.index;
+};
+
 // TODO: use this at midnight reset
 // UI Helpers
 // export const getCascadeDelay = (index: number) => {
