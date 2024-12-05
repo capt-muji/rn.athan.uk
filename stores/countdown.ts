@@ -82,11 +82,14 @@ const monitorMidnight = () => {
 
 export const startCountdowns = () => {
   const standardSchedule = getSchedule(ScheduleType.Standard);
+  const extraSchedule = getSchedule(ScheduleType.Extra);
+
   const isScheduleFinishedStandard = TimeUtils.isLastPrayerPassed(standardSchedule);
-  const isScheduleFinishedExtra = TimeUtils.isLastPrayerPassed(standardSchedule);
+  const isScheduleFinishedExtra = TimeUtils.isLastPrayerPassed(extraSchedule);
 
   if (!isScheduleFinishedStandard) updateScheduleCountdown(ScheduleType.Standard);
   if (!isScheduleFinishedExtra) updateScheduleCountdown(ScheduleType.Extra);
+
   if (isScheduleFinishedStandard && isScheduleFinishedExtra) monitorMidnight();
 
   const overlay = store.get(overlayAtom);
