@@ -4,8 +4,8 @@ import { getDefaultStore } from 'jotai/vanilla';
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getOverlay } from '@/stores/overlay';
-import { getSchedule, incrementNextIndex, triggerMidnightRerenders } from '@/stores/schedule';
-import { getDate } from '@/stores/sync';
+import { getSchedule, incrementNextIndex } from '@/stores/schedule';
+import { getDate, updateSchedulesAndDate } from '@/stores/sync';
 
 const store = getDefaultStore();
 
@@ -68,7 +68,7 @@ const checkMidnight = () => {
 
   setInterval(() => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
-    if (currentDate !== savedDate) triggerMidnightRerenders();
+    if (currentDate !== savedDate) updateSchedulesAndDate();
   }, 1000);
 };
 

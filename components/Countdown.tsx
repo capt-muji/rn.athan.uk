@@ -8,7 +8,7 @@ import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardCountdownAtom, extraCountdownAtom, overlayCountdownAtom } from '@/stores/countdown';
 import { overlayAtom } from '@/stores/overlay';
-import { midnightRerenderAtom } from '@/stores/schedule';
+// import { midnightRerenderAtom } from '@/stores/schedule';
 
 interface Props {
   type: ScheduleType;
@@ -18,7 +18,7 @@ export default function Countdown({ type }: Props) {
   const { isStandard, isLastPrayerPassed } = useSchedule(type);
 
   const overlay = useAtomValue(overlayAtom);
-  useAtomValue(midnightRerenderAtom);
+  // useAtomValue(midnightRerenderAtom);
 
   const countdownAtom = overlay.isOn ? overlayCountdownAtom : isStandard ? standardCountdownAtom : extraCountdownAtom;
   const countdown = useAtomValue(countdownAtom);
