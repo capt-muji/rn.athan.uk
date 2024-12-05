@@ -32,11 +32,11 @@ const createScheduleAtom = (scheduleType: Types.ScheduleType) =>
 export const standardScheduleAtom = createScheduleAtom(Types.ScheduleType.Standard);
 export const extraScheduleAtom = createScheduleAtom(Types.ScheduleType.Extra);
 
-export const midnightRerenderAtom = atom<number>(1);
+// export const midnightRerenderAtom = atom<number>(1);
 
 // --- Actions ---
 
-export const getMidnightRerenders = () => store.get(midnightRerenderAtom);
+// export const getMidnightRerenders = () => store.get(midnightRerenderAtom);
 
 /** Gets schedule based on type */
 export const getSchedule = (type: Types.ScheduleType) => {
@@ -85,8 +85,8 @@ export const incrementNextIndex = (type: Types.ScheduleType) => {
   store.set(scheduleAtom, { ...schedule, nextIndex });
 };
 
-export const triggerMidnightRerenders = () => {
-  const value = getMidnightRerenders();
+// export const triggerMidnightRerenders = () => {
+//   const value = getMidnightRerenders();
 
-  store.set(midnightRerenderAtom, value + 1);
-};
+//   store.set(midnightRerenderAtom, value + 1);
+// };
