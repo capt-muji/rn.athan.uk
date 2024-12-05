@@ -4,18 +4,14 @@ import { getDefaultStore } from 'jotai/vanilla';
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
 import { getOverlay } from '@/stores/overlay';
-import { getSchedule, incrementNextIndex } from '@/stores/schedule';
+import { getSchedule, incrementNextIndex, triggerMidnightRerenders } from '@/stores/schedule';
 import { getDate } from '@/stores/sync';
 
 const store = getDefaultStore();
 
 // --- Atoms ---
 
-const createCountdownAtom = () =>
-  atom<Types.CountdownStore>({
-    timeLeft: 10,
-    name: 'Fajr',
-  });
+const createCountdownAtom = () => atom<Types.CountdownStore>({ timeLeft: 10, name: 'Fajr' });
 
 export const standardCountdownAtom = createCountdownAtom();
 export const extraCountdownAtom = createCountdownAtom();
@@ -66,13 +62,13 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: 
   store.set(overlayCountdownAtom, { timeLeft: countdown.timeLeft, name: countdown.name });
 };
 
-// Refreshes the schdules at midnight
+// Refreshes the schedules at midnight
 const checkMidnight = () => {
   const savedDate = getDate();
 
   setInterval(() => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
-    if (currentDate !== savedDate) store.set(isMidnightAtom, true);
+    if (currentDate !== savedDate) triggerMidnightRerenders();
   }, 1000);
 };
 
