@@ -56,7 +56,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 };
 
 /**
- * Creates structured prayer times object for today with status information
+ * Creates structured prayer times from data for a single day
  * Maps prayer times to both English and Arabic names
  * @param prayers Prayer times data for a single day
  * @param type Schedule type (Standard or Extra)
