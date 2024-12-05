@@ -8,9 +8,13 @@ import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
-// --- Initial values ---
+// --- Types ---
 
-const initialPrayer = (scheduleType: Types.ScheduleType) => ({
+type ScheduleAtom = typeof standardScheduleAtom;
+
+// --- Initial State ---
+
+const createInitialPrayer = (scheduleType: Types.ScheduleType): Types.ITransformedPrayer => ({
   index: 0,
   date: '2024-11-15',
   english: 'Fajr',
@@ -19,31 +23,25 @@ const initialPrayer = (scheduleType: Types.ScheduleType) => ({
   type: scheduleType,
 });
 
+const createInitialSchedule = (scheduleType: Types.ScheduleType): Types.ScheduleStore => ({
+  type: scheduleType,
+  today: { 0: createInitialPrayer(scheduleType) },
+  tomorrow: { 0: createInitialPrayer(scheduleType) },
+  nextIndex: 0,
+});
+
 // --- Atoms ---
 
-const createScheduleAtom = (scheduleType: Types.ScheduleType) =>
-  atom<Types.ScheduleStore>({
-    type: scheduleType,
-    today: { 0: initialPrayer(scheduleType) },
-    tomorrow: { 0: initialPrayer(scheduleType) },
-    nextIndex: 0,
-  });
+export const standardScheduleAtom = atom<Types.ScheduleStore>(createInitialSchedule(Types.ScheduleType.Standard));
+export const extraScheduleAtom = atom<Types.ScheduleStore>(createInitialSchedule(Types.ScheduleType.Extra));
 
-export const standardScheduleAtom = createScheduleAtom(Types.ScheduleType.Standard);
-export const extraScheduleAtom = createScheduleAtom(Types.ScheduleType.Extra);
+// --- Helpers ---
 
-// --- Actions ---
-
-export const getSchedule = (type: Types.ScheduleType) => {
-  const isStandard = type === Types.ScheduleType.Standard;
-  const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
-
-  return store.get(scheduleAtom);
+const getScheduleAtom = (type: Types.ScheduleType): ScheduleAtom => {
+  return type === Types.ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
 };
 
-export const setSchedule = (type: Types.ScheduleType) => {
-  const schedule = getSchedule(type);
-
+const buildDailySchedules = (type: Types.ScheduleType) => {
   const today = TimeUtils.createLondonDate();
   const tomorrow = TimeUtils.createLondonDate();
   tomorrow.setDate(tomorrow.getDate() + 1);
@@ -51,29 +49,42 @@ export const setSchedule = (type: Types.ScheduleType) => {
   const dataToday = Database.getPrayerByDate(today);
   const dataTomorrow = Database.getPrayerByDate(tomorrow);
 
-  const scheduleToday = PrayerUtils.createSchedule(dataToday!, type);
-  const scheduleTomorrow = PrayerUtils.createSchedule(dataTomorrow!, type);
+  if (!dataToday || !dataTomorrow) {
+    throw new Error('Missing prayer data');
+  }
 
-  const scheduleTodayValues = Object.values(scheduleToday);
-  const nextPrayer = scheduleTodayValues.find((prayer) => !TimeUtils.isTimePassed(prayer.time)) || scheduleToday[0];
+  return {
+    today: PrayerUtils.createSchedule(dataToday, type),
+    tomorrow: PrayerUtils.createSchedule(dataTomorrow, type),
+  };
+};
 
-  const scheduleAtom = type === Types.ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
+// --- Actions ---
+
+export const getSchedule = (type: Types.ScheduleType): Types.ScheduleStore => store.get(getScheduleAtom(type));
+
+export const setSchedule = (type: Types.ScheduleType): void => {
+  const scheduleAtom = getScheduleAtom(type);
+  const currentSchedule = store.get(scheduleAtom);
+
+  const { today, tomorrow } = buildDailySchedules(type);
+  const nextIndex = PrayerUtils.findNextPrayerIndex(today);
+
   store.set(scheduleAtom, {
-    ...schedule,
+    ...currentSchedule,
     type,
-    today: scheduleToday,
-    tomorrow: scheduleTomorrow,
-    nextIndex: nextPrayer.index,
+    today,
+    tomorrow,
+    nextIndex,
   });
 };
 
-export const incrementNextIndex = (type: Types.ScheduleType) => {
-  const isStandard = type === Types.ScheduleType.Standard;
+export const incrementNextIndex = (type: Types.ScheduleType): void => {
+  const scheduleAtom = getScheduleAtom(type);
   const schedule = getSchedule(type);
 
   const isLastPrayer = schedule.nextIndex === Object.keys(schedule.today).length - 1;
   const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
 
-  const scheduleAtom = isStandard ? standardScheduleAtom : extraScheduleAtom;
   store.set(scheduleAtom, { ...schedule, nextIndex });
 };
