@@ -11,59 +11,65 @@ const store = getDefaultStore();
 
 // --- Atoms ---
 
-const createCountdownAtom = () => atom<CountdownStore>({ timeLeft: 10, name: 'Fajr' });
+const createInitialCountdown = (): CountdownStore => ({ timeLeft: 10, name: 'Fajr' });
 
-export const standardCountdownAtom = createCountdownAtom();
-export const extraCountdownAtom = createCountdownAtom();
-export const overlayCountdownAtom = createCountdownAtom();
+export const standardCountdownAtom = atom<CountdownStore>(createInitialCountdown());
+export const extraCountdownAtom = atom<CountdownStore>(createInitialCountdown());
+export const overlayCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 
-// --- Actions ---
+// --- Countdown Logic ---
 
-const updateCountdown = (type: ScheduleType) => {
-  const isStandard = type === ScheduleType.Standard;
-  const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
+const handleScheduleFinish = (type: ScheduleType) => {
+  incrementNextIndex(type);
 
-  const schedule = getSchedule(type);
-  const prayer = schedule.today[schedule.nextIndex];
-  const countdown = TimeUtils.calculateCountdown(prayer);
+  const { nextIndex } = getSchedule(type);
+  if (nextIndex === 0) return monitorMidnight();
 
-  store.set(countdownAtom, { timeLeft: countdown.timeLeft, name: countdown.name });
+  updateScheduleCountdown(type);
+};
 
-  // Start new countdown
-  TimeUtils.countdown(countdown.timeLeft, {
-    onTick: (secondsLeft) => {
-      store.set(countdownAtom, { timeLeft: secondsLeft, name: countdown.name });
-    },
-    onFinish: () => {
-      incrementNextIndex(type);
+const updateCountdownState = (countdownAtom: typeof standardCountdownAtom, secondsLeft: number, name: string) => {
+  store.set(countdownAtom, { timeLeft: secondsLeft, name });
+};
 
-      const { nextIndex } = getSchedule(type);
-      if (nextIndex === 0) return checkMidnight();
+const startCountdownTimer = (
+  countdownAtom: typeof standardCountdownAtom,
+  timeLeft: number,
+  name: string,
+  onFinish?: () => void
+) => {
+  updateCountdownState(countdownAtom, timeLeft, name);
 
-      updateCountdown(type);
-    },
+  TimeUtils.countdown(timeLeft, {
+    onTick: (secondsLeft) => updateCountdownState(countdownAtom, secondsLeft, name),
+    onFinish: () => onFinish?.(),
   });
 };
+
+// --- Schedule Countdowns ---
+
+const updateScheduleCountdown = (type: ScheduleType) => {
+  const countdownAtom = type === ScheduleType.Standard ? standardCountdownAtom : extraCountdownAtom;
+  const schedule = getSchedule(type);
+  const prayer = schedule.today[schedule.nextIndex];
+  const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
+
+  startCountdownTimer(countdownAtom, timeLeft, name, () => handleScheduleFinish(type));
+};
+
+// --- Overlay Countdown ---
 
 export const updateOverlayCountdown = (type: ScheduleType, selectedIndex: number) => {
   const schedule = getSchedule(type);
   const prayer = schedule.today[selectedIndex];
+  const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
 
-  const countdown = TimeUtils.calculateCountdown(prayer);
-
-  // Start new countdown
-  TimeUtils.countdown(countdown.timeLeft, {
-    onTick: (secondsLeft) => {
-      store.set(overlayCountdownAtom, { timeLeft: secondsLeft, name: countdown.name });
-    },
-    onFinish: () => {},
-  });
-
-  store.set(overlayCountdownAtom, { timeLeft: countdown.timeLeft, name: countdown.name });
+  startCountdownTimer(overlayCountdownAtom, timeLeft, name);
 };
 
-// Refreshes the schedules at midnight
-const checkMidnight = () => {
+// --- Midnight Check ---
+
+const monitorMidnight = () => {
   const savedDate = store.get(dateAtom);
 
   setInterval(() => {
@@ -72,15 +78,16 @@ const checkMidnight = () => {
   }, 1000);
 };
 
+// --- Public API ---
+
 export const startCountdowns = () => {
   const standardSchedule = getSchedule(ScheduleType.Standard);
-
   const isScheduleFinishedStandard = TimeUtils.isLastPrayerPassed(standardSchedule);
   const isScheduleFinishedExtra = TimeUtils.isLastPrayerPassed(standardSchedule);
 
-  if (!isScheduleFinishedStandard) updateCountdown(ScheduleType.Standard);
-  if (!isScheduleFinishedExtra) updateCountdown(ScheduleType.Extra);
-  if (isScheduleFinishedStandard && isScheduleFinishedStandard) checkMidnight();
+  if (!isScheduleFinishedStandard) updateScheduleCountdown(ScheduleType.Standard);
+  if (!isScheduleFinishedExtra) updateScheduleCountdown(ScheduleType.Extra);
+  if (isScheduleFinishedStandard && isScheduleFinishedExtra) monitorMidnight();
 
   const overlay = store.get(overlayAtom);
   updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
