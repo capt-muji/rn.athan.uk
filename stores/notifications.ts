@@ -8,6 +8,7 @@ import * as Database from '@/stores/database';
 const store = getDefaultStore();
 
 // --- Initial values ---
+
 const initialAlertPreferences = (prayers: string[]): AlertPreferences => {
   const preferences: AlertPreferences = {};
 
@@ -19,6 +20,7 @@ const initialAlertPreferences = (prayers: string[]): AlertPreferences => {
 };
 
 // --- Atoms ---
+
 export const standardAlertPreferencesAtom = atomWithStorage(
   'alert_preferences_standard',
   initialAlertPreferences(PRAYERS_ENGLISH),
