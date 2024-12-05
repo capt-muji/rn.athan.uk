@@ -49,9 +49,7 @@ const buildDailySchedules = (type: Types.ScheduleType) => {
   const dataToday = Database.getPrayerByDate(today);
   const dataTomorrow = Database.getPrayerByDate(tomorrow);
 
-  if (!dataToday || !dataTomorrow) {
-    throw new Error('Missing prayer data');
-  }
+  if (!dataToday || !dataTomorrow) throw new Error('Missing prayer data');
 
   return {
     today: PrayerUtils.createSchedule(dataToday, type),
@@ -70,13 +68,7 @@ export const setSchedule = (type: Types.ScheduleType): void => {
   const { today, tomorrow } = buildDailySchedules(type);
   const nextIndex = PrayerUtils.findNextPrayerIndex(today);
 
-  store.set(scheduleAtom, {
-    ...currentSchedule,
-    type,
-    today,
-    tomorrow,
-    nextIndex,
-  });
+  store.set(scheduleAtom, { ...currentSchedule, type, today, tomorrow, nextIndex });
 };
 
 export const incrementNextIndex = (type: Types.ScheduleType): void => {
