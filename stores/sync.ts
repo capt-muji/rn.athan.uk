@@ -31,7 +31,6 @@ export const syncLoadable = loadable(atom(async () => sync()));
 
 // --- Actions ---
 
-/** Updates stored date from Asr prayer */
 export const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
   const currentDate = schedule.today[PRAYER_INDEX_ASR].date;
@@ -39,7 +38,6 @@ export const setDate = () => {
   store.set(dateAtom, currentDate);
 };
 
-/** Checks if next year's data needed */
 export const shouldFetchNextYear = (): boolean => {
   const fetchedYears = Database.getItem('fetched_years') || {};
   const nextYear = TimeUtils.getCurrentYear() + 1;
@@ -47,7 +45,7 @@ export const shouldFetchNextYear = (): boolean => {
 };
 
 /**
- * App entry point and manages data synchronization
+ * App entry point and manages midnight synchronization
  */
 export const sync = async () => {
   const dateSaved = store.get(dateAtom);
@@ -63,7 +61,7 @@ export const sync = async () => {
     logger.info('SYNC: Starting data refresh');
     Database.cleanup();
 
-    const { currentYearData, nextYearData, currentYear } = await Api.fetchData(needsNextYear);
+    const { currentYearData, nextYearData, currentYear } = await Api.fetchPrayerData(needsNextYear);
 
     Database.saveAllPrayers(currentYearData);
     Database.markYearAsFetched(currentYear);
@@ -78,6 +76,7 @@ export const sync = async () => {
 
   ScheduleStore.setSchedule(Types.ScheduleType.Standard);
   ScheduleStore.setSchedule(Types.ScheduleType.Extra);
+
   setDate();
 
   Countdown.startCountdowns();
