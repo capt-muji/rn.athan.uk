@@ -7,6 +7,7 @@ import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
+import * as Countdown from '@/stores/countdown';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 
@@ -26,7 +27,7 @@ export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetched_yea
   getOnInit: true,
 });
 
-export const fetchAndSaveDataLoadable = loadable(atom(async () => fetchAndSaveData()));
+export const overseerLoadable = loadable(atom(async () => overseer()));
 
 // --- Actions ---
 
@@ -114,4 +115,11 @@ export const fetchAndSaveData = async () => {
     logger.error('SYNC: Failed to refresh prayer data', { error });
     throw error;
   }
+};
+
+// App entry point and manages midnight refresh
+export const overseer = async () => {
+  await fetchAndSaveData();
+  updateSchedulesAndDate();
+  Countdown.startCountdowns();
 };
