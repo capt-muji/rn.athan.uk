@@ -29,7 +29,7 @@ export default function Countdown({ type }: Props) {
   if (isLastPrayerPassed) {
     return (
       <View style={[styles.container]}>
-        <Text style={[styles.text]}>All prayers passed</Text>
+        <Text style={[styles.text]}>All prayers finished</Text>
       </View>
     );
   }
