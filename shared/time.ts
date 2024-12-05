@@ -32,9 +32,7 @@ export const createLondonDate = (date?: Date | number | string): Date => {
 export const getDateTodayOrTomorrow = (daySelection: DaySelection): string => {
   let date = createLondonDate();
 
-  if (daySelection === DaySelection.Tomorrow) {
-    date = addDays(date, 1);
-  }
+  if (daySelection === DaySelection.Tomorrow) date = addDays(date, 1);
 
   return format(date, 'yyyy-MM-dd');
 };
