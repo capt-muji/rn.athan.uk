@@ -6,7 +6,7 @@ import * as Api from '@/api/client';
 import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import * as Types from '@/shared/types';
+import { DaySelection, ScheduleType } from '@/shared/types';
 import * as Countdown from '@/stores/countdown';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
@@ -41,8 +41,8 @@ const shouldFetchNextYear = (): boolean => {
 };
 
 const initializeAppState = () => {
-  ScheduleStore.setSchedule(Types.ScheduleType.Standard);
-  ScheduleStore.setSchedule(Types.ScheduleType.Extra);
+  ScheduleStore.setSchedule(ScheduleType.Standard);
+  ScheduleStore.setSchedule(ScheduleType.Extra);
   setDate();
   Countdown.startCountdowns();
 };
@@ -50,7 +50,7 @@ const initializeAppState = () => {
 const needsDataUpdate = (): boolean => {
   const dateSaved = store.get(dateAtom);
   const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
-  const dateNow = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
+  const dateNow = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
 
   return dateSaved !== dateNow || Object.keys(standardSchedule.today).length === 0 || shouldFetchNextYear();
 };

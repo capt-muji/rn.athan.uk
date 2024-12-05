@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as TimeUtils from '@/shared/time';
-import * as Types from '@/shared/types';
+import { CountdownStore, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 import { dateAtom, sync } from '@/stores/sync';
@@ -11,7 +11,7 @@ const store = getDefaultStore();
 
 // --- Atoms ---
 
-const createCountdownAtom = () => atom<Types.CountdownStore>({ timeLeft: 10, name: 'Fajr' });
+const createCountdownAtom = () => atom<CountdownStore>({ timeLeft: 10, name: 'Fajr' });
 
 export const standardCountdownAtom = createCountdownAtom();
 export const extraCountdownAtom = createCountdownAtom();
@@ -19,8 +19,8 @@ export const overlayCountdownAtom = createCountdownAtom();
 
 // --- Actions ---
 
-const updateCountdown = (type: Types.ScheduleType) => {
-  const isStandard = type === Types.ScheduleType.Standard;
+const updateCountdown = (type: ScheduleType) => {
+  const isStandard = type === ScheduleType.Standard;
   const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
 
   const schedule = getSchedule(type);
@@ -45,7 +45,7 @@ const updateCountdown = (type: Types.ScheduleType) => {
   });
 };
 
-export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: number) => {
+export const updateOverlayCountdown = (type: ScheduleType, selectedIndex: number) => {
   const schedule = getSchedule(type);
   const prayer = schedule.today[selectedIndex];
 
@@ -73,13 +73,13 @@ const checkMidnight = () => {
 };
 
 export const startCountdowns = () => {
-  const standardSchedule = getSchedule(Types.ScheduleType.Standard);
+  const standardSchedule = getSchedule(ScheduleType.Standard);
 
   const isScheduleFinishedStandard = TimeUtils.isLastPrayerPassed(standardSchedule);
   const isScheduleFinishedExtra = TimeUtils.isLastPrayerPassed(standardSchedule);
 
-  if (!isScheduleFinishedStandard) updateCountdown(Types.ScheduleType.Standard);
-  if (!isScheduleFinishedExtra) updateCountdown(Types.ScheduleType.Extra);
+  if (!isScheduleFinishedStandard) updateCountdown(ScheduleType.Standard);
+  if (!isScheduleFinishedExtra) updateCountdown(ScheduleType.Extra);
   if (isScheduleFinishedStandard && isScheduleFinishedStandard) checkMidnight();
 
   const overlay = store.get(overlayAtom);

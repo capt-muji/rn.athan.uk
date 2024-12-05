@@ -4,7 +4,7 @@ import { MMKV } from 'react-native-mmkv';
 
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import * as Types from '@/shared/types';
+import { ISingleApiResponseTransformed } from '@/shared/types';
 
 /** Main MMKV database instance */
 export const database = new MMKV();
@@ -45,7 +45,7 @@ export const clearPrefix = (prefix: string) => {
   logger.info(`MMKV INFO: Cleared all entries with prefix "${prefix}"`);
 };
 
-export const saveAllPrayers = (prayers: Types.ISingleApiResponseTransformed[]) => {
+export const saveAllPrayers = (prayers: ISingleApiResponseTransformed[]) => {
   prayers.forEach((prayer) => {
     const key = `prayer_${prayer.date}`;
 
@@ -56,7 +56,7 @@ export const saveAllPrayers = (prayers: Types.ISingleApiResponseTransformed[]) =
   logger.info(`MMKV INFO: ${prayers.length} prayers saved`);
 };
 
-export const getPrayerByDate = (date: Date): Types.ISingleApiResponseTransformed | null => {
+export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | null => {
   const londonDate = TimeUtils.createLondonDate(date);
   const keyDate = format(londonDate, 'yyyy-MM-dd');
   const key = `prayer_${keyDate}`;
