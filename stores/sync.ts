@@ -23,10 +23,6 @@ Database.clearPrefix('display_date');
 
 export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmkvStorage, { getOnInit: true });
 
-export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetched_years', {}, Database.mmkvStorage, {
-  getOnInit: true,
-});
-
 export const syncLoadable = loadable(atom(async () => sync()));
 
 // --- Actions ---
