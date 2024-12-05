@@ -3,9 +3,9 @@ import { getDefaultStore } from 'jotai/vanilla';
 
 import * as TimeUtils from '@/shared/time';
 import * as Types from '@/shared/types';
-import { getOverlay } from '@/stores/overlay';
+import { overlayAtom } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
-import { getDate, overseer } from '@/stores/sync';
+import { dateAtom, sync } from '@/stores/sync';
 
 const store = getDefaultStore();
 
@@ -64,11 +64,11 @@ export const updateOverlayCountdown = (type: Types.ScheduleType, selectedIndex: 
 
 // Refreshes the schedules at midnight
 const checkMidnight = () => {
-  const savedDate = getDate();
+  const savedDate = store.get(dateAtom);
 
   setInterval(() => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
-    if (currentDate !== savedDate) overseer();
+    if (currentDate !== savedDate) sync();
   }, 1000);
 };
 
@@ -82,6 +82,6 @@ export const startCountdowns = () => {
   if (!isScheduleFinishedExtra) updateCountdown(Types.ScheduleType.Extra);
   if (isScheduleFinishedStandard && isScheduleFinishedStandard) checkMidnight();
 
-  const overlay = getOverlay();
+  const overlay = store.get(overlayAtom);
   updateOverlayCountdown(overlay.scheduleType, overlay.selectedPrayerIndex);
 };

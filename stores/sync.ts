@@ -27,15 +27,9 @@ export const fetchedYearsAtom = atomWithStorage<Types.FetchedYears>('fetched_yea
   getOnInit: true,
 });
 
-export const overseerLoadable = loadable(atom(async () => overseer()));
+export const syncLoadable = loadable(atom(async () => sync()));
 
 // --- Actions ---
-
-/** Gets current stored date */
-export const getDate = () => store.get(dateAtom);
-
-/** Gets fetched years data */
-export const getFetchedYears = () => store.get(fetchedYearsAtom);
 
 /** Updates stored date from Asr prayer */
 export const setDate = () => {
@@ -47,79 +41,66 @@ export const setDate = () => {
 
 /** Checks if next year's data needed */
 export const shouldFetchNextYear = (): boolean => {
-  const fetchedYears = getFetchedYears();
+  const fetchedYears = Database.getItem('fetched_years') || {};
   const nextYear = TimeUtils.getCurrentYear() + 1;
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
 };
 
-/** Marks year's data as fetched */
-export const markYearAsFetched = (year: number) => {
-  const fetchedYears = getFetchedYears();
-  store.set(fetchedYearsAtom, { ...fetchedYears, [year]: true });
-};
-
-/** Updates schedule and date in Jotai store */
-export const updateSchedulesAndDate = () => {
-  ScheduleStore.setSchedule(Types.ScheduleType.Standard);
-  ScheduleStore.setSchedule(Types.ScheduleType.Extra);
-  setDate();
-};
-
 /**
- * Fetches and saves prayer time data for the current year (and next year if needed)
- *
- * Flow:
- * 1. Compare stored date with current date
- * 2. Check if schedule is properly initialized
- * 3. Check if we're in December and need next year's data
- * 4. If all conditions are met (same date, initialized, not December), exit early
- * 5. Otherwise:
- *    a. Clear existing database of old data
- *    b. Fetch and save current year's prayer times
- *    c. Mark current year as fetched in storage
- *    d. If in December, fetch next year's data and mark as fetched
+ * Fetches prayer time data for specified years
+ * @returns Object containing prayer data for requested years
  */
-export const fetchAndSaveData = async () => {
-  const dateSaved = getDate();
-  const dateNow = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
-
-  const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
-  const isInit = Object.keys(standardSchedule.today).length === 0;
-
+export const fetchData = async (needsNextYear: boolean) => {
   const currentYear = TimeUtils.getCurrentYear();
-  const needsNextYear = shouldFetchNextYear();
-
-  logger.info('SYNC: Starting data refresh');
-  const needsUpdate = dateSaved !== dateNow || isInit || needsNextYear;
-
-  if (!needsUpdate) return logger.info('SYNC: Data already up to date');
-
-  // Clear data (but keep preferences)
-  Database.clearPrefix('prayer_');
-  Database.clearPrefix('display_date');
-  Database.clearPrefix('fetched_years');
 
   try {
     const currentYearData = await Api.handle(currentYear);
-    Database.saveAllPrayers(currentYearData);
-    markYearAsFetched(currentYear);
+    let nextYearData = null;
 
     if (needsNextYear) {
-      const nextYearData = await Api.handle(currentYear + 1);
-      Database.saveAllPrayers(nextYearData);
-      markYearAsFetched(currentYear + 1);
+      nextYearData = await Api.handle(currentYear + 1);
     }
 
-    logger.info('SYNC: Prayer data processed');
+    return { currentYearData, nextYearData, currentYear };
   } catch (error) {
-    logger.error('SYNC: Failed to refresh prayer data', { error });
+    logger.error('SYNC: Failed to fetch prayer data', { error });
     throw error;
   }
 };
 
-// App entry point and manages midnight refresh
-export const overseer = async () => {
-  await fetchAndSaveData();
-  updateSchedulesAndDate();
+/**
+ * App entry point and manages data synchronization
+ */
+export const sync = async () => {
+  const dateSaved = store.get(dateAtom);
+  const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
+
+  const dateNow = TimeUtils.getDateTodayOrTomorrow(Types.DaySelection.Today);
+  const isInit = Object.keys(standardSchedule.today).length === 0;
+  const needsNextYear = shouldFetchNextYear();
+
+  const needsUpdate = dateSaved !== dateNow || isInit || needsNextYear;
+
+  if (needsUpdate) {
+    logger.info('SYNC: Starting data refresh');
+    Database.cleanup();
+
+    const { currentYearData, nextYearData, currentYear } = await fetchData(needsNextYear);
+
+    Database.saveAllPrayers(currentYearData);
+    Database.markYearAsFetched(currentYear);
+
+    if (nextYearData) {
+      Database.saveAllPrayers(nextYearData);
+      Database.markYearAsFetched(currentYear + 1);
+    }
+  } else {
+    logger.info('SYNC: Data already up to date');
+  }
+
+  ScheduleStore.setSchedule(Types.ScheduleType.Standard);
+  ScheduleStore.setSchedule(Types.ScheduleType.Extra);
+  setDate();
+
   Countdown.startCountdowns();
 };
