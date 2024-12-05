@@ -6,26 +6,23 @@ import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed } from '@/shared/types';
 
-/** Main MMKV database instance */
 export const database = new MMKV();
 
 export const getItem = (key: string) => {
   const value = database.getString(key);
   const data = value ? JSON.parse(value) : null;
-
   logger.info(`MMKV READ: ${key} ::`, data);
+
   return data;
 };
 
 export const setItem = (key: string, value: unknown) => {
   logger.info(`MMKV WRITE: ${key} ::`, value);
-
   database.set(key, JSON.stringify(value));
 };
 
 export const removeItem = (key: string) => {
   logger.info(`MMKV DELETE: ${key}`);
-
   database.delete(key);
 };
 
@@ -69,8 +66,9 @@ export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | nul
 };
 
 export const markYearAsFetched = (year: number) => {
-  const fetchedYears = getItem('fetched_years') || {};
-  setItem('fetched_years', { ...fetchedYears, [year]: true });
+  const key = `fetched_years`;
+  const fetchedYears = getItem(key) || {};
+  setItem(key, { ...fetchedYears, [year]: true });
 };
 
 /**
