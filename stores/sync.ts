@@ -21,9 +21,8 @@ Database.clearPrefix('display_date');
 
 // --- Atoms ---
 
-export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmkvStorage, { getOnInit: true });
-
 export const syncLoadable = loadable(atom(async () => sync()));
+export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmkvStorage, { getOnInit: true });
 
 // --- Actions ---
 
