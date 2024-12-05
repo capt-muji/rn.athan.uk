@@ -41,6 +41,7 @@ const getScheduleAtom = (type: Types.ScheduleType): ScheduleAtom => {
   return type === Types.ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
 };
 
+// Create daily schedules based on today and tomorrow
 const buildDailySchedules = (type: Types.ScheduleType) => {
   const today = TimeUtils.createLondonDate();
   const tomorrow = TimeUtils.createLondonDate();
