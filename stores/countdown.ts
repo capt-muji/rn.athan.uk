@@ -82,6 +82,7 @@ const monitorMidnight = () => {
 
 // --- Public API ---
 
+// TODO: clear up timers
 export const startCountdowns = () => {
   const standardSchedule = getSchedule(ScheduleType.Standard);
   const extraSchedule = getSchedule(ScheduleType.Extra);
