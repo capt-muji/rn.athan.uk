@@ -10,7 +10,6 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { setAlertPreference, standardAlertPreferencesAtom, extraAlertPreferencesAtom } from '@/stores/notifications';
-import { overlayAtom } from '@/stores/overlay';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
@@ -36,7 +35,6 @@ export default function Alert({ type, index }: Props) {
   });
 
   // State
-  const overlay = useAtomValue(overlayAtom);
   const alertPreferences = useAtomValue(Prayer.isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom);
 
   const [iconIndex, setIconIndex] = useState(alertPreferences[index]);
@@ -56,7 +54,7 @@ export default function Alert({ type, index }: Props) {
   }, [alertPreferences, index]);
 
   useEffect(() => {
-    const colorPos = overlay.isOn || isPopupActive ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = isPopupActive ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: 50 });
   }, [isPopupActive]);
 
@@ -92,7 +90,7 @@ export default function Alert({ type, index }: Props) {
 
   const computedStylesPopup = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
-    backgroundColor: overlay.isOn && !Prayer.isNext ? COLORS.activeBackground : 'black',
+    backgroundColor: Prayer.ui.isOnOverlay ? COLORS.activeBackground : 'black',
   };
 
   return (
