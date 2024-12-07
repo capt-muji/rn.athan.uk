@@ -70,7 +70,7 @@ const startTimerSchedule = (type: ScheduleType) => {
 };
 
 // Starts the overlay countdown timer for selected prayer
-export const startTimerOverlay = () => {
+const startTimerOverlay = () => {
   const overlay = store.get(overlayAtom);
   const prayer = getSchedule(overlay.scheduleType).today[overlay.selectedPrayerIndex];
   const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
@@ -100,11 +100,9 @@ const startTimerMidnight = () => {
   }, 1000);
 };
 
-// --- Public API ---
-
 // Initializes all countdown timers - standard, extra, overlay, midnight
 // Called during midnight transition to start new day countdowns
-export const startTimers = () => {
+const startTimers = () => {
   const standardSchedule = getSchedule(ScheduleType.Standard);
   const extraSchedule = getSchedule(ScheduleType.Extra);
 
@@ -118,3 +116,5 @@ export const startTimers = () => {
 
   startTimerOverlay();
 };
+
+export { startTimers, startTimerOverlay };
