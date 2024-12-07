@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { Measurements, OverlayStore, PageCoordinates, ScheduleType } from '@/shared/types';
-import { updateOverlayCountdown } from '@/stores/countdown';
+import { updateTimerOverlay } from '@/stores/countdown';
 
 const store = getDefaultStore();
 
@@ -36,5 +36,5 @@ export const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number
 
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
 
-  updateOverlayCountdown();
+  updateTimerOverlay();
 };
