@@ -6,20 +6,20 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { standardCountdownAtom, extraCountdownAtom, overlayCountdownAtom } from '@/stores/countdown';
 import { overlayAtom } from '@/stores/overlay';
+import { standardTimerAtom, extraTimerAtom, overlayTimerAtom } from '@/stores/timer';
 
 interface Props {
   type: ScheduleType;
 }
 
-export default function Countdown({ type }: Props) {
+export default function Timer({ type }: Props) {
   const { isStandard, isLastPrayerPassed } = useSchedule(type);
 
   const overlay = useAtomValue(overlayAtom);
 
-  const countdownAtom = overlay.isOn ? overlayCountdownAtom : isStandard ? standardCountdownAtom : extraCountdownAtom;
-  const countdown = useAtomValue(countdownAtom);
+  const timerAtom = overlay.isOn ? overlayTimerAtom : isStandard ? standardTimerAtom : extraTimerAtom;
+  const timer = useAtomValue(timerAtom);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
@@ -36,15 +36,15 @@ export default function Countdown({ type }: Props) {
 
   return (
     <Animated.View style={[styles.container]}>
-      <Text style={[styles.text]}>{countdown.name} in</Text>
-      <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(countdown.timeLeft)}</Animated.Text>
+      <Text style={[styles.text]}>{timer.name} in</Text>
+      <Animated.Text style={[styles.timer, animatedStyle]}>{formatTime(timer.timeLeft)}</Animated.Text>
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: STYLES.countdown.height,
+    height: STYLES.timer.height,
     marginBottom: 40,
     justifyContent: 'center',
     pointerEvents: 'none',
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     color: COLORS.textSecondary,
   },
-  countdown: {
+  timer: {
     color: 'white',
     fontSize: TEXT.size + 8,
     textAlign: 'center',

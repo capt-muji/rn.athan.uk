@@ -163,12 +163,12 @@ export interface FetchedYears {
   [year: number]: boolean;
 }
 
-export interface CountdownStore {
+export interface TimerStore {
   timeLeft: number;
   name: string;
 }
 
-export interface CountdownCallbacks {
+export interface TimerCallbacks {
   onTick: (secondsLeft: number) => void;
   onFinish: () => void;
 }
