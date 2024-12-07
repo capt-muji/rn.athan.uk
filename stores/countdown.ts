@@ -10,9 +10,8 @@ import { dateAtom, sync } from '@/stores/sync';
 
 const store = getDefaultStore();
 
-const timers: {
-  [key: string]: ReturnType<typeof setInterval> | undefined;
-} = {
+type TimerKey = 'standard' | 'extra' | 'overlay' | 'midnight';
+const timers: Record<TimerKey, ReturnType<typeof setInterval> | undefined> = {
   standard: undefined,
   extra: undefined,
   overlay: undefined,
@@ -29,22 +28,25 @@ export const standardCountdownAtom = atom<CountdownStore>(createInitialCountdown
 export const extraCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 export const overlayCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 
-// --- Timer Controls ---
-const clearTimer = (timerKey: string) => {
+// Clears the interval timer for the specified timer key
+const clearTimer = (timerKey: TimerKey) => {
   if (!timers[timerKey]) return;
 
   clearInterval(timers[timerKey]);
   delete timers[timerKey];
 };
 
+// Starts a countdown timer for a prayer schedule
 const startTimerSchedule = (type: ScheduleType, timeLeft: number, name: string) => {
   const isStandard = type === ScheduleType.Standard;
-  const timerKey = isStandard ? 'standard' : 'extra';
+  const timerKey = isStandard ? 'standard' : ('extra' as TimerKey);
   const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
 
+  // 2. Clear existing timer and set initial state
   clearTimer(timerKey);
   store.set(countdownAtom, { timeLeft, name });
 
+  // 3. Start countdown interval
   timers[timerKey] = setInterval(() => {
     const currentTime = store.get(countdownAtom).timeLeft - 1;
 
@@ -53,17 +55,21 @@ const startTimerSchedule = (type: ScheduleType, timeLeft: number, name: string) 
       incrementNextIndex(type);
 
       const { nextIndex } = getSchedule(type);
-
+      // 4. Handle midnight transition or update next prayer
       if (nextIndex === 0) return startTimerMidnight();
       return updateTimerSchedule(type);
     }
 
+    // 5. Update countdown atom
     store.set(countdownAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 
+// Starts the overlay countdown timer for selected prayer
+// Updates the overlay atom and clears timer when countdown reaches zero
 const startTimerOverlay = (timeLeft: number, name: string) => {
   clearTimer('overlay');
+
   store.set(overlayCountdownAtom, { timeLeft, name });
 
   timers['overlay'] = setInterval(() => {
@@ -74,8 +80,11 @@ const startTimerOverlay = (timeLeft: number, name: string) => {
   }, 1000);
 };
 
+// Starts the midnight transition timer
+// Checks for date changes to trigger sync
 const startTimerMidnight = () => {
   clearTimer('midnight');
+
   const savedDate = store.get(dateAtom);
 
   timers['midnight'] = setInterval(() => {
@@ -85,15 +94,19 @@ const startTimerMidnight = () => {
   }, 1000);
 };
 
-// --- Prayer Schedule Handlers ---
 const updateTimerSchedule = (type: ScheduleType) => {
   const schedule = getSchedule(type);
+
   const prayer = schedule.today[schedule.nextIndex];
   const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
+
   startTimerSchedule(type, timeLeft, name);
 };
 
 // --- Public API ---
+
+// Initializes all countdown timers - standard, extra, overlay, midnight
+// Called during midnight transition to start new day countdowns
 export const startCountdowns = () => {
   const standardSchedule = getSchedule(ScheduleType.Standard);
   const extraSchedule = getSchedule(ScheduleType.Extra);
@@ -109,6 +122,8 @@ export const startCountdowns = () => {
   updateTimerOverlay();
 };
 
+// Updates the overlay timer based on selected prayer
+// Calculates countdown for the selected prayer and starts timer
 export const updateTimerOverlay = () => {
   const overlay = store.get(overlayAtom);
 
