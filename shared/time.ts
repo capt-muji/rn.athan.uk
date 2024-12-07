@@ -197,12 +197,25 @@ export const getCurrentYear = (): number => createLondonDate().getFullYear();
  * @param prayer Prayer object containing time and english name
  * @returns Object containing time left until prayer (in ms) and prayer name
  */
-export const calculateCountdown = (prayer: { time: string; english: string }) => {
+export const calculateCountdown1 = (prayer: { time: string; english: string }) => {
   const isPassed = isTimePassed(prayer.time);
   const prayerDate = getDateTodayOrTomorrow(isPassed ? DaySelection.Tomorrow : DaySelection.Today);
   const timeLeft = secondsRemainingUntil(prayer.time, prayerDate);
 
   return { timeLeft, name: prayer.english };
+};
+
+export const calculateCountdown = (schedule: ScheduleStore, index: number) => {
+  const todayPrayer = schedule.today[index];
+  const tomorrowPrayer = schedule.tomorrow[index];
+
+  // Use tomorrow's prayer time if today's has passed
+  const prayer = isTimePassed(todayPrayer.time) ? tomorrowPrayer : todayPrayer;
+
+  return {
+    timeLeft: secondsRemainingUntil(prayer.time, prayer.date),
+    name: prayer.english,
+  };
 };
 
 /**
