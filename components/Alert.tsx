@@ -53,9 +53,9 @@ export default function Alert({ type, index }: Props) {
   }, [alertPreferences, index]);
 
   useEffect(() => {
-    const colorPos = isPopupActive ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = Prayer.isOnOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: 50 });
-  }, [isPopupActive]);
+  }, [isPopupActive, Prayer.isOnOverlay]);
 
   useEffect(() => {
     return () => {
