@@ -63,7 +63,7 @@ export const OVERLAY = {
 };
 
 export const STYLES = {
-  countdown: {
+  timer: {
     height: 60,
   },
   prayer: {

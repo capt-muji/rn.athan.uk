@@ -11,7 +11,7 @@ import {
 } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { CountdownCallbacks, DaySelection, ScheduleStore } from '@/shared/types';
+import { DaySelection, ScheduleStore, TimerCallbacks } from '@/shared/types';
 
 /**
  * Creates a new Date object in London timezone
@@ -193,7 +193,7 @@ export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
 export const getCurrentYear = (): number => createLondonDate().getFullYear();
 
 /**
- * Calculates countdown information for a prayer time
+ * Calculates countdown for a prayer time
  * @param prayer Prayer object containing time and english name
  * @returns Object containing time left until prayer (in ms) and prayer name
  */
@@ -206,12 +206,12 @@ export const calculateCountdown = (prayer: { time: string; english: string }) =>
 };
 
 /**
- * Creates a countdown timer that counts down from specified seconds
- * @param timeLeft Number of seconds to countdown from
+ * Creates a timer that counts down from specified seconds
+ * @param timeLeft Number of seconds to count down from
  * @param callbacks Optional callback functions for tick and finish events
  * @returns NodeJS.Timer interval ID
  */
-export const countdown = (timeLeft: number, callbacks: CountdownCallbacks): NodeJS.Timer => {
+export const timer = (timeLeft: number, callbacks: TimerCallbacks): NodeJS.Timer => {
   const onInterval = () => {
     timeLeft--;
 

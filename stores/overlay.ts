@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { Measurements, OverlayStore, PageCoordinates, ScheduleType } from '@/shared/types';
-import { updateTimerOverlay } from '@/stores/countdown';
+import { updateTimerOverlay } from '@/stores/timer';
 
 const store = getDefaultStore();
 

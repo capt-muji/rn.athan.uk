@@ -4,7 +4,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 import { overlayAtom } from './overlay';
 
 import * as TimeUtils from '@/shared/time';
-import { CountdownStore, ScheduleType } from '@/shared/types';
+import { TimerStore, ScheduleType } from '@/shared/types';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 import { dateAtom, sync } from '@/stores/sync';
 
@@ -20,13 +20,13 @@ const timers: Record<TimerKey, ReturnType<typeof setInterval> | undefined> = {
 
 // --- Initial values ---
 
-const createInitialCountdown = (): CountdownStore => ({ timeLeft: 10, name: 'Fajr' });
+const createInitialTimer = (): TimerStore => ({ timeLeft: 10, name: 'Fajr' });
 
 // --- Atoms ---
 
-export const standardCountdownAtom = atom<CountdownStore>(createInitialCountdown());
-export const extraCountdownAtom = atom<CountdownStore>(createInitialCountdown());
-export const overlayCountdownAtom = atom<CountdownStore>(createInitialCountdown());
+export const standardTimerAtom = atom<TimerStore>(createInitialTimer());
+export const extraTimerAtom = atom<TimerStore>(createInitialTimer());
+export const overlayTimerAtom = atom<TimerStore>(createInitialTimer());
 
 // Clears the interval timer for the specified timer key
 const clearTimer = (timerKey: TimerKey) => {
@@ -40,15 +40,15 @@ const clearTimer = (timerKey: TimerKey) => {
 const startTimerSchedule = (type: ScheduleType, timeLeft: number, name: string) => {
   const isStandard = type === ScheduleType.Standard;
   const timerKey = isStandard ? 'standard' : ('extra' as TimerKey);
-  const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
+  const timerAtom = isStandard ? standardTimerAtom : extraTimerAtom;
 
   // 2. Clear existing timer and set initial state
   clearTimer(timerKey);
-  store.set(countdownAtom, { timeLeft, name });
+  store.set(timerAtom, { timeLeft, name });
 
   // 3. Start countdown interval
   timers[timerKey] = setInterval(() => {
-    const currentTime = store.get(countdownAtom).timeLeft - 1;
+    const currentTime = store.get(timerAtom).timeLeft - 1;
 
     if (currentTime <= 0) {
       clearTimer(timerKey);
@@ -61,7 +61,7 @@ const startTimerSchedule = (type: ScheduleType, timeLeft: number, name: string) 
     }
 
     // 5. Update countdown atom
-    store.set(countdownAtom, { timeLeft: currentTime, name });
+    store.set(timerAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 
@@ -70,13 +70,13 @@ const startTimerSchedule = (type: ScheduleType, timeLeft: number, name: string) 
 const startTimerOverlay = (timeLeft: number, name: string) => {
   clearTimer('overlay');
 
-  store.set(overlayCountdownAtom, { timeLeft, name });
+  store.set(overlayTimerAtom, { timeLeft, name });
 
   timers['overlay'] = setInterval(() => {
-    const currentTime = store.get(overlayCountdownAtom).timeLeft - 1;
+    const currentTime = store.get(overlayTimerAtom).timeLeft - 1;
     if (currentTime <= 0) return clearTimer('overlay');
 
-    store.set(overlayCountdownAtom, { timeLeft: currentTime, name });
+    store.set(overlayTimerAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 
@@ -107,7 +107,7 @@ const updateTimerSchedule = (type: ScheduleType) => {
 
 // Initializes all countdown timers - standard, extra, overlay, midnight
 // Called during midnight transition to start new day countdowns
-export const startCountdowns = () => {
+export const startTimers = () => {
   const standardSchedule = getSchedule(ScheduleType.Standard);
   const extraSchedule = getSchedule(ScheduleType.Extra);
 
