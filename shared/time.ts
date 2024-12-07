@@ -80,9 +80,11 @@ export const formatTime = (seconds: number): string => {
 
   const ms = seconds * 1000;
   const duration = intervalToDuration({ start: 0, end: ms });
-  const { hours, minutes, seconds: secs } = duration;
+  const { days, hours, minutes, seconds: secs } = duration;
 
-  return [hours && `${hours}h`, minutes && `${minutes}m`, secs !== undefined ? `${secs}s` : '0s']
+  const totalHours = (days || 0) * 24 + (hours || 0);
+
+  return [totalHours && `${totalHours}h`, minutes && `${minutes}m`, secs !== undefined ? `${secs}s` : '0s']
     .filter(Boolean)
     .join(' ');
 };
@@ -193,27 +195,21 @@ export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
 export const getCurrentYear = (): number => createLondonDate().getFullYear();
 
 /**
- * Calculates countdown for a prayer time
- * @param prayer Prayer object containing time and english name
- * @returns Object containing time left until prayer (in ms) and prayer name
+ * Calculates the countdown time for a specific prayer from the prayer schedule
+ * @param schedule Prayer schedule containing today's and tomorrow's prayer times
+ * @param index Index of the prayer in the schedule
+ * @returns Object containing remaining time in seconds and prayer name
  */
-export const calculateCountdown1 = (prayer: { time: string; english: string }) => {
-  const isPassed = isTimePassed(prayer.time);
-  const prayerDate = getDateTodayOrTomorrow(isPassed ? DaySelection.Tomorrow : DaySelection.Today);
-  const timeLeft = secondsRemainingUntil(prayer.time, prayerDate);
-
-  return { timeLeft, name: prayer.english };
-};
-
 export const calculateCountdown = (schedule: ScheduleStore, index: number) => {
   const todayPrayer = schedule.today[index];
   const tomorrowPrayer = schedule.tomorrow[index];
 
   // Use tomorrow's prayer time if today's has passed
   const prayer = isTimePassed(todayPrayer.time) ? tomorrowPrayer : todayPrayer;
+  const timeLeft = secondsRemainingUntil(prayer.time, prayer.date);
 
   return {
-    timeLeft: secondsRemainingUntil(prayer.time, prayer.date),
+    timeLeft,
     name: prayer.english,
   };
 };
