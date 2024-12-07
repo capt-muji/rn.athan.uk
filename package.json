@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^5.0.6",
     "@shopify/react-native-skia": "1.2.3",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
@@ -52,8 +53,8 @@
     "@types/react": "~18.2.45",
     "@types/react-native-indicators": "0.16.6",
     "eslint": "9.15.0",
-    "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "pino": "^9.5.0",
