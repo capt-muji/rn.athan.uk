@@ -66,6 +66,8 @@ const startTimerSchedule = (type: ScheduleType) => {
       return startTimerSchedule(type);
     }
 
+    // Auto-close overlay when timer is 2 seconds or less
+    // Only if overlay is open and showing the same schedule type (standard/extra)
     const overlay = store.get(overlayAtom);
     if (overlay.isOn && overlay.scheduleType === type && currentTime <= 2) {
       store.set(overlayAtom, { ...overlay, isOn: false });
