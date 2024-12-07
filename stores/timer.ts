@@ -28,6 +28,8 @@ export const standardTimerAtom = atom<TimerStore>(createInitialTimer());
 export const extraTimerAtom = atom<TimerStore>(createInitialTimer());
 export const overlayTimerAtom = atom<TimerStore>(createInitialTimer());
 
+// --- Actions ---
+
 // Clears the interval timer for the specified timer key
 const clearTimer = (timerKey: TimerKey) => {
   if (!timers[timerKey]) return;
@@ -62,6 +64,11 @@ const startTimerSchedule = (type: ScheduleType) => {
       // 4. Handle midnight transition or update next prayer
       if (nextIndex === 0) return startTimerMidnight();
       return startTimerSchedule(type);
+    }
+
+    const overlay = store.get(overlayAtom);
+    if (overlay.isOn && overlay.scheduleType === type && currentTime <= 2) {
+      store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
     // 5. Update countdown atom

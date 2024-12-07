@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { Measurements, OverlayStore, PageCoordinates, ScheduleType } from '@/shared/types';
-import { startTimerOverlay } from '@/stores/timer';
+import { startTimerOverlay, standardTimerAtom, extraTimerAtom } from '@/stores/timer';
 
 const store = getDefaultStore();
 
@@ -21,20 +21,32 @@ export const overlayAtom = atom<OverlayStore>({
 
 // --- Actions ---
 
-export const setMeasurement = (key: keyof Measurements, measurements: PageCoordinates) => {
+const canShowOverlay = (type: ScheduleType): boolean => {
+  const timerAtom = type === ScheduleType.Standard ? standardTimerAtom : extraTimerAtom;
+  const timeLeft = store.get(timerAtom).timeLeft;
+  return timeLeft > 2;
+};
+
+const setMeasurement = (key: keyof Measurements, measurements: PageCoordinates) => {
   const current = store.get(measurementsAtom);
   store.set(measurementsAtom, { ...current, [key]: measurements });
 };
 
-export const toggleOverlay = () => {
+const toggleOverlay = () => {
   const overlay = store.get(overlayAtom);
+
+  // Don't allow opening if timer is too low
+  if (!overlay.isOn && !canShowOverlay(overlay.scheduleType)) return;
+
   store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
 };
 
-export const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
+const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
+  if (!canShowOverlay(scheduleType)) return;
+
   const overlay = store.get(overlayAtom);
-
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
-
   startTimerOverlay();
 };
+
+export { setMeasurement, toggleOverlay, setSelectedPrayerIndex, canShowOverlay };
