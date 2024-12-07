@@ -55,7 +55,6 @@ export const ANIMATION = {
 };
 
 export const OVERLAY = {
-  closeThreshold: 2000,
   zindexes: {
     overlay: 2,
     glow: -1,
