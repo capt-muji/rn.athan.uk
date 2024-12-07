@@ -32,9 +32,9 @@ export const toggleOverlay = () => {
 };
 
 export const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
-  updateOverlayCountdown(scheduleType, index);
-
   const overlay = store.get(overlayAtom);
 
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
+
+  updateOverlayCountdown();
 };
