@@ -7,9 +7,9 @@ import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
-import * as Countdown from '@/stores/countdown';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
+import * as Timer from '@/stores/timer';
 
 const store = getDefaultStore();
 
@@ -42,8 +42,10 @@ const shouldFetchNextYear = (): boolean => {
 const initializeAppState = () => {
   ScheduleStore.setSchedule(ScheduleType.Standard);
   ScheduleStore.setSchedule(ScheduleType.Extra);
+
   setDate();
-  Countdown.startCountdowns();
+
+  Timer.startTimers();
 };
 
 const needsDataUpdate = (): boolean => {
