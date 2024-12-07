@@ -1,14 +1,23 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
+import { overlayAtom } from './overlay';
+
 import * as TimeUtils from '@/shared/time';
 import { CountdownStore, ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 import { dateAtom, sync } from '@/stores/sync';
 
 const store = getDefaultStore();
-const timers: { [key: string]: NodeJS.Timer } = {};
+
+const timers: {
+  [key: string]: NodeJS.Timer | undefined;
+} = {
+  standard: undefined,
+  extra: undefined,
+  overlay: undefined,
+  midnight: undefined,
+};
 
 // --- Initial values ---
 
@@ -22,85 +31,66 @@ export const overlayCountdownAtom = atom<CountdownStore>(createInitialCountdown(
 
 // --- Timer Controls ---
 const clearTimer = (timerKey: string) => {
-  if (timers[timerKey]) {
-    clearInterval(timers[timerKey]);
-    delete timers[timerKey];
-  }
+  if (!timers[timerKey]) return;
+
+  clearInterval(timers[timerKey]);
+  delete timers[timerKey];
 };
 
-const startStandardTimer = (timeLeft: number, name: string) => {
-  clearTimer('standard');
-  store.set(standardCountdownAtom, { timeLeft, name });
+const startTimerSchedule = (type: ScheduleType, timeLeft: number, name: string) => {
+  const isStandard = type === ScheduleType.Standard;
+  const timerKey = isStandard ? 'standard' : 'extra';
+  const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
 
-  timers['standard'] = setInterval(() => {
-    const currentTime = store.get(standardCountdownAtom).timeLeft - 1;
+  clearTimer(timerKey);
+  store.set(countdownAtom, { timeLeft, name });
+
+  timers[timerKey] = setInterval(() => {
+    const currentTime = store.get(countdownAtom).timeLeft - 1;
+
     if (currentTime <= 0) {
-      clearTimer('standard');
-      incrementNextIndex(ScheduleType.Standard);
-      const { nextIndex } = getSchedule(ScheduleType.Standard);
-      if (nextIndex === 0) return startMidnightTimer();
-      startNextStandardPrayer();
-      return;
+      clearTimer(timerKey);
+      incrementNextIndex(type);
+
+      const { nextIndex } = getSchedule(type);
+
+      if (nextIndex === 0) return startTimerMidnight();
+      return updateTimerSchedule(type);
     }
-    store.set(standardCountdownAtom, { timeLeft: currentTime, name });
+
+    store.set(countdownAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 
-const startExtraTimer = (timeLeft: number, name: string) => {
-  clearTimer('extra');
-  store.set(extraCountdownAtom, { timeLeft, name });
-
-  timers['extra'] = setInterval(() => {
-    const currentTime = store.get(extraCountdownAtom).timeLeft - 1;
-    if (currentTime <= 0) {
-      clearTimer('extra');
-      incrementNextIndex(ScheduleType.Extra);
-      const { nextIndex } = getSchedule(ScheduleType.Extra);
-      if (nextIndex === 0) return startMidnightTimer();
-      startNextExtraPrayer();
-      return;
-    }
-    store.set(extraCountdownAtom, { timeLeft: currentTime, name });
-  }, 1000);
-};
-
-const startOverlayTimer = (timeLeft: number, name: string) => {
+const startTimerOverlay = (timeLeft: number, name: string) => {
   clearTimer('overlay');
   store.set(overlayCountdownAtom, { timeLeft, name });
 
   timers['overlay'] = setInterval(() => {
     const currentTime = store.get(overlayCountdownAtom).timeLeft - 1;
-    if (currentTime <= 0) {
-      clearTimer('overlay');
-      return;
-    }
+    if (currentTime <= 0) return clearTimer('overlay');
+
     store.set(overlayCountdownAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 
-const startMidnightTimer = () => {
-  const savedDate = store.get(dateAtom);
+const startTimerMidnight = () => {
   clearTimer('midnight');
+  const savedDate = store.get(dateAtom);
 
   timers['midnight'] = setInterval(() => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
+
     if (currentDate !== savedDate) sync();
   }, 1000);
 };
 
 // --- Prayer Schedule Handlers ---
-const startNextStandardPrayer = () => {
-  const schedule = getSchedule(ScheduleType.Standard);
+const updateTimerSchedule = (type: ScheduleType) => {
+  const schedule = getSchedule(type);
   const prayer = schedule.today[schedule.nextIndex];
   const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
-  startStandardTimer(timeLeft, name);
-};
-
-const startNextExtraPrayer = () => {
-  const schedule = getSchedule(ScheduleType.Extra);
-  const prayer = schedule.today[schedule.nextIndex];
-  const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
-  startExtraTimer(timeLeft, name);
+  startTimerSchedule(type, timeLeft, name);
 };
 
 // --- Public API ---
@@ -108,31 +98,22 @@ export const startCountdowns = () => {
   const standardSchedule = getSchedule(ScheduleType.Standard);
   const extraSchedule = getSchedule(ScheduleType.Extra);
 
-  if (!TimeUtils.isLastPrayerPassed(standardSchedule)) {
-    startNextStandardPrayer();
-  }
+  const isStandardFinished = TimeUtils.isLastPrayerPassed(standardSchedule);
+  const isExtraFinished = TimeUtils.isLastPrayerPassed(extraSchedule);
 
-  if (!TimeUtils.isLastPrayerPassed(extraSchedule)) {
-    startNextExtraPrayer();
-  }
+  if (!isStandardFinished) updateTimerSchedule(ScheduleType.Standard);
+  if (!isExtraFinished) updateTimerSchedule(ScheduleType.Extra);
 
-  if (TimeUtils.isLastPrayerPassed(standardSchedule) && TimeUtils.isLastPrayerPassed(extraSchedule)) {
-    startMidnightTimer();
-  }
+  if (isStandardFinished && isExtraFinished) startTimerMidnight();
 
+  updateTimerOverlay();
+};
+
+export const updateTimerOverlay = () => {
   const overlay = store.get(overlayAtom);
+
   const prayer = getSchedule(overlay.scheduleType).today[overlay.selectedPrayerIndex];
   const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
-  startOverlayTimer(timeLeft, name);
-};
 
-export const updateOverlayCountdown = (type: ScheduleType, selectedIndex: number) => {
-  const schedule = getSchedule(type);
-  const prayer = schedule.today[selectedIndex];
-  const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
-  startOverlayTimer(timeLeft, name);
-};
-
-export const cleanup = () => {
-  ['standard', 'extra', 'overlay', 'midnight'].forEach(clearTimer);
+  startTimerOverlay(timeLeft, name);
 };
