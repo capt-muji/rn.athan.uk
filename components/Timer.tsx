@@ -26,7 +26,7 @@ export default function Timer({ type }: Props) {
     fontFamily: overlay.isOn ? TEXT.famiy.medium : TEXT.famiy.regular,
   }));
 
-  if (isLastPrayerPassed) {
+  if (!overlay.isOn && isLastPrayerPassed) {
     return (
       <View style={[styles.container]}>
         <Text style={[styles.text]}>All prayers finished</Text>
