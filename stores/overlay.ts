@@ -1,7 +1,9 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
+import * as TimeUtils from '@/shared/time';
 import { Measurements, OverlayStore, PageCoordinates, ScheduleType } from '@/shared/types';
+import { getSchedule } from '@/stores/schedule';
 import { startTimerOverlay, standardTimerAtom, extraTimerAtom } from '@/stores/timer';
 
 const store = getDefaultStore();
@@ -22,6 +24,9 @@ export const overlayAtom = atom<OverlayStore>({
 // --- Actions ---
 
 const canShowOverlay = (type: ScheduleType): boolean => {
+  const schedule = getSchedule(type);
+  if (TimeUtils.isLastPrayerPassed(schedule)) return true;
+
   const timerAtom = type === ScheduleType.Standard ? standardTimerAtom : extraTimerAtom;
   const timeLeft = store.get(timerAtom).timeLeft;
   return timeLeft > 2;
