@@ -85,7 +85,7 @@ const startTimerOverlay = () => {
   clearTimer('overlay');
   store.set(overlayTimerAtom, { timeLeft, name });
 
-  timers['overlay'] = setInterval(() => {
+  timers.overlay = setInterval(() => {
     const currentTime = store.get(overlayTimerAtom).timeLeft - 1;
     if (currentTime <= 0) return clearTimer('overlay');
 
@@ -100,7 +100,7 @@ const startTimerMidnight = () => {
 
   const savedDate = store.get(dateAtom);
 
-  timers['midnight'] = setInterval(() => {
+  timers.midnight = setInterval(() => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
 
     if (currentDate !== savedDate) sync();
