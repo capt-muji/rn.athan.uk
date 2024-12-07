@@ -11,7 +11,7 @@ import { dateAtom, sync } from '@/stores/sync';
 const store = getDefaultStore();
 
 const timers: {
-  [key: string]: NodeJS.Timer | undefined;
+  [key: string]: ReturnType<typeof setInterval> | undefined;
 } = {
   standard: undefined,
   extra: undefined,
