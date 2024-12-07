@@ -180,3 +180,5 @@ export interface FetchDataResult {
 }
 
 export type ScheduleAtom = typeof standardScheduleAtom;
+
+export type TimerKey = 'standard' | 'extra' | 'overlay' | 'midnight';
