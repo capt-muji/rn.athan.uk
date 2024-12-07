@@ -4,13 +4,12 @@ import { getDefaultStore } from 'jotai/vanilla';
 import { overlayAtom } from './overlay';
 
 import * as TimeUtils from '@/shared/time';
-import { TimerStore, ScheduleType } from '@/shared/types';
+import { TimerStore, ScheduleType, TimerKey } from '@/shared/types';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 import { dateAtom, sync } from '@/stores/sync';
 
 const store = getDefaultStore();
 
-type TimerKey = 'standard' | 'extra' | 'overlay' | 'midnight';
 const timers: Record<TimerKey, ReturnType<typeof setInterval> | undefined> = {
   standard: undefined,
   extra: undefined,
@@ -45,7 +44,7 @@ const startTimerSchedule = (type: ScheduleType) => {
   const { timeLeft, name } = TimeUtils.calculateCountdown(prayer);
 
   const isStandard = type === ScheduleType.Standard;
-  const timerKey = isStandard ? 'standard' : ('extra' as TimerKey);
+  const timerKey = isStandard ? 'standard' : 'extra';
   const timerAtom = isStandard ? standardTimerAtom : extraTimerAtom;
 
   // Clear existing timer and set initial state
