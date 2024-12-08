@@ -11,6 +11,7 @@ import { standardTimerAtom, extraTimerAtom, overlayTimerAtom } from '@/stores/ti
 
 interface Props {
   type: ScheduleType;
+  isOverlay?: boolean;
 }
 
 export default function Timer({ type }: Props) {

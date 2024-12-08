@@ -23,10 +23,11 @@ const ALERT_CONFIGS = [
 interface Props {
   type: ScheduleType;
   index: number;
+  isOverlay?: boolean;
 }
 
-export default function Alert({ type, index }: Props) {
-  const Prayer = usePrayer(type, index);
+export default function Alert({ type, index, isOverlay = false }: Props) {
+  const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
 
   const AnimScale = useAnimationScale(1);
@@ -66,9 +67,9 @@ export default function Alert({ type, index }: Props) {
   }, [overlay.isOn]);
 
   useEffect(() => {
-    const colorPos = Prayer.isOnOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: 50 });
-  }, [isPopupActive, Prayer.isOnOverlay]);
+  }, [isPopupActive, Prayer.isOverlay]);
 
   useEffect(() => {
     return () => {
@@ -108,7 +109,7 @@ export default function Alert({ type, index }: Props) {
 
   const computedStylesPopup = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
-    backgroundColor: Prayer.isOnOverlay ? (Prayer.isNext ? 'black' : COLORS.activeBackground) : 'black',
+    backgroundColor: Prayer.isOverlay ? (Prayer.isNext ? 'black' : COLORS.activeBackground) : 'black',
   };
 
   return (

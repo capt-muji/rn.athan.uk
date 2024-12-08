@@ -17,7 +17,7 @@ const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
-  const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex);
+  const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
 
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
@@ -67,7 +67,7 @@ export default function Overlay() {
       <AnimatedBlur intensity={12} tint="dark" style={{ flex: 1 }}>
         {/* Timer */}
         <View style={[styles.timer, computedStyleTimer]}>
-          <Timer type={overlay.scheduleType} />
+          <Timer type={overlay.scheduleType} isOverlay />
         </View>
         <Pressable style={{ flex: 1 }} onPress={handleClose} />
 
@@ -78,7 +78,7 @@ export default function Overlay() {
 
         {/* Prayer overlay */}
         <View style={[styles.prayer, computedStylePrayer]}>
-          <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} />
+          <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} isOverlay />
         </View>
       </AnimatedBlur>
       <Glow />
