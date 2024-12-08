@@ -1,4 +1,5 @@
-import { StyleSheet, Text, Pressable } from 'react-native';
+import { BlurView } from 'expo-blur';
+import { StyleSheet, Text, Pressable, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 
 import { COLORS, TEXT } from '@/shared/constants';
@@ -23,29 +24,41 @@ export default function ActionSheetSound() {
       id="sound-sheet"
       gestureEnabled={true}
       containerStyle={styles.container}
-      indicatorStyle={styles.indicator}>
-      <Text style={[styles.text, styles.title]}>Select Athan</Text>
+      indicatorStyle={{ display: 'none' }}>
+      <BlurView intensity={75} tint="dark" style={styles.blurContainer}>
+        <View style={styles.indicator} />
+        <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-      {SOUNDS.map((sound, index) => (
-        <Pressable key={sound} style={styles.option} onPress={() => setSoundPreference(index)}>
-          <Text style={styles.text}>{sound}</Text>
-        </Pressable>
-      ))}
+        {SOUNDS.map((sound, index) => (
+          <Pressable key={sound} style={styles.option} onPress={() => setSoundPreference(index)}>
+            <Text style={styles.text}>{sound}</Text>
+          </Pressable>
+        ))}
+      </BlurView>
     </ActionSheet>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0b0e24',
+    backgroundColor: 'transparent',
+  },
+  blurContainer: {
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    paddingTop: 15,
+    overflow: 'hidden',
+    paddingTop: 25,
+    marginBottom: -50,
+    paddingBottom: 50,
+    backgroundColor: 'rgba(25,25,120,0.5)',
   },
   indicator: {
     backgroundColor: COLORS.textSecondary,
     width: 50,
     height: 5,
+    borderRadius: 2.5,
+    alignSelf: 'center',
+    marginBottom: 5,
   },
   title: {
     color: 'white',
@@ -53,8 +66,8 @@ const styles = StyleSheet.create({
   },
   option: {
     padding: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#0b0e27',
+    // borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: 'rgba(255,255,255,0)',
   },
   text: {
     color: COLORS.textSecondary,
