@@ -1,13 +1,17 @@
 import { BlurView } from 'expo-blur';
-import { useAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
+import { useEffect } from 'react';
 import { StyleSheet, Text, Pressable, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Icon from '@/components/Icon';
-import { COLORS, TEXT } from '@/shared/constants';
+import { useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
+import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
+import { prevSoundPreference, setPrevSoundPreference } from '@/stores/ui';
 
 const SOUNDS = [
   'Athan 1',
@@ -23,8 +27,40 @@ const SOUNDS = [
 ];
 
 export default function ActionSheetSound() {
-  const [selectedSound] = useAtom(soundPreferenceAtom);
   const insets = useSafeAreaInsets();
+  const selectedSound = useAtomValue(soundPreferenceAtom);
+  const prevSelectedSound = useAtomValue(prevSoundPreference);
+
+  // Create animation arrays for all sound options
+  const textAnimations = SOUNDS.map((_, index) =>
+    useAnimationColor(index === selectedSound ? 1 : 0, {
+      fromColor: COLORS.textSecondary,
+      toColor: 'white',
+    })
+  );
+
+  const iconAnimations = SOUNDS.map((_, index) =>
+    useAnimationFill(index === selectedSound ? 1 : 0, {
+      fromColor: COLORS.textSecondary,
+      toColor: 'white',
+    })
+  );
+
+  useEffect(() => {
+    // Animate previous selection to secondary color
+    if (prevSelectedSound !== null) {
+      textAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
+      iconAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
+    }
+    // Animate new selection to white
+    textAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
+    iconAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
+  }, [selectedSound]);
+
+  const handleSoundSelection = (newSelectedSound: number) => {
+    setPrevSoundPreference(selectedSound);
+    setSoundPreference(newSelectedSound);
+  };
 
   const computedStyle = {
     marginBottom: -insets.bottom,
@@ -43,10 +79,10 @@ export default function ActionSheetSound() {
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
         {SOUNDS.map((sound, index) => (
-          <Pressable key={sound} style={styles.option} onPress={() => setSoundPreference(index)}>
-            <Text style={[styles.text, index === selectedSound && styles.selected]}>{sound}</Text>
+          <Pressable key={sound} style={styles.option} onPress={() => handleSoundSelection(index)}>
+            <Animated.Text style={[styles.text, textAnimations[index].style]}>{sound}</Animated.Text>
             <Pressable style={styles.icon}>
-              <Icon type={AlertIcon.PLAY} size={22} color={index === selectedSound ? 'white' : COLORS.textSecondary} />
+              <Icon type={AlertIcon.PLAY} size={22} animatedProps={iconAnimations[index].animatedProps} />
             </Pressable>
           </Pressable>
         ))}
