@@ -1,5 +1,7 @@
 import { BlurView } from 'expo-blur';
+import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
+import { useEffect } from 'react';
 import { StyleSheet, Text, Pressable, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import Animated from 'react-native-reanimated';
@@ -27,33 +29,38 @@ const SOUNDS = [
 
 export default function ActionSheetSound() {
   const insets = useSafeAreaInsets();
+
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const prevSelectedSound = useAtomValue(prevSoundPreference);
 
   // Create animation arrays for all sound options
   const textAnimations = SOUNDS.map((_, index) =>
     useAnimationColor(index === selectedSound ? 1 : 0, {
-      fromColor: COLORS.textSecondary,
       toColor: 'white',
+      fromColor: COLORS.textSecondary,
     })
   );
 
   const iconAnimations = SOUNDS.map((_, index) =>
     useAnimationFill(index === selectedSound ? 1 : 0, {
-      fromColor: COLORS.textSecondary,
       toColor: 'white',
+      fromColor: COLORS.textSecondary,
     })
   );
 
-  // Animate previous selection to secondary color
-  textAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
-  iconAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
+  useEffect(() => {
+    // Animate previous selection to secondary color
+    textAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
+    iconAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
 
-  // Animate new selection to white
-  textAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
-  iconAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
+    // Animate new selection to white
+    textAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
+    iconAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
+  }, [selectedSound, prevSelectedSound]);
 
   const handleSoundSelection = (newSelectedSound: number) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
     setPrevSoundPreference(selectedSound);
     setSoundPreference(newSelectedSound);
   };
