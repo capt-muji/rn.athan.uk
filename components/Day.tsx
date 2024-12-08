@@ -61,11 +61,11 @@ const styles = StyleSheet.create({
   location: {
     color: COLORS.textSecondary,
     fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.family.regular,
     marginBottom: 5,
   },
   date: {
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.family.regular,
     color: 'white',
     fontSize: TEXT.size,
   },
