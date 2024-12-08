@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
     width: '100%',
