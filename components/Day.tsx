@@ -26,7 +26,7 @@ export default function Day({ type }: Props) {
   const dateRef = useRef<Animated.Text>(null);
 
   if (overlay.isOn) dateOpacity.animate(0, { duration: ANIMATION.duration });
-  else dateOpacity.animate(1, { duration: ANIMATION.duration, delay: ANIMATION.overlayDelay });
+  else dateOpacity.animate(1, { duration: ANIMATION.duration });
 
   const handleLayout = () => {
     // Only measure 1st screen
