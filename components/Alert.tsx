@@ -10,6 +10,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { setAlertPreference, standardAlertPreferencesAtom, extraAlertPreferencesAtom } from '@/stores/notifications';
+import { overlayAtom } from '@/stores/overlay';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
@@ -25,6 +26,7 @@ interface Props {
 
 export default function Alert({ type, index }: Props) {
   const Prayer = usePrayer(type, index);
+  const overlay = useAtomValue(overlayAtom);
 
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
@@ -51,6 +53,16 @@ export default function Alert({ type, index }: Props) {
     setIconIndex(alertPreferences[index]);
     setPopupIconIndex(alertPreferences[index]);
   }, [alertPreferences, index]);
+
+  // Disable popup on overlay open/close
+  useEffect(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = undefined;
+    }
+    AnimOpacity.value.value = 0;
+    setIsPopupActive(false);
+  }, [overlay.isOn]);
 
   useEffect(() => {
     const colorPos = Prayer.isOnOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
