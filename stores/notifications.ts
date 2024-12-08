@@ -35,6 +35,8 @@ export const extraAlertPreferencesAtom = atomWithStorage(
   { getOnInit: true }
 );
 
+export const soundPreferenceAtom = atomWithStorage('sound_preference', 0, Database.mmkvStorage, { getOnInit: true });
+
 // --- Actions ---
 
 export const getAlertPreferences = (type: ScheduleType) => {
