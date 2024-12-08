@@ -11,7 +11,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { setAlertPreference, standardAlertPreferencesAtom, extraAlertPreferencesAtom } from '@/stores/notifications';
-import { overlayAtom } from '@/stores/overlay';
+import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
@@ -102,6 +102,7 @@ export default function Alert({ type, index }: Props) {
 
   const handleLongPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    toggleOverlay(false);
     SheetManager.show('sound-sheet');
   };
 
