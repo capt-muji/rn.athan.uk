@@ -1,4 +1,5 @@
 import { BlurView } from 'expo-blur';
+import { useAtom } from 'jotai';
 import { StyleSheet, Text, Pressable, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -6,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from '@/components/Icon';
 import { COLORS, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
-import { setSoundPreference } from '@/stores/notifications';
+import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 
 const SOUNDS = [
   'Athan 1',
@@ -22,6 +23,7 @@ const SOUNDS = [
 ];
 
 export default function ActionSheetSound() {
+  const [selectedSound] = useAtom(soundPreferenceAtom);
   const insets = useSafeAreaInsets();
 
   const computedStyle = {
@@ -42,10 +44,10 @@ export default function ActionSheetSound() {
 
         {SOUNDS.map((sound, index) => (
           <Pressable key={sound} style={styles.option} onPress={() => setSoundPreference(index)}>
-            <Text style={styles.text}>{sound}</Text>
-            <View style={styles.icon}>
-              <Icon type={AlertIcon.PLAY} size={22} color={COLORS.textSecondary} />
-            </View>
+            <Text style={[styles.text, index === selectedSound && styles.selected]}>{sound}</Text>
+            <Pressable style={styles.icon}>
+              <Icon type={AlertIcon.PLAY} size={22} color={index === selectedSound ? 'white' : COLORS.textSecondary} />
+            </Pressable>
           </Pressable>
         ))}
       </BlurView>
@@ -94,4 +96,7 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
   },
   icon: {},
+  selected: {
+    color: 'white',
+  },
 });
