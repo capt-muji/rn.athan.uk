@@ -2,6 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useState, useRef, useEffect } from 'react';
 import { StyleSheet, Pressable, Text, View } from 'react-native';
+import { SheetManager } from 'react-native-actions-sheet';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
@@ -11,7 +12,6 @@ import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { setAlertPreference, standardAlertPreferencesAtom, extraAlertPreferencesAtom } from '@/stores/notifications';
 import { overlayAtom } from '@/stores/overlay';
-import { openSoundSheet } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
@@ -102,7 +102,7 @@ export default function Alert({ type, index }: Props) {
 
   const handleLongPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    openSoundSheet();
+    SheetManager.show('sound-sheet');
   };
 
   const computedStylesPopup = {
