@@ -9,10 +9,11 @@ import { ScheduleType } from '@/shared/types';
 interface Props {
   type: ScheduleType;
   index: number;
+  isOverlay?: boolean;
 }
 
-export default function PrayerTime({ type, index }: Props) {
-  const Prayer = usePrayer(type, index);
+export default function PrayerTime({ type, index, isOverlay = false }: Props) {
+  const Prayer = usePrayer(type, index, isOverlay);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,

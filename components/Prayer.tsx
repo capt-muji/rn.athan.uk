@@ -16,9 +16,10 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 interface Props {
   type: ScheduleType;
   index: number;
+  isOverlay?: boolean;
 }
 
-export default function Prayer({ type, index }: Props) {
+export default function Prayer({ type, index, isOverlay = false }: Props) {
   const Prayer = usePrayer(type, index);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
@@ -40,8 +41,8 @@ export default function Prayer({ type, index }: Props) {
     <AnimatedPressable ref={viewRef} style={styles.container} onPress={handlePress}>
       <Animated.Text style={[styles.text, styles.english, AnimColor.style]}>{Prayer.english}</Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
-      <PrayerTime index={index} type={type} />
-      <Alert index={index} type={type} />
+      <PrayerTime index={index} type={type} isOverlay={isOverlay} />
+      <Alert index={index} type={type} isOverlay={isOverlay} />
     </AnimatedPressable>
   );
 }
