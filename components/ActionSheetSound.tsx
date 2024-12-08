@@ -1,6 +1,7 @@
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
+import { useRef } from 'react';
 import { StyleSheet, Text, Pressable, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import Animated from 'react-native-reanimated';
@@ -11,7 +12,6 @@ import { useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
 import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
-import { prevSoundPreference, setPrevSoundPreference } from '@/stores/ui';
 
 const SOUNDS = [
   'Athan 1',
@@ -30,7 +30,7 @@ export default function ActionSheetSound() {
   const insets = useSafeAreaInsets();
 
   const selectedSound = useAtomValue(soundPreferenceAtom);
-  const prevSelectedSound = useAtomValue(prevSoundPreference);
+  const prevSelectedSound = useRef(selectedSound);
 
   // Create animation arrays for all sound options
   const textAnimations = SOUNDS.map((_, index) =>
@@ -48,8 +48,8 @@ export default function ActionSheetSound() {
   );
 
   // Animate previous selection to secondary color
-  textAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
-  iconAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
+  textAnimations[prevSelectedSound.current].animate(0, { duration: ANIMATION.duration });
+  iconAnimations[prevSelectedSound.current].animate(0, { duration: ANIMATION.duration });
 
   // Animate new selection to white
   textAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
@@ -58,8 +58,8 @@ export default function ActionSheetSound() {
   const handleSoundSelection = (newSelectedSound: number) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    setPrevSoundPreference(selectedSound);
     setSoundPreference(newSelectedSound);
+    prevSelectedSound.current = selectedSound;
   };
 
   const computedStyle = {
