@@ -1,6 +1,5 @@
 import { BlurView } from 'expo-blur';
 import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
 import { StyleSheet, Text, Pressable, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import Animated from 'react-native-reanimated';
@@ -46,16 +45,13 @@ export default function ActionSheetSound() {
     })
   );
 
-  useEffect(() => {
-    // Animate previous selection to secondary color
-    if (prevSelectedSound !== null) {
-      textAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
-      iconAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
-    }
-    // Animate new selection to white
-    textAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
-    iconAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
-  }, [selectedSound]);
+  // Animate previous selection to secondary color
+  textAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
+  iconAnimations[prevSelectedSound].animate(0, { duration: ANIMATION.duration });
+
+  // Animate new selection to white
+  textAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
+  iconAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
 
   const handleSoundSelection = (newSelectedSound: number) => {
     setPrevSoundPreference(selectedSound);
