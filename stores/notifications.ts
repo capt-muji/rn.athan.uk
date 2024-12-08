@@ -22,20 +22,20 @@ const initialAlertPreferences = (prayers: string[]): AlertPreferences => {
 // --- Atoms ---
 
 export const standardAlertPreferencesAtom = atomWithStorage(
-  'alert_preferences_standard',
+  'preferences_alert_standard',
   initialAlertPreferences(PRAYERS_ENGLISH),
   Database.mmkvStorage,
   { getOnInit: true }
 );
 
 export const extraAlertPreferencesAtom = atomWithStorage(
-  'alert_preferences_extra',
+  'preferences_alert_extra',
   initialAlertPreferences(EXTRAS_ENGLISH),
   Database.mmkvStorage,
   { getOnInit: true }
 );
 
-export const soundPreferenceAtom = atomWithStorage('sound_preference', 0, Database.mmkvStorage, { getOnInit: true });
+export const soundPreferenceAtom = atomWithStorage('preferences_sound', 0, Database.mmkvStorage, { getOnInit: true });
 
 // --- Actions ---
 
