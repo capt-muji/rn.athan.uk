@@ -35,7 +35,9 @@ export const extraAlertPreferencesAtom = atomWithStorage(
   { getOnInit: true }
 );
 
-export const soundPreferenceAtom = atomWithStorage('preferences_sound', 0, Database.mmkvStorage, { getOnInit: true });
+export const soundPreferenceAtom = atomWithStorage<number>('preferences_sound', 0, Database.mmkvStorage, {
+  getOnInit: true,
+});
 
 // --- Actions ---
 
