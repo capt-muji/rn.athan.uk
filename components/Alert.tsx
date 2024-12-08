@@ -89,7 +89,7 @@ export default function Alert({ type, index }: Props) {
 
   const computedStylesPopup = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
-    backgroundColor: Prayer.ui.isOnOverlay ? COLORS.activeBackground : 'black',
+    backgroundColor: Prayer.isOnOverlay ? (Prayer.isNext ? 'black' : COLORS.activeBackground) : 'black',
   };
 
   return (
