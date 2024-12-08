@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     pointerEvents: 'none',
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.family.regular,
   },
   prayer: {
     ...STYLES.prayer.border,

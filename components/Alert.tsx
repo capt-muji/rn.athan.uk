@@ -11,6 +11,7 @@ import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { setAlertPreference, standardAlertPreferencesAtom, extraAlertPreferencesAtom } from '@/stores/notifications';
 import { overlayAtom } from '@/stores/overlay';
+import { openSoundSheet } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
@@ -99,6 +100,11 @@ export default function Alert({ type, index }: Props) {
     }, ANIMATION.popupDuration);
   };
 
+  const handleLongPress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    openSoundSheet();
+  };
+
   const computedStylesPopup = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
     backgroundColor: Prayer.isOnOverlay ? (Prayer.isNext ? 'black' : COLORS.activeBackground) : 'black',
@@ -108,6 +114,7 @@ export default function Alert({ type, index }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
+        onLongPress={handleLongPress}
         onPressIn={() => AnimScale.animate(0.9)}
         onPressOut={() => AnimScale.animate(1)}
         style={styles.iconContainer}>

@@ -23,7 +23,7 @@ export default function Timer({ type }: Props) {
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
-    fontFamily: overlay.isOn ? TEXT.famiy.medium : TEXT.famiy.regular,
+    fontFamily: overlay.isOn ? TEXT.family.medium : TEXT.family.regular,
   }));
 
   if (!overlay.isOn && isLastPrayerPassed) {

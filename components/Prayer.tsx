@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     height: STYLES.prayer.height,
   },
   text: {
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
   },
   english: {

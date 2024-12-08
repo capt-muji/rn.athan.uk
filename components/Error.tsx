@@ -29,12 +29,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 28,
     marginBottom: 18,
-    fontFamily: TEXT.famiy.medium,
+    fontFamily: TEXT.family.medium,
   },
   subtext: {
     color: 'white',
     fontSize: TEXT.size,
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.family.regular,
   },
   first: {
     marginBottom: 4,

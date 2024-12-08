@@ -12,7 +12,7 @@ export const TIME_ADJUSTMENTS = {
 };
 
 export const TEXT = {
-  famiy: {
+  family: {
     regular: 'Roboto',
     medium: 'Roboto-Medium',
   },
