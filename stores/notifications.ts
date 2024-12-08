@@ -53,3 +53,5 @@ export const setAlertPreference = (scheduleType: ScheduleType, prayerIndex: numb
 
   store.set(scheduleAtom, { ...preferences, [prayerIndex]: alertType });
 };
+
+export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
