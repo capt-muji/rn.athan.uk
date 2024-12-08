@@ -101,8 +101,8 @@ export default function Alert({ type, index }: Props) {
   };
 
   const handleLongPress = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     toggleOverlay(false);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     SheetManager.show('sound-sheet');
   };
 
@@ -116,6 +116,7 @@ export default function Alert({ type, index }: Props) {
       <Pressable
         onPress={handlePress}
         onLongPress={handleLongPress}
+        delayLongPress={200}
         onPressIn={() => AnimScale.animate(0.9)}
         onPressOut={() => AnimScale.animate(1)}
         style={styles.iconContainer}>
