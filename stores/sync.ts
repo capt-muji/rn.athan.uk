@@ -14,9 +14,7 @@ import * as Timer from '@/stores/timer';
 const store = getDefaultStore();
 
 // TODO: Remove below check
-Database.clearPrefix('prayer_');
-Database.clearPrefix('fetched_years');
-Database.clearPrefix('display_date');
+Database.cleanup();
 // TODO: Remove above check
 
 // --- Atoms ---
