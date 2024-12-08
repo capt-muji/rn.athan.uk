@@ -66,8 +66,6 @@ const styles = StyleSheet.create({
   },
   option: {
     padding: 20,
-    // borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(255,255,255,0)',
   },
   text: {
     color: COLORS.textSecondary,
