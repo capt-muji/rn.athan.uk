@@ -3,7 +3,9 @@ import { StyleSheet, Text, Pressable, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import Icon from '@/components/Icon';
 import { COLORS, TEXT } from '@/shared/constants';
+import { AlertIcon } from '@/shared/types';
 import { setSoundPreference } from '@/stores/notifications';
 
 const SOUNDS = [
@@ -41,6 +43,9 @@ export default function ActionSheetSound() {
         {SOUNDS.map((sound, index) => (
           <Pressable key={sound} style={styles.option} onPress={() => setSoundPreference(index)}>
             <Text style={styles.text}>{sound}</Text>
+            <View style={styles.icon}>
+              <Icon type={AlertIcon.PLAY} size={22} color={COLORS.textSecondary} />
+            </View>
           </Pressable>
         ))}
       </BlurView>
@@ -77,6 +82,9 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   option: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingHorizontal: 30,
     paddingVertical: 20,
   },
@@ -85,4 +93,5 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
+  icon: {},
 });

@@ -122,6 +122,7 @@ export enum AlertIcon {
   BELL_SLASH = 'BELL_SLASH',
   VIBRATE = 'VIBRATE',
   SPEAKER = 'SPEAKER',
+  PLAY = 'PLAY',
 }
 
 export interface AlertPreferences {
