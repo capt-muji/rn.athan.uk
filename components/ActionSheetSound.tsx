@@ -37,7 +37,7 @@ export default function ActionSheetSound() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0b1324',
+    backgroundColor: '#0b0e24',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     paddingTop: 15,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   option: {
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#0d162a',
+    borderBottomColor: '#0b0e27',
   },
   text: {
     color: COLORS.textSecondary,
