@@ -1,6 +1,7 @@
 import { BlurView } from 'expo-blur';
 import { StyleSheet, Text, Pressable, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { COLORS, TEXT } from '@/shared/constants';
 import { setSoundPreference } from '@/stores/notifications';
@@ -19,13 +20,21 @@ const SOUNDS = [
 ];
 
 export default function ActionSheetSound() {
+  const insets = useSafeAreaInsets();
+
+  const computedStyle = {
+    marginBottom: -insets.bottom,
+    paddingBottom: insets.bottom,
+  };
+
   return (
     <ActionSheet
+      safeAreaInsets={insets}
       id="sound-sheet"
       gestureEnabled={true}
       containerStyle={styles.container}
       indicatorStyle={{ display: 'none' }}>
-      <BlurView intensity={75} tint="dark" style={styles.blurContainer}>
+      <BlurView intensity={75} tint="dark" style={[styles.blurContainer, computedStyle]}>
         <View style={styles.indicator} />
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
@@ -52,8 +61,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     overflow: 'hidden',
     paddingTop: 25,
-    marginBottom: -50,
-    paddingBottom: 50,
     backgroundColor: 'rgba(25,25,130,0.5)',
   },
   indicator: {
