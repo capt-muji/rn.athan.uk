@@ -73,10 +73,12 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'white',
-    padding: 20,
+    paddingHorizontal: 30,
+    paddingVertical: 20,
   },
   option: {
-    padding: 20,
+    paddingHorizontal: 30,
+    paddingVertical: 20,
   },
   text: {
     color: COLORS.textSecondary,
