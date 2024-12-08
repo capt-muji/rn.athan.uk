@@ -37,13 +37,14 @@ const setMeasurement = (key: keyof Measurements, measurements: PageCoordinates) 
   store.set(measurementsAtom, { ...current, [key]: measurements });
 };
 
-const toggleOverlay = () => {
+const toggleOverlay = (force?: boolean) => {
   const overlay = store.get(overlayAtom);
+  const newState = force !== undefined ? force : !overlay.isOn;
 
   // Don't allow opening if timer is too low
-  if (!overlay.isOn && !canShowOverlay(overlay.scheduleType)) return;
+  if (!overlay.isOn && newState && !canShowOverlay(overlay.scheduleType)) return;
 
-  store.set(overlayAtom, { ...overlay, isOn: !overlay.isOn });
+  store.set(overlayAtom, { ...overlay, isOn: newState });
 };
 
 const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
