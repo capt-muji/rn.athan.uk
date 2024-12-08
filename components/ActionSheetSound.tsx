@@ -1,7 +1,7 @@
 import { StyleSheet, Text, Pressable } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 
-import { TEXT } from '@/shared/constants';
+import { COLORS, TEXT } from '@/shared/constants';
 import { setSoundPreference } from '@/stores/notifications';
 
 const SOUNDS = [
@@ -24,7 +24,7 @@ export default function ActionSheetSound() {
       gestureEnabled={true}
       containerStyle={styles.container}
       indicatorStyle={styles.indicator}>
-      <Text style={[styles.text, styles.title]}>Select athan</Text>
+      <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
       {SOUNDS.map((sound, index) => (
         <Pressable key={sound} style={styles.option} onPress={() => setSoundPreference(index)}>
@@ -37,26 +37,27 @@ export default function ActionSheetSound() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#000000',
+    backgroundColor: '#0b1324',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     paddingTop: 15,
   },
   indicator: {
-    backgroundColor: '#ffffff',
+    backgroundColor: COLORS.textSecondary,
     width: 50,
     height: 5,
   },
   title: {
+    color: 'white',
     padding: 20,
   },
   option: {
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#000000',
+    borderBottomColor: '#0d162a',
   },
   text: {
-    color: 'white',
+    color: COLORS.textSecondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
