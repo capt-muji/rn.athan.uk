@@ -42,6 +42,10 @@ export default function ActionSheetSound() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
+    shadowColor: '#0d0021',
+    shadowOffset: { width: 0, height: -100 },
+    shadowOpacity: 0.25,
+    shadowRadius: 100,
   },
   blurContainer: {
     borderTopLeftRadius: 15,
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
     paddingTop: 25,
     marginBottom: -50,
     paddingBottom: 50,
-    backgroundColor: 'rgba(25,25,120,0.5)',
+    backgroundColor: 'rgba(25,25,130,0.5)',
   },
   indicator: {
     backgroundColor: COLORS.textSecondary,
