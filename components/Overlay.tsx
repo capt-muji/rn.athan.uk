@@ -34,7 +34,7 @@ export default function Overlay() {
 
   if (overlay.isOn) {
     backgroundOpacity.animate(1, { duration: ANIMATION.duration });
-    dateOpacity.animate(1, { duration: ANIMATION.duration, delay: ANIMATION.overlayDelay });
+    dateOpacity.animate(1, { duration: ANIMATION.duration });
   } else {
     backgroundOpacity.animate(0, { duration: ANIMATION.duration });
     dateOpacity.animate(0, { duration: ANIMATION.duration });
