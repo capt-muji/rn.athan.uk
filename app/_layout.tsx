@@ -17,11 +17,6 @@ export default function Layout() {
       <BottomSheetModalProvider>
         <Slot />
         <BottomSheetSound />
-        {/* <BottomSheetModal ref={(ref) => setBottomSheetModal(ref)} snapPoints={['50%']}>
-          <BottomSheetView>
-            <Text>Awesome 🎉</Text>
-          </BottomSheetView>
-        </BottomSheetModal> */}
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );
