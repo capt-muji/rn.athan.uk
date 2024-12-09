@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
-import { COLORS, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 
@@ -20,6 +20,9 @@ export default function ActionSheetSoundItem({ index }: Props) {
 
   const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
   const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
+
+  textAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
+  iconAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
