@@ -1,5 +1,7 @@
-import { BottomSheetModal, BottomSheetView, BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetFlatList } from '@gorhom/bottom-sheet';
+import { useMemo, useCallback } from 'react';
 import { StyleSheet, Text } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import { COLORS, TEXT } from '@/shared/constants';
@@ -23,22 +25,36 @@ const SOUNDS = [
 ];
 
 export default function BottomSheetSound() {
+  const { bottom } = useSafeAreaInsets();
+  const data = useMemo(
+    () =>
+      SOUNDS.map((sound, index) => ({
+        id: index.toString(),
+        title: sound,
+      })),
+    []
+  );
+
+  const renderItem = useCallback(({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} />, []);
+
+  const computedStyle = { paddingBottom: bottom + 10 };
+
   return (
     <BottomSheetModal
       ref={(ref) => setBottomSheetModal(ref)}
       style={styles.modal}
       backgroundStyle={styles.background}
       handleIndicatorStyle={styles.indicator}
+      bottomInset={0}
       snapPoints={['80%']}>
-      <BottomSheetView>
-        <Text style={[styles.text, styles.title]}>Select Athan</Text>
+      <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-        <BottomSheetScrollView>
-          {SOUNDS.map((_, index) => (
-            <BottomSheetSoundItem key={index} index={index} />
-          ))}
-        </BottomSheetScrollView>
-      </BottomSheetView>
+      <BottomSheetFlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        contentContainerStyle={computedStyle}
+      />
     </BottomSheetModal>
   );
 }
