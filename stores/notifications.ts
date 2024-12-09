@@ -41,6 +41,8 @@ export const soundPreferenceAtom = atomWithStorage<number>('preferences_sound', 
 
 // --- Actions ---
 
+export const getSoundPreference = (): number => store.get(soundPreferenceAtom);
+
 export const getAlertPreferences = (type: ScheduleType) => {
   const isStandard = type === ScheduleType.Standard;
   const alertPreferencesAtom = isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom;
