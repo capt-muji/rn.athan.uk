@@ -1,17 +1,10 @@
 import { BlurView } from 'expo-blur';
-import * as Haptics from 'expo-haptics';
-import { useAtomValue } from 'jotai';
-import { useRef } from 'react';
-import { StyleSheet, Text, Pressable, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
-import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import Icon from '@/components/Icon';
-import { useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
-import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
-import { AlertIcon } from '@/shared/types';
-import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
+import ActionSheetSoundItem from '@/components/ActionSheetSoundItem';
+import { COLORS, TEXT } from '@/shared/constants';
 
 const SOUNDS = [
   'Athan 1',
@@ -29,39 +22,6 @@ const SOUNDS = [
 export default function ActionSheetSound() {
   const insets = useSafeAreaInsets();
 
-  const selectedSound = useAtomValue(soundPreferenceAtom);
-  const prevSelectedSound = useRef(selectedSound);
-
-  // Create animation arrays for all sound options
-  const textAnimations = SOUNDS.map((_, index) =>
-    useAnimationColor(index === selectedSound ? 1 : 0, {
-      toColor: 'white',
-      fromColor: COLORS.textSecondary,
-    })
-  );
-
-  const iconAnimations = SOUNDS.map((_, index) =>
-    useAnimationFill(index === selectedSound ? 1 : 0, {
-      toColor: 'white',
-      fromColor: COLORS.textSecondary,
-    })
-  );
-
-  // Animate previous selection to secondary color
-  textAnimations[prevSelectedSound.current].animate(0, { duration: ANIMATION.duration });
-  iconAnimations[prevSelectedSound.current].animate(0, { duration: ANIMATION.duration });
-
-  // Animate new selection to white
-  textAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
-  iconAnimations[selectedSound].animate(1, { duration: ANIMATION.duration });
-
-  const handleSoundSelection = (newSelectedSound: number) => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    setSoundPreference(newSelectedSound);
-    prevSelectedSound.current = selectedSound;
-  };
-
   const computedStyle = {
     marginBottom: -insets.bottom,
     paddingBottom: insets.bottom,
@@ -78,13 +38,8 @@ export default function ActionSheetSound() {
         <View style={styles.indicator} />
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-        {SOUNDS.map((sound, index) => (
-          <Pressable key={sound} style={styles.option} onPress={() => handleSoundSelection(index)}>
-            <Animated.Text style={[styles.text, textAnimations[index].style]}>{sound}</Animated.Text>
-            <Pressable style={styles.icon}>
-              <Icon type={AlertIcon.PLAY} size={22} animatedProps={iconAnimations[index].animatedProps} />
-            </Pressable>
-          </Pressable>
+        {SOUNDS.map((_, index) => (
+          <ActionSheetSoundItem key={index} index={index} />
         ))}
       </BlurView>
     </ActionSheet>
