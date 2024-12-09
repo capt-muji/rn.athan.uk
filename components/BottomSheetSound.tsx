@@ -1,10 +1,11 @@
+import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { BlurView } from 'expo-blur';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import ActionSheet from 'react-native-actions-sheet';
+import { StyleSheet, Text, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import ActionSheetSoundItem from '@/components/ActionSheetSoundItem';
+import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import { COLORS, TEXT } from '@/shared/constants';
+import { setBottomSheetModal } from '@/stores/ui';
 
 const SOUNDS = [
   'Athan 1',
@@ -23,7 +24,7 @@ const SOUNDS = [
   'Athan 14',
 ];
 
-export default function ActionSheetSound() {
+export default function BottomSheetSound() {
   const insets = useSafeAreaInsets();
 
   const computedStyle = {
@@ -32,23 +33,19 @@ export default function ActionSheetSound() {
   };
 
   return (
-    <ActionSheet
-      id="sound-sheet"
-      safeAreaInsets={insets}
-      gestureEnabled={true}
-      containerStyle={styles.container}
-      indicatorStyle={{ display: 'none' }}>
-      <BlurView intensity={75} tint="dark" style={[styles.blurContainer, computedStyle]}>
-        <View style={styles.indicator} />
-        <Text style={[styles.text, styles.title]}>Select Athan</Text>
+    <BottomSheetModal ref={(ref) => setBottomSheetModal(ref)} snapPoints={['80%']}>
+      <BottomSheetView>
+        <BlurView intensity={75} tint="dark" style={[styles.blurContainer, computedStyle]}>
+          <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-        <ScrollView style={styles.scrollView}>
-          {SOUNDS.map((_, index) => (
-            <ActionSheetSoundItem key={index} index={index} />
-          ))}
-        </ScrollView>
-      </BlurView>
-    </ActionSheet>
+          <ScrollView style={styles.scrollView}>
+            {SOUNDS.map((_, index) => (
+              <BottomSheetSoundItem key={index} index={index} />
+            ))}
+          </ScrollView>
+        </BlurView>
+      </BottomSheetView>
+    </BottomSheetModal>
   );
 }
 
@@ -61,19 +58,7 @@ const styles = StyleSheet.create({
     shadowRadius: 100,
   },
   blurContainer: {
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    overflow: 'hidden',
-    paddingTop: 25,
     backgroundColor: 'rgba(25,25,130,0.5)',
-  },
-  indicator: {
-    backgroundColor: COLORS.textSecondary,
-    width: 50,
-    height: 5,
-    borderRadius: 2.5,
-    alignSelf: 'center',
-    marginBottom: 5,
   },
   title: {
     color: 'white',

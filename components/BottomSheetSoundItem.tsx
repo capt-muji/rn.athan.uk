@@ -13,7 +13,7 @@ interface Props {
   index: number;
 }
 
-export default function ActionSheetSoundItem({ index }: Props) {
+export default function BottomSheetSoundItem({ index }: Props) {
   const selectedSound = useAtomValue(soundPreferenceAtom);
 
   const isSelected = index === selectedSound;
