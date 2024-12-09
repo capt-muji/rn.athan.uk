@@ -18,15 +18,8 @@ export default function ActionSheetSoundItem({ index }: Props) {
 
   const isSelected = index === selectedSound;
 
-  const textAnimation = useAnimationColor(isSelected ? 1 : 0, {
-    fromColor: COLORS.textSecondary,
-    toColor: 'white',
-  });
-
-  const iconAnimation = useAnimationFill(isSelected ? 1 : 0, {
-    fromColor: COLORS.textSecondary,
-    toColor: 'white',
-  });
+  const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
+  const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
