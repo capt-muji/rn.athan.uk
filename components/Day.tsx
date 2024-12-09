@@ -18,7 +18,6 @@ export default function Day({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
   const date = useAtomValue(dateAtom);
-
   const dateRef = useRef<Animated.Text>(null);
 
   const handleLayout = () => {
