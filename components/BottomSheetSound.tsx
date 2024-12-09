@@ -1,5 +1,4 @@
 import { BottomSheetModal, BottomSheetView, BottomSheetScrollView } from '@gorhom/bottom-sheet';
-import { BlurView } from 'expo-blur';
 import { StyleSheet, Text } from 'react-native';
 
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
@@ -25,25 +24,34 @@ const SOUNDS = [
 
 export default function BottomSheetSound() {
   return (
-    <BottomSheetModal ref={(ref) => setBottomSheetModal(ref)} snapPoints={['80%']}>
+    <BottomSheetModal
+      ref={(ref) => setBottomSheetModal(ref)}
+      style={styles.modal}
+      backgroundStyle={styles.background}
+      handleIndicatorStyle={styles.indicator}
+      snapPoints={['80%']}>
       <BottomSheetView>
-        <BlurView intensity={75} tint="dark" style={styles.blurContainer}>
-          <Text style={[styles.text, styles.title]}>Select Athan</Text>
+        <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-          <BottomSheetScrollView contentContainerStyle={styles.scrollView}>
-            {SOUNDS.map((_, index) => (
-              <BottomSheetSoundItem key={index} index={index} />
-            ))}
-          </BottomSheetScrollView>
-        </BlurView>
+        <BottomSheetScrollView>
+          {SOUNDS.map((_, index) => (
+            <BottomSheetSoundItem key={index} index={index} />
+          ))}
+        </BottomSheetScrollView>
       </BottomSheetView>
     </BottomSheetModal>
   );
 }
 
 const styles = StyleSheet.create({
-  blurContainer: {
-    backgroundColor: 'rgba(25,25,130,0.5)',
+  modal: {
+    paddingTop: 10,
+  },
+  background: {
+    backgroundColor: '#1c1457',
+  },
+  indicator: {
+    backgroundColor: COLORS.textSecondary,
   },
   title: {
     color: 'white',
@@ -55,5 +63,4 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
-  scrollView: {},
 });
