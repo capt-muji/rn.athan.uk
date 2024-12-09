@@ -37,23 +37,22 @@ export default function BottomSheetSound() {
 
   const renderItem = useCallback(({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} />, []);
 
-  const computedStyle = { paddingBottom: bottom + 10 };
-
   return (
     <BottomSheetModal
       ref={(ref) => setBottomSheetModal(ref)}
+      snapPoints={['80%']}
+      enableDynamicSizing={false}
       style={styles.modal}
       backgroundStyle={styles.background}
-      handleIndicatorStyle={styles.indicator}
-      bottomInset={0}
-      snapPoints={['80%']}>
+      handleIndicatorStyle={styles.indicator}>
       <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
       <BottomSheetFlatList
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
-        contentContainerStyle={computedStyle}
+        contentContainerStyle={{ paddingBottom: bottom + 5 }}
+        showsVerticalScrollIndicator={false}
       />
     </BottomSheetModal>
   );
