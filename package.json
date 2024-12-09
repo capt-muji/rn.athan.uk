@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^5.0.6",
     "@shopify/react-native-skia": "1.2.3",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
