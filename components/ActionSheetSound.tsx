@@ -1,5 +1,5 @@
 import { BlurView } from 'expo-blur';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -17,6 +17,10 @@ const SOUNDS = [
   'Athan 8',
   'Athan 9',
   'Athan 10',
+  'Athan 11',
+  'Athan 12',
+  'Athan 13',
+  'Athan 14',
 ];
 
 export default function ActionSheetSound() {
@@ -29,8 +33,8 @@ export default function ActionSheetSound() {
 
   return (
     <ActionSheet
-      safeAreaInsets={insets}
       id="sound-sheet"
+      safeAreaInsets={insets}
       gestureEnabled={true}
       containerStyle={styles.container}
       indicatorStyle={{ display: 'none' }}>
@@ -38,9 +42,11 @@ export default function ActionSheetSound() {
         <View style={styles.indicator} />
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-        {SOUNDS.map((_, index) => (
-          <ActionSheetSoundItem key={index} index={index} />
-        ))}
+        <ScrollView style={styles.scrollView}>
+          {SOUNDS.map((_, index) => (
+            <ActionSheetSoundItem key={index} index={index} />
+          ))}
+        </ScrollView>
       </BlurView>
     </ActionSheet>
   );
@@ -89,5 +95,8 @@ const styles = StyleSheet.create({
   icon: {},
   selected: {
     color: 'white',
+  },
+  scrollView: {
+    // maxHeight: '80%',
   },
 });
