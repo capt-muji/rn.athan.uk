@@ -1,4 +1,4 @@
-import { BottomSheetModal, BottomSheetFlatList } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { useMemo, useCallback } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -37,6 +37,11 @@ export default function BottomSheetSound() {
 
   const renderItem = useCallback(({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} />, []);
 
+  const renderBackdrop = useCallback(
+    (props) => <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} />,
+    []
+  );
+
   return (
     <BottomSheetModal
       ref={(ref) => setBottomSheetModal(ref)}
@@ -44,7 +49,8 @@ export default function BottomSheetSound() {
       enableDynamicSizing={false}
       style={styles.modal}
       backgroundStyle={styles.background}
-      handleIndicatorStyle={styles.indicator}>
+      handleIndicatorStyle={styles.indicator}
+      backdropComponent={renderBackdrop}>
       <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
       <BottomSheetFlatList
@@ -64,6 +70,7 @@ const styles = StyleSheet.create({
   },
   background: {
     backgroundColor: '#1c1457',
+    opacity: 0.98,
   },
   indicator: {
     backgroundColor: COLORS.textSecondary,
