@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
-    backgroundColor: 'rgba(0,0,0,0.97)',
+    backgroundColor: 'black',
   },
   timer: {
     position: 'absolute',
