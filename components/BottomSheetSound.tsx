@@ -1,6 +1,6 @@
-import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetView, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { BlurView } from 'expo-blur';
-import { StyleSheet, Text, ScrollView } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import { COLORS, TEXT } from '@/shared/constants';
@@ -30,11 +30,11 @@ export default function BottomSheetSound() {
         <BlurView intensity={75} tint="dark" style={styles.blurContainer}>
           <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-          <ScrollView style={styles.scrollView}>
+          <BottomSheetScrollView contentContainerStyle={styles.scrollView}>
             {SOUNDS.map((_, index) => (
               <BottomSheetSoundItem key={index} index={index} />
             ))}
-          </ScrollView>
+          </BottomSheetScrollView>
         </BlurView>
       </BottomSheetView>
     </BottomSheetModal>
