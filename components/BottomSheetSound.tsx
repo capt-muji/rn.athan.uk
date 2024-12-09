@@ -1,7 +1,6 @@
 import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { BlurView } from 'expo-blur';
 import { StyleSheet, Text, ScrollView } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import { COLORS, TEXT } from '@/shared/constants';
@@ -25,17 +24,10 @@ const SOUNDS = [
 ];
 
 export default function BottomSheetSound() {
-  const insets = useSafeAreaInsets();
-
-  const computedStyle = {
-    marginBottom: -insets.bottom,
-    paddingBottom: insets.bottom,
-  };
-
   return (
     <BottomSheetModal ref={(ref) => setBottomSheetModal(ref)} snapPoints={['80%']}>
       <BottomSheetView>
-        <BlurView intensity={75} tint="dark" style={[styles.blurContainer, computedStyle]}>
+        <BlurView intensity={75} tint="dark" style={styles.blurContainer}>
           <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
           <ScrollView style={styles.scrollView}>
