@@ -26,6 +26,7 @@ const SOUNDS = [
 
 export default function BottomSheetSound() {
   const { bottom } = useSafeAreaInsets();
+
   const data = useMemo(
     () =>
       SOUNDS.map((sound, index) => ({
@@ -69,8 +70,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   background: {
-    backgroundColor: '#1c1457',
-    opacity: 0.98,
+    backgroundColor: '#010614',
   },
   indicator: {
     backgroundColor: COLORS.textSecondary,
