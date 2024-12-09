@@ -1,4 +1,3 @@
-import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { StyleSheet, Pressable, View, ViewStyle } from 'react-native';
@@ -12,8 +11,6 @@ import { useAnimationOpacity } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
 import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
 import { measurementsAtom, overlayAtom, toggleOverlay } from '@/stores/overlay';
-
-const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
 
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
@@ -64,23 +61,21 @@ export default function Overlay() {
 
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
-      <AnimatedBlur intensity={12} tint="dark" style={{ flex: 1 }}>
-        {/* Timer */}
-        <View style={[styles.timer, computedStyleTimer]}>
-          <Timer type={overlay.scheduleType} isOverlay />
-        </View>
-        <Pressable style={{ flex: 1 }} onPress={handleClose} />
+      {/* Timer */}
+      <View style={[styles.timer, computedStyleTimer]}>
+        <Timer type={overlay.scheduleType} isOverlay />
+      </View>
+      <Pressable style={{ flex: 1 }} onPress={handleClose} />
 
-        {/* Date */}
-        <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
-          {selectedPrayer.isPassed ? 'Tomorrow' : 'Today'}
-        </Reanimated.Text>
+      {/* Date */}
+      <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
+        {selectedPrayer.isPassed ? 'Tomorrow' : 'Today'}
+      </Reanimated.Text>
 
-        {/* Prayer overlay */}
-        <View style={[styles.prayer, computedStylePrayer]}>
-          <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} isOverlay />
-        </View>
-      </AnimatedBlur>
+      {/* Prayer overlay */}
+      <View style={[styles.prayer, computedStylePrayer]}>
+        <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} isOverlay />
+      </View>
       <Glow />
     </Reanimated.View>
   );
@@ -90,7 +85,7 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
-    backgroundColor: 'rgba(0,0,18,0.96)',
+    backgroundColor: 'rgba(0,0,0,0.97)',
   },
   timer: {
     position: 'absolute',
