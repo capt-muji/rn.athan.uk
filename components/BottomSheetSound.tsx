@@ -42,13 +42,6 @@ export default function BottomSheetSound() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'transparent',
-    shadowColor: '#0d0021',
-    shadowOffset: { width: 0, height: -100 },
-    shadowOpacity: 0.25,
-    shadowRadius: 100,
-  },
   blurContainer: {
     backgroundColor: 'rgba(25,25,130,0.5)',
   },
@@ -57,23 +50,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 20,
   },
-  option: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 30,
-    paddingVertical: 20,
-  },
   text: {
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
-  icon: {},
-  selected: {
-    color: 'white',
-  },
-  scrollView: {
-    // maxHeight: '80%',
-  },
+  scrollView: {},
 });
