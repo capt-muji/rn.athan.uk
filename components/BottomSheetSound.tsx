@@ -52,7 +52,15 @@ export default function BottomSheetSound() {
   const renderItem = useCallback(({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} />, []);
 
   const renderBackdrop = useCallback(
-    (props) => <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} opacity={0.9} />,
+    (props) => (
+      <BottomSheetBackdrop
+        {...props}
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
+        opacity={0.9}
+        style={[styles.backdrop, props.style]}
+      />
+    ),
     []
   );
 
@@ -121,5 +129,8 @@ const styles = StyleSheet.create({
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
+  },
+  backdrop: {
+    backgroundColor: '#000116',
   },
 });
