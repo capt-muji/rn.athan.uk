@@ -1,6 +1,7 @@
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
+import { Canvas, LinearGradient, RoundedRect, vec } from '@shopify/react-native-skia';
 import { useMemo, useCallback } from 'react';
-import { StyleSheet, Text, Dimensions } from 'react-native';
+import { StyleSheet, Text, Dimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
@@ -24,6 +25,18 @@ const SOUNDS = [
   'Athan 13',
   'Athan 14',
 ];
+
+function SheetBackground() {
+  const { width, height } = Dimensions.get('window');
+
+  return (
+    <Canvas style={StyleSheet.absoluteFill}>
+      <RoundedRect x={0} y={0} width={width} height={height} r={24}>
+        <LinearGradient start={vec(0, 0)} end={vec(width, height)} colors={['#0f0c34', '#04001b']} />
+      </RoundedRect>
+    </Canvas>
+  );
+}
 
 export default function BottomSheetSound() {
   const { bottom } = useSafeAreaInsets();
@@ -50,27 +63,29 @@ export default function BottomSheetSound() {
       snapPoints={['80%']}
       enableDynamicSizing={false}
       style={styles.modal}
-      backgroundStyle={styles.background}
+      backgroundComponent={SheetBackground}
       handleIndicatorStyle={styles.indicator}
       backdropComponent={renderBackdrop}>
-      <Glow
-        color={'#2f045a'}
-        baseOpacity={1}
-        size={Dimensions.get('window').width * 2}
-        style={{
-          bottom: -Dimensions.get('window').width * 1.25,
-          left: -Dimensions.get('window').width / 2,
-        }}
-      />
-      <Text style={[styles.text, styles.title]}>Select Athan</Text>
+      <View style={styles.container}>
+        <Glow
+          color={'#2f045a'}
+          baseOpacity={1}
+          size={Dimensions.get('window').width * 2}
+          style={{
+            bottom: -Dimensions.get('window').width,
+            left: -Dimensions.get('window').width,
+          }}
+        />
+        <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-      <BottomSheetFlatList
-        data={data}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        contentContainerStyle={{ paddingBottom: bottom + 20 }}
-        showsVerticalScrollIndicator={false}
-      />
+        <BottomSheetFlatList
+          data={data}
+          keyExtractor={(item) => item.id}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingBottom: bottom + 20 }}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
     </BottomSheetModal>
   );
 }
@@ -79,8 +94,8 @@ const styles = StyleSheet.create({
   modal: {
     paddingTop: 15,
   },
-  background: {
-    backgroundColor: '#05011c',
+  container: {
+    flex: 1,
   },
   indicator: {
     backgroundColor: COLORS.textSecondary,
