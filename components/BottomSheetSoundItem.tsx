@@ -13,6 +13,7 @@ import {
   useAnimationScale,
 } from '@/hooks/useAnimations';
 import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
+import logger from '@/shared/logger';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
@@ -65,7 +66,6 @@ export default function BottomSheetSoundItem({ index }: Props) {
   };
 
   const playSound = async () => {
-    console.log('playing sound');
     try {
       if (isPlaying && sound) {
         await sound.stopAsync();
@@ -73,12 +73,11 @@ export default function BottomSheetSoundItem({ index }: Props) {
         return;
       }
 
-      if (sound) {
-        await sound.stopAsync();
-      }
+      if (sound) await sound.stopAsync();
 
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
 
+      // eslint-disable-next-line
       const { sound: playbackObject } = await Audio.Sound.createAsync(require('../assets/audio/athan1.wav'), {
         shouldPlay: true,
       });
@@ -87,14 +86,12 @@ export default function BottomSheetSoundItem({ index }: Props) {
       setPlayingSoundIndex(index);
 
       playbackObject.setOnPlaybackStatusUpdate((status) => {
-        if (status.didJustFinish) {
-          setPlayingSoundIndex(null);
-        }
+        if (status.isLoaded && status.didJustFinish) setPlayingSoundIndex(null);
       });
 
       await playbackObject.playAsync();
     } catch (error) {
-      console.log('Error playing sound:', error);
+      logger.error('Error playing sound:', error);
       setPlayingSoundIndex(null);
     }
   };
