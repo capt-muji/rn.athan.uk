@@ -64,13 +64,11 @@ export default function BottomSheetSoundItem({ index }: Props) {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     try {
-      if (isPlaying && sound) {
+      if (sound) {
         await sound.stopAsync();
-        setPlayingSoundIndex(null);
-        return;
-      }
 
-      if (sound) await sound.stopAsync();
+        if (isPlaying) return setPlayingSoundIndex(null);
+      }
 
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
 
