@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { BsArrowClockwise } from 'rn-icons/bs';
+// import { BsArrowClockwise } from 'rn-icons/bs';
 
 import Masjid from '@/components/Masjid';
 import { TEXT } from '@/shared/constants';
@@ -12,7 +12,7 @@ export default function Error() {
       <Text style={[styles.subtext, styles.last]}> We are investigating! </Text>
       <Masjid height={65} width={60} />
       <Pressable style={({ pressed }) => [styles.button, { opacity: pressed ? 1 : 0.75 }]}>
-        <BsArrowClockwise style={styles.icon} size={16} color={'white'} />
+        {/* <BsArrowClockwise style={styles.icon} size={16} color={'white'} /> */}
         <Text style={[styles.subtext]}> Refresh </Text>
       </Pressable>
     </View>
