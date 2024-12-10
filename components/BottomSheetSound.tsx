@@ -54,10 +54,11 @@ export default function BottomSheetSound() {
       handleIndicatorStyle={styles.indicator}
       backdropComponent={renderBackdrop}>
       <Glow
-        color={COLORS.glows.bottomsheet}
+        color={'#2f045a'}
+        baseOpacity={1}
         size={Dimensions.get('window').width * 2}
         style={{
-          bottom: -Dimensions.get('window').width,
+          bottom: -Dimensions.get('window').width * 1.25,
           left: -Dimensions.get('window').width / 2,
         }}
       />
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   background: {
-    backgroundColor: '#13003d',
+    backgroundColor: '#05011c',
   },
   indicator: {
     backgroundColor: COLORS.textSecondary,
