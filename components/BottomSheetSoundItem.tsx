@@ -121,15 +121,17 @@ const styles = StyleSheet.create({
   option: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
     alignItems: 'center',
     borderRadius: STYLES.prayer.border.borderRadius,
     marginHorizontal: SCREEN.paddingHorizontal,
     height: STYLES.prayer.height,
+    paddingLeft: 20,
   },
   text: {
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
-  icon: {},
+  icon: {
+    padding: 20,
+  },
 });
