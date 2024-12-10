@@ -26,15 +26,16 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
   const isSelected = index === selectedSound;
 
-  const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
-  const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
+  // Update animations to respond to both selected and playing states
+  const textAnimation = useAnimationColor(isSelected || isPlaying ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
+  const iconAnimation = useAnimationFill(isSelected || isPlaying ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
   const backgroundAnimation = useAnimationBackgroundColor(isSelected ? 1 : 0, {
     fromColor: 'transparent',
     toColor: '#3623ab',
   });
 
-  textAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
-  iconAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
+  textAnimation.animate(isSelected || isPlaying ? 1 : 0, { duration: ANIMATION.duration });
+  iconAnimation.animate(isSelected || isPlaying ? 1 : 0, { duration: ANIMATION.duration });
   backgroundAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
 
   useEffect(() => {
