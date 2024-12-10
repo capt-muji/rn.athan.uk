@@ -26,18 +26,6 @@ const SOUNDS = [
   'Athan 14',
 ];
 
-function SheetBackground() {
-  const { width, height } = Dimensions.get('window');
-
-  return (
-    <Canvas style={StyleSheet.absoluteFill}>
-      <RoundedRect x={0} y={0} width={width} height={height} r={24}>
-        <LinearGradient start={vec(0, 0)} end={vec(width, height)} colors={['#0f0c34', '#04001b']} />
-      </RoundedRect>
-    </Canvas>
-  );
-}
-
 export default function BottomSheetSound() {
   const { bottom } = useSafeAreaInsets();
 
@@ -49,6 +37,17 @@ export default function BottomSheetSound() {
       })),
     []
   );
+
+  const renderSheetBackground = useCallback(() => {
+    const { width, height } = Dimensions.get('window');
+    return (
+      <Canvas style={StyleSheet.absoluteFill}>
+        <RoundedRect x={0} y={0} width={width} height={height} r={24}>
+          <LinearGradient start={vec(0, 0)} end={vec(width, height)} colors={['#0f0c34', '#04001b']} />
+        </RoundedRect>
+      </Canvas>
+    );
+  }, []);
 
   const renderItem = useCallback(({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} />, []);
 
@@ -63,7 +62,7 @@ export default function BottomSheetSound() {
       snapPoints={['80%']}
       enableDynamicSizing={false}
       style={styles.modal}
-      backgroundComponent={SheetBackground}
+      backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={styles.indicator}
       backdropComponent={renderBackdrop}>
       <View style={styles.container}>
