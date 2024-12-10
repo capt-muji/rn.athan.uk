@@ -102,19 +102,17 @@ export default function BottomSheetSoundItem({ index }: Props) {
   return (
     <AnimatedPressable style={[styles.option, backgroundAnimation.style]} onPress={handlePress}>
       <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
-      <Pressable
-        style={styles.icon}
+      <AnimatedPressable
+        style={[styles.icon, AnimScale.style]}
         onPress={playSound}
         onPressIn={() => AnimScale.animate(0.9)}
         onPressOut={() => AnimScale.animate(1)}>
-        <Animated.View style={AnimScale.style}>
-          <Icon
-            type={isPlaying ? AlertIcon.PAUSE : AlertIcon.PLAY}
-            size={22}
-            animatedProps={iconAnimation.animatedProps}
-          />
-        </Animated.View>
-      </Pressable>
+        <Icon
+          type={isPlaying ? AlertIcon.PAUSE : AlertIcon.PLAY}
+          size={22}
+          animatedProps={iconAnimation.animatedProps}
+        />
+      </AnimatedPressable>
     </AnimatedPressable>
   );
 }
