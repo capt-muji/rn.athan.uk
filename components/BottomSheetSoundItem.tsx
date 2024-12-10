@@ -10,6 +10,7 @@ import { useAnimationBackgroundColor, useAnimationColor, useAnimationFill } from
 import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
+import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -19,8 +20,9 @@ interface Props {
 
 export default function BottomSheetSoundItem({ index }: Props) {
   const [sound, setSound] = useState<Audio.Sound | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const selectedSound = useAtomValue(soundPreferenceAtom);
+  const playingIndex = useAtomValue(playingSoundIndexAtom);
+  const isPlaying = playingIndex === index;
 
   const isSelected = index === selectedSound;
 
@@ -43,6 +45,12 @@ export default function BottomSheetSoundItem({ index }: Props) {
     };
   }, [sound]);
 
+  useEffect(() => {
+    if (playingIndex !== index && sound) {
+      sound.stopAsync();
+    }
+  }, [playingIndex, sound, index]);
+
   const handlePress = () => {
     setSoundPreference(index);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -53,8 +61,12 @@ export default function BottomSheetSoundItem({ index }: Props) {
     try {
       if (isPlaying && sound) {
         await sound.stopAsync();
-        setIsPlaying(false);
+        setPlayingSoundIndex(null);
         return;
+      }
+
+      if (sound) {
+        await sound.stopAsync();
       }
 
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
@@ -64,15 +76,18 @@ export default function BottomSheetSoundItem({ index }: Props) {
       });
 
       setSound(playbackObject);
-      setIsPlaying(true);
+      setPlayingSoundIndex(index);
 
       playbackObject.setOnPlaybackStatusUpdate((status) => {
-        if (status.didJustFinish) setIsPlaying(false);
+        if (status.didJustFinish) {
+          setPlayingSoundIndex(null);
+        }
       });
 
       await playbackObject.playAsync();
     } catch (error) {
       console.log('Error playing sound:', error);
+      setPlayingSoundIndex(null);
     }
   };
 
