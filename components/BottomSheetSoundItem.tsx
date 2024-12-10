@@ -1,3 +1,4 @@
+import { Audio } from 'expo-av';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { Pressable, StyleSheet } from 'react-native';
@@ -36,10 +37,19 @@ export default function BottomSheetSoundItem({ index }: Props) {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
+  const playSound = async () => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(require('../assets/sounds/athan1.wav'));
+      await sound.playAsync();
+    } catch (error) {
+      console.log('Error playing sound:', error);
+    }
+  };
+
   return (
     <AnimatedPressable style={[styles.option, backgroundAnimation.style]} onPress={handlePress}>
       <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
-      <Pressable style={styles.icon}>
+      <Pressable style={styles.icon} onPress={playSound}>
         <Icon type={AlertIcon.PLAY} size={22} animatedProps={iconAnimation.animatedProps} />
       </Pressable>
     </AnimatedPressable>
