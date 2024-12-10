@@ -4,7 +4,7 @@ import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
-import { useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
+import { useAnimationBackgroundColor, useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
 import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
@@ -22,7 +22,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
   const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
   const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
-  const backgroundAnimation = useAnimationColor(isSelected ? 1 : 0, {
+  const backgroundAnimation = useAnimationBackgroundColor(isSelected ? 1 : 0, {
     fromColor: 'transparent',
     toColor: COLORS.activeBackground,
   });
@@ -32,8 +32,8 @@ export default function BottomSheetSoundItem({ index }: Props) {
   backgroundAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
 
   const handlePress = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setSoundPreference(index);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
   return (
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
-    paddingVertical: 20,
+    paddingVertical: 18,
     borderRadius: 8,
   },
   text: {
