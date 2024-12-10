@@ -66,6 +66,8 @@ export default function BottomSheetSoundItem({ index }: Props) {
   };
 
   const playSound = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
     try {
       if (isPlaying && sound) {
         await sound.stopAsync();
