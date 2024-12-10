@@ -38,9 +38,15 @@ export default function BottomSheetSoundItem({ index }: Props) {
   };
 
   const playSound = async () => {
+    console.log('playing sound');
     try {
-      const { sound } = await Audio.Sound.createAsync(require('../assets/sounds/athan1.wav'));
-      await sound.playAsync();
+      await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+
+      const { sound: playbackObject } = await Audio.Sound.createAsync(require('../assets/audio/athan1.wav'), {
+        shouldPlay: true,
+      });
+
+      await playbackObject.playAsync();
     } catch (error) {
       console.log('Error playing sound:', error);
     }
