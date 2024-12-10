@@ -1,9 +1,10 @@
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { useMemo, useCallback } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
+import Glow from '@/components/Glow';
 import { COLORS, TEXT } from '@/shared/constants';
 import { setBottomSheetModal } from '@/stores/ui';
 
@@ -60,6 +61,14 @@ export default function BottomSheetSound() {
         renderItem={renderItem}
         contentContainerStyle={{ paddingBottom: bottom + 5 }}
         showsVerticalScrollIndicator={false}
+      />
+      <Glow
+        size={Dimensions.get('window').width * 2}
+        style={{
+          bottom: -Dimensions.get('window').width,
+          left: -Dimensions.get('window').width / 2,
+        }}
+        color={COLORS.glows.bottomsheet}
       />
     </BottomSheetModal>
   );

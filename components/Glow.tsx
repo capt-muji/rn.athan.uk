@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, ViewStyle } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
 
@@ -6,13 +6,21 @@ import { OVERLAY } from '@/shared/constants';
 
 const AnimatedSvg = Reanimated.createAnimatedComponent(Svg);
 
-export default function Glow() {
-  const baseOpacity = 0.5;
-  const color = 'rgb(128,0,255)';
-  const size = Dimensions.get('window').width * 1.5;
+interface GlowProps {
+  style: ViewStyle;
+  color: string;
+  baseOpacity?: number;
+  size?: number;
+}
 
+export default function Glow({
+  color,
+  style,
+  baseOpacity = 0.5,
+  size = Dimensions.get('window').width * 1.5,
+}: GlowProps) {
   return (
-    <AnimatedSvg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={[styles.glow]}>
+    <AnimatedSvg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={[styles.glow, style]}>
       <RadialGradient id="radialGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
         <Stop offset="0%" stopColor={color} stopOpacity={baseOpacity * 0.75} />
         <Stop offset="35%" stopColor={color} stopOpacity={baseOpacity * 0.4} />
@@ -28,8 +36,6 @@ export default function Glow() {
 const styles = StyleSheet.create({
   glow: {
     position: 'absolute',
-    top: -Dimensions.get('window').width / 1.25,
-    left: -Dimensions.get('window').width / 2,
     zIndex: OVERLAY.zindexes.glow,
   },
 });
