@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationBackgroundColor, useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
-import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 
@@ -24,7 +24,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
   const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: '#5f7cc4', toColor: 'white' });
   const backgroundAnimation = useAnimationBackgroundColor(isSelected ? 1 : 0, {
     fromColor: 'transparent',
-    toColor: COLORS.activeBackground,
+    toColor: COLORS.gradientScreen1End,
   });
 
   textAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
@@ -37,9 +37,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
   };
 
   return (
-    <AnimatedPressable
-      style={[styles.option, backgroundAnimation.style, isSelected && styles.selectedShadow]}
-      onPress={handlePress}>
+    <AnimatedPressable style={[styles.option, backgroundAnimation.style]} onPress={handlePress}>
       <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
       <Pressable style={styles.icon}>
         <Icon type={AlertIcon.PLAY} size={22} animatedProps={iconAnimation.animatedProps} />
@@ -61,8 +59,4 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
   },
   icon: {},
-  selectedShadow: {
-    ...STYLES.prayer.shadow,
-    shadowColor: '#041150',
-  },
 });
