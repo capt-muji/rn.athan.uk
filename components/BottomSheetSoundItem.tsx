@@ -6,7 +6,12 @@ import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
-import { useAnimationBackgroundColor, useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
+import {
+  useAnimationBackgroundColor,
+  useAnimationColor,
+  useAnimationFill,
+  useAnimationScale,
+} from '@/hooks/useAnimations';
 import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
@@ -37,6 +42,8 @@ export default function BottomSheetSoundItem({ index }: Props) {
   textAnimation.animate(isSelected || isPlaying ? 1 : 0, { duration: ANIMATION.duration });
   iconAnimation.animate(isSelected || isPlaying ? 1 : 0, { duration: ANIMATION.duration });
   backgroundAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
+
+  const AnimScale = useAnimationScale(1);
 
   useEffect(() => {
     return () => {
@@ -95,12 +102,18 @@ export default function BottomSheetSoundItem({ index }: Props) {
   return (
     <AnimatedPressable style={[styles.option, backgroundAnimation.style]} onPress={handlePress}>
       <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
-      <Pressable style={styles.icon} onPress={playSound}>
-        <Icon
-          type={isPlaying ? AlertIcon.PAUSE : AlertIcon.PLAY}
-          size={22}
-          animatedProps={iconAnimation.animatedProps}
-        />
+      <Pressable
+        style={styles.icon}
+        onPress={playSound}
+        onPressIn={() => AnimScale.animate(0.9)}
+        onPressOut={() => AnimScale.animate(1)}>
+        <Animated.View style={AnimScale.style}>
+          <Icon
+            type={isPlaying ? AlertIcon.PAUSE : AlertIcon.PLAY}
+            size={22}
+            animatedProps={iconAnimation.animatedProps}
+          />
+        </Animated.View>
       </Pressable>
     </AnimatedPressable>
   );
