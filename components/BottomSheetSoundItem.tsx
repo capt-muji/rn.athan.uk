@@ -1,6 +1,7 @@
 import { Audio } from 'expo-av';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
+import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -17,6 +18,8 @@ interface Props {
 }
 
 export default function BottomSheetSoundItem({ index }: Props) {
+  const [sound, setSound] = useState<Audio.Sound | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const selectedSound = useAtomValue(soundPreferenceAtom);
 
   const isSelected = index === selectedSound;
@@ -32,6 +35,14 @@ export default function BottomSheetSoundItem({ index }: Props) {
   iconAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
   backgroundAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
 
+  useEffect(() => {
+    return () => {
+      if (sound) {
+        sound.unloadAsync();
+      }
+    };
+  }, [sound]);
+
   const handlePress = () => {
     setSoundPreference(index);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -40,10 +51,23 @@ export default function BottomSheetSoundItem({ index }: Props) {
   const playSound = async () => {
     console.log('playing sound');
     try {
+      if (isPlaying && sound) {
+        await sound.stopAsync();
+        setIsPlaying(false);
+        return;
+      }
+
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
 
       const { sound: playbackObject } = await Audio.Sound.createAsync(require('../assets/audio/athan1.wav'), {
         shouldPlay: true,
+      });
+
+      setSound(playbackObject);
+      setIsPlaying(true);
+
+      playbackObject.setOnPlaybackStatusUpdate((status) => {
+        if (status.didJustFinish) setIsPlaying(false);
       });
 
       await playbackObject.playAsync();
@@ -56,7 +80,11 @@ export default function BottomSheetSoundItem({ index }: Props) {
     <AnimatedPressable style={[styles.option, backgroundAnimation.style]} onPress={handlePress}>
       <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
       <Pressable style={styles.icon} onPress={playSound}>
-        <Icon type={AlertIcon.PLAY} size={22} animatedProps={iconAnimation.animatedProps} />
+        <Icon
+          type={isPlaying ? AlertIcon.PAUSE : AlertIcon.PLAY}
+          size={22}
+          animatedProps={iconAnimation.animatedProps}
+        />
       </Pressable>
     </AnimatedPressable>
   );
