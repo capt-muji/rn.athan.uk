@@ -9,6 +9,8 @@ import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 interface Props {
   index: number;
 }
@@ -20,9 +22,14 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
   const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
   const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
+  const backgroundAnimation = useAnimationColor(isSelected ? 1 : 0, {
+    fromColor: 'transparent',
+    toColor: COLORS.activeBackground,
+  });
 
   textAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
   iconAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
+  backgroundAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -30,12 +37,14 @@ export default function BottomSheetSoundItem({ index }: Props) {
   };
 
   return (
-    <Pressable style={[styles.option, isSelected && styles.selected]} onPress={handlePress}>
+    <AnimatedPressable
+      style={[styles.option, backgroundAnimation.style, isSelected && styles.selectedShadow]}
+      onPress={handlePress}>
       <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
       <Pressable style={styles.icon}>
         <Icon type={AlertIcon.PLAY} size={22} animatedProps={iconAnimation.animatedProps} />
       </Pressable>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 
@@ -45,16 +54,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 15,
     paddingVertical: 20,
+    borderRadius: 8,
   },
   text: {
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
   icon: {},
-  selected: {
+  selectedShadow: {
     ...STYLES.prayer.shadow,
-    borderRadius: 8,
-    backgroundColor: COLORS.activeBackground,
     shadowColor: COLORS.standardActiveBackgroundShadow,
   },
 });
