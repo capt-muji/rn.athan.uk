@@ -42,6 +42,11 @@ export const COLORS = {
   extraActiveBackgroundShadow: '#061e5b',
 
   textSecondary: '#a0c8ff89',
+
+  glows: {
+    overlay: '#8000ff',
+    bottomsheet: '#8000ff',
+  },
 };
 
 export const ANIMATION = {
