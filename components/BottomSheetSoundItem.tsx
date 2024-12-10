@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
-import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 
@@ -30,7 +30,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
   };
 
   return (
-    <Pressable style={styles.option} onPress={handlePress}>
+    <Pressable style={[styles.option, isSelected && styles.selected]} onPress={handlePress}>
       <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
       <Pressable style={styles.icon}>
         <Icon type={AlertIcon.PLAY} size={22} animatedProps={iconAnimation.animatedProps} />
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   option: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 30,
+    paddingHorizontal: 15,
     paddingVertical: 20,
   },
   text: {
@@ -51,4 +51,10 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
   },
   icon: {},
+  selected: {
+    ...STYLES.prayer.shadow,
+    borderRadius: 8,
+    backgroundColor: COLORS.activeBackground,
+    shadowColor: COLORS.standardActiveBackgroundShadow,
+  },
 });
