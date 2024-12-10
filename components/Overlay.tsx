@@ -77,11 +77,11 @@ export default function Overlay() {
         <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} isOverlay />
       </View>
       <Glow
+        color={COLORS.glows.overlay}
         style={{
           top: -Dimensions.get('window').width / 1.25,
           left: -Dimensions.get('window').width / 2,
         }}
-        color={COLORS.glows.overlay}
       />
     </Reanimated.View>
   );
