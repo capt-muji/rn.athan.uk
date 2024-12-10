@@ -67,7 +67,8 @@ export default function BottomSheetSound() {
 
 const styles = StyleSheet.create({
   modal: {
-    paddingTop: 10,
+    paddingTop: 15,
+    paddingHorizontal: 15,
   },
   background: {
     backgroundColor: '#010525',
@@ -77,8 +78,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'white',
-    paddingHorizontal: 30,
-    paddingVertical: 20,
+    padding: 15,
   },
   text: {
     color: COLORS.textSecondary,
