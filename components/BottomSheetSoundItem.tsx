@@ -25,11 +25,12 @@ interface Props {
 }
 
 export default function BottomSheetSoundItem({ index }: Props) {
-  const [sound, setSound] = useState<Audio.Sound | null>(null);
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const playingIndex = useAtomValue(playingSoundIndexAtom);
-  const isPlaying = playingIndex === index;
 
+  const [sound, setSound] = useState<Audio.Sound | null>(null);
+
+  const isPlaying = playingIndex === index;
   const isSelected = index === selectedSound;
 
   // Update animations to respond to both selected and playing states
@@ -46,19 +47,13 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
   const AnimScale = useAnimationScale(1);
 
-  useEffect(() => {
-    return () => {
-      if (sound) {
-        sound.unloadAsync();
-      }
-    };
-  }, [sound]);
+  if (playingIndex !== index && sound) sound.stopAsync();
 
   useEffect(() => {
-    if (playingIndex !== index && sound) {
-      sound.stopAsync();
-    }
-  }, [playingIndex, sound, index]);
+    return () => {
+      if (sound) sound.unloadAsync();
+    };
+  }, [sound]);
 
   const handlePress = () => {
     setSoundPreference(index);
