@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationBackgroundColor, useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
-import { ANIMATION, COLORS, SCREEN, STYLES, TEXT } from '@/shared/constants';
+import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 
@@ -24,7 +24,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
   const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: '#5f7cc4', toColor: 'white' });
   const backgroundAnimation = useAnimationBackgroundColor(isSelected ? 1 : 0, {
     fromColor: 'transparent',
-    toColor: COLORS.gradientScreen1End,
+    toColor: '#360d8c',
   });
 
   textAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
