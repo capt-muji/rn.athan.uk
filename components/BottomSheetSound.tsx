@@ -1,5 +1,4 @@
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
-import { styles } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetScrollable/BottomSheetFlashList';
 import { Canvas, LinearGradient, RoundedRect, vec } from '@shopify/react-native-skia';
 import { useMemo, useCallback } from 'react';
 import { StyleSheet, Text, Dimensions, View } from 'react-native';
