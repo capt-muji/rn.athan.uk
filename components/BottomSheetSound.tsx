@@ -1,4 +1,5 @@
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
+import { styles } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetScrollable/BottomSheetFlashList';
 import { Canvas, LinearGradient, RoundedRect, vec } from '@shopify/react-native-skia';
 import { useMemo, useCallback } from 'react';
 import { StyleSheet, Text, Dimensions, View } from 'react-native';
@@ -64,24 +65,15 @@ export default function BottomSheetSound() {
     []
   );
 
-  const handleDismiss = useCallback(() => {
-    setPlayingSoundIndex(null);
-  }, []);
-
-  const handleAnimate = useCallback((_fromIndex: number, toIndex: number) => {
-    if (toIndex === 0) {
-      // Sheet is opening
-      setPlayingSoundIndex(null);
-    }
-  }, []);
+  const clearAudio = useCallback(() => setPlayingSoundIndex(null), []);
 
   return (
     <BottomSheetModal
       ref={(ref) => setBottomSheetModal(ref)}
       snapPoints={['80%']}
       enableDynamicSizing={false}
-      onDismiss={handleDismiss}
-      onAnimate={handleAnimate}
+      onDismiss={clearAudio}
+      onAnimate={clearAudio}
       style={styles.modal}
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={styles.indicator}
