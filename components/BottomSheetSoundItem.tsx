@@ -20,8 +20,8 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
   const isSelected = index === selectedSound;
 
-  const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: '#5f7cc4', toColor: 'white' });
-  const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: '#5f7cc4', toColor: 'white' });
+  const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
+  const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
   const backgroundAnimation = useAnimationBackgroundColor(isSelected ? 1 : 0, {
     fromColor: 'transparent',
     toColor: '#3623ab',
