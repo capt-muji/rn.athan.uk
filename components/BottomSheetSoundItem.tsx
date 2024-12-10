@@ -20,8 +20,8 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
   const isSelected = index === selectedSound;
 
-  const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
-  const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: COLORS.textSecondary, toColor: 'white' });
+  const textAnimation = useAnimationColor(isSelected ? 1 : 0, { fromColor: '#5f7cc4', toColor: 'white' });
+  const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: '#5f7cc4', toColor: 'white' });
   const backgroundAnimation = useAnimationBackgroundColor(isSelected ? 1 : 0, {
     fromColor: 'transparent',
     toColor: COLORS.activeBackground,
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
   icon: {},
   selectedShadow: {
     ...STYLES.prayer.shadow,
-    shadowColor: COLORS.standardActiveBackgroundShadow,
+    shadowColor: '#041150',
   },
 });

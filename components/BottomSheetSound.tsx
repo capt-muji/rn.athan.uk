@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   background: {
-    backgroundColor: '#010525',
+    backgroundColor: '#13003d',
   },
   indicator: {
     backgroundColor: COLORS.textSecondary,
