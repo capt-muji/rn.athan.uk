@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationBackgroundColor, useAnimationColor, useAnimationFill } from '@/hooks/useAnimations';
-import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 
@@ -50,9 +50,11 @@ const styles = StyleSheet.create({
   option: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    paddingVertical: 18,
-    borderRadius: 8,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    borderRadius: STYLES.prayer.border.borderRadius,
+    marginHorizontal: SCREEN.paddingHorizontal,
+    height: STYLES.prayer.height,
   },
   text: {
     fontSize: TEXT.size,
