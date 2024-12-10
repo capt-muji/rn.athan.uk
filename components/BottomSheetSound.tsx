@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import Glow from '@/components/Glow';
 import { COLORS, TEXT } from '@/shared/constants';
-import { setBottomSheetModal } from '@/stores/ui';
+import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
 const SOUNDS = [
   'Athan 1',
@@ -56,11 +56,24 @@ export default function BottomSheetSound() {
     []
   );
 
+  const handleDismiss = useCallback(() => {
+    setPlayingSoundIndex(null);
+  }, []);
+
+  const handleAnimate = useCallback((_fromIndex: number, toIndex: number) => {
+    if (toIndex === 0) {
+      // Sheet is opening
+      setPlayingSoundIndex(null);
+    }
+  }, []);
+
   return (
     <BottomSheetModal
       ref={(ref) => setBottomSheetModal(ref)}
       snapPoints={['80%']}
       enableDynamicSizing={false}
+      onDismiss={handleDismiss}
+      onAnimate={handleAnimate}
       style={styles.modal}
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={styles.indicator}
