@@ -63,12 +63,12 @@ export default function BottomSheetSound() {
         showsVerticalScrollIndicator={false}
       />
       <Glow
+        color={COLORS.glows.bottomsheet}
         size={Dimensions.get('window').width * 2}
         style={{
           bottom: -Dimensions.get('window').width,
           left: -Dimensions.get('window').width / 2,
         }}
-        color={COLORS.glows.bottomsheet}
       />
     </BottomSheetModal>
   );
