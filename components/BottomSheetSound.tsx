@@ -53,15 +53,6 @@ export default function BottomSheetSound() {
       backgroundStyle={styles.background}
       handleIndicatorStyle={styles.indicator}
       backdropComponent={renderBackdrop}>
-      <Text style={[styles.text, styles.title]}>Select Athan</Text>
-
-      <BottomSheetFlatList
-        data={data}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        contentContainerStyle={{ paddingBottom: bottom + 5 }}
-        showsVerticalScrollIndicator={false}
-      />
       <Glow
         color={COLORS.glows.bottomsheet}
         size={Dimensions.get('window').width * 2}
@@ -70,6 +61,15 @@ export default function BottomSheetSound() {
           left: -Dimensions.get('window').width / 2,
         }}
       />
+      <Text style={[styles.text, styles.title]}>Select Athan</Text>
+
+      <BottomSheetFlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        contentContainerStyle={{ paddingBottom: bottom + 20 }}
+        showsVerticalScrollIndicator={false}
+      />
     </BottomSheetModal>
   );
 }
@@ -77,7 +77,6 @@ export default function BottomSheetSound() {
 const styles = StyleSheet.create({
   modal: {
     paddingTop: 15,
-    paddingHorizontal: 15,
   },
   background: {
     backgroundColor: '#13003d',
@@ -87,7 +86,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'white',
-    padding: 15,
+    paddingVertical: 20,
+    paddingHorizontal: 30,
   },
   text: {
     color: COLORS.textSecondary,
