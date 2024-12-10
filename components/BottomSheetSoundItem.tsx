@@ -24,7 +24,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
   const iconAnimation = useAnimationFill(isSelected ? 1 : 0, { fromColor: '#5f7cc4', toColor: 'white' });
   const backgroundAnimation = useAnimationBackgroundColor(isSelected ? 1 : 0, {
     fromColor: 'transparent',
-    toColor: '#20045d',
+    toColor: '#3623ab',
   });
 
   textAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
