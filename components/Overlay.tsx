@@ -1,3 +1,4 @@
+import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { StyleSheet, Pressable, View, ViewStyle, Dimensions } from 'react-native';
@@ -15,6 +16,7 @@ import { measurementsAtom, overlayAtom, toggleOverlay } from '@/stores/overlay';
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
+  const { width, height } = Dimensions.get('window');
 
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
@@ -76,6 +78,14 @@ export default function Overlay() {
       <View style={[styles.prayer, computedStylePrayer]}>
         <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} isOverlay />
       </View>
+
+      {/* Gradient background */}
+      <Canvas style={[StyleSheet.absoluteFill, styles.gradientContainer]}>
+        <Rect x={0} y={0} width={width} height={height}>
+          <LinearGradient start={vec(0, 0)} end={vec(0, height)} colors={['#110022', 'black']} />
+        </Rect>
+      </Canvas>
+
       <Glow
         color={COLORS.glows.overlay}
         style={{
@@ -91,7 +101,6 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
-    backgroundColor: 'black',
   },
   timer: {
     position: 'absolute',
@@ -116,5 +125,8 @@ const styles = StyleSheet.create({
   },
   activeBackground: {
     backgroundColor: COLORS.activeBackground,
+  },
+  gradientContainer: {
+    zIndex: -1,
   },
 });
