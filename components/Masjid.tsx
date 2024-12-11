@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-// @ts-ignore
 import Icon from '@/assets/icons/masjid.svg';
 
 type MasjidProps = {
@@ -14,9 +13,9 @@ export default function Masjid({ height = 55, width = 55 }: MasjidProps) {
 
 const styles = StyleSheet.create({
   icon: {
-    shadowColor: '#A620E8',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
+    shadowColor: '#009dff',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
   },
 });
