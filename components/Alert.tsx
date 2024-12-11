@@ -92,10 +92,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     setAlertPreference(type, index, ALERT_CONFIGS[nextIndex].type);
 
     // TODO: fix later
-    // Schedule notification if Notification type is selected
-    if (ALERT_CONFIGS[nextIndex].type === AlertType.Notification) {
-      scheduleNotification(Prayer.english);
-    }
+    scheduleNotification(Prayer.english, Prayer.arabic);
 
     // Reset animations
     AnimBounce.value.value = 0;
