@@ -23,11 +23,14 @@ export const useNotification = () => {
     logger.warn('Notification permission not granted');
   };
 
-  const scheduleNotification = async (prayerName: string) => {
+  const scheduleNotification = async (englishName: string, arabicName: string) => {
     try {
       await Notifications.scheduleNotificationAsync({
-        content: { title: 'Athan', body: `Time for ${prayerName}` },
-        trigger: { seconds: 5 },
+        content: {
+          title: englishName,
+          body: `\u200E${arabicName}`, // LTR mark to force left alignment
+        },
+        trigger: { seconds: 3 },
       });
     } catch (error) {
       logger.error('Failed to schedule notification:', error);
