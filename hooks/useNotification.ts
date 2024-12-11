@@ -26,7 +26,7 @@ export const useNotification = () => {
   const scheduleNotification = async (prayerName: string) => {
     try {
       await Notifications.scheduleNotificationAsync({
-        content: { title: 'Prayer Time', body: `Time for ${prayerName}` },
+        content: { title: 'Athan', body: `Time for ${prayerName}` },
         trigger: { seconds: 5 },
       });
     } catch (error) {
