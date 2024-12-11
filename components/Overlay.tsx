@@ -1,130 +1,120 @@
-import { StyleSheet, Pressable, View } from 'react-native';
-import Reanimated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
-import { BlurView } from 'expo-blur';
-import { useAtom } from 'jotai';
-import { LinearGradient } from 'expo-linear-gradient';
-import {
-  overlayVisibleAtom,
-  selectedPrayerIndexAtom,
-  absoluteDateMeasurementsAtom,
-  absolutePrayerMeasurementsAtom,
-  todaysPrayersAtom,
-} from '@/store/store';
-import { COLORS, TEXT, OVERLAY, ANIMATION } from '@/constants';
-import Prayer from './Prayer';
-import RadialGlow from './RadialGlow';
-import { useEffect } from 'react';
 import * as Haptics from 'expo-haptics';
+import { useAtomValue } from 'jotai';
+import { StyleSheet, Pressable, View, ViewStyle, Dimensions } from 'react-native';
+import Reanimated from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const AnimatedBlur = Reanimated.createAnimatedComponent(BlurView);
+import Glow from '@/components/Glow';
+import Prayer from '@/components/Prayer';
+import Timer from '@/components/Timer';
+import { useAnimationOpacity } from '@/hooks/useAnimations';
+import { usePrayer } from '@/hooks/usePrayer';
+import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
+import { measurementsAtom, overlayAtom, toggleOverlay } from '@/stores/overlay';
 
 export default function Overlay() {
-  const [overlayVisible, setOverlayVisible] = useAtom(overlayVisibleAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
-  const [dateMeasurements] = useAtom(absoluteDateMeasurementsAtom);
-  const [prayerMeasurements] = useAtom(absolutePrayerMeasurementsAtom);
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
+  const overlay = useAtomValue(overlayAtom);
+  const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
+
+  const backgroundOpacity = useAnimationOpacity(0);
+  const dateOpacity = useAnimationOpacity(0);
+
+  const measurements = useAtomValue(measurementsAtom);
+
+  const insets = useSafeAreaInsets();
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setOverlayVisible(false);
+
+    toggleOverlay();
   };
 
-  const glowOpacityShared = useSharedValue(0);
-  const backgroundOpacityShared = useSharedValue(0);
-  const dateOpacityShared = useSharedValue(0);
+  if (overlay.isOn) {
+    backgroundOpacity.animate(1, { duration: ANIMATION.duration });
+    dateOpacity.animate(1, { duration: ANIMATION.duration });
+  } else {
+    backgroundOpacity.animate(0, { duration: ANIMATION.duration });
+    dateOpacity.animate(0, { duration: ANIMATION.duration });
+  }
 
-  useEffect(() => {
-    if (overlayVisible) {
-      backgroundOpacityShared.value = withTiming(1, { duration: ANIMATION.duration });
-      glowOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
-      dateOpacityShared.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
-    } else {
-      backgroundOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
-      glowOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
-      dateOpacityShared.value = withTiming(0, { duration: ANIMATION.duration });
-    }
-  }, [overlayVisible]);
+  const computedStyleContainer: ViewStyle = {
+    pointerEvents: overlay.isOn ? 'auto' : 'none',
+  };
 
-  const glowAnimateStyle = useAnimatedStyle(() => ({
-    opacity: glowOpacityShared.value,
-  }));
+  const computedStyleTimer: ViewStyle = {
+    top: insets.top + SCREEN.paddingHorizontal,
+  };
 
-  const containerStyle = useAnimatedStyle(() => ({
-    ...StyleSheet.absoluteFillObject,
-    zIndex: OVERLAY.zindexes.overlay,
-    opacity: backgroundOpacityShared.value,
-    pointerEvents: overlayVisible ? 'auto' : 'none',
-  }));
+  const computedStyleDate: ViewStyle = {
+    top: measurements.date?.pageY ?? 0,
+    left: measurements.date?.pageX ?? 0,
+    width: measurements.date?.width ?? 0,
+    height: measurements.date?.height ?? 0,
+  };
 
-  const dateAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: dateOpacityShared.value,
-  }));
-
-  const prayer = todaysPrayers[selectedPrayerIndex];
+  const computedStylePrayer: ViewStyle = {
+    top: (measurements.list?.pageY ?? 0) + overlay.selectedPrayerIndex * STYLES.prayer.height,
+    left: measurements.list?.pageX ?? 0,
+    width: measurements.list?.width ?? 0,
+    ...(selectedPrayer.isNext && styles.activeBackground),
+  };
 
   return (
-    <>
-      <Reanimated.View style={containerStyle}>
-        <AnimatedBlur intensity={25} tint="dark" style={StyleSheet.absoluteFill}>
-          <LinearGradient
-            colors={['rgba(25,0,40,0.5)', 'rgba(8,0,12,0.9)', 'rgba(2,0,4,0.95)']}
-            style={StyleSheet.absoluteFill}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-          />
+    <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
+      {/* Timer */}
+      <View style={[styles.timer, computedStyleTimer]}>
+        <Timer type={overlay.scheduleType} isOverlay />
+      </View>
+      <Pressable style={{ flex: 1 }} onPress={handleClose} />
 
-          {/* Close overlay anywhere on screen */}
-          <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
+      {/* Date */}
+      <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
+        {selectedPrayer.isPassed ? 'Tomorrow' : 'Today'}
+      </Reanimated.Text>
 
-          {/* Content layer */}
-          {dateMeasurements && (
-            <Reanimated.Text
-              style={[
-                styles.date,
-                dateAnimatedStyle,
-                {
-                  position: 'absolute',
-                  top: dateMeasurements.pageY,
-                  left: dateMeasurements.pageX,
-                  width: dateMeasurements.width,
-                  height: dateMeasurements.height,
-                }
-              ]}
-            >
-              {prayer?.passed ? 'Tomorrow' : 'Today'}
-            </Reanimated.Text>
-          )}
-
-          {/* Replace the PRAYERS_ENGLISH.map with conditional rendering */}
-          {prayerMeasurements[selectedPrayerIndex] && (
-            <View
-              style={{
-                position: 'absolute',
-                top: prayerMeasurements[selectedPrayerIndex]?.pageY,
-                left: prayerMeasurements[selectedPrayerIndex]?.pageX,
-                width: prayerMeasurements[selectedPrayerIndex]?.width,
-                height: prayerMeasurements[selectedPrayerIndex]?.height,
-                zIndex: OVERLAY.zindexes.on.prayerSelected,
-              }}
-            >
-              <Prayer index={selectedPrayerIndex} isOverlay />
-            </View>
-          )}
-        </AnimatedBlur>
-      </Reanimated.View>
-      <Reanimated.View style={[glowAnimateStyle, { pointerEvents: 'none' }]}>
-        <RadialGlow baseOpacity={0.5} visible={overlayVisible} />
-      </Reanimated.View>
-    </>
+      {/* Prayer overlay */}
+      <View style={[styles.prayer, computedStylePrayer]}>
+        <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} isOverlay />
+      </View>
+      <Glow
+        color={COLORS.glows.overlay}
+        style={{
+          top: -Dimensions.get('window').width / 1.25,
+          left: -Dimensions.get('window').width / 2,
+        }}
+      />
+    </Reanimated.View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: OVERLAY.zindexes.overlay,
+    backgroundColor: 'black',
+  },
+  timer: {
+    position: 'absolute',
+    pointerEvents: 'none',
+    left: 0,
+    right: 0,
+  },
   date: {
+    position: 'absolute',
+    pointerEvents: 'none',
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
-    fontFamily: TEXT.famiy.regular,
-    pointerEvents: 'none',
+    fontFamily: TEXT.family.regular,
+  },
+  prayer: {
+    ...STYLES.prayer.border,
+    ...STYLES.prayer.shadow,
+    position: 'absolute',
+    width: '100%',
+    height: STYLES.prayer.height,
+    shadowColor: COLORS.standardActiveBackgroundShadow,
+  },
+  activeBackground: {
+    backgroundColor: COLORS.activeBackground,
   },
 });

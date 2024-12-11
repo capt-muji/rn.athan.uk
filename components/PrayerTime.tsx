@@ -1,121 +1,41 @@
 import { StyleSheet, View } from 'react-native';
-import { withTiming, useSharedValue, withDelay } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
-import { useAtom } from 'jotai';
-import { TEXT, ANIMATION, COLORS } from '@/constants';
-import { todaysPrayersAtom, tomorrowsPrayersAtom, nextPrayerIndexAtom, selectedPrayerIndexAtom, overlayVisibleAtom } from '@/store/store';
-import { useEffect } from 'react';
+
+import { useAnimationColor } from '@/hooks/useAnimations';
+import { usePrayer } from '@/hooks/usePrayer';
+import { COLORS, TEXT } from '@/shared/constants';
+import { ScheduleType } from '@/shared/types';
 
 interface Props {
+  type: ScheduleType;
   index: number;
-  isOverlay: boolean;
+  isOverlay?: boolean;
 }
 
-export default function PrayerTime({ index, isOverlay }: Props) {
-  const [todaysPrayers] = useAtom(todaysPrayersAtom);
-  const [tomorrowsPrayers] = useAtom(tomorrowsPrayersAtom);
-  const [nextPrayerIndex] = useAtom(nextPrayerIndexAtom);
-  const [overlayVisible] = useAtom(overlayVisibleAtom);
-  const [selectedPrayerIndex] = useAtom(selectedPrayerIndexAtom);
+export default function PrayerTime({ type, index, isOverlay = false }: Props) {
+  const Prayer = usePrayer(type, index, isOverlay);
+  const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
+    fromColor: COLORS.inactivePrayer,
+    toColor: COLORS.activePrayer,
+  });
 
-  const prayer = todaysPrayers[index];
-  const isPassed = prayer.passed;
-  const isNext = index === nextPrayerIndex;
-  const todayTime = todaysPrayers[index].time;
-  const tomorrowTime = tomorrowsPrayers[selectedPrayerIndex]?.time;
-
-  const baseOpacity = isPassed || isNext ? 1 : TEXT.opacity;
-
-  const originalOpacity = useSharedValue(baseOpacity);
-  const overlayTodayOpacity = useSharedValue(0);
-  const overlayTomorrowOpacity = useSharedValue(0);
-
-  useEffect(() => {
-    if (index === nextPrayerIndex) {
-      originalOpacity.value = withTiming(1, { duration: ANIMATION.durationSlow });
-    } else if (!isPassed) {
-      originalOpacity.value = TEXT.opacity;
-    }
-  }, [nextPrayerIndex]);
-
-  useEffect(() => {
-    // if overlay is visible, and this prayer is selected
-    if (overlayVisible && selectedPrayerIndex === index) {
-
-      if (isNext) {
-        overlayTodayOpacity.value = 0;
-      };
-
-      // upcoming prayer
-      if (!isPassed) {
-        overlayTodayOpacity.value = withTiming(1, { duration: ANIMATION.duration });
-      };
-
-      // tomorrow's prayer
-      if (isPassed) {
-        originalOpacity.value = withTiming(0, { duration: ANIMATION.duration });
-        overlayTomorrowOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(1, { duration: ANIMATION.duration }));
-      };
-    }
-
-    // if overlay is not visible
-    if (!overlayVisible) {
-      originalOpacity.value = withDelay(ANIMATION.overlayDelay, withTiming(baseOpacity, { duration: ANIMATION.duration }));
-      overlayTodayOpacity.value = withTiming(0, { duration: ANIMATION.duration })
-      overlayTomorrowOpacity.value = withTiming(0, { duration: ANIMATION.duration })
-    };
-
-  }, [overlayVisible]);
+  if (Prayer.isNext) AnimColor.animate(1);
 
   return (
-    <View style={styles.container}>
-      {/* Main text (non-overlay) */}
-      <Animated.Text style={[
-        styles.text,
-        {
-          color: isPassed || isNext ? COLORS.textPrimary : COLORS.textTransparent,
-          opacity: originalOpacity,
-        }
-      ]}>
-        {todayTime}
-      </Animated.Text>
-
-      {/* Overlay text - Only shows today's time */}
-      <Animated.Text style={[
-        styles.text,
-        {
-          color: COLORS.textPrimary,
-          opacity: overlayTodayOpacity,
-        }
-      ]}>
-        {todayTime}
-      </Animated.Text>
-
-      {/* Tomorrow text - Only shows when passed */}
-      <Animated.Text style={[
-        styles.text,
-        {
-          color: COLORS.textPrimary,
-          opacity: overlayTomorrowOpacity,
-        }
-      ]}>
-        {tomorrowTime}
-      </Animated.Text>
+    <View style={[styles.container, { width: Prayer.isStandard ? 95 : 85 }]}>
+      <Animated.Text style={[styles.text, AnimColor.style]}>{Prayer.time}</Animated.Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
   },
   text: {
-    fontFamily: TEXT.famiy.regular,
+    fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
-    position: 'absolute',
     width: '100%',
-    paddingLeft: 25,
   },
 });

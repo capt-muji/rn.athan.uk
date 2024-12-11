@@ -1,0 +1,13 @@
+printWidth: 120
+tabWidth: 2
+singleQuote: true
+bracketSameLine: true
+semi: true
+arrowParens: always
+trailingComma: es5
+endOfLine: lf
+embeddedLanguageFormatting: auto
+overrides:
+  - files: '*.json'
+    options:
+      printWidth: 100
