@@ -84,7 +84,7 @@ export default function BottomSheetSound() {
           size={Dimensions.get('window').width * 3}
           style={{
             bottom: -Dimensions.get('window').width * 1.5,
-            left: -Dimensions.get('window').width * 1.5,
+            left: -Dimensions.get('window').width * 1.25,
           }}
         />
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
