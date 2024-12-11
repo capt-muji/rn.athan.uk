@@ -6,6 +6,7 @@ import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimations';
+import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
@@ -45,6 +46,8 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const [isPopupActive, setIsPopupActive] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout>();
+
+  const { scheduleNotification } = useNotification();
 
   // Animations Updates
   if (Prayer.isNext) AnimFill.animate(1);
@@ -87,6 +90,12 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
     setAlertPreference(type, index, ALERT_CONFIGS[nextIndex].type);
+
+    // TODO: fix later
+    // Schedule notification if Notification type is selected
+    if (ALERT_CONFIGS[nextIndex].type === AlertType.Notification) {
+      scheduleNotification(Prayer.english);
+    }
 
     // Reset animations
     AnimBounce.value.value = 0;
