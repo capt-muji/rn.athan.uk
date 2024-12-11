@@ -43,7 +43,7 @@ export default function BottomSheetSound() {
     return (
       <Canvas style={StyleSheet.absoluteFill}>
         <RoundedRect x={0} y={0} width={width} height={height} r={24}>
-          <LinearGradient start={vec(0, 0)} end={vec(width, height)} colors={['#0f0c34', '#04001b']} />
+          <LinearGradient start={vec(0, 0)} end={vec(width, height)} colors={['#0e0b32', '#090428']} />
         </RoundedRect>
       </Canvas>
     );
