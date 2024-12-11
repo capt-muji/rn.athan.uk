@@ -79,12 +79,12 @@ export default function BottomSheetSound() {
       backdropComponent={renderBackdrop}>
       <View style={styles.container}>
         <Glow
-          color={'#2f045a'}
+          color={'#28045b'}
           baseOpacity={1}
-          size={Dimensions.get('window').width * 2}
+          size={Dimensions.get('window').width * 3}
           style={{
-            bottom: -Dimensions.get('window').width,
-            left: -Dimensions.get('window').width,
+            bottom: -Dimensions.get('window').width * 1.5,
+            left: -Dimensions.get('window').width * 1.5,
           }}
         />
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
