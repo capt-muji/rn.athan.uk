@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios"],
+  "ios": {
+    "modules": ["AthanModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.athan.AthanModule"]
+  }
+}
