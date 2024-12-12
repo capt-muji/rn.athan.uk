@@ -43,7 +43,7 @@ export default function BottomSheetSound() {
     return (
       <Canvas style={StyleSheet.absoluteFill}>
         <RoundedRect x={0} y={0} width={width} height={height} r={24}>
-          <LinearGradient start={vec(0, 0)} end={vec(width, height)} colors={['#0f0c34', '#04001b']} />
+          <LinearGradient start={vec(0, 0)} end={vec(width, height)} colors={['#0e0b32', '#090428']} />
         </RoundedRect>
       </Canvas>
     );
@@ -79,12 +79,12 @@ export default function BottomSheetSound() {
       backdropComponent={renderBackdrop}>
       <View style={styles.container}>
         <Glow
-          color={'#2f045a'}
+          color={'#28045b'}
           baseOpacity={1}
-          size={Dimensions.get('window').width * 2}
+          size={Dimensions.get('window').width * 3}
           style={{
-            bottom: -Dimensions.get('window').width,
-            left: -Dimensions.get('window').width,
+            bottom: -Dimensions.get('window').width * 1.5,
+            left: -Dimensions.get('window').width * 1.25,
           }}
         />
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
