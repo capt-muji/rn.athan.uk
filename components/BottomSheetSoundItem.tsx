@@ -6,12 +6,7 @@ import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
-import {
-  useAnimationBackgroundColor,
-  useAnimationColor,
-  useAnimationFill,
-  useAnimationScale,
-} from '@/hooks/useAnimations';
+import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimations';
 import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { AlertIcon } from '@/shared/types';
@@ -33,17 +28,14 @@ export default function BottomSheetSoundItem({ index }: Props) {
   const isPlaying = playingIndex === index;
   const isSelected = index === selectedSound;
 
-  // Update animations to respond to both selected and playing states
-  const textAnimation = useAnimationColor(isSelected || isPlaying ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
-  const iconAnimation = useAnimationFill(isSelected || isPlaying ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
-  const backgroundAnimation = useAnimationBackgroundColor(isSelected ? 1 : 0, {
-    fromColor: 'transparent',
-    toColor: '#3623ab',
+  const textAnimation = useAnimationColor(isPlaying ? 1 : 0, {
+    fromColor: isSelected ? 'white' : '#425ea7',
+    toColor: isSelected ? 'white' : 'white',
   });
+  const iconAnimation = useAnimationFill(isPlaying ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
 
-  textAnimation.animate(isSelected || isPlaying ? 1 : 0, { duration: ANIMATION.duration });
-  iconAnimation.animate(isSelected || isPlaying ? 1 : 0, { duration: ANIMATION.duration });
-  backgroundAnimation.animate(isSelected ? 1 : 0, { duration: ANIMATION.duration });
+  textAnimation.animate(isPlaying ? 1 : 0, { duration: ANIMATION.duration });
+  iconAnimation.animate(isPlaying ? 1 : 0, { duration: ANIMATION.duration });
 
   const AnimScale = useAnimationScale(1);
 
@@ -91,8 +83,12 @@ export default function BottomSheetSoundItem({ index }: Props) {
     }
   };
 
+  const computedStyleOption = {
+    backgroundColor: isSelected ? '#3623ab' : 'transparent',
+  };
+
   return (
-    <AnimatedPressable style={[styles.option, backgroundAnimation.style]} onPress={handlePress}>
+    <AnimatedPressable style={[styles.option, computedStyleOption]} onPress={handlePress}>
       <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
       <AnimatedPressable
         style={[styles.icon, AnimScale.style]}
@@ -102,7 +98,8 @@ export default function BottomSheetSoundItem({ index }: Props) {
         <Icon
           type={isPlaying ? AlertIcon.PAUSE : AlertIcon.PLAY}
           size={22}
-          animatedProps={iconAnimation.animatedProps}
+          color={isSelected ? 'white' : '#425ea7'}
+          animatedProps={!isSelected ? iconAnimation.animatedProps : undefined}
         />
       </AnimatedPressable>
     </AnimatedPressable>
