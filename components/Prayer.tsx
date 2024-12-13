@@ -7,6 +7,7 @@ import Alert from '@/components/Alert';
 import PrayerTime from '@/components/PrayerTime';
 import { useAnimationColor } from '@/hooks/useAnimations';
 import { usePrayer } from '@/hooks/usePrayer';
+import { hello } from '@/modules/athan';
 import { TEXT, COLORS, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
@@ -29,6 +30,7 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   const viewRef = useRef<View>(null);
 
   const handlePress = () => {
+    hello();
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     setSelectedPrayerIndex(type, index);
