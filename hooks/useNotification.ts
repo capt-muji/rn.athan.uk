@@ -33,7 +33,7 @@ export const useNotification = () => {
           // is this needed?
           categoryIdentifier: 'my-local-category',
         },
-        trigger: { seconds: 1 },
+        trigger: { seconds: 5 },
       });
       logger.info('Notification scheduled:', englishName, arabicName);
     } catch (error) {
