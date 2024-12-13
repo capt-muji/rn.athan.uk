@@ -54,6 +54,7 @@
     "eslint": "9.15.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "expo-modules-core": "~1.12.26",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "pino": "^9.5.0",
@@ -62,5 +63,13 @@
     "react-native-svg-transformer": "^1.5.0",
     "typescript": "~5.3.3",
     "typescript-eslint": "^8.16.0"
+  },
+  "peerDependencies": {
+    "expo": "*"
+  },
+  "peerDependenciesMeta": {
+    "expo": {
+      "optional": true
+    }
   }
 }
