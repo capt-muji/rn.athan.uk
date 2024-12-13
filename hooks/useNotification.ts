@@ -36,7 +36,7 @@ export const useNotification = () => {
           //   mutableContent: true,
           // },
         },
-        trigger: { seconds: 3 },
+        trigger: { seconds: 1 },
       });
       logger.info('Notification scheduled:', englishName, arabicName);
     } catch (error) {
