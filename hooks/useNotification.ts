@@ -30,6 +30,11 @@ export const useNotification = () => {
         content: {
           title: englishName,
           body: `\u200E${arabicName}`, // LTR mark to force left alignment
+          // is this needed?
+          // categoryIdentifier: 'local-notification-category',
+          // data: {
+          //   mutableContent: true,
+          // },
         },
         trigger: { seconds: 3 },
       });
