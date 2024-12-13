@@ -25,13 +25,17 @@ export const useNotification = () => {
 
   const scheduleNotification = async (englishName: string, arabicName: string) => {
     try {
+      logger.info('Scheduling notification:', englishName, arabicName);
       await Notifications.scheduleNotificationAsync({
         content: {
           title: englishName,
           body: `\u200E${arabicName}`, // LTR mark to force left alignment
+          // is this needed?
+          categoryIdentifier: 'my-local-category',
         },
-        trigger: { seconds: 3 },
+        trigger: { seconds: 1 },
       });
+      logger.info('Notification scheduled:', englishName, arabicName);
     } catch (error) {
       logger.error('Failed to schedule notification:', error);
     }

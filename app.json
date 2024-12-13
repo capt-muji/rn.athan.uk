@@ -11,7 +11,9 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.mugtaba.athan",
       "infoPlist": {
-        "UIBackgroundModes": ["audio", "fetch"]
+        "UIBackgroundModes": ["audio", "fetch"],
+        "NSUserNotificationUsageDescription": "We need to send you prayer time notifications",
+        "NSUserNotificationsEnabled": true
       },
       "icon": "./assets/store/ios/AppIcon~ios-marketing.png"
     },
