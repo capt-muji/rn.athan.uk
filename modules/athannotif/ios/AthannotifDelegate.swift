@@ -7,7 +7,7 @@ class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        print("THIS IS WORKING!!!!! - DEBUG: Notification received in foreground")
+        print("THIS IS WORKING - but only while app open!!!!! - DEBUG: Notification received in foreground")
     }
 }
 
