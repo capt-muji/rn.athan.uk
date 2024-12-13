@@ -11,7 +11,13 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.mugtaba.athan",
       "infoPlist": {
-        "UIBackgroundModes": ["audio", "fetch"]
+        "UIBackgroundModes": ["audio", "fetch"],
+        "NSExtension": {
+          "NSExtensionAttributes": {
+            "UNNotificationExtensionCategory": "my-local-category"
+          },
+          "NSExtensionPointIdentifier": "com.apple.usernotifications.service"
+        }
       },
       "icon": "./assets/store/ios/AppIcon~ios-marketing.png"
     },
