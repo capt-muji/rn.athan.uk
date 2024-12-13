@@ -1,10 +1,18 @@
 import ExpoModulesCore
 import UserNotifications
 
-// Define a class to handle local notifications
 public class AthannotifDelegate: ExpoAppDelegateSubscriber {
-    // Initializer: Log when the class is initialized
     public required init() {
-        print("DEBUG: AthannotifDelegate initialized")
+        super.init()
+        print("THIS WORKS - DEBUG: AthannotifDelegate initialized")
+    }
+    
+    // This method is called when a notification is delivered while the app is in the foreground
+    public func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        print("NOT WORKING - DEBUG: Notification received in foreground")
     }
 }
