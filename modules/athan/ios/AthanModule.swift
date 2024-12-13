@@ -12,7 +12,6 @@ public class AthanModule: Module {
 
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
     Function("hello") { () -> String in
-      NSLog("hiiiii")
       return "Hello world! 👋"
     }
   }

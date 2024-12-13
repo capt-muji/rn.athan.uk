@@ -6,9 +6,5 @@ import AthanModule from './src/AthanModule';
 export const PI = AthanModule.PI;
 
 export function hello(): string {
-  console.log('Calling hello from AthanModule');
-  const x = AthanModule.hello();
-  console.log('eeeee');
-  console.log(x);
-  return x;
+  return AthanModule.hello();
 }
