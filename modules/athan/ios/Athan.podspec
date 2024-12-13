@@ -11,12 +11,9 @@ Pod::Spec.new do |s|
 
   s.dependency 'ExpoModulesCore'
 
-  # Swift/Objective-C compatibility
-  s.pod_target_xcconfig = {
-    'DEFINES_MODULE' => 'YES',
-    'SWIFT_COMPILATION_MODE' => 'wholemodule',
-    'OTHER_SWIFT_FLAGS' => '-D DEBUG'
-  }
-
-  s.source_files = "**/*.{h,m,mm,swift,hpp,cpp}"
+  s.subspec 'NotificationService' do |ss|
+    ss.source_files = 'NotificationService/*.{swift}'
+    ss.resources = 'NotificationService/*.wav'  # Include the audio file
+    ss.dependency 'ExpoModulesCore'
+  end
 end

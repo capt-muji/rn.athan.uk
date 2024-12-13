@@ -1,7 +1,6 @@
 import * as Notifications from 'expo-notifications';
 import { useEffect } from 'react';
 
-import { hello } from '@/modules/athan';
 import logger from '@/shared/logger';
 
 // Configure notifications to show when app is foregrounded
@@ -25,8 +24,6 @@ export const useNotification = () => {
   };
 
   const scheduleNotification = async (englishName: string, arabicName: string) => {
-    hello();
-
     try {
       logger.info('Scheduling notification:', englishName, arabicName);
       await Notifications.scheduleNotificationAsync({
