@@ -6,6 +6,6 @@ class NotificationService: UNNotificationServiceExtension {
         _ request: UNNotificationRequest,
         withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void
     ) {
-        print("DEBUG: Notification service extension triggered")
+        print("============DEBUG: Notification service extension triggered")
     }
 }
