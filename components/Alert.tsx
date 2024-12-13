@@ -91,7 +91,6 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     setIconIndex(nextIndex);
     setAlertPreference(type, index, ALERT_CONFIGS[nextIndex].type);
 
-    // TODO: fix later
     scheduleNotification(Prayer.english, Prayer.arabic);
 
     // Reset animations
