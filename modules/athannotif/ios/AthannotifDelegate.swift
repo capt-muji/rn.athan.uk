@@ -1,10 +1,29 @@
 import ExpoModulesCore
 import UserNotifications
 
-// Define a class to handle local notifications
+class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        print("THIS IS WORKING - but only while app open!!!!! - DEBUG: Notification received in foreground")
+    }
+}
+
 public class AthannotifDelegate: ExpoAppDelegateSubscriber {
-    // Initializer: Log when the class is initialized
+    private let notificationDelegate = NotificationDelegate()
+    
     public required init() {
-        print("DEBUG: AthannotifDelegate initialized")
+        super.init()
+        print("THIS WORKS - DEBUG: AthannotifDelegate initialized")
+    }
+    
+    public func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
+        UNUserNotificationCenter.current().delegate = notificationDelegate
+        return true
     }
 }
