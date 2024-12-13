@@ -30,9 +30,12 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
   const textAnimation = useAnimationColor(isPlaying ? 1 : 0, {
     fromColor: isSelected ? 'white' : '#425ea7',
-    toColor: isSelected ? 'white' : 'white',
+    toColor: 'white',
   });
-  const iconAnimation = useAnimationFill(isPlaying ? 1 : 0, { fromColor: '#425ea7', toColor: 'white' });
+  const iconAnimation = useAnimationFill(isPlaying ? 1 : 0, {
+    fromColor: isSelected ? 'white' : '#425ea7',
+    toColor: 'white',
+  });
 
   textAnimation.animate(isPlaying ? 1 : 0, { duration: ANIMATION.duration });
   iconAnimation.animate(isPlaying ? 1 : 0, { duration: ANIMATION.duration });
@@ -98,8 +101,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
         <Icon
           type={isPlaying ? AlertIcon.PAUSE : AlertIcon.PLAY}
           size={22}
-          color={isSelected ? 'white' : '#425ea7'}
-          animatedProps={!isSelected ? iconAnimation.animatedProps : undefined}
+          animatedProps={iconAnimation.animatedProps}
         />
       </AnimatedPressable>
     </AnimatedPressable>
