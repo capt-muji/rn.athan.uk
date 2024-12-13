@@ -1,30 +1,11 @@
-import UserNotifications   // Handles notifications
-import AVFoundation        // Plays audio
-
+import UserNotifications   
+   
 class NotificationService: UNNotificationServiceExtension {
-  var player: AVAudioPlayer?  // Audio player instance
-
-  override func didReceive(
-    _ request: UNNotificationRequest,
-    withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void
-  ) {
-    // Play the audio file named "athan.wav" from the extension's bundle
-    if let path = Bundle.main.path(forResource: "athan", ofType: "wav") {
-      let url = URL(fileURLWithPath: path)
-      do {
-        player = try AVAudioPlayer(contentsOf: url)
-        player?.play()  // Start playback
-      } catch {
-        // Handle any errors during playback
-      }
+    // This function is called when a notification is received
+    override func didReceive(
+        _ request: UNNotificationRequest,
+        withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void
+    ) {
+        print("DEBUG: Notification service extension triggered")
     }
-
-    // Deliver the notification without changes
-    contentHandler(request.content)
-  }
-
-  override func serviceExtensionTimeWillExpire() {
-    // Called when the system is about to terminate the extension
-    player?.stop()  // Stop audio playback
-  }
 }
