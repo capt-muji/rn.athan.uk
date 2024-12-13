@@ -25,6 +25,7 @@ export const useNotification = () => {
 
   const scheduleNotification = async (englishName: string, arabicName: string) => {
     try {
+      logger.info('Scheduling notification:', englishName, arabicName);
       await Notifications.scheduleNotificationAsync({
         content: {
           title: englishName,
@@ -32,6 +33,7 @@ export const useNotification = () => {
         },
         trigger: { seconds: 3 },
       });
+      logger.info('Notification scheduled:', englishName, arabicName);
     } catch (error) {
       logger.error('Failed to schedule notification:', error);
     }
