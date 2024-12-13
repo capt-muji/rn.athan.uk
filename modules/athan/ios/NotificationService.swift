@@ -7,5 +7,8 @@ class NotificationService: UNNotificationServiceExtension {
         withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void
     ) {
         print("============DEBUG: Notification service extension triggered")
+
+        // Ensure the notification content is passed to the system
+        contentHandler(request.content)
     }
 }
