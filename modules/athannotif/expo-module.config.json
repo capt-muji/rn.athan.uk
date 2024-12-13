@@ -1,9 +1,6 @@
 {
-  "platforms": ["ios", "tvos", "android", "web"],
+  "platforms": ["ios"],
   "ios": {
-    "modules": ["AthannotifModule"]
-  },
-  "android": {
-    "modules": ["expo.modules.athannotif.AthannotifModule"]
+    "appDelegateSubscribers": ["AthannotifDelegate"]
   }
 }
