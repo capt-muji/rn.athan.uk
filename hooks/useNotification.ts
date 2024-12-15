@@ -13,14 +13,14 @@ Notifications.setNotificationHandler({
   }),
 });
 
+const registerForPushNotifications = async () => {
+  const { status } = await Notifications.getPermissionsAsync();
+  if (status === 'granted') return;
+  await Notifications.requestPermissionsAsync();
+};
+
 export const useNotification = () => {
   useEffect(() => {
-    const registerForPushNotifications = async () => {
-      const { status } = await Notifications.getPermissionsAsync();
-      if (status === 'granted') return;
-      await Notifications.requestPermissionsAsync();
-    };
-
     registerForPushNotifications().catch((error) => {
       logger.error('Failed to register for notifications:', error);
     });

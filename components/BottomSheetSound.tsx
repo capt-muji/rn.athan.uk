@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { Canvas, LinearGradient, RoundedRect, vec } from '@shopify/react-native-skia';
 import { useMemo, useCallback } from 'react';
@@ -10,33 +12,25 @@ import { COLORS, TEXT } from '@/shared/constants';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
 const SOUNDS = [
-  'Athan 1',
-  'Athan 2',
-  'Athan 3',
-  'Athan 4',
-  'Athan 5',
-  'Athan 6',
-  'Athan 7',
-  'Athan 8',
-  'Athan 9',
-  'Athan 10',
-  'Athan 11',
-  'Athan 12',
-  'Athan 13',
-  'Athan 14',
+  require('../assets/audio/athan1.wav'),
+  require('../assets/audio/athan2.wav'),
+  require('../assets/audio/athan3.wav'),
+  require('../assets/audio/athan4.wav'),
+  require('../assets/audio/athan5.wav'),
+  require('../assets/audio/athan6.wav'),
+  require('../assets/audio/athan7.wav'),
+  require('../assets/audio/athan8.wav'),
+  require('../assets/audio/athan9.wav'),
+  require('../assets/audio/athan10.wav'),
+  require('../assets/audio/athan11.wav'),
+  require('../assets/audio/athan12.wav'),
+  require('../assets/audio/athan13.wav'),
 ];
 
 export default function BottomSheetSound() {
   const { bottom } = useSafeAreaInsets();
 
-  const data = useMemo(
-    () =>
-      SOUNDS.map((sound, index) => ({
-        id: index.toString(),
-        title: sound,
-      })),
-    []
-  );
+  const data = useMemo(() => SOUNDS.map((audio, index) => ({ id: index.toString(), audio })), []);
 
   const renderSheetBackground = useCallback(() => {
     const { width, height } = Dimensions.get('window');
@@ -49,7 +43,10 @@ export default function BottomSheetSound() {
     );
   }, []);
 
-  const renderItem = useCallback(({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} />, []);
+  const renderItem = useCallback(
+    ({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} audio={item.audio} />,
+    []
+  );
 
   const renderBackdrop = useCallback(
     (props) => (

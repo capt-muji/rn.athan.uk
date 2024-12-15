@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-
 import { Audio } from 'expo-av';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
@@ -15,29 +13,14 @@ import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
 
-const SOUNDS = [
-  require('../assets/audio/athan1.wav'),
-  require('../assets/audio/athan2.wav'),
-  require('../assets/audio/athan3.wav'),
-  require('../assets/audio/athan4.wav'),
-  require('../assets/audio/athan5.wav'),
-  require('../assets/audio/athan6.wav'),
-  require('../assets/audio/athan7.wav'),
-  require('../assets/audio/athan8.wav'),
-  require('../assets/audio/athan9.wav'),
-  require('../assets/audio/athan10.wav'),
-  require('../assets/audio/athan11.wav'),
-  require('../assets/audio/athan12.wav'),
-  require('../assets/audio/athan13.wav'),
-];
-
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 interface Props {
   index: number;
+  audio: any;
 }
 
-export default function BottomSheetSoundItem({ index }: Props) {
+export default function BottomSheetSoundItem({ index, audio }: Props) {
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const playingIndex = useAtomValue(playingSoundIndexAtom);
 
@@ -85,7 +68,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
 
-      const { sound: playbackObject } = await Audio.Sound.createAsync(SOUNDS[index], {
+      const { sound: playbackObject } = await Audio.Sound.createAsync(audio, {
         shouldPlay: true,
       });
 
