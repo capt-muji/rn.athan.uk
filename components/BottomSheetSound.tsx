@@ -4,39 +4,16 @@ import { useMemo, useCallback } from 'react';
 import { StyleSheet, Text, Dimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ALL_AUDIOS } from '@/assets/audio';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import Glow from '@/components/Glow';
 import { COLORS, TEXT } from '@/shared/constants';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
-const SOUNDS = [
-  'Athan 1',
-  'Athan 2',
-  'Athan 3',
-  'Athan 4',
-  'Athan 5',
-  'Athan 6',
-  'Athan 7',
-  'Athan 8',
-  'Athan 9',
-  'Athan 10',
-  'Athan 11',
-  'Athan 12',
-  'Athan 13',
-  'Athan 14',
-];
-
 export default function BottomSheetSound() {
   const { bottom } = useSafeAreaInsets();
 
-  const data = useMemo(
-    () =>
-      SOUNDS.map((sound, index) => ({
-        id: index.toString(),
-        title: sound,
-      })),
-    []
-  );
+  const data = useMemo(() => ALL_AUDIOS.map((audio, index) => ({ id: index.toString(), audio })), []);
 
   const renderSheetBackground = useCallback(() => {
     const { width, height } = Dimensions.get('window');
@@ -49,7 +26,10 @@ export default function BottomSheetSound() {
     );
   }, []);
 
-  const renderItem = useCallback(({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} />, []);
+  const renderItem = useCallback(
+    ({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} audio={item.audio} />,
+    []
+  );
 
   const renderBackdrop = useCallback(
     (props) => (

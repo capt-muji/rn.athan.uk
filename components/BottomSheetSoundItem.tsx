@@ -17,9 +17,10 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 interface Props {
   index: number;
+  audio: any;
 }
 
-export default function BottomSheetSoundItem({ index }: Props) {
+export default function BottomSheetSoundItem({ index, audio }: Props) {
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const playingIndex = useAtomValue(playingSoundIndexAtom);
 
@@ -67,8 +68,7 @@ export default function BottomSheetSoundItem({ index }: Props) {
 
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
 
-      // eslint-disable-next-line
-      const { sound: playbackObject } = await Audio.Sound.createAsync(require('../assets/audio/athan1.wav'), {
+      const { sound: playbackObject } = await Audio.Sound.createAsync(audio, {
         shouldPlay: true,
       });
 
