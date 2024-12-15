@@ -13,14 +13,14 @@ Notifications.setNotificationHandler({
   }),
 });
 
+const registerForPushNotifications = async () => {
+  const { status } = await Notifications.getPermissionsAsync();
+  if (status === 'granted') return;
+  await Notifications.requestPermissionsAsync();
+};
+
 export const useNotification = () => {
   useEffect(() => {
-    const registerForPushNotifications = async () => {
-      const { status } = await Notifications.getPermissionsAsync();
-      if (status === 'granted') return;
-      await Notifications.requestPermissionsAsync();
-    };
-
     registerForPushNotifications().catch((error) => {
       logger.error('Failed to register for notifications:', error);
     });
@@ -29,16 +29,20 @@ export const useNotification = () => {
   const scheduleNotification = async (englishName: string, arabicName: string) => {
     const sound = getSoundPreference();
 
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: englishName,
-        body: `\u200E${arabicName}`, // LTR mark to force left alignment
-        sound: `athan${sound + 1}.wav`,
-      },
-      trigger: { seconds: 5 },
-    }).catch((error) => {
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: englishName,
+          body: `\u200E${arabicName}`, // LTR mark to force left alignment
+          sound: `athan${sound + 1}.wav`,
+        },
+        trigger: { seconds: 3 },
+      });
+
+      logger.info('Scheduled notification:', { englishName, arabicName, sound });
+    } catch (error) {
       logger.error('Failed to schedule notification:', error);
-    });
+    }
   };
 
   return { scheduleNotification };
