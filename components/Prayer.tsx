@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 
 import Alert from '@/components/Alert';
 import PrayerTime from '@/components/PrayerTime';
-import { useAnimationColor } from '@/hooks/useAnimations';
+import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { TEXT, COLORS, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
