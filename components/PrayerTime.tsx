@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useAnimationColor } from '@/hooks/useAnimations';
+import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';

@@ -8,7 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import Timer from '@/components/Timer';
-import { useAnimationOpacity } from '@/hooks/useAnimations';
+import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
 import { measurementsAtom, overlayAtom, toggleOverlay } from '@/stores/overlay';
