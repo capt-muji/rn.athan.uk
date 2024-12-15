@@ -2,7 +2,7 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimations';
+import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimation';
 import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, STYLES } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';

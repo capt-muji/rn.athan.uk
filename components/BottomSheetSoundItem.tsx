@@ -6,7 +6,7 @@ import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
-import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimations';
+import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { AlertIcon } from '@/shared/types';
