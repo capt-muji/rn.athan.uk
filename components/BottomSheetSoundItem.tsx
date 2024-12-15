@@ -1,4 +1,4 @@
-import { Audio } from 'expo-av';
+import { Audio, AVPlaybackSource } from 'expo-av';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect, useState } from 'react';
@@ -17,7 +17,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 interface Props {
   index: number;
-  audio: any;
+  audio: AVPlaybackSource;
 }
 
 export default function BottomSheetSoundItem({ index, audio }: Props) {
