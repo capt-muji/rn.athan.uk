@@ -1,4 +1,4 @@
-import { Audio } from 'expo-av';
+import { Audio, AVPlaybackSource } from 'expo-av';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect, useState } from 'react';
@@ -6,7 +6,7 @@ import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
-import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimations';
+import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { AlertIcon } from '@/shared/types';
@@ -17,7 +17,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 interface Props {
   index: number;
-  audio: any;
+  audio: AVPlaybackSource;
 }
 
 export default function BottomSheetSoundItem({ index, audio }: Props) {

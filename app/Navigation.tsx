@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Screen from '@/app/Screen';
-import { useAnimationOpacity } from '@/hooks/useAnimations';
+import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { setPagePosition } from '@/stores/ui';
