@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 
 import logger from '@/shared/logger';
 import { getSoundPreference } from '@/stores/notifications';
-// import { getSoundPreference } from '@/stores/notifications';
 
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
@@ -37,7 +36,7 @@ export const useNotification = () => {
           body: `\u200E${arabicName}`, // LTR mark to force left alignment
           sound: true,
         },
-        trigger: { seconds: 5 },
+        trigger: { seconds: 3 },
       });
 
       logger.info('Scheduled notification:', { englishName, arabicName, sound });
