@@ -35,7 +35,7 @@ export const useNotification = () => {
         body: `\u200E${arabicName}`, // LTR mark to force left alignment
         sound: `athan${sound + 1}.wav`,
       },
-      trigger: { seconds: 5 },
+      trigger: { seconds: 1 },
     }).catch((error) => {
       logger.error('Failed to schedule notification:', error);
     });
