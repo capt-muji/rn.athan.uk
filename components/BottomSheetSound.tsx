@@ -1,36 +1,19 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { Canvas, LinearGradient, RoundedRect, vec } from '@shopify/react-native-skia';
 import { useMemo, useCallback } from 'react';
 import { StyleSheet, Text, Dimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { ALL_AUDIOS } from '@/assets/audio';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import Glow from '@/components/Glow';
 import { COLORS, TEXT } from '@/shared/constants';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
-const SOUNDS = [
-  require('../assets/audio/athan1.wav'),
-  require('../assets/audio/athan2.wav'),
-  require('../assets/audio/athan3.wav'),
-  require('../assets/audio/athan4.wav'),
-  require('../assets/audio/athan5.wav'),
-  require('../assets/audio/athan6.wav'),
-  require('../assets/audio/athan7.wav'),
-  require('../assets/audio/athan8.wav'),
-  require('../assets/audio/athan9.wav'),
-  require('../assets/audio/athan10.wav'),
-  require('../assets/audio/athan11.wav'),
-  require('../assets/audio/athan12.wav'),
-  require('../assets/audio/athan13.wav'),
-];
-
 export default function BottomSheetSound() {
   const { bottom } = useSafeAreaInsets();
 
-  const data = useMemo(() => SOUNDS.map((audio, index) => ({ id: index.toString(), audio })), []);
+  const data = useMemo(() => ALL_AUDIOS.map((audio, index) => ({ id: index.toString(), audio })), []);
 
   const renderSheetBackground = useCallback(() => {
     const { width, height } = Dimensions.get('window');
