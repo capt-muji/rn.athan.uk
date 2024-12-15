@@ -30,7 +30,21 @@
           "icon": "./assets/store/ios/AppIcon~ios-marketing.png",
           "color": "#ffffff",
           "defaultChannel": "default",
-          "sounds": ["./assets/audio/athan1.wav"]
+          "sounds": [
+            "./assets/audio/athan1.wav",
+            "./assets/audio/athan2.wav",
+            "./assets/audio/athan3.wav",
+            "./assets/audio/athan4.wav",
+            "./assets/audio/athan5.wav",
+            "./assets/audio/athan6.wav",
+            "./assets/audio/athan7.wav",
+            "./assets/audio/athan8.wav",
+            "./assets/audio/athan9.wav",
+            "./assets/audio/athan10.wav",
+            "./assets/audio/athan11.wav",
+            "./assets/audio/athan12.wav",
+            "./assets/audio/athan13.wav"
+          ]
         }
       ],
       "expo-font"
