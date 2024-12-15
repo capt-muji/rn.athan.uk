@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import logger from '@/shared/logger';
 import { getSoundPreference } from '@/stores/notifications';
+// import { getSoundPreference } from '@/stores/notifications';
 
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
@@ -29,16 +30,20 @@ export const useNotification = () => {
   const scheduleNotification = async (englishName: string, arabicName: string) => {
     const sound = getSoundPreference();
 
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: englishName,
-        body: `\u200E${arabicName}`, // LTR mark to force left alignment
-        sound: `athan${sound + 1}.wav`,
-      },
-      trigger: { seconds: 1 },
-    }).catch((error) => {
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: englishName,
+          body: `\u200E${arabicName}`, // LTR mark to force left alignment
+          sound: true,
+        },
+        trigger: { seconds: 5 },
+      });
+
+      logger.info('Scheduled notification:', { englishName, arabicName, sound });
+    } catch (error) {
       logger.error('Failed to schedule notification:', error);
-    });
+    }
   };
 
   return { scheduleNotification };
