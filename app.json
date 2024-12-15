@@ -11,9 +11,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.mugtaba.athan",
       "infoPlist": {
-        "UIBackgroundModes": ["audio", "fetch"],
-        "NSUserNotificationUsageDescription": "We need to send you prayer time notifications",
-        "NSUserNotificationsEnabled": true
+        "UIBackgroundModes": ["audio", "fetch"]
       },
       "icon": "./assets/store/ios/AppIcon~ios-marketing.png"
     },
@@ -24,6 +22,7 @@
       "package": "com.mugtaba.athan"
     },
     "plugins": [
+      "expo-font",
       [
         "expo-notifications",
         {
@@ -46,8 +45,7 @@
             "./assets/audio/athan13.wav"
           ]
         }
-      ],
-      "expo-font"
+      ]
     ],
     "experiments": {
       "typedRoutes": true
