@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import logger from '@/shared/logger';
 import { getSoundPreference } from '@/stores/notifications';
 
+// TODO: fix - doesnt show notification when app is foregrounded
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
