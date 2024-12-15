@@ -28,6 +28,8 @@ interface Props {
 }
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
+  const { scheduleNotification } = useNotification();
+
   const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
 
@@ -46,8 +48,6 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const [isPopupActive, setIsPopupActive] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout>();
-
-  const { scheduleNotification } = useNotification();
 
   // Animations Updates
   if (Prayer.isNext) AnimFill.animate(1);
@@ -81,7 +81,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   }, []);
 
   // Handlers
-  const handlePress = () => {
+  const handlePress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
 
@@ -91,7 +91,8 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     setIconIndex(nextIndex);
     setAlertPreference(type, index, ALERT_CONFIGS[nextIndex].type);
 
-    scheduleNotification(Prayer.english, Prayer.arabic);
+    await scheduleNotification(Prayer.english, Prayer.arabic);
+    console.log('DONE');
 
     // Reset animations
     AnimBounce.value.value = 0;
