@@ -35,7 +35,7 @@ export const useNotification = () => {
         content: {
           title: englishName,
           body: `\u200E${arabicName}`, // LTR mark to force left alignment
-          sound: `athan${sound + 1}.wav`,
+          sound: `athan3.wav`,
         },
         trigger: { seconds: 3 },
       });
