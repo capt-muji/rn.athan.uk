@@ -178,6 +178,10 @@ The project uses ESLint and Prettier for code consistency and quality:
 ![Reanimated](https://img.shields.io/badge/Reanimated_3-6B52AE?style=for-the-badge)
 ![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
 
-## Icons Used
+## Athans
+
+- Athan 2: https://www.youtube.com/watch?v=9Y-8AtTDx20
+
+## Icons
 
 - Masjid icon by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
