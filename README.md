@@ -192,6 +192,7 @@ The project uses ESLint and Prettier for code consistency and quality:
 - Athan 10: https://www.youtube.com/watch?v=LHu2NbbZ0i0
 - Athan 11: https://www.youtube.com/watch?v=j-G8vgDpxiI
 
+
 ## Icons
 
 - Masjid icon by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
