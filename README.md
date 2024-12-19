@@ -191,7 +191,7 @@ The project uses ESLint and Prettier for code consistency and quality:
 - Athan 9: https://www.youtube.com/watch?v=4_LN0hznp-A
 - Athan 10: https://www.youtube.com/watch?v=LHu2NbbZ0i0
 - Athan 11: https://www.youtube.com/watch?v=j-G8vgDpxiI
-
+  .
 
 ## Icons
 
