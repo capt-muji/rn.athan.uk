@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimation';
@@ -34,7 +34,7 @@ export default function ActiveBackground({ type }: Props) {
   if (shouldHide) AnimBackgroundColor.animate(0, { onFinish: () => (AnimTranslateY.value.value = 0) });
   else AnimTranslateY.animate(yPosition);
 
-  const computedStyles = {
+  const computedStyles: ViewStyle = {
     shadowColor: isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
   };
 
