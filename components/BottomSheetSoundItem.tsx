@@ -2,7 +2,7 @@ import { Audio, AVPlaybackSource } from 'expo-av';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect, useState } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
@@ -86,7 +86,7 @@ export default function BottomSheetSoundItem({ index, audio }: Props) {
     }
   };
 
-  const computedStyleOption = {
+  const computedStyleOption: ViewStyle = {
     backgroundColor: isSelected ? '#3623ab' : 'transparent',
   };
 

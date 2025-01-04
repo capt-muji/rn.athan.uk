@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useState, useRef, useEffect } from 'react';
-import { StyleSheet, Pressable, Text, View } from 'react-native';
+import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
@@ -92,7 +92,6 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     setAlertPreference(type, index, ALERT_CONFIGS[nextIndex].type);
 
     await scheduleNotification(Prayer.english, Prayer.arabic);
-    console.log('DONE');
 
     // Reset animations
     AnimBounce.value.value = 0;
@@ -113,7 +112,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     showSheet();
   };
 
-  const computedStylesPopup = {
+  const computedStylesPopup: ViewStyle = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
     backgroundColor: Prayer.isOverlay ? (Prayer.isNext ? 'black' : COLORS.activeBackground) : 'black',
   };
