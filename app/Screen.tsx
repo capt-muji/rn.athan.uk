@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Day from '@/components/Day';
@@ -15,7 +15,7 @@ interface Props {
 export default function Screen({ type }: Props) {
   const insets = useSafeAreaInsets();
 
-  const computedStyles = {
+  const computedStyles: ViewStyle = {
     paddingTop: insets.top + SCREEN.paddingHorizontal,
     paddingBottom: insets.bottom,
   };
