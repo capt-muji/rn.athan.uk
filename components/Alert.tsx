@@ -10,7 +10,13 @@ import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
-import { setAlertPreference, standardAlertPreferencesAtom, extraAlertPreferencesAtom } from '@/stores/notifications';
+import {
+  setAlertPreference,
+  standardAlertPreferencesAtom,
+  extraAlertPreferencesAtom,
+  standardNotificationsMutedAtom,
+  extraNotificationsMutedAtom,
+} from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { showSheet } from '@/stores/ui';
 
@@ -33,12 +39,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
 
+  const isMuted = useAtomValue(Prayer.isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom);
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
   const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
-    toColor: COLORS.activePrayer,
+    toColor: isMuted ? COLORS.inactivePrayer : COLORS.activePrayer,
   });
 
   const alertPreferences = useAtomValue(Prayer.isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom);
@@ -70,9 +77,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   }, [overlay.isOn]);
 
   useEffect(() => {
-    const colorPos = Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = (Prayer.isOverlay || isPopupActive) && !isMuted ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: 50 });
-  }, [isPopupActive, Prayer.isOverlay]);
+  }, [isPopupActive, Prayer.isOverlay, isMuted]);
 
   useEffect(() => {
     return () => {

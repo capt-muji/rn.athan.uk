@@ -43,9 +43,7 @@ export const standardNotificationsMutedAtom = atomWithStorage(
   'preferences_muted_standard',
   false,
   Database.mmkvStorage,
-  {
-    getOnInit: true,
-  }
+  { getOnInit: true }
 );
 
 export const extraNotificationsMutedAtom = atomWithStorage('preferences_muted_extra', false, Database.mmkvStorage, {
