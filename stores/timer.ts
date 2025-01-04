@@ -54,6 +54,8 @@ const startTimerSchedule = (type: ScheduleType) => {
   timers[timerKey] = setInterval(() => {
     const currentTime = store.get(timerAtom).timeLeft - 1;
 
+    console.log(currentTime);
+
     if (currentTime <= 0) {
       clearTimer(timerKey);
       incrementNextIndex(type);
