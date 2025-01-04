@@ -39,6 +39,19 @@ export const soundPreferenceAtom = atomWithStorage<number>('preferences_sound', 
   getOnInit: true,
 });
 
+export const standardNotificationsMutedAtom = atomWithStorage(
+  'preferences_muted_standard',
+  false,
+  Database.mmkvStorage,
+  {
+    getOnInit: true,
+  }
+);
+
+export const extraNotificationsMutedAtom = atomWithStorage('preferences_muted_extra', false, Database.mmkvStorage, {
+  getOnInit: true,
+});
+
 // --- Actions ---
 
 export const getSoundPreference = () => store.get(soundPreferenceAtom);
@@ -59,3 +72,13 @@ export const setAlertPreference = (scheduleType: ScheduleType, prayerIndex: numb
 };
 
 export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
+
+export const getNotificationsMuted = (type: ScheduleType) => {
+  const atom = type === ScheduleType.Standard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+  return store.get(atom);
+};
+
+export const setNotificationsMuted = (type: ScheduleType, muted: boolean) => {
+  const atom = type === ScheduleType.Standard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+  store.set(atom, muted);
+};

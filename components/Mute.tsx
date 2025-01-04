@@ -1,11 +1,16 @@
 import * as Haptics from 'expo-haptics';
-import { useState } from 'react';
+import { useAtomValue } from 'jotai';
 import { Pressable, Text, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
+import {
+  standardNotificationsMutedAtom,
+  extraNotificationsMutedAtom,
+  setNotificationsMuted,
+} from '@/stores/notifications';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -16,12 +21,12 @@ interface Props {
 export default function Mute({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
-  const [isMuted, setIsMuted] = useState(false);
+  const isMuted = useAtomValue(isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom);
   const AnimScale = useAnimationScale(1);
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setIsMuted((prev) => !prev);
+    setNotificationsMuted(type, !isMuted);
   };
 
   const computedStylesContainer: ViewStyle = isStandard
