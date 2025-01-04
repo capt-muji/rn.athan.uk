@@ -28,14 +28,14 @@ export const useNotification = () => {
   }, []);
 
   const scheduleNotification = async (englishName: string, arabicName: string) => {
-    const sound = getSoundPreference();
+    const sound = await getSoundPreference();
 
     try {
       await Notifications.scheduleNotificationAsync({
         content: {
           title: englishName,
           body: `\u200E${arabicName}`, // LTR mark to force left alignment
-          sound: `athan2.wav`,
+          sound: `athan${sound + 1}.wav`,
         },
         trigger: { seconds: 3 },
       });
