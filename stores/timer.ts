@@ -104,7 +104,7 @@ const startTimerMidnight = () => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
 
     if (currentDate !== savedDate) {
-      clearTimer('midnight'); // Clear midnight timer before sync
+      clearTimer('midnight');
       sync();
     }
   }, 1000);
