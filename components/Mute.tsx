@@ -1,11 +1,16 @@
 import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
+import Animated from 'react-native-reanimated';
 
+import { useAnimationScale } from '@/hooks/useAnimation';
 import { TEXT } from '@/shared/constants';
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function Mute() {
   const [isMuted, setIsMuted] = useState(false);
+  const AnimScale = useAnimationScale(1);
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -13,9 +18,13 @@ export default function Mute() {
   };
 
   return (
-    <Pressable style={styles.container} onPress={handlePress}>
+    <AnimatedPressable
+      style={[styles.container, AnimScale.style]}
+      onPress={handlePress}
+      onPressIn={() => AnimScale.animate(0.9)}
+      onPressOut={() => AnimScale.animate(1)}>
       <Text style={styles.text}>{isMuted ? 'Unmute all' : 'Mute all'}</Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 
