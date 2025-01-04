@@ -29,7 +29,7 @@ export default function Screen({ type }: Props) {
       {/* Spacing */}
       <View style={{ flex: 1 }} />
 
-      <Mute />
+      <Mute type={type} />
     </View>
   );
 }

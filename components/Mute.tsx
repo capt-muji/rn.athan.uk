@@ -5,10 +5,17 @@ import Animated from 'react-native-reanimated';
 
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { TEXT } from '@/shared/constants';
+import { ScheduleType } from '@/shared/types';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-export default function Mute() {
+interface Props {
+  type: ScheduleType;
+}
+
+export default function Mute({ type }: Props) {
+  const isStandard = type === ScheduleType.Standard;
+
   const [isMuted, setIsMuted] = useState(false);
   const AnimScale = useAnimationScale(1);
 
@@ -17,14 +24,23 @@ export default function Mute() {
     setIsMuted((prev) => !prev);
   };
 
-  const computedStylesContainer: ViewStyle = {
-    backgroundColor: isMuted ? '#8459e747' : '#6941c649',
-    borderColor: isMuted ? '#6d39e775' : '#5b33b875',
-  };
+  const computedStylesContainer: ViewStyle = isStandard
+    ? {
+        backgroundColor: isMuted ? '#8459e747' : '#6941c649',
+        borderColor: isMuted ? '#6d39e775' : '#5b33b875',
+      }
+    : {
+        backgroundColor: isMuted ? '#493faf46' : '#2f278447',
+        borderColor: isMuted ? '#3d349c46' : '#2c247b46',
+      };
 
-  const computedStylesText: TextStyle = {
-    color: isMuted ? '#f1ebffd9' : '#bb9ffdd9',
-  };
+  const computedStylesText: TextStyle = isStandard
+    ? {
+        color: isMuted ? '#f1ebffd9' : '#bb9ffdd9',
+      }
+    : {
+        color: isMuted ? '#bdb6ffd9' : '#7572d3d9',
+      };
 
   return (
     <AnimatedPressable
