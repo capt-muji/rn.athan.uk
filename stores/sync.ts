@@ -26,9 +26,9 @@ export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmk
 
 const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
-  const currentDate = schedule.today[PRAYER_INDEX_ASR].date;
+  const currentDateFromData = schedule.today[PRAYER_INDEX_ASR].date;
 
-  store.set(dateAtom, currentDate);
+  store.set(dateAtom, currentDateFromData);
 };
 
 const shouldFetchNextYear = (): boolean => {
