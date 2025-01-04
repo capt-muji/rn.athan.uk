@@ -25,6 +25,10 @@ export default function Screen({ type }: Props) {
       <Timer type={type} />
       <Day type={type} />
       <List type={type} />
+
+      {/* Spacing */}
+      <View style={{ flex: 1 }} />
+
       <Mute />
     </View>
   );
