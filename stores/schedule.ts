@@ -2,7 +2,6 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as PrayerUtils from '@/shared/prayer';
-import * as TimeUtils from '@/shared/time';
 import { ITransformedPrayer, ScheduleAtom, ScheduleStore, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
@@ -33,14 +32,13 @@ export const extraScheduleAtom = atom<ScheduleStore>(createInitialSchedule(Sched
 
 // --- Helpers ---
 
-// Create daily schedules based on today and tomorrow
-const buildDailySchedules = (type: ScheduleType) => {
-  const today = TimeUtils.createLondonDate();
-  const tomorrow = TimeUtils.createLondonDate();
-  tomorrow.setDate(tomorrow.getDate() + 1);
+// Create daily schedules based on provided date and next day
+const buildDailySchedules = (type: ScheduleType, date: Date) => {
+  const nextDate = new Date(date);
+  nextDate.setDate(date.getDate() + 1);
 
-  const dataToday = Database.getPrayerByDate(today);
-  const dataTomorrow = Database.getPrayerByDate(tomorrow);
+  const dataToday = Database.getPrayerByDate(date);
+  const dataTomorrow = Database.getPrayerByDate(nextDate);
 
   if (!dataToday || !dataTomorrow) throw new Error('Missing prayer data');
 
@@ -58,11 +56,11 @@ const getScheduleAtom = (type: ScheduleType): ScheduleAtom => {
 
 export const getSchedule = (type: ScheduleType): ScheduleStore => store.get(getScheduleAtom(type));
 
-export const setSchedule = (type: ScheduleType): void => {
+export const setSchedule = (type: ScheduleType, date: Date): void => {
   const scheduleAtom = getScheduleAtom(type);
   const currentSchedule = store.get(scheduleAtom);
 
-  const { today, tomorrow } = buildDailySchedules(type);
+  const { today, tomorrow } = buildDailySchedules(type, date);
   const nextIndex = PrayerUtils.findNextPrayerIndex(today);
 
   store.set(scheduleAtom, { ...currentSchedule, type, today, tomorrow, nextIndex });
