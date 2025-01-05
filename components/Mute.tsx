@@ -33,10 +33,12 @@ export default function Mute({ type }: Props) {
     ? {
         backgroundColor: isMuted ? '#8459e747' : '#6941c649',
         borderColor: isMuted ? '#6d39e775' : '#5b33b875',
+        shadowColor: '#27035c',
       }
     : {
         backgroundColor: isMuted ? '#493faf46' : '#2f278447',
         borderColor: isMuted ? '#3d349c46' : '#2c247b46',
+        shadowColor: '#020008',
       };
 
   const computedStylesText: TextStyle = isStandard
@@ -67,9 +69,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderWidth: 1,
     shadowOffset: { width: 1, height: 10 },
-    shadowOpacity: 0.5,
+    shadowOpacity: 1,
     shadowRadius: 10,
-    shadowColor: '#1c035c',
     width: 100,
     alignItems: 'center',
   },
