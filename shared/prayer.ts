@@ -1,4 +1,11 @@
-import { PRAYERS_ENGLISH, PRAYERS_ARABIC, EXTRAS_ENGLISH, EXTRAS_ARABIC, TIME_ADJUSTMENTS } from '@/shared/constants';
+import {
+  PRAYERS_ENGLISH,
+  PRAYERS_ARABIC,
+  EXTRAS_ENGLISH,
+  EXTRAS_ARABIC,
+  TIME_ADJUSTMENTS,
+  ANIMATION,
+} from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
 
@@ -102,9 +109,10 @@ export const findNextPrayerIndex = (schedule: IScheduleNow): number => {
   return nextPrayer.index;
 };
 
-// TODO: use this at midnight reset
 // UI Helpers
-// export const getCascadeDelay = (index: number) => {
-//   const delay = ANIMATION.cascadeDelay;
-//   return (PRAYERS_LENGTH_FAJR_TO_ISHA - index) * delay;
-// };
+export const getCascadeDelay = (index: number, type: ScheduleType): number => {
+  const isStandard = type === ScheduleType.Standard;
+  const length = isStandard ? PRAYERS_ENGLISH.length : EXTRAS_ENGLISH.length;
+
+  return (length - index) * ANIMATION.cascadeDelay;
+};

@@ -7,7 +7,9 @@ import Alert from '@/components/Alert';
 import PrayerTime from '@/components/PrayerTime';
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
+import { useSchedule } from '@/hooks/useSchedule';
 import { TEXT, COLORS, STYLES } from '@/shared/constants';
+import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
 
@@ -20,6 +22,7 @@ interface Props {
 }
 
 export default function Prayer({ type, index, isOverlay = false }: Props) {
+  const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
@@ -36,6 +39,11 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   };
 
   if (Prayer.isNext) AnimColor.animate(1);
+
+  if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
+    const delay = getCascadeDelay(index, type);
+    AnimColor.animate(0, { delay });
+  }
 
   return (
     <AnimatedPressable ref={viewRef} style={styles.container} onPress={handlePress}>
