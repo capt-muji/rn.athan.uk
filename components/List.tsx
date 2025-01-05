@@ -1,14 +1,11 @@
-import { useAtomValue } from 'jotai';
 import { useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, SCREEN } from '@/shared/constants';
-import * as TimeUtils from '@/shared/time';
+import { SCHEDULE_LENGTHS, SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { setMeasurement } from '@/stores/overlay';
-import { dateAtom } from '@/stores/sync';
 
 interface Props {
   type: ScheduleType;
@@ -17,12 +14,7 @@ interface Props {
 export default function List({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
-  const date = useAtomValue(dateAtom);
   const listRef = useRef<View>(null);
-
-  const isFriday = TimeUtils.isFriday(date);
-
-  const indexes = isStandard ? PRAYERS_ENGLISH : isFriday ? [0, 1, 2] : EXTRAS_ENGLISH;
 
   const handleLayout = () => {
     // Only measure 1st screen
@@ -36,7 +28,7 @@ export default function List({ type }: Props) {
   return (
     <View ref={listRef} onLayout={handleLayout} style={[styles.container]}>
       <ActiveBackground type={type} />
-      {indexes.map((_, index) => (
+      {Array.from({ length: SCHEDULE_LENGTHS[type] }).map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>
