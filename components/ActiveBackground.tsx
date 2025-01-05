@@ -31,8 +31,12 @@ export default function ActiveBackground({ type }: Props) {
     toColor: COLORS.activeBackground,
   });
 
-  if (shouldHide) AnimBackgroundColor.animate(0, { onFinish: () => (AnimTranslateY.value.value = 0) });
-  else AnimTranslateY.animate(yPosition);
+  if (shouldHide) {
+    AnimBackgroundColor.animate(0, { onFinish: () => (AnimTranslateY.value.value = 0) });
+  } else {
+    AnimBackgroundColor.animate(1);
+    AnimTranslateY.animate(yPosition);
+  }
 
   const computedStyles: ViewStyle = {
     shadowColor: isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
