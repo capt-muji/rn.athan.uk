@@ -5,6 +5,7 @@ import {
   EXTRAS_ARABIC,
   TIME_ADJUSTMENTS,
   ANIMATION,
+  SCHEDULE_LENGTHS,
 } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
@@ -75,7 +76,7 @@ export const createSchedule = (prayers: ISingleApiResponseTransformed, type: Sch
   let namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   let namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
 
-  if (TimeUtils.isFriday()) {
+  if (!TimeUtils.isFriday()) {
     namesEnglish = namesEnglish.filter((name) => name.toLowerCase() !== 'istijaba');
     namesArabic = namesArabic.filter((name) => name !== 'استجابة');
   }
@@ -112,7 +113,7 @@ export const findNextPrayerIndex = (schedule: IScheduleNow): number => {
 // UI Helpers
 export const getCascadeDelay = (index: number, type: ScheduleType): number => {
   const isStandard = type === ScheduleType.Standard;
-  const length = isStandard ? PRAYERS_ENGLISH.length : EXTRAS_ENGLISH.length;
+  const length = isStandard ? SCHEDULE_LENGTHS.standard : SCHEDULE_LENGTHS.extra;
 
   return (length - index) * ANIMATION.cascadeDelay;
 };

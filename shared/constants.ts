@@ -1,9 +1,16 @@
+import * as TimeUtils from '@/shared/time';
+
 export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
 export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
 export const PRAYER_INDEX_ASR = 3; // Used to display the date
 
 export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
+
+export const SCHEDULE_LENGTHS = {
+  standard: PRAYERS_ENGLISH.length,
+  extra: TimeUtils.isFriday() ? EXTRAS_ENGLISH.length : 3, // remove Istijaba on non-Fridays
+};
 
 export const TIME_ADJUSTMENTS = {
   suhoor: -45, // minutes before fajr
