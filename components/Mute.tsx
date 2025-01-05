@@ -44,7 +44,7 @@ export default function Mute({ type }: Props) {
         color: isMuted ? '#f1ebffd9' : '#bb9ffdd9',
       }
     : {
-        color: isMuted ? '#bdb6ffd9' : '#7572d3d9',
+        color: isMuted ? '#bdb6ffd9' : '#7e7cbed9',
       };
 
   return (
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 10 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-    shadowColor: '#281160',
+    shadowColor: '#1c035c',
     width: 100,
     alignItems: 'center',
   },
