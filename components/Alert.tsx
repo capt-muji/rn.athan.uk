@@ -13,7 +13,6 @@ import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import {
-  setAlertPreference,
   standardAlertPreferencesAtom,
   extraAlertPreferencesAtom,
   standardNotificationsMutedAtom,
@@ -36,7 +35,7 @@ interface Props {
 }
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
-  const { scheduleNotification } = useNotification();
+  const { handleAlertChange } = useNotification();
 
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
@@ -99,14 +98,14 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const handlePress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
+    const nextAlertType = ALERT_CONFIGS[nextIndex].type;
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
-    setAlertPreference(type, index, ALERT_CONFIGS[nextIndex].type);
 
-    await scheduleNotification(Prayer.english, Prayer.arabic);
+    await handleAlertChange(type, index, Prayer.english, Prayer.arabic, nextAlertType);
 
     // Reset animations
     AnimBounce.value.value = 0;
