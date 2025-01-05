@@ -32,7 +32,7 @@ export default function Mute({ type }: Props) {
   const computedStylesContainer: ViewStyle = isStandard
     ? {
         backgroundColor: isMuted ? '#8459e747' : '#6941c649',
-        borderColor: isMuted ? '#6d39e775' : '#5b33b875',
+        borderColor: isMuted ? '#6d46c775' : '#5b33b875',
         shadowColor: '#27035c',
       }
     : {
@@ -42,12 +42,8 @@ export default function Mute({ type }: Props) {
       };
 
   const computedStylesText: TextStyle = isStandard
-    ? {
-        color: isMuted ? '#f1ebffd9' : '#bb9ffdd9',
-      }
-    : {
-        color: isMuted ? '#bdb6ffd9' : '#7e7cbed9',
-      };
+    ? { color: isMuted ? '#f1ebffd9' : '#bb9ffdd9' }
+    : { color: isMuted ? '#bdb6ffd9' : '#7e7cbed9' };
 
   return (
     <AnimatedPressable
