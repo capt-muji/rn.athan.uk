@@ -198,7 +198,7 @@ export const scheduleMultipleNotificationsForPrayer = async (
     if (!prayerData) continue;
 
     // Skip if not Friday for Istijaba
-    if (englishName === 'Istijaba') {
+    if (englishName.toLocaleLowerCase() === 'istijaba') {
       const dayOfWeek = new Date(date).getDay();
       if (dayOfWeek !== 5) continue; // 5 is Friday
     }
