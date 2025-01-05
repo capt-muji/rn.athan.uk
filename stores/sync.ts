@@ -85,10 +85,10 @@ export const sync = async () => {
     initializeAppState(date);
 
     // ! Test code - remove in production
-    setTimeout(() => {
-      initializeAppState(new Date('2025-01-06'));
-      logger.info('Test: Changed date to 2025-01-06');
-    }, 3000);
+    // setTimeout(() => {
+    //   initializeAppState(new Date('2025-01-06'));
+    //   logger.info('Test: Changed date to 2025-01-06');
+    // }, 3000);
   } catch (error) {
     logger.error('SYNC: Failed', { error });
     throw error;
