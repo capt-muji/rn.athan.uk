@@ -8,7 +8,9 @@ import Icon from '@/components/Icon';
 import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
+import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
+import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import {
   setAlertPreference,
@@ -36,6 +38,7 @@ interface Props {
 export default function Alert({ type, index, isOverlay = false }: Props) {
   const { scheduleNotification } = useNotification();
 
+  const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
 
@@ -58,6 +61,11 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   // Animations Updates
   if (Prayer.isNext) AnimFill.animate(1);
+
+  if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
+    const delay = getCascadeDelay(index, type);
+    AnimFill.animate(0, { delay });
+  }
 
   // Effects
   // Sync alert preferences with state
