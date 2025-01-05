@@ -16,9 +16,16 @@ Notifications.setNotificationHandler({
 });
 
 const requestPermissions = async () => {
-  const { status } = await Notifications.getPermissionsAsync();
-  if (status === 'granted') return;
-  await Notifications.requestPermissionsAsync();
+  try {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    if (existingStatus === 'granted') return existingStatus;
+
+    const { status } = await Notifications.requestPermissionsAsync();
+    return status;
+  } catch (error) {
+    logger.error('Error requesting permissions:', error);
+    return 'denied';
+  }
 };
 
 export const useNotification = () => {
@@ -26,9 +33,10 @@ export const useNotification = () => {
 
   useEffect(() => {
     requestPermissions()
-      .then(({ status }) => setPermissionStatus(status))
+      .then((status) => setPermissionStatus(status))
       .catch((error) => {
         logger.error('Failed to request notification permissions:', error);
+        setPermissionStatus('denied');
       });
   }, []);
 
