@@ -197,25 +197,27 @@ export const scheduleMultipleNotificationsForPrayer = async (
     const prayerData = Database.getPrayerByDate(new Date(date));
     if (!prayerData) continue;
 
+    const prayerTime = prayerData[englishName.toLowerCase()];
+
+    // Skip if prayer time has passed
+    if (!NotificationUtils.isPrayerTimeInFuture(date, prayerTime)) {
+      logger.info('Skipping past prayer:', { date, time: prayerTime, englishName });
+      continue;
+    }
+
     // Skip if not Friday for Istijaba
-    if (englishName.toLocaleLowerCase() === 'istijaba') {
+    if (englishName.toLowerCase() === 'istijaba') {
       const dayOfWeek = new Date(date).getDay();
       if (dayOfWeek !== 5) continue; // 5 is Friday
     }
 
     try {
-      const id = await scheduleSingleNotification(
-        englishName,
-        arabicName,
-        date,
-        prayerData[englishName.toLowerCase()],
-        alertType
-      );
+      const id = await scheduleSingleNotification(englishName, arabicName, date, prayerTime, alertType);
 
       addSingleNotificationToStore(scheduleType, prayerIndex, {
         id,
         date,
-        time: prayerData[englishName.toLowerCase()],
+        time: prayerTime,
         englishName,
         arabicName,
         alertType,
