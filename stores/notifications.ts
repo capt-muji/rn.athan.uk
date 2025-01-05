@@ -281,3 +281,34 @@ export const cleanupAllOutdatedNotifications = async () => {
     cleanupOutdatedNotificationsForSchedule(ScheduleType.Extra),
   ]);
 };
+
+/**
+ * Debug helper to get all scheduled notifications
+ */
+export const getScheduledNotificationsDebug = () => {
+  const standardSchedule = store.get(standardScheduledNotificationsAtom);
+  const extraSchedule = store.get(extraScheduledNotificationsAtom);
+
+  return {
+    standard: Object.entries(standardSchedule).map(([index, notifications]) => ({
+      prayerIndex: Number(index),
+      count: notifications.length,
+      notifications: notifications.map((n) => ({
+        name: n.englishName,
+        date: n.date,
+        time: n.time,
+        alertType: n.alertType,
+      })),
+    })),
+    extra: Object.entries(extraSchedule).map(([index, notifications]) => ({
+      prayerIndex: Number(index),
+      count: notifications.length,
+      notifications: notifications.map((n) => ({
+        name: n.englishName,
+        date: n.date,
+        time: n.time,
+        alertType: n.alertType,
+      })),
+    })),
+  };
+};
