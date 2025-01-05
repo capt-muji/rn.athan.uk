@@ -8,6 +8,7 @@ import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
+import { getScheduledNotificationsDebug } from '@/stores/notifications';
 import * as ScheduleStore from '@/stores/schedule';
 import * as Timer from '@/stores/timer';
 
@@ -44,6 +45,14 @@ const initializeAppState = (date: Date) => {
   setDate();
 
   Timer.startTimers();
+
+  // Debug output
+  const scheduledNotifications = getScheduledNotificationsDebug();
+  logger.info('🔔 Scheduled Notifications Debug:', {
+    standardCount: scheduledNotifications.standard.reduce((acc, p) => acc + p.count, 0),
+    extraCount: scheduledNotifications.extra.reduce((acc, p) => acc + p.count, 0),
+    details: scheduledNotifications,
+  });
 };
 
 const needsDataUpdate = (): boolean => {
