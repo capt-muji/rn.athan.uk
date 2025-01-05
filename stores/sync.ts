@@ -37,9 +37,9 @@ const shouldFetchNextYear = (): boolean => {
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
 };
 
-const initializeAppState = () => {
-  ScheduleStore.setSchedule(ScheduleType.Standard);
-  ScheduleStore.setSchedule(ScheduleType.Extra);
+const initializeAppState = (date: Date) => {
+  ScheduleStore.setSchedule(ScheduleType.Standard, date);
+  ScheduleStore.setSchedule(ScheduleType.Extra, date);
 
   setDate();
 
@@ -80,7 +80,15 @@ export const sync = async () => {
     if (needsDataUpdate()) await updatePrayerData();
     else logger.info('SYNC: Data already up to date');
 
-    initializeAppState();
+    const date = TimeUtils.createLondonDate();
+
+    initializeAppState(date);
+
+    // ! Test code - remove in production
+    setTimeout(() => {
+      initializeAppState(new Date('2025-01-06'));
+      logger.info('Test: Changed date to 2025-01-06');
+    }, 3000);
   } catch (error) {
     logger.error('SYNC: Failed', { error });
     throw error;
