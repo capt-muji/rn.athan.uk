@@ -46,13 +46,31 @@ const initializeAppState = (date: Date) => {
 
   Timer.startTimers();
 
-  // Debug output
+  // Debug output with full details
   const scheduledNotifications = getScheduledNotificationsDebug();
-  logger.info('🔔 Scheduled Notifications Debug:', {
-    standardCount: scheduledNotifications.standard.reduce((acc, p) => acc + p.count, 0),
-    extraCount: scheduledNotifications.extra.reduce((acc, p) => acc + p.count, 0),
-    details: scheduledNotifications,
-  });
+  logger.info(
+    '🔔 Scheduled Notifications Debug:',
+    JSON.stringify(
+      {
+        standardCount: scheduledNotifications.standard.reduce((acc, p) => acc + p.count, 0),
+        extraCount: scheduledNotifications.extra.reduce((acc, p) => acc + p.count, 0),
+        details: {
+          standard: scheduledNotifications.standard.map((p) => ({
+            prayerIndex: p.prayerIndex,
+            count: p.count,
+            notifications: p.notifications,
+          })),
+          extra: scheduledNotifications.extra.map((p) => ({
+            prayerIndex: p.prayerIndex,
+            count: p.count,
+            notifications: p.notifications,
+          })),
+        },
+      },
+      null,
+      2
+    )
+  );
 };
 
 const needsDataUpdate = (): boolean => {
