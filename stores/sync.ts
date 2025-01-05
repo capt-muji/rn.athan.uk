@@ -1,3 +1,4 @@
+import * as Notifications from 'expo-notifications';
 import { atom } from 'jotai';
 import { atomWithStorage, loadable } from 'jotai/utils';
 import { getDefaultStore } from 'jotai/vanilla';
@@ -38,7 +39,7 @@ const shouldFetchNextYear = (): boolean => {
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
 };
 
-const initializeAppState = (date: Date) => {
+const initializeAppState = async (date: Date) => {
   ScheduleStore.setSchedule(ScheduleType.Standard, date);
   ScheduleStore.setSchedule(ScheduleType.Extra, date);
 
@@ -46,10 +47,10 @@ const initializeAppState = (date: Date) => {
 
   Timer.startTimers();
 
-  // Debug output with full details
+  // Debug output for app-tracked notifications
   const scheduledNotifications = getScheduledNotificationsDebug();
   logger.info(
-    '🔔 Scheduled Notifications Debug:',
+    '🔔 App-tracked Notifications Debug:',
     JSON.stringify(
       {
         standardCount: scheduledNotifications.standard.reduce((acc, p) => acc + p.count, 0),
@@ -71,6 +72,31 @@ const initializeAppState = (date: Date) => {
       2
     )
   );
+
+  // Debug output for system-scheduled notifications
+  try {
+    const systemScheduledNotifications = await Notifications.getAllScheduledNotificationsAsync();
+    logger.info(
+      '🔔 System-scheduled Notifications Debug:',
+      JSON.stringify(
+        {
+          count: systemScheduledNotifications.length,
+          notifications: systemScheduledNotifications.map((n) => ({
+            identifier: n.identifier,
+            title: n.content.title,
+            body: n.content.body,
+            sound: n.content.sound,
+            date: n.trigger.type === 'date' ? new Date(n.trigger.timestamp).toISOString() : undefined,
+            trigger: n.trigger,
+          })),
+        },
+        null,
+        2
+      )
+    );
+  } catch (error) {
+    logger.error('Failed to get system-scheduled notifications:', error);
+  }
 };
 
 const needsDataUpdate = (): boolean => {
