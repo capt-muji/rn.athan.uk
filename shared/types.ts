@@ -112,15 +112,13 @@ export interface Measurements {
 
 export enum AlertType {
   Off = 0,
-  Notification = 1,
-  Vibrate = 2,
-  Sound = 3,
+  Silent = 1,
+  Sound = 2,
 }
 
 export enum AlertIcon {
   BELL_RING = 'BELL_RING',
   BELL_SLASH = 'BELL_SLASH',
-  VIBRATE = 'VIBRATE',
   SPEAKER = 'SPEAKER',
   PLAY = 'PLAY',
   PAUSE = 'PAUSE',
