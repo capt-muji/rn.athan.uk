@@ -26,7 +26,7 @@ export const useNotification = () => {
 
       return true;
     } catch (error) {
-      logger.error('Failed to check initial notification permissions:', error);
+      logger.error('NOTIFICATION: Failed to check initial notification permissions:', error);
       return false;
     }
   };
@@ -67,7 +67,7 @@ export const useNotification = () => {
         );
       });
     } catch (error) {
-      logger.error('Failed to check notification permissions:', error);
+      logger.error('NOTIFICATION: Failed to check notification permissions:', error);
       return false;
     }
   };
@@ -91,7 +91,7 @@ export const useNotification = () => {
       const hasPermission = await ensurePermissions();
 
       if (!hasPermission) {
-        logger.warn('Notification permissions not granted');
+        logger.warn('NOTIFICATION: Permissions not granted');
         return false;
       }
 
@@ -105,7 +105,7 @@ export const useNotification = () => {
         alertType
       );
 
-      logger.info('Updated notification settings:', {
+      logger.info('NOTIFICATION: Updated settings:', {
         scheduleType,
         prayerIndex,
         englishName,
@@ -114,7 +114,7 @@ export const useNotification = () => {
 
       return true;
     } catch (error) {
-      logger.error('Failed to update notification settings:', error);
+      logger.error('NOTIFICATION: Failed to update settings:', error);
       return false;
     }
   };
