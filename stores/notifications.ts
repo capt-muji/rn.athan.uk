@@ -90,12 +90,16 @@ export const setAlertPreference = (scheduleType: ScheduleType, prayerIndex: numb
 export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
 
 export const getNotificationsMuted = (type: ScheduleType) => {
-  const atom = type === ScheduleType.Standard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+  const isStandard = type === ScheduleType.Standard;
+  const atom = isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+
   return store.get(atom);
 };
 
 export const setNotificationsMuted = (type: ScheduleType, muted: boolean) => {
-  const atom = type === ScheduleType.Standard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+  const isStandard = type === ScheduleType.Standard;
+  const atom = isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+
   store.set(atom, muted);
 };
 
