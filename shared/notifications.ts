@@ -21,7 +21,7 @@ export interface NotificationSchedule {
  */
 export const createTriggerDate = (date: string, time: string): Date => {
   const [hours, minutes] = time.split(':').map(Number);
-  const triggerDate = new Date(date);
+  const triggerDate = TimeUtils.createLondonDate(date);
 
   triggerDate.setHours(hours, minutes, 0, 0);
   return triggerDate;
@@ -57,7 +57,7 @@ export const createNotificationContent = (
  */
 export const isNotificationOutdated = (notification: ScheduledNotification): boolean => {
   const triggerDate = createTriggerDate(notification.date, notification.time);
-  const now = TimeUtils.createLondonDate(new Date());
+  const now = TimeUtils.createLondonDate();
 
   return isBefore(triggerDate, now);
 };
@@ -67,14 +67,14 @@ export const isNotificationOutdated = (notification: ScheduledNotification): boo
  */
 export const isPrayerTimeInFuture = (date: string, time: string): boolean => {
   const triggerDate = createTriggerDate(date, time);
-  const now = TimeUtils.createLondonDate(new Date());
+  const now = TimeUtils.createLondonDate();
   return triggerDate > now;
 };
 
 /**
  * Generates next 5 dates from given date
  */
-export const getNext5Days = (startDate: Date = new Date()): string[] => {
+export const getNext5Days = (startDate: Date = TimeUtils.createLondonDate()): string[] => {
   return Array.from({ length: 5 }, (_, i) => {
     const date = addDays(startDate, i);
     return format(date, 'yyyy-MM-dd');
