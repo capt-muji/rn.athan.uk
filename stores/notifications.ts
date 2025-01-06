@@ -5,7 +5,7 @@ import { atomWithStorage } from 'jotai/utils';
 import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
-import { NotificationSchedule, ScheduledNotification } from '@/shared/notifications';
+import { ScheduledNotification } from '@/shared/notifications';
 import { AlertPreferences, AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
@@ -53,20 +53,6 @@ export const standardNotificationsMutedAtom = atomWithStorage(
 export const extraNotificationsMutedAtom = atomWithStorage('preferences_muted_extra', false, Database.mmkvStorage, {
   getOnInit: true,
 });
-
-export const standardScheduledNotificationsAtom = atomWithStorage<NotificationSchedule>(
-  'scheduled_notifications_standard',
-  {},
-  Database.mmkvStorage,
-  { getOnInit: true }
-);
-
-export const extraScheduledNotificationsAtom = atomWithStorage<NotificationSchedule>(
-  'scheduled_notifications_extra',
-  {},
-  Database.mmkvStorage,
-  { getOnInit: true }
-);
 
 // --- Actions ---
 
@@ -140,13 +126,10 @@ export const addSingleNotificationToStore = (
   prayerIndex: number,
   notification: ScheduledNotification
 ) => {
-  const atom =
-    scheduleType === ScheduleType.Standard ? standardScheduledNotificationsAtom : extraScheduledNotificationsAtom;
-
-  const current = store.get(atom);
+  const current = Database.getScheduledNotifications(scheduleType);
   const notifications = current[prayerIndex] || [];
 
-  store.set(atom, {
+  Database.setScheduledNotifications(scheduleType, {
     ...current,
     [prayerIndex]: [...notifications, notification],
   });
@@ -156,10 +139,7 @@ export const addSingleNotificationToStore = (
  * Cancel all notifications for a single prayer
  */
 export const cancelAllNotificationsForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-  const atom =
-    scheduleType === ScheduleType.Standard ? standardScheduledNotificationsAtom : extraScheduledNotificationsAtom;
-
-  const schedule = store.get(atom);
+  const schedule = Database.getScheduledNotifications(scheduleType);
   const notifications = schedule[prayerIndex] || [];
 
   // Cancel all notifications
@@ -175,7 +155,7 @@ export const cancelAllNotificationsForPrayer = async (scheduleType: ScheduleType
   );
 
   // Clear from store
-  store.set(atom, {
+  Database.setScheduledNotifications(scheduleType, {
     ...schedule,
     [prayerIndex]: [],
   });
@@ -201,7 +181,7 @@ export const scheduleMultipleNotificationsForPrayer = async (
     const prayerData = Database.getPrayerByDate(new Date(date));
     if (!prayerData) continue;
 
-    const prayerTime = prayerData[englishName.toLowerCase()];
+    const prayerTime = prayerData[englishName.toLowerCase() as keyof typeof prayerData];
 
     // Skip if prayer time has passed
     if (!NotificationUtils.isPrayerTimeInFuture(date, prayerTime)) {
@@ -236,16 +216,13 @@ export const scheduleMultipleNotificationsForPrayer = async (
  * Clean up outdated notifications for a single prayer
  */
 export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-  const atom =
-    scheduleType === ScheduleType.Standard ? standardScheduledNotificationsAtom : extraScheduledNotificationsAtom;
-
-  const schedule = store.get(atom);
+  const schedule = Database.getScheduledNotifications(scheduleType);
   const notifications = schedule[prayerIndex] || [];
   const remaining = notifications.filter((n) => !NotificationUtils.isNotificationOutdated(n));
 
   // Only update store if we found outdated notifications
   if (remaining.length < notifications.length) {
-    store.set(atom, {
+    Database.setScheduledNotifications(scheduleType, {
       ...schedule,
       [prayerIndex]: remaining,
     });
@@ -263,10 +240,7 @@ export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: Schedu
  * Clean up all outdated notifications for a specific schedule
  */
 export const cleanupOutdatedNotificationsForSchedule = async (scheduleType: ScheduleType) => {
-  const atom =
-    scheduleType === ScheduleType.Standard ? standardScheduledNotificationsAtom : extraScheduledNotificationsAtom;
-
-  const schedule = store.get(atom);
+  const schedule = Database.getScheduledNotifications(scheduleType);
 
   // Clean all prayers in the schedule
   await Promise.all(
@@ -290,8 +264,8 @@ export const cleanupAllOutdatedNotifications = async () => {
  * Debug helper to get all scheduled notifications
  */
 export const getScheduledNotificationsDebug = () => {
-  const standardSchedule = store.get(standardScheduledNotificationsAtom);
-  const extraSchedule = store.get(extraScheduledNotificationsAtom);
+  const standardSchedule = Database.getScheduledNotifications(ScheduleType.Standard);
+  const extraSchedule = Database.getScheduledNotifications(ScheduleType.Extra);
 
   return {
     standard: Object.entries(standardSchedule).map(([index, notifications]) => ({
@@ -321,10 +295,7 @@ export const getScheduledNotificationsDebug = () => {
  * Cancel and clear all notifications for a schedule type
  */
 export const cancelAllScheduleNotifications = async (scheduleType: ScheduleType) => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const atom = isStandard ? standardScheduledNotificationsAtom : extraScheduledNotificationsAtom;
-
-  const schedule = store.get(atom);
+  const schedule = Database.getScheduledNotifications(scheduleType);
 
   // Cancel all notifications for each prayer index
   await Promise.all(
@@ -334,7 +305,7 @@ export const cancelAllScheduleNotifications = async (scheduleType: ScheduleType)
   );
 
   // Clear the schedule
-  store.set(atom, {});
+  Database.setScheduledNotifications(scheduleType, {});
 
   logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
 };
@@ -345,7 +316,7 @@ export const cancelAllScheduleNotifications = async (scheduleType: ScheduleType)
 export const rescheduleAllNotifications = async (scheduleType: ScheduleType) => {
   const isStandard = scheduleType === ScheduleType.Standard;
 
-  const preferences = getAlertPreferences(scheduleType);
+  const preferences = getAlertPreferences(scheduleType) as AlertPreferences;
   const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
 
