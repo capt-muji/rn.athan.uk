@@ -1,6 +1,5 @@
 import { useFonts } from 'expo-font';
 import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
 import { WaveIndicator } from 'react-native-indicators';
 
 import Navigation from '@/app/Navigation';
@@ -16,9 +15,7 @@ export default function Index() {
   const [fontsLoaded] = useFonts({ Roboto: FontRoboto, 'Roboto-Medium': FontRobotoMedium });
   const { checkInitialPermissions } = useNotification();
 
-  useEffect(() => {
-    checkInitialPermissions();
-  }, []);
+  checkInitialPermissions();
 
   if (!fontsLoaded || state === 'loading') return <WaveIndicator color="white" />;
   if (state === 'hasError') return <Error />;
