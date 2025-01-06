@@ -26,14 +26,14 @@ const initialAlertPreferences = (prayers: string[]): AlertPreferences => {
 
 // --- Atoms ---
 
-export const standardAlertPreferencesAtom = atomWithStorage(
+export const standardAlertPreferencesAtom = atomWithStorage<AlertPreferences>(
   'preferences_alert_standard',
   initialAlertPreferences(PRAYERS_ENGLISH),
   Database.mmkvStorage,
   { getOnInit: true }
 );
 
-export const extraAlertPreferencesAtom = atomWithStorage(
+export const extraAlertPreferencesAtom = atomWithStorage<AlertPreferences>(
   'preferences_alert_extra',
   initialAlertPreferences(EXTRAS_ENGLISH),
   Database.mmkvStorage,
@@ -44,16 +44,21 @@ export const soundPreferenceAtom = atomWithStorage<number>('preferences_sound', 
   getOnInit: true,
 });
 
-export const standardNotificationsMutedAtom = atomWithStorage(
+export const standardNotificationsMutedAtom = atomWithStorage<boolean>(
   'preferences_muted_standard',
   false,
   Database.mmkvStorage,
   { getOnInit: true }
 );
 
-export const extraNotificationsMutedAtom = atomWithStorage('preferences_muted_extra', false, Database.mmkvStorage, {
-  getOnInit: true,
-});
+export const extraNotificationsMutedAtom = atomWithStorage<boolean>(
+  'preferences_muted_extra',
+  false,
+  Database.mmkvStorage,
+  {
+    getOnInit: true,
+  }
+);
 
 // --- Actions ---
 
