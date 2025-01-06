@@ -50,7 +50,6 @@ export const createNotificationContent = (
     title: englishName,
     body: `\u200E${arabicName}`, // LTR mark
     sound: getNotificationSound(alertType, soundIndex),
-    vibrate: alertType >= AlertType.Vibrate ? [0, 250, 250, 250] : undefined,
   };
 };
 
