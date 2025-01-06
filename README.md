@@ -11,6 +11,13 @@
   
 # Athan.uk
 
+TODO:
+
+1. Implement mute button debounce for quick UI feedback
+2. Implement alert button debounce for quick UI feedback
+3. Implement updating already scheduled notifications when new athan is selected
+4. Refactor notification system
+
 <br/>
 
 [![Platform - Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat&logo=android&logoColor=white)](https://athan.uk)
