@@ -13,7 +13,7 @@
 
 TODO:
 
-1. Implement mute button debounce for quick UI feedback
+1. Implement mute button debounce for quick UI feedback (Mute button and Alert icons must reflect immediately but logic should only take place after debounce)
 2. Implement alert button debounce for quick UI feedback
 3. Implement updating already scheduled notifications when new athan is selected
 4. Refactor notification system
