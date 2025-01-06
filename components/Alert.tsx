@@ -23,8 +23,7 @@ import { showSheet } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
-  { icon: AlertIcon.BELL_RING, label: 'Notification', type: AlertType.Notification },
-  { icon: AlertIcon.VIBRATE, label: 'Vibrate', type: AlertType.Vibrate },
+  { icon: AlertIcon.BELL_RING, label: 'Silent', type: AlertType.Silent },
   { icon: AlertIcon.SPEAKER, label: 'Sound', type: AlertType.Sound },
 ];
 
@@ -102,10 +101,11 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
+    const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, nextAlertType);
+    if (!success) return;
+
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
-
-    await handleAlertChange(type, index, Prayer.english, Prayer.arabic, nextAlertType);
 
     // Reset animations
     AnimBounce.value.value = 0;
