@@ -2,7 +2,7 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
-import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
+import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { NotificationSchedule, ScheduledNotification } from '@/shared/notifications';
@@ -311,4 +311,54 @@ export const getScheduledNotificationsDebug = () => {
       })),
     })),
   };
+};
+
+/**
+ * Cancel and clear all notifications for a schedule type
+ */
+export const cancelAllScheduleNotifications = async (scheduleType: ScheduleType) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const atom = isStandard ? standardScheduledNotificationsAtom : extraScheduledNotificationsAtom;
+
+  const schedule = store.get(atom);
+
+  // Cancel all notifications for each prayer index
+  await Promise.all(
+    Object.keys(schedule).map(async (index) => {
+      await cancelAllNotificationsForPrayer(scheduleType, Number(index));
+    })
+  );
+
+  // Clear the schedule
+  store.set(atom, {});
+
+  logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
+};
+
+/**
+ * Reschedule all notifications for a schedule based on current preferences
+ */
+export const rescheduleAllNotifications = async (scheduleType: ScheduleType) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+
+  const preferences = getAlertPreferences(scheduleType);
+  const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+
+  await Promise.all(
+    Object.entries(preferences).map(async ([index, alertType]) => {
+      if (alertType === AlertType.Off) return;
+
+      const prayerIndex = Number(index);
+      await scheduleMultipleNotificationsForPrayer(
+        scheduleType,
+        prayerIndex,
+        prayers[prayerIndex],
+        arabicPrayers[prayerIndex],
+        alertType
+      );
+    })
+  );
+
+  logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
 };
