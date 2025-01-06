@@ -120,10 +120,10 @@ export const scheduleSingleNotification = async (
       trigger: triggerDate,
     });
 
-    logger.info('Scheduled notification:', { id, englishName, date, time });
+    logger.info('NOTIFICATION: Scheduled:', { id, englishName, date, time });
     return id;
   } catch (error) {
-    logger.error('Failed to schedule notification:', error);
+    logger.error('NOTIFICATION: Failed to schedule:', error);
     throw error;
   }
 };
@@ -163,9 +163,9 @@ export const cancelAllNotificationsForPrayer = async (scheduleType: ScheduleType
     notifications.map(async (notification) => {
       try {
         await Notifications.cancelScheduledNotificationAsync(notification.id);
-        logger.info('Cancelled notification:', notification.id);
+        logger.info('NOTIFICATION: Cancelled:', notification.id);
       } catch (error) {
-        logger.error('Failed to cancel notification:', error);
+        logger.error('NOTIFICATION: Failed to cancel:', error);
       }
     })
   );
@@ -246,7 +246,7 @@ export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: Schedu
       [prayerIndex]: remaining,
     });
 
-    logger.info('Cleaned up outdated notifications:', {
+    logger.info('NOTIFICATION: Cleaned up outdated:', {
       scheduleType,
       prayerIndex,
       removedCount: notifications.length - remaining.length,
@@ -269,7 +269,7 @@ export const cleanupOutdatedNotificationsForSchedule = async (scheduleType: Sche
     Object.keys(schedule).map((index) => cleanupOutdatedNotificationsForPrayer(scheduleType, Number(index)))
   );
 
-  logger.info('Cleaned up schedule notifications:', { scheduleType });
+  logger.info('NOTIFICATION: Cleaned up schedule:', { scheduleType });
 };
 
 /**
