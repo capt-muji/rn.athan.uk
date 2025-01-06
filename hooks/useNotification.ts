@@ -119,8 +119,36 @@ export const useNotification = () => {
     }
   };
 
+  const handleMuteChange = async (scheduleType: ScheduleType, mute: boolean): Promise<boolean> => {
+    try {
+      if (mute) {
+        // Cancel all notifications first
+        await NotificationUtils.cancelAllScheduleNotifications(scheduleType);
+        NotificationUtils.setNotificationsMuted(scheduleType, true);
+      } else {
+        // Check permissions before unmuting
+        const hasPermission = await ensurePermissions();
+        if (!hasPermission) {
+          logger.warn('NOTIFICATION: Permissions not granted for unmute');
+          return false;
+        }
+
+        // Reschedule notifications based on existing preferences
+        await NotificationUtils.rescheduleAllNotifications(scheduleType);
+        NotificationUtils.setNotificationsMuted(scheduleType, false);
+      }
+
+      logger.info('NOTIFICATION: Updated mute settings:', { scheduleType, mute });
+      return true;
+    } catch (error) {
+      logger.error('NOTIFICATION: Failed to update mute settings:', error);
+      return false;
+    }
+  };
+
   return {
     handleAlertChange,
+    handleMuteChange,
     checkInitialPermissions,
   };
 };

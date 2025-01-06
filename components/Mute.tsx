@@ -4,13 +4,10 @@ import { Pressable, Text, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import Animated from 'react-native-reanimated';
 
 import { useAnimationScale } from '@/hooks/useAnimation';
+import { useNotification } from '@/hooks/useNotification';
 import { TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import {
-  standardNotificationsMutedAtom,
-  extraNotificationsMutedAtom,
-  setNotificationsMuted,
-} from '@/stores/notifications';
+import { standardNotificationsMutedAtom, extraNotificationsMutedAtom } from '@/stores/notifications';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -20,13 +17,13 @@ interface Props {
 
 export default function Mute({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
-
+  const { handleMuteChange } = useNotification();
   const isMuted = useAtomValue(isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom);
   const AnimScale = useAnimationScale(1);
 
-  const handlePress = () => {
+  const handlePress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setNotificationsMuted(type, !isMuted);
+    await handleMuteChange(type, !isMuted);
   };
 
   const computedStylesContainer: ViewStyle = isStandard
