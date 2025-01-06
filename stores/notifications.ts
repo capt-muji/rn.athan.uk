@@ -6,6 +6,7 @@ import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { ScheduledNotification } from '@/shared/notifications';
+import * as TimeUtils from '@/shared/time';
 import { AlertPreferences, AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
@@ -178,7 +179,8 @@ export const scheduleMultipleNotificationsForPrayer = async (
 
   // Schedule new notifications
   for (const date of next5Days) {
-    const prayerData = Database.getPrayerByDate(new Date(date));
+    const dateI = TimeUtils.createLondonDate(date);
+    const prayerData = Database.getPrayerByDate(dateI);
     if (!prayerData) continue;
 
     const prayerTime = prayerData[englishName.toLowerCase() as keyof typeof prayerData];
@@ -191,8 +193,7 @@ export const scheduleMultipleNotificationsForPrayer = async (
 
     // Skip if not Friday for Istijaba
     if (englishName.toLowerCase() === 'istijaba') {
-      const dayOfWeek = new Date(date).getDay();
-      if (dayOfWeek !== 5) continue; // 5 is Friday
+      if (!TimeUtils.isFriday(date)) continue;
     }
 
     try {
