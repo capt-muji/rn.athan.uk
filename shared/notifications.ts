@@ -31,9 +31,8 @@ export const createTriggerDate = (date: string, time: string): Date => {
  * Gets notification sound based on alert type
  */
 export const getNotificationSound = (alertType: AlertType, soundIndex: number): string | null => {
-  if (alertType === AlertType.Sound) {
-    return `athan${soundIndex + 1}.wav`;
-  }
+  if (alertType === AlertType.Sound) return `athan${soundIndex + 1}.wav`;
+
   return null;
 };
 
@@ -49,7 +48,7 @@ export const createNotificationContent = (
   return {
     title: englishName,
     body: `\u200E${arabicName}`, // LTR mark
-    sound: getNotificationSound(alertType, soundIndex),
+    sound: getNotificationSound(alertType, soundIndex) || undefined,
   };
 };
 
