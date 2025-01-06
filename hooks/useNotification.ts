@@ -1,5 +1,5 @@
 import * as Notifications from 'expo-notifications';
-import { useState } from 'react';
+import { Platform, Alert, Linking } from 'react-native';
 
 import logger from '@/shared/logger';
 import { AlertType, ScheduleType } from '@/shared/types';
@@ -15,17 +15,57 @@ Notifications.setNotificationHandler({
 });
 
 export const useNotification = () => {
-  const [permissionStatus, setPermissionStatus] = useState<string | null>(null);
+  const checkInitialPermissions = async () => {
+    try {
+      const { status: existingStatus } = await Notifications.getPermissionsAsync();
+
+      if (existingStatus !== 'granted') {
+        const { status } = await Notifications.requestPermissionsAsync();
+        return status === 'granted';
+      }
+
+      return true;
+    } catch (error) {
+      logger.error('Failed to check initial notification permissions:', error);
+      return false;
+    }
+  };
 
   const ensurePermissions = async (): Promise<boolean> => {
     try {
-      console.log('1111');
+      const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
+      if (existingStatus === 'granted') return true;
+
+      // First try requesting permissions
       const { status } = await Notifications.requestPermissionsAsync();
-      console.log('2222');
-      console.log(status);
+      if (status === 'granted') return true;
 
-      return status === 'granted';
+      // If denied, show settings dialog
+      return new Promise((resolve) => {
+        Alert.alert(
+          'Enable Notifications',
+          'Prayer time notifications are disabled. Would you like to enable them in settings?',
+          [
+            {
+              text: 'Cancel',
+              style: 'cancel',
+              onPress: () => resolve(false),
+            },
+            {
+              text: 'Open Settings',
+              onPress: async () => {
+                if (Platform.OS === 'ios') await Linking.openSettings();
+                else await Linking.sendIntent('android.settings.APP_NOTIFICATION_SETTINGS');
+
+                // Check if permissions were granted after returning from settings
+                const { status: finalStatus } = await Notifications.getPermissionsAsync();
+                resolve(finalStatus === 'granted');
+              },
+            },
+          ]
+        );
+      });
     } catch (error) {
       logger.error('Failed to check notification permissions:', error);
       return false;
@@ -49,8 +89,8 @@ export const useNotification = () => {
 
       // Check/request permissions for enabling notifications
       const hasPermission = await ensurePermissions();
+
       if (!hasPermission) {
-        // todo: enable popup to ask for permission
         logger.warn('Notification permissions not granted');
         return false;
       }
@@ -79,5 +119,8 @@ export const useNotification = () => {
     }
   };
 
-  return { handleAlertChange };
+  return {
+    handleAlertChange,
+    checkInitialPermissions,
+  };
 };
