@@ -2,6 +2,7 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as PrayerUtils from '@/shared/prayer';
+import * as TimeUtils from '@/shared/time';
 import { ITransformedPrayer, ScheduleAtom, ScheduleStore, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
@@ -34,7 +35,8 @@ export const extraScheduleAtom = atom<ScheduleStore>(createInitialSchedule(Sched
 
 // Create daily schedules based on provided date and next day
 const buildDailySchedules = (type: ScheduleType, date: Date) => {
-  const nextDate = new Date(date);
+  const nextDate = TimeUtils.createLondonDate(date);
+
   nextDate.setDate(date.getDate() + 1);
 
   const dataToday = Database.getPrayerByDate(date);
