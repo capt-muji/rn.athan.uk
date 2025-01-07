@@ -1,7 +1,7 @@
 import { format, addDays } from 'date-fns';
 
 import * as TimeUtils from '@/shared/time';
-import { AlertType, ScheduleType } from '@/shared/types';
+import { AlertType } from '@/shared/types';
 
 export interface ScheduledNotification {
   id: string;
@@ -89,9 +89,13 @@ export const genNext5Days = (startDate: Date = TimeUtils.createLondonDate()): st
 //   return `${scheduleType}_${prayerIndex}_${date}`;
 // };
 
-/**
- * Creates storage key for scheduled notifications array based on schedule type and prayer index
- */
-export const genKeyScheduledNotificationsForPrayer = (scheduleType: ScheduleType, prayerIndex: number): string => {
-  return `scheduled_notifications_${scheduleType}_${prayerIndex}`;
-};
+// /**
+//  * Creates storage key for scheduled notifications array based on schedule type and prayer index
+//  */
+// export const genKeyScheduledNotificationsForPrayer = (
+//   scheduleType: ScheduleType,
+//   prayerIndex: number,
+//   notificationId: string
+// ): string => {
+//   return `scheduled_notifications_${scheduleType}_${prayerIndex}_${notificationId}`;
+// };

@@ -1,7 +1,7 @@
-import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
+import * as Device from '@/device/notifications';
 import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
@@ -95,83 +95,6 @@ export const setNotificationsMuted = (type: ScheduleType, muted: boolean) => {
 };
 
 /**
- * Schedule a single notification in the system and return its identifier
- */
-export const addOneScheduledNotificationForPrayerInSystem = async (
-  englishName: string,
-  arabicName: string,
-  date: string,
-  time: string,
-  alertType: AlertType
-): Promise<NotificationUtils.ScheduledNotification> => {
-  const sound = await getSoundPreference();
-  const triggerDate = NotificationUtils.genTriggerDate(date, time);
-
-  const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, sound);
-
-  try {
-    const id = await Notifications.scheduleNotificationAsync({
-      content,
-      trigger: triggerDate,
-    });
-
-    const notification = { id, date, time, englishName, arabicName, alertType };
-
-    logger.info('NOTIFICATION SYSTEM: Scheduled:', notification);
-    return notification;
-  } catch (error) {
-    logger.error('NOTIFICATION SYSTEM: Failed to schedule:', error);
-    throw error;
-  }
-};
-
-/**
- * Add single notification to database key
- */
-export const addOneScheduledNotificationForPrayerInDb = (
-  scheduleType: ScheduleType,
-  prayerIndex: number,
-  notification: NotificationUtils.ScheduledNotification
-) => {
-  const key = NotificationUtils.genKeyScheduledNotificationsForPrayer(scheduleType, prayerIndex);
-  const current = Database.getItem(key);
-
-  const notifications = current[prayerIndex] || [];
-
-  Database.setItem(key, [...notifications, notification]);
-
-  logger.info('NOTIFICATION DB: Added:', notification);
-};
-
-/**
- * Cancel all scheduled notifications for a specific prayer in the system
- */
-export const removeAllScheduledNotificationForPrayerInSystem = async (
-  scheduleType: ScheduleType,
-  prayerIndex: number
-) => {
-  const key = NotificationUtils.genKeyScheduledNotificationsForPrayer(scheduleType, prayerIndex);
-  const notifications: NotificationUtils.ScheduledNotification[] = Database.getItem(key) || [];
-
-  // Cancel all notifications
-  const promises = notifications.map((notification) => Notifications.cancelScheduledNotificationAsync(notification.id));
-  await Promise.all(promises);
-
-  logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', { scheduleType, prayerIndex });
-};
-
-/**
- * Remove all scheduled notifications for a specific prayer in the system
- */
-export const removeAllScheduledNotificationForPrayerInDb = (scheduleType: ScheduleType, prayerIndex: number) => {
-  const key = NotificationUtils.genKeyScheduledNotificationsForPrayer(scheduleType, prayerIndex);
-
-  Database.setItem(key, []);
-
-  logger.info('NOTIFICATION DB: Removed all notifications for prayer:', { scheduleType, prayerIndex });
-};
-
-/**
  * Schedule multiple notifications (5 days) for a single prayer in the system and database
  */
 export const addMultipleScheduleNotificationsForPrayer = async (
@@ -184,8 +107,7 @@ export const addMultipleScheduleNotificationsForPrayer = async (
   const next5Days = NotificationUtils.genNext5Days();
 
   // Cancel existing notifications first
-  await removeAllScheduledNotificationForPrayerInSystem(scheduleType, prayerIndex);
-  removeAllScheduledNotificationForPrayerInDb(scheduleType, prayerIndex);
+  await clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
 
   // Schedule new notifications
   for (const dateI of next5Days) {
@@ -207,7 +129,7 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     }
 
     try {
-      const notification = await addOneScheduledNotificationForPrayerInSystem(
+      const notification = await Device.addOneScheduledNotificationForPrayer(
         englishName,
         arabicName,
         dateI,
@@ -215,7 +137,7 @@ export const addMultipleScheduleNotificationsForPrayer = async (
         alertType
       );
 
-      addOneScheduledNotificationForPrayerInDb(scheduleType, prayerIndex, notification);
+      Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification);
     } catch (error) {
       logger.error('Failed to schedule prayer notification:', error);
     }
@@ -226,6 +148,11 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     prayerIndex,
     englishName,
   });
+};
+
+export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+  await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 };
 
 // /**

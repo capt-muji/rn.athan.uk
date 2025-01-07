@@ -3,7 +3,7 @@ import { Platform, Alert, Linking } from 'react-native';
 
 import logger from '@/shared/logger';
 import { AlertType, ScheduleType } from '@/shared/types';
-import * as NotificationUtils from '@/stores/notifications';
+import * as NotificationStore from '@/stores/notifications';
 
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
@@ -81,18 +81,18 @@ export const useNotification = () => {
   ) => {
     try {
       // Check if schedule is muted
-      const isMuted = NotificationUtils.getNotificationsMuted(scheduleType);
+      const isMuted = NotificationStore.getNotificationsMuted(scheduleType);
 
       // Always allow turning off notifications without permission check
       if (alertType === AlertType.Off) {
-        NotificationUtils.setAlertPreference(scheduleType, prayerIndex, alertType);
-        await NotificationUtils.cancelAllNotificationsForPrayer(scheduleType, prayerIndex);
+        NotificationStore.setAlertPreference(scheduleType, prayerIndex, alertType);
+        NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
         return true;
       }
 
       // Only update preference if muted, don't schedule notifications
       if (isMuted) {
-        NotificationUtils.setAlertPreference(scheduleType, prayerIndex, alertType);
+        NotificationStore.setAlertPreference(scheduleType, prayerIndex, alertType);
         return true;
       }
 
@@ -105,8 +105,8 @@ export const useNotification = () => {
       }
 
       // Update preference and schedule notifications
-      NotificationUtils.setAlertPreference(scheduleType, prayerIndex, alertType);
-      await NotificationUtils.addMultipleScheduleNotificationsForPrayer(
+      NotificationStore.setAlertPreference(scheduleType, prayerIndex, alertType);
+      await NotificationStore.addMultipleScheduleNotificationsForPrayer(
         scheduleType,
         prayerIndex,
         englishName,
@@ -132,8 +132,8 @@ export const useNotification = () => {
     try {
       if (mute) {
         // Cancel all notifications first
-        await NotificationUtils.cancelAllScheduleNotifications(scheduleType);
-        NotificationUtils.setNotificationsMuted(scheduleType, true);
+        await NotificationStore.cancelAllScheduleNotifications(scheduleType);
+        NotificationStore.setNotificationsMuted(scheduleType, true);
       } else {
         // Check permissions before unmuting
         const hasPermission = await ensurePermissions();
@@ -143,8 +143,8 @@ export const useNotification = () => {
         }
 
         // Reschedule notifications based on existing preferences
-        await NotificationUtils.rescheduleAllNotifications(scheduleType);
-        NotificationUtils.setNotificationsMuted(scheduleType, false);
+        await NotificationStore.rescheduleAllNotifications(scheduleType);
+        NotificationStore.setNotificationsMuted(scheduleType, false);
       }
 
       logger.info('NOTIFICATION: Updated mute settings:', { scheduleType, mute });
