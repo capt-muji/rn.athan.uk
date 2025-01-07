@@ -155,29 +155,20 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
   Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 };
 
-// /**
-//  * Clean up outdated notifications for a single prayer
-//  */
-// export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-//   const schedule = Database.getScheduledNotifications(scheduleType);
-//   const notifications = schedule[prayerIndex] || [];
-//   const remaining = notifications.filter((n) => !NotificationUtils.isNotificationOutdated(n));
+/**
+ * Clean up outdated notifications for a single prayer
+ */
+export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+  const prayerNotifs = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
-//   // Only update store if we found outdated notifications
-//   if (remaining.length < notifications.length) {
-//     Database.setScheduledNotifications(scheduleType, {
-//       ...schedule,
-//       [prayerIndex]: remaining,
-//     });
+  prayerNotifs.forEach((notification) => {
+    logger.info('NOTIFICATION: Checking outdated');
 
-//     logger.info('NOTIFICATION: Cleaned up outdated:', {
-//       scheduleType,
-//       prayerIndex,
-//       removedCount: notifications.length - remaining.length,
-//       remainingCount: remaining.length,
-//     });
-//   }
-// };
+    if (!NotificationUtils.isNotificationOutdated(notification)) return;
+
+    Database.clearOneScheduledNotificationsForPrayer(scheduleType, prayerIndex, notification.id);
+  });
+};
 
 // /**
 //  * Clean up all outdated notifications for a specific schedule

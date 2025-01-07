@@ -1,4 +1,4 @@
-import { format, addDays } from 'date-fns';
+import { format, addDays, isBefore } from 'date-fns';
 
 import * as TimeUtils from '@/shared/time';
 import { AlertType } from '@/shared/types';
@@ -52,15 +52,15 @@ export const genNotificationContent = (
   };
 };
 
-// /**
-//  * Checks if a scheduled notification is outdated
-//  */
-// export const isNotificationOutdated = (notification: ScheduledNotification): boolean => {
-//   const triggerDate = createTriggerDate(notification.date, notification.time);
-//   const now = TimeUtils.createLondonDate();
+/**
+ * Checks if a scheduled notification is outdated
+ */
+export const isNotificationOutdated = (notification: ScheduledNotification): boolean => {
+  const triggerDate = genTriggerDate(notification.date, notification.time);
+  const now = TimeUtils.createLondonDate();
 
-//   return isBefore(triggerDate, now);
-// };
+  return isBefore(triggerDate, now);
+};
 
 /**
  * Checks if a given prayer time is in the future
