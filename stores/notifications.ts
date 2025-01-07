@@ -158,11 +158,11 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 /**
  * Clean up outdated notifications for a single prayer
  */
-export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+export const cleanupOutdatedNotificationsForPrayer = (scheduleType: ScheduleType, prayerIndex: number) => {
   const prayerNotifs = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
   prayerNotifs.forEach((notification) => {
-    logger.info('NOTIFICATION: Checking outdated');
+    logger.info('NOTIFICATION: Checking outdated for prayer');
 
     if (!NotificationUtils.isNotificationOutdated(notification)) return;
 
@@ -170,29 +170,21 @@ export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: Schedu
   });
 };
 
-// /**
-//  * Clean up all outdated notifications for a specific schedule
-//  */
-// export const cleanupOutdatedNotificationsForSchedule = async (scheduleType: ScheduleType) => {
-//   const schedule = Database.getScheduledNotifications(scheduleType);
+/**
+ * Clean up all outdated notifications for a specific schedule
+ */
+export const cleanupOutdatedNotificationsForSchedule = (scheduleType: ScheduleType) => {
+  logger.info('NOTIFICATION: Checking outdated for schedule');
+  Database.clearAllScheduledNotificationsForSchedule(scheduleType);
+};
 
-//   // Clean all prayers in the schedule
-//   await Promise.all(
-//     Object.keys(schedule).map((index) => cleanupOutdatedNotificationsForPrayer(scheduleType, Number(index)))
-//   );
-
-//   logger.info('NOTIFICATION: Cleaned up schedule:', { scheduleType });
-// };
-
-// /**
-//  * Clean up all outdated notifications for all schedules
-//  */
-// export const cleanupAllOutdatedNotifications = async () => {
-//   await Promise.all([
-//     cleanupOutdatedNotificationsForSchedule(ScheduleType.Standard),
-//     cleanupOutdatedNotificationsForSchedule(ScheduleType.Extra),
-//   ]);
-// };
+/**
+ * Clean up all outdated notifications for all schedules
+ */
+export const cleanupAllOutdatedNotificationsForAllSchedules = () => {
+  cleanupOutdatedNotificationsForSchedule(ScheduleType.Standard);
+  cleanupOutdatedNotificationsForSchedule(ScheduleType.Extra);
+};
 
 /**
  * Cancel and clear all notifications for a schedule type
