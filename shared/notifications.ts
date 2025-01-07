@@ -12,10 +12,6 @@ export interface ScheduledNotification {
   alertType: AlertType;
 }
 
-// export interface NotificationSchedule {
-//   [prayerIndex: number]: ScheduledNotification[];
-// }
-
 /**
  * Creates notification trigger date from prayer date and time
  */
@@ -81,21 +77,3 @@ export const genNext5Days = (startDate: Date = TimeUtils.createLondonDate()): st
     return format(date, 'yyyy-MM-dd');
   });
 };
-
-// /**
-//  * Creates notification identifier
-//  */
-// export const genNotificationId = (scheduleType: ScheduleType, prayerIndex: number, date: string): string => {
-//   return `${scheduleType}_${prayerIndex}_${date}`;
-// };
-
-// /**
-//  * Creates storage key for scheduled notifications array based on schedule type and prayer index
-//  */
-// export const genKeyScheduledNotificationsForPrayer = (
-//   scheduleType: ScheduleType,
-//   prayerIndex: number,
-//   notificationId: string
-// ): string => {
-//   return `scheduled_notifications_${scheduleType}_${prayerIndex}_${notificationId}`;
-// };
