@@ -3,9 +3,8 @@ import { createJSONStorage } from 'jotai/utils';
 import { MMKV } from 'react-native-mmkv';
 
 import logger from '@/shared/logger';
-import { NotificationSchedule } from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
-import { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+import { ISingleApiResponseTransformed } from '@/shared/types';
 
 export const database = new MMKV();
 
@@ -70,20 +69,6 @@ export const markYearAsFetched = (year: number) => {
   const key = `fetched_years`;
   const fetchedYears = getItem(key) || {};
   setItem(key, { ...fetchedYears, [year]: true });
-};
-
-export const getScheduledNotifications = (scheduleType: ScheduleType): NotificationSchedule => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const key = isStandard ? 'scheduled_notifications_standard' : 'scheduled_notifications_extra';
-
-  return getItem(key) || {};
-};
-
-export const setScheduledNotifications = (scheduleType: ScheduleType, schedule: NotificationSchedule) => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const key = isStandard ? 'scheduled_notifications_standard' : 'scheduled_notifications_extra';
-
-  setItem(key, schedule);
 };
 
 /**

@@ -2,10 +2,9 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
-import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '@/shared/constants';
+import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
-import { ScheduledNotification } from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import { AlertPreferences, AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -96,19 +95,19 @@ export const setNotificationsMuted = (type: ScheduleType, muted: boolean) => {
 };
 
 /**
- * Schedule a single notification and return its identifier
+ * Schedule a single notification in the system and return its identifier
  */
-export const scheduleSingleNotification = async (
+export const addOneScheduledNotificationForPrayerInSystem = async (
   englishName: string,
   arabicName: string,
   date: string,
   time: string,
   alertType: AlertType
-): Promise<string> => {
+): Promise<NotificationUtils.ScheduledNotification> => {
   const sound = await getSoundPreference();
-  const triggerDate = NotificationUtils.createTriggerDate(date, time);
+  const triggerDate = NotificationUtils.genTriggerDate(date, time);
 
-  const content = NotificationUtils.createNotificationContent(englishName, arabicName, alertType, sound);
+  const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, sound);
 
   try {
     const id = await Notifications.scheduleNotificationAsync({
@@ -116,82 +115,88 @@ export const scheduleSingleNotification = async (
       trigger: triggerDate,
     });
 
-    logger.info('NOTIFICATION: Scheduled:', { id, englishName, date, time });
-    return id;
+    const notification = { id, date, time, englishName, arabicName, alertType };
+
+    logger.info('NOTIFICATION SYSTEM: Scheduled:', notification);
+    return notification;
   } catch (error) {
-    logger.error('NOTIFICATION: Failed to schedule:', error);
+    logger.error('NOTIFICATION SYSTEM: Failed to schedule:', error);
     throw error;
   }
 };
 
 /**
- * Add single notification to store
+ * Add single notification to database key
  */
-export const addSingleNotificationToStore = (
+export const addOneScheduledNotificationForPrayerInDb = (
   scheduleType: ScheduleType,
   prayerIndex: number,
-  notification: ScheduledNotification
+  notification: NotificationUtils.ScheduledNotification
 ) => {
-  const current = Database.getScheduledNotifications(scheduleType);
+  const key = NotificationUtils.genKeyScheduledNotificationsForPrayer(scheduleType, prayerIndex);
+  const current = Database.getItem(key);
+
   const notifications = current[prayerIndex] || [];
 
-  Database.setScheduledNotifications(scheduleType, {
-    ...current,
-    [prayerIndex]: [...notifications, notification],
-  });
+  Database.setItem(key, [...notifications, notification]);
+
+  logger.info('NOTIFICATION DB: Added:', notification);
 };
 
 /**
- * Cancel all notifications for a single prayer
+ * Cancel all scheduled notifications for a specific prayer in the system
  */
-export const cancelAllNotificationsForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-  const schedule = Database.getScheduledNotifications(scheduleType);
-  const notifications = schedule[prayerIndex] || [];
+export const removeAllScheduledNotificationForPrayerInSystem = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number
+) => {
+  const key = NotificationUtils.genKeyScheduledNotificationsForPrayer(scheduleType, prayerIndex);
+  const notifications: NotificationUtils.ScheduledNotification[] = Database.getItem(key) || [];
 
   // Cancel all notifications
-  await Promise.all(
-    notifications.map(async (notification) => {
-      try {
-        await Notifications.cancelScheduledNotificationAsync(notification.id);
-        logger.info('NOTIFICATION: Cancelled:', notification.id);
-      } catch (error) {
-        logger.error('NOTIFICATION: Failed to cancel:', error);
-      }
-    })
-  );
+  const promises = notifications.map((notification) => Notifications.cancelScheduledNotificationAsync(notification.id));
+  await Promise.all(promises);
 
-  // Clear from store
-  Database.setScheduledNotifications(scheduleType, {
-    ...schedule,
-    [prayerIndex]: [],
-  });
+  logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', { scheduleType, prayerIndex });
 };
 
 /**
- * Schedule multiple notifications (5 days) for a single prayer
+ * Remove all scheduled notifications for a specific prayer in the system
  */
-export const scheduleMultipleNotificationsForPrayer = async (
+export const removeAllScheduledNotificationForPrayerInDb = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const key = NotificationUtils.genKeyScheduledNotificationsForPrayer(scheduleType, prayerIndex);
+
+  Database.setItem(key, []);
+
+  logger.info('NOTIFICATION DB: Removed all notifications for prayer:', { scheduleType, prayerIndex });
+};
+
+/**
+ * Schedule multiple notifications (5 days) for a single prayer in the system and database
+ */
+export const addMultipleScheduleNotificationsForPrayer = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
   arabicName: string,
   alertType: AlertType
 ) => {
-  const next5Days = NotificationUtils.getNext5Days();
+  const next5Days = NotificationUtils.genNext5Days();
 
   // Cancel existing notifications first
-  await cancelAllNotificationsForPrayer(scheduleType, prayerIndex);
+  await removeAllScheduledNotificationForPrayerInSystem(scheduleType, prayerIndex);
+  removeAllScheduledNotificationForPrayerInDb(scheduleType, prayerIndex);
 
   // Schedule new notifications
-  for (const date of next5Days) {
-    const dateI = TimeUtils.createLondonDate(date);
-    const prayerData = Database.getPrayerByDate(dateI);
+  for (const dateI of next5Days) {
+    const date = TimeUtils.createLondonDate(dateI);
+    const prayerData = Database.getPrayerByDate(date);
     if (!prayerData) continue;
 
     const prayerTime = prayerData[englishName.toLowerCase() as keyof typeof prayerData];
 
     // Skip if prayer time has passed
-    if (!NotificationUtils.isPrayerTimeInFuture(date, prayerTime)) {
+    if (!NotificationUtils.isPrayerTimeInFuture(dateI, prayerTime)) {
       logger.info('Skipping past prayer:', { date, time: prayerTime, englishName });
       continue;
     }
@@ -202,144 +207,118 @@ export const scheduleMultipleNotificationsForPrayer = async (
     }
 
     try {
-      const id = await scheduleSingleNotification(englishName, arabicName, date, prayerTime, alertType);
-
-      addSingleNotificationToStore(scheduleType, prayerIndex, {
-        id,
-        date,
-        time: prayerTime,
+      const notification = await addOneScheduledNotificationForPrayerInSystem(
         englishName,
         arabicName,
-        alertType,
-      });
+        dateI,
+        prayerTime,
+        alertType
+      );
+
+      addOneScheduledNotificationForPrayerInDb(scheduleType, prayerIndex, notification);
     } catch (error) {
       logger.error('Failed to schedule prayer notification:', error);
     }
   }
+
+  logger.info('NOTIFICATION: Scheduled multiple notifications:', {
+    scheduleType,
+    prayerIndex,
+    englishName,
+  });
 };
 
-/**
- * Clean up outdated notifications for a single prayer
- */
-export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-  const schedule = Database.getScheduledNotifications(scheduleType);
-  const notifications = schedule[prayerIndex] || [];
-  const remaining = notifications.filter((n) => !NotificationUtils.isNotificationOutdated(n));
+// /**
+//  * Clean up outdated notifications for a single prayer
+//  */
+// export const cleanupOutdatedNotificationsForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+//   const schedule = Database.getScheduledNotifications(scheduleType);
+//   const notifications = schedule[prayerIndex] || [];
+//   const remaining = notifications.filter((n) => !NotificationUtils.isNotificationOutdated(n));
 
-  // Only update store if we found outdated notifications
-  if (remaining.length < notifications.length) {
-    Database.setScheduledNotifications(scheduleType, {
-      ...schedule,
-      [prayerIndex]: remaining,
-    });
+//   // Only update store if we found outdated notifications
+//   if (remaining.length < notifications.length) {
+//     Database.setScheduledNotifications(scheduleType, {
+//       ...schedule,
+//       [prayerIndex]: remaining,
+//     });
 
-    logger.info('NOTIFICATION: Cleaned up outdated:', {
-      scheduleType,
-      prayerIndex,
-      removedCount: notifications.length - remaining.length,
-      remainingCount: remaining.length,
-    });
-  }
-};
+//     logger.info('NOTIFICATION: Cleaned up outdated:', {
+//       scheduleType,
+//       prayerIndex,
+//       removedCount: notifications.length - remaining.length,
+//       remainingCount: remaining.length,
+//     });
+//   }
+// };
 
-/**
- * Clean up all outdated notifications for a specific schedule
- */
-export const cleanupOutdatedNotificationsForSchedule = async (scheduleType: ScheduleType) => {
-  const schedule = Database.getScheduledNotifications(scheduleType);
+// /**
+//  * Clean up all outdated notifications for a specific schedule
+//  */
+// export const cleanupOutdatedNotificationsForSchedule = async (scheduleType: ScheduleType) => {
+//   const schedule = Database.getScheduledNotifications(scheduleType);
 
-  // Clean all prayers in the schedule
-  await Promise.all(
-    Object.keys(schedule).map((index) => cleanupOutdatedNotificationsForPrayer(scheduleType, Number(index)))
-  );
+//   // Clean all prayers in the schedule
+//   await Promise.all(
+//     Object.keys(schedule).map((index) => cleanupOutdatedNotificationsForPrayer(scheduleType, Number(index)))
+//   );
 
-  logger.info('NOTIFICATION: Cleaned up schedule:', { scheduleType });
-};
+//   logger.info('NOTIFICATION: Cleaned up schedule:', { scheduleType });
+// };
 
-/**
- * Clean up all outdated notifications for all schedules
- */
-export const cleanupAllOutdatedNotifications = async () => {
-  await Promise.all([
-    cleanupOutdatedNotificationsForSchedule(ScheduleType.Standard),
-    cleanupOutdatedNotificationsForSchedule(ScheduleType.Extra),
-  ]);
-};
+// /**
+//  * Clean up all outdated notifications for all schedules
+//  */
+// export const cleanupAllOutdatedNotifications = async () => {
+//   await Promise.all([
+//     cleanupOutdatedNotificationsForSchedule(ScheduleType.Standard),
+//     cleanupOutdatedNotificationsForSchedule(ScheduleType.Extra),
+//   ]);
+// };
 
-/**
- * Debug helper to get all scheduled notifications
- */
-export const getScheduledNotificationsDebug = () => {
-  const standardSchedule = Database.getScheduledNotifications(ScheduleType.Standard);
-  const extraSchedule = Database.getScheduledNotifications(ScheduleType.Extra);
+// /**
+//  * Cancel and clear all notifications for a schedule type
+//  */
+// export const cancelAllScheduleNotifications = async (scheduleType: ScheduleType) => {
+//   const schedule = Database.getScheduledNotifications(scheduleType);
 
-  return {
-    standard: Object.entries(standardSchedule).map(([index, notifications]) => ({
-      prayerIndex: Number(index),
-      count: notifications.length,
-      notifications: notifications.map((n) => ({
-        name: n.englishName,
-        date: n.date,
-        time: n.time,
-        alertType: n.alertType,
-      })),
-    })),
-    extra: Object.entries(extraSchedule).map(([index, notifications]) => ({
-      prayerIndex: Number(index),
-      count: notifications.length,
-      notifications: notifications.map((n) => ({
-        name: n.englishName,
-        date: n.date,
-        time: n.time,
-        alertType: n.alertType,
-      })),
-    })),
-  };
-};
+//   // Cancel all notifications for each prayer index
+//   await Promise.all(
+//     Object.keys(schedule).map(async (index) => {
+//       await cancelAllNotificationsForPrayer(scheduleType, Number(index));
+//     })
+//   );
 
-/**
- * Cancel and clear all notifications for a schedule type
- */
-export const cancelAllScheduleNotifications = async (scheduleType: ScheduleType) => {
-  const schedule = Database.getScheduledNotifications(scheduleType);
+//   // Clear the schedule
+//   Database.setScheduledNotifications(scheduleType, {});
 
-  // Cancel all notifications for each prayer index
-  await Promise.all(
-    Object.keys(schedule).map(async (index) => {
-      await cancelAllNotificationsForPrayer(scheduleType, Number(index));
-    })
-  );
+//   logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
+// };
 
-  // Clear the schedule
-  Database.setScheduledNotifications(scheduleType, {});
+// /**
+//  * Reschedule all notifications for a schedule based on current preferences
+//  */
+// export const rescheduleAllNotifications = async (scheduleType: ScheduleType) => {
+//   const isStandard = scheduleType === ScheduleType.Standard;
 
-  logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
-};
+//   const preferences = getAlertPreferences(scheduleType) as AlertPreferences;
+//   const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+//   const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
 
-/**
- * Reschedule all notifications for a schedule based on current preferences
- */
-export const rescheduleAllNotifications = async (scheduleType: ScheduleType) => {
-  const isStandard = scheduleType === ScheduleType.Standard;
+//   await Promise.all(
+//     Object.entries(preferences).map(async ([index, alertType]) => {
+//       if (alertType === AlertType.Off) return;
 
-  const preferences = getAlertPreferences(scheduleType) as AlertPreferences;
-  const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+//       const prayerIndex = Number(index);
+//       await scheduleMultipleNotificationsForPrayer(
+//         scheduleType,
+//         prayerIndex,
+//         prayers[prayerIndex],
+//         arabicPrayers[prayerIndex],
+//         alertType
+//       );
+//     })
+//   );
 
-  await Promise.all(
-    Object.entries(preferences).map(async ([index, alertType]) => {
-      if (alertType === AlertType.Off) return;
-
-      const prayerIndex = Number(index);
-      await scheduleMultipleNotificationsForPrayer(
-        scheduleType,
-        prayerIndex,
-        prayers[prayerIndex],
-        arabicPrayers[prayerIndex],
-        alertType
-      );
-    })
-  );
-
-  logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
-};
+//   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
+// };
