@@ -106,7 +106,7 @@ export const useNotification = () => {
 
       // Update preference and schedule notifications
       NotificationUtils.setAlertPreference(scheduleType, prayerIndex, alertType);
-      await NotificationUtils.scheduleMultipleNotificationsForPrayer(
+      await NotificationUtils.addMultipleScheduleNotificationsForPrayer(
         scheduleType,
         prayerIndex,
         englishName,
