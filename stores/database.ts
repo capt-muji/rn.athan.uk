@@ -103,9 +103,11 @@ export const addOneScheduledNotificationForPrayer = (
   logger.info('NOTIFICATION DB: Added:', notification);
 };
 
-export const getAllScheduledNotificationsForSchedule = (scheduleType: ScheduleType) => {
+export const getAllScheduledNotificationsForSchedule = (
+  scheduleType: ScheduleType
+): NotificationUtils.ScheduledNotification[] => {
   const prefix = `scheduled_notifications_${scheduleType}`;
-  const notifications = getAllWithPrefix(prefix);
+  const notifications: NotificationUtils.ScheduledNotification[] = getAllWithPrefix(prefix);
 
   logger.info('NOTIFICATION DB: Read:', notifications);
   return notifications;

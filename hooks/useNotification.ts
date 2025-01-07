@@ -132,7 +132,7 @@ export const useNotification = () => {
     try {
       if (mute) {
         // Cancel all notifications first
-        await NotificationStore.cancelAllScheduleNotifications(scheduleType);
+        await NotificationStore.cancelAllScheduleNotificationsForSchedule(scheduleType);
         NotificationStore.setNotificationsMuted(scheduleType, true);
       } else {
         // Check permissions before unmuting

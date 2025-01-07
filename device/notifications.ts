@@ -34,6 +34,12 @@ export const addOneScheduledNotificationForPrayer = async (
   }
 };
 
+export const cancelScheduledNotificationById = async (notificationId: string) => {
+  await Notifications.cancelScheduledNotificationAsync(notificationId);
+
+  logger.info('NOTIFICATION SYSTEM: Cancelled:', notificationId);
+};
+
 export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
   const notifications = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
