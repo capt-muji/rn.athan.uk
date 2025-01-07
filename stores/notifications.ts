@@ -203,24 +203,22 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 //   ]);
 // };
 
-// /**
-//  * Cancel and clear all notifications for a schedule type
-//  */
-// export const cancelAllScheduleNotifications = async (scheduleType: ScheduleType) => {
-//   const schedule = Database.getScheduledNotifications(scheduleType);
+/**
+ * Cancel and clear all notifications for a schedule type
+ */
+export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
+  const schedule = Database.getAllScheduledNotificationsForSchedule(scheduleType);
 
-//   // Cancel all notifications for each prayer index
-//   await Promise.all(
-//     Object.keys(schedule).map(async (index) => {
-//       await cancelAllNotificationsForPrayer(scheduleType, Number(index));
-//     })
-//   );
+  const promises = schedule.map((notification) => Device.cancelScheduledNotificationById(notification.id));
 
-//   // Clear the schedule
-//   Database.setScheduledNotifications(scheduleType, {});
+  // Cancel all notifications for each prayer index
+  await Promise.all(promises);
 
-//   logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
-// };
+  // Clear the schedule
+  Database.clearAllScheduledNotificationsForSchedule(scheduleType);
+
+  logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
+};
 
 // /**
 //  * Reschedule all notifications for a schedule based on current preferences
