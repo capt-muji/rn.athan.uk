@@ -2,7 +2,7 @@ import { getDefaultStore } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 
 import * as Device from '@/device/notifications';
-import { PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
+import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
@@ -220,30 +220,30 @@ export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: Sc
   logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
 };
 
-// /**
-//  * Reschedule all notifications for a schedule based on current preferences
-//  */
-// export const rescheduleAllNotifications = async (scheduleType: ScheduleType) => {
-//   const isStandard = scheduleType === ScheduleType.Standard;
+/**
+ * Reschedule all notifications for a schedule based on current preferences
+ */
+export const rescheduleAllNotifications = async (scheduleType: ScheduleType) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
 
-//   const preferences = getAlertPreferences(scheduleType) as AlertPreferences;
-//   const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-//   const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+  const preferences = getAlertPreferences(scheduleType) as AlertPreferences;
+  const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
 
-//   await Promise.all(
-//     Object.entries(preferences).map(async ([index, alertType]) => {
-//       if (alertType === AlertType.Off) return;
+  const promises = Object.entries(preferences).map(async ([index, alertType]) => {
+    if (alertType === AlertType.Off) return;
 
-//       const prayerIndex = Number(index);
-//       await scheduleMultipleNotificationsForPrayer(
-//         scheduleType,
-//         prayerIndex,
-//         prayers[prayerIndex],
-//         arabicPrayers[prayerIndex],
-//         alertType
-//       );
-//     })
-//   );
+    const prayerIndex = Number(index);
+    return addMultipleScheduleNotificationsForPrayer(
+      scheduleType,
+      prayerIndex,
+      prayers[prayerIndex],
+      arabicPrayers[prayerIndex],
+      alertType
+    );
+  });
 
-//   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
-// };
+  await Promise.all(promises);
+
+  logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
+};
