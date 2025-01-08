@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -34,7 +34,7 @@ interface Props {
 }
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
-  const { handleAlertChange } = useNotification();
+  const { handleAlertChange, ensurePermissions } = useNotification();
 
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
@@ -56,6 +56,24 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const [isPopupActive, setIsPopupActive] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout>();
+  const debouncedAlertRef = useRef<NodeJS.Timeout>();
+
+  // Create debounced version of handleAlertChange
+  const debouncedHandleAlertChange = useCallback(
+    (alertType: AlertType) => {
+      if (debouncedAlertRef.current) clearTimeout(debouncedAlertRef.current);
+
+      debouncedAlertRef.current = setTimeout(async () => {
+        const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, alertType);
+        if (!success) {
+          // Revert UI if the change fails
+          setPopupIconIndex(iconIndex);
+          setIconIndex(iconIndex);
+        }
+      }, 1500);
+    },
+    [type, index, Prayer.english, Prayer.arabic, handleAlertChange, iconIndex]
+  );
 
   // Animations Updates
   if (Prayer.isNext) AnimFill.animate(1);
@@ -90,6 +108,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (debouncedAlertRef.current) clearTimeout(debouncedAlertRef.current);
     };
   }, []);
 
@@ -101,9 +120,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, nextAlertType);
-    if (!success) return;
+    // Allow turning off notifications without permission check
+    if (nextAlertType !== AlertType.Off) {
+      const hasPermission = await ensurePermissions();
+      if (!hasPermission) return;
+    }
 
+    // Update UI immediately
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
 
@@ -113,6 +136,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     AnimBounce.animate(1);
 
     setIsPopupActive(true);
+
+    // Debounce the actual alert change
+    debouncedHandleAlertChange(nextAlertType);
 
     timeoutRef.current = setTimeout(() => {
       AnimOpacity.animate(0, { duration: 50 });

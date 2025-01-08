@@ -159,5 +159,6 @@ export const useNotification = () => {
     handleAlertChange,
     handleMuteChange,
     checkInitialPermissions,
+    ensurePermissions,
   };
 };
