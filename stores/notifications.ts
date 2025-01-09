@@ -104,10 +104,10 @@ export const addMultipleScheduleNotificationsForPrayer = async (
   arabicName: string,
   alertType: AlertType
 ) => {
-  const next2Days = NotificationUtils.genNext2Days();
+  const next2Days = NotificationUtils.genNextXDays(2);
 
   // Cancel existing notifications first
-  await clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+  const cancelPromise = clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
 
   const notificationPromises = [];
 
@@ -141,7 +141,7 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     notificationPromises.push(promise);
   }
 
-  await Promise.all(notificationPromises);
+  await Promise.all([cancelPromise, notificationPromises]);
 
   logger.info('NOTIFICATION: Scheduled multiple notifications:', {
     scheduleType,
