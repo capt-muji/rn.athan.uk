@@ -131,23 +131,15 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     }
 
     const promise = Device.addOneScheduledNotificationForPrayer(englishName, arabicName, dateI, prayerTime, alertType)
-      .then((notification) => {
-        Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification);
-      })
-      .catch((error) => {
-        logger.error('Failed to schedule prayer notification:', error);
-      });
+      .then((notification) => Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification))
+      .catch((error) => logger.error('Failed to schedule prayer notification:', error));
 
     notificationPromises.push(promise);
   }
 
   await Promise.all([cancelPromise, notificationPromises]);
 
-  logger.info('NOTIFICATION: Scheduled multiple notifications:', {
-    scheduleType,
-    prayerIndex,
-    englishName,
-  });
+  logger.info('NOTIFICATION: Scheduled multiple notifications:', { scheduleType, prayerIndex, englishName });
 };
 
 export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
