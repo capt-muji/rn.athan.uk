@@ -68,12 +68,14 @@ export const isPrayerTimeInFuture = (date: string, time: string): boolean => {
 };
 
 /**
- * Generates 2 consecutive dates starting from given date (inclusive)
+ * Generates X consecutive dates starting from given date (inclusive)
  * Index 0 is the start date (today if not specified)
  */
-export const genNext2Days = (startDate: Date = TimeUtils.createLondonDate()): string[] => {
-  return Array.from({ length: 2 }, (_, i) => {
-    const date = addDays(startDate, i);
+export const genNextXDays = (numberOfDays: number): string[] => {
+  const today = TimeUtils.createLondonDate();
+
+  return Array.from({ length: numberOfDays }, (_, i) => {
+    const date = addDays(today, i);
     return format(date, 'yyyy-MM-dd');
   });
 };
