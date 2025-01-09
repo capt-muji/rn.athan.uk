@@ -130,6 +130,7 @@ export const addMultipleScheduleNotificationsForPrayer = async (
       continue;
     }
 
+    // Schedule notification
     const promise = Device.addOneScheduledNotificationForPrayer(englishName, arabicName, dateI, prayerTime, alertType)
       .then((notification) => Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification))
       .catch((error) => logger.error('Failed to schedule prayer notification:', error));
