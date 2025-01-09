@@ -70,7 +70,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
           setPopupIconIndex(iconIndex);
           setIconIndex(iconIndex);
         }
-      }, 1500);
+      }, 1750);
     },
     [type, index, Prayer.english, Prayer.arabic, handleAlertChange, iconIndex]
   );
