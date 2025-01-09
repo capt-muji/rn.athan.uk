@@ -104,14 +104,14 @@ export const addMultipleScheduleNotificationsForPrayer = async (
   arabicName: string,
   alertType: AlertType
 ) => {
-  const next5Days = NotificationUtils.genNext5Days();
+  const next2Days = NotificationUtils.genNext2Days();
 
   // Cancel existing notifications first
   await clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
 
   const notificationPromises = [];
 
-  for (const dateI of next5Days) {
+  for (const dateI of next2Days) {
     const date = TimeUtils.createLondonDate(dateI);
     const prayerData = Database.getPrayerByDate(date);
     if (!prayerData) continue;
@@ -126,6 +126,7 @@ export const addMultipleScheduleNotificationsForPrayer = async (
 
     // Skip if not Friday for Istijaba
     if (englishName.toLowerCase() === 'istijaba' && !TimeUtils.isFriday(date)) {
+      logger.info('Skipping Istijaba on non-Friday:', { date, time: prayerTime });
       continue;
     }
 
