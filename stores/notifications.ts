@@ -109,7 +109,8 @@ export const addMultipleScheduleNotificationsForPrayer = async (
   // Cancel existing notifications first
   await clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
 
-  // Schedule new notifications
+  const notificationPromises = [];
+
   for (const dateI of next5Days) {
     const date = TimeUtils.createLondonDate(dateI);
     const prayerData = Database.getPrayerByDate(date);
@@ -124,24 +125,22 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     }
 
     // Skip if not Friday for Istijaba
-    if (englishName.toLowerCase() === 'istijaba') {
-      if (!TimeUtils.isFriday(date)) continue;
+    if (englishName.toLowerCase() === 'istijaba' && !TimeUtils.isFriday(date)) {
+      continue;
     }
 
-    try {
-      const notification = await Device.addOneScheduledNotificationForPrayer(
-        englishName,
-        arabicName,
-        dateI,
-        prayerTime,
-        alertType
-      );
+    const promise = Device.addOneScheduledNotificationForPrayer(englishName, arabicName, dateI, prayerTime, alertType)
+      .then((notification) => {
+        Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification);
+      })
+      .catch((error) => {
+        logger.error('Failed to schedule prayer notification:', error);
+      });
 
-      Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification);
-    } catch (error) {
-      logger.error('Failed to schedule prayer notification:', error);
-    }
+    notificationPromises.push(promise);
   }
+
+  await Promise.all(notificationPromises);
 
   logger.info('NOTIFICATION: Scheduled multiple notifications:', {
     scheduleType,
