@@ -17,7 +17,7 @@ interface Props {
 export default function Day({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
-  const date = useAtomValue(dateAtom);
+  const date = useAtomValue(dateAtom).value;
   const dateRef = useRef<Animated.Text>(null);
 
   const handleLayout = () => {
@@ -34,7 +34,7 @@ export default function Day({ type }: Props) {
       <View>
         <Text style={styles.location}>London, UK</Text>
         <Animated.Text ref={dateRef} onLayout={handleLayout} style={styles.date}>
-          {formatDateLong(date.value)}
+          {formatDateLong(date)}
         </Animated.Text>
       </View>
       <Masjid />
