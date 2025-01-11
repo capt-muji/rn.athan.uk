@@ -17,7 +17,7 @@ const store = getDefaultStore();
 const createPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
   const type = scheduleType === ScheduleType.Standard ? 'standard' : 'extra';
 
-  return atomWithStorage<{ value: AlertType }>(
+  return atomWithStorage<PrimitiveAtom<AlertType>>(
     `preference_alert_${type}_${prayerIndex}`,
     { value: AlertType.Off },
     Database.mmkvStorage,
