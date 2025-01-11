@@ -15,7 +15,7 @@ const createInitialPrayer = (scheduleType: ScheduleType): ITransformedPrayer => 
   date: '2024-11-15',
   english: 'Fajr',
   arabic: 'الفجر',
-  time: '05:35',
+  time: '00:01',
   type: scheduleType,
 });
 

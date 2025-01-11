@@ -43,6 +43,7 @@ export const getAllWithPrefix = (prefix: string) => {
 
 export const clearPrefix = (prefix: string) => {
   const keys = database.getAllKeys();
+  logger.info(`MMKV CHECK: ${keys}`);
 
   keys.forEach((key) => {
     if (!key.startsWith(prefix)) return;
