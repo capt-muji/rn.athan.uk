@@ -34,7 +34,7 @@ export default function Day({ type }: Props) {
       <View>
         <Text style={styles.location}>London, UK</Text>
         <Animated.Text ref={dateRef} onLayout={handleLayout} style={styles.date}>
-          {formatDateLong(date)}
+          {formatDateLong(date.value)}
         </Animated.Text>
       </View>
       <Masjid />
