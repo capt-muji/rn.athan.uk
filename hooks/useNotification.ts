@@ -85,27 +85,21 @@ export const useNotification = () => {
 
       // Always allow turning off notifications without permission check
       if (alertType === AlertType.Off) {
-        NotificationStore.setAlertPreference(scheduleType, prayerIndex, alertType);
-        NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+        await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
         return true;
       }
 
       // Only update preference if muted, don't schedule notifications
-      if (isMuted) {
-        NotificationStore.setAlertPreference(scheduleType, prayerIndex, alertType);
-        return true;
-      }
+      if (isMuted) return true;
 
       // Check/request permissions for enabling notifications
       const hasPermission = await ensurePermissions();
-
       if (!hasPermission) {
         logger.warn('NOTIFICATION: Permissions not granted');
         return false;
       }
 
-      // Update preference and schedule notifications
-      NotificationStore.setAlertPreference(scheduleType, prayerIndex, alertType);
+      // Schedule notifications
       await NotificationStore.addMultipleScheduleNotificationsForPrayer(
         scheduleType,
         prayerIndex,
