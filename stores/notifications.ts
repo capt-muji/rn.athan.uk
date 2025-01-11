@@ -16,21 +16,17 @@ const store = getDefaultStore();
 // --- Individual Prayer Atoms ---
 const createPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
   const type = scheduleType === ScheduleType.Standard ? 'standard' : 'extra';
-  return atomWithStorage<AlertType>(
-    `preference_alert_${type}_${prayerIndex}`, // Updated key name pattern
-    AlertType.Off,
-    Database.mmkvStorage,
-    { getOnInit: true }
-  );
+
+  return atomWithStorage<AlertType>(`preference_alert_${type}_${prayerIndex}`, AlertType.Off, Database.mmkvStorage, {
+    getOnInit: true,
+  });
 };
 
-// Generate atoms for each prayer
-export const standardPrayerAlertAtoms = PRAYERS_ENGLISH.map((_, index) => 
+export const standardPrayerAlertAtoms = PRAYERS_ENGLISH.map((_, index) =>
   createPrayerAlertAtom(ScheduleType.Standard, index)
 );
-export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((_, index) => 
-  createPrayerAlertAtom(ScheduleType.Extra, index)
-);
+
+export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((_, index) => createPrayerAlertAtom(ScheduleType.Extra, index));
 
 export const soundPreferenceAtom = atomWithStorage<number>('preference_sound', 0, Database.mmkvStorage, {
   getOnInit: true,
