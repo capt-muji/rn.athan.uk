@@ -8,7 +8,12 @@ import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Error from '@/components/Error';
 import Overlay from '@/components/Overlay';
 import { useNotification } from '@/hooks/useNotification';
+import * as Database from '@/stores/database';
 import { syncLoadable } from '@/stores/sync';
+
+// TODO: Remove below check
+Database.cleanup();
+// TODO: Remove above check
 
 export default function Index() {
   const { state } = useAtomValue(syncLoadable);
