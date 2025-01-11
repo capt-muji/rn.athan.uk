@@ -184,6 +184,6 @@ export type ScheduleAtom = typeof standardScheduleAtom;
 export type TimerKey = 'standard' | 'extra' | 'overlay' | 'midnight';
 
 // intefae with valu property
-export interface PrimitiveAtom<T extends string | number | boolean> {
+export interface PrimitiveAtom<T> {
   value: T;
 }
