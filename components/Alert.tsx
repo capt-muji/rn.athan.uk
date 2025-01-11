@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { useAtomValue, useAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
@@ -12,11 +12,7 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
-import {
-  getPrayerAlertAtom,
-  standardNotificationsMutedAtom,
-  extraNotificationsMutedAtom,
-} from '@/stores/notifications';
+import { getPrayerAlertAtom, getMutedState, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { showSheet } from '@/stores/ui';
 
@@ -38,8 +34,10 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
 
-  const isMuted = useAtomValue(Prayer.isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom);
-  const [alertType, setAlertType] = useAtom(getPrayerAlertAtom(type, index));
+  const isMuted = getMutedState(type);
+  const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
+  const [iconIndex, setIconIndex] = useState(alertAtom.value);
+  const [popupIconIndex, setPopupIconIndex] = useState(alertAtom.value);
 
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
@@ -49,8 +47,6 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     toColor: isMuted ? COLORS.inactivePrayer : COLORS.activePrayer,
   });
 
-  const [iconIndex, setIconIndex] = useState(alertType);
-  const [popupIconIndex, setPopupIconIndex] = useState(alertType);
   const [isPopupActive, setIsPopupActive] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -58,23 +54,23 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   // Create debounced version of handleAlertChange
   const debouncedHandleAlertChange = useCallback(
-    (alertType: AlertType) => {
+    (newAlertType: AlertType) => {
       if (debouncedAlertRef.current) clearTimeout(debouncedAlertRef.current);
 
       debouncedAlertRef.current = setTimeout(async () => {
-        // Update atom storage
-        setAlertType(alertType);
+        // Update atom storage using setPrayerAlertType instead
+        setPrayerAlertType(type, index, newAlertType);
 
-        const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, alertType);
+        const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, newAlertType);
         if (!success) {
           // Revert UI and atom if the change fails
           setPopupIconIndex(iconIndex);
           setIconIndex(iconIndex);
-          setAlertType(iconIndex);
+          setPrayerAlertType(type, index, iconIndex);
         }
       }, 1750);
     },
-    [type, index, Prayer.english, Prayer.arabic, handleAlertChange, iconIndex, setAlertType]
+    [type, index, Prayer.english, Prayer.arabic, handleAlertChange, iconIndex]
   );
 
   // Animations Updates
@@ -88,9 +84,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Effects
   // Sync alert preferences with state
   useEffect(() => {
-    setIconIndex(alertType);
-    setPopupIconIndex(alertType);
-  }, [alertType]);
+    setIconIndex(alertAtom.value);
+    setPopupIconIndex(alertAtom.value);
+  }, [alertAtom.value]);
 
   // Disable popup on overlay open/close
   useEffect(() => {

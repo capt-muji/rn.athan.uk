@@ -80,8 +80,8 @@ export const useNotification = () => {
     alertType: AlertType
   ) => {
     try {
-      // Check if schedule is muted
-      const isMuted = NotificationStore.getNotificationsMuted(scheduleType);
+      // Check if schedule is muted - Use getMutedState instead of getNotificationsMuted
+      const isMuted = NotificationStore.getMutedState(scheduleType);
 
       // Always allow turning off notifications without permission check
       if (alertType === AlertType.Off) {

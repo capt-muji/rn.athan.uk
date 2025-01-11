@@ -6,21 +6,19 @@ import * as Api from '@/api/client';
 import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import { DaySelection, ScheduleType } from '@/shared/types';
+import { DaySelection, ScheduleType, PrimitiveAtom } from '@/shared/types';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 import * as Timer from '@/stores/timer';
 
 const store = getDefaultStore();
 
-// TODO: Remove below check
-Database.cleanup();
-// TODO: Remove above check
-
 // --- Atoms ---
 
 export const syncLoadable = loadable(atom(async () => sync()));
-export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmkvStorage, { getOnInit: true });
+export const dateAtom = atomWithStorage<PrimitiveAtom<string>>('display_date', { value: '' }, Database.mmkvStorage, {
+  getOnInit: true,
+});
 
 // --- Actions ---
 
@@ -28,7 +26,7 @@ const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
   const currentDateFromData = schedule.today[PRAYER_INDEX_ASR].date;
 
-  store.set(dateAtom, currentDateFromData);
+  store.set(dateAtom, { value: currentDateFromData });
 };
 
 const shouldFetchNextYear = (): boolean => {
@@ -47,7 +45,7 @@ const initializeAppState = async (date: Date) => {
 };
 
 const needsDataUpdate = (): boolean => {
-  const dateSaved = store.get(dateAtom);
+  const dateSaved = store.get(dateAtom).value;
   const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
   const dateNow = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
 
