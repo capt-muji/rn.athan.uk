@@ -6,77 +6,53 @@ import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
-import { AlertPreferences, AlertType, ScheduleType } from '@/shared/types';
+import { AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
-// --- Initial values ---
-
-const initialAlertPreferences = (prayers: string[]): AlertPreferences => {
-  const preferences: AlertPreferences = {};
-
-  prayers.forEach((_, index) => {
-    preferences[index] = AlertType.Off;
-  });
-
-  return preferences;
-};
-
 // --- Atoms ---
 
-export const standardAlertPreferencesAtom = atomWithStorage<AlertPreferences>(
-  'preferences_alert_standard',
-  initialAlertPreferences(PRAYERS_ENGLISH),
-  Database.mmkvStorage,
-  { getOnInit: true }
+// --- Individual Prayer Atoms ---
+const createPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const type = scheduleType === ScheduleType.Standard ? 'standard' : 'extra';
+  return atomWithStorage<AlertType>(
+    `preference_alert_${type}_${prayerIndex}`, // Updated key name pattern
+    AlertType.Off,
+    Database.mmkvStorage,
+    { getOnInit: true }
+  );
+};
+
+// Generate atoms for each prayer
+export const standardPrayerAlertAtoms = PRAYERS_ENGLISH.map((_, index) => 
+  createPrayerAlertAtom(ScheduleType.Standard, index)
+);
+export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((_, index) => 
+  createPrayerAlertAtom(ScheduleType.Extra, index)
 );
 
-export const extraAlertPreferencesAtom = atomWithStorage<AlertPreferences>(
-  'preferences_alert_extra',
-  initialAlertPreferences(EXTRAS_ENGLISH),
-  Database.mmkvStorage,
-  { getOnInit: true }
-);
-
-export const soundPreferenceAtom = atomWithStorage<number>('preferences_sound', 0, Database.mmkvStorage, {
+export const soundPreferenceAtom = atomWithStorage<number>('preference_sound', 0, Database.mmkvStorage, {
   getOnInit: true,
 });
 
 export const standardNotificationsMutedAtom = atomWithStorage<boolean>(
-  'preferences_muted_standard',
+  'preference_mute_standard',
   false,
   Database.mmkvStorage,
   { getOnInit: true }
 );
 
 export const extraNotificationsMutedAtom = atomWithStorage<boolean>(
-  'preferences_muted_extra',
+  'preference_mute_extra',
   false,
   Database.mmkvStorage,
-  {
-    getOnInit: true,
-  }
+  { getOnInit: true }
 );
 
 // --- Actions ---
 
 export const getSoundPreference = () => store.get(soundPreferenceAtom);
-
-export const getAlertPreferences = (type: ScheduleType) => {
-  const isStandard = type === ScheduleType.Standard;
-  const alertPreferencesAtom = isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom;
-
-  return store.get(alertPreferencesAtom);
-};
-
-export const setAlertPreference = (scheduleType: ScheduleType, prayerIndex: number, alertType: AlertType) => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const preferences = getAlertPreferences(scheduleType);
-  const scheduleAtom = isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom;
-
-  store.set(scheduleAtom, { ...preferences, [prayerIndex]: alertType });
-};
 
 export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
 
@@ -92,6 +68,24 @@ export const setNotificationsMuted = (type: ScheduleType, muted: boolean) => {
   const atom = isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
 
   store.set(atom, muted);
+};
+
+export const getPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const atoms = isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms;
+
+  return atoms[prayerIndex];
+};
+
+export const getPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const atom = getPrayerAlertAtom(scheduleType, prayerIndex);
+
+  return store.get(atom);
+};
+
+export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: number, alertType: AlertType) => {
+  const atom = getPrayerAlertAtom(scheduleType, prayerIndex);
+  store.set(atom, alertType);
 };
 
 /**
@@ -201,25 +195,22 @@ export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: Sc
  */
 export const rescheduleAllNotifications = async (scheduleType: ScheduleType) => {
   const isStandard = scheduleType === ScheduleType.Standard;
-
-  const preferences = getAlertPreferences(scheduleType) as AlertPreferences;
   const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
 
-  const promises = Object.entries(preferences).map(async ([index, alertType]) => {
+  const promises = prayers.map(async (_, index) => {
+    const alertType = getPrayerAlertType(scheduleType, index);
     if (alertType === AlertType.Off) return;
 
-    const prayerIndex = Number(index);
     return addMultipleScheduleNotificationsForPrayer(
       scheduleType,
-      prayerIndex,
-      prayers[prayerIndex],
-      arabicPrayers[prayerIndex],
+      index,
+      prayers[index],
+      arabicPrayers[index],
       alertType
     );
   });
 
   await Promise.all(promises);
-
   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
 };
