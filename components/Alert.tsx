@@ -84,9 +84,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Effects
   // Sync alert preferences with state
   useEffect(() => {
-    setIconIndex(alertAtom.value);
-    setPopupIconIndex(alertAtom.value);
-  }, [alertAtom.value]);
+    setIconIndex(alertAtom);
+    setPopupIconIndex(alertAtom);
+  }, [alertAtom]);
 
   // Disable popup on overlay open/close
   useEffect(() => {
