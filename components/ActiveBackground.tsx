@@ -17,7 +17,7 @@ export default function ActiveBackground({ type }: Props) {
   const { schedule, isStandard, isLastPrayerPassed } = useSchedule(type);
 
   // State
-  const date = useAtomValue(dateAtom).value;
+  const date = useAtomValue(dateAtom);
 
   // Derived State
   const today = TimeUtils.formatDateShort(TimeUtils.createLondonDate());

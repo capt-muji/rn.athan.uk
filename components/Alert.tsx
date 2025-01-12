@@ -36,8 +36,8 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   const isMuted = getMutedState(type);
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
-  const [iconIndex, setIconIndex] = useState(alertAtom.value);
-  const [popupIconIndex, setPopupIconIndex] = useState(alertAtom.value);
+  const [iconIndex, setIconIndex] = useState(alertAtom);
+  const [popupIconIndex, setPopupIconIndex] = useState(alertAtom);
 
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);

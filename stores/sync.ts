@@ -1,12 +1,13 @@
 import { atom } from 'jotai';
-import { atomWithStorage, loadable } from 'jotai/utils';
+import { loadable } from 'jotai/utils';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Api from '@/api/client';
+import { atomWithStorageString } from '@/shared/atomStorage';
 import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import { DaySelection, ScheduleType, PrimitiveAtom } from '@/shared/types';
+import { DaySelection, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 import * as Timer from '@/stores/timer';
@@ -16,17 +17,14 @@ const store = getDefaultStore();
 // --- Atoms ---
 
 export const syncLoadable = loadable(atom(async () => sync()));
-export const dateAtom = atomWithStorage<PrimitiveAtom<string>>('display_date', { value: '' }, Database.mmkvStorage, {
-  getOnInit: true,
-});
+export const dateAtom = atomWithStorageString('display_date', '');
 
 // --- Actions ---
 
 const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
   const currentDateFromData = schedule.today[PRAYER_INDEX_ASR].date;
-
-  store.set(dateAtom, { value: currentDateFromData });
+  store.set(dateAtom, currentDateFromData);
 };
 
 const shouldFetchNextYear = (): boolean => {
@@ -45,7 +43,7 @@ const initializeAppState = async (date: Date) => {
 };
 
 const needsDataUpdate = (): boolean => {
-  const dateSaved = store.get(dateAtom).value;
+  const dateSaved = store.get(dateAtom);
   const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
   const dateNow = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
 
