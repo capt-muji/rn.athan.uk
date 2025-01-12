@@ -12,7 +12,7 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
-import { getPrayerAlertAtom, getMutedState, setPrayerAlertType } from '@/stores/notifications';
+import { getPrayerAlertAtom, getScheduleMutedState, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { showSheet } from '@/stores/ui';
 
@@ -34,7 +34,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
 
-  const isMuted = getMutedState(type);
+  const isMuted = getScheduleMutedState(type);
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
   const [iconIndex, setIconIndex] = useState(alertAtom);
   const [popupIconIndex, setPopupIconIndex] = useState(alertAtom);
