@@ -8,14 +8,9 @@ import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Error from '@/components/Error';
 import Overlay from '@/components/Overlay';
 import { useNotification } from '@/hooks/useNotification';
-import * as Database from '@/stores/database';
 import { syncLoadable } from '@/stores/sync';
 
 export default function Index() {
-  // TODO: Remove below check
-  Database.cleanup();
-  // TODO: Remove above check
-
   const { state } = useAtomValue(syncLoadable);
   const [fontsLoaded] = useFonts({ Roboto: FontRoboto, 'Roboto-Medium': FontRobotoMedium });
   const { checkInitialPermissions } = useNotification();
