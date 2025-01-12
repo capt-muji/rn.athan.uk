@@ -42,7 +42,7 @@ export const getPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
   return store.get(atom);
 };
 
-export const getMutedState = (scheduleType: ScheduleType): boolean => {
+export const getScheduleMutedState = (scheduleType: ScheduleType): boolean => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const atom = isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
 
@@ -53,8 +53,9 @@ export const getSoundPreference = () => store.get(soundPreferenceAtom);
 
 export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
 
-export const setNotificationsMuted = (type: ScheduleType, muted: boolean) => {
-  const atom = type === ScheduleType.Standard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+export const setScheduleMutedState = (scheduleType: ScheduleType, muted: boolean) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const atom = isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
   store.set(atom, muted);
 };
 
