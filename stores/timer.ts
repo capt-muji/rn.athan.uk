@@ -98,7 +98,7 @@ const startTimerOverlay = () => {
 const startTimerMidnight = () => {
   clearTimer('midnight');
 
-  const savedDate = store.get(dateAtom).value;
+  const savedDate = store.get(dateAtom);
 
   timers.midnight = setInterval(() => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
