@@ -1,13 +1,13 @@
 import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
-import { atomWithStorageNumber, atomWithStorageBoolean } from '@/shared/atomStorage';
 import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
+import { atomWithStorageNumber, atomWithStorageBoolean } from '@/stores/storage';
 
 const store = getDefaultStore();
 

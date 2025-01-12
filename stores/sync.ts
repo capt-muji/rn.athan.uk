@@ -3,13 +3,13 @@ import { loadable } from 'jotai/utils';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Api from '@/api/client';
-import { atomWithStorageString } from '@/shared/atomStorage';
 import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
+import { atomWithStorageString } from '@/stores/storage';
 import * as Timer from '@/stores/timer';
 
 const store = getDefaultStore();
