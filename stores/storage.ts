@@ -11,7 +11,7 @@ export const atomWithStorageNumber = (key: string, initialValue: number) =>
     {
       getItem: (key, initialValue) => {
         const value = database.getString(key);
-        return value ? Number(value) : initialValue;
+        return value === undefined ? initialValue : Number(value);
       },
       setItem: (key, value) => database.set(key, value.toString()),
       removeItem: (key) => database.delete(key),
@@ -24,7 +24,10 @@ export const atomWithStorageBoolean = (key: string, initialValue: boolean) =>
     key,
     initialValue,
     {
-      getItem: (key, initialValue) => database.getBoolean(key) ?? initialValue,
+      getItem: (key, initialValue) => {
+        const value = database.getBoolean(key);
+        return value === undefined ? initialValue : value;
+      },
       setItem: (key, value) => database.set(key, value),
       removeItem: (key) => database.delete(key),
     },
@@ -36,7 +39,10 @@ export const atomWithStorageString = (key: string, initialValue: string) =>
     key,
     initialValue,
     {
-      getItem: (key, initialValue) => database.getString(key) ?? initialValue,
+      getItem: (key, initialValue) => {
+        const value = database.getString(key);
+        return value === undefined ? initialValue : value;
+      },
       setItem: (key, value) => database.set(key, value),
       removeItem: (key) => database.delete(key),
     },
@@ -50,7 +56,7 @@ export const atomWithStorageArray = <T = unknown>(key: string, initialValue: T[]
     {
       getItem: (key, initialValue) => {
         const value = database.getString(key);
-        return value ? (JSON.parse(value) as T[]) : initialValue;
+        return value === undefined ? initialValue : (JSON.parse(value) as T[]);
       },
       setItem: (key, value) => database.set(key, JSON.stringify(value)),
       removeItem: (key) => database.delete(key),
@@ -65,7 +71,7 @@ export const atomWithStorageObject = <T extends object = Record<string, unknown>
     {
       getItem: (key, initialValue) => {
         const value = database.getString(key);
-        return value ? (JSON.parse(value) as T) : initialValue;
+        return value === undefined ? initialValue : (JSON.parse(value) as T);
       },
       setItem: (key, value) => database.set(key, JSON.stringify(value)),
       removeItem: (key) => database.delete(key),
