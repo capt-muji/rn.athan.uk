@@ -29,12 +29,11 @@ interface Props {
 }
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
-  const { handleAlertChange, ensurePermissions } = useNotification();
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
+  const { handleAlertChange, ensurePermissions } = useNotification();
 
-  const isMuted = getScheduleMutedState(type);
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
   const [iconIndex, setIconIndex] = useState(alertAtom);
   const [popupIconIndex, setPopupIconIndex] = useState(alertAtom);
@@ -44,7 +43,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const AnimBounce = useAnimationBounce(0);
   const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
-    toColor: isMuted ? COLORS.inactivePrayer : COLORS.activePrayer,
+    toColor: Schedule.isMuted ? COLORS.inactivePrayer : COLORS.activePrayer,
   });
 
   const [isPopupActive, setIsPopupActive] = useState(false);
@@ -99,9 +98,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   }, [overlay.isOn]);
 
   useEffect(() => {
-    const colorPos = (Prayer.isOverlay || isPopupActive) && !isMuted ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = (Prayer.isOverlay || isPopupActive) && !Schedule.isMuted ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: 50 });
-  }, [isPopupActive, Prayer.isOverlay, isMuted]);
+  }, [isPopupActive, Prayer.isOverlay, Schedule.isMuted]);
 
   useEffect(() => {
     return () => {
