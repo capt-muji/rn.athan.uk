@@ -12,7 +12,7 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
-import { getPrayerAlertAtom, getScheduleMutedState, setPrayerAlertType } from '@/stores/notifications';
+import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { showSheet } from '@/stores/ui';
 
