@@ -68,7 +68,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
           setIconIndex(iconIndex);
           setPrayerAlertType(type, index, iconIndex);
         }
-      }, ANIMATION.popupDuration + 100);
+      }, ANIMATION.debounce);
     },
     [type, index, Prayer.english, Prayer.arabic, handleAlertChange, iconIndex]
   );
