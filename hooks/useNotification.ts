@@ -80,8 +80,8 @@ export const useNotification = () => {
     alertType: AlertType
   ) => {
     try {
-      // Check if schedule is muted - Use getMutedState instead of getNotificationsMuted
-      const isMuted = NotificationStore.getMutedState(scheduleType);
+      // Check if schedule is muted - Use getScheduleMutedState instead of getNotificationsMuted
+      const isMuted = NotificationStore.getScheduleMutedState(scheduleType);
 
       // Always allow turning off notifications without permission check
       if (alertType === AlertType.Off) {
@@ -127,7 +127,7 @@ export const useNotification = () => {
       if (mute) {
         // Cancel all notifications first
         await NotificationStore.cancelAllScheduleNotificationsForSchedule(scheduleType);
-        NotificationStore.setNotificationsMuted(scheduleType, true);
+        NotificationStore.setScheduleMutedState(scheduleType, true);
       } else {
         // Check permissions before unmuting
         const hasPermission = await ensurePermissions();
@@ -138,7 +138,7 @@ export const useNotification = () => {
 
         // Reschedule notifications based on existing preferences
         await NotificationStore.rescheduleAllNotifications(scheduleType);
-        NotificationStore.setNotificationsMuted(scheduleType, false);
+        NotificationStore.setScheduleMutedState(scheduleType, false);
       }
 
       logger.info('NOTIFICATION: Updated mute settings:', { scheduleType, mute });

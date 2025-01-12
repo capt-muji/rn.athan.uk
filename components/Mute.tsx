@@ -11,7 +11,7 @@ import { ScheduleType } from '@/shared/types';
 import {
   standardNotificationsMutedAtom,
   extraNotificationsMutedAtom,
-  setNotificationsMuted,
+  setScheduleMutedState,
 } from '@/stores/notifications';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -39,7 +39,7 @@ export default function Mute({ type }: Props) {
     const newMutedState = !isMuted;
 
     // Update UI immediately
-    setNotificationsMuted(type, newMutedState);
+    setScheduleMutedState(type, newMutedState);
 
     // Debounce the state change
     if (debouncedMuteRef.current) clearTimeout(debouncedMuteRef.current);
