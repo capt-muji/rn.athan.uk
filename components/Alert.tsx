@@ -76,7 +76,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Animations Updates
   if (Prayer.isNext) AnimFill.animate(1);
 
-  if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
+  if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
     const delay = getCascadeDelay(index, type);
     AnimFill.animate(0, { delay });
   }
