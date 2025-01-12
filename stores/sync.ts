@@ -64,6 +64,7 @@ const updatePrayerData = async () => {
       Database.saveAllPrayers(nextYearData);
       Database.markYearAsFetched(currentYear + 1);
     }
+    logger.info('SYNC: Data refresh complete');
   } catch (error) {
     logger.error('SYNC: Failed to update prayer data', { error });
     throw error;

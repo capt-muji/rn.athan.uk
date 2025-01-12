@@ -15,7 +15,9 @@ const store = getDefaultStore();
 
 // --- Individual Prayer Atoms ---
 export const createPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
-  const type = scheduleType === ScheduleType.Standard ? 'standard' : 'extra';
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const type = isStandard ? 'standard' : 'extra';
+
   return atomWithStorageNumber(`preference_alert_${type}_${prayerIndex}`, AlertType.Off);
 };
 
