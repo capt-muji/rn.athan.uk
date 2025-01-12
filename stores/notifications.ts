@@ -43,7 +43,9 @@ export const getPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
 };
 
 export const getMutedState = (scheduleType: ScheduleType): boolean => {
-  const atom = scheduleType === ScheduleType.Standard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const atom = isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
+
   return store.get(atom);
 };
 
