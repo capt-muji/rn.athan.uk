@@ -182,3 +182,8 @@ export interface FetchDataResult {
 export type ScheduleAtom = typeof standardScheduleAtom;
 
 export type TimerKey = 'standard' | 'extra' | 'overlay' | 'midnight';
+
+// intefae with valu property
+export interface PrimitiveAtom<T> {
+  value: T;
+}

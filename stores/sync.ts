@@ -1,6 +1,5 @@
-import * as Notifications from 'expo-notifications';
 import { atom } from 'jotai';
-import { atomWithStorage, loadable } from 'jotai/utils';
+import { loadable } from 'jotai/utils';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Api from '@/api/client';
@@ -9,27 +8,22 @@ import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { DaySelection, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
-import { getScheduledNotificationsDebug } from '@/stores/notifications';
 import * as ScheduleStore from '@/stores/schedule';
+import { atomWithStorageString } from '@/stores/storage';
 import * as Timer from '@/stores/timer';
 
 const store = getDefaultStore();
 
-// TODO: Remove below check
-Database.cleanup();
-// TODO: Remove above check
-
 // --- Atoms ---
 
 export const syncLoadable = loadable(atom(async () => sync()));
-export const dateAtom = atomWithStorage<string>('display_date', '', Database.mmkvStorage, { getOnInit: true });
+export const dateAtom = atomWithStorageString('display_date', '');
 
 // --- Actions ---
 
 const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
   const currentDateFromData = schedule.today[PRAYER_INDEX_ASR].date;
-
   store.set(dateAtom, currentDateFromData);
 };
 
@@ -46,57 +40,6 @@ const initializeAppState = async (date: Date) => {
   setDate();
 
   Timer.startTimers();
-
-  // Debug output for app-tracked notifications
-  const scheduledNotifications = getScheduledNotificationsDebug();
-  logger.info(
-    '🔔 App-tracked Notifications Debug:',
-    JSON.stringify(
-      {
-        standardCount: scheduledNotifications.standard.reduce((acc, p) => acc + p.count, 0),
-        extraCount: scheduledNotifications.extra.reduce((acc, p) => acc + p.count, 0),
-        details: {
-          standard: scheduledNotifications.standard.map((p) => ({
-            prayerIndex: p.prayerIndex,
-            count: p.count,
-            notifications: p.notifications,
-          })),
-          extra: scheduledNotifications.extra.map((p) => ({
-            prayerIndex: p.prayerIndex,
-            count: p.count,
-            notifications: p.notifications,
-          })),
-        },
-      },
-      null,
-      2
-    )
-  );
-
-  // Debug output for system-scheduled notifications
-  try {
-    const systemScheduledNotifications = await Notifications.getAllScheduledNotificationsAsync();
-    logger.info(
-      '🔔 System-scheduled Notifications Debug:',
-      JSON.stringify(
-        {
-          count: systemScheduledNotifications.length,
-          notifications: systemScheduledNotifications.map((n) => ({
-            identifier: n.identifier,
-            title: n.content.title,
-            body: n.content.body,
-            sound: n.content.sound,
-            date: n.trigger.type === 'date' ? new Date(n.trigger.timestamp).toISOString() : undefined,
-            trigger: n.trigger,
-          })),
-        },
-        null,
-        2
-      )
-    );
-  } catch (error) {
-    logger.error('Failed to get system-scheduled notifications:', error);
-  }
 };
 
 const needsDataUpdate = (): boolean => {
@@ -121,6 +64,7 @@ const updatePrayerData = async () => {
       Database.saveAllPrayers(nextYearData);
       Database.markYearAsFetched(currentYear + 1);
     }
+    logger.info('SYNC: Data refresh complete');
   } catch (error) {
     logger.error('SYNC: Failed to update prayer data', { error });
     throw error;
@@ -130,7 +74,7 @@ const updatePrayerData = async () => {
 // App entry point and manages midnight synchronization
 export const sync = async () => {
   try {
-    if (needsDataUpdate()) await updatePrayerData();
+    if (true || needsDataUpdate()) await updatePrayerData();
     else logger.info('SYNC: Data already up to date');
 
     const date = TimeUtils.createLondonDate();

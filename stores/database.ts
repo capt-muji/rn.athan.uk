@@ -3,7 +3,7 @@ import { createJSONStorage } from 'jotai/utils';
 import { MMKV } from 'react-native-mmkv';
 
 import logger from '@/shared/logger';
-import { NotificationSchedule } from '@/shared/notifications';
+import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 
@@ -30,8 +30,20 @@ export const removeItem = (key: string) => {
 /** Simple storage interface */
 export const mmkvStorage = createJSONStorage(() => ({ getItem, setItem, removeItem }));
 
+export const getAllWithPrefix = (prefix: string) => {
+  const allKeys = database.getAllKeys();
+  const matchingKeys = allKeys.filter((key) => key.startsWith(prefix));
+
+  const items = matchingKeys.map((key) => getItem(key)).filter(Boolean);
+
+  logger.info(`MMKV READ ALL: ${prefix} ::`, items);
+
+  return items;
+};
+
 export const clearPrefix = (prefix: string) => {
   const keys = database.getAllKeys();
+  logger.info(`MMKV CHECK: ${keys}`);
 
   keys.forEach((key) => {
     if (!key.startsWith(prefix)) return;
@@ -72,18 +84,52 @@ export const markYearAsFetched = (year: number) => {
   setItem(key, { ...fetchedYears, [year]: true });
 };
 
-export const getScheduledNotifications = (scheduleType: ScheduleType): NotificationSchedule => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const key = isStandard ? 'scheduled_notifications_standard' : 'scheduled_notifications_extra';
+export function clearOneScheduledNotificationsForPrayer(
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  notificationId: string
+) {
+  const key = `scheduled_notifications_${scheduleType}_${prayerIndex}_${notificationId}`;
+  removeItem(key);
+  logger.info('NOTIFICATION DB: Removed:', { scheduleType, prayerIndex, notificationId });
+}
 
-  return getItem(key) || {};
+export function clearAllScheduledNotificationsForSchedule(scheduleType: ScheduleType) {
+  clearPrefix(`scheduled_notifications_${scheduleType}`);
+}
+
+export function clearAllScheduledNotificationsForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
+  clearPrefix(`scheduled_notifications_${scheduleType}_${prayerIndex}`);
+}
+
+export const addOneScheduledNotificationForPrayer = (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  notification: NotificationUtils.ScheduledNotification
+) => {
+  const key = `scheduled_notifications_${scheduleType}_${prayerIndex}_${notification.id}`;
+
+  setItem(key, notification);
+
+  logger.info('NOTIFICATION DB: Added:', notification);
 };
 
-export const setScheduledNotifications = (scheduleType: ScheduleType, schedule: NotificationSchedule) => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const key = isStandard ? 'scheduled_notifications_standard' : 'scheduled_notifications_extra';
+export const getAllScheduledNotificationsForSchedule = (
+  scheduleType: ScheduleType
+): NotificationUtils.ScheduledNotification[] => {
+  const prefix = `scheduled_notifications_${scheduleType}`;
+  const notifications: NotificationUtils.ScheduledNotification[] = getAllWithPrefix(prefix);
 
-  setItem(key, schedule);
+  logger.info('NOTIFICATION DB: Read:', notifications);
+  return notifications;
+};
+
+export const getAllScheduledNotificationsForPrayer = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const prefix = `scheduled_notifications_${scheduleType}_${prayerIndex}`;
+  const notifications = getAllWithPrefix(prefix);
+
+  logger.info('NOTIFICATION DB: Read:', notifications);
+  return notifications;
 };
 
 /**
@@ -94,4 +140,6 @@ export const cleanup = () => {
   clearPrefix('prayer_');
   clearPrefix('display_date');
   clearPrefix('fetched_years');
+  // clearPrefix('scheduled_notifications'); // ! TODO: remove this line
+  // clearPrefix('preference'); // ! TODO: remove this line
 };
