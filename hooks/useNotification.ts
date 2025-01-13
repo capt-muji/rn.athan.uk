@@ -137,7 +137,7 @@ export const useNotification = () => {
         }
 
         // Reschedule notifications based on existing preferences
-        await NotificationStore.rescheduleAllNotifications(scheduleType);
+        await NotificationStore.addAllScheduleNotificationsForSchedule(scheduleType);
         NotificationStore.setScheduleMutedState(scheduleType, false);
       }
 
