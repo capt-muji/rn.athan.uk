@@ -87,7 +87,7 @@ export const sync = async () => {
       tomorrow.setDate(tomorrow.getDate() + 1);
       initializeAppState(tomorrow);
       logger.info('Test: Changed date to tomorrow', tomorrow);
-    }, 42000); // 7 minutes
+    }, 420000); // 7 minutes
   } catch (error) {
     logger.error('SYNC: Failed', { error });
     throw error;
