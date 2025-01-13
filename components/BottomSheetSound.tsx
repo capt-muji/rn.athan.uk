@@ -1,6 +1,6 @@
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { Canvas, LinearGradient, RoundedRect, vec } from '@shopify/react-native-skia';
-import { useMemo, useCallback } from 'react';
+import { useMemo, useCallback, useState } from 'react';
 import { StyleSheet, Text, Dimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -8,10 +8,20 @@ import { ALL_AUDIOS } from '@/assets/audio';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import Glow from '@/components/Glow';
 import { COLORS, TEXT } from '@/shared/constants';
+import { ScheduleType } from '@/shared/types';
+import {
+  cancelAllScheduleNotificationsForSchedule,
+  addAllScheduleNotificationsForSchedule,
+  setSoundPreference,
+} from '@/stores/notifications';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
 export default function BottomSheetSound() {
   const { bottom } = useSafeAreaInsets();
+
+  // Temporary state to track selection before committing
+  // This allows us to preview the selection without triggering notification updates
+  const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
 
   const data = useMemo(() => ALL_AUDIOS.map((audio, index) => ({ id: index.toString(), audio })), []);
 
@@ -27,8 +37,19 @@ export default function BottomSheetSound() {
   }, []);
 
   const renderItem = useCallback(
-    ({ item }) => <BottomSheetSoundItem index={parseInt(item.id)} audio={item.audio} />,
-    []
+    ({ item }) => (
+      <BottomSheetSoundItem
+        index={parseInt(item.id)}
+        audio={item.audio}
+        // onSelect updates the temporary selection when user taps an item
+        // This doesn't trigger any notification updates yet
+        onSelect={setTempSoundSelection}
+        // tempSelection is used for UI feedback while the sheet is open
+        // Falls back to the actual stored preference if no temporary selection
+        tempSelection={tempSoundSelection}
+      />
+    ),
+    [tempSoundSelection]
   );
 
   const renderBackdrop = useCallback(
@@ -46,12 +67,37 @@ export default function BottomSheetSound() {
 
   const clearAudio = useCallback(() => setPlayingSoundIndex(null), []);
 
+  const handleDismiss = useCallback(async () => {
+    clearAudio();
+
+    // Only update preferences and notifications when sheet closes
+    // and user has made a selection
+    if (tempSoundSelection === null) return;
+
+    // Update the persisted sound preference with user's selection
+    setSoundPreference(tempSoundSelection);
+    // Clear temporary selection state since changes are now persisted
+    setTempSoundSelection(null);
+
+    // Cancel all notifications in parallel
+    await Promise.all([
+      cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
+      cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+    ]);
+
+    // Add all new notifications in parallel
+    await Promise.all([
+      addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
+      addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+    ]);
+  }, [tempSoundSelection]);
+
   return (
     <BottomSheetModal
       ref={(ref) => setBottomSheetModal(ref)}
       snapPoints={['80%']}
       enableDynamicSizing={false}
-      onDismiss={clearAudio}
+      onDismiss={handleDismiss}
       onAnimate={clearAudio}
       style={styles.modal}
       backgroundComponent={renderSheetBackground}

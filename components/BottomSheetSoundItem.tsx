@@ -10,7 +10,7 @@ import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/
 import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { AlertIcon } from '@/shared/types';
-import { soundPreferenceAtom, setSoundPreference } from '@/stores/notifications';
+import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -18,16 +18,18 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 interface Props {
   index: number;
   audio: AVPlaybackSource;
+  onSelect: (index: number) => void;
+  tempSelection: number | null;
 }
 
-export default function BottomSheetSoundItem({ index, audio }: Props) {
+export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelection }: Props) {
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const playingIndex = useAtomValue(playingSoundIndexAtom);
 
   const [sound, setSound] = useState<Audio.Sound | null>(null);
 
   const isPlaying = playingIndex === index;
-  const isSelected = index === selectedSound;
+  const isSelected = index === (tempSelection ?? selectedSound);
 
   const textAnimation = useAnimationColor(isPlaying ? 1 : 0, {
     fromColor: isSelected ? 'white' : '#425ea7',
@@ -52,7 +54,7 @@ export default function BottomSheetSoundItem({ index, audio }: Props) {
   }, [sound]);
 
   const handlePress = () => {
-    setSoundPreference(index);
+    onSelect(index);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
