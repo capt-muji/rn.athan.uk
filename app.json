@@ -9,6 +9,9 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      },
       "bundleIdentifier": "com.mugtaba.athan",
       "infoPlist": {
         "UIBackgroundModes": ["audio", "fetch"],
