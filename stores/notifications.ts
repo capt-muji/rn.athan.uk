@@ -176,7 +176,7 @@ export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: Sc
 /**
  * Reschedule all notifications for a schedule based on current preferences
  */
-export const rescheduleAllNotifications = async (scheduleType: ScheduleType) => {
+export const addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
