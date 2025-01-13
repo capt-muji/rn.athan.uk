@@ -1,18 +1,23 @@
+import * as Updates from 'expo-updates';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-// import { BsArrowClockwise } from 'rn-icons/bs';
 
 import Masjid from '@/components/Masjid';
 import { TEXT } from '@/shared/constants';
+import * as Database from '@/stores/database';
 
 export default function Error() {
+  const handleRefresh = async () => {
+    Database.cleanup();
+    await Updates.reloadAsync(); // force reload the entire app
+  };
+
   return (
     <View style={styles.container}>
       <Text style={[styles.heading]}> Oh no! </Text>
       <Text style={[styles.subtext, styles.first]}> Something went wrong. </Text>
       <Text style={[styles.subtext, styles.last]}> We are investigating! </Text>
       <Masjid height={65} width={60} />
-      <Pressable style={({ pressed }) => [styles.button, { opacity: pressed ? 1 : 0.75 }]}>
-        {/* <BsArrowClockwise style={styles.icon} size={16} color={'white'} /> */}
+      <Pressable style={({ pressed }) => [styles.button, { opacity: pressed ? 1 : 0.75 }]} onPress={handleRefresh}>
         <Text style={[styles.subtext]}> Refresh </Text>
       </Pressable>
     </View>
