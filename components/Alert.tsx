@@ -117,13 +117,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    // Allow turning off notifications without permission check
+    // Only check permissions if we're not turning off notifications
     if (nextAlertType !== AlertType.Off) {
       const hasPermission = await ensurePermissions();
       if (!hasPermission) return;
     }
 
-    // Update UI immediately (but not storage)
+    // Update UI immediately
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
 
@@ -134,7 +134,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     setIsPopupActive(true);
 
-    // Debounce both storage update and notification scheduling
+    // Update preferences and schedule notifications
     debouncedHandleAlertChange(nextAlertType);
 
     timeoutRef.current = setTimeout(() => {
