@@ -24,7 +24,6 @@ export default function Timer({ type }: Props) {
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
-    fontFamily: overlay.isOn ? TEXT.family.medium : TEXT.family.regular,
   }));
 
   if (!overlay.isOn && isLastPrayerPassed) {
@@ -60,5 +59,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: TEXT.size + 8,
     textAlign: 'center',
+    fontFamily: TEXT.family.medium,
   },
 });
