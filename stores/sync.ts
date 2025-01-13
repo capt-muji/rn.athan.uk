@@ -74,7 +74,7 @@ const updatePrayerData = async () => {
 // App entry point and manages midnight synchronization
 export const sync = async () => {
   try {
-    if (true || needsDataUpdate()) await updatePrayerData();
+    if (needsDataUpdate()) await updatePrayerData();
     else logger.info('SYNC: Data already up to date');
 
     const date = TimeUtils.createLondonDate();
@@ -82,10 +82,12 @@ export const sync = async () => {
     initializeAppState(date);
 
     // ! Test code - remove in production
-    // setTimeout(() => {
-    //   initializeAppState(new Date('2025-01-06'));
-    //   logger.info('Test: Changed date to 2025-01-06');
-    // }, 3000);
+    setTimeout(() => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      initializeAppState(tomorrow);
+      logger.info('Test: Changed date to tomorrow', tomorrow);
+    }, 42000); // 7 minutes
   } catch (error) {
     logger.error('SYNC: Failed', { error });
     throw error;
