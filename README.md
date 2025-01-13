@@ -14,7 +14,6 @@
 TODO:
 
 1. Fix athan 13 being cut off
-1. Background task to replenish notifications
 
 <br/>
 

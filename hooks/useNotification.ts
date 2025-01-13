@@ -4,6 +4,7 @@ import { Platform, Alert, Linking } from 'react-native';
 import logger from '@/shared/logger';
 import { AlertType, ScheduleType } from '@/shared/types';
 import * as NotificationStore from '@/stores/notifications';
+import { registerBackgroundTask } from '@/tasks/background';
 
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
@@ -15,16 +16,24 @@ Notifications.setNotificationHandler({
 });
 
 export const useNotification = () => {
+  const setupNotifications = async (status: string) => {
+    if (status === 'granted') {
+      await registerBackgroundTask();
+      return true;
+    }
+    return false;
+  };
+
   const checkInitialPermissions = async () => {
     try {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
       if (existingStatus !== 'granted') {
         const { status } = await Notifications.requestPermissionsAsync();
-        return status === 'granted';
+        return setupNotifications(status);
       }
 
-      return true;
+      return setupNotifications(existingStatus);
     } catch (error) {
       logger.error('NOTIFICATION: Failed to check initial notification permissions:', error);
       return false;
@@ -35,11 +44,11 @@ export const useNotification = () => {
     try {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
-      if (existingStatus === 'granted') return true;
+      if (existingStatus === 'granted') return setupNotifications(existingStatus);
 
       // First try requesting permissions
       const { status } = await Notifications.requestPermissionsAsync();
-      if (status === 'granted') return true;
+      if (status === 'granted') return setupNotifications(status);
 
       // If denied, show settings dialog
       return new Promise((resolve) => {
@@ -60,7 +69,7 @@ export const useNotification = () => {
 
                 // Check if permissions were granted after returning from settings
                 const { status: finalStatus } = await Notifications.getPermissionsAsync();
-                resolve(finalStatus === 'granted');
+                resolve(setupNotifications(finalStatus));
               },
             },
           ]
