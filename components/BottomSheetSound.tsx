@@ -79,13 +79,11 @@ export default function BottomSheetSound() {
     // Clear temporary selection state since changes are now persisted
     setTempSoundSelection(null);
 
-    // Cancel all notifications in parallel
     await Promise.all([
       cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
       cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra),
     ]);
 
-    // Add all new notifications in parallel
     await Promise.all([
       addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
       addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
