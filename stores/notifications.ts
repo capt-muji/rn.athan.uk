@@ -81,6 +81,16 @@ export const addMultipleScheduleNotificationsForPrayer = async (
   arabicName: string,
   alertType: AlertType
 ) => {
+  // Check if schedule is muted first
+  if (getScheduleMutedState(scheduleType)) {
+    logger.info('NOTIFICATION: Schedule is muted, skipping notification scheduling:', { 
+      scheduleType, 
+      prayerIndex, 
+      englishName 
+    });
+    return;
+  }
+
   const next2Days = NotificationUtils.genNextXDays(2);
 
   // Cancel existing notifications first
@@ -124,6 +134,12 @@ export const addMultipleScheduleNotificationsForPrayer = async (
  * Reschedule all notifications for a schedule based on current preferences
  */
 export const addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
+  // Check if schedule is muted first
+  if (getScheduleMutedState(scheduleType)) {
+    logger.info('NOTIFICATION: Schedule is muted, skipping notification scheduling:', { scheduleType });
+    return;
+  }
+
   const isStandard = scheduleType === ScheduleType.Standard;
   const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
