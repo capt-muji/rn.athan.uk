@@ -82,12 +82,14 @@ export const sync = async () => {
     initializeAppState(date);
 
     // ! Test code - remove in production
-    setTimeout(() => {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      initializeAppState(tomorrow);
-      logger.info('Test: Changed date to tomorrow', tomorrow);
-    }, 420000); // 7 minutes
+    if (process.env.EXPO_PUBLIC_ENV !== 'prod') {
+      setTimeout(() => {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        initializeAppState(tomorrow);
+        logger.info('Test: Changed date to tomorrow', tomorrow);
+      }, 420000); // 7 minutes
+    }
   } catch (error) {
     logger.error('SYNC: Failed', { error });
     throw error;
