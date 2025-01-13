@@ -1,13 +1,14 @@
 import * as Haptics from 'expo-haptics';
-import { useAtomValue } from 'jotai';
+import { useRef, useEffect } from 'react';
 import { Pressable, Text, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
-import { TEXT } from '@/shared/constants';
+import { useSchedule } from '@/hooks/useSchedule';
+import { ANIMATION, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { standardNotificationsMutedAtom, extraNotificationsMutedAtom } from '@/stores/notifications';
+import { setScheduleMutedState } from '@/stores/notifications';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -16,14 +17,31 @@ interface Props {
 }
 
 export default function Mute({ type }: Props) {
-  const isStandard = type === ScheduleType.Standard;
+  const { isStandard, isMuted } = useSchedule(type);
   const { handleMuteChange } = useNotification();
-  const isMuted = useAtomValue(isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom);
   const AnimScale = useAnimationScale(1);
+  const debouncedMuteRef = useRef<NodeJS.Timeout>();
+
+  // Clear up
+  useEffect(() => {
+    return () => {
+      if (debouncedMuteRef.current) clearTimeout(debouncedMuteRef.current);
+    };
+  }, []);
 
   const handlePress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    await handleMuteChange(type, !isMuted);
+    const newMutedState = !isMuted;
+
+    // Update UI immediately
+    setScheduleMutedState(type, newMutedState);
+
+    // Debounce the state change
+    if (debouncedMuteRef.current) clearTimeout(debouncedMuteRef.current);
+
+    debouncedMuteRef.current = setTimeout(async () => {
+      await handleMuteChange(type, newMutedState);
+    }, ANIMATION.debounce);
   };
 
   const computedStylesContainer: ViewStyle = isStandard

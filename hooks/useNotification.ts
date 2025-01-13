@@ -3,7 +3,7 @@ import { Platform, Alert, Linking } from 'react-native';
 
 import logger from '@/shared/logger';
 import { AlertType, ScheduleType } from '@/shared/types';
-import * as NotificationUtils from '@/stores/notifications';
+import * as NotificationStore from '@/stores/notifications';
 
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
@@ -80,33 +80,27 @@ export const useNotification = () => {
     alertType: AlertType
   ) => {
     try {
-      // Check if schedule is muted
-      const isMuted = NotificationUtils.getNotificationsMuted(scheduleType);
+      // Check if schedule is muted - Use getScheduleMutedState instead of getNotificationsMuted
+      const isMuted = NotificationStore.getScheduleMutedState(scheduleType);
 
       // Always allow turning off notifications without permission check
       if (alertType === AlertType.Off) {
-        NotificationUtils.setAlertPreference(scheduleType, prayerIndex, alertType);
-        await NotificationUtils.cancelAllNotificationsForPrayer(scheduleType, prayerIndex);
+        await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
         return true;
       }
 
       // Only update preference if muted, don't schedule notifications
-      if (isMuted) {
-        NotificationUtils.setAlertPreference(scheduleType, prayerIndex, alertType);
-        return true;
-      }
+      if (isMuted) return true;
 
       // Check/request permissions for enabling notifications
       const hasPermission = await ensurePermissions();
-
       if (!hasPermission) {
         logger.warn('NOTIFICATION: Permissions not granted');
         return false;
       }
 
-      // Update preference and schedule notifications
-      NotificationUtils.setAlertPreference(scheduleType, prayerIndex, alertType);
-      await NotificationUtils.scheduleMultipleNotificationsForPrayer(
+      // Schedule notifications
+      await NotificationStore.addMultipleScheduleNotificationsForPrayer(
         scheduleType,
         prayerIndex,
         englishName,
@@ -132,8 +126,8 @@ export const useNotification = () => {
     try {
       if (mute) {
         // Cancel all notifications first
-        await NotificationUtils.cancelAllScheduleNotifications(scheduleType);
-        NotificationUtils.setNotificationsMuted(scheduleType, true);
+        await NotificationStore.cancelAllScheduleNotificationsForSchedule(scheduleType);
+        NotificationStore.setScheduleMutedState(scheduleType, true);
       } else {
         // Check permissions before unmuting
         const hasPermission = await ensurePermissions();
@@ -143,8 +137,8 @@ export const useNotification = () => {
         }
 
         // Reschedule notifications based on existing preferences
-        await NotificationUtils.rescheduleAllNotifications(scheduleType);
-        NotificationUtils.setNotificationsMuted(scheduleType, false);
+        await NotificationStore.addAllScheduleNotificationsForSchedule(scheduleType);
+        NotificationStore.setScheduleMutedState(scheduleType, false);
       }
 
       logger.info('NOTIFICATION: Updated mute settings:', { scheduleType, mute });
@@ -159,5 +153,6 @@ export const useNotification = () => {
     handleAlertChange,
     handleMuteChange,
     checkInitialPermissions,
+    ensurePermissions,
   };
 };

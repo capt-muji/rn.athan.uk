@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -12,12 +12,7 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
-import {
-  standardAlertPreferencesAtom,
-  extraAlertPreferencesAtom,
-  standardNotificationsMutedAtom,
-  extraNotificationsMutedAtom,
-} from '@/stores/notifications';
+import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { showSheet } from '@/stores/ui';
 
@@ -34,33 +29,53 @@ interface Props {
 }
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
-  const { handleAlertChange } = useNotification();
-
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
+  const { handleAlertChange, ensurePermissions } = useNotification();
 
-  const isMuted = useAtomValue(Prayer.isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom);
+  const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
+  const [iconIndex, setIconIndex] = useState(alertAtom);
+  const [popupIconIndex, setPopupIconIndex] = useState(alertAtom);
+
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
   const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
-    toColor: isMuted ? COLORS.inactivePrayer : COLORS.activePrayer,
+    toColor: Schedule.isMuted ? COLORS.inactivePrayer : COLORS.activePrayer,
   });
 
-  const alertPreferences = useAtomValue(Prayer.isStandard ? standardAlertPreferencesAtom : extraAlertPreferencesAtom);
-
-  const [iconIndex, setIconIndex] = useState(alertPreferences[index]);
-  const [popupIconIndex, setPopupIconIndex] = useState(iconIndex);
   const [isPopupActive, setIsPopupActive] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout>();
+  const debouncedAlertRef = useRef<NodeJS.Timeout>();
+
+  // Create debounced version of handleAlertChange
+  const debouncedHandleAlertChange = useCallback(
+    (newAlertType: AlertType) => {
+      if (debouncedAlertRef.current) clearTimeout(debouncedAlertRef.current);
+
+      debouncedAlertRef.current = setTimeout(async () => {
+        // Update atom storage using setPrayerAlertType instead
+        setPrayerAlertType(type, index, newAlertType);
+
+        const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, newAlertType);
+        if (!success) {
+          // Revert UI and atom if the change fails
+          setPopupIconIndex(iconIndex);
+          setIconIndex(iconIndex);
+          setPrayerAlertType(type, index, iconIndex);
+        }
+      }, ANIMATION.debounce);
+    },
+    [type, index, Prayer.english, Prayer.arabic, handleAlertChange, iconIndex]
+  );
 
   // Animations Updates
   if (Prayer.isNext) AnimFill.animate(1);
 
-  if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
+  if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
     const delay = getCascadeDelay(index, type);
     AnimFill.animate(0, { delay });
   }
@@ -68,9 +83,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Effects
   // Sync alert preferences with state
   useEffect(() => {
-    setIconIndex(alertPreferences[index]);
-    setPopupIconIndex(alertPreferences[index]);
-  }, [alertPreferences, index]);
+    setIconIndex(alertAtom);
+    setPopupIconIndex(alertAtom);
+  }, [alertAtom]);
 
   // Disable popup on overlay open/close
   useEffect(() => {
@@ -83,13 +98,14 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   }, [overlay.isOn]);
 
   useEffect(() => {
-    const colorPos = (Prayer.isOverlay || isPopupActive) && !isMuted ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = (Prayer.isOverlay || isPopupActive) && !Schedule.isMuted ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: 50 });
-  }, [isPopupActive, Prayer.isOverlay, isMuted]);
+  }, [isPopupActive, Prayer.isOverlay, Schedule.isMuted]);
 
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (debouncedAlertRef.current) clearTimeout(debouncedAlertRef.current);
     };
   }, []);
 
@@ -101,9 +117,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, nextAlertType);
-    if (!success) return;
+    // Allow turning off notifications without permission check
+    if (nextAlertType !== AlertType.Off) {
+      const hasPermission = await ensurePermissions();
+      if (!hasPermission) return;
+    }
 
+    // Update UI immediately (but not storage)
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
 
@@ -113,6 +133,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     AnimBounce.animate(1);
 
     setIsPopupActive(true);
+
+    // Debounce both storage update and notification scheduling
+    debouncedHandleAlertChange(nextAlertType);
 
     timeoutRef.current = setTimeout(() => {
       AnimOpacity.animate(0, { duration: 50 });
