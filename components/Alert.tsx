@@ -117,8 +117,8 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    // Allow turning off notifications without permission check
-    if (nextAlertType !== AlertType.Off) {
+    // If schedule is not muted and we're not turning off notifications, check permissions
+    if (!Schedule.isMuted && nextAlertType !== AlertType.Off) {
       const hasPermission = await ensurePermissions();
       if (!hasPermission) return;
     }
@@ -134,8 +134,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     setIsPopupActive(true);
 
-    // Debounce both storage update and notification scheduling
-    debouncedHandleAlertChange(nextAlertType);
+    // Only update notifications if schedule is not muted
+    if (!Schedule.isMuted) {
+      debouncedHandleAlertChange(nextAlertType);
+    } else {
+      // Just update the UI state without triggering notifications
+      setPrayerAlertType(type, index, nextAlertType); // Just update the UI state without triggering notifications
+    }
 
     timeoutRef.current = setTimeout(() => {
       AnimOpacity.animate(0, { duration: 50 });

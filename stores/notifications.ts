@@ -120,59 +120,6 @@ export const addMultipleScheduleNotificationsForPrayer = async (
   logger.info('NOTIFICATION: Scheduled multiple notifications:', { scheduleType, prayerIndex, englishName });
 };
 
-export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-  await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
-  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
-};
-
-/**
- * Clean up outdated notifications for a single prayer
- */
-export const cleanupOutdatedNotificationsForPrayer = (scheduleType: ScheduleType, prayerIndex: number) => {
-  const prayerNotifs = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
-
-  prayerNotifs.forEach((notification) => {
-    logger.info('NOTIFICATION: Checking outdated for prayer');
-
-    if (!NotificationUtils.isNotificationOutdated(notification)) return;
-
-    Database.clearOneScheduledNotificationsForPrayer(scheduleType, prayerIndex, notification.id);
-  });
-};
-
-/**
- * Clean up all outdated notifications for a specific schedule
- */
-export const cleanupOutdatedNotificationsForSchedule = (scheduleType: ScheduleType) => {
-  logger.info('NOTIFICATION: Checking outdated for schedule');
-  Database.clearAllScheduledNotificationsForSchedule(scheduleType);
-};
-
-/**
- * Clean up all outdated notifications for all schedules
- */
-export const cleanupAllOutdatedNotificationsForAllSchedules = () => {
-  cleanupOutdatedNotificationsForSchedule(ScheduleType.Standard);
-  cleanupOutdatedNotificationsForSchedule(ScheduleType.Extra);
-};
-
-/**
- * Cancel and clear all notifications for a schedule type
- */
-export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
-  const schedule = Database.getAllScheduledNotificationsForSchedule(scheduleType);
-
-  const promises = schedule.map((notification) => Device.cancelScheduledNotificationById(notification.id));
-
-  // Cancel all notifications for each prayer index
-  await Promise.all(promises);
-
-  // Clear the schedule
-  Database.clearAllScheduledNotificationsForSchedule(scheduleType);
-
-  logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
-};
-
 /**
  * Reschedule all notifications for a schedule based on current preferences
  */
@@ -196,4 +143,26 @@ export const addAllScheduleNotificationsForSchedule = async (scheduleType: Sched
 
   await Promise.all(promises);
   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
+};
+
+export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+  await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
+};
+
+/**
+ * Cancel and clear all notifications for a schedule type
+ */
+export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
+  const schedule = Database.getAllScheduledNotificationsForSchedule(scheduleType);
+
+  const promises = schedule.map((notification) => Device.cancelScheduledNotificationById(notification.id));
+
+  // Cancel all notifications for each prayer index
+  await Promise.all(promises);
+
+  // Clear the schedule
+  Database.clearAllScheduledNotificationsForSchedule(scheduleType);
+
+  logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
 };
