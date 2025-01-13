@@ -83,14 +83,14 @@ export const useNotification = () => {
       // Check if schedule is muted - Use getScheduleMutedState instead of getNotificationsMuted
       const isMuted = NotificationStore.getScheduleMutedState(scheduleType);
 
+      // Only update preference if muted, don't schedule notifications
+      if (isMuted) return true;
+
       // Always allow turning off notifications without permission check
       if (alertType === AlertType.Off) {
         await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
         return true;
       }
-
-      // Only update preference if muted, don't schedule notifications
-      if (isMuted) return true;
 
       // Check/request permissions for enabling notifications
       const hasPermission = await ensurePermissions();
