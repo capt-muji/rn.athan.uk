@@ -11,10 +11,6 @@
   
 # Athan.uk
 
-TODO:
-
-1. Fix athan 13 being cut off
-
 <br/>
 
 [![Platform - Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat&logo=android&logoColor=white)](https://athan.uk)
