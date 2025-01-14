@@ -29,7 +29,14 @@ export const useNotification = () => {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
       if (existingStatus !== 'granted') {
-        const { status } = await Notifications.requestPermissionsAsync();
+        const { status } = await Notifications.requestPermissionsAsync({
+          ios: {
+            allowAlert: true,
+            allowBadge: true,
+            allowSound: true,
+            allowCriticalAlerts: true,
+          },
+        });
         return setupNotifications(status);
       }
 
