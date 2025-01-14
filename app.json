@@ -2,10 +2,10 @@
   "expo": {
     "name": "Athan London",
     "slug": "athan",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/store/ios/AppIcon~ios-marketing.png",
-    "scheme": "myapp",
+    "scheme": "athan",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
@@ -16,7 +16,8 @@
       "infoPlist": {
         "UIBackgroundModes": ["audio", "fetch"],
         "NSUserNotificationUsageDescription": "We need to send you prayer time notifications",
-        "NSUserNotificationsEnabled": true
+        "NSUserNotificationsEnabled": true,
+        "NSCriticalAlertsEnabled": true
       },
       "icon": "./assets/store/ios/AppIcon~ios-marketing.png"
     },
