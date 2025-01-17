@@ -6,6 +6,7 @@ export const PRAYER_INDEX_ASR = 3; // Used to display the date
 
 export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
+export const ISTIJABA_INDEX = 3;
 
 export const SCHEDULE_LENGTHS = {
   standard: PRAYERS_ENGLISH.length,

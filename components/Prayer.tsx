@@ -8,7 +8,7 @@ import PrayerTime from '@/components/PrayerTime';
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { TEXT, COLORS, STYLES } from '@/shared/constants';
+import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
@@ -33,6 +33,8 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    if (type === ScheduleType.Extra && index === ISTIJABA_INDEX) return;
 
     setSelectedPrayerIndex(type, index);
     toggleOverlay();
