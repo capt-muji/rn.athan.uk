@@ -6,12 +6,21 @@ import { createLondonDate, getCurrentYear } from '@/shared/time';
 import * as TimeUtils from '@/shared/time';
 import { FetchDataResult, IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
 
+// Constructs the API URL with required parameters:
+// - format (JSON/XML)
+// - API key
+// - Year
+// - 24-hour format flag
 const buildApiUrl = (year: number = createLondonDate().getFullYear()): string => {
   const queries = [`format=${API_CONFIG.format}`, `key=${API_CONFIG.key}`, `year=${year}`, '24hours=true'].join('&');
 
   return `${API_CONFIG.endpoint}?${queries}`;
 };
 
+// Validates API response:
+// 1. Checks HTTP status
+// 2. Validates response structure
+// 3. Returns typed data if valid
 const validateApiResponse = async (response: Response): Promise<IApiResponse> => {
   if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -21,6 +30,9 @@ const validateApiResponse = async (response: Response): Promise<IApiResponse> =>
   return data;
 };
 
+// Fetches raw prayer time data from API
+// Uses mock data in non-production environments
+// Implements no-cache policy for fresh data
 const fetchRawData = async (year?: number): Promise<IApiResponse> => {
   if (process.env.EXPO_PUBLIC_ENV !== 'prod') return MOCK_DATA_SIMPLE;
 
@@ -36,12 +48,17 @@ const fetchRawData = async (year?: number): Promise<IApiResponse> => {
   }
 };
 
+// Transforms raw API data for a specific year:
+// 1. Fetches raw data
+// 2. Filters unnecessary data
+// 3. Transforms into application-specific format
 const transformYearData = async (targetYear: number): Promise<ISingleApiResponseTransformed[]> => {
   const data = await fetchRawData(targetYear);
   const filteredData = PrayerUtils.filterApiData(data);
   return PrayerUtils.transformApiData(filteredData);
 };
 
+// High-level function to get processed prayer data for a specific year
 const getYearData = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
   const targetYear = year || getCurrentYear();
 
@@ -56,6 +73,11 @@ const getYearData = async (year?: number): Promise<ISingleApiResponseTransformed
   }
 };
 
+// Main API function to fetch prayer data
+// Process:
+// 1. Fetches current year data
+// 2. Optionally fetches next year's data if needed
+// 3. Returns both datasets and current year reference
 export const fetchPrayerData = async (needsNextYear: boolean): Promise<FetchDataResult> => {
   const currentYear = TimeUtils.getCurrentYear();
 
