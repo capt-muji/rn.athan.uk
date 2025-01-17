@@ -66,7 +66,7 @@ export default function Mute({ type }: Props) {
       onPress={handlePress}
       onPressIn={() => AnimScale.animate(0.9)}
       onPressOut={() => AnimScale.animate(1)}>
-      <Text style={[styles.text, computedStylesText]}>{isMuted ? 'Unmute all' : 'Mute all'}</Text>
+      <Text style={[styles.text, computedStylesText]}>{isMuted ? 'Enable all' : 'Disable all'}</Text>
     </AnimatedPressable>
   );
 }
