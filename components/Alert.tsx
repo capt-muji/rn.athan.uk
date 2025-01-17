@@ -112,6 +112,10 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Handlers
   const handlePress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    // Prevent interaction when muted
+    if (Schedule.isMuted) return;
+
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
     const nextAlertType = ALERT_CONFIGS[nextIndex].type;
 
@@ -149,6 +153,8 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     showSheet();
   };
 
+  const displayedIconIndex = Schedule.isMuted ? AlertType.Off : iconIndex;
+
   const computedStylesPopup: ViewStyle = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
     backgroundColor: Prayer.isOverlay ? (Prayer.isNext ? 'black' : COLORS.activeBackground) : 'black',
@@ -164,7 +170,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
         onPressOut={() => AnimScale.animate(1)}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
-          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={AnimFill.animatedProps} />
+          <Icon type={ALERT_CONFIGS[displayedIconIndex].icon} size={20} animatedProps={AnimFill.animatedProps} />
         </Animated.View>
       </Pressable>
 
