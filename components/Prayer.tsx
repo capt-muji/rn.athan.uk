@@ -73,6 +73,6 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-    paddingRight: 15,
+    paddingRight: 20,
   },
 });
