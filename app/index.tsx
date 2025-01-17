@@ -9,6 +9,7 @@ import Error from '@/components/Error';
 import Overlay from '@/components/Overlay';
 import { useNotification } from '@/hooks/useNotification';
 import { syncLoadable } from '@/stores/sync';
+import { initializeListeners } from '@/tasks/listeners';
 
 export default function Index() {
   const { state } = useAtomValue(syncLoadable);
@@ -16,6 +17,7 @@ export default function Index() {
   const { checkInitialPermissions } = useNotification();
 
   checkInitialPermissions();
+  initializeListeners();
 
   if (!fontsLoaded || state === 'loading') return <WaveIndicator color="white" />;
   if (state === 'hasError') return <Error />;
