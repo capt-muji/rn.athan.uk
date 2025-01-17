@@ -15,24 +15,30 @@ import * as Timer from '@/stores/timer';
 const store = getDefaultStore();
 
 // --- Atoms ---
-
 export const syncLoadable = loadable(atom(async () => sync()));
 export const dateAtom = atomWithStorageString('display_date', '');
 
 // --- Actions ---
 
+// Update the stored date based on the current schedule's Asr prayer time
 const setDate = () => {
   const schedule = store.get(ScheduleStore.standardScheduleAtom);
   const currentDateFromData = schedule.today[PRAYER_INDEX_ASR].date;
   store.set(dateAtom, currentDateFromData);
 };
 
+// Check if we need to pre-fetch next year's data
+// Returns true if it's December and we haven't yet fetched next year's data
 const shouldFetchNextYear = (): boolean => {
   const fetchedYears = Database.getItem('fetched_years') || {};
   const nextYear = TimeUtils.getCurrentYear() + 1;
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
 };
 
+// Initialize or reinitialize the app's core state
+// 1. Sets up both standard and extra prayer schedules
+// 2. Updates the stored date
+// 3. Starts the prayer time monitoring timers
 const initializeAppState = async (date: Date) => {
   ScheduleStore.setSchedule(ScheduleType.Standard, date);
   ScheduleStore.setSchedule(ScheduleType.Extra, date);
@@ -42,6 +48,11 @@ const initializeAppState = async (date: Date) => {
   Timer.startTimers();
 };
 
+// Determines if the app needs to fetch fresh prayer time data
+// Returns true if:
+// 1. Stored date doesn't match current date
+// 2. Schedule is empty
+// 3. It's December and next year's data needs fetching
 const needsDataUpdate = (): boolean => {
   const dateSaved = store.get(dateAtom);
   const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
@@ -50,6 +61,10 @@ const needsDataUpdate = (): boolean => {
   return dateSaved !== dateNow || Object.keys(standardSchedule.today).length === 0 || shouldFetchNextYear();
 };
 
+// Fetches and stores new prayer time data
+// 1. Cleans up old data
+// 2. Fetches current year (and optionally next year) data
+// 3. Saves data to local storage and marks years as fetched
 const updatePrayerData = async () => {
   logger.info('SYNC: Starting data refresh');
   Database.cleanup();
@@ -71,7 +86,11 @@ const updatePrayerData = async () => {
   }
 };
 
-// App entry point and manages midnight synchronization
+// Main synchronization function - App entry point
+// Flow:
+// 1. Checks if data update is needed
+// 2. Fetches new data if required
+// 3. Initializes app state with current date
 export const sync = async () => {
   try {
     if (needsDataUpdate()) await updatePrayerData();
