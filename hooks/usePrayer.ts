@@ -3,7 +3,7 @@ import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 
 export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
-  const { schedule, isStandard, isMuted } = useSchedule(type);
+  const { schedule, isStandard } = useSchedule(type);
 
   const todayPrayer = schedule.today[index];
   const tomorrowPrayer = schedule.tomorrow[index];
@@ -15,7 +15,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   const prayer = isPassed && isOverlay ? tomorrowPrayer : todayPrayer;
 
   const ui = {
-    initialColorPos: isMuted || isPassed || isNext ? 1 : 0,
+    initialColorPos: isPassed || isNext ? 1 : 0,
   };
 
   return {

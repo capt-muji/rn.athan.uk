@@ -41,7 +41,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
+  const AnimFill = useAnimationFill(Schedule.isMuted ? 0 : Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,
   });
