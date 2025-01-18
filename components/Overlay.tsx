@@ -16,13 +16,12 @@ import { measurementsAtom, overlayAtom, toggleOverlay } from '@/stores/overlay';
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
-  const { width, height } = Dimensions.get('window');
-
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
 
   const measurements = useAtomValue(measurementsAtom);
 
+  const { height, width } = Dimensions.get('screen');
   const insets = useSafeAreaInsets();
 
   const handleClose = () => {
