@@ -1,5 +1,6 @@
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { Canvas, LinearGradient, RoundedRect, vec } from '@shopify/react-native-skia';
+import * as Haptics from 'expo-haptics';
 import { useMemo, useCallback, useState } from 'react';
 import { StyleSheet, Text, Dimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -68,6 +69,7 @@ export default function BottomSheetSound() {
   const clearAudio = useCallback(() => setPlayingSoundIndex(null), []);
 
   const handleDismiss = useCallback(async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     clearAudio();
 
     // Only update preferences and notifications when sheet closes
