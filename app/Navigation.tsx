@@ -37,7 +37,7 @@ export default function Navigation() {
         <Screen type={ScheduleType.Extra} />
       </PagerView>
 
-      <View style={[styles.dotsContainer, { bottom: bottom + 5 }]}>
+      <View style={[styles.dotsContainer, { bottom: bottom + 20 }]}>
         <Animated.View style={[styles.dot, dot0Animation.style]} />
         <Animated.View style={[styles.dot, dot1Animation.style]} />
       </View>
