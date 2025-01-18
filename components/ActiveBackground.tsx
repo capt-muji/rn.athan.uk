@@ -52,5 +52,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: STYLES.prayer.height,
     borderRadius: 8,
+    elevation: 15,
   },
 });
