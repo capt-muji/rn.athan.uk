@@ -31,17 +31,17 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   const isPlaying = playingIndex === index;
   const isSelected = index === (tempSelection ?? selectedSound);
 
-  const textAnimation = useAnimationColor(isPlaying ? 1 : 0, {
-    fromColor: isSelected ? 'white' : '#425ea7',
-    toColor: 'white',
+  const textAnimation = useAnimationColor(isPlaying || isSelected ? 1 : 0, {
+    fromColor: '#425ea7',
+    toColor: '#ffffff',
   });
   const iconAnimation = useAnimationFill(isPlaying ? 1 : 0, {
-    fromColor: isSelected ? 'white' : '#425ea7',
-    toColor: 'white',
+    fromColor: '#425ea7',
+    toColor: '#ffffff',
   });
 
-  textAnimation.animate(isPlaying ? 1 : 0, { duration: ANIMATION.duration });
-  iconAnimation.animate(isPlaying ? 1 : 0, { duration: ANIMATION.duration });
+  textAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
+  iconAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
 
   const AnimScale = useAnimationScale(1);
 
