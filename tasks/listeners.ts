@@ -1,6 +1,7 @@
 import { AppState, AppStateStatus } from 'react-native';
 
-import { syncTimers } from '@/stores/timer';
+import logger from '@/shared/logger';
+import { sync } from '@/stores/sync';
 
 /**
  * Initializes app state change listeners
@@ -21,7 +22,11 @@ export const initializeListeners = () => {
     const isNowActive = newAppState === 'active';
 
     // Only sync if transitioning from background to active
-    if (isComingFromBackground && isNowActive) syncTimers();
+    if (isComingFromBackground && isNowActive) {
+      sync().catch((error) => {
+        logger.error('Failed to sync on app state change', { error });
+      });
+    }
 
     // Update state tracking for next change
     previousAppState = newAppState;

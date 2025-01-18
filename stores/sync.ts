@@ -99,16 +99,6 @@ export const sync = async () => {
     const date = TimeUtils.createLondonDate();
 
     initializeAppState(date);
-
-    // ! Test code - remove in production
-    if (process.env.EXPO_PUBLIC_ENV !== 'prod') {
-      setTimeout(() => {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        initializeAppState(tomorrow);
-        logger.info('Test: Changed date to tomorrow', tomorrow);
-      }, 420000); // 7 minutes
-    }
   } catch (error) {
     logger.error('SYNC: Failed', { error });
     throw error;
