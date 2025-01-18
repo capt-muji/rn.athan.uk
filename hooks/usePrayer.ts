@@ -15,7 +15,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   const prayer = isPassed && isOverlay ? tomorrowPrayer : todayPrayer;
 
   const ui = {
-    initialColorPos: !isMuted || isPassed || isNext ? 1 : 0,
+    initialColorPos: isMuted || isPassed || isNext ? 1 : 0,
   };
 
   return {
