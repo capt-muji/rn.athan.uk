@@ -140,7 +140,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     // Reset animations
     AnimBounce.value.value = 0;
-    AnimOpacity.animate(1, { duration: 50 });
+    AnimOpacity.animate(1, { duration: 75 });
     AnimBounce.animate(1);
 
     setIsPopupActive(true);
@@ -149,7 +149,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     debouncedHandleAlertChange(nextAlertType);
 
     timeoutRef.current = setTimeout(() => {
-      AnimOpacity.animate(0, { duration: 50 });
+      AnimOpacity.animate(0, { duration: 75 });
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
   };
