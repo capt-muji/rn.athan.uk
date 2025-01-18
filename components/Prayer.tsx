@@ -47,10 +47,16 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
     AnimColor.animate(0, { delay });
   }
 
+  const computedStyleArabic = {
+    paddingRight: Prayer.isStandard ? 10 : 10,
+  };
+
   return (
     <AnimatedPressable ref={viewRef} style={styles.container} onPress={handlePress}>
       <Animated.Text style={[styles.text, styles.english, AnimColor.style]}>{Prayer.english}</Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, computedStyleArabic, AnimColor.style]}>
+        {Prayer.arabic}
+      </Animated.Text>
       <PrayerTime index={index} type={type} isOverlay={isOverlay} />
       <Alert index={index} type={type} isOverlay={isOverlay} />
     </AnimatedPressable>
@@ -73,6 +79,5 @@ const styles = StyleSheet.create({
   arabic: {
     flex: 1,
     textAlign: 'right',
-    paddingRight: 8,
   },
 });
