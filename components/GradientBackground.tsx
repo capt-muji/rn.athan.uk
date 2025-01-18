@@ -10,8 +10,7 @@ import { pagePositionAtom } from '@/stores/ui';
 export default function GradientBackground() {
   const position = useAtomValue(pagePositionAtom);
 
-  const screenHeight = Dimensions.get('screen').height;
-  const screenWidth = Dimensions.get('screen').width;
+  const { height, width } = Dimensions.get('screen');
 
   const colors = useMemo(
     () => ({
@@ -30,11 +29,11 @@ export default function GradientBackground() {
   }, [position]);
 
   return (
-    <Canvas style={[StyleSheet.absoluteFill, { height: screenHeight }]}>
-      <Rect x={0} y={0} width={screenWidth} height={screenHeight}>
+    <Canvas style={[StyleSheet.absoluteFill, { height: height }]}>
+      <Rect x={0} y={0} width={width} height={height}>
         <LinearGradient
           start={vec(0, 0)}
-          end={vec(screenWidth, screenHeight)}
+          end={vec(width, height)}
           colors={[startColorValue.value, endColorValue.value]}
         />
       </Rect>
