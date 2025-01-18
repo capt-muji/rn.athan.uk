@@ -43,7 +43,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const AnimBounce = useAnimationBounce(0);
   const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
-    toColor: Schedule.isMuted ? COLORS.inactivePrayer : COLORS.activePrayer,
+    toColor: COLORS.activePrayer,
   });
 
   const [isPopupActive, setIsPopupActive] = useState(false);
@@ -73,7 +73,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   );
 
   // Animations Updates
-  if (Prayer.isNext) AnimFill.animate(1);
+  if (Prayer.isNext && !Schedule.isMuted) AnimFill.animate(1);
 
   if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
     const delay = getCascadeDelay(index, type);
@@ -97,8 +97,15 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     setIsPopupActive(false);
   }, [overlay.isOn]);
 
+  // Update fill color
   useEffect(() => {
-    const colorPos = (Prayer.isOverlay || isPopupActive) && !Schedule.isMuted ? 1 : Prayer.ui.initialColorPos;
+    if (Schedule.isMuted) {
+      AnimFill.animate(Schedule.isMuted ? 0 : 1, { duration: ANIMATION.duration });
+      return;
+    }
+
+    const colorPos = Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
+
     AnimFill.animate(colorPos, { duration: 50 });
   }, [isPopupActive, Prayer.isOverlay, Schedule.isMuted]);
 
