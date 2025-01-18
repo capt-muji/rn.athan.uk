@@ -13,7 +13,7 @@ export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <GradientBackground />
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <StatusBar barStyle="light-content" translucent />
       <BottomSheetModalProvider>
         <Slot />
         <BottomSheetSound />
