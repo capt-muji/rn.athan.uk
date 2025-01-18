@@ -73,7 +73,7 @@ export default function Mute({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    bottom: 35,
+    bottom: 50,
     paddingVertical: 10,
     marginTop: 10,
     borderRadius: 50,
