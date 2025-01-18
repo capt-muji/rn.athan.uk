@@ -2,6 +2,7 @@ import { AppState, AppStateStatus } from 'react-native';
 
 import logger from '@/shared/logger';
 import { sync } from '@/stores/sync';
+import { setSyncTrigger } from '@/stores/ui';
 
 /**
  * Initializes app state change listeners
@@ -23,9 +24,9 @@ export const initializeListeners = () => {
 
     // Only sync if transitioning from background to active
     if (isComingFromBackground && isNowActive) {
-      sync().catch((error) => {
-        logger.error('Failed to sync on app state change', { error });
-      });
+      sync()
+        .then(() => setSyncTrigger())
+        .catch((error) => logger.error('Failed to sync on app state change', { error }));
     }
 
     // Update state tracking for next change

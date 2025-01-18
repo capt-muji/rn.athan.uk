@@ -4,8 +4,11 @@ import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardNotificationsMutedAtom, extraNotificationsMutedAtom } from '@/stores/notifications';
 import { standardScheduleAtom, extraScheduleAtom } from '@/stores/schedule';
+import { syncTriggerAtom } from '@/stores/ui';
 
 export const useSchedule = (type: ScheduleType) => {
+  useAtomValue(syncTriggerAtom);
+
   const isStandard = type === ScheduleType.Standard;
 
   const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
