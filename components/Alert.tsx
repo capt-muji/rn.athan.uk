@@ -213,6 +213,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 10,
     gap: 15,
+    elevation: 15,
   },
   popupIcon: {
     marginRight: 15,
