@@ -1,7 +1,7 @@
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { StyleSheet, Pressable, View, ViewStyle, Dimensions } from 'react-native';
+import { StyleSheet, Pressable, View, ViewStyle, Dimensions, Platform } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -16,13 +16,12 @@ import { measurementsAtom, overlayAtom, toggleOverlay } from '@/stores/overlay';
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
-  const { width, height } = Dimensions.get('window');
-
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
 
   const measurements = useAtomValue(measurementsAtom);
 
+  const { height, width } = Dimensions.get('screen');
   const insets = useSafeAreaInsets();
 
   const handleClose = () => {
@@ -48,14 +47,17 @@ export default function Overlay() {
   };
 
   const computedStyleDate: ViewStyle = {
-    top: measurements.date?.pageY ?? 0,
+    top: (measurements.date?.pageY ?? 0) + (Platform.OS === 'android' ? insets.top : 0),
     left: measurements.date?.pageX ?? 0,
     width: measurements.date?.width ?? 0,
     height: measurements.date?.height ?? 0,
   };
 
   const computedStylePrayer: ViewStyle = {
-    top: (measurements.list?.pageY ?? 0) + overlay.selectedPrayerIndex * STYLES.prayer.height,
+    top:
+      (measurements.list?.pageY ?? 0) +
+      (Platform.OS === 'android' ? insets.top : 0) +
+      overlay.selectedPrayerIndex * STYLES.prayer.height,
     left: measurements.list?.pageX ?? 0,
     width: measurements.list?.width ?? 0,
     ...(selectedPrayer.isNext && styles.activeBackground),

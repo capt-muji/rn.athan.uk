@@ -1,6 +1,5 @@
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
-import { atom } from 'jotai';
-import { getDefaultStore } from 'jotai/vanilla';
+import { atom, getDefaultStore } from 'jotai';
 
 const store = getDefaultStore();
 
