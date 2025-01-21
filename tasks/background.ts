@@ -44,9 +44,9 @@ export const registerBackgroundTask = async () => {
       return;
     }
 
-    // Register task to run every 24 hours
+    // Register task to run every 12 hours
     await BackgroundFetch.registerTaskAsync(BACKGROUND_TASK_NAME, {
-      minimumInterval: 24 * 60 * 60, // 24 hours in seconds
+      minimumInterval: 12 * 60 * 60, // 12 hours in seconds
       stopOnTerminate: false, // Android only: task will continue to run after app is terminated
       startOnBoot: true, // Android only: task will run after device reboot
     });
