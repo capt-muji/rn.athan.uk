@@ -1,15 +1,16 @@
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import { useAtomValue } from 'jotai';
 import { useMemo, useEffect } from 'react';
-import { StyleSheet, useWindowDimensions } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { interpolateColor, useSharedValue } from 'react-native-reanimated';
 
 import { COLORS } from '@/shared/constants';
 import { pagePositionAtom } from '@/stores/ui';
 
 export default function GradientBackground() {
-  const { width, height } = useWindowDimensions();
   const position = useAtomValue(pagePositionAtom);
+
+  const { height, width } = Dimensions.get('screen');
 
   const colors = useMemo(
     () => ({
@@ -28,7 +29,7 @@ export default function GradientBackground() {
   }, [position]);
 
   return (
-    <Canvas style={StyleSheet.absoluteFill}>
+    <Canvas style={[StyleSheet.absoluteFill, { height: height }]}>
       <Rect x={0} y={0} width={width} height={height}>
         <LinearGradient
           start={vec(0, 0)}

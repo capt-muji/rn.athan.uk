@@ -1,11 +1,9 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
-// Remove AppState import
-
-import { overlayAtom } from './overlay';
 
 import * as TimeUtils from '@/shared/time';
 import { TimerStore, ScheduleType, TimerKey } from '@/shared/types';
+import { overlayAtom } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex } from '@/stores/schedule';
 import { dateAtom, sync } from '@/stores/sync';
 
@@ -111,15 +109,6 @@ const startTimerMidnight = () => {
   }, 1000);
 };
 
-// Add this function to recalculate and sync timers
-const syncTimers = () => {
-  // Clear all existing timers
-  Object.keys(timers).forEach((key) => clearTimer(key as TimerKey));
-  
-  // Restart all timers
-  startTimers();
-};
-
 // Initializes all countdown timers - standard, extra, overlay, midnight
 // Called during midnight transition to start new day countdowns
 const startTimers = () => {
@@ -136,6 +125,4 @@ const startTimers = () => {
   startTimerOverlay();
 };
 
-// Remove AppState.addEventListener code block
-
-export { startTimers, startTimerOverlay, syncTimers };
+export { startTimers, startTimerOverlay };

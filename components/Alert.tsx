@@ -41,9 +41,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
+  const AnimFill = useAnimationFill(Schedule.isMuted ? 0 : Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
-    toColor: Schedule.isMuted ? COLORS.inactivePrayer : COLORS.activePrayer,
+    toColor: COLORS.activePrayer,
   });
 
   const [isPopupActive, setIsPopupActive] = useState(false);
@@ -73,7 +73,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   );
 
   // Animations Updates
-  if (Prayer.isNext) AnimFill.animate(1);
+  if (Prayer.isNext && !Schedule.isMuted) AnimFill.animate(1);
 
   if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
     const delay = getCascadeDelay(index, type);
@@ -97,8 +97,15 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     setIsPopupActive(false);
   }, [overlay.isOn]);
 
+  // Update fill color
   useEffect(() => {
-    const colorPos = (Prayer.isOverlay || isPopupActive) && !Schedule.isMuted ? 1 : Prayer.ui.initialColorPos;
+    if (Schedule.isMuted) {
+      AnimFill.animate(Schedule.isMuted ? 0 : 1, { duration: ANIMATION.duration });
+      return;
+    }
+
+    const colorPos = Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
+
     AnimFill.animate(colorPos, { duration: 50 });
   }, [isPopupActive, Prayer.isOverlay, Schedule.isMuted]);
 
@@ -133,7 +140,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     // Reset animations
     AnimBounce.value.value = 0;
-    AnimOpacity.animate(1, { duration: 50 });
+    AnimOpacity.animate(1, { duration: 75 });
     AnimBounce.animate(1);
 
     setIsPopupActive(true);
@@ -142,7 +149,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     debouncedHandleAlertChange(nextAlertType);
 
     timeoutRef.current = setTimeout(() => {
-      AnimOpacity.animate(0, { duration: 50 });
+      AnimOpacity.animate(0, { duration: 75 });
       setIsPopupActive(false);
     }, ANIMATION.popupDuration);
   };
@@ -206,6 +213,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 10,
     gap: 15,
+    elevation: 15,
   },
   popupIcon: {
     marginRight: 15,
