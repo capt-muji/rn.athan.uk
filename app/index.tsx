@@ -17,7 +17,6 @@ export default function Index() {
   const { checkInitialPermissions } = useNotification();
 
   checkInitialPermissions();
-  initializeListeners();
 
   if (!fontsLoaded || state === 'loading') return <WaveIndicator color="white" />;
   if (state === 'hasError') return <Error />;
