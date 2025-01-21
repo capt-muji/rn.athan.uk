@@ -83,22 +83,22 @@ export const addMultipleScheduleNotificationsForPrayer = async (
 ) => {
   // Check if schedule is muted first
   if (getScheduleMutedState(scheduleType)) {
-    logger.info('NOTIFICATION: Schedule is muted, skipping notification scheduling:', { 
-      scheduleType, 
-      prayerIndex, 
-      englishName 
+    logger.info('NOTIFICATION: Schedule is muted, skipping notification scheduling:', {
+      scheduleType,
+      prayerIndex,
+      englishName,
     });
     return;
   }
 
-  const next2Days = NotificationUtils.genNextXDays(2);
+  const next3Days = NotificationUtils.genNextXDays(3);
 
   // Cancel existing notifications first
   const cancelPromise = clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
 
   const notificationPromises = [];
 
-  for (const dateI of next2Days) {
+  for (const dateI of next3Days) {
     const date = TimeUtils.createLondonDate(dateI);
     const prayerData = Database.getPrayerByDate(date);
     if (!prayerData) continue;
