@@ -27,20 +27,23 @@ A beautiful React Native mobile app for Muslim prayer times in London, UK
 <br/>
 
 <div align="center">
-  <img src="./assets/screenshots/shot1.png" height="750" alt="Prayer Details" style="margin: 0 20px"/>
-  <img src="./assets/screenshots/shot2.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot3.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot4.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot5.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot6.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot7.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot8.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot9.png" height="750" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
+  <img src="./assets/screenshots/shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
 </div>
 
 <br/>
 <br/>
-<br/>
+
+## 📡 Data source
+
+Prayer times data sourced from [London Prayer Times](https://www.londonprayertimes.com/)
 
 ## ⚡ Features
 
