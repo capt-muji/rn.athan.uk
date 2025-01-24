@@ -30,7 +30,7 @@ export default function PrayerTime({ type, index, isOverlay = false }: Props) {
   }
 
   return (
-    <View style={[styles.container, { width: Prayer.isStandard ? 100 : 80 }]}>
+    <View style={[styles.container]}>
       <Animated.Text style={[styles.text, AnimColor.style]}>{Prayer.time}</Animated.Text>
     </View>
   );
@@ -38,12 +38,12 @@ export default function PrayerTime({ type, index, isOverlay = false }: Props) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     justifyContent: 'center',
   },
   text: {
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
-    width: '100%',
   },
 });

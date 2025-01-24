@@ -48,7 +48,7 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   }
 
   const computedStyleArabic = {
-    paddingRight: Prayer.isStandard ? 10 : 10,
+    paddingRight: Prayer.isStandard ? 20 : 15,
   };
 
   return (
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
   },
   english: {
     paddingLeft: STYLES.prayer.padding.left,
+    width: 130,
   },
   arabic: {
     flex: 1,
