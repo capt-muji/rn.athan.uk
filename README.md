@@ -52,8 +52,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 🔄 View tomorrow's prayer times
 - 🔔 Customizable prayer notifications with multiple alert modes:
   - Off (no notifications)
-  - Notification (silent banner)
-  - Vibrate (vibration + notification banner)
+  - Silent (banner only)
   - Sound (athan + vibration + notification banner)
 - 🌙 Smart prayer tracking system
 - 💾 Efficient data management with yearly prayer times cached locally
