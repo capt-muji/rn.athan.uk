@@ -11,6 +11,11 @@
   
 # Athan.uk
 
+TODO:
+
+1. Fix UI timer drift when app in background
+1. Add Update popup
+
 <br/>
 
 [![Platform - Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat&logo=android&logoColor=white)](https://athan.uk)
