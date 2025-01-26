@@ -15,4 +15,5 @@ export const ALL_AUDIOS = [
   require('./athan12.wav'),
   require('./athan13.wav'),
   require('./athan14.wav'),
+  require('./athan15.wav'),
 ];
