@@ -62,6 +62,7 @@ export default function Mute({ type }: Props) {
 
   return (
     <AnimatedPressable
+      hitSlop={15}
       style={[styles.container, computedStylesContainer, AnimScale.style]}
       onPress={handlePress}
       onPressIn={() => AnimScale.animate(0.9)}
