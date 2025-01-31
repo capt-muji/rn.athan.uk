@@ -1,24 +1,24 @@
 import { AppState, AppStateStatus } from 'react-native';
 
-import { useNotification } from '@/hooks/useNotification';
+import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 
 /**
  * Initializes app state change listeners
  * Handles notification refresh when app returns from background
  */
-export const initializeListeners = () => {
+export const initializeListeners = (checkPermissions: () => Promise<boolean>) => {
   let previousAppState = AppState.currentState;
-  const { checkInitialPermissions } = useNotification();
 
-  const handleAppStateChange = (newAppState: AppStateStatus) => {
+  const handleAppStateChange = (newState: AppStateStatus) => {
     // Only run when coming from background, not on initial app launch
     // This prevents double initialization since index.tsx handles initial launch
-    if (previousAppState === 'background' && newAppState === 'active') {
-      initializeNotifications(checkInitialPermissions);
+    if (previousAppState === 'background' && newState === 'active') {
+      logger.info('APP STATE: Background to active transition');
+      initializeNotifications(checkPermissions);
     }
 
-    previousAppState = newAppState;
+    previousAppState = newState;
   };
 
   AppState.addEventListener('change', handleAppStateChange);
