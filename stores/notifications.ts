@@ -2,7 +2,14 @@ import { differenceInHours, formatISO, addHours, differenceInMinutes, difference
 import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
-import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '@/shared/constants';
+import {
+  PRAYERS_ENGLISH,
+  EXTRAS_ENGLISH,
+  EXTRAS_ARABIC,
+  PRAYERS_ARABIC,
+  NOTIFICATION_ROLLING_DAYS,
+  NOTIFICATION_REFRESH_HOURS,
+} from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
@@ -94,14 +101,14 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     return;
   }
 
-  const next3Days = NotificationUtils.genNextXDays(3);
+  const nextXDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
 
   // Cancel existing notifications first
   const cancelPromise = clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
 
   const notificationPromises = [];
 
-  for (const dateI of next3Days) {
+  for (const dateI of nextXDays) {
     const date = TimeUtils.createLondonDate(dateI);
     const prayerData = Database.getPrayerByDate(date);
     if (!prayerData) continue;
@@ -185,9 +192,6 @@ export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: Sc
 
   logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
 };
-
-// Constants for notification scheduling
-const NOTIFICATION_REFRESH_HOURS = 24;
 
 // Check if notifications need rescheduling (more than 24 hours since last schedule)
 export const shouldRescheduleNotifications = (): boolean => {
