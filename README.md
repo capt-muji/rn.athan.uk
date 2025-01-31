@@ -16,6 +16,7 @@ TODO:
 1. Fix UI timer drift when app in background
 1. Add Update popup
 1. Upgrade to reanimated v4(?)
+1. Fix mute button click area
 
 <br/>
 
