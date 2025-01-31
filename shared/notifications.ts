@@ -1,7 +1,9 @@
 import { format, addDays, isBefore } from 'date-fns';
 
+import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { AlertType } from '@/shared/types';
+import { refreshNotifications } from '@/stores/notifications';
 
 export interface ScheduledNotification {
   id: string;
@@ -78,4 +80,18 @@ export const genNextXDays = (numberOfDays: number): string[] => {
     const date = addDays(today, i);
     return format(date, 'yyyy-MM-dd');
   });
+};
+
+/**
+ * Initializes notifications
+ */
+export const initializeNotifications = async (checkPermissions: () => Promise<boolean>) => {
+  try {
+    const hasPermission = await checkPermissions();
+
+    if (hasPermission) await refreshNotifications();
+    else logger.info('Notifications disabled, skipping refresh');
+  } catch (error) {
+    logger.error('Failed to initialize notifications:', error);
+  }
 };

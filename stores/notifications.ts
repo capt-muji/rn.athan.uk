@@ -1,7 +1,15 @@
+import { differenceInHours, formatISO, addHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
-import { PRAYERS_ENGLISH, EXTRAS_ENGLISH, EXTRAS_ARABIC, PRAYERS_ARABIC } from '@/shared/constants';
+import {
+  PRAYERS_ENGLISH,
+  EXTRAS_ENGLISH,
+  EXTRAS_ARABIC,
+  PRAYERS_ARABIC,
+  NOTIFICATION_ROLLING_DAYS,
+  NOTIFICATION_REFRESH_HOURS,
+} from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
@@ -32,6 +40,8 @@ export const soundPreferenceAtom = atomWithStorageNumber('preference_sound', 0);
 export const standardNotificationsMutedAtom = atomWithStorageBoolean('preference_mute_standard', false);
 
 export const extraNotificationsMutedAtom = atomWithStorageBoolean('preference_mute_extra', false);
+
+export const lastNotificationScheduleAtom = atomWithStorageNumber('last_notification_schedule_check', 0);
 
 // --- Actions ---
 
@@ -91,14 +101,14 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     return;
   }
 
-  const next3Days = NotificationUtils.genNextXDays(3);
+  const nextXDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
 
   // Cancel existing notifications first
   const cancelPromise = clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
 
   const notificationPromises = [];
 
-  for (const dateI of next3Days) {
+  for (const dateI of nextXDays) {
     const date = TimeUtils.createLondonDate(dateI);
     const prayerData = Database.getPrayerByDate(date);
     if (!prayerData) continue;
@@ -181,4 +191,81 @@ export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: Sc
   Database.clearAllScheduledNotificationsForSchedule(scheduleType);
 
   logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
+};
+
+// Check if notifications need rescheduling (more than 24 hours since last schedule)
+export const shouldRescheduleNotifications = (): boolean => {
+  const lastSchedule = store.get(lastNotificationScheduleAtom);
+  const now = Date.now();
+
+  if (!lastSchedule) {
+    logger.info('NOTIFICATION: Never scheduled before, needs refresh');
+    return true;
+  }
+
+  const hoursElapsed = differenceInHours(now, lastSchedule);
+  const minutesElapsed = differenceInMinutes(now, lastSchedule) % 60;
+  const secondsElapsed = differenceInSeconds(now, lastSchedule) % 60;
+  const nextScheduleTime = addHours(new Date(lastSchedule), NOTIFICATION_REFRESH_HOURS);
+
+  // Calculate time remaining
+  const hoursLeft = NOTIFICATION_REFRESH_HOURS - hoursElapsed - 1;
+  const minutesLeft = 60 - minutesElapsed - 1;
+  const secondsLeft = 60 - secondsElapsed;
+
+  logger.info('NOTIFICATION: Checking reschedule needed:', {
+    lastSchedule: formatISO(lastSchedule),
+    nextSchedule: formatISO(nextScheduleTime),
+    elapsed: `${hoursElapsed}h ${minutesElapsed}m ${secondsElapsed}s`,
+    timeUntilNextRefresh: `${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`,
+    needsRefresh: hoursElapsed >= NOTIFICATION_REFRESH_HOURS,
+  });
+
+  return hoursElapsed >= NOTIFICATION_REFRESH_HOURS;
+};
+
+export const refreshNotifications = async () => {
+  if (!shouldRescheduleNotifications()) {
+    logger.info('NOTIFICATION: Skipping reschedule, last schedule was within 24 hours');
+    return;
+  }
+
+  logger.info('NOTIFICATION: Starting notification refresh');
+
+  try {
+    const standardMuted = getScheduleMutedState(ScheduleType.Standard);
+    const extraMuted = getScheduleMutedState(ScheduleType.Extra);
+
+    const refreshTasks = [];
+
+    if (!standardMuted) {
+      refreshTasks.push(
+        cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard).then(() =>
+          addAllScheduleNotificationsForSchedule(ScheduleType.Standard)
+        )
+      );
+    } else {
+      logger.info('NOTIFICATION: Standard schedule is muted, skipping refresh');
+    }
+
+    if (!extraMuted) {
+      refreshTasks.push(
+        cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra).then(() =>
+          addAllScheduleNotificationsForSchedule(ScheduleType.Extra)
+        )
+      );
+    } else {
+      logger.info('NOTIFICATION: Extra schedule is muted, skipping refresh');
+    }
+
+    await Promise.all(refreshTasks);
+
+    // Update last schedule timestamp even if schedules are muted
+    store.set(lastNotificationScheduleAtom, Date.now());
+
+    logger.info('NOTIFICATION: Refresh complete');
+  } catch (error) {
+    logger.error('NOTIFICATION: Failed to refresh notifications:', error);
+    throw error;
+  }
 };
