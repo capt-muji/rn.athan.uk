@@ -14,10 +14,7 @@
       },
       "bundleIdentifier": "com.mugtaba.athan",
       "infoPlist": {
-        "UIBackgroundModes": ["audio", "fetch"],
-        "NSUserNotificationUsageDescription": "We need to send you prayer time notifications",
-        "NSUserNotificationsEnabled": true,
-        "NSCriticalAlertsEnabled": true
+        "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications"
       },
       "icon": "./assets/store/ios/AppIcon~ios-marketing.png"
     },
