@@ -14,8 +14,9 @@ import { initializeNotifications } from '@/shared/notifications';
 import { syncLoadable } from '@/stores/sync';
 
 export default function Index() {
+  useFonts({ Roboto: FontRoboto, 'Roboto-Medium': FontRobotoMedium });
+
   const { state } = useAtomValue(syncLoadable);
-  const [fontsLoaded] = useFonts({ Roboto: FontRoboto, 'Roboto-Medium': FontRobotoMedium });
   const { checkInitialPermissions } = useNotification();
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function Index() {
     initializeListeners(checkInitialPermissions);
   }, []);
 
-  if (!fontsLoaded || state === 'loading') return <WaveIndicator color="white" />;
+  if (state === 'loading') return <WaveIndicator color="white" />;
   if (state === 'hasError') return <Error />;
 
   return (
