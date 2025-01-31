@@ -8,6 +8,9 @@ export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 export const ISTIJABA_INDEX = 3;
 
+export const NOTIFICATION_ROLLING_DAYS = 6;
+export const NOTIFICATION_REFRESH_HOURS = 24;
+
 export const SCHEDULE_LENGTHS = {
   standard: PRAYERS_ENGLISH.length,
   extra: TimeUtils.isFriday() ? EXTRAS_ENGLISH.length : 3, // remove Istijaba on non-Fridays
