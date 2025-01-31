@@ -8,10 +8,10 @@ import FontRobotoMedium from '@/assets/fonts/Roboto-Medium.ttf';
 import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Error from '@/components/Error';
 import Overlay from '@/components/Overlay';
+import { initializeListeners } from '@/device/listeners';
 import { useNotification } from '@/hooks/useNotification';
 import { initializeNotifications } from '@/shared/notifications';
 import { syncLoadable } from '@/stores/sync';
-import { initializeListeners } from '@/tasks/listeners';
 
 export default function Index() {
   const { state } = useAtomValue(syncLoadable);
