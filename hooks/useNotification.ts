@@ -4,7 +4,6 @@ import { Platform, Alert, Linking } from 'react-native';
 import logger from '@/shared/logger';
 import { AlertType, ScheduleType } from '@/shared/types';
 import * as NotificationStore from '@/stores/notifications';
-import { registerBackgroundTask } from '@/tasks/background';
 
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
@@ -16,13 +15,7 @@ Notifications.setNotificationHandler({
 });
 
 export const useNotification = () => {
-  const setupNotifications = async (status: string) => {
-    if (status === 'granted') {
-      await registerBackgroundTask();
-      return true;
-    }
-    return false;
-  };
+  const isNotifictionGranted = async (status: string) => status === 'granted';
 
   const checkInitialPermissions = async () => {
     try {
@@ -37,10 +30,10 @@ export const useNotification = () => {
             allowCriticalAlerts: true,
           },
         });
-        return setupNotifications(status);
+        return isNotifictionGranted(status);
       }
 
-      return setupNotifications(existingStatus);
+      return isNotifictionGranted(existingStatus);
     } catch (error) {
       logger.error('NOTIFICATION: Failed to check initial notification permissions:', error);
       return false;
@@ -51,11 +44,11 @@ export const useNotification = () => {
     try {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
-      if (existingStatus === 'granted') return setupNotifications(existingStatus);
+      if (existingStatus === 'granted') return isNotifictionGranted(existingStatus);
 
       // First try requesting permissions
       const { status } = await Notifications.requestPermissionsAsync();
-      if (status === 'granted') return setupNotifications(status);
+      if (status === 'granted') return isNotifictionGranted(status);
 
       // If denied, show settings dialog
       return new Promise((resolve) => {
@@ -76,7 +69,7 @@ export const useNotification = () => {
 
                 // Check if permissions were granted after returning from settings
                 const { status: finalStatus } = await Notifications.getPermissionsAsync();
-                resolve(setupNotifications(finalStatus));
+                resolve(isNotifictionGranted(finalStatus));
               },
             },
           ]

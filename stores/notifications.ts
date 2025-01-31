@@ -1,3 +1,4 @@
+import { differenceInHours, formatISO, addHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
@@ -32,6 +33,8 @@ export const soundPreferenceAtom = atomWithStorageNumber('preference_sound', 0);
 export const standardNotificationsMutedAtom = atomWithStorageBoolean('preference_mute_standard', false);
 
 export const extraNotificationsMutedAtom = atomWithStorageBoolean('preference_mute_extra', false);
+
+export const lastNotificationScheduleAtom = atomWithStorageNumber('last_notification_schedule_check', 0);
 
 // --- Actions ---
 
@@ -181,4 +184,69 @@ export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: Sc
   Database.clearAllScheduledNotificationsForSchedule(scheduleType);
 
   logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
+};
+
+// Constants for notification scheduling
+const NOTIFICATION_REFRESH_HOURS = 24;
+
+// Check if notifications need rescheduling (more than 24 hours since last schedule)
+export const shouldRescheduleNotifications = (): boolean => {
+  const lastSchedule = store.get(lastNotificationScheduleAtom);
+  const now = Date.now();
+
+  if (!lastSchedule) {
+    logger.info('NOTIFICATION: Never scheduled before, needs refresh');
+    return true;
+  }
+
+  const hoursElapsed = differenceInHours(now, lastSchedule);
+  const minutesElapsed = differenceInMinutes(now, lastSchedule) % 60;
+  const secondsElapsed = differenceInSeconds(now, lastSchedule) % 60;
+  const nextScheduleTime = addHours(new Date(lastSchedule), NOTIFICATION_REFRESH_HOURS);
+
+  // Calculate time remaining
+  const hoursLeft = NOTIFICATION_REFRESH_HOURS - hoursElapsed - 1;
+  const minutesLeft = 60 - minutesElapsed - 1;
+  const secondsLeft = 60 - secondsElapsed;
+
+  logger.info('NOTIFICATION: Checking reschedule needed:', {
+    lastSchedule: formatISO(lastSchedule),
+    nextSchedule: formatISO(nextScheduleTime),
+    elapsed: `${hoursElapsed}h ${minutesElapsed}m ${secondsElapsed}s`,
+    timeUntilNextRefresh: `${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`,
+    needsRefresh: hoursElapsed >= NOTIFICATION_REFRESH_HOURS,
+  });
+
+  return hoursElapsed >= NOTIFICATION_REFRESH_HOURS;
+};
+
+export const refreshNotifications = async () => {
+  if (!shouldRescheduleNotifications()) {
+    logger.info('NOTIFICATION: Skipping reschedule, last schedule was within 24 hours');
+    return;
+  }
+
+  logger.info('NOTIFICATION: Starting notification refresh');
+
+  try {
+    // Cancel all notifications for both schedules
+    await Promise.all([
+      cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
+      cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+    ]);
+
+    // Reschedule all notifications for both schedules
+    await Promise.all([
+      addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
+      addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+    ]);
+
+    // Update last schedule timestamp
+    store.set(lastNotificationScheduleAtom, Date.now());
+
+    logger.info('NOTIFICATION: Refresh complete');
+  } catch (error) {
+    logger.error('NOTIFICATION: Failed to refresh notifications:', error);
+    throw error;
+  }
 };
