@@ -22,7 +22,7 @@ export default function Index() {
     // Initialize notifications on first load
     initializeNotifications(checkInitialPermissions);
     // Initialize background/foreground state listeners
-    initializeListeners();
+    initializeListeners(checkInitialPermissions);
   }, []);
 
   if (!fontsLoaded || state === 'loading') return <WaveIndicator color="white" />;
