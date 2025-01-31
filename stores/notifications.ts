@@ -229,19 +229,34 @@ export const refreshNotifications = async () => {
   logger.info('NOTIFICATION: Starting notification refresh');
 
   try {
-    // Cancel all notifications for both schedules
-    await Promise.all([
-      cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
-      cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra),
-    ]);
+    const standardMuted = getScheduleMutedState(ScheduleType.Standard);
+    const extraMuted = getScheduleMutedState(ScheduleType.Extra);
 
-    // Reschedule all notifications for both schedules
-    await Promise.all([
-      addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
-      addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
-    ]);
+    const refreshTasks = [];
 
-    // Update last schedule timestamp
+    if (!standardMuted) {
+      refreshTasks.push(
+        cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard).then(() =>
+          addAllScheduleNotificationsForSchedule(ScheduleType.Standard)
+        )
+      );
+    } else {
+      logger.info('NOTIFICATION: Standard schedule is muted, skipping refresh');
+    }
+
+    if (!extraMuted) {
+      refreshTasks.push(
+        cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra).then(() =>
+          addAllScheduleNotificationsForSchedule(ScheduleType.Extra)
+        )
+      );
+    } else {
+      logger.info('NOTIFICATION: Extra schedule is muted, skipping refresh');
+    }
+
+    await Promise.all(refreshTasks);
+
+    // Update last schedule timestamp even if schedules are muted
     store.set(lastNotificationScheduleAtom, Date.now());
 
     logger.info('NOTIFICATION: Refresh complete');
