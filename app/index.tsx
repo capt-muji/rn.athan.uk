@@ -9,7 +9,6 @@ import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Error from '@/components/Error';
 import Overlay from '@/components/Overlay';
 import { initializeListeners } from '@/device/listeners';
-import { checkForUpdates } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
 import { initializeNotifications } from '@/shared/notifications';
 import { syncLoadable } from '@/stores/sync';
@@ -26,7 +25,8 @@ export default function Index() {
     // Initialize background/foreground state listeners
     initializeListeners(checkInitialPermissions);
 
-    checkForUpdates();
+    // disable update check for now
+    // checkForUpdates();
   }, []);
 
   if (state === 'loading') return <WaveIndicator color="white" />;
