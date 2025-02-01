@@ -11,12 +11,6 @@
   
 # Athan.uk
 
-TODO:
-
-1. Fix UI timer drift when app in background
-1. Upgrade to reanimated v4(?)
-1. Change the app name on homescreen to 'Athan'
-
 <br/>
 
 [![Platform - Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=flat&logo=android&logoColor=white)](https://athan.uk)
@@ -47,6 +41,31 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 <br/>
 <br/>
+
+## 🗺 Roadmap
+
+### Core Features
+
+- [x] Prayer times display with real-time countdown
+- [x] Midnight reset with animations
+- [x] Offline support with local data caching
+- [x] Customizable notifications with multiple alert modes
+- [x] Over 15 selectable Athan audio notification options
+- [x] View tomorrow's prayer times
+- [x] Automatic yearly data refresh
+- [x] Special times (Third of night, Duha, Suhoor, Istijaba)
+- [x] Large overlay font overlay for visually impaired
+- [x] Efficient data caching and management
+
+### Upcoming Improvements
+
+- [ ] Fix UI timer drift when app in background
+- [ ] Change app name on homescreen to 'Athan'
+- [ ] Upgrade to Reanimated v4 (needs new architecture)
+- [ ] Upgrade to Expo SDK v52+ (new architecture)
+- [ ] Support for locations outside London
+- [ ] Add widget support
+- [ ] Add Qibla direction finder
 
 ## 📡 Data source
 
