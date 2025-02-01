@@ -2,6 +2,7 @@ import { AppState, AppStateStatus } from 'react-native';
 
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
+import { sync } from '@/stores/sync';
 
 /**
  * Initializes app state change listeners
@@ -16,6 +17,9 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
     if (previousAppState === 'background' && newState === 'active') {
       logger.info('APP STATE: Background to active transition');
       initializeNotifications(checkPermissions);
+
+      // Refresh data on app return without blocking UI
+      sync();
     }
 
     previousAppState = newState;
