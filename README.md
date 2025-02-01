@@ -44,7 +44,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ## 🗺 Roadmap
 
-### Core Features
+### Completed Features
 
 - [x] Prayer times display with real-time countdown
 - [x] Midnight reset with animations
