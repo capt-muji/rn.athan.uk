@@ -1,5 +1,6 @@
 import * as Haptics from 'expo-haptics';
-import { useRef } from 'react';
+import { useAtomValue } from 'jotai';
+import { useRef, useEffect } from 'react';
 import { StyleSheet, View, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -12,6 +13,7 @@ import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
+import { refreshUIAtom } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -22,12 +24,19 @@ interface Props {
 }
 
 export default function Prayer({ type, index, isOverlay = false }: Props) {
+  const refreshUI = useAtomValue(refreshUIAtom);
+
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,
   });
+
+  // Force animation to respect new state immediately when refreshing
+  useEffect(() => {
+    AnimColor.animate(Prayer.ui.initialColorPos);
+  }, [refreshUI]);
 
   const viewRef = useRef<View>(null);
 

@@ -1,8 +1,8 @@
 import { AppState, AppStateStatus } from 'react-native';
 
-import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { sync } from '@/stores/sync';
+import { setRefreshUI } from '@/stores/ui';
 
 /**
  * Initializes app state change listeners
@@ -15,11 +15,13 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
     // Only run when coming from background, not on initial app launch
     // This prevents double initialization since index.tsx handles initial launch
     if (previousAppState === 'background' && newState === 'active') {
-      logger.info('APP STATE: Background to active transition');
       initializeNotifications(checkPermissions);
 
-      // Refresh data on app return without blocking UI
-      sync();
+      // Run sync in background to prevent UI freeze on app open
+      sync().then(() => {
+        // Refresh UI after sync is complete
+        setRefreshUI(Date.now());
+      });
     }
 
     previousAppState = newState;
