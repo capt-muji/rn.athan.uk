@@ -14,7 +14,7 @@ import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
-import { showSheet } from '@/stores/ui';
+import { refreshUIAtom, showSheet } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
@@ -29,6 +29,8 @@ interface Props {
 }
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
+  const refreshUI = useAtomValue(refreshUIAtom);
+
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
   const overlay = useAtomValue(overlayAtom);
@@ -73,6 +75,11 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   );
 
   // Animations Updates
+  // Force animation to respect new state immediately when refreshing
+  useEffect(() => {
+    AnimFill.animate(Schedule.isMuted ? 0 : Prayer.ui.initialColorPos);
+  }, [refreshUI]);
+
   if (Prayer.isNext && !Schedule.isMuted) AnimFill.animate(1);
 
   if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {

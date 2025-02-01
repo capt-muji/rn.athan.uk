@@ -1,3 +1,5 @@
+import { useAtomValue } from 'jotai';
+import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -7,6 +9,7 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, TEXT } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
+import { refreshUIAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -15,12 +18,19 @@ interface Props {
 }
 
 export default function PrayerTime({ type, index, isOverlay = false }: Props) {
+  const refreshUI = useAtomValue(refreshUIAtom);
+
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,
   });
+
+  // Force animation to respect new state immediately when refreshing
+  useEffect(() => {
+    AnimColor.animate(Prayer.ui.initialColorPos);
+  }, [refreshUI]);
 
   if (Prayer.isNext) AnimColor.animate(1);
 
