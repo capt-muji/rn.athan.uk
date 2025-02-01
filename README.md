@@ -83,7 +83,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 💾 Efficient data management with yearly prayer times cached locally
 - 🔄 Automatic yearly data refresh
 - 🎯 Precise timing synchronization with system clock
-- 📱 Full offline support after initial data download
+- 📱 Full offline support
 
 ## 🕌 Prayer Times
 
