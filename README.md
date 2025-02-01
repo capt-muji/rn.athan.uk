@@ -53,7 +53,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Over 15 selectable Athan audio notification options
 - [x] View tomorrow's prayer times
 - [x] Automatic yearly data refresh
-- [x] Special times (Third of night, Duha, Suhoor, Istijaba)
+- [x] Multipage with special times (Third of night, Duha, Suhoor, Istijaba)
 - [x] Large overlay font overlay for visually impaired
 - [x] Efficient data caching and management
 
