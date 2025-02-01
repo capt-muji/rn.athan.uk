@@ -24,6 +24,9 @@ export default function Index() {
     initializeNotifications(checkInitialPermissions);
     // Initialize background/foreground state listeners
     initializeListeners(checkInitialPermissions);
+
+    // disable update check for now
+    // checkForUpdates();
   }, []);
 
   if (state === 'loading') return <WaveIndicator color="white" />;
