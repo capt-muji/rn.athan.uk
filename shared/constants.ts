@@ -72,6 +72,7 @@ export const ANIMATION = {
 
 export const OVERLAY = {
   zindexes: {
+    popup: 1000,
     overlay: 2,
     glow: -1,
   },
