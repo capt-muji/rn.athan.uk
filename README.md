@@ -55,7 +55,6 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Automatic yearly data refresh
 - [x] Multipage with special times (Third of night, Duha, Suhoor, Istijaba)
 - [x] Large overlay font overlay for visually impaired
-- [x] Efficient data caching and management
 
 ### Upcoming Improvements
 
