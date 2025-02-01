@@ -6,7 +6,8 @@
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "resolveJsonModule": true
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }
