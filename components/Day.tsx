@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: SCREEN.paddingHorizontal,
+    paddingRight: SCREEN.paddingHorizontal + 2,
+    paddingLeft: SCREEN.paddingHorizontal + 4,
   },
   location: {
     color: COLORS.textSecondary,

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan London",
     "slug": "athan",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/store/ios/AppIcon~ios-marketing.png",
     "scheme": "athan",
