@@ -14,8 +14,8 @@
 TODO:
 
 1. Fix UI timer drift when app in background.
-1. Add Update popup.
 1. Upgrade to reanimated v4(?).
+1. Add Update popup - Need to fix URL to open app store instead of browser
 
 <br/>
 
