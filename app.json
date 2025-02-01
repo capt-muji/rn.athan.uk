@@ -14,6 +14,7 @@
       },
       "bundleIdentifier": "com.mugtaba.athan",
       "infoPlist": {
+        "CFBundleDisplayName": "Athan",
         "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications"
       },
       "icon": "./assets/store/ios/AppIcon~ios-marketing.png"
