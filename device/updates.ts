@@ -1,5 +1,5 @@
 import Constants from 'expo-constants';
-import { Platform, Linking, Alert } from 'react-native';
+import { Platform, Linking } from 'react-native';
 
 import type { default as Releases } from '@/releases.json';
 import logger from '@/shared/logger';
@@ -15,7 +15,7 @@ const PLAY_STORE_URL = `market://details?id=${process.env.EXPO_PUBLIC_ANDROID_PA
 const APP_STORE_FALLBACK_URL = `https://apps.apple.com/app/id${process.env.EXPO_PUBLIC_IOS_APP_ID}`;
 const PLAY_STORE_FALLBACK_URL = `https://play.google.com/store/apps/details?id=${process.env.EXPO_PUBLIC_ANDROID_PACKAGE}`;
 
-export async function checkForUpdates(): Promise<void> {
+export async function checkForUpdates(): Promise<boolean> {
   try {
     const installedVersion = Constants.expoConfig!.version; // comes from app.json
     const response = await fetch(GITHUB_RAW_URL);
@@ -23,28 +23,22 @@ export async function checkForUpdates(): Promise<void> {
 
     const remoteVersion = IS_IOS ? remoteVersions.prod.ios.version : remoteVersions.prod.android.version;
 
-    if (remoteVersion === installedVersion) return;
-
-    Alert.alert('Update Available', 'A new version is available. Would you like to update now?', [
-      { text: 'Later', style: 'cancel' },
-      {
-        text: 'Update',
-        style: 'default',
-        onPress: async () => {
-          const url = IS_IOS ? APP_STORE_URL : PLAY_STORE_URL;
-          const fallbackUrl = IS_IOS ? APP_STORE_FALLBACK_URL : PLAY_STORE_FALLBACK_URL;
-
-          try {
-            const supported = await Linking.canOpenURL(url);
-            await Linking.openURL(supported ? url : fallbackUrl);
-          } catch (error) {
-            logger.error('Failed to open store URL:', error);
-            await Linking.openURL(fallbackUrl);
-          }
-        },
-      },
-    ]);
+    return installedVersion !== remoteVersion;
   } catch (error) {
     logger.error('Failed to check for updates:', error);
+    return false;
+  }
+}
+
+export async function openStore(): Promise<void> {
+  const url = IS_IOS ? APP_STORE_URL : PLAY_STORE_URL;
+  const fallbackUrl = IS_IOS ? APP_STORE_FALLBACK_URL : PLAY_STORE_FALLBACK_URL;
+
+  try {
+    const supported = await Linking.canOpenURL(url);
+    await Linking.openURL(supported ? url : fallbackUrl);
+  } catch (error) {
+    logger.error('Failed to open store URL:', error);
+    await Linking.openURL(fallbackUrl);
   }
 }

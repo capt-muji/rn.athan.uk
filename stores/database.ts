@@ -140,6 +140,7 @@ export const cleanup = () => {
   clearPrefix('prayer_');
   clearPrefix('display_date');
   clearPrefix('fetched_years');
+  // clearPrefix('popup_tip_athan_enabled'); // ! TODO: remove this line
   // clearPrefix('scheduled_notifications'); // ! TODO: remove this line
   // clearPrefix('preference'); // ! TODO: remove this line
 };

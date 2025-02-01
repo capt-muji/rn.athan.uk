@@ -11,6 +11,7 @@ export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
 export const playingSoundIndexAtom = atom<number | null>(null);
 export const refreshUIAtom = atom<number>(Date.now());
 export const popupTipAthanEnabledAtom = atomWithStorageBoolean('popup_tip_athan_enabled', true);
+export const popupUpdateEnabledAtom = atom(false);
 
 // --- Actions ---
 export const setPagePosition = (position: number) => store.set(pagePositionAtom, position);
@@ -20,3 +21,4 @@ export const hideSheet = () => store.get(bottomSheetModalAtom)?.dismiss();
 export const setPlayingSoundIndex = (index: number | null) => store.set(playingSoundIndexAtom, index);
 export const setRefreshUI = (timestamp: number) => store.set(refreshUIAtom, timestamp);
 export const setPopupTipAthanEnabled = (enabled: boolean) => store.set(popupTipAthanEnabledAtom, enabled);
+export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdateEnabledAtom, enabled);
