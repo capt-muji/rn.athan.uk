@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/store/ios/AppIcon~ios-marketing.png"
+        "foregroundImage": "./assets/store/android/adaptive-icon.png"
       },
       "package": "com.mugtaba.athan"
     },
@@ -31,7 +31,6 @@
         "expo-notifications",
         {
           "icon": "./assets/store/ios/AppIcon~ios-marketing.png",
-          "color": "#ffffff",
           "defaultChannel": "default",
           "sounds": [
             "./assets/audio/athan1.wav",
