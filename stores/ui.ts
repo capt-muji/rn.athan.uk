@@ -30,7 +30,6 @@ export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdate
 export const setEnglishWidth = (type: ScheduleType, width: number) => {
   const isStandard = type === ScheduleType.Standard;
   const atom = isStandard ? englishWidthStandardAtom : englishWidthExtraAtom;
-  const currentWidth = store.get(atom);
 
-  if (width > currentWidth) store.set(atom, width);
+  store.set(atom, width);
 };

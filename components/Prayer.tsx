@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { StyleSheet, Pressable, LayoutChangeEvent } from 'react-native';
+import { StyleSheet, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Alert from '@/components/Alert';
@@ -13,7 +13,7 @@ import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
-import { refreshUIAtom, englishWidthStandardAtom, englishWidthExtraAtom, setEnglishWidth } from '@/stores/ui';
+import { refreshUIAtom, englishWidthStandardAtom, englishWidthExtraAtom } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -25,7 +25,6 @@ interface Props {
 
 export default function Prayer({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
-
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
@@ -40,13 +39,8 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
     AnimColor.animate(Prayer.ui.initialColorPos);
   }, [refreshUI]);
 
-  const handleEnglishLayout = (e: LayoutChangeEvent) => {
-    const { width } = e.nativeEvent.layout;
-    setEnglishWidth(type, width);
-  };
-
   const computedStyleEnglish = {
-    width: storedWidth || undefined,
+    width: storedWidth + STYLES.prayer.padding.left || undefined, // uses longest prayer name width
   };
 
   const handlePress = () => {
@@ -67,9 +61,7 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
 
   return (
     <AnimatedPressable style={styles.container} onPress={handlePress}>
-      <Animated.Text
-        onLayout={handleEnglishLayout}
-        style={[styles.text, styles.english, computedStyleEnglish, AnimColor.style]}>
+      <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, AnimColor.style]}>
         {Prayer.english}
       </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
