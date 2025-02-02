@@ -63,11 +63,12 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Fix UI timer drift when app in background
 - [x] Add a "Tips" popup on first ever open
 - [x] Change app name on homescreen to 'Athan'
-- [ ] Upgrade to Reanimated v4 (needs new architecture)
-- [ ] Upgrade to Expo SDK v52+ (new architecture)
+- [ ] Refactor English width calculation to run once
 - [ ] Support for locations outside London (will be an open source standalone project)
 - [ ] Add widget support
 - [ ] Add Qibla direction finder
+- [ ] Upgrade to Expo SDK v52+ (new architecture)
+- [ ] Upgrade to Reanimated v4 (needs new architecture)
 
 ## 📡 Data source
 
