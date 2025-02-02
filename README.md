@@ -64,6 +64,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Add a "Tips" popup on first ever open
 - [x] Change app name on homescreen to 'Athan'
 - [x] Refactor English width calculation to run once
+- [ ] Fix android bugs
 - [ ] Support for locations outside London (will be an open source standalone project)
 - [ ] Add widget support
 - [ ] Add Qibla direction finder
