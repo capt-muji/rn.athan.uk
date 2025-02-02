@@ -16,7 +16,7 @@ export default function ModalTips({ visible, onClose }: Props) {
     <Modal visible={visible} onClose={onClose} title="Quick Tip!" hideCloseButton>
       <Text style={styles.message}>
         To switch athan{'\n'}hold the{'  '}
-        <Svg width={16} height={16} viewBox="0 0 256 256" style={{ marginBottom: 1 }}>
+        <Svg width={16} height={16} viewBox="0 0 256 256">
           <Path d={ICON_PATHS[AlertIcon.BELL_SLASH]} fill="#000" />
         </Svg>
         {'  '}
