@@ -117,3 +117,25 @@ export const getCascadeDelay = (index: number, type: ScheduleType): number => {
 
   return (length - index) * ANIMATION.cascadeDelay;
 };
+
+/**
+ * Returns the index of the longest word in a prayer schedule
+ * @param type Schedule type (Standard or Extra)
+ * @returns Index of the longest word
+ */
+export const getLongestPrayerNameIndex = (type: ScheduleType): number => {
+  const isStandard = type === ScheduleType.Standard;
+
+  const names = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  let maxLength = 0;
+  let maxIndex = 0;
+
+  names.forEach((name, index) => {
+    if (name.length > maxLength) {
+      maxLength = name.length;
+      maxIndex = index;
+    }
+  });
+
+  return maxIndex;
+};
