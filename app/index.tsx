@@ -25,8 +25,8 @@ import {
 export default function Index() {
   useFonts({ Roboto: FontRoboto, 'Roboto-Medium': FontRobotoMedium });
 
-  const { state } = useAtomValue(syncLoadable);
   const { checkInitialPermissions } = useNotification();
+  const { state } = useAtomValue(syncLoadable);
   const modalTipEnabled = useAtomValue(popupTipAthanEnabledAtom);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
 
