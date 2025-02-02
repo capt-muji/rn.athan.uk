@@ -13,7 +13,7 @@ import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
-import { refreshUIAtom, englishWidthStandardAtom, englishWidthExtraAtom } from '@/stores/ui';
+import { refreshUIAtom } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -32,15 +32,13 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
     toColor: COLORS.activePrayer,
   });
 
-  const storedWidth = useAtomValue(Schedule.isStandard ? englishWidthStandardAtom : englishWidthExtraAtom);
-
   // Force animation to respect new state immediately when refreshing
   useEffect(() => {
     AnimColor.animate(Prayer.ui.initialColorPos);
   }, [refreshUI]);
 
   const computedStyleEnglish = {
-    width: storedWidth + STYLES.prayer.padding.left || undefined, // uses longest prayer name width
+    width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left || undefined, // Ensure consistent column width
   };
 
   const handlePress = () => {
