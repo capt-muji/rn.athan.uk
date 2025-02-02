@@ -126,15 +126,15 @@ export const getCascadeDelay = (index: number, type: ScheduleType): number => {
 export const getLongestPrayerNameIndex = (type: ScheduleType): number => {
   const isStandard = type === ScheduleType.Standard;
 
-  const names = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  const english = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   let maxLength = 0;
   let maxIndex = 0;
 
-  names.forEach((name, index) => {
-    if (name.length > maxLength) {
-      maxLength = name.length;
-      maxIndex = index;
-    }
+  english.forEach((name, index) => {
+    if (name.length <= maxLength) return;
+
+    maxLength = name.length;
+    maxIndex = index;
   });
 
   return maxIndex;
