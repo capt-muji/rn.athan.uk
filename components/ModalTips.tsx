@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
     textAlign: 'center',
-    color: '#555',
+    color: '#344e5c',
     lineHeight: 22,
     letterSpacing: 0.2,
     marginTop: 4,
