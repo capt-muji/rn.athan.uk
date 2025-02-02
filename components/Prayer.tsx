@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useRef, useEffect } from 'react';
-import { StyleSheet, View, Pressable } from 'react-native';
+import { useEffect } from 'react';
+import { StyleSheet, Pressable, LayoutChangeEvent } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Alert from '@/components/Alert';
@@ -13,7 +13,7 @@ import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
-import { refreshUIAtom } from '@/stores/ui';
+import { refreshUIAtom, englishWidthStandardAtom, englishWidthExtraAtom, setEnglishWidth } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -33,12 +33,21 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
     toColor: COLORS.activePrayer,
   });
 
+  const storedWidth = useAtomValue(Schedule.isStandard ? englishWidthStandardAtom : englishWidthExtraAtom);
+
   // Force animation to respect new state immediately when refreshing
   useEffect(() => {
     AnimColor.animate(Prayer.ui.initialColorPos);
   }, [refreshUI]);
 
-  const viewRef = useRef<View>(null);
+  const handleEnglishLayout = (e: LayoutChangeEvent) => {
+    const { width } = e.nativeEvent.layout;
+    setEnglishWidth(type, width);
+  };
+
+  const computedStyleEnglish = {
+    width: storedWidth || undefined,
+  };
 
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -56,16 +65,14 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
     AnimColor.animate(0, { delay });
   }
 
-  const computedStyleArabic = {
-    paddingRight: Prayer.isStandard ? 20 : 15,
-  };
-
   return (
-    <AnimatedPressable ref={viewRef} style={styles.container} onPress={handlePress}>
-      <Animated.Text style={[styles.text, styles.english, AnimColor.style]}>{Prayer.english}</Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, computedStyleArabic, AnimColor.style]}>
-        {Prayer.arabic}
+    <AnimatedPressable style={styles.container} onPress={handlePress}>
+      <Animated.Text
+        onLayout={handleEnglishLayout}
+        style={[styles.text, styles.english, computedStyleEnglish, AnimColor.style]}>
+        {Prayer.english}
       </Animated.Text>
+      <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
       <PrayerTime index={index} type={type} isOverlay={isOverlay} />
       <Alert index={index} type={type} isOverlay={isOverlay} />
     </AnimatedPressable>
@@ -84,7 +91,6 @@ const styles = StyleSheet.create({
   },
   english: {
     paddingLeft: STYLES.prayer.padding.left,
-    width: 130,
   },
   arabic: {
     flex: 1,

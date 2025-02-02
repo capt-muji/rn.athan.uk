@@ -55,5 +55,6 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
+    marginLeft: 15,
   },
 });
