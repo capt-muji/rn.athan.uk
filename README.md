@@ -39,6 +39,7 @@ A React Native mobile app for Muslim prayer times in London, UK
   <img src="./assets/screenshots/shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
   <img src="./assets/screenshots/shot11.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
   <img src="./assets/screenshots/shot12.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot13.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
 </div>
 
 <br/>
