@@ -10,11 +10,11 @@ type Props = {
 
 export default function ModalTimesExplained({ visible, onClose }: Props) {
   return (
-    <Modal visible={visible} onClose={onClose} title="Prayer Times">
+    <Modal visible={visible} onClose={onClose} title="Information">
       <View style={styles.container}>
         <View style={styles.timeRow}>
           <Text style={styles.timeTitle}>Last Third:</Text>
-          <Text style={styles.timeDescription}>10 mins after last third begins</Text>
+          <Text style={styles.timeDescription}>10 mins after last third of night</Text>
         </View>
 
         <View style={styles.timeRow}>
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingBottom: 10,
     paddingTop: 10,
-    paddingHorizontal: 4,
   },
   timeRow: {
     flexDirection: 'row',
@@ -49,10 +48,12 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   timeTitle: {
-    width: 80, // Fixed width for all titles
+    width: 90,
     fontSize: TEXT.sizeSmall - 1,
     fontFamily: TEXT.family.medium,
     color: '#1a1a1a',
+    textAlign: 'left',
+    paddingHorizontal: 8,
   },
   timeDescription: {
     flex: 1,
