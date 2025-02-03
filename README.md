@@ -101,7 +101,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 
 - **Last Third of Night**: 10 minutes _after_ last third begins (between Magrib and Fajr)
 - **Duha**: 20 minutes _after_ Sunrise
-- **Suhoor**: 45 minutes _before_ Fajr
+- **Suhoor**: 40 minutes _before_ Fajr
 - **Istijaba**: 59 minutes _before_ Magrib, only shown on Fridays
 
 ## 🛠 Technical Implementation

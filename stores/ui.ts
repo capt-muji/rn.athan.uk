@@ -13,6 +13,7 @@ export const playingSoundIndexAtom = atom<number | null>(null);
 export const refreshUIAtom = atom<number>(Date.now());
 export const popupTipAthanEnabledAtom = atomWithStorageBoolean('popup_tip_athan_enabled', true);
 export const popupUpdateEnabledAtom = atom(false);
+export const popupTimesExplainedAtom = atomWithStorageBoolean('popup_times_explained_enabled', true);
 
 export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
 export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_width_extra', 0);
@@ -26,6 +27,7 @@ export const setPlayingSoundIndex = (index: number | null) => store.set(playingS
 export const setRefreshUI = (timestamp: number) => store.set(refreshUIAtom, timestamp);
 export const setPopupTipAthanEnabled = (enabled: boolean) => store.set(popupTipAthanEnabledAtom, enabled);
 export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdateEnabledAtom, enabled);
+export const setPopupTimesExplainedEnabled = (enabled: boolean) => store.set(popupTimesExplainedAtom, enabled);
 
 export const setEnglishWidth = (type: ScheduleType, width: number) => {
   const isStandard = type === ScheduleType.Standard;
