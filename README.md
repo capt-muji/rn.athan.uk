@@ -217,6 +217,35 @@ The project uses ESLint and Prettier for code consistency and quality:
 ![Reanimated](https://img.shields.io/badge/Reanimated_3-6B52AE?style=for-the-badge)
 ![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
 
+## 🗄️ MMKV Storage Keys
+
+### Prayer Data
+
+- `prayer_YYYY-MM-DD`: Daily prayer times data
+- `fetched_years`: Record of which years have been fetched
+- `display_date`: Currently displayed date
+
+### Notifications
+
+- `scheduled_notifications_standard_[index]_[id]`: Standard prayer notification
+- `scheduled_notifications_extra_[index]_[id]`: Extra prayer notification
+- `last_notification_schedule_check`: Timestamp of last notification re-schedule
+- `preference_mute_standard`: Standard prayers notifications mute state
+- `preference_mute_extra`: Extra prayers notifications mute state
+- `preference_sound`: Selected Athan sound index
+
+### Prayer Alert Preferences
+
+- `preference_alert_standard_[0-5]`: Alert types for standard prayers (Fajr to Isha)
+- `preference_alert_extra_[0-3]`: Alert types for extra prayers (Third, Duha, Suhoor, Istijaba)
+
+### UI State
+
+- `prayer_max_english_width_standard`: Cached max width for standard prayer names
+- `prayer_max_english_width_extra`: Cached max width for extra prayer names
+- `popup_tip_athan_enabled`: First-time tips popup state
+- `popup_times_explained_enabled`: Prayer times explanation popup state
+
 ## Athans
 
 - Athan 1: https://www.youtube.com/watch?v=oV-ZRQjgCSk
