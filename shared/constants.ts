@@ -17,7 +17,7 @@ export const SCHEDULE_LENGTHS = {
 };
 
 export const TIME_ADJUSTMENTS = {
-  suhoor: -45, // minutes before fajr
+  suhoor: -40, // minutes before fajr
   duha: 20, // minutes after sunrise
   istijaba: -59, // minutes before magrib
 };
