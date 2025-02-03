@@ -14,7 +14,7 @@ export default function ModalTimesExplained({ visible, onClose }: Props) {
       <View style={styles.container}>
         <View style={styles.timeRow}>
           <Text style={styles.timeTitle}>Last Third:</Text>
-          <Text style={styles.timeDescription}>10 mins after last third of night</Text>
+          <Text style={styles.timeDescription}>10 mins after the last third of the night begins</Text>
         </View>
 
         <View style={styles.timeRow}>
