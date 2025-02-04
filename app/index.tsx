@@ -23,6 +23,7 @@ import {
   setPopupUpdateEnabled,
   popupTimesExplainedAtom,
   setPopupTimesExplainedEnabled,
+  pagePositionAtom,
 } from '@/stores/ui';
 
 export default function Index() {
@@ -33,6 +34,7 @@ export default function Index() {
   const modalTipEnabled = useAtomValue(popupTipAthanEnabledAtom);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const modalTimesExplained = useAtomValue(popupTimesExplainedAtom);
+  const pagePosition = useAtomValue(pagePositionAtom);
 
   useEffect(() => {
     // Initialize notifications on first load
@@ -71,7 +73,7 @@ export default function Index() {
     <>
       <ModalUpdate visible={updateAvailable} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
       <ModalTips visible={modalTipEnabled} onClose={handleCloseTip} />
-      <ModalTimesExplained visible={modalTimesExplained} onClose={handleCloseTimesExplained} />
+      <ModalTimesExplained visible={modalTimesExplained && pagePosition >= 1} onClose={handleCloseTimesExplained} />
       <Overlay />
       <Navigation />
     </>
