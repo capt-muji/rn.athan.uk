@@ -26,21 +26,23 @@ A React Native mobile app for Muslim prayer times in London, UK
 <br/>
 <br/>
 
+### Marketing
+
 <div align="center">
-  <img src="./assets/screenshots/shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
-  <img src="./assets/screenshots/shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot10.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot11.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot13.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot12.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/store/ios/screenshots/screenshot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
+  <img src="./assets/store/ios/screenshots/screenshot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/store/ios/screenshots/screenshot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/store/ios/screenshots/screenshot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/store/ios/screenshots/screenshot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/store/ios/screenshots/screenshot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/store/ios/screenshots/screenshot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/store/ios/screenshots/screenshot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
 </div>
+
+<br/>
+
+**Figma link:**
+https://www.figma.com/design/FMGlFD7Xz2OUFeGOihFZfO/Untitled?node-id=0-1&t=5PtfJiMrg2OVm1AQ-1
 
 <br/>
 <br/>
@@ -67,6 +69,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Refactor English width calculation to run once
 - [x] Only check for update every 24hrs
 - [x] Do not cache app version URL check
+- [x] Only show "Information" popup on 2nd page
 - [ ] Fix android bugs
 - [ ] Support for locations outside London (will be an open source standalone project)
 - [ ] Add widget support
@@ -248,6 +251,25 @@ The project uses ESLint and Prettier for code consistency and quality:
 - `popup_tip_athan_enabled`: First-time tips popup state
 - `popup_times_explained_enabled`: Prayer times explanation popup state
 - `popup_update_last_check`: Timestamp of last app update check
+
+
+### Screenshots
+
+<div align="center">
+  <img src="./assets/screenshots/shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
+  <img src="./assets/screenshots/shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot10.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot11.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot13.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/screenshots/shot12.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+</div>
 
 ## Athans
 
