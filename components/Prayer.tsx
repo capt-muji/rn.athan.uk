@@ -13,6 +13,7 @@ import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
+import { dateAtom } from '@/stores/sync';
 import { refreshUIAtom } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -25,17 +26,13 @@ interface Props {
 
 export default function Prayer({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
+  const date = useAtomValue(dateAtom);
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,
   });
-
-  // Force animation to respect new state immediately when refreshing
-  useEffect(() => {
-    AnimColor.animate(Prayer.ui.initialColorPos);
-  }, [refreshUI]);
 
   const computedStyleEnglish = {
     width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left || undefined, // Ensure consistent column width
@@ -52,10 +49,17 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
 
   if (Prayer.isNext) AnimColor.animate(1);
 
-  if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
-    const delay = getCascadeDelay(index, type);
-    AnimColor.animate(0, { delay });
-  }
+  // Force animation to respect new state immediately when refreshing
+  useEffect(() => {
+    AnimColor.animate(Prayer.ui.initialColorPos);
+  }, [refreshUI]);
+
+  useEffect(() => {
+    if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
+      const delay = getCascadeDelay(index, type);
+      AnimColor.animate(0, { delay });
+    }
+  }, [date]);
 
   return (
     <AnimatedPressable style={styles.container} onPress={handlePress}>
