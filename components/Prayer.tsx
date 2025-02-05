@@ -44,7 +44,7 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    if (!Schedule.isStandard && index === ISTIJABA_INDEX) return;
+    if (!Schedule.isStandard && index === ISTIJABA_INDEX && Prayer.isPassed) return;
 
     setSelectedPrayerIndex(type, index);
     toggleOverlay();
