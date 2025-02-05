@@ -14,6 +14,7 @@ import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
+import { dateAtom } from '@/stores/sync';
 import { refreshUIAtom, showSheet } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
@@ -30,6 +31,7 @@ interface Props {
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
+  const date = useAtomValue(dateAtom);
 
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
@@ -82,10 +84,12 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   if (Prayer.isNext && !Schedule.isMuted) AnimFill.animate(1);
 
-  if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
-    const delay = getCascadeDelay(index, type);
-    AnimFill.animate(0, { delay });
-  }
+  useEffect(() => {
+    if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
+      const delay = getCascadeDelay(index, type);
+      AnimFill.animate(0, { delay });
+    }
+  }, [date]);
 
   // Effects
   // Sync alert preferences with state
