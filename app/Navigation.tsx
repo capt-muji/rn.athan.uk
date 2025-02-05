@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import PagerView, { PagerViewOnPageScrollEvent } from 'react-native-pager-view';
+import PagerView, { PagerViewOnPageScrollEvent, PagerViewOnPageSelectedEvent } from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -7,7 +7,7 @@ import Screen from '@/app/Screen';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { setPagePosition } from '@/stores/ui';
+import { setPagePosition, setPopupTimesExplained, getPopupTimesExplained } from '@/stores/ui';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
@@ -25,6 +25,13 @@ export default function Navigation() {
     setPagePosition(currentPosition);
   };
 
+  const handlePageSelected = (e: PagerViewOnPageSelectedEvent) => {
+    const position = e.nativeEvent.position;
+    if (position === 1) {
+      if (getPopupTimesExplained() === 0) setPopupTimesExplained(1);
+    }
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <PagerView
@@ -32,7 +39,8 @@ export default function Navigation() {
         initialPage={0}
         overdrag={true}
         overScrollMode="never"
-        onPageScroll={handlePageScroll}>
+        onPageScroll={handlePageScroll}
+        onPageSelected={handlePageSelected}>
         <Screen type={ScheduleType.Standard} />
         <Screen type={ScheduleType.Extra} />
       </PagerView>

@@ -22,8 +22,7 @@ import {
   popupUpdateEnabledAtom,
   setPopupUpdateEnabled,
   popupTimesExplainedAtom,
-  setPopupTimesExplainedEnabled,
-  pagePositionAtom,
+  setPopupTimesExplained,
 } from '@/stores/ui';
 
 export default function Index() {
@@ -34,7 +33,6 @@ export default function Index() {
   const modalTipEnabled = useAtomValue(popupTipAthanEnabledAtom);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const modalTimesExplained = useAtomValue(popupTimesExplainedAtom);
-  const pagePosition = useAtomValue(pagePositionAtom);
 
   useEffect(() => {
     // Initialize notifications on first load
@@ -63,7 +61,7 @@ export default function Index() {
   };
 
   const handleCloseTimesExplained = () => {
-    setPopupTimesExplainedEnabled(false);
+    setPopupTimesExplained(2);
   };
 
   if (state === 'loading') return <WaveIndicator color="white" />;
@@ -73,7 +71,7 @@ export default function Index() {
     <>
       <ModalUpdate visible={updateAvailable} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
       <ModalTips visible={modalTipEnabled} onClose={handleCloseTip} />
-      <ModalTimesExplained visible={modalTimesExplained && pagePosition >= 1} onClose={handleCloseTimesExplained} />
+      <ModalTimesExplained visible={modalTimesExplained === 1} onClose={handleCloseTimesExplained} />
       <Overlay />
       <Navigation />
     </>
