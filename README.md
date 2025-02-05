@@ -41,9 +41,9 @@ A React Native mobile app for Muslim prayer times in London, UK
 </div>
 
 <br/>
+<br/>
 
-**Figma link:**
-https://www.figma.com/design/FMGlFD7Xz2OUFeGOihFZfO/Untitled?node-id=0-1&t=5PtfJiMrg2OVm1AQ-1
+**[Figma Designs Link](https://www.figma.com/design/FMGlFD7Xz2OUFeGOihFZfO/Untitled?node-id=0-1&t=5PtfJiMrg2OVm1AQ-1)**
 
 <br/>
 <br/>
