@@ -29,14 +29,14 @@ A React Native mobile app for Muslim prayer times in London, UK
 ### Marketing
 
 <div align="center">
-  <img src="./assets/store/ios/screenshots/screenshot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
-  <img src="./assets/store/ios/screenshots/screenshot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/store/ios/screenshots/screenshot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/store/ios/screenshots/screenshot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/store/ios/screenshots/screenshot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/store/ios/screenshots/screenshot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/store/ios/screenshots/screenshot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/store/ios/screenshots/screenshot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/ios/ios-marketing-shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
+  <img src="./assets/marketing/ios/ios-marketing-shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/ios/ios-marketing-shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/ios/ios-marketing-shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/ios/ios-marketing-shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/ios/ios-marketing-shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/ios/ios-marketing-shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/ios/ios-marketing-shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
 </div>
 
 <br/>
@@ -252,23 +252,22 @@ The project uses ESLint and Prettier for code consistency and quality:
 - `popup_times_explained_enabled`: Prayer times explanation popup state
 - `popup_update_last_check`: Timestamp of last app update check
 
-
 ### Screenshots
 
 <div align="center">
-  <img src="./assets/screenshots/shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
-  <img src="./assets/screenshots/shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot10.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot11.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot13.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/screenshots/shot12.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
+  <img src="./assets/marketing/screenshots/app-shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot10.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot11.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot13.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot12.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
 </div>
 
 ## Athans
