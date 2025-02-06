@@ -22,12 +22,12 @@ export default function Layout() {
   // useEffect(() => {
   //   if (fontsLoaded) {
   //     // Temporary delay for testing splash screen
-  //     const timeout = setTimeout(() => {
-  //       console.log('xxxxxLayout hide splash screen');
-  //       SplashScreen.hideAsync();
+  setTimeout(() => {
+    // console.log('xxxxxLayout hide splash screen');
+    SplashScreen.hideAsync();
 
-  //       console.log(SplashScreen);
-  //     }, 3000);
+    // console.log(SplashScreen);
+  }, 3000);
 
   //     return () => clearTimeout(timeout);
   //   }
