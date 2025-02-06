@@ -1,11 +1,8 @@
-import { useFonts } from 'expo-font';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { WaveIndicator } from 'react-native-indicators';
 
 import Navigation from '@/app/Navigation';
-import FontRobotoMedium from '@/assets/fonts/Roboto-Medium.ttf';
-import FontRoboto from '@/assets/fonts/Roboto-Regular.ttf';
 import Error from '@/components/Error';
 import ModalTimesExplained from '@/components/ModalTimesExplained';
 import ModalTips from '@/components/ModalTips';
@@ -26,8 +23,6 @@ import {
 } from '@/stores/ui';
 
 export default function Index() {
-  useFonts({ Roboto: FontRoboto, 'Roboto-Medium': FontRobotoMedium });
-
   const { checkInitialPermissions } = useNotification();
   const { state } = useAtomValue(syncLoadable);
   const modalTipEnabled = useAtomValue(popupTipAthanEnabledAtom);
