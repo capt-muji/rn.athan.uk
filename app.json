@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Athan London",
+    "name": "Athan",
     "slug": "athan",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "automatic",
