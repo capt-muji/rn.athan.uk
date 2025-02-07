@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   icon: {
     shadowColor: '#EF9C29',
     shadowOffset: { width: 5, height: 5 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.2,
     shadowRadius: 10,
   },
 });
