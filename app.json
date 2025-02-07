@@ -1,13 +1,19 @@
 {
   "expo": {
-    "name": "Athan London",
+    "name": "Athan",
     "slug": "athan",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "orientation": "portrait",
-    "icon": "./assets/store/ios/AppIcon~ios-marketing.png",
     "scheme": "athan",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/icons/config/ios.png",
+    "backgroundColor": "#495c5d",
+    "splash": {
+      "image": "./assets/icons/config/splash.png",
+      "backgroundColor": "#2c1c77"
+    },
     "ios": {
+      "icon": "./assets/icons/config/ios.png",
       "supportsTablet": true,
       "config": {
         "usesNonExemptEncryption": false
@@ -16,12 +22,13 @@
       "infoPlist": {
         "CFBundleDisplayName": "Athan",
         "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications"
-      },
-      "icon": "./assets/store/ios/AppIcon~ios-marketing.png"
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/store/android/adaptive-icon.png"
+        "foregroundImage": "./assets/icons/config/android-adaptive.png",
+        "monochromeImage": "./assets/icons/config/android-adaptive.png",
+        "backgroundColor": "#2c1c77"
       },
       "package": "com.mugtaba.athan"
     },
@@ -30,7 +37,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/store/ios/AppIcon~ios-marketing.png",
+          "icon": "./assets/icons/config/ios.png",
           "defaultChannel": "default",
           "sounds": [
             "./assets/audio/athan1.wav",
@@ -49,6 +56,15 @@
             "./assets/audio/athan14.wav",
             "./assets/audio/athan15.wav"
           ]
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/icons/config/splash.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#2c1c77"
         }
       ]
     ],

@@ -43,7 +43,9 @@ A React Native mobile app for Muslim prayer times in London, UK
 <br/>
 <br/>
 
-**[Figma Designs Link](https://www.figma.com/design/FMGlFD7Xz2OUFeGOihFZfO/Untitled?node-id=0-1&t=5PtfJiMrg2OVm1AQ-1)**
+**[Figma Designs: Marketing](https://www.figma.com/design/FMGlFD7Xz2OUFeGOihFZfO/Untitled?node-id=0-1&t=5PtfJiMrg2OVm1AQ-1)**
+
+**[Figma Designs: App Icon](https://www.figma.com/design/WqP1Vd0aVmyxNuuac4aukJ/Athan-app-icon?node-id=0-1&t=W7KZBNNLhm2vxUgt-1)**
 
 <br/>
 <br/>
@@ -71,6 +73,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Only check for update every 24hrs
 - [x] Do not cache app version URL check
 - [x] Only show "Information" popup on 2nd page
+- [x] Splashscreen implementation
 - [ ] Fix android bugs
 - [ ] Support for locations outside London (will be an open source standalone project)
 - [ ] Add widget support
