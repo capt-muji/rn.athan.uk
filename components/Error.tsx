@@ -15,9 +15,9 @@ export default function Error() {
     <View style={styles.container}>
       <Text style={[styles.heading]}> Oh no! </Text>
       <Text style={[styles.subtext, styles.first]}> Something went wrong. </Text>
-      <Text style={[styles.subtext, styles.last]}> We are investigating! </Text>
+      <Text style={[styles.subtext, styles.last]}> Try refreshing! </Text>
       <Masjid height={65} width={60} />
-      <Pressable style={({ pressed }) => [styles.button, { opacity: pressed ? 1 : 0.75 }]} onPress={handleRefresh}>
+      <Pressable style={styles.button} onPress={handleRefresh}>
         <Text style={[styles.subtext]}> Refresh </Text>
       </Pressable>
     </View>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 50,
     flexDirection: 'row',
-    backgroundColor: '#0300059f',
+    backgroundColor: '#030005',
     alignItems: 'center',
     paddingHorizontal: 30,
     paddingVertical: 18,
