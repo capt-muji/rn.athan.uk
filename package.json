@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -33,6 +33,7 @@
     "expo-linking": "~6.3.1",
     "expo-notifications": "~0.28.19",
     "expo-router": "~3.5.24",
+    "expo-splash-screen": "~0.27.7",
     "expo-status-bar": "~1.12.1",
     "expo-system-ui": "~3.0.7",
     "expo-updates": "~0.25.27",
@@ -57,7 +58,6 @@
     "eslint": "9.15.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "expo-modules-core": "~1.12.26",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "pino": "^9.5.0",
