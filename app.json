@@ -6,6 +6,12 @@
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/icons/config/ios.png",
+    "backgroundColor": "#495c5d",
+    "splash": {
+      "image": "./assets/icons/config/splash.png",
+      "backgroundColor": "#2c1c77"
+    },
     "ios": {
       "icon": "./assets/icons/config/ios.png",
       "supportsTablet": true,
