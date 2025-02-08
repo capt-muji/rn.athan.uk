@@ -2,17 +2,17 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "automatic",
-    "icon": "./assets/icons/config/ios.png",
+    "icon": "./assets/icons/config/icon-ios.png",
     "backgroundColor": "#2c1c77",
     "splash": {
       "backgroundColor": "#2c1c77"
     },
     "ios": {
-      "icon": "./assets/icons/config/ios.png",
+      "icon": "./assets/icons/config/icon-ios.png",
       "supportsTablet": true,
       "config": {
         "usesNonExemptEncryption": false
@@ -25,7 +25,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icons/config/android-adaptive.png"
+        "foregroundImage": "./assets/icons/config/icon-android-adaptive.png"
       },
       "package": "com.mugtaba.athan"
     },
@@ -34,7 +34,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/icons/config/ios.png",
+          "icon": "./assets/icons/config/icon-android-notification.png",
           "defaultChannel": "default",
           "sounds": [
             "./assets/audio/athan1.wav",
