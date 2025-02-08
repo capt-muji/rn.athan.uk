@@ -38,7 +38,7 @@ export default function Layout() {
   if (!isReady) return null;
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#2c1c77' }}>
       <GradientBackground />
       <SystemBars style="light" />
       <BottomSheetModalProvider>
