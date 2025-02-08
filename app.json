@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.0.15",
+    "version": "1.0.16",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "automatic",
@@ -21,7 +21,8 @@
       "infoPlist": {
         "CFBundleDisplayName": "Athan",
         "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications"
-      }
+      },
+      "backgroundColor": "#2c1c77"
     },
     "android": {
       "adaptiveIcon": {
@@ -35,7 +36,6 @@
         "expo-notifications",
         {
           "icon": "./assets/icons/config/icon-android-notification.png",
-          "defaultChannel": "default",
           "sounds": [
             "./assets/audio/athan1.wav",
             "./assets/audio/athan2.wav",
