@@ -28,6 +28,8 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ## 🎯 Marketing
 
+<br/>
+
 <div align="center">
   <img src="./assets/marketing/ios/ios-marketing-shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
   <img src="./assets/marketing/ios/ios-marketing-shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
@@ -42,6 +44,8 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 <br/>
 <br/>
+
+### Resources
 
 **[Figma Designs: Marketing](https://www.figma.com/design/FMGlFD7Xz2OUFeGOihFZfO/Untitled?node-id=0-1&t=5PtfJiMrg2OVm1AQ-1)**
 
