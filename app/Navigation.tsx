@@ -46,11 +46,7 @@ export default function Navigation() {
         end={{ x: 1, y: 1 }}
       />
 
-      <PagerView
-        style={{ flex: 1, backgroundColor: 'transparent' }}
-        initialPage={0}
-        overdrag={true}
-        onPageSelected={handlePageSelected}>
+      <PagerView style={{ flex: 1 }} initialPage={0} overdrag={true} onPageSelected={handlePageSelected}>
         <Screen type={ScheduleType.Standard} />
         <Screen type={ScheduleType.Extra} />
       </PagerView>
