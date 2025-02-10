@@ -11,7 +11,6 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import BottomSheetSound from '@/components/BottomSheetSound';
 import Error from '@/components/Error';
-import GradientBackground from '@/components/GradientBackground';
 
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
@@ -39,7 +38,6 @@ export default function Layout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#2c1c77' }}>
-      <GradientBackground />
       <SystemBars style="light" />
       <BottomSheetModalProvider>
         <Slot />

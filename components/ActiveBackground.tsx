@@ -40,6 +40,7 @@ export default function ActiveBackground({ type }: Props) {
 
   const computedStyles: ViewStyle = {
     shadowColor: isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
+    elevation: shouldHide ? 0 : 15,
   };
 
   return <Animated.View style={[styles.background, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style]} />;
@@ -52,6 +53,5 @@ const styles = StyleSheet.create({
     width: '100%',
     height: STYLES.prayer.height,
     borderRadius: 8,
-    elevation: 15,
   },
 });
