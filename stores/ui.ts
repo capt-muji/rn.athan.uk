@@ -23,6 +23,7 @@ export const popupTimesExplainedAtom = atomWithStorageNumber('popup_times_explai
 
 export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
 export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_width_extra', 0);
+export const scrollPositionAtom = atom(0);
 
 // --- Actions ---
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);
@@ -45,3 +46,5 @@ export const setEnglishWidth = (type: ScheduleType, width: number) => {
 
   store.set(atom, width);
 };
+
+export const setScrollPosition = (position: number) => store.set(scrollPositionAtom, position);
