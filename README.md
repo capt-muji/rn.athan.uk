@@ -81,7 +81,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Remove icon from Splashscreen and keep solid color
 - [x] Create Android notification outline icon
 - [x] Swap from Skia background to expo-linear-gradient (better android performance)
-- [x] Optimise app iPad friendly
+- [x] Optimise app to be iPad friendly
 - [ ] Fix Android bugs
 - [ ] Support for locations outside London (will be an open source standalone project)
 - [ ] Add widget support
