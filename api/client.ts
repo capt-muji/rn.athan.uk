@@ -1,6 +1,6 @@
 import { API_CONFIG } from '@/api/config';
 import { MOCK_DATA_SIMPLE } from '@/mocks/simple';
-import logger from '@/shared/logger';
+import logger, { isProd, isPreview } from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import { createLondonDate, getCurrentYear } from '@/shared/time';
 import * as TimeUtils from '@/shared/time';
@@ -34,7 +34,7 @@ const validateApiResponse = async (response: Response): Promise<IApiResponse> =>
 // Uses mock data in non-production environments
 // Implements no-cache policy for fresh data
 const fetchRawData = async (year?: number): Promise<IApiResponse> => {
-  if (process.env.EXPO_PUBLIC_ENV !== 'prod') return MOCK_DATA_SIMPLE;
+  if (!isProd() && !isPreview()) return MOCK_DATA_SIMPLE;
 
   try {
     const response = await globalThis.fetch(buildApiUrl(year), {
