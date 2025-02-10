@@ -1,9 +1,10 @@
 import pino from 'pino';
 
-const isProd = process.env.EXPO_PUBLIC_ENV === 'prod';
+export const isProd = () => process.env.EXPO_PUBLIC_ENV === 'prod';
+export const isPreview = () => process.env.EXPO_PUBLIC_ENV === 'preview';
 
 const logger = pino({
-  enabled: !isProd,
+  enabled: !isProd() && !isPreview(),
   transport: {
     target: 'pino-pretty',
     options: {
