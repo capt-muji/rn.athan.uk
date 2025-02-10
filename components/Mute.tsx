@@ -1,16 +1,14 @@
 import * as Haptics from 'expo-haptics';
-import { useAtomValue } from 'jotai';
 import { useRef, useEffect } from 'react';
 import { Pressable, Text, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useAnimationScale, useAnimationOpacity } from '@/hooks/useAnimation';
+import { useAnimationScale } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
 import { useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { setScheduleMutedState } from '@/stores/notifications';
-import { pagePositionAtom } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -22,13 +20,8 @@ export default function Mute({ type }: Props) {
   const { isStandard, isMuted } = useSchedule(type);
   const { handleMuteChange } = useNotification();
   const AnimScale = useAnimationScale(1);
-  const AnimOpacity = useAnimationOpacity(1);
 
   const debouncedMuteRef = useRef<NodeJS.Timeout>();
-  const pagePosition = useAtomValue(pagePositionAtom);
-
-  const isVisible = (isStandard && pagePosition === 0) || (!isStandard && pagePosition === 1);
-  AnimOpacity.animate(isVisible ? 1 : 0, { duration: ANIMATION.duration });
 
   // Clear up
   useEffect(() => {
@@ -71,7 +64,7 @@ export default function Mute({ type }: Props) {
   return (
     <AnimatedPressable
       hitSlop={15}
-      style={[styles.container, computedStylesContainer, AnimScale.style, AnimOpacity.style]}
+      style={[styles.container, computedStylesContainer, AnimScale.style]}
       onPress={handlePress}
       onPressIn={() => AnimScale.animate(0.9)}
       onPressOut={() => AnimScale.animate(1)}>
