@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Screen from '@/app/Screen';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
-import { ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { setPagePosition, setPopupTimesExplained, getPopupTimesExplained } from '@/stores/ui';
 
@@ -32,21 +32,23 @@ export default function Navigation() {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: '#5b1eaa' }}>
       {/* Screen 2 background */}
       <LinearGradient
-        colors={['#180050', '#0b0026']}
+        colors={[COLORS.gradientScreen2Start, COLORS.gradientScreen2End]}
         locations={[0, 1]}
         style={StyleSheet.absoluteFillObject}
-        start={{ x: -1, y: 0.25 }}
+        start={{ x: 0, y: 0.25 }}
+        end={{ x: 1, y: 1 }}
       />
 
       {/* Screen 1 background */}
       <AnimatedLinearGradient
-        colors={['#1b003e', '#2f0042']}
+        colors={[COLORS.gradientScreen1Start, COLORS.gradientScreen1End]}
         locations={[0, 1]}
         style={[StyleSheet.absoluteFillObject, gradient1Animation.style]}
-        start={{ x: -1, y: 0.25 }}
+        start={{ x: 0, y: 0.25 }}
+        end={{ x: 1, y: 1 }}
       />
 
       <PagerView style={{ flex: 1 }} initialPage={0} overdrag={true} onPageSelected={handlePageSelected}>
