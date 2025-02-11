@@ -1,10 +1,10 @@
 {
   "prod": {
     "ios": {
-      "version": "1.0.14"
+      "version": "1.0.18"
     },
     "android": {
-      "version": "1.0.14"
+      "version": "1.0.18"
     }
   }
 }
