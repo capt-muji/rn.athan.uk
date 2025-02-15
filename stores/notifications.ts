@@ -225,10 +225,10 @@ export const shouldRescheduleNotifications = (): boolean => {
 };
 
 export const refreshNotifications = async () => {
-  // if (!shouldRescheduleNotifications()) {
-  //   logger.info('NOTIFICATION: Skipping reschedule, last schedule was within 24 hours');
-  //   return;
-  // }
+  if (!shouldRescheduleNotifications()) {
+    logger.info('NOTIFICATION: Skipping reschedule, last schedule was within 24 hours');
+    return;
+  }
 
   logger.info('NOTIFICATION: Starting notification refresh');
 
