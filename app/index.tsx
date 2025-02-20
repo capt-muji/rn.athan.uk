@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View, Platform } from 'react-native';
 
 import Navigation from '@/app/Navigation';
 import Error from '@/components/Error';
@@ -62,7 +62,7 @@ export default function Index() {
   if (state === 'loading') {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size={48} color="white" />
+        <ActivityIndicator size={Platform.select({ ios: 48, android: 32 })} color="#8d73ff" />
       </View>
     );
   }
