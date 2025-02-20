@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { WaveIndicator } from 'react-native-indicators';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import Navigation from '@/app/Navigation';
 import Error from '@/components/Error';
@@ -59,7 +59,13 @@ export default function Index() {
     setPopupTimesExplained(2);
   };
 
-  if (state === 'loading') return <WaveIndicator color="white" />;
+  if (state === 'loading') {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size={48} color="white" />
+      </View>
+    );
+  }
   if (state === 'hasError') return <Error />;
 
   return (
@@ -72,3 +78,11 @@ export default function Index() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
