@@ -224,6 +224,24 @@ export const shouldRescheduleNotifications = (): boolean => {
   return hoursElapsed >= NOTIFICATION_REFRESH_HOURS;
 };
 
+/**
+ * Reschedules all notifications for both Standard and Extra schedules
+ * Used when changing sound preferences or during periodic refresh
+ */
+export const rescheduleAllNotifications = async () => {
+  // First cancel all notifications for both schedules
+  await Promise.all([
+    cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
+    cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+  ]);
+
+  // Then schedule new notifications for both schedules
+  await Promise.all([
+    addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
+    addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+  ]);
+};
+
 export const refreshNotifications = async () => {
   if (!shouldRescheduleNotifications()) {
     logger.info('NOTIFICATION: Skipping reschedule, last schedule was within 24 hours');
@@ -233,36 +251,8 @@ export const refreshNotifications = async () => {
   logger.info('NOTIFICATION: Starting notification refresh');
 
   try {
-    const standardMuted = getScheduleMutedState(ScheduleType.Standard);
-    const extraMuted = getScheduleMutedState(ScheduleType.Extra);
-
-    const refreshTasks = [];
-
-    if (!standardMuted) {
-      refreshTasks.push(
-        cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard).then(() =>
-          addAllScheduleNotificationsForSchedule(ScheduleType.Standard)
-        )
-      );
-    } else {
-      logger.info('NOTIFICATION: Standard schedule is muted, skipping refresh');
-    }
-
-    if (!extraMuted) {
-      refreshTasks.push(
-        cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra).then(() =>
-          addAllScheduleNotificationsForSchedule(ScheduleType.Extra)
-        )
-      );
-    } else {
-      logger.info('NOTIFICATION: Extra schedule is muted, skipping refresh');
-    }
-
-    await Promise.all(refreshTasks);
-
-    // Update last schedule timestamp even if schedules are muted
+    await rescheduleAllNotifications();
     store.set(lastNotificationScheduleAtom, Date.now());
-
     logger.info('NOTIFICATION: Refresh complete');
   } catch (error) {
     logger.error('NOTIFICATION: Failed to refresh notifications:', error);

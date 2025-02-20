@@ -10,12 +10,7 @@ import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import Glow from '@/components/Glow';
 import * as Device from '@/device/notifications';
 import { COLORS, TEXT } from '@/shared/constants';
-import { ScheduleType } from '@/shared/types';
-import {
-  cancelAllScheduleNotificationsForSchedule,
-  addAllScheduleNotificationsForSchedule,
-  setSoundPreference,
-} from '@/stores/notifications';
+import { rescheduleAllNotifications, setSoundPreference } from '@/stores/notifications';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
 export default function BottomSheetSound() {
@@ -79,18 +74,8 @@ export default function BottomSheetSound() {
 
     // Update the persisted sound preference with user's selection
     setSoundPreference(tempSoundSelection);
-
     await Device.updateAndroidChannel(tempSoundSelection);
-
-    await Promise.all([
-      cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
-      cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra),
-    ]);
-
-    await Promise.all([
-      addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
-      addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
-    ]);
+    await rescheduleAllNotifications();
 
     // Clear temporary selection state since changes are now persisted
     setTempSoundSelection(null);
