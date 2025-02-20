@@ -1,5 +1,6 @@
 {
   "expo": {
+    "newArchEnabled": true,
     "name": "Athan",
     "slug": "athan",
     "version": "1.0.19",
