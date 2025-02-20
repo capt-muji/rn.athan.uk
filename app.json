@@ -10,6 +10,8 @@
     "icon": "./assets/icons/config/icon-ios.png",
     "backgroundColor": "#2c1c77",
     "splash": {
+      "image": "./assets/icons/config/icon-splash.png",
+      "resizeMode": "contain",
       "backgroundColor": "#2c1c77"
     },
     "ios": {
@@ -27,7 +29,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icons/config/icon-android-adaptive.png"
+        "foregroundImage": "./assets/icons/config/icon-android-adaptive.png",
+        "backgroundColor": "#2c1c77"
       },
       "package": "com.mugtaba.athan"
     },
@@ -59,7 +62,9 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#2c1c77"
+          "backgroundColor": "#2c1c77",
+          "image": "./assets/icons/config/icon-splash.png",
+          "resizeMode": "contain"
         }
       ]
     ],
