@@ -1,6 +1,7 @@
-import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia';
 import * as Haptics from 'expo-haptics';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useAtomValue } from 'jotai';
+import { useEffect } from 'react';
 import { StyleSheet, Pressable, View, ViewStyle, Dimensions, Platform } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -21,7 +22,6 @@ export default function Overlay() {
 
   const measurements = useAtomValue(measurementsAtom);
 
-  const { height, width } = Dimensions.get('screen');
   const insets = useSafeAreaInsets();
 
   const handleClose = () => {
@@ -30,13 +30,15 @@ export default function Overlay() {
     toggleOverlay();
   };
 
-  if (overlay.isOn) {
-    backgroundOpacity.animate(1, { duration: ANIMATION.duration });
-    dateOpacity.animate(1, { duration: ANIMATION.duration });
-  } else {
-    backgroundOpacity.animate(0, { duration: ANIMATION.duration });
-    dateOpacity.animate(0, { duration: ANIMATION.duration });
-  }
+  useEffect(() => {
+    if (overlay.isOn) {
+      backgroundOpacity.animate(1, { duration: ANIMATION.duration });
+      dateOpacity.animate(1, { duration: ANIMATION.duration });
+    } else {
+      backgroundOpacity.animate(0, { duration: ANIMATION.duration });
+      dateOpacity.animate(0, { duration: ANIMATION.duration });
+    }
+  }, [overlay.isOn]);
 
   const computedStyleContainer: ViewStyle = {
     pointerEvents: overlay.isOn ? 'auto' : 'none',
@@ -82,11 +84,12 @@ export default function Overlay() {
       </View>
 
       {/* Gradient background */}
-      <Canvas style={[StyleSheet.absoluteFill, styles.gradientContainer]}>
-        <Rect x={0} y={0} width={width} height={height}>
-          <LinearGradient start={vec(0, 0)} end={vec(0, height)} colors={['#110022', 'black']} />
-        </Rect>
-      </Canvas>
+      <LinearGradient
+        colors={['#110022', 'black']}
+        style={[StyleSheet.absoluteFill, styles.gradientContainer]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+      />
 
       <Glow
         color={COLORS.glows.overlay}

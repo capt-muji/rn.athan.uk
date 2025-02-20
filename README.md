@@ -62,7 +62,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Midnight reset with animations
 - [x] Offline support with local data caching
 - [x] Customizable notifications with multiple alert modes
-- [x] Over 15 selectable Athan audio notification options
+- [x] Over 10 selectable Athan audio notification options
 - [x] View tomorrow's prayer times
 - [x] Automatic yearly data refresh
 - [x] Multipage with special times (Third of night, Duha, Suhoor, Istijaba)
@@ -77,18 +77,17 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Only check for update every 24hrs
 - [x] Do not cache app version URL check
 - [x] Only show "Information" popup on 2nd page
-- [x] Remove icon from Splashscreen and keep solid color
 - [x] Create Android notification outline icon
 - [x] Swap from Skia background to expo-linear-gradient (better android performance)
 - [x] Optimise app to be iPad friendly
+- [x] Replace Skia with expo-linear-gradient
+- [x] Upgrade to Expo SDK v52+ (new architecture)
+- [x] Upgrade to Reanimated v4 (needs new architecture)
 - [ ] Timer on popup
-- [ ] Replace Skia with expo-linear-gradient
 - [ ] Fix Android bugs
-- [ ] Support for locations outside London (will be an open source standalone project)
 - [ ] Add widget support
 - [ ] Add Qibla direction finder
-- [ ] Upgrade to Expo SDK v52+ (new architecture)
-- [ ] Upgrade to Reanimated v4 (needs new architecture)
+- [ ] Support for locations outside London (will be an open source standalone project)
 
 ## 📡 Data source
 

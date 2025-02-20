@@ -16,7 +16,7 @@ import Error from '@/components/Error';
 SplashScreen.preventAutoHideAsync();
 
 // Ignore logs
-LogBox.ignoreLogs(['Require cycle', 'SplashScreen']);
+LogBox.ignoreLogs(['Require cycle']);
 
 export default function Layout() {
   const [isReady, setIsReady] = useState(false);
