@@ -37,13 +37,8 @@ export default function Index() {
 
     // Check permissions for notifications and register background fetch if allowed
     checkInitialPermissions().then((hasPermission) => {
-      if (hasPermission) {
-        registerBackgroundFetchAsync().catch((error) =>
-          logger.error('TASK: Failed to register background fetch', error)
-        );
-      } else {
-        logger.info('TASK: Notifications permission not granted.');
-      }
+      if (hasPermission) registerBackgroundFetchAsync();
+      else logger.info('TASK: Notifications permission not granted.');
     });
 
     // Initialize background/foreground state listeners (sync UI as needed)
