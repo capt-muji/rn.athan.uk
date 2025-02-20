@@ -140,10 +140,10 @@ export const cleanup = () => {
   clearPrefix('prayer_');
   clearPrefix('display_date');
   clearPrefix('fetched_years');
-  clearPrefix('popup_update_last_check'); // ! TODO: remove this line
-  clearPrefix('popup_tip_athan_enabled'); // ! TODO: remove this line
-  clearPrefix('popup_times_explained_enabled'); // ! TODO: remove this line
-  // clearPrefix('prayer_max_english_width'); // ! TODO: remove this line
-  // clearPrefix('scheduled_notifications'); // ! TODO: remove this line
-  // clearPrefix('preference'); // ! TODO: remove this line
+  // clearPrefix('popup_update_last_check'); // ! Leave commented
+  // clearPrefix('popup_tip_athan_enabled'); // ! Leave commented
+  // clearPrefix('popup_times_explained_enabled'); // ! Leave commented
+  // clearPrefix('prayer_max_english_width'); // ! Leave commented
+  // clearPrefix('scheduled_notifications'); // ! Leave commented
+  // clearPrefix('preference'); // ! Leave commented
 };
