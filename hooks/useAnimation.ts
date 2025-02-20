@@ -8,11 +8,9 @@ import {
   runOnJS,
   interpolate,
   useAnimatedProps,
-  createAnimatedPropAdapter,
   WithTimingConfig,
   WithSpringConfig,
   Easing,
-  processColor,
 } from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';
@@ -37,15 +35,6 @@ const DEFAULT_SPRING: WithSpringConfig = {
   stiffness: 500,
   mass: 0.5,
 };
-
-const svgColorAdapter = createAnimatedPropAdapter(
-  (props) => {
-    if ('fill' in props) {
-      props.fill = { type: 0, payload: processColor(props.fill) };
-    }
-  },
-  ['fill']
-);
 
 export const useAnimationColor = (initialValue: number = 0, input: ColorAnimationInput) => {
   const value = useSharedValue(initialValue);
@@ -76,7 +65,7 @@ export const useAnimationFill = (initialValue: number = 0, input: ColorAnimation
 
   const animatedProps = useAnimatedProps(() => ({
     fill: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
-  }), [], svgColorAdapter);
+  }));
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
