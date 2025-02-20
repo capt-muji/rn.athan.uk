@@ -16,8 +16,6 @@ import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
 import { dateAtom } from '@/stores/sync';
 import { refreshUIAtom } from '@/stores/ui';
 
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-
 interface Props {
   type: ScheduleType;
   index: number;
@@ -62,14 +60,14 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   }, [date]);
 
   return (
-    <AnimatedPressable style={styles.container} onPress={handlePress}>
+    <Pressable style={styles.container} onPress={handlePress}>
       <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, AnimColor.style]}>
         {Prayer.english}
       </Animated.Text>
       <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
       <PrayerTime index={index} type={type} isOverlay={isOverlay} />
       <Alert index={index} type={type} isOverlay={isOverlay} />
-    </AnimatedPressable>
+    </Pressable>
   );
 }
 
