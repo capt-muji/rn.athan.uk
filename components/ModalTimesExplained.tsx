@@ -93,9 +93,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   buttonDisabled: {
-    backgroundColor: '#e4e7eb',
+    backgroundColor: '#d4dae2',
   },
   buttonTextDisabled: {
-    color: '#8795a1',
+    color: '#738799',
   },
 });
