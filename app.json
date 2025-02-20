@@ -5,7 +5,7 @@
     "version": "1.0.19",
     "orientation": "portrait",
     "scheme": "athan",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "icon": "./assets/icons/config/icon-ios.png",
     "backgroundColor": "#2c1c77",
     "splash": {
