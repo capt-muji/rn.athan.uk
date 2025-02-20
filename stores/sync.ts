@@ -93,7 +93,7 @@ const updatePrayerData = async () => {
 // 3. Initializes app state with current date
 export const sync = async () => {
   try {
-    if (needsDataUpdate()) await updatePrayerData();
+    if (true || needsDataUpdate()) await updatePrayerData();
     else logger.info('SYNC: Data already up to date');
 
     const date = TimeUtils.createLondonDate();
