@@ -23,7 +23,7 @@ export default function BackgroundGradients() {
         end={{ x: 1, y: 1 }}
       />
 
-      <Animated.View style={[StyleSheet.absoluteFillObject, animatedStyle]}>
+      <Animated.View renderToHardwareTextureAndroid={true} style={[StyleSheet.absoluteFillObject, animatedStyle]}>
         <LinearGradient
           colors={[COLORS.gradientScreen1Start, COLORS.gradientScreen1End]}
           locations={[0, 1]}
