@@ -33,7 +33,8 @@
         "foregroundImage": "./assets/icons/config/icon-android-adaptive.png",
         "backgroundColor": "#2c1c77"
       },
-      "package": "com.mugtaba.athan"
+      "package": "com.mugtaba.athan",
+      "permissions": ["RECEIVE_BOOT_COMPLETED"]
     },
     "plugins": [
       "expo-font",

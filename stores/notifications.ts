@@ -1,4 +1,3 @@
-import { differenceInHours, formatISO, addHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
@@ -8,7 +7,6 @@ import {
   EXTRAS_ARABIC,
   PRAYERS_ARABIC,
   NOTIFICATION_ROLLING_DAYS,
-  NOTIFICATION_REFRESH_HOURS,
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
@@ -193,37 +191,6 @@ export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: Sc
   logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
 };
 
-// Check if notifications need rescheduling (more than 24 hours since last schedule)
-export const shouldRescheduleNotifications = (): boolean => {
-  const lastSchedule = store.get(lastNotificationScheduleAtom);
-  const now = Date.now();
-
-  if (!lastSchedule) {
-    logger.info('NOTIFICATION: Never scheduled before, needs refresh');
-    return true;
-  }
-
-  const hoursElapsed = differenceInHours(now, lastSchedule);
-  const minutesElapsed = differenceInMinutes(now, lastSchedule) % 60;
-  const secondsElapsed = differenceInSeconds(now, lastSchedule) % 60;
-  const nextScheduleTime = addHours(new Date(lastSchedule), NOTIFICATION_REFRESH_HOURS);
-
-  // Calculate time remaining
-  const hoursLeft = NOTIFICATION_REFRESH_HOURS - hoursElapsed - 1;
-  const minutesLeft = 60 - minutesElapsed - 1;
-  const secondsLeft = 60 - secondsElapsed;
-
-  logger.info('NOTIFICATION: Checking reschedule needed:', {
-    lastSchedule: formatISO(lastSchedule),
-    nextSchedule: formatISO(nextScheduleTime),
-    elapsed: `${hoursElapsed}h ${minutesElapsed}m ${secondsElapsed}s`,
-    timeUntilNextRefresh: `${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`,
-    needsRefresh: hoursElapsed >= NOTIFICATION_REFRESH_HOURS,
-  });
-
-  return hoursElapsed >= NOTIFICATION_REFRESH_HOURS;
-};
-
 /**
  * Reschedules all notifications for both Standard and Extra schedules
  * Used when changing sound preferences or during periodic refresh
@@ -240,22 +207,4 @@ export const rescheduleAllNotifications = async () => {
     addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
     addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
   ]);
-};
-
-export const refreshNotifications = async () => {
-  if (!shouldRescheduleNotifications()) {
-    logger.info('NOTIFICATION: Skipping reschedule, last schedule was within 24 hours');
-    return;
-  }
-
-  logger.info('NOTIFICATION: Starting notification refresh');
-
-  try {
-    await rescheduleAllNotifications();
-    store.set(lastNotificationScheduleAtom, Date.now());
-    logger.info('NOTIFICATION: Refresh complete');
-  } catch (error) {
-    logger.error('NOTIFICATION: Failed to refresh notifications:', error);
-    throw error;
-  }
 };
