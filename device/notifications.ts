@@ -40,7 +40,8 @@ export const addOneScheduledNotificationForPrayer = async (
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DATE,
         date: triggerDate,
-        channelId: Platform.OS === 'android' ? `athan_${sound + 1}` : undefined,
+        // Only include channelId for Android when alert type is Sound
+        channelId: alertType === AlertType.Sound ? `athan_${sound + 1}` : undefined,
       },
     });
 
