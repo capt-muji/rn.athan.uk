@@ -33,7 +33,8 @@
         "foregroundImage": "./assets/icons/config/icon-android-adaptive.png",
         "backgroundColor": "#2c1c77"
       },
-      "package": "com.example.athan"
+      "package": "com.example.athan",
+      "permissions": ["RECEIVE_BOOT_COMPLETED"]
     },
     "plugins": [
       "expo-font",
