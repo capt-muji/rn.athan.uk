@@ -1,6 +1,6 @@
 import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
-import { Canvas, LinearGradient, RoundedRect, vec } from '@shopify/react-native-skia';
 import * as Haptics from 'expo-haptics';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useMemo, useCallback, useState } from 'react';
 import { StyleSheet, Text, Dimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -27,13 +27,13 @@ export default function BottomSheetSound() {
   const data = useMemo(() => ALL_AUDIOS.map((audio, index) => ({ id: index.toString(), audio })), []);
 
   const renderSheetBackground = useCallback(() => {
-    const { width, height } = Dimensions.get('window');
     return (
-      <Canvas style={StyleSheet.absoluteFill}>
-        <RoundedRect x={0} y={0} width={width} height={height} r={24}>
-          <LinearGradient start={vec(0, 0)} end={vec(width, height)} colors={['#0e0b32', '#090428']} />
-        </RoundedRect>
-      </Canvas>
+      <LinearGradient
+        style={[StyleSheet.absoluteFill, styles.sheetBackground]}
+        colors={['#0e0b32', '#090428']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      />
     );
   }, []);
 
@@ -149,5 +149,9 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     backgroundColor: '#000116',
+  },
+  sheetBackground: {
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
   },
 });
