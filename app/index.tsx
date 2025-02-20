@@ -30,7 +30,7 @@ export default function Index() {
   const modalTimesExplained = useAtomValue(popupTimesExplainedAtom);
 
   useEffect(() => {
-    // Initialize notifications on first load
+    // Initialize notifications and create channel on first load
     initializeNotifications(checkInitialPermissions);
 
     // Initialize background/foreground state listeners

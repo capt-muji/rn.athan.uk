@@ -1,4 +1,6 @@
 import { format, addDays, isBefore } from 'date-fns';
+import * as Notifications from 'expo-notifications';
+import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
@@ -82,13 +84,26 @@ export const genNextXDays = (numberOfDays: number): string[] => {
   });
 };
 
+const createDefaultAndroidChannel = async () => {
+  if (Platform.OS !== 'android') return;
+
+  await Notifications.setNotificationChannelAsync('athan_1', {
+    name: 'Athan 1',
+    sound: 'athan1.wav',
+    importance: Notifications.AndroidImportance.MAX,
+    enableVibrate: true,
+    vibrationPattern: [0, 250, 250, 250],
+  });
+};
+
 /**
  * Initializes notifications
  */
 export const initializeNotifications = async (checkPermissions: () => Promise<boolean>) => {
   try {
-    const hasPermission = await checkPermissions();
+    await createDefaultAndroidChannel();
 
+    const hasPermission = await checkPermissions();
     if (hasPermission) await refreshNotifications();
     else logger.info('Notifications disabled, skipping refresh');
   } catch (error) {
