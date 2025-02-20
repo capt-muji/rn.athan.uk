@@ -40,9 +40,6 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
     toColor: '#ffffff',
   });
 
-  textAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
-  iconAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
-
   const AnimScale = useAnimationScale(1);
 
   if (playingIndex !== index && sound) sound.stopAsync();
@@ -52,6 +49,11 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
       if (sound) sound.unloadAsync();
     };
   }, [sound]);
+
+  useEffect(() => {
+    textAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
+    iconAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
+  }, [isPlaying, isSelected]);
 
   const handlePress = () => {
     onSelect(index);
