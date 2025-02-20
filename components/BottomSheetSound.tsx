@@ -8,6 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ALL_AUDIOS } from '@/assets/audio';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import Glow from '@/components/Glow';
+import * as Device from '@/device/notifications';
 import { COLORS, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import {
@@ -78,8 +79,8 @@ export default function BottomSheetSound() {
 
     // Update the persisted sound preference with user's selection
     setSoundPreference(tempSoundSelection);
-    // Clear temporary selection state since changes are now persisted
-    setTempSoundSelection(null);
+
+    await Device.updateAndroidChannel(tempSoundSelection);
 
     await Promise.all([
       cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
@@ -90,6 +91,9 @@ export default function BottomSheetSound() {
       addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
       addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
     ]);
+
+    // Clear temporary selection state since changes are now persisted
+    setTempSoundSelection(null);
   }, [tempSoundSelection]);
 
   return (
