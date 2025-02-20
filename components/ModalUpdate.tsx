@@ -12,7 +12,7 @@ type Props = {
 
 export default function ModalUpdate({ visible, onClose, onUpdate }: Props) {
   return (
-    <Modal visible={visible} onClose={onClose} title="Update Available!" hideCloseButton>
+    <Modal visible={visible} title="Update Available!">
       <Text style={styles.message}>
         A new version is available.
         {'\n'}Would you like to update now?
