@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { StyleSheet, Text, Pressable } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
@@ -12,8 +13,18 @@ type Props = {
 };
 
 export default function ModalTips({ visible, onClose }: Props) {
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    if (visible) {
+      setIsDisabled(true);
+      const timer = setTimeout(() => setIsDisabled(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [visible]);
+
   return (
-    <Modal visible={visible} onClose={onClose} title="Quick Tip!" hideCloseButton>
+    <Modal visible={visible} title="Quick Tip!">
       <Text style={styles.message}>
         To switch athan{'\n'}hold the{'  '}
         <Svg width={16} height={16} viewBox="0 0 256 256" style={styles.icon}>
@@ -22,8 +33,8 @@ export default function ModalTips({ visible, onClose }: Props) {
         {'  '}
         icon
       </Text>
-      <Pressable style={styles.button} onPress={onClose}>
-        <Text style={styles.buttonText}>Close</Text>
+      <Pressable style={[styles.button, isDisabled && styles.buttonDisabled]} onPress={onClose} disabled={isDisabled}>
+        <Text style={[styles.buttonText, isDisabled && styles.buttonTextDisabled]}>Close</Text>
       </Pressable>
     </Modal>
   );
@@ -41,7 +52,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   icon: {
-    transform: [{ translateY: 2 }],
+    transform: [{ translateY: 3 }],
   },
   button: {
     marginTop: 24,
@@ -56,5 +67,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.medium,
+  },
+  buttonDisabled: {
+    backgroundColor: '#d4dae2',
+  },
+  buttonTextDisabled: {
+    color: '#738799',
   },
 });

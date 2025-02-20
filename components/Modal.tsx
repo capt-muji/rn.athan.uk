@@ -1,17 +1,15 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated';
 
-import { COLORS, TEXT, ANIMATION, OVERLAY } from '@/shared/constants';
+import { TEXT, ANIMATION, OVERLAY } from '@/shared/constants';
 
 type Props = {
   visible: boolean;
-  onClose: () => void;
   children?: React.ReactNode;
-  hideCloseButton?: boolean;
   title: string;
 };
 
-export default function Modal({ visible, onClose, children, hideCloseButton, title }: Props) {
+export default function Modal({ visible, children, title }: Props) {
   if (!visible) return null;
 
   return (
@@ -24,11 +22,6 @@ export default function Modal({ visible, onClose, children, hideCloseButton, tit
         <View style={styles.content}>
           <Text style={styles.title}>{title}</Text>
           {children}
-          {!hideCloseButton && (
-            <Pressable style={styles.closeButton} onPress={onClose}>
-              <Text style={styles.closeText}>Close</Text>
-            </Pressable>
-          )}
         </View>
       </Animated.View>
     </Animated.View>
@@ -68,19 +61,5 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     width: '100%',
-  },
-  closeButton: {
-    marginTop: 30,
-    paddingVertical: 16,
-    backgroundColor: '#000',
-    borderRadius: 10,
-    width: '75%',
-    alignItems: 'center',
-  },
-  closeText: {
-    color: COLORS.activePrayer,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.family.medium,
-    letterSpacing: 0.5,
   },
 });
