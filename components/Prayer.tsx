@@ -45,17 +45,15 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
     toggleOverlay();
   };
 
-  // Animate when next prayer changes
-  useEffect(() => {
-    if (Prayer.isNext) {
-      AnimColor.animate(1);
-    }
-  }, [Prayer.isNext]);
-
   // Force animation to respect new state immediately when refreshing
   useEffect(() => {
     AnimColor.animate(Prayer.ui.initialColorPos);
   }, [refreshUI]);
+
+  // Animate when next prayer changes
+  useEffect(() => {
+    if (Prayer.isNext) AnimColor.animate(1);
+  }, [Prayer.isNext]);
 
   useEffect(() => {
     if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
