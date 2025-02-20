@@ -16,7 +16,7 @@ export default function ModalTips({ visible, onClose }: Props) {
     <Modal visible={visible} onClose={onClose} title="Quick Tip!" hideCloseButton>
       <Text style={styles.message}>
         To switch athan{'\n'}hold the{'  '}
-        <Svg width={16} height={16} viewBox="0 0 256 256">
+        <Svg width={16} height={16} viewBox="0 0 256 256" style={styles.icon}>
           <Path d={ICON_PATHS[AlertIcon.BELL_SLASH]} fill="#000" />
         </Svg>
         {'  '}
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
     marginTop: 4,
     marginBottom: 4,
+  },
+  icon: {
+    transform: [{ translateY: 2 }],
   },
   button: {
     marginTop: 24,
