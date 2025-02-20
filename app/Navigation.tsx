@@ -3,8 +3,8 @@ import PagerView from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import BackgroundGradients from '@/app/components/BackgroundGradients';
 import Screen from '@/app/Screen';
+import BackgroundGradients from '@/components/BackgroundGradients';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
