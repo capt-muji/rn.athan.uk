@@ -82,7 +82,10 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     AnimFill.animate(Schedule.isMuted ? 0 : Prayer.ui.initialColorPos);
   }, [refreshUI]);
 
-  if (Prayer.isNext && !Schedule.isMuted) AnimFill.animate(1);
+  // Animate when next prayer changes
+  useEffect(() => {
+    if (Prayer.isNext && !Schedule.isMuted) AnimFill.animate(1);
+  }, [Prayer.isNext, Schedule.isMuted]);
 
   useEffect(() => {
     if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
