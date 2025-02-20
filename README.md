@@ -254,7 +254,7 @@ The project uses ESLint and Prettier for code consistency and quality:
 ### Prayer Alert Preferences
 
 - `preference_alert_standard_[0-5]`: Alert types for standard prayers (Fajr to Isha)
-- `preference_alert_extra_[0-3]`: Alert types for extra prayers (Third, Duha, Suhoor, Istijaba)
+- `preference_alert_extra_[0-3]`: Alert types for extra prayers (Last third, Suhoor, Duha, Istijaba)
 
 ### UI State
 
