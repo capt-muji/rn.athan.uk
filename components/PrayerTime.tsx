@@ -34,7 +34,10 @@ export default function PrayerTime({ type, index, isOverlay = false }: Props) {
     AnimColor.animate(Prayer.ui.initialColorPos);
   }, [refreshUI]);
 
-  if (Prayer.isNext) AnimColor.animate(1);
+  // Animate when next prayer changes
+  useEffect(() => {
+    if (Prayer.isNext) AnimColor.animate(1);
+  }, [Prayer.isNext]);
 
   useEffect(() => {
     if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {

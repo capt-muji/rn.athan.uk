@@ -6,8 +6,6 @@ import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { COLORS } from '@/shared/constants';
 import { scrollPositionAtom } from '@/stores/ui';
 
-const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
-
 export default function BackgroundGradients() {
   const scrollPosition = useAtomValue(scrollPositionAtom);
 
@@ -25,13 +23,15 @@ export default function BackgroundGradients() {
         end={{ x: 1, y: 1 }}
       />
 
-      <AnimatedLinearGradient
-        colors={[COLORS.gradientScreen1Start, COLORS.gradientScreen1End]}
-        locations={[0, 1]}
-        style={[StyleSheet.absoluteFillObject, animatedStyle]}
-        start={{ x: 0, y: 0.25 }}
-        end={{ x: 1, y: 1 }}
-      />
+      <Animated.View style={[StyleSheet.absoluteFillObject, animatedStyle]}>
+        <LinearGradient
+          colors={[COLORS.gradientScreen1Start, COLORS.gradientScreen1End]}
+          locations={[0, 1]}
+          style={StyleSheet.absoluteFillObject}
+          start={{ x: 0, y: 0.25 }}
+          end={{ x: 1, y: 1 }}
+        />
+      </Animated.View>
     </>
   );
 }
