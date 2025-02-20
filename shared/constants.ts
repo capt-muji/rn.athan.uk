@@ -8,8 +8,7 @@ export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 export const ISTIJABA_INDEX = 3;
 
-export const NOTIFICATION_ROLLING_DAYS = 6;
-export const NOTIFICATION_REFRESH_HOURS = 24;
+export const NOTIFICATION_ROLLING_DAYS = 2;
 
 export const SCHEDULE_LENGTHS = {
   standard: PRAYERS_ENGLISH.length,
