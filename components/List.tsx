@@ -16,19 +16,20 @@ interface Props {
 
 export default function List({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
+  // Get the stored width for this schedule type (standard/extra)
+  // Width is used to ensure consistent column alignment across prayers
   const storedWidth = useAtomValue(isStandard ? englishWidthStandardAtom : englishWidthExtraAtom);
   const listRef = useRef<View>(null);
 
-  const longestIndex = getLongestPrayerNameIndex(type);
-  const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  const longestPrayer = prayers[longestIndex];
+  // Only calculate the longest prayer name if we don't have a stored width
+  // This optimization prevents unnecessary calculations on subsequent renders
+  let longestPrayer: string | null = null;
+  if (storedWidth === 0) {
+    const longestIndex = getLongestPrayerNameIndex(type);
+    const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+    longestPrayer = prayers[longestIndex];
+  }
 
-  /**
-   * Measures the width of the longest prayer name to ensure consistent layout
-   * This hidden text component runs once on initial render and saves the width
-   * to persistent storage. The stored width is then used by all Prayer components
-   * to maintain equal column widths across the app.
-   */
   const handleHiddenLayout = (e: LayoutChangeEvent) => {
     if (storedWidth !== 0) return;
 
@@ -47,12 +48,14 @@ export default function List({ type }: Props) {
 
   return (
     <>
-      {/* Hidden text component to measure longest prayer name width */}
-      <Text style={styles.hiddenText} onLayout={handleHiddenLayout}>
-        {longestPrayer}
-      </Text>
+      {/* Hidden text element only renders when we need to calculate the width */}
+      {storedWidth === 0 && (
+        <Text style={styles.hiddenText} onLayout={handleHiddenLayout}>
+          {longestPrayer}
+        </Text>
+      )}
 
-      {/* Main list */}
+      {/* Main prayer list always renders */}
       <View ref={listRef} onLayout={handleLayout} style={[styles.container]}>
         <ActiveBackground type={type} />
         {Array.from({ length: SCHEDULE_LENGTHS[type] }).map((_, index) => (

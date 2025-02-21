@@ -47,7 +47,7 @@ export const genNotificationContent = (
     title: englishName,
     body: `\u200E${arabicName}`, // LTR mark
     sound: getNotificationSound(alertType, soundIndex) || undefined,
-    color: '#2c1c77',
+    color: '#5a3af7',
     autoDismiss: false,
     sticky: false,
     priority: Notifications.AndroidNotificationPriority.MAX,
