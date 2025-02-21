@@ -39,19 +39,21 @@
       "package": "com.mugtaba.athan",
       "permissions": [
         "RECEIVE_BOOT_COMPLETED",
+        "POST_NOTIFICATIONS",
         "USE_EXACT_ALARM",
         "SCHEDULE_EXACT_ALARM",
         "WAKE_LOCK"
       ]
     },
     "plugins": [
+      "expo-font",
+      "react-native-permissions",
       [
         "expo-font",
         {
           "fonts": ["./assets/fonts/Roboto-Regular.ttf", "./assets/fonts/Roboto-Medium.ttf"]
         }
       ],
-      "expo-font",
       [
         "expo-notifications",
         {
