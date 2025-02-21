@@ -20,7 +20,7 @@ TaskManager.defineTask(BACKGROUND_TASK, async () => {
 export async function registerBackgroundFetchAsync() {
   try {
     await BackgroundFetch.registerTaskAsync(BACKGROUND_TASK, {
-      minimumInterval: 12 * 60 * 60, // 12 hrs (in seconds)
+      minimumInterval: 6 * 60 * 60, // 6 hrs (in seconds)
       stopOnTerminate: false,
       startOnBoot: true,
     });
