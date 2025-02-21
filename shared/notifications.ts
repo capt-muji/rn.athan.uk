@@ -42,11 +42,16 @@ export const genNotificationContent = (
   arabicName: string,
   alertType: AlertType,
   soundIndex: number
-) => {
+): Notifications.NotificationContentInput => {
   return {
     title: englishName,
     body: `\u200E${arabicName}`, // LTR mark
     sound: getNotificationSound(alertType, soundIndex) || undefined,
+    color: '#2c1c77',
+    autoDismiss: false,
+    sticky: false,
+    priority: Notifications.AndroidNotificationPriority.MAX,
+    interruptionLevel: 'critical',
   };
 };
 

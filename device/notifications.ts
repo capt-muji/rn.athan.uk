@@ -30,7 +30,7 @@ export const addOneScheduledNotificationForPrayer = async (
   time: string,
   alertType: AlertType
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const sound = await NotificationStore.getSoundPreference();
+  const sound = NotificationStore.getSoundPreference();
   const triggerDate = NotificationUtils.genTriggerDate(date, time);
   const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, sound);
 
