@@ -66,7 +66,7 @@ export const ANIMATION = {
   durationSlowest: 2250,
   cascadeDelay: 150,
   popupDuration: 900,
-  debounce: 1000,
+  debounce: 0, // disabled
 };
 
 export const OVERLAY = {
