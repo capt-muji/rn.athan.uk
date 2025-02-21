@@ -37,6 +37,12 @@ export default function List({ type }: Props) {
     longestPrayer = prayers[longestIndex];
   }
 
+  /**
+   * Measures the width of the longest prayer name to ensure consistent layout
+   * This hidden text component runs once on initial render and saves the width
+   * to persistent storage. The stored width is then used by all Prayer components
+   * to maintain equal column widths across the app.
+   */
   const handleHiddenLayout = (e: LayoutChangeEvent) => {
     if (storedWidth !== 0) return;
 
