@@ -6,8 +6,10 @@ import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
 import { SCHEDULE_LENGTHS, SCREEN, TEXT, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
 import { getLongestPrayerNameIndex } from '@/shared/prayer';
+import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { setMeasurement } from '@/stores/overlay';
+import { dateAtom } from '@/stores/sync';
 import { setEnglishWidth, englishWidthStandardAtom, englishWidthExtraAtom } from '@/stores/ui';
 
 interface Props {
@@ -15,14 +17,19 @@ interface Props {
 }
 
 export default function List({ type }: Props) {
+  useAtomValue(dateAtom); // Add this to make component reactive to date changes
+
   const isStandard = type === ScheduleType.Standard;
-  // Get the stored width for this schedule type (standard/extra)
-  // Width is used to ensure consistent column alignment across prayers
   const storedWidth = useAtomValue(isStandard ? englishWidthStandardAtom : englishWidthExtraAtom);
   const listRef = useRef<View>(null);
 
-  // Only calculate the longest prayer name if we don't have a stored width
-  // This optimization prevents unnecessary calculations on subsequent renders
+  // Calculate schedule length dynamically based on current date
+  const scheduleLength = isStandard
+    ? SCHEDULE_LENGTHS.standard
+    : TimeUtils.isFriday()
+      ? SCHEDULE_LENGTHS.extra
+      : SCHEDULE_LENGTHS.extra - 1;
+
   let longestPrayer: string | null = null;
   if (storedWidth === 0) {
     const longestIndex = getLongestPrayerNameIndex(type);
@@ -58,7 +65,7 @@ export default function List({ type }: Props) {
       {/* Main prayer list always renders */}
       <View ref={listRef} onLayout={handleLayout} style={[styles.container]}>
         <ActiveBackground type={type} />
-        {Array.from({ length: SCHEDULE_LENGTHS[type] }).map((_, index) => (
+        {Array.from({ length: scheduleLength }).map((_, index) => (
           <Prayer key={index} index={index} type={type} />
         ))}
       </View>
