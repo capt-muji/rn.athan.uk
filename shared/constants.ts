@@ -23,7 +23,7 @@ export const TIME_ADJUSTMENTS = {
 
 export const TEXT = {
   family: {
-    regular: 'Roboto',
+    regular: 'Roboto-Regular',
     medium: 'Roboto-Medium',
   },
   size: 18,
