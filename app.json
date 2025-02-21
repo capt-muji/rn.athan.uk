@@ -47,7 +47,12 @@
     },
     "plugins": [
       "expo-font",
-      "react-native-permissions",
+      [
+        "react-native-permissions",
+        {
+          "iosPermissions": []
+        }
+      ],
       [
         "expo-font",
         {
