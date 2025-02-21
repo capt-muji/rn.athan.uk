@@ -26,7 +26,10 @@
         "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications",
         "UIBackgroundModes": ["fetch"]
       },
-      "backgroundColor": "#2c1c77"
+      "backgroundColor": "#2c1c77",
+      "entitlements": {
+        "com.apple.developer.usernotifications.critical-alerts": true
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -34,7 +37,7 @@
         "backgroundColor": "#2c1c77"
       },
       "package": "com.mugtaba.athan",
-      "permissions": ["RECEIVE_BOOT_COMPLETED"]
+      "permissions": ["RECEIVE_BOOT_COMPLETED", "SCHEDULE_EXACT_ALARM", "WAKE_LOCK"]
     },
     "plugins": [
       "expo-font",
