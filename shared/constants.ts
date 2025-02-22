@@ -12,7 +12,7 @@ export const NOTIFICATION_ROLLING_DAYS = 2;
 
 export const SCHEDULE_LENGTHS = {
   standard: PRAYERS_ENGLISH.length,
-  extra: TimeUtils.isFriday() ? EXTRAS_ENGLISH.length : 3, // remove Istijaba on non-Fridays
+  extra: TimeUtils.isFriday() ? EXTRAS_ENGLISH.length : EXTRAS_ENGLISH.length - 1, // remove Istijaba on non-Fridays
 };
 
 export const TIME_ADJUSTMENTS = {
