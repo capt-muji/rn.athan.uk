@@ -26,10 +26,7 @@
         "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications",
         "UIBackgroundModes": ["fetch"]
       },
-      "backgroundColor": "#2c1c77",
-      "entitlements": {
-        "com.apple.developer.usernotifications.critical-alerts": true
-      }
+      "backgroundColor": "#2c1c77"
     },
     "android": {
       "adaptiveIcon": {
