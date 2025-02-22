@@ -46,11 +46,12 @@
       ]
     },
     "plugins": [
-      "expo-font",
       [
-        "react-native-permissions",
+        "expo-splash-screen",
         {
-          "iosPermissions": []
+          "backgroundColor": "#2c1c77",
+          "image": "./assets/icons/config/icon-splash.png",
+          "resizeMode": "contain"
         }
       ],
       [
@@ -83,11 +84,9 @@
         }
       ],
       [
-        "expo-splash-screen",
+        "react-native-permissions",
         {
-          "backgroundColor": "#2c1c77",
-          "image": "./assets/icons/config/icon-splash.png",
-          "resizeMode": "contain"
+          "iosPermissions": []
         }
       ]
     ],
