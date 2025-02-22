@@ -44,14 +44,14 @@ export const genNotificationContent = (
   soundIndex: number
 ): Notifications.NotificationContentInput => {
   return {
-    title: englishName,
+    title: `${englishName} \u2004`,
     body: `\u200E${arabicName}`, // LTR mark
     sound: getNotificationSound(alertType, soundIndex) || undefined,
     color: '#5a3af7',
     autoDismiss: false,
     sticky: false,
     priority: Notifications.AndroidNotificationPriority.MAX,
-    interruptionLevel: 'critical',
+    interruptionLevel: 'active',
   };
 };
 
