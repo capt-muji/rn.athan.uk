@@ -8,6 +8,10 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import BottomSheetSound from '@/components/BottomSheetSound';
 import InitialWidthMeasurement from '@/components/InitialWidthMeasurement';
+import { triggerSyncLoadable } from '@/stores/sync';
+
+// Call API During App Start in background
+setTimeout(triggerSyncLoadable, 0);
 
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
