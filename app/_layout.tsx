@@ -7,6 +7,7 @@ import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import BottomSheetSound from '@/components/BottomSheetSound';
+import InitialWidthMeasurement from '@/components/InitialWidthMeasurement';
 
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
@@ -30,6 +31,7 @@ export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#2c1c77' }}>
       <SystemBars style="light" />
+      <InitialWidthMeasurement />
       <BottomSheetModalProvider>
         <Slot />
         <BottomSheetSound />
