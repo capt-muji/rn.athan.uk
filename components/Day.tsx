@@ -8,7 +8,7 @@ import { COLORS, SCREEN, TEXT } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { dateAtom } from '@/stores/sync';
-import { setMeasurementsDate } from '@/stores/ui';
+import { getMeasurementsDate, setMeasurementsDate } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -21,11 +21,14 @@ export default function Day({ type }: Props) {
   const dateRef = useRef<Animated.Text>(null);
 
   const handleLayout = () => {
-    // Only measure 1st screen
     if (!dateRef.current || !isStandard) return;
 
+    const cachedMeasurements = getMeasurementsDate();
+    if (cachedMeasurements.width > 0) return;
+
     dateRef.current.measureInWindow((x, y, width, height) => {
-      setMeasurementsDate({ pageX: x, pageY: y, width, height });
+      const measurements = { pageX: x, pageY: y, width, height };
+      setMeasurementsDate(measurements);
     });
   };
 
