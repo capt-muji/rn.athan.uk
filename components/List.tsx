@@ -5,7 +5,6 @@ import { View, StyleSheet } from 'react-native';
 import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
 import { SCHEDULE_LENGTHS, SCREEN, TEXT } from '@/shared/constants';
-import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { setMeasurement } from '@/stores/overlay';
 import { dateAtom } from '@/stores/sync';
@@ -15,15 +14,12 @@ interface Props {
 }
 
 export default function List({ type }: Props) {
-  useAtomValue(dateAtom);
+  useAtomValue(dateAtom); // Make component reactive to date changes
+
   const isStandard = type === ScheduleType.Standard;
   const listRef = useRef<View>(null);
 
-  const scheduleLength = isStandard
-    ? SCHEDULE_LENGTHS.standard
-    : TimeUtils.isFriday()
-      ? SCHEDULE_LENGTHS.extra
-      : SCHEDULE_LENGTHS.extra - 1;
+  const scheduleLength = isStandard ? SCHEDULE_LENGTHS.standard : SCHEDULE_LENGTHS.extra;
 
   const handleLayout = () => {
     if (!listRef.current || !isStandard) return;
