@@ -25,16 +25,10 @@ export default function List({ type }: Props) {
     if (!listRef.current || !isStandard) return;
 
     const cachedMeasurements = getMeasurementsList();
-    if (cachedMeasurements.width > 0) {
-      // Check if we have real measurements
-      console.log('📏 Using cached list measurements:', cachedMeasurements);
-      return;
-    }
+    if (cachedMeasurements.width > 0) return;
 
-    console.log('📐 Calculating list measurements for the first time...');
     listRef.current.measureInWindow((x, y, width, height) => {
       const measurements = { pageX: x, pageY: y, width, height };
-      console.log('📐 New list measurements:', measurements);
       setMeasurementsList(measurements);
     });
   };
