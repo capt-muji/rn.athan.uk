@@ -4,7 +4,8 @@ import { View, StyleSheet } from 'react-native';
 
 import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
-import { SCHEDULE_LENGTHS, SCREEN, TEXT } from '@/shared/constants';
+import { EXTRAS_ENGLISH, SCREEN, TEXT, PRAYERS_ENGLISH } from '@/shared/constants';
+import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { dateAtom } from '@/stores/sync';
 import { getMeasurementsList, setMeasurementsList } from '@/stores/ui';
@@ -19,7 +20,11 @@ export default function List({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
   const listRef = useRef<View>(null);
 
-  const scheduleLength = isStandard ? SCHEDULE_LENGTHS.standard : SCHEDULE_LENGTHS.extra;
+  const scheduleLength = isStandard
+    ? PRAYERS_ENGLISH.length
+    : TimeUtils.isFriday()
+      ? EXTRAS_ENGLISH.length
+      : EXTRAS_ENGLISH.length - 1; // Exclude Istijaba on non-Friday
 
   const handleLayout = () => {
     if (!listRef.current || !isStandard) return;

@@ -5,7 +5,6 @@ import {
   EXTRAS_ARABIC,
   TIME_ADJUSTMENTS,
   ANIMATION,
-  SCHEDULE_LENGTHS,
 } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
@@ -113,7 +112,7 @@ export const findNextPrayerIndex = (schedule: IScheduleNow): number => {
 // UI Helpers
 export const getCascadeDelay = (index: number, type: ScheduleType): number => {
   const isStandard = type === ScheduleType.Standard;
-  const length = isStandard ? SCHEDULE_LENGTHS.standard : SCHEDULE_LENGTHS.extra;
+  const length = isStandard ? PRAYERS_ENGLISH.length : PRAYERS_ARABIC.length;
 
   return (length - index) * ANIMATION.cascadeDelay;
 };
