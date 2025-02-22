@@ -10,11 +10,11 @@ import BottomSheetSound from '@/components/BottomSheetSound';
 import InitialWidthMeasurement from '@/components/InitialWidthMeasurement';
 import { triggerSyncLoadable } from '@/stores/sync';
 
-// Call API During App Start in background
-setTimeout(triggerSyncLoadable, 0);
-
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
+
+// Call API During App Start in background
+setTimeout(triggerSyncLoadable, 0);
 
 // Ignore logs
 LogBox.ignoreLogs(['Require cycle']);
