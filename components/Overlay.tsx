@@ -12,7 +12,8 @@ import Timer from '@/components/Timer';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
-import { measurementsAtom, overlayAtom, toggleOverlay } from '@/stores/overlay';
+import { overlayAtom, toggleOverlay } from '@/stores/overlay';
+import { measurementsListAtom, measurementsDateAtom } from '@/stores/ui';
 
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
@@ -20,7 +21,8 @@ export default function Overlay() {
   const backgroundOpacity = useAnimationOpacity(0);
   const dateOpacity = useAnimationOpacity(0);
 
-  const measurements = useAtomValue(measurementsAtom);
+  const listMeasurements = useAtomValue(measurementsListAtom);
+  const dateMeasurements = useAtomValue(measurementsDateAtom);
 
   const insets = useSafeAreaInsets();
 
@@ -49,19 +51,19 @@ export default function Overlay() {
   };
 
   const computedStyleDate: ViewStyle = {
-    top: (measurements.date?.pageY ?? 0) + (Platform.OS === 'android' ? insets.top : 0),
-    left: measurements.date?.pageX ?? 0,
-    width: measurements.date?.width ?? 0,
-    height: measurements.date?.height ?? 0,
+    top: (dateMeasurements?.pageY ?? 0) + (Platform.OS === 'android' ? insets.top : 0),
+    left: dateMeasurements?.pageX ?? 0,
+    width: dateMeasurements?.width ?? 0,
+    height: dateMeasurements?.height ?? 0,
   };
 
   const computedStylePrayer: ViewStyle = {
     top:
-      (measurements.list?.pageY ?? 0) +
+      (listMeasurements?.pageY ?? 0) +
       (Platform.OS === 'android' ? insets.top : 0) +
       overlay.selectedPrayerIndex * STYLES.prayer.height,
-    left: measurements.list?.pageX ?? 0,
-    width: measurements.list?.width ?? 0,
+    left: listMeasurements?.pageX ?? 0,
+    width: listMeasurements?.width ?? 0,
     ...(selectedPrayer.isNext && styles.activeBackground),
   };
 

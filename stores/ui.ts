@@ -1,10 +1,12 @@
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
-import { ScheduleType } from '@/shared/types';
-import { atomWithStorageBoolean, atomWithStorageNumber } from '@/stores/storage';
+import { PageCoordinates, ScheduleType } from '@/shared/types';
+import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageObject } from '@/stores/storage';
 
 const store = getDefaultStore();
+
+const emptyCoordinates: PageCoordinates = { pageX: 0, pageY: 0, width: 0, height: 0 };
 
 // --- Atoms ---
 export const pagePositionAtom = atom(0);
@@ -21,9 +23,13 @@ export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last
 // 2 = Never show again (user has closed modal)
 export const popupTimesExplainedAtom = atomWithStorageNumber('popup_times_explained_enabled', 0);
 
+export const scrollPositionAtom = atom(0);
+
 export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
 export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_width_extra', 0);
-export const scrollPositionAtom = atom(0);
+
+export const measurementsListAtom = atomWithStorageObject<PageCoordinates>('measurements_list', emptyCoordinates);
+export const measurementsDateAtom = atomWithStorageObject<PageCoordinates>('measurements_date', emptyCoordinates);
 
 // --- Actions ---
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);
@@ -48,3 +54,7 @@ export const setEnglishWidth = (type: ScheduleType, width: number) => {
 };
 
 export const setScrollPosition = (position: number) => store.set(scrollPositionAtom, position);
+export const getMeasurementsList = () => store.get(measurementsListAtom);
+export const setMeasurementsList = (measurements: PageCoordinates) => store.set(measurementsListAtom, measurements);
+export const getMeasurementsDate = () => store.get(measurementsDateAtom);
+export const setMeasurementsDate = (measurements: PageCoordinates) => store.set(measurementsDateAtom, measurements);
