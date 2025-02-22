@@ -81,7 +81,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Upgrade to Expo SDK v52+ (new architecture)
 - [x] Upgrade to Reanimated v4 (needs new architecture)
 - [x] Timer on popup
-- [x] Enable IOS critical alert for notifications
+- [x] Enable IOS 'active' alert for notifications
 
 ### Upcoming Improvements
 

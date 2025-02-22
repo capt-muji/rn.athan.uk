@@ -27,7 +27,6 @@ export const useNotification = () => {
             allowAlert: true,
             allowBadge: true,
             allowSound: true,
-            allowCriticalAlerts: true,
           },
         });
         return isNotifictionGranted(status);
