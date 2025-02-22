@@ -1,7 +1,7 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { LogBox, Text } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -23,8 +23,8 @@ Text.defaultProps = {
 };
 
 export default function Layout() {
-  useEffect(() => {
-    SplashScreen.hideAsync();
+  useLayoutEffect(() => {
+    SplashScreen.hide();
   }, []);
 
   return (
