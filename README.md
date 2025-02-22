@@ -262,6 +262,8 @@ The project uses ESLint and Prettier for code consistency and quality:
 
 - `prayer_max_english_width_standard`: Cached max width for standard prayer names
 - `prayer_max_english_width_extra`: Cached max width for extra prayer names
+- `measurements_list`: Cached measurements for prayer list positioning
+- `measurements_date`: Cached measurements for date text positioning
 - `popup_tip_athan_enabled`: First-time tips popup state
 - `popup_times_explained_enabled`: Prayer times explanation popup state
 - `popup_update_last_check`: Timestamp of last app update check

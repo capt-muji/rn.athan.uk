@@ -6,8 +6,8 @@ import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
 import { SCHEDULE_LENGTHS, SCREEN, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { setMeasurement } from '@/stores/overlay';
 import { dateAtom } from '@/stores/sync';
+import { getMeasurementsList, setMeasurementsList } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -23,8 +23,19 @@ export default function List({ type }: Props) {
 
   const handleLayout = () => {
     if (!listRef.current || !isStandard) return;
+
+    const cachedMeasurements = getMeasurementsList();
+    if (cachedMeasurements.width > 0) {
+      // Check if we have real measurements
+      console.log('📏 Using cached list measurements:', cachedMeasurements);
+      return;
+    }
+
+    console.log('📐 Calculating list measurements for the first time...');
     listRef.current.measureInWindow((x, y, width, height) => {
-      setMeasurement('list', { pageX: x, pageY: y, width, height });
+      const measurements = { pageX: x, pageY: y, width, height };
+      console.log('📐 New list measurements:', measurements);
+      setMeasurementsList(measurements);
     });
   };
 

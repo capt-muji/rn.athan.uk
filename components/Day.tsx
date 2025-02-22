@@ -7,8 +7,8 @@ import Masjid from '@/components/Masjid';
 import { COLORS, SCREEN, TEXT } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { setMeasurement } from '@/stores/overlay';
 import { dateAtom } from '@/stores/sync';
+import { setMeasurementsDate } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -25,7 +25,7 @@ export default function Day({ type }: Props) {
     if (!dateRef.current || !isStandard) return;
 
     dateRef.current.measureInWindow((x, y, width, height) => {
-      setMeasurement('date', { pageX: x, pageY: y, width, height });
+      setMeasurementsDate({ pageX: x, pageY: y, width, height });
     });
   };
 
