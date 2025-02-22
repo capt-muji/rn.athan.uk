@@ -19,6 +19,7 @@ export const syncLoadable = loadable(atom(async () => sync()));
 export const dateAtom = atomWithStorageString('display_date', '');
 
 // --- Actions ---
+export const triggerSyncLoadable = () => store.get(syncLoadable);
 
 // Update the stored date based on the current schedule's Asr prayer time
 const setDate = () => {
