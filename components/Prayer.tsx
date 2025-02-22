@@ -33,7 +33,7 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   });
 
   const computedStyleEnglish = {
-    width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left || undefined, // Ensure consistent column width
+    width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left,
   };
 
   const handlePress = () => {
