@@ -58,8 +58,8 @@ export const ANIMATION = {
   durationSlower: 1500,
   durationSlowest: 2250,
   cascadeDelay: 150,
-  popupDuration: 750,
-  debounce: 700,
+  popupDuration: 500,
+  debounce: 450,
 };
 
 export const OVERLAY = {
