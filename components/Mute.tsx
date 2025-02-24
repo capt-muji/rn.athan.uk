@@ -8,7 +8,7 @@ import { useNotification } from '@/hooks/useNotification';
 import { useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, TEXT } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { setScheduleMutedState } from '@/stores/notifications';
+import { setTempMutedState } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -17,13 +17,12 @@ interface Props {
 }
 
 export default function Mute({ type }: Props) {
-  const { isStandard, isMuted } = useSchedule(type);
+  const { isStandard, persistedMuted, currentMuted } = useSchedule(type);
   const { handleMuteChange } = useNotification();
   const AnimScale = useAnimationScale(1);
 
   const debouncedMuteRef = useRef<NodeJS.Timeout>();
 
-  // Clear up
   useEffect(() => {
     return () => {
       if (debouncedMuteRef.current) clearTimeout(debouncedMuteRef.current);
@@ -32,34 +31,34 @@ export default function Mute({ type }: Props) {
 
   const handlePress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    const newMutedState = !isMuted;
+    const newMutedState = !currentMuted;
 
-    // Update UI immediately
-    setScheduleMutedState(type, newMutedState);
+    setTempMutedState(type, newMutedState);
 
-    // Debounce the state change
     if (debouncedMuteRef.current) clearTimeout(debouncedMuteRef.current);
 
     debouncedMuteRef.current = setTimeout(async () => {
-      await handleMuteChange(type, newMutedState);
+      await handleMuteChange(type, newMutedState); // Persist the new muted state
+
+      setTempMutedState(type, null);
     }, ANIMATION.debounce);
   };
 
   const computedStylesContainer: ViewStyle = isStandard
     ? {
-        backgroundColor: isMuted ? '#8459e747' : '#6941c649',
-        borderColor: isMuted ? '#6d46c775' : '#5b33b875',
+        backgroundColor: currentMuted ? '#8459e747' : '#6941c649',
+        borderColor: persistedMuted ? '#6d46c775' : '#5b33b875',
         shadowColor: '#27035c',
       }
     : {
-        backgroundColor: isMuted ? '#493faf46' : '#2f278447',
-        borderColor: isMuted ? '#3d349c46' : '#2c247b46',
+        backgroundColor: currentMuted ? '#493faf46' : '#2f278447',
+        borderColor: persistedMuted ? '#3d349c46' : '#2c247b46',
         shadowColor: '#020008',
       };
 
   const computedStylesText: TextStyle = isStandard
-    ? { color: isMuted ? '#f1ebffd9' : '#bb9ffdd9' }
-    : { color: isMuted ? '#bdb6ffd9' : '#7e7cbed9' };
+    ? { color: currentMuted ? '#f1ebffd9' : '#bb9ffdd9' }
+    : { color: currentMuted ? '#bdb6ffd9' : '#7e7cbed9' };
 
   return (
     <AnimatedPressable
@@ -68,7 +67,7 @@ export default function Mute({ type }: Props) {
       onPress={handlePress}
       onPressIn={() => AnimScale.animate(0.9)}
       onPressOut={() => AnimScale.animate(1)}>
-      <Text style={[styles.text, computedStylesText]}>{isMuted ? 'Enable all' : 'Disable all'}</Text>
+      <Text style={[styles.text, computedStylesText]}>{currentMuted ? 'Enable all' : 'Disable all'}</Text>
     </AnimatedPressable>
   );
 }

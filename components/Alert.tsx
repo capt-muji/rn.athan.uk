@@ -45,7 +45,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationFill(Schedule.isMuted ? 0 : Prayer.ui.initialColorPos, {
+  const AnimFill = useAnimationFill(Schedule.currentMuted ? 0 : Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,
   });
@@ -79,13 +79,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Animations Updates
   // Force animation to respect new state immediately when refreshing
   useEffect(() => {
-    AnimFill.animate(Schedule.isMuted ? 0 : Prayer.ui.initialColorPos);
+    AnimFill.animate(Schedule.currentMuted ? 0 : Prayer.ui.initialColorPos);
   }, [refreshUI]);
 
   // Animate when next prayer changes
   useEffect(() => {
-    if (Prayer.isNext && !Schedule.isMuted) AnimFill.animate(1);
-  }, [Prayer.isNext, Schedule.isMuted]);
+    if (Prayer.isNext && !Schedule.currentMuted) AnimFill.animate(1);
+  }, [Prayer.isNext, Schedule.currentMuted]);
 
   useEffect(() => {
     if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
@@ -113,15 +113,15 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   // Update fill color
   useEffect(() => {
-    if (Schedule.isMuted) {
-      AnimFill.animate(Schedule.isMuted ? 0 : 1, { duration: ANIMATION.duration });
+    if (Schedule.currentMuted) {
+      AnimFill.animate(Schedule.currentMuted ? 0 : 1, { duration: ANIMATION.duration });
       return;
     }
 
     const colorPos = Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
 
     AnimFill.animate(colorPos, { duration: 50 });
-  }, [isPopupActive, Prayer.isOverlay, Schedule.isMuted]);
+  }, [isPopupActive, Prayer.isOverlay, Schedule.currentMuted]);
 
   useEffect(() => {
     return () => {
@@ -135,7 +135,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     // Prevent interaction when muted
-    if (Schedule.isMuted) return;
+    if (Schedule.currentMuted) return;
 
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
     const nextAlertType = ALERT_CONFIGS[nextIndex].type;
@@ -174,7 +174,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     showSheet();
   };
 
-  const displayedIconIndex = Schedule.isMuted ? AlertType.Off : iconIndex;
+  const displayedIconIndex = Schedule.currentMuted ? AlertType.Off : iconIndex;
 
   const computedStylesPopup: ViewStyle = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
