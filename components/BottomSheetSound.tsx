@@ -79,6 +79,8 @@ export default function BottomSheetSound() {
 
     // Clear temporary selection state since changes are now persisted
     setTempSoundSelection(null);
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
   }, [tempSoundSelection]);
 
   return (
