@@ -71,6 +71,8 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
           setPopupIconIndex(iconIndex);
           setIconIndex(iconIndex);
         }
+
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
       }, ANIMATION.debounce);
     },
     [type, index, Prayer.english, Prayer.arabic, handleAlertChange, iconIndex]
