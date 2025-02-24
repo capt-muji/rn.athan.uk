@@ -61,15 +61,15 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
       if (debouncedAlertRef.current) clearTimeout(debouncedAlertRef.current);
 
       debouncedAlertRef.current = setTimeout(async () => {
-        // Update atom storage using setPrayerAlertType instead
-        setPrayerAlertType(type, index, newAlertType);
-
         const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, newAlertType);
-        if (!success) {
-          // Revert UI and atom if the change fails
+
+        if (success) {
+          // Only persist the new state after successful debounce and async operation
+          setPrayerAlertType(type, index, newAlertType);
+        } else {
+          // Revert UI state if the change fails
           setPopupIconIndex(iconIndex);
           setIconIndex(iconIndex);
-          setPrayerAlertType(type, index, iconIndex);
         }
       }, ANIMATION.debounce);
     },
@@ -148,7 +148,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
       if (!hasPermission) return;
     }
 
-    // Update UI immediately
+    // Update UI state immediately (but don't persist)
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
 
@@ -159,7 +159,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
     setIsPopupActive(true);
 
-    // Update preferences and schedule notifications
+    // Start the debounced operation that will persist the change
     debouncedHandleAlertChange(nextAlertType);
 
     timeoutRef.current = setTimeout(() => {
