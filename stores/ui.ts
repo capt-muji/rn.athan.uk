@@ -31,6 +31,17 @@ export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_w
 export const measurementsListAtom = atomWithStorageObject<PageCoordinates>('measurements_list', emptyCoordinates);
 export const measurementsDateAtom = atomWithStorageObject<PageCoordinates>('measurements_date', emptyCoordinates);
 
+export const tempStandardMutedAtom = atom<boolean | null>(null);
+export const tempExtraMutedAtom = atom<boolean | null>(null);
+
+export const getTempMutedAtom = (type: ScheduleType) =>
+  type === ScheduleType.Standard ? tempStandardMutedAtom : tempExtraMutedAtom;
+
+export const setTempMutedState = (type: ScheduleType, value: boolean | null) => {
+  const atom = type === ScheduleType.Standard ? tempStandardMutedAtom : tempExtraMutedAtom;
+  store.set(atom, value);
+};
+
 // --- Actions ---
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);
 export const getPopupTimesExplained = () => store.get(popupTimesExplainedAtom);
