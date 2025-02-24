@@ -80,7 +80,7 @@ export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
 };
 
 /**
- * Schedule multiple notifications (5 days) for a single prayer in the system and database
+ * Schedule multiple notifications (X days) for a single prayer in the system and database
  */
 export const addMultipleScheduleNotificationsForPrayer = async (
   scheduleType: ScheduleType,
@@ -99,13 +99,13 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     return;
   }
 
+  // Cancel all existing notifications for this prayer
+  await clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+
   const nextXDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
-
-  // Cancel existing notifications first
-  const cancelPromise = clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
-
   const notificationPromises = [];
 
+  // Then schedule new notifications
   for (const dateI of nextXDays) {
     const date = TimeUtils.createLondonDate(dateI);
     const prayerData = Database.getPrayerByDate(date);
@@ -133,7 +133,7 @@ export const addMultipleScheduleNotificationsForPrayer = async (
     notificationPromises.push(promise);
   }
 
-  await Promise.all([cancelPromise, ...notificationPromises]);
+  await Promise.all(notificationPromises);
 
   logger.info('NOTIFICATION: Scheduled multiple notifications:', { scheduleType, prayerIndex, englishName });
 };
