@@ -51,7 +51,7 @@ export const genNotificationContent = (
     autoDismiss: false,
     sticky: false,
     priority: Notifications.AndroidNotificationPriority.MAX,
-    interruptionLevel: 'active',
+    interruptionLevel: 'timeSensitive',
   };
 };
 
