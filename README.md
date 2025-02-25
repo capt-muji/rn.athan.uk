@@ -267,6 +267,7 @@ The project uses ESLint and Prettier for code consistency and quality:
 - `popup_tip_athan_enabled`: First-time tips popup state
 - `popup_times_explained_enabled`: Prayer times explanation popup state
 - `popup_update_last_check`: Timestamp of last app update check
+- `silent_notification_sent`: Track if time-sensitive permission prompt was triggered
 
 ### Screenshots
 

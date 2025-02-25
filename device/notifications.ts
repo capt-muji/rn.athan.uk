@@ -69,3 +69,22 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 
   logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', { scheduleType, prayerIndex });
 };
+
+export const sendSilentNotification = async () => {
+  if (Platform.OS !== 'ios') return;
+
+  try {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: '',
+        body: '',
+        sound: false,
+        interruptionLevel: 'timeSensitive',
+      },
+      trigger: null,
+    });
+    logger.info('NOTIFICATION SYSTEM: Sent silent notification for iOS time-sensitive permissions');
+  } catch (error) {
+    logger.error('NOTIFICATION SYSTEM: Failed to send silent notification:', error);
+  }
+};
