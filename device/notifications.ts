@@ -70,6 +70,25 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
   logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', { scheduleType, prayerIndex });
 };
 
+/**
+ * Sends an immediate silent notification on iOS to trigger the time-sensitive permissions prompt.
+ *
+ * Problem:
+ * On iOS, the time-sensitive permission dialog only appears when the first time-sensitive
+ * notification is delivered. This creates a poor UX since the user wouldn't see the prompt
+ * until hours later when the first prayer notification triggers.
+ *
+ * Solution:
+ * We send an empty notification with time-sensitive interruption level immediately after
+ * the user grants standard notification permissions. This makes the time-sensitive prompt
+ * appear right away, giving the user a better onboarding experience.
+ *
+ * Note:
+ * - iOS only (function returns early on Android)
+ * - Uses null trigger for immediate delivery
+ * - No sound or visual elements to minimize user disruption
+ * - Should only be called once after standard permissions are granted
+ */
 export const sendSilentNotification = async () => {
   if (Platform.OS !== 'ios') return;
 
