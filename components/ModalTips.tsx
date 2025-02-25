@@ -18,7 +18,7 @@ export default function ModalTips({ visible, onClose }: Props) {
   useEffect(() => {
     if (visible) {
       setIsDisabled(true);
-      const timer = setTimeout(() => setIsDisabled(false), 4000);
+      const timer = setTimeout(() => setIsDisabled(false), 5000);
       return () => clearTimeout(timer);
     }
   }, [visible]);
