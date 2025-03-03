@@ -146,4 +146,5 @@ export const cleanup = () => {
   // clearPrefix('prayer_max_english_width'); // ! Leave commented
   // clearPrefix('scheduled_notifications'); // ! Leave commented
   // clearPrefix('preference'); // ! Leave commented
+  // clearPrefix('last_notification_schedule_check'); // ! Leave commented
 };
