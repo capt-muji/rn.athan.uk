@@ -9,11 +9,9 @@ import ModalTips from '@/components/ModalTips';
 import ModalUpdate from '@/components/ModalUpdate';
 import Overlay from '@/components/Overlay';
 import { initializeListeners } from '@/device/listeners';
-import { registerBackgroundFetchAsync } from '@/device/tasks';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
-import logger from '@/shared/logger';
-import { createDefaultAndroidChannel } from '@/shared/notifications';
+import { initializeNotifications } from '@/shared/notifications';
 import { syncLoadable } from '@/stores/sync';
 import {
   popupTipAthanEnabledAtom,
@@ -32,17 +30,11 @@ export default function Index() {
   const modalTimesExplained = useAtomValue(popupTimesExplainedAtom);
 
   useEffect(() => {
-    // Create default Android channel in background (does not depend on permissions)
-    createDefaultAndroidChannel();
-
-    // Check permissions for notifications and register background fetch if allowed
-    checkInitialPermissions().then((hasPermission) => {
-      if (hasPermission) registerBackgroundFetchAsync();
-      else logger.info('TASK: Notifications permission not granted.');
-    });
+    // Initialize notifications and create channel on first load
+    initializeNotifications(checkInitialPermissions);
 
     // Initialize background/foreground state listeners (sync UI as needed)
-    initializeListeners();
+    initializeListeners(checkInitialPermissions);
 
     // Check for updates in background
     checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));

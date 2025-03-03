@@ -2,8 +2,10 @@ import { format, addDays, isBefore } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
+import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { AlertType } from '@/shared/types';
+import { refreshNotifications } from '@/stores/notifications';
 
 export interface ScheduledNotification {
   id: string;
@@ -97,4 +99,19 @@ export const createDefaultAndroidChannel = async () => {
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
   });
+};
+
+/**
+ * Initializes notifications
+ */
+export const initializeNotifications = async (checkPermissions: () => Promise<boolean>) => {
+  try {
+    await createDefaultAndroidChannel();
+
+    const hasPermission = await checkPermissions();
+    if (hasPermission) await refreshNotifications();
+    else logger.info('NOTIFICATION: Notifications disabled, skipping refresh');
+  } catch (error) {
+    logger.error('NOTIFICATION: Failed to initialize notifications:', error);
+  }
 };

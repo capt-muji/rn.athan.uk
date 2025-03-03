@@ -31,8 +31,6 @@ export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_w
 export const measurementsListAtom = atomWithStorageObject<PageCoordinates>('measurements_list', emptyCoordinates);
 export const measurementsDateAtom = atomWithStorageObject<PageCoordinates>('measurements_date', emptyCoordinates);
 
-export const silentNotificationSentAtom = atomWithStorageBoolean('silent_notification_sent', false);
-
 export const tempStandardMutedAtom = atom<boolean | null>(null);
 export const tempExtraMutedAtom = atom<boolean | null>(null);
 
@@ -71,5 +69,3 @@ export const getMeasurementsList = () => store.get(measurementsListAtom);
 export const setMeasurementsList = (measurements: PageCoordinates) => store.set(measurementsListAtom, measurements);
 export const getMeasurementsDate = () => store.get(measurementsDateAtom);
 export const setMeasurementsDate = (measurements: PageCoordinates) => store.set(measurementsDateAtom, measurements);
-
-export const setSilentNotificationSent = (sent: boolean) => store.set(silentNotificationSentAtom, sent);
