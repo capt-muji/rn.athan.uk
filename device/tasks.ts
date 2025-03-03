@@ -4,6 +4,8 @@ import * as TaskManager from 'expo-task-manager';
 import logger from '@/shared/logger';
 import { rescheduleAllNotifications } from '@/stores/notifications';
 
+// TODO! DEREGISTER TASK
+
 const BACKGROUND_TASK = 'reschedule-notifications';
 
 TaskManager.defineTask(BACKGROUND_TASK, async () => {

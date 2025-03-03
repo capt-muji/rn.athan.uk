@@ -1,12 +1,9 @@
 import * as Notifications from 'expo-notifications';
-import { useAtomValue } from 'jotai';
 import { Platform, Alert, Linking } from 'react-native';
 
-import { sendSilentNotification } from '@/device/notifications';
 import logger from '@/shared/logger';
 import { AlertType, ScheduleType } from '@/shared/types';
 import * as NotificationStore from '@/stores/notifications';
-import { silentNotificationSentAtom, setSilentNotificationSent } from '@/stores/ui';
 
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
@@ -18,8 +15,6 @@ Notifications.setNotificationHandler({
 });
 
 export const useNotification = () => {
-  const silentNotificationSent = useAtomValue(silentNotificationSentAtom);
-
   const isNotifictionGranted = async (status: string) => status === 'granted';
 
   const checkInitialPermissions = async () => {
@@ -28,20 +23,7 @@ export const useNotification = () => {
 
       if (existingStatus !== 'granted') {
         const { status } = await Notifications.requestPermissionsAsync();
-
-        // If permissions granted and on iOS, trigger time-sensitive permission
-        if (status === 'granted' && Platform.OS === 'ios' && !silentNotificationSent) {
-          await sendSilentNotification();
-          setSilentNotificationSent(true);
-        }
-
         return isNotifictionGranted(status);
-      }
-
-      // Handle case where permissions were already granted
-      if (Platform.OS === 'ios' && !silentNotificationSent) {
-        await sendSilentNotification();
-        setSilentNotificationSent(true);
       }
 
       return isNotifictionGranted(existingStatus);
