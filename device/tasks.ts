@@ -2,32 +2,20 @@ import * as BackgroundFetch from 'expo-background-fetch';
 import * as TaskManager from 'expo-task-manager';
 
 import logger from '@/shared/logger';
-import { rescheduleAllNotifications } from '@/stores/notifications';
-
-// TODO! DEREGISTER TASK
 
 const BACKGROUND_TASK = 'reschedule-notifications';
 
-TaskManager.defineTask(BACKGROUND_TASK, async () => {
+export const deregisterBackgroundFetchAsync = async () => {
   try {
-    await rescheduleAllNotifications();
-    logger.info('TASK: Background task rescheduled notifications');
-    return BackgroundFetch.BackgroundFetchResult.NewData;
-  } catch (error) {
-    logger.error('TASK: Background task failed:', error);
-    return BackgroundFetch.BackgroundFetchResult.Failed;
-  }
-});
+    const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_TASK);
+    if (!isRegistered) {
+      logger.info(`TASK: ${BACKGROUND_TASK} is not registered`);
+      return;
+    }
 
-export async function registerBackgroundFetchAsync() {
-  try {
-    await BackgroundFetch.registerTaskAsync(BACKGROUND_TASK, {
-      minimumInterval: 6 * 60 * 60, // 6 hrs (in seconds)
-      stopOnTerminate: false,
-      startOnBoot: true,
-    });
-    logger.info(`TASK: ${BACKGROUND_TASK} registered successfully`);
+    await BackgroundFetch.unregisterTaskAsync(BACKGROUND_TASK);
+    logger.info(`TASK: ${BACKGROUND_TASK} deregistered successfully`);
   } catch (error) {
-    logger.error(`TASK: Failed to register ${BACKGROUND_TASK}`, error);
+    logger.error(`TASK: Failed to deregister ${BACKGROUND_TASK}`, error);
   }
-}
+};
