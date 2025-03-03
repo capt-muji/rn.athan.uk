@@ -11,21 +11,25 @@ import { setRefreshUI } from '@/stores/ui';
 export const initializeListeners = (checkPermissions: () => Promise<boolean>) => {
   let previousAppState = AppState.currentState;
 
+  // Handle both initial state and state changes
   const handleAppStateChange = (newState: AppStateStatus) => {
-    // Only run when coming from background, not on initial app launch
-    // This prevents double initialization since index.tsx handles initial launch
-    if (previousAppState === 'background' && newState === 'active') {
+    if (newState === 'active') {
       initializeNotifications(checkPermissions);
 
-      // Run sync in background to prevent UI freeze on app open
-      sync().then(() => {
-        // Refresh UI after sync is complete
-        setRefreshUI(Date.now());
-      });
+      // Only run sync when coming from background
+      // This prevents double initialization since we already sync on launch
+      if (previousAppState === 'background') {
+        sync().then(() => {
+          // Refresh UI after sync is complete
+          setRefreshUI(Date.now());
+        });
+      }
     }
 
     previousAppState = newState;
   };
+
+  handleAppStateChange(previousAppState);
 
   AppState.addEventListener('change', handleAppStateChange);
 };

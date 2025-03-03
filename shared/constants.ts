@@ -7,7 +7,7 @@ export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'ا
 export const ISTIJABA_INDEX = 3;
 
 export const NOTIFICATION_ROLLING_DAYS = 6;
-export const NOTIFICATION_REFRESH_HOURS = 12;
+export const NOTIFICATION_REFRESH_HOURS = 24;
 
 export const TIME_ADJUSTMENTS = {
   suhoor: -40, // minutes before fajr
