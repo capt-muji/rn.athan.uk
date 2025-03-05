@@ -144,11 +144,15 @@ export const addMultipleScheduleNotificationsForPrayer = async (
  * Reschedule all notifications for a schedule based on current preferences
  */
 export const addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
+  const isMuted = getScheduleMutedState(scheduleType);
+
   // Check if schedule is muted first
-  if (getScheduleMutedState(scheduleType)) {
+  if (isMuted) {
     logger.info('NOTIFICATION: Schedule is muted, skipping notification scheduling:', { scheduleType });
     return;
   }
+
+  logger.info('NOTIFICATION: Scheduling all notifications for schedule:', { scheduleType });
 
   const isStandard = scheduleType === ScheduleType.Standard;
   const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;

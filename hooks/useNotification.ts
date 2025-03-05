@@ -126,21 +126,25 @@ export const useNotification = () => {
 
   const handleMuteChange = async (scheduleType: ScheduleType, mute: boolean): Promise<boolean> => {
     try {
+      // Update store state immediately to ensure proper state for subsequent operations
+      NotificationStore.setScheduleMutedState(scheduleType, mute);
+
       if (mute) {
-        // Cancel all notifications first
+        // Cancel all notifications since we're muting
         await NotificationStore.cancelAllScheduleNotificationsForSchedule(scheduleType);
-        NotificationStore.setScheduleMutedState(scheduleType, true);
       } else {
         // Check permissions before unmuting
         const hasPermission = await ensurePermissions();
         if (!hasPermission) {
           logger.warn('NOTIFICATION: Permissions not granted for unmute');
+          // Revert state change since we couldn't unmute
+          NotificationStore.setScheduleMutedState(scheduleType, true);
           return false;
         }
+        logger.info('NOTIFICATION: Unmuting schedule:', { scheduleType });
 
         // Reschedule notifications based on existing preferences
         await NotificationStore.addAllScheduleNotificationsForSchedule(scheduleType);
-        NotificationStore.setScheduleMutedState(scheduleType, false);
       }
 
       logger.info('NOTIFICATION: Updated mute settings:', { scheduleType, mute });
