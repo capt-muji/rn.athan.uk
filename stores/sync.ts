@@ -54,8 +54,10 @@ const initializeAppState = async (date: Date) => {
 // 1. Schedule is empty (no data for today)
 // 2. It's December and next year's data needs fetching
 const needsDataUpdate = (): boolean => {
-  const noData = Database.getAllWithPrefix('prayer_').length === 0;
-  if (noData) return true;
+  const now = TimeUtils.createLondonDate();
+  const data = Database.getPrayerByDate(now);
+
+  if (!data) return true;
 
   const needNewYear = shouldFetchNextYear();
   if (needNewYear) return true;
