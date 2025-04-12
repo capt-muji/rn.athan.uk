@@ -6,7 +6,7 @@ import * as Api from '@/api/client';
 import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import { DaySelection, ScheduleType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 import { atomWithStorageString } from '@/stores/storage';
@@ -51,15 +51,11 @@ const initializeAppState = async (date: Date) => {
 
 // Determines if the app needs to fetch fresh prayer time data
 // Returns true if:
-// 1. Stored date doesn't match current date
-// 2. Schedule is empty
-// 3. It's December and next year's data needs fetching
+// 1. Schedule is empty (no data for today)
+// 2. It's December and next year's data needs fetching
 const needsDataUpdate = (): boolean => {
-  const dateSaved = store.get(dateAtom);
   const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
-  const dateNow = TimeUtils.getDateTodayOrTomorrow(DaySelection.Today);
-
-  return dateSaved !== dateNow || Object.keys(standardSchedule.today).length === 0 || shouldFetchNextYear();
+  return Object.keys(standardSchedule.today).length === 0 || shouldFetchNextYear();
 };
 
 // Fetches and stores new prayer time data
