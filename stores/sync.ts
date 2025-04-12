@@ -54,8 +54,13 @@ const initializeAppState = async (date: Date) => {
 // 1. Schedule is empty (no data for today)
 // 2. It's December and next year's data needs fetching
 const needsDataUpdate = (): boolean => {
-  const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
-  return Object.keys(standardSchedule.today).length === 0 || shouldFetchNextYear();
+  const noData = Database.getAllWithPrefix('prayer_').length === 0;
+  if (noData) return true;
+
+  const needNewYear = shouldFetchNextYear();
+  if (needNewYear) return true;
+
+  return false;
 };
 
 // Fetches and stores new prayer time data
