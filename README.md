@@ -82,12 +82,12 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Upgrade to Reanimated v4 (needs new architecture)
 - [x] Timer on popup
 - [x] Enable IOS 'active' alert for notifications
+- [x] Remove redundant background task logic
 
 ### Upcoming Improvements
 
-- [ ] Remove redundant background task logic
 - [ ] Handle different versions of android for critical notifications (Alarms & Reminders)
-- [ ] Fix Android bugs
+- [ ] Fix Android bugs (double notifications, delayed notifcations on some devices)
 - [ ] Add widget support
 - [ ] Add Qibla direction finder
 - [ ] Support for locations outside London (will be an open source standalone project)
