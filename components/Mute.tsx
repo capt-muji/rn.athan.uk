@@ -41,8 +41,6 @@ export default function Mute({ type }: Props) {
       await handleMuteChange(type, newMutedState); // Persist the new muted state
 
       setTempMutedState(type, null);
-
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
     }, ANIMATION.debounce);
   };
 
