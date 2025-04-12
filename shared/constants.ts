@@ -10,6 +10,7 @@ export const NOTIFICATION_ROLLING_DAYS = 6;
 export const NOTIFICATION_REFRESH_HOURS = 24;
 
 export const TIME_ADJUSTMENTS = {
+  lastThird: 5, // minutes after last third of the night
   suhoor: -40, // minutes before fajr
   duha: 20, // minutes after sunrise
   istijaba: -59, // minutes before magrib
