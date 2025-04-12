@@ -154,7 +154,7 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
   const nightDuration = fajr.getTime() - maghrib.getTime();
   const lastThirdStart = createLondonDate(maghrib.getTime() + (nightDuration * 2) / 3);
 
-  // add 10 minutes to the last third start time
+  // add minutes to the last third start time
   const minutesToAdd = TIME_ADJUSTMENTS.lastThird;
   lastThirdStart.setMinutes(lastThirdStart.getMinutes() + minutesToAdd);
 
