@@ -9,6 +9,7 @@ import ModalTips from '@/components/ModalTips';
 import ModalUpdate from '@/components/ModalUpdate';
 import Overlay from '@/components/Overlay';
 import { initializeListeners } from '@/device/listeners';
+import { deregisterBackgroundFetchAsync } from '@/device/tasks';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
 import { initializeNotifications } from '@/shared/notifications';
@@ -30,6 +31,9 @@ export default function Index() {
   const modalTimesExplained = useAtomValue(popupTimesExplainedAtom);
 
   useEffect(() => {
+    // Deregister deprecated background task
+    deregisterBackgroundFetchAsync(); // TODO: Remove this in future
+
     // Initialize notifications and create channel on first load
     initializeNotifications(checkInitialPermissions);
 
