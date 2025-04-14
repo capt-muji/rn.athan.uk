@@ -32,7 +32,7 @@ export default function Index() {
 
   useEffect(() => {
     // Deregister deprecated background task
-    deregisterBackgroundFetchAsync(); // TODO: Remove this in future
+    deregisterBackgroundFetchAsync(); // TODO: Remove this in future and direct notification cancelation
 
     // Initialize notifications and create channel on first load
     initializeNotifications(checkInitialPermissions);

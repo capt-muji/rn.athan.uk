@@ -1,4 +1,5 @@
 import { differenceInHours, differenceInMinutes, differenceInSeconds, addHours, formatISO } from 'date-fns';
+import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
@@ -235,6 +236,11 @@ export const shouldRescheduleNotifications = (): boolean => {
  * Used when changing sound preferences or during periodic refresh
  */
 export const rescheduleAllNotifications = async () => {
+  // TODO: Temporary: Cancel ALL scheduled notifications using expo notifications directly
+  // TODO: This will be removed in the future when we remove the deregisterBackgroundFetchAsync function
+  await Notifications.cancelAllScheduledNotificationsAsync();
+  logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
+
   // First cancel all notifications for both schedules
   await Promise.all([
     cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
