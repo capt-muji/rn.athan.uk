@@ -86,7 +86,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ### Upcoming Improvements
 
-- [ ] Handle different versions of android for critical notifications (Alarms & Reminders)
+- [ ] Handle different versions of android for critical notifications (Alarms & Reminders?)
 - [ ] Fix Android bugs (double notifications, delayed notifcations on some devices)
 - [ ] Add widget support
 - [ ] Add Qibla direction finder
