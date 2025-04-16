@@ -34,13 +34,7 @@
         "backgroundColor": "#2c1c77"
       },
       "package": "com.mugtaba.athan",
-      "permissions": [
-        "RECEIVE_BOOT_COMPLETED",
-        "POST_NOTIFICATIONS",
-        "USE_EXACT_ALARM",
-        "SCHEDULE_EXACT_ALARM",
-        "WAKE_LOCK"
-      ]
+      "permissions": ["POST_NOTIFICATIONS"]
     },
     "plugins": [
       [
