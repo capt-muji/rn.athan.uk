@@ -236,22 +236,25 @@ export const shouldRescheduleNotifications = (): boolean => {
  * Used when changing sound preferences or during periodic refresh
  */
 export const rescheduleAllNotifications = async () => {
-  // TODO: Temporary: Cancel ALL scheduled notifications using expo notifications directly
-  // TODO: This will be removed in the future when we remove the deregisterBackgroundFetchAsync function
-  await Notifications.cancelAllScheduledNotificationsAsync();
-  logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
+  try {
+    // Cancel ALL scheduled notifications directly
+    await Notifications.cancelAllScheduledNotificationsAsync();
+    logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
 
-  // First cancel all notifications for both schedules
-  await Promise.all([
-    cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard),
-    cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra),
-  ]);
+    Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
+    Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Extra);
 
-  // Then schedule new notifications for both schedules
-  await Promise.all([
-    addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
-    addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
-  ]);
+    // Then schedule new notifications for both schedules
+    await Promise.all([
+      addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
+      addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+    ]);
+
+    logger.info('NOTIFICATION: Rescheduled all notifications');
+  } catch (error) {
+    logger.error('NOTIFICATION: Failed to reschedule notifications:', error);
+    throw error;
+  }
 };
 
 export const refreshNotifications = async () => {
