@@ -237,12 +237,14 @@ export const shouldRescheduleNotifications = (): boolean => {
  */
 export const rescheduleAllNotifications = async () => {
   try {
-    // Cancel ALL scheduled notifications directly
+    // Cancel ALL scheduled notifications globally
+    // This should not be needed, but it's a good safety measure
     await Notifications.cancelAllScheduledNotificationsAsync();
     logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
 
-    Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
-    Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Extra);
+    // Cancel ALL scheduled notifications directly
+    await cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard);
+    await cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra);
 
     // Then schedule new notifications for both schedules
     await Promise.all([
