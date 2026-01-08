@@ -10,7 +10,7 @@ import ModalUpdate from '@/components/ModalUpdate';
 import Overlay from '@/components/Overlay';
 import { initializeListeners } from '@/device/listeners';
 import { deregisterBackgroundFetchAsync } from '@/device/tasks';
-import { checkForUpdates, openStore } from '@/device/updates';
+import { openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
 import { initializeNotifications } from '@/shared/notifications';
 import { syncLoadable } from '@/stores/sync';
@@ -40,8 +40,9 @@ export default function Index() {
     // Initialize background/foreground state listeners (sync UI as needed)
     initializeListeners(checkInitialPermissions);
 
+    // TODO: Temporarily disabled because github raw URL has been changed
     // Check for updates in background
-    checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
+    // checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
   }, []);
 
   const handleCloseTip = () => {

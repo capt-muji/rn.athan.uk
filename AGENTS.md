@@ -1,14 +1,14 @@
 # ATHAN.UK REACT NATIVE PROJECT - AGENTIC KNOWLEDGE BASE
 
-**Generated:** 2025-01-08  
-**Commit:** Latest (see git log)  
-**Branch:** main  
+**Generated:** 2026-01-08  
+**Commit:** 24ca5b5  
+**Branch:** agents_skills_init_BUG1  
 **Project:** React Native prayer times app for London, UK  
 
 ---
 
 ## OVERVIEW
-React Native mobile app for Muslim prayer times using Expo SDK 52, RN 0.77.1, TypeScript strict mode. Displays daily prayer times with real-time countdown, custom notifications with 16 Athan sounds, offline support with MMKV caching. No tests configured. Uses PagerView navigation, Jotai state, Reanimated v4 beta.
+React Native mobile app for Muslim prayer times using Expo SDK 52, RN 0.77.3, TypeScript strict mode. Displays daily prayer times with real-time countdown, custom notifications with 16 Athan sounds, offline support with MMKV caching. No tests configured. Uses PagerView navigation, Jotai state, Reanimated v4 beta.
 
 ---
 
@@ -32,7 +32,7 @@ React Native mobile app for Muslim prayer times using Expo SDK 52, RN 0.77.1, Ty
 
 ## CRITICAL BUGS (README documented)
 
-**BUG-1:** iOS simulator startup failure - react-native-screens prop type errors (see `errors/BUG-1_*.txt`)  
+**BUG-1:** ✅ **RESOLVED** - iOS simulator startup (react-native-screens@4.10.0 now working)  
 **BUG-2:** Double notifications on iOS & Android - sends 2 identical notifications  
 **BUG-3:** Android delayed notifications - ±60 seconds timing on some devices  
 
@@ -212,12 +212,12 @@ yarn add <package>           # For other packages
 
 ## TECH STACK
 
-**Core**: React Native 0.77.1, Expo SDK 52, TypeScript strict  
-**State**: Jotai (atomic), MMKV (storage), Reanimated 4.0.0-beta.2  
-**UI**: PagerView (nav), GestureHandler, BottomSheet, Linear Gradients  
+**Core**: React Native 0.77.3, Expo SDK 52.0.48, TypeScript 5.9.3 strict  
+**State**: Jotai 2.16.1 (atomic), MMKV 3.3.3 (storage), Reanimated 4.0.0-beta.2  
+**UI**: PagerView (nav), GestureHandler 2.30.0, BottomSheet 5.2.8, Linear Gradients  
 **Platform**: Expo-notifications, expo-av (audio), expo-haptics, react-native-permissions  
 **Build**: EAS (Expo Application Services), no CI/CD configured  
-**Logging**: Pino (disabled in prod), Husky pre-commit (lint-staged)  
+**Logging**: Pino 9.14.0 (disabled in prod), Husky pre-commit (lint-staged)  
 
 ---
 
@@ -229,7 +229,8 @@ yarn add <package>           # For other packages
 ## DEPENDENCIES TO WATCH
 
 - **react-native-reanimated**: "4.0.0-beta.2" - Upgrade to stable when available
-- **react-native-screens**: Prop type errors on iOS simulator (BUG-1)
+- **react-native-screens**: "4.10.0" - Now working ✅ (BUG-1 resolved)
+- **react-native-svg**: "15.12.1" - Compatible with RN 0.77.3
 
 ---
 
@@ -252,7 +253,7 @@ yarn add <package>           # For other packages
 ├── mocks/            # Mock data for dev
 ├── ios/              # Generated native code
 ├── android/          # Generated native code
-└── .agent-planning/  # Agentic context (this folder)
+└── .opencode/        # OpenCode skills (3 SKILL.md files)
 ```
 
 ---
