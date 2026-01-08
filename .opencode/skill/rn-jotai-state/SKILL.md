@@ -94,7 +94,7 @@ export const setSchedule = (type: ScheduleType, date: Date): void => {
 ## Storage Key Naming Convention
 
 ### Prayer Data
-- `prayer_YYYY-MM-DD` - Daily prayer times (e.g., `prayer_2025-01-08`)
+- `prayer_YYYY-MM-DD` - Daily prayer times (e.g., `prayer_2026-01-08`)
 - `fetched_years` - Record of fetched years: `{[year]: boolean}`
 - `display_date` - Currently displayed date
 
@@ -238,8 +238,8 @@ const value = store.get(myAtom);
 
 ## Notes
 
-- This project uses Jotai v2.12.1
-- MMKV v3.2.0 for persistent storage
+- This project uses **Jotai v2.16.1**
+- **MMKV v3.3.3** for persistent storage
 - No React Context anywhere in codebase
 - All state atoms use named exports
 - Custom storage adapters bridge MMKV to Jotai
