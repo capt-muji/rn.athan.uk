@@ -14,7 +14,11 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
   // Handle both initial state and state changes
   const handleAppStateChange = (newState: AppStateStatus) => {
     if (newState === 'active') {
-      initializeNotifications(checkPermissions);
+      // Only initialize notifications when coming from background
+      // NOT on initial app launch (handled by app/index.tsx)
+      if (previousAppState === 'background') {
+        initializeNotifications(checkPermissions);
+      }
 
       // Only run sync when coming from background
       // This prevents double initialization since we already sync on launch
@@ -28,8 +32,6 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
 
     previousAppState = newState;
   };
-
-  handleAppStateChange(previousAppState);
 
   AppState.addEventListener('change', handleAppStateChange);
 };

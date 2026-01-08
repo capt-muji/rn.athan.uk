@@ -20,6 +20,9 @@ import { atomWithStorageNumber, atomWithStorageBoolean } from '@/stores/storage'
 
 const store = getDefaultStore();
 
+// Guard against concurrent notification scheduling
+let isScheduling = false;
+
 // --- Atoms ---
 
 // --- Individual Prayer Atoms ---
@@ -265,6 +268,13 @@ export const refreshNotifications = async () => {
     return;
   }
 
+  if (isScheduling) {
+    logger.info('NOTIFICATION: Already scheduling, skipping duplicate call');
+    return;
+  }
+
+  isScheduling = true;
+
   logger.info('NOTIFICATION: Starting notification refresh');
 
   try {
@@ -275,5 +285,7 @@ export const refreshNotifications = async () => {
   } catch (error) {
     logger.error('NOTIFICATION: Failed to refresh notifications:', error);
     throw error;
+  } finally {
+    isScheduling = false;
   }
 };
