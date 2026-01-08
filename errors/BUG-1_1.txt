@@ -1,0 +1,7 @@
+input: 
+yarn reset 
+(then open ios simulator)
+
+output:
+`iOS Bundling failed 15856ms node_modules/expo-router/entry.js (2190 modules)
+ERROR  node_modules/react-native-screens/src/fabric/ScreenStackHeaderSubviewNativeComponent.ts: /Users/muji/repos/rn.athan.uk/node_modules/react-native-screens/src/fabric/ScreenStackHeaderSubviewNativeComponent.ts: Unknown prop type for "type": "undefined"`
