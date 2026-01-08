@@ -14,7 +14,7 @@ Jotai atom-based state with MMKV persistence, vanilla store access, no React Con
 | **notifications.ts** | Notification scheduling | 6-day rolling buffer, alert preferences, `refreshNotifications()`  |
 | **database.ts**      | MMKV wrapper            | Prayer CRUD, notification tracking, `cleanup()`                    |
 | **ui.ts**            | UI state                | Modals, overlay, page position, cached measurements                |
-| **storage.ts**       | Jotai-MKV adapters      | `atomWithStorageString/Number/Boolean/Array/Object`                |
+| **storage.ts**       | Jotai-MMKV adapters     | `atomWithStorageString/Number/Boolean/Array/Object`                |
 | **overlay.ts**       | Overlay state           | Large font mode, prayer selection timer                            |
 
 ## CONVENTIONS
