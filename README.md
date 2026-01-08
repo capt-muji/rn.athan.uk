@@ -86,11 +86,6 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ### Immediate Improvements
 
-- [ ] BUG-1: Error on start up of IOS simulation:
-      Currently the app errors in development mode on IOS simulator.
-      Stuck on splashscreen.
-      See error files: errors/BUG-1_1.txt, errors/BUG-1_2.txt
-
 - [ ] BUG-2: Fix double notifications on IOS & Android:
       The app currently send two notifications at the exact same time for each notification enabled.
       We dont know if this happens when the user does not change athan selection (athan audio selection deals with modifying channels etc).
