@@ -84,10 +84,27 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Enable IOS 'active' alert for notifications
 - [x] Remove redundant background task logic
 
+### Immediate Improvements
+
+- [ ] BUG-1: Error on start up of IOS simulation:
+      Currently the app errors in development mode on IOS simulator.
+      Stuck on splashscreen.
+      See error files: errors/BUG-1_1.txt, errors/BUG-1_2.txt
+
+- [ ] BUG-2: Fix double notifications on IOS & Android:
+      The app currently send two notifications at the exact same time for each notification enabled.
+      We dont know if this happens when the user does not change athan selection (athan audio selection deals with modifying channels etc).
+      It could also not be related to channels because IOS also gets duplicate notifications.
+
+- [ ] BUG-3: Fix Android delayed notifcations on some devices:
+      All IOS devices correctly time the notifications. But on some android devices, the notifications are not exact.
+      Some notifications appear almost an entire 60 seconds before the athan time or sometimes even 60 seconds after.
+      Sometimes 60s before and after.
+
 ### Upcoming Improvements
 
+- [ ] Fix building locally on my device (mac mini m1) instead of having to build on expo (which uses up monthly 15 builds)
 - [ ] Handle different versions of android for critical notifications (Alarms & Reminders)
-- [ ] Fix Android bugs (double notifications, delayed notifcations on some devices)
 - [ ] Add widget support
 - [ ] Add Qibla direction finder
 - [ ] Support for locations outside London (will be an open source standalone project)
@@ -130,14 +147,12 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 ### Data Flow
 
 1. First Launch:
-
    - Fetch entire year's prayer times from API
    - Strip historical dates (before today)
    - Add Duha prayer (20 mins after sunrise)
    - Cache processed data in MMKV storage
 
 2. Daily Operations:
-
    - Load current day's prayers from cache
    - Track prayer states (passed/next/upcoming)
    - Manage notifications based on user preferences
