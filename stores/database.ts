@@ -1,13 +1,13 @@
 import { format } from 'date-fns';
 import { createJSONStorage } from 'jotai/utils';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 
-export const database = new MMKV();
+export const database = createMMKV();
 
 export const getItem = (key: string) => {
   const value = database.getString(key);
@@ -24,7 +24,7 @@ export const setItem = (key: string, value: unknown) => {
 
 export const removeItem = (key: string) => {
   logger.info(`MMKV DELETE: ${key}`);
-  database.delete(key);
+  database.remove(key);
 };
 
 /** Simple storage interface */
@@ -48,7 +48,7 @@ export const clearPrefix = (prefix: string) => {
   keys.forEach((key) => {
     if (!key.startsWith(prefix)) return;
 
-    database.delete(key);
+    database.remove(key);
     logger.info(`MMKV DELETE: ${key}`);
   });
 
