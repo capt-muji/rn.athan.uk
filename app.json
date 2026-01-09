@@ -20,7 +20,7 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.mugtaba.athan",
+      "bundleIdentifier": "uk.athan",
       "infoPlist": {
         "CFBundleDisplayName": "Athan",
         "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications",
@@ -33,7 +33,7 @@
         "foregroundImage": "./assets/icons/config/icon-android-adaptive.png",
         "backgroundColor": "#2c1c77"
       },
-      "package": "com.mugtaba.athan",
+      "package": "uk.athan",
       "permissions": [
         "RECEIVE_BOOT_COMPLETED",
         "POST_NOTIFICATIONS",

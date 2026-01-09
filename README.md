@@ -93,8 +93,8 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 - [ ] BUG-3: Fix Android delayed notifcations on some devices:
       All IOS devices correctly time the notifications. But on some android devices, the notifications are not exact.
-      Some notifications appear almost an entire 60 seconds before the athan time or sometimes even 60 seconds after.
-      Sometimes 60s before and after.
+      Some notifications appear almost an entire 1-3mins before the athan time or sometimes even 1-3mins after.
+      Sometimes 1-3mins before and after.
 
 ### Upcoming Improvements
 
