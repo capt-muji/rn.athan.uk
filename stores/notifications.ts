@@ -2,7 +2,7 @@ import { differenceInHours, differenceInMinutes, differenceInSeconds, addHours, 
 import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 import { Alert, Linking, Platform } from 'react-native';
-import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
+import { check, RESULTS } from 'react-native-permissions';
 
 import * as Device from '@/device/notifications';
 import {
