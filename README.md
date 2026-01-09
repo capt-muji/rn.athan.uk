@@ -83,6 +83,10 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Timer on popup
 - [x] Enable IOS 'active' alert for notifications
 - [x] Remove redundant background task logic
+- [x] Upgrade to Expo SDK 54 with React 19 & React Native 0.81
+- [x] Migrate from expo-av to expo-audio (SDK 54 requirement)
+- [x] Upgrade MMKV to v4 (Nitro Module)
+- [x] Pin all package versions (prevent breaking upgrades)
 
 ### Immediate Improvements
 
@@ -139,6 +143,18 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 
 ## 🛠 Technical Implementation
 
+### Recent Upgrades (SDK 54 Migration)
+
+**Completed**: Expo SDK 52 → 54, React 18.3 → 19.1, React Native 0.76 → 0.81
+
+**Major Changes:**
+- **Audio System**: Migrated from `expo-av` (deprecated) to `expo-audio` with new `useAudioPlayer` + `useAudioPlayerStatus` hooks
+- **Storage**: Upgraded MMKV to v4 (now a Nitro Module) - uses `createMMKV()` and `.remove()` methods
+- **Edge-to-edge**: Removed deprecated `react-native-edge-to-edge`, now using `expo-status-bar`
+- **Background Tasks**: Removed deprecated `expo-background-fetch` and `device/tasks.ts`
+- **Notifications**: Updated to handle `shouldShowBanner` and `shouldShowList` required in SDK 54
+- **Version Pinning**: All dependencies pinned to exact versions to prevent breaking changes
+
 ### Data Flow
 
 1. First Launch:
@@ -177,9 +193,10 @@ Notifications are scheduled:
 
 ### Prerequisites
 
-- Node.js
-- React Native development environment
-- Expo CLI
+- Node.js 16+
+- Expo CLI (v54+)
+- iOS: Xcode 15+ (for iOS simulator/device builds)
+- Android: Android Studio with NDK (for native module builds)
 
 ### Installation
 
@@ -244,7 +261,7 @@ The project uses ESLint and Prettier for code consistency and quality:
 ![Skia](https://img.shields.io/badge/Skia-0D1117?style=for-the-badge&logo=skia&logoColor=white)
 ![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
 ![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)
-![Reanimated](https://img.shields.io/badge/Reanimated_3-6B52AE?style=for-the-badge)
+![Reanimated](https://img.shields.io/badge/Reanimated_4-6B52AE?style=for-the-badge)
 ![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
 
 ## 🗄️ MMKV Storage Keys

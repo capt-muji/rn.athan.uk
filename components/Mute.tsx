@@ -21,7 +21,7 @@ export default function Mute({ type }: Props) {
   const { handleMuteChange } = useNotification();
   const AnimScale = useAnimationScale(1);
 
-  const debouncedMuteRef = useRef<NodeJS.Timeout>();
+  const debouncedMuteRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
