@@ -8,7 +8,7 @@
 ---
 
 ## OVERVIEW
-React Native mobile app for Muslim prayer times using Expo SDK 52, RN 0.77.3, TypeScript strict mode. Displays daily prayer times with real-time countdown, custom notifications with 16 Athan sounds, offline support with MMKV caching. No tests configured. Uses PagerView navigation, Jotai state, Reanimated v4 beta.
+React Native mobile app for Muslim prayer times using Expo SDK 54, React 19.1, React Native 0.81.5, TypeScript strict mode. Displays daily prayer times with real-time countdown, custom notifications with 16 Athan sounds, offline support with MMKV v4 caching. No tests configured. Uses PagerView navigation, Jotai state, Reanimated v4 stable. All dependencies pinned to exact versions.
 
 ---
 
@@ -117,8 +117,7 @@ import { Prayer } from './Prayer';
 ## ANTI-PATTERNS (This Project)
 
 ### Temporary Workarounds (Must Remove)
-- **Line 35 in `app/index.tsx`**: `deregisterBackgroundFetchAsync(); // TODO: Remove`
-- **Lines 23-26 in `app/_layout.tsx`**: `@ts-expect-error` suppressing Text.defaultProps mutation
+- **Lines 23-26 in `app/_layout.tsx`**: `@ts-expect-error` suppressing Text.defaultProps mutation (consider alternative approach)
 
 ### Type Coercion Risk
 - **stores/storage.ts**: `JSON.parse(value) as T[]` without validation
@@ -129,9 +128,8 @@ import { Prayer } from './Prayer';
 - **Trade-off**: Performance vs observability
 - **Recommendation**: Add error tracking service
 
-### Beta Dependencies
-- **react-native-reanimated**: "4.0.0-beta.2" (unstable)
-- **Action Required**: Upgrade to stable when available
+### Production Dependencies
+- ✅ All dependencies now pinned to exact versions (no breaking patch updates)
 
 ---
 
@@ -212,12 +210,13 @@ yarn add <package>           # For other packages
 
 ## TECH STACK
 
-**Core**: React Native 0.77.3, Expo SDK 52.0.48, TypeScript 5.9.3 strict  
-**State**: Jotai 2.16.1 (atomic), MMKV 3.3.3 (storage), Reanimated 4.0.0-beta.2  
-**UI**: PagerView (nav), GestureHandler 2.30.0, BottomSheet 5.2.8, Linear Gradients  
-**Platform**: Expo-notifications, expo-av (audio), expo-haptics, react-native-permissions  
-**Build**: EAS (Expo Application Services), no CI/CD configured  
-**Logging**: Pino 9.14.0 (disabled in prod), Husky pre-commit (lint-staged)  
+**Core**: React Native 0.81.5, React 19.1.0, Expo SDK 54.0.31, TypeScript 5.9.3 strict
+**State**: Jotai 2.16.1 (atomic), MMKV 4.1.1 (Nitro Module), Reanimated 4.1.6 (stable)
+**UI**: PagerView 6.9.1 (nav), GestureHandler 2.28.0, BottomSheet 5.2.8, Linear Gradients
+**Platform**: Expo-notifications, expo-audio (hook-based), expo-haptics, react-native-permissions
+**Build**: EAS (Expo Application Services), no CI/CD configured
+**Logging**: Pino 9.14.0 (disabled in prod), Husky pre-commit (lint-staged)
+**All versions**: Pinned to exact versions for stability  
 
 ---
 
@@ -228,9 +227,11 @@ yarn add <package>           # For other packages
 
 ## DEPENDENCIES TO WATCH
 
-- **react-native-reanimated**: "4.0.0-beta.2" - Upgrade to stable when available
-- **react-native-screens**: "4.10.0" - Now working ✅ (BUG-1 resolved)
-- **react-native-svg**: "15.12.1" - Compatible with RN 0.77.3
+All dependencies are pinned to exact versions. When upgrading:
+- Test thoroughly on iOS simulator and Android emulator
+- Check SDK 54 changelog for breaking changes
+- Follow DEPENDENCY-PINNING-STRATEGY.md for upgrade process
+- See SDK-54-BREAKING-CHANGES.md for notification/audio migration learnings
 
 ---
 
@@ -261,9 +262,12 @@ yarn add <package>           # For other packages
 ## NOTES
 
 - **No Context Providers** - Uses vanilla Jotai store access
-- **Annual data caching** - Fetches entire year, stores in MMKV
+- **Annual data caching** - Fetches entire year, stores in MMKV v4 (Nitro Module)
 - **Midnight timer** - Separate timer watching for date changes
-- **Background task deprecated** - Code still exists but being removed
+- **Background tasks removed** - expo-background-fetch removed, device/tasks.ts deleted (SDK 54)
+- **Audio system** - Uses expo-audio hooks (useAudioPlayer + useAudioPlayerStatus)
+- **Notification sounds** - MUST use `false` (boolean) for silent, not `null`/`undefined` (SDK 54 requirement)
 - **Web deployment** - Static HTML only (index.html, CNAME)
 - **Version tracking** - Manual releases.json updates required
 - **EAS build limit** - 15 builds/month (pain point documented in README)
+- **Recent migration** - SDK 52→54, React 18→19, RN 0.76→0.81 (Jan 2026)

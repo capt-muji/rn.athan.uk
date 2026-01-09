@@ -23,8 +23,7 @@
       "bundleIdentifier": "uk.athan",
       "infoPlist": {
         "CFBundleDisplayName": "Athan",
-        "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications",
-        "UIBackgroundModes": ["fetch"]
+        "NSUserNotificationsUsageDescription": "We need to send you prayer time notifications"
       },
       "backgroundColor": "#2c1c77"
     },
@@ -54,7 +53,10 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Roboto-Regular.ttf", "./assets/fonts/Roboto-Medium.ttf"]
+          "fonts": [
+            "./assets/fonts/Roboto-Regular.ttf",
+            "./assets/fonts/Roboto-Medium.ttf"
+          ]
         }
       ],
       [
@@ -86,7 +88,10 @@
         {
           "iosPermissions": []
         }
-      ]
+      ],
+      "expo-router",
+      "expo-audio",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true

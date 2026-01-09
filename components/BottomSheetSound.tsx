@@ -1,8 +1,14 @@
-import { BottomSheetModal, BottomSheetFlatList, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
+import {
+  BottomSheetModal,
+  BottomSheetFlatList,
+  BottomSheetBackdrop,
+  BottomSheetBackdropProps,
+} from '@gorhom/bottom-sheet';
+import { AudioSource } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useMemo, useCallback, useState } from 'react';
-import { StyleSheet, Text, Dimensions, View } from 'react-native';
+import { StyleSheet, Text, Dimensions, View, ListRenderItemInfo } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ALL_AUDIOS } from '@/assets/audio';
@@ -13,6 +19,11 @@ import { COLORS, TEXT } from '@/shared/constants';
 import { rescheduleAllNotifications, setSoundPreference } from '@/stores/notifications';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
+interface AudioItem {
+  id: string;
+  audio: AudioSource;
+}
+
 export default function BottomSheetSound() {
   const { bottom } = useSafeAreaInsets();
 
@@ -20,7 +31,10 @@ export default function BottomSheetSound() {
   // This allows us to preview the selection without triggering notification updates
   const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
 
-  const data = useMemo(() => ALL_AUDIOS.map((audio, index) => ({ id: index.toString(), audio })), []);
+  const data = useMemo(
+    () => ALL_AUDIOS.map((audio, index) => ({ id: index.toString(), audio: audio as AudioSource })),
+    []
+  );
 
   const renderSheetBackground = useCallback(() => {
     return (
@@ -34,15 +48,11 @@ export default function BottomSheetSound() {
   }, []);
 
   const renderItem = useCallback(
-    ({ item }) => (
+    ({ item }: ListRenderItemInfo<AudioItem>) => (
       <BottomSheetSoundItem
         index={parseInt(item.id)}
         audio={item.audio}
-        // onSelect updates the temporary selection when user taps an item
-        // This doesn't trigger any notification updates yet
         onSelect={setTempSoundSelection}
-        // tempSelection is used for UI feedback while the sheet is open
-        // Falls back to the actual stored preference if no temporary selection
         tempSelection={tempSoundSelection}
       />
     ),
@@ -50,7 +60,7 @@ export default function BottomSheetSound() {
   );
 
   const renderBackdrop = useCallback(
-    (props) => (
+    (props: BottomSheetBackdropProps) => (
       <BottomSheetBackdrop
         {...props}
         appearsOnIndex={0}
@@ -104,9 +114,9 @@ export default function BottomSheetSound() {
         />
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
-        <BottomSheetFlatList
+        <BottomSheetFlatList<AudioItem>
           data={data}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item: AudioItem) => item.id}
           renderItem={renderItem}
           contentContainerStyle={{ paddingBottom: bottom + 20 }}
           showsVerticalScrollIndicator={false}

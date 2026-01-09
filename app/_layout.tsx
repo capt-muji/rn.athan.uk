@@ -1,9 +1,9 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 import { useLayoutEffect } from 'react';
 import { LogBox, Text } from 'react-native';
-import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import BottomSheetSound from '@/components/BottomSheetSound';
@@ -34,7 +34,7 @@ export default function Layout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#2c1c77' }}>
-      <SystemBars style="light" />
+      <StatusBar style="light" />
       <InitialWidthMeasurement />
       <BottomSheetModalProvider>
         <Slot />

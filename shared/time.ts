@@ -219,9 +219,9 @@ export const calculateCountdown = (schedule: ScheduleStore, index: number) => {
  * Creates a timer that counts down from specified seconds
  * @param timeLeft Number of seconds to count down from
  * @param callbacks Optional callback functions for tick and finish events
- * @returns NodeJS.Timer interval ID
+ * @returns Timer interval ID
  */
-export const timer = (timeLeft: number, callbacks: TimerCallbacks): NodeJS.Timer => {
+export const timer = (timeLeft: number, callbacks: TimerCallbacks): ReturnType<typeof setInterval> => {
   const onInterval = () => {
     timeLeft--;
 

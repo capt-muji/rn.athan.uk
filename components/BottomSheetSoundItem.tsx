@@ -1,14 +1,13 @@
-import { Audio, AVPlaybackSource } from 'expo-av';
+import { AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Pressable, StyleSheet, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
-import logger from '@/shared/logger';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
@@ -17,7 +16,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 interface Props {
   index: number;
-  audio: AVPlaybackSource;
+  audio: AudioSource;
   onSelect: (index: number) => void;
   tempSelection: number | null;
 }
@@ -26,7 +25,8 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const playingIndex = useAtomValue(playingSoundIndexAtom);
 
-  const [sound, setSound] = useState<Audio.Sound | null>(null);
+  const player = useAudioPlayer(audio);
+  const status = useAudioPlayerStatus(player);
 
   const isPlaying = playingIndex === index;
   const isSelected = index === (tempSelection ?? selectedSound);
@@ -42,13 +42,22 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
 
   const AnimScale = useAnimationScale(1);
 
-  if (playingIndex !== index && sound) sound.stopAsync();
-
+  // Stop playing when another sound is selected
   useEffect(() => {
-    return () => {
-      if (sound) sound.unloadAsync();
-    };
-  }, [sound]);
+    if (playingIndex !== index && status.playing) {
+      player.pause();
+    }
+  }, [playingIndex, index, status.playing]);
+
+  // Detect when playback finishes
+  useEffect(() => {
+    if (isPlaying && !status.playing && status.currentTime > 0 && status.duration > 0) {
+      // Check if playback finished (near the end)
+      if (status.currentTime >= status.duration - 0.1) {
+        setPlayingSoundIndex(null);
+      }
+    }
+  }, [isPlaying, status.playing, status.currentTime, status.duration]);
 
   useEffect(() => {
     textAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
@@ -60,34 +69,19 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
-  const playSound = async () => {
+  const playSound = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    try {
-      if (sound) {
-        await sound.stopAsync();
-
-        if (isPlaying) return setPlayingSoundIndex(null);
-      }
-
-      await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
-
-      const { sound: playbackObject } = await Audio.Sound.createAsync(audio, {
-        shouldPlay: true,
-      });
-
-      setSound(playbackObject);
-      setPlayingSoundIndex(index);
-
-      playbackObject.setOnPlaybackStatusUpdate((status) => {
-        if (status.isLoaded && status.didJustFinish) setPlayingSoundIndex(null);
-      });
-
-      await playbackObject.playAsync();
-    } catch (error) {
-      logger.error('Error playing sound:', error);
+    if (isPlaying) {
+      player.pause();
       setPlayingSoundIndex(null);
+      return;
     }
+
+    // Reset to beginning and play
+    player.seekTo(0);
+    player.play();
+    setPlayingSoundIndex(index);
   };
 
   const computedStyleOption: ViewStyle = {

@@ -14,7 +14,7 @@ export const atomWithStorageNumber = (key: string, initialValue: number) =>
         return value === undefined ? initialValue : Number(value);
       },
       setItem: (key, value) => database.set(key, value.toString()),
-      removeItem: (key) => database.delete(key),
+      removeItem: (key) => database.remove(key),
     },
     defaultOpts
   );
@@ -29,7 +29,7 @@ export const atomWithStorageBoolean = (key: string, initialValue: boolean) =>
         return value === undefined ? initialValue : value;
       },
       setItem: (key, value) => database.set(key, value),
-      removeItem: (key) => database.delete(key),
+      removeItem: (key) => database.remove(key),
     },
     defaultOpts
   );
@@ -44,7 +44,7 @@ export const atomWithStorageString = (key: string, initialValue: string) =>
         return value === undefined ? initialValue : value;
       },
       setItem: (key, value) => database.set(key, value),
-      removeItem: (key) => database.delete(key),
+      removeItem: (key) => database.remove(key),
     },
     defaultOpts
   );
@@ -59,7 +59,7 @@ export const atomWithStorageArray = <T = unknown>(key: string, initialValue: T[]
         return value === undefined ? initialValue : (JSON.parse(value) as T[]);
       },
       setItem: (key, value) => database.set(key, JSON.stringify(value)),
-      removeItem: (key) => database.delete(key),
+      removeItem: (key) => database.remove(key),
     },
     defaultOpts
   );
@@ -74,7 +74,7 @@ export const atomWithStorageObject = <T extends object = Record<string, unknown>
         return value === undefined ? initialValue : (JSON.parse(value) as T);
       },
       setItem: (key, value) => database.set(key, JSON.stringify(value)),
-      removeItem: (key) => database.delete(key),
+      removeItem: (key) => database.remove(key),
     },
     defaultOpts
   );
