@@ -1,6 +1,8 @@
 import { differenceInHours, differenceInMinutes, differenceInSeconds, addHours, formatISO } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
+import { Alert, Linking, Platform } from 'react-native';
+import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
 import * as Device from '@/device/notifications';
 import {
@@ -22,6 +24,66 @@ const store = getDefaultStore();
 
 // Guard against concurrent notification scheduling
 let isScheduling = false;
+
+// Android 12+ (API level 31+) requires SCHEDULE_EXACT_ALARM permission
+const ANDROID_12_API_LEVEL = 31;
+
+/**
+ * Check if device needs exact alarm permission
+ * Only Android 12+ (API 31+) requires this permission
+ */
+const needsExactAlarmPermission = (): boolean => {
+  if (Platform.OS !== 'android') return false;
+  const androidVersion = Platform.Version as number;
+  return androidVersion >= ANDROID_12_API_LEVEL;
+};
+
+/**
+ * Check if SCHEDULE_EXACT_ALARM permission is granted
+ * Returns true if permission granted OR not needed (iOS, Android <12)
+ */
+const checkExactAlarmPermission = async (): Promise<boolean> => {
+  if (!needsExactAlarmPermission()) {
+    return true; // Not needed on iOS or Android <12
+  }
+
+  try {
+    // Use string constant as PERMISSIONS.ANDROID.SCHEDULE_EXACT_ALARM may not exist in older versions
+    const result = await check('android.permission.SCHEDULE_EXACT_ALARM' as any);
+    const isGranted = result === RESULTS.GRANTED;
+
+    logger.info(`NOTIFICATION: SCHEDULE_EXACT_ALARM permission - ${result} (granted: ${isGranted})`);
+
+    return isGranted;
+  } catch (error) {
+    logger.error('NOTIFICATION: Failed to check SCHEDULE_EXACT_ALARM permission:', error);
+    return false;
+  }
+};
+
+/**
+ * Show alert to guide user to enable "Alarms & reminders" permission
+ * This permission cannot be requested programmatically - user must enable in settings
+ */
+const promptExactAlarmPermission = () => {
+  Alert.alert(
+    'Alarms & Reminders Permission Required',
+    'To receive prayer notifications at exact times, please enable "Alarms & reminders" permission in app settings.\n\nThis permission is required on Android 12+ for precise notification timing.',
+    [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      {
+        text: 'Open Settings',
+        onPress: () => {
+          Linking.openSettings();
+        },
+      },
+    ],
+    { cancelable: true }
+  );
+};
 
 // --- Atoms ---
 
@@ -270,6 +332,14 @@ export const refreshNotifications = async () => {
 
   if (isScheduling) {
     logger.info('NOTIFICATION: Already scheduling, skipping duplicate call');
+    return;
+  }
+
+  // Check SCHEDULE_EXACT_ALARM permission (Android 12+)
+  const hasExactAlarmPermission = await checkExactAlarmPermission();
+  if (!hasExactAlarmPermission) {
+    logger.error('NOTIFICATION: SCHEDULE_EXACT_ALARM permission denied - cannot schedule exact notifications');
+    promptExactAlarmPermission();
     return;
   }
 
