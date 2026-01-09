@@ -29,9 +29,10 @@ export const genTriggerDate = (date: string, time: string): Date => {
 
 /**
  * Gets notification sound based on alert type
+ * Returns false for silent notifications (SDK 54 requirement)
  */
-export const getNotificationSound = (alertType: AlertType, soundIndex: number): string | null => {
-  if (alertType !== AlertType.Sound) return null;
+export const getNotificationSound = (alertType: AlertType, soundIndex: number): string | false => {
+  if (alertType !== AlertType.Sound) return false;
 
   return `athan${soundIndex + 1}.wav`;
 };
@@ -48,7 +49,7 @@ export const genNotificationContent = (
   return {
     title: `${englishName} \u2004`,
     body: `\u200E${arabicName}`, // LTR mark
-    sound: getNotificationSound(alertType, soundIndex) || undefined,
+    sound: getNotificationSound(alertType, soundIndex),
     color: '#5a3af7',
     autoDismiss: false,
     sticky: false,
