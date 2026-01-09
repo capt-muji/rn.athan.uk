@@ -76,7 +76,7 @@ export default function Overlay() {
       <Pressable style={{ flex: 1 }} onPress={handleClose} />
 
       {/* Date */}
-      <Reanimated.Text style={[styles.date, computedStyleDate, dateOpacity.style]}>
+      <Reanimated.Text style={[styles.date, computedStyleDate as object, dateOpacity.style]}>
         {selectedPrayer.isPassed ? 'Tomorrow' : 'Today'}
       </Reanimated.Text>
 

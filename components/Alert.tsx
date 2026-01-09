@@ -52,8 +52,8 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   const [isPopupActive, setIsPopupActive] = useState(false);
 
-  const timeoutRef = useRef<NodeJS.Timeout>();
-  const debouncedAlertRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const debouncedAlertRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Create debounced version of handleAlertChange
   const debouncedHandleAlertChange = useCallback(
@@ -105,7 +105,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   useEffect(() => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
-      timeoutRef.current = undefined;
+      timeoutRef.current = null;
     }
     AnimOpacity.value.value = 0;
     setIsPopupActive(false);
