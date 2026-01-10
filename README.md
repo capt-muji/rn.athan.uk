@@ -95,10 +95,14 @@ A React Native mobile app for Muslim prayer times in London, UK
       We dont know if this happens when the user does not change athan selection (athan audio selection deals with modifying channels etc).
       It could also not be related to channels because IOS also gets duplicate notifications.
 
-- [ ] BUG-3: Fix Android delayed notifcations on some devices:
+- [ ] BUG-3 (this bug is unfixable. it only happens on SOME android devices): Fix Android delayed notifcations on some devices:
       All IOS devices correctly time the notifications. But on some android devices, the notifications are not exact.
       Some notifications appear almost an entire 1-3mins before the athan time or sometimes even 1-3mins after.
       Sometimes 1-3mins before and after.
+      Solutions tried and not worked:
+  1.  Battery optimisation
+  1.  Exact alarm permissions
+  1.  Different native notifications library (all use the same native APIs under the hood, so no difference)
 
 ### Upcoming Improvements
 
@@ -148,6 +152,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 **Completed**: Expo SDK 52 → 54, React 18.3 → 19.1, React Native 0.76 → 0.81
 
 **Major Changes:**
+
 - **Audio System**: Migrated from `expo-av` (deprecated) to `expo-audio` with new `useAudioPlayer` + `useAudioPlayerStatus` hooks
 - **Storage**: Upgraded MMKV to v4 (now a Nitro Module) - uses `createMMKV()` and `.remove()` methods
 - **Edge-to-edge**: Removed deprecated `react-native-edge-to-edge`, now using `expo-status-bar`
