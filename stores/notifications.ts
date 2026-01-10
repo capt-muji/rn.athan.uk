@@ -88,7 +88,7 @@ export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
 /**
  * Schedule multiple notifications (X days) for a single prayer in the system and database
  */
-export const addMultipleScheduleNotificationsForPrayer = async (
+const _addMultipleScheduleNotificationsForPrayer = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
@@ -145,9 +145,34 @@ export const addMultipleScheduleNotificationsForPrayer = async (
 };
 
 /**
- * Reschedule all notifications for a schedule based on current preferences
+ * Public entry point: Schedule multiple notifications for a single prayer
+ * Guards against concurrent scheduling from external calls
  */
-export const addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
+export const addMultipleScheduleNotificationsForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  englishName: string,
+  arabicName: string,
+  alertType: AlertType
+) => {
+  if (isScheduling) {
+    logger.info('NOTIFICATION: Already scheduling, skipping addMultipleScheduleNotificationsForPrayer');
+    return;
+  }
+
+  isScheduling = true;
+
+  try {
+    await _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, alertType);
+  } finally {
+    isScheduling = false;
+  }
+};
+
+/**
+ * Reschedule all notifications for a schedule based on current preferences (internal)
+ */
+const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
   const isMuted = getScheduleMutedState(scheduleType);
 
   // Check if schedule is muted first
@@ -166,7 +191,7 @@ export const addAllScheduleNotificationsForSchedule = async (scheduleType: Sched
     const alertType = getPrayerAlertType(scheduleType, index);
     if (alertType === AlertType.Off) return;
 
-    return addMultipleScheduleNotificationsForPrayer(
+    return _addMultipleScheduleNotificationsForPrayer(
       scheduleType,
       index,
       prayers[index],
@@ -177,6 +202,25 @@ export const addAllScheduleNotificationsForSchedule = async (scheduleType: Sched
 
   await Promise.all(promises);
   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
+};
+
+/**
+ * Public entry point: Reschedule all notifications for a schedule
+ * Guards against concurrent scheduling from external calls
+ */
+export const addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
+  if (isScheduling) {
+    logger.info('NOTIFICATION: Already scheduling, skipping addAllScheduleNotificationsForSchedule');
+    return;
+  }
+
+  isScheduling = true;
+
+  try {
+    await _addAllScheduleNotificationsForSchedule(scheduleType);
+  } finally {
+    isScheduling = false;
+  }
 };
 
 export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
@@ -235,30 +279,47 @@ export const shouldRescheduleNotifications = (): boolean => {
 };
 
 /**
- * Reschedules all notifications for both Standard and Extra schedules
- * Used when changing sound preferences or during periodic refresh
+ * Reschedules all notifications for both Standard and Extra schedules (internal)
+ */
+const _rescheduleAllNotifications = async () => {
+  // Cancel ALL scheduled notifications globally
+  // This should not be needed, but it's a good safety measure
+  await Notifications.cancelAllScheduledNotificationsAsync();
+  logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
+
+  // Cancel ALL scheduled notifications directly
+  await cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard);
+  await cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra);
+
+  // Then schedule new notifications for both schedules
+  await Promise.all([
+    _addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
+    _addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+  ]);
+
+  logger.info('NOTIFICATION: Rescheduled all notifications');
+};
+
+/**
+ * Public entry point: Reschedules all notifications for both schedules
+ * Used when changing sound preferences
+ * Guards against concurrent scheduling from external calls
  */
 export const rescheduleAllNotifications = async () => {
+  if (isScheduling) {
+    logger.info('NOTIFICATION: Already scheduling, skipping rescheduleAllNotifications');
+    return;
+  }
+
+  isScheduling = true;
+
   try {
-    // Cancel ALL scheduled notifications globally
-    // This should not be needed, but it's a good safety measure
-    await Notifications.cancelAllScheduledNotificationsAsync();
-    logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
-
-    // Cancel ALL scheduled notifications directly
-    await cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard);
-    await cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra);
-
-    // Then schedule new notifications for both schedules
-    await Promise.all([
-      addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
-      addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
-    ]);
-
-    logger.info('NOTIFICATION: Rescheduled all notifications');
+    await _rescheduleAllNotifications();
   } catch (error) {
     logger.error('NOTIFICATION: Failed to reschedule notifications:', error);
     throw error;
+  } finally {
+    isScheduling = false;
   }
 };
 
@@ -278,7 +339,7 @@ export const refreshNotifications = async () => {
   logger.info('NOTIFICATION: Starting notification refresh');
 
   try {
-    await rescheduleAllNotifications();
+    await _rescheduleAllNotifications();
 
     store.set(lastNotificationScheduleAtom, Date.now());
     logger.info('NOTIFICATION: Refresh complete');
