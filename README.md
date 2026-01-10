@@ -187,12 +187,72 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 
 ### Notification System
 
-Notifications are scheduled:
+#### Overview
 
-- For each prayer time
-- Maintains consistency even when app is closed
-- Automatically schedules next day's Fajr after Isha
-- Persists through app restarts
+The notification system maintains a **6-day rolling buffer** of scheduled notifications that refreshes every 24 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
+
+**Key Features:**
+
+- 6 days of notifications scheduled ahead for each enabled prayer
+- Concurrent scheduling protection with global `isScheduling` guard
+- Maintains consistency even when app is closed or backgrounded
+- Persists through app restarts and offline usage
+- Separate mute controls for Standard (5 prayers) and Extra (4 prayers) schedules
+
+#### Notification Rescheduling Scenarios
+
+Notifications are rescheduled in the following scenarios:
+
+| Scenario                        | Function                                      | Time-Based   | Scope                            | Trigger                                                                                                       |
+| ------------------------------- | --------------------------------------------- | ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **User Changes Audio**          | `rescheduleAllNotifications()`                | ❌ Immediate | Both schedules (all 9 prayers)   | When user closes audio selection bottom sheet with new selection                                              |
+| **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | ❌ Immediate | Single prayer only               | When user taps alert icon on a prayer (450ms debounce)                                                        |
+| **User Mutes/Unmutes**          | `addAllScheduleNotificationsForSchedule()`    | ❌ Immediate | One schedule (Standard or Extra) | When user clicks "Enable all" / "Disable all" button (450ms debounce)                                         |
+| **App Launch**                  | `refreshNotifications()`                      | ✅ ≥24 hours | Both schedules (all 9 prayers)   | When app starts - only reschedules if never scheduled before OR last schedule was ≥24 hours ago               |
+| **App Resumes from Background** | `refreshNotifications()`                      | ✅ ≥24 hours | Both schedules (all 9 prayers)   | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥24 hours ago |
+
+#### How It Works
+
+**User-Triggered Scenarios (3):**
+
+- When user makes a change (audio, individual prayer alert, or mute toggle), notifications are immediately rescheduled
+- Bypasses the 24-hour check for responsive updates
+- The `isScheduling` guard prevents concurrent operations during these user actions
+
+**Automatic Refresh Scenarios (2):**
+
+- Triggered at app launch and when resuming from background
+- Uses 24-hour refresh interval to avoid unnecessary rescheduling
+- Checks `shouldRescheduleNotifications()` which returns `true` only if:
+  - First time ever (no previous schedule timestamp), OR
+  - ≥24 hours elapsed since `last_notification_schedule_check` timestamp
+- If criteria not met, logs skip and returns early
+- When rescheduling happens:
+  1. Cancels ALL existing notifications (global + per-prayer)
+  2. Reschedules 6 days ahead for all enabled prayers
+  3. Updates `last_notification_schedule_check` timestamp
+
+#### Concurrent Scheduling Protection
+
+All 5 entry points are protected by a single global `isScheduling` flag:
+
+- When any scheduling operation starts, `isScheduling` is set to `true`
+- If another operation tries to start while `isScheduling` is true, it returns early
+- After operation completes (success or error), `isScheduling` is reset to `false` in finally block
+- Prevents double notifications even if user rapidly clicks multiple UI elements or if background refresh coincides with user action
+
+**Protected against:**
+
+- Spam clicking alert icons while previous alert is scheduling
+- Rapidly switching audio selections
+- Mute/unmute toggle spam
+- Background refresh colliding with user actions
+- Any combination of the above
+
+#### Constants
+
+- `NOTIFICATION_ROLLING_DAYS = 6`: How many days ahead to schedule
+- `NOTIFICATION_REFRESH_HOURS = 24`: How often to refresh the rolling buffer
 
 ## 🚀 Development
 
