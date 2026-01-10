@@ -52,7 +52,11 @@ export default function BottomSheetSound() {
       <BottomSheetSoundItem
         index={parseInt(item.id)}
         audio={item.audio}
+        // onSelect updates the temporary selection when user taps an item
+        // This doesn't trigger any notification updates yet
         onSelect={setTempSoundSelection}
+        // tempSelection is used for UI feedback while the sheet is open
+        // Falls back to the actual stored preference if no temporary selection
         tempSelection={tempSoundSelection}
       />
     ),
