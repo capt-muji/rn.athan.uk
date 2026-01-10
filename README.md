@@ -119,6 +119,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 ## ⚡ Features
 
 ### Display & User Interface
+
 - 📅 **Daily Prayer Times**: View all 5 standard prayers (Fajr, Dhuhr, Asr, Maghrib, Isha) plus 4 special prayers
 - ⏰ **Real-time Countdown**: Live timer showing exact time remaining until next prayer
 - 🔄 **Tomorrow's Prayer Times**: Swipe between today and tomorrow's schedule with PagerView
@@ -126,6 +127,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 🌙 **Smart Prayer Tracking**: Automatically tracks which prayers have passed, which is next, and upcoming prayers
 
 ### Notifications & Alerts
+
 - 🔔 **Customizable Alerts** with three modes per prayer:
   - **Off**: No notifications
   - **Silent**: Banner only (no sound)
@@ -136,34 +138,39 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 🛡️ **Duplicate Prevention**: Concurrent scheduling protection prevents double notifications even with rapid user interactions
 
 ### Data & Offline Support
+
 - 💾 **Local Data Caching**: Entire year's prayer times stored locally using MMKV v4 (Nitro Module)
 - 🔄 **Automatic Yearly Refresh**: Detects year transition and fetches next year's data automatically
 - 📱 **Full Offline Support**: Works completely offline after initial data sync
 - 🎯 **Precise Synchronization**: Countdown timers sync with system clock to eliminate drift
 
 ### Performance & Reliability
+
 - ⚡ **Lightweight**: Optimized for low-end devices and minimal battery impact
 - 🔐 **Persistent Storage**: Prayer preferences and schedules survive app restarts
 - 🌍 **Background Stability**: Maintains notification accuracy when app is backgrounded or device is locked
 
 ## 🕌 Prayer Times
 
-### Standard Prayers (5)
+### Standard Prayers (6)
 
-| Prayer | Time | Islamic Context |
-|--------|------|-----------------|
-| **Fajr** | Dawn (before sunrise) | First prayer of the day, predawn obligatory prayer |
-| **Dhuhr** | Noon (midday) | Midday obligatory prayer after sun passes zenith |
-| **Asr** | Afternoon | Afternoon obligatory prayer, 2-3 hours before sunset |
-| **Maghrib** | Sunset | Obligatory prayer at sunset, begins evening |
-| **Isha** | Night (after twilight) | Night obligatory prayer, last prayer of the day |
+| Prayer      |
+| ----------- |
+| **Fajr**    |
+| **Sunrise** |
+| **Dhuhr**   |
+| **Asr**     |
+| **Maghrib** |
+| **Isha**    |
 
-### Extra Prayers & Special Times (4)
+### Extra Prayers (4)
 
-- **Suhoor** (40 mins before Fajr): Pre-dawn meal time during Ramadan; Islamic tradition for eating before dawn fast
-- **Duha** (20 mins after Sunrise): Mid-morning prayer; optional supererogatory prayer between Fajr and Dhuhr
-- **Last Third of Night** (5 mins after last third begins): Highly blessed time between Maghrib and Fajr; optimal time for personal prayers
-- **Istijaba** (59 mins before Maghrib, Fridays only): Special blessed time on Friday when supplications are answered; Islamic tradition specific to Friday
+| Prayer                  | Time                                     |
+| ----------------------- | ---------------------------------------- |
+| **Suhoor**              | 40 minutes before Fajr                   |
+| **Duha**                | 20 minutes after Sunrise                 |
+| **Last Third of Night** | 5 minutes after last third begins        |
+| **Istijaba**            | 59 minutes before Maghrib (Fridays only) |
 
 ## 🛠 Technical Implementation
 
@@ -185,27 +192,31 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 The app follows a three-phase lifecycle for prayer time data management:
 
 **1. First Launch - Data Initialization**
-   - Fetch entire year's prayer times from London Prayer Times API
-   - Process & transform: Strip historical dates (before today), calculate special prayer times
-   - Add derived prayers: Duha (20 mins after Sunrise), Suhoor (40 mins before Fajr), Istijaba (59 mins before Maghrib on Fridays)
-   - Cache to MMKV: Store processed data locally with key format `prayer_YYYY-MM-DD`
-   - Track fetched years: Record `{year: boolean}` in MMKV to avoid re-fetching
-   - Result: App now works completely offline
+
+- Fetch entire year's prayer times from London Prayer Times API
+- Process & transform: Strip historical dates (before today), calculate special prayer times
+- Add derived prayers: Duha (20 mins after Sunrise), Suhoor (40 mins before Fajr), Istijaba (59 mins before Maghrib on Fridays)
+- Cache to MMKV: Store processed data locally with key format `prayer_YYYY-MM-DD`
+- Track fetched years: Record `{year: boolean}` in MMKV to avoid re-fetching
+- Result: App now works completely offline
 
 **2. Daily Operations - State Management**
-   - Load today's prayers from MMKV cache (key: `prayer_YYYY-MM-DD`)
-   - Calculate prayer states: Identify which have passed, which is next, which are upcoming
-   - Manage notifications: Apply user's alert preferences per prayer (Off/Silent/Sound)
-   - Sync with clock: Timer system counts down to next prayer with microsecond precision
-   - Midnight reset: At stroke of midnight, trigger new day initialization via midnight timer
-   - User changes: When user toggles alerts or changes audio, reschedule notifications immediately (protected by concurrent guard)
+
+- Load today's prayers from MMKV cache (key: `prayer_YYYY-MM-DD`)
+- Calculate prayer states: Identify which have passed, which is next, which are upcoming
+- Manage notifications: Apply user's alert preferences per prayer (Off/Silent/Sound)
+- Sync with clock: Timer system counts down to next prayer with microsecond precision
+- Midnight reset: At stroke of midnight, trigger new day initialization via midnight timer
+- User changes: When user toggles alerts or changes audio, reschedule notifications immediately (protected by concurrent guard)
 
 **3. Year Transition - Automatic Renewal**
-   - Detect boundary: When user reaches last prayer of year (Isha on Dec 31)
-   - Fetch next year: Automatically trigger API call for new year's data
-   - Seamless transition: No manual intervention needed; new year's data automatically cached and available
+
+- Detect boundary: When user reaches last prayer of year (Isha on Dec 31)
+- Fetch next year: Automatically trigger API call for new year's data
+- Seamless transition: No manual intervention needed; new year's data automatically cached and available
 
 **Storage Architecture:**
+
 ```
 MMKV (Fast encrypted local storage)
 ├── Prayer Data
@@ -227,27 +238,30 @@ The app runs **4 concurrent timers** simultaneously, each with a specific respon
 
 #### Timer Types & Functions
 
-| Timer | Purpose | Updates | Trigger |
-|-------|---------|---------|---------|
-| **Standard** | Countdown to next Standard prayer (Fajr/Dhuhr/Asr/Maghrib/Isha) | Main display | Prayer queue |
-| **Extra** | Countdown to next Extra prayer (Suhoor/Duha/Last Third/Istijaba) | Page 2 display | Prayer queue |
-| **Overlay** | Countdown to user-selected prayer from overlay modal | Overlay display | Manual selection |
-| **Midnight** | Watches for day boundary at 00:00 | Triggers new day sync | 24-hour cycle |
+| Timer        | Purpose                                                          | Updates               | Trigger          |
+| ------------ | ---------------------------------------------------------------- | --------------------- | ---------------- |
+| **Standard** | Countdown to next Standard prayer (Fajr/Dhuhr/Asr/Maghrib/Isha)  | Main display          | Prayer queue     |
+| **Extra**    | Countdown to next Extra prayer (Suhoor/Duha/Last Third/Istijaba) | Page 2 display        | Prayer queue     |
+| **Overlay**  | Countdown to user-selected prayer from overlay modal             | Overlay display       | Manual selection |
+| **Midnight** | Watches for day boundary at 00:00                                | Triggers new day sync | 24-hour cycle    |
 
 #### How They Work
 
 **Synchronization with System Clock:**
+
 - Timers sync with system clock to eliminate drift (avoids "stale" countdowns when app is backgrounded)
 - Sub-millisecond precision via `useAnimationTimer` hook with Reanimated 4
 - Automatic recovery if app resumes after time jump (e.g., device hibernation)
 
 **Independent & Concurrent:**
+
 - All 4 timers run independently without blocking each other
 - Standard & Extra timers can countdown simultaneously to different prayers
 - Overlay timer updates in real-time while user is viewing modal
 - Midnight timer runs silently in background until day boundary
 
 **Automatic State Transitions:**
+
 - When a prayer time arrives, active timer:
   1. Cancels current countdown
   2. Moves to next prayer in queue
@@ -255,6 +269,7 @@ The app runs **4 concurrent timers** simultaneously, each with a specific respon
   4. Triggers notification if enabled
 
 **Midnight Reset Behavior:**
+
 - Midnight timer detects 24-hour boundary
 - Triggers `sync()` to fetch fresh prayer data
 - Resets all counters for new day
@@ -410,47 +425,47 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 
 ### Prayer Data
 
-| Key | Type | Purpose | Lifetime | Set When |
-|-----|------|---------|----------|----------|
-| `prayer_YYYY-MM-DD` | Object | Daily prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha + extras) | End of day | First launch or year transition |
-| `fetched_years` | Object | Track which years have been fetched (`{2024: true, 2025: true}`) | Indefinite (prevents re-fetches) | After fetching a year's data |
-| `display_date` | String | Currently displayed date (for multi-day view state) | Session | User swipes between dates |
+| Key                 | Type   | Purpose                                                          | Lifetime                         | Set When                        |
+| ------------------- | ------ | ---------------------------------------------------------------- | -------------------------------- | ------------------------------- |
+| `prayer_YYYY-MM-DD` | Object | Daily prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha + extras)    | End of day                       | First launch or year transition |
+| `fetched_years`     | Object | Track which years have been fetched (`{2024: true, 2025: true}`) | Indefinite (prevents re-fetches) | After fetching a year's data    |
+| `display_date`      | String | Currently displayed date (for multi-day view state)              | Session                          | User swipes between dates       |
 
 **Cache Behavior:** Prayer data never expires—persists until device cache clears or app uninstalled. Year transition automatically fetches new year when needed.
 
 ### Notifications
 
-| Key | Type | Purpose | Lifetime | Set When |
-|-----|------|---------|----------|----------|
-| `scheduled_notifications_standard_[index]_[id]` | String | Unique ID tracking Standard prayer notification scheduled | Until prayer passes | When scheduling Standard prayer notification (index 0-5) |
-| `scheduled_notifications_extra_[index]_[id]` | String | Unique ID tracking Extra prayer notification scheduled | Until prayer passes | When scheduling Extra prayer notification (index 0-3) |
-| `last_notification_schedule_check` | Number | Timestamp of last notification refresh | Indefinite | After every `refreshNotifications()` call (24h check) |
-| `preference_mute_standard` | Boolean | Whether Standard prayers (5 main) notifications are muted | Indefinite | User taps mute/unmute button |
-| `preference_mute_extra` | Boolean | Whether Extra prayers (4 special) notifications are muted | Indefinite | User taps mute/unmute button |
-| `preference_sound` | Number | Index of selected Athan sound (0-15 for 16 sounds) | Indefinite | User selects audio from BottomSheetSound |
+| Key                                             | Type    | Purpose                                                   | Lifetime            | Set When                                                 |
+| ----------------------------------------------- | ------- | --------------------------------------------------------- | ------------------- | -------------------------------------------------------- |
+| `scheduled_notifications_standard_[index]_[id]` | String  | Unique ID tracking Standard prayer notification scheduled | Until prayer passes | When scheduling Standard prayer notification (index 0-5) |
+| `scheduled_notifications_extra_[index]_[id]`    | String  | Unique ID tracking Extra prayer notification scheduled    | Until prayer passes | When scheduling Extra prayer notification (index 0-3)    |
+| `last_notification_schedule_check`              | Number  | Timestamp of last notification refresh                    | Indefinite          | After every `refreshNotifications()` call (24h check)    |
+| `preference_mute_standard`                      | Boolean | Whether Standard prayers (5 main) notifications are muted | Indefinite          | User taps mute/unmute button                             |
+| `preference_mute_extra`                         | Boolean | Whether Extra prayers (4 special) notifications are muted | Indefinite          | User taps mute/unmute button                             |
+| `preference_sound`                              | Number  | Index of selected Athan sound (0-15 for 16 sounds)        | Indefinite          | User selects audio from BottomSheetSound                 |
 
 **Notification Refresh:** Every 24 hours OR on app resume after backgrounding, notifications are re-evaluated. Old past-prayer entries are cleaned up automatically.
 
 ### Prayer Alert Preferences
 
-| Key | Type | Purpose | Values | Set When |
-|-----|------|---------|--------|----------|
+| Key                               | Type   | Purpose                                                                         | Values                     | Set When                                |
+| --------------------------------- | ------ | ------------------------------------------------------------------------------- | -------------------------- | --------------------------------------- |
 | `preference_alert_standard_[0-5]` | Number | Alert type for each Standard prayer (Fajr=0, Dhuhr=1, Asr=2, Maghrib=3, Isha=4) | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Standard prayer |
-| `preference_alert_extra_[0-3]` | Number | Alert type for each Extra prayer (Last Third=0, Suhoor=1, Duha=2, Istijaba=3) | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Extra prayer |
+| `preference_alert_extra_[0-3]`    | Number | Alert type for each Extra prayer (Last Third=0, Suhoor=1, Duha=2, Istijaba=3)   | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Extra prayer    |
 
 **Behavior:** When preference changes, notifications for that specific prayer are immediately rescheduled (protected by `isScheduling` guard).
 
 ### UI State & Caching
 
-| Key | Type | Purpose | Lifetime | Set When | Impact |
-|-----|------|---------|----------|----------|--------|
-| `prayer_max_english_width_standard` | Number | Cached max width of Standard prayer names for layout | Session | First render of prayer list | Prevents repeated measurements, improves performance |
-| `prayer_max_english_width_extra` | Number | Cached max width of Extra prayer names for layout | Session | First render of extra prayer list | Used for responsive text sizing |
-| `measurements_list` | Object | Cached measurements for prayer list item positioning | Session | Component mount | Optimizes layout calculations, prevents jank |
-| `measurements_date` | Object | Cached measurements for date display area | Session | Component mount | Improves date bar rendering performance |
-| `popup_tip_athan_enabled` | Boolean | Whether "First Time Tips" popup has been shown | Indefinite | App first launch | Only shows once in user's lifetime |
-| `popup_times_explained_enabled` | Boolean | Whether "Prayer Times Explanation" popup has been shown | Indefinite | First visit to Page 2 | Only shows once per user |
-| `popup_update_last_check` | Number | Timestamp of last app update check | Indefinite | After checking GitHub for new version | Only checks once per 24h (avoids API spam) |
+| Key                                 | Type    | Purpose                                                 | Lifetime   | Set When                              | Impact                                               |
+| ----------------------------------- | ------- | ------------------------------------------------------- | ---------- | ------------------------------------- | ---------------------------------------------------- |
+| `prayer_max_english_width_standard` | Number  | Cached max width of Standard prayer names for layout    | Session    | First render of prayer list           | Prevents repeated measurements, improves performance |
+| `prayer_max_english_width_extra`    | Number  | Cached max width of Extra prayer names for layout       | Session    | First render of extra prayer list     | Used for responsive text sizing                      |
+| `measurements_list`                 | Object  | Cached measurements for prayer list item positioning    | Session    | Component mount                       | Optimizes layout calculations, prevents jank         |
+| `measurements_date`                 | Object  | Cached measurements for date display area               | Session    | Component mount                       | Improves date bar rendering performance              |
+| `popup_tip_athan_enabled`           | Boolean | Whether "First Time Tips" popup has been shown          | Indefinite | App first launch                      | Only shows once in user's lifetime                   |
+| `popup_times_explained_enabled`     | Boolean | Whether "Prayer Times Explanation" popup has been shown | Indefinite | First visit to Page 2                 | Only shows once per user                             |
+| `popup_update_last_check`           | Number  | Timestamp of last app update check                      | Indefinite | After checking GitHub for new version | Only checks once per 24h (avoids API spam)           |
 
 **UI Cache Lifetime:** Measurement caches are cleared on app restart (session-based). Popup states persist indefinitely unless user manually clears app data.
 
