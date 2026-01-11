@@ -8,7 +8,6 @@ import * as NotificationStore from '@/stores/notifications';
 // Configure notifications to show when app is foregrounded
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
-    shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: true,
     shouldShowBanner: true,
