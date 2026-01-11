@@ -33,7 +33,8 @@ export default function ProgressBar({ type }: Props) {
 
     // Special case: First prayer (Fajr) - use yesterday's last prayer (Isha)
     if (schedule.nextIndex === 0) {
-      const yesterday = new Date(createLondonDate().getTime() - 24 * 60 * 60 * 1000);
+      const yesterday = createLondonDate();
+      yesterday.setDate(yesterday.getDate() - 1);
       const yesterdayData = Database.getPrayerByDate(yesterday);
 
       if (!yesterdayData) return null;
