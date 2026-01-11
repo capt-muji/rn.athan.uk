@@ -7,6 +7,7 @@ import {
   intervalToDuration,
   isFuture,
   isToday,
+  isYesterday,
   subDays,
 } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
@@ -112,6 +113,16 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
 export const isDateTodayOrFuture = (date: string): boolean => {
   const parsedDate = createLondonDate(date);
   return isToday(parsedDate) || isFuture(parsedDate);
+};
+
+/**
+ * Checks if a date is yesterday, today or in the future
+ * @param date Date string in YYYY-MM-DD format
+ * @returns boolean indicating if the date is yesterday, today or in the future
+ */
+export const isDateYesterdayOrFuture = (date: string): boolean => {
+  const parsedDate = createLondonDate(date);
+  return isYesterday(parsedDate) || isToday(parsedDate) || isFuture(parsedDate);
 };
 
 /**

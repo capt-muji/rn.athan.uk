@@ -10,9 +10,10 @@ import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, IScheduleNow, IApiResponse, IApiTimes, ScheduleType } from '@/shared/types';
 
 /**
- * Filters API response data to only include today and future dates
+ * Filters API response data to only include yesterday, today and future dates
+ * Yesterday is included to support progress bar calculation for first prayer (Fajr)
  * @param apiData Raw API response data
- * @returns Filtered API response containing only future dates
+ * @returns Filtered API response containing yesterday and future dates
  */
 export const filterApiData = (apiData: IApiResponse): IApiResponse => {
   const timesFiltered: IApiTimes = {};
@@ -20,7 +21,8 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
   const entries = Object.entries(apiData.times);
 
   entries.forEach(([date, times]) => {
-    if (!TimeUtils.isDateTodayOrFuture(date)) return;
+    // Include yesterday, today, and future dates
+    if (!TimeUtils.isDateYesterdayOrFuture(date)) return;
     timesFiltered[date] = times;
   });
 
