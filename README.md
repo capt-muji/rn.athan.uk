@@ -90,9 +90,6 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ### Immediate Improvements
 
-- [ ] BUG-1: fix this log:
-      WARN [expo-notifications]: `shouldShowAlert` is deprecated. Specify `shouldShowBanner` and / or `shouldShowList` instead.
-
 - [x] BUG-2: Fix double notifications on IOS & Android:
       The app currently send two notifications at the exact same time for each notification enabled.
       We dont know if this happens when the user does not change athan selection (athan audio selection deals with modifying channels etc).
