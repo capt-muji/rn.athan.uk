@@ -2,6 +2,8 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
+import ProgressBar from './ProgressBar';
+
 import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
@@ -11,7 +13,6 @@ import { standardTimerAtom, extraTimerAtom, overlayTimerAtom } from '@/stores/ti
 
 interface Props {
   type: ScheduleType;
-  isOverlay?: boolean;
 }
 
 export default function Timer({ type }: Props) {
@@ -38,6 +39,8 @@ export default function Timer({ type }: Props) {
     <Animated.View style={[styles.container]}>
       <Text style={[styles.text]}>{timer.name} in</Text>
       <Animated.Text style={[styles.timer, animatedStyle]}>{formatTime(timer.timeLeft)}</Animated.Text>
+
+      <ProgressBar type={type} />
     </Animated.View>
   );
 }
@@ -60,5 +63,6 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size + 8,
     textAlign: 'center',
     fontFamily: TEXT.family.medium,
+    marginBottom: 14,
   },
 });
