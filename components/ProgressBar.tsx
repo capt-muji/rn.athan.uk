@@ -19,9 +19,6 @@ export default function ProgressBar({ type }: Props) {
   const { schedule } = useSchedule(type);
   const overlay = useAtomValue(overlayAtom);
 
-  // Hide when overlay is on
-  if (overlay.isOn) return null;
-
   // Get timer from store based on type
   const isStandard = type === ScheduleType.Standard;
   const timerAtom = overlay.isOn ? overlayTimerAtom : isStandard ? standardTimerAtom : extraTimerAtom;
@@ -56,8 +53,7 @@ export default function ProgressBar({ type }: Props) {
     const nextPrayerTimeInSeconds = parseTimeToSeconds(nextPrayer.time);
 
     const timeDiffInSeconds = nextPrayerTimeInSeconds - prevPrayerTimeInSeconds;
-    const totalDuration =
-      timeDiffInSeconds >= 0 ? timeDiffInSeconds : 86400 + (prevPrayerTimeInSeconds - nextPrayerTimeInSeconds);
+    const totalDuration = timeDiffInSeconds >= 0 ? timeDiffInSeconds : 86400 + timeDiffInSeconds;
 
     return Math.max(0, Math.min(100, (timer.timeLeft / totalDuration) * 100));
   }, [schedule, timer.timeLeft, type]);
@@ -87,7 +83,8 @@ export default function ProgressBar({ type }: Props) {
     }
   }, [progress]);
 
-  if (progress === null) return null;
+  // Hide when overlay is on (after all hooks are called)
+  if (overlay.isOn || progress === null) return null;
 
   return (
     <View style={styles.container}>
