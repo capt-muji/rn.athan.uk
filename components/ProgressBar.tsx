@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -92,21 +92,46 @@ export default function ProgressBar({ type }: Props) {
   });
 
   const glowStyle = useAnimatedStyle(() => {
-    // Compact neon glow at last 10%, softer glow otherwise
-    const shadowOpacity = 0.9 + warningValue.value * 0.1; // 0.9 normally, 1.0 at warning
-    const shadowRadius = 15 - warningValue.value * 7; // 15 normally, 8 at warning (more compact)
-    return {
-      shadowOpacity,
-      shadowRadius,
-    };
+    // Platform-specific glow settings
+    const isAndroid = Platform.OS === 'android';
+
+    if (isAndroid) {
+      // Android: use elevation for shadow spread
+      const baseElevation = 15;
+      const warningElevation = 10;
+      const elevation = baseElevation - warningValue.value * (baseElevation - warningElevation);
+
+      return {
+        elevation,
+        shadowOpacity: 0.9,
+      };
+    } else {
+      // iOS: use shadowRadius for spread
+      const shadowOpacity = 0.9 + warningValue.value * 0.1;
+      const shadowRadius = 15 - warningValue.value * 7;
+
+      return {
+        shadowOpacity,
+        shadowRadius,
+      };
+    }
   });
 
   // Extra intense glow layer for warning state only
   const warningGlowStyle = useAnimatedStyle(() => {
-    return {
-      shadowOpacity: warningValue.value, // 0 normally, 1 at warning
-      shadowRadius: 6,
-    };
+    const isAndroid = Platform.OS === 'android';
+
+    if (isAndroid) {
+      return {
+        elevation: warningValue.value * 10,
+        shadowOpacity: warningValue.value * 0.7,
+      };
+    } else {
+      return {
+        shadowOpacity: warningValue.value,
+        shadowRadius: 6,
+      };
+    }
   });
 
   useEffect(() => {
@@ -168,6 +193,5 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 2,
     shadowOffset: { width: 0, height: 0 },
-    elevation: 8,
   },
 });
