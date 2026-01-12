@@ -1,7 +1,13 @@
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  Easing,
+  interpolateColor,
+} from 'react-native-reanimated';
 
 import { useSchedule } from '@/hooks/useSchedule';
 import * as PrayerUtils from '@/shared/prayer';
@@ -59,6 +65,8 @@ export default function ProgressBar({ type }: Props) {
   }, [schedule, timer.timeLeft, type]);
 
   const widthValue = useSharedValue(progress ?? 0);
+  const colorValue = useSharedValue(progress ?? 0);
+  const warningValue = useSharedValue(0);
   const isFirstRender = useRef(true);
   const prevProgress = useRef(progress);
 
@@ -66,18 +74,54 @@ export default function ProgressBar({ type }: Props) {
     width: `${widthValue.value}%`,
   }));
 
+  const colorStyle = useAnimatedStyle(() => {
+    const color = interpolateColor(
+      warningValue.value,
+      [0, 1],
+      ['#d3ff8b', '#d63384'] // green to dark red-pink
+    );
+    return {
+      backgroundColor: color,
+      shadowColor: color,
+    };
+  });
+
+  const glowStyle = useAnimatedStyle(() => {
+    // Compact neon glow at last 10%, softer glow otherwise
+    const shadowOpacity = 0.9 + warningValue.value * 0.1; // 0.9 normally, 1.0 at warning
+    const shadowRadius = 15 - warningValue.value * 7; // 15 normally, 8 at warning (more compact)
+    return {
+      shadowOpacity,
+      shadowRadius,
+    };
+  });
+
+  // Extra intense glow layer for warning state only
+  const warningGlowStyle = useAnimatedStyle(() => {
+    return {
+      shadowOpacity: warningValue.value, // 0 normally, 1 at warning
+      shadowRadius: 6,
+    };
+  });
+
   useEffect(() => {
     if (progress !== null) {
       if (isFirstRender.current) {
         widthValue.value = progress;
+        colorValue.value = progress;
+        warningValue.value = progress <= 10 ? 1 : 0;
         isFirstRender.current = false;
       } else {
         const progressDiff = Math.abs((progress ?? 0) - (prevProgress.current ?? 0));
-        if (progressDiff > 50) {
-          widthValue.value = withTiming(progress, { duration: 950, easing: Easing.bezier(0.33, 0, 0.1, 1) });
-        } else {
-          widthValue.value = withTiming(progress, { duration: 1000, easing: Easing.linear });
-        }
+        const timingConfig = {
+          duration: progressDiff > 50 ? 950 : 1000,
+          easing: progressDiff > 50 ? Easing.bezier(0.33, 0, 0.1, 1) : Easing.linear,
+        };
+        widthValue.value = withTiming(progress, timingConfig);
+        colorValue.value = withTiming(progress, timingConfig);
+
+        // Animate warning state with 500ms transition
+        warningValue.value = withTiming(progress <= 10 ? 1 : 0, { duration: 500, easing: Easing.linear });
       }
       prevProgress.current = progress;
     }
@@ -88,7 +132,12 @@ export default function ProgressBar({ type }: Props) {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.elapsed, animatedStyle]} />
+      {/* Base glow effect */}
+      <Animated.View style={[styles.glow, animatedStyle, colorStyle, glowStyle]} />
+      {/* Extra intense neon glow for warning state */}
+      <Animated.View style={[styles.glow, animatedStyle, colorStyle, warningGlowStyle]} />
+      {/* Main progress bar */}
+      <Animated.View style={[styles.elapsed, animatedStyle, colorStyle]} />
     </View>
   );
 }
@@ -100,11 +149,17 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     alignSelf: 'center',
     backgroundColor: '#dff9ff25',
-    overflow: 'hidden',
   },
   elapsed: {
+    position: 'absolute',
     height: '100%',
     borderRadius: 2,
-    backgroundColor: '#d3ff8b',
+  },
+  glow: {
+    position: 'absolute',
+    height: '100%',
+    borderRadius: 2,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 8,
   },
 });
