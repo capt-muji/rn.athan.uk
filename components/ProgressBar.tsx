@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo, useRef } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -10,6 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useSchedule } from '@/hooks/useSchedule';
+import { ANIMATION } from '@/shared/constants';
 import * as PrayerUtils from '@/shared/prayer';
 import { createLondonDate } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
@@ -67,11 +68,16 @@ export default function ProgressBar({ type }: Props) {
   const widthValue = useSharedValue(progress ?? 0);
   const colorValue = useSharedValue(progress ?? 0);
   const warningValue = useSharedValue(0);
+  const opacityValue = useSharedValue(1);
   const isFirstRender = useRef(true);
   const prevProgress = useRef(progress);
 
   const animatedStyle = useAnimatedStyle(() => ({
     width: `${widthValue.value}%`,
+  }));
+
+  const opacityStyle = useAnimatedStyle(() => ({
+    opacity: opacityValue.value,
   }));
 
   const colorStyle = useAnimatedStyle(() => {
@@ -127,18 +133,22 @@ export default function ProgressBar({ type }: Props) {
     }
   }, [progress]);
 
-  // Hide when overlay is on (after all hooks are called)
-  if (overlay.isOn || progress === null) return null;
+  // Animate opacity when overlay state or progress changes
+  useEffect(() => {
+    const shouldShow = !overlay.isOn && progress !== null;
+    opacityValue.value = withTiming(shouldShow ? 1 : 0, { duration: ANIMATION.duration });
+  }, [overlay.isOn, progress]);
 
+  // Always render container to reserve 3px height, use opacity to hide/show
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, opacityStyle]}>
       {/* Base glow effect */}
       <Animated.View style={[styles.glow, animatedStyle, colorStyle, glowStyle]} />
       {/* Extra intense neon glow for warning state */}
       <Animated.View style={[styles.glow, animatedStyle, colorStyle, warningGlowStyle]} />
       {/* Main progress bar */}
       <Animated.View style={[styles.elapsed, animatedStyle, colorStyle]} />
-    </View>
+    </Animated.View>
   );
 }
 

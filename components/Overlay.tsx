@@ -47,11 +47,11 @@ export default function Overlay() {
   };
 
   const computedStyleTimer: ViewStyle = {
-    top: insets.top + SCREEN.paddingHorizontal,
+    top: insets.top + SCREEN.paddingTop,
   };
 
   const computedStyleDate: ViewStyle = {
-    top: (dateMeasurements?.pageY ?? 0) + (Platform.OS === 'android' ? insets.top : 0) + 10,
+    top: (dateMeasurements?.pageY ?? 0) + (Platform.OS === 'android' ? insets.top : 0),
     left: dateMeasurements?.pageX ?? 0,
     width: dateMeasurements?.width ?? 0,
     height: dateMeasurements?.height ?? 0,
@@ -61,8 +61,7 @@ export default function Overlay() {
     top:
       (listMeasurements?.pageY ?? 0) +
       (Platform.OS === 'android' ? insets.top : 0) +
-      overlay.selectedPrayerIndex * STYLES.prayer.height +
-      10,
+      overlay.selectedPrayerIndex * STYLES.prayer.height,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
     ...(selectedPrayer.isNext && styles.activeBackground),
@@ -72,7 +71,7 @@ export default function Overlay() {
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
       {/* Timer */}
       <View style={[styles.timer, computedStyleTimer]}>
-        <Timer type={overlay.scheduleType} isOverlay />
+        <Timer type={overlay.scheduleType} />
       </View>
       <Pressable style={{ flex: 1 }} onPress={handleClose} />
 

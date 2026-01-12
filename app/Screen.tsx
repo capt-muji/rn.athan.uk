@@ -16,7 +16,7 @@ export default function Screen({ type }: Props) {
   const insets = useSafeAreaInsets();
 
   const computedStyles: ViewStyle = {
-    paddingTop: insets.top + SCREEN.paddingHorizontal,
+    paddingTop: insets.top + SCREEN.paddingTop,
     paddingBottom: insets.bottom,
     maxWidth: 700,
     width: '100%',
