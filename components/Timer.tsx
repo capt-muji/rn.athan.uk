@@ -48,14 +48,14 @@ export default function Timer({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     height: STYLES.timer.height,
-    marginBottom: 40,
+    marginBottom: 50,
     justifyContent: 'center',
     pointerEvents: 'none',
   },
   text: {
     textAlign: 'center',
     fontSize: TEXT.sizeSmall,
-    marginBottom: 5,
+    marginBottom: 10,
     color: COLORS.textSecondary,
   },
   timer: {
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size + 8,
     textAlign: 'center',
     fontFamily: TEXT.family.medium,
-    marginBottom: 14,
+    marginBottom: 16,
   },
 });
