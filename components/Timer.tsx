@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: TEXT.sizeSmall,
-    marginBottom: 10,
+    marginBottom: 6,
     color: COLORS.textSecondary,
   },
   timer: {
