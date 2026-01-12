@@ -10,7 +10,6 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useSchedule } from '@/hooks/useSchedule';
-import { ANIMATION } from '@/shared/constants';
 import * as PrayerUtils from '@/shared/prayer';
 import { createLondonDate } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
@@ -68,7 +67,7 @@ export default function ProgressBar({ type }: Props) {
   const widthValue = useSharedValue(progress ?? 0);
   const colorValue = useSharedValue(progress ?? 0);
   const warningValue = useSharedValue(0);
-  const opacityValue = useSharedValue(1);
+  const opacityValue = useSharedValue(overlay.isOn ? 0 : 1);
   const isFirstRender = useRef(true);
   const prevProgress = useRef(progress);
 
@@ -133,11 +132,10 @@ export default function ProgressBar({ type }: Props) {
     }
   }, [progress]);
 
-  // Animate opacity when overlay state or progress changes
+  // Set opacity instantly to 0 when overlay is on, otherwise 1
   useEffect(() => {
-    const shouldShow = !overlay.isOn && progress !== null;
-    opacityValue.value = withTiming(shouldShow ? 1 : 0, { duration: ANIMATION.duration });
-  }, [overlay.isOn, progress]);
+    opacityValue.value = overlay.isOn ? 0 : 1;
+  }, [overlay.isOn]);
 
   // Always render container to reserve 3px height, use opacity to hide/show
   return (
