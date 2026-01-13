@@ -34,7 +34,7 @@ export default function Layout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#2c1c77' }}>
-      <StatusBar style="light" />
+      <StatusBar style="light" translucent />
       <InitialWidthMeasurement />
       <BottomSheetModalProvider>
         <Slot />
