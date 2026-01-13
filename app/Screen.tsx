@@ -1,4 +1,4 @@
-import { View, ViewStyle } from 'react-native';
+import { Platform, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Day from '@/components/Day';
@@ -17,7 +17,7 @@ export default function Screen({ type }: Props) {
 
   const computedStyles: ViewStyle = {
     paddingTop: insets.top + SCREEN.paddingTop,
-    paddingBottom: insets.bottom,
+    paddingBottom: insets.bottom + (Platform.OS === 'android' ? 15 : 0),
     maxWidth: 700,
     width: '100%',
     alignSelf: 'center',
