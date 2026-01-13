@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -45,7 +45,7 @@ export default function Navigation() {
         <Screen type={ScheduleType.Extra} />
       </PagerView>
 
-      <View style={[styles.dotsContainer, { bottom: bottom + 20 }]}>
+      <View style={[styles.dotsContainer, { bottom: bottom + 20 + (Platform.OS === 'android' ? 15 : 0) }]}>
         <Animated.View style={[styles.dot, dot0Animation.style]} />
         <Animated.View style={[styles.dot, dot1Animation.style]} />
       </View>
