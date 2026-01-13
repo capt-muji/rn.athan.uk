@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import ProgressBar from './ProgressBar';
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: TEXT.sizeSmall,
-    marginBottom: Platform.OS === 'android' ? 3 : 6,
+    marginBottom: 3,
     color: COLORS.textSecondary,
   },
   timer: {
