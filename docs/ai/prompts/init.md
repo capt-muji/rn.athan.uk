@@ -296,12 +296,13 @@ Before submitting code, verify:
 
 ### Specialist Invocation Decision Tree
 
-- **Planning a new feature?** → Architect (creates spec + updates README)
+- **Mapping new repo?** → RepoMapper (discover structure)
+- **Planning new feature?** → Architect (creates spec + updates README)
 - **Implementing a spec?** → Implementer (code + tests + inline docs + consistency check)
 - **Bug with no error message?** → Architect (logic analysis)
 - **Bug with error message?** → Implementer (fix) + TestWriter (repro)
 - **Refactoring code?** → ReviewerQA (first, assess risks) → Implementer (refactor + update docs)
-- **Deploying/migrating?** → DevOpsRelease (updates runbooks)
+- **Deploying/migrating?** → DevOpsRelease (updates runbooks/migrations)
 - **Security concern?** → ReviewerQA (SecurityAudit skill)
 - **Docs out of sync?** → ReviewerQA (audit) + Implementer (fix)
 - **Code review needed?** → ReviewerQA (consistency audit + best practices check + empty file check)
