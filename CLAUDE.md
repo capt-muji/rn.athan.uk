@@ -10,7 +10,7 @@ Please read and follow: `docs/ai/AGENTS.md`
 - Always match existing code patterns (consistency > cleverness)
 - Use `@/` imports, never relative imports
 - Use `logger` from `@/shared/logger`, never `console.log`
-- Clean up empty files/folders before ending session
+- Clean up empty files/folders before ending session.
 
 ## Quick Reference
 
