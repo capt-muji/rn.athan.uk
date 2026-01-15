@@ -17,6 +17,8 @@ The Athan app needs to deliver prayer time notifications reliably on iOS and And
 
 The system needs to schedule notifications for multiple daily prayers (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) plus optional extras (Last Third, Suhoor, Duha, Istijaba), each potentially with custom alert offsets.
 
+**Notification count variability**: The number of notifications per day depends on user settings. With basic settings (~10/day), a 6-day window fits under iOS limits. However, planned features like pre-prayer reminders could double this to ~20/day, requiring a shorter window.
+
 ## Decision
 
 Implement a **6-day rolling window** for notification scheduling with the following behavior:
@@ -112,9 +114,58 @@ The ideal long-term solution is to reliably use the **native background scheduli
 
 This would require either platform improvements to background task reliability, or discovering a more reliable way to use existing background APIs.
 
+## Planned Feature: Reminder Notifications
+
+A planned feature will allow users to receive **pre-prayer reminder notifications** before the actual prayer time. This feature directly impacts the rolling window size.
+
+### Feature Description
+- Users can set reminders for 5, 10, 15, 20, 25, or 30 minutes before each prayer
+- Reminders are configured **per-prayer** (each prayer can have its own setting)
+- Reminder notifications always include sound
+- The reminder is a separate notification from the on-time prayer notification
+
+### Notification Options (with reminders)
+| Option | Notifications per prayer |
+|--------|-------------------------|
+| None | 1 |
+| Silent | 1 |
+| Sound | 1 |
+| Sound + 5min reminder | 2 |
+| Sound + 10min reminder | 2 |
+| Sound + 15min reminder | 2 |
+| Sound + 20min reminder | 2 |
+| Sound + 25min reminder | 2 |
+| Sound + 30min reminder | 2 |
+
+### Impact on Rolling Window
+
+**Notification math:**
+- Without reminders: ~10 notifications/day
+- With all reminders enabled: ~20 notifications/day
+- iOS limit: 64 notifications
+
+**Window size calculation:**
+| Scenario | Per day | 6-day total | 3-day total |
+|----------|---------|-------------|-------------|
+| No reminders | ~10 | 60 ✓ | 30 ✓ |
+| All reminders | ~20 | 120 ✗ | 60 ✓ |
+
+### Required Change
+
+When reminder notifications are implemented, the rolling window must be reduced:
+
+| State | Window | Reason |
+|-------|--------|--------|
+| **Current** | 6 days | ~10 notifications/day × 6 = 60 (under limit) |
+| **With reminders** | 3 days | ~20 notifications/day × 3 = 60 (under limit) |
+
+**Decision:** When reminders ship, reduce `NOTIFICATION_ROLLING_DAYS` from 6 to 3.
+
+**Why fixed 3 days, not dynamic?** A dynamic window (calculated based on actual user settings) was considered but rejected in favor of simplicity. A fixed 3-day window is predictable and easier to reason about.
+
 ## Related Decisions
 
-- None yet
+- ADR-002: English Midnight Day Boundary (notifications respect day boundaries)
 
 ---
 
@@ -123,3 +174,4 @@ This would require either platform improvements to background task reliability, 
 | Date | Author | Change |
 |------|--------|--------|
 | 2026-01-15 | muji | Initial draft |
+| 2026-01-15 | muji | Added Planned Feature: Reminder Notifications section (current: 6 days, future: 3 days) |
