@@ -271,6 +271,7 @@ tsc --noEmit                         # Typecheck project
 ## 11. Memory / Lessons Learned (Append-Only)
 
 - [2026-01-15] Init: Repository initialized with AI agent workflow system
+- [2026-01-15] Notifications: Use 6-day rolling window, not background refresh—both iOS and Android throttle background tasks unreliably (see ai/adr/001-rolling-notification-buffer.md)
 
 ## 12. Change / PR Checklist
 
