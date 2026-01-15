@@ -18,3 +18,11 @@ Create a new ADR (Architecture Decision Record) for a decision I've made.
    - Consequences (positive/negative/neutral)
    - Alternatives with pros/cons/rejection reasons
    - Implementation notes (file references, gotchas)
+
+5. Switch to ReviewerQA:
+   - Audit the ADR for completeness and consistency
+   - Fix any issues found
+
+6. Update Memory:
+   - Add entry to ai/AGENTS.md section 11
+   - Format: `[YYYY-MM-DD] Topic: Summary (see ai/adr/NNN-*.md)`
