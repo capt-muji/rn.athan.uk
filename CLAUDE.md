@@ -1,7 +1,7 @@
 # Claude Code Instructions
 
 This project uses a centralized instruction file.
-Please read and follow: **docs/ai/AGENTS.md**
+Please read and follow: **ai/AGENTS.md**
 
 ## Critical Rules
 
@@ -15,5 +15,5 @@ Please read and follow: **docs/ai/AGENTS.md**
 ## Quick Start
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 ```

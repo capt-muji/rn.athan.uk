@@ -11,7 +11,7 @@ This guide is for **you (the human)**. Copy these prompts into your AI tool to w
 **Always start with this:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 ```
 
 ---
@@ -26,7 +26,7 @@ Read docs/ai/AGENTS.md and begin as Orchestrator.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 I want to add a new feature: [DESCRIBE FEATURE HERE]
 
@@ -37,7 +37,7 @@ Include: requirements, data flow, edge cases, and risks.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 I want to add a new feature: User authentication with OAuth (Google + GitHub)
 
@@ -62,7 +62,7 @@ Start with [specific component, e.g., "the OAuth provider setup"].
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Fix the bug in [FILE PATH] line [LINE NUMBER].
 
@@ -75,7 +75,7 @@ Use Implementer to fix it and TestWriter to create a repro test.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Fix the bug in src/utils/parser.ts line 42.
 
@@ -97,7 +97,7 @@ Use Implementer to fix it and TestWriter to create a repro test.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 The [FEATURE/FLOW] is producing wrong results.
 
@@ -111,7 +111,7 @@ Use Architect to trace the logic and identify the root cause.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 The checkout total calculation is wrong.
 
@@ -132,7 +132,7 @@ Use Architect to trace the logic and identify the root cause.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 I want to refactor [FILE OR MODULE].
 
@@ -144,7 +144,7 @@ Use ReviewerQA to assess risks first, then Implementer to execute.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 I want to refactor src/components/UserProfile.tsx.
 
@@ -155,50 +155,7 @@ Use ReviewerQA to assess risks first, then Implementer to execute.
 
 ---
 
-### 5. Database Migration (Schema Changes)
-
-**When:** Adding/modifying database tables/columns  
-**Agent:** Orchestrator → DevOpsRelease
-
-**Prompt:**
-
-```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
-
-I need to [ADD/MODIFY/REMOVE] database [TABLE/COLUMN].
-
-Details:
-
-    Table: [TABLE NAME]
-
-    Change: [DESCRIBE CHANGE]
-
-    Requirements: [zero-downtime / backward-compatible / etc]
-
-Use DevOpsRelease to create migration, rollback script, and test plan.
-```
-
-**Example:**
-
-```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
-
-I need to add a new column to the users table.
-
-Details:
-
-    Table: users
-
-    Change: Add "subscription_tier" enum column (free/pro/enterprise)
-
-    Requirements: Zero-downtime, default value "free"
-
-Use DevOpsRelease to create migration, rollback script, and test plan.
-```
-
----
-
-### 6. Security Audit
+### 5. Security Audit
 
 **When:** Reviewing code for security issues  
 **Agent:** Orchestrator → ReviewerQA (SecurityAudit skill)
@@ -206,7 +163,7 @@ Use DevOpsRelease to create migration, rollback script, and test plan.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Run a security audit on [FILE OR FOLDER].
 
@@ -228,7 +185,7 @@ Use ReviewerQA with SecurityAudit skill.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Run a security audit on src/api/payment.ts.
 
@@ -249,7 +206,7 @@ Use ReviewerQA with SecurityAudit skill.
 
 ---
 
-### 7. Code Review
+### 6. Code Review
 
 **When:** Reviewing code before merge/commit  
 **Agent:** Orchestrator → ReviewerQA
@@ -257,7 +214,7 @@ Use ReviewerQA with SecurityAudit skill.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Review the code in [FILE OR FOLDER].
 
@@ -279,7 +236,7 @@ Use ReviewerQA for a full audit.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Review the code in src/features/notifications/.
 
@@ -300,7 +257,7 @@ Use ReviewerQA for a full audit.
 
 ---
 
-### 8. Adding Tests
+### 7. Adding Tests
 
 **When:** Code exists but has no/insufficient tests  
 **Agent:** Orchestrator → TestWriter
@@ -308,7 +265,7 @@ Use ReviewerQA for a full audit.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Add tests for [FILE].
 
@@ -322,7 +279,7 @@ Use TestWriter to create comprehensive tests matching our testing conventions.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Add tests for src/utils/validator.ts.
 
@@ -339,58 +296,7 @@ Use TestWriter to create comprehensive tests matching our testing conventions.
 
 ---
 
-### 9. Deployment Planning
-
-**When:** Preparing to deploy to staging/production  
-**Agent:** Orchestrator → DevOpsRelease
-
-**Prompt:**
-
-```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
-
-Create a deployment plan for [FEATURE/SERVICE].
-
-Include:
-
-    Pre-deployment checklist
-
-    Environment variables
-
-    Migration steps
-
-    Health checks
-
-    Rollback procedure
-
-Use DevOpsRelease.
-```
-
-**Example:**
-
-```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
-
-Create a deployment plan for the new WebSocket notification service.
-
-Include:
-
-    Pre-deployment checklist
-
-    Environment variables
-
-    Migration steps
-
-    Health checks
-
-    Rollback procedure
-
-Use DevOpsRelease.
-```
-
----
-
-### 10. Understanding Codebase (New Developer Onboarding)
+### 8. Understanding Codebase (New Developer Onboarding)
 
 **When:** Learning a new/unfamiliar codebase  
 **Agent:** Orchestrator → RepoMapper
@@ -398,7 +304,7 @@ Use DevOpsRelease.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 I'm new to this codebase. Help me understand [AREA/MODULE].
 
@@ -416,7 +322,7 @@ Use RepoMapper to analyze and explain.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 I'm new to this codebase. Help me understand the authentication flow.
 
@@ -433,7 +339,7 @@ Use RepoMapper to analyze and explain.
 
 ---
 
-### 11. Documentation Update
+### 9. Documentation Update
 
 **When:** README or docs are outdated  
 **Agent:** Orchestrator → ReviewerQA + Implementer
@@ -441,7 +347,7 @@ Use RepoMapper to analyze and explain.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Update documentation for [FEATURE/CHANGE].
 
@@ -459,7 +365,7 @@ Use ReviewerQA to audit what's missing, then Implementer to update.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 Update documentation for the new OAuth authentication flow.
 
@@ -476,7 +382,7 @@ Use ReviewerQA to audit what's missing, then Implementer to update.
 
 ---
 
-### 12. Performance Optimization
+### 10. Performance Optimization
 
 **When:** Code is slow, needs profiling  
 **Agent:** Orchestrator → ReviewerQA (PerformanceProfile skill)
@@ -484,7 +390,7 @@ Use ReviewerQA to audit what's missing, then Implementer to update.
 **Prompt:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 The [FEATURE/ENDPOINT] is slow.
 
@@ -502,7 +408,7 @@ Use ReviewerQA with PerformanceProfile skill to identify bottlenecks.
 **Example:**
 
 ```
-Read docs/ai/AGENTS.md and begin as Orchestrator.
+Read ai/AGENTS.md and begin as Orchestrator.
 
 The /api/users endpoint is slow.
 
@@ -518,6 +424,24 @@ Use ReviewerQA with PerformanceProfile skill to identify bottlenecks.
 ```
 
 ---
+
+### 11. Building a Large Feature (Multi-Session Workflow)
+
+**When:** Building complex features that span multiple sessions  
+**Agent:** Orchestrator → Architect → Multiple Implementer/TestWriter cycles
+
+**This workflow allows you to pause/resume without losing context.**
+
+---
+
+#### Step 1: Create Your Feature Description
+
+Create `ai/features/[name]/description.md` using the template:
+
+```bash
+mkdir -p ai/features/oauth-login
+cp ai/features/FEATURE-TEMPLATE.md ai/features/oauth-login/description.md
+```
 
 ## 💡 Tips for Better Results
 
@@ -565,7 +489,7 @@ git push
 
 ### Agent isn't following conventions
 
-Stop. Check docs/ai/AGENTS.md section 4 (Golden Paths) and section 8 (Consistency).
+Stop. Check ai/AGENTS.md section 4 (Golden Paths) and section 8 (Consistency).
 Match the patterns in [reference similar file].
 
 ### Agent is too verbose
@@ -579,7 +503,7 @@ Propose a safe alternative.
 
 ### Not sure which agent to use
 
-Read docs/ai/AGENTS.md section 10 (Decision Tree) and tell me which specialist to use for [task].
+Read ai/AGENTS.md section 10 (Decision Tree) and tell me which specialist to use for [task].
 
 ## 📁 Templates
 
@@ -587,17 +511,28 @@ Templates are available for common documentation needs:
 
 | Template | Location | Purpose |
 |----------|----------|---------|
-| Feature Spec | `docs/ai/specs/TEMPLATE.md` | Technical specifications for new features |
-| ADR | `docs/ai/adr/TEMPLATE.md` | Architecture Decision Records |
-| Runbook | `docs/ai/runbooks/TEMPLATE.md` | Operational procedures |
+| **Feature Spec** | `ai/features/FEATURE-TEMPLATE.md` | Full feature requirements (goals, user stories, technical design) |
+| **ADR** | `ai/adr/TEMPLATE.md` | Architecture Decision Records |
 
 **To use a template:**
-```
-Copy docs/ai/specs/TEMPLATE.md to docs/ai/specs/my-feature.md and fill in the sections.
+```bash
+# For a new feature
+mkdir -p ai/features/my-feature
+cp ai/features/FEATURE-TEMPLATE.md ai/features/my-feature/description.md
+# Fill in description.md with your requirements
+
+# For an ADR
+cp ai/adr/TEMPLATE.md ai/adr/001-my-decision.md
 ```
 
-## 📚 Learn More
+📚 Learn More
 
-- Full agent details: See docs/ai/AGENTS.md section 10
-- Coding conventions: See docs/ai/AGENTS.md section 4 (Golden Paths)
-- Safety rules: See docs/ai/AGENTS.md Safety section (in docs/ai/prompts/init.md)
+    Full agent details: See ai/AGENTS.md section 10
+
+    Coding conventions: See ai/AGENTS.md section 4 (Golden Paths)
+
+    Safety rules: See ai/AGENTS.md Safety section
+
+    Init prompt: See ai/prompts/init.md (for re-initialization)
+
+    Feature workflow prompts: See ai/prompts/feature-*.md (helper prompts)
