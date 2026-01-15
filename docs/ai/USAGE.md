@@ -581,8 +581,23 @@ Propose a safe alternative.
 
 Read docs/ai/AGENTS.md section 10 (Decision Tree) and tell me which specialist to use for [task].
 
+## 📁 Templates
+
+Templates are available for common documentation needs:
+
+| Template | Location | Purpose |
+|----------|----------|---------|
+| Feature Spec | `docs/ai/specs/TEMPLATE.md` | Technical specifications for new features |
+| ADR | `docs/ai/adr/TEMPLATE.md` | Architecture Decision Records |
+| Runbook | `docs/ai/runbooks/TEMPLATE.md` | Operational procedures |
+
+**To use a template:**
+```
+Copy docs/ai/specs/TEMPLATE.md to docs/ai/specs/my-feature.md and fill in the sections.
+```
+
 ## 📚 Learn More
 
 - Full agent details: See docs/ai/AGENTS.md section 10
 - Coding conventions: See docs/ai/AGENTS.md section 4 (Golden Paths)
-- Safety rules: See docs/ai/AGENTS.md Safety section
+- Safety rules: See docs/ai/AGENTS.md Safety section (in docs/ai/prompts/init.md)
