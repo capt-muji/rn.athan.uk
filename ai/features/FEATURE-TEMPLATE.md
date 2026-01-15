@@ -1,8 +1,8 @@
-# Feature Spec: [FEATURE NAME]
+# Feature: [FEATURE NAME]
 
-**Status:** Draft | In Review | Approved | Implemented
-**Author:** [Name]
-**Date:** [YYYY-MM-DD]
+**Status:** Draft | In Review | Approved | In Progress | Complete  
+**Author:** [Your Name]  
+**Date:** [YYYY-MM-DD]  
 **Specialist:** Architect
 
 ---
@@ -25,8 +25,17 @@
 ## User Stories
 
 ### Story 1: [Title]
-**As a** [user type]
-**I want** [action]
+**As a** [user type]  
+**I want** [action]  
+**So that** [benefit]
+
+**Acceptance Criteria:**
+- [ ] Criterion 1
+- [ ] Criterion 2
+
+### Story 2: [Title]
+**As a** [user type]  
+**I want** [action]  
 **So that** [benefit]
 
 **Acceptance Criteria:**
@@ -36,9 +45,8 @@
 ## Technical Design
 
 ### Data Flow
-```
-[Describe data flow: User Action → Component → Store → API → Response]
-```
+
+[Describe data flow: User Action → Component → API → Response]
 
 ### Components Affected
 | Component | Change Type | Description |
@@ -46,9 +54,9 @@
 | `path/to/file.ts` | New/Modified | What changes |
 
 ### State Changes
-- New atoms: [List any new Jotai atoms]
-- Modified atoms: [List modified atoms]
-- Storage keys: [New MMKV keys]
+- New state/atoms: [List new state]
+- Modified state: [List modified state]
+- Storage keys: [New database/storage keys]
 
 ### API Changes
 - Endpoints affected: [List endpoints]
@@ -76,18 +84,20 @@
 ### Integration Tests
 - [ ] Test case 1
 
-### Manual Testing
-- [ ] Step-by-step verification
+### E2E Tests
+- [ ] User flow test
 
 ## Rollout Plan
 
 ### Phase 1: Development
 - [ ] Implement core functionality
 - [ ] Add tests
+- [ ] Add documentation
 
 ### Phase 2: Review
 - [ ] Code review
 - [ ] QA verification
+- [ ] Security audit
 
 ### Phase 3: Release
 - [ ] Deploy to staging

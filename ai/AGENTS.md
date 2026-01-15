@@ -82,7 +82,7 @@
 ├── device/                # Platform-specific code
 ├── mocks/                 # Test fixtures
 ├── assets/                # Icons, images, audio (16 Athan sounds)
-└── docs/ai/               # AI agent documentation
+└── ai/               # AI agent documentation
 ```
 
 **Key Entry Points:**
@@ -150,9 +150,11 @@ import { Prayer } from '@/components/Prayer';
 | Utilities | `shared/` | camelCase.ts |
 | Types | `shared/types.ts` | Centralized |
 | Tests | Co-located | `*.test.ts` |
-| Specs | `docs/ai/specs/` | FEATURE-NAME.md |
-| ADRs | `docs/ai/adr/` | NNN-title.md |
-| Runbooks | `docs/ai/runbooks/` | operation-name.md |
+| **Features** | `ai/features/[name]/description.md` | **User-written requirements** |
+| **Progress** | `ai/features/[name]/progress.md` | **AI-generated task tracker** |
+| **Archive** | `ai/features/archive/[name]/` | **Completed features** |
+| ADRs | `ai/adr/` | NNN-title.md |
+
 
 ## 6. Commands (Copy/Paste Ready)
 
@@ -256,17 +258,15 @@ tsc --noEmit                         # Typecheck project
 | Implementer | Write production code | After spec approved |
 | TestWriter | Create test coverage | After implementation |
 | ReviewerQA | Security/quality review | Before merge |
-| DevOpsRelease | Migrations, deployments | Schema/deploy changes |
 
 ### Decision Tree
 - **New feature?** → Architect (spec) → Implementer → TestWriter
 - **Bug with error?** → Implementer + TestWriter
 - **Bug without error?** → Architect (trace logic)
 - **Refactor?** → ReviewerQA (risks) → Implementer
-- **Schema change?** → DevOpsRelease
 
 ### Skills
-- DatabaseMigration, APIContract, SecurityAudit, PerformanceProfile, DocumentationAudit, ConsistencyAudit, CleanupAudit
+- APIContract, SecurityAudit, PerformanceProfile, DocumentationAudit, ConsistencyAudit, CleanupAudit
 
 ## 11. Memory / Lessons Learned (Append-Only)
 
@@ -289,7 +289,7 @@ tsc --noEmit                         # Typecheck project
 ## 13. Session Lifecycle
 
 ### Session Start
-1. Load this file (docs/ai/AGENTS.md)
+1. Load this file (ai/AGENTS.md)
 2. Initialize session artifact tracker
 3. Acknowledge: "Context loaded. Operating as Orchestrator. Ready."
 4. Ask: "What's the goal for this session?"
