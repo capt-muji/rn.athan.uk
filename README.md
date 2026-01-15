@@ -275,6 +275,57 @@ The app runs **4 concurrent timers** simultaneously, each with a specific respon
 - Resets all counters for new day
 - Re-evaluates notification status (some may have expired)
 
+### Progress Bar
+
+The progress bar provides a real-time visual representation of the countdown timer displayed above it. It shows how much time has elapsed between the previous prayer and the next prayer.
+
+#### Visual Behavior
+
+**Width Animation:**
+
+- The bar's width represents the percentage of time elapsed in the current prayer window
+- 0% width = Just passed previous prayer (100% time remaining)
+- 100% width = About to reach next prayer (0% time remaining)
+- Formula: `progress = (timeElapsed / totalDuration) * 100`
+- Smooth animations with platform-specific easing (950ms for large jumps, 1000ms for normal countdown)
+
+**Color Gradient:**
+
+- Dynamically interpolates from green (`#d3ff8b`) to dark red-pink (`#d63384`) as time elapses
+- Transitions smoothly throughout the prayer window
+- Visual indicator of time urgency
+
+**Glow Effects:**
+
+- **Platform-specific rendering:**
+  - iOS: Uses `shadowRadius` (15px → 8px) and `shadowOpacity` (0.9 → 1.0)
+  - Android: Uses `elevation` (15 → 10) for shadow spread
+- **Warning state** (≤10% time remaining):
+  - Activates intense neon glow effect
+  - Additional glow layer with 500ms fade-in animation
+  - Provides visual urgency as prayer time approaches
+
+**State Management:**
+
+- Automatically hides (opacity: 0) when overlay display is active
+- Container always reserves 3px height to prevent layout shifts
+- Uses Reanimated 4 shared values for high-performance animations
+- Supports both Standard and Extra prayer schedules
+
+#### Edge Cases
+
+**Midnight Transition:**
+
+- When next prayer is Fajr (first of day), calculates time elapsed since yesterday's Isha
+- Fetches previous day's prayer data to ensure accurate progress calculation
+- Handles 24-hour wrap-around seamlessly
+
+**Timer Synchronization:**
+
+- Progress bar syncs with the active timer type (Standard/Extra/Overlay)
+- Recalculates on every timer tick for precise visual feedback
+- Prevents drift by using same time calculation as countdown timer
+
 ### Notification System
 
 #### Overview
