@@ -74,10 +74,10 @@ Implement a **6-day rolling window** for notification scheduling with the follow
 - Prayer times change throughout the year; stale data causes inaccurate notifications
 - Large scheduling operation on startup
 
-**Why Rejected:** iOS 64-notification limit makes this impossible for a multi-prayer app with custom alert offsets.
+**Why Rejected:** Platform notification limits make this impossible for a multi-prayer app with custom alert offsets.
 
 ### Alternative 3: Background Refresh Service (2-day window)
-**Description:** Use a smaller 2-day rolling window combined with iOS background task API to refresh notifications.
+**Description:** Use a smaller 2-day rolling window combined with platform background task APIs to refresh notifications.
 
 **Pros:**
 - Fewer notifications scheduled
