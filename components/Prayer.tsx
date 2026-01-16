@@ -13,7 +13,7 @@ import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
-import { dateAtom } from '@/stores/sync';
+import { getDateAtom } from '@/stores/sync';
 import { refreshUIAtom } from '@/stores/ui';
 
 interface Props {
@@ -24,6 +24,7 @@ interface Props {
 
 export default function Prayer({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
+  const dateAtom = getDateAtom(type);
   const date = useAtomValue(dateAtom);
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);

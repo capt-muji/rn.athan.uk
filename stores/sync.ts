@@ -16,16 +16,31 @@ const store = getDefaultStore();
 
 // --- Atoms ---
 export const syncLoadable = loadable(atom(async () => sync()));
-export const dateAtom = atomWithStorageString('display_date', '');
+export const standardDateAtom = atomWithStorageString('display_date_standard', '');
+export const extraDateAtom = atomWithStorageString('display_date_extra', '');
+
+// --- Helpers ---
+export const getDateAtom = (type: ScheduleType) => (type === ScheduleType.Standard ? standardDateAtom : extraDateAtom);
 
 // --- Actions ---
 export const triggerSyncLoadable = () => store.get(syncLoadable);
 
+// Set the date for a specific schedule (used when advancing to tomorrow)
+export const setScheduleDate = (type: ScheduleType, date: string) => {
+  const dateAtom = getDateAtom(type);
+  store.set(dateAtom, date);
+};
+
 // Update the stored date based on the current schedule's Asr prayer time
 const setDate = () => {
-  const schedule = store.get(ScheduleStore.standardScheduleAtom);
-  const currentDateFromData = schedule.today[PRAYER_INDEX_ASR].date;
-  store.set(dateAtom, currentDateFromData);
+  const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
+  const extraSchedule = store.get(ScheduleStore.extraScheduleAtom);
+
+  const standardDate = standardSchedule.today[PRAYER_INDEX_ASR].date;
+  const extraDate = extraSchedule.today[0].date;
+
+  store.set(standardDateAtom, standardDate);
+  store.set(extraDateAtom, extraDate);
 };
 
 // Check if we need to pre-fetch next year's data

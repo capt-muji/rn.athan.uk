@@ -8,7 +8,7 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, STYLES } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { dateAtom } from '@/stores/sync';
+import { getDateAtom } from '@/stores/sync';
 
 interface Props {
   type: ScheduleType;
@@ -18,6 +18,7 @@ export default function ActiveBackground({ type }: Props) {
   const { schedule, isStandard, isLastPrayerPassed } = useSchedule(type);
 
   // State
+  const dateAtom = getDateAtom(type);
   const date = useAtomValue(dateAtom);
 
   // These derived values will recompute on every render when dependencies change
