@@ -11,6 +11,7 @@
 **What we're building:** Athan.uk - A Muslim prayer times app for London with real-time countdown, offline support, and customizable notifications.
 
 **Core Features:**
+
 - Real-time prayer countdown with sub-millisecond precision
 - 6-day rolling notification buffer with custom Athan sounds
 - Full offline support via MMKV caching
@@ -18,32 +19,34 @@
 - Year-boundary detection and automatic data refresh
 
 **Non-Goals:**
+
 - Multi-city support (London-only for now)
 - User accounts or cloud sync
 - Social features
 
 **Invariants:**
+
 - Prayer times must always be accurate (API is source of truth)
 - App must work fully offline after first sync
 - Notifications must fire on time, even if app is backgrounded
 
 ## 2. Stack & Versions
 
-| Category | Technology | Version |
-|----------|------------|---------|
-| Framework | React Native | 0.81.5 |
-| Platform | Expo | 54.0.31 |
-| UI Library | React | 19.1.0 |
-| Language | TypeScript | 5.9.3 (strict) |
-| Routing | Expo Router | 6.0.21 |
-| State | Jotai | 2.16.1 |
-| Storage | React Native MMKV | 4.1.1 |
-| Animation | React Native Reanimated | 4.1.6 |
-| Audio | Expo Audio | 1.1.1 |
-| Notifications | Expo Notifications | 0.32.16 |
-| Dates | date-fns / date-fns-tz | 4.1.0 / 3.2.0 |
-| Logging | Pino | 9.14.0 |
-| Package Manager | Yarn | 1.x |
+| Category        | Technology              | Version        |
+| --------------- | ----------------------- | -------------- |
+| Framework       | React Native            | 0.81.5         |
+| Platform        | Expo                    | 54.0.31        |
+| UI Library      | React                   | 19.1.0         |
+| Language        | TypeScript              | 5.9.3 (strict) |
+| Routing         | Expo Router             | 6.0.21         |
+| State           | Jotai                   | 2.16.1         |
+| Storage         | React Native MMKV       | 4.1.1          |
+| Animation       | React Native Reanimated | 4.1.6          |
+| Audio           | Expo Audio              | 1.1.1          |
+| Notifications   | Expo Notifications      | 0.32.16        |
+| Dates           | date-fns / date-fns-tz  | 4.1.0 / 3.2.0  |
+| Logging         | Pino                    | 9.14.0         |
+| Package Manager | Yarn                    | 1.x            |
 
 ## 3. Repo Map & Entry Points
 
@@ -86,12 +89,14 @@
 ```
 
 **Key Entry Points:**
+
 - App entry: `expo-router/entry` (auto-generated)
 - Root layout: `app/_layout.tsx` (initializes providers, triggers sync)
 - State entry: `stores/` (Jotai atoms)
 - Database: `stores/database.ts` (MMKV wrapper)
 
 **Key Data Flow:**
+
 ```
 API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV → Display with Reanimated timers → Schedule notifications
 ```
@@ -99,37 +104,44 @@ API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV �
 ## 4. Golden Paths (How We Do X)
 
 ### State Management (Jotai)
+
 - Atoms defined in `stores/*.ts`
 - Use `atomWithStorage` for persisted state
 - Use `createJSONStorage` with MMKV backend
 - Example: `stores/ui.ts`, `stores/timer.ts`
 
 ### Storage (MMKV)
+
 - Use wrapper in `stores/database.ts`
 - Keys: `prayer_YYYY-MM-DD`, `scheduled_notifications_*`, `preference_*`
 - Always use structured keys with prefixes
 
 ### Logging (Pino)
+
 - Import from `shared/logger.ts`
 - Never use `console.log` (ESLint forbids it)
 - Use structured logging: `logger.info({ context }, 'message')`
 
 ### Animation (Reanimated 4)
+
 - Use worklets for performance
 - Example: `hooks/useAnimation.ts`
 - Shared values with `useSharedValue`
 
 ### Components
+
 - Functional components only (no class components)
 - Use hooks for logic extraction
 - Follow Expo Router file-based routing conventions
 
 ### Error Handling
+
 - Use `try/catch` for async operations
 - Display errors via `components/Alert.tsx`
 - Log errors with Pino before displaying
 
 ### Imports
+
 ```typescript
 // 1. External (React, libraries)
 import { useState } from 'react';
@@ -142,23 +154,23 @@ import { Prayer } from '@/components/Prayer';
 
 ## 5. File Types & Locations
 
-| Type | Location | Naming |
-|------|----------|--------|
-| Components | `components/` | PascalCase.tsx |
-| Hooks | `hooks/` | useCamelCase.ts |
-| Stores | `stores/` | camelCase.ts |
-| Utilities | `shared/` | camelCase.ts |
-| Types | `shared/types.ts` | Centralized |
-| Tests | Co-located | `*.test.ts` |
+| Type         | Location                            | Naming                        |
+| ------------ | ----------------------------------- | ----------------------------- |
+| Components   | `components/`                       | PascalCase.tsx                |
+| Hooks        | `hooks/`                            | useCamelCase.ts               |
+| Stores       | `stores/`                           | camelCase.ts                  |
+| Utilities    | `shared/`                           | camelCase.ts                  |
+| Types        | `shared/types.ts`                   | Centralized                   |
+| Tests        | Co-located                          | `*.test.ts`                   |
 | **Features** | `ai/features/[name]/description.md` | **User-written requirements** |
-| **Progress** | `ai/features/[name]/progress.md` | **AI-generated task tracker** |
-| **Archive** | `ai/features/archive/[name]/` | **Completed features** |
-| ADRs | `ai/adr/` | NNN-title.md |
-
+| **Progress** | `ai/features/[name]/progress.md`    | **AI-generated task tracker** |
+| **Archive**  | `ai/features/archive/[name]/`       | **Completed features**        |
+| ADRs         | `ai/adr/`                           | NNN-title.md                  |
 
 ## 6. Commands (Copy/Paste Ready)
 
 ### Development
+
 ```bash
 yarn start              # Start Expo dev server (clears cache)
 yarn ios               # Build and run on iOS simulator
@@ -168,6 +180,7 @@ yarn clean             # Clear cache and node_modules
 ```
 
 ### File-Scoped (Fast)
+
 ```bash
 eslint src/foo.ts                    # Lint single file
 prettier --write src/foo.ts          # Format single file
@@ -175,17 +188,20 @@ tsc --noEmit                         # Typecheck project
 ```
 
 ### Pre-commit (Automatic)
+
 - Husky + lint-staged runs Prettier and ESLint on staged files
 
 ## 7. Boundaries & Permissions (Three-Tier)
 
 ### Always Do
+
 - Read files, list files
 - Run file-scoped lint/test/typecheck
 - Clean up empty files/folders created this session
 - Match existing code patterns
 
 ### Ask First
+
 - Install dependencies
 - Delete non-empty files
 - Modify MMKV schema keys
@@ -193,6 +209,7 @@ tsc --noEmit                         # Typecheck project
 - Modify app.json or eas.json
 
 ### Never Do
+
 - Commit secrets/keys
 - Edit node_modules
 - Remove failing tests
@@ -204,12 +221,14 @@ tsc --noEmit                         # Typecheck project
 ## 8. Consistency & Best Practices
 
 ### Prime Directive: Match Existing Patterns
+
 1. **Read Before Writing**: Examine 2-3 similar files first
 2. **Pattern Matching**: Code must be indistinguishable from existing codebase
 3. **Zero New Patterns**: No new libraries without approval
 4. **Consistency > Cleverness**: Use existing approach even if you know a "better way"
 
 ### React Native / Expo Patterns
+
 - Functional components with hooks
 - Jotai for state (not Redux, not Context for global state)
 - MMKV for storage (not AsyncStorage)
@@ -217,11 +236,13 @@ tsc --noEmit                         # Typecheck project
 - Expo Router for navigation (file-based)
 
 ### TypeScript
+
 - Strict mode enabled
 - Path alias: `@/*` maps to project root
 - Types centralized in `shared/types.ts`
 
 ### Formatting (Prettier)
+
 - Print width: 120
 - Tab width: 2 spaces
 - Single quotes
@@ -241,6 +262,7 @@ tsc --noEmit                         # Typecheck project
 ## 10. Orchestrator + Specialists + Skills
 
 ### Orchestrator Responsibilities
+
 - Decompose work into tasks
 - Route to appropriate specialist
 - Guide user through proper workflow
@@ -252,25 +274,28 @@ tsc --noEmit                         # Typecheck project
 ### Specialist Roles
 
 **CRITICAL: Implementer Workflow**
+
 - NEVER run compile/typecheck commands (tsc, yarn tsc, etc.)
 - After implementation, swap to ReviewerQA to verify code consistency
 - Always ask user to test manually when 100% confident code works
 
-| Specialist | Responsibility | When to Use |
-|------------|---------------|-------------|
-| RepoMapper | Discover codebase structure | New repo, onboarding |
-| Architect | Plan features, draft specs | New feature, complex bug |
-| Implementer | Write production code | After spec approved |
-| TestWriter | Create test coverage | After implementation |
-| ReviewerQA | Security/quality review | Before merge |
+| Specialist  | Responsibility              | When to Use              |
+| ----------- | --------------------------- | ------------------------ |
+| RepoMapper  | Discover codebase structure | New repo, onboarding     |
+| Architect   | Plan features, draft specs  | New feature, complex bug |
+| Implementer | Write production code       | After spec approved      |
+| TestWriter  | Create test coverage        | After implementation     |
+| ReviewerQA  | Security/quality review     | Before merge             |
 
 ### Decision Tree
+
 - **New feature?** → Architect (spec) → Implementer → TestWriter
 - **Bug with error?** → Implementer + TestWriter
 - **Bug without error?** → Architect (trace logic)
 - **Refactor?** → ReviewerQA (risks) → Implementer
 
 ### Skills
+
 - APIContract, SecurityAudit, PerformanceProfile, DocumentationAudit, ConsistencyAudit, CleanupAudit
 
 ## 11. Memory / Lessons Learned (Append-Only)
@@ -284,6 +309,13 @@ tsc --noEmit                         # Typecheck project
 - [2026-01-16] Islamic Day Boundary: IMPLEMENTATION COMPLETE, awaiting manual test. Modified 10 files: stores/sync.ts (split dateAtom), stores/schedule.ts (advanceScheduleToTomorrow), stores/timer.ts (wrap behavior), components/Timer.tsx (removed finished state), Day/ActiveBackground/Alert/Prayer/PrayerTime/List.tsx (schedule-specific date atoms). Next: manual test, then create ADR-003. (see ai/features/islamic-day-boundary/progress.md)
 - [2026-01-16] Environment Config: Centralized ALL environment variables into shared/config.ts. All process.env access now in one file: APP_CONFIG (isDev, env, apiKey, iosAppId, androidPackage) and helpers (isProd, isPreview, isLocal). Updated: shared/logger.ts, api/config.ts, device/updates.ts, stores/sync.ts.
 - [2026-01-16] Development Workflow: NEVER compile/typecheck during implementation—always ask user to test manually. Updated instructions in AGENTS.md specialist section.
+- [2026-01-16] ProgressBar Midnight Bug: Fixed empty progress bar at midnight (00:00-05:00). CRITICAL: NO FALLBACKS, NO DEFENSIVE CODE - data layer ALWAYS provides yesterday data, UI layer trusts the data. Added `yesterday` to ScheduleStore, MANDATORY fetch of previous year on Jan 1, ProgressBar is now clean (no checks, no throws, no fallback). Modified 5 files: shared/types.ts (added yesterday), stores/schedule.ts (buildDailySchedules), components/ProgressBar.tsx (clean pure calculation), stores/sync.ts (Jan 1 MANDATORY fetch), api/client.ts (specificYear param). Awaiting manual test. (see ai/features/progressbar-midnight-fix/progress.md)
+- [2026-01-16] NO FALLBACKS Rule: When data is missing, throw error (fix root cause) - do not approximate or fallback. Fallbacks mask real problems, provide inaccurate data to users, and make debugging impossible. Correct approach: Ensure data layer always has required data, UI layer trusts the data layer. (see ai/features/progressbar-midnight-fix/description.md)
+- [2026-01-16] ProgressBar Bug Fixes: QA review found 2 CRITICAL bugs in initial implementation: (1) sync.ts Jan 1 fetch discarded data without saving to database, (2) schedule.ts advanceScheduleToTomorrow() didn't shift yesterday. Both fixed. Refactoring applied: variable naming consistency (dataToday → todayData), logger prefix consistency (SCHEDULE:), removed circular import in types.ts. Implementation grade: A- (95%). Ready for manual test.
+- [2026-01-16] Code Simplification Refactoring: (1) Consolidated 3 API functions (fetchPreviousYear, fetchCurrentYear, fetchCurrentAndNextYear) into 1 flexible fetchYear() function. Trade-off: lost explicit scenario docs for simpler API surface. (2) Removed deprecated fetchPrayerData function (zero usage). (3) Extracted parseTimeToSeconds to shared/time.ts from ProgressBar.tsx for reusability. (4) Removed error checking in buildDailySchedules (trust data layer always has data). Modified: api/client.ts, stores/sync.ts (3 callers updated), shared/time.ts, components/ProgressBar.tsx, stores/schedule.ts. QA grade: A- (94%) after fixing import ordering. Prioritized simplicity over type safety/explicitness per user request.
+- [2026-01-16] README Update: Documented prayer-based day boundary and ProgressBar scenarios comprehensively. Added 5 ProgressBar scenarios: (1) Normal day operation, (2) After midnight before Fajr using yesterday's data, (3) Prayer-based day boundary for Standard/Extras schedules, (4) January 1st edge case with mandatory previous year fetch, (5) December 31st to January 1st transition. Updated features list, data flow, timer system, and MMKV storage keys (display_date split into display_date_standard/extra). Removed outdated midnight reset references, replaced with Islamic midnight (prayer-based) documentation.
+- [2026-01-16] Midnight Timer Removal: Removed redundant midnight timer that ran every second checking for date changes. The timer called sync() at 00:00 but sync() already checks needsDataUpdate() and only fetches when needed. Other triggers (app launch, resume, schedule advancement) cover all data freshness scenarios. Removed startTimerMidnight(), removed 'midnight' from TimerKey type, updated README timer section from 4 to 3 timers. Slight battery improvement from fewer intervals running.
+- [2026-01-16] Retry Logic Removal: Removed defensive retry logic in advanceScheduleToTomorrow() that called sync() if dayAfterTomorrow data was missing. With prayer-based day boundary, data should always be available (entire year cached). If missing, let it throw - the app's "refresh me" button handles cache issues. Follows NO FALLBACKS rule: fix root cause, don't mask problems.
 
 ## 12. Change / PR Checklist
 
@@ -302,12 +334,14 @@ tsc --noEmit                         # Typecheck project
 ## 13. Session Lifecycle
 
 ### Session Start
+
 1. Load this file (ai/AGENTS.md)
 2. Initialize session artifact tracker
 3. Acknowledge: "Context loaded. Operating as Orchestrator. Ready."
 4. Ask: "What's the goal for this session?"
 
 ### Session End
+
 1. Cleanup: Remove empty files/folders created this session
 2. Summary: What was done, verification steps, what's next
 3. Documentation check: Did we update README if needed?
@@ -328,11 +362,13 @@ tsc --noEmit                         # Typecheck project
 ## 15. Documentation Standards
 
 ### When to Document
+
 - **Always**: Public APIs, exported functions, complex algorithms
 - **Usually**: Internal functions with side effects
 - **Never**: Self-explanatory code, simple getters/setters
 
 ### Comment Quality
+
 ```typescript
 // Good: Explains WHY
 // Safari doesn't support lookbehind regex, using workaround
@@ -344,6 +380,7 @@ for (const user of users) { ... }
 ```
 
 ### README Update Triggers
+
 - Adding user-facing feature
 - Changing installation/setup
 - Modifying environment variables

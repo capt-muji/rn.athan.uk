@@ -2,16 +2,15 @@ import { API_CONFIG } from '@/api/config';
 import { MOCK_DATA_SIMPLE } from '@/mocks/simple';
 import logger, { isProd, isPreview } from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
-import { createLondonDate, getCurrentYear } from '@/shared/time';
 import * as TimeUtils from '@/shared/time';
-import { FetchDataResult, IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
+import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
 
 // Constructs the API URL with required parameters:
 // - format (JSON/XML)
 // - API key
 // - Year
 // - 24-hour format flag
-const buildApiUrl = (year: number = createLondonDate().getFullYear()): string => {
+const buildApiUrl = (year: number = TimeUtils.createLondonDate().getFullYear()): string => {
   const queries = [`format=${API_CONFIG.format}`, `key=${API_CONFIG.key}`, `year=${year}`, '24hours=true'].join('&');
 
   return `${API_CONFIG.endpoint}?${queries}`;
@@ -60,7 +59,7 @@ const transformYearData = async (targetYear: number): Promise<ISingleApiResponse
 
 // High-level function to get processed prayer data for a specific year
 const getYearData = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
-  const targetYear = year || getCurrentYear();
+  const targetYear = year || TimeUtils.getCurrentYear();
 
   try {
     logger.info('API: Fetching prayer times for year', { year: targetYear });
@@ -73,21 +72,11 @@ const getYearData = async (year?: number): Promise<ISingleApiResponseTransformed
   }
 };
 
-// Main API function to fetch prayer data
-// Process:
-// 1. Fetches current year data
-// 2. Optionally fetches next year's data if needed
-// 3. Returns both datasets and current year reference
-export const fetchPrayerData = async (needsNextYear: boolean): Promise<FetchDataResult> => {
-  const currentYear = TimeUtils.getCurrentYear();
-
-  try {
-    const currentYearData = await getYearData(currentYear);
-    const nextYearData = needsNextYear ? await getYearData(currentYear + 1) : null;
-
-    return { currentYearData, nextYearData, currentYear };
-  } catch (error) {
-    logger.error('API: Failed to fetch prayer data', { error });
-    throw error;
-  }
+// Fetches prayer times for a specific year
+export const fetchYear = async (year?: number): Promise<ISingleApiResponseTransformed[]> => {
+  const targetYear = year || TimeUtils.getCurrentYear();
+  logger.info('API: Fetching prayer times for year', { year: targetYear });
+  const data = await getYearData(targetYear);
+  logger.info('API: Prayer times fetched', { year: targetYear });
+  return data;
 };
