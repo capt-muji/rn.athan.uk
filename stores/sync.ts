@@ -52,11 +52,33 @@ const shouldFetchNextYear = (): boolean => {
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
 };
 
+// Check if date is January 1st (needed for ProgressBar yesterday's data)
+const isJanuaryFirst = (date: Date): boolean => {
+  return date.getMonth() === 0 && date.getDate() === 1;
+};
+
 // Initialize or reinitialize the app's core state
 // 1. Sets up both standard and extra prayer schedules
 // 2. Updates the stored date
 // 3. Starts the prayer time monitoring timers
 const initializeAppState = async (date: Date) => {
+  // SCENARIO 1: January 1st - Fetch previous year's Dec 31 data for ProgressBar
+  // This is MANDATORY - ProgressBar needs yesterday's Isha time to calculate progress
+  if (isJanuaryFirst(date)) {
+    const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
+    const prevYearData = Database.getPrayerByDate(prevYearLastDate);
+
+    if (!prevYearData) {
+      logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
+
+      const prevYearData = await Api.fetchYear(date.getFullYear() - 1);
+      Database.saveAllPrayers(prevYearData);
+      Database.markYearAsFetched(date.getFullYear() - 1);
+
+      logger.info('SYNC: Previous year data fetched and saved');
+    }
+  }
+
   ScheduleStore.setSchedule(ScheduleType.Standard, date);
   ScheduleStore.setSchedule(ScheduleType.Extra, date);
 
@@ -93,16 +115,31 @@ const updatePrayerData = async () => {
   Database.cleanup();
 
   try {
-    const { currentYearData, nextYearData, currentYear } = await Api.fetchPrayerData(shouldFetchNextYear());
+    // SCENARIO 3: December - Proactively fetch current year + next year
+    if (shouldFetchNextYear()) {
+      const currentYear = TimeUtils.getCurrentYear();
+      const nextYear = currentYear + 1;
 
-    Database.saveAllPrayers(currentYearData);
-    Database.markYearAsFetched(currentYear);
+      const [currentYearData, nextYearData] = await Promise.all([Api.fetchYear(currentYear), Api.fetchYear(nextYear)]);
 
-    if (nextYearData) {
+      Database.saveAllPrayers(currentYearData);
+      Database.markYearAsFetched(currentYear);
+
       Database.saveAllPrayers(nextYearData);
-      Database.markYearAsFetched(currentYear + 1);
+      Database.markYearAsFetched(nextYear);
+
+      logger.info('SYNC: Data refresh complete (current + next year)', { currentYear, nextYear });
     }
-    logger.info('SYNC: Data refresh complete');
+    // SCENARIO 2: Standard sync - Fetch current year only
+    else {
+      const currentYear = TimeUtils.getCurrentYear();
+      const data = await Api.fetchYear(currentYear);
+
+      Database.saveAllPrayers(data);
+      Database.markYearAsFetched(currentYear);
+
+      logger.info('SYNC: Data refresh complete (current year only)', { year: currentYear });
+    }
   } catch (error) {
     logger.error('SYNC: Failed to update prayer data', { error });
     throw error;
