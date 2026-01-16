@@ -1,10 +1,13 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
+import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { ITransformedPrayer, ScheduleAtom, ScheduleStore, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
+import { overlayAtom } from '@/stores/overlay';
+import * as SyncStore from '@/stores/sync';
 
 const store = getDefaultStore();
 
@@ -76,4 +79,53 @@ export const incrementNextIndex = (type: ScheduleType): void => {
   const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
 
   store.set(scheduleAtom, { ...schedule, nextIndex });
+};
+
+// Advances a schedule to tomorrow after the last prayer passes
+// Implements prayer-based day boundary (Islamic midnight)
+export const advanceScheduleToTomorrow = async (type: ScheduleType): Promise<void> => {
+  const scheduleAtom = getScheduleAtom(type);
+
+  // 1. Close overlay first (prevent stale state)
+  const overlay = store.get(overlayAtom);
+  if (overlay.isOn && overlay.scheduleType === type) {
+    store.set(overlayAtom, { ...overlay, isOn: false });
+  }
+
+  // 2. Fetch new data BEFORE shifting (atomic operation)
+  const schedule = getSchedule(type);
+  const tomorrowDate = schedule.tomorrow[0].date;
+  const dayAfterTomorrow = TimeUtils.createLondonDate(tomorrowDate);
+  dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 1);
+
+  let newTomorrowData = Database.getPrayerByDate(dayAfterTomorrow);
+
+  // 3. Retry on missing data
+  if (!newTomorrowData) {
+    logger.warn('advanceSchedule: Missing day-after-tomorrow, triggering sync');
+    await SyncStore.sync();
+    newTomorrowData = Database.getPrayerByDate(dayAfterTomorrow);
+
+    if (!newTomorrowData) {
+      logger.error('advanceSchedule: Still missing data after sync');
+      return; // Keep current schedule, don't break app
+    }
+  }
+
+  // 4. Only shift AFTER successful fetch
+  const newTomorrow = PrayerUtils.createSchedule(newTomorrowData, type);
+  store.set(scheduleAtom, {
+    ...schedule,
+    today: schedule.tomorrow,
+    tomorrow: newTomorrow,
+    nextIndex: 0,
+  });
+
+  // 5. Update date atom
+  SyncStore.setScheduleDate(type, tomorrowDate);
+
+  logger.info('advanceSchedule: Advanced schedule', {
+    type,
+    newDate: tomorrowDate,
+  });
 };
