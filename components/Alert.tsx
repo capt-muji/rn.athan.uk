@@ -14,7 +14,7 @@ import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
-import { dateAtom } from '@/stores/sync';
+import { getDateAtom } from '@/stores/sync';
 import { refreshUIAtom, showSheet } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
@@ -31,6 +31,7 @@ interface Props {
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
+  const dateAtom = getDateAtom(type);
   const date = useAtomValue(dateAtom);
 
   const Schedule = useSchedule(type);

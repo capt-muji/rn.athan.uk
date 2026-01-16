@@ -4,8 +4,8 @@ import { getDefaultStore } from 'jotai/vanilla';
 import * as TimeUtils from '@/shared/time';
 import { TimerStore, ScheduleType, TimerKey } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
-import { getSchedule, incrementNextIndex } from '@/stores/schedule';
-import { dateAtom, sync } from '@/stores/sync';
+import { getSchedule, incrementNextIndex, advanceScheduleToTomorrow } from '@/stores/schedule';
+import { standardDateAtom, sync } from '@/stores/sync';
 
 const store = getDefaultStore();
 
@@ -50,7 +50,7 @@ const startTimerSchedule = (type: ScheduleType) => {
   store.set(timerAtom, { timeLeft, name });
 
   // 3. Start countdown interval
-  timers[timerKey] = setInterval(() => {
+  timers[timerKey] = setInterval(async () => {
     const currentTime = store.get(timerAtom).timeLeft - 1;
 
     if (currentTime <= 0) {
@@ -58,8 +58,10 @@ const startTimerSchedule = (type: ScheduleType) => {
       incrementNextIndex(type);
 
       const { nextIndex } = getSchedule(type);
-      // 4. Handle midnight transition or update next prayer
-      if (nextIndex === 0) return startTimerMidnight();
+      // 4. Handle prayer-based day transition or update next prayer
+      if (nextIndex === 0) {
+        await advanceScheduleToTomorrow(type);
+      }
       return startTimerSchedule(type);
     }
 
@@ -93,11 +95,11 @@ const startTimerOverlay = () => {
 };
 
 // Starts the midnight transition timer
-// Checks for date changes to trigger sync
+// Checks for date changes to trigger API data sync (freshness only, not UI transition)
 const startTimerMidnight = () => {
   clearTimer('midnight');
 
-  const savedDate = store.get(dateAtom);
+  const savedDate = store.get(standardDateAtom);
 
   timers.midnight = setInterval(() => {
     const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
@@ -110,17 +112,14 @@ const startTimerMidnight = () => {
 };
 
 // Initializes all countdown timers - standard, extra, overlay, midnight
-// Called during midnight transition to start new day countdowns
+// Always starts all timers for continuous countdown display
 const startTimers = () => {
-  const standardSchedule = getSchedule(ScheduleType.Standard);
-  const extraSchedule = getSchedule(ScheduleType.Extra);
+  // Always start both schedule timers - they show tomorrow's countdown if today's finished
+  startTimerSchedule(ScheduleType.Standard);
+  startTimerSchedule(ScheduleType.Extra);
 
-  const isStandardFinished = TimeUtils.isLastPrayerPassed(standardSchedule);
-  const isExtraFinished = TimeUtils.isLastPrayerPassed(extraSchedule);
-
-  if (!isStandardFinished) startTimerSchedule(ScheduleType.Standard);
-  if (!isExtraFinished) startTimerSchedule(ScheduleType.Extra);
-  if (isStandardFinished && isExtraFinished) startTimerMidnight();
+  // Start midnight timer for API data freshness
+  startTimerMidnight();
 
   startTimerOverlay();
 };

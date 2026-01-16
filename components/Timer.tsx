@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import ProgressBar from './ProgressBar';
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function Timer({ type }: Props) {
-  const { isStandard, isLastPrayerPassed } = useSchedule(type);
+  const { isStandard } = useSchedule(type);
 
   const overlay = useAtomValue(overlayAtom);
 
@@ -26,14 +26,6 @@ export default function Timer({ type }: Props) {
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
   }));
-
-  if (!overlay.isOn && isLastPrayerPassed) {
-    return (
-      <View style={[styles.container]}>
-        <Text style={[styles.text]}>All prayers finished</Text>
-      </View>
-    );
-  }
 
   return (
     <Animated.View style={[styles.container]}>
