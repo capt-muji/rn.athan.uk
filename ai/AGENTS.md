@@ -274,6 +274,8 @@ tsc --noEmit                         # Typecheck project
 - [2026-01-15] Notifications: Use 6-day rolling window, not background refresh—both iOS and Android throttle background tasks unreliably (see ai/adr/001-rolling-notification-buffer.md)
 - [2026-01-15] Day Boundary: Use English midnight (00:00) for date reset—user familiarity over Islamic day boundary; known edge cases deferred (see ai/adr/002-english-midnight-day-boundary.md)
 - [2026-01-15] Notifications: Reminder feature will require reducing rolling window from 6 to 3 days (see ai/adr/001-rolling-notification-buffer.md)
+- [2026-01-16] Day Boundary: SUPERSEDING ADR-002—switching to prayer-based day boundary (after Isha for Standard, after Duha/Istijaba for Extras). Timer/countdown always visible, no "All prayers finished" state. Each schedule has independent date atom. (see ai/features/islamic-day-boundary/description.md)
+- [2026-01-16] Planning: Use RepoMapper before ReviewerQA—verify all affected files before auditing plan for risks. Found 14 files vs original 5 in islamic-day-boundary feature.
 
 ## 12. Change / PR Checklist
 
