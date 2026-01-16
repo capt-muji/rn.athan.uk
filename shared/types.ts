@@ -144,6 +144,7 @@ export interface Preferences {
 
 export interface ScheduleStore {
   type: ScheduleType;
+  yesterday: IScheduleNow;
   today: IScheduleNow;
   tomorrow: IScheduleNow;
   nextIndex: number;
@@ -181,7 +182,7 @@ export interface FetchDataResult {
 
 export type ScheduleAtom = typeof standardScheduleAtom;
 
-export type TimerKey = 'standard' | 'extra' | 'overlay' | 'midnight';
+export type TimerKey = 'standard' | 'extra' | 'overlay';
 
 // intefae with valu property
 export interface PrimitiveAtom<T> {

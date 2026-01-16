@@ -10,10 +10,8 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useSchedule } from '@/hooks/useSchedule';
-import * as PrayerUtils from '@/shared/prayer';
-import { createLondonDate } from '@/shared/time';
+import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
 import { overlayAtom } from '@/stores/overlay';
 import { standardTimerAtom, extraTimerAtom, overlayTimerAtom } from '@/stores/timer';
 
@@ -35,28 +33,17 @@ export default function ProgressBar({ type }: Props) {
     let prevPrayer;
 
     // Special case: First prayer (Fajr) - use yesterday's last prayer (Isha)
+    // Yesterday's data is always available - ensured by sync layer (Jan 1 fetch)
     if (schedule.nextIndex === 0) {
-      const yesterday = createLondonDate();
-      yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayData = Database.getPrayerByDate(yesterday);
-
-      if (!yesterdayData) return null;
-
-      const yesterdaySchedule = PrayerUtils.createSchedule(yesterdayData, type);
+      const yesterdaySchedule = schedule.yesterday;
       const lastIndex = Object.keys(yesterdaySchedule).length - 1;
-
       prevPrayer = yesterdaySchedule[lastIndex];
     } else {
       prevPrayer = schedule.today[schedule.nextIndex - 1];
     }
 
-    const parseTimeToSeconds = (timeStr: string): number => {
-      const [hours, minutes] = timeStr.split(':').map(Number);
-      return hours * 3600 + minutes * 60;
-    };
-
-    const prevPrayerTimeInSeconds = parseTimeToSeconds(prevPrayer.time);
-    const nextPrayerTimeInSeconds = parseTimeToSeconds(nextPrayer.time);
+    const prevPrayerTimeInSeconds = TimeUtils.parseTimeToSeconds(prevPrayer.time);
+    const nextPrayerTimeInSeconds = TimeUtils.parseTimeToSeconds(nextPrayer.time);
 
     const timeDiffInSeconds = nextPrayerTimeInSeconds - prevPrayerTimeInSeconds;
     const totalDuration = timeDiffInSeconds >= 0 ? timeDiffInSeconds : 86400 + timeDiffInSeconds;

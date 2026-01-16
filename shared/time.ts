@@ -73,6 +73,16 @@ export const isTimePassed = (time: string): boolean => {
 };
 
 /**
+ * Converts HH:mm time string to total seconds
+ * @param timeStr Time string in HH:mm format
+ * @returns Total seconds since midnight
+ */
+export const parseTimeToSeconds = (timeStr: string): number => {
+  const [hours, minutes] = timeStr.split(':').map(Number);
+  return hours * 3600 + minutes * 60;
+};
+
+/**
  * Converts seconds into human-readable time format
  * @param seconds Time in seconds
  * @returns Formatted time string (e.g., "1h 30m 45s")
