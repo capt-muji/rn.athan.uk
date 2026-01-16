@@ -7,7 +7,7 @@ import Masjid from '@/components/Masjid';
 import { COLORS, SCREEN, TEXT } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { dateAtom } from '@/stores/sync';
+import { getDateAtom } from '@/stores/sync';
 import { getMeasurementsDate, setMeasurementsDate } from '@/stores/ui';
 
 interface Props {
@@ -17,6 +17,7 @@ interface Props {
 export default function Day({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
+  const dateAtom = getDateAtom(type);
   const date = useAtomValue(dateAtom);
   const dateRef = useRef<Animated.Text>(null);
 

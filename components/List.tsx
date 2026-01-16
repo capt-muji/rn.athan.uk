@@ -7,7 +7,7 @@ import Prayer from '@/components/Prayer';
 import { EXTRAS_ENGLISH, SCREEN, TEXT, PRAYERS_ENGLISH } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { dateAtom } from '@/stores/sync';
+import { getDateAtom } from '@/stores/sync';
 import { getMeasurementsList, setMeasurementsList } from '@/stores/ui';
 
 interface Props {
@@ -15,6 +15,7 @@ interface Props {
 }
 
 export default function List({ type }: Props) {
+  const dateAtom = getDateAtom(type);
   useAtomValue(dateAtom); // Make component reactive to date changes
 
   const isStandard = type === ScheduleType.Standard;

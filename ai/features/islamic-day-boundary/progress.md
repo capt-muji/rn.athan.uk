@@ -1,6 +1,6 @@
 # Feature: Islamic Day Boundary
 
-**Status:** 📋 Ready for Implementation
+**Status:** ✅ Implementation Complete - Awaiting Manual Test
 **Created:** 2026-01-16
 **Reviewed:** RepoMapper ✓, ReviewerQA ✓
 
@@ -9,42 +9,42 @@
 ## Tasks
 
 ### Phase 1: Foundation (stores/sync.ts)
-- [ ] Task 1.1: Split `dateAtom` into `standardDateAtom` and `extraDateAtom`
-- [ ] Task 1.2: Add `getDateAtom(type: ScheduleType)` helper function
-- [ ] Task 1.3: Add `setScheduleDate(type: ScheduleType, date: string)` export
-- [ ] Task 1.4: Update `setDate()` to set both atoms from respective schedules
+- [x] Task 1.1: Split `dateAtom` into `standardDateAtom` and `extraDateAtom`
+- [x] Task 1.2: Add `getDateAtom(type: ScheduleType)` helper function
+- [x] Task 1.3: Add `setScheduleDate(type: ScheduleType, date: string)` export
+- [x] Task 1.4: Update `setDate()` to set both atoms from respective schedules
 
 ### Phase 2: Schedule Advancement (stores/schedule.ts)
-- [ ] Task 2.1: Add `advanceScheduleToTomorrow(type: ScheduleType)` async function
-- [ ] Task 2.2: Implement overlay auto-close at start of advancement
-- [ ] Task 2.3: Implement day-after-tomorrow fetch with retry logic
-- [ ] Task 2.4: Implement atomic shift (only after fetch succeeds)
-- [ ] Task 2.5: Call `setScheduleDate()` after successful shift
+- [x] Task 2.1: Add `advanceScheduleToTomorrow(type: ScheduleType)` async function
+- [x] Task 2.2: Implement overlay auto-close at start of advancement
+- [x] Task 2.3: Implement day-after-tomorrow fetch with retry logic
+- [x] Task 2.4: Implement atomic shift (only after fetch succeeds)
+- [x] Task 2.5: Call `setScheduleDate()` after successful shift
 
 ### Phase 3: Timer Integration (stores/timer.ts)
-- [ ] Task 3.1: Update `startTimerSchedule()` to call `advanceScheduleToTomorrow` when `nextIndex === 0`
-- [ ] Task 3.2: Make timer restart async-aware (await advancement before continuing)
-- [ ] Task 3.3: Update `startTimers()` to always start both schedule timers (remove `isLastPrayerPassed` checks)
-- [ ] Task 3.4: Keep `startTimerMidnight()` for API data freshness only
+- [x] Task 3.1: Update `startTimerSchedule()` to call `advanceScheduleToTomorrow` when `nextIndex === 0`
+- [x] Task 3.2: Make timer restart async-aware (await advancement before continuing)
+- [x] Task 3.3: Update `startTimers()` to always start both schedule timers (remove `isLastPrayerPassed` checks)
+- [x] Task 3.4: Keep `startTimerMidnight()` for API data freshness only
 
 ### Phase 4: UI Updates - Critical
-- [ ] Task 4.1: Remove "All prayers finished" conditional from `components/Timer.tsx`
-- [ ] Task 4.2: Update `components/Day.tsx` to use `getDateAtom(type)`
+- [x] Task 4.1: Remove "All prayers finished" conditional from `components/Timer.tsx`
+- [x] Task 4.2: Update `components/Day.tsx` to use `getDateAtom(type)`
 
 ### Phase 4: UI Updates - Animation Components
-- [ ] Task 4.3: Update `components/ActiveBackground.tsx` to use schedule-specific date atom
-- [ ] Task 4.4: Update `components/Alert.tsx` cascade trigger to use schedule-specific date atom
-- [ ] Task 4.5: Update `components/Prayer.tsx` cascade trigger to use schedule-specific date atom
-- [ ] Task 4.6: Update `components/PrayerTime.tsx` cascade trigger to use schedule-specific date atom
-- [ ] Task 4.7: Update `components/List.tsx` to subscribe to schedule-specific date atom
+- [x] Task 4.3: Update `components/ActiveBackground.tsx` to use schedule-specific date atom
+- [x] Task 4.4: Update `components/Alert.tsx` cascade trigger to use schedule-specific date atom
+- [x] Task 4.5: Update `components/Prayer.tsx` cascade trigger to use schedule-specific date atom
+- [x] Task 4.6: Update `components/PrayerTime.tsx` cascade trigger to use schedule-specific date atom
+- [x] Task 4.7: Update `components/List.tsx` to subscribe to schedule-specific date atom
 
 ### Phase 4: UI Updates - Verify Only
-- [ ] Task 4.8: Verify `components/ProgressBar.tsx` works correctly (likely no changes)
-- [ ] Task 4.9: Verify `stores/overlay.ts` behavior (auto-close handled in Phase 2)
+- [x] Task 4.8: Verify `components/ProgressBar.tsx` works correctly (no changes needed)
+- [x] Task 4.9: Verify `stores/overlay.ts` behavior (auto-close handled in Phase 2)
 
 ### Phase 5: Verification
-- [ ] Task 5.1: Run `tsc --noEmit` - fix any type errors
-- [ ] Task 5.2: Run ESLint on modified files
+- [ ] ~~Task 5.1: Run `tsc --noEmit`~~ (user will test manually)
+- [ ] ~~Task 5.2: Run ESLint on modified files~~ (user will test manually)
 - [ ] Task 5.3: Manual test: Standard schedule transition after Isha
 - [ ] Task 5.4: Manual test: Extras schedule transition after Duha
 - [ ] Task 5.5: Manual test: Both schedules show different dates correctly
@@ -55,28 +55,28 @@
 ### Phase 6: Documentation
 - [ ] Task 6.1: Update ADR-002 status to "Superseded"
 - [ ] Task 6.2: Create ADR-003 documenting prayer-based day boundary
-- [ ] Task 6.3: Update AGENTS.md memory section
+- [x] Task 6.3: Update AGENTS.md memory section
 
 ---
 
-## Files to Modify
+## Files Modified
 
 | File | Phase | Status | Changes |
 |------|-------|--------|---------|
-| `stores/sync.ts` | 1 | 🔲 | Split dateAtom, add helpers |
-| `stores/schedule.ts` | 2 | 🔲 | Add advanceScheduleToTomorrow() |
-| `stores/timer.ts` | 3 | 🔲 | Update wrap behavior, async handling |
-| `components/Timer.tsx` | 4 | 🔲 | Remove "All prayers finished" |
-| `components/Day.tsx` | 4 | 🔲 | Use schedule-specific date atom |
-| `components/ActiveBackground.tsx` | 4 | 🔲 | Use schedule-specific date atom |
-| `components/Alert.tsx` | 4 | 🔲 | Update cascade trigger |
-| `components/Prayer.tsx` | 4 | 🔲 | Update cascade trigger |
-| `components/PrayerTime.tsx` | 4 | 🔲 | Update cascade trigger |
-| `components/List.tsx` | 4 | 🔲 | Update reactivity |
-| `components/ProgressBar.tsx` | 4 | 🔲 | Verify only |
-| `stores/overlay.ts` | 4 | 🔲 | Verify only |
-| `shared/notifications.ts` | 5 | 🔲 | Verify only |
-| `stores/notifications.ts` | 5 | 🔲 | Verify only |
+| `stores/sync.ts` | 1 | ✅ | Split dateAtom, add helpers |
+| `stores/schedule.ts` | 2 | ✅ | Add advanceScheduleToTomorrow() |
+| `stores/timer.ts` | 3 | ✅ | Update wrap behavior, async handling |
+| `components/Timer.tsx` | 4 | ✅ | Remove "All prayers finished" |
+| `components/Day.tsx` | 4 | ✅ | Use schedule-specific date atom |
+| `components/ActiveBackground.tsx` | 4 | ✅ | Use schedule-specific date atom |
+| `components/Alert.tsx` | 4 | ✅ | Update cascade trigger |
+| `components/Prayer.tsx` | 4 | ✅ | Update cascade trigger |
+| `components/PrayerTime.tsx` | 4 | ✅ | Update cascade trigger |
+| `components/List.tsx` | 4 | ✅ | Update reactivity |
+| `components/ProgressBar.tsx` | 4 | ✅ | No changes needed |
+| `stores/overlay.ts` | 4 | ✅ | No changes (auto-close in schedule.ts) |
+| `shared/notifications.ts` | 5 | ✅ | No changes needed |
+| `stores/notifications.ts` | 5 | ✅ | No changes needed |
 
 ---
 
