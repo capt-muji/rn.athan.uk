@@ -24,6 +24,7 @@ const createInitialPrayer = (scheduleType: ScheduleType): ITransformedPrayer => 
 
 const createInitialSchedule = (scheduleType: ScheduleType): ScheduleStore => ({
   type: scheduleType,
+  yesterday: { 0: createInitialPrayer(scheduleType) },
   today: { 0: createInitialPrayer(scheduleType) },
   tomorrow: { 0: createInitialPrayer(scheduleType) },
   nextIndex: 0,
@@ -38,18 +39,20 @@ export const extraScheduleAtom = atom<ScheduleStore>(createInitialSchedule(Sched
 
 // Create daily schedules based on provided date and next day
 const buildDailySchedules = (type: ScheduleType, date: Date) => {
-  const nextDate = TimeUtils.createLondonDate(date);
+  const yesterdayDate = TimeUtils.createLondonDate(date);
+  yesterdayDate.setDate(date.getDate() - 1);
 
-  nextDate.setDate(date.getDate() + 1);
+  const todayData = Database.getPrayerByDate(date);
+  const tomorrowDate = TimeUtils.createLondonDate(date);
+  tomorrowDate.setDate(date.getDate() + 1);
+  const tomorrowData = Database.getPrayerByDate(tomorrowDate);
 
-  const dataToday = Database.getPrayerByDate(date);
-  const dataTomorrow = Database.getPrayerByDate(nextDate);
-
-  if (!dataToday || !dataTomorrow) throw new Error('Missing prayer data');
+  const yesterdayData = Database.getPrayerByDate(yesterdayDate);
 
   return {
-    today: PrayerUtils.createSchedule(dataToday, type),
-    tomorrow: PrayerUtils.createSchedule(dataTomorrow, type),
+    yesterday: PrayerUtils.createSchedule(yesterdayData!, type),
+    today: PrayerUtils.createSchedule(todayData!, type),
+    tomorrow: PrayerUtils.createSchedule(tomorrowData!, type),
   };
 };
 
@@ -65,10 +68,10 @@ export const setSchedule = (type: ScheduleType, date: Date): void => {
   const scheduleAtom = getScheduleAtom(type);
   const currentSchedule = store.get(scheduleAtom);
 
-  const { today, tomorrow } = buildDailySchedules(type, date);
+  const { yesterday, today, tomorrow } = buildDailySchedules(type, date);
   const nextIndex = PrayerUtils.findNextPrayerIndex(today);
 
-  store.set(scheduleAtom, { ...currentSchedule, type, today, tomorrow, nextIndex });
+  store.set(scheduleAtom, { ...currentSchedule, type, yesterday, today, tomorrow, nextIndex });
 };
 
 export const incrementNextIndex = (type: ScheduleType): void => {
@@ -93,29 +96,20 @@ export const advanceScheduleToTomorrow = async (type: ScheduleType): Promise<voi
   }
 
   // 2. Fetch new data BEFORE shifting (atomic operation)
+  // Data should always be available - entire year is cached proactively
   const schedule = getSchedule(type);
   const tomorrowDate = schedule.tomorrow[0].date;
   const dayAfterTomorrow = TimeUtils.createLondonDate(tomorrowDate);
   dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 1);
 
-  let newTomorrowData = Database.getPrayerByDate(dayAfterTomorrow);
+  const newTomorrowData = Database.getPrayerByDate(dayAfterTomorrow);
 
-  // 3. Retry on missing data
-  if (!newTomorrowData) {
-    logger.warn('advanceSchedule: Missing day-after-tomorrow, triggering sync');
-    await SyncStore.sync();
-    newTomorrowData = Database.getPrayerByDate(dayAfterTomorrow);
-
-    if (!newTomorrowData) {
-      logger.error('advanceSchedule: Still missing data after sync');
-      return; // Keep current schedule, don't break app
-    }
-  }
-
-  // 4. Only shift AFTER successful fetch
-  const newTomorrow = PrayerUtils.createSchedule(newTomorrowData, type);
+  // 3. Only shift AFTER successful fetch
+  // If data is missing, let it throw - use refresh button to fix cache
+  const newTomorrow = PrayerUtils.createSchedule(newTomorrowData!, type);
   store.set(scheduleAtom, {
     ...schedule,
+    yesterday: schedule.today,
     today: schedule.tomorrow,
     tomorrow: newTomorrow,
     nextIndex: 0,
@@ -124,7 +118,7 @@ export const advanceScheduleToTomorrow = async (type: ScheduleType): Promise<voi
   // 5. Update date atom
   SyncStore.setScheduleDate(type, tomorrowDate);
 
-  logger.info('advanceSchedule: Advanced schedule', {
+  logger.info('SCHEDULE: Advanced schedule', {
     type,
     newDate: tomorrowDate,
   });

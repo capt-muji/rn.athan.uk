@@ -59,7 +59,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 ### Completed Features
 
 - [x] Prayer times display with real-time countdown
-- [x] Midnight reset with animations
+- [x] Prayer-based day boundary with smooth animations (Islamic midnight)
 - [x] Offline support with local data caching
 - [x] Customizable notifications with multiple alert modes
 - [x] Over 10 selectable Athan audio notification options
@@ -206,7 +206,7 @@ The app follows a three-phase lifecycle for prayer time data management:
 - Calculate prayer states: Identify which have passed, which is next, which are upcoming
 - Manage notifications: Apply user's alert preferences per prayer (Off/Silent/Sound)
 - Sync with clock: Timer system counts down to next prayer with microsecond precision
-- Midnight reset: At stroke of midnight, trigger new day initialization via midnight timer
+- Prayer-based day boundary: When final prayer passes (Isha for Standard, Duha/Istijaba for Extras), schedule advances to tomorrow
 - User changes: When user toggles alerts or changes audio, reschedule notifications immediately (protected by concurrent guard)
 
 **3. Year Transition - Automatic Renewal**
@@ -234,16 +234,15 @@ MMKV (Fast encrypted local storage)
 
 ### Timer System
 
-The app runs **4 concurrent timers** simultaneously, each with a specific responsibility:
+The app runs **3 concurrent timers** simultaneously, each with a specific responsibility:
 
 #### Timer Types & Functions
 
-| Timer        | Purpose                                                          | Updates               | Trigger          |
-| ------------ | ---------------------------------------------------------------- | --------------------- | ---------------- |
-| **Standard** | Countdown to next Standard prayer (Fajr/Dhuhr/Asr/Maghrib/Isha)  | Main display          | Prayer queue     |
-| **Extra**    | Countdown to next Extra prayer (Suhoor/Duha/Last Third/Istijaba) | Page 2 display        | Prayer queue     |
-| **Overlay**  | Countdown to user-selected prayer from overlay modal             | Overlay display       | Manual selection |
-| **Midnight** | Watches for day boundary at 00:00                                | Triggers new day sync | 24-hour cycle    |
+| Timer        | Purpose                                                          | Updates         | Trigger          |
+| ------------ | ---------------------------------------------------------------- | --------------- | ---------------- |
+| **Standard** | Countdown to next Standard prayer (Fajr/Dhuhr/Asr/Maghrib/Isha)  | Main display    | Prayer queue     |
+| **Extra**    | Countdown to next Extra prayer (Suhoor/Duha/Last Third/Istijaba) | Page 2 display  | Prayer queue     |
+| **Overlay**  | Countdown to user-selected prayer from overlay modal             | Overlay display | Manual selection |
 
 #### How They Work
 
@@ -255,10 +254,9 @@ The app runs **4 concurrent timers** simultaneously, each with a specific respon
 
 **Independent & Concurrent:**
 
-- All 4 timers run independently without blocking each other
+- All 3 timers run independently without blocking each other
 - Standard & Extra timers can countdown simultaneously to different prayers
 - Overlay timer updates in real-time while user is viewing modal
-- Midnight timer runs silently in background until day boundary
 
 **Automatic State Transitions:**
 
@@ -268,12 +266,26 @@ The app runs **4 concurrent timers** simultaneously, each with a specific respon
   3. Starts new countdown
   4. Triggers notification if enabled
 
-**Midnight Reset Behavior:**
+**Prayer-Based Day Boundary (Islamic Midnight):**
 
-- Midnight timer detects 24-hour boundary
-- Triggers `sync()` to fetch fresh prayer data
-- Resets all counters for new day
-- Re-evaluates notification status (some may have expired)
+Each schedule operates independently with its own day boundary:
+
+- **Standard Schedule**: Advances after Isha passes
+  - Tomorrow's schedule becomes today
+  - New tomorrow fetched from database
+  - Date display updates to tomorrow
+  - Timer immediately shows countdown to Fajr
+
+- **Extras Schedule**: Advances after final Extra prayer passes
+  - After Duha on non-Fridays
+  - After Istijaba on Fridays
+  - Independent from Standard schedule
+  - Can show different date than Standard tab
+
+- **Continuous Countdown**: No "All prayers finished" state
+  - Timer always shows next prayer countdown
+  - ProgressBar always visible
+  - Seamless transition across prayer boundaries
 
 ### Progress Bar
 
@@ -312,19 +324,62 @@ The progress bar provides a real-time visual representation of the countdown tim
 - Uses Reanimated 4 shared values for high-performance animations
 - Supports both Standard and Extra prayer schedules
 
-#### Edge Cases
+#### Progress Bar Scenarios
 
-**Midnight Transition:**
+**Scenario 1: Normal Day Operation (06:00 - 23:59)**
 
-- When next prayer is Fajr (first of day), calculates time elapsed since yesterday's Isha
-- Fetches previous day's prayer data to ensure accurate progress calculation
+- User opens app at any time during the day
+- ProgressBar shows elapsed time from previous prayer to next prayer
+- Example: At 14:00, shows progress from Dhuhr (12:00) to Asr (15:00)
+- Works normally for all prayers throughout the day
+
+**Scenario 2: After Midnight Before Fajr (00:00 - Fajr time)**
+
+- User opens app at 02:00 AM (after midnight, before Fajr)
+- ProgressBar shows elapsed time from **yesterday's Isha** to **today's Fajr**
+- Uses `schedule.yesterday` data (always available, ensured by sync layer)
 - Handles 24-hour wrap-around seamlessly
+- Example: Yesterday's Isha at 20:00 → Today's Fajr at 05:30 → At 02:00, shows ~6h elapsed of 9.5h total window
+
+**Scenario 3: Prayer-Based Day Boundary (After Final Prayer)**
+
+**Standard Schedule (After Isha):**
+
+- Isha passes at 20:30
+- Schedule advances: tomorrow → today, today → yesterday
+- Timer shows countdown to tomorrow's Fajr
+- ProgressBar shows elapsed time from today's Isha (now "yesterday") to tomorrow's Fajr (now "today")
+- Date display updates to tomorrow
+
+**Extras Schedule (After Duha/Istijaba):**
+
+- Duha passes at 07:45 (or Istijaba on Friday)
+- Extras schedule advances independently
+- Can show different date than Standard tab
+- ProgressBar for Extras uses Extras schedule's yesterday data
+
+**Scenario 4: January 1st Edge Case**
+
+- User downloads app fresh on January 1st at 02:00 AM
+- App needs December 31st data for ProgressBar (yesterday's Isha)
+- Sync layer MANDATORILY fetches previous year's data
+- Previous year data saved to database before schedule builds
+- ProgressBar works correctly with Dec 31 Isha → Jan 1 Fajr
+
+**Scenario 5: December 31st to January 1st Transition**
+
+- User uses app on December 31st
+- December proactive fetch already downloaded January 1st data
+- After Isha on Dec 31, schedule advances to Jan 1
+- Yesterday shifts: Dec 30 → Dec 31
+- ProgressBar continues working with Dec 31 Isha → Jan 1 Fajr
 
 **Timer Synchronization:**
 
 - Progress bar syncs with the active timer type (Standard/Extra/Overlay)
 - Recalculates on every timer tick for precise visual feedback
 - Prevents drift by using same time calculation as countdown timer
+- Always uses yesterday's final prayer for post-midnight calculations
 
 ### Notification System
 
@@ -476,11 +531,12 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 
 ### Prayer Data
 
-| Key                 | Type   | Purpose                                                          | Lifetime                         | Set When                        |
-| ------------------- | ------ | ---------------------------------------------------------------- | -------------------------------- | ------------------------------- |
-| `prayer_YYYY-MM-DD` | Object | Daily prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha + extras)    | End of day                       | First launch or year transition |
-| `fetched_years`     | Object | Track which years have been fetched (`{2024: true, 2025: true}`) | Indefinite (prevents re-fetches) | After fetching a year's data    |
-| `display_date`      | String | Currently displayed date (for multi-day view state)              | Session                          | User swipes between dates       |
+| Key                     | Type   | Purpose                                                          | Lifetime                         | Set When                                          |
+| ----------------------- | ------ | ---------------------------------------------------------------- | -------------------------------- | ------------------------------------------------- |
+| `prayer_YYYY-MM-DD`     | Object | Daily prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha + extras)    | End of day                       | First launch or year transition                   |
+| `fetched_years`         | Object | Track which years have been fetched (`{2024: true, 2025: true}`) | Indefinite (prevents re-fetches) | After fetching a year's data                      |
+| `display_date_standard` | String | Currently displayed date for Standard schedule                   | Indefinite                       | When Standard schedule advances after Isha passes |
+| `display_date_extra`    | String | Currently displayed date for Extras schedule                     | Indefinite                       | When Extras schedule advances after Duha/Istijaba |
 
 **Cache Behavior:** Prayer data never expires—persists until device cache clears or app uninstalled. Year transition automatically fetches new year when needed.
 

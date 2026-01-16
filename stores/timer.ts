@@ -5,7 +5,6 @@ import * as TimeUtils from '@/shared/time';
 import { TimerStore, ScheduleType, TimerKey } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { getSchedule, incrementNextIndex, advanceScheduleToTomorrow } from '@/stores/schedule';
-import { standardDateAtom, sync } from '@/stores/sync';
 
 const store = getDefaultStore();
 
@@ -13,7 +12,6 @@ const timers: Record<TimerKey, ReturnType<typeof setInterval> | undefined> = {
   standard: undefined,
   extra: undefined,
   overlay: undefined,
-  midnight: undefined,
 };
 
 // --- Initial values ---
@@ -94,32 +92,12 @@ const startTimerOverlay = () => {
   }, 1000);
 };
 
-// Starts the midnight transition timer
-// Checks for date changes to trigger API data sync (freshness only, not UI transition)
-const startTimerMidnight = () => {
-  clearTimer('midnight');
-
-  const savedDate = store.get(standardDateAtom);
-
-  timers.midnight = setInterval(() => {
-    const currentDate = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
-
-    if (currentDate !== savedDate) {
-      clearTimer('midnight');
-      sync();
-    }
-  }, 1000);
-};
-
-// Initializes all countdown timers - standard, extra, overlay, midnight
+// Initializes all countdown timers - standard, extra, overlay
 // Always starts all timers for continuous countdown display
 const startTimers = () => {
   // Always start both schedule timers - they show tomorrow's countdown if today's finished
   startTimerSchedule(ScheduleType.Standard);
   startTimerSchedule(ScheduleType.Extra);
-
-  // Start midnight timer for API data freshness
-  startTimerMidnight();
 
   startTimerOverlay();
 };
