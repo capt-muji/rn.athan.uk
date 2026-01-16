@@ -251,6 +251,11 @@ tsc --noEmit                         # Typecheck project
 
 ### Specialist Roles
 
+**CRITICAL: Implementer Workflow**
+- NEVER run compile/typecheck commands (tsc, yarn tsc, etc.)
+- After implementation, swap to ReviewerQA to verify code consistency
+- Always ask user to test manually when 100% confident code works
+
 | Specialist | Responsibility | When to Use |
 |------------|---------------|-------------|
 | RepoMapper | Discover codebase structure | New repo, onboarding |
@@ -277,6 +282,8 @@ tsc --noEmit                         # Typecheck project
 - [2026-01-16] Day Boundary: SUPERSEDING ADR-002—switching to prayer-based day boundary (after Isha for Standard, after Duha/Istijaba for Extras). Timer/countdown always visible, no "All prayers finished" state. Each schedule has independent date atom. (see ai/features/islamic-day-boundary/description.md)
 - [2026-01-16] Planning: Use RepoMapper before ReviewerQA—verify all affected files before auditing plan for risks. Found 14 files vs original 5 in islamic-day-boundary feature.
 - [2026-01-16] Islamic Day Boundary: IMPLEMENTATION COMPLETE, awaiting manual test. Modified 10 files: stores/sync.ts (split dateAtom), stores/schedule.ts (advanceScheduleToTomorrow), stores/timer.ts (wrap behavior), components/Timer.tsx (removed finished state), Day/ActiveBackground/Alert/Prayer/PrayerTime/List.tsx (schedule-specific date atoms). Next: manual test, then create ADR-003. (see ai/features/islamic-day-boundary/progress.md)
+- [2026-01-16] Environment Config: Centralized ALL environment variables into shared/config.ts. All process.env access now in one file: APP_CONFIG (isDev, env, apiKey, iosAppId, androidPackage) and helpers (isProd, isPreview, isLocal). Updated: shared/logger.ts, api/config.ts, device/updates.ts, stores/sync.ts.
+- [2026-01-16] Development Workflow: NEVER compile/typecheck during implementation—always ask user to test manually. Updated instructions in AGENTS.md specialist section.
 
 ## 12. Change / PR Checklist
 
