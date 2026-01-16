@@ -3,6 +3,7 @@ import { loadable } from 'jotai/utils';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Api from '@/api/client';
+import { APP_CONFIG } from '@/shared/config';
 import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
@@ -66,9 +67,12 @@ const initializeAppState = async (date: Date) => {
 
 // Determines if the app needs to fetch fresh prayer time data
 // Returns true if:
-// 1. Schedule is empty (no data for today)
-// 2. It's December and next year's data needs fetching
+// 1. Dev mode is enabled (EXPO_PUBLIC_DEV_MODE=true)
+// 2. Schedule is empty (no data for today)
+// 3. It's December and next year's data needs fetching
 const needsDataUpdate = (): boolean => {
+  if (APP_CONFIG.isDev) return true;
+
   const now = TimeUtils.createLondonDate();
   const data = Database.getPrayerByDate(now);
 

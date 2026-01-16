@@ -2,6 +2,7 @@ import Constants from 'expo-constants';
 import { Platform, Linking } from 'react-native';
 
 import type { default as Releases } from '@/releases.json';
+import { APP_CONFIG } from '@/shared/config';
 import logger from '@/shared/logger';
 import { setPopupUpdateLastCheck, getPopupUpdateLastCheck } from '@/stores/ui';
 
@@ -9,12 +10,12 @@ const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/mugtaba-subahi/rn.atha
 const IS_IOS = Platform.OS === 'ios';
 
 // Use native URI schemes instead of web URLs
-const APP_STORE_URL = `itms-apps://apps.apple.com/app/id${process.env.EXPO_PUBLIC_IOS_APP_ID}`;
-const PLAY_STORE_URL = `market://details?id=${process.env.EXPO_PUBLIC_ANDROID_PACKAGE}`;
+const APP_STORE_URL = `itms-apps://apps.apple.com/app/id${APP_CONFIG.iosAppId}`;
+const PLAY_STORE_URL = `market://details?id=${APP_CONFIG.androidPackage}`;
 
 // Fallback URLs in case the native URLs fail
-const APP_STORE_FALLBACK_URL = `https://apps.apple.com/app/id${process.env.EXPO_PUBLIC_IOS_APP_ID}`;
-const PLAY_STORE_FALLBACK_URL = `https://play.google.com/store/apps/details?id=${process.env.EXPO_PUBLIC_ANDROID_PACKAGE}`;
+const APP_STORE_FALLBACK_URL = `https://apps.apple.com/app/id${APP_CONFIG.iosAppId}`;
+const PLAY_STORE_FALLBACK_URL = `https://play.google.com/store/apps/details?id=${APP_CONFIG.androidPackage}`;
 
 /**
  * Compares two semantic version strings and determines if the second version is higher than the first.

@@ -1,7 +1,6 @@
 import pino from 'pino';
 
-export const isProd = () => process.env.EXPO_PUBLIC_ENV === 'prod';
-export const isPreview = () => process.env.EXPO_PUBLIC_ENV === 'preview';
+import { isProd, isPreview } from '@/shared/config';
 
 const pinoLogger = pino({
   enabled: !isProd() && !isPreview(),
@@ -64,3 +63,4 @@ const logger = {
 };
 
 export default logger;
+export { isProd, isPreview };
