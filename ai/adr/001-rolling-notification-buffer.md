@@ -1,6 +1,6 @@
 # ADR-001: Rolling Window Notification Buffer
 
-**Status:** Accepted
+**Status:** Superseded (reduced to 3 days on 2026-01-17)
 **Date:** 2026-01-15
 **Decision Makers:** muji
 
@@ -21,9 +21,9 @@ The system needs to schedule notifications for multiple daily prayers (Fajr, Sun
 
 ## Decision
 
-Implement a **6-day rolling window** for notification scheduling with the following behavior:
+Implement a **3-day rolling window** for notification scheduling with the following behavior:
 
-1. **Window size**: Schedule notifications for the next 6 days (`NOTIFICATION_ROLLING_DAYS = 6`)
+1. **Window size**: Schedule notifications for the next 3 days (`NOTIFICATION_ROLLING_DAYS = 3`)
 2. **Refresh triggers**:
    - When the app is opened (for users who close the app)
    - When the app is brought to foreground (for users who never close the app)
@@ -40,9 +40,8 @@ Implement a **6-day rolling window** for notification scheduling with the follow
 - Simple mental model: "notifications always work if you open the app occasionally"
 
 ### Negative
-- Higher notification count scheduled (6 days × multiple prayers × potential custom offsets)
-- Approaches the iOS 64-notification limit with many prayers enabled
-- Users who don't open the app for 6+ days will miss notifications
+- Higher notification count scheduled (3 days × multiple prayers × potential custom offsets)
+- Users who don't open the app for 3+ days will miss notifications
 
 ### Neutral
 - Requires debouncing on settings changes to avoid excessive re-scheduling
@@ -152,14 +151,17 @@ A planned feature will allow users to receive **pre-prayer reminder notification
 
 ### Required Change
 
-When reminder notifications are implemented, the rolling window must be reduced:
+**Status:** ✅ IMPLEMENTED (2026-01-17)
+
+The rolling window has been reduced to improve app responsiveness:
 
 | State | Window | Reason |
 |-------|--------|--------|
-| **Current** | 6 days | ~10 notifications/day × 6 = 60 (under limit) |
+| **Previous** | 6 days | ~10 notifications/day × 6 = 60 (under limit) |
+| **Current** | 3 days | ~10 notifications/day × 3 = 30 (better headroom, improved responsiveness) |
 | **With reminders** | 3 days | ~20 notifications/day × 3 = 60 (under limit) |
 
-**Decision:** When reminders ship, reduce `NOTIFICATION_ROLLING_DAYS` from 6 to 3.
+**Decision:** Reduced `NOTIFICATION_ROLLING_DAYS` from 6 to 3 to improve app responsiveness and provide headroom for future reminder feature.
 
 **Why fixed 3 days, not dynamic?** A dynamic window (calculated based on actual user settings) was considered but rejected in favor of simplicity. A fixed 3-day window is predictable and easier to reason about.
 
@@ -175,3 +177,4 @@ When reminder notifications are implemented, the rolling window must be reduced:
 |------|--------|--------|
 | 2026-01-15 | muji | Initial draft |
 | 2026-01-15 | muji | Added Planned Feature: Reminder Notifications section (current: 6 days, future: 3 days) |
+| 2026-01-17 | muji | IMPLEMENTED: Reduced NOTIFICATION_ROLLING_DAYS from 6 to 3 to improve app responsiveness |

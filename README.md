@@ -134,7 +134,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
   - **Silent**: Banner only (no sound)
   - **Sound**: Athan audio + vibration + notification banner
 - 📢 **16 Selectable Athan Sounds**: Choose from multiple Islamic call-to-prayer audio options
-- 📅 **Smart Notification Buffer**: 6-day rolling schedule that auto-refreshes every 24 hours
+- 📅 **Smart Notification Buffer**: 3-day rolling schedule that auto-refreshes every 24 hours
 - 🔒 **Dual Mute Controls**: Separately enable/disable Standard (5 prayers) and Extra (5 prayers) schedules
 - 🛡️ **Duplicate Prevention**: Concurrent scheduling protection prevents double notifications even with rapid user interactions
 
@@ -393,11 +393,11 @@ The progress bar provides a real-time visual representation of the countdown tim
 
 #### Overview
 
-The notification system maintains a **6-day rolling buffer** of scheduled notifications that refreshes every 24 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
+The notification system maintains a **3-day rolling buffer** of scheduled notifications that refreshes every 24 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
 
 **Key Features:**
 
-- 6 days of notifications scheduled ahead for each enabled prayer
+- 3 days of notifications scheduled ahead for each enabled prayer
 - Concurrent scheduling protection with global `isScheduling` guard
 - Maintains consistency even when app is closed or backgrounded
 - Persists through app restarts and offline usage
@@ -433,7 +433,7 @@ Notifications are rescheduled in the following scenarios:
 - If criteria not met, logs skip and returns early
 - When rescheduling happens:
   1. Cancels ALL existing notifications (global + per-prayer)
-  2. Reschedules 6 days ahead for all enabled prayers
+  2. Reschedules 3 days ahead for all enabled prayers
   3. Updates `last_notification_schedule_check` timestamp
 
 #### Concurrent Scheduling Protection
@@ -455,7 +455,7 @@ All 5 entry points are protected by a single global `isScheduling` flag:
 
 #### Constants
 
-- `NOTIFICATION_ROLLING_DAYS = 6`: How many days ahead to schedule
+- `NOTIFICATION_ROLLING_DAYS = 3`: How many days ahead to schedule
 - `NOTIFICATION_REFRESH_HOURS = 24`: How often to refresh the rolling buffer
 
 ## 🚀 Development
