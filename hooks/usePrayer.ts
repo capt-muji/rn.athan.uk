@@ -12,7 +12,9 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   const todayPrayer = schedule.today[index];
   const tomorrowPrayer = schedule.tomorrow[index];
 
-  const isPassed = TimeUtils.isTimePassed(todayPrayer.time);
+  // Only mark as passed if it's actually today's prayer AND the time has passed
+  const today = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
+  const isPassed = todayPrayer.date === today && TimeUtils.isTimePassed(todayPrayer.time);
   const isNext = index === schedule.nextIndex;
 
   // Use tomorrow's prayer if the current prayer is passed and shown in overlay
