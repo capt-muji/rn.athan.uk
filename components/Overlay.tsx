@@ -86,7 +86,7 @@ export default function Overlay() {
       (Platform.OS === 'android' ? insets.top : 0) +
       overlay.selectedPrayerIndex * STYLES.prayer.height +
       STYLES.prayer.height +
-      8,
+      25,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
   };
