@@ -65,8 +65,6 @@ export default function Overlay() {
   const computedStyleDate: ViewStyle = {
     top: (dateMeasurements?.pageY ?? 0) + (Platform.OS === 'android' ? insets.top : 0),
     left: dateMeasurements?.pageX ?? 0,
-    width: dateMeasurements?.width ?? 0,
-    height: dateMeasurements?.height ?? 0,
   };
 
   const computedStylePrayer: ViewStyle = {
@@ -86,7 +84,7 @@ export default function Overlay() {
       (Platform.OS === 'android' ? insets.top : 0) +
       overlay.selectedPrayerIndex * STYLES.prayer.height +
       STYLES.prayer.height +
-      25,
+      8,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
   };

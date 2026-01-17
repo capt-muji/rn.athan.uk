@@ -36,16 +36,15 @@ export default function PrayerExplanation({
   style,
 }: PrayerExplanationProps) {
   return (
-    <>
-      {/* Arrow pointing up - floating above the box */}
-      <View style={[styles.arrow, style]}>
-        <Svg width={15} height={15} viewBox="0 0 330.002 330.002">
-          <Path fill="#a5b4fc" d={ICON_PATHS[AlertIcon.ARROW_UP]} />
-        </Svg>
+    <View style={[styles.container, style]}>
+      {/* Triangle arrow pointing up - with border effect */}
+      <View style={styles.arrowContainer}>
+        <View style={styles.arrowBorder} />
+        <View style={styles.arrowFill} />
       </View>
 
       {/* Info box */}
-      <View style={[styles.infoBox, style]}>
+      <View style={styles.infoBox}>
         {/* Header with icon and title */}
         <View style={styles.infoHeader}>
           <Svg width={20} height={20} viewBox="0 0 128 128">
@@ -60,24 +59,56 @@ export default function PrayerExplanation({
         {/* Arabic explanation */}
         <Text style={styles.infoExplanationArabic}>{toArabicNumbers(explanationArabic)}</Text>
       </View>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  arrow: {
+  container: {
     position: 'absolute',
     alignItems: 'center',
-    zIndex: 1,
-    marginTop: -20,
+  },
+  arrowContainer: {
+    alignItems: 'center',
+    marginBottom: -1,
+  },
+  arrowBorder: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderLeftWidth: 11,
+    borderRightWidth: 11,
+    borderBottomWidth: 11,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: '#312e81',
+  },
+  arrowFill: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderLeftWidth: 10,
+    borderRightWidth: 10,
+    borderBottomWidth: 10,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: '#1e1b4b',
+    position: 'absolute',
+    top: 1,
   },
   infoBox: {
-    position: 'absolute',
     backgroundColor: '#1e1b4b',
     borderRadius: 12,
-    borderWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    borderTopWidth: 0,
     borderColor: '#312e81',
-    padding: 18,
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+    minWidth: 300,
   },
   infoHeader: {
     flexDirection: 'row',
