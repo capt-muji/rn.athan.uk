@@ -144,6 +144,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 🔄 **Automatic Yearly Refresh**: Detects year transition and fetches next year's data automatically
 - 📱 **Full Offline Support**: Works completely offline after initial data sync
 - 🎯 **Precise Synchronization**: Countdown timers sync with system clock to eliminate drift
+- ⬆️ **Smart App Upgrades**: Detects version changes and clears stale cache while preserving user preferences (notification settings, Athan sound, mute states)
 
 ### Performance & Reliability
 
@@ -548,8 +549,11 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 | `fetched_years`         | Object | Track which years have been fetched (`{2024: true, 2025: true}`) | Indefinite (prevents re-fetches) | After fetching a year's data                      |
 | `display_date_standard` | String | Currently displayed date for Standard schedule                   | Indefinite                       | When Standard schedule advances after Isha passes |
 | `display_date_extra`    | String | Currently displayed date for Extras schedule                     | Indefinite                       | When Extras schedule advances after Duha/Istijaba |
+| `app_installed_version` | String | Current app version for upgrade detection (e.g. "1.0.34")        | Indefinite                       | After every app launch (updated on upgrade)       |
 
 **Cache Behavior:** Prayer data never expires—persists until device cache clears or app uninstalled. Year transition automatically fetches new year when needed.
+
+**App Upgrades:** When the app version increases (e.g., 1.0.33 → 1.0.34), the upgrade handler automatically clears potentially incompatible cache data (prayer times, notifications, UI measurements) while preserving user preferences (alert settings, sound selection, mute states). Downgrades do not trigger cache clearing to protect user data.
 
 ### Notifications
 
