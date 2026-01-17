@@ -12,6 +12,7 @@ import Timer from '@/components/Timer';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
+import { formatDateLong } from '@/shared/time';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { measurementsListAtom, measurementsDateAtom } from '@/stores/ui';
 
@@ -77,7 +78,7 @@ export default function Overlay() {
 
       {/* Date */}
       <Reanimated.Text style={[styles.date, computedStyleDate as object, dateOpacity.style]}>
-        {selectedPrayer.isPassed ? 'Tomorrow' : 'Today'}
+        {formatDateLong(selectedPrayer.date)}
       </Reanimated.Text>
 
       {/* Prayer overlay */}
