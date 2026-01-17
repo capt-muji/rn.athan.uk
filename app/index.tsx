@@ -4,7 +4,6 @@ import { ActivityIndicator, StyleSheet, View, Platform } from 'react-native';
 
 import Navigation from '@/app/Navigation';
 import Error from '@/components/Error';
-import ModalTimesExplained from '@/components/ModalTimesExplained';
 import ModalTips from '@/components/ModalTips';
 import ModalUpdate from '@/components/ModalUpdate';
 import Overlay from '@/components/Overlay';
@@ -18,8 +17,6 @@ import {
   setPopupTipAthanEnabled,
   popupUpdateEnabledAtom,
   setPopupUpdateEnabled,
-  popupTimesExplainedAtom,
-  setPopupTimesExplained,
 } from '@/stores/ui';
 
 export default function Index() {
@@ -27,7 +24,6 @@ export default function Index() {
   const { state } = useAtomValue(syncLoadable);
   const modalTipEnabled = useAtomValue(popupTipAthanEnabledAtom);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
-  const modalTimesExplained = useAtomValue(popupTimesExplainedAtom);
 
   useEffect(() => {
     // Initialize notifications and create channel on first load
@@ -54,10 +50,6 @@ export default function Index() {
     setPopupUpdateEnabled(false);
   };
 
-  const handleCloseTimesExplained = () => {
-    setPopupTimesExplained(2);
-  };
-
   if (state === 'loading') {
     return (
       <View style={styles.loadingContainer}>
@@ -71,7 +63,6 @@ export default function Index() {
     <>
       <ModalUpdate visible={updateAvailable} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
       <ModalTips visible={modalTipEnabled} onClose={handleCloseTip} />
-      <ModalTimesExplained visible={modalTimesExplained === 1} onClose={handleCloseTimesExplained} />
       <Overlay />
       <Navigation />
     </>

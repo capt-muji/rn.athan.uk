@@ -8,11 +8,23 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
+import PrayerExplanation from '@/components/PrayerExplanation';
 import Timer from '@/components/Timer';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
-import { OVERLAY, ANIMATION, SCREEN, STYLES, COLORS, TEXT } from '@/shared/constants';
+import {
+  OVERLAY,
+  ANIMATION,
+  SCREEN,
+  STYLES,
+  COLORS,
+  TEXT,
+  EXTRAS_ENGLISH,
+  EXTRAS_EXPLANATIONS,
+  EXTRAS_EXPLANATIONS_ARABIC,
+} from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
+import { ScheduleType } from '@/shared/types';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { measurementsListAtom, measurementsDateAtom } from '@/stores/ui';
 
@@ -29,7 +41,6 @@ export default function Overlay() {
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
     toggleOverlay();
   };
 
@@ -68,6 +79,23 @@ export default function Overlay() {
     ...(selectedPrayer.isNext && styles.activeBackground),
   };
 
+  // Info box positioned below prayer row
+  const computedStyleInfoBox: ViewStyle = {
+    top:
+      (listMeasurements?.pageY ?? 0) +
+      (Platform.OS === 'android' ? insets.top : 0) +
+      overlay.selectedPrayerIndex * STYLES.prayer.height +
+      STYLES.prayer.height +
+      8,
+    left: listMeasurements?.pageX ?? 0,
+    width: listMeasurements?.width ?? 0,
+  };
+
+  const isExtra = overlay.scheduleType === ScheduleType.Extra;
+  const prayerName = isExtra ? EXTRAS_ENGLISH[overlay.selectedPrayerIndex] : null;
+  const explanation = isExtra ? EXTRAS_EXPLANATIONS[overlay.selectedPrayerIndex] : null;
+  const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[overlay.selectedPrayerIndex] : null;
+
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
       {/* Timer */}
@@ -85,6 +113,16 @@ export default function Overlay() {
       <View style={[styles.prayer, computedStylePrayer]}>
         <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} isOverlay />
       </View>
+
+      {/* Prayer explanation box */}
+      {isExtra && prayerName && explanation && explanationArabic && (
+        <PrayerExplanation
+          prayerName={prayerName}
+          explanation={explanation}
+          explanationArabic={explanationArabic}
+          style={computedStyleInfoBox}
+        />
+      )}
 
       {/* Gradient background */}
       <LinearGradient
