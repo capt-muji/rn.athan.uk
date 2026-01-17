@@ -47,7 +47,7 @@ export default function PrayerExplanation({
       <View style={styles.infoBox}>
         {/* Header with icon and title */}
         <View style={styles.infoHeader}>
-          <Svg width={20} height={20} viewBox="0 0 128 128">
+          <Svg width={17} height={17} viewBox="0 0 128 128">
             <Path fill="#a5b4fc" d={ICON_PATHS[AlertIcon.INFO]} />
           </Svg>
           <Text style={styles.infoTitle}>{prayerName}</Text>
