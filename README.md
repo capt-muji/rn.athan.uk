@@ -65,7 +65,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Over 10 selectable Athan audio notification options
 - [x] View tomorrow's prayer times
 - [x] Automatic yearly data refresh
-- [x] Multipage with special times (Third of night, Duha, Suhoor, Istijaba)
+- [x] Multipage with special times (Midnight, Third of night, Duha, Suhoor, Istijaba)
 - [x] Large overlay font overlay for visually impaired
 - [x] Fix UI timer drift when app in background
 - [x] Add a "Tips" popup on first ever open
@@ -121,7 +121,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 
 ### Display & User Interface
 
-- 📅 **Daily Prayer Times**: View all 5 standard prayers (Fajr, Dhuhr, Asr, Maghrib, Isha) plus 4 special prayers
+- 📅 **Daily Prayer Times**: View all 5 standard prayers (Fajr, Dhuhr, Asr, Maghrib, Isha) plus 5 special prayers
 - ⏰ **Real-time Countdown**: Live timer showing exact time remaining until next prayer
 - 🔄 **Tomorrow's Prayer Times**: Swipe between today and tomorrow's schedule with PagerView
 - 🔍 **Large Overlay Font**: Accessible mode for visually impaired users with jumbo text display
@@ -135,7 +135,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
   - **Sound**: Athan audio + vibration + notification banner
 - 📢 **16 Selectable Athan Sounds**: Choose from multiple Islamic call-to-prayer audio options
 - 📅 **Smart Notification Buffer**: 6-day rolling schedule that auto-refreshes every 24 hours
-- 🔒 **Dual Mute Controls**: Separately enable/disable Standard (5 prayers) and Extra (4 prayers) schedules
+- 🔒 **Dual Mute Controls**: Separately enable/disable Standard (5 prayers) and Extra (5 prayers) schedules
 - 🛡️ **Duplicate Prevention**: Concurrent scheduling protection prevents double notifications even with rapid user interactions
 
 ### Data & Offline Support
@@ -164,13 +164,14 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 | **Maghrib** |
 | **Isha**    |
 
-### Extra Prayers (4)
+### Extra Prayers (5)
 
 | Prayer                  | Time                                     |
 | ----------------------- | ---------------------------------------- |
+| **Midnight**            | Midpoint between Maghrib and Fajr        |
+| **Last Third of Night** | 5 minutes after last third begins        |
 | **Suhoor**              | 40 minutes before Fajr                   |
 | **Duha**                | 20 minutes after Sunrise                 |
-| **Last Third of Night** | 5 minutes after last third begins        |
 | **Istijaba**            | 59 minutes before Maghrib (Fridays only) |
 
 ## 🛠 Technical Implementation
@@ -400,7 +401,7 @@ The notification system maintains a **6-day rolling buffer** of scheduled notifi
 - Concurrent scheduling protection with global `isScheduling` guard
 - Maintains consistency even when app is closed or backgrounded
 - Persists through app restarts and offline usage
-- Separate mute controls for Standard (5 prayers) and Extra (4 prayers) schedules
+- Separate mute controls for Standard (5 prayers) and Extra (5 prayers) schedules
 
 #### Notification Rescheduling Scenarios
 
@@ -552,20 +553,20 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 | Key                                             | Type    | Purpose                                                   | Lifetime            | Set When                                                 |
 | ----------------------------------------------- | ------- | --------------------------------------------------------- | ------------------- | -------------------------------------------------------- |
 | `scheduled_notifications_standard_[index]_[id]` | String  | Unique ID tracking Standard prayer notification scheduled | Until prayer passes | When scheduling Standard prayer notification (index 0-5) |
-| `scheduled_notifications_extra_[index]_[id]`    | String  | Unique ID tracking Extra prayer notification scheduled    | Until prayer passes | When scheduling Extra prayer notification (index 0-3)    |
+| `scheduled_notifications_extra_[index]_[id]`    | String  | Unique ID tracking Extra prayer notification scheduled    | Until prayer passes | When scheduling Extra prayer notification (index 0-4)    |
 | `last_notification_schedule_check`              | Number  | Timestamp of last notification refresh                    | Indefinite          | After every `refreshNotifications()` call (24h check)    |
 | `preference_mute_standard`                      | Boolean | Whether Standard prayers (5 main) notifications are muted | Indefinite          | User taps mute/unmute button                             |
-| `preference_mute_extra`                         | Boolean | Whether Extra prayers (4 special) notifications are muted | Indefinite          | User taps mute/unmute button                             |
+| `preference_mute_extra`                         | Boolean | Whether Extra prayers (5 special) notifications are muted | Indefinite          | User taps mute/unmute button                             |
 | `preference_sound`                              | Number  | Index of selected Athan sound (0-15 for 16 sounds)        | Indefinite          | User selects audio from BottomSheetSound                 |
 
 **Notification Refresh:** Every 24 hours OR on app resume after backgrounding, notifications are re-evaluated. Old past-prayer entries are cleaned up automatically.
 
 ### Prayer Alert Preferences
 
-| Key                               | Type   | Purpose                                                                         | Values                     | Set When                                |
-| --------------------------------- | ------ | ------------------------------------------------------------------------------- | -------------------------- | --------------------------------------- |
-| `preference_alert_standard_[0-5]` | Number | Alert type for each Standard prayer (Fajr=0, Dhuhr=1, Asr=2, Maghrib=3, Isha=4) | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Standard prayer |
-| `preference_alert_extra_[0-3]`    | Number | Alert type for each Extra prayer (Last Third=0, Suhoor=1, Duha=2, Istijaba=3)   | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Extra prayer    |
+| Key                               | Type   | Purpose                                                                                                      | Values                     | Set When                                |
+| --------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------ | -------------------------- | --------------------------------------- |
+| `preference_alert_standard_[0-5]` | Number | Alert type for each Standard prayer (Fajr=0, Dhuhr=1, Asr=2, Maghrib=3, Isha=4)                              | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Standard prayer |
+| `preference_alert_extra_[0-4]`    | Number | Alert type for each Extra prayer (Midnight=0, Last Third=1, Suhoor=2, Duha=3, Istijaba=4)                    | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Extra prayer    |
 
 **Behavior:** When preference changes, notifications for that specific prayer are immediately rescheduled (protected by `isScheduling` guard).
 
