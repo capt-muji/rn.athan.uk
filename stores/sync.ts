@@ -85,6 +85,20 @@ const initializeAppState = async (date: Date) => {
 
   setDate();
 
+  // Advance schedules if last prayer has already passed
+  const standardSchedule = ScheduleStore.getSchedule(ScheduleType.Standard);
+  const extraSchedule = ScheduleStore.getSchedule(ScheduleType.Extra);
+
+  const standardLast = standardSchedule.today[Object.keys(standardSchedule.today).length - 1];
+  const extraLast = extraSchedule.today[Object.keys(extraSchedule.today).length - 1];
+
+  if (TimeUtils.isTimePassed(standardLast.time)) {
+    await ScheduleStore.advanceScheduleToTomorrow(ScheduleType.Standard);
+  }
+  if (TimeUtils.isTimePassed(extraLast.time)) {
+    await ScheduleStore.advanceScheduleToTomorrow(ScheduleType.Extra);
+  }
+
   Timer.startTimers();
 };
 

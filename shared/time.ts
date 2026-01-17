@@ -251,6 +251,32 @@ export const getCurrentYear = (): number => createLondonDate().getFullYear();
 export const calculateCountdown = (schedule: ScheduleStore, index: number) => {
   const todayPrayer = schedule.today[index];
   const tomorrowPrayer = schedule.tomorrow[index];
+  const yesterdayPrayer = schedule.yesterday[index];
+
+  const today = formatDateShort(createLondonDate());
+
+  // If schedule has advanced (todayPrayer is tomorrow)
+  if (todayPrayer.date !== today) {
+    // For the next prayer, check if yesterday's prayer is still upcoming
+    // This handles Extras schedule where Midnight (last prayer) is still upcoming after Duha passes
+    const isNextPrayer = index === schedule.nextIndex;
+    if (isNextPrayer) {
+      const yesterdayTimeLeft = secondsRemainingUntil(yesterdayPrayer.time, yesterdayPrayer.date);
+      // If yesterday's prayer is still in the future, use it (e.g., Midnight at 23:23 after Duha at 9am)
+      if (yesterdayTimeLeft > 0) {
+        return {
+          timeLeft: yesterdayTimeLeft,
+          name: yesterdayPrayer.english,
+        };
+      }
+    }
+    // Otherwise use today's prayer (which is chronologically tomorrow)
+    const timeLeft = secondsRemainingUntil(todayPrayer.time, todayPrayer.date);
+    return {
+      timeLeft,
+      name: todayPrayer.english,
+    };
+  }
 
   // Use tomorrow's prayer time if today's has passed
   const prayer = isTimePassed(todayPrayer.time) ? tomorrowPrayer : todayPrayer;

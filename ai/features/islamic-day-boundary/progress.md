@@ -107,3 +107,77 @@
 5. Schedule-specific cascade triggers
 
 **Supersedes:** ADR-002 (English Midnight Day Boundary)
+
+---
+
+## Post-Implementation Bug Fixes (2026-01-17)
+
+After initial implementation and testing, 4 critical bugs were discovered and fixed related to edge cases in the prayer-based day boundary system:
+
+### Bug 1: Missing Schedule Advancement on App Load
+**Problem:** When app was opened after the last prayer had already passed (e.g., opening at 11pm after Isha at 8pm), schedules were not advanced to tomorrow. Timer showed negative countdown or stale data.
+
+**Root Cause:** `initializeAppState()` only called `setDate()` and `startTimers()` but never checked if last prayer had already passed.
+
+**Fix:** Added schedule advancement check in `stores/sync.ts:initializeAppState()`:
+```typescript
+// Check if last prayer has already passed and advance if needed
+const standardLast = standardSchedule.today[Object.keys(standardSchedule.today).length - 1];
+const extraLast = extraSchedule.today[Object.keys(extraSchedule.today).length - 1];
+
+if (TimeUtils.isTimePassed(standardLast.time)) {
+  await ScheduleStore.advanceScheduleToTomorrow(ScheduleType.Standard);
+}
+if (TimeUtils.isTimePassed(extraLast.time)) {
+  await ScheduleStore.advanceScheduleToTomorrow(ScheduleType.Extra);
+}
+```
+
+### Bug 2: ActiveBackground Incorrectly Hidden After Advancement
+**Problem:** Blue active background disappeared when `nextIndex === 0` after schedule advanced (e.g., after Isha passed, showing tomorrow's Fajr). This made it unclear which prayer was next.
+
+**Root Cause:** `shouldHide` logic in `components/ActiveBackground.tsx` checked `nextIndex === 0 && date === today && isLastPrayerPassed`, but after advancement, date is tomorrow while "today" is still today, causing incorrect hide.
+
+**Fix:** Removed entire `shouldHide` logic. Active background should ALWAYS show on the next prayer after advancement is complete.
+
+### Bug 3: isPassed Incorrectly True After Schedule Advancement
+**Problem:** After schedule advanced, all prayers showed as "passed" (checkmarks) even though they were tomorrow's prayers and hadn't occurred yet.
+
+**Root Cause:** `hooks/usePrayer.ts` only checked `isTimePassed(todayPrayer.time)` without verifying the date. After advancement, `todayPrayer` contains tomorrow's data with tomorrow's date, but time comparison alone would return true if comparing "05:30" (Fajr tomorrow) to current time "23:00" (tonight).
+
+**Fix:** Added date verification:
+```typescript
+const today = TimeUtils.formatDateShort(TimeUtils.createLondonDate());
+const isPassed = todayPrayer.date === today && TimeUtils.isTimePassed(todayPrayer.time);
+```
+
+### Bug 4: Countdown Shows Wrong Prayer After Extras Advancement
+**Problem:** After Duha passed (9am) on Extras schedule, timer countdown showed Midnight (11:23pm same day) but `calculateCountdown()` was trying to use "today's Midnight" which is actually tomorrow chronologically, resulting in negative countdown.
+
+**Root Cause:** `shared/time.ts:calculateCountdown()` didn't handle the case where schedule has advanced (todayPrayer.date !== actual today) but yesterdayPrayer is still in the future (Extras edge case: Midnight at 23:23 is still upcoming after Duha at 9am).
+
+**Fix:** Added advanced schedule handling with yesterdayPrayer fallback:
+```typescript
+if (todayPrayer.date !== today) {
+  // For next prayer, check if yesterday's prayer is still upcoming
+  const isNextPrayer = index === schedule.nextIndex;
+  if (isNextPrayer) {
+    const yesterdayTimeLeft = secondsRemainingUntil(yesterdayPrayer.time, yesterdayPrayer.date);
+    if (yesterdayTimeLeft > 0) {
+      return { timeLeft: yesterdayTimeLeft, name: yesterdayPrayer.english };
+    }
+  }
+  // Otherwise use today's prayer (chronologically tomorrow)
+  const timeLeft = secondsRemainingUntil(todayPrayer.time, todayPrayer.date);
+  return { timeLeft, name: todayPrayer.english };
+}
+```
+
+**Core Principle Learned:**
+> Schedule advancement changes the meaning of "today" in the data layer (todayPrayer.date becomes tomorrow), so ALL time-based checks in the UI layer must verify the date matches the actual current day before making time comparisons.
+
+**Files Modified:**
+- `stores/sync.ts` (Bug 1)
+- `components/ActiveBackground.tsx` (Bug 2)
+- `hooks/usePrayer.ts` (Bug 3)
+- `shared/time.ts` (Bug 4)
