@@ -54,8 +54,8 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       sunrise: '07:16',
       dhuhr: '11:50',
       asr: '13:49',
-      magrib: '16:14', // Used for today's Midnight calculation
-      isha: '17:47',
+      magrib: '16:14',
+      isha: '23:59',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -65,12 +65,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(-1), // Used for today's Midnight calculation
-      sunrise: addMinutes(-2),
-      dhuhr: addMinutes(-3),
-      asr: addMinutes(-4),
-      magrib: addMinutes(-5), // Used for tomorrow's Midnight calculation
-      isha: addMinutes(1), // Next prayer (all others passed)
+      fajr: addMinutes(-3),
+      sunrise: addMinutes(0),
+      dhuhr: addMinutes(2),
+      asr: addMinutes(1),
+      magrib: addMinutes(1),
+      isha: addMinutes(1),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -80,7 +80,7 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day1]: {
       date: day1,
-      fajr: addMinutes(11), // Next Fajr
+      fajr: addMinutes(11),
       sunrise: addMinutes(21),
       dhuhr: addMinutes(31),
       asr: addMinutes(41),
