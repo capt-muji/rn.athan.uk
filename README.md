@@ -87,6 +87,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Migrate from expo-av to expo-audio (SDK 54 requirement)
 - [x] Upgrade MMKV to v4 (Nitro Module)
 - [x] Pin all package versions (prevent breaking upgrades)
+- [x] Progress bar toggle: Tap timer to hide/show with 250ms fade animation
 
 ### Immediate Improvements
 
@@ -319,6 +320,12 @@ The progress bar provides a real-time visual representation of the countdown tim
 
 **State Management:**
 
+- **Toggle Visibility**: Tap the countdown timer to hide/show the progress bar
+  - Tappable area includes prayer name label, time display, and progress bar
+  - 250ms fade animation (opacity transition)
+  - Haptic feedback (medium impact) on tap
+  - Preference persists across app restarts via MMKV storage
+  - Disabled when overlay is active (overlay timer behavior unchanged)
 - Automatically hides (opacity: 0) when overlay display is active
 - Container always reserves 3px height to prevent layout shifts
 - Uses Reanimated 4 shared values for high-performance animations
@@ -570,6 +577,7 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 | `prayer_max_english_width_extra`    | Number  | Cached max width of Extra prayer names for layout       | Session    | First render of extra prayer list     | Used for responsive text sizing                      |
 | `measurements_list`                 | Object  | Cached measurements for prayer list item positioning    | Session    | Component mount                       | Optimizes layout calculations, prevents jank         |
 | `measurements_date`                 | Object  | Cached measurements for date display area               | Session    | Component mount                       | Improves date bar rendering performance              |
+| `preference_progressbar_visible`    | Boolean | Progress bar visibility state (shown/hidden)            | Indefinite | User taps timer to toggle visibility  | Controls progress bar opacity with 250ms fade        |
 | `popup_tip_athan_enabled`           | Boolean | Whether "First Time Tips" popup has been shown          | Indefinite | App first launch                      | Only shows once in user's lifetime                   |
 | `popup_times_explained_enabled`     | Boolean | Whether "Prayer Times Explanation" popup has been shown | Indefinite | First visit to Page 2                 | Only shows once per user                             |
 | `popup_update_last_check`           | Number  | Timestamp of last app update check                      | Indefinite | After checking GitHub for new version | Only checks once per 24h (avoids API spam)           |

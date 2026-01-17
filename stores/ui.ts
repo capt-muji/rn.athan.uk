@@ -31,6 +31,8 @@ export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_w
 export const measurementsListAtom = atomWithStorageObject<PageCoordinates>('measurements_list', emptyCoordinates);
 export const measurementsDateAtom = atomWithStorageObject<PageCoordinates>('measurements_date', emptyCoordinates);
 
+export const progressBarVisibleAtom = atomWithStorageBoolean('preference_progressbar_visible', true);
+
 export const tempStandardMutedAtom = atom<boolean | null>(null);
 export const tempExtraMutedAtom = atom<boolean | null>(null);
 
