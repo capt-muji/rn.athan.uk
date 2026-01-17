@@ -77,12 +77,13 @@ export const wasAppUpgraded = (): boolean => {
 
   // First install - no stored version
   if (!storedVersion) {
-    logger.info('VERSION: First install detected', { installedVersion });
+    logger.info('VERSION: First install detected (no stored version)', { installedVersion });
     return true;
   }
 
   // Same version - no upgrade
   if (installedVersion === storedVersion) {
+    logger.info('VERSION: Same version detected (no upgrade needed)', { version: installedVersion });
     return false;
   }
 
@@ -90,12 +91,12 @@ export const wasAppUpgraded = (): boolean => {
   const comparison = compareVersions(installedVersion, storedVersion);
 
   if (comparison > 0) {
-    logger.info('VERSION: App upgrade detected', { from: storedVersion, to: installedVersion });
+    logger.info('VERSION: Upgrade detected (version increased)', { from: storedVersion, to: installedVersion });
     return true;
   }
 
   // Downgrade - don't clear cache
-  logger.warn('VERSION: App downgrade detected (not clearing cache)', { from: storedVersion, to: installedVersion });
+  logger.warn('VERSION: Downgrade detected (skipping cache clear)', { from: storedVersion, to: installedVersion });
   return false;
 };
 
@@ -105,6 +106,7 @@ export const wasAppUpgraded = (): boolean => {
  */
 export const clearUpgradeCache = (): void => {
   const startTime = Date.now();
+  logger.info('VERSION: Beginning cache clear process');
 
   try {
     // Prayer data - may have schema changes
@@ -140,9 +142,10 @@ export const clearUpgradeCache = (): void => {
     logger.info('VERSION: Cleared popup_update_last_check');
 
     const duration = Date.now() - startTime;
-    logger.info('VERSION: Cache cleared successfully', { duration });
+    logger.info('VERSION: Cache clear completed successfully', { duration });
+    logger.info('VERSION: Preserved user preferences (preference_*, popup_tip_athan_enabled)');
   } catch (error) {
-    logger.error('VERSION: Failed to clear cache', { error });
+    logger.error('VERSION: Cache clear failed', { error });
     // Don't throw - allow app to continue even if cache clear fails
   }
 };
@@ -153,6 +156,8 @@ export const clearUpgradeCache = (): void => {
  * Includes race condition guard to prevent multiple executions
  */
 export const handleAppUpgrade = (): void => {
+  logger.info('VERSION: Starting upgrade check');
+
   // Race condition guard - only run once per app launch
   if (upgradeHandled) {
     logger.info('VERSION: Upgrade check already handled this session');
@@ -162,6 +167,9 @@ export const handleAppUpgrade = (): void => {
   upgradeHandled = true;
 
   const installedVersion = getInstalledVersion();
+  const storedVersion = getStoredVersion();
+
+  logger.info('VERSION: Version comparison', { installed: installedVersion, stored: storedVersion || 'none' });
 
   if (!installedVersion) {
     logger.warn('VERSION: Could not determine installed version, skipping upgrade check');
@@ -169,9 +177,13 @@ export const handleAppUpgrade = (): void => {
   }
 
   if (wasAppUpgraded()) {
+    logger.info('VERSION: Upgrade detected - clearing cache');
     clearUpgradeCache();
+  } else {
+    logger.info('VERSION: No upgrade detected - skipping cache clear');
   }
 
   // Always update stored version to current version
   setStoredVersion(installedVersion);
+  logger.info('VERSION: Upgrade check completed');
 };
