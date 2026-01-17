@@ -6,6 +6,14 @@ export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Isti
 export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 export const ISTIJABA_INDEX = 4;
 
+export const EXTRAS_EXPLANATIONS = [
+  'Halfway between Magrib and Fajr',
+  '5 mins after the last third of the night begins',
+  '40 mins before Fajr',
+  '20 mins after Sunrise',
+  '59 mins before Magrib (Fridays only)',
+] as const;
+
 export const NOTIFICATION_ROLLING_DAYS = 2;
 export const NOTIFICATION_REFRESH_HOURS = 12;
 
@@ -93,3 +101,11 @@ export const STYLES = {
     },
   },
 };
+
+export const EXTRAS_EXPLANATIONS_ARABIC = [
+  'نصف الليل بين المغرب والفجر',
+  'بعد 5 دقائق من بداية الثلث الأخير من الليل',
+  '40 دقيقة قبل الفجر',
+  '20 دقيقة بعد الشروق',
+  '59 دقيقة قبل المغرب (الجمعة فقط)',
+] as const;

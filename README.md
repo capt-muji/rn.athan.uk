@@ -580,7 +580,6 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 | `measurements_date`                 | Object  | Cached measurements for date display area               | Session    | Component mount                       | Improves date bar rendering performance              |
 | `preference_progressbar_visible`    | Boolean | Progress bar visibility state (shown/hidden)            | Indefinite | User taps timer to toggle visibility  | Controls progress bar opacity with 250ms fade        |
 | `popup_tip_athan_enabled`           | Boolean | Whether "First Time Tips" popup has been shown          | Indefinite | App first launch                      | Only shows once in user's lifetime                   |
-| `popup_times_explained_enabled`     | Boolean | Whether "Prayer Times Explanation" popup has been shown | Indefinite | First visit to Page 2                 | Only shows once per user                             |
 | `popup_update_last_check`           | Number  | Timestamp of last app update check                      | Indefinite | After checking GitHub for new version | Only checks once per 24h (avoids API spam)           |
 
 **UI Cache Lifetime:** Measurement caches are cleared on app restart (session-based). Popup states persist indefinitely unless user manually clears app data.
