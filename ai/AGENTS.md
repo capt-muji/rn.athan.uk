@@ -71,6 +71,7 @@
 │   ├── timer.ts           # Timer state atoms
 │   ├── schedule.ts        # Schedule atoms
 │   ├── overlay.ts         # Overlay state
+│   ├── version.ts         # App version detection & cache clearing
 │   └── ui.ts              # UI state (date, settings)
 ├── hooks/                 # Custom React hooks
 │   ├── useAnimation.ts    # Reanimated animation hook
@@ -322,6 +323,7 @@ tsc --noEmit                         # Typecheck project
 - [2026-01-17] Overlay Date Display: Changed from "Today/Tomorrow" text to formatted date (EEE, d MMM yyyy) to match Day.tsx. Single file change in components/Overlay.tsx - added formatDateLong import and replaced conditional text with {formatDateLong(selectedPrayer.date)}. Date follows prayer-based day boundary automatically (no additional logic needed). QA reviewed and approved.
 - [2026-01-17] Prayer Explanations: Replaced ModalTimesExplained modal (all at once) with contextual explanations in Overlay (one at a time). Users now tap on Extra prayers to see their explanations. Removed ModalTimesExplained component, modal trigger from Navigation.tsx, and related state from stores/ui.ts. Added EXTRAS_EXPLANATIONS constant. Explanations: Midnight (midpoint Magrib-Fajr), Last Third (5 mins after last third begins), Suhoor (40 mins before Fajr), Duha (20 mins after Sunrise), Istijaba (59 mins before Magrib on Fridays). Created ADR-003 for architectural decision. (see ai/adr/003-prayer-explanation-modal-removal.md)
 - [2026-01-17] ProgressBar: Added three-color stoplight system (green/orange/red) with discrete color changes at 20% and 10% thresholds. Warning glow now covers entire warning period (≤20%). Uses discrete color state (0=green, 1=orange, 2=red) with 500ms transitions for instant color swaps at thresholds, not smooth gradients.
+- [2026-01-17] App Version-Based Cache Clearing: Implemented automatic cache clearing on app upgrades while preserving user preferences. Created stores/version.ts with handleAppUpgrade() entry point (race condition guard, semver comparison, first install detection). Clears cache on version increase only (not downgrades). Clears: prayer_*, display_date*, fetched_years, scheduled_notifications_*, measurements_*, prayer_max_english_width_*, popup_update_last_check. Preserves: preference_alert_*, preference_sound, preference_mute_*, preference_progressbar_visible, popup_tip_athan_enabled. New MMKV key: app_installed_version (tracks current version). Modified stores/sync.ts to call handleAppUpgrade() at start of sync(). Updated README with upgrade behavior documentation. Solves issue where users had to uninstall/reinstall app after updates to get clean cache. Ready for manual testing (fresh install, upgrade test, no-change test).
 
 ## 12. Change / PR Checklist
 
