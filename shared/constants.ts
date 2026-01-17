@@ -2,9 +2,9 @@ export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Is
 export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
 export const PRAYER_INDEX_ASR = 3; // Used to display the date
 
-export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
-export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
-export const ISTIJABA_INDEX = 3;
+export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
+export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
+export const ISTIJABA_INDEX = 4;
 
 export const NOTIFICATION_ROLLING_DAYS = 6;
 export const NOTIFICATION_REFRESH_HOURS = 24;
