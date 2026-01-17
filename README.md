@@ -269,6 +269,14 @@ The app runs **3 concurrent timers** simultaneously, each with a specific respon
   3. Starts new countdown
   4. Triggers notification if enabled
 
+**App Load Recovery:**
+
+- When the app is opened after being closed or backgrounded for extended periods:
+  1. Checks if the last prayer of each schedule has already passed
+  2. Automatically advances affected schedules to tomorrow before starting timers
+  3. Ensures timer always shows accurate countdown to next prayer
+  4. Handles scenarios like: opening app at 11pm (after Isha), opening app after days of not using
+
 **Prayer-Based Day Boundary (Islamic Midnight):**
 
 Each schedule operates independently with its own day boundary:
