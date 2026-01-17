@@ -37,7 +37,7 @@ export default function PrayerExplanation({
 }: PrayerExplanationProps) {
   return (
     <>
-      {/* Arrow pointing up */}
+      {/* Arrow pointing up - floating above the box */}
       <View style={[styles.arrow, style]}>
         <Svg width={15} height={15} viewBox="0 0 330.002 330.002">
           <Path fill="#a5b4fc" d={ICON_PATHS[AlertIcon.ARROW_UP]} />
@@ -48,7 +48,7 @@ export default function PrayerExplanation({
       <View style={[styles.infoBox, style]}>
         {/* Header with icon and title */}
         <View style={styles.infoHeader}>
-          <Svg width={22} height={22} viewBox="0 0 128 128">
+          <Svg width={20} height={20} viewBox="0 0 128 128">
             <Path fill="#a5b4fc" d={ICON_PATHS[AlertIcon.INFO]} />
           </Svg>
           <Text style={styles.infoTitle}>{prayerName}</Text>
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     zIndex: 1,
+    marginTop: -20,
   },
   infoBox: {
     position: 'absolute',
