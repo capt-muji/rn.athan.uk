@@ -50,7 +50,7 @@ export default function Timer({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     height: STYLES.timer.height,
-    marginBottom: 50,
+    marginBottom: 40,
     justifyContent: 'center',
   },
   text: {

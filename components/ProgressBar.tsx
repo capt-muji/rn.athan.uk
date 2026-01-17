@@ -55,7 +55,7 @@ export default function ProgressBar({ type }: Props) {
   }, [schedule, timer.timeLeft, type]);
 
   const widthValue = useSharedValue(progress ?? 0);
-  const colorValue = useSharedValue(progress ?? 0);
+  const colorValue = useSharedValue(0); // Discrete color state: 0=green, 1=orange, 2=red
   const warningValue = useSharedValue(0);
   const opacityValue = useSharedValue(!overlay.isOn && isProgressBarVisible ? 1 : 0);
   const isFirstRender = useRef(true);
@@ -72,9 +72,13 @@ export default function ProgressBar({ type }: Props) {
 
   const colorStyle = useAnimatedStyle(() => {
     const color = interpolateColor(
-      warningValue.value,
-      [0, 1],
-      ['#d3ff8b', '#d63384'] // green to dark red-pink
+      colorValue.value,
+      [0, 1, 2],
+      [
+        '#d3ff8b', // green (>20%)
+        '#ff8c00', // orange (10-20%)
+        '#d63384', // red (<10%)
+      ]
     );
     return {
       backgroundColor: color,
@@ -129,8 +133,8 @@ export default function ProgressBar({ type }: Props) {
     if (progress !== null) {
       if (isFirstRender.current) {
         widthValue.value = progress;
-        colorValue.value = progress;
-        warningValue.value = progress <= 10 ? 1 : 0;
+        colorValue.value = progress > 20 ? 0 : progress > 10 ? 1 : 2;
+        warningValue.value = progress <= 20 ? 1 : 0;
         isFirstRender.current = false;
       } else {
         const progressDiff = Math.abs((progress ?? 0) - (prevProgress.current ?? 0));
@@ -139,10 +143,15 @@ export default function ProgressBar({ type }: Props) {
           easing: progressDiff > 50 ? Easing.bezier(0.33, 0, 0.1, 1) : Easing.linear,
         };
         widthValue.value = withTiming(progress, timingConfig);
-        colorValue.value = withTiming(progress, timingConfig);
+
+        // Animate color state with 500ms transition (discrete: 0=green, 1=orange, 2=red)
+        colorValue.value = withTiming(progress > 20 ? 0 : progress > 10 ? 1 : 2, {
+          duration: 500,
+          easing: Easing.linear,
+        });
 
         // Animate warning state with 500ms transition
-        warningValue.value = withTiming(progress <= 10 ? 1 : 0, { duration: 500, easing: Easing.linear });
+        warningValue.value = withTiming(progress <= 20 ? 1 : 0, { duration: 500, easing: Easing.linear });
       }
       prevProgress.current = progress;
     }

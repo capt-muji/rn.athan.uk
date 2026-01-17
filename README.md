@@ -303,21 +303,24 @@ The progress bar provides a real-time visual representation of the countdown tim
 - Formula: `progress = (timeElapsed / totalDuration) * 100`
 - Smooth animations with platform-specific easing (950ms for large jumps, 1000ms for normal countdown)
 
-**Color Gradient:**
+**Color System:**
 
-- Dynamically interpolates from green (`#d3ff8b`) to dark red-pink (`#d63384`) as time elapses
-- Transitions smoothly throughout the prayer window
-- Visual indicator of time urgency
+- Three-color stoplight system that changes at discrete thresholds:
+  - Green (`#d3ff8b`): Above 20% time remaining
+  - Orange (`#ff8c00`): 20% down to 10% time remaining
+  - Red (`#d63384`): Below 10% time remaining
+- Colors change instantly at thresholds (500ms transition) for clear visual urgency
 
 **Glow Effects:**
 
 - **Platform-specific rendering:**
   - iOS: Uses `shadowRadius` (15px → 8px) and `shadowOpacity` (0.9 → 1.0)
   - Android: Uses `elevation` (15 → 10) for shadow spread
-- **Warning state** (≤10% time remaining):
+- **Warning state** (≤20% time remaining):
   - Activates intense neon glow effect
   - Additional glow layer with 500ms fade-in animation
-  - Provides visual urgency as prayer time approaches
+  - Covers entire warning period (both orange and red zones)
+  - Glow intensity is consistent throughout (binary on/off, not graduated)
 
 **State Management:**
 
