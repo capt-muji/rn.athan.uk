@@ -6,7 +6,7 @@ export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Isti
 export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 export const ISTIJABA_INDEX = 4;
 
-export const NOTIFICATION_ROLLING_DAYS = 6;
+export const NOTIFICATION_ROLLING_DAYS = 3;
 export const NOTIFICATION_REFRESH_HOURS = 24;
 
 export const TIME_ADJUSTMENTS = {
