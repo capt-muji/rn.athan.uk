@@ -184,6 +184,32 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
 };
 
 /**
+ * Calculates the midnight time (midpoint between Maghrib and Fajr)
+ * @param magribTime Maghrib time string in HH:mm format
+ * @param fajrTime Fajr time string in HH:mm format
+ * @returns Midnight time in HH:mm format
+ */
+export const getMidnightTime = (magribTime: string, fajrTime: string): string => {
+  const [mHours, mMinutes] = magribTime.split(':').map(Number);
+  const [fHours, fMinutes] = fajrTime.split(':').map(Number);
+
+  // Maghrib from yesterday
+  let maghrib = createLondonDate();
+  maghrib = subDays(setHours(setMinutes(maghrib, mMinutes), mHours), 1);
+
+  // Fajr from today
+  let fajr = createLondonDate();
+  fajr = setHours(setMinutes(fajr, fMinutes), fHours);
+
+  // Calculate night duration and midpoint
+  const nightDuration = fajr.getTime() - maghrib.getTime();
+  const midnight = createLondonDate(maghrib.getTime() + nightDuration / 2);
+
+  // Return formatted time string in 24-hour format (HH:mm)
+  return format(midnight, 'HH:mm');
+};
+
+/**
  * Checks if a given date string is Friday
  * @param date Optional date string or Date object
  * @returns boolean indicating if the date is Friday

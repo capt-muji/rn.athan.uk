@@ -52,6 +52,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       asr: times.asr,
       magrib: times.magrib,
       isha: times.isha,
+      midnight: TimeUtils.getMidnightTime(times.magrib, times.fajr),
       'last third': TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
       suhoor: TimeUtils.adjustTime(times.fajr, TIME_ADJUSTMENTS.suhoor),
       duha: TimeUtils.adjustTime(times.sunrise, TIME_ADJUSTMENTS.duha),

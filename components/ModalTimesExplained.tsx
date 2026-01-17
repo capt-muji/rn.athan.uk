@@ -24,6 +24,11 @@ export default function ModalTimesExplained({ visible, onClose }: Props) {
     <Modal visible={visible} title="Information">
       <View style={styles.container}>
         <View style={styles.timeRow}>
+          <Text style={styles.timeTitle}>Midnight:</Text>
+          <Text style={styles.timeDescription}>Midpoint between Magrib and Fajr</Text>
+        </View>
+
+        <View style={styles.timeRow}>
           <Text style={styles.timeTitle}>Last Third:</Text>
           <Text style={styles.timeDescription}>5 mins after the last third of the night begins</Text>
         </View>

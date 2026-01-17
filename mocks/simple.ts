@@ -2,6 +2,17 @@ import { addDays, subDays, format } from 'date-fns';
 
 import { IApiResponse } from '@/shared/types';
 
+/**
+ * Mock data for testing prayer times
+ *
+ * MIDNIGHT PRAYER TESTING:
+ * - Midnight is calculated as: (Magrib + Fajr) / 2
+ * - Example: Magrib 16:14 → Fajr 05:35 (next day)
+ *   Night duration: 13h 21m → Midnight ≈ 22:52
+ * - The midnight field is automatically calculated during transformApiData()
+ * - Check Page 2 (Extras) to see Midnight as first prayer
+ */
+
 const now = new Date();
 
 const addMinutes = (minutesToAdd: number) => {
@@ -43,7 +54,7 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       sunrise: '07:16',
       dhuhr: '11:50',
       asr: '13:49',
-      magrib: '16:14',
+      magrib: '16:14', // Used for today's Midnight calculation
       isha: '17:47',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
@@ -54,12 +65,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(-1),
+      fajr: addMinutes(-1), // Used for today's Midnight calculation
       sunrise: addMinutes(-2),
       dhuhr: addMinutes(-3),
       asr: addMinutes(-4),
-      magrib: addMinutes(-5),
-      isha: addMinutes(1),
+      magrib: addMinutes(-5), // Used for tomorrow's Midnight calculation
+      isha: addMinutes(1), // Next prayer (all others passed)
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -69,7 +80,7 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day1]: {
       date: day1,
-      fajr: addMinutes(11),
+      fajr: addMinutes(11), // Next Fajr
       sunrise: addMinutes(21),
       dhuhr: addMinutes(31),
       asr: addMinutes(41),
