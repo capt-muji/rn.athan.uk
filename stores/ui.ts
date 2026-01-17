@@ -17,12 +17,6 @@ export const popupTipAthanEnabledAtom = atomWithStorageBoolean('popup_tip_athan_
 export const popupUpdateEnabledAtom = atom(false);
 export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last_check', 0);
 
-// Times Explained Modal States:
-// 0 = Never shown (initial state)
-// 1 = Show modal
-// 2 = Never show again (user has closed modal)
-export const popupTimesExplainedAtom = atomWithStorageNumber('popup_times_explained_enabled', 0);
-
 export const scrollPositionAtom = atom(0);
 
 export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
@@ -46,7 +40,6 @@ export const setTempMutedState = (type: ScheduleType, value: boolean | null) => 
 
 // --- Actions ---
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);
-export const getPopupTimesExplained = () => store.get(popupTimesExplainedAtom);
 export const showSheet = () => store.get(bottomSheetModalAtom)?.present();
 export const hideSheet = () => store.get(bottomSheetModalAtom)?.dismiss();
 
@@ -57,7 +50,6 @@ export const setRefreshUI = (timestamp: number) => store.set(refreshUIAtom, time
 export const setPopupTipAthanEnabled = (enabled: boolean) => store.set(popupTipAthanEnabledAtom, enabled);
 export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdateEnabledAtom, enabled);
 export const setPopupUpdateLastCheck = (timestamp: number) => store.set(popupUpdateLastCheckAtom, timestamp);
-export const setPopupTimesExplained = (enabled: number) => store.set(popupTimesExplainedAtom, enabled);
 
 export const setEnglishWidth = (type: ScheduleType, width: number) => {
   const isStandard = type === ScheduleType.Standard;
