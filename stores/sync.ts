@@ -12,6 +12,7 @@ import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 import { atomWithStorageString } from '@/stores/storage';
 import * as Timer from '@/stores/timer';
+import { handleAppUpgrade } from '@/stores/version';
 
 const store = getDefaultStore();
 
@@ -148,11 +149,14 @@ const updatePrayerData = async () => {
 
 // Main synchronization function - App entry point
 // Flow:
-// 1. Checks if data update is needed
-// 2. Fetches new data if required
-// 3. Initializes app state with current date
+// 1. Checks for app upgrade and clears cache if needed
+// 2. Checks if data update is needed
+// 3. Fetches new data if required
+// 4. Initializes app state with current date
 export const sync = async () => {
   try {
+    handleAppUpgrade();
+
     if (needsDataUpdate()) await updatePrayerData();
     else logger.info('SYNC: Data already up to date');
 
