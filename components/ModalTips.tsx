@@ -26,11 +26,10 @@ export default function ModalTips({ visible, onClose }: Props) {
   return (
     <Modal visible={visible} title="Quick Tip!">
       <Text style={styles.message}>
-        To switch athan{'\n'}hold the{'  '}
+        To switch athan{'\n'}hold the{' '}
         <Svg width={16} height={16} viewBox="0 0 256 256" style={styles.icon}>
           <Path d={ICON_PATHS[AlertIcon.BELL_SLASH]} fill="#000" />
-        </Svg>
-        {'  '}
+        </Svg>{' '}
         icon
       </Text>
       <Pressable style={[styles.button, isDisabled && styles.buttonDisabled]} onPress={onClose} disabled={isDisabled}>

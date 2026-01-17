@@ -141,6 +141,24 @@ export const clearUpgradeCache = (): void => {
     Database.clearPrefix('popup_update_last_check');
     logger.info('VERSION: Cleared popup_update_last_check');
 
+    // ============================================================================
+    // NOT CLEARED - User Preferences (must persist across upgrades)
+    // ============================================================================
+
+    // Database.clearPrefix('preference_alert_standard_'); // User's notification preferences for Standard prayers
+    // Database.clearPrefix('preference_alert_extra_'); // User's notification preferences for Extra prayers
+    // Database.clearPrefix('preference_sound'); // User's selected Athan audio
+    // Database.clearPrefix('preference_mute_standard'); // User's mute state for Standard prayers
+    // Database.clearPrefix('preference_mute_extra'); // User's mute state for Extra prayers
+    // Database.clearPrefix('preference_progressbar_visible'); // User's progress bar visibility preference
+
+    // ============================================================================
+    // NOT CLEARED - System State (must persist across upgrades)
+    // ============================================================================
+
+    // Database.clearPrefix('app_installed_version'); // This is the version tracker itself (never clear)
+    // Database.clearPrefix('popup_tip_athan_enabled'); // Don't re-show dismissed first-time tips
+
     const duration = Date.now() - startTime;
     logger.info('VERSION: Cache clear completed successfully', { duration });
     logger.info('VERSION: Preserved user preferences (preference_*, popup_tip_athan_enabled)');
