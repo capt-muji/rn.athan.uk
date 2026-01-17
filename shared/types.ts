@@ -123,6 +123,8 @@ export enum AlertIcon {
   SPEAKER = 'SPEAKER',
   PLAY = 'PLAY',
   PAUSE = 'PAUSE',
+  INFO = 'INFO',
+  ARROW_UP = 'ARROW_UP',
 }
 
 export interface AlertPreferences {
