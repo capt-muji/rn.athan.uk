@@ -13,7 +13,7 @@
 **Core Features:**
 
 - Real-time prayer countdown with sub-millisecond precision
-- 3-day rolling notification buffer with custom Athan sounds
+- 2-day rolling notification buffer with custom Athan sounds
 - Full offline support via MMKV caching
 - Large overlay display for visually impaired users
 - Year-boundary detection and automatic data refresh
@@ -66,7 +66,7 @@
 │   └── Modal*.tsx         # Modal popups (Tips, Times, Update)
 ├── stores/                # Jotai atoms & state management
 │   ├── database.ts        # MMKV storage interface
-│   ├── notifications.ts   # Notification scheduling (3-day buffer)
+│   ├── notifications.ts   # Notification scheduling (2-day buffer)
 │   ├── sync.ts            # API sync logic
 │   ├── timer.ts           # Timer state atoms
 │   ├── schedule.ts        # Schedule atoms
@@ -318,7 +318,7 @@ tsc --noEmit                         # Typecheck project
 - [2026-01-16] Retry Logic Removal: Removed defensive retry logic in advanceScheduleToTomorrow() that called sync() if dayAfterTomorrow data was missing. With prayer-based day boundary, data should always be available (entire year cached). If missing, let it throw - the app's "refresh me" button handles cache issues. Follows NO FALLBACKS rule: fix root cause, don't mask problems.
 - [2026-01-16] Progress Bar Toggle: Implemented tap-to-toggle visibility for progress bar. Tap anywhere on timer component (prayer name, time, or bar) to hide/show progress bar with 250ms fade animation. Medium haptic feedback on tap (matches alert icons). Default visible, persisted via progressBarVisibleAtom (preference_progressbar_visible in MMKV). Opacity initializes to correct state on app load (no flash). Only active on main screen (overlay timer unchanged). Modified: stores/ui.ts (added atom), components/Timer.tsx (Pressable wrapper + Medium haptic), components/ProgressBar.tsx (opacity with first-render skip), stores/database.ts (added to cleanup function). Uses opacity (not DOM removal) to maintain layout alignment.
 - [2026-01-17] Midnight Prayer Feature: Added "Midnight" as first extra prayer (midpoint between Maghrib and Fajr). Follows same pattern as Last Third calculation: uses yesterday's Maghrib + today's Fajr. No time adjustment applied (pure midpoint). Updated EXTRAS_ENGLISH/ARABIC arrays (now 5 prayers), ISTIJABA_INDEX from 3→4. Added getMidnightTime() in shared/time.ts, integrated in transformApiData() pipeline. Updated ModalTimesExplained.tsx with description, README documentation (5 extra prayers), and mocks/simple.ts with testing comments. Order: Midnight, Last Third, Suhoor, Duha, Istijaba. ReviewerQA grade: A- (93%) - zero breaking changes, seamless integration with notifications/schedule/timer systems. Ready for manual test.
-- [2026-01-17] Notification Rolling Window: Reduced NOTIFICATION_ROLLING_DAYS from 6 to 3 days to improve app responsiveness. This change provides better headroom under iOS 64-notification limit and prepares for future reminder feature. Updated: shared/constants.ts (NOTIFICATION_ROLLING_DAYS = 3), ai/adr/001-rolling-notification-buffer.md (marked as implemented), AGENTS.md (Core Features and repo map). Zero code changes required - simple constant update. User benefit: fewer scheduled notifications, better app performance, headroom for ~20 notifications/day when reminders ship. (see ai/adr/001-rolling-notification-buffer.md)
+- [2026-01-17] Notification Rolling Window: Reduced NOTIFICATION_ROLLING_DAYS from 3 to 2 and NOTIFICATION_REFRESH_HOURS from 24 to 12 to minimize scheduled notifications and improve app responsiveness. Updated: shared/constants.ts (NOTIFICATION_ROLLING_DAYS = 2, NOTIFICATION_REFRESH_HOURS = 12), ai/adr/001-rolling-notification-buffer.md (status and math tables), AGENTS.md (Core Features and repo map), README.md (notification system docs). User benefit: fewer scheduled notifications, better app performance, faster refresh cycle. (see ai/adr/001-rolling-notification-buffer.md)
 
 ## 12. Change / PR Checklist
 

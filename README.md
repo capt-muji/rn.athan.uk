@@ -134,7 +134,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
   - **Silent**: Banner only (no sound)
   - **Sound**: Athan audio + vibration + notification banner
 - 📢 **16 Selectable Athan Sounds**: Choose from multiple Islamic call-to-prayer audio options
-- 📅 **Smart Notification Buffer**: 3-day rolling schedule that auto-refreshes every 24 hours
+- 📅 **Smart Notification Buffer**: 2-day rolling schedule that auto-refreshes every 12 hours
 - 🔒 **Dual Mute Controls**: Separately enable/disable Standard (5 prayers) and Extra (5 prayers) schedules
 - 🛡️ **Duplicate Prevention**: Concurrent scheduling protection prevents double notifications even with rapid user interactions
 
@@ -393,11 +393,11 @@ The progress bar provides a real-time visual representation of the countdown tim
 
 #### Overview
 
-The notification system maintains a **3-day rolling buffer** of scheduled notifications that refreshes every 24 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
+The notification system maintains a **2-day rolling buffer** of scheduled notifications that refreshes every 12 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
 
 **Key Features:**
 
-- 3 days of notifications scheduled ahead for each enabled prayer
+- 2 days of notifications scheduled ahead for each enabled prayer
 - Concurrent scheduling protection with global `isScheduling` guard
 - Maintains consistency even when app is closed or backgrounded
 - Persists through app restarts and offline usage
@@ -412,28 +412,28 @@ Notifications are rescheduled in the following scenarios:
 | **User Changes Audio**          | `rescheduleAllNotifications()`                | ❌ Immediate | Both schedules (all 9 prayers)   | When user closes audio selection bottom sheet with new selection                                              |
 | **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | ❌ Immediate | Single prayer only               | When user taps alert icon on a prayer (450ms debounce)                                                        |
 | **User Mutes/Unmutes**          | `addAllScheduleNotificationsForSchedule()`    | ❌ Immediate | One schedule (Standard or Extra) | When user clicks "Enable all" / "Disable all" button (450ms debounce)                                         |
-| **App Launch**                  | `refreshNotifications()`                      | ✅ ≥24 hours | Both schedules (all 9 prayers)   | When app starts - only reschedules if never scheduled before OR last schedule was ≥24 hours ago               |
-| **App Resumes from Background** | `refreshNotifications()`                      | ✅ ≥24 hours | Both schedules (all 9 prayers)   | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥24 hours ago |
+| **App Launch**                  | `refreshNotifications()`                      | ✅ ≥12 hours | Both schedules (all 9 prayers)   | When app starts - only reschedules if never scheduled before OR last schedule was ≥12 hours ago               |
+| **App Resumes from Background** | `refreshNotifications()`                      | ✅ ≥12 hours | Both schedules (all 9 prayers)   | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥12 hours ago |
 
 #### How It Works
 
 **User-Triggered Scenarios (3):**
 
 - When user makes a change (audio, individual prayer alert, or mute toggle), notifications are immediately rescheduled
-- Bypasses the 24-hour check for responsive updates
+- Bypasses the 12-hour check for responsive updates
 - The `isScheduling` guard prevents concurrent operations during these user actions
 
 **Automatic Refresh Scenarios (2):**
 
 - Triggered at app launch and when resuming from background
-- Uses 24-hour refresh interval to avoid unnecessary rescheduling
+- Uses 12-hour refresh interval to avoid unnecessary rescheduling
 - Checks `shouldRescheduleNotifications()` which returns `true` only if:
   - First time ever (no previous schedule timestamp), OR
-  - ≥24 hours elapsed since `last_notification_schedule_check` timestamp
+  - ≥12 hours elapsed since `last_notification_schedule_check` timestamp
 - If criteria not met, logs skip and returns early
 - When rescheduling happens:
   1. Cancels ALL existing notifications (global + per-prayer)
-  2. Reschedules 3 days ahead for all enabled prayers
+  2. Reschedules 2 days ahead for all enabled prayers
   3. Updates `last_notification_schedule_check` timestamp
 
 #### Concurrent Scheduling Protection
@@ -455,8 +455,8 @@ All 5 entry points are protected by a single global `isScheduling` flag:
 
 #### Constants
 
-- `NOTIFICATION_ROLLING_DAYS = 3`: How many days ahead to schedule
-- `NOTIFICATION_REFRESH_HOURS = 24`: How often to refresh the rolling buffer
+- `NOTIFICATION_ROLLING_DAYS = 2`: How many days ahead to schedule
+- `NOTIFICATION_REFRESH_HOURS = 12`: How often to refresh the rolling buffer
 
 ## 🚀 Development
 
@@ -563,10 +563,10 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 
 ### Prayer Alert Preferences
 
-| Key                               | Type   | Purpose                                                                                                      | Values                     | Set When                                |
-| --------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------ | -------------------------- | --------------------------------------- |
-| `preference_alert_standard_[0-5]` | Number | Alert type for each Standard prayer (Fajr=0, Dhuhr=1, Asr=2, Maghrib=3, Isha=4)                              | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Standard prayer |
-| `preference_alert_extra_[0-4]`    | Number | Alert type for each Extra prayer (Midnight=0, Last Third=1, Suhoor=2, Duha=3, Istijaba=4)                    | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Extra prayer    |
+| Key                               | Type   | Purpose                                                                                   | Values                     | Set When                                |
+| --------------------------------- | ------ | ----------------------------------------------------------------------------------------- | -------------------------- | --------------------------------------- |
+| `preference_alert_standard_[0-5]` | Number | Alert type for each Standard prayer (Fajr=0, Dhuhr=1, Asr=2, Maghrib=3, Isha=4)           | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Standard prayer |
+| `preference_alert_extra_[0-4]`    | Number | Alert type for each Extra prayer (Midnight=0, Last Third=1, Suhoor=2, Duha=3, Istijaba=4) | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Extra prayer    |
 
 **Behavior:** When preference changes, notifications for that specific prayer are immediately rescheduled (protected by `isScheduling` guard).
 
