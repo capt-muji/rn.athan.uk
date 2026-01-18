@@ -141,27 +141,19 @@ export const cleanup = () => {
   clearPrefix('prayer_'); // Daily prayer times data
   clearPrefix('display_date'); // Current display date
   clearPrefix('fetched_years'); // Years that have been fetched from API
-
-  // --- UI Measurements (clear these to force re-measurement after UI changes) ---
-  // clearPrefix('measurements_list'); // List component position
-  // clearPrefix('measurements_date'); // Date component position
-  // clearPrefix('prayer_max_english_width_standard'); // Max width for standard prayers
-  // clearPrefix('prayer_max_english_width_extra'); // Max width for extra prayers
-
-  // --- User Preferences (notification settings) ---
-  // clearPrefix('preference_alert_standard_'); // Standard prayer alerts (6 prayers)
-  // clearPrefix('preference_alert_extra_'); // Extra prayer alerts (4 prayers)
-  // clearPrefix('preference_sound'); // Selected Athan sound
-  // clearPrefix('preference_mute_standard'); // Standard schedule mute state
-  // clearPrefix('preference_mute_extra'); // Extra schedule mute state
-  // clearPrefix('preference_progressbar_visible'); // Progress bar visibility state
-
-  // --- Notification Scheduling ---
-  // clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
-  // clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
-
-  // --- UI Popups & Modals ---
-  // clearPrefix('popup_update_last_check'); // Last app update check timestamp
-  // clearPrefix('popup_tip_athan_enabled'); // Athan tip modal shown state
-  // clearPrefix('popup_times_explained_enabled'); // Times explained modal state (0/1/2)
+  clearPrefix('measurements_list'); // List component position
+  clearPrefix('measurements_date'); // Date component position
+  clearPrefix('prayer_max_english_width_standard'); // Max width for standard prayers
+  clearPrefix('prayer_max_english_width_extra'); // Max width for extra prayers
+  clearPrefix('preference_alert_standard_'); // Standard prayer alerts (6 prayers)
+  clearPrefix('preference_alert_extra_'); // Extra prayer alerts (4 prayers)
+  clearPrefix('preference_sound'); // Selected Athan sound
+  clearPrefix('preference_mute_standard'); // Standard schedule mute state
+  clearPrefix('preference_mute_extra'); // Extra schedule mute state
+  clearPrefix('preference_progressbar_visible'); // Progress bar visibility state
+  clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
+  clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
+  clearPrefix('popup_update_last_check'); // Last app update check timestamp
+  clearPrefix('popup_tip_athan_enabled'); // Athan tip modal shown state
+  clearPrefix('popup_times_explained_enabled'); // Times explained modal state (0/1/2)
 };

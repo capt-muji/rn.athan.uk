@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 
 import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
-import { EXTRAS_ENGLISH, SCREEN, TEXT, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRAS_ENGLISH, SCREEN, PRAYERS_ENGLISH } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { getDateAtom } from '@/stores/sync';
@@ -52,14 +52,5 @@ export default function List({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-  },
-  hiddenText: {
-    position: 'absolute',
-    pointerEvents: 'none',
-    opacity: 0,
-    zIndex: -1000,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
-    backgroundColor: 'green',
   },
 });

@@ -129,10 +129,6 @@ export const clearUpgradeCache = (): void => {
     Database.clearPrefix('last_notification_schedule_check');
     logger.info('VERSION: Cleared last_notification_schedule_check');
 
-    // UI measurements - may change with UI updates
-    Database.clearPrefix('measurements_');
-    logger.info('VERSION: Cleared measurements_*');
-
     // Prayer text width cache - may change with font/UI updates
     Database.clearPrefix('prayer_max_english_width_');
     logger.info('VERSION: Cleared prayer_max_english_width_*');
