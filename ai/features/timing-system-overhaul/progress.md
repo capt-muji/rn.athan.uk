@@ -6,6 +6,45 @@
 **ADR:** ai/adr/005-timing-system-overhaul.md
 **Schema:** mocks/timing-system-schema.ts (data structures, examples, edge cases)
 **QA Review:** APPROVED (Grade A) - 2026-01-18
+**Branch:** `refactor_time_from_cleanup_prayer`
+
+---
+
+## Quick Start (Next Session)
+
+1. Read this file fully to understand the plan
+2. Read `mocks/timing-system-schema.ts` to understand target data structures
+3. Begin with **Phase 1, Task 1.1** - Create `shared/types/prayer.ts`
+4. Follow tasks sequentially within each phase
+5. Run existing tests after each task to catch regressions early
+
+---
+
+## Task Completion Protocol
+
+**CRITICAL: A task is NOT complete until ReviewerQA approves it with 100/100.**
+
+For each task:
+1. **Implement** - Write the code for the task
+2. **Self-check** - Verify it matches schema and requirements
+3. **Run tests** - Ensure no regressions
+4. **QA Review** - Submit to ReviewerQA agent with:
+   - Task number and description
+   - Files created/modified
+   - How it aligns with schema (`mocks/timing-system-schema.ts`)
+   - Any edge cases handled
+5. **Iterate** - If score < 100, fix issues and re-submit
+6. **Mark complete** - Only after 100/100 approval
+
+**ReviewerQA Prompt Template:**
+```
+Review Task X.X implementation for timing-system-overhaul:
+- Task: [description]
+- Files: [list of files]
+- Schema reference: mocks/timing-system-schema.ts
+- Verify: Type correctness, edge case handling, consistency with ADR-005
+Score out of 100. Must be 100/100 to proceed.
+```
 
 ---
 
