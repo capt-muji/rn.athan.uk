@@ -2,7 +2,7 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
 import { PageCoordinates, ScheduleType } from '@/shared/types';
-import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageObject } from '@/stores/storage';
+import { atomWithStorageBoolean, atomWithStorageNumber } from '@/stores/storage';
 
 const store = getDefaultStore();
 
@@ -22,8 +22,8 @@ export const scrollPositionAtom = atom(0);
 export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
 export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_width_extra', 0);
 
-export const measurementsListAtom = atomWithStorageObject<PageCoordinates>('measurements_list', emptyCoordinates);
-export const measurementsDateAtom = atomWithStorageObject<PageCoordinates>('measurements_date', emptyCoordinates);
+export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
+export const measurementsDateAtom = atom<PageCoordinates>(emptyCoordinates);
 
 export const progressBarVisibleAtom = atomWithStorageBoolean('preference_progressbar_visible', true);
 
