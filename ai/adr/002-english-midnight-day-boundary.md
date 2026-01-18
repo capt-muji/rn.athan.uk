@@ -1,6 +1,6 @@
 # ADR-002: English Midnight Day Boundary
 
-**Status:** Accepted
+**Status:** Superseded by ADR-004
 **Date:** 2026-01-15
 **Decision Makers:** <user>
 
@@ -138,3 +138,4 @@ User familiarity and predictability outweigh technical correctness. Users expect
 | Date | Author | Change |
 |------|--------|--------|
 | 2026-01-15 | <user> | Initial draft |
+| 2026-01-18 | <user> | Superseded by ADR-004 (Prayer-Based Day Boundary) |
