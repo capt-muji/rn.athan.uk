@@ -241,11 +241,11 @@ The app runs **3 concurrent timers** simultaneously, each with a specific respon
 
 #### Timer Types & Functions
 
-| Timer        | Purpose                                                          | Updates         | Trigger          |
-| ------------ | ---------------------------------------------------------------- | --------------- | ---------------- |
-| **Standard** | Countdown to next Standard prayer (Fajr/Dhuhr/Asr/Maghrib/Isha)  | Main display    | Prayer queue     |
-| **Extra**    | Countdown to next Extra prayer (Suhoor/Duha/Last Third/Istijaba) | Page 2 display  | Prayer queue     |
-| **Overlay**  | Countdown to user-selected prayer from overlay modal             | Overlay display | Manual selection |
+| Timer        | Purpose                                                                   | Updates         | Trigger          |
+| ------------ | ------------------------------------------------------------------------- | --------------- | ---------------- |
+| **Standard** | Countdown to next Standard prayer (Fajr/Dhuhr/Asr/Maghrib/Isha)           | Main display    | Prayer queue     |
+| **Extra**    | Countdown to next Extra prayer (Midnight/Suhoor/Duha/Last Third/Istijaba) | Page 2 display  | Prayer queue     |
+| **Overlay**  | Countdown to user-selected prayer from overlay modal                      | Overlay display | Manual selection |
 
 #### How They Work
 
@@ -297,6 +297,365 @@ Each schedule operates independently with its own day boundary:
   - Timer always shows next prayer countdown
   - ProgressBar always visible
   - Seamless transition across prayer boundaries
+
+### Timing System Architecture
+
+The timing system is the core of the app, responsible for determining which prayer is next, calculating countdowns, and managing schedule advancement.
+
+#### 24-Hour Prayer Cycles
+
+Each schedule operates on a prayer-based day boundary (not 00:00 midnight):
+
+```
+STANDARD SCHEDULE (6 prayers):
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│   05:30    07:00    12:15    15:30    17:45    19:15                       │
+│     ↓        ↓        ↓        ↓        ↓        ↓                         │
+│   Fajr → Sunrise → Dhuhr → Asr → Maghrib → Isha ─┐                         │
+│                                                   │                         │
+│                                          [ADVANCE DAY]                      │
+│                                                   │                         │
+│   Timer shows tomorrow's Fajr ←──────────────────┘                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+EXTRAS SCHEDULE (Non-Friday, 4 prayers):
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│   23:00      02:30      04:50      07:45                                   │
+│     ↓          ↓          ↓          ↓                                     │
+│  Midnight → Last Third → Suhoor → Duha ─────────┐                          │
+│                                                  │                          │
+│                                         [ADVANCE DAY]                       │
+│                                                  │                          │
+│   Timer shows tonight's Midnight ←──────────────┘                          │
+│   (still 14+ hours away!)                                                  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+EXTRAS SCHEDULE (Friday, 5 prayers):
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  23:00      02:30      04:50      07:45      12:30                         │
+│    ↓          ↓          ↓          ↓          ↓                           │
+│ Midnight → Last Third → Suhoor → Duha → Istijaba ─┐                        │
+│                                                    │                        │
+│                                           [ADVANCE DAY]                     │
+│                                                    │                        │
+│   Timer shows tonight's Midnight ←────────────────┘                        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### The Midnight-Crossing Problem
+
+**The Critical Bug (Current System)**
+
+In London summer, Isha can be at 1am. The current system stores:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  CURRENT DATA MODEL:                                                        │
+│  { date: "2026-06-21", time: "01:00", english: "Isha" }                    │
+│                                                                             │
+│  At 11pm (23:00) on June 21:                                               │
+│  ┌────────────────────────────────────────────────────────────────────┐    │
+│  │  isTimePassed("01:00")                                              │    │
+│  │  → Compares: 23:00 vs 01:00 (IGNORES DATE!)                        │    │
+│  │  → 23:00 > 01:00 = TRUE                                            │    │
+│  │  → Isha marked as PASSED ❌ (WRONG - it's still 2 hours away!)     │    │
+│  └────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  RESULT:                                                                    │
+│  • Active background highlights WRONG prayer                               │
+│  • Countdown shows WRONG time                                              │
+│  • isPassed styling is WRONG                                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**The Fix (New System)**
+
+The new system stores full datetime objects:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  NEW DATA MODEL:                                                            │
+│  {                                                                          │
+│    datetime: new Date("2026-06-22T01:00:00"),  // Actual moment            │
+│    belongsToDate: "2026-06-21",                // Islamic day              │
+│    english: "Isha"                                                         │
+│  }                                                                          │
+│                                                                             │
+│  At 11pm (23:00) on June 21:                                               │
+│  ┌────────────────────────────────────────────────────────────────────┐    │
+│  │  datetime > now                                                     │    │
+│  │  → 2026-06-22T01:00 > 2026-06-21T23:00                             │    │
+│  │  → TRUE ✓ (Isha is in the future)                                  │    │
+│  │                                                                     │    │
+│  │  countdown = datetime - now                                         │    │
+│  │  → 2 hours ✓                                                       │    │
+│  │                                                                     │    │
+│  │  isPassed = datetime < now                                          │    │
+│  │  → FALSE ✓                                                         │    │
+│  └────────────────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Data Flow: Schedule Advancement
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        CURRENT SYSTEM FLOW                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   Timer hits 0                                                              │
+│        │                                                                    │
+│        ▼                                                                    │
+│   incrementNextIndex(type)                                                  │
+│        │                                                                    │
+│        ▼                                                                    │
+│   Is nextIndex === 0? (wrapped around)                                      │
+│        │                                                                    │
+│   ┌────┴────┐                                                               │
+│   │ NO      │ YES                                                           │
+│   ▼         ▼                                                               │
+│ Continue   advanceScheduleToTomorrow(type)                                  │
+│            │                                                                │
+│            ├─► Close overlay (prevent stale state)                          │
+│            ├─► Fetch dayAfterTomorrow data                                  │
+│            ├─► Shift: yesterday←today, today←tomorrow, tomorrow←new         │
+│            ├─► Reset nextIndex to 0                                         │
+│            └─► Update date atom                                             │
+│                     │                                                       │
+│                     ▼                                                       │
+│            startTimerSchedule(type)                                         │
+│                     │                                                       │
+│                     ▼                                                       │
+│            calculateCountdown() ◄─── Uses "yesterday fallback" for Extras   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          NEW SYSTEM FLOW                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   Timer tick (every second)                                                 │
+│        │                                                                    │
+│        ▼                                                                    │
+│   nextPrayer = prayers.find(p => p.datetime > now)                         │
+│        │                                                                    │
+│        ▼                                                                    │
+│   Has nextPrayer changed since last tick?                                   │
+│        │                                                                    │
+│   ┌────┴────┐                                                               │
+│   │ NO      │ YES                                                           │
+│   ▼         ▼                                                               │
+│ Continue   refreshSequence() ◄─── Fetch more prayers if running low        │
+│            │                                                                │
+│            └─► UI auto-updates (derived state)                              │
+│                                                                             │
+│   countdown = nextPrayer.datetime - now  ◄─── Always 1 line, always correct │
+│   isPassed = prayer.datetime < now       ◄─── No date string comparison     │
+│   displayDate = nextPrayer.belongsToDate ◄─── Automatically derived         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Critical Edge Case Scenarios
+
+**Scenario 1: Isha at 11pm vs 1am**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  WINTER (Isha at 6pm) - Works fine in both systems                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   Timeline:     ... 17:00 ─── 18:00 ─── 19:00 ─── 20:00 ...               │
+│                        │         │                                          │
+│                    Maghrib     Isha                                         │
+│                                  │                                          │
+│   At 17:30:  isTimePassed("18:00") = FALSE ✓ (both systems correct)        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  SUMMER (Isha at 1am) - BUG in current system!                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   Timeline:     ... 22:00 ─── 23:00 ─── 00:00 ─── 01:00 ...               │
+│                                  │                   │                      │
+│                               NOW (11pm)           Isha                     │
+│                                                                             │
+│   CURRENT SYSTEM:                                                           │
+│   isTimePassed("01:00") at 23:00                                           │
+│   → Compares 23:00 vs 01:00 (same day assumed)                             │
+│   → 23 > 1 = TRUE ❌                                                        │
+│   → Isha incorrectly marked as passed!                                     │
+│                                                                             │
+│   NEW SYSTEM:                                                               │
+│   datetime = 2026-06-22T01:00:00                                           │
+│   now = 2026-06-21T23:00:00                                                │
+│   → datetime > now = TRUE ✓                                                │
+│   → Isha correctly shown as upcoming                                       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Scenario 2: Midnight Prayer at 11pm vs 1am**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  WINTER (Midnight prayer at 11pm)                                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   Maghrib: 16:00   Fajr: 06:30   Midpoint: 23:15                           │
+│                                                                             │
+│   Timeline:     ... 22:00 ─── 23:15 ─── 00:00 ─── 02:30 ...               │
+│                        │         │                   │                      │
+│                      NOW     Midnight            Last Third                 │
+│                                                                             │
+│   Both systems: Midnight at 23:15 today - no midnight crossing             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  SUMMER (Midnight prayer at 12:30am)                                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   Maghrib: 21:00   Fajr: 04:00   Midpoint: 00:30                           │
+│                                                                             │
+│   Timeline:     ... 22:00 ─── 23:30 ─── 00:30 ─── 02:00 ...               │
+│                        │         │         │         │                      │
+│                       NOW    system     Midnight  Last Third                │
+│                            midnight                                         │
+│                                                                             │
+│   CURRENT SYSTEM:                                                           │
+│   isTimePassed("00:30") at 23:30                                           │
+│   → 23 > 0 = TRUE ❌ (Wrong! Midnight is 1 hour away)                      │
+│                                                                             │
+│   NEW SYSTEM:                                                               │
+│   datetime = 2026-06-22T00:30:00                                           │
+│   now = 2026-06-21T23:30:00                                                │
+│   → datetime > now = TRUE ✓                                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Scenario 3: Both Schedules on Different Dates**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  Time: 10:00am on January 18 (Saturday)                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   STANDARD SCHEDULE:                                                        │
+│   • Isha (18:15) has NOT passed                                            │
+│   • Schedule date: January 18                                              │
+│   • Waiting for: Dhuhr → Asr → Maghrib → Isha                              │
+│                                                                             │
+│   EXTRAS SCHEDULE:                                                          │
+│   • Duha (08:08) has PASSED at 08:08                                       │
+│   • Schedule ADVANCED to: January 19                                        │
+│   • Waiting for: Midnight (tonight at 23:23)                               │
+│                                                                             │
+│   ┌──────────────────────┬──────────────────────┐                          │
+│   │   STANDARD TAB       │   EXTRAS TAB         │                          │
+│   ├──────────────────────┼──────────────────────┤                          │
+│   │   Date: Jan 18       │   Date: Jan 19       │  ◄── Different dates!   │
+│   │   Next: Dhuhr        │   Next: Midnight     │                          │
+│   │   Countdown: 2h 14m  │   Countdown: 13h 23m │                          │
+│   └──────────────────────┴──────────────────────┘                          │
+│                                                                             │
+│   THIS IS CORRECT BEHAVIOR - each schedule is independent                  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Data Model Comparison
+
+| Aspect                | Current (Date-Centric)                   | New (Prayer-Centric)                           |
+| --------------------- | ---------------------------------------- | ---------------------------------------------- |
+| **Storage**           | 3 maps: yesterday/today/tomorrow         | 1 sorted array: prayers[]                      |
+| **Next Prayer**       | Stored `nextIndex`, manually incremented | Derived: `prayers.find(p => p.datetime > now)` |
+| **isPassed**          | `date === today && isTimePassed(time)`   | `prayer.datetime < now`                        |
+| **Countdown**         | 40+ lines with yesterday fallback        | 1 line: `datetime - now`                       |
+| **Display Date**      | Separate atom, manually synced           | Derived: `nextPrayer.belongsToDate`            |
+| **Previous Prayer**   | Access `schedule.yesterday[5]`           | Access `prayers[currentIndex - 1]`             |
+| **Midnight Crossing** | Bug: times compared without dates        | Works: datetime is unambiguous                 |
+
+#### PrayerSequence Data Structure (New System)
+
+```typescript
+// Single sorted array replaces yesterday/today/tomorrow maps
+interface PrayerSequence {
+  type: ScheduleType;
+  prayers: Prayer[]; // Sorted by datetime, next 48-72 hours
+}
+
+interface Prayer {
+  id: string; // "standard_fajr_2026-01-18"
+  datetime: Date; // Full moment in time (NOT separate date/time strings)
+  belongsToDate: string; // Islamic day this prayer belongs to (per ADR-004)
+  english: string;
+  arabic: string;
+  type: ScheduleType;
+}
+
+// Everything is DERIVED from the sequence:
+const nextPrayer = prayers.find((p) => p.datetime > now);
+const countdown = nextPrayer.datetime.getTime() - Date.now();
+const isPassed = prayer.datetime < now;
+const prevPrayer = prayers[currentIndex - 1];
+const displayDate = nextPrayer.belongsToDate;
+const progress = (now - prev.datetime) / (next.datetime - prev.datetime);
+```
+
+#### Migration Strategy
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     PARALLEL MODEL MIGRATION                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   PHASE 1-4: Both models run simultaneously                                 │
+│   ┌─────────────────────────────────────────────────────────────────────┐  │
+│   │                                                                     │  │
+│   │   Current Model (Date-Centric)    New Model (Prayer-Centric)       │  │
+│   │   ┌─────────────────────────┐    ┌─────────────────────────┐       │  │
+│   │   │ yesterday/today/tomorrow│    │ PrayerSequence[]        │       │  │
+│   │   │ nextIndex               │    │ derived nextPrayer      │       │  │
+│   │   │ calculateCountdown()    │    │ datetime - now          │       │  │
+│   │   └───────────┬─────────────┘    └───────────┬─────────────┘       │  │
+│   │               │                              │                     │  │
+│   │               └──────────┬───────────────────┘                     │  │
+│   │                          ▼                                         │  │
+│   │               ┌─────────────────────┐                              │  │
+│   │               │ DIVERGENCE CHECK    │                              │  │
+│   │               │ (in __DEV__ mode)   │                              │  │
+│   │               │                     │                              │  │
+│   │               │ if (|old - new| > 2s)│                              │  │
+│   │               │   console.warn()    │                              │  │
+│   │               └─────────────────────┘                              │  │
+│   │                                                                     │  │
+│   └─────────────────────────────────────────────────────────────────────┘  │
+│                                                                             │
+│   PHASE 5-6: UI components migrate to new hooks                            │
+│                                                                             │
+│   PHASE 7: Old model removed (ONLY after divergence validation passes)     │
+│                                                                             │
+│   ROLLBACK: If issues found, remove useSequence flags → instant rollback   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**See Also:**
+
+- [ADR-004: Prayer-Based Day Boundary](/ai/adr/004-prayer-based-day-boundary.md)
+- [ADR-005: Timing System Overhaul](/ai/adr/005-timing-system-overhaul.md)
+- [Feature: Timing System Overhaul](/ai/features/timing-system-overhaul/)
+- [Data Schema Reference](/mocks/timing-system-schema.ts) - Complete examples of Prayer, PrayerSequence, edge cases
 
 ### Progress Bar
 
@@ -587,15 +946,15 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 
 ### UI State & Caching
 
-| Key                                 | Type    | Purpose                                                 | Lifetime   | Set When                              | Impact                                               |
-| ----------------------------------- | ------- | ------------------------------------------------------- | ---------- | ------------------------------------- | ---------------------------------------------------- |
-| `prayer_max_english_width_standard` | Number  | Cached max width of Standard prayer names for layout    | Session    | First render of prayer list           | Prevents repeated measurements, improves performance |
-| `prayer_max_english_width_extra`    | Number  | Cached max width of Extra prayer names for layout       | Session    | First render of extra prayer list     | Used for responsive text sizing                      |
-| `measurements_list`                 | Object  | Cached measurements for prayer list item positioning    | Session    | Component mount                       | Optimizes layout calculations, prevents jank         |
-| `measurements_date`                 | Object  | Cached measurements for date display area               | Session    | Component mount                       | Improves date bar rendering performance              |
-| `preference_progressbar_visible`    | Boolean | Progress bar visibility state (shown/hidden)            | Indefinite | User taps timer to toggle visibility  | Controls progress bar opacity with 250ms fade        |
-| `popup_tip_athan_enabled`           | Boolean | Whether "First Time Tips" popup has been shown          | Indefinite | App first launch                      | Only shows once in user's lifetime                   |
-| `popup_update_last_check`           | Number  | Timestamp of last app update check                      | Indefinite | After checking GitHub for new version | Only checks once per 24h (avoids API spam)           |
+| Key                                 | Type    | Purpose                                              | Lifetime   | Set When                              | Impact                                               |
+| ----------------------------------- | ------- | ---------------------------------------------------- | ---------- | ------------------------------------- | ---------------------------------------------------- |
+| `prayer_max_english_width_standard` | Number  | Cached max width of Standard prayer names for layout | Session    | First render of prayer list           | Prevents repeated measurements, improves performance |
+| `prayer_max_english_width_extra`    | Number  | Cached max width of Extra prayer names for layout    | Session    | First render of extra prayer list     | Used for responsive text sizing                      |
+| `measurements_list`                 | Object  | Cached measurements for prayer list item positioning | Session    | Component mount                       | Optimizes layout calculations, prevents jank         |
+| `measurements_date`                 | Object  | Cached measurements for date display area            | Session    | Component mount                       | Improves date bar rendering performance              |
+| `preference_progressbar_visible`    | Boolean | Progress bar visibility state (shown/hidden)         | Indefinite | User taps timer to toggle visibility  | Controls progress bar opacity with 250ms fade        |
+| `popup_tip_athan_enabled`           | Boolean | Whether "First Time Tips" popup has been shown       | Indefinite | App first launch                      | Only shows once in user's lifetime                   |
+| `popup_update_last_check`           | Number  | Timestamp of last app update check                   | Indefinite | After checking GitHub for new version | Only checks once per 24h (avoids API spam)           |
 
 **UI Cache Lifetime:** Measurement caches are cleared on app restart (session-based). Popup states persist indefinitely unless user manually clears app data.
 
