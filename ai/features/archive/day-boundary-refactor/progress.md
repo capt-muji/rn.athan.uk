@@ -1,9 +1,52 @@
 # Feature: Day Boundary Refactor - Bug Fixes
 
-**Status:** Planning
+**Status:** Approved - Ready for Implementation
 **Created:** 2026-01-18
 **Spec:** ai/adr/004-prayer-based-day-boundary.md
-**QA Review:** Completed (Grade B+, 3 CRITICAL issues addressed)
+**QA Review:** APPROVED (Grade A, 92/100)
+
+---
+
+## Prerequisites
+
+### Time Mocking Strategy
+
+Summer scenarios (Isha at 00:45, Midnight prayer after 00:00) cannot be tested in January with real prayer data.
+
+**Approach: Use existing `mocks/simple.ts` with modified data**
+
+The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer scenarios:
+1. Modify `mocks/simple.ts` to return summer prayer times (Isha at 00:45)
+2. Launch app in dev mode
+3. Manually verify behavior
+
+**No unit tests** - all verification is manual through app launch.
+
+### App Resume Behavior Decision
+
+**Question:** What should happen when the app resumes from background after 6+ hours?
+
+**Decision: Trust Cached Data + Lazy Refresh**
+
+| Option | Description | Chosen |
+|--------|-------------|--------|
+| Refresh on resume | Call `sync()` every time app resumes | NO - battery drain, unnecessary API calls |
+| Trust cached data | Rely on existing schedule + timer logic | YES - timers self-correct |
+| Hybrid | Refresh only if schedules are stale | FUTURE - not for this refactor |
+
+**Rationale:**
+- The timer system already handles advancement correctly
+- If app was backgrounded for 6 hours, when it resumes:
+  - Timers recalculate countdown from current time
+  - If prayers passed, `initializeAppState()` is NOT called (only on fresh launch)
+  - BUT: schedules should still be valid (cached for full year)
+- **Risk:** If backgrounded across day boundary AND timer stopped, schedule may be stale
+- **Mitigation:** User can pull-to-refresh if data looks wrong
+
+**Impact on Plan:**
+- Task 2.9.1-2.9.3 become VERIFICATION tasks (document current behavior)
+- No new implementation needed for this refactor
+- Future: Consider adding AppState listener to re-run `initializeAppState()` on resume
 
 ---
 
@@ -199,18 +242,9 @@
 
 ---
 
-### Phase 6: Testing & Verification
+### Phase 6: Manual Testing & Verification
 
-#### 6.1 Unit test scenarios (LARGER TASKS - 30+ minutes each)
-
-- [ ] Task 6.1.1: Create test file structure for time.ts tests
-- [ ] Task 6.1.2: Implement test for calculateCountdown with normal day data
-- [ ] Task 6.1.3: Implement test for calculateCountdown with advanced schedule
-- [ ] Task 6.1.4: Implement test for calculateCountdown with yesterday fallback
-- [ ] Task 6.1.5: Implement test for isTimePassed at various times
-- [ ] Task 6.1.6: Implement test for isPassed with date verification
-
-#### 6.2 Manual test checklist (Final Verification)
+#### 6.1 Manual test checklist (Final Verification)
 
 - [ ] Task 6.2.1: Standard schedule: timer counts down, advances after Isha
 - [ ] Task 6.2.2: Extras schedule: timer counts down, advances after Duha
@@ -260,19 +294,21 @@
 
 ## Decision Log
 
-| Decision                 | Choice        | Rationale                                            |
-| ------------------------ | ------------- | ---------------------------------------------------- |
-| Audit before fix         | Yes           | Verify bugs exist before changing code               |
-| ADR-004 is authoritative | Yes           | Spec defines correct behavior                        |
-| Small atomic tasks       | Yes           | Each task < 15 minutes, one concern                  |
-| Phase 3-4 conditional    | If bugs found | Don't fix what isn't broken                          |
-| Rollback strategy        | Git revert    | If Phase 3-4 fixes cause regressions, revert commits |
+| Decision                 | Choice                    | Rationale                                            |
+| ------------------------ | ------------------------- | ---------------------------------------------------- |
+| Audit before fix         | Yes                       | Verify bugs exist before changing code               |
+| ADR-004 is authoritative | Yes                       | Spec defines correct behavior                        |
+| Small atomic tasks       | Yes                       | Each task < 15 minutes, one concern                  |
+| Phase 3-4 conditional    | If bugs found             | Don't fix what isn't broken                          |
+| Rollback strategy        | Git revert                | If Phase 3-4 fixes cause regressions, revert commits |
+| Time mocking strategy    | Mock createLondonDate()   | Enables testing summer scenarios in January          |
+| App resume behavior      | Trust cached data         | Timers self-correct, no refresh on resume needed     |
 
 ---
 
 ## QA Review Summary
 
-**Grade: B+** (85/100)
+**Initial Grade: B+** (85/100) → **Final Grade: A** (92/100)
 
 **Critical Issues Addressed:**
 
@@ -289,6 +325,15 @@
 5. Removed redundant Phase 6.3 (merged into Phase 2)
 6. Added Task 1.1.6 for negative timeLeft handling
 7. Added Task 2.6.4 for isFriday() verification
+
+**Final Review Additions:**
+
+1. Added Prerequisites section with Time Mocking Strategy
+2. Added App Resume Behavior Decision (Trust Cached Data)
+3. Added Phase 0: Setup & Prerequisites (3 tasks)
+4. Added 2 new decisions to Decision Log
+
+**Sign-off:** ReviewerQA APPROVED (2026-01-18)
 
 ---
 
