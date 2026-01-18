@@ -25,6 +25,7 @@ Text.defaultProps = {
   // @ts-expect-error silent
   ...Text.defaultProps,
   allowFontScaling: false,
+  maxFontSizeMultiplier: 1,
 };
 
 export default function Layout() {
