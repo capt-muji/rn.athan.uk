@@ -14,7 +14,7 @@ web-build
 /android
 node_modules
 yarn.lock
-
+.env
 # macOS
 .DS_Store
 
