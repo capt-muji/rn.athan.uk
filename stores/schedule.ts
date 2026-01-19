@@ -43,6 +43,7 @@ export const createNextPrayerAtom = (type: ScheduleType) => {
     if (!sequence) return null;
 
     const now = TimeUtils.createLondonDate();
+    // 3-day buffer guarantees next prayer exists, but satisfy TypeScript
     return sequence.prayers.find((p) => p.datetime > now) ?? null;
   });
 };
@@ -62,7 +63,7 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
     const now = TimeUtils.createLondonDate();
     const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
 
-    // If no next prayer or it's the first, no previous
+    // refreshSequence guarantees previous prayer is kept for progress bar
     if (nextIndex <= 0) return null;
 
     return sequence.prayers[nextIndex - 1];
@@ -79,13 +80,11 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
 export const createDisplayDateAtom = (type: ScheduleType) => {
   return atom((get) => {
     const sequence = get(getSequenceAtom(type));
-    if (!sequence || sequence.prayers.length === 0) return null;
+    if (!sequence) return null;
 
     const now = TimeUtils.createLondonDate();
-    const nextPrayer = sequence.prayers.find((p) => p.datetime > now);
-
-    // If no next prayer, use the last prayer's belongsToDate
-    return nextPrayer?.belongsToDate ?? sequence.prayers[sequence.prayers.length - 1].belongsToDate;
+    // 3-day buffer guarantees next prayer exists
+    return sequence.prayers.find((p) => p.datetime > now)!.belongsToDate;
   });
 };
 
@@ -144,14 +143,18 @@ export const refreshSequence = (type: ScheduleType): void => {
   const nextFuturePrayer = sequence.prayers.find((p) => p.datetime > now);
   const currentDisplayDate = nextFuturePrayer?.belongsToDate ?? null;
 
+  // Find index of next prayer
+  const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
+
   // Filter prayers: keep future prayers OR passed prayers for current display date
-  // This ensures Midnight (23:17 Jan 18, belongsTo Jan 19) is kept when displaying Jan 19
-  // Memory-safe: passed prayers for OTHER dates are removed
-  const relevantPrayers = sequence.prayers.filter((p) => {
+  // ALSO keep the immediate previous prayer (for progress bar calculation)
+  const relevantPrayers = sequence.prayers.filter((p, index) => {
     // Always keep future prayers
     if (p.datetime > now) return true;
     // Keep passed prayers that belong to current display date (for display purposes)
     if (currentDisplayDate && p.belongsToDate === currentDisplayDate) return true;
+    // Keep the immediate previous prayer (for progress bar: Isha→Fajr transition)
+    if (nextIndex > 0 && index === nextIndex - 1) return true;
     return false;
   });
 
