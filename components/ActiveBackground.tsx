@@ -3,7 +3,7 @@ import { StyleSheet, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimation';
-import { useSchedule } from '@/hooks/useSchedule';
+import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { COLORS, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
@@ -12,11 +12,19 @@ interface Props {
 }
 
 export default function ActiveBackground({ type }: Props) {
-  const { schedule, isStandard } = useSchedule(type);
+  // NEW: Use sequence-based prayer data
+  // See: ai/adr/005-timing-system-overhaul.md
+  const { prayers, displayDate, isReady } = usePrayerSequence(type);
+  const isStandard = type === ScheduleType.Standard;
+
+  // Filter to today's prayers and find the next prayer index within that list
+  // This gives us 0-5 for standard, 0-6 for extras (same as old schedule.nextIndex)
+  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
+  const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
 
   // These derived values will recompute on every render when dependencies change
   // This is fine because they're just JavaScript calculations, not shared value modifications
-  const yPosition = schedule.nextIndex * STYLES.prayer.height;
+  const yPosition = (isReady && nextPrayerIndex >= 0 ? nextPrayerIndex : 0) * STYLES.prayer.height;
 
   // Initialize animations with starting values
   // These shared values are created once and persist between renders
