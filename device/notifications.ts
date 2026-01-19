@@ -5,7 +5,6 @@ import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
-import * as NotificationStore from '@/stores/notifications';
 
 export const updateAndroidChannel = async (sound: number) => {
   if (Platform.OS !== 'android') return;
@@ -28,11 +27,11 @@ export const addOneScheduledNotificationForPrayer = async (
   arabicName: string,
   date: string,
   time: string,
-  alertType: AlertType
+  alertType: AlertType,
+  soundPreference: number
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const sound = NotificationStore.getSoundPreference();
   const triggerDate = NotificationUtils.genTriggerDate(date, time);
-  const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, sound);
+  const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, soundPreference);
 
   try {
     const id = await Notifications.scheduleNotificationAsync({
@@ -41,7 +40,7 @@ export const addOneScheduledNotificationForPrayer = async (
         type: Notifications.SchedulableTriggerInputTypes.DATE,
         date: triggerDate,
         // Only include channelId for Android when alert type is Sound
-        channelId: alertType === AlertType.Sound ? `athan_${sound + 1}` : undefined,
+        channelId: alertType === AlertType.Sound ? `athan_${soundPreference + 1}` : undefined,
       },
     });
 

@@ -11,6 +11,7 @@ import { initializeListeners } from '@/device/listeners';
 import { openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
 import { initializeNotifications } from '@/shared/notifications';
+import { refreshNotifications } from '@/stores/notifications';
 import { syncLoadable } from '@/stores/sync';
 import {
   popupTipAthanEnabledAtom,
@@ -27,7 +28,7 @@ export default function Index() {
 
   useEffect(() => {
     // Initialize notifications and create channel on first load
-    initializeNotifications(checkInitialPermissions);
+    initializeNotifications(checkInitialPermissions, refreshNotifications);
 
     // Initialize background/foreground state listeners (sync UI as needed)
     initializeListeners(checkInitialPermissions);

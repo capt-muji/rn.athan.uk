@@ -1,10 +1,24 @@
+/**
+ * Timer store - countdown timers for prayer times
+ * Uses the prayer-centric sequence model
+ *
+ * @see ai/adr/005-timing-system-overhaul.md
+ */
+
+import { addDays } from 'date-fns';
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as TimeUtils from '@/shared/time';
 import { TimerStore, ScheduleType, TimerKey } from '@/shared/types';
-import { overlayAtom } from '@/stores/overlay';
-import { getSchedule, incrementNextIndex, advanceScheduleToTomorrow } from '@/stores/schedule';
+import { overlayAtom } from '@/stores/atoms/overlay';
+import {
+  refreshSequence,
+  getNextPrayer,
+  getSequenceAtom,
+  standardDisplayDateAtom,
+  extraDisplayDateAtom,
+} from '@/stores/schedule';
 
 const store = getDefaultStore();
 
@@ -34,10 +48,28 @@ const clearTimer = (timerKey: TimerKey) => {
   delete timers[timerKey];
 };
 
-// Starts a countdown timer for a prayer schedule
-const startTimerSchedule = (type: ScheduleType) => {
-  const schedule = getSchedule(type);
-  const { timeLeft, name } = TimeUtils.calculateCountdown(schedule, schedule.nextIndex);
+/**
+ * Sequence-based timer using prayer-centric model
+ *
+ * Uses getNextPrayer(type) to get countdown target
+ * Calculates countdown from nextPrayer.datetime - now
+ * Calls refreshSequence() when prayer passes
+ */
+const startSequenceTimer = (type: ScheduleType) => {
+  const nextPrayer = getNextPrayer(type);
+
+  // If no next prayer, sequence needs refresh
+  if (!nextPrayer) {
+    refreshSequence(type);
+    // Retry after refresh
+    const retryPrayer = getNextPrayer(type);
+    if (!retryPrayer) return; // Still no prayer, exit gracefully
+    return startSequenceTimer(type); // Restart with new data
+  }
+
+  const now = TimeUtils.createLondonDate();
+  const timeLeft = TimeUtils.getSecondsBetween(now, nextPrayer.datetime);
+  const name = nextPrayer.english;
 
   const isStandard = type === ScheduleType.Standard;
   const timerKey = isStandard ? 'standard' : 'extra';
@@ -47,39 +79,80 @@ const startTimerSchedule = (type: ScheduleType) => {
   clearTimer(timerKey);
   store.set(timerAtom, { timeLeft, name });
 
-  // 3. Start countdown interval
-  timers[timerKey] = setInterval(async () => {
+  // Start countdown interval
+  timers[timerKey] = setInterval(() => {
     const currentTime = store.get(timerAtom).timeLeft - 1;
 
     if (currentTime <= 0) {
       clearTimer(timerKey);
-      incrementNextIndex(type);
 
-      const { nextIndex } = getSchedule(type);
-      // 4. Handle prayer-based day transition or update next prayer
-      if (nextIndex === 0) {
-        await advanceScheduleToTomorrow(type);
-      }
-      return startTimerSchedule(type);
+      // Refresh sequence to advance to next prayer
+      refreshSequence(type);
+
+      // Restart timer with new next prayer
+      return startSequenceTimer(type);
     }
 
-    // 5. Auto-close overlay when timer is 2 seconds or less
-    // Only if overlay is open and showing the same schedule type (standard/extra)
+    // Auto-close overlay when timer is 2 seconds or less
     const overlay = store.get(overlayAtom);
     if (overlay.isOn && overlay.scheduleType === type && currentTime <= 2) {
       store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
-    // 6. Update countdown atom
+    // Update countdown atom
     store.set(timerAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 
-// Starts the overlay countdown timer for selected prayer
+/**
+ * Starts the overlay countdown timer for selected prayer
+ * Uses sequence-based approach to get prayer by index
+ *
+ * Includes tomorrow prayer fallback for passed prayers (matches usePrayer.ts logic)
+ */
 const startTimerOverlay = () => {
   const overlay = store.get(overlayAtom);
-  const schedule = getSchedule(overlay.scheduleType);
-  const { timeLeft, name } = TimeUtils.calculateCountdown(schedule, overlay.selectedPrayerIndex);
+  const isStandard = overlay.scheduleType === ScheduleType.Standard;
+
+  // Get sequence and displayDate for selected schedule type
+  const sequenceAtom = getSequenceAtom(overlay.scheduleType);
+  const displayDateAtom = isStandard ? standardDisplayDateAtom : extraDisplayDateAtom;
+
+  const sequence = store.get(sequenceAtom);
+  const displayDate = store.get(displayDateAtom);
+
+  if (!sequence || !displayDate) {
+    clearTimer('overlay');
+    store.set(overlayTimerAtom, { timeLeft: 0, name: 'Prayer' });
+    return;
+  }
+
+  const now = TimeUtils.createLondonDate();
+
+  // Get today's prayers and selected prayer by index
+  // This matches hooks/usePrayer.ts:22-23
+  const todayPrayers = sequence.prayers.filter((p) => p.belongsToDate === displayDate);
+  let selectedPrayer = todayPrayers[overlay.selectedPrayerIndex];
+
+  // Check if selected prayer has passed
+  const isPassed = selectedPrayer ? selectedPrayer.datetime < now : false;
+
+  // Tomorrow prayer fallback for passed prayers (similar intent to usePrayer.ts:46-55)
+  // When a prayer is passed in overlay, show tomorrow's same prayer
+  // Uses explicit tomorrow date calculation for robustness (handles DST, multi-day sequences)
+  if (isPassed && selectedPrayer) {
+    const tomorrow = addDays(new Date(displayDate), 1);
+    const tomorrowDate = TimeUtils.formatDateShort(tomorrow);
+    const tomorrowPrayers = sequence.prayers.filter((p) => p.belongsToDate === tomorrowDate);
+    const tomorrowPrayer = tomorrowPrayers[overlay.selectedPrayerIndex];
+    if (tomorrowPrayer) {
+      selectedPrayer = tomorrowPrayer;
+    }
+  }
+
+  // Calculate countdown from prayer datetime
+  const timeLeft = selectedPrayer ? TimeUtils.getSecondsBetween(now, selectedPrayer.datetime) : 0;
+  const name = selectedPrayer?.english ?? 'Prayer';
 
   clearTimer('overlay');
   store.set(overlayTimerAtom, { timeLeft, name });
@@ -92,12 +165,13 @@ const startTimerOverlay = () => {
   }, 1000);
 };
 
-// Initializes all countdown timers - standard, extra, overlay
-// Always starts all timers for continuous countdown display
+/**
+ * Initializes all countdown timers - standard, extra, overlay
+ * Always starts all timers for continuous countdown display
+ */
 const startTimers = () => {
-  // Always start both schedule timers - they show tomorrow's countdown if today's finished
-  startTimerSchedule(ScheduleType.Standard);
-  startTimerSchedule(ScheduleType.Extra);
+  startSequenceTimer(ScheduleType.Standard);
+  startSequenceTimer(ScheduleType.Extra);
 
   startTimerOverlay();
 };

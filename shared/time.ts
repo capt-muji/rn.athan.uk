@@ -10,10 +10,10 @@ import {
   isYesterday,
   subDays,
 } from 'date-fns';
-import { formatInTimeZone } from 'date-fns-tz';
+import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
 import { TIME_ADJUSTMENTS } from '@/shared/constants';
-import { DaySelection, ScheduleStore, TimerCallbacks } from '@/shared/types';
+import { DaySelection, Prayer, TimerCallbacks } from '@/shared/types';
 
 /**
  * Creates a new Date object in London timezone
@@ -220,17 +220,6 @@ export const isFriday = (date?: string | Date): boolean => {
 };
 
 /**
- * Checks if all prayers for the day have passed by checking the last prayer time
- * @param schedule Schedule object containing prayer times
- * @returns boolean indicating if the last prayer has passed
- */
-export const isLastPrayerPassed = (schedule: ScheduleStore): boolean => {
-  const lastIndex = Object.keys(schedule.today).length - 1;
-  const lastPrayer = schedule.today[lastIndex];
-  return isTimePassed(lastPrayer.time);
-};
-
-/**
  * Checks if current month is December in London timezone
  * @returns boolean indicating if current month is December
  */
@@ -241,52 +230,6 @@ export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
  * @returns Current year number
  */
 export const getCurrentYear = (): number => createLondonDate().getFullYear();
-
-/**
- * Calculates the countdown time for a specific prayer from the prayer schedule
- * @param schedule Prayer schedule containing today's and tomorrow's prayer times
- * @param index Index of the prayer in the schedule
- * @returns Object containing remaining time in seconds and prayer name
- */
-export const calculateCountdown = (schedule: ScheduleStore, index: number) => {
-  const todayPrayer = schedule.today[index];
-  const tomorrowPrayer = schedule.tomorrow[index];
-  const yesterdayPrayer = schedule.yesterday[index];
-
-  const today = formatDateShort(createLondonDate());
-
-  // If schedule has advanced (todayPrayer is tomorrow)
-  if (todayPrayer.date !== today) {
-    // For the next prayer, check if yesterday's prayer is still upcoming
-    // This handles Extras schedule where Midnight (last prayer) is still upcoming after Duha passes
-    const isNextPrayer = index === schedule.nextIndex;
-    if (isNextPrayer) {
-      const yesterdayTimeLeft = secondsRemainingUntil(yesterdayPrayer.time, yesterdayPrayer.date);
-      // If yesterday's prayer is still in the future, use it (e.g., Midnight at 23:23 after Duha at 9am)
-      if (yesterdayTimeLeft > 0) {
-        return {
-          timeLeft: yesterdayTimeLeft,
-          name: yesterdayPrayer.english,
-        };
-      }
-    }
-    // Otherwise use today's prayer (which is chronologically tomorrow)
-    const timeLeft = secondsRemainingUntil(todayPrayer.time, todayPrayer.date);
-    return {
-      timeLeft,
-      name: todayPrayer.english,
-    };
-  }
-
-  // Use tomorrow's prayer time if today's has passed
-  const prayer = isTimePassed(todayPrayer.time) ? tomorrowPrayer : todayPrayer;
-  const timeLeft = secondsRemainingUntil(prayer.time, prayer.date);
-
-  return {
-    timeLeft,
-    name: prayer.english,
-  };
-};
 
 /**
  * Creates a timer that counts down from specified seconds
@@ -310,4 +253,80 @@ export const timer = (timeLeft: number, callbacks: TimerCallbacks): ReturnType<t
   const timerId = setInterval(onInterval, 1000);
 
   return timerId;
+};
+
+// =============================================================================
+// NEW TIMING SYSTEM UTILITIES (Prayer-Centric Model)
+// See: ai/adr/005-timing-system-overhaul.md
+// =============================================================================
+
+/**
+ * Creates a full Date object from date and time strings
+ * Used to combine API data (separate date/time) into Prayer.datetime
+ *
+ * IMPORTANT: Prayer times from API are in London timezone.
+ * This function interprets the datetime as London time and converts to UTC.
+ *
+ * @param date Date string in YYYY-MM-DD format
+ * @param time Time string in HH:mm format
+ * @returns Date object representing the exact moment (internally UTC)
+ *
+ * @example
+ * createPrayerDatetime("2026-01-18", "06:12")
+ * // Returns: Date representing 2026-01-18T06:12:00 London time
+ */
+export const createPrayerDatetime = (date: string, time: string): Date => {
+  // Create datetime string and interpret it as London time
+  // fromZonedTime: "this datetime IS in London timezone, give me the UTC equivalent"
+  const isoString = `${date}T${time}:00`;
+  return fromZonedTime(isoString, 'Europe/London');
+};
+
+/**
+ * Checks if a prayer is in the future
+ * Simple comparison: prayer.datetime > now
+ *
+ * @param prayer Prayer object with datetime field
+ * @returns true if prayer hasn't occurred yet
+ *
+ * @example
+ * // At 10:00am
+ * isPrayerInFuture(dhuhrPrayer) // Dhuhr at 12:14 → true
+ * isPrayerInFuture(fajrPrayer)  // Fajr at 06:12 → false
+ */
+export const isPrayerInFuture = (prayer: Prayer): boolean => {
+  return prayer.datetime > createLondonDate();
+};
+
+/**
+ * Calculates the difference in seconds between two dates
+ * Used for countdown calculation: nextPrayer.datetime - now
+ *
+ * @param from Start date (typically "now")
+ * @param to End date (typically prayer.datetime)
+ * @returns Difference in seconds (positive if 'to' is in future)
+ *
+ * @example
+ * getSecondsBetween(now, prayerTime)
+ * // Returns: 7234 (seconds until prayer)
+ */
+export const getSecondsBetween = (from: Date, to: Date): number => {
+  return Math.floor((to.getTime() - from.getTime()) / 1000);
+};
+
+/**
+ * Calculates countdown seconds from a Prayer object
+ * Simplified replacement for old calculateCountdown(schedule, index)
+ * See: ai/adr/005-timing-system-overhaul.md, Task 6.2
+ *
+ * @param prayer Prayer object with datetime field
+ * @returns Seconds remaining until prayer (positive if future, negative if passed)
+ *
+ * @example
+ * calculateCountdownFromPrayer(fajrPrayer)
+ * // Returns: 3600 (1 hour until Fajr)
+ */
+export const calculateCountdownFromPrayer = (prayer: Prayer): number => {
+  const now = createLondonDate();
+  return Math.floor((prayer.datetime.getTime() - now.getTime()) / 1000);
 };

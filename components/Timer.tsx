@@ -5,12 +5,12 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
 import ProgressBar from './ProgressBar';
 
-import { useSchedule } from '@/hooks/useSchedule';
+import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
-import { standardTimerAtom, extraTimerAtom, overlayTimerAtom } from '@/stores/timer';
+import { overlayTimerAtom } from '@/stores/timer';
 import { progressBarVisibleAtom } from '@/stores/ui';
 
 interface Props {
@@ -18,13 +18,19 @@ interface Props {
 }
 
 export default function Timer({ type }: Props) {
-  const { isStandard } = useSchedule(type);
+  // NEW: Use sequence-based countdown hook
+  // See: ai/adr/005-timing-system-overhaul.md
+  const { timeLeft, prayerName, isReady } = useCountdown(type);
 
   const overlay = useAtomValue(overlayAtom);
   const setProgressBarVisible = useSetAtom(progressBarVisibleAtom);
 
-  const timerAtom = overlay.isOn ? overlayTimerAtom : isStandard ? standardTimerAtom : extraTimerAtom;
-  const timer = useAtomValue(timerAtom);
+  // Overlay mode uses dedicated overlay timer atom (selected prayer countdown)
+  const overlayTimer = useAtomValue(overlayTimerAtom);
+
+  // Use overlay timer when overlay is on, otherwise use sequence-based countdown
+  const displayName = overlay.isOn ? overlayTimer.name : prayerName;
+  const displayTime = overlay.isOn ? overlayTimer.timeLeft : timeLeft;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
@@ -35,11 +41,16 @@ export default function Timer({ type }: Props) {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
+  // Show loading state if countdown not ready (sequence not initialized)
+  if (!isReady && !overlay.isOn) {
+    return null;
+  }
+
   return (
     <Animated.View style={[styles.container]}>
       <Pressable onPress={handlePress} disabled={overlay.isOn}>
-        <Text style={[styles.text]}>{timer.name} in</Text>
-        <Animated.Text style={[styles.timer, animatedStyle]}>{formatTime(timer.timeLeft)}</Animated.Text>
+        <Text style={[styles.text]}>{displayName} in</Text>
+        <Animated.Text style={[styles.timer, animatedStyle]}>{formatTime(displayTime)}</Animated.Text>
 
         <ProgressBar type={type} />
       </Pressable>

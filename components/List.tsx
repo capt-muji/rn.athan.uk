@@ -1,13 +1,11 @@
-import { useAtomValue } from 'jotai';
 import { useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
-import { EXTRAS_ENGLISH, SCREEN, PRAYERS_ENGLISH } from '@/shared/constants';
-import * as TimeUtils from '@/shared/time';
+import { usePrayerSequence } from '@/hooks/usePrayerSequence';
+import { SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { getDateAtom } from '@/stores/sync';
 import { getMeasurementsList, setMeasurementsList } from '@/stores/ui';
 
 interface Props {
@@ -15,17 +13,15 @@ interface Props {
 }
 
 export default function List({ type }: Props) {
-  const dateAtom = getDateAtom(type);
-  useAtomValue(dateAtom); // Make component reactive to date changes
-
+  // NEW: Use sequence-based prayers
+  // See: ai/adr/005-timing-system-overhaul.md
+  const { prayers, displayDate, isReady } = usePrayerSequence(type);
   const isStandard = type === ScheduleType.Standard;
   const listRef = useRef<View>(null);
 
-  const scheduleLength = isStandard
-    ? PRAYERS_ENGLISH.length
-    : TimeUtils.isFriday()
-      ? EXTRAS_ENGLISH.length
-      : EXTRAS_ENGLISH.length - 1; // Exclude Istijaba on non-Friday
+  // Filter prayers to current displayDate
+  // This automatically handles Friday Istijaba logic via createPrayerSequence
+  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
 
   const handleLayout = () => {
     if (!listRef.current || !isStandard) return;
@@ -39,10 +35,13 @@ export default function List({ type }: Props) {
     });
   };
 
+  // Show nothing if sequence not ready
+  if (!isReady) return null;
+
   return (
     <View ref={listRef} onLayout={handleLayout} style={[styles.container]}>
       <ActiveBackground type={type} />
-      {Array.from({ length: scheduleLength }).map((_, index) => (
+      {todayPrayers.map((_, index) => (
         <Prayer key={index} index={index} type={type} />
       ))}
     </View>

@@ -14,7 +14,6 @@ import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
-import { getDateAtom } from '@/stores/sync';
 import { refreshUIAtom, showSheet } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
@@ -31,8 +30,6 @@ interface Props {
 
 export default function Alert({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
-  const dateAtom = getDateAtom(type);
-  const date = useAtomValue(dateAtom);
 
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
@@ -88,12 +85,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     if (Prayer.isNext && !Schedule.currentMuted) AnimFill.animate(1);
   }, [Prayer.isNext, Schedule.currentMuted]);
 
+  // Cascade animation when date changes and we're at first prayer
   useEffect(() => {
-    if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
+    if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.nextPrayerIndex === 0 && index !== 0) {
       const delay = getCascadeDelay(index, type);
       AnimFill.animate(0, { delay });
     }
-  }, [date]);
+  }, [Schedule.displayDate]);
 
   // Effects
   // Sync alert preferences with state

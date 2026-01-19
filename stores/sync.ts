@@ -1,49 +1,27 @@
+/**
+ * Sync layer - App initialization and data fetching
+ * Uses the prayer-centric sequence model
+ *
+ * @see ai/adr/005-timing-system-overhaul.md
+ */
+
 import { atom } from 'jotai';
 import { loadable } from 'jotai/utils';
-import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Api from '@/api/client';
 import { APP_CONFIG } from '@/shared/config';
-import { PRAYER_INDEX_ASR } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
-import { atomWithStorageString } from '@/stores/storage';
 import * as Timer from '@/stores/timer';
 import { handleAppUpgrade } from '@/stores/version';
 
-const store = getDefaultStore();
-
 // --- Atoms ---
 export const syncLoadable = loadable(atom(async () => sync()));
-export const standardDateAtom = atomWithStorageString('display_date_standard', '');
-export const extraDateAtom = atomWithStorageString('display_date_extra', '');
 
 // --- Helpers ---
-export const getDateAtom = (type: ScheduleType) => (type === ScheduleType.Standard ? standardDateAtom : extraDateAtom);
-
-// --- Actions ---
-export const triggerSyncLoadable = () => store.get(syncLoadable);
-
-// Set the date for a specific schedule (used when advancing to tomorrow)
-export const setScheduleDate = (type: ScheduleType, date: string) => {
-  const dateAtom = getDateAtom(type);
-  store.set(dateAtom, date);
-};
-
-// Update the stored date based on the current schedule's Asr prayer time
-const setDate = () => {
-  const standardSchedule = store.get(ScheduleStore.standardScheduleAtom);
-  const extraSchedule = store.get(ScheduleStore.extraScheduleAtom);
-
-  const standardDate = standardSchedule.today[PRAYER_INDEX_ASR].date;
-  const extraDate = extraSchedule.today[0].date;
-
-  store.set(standardDateAtom, standardDate);
-  store.set(extraDateAtom, extraDate);
-};
 
 // Check if we need to pre-fetch next year's data
 // Returns true if it's December and we haven't yet fetched next year's data
@@ -58,10 +36,18 @@ const isJanuaryFirst = (date: Date): boolean => {
   return date.getMonth() === 0 && date.getDate() === 1;
 };
 
-// Initialize or reinitialize the app's core state
-// 1. Sets up both standard and extra prayer schedules
-// 2. Updates the stored date
-// 3. Starts the prayer time monitoring timers
+// --- Actions ---
+export const triggerSyncLoadable = () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { getDefaultStore } = require('jotai/vanilla');
+  return getDefaultStore().get(syncLoadable);
+};
+
+/**
+ * Initialize or reinitialize the app's core state
+ * 1. Sets up both standard and extra prayer sequences
+ * 2. Starts the prayer time monitoring timers
+ */
 const initializeAppState = async (date: Date) => {
   // SCENARIO 1: January 1st - Fetch previous year's Dec 31 data for ProgressBar
   // This is MANDATORY - ProgressBar needs yesterday's Isha time to calculate progress
@@ -80,33 +66,21 @@ const initializeAppState = async (date: Date) => {
     }
   }
 
-  ScheduleStore.setSchedule(ScheduleType.Standard, date);
-  ScheduleStore.setSchedule(ScheduleType.Extra, date);
-
-  setDate();
-
-  // Advance schedules if last prayer has already passed
-  const standardSchedule = ScheduleStore.getSchedule(ScheduleType.Standard);
-  const extraSchedule = ScheduleStore.getSchedule(ScheduleType.Extra);
-
-  const standardLast = standardSchedule.today[Object.keys(standardSchedule.today).length - 1];
-  const extraLast = extraSchedule.today[Object.keys(extraSchedule.today).length - 1];
-
-  if (TimeUtils.isTimePassed(standardLast.time)) {
-    await ScheduleStore.advanceScheduleToTomorrow(ScheduleType.Standard);
-  }
-  if (TimeUtils.isTimePassed(extraLast.time)) {
-    await ScheduleStore.advanceScheduleToTomorrow(ScheduleType.Extra);
-  }
+  // Initialize prayer sequences (prayer-centric model)
+  // See: ai/adr/005-timing-system-overhaul.md
+  ScheduleStore.setSequence(ScheduleType.Standard, date);
+  ScheduleStore.setSequence(ScheduleType.Extra, date);
 
   Timer.startTimers();
 };
 
-// Determines if the app needs to fetch fresh prayer time data
-// Returns true if:
-// 1. Dev mode is enabled (EXPO_PUBLIC_DEV_MODE=true)
-// 2. Schedule is empty (no data for today)
-// 3. It's December and next year's data needs fetching
+/**
+ * Determines if the app needs to fetch fresh prayer time data
+ * Returns true if:
+ * 1. Dev mode is enabled (EXPO_PUBLIC_DEV_MODE=true)
+ * 2. Schedule is empty (no data for today)
+ * 3. It's December and next year's data needs fetching
+ */
 const needsDataUpdate = (): boolean => {
   if (APP_CONFIG.isDev) return true;
 
@@ -121,10 +95,12 @@ const needsDataUpdate = (): boolean => {
   return false;
 };
 
-// Fetches and stores new prayer time data
-// 1. Cleans up old data
-// 2. Fetches current year (and optionally next year) data
-// 3. Saves data to local storage and marks years as fetched
+/**
+ * Fetches and stores new prayer time data
+ * 1. Cleans up old data
+ * 2. Fetches current year (and optionally next year) data
+ * 3. Saves data to local storage and marks years as fetched
+ */
 const updatePrayerData = async () => {
   logger.info('SYNC: Starting data refresh');
   Database.cleanup();
@@ -161,12 +137,14 @@ const updatePrayerData = async () => {
   }
 };
 
-// Main synchronization function - App entry point
-// Flow:
-// 1. Checks for app upgrade and clears cache if needed
-// 2. Checks if data update is needed
-// 3. Fetches new data if required
-// 4. Initializes app state with current date
+/**
+ * Main synchronization function - App entry point
+ * Flow:
+ * 1. Checks for app upgrade and clears cache if needed
+ * 2. Checks if data update is needed
+ * 3. Fetches new data if required
+ * 4. Initializes app state with current date
+ */
 export const sync = async () => {
   try {
     handleAppUpgrade();

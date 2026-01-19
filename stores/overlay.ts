@@ -1,29 +1,41 @@
-import { atom } from 'jotai';
+/**
+ * Overlay state management
+ * Part of the new prayer-centric timing system
+ *
+ * @see ai/adr/005-timing-system-overhaul.md
+ */
+
 import { getDefaultStore } from 'jotai/vanilla';
 
-import * as TimeUtils from '@/shared/time';
-import { OverlayStore, ScheduleType } from '@/shared/types';
-import { getSchedule } from '@/stores/schedule';
+import { ScheduleType } from '@/shared/types';
+import { overlayAtom as overlayAtomImport } from '@/stores/atoms/overlay';
+import { getNextPrayer } from '@/stores/schedule';
 import { startTimerOverlay, standardTimerAtom, extraTimerAtom } from '@/stores/timer';
+
+// Re-export for backward compatibility
+export { overlayAtom } from '@/stores/atoms/overlay';
+
+// Local alias for internal use
+const overlayAtom = overlayAtomImport;
 
 const store = getDefaultStore();
 
-// --- Atoms ---
-
-// Split into two separate atoms
-
-const overlayAtom = atom<OverlayStore>({
-  isOn: false,
-  selectedPrayerIndex: 0,
-  scheduleType: ScheduleType.Standard,
-});
-
 // --- Actions ---
 
+/**
+ * Checks if overlay can be shown for a schedule type
+ * Uses sequence-based check: if no next prayer, all prayers have passed
+ *
+ * @param type Schedule type to check
+ * @returns true if overlay can be shown (all passed or timer > 2 seconds)
+ */
 const canShowOverlay = (type: ScheduleType): boolean => {
-  const schedule = getSchedule(type);
-  if (TimeUtils.isLastPrayerPassed(schedule)) return true;
+  // NEW: Use sequence-based check for "all prayers passed"
+  // If getNextPrayer returns null, all prayers in sequence have passed
+  const nextPrayer = getNextPrayer(type);
+  if (!nextPrayer) return true; // All prayers passed, always allow
 
+  // Check timer - don't allow overlay if prayer is about to pass
   const timerAtom = type === ScheduleType.Standard ? standardTimerAtom : extraTimerAtom;
   const timeLeft = store.get(timerAtom).timeLeft;
   return timeLeft > 2;
@@ -47,4 +59,4 @@ const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
   startTimerOverlay();
 };
 
-export { overlayAtom, toggleOverlay, setSelectedPrayerIndex, canShowOverlay };
+export { toggleOverlay, setSelectedPrayerIndex, canShowOverlay };

@@ -13,7 +13,6 @@ import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
-import { getDateAtom } from '@/stores/sync';
 import { refreshUIAtom } from '@/stores/ui';
 
 interface Props {
@@ -24,8 +23,7 @@ interface Props {
 
 export default function Prayer({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
-  const dateAtom = getDateAtom(type);
-  const date = useAtomValue(dateAtom);
+
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
@@ -56,12 +54,13 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
     if (Prayer.isNext) AnimColor.animate(1);
   }, [Prayer.isNext]);
 
+  // Cascade animation when date changes and we're at first prayer
   useEffect(() => {
-    if (!Schedule.isLastPrayerPassed && Schedule.schedule.nextIndex === 0 && index !== 0) {
+    if (!Schedule.isLastPrayerPassed && Schedule.nextPrayerIndex === 0 && index !== 0) {
       const delay = getCascadeDelay(index, type);
       AnimColor.animate(0, { delay });
     }
-  }, [date]);
+  }, [Schedule.displayDate]);
 
   return (
     <Pressable style={styles.container} onPress={handlePress}>

@@ -154,6 +154,6 @@ export const cleanup = () => {
   clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
   clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
   clearPrefix('popup_update_last_check'); // Last app update check timestamp
-  clearPrefix('popup_tip_athan_enabled'); // Athan tip modal shown state
-  clearPrefix('popup_times_explained_enabled'); // Times explained modal state (0/1/2)
+  // clearPrefix('popup_tip_athan_enabled'); // Athan tip modal shown state
+  // clearPrefix('popup_times_explained_enabled'); // Times explained modal state (0/1/2)
 };

@@ -1,6 +1,7 @@
 import { AppState, AppStateStatus } from 'react-native';
 
 import { initializeNotifications } from '@/shared/notifications';
+import { refreshNotifications } from '@/stores/notifications';
 import { sync } from '@/stores/sync';
 import { setRefreshUI } from '@/stores/ui';
 
@@ -17,7 +18,7 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
       // Only initialize notifications when coming from background
       // NOT on initial app launch (handled by app/index.tsx)
       if (previousAppState === 'background') {
-        initializeNotifications(checkPermissions);
+        initializeNotifications(checkPermissions, refreshNotifications);
       }
 
       // Only run sync when coming from background
