@@ -171,8 +171,8 @@ export const refreshSequence = (type: ScheduleType): void => {
     const newSequence = PrayerUtils.createPrayerSequence(type, tomorrow, 3);
 
     // Merge: keep current relevant prayers + add new prayers that aren't duplicates
-    const existingIds = new Set(relevantPrayers.map((p) => p.id));
-    const newPrayers = newSequence.prayers.filter((p) => !existingIds.has(p.id));
+    const existingPrayers = new Set(relevantPrayers.map((p) => `${p.english}_${p.datetime.getTime()}`));
+    const newPrayers = newSequence.prayers.filter((p) => !existingPrayers.has(`${p.english}_${p.datetime.getTime()}`));
 
     const mergedPrayers = [...relevantPrayers, ...newPrayers].sort(
       (a, b) => a.datetime.getTime() - b.datetime.getTime()
