@@ -33,8 +33,7 @@ export default function Index() {
     // Initialize background/foreground state listeners (sync UI as needed)
     initializeListeners(checkInitialPermissions);
 
-    // TODO: Temporarily disabled because github raw URL has been changed
-    // Check for updates in background
+    // Check for updates in background (currently disabled - github raw URL changed)
     // checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
   }, []);
 
