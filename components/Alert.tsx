@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -48,6 +48,12 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     toColor: COLORS.activePrayer,
   });
 
+  // Detect if this prayer is currently selected in the overlay (for main schedule alerts)
+  const isSelectedForOverlay = useMemo(
+    () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
+    [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
+  );
+
   const [isPopupActive, setIsPopupActive] = useState(false);
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -87,11 +93,17 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   // Cascade animation when date changes and we're at first prayer
   useEffect(() => {
-    if (!isPopupActive && !Schedule.isLastPrayerPassed && Schedule.nextPrayerIndex === 0 && index !== 0) {
+    if (
+      !isSelectedForOverlay &&
+      !isPopupActive &&
+      !Schedule.isLastPrayerPassed &&
+      Schedule.nextPrayerIndex === 0 &&
+      index !== 0
+    ) {
       const delay = getCascadeDelay(index, type);
       AnimFill.animate(0, { delay });
     }
-  }, [Schedule.displayDate]);
+  }, [Schedule.displayDate, isSelectedForOverlay]);
 
   // Effects
   // Sync alert preferences with state
@@ -117,10 +129,10 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
       return;
     }
 
-    const colorPos = Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = isSelectedForOverlay || Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
 
     AnimFill.animate(colorPos, { duration: 50 });
-  }, [isPopupActive, Prayer.isOverlay, Schedule.currentMuted]);
+  }, [isSelectedForOverlay, isPopupActive, Prayer.isOverlay, Schedule.currentMuted]);
 
   useEffect(() => {
     return () => {
