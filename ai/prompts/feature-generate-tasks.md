@@ -144,5 +144,7 @@ Files updated:
 
 ReviewerQA Score: 100/100
 
-Next step: Run ai/prompts/feature-start-tasks.md to begin implementation
+Next steps:
+- Run ai/prompts/feature-start-tasks.md to begin implementation
+- Update handoff.md with plan summary (if needed)
 ```
