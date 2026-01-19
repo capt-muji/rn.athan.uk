@@ -1,19 +1,8 @@
-import {
-  format,
-  addDays,
-  setHours,
-  setMinutes,
-  addMinutes as addMins,
-  intervalToDuration,
-  isFuture,
-  isToday,
-  isYesterday,
-  subDays,
-} from 'date-fns';
+import { format, setHours, setMinutes, intervalToDuration, isFuture, isToday, isYesterday, subDays } from 'date-fns';
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
 import { TIME_ADJUSTMENTS } from '@/shared/constants';
-import { DaySelection, Prayer, TimerCallbacks } from '@/shared/types';
+import { Prayer, TimerCallbacks } from '@/shared/types';
 
 /**
  * Creates a new Date object in London timezone
@@ -27,108 +16,10 @@ export const createLondonDate = (date?: Date | number | string): Date => {
 };
 
 /**
- * Returns formatted date string for today or tomorrow
- * @param daySelection Selection of today or tomorrow
- * @returns Date string in YYYY-MM-DD format
- */
-export const getDateTodayOrTomorrow = (daySelection: DaySelection): string => {
-  let date = createLondonDate();
-
-  if (daySelection === DaySelection.Tomorrow) {
-    date = addDays(date, 1);
-  }
-
-  return format(date, 'yyyy-MM-dd');
-};
-
-/**
- * Calculates the seconds until a specific time on a given date
- * @param targetTime Time to calculate difference to (HH:mm format)
- * @param date Target date (YYYY-MM-DD format)
- * @returns Difference in seconds (positive if target is in future, negative if passed)
- */
-export const secondsRemainingUntil = (targetTime: string, date: string): number => {
-  const [hours, minutes] = targetTime.split(':').map(Number);
-
-  const now = createLondonDate();
-  let target = createLondonDate(date);
-
-  target = setHours(setMinutes(target, minutes), hours);
-
-  return Math.floor((target.getTime() - now.getTime()) / 1000);
-};
-
-/**
- * Checks if a given time has already passed today
- * @param time Time string in HH:mm format
- * @returns boolean indicating if the time has passed
- */
-export const isTimePassed = (time: string): boolean => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const now = createLondonDate();
-  let target = createLondonDate();
-  target = setHours(setMinutes(target, minutes), hours);
-
-  return now.getTime() >= target.getTime();
-};
-
-/**
- * Converts HH:mm time string to total seconds
- * @param timeStr Time string in HH:mm format
- * @returns Total seconds since midnight
- */
-export const parseTimeToSeconds = (timeStr: string): number => {
-  const [hours, minutes] = timeStr.split(':').map(Number);
-  return hours * 3600 + minutes * 60;
-};
-
-/**
- * Converts seconds into human-readable time format
- * @param seconds Time in seconds
- * @returns Formatted time string (e.g., "1h 30m 45s")
- */
-export const formatTime = (seconds: number): string => {
-  if (seconds < 0) return '0s';
-
-  const ms = seconds * 1000;
-  const duration = intervalToDuration({ start: 0, end: ms });
-  const { days, hours, minutes, seconds: secs } = duration;
-
-  const totalHours = (days || 0) * 24 + (hours || 0);
-
-  return [totalHours && `${totalHours}h`, minutes && `${minutes}m`, secs !== undefined ? `${secs}s` : '0s']
-    .filter(Boolean)
-    .join(' ');
-};
-
-/**
- * Adjusts a time string by adding or subtracting minutes
- * @param time Time string in HH:mm format
- * @param minutesDiff Number of minutes to adjust
- * @returns Adjusted time string in HH:mm format
- */
-export const adjustTime = (time: string, minutesDiff: number): string => {
-  const [h, m] = time.split(':').map(Number);
-  let date = createLondonDate();
-  date = setHours(setMinutes(date, m), h);
-  date = addMins(date, minutesDiff);
-  return format(date, 'HH:mm');
-};
-
-/**
- * Checks if a date is either today or in the future
+ * Checks if a date is yesterday or in the future
+ * Used for filtering API response data
  * @param date Date string in YYYY-MM-DD format
- * @returns boolean indicating if the date is today or in the future
- */
-export const isDateTodayOrFuture = (date: string): boolean => {
-  const parsedDate = createLondonDate(date);
-  return isToday(parsedDate) || isFuture(parsedDate);
-};
-
-/**
- * Checks if a date is yesterday, today or in the future
- * @param date Date string in YYYY-MM-DD format
- * @returns boolean indicating if the date is yesterday, today or in the future
+ * @returns boolean indicating if date is yesterday or future
  */
 export const isDateYesterdayOrFuture = (date: string): boolean => {
   const parsedDate = createLondonDate(date);
@@ -207,6 +98,19 @@ export const getMidnightTime = (magribTime: string, fajrTime: string): string =>
 
   // Return formatted time string in 24-hour format (HH:mm)
   return format(midnight, 'HH:mm');
+};
+
+/**
+ * Adjusts a time string by adding or subtracting minutes
+ * @param time Time string in HH:mm format
+ * @param minutesDiff Minutes to add (positive) or subtract (negative)
+ * @returns Adjusted time string in HH:mm format
+ */
+export const adjustTime = (time: string, minutesDiff: number): string => {
+  const [hours, minutes] = time.split(':').map(Number);
+  const date = setMinutes(setHours(createLondonDate(), hours), minutes);
+  date.setMinutes(date.getMinutes() + minutesDiff);
+  return format(date, 'HH:mm');
 };
 
 /**
@@ -329,4 +233,23 @@ export const getSecondsBetween = (from: Date, to: Date): number => {
 export const calculateCountdownFromPrayer = (prayer: Prayer): number => {
   const now = createLondonDate();
   return Math.floor((prayer.datetime.getTime() - now.getTime()) / 1000);
+};
+
+/**
+ * Converts seconds into human-readable time format
+ * @param seconds Time in seconds
+ * @returns Formatted time string (e.g., "1h 30m 45s")
+ */
+export const formatTime = (seconds: number): string => {
+  if (seconds < 0) return '0s';
+
+  const ms = seconds * 1000;
+  const duration = intervalToDuration({ start: 0, end: ms });
+  const { days, hours, minutes, seconds: secs } = duration;
+
+  const totalHours = (days || 0) * 24 + (hours || 0);
+
+  return [totalHours && `${totalHours}h`, minutes && `${minutes}m`, secs !== undefined ? `${secs}s` : '0s']
+    .filter(Boolean)
+    .join(' ');
 };
