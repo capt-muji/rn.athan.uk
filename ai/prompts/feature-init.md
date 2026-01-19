@@ -12,8 +12,9 @@ Wait for my response, then proceed to Phase 2.
 
 1. Create folder: ai/features/[feature-name]/
 2. Copy FEATURE-TEMPLATE.md to ai/features/[feature-name]/description.md
-3. Create ai/features/[feature-name]/progress.md with initial template
-4. Create ai/features/[feature-name]/plan.md with initial template
+3. Copy HANDOFF-TEMPLATE.md to ai/features/[feature-name]/handoff.md
+4. Create ai/features/[feature-name]/progress.md with initial template
+5. Create ai/features/[feature-name]/plan.md with initial template
 
 Confirm completion and tell me: "Feature structure created. Please edit description.md with your requirements, then I'll use the Architect agent to create a detailed plan."
 
@@ -125,6 +126,9 @@ Files created:
 - ai/features/[feature-name]/description.md (requirements)
 - ai/features/[feature-name]/plan.md (implementation plan - ReviewerQA approved 100/100)
 - ai/features/[feature-name]/progress.md (task tracker)
+- ai/features/[feature-name]/handoff.md (session handoff prompt)
 
-Next step: Run ai/prompts/feature-start-tasks.md to begin implementation
+Next steps:
+- Run ai/prompts/feature-start-tasks.md to begin implementation
+- Use handoff.md to start new sessions on this feature
 ```
