@@ -5,7 +5,6 @@
  * @see ai/adr/005-timing-system-overhaul.md
  */
 
-import { addDays } from 'date-fns';
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
@@ -56,17 +55,7 @@ const clearTimer = (timerKey: TimerKey) => {
  * Calls refreshSequence() when prayer passes
  */
 const startSequenceTimer = (type: ScheduleType) => {
-  const nextPrayer = getNextPrayer(type);
-
-  // If no next prayer, sequence needs refresh
-  if (!nextPrayer) {
-    refreshSequence(type);
-    // Retry after refresh
-    const retryPrayer = getNextPrayer(type);
-    if (!retryPrayer) return; // Still no prayer, exit gracefully
-    return startSequenceTimer(type); // Restart with new data
-  }
-
+  const nextPrayer = getNextPrayer(type)!;
   const now = TimeUtils.createLondonDate();
   const timeLeft = TimeUtils.getSecondsBetween(now, nextPrayer.datetime);
   const name = nextPrayer.english;
@@ -130,29 +119,19 @@ const startTimerOverlay = () => {
   const now = TimeUtils.createLondonDate();
 
   // Get today's prayers and selected prayer by index
-  // This matches hooks/usePrayer.ts:22-23
   const todayPrayers = sequence.prayers.filter((p) => p.belongsToDate === displayDate);
-  let selectedPrayer = todayPrayers[overlay.selectedPrayerIndex];
+  const prayer = todayPrayers[overlay.selectedPrayerIndex];
 
-  // Check if selected prayer has passed
-  const isPassed = selectedPrayer ? selectedPrayer.datetime < now : false;
-
-  // Tomorrow prayer fallback for passed prayers (similar intent to usePrayer.ts:46-55)
-  // When a prayer is passed in overlay, show tomorrow's same prayer
-  // Uses explicit tomorrow date calculation for robustness (handles DST, multi-day sequences)
-  if (isPassed && selectedPrayer) {
-    const tomorrow = addDays(new Date(displayDate), 1);
-    const tomorrowDate = TimeUtils.formatDateShort(tomorrow);
-    const tomorrowPrayers = sequence.prayers.filter((p) => p.belongsToDate === tomorrowDate);
-    const tomorrowPrayer = tomorrowPrayers[overlay.selectedPrayerIndex];
-    if (tomorrowPrayer) {
-      selectedPrayer = tomorrowPrayer;
-    }
-  }
+  // If prayer passed, show next occurrence (tomorrow's prayer)
+  // 3-day buffer contains all prayers sorted, so find next matching prayer name
+  const isPassed = prayer.datetime < now;
+  const selectedPrayer = isPassed
+    ? sequence.prayers.find((p) => p.english === prayer.english && p.datetime > prayer.datetime)!
+    : prayer;
 
   // Calculate countdown from prayer datetime
-  const timeLeft = selectedPrayer ? TimeUtils.getSecondsBetween(now, selectedPrayer.datetime) : 0;
-  const name = selectedPrayer?.english ?? 'Prayer';
+  const timeLeft = TimeUtils.getSecondsBetween(now, selectedPrayer.datetime);
+  const name = selectedPrayer.english;
 
   clearTimer('overlay');
   store.set(overlayTimerAtom, { timeLeft, name });

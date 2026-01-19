@@ -7,7 +7,7 @@
 
 import { useAtomValue } from 'jotai';
 
-import { usePrayerSequence, PrayerWithStatus } from '@/hooks/usePrayerSequence';
+import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ScheduleType } from '@/shared/types';
 import { englishWidthStandardAtom, englishWidthExtraAtom } from '@/stores/ui';
 
@@ -17,13 +17,12 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   const isStandard = type === ScheduleType.Standard;
   const maxEnglishWidth = useAtomValue(isStandard ? englishWidthStandardAtom : englishWidthExtraAtom);
 
-  // Filter prayers to current displayDate to get "today's" prayers
-  // This maintains backward compatibility with index-based access
+  // Filter prayers to current displayDate
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
-  const prayer: PrayerWithStatus | undefined = todayPrayers[index];
+  const prayer = todayPrayers[index];
 
-  // Fallback for loading state or invalid index
-  if (!isReady || !prayer) {
+  // Loading state only
+  if (!isReady) {
     return {
       english: '',
       arabic: '',
@@ -35,38 +34,27 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
       isPassed: false,
       isNext: false,
       isOverlay,
-      ui: {
-        initialColorPos: 0,
-        maxEnglishWidth,
-      },
+      ui: { initialColorPos: 0, maxEnglishWidth },
     };
   }
 
-  // Get tomorrow's prayer for overlay display when current prayer is passed
-  const tomorrowPrayers = prayers.filter((p) => p.belongsToDate !== displayDate);
-  const tomorrowPrayer = tomorrowPrayers[index];
-
-  // isPassed and isNext are already derived in usePrayerSequence
-  // prayer.datetime < now = isPassed
-  // prayer.id === nextPrayer.id = isNext
   const { isPassed, isNext } = prayer;
 
-  // Use tomorrow's prayer if the current prayer is passed and shown in overlay
-  const displayPrayer = isPassed && isOverlay && tomorrowPrayer ? tomorrowPrayer : prayer;
-
-  const ui = {
-    initialColorPos: isPassed || isNext ? 1 : 0,
-    maxEnglishWidth,
-  };
+  // Overlay: If prayer passed, show next occurrence (tomorrow's prayer)
+  // 3-day buffer contains all prayers sorted, so find next matching prayer name
+  const displayPrayer =
+    isPassed && isOverlay ? prayers.find((p) => p.english === prayer.english && p.datetime > prayer.datetime)! : prayer;
 
   return {
     ...displayPrayer,
-    // Transform Prayer fields to match old interface
     date: displayPrayer.belongsToDate,
     isStandard,
     isPassed,
     isNext,
     isOverlay,
-    ui,
+    ui: {
+      initialColorPos: isPassed || isNext ? 1 : 0,
+      maxEnglishWidth,
+    },
   };
 };
