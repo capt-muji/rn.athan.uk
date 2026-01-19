@@ -7,7 +7,7 @@ import Masjid from '@/components/Masjid';
 import { COLORS, SCREEN, TEXT } from '@/shared/constants';
 import { formatDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { getDateAtom } from '@/stores/sync';
+import { standardDisplayDateAtom, extraDisplayDateAtom } from '@/stores/schedule';
 import { getMeasurementsDate, setMeasurementsDate } from '@/stores/ui';
 
 interface Props {
@@ -17,8 +17,10 @@ interface Props {
 export default function Day({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
-  const dateAtom = getDateAtom(type);
-  const date = useAtomValue(dateAtom);
+  // NEW: Use sequence-based derived displayDate
+  // See: ai/adr/005-timing-system-overhaul.md
+  const displayDateAtom = isStandard ? standardDisplayDateAtom : extraDisplayDateAtom;
+  const date = useAtomValue(displayDateAtom) ?? '';
   const dateRef = useRef<Animated.Text>(null);
 
   const handleLayout = () => {

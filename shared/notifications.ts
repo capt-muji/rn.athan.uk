@@ -5,7 +5,6 @@ import { Platform } from 'react-native';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { AlertType } from '@/shared/types';
-import { refreshNotifications } from '@/stores/notifications';
 
 export interface ScheduledNotification {
   id: string;
@@ -104,13 +103,20 @@ export const createDefaultAndroidChannel = async () => {
 
 /**
  * Initializes notifications
+ * Uses dependency injection to avoid circular import with stores/notifications.ts
+ *
+ * @param checkPermissions Function to check notification permissions
+ * @param refreshFn Function to refresh notifications (injected to break cycle)
  */
-export const initializeNotifications = async (checkPermissions: () => Promise<boolean>) => {
+export const initializeNotifications = async (
+  checkPermissions: () => Promise<boolean>,
+  refreshFn: () => Promise<void>
+) => {
   try {
     await createDefaultAndroidChannel();
 
     const hasPermission = await checkPermissions();
-    if (hasPermission) await refreshNotifications();
+    if (hasPermission) await refreshFn();
     else logger.info('NOTIFICATION: Notifications disabled, skipping refresh');
   } catch (error) {
     logger.error('NOTIFICATION: Failed to initialize notifications:', error);
