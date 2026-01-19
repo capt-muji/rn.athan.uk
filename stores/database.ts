@@ -84,16 +84,6 @@ export const markYearAsFetched = (year: number) => {
   setItem(key, { ...fetchedYears, [year]: true });
 };
 
-export function clearOneScheduledNotificationsForPrayer(
-  scheduleType: ScheduleType,
-  prayerIndex: number,
-  notificationId: string
-) {
-  const key = `scheduled_notifications_${scheduleType}_${prayerIndex}_${notificationId}`;
-  removeItem(key);
-  logger.info('NOTIFICATION DB: Removed:', { scheduleType, prayerIndex, notificationId });
-}
-
 export function clearAllScheduledNotificationsForSchedule(scheduleType: ScheduleType) {
   clearPrefix(`scheduled_notifications_${scheduleType}`);
 }

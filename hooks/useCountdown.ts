@@ -31,9 +31,10 @@ export interface UseCountdownResult {
  * @example
  * const { timeLeft, prayerName, isReady } = useCountdown(ScheduleType.Standard);
  * if (isReady) {
- *   console.log(`${prayerName} in ${TimeUtils.formatTime(timeLeft)}`);
+ *   logger.info({ prayerName, timeLeft: TimeUtils.formatTime(timeLeft) }, 'Countdown timer');
  * }
  */
+
 export const useCountdown = (type: ScheduleType): UseCountdownResult => {
   const nextPrayerAtom = type === ScheduleType.Standard ? standardNextPrayerAtom : extraNextPrayerAtom;
   const nextPrayer = useAtomValue(nextPrayerAtom);
