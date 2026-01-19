@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -12,7 +12,7 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
-import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
+import { overlayAtom, setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
 import { refreshUIAtom } from '@/stores/ui';
 
 interface Props {
@@ -26,10 +26,21 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
 
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
+  const overlay = useAtomValue(overlayAtom);
+
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,
   });
+
+  // Detect if this prayer is currently selected in the overlay.
+  // Note: Alert.tsx uses Prayer.isOverlay prop because Alert components render separately
+  // inside the overlay. For Prayer.tsx and PrayerTime.tsx in the main schedule, we detect
+  // overlay selection via overlayAtom to animate when tapped (before overlay renders).
+  const isSelectedForOverlay = useMemo(
+    () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
+    [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
+  );
 
   const computedStyleEnglish = {
     width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left,
@@ -56,11 +67,17 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
 
   // Cascade animation when date changes and we're at first prayer
   useEffect(() => {
-    if (!Schedule.isLastPrayerPassed && Schedule.nextPrayerIndex === 0 && index !== 0) {
+    if (!isSelectedForOverlay && !Schedule.isLastPrayerPassed && Schedule.nextPrayerIndex === 0 && index !== 0) {
       const delay = getCascadeDelay(index, type);
       AnimColor.animate(0, { delay });
     }
-  }, [Schedule.displayDate]);
+  }, [Schedule.displayDate, isSelectedForOverlay]);
+
+  // Overlay-aware animation: bright when selected, return to natural state when closed
+  useEffect(() => {
+    const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
+    AnimColor.animate(colorPos, { duration: 50 });
+  }, [isSelectedForOverlay, Prayer.ui.initialColorPos]);
 
   return (
     <Pressable style={styles.container} onPress={handlePress}>
