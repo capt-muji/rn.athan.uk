@@ -51,10 +51,11 @@ export interface UsePrayerSequenceResult {
  * if (isReady) {
  *   prayers.forEach((prayer) => {
  *     // isPassed and isNext are derived from datetime comparison
- *     console.log(`${prayer.english}: passed=${prayer.isPassed}, next=${prayer.isNext}`);
+ *     logger.debug({ prayer: prayer.english, isPassed: prayer.isPassed, isNext: prayer.isNext }, 'Prayer sequence state');
  *   });
  * }
  */
+
 export const usePrayerSequence = (type: ScheduleType): UsePrayerSequenceResult => {
   const sequenceAtom = type === ScheduleType.Standard ? standardSequenceAtom : extraSequenceAtom;
   const displayDateAtom = type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom;

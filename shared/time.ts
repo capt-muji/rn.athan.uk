@@ -2,7 +2,6 @@ import { format, setHours, setMinutes, intervalToDuration, isFuture, isToday, is
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
 import { TIME_ADJUSTMENTS } from '@/shared/constants';
-import { Prayer, TimerCallbacks } from '@/shared/types';
 
 /**
  * Creates a new Date object in London timezone
@@ -135,30 +134,6 @@ export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
  */
 export const getCurrentYear = (): number => createLondonDate().getFullYear();
 
-/**
- * Creates a timer that counts down from specified seconds
- * @param timeLeft Number of seconds to count down from
- * @param callbacks Optional callback functions for tick and finish events
- * @returns Timer interval ID
- */
-export const timer = (timeLeft: number, callbacks: TimerCallbacks): ReturnType<typeof setInterval> => {
-  const onInterval = () => {
-    timeLeft--;
-
-    if (timeLeft === 0) {
-      clearInterval(timerId);
-      callbacks.onFinish();
-      return;
-    }
-
-    callbacks.onTick(timeLeft);
-  };
-
-  const timerId = setInterval(onInterval, 1000);
-
-  return timerId;
-};
-
 // =============================================================================
 // NEW TIMING SYSTEM UTILITIES (Prayer-Centric Model)
 // See: ai/adr/005-timing-system-overhaul.md
@@ -187,22 +162,6 @@ export const createPrayerDatetime = (date: string, time: string): Date => {
 };
 
 /**
- * Checks if a prayer is in the future
- * Simple comparison: prayer.datetime > now
- *
- * @param prayer Prayer object with datetime field
- * @returns true if prayer hasn't occurred yet
- *
- * @example
- * // At 10:00am
- * isPrayerInFuture(dhuhrPrayer) // Dhuhr at 12:14 → true
- * isPrayerInFuture(fajrPrayer)  // Fajr at 06:12 → false
- */
-export const isPrayerInFuture = (prayer: Prayer): boolean => {
-  return prayer.datetime > createLondonDate();
-};
-
-/**
  * Calculates the difference in seconds between two dates
  * Used for countdown calculation: nextPrayer.datetime - now
  *
@@ -216,23 +175,6 @@ export const isPrayerInFuture = (prayer: Prayer): boolean => {
  */
 export const getSecondsBetween = (from: Date, to: Date): number => {
   return Math.floor((to.getTime() - from.getTime()) / 1000);
-};
-
-/**
- * Calculates countdown seconds from a Prayer object
- * Simplified replacement for old calculateCountdown(schedule, index)
- * See: ai/adr/005-timing-system-overhaul.md, Task 6.2
- *
- * @param prayer Prayer object with datetime field
- * @returns Seconds remaining until prayer (positive if future, negative if passed)
- *
- * @example
- * calculateCountdownFromPrayer(fajrPrayer)
- * // Returns: 3600 (1 hour until Fajr)
- */
-export const calculateCountdownFromPrayer = (prayer: Prayer): number => {
-  const now = createLondonDate();
-  return Math.floor((prayer.datetime.getTime() - now.getTime()) / 1000);
 };
 
 /**

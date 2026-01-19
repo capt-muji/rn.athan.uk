@@ -43,11 +43,6 @@ export enum ScheduleType {
   Extra = 'extra',
 }
 
-export enum DaySelection {
-  Today = 'today',
-  Tomorrow = 'tomorrow',
-}
-
 export interface PageCoordinates {
   pageX: number;
   pageY: number;
