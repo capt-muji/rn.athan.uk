@@ -1,5 +1,3 @@
-import { standardScheduleAtom } from '@/stores/schedule';
-
 export interface IApiSingleTime {
   date: string;
   fajr: string;
@@ -54,10 +52,6 @@ export interface ITransformedPrayer {
   type: ScheduleType;
 }
 
-export interface IScheduleNow {
-  [number: number]: ITransformedPrayer;
-}
-
 export interface IPrayerInfo {
   timerName: string;
   timeDisplay: string;
@@ -81,12 +75,6 @@ export interface IDateString {
 export interface IMinutesConfig {
   time: string;
   minutes: number;
-}
-
-export interface IPrayerConfig {
-  prayers: IScheduleNow;
-  prayerIndex: number;
-  selectedDate?: DaySelection;
 }
 
 export interface ITimeDifferenceConfig {
@@ -145,14 +133,6 @@ export interface Preferences {
   athan: number;
 }
 
-export interface ScheduleStore {
-  type: ScheduleType;
-  yesterday: IScheduleNow;
-  today: IScheduleNow;
-  tomorrow: IScheduleNow;
-  nextIndex: number;
-}
-
 export interface PreferencesStore {
   preferences: Preferences;
 }
@@ -183,11 +163,87 @@ export interface FetchDataResult {
   currentYear: number;
 }
 
-export type ScheduleAtom = typeof standardScheduleAtom;
-
 export type TimerKey = 'standard' | 'extra' | 'overlay';
 
 // intefae with valu property
 export interface PrimitiveAtom<T> {
   value: T;
+}
+
+// =============================================================================
+// NEW TIMING SYSTEM TYPES (Prayer-Centric Model)
+// See: ai/adr/005-timing-system-overhaul.md
+// =============================================================================
+
+/**
+ * Prayer with full datetime object
+ *
+ * Key difference from ITransformedPrayer:
+ * - datetime is a full Date object, so datetime > now is ALWAYS correct
+ * - No midnight-crossing bugs possible
+ * - belongsToDate tracks which Islamic day the prayer belongs to (per ADR-004)
+ */
+export interface Prayer {
+  /** Unique identifier: "standard_fajr_2026-01-18" */
+  id: string;
+
+  /** Schedule type: 'standard' or 'extra' */
+  type: ScheduleType;
+
+  /** English name: "Fajr", "Isha", "Midnight", etc. */
+  english: string;
+
+  /** Arabic name: "الفجر", "العشاء", etc. */
+  arabic: string;
+
+  /**
+   * Full datetime - the actual moment in time
+   * Comparisons are trivial: isPassed = datetime < now
+   */
+  datetime: Date;
+
+  /** Original time string (for display purposes) */
+  time: string;
+
+  /**
+   * Which Islamic day this prayer belongs to (per ADR-004)
+   * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day)
+   */
+  belongsToDate: string;
+}
+
+/**
+ * Prayer sequence - single sorted array replacing yesterday/today/tomorrow structure
+ * Contains 48-72 hours of prayers, sorted by datetime
+ */
+export interface PrayerSequence {
+  /** Schedule type: 'standard' or 'extra' */
+  type: ScheduleType;
+
+  /** Prayers sorted by datetime, next 48-72 hours */
+  prayers: Prayer[];
+}
+
+/**
+ * Serialized prayer for MMKV storage
+ * JavaScript Date objects cannot be stored directly in MMKV
+ * datetime is converted to ISO string (without 'Z' suffix for local time)
+ */
+export interface StoredPrayer {
+  id: string;
+  type: ScheduleType;
+  english: string;
+  arabic: string;
+  /** ISO string format: "2026-01-18T06:12:00" (local time, no 'Z') */
+  datetime: string;
+  time: string;
+  belongsToDate: string;
+}
+
+/**
+ * Serialized prayer sequence for MMKV storage
+ */
+export interface StoredPrayerSequence {
+  type: ScheduleType;
+  prayers: StoredPrayer[];
 }

@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -9,12 +9,10 @@ import Animated, {
   interpolateColor,
 } from 'react-native-reanimated';
 
-import { useSchedule } from '@/hooks/useSchedule';
+import { useProgressBar as useProgressBarHook } from '@/hooks/useProgressBar';
 import { ANIMATION } from '@/shared/constants';
-import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
-import { standardTimerAtom, extraTimerAtom, overlayTimerAtom } from '@/stores/timer';
 import { progressBarVisibleAtom } from '@/stores/ui';
 
 interface Props {
@@ -22,37 +20,17 @@ interface Props {
 }
 
 export default function ProgressBar({ type }: Props) {
-  const { schedule } = useSchedule(type);
+  // NEW: Use sequence-based progress calculation
+  // See: ai/adr/005-timing-system-overhaul.md
+  const { progress: elapsedProgress, isReady } = useProgressBarHook(type);
+
   const overlay = useAtomValue(overlayAtom);
   const isProgressBarVisible = useAtomValue(progressBarVisibleAtom);
 
-  // Get timer from store based on type
-  const isStandard = type === ScheduleType.Standard;
-  const timerAtom = overlay.isOn ? overlayTimerAtom : isStandard ? standardTimerAtom : extraTimerAtom;
-  const timer = useAtomValue(timerAtom);
-
-  const progress = useMemo(() => {
-    const nextPrayer = schedule.today[schedule.nextIndex];
-    let prevPrayer;
-
-    // Special case: First prayer (Fajr) - use yesterday's last prayer (Isha)
-    // Yesterday's data is always available - ensured by sync layer (Jan 1 fetch)
-    if (schedule.nextIndex === 0) {
-      const yesterdaySchedule = schedule.yesterday;
-      const lastIndex = Object.keys(yesterdaySchedule).length - 1;
-      prevPrayer = yesterdaySchedule[lastIndex];
-    } else {
-      prevPrayer = schedule.today[schedule.nextIndex - 1];
-    }
-
-    const prevPrayerTimeInSeconds = TimeUtils.parseTimeToSeconds(prevPrayer.time);
-    const nextPrayerTimeInSeconds = TimeUtils.parseTimeToSeconds(nextPrayer.time);
-
-    const timeDiffInSeconds = nextPrayerTimeInSeconds - prevPrayerTimeInSeconds;
-    const totalDuration = timeDiffInSeconds >= 0 ? timeDiffInSeconds : 86400 + timeDiffInSeconds;
-
-    return Math.max(0, Math.min(100, (timer.timeLeft / totalDuration) * 100));
-  }, [schedule, timer.timeLeft, type]);
+  // Convert elapsed % to remaining % (bar shrinks as time passes)
+  // Old: (timeLeft / totalDuration) * 100 = remaining %
+  // New: (elapsed / total) * 100 = elapsed %, so remaining = 100 - elapsed
+  const progress = isReady ? 100 - elapsedProgress : 0;
 
   const widthValue = useSharedValue(progress ?? 0);
   const colorValue = useSharedValue(0); // Discrete color state: 0=green, 1=orange, 2=red
