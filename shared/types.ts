@@ -43,43 +43,9 @@ export enum ScheduleType {
   Extra = 'extra',
 }
 
-export interface ITransformedPrayer {
-  index: number;
-  date: string;
-  english: string;
-  arabic: string;
-  time: string;
-  type: ScheduleType;
-}
-
-export interface IPrayerInfo {
-  timerName: string;
-  timeDisplay: string;
-  timeDifference?: number;
-  currentPrayer?: ITransformedPrayer;
-}
-
 export enum DaySelection {
   Today = 'today',
   Tomorrow = 'tomorrow',
-}
-
-export interface ITimeString {
-  time: string;
-}
-
-export interface IDateString {
-  date: string;
-}
-
-export interface IMinutesConfig {
-  time: string;
-  minutes: number;
-}
-
-export interface ITimeDifferenceConfig {
-  targetTime: string;
-  date?: string;
 }
 
 export interface PageCoordinates {
@@ -87,16 +53,6 @@ export interface PageCoordinates {
   pageY: number;
   width: number;
   height: number;
-}
-
-export interface ListStore {
-  standard: PageCoordinates | null;
-  extra: PageCoordinates | null;
-}
-
-export interface Measurements {
-  date: PageCoordinates | null;
-  list: PageCoordinates | null;
 }
 
 export enum AlertType {
@@ -184,9 +140,6 @@ export interface PrimitiveAtom<T> {
  * - belongsToDate tracks which Islamic day the prayer belongs to (per ADR-004)
  */
 export interface Prayer {
-  /** Unique identifier: "standard_fajr_2026-01-18" */
-  id: string;
-
   /** Schedule type: 'standard' or 'extra' */
   type: ScheduleType;
 
@@ -230,7 +183,6 @@ export interface PrayerSequence {
  * datetime is converted to ISO string (without 'Z' suffix for local time)
  */
 export interface StoredPrayer {
-  id: string;
   type: ScheduleType;
   english: string;
   arabic: string;

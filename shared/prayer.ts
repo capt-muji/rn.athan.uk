@@ -21,19 +21,10 @@ import {
 } from '@/shared/types';
 import * as Database from '@/stores/database';
 
-// Islamic day boundary: Isha after midnight (00:00-06:00) belongs to previous Islamic day
-const EARLY_MORNING_CUTOFF_HOUR = 6;
-
-/**
- * Gets the hour in London timezone for a given date
- * Used for determining if a prayer crosses midnight in London
- * @param date Date object (UTC internally)
- * @returns Hour (0-23) in London timezone
- */
-const getLondonHours = (date: Date): number => {
-  const londonDate = toZonedTime(date, 'Europe/London');
-  return getHours(londonDate);
-};
+// =============================================================================
+// DATA TRANSFORMATION FUNCTIONS
+// Used by API client for processing prayer data
+// =============================================================================
 
 /**
  * Filters API response data to only include yesterday, today and future dates
@@ -91,7 +82,11 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
   return transformations;
 };
 
-// UI Helpers
+// =============================================================================
+// UI HELPER FUNCTIONS
+// Used by components for animations and measurements
+// =============================================================================
+
 export const getCascadeDelay = (index: number, type: ScheduleType): number => {
   const isStandard = type === ScheduleType.Standard;
   const length = isStandard ? PRAYERS_ENGLISH.length : PRAYERS_ARABIC.length;
@@ -99,53 +94,33 @@ export const getCascadeDelay = (index: number, type: ScheduleType): number => {
   return (length - index) * ANIMATION.cascadeDelay;
 };
 
-/**
- * Returns the index of the longest word in a prayer schedule
- * @param type Schedule type (Standard or Extra)
- * @returns Index of the longest word
- */
 export const getLongestPrayerNameIndex = (type: ScheduleType): number => {
-  const isStandard = type === ScheduleType.Standard;
-
-  const english = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  const names = type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   let maxLength = 0;
   let maxIndex = 0;
 
-  english.forEach((name, index) => {
-    if (name.length <= maxLength) return;
-
-    maxLength = name.length;
-    maxIndex = index;
+  names.forEach((name, index) => {
+    if (name.length > maxLength) {
+      maxLength = name.length;
+      maxIndex = index;
+    }
   });
 
   return maxIndex;
 };
 
-// =============================================================================
-// NEW TIMING SYSTEM UTILITIES (Prayer-Centric Model)
-// See: ai/adr/005-timing-system-overhaul.md
-// =============================================================================
+// Islamic day boundary: Isha after midnight (00:00-06:00) belongs to previous Islamic day
+const EARLY_MORNING_CUTOFF_HOUR = 6;
 
 /**
- * Generates a unique prayer identifier
- * Format: "type_prayername_date" (e.g., "standard_fajr_2026-01-18")
- * Spaces are removed from prayer names to match schema format
- *
- * @param type Schedule type (Standard or Extra)
- * @param english English prayer name
- * @param date Date string in YYYY-MM-DD format
- * @returns Unique prayer identifier string
- *
- * @example
- * generatePrayerId(ScheduleType.Standard, "Fajr", "2026-01-18")
- * // Returns: "standard_fajr_2026-01-18"
- *
- * generatePrayerId(ScheduleType.Extra, "Last Third", "2026-01-18")
- * // Returns: "extra_lastthird_2026-01-18"
+ * Gets the hour in London timezone for a given date
+ * Used for determining if a prayer crosses midnight in London
+ * @param date Date object (UTC internally)
+ * @returns Hour (0-23) in London timezone
  */
-export const generatePrayerId = (type: ScheduleType, english: string, date: string): string => {
-  const normalizedName = english.toLowerCase().replace(/\s+/g, '');
-  return `${type}_${normalizedName}_${date}`;
+const getLondonHours = (date: Date): number => {
+  const londonDate = toZonedTime(date, 'Europe/London');
+  return getHours(londonDate);
 };
 
 /**
@@ -219,7 +194,6 @@ export const createPrayer = (params: CreatePrayerParams): Prayer => {
   const datetime = createPrayerDatetime(date, time);
 
   return {
-    id: generatePrayerId(type, english, date),
     type,
     english,
     arabic,

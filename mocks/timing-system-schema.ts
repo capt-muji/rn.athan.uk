@@ -14,126 +14,17 @@
 import { ScheduleType } from '@/shared/types';
 
 // =============================================================================
-// SECTION 1: CURRENT SYSTEM (Date-Centric) - FOR REFERENCE
+// TIMING SYSTEM SCHEMA REFERENCE (New Prayer-Centric Model)
+// See: ai/adr/005-timing-system-overhaul.md
 // =============================================================================
 
 /**
- * CURRENT: How prayers are stored (separate date and time strings)
- *
- * THE PROBLEM: At 11pm, isTimePassed("01:00") returns TRUE because it
- * compares 23:00 > 01:00 without considering the date.
- */
-export interface ITransformedPrayerCurrent {
-  index: number;
-  date: string; // "2026-01-18" - calendar date
-  english: string; // "Fajr"
-  arabic: string; // "الفجر"
-  time: string; // "06:12" - time only, NO DATE
-  type: ScheduleType;
-}
-
-/**
- * CURRENT: Schedule store with yesterday/today/tomorrow maps
- *
- * THE PROBLEM: After Isha passes, schedule.today contains TOMORROW's data.
- * The variable name "today" lies.
- */
-export interface ScheduleStoreCurrent {
-  type: ScheduleType;
-  yesterday: { [index: number]: ITransformedPrayerCurrent };
-  today: { [index: number]: ITransformedPrayerCurrent };
-  tomorrow: { [index: number]: ITransformedPrayerCurrent };
-  nextIndex: number; // Manually incremented: 0, 1, 2, 3, 4, 5, 0...
-}
-
-/**
- * EXAMPLE: Current system at 10:00am on January 18
- */
-export const CURRENT_SYSTEM_EXAMPLE: ScheduleStoreCurrent = {
-  type: ScheduleType.Standard,
-  yesterday: {
-    0: { index: 0, date: '2026-01-17', english: 'Fajr', arabic: 'الفجر', time: '06:10', type: ScheduleType.Standard },
-    1: {
-      index: 1,
-      date: '2026-01-17',
-      english: 'Sunrise',
-      arabic: 'الشروق',
-      time: '07:45',
-      type: ScheduleType.Standard,
-    },
-    2: { index: 2, date: '2026-01-17', english: 'Dhuhr', arabic: 'الظهر', time: '12:14', type: ScheduleType.Standard },
-    3: { index: 3, date: '2026-01-17', english: 'Asr', arabic: 'العصر', time: '14:15', type: ScheduleType.Standard },
-    4: {
-      index: 4,
-      date: '2026-01-17',
-      english: 'Maghrib',
-      arabic: 'المغرب',
-      time: '16:45',
-      type: ScheduleType.Standard,
-    },
-    5: { index: 5, date: '2026-01-17', english: 'Isha', arabic: 'العشاء', time: '18:15', type: ScheduleType.Standard },
-  },
-  today: {
-    0: { index: 0, date: '2026-01-18', english: 'Fajr', arabic: 'الفجر', time: '06:12', type: ScheduleType.Standard },
-    1: {
-      index: 1,
-      date: '2026-01-18',
-      english: 'Sunrise',
-      arabic: 'الشروق',
-      time: '07:48',
-      type: ScheduleType.Standard,
-    },
-    2: { index: 2, date: '2026-01-18', english: 'Dhuhr', arabic: 'الظهر', time: '12:14', type: ScheduleType.Standard },
-    3: { index: 3, date: '2026-01-18', english: 'Asr', arabic: 'العصر', time: '14:15', type: ScheduleType.Standard },
-    4: {
-      index: 4,
-      date: '2026-01-18',
-      english: 'Maghrib',
-      arabic: 'المغرب',
-      time: '16:45',
-      type: ScheduleType.Standard,
-    },
-    5: { index: 5, date: '2026-01-18', english: 'Isha', arabic: 'العشاء', time: '18:15', type: ScheduleType.Standard },
-  },
-  tomorrow: {
-    0: { index: 0, date: '2026-01-19', english: 'Fajr', arabic: 'الفجر', time: '06:14', type: ScheduleType.Standard },
-    1: {
-      index: 1,
-      date: '2026-01-19',
-      english: 'Sunrise',
-      arabic: 'الشروق',
-      time: '07:50',
-      type: ScheduleType.Standard,
-    },
-    2: { index: 2, date: '2026-01-19', english: 'Dhuhr', arabic: 'الظهر', time: '12:14', type: ScheduleType.Standard },
-    3: { index: 3, date: '2026-01-19', english: 'Asr', arabic: 'العصر', time: '14:16', type: ScheduleType.Standard },
-    4: {
-      index: 4,
-      date: '2026-01-19',
-      english: 'Maghrib',
-      arabic: 'المغرب',
-      time: '16:46',
-      type: ScheduleType.Standard,
-    },
-    5: { index: 5, date: '2026-01-19', english: 'Isha', arabic: 'العشاء', time: '18:16', type: ScheduleType.Standard },
-  },
-  nextIndex: 2, // Dhuhr is next (Fajr and Sunrise have passed)
-};
-
-// =============================================================================
-// SECTION 2: NEW SYSTEM (Prayer-Centric) - THE SOLUTION
-// =============================================================================
-
-/**
- * NEW: Prayer with full datetime object
+ * Prayer with full datetime object
  *
  * THE FIX: datetime is a full moment in time, so datetime > now is ALWAYS correct.
  * No midnight-crossing bugs possible.
  */
 export interface Prayer {
-  /** Unique identifier: "standard_fajr_2026-01-18" */
-  id: string;
-
   /** Schedule type: 'standard' or 'extra' */
   type: ScheduleType;
 
@@ -146,7 +37,7 @@ export interface Prayer {
   /**
    * FULL DATETIME - The actual moment in time
    *
-   * This is the key difference from the current system.
+   * This is the key difference from the old system.
    * Instead of { date: "2026-06-22", time: "01:00" }
    * We have:   datetime: new Date("2026-06-22T01:00:00")
    *
@@ -186,7 +77,6 @@ export interface Prayer {
  * We convert datetime to ISO string before storage.
  */
 export interface StoredPrayer {
-  id: string;
   type: ScheduleType;
   english: string;
   arabic: string;
@@ -231,7 +121,6 @@ export interface StoredPrayerSequence {
 export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
   // Yesterday's Isha (for ProgressBar calculation)
   {
-    id: 'standard_isha_2026-01-17',
     type: ScheduleType.Standard,
     english: 'Isha',
     arabic: 'العشاء',
@@ -241,7 +130,6 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
   },
   // Today's prayers
   {
-    id: 'standard_fajr_2026-01-18',
     type: ScheduleType.Standard,
     english: 'Fajr',
     arabic: 'الفجر',
@@ -250,7 +138,6 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
     belongsToDate: '2026-01-18',
   },
   {
-    id: 'standard_sunrise_2026-01-18',
     type: ScheduleType.Standard,
     english: 'Sunrise',
     arabic: 'الشروق',
@@ -259,7 +146,6 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
     belongsToDate: '2026-01-18',
   },
   {
-    id: 'standard_dhuhr_2026-01-18',
     type: ScheduleType.Standard,
     english: 'Dhuhr',
     arabic: 'الظهر',
@@ -268,7 +154,6 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
     belongsToDate: '2026-01-18',
   },
   {
-    id: 'standard_asr_2026-01-18',
     type: ScheduleType.Standard,
     english: 'Asr',
     arabic: 'العصر',
@@ -277,7 +162,6 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
     belongsToDate: '2026-01-18',
   },
   {
-    id: 'standard_maghrib_2026-01-18',
     type: ScheduleType.Standard,
     english: 'Maghrib',
     arabic: 'المغرب',
@@ -286,7 +170,6 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
     belongsToDate: '2026-01-18',
   },
   {
-    id: 'standard_isha_2026-01-18',
     type: ScheduleType.Standard,
     english: 'Isha',
     arabic: 'العشاء',
@@ -296,7 +179,6 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
   },
   // Tomorrow's prayers
   {
-    id: 'standard_fajr_2026-01-19',
     type: ScheduleType.Standard,
     english: 'Fajr',
     arabic: 'الفجر',
@@ -321,7 +203,6 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
 export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
   // Earlier prayers from June 21
   {
-    id: 'standard_fajr_2026-06-21',
     type: ScheduleType.Standard,
     english: 'Fajr',
     arabic: 'الفجر',
@@ -330,7 +211,6 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
     belongsToDate: '2026-06-21',
   },
   {
-    id: 'standard_sunrise_2026-06-21',
     type: ScheduleType.Standard,
     english: 'Sunrise',
     arabic: 'الشروق',
@@ -339,7 +219,6 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
     belongsToDate: '2026-06-21',
   },
   {
-    id: 'standard_dhuhr_2026-06-21',
     type: ScheduleType.Standard,
     english: 'Dhuhr',
     arabic: 'الظهر',
@@ -348,7 +227,6 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
     belongsToDate: '2026-06-21',
   },
   {
-    id: 'standard_asr_2026-06-21',
     type: ScheduleType.Standard,
     english: 'Asr',
     arabic: 'العصر',
@@ -357,7 +235,6 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
     belongsToDate: '2026-06-21',
   },
   {
-    id: 'standard_maghrib_2026-06-21',
     type: ScheduleType.Standard,
     english: 'Maghrib',
     arabic: 'المغرب',
@@ -378,7 +255,6 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
    * - 23 > 1 = TRUE (WRONG! Isha is still 2 hours away!)
    */
   {
-    id: 'standard_isha_2026-06-21',
     type: ScheduleType.Standard,
     english: 'Isha',
     arabic: 'العشاء',
@@ -388,7 +264,6 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
   },
   // Next day's prayers
   {
-    id: 'standard_fajr_2026-06-22',
     type: ScheduleType.Standard,
     english: 'Fajr',
     arabic: 'الفجر',
@@ -412,7 +287,6 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
 export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
   // Yesterday's Duha (for context)
   {
-    id: 'extra_duha_2026-06-20',
     type: ScheduleType.Extra,
     english: 'Duha',
     arabic: 'الضحى',
@@ -433,7 +307,6 @@ export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
    * - 23 > 0 = TRUE (WRONG!)
    */
   {
-    id: 'extra_midnight_2026-06-21',
     type: ScheduleType.Extra,
     english: 'Midnight',
     arabic: 'منتصف الليل',
@@ -442,7 +315,6 @@ export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
     belongsToDate: '2026-06-21', // Belongs to June 21's Extras
   },
   {
-    id: 'extra_lastthird_2026-06-21',
     type: ScheduleType.Extra,
     english: 'Last Third',
     arabic: 'الثلث الأخير',
@@ -451,7 +323,6 @@ export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
     belongsToDate: '2026-06-21',
   },
   {
-    id: 'extra_suhoor_2026-06-21',
     type: ScheduleType.Extra,
     english: 'Suhoor',
     arabic: 'السحور',
@@ -470,7 +341,6 @@ export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
    * belongs to June 21's Standard schedule.
    */
   {
-    id: 'extra_duha_2026-06-21',
     type: ScheduleType.Extra,
     english: 'Duha',
     arabic: 'الضحى',
@@ -480,7 +350,6 @@ export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
   },
   // Next day's Extras (after Duha advances)
   {
-    id: 'extra_midnight_2026-06-22',
     type: ScheduleType.Extra,
     english: 'Midnight',
     arabic: 'منتصف الليل',
@@ -516,7 +385,6 @@ export const EXAMPLE_FULL_SEQUENCE: PrayerSequence = {
 export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
   // Previous day's Istijaba (for context - this is when Jan 23's Extras ended)
   {
-    id: 'extra_istijaba_2026-01-23',
     type: ScheduleType.Extra,
     english: 'Istijaba',
     arabic: 'الإستجابة',
@@ -526,7 +394,6 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
   },
   // January 24 (Friday) Extras - all belong to Jan 24
   {
-    id: 'extra_midnight_2026-01-24',
     type: ScheduleType.Extra,
     english: 'Midnight',
     arabic: 'منتصف الليل',
@@ -535,7 +402,6 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
     belongsToDate: '2026-01-24', // Belongs to Friday's Extras
   },
   {
-    id: 'extra_lastthird_2026-01-24',
     type: ScheduleType.Extra,
     english: 'Last Third',
     arabic: 'الثلث الأخير',
@@ -544,7 +410,6 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
     belongsToDate: '2026-01-24',
   },
   {
-    id: 'extra_suhoor_2026-01-24',
     type: ScheduleType.Extra,
     english: 'Suhoor',
     arabic: 'السحور',
@@ -557,7 +422,6 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
    * So Duha's belongsToDate is Jan 24, same as the night prayers.
    */
   {
-    id: 'extra_duha_2026-01-24',
     type: ScheduleType.Extra,
     english: 'Duha',
     arabic: 'الضحى',
@@ -572,7 +436,6 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
    * This is similar to how Duha is the day boundary on non-Fridays.
    */
   {
-    id: 'extra_istijaba_2026-01-24',
     type: ScheduleType.Extra,
     english: 'Istijaba',
     arabic: 'الإستجابة',
@@ -582,7 +445,6 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
   },
   // After Istijaba passes, schedule advances to Saturday (Jan 25)
   {
-    id: 'extra_midnight_2026-01-25',
     type: ScheduleType.Extra,
     english: 'Midnight',
     arabic: 'منتصف الليل',
@@ -612,7 +474,6 @@ export const EXAMPLE_EMPTY_SEQUENCE_SCENARIO = {
     type: ScheduleType.Standard,
     prayers: [
       {
-        id: 'standard_fajr_2026-01-17',
         type: ScheduleType.Standard,
         english: 'Fajr',
         arabic: 'الفجر',
@@ -621,7 +482,6 @@ export const EXAMPLE_EMPTY_SEQUENCE_SCENARIO = {
         belongsToDate: '2026-01-17',
       },
       {
-        id: 'standard_isha_2026-01-17',
         type: ScheduleType.Standard,
         english: 'Isha',
         arabic: 'العشاء',
@@ -699,7 +559,6 @@ export const EXAMPLE_EMPTY_SEQUENCE_SCENARIO = {
 export const EXAMPLE_DST_SPRING_FORWARD: Prayer[] = [
   // Night before DST change (still GMT)
   {
-    id: 'standard_isha_2026-03-28',
     type: ScheduleType.Standard,
     english: 'Isha',
     arabic: 'العشاء',
@@ -715,7 +574,6 @@ export const EXAMPLE_DST_SPRING_FORWARD: Prayer[] = [
    * new Date("2026-03-29T06:15:00") which is correct in local time.
    */
   {
-    id: 'standard_fajr_2026-03-29',
     type: ScheduleType.Standard,
     english: 'Fajr',
     arabic: 'الفجر',
@@ -724,7 +582,6 @@ export const EXAMPLE_DST_SPRING_FORWARD: Prayer[] = [
     belongsToDate: '2026-03-29',
   },
   {
-    id: 'standard_sunrise_2026-03-29',
     type: ScheduleType.Standard,
     english: 'Sunrise',
     arabic: 'الشروق',
@@ -751,7 +608,6 @@ export const EXAMPLE_DST_SPRING_FORWARD: Prayer[] = [
 export const EXAMPLE_DST_FALL_BACK: Prayer[] = [
   // Day before DST ends (still BST)
   {
-    id: 'standard_isha_2026-10-24',
     type: ScheduleType.Standard,
     english: 'Isha',
     arabic: 'العشاء',
@@ -767,7 +623,6 @@ export const EXAMPLE_DST_FALL_BACK: Prayer[] = [
    * new Date("2026-10-25T05:00:00") which is correct in local time.
    */
   {
-    id: 'standard_fajr_2026-10-25',
     type: ScheduleType.Standard,
     english: 'Fajr',
     arabic: 'الفجر',
@@ -776,7 +631,6 @@ export const EXAMPLE_DST_FALL_BACK: Prayer[] = [
     belongsToDate: '2026-10-25',
   },
   {
-    id: 'standard_sunrise_2026-10-25',
     type: ScheduleType.Standard,
     english: 'Sunrise',
     arabic: 'الشروق',
@@ -827,7 +681,6 @@ export const EXAMPLE_DST_FALL_BACK: Prayer[] = [
  * Example: "2026-06-22T01:00:00" (local) NOT "2026-06-22T01:00:00Z" (UTC)
  */
 export const EXAMPLE_STORED_PRAYER: StoredPrayer = {
-  id: 'standard_isha_2026-06-21',
   type: ScheduleType.Standard,
   english: 'Isha',
   arabic: 'العشاء',
