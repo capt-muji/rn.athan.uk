@@ -21,6 +21,9 @@ import {
 } from '@/shared/types';
 import * as Database from '@/stores/database';
 
+// Islamic day boundary: Isha after midnight (00:00-06:00) belongs to previous Islamic day
+const EARLY_MORNING_CUTOFF_HOUR = 6;
+
 /**
  * Gets the hour in London timezone for a given date
  * Used for determining if a prayer crosses midnight in London
@@ -146,30 +149,16 @@ export const generatePrayerId = (type: ScheduleType, english: string, date: stri
 };
 
 /**
- * Calculates which Islamic day a prayer belongs to (per ADR-004)
+ * Calculates which Islamic day a prayer belongs to
  *
- * A prayer's belongsToDate may differ from its datetime's calendar date:
- * - Standard: Isha at 1am on June 22 belongs to June 21's schedule
- * - Extras: Night prayers belong to the day they're preparing for
- *
- * Rules:
- * - Standard: Day advances after Isha passes
- * - Extras: Day advances after Duha/Istijaba passes
+ * Islamic Day Rule: The day changes after Isha passes.
+ * If Isha is between 00:00-06:00, it belongs to the previous day.
  *
  * @param type Schedule type (Standard or Extra)
  * @param prayerEnglish English name of the prayer
  * @param calendarDate Calendar date string (YYYY-MM-DD)
- * @param prayerDateTime Full datetime of the prayer
+ * @param prayerDateTime Full datetime (must be created via createPrayerDatetime)
  * @returns The Islamic day this prayer belongs to (YYYY-MM-DD)
- *
- * @example
- * // Summer: Isha at 1am crosses midnight, belongs to previous day
- * calculateBelongsToDate(ScheduleType.Standard, "Isha", "2026-06-22", new Date("2026-06-22T01:00:00"))
- * // Returns: "2026-06-21"
- *
- * // Winter: Midnight at 23:15 belongs to tomorrow's Extras schedule
- * calculateBelongsToDate(ScheduleType.Extra, "Midnight", "2026-01-17", new Date("2026-01-17T23:15:00"))
- * // Returns: "2026-01-18"
  */
 export const calculateBelongsToDate = (
   type: ScheduleType,
@@ -177,43 +166,19 @@ export const calculateBelongsToDate = (
   calendarDate: string,
   prayerDateTime: Date
 ): string => {
-  // Use London hours for all calculations (prayer times are London-based)
   const hours = getLondonHours(prayerDateTime);
 
-  // For Standard schedule:
-  // All prayers belong to their calendar date, EXCEPT Isha when it crosses midnight
-  if (type === ScheduleType.Standard) {
-    // If Isha is after midnight (e.g., 01:00), it belongs to YESTERDAY
-    // because the Islamic day started with yesterday's Fajr
-    if (prayerEnglish === 'Isha' && hours < 12) {
-      // Isha before noon means it crossed midnight - belongs to previous day
-      const prevDate = new Date(prayerDateTime);
-      prevDate.setDate(prevDate.getDate() - 1);
-      return TimeUtils.formatDateShort(prevDate);
-    }
-    return calendarDate;
+  // STANDARD: Isha between 00:00-06:00 belongs to previous day
+  if (type === ScheduleType.Standard && prayerEnglish === 'Isha' && hours < EARLY_MORNING_CUTOFF_HOUR) {
+    return TimeUtils.formatDateShort(addDays(prayerDateTime, -1));
   }
 
-  // For Extras schedule:
-  // Night prayers (Midnight, Last Third, Suhoor) belong to the NEXT day
-  // Because the Extras day starts after Duha/Istijaba passes
+  // EXTRAS: Night prayers before midnight belong to next day
   if (type === ScheduleType.Extra) {
     const nightPrayers = ['Midnight', 'Last Third', 'Suhoor'];
-    if (nightPrayers.includes(prayerEnglish)) {
-      // These prayers occur at night but belong to the day that starts with Duha
-      // If Midnight is at 23:00 on Jan 17, it belongs to Jan 18's Extras schedule
-      // If Midnight is at 00:30 on Jan 18, it STILL belongs to Jan 18's Extras schedule
-      if (hours >= 12) {
-        // Night prayer before midnight (evening) - belongs to tomorrow
-        const nextDate = new Date(prayerDateTime);
-        nextDate.setDate(nextDate.getDate() + 1);
-        return TimeUtils.formatDateShort(nextDate);
-      }
-      // Night prayer after midnight (early morning) - belongs to same calendar day
-      return calendarDate;
+    if (nightPrayers.includes(prayerEnglish) && hours >= 12) {
+      return TimeUtils.formatDateShort(addDays(prayerDateTime, 1));
     }
-    // Duha and Istijaba belong to their calendar date
-    return calendarDate;
   }
 
   return calendarDate;
@@ -307,32 +272,32 @@ export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCou
     // Create Prayer objects for each prayer time
     namesEnglish.forEach((name, index) => {
       const prayerTime = rawData[name.toLowerCase() as keyof ISingleApiResponseTransformed] as string;
-
-      // For Extra schedule night prayers (Midnight, Last Third, Suhoor):
-      // If the time is PM (>= 12:00), the prayer actually occurred on the PREVIOUS day
-      // e.g., Midnight at 23:17 for Jan 19's data actually occurred on Jan 18 at 23:17
+      const [hours] = prayerTime.split(':').map(Number);
       let prayerDateString = dateString;
+
+      // STANDARD: Isha 00:00-06:00 occurs on NEXT calendar day (for countdown)
+      // calculateBelongsToDate() will assign it to previous Islamic day (for display)
+      if (isStandard && name === 'Isha' && hours < EARLY_MORNING_CUTOFF_HOUR) {
+        prayerDateString = TimeUtils.formatDateShort(addDays(currentDate, 1));
+      }
+
+      // EXTRAS: Night prayers >=12:00 occurred on PREVIOUS calendar day
       if (!isStandard) {
         const nightPrayers = ['Midnight', 'Last Third', 'Suhoor'];
-        if (nightPrayers.includes(name)) {
-          const [hours] = prayerTime.split(':').map(Number);
-          if (hours >= 12) {
-            // PM time means previous calendar day
-            const prevDate = addDays(currentDate, -1);
-            prayerDateString = TimeUtils.formatDateShort(prevDate);
-          }
+        if (nightPrayers.includes(name) && hours >= 12) {
+          prayerDateString = TimeUtils.formatDateShort(addDays(currentDate, -1));
         }
       }
 
-      const prayer = createPrayer({
-        type,
-        english: name,
-        arabic: namesArabic[index],
-        date: prayerDateString,
-        time: prayerTime,
-      });
-
-      prayers.push(prayer);
+      prayers.push(
+        createPrayer({
+          type,
+          english: name,
+          arabic: namesArabic[index],
+          date: prayerDateString,
+          time: prayerTime,
+        })
+      );
     });
   }
 
