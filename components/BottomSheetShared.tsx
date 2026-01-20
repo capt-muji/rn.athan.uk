@@ -1,19 +1,24 @@
 import { BottomSheetBackdrop, BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
-import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from '@/shared/constants';
 
 /**
  * Shared background component for bottom sheets
- * Renders a gradient background with rounded top corners
+ * Renders a flat background with border
  */
 export const renderSheetBackground = () => (
-  <LinearGradient
-    style={[StyleSheet.absoluteFill, bottomSheetStyles.sheetBackground]}
-    colors={['#0e0b32', '#090428']}
-    start={{ x: 0, y: 0 }}
-    end={{ x: 1, y: 1 }}
+  <View
+    style={[
+      StyleSheet.absoluteFill,
+      bottomSheetStyles.sheetBackground,
+      {
+        backgroundColor: '#0a1535',
+        borderWidth: 1,
+        borderBottomWidth: 0,
+        borderColor: '#18295b',
+      },
+    ]}
   />
 );
 

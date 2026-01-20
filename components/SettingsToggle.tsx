@@ -19,7 +19,7 @@ export default function SettingsToggle({ label, value, onToggle }: SettingsToggl
   const toggleDotStyle = useAnimatedStyle(() => ({
     transform: [
       {
-        translateX: withTiming(value ? 20 : 0, { duration: 200 }),
+        translateX: withTiming(value ? 18 : 0, { duration: 200 }),
       },
     ],
   }));
@@ -54,11 +54,14 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
     backgroundColor: '#2e2e63',
+    borderWidth: 1,
+    borderColor: '#3b3977',
     padding: 2,
     justifyContent: 'center',
   },
   toggleActive: {
-    backgroundColor: '#3d1fff',
+    backgroundColor: '#6023c9',
+    borderColor: '#7e3bf1',
   },
   toggleDot: {
     width: 20,
