@@ -1,6 +1,5 @@
-import * as Haptics from 'expo-haptics';
-import { useAtomValue, useSetAtom } from 'jotai';
-import { StyleSheet, Text, Pressable } from 'react-native';
+import { useAtomValue } from 'jotai';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import ProgressBar from './ProgressBar';
@@ -11,7 +10,6 @@ import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { overlayTimerAtom } from '@/stores/timer';
-import { progressBarVisibleAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -23,7 +21,6 @@ export default function Timer({ type }: Props) {
   const { timeLeft, prayerName, isReady } = useCountdown(type);
 
   const overlay = useAtomValue(overlayAtom);
-  const setProgressBarVisible = useSetAtom(progressBarVisibleAtom);
 
   // Overlay mode uses dedicated overlay timer atom (selected prayer countdown)
   const overlayTimer = useAtomValue(overlayTimerAtom);
@@ -36,11 +33,6 @@ export default function Timer({ type }: Props) {
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
   }));
 
-  const handlePress = () => {
-    setProgressBarVisible((prev) => !prev);
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-  };
-
   // Show loading state if countdown not ready (sequence not initialized)
   if (!isReady && !overlay.isOn) {
     return null;
@@ -48,12 +40,11 @@ export default function Timer({ type }: Props) {
 
   return (
     <Animated.View style={[styles.container]}>
-      <Pressable onPress={handlePress} disabled={overlay.isOn}>
+      <View>
         <Text style={[styles.text]}>{displayName} in</Text>
         <Animated.Text style={[styles.timer, animatedStyle]}>{formatTime(displayTime)}</Animated.Text>
-
         <ProgressBar type={type} />
-      </Pressable>
+      </View>
     </Animated.View>
   );
 }

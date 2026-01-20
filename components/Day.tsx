@@ -5,10 +5,10 @@ import Animated from 'react-native-reanimated';
 
 import Masjid from '@/components/Masjid';
 import { COLORS, SCREEN, TEXT } from '@/shared/constants';
-import { formatDateLong } from '@/shared/time';
+import { formatDateLong, formatHijriDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardDisplayDateAtom, extraDisplayDateAtom } from '@/stores/schedule';
-import { getMeasurementsDate, setMeasurementsDate } from '@/stores/ui';
+import { getMeasurementsDate, setMeasurementsDate, hijriDateEnabledAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -22,6 +22,7 @@ export default function Day({ type }: Props) {
   const displayDateAtom = isStandard ? standardDisplayDateAtom : extraDisplayDateAtom;
   const date = useAtomValue(displayDateAtom) ?? '';
   const dateRef = useRef<Animated.Text>(null);
+  const hijriEnabled = useAtomValue(hijriDateEnabledAtom);
 
   const handleLayout = () => {
     if (!dateRef.current || !isStandard) return;
@@ -35,12 +36,14 @@ export default function Day({ type }: Props) {
     });
   };
 
+  const formattedDate = hijriEnabled ? formatHijriDateLong(date) : formatDateLong(date);
+
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.location}>London, UK</Text>
         <Animated.Text ref={dateRef} onLayout={handleLayout} style={styles.date}>
-          {formatDateLong(date)}
+          {formattedDate}
         </Animated.Text>
       </View>
       <Masjid />

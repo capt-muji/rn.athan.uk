@@ -25,7 +25,11 @@ export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_w
 export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
 export const measurementsDateAtom = atom<PageCoordinates>(emptyCoordinates);
 
-export const progressBarVisibleAtom = atomWithStorageBoolean('preference_progressbar_visible', true);
+export const progressBarHiddenAtom = atomWithStorageBoolean('preference_progressbar_hidden', false);
+
+// New preference atoms for settings
+export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);
+export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
 
 export const tempStandardMutedAtom = atom<boolean | null>(null);
 export const tempExtraMutedAtom = atom<boolean | null>(null);
@@ -42,9 +46,12 @@ export const setTempMutedState = (type: ScheduleType, value: boolean | null) => 
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);
 export const showSheet = () => store.get(bottomSheetModalAtom)?.present();
 export const hideSheet = () => store.get(bottomSheetModalAtom)?.dismiss();
+export const showSettingsSheet = () => store.get(settingsSheetModalAtom)?.present();
+export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
 
 export const setPagePosition = (position: number) => store.set(pagePositionAtom, position);
 export const setBottomSheetModal = (modal: BottomSheetModal | null) => store.set(bottomSheetModalAtom, modal);
+export const setSettingsSheetModal = (modal: BottomSheetModal | null) => store.set(settingsSheetModalAtom, modal);
 export const setPlayingSoundIndex = (index: number | null) => store.set(playingSoundIndexAtom, index);
 export const setRefreshUI = (timestamp: number) => store.set(refreshUIAtom, timestamp);
 export const setPopupTipAthanEnabled = (enabled: boolean) => store.set(popupTipAthanEnabledAtom, enabled);

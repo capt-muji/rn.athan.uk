@@ -13,8 +13,8 @@ import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
-import { overlayAtom, toggleOverlay } from '@/stores/overlay';
-import { refreshUIAtom, showSheet } from '@/stores/ui';
+import { overlayAtom } from '@/stores/overlay';
+import { refreshUIAtom } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
   { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
@@ -179,12 +179,6 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     }, ANIMATION.popupDuration);
   };
 
-  const handleLongPress = () => {
-    toggleOverlay(false);
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    showSheet();
-  };
-
   const displayedIconIndex = Schedule.currentMuted ? AlertType.Off : iconIndex;
 
   const computedStylesPopup: ViewStyle = {
@@ -196,8 +190,6 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onLongPress={handleLongPress}
-        delayLongPress={200}
         onPressIn={() => AnimScale.animate(0.9)}
         onPressOut={() => AnimScale.animate(1)}
         style={styles.iconContainer}>

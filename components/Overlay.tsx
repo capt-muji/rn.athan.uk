@@ -23,10 +23,10 @@ import {
   EXTRAS_EXPLANATIONS,
   EXTRAS_EXPLANATIONS_ARABIC,
 } from '@/shared/constants';
-import { formatDateLong } from '@/shared/time';
+import { formatDateLong, formatHijriDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
-import { measurementsListAtom, measurementsDateAtom } from '@/stores/ui';
+import { measurementsListAtom, measurementsDateAtom, hijriDateEnabledAtom } from '@/stores/ui';
 
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
@@ -36,6 +36,7 @@ export default function Overlay() {
 
   const listMeasurements = useAtomValue(measurementsListAtom);
   const dateMeasurements = useAtomValue(measurementsDateAtom);
+  const hijriEnabled = useAtomValue(hijriDateEnabledAtom);
 
   const insets = useSafeAreaInsets();
 
@@ -94,6 +95,8 @@ export default function Overlay() {
   const explanation = isExtra ? EXTRAS_EXPLANATIONS[overlay.selectedPrayerIndex] : null;
   const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[overlay.selectedPrayerIndex] : null;
 
+  const formattedDate = hijriEnabled ? formatHijriDateLong(selectedPrayer.date) : formatDateLong(selectedPrayer.date);
+
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
       {/* Timer */}
@@ -104,7 +107,7 @@ export default function Overlay() {
 
       {/* Date */}
       <Reanimated.Text style={[styles.date, computedStyleDate as object, dateOpacity.style]}>
-        {formatDateLong(selectedPrayer.date)}
+        {formattedDate}
       </Reanimated.Text>
 
       {/* Prayer overlay */}
