@@ -2,13 +2,12 @@ import { BottomSheetModal, BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { AudioSource } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useMemo, useCallback, useState } from 'react';
-import { StyleSheet, Text, Dimensions, View, ListRenderItemInfo } from 'react-native';
+import { StyleSheet, Text, View, ListRenderItemInfo } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ALL_AUDIOS } from '@/assets/audio';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
-import Glow from '@/components/Glow';
 import * as Device from '@/device/notifications';
 import { COLORS, TEXT } from '@/shared/constants';
 import { rescheduleAllNotifications, setSoundPreference } from '@/stores/notifications';
@@ -78,15 +77,6 @@ export default function BottomSheetSound() {
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
       <View style={bottomSheetStyles.container}>
-        <Glow
-          color={'#28045b'}
-          baseOpacity={1}
-          size={Dimensions.get('window').width * 3}
-          style={{
-            bottom: -Dimensions.get('window').width * 1.5,
-            left: -Dimensions.get('window').width * 1.25,
-          }}
-        />
         <Text style={[styles.text, styles.title]}>Select Athan</Text>
 
         <BottomSheetFlatList<AudioItem>

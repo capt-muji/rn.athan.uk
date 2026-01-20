@@ -32,11 +32,11 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   const isSelected = index === (tempSelection ?? selectedSound);
 
   const textAnimation = useAnimationColor(isPlaying || isSelected ? 1 : 0, {
-    fromColor: '#425ea7',
+    fromColor: '#475e95',
     toColor: '#ffffff',
   });
   const iconAnimation = useAnimationFill(isPlaying ? 1 : 0, {
-    fromColor: '#425ea7',
+    fromColor: '#475e95',
     toColor: '#ffffff',
   });
 
@@ -85,7 +85,9 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   };
 
   const computedStyleOption: ViewStyle = {
-    backgroundColor: isSelected ? '#3623ab' : 'transparent',
+    backgroundColor: isSelected ? '#6023c9' : 'transparent',
+    borderWidth: 1,
+    borderColor: isSelected ? '#7e3bf1' : 'transparent',
   };
 
   return (
