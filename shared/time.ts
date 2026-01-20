@@ -35,6 +35,27 @@ export const formatDateLong = (date: string): string => {
 };
 
 /**
+ * Formats a date string into Hijri format using Intl.DateTimeFormat
+ * Falls back to Gregorian if conversion fails
+ * @param date Date string in YYYY-MM-DD format
+ * @returns Formatted Hijri date string (e.g., "Rajab 1, 1447")
+ */
+export const formatHijriDateLong = (date: string): string => {
+  try {
+    const gregorian = createLondonDate(date);
+    const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+    // Remove "AH" suffix from formatted date
+    return hijriFormatter.format(gregorian).replace(/ AH$/, '');
+  } catch {
+    return formatDateLong(date);
+  }
+};
+
+/**
  * Formats a date into YYYY-MM-DD format
  * @param date Date object
  * @returns Date string in YYYY-MM-DD format

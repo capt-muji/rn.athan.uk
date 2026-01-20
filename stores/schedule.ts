@@ -5,13 +5,16 @@
  * @see ai/adr/005-timing-system-overhaul.md
  */
 
+import { subDays } from 'date-fns';
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC, EXTRAS_ENGLISH, EXTRAS_ARABIC } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import { Prayer, PrayerSequence, ScheduleType } from '@/shared/types';
+import { ISingleApiResponseTransformed, Prayer, PrayerSequence, ScheduleType } from '@/shared/types';
+import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
@@ -52,6 +55,10 @@ export const createNextPrayerAtom = (type: ScheduleType) => {
  * Creates a derived atom that returns the previous prayer (before next)
  * Used for progress bar calculation
  *
+ * EDGE CASE: When next prayer is first in sequence (e.g., 1am before Fajr),
+ * fetches yesterday's final prayer from database to ensure progress bar works correctly.
+ * Matches January 1st handling pattern in sync.ts.
+ *
  * @param type Schedule type (Standard or Extra)
  * @returns Derived atom with Prayer | null
  */
@@ -63,10 +70,57 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
     const now = TimeUtils.createLondonDate();
     const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
 
-    // refreshSequence guarantees previous prayer is kept for progress bar
-    if (nextIndex <= 0) return null;
+    // Normal case: Previous prayer is in sequence
+    if (nextIndex > 0) {
+      return sequence.prayers[nextIndex - 1];
+    }
 
-    return sequence.prayers[nextIndex - 1];
+    // EDGE CASE: Next prayer is first in sequence (nextIndex === 0)
+    // This happens at 1am when Fajr (6am) is next prayer
+    // Fetch yesterday's final prayer from database for progress bar calculation
+    // Sync layer guarantees yesterday's data exists (see sync.ts:52-67)
+    if (nextIndex === 0) {
+      const yesterday = subDays(TimeUtils.createLondonDate(), 1);
+      const prevDayData = Database.getPrayerByDate(yesterday)!;
+
+      // Sync layer ensures data exists - no null check needed
+      // See ADR-004: "Trust the data layer: UI never has fallbacks"
+      const isStandard = type === ScheduleType.Standard;
+      const namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+      const namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+
+      // Filter out Istijaba on non-Fridays for Extras
+      let englishNames = namesEnglish;
+      let arabicNames = namesArabic;
+
+      if (!isStandard && !TimeUtils.isFriday(yesterday)) {
+        englishNames = englishNames.filter((name) => name.toLowerCase() !== 'istijaba');
+        arabicNames = arabicNames.filter((name) => name !== 'استجابة');
+      }
+
+      const finalPrayerIndex = englishNames.length - 1;
+      const prayerKey = englishNames[finalPrayerIndex].toLowerCase();
+      const prayerTime = prevDayData[prayerKey as keyof ISingleApiResponseTransformed];
+
+      const prevPrayer = PrayerUtils.createPrayer({
+        type,
+        english: englishNames[finalPrayerIndex],
+        arabic: arabicNames[finalPrayerIndex],
+        date: TimeUtils.formatDateShort(yesterday),
+        time: prayerTime,
+      });
+
+      logger.info('PREV_PRAYER: Fetched yesterday final prayer for progress bar', {
+        type,
+        prevPrayer: prevPrayer.english,
+        prevTime: prevPrayer.time,
+      });
+
+      return prevPrayer;
+    }
+
+    // No future prayers found - should never happen with 3-day sequence buffer
+    return null;
   });
 };
 
