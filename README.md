@@ -87,7 +87,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 - [x] Migrate from expo-av to expo-audio (SDK 54 requirement)
 - [x] Upgrade MMKV to v4 (Nitro Module)
 - [x] Pin all package versions (prevent breaking upgrades)
-- [x] Progress bar toggle: Tap timer to hide/show with 250ms fade animation
+- [x] Settings bottom sheet: Access via Masjid icon tap with progress bar toggle, Hijri date toggle, and Athan sound selector
 
 ### Immediate Improvements
 
@@ -126,6 +126,8 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 🔄 **Tomorrow's Prayer Times**: Swipe between today and tomorrow's schedule with PagerView
 - 🔍 **Large Overlay Font**: Accessible mode for visually impaired users with jumbo text display
 - 🌙 **Smart Prayer Tracking**: Automatically tracks which prayers have passed, which is next, and upcoming prayers
+- ⚙️ **Settings**: Tap Masjid icon to access settings (progress bar toggle, Hijri date toggle, Athan sound selector)
+- 🗓️ **Hijri Date Display**: Optional Islamic calendar date format (e.g., "Rajab 1, 1447")
 
 ### Notifications & Alerts
 
@@ -952,7 +954,8 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 | `prayer_max_english_width_extra`    | Number  | Cached max width of Extra prayer names for layout    | Session    | First render of extra prayer list     | Used for responsive text sizing                      |
 | `measurements_list`                 | Object  | Cached measurements for prayer list item positioning | Session    | Component mount                       | Optimizes layout calculations, prevents jank         |
 | `measurements_date`                 | Object  | Cached measurements for date display area            | Session    | Component mount                       | Improves date bar rendering performance              |
-| `preference_progressbar_visible`    | Boolean | Progress bar visibility state (shown/hidden)         | Indefinite | User taps timer to toggle visibility  | Controls progress bar opacity with 250ms fade        |
+| `preference_progressbar_hidden`     | Boolean | Progress bar hidden state (default: false = visible) | Indefinite | User toggles in Settings bottom sheet | Controls progress bar opacity with 250ms fade        |
+| `preference_hijri_date`             | Boolean | Hijri date display preference (Hijri/Gregorian)      | Indefinite | User toggles in Settings bottom sheet | Controls date format on main screen and overlay      |
 | `popup_tip_athan_enabled`           | Boolean | Whether "First Time Tips" popup has been shown       | Indefinite | App first launch                      | Only shows once in user's lifetime                   |
 | `popup_update_last_check`           | Number  | Timestamp of last app update check                   | Indefinite | After checking GitHub for new version | Only checks once per 24h (avoids API spam)           |
 

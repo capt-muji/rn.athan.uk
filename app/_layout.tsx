@@ -6,6 +6,7 @@ import { useLayoutEffect } from 'react';
 import { LogBox, Text } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import BottomSheetSettings from '@/components/BottomSheetSettings';
 import BottomSheetSound from '@/components/BottomSheetSound';
 import InitialWidthMeasurement from '@/components/InitialWidthMeasurement';
 import { triggerSyncLoadable } from '@/stores/sync';
@@ -40,6 +41,7 @@ export default function Layout() {
       <BottomSheetModalProvider>
         <Slot />
         <BottomSheetSound />
+        <BottomSheetSettings />
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );
