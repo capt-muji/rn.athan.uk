@@ -73,9 +73,9 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.medium,
   },
   athanButton: {
-    backgroundColor: '#6023c9',
+    backgroundColor: '#5015b5',
     borderWidth: 1,
-    borderColor: '#7e3bf1',
+    borderColor: '#672bcf',
     marginHorizontal: 20,
     marginTop: 30,
     paddingVertical: 14,

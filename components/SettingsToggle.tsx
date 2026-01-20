@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   toggleActive: {
-    backgroundColor: '#6023c9',
-    borderColor: '#7e3bf1',
+    backgroundColor: '#5015b5',
+    borderColor: '#672bcf',
   },
   toggleDot: {
     width: 20,
