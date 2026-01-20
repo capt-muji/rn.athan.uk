@@ -33,7 +33,7 @@ export default function ProgressBar({ type }: Props) {
   const progress = isReady ? 100 - elapsedProgress : 0;
 
   const widthValue = useSharedValue(progress ?? 0);
-  const colorValue = useSharedValue(0); // Discrete color state: 0=green, 1=red
+  const colorValue = useSharedValue(0); // Discrete color state: 0=yellow, 1=red
   const warningValue = useSharedValue(0);
   const opacityValue = useSharedValue(!overlay.isOn && !isProgressBarHidden ? 1 : 0);
   const isFirstRender = useRef(true);
@@ -53,7 +53,7 @@ export default function ProgressBar({ type }: Props) {
       colorValue.value,
       [0, 1],
       [
-        '#d3ff8b', // green (>10%)
+        '#e2d403', // yellow (>10%)
         '#d63384', // red (<=10%)
       ]
     );
@@ -121,7 +121,7 @@ export default function ProgressBar({ type }: Props) {
         };
         widthValue.value = withTiming(progress, timingConfig);
 
-        // Animate color state with 500ms transition (discrete: 0=green, 1=red)
+        // Animate color state with 500ms transition (discrete: 0=yellow, 1=red)
         colorValue.value = withTiming(progress > 10 ? 0 : 1, {
           duration: 500,
           easing: Easing.linear,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 2,
     alignSelf: 'center',
-    backgroundColor: '#dff9ff25',
+    backgroundColor: '#7ebdf131',
   },
   elapsed: {
     position: 'absolute',
