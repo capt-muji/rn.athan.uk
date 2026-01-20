@@ -77,7 +77,7 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   useEffect(() => {
     const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
     AnimColor.animate(colorPos, { duration: 50 });
-  }, [isSelectedForOverlay, Prayer.ui.initialColorPos]);
+  }, [isSelectedForOverlay]);
 
   return (
     <Pressable style={styles.container} onPress={handlePress}>
