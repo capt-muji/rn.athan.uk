@@ -85,9 +85,9 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   };
 
   const computedStyleOption: ViewStyle = {
-    backgroundColor: isSelected ? '#6023c9' : 'transparent',
+    backgroundColor: isSelected ? '#5015b5' : 'transparent',
     borderWidth: 1,
-    borderColor: isSelected ? '#7e3bf1' : 'transparent',
+    borderColor: isSelected ? '#672bcf' : 'transparent',
   };
 
   return (
