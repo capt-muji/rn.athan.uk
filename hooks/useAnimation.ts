@@ -36,6 +36,36 @@ const DEFAULT_SPRING: WithSpringConfig = {
   mass: 0.5,
 };
 
+/**
+ * Helper to create a timing-based animation with consistent options handling
+ * Reduces duplication across timing-based animation hooks
+ */
+function createTimingAnimation(toValue: number, options?: AnimationOptions, customConfig?: Partial<WithTimingConfig>) {
+  'worklet';
+  const timing: WithTimingConfig = {
+    ...DEFAULT_TIMING,
+    ...customConfig,
+    duration: options?.duration ?? customConfig?.duration ?? DEFAULT_TIMING.duration,
+  };
+
+  const animation = withTiming(toValue, timing, (finished) => {
+    if (finished && options?.onFinish) runOnJS(options.onFinish)();
+  });
+
+  return options?.delay ? withDelay(options.delay, animation) : animation;
+}
+
+/**
+ * Helper to create a spring-based animation with consistent options handling
+ * Reduces duplication across spring-based animation hooks
+ */
+function createSpringAnimation(toValue: number, options?: AnimationOptions) {
+  'worklet';
+  return withSpring(toValue, DEFAULT_SPRING, (finished) => {
+    if (finished && options?.onFinish) runOnJS(options.onFinish)();
+  });
+}
+
 export const useAnimationColor = (initialValue: number = 0, input: ColorAnimationInput) => {
   const value = useSharedValue(initialValue);
 
@@ -45,16 +75,7 @@ export const useAnimationColor = (initialValue: number = 0, input: ColorAnimatio
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = {
-      ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration,
-    };
-
-    const animation = withTiming(toValue, timing, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
-
-    value.value = options?.delay ? withDelay(options.delay, animation) : animation;
+    value.value = createTimingAnimation(toValue, options);
   };
 
   return { value, style, animate };
@@ -69,16 +90,7 @@ export const useAnimationFill = (initialValue: number = 0, input: ColorAnimation
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = {
-      ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration,
-    };
-
-    const animation = withTiming(toValue, timing, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
-
-    value.value = options?.delay ? withDelay(options.delay, animation) : animation;
+    value.value = createTimingAnimation(toValue, options);
   };
 
   return { value, animatedProps, animate };
@@ -93,14 +105,7 @@ export const useAnimationBackgroundColor = (initialValue: number = 0, input: Col
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = {
-      ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration,
-    };
-
-    value.value = withTiming(toValue, timing, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
+    value.value = createTimingAnimation(toValue, options);
   };
 
   return { value, style, animate };
@@ -115,14 +120,7 @@ export const useAnimationOpacity = (initialValue: number = 0) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = {
-      ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration,
-    };
-
-    value.value = withTiming(toValue, timing, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
+    value.value = createTimingAnimation(toValue, options);
   };
 
   return { value, style, animate };
@@ -137,15 +135,7 @@ export const useAnimationTranslateY = (initialValue: number) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    const timing = {
-      ...DEFAULT_TIMING,
-      duration: options?.duration ?? DEFAULT_TIMING.duration,
-      easing: Easing.elastic(0.5),
-    };
-
-    value.value = withTiming(toValue, timing, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
+    value.value = createTimingAnimation(toValue, options, { easing: Easing.elastic(0.5) });
   };
 
   return { value, style, animate };
@@ -160,9 +150,7 @@ export const useAnimationScale = (initialValue: number = 1) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    value.value = withSpring(toValue, DEFAULT_SPRING, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
+    value.value = createSpringAnimation(toValue, options);
   };
 
   return { value, style, animate };
@@ -177,9 +165,7 @@ export const useAnimationBounce = (initialValue: number = 0) => {
 
   const animate = (toValue: number, options?: AnimationOptions) => {
     'worklet';
-    value.value = withSpring(toValue, DEFAULT_SPRING, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
+    value.value = createSpringAnimation(toValue, options);
   };
 
   return { value, style, animate };
