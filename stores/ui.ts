@@ -9,12 +9,14 @@ const store = getDefaultStore();
 const emptyCoordinates: PageCoordinates = { pageX: 0, pageY: 0, width: 0, height: 0 };
 
 // --- Atoms ---
-export const pagePositionAtom = atom(0);
-export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
 export const playingSoundIndexAtom = atom<number | null>(null);
 export const refreshUIAtom = atom<number>(Date.now());
 export const popupUpdateEnabledAtom = atom(false);
 export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last_check', 0);
+
+export const pagePositionAtom = atom(0);
+export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
+export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
 
 export const scrollPositionAtom = atom(0);
 
@@ -31,8 +33,8 @@ export const progressBarHiddenAtom = atomWithStorageBoolean('preference_progress
 export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);
 export const hideSecondsAtom = atomWithStorageBoolean('preference_hide_seconds', false);
 export const onboardingCompletedAtom = atomWithStorageBoolean('preference_onboarding_completed', false);
-export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
 
+// Temporary mute state (not persisted, used during settings changes)
 export const tempStandardMutedAtom = atom<boolean | null>(null);
 export const tempExtraMutedAtom = atom<boolean | null>(null);
 
@@ -73,5 +75,4 @@ export const getMeasurementsDate = () => store.get(measurementsDateAtom);
 export const setMeasurementsDate = (measurements: PageCoordinates) => store.set(measurementsDateAtom, measurements);
 export const getMeasurementsMasjid = () => store.get(measurementsMasjidAtom);
 export const setMeasurementsMasjid = (measurements: PageCoordinates) => store.set(measurementsMasjidAtom, measurements);
-export const getOnboardingCompleted = () => store.get(onboardingCompletedAtom);
 export const setOnboardingCompleted = (completed: boolean) => store.set(onboardingCompletedAtom, completed);
