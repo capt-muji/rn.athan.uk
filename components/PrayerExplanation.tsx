@@ -48,7 +48,7 @@ export default function PrayerExplanation({
         {/* Header with icon and title */}
         <View style={styles.infoHeader}>
           <Svg width={17} height={17} viewBox="0 0 128 128">
-            <Path fill="#a5b4fc" d={ICON_PATHS[AlertIcon.INFO]} />
+            <Path fill="#ffffff" d={ICON_PATHS[AlertIcon.INFO]} />
           </Svg>
           <Text style={styles.infoTitle}>{prayerName}</Text>
         </View>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 11,
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
-    borderBottomColor: '#312e81',
+    borderBottomColor: '#3b3977',
   },
   arrowFill: {
     width: 0,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderTopWidth: 0,
-    borderColor: '#312e81',
+    borderColor: '#3b3977',
     paddingVertical: 18,
     paddingHorizontal: 20,
     minWidth: 300,
@@ -117,19 +117,19 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   infoTitle: {
-    color: '#e0e7ff',
+    color: '#ffffff',
     fontSize: TEXT.size,
     fontFamily: TEXT.family.medium,
   },
   infoExplanation: {
-    color: '#c7d2fe',
+    color: '#a6c4ff',
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
     marginBottom: 12,
     lineHeight: 22,
   },
   infoExplanationArabic: {
-    color: '#a5b4fc',
+    color: '#a6c4ff',
     fontSize: 16,
     fontFamily: TEXT.family.regular,
     textAlign: 'right',
