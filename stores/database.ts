@@ -143,9 +143,9 @@ export const cleanup = () => {
   clearPrefix('preference_progressbar_visible'); // Progress bar visibility state
   clearPrefix('preference_hijri_date'); // Hijri date display preference
   clearPrefix('preference_hide_seconds'); // Hide seconds preference
+  clearPrefix('preference_onboarding_completed'); // First-launch onboarding completion state
   clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
   clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
   clearPrefix('popup_update_last_check'); // Last app update check timestamp
-  // clearPrefix('popup_tip_athan_enabled'); // Athan tip modal shown state
-  // clearPrefix('popup_times_explained_enabled'); // Times explained modal state (0/1/2)
+  // NOTE: measurements_masjid is NOT persisted to MMKV (ephemeral atom), so no cleanup needed
 };

@@ -75,6 +75,7 @@ export const ANIMATION = {
 
 export const OVERLAY = {
   zindexes: {
+    onboarding: 1001, // Highest z-index for first-launch onboarding overlay
     popup: 1000,
     overlay: 2,
     glow: -1,
