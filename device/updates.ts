@@ -3,6 +3,7 @@ import { Platform, Linking } from 'react-native';
 
 import type { default as Releases } from '@/releases.json';
 import { APP_CONFIG } from '@/shared/config';
+import { TIME_CONSTANTS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { setPopupUpdateLastCheck, getPopupUpdateLastCheck } from '@/stores/ui';
 
@@ -58,12 +59,10 @@ const compareVersions = (v1: string, v2: string): boolean => {
  * @returns true if update is needed (installed < remote), false otherwise
  */
 export const checkForUpdates = async (): Promise<boolean> => {
-  const ONE_DAY_MS = 24 * 60 * 60 * 1000;
-
   const now = Date.now();
   const lastCheck = getPopupUpdateLastCheck();
 
-  if (now - lastCheck < ONE_DAY_MS) return false;
+  if (now - lastCheck < TIME_CONSTANTS.ONE_DAY_MS) return false;
 
   try {
     const installedVersion = Constants.expoConfig!.version;

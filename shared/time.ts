@@ -65,10 +65,31 @@ export const formatDateShort = (date: Date): string => {
 };
 
 /**
- * Calculates the start time of the last third of the night
- * @param magribTime Maghrib time string in HH:mm format
- * @param fajrTime Fajr time string in HH:mm format
- * @returns Start time of the last third of the night in HH:mm format
+ * Calculates the start time of the last third of the night (Islamic calculation)
+ *
+ * Islamic Night Division:
+ * In Islamic tradition, the night is divided into thirds for prayer purposes.
+ * The night spans from Maghrib (sunset) to Fajr (dawn), not system midnight.
+ * The last third begins 2/3 through this period and is a blessed time for prayer.
+ *
+ * Calculation:
+ * 1. Night starts: Yesterday's Maghrib (e.g., 18:45 Jan 19)
+ * 2. Night ends: Today's Fajr (e.g., 06:15 Jan 20)
+ * 3. Night duration: 11 hours 30 minutes (690 minutes)
+ * 4. Last third starts: 2/3 through = 460 minutes after Maghrib = 02:25 Jan 20
+ * 5. +5 minute adjustment applied (see TIME_ADJUSTMENTS.lastThird)
+ * 6. Final time: 02:30 Jan 20
+ *
+ * The +5 minute adjustment provides a safety buffer to ensure the prayer time
+ * is well within the last third period.
+ *
+ * @param magribTime Maghrib time from yesterday in HH:mm format (e.g., "18:45")
+ * @param fajrTime Fajr time from today in HH:mm format (e.g., "06:15")
+ * @returns Start time of the last third in HH:mm format (e.g., "02:30")
+ *
+ * @example
+ * getLastThirdOfNight("18:45", "06:15")
+ * // Returns: "02:30" (accounting for the +5 min adjustment)
  */
 export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
   const [mHours, mMinutes] = magribTime.split(':').map(Number);
@@ -95,10 +116,34 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
 };
 
 /**
- * Calculates the midnight time (midpoint between Maghrib and Fajr)
- * @param magribTime Maghrib time string in HH:mm format
- * @param fajrTime Fajr time string in HH:mm format
- * @returns Midnight time in HH:mm format
+ * Calculates Islamic midnight (midpoint between Maghrib and Fajr)
+ *
+ * Islamic vs System Midnight:
+ * Islamic midnight is NOT 00:00 (system midnight). It is the exact midpoint
+ * of the Islamic night, which spans from Maghrib (sunset) to Fajr (dawn).
+ *
+ * Why the difference?
+ * - System midnight: Fixed at 00:00 every day
+ * - Islamic midnight: Varies daily based on sunset/sunrise times
+ * - In summer (long days): Islamic midnight can be as late as ~01:00
+ * - In winter (short days): Islamic midnight can be as early as ~23:15
+ *
+ * Calculation:
+ * 1. Night starts: Yesterday's Maghrib (e.g., 18:45 Jan 19)
+ * 2. Night ends: Today's Fajr (e.g., 06:15 Jan 20)
+ * 3. Night duration: 11 hours 30 minutes (690 minutes)
+ * 4. Midpoint: 345 minutes after Maghrib = 00:30 Jan 20
+ * 5. Final time: 00:30 Jan 20 (Islamic midnight)
+ *
+ * No adjustment is applied to this calculation - it's the pure midpoint.
+ *
+ * @param magribTime Maghrib time from yesterday in HH:mm format (e.g., "18:45")
+ * @param fajrTime Fajr time from today in HH:mm format (e.g., "06:15")
+ * @returns Islamic midnight time in HH:mm format (e.g., "00:30")
+ *
+ * @example
+ * getMidnightTime("18:45", "06:15")
+ * // Returns: "00:30" (exact midpoint, no adjustment)
  */
 export const getMidnightTime = (magribTime: string, fajrTime: string): string => {
   const [mHours, mMinutes] = magribTime.split(':').map(Number);
@@ -199,10 +244,36 @@ export const getSecondsBetween = (from: Date, to: Date): number => {
 };
 
 /**
- * Converts seconds into human-readable time format
- * @param seconds Time in seconds
- * @param hideSeconds Whether to hide seconds when time > 60s
- * @returns Formatted time string (e.g., "1h 30m 45s" or "1h 30m")
+ * Converts seconds into human-readable time format with flexible precision
+ *
+ * Formatting Rules:
+ * 1. Negative seconds: Always returns "0s"
+ * 2. Days are converted to hours (48 hours, not 2 days)
+ * 3. Seconds visibility:
+ *    - If hideSeconds=false: Always show seconds (e.g., "1h 30m 45s")
+ *    - If hideSeconds=true: Show seconds ONLY in last 60 seconds (e.g., "45s")
+ *    - After 60s with hideSeconds=true: Hide seconds (e.g., "1h 30m")
+ * 4. Zero handling:
+ *    - Only units with non-zero values are shown
+ *    - If all units are zero: Returns "0s"
+ * 5. Spacing: Units separated by single space
+ *
+ * Use Cases:
+ * - Timer countdown: Use hideSeconds=true to avoid flicker in UI
+ * - Precise display: Use hideSeconds=false for exact timing
+ * - Last minute urgency: hideSeconds=true shows seconds in final 60s
+ *
+ * @param seconds Time in seconds (can be negative, but returns "0s")
+ * @param hideSeconds If true, hides seconds when time > 60s (default: false)
+ * @returns Formatted time string
+ *
+ * @example
+ * formatTime(3665) // "1h 1m 5s" (default shows seconds)
+ * formatTime(3665, true) // "1h 1m" (hideSeconds in effect)
+ * formatTime(45, true) // "45s" (shows seconds in last 60s)
+ * formatTime(0) // "0s"
+ * formatTime(-100) // "0s"
+ * formatTime(90000) // "25h 0m 0s" (days converted to hours)
  */
 export const formatTime = (seconds: number, hideSeconds = false): string => {
   if (seconds < 0) return '0s';

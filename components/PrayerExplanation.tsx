@@ -48,7 +48,7 @@ export default function PrayerExplanation({
         {/* Header with icon and title */}
         <View style={styles.infoHeader}>
           <Svg width={17} height={17} viewBox="0 0 128 128">
-            <Path fill="#ffffff" d={ICON_PATHS[AlertIcon.INFO]} />
+            <Path fill="#d0e0ff" d={ICON_PATHS[AlertIcon.INFO]} />
           </Svg>
           <Text style={styles.infoTitle}>{prayerName}</Text>
         </View>
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   infoTitle: {
-    color: '#ffffff',
+    color: '#d0e0ff',
     fontSize: TEXT.size,
     fontFamily: TEXT.family.medium,
   },

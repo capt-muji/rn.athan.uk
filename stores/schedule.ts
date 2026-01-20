@@ -9,7 +9,7 @@ import { subDays } from 'date-fns';
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { PRAYERS_ENGLISH, PRAYERS_ARABIC, EXTRAS_ENGLISH, EXTRAS_ARABIC } from '@/shared/constants';
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC, EXTRAS_ENGLISH, EXTRAS_ARABIC, TIME_CONSTANTS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
@@ -173,6 +173,47 @@ export const setSequence = (type: ScheduleType, date: Date): void => {
 };
 
 /**
+ * Helper: Filter prayers to keep only relevant ones
+ * Keeps future prayers, passed prayers for current display date, and previous prayer
+ */
+function filterRelevantPrayers(
+  prayers: Prayer[],
+  now: Date,
+  currentDisplayDate: string | null,
+  nextIndex: number
+): Prayer[] {
+  return prayers.filter((p, index) => {
+    // Always keep future prayers
+    if (p.datetime > now) return true;
+    // Keep passed prayers that belong to current display date (for display purposes)
+    if (currentDisplayDate && p.belongsToDate === currentDisplayDate) return true;
+    // Keep the immediate previous prayer (for progress bar: Isha→Fajr transition)
+    if (nextIndex > 0 && index === nextIndex - 1) return true;
+    return false;
+  });
+}
+
+/**
+ * Helper: Check if we need to fetch more prayers
+ * Returns true if less than 24 hours of prayer buffer remains
+ */
+function shouldFetchMorePrayers(prayers: Prayer[], now: Date): boolean {
+  const lastPrayer = prayers[prayers.length - 1];
+  return !lastPrayer || lastPrayer.datetime.getTime() - now.getTime() < TIME_CONSTANTS.ONE_DAY_MS;
+}
+
+/**
+ * Helper: Merge existing and new prayers, removing duplicates
+ * Deduplication based on prayer name and datetime
+ */
+function mergeAndDeduplicatePrayers(existingPrayers: Prayer[], newPrayers: Prayer[]): Prayer[] {
+  const existingSet = new Set(existingPrayers.map((p) => `${p.english}_${p.datetime.getTime()}`));
+  const uniqueNewPrayers = newPrayers.filter((p) => !existingSet.has(`${p.english}_${p.datetime.getTime()}`));
+
+  return [...existingPrayers, ...uniqueNewPrayers].sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
+}
+
+/**
  * Refreshes the prayer sequence by removing passed prayers and fetching more if needed
  * Called when a prayer passes to keep the sequence fresh
  *
@@ -200,37 +241,19 @@ export const refreshSequence = (type: ScheduleType): void => {
   // Find index of next prayer
   const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
 
-  // Filter prayers: keep future prayers OR passed prayers for current display date
-  // ALSO keep the immediate previous prayer (for progress bar calculation)
-  const relevantPrayers = sequence.prayers.filter((p, index) => {
-    // Always keep future prayers
-    if (p.datetime > now) return true;
-    // Keep passed prayers that belong to current display date (for display purposes)
-    if (currentDisplayDate && p.belongsToDate === currentDisplayDate) return true;
-    // Keep the immediate previous prayer (for progress bar: Isha→Fajr transition)
-    if (nextIndex > 0 && index === nextIndex - 1) return true;
-    return false;
-  });
+  // Filter relevant prayers using helper
+  const relevantPrayers = filterRelevantPrayers(sequence.prayers, now, currentDisplayDate, nextIndex);
 
-  // Check if we need more prayers (less than 24 hours of buffer)
-  const TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000;
-  const lastPrayer = relevantPrayers[relevantPrayers.length - 1];
-  const needsMorePrayers = !lastPrayer || lastPrayer.datetime.getTime() - now.getTime() < TWENTY_FOUR_HOURS_MS;
-
-  if (needsMorePrayers) {
+  // Check if we need to fetch more prayers using helper
+  if (shouldFetchMorePrayers(relevantPrayers, now)) {
     // Fetch more days starting from tomorrow
     const tomorrow = TimeUtils.createLondonDate();
     tomorrow.setDate(tomorrow.getDate() + 1);
 
     const newSequence = PrayerUtils.createPrayerSequence(type, tomorrow, 3);
 
-    // Merge: keep current relevant prayers + add new prayers that aren't duplicates
-    const existingPrayers = new Set(relevantPrayers.map((p) => `${p.english}_${p.datetime.getTime()}`));
-    const newPrayers = newSequence.prayers.filter((p) => !existingPrayers.has(`${p.english}_${p.datetime.getTime()}`));
-
-    const mergedPrayers = [...relevantPrayers, ...newPrayers].sort(
-      (a, b) => a.datetime.getTime() - b.datetime.getTime()
-    );
+    // Merge and deduplicate using helper
+    const mergedPrayers = mergeAndDeduplicatePrayers(relevantPrayers, newSequence.prayers);
 
     store.set(sequenceAtom, { type, prayers: mergedPrayers });
 

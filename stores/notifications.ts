@@ -23,6 +23,28 @@ const store = getDefaultStore();
 // Guard against concurrent notification scheduling
 let isScheduling = false;
 
+/**
+ * Helper function to wrap async operations with scheduling lock
+ * Prevents concurrent notification scheduling operations
+ * @param operation The async operation to execute
+ * @param operationName Name of the operation for logging
+ * @returns Result of the operation or void if already scheduling
+ */
+async function withSchedulingLock<T>(operation: () => Promise<T>, operationName: string): Promise<T | void> {
+  if (isScheduling) {
+    logger.info(`NOTIFICATION: Already scheduling, skipping ${operationName}`);
+    return;
+  }
+
+  isScheduling = true;
+
+  try {
+    return await operation();
+  } finally {
+    isScheduling = false;
+  }
+}
+
 // --- Atoms ---
 
 // --- Individual Prayer Atoms ---
@@ -163,18 +185,10 @@ export const addMultipleScheduleNotificationsForPrayer = async (
   arabicName: string,
   alertType: AlertType
 ) => {
-  if (isScheduling) {
-    logger.info('NOTIFICATION: Already scheduling, skipping addMultipleScheduleNotificationsForPrayer');
-    return;
-  }
-
-  isScheduling = true;
-
-  try {
-    await _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, alertType);
-  } finally {
-    isScheduling = false;
-  }
+  return withSchedulingLock(
+    () => _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, alertType),
+    'addMultipleScheduleNotificationsForPrayer'
+  );
 };
 
 /**
@@ -217,18 +231,10 @@ const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleTyp
  * Guards against concurrent scheduling from external calls
  */
 export const addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
-  if (isScheduling) {
-    logger.info('NOTIFICATION: Already scheduling, skipping addAllScheduleNotificationsForSchedule');
-    return;
-  }
-
-  isScheduling = true;
-
-  try {
-    await _addAllScheduleNotificationsForSchedule(scheduleType);
-  } finally {
-    isScheduling = false;
-  }
+  return withSchedulingLock(
+    () => _addAllScheduleNotificationsForSchedule(scheduleType),
+    'addAllScheduleNotificationsForSchedule'
+  );
 };
 
 export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
@@ -314,21 +320,14 @@ const _rescheduleAllNotifications = async () => {
  * Guards against concurrent scheduling from external calls
  */
 export const rescheduleAllNotifications = async () => {
-  if (isScheduling) {
-    logger.info('NOTIFICATION: Already scheduling, skipping rescheduleAllNotifications');
-    return;
-  }
-
-  isScheduling = true;
-
-  try {
-    await _rescheduleAllNotifications();
-  } catch (error) {
-    logger.error('NOTIFICATION: Failed to reschedule notifications:', error);
-    throw error;
-  } finally {
-    isScheduling = false;
-  }
+  return withSchedulingLock(async () => {
+    try {
+      await _rescheduleAllNotifications();
+    } catch (error) {
+      logger.error('NOTIFICATION: Failed to reschedule notifications:', error);
+      throw error;
+    }
+  }, 'rescheduleAllNotifications');
 };
 
 export const refreshNotifications = async () => {
@@ -337,24 +336,16 @@ export const refreshNotifications = async () => {
     return;
   }
 
-  if (isScheduling) {
-    logger.info('NOTIFICATION: Already scheduling, skipping duplicate call');
-    return;
-  }
-
-  isScheduling = true;
-
   logger.info('NOTIFICATION: Starting notification refresh');
 
-  try {
-    await _rescheduleAllNotifications();
-
-    store.set(lastNotificationScheduleAtom, Date.now());
-    logger.info('NOTIFICATION: Refresh complete');
-  } catch (error) {
-    logger.error('NOTIFICATION: Failed to refresh notifications:', error);
-    throw error;
-  } finally {
-    isScheduling = false;
-  }
+  return withSchedulingLock(async () => {
+    try {
+      await _rescheduleAllNotifications();
+      store.set(lastNotificationScheduleAtom, Date.now());
+      logger.info('NOTIFICATION: Refresh complete');
+    } catch (error) {
+      logger.error('NOTIFICATION: Failed to refresh notifications:', error);
+      throw error;
+    }
+  }, 'refreshNotifications');
 };
