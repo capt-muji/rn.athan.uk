@@ -3,13 +3,11 @@ import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
-import { Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
-import Glow from '@/components/Glow';
 import SettingsToggle from '@/components/SettingsToggle';
-import { COLORS, TEXT } from '@/shared/constants';
+import { TEXT } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
   progressBarHiddenAtom,
@@ -45,16 +43,7 @@ export default function BottomSheetSettings() {
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
       <View style={bottomSheetStyles.container}>
-        <Glow
-          color={'#28045b'}
-          baseOpacity={1}
-          size={Dimensions.get('window').width * 3}
-          style={{
-            bottom: -Dimensions.get('window').width * 1.5,
-            left: -Dimensions.get('window').width * 1.25,
-          }}
-        />
-        <Text style={[styles.text, styles.title]}>Settings</Text>
+        <Text style={[styles.title]}>Settings</Text>
 
         <SettingsToggle
           label="Hide countdown bar"
@@ -80,13 +69,10 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size + 2,
     fontFamily: TEXT.family.medium,
   },
-  text: {
-    color: COLORS.textSecondary,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.family.regular,
-  },
   athanButton: {
-    backgroundColor: '#3623ab',
+    backgroundColor: '#6023c9',
+    borderWidth: 1,
+    borderColor: '#7e3bf1',
     marginHorizontal: 20,
     marginTop: 30,
     paddingVertical: 14,
@@ -94,7 +80,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   athanButtonText: {
-    color: 'white',
+    color: '#f8f4ff',
     fontFamily: TEXT.family.medium,
     fontSize: TEXT.size,
   },
