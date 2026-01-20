@@ -10,6 +10,7 @@ import SettingsToggle from '@/components/SettingsToggle';
 import { TEXT } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
+  hideSecondsAtom,
   progressBarHiddenAtom,
   setSettingsSheetModal,
   hideSettingsSheet,
@@ -21,6 +22,7 @@ export default function BottomSheetSettings() {
 
   const [progressBarHidden, setProgressBarHidden] = useAtom(progressBarHiddenAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
+  const [hideSeconds, setHideSeconds] = useAtom(hideSecondsAtom);
 
   const handleDismiss = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -50,6 +52,7 @@ export default function BottomSheetSettings() {
           value={progressBarHidden}
           onToggle={() => setProgressBarHidden(!progressBarHidden)}
         />
+        <SettingsToggle label="Hide seconds" value={hideSeconds} onToggle={() => setHideSeconds(!hideSeconds)} />
         <SettingsToggle label="Hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
 
         <Pressable style={styles.athanButton} onPress={handleAthanPress}>
