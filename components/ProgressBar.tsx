@@ -13,7 +13,7 @@ import { useProgressBar as useProgressBarHook } from '@/hooks/useProgressBar';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
-import { progressBarVisibleAtom } from '@/stores/ui';
+import { progressBarHiddenAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -25,7 +25,7 @@ export default function ProgressBar({ type }: Props) {
   const { progress: elapsedProgress, isReady } = useProgressBarHook(type);
 
   const overlay = useAtomValue(overlayAtom);
-  const isProgressBarVisible = useAtomValue(progressBarVisibleAtom);
+  const isProgressBarHidden = useAtomValue(progressBarHiddenAtom);
 
   // Convert elapsed % to remaining % (bar shrinks as time passes)
   // Old: (timeLeft / totalDuration) * 100 = remaining %
@@ -35,7 +35,7 @@ export default function ProgressBar({ type }: Props) {
   const widthValue = useSharedValue(progress ?? 0);
   const colorValue = useSharedValue(0); // Discrete color state: 0=green, 1=orange, 2=red
   const warningValue = useSharedValue(0);
-  const opacityValue = useSharedValue(!overlay.isOn && isProgressBarVisible ? 1 : 0);
+  const opacityValue = useSharedValue(!overlay.isOn && !isProgressBarHidden ? 1 : 0);
   const isFirstRender = useRef(true);
   const isFirstOpacityRender = useRef(true);
   const prevProgress = useRef(progress);
@@ -135,9 +135,9 @@ export default function ProgressBar({ type }: Props) {
     }
   }, [progress]);
 
-  // Animate opacity: hidden when overlay is on OR when user toggles visibility off
+  // Animate opacity: hidden when overlay is on OR when user toggles "Hide countdown bar" on
   useEffect(() => {
-    const shouldShow = !overlay.isOn && isProgressBarVisible;
+    const shouldShow = !overlay.isOn && !isProgressBarHidden;
 
     if (isFirstOpacityRender.current) {
       // On first render, set opacity directly without animation
@@ -147,7 +147,7 @@ export default function ProgressBar({ type }: Props) {
       // On subsequent renders, animate the change
       opacityValue.value = withTiming(shouldShow ? 1 : 0, { duration: ANIMATION.duration, easing: Easing.linear });
     }
-  }, [overlay.isOn, isProgressBarVisible]);
+  }, [overlay.isOn, isProgressBarHidden]);
 
   // Always render container to reserve 3px height, use opacity to hide/show
   return (

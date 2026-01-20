@@ -1,17 +1,12 @@
-import {
-  BottomSheetModal,
-  BottomSheetFlatList,
-  BottomSheetBackdrop,
-  BottomSheetBackdropProps,
-} from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { AudioSource } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useMemo, useCallback, useState } from 'react';
 import { StyleSheet, Text, Dimensions, View, ListRenderItemInfo } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ALL_AUDIOS } from '@/assets/audio';
+import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import Glow from '@/components/Glow';
 import * as Device from '@/device/notifications';
@@ -36,17 +31,6 @@ export default function BottomSheetSound() {
     []
   );
 
-  const renderSheetBackground = useCallback(() => {
-    return (
-      <LinearGradient
-        style={[StyleSheet.absoluteFill, styles.sheetBackground]}
-        colors={['#0e0b32', '#090428']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
-    );
-  }, []);
-
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<AudioItem>) => (
       <BottomSheetSoundItem
@@ -61,19 +45,6 @@ export default function BottomSheetSound() {
       />
     ),
     [tempSoundSelection]
-  );
-
-  const renderBackdrop = useCallback(
-    (props: BottomSheetBackdropProps) => (
-      <BottomSheetBackdrop
-        {...props}
-        appearsOnIndex={0}
-        disappearsOnIndex={-1}
-        opacity={0.9}
-        style={[styles.backdrop, props.style]}
-      />
-    ),
-    []
   );
 
   const clearAudio = useCallback(() => setPlayingSoundIndex(null), []);
@@ -102,11 +73,11 @@ export default function BottomSheetSound() {
       enableDynamicSizing={false}
       onDismiss={handleDismiss}
       onAnimate={clearAudio}
-      style={styles.modal}
+      style={bottomSheetStyles.modal}
       backgroundComponent={renderSheetBackground}
-      handleIndicatorStyle={styles.indicator}
+      handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
-      <View style={styles.container}>
+      <View style={bottomSheetStyles.container}>
         <Glow
           color={'#28045b'}
           baseOpacity={1}
@@ -131,30 +102,16 @@ export default function BottomSheetSound() {
 }
 
 const styles = StyleSheet.create({
-  modal: {
-    paddingTop: 15,
-  },
-  container: {
-    flex: 1,
-  },
-  indicator: {
-    backgroundColor: COLORS.textSecondary,
-  },
   title: {
     color: 'white',
     paddingVertical: 20,
     paddingHorizontal: 30,
+    fontSize: TEXT.size + 2,
+    fontFamily: TEXT.family.medium,
   },
   text: {
     color: COLORS.textSecondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
-  },
-  backdrop: {
-    backgroundColor: '#000116',
-  },
-  sheetBackground: {
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
   },
 });
