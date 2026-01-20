@@ -201,9 +201,10 @@ export const getSecondsBetween = (from: Date, to: Date): number => {
 /**
  * Converts seconds into human-readable time format
  * @param seconds Time in seconds
- * @returns Formatted time string (e.g., "1h 30m 45s")
+ * @param hideSeconds Whether to hide seconds when time > 60s
+ * @returns Formatted time string (e.g., "1h 30m 45s" or "1h 30m")
  */
-export const formatTime = (seconds: number): string => {
+export const formatTime = (seconds: number, hideSeconds = false): string => {
   if (seconds < 0) return '0s';
 
   const ms = seconds * 1000;
@@ -212,7 +213,15 @@ export const formatTime = (seconds: number): string => {
 
   const totalHours = (days || 0) * 24 + (hours || 0);
 
-  return [totalHours && `${totalHours}h`, minutes && `${minutes}m`, secs !== undefined ? `${secs}s` : '0s']
-    .filter(Boolean)
-    .join(' ');
+  // Hide seconds if requested and time is over 60 seconds (show only in last 60s)
+  const shouldShowSeconds = !hideSeconds || seconds <= 60;
+
+  const parts = [totalHours && `${totalHours}h`, minutes && `${minutes}m`].filter(Boolean);
+
+  // Always show seconds if shouldShowSeconds is true, or if there are no other parts (e.g., "0s")
+  if (shouldShowSeconds || parts.length === 0) {
+    parts.push(secs !== undefined ? `${secs}s` : '0s');
+  }
+
+  return parts.join(' ');
 };
