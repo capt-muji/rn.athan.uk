@@ -10,7 +10,7 @@ import SettingsToggle from '@/components/SettingsToggle';
 import { TEXT } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
-  hideSecondsAtom,
+  showSecondsAtom,
   progressBarHiddenAtom,
   setSettingsSheetModal,
   hideSettingsSheet,
@@ -22,7 +22,7 @@ export default function BottomSheetSettings() {
 
   const [progressBarHidden, setProgressBarHidden] = useAtom(progressBarHiddenAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
-  const [hideSeconds, setHideSeconds] = useAtom(hideSecondsAtom);
+  const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
 
   const handleDismiss = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -52,8 +52,8 @@ export default function BottomSheetSettings() {
           value={progressBarHidden}
           onToggle={() => setProgressBarHidden(!progressBarHidden)}
         />
-        <SettingsToggle label="Hide seconds" value={hideSeconds} onToggle={() => setHideSeconds(!hideSeconds)} />
-        <SettingsToggle label="Hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
+        <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
+        <SettingsToggle label="Show Hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
 
         <Pressable style={styles.athanButton} onPress={handleAthanPress}>
           <Text style={styles.athanButtonText}>Change Athan Sound</Text>

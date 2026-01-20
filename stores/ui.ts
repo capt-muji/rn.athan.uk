@@ -31,7 +31,7 @@ export const progressBarHiddenAtom = atomWithStorageBoolean('preference_progress
 
 // New preference atoms for settings
 export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);
-export const hideSecondsAtom = atomWithStorageBoolean('preference_hide_seconds', false);
+export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds', false);
 export const onboardingCompletedAtom = atomWithStorageBoolean('preference_onboarding_completed', false);
 
 // Temporary mute state (not persisted, used during settings changes)

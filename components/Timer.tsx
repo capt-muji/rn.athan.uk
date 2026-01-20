@@ -10,7 +10,7 @@ import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { overlayTimerAtom } from '@/stores/timer';
-import { hideSecondsAtom } from '@/stores/ui';
+import { showSecondsAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -22,7 +22,7 @@ export default function Timer({ type }: Props) {
   const { timeLeft, prayerName, isReady } = useCountdown(type);
 
   const overlay = useAtomValue(overlayAtom);
-  const hideSeconds = useAtomValue(hideSecondsAtom);
+  const showSeconds = useAtomValue(showSecondsAtom);
 
   // Overlay mode uses dedicated overlay timer atom (selected prayer countdown)
   const overlayTimer = useAtomValue(overlayTimerAtom);
@@ -44,7 +44,7 @@ export default function Timer({ type }: Props) {
     <Animated.View style={[styles.container]}>
       <View>
         <Text style={[styles.text]}>{displayName}</Text>
-        <Animated.Text style={[styles.timer, animatedStyle]}>{formatTime(displayTime, hideSeconds)}</Animated.Text>
+        <Animated.Text style={[styles.timer, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
         <ProgressBar type={type} />
       </View>
     </Animated.View>
