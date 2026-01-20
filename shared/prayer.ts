@@ -8,6 +8,7 @@ import {
   EXTRAS_ARABIC,
   TIME_ADJUSTMENTS,
   ANIMATION,
+  ISLAMIC_DAY,
 } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { createPrayerDatetime } from '@/shared/time';
@@ -109,9 +110,6 @@ export const getLongestPrayerNameIndex = (type: ScheduleType): number => {
   return maxIndex;
 };
 
-// Islamic day boundary: Isha after midnight (00:00-06:00) belongs to previous Islamic day
-const EARLY_MORNING_CUTOFF_HOUR = 6;
-
 /**
  * Gets the hour in London timezone for a given date
  * Used for determining if a prayer crosses midnight in London
@@ -144,7 +142,7 @@ export const calculateBelongsToDate = (
   const hours = getLondonHours(prayerDateTime);
 
   // STANDARD: Isha between 00:00-06:00 belongs to previous day
-  if (type === ScheduleType.Standard && prayerEnglish === 'Isha' && hours < EARLY_MORNING_CUTOFF_HOUR) {
+  if (type === ScheduleType.Standard && prayerEnglish === 'Isha' && hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR) {
     return TimeUtils.formatDateShort(addDays(prayerDateTime, -1));
   }
 
@@ -204,6 +202,88 @@ export const createPrayer = (params: CreatePrayerParams): Prayer => {
 };
 
 /**
+ * Helper: Get prayer names for a given date and schedule type
+ * Filters out Istijaba on non-Fridays for Extra schedule
+ */
+function getPrayerNamesForDate(type: ScheduleType, date: Date): { english: string[]; arabic: string[] } {
+  const isStandard = type === ScheduleType.Standard;
+
+  if (isStandard) {
+    return { english: PRAYERS_ENGLISH, arabic: PRAYERS_ARABIC };
+  }
+
+  // Extras schedule: filter out Istijaba on non-Fridays
+  if (!TimeUtils.isFriday(date)) {
+    return {
+      english: EXTRAS_ENGLISH.filter((name) => name.toLowerCase() !== 'istijaba'),
+      arabic: EXTRAS_ARABIC.filter((name) => name !== 'استجابة'),
+    };
+  }
+
+  return { english: EXTRAS_ENGLISH, arabic: EXTRAS_ARABIC };
+}
+
+/**
+ * Helper: Adjust prayer date for midnight-crossing prayers
+ * Handles Isha after midnight (Standard) and night prayers (Extras)
+ */
+function adjustPrayerDateForMidnightCrossing(
+  type: ScheduleType,
+  prayerName: string,
+  baseDate: Date,
+  hours: number
+): string {
+  const isStandard = type === ScheduleType.Standard;
+  const baseDateString = TimeUtils.formatDateShort(baseDate);
+
+  // STANDARD: Isha 00:00-06:00 occurs on NEXT calendar day (for countdown)
+  if (isStandard && prayerName === 'Isha' && hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR) {
+    return TimeUtils.formatDateShort(addDays(baseDate, 1));
+  }
+
+  // EXTRAS: Night prayers >=12:00 occurred on PREVIOUS calendar day
+  if (!isStandard) {
+    const nightPrayers = ['Midnight', 'Last Third', 'Suhoor'];
+    if (nightPrayers.includes(prayerName) && hours >= 12) {
+      return TimeUtils.formatDateShort(addDays(baseDate, -1));
+    }
+  }
+
+  return baseDateString;
+}
+
+/**
+ * Helper: Create all prayers for a single day
+ * Returns array of Prayer objects for the given date and raw data
+ */
+function createPrayersForSingleDay(
+  type: ScheduleType,
+  currentDate: Date,
+  rawData: ISingleApiResponseTransformed
+): Prayer[] {
+  const prayers: Prayer[] = [];
+  const { english: namesEnglish, arabic: namesArabic } = getPrayerNamesForDate(type, currentDate);
+
+  namesEnglish.forEach((name, index) => {
+    const prayerTime = rawData[name.toLowerCase() as keyof ISingleApiResponseTransformed] as string;
+    const [hours] = prayerTime.split(':').map(Number);
+    const prayerDateString = adjustPrayerDateForMidnightCrossing(type, name, currentDate, hours);
+
+    prayers.push(
+      createPrayer({
+        type,
+        english: name,
+        arabic: namesArabic[index],
+        date: prayerDateString,
+        time: prayerTime,
+      })
+    );
+  });
+
+  return prayers;
+}
+
+/**
  * Creates a PrayerSequence containing prayers for multiple days
  * Uses Database.getPrayerByDate() for raw data and createPrayer() for each prayer
  *
@@ -222,57 +302,18 @@ export const createPrayer = (params: CreatePrayerParams): Prayer => {
  * // Returns: { type: "extra", prayers: [...12-15 prayers...] }
  */
 export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCount: number): PrayerSequence => {
-  const isStandard = type === ScheduleType.Standard;
   const prayers: Prayer[] = [];
 
   for (let i = 0; i < dayCount; i++) {
     const currentDate = addDays(startDate, i);
-    const dateString = TimeUtils.formatDateShort(currentDate);
 
     // Get raw prayer data for this date from MMKV cache
     const rawData = Database.getPrayerByDate(currentDate);
     if (!rawData) continue; // Skip if no data for this date
 
-    // Get prayer names for this schedule type
-    let namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-    let namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
-
-    // Filter out Istijaba on non-Fridays (Extras schedule only)
-    if (!isStandard && !TimeUtils.isFriday(currentDate)) {
-      namesEnglish = namesEnglish.filter((name) => name.toLowerCase() !== 'istijaba');
-      namesArabic = namesArabic.filter((name) => name !== 'استجابة');
-    }
-
-    // Create Prayer objects for each prayer time
-    namesEnglish.forEach((name, index) => {
-      const prayerTime = rawData[name.toLowerCase() as keyof ISingleApiResponseTransformed] as string;
-      const [hours] = prayerTime.split(':').map(Number);
-      let prayerDateString = dateString;
-
-      // STANDARD: Isha 00:00-06:00 occurs on NEXT calendar day (for countdown)
-      // calculateBelongsToDate() will assign it to previous Islamic day (for display)
-      if (isStandard && name === 'Isha' && hours < EARLY_MORNING_CUTOFF_HOUR) {
-        prayerDateString = TimeUtils.formatDateShort(addDays(currentDate, 1));
-      }
-
-      // EXTRAS: Night prayers >=12:00 occurred on PREVIOUS calendar day
-      if (!isStandard) {
-        const nightPrayers = ['Midnight', 'Last Third', 'Suhoor'];
-        if (nightPrayers.includes(name) && hours >= 12) {
-          prayerDateString = TimeUtils.formatDateShort(addDays(currentDate, -1));
-        }
-      }
-
-      prayers.push(
-        createPrayer({
-          type,
-          english: name,
-          arabic: namesArabic[index],
-          date: prayerDateString,
-          time: prayerTime,
-        })
-      );
-    });
+    // Create all prayers for this day using helper
+    const dayPrayers = createPrayersForSingleDay(type, currentDate, rawData);
+    prayers.push(...dayPrayers);
   }
 
   // Sort prayers by datetime (chronological order)

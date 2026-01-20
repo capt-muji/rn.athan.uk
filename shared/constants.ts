@@ -23,6 +23,15 @@ export const TIME_ADJUSTMENTS = {
   istijaba: -59, // minutes before magrib
 };
 
+export const TIME_CONSTANTS = {
+  ONE_DAY_MS: 24 * 60 * 60 * 1000,
+  ONE_HOUR_MS: 60 * 60 * 1000,
+} as const;
+
+export const ISLAMIC_DAY = {
+  EARLY_MORNING_CUTOFF_HOUR: 6,
+} as const;
+
 export const TEXT = {
   family: {
     regular: 'Roboto-Regular',

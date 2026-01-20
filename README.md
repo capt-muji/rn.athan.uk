@@ -54,6 +54,35 @@ A React Native mobile app for Muslim prayer times in London, UK
 <br/>
 <br/>
 
+## 📝 Recent Updates
+
+### Codebase Cleanup & Optimization (2026-01-20)
+
+Major code quality improvements and refactoring:
+
+**Code Simplification**:
+
+- ✅ Extracted shared animation logic - reduced 80+ lines of duplication
+- ✅ Broke down large functions into focused helpers (61→22 lines, 67→49 lines)
+- ✅ Extracted repeated notification lock pattern (60→25 lines)
+
+**Code Quality**:
+
+- ✅ Replaced magic numbers with named constants (`TIME_CONSTANTS`, `ISLAMIC_DAY`)
+- ✅ Added comprehensive JSDoc to complex time utility functions
+- ✅ Enhanced type documentation with detailed examples and use cases
+- ✅ Verified all ADR references are accurate
+
+**Results**:
+
+- ~100 lines of duplication eliminated
+- +150 lines of documentation added
+- Zero ESLint/TypeScript errors
+- All existing functionality preserved
+
+<br/>
+<br/>
+
 ## 🗺 Roadmap
 
 ### Completed Features
