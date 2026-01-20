@@ -143,7 +143,7 @@ export const cleanup = () => {
   clearPrefix('preference_progressbar_visible'); // Progress bar visibility state
   clearPrefix('preference_hijri_date'); // Hijri date display preference
   clearPrefix('preference_hide_seconds'); // Hide seconds preference
-  clearPrefix('preference_onboarding_completed'); // First-launch onboarding completion state
+  // clearPrefix('preference_onboarding_completed'); // First-launch onboarding completion state
   clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
   clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
   clearPrefix('popup_update_last_check'); // Last app update check timestamp

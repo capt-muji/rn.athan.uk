@@ -66,61 +66,6 @@ export enum AlertIcon {
   ARROW_UP = 'ARROW_UP',
 }
 
-export interface AlertPreferences {
-  [prayerIndex: number]: AlertType;
-}
-
-export interface AlertPreferencesStore {
-  standard: AlertPreferences;
-  extra: AlertPreferences;
-}
-
-export interface SoundPreferences {
-  selected: number;
-}
-
-export interface Preferences {
-  alert: AlertPreferences;
-  athan: number;
-}
-
-export interface PreferencesStore {
-  preferences: Preferences;
-}
-
-export interface OverlayStore {
-  isOn: boolean;
-  selectedPrayerIndex: number;
-  scheduleType: ScheduleType;
-}
-
-export interface FetchedYears {
-  [year: number]: boolean;
-}
-
-export interface TimerStore {
-  timeLeft: number;
-  name: string;
-}
-
-export interface TimerCallbacks {
-  onTick: (secondsLeft: number) => void;
-  onFinish: () => void;
-}
-
-export interface FetchDataResult {
-  currentYearData: ISingleApiResponseTransformed[];
-  nextYearData: ISingleApiResponseTransformed[] | null;
-  currentYear: number;
-}
-
-export type TimerKey = 'standard' | 'extra' | 'overlay';
-
-// intefae with valu property
-export interface PrimitiveAtom<T> {
-  value: T;
-}
-
 // =============================================================================
 // NEW TIMING SYSTEM TYPES (Prayer-Centric Model)
 // See: ai/adr/005-timing-system-overhaul.md
@@ -137,26 +82,16 @@ export interface PrimitiveAtom<T> {
 export interface Prayer {
   /** Schedule type: 'standard' or 'extra' */
   type: ScheduleType;
-
   /** English name: "Fajr", "Isha", "Midnight", etc. */
   english: string;
-
   /** Arabic name: "الفجر", "العشاء", etc. */
   arabic: string;
-
-  /**
-   * Full datetime - the actual moment in time
-   * Comparisons are trivial: isPassed = datetime < now
-   */
+  /** Full datetime - the actual moment in time (Date object) */
   datetime: Date;
-
-  /** Original time string (for display purposes) */
+  /** Original time string (for display purposes, e.g., "06:12") */
   time: string;
-
-  /**
-   * Which Islamic day this prayer belongs to (per ADR-004)
-   * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day)
-   */
+  /** Which Islamic day this prayer belongs to (per ADR-004)
+   * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day) */
   belongsToDate: string;
 }
 
@@ -167,7 +102,6 @@ export interface Prayer {
 export interface PrayerSequence {
   /** Schedule type: 'standard' or 'extra' */
   type: ScheduleType;
-
   /** Prayers sorted by datetime, next 48-72 hours */
   prayers: Prayer[];
 }
@@ -193,4 +127,25 @@ export interface StoredPrayer {
 export interface StoredPrayerSequence {
   type: ScheduleType;
   prayers: StoredPrayer[];
+}
+
+// =============================================================================
+// TIMER AND OVERLAY STATE TYPES
+// =============================================================================
+
+export enum TimerKey {
+  Standard = 'standard',
+  Extra = 'extra',
+  Overlay = 'overlay',
+}
+
+export interface TimerStore {
+  timeLeft: number;
+  name: string;
+}
+
+export interface OverlayStore {
+  isOn: boolean;
+  selectedPrayerIndex: number;
+  scheduleType: ScheduleType;
 }

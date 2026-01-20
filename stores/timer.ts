@@ -22,9 +22,9 @@ import {
 const store = getDefaultStore();
 
 const timers: Record<TimerKey, ReturnType<typeof setInterval> | undefined> = {
-  standard: undefined,
-  extra: undefined,
-  overlay: undefined,
+  [TimerKey.Standard]: undefined,
+  [TimerKey.Extra]: undefined,
+  [TimerKey.Overlay]: undefined,
 };
 
 // --- Initial values ---
@@ -43,8 +43,8 @@ export const overlayTimerAtom = atom<TimerStore>(createInitialTimer());
 const clearTimer = (timerKey: TimerKey) => {
   if (!timers[timerKey]) return;
 
-  clearInterval(timers[timerKey]);
-  delete timers[timerKey];
+  clearInterval(timers[timerKey]!);
+  timers[timerKey] = undefined;
 };
 
 /**
@@ -61,7 +61,7 @@ const startSequenceTimer = (type: ScheduleType) => {
   const name = nextPrayer.english;
 
   const isStandard = type === ScheduleType.Standard;
-  const timerKey = isStandard ? 'standard' : 'extra';
+  const timerKey = isStandard ? TimerKey.Standard : TimerKey.Extra;
   const timerAtom = isStandard ? standardTimerAtom : extraTimerAtom;
 
   // Clear existing timer and set initial state
@@ -111,7 +111,7 @@ const startTimerOverlay = () => {
   const displayDate = store.get(displayDateAtom);
 
   if (!sequence || !displayDate) {
-    clearTimer('overlay');
+    clearTimer(TimerKey.Overlay);
     store.set(overlayTimerAtom, { timeLeft: 0, name: 'Prayer' });
     return;
   }
@@ -133,12 +133,12 @@ const startTimerOverlay = () => {
   const timeLeft = TimeUtils.getSecondsBetween(now, selectedPrayer.datetime);
   const name = selectedPrayer.english;
 
-  clearTimer('overlay');
+  clearTimer(TimerKey.Overlay);
   store.set(overlayTimerAtom, { timeLeft, name });
 
-  timers.overlay = setInterval(() => {
+  timers[TimerKey.Overlay] = setInterval(() => {
     const currentTime = store.get(overlayTimerAtom).timeLeft - 1;
-    if (currentTime <= 0) return clearTimer('overlay');
+    if (currentTime <= 0) return clearTimer(TimerKey.Overlay);
 
     store.set(overlayTimerAtom, { timeLeft: currentTime, name });
   }, 1000);

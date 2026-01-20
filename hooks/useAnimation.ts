@@ -184,25 +184,3 @@ export const useAnimationBounce = (initialValue: number = 0) => {
 
   return { value, style, animate };
 };
-
-export const useAnimationWidth = (initialValue: number = 0) => {
-  const value = useSharedValue(initialValue);
-
-  const style = useAnimatedStyle(() => ({
-    width: `${value.value}%`,
-  }));
-
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
-    const timing = {
-      duration: options?.duration ?? 1000,
-      easing: Easing.linear,
-    };
-
-    value.value = withTiming(toValue, timing, (finished) => {
-      if (finished && options?.onFinish) runOnJS(options.onFinish)();
-    });
-  };
-
-  return { value, style, animate };
-};
