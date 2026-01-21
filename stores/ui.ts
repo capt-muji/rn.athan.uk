@@ -33,18 +33,6 @@ export const progressbarColorAtom = atomWithStorageString('preference_progressba
 export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);
 export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds', false);
 
-// Temporary mute state (not persisted, used during settings changes)
-export const tempStandardMutedAtom = atom<boolean | null>(null);
-export const tempExtraMutedAtom = atom<boolean | null>(null);
-
-export const getTempMutedAtom = (type: ScheduleType) =>
-  type === ScheduleType.Standard ? tempStandardMutedAtom : tempExtraMutedAtom;
-
-export const setTempMutedState = (type: ScheduleType, value: boolean | null) => {
-  const atom = type === ScheduleType.Standard ? tempStandardMutedAtom : tempExtraMutedAtom;
-  store.set(atom, value);
-};
-
 // --- Actions ---
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);
 export const showSheet = () => store.get(bottomSheetModalAtom)?.present();

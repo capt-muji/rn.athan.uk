@@ -3,7 +3,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Day from '@/components/Day';
 import List from '@/components/List';
-import Mute from '@/components/Mute';
 import Timer from '@/components/Timer';
 import { SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
@@ -31,8 +30,6 @@ export default function Screen({ type }: Props) {
 
       {/* Spacing */}
       <View style={{ flex: 1 }} />
-
-      <Mute type={type} />
     </View>
   );
 }

@@ -83,12 +83,6 @@ export const useNotification = () => {
     alertType: AlertType
   ) => {
     try {
-      // Check if schedule is muted - Use getScheduleMutedState instead of getNotificationsMuted
-      const isMuted = NotificationStore.getScheduleMutedState(scheduleType);
-
-      // Only update preference if muted, don't schedule notifications
-      if (isMuted) return true;
-
       // Always allow turning off notifications without permission check
       if (alertType === AlertType.Off) {
         await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
@@ -125,40 +119,8 @@ export const useNotification = () => {
     }
   };
 
-  const handleMuteChange = async (scheduleType: ScheduleType, mute: boolean): Promise<boolean> => {
-    try {
-      // Update store state immediately to ensure proper state for subsequent operations
-      NotificationStore.setScheduleMutedState(scheduleType, mute);
-
-      if (mute) {
-        // Cancel all notifications since we're muting
-        await NotificationStore.cancelAllScheduleNotificationsForSchedule(scheduleType);
-      } else {
-        // Check permissions before unmuting
-        const hasPermission = await ensurePermissions();
-        if (!hasPermission) {
-          logger.warn('NOTIFICATION: Permissions not granted for unmute');
-          // Revert state change since we couldn't unmute
-          NotificationStore.setScheduleMutedState(scheduleType, true);
-          return false;
-        }
-        logger.info('NOTIFICATION: Unmuting schedule:', { scheduleType });
-
-        // Reschedule notifications based on existing preferences
-        await NotificationStore.addAllScheduleNotificationsForSchedule(scheduleType);
-      }
-
-      logger.info('NOTIFICATION: Updated mute settings:', { scheduleType, mute });
-      return true;
-    } catch (error) {
-      logger.error('NOTIFICATION: Failed to update mute settings:', error);
-      return false;
-    }
-  };
-
   return {
     handleAlertChange,
-    handleMuteChange,
     checkInitialPermissions,
     ensurePermissions,
   };

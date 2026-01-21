@@ -16,7 +16,7 @@ import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
-import { atomWithStorageNumber, atomWithStorageBoolean } from '@/stores/storage';
+import { atomWithStorageNumber } from '@/stores/storage';
 
 const store = getDefaultStore();
 
@@ -63,10 +63,6 @@ export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((_, index) => createPray
 
 export const soundPreferenceAtom = atomWithStorageNumber('preference_sound', 0);
 
-export const standardNotificationsMutedAtom = atomWithStorageBoolean('preference_mute_standard', false);
-
-export const extraNotificationsMutedAtom = atomWithStorageBoolean('preference_mute_extra', false);
-
 export const lastNotificationScheduleAtom = atomWithStorageNumber('last_notification_schedule_check', 0);
 
 // --- Actions ---
@@ -78,22 +74,9 @@ export const getPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
   return store.get(atom);
 };
 
-export const getScheduleMutedState = (scheduleType: ScheduleType): boolean => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const atom = isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
-
-  return store.get(atom);
-};
-
 export const getSoundPreference = () => store.get(soundPreferenceAtom);
 
 export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
-
-export const setScheduleMutedState = (scheduleType: ScheduleType, muted: boolean) => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const atom = isStandard ? standardNotificationsMutedAtom : extraNotificationsMutedAtom;
-  store.set(atom, muted);
-};
 
 export const getPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
   const isStandard = scheduleType === ScheduleType.Standard;
@@ -117,16 +100,6 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   arabicName: string,
   alertType: AlertType
 ) => {
-  // Check if schedule is muted first
-  if (getScheduleMutedState(scheduleType)) {
-    logger.info('NOTIFICATION: Schedule is muted, skipping notification scheduling:', {
-      scheduleType,
-      prayerIndex,
-      englishName,
-    });
-    return;
-  }
-
   // Cancel all existing notifications for this prayer
   await clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
 
@@ -191,18 +164,15 @@ export const addMultipleScheduleNotificationsForPrayer = async (
   );
 };
 
+export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+  await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
+};
+
 /**
- * Reschedule all notifications for a schedule based on current preferences (internal)
+ * Schedule all notifications for a schedule based on current preferences (internal)
  */
 const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
-  const isMuted = getScheduleMutedState(scheduleType);
-
-  // Check if schedule is muted first
-  if (isMuted) {
-    logger.info('NOTIFICATION: Schedule is muted, skipping notification scheduling:', { scheduleType });
-    return;
-  }
-
   logger.info('NOTIFICATION: Scheduling all notifications for schedule:', { scheduleType });
 
   const isStandard = scheduleType === ScheduleType.Standard;
@@ -224,39 +194,6 @@ const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleTyp
 
   await Promise.all(promises);
   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
-};
-
-/**
- * Public entry point: Reschedule all notifications for a schedule
- * Guards against concurrent scheduling from external calls
- */
-export const addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
-  return withSchedulingLock(
-    () => _addAllScheduleNotificationsForSchedule(scheduleType),
-    'addAllScheduleNotificationsForSchedule'
-  );
-};
-
-export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-  await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
-  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
-};
-
-/**
- * Cancel and clear all notifications for a schedule type
- */
-export const cancelAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
-  const schedule = Database.getAllScheduledNotificationsForSchedule(scheduleType);
-
-  const promises = schedule.map((notification) => Device.cancelScheduledNotificationById(notification.id));
-
-  // Cancel all notifications for each prayer index
-  await Promise.all(promises);
-
-  // Clear the schedule
-  Database.clearAllScheduledNotificationsForSchedule(scheduleType);
-
-  logger.info('NOTIFICATION: Cancelled all notifications for schedule:', { scheduleType });
 };
 
 /**
@@ -297,15 +234,15 @@ export const shouldRescheduleNotifications = (): boolean => {
  */
 const _rescheduleAllNotifications = async () => {
   // Cancel ALL scheduled notifications globally
-  // This should not be needed, but it's a good safety measure
   await Notifications.cancelAllScheduledNotificationsAsync();
   logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
 
-  // Cancel ALL scheduled notifications directly
-  await cancelAllScheduleNotificationsForSchedule(ScheduleType.Standard);
-  await cancelAllScheduleNotificationsForSchedule(ScheduleType.Extra);
+  // Clear database records for both schedules
+  Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
+  Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Extra);
+  logger.info('NOTIFICATION: Cleared database records');
 
-  // Then schedule new notifications for both schedules
+  // Schedule all enabled notifications for both schedules
   await Promise.all([
     _addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
     _addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
