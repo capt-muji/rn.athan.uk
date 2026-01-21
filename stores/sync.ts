@@ -31,11 +31,6 @@ const shouldFetchNextYear = (): boolean => {
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
 };
 
-// Check if date is January 1st (needed for ProgressBar yesterday's data)
-const isJanuaryFirst = (date: Date): boolean => {
-  return date.getMonth() === 0 && date.getDate() === 1;
-};
-
 // --- Actions ---
 export const triggerSyncLoadable = () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -51,7 +46,7 @@ export const triggerSyncLoadable = () => {
 const initializeAppState = async (date: Date) => {
   // SCENARIO 1: January 1st - Fetch previous year's Dec 31 data for ProgressBar
   // This is MANDATORY - ProgressBar needs yesterday's Isha time to calculate progress
-  if (isJanuaryFirst(date)) {
+  if (TimeUtils.isJanuaryFirst(date)) {
     const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
     const prevYearData = Database.getPrayerByDate(prevYearLastDate);
 

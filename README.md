@@ -199,6 +199,75 @@ MMKV
 └── Preferences: preference_*
 ```
 
+### Codebase Organization
+
+The codebase follows a clean architecture pattern with clear separation of concerns:
+
+```
+├── app/                    # App entry points and navigation
+│   ├── index.tsx          # Root component, initialization
+│   ├── _layout.tsx        # App layout wrapper
+│   ├── Navigation.tsx     # Tab navigation (Standard/Extra)
+│   └── Screen.tsx         # Screen wrapper
+│
+├── components/            # UI components (presentational)
+│   ├── Prayer.tsx         # Prayer row display
+│   ├── Timer.tsx          # Countdown timer
+│   ├── Alert.tsx          # Alert notification icon
+│   ├── Overlay.tsx        # Full-screen overlay
+│   ├── ProgressBar.tsx    # Progress indicator
+│   └── ...                # Other UI components
+│
+├── hooks/                 # Custom React hooks (logic extraction)
+│   ├── usePrayer.ts       # Prayer state and actions
+│   ├── useSchedule.ts     # Schedule management
+│   ├── useNotification.ts # Notification handling
+│   ├── useAnimation.ts    # Animation utilities
+│   └── ...                # Other hooks
+│
+├── stores/                # State management (Jotai atoms)
+│   ├── schedule.ts        # Prayer sequence state
+│   ├── notifications.ts   # Notification state
+│   ├── timer.ts           # Timer state
+│   ├── overlay.ts         # Overlay state
+│   ├── sync.ts            # Data sync and initialization
+│   ├── database.ts        # MMKV storage wrapper
+│   └── ...                # Other stores
+│
+├── shared/                # Shared utilities and constants
+│   ├── constants.ts       # App constants (colors, timings, etc.)
+│   ├── types.ts           # TypeScript type definitions
+│   ├── time.ts            # Time manipulation utilities
+│   ├── prayer.ts          # Prayer creation and calculations
+│   ├── notifications.ts   # Notification utilities
+│   └── logger.ts          # Logging wrapper (Pino)
+│
+├── api/                   # API client
+│   └── client.ts          # Prayer times API fetch/transform
+│
+├── device/                # Device-specific code
+│   ├── notifications.ts   # Platform notification handlers
+│   ├── listeners.ts       # App state listeners
+│   └── updates.ts         # App update handling
+│
+├── mocks/                 # Mock data for development
+│   ├── simple.ts          # Simplified mock data
+│   └── timing-system-schema.ts  # Type schema for mocks
+│
+└── ai/                    # AI agent instructions and ADRs
+    ├── AGENTS.md          # Agent behavior instructions
+    ├── prompts/           # AI prompt templates
+    ├── adr/               # Architecture Decision Records
+    └── memory-archive.md  # AI context archive
+```
+
+### Key Patterns
+
+1. **Data Flow**: Components → Hooks → Stores → Shared/Api → MMKV
+2. **State Management**: Jotai atoms with derived atoms for computed values
+3. **Animations**: Reanimated worklets with custom hooks
+4. **Date Handling**: All dates in London timezone using date-fns-tz
+
 ## 🎨 Tech Stack
 
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
