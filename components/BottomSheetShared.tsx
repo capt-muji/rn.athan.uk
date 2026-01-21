@@ -17,7 +17,7 @@ export const renderSheetBackground = () => (
         borderBottomWidth: 0,
         backgroundColor: '#0b183a',
         borderColor: '#0f1d46',
-        shadowColor: '#8725ff',
+        shadowColor: '#180332',
         shadowOffset: { width: 0, height: -50 },
         shadowOpacity: 0.5,
         shadowRadius: 150,
