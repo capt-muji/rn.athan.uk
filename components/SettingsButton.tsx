@@ -1,9 +1,9 @@
+import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
-import { Pressable, Text, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationScale } from '@/hooks/useAnimation';
-import { TEXT } from '@/shared/constants';
 import { showSettingsSheet } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -22,7 +22,7 @@ export default function SettingsButton() {
     shadowColor: '#27035c',
   };
 
-  const computedStylesText: TextStyle = { color: '#bb9ffdd9' };
+  const iconColor = '#a885f896';
 
   return (
     <AnimatedPressable
@@ -31,7 +31,7 @@ export default function SettingsButton() {
       onPress={handlePress}
       onPressIn={() => AnimScale.animate(0.9)}
       onPressOut={() => AnimScale.animate(1)}>
-      <Text style={[styles.text, computedStylesText]}>Settings</Text>
+      <Ionicons name="settings-outline" size={20} color={iconColor} />
     </AnimatedPressable>
   );
 }
@@ -45,12 +45,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 10,
     elevation: 10,
-    width: 85,
+    width: 45,
     alignItems: 'center',
-  },
-  text: {
-    color: '#bb9ffdd9',
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeSmaller,
   },
 });
