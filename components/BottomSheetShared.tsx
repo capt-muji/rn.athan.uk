@@ -13,10 +13,15 @@ export const renderSheetBackground = () => (
       StyleSheet.absoluteFill,
       bottomSheetStyles.sheetBackground,
       {
-        backgroundColor: '#0a1535',
         borderWidth: 1,
         borderBottomWidth: 0,
-        borderColor: '#18295b',
+        backgroundColor: '#0b183a',
+        borderColor: '#0f1d47',
+        shadowColor: '#3b0863',
+        shadowOffset: { width: 0, height: -50 },
+        shadowOpacity: 0.5,
+        shadowRadius: 50,
+        elevation: 15,
       },
     ]}
   />
