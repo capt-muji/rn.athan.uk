@@ -7,7 +7,6 @@ type Props = {
   visible: boolean;
   onClose: () => void;
   onUpdate: () => void;
-  version?: string;
 };
 
 export default function ModalUpdate({ visible, onClose, onUpdate }: Props) {

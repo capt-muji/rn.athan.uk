@@ -16,7 +16,7 @@ Notifications.setNotificationHandler({
 });
 
 export const useNotification = () => {
-  const isNotifictionGranted = async (status: string) => status === 'granted';
+  const isNotificationGranted = async (status: string) => status === 'granted';
 
   const checkInitialPermissions = async () => {
     try {
@@ -24,10 +24,10 @@ export const useNotification = () => {
 
       if (existingStatus !== 'granted') {
         const { status } = await Notifications.requestPermissionsAsync();
-        return isNotifictionGranted(status);
+        return isNotificationGranted(status);
       }
 
-      return isNotifictionGranted(existingStatus);
+      return isNotificationGranted(existingStatus);
     } catch (error) {
       logger.error('NOTIFICATION: Failed to check initial notification permissions:', error);
       return false;
@@ -38,11 +38,11 @@ export const useNotification = () => {
     try {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
-      if (existingStatus === 'granted') return isNotifictionGranted(existingStatus);
+      if (existingStatus === 'granted') return isNotificationGranted(existingStatus);
 
       // First try requesting permissions
       const { status } = await Notifications.requestPermissionsAsync();
-      if (status === 'granted') return isNotifictionGranted(status);
+      if (status === 'granted') return isNotificationGranted(status);
 
       // If denied, show settings dialog
       return new Promise((resolve) => {
@@ -63,7 +63,7 @@ export const useNotification = () => {
 
                 // Check if permissions were granted after returning from settings
                 const { status: finalStatus } = await Notifications.getPermissionsAsync();
-                resolve(isNotifictionGranted(finalStatus));
+                resolve(isNotificationGranted(finalStatus));
               },
             },
           ]
