@@ -83,5 +83,10 @@ const styles = StyleSheet.create({
   iconContainer: {
     position: 'absolute',
     zIndex: 10,
+    shadowColor: '#9D4EDD',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 30,
+    elevation: 10,
   },
 });
