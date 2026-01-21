@@ -43,3 +43,99 @@ Archived memory entries from ai/AGENTS.md. These are older lessons learned that 
 - **Retry Logic Removal**: Removed defensive retry logic in advanceScheduleToTomorrow() that called sync() if dayAfterTomorrow data was missing. With prayer-based day boundary, data should always be available (entire year cached). If missing, let it throw - the app's "refresh me" button handles cache issues. Follows NO FALLBACKS rule: fix root cause, don't mask problems.
 
 - **Progress Bar Toggle**: Implemented tap-to-toggle visibility for progress bar. Tap anywhere on timer component (prayer name, time, or bar) to hide/show progress bar with 250ms fade animation. Medium haptic feedback on tap (matches alert icons). Default visible, persisted via progressBarVisibleAtom (preference_progressbar_visible in MMKV). Opacity initializes to correct state on app load (no flash). Only active on main screen (overlay timer unchanged). Modified: stores/ui.ts (added atom), components/Timer.tsx (Pressable wrapper + Medium haptic), components/ProgressBar.tsx (opacity with first-render skip), stores/database.ts (added to cleanup function). Uses opacity (not DOM removal) to maintain layout alignment.
+
+---
+
+## 2026-01-17: Core Features & UI Updates
+
+### Midnight Prayer Feature
+- Added "Midnight" as first extra prayer (midpoint between Maghrib and Fajr)
+- Follows same pattern as Last Third calculation
+- Updated EXTRAS_ENGLISH/ARABIC arrays (now 5 prayers)
+- ISTIJABA_INDEX from 3→4
+- Added getMidnightTime() in shared/time.ts
+- ReviewerQA grade: A- (93%)
+
+### Notification Rolling Window
+- Reduced NOTIFICATION_ROLLING_DAYS from 3 to 2
+- Reduced NOTIFICATION_REFRESH_HOURS from 24 to 12
+- Fewer scheduled notifications, better app performance
+
+### Overlay Date Display
+- Changed from "Today/Tomorrow" to formatted date (EEE, d MMM yyyy)
+- Single file change in components/Overlay.tsx
+- QA reviewed and approved
+
+### Prayer Explanations
+- Replaced ModalTimesExplained modal with contextual overlay explanations
+- Users tap Extra prayers to see explanations
+- Added EXTRAS_EXPLANATIONS constant
+- Created ADR-003 for architectural decision
+
+### ProgressBar Three-Color System
+- Added green/orange/red stoplight with discrete color changes at 20%/10%
+- Warning glow covers entire warning period (≤20%)
+
+### App Version-Based Cache Clearing
+- Created stores/version.ts with handleAppUpgrade()
+- Clears cache on version increase, preserves user preferences
+- New MMKV key: app_installed_version
+
+### Prayer Time Display Bug Fixes
+- Fixed 4 critical bugs: schedule advancement, ActiveBackground visibility, isPassed calculation, countdown calculation
+- Core principle: Schedule advancement changes dates, verify date matches current day
+
+---
+
+## 2026-01-18: Day Boundary & Timing System
+
+### Day Boundary ADR-004
+- Comprehensive prayer-based timing documentation
+- Supersedes ADR-002 (English midnight)
+- 14 documented edge scenarios
+- Core principles: NO 00:00 reset, prayer times immutable, schedules independent, timer always visible
+
+### Timing System Overhaul (PLANNED)
+- Major architectural refactor from date-centric to prayer-centric model
+- Root cause: Time-only comparison bug caused midnight-crossing issues
+- Solution: Full DateTime objects with belongsToDate for Islamic day
+- 72 tasks across 8 phases with parallel migration strategy
+- ADR-005 documentation created
+
+---
+
+## 2026-01-19: Bug Fixes & Critical Issues
+
+### Timing System Bugfixes
+- Post-refactor testing revealed 5 bugs
+- Bug 1: Midnight not showing (refreshSequence removed passed prayers)
+- Bug 2: Overlay wrong prayer (missing tomorrow fallback)
+- Bug 3: Progress bar 0% (timezone inconsistency)
+- Bug 4: Require cycles (circular dependencies)
+- Bug 5: Store mutation warning (getNextPrayer not pure)
+- ReviewerQA score: 100/100
+
+### Isha Display Bug (UNDER INVESTIGATION)
+- Critical: Standard schedule only shows Isha when next
+- Symptoms: Missing prayers, +1 hour offset, prayers vanish on transition
+- Root cause hypotheses: belongsToDate mismatch, timezone double-conversion
+- Attempted fixes didn't resolve - investigation ongoing
+
+---
+
+## 2026-01-20: Settings & Code Quality
+
+### Settings Bottom Sheet Feature
+- Added settings accessible via Masjid icon tap
+- Components: BottomSheetSettings.tsx, SettingsToggle.tsx, BottomSheetShared.tsx
+- Features: Progress bar toggle, Hijri date toggle, Athan sound selector
+- Hijri formatting using Intl.DateTimeFormat
+- Removed redundant timer tap-to-toggle, Alert long-press
+
+### Codebase Cleanup & Optimization
+- Phase 1 SKIPPED: Original cleanup plan outdated (code was in use)
+- Phase 2: Refactored 6 animation hooks, eliminated 80+ lines duplication
+- Phase 3: Added TIME_CONSTANTS, ISLAMIC_DAY, extracted notification lock pattern
+- Phase 4: Broke down createPrayerSequence() and refreshSequence()
+- Phase 5: Added comprehensive JSDoc to time utility functions
+- Results: ~100 lines duplication eliminated, +150 lines documentation, zero errors
