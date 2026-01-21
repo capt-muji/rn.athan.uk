@@ -195,6 +195,15 @@ export const isFriday = (date?: string | Date): boolean => {
 export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
 
 /**
+ * Checks if a given date is January 1st (needed for ProgressBar yesterday's data)
+ * @param date Date object
+ * @returns boolean indicating if the date is January 1st
+ */
+export const isJanuaryFirst = (date: Date): boolean => {
+  return date.getMonth() === 0 && date.getDate() === 1;
+};
+
+/**
  * Returns current year in London timezone
  * @returns Current year number
  */

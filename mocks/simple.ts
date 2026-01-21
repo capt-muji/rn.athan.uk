@@ -1,5 +1,6 @@
-import { addDays, subDays, format } from 'date-fns';
+import { addDays, subDays } from 'date-fns';
 
+import { formatDateShort } from '@/shared/time';
 import { IApiResponse } from '@/shared/types';
 
 /**
@@ -20,14 +21,12 @@ const addMinutes = (minutesToAdd: number) => {
   return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 };
 
-const formatDateLong = (date: Date) => format(date, 'yyyy-MM-dd');
-
-const dayBeforeYesterday = formatDateLong(subDays(now, 2));
-const yesterday = formatDateLong(subDays(now, 1));
-const today = formatDateLong(now);
+const dayBeforeYesterday = formatDateShort(subDays(now, 2));
+const yesterday = formatDateShort(subDays(now, 1));
+const today = formatDateShort(now);
 const daysAhead = Array.from({ length: 10 }, (_, i) => i + 1);
 const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.map((d) =>
-  formatDateLong(addDays(now, d))
+  formatDateShort(addDays(now, d))
 );
 
 export const MOCK_DATA_SIMPLE: IApiResponse = {
