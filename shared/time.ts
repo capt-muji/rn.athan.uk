@@ -284,8 +284,8 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
 
   const totalHours = (days || 0) * 24 + (hours || 0);
 
-  // Hide seconds if requested and time is over 60 seconds (show only in last 60s)
-  const shouldShowSeconds = !hideSeconds || seconds <= 60;
+  // Hide seconds if requested and time is over 10 minutes (show only in last 10m)
+  const shouldShowSeconds = !hideSeconds || seconds <= 600;
 
   const parts = [totalHours && `${totalHours}h`, minutes && `${minutes}m`].filter(Boolean);
 
