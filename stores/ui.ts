@@ -17,8 +17,6 @@ export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last
 export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
 export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
 
-export const scrollPositionAtom = atom(0);
-
 export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
 export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_width_extra', 0);
 
@@ -53,7 +51,6 @@ export const setEnglishWidth = (type: ScheduleType, width: number) => {
   store.set(atom, width);
 };
 
-export const setScrollPosition = (position: number) => store.set(scrollPositionAtom, position);
 export const getMeasurementsList = () => store.get(measurementsListAtom);
 export const setMeasurementsList = (measurements: PageCoordinates) => store.set(measurementsListAtom, measurements);
 export const getMeasurementsDate = () => store.get(measurementsDateAtom);
