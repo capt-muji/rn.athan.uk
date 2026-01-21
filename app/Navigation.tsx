@@ -5,6 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Screen from '@/app/Screen';
 import BackgroundGradients from '@/components/BackgroundGradients';
+import SettingsButton from '@/components/SettingsButton';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
@@ -42,8 +43,13 @@ export default function Navigation() {
       </PagerView>
 
       <View style={[styles.dotsContainer, { bottom: bottom + 20 + (Platform.OS === 'android' ? 15 : 0) }]}>
-        <Animated.View style={[styles.dot, dot0Animation.style]} />
-        <Animated.View style={[styles.dot, dot1Animation.style]} />
+        <View style={styles.buttonWrapper}>
+          <SettingsButton />
+        </View>
+        <View style={styles.dotsRow}>
+          <Animated.View style={[styles.dot, dot0Animation.style]} />
+          <Animated.View style={[styles.dot, dot1Animation.style]} />
+        </View>
       </View>
     </View>
   );
@@ -51,9 +57,18 @@ export default function Navigation() {
 
 const styles = StyleSheet.create({
   dotsContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
+    alignItems: 'center',
     position: 'absolute',
     alignSelf: 'center',
+    gap: 8,
+  },
+  buttonWrapper: {
+    position: 'absolute',
+    bottom: 30, // Position above dots
+  },
+  dotsRow: {
+    flexDirection: 'row',
     gap: 8,
   },
   dot: {
