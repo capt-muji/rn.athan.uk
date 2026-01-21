@@ -8,7 +8,7 @@ import BackgroundGradients from '@/components/BackgroundGradients';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { setPagePosition, setScrollPosition } from '@/stores/ui';
+import { setScrollPosition } from '@/stores/ui';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
@@ -25,8 +25,6 @@ export default function Navigation() {
 
     dot0Animation.animate(position === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
     dot1Animation.animate(position === 1 ? 1 : 0.25, { duration: ANIMATION.duration });
-
-    setPagePosition(position);
   };
 
   return (
