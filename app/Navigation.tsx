@@ -9,17 +9,11 @@ import SettingsButton from '@/components/SettingsButton';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { setScrollPosition } from '@/stores/ui';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
   const dot0Animation = useAnimationOpacity(1);
   const dot1Animation = useAnimationOpacity(0.25);
-
-  const handlePageScroll = (e: { nativeEvent: { position: number; offset: number } }) => {
-    const { position, offset } = e.nativeEvent;
-    setScrollPosition(position + offset);
-  };
 
   const handlePageSelected = (e: { nativeEvent: { position: number } }) => {
     const position = e.nativeEvent.position;
@@ -29,15 +23,10 @@ export default function Navigation() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#5b1eaa' }}>
+    <View style={{ flex: 1, backgroundColor: '#031a4c' }}>
       <BackgroundGradients />
 
-      <PagerView
-        style={{ flex: 1 }}
-        initialPage={0}
-        overdrag={true}
-        onPageScroll={handlePageScroll}
-        onPageSelected={handlePageSelected}>
+      <PagerView style={{ flex: 1 }} initialPage={0} overdrag={true} onPageSelected={handlePageSelected}>
         <Screen type={ScheduleType.Standard} />
         <Screen type={ScheduleType.Extra} />
       </PagerView>
