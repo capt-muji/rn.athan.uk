@@ -1,6 +1,7 @@
 import Constants from 'expo-constants';
 
 import logger from '@/shared/logger';
+import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
 
 // Guard to prevent multiple upgrade handlers from running
@@ -43,28 +44,6 @@ export const setStoredVersion = (version: string): void => {
   } catch (error) {
     logger.error('VERSION: Failed to store version', { version, error });
   }
-};
-
-/**
- * Compares two version strings using semantic versioning rules
- * @param v1 - First version string (e.g. "1.0.33")
- * @param v2 - Second version string (e.g. "1.0.34")
- * @returns 1 if v1 > v2, -1 if v1 < v2, 0 if equal
- */
-const compareVersions = (v1: string, v2: string): number => {
-  const parts1 = v1.split('.').map(Number);
-  const parts2 = v2.split('.').map(Number);
-  const maxLength = Math.max(parts1.length, parts2.length);
-
-  for (let i = 0; i < maxLength; i++) {
-    const part1 = parts1[i] || 0;
-    const part2 = parts2[i] || 0;
-
-    if (part1 > part2) return 1;
-    if (part1 < part2) return -1;
-  }
-
-  return 0;
 };
 
 /**

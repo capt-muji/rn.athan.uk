@@ -91,7 +91,4 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: TEXT.size,
   },
-  overlayText: {
-    color: COLORS.textSecondary,
-  },
 });
