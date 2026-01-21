@@ -202,14 +202,6 @@ MMKV
 └── Preferences: preference_*
 ```
 
-### See Also
-
-- [ADR-004: Prayer-Based Day Boundary](/ai/adr/004-prayer-based-day-boundary.md)
-- [ADR-005: Timing System Overhaul](/ai/adr/005-timing-system-overhaul.md)
-- [Timing System Schema](/mocks/timing-system-schema.ts)
-
-<br/>
-
 ## 🎨 Tech Stack
 
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -329,10 +321,11 @@ The notification system maintains a **2-day rolling buffer** of scheduled notifi
 **Key Features:**
 
 - 2 days of notifications scheduled ahead for each enabled prayer
+- 11 prayers total: 6 Standard (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) + 5 Extra (Midnight, Last Third, Suhoor, Duha, Istijaba)
 - Concurrent scheduling protection with global `isScheduling` guard
 - Maintains consistency even when app is closed or backgrounded
 - Persists through app restarts and offline usage
-- Separate mute controls for Standard (5 prayers) and Extra (5 prayers) schedules
+- Separate mute controls for Standard (6 prayers) and Extra (5 prayers) schedules
 
 #### Notification Rescheduling Scenarios
 
@@ -340,11 +333,11 @@ Notifications are rescheduled in the following scenarios:
 
 | Scenario                        | Function                                      | Time-Based   | Scope                            | Trigger                                                                                                       |
 | ------------------------------- | --------------------------------------------- | ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **User Changes Audio**          | `rescheduleAllNotifications()`                | ❌ Immediate | Both schedules (all 9 prayers)   | When user closes audio selection bottom sheet with new selection                                              |
-| **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | ❌ Immediate | Single prayer only               | When user taps alert icon on a prayer (450ms debounce)                                                        |
-| **User Mutes/Unmutes**          | `addAllScheduleNotificationsForSchedule()`    | ❌ Immediate | One schedule (Standard or Extra) | When user clicks "Enable all" / "Disable all" button (450ms debounce)                                         |
-| **App Launch**                  | `refreshNotifications()`                      | ✅ ≥12 hours | Both schedules (all 9 prayers)   | When app starts - only reschedules if never scheduled before OR last schedule was ≥12 hours ago               |
-| **App Resumes from Background** | `refreshNotifications()`                      | ✅ ≥12 hours | Both schedules (all 9 prayers)   | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥12 hours ago |
+| **User Changes Audio**          | `rescheduleAllNotifications()`                | ❌ Immediate | Both schedules (all 11 prayers)  | When user closes audio selection bottom sheet with new selection                                              |
+| **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | ❌ Immediate | Single prayer only               | When user taps alert icon on a prayer                                                                         |
+| **User Mutes/Unmutes**          | `addAllScheduleNotificationsForSchedule()`    | ❌ Immediate | One schedule (Standard or Extra) | When user clicks "Enable all" / "Disable all" button                                                          |
+| **App Launch**                  | `refreshNotifications()`                      | ✅ ≥12 hours | Both schedules (all 11 prayers)  | When app starts - only reschedules if never scheduled before OR last schedule was ≥12 hours ago               |
+| **App Resumes from Background** | `refreshNotifications()`                      | ✅ ≥12 hours | Both schedules (all 11 prayers)  | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥12 hours ago |
 
 #### How It Works
 
@@ -363,13 +356,13 @@ Notifications are rescheduled in the following scenarios:
   - ≥12 hours elapsed since `last_notification_schedule_check` timestamp
 - If criteria not met, logs skip and returns early
 - When rescheduling happens:
-  1. Cancels ALL existing notifications (global + per-prayer)
-  2. Reschedules 2 days ahead for all enabled prayers
+  1. Cancels ALL existing notifications (Expo API + database)
+  2. Reschedules 2 days ahead for all enabled prayers in both schedules
   3. Updates `last_notification_schedule_check` timestamp
 
 #### Concurrent Scheduling Protection
 
-All 5 entry points are protected by a single global `isScheduling` flag:
+All 4 entry points are protected by a single global `isScheduling` flag wrapped in `withSchedulingLock()`:
 
 - When any scheduling operation starts, `isScheduling` is set to `true`
 - If another operation tries to start while `isScheduling` is true, it returns early
@@ -386,5 +379,7 @@ All 5 entry points are protected by a single global `isScheduling` flag:
 
 #### Constants
 
-- `NOTIFICATION_ROLLING_DAYS = 2`: How many days ahead to schedule
-- `NOTIFICATION_REFRESH_HOURS = 12`: How often to refresh the rolling buffer
+| Constant                     | Value | Description                            |
+| ---------------------------- | ----- | -------------------------------------- |
+| `NOTIFICATION_ROLLING_DAYS`  | 2     | Days ahead to schedule notifications   |
+| `NOTIFICATION_REFRESH_HOURS` | 12    | Hours between automatic refresh cycles |
