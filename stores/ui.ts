@@ -33,7 +33,6 @@ export const progressbarColorAtom = atomWithStorageString('preference_progressba
 // New preference atoms for settings
 export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);
 export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds', false);
-export const onboardingCompletedAtom = atomWithStorageBoolean('preference_onboarding_completed', false);
 
 // Temporary mute state (not persisted, used during settings changes)
 export const tempStandardMutedAtom = atom<boolean | null>(null);
@@ -76,4 +75,3 @@ export const getMeasurementsDate = () => store.get(measurementsDateAtom);
 export const setMeasurementsDate = (measurements: PageCoordinates) => store.set(measurementsDateAtom, measurements);
 export const getMeasurementsMasjid = () => store.get(measurementsMasjidAtom);
 export const setMeasurementsMasjid = (measurements: PageCoordinates) => store.set(measurementsMasjidAtom, measurements);
-export const setOnboardingCompleted = (completed: boolean) => store.set(onboardingCompletedAtom, completed);
