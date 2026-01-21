@@ -6,6 +6,7 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
+import ColorPickerSettings from '@/components/ColorPickerSettings';
 import SettingsToggle from '@/components/SettingsToggle';
 import { TEXT } from '@/shared/constants';
 import {
@@ -37,7 +38,7 @@ export default function BottomSheetSettings() {
   return (
     <BottomSheetModal
       ref={(ref) => setSettingsSheetModal(ref)}
-      snapPoints={['55%']}
+      snapPoints={['60%']}
       enableDynamicSizing={false}
       onDismiss={handleDismiss}
       style={bottomSheetStyles.modal}
@@ -52,6 +53,7 @@ export default function BottomSheetSettings() {
           value={progressBarHidden}
           onToggle={() => setProgressBarHidden(!progressBarHidden)}
         />
+        <ColorPickerSettings />
         <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
         <SettingsToggle label="Show Hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
 

@@ -13,7 +13,7 @@ import { useProgressBar as useProgressBarHook } from '@/hooks/useProgressBar';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
-import { progressBarHiddenAtom } from '@/stores/ui';
+import { progressBarHiddenAtom, progressbarColorAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -26,6 +26,7 @@ export default function ProgressBar({ type }: Props) {
 
   const overlay = useAtomValue(overlayAtom);
   const isProgressBarHidden = useAtomValue(progressBarHiddenAtom);
+  const progressbarColor = useAtomValue(progressbarColorAtom);
 
   // Convert elapsed % to remaining % (bar shrinks as time passes)
   // Old: (timeLeft / totalDuration) * 100 = remaining %
@@ -53,8 +54,8 @@ export default function ProgressBar({ type }: Props) {
       colorValue.value,
       [0, 1],
       [
-        '#00ffea', // blue (>10%)
-        '#ff0080', // red (<=10%)
+        progressbarColor, // User's color for normal state
+        '#ff0080', // red for warning state
       ]
     );
     return {
