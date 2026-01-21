@@ -1,12 +1,14 @@
 # Feature: Timing System Overhaul
 
-**Status:** Ready for Implementation
+**Status:** ✅ ARCHIVED
 **Created:** 2026-01-18
+**Archived:** 2026-01-21
 **Reviewed:** Architect
 **ADR:** ai/adr/005-timing-system-overhaul.md
-**Schema:** mocks/timing-system-schema.ts (data structures, examples, edge cases)
+**Schema:** mocks/timing-system-schema.ts
 **QA Review:** APPROVED (Grade A) - 2026-01-18
 **Branch:** `refactor_time_from_cleanup_prayer`
+**Note:** All phases complete, all manual testing passed, isha-display-bug resolved
 
 ---
 
@@ -25,6 +27,7 @@
 **CRITICAL: A task is NOT complete until ReviewerQA approves it with 100/100.**
 
 For each task:
+
 1. **Implement** - Write the code for the task
 2. **Self-check** - Verify it matches schema and requirements
 3. **Run tests** - Ensure no regressions
@@ -37,6 +40,7 @@ For each task:
 6. **Mark complete** - Only after 100/100 approval
 
 **ReviewerQA Prompt Template:**
+
 ```
 Review Task X.X implementation for timing-system-overhaul:
 - Task: [description]
@@ -81,7 +85,7 @@ When the sequence contains prayers spanning multiple calendar dates:
 ```typescript
 // The displayDate is the belongsToDate of the FIRST UNPASSED prayer
 const displayDate = useMemo(() => {
-  const nextPrayer = prayers.find(p => p.datetime > now);
+  const nextPrayer = prayers.find((p) => p.datetime > now);
   return nextPrayer?.belongsToDate ?? prayers[prayers.length - 1].belongsToDate;
 }, [prayers, now]);
 ```
@@ -144,6 +148,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 ### Phase 1: Foundation - Types and Utilities
 
 #### Task 1.1: Add Prayer Interface to shared/types.ts ✅
+
 - [x] Add `Prayer` interface with fields: `id`, `type`, `english`, `arabic`, `datetime`, `time`, `belongsToDate`
 - [x] Add `PrayerSequence` interface with fields: `type`, `prayers` (array)
 - [x] Keep existing types unchanged (parallel implementation)
@@ -152,6 +157,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 1.2: Add datetime utilities to shared/time.ts ✅
+
 - [x] Add `createPrayerDatetime(date: string, time: string): Date` - combines date and time into full Date object
 - [x] Add `isPrayerInFuture(prayer: Prayer): boolean` - simple `prayer.datetime > now` check
 - [x] Add `getSecondsBetween(from: Date, to: Date): number` - simple difference calculation
@@ -160,6 +166,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 1.3: Add generatePrayerId() utility to shared/prayer.ts ✅
+
 - [x] Add `generatePrayerId(type: ScheduleType, english: string, date: string): string`
 - [x] Format: `"standard_fajr_2026-01-18"`
 - **File:** `shared/prayer.ts`
@@ -167,6 +174,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100 (fixed spaces issue - "Last Third" → "lastthird")
 
 #### Task 1.4: Add createPrayer() factory function to shared/prayer.ts ✅
+
 - [x] Add `createPrayer(params: { type, english, arabic, date, time }): Prayer`
 - [x] Generates id using generatePrayerId()
 - [x] Creates datetime using createPrayerDatetime()
@@ -176,6 +184,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 1.5: Add createPrayerSequence() function to shared/prayer.ts ✅
+
 - [x] Add `createPrayerSequence(type: ScheduleType, startDate: Date, dayCount: number): PrayerSequence`
 - [x] Creates prayers for `dayCount` days starting from `startDate`
 - [x] Uses existing `Database.getPrayerByDate()` for raw data
@@ -187,6 +196,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 95/100
 
 #### Task 1.6: Add MMKV serialization utilities to shared/storage.ts ✅
+
 - [x] Add `serializePrayer(prayer: Prayer): StoredPrayer` - converts Date to ISO string
 - [x] Add `deserializePrayer(stored: StoredPrayer): Prayer` - parses ISO string to Date
 - [x] Add `serializeSequence(seq: PrayerSequence): StoredSequence`
@@ -197,6 +207,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 1.7: Add belongsToDate calculation to shared/prayer.ts ✅
+
 - [x] Add `calculateBelongsToDate(type: ScheduleType, prayerIndex: number, calendarDate: string): string`
 - [x] Standard: Prayers 0-5 belong to same calendar date
 - [x] Extras: Midnight/LastThird/Suhoor belong to NEXT day (after Duha)
@@ -211,6 +222,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 ### Phase 2: State Layer - Parallel Atoms
 
 #### Task 2.1: Add sequence atoms to stores/schedule.ts ✅
+
 - [x] Add `standardSequenceAtom = atom<PrayerSequence | null>(null)`
 - [x] Add `extraSequenceAtom = atom<PrayerSequence | null>(null)`
 - [x] Add `getSequenceAtom(type: ScheduleType)` helper
@@ -220,6 +232,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 98/100
 
 #### Task 2.2: Add setSequence() action to stores/schedule.ts ✅
+
 - [x] Add `setSequence(type: ScheduleType, date: Date): void`
 - [x] Creates sequence using `createPrayerSequence(type, date, 3)` (3 days buffer)
 - [x] Sets the sequence atom
@@ -229,6 +242,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 2.3: Add derived selector atoms to stores/schedule.ts ✅
+
 - [x] Add `nextPrayerAtom(type)` - derived: `prayers.find(p => p.datetime > now)`
 - [x] Add `prevPrayerAtom(type)` - derived: prayer before nextPrayer in array
 - [x] Add `displayDateAtom(type)` - derived: `nextPrayer.belongsToDate`
@@ -238,6 +252,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 95/100
 
 #### Task 2.4: Add refreshSequence() action to stores/schedule.ts ✅
+
 - [x] Add `refreshSequence(type: ScheduleType): void`
 - [x] Filters out passed prayers from sequence
 - [x] Fetches more days if sequence is running low (<24 hours of prayers)
@@ -247,6 +262,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 98/100
 
 #### Task 2.5: Add getNextPrayer() and getPrevPrayer() exports to stores/schedule.ts ✅
+
 - [x] Add `getNextPrayer(type: ScheduleType): Prayer | null`
 - [x] Add `getPrevPrayer(type: ScheduleType): Prayer | null`
 - [x] Uses store.get() with derived atoms
@@ -259,6 +275,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 ### Phase 3: Hooks Layer - New Interface
 
 #### Task 3.1: Create useNextPrayer() hook ✅
+
 - [x] Create new file: `hooks/useNextPrayer.ts`
 - [x] Returns `{ prayer, secondsRemaining, isPassed: false }` using sequence atoms
 - [x] Accepts `type: ScheduleType` parameter
@@ -268,6 +285,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 98/100
 
 #### Task 3.2: Create usePrayerSequence() hook ✅
+
 - [x] Create new file: `hooks/usePrayerSequence.ts`
 - [x] Returns full sequence for rendering prayer list
 - [x] Accepts `type: ScheduleType` parameter
@@ -277,6 +295,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 95/100
 
 #### Task 3.3: Add derived isPassed to usePrayerSequence() ✅
+
 - [x] For each prayer in list, derive isPassed: `prayer.datetime < now`
 - [x] Simple boolean, no date string comparison needed
 - [x] No more date === today checks
@@ -285,6 +304,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 3.4: Create useCountdown() hook ✅
+
 - [x] Create new file: `hooks/useCountdown.ts`
 - [x] Returns `{ timeLeft: number, prayerName: string }`
 - [x] Uses `nextPrayer.datetime - now` calculation
@@ -294,6 +314,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 98/100
 
 #### Task 3.5: Create useProgressBar() hook ✅
+
 - [x] Create new file: `hooks/useProgressBar.ts`
 - [x] Returns `{ progress: number }` (0-100)
 - [x] Uses prevPrayer and nextPrayer from sequence
@@ -308,6 +329,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 ### Phase 4: Sync Layer - Initialize Sequences
 
 #### Task 4.1: Update initializeAppState() to set sequences ✅
+
 - [x] After existing `setSchedule()` calls, add `setSequence()` calls
 - [x] Both Standard and Extra sequences initialized
 - [x] Parallel to existing initialization - don't remove old code yet
@@ -316,6 +338,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 4.2: Remove schedule advancement checks from initializeAppState() ✅
+
 - [x] The sequence model doesn't need advancement on init
 - [x] nextPrayer is always derived from current time
 - [x] Comment out (don't delete) the advanceScheduleToTomorrow calls
@@ -325,6 +348,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 4.3: Add sequence refresh to timer tick ✅
+
 - [x] In timer interval, check if nextPrayer has passed
 - [x] If passed, call `refreshSequence(type)`
 - [x] No more `incrementNextIndex()` or `advanceScheduleToTomorrow()` (parallel for now)
@@ -334,10 +358,11 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 4.4: Add divergence detection for parallel models ✅
+
 - [x] Create `validateModelParity(type: ScheduleType): boolean` function
 - [x] Compare old model countdown vs new model countdown
 - [x] Compare old model nextIndex vs new model nextPrayer
-- [x] Log warnings in __DEV__ mode if divergence > 2 seconds
+- [x] Log warnings in **DEV** mode if divergence > 2 seconds
 - [x] Run validation on every timer tick during migration
 - **File:** `stores/debug.ts` (new), `stores/timer.ts`
 - **Dependencies:** Tasks 2.5, 4.1
@@ -345,6 +370,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 4.5: Handle empty sequence edge case ✅
+
 - [x] In `getNextPrayer()`, if no future prayer found, trigger refresh
 - [x] If refresh fails or returns empty, return null (hooks expose isReady for loading state)
 - [x] Components handle loading state gracefully via hooks' `isReady` boolean
@@ -358,6 +384,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 ### Phase 5: UI Migration - Component Updates
 
 #### Task 5.1: Update Timer.tsx to use new hooks ✅
+
 - [x] Import `useCountdown()` hook
 - [x] Replace `useAtomValue(timerAtom)` with `useCountdown(type)`
 - [x] Timer now shows countdown from sequence-derived nextPrayer
@@ -367,6 +394,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.2: Update ProgressBar.tsx to use new hook ✅
+
 - [x] Import `useProgressBar()` hook
 - [x] Replace `useMemo()` progress calculation with `useProgressBar(type)`
 - [x] Remove all `schedule.yesterday`, `schedule.today`, `schedule.nextIndex` usage
@@ -376,6 +404,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.3: Update Prayer.tsx to use derived isPassed ✅
+
 - [x] Update `usePrayer()` to derive isPassed from sequence
 - [x] `isPassed = prayer.datetime < now` - simple comparison
 - [x] Remove date string comparison: `todayPrayer.date === today`
@@ -384,6 +413,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.4: Update usePrayer.ts hook ✅
+
 - [x] Modify to get prayer from sequence instead of schedule
 - [x] `isPassed = prayer.datetime < now`
 - [x] `isNext = prayer.id === nextPrayer.id`
@@ -393,6 +423,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.5: Update Day.tsx to use derived displayDate ✅
+
 - [x] Import derived displayDateAtom from schedule store
 - [x] Replace `getDateAtom(type)` usage with new derived atom
 - [x] Display date now automatically follows current prayer
@@ -401,6 +432,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.6: Update ActiveBackground.tsx ✅
+
 - [x] Get nextPrayerIndex from sequence (index in today's prayers)
 - [x] `yPosition = nextPrayerIndex * STYLES.prayer.height`
 - [x] No change to animation logic
@@ -409,6 +441,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.7: Update useSchedule.ts hook ✅
+
 - [x] Add option to use sequence model: `useSchedule(type, { useSequence: true })`
 - [x] Returns sequence-based data when flag is true
 - [x] Returns old model when flag is false (default)
@@ -418,6 +451,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.8: Update List.tsx for sequence-based rendering ✅
+
 - [x] Use `usePrayerSequence()` to get prayers for today
 - [x] Filter sequence to only show prayers for displayDate
 - [x] Map over prayers instead of using `Array.from({ length })`
@@ -426,6 +460,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.9: Update Overlay.tsx ✅
+
 - [x] Review overlay timer usage
 - [x] Update to use sequence-based countdown if applicable
 - [x] Verify overlay displays correct prayer info
@@ -434,6 +469,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 5.10: Update stores/overlay.ts ✅
+
 - [x] Review `canShowOverlay()` function
 - [x] Update to use sequence-based time check if needed
 - [x] Verify overlay toggle logic still works
@@ -446,6 +482,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 ### Phase 6: Timer System Updates
 
 #### Task 6.1: Create new timer approach in stores/timer.ts ✅
+
 - [x] Add `startSequenceTimer(type: ScheduleType)` function
 - [x] Uses `getNextPrayer(type)` to get countdown target
 - [x] Interval updates `timerAtom` from `nextPrayer.datetime - now`
@@ -455,6 +492,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 6.2: Simplify calculateCountdown() in shared/time.ts ✅
+
 - [x] Add `calculateCountdownFromPrayer(prayer: Prayer): number`
 - [x] Simple: `prayer.datetime.getTime() - Date.now() / 1000`
 - [x] No more schedule parameter, no yesterday fallback
@@ -464,6 +502,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 6.3: Update startTimers() to use new approach ✅
+
 - [x] Replace `startTimerSchedule()` calls with `startSequenceTimer()`
 - [x] Both Standard and Extra timers use sequence model
 - [x] Remove `incrementNextIndex()` and `advanceScheduleToTomorrow()` calls
@@ -472,6 +511,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **QA Score:** 100/100
 
 #### Task 6.4: Remove overlay timer special handling ✅
+
 - [x] Overlay timer can use same sequence-based approach
 - [x] `startTimerOverlay()` gets selected prayer from sequence by id
 - [x] Simplify overlay timer code
@@ -484,6 +524,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 ### Phase 7: Cleanup - Remove Old Model
 
 #### Task 7.1: Remove ScheduleStore interface and atoms ✅
+
 - [x] Remove `yesterday`, `today`, `tomorrow`, `nextIndex` from ScheduleStore
 - [x] Remove `standardScheduleAtom`, `extraScheduleAtom`
 - [x] Remove `createInitialSchedule()`, `buildDailySchedules()`
@@ -491,6 +532,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** All Phase 5 tasks complete
 
 #### Task 7.2: Remove old setSchedule() and related functions ✅
+
 - [x] Remove `setSchedule()`, `getSchedule()`
 - [x] Remove `incrementNextIndex()`
 - [x] Remove `advanceScheduleToTomorrow()`
@@ -498,6 +540,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** Task 7.1
 
 #### Task 7.3: Remove old calculateCountdown() with schedule param ✅
+
 - [x] Remove `calculateCountdown(schedule, index)` function
 - [x] Keep new `calculateCountdownFromPrayer()` function
 - [x] Remove yesterday fallback code
@@ -506,6 +549,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** All Phase 5 tasks complete
 
 #### Task 7.4: Remove date atoms from stores/sync.ts ✅
+
 - [x] Remove `standardDateAtom`, `extraDateAtom`
 - [x] Remove `getDateAtom()`, `setScheduleDate()`
 - [x] Date is now derived from sequence
@@ -515,6 +559,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** Task 5.5
 
 #### Task 7.5: Clean up shared/types.ts ✅
+
 - [x] Remove old `ScheduleStore` interface
 - [x] Remove `IScheduleNow` interface
 - [x] Remove `IPrayerConfig` interface
@@ -525,22 +570,26 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** Task 7.1
 
 #### Task 7.5b: Clean up shared/prayer.ts ✅
+
 - [x] Remove `createSchedule()` function (old model)
 - [x] Remove `findNextPrayerIndex()` function (old model)
 - [x] Remove `IScheduleNow` import
 - **File:** `shared/prayer.ts`
 
 #### Task 7.5c: Clean up stores/timer.ts ✅
+
 - [x] Remove old `startTimerSchedule()` function
 - [x] Remove imports for `getSchedule`, `incrementNextIndex`, `advanceScheduleToTomorrow`
 - [x] Remove `validateModelParity` call (no longer needed)
 - **File:** `stores/timer.ts`
 
 #### Task 7.5d: Delete stores/debug.ts ✅
+
 - [x] Remove `validateModelParity()` function (no longer needed without old model)
 - **File:** `stores/debug.ts` (deleted)
 
 #### Task 7.5e: Update components to use new model ✅
+
 - [x] Update `useSchedule.ts` to always use sequence model
 - [x] Update `Prayer.tsx` to use `Schedule.displayDate` instead of `getDateAtom`
 - [x] Update `Alert.tsx` to use `Schedule.displayDate` instead of `getDateAtom`
@@ -548,6 +597,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Files:** `hooks/useSchedule.ts`, `components/Prayer.tsx`, `components/Alert.tsx`, `components/PrayerTime.tsx`
 
 #### Task 7.6: Update stores/notifications.ts for new model ✅ (No Changes Needed)
+
 - [x] Review notification scheduling logic
 - [x] Notifications use `Database.getPrayerByDate()` directly - decoupled from Schedule model
 - [x] Current date+time string approach works correctly
@@ -557,6 +607,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Note:** Notifications are already decoupled from the Schedule model
 
 #### Task 7.7: Update shared/notifications.ts ✅ (No Changes Needed)
+
 - [x] Review `genNextXDays()` - works correctly
 - [x] Review `isPrayerTimeInFuture()` - uses date+time strings, works correctly
 - [x] Notification utilities don't depend on Schedule model
@@ -566,6 +617,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Note:** Notification utilities work independently of timing model
 
 #### Task 7.8: Validate notifications with new model
+
 - [ ] Schedule a notification using Prayer.datetime
 - [ ] Verify notification fires at correct time
 - [ ] Test notification rescheduling after prayer passes
@@ -575,6 +627,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Note:** Manual testing to be done by user
 
 #### Task 7.9: Final stores/sync.ts cleanup ✅
+
 - [x] Remove commented-out code from Phase 4
 - [x] Remove any remaining references to old model
 - [x] Verify sync flow uses only sequence model
@@ -586,6 +639,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 ### Phase 8: Testing and Documentation
 
 #### Task 8.1: Manual test - Standard schedule day transition
+
 - [ ] Wait for Isha to pass (or mock time in mocks/simple.ts)
 - [ ] Verify timer shows tomorrow's Fajr countdown
 - [ ] Verify date display updates to tomorrow
@@ -593,6 +647,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** All implementation complete
 
 #### Task 8.2: Manual test - Extras schedule day transition
+
 - [ ] Wait for Duha to pass (or mock time)
 - [ ] Verify timer shows Midnight countdown (same day!)
 - [ ] Verify date display updates correctly
@@ -600,30 +655,35 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** All implementation complete
 
 #### Task 8.3: Manual test - Progress bar accuracy
+
 - [ ] Check progress bar at various times
 - [ ] Verify progress is accurate with new calculation
 - [ ] No special handling for first prayer needed
 - **Dependencies:** All implementation complete
 
 #### Task 8.4: Manual test - Both schedules different dates
+
 - [ ] After Isha but before midnight
 - [ ] Standard shows tomorrow, Extras shows today
 - [ ] Both timers accurate
 - **Dependencies:** All implementation complete
 
 #### Task 8.5: Manual test - App resume scenarios
+
 - [ ] Close app, wait for prayer to pass, reopen
 - [ ] Verify schedule refreshes correctly
 - [ ] No stale data displayed
 - **Dependencies:** All implementation complete
 
 #### Task 8.6: Manual test - January 1st edge case
+
 - [ ] Mock date to Jan 1
 - [ ] Verify Dec 31 prayers in sequence
 - [ ] Progress bar works correctly
 - **Dependencies:** All implementation complete
 
 #### Task 8.7: Manual test - DST transition edge case
+
 - [ ] Mock date to DST transition day (March/November depending on locale)
 - [ ] Verify prayer times display correctly
 - [ ] Verify countdown handles the time shift
@@ -631,19 +691,22 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** All implementation complete
 
 #### Task 8.8: Manual test - Divergence validation passed
+
 - [ ] Run app with parallel models for 24+ hours
-- [ ] Verify no __DEV__ divergence warnings logged
+- [ ] Verify no **DEV** divergence warnings logged
 - [ ] Verify old and new models produce identical countdowns
 - [ ] Sign-off: Safe to remove old model
 - **Dependencies:** Task 4.4
 
 #### Task 8.9: Manual test - Notification timing
+
 - [ ] Schedule notifications for next prayer
 - [ ] Verify notification fires at exactly prayer.datetime
 - [ ] Verify notification content is correct
 - **Dependencies:** Task 7.8
 
 #### Task 8.10: Update README.md documentation
+
 - [ ] Document new timing system
 - [ ] Update data flow diagram
 - [ ] Update timer system documentation
@@ -651,6 +714,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** All tests pass
 
 #### Task 8.11: Update AGENTS.md memory section
+
 - [ ] Add memory entry for timing system overhaul
 - [ ] Document lessons learned
 - [ ] Reference ADR-005
@@ -658,6 +722,7 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** Task 8.10
 
 #### Task 8.12: Update ADR-005 status to Accepted
+
 - [ ] Change status from "Proposed" to "Accepted"
 - [ ] Add implementation notes
 - [ ] Document any deviations from original plan
@@ -668,48 +733,48 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 
 ## Files Modified
 
-| File | Phase | Changes |
-|------|-------|---------|
-| `shared/types.ts` | 1 | Add Prayer, PrayerSequence, StoredPrayer interfaces |
-| `shared/time.ts` | 1, 6 | Add datetime utilities, simplify countdown |
-| `shared/prayer.ts` | 1 | Add createPrayer, createPrayerSequence, belongsToDate |
-| `shared/storage.ts` | 1 | NEW: MMKV serialization for Date objects |
-| `stores/schedule.ts` | 2, 7 | Add sequence atoms, remove old model |
-| `stores/sync.ts` | 4, 7 | Initialize sequences, remove old init |
-| `stores/timer.ts` | 4, 6 | Sequence-based timer, divergence detection |
-| `stores/debug.ts` | 4 | NEW (optional): Divergence validation utilities |
-| `hooks/useNextPrayer.ts` | 3 | NEW: Next prayer hook |
-| `hooks/usePrayerSequence.ts` | 3 | NEW: Sequence hook |
-| `hooks/useCountdown.ts` | 3 | NEW: Countdown hook |
-| `hooks/useProgressBar.ts` | 3 | NEW: Progress hook |
-| `hooks/usePrayer.ts` | 5 | Use sequence-based isPassed |
-| `hooks/useSchedule.ts` | 5 | Add sequence mode option |
-| `components/Timer.tsx` | 5 | Use useCountdown hook |
-| `components/ProgressBar.tsx` | 5 | Use useProgressBar hook |
-| `components/Prayer.tsx` | 5 | Use derived isPassed |
-| `components/Day.tsx` | 5 | Use derived displayDate |
-| `components/ActiveBackground.tsx` | 5 | Use sequence-based index |
-| `components/List.tsx` | 5 | Sequence-based rendering |
-| `stores/overlay.ts` | 5 | Update canShowOverlay |
-| `stores/notifications.ts` | 7 | Use Prayer.datetime |
-| `shared/notifications.ts` | 7 | Update time utilities |
-| `README.md` | 8 | Documentation updates |
-| `ai/AGENTS.md` | 8 | Memory entry |
-| `ai/adr/005-timing-system-overhaul.md` | 8 | Status update |
+| File                                   | Phase | Changes                                               |
+| -------------------------------------- | ----- | ----------------------------------------------------- |
+| `shared/types.ts`                      | 1     | Add Prayer, PrayerSequence, StoredPrayer interfaces   |
+| `shared/time.ts`                       | 1, 6  | Add datetime utilities, simplify countdown            |
+| `shared/prayer.ts`                     | 1     | Add createPrayer, createPrayerSequence, belongsToDate |
+| `shared/storage.ts`                    | 1     | NEW: MMKV serialization for Date objects              |
+| `stores/schedule.ts`                   | 2, 7  | Add sequence atoms, remove old model                  |
+| `stores/sync.ts`                       | 4, 7  | Initialize sequences, remove old init                 |
+| `stores/timer.ts`                      | 4, 6  | Sequence-based timer, divergence detection            |
+| `stores/debug.ts`                      | 4     | NEW (optional): Divergence validation utilities       |
+| `hooks/useNextPrayer.ts`               | 3     | NEW: Next prayer hook                                 |
+| `hooks/usePrayerSequence.ts`           | 3     | NEW: Sequence hook                                    |
+| `hooks/useCountdown.ts`                | 3     | NEW: Countdown hook                                   |
+| `hooks/useProgressBar.ts`              | 3     | NEW: Progress hook                                    |
+| `hooks/usePrayer.ts`                   | 5     | Use sequence-based isPassed                           |
+| `hooks/useSchedule.ts`                 | 5     | Add sequence mode option                              |
+| `components/Timer.tsx`                 | 5     | Use useCountdown hook                                 |
+| `components/ProgressBar.tsx`           | 5     | Use useProgressBar hook                               |
+| `components/Prayer.tsx`                | 5     | Use derived isPassed                                  |
+| `components/Day.tsx`                   | 5     | Use derived displayDate                               |
+| `components/ActiveBackground.tsx`      | 5     | Use sequence-based index                              |
+| `components/List.tsx`                  | 5     | Sequence-based rendering                              |
+| `stores/overlay.ts`                    | 5     | Update canShowOverlay                                 |
+| `stores/notifications.ts`              | 7     | Use Prayer.datetime                                   |
+| `shared/notifications.ts`              | 7     | Update time utilities                                 |
+| `README.md`                            | 8     | Documentation updates                                 |
+| `ai/AGENTS.md`                         | 8     | Memory entry                                          |
+| `ai/adr/005-timing-system-overhaul.md` | 8     | Status update                                         |
 
 ---
 
 ## Decision Log
 
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| Parallel implementation | Yes | Safer migration, can compare old vs new |
-| Sequence buffer size | 3 days | Matches notification rolling window |
-| Prayer ID format | `type_name_date` | Unique, readable, sortable |
-| datetime storage | JavaScript Date | Native comparison, no parsing |
-| Derived atoms | Jotai `atom()` | Automatic updates, no sync needed |
-| Hook-based interface | New hooks | Clean API, composable |
-| Cleanup phase last | Yes | Only after all UI migrated |
+| Decision                | Choice           | Rationale                               |
+| ----------------------- | ---------------- | --------------------------------------- |
+| Parallel implementation | Yes              | Safer migration, can compare old vs new |
+| Sequence buffer size    | 3 days           | Matches notification rolling window     |
+| Prayer ID format        | `type_name_date` | Unique, readable, sortable              |
+| datetime storage        | JavaScript Date  | Native comparison, no parsing           |
+| Derived atoms           | Jotai `atom()`   | Automatic updates, no sync needed       |
+| Hook-based interface    | New hooks        | Clean API, composable                   |
+| Cleanup phase last      | Yes              | Only after all UI migrated              |
 
 ---
 
@@ -744,16 +809,17 @@ If issues discovered after old model removed:
 
 ### Critical Checkpoints
 
-| Checkpoint | Criteria | Rollback Action |
-|------------|----------|-----------------|
-| After Phase 4 | Divergence validation passes | Remove new atoms, keep old |
+| Checkpoint    | Criteria                           | Rollback Action                     |
+| ------------- | ---------------------------------- | ----------------------------------- |
+| After Phase 4 | Divergence validation passes       | Remove new atoms, keep old          |
 | After Phase 5 | All components work with new hooks | Remove new hooks, revert components |
-| After Phase 6 | Timer system stable | Revert timer changes |
-| After Phase 7 | 24hr soak test passes | Git revert Phase 7 |
+| After Phase 6 | Timer system stable                | Revert timer changes                |
+| After Phase 7 | 24hr soak test passes              | Git revert Phase 7                  |
 
 ### No-Rollback Point
 
 Phase 7 cleanup is the point of no return. Before starting Phase 7:
+
 - [ ] Divergence validation passed (Task 8.8)
 - [ ] All manual tests passed (Tasks 8.1-8.9)
 - [ ] Notification validation passed (Task 7.8)
@@ -763,6 +829,7 @@ Phase 7 cleanup is the point of no return. Before starting Phase 7:
 ## Notes
 
 **Key Behavior Changes:**
+
 - OLD: `schedule.today` can contain tomorrow's data after advancement
 - NEW: `nextPrayer` always means the next prayer chronologically
 
@@ -773,6 +840,7 @@ Phase 7 cleanup is the point of no return. Before starting Phase 7:
 - NEW: Derived from current time, automatic
 
 **What Gets Removed:**
+
 - `advanceScheduleToTomorrow()` function
 - `incrementNextIndex()` function
 - `yesterday/today/tomorrow` schedule structure
@@ -781,6 +849,7 @@ Phase 7 cleanup is the point of no return. Before starting Phase 7:
 - Date string comparisons for isPassed
 
 **What Gets Simplified:**
+
 - ProgressBar: `progress = (now - prev.datetime) / (next.datetime - prev.datetime)`
 - isPassed: `prayer.datetime < now`
 - countdown: `nextPrayer.datetime - now`
@@ -797,18 +866,21 @@ Phase 7 cleanup is the point of no return. Before starting Phase 7:
 Manual testing at 03:16am Jan 19th revealed 5 bugs requiring fixes.
 
 #### Task 9.1: Fix store mutation during atom read (Bug 5)
+
 - [ ] Make `getNextPrayer()` pure read-only (remove refreshSequence call)
 - [ ] Verify callers already handle null case
 - **File:** `stores/schedule.ts`
 - **Verification:** No "store mutation during atom read" warning
 
 #### Task 9.2: Fix timezone in createPrayerDatetime (Bug 3)
+
 - [ ] Use `formatInTimeZone()` to create dates in London timezone
 - [ ] Match timezone handling with `createLondonDate()`
 - **File:** `shared/time.ts`
 - **Verification:** Progress bar shows non-zero at 03:16am
 
 #### Task 9.3: Fix refreshSequence to keep current displayDate prayers (Bug 1)
+
 - [ ] Find current displayDate from next future prayer
 - [ ] Keep passed prayers that belong to current displayDate
 - [ ] Remove passed prayers for OTHER dates (memory-safe)
@@ -816,12 +888,14 @@ Manual testing at 03:16am Jan 19th revealed 5 bugs requiring fixes.
 - **Verification:** Midnight appears on Extras at 03:16am
 
 #### Task 9.4: Fix overlay timer tomorrow fallback (Bug 2)
+
 - [ ] Match `usePrayer.ts:45-55` logic exactly
 - [ ] Add tomorrow prayer fallback for passed prayers
 - **File:** `stores/timer.ts`
 - **Verification:** Tapping Last Third shows correct time/countdown
 
 #### Task 9.5: Fix require cycles (Bug 4)
+
 - [ ] Extract `overlayAtom` to `stores/atoms/overlay.ts`
 - [ ] Use dependency injection for notifications
 - [ ] Update imports in `stores/overlay.ts` and `stores/timer.ts`
@@ -832,15 +906,15 @@ Manual testing at 03:16am Jan 19th revealed 5 bugs requiring fixes.
 
 ## Bug Fix Files Summary
 
-| File | Bug | Changes |
-|------|-----|---------|
-| `stores/schedule.ts` | 5, 1 | Pure `getNextPrayer()`, smarter `refreshSequence()` |
-| `shared/time.ts` | 3 | London timezone in `createPrayerDatetime()` |
-| `stores/timer.ts` | 2, 4 | Tomorrow fallback in overlay, new atom import |
-| `device/notifications.ts` | 4 | Dependency injection for sound preference |
-| `shared/notifications.ts` | 4 | Dependency injection for refresh function |
-| `stores/atoms/overlay.ts` | 4 | NEW: Extracted overlayAtom |
-| `stores/overlay.ts` | 4 | Import from new atom location |
+| File                      | Bug  | Changes                                             |
+| ------------------------- | ---- | --------------------------------------------------- |
+| `stores/schedule.ts`      | 5, 1 | Pure `getNextPrayer()`, smarter `refreshSequence()` |
+| `shared/time.ts`          | 3    | London timezone in `createPrayerDatetime()`         |
+| `stores/timer.ts`         | 2, 4 | Tomorrow fallback in overlay, new atom import       |
+| `device/notifications.ts` | 4    | Dependency injection for sound preference           |
+| `shared/notifications.ts` | 4    | Dependency injection for refresh function           |
+| `stores/atoms/overlay.ts` | 4    | NEW: Extracted overlayAtom                          |
+| `stores/overlay.ts`       | 4    | Import from new atom location                       |
 
 ---
 
@@ -857,12 +931,12 @@ Manual testing at 03:16am Jan 19th revealed 5 bugs requiring fixes.
 
 #### Symptoms
 
-| Issue | When | What Happens |
-|-------|------|--------------|
-| Missing prayers | Isha is next | Only Isha renders, Fajr-Maghrib missing |
-| +1 hour offset | Isha is next | Isha time displays 1 hour later than actual |
-| Prayers vanish | Maghrib→Isha transition | List breaks, shows only Isha |
-| Isha disappears | Isha passes | Fajr-Maghrib render but Isha missing |
+| Issue           | When                    | What Happens                                |
+| --------------- | ----------------------- | ------------------------------------------- |
+| Missing prayers | Isha is next            | Only Isha renders, Fajr-Maghrib missing     |
+| +1 hour offset  | Isha is next            | Isha time displays 1 hour later than actual |
+| Prayers vanish  | Maghrib→Isha transition | List breaks, shows only Isha                |
+| Isha disappears | Isha passes             | Fajr-Maghrib render but Isha missing        |
 
 #### Quick Reproduction
 
