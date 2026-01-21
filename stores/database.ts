@@ -146,6 +146,5 @@ export const cleanup = () => {
   clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
   clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
   clearPrefix('popup_update_last_check'); // Last app update check timestamp
-  // clearPrefix('preference_onboarding_completed'); // First-launch onboarding completion state
   // NOTE: measurements_masjid is NOT persisted to MMKV (ephemeral atom), so no cleanup needed
 };
