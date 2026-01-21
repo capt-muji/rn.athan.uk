@@ -1,10 +1,47 @@
+// =============================================================================
+// PRAYER NAMES
+// =============================================================================
+
+/**
+ * English names for the 6 standard daily prayers
+ * Order matches UI display sequence (Fajr → Sunrise → Dhuhr → Asr → Magrib → Isha)
+ */
 export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
+
+/**
+ * Arabic names for the 6 standard daily prayers
+ * Must align 1:1 with PRAYERS_ENGLISH for correct bilingual display
+ */
 export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
 
+// =============================================================================
+// SPECIAL PRAYERS (EXTRAS)
+// =============================================================================
+
+/**
+ * English names for 5 special/blessed prayer times
+ * Order: Midnight, Last Third, Suhoor, Duha, Istijaba
+ * Note: Istijaba only displays on Fridays
+ */
 export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
+
+/**
+ * Arabic names for 5 special prayer times
+ * Must align 1:1 with EXTRAS_ENGLISH for correct bilingual display
+ */
 export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
+
+/**
+ * Index position of Istijaba prayer in EXTRAS arrays (0-indexed: 4)
+ * Used for special handling: Istijaba notifications only scheduled on Fridays
+ */
 export const ISTIJABA_INDEX = 4;
 
+/**
+ * Human-readable explanations for each extra prayer
+ * Used in PrayerExplanation overlay to provide context to users
+ * Order aligns with EXTRAS arrays
+ */
 export const EXTRAS_EXPLANATIONS = [
   'Halfway between Magrib and Fajr',
   '5 mins after the last third of the night begins',
@@ -13,97 +50,218 @@ export const EXTRAS_EXPLANATIONS = [
   '59 mins before Magrib (Fridays only)',
 ] as const;
 
+// =============================================================================
+// NOTIFICATION CONFIGURATION
+// =============================================================================
+
+/**
+ * Number of days ahead to schedule notifications (2-day rolling buffer)
+ * Ensures notifications are always queued ahead without overwhelming the system
+ */
 export const NOTIFICATION_ROLLING_DAYS = 2;
+
+/**
+ * Hours between automatic notification refreshes
+ * Notifications rescheduled when this interval elapses and app enters foreground
+ */
 export const NOTIFICATION_REFRESH_HOURS = 12;
 
+// =============================================================================
+// TIME CALCULATIONS
+// =============================================================================
+
+/**
+ * Minute offsets for calculating special prayer times
+ * Positive values = add minutes, negative = subtract from base prayer time
+ * Used in shared/time.ts adjustTime() calculations
+ */
 export const TIME_ADJUSTMENTS = {
-  lastThird: 5, // minutes after last third of the night
-  suhoor: -40, // minutes before fajr
-  duha: 20, // minutes after sunrise
-  istijaba: -59, // minutes before magrib
+  lastThird: 5, // minutes after last third of the night begins
+  suhoor: -40, // minutes before Fajr
+  duha: 20, // minutes after Sunrise
+  istijaba: -59, // minutes before Magrib (Fridays only)
 };
 
+/**
+ * Time-related constants in milliseconds
+ * Used for time-based calculations (buffer checking, duration computations)
+ */
 export const TIME_CONSTANTS = {
   ONE_DAY_MS: 24 * 60 * 60 * 1000,
   ONE_HOUR_MS: 60 * 60 * 1000,
 } as const;
 
+/**
+ * Islamic day boundary configuration
+ * Defines when early morning prayers belong to previous Islamic day
+ */
 export const ISLAMIC_DAY = {
+  /** Hour threshold for early morning (6am). Prayers before this hour may belong to previous Islamic day */
   EARLY_MORNING_CUTOFF_HOUR: 6,
 } as const;
 
+// =============================================================================
+// UI TEXT & TYPOGRAPHY
+// =============================================================================
+
+/**
+ * Global text styling configuration
+ * Font family (Roboto) and size hierarchy for consistent typography across app
+ */
 export const TEXT = {
   family: {
+    /** Regular weight font for body text */
     regular: 'Roboto-Regular',
+    /** Medium weight font for emphasis text */
     medium: 'Roboto-Medium',
   },
+  /** Base font size for prayer names and time displays */
   size: 18,
+  /** Secondary font size for auxiliary text */
   sizeSmall: 16,
+  /** Tertiary font size for smallest text (e.g., explanations) */
   sizeSmaller: 14,
 };
 
+// =============================================================================
+// SCREEN LAYOUT
+// =============================================================================
+
+/**
+ * Screen-level layout padding constants
+ * Ensures consistent spacing and alignment across all screens
+ */
 export const SCREEN = {
+  /** Horizontal padding for screen edges */
   paddingHorizontal: 12,
+  /** Top padding for screen content */
   paddingTop: 17,
 };
 
+// =============================================================================
+// COLOR PALETTE
+// =============================================================================
+
+/**
+ * Application color palette
+ * Gradient colors for backgrounds, active/inactive states, and UI elements
+ */
 export const COLORS = {
+  /** Starting color for main background gradient (deep blue) */
   gradientScreen1Start: '#031a4c',
+  /** Ending color for main background gradient (purple) */
   gradientScreen1End: '#5b1eaa',
 
+  /** Text color for active prayers (white) */
   activePrayer: '#ffffff',
+  /** Text color for inactive prayers (semi-transparent blue) */
   inactivePrayer: '#8aa9d662',
 
+  /** Background color for active prayer highlight (bright blue) */
   activeBackground: '#0847e5',
+  /** Shadow color for Standard schedule active prayer background */
   standardActiveBackgroundShadow: '#081a76',
+  /** Shadow color for Extra schedule active prayer background */
   extraActiveBackgroundShadow: '#061e5b',
 
+  /** Secondary text color (muted blue) */
   textSecondary: '#a0c8ff89',
 
   glows: {
+    /** Purple glow color for overlay component */
     overlay: '#8000ff',
+    /** Purple glow color for bottom sheet components */
     bottomsheet: '#8000ff',
   },
 };
 
+// =============================================================================
+// ANIMATION TIMING
+// =============================================================================
+
+/**
+ * Animation timing constants
+ * Durations for different animation speeds, delays for cascade effects, debounce intervals
+ */
 export const ANIMATION = {
+  /** Standard animation duration (fast transitions) in milliseconds */
   duration: 200,
+  /** Slow animation duration for deliberate movements */
   durationSlow: 1000,
+  /** Very slow animation duration for gentle transitions */
   durationSlower: 1500,
+  /** Delay between consecutive prayer animations during cascade effect */
   cascadeDelay: 150,
+  /** Duration for modal/popup open/close animations */
   popupDuration: 500,
+  /** Debounce interval for rapid user interactions */
   debounce: 450,
 };
 
+// =============================================================================
+// OVERLAY LAYERING
+// =============================================================================
+
+/**
+ * Z-index layering configuration for overlay components
+ * Ensures proper visual stacking order (popup > overlay > content > glow)
+ */
 export const OVERLAY = {
   zindexes: {
+    /** Popup/z-modal layer (highest) */
     popup: 1000,
+    /** Main overlay layer */
     overlay: 2,
+    /** Glow effect layer (behind overlay) */
     glow: -1,
   },
 };
 
+// =============================================================================
+// COMPONENT STYLES
+// =============================================================================
+
+/**
+ * Dimension constants for UI components
+ * Fixed heights, padding, border radius, and shadow configurations
+ */
 export const STYLES = {
   timer: {
+    /** Fixed height of timer component in pixels */
     height: 60,
   },
   prayer: {
+    /** Fixed height of each prayer row component */
     height: 57,
     padding: {
+      /** Left padding for prayer row text */
       left: 20,
+      /** Right padding for prayer row text */
       right: 20,
     },
     border: {
+      /** Border radius for prayer row containers */
       borderRadius: 8,
     },
     shadow: {
+      /** Shadow offset for active prayer background elevation */
       shadowOffset: { width: 1, height: 10 },
+      /** Shadow opacity for active prayer background */
       shadowOpacity: 0.5,
+      /** Shadow blur radius for active prayer background */
       shadowRadius: 10,
     },
   },
 };
 
+// =============================================================================
+// ARABIC EXPLANATIONS
+// =============================================================================
+
+/**
+ * Arabic translations of extra prayer explanations
+ * Used in bilingual UI displays
+ */
 export const EXTRAS_EXPLANATIONS_ARABIC = [
   'نصف الليل بين المغرب والفجر',
   'بعد 5 دقائق من بداية الثلث الأخير من الليل',
