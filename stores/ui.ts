@@ -2,7 +2,7 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
 import { PageCoordinates, ScheduleType } from '@/shared/types';
-import { atomWithStorageBoolean, atomWithStorageNumber } from '@/stores/storage';
+import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '@/stores/storage';
 
 const store = getDefaultStore();
 
@@ -28,6 +28,7 @@ export const measurementsDateAtom = atom<PageCoordinates>(emptyCoordinates);
 export const measurementsMasjidAtom = atom<PageCoordinates>(emptyCoordinates);
 
 export const progressBarHiddenAtom = atomWithStorageBoolean('preference_progressbar_hidden', false);
+export const progressbarColorAtom = atomWithStorageString('preference_progressbar_color', '#00ffea');
 
 // New preference atoms for settings
 export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);
