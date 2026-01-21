@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { StyleSheet, Pressable, View, ViewStyle, Dimensions, Platform } from 'react-native';
+import { StyleSheet, Pressable, View, ViewStyle, Platform } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -12,6 +12,7 @@ import PrayerExplanation from '@/components/PrayerExplanation';
 import Timer from '@/components/Timer';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import {
   OVERLAY,
   ANIMATION,
@@ -97,6 +98,8 @@ export default function Overlay() {
 
   const formattedDate = hijriEnabled ? formatHijriDateLong(selectedPrayer.date) : formatDateLong(selectedPrayer.date);
 
+  const window = useWindowDimensions();
+
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
       {/* Timer */}
@@ -136,8 +139,8 @@ export default function Overlay() {
       <Glow
         color={COLORS.glows.overlay}
         style={{
-          top: -Dimensions.get('window').width / 1.25,
-          left: -Dimensions.get('window').width / 2,
+          top: -window.width / 1.25,
+          left: -window.width / 2,
         }}
       />
     </Reanimated.View>

@@ -40,8 +40,6 @@ export const TEXT = {
   size: 18,
   sizeSmall: 16,
   sizeSmaller: 14,
-  opacity: 0.5,
-  opacityHigher: 0.75,
 };
 
 export const SCREEN = {
@@ -72,7 +70,6 @@ export const ANIMATION = {
   duration: 200,
   durationSlow: 1000,
   durationSlower: 1500,
-  durationSlowest: 2250,
   cascadeDelay: 150,
   popupDuration: 500,
   debounce: 450,
