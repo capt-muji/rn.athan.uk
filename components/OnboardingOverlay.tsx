@@ -54,7 +54,7 @@ export default function OnboardingOverlay() {
             left: MasjidMeasurements.pageX,
           },
         ]}>
-        <Ripple color="#6200ff43" diameter={280} duration={2800} rippleCount={4} speed={10} />
+        <Ripple color="#6200ff16" diameter={280} duration={2800} rippleCount={4} speed={10} />
 
         <Pressable onPress={handleMasjidPress} style={styles.iconContainer}>
           <MasjidIcon width={55} height={55} />
