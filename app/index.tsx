@@ -5,7 +5,6 @@ import { ActivityIndicator, StyleSheet, View, Platform } from 'react-native';
 import Navigation from '@/app/Navigation';
 import Error from '@/components/Error';
 import ModalUpdate from '@/components/ModalUpdate';
-import OnboardingOverlay from '@/components/OnboardingOverlay';
 import Overlay from '@/components/Overlay';
 import { initializeListeners } from '@/device/listeners';
 import { openStore } from '@/device/updates';
@@ -52,7 +51,6 @@ export default function Index() {
   return (
     <>
       <ModalUpdate visible={updateAvailable} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
-      <OnboardingOverlay />
       <Overlay />
       <Navigation />
     </>
