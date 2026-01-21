@@ -140,7 +140,7 @@ export const cleanup = () => {
   clearPrefix('preference_sound'); // Selected Athan sound
   clearPrefix('preference_mute_standard'); // Standard schedule mute state
   clearPrefix('preference_mute_extra'); // Extra schedule mute state
-  clearPrefix('preference_progressbar_visible'); // Progress bar visibility state
+  clearPrefix('preference_progressbar_hidden'); // Progress bar visibility state
   clearPrefix('preference_hijri_date'); // Hijri date display preference
   clearPrefix('preference_show_seconds'); // Show seconds preference
   clearPrefix('scheduled_notifications_'); // All scheduled notification tracking

@@ -14,7 +14,6 @@ export const refreshUIAtom = atom<number>(Date.now());
 export const popupUpdateEnabledAtom = atom(false);
 export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last_check', 0);
 
-export const pagePositionAtom = atom(0);
 export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
 export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
 
@@ -52,8 +51,6 @@ export const showSheet = () => store.get(bottomSheetModalAtom)?.present();
 export const hideSheet = () => store.get(bottomSheetModalAtom)?.dismiss();
 export const showSettingsSheet = () => store.get(settingsSheetModalAtom)?.present();
 export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
-
-export const setPagePosition = (position: number) => store.set(pagePositionAtom, position);
 export const setBottomSheetModal = (modal: BottomSheetModal | null) => store.set(bottomSheetModalAtom, modal);
 export const setSettingsSheetModal = (modal: BottomSheetModal | null) => store.set(settingsSheetModalAtom, modal);
 export const setPlayingSoundIndex = (index: number | null) => store.set(playingSoundIndexAtom, index);
