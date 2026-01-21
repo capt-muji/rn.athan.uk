@@ -288,7 +288,7 @@ tsc --noEmit                         # Typecheck project
 
 | Specialist  | Responsibility              | When to Use              |
 | ----------- | --------------------------- | ------------------------ |
-| RepoMapper  | Discover codebase structure | New repo, onboarding     |
+| RepoMapper  | Discover codebase structure | New repo                 |
 | Architect   | Plan features, draft specs  | New feature, complex bug |
 | Implementer | Write production code       | After spec approved      |
 | TestWriter  | Create test coverage        | After implementation     |
@@ -313,21 +313,22 @@ tsc --noEmit                         # Typecheck project
 
 All 11 features completed and archived to `ai/features/archive/`:
 
-| Category | Features |
-|----------|----------|
-| Core Timing | timing-system-overhaul, timing-system-bugfixes, isha-display-bug, islamic-day-boundary, progressbar-midnight-fix |
-| Prayer Features | midnight-prayer, prayer-explanations |
-| UI Improvements | overlay-date-display, measurement-system-improvements |
-| User Experience | onboarding |
-| Code Quality | codebase-cleanup-2026-01-20 |
+| Category        | Features                                                                                                         |
+| --------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Core Timing     | timing-system-overhaul, timing-system-bugfixes, isha-display-bug, islamic-day-boundary, progressbar-midnight-fix |
+| Prayer Features | midnight-prayer, prayer-explanations                                                                             |
+| UI Improvements | overlay-date-display, measurement-system-improvements                                                            |
+| Code Quality    | codebase-cleanup-2026-01-20                                                                                      |
 
 **Key Principles Established:**
+
 - NO FALLBACKS: Fix root cause, don't mask problems
 - Prayer-centric model: Full DateTime objects, no midnight-crossing bugs
 - Schedule independence: Standard/Extras can show different dates
 - Timer always visible: No "All prayers finished" state
 
 **See Also:**
+
 - `ai/memory-archive.md` - Detailed historical entries
 - `ai/features/archive/` - All completed feature documentation
 - `ai/adr/` - Architectural decision records

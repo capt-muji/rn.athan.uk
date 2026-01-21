@@ -69,7 +69,6 @@ All 11 development features have been completed, tested, and archived:
 - ✅ **Prayer Explanations**: Contextual overlay help text
 - ✅ **Overlay Date Display**: Formatted date in overlay
 - ✅ **Measurement Improvements**: Android font scaling fix
-- ✅ **Onboarding**: Interactive first-launch guide
 - ✅ **Codebase Cleanup**: ~100 lines duplication eliminated
 
 <br/>
@@ -89,7 +88,6 @@ All 11 development features have been completed, tested, and archived:
 - [x] Multipage with special times (Midnight, Third of night, Duha, Suhoor, Istijaba)
 - [x] Large overlay font overlay for visually impaired
 - [x] Fix UI timer drift when app in background
-- [x] Add a "Tips" popup on first ever open
 - [x] Settings bottom sheet with progress bar toggle, Hijri date, Athan sound selector
 - [x] SDK 54 upgrade (React 19, RN 0.81, Expo 54)
 
