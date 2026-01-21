@@ -43,7 +43,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationFill(Schedule.currentMuted ? 0 : Prayer.ui.initialColorPos, {
+  const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
     fromColor: COLORS.inactivePrayer,
     toColor: COLORS.activePrayer,
   });
@@ -83,13 +83,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Animations Updates
   // Force animation to respect new state immediately when refreshing
   useEffect(() => {
-    AnimFill.animate(Schedule.currentMuted ? 0 : Prayer.ui.initialColorPos);
+    AnimFill.animate(Prayer.ui.initialColorPos);
   }, [refreshUI]);
 
   // Animate when next prayer changes
   useEffect(() => {
-    if (Prayer.isNext && !Schedule.currentMuted) AnimFill.animate(1);
-  }, [Prayer.isNext, Schedule.currentMuted]);
+    if (Prayer.isNext) AnimFill.animate(1);
+  }, [Prayer.isNext]);
 
   // Cascade animation when date changes and we're at first prayer
   useEffect(() => {
@@ -124,15 +124,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   // Update fill color
   useEffect(() => {
-    if (Schedule.currentMuted) {
-      AnimFill.animate(Schedule.currentMuted ? 0 : 1, { duration: ANIMATION.duration });
-      return;
-    }
-
     const colorPos = isSelectedForOverlay || Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
-
     AnimFill.animate(colorPos, { duration: 50 });
-  }, [isSelectedForOverlay, isPopupActive, Prayer.isOverlay, Schedule.currentMuted]);
+  }, [isSelectedForOverlay, isPopupActive, Prayer.isOverlay]);
 
   useEffect(() => {
     return () => {
@@ -144,9 +138,6 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Handlers
   const handlePress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    // Prevent interaction when muted
-    if (Schedule.currentMuted) return;
 
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
     const nextAlertType = ALERT_CONFIGS[nextIndex].type;
@@ -179,7 +170,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     }, ANIMATION.popupDuration);
   };
 
-  const displayedIconIndex = Schedule.currentMuted ? AlertType.Off : iconIndex;
+  const displayedIconIndex = iconIndex;
 
   const computedStylesPopup: ViewStyle = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
