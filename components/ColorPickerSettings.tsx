@@ -82,7 +82,9 @@ export default function ColorPickerSettings() {
               <Text style={styles.resetText}>Reset</Text>
             </Pressable>
           )}
-          <View style={[styles.colorPreview, { backgroundColor: progressbarColor }]} />
+          <View style={styles.colorPreviewContainer}>
+            <View style={[styles.colorPreview, { backgroundColor: progressbarColor }]} />
+          </View>
         </View>
       </Pressable>
 
@@ -153,12 +155,21 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeSmall,
   },
-  colorPreview: {
-    width: 24,
+  colorPreviewContainer: {
+    width: 44,
     height: 24,
-    borderRadius: 14,
+    borderRadius: 12,
     borderWidth: 2,
-    borderColor: '#ffffff5d',
+    borderColor: '#ffffff',
+    backgroundColor: '#ffffff',
+    padding: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  colorPreview: {
+    width: 38,
+    height: 18,
+    borderRadius: 8,
   },
   modalOverlay: {
     flex: 1,
