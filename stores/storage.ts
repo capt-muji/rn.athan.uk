@@ -33,3 +33,18 @@ export const atomWithStorageBoolean = (key: string, initialValue: boolean) =>
     },
     defaultOpts
   );
+
+export const atomWithStorageString = (key: string, initialValue: string) =>
+  atomWithStorage(
+    key,
+    initialValue,
+    {
+      getItem: (key, initialValue) => {
+        const value = database.getString(key);
+        return value === undefined ? initialValue : value;
+      },
+      setItem: (key, value) => database.set(key, value),
+      removeItem: (key) => database.remove(key),
+    },
+    defaultOpts
+  );
