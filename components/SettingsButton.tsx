@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 10,
     elevation: 10,
-    width: 45,
+    width: 43,
     alignItems: 'center',
   },
   icon: {
