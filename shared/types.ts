@@ -181,7 +181,6 @@ export enum AlertIcon {
   PLAY = 'PLAY',
   PAUSE = 'PAUSE',
   INFO = 'INFO',
-  ARROW_UP = 'ARROW_UP',
 }
 
 // =============================================================================

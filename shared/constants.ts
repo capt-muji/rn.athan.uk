@@ -88,7 +88,6 @@ export const TIME_ADJUSTMENTS = {
  */
 export const TIME_CONSTANTS = {
   ONE_DAY_MS: 24 * 60 * 60 * 1000,
-  ONE_HOUR_MS: 60 * 60 * 1000,
 } as const;
 
 /**
@@ -119,8 +118,6 @@ export const TEXT = {
   size: 18,
   /** Secondary font size for auxiliary text */
   sizeSmall: 16,
-  /** Tertiary font size for smallest text (e.g., explanations) */
-  sizeSmaller: 14,
 };
 
 // =============================================================================
@@ -188,8 +185,6 @@ export const ANIMATION = {
   duration: 200,
   /** Slow animation duration for deliberate movements */
   durationSlow: 1000,
-  /** Very slow animation duration for gentle transitions */
-  durationSlower: 1500,
   /** Delay between consecutive prayer animations during cascade effect */
   cascadeDelay: 150,
   /** Duration for modal/popup open/close animations */
