@@ -34,7 +34,6 @@ export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds',
 // --- Actions ---
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);
 export const showSheet = () => store.get(bottomSheetModalAtom)?.present();
-export const hideSheet = () => store.get(bottomSheetModalAtom)?.dismiss();
 export const showSettingsSheet = () => store.get(settingsSheetModalAtom)?.present();
 export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
 export const setBottomSheetModal = (modal: BottomSheetModal | null) => store.set(bottomSheetModalAtom, modal);

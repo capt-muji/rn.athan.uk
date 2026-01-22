@@ -59,4 +59,4 @@ const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
   startCountdownOverlay();
 };
 
-export { toggleOverlay, setSelectedPrayerIndex, canShowOverlay };
+export { toggleOverlay, setSelectedPrayerIndex };
