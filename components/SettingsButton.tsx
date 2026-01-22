@@ -1,8 +1,8 @@
-import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
+import SettingsIcon from '@/assets/icons/settings.svg';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { showSettingsSheet } from '@/stores/ui';
 
@@ -22,8 +22,6 @@ export default function SettingsButton() {
     shadowColor: '#27035c',
   };
 
-  const iconColor = '#a885f896';
-
   return (
     <AnimatedPressable
       hitSlop={15}
@@ -31,7 +29,7 @@ export default function SettingsButton() {
       onPress={handlePress}
       onPressIn={() => AnimScale.animate(0.9)}
       onPressOut={() => AnimScale.animate(1)}>
-      <Ionicons name="settings-outline" size={20} color={iconColor} />
+      <SettingsIcon width={20} height={20} style={styles.icon} />
     </AnimatedPressable>
   );
 }
@@ -47,5 +45,8 @@ const styles = StyleSheet.create({
     elevation: 10,
     width: 45,
     alignItems: 'center',
+  },
+  icon: {
+    color: '#b18fff75',
   },
 });
