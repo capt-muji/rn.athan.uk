@@ -10,7 +10,7 @@
 
 ## Overview
 
-Replace the date-centric timing system with a prayer-centric model to eliminate recurring bugs with date display, timer countdown, and schedule advancement.
+Replace the date-centric timing system with a prayer-centric model to eliminate recurring bugs with date display, countdown countdown, and schedule advancement.
 
 ## Problem Statement
 
@@ -19,7 +19,7 @@ The current timing system organizes prayers by calendar date (`yesterday`, `toda
 1. **Semantic confusion**: `schedule.today` contains tomorrow's data after advancement
 2. **Yesterday fallback hack**: Complex logic to handle Extras schedule
 3. **Manual synchronization**: 6+ atoms must stay in sync
-4. **Recurring bugs**: Date display, timer, advancement issues
+4. **Recurring bugs**: Date display, countdown, advancement issues
 
 ## Goals
 
@@ -93,11 +93,11 @@ interface PrayerSequence {
 | `shared/time.ts` | Modify | Simplify `calculateCountdown()` |
 | `stores/schedule.ts` | Rewrite | Replace `ScheduleStore` with `PrayerSequence` |
 | `stores/sync.ts` | Modify | Update initialization to use sequence |
-| `stores/timer.ts` | Modify | Use derived next prayer |
+| `stores/countdown.ts` | Modify | Use derived next prayer |
 | `hooks/usePrayer.ts` | Modify | Derive isPassed/isNext from sequence |
 | `hooks/useSchedule.ts` | Modify | Return sequence instead of store |
 | `components/ProgressBar.tsx` | Modify | Use adjacent prayers in sequence |
-| `components/Timer.tsx` | Modify | Use derived countdown |
+| `components/Countdown.tsx` | Modify | Use derived countdown |
 | `components/Prayer.tsx` | Modify | Use derived state |
 | `components/Day.tsx` | Modify | Use derived display date |
 
@@ -119,7 +119,7 @@ interface PrayerSequence {
 - Create `useNextPrayer()` hook
 
 ### Phase 4: UI Components
-- Update Timer.tsx to use derived countdown
+- Update Countdown.tsx to use derived countdown
 - Update Prayer.tsx to use derived isPassed
 - Update ProgressBar.tsx to use adjacent prayers
 - Update Day.tsx to use derived display date
@@ -145,7 +145,7 @@ interface PrayerSequence {
 ### Manual Tests
 - [ ] Standard schedule advances after Isha
 - [ ] Extras schedule advances after Duha (or Istijaba on Friday)
-- [ ] Timer always shows correct countdown
+- [ ] Countdown always shows correct countdown
 - [ ] Date display matches current prayer's belongsToDate
 - [ ] ProgressBar shows correct progress
 - [ ] isPassed styling correct after advancement

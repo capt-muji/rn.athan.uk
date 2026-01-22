@@ -20,7 +20,7 @@ Change the overlay date display from "Today/Tomorrow" text to actual formatted d
 
 ## Non-Goals
 
-- Not changing the timer behavior
+- Not changing the countdown behavior
 - Not changing the prayer list display
 - Not changing notification logic
 - Not changing when the schedule advances (already handles prayer-based boundary)

@@ -122,7 +122,7 @@ Users will need to reconfigure if they had specific extras enabled. This is acce
 5. Test day advancement when Duha/Istijaba passes
 6. Test notifications for Midnight prayer
 7. Verify Istijaba still only appears on Fridays (index 4)
-8. Test overlay timer for Midnight prayer
+8. Test overlay countdown for Midnight prayer
 9. Check modal explanation shows correct description
 
 ---
@@ -132,7 +132,7 @@ Users will need to reconfigure if they had specific extras enabled. This is acce
 - [ ] Midnight appears as first extra prayer
 - [ ] Midnight time calculated correctly (midpoint formula)
 - [ ] Notifications work for Midnight prayer
-- [ ] Timer counts down correctly to Midnight
+- [ ] Countdown counts down correctly to Midnight
 - [ ] Istijaba index updated and Friday filtering still works
 - [ ] Modal explanation displays "Midpoint between Magrib and Fajr"
 - [ ] No TypeScript errors

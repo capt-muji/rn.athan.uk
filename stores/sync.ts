@@ -13,9 +13,9 @@ import { APP_CONFIG } from '@/shared/config';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
+import * as Countdown from '@/stores/countdown';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
-import * as Timer from '@/stores/timer';
 import { handleAppUpgrade } from '@/stores/version';
 
 // --- Atoms ---
@@ -41,11 +41,11 @@ export const triggerSyncLoadable = () => {
 /**
  * Initialize or reinitialize the app's core state
  * 1. Sets up both standard and extra prayer sequences
- * 2. Starts the prayer time monitoring timers
+ * 2. Starts the prayer time monitoring countdowns
  */
 const initializeAppState = async (date: Date) => {
-  // SCENARIO 1: January 1st - Fetch previous year's Dec 31 data for ProgressBar
-  // This is MANDATORY - ProgressBar needs yesterday's Isha time to calculate progress
+  // SCENARIO 1: January 1st - Fetch previous year's Dec 31 data for CountdownBar
+  // This is MANDATORY - CountdownBar needs yesterday's Isha time to calculate progress
   if (TimeUtils.isJanuaryFirst(date)) {
     const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
     const prevYearData = Database.getPrayerByDate(prevYearLastDate);
@@ -66,7 +66,7 @@ const initializeAppState = async (date: Date) => {
   ScheduleStore.setSequence(ScheduleType.Standard, date);
   ScheduleStore.setSequence(ScheduleType.Extra, date);
 
-  Timer.startTimers();
+  Countdown.startCountdowns();
 };
 
 /**

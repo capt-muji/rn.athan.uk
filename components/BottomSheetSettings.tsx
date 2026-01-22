@@ -12,7 +12,7 @@ import { TEXT } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
   showSecondsAtom,
-  progressBarHiddenAtom,
+  countdownBarHiddenAtom,
   setSettingsSheetModal,
   hideSettingsSheet,
   showSheet,
@@ -21,7 +21,7 @@ import {
 export default function BottomSheetSettings() {
   const { bottom } = useSafeAreaInsets();
 
-  const [progressBarHidden, setProgressBarHidden] = useAtom(progressBarHiddenAtom);
+  const [countdownBarHidden, setCountdownBarHidden] = useAtom(countdownBarHiddenAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
 
@@ -50,8 +50,8 @@ export default function BottomSheetSettings() {
 
         <SettingsToggle
           label="Hide countdown bar"
-          value={progressBarHidden}
-          onToggle={() => setProgressBarHidden(!progressBarHidden)}
+          value={countdownBarHidden}
+          onToggle={() => setCountdownBarHidden(!countdownBarHidden)}
         />
         <ColorPickerSettings />
         <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />

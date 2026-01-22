@@ -10,7 +10,7 @@
 
 ## Overview
 
-Change the day boundary from English midnight (00:00) to prayer-based boundaries. Each schedule resets after its final prayer passes, immediately showing tomorrow's date and schedule. Timer/countdown/progressbar always display continuously - no "All prayers finished" state ever.
+Change the day boundary from English midnight (00:00) to prayer-based boundaries. Each schedule resets after its final prayer passes, immediately showing tomorrow's date and schedule. Countdown/countdown/progressbar always display continuously - no "All prayers finished" state ever.
 
 ## Goals
 
@@ -18,7 +18,7 @@ Change the day boundary from English midnight (00:00) to prayer-based boundaries
 - [ ] Standard schedule resets after Isha passes → shows tomorrow's date + Fajr countdown
 - [ ] Extras schedule resets after Duha/Istijaba passes → shows tomorrow's date + Last Third countdown
 - [ ] Each schedule displays its own date independently
-- [ ] Timer always shows countdown to next prayer (continuous, never hidden)
+- [ ] Countdown always shows countdown to next prayer (continuous, never hidden)
 - [ ] ProgressBar always visible and animating
 
 ## Non-Goals
@@ -35,8 +35,8 @@ Change the day boundary from English midnight (00:00) to prayer-based boundaries
 **So that** I never see a "waiting" or "finished" state
 
 **Acceptance Criteria:**
-- [ ] After Isha passes, timer shows "Fajr in Xh Xm" (tomorrow's Fajr)
-- [ ] After Duha/Istijaba passes, timer shows "Last Third in Xh Xm"
+- [ ] After Isha passes, countdown shows "Fajr in Xh Xm" (tomorrow's Fajr)
+- [ ] After Duha/Istijaba passes, countdown shows "Last Third in Xh Xm"
 - [ ] ProgressBar continues animating to next prayer
 - [ ] No "All prayers finished" message ever displays
 
@@ -66,16 +66,16 @@ Change the day boundary from English midnight (00:00) to prayer-based boundaries
 ### Data Flow
 
 ```
-Last prayer timer reaches 0
-→ clearTimer(timerKey)
+Last prayer countdown reaches 0
+→ clearCountdown(countdownKey)
 → incrementNextIndex(type) → wraps to 0
 → advanceScheduleToTomorrow(type) [ASYNC with error handling]
   → Close overlay if open (prevent stale state)
   → Fetch day-after-tomorrow data (with retry on failure)
   → Shift tomorrow → today atomically (only after fetch succeeds)
   → Update schedule-specific date atom
-  → Recalculate timer name/timeLeft
-→ startTimerSchedule(type) continues with new schedule
+  → Recalculate countdown name/timeLeft
+→ startCountdownSchedule(type) continues with new schedule
 ```
 
 ### Components Affected
@@ -86,13 +86,13 @@ Last prayer timer reaches 0
 |-----------|-------------|-------------|
 | `stores/sync.ts` | Modified | Split `dateAtom` into `standardDateAtom` + `extraDateAtom`. Add `getDateAtom(type)`, `setScheduleDate(type, date)` |
 | `stores/schedule.ts` | Modified | Add `advanceScheduleToTomorrow(type)` with async error handling, atomic shift, retry logic |
-| `stores/timer.ts` | Modified | Replace `startTimerMidnight()` call with `advanceScheduleToTomorrow()`. Recalculate timer after advancement |
+| `stores/countdown.ts` | Modified | Replace `startCountdownMidnight()` call with `advanceScheduleToTomorrow()`. Recalculate countdown after advancement |
 
 #### MEDIUM - Display/Animation (7 files)
 
 | Component | Change Type | Description |
 |-----------|-------------|-------------|
-| `components/Timer.tsx` | Modified | Remove "All prayers finished" conditional entirely |
+| `components/Countdown.tsx` | Modified | Remove "All prayers finished" conditional entirely |
 | `components/Day.tsx` | Modified | Use schedule-specific date atom via `getDateAtom(type)` |
 | `components/ActiveBackground.tsx` | Modified | Use schedule-specific date atom, update hide logic |
 | `components/Alert.tsx` | Modified | Use schedule-specific date atom for cascade trigger |
@@ -130,8 +130,8 @@ Last prayer timer reaches 0
 
 **Modified functions:**
 - `setDate()` - sets both date atoms
-- `startTimerSchedule()` - calls advanceScheduleToTomorrow on wrap
-- `startTimers()` - always starts both schedule timers (no finished check)
+- `startCountdownSchedule()` - calls advanceScheduleToTomorrow on wrap
+- `startCountdowns()` - always starts both schedule countdowns (no finished check)
 
 ---
 
@@ -139,7 +139,7 @@ Last prayer timer reaches 0
 
 ### 1. Race Condition Prevention
 
-**Problem:** Async fetch during advancement could fail/slow, leaving timer in bad state.
+**Problem:** Async fetch during advancement could fail/slow, leaving countdown in bad state.
 
 **Solution:**
 ```typescript
@@ -183,17 +183,17 @@ const advanceScheduleToTomorrow = async (type: ScheduleType): Promise<void> => {
 };
 ```
 
-### 2. Timer Name Recalculation
+### 2. Countdown Name Recalculation
 
-**Problem:** After advancement, timer might show old prayer name.
+**Problem:** After advancement, countdown might show old prayer name.
 
-**Solution:** Recalculate timer immediately after advancement in `startTimerSchedule()`:
+**Solution:** Recalculate countdown immediately after advancement in `startCountdownSchedule()`:
 ```typescript
 if (nextIndex === 0) {
   await advanceScheduleToTomorrow(type);
-  // Timer restarts with fresh schedule data automatically
+  // Countdown restarts with fresh schedule data automatically
 }
-return startTimerSchedule(type);
+return startCountdownSchedule(type);
 ```
 
 ### 3. Cascade Animation Isolation
@@ -223,8 +223,8 @@ useEffect(() => {
 
 | Scenario | Expected Behavior |
 |----------|------------------|
-| Isha at 22:00 (normal) | Timer shows "Fajr in 7h", date changes to tomorrow |
-| Isha after midnight (00:30) | Timer counts down correctly; date advances when Isha passes |
+| Isha at 22:00 (normal) | Countdown shows "Fajr in 7h", date changes to tomorrow |
+| Isha after midnight (00:30) | Countdown counts down correctly; date advances when Isha passes |
 | Last Third before midnight (23:45) | Works normally; Extras advances after Duha/Istijaba |
 | App opened after all prayers passed | `initializeAppState()` → both schedules immediately advance |
 | Different dates on tabs | Intentional - each schedule independent |
@@ -240,8 +240,8 @@ useEffect(() => {
 
 ### Manual Tests
 - [ ] Open app before Fajr → shows today's date, countdown to Fajr
-- [ ] Wait for Isha to pass → Standard date changes to tomorrow, timer shows Fajr
-- [ ] Check Extra tab after Duha → Extra date shows tomorrow, timer shows Last Third
+- [ ] Wait for Isha to pass → Standard date changes to tomorrow, countdown shows Fajr
+- [ ] Check Extra tab after Duha → Extra date shows tomorrow, countdown shows Last Third
 - [ ] Verify Friday Istijaba triggers schedule advance
 - [ ] Verify ProgressBar continues animating after advancement
 - [ ] Verify cascade animations trigger once per schedule transition
@@ -275,13 +275,13 @@ useEffect(() => {
 - [ ] Include overlay auto-close
 - [ ] Include atomic shift (fetch before shift)
 
-### Phase 3: Timer Integration
-- [ ] Update `startTimerSchedule()` to call `advanceScheduleToTomorrow` on wrap
-- [ ] Update `startTimers()` to always start both timers (remove finished check)
-- [ ] Keep `startTimerMidnight()` for API data freshness only
+### Phase 3: Countdown Integration
+- [ ] Update `startCountdownSchedule()` to call `advanceScheduleToTomorrow` on wrap
+- [ ] Update `startCountdowns()` to always start both countdowns (remove finished check)
+- [ ] Keep `startCountdownMidnight()` for API data freshness only
 
 ### Phase 4: UI Updates
-- [ ] Remove "All prayers finished" from Timer.tsx
+- [ ] Remove "All prayers finished" from Countdown.tsx
 - [ ] Update Day.tsx to use schedule-specific date atom
 - [ ] Update ActiveBackground.tsx
 - [ ] Update Alert.tsx cascade trigger
@@ -303,7 +303,7 @@ useEffect(() => {
 | Race condition during advancement | Medium | High | Async fence, fetch before shift |
 | Missing day-after-tomorrow data | Low | Medium | Retry via sync(), graceful fallback |
 | Cascade animations double-trigger | Medium | Low | Schedule-specific date atoms |
-| Timer shows wrong prayer name | Medium | Medium | Recalculate after advancement |
+| Countdown shows wrong prayer name | Medium | Medium | Recalculate after advancement |
 | Overlay shows stale data | Low | Low | Auto-close during advancement |
 | Date mismatch with phone clock | High | Low | Documented behavior, user accepted |
 
@@ -315,7 +315,7 @@ useEffect(() => {
 - [x] What date to show after Isha? → Tomorrow's date immediately
 - [x] What happens to prayer list? → Switch to tomorrow's schedule
 - [x] Keep "All prayers finished"? → NO, remove permanently
-- [x] Timer behavior after last prayer? → Shows countdown to next prayer continuously
+- [x] Countdown behavior after last prayer? → Shows countdown to next prayer continuously
 
 ---
 

@@ -1,9 +1,9 @@
 import { Platform, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import Countdown from '@/components/Countdown';
 import Day from '@/components/Day';
 import List from '@/components/List';
-import Timer from '@/components/Timer';
 import { SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
@@ -24,7 +24,7 @@ export default function Screen({ type }: Props) {
 
   return (
     <View style={[{ flex: 1 }, computedStyles]}>
-      <Timer type={type} />
+      <Countdown type={type} />
       <Day type={type} />
       <List type={type} />
 
