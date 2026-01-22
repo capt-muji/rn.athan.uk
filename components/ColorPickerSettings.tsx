@@ -161,15 +161,13 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 2,
     borderColor: '#ffffff',
-    backgroundColor: '#ffffff',
-    padding: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
   colorPreview: {
     width: 38,
     height: 18,
-    borderRadius: 8,
+    borderRadius: 10,
   },
   modalOverlay: {
     flex: 1,
