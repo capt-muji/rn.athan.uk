@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   container: {
     height: STYLES.countdown.height,
     marginBottom: 40,
+    marginTop: 20,
     justifyContent: 'center',
   },
   text: {
@@ -80,9 +81,9 @@ const styles = StyleSheet.create({
   },
   prayerAgo: {
     textAlign: 'center',
-    fontSize: TEXT.sizeSmall,
-    marginTop: 8,
-    color: COLORS.textSecondary,
+    fontSize: TEXT.sizeSmall - 2,
+    marginTop: 12,
+    color: '#8ab4e84d',
     fontFamily: TEXT.family.regular,
   },
 });

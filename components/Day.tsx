@@ -73,7 +73,7 @@ export default function Day({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 30,
+    marginBottom: 28,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
