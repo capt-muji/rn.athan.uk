@@ -7,16 +7,16 @@
 
 ## Overview
 
-Allow users to tap the countdown timer to toggle the progress bar visibility with a smooth fade animation. Progress bar is visible by default and preference persists across app restarts.
+Allow users to tap the countdown countdown to toggle the progress bar visibility with a smooth fade animation. Progress bar is visible by default and preference persists across app restarts.
 
 ## Goals
 
-- [x] Tap timer to toggle progress bar visibility
+- [x] Tap countdown to toggle progress bar visibility
 - [x] Smooth 250ms fade animation
 - [x] Persist preference across app restarts
 - [x] No layout shift when hidden (use opacity, not DOM removal)
 - [x] Medium haptic feedback (matches alert icons)
-- [x] Overlay timer behavior unchanged (no toggle)
+- [x] Overlay countdown behavior unchanged (no toggle)
 
 ## Non-Goals
 
@@ -27,7 +27,7 @@ Allow users to tap the countdown timer to toggle the progress bar visibility wit
 ## Technical Design
 
 ### Tappable Area
-- Entire Timer component (prayer name label, time display, progress bar)
+- Entire Countdown component (prayer name label, time display, progress bar)
 - Disabled when overlay is active
 
 ### State Management
@@ -46,7 +46,7 @@ Allow users to tap the countdown timer to toggle the progress bar visibility wit
 | File | Changes |
 |------|---------|
 | `stores/ui.ts` | Added `progressBarVisibleAtom` |
-| `components/Timer.tsx` | Wrapped in Pressable, added tap handler with Medium haptic |
+| `components/Countdown.tsx` | Wrapped in Pressable, added tap handler with Medium haptic |
 | `components/ProgressBar.tsx` | Animate opacity based on atom, skip animation on first render |
 | `shared/constants.ts` | Added `durationMedium: 250` |
 | `stores/database.ts` | Added to cleanup function (commented) |
@@ -66,7 +66,7 @@ Allow users to tap the countdown timer to toggle the progress bar visibility wit
 - [x] Tap to show: Fades in over 250ms
 - [x] Layout stable: No shift when toggling
 - [x] Persistence: Preference survives app restart
-- [x] Overlay: Timer tap disabled, overlay behavior unchanged
+- [x] Overlay: Countdown tap disabled, overlay behavior unchanged
 - [x] Haptic: Medium impact on tap
 - [x] No flash: Hidden state loads instantly on restart
 

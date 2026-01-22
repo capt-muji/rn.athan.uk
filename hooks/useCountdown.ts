@@ -1,5 +1,5 @@
 /**
- * Hook for countdown timer to next prayer
+ * Hook for countdown to next prayer
  * Part of the new prayer-centric timing system
  *
  * @see ai/adr/005-timing-system-overhaul.md
@@ -31,7 +31,7 @@ export interface UseCountdownResult {
  * @example
  * const { timeLeft, prayerName, isReady } = useCountdown(ScheduleType.Standard);
  * if (isReady) {
- *   logger.info({ prayerName, timeLeft: TimeUtils.formatTime(timeLeft) }, 'Countdown timer');
+ *   logger.info({ prayerName, timeLeft: TimeUtils.formatTime(timeLeft) }, 'Countdown');
  * }
  */
 

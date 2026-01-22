@@ -6,10 +6,10 @@ import { StyleSheet, Pressable, View, ViewStyle, Platform } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import Countdown from '@/components/Countdown';
 import Glow from '@/components/Glow';
 import Prayer from '@/components/Prayer';
 import PrayerExplanation from '@/components/PrayerExplanation';
-import Timer from '@/components/Timer';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
@@ -60,7 +60,7 @@ export default function Overlay() {
     pointerEvents: overlay.isOn ? 'auto' : 'none',
   };
 
-  const computedStyleTimer: ViewStyle = {
+  const computedStyleCountdown: ViewStyle = {
     top: insets.top + SCREEN.paddingTop,
   };
 
@@ -102,9 +102,9 @@ export default function Overlay() {
 
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
-      {/* Timer */}
-      <View style={[styles.timer, computedStyleTimer]}>
-        <Timer type={overlay.scheduleType} />
+      {/* Countdown */}
+      <View style={[styles.countdown, computedStyleCountdown]}>
+        <Countdown type={overlay.scheduleType} />
       </View>
       <Pressable style={{ flex: 1 }} onPress={handleClose} />
 
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     zIndex: OVERLAY.zindexes.overlay,
   },
-  timer: {
+  countdown: {
     position: 'absolute',
     pointerEvents: 'none',
     left: 0,

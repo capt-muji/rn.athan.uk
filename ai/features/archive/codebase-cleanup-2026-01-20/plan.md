@@ -48,7 +48,7 @@ eslint hooks/useAnimation.ts
 ### 1.4 Delete Unused File
 **File**: `hooks/useCountdown.ts`
 - **Action**: Delete entire file (73 lines)
-- **Reason**: Timer logic moved to `stores/timer.ts`
+- **Reason**: Countdown logic moved to `stores/countdown.ts`
 
 **Phase 1 Total**: ~150 lines removed + 1 file deleted
 
@@ -57,7 +57,7 @@ eslint hooks/useAnimation.ts
 prettier --write "**/*.{ts,tsx}"
 eslint "**/*.{ts,tsx}"
 tsc --noEmit
-yarn start  # Verify app loads, timers work
+yarn start  # Verify app loads, countdowns work
 ```
 
 ---
