@@ -226,8 +226,8 @@ export const OVERLAY = {
  * Fixed heights, padding, border radius, and shadow configurations
  */
 export const STYLES = {
-  timer: {
-    /** Fixed height of timer component in pixels */
+  countdown: {
+    /** Fixed height of countdown component in pixels */
     height: 60,
   },
   prayer: {

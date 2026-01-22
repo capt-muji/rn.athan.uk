@@ -17,7 +17,7 @@ The Athan app displays prayer schedules for a given date with two independent sc
 
 ADR-002 used English midnight (00:00) as the day boundary. This created several issues:
 
-1. **Timer visibility**: Timer hidden after last prayer until 00:00 (dead period)
+1. **Countdown visibility**: Countdown hidden after last prayer until 00:00 (dead period)
 2. **Edge cases deferred**: Isha after midnight, Last Third before midnight
 3. **New complexity**: The Midnight prayer (Maghrib-Fajr midpoint) can occur before or after 00:00
 
@@ -49,7 +49,7 @@ Use **prayer-based day boundaries** where each schedule advances independently a
 1. **NO 00:00 reset**: The app never uses system midnight as a trigger or boundary
 2. **Prayer times are immutable**: A prayer fetched for "2026-01-17" belongs to that date even if the time is 01:00
 3. **Each schedule is independent**: Standard and Extras can show different dates simultaneously
-4. **Timer always visible**: Always counting down to the next prayer (no "finished" state)
+4. **Countdown always visible**: Always counting down to the next prayer (no "finished" state)
 5. **Trust the data layer**: UI never has fallbacks; data layer always provides complete data
 
 ### 24-Hour Cycle Diagrams
@@ -96,13 +96,13 @@ EXTRAS SCHEDULE (Friday):
 | `shared/time.ts` | `calculateCountdown()` with yesterday fallback logic |
 | `stores/schedule.ts` | `advanceScheduleToTomorrow()` - shifts schedules, resets nextIndex |
 | `stores/sync.ts` | `initializeAppState()` - advances schedules on app open if last prayer passed |
-| `stores/timer.ts` | Timer that triggers advancement when countdown hits 0 |
+| `stores/countdown.ts` | Countdown that triggers advancement when countdown hits 0 |
 | `hooks/usePrayer.ts` | `isPassed` calculation checking both date AND time |
 
 ### Schedule Advancement Flow
 
 ```
-Timer hits 0
+Countdown hits 0
     ↓
 incrementNextIndex(type)
     ↓
@@ -116,7 +116,7 @@ advanceScheduleToTomorrow(type)
 4. Reset nextIndex to 0
 5. Update date atom
     ↓
-startTimerSchedule(type)
+startCountdownSchedule(type)
     ↓
 calculateCountdown() uses yesterday fallback if needed
 ```
@@ -161,10 +161,10 @@ Time: 14:30 (2:30pm) on 2026-01-18
 Standard Schedule: date = 2026-01-18
 Prayers: Fajr 06:12, Sunrise 07:48, Dhuhr 12:14, Asr 14:15, Maghrib 16:45, Isha 18:15
 nextIndex: 4 (Maghrib)
-Timer: 2h 15m until Maghrib
+Countdown: 2h 15m until Maghrib
 ```
 
-**Flow:** Timer counts down. At 16:45, nextIndex becomes 5 (Isha). At 18:15, nextIndex wraps to 0, schedule advances to Jan 19.
+**Flow:** Countdown counts down. At 16:45, nextIndex becomes 5 (Isha). At 18:15, nextIndex wraps to 0, schedule advances to Jan 19.
 
 ---
 
@@ -177,7 +177,7 @@ Time: 14:30 on 2026-01-18
 Extras Schedule: date = 2026-01-18
 Prayers: Midnight 23:23, Last Third 02:40, Suhoor 05:32, Duha 08:08
 nextIndex: 0 (Midnight - first prayer not yet arrived)
-Timer: 8h 53m until Midnight
+Countdown: 8h 53m until Midnight
 ```
 
 **Flow:** All Extras prayers already passed earlier (last night's Midnight, Last Third, Suhoor, morning's Duha). Wait until 23:23 for tonight's Midnight.
@@ -193,7 +193,7 @@ Time: 19:00 on 2026-01-18
 Isha: 18:15 (already passed)
 Standard Schedule: date = 2026-01-19 (advanced after Isha)
 nextIndex: 0 (Fajr tomorrow)
-Timer: 11h 12m until Fajr
+Countdown: 11h 12m until Fajr
 ```
 
 **Behavior:** Schedule already advanced at 18:15. Showing tomorrow's Fajr countdown.
@@ -209,7 +209,7 @@ Time: 00:30 on 2026-06-22 (just after system midnight)
 Isha: 00:45 on 2026-06-22 (but belongs to June 21's schedule)
 Standard Schedule: date = 2026-06-21
 nextIndex: 5 (Isha)
-Timer: 15m until Isha
+Countdown: 15m until Isha
 ```
 
 **Critical rule:** Isha at 00:45 belongs to June 21. The schedule does NOT advance at 00:00. It advances after Isha passes at 00:45.
@@ -217,7 +217,7 @@ Timer: 15m until Isha
 **Flow:**
 1. At 00:00: Still showing June 21 schedule, counting down to Isha
 2. At 00:45: Isha passes, schedule advances to June 22
-3. Timer now shows countdown to Fajr on June 22
+3. Countdown now shows countdown to Fajr on June 22
 
 ---
 
@@ -230,7 +230,7 @@ Time: 22:00 on 2026-12-15
 Midnight prayer: 22:45 (midpoint of Maghrib 16:00 and Fajr 06:30)
 Extras Schedule: date = 2026-12-15
 nextIndex: 0 (Midnight)
-Timer: 45m until Midnight
+Countdown: 45m until Midnight
 ```
 
 **Behavior:** Normal countdown, no special handling needed.
@@ -246,7 +246,7 @@ Time: 23:30 on 2026-06-21
 Midnight prayer: 00:15 on 2026-06-22 (but belongs to June 21's Extras)
 Extras Schedule: date = 2026-06-21
 nextIndex: 0 (Midnight)
-Timer: 45m until Midnight
+Countdown: 45m until Midnight
 ```
 
 **Critical rule:** The Midnight prayer calculated from June 21's Maghrib and June 22's Fajr belongs to June 21's Extras schedule, even though its time is 00:15 on June 22.
@@ -269,9 +269,9 @@ App not used since morning
 3. Call `advanceScheduleToTomorrow(Standard)` → date becomes Jan 19
 4. Check if Extras' last prayer (Duha/Istijaba) passed → YES (passed this morning)
 5. Call `advanceScheduleToTomorrow(Extra)` → date becomes Jan 19
-6. Start timers
+6. Start countdowns
 
-**Result:** Both schedules showing Jan 19, timers counting to respective next prayers.
+**Result:** Both schedules showing Jan 19, countdowns counting to respective next prayers.
 
 ---
 
@@ -314,7 +314,7 @@ Time: 11:00 on 2026-01-24 (Friday)
 Extras Schedule: date = 2026-01-24
 Prayers: Midnight 23:23, Last Third 02:40, Suhoor 05:32, Duha 08:08, Istijaba 12:00
 nextIndex: 4 (Istijaba)
-Timer: 1h until Istijaba
+Countdown: 1h until Istijaba
 ```
 
 **Behavior:** Extra schedule advances after Istijaba passes at 12:00, not after Duha at 08:08.
@@ -343,7 +343,7 @@ export const extraDateAtom = atomWithStorageString('display_date_extra', '');
 
 ---
 
-### Scenario 11: Timer Countdown Wrapping to Next Day
+### Scenario 11: Countdown Countdown Wrapping to Next Day
 
 **Context:** When today's prayer passed, countdown uses tomorrow's prayer.
 
@@ -354,7 +354,7 @@ Dhuhr: 12:14 (passed at 12:14)
 nextIndex: 3 (Asr)
 Asr today: 14:15 (passed at 14:15)
 Asr tomorrow: 14:16
-Timer: 23h 16m until Asr tomorrow
+Countdown: 23h 16m until Asr tomorrow
 ```
 
 **Logic in calculateCountdown() (shared/time.ts:282-283):**
@@ -377,7 +377,7 @@ Today's Midnight (Jan 19): 23:25 tomorrow
 Yesterday's Midnight (Jan 18): 23:23 tonight
 ```
 
-**The problem:** Timer would show 37+ hours if using today's prayer (Jan 19 at 23:25).
+**The problem:** Countdown would show 37+ hours if using today's prayer (Jan 19 at 23:25).
 
 **The solution:** Yesterday fallback in calculateCountdown():
 ```typescript
@@ -391,7 +391,7 @@ if (todayPrayer.date !== today) {
 }
 ```
 
-**Result:** Timer shows 13h 23m until tonight's Midnight (Jan 18 at 23:23).
+**Result:** Countdown shows 13h 23m until tonight's Midnight (Jan 18 at 23:23).
 
 ---
 
@@ -450,7 +450,7 @@ store.set(scheduleAtom, {
 
 ### Positive
 
-- **No dead periods**: Timer always shows countdown to next prayer
+- **No dead periods**: Countdown always shows countdown to next prayer
 - **Clear ownership**: Each prayer belongs to exactly one date
 - **Independent schedules**: Standard and Extras advance based on their own logic
 - **Edge cases handled**: Summer Isha, Midnight prayer timing, year boundaries all work correctly
@@ -470,7 +470,7 @@ store.set(scheduleAtom, {
 
 ### Alternative 1: Keep English Midnight (ADR-002)
 
-**Why rejected:** Dead timer period, deferred edge cases, incompatible with Midnight prayer.
+**Why rejected:** Dead countdown period, deferred edge cases, incompatible with Midnight prayer.
 
 ### Alternative 2: Single Day Boundary for Both Schedules
 

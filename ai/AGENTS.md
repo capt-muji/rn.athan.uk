@@ -71,7 +71,7 @@
 │   ├── database.ts        # MMKV storage interface
 │   ├── notifications.ts   # Notification scheduling (2-day buffer)
 │   ├── sync.ts            # API sync logic
-│   ├── timer.ts           # Timer state atoms
+│   ├── countdown.ts           # Countdown state atoms
 │   ├── schedule.ts        # Schedule atoms
 │   ├── overlay.ts         # Overlay state
 │   ├── version.ts         # App version detection & cache clearing
@@ -105,7 +105,7 @@
 **Key Data Flow:**
 
 ```
-API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV → Display with Reanimated timers → Schedule notifications
+API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV → Display with Reanimated countdowns → Schedule notifications
 ```
 
 ## 4. Golden Paths (How We Do X)
@@ -115,7 +115,7 @@ API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV �
 - Atoms defined in `stores/*.ts`
 - Use `atomWithStorage` for persisted state
 - Use `createJSONStorage` with MMKV backend
-- Example: `stores/ui.ts`, `stores/timer.ts`
+- Example: `stores/ui.ts`, `stores/countdown.ts`
 
 ### Storage (MMKV)
 
@@ -325,7 +325,7 @@ All 11 features completed and archived to `ai/features/archive/`:
 - NO FALLBACKS: Fix root cause, don't mask problems
 - Prayer-centric model: Full DateTime objects, no midnight-crossing bugs
 - Schedule independence: Standard/Extras can show different dates
-- Timer always visible: No "All prayers finished" state
+- Countdown always visible: No "All prayers finished" state
 
 **See Also:**
 

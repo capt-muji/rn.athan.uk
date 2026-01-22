@@ -14,7 +14,7 @@
 The current timing system implements prayer-based day boundaries (ADR-004) but has accumulated complexity that causes recurring bugs:
 
 1. **Date display issues** - Dates shown incorrectly in edge cases
-2. **Timer/countdown bugs** - Wrong prayer or wrong time displayed
+2. **Countdown/countdown bugs** - Wrong prayer or wrong time displayed
 3. **Schedule advancement bugs** - Schedule doesn't advance when expected
 
 ### Root Cause Analysis
@@ -299,11 +299,11 @@ const displayDate = useMemo(() => {
 | `shared/time.ts` | Simplify `calculateCountdown()` |
 | `stores/schedule.ts` | Replace `ScheduleStore` with `PrayerSequence` |
 | `stores/sync.ts` | Update initialization |
-| `stores/timer.ts` | Use derived next prayer |
+| `stores/countdown.ts` | Use derived next prayer |
 | `hooks/usePrayer.ts` | Derive from sequence |
 | `hooks/useSchedule.ts` | Return sequence instead of store |
 | `components/ProgressBar.tsx` | Use adjacent prayers |
-| `components/Timer.tsx` | Use derived countdown |
+| `components/Countdown.tsx` | Use derived countdown |
 | `components/Prayer.tsx` | Use derived isPassed |
 
 ### Migration Strategy

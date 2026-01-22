@@ -79,7 +79,7 @@
 - [x] **Task 3.2:** Integration Verification
   - ✅ Notification system compatible (uses dynamic EXTRAS arrays)
   - ✅ Schedule system compatible (uses PrayerUtils.createSchedule)
-  - ✅ Timer system compatible (uses calculateCountdown on schedule data)
+  - ✅ Countdown system compatible (uses calculateCountdown on schedule data)
   - ✅ UI components compatible (List.tsx uses EXTRAS_ENGLISH.length)
   - ✅ Istijaba index update verified (no hardcoded index 3)
   - ✅ Friday filtering logic intact
@@ -119,10 +119,10 @@
   - Example: Magrib 16:14 → Fajr 05:35 should show Midnight ~22:52
   - Test across multiple days to verify consistency
 
-- [ ] **Test 5.3:** Verify countdown timer
-  - Confirm timer counts down to Midnight correctly
-  - Test timer transitions: after Istijaba → shows countdown to Midnight
-  - Verify timer shows correct hours/minutes/seconds format
+- [ ] **Test 5.3:** Verify countdown countdown
+  - Confirm countdown counts down to Midnight correctly
+  - Test countdown transitions: after Istijaba → shows countdown to Midnight
+  - Verify countdown shows correct hours/minutes/seconds format
 
 - [ ] **Test 5.4:** Verify notifications
   - Enable notification for Midnight prayer
@@ -133,7 +133,7 @@
 - [ ] **Test 5.5:** Verify overlay display
   - Tap Midnight prayer to open overlay
   - Verify large text display shows Midnight
-  - Confirm overlay timer counts down correctly
+  - Confirm overlay countdown counts down correctly
 
 - [ ] **Test 5.6:** Verify modal explanation
   - Tap information icon on Page 2
@@ -205,11 +205,11 @@
 - Schedule building processes transformed data from database
 - Midnight appears in schedule with zero changes required
 
-### Timer System ✅
+### Countdown System ✅
 
 - Uses `calculateCountdown()` which works on schedule data
 - No hardcoded prayer names - fully compatible
-- Timer transitions work automatically
+- Countdown transitions work automatically
 
 ### UI Components ✅
 

@@ -29,7 +29,7 @@ After refactoring from date-centric to prayer-centric model (ADR-005), manual te
 | ------------------------- | ---- | --------------------------------------------------- |
 | `stores/schedule.ts`      | 5, 1 | Pure `getNextPrayer()`, smarter `refreshSequence()` |
 | `shared/time.ts`          | 3    | London timezone in `createPrayerDatetime()`         |
-| `stores/timer.ts`         | 2, 4 | Tomorrow fallback in overlay, new atom import       |
+| `stores/countdown.ts`         | 2, 4 | Tomorrow fallback in overlay, new atom import       |
 | `device/notifications.ts` | 4    | Dependency injection for sound preference           |
 | `shared/notifications.ts` | 4    | Dependency injection for refresh function           |
 | `stores/atoms/overlay.ts` | 4    | NEW: Extracted overlayAtom                          |

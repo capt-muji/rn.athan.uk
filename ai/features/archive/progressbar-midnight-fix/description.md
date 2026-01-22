@@ -86,7 +86,7 @@ if (!yesterdayData) return null;  // Line 43 in original ProgressBar.tsx
 
 ### Non-Functional Requirements
 
-1. **NFR-1**: No performance regression (ProgressBar is rendered on every timer tick)
+1. **NFR-1**: No performance regression (ProgressBar is rendered on every countdown tick)
 2. **NFR-2**: Memory usage must not increase significantly
 3. **NFR-3**: Backward compatibility with existing schedule structure
 4. **NFR-4**: Follow existing code patterns and conventions
@@ -94,7 +94,7 @@ if (!yesterdayData) return null;  // Line 43 in original ProgressBar.tsx
 ### Out of Scope
 
 - Changes to notification system
-- Changes to timer system (except data access)
+- Changes to countdown system (except data access)
 - UI/UX changes to ProgressBar appearance
 - Multi-city support (London-only for now)
 
@@ -159,7 +159,7 @@ App Launch at Midnight (00:00-05:00)
 **Rationale:**
 - Consistent with existing architecture (today + tomorrow pattern)
 - Single source of truth for all schedule data
-- Timer system can access yesterday's data without extra fetches
+- Countdown system can access yesterday's data without extra fetches
 - Enables schedule-based day boundary for progress calculation
 - Memory overhead is negligible (~1KB per schedule)
 
@@ -313,7 +313,7 @@ const progress = useMemo(() => {
   }
 
   // ... pure progress calculation
-}, [schedule, timer.timeLeft, type]);
+}, [schedule, countdown.timeLeft, type]);
 ```
 
 **No defensive code.** ProgressBar trusts the data layer.

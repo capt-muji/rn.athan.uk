@@ -1,5 +1,5 @@
 /**
- * Timer store - countdown timers for prayer times
+ * Countdown store - manages countdown intervals for prayer times
  * Uses the prayer-centric sequence model
  *
  * @see ai/adr/005-timing-system-overhaul.md
@@ -9,7 +9,7 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as TimeUtils from '@/shared/time';
-import { TimerStore, ScheduleType, TimerKey } from '@/shared/types';
+import { CountdownStore, ScheduleType, CountdownKey } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
 import {
   refreshSequence,
@@ -21,85 +21,85 @@ import {
 
 const store = getDefaultStore();
 
-const timers: Record<TimerKey, ReturnType<typeof setInterval> | undefined> = {
-  [TimerKey.Standard]: undefined,
-  [TimerKey.Extra]: undefined,
-  [TimerKey.Overlay]: undefined,
+const countdowns: Record<CountdownKey, ReturnType<typeof setInterval> | undefined> = {
+  [CountdownKey.Standard]: undefined,
+  [CountdownKey.Extra]: undefined,
+  [CountdownKey.Overlay]: undefined,
 };
 
 // --- Initial values ---
 
-const createInitialTimer = (): TimerStore => ({ timeLeft: 10, name: 'Fajr' });
+const createInitialCountdown = (): CountdownStore => ({ timeLeft: 10, name: 'Fajr' });
 
 // --- Atoms ---
 
-export const standardTimerAtom = atom<TimerStore>(createInitialTimer());
-export const extraTimerAtom = atom<TimerStore>(createInitialTimer());
-export const overlayTimerAtom = atom<TimerStore>(createInitialTimer());
+export const standardCountdownAtom = atom<CountdownStore>(createInitialCountdown());
+export const extraCountdownAtom = atom<CountdownStore>(createInitialCountdown());
+export const overlayCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 
 // --- Actions ---
 
-// Clears the interval timer for the specified timer key
-const clearTimer = (timerKey: TimerKey) => {
-  if (!timers[timerKey]) return;
+// Clears the interval for the specified countdown key
+const clearCountdown = (countdownKey: CountdownKey) => {
+  if (!countdowns[countdownKey]) return;
 
-  clearInterval(timers[timerKey]!);
-  timers[timerKey] = undefined;
+  clearInterval(countdowns[countdownKey]!);
+  countdowns[countdownKey] = undefined;
 };
 
 /**
- * Sequence-based timer using prayer-centric model
+ * Sequence-based countdown using prayer-centric model
  *
  * Uses getNextPrayer(type) to get countdown target
  * Calculates countdown from nextPrayer.datetime - now
  * Calls refreshSequence() when prayer passes
  */
-const startSequenceTimer = (type: ScheduleType) => {
+const startSequenceCountdown = (type: ScheduleType) => {
   const nextPrayer = getNextPrayer(type)!;
   const now = TimeUtils.createLondonDate();
   const timeLeft = TimeUtils.getSecondsBetween(now, nextPrayer.datetime);
   const name = nextPrayer.english;
 
   const isStandard = type === ScheduleType.Standard;
-  const timerKey = isStandard ? TimerKey.Standard : TimerKey.Extra;
-  const timerAtom = isStandard ? standardTimerAtom : extraTimerAtom;
+  const countdownKey = isStandard ? CountdownKey.Standard : CountdownKey.Extra;
+  const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
 
-  // Clear existing timer and set initial state
-  clearTimer(timerKey);
-  store.set(timerAtom, { timeLeft, name });
+  // Clear existing countdown and set initial state
+  clearCountdown(countdownKey);
+  store.set(countdownAtom, { timeLeft, name });
 
   // Start countdown interval
-  timers[timerKey] = setInterval(() => {
-    const currentTime = store.get(timerAtom).timeLeft - 1;
+  countdowns[countdownKey] = setInterval(() => {
+    const currentTime = store.get(countdownAtom).timeLeft - 1;
 
     if (currentTime <= 0) {
-      clearTimer(timerKey);
+      clearCountdown(countdownKey);
 
       // Refresh sequence to advance to next prayer
       refreshSequence(type);
 
-      // Restart timer with new next prayer
-      return startSequenceTimer(type);
+      // Restart countdown with new next prayer
+      return startSequenceCountdown(type);
     }
 
-    // Auto-close overlay when timer is 2 seconds or less
+    // Auto-close overlay when countdown is 2 seconds or less
     const overlay = store.get(overlayAtom);
     if (overlay.isOn && overlay.scheduleType === type && currentTime <= 2) {
       store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
     // Update countdown atom
-    store.set(timerAtom, { timeLeft: currentTime, name });
+    store.set(countdownAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 
 /**
- * Starts the overlay countdown timer for selected prayer
+ * Starts the overlay countdown for selected prayer
  * Uses sequence-based approach to get prayer by index
  *
  * Includes tomorrow prayer fallback for passed prayers (matches usePrayer.ts logic)
  */
-const startTimerOverlay = () => {
+const startCountdownOverlay = () => {
   const overlay = store.get(overlayAtom);
   const isStandard = overlay.scheduleType === ScheduleType.Standard;
 
@@ -111,8 +111,8 @@ const startTimerOverlay = () => {
   const displayDate = store.get(displayDateAtom);
 
   if (!sequence || !displayDate) {
-    clearTimer(TimerKey.Overlay);
-    store.set(overlayTimerAtom, { timeLeft: 0, name: 'Prayer' });
+    clearCountdown(CountdownKey.Overlay);
+    store.set(overlayCountdownAtom, { timeLeft: 0, name: 'Prayer' });
     return;
   }
 
@@ -133,26 +133,26 @@ const startTimerOverlay = () => {
   const timeLeft = TimeUtils.getSecondsBetween(now, selectedPrayer.datetime);
   const name = selectedPrayer.english;
 
-  clearTimer(TimerKey.Overlay);
-  store.set(overlayTimerAtom, { timeLeft, name });
+  clearCountdown(CountdownKey.Overlay);
+  store.set(overlayCountdownAtom, { timeLeft, name });
 
-  timers[TimerKey.Overlay] = setInterval(() => {
-    const currentTime = store.get(overlayTimerAtom).timeLeft - 1;
-    if (currentTime <= 0) return clearTimer(TimerKey.Overlay);
+  countdowns[CountdownKey.Overlay] = setInterval(() => {
+    const currentTime = store.get(overlayCountdownAtom).timeLeft - 1;
+    if (currentTime <= 0) return clearCountdown(CountdownKey.Overlay);
 
-    store.set(overlayTimerAtom, { timeLeft: currentTime, name });
+    store.set(overlayCountdownAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 
 /**
- * Initializes all countdown timers - standard, extra, overlay
- * Always starts all timers for continuous countdown display
+ * Initializes all countdowns - standard, extra, overlay
+ * Always starts all countdowns for continuous countdown display
  */
-const startTimers = () => {
-  startSequenceTimer(ScheduleType.Standard);
-  startSequenceTimer(ScheduleType.Extra);
+const startCountdowns = () => {
+  startSequenceCountdown(ScheduleType.Standard);
+  startSequenceCountdown(ScheduleType.Extra);
 
-  startTimerOverlay();
+  startCountdownOverlay();
 };
 
-export { startTimers, startTimerOverlay };
+export { startCountdowns, startCountdownOverlay };

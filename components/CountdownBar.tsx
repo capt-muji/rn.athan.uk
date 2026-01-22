@@ -9,24 +9,24 @@ import Animated, {
   interpolateColor,
 } from 'react-native-reanimated';
 
-import { useProgressBar as useProgressBarHook } from '@/hooks/useProgressBar';
+import { useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
-import { progressBarHiddenAtom, progressbarColorAtom } from '@/stores/ui';
+import { countdownBarHiddenAtom, countdownBarColorAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
 }
 
-export default function ProgressBar({ type }: Props) {
-  // NEW: Use sequence-based progress calculation
+export default function CountdownBar({ type }: Props) {
+  // NEW: Use sequence-based countdown calculation
   // See: ai/adr/005-timing-system-overhaul.md
-  const { progress: elapsedProgress, isReady } = useProgressBarHook(type);
+  const { progress: elapsedProgress, isReady } = useCountdownBar(type);
 
   const overlay = useAtomValue(overlayAtom);
-  const isProgressBarHidden = useAtomValue(progressBarHiddenAtom);
-  const progressbarColor = useAtomValue(progressbarColorAtom);
+  const isCountdownBarHidden = useAtomValue(countdownBarHiddenAtom);
+  const countdownBarColor = useAtomValue(countdownBarColorAtom);
 
   // Convert elapsed % to remaining % (bar shrinks as time passes)
   // Old: (timeLeft / totalDuration) * 100 = remaining %
@@ -36,7 +36,7 @@ export default function ProgressBar({ type }: Props) {
   const widthValue = useSharedValue(progress ?? 0);
   const colorValue = useSharedValue(0); // Discrete color state: 0=blue, 1=red
   const warningValue = useSharedValue(0);
-  const opacityValue = useSharedValue(!overlay.isOn && !isProgressBarHidden ? 1 : 0);
+  const opacityValue = useSharedValue(!overlay.isOn && !isCountdownBarHidden ? 1 : 0);
   const isFirstRender = useRef(true);
   const isFirstOpacityRender = useRef(true);
   const prevProgress = useRef(progress);
@@ -54,7 +54,7 @@ export default function ProgressBar({ type }: Props) {
       colorValue.value,
       [0, 1],
       [
-        progressbarColor, // User's color for normal state
+        countdownBarColor, // User's color for normal state
         '#ff0080', // red for warning state
       ]
     );
@@ -137,7 +137,7 @@ export default function ProgressBar({ type }: Props) {
 
   // Animate opacity: hidden when overlay is on OR when user toggles "Hide countdown bar" on
   useEffect(() => {
-    const shouldShow = !overlay.isOn && !isProgressBarHidden;
+    const shouldShow = !overlay.isOn && !isCountdownBarHidden;
 
     if (isFirstOpacityRender.current) {
       // On first render, set opacity directly without animation
@@ -147,7 +147,7 @@ export default function ProgressBar({ type }: Props) {
       // On subsequent renders, animate the change
       opacityValue.value = withTiming(shouldShow ? 1 : 0, { duration: ANIMATION.duration, easing: Easing.linear });
     }
-  }, [overlay.isOn, isProgressBarHidden]);
+  }, [overlay.isOn, isCountdownBarHidden]);
 
   // Always render container to reserve 3px height, use opacity to hide/show
   return (
@@ -156,7 +156,7 @@ export default function ProgressBar({ type }: Props) {
       <Animated.View style={[styles.glow, animatedStyle, colorStyle, glowStyle]} />
       {/* Extra intense neon glow for warning state */}
       <Animated.View style={[styles.glow, animatedStyle, colorStyle, warningGlowStyle]} />
-      {/* Main progress bar */}
+      {/* Main countdown bar */}
       <Animated.View style={[styles.elapsed, animatedStyle, colorStyle]} />
     </Animated.View>
   );

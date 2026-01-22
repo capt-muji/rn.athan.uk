@@ -18,11 +18,11 @@ Archived memory entries from ai/AGENTS.md. These are older lessons learned that 
 
 ## 2026-01-16: Islamic Day Boundary & Environment
 
-- **Day Boundary**: SUPERSEDING ADR-002—switching to prayer-based day boundary (after Isha for Standard, after Duha/Istijaba for Extras). Timer/countdown always visible, no "All prayers finished" state. Each schedule has independent date atom. (see ai/features/islamic-day-boundary/description.md)
+- **Day Boundary**: SUPERSEDING ADR-002—switching to prayer-based day boundary (after Isha for Standard, after Duha/Istijaba for Extras). Countdown/countdown always visible, no "All prayers finished" state. Each schedule has independent date atom. (see ai/features/islamic-day-boundary/description.md)
 
 - **Planning**: Use RepoMapper before ReviewerQA—verify all affected files before auditing plan for risks. Found 14 files vs original 5 in islamic-day-boundary feature.
 
-- **Islamic Day Boundary**: IMPLEMENTATION COMPLETE, awaiting manual test. Modified 10 files: stores/sync.ts (split dateAtom), stores/schedule.ts (advanceScheduleToTomorrow), stores/timer.ts (wrap behavior), components/Timer.tsx (removed finished state), Day/ActiveBackground/Alert/Prayer/PrayerTime/List.tsx (schedule-specific date atoms). Next: manual test, then create ADR-003. (see ai/features/islamic-day-boundary/progress.md)
+- **Islamic Day Boundary**: IMPLEMENTATION COMPLETE, awaiting manual test. Modified 10 files: stores/sync.ts (split dateAtom), stores/schedule.ts (advanceScheduleToTomorrow), stores/countdown.ts (wrap behavior), components/Countdown.tsx (removed finished state), Day/ActiveBackground/Alert/Prayer/PrayerTime/List.tsx (schedule-specific date atoms). Next: manual test, then create ADR-003. (see ai/features/islamic-day-boundary/progress.md)
 
 - **Environment Config**: Centralized ALL environment variables into shared/config.ts. All process.env access now in one file: APP_CONFIG (isDev, env, apiKey, iosAppId, androidPackage) and helpers (isProd, isPreview, isLocal). Updated: shared/logger.ts, api/config.ts, device/updates.ts, stores/sync.ts.
 
@@ -36,13 +36,13 @@ Archived memory entries from ai/AGENTS.md. These are older lessons learned that 
 
 - **Code Simplification Refactoring**: (1) Consolidated 3 API functions (fetchPreviousYear, fetchCurrentYear, fetchCurrentAndNextYear) into 1 flexible fetchYear() function. Trade-off: lost explicit scenario docs for simpler API surface. (2) Removed deprecated fetchPrayerData function (zero usage). (3) Extracted parseTimeToSeconds to shared/time.ts from ProgressBar.tsx for reusability. (4) Removed error checking in buildDailySchedules (trust data layer always has data). Modified: api/client.ts, stores/sync.ts (3 callers updated), shared/time.ts, components/ProgressBar.tsx, stores/schedule.ts. QA grade: A- (94%) after fixing import ordering. Prioritized simplicity over type safety/explicitness per user request.
 
-- **README Update**: Documented prayer-based day boundary and ProgressBar scenarios comprehensively. Added 5 ProgressBar scenarios: (1) Normal day operation, (2) After midnight before Fajr using yesterday's data, (3) Prayer-based day boundary for Standard/Extras schedules, (4) January 1st edge case with mandatory previous year fetch, (5) December 31st to January 1st transition. Updated features list, data flow, timer system, and MMKV storage keys (display_date split into display_date_standard/extra). Removed outdated midnight reset references, replaced with Islamic midnight (prayer-based) documentation.
+- **README Update**: Documented prayer-based day boundary and ProgressBar scenarios comprehensively. Added 5 ProgressBar scenarios: (1) Normal day operation, (2) After midnight before Fajr using yesterday's data, (3) Prayer-based day boundary for Standard/Extras schedules, (4) January 1st edge case with mandatory previous year fetch, (5) December 31st to January 1st transition. Updated features list, data flow, countdown system, and MMKV storage keys (display_date split into display_date_standard/extra). Removed outdated midnight reset references, replaced with Islamic midnight (prayer-based) documentation.
 
-- **Midnight Timer Removal**: Removed redundant midnight timer that ran every second checking for date changes. The timer called sync() at 00:00 but sync() already checks needsDataUpdate() and only fetches when needed. Other triggers (app launch, resume, schedule advancement) cover all data freshness scenarios. Removed startTimerMidnight(), removed 'midnight' from TimerKey type, updated README timer section from 4 to 3 timers. Slight battery improvement from fewer intervals running.
+- **Midnight Countdown Removal**: Removed redundant midnight countdown that ran every second checking for date changes. The countdown called sync() at 00:00 but sync() already checks needsDataUpdate() and only fetches when needed. Other triggers (app launch, resume, schedule advancement) cover all data freshness scenarios. Removed startCountdownMidnight(), removed 'midnight' from CountdownKey type, updated README countdown section from 4 to 3 countdowns. Slight battery improvement from fewer intervals running.
 
 - **Retry Logic Removal**: Removed defensive retry logic in advanceScheduleToTomorrow() that called sync() if dayAfterTomorrow data was missing. With prayer-based day boundary, data should always be available (entire year cached). If missing, let it throw - the app's "refresh me" button handles cache issues. Follows NO FALLBACKS rule: fix root cause, don't mask problems.
 
-- **Progress Bar Toggle**: Implemented tap-to-toggle visibility for progress bar. Tap anywhere on timer component (prayer name, time, or bar) to hide/show progress bar with 250ms fade animation. Medium haptic feedback on tap (matches alert icons). Default visible, persisted via progressBarVisibleAtom (preference_progressbar_visible in MMKV). Opacity initializes to correct state on app load (no flash). Only active on main screen (overlay timer unchanged). Modified: stores/ui.ts (added atom), components/Timer.tsx (Pressable wrapper + Medium haptic), components/ProgressBar.tsx (opacity with first-render skip), stores/database.ts (added to cleanup function). Uses opacity (not DOM removal) to maintain layout alignment.
+- **Progress Bar Toggle**: Implemented tap-to-toggle visibility for progress bar. Tap anywhere on countdown component (prayer name, time, or bar) to hide/show progress bar with 250ms fade animation. Medium haptic feedback on tap (matches alert icons). Default visible, persisted via progressBarVisibleAtom (preference_progressbar_visible in MMKV). Opacity initializes to correct state on app load (no flash). Only active on main screen (overlay countdown unchanged). Modified: stores/ui.ts (added atom), components/Countdown.tsx (Pressable wrapper + Medium haptic), components/ProgressBar.tsx (opacity with first-render skip), stores/database.ts (added to cleanup function). Uses opacity (not DOM removal) to maintain layout alignment.
 
 ---
 
@@ -93,7 +93,7 @@ Archived memory entries from ai/AGENTS.md. These are older lessons learned that 
 - Comprehensive prayer-based timing documentation
 - Supersedes ADR-002 (English midnight)
 - 14 documented edge scenarios
-- Core principles: NO 00:00 reset, prayer times immutable, schedules independent, timer always visible
+- Core principles: NO 00:00 reset, prayer times immutable, schedules independent, countdown always visible
 
 ### Timing System Overhaul (PLANNED)
 - Major architectural refactor from date-centric to prayer-centric model
@@ -130,7 +130,7 @@ Archived memory entries from ai/AGENTS.md. These are older lessons learned that 
 - Components: BottomSheetSettings.tsx, SettingsToggle.tsx, BottomSheetShared.tsx
 - Features: Progress bar toggle, Hijri date toggle, Athan sound selector
 - Hijri formatting using Intl.DateTimeFormat
-- Removed redundant timer tap-to-toggle, Alert long-press
+- Removed redundant countdown tap-to-toggle, Alert long-press
 
 ### Codebase Cleanup & Optimization
 - Phase 1 SKIPPED: Original cleanup plan outdated (code was in use)

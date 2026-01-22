@@ -9,12 +9,12 @@
 
 ## Overview
 
-Refactor the prayer-based day boundary system to fix reported bugs with date display, timer/countdown, and schedule advancement. ADR-004 documents the intended behavior - this refactor ensures the code matches the specification.
+Refactor the prayer-based day boundary system to fix reported bugs with date display, countdown/countdown, and schedule advancement. ADR-004 documents the intended behavior - this refactor ensures the code matches the specification.
 
 ## Goals
 
 - [ ] Fix date display issues (correct date shown on each schedule)
-- [ ] Fix timer/countdown bugs (always shows correct next prayer)
+- [ ] Fix countdown/countdown bugs (always shows correct next prayer)
 - [ ] Fix schedule advancement bugs (advances at the right time)
 - [ ] Ensure all 14 ADR-004 scenarios work correctly
 
@@ -29,7 +29,7 @@ Refactor the prayer-based day boundary system to fix reported bugs with date dis
 
 Current Issues Reported:
 1. Date display issues - dates may be incorrect in certain edge cases
-2. Timer/countdown bugs - timer may show wrong prayer or wrong time
+2. Countdown/countdown bugs - countdown may show wrong prayer or wrong time
 3. Schedule advancement bugs - schedule may not advance when expected
 
 Root Cause: The Midnight prayer (Maghrib-Fajr midpoint) introduced complexity:
@@ -48,10 +48,10 @@ Root Cause: The Midnight prayer (Maghrib-Fajr midpoint) introduced complexity:
 | `shared/time.ts` | `calculateCountdown()` with yesterday fallback |
 | `stores/schedule.ts` | `advanceScheduleToTomorrow()` |
 | `stores/sync.ts` | `initializeAppState()` |
-| `stores/timer.ts` | Timer that triggers advancement |
+| `stores/countdown.ts` | Countdown that triggers advancement |
 | `hooks/usePrayer.ts` | `isPassed` calculation |
 | `components/ActiveBackground.tsx` | Blue highlight visibility |
-| `components/Timer.tsx` | Timer display |
+| `components/Countdown.tsx` | Countdown display |
 | `components/Day.tsx` | Date display |
 | `components/Prayer.tsx` | Prayer row display |
 | `components/ProgressBar.tsx` | Progress bar calculation |
@@ -69,7 +69,7 @@ Root Cause: The Midnight prayer (Maghrib-Fajr midpoint) introduced complexity:
 ## Acceptance Criteria
 
 - [ ] All 14 scenarios in ADR-004 work as documented
-- [ ] Timer always shows countdown (never blank/hidden)
+- [ ] Countdown always shows countdown (never blank/hidden)
 - [ ] Date matches schedule's current day
 - [ ] isPassed correctly handles advanced schedules
 - [ ] Yesterday fallback works for Extras Midnight

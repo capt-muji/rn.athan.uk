@@ -11,7 +11,7 @@
 The Athan app displays prayer schedules for a given date. The app needs a consistent point at which:
 - The displayed date updates to the next day
 - Prayer schedules refresh from the database
-- UI elements reset (timer, active prayer indicator)
+- UI elements reset (countdown, active prayer indicator)
 
 Several factors complicate this decision:
 
@@ -25,10 +25,10 @@ Several factors complicate this decision:
 
 - **Date display**: Shows the current schedule date (e.g., "17th April")
 - **Prayer list**: Ordered by time of day (Fajr first on Standard, Last Third first on Extras)
-- **Timer countdown**: Shows time until next prayer
+- **Countdown countdown**: Shows time until next prayer
 - **Blue active bar**: Highlights the current/next prayer
 - **Today/Tomorrow overlay**: Indicates which day the prayer belongs to
-- **Post-last-prayer**: Timer is hidden after the last prayer until midnight (reduces UI clutter)
+- **Post-last-prayer**: Countdown is hidden after the last prayer until midnight (reduces UI clutter)
 
 ### The Happy Path (Current State)
 
@@ -47,7 +47,7 @@ Prayer times change throughout the year. Edge cases will emerge:
 3. **Middle of the Night prayer** (planned): A new Extra prayer at the halfway point between Maghrib and Fajr—usually around 23:00 but sometimes after 00:00
 
 These edge cases will break:
-- Timer visibility logic
+- Countdown visibility logic
 - Date display accuracy
 - Today/Tomorrow overlay correctness
 - Blue active bar behavior
@@ -57,7 +57,7 @@ These edge cases will break:
 Use **English midnight (00:00)** as the day boundary for both Standard and Extra schedules.
 
 1. **Date reset**: At 00:00, the displayed date increments and prayers refresh from the database
-2. **Timer behavior**: Hidden after the last prayer of the day, returns at 00:00
+2. **Countdown behavior**: Hidden after the last prayer of the day, returns at 00:00
 3. **Blue active bar**: Hidden after the last prayer, returns at 00:00
 4. **Consistent across schedules**: Both Standard and Extra screens reset at the same time
 5. **Accept limitations**: Known edge cases are documented but not yet handled
@@ -78,7 +78,7 @@ User familiarity and predictability outweigh technical correctness. Users expect
 
 ### Negative
 - **Edge case: Isha after midnight** — Isha belongs to previous day but appears on next day's schedule
-- **Edge case: Last Third before midnight** — Last Third belongs to current day but timer/UI may behave incorrectly
+- **Edge case: Last Third before midnight** — Last Third belongs to current day but countdown/UI may behave incorrectly
 - **Future: Middle of the Night prayer** — Will require careful handling as it straddles the boundary
 - Technical debt: edge cases deferred rather than solved
 
@@ -120,8 +120,8 @@ User familiarity and predictability outweigh technical correctness. Users expect
 
 ## Implementation Notes
 
-- Day boundary logic likely in schedule/timer stores
-- Timer visibility controlled by comparing current time to last prayer time and midnight
+- Day boundary logic likely in schedule/countdown stores
+- Countdown visibility controlled by comparing current time to last prayer time and midnight
 - Blue active bar follows similar logic
 - Both Standard and Extra screens share the same boundary logic
 - **Future work needed**: Handle edge cases when Isha > 00:00 or Last Third < 00:00

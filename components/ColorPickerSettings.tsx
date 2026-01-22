@@ -6,7 +6,7 @@ import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } fro
 
 import { TEXT, STYLES } from '@/shared/constants';
 import logger from '@/shared/logger';
-import { progressbarColorAtom, progressBarHiddenAtom } from '@/stores/ui';
+import { countdownBarColorAtom, countdownBarHiddenAtom } from '@/stores/ui';
 
 const SWATCH_COLORS = [
   '#00ffea', // cyan
@@ -30,21 +30,21 @@ const SWATCH_COLORS = [
 const DEFAULT_COLOR = SWATCH_COLORS[0];
 
 export default function ColorPickerSettings() {
-  const [progressbarColor, setProgressbarColor] = useAtom(progressbarColorAtom);
-  const [progressBarHidden] = useAtom(progressBarHiddenAtom);
+  const [countdownBarColor, setCountdownBarColor] = useAtom(countdownBarColorAtom);
+  const [countdownBarHidden] = useAtom(countdownBarHiddenAtom);
   const [showPicker, setShowPicker] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(progressbarColor);
+  const [selectedColor, setSelectedColor] = useState(countdownBarColor);
 
-  const isDisabled = progressBarHidden;
+  const isDisabled = countdownBarHidden;
   const opacity = isDisabled ? 0.4 : 1;
 
   const handlePress = useCallback(() => {
     if (isDisabled) return;
-    logger.info(`ColorPickerSettings: Opening color picker, current=${progressbarColor}`);
+    logger.info(`ColorPickerSettings: Opening color picker, current=${countdownBarColor}`);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setSelectedColor(progressbarColor);
+    setSelectedColor(countdownBarColor);
     setShowPicker(true);
-  }, [isDisabled, progressbarColor]);
+  }, [isDisabled, countdownBarColor]);
 
   const handleColorPreview = useCallback((colors: ColorFormatsObject) => {
     setSelectedColor(colors.hex);
@@ -53,24 +53,24 @@ export default function ColorPickerSettings() {
   const handleDone = useCallback(() => {
     logger.info(`ColorPickerSettings: Saving color: ${selectedColor}`);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setProgressbarColor(selectedColor);
+    setCountdownBarColor(selectedColor);
     setShowPicker(false);
-  }, [selectedColor, setProgressbarColor]);
+  }, [selectedColor, setCountdownBarColor]);
 
   const handleReset = useCallback(() => {
     if (isDisabled) return;
     logger.info('ColorPickerSettings: Resetting to default color');
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setProgressbarColor(DEFAULT_COLOR);
+    setCountdownBarColor(DEFAULT_COLOR);
     setShowPicker(false);
-  }, [isDisabled, setProgressbarColor]);
+  }, [isDisabled, setCountdownBarColor]);
 
   const handleDismiss = useCallback(() => {
     logger.info('ColorPickerSettings: Cancelled, discarding changes');
     setShowPicker(false);
   }, []);
 
-  const isCustomColor = progressbarColor !== DEFAULT_COLOR;
+  const isCustomColor = countdownBarColor !== DEFAULT_COLOR;
 
   return (
     <>
@@ -83,7 +83,7 @@ export default function ColorPickerSettings() {
             </Pressable>
           )}
           <View style={styles.colorPreviewContainer}>
-            <View style={[styles.colorPreview, { backgroundColor: progressbarColor }]} />
+            <View style={[styles.colorPreview, { backgroundColor: countdownBarColor }]} />
           </View>
         </View>
       </Pressable>

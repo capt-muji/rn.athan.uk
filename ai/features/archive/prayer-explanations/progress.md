@@ -37,7 +37,7 @@ Replaced ModalTimesExplained modal (all prayers at once) with contextual explana
 - ✅ Tap Extra prayer → see explanation → close overlay
 - ✅ Tap Standard prayer → see overlay → no explanation
 - ✅ No modal appears on Page 2 visit
-- ✅ Timer countdown works in overlay
+- ✅ Countdown countdown works in overlay
 - ✅ AGENTS.md updated
 
 ---

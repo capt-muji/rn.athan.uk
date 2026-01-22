@@ -16,7 +16,7 @@ Replace the `ModalTimesExplained` modal (which shows all prayer explanations at 
 
 - [x] Users can access prayer explanations by tapping on the prayer
 - [x] Explanations appear contextually, one at a time
-- [x] Existing overlay behavior is preserved (timer, countdown, etc.)
+- [x] Existing overlay behavior is preserved (countdown, countdown, etc.)
 - [x] Modal is fully removed (no modal state persistence)
 - [x] No regression in Standard prayer behavior
 
@@ -42,12 +42,12 @@ Replace the `ModalTimesExplained` modal (which shows all prayer explanations at 
 
 ### Story 2: Standard Prayer Behavior
 **As a** user viewing Page 1 (Standard)  
-**I want** to tap on prayers and see the countdown timer  
+**I want** to tap on prayers and see the countdown countdown  
 **So that** I can check prayer times without interruptions
 
 **Acceptance Criteria:**
 - [x] Tapping Standard prayers (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) opens the Overlay
-- [x] Overlay shows timer countdown (existing behavior)
+- [x] Overlay shows countdown countdown (existing behavior)
 - [x] No explanation text appears for Standard prayers
 
 ### Story 3: Modal Removal
@@ -72,7 +72,7 @@ Prayer.handlePress() [existing]
 overlayAtom updates (selectedPrayerIndex, scheduleType)
     ↓
 Overlay.tsx renders
-    ├─ Timer (existing)
+    ├─ Countdown (existing)
     ├─ Prayer row (existing)
     └─ ExplanationText (NEW - conditional on Extra prayers)
 ```
@@ -129,7 +129,7 @@ Overlay.tsx renders
 - [ ] All 5 Extra prayers show correct explanations
 - [ ] All 6 Standard prayers show no explanations
 - [ ] Overlay opens/closes correctly for all prayers
-- [ ] Timer countdown works correctly in overlay
+- [ ] Countdown countdown works correctly in overlay
 - [ ] Visual design matches app's text hierarchy
 
 ## Files Reference

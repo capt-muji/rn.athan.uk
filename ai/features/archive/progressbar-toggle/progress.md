@@ -15,7 +15,7 @@
   - Default: `true`
   - Type: Boolean (atomWithStorageBoolean)
 
-- [x] Make Timer component tappable
+- [x] Make Countdown component tappable
   - Remove `pointerEvents: 'none'` from container style
   - Wrap content in `Pressable` component
   - Add tap handler to toggle atom
@@ -57,7 +57,7 @@
 
 - [x] Move atom to correct store
   - Moved from `stores/overlay.ts` to `stores/ui.ts`
-  - Updated imports in Timer.tsx and ProgressBar.tsx
+  - Updated imports in Countdown.tsx and ProgressBar.tsx
   - Removed unused import from overlay.ts
 
 - [x] Match haptic feedback to alert icons
@@ -76,7 +76,7 @@
 | Test Case | Result |
 |-----------|--------|
 | Default state: Bar visible on fresh install | ✅ Pass |
-| Tap timer: Bar fades out (250ms) | ✅ Pass |
+| Tap countdown: Bar fades out (250ms) | ✅ Pass |
 | Tap again: Bar fades in (250ms) | ✅ Pass |
 | Layout stability: No shift when hidden | ✅ Pass |
 | Persistence: Preference survives restart | ✅ Pass |
@@ -90,7 +90,7 @@
 
 ```
 stores/ui.ts                    # Added progressBarVisibleAtom
-components/Timer.tsx            # Added Pressable + tap handler
+components/Countdown.tsx            # Added Pressable + tap handler
 components/ProgressBar.tsx      # Opacity animation with first-render skip
 shared/constants.ts             # Added durationMedium: 250
 stores/database.ts              # Added to cleanup function

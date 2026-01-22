@@ -119,7 +119,7 @@ export interface StoredPrayerSequence {
  * Scenario: Normal winter day, all prayers within same calendar day
  */
 export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
-  // Yesterday's Isha (for ProgressBar calculation)
+  // Yesterday's Isha (for CountdownBar calculation)
   {
     type: ScheduleType.Standard,
     english: 'Isha',

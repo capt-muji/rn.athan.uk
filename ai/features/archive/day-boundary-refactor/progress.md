@@ -31,16 +31,16 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 | Option | Description | Chosen |
 |--------|-------------|--------|
 | Refresh on resume | Call `sync()` every time app resumes | NO - battery drain, unnecessary API calls |
-| Trust cached data | Rely on existing schedule + timer logic | YES - timers self-correct |
+| Trust cached data | Rely on existing schedule + countdown logic | YES - countdowns self-correct |
 | Hybrid | Refresh only if schedules are stale | FUTURE - not for this refactor |
 
 **Rationale:**
-- The timer system already handles advancement correctly
+- The countdown system already handles advancement correctly
 - If app was backgrounded for 6 hours, when it resumes:
-  - Timers recalculate countdown from current time
+  - Countdowns recalculate countdown from current time
   - If prayers passed, `initializeAppState()` is NOT called (only on fresh launch)
   - BUT: schedules should still be valid (cached for full year)
-- **Risk:** If backgrounded across day boundary AND timer stopped, schedule may be stale
+- **Risk:** If backgrounded across day boundary AND countdown stopped, schedule may be stale
 - **Mitigation:** User can pull-to-refresh if data looks wrong
 
 **Impact on Plan:**
@@ -86,7 +86,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 
 - [ ] Task 1.5.1: Verify app checks if last prayer passed on open
 - [ ] Task 1.5.2: Verify both schedules are checked independently
-- [ ] Task 1.5.3: Verify timers start AFTER schedule advancement (if needed)
+- [ ] Task 1.5.3: Verify countdowns start AFTER schedule advancement (if needed)
 
 ---
 
@@ -118,7 +118,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 - [ ] Task 2.4.1: Open app at 22:00 when Isha was at 18:15
 - [ ] Task 2.4.2: Verify Standard shows tomorrow's date
 - [ ] Task 2.4.3: Verify Extras shows tomorrow's date (Duha passed in morning)
-- [ ] Task 2.4.4: Verify both timers show countdown to next prayer
+- [ ] Task 2.4.4: Verify both countdowns show countdown to next prayer
 
 #### 2.5 Scenario 8: Year Boundary (Dec 31 → Jan 1)
 
@@ -176,7 +176,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 #### 3.4 initializeAppState() fixes
 
 - [ ] Task 3.4.1: Ensure await on advanceScheduleToTomorrow calls
-- [ ] Task 3.4.2: Ensure timers start only after all advancements complete
+- [ ] Task 3.4.2: Ensure countdowns start only after all advancements complete
 
 ---
 
@@ -187,10 +187,10 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 - [ ] Task 4.1.1: Verify formatDateLong handles empty string date
 - [ ] Task 4.1.2: Verify date updates immediately after schedule advancement
 
-#### 4.2 Timer display (Timer.tsx)
+#### 4.2 Countdown display (Countdown.tsx)
 
-- [ ] Task 4.2.1: Verify timer.name shows correct prayer after advancement
-- [ ] Task 4.2.2: Verify timer.timeLeft is positive after advancement
+- [ ] Task 4.2.1: Verify countdown.name shows correct prayer after advancement
+- [ ] Task 4.2.2: Verify countdown.timeLeft is positive after advancement
 
 #### 4.3 ActiveBackground visibility
 
@@ -233,12 +233,12 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 #### 5.3 Race conditions - General
 
 - [ ] Task 5.3.1: Verify overlay closes before schedule shift
-- [ ] Task 5.3.2: Verify no double-advancement if timer fires twice rapidly
+- [ ] Task 5.3.2: Verify no double-advancement if countdown fires twice rapidly
 
-#### 5.4 Timer-Schedule Race Conditions (NEW - from QA review)
+#### 5.4 Countdown-Schedule Race Conditions (NEW - from QA review)
 
-- [ ] Task 5.4.1: Verify timer interval is cleared before advanceScheduleToTomorrow() starts
-- [ ] Task 5.4.2: Verify startTimerSchedule() waits for advanceScheduleToTomorrow() to complete
+- [ ] Task 5.4.1: Verify countdown interval is cleared before advanceScheduleToTomorrow() starts
+- [ ] Task 5.4.2: Verify startCountdownSchedule() waits for advanceScheduleToTomorrow() to complete
 
 ---
 
@@ -246,8 +246,8 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 
 #### 6.1 Manual test checklist (Final Verification)
 
-- [ ] Task 6.2.1: Standard schedule: timer counts down, advances after Isha
-- [ ] Task 6.2.2: Extras schedule: timer counts down, advances after Duha
+- [ ] Task 6.2.1: Standard schedule: countdown counts down, advances after Isha
+- [ ] Task 6.2.2: Extras schedule: countdown counts down, advances after Duha
 - [ ] Task 6.2.3: Friday: Extras advances after Istijaba
 - [ ] Task 6.2.4: Both schedules can show different dates
 - [ ] Task 6.2.5: App open after Isha: shows tomorrow immediately
@@ -264,13 +264,13 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 | `shared/time.ts`                  | 1, 3    | calculateCountdown(), isTimePassed(), secondsRemainingUntil() |
 | `stores/schedule.ts`              | 1, 3    | advanceScheduleToTomorrow(), incrementNextIndex()             |
 | `stores/sync.ts`                  | 1, 3    | initializeAppState(), setScheduleDate()                       |
-| `stores/timer.ts`                 | 1, 3, 5 | startTimerSchedule() advancement trigger                      |
+| `stores/countdown.ts`                 | 1, 3, 5 | startCountdownSchedule() advancement trigger                      |
 | `stores/overlay.ts`               | 3, 4    | Overlay close during advancement                              |
 | `stores/version.ts`               | 5       | Cache clearing impact on schedule data                        |
 | `hooks/usePrayer.ts`              | 1, 3, 4 | isPassed calculation                                          |
 | `hooks/useSchedule.ts`            | 1, 4    | Schedule data retrieval hook                                  |
 | `components/ActiveBackground.tsx` | 4       | yPosition calculation, visibility                             |
-| `components/Timer.tsx`            | 4       | timer display                                                 |
+| `components/Countdown.tsx`            | 4       | countdown display                                                 |
 | `components/Day.tsx`              | 4       | date display per schedule                                     |
 | `components/ProgressBar.tsx`      | 4       | yesterday data access                                         |
 | `shared/prayer.ts`                | 2       | findNextPrayerIndex(), createSchedule(), isFriday()           |
@@ -302,7 +302,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 | Phase 3-4 conditional    | If bugs found             | Don't fix what isn't broken                          |
 | Rollback strategy        | Git revert                | If Phase 3-4 fixes cause regressions, revert commits |
 | Time mocking strategy    | Mock createLondonDate()   | Enables testing summer scenarios in January          |
-| App resume behavior      | Trust cached data         | Timers self-correct, no refresh on resume needed     |
+| App resume behavior      | Trust cached data         | Countdowns self-correct, no refresh on resume needed     |
 
 ---
 
@@ -320,7 +320,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 
 1. Marked Phase 6.1 as LARGER TASKS (30+ min each)
 2. Added Phase 4.6 - Overlay Index Validity
-3. Added Phase 5.4 - Timer-Schedule Race Conditions
+3. Added Phase 5.4 - Countdown-Schedule Race Conditions
 4. Split Task 4.4.2 into 4.4.2/4.4.3 for specificity
 5. Removed redundant Phase 6.3 (merged into Phase 2)
 6. Added Task 1.1.6 for negative timeLeft handling
@@ -344,7 +344,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 1. NO 00:00 reset - app never uses system midnight as trigger
 2. Prayer times are immutable - belong to their fetched date
 3. Each schedule is independent - Standard and Extras advance separately
-4. Timer always visible - never "finished" state
+4. Countdown always visible - never "finished" state
 5. Trust the data layer - UI never has fallbacks
 
 **The Yesterday Fallback (CRITICAL for Extras):**

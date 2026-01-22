@@ -63,7 +63,7 @@ export const getNextPrayer = (type: ScheduleType): Prayer | null => {
 ```
 
 **Callers Already Handle Null:**
-- `stores/timer.ts:57-67` already has fallback: `if (!nextPrayer) { refreshSequence(type); ... }`
+- `stores/countdown.ts:57-67` already has fallback: `if (!nextPrayer) { refreshSequence(type); ... }`
 - No changes needed to callers
 
 **Verification:**
@@ -73,7 +73,7 @@ export const getNextPrayer = (type: ScheduleType): Prayer | null => {
 
 ## Bug 3: Progress Bar Shows 0%
 
-**Symptom:** Progress bar empty despite timer counting down correctly.
+**Symptom:** Progress bar empty despite countdown counting down correctly.
 
 **Root Cause Location:** `shared/time.ts` lines 275-278
 
@@ -154,7 +154,7 @@ export const createPrayerDatetime = (date: string, time: string): Date => {
 
 **Timeline at 03:16am Jan 19:**
 1. Midnight at 23:17 on Jan 18 has `belongsToDate = "2026-01-19"` (correct per ADR-004)
-2. When timer hits 0, `refreshSequence()` removes Midnight (datetime < now)
+2. When countdown hits 0, `refreshSequence()` removes Midnight (datetime < now)
 3. Display filters to `belongsToDate === "2026-01-19"`
 4. Midnight is gone - it was deleted before it could be displayed
 
@@ -163,8 +163,8 @@ export const createPrayerDatetime = (date: string, time: string): Date => {
 **Memory Bloat Prevention:** Only keep passed prayers for current display date, not all passed prayers. When display date changes, old passed prayers are naturally excluded.
 
 **When Cleanup Runs:** `refreshSequence()` is called in two places:
-1. `stores/timer.ts:89` - When countdown hits 0 (prayer passes)
-2. `stores/timer.ts:62` - When `getNextPrayer()` returns null in timer startup
+1. `stores/countdown.ts:89` - When countdown hits 0 (prayer passes)
+2. `stores/countdown.ts:62` - When `getNextPrayer()` returns null in countdown startup
 
 This ensures passed prayers are cleaned up immediately when a prayer passes, not on every tick.
 
@@ -232,7 +232,7 @@ This is already handled by existing loading state logic - no additional changes 
 
 **Symptom:** Tapping Last Third shows Midnight's time; countdown shows 0s.
 
-**Root Cause Location:** `stores/timer.ts` lines 121-123
+**Root Cause Location:** `stores/countdown.ts` lines 121-123
 
 ```typescript
 const todayPrayers = sequence?.prayers.filter((p) => p.belongsToDate === displayDate) ?? [];
@@ -247,12 +247,12 @@ const tomorrowPrayer = tomorrowPrayers[index];
 const displayPrayer = isPassed && isOverlay && tomorrowPrayer ? tomorrowPrayer : prayer;
 ```
 
-**Fix:** Match `usePrayer.ts` logic exactly in `startTimerOverlay()`.
+**Fix:** Match `usePrayer.ts` logic exactly in `startCountdownOverlay()`.
 
-**File:** `stores/timer.ts` - Modify `startTimerOverlay()` (lines 110-139)
+**File:** `stores/countdown.ts` - Modify `startCountdownOverlay()` (lines 110-139)
 
 ```typescript
-const startTimerOverlay = () => {
+const startCountdownOverlay = () => {
   const overlay = store.get(overlayAtom);
   const isStandard = overlay.scheduleType === ScheduleType.Standard;
 
@@ -264,8 +264,8 @@ const startTimerOverlay = () => {
   const displayDate = store.get(displayDateAtom);
 
   if (!sequence || !displayDate) {
-    clearTimer('overlay');
-    store.set(overlayTimerAtom, { timeLeft: 0, name: 'Prayer' });
+    clearCountdown('overlay');
+    store.set(overlayCountdownAtom, { timeLeft: 0, name: 'Prayer' });
     return;
   }
 
@@ -293,14 +293,14 @@ const startTimerOverlay = () => {
   const timeLeft = selectedPrayer ? TimeUtils.getSecondsBetween(now, selectedPrayer.datetime) : 0;
   const name = selectedPrayer?.english ?? 'Prayer';
 
-  clearTimer('overlay');
-  store.set(overlayTimerAtom, { timeLeft, name });
+  clearCountdown('overlay');
+  store.set(overlayCountdownAtom, { timeLeft, name });
 
-  timers.overlay = setInterval(() => {
-    const currentTime = store.get(overlayTimerAtom).timeLeft - 1;
-    if (currentTime <= 0) return clearTimer('overlay');
+  countdowns.overlay = setInterval(() => {
+    const currentTime = store.get(overlayCountdownAtom).timeLeft - 1;
+    if (currentTime <= 0) return clearCountdown('overlay');
 
-    store.set(overlayTimerAtom, { timeLeft: currentTime, name });
+    store.set(overlayCountdownAtom, { timeLeft: currentTime, name });
   }, 1000);
 };
 ```
@@ -319,11 +319,11 @@ const startTimerOverlay = () => {
 **Warnings:**
 1. `stores/notifications.ts` → `device/notifications.ts` → `stores/notifications.ts`
 2. `stores/notifications.ts` → `device/notifications.ts` → `shared/notifications.ts` → `stores/notifications.ts`
-3. `stores/overlay.ts` → `stores/timer.ts` → `stores/overlay.ts`
+3. `stores/overlay.ts` → `stores/countdown.ts` → `stores/overlay.ts`
 
 **Scope Clarification:**
 - Cycles 1 & 2 (notifications) don't affect the Schedule model - notifications use `Database.getPrayerByDate()` directly and are decoupled from the timing refactor (per Task 7.6 review)
-- Cycle 3 (overlay/timer) is the primary concern for this refactor
+- Cycle 3 (overlay/countdown) is the primary concern for this refactor
 - All 3 should be fixed to eliminate warnings and prevent future issues
 
 ### Fix Cycle 1 & 2: Notification Imports
@@ -388,11 +388,11 @@ export const initializeNotifications = async (
 
 Caller (app initialization) passes `refreshNotifications` when calling.
 
-### Fix Cycle 3: Overlay/Timer Imports
+### Fix Cycle 3: Overlay/Countdown Imports
 
 **Problem:**
-- `stores/overlay.ts:13`: `import { startTimerOverlay, ... } from '@/stores/timer'`
-- `stores/timer.ts:13`: `import { overlayAtom } from '@/stores/overlay'`
+- `stores/overlay.ts:13`: `import { startCountdownOverlay, ... } from '@/stores/countdown'`
+- `stores/countdown.ts:13`: `import { overlayAtom } from '@/stores/overlay'`
 
 **Fix:** Extract `overlayAtom` to separate file.
 
@@ -420,7 +420,7 @@ export { overlayAtom };
 // ... rest unchanged
 ```
 
-**File:** `stores/timer.ts` - Update import
+**File:** `stores/countdown.ts` - Update import
 
 ```typescript
 // CHANGE: import from new location
@@ -439,7 +439,7 @@ import { overlayAtom } from '@/stores/atoms/overlay';
 |------|-----|---------|
 | `stores/schedule.ts` | 5, 1 | Pure `getNextPrayer()`, smarter `refreshSequence()` |
 | `shared/time.ts` | 3 | London timezone in `createPrayerDatetime()` |
-| `stores/timer.ts` | 2, 4 | Tomorrow fallback in overlay, new atom import |
+| `stores/countdown.ts` | 2, 4 | Tomorrow fallback in overlay, new atom import |
 | `device/notifications.ts` | 4 | Dependency injection for sound preference |
 | `shared/notifications.ts` | 4 | Dependency injection for refresh function |
 | `stores/atoms/overlay.ts` | 4 | NEW: Extracted overlayAtom |

@@ -25,16 +25,16 @@
 - [x] Task 2.4: Implement atomic shift (only after fetch succeeds)
 - [x] Task 2.5: Call `setScheduleDate()` after successful shift
 
-### Phase 3: Timer Integration (stores/timer.ts)
+### Phase 3: Countdown Integration (stores/countdown.ts)
 
-- [x] Task 3.1: Update `startTimerSchedule()` to call `advanceScheduleToTomorrow` when `nextIndex === 0`
-- [x] Task 3.2: Make timer restart async-aware (await advancement before continuing)
-- [x] Task 3.3: Update `startTimers()` to always start both schedule timers (remove `isLastPrayerPassed` checks)
-- [x] Task 3.4: Keep `startTimerMidnight()` for API data freshness only
+- [x] Task 3.1: Update `startCountdownSchedule()` to call `advanceScheduleToTomorrow` when `nextIndex === 0`
+- [x] Task 3.2: Make countdown restart async-aware (await advancement before continuing)
+- [x] Task 3.3: Update `startCountdowns()` to always start both schedule countdowns (remove `isLastPrayerPassed` checks)
+- [x] Task 3.4: Keep `startCountdownMidnight()` for API data freshness only
 
 ### Phase 4: UI Updates - Critical
 
-- [x] Task 4.1: Remove "All prayers finished" conditional from `components/Timer.tsx`
+- [x] Task 4.1: Remove "All prayers finished" conditional from `components/Countdown.tsx`
 - [x] Task 4.2: Update `components/Day.tsx` to use `getDateAtom(type)`
 
 ### Phase 4: UI Updates - Animation Components
@@ -75,8 +75,8 @@
 | --------------------------------- | ----- | ------ | -------------------------------------- |
 | `stores/sync.ts`                  | 1     | ✅     | Split dateAtom, add helpers            |
 | `stores/schedule.ts`              | 2     | ✅     | Add advanceScheduleToTomorrow()        |
-| `stores/timer.ts`                 | 3     | ✅     | Update wrap behavior, async handling   |
-| `components/Timer.tsx`            | 4     | ✅     | Remove "All prayers finished"          |
+| `stores/countdown.ts`                 | 3     | ✅     | Update wrap behavior, async handling   |
+| `components/Countdown.tsx`            | 4     | ✅     | Remove "All prayers finished"          |
 | `components/Day.tsx`              | 4     | ✅     | Use schedule-specific date atom        |
 | `components/ActiveBackground.tsx` | 4     | ✅     | Use schedule-specific date atom        |
 | `components/Alert.tsx`            | 4     | ✅     | Update cascade trigger                 |
@@ -95,7 +95,7 @@
 | Decision               | Choice             | Rationale                                |
 | ---------------------- | ------------------ | ---------------------------------------- |
 | Day boundary trigger   | After final prayer | Continuous UX, no waiting state          |
-| "All prayers finished" | Remove permanently | Timer always shows next countdown        |
+| "All prayers finished" | Remove permanently | Countdown always shows next countdown        |
 | Schedule sync          | Independent        | Each resets after own final prayer       |
 | Date display           | Per-schedule       | Standard/Extras can show different dates |
 | Overlay during advance | Auto-close         | Prevent stale data display               |
@@ -128,9 +128,9 @@ After initial implementation and testing, 4 critical bugs were discovered and fi
 
 ### Bug 1: Missing Schedule Advancement on App Load
 
-**Problem:** When app was opened after the last prayer had already passed (e.g., opening at 11pm after Isha at 8pm), schedules were not advanced to tomorrow. Timer showed negative countdown or stale data.
+**Problem:** When app was opened after the last prayer had already passed (e.g., opening at 11pm after Isha at 8pm), schedules were not advanced to tomorrow. Countdown showed negative countdown or stale data.
 
-**Root Cause:** `initializeAppState()` only called `setDate()` and `startTimers()` but never checked if last prayer had already passed.
+**Root Cause:** `initializeAppState()` only called `setDate()` and `startCountdowns()` but never checked if last prayer had already passed.
 
 **Fix:** Added schedule advancement check in `stores/sync.ts:initializeAppState()`:
 
@@ -170,7 +170,7 @@ const isPassed = todayPrayer.date === today && TimeUtils.isTimePassed(todayPraye
 
 ### Bug 4: Countdown Shows Wrong Prayer After Extras Advancement
 
-**Problem:** After Duha passed (9am) on Extras schedule, timer countdown showed Midnight (11:23pm same day) but `calculateCountdown()` was trying to use "today's Midnight" which is actually tomorrow chronologically, resulting in negative countdown.
+**Problem:** After Duha passed (9am) on Extras schedule, countdown countdown showed Midnight (11:23pm same day) but `calculateCountdown()` was trying to use "today's Midnight" which is actually tomorrow chronologically, resulting in negative countdown.
 
 **Root Cause:** `shared/time.ts:calculateCountdown()` didn't handle the case where schedule has advanced (todayPrayer.date !== actual today) but yesterdayPrayer is still in the future (Extras edge case: Midnight at 23:23 is still upcoming after Duha at 9am).
 
