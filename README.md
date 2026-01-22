@@ -87,7 +87,7 @@ All 11 development features have been completed, tested, and archived:
 - [x] Automatic yearly data refresh
 - [x] Multipage with special times (Midnight, Third of night, Duha, Suhoor, Istijaba)
 - [x] Large overlay font overlay for visually impaired
-- [x] Fix UI timer drift when app in background
+- [x] Fix UI countdown drift when app in background
 - [x] Settings bottom sheet with progress bar toggle, Hijri date, Athan sound selector
 - [x] SDK 54 upgrade (React 19, RN 0.81, Expo 54)
 
@@ -116,7 +116,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 ### Display & User Interface
 
 - 📅 **Daily Prayer Times**: View all 5 standard prayers plus 5 special prayers
-- ⏰ **Real-time Countdown**: Live timer showing exact time remaining
+- ⏰ **Real-time Countdown**: Live countdown showing exact time remaining
 - 🔄 **Tomorrow's Prayer Times**: Swipe between today and tomorrow
 - 🔍 **Large Overlay Font**: Accessible mode for visually impaired
 - 🌙 **Smart Prayer Tracking**: Automatically tracks passed/next/upcoming prayers
@@ -135,7 +135,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 💾 **Local Data Caching**: Entire year stored in MMKV v4
 - 🔄 **Automatic Yearly Refresh**: Detects year transition, fetches new data
 - 📱 **Full Offline Support**: Works after initial sync
-- 🎯 **Precise Synchronization**: Countdown timers sync with system clock
+- 🎯 **Precise Synchronization**: Countdown countdowns sync with system clock
 - ⬆️ **Smart App Upgrades**: Clears stale cache, preserves preferences
 
 <br/>
@@ -212,7 +212,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 │
 ├── components/            # UI components (presentational)
 │   ├── Prayer.tsx         # Prayer row display
-│   ├── Timer.tsx          # Countdown timer
+│   ├── Countdown.tsx          # Countdown countdown
 │   ├── Alert.tsx          # Alert notification icon
 │   ├── Overlay.tsx        # Full-screen overlay
 │   ├── ProgressBar.tsx    # Progress indicator
@@ -228,7 +228,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 ├── stores/                # State management (Jotai atoms)
 │   ├── schedule.ts        # Prayer sequence state
 │   ├── notifications.ts   # Notification state
-│   ├── timer.ts           # Timer state
+│   ├── countdown.ts           # Countdown state
 │   ├── overlay.ts         # Overlay state
 │   ├── sync.ts            # Data sync and initialization
 │   ├── database.ts        # MMKV storage wrapper

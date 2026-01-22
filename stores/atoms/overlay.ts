@@ -1,6 +1,6 @@
 /**
  * Overlay atom - extracted to break circular dependency
- * between stores/overlay.ts and stores/timer.ts
+ * between stores/overlay.ts and stores/countdown.ts
  *
  * @see ai/adr/005-timing-system-overhaul.md
  */

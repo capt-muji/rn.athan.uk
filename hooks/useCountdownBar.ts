@@ -1,5 +1,5 @@
 /**
- * Hook for progress bar calculation
+ * Hook for countdown bar calculation
  * Part of the new prayer-centric timing system
  *
  * @see ai/adr/005-timing-system-overhaul.md
@@ -16,10 +16,10 @@ import {
   extraPrevPrayerAtom,
 } from '@/stores/schedule';
 
-export interface UseProgressBarResult {
+export interface UseCountdownBarResult {
   /** Progress percentage (0-100) */
   progress: number;
-  /** Whether the progress bar is ready to display */
+  /** Whether the countdown bar is ready to display */
   isReady: boolean;
 }
 
@@ -32,12 +32,12 @@ export interface UseProgressBarResult {
  * @returns Object with progress (0-100) and isReady
  *
  * @example
- * const { progress, isReady } = useProgressBar(ScheduleType.Standard);
+ * const { progress, isReady } = useCountdownBar(ScheduleType.Standard);
  * if (isReady) {
- *   // Render progress bar at {progress}%
+ *   // Render countdown bar at {progress}%
  * }
  */
-export const useProgressBar = (type: ScheduleType): UseProgressBarResult => {
+export const useCountdownBar = (type: ScheduleType): UseCountdownBarResult => {
   const nextPrayerAtom = type === ScheduleType.Standard ? standardNextPrayerAtom : extraNextPrayerAtom;
   const prevPrayerAtom = type === ScheduleType.Standard ? standardPrevPrayerAtom : extraPrevPrayerAtom;
 

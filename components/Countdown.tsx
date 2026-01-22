@@ -2,21 +2,21 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import ProgressBar from './ProgressBar';
+import CountdownBar from './CountdownBar';
 
 import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
+import { overlayCountdownAtom } from '@/stores/countdown';
 import { overlayAtom } from '@/stores/overlay';
-import { overlayTimerAtom } from '@/stores/timer';
 import { showSecondsAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
 }
 
-export default function Timer({ type }: Props) {
+export default function Countdown({ type }: Props) {
   // NEW: Use sequence-based countdown hook
   // See: ai/adr/005-timing-system-overhaul.md
   const { timeLeft, prayerName, isReady } = useCountdown(type);
@@ -24,12 +24,12 @@ export default function Timer({ type }: Props) {
   const overlay = useAtomValue(overlayAtom);
   const showSeconds = useAtomValue(showSecondsAtom);
 
-  // Overlay mode uses dedicated overlay timer atom (selected prayer countdown)
-  const overlayTimer = useAtomValue(overlayTimerAtom);
+  // Overlay mode uses dedicated overlay countdown atom (selected prayer countdown)
+  const overlayCountdown = useAtomValue(overlayCountdownAtom);
 
-  // Use overlay timer when overlay is on, otherwise use sequence-based countdown
-  const displayName = overlay.isOn ? overlayTimer.name : prayerName;
-  const displayTime = overlay.isOn ? overlayTimer.timeLeft : timeLeft;
+  // Use countdown when overlay is on, otherwise use sequence-based countdown
+  const displayName = overlay.isOn ? overlayCountdown.name : prayerName;
+  const displayTime = overlay.isOn ? overlayCountdown.timeLeft : timeLeft;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
@@ -44,8 +44,8 @@ export default function Timer({ type }: Props) {
     <Animated.View style={[styles.container]}>
       <View>
         <Text style={[styles.text]}>{displayName}</Text>
-        <Animated.Text style={[styles.timer, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
-        <ProgressBar type={type} />
+        <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
+        <CountdownBar type={type} />
       </View>
     </Animated.View>
   );
@@ -53,7 +53,7 @@ export default function Timer({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: STYLES.timer.height,
+    height: STYLES.countdown.height,
     marginBottom: 40,
     justifyContent: 'center',
   },
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: COLORS.textSecondary,
   },
-  timer: {
+  countdown: {
     color: 'white',
     fontSize: TEXT.size + 8,
     textAlign: 'center',

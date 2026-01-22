@@ -195,7 +195,7 @@ export const isFriday = (date?: string | Date): boolean => {
 export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
 
 /**
- * Checks if a given date is January 1st (needed for ProgressBar yesterday's data)
+ * Checks if a given date is January 1st (needed for CountdownBar yesterday's data)
  * @param date Date object
  * @returns boolean indicating if the date is January 1st
  */
@@ -268,7 +268,7 @@ export const getSecondsBetween = (from: Date, to: Date): number => {
  * 5. Spacing: Units separated by single space
  *
  * Use Cases:
- * - Timer countdown: Use hideSeconds=true to avoid flicker in UI
+ * - Countdown: Use hideSeconds=true to avoid flicker in UI
  * - Precise display: Use hideSeconds=false for exact timing
  * - Last minute urgency: hideSeconds=true shows seconds in final 60s
  *

@@ -248,16 +248,16 @@ export interface StoredPrayerSequence {
 }
 
 // =============================================================================
-// TIMER AND OVERLAY STATE TYPES
+// COUNTDOWN AND OVERLAY STATE TYPES
 // =============================================================================
 
-export enum TimerKey {
+export enum CountdownKey {
   Standard = 'standard',
   Extra = 'extra',
   Overlay = 'overlay',
 }
 
-export interface TimerStore {
+export interface CountdownStore {
   timeLeft: number;
   name: string;
 }
