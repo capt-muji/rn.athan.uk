@@ -20,26 +20,26 @@ Created: 2026-01-22
 
 ### Task 1: formatTimeAgo
 
-- [ ] Function returns "now" for seconds < 60
-- [ ] Function returns "1m", "59m" for 1-59 minutes
-- [ ] Function returns "1h", "10h 15m" for 1+ hours
-- [ ] No seconds displayed
-- [ ] JSDoc complete
+- [x] Function returns "now" for seconds < 60
+- [x] Function returns "1m", "59m" for 1-59 minutes
+- [x] Function returns "1h", "10h 15m" for 1+ hours
+- [x] No seconds displayed
+- [x] JSDoc complete
 
 ### Task 2: usePrayerAgo hook
 
-- [ ] Hook returns { prayerAgo, isReady }
-- [ ] Uses getPrevPrayer() correctly
-- [ ] Handles Fajr case (yesterday's Isha)
-- [ ] Updates every 60 seconds
-- [ ] JSDoc complete
+- [x] Hook returns { prayerAgo, isReady }
+- [x] Uses getPrevPrayer() correctly
+- [x] Handles Fajr case (yesterday's Isha)
+- [x] Updates every 60 seconds
+- [x] JSDoc complete
 
 ### Task 3: Countdown.tsx
 
-- [ ] Prayer ago text appears below countdown timer
-- [ ] Uses TEXT.sizeSmall, COLORS.textSecondary
-- [ ] Format: "Fajr now", "Asr 10h 15m ago"
-- [ ] Uses React.memo
+- [x] Prayer ago text appears in component
+- [x] Uses TEXT.sizeSmall, COLORS.textSecondary
+- [x] Format: "Fajr now", "Asr 10h 15m ago"
+- [x] Hidden in overlay mode
 
 ### Task 4: Manual Testing
 
