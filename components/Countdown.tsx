@@ -37,6 +37,11 @@ export default function Countdown({ type }: Props) {
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
   }));
 
+  // Fade out when overlay opens
+  const prayerAgoOpacity = useAnimatedStyle(() => ({
+    opacity: withTiming(overlay.isOn ? 0 : 1, { duration: 150 }),
+  }));
+
   // Show loading state if countdown not ready (sequence not initialized)
   if (!isReady && !overlay.isOn) {
     return null;
@@ -48,7 +53,7 @@ export default function Countdown({ type }: Props) {
         <Text style={[styles.text]}>{displayName}</Text>
         <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
         <CountdownBar type={type} />
-        {prayerAgoReady && !overlay.isOn && prayerAgo && <Text style={[styles.prayerAgo]}>{prayerAgo}</Text>}
+        <Animated.Text style={[styles.prayerAgo, prayerAgoOpacity]}>{prayerAgoReady && prayerAgo}</Animated.Text>
       </View>
     </Animated.View>
   );
