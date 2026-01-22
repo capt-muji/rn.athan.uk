@@ -305,3 +305,27 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
 
   return parts.join(' ');
 };
+
+/**
+ * Formats seconds elapsed into "ago" text without seconds display
+ *
+ * @param seconds - Seconds since prayer occurred (can be 0 or positive)
+ * @returns "now" (<60s), "1m" (1-59m), "10h 15m" (1h+)
+ *
+ * @example
+ * formatTimeAgo(45)      // "now"
+ * formatTimeAgo(120)     // "2m"
+ * formatTimeAgo(5400)    // "1h 30m"
+ */
+export const formatTimeAgo = (seconds: number): string => {
+  if (seconds < 0) return 'now';
+  if (seconds < 60) return 'now';
+
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return `${minutes}m`;
+
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  if (remainingMinutes === 0) return `${hours}h`;
+  return `${hours}h ${remainingMinutes}m`;
+};
