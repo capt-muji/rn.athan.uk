@@ -11,15 +11,18 @@ import { getPrevPrayer } from '@/stores/schedule';
  * @param type - Schedule type (Standard or Extra)
  * @returns Object with:
  *   - prayerAgo: Formatted string (e.g., "Fajr now", "Dhuhr 10h 15m ago")
+ *   - minutesElapsed: Minutes since previous prayer (for styling)
  *   - isReady: Whether prayer data is loaded
  *
  * @example
- * const { prayerAgo, isReady } = usePrayerAgo(ScheduleType.Standard);
+ * const { prayerAgo, minutesElapsed, isReady } = usePrayerAgo(ScheduleType.Standard);
  * // prayerAgo: "Fajr now" (if <60s since Fajr)
  * // prayerAgo: "Asr 2h 30m ago" (if 2.5h since Asr)
+ * // minutesElapsed: 150 (if 2.5h since Asr)
  */
-export const usePrayerAgo = (type: ScheduleType): { prayerAgo: string; isReady: boolean } => {
+export const usePrayerAgo = (type: ScheduleType): { prayerAgo: string; minutesElapsed: number; isReady: boolean } => {
   const [prayerAgo, setPrayerAgo] = useState<string>('');
+  const [minutesElapsed, setMinutesElapsed] = useState<number>(0);
   const [isReady, setIsReady] = useState(false);
 
   const updatePrayerAgo = useCallback(() => {
@@ -32,11 +35,13 @@ export const usePrayerAgo = (type: ScheduleType): { prayerAgo: string; isReady: 
 
       const now = createLondonDate();
       const secondsElapsed = Math.floor((now.getTime() - prevPrayer.datetime.getTime()) / 1000);
+      const minutes = Math.floor(secondsElapsed / 60);
       const timeAgo = formatTimeAgo(secondsElapsed);
 
       const agoText = secondsElapsed < 60 ? `${prevPrayer.english} now` : `${prevPrayer.english} ${timeAgo} ago`;
 
       setPrayerAgo(agoText);
+      setMinutesElapsed(minutes);
       setIsReady(true);
     } catch {
       setIsReady(false);
@@ -50,5 +55,5 @@ export const usePrayerAgo = (type: ScheduleType): { prayerAgo: string; isReady: 
     return () => clearInterval(interval);
   }, [updatePrayerAgo]);
 
-  return { prayerAgo, isReady };
+  return { prayerAgo, minutesElapsed, isReady };
 };
