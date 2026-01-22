@@ -21,7 +21,7 @@ export default function Countdown({ type }: Props) {
   // NEW: Use sequence-based countdown hook
   // See: ai/adr/005-timing-system-overhaul.md
   const { timeLeft, prayerName, isReady } = useCountdown(type);
-  const { prayerAgo, isReady: prayerAgoReady } = usePrayerAgo(type);
+  const { prayerAgo, minutesElapsed, isReady: prayerAgoReady } = usePrayerAgo(type);
 
   const overlay = useAtomValue(overlayAtom);
   const showSeconds = useAtomValue(showSecondsAtom);
@@ -42,6 +42,13 @@ export default function Countdown({ type }: Props) {
     opacity: withTiming(overlay.isOn ? 0 : 1, { duration: 150 }),
   }));
 
+  // Vibrant royal blue highlight for recent prayers (≤5 mins), otherwise normal style
+  const isRecent = minutesElapsed <= 5;
+  const prayerAgoStyle = useAnimatedStyle(() => ({
+    color: isRecent ? '#a5b4fc' : '#a0c8ff80',
+    backgroundColor: isRecent ? '#6366f130' : '#8ab4e810',
+  }));
+
   // Show loading state if countdown not ready (sequence not initialized)
   if (!isReady && !overlay.isOn) {
     return null;
@@ -53,7 +60,9 @@ export default function Countdown({ type }: Props) {
         <Text style={[styles.text]}>{displayName}</Text>
         <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
         <CountdownBar type={type} />
-        <Animated.Text style={[styles.prayerAgo, prayerAgoOpacity]}>{prayerAgoReady && prayerAgo}</Animated.Text>
+        <Animated.Text style={[styles.prayerAgo, prayerAgoOpacity, prayerAgoStyle]}>
+          {prayerAgoReady && prayerAgo}
+        </Animated.Text>
       </View>
     </Animated.View>
   );
@@ -83,9 +92,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: TEXT.sizeSmall - 2,
     marginTop: 12,
-    color: '#a0c8ff80',
     fontFamily: TEXT.family.regular,
-    backgroundColor: '#8ab4e810',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 999,
