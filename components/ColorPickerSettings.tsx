@@ -9,22 +9,23 @@ import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarHiddenAtom } from '@/stores/ui';
 
 const SWATCH_COLORS = [
-  '#00ffea', // cyan
-  '#ff00ff', // magenta
-  '#00ff00', // lime
-  '#ff3333', // red
-  '#3399ff', // sky blue
+  '#00eeff', // cyan
+  '#ff0055', // hot pink
+  '#00ff66', // lime green
+  '#ff6600', // orange
   '#ffff00', // yellow
-  '#ff9900', // orange
-  '#cc33ff', // purple
-  '#ff66b2', // pink
-  '#00cc99', // teal
-  '#ffcc00', // amber
-  '#66ff66', // mint
-  '#ff6633', // coral
-  '#3366ff', // royal blue
-  '#99ff33', // chartreuse
-  '#ff3399', // hot pink
+  '#3355ff', // royal blue
+  '#9900ff', // purple
+];
+
+const SWATCH_COLORS_2 = [
+  '#ff0033', // bright red
+  '#00e5ff', // bright teal
+  '#ff5722', // coral
+  '#4a00ff', // indigo
+  '#39ff14', // neon green
+  '#ffb300', // amber
+  '#ff0090', // magenta
 ];
 
 const DEFAULT_COLOR = SWATCH_COLORS[0];
@@ -115,6 +116,7 @@ export default function ColorPickerSettings() {
               <Panel1 style={styles.panel} />
               <HueSlider style={styles.hueSlider} />
               <Swatches colors={SWATCH_COLORS} style={styles.swatches} />
+              <Swatches colors={SWATCH_COLORS_2} style={styles.swatches} />
             </ColorPicker>
           </View>
         </View>
@@ -253,7 +255,7 @@ const styles = StyleSheet.create({
   },
   swatches: {
     marginTop: 10,
-    flexWrap: 'wrap',
+    paddingBottom: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 8,
