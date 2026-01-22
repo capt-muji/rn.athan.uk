@@ -5,6 +5,7 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import CountdownBar from './CountdownBar';
 
 import { useCountdown } from '@/hooks/useCountdown';
+import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { COLORS, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
@@ -20,6 +21,7 @@ export default function Countdown({ type }: Props) {
   // NEW: Use sequence-based countdown hook
   // See: ai/adr/005-timing-system-overhaul.md
   const { timeLeft, prayerName, isReady } = useCountdown(type);
+  const { prayerAgo, isReady: prayerAgoReady } = usePrayerAgo(type);
 
   const overlay = useAtomValue(overlayAtom);
   const showSeconds = useAtomValue(showSecondsAtom);
@@ -46,6 +48,7 @@ export default function Countdown({ type }: Props) {
         <Text style={[styles.text]}>{displayName}</Text>
         <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
         <CountdownBar type={type} />
+        {prayerAgoReady && !overlay.isOn && prayerAgo && <Text style={[styles.prayerAgo]}>{prayerAgo}</Text>}
       </View>
     </Animated.View>
   );
@@ -69,5 +72,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: TEXT.family.medium,
     marginBottom: 16,
+  },
+  prayerAgo: {
+    textAlign: 'center',
+    fontSize: TEXT.sizeSmall,
+    marginTop: 8,
+    color: COLORS.textSecondary,
+    fontFamily: TEXT.family.regular,
   },
 });
