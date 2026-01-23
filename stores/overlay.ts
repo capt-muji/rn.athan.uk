@@ -41,6 +41,14 @@ const canShowOverlay = (type: ScheduleType): boolean => {
   return timeLeft > 2;
 };
 
+/**
+ * Toggles the overlay visibility
+ *
+ * Can force a specific state or toggle current state.
+ * Guards against opening when countdown is too low (≤2 seconds).
+ *
+ * @param force Optional boolean to force specific state (true = open, false = close)
+ */
 const toggleOverlay = (force?: boolean) => {
   const overlay = store.get(overlayAtom);
   const newState = force !== undefined ? force : !overlay.isOn;
@@ -51,6 +59,16 @@ const toggleOverlay = (force?: boolean) => {
   store.set(overlayAtom, { ...overlay, isOn: newState });
 };
 
+/**
+ * Sets the selected prayer for overlay display
+ *
+ * Updates the overlay state with the new prayer index and schedule type.
+ * Restarts the overlay countdown for the selected prayer.
+ * Guards against selection when countdown is too low.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param index Prayer index within the schedule
+ */
 const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
   if (!canShowOverlay(scheduleType)) return;
 

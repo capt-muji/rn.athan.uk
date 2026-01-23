@@ -11,6 +11,21 @@ import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ScheduleType } from '@/shared/types';
 import { englishWidthStandardAtom, englishWidthExtraAtom } from '@/stores/ui';
 
+/**
+ * Hook for accessing individual prayer data with derived status
+ *
+ * Returns prayer data at the specified index with computed isPassed and isNext.
+ * For overlay mode: if prayer passed, shows the next occurrence (tomorrow's prayer).
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @param index Prayer index within today's filtered prayers (default: 0)
+ * @param isOverlay Whether this is for the overlay display (default: false)
+ * @returns Prayer data with status flags and UI configuration
+ *
+ * @example
+ * const prayer = usePrayer(ScheduleType.Standard, 2); // Get Dhuhr
+ * const { english, arabic, time, isPassed, isNext } = prayer;
+ */
 export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   // NEW: Use sequence-based prayer data with derived isPassed and isNext
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
