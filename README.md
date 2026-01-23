@@ -64,7 +64,7 @@ All 11 development features have been completed, tested, and archived:
 - ✅ **Timing System Bugfixes**: 5 post-refactor bugs resolved
 - ✅ **Isha Display Bug**: Critical Standard schedule fix
 - ✅ **Islamic Day Boundary**: Prayer-based day advancement
-- ✅ **ProgressBar Midnight Fix**: Accurate midnight progress display
+- ✅ **CountdownBar Midnight Fix**: Accurate midnight progress display
 - ✅ **Midnight Prayer**: New Extra prayer (midpoint Magrib-Fajr)
 - ✅ **Prayer Explanations**: Contextual overlay help text
 - ✅ **Overlay Date Display**: Formatted date in overlay
@@ -215,7 +215,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 │   ├── Countdown.tsx          # Countdown countdown
 │   ├── Alert.tsx          # Alert notification icon
 │   ├── Overlay.tsx        # Full-screen overlay
-│   ├── ProgressBar.tsx    # Progress indicator
+│   ├── CountdownBar.tsx  # Progress indicator
 │   └── ...                # Other UI components
 │
 ├── hooks/                 # Custom React hooks (logic extraction)

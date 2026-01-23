@@ -313,14 +313,14 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** Task 3.1
 - **QA Score:** 98/100
 
-#### Task 3.5: Create useProgressBar() hook ✅
+#### Task 3.5: Create useCountdownBar() hook ✅
 
-- [x] Create new file: `hooks/useProgressBar.ts`
+- [x] Create new file: `hooks/useCountdownBar.ts`
 - [x] Returns `{ progress: number }` (0-100)
 - [x] Uses prevPrayer and nextPrayer from sequence
 - [x] Simple: `(now - prev.datetime) / (next.datetime - prev.datetime) * 100`
 - [x] No special "first prayer" or "yesterday" logic needed
-- **File:** `hooks/useProgressBar.ts` (new)
+- **File:** `hooks/useCountdownBar.ts` (new)
 - **Dependencies:** Tasks 3.1, 2.5
 - **QA Score:** 98/100
 
@@ -393,13 +393,13 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 - **Dependencies:** Task 3.4
 - **QA Score:** 100/100
 
-#### Task 5.2: Update ProgressBar.tsx to use new hook ✅
+#### Task 5.2: Update CountdownBar.tsx to use new hook ✅
 
-- [x] Import `useProgressBar()` hook
-- [x] Replace `useMemo()` progress calculation with `useProgressBar(type)`
+- [x] Import `useCountdownBar()` hook
+- [x] Replace `useMemo()` progress calculation with `useCountdownBar(type)`
 - [x] Remove all `schedule.yesterday`, `schedule.today`, `schedule.nextIndex` usage
 - [x] Greatly simplified component
-- **File:** `components/ProgressBar.tsx`
+- **File:** `components/CountdownBar.tsx`
 - **Dependencies:** Task 3.5
 - **QA Score:** 100/100
 
@@ -746,11 +746,11 @@ If `prayers.find(p => p.datetime > now)` returns undefined (all prayers passed):
 | `hooks/useNextPrayer.ts`               | 3     | NEW: Next prayer hook                                 |
 | `hooks/usePrayerSequence.ts`           | 3     | NEW: Sequence hook                                    |
 | `hooks/useCountdown.ts`                | 3     | NEW: Countdown hook                                   |
-| `hooks/useProgressBar.ts`              | 3     | NEW: Progress hook                                    |
+| `hooks/useCountdownBar.ts`              | 3     | NEW: Progress hook                                    |
 | `hooks/usePrayer.ts`                   | 5     | Use sequence-based isPassed                           |
 | `hooks/useSchedule.ts`                 | 5     | Add sequence mode option                              |
 | `components/Countdown.tsx`                 | 5     | Use useCountdown hook                                 |
-| `components/ProgressBar.tsx`           | 5     | Use useProgressBar hook                               |
+| `components/CountdownBar.tsx`           | 5     | Use useCountdownBar hook                               |
 | `components/Prayer.tsx`                | 5     | Use derived isPassed                                  |
 | `components/Day.tsx`                   | 5     | Use derived displayDate                               |
 | `components/ActiveBackground.tsx`      | 5     | Use sequence-based index                              |
@@ -850,7 +850,7 @@ Phase 7 cleanup is the point of no return. Before starting Phase 7:
 
 **What Gets Simplified:**
 
-- ProgressBar: `progress = (now - prev.datetime) / (next.datetime - prev.datetime)`
+- CountdownBar: `progress = (now - prev.datetime) / (next.datetime - prev.datetime)`
 - isPassed: `prayer.datetime < now`
 - countdown: `nextPrayer.datetime - now`
 - displayDate: `nextPrayer.belongsToDate`

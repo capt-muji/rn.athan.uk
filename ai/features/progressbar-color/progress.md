@@ -1,4 +1,4 @@
-# Feature Progress: progressbar-color
+# Feature Progress: countdownbar-color
 
 **Status:** ✅ Complete
 **Created:** 2026-01-21
@@ -18,7 +18,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ### Phase 1: Storage Foundation
 
 - [x] **1.1** Add `atomWithStorageString` helper to `stores/storage.ts`
-- [x] **1.2** Add `progressbarColorAtom` to `stores/ui.ts`
+- [x] **1.2** Add `countdownbarColorAtom` to `stores/ui.ts`
 
 ### Phase 2: Color Picker UI
 
@@ -26,9 +26,9 @@ Allow users to customize the color of the countdown progress bar via a full colo
 - [x] **2.2** Create `ColorPickerSettings.tsx` component
 - [x] **2.3** Add reset functionality to ColorPickerSettings
 
-### Phase 3: ProgressBar Integration
+### Phase 3: CountdownBar Integration
 
-- [x] **3.1** Modify ProgressBar.tsx to use color preference
+- [x] **3.1** Modify CountdownBar.tsx to use color preference
 - [x] **3.2** Handle first-render color setup
 
 ### Phase 4: Settings Integration
@@ -57,13 +57,13 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ## Quick Reference
 
 **Default Color:** `#00ffea` (cyan)
-**Storage Key:** `preference_progressbar_color`
+**Storage Key:** `preference_countdownbar_color`
 **Affected Files:** 5 (4 modified, 1 new)
 
 | File                                 | Change Type | Description                          |
 | ------------------------------------ | ----------- | ------------------------------------ |
 | `stores/storage.ts`                  | Modified    | Added `atomWithStorageString` helper |
-| `stores/ui.ts`                       | Modified    | Added `progressbarColorAtom`         |
+| `stores/ui.ts`                       | Modified    | Added `countdownbarColorAtom`         |
 | `components/ColorPickerSettings.tsx` | New         | Color picker UI component            |
-| `components/ProgressBar.tsx`         | Modified    | Use user's color preference          |
+| `components/CountdownBar.tsx`         | Modified    | Use user's color preference          |
 | `components/BottomSheetSettings.tsx` | Modified    | Added color picker option            |

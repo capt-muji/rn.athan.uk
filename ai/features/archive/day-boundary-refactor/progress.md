@@ -124,7 +124,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 
 - [ ] Task 2.5.1: Verify December triggers next year data fetch
 - [ ] Task 2.5.2: Verify Jan 1 fetches previous year Dec 31 data
-- [ ] Task 2.5.3: Verify ProgressBar has yesterday's Isha on Jan 1
+- [ ] Task 2.5.3: Verify CountdownBar has yesterday's Isha on Jan 1
 
 #### 2.6 Scenario 9: Friday with Istijaba
 
@@ -144,7 +144,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 - [ ] Task 2.8.1: Verify countdown wraps to tomorrow when today's prayer passed (Scenario 11)
 - [ ] Task 2.8.2: Verify Extras Midnight countdown uses yesterday's data after Duha (Scenario 12)
 - [ ] Task 2.8.3: Verify isPassed calculation after schedule advancement (Scenario 13)
-- [ ] Task 2.8.4: Verify ProgressBar has yesterday's Isha at 03:00 for Fajr progress (Scenario 14)
+- [ ] Task 2.8.4: Verify CountdownBar has yesterday's Isha at 03:00 for Fajr progress (Scenario 14)
 
 #### 2.9 App Resume From Background (NEW - from QA review)
 
@@ -197,7 +197,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 - [ ] Task 4.3.1: Verify blue highlight always visible on next prayer
 - [ ] Task 4.3.2: Verify yPosition calculation after nextIndex changes
 
-#### 4.4 ProgressBar calculation
+#### 4.4 CountdownBar calculation
 
 - [ ] Task 4.4.1: Verify progress calculation when nextIndex is 0
 - [ ] Task 4.4.2: Verify lastIndex calculation matches schedule length
@@ -251,7 +251,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 - [ ] Task 6.2.3: Friday: Extras advances after Istijaba
 - [ ] Task 6.2.4: Both schedules can show different dates
 - [ ] Task 6.2.5: App open after Isha: shows tomorrow immediately
-- [ ] Task 6.2.6: ProgressBar works at 03:00 (uses yesterday's Isha)
+- [ ] Task 6.2.6: CountdownBar works at 03:00 (uses yesterday's Isha)
 - [ ] Task 6.2.7: ActiveBackground highlights correct prayer after advancement
 - [ ] Task 6.2.8: Overlay closes during advancement, reopens with fresh data
 
@@ -272,7 +272,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 | `components/ActiveBackground.tsx` | 4       | yPosition calculation, visibility                             |
 | `components/Countdown.tsx`            | 4       | countdown display                                                 |
 | `components/Day.tsx`              | 4       | date display per schedule                                     |
-| `components/ProgressBar.tsx`      | 4       | yesterday data access                                         |
+| `components/CountdownBar.tsx`      | 4       | yesterday data access                                         |
 | `shared/prayer.ts`                | 2       | findNextPrayerIndex(), createSchedule(), isFriday()           |
 | `shared/constants.ts`             | 2       | ISTIJABA_INDEX value                                          |
 
@@ -283,7 +283,7 @@ The app already uses `mocks/simple.ts` for dev mode API mocking. To test summer 
 | Issue                                       | Location                    | Description                                     | Priority |
 | ------------------------------------------- | --------------------------- | ----------------------------------------------- | -------- |
 | Date comparison requires both date AND time | usePrayer.ts                | isPassed = date === today && isTimePassed(time) | HIGH     |
-| Yesterday data dependency                   | ProgressBar.tsx             | Requires schedule.yesterday[lastIndex]          | HIGH     |
+| Yesterday data dependency                   | CountdownBar.tsx             | Requires schedule.yesterday[lastIndex]          | HIGH     |
 | Race condition window                       | advanceScheduleToTomorrow() | Between fetch and shift                         | MEDIUM   |
 | nextIndex state after advancement           | schedule.ts                 | Already set to 0 (verified)                     | VERIFIED |
 | Timezone edge cases                         | time.ts                     | createLondonDate at DST boundaries              | MEDIUM   |

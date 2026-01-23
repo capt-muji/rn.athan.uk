@@ -123,7 +123,8 @@ export const clearUpgradeCache = (): void => {
     // Database.clearPrefix('preference_alert_standard_'); // User's notification preferences for Standard prayers
     // Database.clearPrefix('preference_alert_extra_'); // User's notification preferences for Extra prayers
     // Database.clearPrefix('preference_sound'); // User's selected Athan audio
-    // Database.clearPrefix('preference_progressbar_hidden'); // User's countdown bar hidden preference
+    // Database.clearPrefix('preference_countdownbar_shown'); // User's countdown bar shown preference
+    // Database.clearPrefix('preference_countdownbar_color'); // User's countdown bar color preference
     // Database.clearPrefix('preference_hijri_date'); // User's Hijri date preference
 
     // ============================================================================

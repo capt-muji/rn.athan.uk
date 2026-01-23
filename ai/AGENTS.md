@@ -59,7 +59,7 @@
 │   └── Screen.tsx         # Screen wrapper
 ├── components/            # Reusable UI components
 │   ├── Prayer.tsx         # Prayer time display row
-│   ├── ProgressBar.tsx    # Countdown progress bar
+│   ├── CountdownBar.tsx    # Countdown progress bar
 │   ├── Overlay.tsx        # Large text overlay (accessibility)
 │   ├── BottomSheetShared.tsx # Shared bottom sheet utilities (background, backdrop, styles)
 │   ├── BottomSheetSettings.tsx # Settings bottom sheet (Masjid icon tap)
@@ -315,7 +315,7 @@ All 11 features completed and archived to `ai/features/archive/`:
 
 | Category        | Features                                                                                                         |
 | --------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Core Timing     | timing-system-overhaul, timing-system-bugfixes, isha-display-bug, islamic-day-boundary, progressbar-midnight-fix |
+| Core Timing     | timing-system-overhaul, timing-system-bugfixes, isha-display-bug, islamic-day-boundary, countdownbar-midnight-fix |
 | Prayer Features | midnight-prayer, prayer-explanations                                                                             |
 | UI Improvements | overlay-date-display, measurement-system-improvements                                                            |
 | Code Quality    | codebase-cleanup-2026-01-20                                                                                      |
