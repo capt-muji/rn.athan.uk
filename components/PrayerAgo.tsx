@@ -23,8 +23,8 @@ export default function PrayerAgo({ type }: Props) {
   // Vibrant royal blue highlight for recent prayers (≤5 mins), otherwise normal style
   const isRecent = minutesElapsed <= 5;
   const prayerAgoStyle = useAnimatedStyle(() => ({
-    color: isRecent ? '#a5b4fc' : '#a0c8ff80',
-    backgroundColor: isRecent ? '#6366f130' : '#8ab4e810',
+    color: isRecent ? '#d5e8ff' : '#a0c8ff80',
+    backgroundColor: isRecent ? '#8d79ff2f' : '#63a9ff10',
   }));
 
   if (!prayerAgoReady) return null;
