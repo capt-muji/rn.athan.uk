@@ -2,15 +2,14 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import CountdownBar from './CountdownBar';
-
+import CountdownBar from '@/components/CountdownBar';
 import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { overlayCountdownAtom } from '@/stores/countdown';
 import { overlayAtom } from '@/stores/overlay';
-import { showSecondsAtom } from '@/stores/ui';
+import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -23,6 +22,7 @@ export default function Countdown({ type }: Props) {
 
   const overlay = useAtomValue(overlayAtom);
   const showSeconds = useAtomValue(showSecondsAtom);
+  const countdownBarShown = useAtomValue(countdownBarShownAtom);
 
   // Overlay mode uses dedicated overlay countdown atom (selected prayer countdown)
   const overlayCountdown = useAtomValue(overlayCountdownAtom);
@@ -45,7 +45,7 @@ export default function Countdown({ type }: Props) {
       <View>
         <Text style={[styles.text]}>{displayName}</Text>
         <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
-        <CountdownBar type={type} />
+        {countdownBarShown && <CountdownBar type={type} />}
       </View>
     </Animated.View>
   );
