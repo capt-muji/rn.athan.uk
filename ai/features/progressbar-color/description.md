@@ -1,4 +1,4 @@
-# Feature: progressbar-color
+# Feature: countdownbar-color
 
 **Status:** Draft  
 **Author:** User  
@@ -14,7 +14,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ## Goals
 
 - [ ] Add color picker option in settings bottom sheet
-- [ ] Persist color preference to MMKV (key: `preference_progressbar_color`)
+- [ ] Persist color preference to MMKV (key: `preference_countdownbar_color`)
 - [ ] Apply selected color to ALL progress bars (both Standard and Extra schedules)
 - [ ] Add reset button to restore default cyan color
 - [ ] Install necessary color picker package
@@ -53,21 +53,21 @@ Allow users to customize the color of the countdown progress bar via a full colo
 
 ### Data Flow
 
-User taps settings → Opens settings bottom sheet → Taps color option → Opens color picker → Selects color → Color saved to MMKV → ProgressBar components read preference and apply color
+User taps settings → Opens settings bottom sheet → Taps color option → Opens color picker → Selects color → Color saved to MMKV → CountdownBar components read preference and apply color
 
 ### Components Affected
 | Component | Change Type | Description |
 |-----------|-------------|-------------|
-| `components/ProgressBar.tsx` | Modified | Accept color prop from preference |
+| `components/CountdownBar.tsx` | Modified | Accept color prop from preference |
 | `components/BottomSheetSettings.tsx` | Modified | Add color picker option |
 | New: ColorPicker component | New | Wrapper for color picker package |
-| `stores/ui.ts` | Modified | Add progressbarColor atom with atomWithStorage |
-| MMKV database | Modified | New key: `preference_progressbar_color` |
+| `stores/ui.ts` | Modified | Add countdownbarColor atom with atomWithStorage |
+| MMKV database | Modified | New key: `preference_countdownbar_color` |
 
 ### State Changes
-- New state/atoms: `progressbarColor` atom (string - hex color)
+- New state/atoms: `countdownbarColor` atom (string - hex color)
 - Modified state: None
-- Storage keys: `preference_progressbar_color` (string, default: cyan)
+- Storage keys: `preference_countdownbar_color` (string, default: cyan)
 
 ### API Changes
 - No API changes - all local storage
@@ -106,9 +106,9 @@ User taps settings → Opens settings bottom sheet → Taps color option → Ope
 
 ### Phase 1: Development
 - [ ] Install color picker package
-- [ ] Add progressbarColor atom to stores/ui.ts
+- [ ] Add countdownbarColor atom to stores/ui.ts
 - [ ] Create ColorPicker component or integrate into settings
-- [ ] Update ProgressBar.tsx to use color preference
+- [ ] Update CountdownBar.tsx to use color preference
 - [ ] Update BottomSheetSettings.tsx with color option and reset button
 - [ ] Test all edge cases
 

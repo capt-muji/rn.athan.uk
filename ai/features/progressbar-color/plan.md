@@ -1,4 +1,4 @@
-# Implementation Plan: progressbar-color
+# Implementation Plan: countdownbar-color
 
 **Status:** Architect Approved  
 **Created:** 2026-01-21  
@@ -13,7 +13,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ## Key Findings
 
 ### Current Implementation
-- `ProgressBar.tsx` uses `interpolateColor` with hardcoded colors: cyan (`#00ffea`) for normal, red (`#ff0080`) for warning
+- `CountdownBar.tsx` uses `interpolateColor` with hardcoded colors: cyan (`#00ffea`) for normal, red (`#ff0080`) for warning
 - `colorValue` shared value controls color state (0 = normal, 1 = warning)
 - Color is applied to both `colorStyle`, `glowStyle`, `warningGlowStyle`
 
@@ -31,7 +31,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 
 ### Phase 1: Storage Foundation
 ### Phase 2: Color Picker UI
-### Phase 3: ProgressBar Integration
+### Phase 3: CountdownBar Integration
 ### Phase 4: Settings Integration
 ### Phase 5: Testing & Verification
 
@@ -52,15 +52,15 @@ Allow users to customize the color of the countdown progress bar via a full colo
   - [ ] Uses MMKV `getString` / `set` methods
   - [ ] Works with `getOnInit: true` option
 
-**Task 1.2: Add progressbarColorAtom to stores/ui.ts**
+**Task 1.2: Add countdownbarColorAtom to stores/ui.ts**
 - **File:** `stores/ui.ts`
 - **Change Type:** Modified
 - **Description:** Add new atom for progress bar color preference using the new helper
 - **Complexity:** Small
 - **Dependencies:** Task 1.1
 - **Acceptance Criteria:**
-  - [ ] New atom `progressbarColorAtom` added
-  - [ ] Key: `preference_progressbar_color`
+  - [ ] New atom `countdownbarColorAtom` added
+  - [ ] Key: `preference_countdownbar_color`
   - [ ] Default value: `#00ffea` (cyan)
   - [ ] Exported from stores/ui.ts
 
@@ -105,23 +105,23 @@ Allow users to customize the color of the countdown progress bar via a full colo
 
 ---
 
-### Phase 3: ProgressBar Integration (1-2 hours)
+### Phase 3: CountdownBar Integration (1-2 hours)
 
-**Task 3.1: Modify ProgressBar.tsx to use color preference**
-- **File:** `components/ProgressBar.tsx`
+**Task 3.1: Modify CountdownBar.tsx to use color preference**
+- **File:** `components/CountdownBar.tsx`
 - **Change Type:** Modified
-- **Description:** Update ProgressBar to read and apply user's color preference
+- **Description:** Update CountdownBar to read and apply user's color preference
 - **Complexity:** Medium
 - **Dependencies:** Task 1.2
 - **Acceptance Criteria:**
-  - [ ] ProgressBar reads `progressbarColorAtom`
+  - [ ] CountdownBar reads `countdownbarColorAtom`
   - [ ] User's color is used instead of hardcoded cyan for normal state
   - [ ] Warning state still uses red (`#ff0080`) for visibility
   - [ ] Smooth color transitions still work
   - [ ] No regressions in animation behavior
 
 **Task 3.2: Handle first-render color setup**
-- **File:** `components/ProgressBar.tsx`
+- **File:** `components/CountdownBar.tsx`
 - **Change Type:** Modified
 - **Description:** Ensure color preference is applied correctly on first app launch
 - **Complexity:** Small
@@ -201,9 +201,9 @@ Allow users to customize the color of the countdown progress bar via a full colo
 | File | Change Type | Description |
 |------|-------------|-------------|
 | `stores/storage.ts` | Modified | Add `atomWithStorageString` helper |
-| `stores/ui.ts` | Modified | Add `progressbarColorAtom` |
+| `stores/ui.ts` | Modified | Add `countdownbarColorAtom` |
 | `components/ColorPickerSettings.tsx` | **New** | Color picker UI component |
-| `components/ProgressBar.tsx` | Modified | Use color preference instead of hardcoded cyan |
+| `components/CountdownBar.tsx` | Modified | Use color preference instead of hardcoded cyan |
 | `components/BottomSheetSettings.tsx` | Modified | Add color picker option to settings |
 
 ---
@@ -224,8 +224,8 @@ Allow users to customize the color of the countdown progress bar via a full colo
 If issues arise:
 
 1. **Remove color picker package**: Uninstall via Yarn, revert settings UI
-2. **Rollback storage**: Remove `progressbarColorAtom`, color persists in MMKV but unused
-3. **ProgressBar revert**: Revert to hardcoded cyan in `interpolateColor`
+2. **Rollback storage**: Remove `countdownbarColorAtom`, color persists in MMKV but unused
+3. **CountdownBar revert**: Revert to hardcoded cyan in `interpolateColor`
 4. **Settings revert**: Remove color picker row from BottomSheetSettings
 
 All changes are localized to 5 files. Rollback can be done by reverting those files.

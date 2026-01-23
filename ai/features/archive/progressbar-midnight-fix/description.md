@@ -1,4 +1,4 @@
-# Feature: ProgressBar Midnight Bug Fix
+# Feature: CountdownBar Midnight Bug Fix
 
 **Status:** Draft
 **Author:** Claude (AI Assistant)
@@ -11,13 +11,13 @@
 
 ## Overview
 
-Fix a critical bug where the ProgressBar component shows empty when user opens the app after midnight (00:00) and before Fajr. The ProgressBar needs yesterday's Isha prayer time to calculate elapsed time, but this data is unavailable on January 1st (no Dec 31 of previous year).
+Fix a critical bug where the CountdownBar component shows empty when user opens the app after midnight (00:00) and before Fajr. The CountdownBar needs yesterday's Isha prayer time to calculate elapsed time, but this data is unavailable on January 1st (no Dec 31 of previous year).
 
 ## ⚠️ CRITICAL RULE: NO FALLBACKS ALLOWED
 
 **Fall back = Mask the real problem = User gets inaccurate data**
 
-The ProgressBar MUST always show accurate progress. If yesterday's data is missing:
+The CountdownBar MUST always show accurate progress. If yesterday's data is missing:
 - **DO NOT** show approximate/fallback progress
 - **DO NOT** silently fail
 - **DO** throw an error so we can fix the root cause
@@ -35,7 +35,7 @@ The solution is to ensure yesterday's data is ALWAYS available at the data layer
 - Silent failure that confuses users
 
 **Root Cause:**
-The ProgressBar calculates progress using:
+The CountdownBar calculates progress using:
 ```
 progress = (timeElapsed / totalDuration) * 100
 ```
@@ -46,8 +46,8 @@ For the first prayer (Fajr) at midnight:
 
 When yesterday's data is unavailable:
 ```typescript
-if (!yesterdayData) return null;  // Line 43 in original ProgressBar.tsx
-// Result: ProgressBar renders with null, shows empty bar
+if (!yesterdayData) return null;  // Line 43 in original CountdownBar.tsx
+// Result: CountdownBar renders with null, shows empty bar
 ```
 
 ---
@@ -62,7 +62,7 @@ if (!yesterdayData) return null;  // Line 43 in original ProgressBar.tsx
 ### January (Beginning of Year): ❌ NOT HANDLED
 - No code to check if it's January 1st
 - No code to fetch previous year's Dec 31 data
-- When app opens on Jan 1, it needs Dec 31 of previous year for ProgressBar
+- When app opens on Jan 1, it needs Dec 31 of previous year for CountdownBar
 
 **Evidence:**
 - `stores/sync.ts` has `shouldFetchNextYear()` but no `shouldFetchPreviousYear()`
@@ -75,8 +75,8 @@ if (!yesterdayData) return null;  // Line 43 in original ProgressBar.tsx
 
 ### Functional Requirements
 
-1. **FR-1**: ProgressBar must show accurate progress for Fajr prayer at midnight (00:00-05:00)
-2. **FR-2**: ProgressBar must have access to 3 schedules:
+1. **FR-1**: CountdownBar must show accurate progress for Fajr prayer at midnight (00:00-05:00)
+2. **FR-2**: CountdownBar must have access to 3 schedules:
    - Yesterday's schedule (for elapsed time calculation after midnight)
    - Today's schedule (for normal progress calculation)
    - Tomorrow's schedule (for elapsed time after Isha today and tomorrow's Fajr)
@@ -86,7 +86,7 @@ if (!yesterdayData) return null;  // Line 43 in original ProgressBar.tsx
 
 ### Non-Functional Requirements
 
-1. **NFR-1**: No performance regression (ProgressBar is rendered on every countdown tick)
+1. **NFR-1**: No performance regression (CountdownBar is rendered on every countdown tick)
 2. **NFR-2**: Memory usage must not increase significantly
 3. **NFR-3**: Backward compatibility with existing schedule structure
 4. **NFR-4**: Follow existing code patterns and conventions
@@ -95,7 +95,7 @@ if (!yesterdayData) return null;  // Line 43 in original ProgressBar.tsx
 
 - Changes to notification system
 - Changes to countdown system (except data access)
-- UI/UX changes to ProgressBar appearance
+- UI/UX changes to CountdownBar appearance
 - Multi-city support (London-only for now)
 
 ---
@@ -110,9 +110,9 @@ App Launch at Midnight (00:00-05:00)
   → sync() → needsDataUpdate()
   → If Jan 1: needsDataUpdate() returns FALSE (today's data exists from Dec)
   → If Jan 1 AND cache cleared: cleanup() deletes all prayer_* keys
-  → ProgressBar renders [SYNCHRONOUS]
+  → CountdownBar renders [SYNCHRONOUS]
   → Database.getPrayerByDate(yesterday) [returns null - Dec 31 missing!]
-  → ProgressBar returns null → Empty bar
+  → CountdownBar returns null → Empty bar
   → User confused
 ```
 
@@ -120,11 +120,11 @@ App Launch at Midnight (00:00-05:00)
 
 1. **January 1st Edge Case (HIGH)**
    - No code to fetch previous year's Dec 31 data
-   - User opens app on Jan 1, ProgressBar needs Dec 31 Isha time
+   - User opens app on Jan 1, CountdownBar needs Dec 31 Isha time
    - Dec 31 data doesn't exist → empty progress bar
 
 2. **Race Condition (MEDIUM)**
-   - ProgressBar renders before async sync completes
+   - CountdownBar renders before async sync completes
    - Yesterday's data deleted by `cleanup()` and not yet refetched
    - Impact: Empty progress bar on first launch at midnight
 
@@ -138,8 +138,8 @@ App Launch at Midnight (00:00-05:00)
 | File | Lines | Issue |
 |------|-------|-------|
 | `stores/sync.ts` | 59-66 | No Jan 1 detection, no fetch previous year |
-| `components/ProgressBar.tsx` | 37-51 | Missing yesterday's data → returns null |
-| `components/ProgressBar.tsx` | 138 | Skips animation when progress is null |
+| `components/CountdownBar.tsx` | 37-51 | Missing yesterday's data → returns null |
+| `components/CountdownBar.tsx` | 138 | Skips animation when progress is null |
 | `stores/database.ts` | 93 | `cleanup()` deletes yesterday before refetch |
 | `shared/prayer.ts` | 18-33 | Filter includes yesterday (correct) |
 
@@ -182,7 +182,7 @@ interface ScheduleStore {
 - A. ❌ Fallback: Calculate from midnight (approximate but better than empty)
 - B. ❌ Show empty but log warning
 - C. ✅ Fetch previous year on Jan 1 in sync (MANDATORY)
-- D. ❌ Loading state: Don't render ProgressBar until data available
+- D. ❌ Loading state: Don't render CountdownBar until data available
 
 **Chosen:** **Option C** - Fetch previous year on Jan 1, throw if fails
 
@@ -194,7 +194,7 @@ interface ScheduleStore {
 
 **Implementation:**
 ```typescript
-// On January 1st, we MUST fetch previous year's Dec 31 data for ProgressBar
+// On January 1st, we MUST fetch previous year's Dec 31 data for CountdownBar
 // This is a critical dependency - no fallback allowed
 if (isJanuaryFirst(date)) {
   const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
@@ -217,7 +217,7 @@ if (isJanuaryFirst(date)) {
 
 **Rationale:**
 - Yesterday's data is **always available** (ensured by sync layer)
-- ProgressBar is a **pure UI component** - it trusts the data layer
+- CountdownBar is a **pure UI component** - it trusts the data layer
 - If sync layer works correctly, this code **never fails**
 - Clean, simple code is better than defensive code
 
@@ -236,8 +236,8 @@ if (schedule.nextIndex === 0) {
 
 **Trust Model:**
 - Sync layer → MANDATORILY fetches yesterday's data
-- ProgressBar → TRUSTS the data layer, no checks needed
-- If sync layer fails → Error during sync, not in ProgressBar
+- CountdownBar → TRUSTS the data layer, no checks needed
+- If sync layer fails → Error during sync, not in CountdownBar
 
 
 ---
@@ -291,10 +291,10 @@ const buildDailySchedules = (type: ScheduleType, date: Date) => {
 
 Update to include yesterday in state.
 
-### Phase 2: ProgressBar Implementation
+### Phase 2: CountdownBar Implementation
 
-#### Task 2.1: Update ProgressBar to Use Yesterday from Schedule
-**File:** `components/ProgressBar.tsx`
+#### Task 2.1: Update CountdownBar to Use Yesterday from Schedule
+**File:** `components/CountdownBar.tsx`
 
 Clean, simple progress calculation:
 ```typescript
@@ -316,7 +316,7 @@ const progress = useMemo(() => {
 }, [schedule, countdown.timeLeft, type]);
 ```
 
-**No defensive code.** ProgressBar trusts the data layer.
+**No defensive code.** CountdownBar trusts the data layer.
 
 ### Phase 3: January 1st Edge Case
 
@@ -325,7 +325,7 @@ const progress = useMemo(() => {
 
 Update `initializeAppState()` to fetch previous year on Jan 1:
 ```typescript
-// On January 1st, we MUST fetch previous year's Dec 31 data for ProgressBar
+// On January 1st, we MUST fetch previous year's Dec 31 data for CountdownBar
 // This is a critical dependency - no fallback allowed
 if (isJanuaryFirst(date)) {
   const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
@@ -400,7 +400,7 @@ export const fetchCurrentAndNextYear = async (currentYear?: number): Promise<{
 |------|-------|-------------|-------------|
 | `shared/types.ts` | 1 | Modified | Add `yesterday` to ScheduleStore |
 | `stores/schedule.ts` | 1 | Modified | Update buildDailySchedules, throw if yesterday missing |
-| `components/ProgressBar.tsx` | 2 | Modified | Clean progress calculation, no defensive code |
+| `components/CountdownBar.tsx` | 2 | Modified | Clean progress calculation, no defensive code |
 | `stores/sync.ts` | 3 | Modified | Use new 3 explicit API functions |
 | `api/client.ts` | 3 | **REFACTORED** | 3 explicit functions replace boolean param |
 
@@ -428,11 +428,11 @@ export const fetchCurrentAndNextYear = async (currentYear?: number): Promise<{
 
 **The Correct Approach:**
 1. **Data Layer** (sync.ts): Ensure yesterday's data is ALWAYS available
-2. **UI Layer** (ProgressBar.tsx): Use data with confidence, throw if missing
+2. **UI Layer** (CountdownBar.tsx): Use data with confidence, throw if missing
 3. **Error Handling**: If data is missing, throw error (easier to debug)
 
 **What Fallbacks Were Removed:**
-- ❌ Midnight fallback calculation (removed from ProgressBar.tsx)
+- ❌ Midnight fallback calculation (removed from CountdownBar.tsx)
 - ❌ Try-catch with warning on Jan 1 API failure (removed from sync.ts)
 - ❌ Empty state with "loading" (not needed if data is always available)
 
@@ -458,8 +458,8 @@ export const fetchCurrentAndNextYear = async (currentYear?: number): Promise<{
 - [ ] Update buildDailySchedules
 - [ ] Update setSchedule function
 
-### Phase 2: ProgressBar Implementation (Day 2)
-- [ ] Update ProgressBar to use yesterday from schedule
+### Phase 2: CountdownBar Implementation (Day 2)
+- [ ] Update CountdownBar to use yesterday from schedule
 - [ ] Add error logging
 - [ ] **REMOVE all fallbacks**
 
@@ -494,8 +494,8 @@ export const fetchCurrentAndNextYear = async (currentYear?: number): Promise<{
 
 ## Related
 
-- **Related Issue**: ProgressBar empty at midnight (00:00-05:00) before Fajr
-- **Related Files**: components/ProgressBar.tsx, stores/schedule.ts, stores/sync.ts, api/client.ts
+- **Related Issue**: CountdownBar empty at midnight (00:00-05:00) before Fajr
+- **Related Files**: components/CountdownBar.tsx, stores/schedule.ts, stores/sync.ts, api/client.ts
 - **Dependencies**: None (self-contained fix)
 - **Supersedes**: None
 - **Related Memory**: AGENTS.md - Islamic Day Boundary feature
