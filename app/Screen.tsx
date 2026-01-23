@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Countdown from '@/components/Countdown';
 import Day from '@/components/Day';
 import List from '@/components/List';
+import PrayerAgo from '@/components/PrayerAgo';
 import { SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
@@ -27,6 +28,8 @@ export default function Screen({ type }: Props) {
       <Countdown type={type} />
       <Day type={type} />
       <List type={type} />
+
+      <PrayerAgo type={type} />
 
       {/* Spacing */}
       <View style={{ flex: 1 }} />
