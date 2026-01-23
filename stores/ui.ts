@@ -31,6 +31,7 @@ export const countdownBarColorAtom = atomWithStorageString('preference_countdown
 export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);
 export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds', false);
 export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_passed', true);
+export const showArabicNamesAtom = atomWithStorageBoolean('preference_show_arabic_names', true);
 
 // --- Actions ---
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);

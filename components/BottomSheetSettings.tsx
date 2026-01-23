@@ -13,6 +13,7 @@ import {
   hijriDateEnabledAtom,
   showSecondsAtom,
   showTimePassedAtom,
+  showArabicNamesAtom,
   countdownBarShownAtom,
   setSettingsSheetModal,
   hideSettingsSheet,
@@ -26,6 +27,7 @@ export default function BottomSheetSettings() {
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
+  const [showArabicNames, setShowArabicNames] = useAtom(showArabicNamesAtom);
 
   const handleDismiss = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -75,6 +77,11 @@ export default function BottomSheetSettings() {
           label="Show time passed"
           value={showTimePassed}
           onToggle={() => setShowTimePassed(!showTimePassed)}
+        />
+        <SettingsToggle
+          label="Show arabic names"
+          value={showArabicNames}
+          onToggle={() => setShowArabicNames(!showArabicNames)}
         />
         <SettingsToggle
           label="Show countdown bar"
