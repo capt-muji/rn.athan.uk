@@ -47,7 +47,8 @@ export default function ActiveBackground({ type }: Props) {
 
   const computedStyles: ViewStyle = {
     shadowColor: isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
-    elevation: 15,
+    elevation: 0, // Must be 0 to stay below Prayer components on Android
+    zIndex: -1, // Ensure it's behind prayer text
   };
 
   return <Animated.View style={[styles.background, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style]} />;

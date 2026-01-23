@@ -51,8 +51,8 @@ export default function Index() {
   return (
     <>
       <ModalUpdate visible={updateAvailable} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
-      <Overlay />
       <Navigation />
+      <Overlay />
     </>
   );
 }
