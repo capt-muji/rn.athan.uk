@@ -48,14 +48,6 @@ export default function BottomSheetSettings() {
       <View style={bottomSheetStyles.container}>
         <Text style={[styles.title]}>Settings</Text>
 
-        <SettingsToggle
-          label="Hide countdown bar"
-          value={countdownBarHidden}
-          onToggle={() => setCountdownBarHidden(!countdownBarHidden)}
-        />
-        <ColorPickerSettings />
-        <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
-        <SettingsToggle label="Show Hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
         <Pressable
           style={styles.listItem}
           onPress={handleAthanPress}
@@ -75,6 +67,14 @@ export default function BottomSheetSettings() {
             </Pressable>
           </View>
         </Pressable>
+        <SettingsToggle label="Show Hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
+        <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
+        <SettingsToggle
+          label="Hide countdown bar"
+          value={countdownBarHidden}
+          onToggle={() => setCountdownBarHidden(!countdownBarHidden)}
+        />
+        <ColorPickerSettings />
         <View style={{ height: bottom + 20 }} />
       </View>
     </BottomSheetModal>
