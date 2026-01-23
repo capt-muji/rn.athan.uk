@@ -83,9 +83,11 @@
 │   └── useSchedule.ts     # Schedule hook
 ├── shared/                # Utility functions
 │   ├── logger.ts          # Pino logger instance
-│   ├── time.ts            # Time calculations
+│   ├── time.ts            # Time calculations (parseNightBoundaries helper)
 │   ├── notifications.ts   # Notification utilities
-│   └── types.ts           # TypeScript interfaces
+│   ├── types.ts           # TypeScript interfaces
+│   ├── __tests__/         # Unit tests (Jest)
+│   └── __mocks__/         # Module mocks for testing
 ├── device/                # Platform-specific code
 ├── mocks/                 # Test fixtures & schema documentation
 │   ├── simple.ts          # Mock API data for development testing
@@ -106,6 +108,69 @@
 
 ```
 API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV → Display with Reanimated countdowns → Schedule notifications
+```
+
+**Architecture Diagram:**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                   APP                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
+│  │   Screens   │    │ Components  │    │   Hooks     │    │   Stores    │  │
+│  │  app/*.tsx  │───▶│ components/ │◀───│  hooks/     │◀───│  stores/    │  │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └──────┬──────┘  │
+│                                                                   │         │
+│  ┌────────────────────────────────────────────────────────────────┼───────┐ │
+│  │                         SHARED LAYER                           │       │ │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │       │ │
+│  │  │ time.ts  │  │prayer.ts │  │  types   │  │constants │       │       │ │
+│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │       │ │
+│  └────────────────────────────────────────────────────────────────┼───────┘ │
+│                                                                   │         │
+│  ┌────────────────────────────────────────────────────────────────▼───────┐ │
+│  │                         DEVICE LAYER                                   │ │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                 │ │
+│  │  │ MMKV Storage │  │ Notifications│  │   Updates    │                 │ │
+│  │  │  database.ts │  │   device/    │  │   device/    │                 │ │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘                 │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**File Dependency Map:**
+
+```
+Prayer Display Flow:
+  stores/schedule.ts (atoms)
+    └─▶ hooks/useSchedule.ts
+         └─▶ hooks/usePrayer.ts
+              └─▶ components/Prayer.tsx
+                   └─▶ components/PrayerTime.tsx, PrayerAgo.tsx, Alert.tsx
+
+Countdown Flow:
+  stores/countdown.ts (atoms)
+    └─▶ hooks/useCountdown.ts
+         └─▶ components/Countdown.tsx
+    └─▶ hooks/useCountdownBar.ts
+         └─▶ components/CountdownBar.tsx
+
+Notification Flow:
+  shared/notifications.ts (utilities)
+    └─▶ stores/notifications.ts (scheduling logic)
+         └─▶ hooks/useNotification.ts
+              └─▶ components/Alert.tsx
+
+Settings Flow:
+  stores/ui.ts (preference atoms)
+    └─▶ components/BottomSheetSettings.tsx
+         └─▶ components/SettingsToggle.tsx, ColorPickerSettings.tsx
+
+Data Sync Flow:
+  api/client.ts
+    └─▶ stores/sync.ts
+         └─▶ stores/database.ts (MMKV)
+              └─▶ stores/schedule.ts
 ```
 
 ## 4. Golden Paths (How We Do X)
@@ -159,6 +224,124 @@ import { logger } from '@/shared/logger';
 import { Prayer } from '@/components/Prayer';
 ```
 
+### Testing (Jest)
+
+- Use Jest with ts-jest for unit tests
+- Tests in `__tests__/` subdirectories
+- Run: `yarn test` or `yarn test:watch`
+- Mock RN modules in `shared/__mocks__/`
+
+### Refactoring Patterns
+
+**Helper Function Extraction:**
+
+- Extract duplicated logic into named helper functions
+- Keep helpers private (not exported) when used in one file
+- Add JSDoc with `@example` for reusable helpers
+- Example: `parseNightBoundaries()` in `shared/time.ts`
+
+**Section Comments:**
+
+```typescript
+// =============================================================================
+// SECTION NAME
+// =============================================================================
+```
+
+**Animation Hook Extraction:**
+
+- Complex animation logic goes in dedicated hooks
+- Hooks return animation values + control functions
+- Example: `useAlertAnimations.ts`, `useAlertPopupState.ts`
+
+**Concurrent Operation Protection:**
+
+- Use lock patterns for scheduling/async operations
+- Example: `withSchedulingLock()` in `stores/notifications.ts`
+
+### Task Recipes
+
+#### Add a New Setting Toggle
+
+1. **Add atom** in `stores/ui.ts`:
+
+   ```typescript
+   export const mySettingAtom = atomWithStorage('preference_my_setting', false, storage);
+   ```
+
+2. **Add to BottomSheetSettings.tsx**:
+
+   ```typescript
+   const [mySetting, setMySetting] = useAtom(mySettingAtom);
+   // Add SettingsToggle component in JSX
+   <SettingsToggle
+     icon={<MyIcon />}
+     label="My Setting"
+     value={mySetting}
+     onValueChange={setMySetting}
+   />
+   ```
+
+3. **Use in components** via `useAtomValue(mySettingAtom)`
+
+#### Add a New Notification Type
+
+1. **Add alert atom** in `stores/notifications.ts`:
+
+   ```typescript
+   // Follow existing pattern for prayer alerts
+   export const myAlertAtom = atomWithStorage('alert_my_type', AlertType.Off, storage);
+   ```
+
+2. **Add scheduling logic** in `stores/notifications.ts`:
+   - Add to `_addMultipleScheduleNotificationsForPrayer` or create new function
+   - Follow `scheduleNotificationForDate` pattern
+
+3. **Add UI control** in relevant component using `Alert.tsx` pattern
+
+4. **Add tests** in `shared/__tests__/notifications.test.ts`
+
+#### Add a New Utility Function
+
+1. **Add function** to appropriate file in `shared/`:
+
+   ```typescript
+   /**
+    * Description of what it does
+    * @param input - Description
+    * @returns Description
+    */
+   export const myFunction = (input: string): string => {
+     // Implementation
+   };
+   ```
+
+2. **Add tests** in `shared/__tests__/[filename].test.ts`:
+   - Copy from `_template.test.ts`
+   - Test happy path, edge cases, errors
+
+3. **Run validation**: `yarn validate`
+
+#### Add a New Hook
+
+1. **Create file** `hooks/useMyHook.ts`:
+
+   ```typescript
+   /**
+    * Hook description
+    * @returns What it returns
+    */
+   export const useMyHook = () => {
+     // Use existing hooks as reference (useSchedule.ts, usePrayer.ts)
+   };
+   ```
+
+2. **Export pattern**: Use `export const` (not `export function`)
+
+3. **If uses animations**: Follow `useAlertAnimations.ts` pattern
+
+4. **If uses popups/timers**: Follow `useAlertPopupState.ts` pattern
+
 ## 5. File Types & Locations
 
 | Type         | Location                            | Naming                        |
@@ -171,7 +354,6 @@ import { Prayer } from '@/components/Prayer';
 | Tests        | Co-located                          | `*.test.ts`                   |
 | **Features** | `ai/features/[name]/description.md` | **User-written requirements** |
 | **Progress** | `ai/features/[name]/progress.md`    | **AI-generated task tracker** |
-| **Archive**  | `ai/features/archive/[name]/`       | **Completed features**        |
 | ADRs         | `ai/adr/`                           | NNN-title.md                  |
 
 ## 6. Commands (Copy/Paste Ready)
@@ -184,6 +366,9 @@ yarn ios               # Build and run on iOS simulator
 yarn android           # Build and run on Android emulator
 yarn reset             # Full clean: rm builds, reinstall, start fresh
 yarn clean             # Clear cache and node_modules
+yarn validate          # Run typecheck + lint + format check + tests (use before commits)
+yarn format            # Format all files with Prettier
+yarn format:check      # Check formatting without changing files
 ```
 
 ### File-Scoped (Fast)
@@ -196,7 +381,32 @@ tsc --noEmit                         # Typecheck project
 
 ### Pre-commit (Automatic)
 
-- Husky + lint-staged runs Prettier and ESLint on staged files
+- Husky + lint-staged runs Prettier, ESLint, and tests on staged files
+
+### AI Session Prompts
+
+Use these prompts to start specialized sessions:
+
+| Task                 | Prompt File                    | Description                         |
+| -------------------- | ------------------------------ | ----------------------------------- |
+| **Cleanup/Refactor** | `ai/prompts/cleanup.md`        | DRY, simplify, document, format     |
+| **Documentation**    | `ai/prompts/document.md`       | Add JSDoc, comments, README updates |
+| **Quick Commands**   | `ai/prompts/quick.md`          | One-liner prompts for common tasks  |
+| **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
+| **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
+
+**Quick Start Examples:**
+
+```
+# Cleanup session
+Read ai/prompts/cleanup.md
+
+# Add docs to a file
+Read ai/prompts/document.md
+
+# One-liner tasks
+Read ai/prompts/quick.md and run "Add JSDoc to File" for shared/time.ts
+```
 
 ## 7. Boundaries & Permissions (Three-Tier)
 
@@ -217,6 +427,7 @@ tsc --noEmit                         # Typecheck project
 
 ### Never Do
 
+- **Git write operations** - NEVER run `git add`, `git commit`, `git push`, `git pull`, `git merge`, `git rebase`. User handles all git operations manually.
 - Commit secrets/keys
 - Edit node_modules
 - Remove failing tests
@@ -247,6 +458,20 @@ tsc --noEmit                         # Typecheck project
 - Strict mode enabled
 - Path alias: `@/*` maps to project root
 - Types centralized in `shared/types.ts`
+
+### Code Style Rules
+
+- **No nested function calls as parameters**: Each function call must be stored in a variable, then passed to other functions
+
+  ```typescript
+  // BAD - nested function calls
+  const result = setHours(setMinutes(createDate(), minutes), hours);
+
+  // GOOD - each call in its own variable
+  const baseDate = createDate();
+  const dateWithMinutes = setMinutes(baseDate, minutes);
+  const result = setHours(dateWithMinutes, hours);
+  ```
 
 ### Formatting (Prettier)
 
@@ -305,33 +530,18 @@ tsc --noEmit                         # Typecheck project
 
 - APIContract, SecurityAudit, PerformanceProfile, DocumentationAudit, ConsistencyAudit, CleanupAudit
 
-## 11. Memory / Lessons Learned (Append-Only)
+## 11. Memory / Lessons Learned
 
-> **Archive:** Detailed entries moved to `ai/memory-archive.md`. This section contains only high-level summaries.
+**Key Principles:**
 
-### System Complete (2026-01-21)
+- **NO FALLBACKS** - Fix root cause, don't mask problems. If data is missing, throw error.
+- **Prayer-centric model** - Use full DateTime objects, not separate date/time strings. Prevents midnight-crossing bugs.
+- **Schedule independence** - Standard and Extras schedules can show different dates.
+- **Countdown always visible** - No "All prayers finished" state.
+- **No nested function calls** - Each function call stored in variable, then passed to other functions.
+- **Tests before refactoring** - Capture current behavior with tests before making changes.
 
-All 11 features completed and archived to `ai/features/archive/`:
-
-| Category        | Features                                                                                                         |
-| --------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Core Timing     | timing-system-overhaul, timing-system-bugfixes, isha-display-bug, islamic-day-boundary, countdownbar-midnight-fix |
-| Prayer Features | midnight-prayer, prayer-explanations                                                                             |
-| UI Improvements | overlay-date-display, measurement-system-improvements                                                            |
-| Code Quality    | codebase-cleanup-2026-01-20                                                                                      |
-
-**Key Principles Established:**
-
-- NO FALLBACKS: Fix root cause, don't mask problems
-- Prayer-centric model: Full DateTime objects, no midnight-crossing bugs
-- Schedule independence: Standard/Extras can show different dates
-- Countdown always visible: No "All prayers finished" state
-
-**See Also:**
-
-- `ai/memory-archive.md` - Detailed historical entries
-- `ai/features/archive/` - All completed feature documentation
-- `ai/adr/` - Architectural decision records
+**See Also:** `ai/adr/` for architectural decision records.
 
 ## 12. Change / PR Checklist
 

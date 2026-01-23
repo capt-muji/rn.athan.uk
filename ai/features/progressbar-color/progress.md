@@ -63,7 +63,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 | File                                 | Change Type | Description                          |
 | ------------------------------------ | ----------- | ------------------------------------ |
 | `stores/storage.ts`                  | Modified    | Added `atomWithStorageString` helper |
-| `stores/ui.ts`                       | Modified    | Added `countdownbarColorAtom`         |
+| `stores/ui.ts`                       | Modified    | Added `countdownbarColorAtom`        |
 | `components/ColorPickerSettings.tsx` | New         | Color picker UI component            |
-| `components/CountdownBar.tsx`         | Modified    | Use user's color preference          |
+| `components/CountdownBar.tsx`        | Modified    | Use user's color preference          |
 | `components/BottomSheetSettings.tsx` | Modified    | Added color picker option            |

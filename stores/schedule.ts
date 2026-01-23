@@ -31,14 +31,79 @@ export const getSequenceAtom = (type: ScheduleType) => {
   return type === ScheduleType.Standard ? standardSequenceAtom : extraSequenceAtom;
 };
 
+// --- Helper Functions ---
+
+/**
+ * Fetches yesterday's final prayer for progress bar calculation
+ *
+ * Used when next prayer is first in sequence (e.g., at 1am when Fajr is next).
+ * The progress bar needs the previous prayer (last night's Isha or Istijaba)
+ * to calculate elapsed time.
+ *
+ * Handles Istijaba filtering: On non-Fridays, Istijaba is excluded from Extras,
+ * so the final prayer would be Duha instead.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Yesterday's final prayer
+ *
+ * @example
+ * // At 1am on Saturday, for Standard schedule:
+ * // Returns: Isha from Friday night
+ * const prevPrayer = getYesterdayFinalPrayer(ScheduleType.Standard);
+ *
+ * // At 1am on Saturday, for Extra schedule:
+ * // Returns: Duha from Friday (Istijaba not shown on Saturday)
+ * const prevPrayer = getYesterdayFinalPrayer(ScheduleType.Extra);
+ */
+function getYesterdayFinalPrayer(type: ScheduleType): Prayer {
+  const yesterday = subDays(TimeUtils.createLondonDate(), 1);
+  const prevDayData = Database.getPrayerByDate(yesterday)!;
+
+  // Sync layer ensures data exists - no null check needed
+  // See ADR-004: "Trust the data layer: UI never has fallbacks"
+  const isStandard = type === ScheduleType.Standard;
+  let englishNames = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  let arabicNames = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+
+  // Filter out Istijaba on non-Fridays for Extras
+  if (!isStandard && !TimeUtils.isFriday(yesterday)) {
+    englishNames = englishNames.filter((name) => name.toLowerCase() !== 'istijaba');
+    arabicNames = arabicNames.filter((name) => name !== 'استجابة');
+  }
+
+  const finalIndex = englishNames.length - 1;
+  const prayerKey = englishNames[finalIndex].toLowerCase();
+  const prayerTime = prevDayData[prayerKey as keyof ISingleApiResponseTransformed];
+
+  const prayer = PrayerUtils.createPrayer({
+    type,
+    english: englishNames[finalIndex],
+    arabic: arabicNames[finalIndex],
+    date: TimeUtils.formatDateShort(yesterday),
+    time: prayerTime,
+  });
+
+  logger.info('PREV_PRAYER: Fetched yesterday final prayer', {
+    type,
+    prayer: prayer.english,
+    time: prayer.time,
+  });
+
+  return prayer;
+}
+
 // --- Derived Selector Atoms ---
 
 /**
  * Creates a derived atom that returns the next upcoming prayer
- * Finds the first prayer with datetime > now
+ *
+ * Finds the first prayer with datetime > now in the sequence.
+ * With a 3-day buffer, this should always return a prayer.
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Derived atom with Prayer | null
+ * @returns Derived atom resolving to Prayer | null
+ *
+ * @see getNextPrayer - Direct accessor for imperative code
  */
 export const createNextPrayerAtom = (type: ScheduleType) => {
   return atom((get) => {
@@ -53,14 +118,18 @@ export const createNextPrayerAtom = (type: ScheduleType) => {
 
 /**
  * Creates a derived atom that returns the previous prayer (before next)
- * Used for progress bar calculation
  *
- * EDGE CASE: When next prayer is first in sequence (e.g., 1am before Fajr),
- * fetches yesterday's final prayer from database to ensure progress bar works correctly.
- * Matches January 1st handling pattern in sync.ts.
+ * Used for progress bar calculation to show elapsed time since last prayer.
+ *
+ * Edge Case: When next prayer is first in sequence (e.g., 1am before Fajr),
+ * uses getYesterdayFinalPrayer to fetch yesterday's final prayer from database.
+ * This ensures the progress bar works correctly across day boundaries.
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Derived atom with Prayer | null
+ * @returns Derived atom resolving to Prayer | null
+ *
+ * @see getYesterdayFinalPrayer - Helper for day-boundary edge case
+ * @see getPrevPrayer - Direct accessor for imperative code
  */
 export const createPrevPrayerAtom = (type: ScheduleType) => {
   return atom((get) => {
@@ -75,48 +144,11 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
       return sequence.prayers[nextIndex - 1];
     }
 
-    // EDGE CASE: Next prayer is first in sequence (nextIndex === 0)
+    // Edge case: Next prayer is first in sequence (nextIndex === 0)
     // This happens at 1am when Fajr (6am) is next prayer
-    // Fetch yesterday's final prayer from database for progress bar calculation
-    // Sync layer guarantees yesterday's data exists (see sync.ts:52-67)
+    // Use helper to fetch yesterday's final prayer
     if (nextIndex === 0) {
-      const yesterday = subDays(TimeUtils.createLondonDate(), 1);
-      const prevDayData = Database.getPrayerByDate(yesterday)!;
-
-      // Sync layer ensures data exists - no null check needed
-      // See ADR-004: "Trust the data layer: UI never has fallbacks"
-      const isStandard = type === ScheduleType.Standard;
-      const namesEnglish = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-      const namesArabic = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
-
-      // Filter out Istijaba on non-Fridays for Extras
-      let englishNames = namesEnglish;
-      let arabicNames = namesArabic;
-
-      if (!isStandard && !TimeUtils.isFriday(yesterday)) {
-        englishNames = englishNames.filter((name) => name.toLowerCase() !== 'istijaba');
-        arabicNames = arabicNames.filter((name) => name !== 'استجابة');
-      }
-
-      const finalPrayerIndex = englishNames.length - 1;
-      const prayerKey = englishNames[finalPrayerIndex].toLowerCase();
-      const prayerTime = prevDayData[prayerKey as keyof ISingleApiResponseTransformed];
-
-      const prevPrayer = PrayerUtils.createPrayer({
-        type,
-        english: englishNames[finalPrayerIndex],
-        arabic: arabicNames[finalPrayerIndex],
-        date: TimeUtils.formatDateShort(yesterday),
-        time: prayerTime,
-      });
-
-      logger.info('PREV_PRAYER: Fetched yesterday final prayer for progress bar', {
-        type,
-        prevPrayer: prevPrayer.english,
-        prevTime: prevPrayer.time,
-      });
-
-      return prevPrayer;
+      return getYesterdayFinalPrayer(type);
     }
 
     // No future prayers found - should never happen with 3-day sequence buffer
@@ -126,10 +158,21 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
 
 /**
  * Creates a derived atom that returns the display date
- * The display date is the belongsToDate of the next prayer
+ *
+ * The display date is the belongsToDate of the next upcoming prayer.
+ * This can differ from the calendar date due to Islamic day boundaries:
+ * - Isha at 1am on Jan 19 calendar date belongs to Jan 18 Islamic day
+ * - Midnight at 23:17 on Jan 18 calendar date belongs to Jan 19 Islamic day
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Derived atom with string | null (YYYY-MM-DD format)
+ * @returns Derived atom resolving to date string (YYYY-MM-DD) | null
+ *
+ * @see getDisplayDate - Direct accessor for imperative code
+ * @see ADR-004 - Islamic day boundary handling
+ *
+ * @example
+ * // At 2am on Jan 19 (before Fajr), Standard schedule:
+ * // Returns: "2026-01-18" (belongs to previous Islamic day)
  */
 export const createDisplayDateAtom = (type: ScheduleType) => {
   return atom((get) => {

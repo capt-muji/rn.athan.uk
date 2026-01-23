@@ -77,6 +77,7 @@ The Architect will:
 **CRITICAL: Switch to ReviewerQA agent**
 
 ReviewerQA will audit the plan:
+
 - Are tasks small enough (1-2 hours)?
 - Are tasks well-described with clear acceptance criteria?
 - Are all dependencies identified?
@@ -88,6 +89,7 @@ ReviewerQA will audit the plan:
 **ONLY proceed if ReviewerQA gives 100/100 approval**
 
 If score < 100:
+
 - Fix all identified issues
 - Re-submit to ReviewerQA
 - Iterate until 100/100 is achieved
@@ -108,6 +110,7 @@ Once plan is approved at 100/100:
 **Switch to ReviewerQA agent again**
 
 Final verification checklist:
+
 - [ ] description.md exists and is complete
 - [ ] plan.md exists with detailed implementation plan
 - [ ] progress.md exists with task checklist
@@ -119,6 +122,7 @@ Final verification checklist:
 ## Phase 8: Next Steps
 
 Show me:
+
 ```
 ✅ Feature initialized successfully!
 

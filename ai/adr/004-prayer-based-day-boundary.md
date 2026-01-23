@@ -10,6 +10,7 @@
 ## Context
 
 The Athan app displays prayer schedules for a given date with two independent schedules:
+
 - **Standard Schedule**: Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha (6 prayers)
 - **Extras Schedule**: Midnight, Last Third, Suhoor, Duha, Istijaba (5 prayers, Istijaba only on Fridays)
 
@@ -24,6 +25,7 @@ ADR-002 used English midnight (00:00) as the day boundary. This created several 
 ### The Midnight Prayer Confusion
 
 The term "midnight" now has two distinct meanings:
+
 - **Midnight (prayer)**: The midpoint between Maghrib and Fajr (~23:00-00:30 depending on season)
 - **System midnight**: 00:00 on the system clock (English midnight)
 
@@ -31,14 +33,14 @@ This ADR resolves the ambiguity and establishes clear rules for all timing scena
 
 ## Terminology
 
-| Term | Definition |
-|------|------------|
-| Midnight (prayer) | Midpoint between yesterday's Maghrib and today's Fajr. Can occur before or after 00:00. |
-| System midnight | 00:00 on the system clock (English midnight). The app does NOT use this as a trigger. |
-| Day boundary (Standard) | After Isha passes. Schedule advances to tomorrow, date updates. |
-| Day boundary (Extras) | After Duha passes (non-Friday) or after Istijaba passes (Friday). |
-| Yesterday | The previous day's schedule data. Used for CountdownBar and Extra prayers that span nights. |
-| Schedule advancement | When the last prayer passes, schedule.today becomes schedule.yesterday, schedule.tomorrow becomes schedule.today, and new tomorrow data is fetched. |
+| Term                    | Definition                                                                                                                                          |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Midnight (prayer)       | Midpoint between yesterday's Maghrib and today's Fajr. Can occur before or after 00:00.                                                             |
+| System midnight         | 00:00 on the system clock (English midnight). The app does NOT use this as a trigger.                                                               |
+| Day boundary (Standard) | After Isha passes. Schedule advances to tomorrow, date updates.                                                                                     |
+| Day boundary (Extras)   | After Duha passes (non-Friday) or after Istijaba passes (Friday).                                                                                   |
+| Yesterday               | The previous day's schedule data. Used for CountdownBar and Extra prayers that span nights.                                                         |
+| Schedule advancement    | When the last prayer passes, schedule.today becomes schedule.yesterday, schedule.tomorrow becomes schedule.today, and new tomorrow data is fetched. |
 
 ## Decision
 
@@ -91,13 +93,13 @@ EXTRAS SCHEDULE (Friday):
 
 ### Key Files
 
-| File | Responsibility |
-|------|----------------|
-| `shared/time.ts` | `calculateCountdown()` with yesterday fallback logic |
-| `stores/schedule.ts` | `advanceScheduleToTomorrow()` - shifts schedules, resets nextIndex |
-| `stores/sync.ts` | `initializeAppState()` - advances schedules on app open if last prayer passed |
-| `stores/countdown.ts` | Countdown that triggers advancement when countdown hits 0 |
-| `hooks/usePrayer.ts` | `isPassed` calculation checking both date AND time |
+| File                  | Responsibility                                                                |
+| --------------------- | ----------------------------------------------------------------------------- |
+| `shared/time.ts`      | `calculateCountdown()` with yesterday fallback logic                          |
+| `stores/schedule.ts`  | `advanceScheduleToTomorrow()` - shifts schedules, resets nextIndex            |
+| `stores/sync.ts`      | `initializeAppState()` - advances schedules on app open if last prayer passed |
+| `stores/countdown.ts` | Countdown that triggers advancement when countdown hits 0                     |
+| `hooks/usePrayer.ts`  | `isPassed` calculation checking both date AND time                            |
 
 ### Schedule Advancement Flow
 
@@ -126,6 +128,7 @@ calculateCountdown() uses yesterday fallback if needed
 The Extras schedule has an **inverted temporal structure**: the first prayer (Midnight ~23:00) comes after the last prayer (Duha ~9am or Istijaba ~12:30pm).
 
 **Problem scenario:**
+
 - It's 10:00 on Jan 18
 - Duha passed at 09:15
 - Schedule advances: today becomes Jan 19
@@ -215,6 +218,7 @@ Countdown: 15m until Isha
 **Critical rule:** Isha at 00:45 belongs to June 21. The schedule does NOT advance at 00:00. It advances after Isha passes at 00:45.
 
 **Flow:**
+
 1. At 00:00: Still showing June 21 schedule, counting down to Isha
 2. At 00:45: Isha passes, schedule advances to June 22
 3. Countdown now shows countdown to Fajr on June 22
@@ -264,6 +268,7 @@ App not used since morning
 ```
 
 **Flow in `initializeAppState()` (stores/sync.ts:65-103):**
+
 1. Initialize schedules with today's date (Jan 18)
 2. Check if Standard's last prayer (Isha 18:15) passed → YES
 3. Call `advanceScheduleToTomorrow(Standard)` → date becomes Jan 19
@@ -288,6 +293,7 @@ Standard Schedule: date = 2027-01-01 (already advanced)
 **Pre-condition:** December triggers proactive fetch of next year's data (stores/sync.ts:50-53).
 
 **January 1st special handling (stores/sync.ts:66-81):**
+
 ```typescript
 if (isJanuaryFirst(date)) {
   const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
@@ -332,10 +338,12 @@ Extras: Duha at 08:08 PASSED → date = 2026-01-19
 ```
 
 **This is correct behavior:**
+
 - Standard is waiting for Isha to pass before advancing
 - Extras already passed Duha, so it advanced to tomorrow
 
 **Independent date atoms (stores/sync.ts:21-22):**
+
 ```typescript
 export const standardDateAtom = atomWithStorageString('display_date_standard', '');
 export const extraDateAtom = atomWithStorageString('display_date_extra', '');
@@ -358,6 +366,7 @@ Countdown: 23h 16m until Asr tomorrow
 ```
 
 **Logic in calculateCountdown() (shared/time.ts:282-283):**
+
 ```typescript
 const prayer = isTimePassed(todayPrayer.time) ? tomorrowPrayer : todayPrayer;
 ```
@@ -380,6 +389,7 @@ Yesterday's Midnight (Jan 18): 23:23 tonight
 **The problem:** Countdown would show 37+ hours if using today's prayer (Jan 19 at 23:25).
 
 **The solution:** Yesterday fallback in calculateCountdown():
+
 ```typescript
 if (todayPrayer.date !== today) {
   if (isNextPrayer) {
@@ -408,11 +418,13 @@ Midnight: 23:23 (time not passed, but date is tomorrow)
 **Problem:** Simply checking `isTimePassed("23:23")` returns false, but this would incorrectly show tomorrow's Midnight as "not passed yet" when it hasn't even arrived.
 
 **Solution in usePrayer.ts:**
+
 ```typescript
 const isPassed = todayPrayer.date === today && isTimePassed(time);
 ```
 
 The prayer is only considered "passed" if:
+
 1. The prayer's date matches today's date, AND
 2. The prayer's time has passed
 
@@ -431,17 +443,19 @@ Previous prayer: Yesterday's Isha (18:15 on Jan 17)
 ```
 
 **The CountdownBar calculation needs:**
+
 - Previous prayer end time (yesterday's Isha)
 - Next prayer start time (today's Fajr)
 - Current time
 
 **This is why `schedule.yesterday` exists:**
+
 ```typescript
 // stores/schedule.ts
 store.set(scheduleAtom, {
-  yesterday: schedule.today,    // Old today becomes yesterday
-  today: schedule.tomorrow,     // Tomorrow becomes today
-  tomorrow: newTomorrow,        // Fetch new tomorrow
+  yesterday: schedule.today, // Old today becomes yesterday
+  today: schedule.tomorrow, // Tomorrow becomes today
+  tomorrow: newTomorrow, // Fetch new tomorrow
   nextIndex: 0,
 });
 ```
@@ -490,6 +504,6 @@ store.set(scheduleAtom, {
 
 ## Revision History
 
-| Date | Author | Change |
-|------|--------|--------|
-| 2026-01-18 | muji | Initial draft - supersedes ADR-002 |
+| Date       | Author | Change                             |
+| ---------- | ------ | ---------------------------------- |
+| 2026-01-18 | muji   | Initial draft - supersedes ADR-002 |

@@ -113,8 +113,10 @@ Resume implementation of: ai/features/[feature-name]/
    - Note any gotchas or important patterns discovered
    - Include technical decisions made
    - Format:
+
      ```markdown
      [YYYY-MM-DD] Feature: [Feature Name]
+
      - Brief description of what was implemented
      - Key technical decisions or patterns used
      - Lessons learned and gotchas to avoid
@@ -152,4 +154,4 @@ Resume implementation of: ai/features/[feature-name]/
 
 ## Next Steps After Completion
 
-Run: `ai/prompts/feature-mark-complete.md` to archive and update memory
+Run: `ai/prompts/feature-mark-complete.md` to complete the feature

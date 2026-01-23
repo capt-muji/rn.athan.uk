@@ -25,22 +25,22 @@ After deep analysis, the root cause is **the data model doesn't fit the domain**
 
 ```typescript
 interface ScheduleStore {
-  yesterday: IScheduleNow;   // Map of prayers for yesterday
-  today: IScheduleNow;       // Map of prayers for "today" (but may be tomorrow!)
-  tomorrow: IScheduleNow;    // Map of prayers for day after "today"
-  nextIndex: number;         // Which prayer we're counting to
+  yesterday: IScheduleNow; // Map of prayers for yesterday
+  today: IScheduleNow; // Map of prayers for "today" (but may be tomorrow!)
+  tomorrow: IScheduleNow; // Map of prayers for day after "today"
+  nextIndex: number; // Which prayer we're counting to
 }
 ```
 
 **Problems with this model:**
 
-| Issue | Description | Impact |
-|-------|-------------|--------|
-| Semantic confusion | `schedule.today` contains tomorrow's data after advancement | Bugs in date display, isPassed calculation |
-| Yesterday fallback hack | `calculateCountdown()` needs special case to use yesterday's prayer when today's is actually tomorrow's | Complex, error-prone, hard to understand |
-| Manual synchronization | Must keep `yesterday`, `today`, `tomorrow`, `nextIndex`, `standardDateAtom`, `extraDateAtom` in sync | Race conditions, stale state |
-| Scattered logic | Date comparisons in 6+ files | Hard to maintain, easy to introduce bugs |
-| "Date" ambiguity | Same word means: calendar date, prayer date, schedule date, display date | Confusion in code and bugs |
+| Issue                   | Description                                                                                             | Impact                                     |
+| ----------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Semantic confusion      | `schedule.today` contains tomorrow's data after advancement                                             | Bugs in date display, isPassed calculation |
+| Yesterday fallback hack | `calculateCountdown()` needs special case to use yesterday's prayer when today's is actually tomorrow's | Complex, error-prone, hard to understand   |
+| Manual synchronization  | Must keep `yesterday`, `today`, `tomorrow`, `nextIndex`, `standardDateAtom`, `extraDateAtom` in sync    | Race conditions, stale state               |
+| Scattered logic         | Date comparisons in 6+ files                                                                            | Hard to maintain, easy to introduce bugs   |
+| "Date" ambiguity        | Same word means: calendar date, prayer date, schedule date, display date                                | Confusion in code and bugs                 |
 
 #### The Yesterday Fallback: A Symptom
 
@@ -81,30 +81,30 @@ When Duha passes at 08:08, the schedule advances to "tomorrow", but the very fir
 
 ### Core Principle Change
 
-| Current (Date-Centric) | Proposed (Prayer-Centric) |
-|------------------------|---------------------------|
-| Prayers organized by calendar date | Prayers organized by sequence |
-| "Next prayer" = `schedule.today[nextIndex]` | "Next prayer" = first prayer after now |
-| Manual advancement at day boundary | Automatic - always derived from current time |
-| `schedule.today` can mean tomorrow | `nextPrayer` always means next prayer |
+| Current (Date-Centric)                      | Proposed (Prayer-Centric)                    |
+| ------------------------------------------- | -------------------------------------------- |
+| Prayers organized by calendar date          | Prayers organized by sequence                |
+| "Next prayer" = `schedule.today[nextIndex]` | "Next prayer" = first prayer after now       |
+| Manual advancement at day boundary          | Automatic - always derived from current time |
+| `schedule.today` can mean tomorrow          | `nextPrayer` always means next prayer        |
 
 ### New Data Model
 
 ```typescript
 // PROPOSED: Prayer-Centric Model
 interface Prayer {
-  id: string;                    // Unique: "standard_fajr_2026-01-18"
-  type: ScheduleType;            // 'standard' | 'extra'
-  english: string;               // "Fajr"
-  arabic: string;                // "الفجر"
-  datetime: Date;                // Full datetime (not just time string)
-  belongsToDate: string;         // YYYY-MM-DD - the Islamic date this prayer belongs to
+  id: string; // Unique: "standard_fajr_2026-01-18"
+  type: ScheduleType; // 'standard' | 'extra'
+  english: string; // "Fajr"
+  arabic: string; // "الفجر"
+  datetime: Date; // Full datetime (not just time string)
+  belongsToDate: string; // YYYY-MM-DD - the Islamic date this prayer belongs to
 }
 
 interface ScheduleState {
   type: ScheduleType;
-  prayers: Prayer[];             // Next 48 hours of prayers, sorted by datetime
-  displayDate: string;           // Derived from current prayer's belongsToDate
+  prayers: Prayer[]; // Next 48 hours of prayers, sorted by datetime
+  displayDate: string; // Derived from current prayer's belongsToDate
 }
 
 // DERIVED (not stored):
@@ -118,13 +118,17 @@ interface ScheduleState {
 #### 1. Absolute Datetimes Instead of Time Strings
 
 **Current:**
+
 ```typescript
 { date: "2026-01-18", time: "06:12" }  // Must combine for comparison
 ```
 
 **Proposed:**
+
 ```typescript
-{ datetime: new Date("2026-01-18T06:12:00+00:00") }  // Direct comparison
+{
+  datetime: new Date('2026-01-18T06:12:00+00:00');
+} // Direct comparison
 ```
 
 **Benefit:** No string parsing, no timezone confusion, simple `prayer.datetime > now`.
@@ -132,21 +136,20 @@ interface ScheduleState {
 #### 2. Derived State Instead of Stored State
 
 **Current:**
+
 ```typescript
 // Stored in atom, manually incremented
-nextIndex: 3
+nextIndex: 3;
 
 // When Asr passes:
-incrementNextIndex();  // nextIndex = 4
+incrementNextIndex(); // nextIndex = 4
 ```
 
 **Proposed:**
+
 ```typescript
 // Computed on demand
-const nextPrayer = useMemo(() =>
-  prayers.find(p => p.datetime > now),
-  [prayers, now]
-);
+const nextPrayer = useMemo(() => prayers.find((p) => p.datetime > now), [prayers, now]);
 ```
 
 **Benefit:** No synchronization bugs, always correct.
@@ -154,6 +157,7 @@ const nextPrayer = useMemo(() =>
 #### 3. Single List Instead of Yesterday/Today/Tomorrow
 
 **Current:**
+
 ```typescript
 {
   yesterday: { 0: Fajr, 1: Sunrise, ..., 5: Isha },
@@ -163,14 +167,15 @@ const nextPrayer = useMemo(() =>
 ```
 
 **Proposed:**
+
 ```typescript
 {
   prayers: [
-    { datetime: "2026-01-17T18:15", english: "Isha", belongsToDate: "2026-01-17" },
-    { datetime: "2026-01-18T06:12", english: "Fajr", belongsToDate: "2026-01-18" },
-    { datetime: "2026-01-18T07:48", english: "Sunrise", belongsToDate: "2026-01-18" },
+    { datetime: '2026-01-17T18:15', english: 'Isha', belongsToDate: '2026-01-17' },
+    { datetime: '2026-01-18T06:12', english: 'Fajr', belongsToDate: '2026-01-18' },
+    { datetime: '2026-01-18T07:48', english: 'Sunrise', belongsToDate: '2026-01-18' },
     // ... next 48 hours
-  ]
+  ];
 }
 ```
 
@@ -179,16 +184,18 @@ const nextPrayer = useMemo(() =>
 #### 4. Display Date Derived from Current Prayer
 
 **Current:**
+
 ```typescript
 // Stored separately, must sync after advancement
-display_date_standard: "2026-01-18"
+display_date_standard: '2026-01-18';
 ```
 
 **Proposed:**
+
 ```typescript
 // Derived from the schedule's prayers
 const displayDate = useMemo(() => {
-  const current = prayers.find(p => p.datetime > now);
+  const current = prayers.find((p) => p.datetime > now);
   return current?.belongsToDate ?? prayers[0].belongsToDate;
 }, [prayers, now]);
 ```
@@ -198,21 +205,25 @@ const displayDate = useMemo(() => {
 ### Implementation Approach
 
 #### Phase 1: Data Layer Refactor
+
 1. Add `datetime` field to prayer transformation
 2. Create new `PrayerSequence` type with sorted prayer list
 3. Keep old model temporarily for backwards compatibility
 
 #### Phase 2: State Layer Refactor
+
 1. Create new `prayerSequenceAtom` alongside existing atoms
 2. Derive `nextPrayer`, `isPassed`, `countdown` from sequence
 3. Remove `nextIndex` manual management
 
 #### Phase 3: UI Layer Migration
+
 1. Update components to use derived state
 2. Remove yesterday fallback logic from `calculateCountdown()`
 3. Simplify `CountdownBar` to use adjacent prayers in sequence
 
 #### Phase 4: Cleanup
+
 1. Remove old `yesterday/today/tomorrow` structure
 2. Remove manual `nextIndex` increment
 3. Update notifications to use new model
@@ -247,10 +258,12 @@ const displayDate = useMemo(() => {
 **Description:** Keep date-centric model, fix each bug individually.
 
 **Pros:**
+
 - No breaking changes
 - Incremental fixes
 
 **Cons:**
+
 - Treats symptoms, not cause
 - Yesterday fallback remains
 - Semantic confusion remains
@@ -263,10 +276,12 @@ const displayDate = useMemo(() => {
 **Description:** Use event emitters instead of state. "Prayer passed" event triggers updates.
 
 **Pros:**
+
 - Clear causality
 - Loosely coupled
 
 **Cons:**
+
 - Major architectural change
 - Harder to debug
 - Overkill for this problem
@@ -278,10 +293,12 @@ const displayDate = useMemo(() => {
 **Description:** Add `activeDate` field separate from prayer dates.
 
 **Pros:**
+
 - Smaller change
 - Clearer than current
 
 **Cons:**
+
 - Still need yesterday fallback
 - Still have synchronization
 - Doesn't solve root cause
@@ -292,19 +309,19 @@ const displayDate = useMemo(() => {
 
 ### Files Affected
 
-| File | Change |
-|------|--------|
-| `shared/types.ts` | Add `Prayer`, `PrayerSequence` types |
-| `shared/prayer.ts` | Add `createPrayerSequence()` |
-| `shared/time.ts` | Simplify `calculateCountdown()` |
-| `stores/schedule.ts` | Replace `ScheduleStore` with `PrayerSequence` |
-| `stores/sync.ts` | Update initialization |
-| `stores/countdown.ts` | Use derived next prayer |
-| `hooks/usePrayer.ts` | Derive from sequence |
-| `hooks/useSchedule.ts` | Return sequence instead of store |
-| `components/CountdownBar.tsx` | Use adjacent prayers |
-| `components/Countdown.tsx` | Use derived countdown |
-| `components/Prayer.tsx` | Use derived isPassed |
+| File                          | Change                                        |
+| ----------------------------- | --------------------------------------------- |
+| `shared/types.ts`             | Add `Prayer`, `PrayerSequence` types          |
+| `shared/prayer.ts`            | Add `createPrayerSequence()`                  |
+| `shared/time.ts`              | Simplify `calculateCountdown()`               |
+| `stores/schedule.ts`          | Replace `ScheduleStore` with `PrayerSequence` |
+| `stores/sync.ts`              | Update initialization                         |
+| `stores/countdown.ts`         | Use derived next prayer                       |
+| `hooks/usePrayer.ts`          | Derive from sequence                          |
+| `hooks/useSchedule.ts`        | Return sequence instead of store              |
+| `components/CountdownBar.tsx` | Use adjacent prayers                          |
+| `components/Countdown.tsx`    | Use derived countdown                         |
+| `components/Prayer.tsx`       | Use derived isPassed                          |
 
 ### Migration Strategy
 
@@ -332,6 +349,6 @@ const displayDate = useMemo(() => {
 
 ## Revision History
 
-| Date | Author | Change |
-|------|--------|--------|
-| 2026-01-18 | muji | Initial proposal |
+| Date       | Author | Change           |
+| ---------- | ------ | ---------------- |
+| 2026-01-18 | muji   | Initial proposal |
