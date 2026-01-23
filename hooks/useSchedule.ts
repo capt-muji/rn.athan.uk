@@ -8,6 +8,23 @@
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ScheduleType } from '@/shared/types';
 
+/**
+ * Hook for accessing filtered prayer schedule data
+ *
+ * Filters the prayer sequence to show only today's prayers (matching displayDate).
+ * Provides schedule metadata for UI rendering.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Object with today's prayers, display date, and schedule metadata
+ *
+ * @example
+ * const { prayers, displayDate, nextPrayerIndex, isReady } = useSchedule(ScheduleType.Standard);
+ * if (isReady) {
+ *   prayers.forEach((prayer, index) => {
+ *     const isNext = index === nextPrayerIndex;
+ *   });
+ * }
+ */
 export const useSchedule = (type: ScheduleType) => {
   const isStandard = type === ScheduleType.Standard;
 

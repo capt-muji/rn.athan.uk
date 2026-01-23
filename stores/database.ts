@@ -1,3 +1,13 @@
+/**
+ * Database layer - MMKV storage wrapper
+ *
+ * Provides typed access to local storage for:
+ * - Prayer time data (prayer_YYYY-MM-DD)
+ * - User preferences (preference_*)
+ * - Notification tracking (scheduled_notifications_*)
+ * - App state (fetched_years, app_installed_version)
+ */
+
 import { format } from 'date-fns';
 import { createJSONStorage } from 'jotai/utils';
 import { createMMKV } from 'react-native-mmkv';
@@ -7,8 +17,14 @@ import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 
+/** MMKV database instance */
 export const database = createMMKV();
 
+/**
+ * Gets a JSON-parsed item from storage
+ * @param key Storage key
+ * @returns Parsed value or null if not found
+ */
 export const getItem = (key: string) => {
   const value = database.getString(key);
   const data = value ? JSON.parse(value) : null;
@@ -17,19 +33,33 @@ export const getItem = (key: string) => {
   return data;
 };
 
+/**
+ * Sets a JSON-stringified item in storage
+ * @param key Storage key
+ * @param value Value to store (will be JSON stringified)
+ */
 export const setItem = (key: string, value: unknown) => {
   logger.info(`MMKV WRITE: ${key} ::`, value);
   database.set(key, JSON.stringify(value));
 };
 
+/**
+ * Removes an item from storage
+ * @param key Storage key to remove
+ */
 export const removeItem = (key: string) => {
   logger.info(`MMKV DELETE: ${key}`);
   database.remove(key);
 };
 
-/** Simple storage interface */
+/** Jotai-compatible storage interface for atomWithStorage */
 export const mmkvStorage = createJSONStorage(() => ({ getItem, setItem, removeItem }));
 
+/**
+ * Gets all items with a given key prefix
+ * @param prefix Key prefix to match (e.g., "prayer_", "scheduled_notifications_")
+ * @returns Array of parsed values
+ */
 export const getAllWithPrefix = (prefix: string) => {
   const allKeys = database.getAllKeys();
   const matchingKeys = allKeys.filter((key) => key.startsWith(prefix));
@@ -41,6 +71,10 @@ export const getAllWithPrefix = (prefix: string) => {
   return items;
 };
 
+/**
+ * Clears all items with a given key prefix
+ * @param prefix Key prefix to match for deletion
+ */
 export const clearPrefix = (prefix: string) => {
   const keys = database.getAllKeys();
   logger.info(`MMKV CHECK: ${keys}`);
@@ -55,6 +89,11 @@ export const clearPrefix = (prefix: string) => {
   logger.info(`MMKV INFO: Cleared all entries with prefix "${prefix}"`);
 };
 
+/**
+ * Saves all prayer times to storage
+ * Each prayer is stored with key format: prayer_YYYY-MM-DD
+ * @param prayers Array of transformed prayer data from API
+ */
 export const saveAllPrayers = (prayers: ISingleApiResponseTransformed[]) => {
   prayers.forEach((prayer) => {
     const key = `prayer_${prayer.date}`;
@@ -66,6 +105,11 @@ export const saveAllPrayers = (prayers: ISingleApiResponseTransformed[]) => {
   logger.info(`MMKV INFO: ${prayers.length} prayers saved`);
 };
 
+/**
+ * Gets prayer data for a specific date
+ * @param date Date to fetch prayer times for
+ * @returns Prayer data or null if not found
+ */
 export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | null => {
   const londonDate = TimeUtils.createLondonDate(date);
   const keyDate = format(londonDate, 'yyyy-MM-dd');
@@ -78,20 +122,39 @@ export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | nul
   return data ? JSON.parse(data) : null;
 };
 
+/**
+ * Marks a year as having been fetched from the API
+ * @param year Year to mark as fetched
+ */
 export const markYearAsFetched = (year: number) => {
   const key = `fetched_years`;
   const fetchedYears = getItem(key) || {};
   setItem(key, { ...fetchedYears, [year]: true });
 };
 
+/**
+ * Clears all scheduled notification records for a schedule type
+ * @param scheduleType Schedule type (Standard or Extra)
+ */
 export function clearAllScheduledNotificationsForSchedule(scheduleType: ScheduleType) {
   clearPrefix(`scheduled_notifications_${scheduleType}`);
 }
 
+/**
+ * Clears all scheduled notification records for a specific prayer
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ */
 export function clearAllScheduledNotificationsForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
   clearPrefix(`scheduled_notifications_${scheduleType}_${prayerIndex}`);
 }
 
+/**
+ * Adds a scheduled notification record for a prayer
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @param notification Notification data to store
+ */
 export const addOneScheduledNotificationForPrayer = (
   scheduleType: ScheduleType,
   prayerIndex: number,
@@ -104,6 +167,11 @@ export const addOneScheduledNotificationForPrayer = (
   logger.info('NOTIFICATION DB: Added:', notification);
 };
 
+/**
+ * Gets all scheduled notifications for a schedule type
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @returns Array of scheduled notifications
+ */
 export const getAllScheduledNotificationsForSchedule = (
   scheduleType: ScheduleType
 ): NotificationUtils.ScheduledNotification[] => {
@@ -114,6 +182,12 @@ export const getAllScheduledNotificationsForSchedule = (
   return notifications;
 };
 
+/**
+ * Gets all scheduled notifications for a specific prayer
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @returns Array of scheduled notifications
+ */
 export const getAllScheduledNotificationsForPrayer = (scheduleType: ScheduleType, prayerIndex: number) => {
   const prefix = `scheduled_notifications_${scheduleType}_${prayerIndex}`;
   const notifications = getAllWithPrefix(prefix);
