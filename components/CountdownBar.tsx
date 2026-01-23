@@ -13,7 +13,7 @@ import { useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
-import { countdownBarShownAtom, countdownBarColorAtom } from '@/stores/ui';
+import { countdownBarColorAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -25,7 +25,6 @@ export default function CountdownBar({ type }: Props) {
   const { progress: elapsedProgress, isReady } = useCountdownBar(type);
 
   const overlay = useAtomValue(overlayAtom);
-  const isCountdownBarShown = useAtomValue(countdownBarShownAtom);
   const countdownBarColor = useAtomValue(countdownBarColorAtom);
 
   // Convert elapsed % to remaining % (bar shrinks as time passes)
@@ -36,7 +35,7 @@ export default function CountdownBar({ type }: Props) {
   const widthValue = useSharedValue(progress ?? 0);
   const colorValue = useSharedValue(0); // Discrete color state: 0=blue, 1=red
   const warningValue = useSharedValue(0);
-  const opacityValue = useSharedValue(!overlay.isOn && isCountdownBarShown ? 1 : 0);
+  const opacityValue = useSharedValue(overlay.isOn ? 0 : 1);
   const isFirstRender = useRef(true);
   const isFirstOpacityRender = useRef(true);
   const prevProgress = useRef(progress);
@@ -135,9 +134,9 @@ export default function CountdownBar({ type }: Props) {
     }
   }, [progress]);
 
-  // Animate opacity: hidden when overlay is on OR when user toggles "Show countdown bar" off
+  // Animate opacity: hidden when overlay is on (show/hide setting handled by conditional render in Countdown.tsx)
   useEffect(() => {
-    const shouldShow = !overlay.isOn && isCountdownBarShown;
+    const shouldShow = !overlay.isOn;
 
     if (isFirstOpacityRender.current) {
       // On first render, set opacity directly without animation
@@ -147,9 +146,9 @@ export default function CountdownBar({ type }: Props) {
       // On subsequent renders, animate the change
       opacityValue.value = withTiming(shouldShow ? 1 : 0, { duration: ANIMATION.duration, easing: Easing.linear });
     }
-  }, [overlay.isOn, isCountdownBarShown]);
+  }, [overlay.isOn]);
 
-  // Always render container to reserve 3px height, use opacity to hide/show
+  // Opacity used only for overlay animation (show/hide setting handled by conditional render in Countdown.tsx)
   return (
     <Animated.View style={[styles.container, opacityStyle]}>
       {/* Base glow effect */}
