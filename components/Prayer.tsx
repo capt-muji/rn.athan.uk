@@ -13,7 +13,7 @@ import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
-import { refreshUIAtom } from '@/stores/ui';
+import { refreshUIAtom, showArabicNamesAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -23,6 +23,7 @@ interface Props {
 
 export default function Prayer({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
+  const showArabicNames = useAtomValue(showArabicNamesAtom);
 
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
@@ -84,7 +85,9 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
       <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, AnimColor.style]}>
         {Prayer.english}
       </Animated.Text>
-      <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
+      {showArabicNames && (
+        <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
+      )}
       <PrayerTime index={index} type={type} isOverlay={isOverlay} />
       <Alert index={index} type={type} isOverlay={isOverlay} />
     </Pressable>

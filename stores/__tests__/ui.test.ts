@@ -5,6 +5,7 @@
  * - hijriDateEnabledAtom (default: false)
  * - showSecondsAtom (default: false)
  * - showTimePassedAtom (default: true)
+ * - showArabicNamesAtom (default: true)
  * - countdownBarShownAtom (default: true)
  *
  * Each atom is tested for default value, setting to true/false,
@@ -13,7 +14,13 @@
 
 import { createStore } from 'jotai';
 
-import { showTimePassedAtom, showSecondsAtom, hijriDateEnabledAtom, countdownBarShownAtom } from '../ui';
+import {
+  showTimePassedAtom,
+  showSecondsAtom,
+  showArabicNamesAtom,
+  hijriDateEnabledAtom,
+  countdownBarShownAtom,
+} from '../ui';
 
 // =============================================================================
 // SHOW TIME PASSED ATOM TESTS
@@ -58,6 +65,52 @@ describe('showTimePassedAtom', () => {
     // Toggle back to true
     store.set(showTimePassedAtom, true);
     expect(store.get(showTimePassedAtom)).toBe(true);
+  });
+});
+
+// =============================================================================
+// SHOW ARABIC NAMES ATOM TESTS
+// =============================================================================
+
+describe('showArabicNamesAtom', () => {
+  it('exports the atom', () => {
+    expect(showArabicNamesAtom).toBeDefined();
+  });
+
+  it('has correct default value of true', () => {
+    const store = createStore();
+    const value = store.get(showArabicNamesAtom);
+    expect(value).toBe(true);
+  });
+
+  it('can be set to false', () => {
+    const store = createStore();
+    store.set(showArabicNamesAtom, false);
+    const value = store.get(showArabicNamesAtom);
+    expect(value).toBe(false);
+  });
+
+  it('can be set back to true', () => {
+    const store = createStore();
+    store.set(showArabicNamesAtom, false);
+    store.set(showArabicNamesAtom, true);
+    const value = store.get(showArabicNamesAtom);
+    expect(value).toBe(true);
+  });
+
+  it('can toggle between true and false', () => {
+    const store = createStore();
+
+    // Default is true
+    expect(store.get(showArabicNamesAtom)).toBe(true);
+
+    // Toggle to false
+    store.set(showArabicNamesAtom, false);
+    expect(store.get(showArabicNamesAtom)).toBe(false);
+
+    // Toggle back to true
+    store.set(showArabicNamesAtom, true);
+    expect(store.get(showArabicNamesAtom)).toBe(true);
   });
 });
 
@@ -166,6 +219,7 @@ describe('settings atoms default values', () => {
     expect(store.get(hijriDateEnabledAtom)).toBe(false);
     expect(store.get(showSecondsAtom)).toBe(false);
     expect(store.get(showTimePassedAtom)).toBe(true);
+    expect(store.get(showArabicNamesAtom)).toBe(true);
     expect(store.get(countdownBarShownAtom)).toBe(true);
   });
 });
