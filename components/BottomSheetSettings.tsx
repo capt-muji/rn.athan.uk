@@ -2,7 +2,7 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useCallback } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
@@ -21,7 +21,9 @@ import {
 } from '@/stores/ui';
 
 export default function BottomSheetSettings() {
-  const { bottom } = useSafeAreaInsets();
+  const { bottom: safeBottom } = useSafeAreaInsets();
+  // Android: ignore bottom insets (nav bar is auto-hidden)
+  const bottom = Platform.OS === 'android' ? 0 : safeBottom;
 
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
