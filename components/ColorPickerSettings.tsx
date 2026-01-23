@@ -6,7 +6,7 @@ import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } fro
 
 import { TEXT, STYLES } from '@/shared/constants';
 import logger from '@/shared/logger';
-import { countdownBarColorAtom, countdownBarHiddenAtom } from '@/stores/ui';
+import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
 const SWATCH_COLORS = [
   '#00eeff', // cyan
@@ -32,12 +32,12 @@ const DEFAULT_COLOR = SWATCH_COLORS[0];
 
 export default function ColorPickerSettings() {
   const [countdownBarColor, setCountdownBarColor] = useAtom(countdownBarColorAtom);
-  const [countdownBarHidden] = useAtom(countdownBarHiddenAtom);
+  const [countdownBarShown] = useAtom(countdownBarShownAtom);
   const [showPicker, setShowPicker] = useState(false);
   const [selectedColor, setSelectedColor] = useState(countdownBarColor);
 
-  const isDisabled = countdownBarHidden;
-  const opacity = isDisabled ? 0.4 : 1;
+  const isDisabled = !countdownBarShown;
+  const opacity = countdownBarShown ? 1 : 0.4;
 
   const handlePress = useCallback(() => {
     if (isDisabled) return;
