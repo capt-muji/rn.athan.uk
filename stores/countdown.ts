@@ -33,8 +33,13 @@ const createInitialCountdown = (): CountdownStore => ({ timeLeft: 10, name: 'Faj
 
 // --- Atoms ---
 
+/** Countdown state for Standard schedule (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) */
 export const standardCountdownAtom = atom<CountdownStore>(createInitialCountdown());
+
+/** Countdown state for Extra schedule (Midnight, Last Third, Suhoor, Duha, Istijaba) */
 export const extraCountdownAtom = atom<CountdownStore>(createInitialCountdown());
+
+/** Countdown state for overlay display (selected prayer) */
 export const overlayCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 
 // --- Actions ---
@@ -147,8 +152,11 @@ const startCountdownOverlay = () => {
 };
 
 /**
- * Initializes all countdowns - standard, extra, overlay
- * Always starts all countdowns for continuous countdown display
+ * Initializes all countdowns for the app
+ *
+ * Starts countdown intervals for Standard schedule, Extra schedule, and overlay.
+ * Called during app initialization after prayer sequences are loaded.
+ * Each countdown ticks every second and refreshes the sequence when a prayer passes.
  */
 const startCountdowns = () => {
   startSequenceCountdown(ScheduleType.Standard);
