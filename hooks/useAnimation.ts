@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import {
   useSharedValue,
   withTiming,
@@ -11,6 +12,7 @@ import {
   WithTimingConfig,
   WithSpringConfig,
   Easing,
+  cancelAnimation,
 } from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';
@@ -86,10 +88,9 @@ export const useAnimationColor = (initialValue: number = 0, input: ColorAnimatio
     color: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
   }));
 
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
+  const animate = useCallback((toValue: number, options?: AnimationOptions) => {
     value.value = createTimingAnimation(toValue, options);
-  };
+  }, []);
 
   return { value, style, animate };
 };
@@ -112,10 +113,9 @@ export const useAnimationFill = (initialValue: number = 0, input: ColorAnimation
     fill: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
   }));
 
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
+  const animate = useCallback((toValue: number, options?: AnimationOptions) => {
     value.value = createTimingAnimation(toValue, options);
-  };
+  }, []);
 
   return { value, animatedProps, animate };
 };
@@ -137,10 +137,9 @@ export const useAnimationBackgroundColor = (initialValue: number = 0, input: Col
     backgroundColor: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
   }));
 
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
+  const animate = useCallback((toValue: number, options?: AnimationOptions) => {
     value.value = createTimingAnimation(toValue, options);
-  };
+  }, []);
 
   return { value, style, animate };
 };
@@ -162,10 +161,9 @@ export const useAnimationOpacity = (initialValue: number = 0) => {
     opacity: value.value,
   }));
 
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
+  const animate = useCallback((toValue: number, options?: AnimationOptions) => {
     value.value = createTimingAnimation(toValue, options);
-  };
+  }, []);
 
   return { value, style, animate };
 };
@@ -187,10 +185,9 @@ export const useAnimationTranslateY = (initialValue: number) => {
     transform: [{ translateY: value.value }],
   }));
 
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
+  const animate = useCallback((toValue: number, options?: AnimationOptions) => {
     value.value = createTimingAnimation(toValue, options, { easing: Easing.elastic(0.5) });
-  };
+  }, []);
 
   return { value, style, animate };
 };
@@ -212,10 +209,9 @@ export const useAnimationScale = (initialValue: number = 1) => {
     transform: [{ scale: value.value }],
   }));
 
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
+  const animate = useCallback((toValue: number, options?: AnimationOptions) => {
     value.value = createSpringAnimation(toValue, options);
-  };
+  }, []);
 
   return { value, style, animate };
 };
@@ -237,10 +233,18 @@ export const useAnimationBounce = (initialValue: number = 0) => {
     transform: [{ scale: interpolate(value.value, [0, 1], [0.95, 1]) }],
   }));
 
-  const animate = (toValue: number, options?: AnimationOptions) => {
-    'worklet';
+  const animate = useCallback((toValue: number, options?: AnimationOptions) => {
     value.value = createSpringAnimation(toValue, options);
-  };
+  }, []);
 
-  return { value, style, animate };
+  /**
+   * Reset the animation value immediately (non-animated)
+   * Cancels any running animation before setting the value
+   */
+  const reset = useCallback((toValue: number) => {
+    cancelAnimation(value);
+    value.value = toValue;
+  }, []);
+
+  return { value, style, animate, reset };
 };

@@ -26,6 +26,7 @@ interface PrayerExplanationProps {
   prayerName: string;
   explanation: string;
   explanationArabic: string;
+  arrowPosition?: 'top' | 'bottom';
   style?: ViewStyle;
 }
 
@@ -33,18 +34,23 @@ export default function PrayerExplanation({
   prayerName,
   explanation,
   explanationArabic,
+  arrowPosition = 'top',
   style,
 }: PrayerExplanationProps) {
+  const isArrowOnTop = arrowPosition === 'top';
+
   return (
     <View style={[styles.container, style]}>
       {/* Triangle arrow pointing up - with border effect */}
-      <View style={styles.arrowContainer}>
-        <View style={styles.arrowBorder} />
-        <View style={styles.arrowFill} />
-      </View>
+      {isArrowOnTop && (
+        <View style={styles.arrowContainerTop}>
+          <View style={styles.arrowBorderUp} />
+          <View style={styles.arrowFillUp} />
+        </View>
+      )}
 
       {/* Info box */}
-      <View style={styles.infoBox}>
+      <View style={[styles.infoBox, isArrowOnTop ? styles.infoBoxTopArrow : styles.infoBoxBottomArrow]}>
         {/* Header with icon and title */}
         <View style={styles.infoHeader}>
           <Svg width={17} height={17} viewBox="0 0 128 128">
@@ -59,6 +65,14 @@ export default function PrayerExplanation({
         {/* Arabic explanation */}
         <Text style={styles.infoExplanationArabic}>{toArabicNumbers(explanationArabic)}</Text>
       </View>
+
+      {/* Triangle arrow pointing down - with border effect */}
+      {!isArrowOnTop && (
+        <View style={styles.arrowContainerBottom}>
+          <View style={styles.arrowBorderDown} />
+          <View style={styles.arrowFillDown} />
+        </View>
+      )}
     </View>
   );
 }
@@ -68,11 +82,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
   },
-  arrowContainer: {
+  // Arrow at top (pointing up)
+  arrowContainerTop: {
     alignItems: 'center',
     marginBottom: -1,
   },
-  arrowBorder: {
+  arrowBorderUp: {
     width: 0,
     height: 0,
     backgroundColor: 'transparent',
@@ -84,7 +99,7 @@ const styles = StyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: '#3b3977',
   },
-  arrowFill: {
+  arrowFillUp: {
     width: 0,
     height: 0,
     backgroundColor: 'transparent',
@@ -98,17 +113,54 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 1,
   },
+  // Arrow at bottom (pointing down)
+  arrowContainerBottom: {
+    alignItems: 'center',
+    marginTop: -1,
+  },
+  arrowBorderDown: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderLeftWidth: 11,
+    borderRightWidth: 11,
+    borderTopWidth: 11,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderTopColor: '#3b3977',
+  },
+  arrowFillDown: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderLeftWidth: 10,
+    borderRightWidth: 10,
+    borderTopWidth: 10,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderTopColor: '#1e1b4b',
+    position: 'absolute',
+    bottom: 1,
+  },
   infoBox: {
     backgroundColor: '#1e1b4b',
     borderRadius: 12,
     borderLeftWidth: 1,
     borderRightWidth: 1,
-    borderBottomWidth: 1,
-    borderTopWidth: 0,
     borderColor: '#3b3977',
     paddingVertical: 18,
     paddingHorizontal: 20,
     minWidth: 300,
+  },
+  infoBoxTopArrow: {
+    borderBottomWidth: 1,
+    borderTopWidth: 0,
+  },
+  infoBoxBottomArrow: {
+    borderTopWidth: 1,
+    borderBottomWidth: 0,
   },
   infoHeader: {
     flexDirection: 'row',

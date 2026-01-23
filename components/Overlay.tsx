@@ -40,6 +40,7 @@ export default function Overlay() {
   const hijriEnabled = useAtomValue(hijriDateEnabledAtom);
 
   const insets = useSafeAreaInsets();
+  const window = useWindowDimensions();
 
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -79,8 +80,11 @@ export default function Overlay() {
     ...(selectedPrayer.isNext && styles.activeBackground),
   };
 
-  // Info box positioned below prayer row
-  const computedStyleInfoBox: ViewStyle = {
+  // First 3 items (indices 0, 1, 2) show info box below, rest show above
+  const showInfoBoxAbove = overlay.selectedPrayerIndex >= 3;
+
+  // Info box positioned below prayer row (for first 3 items)
+  const computedStyleInfoBoxBelow: ViewStyle = {
     top:
       (listMeasurements?.pageY ?? 0) +
       (Platform.OS === 'android' ? insets.top : 0) +
@@ -91,14 +95,26 @@ export default function Overlay() {
     width: listMeasurements?.width ?? 0,
   };
 
+  // Info box positioned above prayer row (for items 4+)
+  const computedStyleInfoBoxAbove: ViewStyle = {
+    bottom:
+      window.height -
+      (listMeasurements?.pageY ?? 0) -
+      (Platform.OS === 'android' ? insets.top : 0) -
+      overlay.selectedPrayerIndex * STYLES.prayer.height +
+      8,
+    left: listMeasurements?.pageX ?? 0,
+    width: listMeasurements?.width ?? 0,
+  };
+
+  const computedStyleInfoBox = showInfoBoxAbove ? computedStyleInfoBoxAbove : computedStyleInfoBoxBelow;
+
   const isExtra = overlay.scheduleType === ScheduleType.Extra;
   const prayerName = isExtra ? EXTRAS_ENGLISH[overlay.selectedPrayerIndex] : null;
   const explanation = isExtra ? EXTRAS_EXPLANATIONS[overlay.selectedPrayerIndex] : null;
   const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[overlay.selectedPrayerIndex] : null;
 
   const formattedDate = hijriEnabled ? formatHijriDateLong(selectedPrayer.date) : formatDateLong(selectedPrayer.date);
-
-  const window = useWindowDimensions();
 
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
@@ -124,6 +140,7 @@ export default function Overlay() {
           prayerName={prayerName}
           explanation={explanation}
           explanationArabic={explanationArabic}
+          arrowPosition={showInfoBoxAbove ? 'bottom' : 'top'}
           style={computedStyleInfoBox}
         />
       )}
