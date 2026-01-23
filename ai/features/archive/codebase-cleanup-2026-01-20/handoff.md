@@ -191,7 +191,7 @@ Files changed (15 total):
 - shared/types.ts, shared/constants.ts, shared/prayer.ts, shared/time.ts
 - stores/ui.ts, stores/schedule.ts, stores/notifications.ts, stores/version.ts
 - device/updates.ts
-- components/ProgressBar.tsx (optional)
+- components/CountdownBar.tsx (optional)
 - README.md, ai/AGENTS.md
 
 Review criteria:
@@ -231,7 +231,7 @@ Provide grade (A-F) and specific feedback on any issues.
 11. `shared/time.ts` - Add JSDoc to 3 functions
 
 **Low Priority** (Documentation):
-12. `components/ProgressBar.tsx` - Extract platform helpers (optional)
+12. `components/CountdownBar.tsx` - Extract platform helpers (optional)
 13. `README.md` - Add cleanup section
 14. `ai/AGENTS.md` - Add memory log entry
 
@@ -317,7 +317,7 @@ Each phase is independent - can rollback individual phases without affecting oth
 
 1. **Animation Hooks**: Extract shared logic, don't use factory pattern (React hooks rules)
 2. **Schedule Type Ternaries**: Keep as-is (simple enough, introducing helper may reduce clarity)
-3. **ProgressBar Platform Logic**: Optional refactor (low priority)
+3. **CountdownBar Platform Logic**: Optional refactor (low priority)
 4. **Constants**: Group by domain (TIME_CONSTANTS, ISLAMIC_DAY) rather than flat structure
 5. **Function Breakdown**: Prefer 4 focused functions over 1 large function (even if slightly more lines)
 

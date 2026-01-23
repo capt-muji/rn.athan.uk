@@ -37,7 +37,7 @@ This ADR resolves the ambiguity and establishes clear rules for all timing scena
 | System midnight | 00:00 on the system clock (English midnight). The app does NOT use this as a trigger. |
 | Day boundary (Standard) | After Isha passes. Schedule advances to tomorrow, date updates. |
 | Day boundary (Extras) | After Duha passes (non-Friday) or after Istijaba passes (Friday). |
-| Yesterday | The previous day's schedule data. Used for ProgressBar and Extra prayers that span nights. |
+| Yesterday | The previous day's schedule data. Used for CountdownBar and Extra prayers that span nights. |
 | Schedule advancement | When the last prayer passes, schedule.today becomes schedule.yesterday, schedule.tomorrow becomes schedule.today, and new tomorrow data is fetched. |
 
 ## Decision
@@ -294,14 +294,14 @@ if (isJanuaryFirst(date)) {
   const prevYearData = Database.getPrayerByDate(prevYearLastDate);
 
   if (!prevYearData) {
-    // Fetch previous year's data for ProgressBar yesterday calculation
+    // Fetch previous year's data for CountdownBar yesterday calculation
     const prevYearData = await Api.fetchYear(date.getFullYear() - 1);
     Database.saveAllPrayers(prevYearData);
   }
 }
 ```
 
-This ensures ProgressBar has Dec 31's Isha time for calculating progress on Jan 1.
+This ensures CountdownBar has Dec 31's Isha time for calculating progress on Jan 1.
 
 ---
 
@@ -420,9 +420,9 @@ If the schedule has advanced (prayer.date !== today), the prayer is NOT marked a
 
 ---
 
-### Scenario 14: ProgressBar Yesterday's Data
+### Scenario 14: CountdownBar Yesterday's Data
 
-**Context:** ProgressBar needs previous Isha to calculate "time since last prayer".
+**Context:** CountdownBar needs previous Isha to calculate "time since last prayer".
 
 ```
 Time: 03:00 on 2026-01-18
@@ -430,7 +430,7 @@ Current prayer: waiting for Fajr (06:12)
 Previous prayer: Yesterday's Isha (18:15 on Jan 17)
 ```
 
-**The ProgressBar calculation needs:**
+**The CountdownBar calculation needs:**
 - Previous prayer end time (yesterday's Isha)
 - Next prayer start time (today's Fajr)
 - Current time

@@ -1,4 +1,4 @@
-# Feature: ProgressBar Midnight Bug Fix
+# Feature: CountdownBar Midnight Bug Fix
 
 **Status:** ✅ ARCHIVED
 **Created:** 2026-01-16
@@ -14,7 +14,7 @@
 
 **Fall back = Mask the real problem = User gets inaccurate data**
 
-The ProgressBar MUST always show accurate progress. If yesterday's data is missing:
+The CountdownBar MUST always show accurate progress. If yesterday's data is missing:
 
 - **DO NOT** show approximate/fallback progress
 - **DO NOT** silently fail
@@ -46,16 +46,16 @@ The ProgressBar MUST always show accurate progress. If yesterday's data is missi
 - [x] Verify no breaking changes
 - [x] Test with existing schedule operations
 
-### Phase 2: ProgressBar Implementation
+### Phase 2: CountdownBar Implementation
 
-#### Task 2.1: Update ProgressBar to Use Yesterday from Schedule (components/ProgressBar.tsx)
+#### Task 2.1: Update CountdownBar to Use Yesterday from Schedule (components/CountdownBar.tsx)
 
 - [x] Remove on-demand Database.getPrayerByDate() call
 - [x] Use schedule.yesterday instead
 - [x] Update progress calculation logic
 - [x] Test with different schedule types (Standard/Extra)
 
-#### Task 2.2: Clean ProgressBar (components/ProgressBar.tsx)
+#### Task 2.2: Clean CountdownBar (components/CountdownBar.tsx)
 
 - [x] Removed all defensive code
 - [x] No error checks, no fallback
@@ -134,7 +134,7 @@ The ProgressBar MUST always show accurate progress. If yesterday's data is missi
 | ---------------------------- | ----- | ------ | --------------------------------------------------------------------------------------- |
 | `shared/types.ts`            | 1     | ✅     | Add `yesterday` to ScheduleStore                                                        |
 | `stores/schedule.ts`         | 1     | ✅     | Update buildDailySchedules, setSchedule, advanceScheduleToTomorrow                      |
-| `components/ProgressBar.tsx` | 2     | ✅     | Use yesterday from schedule, throw on missing                                           |
+| `components/CountdownBar.tsx` | 2     | ✅     | Use yesterday from schedule, throw on missing                                           |
 | `stores/sync.ts`             | 3     | ✅     | Handle Jan 1 edge case (MANDATORY fetch + SAVE to database)                             |
 | `api/client.ts`              | 3     | ✅     | 3 explicit API functions (fetchPreviousYear, fetchCurrentYear, fetchCurrentAndNextYear) |
 
@@ -172,14 +172,14 @@ The ProgressBar MUST always show accurate progress. If yesterday's data is missi
 
 | Location        | Old Code                 | New Code                                |
 | --------------- | ------------------------ | --------------------------------------- |
-| ProgressBar.tsx | Error throwing + logging | **Clean** - pure progress calculation   |
-| ProgressBar.tsx | Defensive checks         | **Trust** - data layer always available |
+| CountdownBar.tsx | Error throwing + logging | **Clean** - pure progress calculation   |
+| CountdownBar.tsx | Defensive checks         | **Trust** - data layer always available |
 | sync.ts         | try-catch with warning   | **MANDATORY** - fetch or fail           |
 
 **Key Principle:**
 
 - ✅ Sync layer ensures yesterday's data is ALWAYS available
-- ✅ ProgressBar is clean, simple, trusting
+- ✅ CountdownBar is clean, simple, trusting
 - ✅ No defensive code needed
 
 ---
@@ -200,8 +200,8 @@ The ProgressBar MUST always show accurate progress. If yesterday's data is missi
 
 **Key Behavior Change:**
 
-- OLD: ProgressBar returns null or uses fallback when yesterday's data missing → inaccurate/empty bar
-- NEW: ProgressBar throws error if yesterday's data missing → forces data layer fix
+- OLD: CountdownBar returns null or uses fallback when yesterday's data missing → inaccurate/empty bar
+- NEW: CountdownBar throws error if yesterday's data missing → forces data layer fix
 - NEW: On Jan 1, app MANDATORILY fetches previous year's Dec 31 data (no fallback)
 
 **Risk Mitigations Applied:**
@@ -248,6 +248,6 @@ The ProgressBar MUST always show accurate progress. If yesterday's data is missi
 
 **The Result:**
 
-- ProgressBar ALWAYS has accurate data
+- CountdownBar ALWAYS has accurate data
 - If data is missing, the app throws an error (easier to debug)
 - User always sees correct progress bar

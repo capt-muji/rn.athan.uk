@@ -10,7 +10,7 @@
 
 ## Overview
 
-Change the day boundary from English midnight (00:00) to prayer-based boundaries. Each schedule resets after its final prayer passes, immediately showing tomorrow's date and schedule. Countdown/countdown/progressbar always display continuously - no "All prayers finished" state ever.
+Change the day boundary from English midnight (00:00) to prayer-based boundaries. Each schedule resets after its final prayer passes, immediately showing tomorrow's date and schedule. Countdown/countdown/countdownbar always display continuously - no "All prayers finished" state ever.
 
 ## Goals
 
@@ -19,7 +19,7 @@ Change the day boundary from English midnight (00:00) to prayer-based boundaries
 - [ ] Extras schedule resets after Duha/Istijaba passes → shows tomorrow's date + Last Third countdown
 - [ ] Each schedule displays its own date independently
 - [ ] Countdown always shows countdown to next prayer (continuous, never hidden)
-- [ ] ProgressBar always visible and animating
+- [ ] CountdownBar always visible and animating
 
 ## Non-Goals
 
@@ -37,7 +37,7 @@ Change the day boundary from English midnight (00:00) to prayer-based boundaries
 **Acceptance Criteria:**
 - [ ] After Isha passes, countdown shows "Fajr in Xh Xm" (tomorrow's Fajr)
 - [ ] After Duha/Istijaba passes, countdown shows "Last Third in Xh Xm"
-- [ ] ProgressBar continues animating to next prayer
+- [ ] CountdownBar continues animating to next prayer
 - [ ] No "All prayers finished" message ever displays
 
 ### Story 2: Immediate Schedule Transition
@@ -105,7 +105,7 @@ Last prayer countdown reaches 0
 | Component | Change Type | Description |
 |-----------|-------------|-------------|
 | `stores/overlay.ts` | Modified | Auto-close overlay during schedule advancement |
-| `components/ProgressBar.tsx` | Verify | Verify continuous display after advancement (likely no changes) |
+| `components/CountdownBar.tsx` | Verify | Verify continuous display after advancement (likely no changes) |
 
 #### VERIFY - Notifications (2 files)
 
@@ -243,7 +243,7 @@ useEffect(() => {
 - [ ] Wait for Isha to pass → Standard date changes to tomorrow, countdown shows Fajr
 - [ ] Check Extra tab after Duha → Extra date shows tomorrow, countdown shows Last Third
 - [ ] Verify Friday Istijaba triggers schedule advance
-- [ ] Verify ProgressBar continues animating after advancement
+- [ ] Verify CountdownBar continues animating after advancement
 - [ ] Verify cascade animations trigger once per schedule transition
 - [ ] Test with overlay open during advancement → should auto-close
 
