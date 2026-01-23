@@ -5,7 +5,6 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import CountdownBar from './CountdownBar';
 
 import { useCountdown } from '@/hooks/useCountdown';
-import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { COLORS, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
@@ -21,7 +20,6 @@ export default function Countdown({ type }: Props) {
   // NEW: Use sequence-based countdown hook
   // See: ai/adr/005-timing-system-overhaul.md
   const { timeLeft, prayerName, isReady } = useCountdown(type);
-  const { prayerAgo, minutesElapsed, isReady: prayerAgoReady } = usePrayerAgo(type);
 
   const overlay = useAtomValue(overlayAtom);
   const showSeconds = useAtomValue(showSecondsAtom);
@@ -37,18 +35,6 @@ export default function Countdown({ type }: Props) {
     transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
   }));
 
-  // Fade out when overlay opens
-  const prayerAgoOpacity = useAnimatedStyle(() => ({
-    opacity: withTiming(overlay.isOn ? 0 : 1, { duration: 150 }),
-  }));
-
-  // Vibrant royal blue highlight for recent prayers (≤5 mins), otherwise normal style
-  const isRecent = minutesElapsed <= 5;
-  const prayerAgoStyle = useAnimatedStyle(() => ({
-    color: isRecent ? '#a5b4fc' : '#a0c8ff80',
-    backgroundColor: isRecent ? '#6366f130' : '#8ab4e810',
-  }));
-
   // Show loading state if countdown not ready (sequence not initialized)
   if (!isReady && !overlay.isOn) {
     return null;
@@ -60,9 +46,6 @@ export default function Countdown({ type }: Props) {
         <Text style={[styles.text]}>{displayName}</Text>
         <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
         <CountdownBar type={type} />
-        <Animated.Text style={[styles.prayerAgo, prayerAgoOpacity, prayerAgoStyle]}>
-          {prayerAgoReady && prayerAgo}
-        </Animated.Text>
       </View>
     </Animated.View>
   );
@@ -71,8 +54,8 @@ export default function Countdown({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     height: STYLES.countdown.height,
-    marginBottom: 40,
-    marginTop: 20,
+    marginBottom: 50,
+    marginTop: 10,
     justifyContent: 'center',
   },
   text: {
@@ -87,16 +70,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: TEXT.family.medium,
     marginBottom: 16,
-  },
-  prayerAgo: {
-    textAlign: 'center',
-    fontSize: TEXT.sizeSmall - 2,
-    marginTop: 12,
-    fontFamily: TEXT.family.regular,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 999,
-    overflow: 'hidden',
-    alignSelf: 'center',
   },
 });

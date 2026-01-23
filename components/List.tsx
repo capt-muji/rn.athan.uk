@@ -51,5 +51,6 @@ export default function List({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
+    marginBottom: 30,
   },
 });

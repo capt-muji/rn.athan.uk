@@ -31,7 +31,7 @@ export default function Navigation() {
         <Screen type={ScheduleType.Extra} />
       </PagerView>
 
-      <View style={[styles.dotsContainer, { bottom: bottom + 20 + (Platform.OS === 'android' ? 15 : 0) }]}>
+      <View style={[styles.dotsContainer, { bottom: bottom + (Platform.OS === 'android' ? 15 : 0) }]}>
         <View style={styles.buttonWrapper}>
           <SettingsButton />
         </View>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   buttonWrapper: {
     position: 'absolute',
-    bottom: 30, // Position above dots
+    bottom: 25, // Position above dots
   },
   dotsRow: {
     flexDirection: 'row',

@@ -7,7 +7,7 @@ type MasjidProps = {
   height?: number;
 };
 
-export default function Masjid({ height = 55, width = 55 }: MasjidProps) {
+export default function Masjid({ height = 45, width = 45 }: MasjidProps) {
   return (
     <View style={styles.container}>
       <Icon style={styles.icon} height={height} width={width} />
