@@ -14,52 +14,32 @@ const pinoLogger = pino({
   },
 });
 
-// Wrapper to handle object logging properly
+type LogLevel = 'info' | 'warn' | 'debug' | 'error';
+
+/**
+ * Creates a log function for the given level
+ * Handles object vs primitive data formatting
+ */
+const createLogMethod = (level: LogLevel, fallbackKey: string) => {
+  return (msg: string, data?: unknown) => {
+    if (data === undefined) {
+      pinoLogger[level](msg);
+      return;
+    }
+
+    if (typeof data === 'object' && data !== null) {
+      pinoLogger[level](data, msg);
+    } else {
+      pinoLogger[level]({ [fallbackKey]: data }, msg);
+    }
+  };
+};
+
 const logger = {
-  info: (msg: string, data?: unknown) => {
-    if (data !== undefined) {
-      if (typeof data === 'object' && data !== null) {
-        pinoLogger.info(data, msg);
-      } else {
-        pinoLogger.info({ data }, msg);
-      }
-    } else {
-      pinoLogger.info(msg);
-    }
-  },
-  error: (msg: string, data?: unknown) => {
-    if (data !== undefined) {
-      if (typeof data === 'object' && data !== null) {
-        pinoLogger.error(data, msg);
-      } else {
-        pinoLogger.error({ error: data }, msg);
-      }
-    } else {
-      pinoLogger.error(msg);
-    }
-  },
-  warn: (msg: string, data?: unknown) => {
-    if (data !== undefined) {
-      if (typeof data === 'object' && data !== null) {
-        pinoLogger.warn(data, msg);
-      } else {
-        pinoLogger.warn({ data }, msg);
-      }
-    } else {
-      pinoLogger.warn(msg);
-    }
-  },
-  debug: (msg: string, data?: unknown) => {
-    if (data !== undefined) {
-      if (typeof data === 'object' && data !== null) {
-        pinoLogger.debug(data, msg);
-      } else {
-        pinoLogger.debug({ data }, msg);
-      }
-    } else {
-      pinoLogger.debug(msg);
-    }
-  },
+  info: createLogMethod('info', 'data'),
+  error: createLogMethod('error', 'error'),
+  warn: createLogMethod('warn', 'data'),
+  debug: createLogMethod('debug', 'data'),
 };
 
 export default logger;
