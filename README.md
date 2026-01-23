@@ -268,6 +268,38 @@ The codebase follows a clean architecture pattern with clear separation of conce
 3. **Animations**: Reanimated worklets with custom hooks
 4. **Date Handling**: All dates in London timezone using date-fns-tz
 
+### Code Quality
+
+- **Testing**: Jest with ts-jest for unit tests (`yarn test`)
+- **Type Safety**: Full TypeScript coverage with strict mode
+- **Linting**: ESLint + Prettier (120 char lines, 2 spaces, single quotes)
+- **Logging**: Pino logger (no console.log statements)
+- **JSDoc**: All public functions documented with examples
+
+### Architecture Patterns
+
+The codebase follows established patterns for consistency:
+
+1. **Helper Function Extraction**: Complex logic extracted into named functions
+   - Example: `parseNightBoundaries()` in time.ts
+   - Example: `getYesterdayFinalPrayer()` in schedule.ts
+
+2. **Section Comments**: Files organized with clear section headers
+
+   ```typescript
+   // =============================================================================
+   // SECTION NAME
+   // =============================================================================
+   ```
+
+3. **Animation Hook Extraction**: Component animations encapsulated in hooks
+   - Example: `useAlertAnimations.ts` for Alert component
+
+4. **Scheduling Lock Pattern**: Concurrent operation protection
+   - Example: `withSchedulingLock()` in notifications.ts
+
+See `ai/adr/` for Architecture Decision Records.
+
 ## 🎨 Tech Stack
 
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)

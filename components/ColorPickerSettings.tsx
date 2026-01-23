@@ -8,6 +8,11 @@ import { TEXT, STYLES } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
+// =============================================================================
+// CONSTANTS
+// =============================================================================
+
+/** Primary swatch colors for quick selection */
 const SWATCH_COLORS = [
   '#00eeff', // cyan
   '#ff0055', // hot pink
@@ -18,6 +23,7 @@ const SWATCH_COLORS = [
   '#9900ff', // purple
 ];
 
+/** Secondary swatch colors for additional options */
 const SWATCH_COLORS_2 = [
   '#ff0033', // bright red
   '#00e5ff', // bright teal
@@ -28,8 +34,29 @@ const SWATCH_COLORS_2 = [
   '#ff0090', // magenta
 ];
 
+/** Default color when reset is pressed */
 const DEFAULT_COLOR = SWATCH_COLORS[0];
 
+// =============================================================================
+// COMPONENT
+// =============================================================================
+
+/**
+ * Color picker settings component for countdown bar customization
+ *
+ * Allows users to select a custom color for the countdown progress bar.
+ * Features:
+ * - Quick swatch selection
+ * - Full color picker with hue slider
+ * - Live preview of selected color
+ * - Reset to default option
+ *
+ * Disabled when countdown bar is hidden in settings.
+ *
+ * @example
+ * // In settings panel
+ * <ColorPickerSettings />
+ */
 export default function ColorPickerSettings() {
   const [countdownBarColor, setCountdownBarColor] = useAtom(countdownBarColorAtom);
   const [countdownBarShown] = useAtom(countdownBarShownAtom);
@@ -38,6 +65,10 @@ export default function ColorPickerSettings() {
 
   const isDisabled = !countdownBarShown;
   const opacity = countdownBarShown ? 1 : 0.4;
+
+  // =============================================================================
+  // HANDLERS
+  // =============================================================================
 
   const handlePress = useCallback(() => {
     if (isDisabled) return;
@@ -71,7 +102,15 @@ export default function ColorPickerSettings() {
     setShowPicker(false);
   }, []);
 
+  // =============================================================================
+  // COMPUTED VALUES
+  // =============================================================================
+
   const isCustomColor = countdownBarColor !== DEFAULT_COLOR;
+
+  // =============================================================================
+  // RENDER
+  // =============================================================================
 
   return (
     <>
@@ -125,7 +164,12 @@ export default function ColorPickerSettings() {
   );
 }
 
+// =============================================================================
+// STYLES
+// =============================================================================
+
 const styles = StyleSheet.create({
+  // --- Main Container ---
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -135,6 +179,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ffffff10',
   },
+
+  // --- Label Styles ---
   label: {
     color: 'white',
     fontFamily: TEXT.family.regular,
@@ -143,6 +189,8 @@ const styles = StyleSheet.create({
   labelDisabled: {
     color: '#92d3ffa6',
   },
+
+  // --- Right Side (Reset + Preview) ---
   rightContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -171,6 +219,8 @@ const styles = StyleSheet.create({
     height: 18,
     borderRadius: 10,
   },
+
+  // --- Modal Container ---
   modalOverlay: {
     flex: 1,
     backgroundColor: 'transparent',
@@ -191,6 +241,8 @@ const styles = StyleSheet.create({
     shadowRadius: 150,
     elevation: 15,
   },
+
+  // --- Modal Header ---
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -225,6 +277,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
   },
+
+  // --- Color Picker ---
   colorPicker: {
     paddingHorizontal: 20,
     paddingTop: 20,

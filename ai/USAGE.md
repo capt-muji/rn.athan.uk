@@ -446,18 +446,22 @@ cp ai/features/FEATURE-TEMPLATE.md ai/features/oauth-login/description.md
 ## 💡 Tips for Better Results
 
 ### Be Specific
+
 ❌ **Vague:** "Fix the bug"  
 ✅ **Specific:** "Fix TypeError in src/auth.ts line 42: 'Cannot read property email of null'"
 
 ### Provide Context
+
 ❌ **No context:** "Add login"  
 ✅ **With context:** "Add OAuth login (Google + GitHub) using NextAuth.js. Users should be redirected to /dashboard after login."
 
 ### Reference Files
+
 ❌ **Generic:** "The API is broken"  
 ✅ **Specific:** "The POST /api/users endpoint in src/api/users.ts returns 500 error when email is missing"
 
 ### Let Agents Guide You
+
 If you're unsure, just state your goal:
 
 ```
@@ -509,12 +513,13 @@ Read ai/AGENTS.md section 10 (Decision Tree) and tell me which specialist to use
 
 Templates are available for common documentation needs:
 
-| Template | Location | Purpose |
-|----------|----------|---------|
+| Template         | Location                          | Purpose                                                           |
+| ---------------- | --------------------------------- | ----------------------------------------------------------------- |
 | **Feature Spec** | `ai/features/FEATURE-TEMPLATE.md` | Full feature requirements (goals, user stories, technical design) |
-| **ADR** | `ai/adr/TEMPLATE.md` | Architecture Decision Records |
+| **ADR**          | `ai/adr/TEMPLATE.md`              | Architecture Decision Records                                     |
 
 **To use a template:**
+
 ```bash
 # For a new feature
 mkdir -p ai/features/my-feature

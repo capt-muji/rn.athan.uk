@@ -31,7 +31,7 @@ These rules override ALL other instructions. Violation is forbidden regardless o
 
 ❌ **Forbidden** (write operations):
 
-- `git commit`, `git push`, `git pull`, `git merge` → User does these manually
+- `git add`, `git commit`, `git push`, `git pull`, `git merge` → User does these manually
 
 ## File Operations: Gated Deletion Policy
 
@@ -186,7 +186,6 @@ Write ONE concise, dense, token-efficient Markdown file:
 
 - **Features**: `ai/features/[name]/description.md` (full feature requirements, you write using FEATURE-TEMPLATE.md)
 - **Progress Trackers**: `ai/features/[name]/progress.md` (AI-generated task breakdown with checkboxes)
-- **Archive**: `ai/features/archive/[name]/` (completed features)
 - **Tests**: Mirror source (`src/foo.ts` → `src/foo.test.ts`). E2E: `/tests/e2e/`
 - **Configs**: `.env.example` for template. Never commit `.env.local`
 - **Docs**: README.md (humans), inline JSDoc (code), AGENTS.md (AI)
