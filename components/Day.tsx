@@ -8,13 +8,7 @@ import { COLORS, SCREEN, TEXT } from '@/shared/constants';
 import { formatDateLong, formatHijriDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardDisplayDateAtom, extraDisplayDateAtom } from '@/stores/schedule';
-import {
-  getMeasurementsDate,
-  setMeasurementsDate,
-  getMeasurementsMasjid,
-  setMeasurementsMasjid,
-  hijriDateEnabledAtom,
-} from '@/stores/ui';
+import { getMeasurementsDate, setMeasurementsDate, hijriDateEnabledAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -28,7 +22,6 @@ export default function Day({ type }: Props) {
   const displayDateAtom = isStandard ? standardDisplayDateAtom : extraDisplayDateAtom;
   const date = useAtomValue(displayDateAtom) ?? '';
   const dateRef = useRef<Animated.Text>(null);
-  const masjidRef = useRef<View>(null);
   const hijriEnabled = useAtomValue(hijriDateEnabledAtom);
 
   const handleLayout = () => {
@@ -43,17 +36,6 @@ export default function Day({ type }: Props) {
     });
   };
 
-  const handleMasjidLayout = () => {
-    if (!masjidRef.current || !isStandard) return;
-
-    const cached = getMeasurementsMasjid();
-    if (cached.width > 0) return; // Already measured
-
-    masjidRef.current.measureInWindow((x, y, width, height) => {
-      setMeasurementsMasjid({ pageX: x, pageY: y, width, height });
-    });
-  };
-
   const formattedDate = hijriEnabled ? formatHijriDateLong(date) : formatDateLong(date);
 
   return (
@@ -64,9 +46,7 @@ export default function Day({ type }: Props) {
           {formattedDate}
         </Animated.Text>
       </View>
-      <View ref={masjidRef} onLayout={handleMasjidLayout}>
-        <Masjid />
-      </View>
+      <Masjid />
     </View>
   );
 }
