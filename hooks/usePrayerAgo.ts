@@ -51,7 +51,7 @@ export const usePrayerAgo = (type: ScheduleType): { prayerAgo: string; minutesEl
   useEffect(() => {
     updatePrayerAgo();
 
-    const interval = setInterval(updatePrayerAgo, 60000);
+    const interval = setInterval(updatePrayerAgo, 1000);
     return () => clearInterval(interval);
   }, [updatePrayerAgo]);
 
