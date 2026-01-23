@@ -9,6 +9,7 @@
 ## Context
 
 The Athan app displays prayer schedules for a given date. The app needs a consistent point at which:
+
 - The displayed date updates to the next day
 - Prayer schedules refresh from the database
 - UI elements reset (countdown, active prayer indicator)
@@ -33,6 +34,7 @@ Several factors complicate this decision:
 ### The Happy Path (Current State)
 
 Currently, this works because:
+
 - Isha is always before 00:00 in London
 - Last Third is always after 00:00 in London
 
@@ -47,6 +49,7 @@ Prayer times change throughout the year. Edge cases will emerge:
 3. **Middle of the Night prayer** (planned): A new Extra prayer at the halfway point between Maghrib and Fajr—usually around 23:00 but sometimes after 00:00
 
 These edge cases will break:
+
 - Countdown visibility logic
 - Date display accuracy
 - Today/Tomorrow overlay correctness
@@ -65,38 +68,45 @@ Use **English midnight (00:00)** as the day boundary for both Standard and Extra
 ### Rationale
 
 User familiarity and predictability outweigh technical correctness. Users expect:
+
 - The date shown to match their phone's clock
 - Consistent, predictable behavior they can learn once
 
 ## Consequences
 
 ### Positive
+
 - Familiar behavior: date matches user's clock/calendar
 - Predictable: users learn the pattern once
 - Simple mental model: "the app resets at midnight"
 - Consistent: both schedules behave identically
 
 ### Negative
+
 - **Edge case: Isha after midnight** — Isha belongs to previous day but appears on next day's schedule
 - **Edge case: Last Third before midnight** — Last Third belongs to current day but countdown/UI may behave incorrectly
 - **Future: Middle of the Night prayer** — Will require careful handling as it straddles the boundary
 - Technical debt: edge cases deferred rather than solved
 
 ### Neutral
+
 - London-only scope limits the frequency of edge cases (but doesn't eliminate them)
 - Seasonal variation means edge cases are predictable and can be monitored
 
 ## Alternatives Considered
 
 ### Alternative 1: After-Isha Boundary
+
 **Description:** Reset the day after Isha completes, aligning with the Islamic day concept.
 
 **Pros:**
+
 - Aligns with Islamic tradition (day starts at Maghrib/after Isha)
 - Prayers always belong to the correct Islamic date
 - No edge cases for Isha timing
 
 **Cons:**
+
 - User confusion: displayed date wouldn't match phone/calendar
 - Users would need to learn a new mental model
 - "What day is it?" becomes ambiguous
@@ -104,13 +114,16 @@ User familiarity and predictability outweigh technical correctness. Users expect
 **Why Rejected:** User confusion. Users expect the displayed date to match their device's clock and calendar. Introducing a different day boundary creates cognitive overhead.
 
 ### Alternative 2: Dynamic/Contextual Boundary
+
 **Description:** Use different reset times for different prayers or contexts—e.g., Standard resets at midnight, Extras reset after Isha.
 
 **Pros:**
+
 - Each prayer type could use its optimal boundary
 - Potentially handles edge cases better
 
 **Cons:**
+
 - Inconsistent behavior across the app
 - Users can't form a single mental model
 - "When does the date change?" has no simple answer
@@ -135,7 +148,7 @@ User familiarity and predictability outweigh technical correctness. Users expect
 
 ## Revision History
 
-| Date | Author | Change |
-|------|--------|--------|
-| 2026-01-15 | muji | Initial draft |
-| 2026-01-18 | muji | Superseded by ADR-004 (Prayer-Based Day Boundary) |
+| Date       | Author | Change                                            |
+| ---------- | ------ | ------------------------------------------------- |
+| 2026-01-15 | muji   | Initial draft                                     |
+| 2026-01-18 | muji   | Superseded by ADR-004 (Prayer-Based Day Boundary) |

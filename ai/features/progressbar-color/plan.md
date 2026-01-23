@@ -13,15 +13,18 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ## Key Findings
 
 ### Current Implementation
+
 - `CountdownBar.tsx` uses `interpolateColor` with hardcoded colors: cyan (`#00ffea`) for normal, red (`#ff0080`) for warning
 - `colorValue` shared value controls color state (0 = normal, 1 = warning)
 - Color is applied to both `colorStyle`, `glowStyle`, `warningGlowStyle`
 
 ### Storage Pattern
+
 - `stores/storage.ts` has `atomWithStorageBoolean` and `atomWithStorageNumber`
 - **Gap**: No `atomWithStorageString` - need to create for color storage
 
-### Settings Pattern  
+### Settings Pattern
+
 - `BottomSheetSettings.tsx` uses `SettingsToggle` for booleans, `Pressable` for buttons
 - Color picker needs new UI component (not a toggle)
 
@@ -30,9 +33,13 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ## Phases
 
 ### Phase 1: Storage Foundation
+
 ### Phase 2: Color Picker UI
+
 ### Phase 3: CountdownBar Integration
+
 ### Phase 4: Settings Integration
+
 ### Phase 5: Testing & Verification
 
 ---
@@ -42,6 +49,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ### Phase 1: Storage Foundation (1-2 hours)
 
 **Task 1.1: Add atomWithStorageString helper**
+
 - **File:** `stores/storage.ts`
 - **Change Type:** Modified
 - **Description:** Add `atomWithStorageString` function following the existing pattern from `atomWithStorageBoolean`
@@ -53,6 +61,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
   - [ ] Works with `getOnInit: true` option
 
 **Task 1.2: Add countdownbarColorAtom to stores/ui.ts**
+
 - **File:** `stores/ui.ts`
 - **Change Type:** Modified
 - **Description:** Add new atom for progress bar color preference using the new helper
@@ -69,6 +78,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ### Phase 2: Color Picker UI (2-3 hours)
 
 **Task 2.1: Research and install color picker package**
+
 - **Action:** Research best React Native color picker package
 - **Recommended:** `react-native-color-picker` (well-maintained, supports hex)
 - **Alternative:** `react-native-hue-color-picker`
@@ -79,6 +89,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
   - [ ] Supports hex color input/output
 
 **Task 2.2: Create ColorPickerSettings component**
+
 - **New File:** `components/ColorPickerSettings.tsx`
 - **Change Type:** New
 - **Description:** Create reusable color picker component for settings sheet
@@ -92,6 +103,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
   - [ ] Follows existing component patterns (imports, types, styles)
 
 **Task 2.3: Add reset functionality to ColorPickerSettings**
+
 - **File:** `components/ColorPickerSettings.tsx` (from Task 2.2)
 - **Change Type:** Modified
 - **Description:** Add reset button/icon to restore default cyan color
@@ -108,6 +120,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ### Phase 3: CountdownBar Integration (1-2 hours)
 
 **Task 3.1: Modify CountdownBar.tsx to use color preference**
+
 - **File:** `components/CountdownBar.tsx`
 - **Change Type:** Modified
 - **Description:** Update CountdownBar to read and apply user's color preference
@@ -121,6 +134,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
   - [ ] No regressions in animation behavior
 
 **Task 3.2: Handle first-render color setup**
+
 - **File:** `components/CountdownBar.tsx`
 - **Change Type:** Modified
 - **Description:** Ensure color preference is applied correctly on first app launch
@@ -136,6 +150,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ### Phase 4: Settings Integration (1-2 hours)
 
 **Task 4.1: Add ColorPickerSettings to BottomSheetSettings.tsx**
+
 - **File:** `components/BottomSheetSettings.tsx`
 - **Change Type:** Modified
 - **Description:** Add color picker row to settings sheet between existing toggles
@@ -149,6 +164,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
   - [ ] Reset button visible when custom color selected
 
 **Task 4.2: Verify bottom sheet sizing**
+
 - **File:** `components/BottomSheetSettings.tsx`
 - **Change Type:** Modified
 - **Description:** Update bottom sheet snap points if needed to accommodate new option
@@ -164,6 +180,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
 ### Phase 5: Testing & Verification (1-2 hours)
 
 **Task 5.1: Manual testing on iOS simulator**
+
 - **Action:** Test feature on iOS
 - **Complexity:** Small
 - **Acceptance Criteria:**
@@ -175,6 +192,7 @@ Allow users to customize the color of the countdown progress bar via a full colo
   - [ ] No visual regressions
 
 **Task 5.2: Manual testing on Android emulator**
+
 - **Action:** Test feature on Android
 - **Complexity:** Small
 - **Acceptance Criteria:**
@@ -183,12 +201,14 @@ Allow users to customize the color of the countdown progress bar via a full colo
   - [ ] No Android-specific bugs
 
 **Task 5.3: TypeScript compilation check**
+
 - **Action:** Run typecheck
 - **Complexity:** Small
 - **Acceptance Criteria:**
   - [ ] `yarn tsc` passes with no errors
 
 **Task 5.4: Linting check**
+
 - **Action:** Run ESLint
 - **Complexity:** Small
 - **Acceptance Criteria:**
@@ -198,24 +218,24 @@ Allow users to customize the color of the countdown progress bar via a full colo
 
 ## File Modifications
 
-| File | Change Type | Description |
-|------|-------------|-------------|
-| `stores/storage.ts` | Modified | Add `atomWithStorageString` helper |
-| `stores/ui.ts` | Modified | Add `countdownbarColorAtom` |
-| `components/ColorPickerSettings.tsx` | **New** | Color picker UI component |
-| `components/CountdownBar.tsx` | Modified | Use color preference instead of hardcoded cyan |
-| `components/BottomSheetSettings.tsx` | Modified | Add color picker option to settings |
+| File                                 | Change Type | Description                                    |
+| ------------------------------------ | ----------- | ---------------------------------------------- |
+| `stores/storage.ts`                  | Modified    | Add `atomWithStorageString` helper             |
+| `stores/ui.ts`                       | Modified    | Add `countdownbarColorAtom`                    |
+| `components/ColorPickerSettings.tsx` | **New**     | Color picker UI component                      |
+| `components/CountdownBar.tsx`        | Modified    | Use color preference instead of hardcoded cyan |
+| `components/BottomSheetSettings.tsx` | Modified    | Add color picker option to settings            |
 
 ---
 
 ## Risk Analysis
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|------------|--------|------------|
-| Color picker package has issues on some Android devices | Low | Medium | Test on both platforms, have fallback message |
-| Color state conflicts with warning red color | Low | Medium | Keep warning state as red (`#ff0080`), only override normal state |
-| Performance impact from color state updates | Low | Low | Use Jotai atoms, minimal re-renders |
-| Bottom sheet resize causes UI issues | Low | Low | Test with updated snap points, ensure scrollable |
+| Risk                                                    | Likelihood | Impact | Mitigation                                                        |
+| ------------------------------------------------------- | ---------- | ------ | ----------------------------------------------------------------- |
+| Color picker package has issues on some Android devices | Low        | Medium | Test on both platforms, have fallback message                     |
+| Color state conflicts with warning red color            | Low        | Medium | Keep warning state as red (`#ff0080`), only override normal state |
+| Performance impact from color state updates             | Low        | Low    | Use Jotai atoms, minimal re-renders                               |
+| Bottom sheet resize causes UI issues                    | Low        | Low    | Test with updated snap points, ensure scrollable                  |
 
 ---
 
@@ -257,4 +277,3 @@ All changes are localized to 5 files. Rollback can be done by reverting those fi
 
 - [x] Architect: Plan approved
 - [ ] ReviewerQA: Pending (100/100 required)
-

@@ -66,18 +66,21 @@ The Architect will:
 ReviewerQA will audit the plan for:
 
 **Task Quality:**
+
 - [ ] Are tasks small enough (1-2 hours each)?
 - [ ] Does each task have clear acceptance criteria?
 - [ ] Are task objectives specific and measurable?
 - [ ] Are verification steps included for each task?
 
 **Technical Accuracy:**
+
 - [ ] Are all file references specific and accurate?
 - [ ] Are dependencies between tasks clearly identified?
 - [ ] Are edge cases and error handling considered?
 - [ ] Is the rollback strategy realistic and testable?
 
 **Organization:**
+
 - [ ] Are phases logically organized?
 - [ ] Does the plan flow from foundation to completion?
 - [ ] Are risks identified and mitigations proposed?
@@ -86,6 +89,7 @@ ReviewerQA will audit the plan for:
 **ONLY proceed if ReviewerQA gives 100/100 approval**
 
 If score < 100:
+
 - Document all issues found by ReviewerQA
 - Fix ALL identified issues in plan.md
 - Re-submit entire plan to ReviewerQA
@@ -97,6 +101,7 @@ If score < 100:
 Once plan is approved at 100/100:
 
 1. Update ai/features/[feature-name]/progress.md with:
+
    ```markdown
    # Feature: [Feature Name]
 
@@ -124,6 +129,7 @@ Once plan is approved at 100/100:
 **Switch to ReviewerQA agent again**
 
 Final verification checklist:
+
 - [ ] plan.md exists and is complete
 - [ ] progress.md is updated with task checklist
 - [ ] All tasks from plan.md are in progress.md
@@ -135,6 +141,7 @@ Final verification checklist:
 ## Phase 6: Completion
 
 Show me:
+
 ```
 ✅ Implementation plan created successfully!
 

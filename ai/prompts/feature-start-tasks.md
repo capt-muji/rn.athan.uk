@@ -69,6 +69,7 @@ Begin implementation of: ai/features/[feature-name]/
 ### Step 3: Self-Check
 
 Before calling ReviewerQA, verify:
+
 - [ ] All files mentioned in task are modified
 - [ ] Code follows existing patterns
 - [ ] No syntax errors
@@ -82,6 +83,7 @@ Before calling ReviewerQA, verify:
 ReviewerQA will check:
 
 **Code Quality:**
+
 - [ ] Does implementation match task requirements?
 - [ ] Are all acceptance criteria met?
 - [ ] Does code follow existing patterns?
@@ -89,12 +91,14 @@ ReviewerQA will check:
 - [ ] Are edge cases handled?
 
 **Completeness:**
+
 - [ ] Are all mentioned files modified?
 - [ ] Are comments clear and helpful?
 - [ ] Is the code production-ready?
 - [ ] Are there any obvious bugs?
 
 **Integration:**
+
 - [ ] Does code integrate with existing system?
 - [ ] Are dependencies handled correctly?
 - [ ] No breaking changes to other features?
@@ -104,6 +108,7 @@ ReviewerQA will check:
 ### Step 5: Fix Issues (if score < 100)
 
 If ReviewerQA score < 100:
+
 - Document ALL issues found
 - Fix EVERY issue identified
 - Re-run self-check (Step 3)
@@ -114,6 +119,7 @@ If ReviewerQA score < 100:
 ### Step 6: Mark Task Complete
 
 Once ReviewerQA gives 100/100:
+
 - Update progress.md: Change `[ ]` to `[x]` for completed task
 - Add completion note with ReviewerQA score
 - Move to next task
@@ -184,8 +190,10 @@ Once feature achieves 100/100 final approval:
    - Note any gotchas or important patterns discovered
    - Include technical decisions made
    - Format:
+
      ```markdown
      [YYYY-MM-DD] Feature: [Feature Name]
+
      - Brief description of what was implemented
      - Key technical decisions or patterns used
      - Lessons learned and gotchas to avoid
@@ -227,4 +235,4 @@ Once feature achieves 100/100 final approval:
 
 ## Next Steps After Completion
 
-Run: `ai/prompts/feature-mark-complete.md` to archive the feature and update memory.
+Run: `ai/prompts/feature-mark-complete.md` to complete the feature.

@@ -1,15 +1,16 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
-import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimation';
+import { useAlertAnimations } from '@/hooks/useAlertAnimations';
+import { useAlertPopupState } from '@/hooks/useAlertPopupState';
 import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { COLORS, TEXT, ANIMATION, STYLES } from '@/shared/constants';
+import { COLORS, TEXT, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
@@ -28,59 +29,47 @@ interface Props {
   isOverlay?: boolean;
 }
 
+/**
+ * Alert component for prayer notification preferences
+ *
+ * Cycles through Off → Silent → Sound alert types on press.
+ * Shows animated popup feedback when changing alert type.
+ *
+ * @see useAlertAnimations - Animation logic
+ * @see useAlertPopupState - Popup timing logic
+ */
 export default function Alert({ type, index, isOverlay = false }: Props) {
-  const refreshUI = useAtomValue(refreshUIAtom);
-
-  const Schedule = useSchedule(type);
-  const Prayer = usePrayer(type, index, isOverlay);
-  const overlay = useAtomValue(overlayAtom);
-  const { handleAlertChange, ensurePermissions } = useNotification();
-
+  // State
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
   const [iconIndex, setIconIndex] = useState(alertAtom);
   const [popupIconIndex, setPopupIconIndex] = useState(alertAtom);
 
-  const AnimScale = useAnimationScale(1);
-  const AnimOpacity = useAnimationOpacity(0);
-  const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationFill(Prayer.ui.initialColorPos, {
-    fromColor: COLORS.inactivePrayer,
-    toColor: COLORS.activePrayer,
+  // Atoms
+  const refreshUI = useAtomValue(refreshUIAtom);
+  const overlay = useAtomValue(overlayAtom);
+
+  // Custom hooks
+  const Schedule = useSchedule(type);
+  const Prayer = usePrayer(type, index, isOverlay);
+  const { handleAlertChange, ensurePermissions } = useNotification();
+  const { AnimScale, AnimOpacity, AnimBounce, AnimFill, resetPopupAnimations, hidePopup } = useAlertAnimations({
+    initialColorPos: Prayer.ui.initialColorPos,
+  });
+  const { isPopupActive, showPopup, clearTimeouts } = useAlertPopupState({
+    onShow: resetPopupAnimations,
+    onHide: hidePopup,
   });
 
-  // Detect if this prayer is currently selected in the overlay (for main schedule alerts)
+  // Memoized values
   const isSelectedForOverlay = useMemo(
     () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
     [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
   );
 
-  const [isPopupActive, setIsPopupActive] = useState(false);
+  // =============================================================================
+  // ANIMATION EFFECTS
+  // =============================================================================
 
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const debouncedAlertRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Create debounced version of handleAlertChange
-  const debouncedHandleAlertChange = useCallback(
-    (newAlertType: AlertType) => {
-      if (debouncedAlertRef.current) clearTimeout(debouncedAlertRef.current);
-
-      debouncedAlertRef.current = setTimeout(async () => {
-        const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, newAlertType);
-
-        if (success) {
-          // Only persist the new state after successful debounce and async operation
-          setPrayerAlertType(type, index, newAlertType);
-        } else {
-          // Revert UI state if the change fails
-          setPopupIconIndex(iconIndex);
-          setIconIndex(iconIndex);
-        }
-      }, ANIMATION.debounce);
-    },
-    [type, index, Prayer.english, Prayer.arabic, handleAlertChange, iconIndex]
-  );
-
-  // Animations Updates
   // Force animation to respect new state immediately when refreshing
   useEffect(() => {
     AnimFill.animate(Prayer.ui.initialColorPos);
@@ -105,7 +94,16 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     }
   }, [Schedule.displayDate, isSelectedForOverlay]);
 
-  // Effects
+  // Update fill color based on selection state
+  useEffect(() => {
+    const colorPos = isSelectedForOverlay || Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
+    AnimFill.animate(colorPos, { duration: 50 });
+  }, [isSelectedForOverlay, isPopupActive, Prayer.isOverlay]);
+
+  // =============================================================================
+  // STATE SYNC EFFECTS
+  // =============================================================================
+
   // Sync alert preferences with state
   useEffect(() => {
     setIconIndex(alertAtom);
@@ -114,68 +112,67 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   // Disable popup on overlay open/close
   useEffect(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
+    clearTimeouts();
     AnimOpacity.value.value = 0;
-    setIsPopupActive(false);
   }, [overlay.isOn]);
 
-  // Update fill color
-  useEffect(() => {
-    const colorPos = isSelectedForOverlay || Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
-    AnimFill.animate(colorPos, { duration: 50 });
-  }, [isSelectedForOverlay, isPopupActive, Prayer.isOverlay]);
+  // =============================================================================
+  // HANDLERS
+  // =============================================================================
 
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      if (debouncedAlertRef.current) clearTimeout(debouncedAlertRef.current);
-    };
-  }, []);
-
-  // Handlers
-  const handlePress = async () => {
+  const handlePress = useCallback(async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
     const nextAlertType = ALERT_CONFIGS[nextIndex].type;
 
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
-    // Only check permissions if we're not turning off notifications
+    // Check permissions if enabling notifications
     if (nextAlertType !== AlertType.Off) {
       const hasPermission = await ensurePermissions();
       if (!hasPermission) return;
     }
 
-    // Update UI state immediately (but don't persist)
+    // Update UI state immediately (optimistic update)
     setPopupIconIndex(nextIndex);
     setIconIndex(nextIndex);
 
-    // Reset animations
-    AnimBounce.value.value = 0;
-    AnimOpacity.animate(1, { duration: 75 });
-    AnimBounce.animate(1);
+    // Show popup with animations
+    showPopup();
 
-    setIsPopupActive(true);
+    // Persist the change (debounced)
+    const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, nextAlertType);
 
-    // Start the debounced operation that will persist the change
-    debouncedHandleAlertChange(nextAlertType);
+    if (success) {
+      setPrayerAlertType(type, index, nextAlertType);
+    } else {
+      // Revert on failure
+      setPopupIconIndex(alertAtom);
+      setIconIndex(alertAtom);
+    }
+  }, [
+    iconIndex,
+    ensurePermissions,
+    showPopup,
+    handleAlertChange,
+    type,
+    index,
+    Prayer.english,
+    Prayer.arabic,
+    alertAtom,
+  ]);
 
-    timeoutRef.current = setTimeout(() => {
-      AnimOpacity.animate(0, { duration: 75 });
-      setIsPopupActive(false);
-    }, ANIMATION.popupDuration);
-  };
+  // =============================================================================
+  // COMPUTED STYLES
+  // =============================================================================
 
-  const displayedIconIndex = iconIndex;
-
-  const computedStylesPopup: ViewStyle = {
+  const computedStylePopup: ViewStyle = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
-    backgroundColor: Prayer.isOverlay ? (Prayer.isNext ? 'black' : COLORS.activeBackground) : 'black',
+    backgroundColor: Prayer.isOverlay && !Prayer.isNext ? COLORS.activeBackground : 'black',
   };
+
+  // =============================================================================
+  // RENDER
+  // =============================================================================
 
   return (
     <View style={styles.container}>
@@ -185,11 +182,11 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
         onPressOut={() => AnimScale.animate(1)}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
-          <Icon type={ALERT_CONFIGS[displayedIconIndex].icon} size={20} animatedProps={AnimFill.animatedProps} />
+          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={AnimFill.animatedProps} />
         </Animated.View>
       </Pressable>
 
-      <Animated.View style={[styles.popup, computedStylesPopup, AnimOpacity.style, AnimBounce.style]}>
+      <Animated.View style={[styles.popup, computedStylePopup, AnimOpacity.style, AnimBounce.style]}>
         <Icon type={ALERT_CONFIGS[popupIconIndex].icon} size={20} color="white" />
         <Text style={styles.label}>{ALERT_CONFIGS[popupIconIndex].label}</Text>
       </Animated.View>
@@ -222,9 +219,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     gap: 15,
     elevation: 15,
-  },
-  popupIcon: {
-    marginRight: 15,
   },
   label: {
     fontSize: TEXT.size,

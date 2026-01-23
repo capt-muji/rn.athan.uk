@@ -61,11 +61,24 @@ function createTimingAnimation(toValue: number, options?: AnimationOptions, cust
  */
 function createSpringAnimation(toValue: number, options?: AnimationOptions) {
   'worklet';
-  return withSpring(toValue, DEFAULT_SPRING, (finished) => {
+  const animation = withSpring(toValue, DEFAULT_SPRING, (finished) => {
     if (finished && options?.onFinish) runOnJS(options.onFinish)();
   });
+
+  return options?.delay ? withDelay(options.delay, animation) : animation;
 }
 
+/**
+ * Hook for animating text color between two colors
+ *
+ * @param initialValue Initial animation position (0 or 1)
+ * @param input Color interpolation input with fromColor and toColor
+ * @returns Animation value, animated style, and animate function
+ *
+ * @example
+ * const { style, animate } = useAnimationColor(0, { fromColor: '#888', toColor: '#fff' });
+ * animate(1); // Transition to toColor
+ */
 export const useAnimationColor = (initialValue: number = 0, input: ColorAnimationInput) => {
   const value = useSharedValue(initialValue);
 
@@ -81,6 +94,17 @@ export const useAnimationColor = (initialValue: number = 0, input: ColorAnimatio
   return { value, style, animate };
 };
 
+/**
+ * Hook for animating SVG fill color between two colors
+ *
+ * @param initialValue Initial animation position (0 or 1)
+ * @param input Color interpolation input with fromColor and toColor
+ * @returns Animation value, animated props for SVG, and animate function
+ *
+ * @example
+ * const { animatedProps, animate } = useAnimationFill(0, { fromColor: '#888', toColor: '#fff' });
+ * <AnimatedPath animatedProps={animatedProps} />
+ */
 export const useAnimationFill = (initialValue: number = 0, input: ColorAnimationInput) => {
   const value = useSharedValue(initialValue);
 
@@ -96,6 +120,16 @@ export const useAnimationFill = (initialValue: number = 0, input: ColorAnimation
   return { value, animatedProps, animate };
 };
 
+/**
+ * Hook for animating background color between two colors
+ *
+ * @param initialValue Initial animation position (0 or 1)
+ * @param input Color interpolation input with fromColor and toColor
+ * @returns Animation value, animated style, and animate function
+ *
+ * @example
+ * const { style, animate } = useAnimationBackgroundColor(0, { fromColor: '#000', toColor: '#fff' });
+ */
 export const useAnimationBackgroundColor = (initialValue: number = 0, input: ColorAnimationInput) => {
   const value = useSharedValue(initialValue);
 
@@ -111,6 +145,16 @@ export const useAnimationBackgroundColor = (initialValue: number = 0, input: Col
   return { value, style, animate };
 };
 
+/**
+ * Hook for animating opacity
+ *
+ * @param initialValue Initial opacity value (0-1)
+ * @returns Animation value, animated style, and animate function
+ *
+ * @example
+ * const { style, animate } = useAnimationOpacity(0);
+ * animate(1); // Fade in
+ */
 export const useAnimationOpacity = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 
@@ -126,6 +170,16 @@ export const useAnimationOpacity = (initialValue: number = 0) => {
   return { value, style, animate };
 };
 
+/**
+ * Hook for animating vertical translation with elastic easing
+ *
+ * @param initialValue Initial Y translation value
+ * @returns Animation value, animated style, and animate function
+ *
+ * @example
+ * const { style, animate } = useAnimationTranslateY(100);
+ * animate(0); // Slide up from 100px
+ */
 export const useAnimationTranslateY = (initialValue: number) => {
   const value = useSharedValue(initialValue);
 
@@ -141,6 +195,16 @@ export const useAnimationTranslateY = (initialValue: number) => {
   return { value, style, animate };
 };
 
+/**
+ * Hook for animating scale with spring physics
+ *
+ * @param initialValue Initial scale value (default: 1)
+ * @returns Animation value, animated style, and animate function
+ *
+ * @example
+ * const { style, animate } = useAnimationScale(1);
+ * animate(0.9); // Scale down
+ */
 export const useAnimationScale = (initialValue: number = 1) => {
   const value = useSharedValue(initialValue);
 
@@ -156,6 +220,16 @@ export const useAnimationScale = (initialValue: number = 1) => {
   return { value, style, animate };
 };
 
+/**
+ * Hook for animating a subtle bounce effect (scale 0.95 to 1)
+ *
+ * @param initialValue Initial animation position (0 = compressed, 1 = normal)
+ * @returns Animation value, animated style, and animate function
+ *
+ * @example
+ * const { style, animate } = useAnimationBounce(0);
+ * animate(1); // Bounce to normal size
+ */
 export const useAnimationBounce = (initialValue: number = 0) => {
   const value = useSharedValue(initialValue);
 

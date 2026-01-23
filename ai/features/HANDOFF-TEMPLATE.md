@@ -54,11 +54,13 @@ Read ai/AGENTS.md and begin as Orchestrator.
 ## Summary (Quick Reference)
 
 **What We're Building/Fixing:**
+
 - [Key point 1]
 - [Key point 2]
 - [Key point 3]
 
 **Quick Reproduction (if bug):**
+
 ```typescript
 // Steps to reproduce or code to demonstrate
 ```
@@ -68,6 +70,7 @@ Read ai/AGENTS.md and begin as Orchestrator.
 [If feature: what approach we're taking]
 
 **Already Tried (if applicable):**
+
 1. [Thing 1] - [Result]
 2. [Thing 2] - [Result]
 
@@ -84,12 +87,15 @@ Read ai/AGENTS.md and begin as Orchestrator.
 ## Implementation/Investigation Plan Overview
 
 **Phase 1: [Phase Name]**
+
 - [Task summary]
 
 **Phase 2: [Phase Name]**
+
 - [Task summary]
 
 **Phase 3: [Phase Name]**
+
 - [Task summary]
 
 [Continue for all phases from plan.md]
@@ -99,26 +105,31 @@ Read ai/AGENTS.md and begin as Orchestrator.
 ## What I Need You To Do
 
 **Step 1: Use Architect Agent**
+
 - Read all documentation listed above
 - Review the plan (plan.md)
 - Understand the current progress (progress.md)
 - [Specific architectural guidance needed]
 
 **Step 2: Execute Work**
+
 - Follow the plan.md phases sequentially
 - Update progress.md after each task/phase
 - Document findings in progress.md
 - [Specific execution guidance]
 
 **Step 3: ReviewerQA Approval After Each Task/Phase**
+
 - After completing each [task/phase], switch to ReviewerQA
 - ReviewerQA should verify [what to verify]
 - **ONLY proceed to next [task/phase] if ReviewerQA gives 100/100**
 
 **Step 4: [Next Major Step]**
+
 - [Description]
 
 **Step 5: Update Documentation**
+
 - Update progress.md with [what to update]
 - Update ai/AGENTS.md Memory with lessons learned
 - Update README.md if user-facing changes
@@ -138,6 +149,7 @@ Read ai/AGENTS.md and begin as Orchestrator.
 ## Expected Outcome
 
 **Success Criteria:**
+
 - [ ] [Criterion 1]
 - [ ] [Criterion 2]
 - [ ] [Criterion 3]
