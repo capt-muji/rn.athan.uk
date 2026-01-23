@@ -1,6 +1,12 @@
 import { useAtomValue } from 'jotai';
 import { StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  interpolateColor,
+  Easing,
+} from 'react-native-reanimated';
 
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { TEXT } from '@/shared/constants';
@@ -15,16 +21,24 @@ export default function PrayerAgo({ type }: Props) {
   const { prayerAgo, minutesElapsed, isReady: prayerAgoReady } = usePrayerAgo(type);
   const overlay = useAtomValue(overlayAtom);
 
+  // Color state: 0=normal, 1=recent (≤5 mins)
+  const isRecentValue = useSharedValue(minutesElapsed <= 5 ? 1 : 0);
+
+  // Animate color transition with 500ms
+  isRecentValue.value = withTiming(minutesElapsed <= 5 ? 1 : 0, {
+    duration: 500,
+    easing: Easing.linear,
+  });
+
   // Fade out when overlay opens
   const prayerAgoOpacity = useAnimatedStyle(() => ({
     opacity: withTiming(overlay.isOn ? 0 : 1, { duration: 150 }),
   }));
 
-  // Vibrant royal blue highlight for recent prayers (≤5 mins), otherwise normal style
-  const isRecent = minutesElapsed <= 5;
+  // Smooth color transition
   const prayerAgoStyle = useAnimatedStyle(() => ({
-    color: isRecent ? '#d5e8ff' : '#a0c8ff80',
-    backgroundColor: isRecent ? '#8d79ff2f' : '#63a9ff10',
+    color: interpolateColor(isRecentValue.value, [0, 1], ['#a0c8ff80', '#d5e8ff']),
+    backgroundColor: interpolateColor(isRecentValue.value, [0, 1], ['#63a9ff10', '#8d79ff2f']),
   }));
 
   if (!prayerAgoReady) return null;
