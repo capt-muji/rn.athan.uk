@@ -12,26 +12,24 @@ import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 // CONSTANTS
 // =============================================================================
 
-/** Primary swatch colors for quick selection */
+/** Primary swatch colors for quick selection (first is default) */
 const SWATCH_COLORS = [
-  '#00eeff', // cyan
-  '#ff0055', // hot pink
-  '#00ff66', // lime green
-  '#ff6600', // orange
-  '#ffff00', // yellow
-  '#3355ff', // royal blue
-  '#9900ff', // purple
+  '#00ffea', // cyan (default)
+  '#ff3366', // hot pink
+  '#00ff88', // mint green
+  '#ff9500', // orange
+  '#ffee00', // yellow
+  '#7b68ee', // medium purple
 ];
 
 /** Secondary swatch colors for additional options */
 const SWATCH_COLORS_2 = [
-  '#ff0033', // bright red
-  '#00e5ff', // bright teal
-  '#ff5722', // coral
-  '#4a00ff', // indigo
-  '#39ff14', // neon green
-  '#ffb300', // amber
-  '#ff0090', // magenta
+  '#ff2d2d', // red
+  '#00bfff', // deep sky blue
+  '#ff69b4', // pink
+  '#32cd32', // lime green
+  '#dc2eff', // gold
+  '#1f8bff', // medium orchid
 ];
 
 /** Default color when reset is pressed */

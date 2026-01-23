@@ -18,9 +18,12 @@ export default function Screen({ type }: Props) {
   const insets = useSafeAreaInsets();
   const showTimePassed = useAtomValue(showTimePassedAtom);
 
+  // Android: ignore bottom insets (nav bar is auto-hidden)
+  const bottomPadding = Platform.OS === 'android' ? 15 : insets.bottom;
+
   const computedStyles: ViewStyle = {
     paddingTop: insets.top + SCREEN.paddingTop,
-    paddingBottom: insets.bottom + (Platform.OS === 'android' ? 15 : 0),
+    paddingBottom: bottomPadding,
     maxWidth: 700,
     width: '100%',
     alignSelf: 'center',
