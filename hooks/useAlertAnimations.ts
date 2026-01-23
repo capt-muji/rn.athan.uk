@@ -36,9 +36,7 @@ export const useAlertAnimations = ({ initialColorPos }: UseAlertAnimationsParams
    * Called when showing the alert popup
    */
   const resetPopupAnimations = useCallback(() => {
-    // Note: AnimBounce.value is a SharedValue, .value accesses the raw number
-    // This is Reanimated's pattern for immediate (non-animated) value reset
-    AnimBounce.value.value = 0;
+    AnimBounce.reset(0);
     AnimOpacity.animate(1, { duration: 75 });
     AnimBounce.animate(1);
   }, [AnimBounce, AnimOpacity]);
