@@ -47,7 +47,7 @@
 
 ### Phase 4: UI Updates - Verify Only
 
-- [x] Task 4.8: Verify `components/ProgressBar.tsx` works correctly (no changes needed)
+- [x] Task 4.8: Verify `components/CountdownBar.tsx` works correctly (no changes needed)
 - [x] Task 4.9: Verify `stores/overlay.ts` behavior (auto-close handled in Phase 2)
 
 ### Phase 5: Verification
@@ -83,7 +83,7 @@
 | `components/Prayer.tsx`           | 4     | ✅     | Update cascade trigger                 |
 | `components/PrayerTime.tsx`       | 4     | ✅     | Update cascade trigger                 |
 | `components/List.tsx`             | 4     | ✅     | Update reactivity                      |
-| `components/ProgressBar.tsx`      | 4     | ✅     | No changes needed                      |
+| `components/CountdownBar.tsx`      | 4     | ✅     | No changes needed                      |
 | `stores/overlay.ts`               | 4     | ✅     | No changes (auto-close in schedule.ts) |
 | `shared/notifications.ts`         | 5     | ✅     | No changes needed                      |
 | `stores/notifications.ts`         | 5     | ✅     | No changes needed                      |

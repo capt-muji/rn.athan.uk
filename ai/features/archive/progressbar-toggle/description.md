@@ -27,15 +27,18 @@ Allow users to tap the countdown countdown to toggle the progress bar visibility
 ## Technical Design
 
 ### Tappable Area
+
 - Entire Countdown component (prayer name label, time display, progress bar)
 - Disabled when overlay is active
 
 ### State Management
-- `progressBarVisibleAtom` (boolean) - stored in MMKV as `preference_progressbar_visible`
+
+- `countdownBarShownAtom` (boolean) - stored in MMKV as `preference_countdownbar_shown`
 - Default: `true` (visible)
 - Location: `stores/ui.ts` (with other UI preferences)
 
 ### Animation
+
 - **Duration:** 250ms (ANIMATION.durationMedium)
 - **Method:** Opacity fade (0 ↔ 1)
 - **First render:** No animation (prevents flash on app load)
@@ -43,21 +46,21 @@ Allow users to tap the countdown countdown to toggle the progress bar visibility
 
 ### Components Modified
 
-| File | Changes |
-|------|---------|
-| `stores/ui.ts` | Added `progressBarVisibleAtom` |
-| `components/Countdown.tsx` | Wrapped in Pressable, added tap handler with Medium haptic |
-| `components/ProgressBar.tsx` | Animate opacity based on atom, skip animation on first render |
-| `shared/constants.ts` | Added `durationMedium: 250` |
-| `stores/database.ts` | Added to cleanup function (commented) |
+| File                          | Changes                                                       |
+| ----------------------------- | ------------------------------------------------------------- |
+| `stores/ui.ts`                | Added `countdownBarShownAtom`                                 |
+| `components/Countdown.tsx`    | Wrapped in Pressable, added tap handler with Medium haptic    |
+| `components/CountdownBar.tsx` | Animate opacity based on atom, skip animation on first render |
+| `shared/constants.ts`         | Added `durationMedium: 250`                                   |
+| `stores/database.ts`          | Added to cleanup function (commented)                         |
 
 ## Edge Cases
 
-| Scenario | Behavior |
-|----------|----------|
-| App restart with bar hidden | Loads hidden (opacity: 0), no flash |
-| Overlay open | Tap disabled, progress bar hidden per existing logic |
-| Rapid tapping | Each tap toggles state, animation interrupted smoothly |
+| Scenario                    | Behavior                                               |
+| --------------------------- | ------------------------------------------------------ |
+| App restart with bar hidden | Loads hidden (opacity: 0), no flash                    |
+| Overlay open                | Tap disabled, progress bar hidden per existing logic   |
+| Rapid tapping               | Each tap toggles state, animation interrupted smoothly |
 
 ## Verification
 

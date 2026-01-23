@@ -54,7 +54,7 @@ Root Cause: The Midnight prayer (Maghrib-Fajr midpoint) introduced complexity:
 | `components/Countdown.tsx` | Countdown display |
 | `components/Day.tsx` | Date display |
 | `components/Prayer.tsx` | Prayer row display |
-| `components/ProgressBar.tsx` | Progress bar calculation |
+| `components/CountdownBar.tsx` | Progress bar calculation |
 
 ## Critical Scenarios from ADR-004
 

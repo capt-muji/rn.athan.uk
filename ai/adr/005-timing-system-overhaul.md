@@ -210,7 +210,7 @@ const displayDate = useMemo(() => {
 #### Phase 3: UI Layer Migration
 1. Update components to use derived state
 2. Remove yesterday fallback logic from `calculateCountdown()`
-3. Simplify `ProgressBar` to use adjacent prayers in sequence
+3. Simplify `CountdownBar` to use adjacent prayers in sequence
 
 #### Phase 4: Cleanup
 1. Remove old `yesterday/today/tomorrow` structure
@@ -302,7 +302,7 @@ const displayDate = useMemo(() => {
 | `stores/countdown.ts` | Use derived next prayer |
 | `hooks/usePrayer.ts` | Derive from sequence |
 | `hooks/useSchedule.ts` | Return sequence instead of store |
-| `components/ProgressBar.tsx` | Use adjacent prayers |
+| `components/CountdownBar.tsx` | Use adjacent prayers |
 | `components/Countdown.tsx` | Use derived countdown |
 | `components/Prayer.tsx` | Use derived isPassed |
 

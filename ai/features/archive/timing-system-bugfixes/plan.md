@@ -90,11 +90,11 @@ return new Date(londonTime);
 ```
 
 **Why Progress is 0:**
-1. `useProgressBar.ts:44-45` gets `prevPrayer` from atom
+1. `useCountdownBar.ts:44-45` gets `prevPrayer` from atom
 2. `createPrevPrayerAtom` at `stores/schedule.ts:57-70` finds previous prayer via `datetime > now`
 3. If `prayer.datetime` (system-local) differs from `now` (London), comparison fails
 4. `nextIndex <= 0`, so `prevPrayer` is null
-5. `useProgressBar.ts:48` returns `{ progress: 0, isReady: false }`
+5. `useCountdownBar.ts:48` returns `{ progress: 0, isReady: false }`
 
 **Fix:** Create prayer datetimes in London timezone.
 
@@ -216,7 +216,7 @@ export const refreshSequence = (type: ScheduleType): void => {
 - `todayPrayers.filter(p => p.belongsToDate === displayDate)` could return empty
 - `usePrayer.ts:26-43` already handles this with fallback return values
 - `hooks/usePrayerSequence.ts:78-83` returns `isReady: sequence !== null`
-- Components check `isReady` before rendering (e.g., `useProgressBar.ts:48-50`)
+- Components check `isReady` before rendering (e.g., `useCountdownBar.ts:48-50`)
 
 This is already handled by existing loading state logic - no additional changes needed.
 

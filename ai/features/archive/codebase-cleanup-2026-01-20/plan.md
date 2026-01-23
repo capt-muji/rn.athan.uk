@@ -279,7 +279,7 @@ yarn start
 | `device/updates.ts` | Use TIME_CONSTANTS | Very Low |
 | `shared/prayer.ts` | Break down createPrayerSequence + use constants | Medium |
 | `shared/time.ts` | Add JSDoc to 3 functions | Very Low |
-| `components/ProgressBar.tsx` | Extract platform helpers (optional) | Low |
+| `components/CountdownBar.tsx` | Extract platform helpers (optional) | Low |
 | `README.md` | Add cleanup section | Very Low |
 | `ai/AGENTS.md` | Add memory log | Very Low |
 

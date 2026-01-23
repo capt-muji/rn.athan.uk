@@ -96,7 +96,7 @@ interface PrayerSequence {
 | `stores/countdown.ts` | Modify | Use derived next prayer |
 | `hooks/usePrayer.ts` | Modify | Derive isPassed/isNext from sequence |
 | `hooks/useSchedule.ts` | Modify | Return sequence instead of store |
-| `components/ProgressBar.tsx` | Modify | Use adjacent prayers in sequence |
+| `components/CountdownBar.tsx` | Modify | Use adjacent prayers in sequence |
 | `components/Countdown.tsx` | Modify | Use derived countdown |
 | `components/Prayer.tsx` | Modify | Use derived state |
 | `components/Day.tsx` | Modify | Use derived display date |
@@ -121,7 +121,7 @@ interface PrayerSequence {
 ### Phase 4: UI Components
 - Update Countdown.tsx to use derived countdown
 - Update Prayer.tsx to use derived isPassed
-- Update ProgressBar.tsx to use adjacent prayers
+- Update CountdownBar.tsx to use adjacent prayers
 - Update Day.tsx to use derived display date
 
 ### Phase 5: Cleanup
@@ -147,7 +147,7 @@ interface PrayerSequence {
 - [ ] Extras schedule advances after Duha (or Istijaba on Friday)
 - [ ] Countdown always shows correct countdown
 - [ ] Date display matches current prayer's belongsToDate
-- [ ] ProgressBar shows correct progress
+- [ ] CountdownBar shows correct progress
 - [ ] isPassed styling correct after advancement
 - [ ] Both schedules can show different dates
 
