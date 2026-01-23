@@ -1,3 +1,4 @@
+import { useAtomValue } from 'jotai';
 import { Platform, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -7,6 +8,7 @@ import List from '@/components/List';
 import PrayerAgo from '@/components/PrayerAgo';
 import { SCREEN } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
+import { showTimePassedAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -14,6 +16,7 @@ interface Props {
 
 export default function Screen({ type }: Props) {
   const insets = useSafeAreaInsets();
+  const showTimePassed = useAtomValue(showTimePassedAtom);
 
   const computedStyles: ViewStyle = {
     paddingTop: insets.top + SCREEN.paddingTop,
@@ -29,7 +32,7 @@ export default function Screen({ type }: Props) {
       <Day type={type} />
       <List type={type} />
 
-      <PrayerAgo type={type} />
+      {showTimePassed && <PrayerAgo type={type} />}
 
       {/* Spacing */}
       <View style={{ flex: 1 }} />

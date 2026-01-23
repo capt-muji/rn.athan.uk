@@ -142,6 +142,7 @@ export const cleanup = () => {
   clearPrefix('preference_countdownbar_color');
   clearPrefix('preference_hijri_date'); // Hijri date display preference
   clearPrefix('preference_show_seconds'); // Show seconds preference
+  clearPrefix('preference_show_time_passed'); // Show time passed preference
   clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
   clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
   clearPrefix('popup_update_last_check'); // Last app update check timestamp
