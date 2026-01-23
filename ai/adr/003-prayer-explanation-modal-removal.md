@@ -17,6 +17,7 @@ The app currently includes a modal (`ModalTimesExplained.tsx`) that displays exp
 5. Once closed (state 2), can never be reopened
 
 **Problem Identified:**
+
 - User research/observation shows users immediately close the modal without reading
 - The modal interrupts the user experience
 - No way to reopen it means users who accidentally closed it are stuck
@@ -27,6 +28,7 @@ The app currently includes a modal (`ModalTimesExplained.tsx`) that displays exp
 **Remove the ModalTimesExplained modal entirely and replace it with contextual explanations shown one-at-a-time in the Overlay when a user taps on a specific prayer.**
 
 Implementation approach:
+
 1. When user taps an Extra prayer, open the Overlay (existing behavior)
 2. Add explanation text below the prayer row in the Overlay
 3. Explanation appears only for the tapped prayer
@@ -37,6 +39,7 @@ Implementation approach:
 ## Consequences
 
 ### Positive
+
 - Users see explanations contextually, one at a time
 - No modal interrupting the experience
 - Users can access explanations for any prayer, any time
@@ -44,11 +47,13 @@ Implementation approach:
 - Removes persistent state that served no purpose
 
 ### Negative
+
 - Users must tap on a prayer to see its explanation
 - No way to see all explanations at once (some discoverability loss)
 - First-time users won't see explanations unless they tap prayers
 
 ### Neutral
+
 - MMKV key `popup_times_explained_enabled` will exist but be unused (or removed)
 - Prayer row becomes slightly more complex in the Overlay
 - Users who expected the modal may be confused initially
@@ -56,14 +61,17 @@ Implementation approach:
 ## Alternatives Considered
 
 ### Alternative 1: Keep Modal + Add Info Icon
+
 **Description:** Add an info icon on Page 2 that reopens the modal on demand.
 
 **Pros:**
+
 - Users can see all explanations at once if they want
 - No loss of discoverability
 - Modal serves as reference
 
 **Cons:**
+
 - Still shows overwhelming list of 5 explanations
 - Users still likely ignore/close it immediately
 - More UI elements to maintain
@@ -71,14 +79,17 @@ Implementation approach:
 **Why Rejected:** Doesn't solve the core problem—users don't read modal content.
 
 ### Alternative 2: Expandable Prayer Rows
+
 **Description:** Make prayer rows expandable (tap to expand, showing explanation inline).
 
 **Pros:**
+
 - Explanations visible in context
 - No full-screen overlay needed
 - Can see multiple explanations at once
 
 **Cons:**
+
 - Significant UI refactor to prayer rows
 - More complex touch interactions
 - May clutter the prayer list view
@@ -87,13 +98,16 @@ Implementation approach:
 **Why Rejected:** Too invasive—would require changing the prayer row component and existing tap patterns.
 
 ### Alternative 3: Help/FAQ Section
+
 **Description:** Add a dedicated help section or FAQ screen with all explanations.
 
 **Pros:**
+
 - Comprehensive reference available
 - Can include more detailed information
 
 **Cons:**
+
 - Requires new screen navigation
 - Users unlikely to seek out help sections
 - Same discoverability problem as modal
@@ -123,6 +137,6 @@ Implementation approach:
 
 ## Revision History
 
-| Date | Author | Change |
-|------|--------|--------|
-| 2026-01-17 | User | Accepted - Replace modal with contextual overlay explanations |
+| Date       | Author | Change                                                        |
+| ---------- | ------ | ------------------------------------------------------------- |
+| 2026-01-17 | User   | Accepted - Replace modal with contextual overlay explanations |

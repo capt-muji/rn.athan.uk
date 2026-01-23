@@ -15,10 +15,58 @@ Notifications.setNotificationHandler({
   }),
 });
 
+/**
+ * Hook for managing notification permissions and scheduling
+ *
+ * Provides functions for:
+ * - Checking initial notification permissions on app launch
+ * - Requesting permissions with settings fallback
+ * - Handling alert type changes for individual prayers
+ *
+ * @returns Object containing notification handlers
+ *
+ * @example
+ * const { handleAlertChange, checkInitialPermissions, ensurePermissions } = useNotification();
+ *
+ * // On app launch
+ * const hasPermission = await checkInitialPermissions();
+ *
+ * // When user taps alert icon
+ * const success = await handleAlertChange(
+ *   ScheduleType.Standard,
+ *   0, // Fajr index
+ *   "Fajr",
+ *   "الفجر",
+ *   AlertType.Sound
+ * );
+ *
+ * // Before enabling notifications
+ * const granted = await ensurePermissions();
+ */
 export const useNotification = () => {
-  const isNotificationGranted = async (status: string) => status === 'granted';
+  /**
+   * Checks if notification status is granted
+   * @param status Notification permission status string
+   * @returns boolean indicating if granted
+   */
+  const isNotificationGranted = (status: string) => status === 'granted';
 
-  const checkInitialPermissions = async () => {
+  /**
+   * Checks and requests initial notification permissions
+   *
+   * Called on app launch to determine if notifications are enabled.
+   * If not granted, automatically requests permission.
+   *
+   * @returns Promise resolving to boolean indicating if permissions are granted
+   *
+   * @example
+   * useEffect(() => {
+   *   checkInitialPermissions().then(hasPermission => {
+   *     if (hasPermission) refreshNotifications();
+   *   });
+   * }, []);
+   */
+  const checkInitialPermissions = async (): Promise<boolean> => {
     try {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
@@ -27,22 +75,41 @@ export const useNotification = () => {
         return isNotificationGranted(status);
       }
 
-      return isNotificationGranted(existingStatus);
+      return true;
     } catch (error) {
       logger.error('NOTIFICATION: Failed to check initial notification permissions:', error);
       return false;
     }
   };
 
+  /**
+   * Ensures notification permissions are granted, with settings fallback
+   *
+   * Flow:
+   * 1. Check current permission status
+   * 2. If granted, return true
+   * 3. If not granted, request permissions
+   * 4. If still denied, show alert with option to open settings
+   * 5. After user returns from settings, check status again
+   *
+   * @returns Promise resolving to boolean indicating if permissions are granted
+   *
+   * @example
+   * const handleEnableSound = async () => {
+   *   const hasPermission = await ensurePermissions();
+   *   if (!hasPermission) return; // User cancelled or denied
+   *   // Proceed with enabling notifications
+   * };
+   */
   const ensurePermissions = async (): Promise<boolean> => {
     try {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
-      if (existingStatus === 'granted') return isNotificationGranted(existingStatus);
+      if (existingStatus === 'granted') return true;
 
       // First try requesting permissions
       const { status } = await Notifications.requestPermissionsAsync();
-      if (status === 'granted') return isNotificationGranted(status);
+      if (status === 'granted') return true;
 
       // If denied, show settings dialog
       return new Promise((resolve) => {
@@ -75,13 +142,42 @@ export const useNotification = () => {
     }
   };
 
+  /**
+   * Handles alert type changes for a prayer
+   *
+   * Called when user taps the alert icon to cycle through Off → Silent → Sound.
+   * Manages permission checks and notification scheduling.
+   *
+   * @param scheduleType Schedule type (Standard or Extra)
+   * @param prayerIndex Index of the prayer in its schedule (0-based)
+   * @param englishName English prayer name (e.g., "Fajr")
+   * @param arabicName Arabic prayer name (e.g., "الفجر")
+   * @param alertType New alert type (Off, Silent, Sound)
+   * @returns Promise resolving to boolean indicating success
+   *
+   * @example
+   * const success = await handleAlertChange(
+   *   ScheduleType.Standard,
+   *   0,
+   *   "Fajr",
+   *   "الفجر",
+   *   AlertType.Sound
+   * );
+   *
+   * if (success) {
+   *   // Update UI to reflect new alert type
+   *   setPrayerAlertType(type, index, alertType);
+   * } else {
+   *   // Revert UI to previous state
+   * }
+   */
   const handleAlertChange = async (
     scheduleType: ScheduleType,
     prayerIndex: number,
     englishName: string,
     arabicName: string,
     alertType: AlertType
-  ) => {
+  ): Promise<boolean> => {
     try {
       // Always allow turning off notifications without permission check
       if (alertType === AlertType.Off) {

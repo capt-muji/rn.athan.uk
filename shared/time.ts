@@ -3,6 +3,10 @@ import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
 import { TIME_ADJUSTMENTS } from '@/shared/constants';
 
+// =============================================================================
+// DATE CREATION & CONVERSION
+// =============================================================================
+
 /**
  * Creates a new Date object in London timezone
  * @param date Optional date to convert (defaults to current date)
@@ -15,15 +19,30 @@ export const createLondonDate = (date?: Date | number | string): Date => {
 };
 
 /**
- * Checks if a date is yesterday or in the future
- * Used for filtering API response data
+ * Creates a full Date object from date and time strings
+ * Used to combine API data (separate date/time) into Prayer.datetime
+ *
+ * IMPORTANT: Prayer times from API are in London timezone.
+ * This function interprets the datetime as London time and converts to UTC.
+ *
  * @param date Date string in YYYY-MM-DD format
- * @returns boolean indicating if date is yesterday or future
+ * @param time Time string in HH:mm format
+ * @returns Date object representing the exact moment (internally UTC)
+ *
+ * @example
+ * createPrayerDatetime("2026-01-18", "06:12")
+ * // Returns: Date representing 2026-01-18T06:12:00 London time
  */
-export const isDateYesterdayOrFuture = (date: string): boolean => {
-  const parsedDate = createLondonDate(date);
-  return isYesterday(parsedDate) || isToday(parsedDate) || isFuture(parsedDate);
+export const createPrayerDatetime = (date: string, time: string): Date => {
+  // Create datetime string and interpret it as London time
+  // fromZonedTime: "this datetime IS in London timezone, give me the UTC equivalent"
+  const isoString = `${date}T${time}:00`;
+  return fromZonedTime(isoString, 'Europe/London');
 };
+
+// =============================================================================
+// DATE FORMATTING
+// =============================================================================
 
 /**
  * Formats a date string into a readable format
@@ -64,118 +83,19 @@ export const formatDateShort = (date: Date): string => {
   return format(date, 'yyyy-MM-dd');
 };
 
-/**
- * Calculates the start time of the last third of the night (Islamic calculation)
- *
- * Islamic Night Division:
- * In Islamic tradition, the night is divided into thirds for prayer purposes.
- * The night spans from Maghrib (sunset) to Fajr (dawn), not system midnight.
- * The last third begins 2/3 through this period and is a blessed time for prayer.
- *
- * Calculation:
- * 1. Night starts: Yesterday's Maghrib (e.g., 18:45 Jan 19)
- * 2. Night ends: Today's Fajr (e.g., 06:15 Jan 20)
- * 3. Night duration: 11 hours 30 minutes (690 minutes)
- * 4. Last third starts: 2/3 through = 460 minutes after Maghrib = 02:25 Jan 20
- * 5. +5 minute adjustment applied (see TIME_ADJUSTMENTS.lastThird)
- * 6. Final time: 02:30 Jan 20
- *
- * The +5 minute adjustment provides a safety buffer to ensure the prayer time
- * is well within the last third period.
- *
- * @param magribTime Maghrib time from yesterday in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time from today in HH:mm format (e.g., "06:15")
- * @returns Start time of the last third in HH:mm format (e.g., "02:30")
- *
- * @example
- * getLastThirdOfNight("18:45", "06:15")
- * // Returns: "02:30" (accounting for the +5 min adjustment)
- */
-export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
-  const [mHours, mMinutes] = magribTime.split(':').map(Number);
-  const [fHours, fMinutes] = fajrTime.split(':').map(Number);
-
-  // Maghrib from yesterday
-  let maghrib = createLondonDate();
-  maghrib = subDays(setHours(setMinutes(maghrib, mMinutes), mHours), 1);
-
-  // Fajr from today
-  let fajr = createLondonDate();
-  fajr = setHours(setMinutes(fajr, fMinutes), fHours);
-
-  // Calculate night duration and last third start
-  const nightDuration = fajr.getTime() - maghrib.getTime();
-  const lastThirdStart = createLondonDate(maghrib.getTime() + (nightDuration * 2) / 3);
-
-  // add minutes to the last third start time
-  const minutesToAdd = TIME_ADJUSTMENTS.lastThird;
-  lastThirdStart.setMinutes(lastThirdStart.getMinutes() + minutesToAdd);
-
-  // Return formatted time string in 24-hour format (HH:mm)
-  return format(lastThirdStart, 'HH:mm');
-};
+// =============================================================================
+// DATE CHECKS
+// =============================================================================
 
 /**
- * Calculates Islamic midnight (midpoint between Maghrib and Fajr)
- *
- * Islamic vs System Midnight:
- * Islamic midnight is NOT 00:00 (system midnight). It is the exact midpoint
- * of the Islamic night, which spans from Maghrib (sunset) to Fajr (dawn).
- *
- * Why the difference?
- * - System midnight: Fixed at 00:00 every day
- * - Islamic midnight: Varies daily based on sunset/sunrise times
- * - In summer (long days): Islamic midnight can be as late as ~01:00
- * - In winter (short days): Islamic midnight can be as early as ~23:15
- *
- * Calculation:
- * 1. Night starts: Yesterday's Maghrib (e.g., 18:45 Jan 19)
- * 2. Night ends: Today's Fajr (e.g., 06:15 Jan 20)
- * 3. Night duration: 11 hours 30 minutes (690 minutes)
- * 4. Midpoint: 345 minutes after Maghrib = 00:30 Jan 20
- * 5. Final time: 00:30 Jan 20 (Islamic midnight)
- *
- * No adjustment is applied to this calculation - it's the pure midpoint.
- *
- * @param magribTime Maghrib time from yesterday in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time from today in HH:mm format (e.g., "06:15")
- * @returns Islamic midnight time in HH:mm format (e.g., "00:30")
- *
- * @example
- * getMidnightTime("18:45", "06:15")
- * // Returns: "00:30" (exact midpoint, no adjustment)
+ * Checks if a date is yesterday or in the future
+ * Used for filtering API response data
+ * @param date Date string in YYYY-MM-DD format
+ * @returns boolean indicating if date is yesterday or future
  */
-export const getMidnightTime = (magribTime: string, fajrTime: string): string => {
-  const [mHours, mMinutes] = magribTime.split(':').map(Number);
-  const [fHours, fMinutes] = fajrTime.split(':').map(Number);
-
-  // Maghrib from yesterday
-  let maghrib = createLondonDate();
-  maghrib = subDays(setHours(setMinutes(maghrib, mMinutes), mHours), 1);
-
-  // Fajr from today
-  let fajr = createLondonDate();
-  fajr = setHours(setMinutes(fajr, fMinutes), fHours);
-
-  // Calculate night duration and midpoint
-  const nightDuration = fajr.getTime() - maghrib.getTime();
-  const midnight = createLondonDate(maghrib.getTime() + nightDuration / 2);
-
-  // Return formatted time string in 24-hour format (HH:mm)
-  return format(midnight, 'HH:mm');
-};
-
-/**
- * Adjusts a time string by adding or subtracting minutes
- * @param time Time string in HH:mm format
- * @param minutesDiff Minutes to add (positive) or subtract (negative)
- * @returns Adjusted time string in HH:mm format
- */
-export const adjustTime = (time: string, minutesDiff: number): string => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const date = setMinutes(setHours(createLondonDate(), hours), minutes);
-  date.setMinutes(date.getMinutes() + minutesDiff);
-  return format(date, 'HH:mm');
+export const isDateYesterdayOrFuture = (date: string): boolean => {
+  const parsedDate = createLondonDate(date);
+  return isYesterday(parsedDate) || isToday(parsedDate) || isFuture(parsedDate);
 };
 
 /**
@@ -210,31 +130,158 @@ export const isJanuaryFirst = (date: Date): boolean => {
 export const getCurrentYear = (): number => createLondonDate().getFullYear();
 
 // =============================================================================
-// NEW TIMING SYSTEM UTILITIES (Prayer-Centric Model)
-// See: ai/adr/005-timing-system-overhaul.md
+// NIGHT TIME CALCULATIONS (Islamic)
 // =============================================================================
 
 /**
- * Creates a full Date object from date and time strings
- * Used to combine API data (separate date/time) into Prayer.datetime
+ * Night boundary result for Islamic night calculations
+ */
+interface NightBoundaries {
+  /** Maghrib datetime (yesterday's sunset) */
+  maghrib: Date;
+  /** Fajr datetime (today's dawn) */
+  fajr: Date;
+}
+
+/**
+ * Parses Maghrib and Fajr times into Date objects for night calculations
  *
- * IMPORTANT: Prayer times from API are in London timezone.
- * This function interprets the datetime as London time and converts to UTC.
+ * This helper extracts the common parsing logic used by getLastThirdOfNight
+ * and getMidnightTime. It creates Date objects representing:
+ * - Maghrib: Yesterday's sunset (night starts)
+ * - Fajr: Today's dawn (night ends)
  *
- * @param date Date string in YYYY-MM-DD format
- * @param time Time string in HH:mm format
- * @returns Date object representing the exact moment (internally UTC)
+ * @param magribTime Maghrib time in HH:mm format (e.g., "18:45")
+ * @param fajrTime Fajr time in HH:mm format (e.g., "06:15")
+ * @returns Object with maghrib (yesterday) and fajr (today) as Date objects
  *
  * @example
- * createPrayerDatetime("2026-01-18", "06:12")
- * // Returns: Date representing 2026-01-18T06:12:00 London time
+ * const { maghrib, fajr } = parseNightBoundaries("18:45", "06:15");
+ * const nightDuration = fajr.getTime() - maghrib.getTime();
  */
-export const createPrayerDatetime = (date: string, time: string): Date => {
-  // Create datetime string and interpret it as London time
-  // fromZonedTime: "this datetime IS in London timezone, give me the UTC equivalent"
-  const isoString = `${date}T${time}:00`;
-  return fromZonedTime(isoString, 'Europe/London');
+function parseNightBoundaries(magribTime: string, fajrTime: string): NightBoundaries {
+  const [mHours, mMinutes] = magribTime.split(':').map(Number);
+  const [fHours, fMinutes] = fajrTime.split(':').map(Number);
+
+  // Maghrib from yesterday
+  const maghribBase = createLondonDate();
+  const maghribWithMinutes = setMinutes(maghribBase, mMinutes);
+  const maghribWithHours = setHours(maghribWithMinutes, mHours);
+  const maghrib = subDays(maghribWithHours, 1);
+
+  // Fajr from today
+  const fajrBase = createLondonDate();
+  const fajrWithMinutes = setMinutes(fajrBase, fMinutes);
+  const fajr = setHours(fajrWithMinutes, fHours);
+
+  return { maghrib, fajr };
+}
+
+/**
+ * Calculates the start time of the last third of the night (Islamic calculation)
+ *
+ * Islamic Night Division:
+ * In Islamic tradition, the night is divided into thirds for prayer purposes.
+ * The night spans from Maghrib (sunset) to Fajr (dawn), not system midnight.
+ * The last third begins 2/3 through this period and is a blessed time for prayer.
+ *
+ * Calculation:
+ * 1. Night starts: Yesterday's Maghrib (e.g., 18:45 Jan 19)
+ * 2. Night ends: Today's Fajr (e.g., 06:15 Jan 20)
+ * 3. Night duration: 11 hours 30 minutes (690 minutes)
+ * 4. Last third starts: 2/3 through = 460 minutes after Maghrib = 02:25 Jan 20
+ * 5. +5 minute adjustment applied (see TIME_ADJUSTMENTS.lastThird)
+ * 6. Final time: 02:30 Jan 20
+ *
+ * The +5 minute adjustment provides a safety buffer to ensure the prayer time
+ * is well within the last third period.
+ *
+ * @param magribTime Maghrib time from yesterday in HH:mm format (e.g., "18:45")
+ * @param fajrTime Fajr time from today in HH:mm format (e.g., "06:15")
+ * @returns Start time of the last third in HH:mm format (e.g., "02:30")
+ *
+ * @see parseNightBoundaries - Helper that parses the input times
+ *
+ * @example
+ * getLastThirdOfNight("18:45", "06:15")
+ * // Returns: "02:30" (accounting for the +5 min adjustment)
+ */
+export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
+  const { maghrib, fajr } = parseNightBoundaries(magribTime, fajrTime);
+
+  // Calculate night duration and last third start
+  const nightDuration = fajr.getTime() - maghrib.getTime();
+  const lastThirdStart = createLondonDate(maghrib.getTime() + (nightDuration * 2) / 3);
+
+  // Add minutes to the last third start time
+  const minutesToAdd = TIME_ADJUSTMENTS.lastThird;
+  lastThirdStart.setMinutes(lastThirdStart.getMinutes() + minutesToAdd);
+
+  // Return formatted time string in 24-hour format (HH:mm)
+  return format(lastThirdStart, 'HH:mm');
 };
+
+/**
+ * Calculates Islamic midnight (midpoint between Maghrib and Fajr)
+ *
+ * Islamic vs System Midnight:
+ * Islamic midnight is NOT 00:00 (system midnight). It is the exact midpoint
+ * of the Islamic night, which spans from Maghrib (sunset) to Fajr (dawn).
+ *
+ * Why the difference?
+ * - System midnight: Fixed at 00:00 every day
+ * - Islamic midnight: Varies daily based on sunset/sunrise times
+ * - In summer (long days): Islamic midnight can be as late as ~01:00
+ * - In winter (short days): Islamic midnight can be as early as ~23:15
+ *
+ * Calculation:
+ * 1. Night starts: Yesterday's Maghrib (e.g., 18:45 Jan 19)
+ * 2. Night ends: Today's Fajr (e.g., 06:15 Jan 20)
+ * 3. Night duration: 11 hours 30 minutes (690 minutes)
+ * 4. Midpoint: 345 minutes after Maghrib = 00:30 Jan 20
+ * 5. Final time: 00:30 Jan 20 (Islamic midnight)
+ *
+ * No adjustment is applied to this calculation - it's the pure midpoint.
+ *
+ * @param magribTime Maghrib time from yesterday in HH:mm format (e.g., "18:45")
+ * @param fajrTime Fajr time from today in HH:mm format (e.g., "06:15")
+ * @returns Islamic midnight time in HH:mm format (e.g., "00:30")
+ *
+ * @see parseNightBoundaries - Helper that parses the input times
+ *
+ * @example
+ * getMidnightTime("18:45", "06:15")
+ * // Returns: "00:30" (exact midpoint, no adjustment)
+ */
+export const getMidnightTime = (magribTime: string, fajrTime: string): string => {
+  const { maghrib, fajr } = parseNightBoundaries(magribTime, fajrTime);
+
+  // Calculate night duration and midpoint
+  const nightDuration = fajr.getTime() - maghrib.getTime();
+  const midnight = createLondonDate(maghrib.getTime() + nightDuration / 2);
+
+  // Return formatted time string in 24-hour format (HH:mm)
+  return format(midnight, 'HH:mm');
+};
+
+/**
+ * Adjusts a time string by adding or subtracting minutes
+ * @param time Time string in HH:mm format
+ * @param minutesDiff Minutes to add (positive) or subtract (negative)
+ * @returns Adjusted time string in HH:mm format
+ */
+export const adjustTime = (time: string, minutesDiff: number): string => {
+  const [hours, minutes] = time.split(':').map(Number);
+  const baseDate = createLondonDate();
+  const dateWithHours = setHours(baseDate, hours);
+  const date = setMinutes(dateWithHours, minutes);
+  date.setMinutes(date.getMinutes() + minutesDiff);
+  return format(date, 'HH:mm');
+};
+
+// =============================================================================
+// COUNTDOWN & DISPLAY FORMATTING
+// =============================================================================
 
 /**
  * Calculates the difference in seconds between two dates
@@ -282,7 +329,7 @@ export const getSecondsBetween = (from: Date, to: Date): number => {
  * formatTime(45, true) // "45s" (shows seconds in last 60s)
  * formatTime(0) // "0s"
  * formatTime(-100) // "0s"
- * formatTime(90000) // "25h 0m 0s" (days converted to hours)
+ * formatTime(90000) // "25h 0s" (days converted to hours)
  */
 export const formatTime = (seconds: number, hideSeconds = false): string => {
   if (seconds < 0) return '0s';
@@ -293,14 +340,14 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
 
   const totalHours = (days || 0) * 24 + (hours || 0);
 
-  // Hide seconds if requested and time is over 10 minutes (show only in last 10m)
+  // Hide seconds if requested and time is over ~10 minutes (show seconds only in last 10m)
   const shouldShowSeconds = !hideSeconds || seconds <= 599;
 
   const parts = [totalHours && `${totalHours}h`, minutes && `${minutes}m`].filter(Boolean);
 
   // Always show seconds if shouldShowSeconds is true, or if there are no other parts (e.g., "0s")
   if (shouldShowSeconds || parts.length === 0) {
-    parts.push(secs !== undefined ? `${secs}s` : '0s');
+    parts.push(`${secs ?? 0}s`);
   }
 
   return parts.join(' ');
@@ -318,7 +365,6 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
  * formatTimeAgo(5400)    // "1h 30m"
  */
 export const formatTimeAgo = (seconds: number): string => {
-  if (seconds < 0) return 'now';
   if (seconds < 60) return 'now';
 
   const minutes = Math.floor(seconds / 60);
