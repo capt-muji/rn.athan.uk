@@ -24,7 +24,7 @@ export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
 export const measurementsDateAtom = atom<PageCoordinates>(emptyCoordinates);
 export const measurementsMasjidAtom = atom<PageCoordinates>(emptyCoordinates);
 
-export const countdownBarHiddenAtom = atomWithStorageBoolean('preference_progressbar_hidden', false);
+export const countdownBarShownAtom = atomWithStorageBoolean('preference_progressbar_shown', true);
 export const countdownBarColorAtom = atomWithStorageString('preference_progressbar_color', '#00ffea');
 
 // New preference atoms for settings
