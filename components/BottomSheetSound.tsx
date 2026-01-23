@@ -2,7 +2,7 @@ import { BottomSheetModal, BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { AudioSource } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useMemo, useCallback, useState } from 'react';
-import { StyleSheet, Text, View, ListRenderItemInfo } from 'react-native';
+import { StyleSheet, Text, View, ListRenderItemInfo, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ALL_AUDIOS } from '@/assets/audio';
@@ -19,7 +19,9 @@ interface AudioItem {
 }
 
 export default function BottomSheetSound() {
-  const { bottom } = useSafeAreaInsets();
+  const { bottom: safeBottom } = useSafeAreaInsets();
+  // Android: ignore bottom insets (nav bar is auto-hidden)
+  const bottom = Platform.OS === 'android' ? 0 : safeBottom;
 
   // Temporary state to track selection before committing
   // This allows us to preview the selection without triggering notification updates
