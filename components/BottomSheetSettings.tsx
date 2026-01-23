@@ -8,7 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import ColorPickerSettings from '@/components/ColorPickerSettings';
 import SettingsToggle from '@/components/SettingsToggle';
-import { TEXT } from '@/shared/constants';
+import { TEXT, STYLES } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
   showSecondsAtom,
@@ -56,11 +56,25 @@ export default function BottomSheetSettings() {
         <ColorPickerSettings />
         <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
         <SettingsToggle label="Show Hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
-
-        <Pressable style={styles.athanButton} onPress={handleAthanPress}>
-          <Text style={styles.athanButtonText}>Change Athan Sound</Text>
+        <Pressable
+          style={styles.listItem}
+          onPress={handleAthanPress}
+          hitSlop={10}
+          accessibilityLabel="Change athan"
+          accessibilityHint="Opens athan sound selection"
+          accessibilityRole="button">
+          <Text style={styles.listItemLabel}>Change athan</Text>
+          <View style={styles.rightContainer}>
+            <Pressable
+              style={styles.musicButton}
+              onPress={handleAthanPress}
+              hitSlop={10}
+              accessibilityLabel="Change athan"
+              accessibilityHint="Opens athan sound selection">
+              <Text style={styles.musicIcon}>♪</Text>
+            </Pressable>
+          </View>
         </Pressable>
-
         <View style={{ height: bottom + 20 }} />
       </View>
     </BottomSheetModal>
@@ -74,19 +88,38 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size + 2,
     fontFamily: TEXT.family.medium,
   },
-  athanButton: {
+  listItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: STYLES.prayer.height,
+    paddingHorizontal: STYLES.prayer.padding.left,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ffffff10',
+  },
+  listItemLabel: {
+    color: 'white',
+    fontFamily: TEXT.family.regular,
+    fontSize: TEXT.size,
+  },
+  rightContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  musicButton: {
+    width: 44,
+    height: 24,
+    borderRadius: 12,
     backgroundColor: '#5015b5',
     borderWidth: 1,
     borderColor: '#672bcf',
-    marginHorizontal: 20,
-    marginTop: 30,
-    paddingVertical: 14,
-    borderRadius: 12,
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  athanButtonText: {
-    color: '#f8f4ff',
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.size,
+  musicIcon: {
+    color: 'white',
+    fontSize: 14,
+    marginTop: -2,
   },
 });
