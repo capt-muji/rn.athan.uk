@@ -42,8 +42,10 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
 
   // Overlay: If prayer passed, show next occurrence (tomorrow's prayer)
   // 3-day buffer contains all prayers sorted, so find next matching prayer name
-  const displayPrayer =
-    isPassed && isOverlay ? prayers.find((p) => p.english === prayer.english && p.datetime > prayer.datetime)! : prayer;
+  // Fallback to original prayer if no future occurrence exists (e.g., weekly prayers like Istijaba)
+  const nextOccurrence =
+    isPassed && isOverlay ? prayers.find((p) => p.english === prayer.english && p.datetime > prayer.datetime) : null;
+  const displayPrayer = nextOccurrence ?? prayer;
 
   return {
     ...displayPrayer,
