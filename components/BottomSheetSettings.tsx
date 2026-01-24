@@ -55,7 +55,7 @@ export default function BottomSheetSettings() {
       <View style={bottomSheetStyles.container}>
         <View style={styles.titleRow}>
           <View style={styles.iconWrapper}>
-            <SettingsIcon width={14} height={14} color={COLORS.infoBox.iconFill} />
+            <SettingsIcon width={14} height={14} color={COLORS.icon.primary} />
           </View>
           <Text style={styles.title}>Settings</Text>
         </View>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     borderRadius: 8,
-    backgroundColor: COLORS.infoBox.iconBackground,
+    backgroundColor: COLORS.icon.background,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     height: STYLES.prayer.height,
     paddingHorizontal: STYLES.prayer.padding.left,
     borderBottomWidth: 1,
-    borderBottomColor: '#ffffff10',
+    borderBottomColor: COLORS.border.subtle,
   },
   listItemLabel: {
     color: 'white',
@@ -147,9 +147,9 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: '#5015b5',
+    backgroundColor: COLORS.interactive.active,
     borderWidth: 1,
-    borderColor: '#672bcf',
+    borderColor: COLORS.interactive.activeBorder,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   chevron: {
-    color: COLORS.infoBox.iconFill,
+    color: COLORS.icon.primary,
     fontSize: 20,
     fontWeight: '300',
   },

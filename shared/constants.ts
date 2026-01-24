@@ -141,48 +141,150 @@ export const SCREEN = {
 
 /**
  * Application color palette
- * Gradient colors for backgrounds, active/inactive states, and UI elements
+ * Organized by semantic role: text, surface, interactive, icons, etc.
  */
 export const COLORS = {
-  /** Starting color for main background gradient (deep blue) */
-  gradientScreen1Start: '#031a4c',
-  /** Ending color for main background gradient (purple) */
-  gradientScreen1End: '#5b1eaa',
+  // ───────────────────────────────────────────────────────────────────────────
+  // TEXT HIERARCHY
+  // ───────────────────────────────────────────────────────────────────────────
+  text: {
+    /** Primary text: active prayers, main content */
+    primary: '#ffffff',
+    /** Secondary text: labels, descriptions */
+    secondary: 'rgba(160, 200, 255, 0.54)',
+    /** Muted text: inactive prayers, timestamps */
+    muted: 'rgba(138, 169, 214, 0.38)',
+    /** Disabled/hint text */
+    disabled: 'rgba(146, 211, 255, 0.65)',
+    /** Emphasis text: info box titles */
+    emphasis: 'rgba(224, 231, 255, 1)',
+  },
 
-  /** Text color for active prayers (white) */
-  activePrayer: '#ffffff',
-  /** Text color for inactive prayers (semi-transparent blue) */
-  inactivePrayer: '#8aa9d662',
+  // ───────────────────────────────────────────────────────────────────────────
+  // SURFACES & BACKGROUNDS
+  // ───────────────────────────────────────────────────────────────────────────
+  surface: {
+    /** Bottom sheet background */
+    sheet: '#0b183a',
+    /** Bottom sheet border */
+    sheetBorder: '#0f1d46',
+    /** Bottom sheet backdrop overlay */
+    backdrop: '#000116',
+    /** Elevated surface (info boxes, modals) */
+    elevated: 'rgba(18, 6, 42, 1)',
+    /** Elevated surface border */
+    elevatedBorder: 'rgba(45, 22, 106, 0.29)',
+  },
 
-  /** Background color for active prayer highlight (bright blue) */
-  activeBackground: '#0847e5',
-  /** Shadow color for Standard schedule active prayer background */
-  standardActiveBackgroundShadow: '#081a76',
-  /** Shadow color for Extra schedule active prayer background */
-  extraActiveBackgroundShadow: '#061e5b',
+  // ───────────────────────────────────────────────────────────────────────────
+  // GRADIENTS
+  // ───────────────────────────────────────────────────────────────────────────
+  gradient: {
+    /** Main screen background gradient */
+    screen: { start: '#031a4c', end: '#5b1eaa' },
+    /** Overlay background gradient */
+    overlay: { start: '#110022', end: '#000000' },
+  },
 
-  /** Secondary text color (muted blue) */
-  textSecondary: '#a0c8ff89',
+  // ───────────────────────────────────────────────────────────────────────────
+  // INTERACTIVE ELEMENTS (toggles, selections)
+  // ───────────────────────────────────────────────────────────────────────────
+  interactive: {
+    /** Active toggle/selection background */
+    active: '#5015b5',
+    /** Active toggle/selection border */
+    activeBorder: '#672bcf',
+    /** Inactive toggle background */
+    inactive: '#303f6c',
+    /** Inactive toggle border */
+    inactiveBorder: '#3b3977',
+  },
 
-  glows: {
-    /** Purple glow color for overlay component */
+  // ───────────────────────────────────────────────────────────────────────────
+  // ICONS
+  // ───────────────────────────────────────────────────────────────────────────
+  icon: {
+    /** Primary icon fill color */
+    primary: 'rgba(165, 180, 252, 1)',
+    /** Icon wrapper background */
+    background: 'rgba(99, 102, 241, 0.2)',
+    /** Muted icon color */
+    muted: 'rgba(177, 143, 255, 0.46)',
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // BORDERS & DIVIDERS
+  // ───────────────────────────────────────────────────────────────────────────
+  border: {
+    /** Subtle separator lines (6% opacity) */
+    subtle: 'rgba(255, 255, 255, 0.06)',
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // SHADOWS
+  // ───────────────────────────────────────────────────────────────────────────
+  shadow: {
+    /** Standard schedule active prayer shadow */
+    standard: '#081a76',
+    /** Extra schedule active prayer shadow */
+    extra: '#061e5b',
+    /** Settings button shadow */
+    button: '#27035c',
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // FEEDBACK STATES
+  // ───────────────────────────────────────────────────────────────────────────
+  feedback: {
+    /** Success/recent state (bright blue-white) */
+    success: '#d5e8ff',
+    /** Warning state (countdown < 10%) */
+    warning: '#ff0080',
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // GLOWS & EFFECTS
+  // ───────────────────────────────────────────────────────────────────────────
+  glow: {
+    /** Purple glow for overlay component */
     overlay: '#8000ff',
   },
 
-  /** Info box and icon wrapper styles (used in PrayerExplanation, BottomSheetSettings) */
-  infoBox: {
-    /** Near-black background with transparency */
-    background: 'rgba(18, 6, 42, 1)',
-    /** Dark purple border */
-    border: 'rgba(45, 22, 106, 0.29)',
-    /** Icon wrapper background */
-    iconBackground: 'rgba(99, 102, 241, 0.2)',
-    /** Icon fill color */
-    iconFill: 'rgba(165, 180, 252, 1)',
-    /** Title text color */
-    titleText: 'rgba(224, 231, 255, 1)',
-    /** Body text color */
-    bodyText: 'rgba(165, 180, 252, 1)',
+  // ───────────────────────────────────────────────────────────────────────────
+  // PRAYER-SPECIFIC
+  // ───────────────────────────────────────────────────────────────────────────
+  prayer: {
+    /** Active prayer highlight background */
+    activeBackground: '#0847e5',
+  },
+
+  prayerAgo: {
+    /** Prayer ago badge text */
+    text: 'rgba(160, 200, 255, 0.50)',
+    /** Background gradient for prayer ago badge */
+    gradient: {
+      start: 'rgba(99, 169, 255, 0.06)',
+      end: 'rgba(141, 121, 255, 0.18)',
+    },
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // COMPONENT-SPECIFIC
+  // ───────────────────────────────────────────────────────────────────────────
+  /** Settings button (transparent style) */
+  settingsButton: {
+    background: 'rgba(105, 65, 198, 0.29)',
+    border: 'rgba(91, 51, 184, 0.46)',
+  },
+
+  /** Countdown bar */
+  countdown: {
+    background: 'rgba(126, 189, 241, 0.19)',
+  },
+
+  /** Color picker */
+  colorPicker: {
+    buttonBackground: 'rgba(79, 126, 180, 0.24)',
   },
 };
 

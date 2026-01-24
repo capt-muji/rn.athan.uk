@@ -31,7 +31,7 @@ export default function ActiveBackground({ type }: Props) {
   const AnimTranslateY = useAnimationTranslateY(yPosition);
   const AnimBackgroundColor = useAnimationBackgroundColor(1, {
     fromColor: 'transparent',
-    toColor: COLORS.activeBackground,
+    toColor: COLORS.prayer.activeBackground,
   });
 
   // This effect runs after render and handles all animation logic
@@ -46,7 +46,7 @@ export default function ActiveBackground({ type }: Props) {
   }, [yPosition]); // Dependencies ensure animations update when values change
 
   const computedStyles: ViewStyle = {
-    shadowColor: isStandard ? COLORS.standardActiveBackgroundShadow : COLORS.extraActiveBackgroundShadow,
+    shadowColor: isStandard ? COLORS.shadow.standard : COLORS.shadow.extra,
     elevation: 0, // Must be 0 to stay below Prayer components on Android
     zIndex: -1, // Ensure it's behind prayer text
   };

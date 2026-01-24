@@ -99,24 +99,24 @@ describe('formatTimeAgo', () => {
 describe('getLastThirdOfNight', () => {
   it('calculates last third correctly for winter night', () => {
     // Maghrib 18:45, Fajr 06:15 = 11.5h night
-    // 2/3 of 11.5h = 7h 40m after Maghrib = 02:25 + 5min adjustment = 02:30
+    // 2/3 of 11.5h = 7h 40m after Maghrib = 02:25
     const result = getLastThirdOfNight('18:45', '06:15');
-    expect(result).toBe('02:30');
+    expect(result).toBe('02:25');
   });
 
   it('calculates last third for summer night (short)', () => {
     // Summer: Maghrib late, Fajr early (short night)
     // Maghrib 21:00, Fajr 03:30 = 6.5h night
-    // 2/3 of 6.5h = 4h 20m after Maghrib = 01:20 + 5min = 01:25
+    // 2/3 of 6.5h = 4h 20m after Maghrib = 01:20
     const result = getLastThirdOfNight('21:00', '03:30');
-    expect(result).toBe('01:25');
+    expect(result).toBe('01:20');
   });
 
   it('calculates last third for equinox night (equal)', () => {
     // Maghrib 18:00, Fajr 06:00 = 12h night
-    // 2/3 of 12h = 8h after Maghrib = 02:00 + 5min = 02:05
+    // 2/3 of 12h = 8h after Maghrib = 02:00
     const result = getLastThirdOfNight('18:00', '06:00');
-    expect(result).toBe('02:05');
+    expect(result).toBe('02:00');
   });
 });
 

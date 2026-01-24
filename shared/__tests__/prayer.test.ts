@@ -547,8 +547,8 @@ describe('transformApiData', () => {
     };
 
     const result = transformApiData(input);
-    // Suhoor is fajr - 40 minutes = 05:20
-    expect(result[0].suhoor).toBe('05:20');
+    // Suhoor is fajr - 20 minutes = 05:40
+    expect(result[0].suhoor).toBe('05:40');
   });
 
   it('calculates duha correctly (after sunrise)', () => {
@@ -601,7 +601,7 @@ describe('transformApiData', () => {
     };
 
     const result = transformApiData(input);
-    // Istijaba is maghrib - 59 minutes (TIME_ADJUSTMENTS.istijaba = -59) = 16:01
-    expect(result[0].istijaba).toBe('16:01');
+    // Istijaba is maghrib - 60 minutes (TIME_ADJUSTMENTS.istijaba = -60) = 16:00
+    expect(result[0].istijaba).toBe('16:00');
   });
 });

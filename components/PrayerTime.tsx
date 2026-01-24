@@ -26,8 +26,8 @@ export default function PrayerTime({ type, index, isOverlay = false }: Props) {
   const overlay = useAtomValue(overlayAtom);
 
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
-    fromColor: COLORS.inactivePrayer,
-    toColor: COLORS.activePrayer,
+    fromColor: COLORS.text.muted,
+    toColor: COLORS.text.primary,
   });
 
   // Detect if this prayer is currently selected in the overlay.

@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     height: STYLES.prayer.height,
     paddingHorizontal: STYLES.prayer.padding.left,
     borderBottomWidth: 1,
-    borderBottomColor: '#ffffff10',
+    borderBottomColor: COLORS.border.subtle,
   },
 
   // --- Label Styles ---
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
   },
   labelDisabled: {
-    color: '#92d3ffa6',
+    color: COLORS.text.disabled,
   },
 
   // --- Right Side (Reset + Preview) ---
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   resetText: {
-    color: '#a0c8ff89',
+    color: COLORS.text.secondary,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeSmall,
   },
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
   },
   chevron: {
-    color: COLORS.infoBox.iconFill,
+    color: COLORS.icon.primary,
     fontSize: 20,
     fontWeight: '300',
   },
@@ -237,8 +237,8 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     borderWidth: 1,
     borderBottomWidth: 0,
-    backgroundColor: '#0b183a',
-    borderColor: '#0f1d46',
+    backgroundColor: COLORS.surface.sheet,
+    borderColor: COLORS.surface.sheetBorder,
     shadowColor: '#113f9b',
     shadowOffset: { width: 0, height: -50 },
     shadowOpacity: 0.25,
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
   },
   cancelButton: {
-    backgroundColor: COLORS.infoBox.iconBackground,
+    backgroundColor: COLORS.icon.background,
     height: 40,
     width: 80,
     borderRadius: 8,
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cancelText: {
-    color: COLORS.infoBox.iconFill,
+    color: COLORS.icon.primary,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeSmall,
   },
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
     height: 6,
     width: '50%',
     maxWidth: 350,
-    backgroundColor: '#4f7eb43d',
+    backgroundColor: COLORS.colorPicker.buttonBackground,
     borderRadius: 3,
     overflow: 'hidden',
   },
