@@ -266,9 +266,21 @@ export const getMidnightTime = (magribTime: string, fajrTime: string): string =>
 
 /**
  * Adjusts a time string by adding or subtracting minutes
- * @param time Time string in HH:mm format
+ *
+ * Used for calculating derived prayer times (e.g., Suhoor = Fajr - 20min).
+ * Handles day boundary crossing (e.g., 00:10 - 20min = 23:50).
+ *
+ * Timezone: Uses London timezone internally via createLondonDate().
+ * The returned time string is in 24-hour format and represents London time.
+ *
+ * @param time Time string in HH:mm format (e.g., "06:15")
  * @param minutesDiff Minutes to add (positive) or subtract (negative)
  * @returns Adjusted time string in HH:mm format
+ *
+ * @example
+ * adjustTime("06:15", -20) // "05:55" (Suhoor = 20min before Fajr)
+ * adjustTime("07:00", 20)  // "07:20" (Duha = 20min after Sunrise)
+ * adjustTime("00:10", -20) // "23:50" (crosses midnight boundary)
  */
 export const adjustTime = (time: string, minutesDiff: number): string => {
   const [hours, minutes] = time.split(':').map(Number);
@@ -357,12 +369,14 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
  * Formats seconds elapsed into "ago" text without seconds display
  *
  * @param seconds - Seconds since prayer occurred (can be 0 or positive)
- * @returns "now" (<60s), "1m" (1-59m), "10h 15m" (1h+)
+ * @returns "now" (<60s), "Xm" (1-59m), "Xh Ym" (1h+)
  *
  * @example
- * formatTimeAgo(45)      // "now"
- * formatTimeAgo(120)     // "2m"
- * formatTimeAgo(5400)    // "1h 30m"
+ * formatTimeAgo(45)      // Returns: "now"
+ * formatTimeAgo(120)     // Returns: "2m"
+ * formatTimeAgo(5400)    // Returns: "1h 30m"
+ * formatTimeAgo(7200)    // Returns: "2h"
+ * formatTimeAgo(0)       // Returns: "now"
  */
 export const formatTimeAgo = (seconds: number): string => {
   if (seconds < 60) return 'now';

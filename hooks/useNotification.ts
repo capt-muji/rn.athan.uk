@@ -16,6 +16,37 @@ Notifications.setNotificationHandler({
 });
 
 /**
+ * Shows a dialog prompting user to enable notifications in settings
+ * @returns Promise resolving to true if user grants permission after visiting settings
+ */
+const showSettingsDialog = (): Promise<boolean> => {
+  return new Promise((resolve) => {
+    Alert.alert(
+      'Enable Notifications',
+      'Prayer time notifications are disabled. Would you like to enable them in settings?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+          onPress: () => resolve(false),
+        },
+        {
+          text: 'Open Settings',
+          onPress: async () => {
+            if (Platform.OS === 'ios') await Linking.openSettings();
+            else await Linking.sendIntent('android.settings.APP_NOTIFICATION_SETTINGS');
+
+            // Check if permissions were granted after returning from settings
+            const { status: finalStatus } = await Notifications.getPermissionsAsync();
+            resolve(finalStatus === 'granted');
+          },
+        },
+      ]
+    );
+  });
+};
+
+/**
  * Hook for managing notification permissions and scheduling
  *
  * Provides functions for:
@@ -104,7 +135,6 @@ export const useNotification = () => {
   const ensurePermissions = async (): Promise<boolean> => {
     try {
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
-
       if (existingStatus === 'granted') return true;
 
       // First try requesting permissions
@@ -112,30 +142,7 @@ export const useNotification = () => {
       if (status === 'granted') return true;
 
       // If denied, show settings dialog
-      return new Promise((resolve) => {
-        Alert.alert(
-          'Enable Notifications',
-          'Prayer time notifications are disabled. Would you like to enable them in settings?',
-          [
-            {
-              text: 'Cancel',
-              style: 'cancel',
-              onPress: () => resolve(false),
-            },
-            {
-              text: 'Open Settings',
-              onPress: async () => {
-                if (Platform.OS === 'ios') await Linking.openSettings();
-                else await Linking.sendIntent('android.settings.APP_NOTIFICATION_SETTINGS');
-
-                // Check if permissions were granted after returning from settings
-                const { status: finalStatus } = await Notifications.getPermissionsAsync();
-                resolve(isNotificationGranted(finalStatus));
-              },
-            },
-          ]
-        );
-      });
+      return showSettingsDialog();
     } catch (error) {
       logger.error('NOTIFICATION: Failed to check notification permissions:', error);
       return false;

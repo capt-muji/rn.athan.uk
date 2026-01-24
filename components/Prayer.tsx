@@ -21,6 +21,17 @@ interface Props {
   isOverlay?: boolean;
 }
 
+/**
+ * Prayer row component displaying prayer name, time, and notification controls
+ *
+ * Renders a pressable row with English name, optional Arabic name, time display,
+ * and alert icon. Supports cascade animations when the date changes and
+ * highlights when selected in the overlay.
+ *
+ * @param type - Schedule type (Standard or Extra)
+ * @param index - Prayer index within the schedule
+ * @param isOverlay - Whether this is rendered in the overlay (default: false)
+ */
 export default function Prayer({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
   const showArabicNames = useAtomValue(showArabicNamesAtom);
