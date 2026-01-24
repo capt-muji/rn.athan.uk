@@ -5,10 +5,11 @@ import { useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import SettingsIcon from '@/assets/icons/settings.svg';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import ColorPickerSettings from '@/components/ColorPickerSettings';
 import SettingsToggle from '@/components/SettingsToggle';
-import { TEXT, STYLES } from '@/shared/constants';
+import { TEXT, STYLES, COLORS } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
   showSecondsAtom,
@@ -52,7 +53,12 @@ export default function BottomSheetSettings() {
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
       <View style={bottomSheetStyles.container}>
-        <Text style={[styles.title]}>Settings</Text>
+        <View style={styles.titleRow}>
+          <View style={styles.iconWrapper}>
+            <SettingsIcon width={14} height={14} color={COLORS.infoBox.iconFill} />
+          </View>
+          <Text style={styles.title}>Settings</Text>
+        </View>
 
         <Pressable
           style={styles.listItem}
@@ -71,6 +77,7 @@ export default function BottomSheetSettings() {
               accessibilityHint="Opens athan sound selection">
               <Text style={styles.musicIcon}>♪</Text>
             </Pressable>
+            <Text style={styles.chevron}>›</Text>
           </View>
         </Pressable>
         <SettingsToggle label="Show hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
@@ -98,9 +105,22 @@ export default function BottomSheetSettings() {
 }
 
 const styles = StyleSheet.create({
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+    gap: 10,
+  },
+  iconWrapper: {
+    width: 26,
+    height: 26,
+    borderRadius: 8,
+    backgroundColor: COLORS.infoBox.iconBackground,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   title: {
     color: 'white',
-    padding: 20,
     fontSize: TEXT.size + 2,
     fontFamily: TEXT.family.medium,
   },
@@ -124,7 +144,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   musicButton: {
-    width: 44,
+    width: 24,
     height: 24,
     borderRadius: 12,
     backgroundColor: '#5015b5',
@@ -136,6 +156,10 @@ const styles = StyleSheet.create({
   musicIcon: {
     color: 'white',
     fontSize: 14,
-    marginTop: -2,
+  },
+  chevron: {
+    color: COLORS.infoBox.iconFill,
+    fontSize: 20,
+    fontWeight: '300',
   },
 });

@@ -79,7 +79,12 @@ export default function BottomSheetSound() {
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
       <View style={bottomSheetStyles.container}>
-        <Text style={[styles.text, styles.title]}>Select Athan</Text>
+        <View style={styles.titleRow}>
+          <View style={styles.iconWrapper}>
+            <Text style={styles.musicIcon}>♪</Text>
+          </View>
+          <Text style={styles.title}>Select Athan</Text>
+        </View>
 
         <BottomSheetFlatList<AudioItem>
           data={data}
@@ -94,10 +99,27 @@ export default function BottomSheetSound() {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    color: 'white',
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: 20,
     paddingHorizontal: 30,
+    gap: 10,
+  },
+  iconWrapper: {
+    width: 26,
+    height: 26,
+    borderRadius: 8,
+    backgroundColor: COLORS.infoBox.iconBackground,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  musicIcon: {
+    color: COLORS.infoBox.iconFill,
+    fontSize: 14,
+  },
+  title: {
+    color: 'white',
     fontSize: TEXT.size + 2,
     fontFamily: TEXT.family.medium,
   },
