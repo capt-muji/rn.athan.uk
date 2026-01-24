@@ -4,6 +4,7 @@ import Animated from 'react-native-reanimated';
 
 import SettingsIcon from '@/assets/icons/settings.svg';
 import { useAnimationScale } from '@/hooks/useAnimation';
+import { COLORS } from '@/shared/constants';
 import { showSettingsSheet } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -17,9 +18,9 @@ export default function SettingsButton() {
   };
 
   const computedStylesContainer: ViewStyle = {
-    backgroundColor: '#6941c649',
-    borderColor: '#5b33b875',
-    shadowColor: '#27035c',
+    backgroundColor: COLORS.settingsButton.background,
+    borderColor: COLORS.settingsButton.border,
+    shadowColor: COLORS.shadow.button,
   };
 
   return (
@@ -47,6 +48,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    color: '#b18fff75',
+    color: COLORS.icon.muted,
   },
 });

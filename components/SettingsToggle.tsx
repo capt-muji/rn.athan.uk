@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { Pressable, Text, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import { TEXT, STYLES } from '@/shared/constants';
+import { TEXT, STYLES, COLORS } from '@/shared/constants';
 
 interface SettingsToggleProps {
   label: string;
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     height: STYLES.prayer.height,
     paddingHorizontal: STYLES.prayer.padding.left,
     borderBottomWidth: 1,
-    borderBottomColor: '#ffffff10',
+    borderBottomColor: COLORS.border.subtle,
   },
   label: {
     color: 'white',
@@ -53,20 +53,20 @@ const styles = StyleSheet.create({
     width: 44,
     height: 24,
     borderRadius: 12,
-    backgroundColor: '#303f6c',
+    backgroundColor: COLORS.interactive.inactive,
     borderWidth: 1,
-    borderColor: '#3b3977',
+    borderColor: COLORS.interactive.inactiveBorder,
     padding: 2,
     justifyContent: 'center',
   },
   toggleActive: {
-    backgroundColor: '#5015b5',
-    borderColor: '#672bcf',
+    backgroundColor: COLORS.interactive.active,
+    borderColor: COLORS.interactive.activeBorder,
   },
   toggleDot: {
     width: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: '#ffffff',
+    backgroundColor: COLORS.text.primary,
   },
 });

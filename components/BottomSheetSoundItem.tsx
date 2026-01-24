@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimation';
-import { ANIMATION, SCREEN, STYLES, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, SCREEN, STYLES, TEXT } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
@@ -32,12 +32,12 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   const isSelected = index === (tempSelection ?? selectedSound);
 
   const textAnimation = useAnimationColor(isPlaying || isSelected ? 1 : 0, {
-    fromColor: '#475e95',
-    toColor: '#ffffff',
+    fromColor: COLORS.text.secondary,
+    toColor: COLORS.text.primary,
   });
   const iconAnimation = useAnimationFill(isPlaying ? 1 : 0, {
-    fromColor: '#475e95',
-    toColor: '#ffffff',
+    fromColor: COLORS.text.secondary,
+    toColor: COLORS.text.primary,
   });
 
   const AnimScale = useAnimationScale(1);
@@ -85,9 +85,9 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   };
 
   const computedStyleOption: ViewStyle = {
-    backgroundColor: isSelected ? '#5015b5' : 'transparent',
+    backgroundColor: isSelected ? COLORS.interactive.active : 'transparent',
     borderWidth: 1,
-    borderColor: isSelected ? '#672bcf' : 'transparent',
+    borderColor: isSelected ? COLORS.interactive.activeBorder : 'transparent',
   };
 
   return (

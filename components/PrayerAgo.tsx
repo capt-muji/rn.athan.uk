@@ -9,7 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
-import { TEXT } from '@/shared/constants';
+import { TEXT, COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 
@@ -37,8 +37,12 @@ export default function PrayerAgo({ type }: Props) {
 
   // Smooth color transition
   const prayerAgoStyle = useAnimatedStyle(() => ({
-    color: interpolateColor(isRecentValue.value, [0, 1], ['#a0c8ff80', '#d5e8ff']),
-    backgroundColor: interpolateColor(isRecentValue.value, [0, 1], ['#63a9ff10', '#8d79ff2f']),
+    color: interpolateColor(isRecentValue.value, [0, 1], [COLORS.prayerAgo.text, COLORS.feedback.success]),
+    backgroundColor: interpolateColor(
+      isRecentValue.value,
+      [0, 1],
+      [COLORS.prayerAgo.gradient.start, COLORS.prayerAgo.gradient.end]
+    ),
   }));
 
   if (!prayerAgoReady) return null;

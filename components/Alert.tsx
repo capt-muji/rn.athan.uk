@@ -167,7 +167,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   const computedStylePopup: ViewStyle = {
     shadowColor: Prayer.isStandard ? '#010931' : '#000416',
-    backgroundColor: Prayer.isOverlay && !Prayer.isNext ? COLORS.activeBackground : 'black',
+    backgroundColor: Prayer.isOverlay && !Prayer.isNext ? COLORS.prayer.activeBackground : 'black',
   };
 
   // =============================================================================
@@ -222,6 +222,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: TEXT.size,
-    color: COLORS.activePrayer,
+    color: COLORS.text.primary,
   },
 });

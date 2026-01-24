@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingLeft: SCREEN.paddingHorizontal + 4,
   },
   location: {
-    color: COLORS.textSecondary,
+    color: COLORS.text.secondary,
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
     marginBottom: 5,

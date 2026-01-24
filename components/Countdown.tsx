@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: TEXT.sizeSmall,
     marginBottom: 8,
-    color: COLORS.textSecondary,
+    color: COLORS.text.secondary,
   },
   countdown: {
     color: 'white',

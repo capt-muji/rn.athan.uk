@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useCountdownBar } from '@/hooks/useCountdownBar';
-import { ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { countdownBarColorAtom } from '@/stores/ui';
@@ -54,7 +54,7 @@ export default function CountdownBar({ type }: Props) {
       [0, 1],
       [
         countdownBarColor, // User's color for normal state
-        '#ff0080', // red for warning state
+        COLORS.feedback.warning, // red for warning state
       ]
     );
     return {
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 2,
     alignSelf: 'center',
-    backgroundColor: '#7ebdf131',
+    backgroundColor: COLORS.countdown.background,
   },
   elapsed: {
     position: 'absolute',

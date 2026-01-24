@@ -110,12 +110,12 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     borderRadius: 8,
-    backgroundColor: COLORS.infoBox.iconBackground,
+    backgroundColor: COLORS.icon.background,
     alignItems: 'center',
     justifyContent: 'center',
   },
   musicIcon: {
-    color: COLORS.infoBox.iconFill,
+    color: COLORS.icon.primary,
     fontSize: 14,
   },
   title: {
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.medium,
   },
   text: {
-    color: COLORS.textSecondary,
+    color: COLORS.text.secondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },

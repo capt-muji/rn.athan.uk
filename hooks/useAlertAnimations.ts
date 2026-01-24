@@ -27,8 +27,8 @@ export const useAlertAnimations = ({ initialColorPos }: UseAlertAnimationsParams
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
   const AnimFill = useAnimationFill(initialColorPos, {
-    fromColor: COLORS.inactivePrayer,
-    toColor: COLORS.activePrayer,
+    fromColor: COLORS.text.muted,
+    toColor: COLORS.text.primary,
   });
 
   /**
