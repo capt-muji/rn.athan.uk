@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
 import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimation';
-import { ANIMATION, COLORS, SCREEN, STYLES, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, SCREEN, STYLES, TEXT, SPACING, RADIUS } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
@@ -113,16 +113,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: STYLES.prayer.border.borderRadius,
+    borderRadius: RADIUS.md,
     marginHorizontal: SCREEN.paddingHorizontal,
     height: STYLES.prayer.height,
-    paddingLeft: 20,
+    paddingLeft: SPACING.xl,
   },
   text: {
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
   icon: {
-    padding: 20,
+    padding: SPACING.xl,
   },
 });

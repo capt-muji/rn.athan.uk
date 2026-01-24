@@ -5,7 +5,7 @@ import { View, StyleSheet, InteractionManager } from 'react-native';
 import ActiveBackground from '@/components/ActiveBackground';
 import Prayer from '@/components/Prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { SCREEN } from '@/shared/constants';
+import { SCREEN, SPACING } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { countdownBarShownAtom, getMeasurementsList, setMeasurementsList } from '@/stores/ui';
 
@@ -75,6 +75,6 @@ export default function List({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-    marginBottom: 30,
+    marginBottom: SPACING.xxxl,
   },
 });
