@@ -64,44 +64,17 @@ export default function CountdownBar({ type }: Props) {
   });
 
   const glowStyle = useAnimatedStyle(() => {
-    // Platform-specific glow settings
-    const isAndroid = Platform.OS === 'android';
-
-    if (isAndroid) {
-      // Android: use elevation for shadow spread
-      const baseElevation = 15;
-      const warningElevation = 10;
-      const elevation = baseElevation - warningValue.value * (baseElevation - warningElevation);
-
-      return {
-        elevation,
-        shadowOpacity: 0.9,
-      };
-    } else {
-      // iOS: use shadowRadius for spread
-      const shadowOpacity = 0.9 + warningValue.value * 0.1;
-      const shadowRadius = 15 - warningValue.value * 7;
-
-      return {
-        shadowOpacity,
-        shadowRadius,
-      };
-    }
-  });
-
-  // Extra intense glow layer for warning state only
-  const warningGlowStyle = useAnimatedStyle(() => {
     const isAndroid = Platform.OS === 'android';
 
     if (isAndroid) {
       return {
-        elevation: warningValue.value * 10,
-        shadowOpacity: warningValue.value * 0.7,
+        elevation: 11,
+        shadowOpacity: 0.35,
       };
     } else {
       return {
-        shadowOpacity: warningValue.value,
-        shadowRadius: 6,
+        shadowOpacity: 0.35,
+        shadowRadius: 10,
       };
     }
   });
@@ -154,10 +127,8 @@ export default function CountdownBar({ type }: Props) {
   // Opacity used only for overlay animation (show/hide setting handled by conditional render in Countdown.tsx)
   return (
     <Animated.View style={[styles.container, opacityStyle]}>
-      {/* Base glow effect */}
+      {/* Glow effect */}
       <Animated.View style={[styles.glow, animatedStyle, colorStyle, glowStyle]} />
-      {/* Extra intense neon glow for warning state */}
-      <Animated.View style={[styles.glow, animatedStyle, colorStyle, warningGlowStyle]} />
       {/* Main countdown bar */}
       <Animated.View style={[styles.elapsed, animatedStyle, colorStyle]} />
     </Animated.View>
