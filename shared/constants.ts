@@ -224,12 +224,12 @@ export const COLORS = {
   // SHADOWS
   // ───────────────────────────────────────────────────────────────────────────
   shadow: {
-    /** Standard schedule active prayer shadow */
-    standard: '#081a76',
-    /** Extra schedule active prayer shadow */
-    extra: '#061e5b',
+    /** Active prayer shadow */
+    prayer: '#081a76',
     /** Settings button shadow */
     button: '#27035c',
+    /** Alert popup shadow */
+    alert: '#010931',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -285,6 +285,48 @@ export const COLORS = {
   /** Color picker */
   colorPicker: {
     buttonBackground: 'rgba(79, 126, 180, 0.24)',
+  },
+
+  /** Modal/dialog specific colors */
+  modal: {
+    /** Modal shadow color */
+    shadow: '#113f9b',
+    /** Save button text */
+    saveText: 'rgba(230, 220, 255, 1)',
+    /** Save button background */
+    saveBackground: 'rgba(80, 21, 181, 0.65)',
+    /** Save button border */
+    saveBorder: 'rgba(103, 43, 207, 0.75)',
+  },
+
+  /** Error screen colors */
+  error: {
+    /** Error screen button background */
+    buttonBackground: '#030005',
+  },
+
+  /** Masjid icon */
+  masjid: {
+    /** Golden glow/shadow color */
+    glow: '#EF9C29',
+  },
+
+  /** Light mode colors (system modals, update dialogs) */
+  light: {
+    /** Light background */
+    background: '#ffffff',
+    /** Primary dark text */
+    text: '#1a1a1a',
+    /** Secondary text */
+    textSecondary: '#344e5c',
+    /** Cancel button background */
+    buttonCancel: '#f5f5f5',
+    /** Primary button background */
+    buttonPrimary: '#000000',
+    /** Modal backdrop overlay */
+    backdrop: 'rgba(0, 0, 0, 0.75)',
+    /** Modal shadow */
+    shadow: '#12001e',
   },
 };
 

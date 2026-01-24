@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: STYLES.prayer.height,
-    shadowColor: COLORS.shadow.standard,
+    shadowColor: COLORS.shadow.prayer,
   },
   activeBackground: {
     backgroundColor: COLORS.prayer.activeBackground,

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     borderBottomColor: COLORS.border.subtle,
   },
   label: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
   },

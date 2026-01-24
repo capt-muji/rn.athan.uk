@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   date: {
     fontFamily: TEXT.family.regular,
-    color: 'white',
+    color: COLORS.text.primary,
     fontSize: TEXT.size,
   },
 });

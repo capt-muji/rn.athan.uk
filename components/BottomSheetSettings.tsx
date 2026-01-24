@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontSize: TEXT.size + 2,
     fontFamily: TEXT.family.medium,
   },
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     borderBottomColor: COLORS.border.subtle,
   },
   listItemLabel: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
   },
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   musicIcon: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontSize: 14,
   },
   chevron: {

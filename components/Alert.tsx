@@ -166,7 +166,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // =============================================================================
 
   const computedStylePopup: ViewStyle = {
-    shadowColor: Prayer.isStandard ? '#010931' : '#000416',
+    shadowColor: COLORS.shadow.alert,
     backgroundColor: Prayer.isOverlay && !Prayer.isNext ? COLORS.prayer.activeBackground : 'black',
   };
 
@@ -187,7 +187,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
       </Pressable>
 
       <Animated.View style={[styles.popup, computedStylePopup, AnimOpacity.style, AnimBounce.style]}>
-        <Icon type={ALERT_CONFIGS[popupIconIndex].icon} size={20} color="white" />
+        <Icon type={ALERT_CONFIGS[popupIconIndex].icon} size={20} color={COLORS.text.primary} />
         <Text style={styles.label}>{ALERT_CONFIGS[popupIconIndex].label}</Text>
       </Animated.View>
     </View>

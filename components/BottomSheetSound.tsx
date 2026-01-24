@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   title: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontSize: TEXT.size + 2,
     fontFamily: TEXT.family.medium,
   },
