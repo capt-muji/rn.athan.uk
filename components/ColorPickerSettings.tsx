@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable, Modal } from 'react-native';
 import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } from 'reanimated-color-picker';
 
-import { TEXT, STYLES } from '@/shared/constants';
+import { TEXT, STYLES, COLORS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
@@ -123,6 +123,7 @@ export default function ColorPickerSettings() {
           <View style={styles.colorPreviewContainer}>
             <View style={[styles.colorPreview, { backgroundColor: countdownBarColor }]} />
           </View>
+          <Text style={styles.chevron}>›</Text>
         </View>
       </Pressable>
 
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeSmall,
   },
   colorPreviewContainer: {
-    width: 44,
+    width: 24,
     height: 24,
     borderRadius: 12,
     borderWidth: 2,
@@ -213,9 +214,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   colorPreview: {
-    width: 38,
+    width: 18,
     height: 18,
-    borderRadius: 10,
+    borderRadius: 9,
+  },
+  chevron: {
+    color: COLORS.infoBox.iconFill,
+    fontSize: 20,
+    fontWeight: '300',
   },
 
   // --- Modal Container ---
