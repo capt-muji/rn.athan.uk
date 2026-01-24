@@ -2,7 +2,7 @@ import { StyleSheet, View, ViewStyle, Text } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import ICON_PATHS from '@/assets/icons/icons';
-import { TEXT } from '@/shared/constants';
+import { TEXT, COLORS } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 
 // Convert English numbers to Arabic numerals
@@ -46,12 +46,12 @@ export default function PrayerExplanation({
         <View style={styles.arrowContainerTop}>
           <Svg width={30} height={12} viewBox="0 0 30 12">
             {/* Fill first */}
-            <Path d="M0 12 L12 3.5 Q15 1 18 3.5 L30 12 Z" fill="#251d45" />
+            <Path d="M0 12 L12 3.5 Q15 1 18 3.5 L30 12 Z" fill={COLORS.infoBox.background} />
             {/* Border stroke - only left and right edges, not bottom */}
             <Path
               d="M0 12 L12 3.5 Q15 1 18 3.5 L30 12"
               fill="none"
-              stroke="rgba(139, 92, 246, 0.3)"
+              stroke={COLORS.infoBox.border}
               strokeWidth={1}
               strokeLinecap="round"
             />
@@ -65,7 +65,7 @@ export default function PrayerExplanation({
         <View style={styles.infoHeader}>
           <View style={styles.iconWrapper}>
             <Svg width={13} height={13} viewBox="0 0 128 128">
-              <Path fill="#c4b5fd" d={ICON_PATHS[AlertIcon.INFO]} />
+              <Path fill={COLORS.infoBox.iconFill} d={ICON_PATHS[AlertIcon.INFO]} />
             </Svg>
           </View>
           <Text style={styles.infoTitle}>{prayerName}</Text>
@@ -83,12 +83,12 @@ export default function PrayerExplanation({
         <View style={styles.arrowContainerBottom}>
           <Svg width={30} height={12} viewBox="0 0 30 12">
             {/* Fill first */}
-            <Path d="M0 0 L12 8.5 Q15 11 18 8.5 L30 0 Z" fill="#251d45" />
+            <Path d="M0 0 L12 8.5 Q15 11 18 8.5 L30 0 Z" fill={COLORS.infoBox.background} />
             {/* Border stroke - only left and right edges, not top */}
             <Path
               d="M0 0 L12 8.5 Q15 11 18 8.5 L30 0"
               fill="none"
-              stroke="rgba(139, 92, 246, 0.3)"
+              stroke={COLORS.infoBox.border}
               strokeWidth={1}
               strokeLinecap="round"
             />
@@ -115,10 +115,10 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   infoBox: {
-    backgroundColor: '#251d45',
+    backgroundColor: COLORS.infoBox.background,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: 'rgba(139, 92, 246, 0.3)',
+    borderColor: COLORS.infoBox.border,
     minWidth: 300,
     padding: 18,
   },
@@ -132,24 +132,24 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     borderRadius: 8,
-    backgroundColor: 'rgba(139, 92, 246, 0.25)',
+    backgroundColor: COLORS.infoBox.iconBackground,
     alignItems: 'center',
     justifyContent: 'center',
   },
   infoTitle: {
-    color: '#ede9fe',
+    color: COLORS.infoBox.titleText,
     fontSize: TEXT.size,
     fontFamily: TEXT.family.medium,
   },
   infoExplanation: {
-    color: '#c4b5fd',
+    color: COLORS.infoBox.bodyText,
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
     lineHeight: 22,
     marginBottom: 14,
   },
   infoExplanationArabic: {
-    color: '#c4b5fd',
+    color: COLORS.infoBox.bodyText,
     fontSize: 15,
     fontFamily: TEXT.family.regular,
     textAlign: 'right',
