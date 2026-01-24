@@ -9,7 +9,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom as overlayAtomImport } from '@/stores/atoms/overlay';
-import { startCountdownOverlay, standardCountdownAtom, extraCountdownAtom } from '@/stores/countdown';
+import { startCountdownOverlay, getCountdownAtom } from '@/stores/countdown';
 import { getNextPrayer } from '@/stores/schedule';
 
 // Re-export for backward compatibility
@@ -36,8 +36,7 @@ const canShowOverlay = (type: ScheduleType): boolean => {
   if (!nextPrayer) return true; // All prayers passed, always allow
 
   // Check countdown - don't allow overlay if prayer is about to pass
-  const countdownAtom = type === ScheduleType.Standard ? standardCountdownAtom : extraCountdownAtom;
-  const timeLeft = store.get(countdownAtom).timeLeft;
+  const timeLeft = store.get(getCountdownAtom(type)).timeLeft;
   return timeLeft > 2;
 };
 

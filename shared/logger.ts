@@ -35,6 +35,18 @@ const createLogMethod = (level: LogLevel, fallbackKey: string) => {
   };
 };
 
+/**
+ * Application logger instance using Pino
+ *
+ * Logging is disabled in production and preview environments.
+ * All methods accept a message string and optional data object.
+ *
+ * @example
+ * logger.info('User action', { userId: 123 });
+ * logger.error('API request failed', { error, endpoint });
+ * logger.warn('Deprecated feature used');
+ * logger.debug('Debug info', { state });
+ */
 const logger = {
   info: createLogMethod('info', 'data'),
   error: createLogMethod('error', 'error'),
@@ -43,4 +55,6 @@ const logger = {
 };
 
 export default logger;
+
+// Re-exported from config for convenience
 export { isProd, isPreview };
