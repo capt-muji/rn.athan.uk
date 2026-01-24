@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-import Icon from '@/assets/icons/masjid.svg';
+import Icon from '@/assets/icons/svg/masjid.svg';
 import { COLORS, SHADOW } from '@/shared/constants';
 
 type MasjidProps = {

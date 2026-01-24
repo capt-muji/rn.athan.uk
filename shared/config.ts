@@ -1,5 +1,5 @@
 export const APP_CONFIG = {
-  isDev: process.env.EXPO_PUBLIC_ENV === 'local',
+  isDev: process.env.EXPO_PUBLIC_ENV !== 'prod' && process.env.EXPO_PUBLIC_ENV !== 'preview',
   env: process.env.EXPO_PUBLIC_ENV || 'local',
   apiKey: process.env.EXPO_PUBLIC_API_KEY,
   iosAppId: process.env.EXPO_PUBLIC_IOS_APP_ID,

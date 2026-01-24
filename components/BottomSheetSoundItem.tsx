@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 import { Pressable, StyleSheet, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import Icon from '@/components/Icon';
-import { useAnimationColor, useAnimationFill, useAnimationScale } from '@/hooks/useAnimation';
+import IconView from '@/components/Icon';
+import { useAnimationColor, useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, COLORS, SCREEN, STYLES, TEXT, SPACING, RADIUS } from '@/shared/constants';
-import { AlertIcon } from '@/shared/types';
+import { Icon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
 
@@ -35,7 +35,7 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
     fromColor: COLORS.text.secondary,
     toColor: COLORS.text.primary,
   });
-  const iconAnimation = useAnimationFill(isPlaying ? 1 : 0, {
+  const iconAnimation = useAnimationColor(isPlaying ? 1 : 0, {
     fromColor: COLORS.text.secondary,
     toColor: COLORS.text.primary,
   });
@@ -98,11 +98,7 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
         onPress={playSound}
         onPressIn={() => AnimScale.animate(0.9)}
         onPressOut={() => AnimScale.animate(1)}>
-        <Icon
-          type={isPlaying ? AlertIcon.PAUSE : AlertIcon.PLAY}
-          size={22}
-          animatedProps={iconAnimation.animatedProps}
-        />
+        <IconView type={isPlaying ? Icon.PAUSE : Icon.PLAY} size={22} animatedStyle={iconAnimation.style} />
       </AnimatedPressable>
     </AnimatedPressable>
   );
