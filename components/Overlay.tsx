@@ -147,14 +147,14 @@ export default function Overlay() {
 
       {/* Gradient background */}
       <LinearGradient
-        colors={['#110022', 'black']}
+        colors={[COLORS.gradient.overlay.start, COLORS.gradient.overlay.end]}
         style={[StyleSheet.absoluteFill, styles.gradientContainer]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
       />
 
       <Glow
-        color={COLORS.glows.overlay}
+        color={COLORS.glow.overlay}
         style={{
           top: -window.width / 1.25,
           left: -window.width / 2,
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   date: {
     position: 'absolute',
     pointerEvents: 'none',
-    color: COLORS.textSecondary,
+    color: COLORS.text.secondary,
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
@@ -188,10 +188,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: STYLES.prayer.height,
-    shadowColor: COLORS.standardActiveBackgroundShadow,
+    shadowColor: COLORS.shadow.standard,
   },
   activeBackground: {
-    backgroundColor: COLORS.activeBackground,
+    backgroundColor: COLORS.prayer.activeBackground,
   },
   gradientContainer: {
     zIndex: -1,
