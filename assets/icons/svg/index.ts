@@ -1,6 +1,7 @@
-
 import BellRingIcon from './bell-ring.svg';
 import BellSlashIcon from './bell-slash.svg';
+import CheckIcon from './check.svg';
+import CloseIcon from './close.svg';
 import InfoIcon from './info.svg';
 import PauseIcon from './pause.svg';
 import PlayIcon from './play.svg';
@@ -15,6 +16,8 @@ const ICONS: Record<Icon, typeof BellRingIcon> = {
   [Icon.PLAY]: PlayIcon,
   [Icon.PAUSE]: PauseIcon,
   [Icon.INFO]: InfoIcon,
+  [Icon.CHECK]: CheckIcon,
+  [Icon.CLOSE]: CloseIcon,
 };
 
 export default ICONS;
