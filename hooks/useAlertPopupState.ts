@@ -55,7 +55,7 @@ export const useAlertPopupState = (callbacks?: PopupCallbacks): UseAlertPopupSta
     timeoutRef.current = setTimeout(() => {
       callbacks?.onHide?.();
       setIsPopupActive(false);
-    }, ANIMATION.popupDuration);
+    }, ANIMATION.durationMedium);
   }, [callbacks, clearTimeouts]);
 
   // Cleanup on unmount

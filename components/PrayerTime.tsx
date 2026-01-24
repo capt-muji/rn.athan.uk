@@ -6,7 +6,7 @@ import Animated from 'react-native-reanimated';
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { COLORS, TEXT, SPACING } from '@/shared/constants';
+import { COLORS, TEXT, SPACING, ANIMATION } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
@@ -60,7 +60,7 @@ export default function PrayerTime({ type, index, isOverlay = false }: Props) {
   // Overlay-aware animation: bright when selected, return to natural state when closed
   useEffect(() => {
     const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimColor.animate(colorPos, { duration: 50 });
+    AnimColor.animate(colorPos, { duration: ANIMATION.durationVeryFast });
   }, [isSelectedForOverlay]);
 
   return (

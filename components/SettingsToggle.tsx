@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { Pressable, Text, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import { TEXT, STYLES, COLORS, SIZE, RADIUS, ANIMATION } from '@/shared/constants';
+import { TEXT, STYLES, COLORS, SIZE, RADIUS, ANIMATION, HIT_SLOP } from '@/shared/constants';
 
 interface SettingsToggleProps {
   label: string;
@@ -25,7 +25,7 @@ export default function SettingsToggle({ label, value, onToggle }: SettingsToggl
   }));
 
   return (
-    <Pressable style={styles.container} onPress={handlePress} hitSlop={10}>
+    <Pressable style={styles.container} onPress={handlePress} hitSlop={HIT_SLOP.md}>
       <Text style={styles.label}>{label}</Text>
       <View style={[styles.toggle, value && styles.toggleActive]}>
         <Animated.View style={[styles.toggleDot, toggleDotStyle]} />

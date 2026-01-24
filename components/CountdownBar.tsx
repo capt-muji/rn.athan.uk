@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useCountdownBar } from '@/hooks/useCountdownBar';
-import { ANIMATION, COLORS, RADIUS } from '@/shared/constants';
+import { ANIMATION, COLORS, RADIUS, SIZE } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { countdownBarColorAtom } from '@/stores/ui';
@@ -123,12 +123,15 @@ export default function CountdownBar({ type }: Props) {
 
         // Animate color state with 500ms transition (discrete: 0=blue, 1=red)
         colorValue.value = withTiming(progress > 10 ? 0 : 1, {
-          duration: 500,
+          duration: ANIMATION.durationMedium,
           easing: Easing.linear,
         });
 
         // Animate warning state with 500ms transition
-        warningValue.value = withTiming(progress <= 10 ? 1 : 0, { duration: 500, easing: Easing.linear });
+        warningValue.value = withTiming(progress <= 10 ? 1 : 0, {
+          duration: ANIMATION.durationMedium,
+          easing: Easing.linear,
+        });
       }
       prevProgress.current = progress;
     }
@@ -163,8 +166,8 @@ export default function CountdownBar({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 3,
-    width: 100,
+    height: SIZE.bar.xs,
+    width: SIZE.bar.width,
     borderRadius: RADIUS.xs,
     alignSelf: 'center',
     backgroundColor: COLORS.countdown.background,

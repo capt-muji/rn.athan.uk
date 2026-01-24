@@ -168,18 +168,34 @@ export const SCREEN = {
  * Use semantic names for consistent spacing across components
  */
 export const SPACING = {
+  /** Negative overlap (-1px) - arrow positioning for tooltips */
+  overlap: -1,
   /** Extra small spacing (4px) - tiny margins */
   xs: 4,
+  /** Quarter spacing (5px) - between xs and py */
+  quart: 5,
+  /** Small spacing (6px) - small vertical padding */
+  py: 6,
   /** Small spacing (8px) - small gaps, margins */
   sm: 8,
+  /** Gap spacing (10px) - common gap between elements */
+  gap: 10,
   /** Medium spacing (12px) - default padding, matches SCREEN.paddingHorizontal */
   md: 12,
+  /** Mid spacing (14px) - between md and lg */
+  mid: 14,
+  /** Popup spacing (15px) - popup/sheet padding */
+  popup: 15,
   /** Large spacing (16px) - countdown margins */
   lg: 16,
+  /** Secondary large spacing (18px) - between lg and xl */
+  lg2: 18,
   /** Extra large spacing (20px) - prayer padding */
   xl: 20,
   /** 2x Extra large spacing (24px) - modal padding */
   xxl: 24,
+  /** Header spacing (28px) - header/section spacing */
+  header: 28,
   /** 3x Extra large spacing (30px) - bottom sheet padding */
   xxxl: 30,
   /** Section spacing (50px) - large section margins */
@@ -265,6 +281,15 @@ export const SHADOW = {
  * Use for consistent sizing across the app
  */
 export const SIZE = {
+  /** Icon dimensions */
+  icon: {
+    /** Small icon (14px) - settings icon, music icon */
+    sm: 14,
+    /** Medium icon (20px) - alert icons, chevrons */
+    md: 20,
+    /** Large icon (22px) - play button */
+    lg: 22,
+  },
   /** Icon wrapper dimensions */
   iconWrapper: {
     /** Small icon wrapper (24px) */
@@ -283,24 +308,79 @@ export const SIZE = {
     /** Toggle dot translateX when active */
     translateX: 18,
   },
+  /** Dot dimensions (color preview circles) */
+  dot: {
+    /** Large dot (18px) */
+    lg: 18,
+  },
+  /** Bar dimensions */
+  bar: {
+    /** Extra small bar height (3px) */
+    xs: 3,
+    /** Small bar height (6px) */
+    sm: 6,
+    /** Default bar width (100px) */
+    width: 100,
+  },
+  /** Button dimensions */
+  button: {
+    /** Standard modal button width (80px) */
+    width: 80,
+    /** Standard modal button height (40px) */
+    height: 40,
+    /** Icon-only button width (43px) */
+    icon: 43,
+  },
+  /** Tooltip dimensions */
+  tooltip: {
+    /** Minimum width for tooltip/info boxes (300px) */
+    minWidth: 300,
+  },
+  /** Modal dimensions */
+  modal: {
+    /** Maximum modal width (500px) */
+    maxWidth: 500,
+  },
+  /** Navigation dimensions */
+  nav: {
+    /** Bottom offset for navigation elements (25px) */
+    bottomOffset: 25,
+  },
+  /** Loading spinner size (unified across platforms) */
+  activityIndicator: 48,
   /** Navigation dot diameter */
   navigationDot: 6,
-  /** Masjid icon dimensions */
-  masjid: {
-    width: 45,
-    height: 45,
-  },
-  /** Settings button size */
-  settingsButton: 43,
-  /** Button heights */
-  buttonHeight: {
-    /** Small button height */
-    sm: 24,
-    /** Medium button height */
-    md: 40,
-  },
   /** Maximum screen content width */
   screenMaxWidth: 700,
+} as const;
+
+// =============================================================================
+// LAYOUT
+// =============================================================================
+
+/**
+ * Layout constants for responsive dimensions
+ * Use percentage-based widths for flexible layouts
+ */
+export const LAYOUT = {
+  /** Modal layout */
+  modal: {
+    /** Modal width as percentage */
+    width: '85%',
+  },
+} as const;
+
+// =============================================================================
+// GLOW
+// =============================================================================
+
+/**
+ * Glow effect configuration
+ * Used for calculating glow dimensions relative to screen size
+ */
+export const GLOW = {
+  /** Size multiplier for glow relative to screen width */
+  sizeFactor: 1.5,
 } as const;
 
 // =============================================================================
@@ -319,6 +399,42 @@ export const PLATFORM = {
     /** Navigation bar bottom padding */
     navigationBottomPadding: 40,
   },
+} as const;
+
+// =============================================================================
+// HIT SLOP
+// =============================================================================
+
+/**
+ * Touch target expansion for pressable elements
+ * Improves tap accuracy without changing visual size
+ */
+export const HIT_SLOP = {
+  /** Small hit area expansion (8px) */
+  sm: 8,
+  /** Standard hit area expansion (10px) */
+  md: 10,
+  /** Large hit area expansion (15px) */
+  lg: 15,
+} as const;
+
+// =============================================================================
+// ELEVATION (Android shadows)
+// =============================================================================
+
+/**
+ * Android elevation values for shadow depth
+ * Higher values create more prominent shadows
+ */
+export const ELEVATION = {
+  /** No elevation - element sits flat */
+  none: 0,
+  /** Subtle elevation (5) - settings button */
+  subtle: 5,
+  /** Standard elevation (15) - popups, sheets */
+  standard: 15,
+  /** Maximum elevation (25) - modals */
+  maximum: 25,
 } as const;
 
 // =============================================================================
@@ -537,14 +653,20 @@ export const COLORS = {
  * Durations for different animation speeds, delays for cascade effects, debounce intervals
  */
 export const ANIMATION = {
-  /** Standard animation duration (fast transitions) in milliseconds */
+  /** Very fast animation (50ms) - quick color transitions */
+  durationVeryFast: 50,
+  /** Fast animation (75ms) - alert popup fade */
+  durationFast: 75,
+  /** Fade animation (150ms) - overlay opacity */
+  durationFade: 150,
+  /** Standard animation duration (200ms) - fast transitions */
   duration: 200,
-  /** Slow animation duration for deliberate movements */
+  /** Medium animation (500ms) - state changes, color interpolation */
+  durationMedium: 500,
+  /** Slow animation duration (1000ms) - deliberate movements */
   durationSlow: 1000,
   /** Delay between consecutive prayer animations during cascade effect */
   cascadeDelay: 150,
-  /** Duration for modal/popup open/close animations */
-  popupDuration: 500,
   /** Debounce interval for rapid user interactions */
   debounce: 450,
 };
@@ -593,14 +715,6 @@ export const STYLES = {
     border: {
       /** Border radius for prayer row containers */
       borderRadius: 8,
-    },
-    shadow: {
-      /** Shadow offset for active prayer background elevation */
-      shadowOffset: { width: 1, height: 10 },
-      /** Shadow opacity for active prayer background */
-      shadowOpacity: 0.5,
-      /** Shadow blur radius for active prayer background */
-      shadowRadius: 10,
     },
   },
 };

@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, View, Platform } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import Navigation from '@/app/Navigation';
 import Error from '@/components/Error';
@@ -9,6 +9,7 @@ import Overlay from '@/components/Overlay';
 import { initializeListeners } from '@/device/listeners';
 import { openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
+import { COLORS, SIZE } from '@/shared/constants';
 import { initializeNotifications } from '@/shared/notifications';
 import { refreshNotifications } from '@/stores/notifications';
 import { syncLoadable } from '@/stores/sync';
@@ -42,7 +43,7 @@ export default function Index() {
   if (state === 'loading') {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size={Platform.select({ ios: 48, android: 32 })} color="#8d73ff" />
+        <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
       </View>
     );
   }

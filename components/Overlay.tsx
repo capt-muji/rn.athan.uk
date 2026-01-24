@@ -20,6 +20,8 @@ import {
   STYLES,
   COLORS,
   TEXT,
+  SHADOW,
+  SPACING,
   EXTRAS_ENGLISH,
   EXTRAS_EXPLANATIONS,
   EXTRAS_EXPLANATIONS_ARABIC,
@@ -90,7 +92,7 @@ export default function Overlay() {
       (Platform.OS === 'android' ? insets.top : 0) +
       overlay.selectedPrayerIndex * STYLES.prayer.height +
       STYLES.prayer.height +
-      8,
+      SPACING.sm,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
   };
@@ -102,7 +104,7 @@ export default function Overlay() {
       (listMeasurements?.pageY ?? 0) -
       (Platform.OS === 'android' ? insets.top : 0) -
       overlay.selectedPrayerIndex * STYLES.prayer.height +
-      8,
+      SPACING.sm,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
   };
@@ -184,7 +186,7 @@ const styles = StyleSheet.create({
   },
   prayer: {
     ...STYLES.prayer.border,
-    ...STYLES.prayer.shadow,
+    ...SHADOW.prayer,
     position: 'absolute',
     width: '100%',
     height: STYLES.prayer.height,

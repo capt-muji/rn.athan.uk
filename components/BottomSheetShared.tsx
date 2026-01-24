@@ -1,7 +1,7 @@
 import { BottomSheetBackdrop, BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import { StyleSheet, View } from 'react-native';
 
-import { COLORS, RADIUS } from '@/shared/constants';
+import { COLORS, RADIUS, SPACING } from '@/shared/constants';
 
 /**
  * Shared background component for bottom sheets
@@ -41,7 +41,7 @@ export const renderBackdrop = (props: BottomSheetBackdropProps) => (
  * Includes modal padding, container, indicator, backdrop, and background styles
  */
 export const bottomSheetStyles = StyleSheet.create({
-  modal: { paddingTop: 15 },
+  modal: { paddingTop: SPACING.popup },
   container: { flex: 1 },
   indicator: { backgroundColor: COLORS.text.secondary },
   backdrop: { backgroundColor: COLORS.surface.backdrop },

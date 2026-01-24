@@ -9,7 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
-import { TEXT, COLORS, SPACING, RADIUS } from '@/shared/constants';
+import { TEXT, COLORS, SPACING, RADIUS, ANIMATION } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 
@@ -26,13 +26,13 @@ export default function PrayerAgo({ type }: Props) {
 
   // Animate color transition with 500ms
   isRecentValue.value = withTiming(minutesElapsed <= 5 ? 1 : 0, {
-    duration: 500,
+    duration: ANIMATION.durationMedium,
     easing: Easing.linear,
   });
 
   // Fade out when overlay opens
   const prayerAgoOpacity = useAnimatedStyle(() => ({
-    opacity: withTiming(overlay.isOn ? 0 : 1, { duration: 150 }),
+    opacity: withTiming(overlay.isOn ? 0 : 1, { duration: ANIMATION.durationFade }),
   }));
 
   // Smooth color transition
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
     paddingHorizontal: SPACING.md,
-    paddingVertical: 6,
+    paddingVertical: SPACING.py,
     borderRadius: RADIUS.pill,
     overflow: 'hidden',
     alignSelf: 'center',

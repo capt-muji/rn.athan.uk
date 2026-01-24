@@ -2,7 +2,7 @@ import { StyleSheet, View, ViewStyle, Text } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import ICON_PATHS from '@/assets/icons/icons';
-import { TEXT, COLORS, SIZE, RADIUS } from '@/shared/constants';
+import { TEXT, COLORS, SIZE, RADIUS, SPACING } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 
 // Convert English numbers to Arabic numerals
@@ -106,12 +106,12 @@ const styles = StyleSheet.create({
   },
   arrowContainerTop: {
     alignItems: 'center',
-    marginBottom: -1,
+    marginBottom: SPACING.overlap,
     zIndex: 1,
   },
   arrowContainerBottom: {
     alignItems: 'center',
-    marginTop: -1,
+    marginTop: SPACING.overlap,
     zIndex: 1,
   },
   infoBox: {
@@ -119,14 +119,14 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.md,
     borderWidth: 1,
     borderColor: COLORS.surface.elevatedBorder,
-    minWidth: 300,
-    padding: 18,
+    minWidth: SIZE.tooltip.minWidth,
+    padding: SPACING.lg2,
   },
   infoHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 14,
-    gap: 10,
+    marginBottom: SPACING.mid,
+    gap: SPACING.gap,
   },
   iconWrapper: {
     width: SIZE.iconWrapper.md,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
     lineHeight: TEXT.lineHeight.default,
-    marginBottom: 14,
+    marginBottom: SPACING.mid,
   },
   infoExplanationArabic: {
     color: COLORS.icon.primary,
