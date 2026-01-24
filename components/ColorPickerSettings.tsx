@@ -137,7 +137,7 @@ export default function ColorPickerSettings() {
                 </Pressable>
               </View>
               <Text style={styles.modalTitle}>Select Color</Text>
-              <View style={styles.headerSide}>
+              <View style={[styles.headerSide, styles.headerSideRight]}>
                 <Pressable onPress={handleDone} hitSlop={10} style={styles.saveButton}>
                   <Text style={styles.saveText}>Save</Text>
                 </Pressable>
@@ -257,6 +257,9 @@ const styles = StyleSheet.create({
   headerSide: {
     width: 70,
   },
+  headerSideRight: {
+    alignItems: 'flex-end',
+  },
   modalTitle: {
     color: 'white',
     fontFamily: TEXT.family.medium,
@@ -265,21 +268,22 @@ const styles = StyleSheet.create({
   cancelText: {
     color: '#a0c8ff89',
     fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
+    fontSize: TEXT.sizeSmall,
   },
   saveText: {
-    color: '#fffeff',
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.size,
+    color: '#cbabff',
+    fontFamily: TEXT.family.regular,
+    fontSize: TEXT.sizeSmall,
   },
   saveButton: {
-    backgroundColor: '#5015b5',
+    backgroundColor: '#592e9d80',
     borderWidth: 1,
-    borderColor: '#672bcf',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 8,
+    borderColor: '#6a41ab',
+    height: 32,
+    width: 60,
+    borderRadius: 16,
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
   // --- Color Picker ---
