@@ -10,7 +10,7 @@ import { useAlertPopupState } from '@/hooks/useAlertPopupState';
 import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { COLORS, TEXT, STYLES, RADIUS, SHADOW } from '@/shared/constants';
+import { COLORS, TEXT, STYLES, RADIUS, SHADOW, SPACING, SIZE, ANIMATION, ELEVATION } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
@@ -97,7 +97,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Update fill color based on selection state
   useEffect(() => {
     const colorPos = isSelectedForOverlay || Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
-    AnimFill.animate(colorPos, { duration: 50 });
+    AnimFill.animate(colorPos, { duration: ANIMATION.durationVeryFast });
   }, [isSelectedForOverlay, isPopupActive, Prayer.isOverlay]);
 
   // =============================================================================
@@ -182,12 +182,12 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
         onPressOut={() => AnimScale.animate(1)}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
-          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={20} animatedProps={AnimFill.animatedProps} />
+          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={SIZE.icon.md} animatedProps={AnimFill.animatedProps} />
         </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, computedStylePopup, AnimOpacity.style, AnimBounce.style]}>
-        <Icon type={ALERT_CONFIGS[popupIconIndex].icon} size={20} color={COLORS.text.primary} />
+        <Icon type={ALERT_CONFIGS[popupIconIndex].icon} size={SIZE.icon.md} color={COLORS.text.primary} />
         <Text style={styles.label}>{ALERT_CONFIGS[popupIconIndex].label}</Text>
       </Animated.View>
     </View>
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     paddingRight: STYLES.prayer.padding.right,
-    paddingLeft: 13,
+    paddingLeft: SPACING.mid - 1,
     justifyContent: 'center',
   },
   popup: {
@@ -210,13 +210,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     right: '100%',
     borderRadius: RADIUS.rounded,
-    paddingVertical: 15,
-    paddingHorizontal: 30,
+    paddingVertical: SPACING.popup,
+    paddingHorizontal: SPACING.xxxl,
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 10,
-    gap: 15,
-    elevation: 15,
+    marginRight: SPACING.gap,
+    gap: SPACING.popup,
+    elevation: ELEVATION.standard,
   },
   label: {
     fontSize: TEXT.size,
