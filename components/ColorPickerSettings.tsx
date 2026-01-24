@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable, Modal } from 'react-native';
 import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } from 'reanimated-color-picker';
 
-import { TEXT, STYLES, COLORS, SPACING, RADIUS, SHADOW, SIZE } from '@/shared/constants';
+import { TEXT, STYLES, COLORS, SPACING, RADIUS, SHADOW, SIZE, ELEVATION, HIT_SLOP, PLATFORM } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
@@ -112,11 +112,11 @@ export default function ColorPickerSettings() {
 
   return (
     <>
-      <Pressable style={[styles.container, { opacity }]} onPress={handlePress} hitSlop={10}>
+      <Pressable style={[styles.container, { opacity }]} onPress={handlePress} hitSlop={HIT_SLOP.md}>
         <Text style={[styles.label, isDisabled && styles.labelDisabled]}>Countdown bar color</Text>
         <View style={styles.rightContainer}>
           {isCustomColor && (
-            <Pressable onPress={handleReset} hitSlop={8} style={styles.resetButton}>
+            <Pressable onPress={handleReset} hitSlop={HIT_SLOP.sm} style={styles.resetButton}>
               <Text style={styles.resetText}>Reset</Text>
             </Pressable>
           )}
@@ -132,13 +132,13 @@ export default function ColorPickerSettings() {
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
               <View style={styles.headerSide}>
-                <Pressable onPress={handleDismiss} hitSlop={10} style={styles.cancelButton}>
+                <Pressable onPress={handleDismiss} hitSlop={HIT_SLOP.md} style={styles.cancelButton}>
                   <Text style={styles.cancelText}>Cancel</Text>
                 </Pressable>
               </View>
               <Text style={styles.modalTitle}>Select Color</Text>
               <View style={[styles.headerSide, styles.headerSideRight]}>
-                <Pressable onPress={handleDone} hitSlop={10} style={styles.saveButton}>
+                <Pressable onPress={handleDone} hitSlop={HIT_SLOP.md} style={styles.saveButton}>
                   <Text style={styles.saveText}>Save</Text>
                 </Pressable>
               </View>
@@ -193,11 +193,11 @@ const styles = StyleSheet.create({
   rightContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: SPACING.md,
   },
   resetButton: {
-    paddingVertical: 4,
-    paddingHorizontal: 8,
+    paddingVertical: SPACING.xs,
+    paddingHorizontal: SPACING.sm,
   },
   resetText: {
     color: COLORS.text.secondary,
@@ -214,13 +214,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   colorPreview: {
-    width: 18,
-    height: 18,
-    borderRadius: 9,
+    width: SIZE.dot.lg,
+    height: SIZE.dot.lg,
+    borderRadius: SIZE.dot.lg / 2,
   },
   chevron: {
     color: COLORS.icon.primary,
-    fontSize: 20,
+    fontSize: SIZE.icon.md,
     fontWeight: '300',
   },
 
@@ -233,15 +233,15 @@ const styles = StyleSheet.create({
   modalContent: {
     borderTopLeftRadius: RADIUS.sheet,
     borderTopRightRadius: RADIUS.sheet,
-    paddingBottom: 40,
-    paddingTop: 10,
+    paddingBottom: PLATFORM.android.navigationBottomPadding,
+    paddingTop: SPACING.gap,
     borderWidth: 1,
     borderBottomWidth: 0,
     backgroundColor: COLORS.surface.sheet,
     borderColor: COLORS.surface.sheetBorder,
     shadowColor: COLORS.modal.shadow,
     ...SHADOW.colorPickerModal,
-    elevation: 15,
+    elevation: ELEVATION.standard,
   },
 
   // --- Modal Header ---
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.xxl,
   },
   headerSide: {
-    width: 80,
+    width: SIZE.button.width,
   },
   headerSideRight: {
     alignItems: 'flex-end',
@@ -265,8 +265,8 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     backgroundColor: COLORS.icon.background,
-    height: SIZE.buttonHeight.md,
-    width: 80,
+    height: SIZE.button.height,
+    width: SIZE.button.width,
     borderRadius: RADIUS.md,
     alignItems: 'center',
     justifyContent: 'center',
@@ -285,8 +285,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.modal.saveBackground,
     borderWidth: 1,
     borderColor: COLORS.modal.saveBorder,
-    height: SIZE.buttonHeight.md,
-    width: 80,
+    height: SIZE.button.height,
+    width: SIZE.button.width,
     borderRadius: RADIUS.md,
     alignItems: 'center',
     justifyContent: 'center',
@@ -302,16 +302,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   previewBar: {
-    height: 6,
+    height: SIZE.bar.sm,
     width: '50%',
     maxWidth: 350,
     backgroundColor: COLORS.colorPicker.buttonBackground,
-    borderRadius: 3,
+    borderRadius: SIZE.bar.sm / 2,
     overflow: 'hidden',
   },
   previewProgress: {
     height: '100%',
-    borderRadius: 3,
+    borderRadius: SIZE.bar.sm / 2,
   },
   panel: {
     marginBottom: SPACING.xl,
@@ -322,8 +322,8 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.md,
   },
   swatches: {
-    marginTop: 10,
-    paddingBottom: 10,
+    marginTop: SPACING.gap,
+    paddingBottom: SPACING.gap,
     flexDirection: 'row',
     justifyContent: 'center',
     gap: SPACING.sm,

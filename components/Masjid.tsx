@@ -1,14 +1,14 @@
 import { StyleSheet, View } from 'react-native';
 
 import Icon from '@/assets/icons/masjid.svg';
-import { COLORS, SIZE, SHADOW } from '@/shared/constants';
+import { COLORS, SHADOW } from '@/shared/constants';
 
 type MasjidProps = {
   width?: number;
   height?: number;
 };
 
-export default function Masjid({ height = SIZE.masjid.height, width = SIZE.masjid.width }: MasjidProps) {
+export default function Masjid({ height = 45, width = 45 }: MasjidProps) {
   return (
     <View style={styles.container}>
       <Icon style={styles.icon} height={height} width={width} />

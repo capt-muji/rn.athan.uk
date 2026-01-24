@@ -7,7 +7,7 @@ import Screen from '@/app/Screen';
 import BackgroundGradients from '@/components/BackgroundGradients';
 import SettingsButton from '@/components/SettingsButton';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
-import { ANIMATION, COLORS, SIZE, PLATFORM } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE, PLATFORM, SPACING } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
 export default function Navigation() {
@@ -54,15 +54,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'absolute',
     alignSelf: 'center',
-    gap: 8,
+    gap: SPACING.sm,
   },
   buttonWrapper: {
     position: 'absolute',
-    bottom: 25, // Position above dots
+    bottom: SIZE.nav.bottomOffset, // Position above dots
   },
   dotsRow: {
     flexDirection: 'row',
-    gap: 8,
+    gap: SPACING.sm,
   },
   dot: {
     width: SIZE.navigationDot,

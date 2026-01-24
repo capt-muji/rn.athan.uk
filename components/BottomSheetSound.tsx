@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: SPACING.xl,
     paddingHorizontal: SPACING.xxxl,
-    gap: 10,
+    gap: SPACING.gap,
   },
   iconWrapper: {
     width: SIZE.iconWrapper.md,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   musicIcon: {
     color: COLORS.icon.primary,
-    fontSize: 14,
+    fontSize: SIZE.icon.sm,
   },
   title: {
     color: COLORS.text.primary,
