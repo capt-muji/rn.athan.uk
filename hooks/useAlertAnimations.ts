@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationColor } from '@/hooks/useAnimation';
+import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimation';
 import { COLORS, ANIMATION } from '@/shared/constants';
 
 interface UseAlertAnimationsParams {
@@ -26,7 +26,7 @@ export const useAlertAnimations = ({ initialColorPos }: UseAlertAnimationsParams
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationColor(initialColorPos, {
+  const AnimFill = useAnimationFill(initialColorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
   });

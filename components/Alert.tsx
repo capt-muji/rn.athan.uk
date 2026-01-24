@@ -3,7 +3,9 @@ import { useAtomValue } from 'jotai';
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
+import Svg, { Path } from 'react-native-svg';
 
+import ALERT_ICONS from '@/assets/icons/svg/alerts';
 import IconView from '@/components/Icon';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
 import { useAlertPopupState } from '@/hooks/useAlertPopupState';
@@ -17,7 +19,11 @@ import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom } from '@/stores/overlay';
 import { refreshUIAtom } from '@/stores/ui';
 
-const ALERT_CONFIGS = [
+const AnimatedPath = Animated.createAnimatedComponent(Path);
+
+type AlertIconType = Icon.BELL_RING | Icon.BELL_SLASH | Icon.SPEAKER;
+
+const ALERT_CONFIGS: { icon: AlertIconType; label: string; type: AlertType }[] = [
   { icon: Icon.BELL_SLASH, label: 'Off', type: AlertType.Off },
   { icon: Icon.BELL_RING, label: 'Silent', type: AlertType.Silent },
   { icon: Icon.SPEAKER, label: 'Sound', type: AlertType.Sound },
@@ -182,7 +188,9 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
         onPressOut={() => AnimScale.animate(1)}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
-          <IconView type={ALERT_CONFIGS[iconIndex].icon} size={SIZE.icon.md} animatedStyle={AnimFill.style} />
+          <Svg viewBox="0 0 256 256" width={SIZE.icon.md} height={SIZE.icon.md}>
+            <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={AnimFill.animatedProps} />
+          </Svg>
         </Animated.View>
       </Pressable>
 

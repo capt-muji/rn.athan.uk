@@ -43,6 +43,7 @@ export const useAlertPopupState = (callbacks?: PopupCallbacks): UseAlertPopupSta
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
+    setIsPopupActive(false);
   }, []);
 
   const showPopup = useCallback(() => {
