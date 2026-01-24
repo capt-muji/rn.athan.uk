@@ -170,6 +170,22 @@ export const COLORS = {
     /** Purple glow color for bottom sheet components */
     bottomsheet: '#8000ff',
   },
+
+  /** Info box and icon wrapper styles (used in PrayerExplanation, BottomSheetSettings) */
+  infoBox: {
+    /** Dark indigo background */
+    background: 'rgba(20, 5, 61, 1)',
+    /** Faint indigo border */
+    border: 'rgba(60, 70, 178, 0.35)',
+    /** Icon wrapper background */
+    iconBackground: 'rgba(99, 102, 241, 0.2)',
+    /** Icon fill color */
+    iconFill: 'rgba(165, 180, 252, 1)',
+    /** Title text color */
+    titleText: 'rgba(224, 231, 255, 1)',
+    /** Body text color */
+    bodyText: 'rgba(165, 180, 252, 1)',
+  },
 };
 
 // =============================================================================
