@@ -44,10 +44,10 @@ export const ISTIJABA_INDEX = 4;
  */
 export const EXTRAS_EXPLANATIONS = [
   'Halfway between Magrib and Fajr',
-  '5 mins after the last third of the night begins',
-  '40 mins before Fajr',
+  'Start of the last third of the night',
+  '20 mins before Fajr',
   '20 mins after Sunrise',
-  '59 mins before Magrib (Fridays only)',
+  '1 hour before Magrib (Fridays only)',
 ] as const;
 
 // =============================================================================
@@ -76,10 +76,10 @@ export const NOTIFICATION_REFRESH_HOURS = 12;
  * Used in shared/time.ts adjustTime() calculations
  */
 export const TIME_ADJUSTMENTS = {
-  lastThird: 5, // minutes after last third of the night begins
-  suhoor: -40, // minutes before Fajr
+  lastThird: 0, // start of the last third of the night
+  suhoor: -20, // minutes before Fajr
   duha: 20, // minutes after Sunrise
-  istijaba: -59, // minutes before Magrib (Fridays only)
+  istijaba: -60, // 1 hour before Magrib (Fridays only)
 };
 
 /**
@@ -167,16 +167,14 @@ export const COLORS = {
   glows: {
     /** Purple glow color for overlay component */
     overlay: '#8000ff',
-    /** Purple glow color for bottom sheet components */
-    bottomsheet: '#8000ff',
   },
 
   /** Info box and icon wrapper styles (used in PrayerExplanation, BottomSheetSettings) */
   infoBox: {
-    /** Dark indigo background */
-    background: 'rgba(20, 5, 61, 1)',
-    /** Faint indigo border */
-    border: 'rgba(60, 70, 178, 0.35)',
+    /** Near-black background with transparency */
+    background: 'rgba(18, 6, 42, 1)',
+    /** Dark purple border */
+    border: 'rgba(45, 22, 106, 0.29)',
     /** Icon wrapper background */
     iconBackground: 'rgba(99, 102, 241, 0.2)',
     /** Icon fill color */
@@ -275,8 +273,8 @@ export const STYLES = {
  */
 export const EXTRAS_EXPLANATIONS_ARABIC = [
   'نصف الليل بين المغرب والفجر',
-  'بعد 5 دقائق من بداية الثلث الأخير من الليل',
-  '40 دقيقة قبل الفجر',
+  'عند بداية الثلث الأخير من الليل',
+  '20 دقيقة قبل الفجر',
   '20 دقيقة بعد الشروق',
-  '59 دقيقة قبل المغرب (الجمعة فقط)',
+  'ساعة قبل المغرب (الجمعة فقط)',
 ] as const;
