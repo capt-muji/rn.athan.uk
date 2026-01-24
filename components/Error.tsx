@@ -2,7 +2,7 @@ import * as Updates from 'expo-updates';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import Masjid from '@/components/Masjid';
-import { TEXT } from '@/shared/constants';
+import { COLORS, TEXT } from '@/shared/constants';
 import * as Database from '@/stores/database';
 
 export default function Error() {
@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   heading: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontSize: 28,
     marginBottom: 18,
     fontFamily: TEXT.family.medium,
   },
   subtext: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontSize: TEXT.size,
     fontFamily: TEXT.family.regular,
   },
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 50,
     flexDirection: 'row',
-    backgroundColor: '#030005',
+    backgroundColor: COLORS.error.buttonBackground,
     alignItems: 'center',
     paddingHorizontal: 30,
     paddingVertical: 18,
