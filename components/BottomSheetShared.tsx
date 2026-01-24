@@ -15,8 +15,8 @@ export const renderSheetBackground = () => (
       {
         borderWidth: 1,
         borderBottomWidth: 0,
-        backgroundColor: '#0b183a',
-        borderColor: '#0f1d46',
+        backgroundColor: COLORS.surface.sheet,
+        borderColor: COLORS.surface.sheetBorder,
       },
     ]}
   />
@@ -43,7 +43,7 @@ export const renderBackdrop = (props: BottomSheetBackdropProps) => (
 export const bottomSheetStyles = StyleSheet.create({
   modal: { paddingTop: 15 },
   container: { flex: 1 },
-  indicator: { backgroundColor: COLORS.textSecondary },
-  backdrop: { backgroundColor: '#000116' },
+  indicator: { backgroundColor: COLORS.text.secondary },
+  backdrop: { backgroundColor: COLORS.surface.backdrop },
   sheetBackground: { borderTopLeftRadius: 24, borderTopRightRadius: 24 },
 });
