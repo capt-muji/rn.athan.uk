@@ -4,6 +4,8 @@ import { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable, Modal } from 'react-native';
 import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } from 'reanimated-color-picker';
 
+import CheckIcon from '@/assets/icons/svg/check.svg';
+import CloseIcon from '@/assets/icons/svg/close.svg';
 import { TEXT, STYLES, COLORS, SPACING, RADIUS, SHADOW, SIZE, ELEVATION, HIT_SLOP, PLATFORM } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
@@ -133,13 +135,13 @@ export default function ColorPickerSettings() {
             <View style={styles.modalHeader}>
               <View style={styles.headerSide}>
                 <Pressable onPress={handleDismiss} hitSlop={HIT_SLOP.md} style={styles.cancelButton}>
-                  <Text style={styles.cancelText}>Cancel</Text>
+                  <CloseIcon width={SIZE.icon.md} height={SIZE.icon.md} color={COLORS.icon.primary} />
                 </Pressable>
               </View>
               <Text style={styles.modalTitle}>Select Color</Text>
               <View style={[styles.headerSide, styles.headerSideRight]}>
                 <Pressable onPress={handleDone} hitSlop={HIT_SLOP.md} style={styles.saveButton}>
-                  <Text style={styles.saveText}>Save</Text>
+                  <CheckIcon width={SIZE.icon.md} height={SIZE.icon.md} color={COLORS.modal.saveText} />
                 </Pressable>
               </View>
             </View>
@@ -253,7 +255,7 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.xxl,
   },
   headerSide: {
-    width: SIZE.button.width,
+    width: SIZE.button.icon,
   },
   headerSideRight: {
     alignItems: 'flex-end',
@@ -265,29 +267,19 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     backgroundColor: COLORS.icon.background,
-    height: SIZE.button.height,
-    width: SIZE.button.width,
-    borderRadius: RADIUS.md,
+    height: SIZE.button.icon,
+    width: SIZE.button.icon,
+    borderRadius: SIZE.button.icon / 2,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  cancelText: {
-    color: COLORS.icon.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeSmall,
-  },
-  saveText: {
-    color: COLORS.modal.saveText,
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.sizeSmall,
   },
   saveButton: {
     backgroundColor: COLORS.modal.saveBackground,
     borderWidth: 1,
     borderColor: COLORS.modal.saveBorder,
-    height: SIZE.button.height,
-    width: SIZE.button.width,
-    borderRadius: RADIUS.md,
+    height: SIZE.button.icon,
+    width: SIZE.button.icon,
+    borderRadius: SIZE.button.icon / 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -325,7 +317,6 @@ const styles = StyleSheet.create({
     marginTop: SPACING.gap,
     paddingBottom: SPACING.gap,
     flexDirection: 'row',
-    justifyContent: 'center',
-    gap: SPACING.sm,
+    justifyContent: 'space-between',
   },
 });
