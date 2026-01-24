@@ -3,7 +3,7 @@ import Reanimated from 'react-native-reanimated';
 import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { OVERLAY } from '@/shared/constants';
+import { OVERLAY, GLOW } from '@/shared/constants';
 
 const AnimatedSvg = Reanimated.createAnimatedComponent(Svg);
 
@@ -16,7 +16,7 @@ interface GlowProps {
 
 export default function Glow({ color, style, baseOpacity = 0.5, size }: GlowProps) {
   const window = useWindowDimensions();
-  const computedSize = size ?? window.width * 1.5;
+  const computedSize = size ?? window.width * GLOW.sizeFactor;
 
   return (
     <AnimatedSvg

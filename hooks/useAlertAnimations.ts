@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimation';
-import { COLORS } from '@/shared/constants';
+import { COLORS, ANIMATION } from '@/shared/constants';
 
 interface UseAlertAnimationsParams {
   /** Initial position for fill animation (0 = inactive, 1 = active) */
@@ -37,7 +37,7 @@ export const useAlertAnimations = ({ initialColorPos }: UseAlertAnimationsParams
    */
   const resetPopupAnimations = useCallback(() => {
     AnimBounce.reset(0);
-    AnimOpacity.animate(1, { duration: 75 });
+    AnimOpacity.animate(1, { duration: ANIMATION.durationFast });
     AnimBounce.animate(1);
   }, [AnimBounce, AnimOpacity]);
 
@@ -45,7 +45,7 @@ export const useAlertAnimations = ({ initialColorPos }: UseAlertAnimationsParams
    * Hide the popup by animating opacity to 0
    */
   const hidePopup = useCallback(() => {
-    AnimOpacity.animate(0, { duration: 75 });
+    AnimOpacity.animate(0, { duration: ANIMATION.durationFast });
   }, [AnimOpacity]);
 
   return {

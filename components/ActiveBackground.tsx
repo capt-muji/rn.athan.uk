@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { COLORS, STYLES, RADIUS } from '@/shared/constants';
+import { COLORS, STYLES, RADIUS, SHADOW } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
 interface Props {
@@ -55,7 +55,7 @@ export default function ActiveBackground({ type }: Props) {
 
 const styles = StyleSheet.create({
   background: {
-    ...STYLES.prayer.shadow,
+    ...SHADOW.prayer,
     position: 'absolute',
     width: '100%',
     height: STYLES.prayer.height,

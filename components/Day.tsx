@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import Masjid from '@/components/Masjid';
-import { COLORS, SCREEN, TEXT } from '@/shared/constants';
+import { COLORS, SCREEN, TEXT, SPACING } from '@/shared/constants';
 import { formatDateLong, formatHijriDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardDisplayDateAtom, extraDisplayDateAtom } from '@/stores/schedule';
@@ -53,7 +53,7 @@ export default function Day({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 28,
+    marginBottom: SPACING.header,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     color: COLORS.text.secondary,
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
-    marginBottom: 5,
+    marginBottom: SPACING.quart,
   },
   date: {
     fontFamily: TEXT.family.regular,

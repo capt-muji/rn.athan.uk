@@ -9,7 +9,7 @@ import PrayerTime from '@/components/PrayerTime';
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { TEXT, COLORS, STYLES, ISTIJABA_INDEX } from '@/shared/constants';
+import { TEXT, COLORS, STYLES, ISTIJABA_INDEX, ANIMATION } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
@@ -77,7 +77,7 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   // Overlay-aware animation: bright when selected, return to natural state when closed
   useEffect(() => {
     const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimColor.animate(colorPos, { duration: 50 });
+    AnimColor.animate(colorPos, { duration: ANIMATION.durationVeryFast });
   }, [isSelectedForOverlay]);
 
   return (

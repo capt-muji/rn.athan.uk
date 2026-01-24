@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   heading: {
     color: COLORS.text.primary,
     fontSize: TEXT.sizeHeading,
-    marginBottom: 18,
+    marginBottom: SPACING.lg2,
     fontFamily: TEXT.family.medium,
   },
   subtext: {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
   },
   first: {
-    marginBottom: 4,
+    marginBottom: SPACING.xs,
   },
   last: {
     marginBottom: SPACING.section,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.error.buttonBackground,
     alignItems: 'center',
     paddingHorizontal: SPACING.xxxl,
-    paddingVertical: 18,
+    paddingVertical: SPACING.lg2,
     borderRadius: RADIUS.sm,
   },
 });

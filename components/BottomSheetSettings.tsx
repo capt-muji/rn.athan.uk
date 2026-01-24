@@ -9,7 +9,7 @@ import SettingsIcon from '@/assets/icons/settings.svg';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import ColorPickerSettings from '@/components/ColorPickerSettings';
 import SettingsToggle from '@/components/SettingsToggle';
-import { TEXT, STYLES, COLORS, SPACING, SIZE, RADIUS } from '@/shared/constants';
+import { TEXT, STYLES, COLORS, SPACING, SIZE, RADIUS, HIT_SLOP } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
   showSecondsAtom,
@@ -63,7 +63,7 @@ export default function BottomSheetSettings() {
         <Pressable
           style={styles.listItem}
           onPress={handleAthanPress}
-          hitSlop={10}
+          hitSlop={HIT_SLOP.md}
           accessibilityLabel="Change athan"
           accessibilityHint="Opens athan sound selection"
           accessibilityRole="button">
@@ -72,7 +72,7 @@ export default function BottomSheetSettings() {
             <Pressable
               style={styles.musicButton}
               onPress={handleAthanPress}
-              hitSlop={10}
+              hitSlop={HIT_SLOP.md}
               accessibilityLabel="Change athan"
               accessibilityHint="Opens athan sound selection">
               <Text style={styles.musicIcon}>♪</Text>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: SPACING.xl,
-    gap: 10,
+    gap: SPACING.gap,
   },
   iconWrapper: {
     width: SIZE.iconWrapper.md,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   rightContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: SPACING.gap,
   },
   musicButton: {
     width: SIZE.iconWrapper.sm,
@@ -155,11 +155,11 @@ const styles = StyleSheet.create({
   },
   musicIcon: {
     color: COLORS.text.primary,
-    fontSize: 14,
+    fontSize: SIZE.icon.sm,
   },
   chevron: {
     color: COLORS.icon.primary,
-    fontSize: 20,
+    fontSize: SIZE.icon.md,
     fontWeight: '300',
   },
 });

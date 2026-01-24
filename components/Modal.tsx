@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated';
 
-import { COLORS, TEXT, ANIMATION, OVERLAY, RADIUS, SPACING, SHADOW } from '@/shared/constants';
+import { COLORS, TEXT, ANIMATION, OVERLAY, RADIUS, SPACING, SHADOW, ELEVATION, LAYOUT, SIZE } from '@/shared/constants';
 
 type Props = {
   visible: boolean;
@@ -43,11 +43,11 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.light.background,
     borderRadius: RADIUS.xxl,
     padding: SPACING.xxl,
-    width: '85%',
-    maxWidth: 500,
+    width: LAYOUT.modal.width,
+    maxWidth: SIZE.modal.maxWidth,
     shadowColor: COLORS.light.shadow,
     ...SHADOW.modal,
-    elevation: 25,
+    elevation: ELEVATION.maximum,
   },
   title: {
     fontSize: TEXT.sizeTitle,
