@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
 
   // --- Label Styles ---
   label: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
   },
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: '#ffffff',
+    borderColor: COLORS.text.primary,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     backgroundColor: COLORS.surface.sheet,
     borderColor: COLORS.surface.sheetBorder,
-    shadowColor: '#113f9b',
+    shadowColor: COLORS.modal.shadow,
     shadowOffset: { width: 0, height: -50 },
     shadowOpacity: 0.25,
     shadowRadius: 150,
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   modalTitle: {
-    color: 'white',
+    color: COLORS.text.primary,
     fontFamily: TEXT.family.medium,
     fontSize: TEXT.size,
   },
@@ -279,14 +279,14 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeSmall,
   },
   saveText: {
-    color: 'rgba(230, 220, 255, 1)',
+    color: COLORS.modal.saveText,
     fontFamily: TEXT.family.medium,
     fontSize: TEXT.sizeSmall,
   },
   saveButton: {
-    backgroundColor: 'rgba(80, 21, 181, 0.65)',
+    backgroundColor: COLORS.modal.saveBackground,
     borderWidth: 1,
-    borderColor: 'rgba(103, 43, 207, 0.75)',
+    borderColor: COLORS.modal.saveBorder,
     height: 40,
     width: 80,
     borderRadius: 8,
