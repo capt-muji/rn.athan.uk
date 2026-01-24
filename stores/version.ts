@@ -80,6 +80,20 @@ export const wasAppUpgraded = (): boolean => {
 };
 
 /**
+ * Prefixes to clear during app upgrade
+ * Each entry contains the prefix and a description for logging
+ */
+const UPGRADE_CACHE_PREFIXES = [
+  { prefix: 'prayer_', description: 'prayer_* data' }, // Prayer data - may have schema changes
+  { prefix: 'display_date', description: 'display_date* data' }, // Display dates - derived from prayer data
+  { prefix: 'fetched_years', description: 'fetched_years' }, // Fetched years tracking - force fresh API sync
+  { prefix: 'scheduled_notifications_', description: 'scheduled_notifications_*' }, // Scheduled notifications - will reschedule
+  { prefix: 'last_notification_schedule_check', description: 'last_notification_schedule_check' }, // Ensure immediate reschedule
+  { prefix: 'prayer_max_english_width_', description: 'prayer_max_english_width_*' }, // May change with font/UI updates
+  { prefix: 'popup_update_last_check', description: 'popup_update_last_check' }, // Re-check for updates
+];
+
+/**
  * Clears cache data that may be incompatible after an upgrade
  * Preserves user preferences (notification settings, sound choices, etc.)
  */
@@ -88,33 +102,10 @@ export const clearUpgradeCache = (): void => {
   logger.info('VERSION: Beginning cache clear process');
 
   try {
-    // Prayer data - may have schema changes
-    Database.clearPrefix('prayer_');
-    logger.info('VERSION: Cleared prayer_* data');
-
-    // Display dates - derived from prayer data
-    Database.clearPrefix('display_date');
-    logger.info('VERSION: Cleared display_date* data');
-
-    // Fetched years tracking - force fresh API sync
-    Database.clearPrefix('fetched_years');
-    logger.info('VERSION: Cleared fetched_years');
-
-    // Scheduled notifications - will reschedule with new data
-    Database.clearPrefix('scheduled_notifications_');
-    logger.info('VERSION: Cleared scheduled_notifications_*');
-
-    // Last notification check - ensure immediate reschedule
-    Database.clearPrefix('last_notification_schedule_check');
-    logger.info('VERSION: Cleared last_notification_schedule_check');
-
-    // Prayer text width cache - may change with font/UI updates
-    Database.clearPrefix('prayer_max_english_width_');
-    logger.info('VERSION: Cleared prayer_max_english_width_*');
-
-    // Update check timestamp - re-check for updates
-    Database.clearPrefix('popup_update_last_check');
-    logger.info('VERSION: Cleared popup_update_last_check');
+    for (const { prefix, description } of UPGRADE_CACHE_PREFIXES) {
+      Database.clearPrefix(prefix);
+      logger.info(`VERSION: Cleared ${description}`);
+    }
 
     // ============================================================================
     // NOT CLEARED - User Preferences (must persist across upgrades)
