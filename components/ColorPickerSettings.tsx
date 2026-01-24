@@ -132,7 +132,7 @@ export default function ColorPickerSettings() {
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
               <View style={styles.headerSide}>
-                <Pressable onPress={handleDismiss} hitSlop={10}>
+                <Pressable onPress={handleDismiss} hitSlop={10} style={styles.cancelButton}>
                   <Text style={styles.cancelText}>Cancel</Text>
                 </Pressable>
               </View>
@@ -251,11 +251,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingHorizontal: 24,
+    paddingVertical: 24,
   },
   headerSide: {
-    width: 70,
+    width: 80,
   },
   headerSideRight: {
     alignItems: 'flex-end',
@@ -265,23 +265,31 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.medium,
     fontSize: TEXT.size,
   },
+  cancelButton: {
+    backgroundColor: COLORS.infoBox.iconBackground,
+    height: 40,
+    width: 80,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   cancelText: {
-    color: '#a0c8ff89',
+    color: COLORS.infoBox.iconFill,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeSmall,
   },
   saveText: {
-    color: '#cbabff',
-    fontFamily: TEXT.family.regular,
+    color: 'rgba(230, 220, 255, 1)',
+    fontFamily: TEXT.family.medium,
     fontSize: TEXT.sizeSmall,
   },
   saveButton: {
-    backgroundColor: '#592e9d80',
+    backgroundColor: 'rgba(80, 21, 181, 0.65)',
     borderWidth: 1,
-    borderColor: '#6a41ab',
-    height: 32,
-    width: 60,
-    borderRadius: 16,
+    borderColor: 'rgba(103, 43, 207, 0.75)',
+    height: 40,
+    width: 80,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
