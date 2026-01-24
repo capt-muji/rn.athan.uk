@@ -63,6 +63,10 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeSmall,
     marginBottom: SPACING.sm,
     color: COLORS.text.secondary,
+    // Text shadow for depth
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 6,
   },
   countdown: {
     color: COLORS.text.primary,
@@ -70,5 +74,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: TEXT.family.medium,
     marginBottom: SPACING.lg,
+    // Text shadow for depth
+    textShadowColor: 'rgba(0, 0, 0, 0.15)',
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 6,
   },
 });
