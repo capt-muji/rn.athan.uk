@@ -199,10 +199,10 @@ export const getAllScheduledNotificationsForPrayer = (scheduleType: ScheduleType
  * Organized by category for easy selection
  */
 export const cleanup = () => {
-  // --- Prayer Data (safe to clear, will re-sync from API) ---
+  // --- Prayer Data ---
   clearPrefix('prayer_'); // Daily prayer times data
-  clearPrefix('display_date'); // Current display date
   clearPrefix('fetched_years'); // Years that have been fetched from API
+  clearPrefix('display_date'); // Current display date
   clearPrefix('measurements_list'); // List component position
   clearPrefix('measurements_date'); // Date component position
   clearPrefix('prayer_max_english_width_standard'); // Max width for standard prayers
@@ -210,13 +210,14 @@ export const cleanup = () => {
   clearPrefix('preference_alert_standard_'); // Standard prayer alerts (6 prayers)
   clearPrefix('preference_alert_extra_'); // Extra prayer alerts (4 prayers)
   clearPrefix('preference_sound'); // Selected Athan sound
-  clearPrefix('preference_countdownbar_shown'); // Countdown bar visibility state
-  clearPrefix('preference_countdownbar_color');
-  clearPrefix('preference_hijri_date'); // Hijri date display preference
-  clearPrefix('preference_show_seconds'); // Show seconds preference
-  clearPrefix('preference_show_time_passed'); // Show time passed preference
+  clearPrefix('preference_countdownbar_shown'); // Countdown bar visibility
+  clearPrefix('preference_countdownbar_color'); // Countdown bar color
+  clearPrefix('preference_hijri_date'); // Hijri date display
+  clearPrefix('preference_show_seconds'); // Show seconds
+  clearPrefix('preference_show_time_passed'); // Show time passed
+  clearPrefix('preference_show_arabic_names'); // Show Arabic names
   clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
   clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
   clearPrefix('popup_update_last_check'); // Last app update check timestamp
-  // NOTE: measurements_masjid is NOT persisted to MMKV (ephemeral atom), so no cleanup needed
+  clearPrefix('app_installed_version'); // Installed app version
 };

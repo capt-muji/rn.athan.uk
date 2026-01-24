@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import Icon from '@/components/Icon';
+import IconView from '@/components/Icon';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
 import { useAlertPopupState } from '@/hooks/useAlertPopupState';
 import { useNotification } from '@/hooks/useNotification';
@@ -12,15 +12,15 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
 import { COLORS, TEXT, STYLES, RADIUS, SHADOW, SPACING, SIZE, ANIMATION, ELEVATION } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
-import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
+import { AlertType, Icon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
 import { overlayAtom } from '@/stores/overlay';
 import { refreshUIAtom } from '@/stores/ui';
 
 const ALERT_CONFIGS = [
-  { icon: AlertIcon.BELL_SLASH, label: 'Off', type: AlertType.Off },
-  { icon: AlertIcon.BELL_RING, label: 'Silent', type: AlertType.Silent },
-  { icon: AlertIcon.SPEAKER, label: 'Sound', type: AlertType.Sound },
+  { icon: Icon.BELL_SLASH, label: 'Off', type: AlertType.Off },
+  { icon: Icon.BELL_RING, label: 'Silent', type: AlertType.Silent },
+  { icon: Icon.SPEAKER, label: 'Sound', type: AlertType.Sound },
 ];
 
 interface Props {
@@ -182,12 +182,12 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
         onPressOut={() => AnimScale.animate(1)}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
-          <Icon type={ALERT_CONFIGS[iconIndex].icon} size={SIZE.icon.md} animatedProps={AnimFill.animatedProps} />
+          <IconView type={ALERT_CONFIGS[iconIndex].icon} size={SIZE.icon.md} animatedStyle={AnimFill.style} />
         </Animated.View>
       </Pressable>
 
       <Animated.View style={[styles.popup, computedStylePopup, AnimOpacity.style, AnimBounce.style]}>
-        <Icon type={ALERT_CONFIGS[popupIconIndex].icon} size={SIZE.icon.md} color={COLORS.text.primary} />
+        <IconView type={ALERT_CONFIGS[popupIconIndex].icon} size={SIZE.icon.md} color={COLORS.text.primary} />
         <Text style={styles.label}>{ALERT_CONFIGS[popupIconIndex].label}</Text>
       </Animated.View>
     </View>
