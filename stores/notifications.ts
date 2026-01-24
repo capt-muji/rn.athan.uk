@@ -46,6 +46,23 @@ async function withSchedulingLock<T>(operation: () => Promise<T>, operationName:
 }
 
 // =============================================================================
+// HELPERS
+// =============================================================================
+
+/**
+ * Gets the prayer name arrays for a given schedule type
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @returns Object with english and arabic prayer name arrays
+ */
+export const getPrayerArrays = (scheduleType: ScheduleType) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  return {
+    english: isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH,
+    arabic: isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC,
+  };
+};
+
+// =============================================================================
 // ATOMS
 // =============================================================================
 
@@ -294,9 +311,7 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
   logger.info('NOTIFICATION: Scheduling all notifications for schedule:', { scheduleType });
 
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const prayers = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  const arabicPrayers = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+  const { english: prayers, arabic: arabicPrayers } = getPrayerArrays(scheduleType);
 
   const promises = prayers.map(async (_, index) => {
     const alertType = getPrayerAlertType(scheduleType, index);

@@ -99,6 +99,14 @@ const startSequenceCountdown = (type: ScheduleType) => {
 };
 
 /**
+ * Resets the overlay countdown to a stopped state
+ */
+const resetOverlayCountdown = () => {
+  clearCountdown(CountdownKey.Overlay);
+  store.set(overlayCountdownAtom, { timeLeft: 0, name: 'Prayer' });
+};
+
+/**
  * Starts the overlay countdown for selected prayer
  * Uses sequence-based approach to get prayer by index
  *
@@ -115,10 +123,9 @@ const startCountdownOverlay = () => {
   const sequence = store.get(sequenceAtom);
   const displayDate = store.get(displayDateAtom);
 
+  // Early return if sequence or displayDate not ready
   if (!sequence || !displayDate) {
-    clearCountdown(CountdownKey.Overlay);
-    store.set(overlayCountdownAtom, { timeLeft: 0, name: 'Prayer' });
-    return;
+    return resetOverlayCountdown();
   }
 
   const now = TimeUtils.createLondonDate();

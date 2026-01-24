@@ -76,17 +76,15 @@ export const getAllWithPrefix = (prefix: string) => {
  * @param prefix Key prefix to match for deletion
  */
 export const clearPrefix = (prefix: string) => {
-  const keys = database.getAllKeys();
-  logger.info(`MMKV CHECK: ${keys}`);
+  const allKeys = database.getAllKeys();
+  const matchingKeys = allKeys.filter((key) => key.startsWith(prefix));
 
-  keys.forEach((key) => {
-    if (!key.startsWith(prefix)) return;
-
+  matchingKeys.forEach((key) => {
     database.remove(key);
     logger.info(`MMKV DELETE: ${key}`);
   });
 
-  logger.info(`MMKV INFO: Cleared all entries with prefix "${prefix}"`);
+  logger.info(`MMKV INFO: Cleared ${matchingKeys.length} entries with prefix "${prefix}"`);
 };
 
 /**
