@@ -42,6 +42,16 @@ export const extraCountdownAtom = atom<CountdownStore>(createInitialCountdown())
 /** Countdown state for overlay display (selected prayer) */
 export const overlayCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 
+/**
+ * Gets the countdown atom for a schedule type
+ *
+ * @param type - Schedule type (Standard or Extra)
+ * @returns Countdown atom for the specified schedule
+ */
+export const getCountdownAtom = (type: ScheduleType) => {
+  return type === ScheduleType.Standard ? standardCountdownAtom : extraCountdownAtom;
+};
+
 // --- Actions ---
 
 // Clears the interval for the specified countdown key
@@ -67,7 +77,7 @@ const startSequenceCountdown = (type: ScheduleType) => {
 
   const isStandard = type === ScheduleType.Standard;
   const countdownKey = isStandard ? CountdownKey.Standard : CountdownKey.Extra;
-  const countdownAtom = isStandard ? standardCountdownAtom : extraCountdownAtom;
+  const countdownAtom = getCountdownAtom(type);
 
   // Clear existing countdown and set initial state
   clearCountdown(countdownKey);
