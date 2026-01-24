@@ -31,6 +31,19 @@ import { ScheduleType } from '@/shared/types';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { measurementsListAtom, measurementsDateAtom, hijriDateEnabledAtom } from '@/stores/ui';
 
+/**
+ * Full-screen overlay for focused prayer view
+ *
+ * Displays a selected prayer in an expanded view with:
+ * - Large countdown timer at the top
+ * - Selected prayer row with notification controls
+ * - Prayer explanation tooltip (for extra prayers)
+ * - Date display (Gregorian or Hijri)
+ * - Gradient background with glow effect
+ *
+ * The overlay positions the prayer row to match its original location
+ * in the schedule list for a seamless transition effect.
+ */
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
   const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);

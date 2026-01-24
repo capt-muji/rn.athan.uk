@@ -17,6 +17,19 @@ export interface ScheduledNotification {
 
 /**
  * Creates notification trigger date from prayer date and time
+ *
+ * Timezone handling:
+ * - Input date/time are interpreted as London timezone (Europe/London)
+ * - Output Date object is in system local time but represents the same moment
+ * - This ensures notifications fire at the correct prayer time regardless of device timezone
+ *
+ * @param date Date string in YYYY-MM-DD format (London timezone)
+ * @param time Time string in HH:mm format (London timezone)
+ * @returns Date object for notification scheduling
+ *
+ * @example
+ * genTriggerDate("2026-01-24", "06:15")
+ * // Returns: Date representing 06:15 London time on Jan 24, 2026
  */
 export const genTriggerDate = (date: string, time: string): Date => {
   const [hours, minutes] = time.split(':').map(Number);

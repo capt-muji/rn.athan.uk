@@ -17,6 +17,15 @@ interface Props {
   type: ScheduleType;
 }
 
+/**
+ * Displays time elapsed since the previous prayer
+ *
+ * Shows "now" for the first 60 seconds, then "Xm" or "Xh Ym" format.
+ * Animates between normal and "recent" color states (≤5 mins).
+ * Fades out when the overlay is open.
+ *
+ * @param type - Schedule type (Standard or Extra)
+ */
 export default function PrayerAgo({ type }: Props) {
   const { prayerAgo, minutesElapsed, isReady: prayerAgoReady } = usePrayerAgo(type);
   const overlay = useAtomValue(overlayAtom);
