@@ -2,11 +2,12 @@ import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable, Modal } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } from 'reanimated-color-picker';
 
 import CheckIcon from '@/assets/icons/svg/check.svg';
 import CloseIcon from '@/assets/icons/svg/close.svg';
-import { TEXT, STYLES, COLORS, SPACING, RADIUS, SHADOW, SIZE, ELEVATION, HIT_SLOP, PLATFORM } from '@/shared/constants';
+import { TEXT, STYLES, COLORS, SPACING, RADIUS, SHADOW, SIZE, ELEVATION, HIT_SLOP } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
@@ -58,6 +59,7 @@ const DEFAULT_COLOR = SWATCH_COLORS[0];
  * <ColorPickerSettings />
  */
 export default function ColorPickerSettings() {
+  const { bottom } = useSafeAreaInsets();
   const [countdownBarColor, setCountdownBarColor] = useAtom(countdownBarColorAtom);
   const [countdownBarShown] = useAtom(countdownBarShownAtom);
   const [showPicker, setShowPicker] = useState(false);
@@ -131,7 +133,7 @@ export default function ColorPickerSettings() {
 
       <Modal visible={showPicker} transparent animationType="slide" onRequestClose={handleDismiss}>
         <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
+          <View style={[styles.modalContent, { paddingBottom: bottom }]}>
             <View style={styles.modalHeader}>
               <View style={styles.headerSide}>
                 <Pressable onPress={handleDismiss} hitSlop={HIT_SLOP.md} style={styles.cancelButton}>
@@ -235,7 +237,6 @@ const styles = StyleSheet.create({
   modalContent: {
     borderTopLeftRadius: RADIUS.sheet,
     borderTopRightRadius: RADIUS.sheet,
-    paddingBottom: PLATFORM.android.navigationBottomPadding,
     paddingTop: SPACING.gap,
     borderWidth: 1,
     borderBottomWidth: 0,
