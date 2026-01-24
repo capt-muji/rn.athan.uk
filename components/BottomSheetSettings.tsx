@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import SettingsIcon from '@/assets/icons/settings.svg';
+import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import ColorPickerSettings from '@/components/ColorPickerSettings';
 import SettingsToggle from '@/components/SettingsToggle';

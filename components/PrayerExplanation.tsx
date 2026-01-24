@@ -1,9 +1,8 @@
 import { StyleSheet, View, ViewStyle, Text } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
-import ICON_PATHS from '@/assets/icons/icons';
+import InfoIcon from '@/assets/icons/svg/info.svg';
 import { TEXT, COLORS, SIZE, RADIUS, SPACING } from '@/shared/constants';
-import { AlertIcon } from '@/shared/types';
 
 // Convert English numbers to Arabic numerals
 const toArabicNumbers = (text: string): string => {
@@ -77,9 +76,7 @@ export default function PrayerExplanation({
         {/* Header with icon and title */}
         <View style={styles.infoHeader}>
           <View style={styles.iconWrapper}>
-            <Svg width={13} height={13} viewBox="0 0 128 128">
-              <Path fill={COLORS.icon.primary} d={ICON_PATHS[AlertIcon.INFO]} />
-            </Svg>
+            <InfoIcon width={13} height={13} style={{ color: COLORS.icon.primary }} />
           </View>
           <Text style={styles.infoTitle}>{prayerName}</Text>
         </View>

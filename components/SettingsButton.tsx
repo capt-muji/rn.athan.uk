@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import SettingsIcon from '@/assets/icons/settings.svg';
+import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { COLORS, SIZE, RADIUS, SHADOW, ELEVATION, HIT_SLOP, SPACING } from '@/shared/constants';
 import { showSettingsSheet } from '@/stores/ui';

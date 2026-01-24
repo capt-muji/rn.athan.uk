@@ -174,7 +174,7 @@ export enum AlertType {
   Sound = 2,
 }
 
-export enum AlertIcon {
+export enum Icon {
   BELL_RING = 'BELL_RING',
   BELL_SLASH = 'BELL_SLASH',
   SPEAKER = 'SPEAKER',
