@@ -18,6 +18,17 @@ interface Props {
   isOverlay?: boolean;
 }
 
+/**
+ * Prayer time display component
+ *
+ * Displays the prayer time with color animation based on prayer state.
+ * Supports cascade animations when date changes and highlights when
+ * the prayer is selected in the overlay.
+ *
+ * @param type - Schedule type (Standard or Extra)
+ * @param index - Prayer index within the schedule
+ * @param isOverlay - Whether this is rendered in the overlay (default: false)
+ */
 export default function PrayerTime({ type, index, isOverlay = false }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
 

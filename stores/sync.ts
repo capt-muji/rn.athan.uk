@@ -48,13 +48,13 @@ const initializeAppState = async (date: Date) => {
   // This is MANDATORY - CountdownBar needs yesterday's Isha time to calculate progress
   if (TimeUtils.isJanuaryFirst(date)) {
     const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
-    const prevYearData = Database.getPrayerByDate(prevYearLastDate);
+    const cachedPrevYearData = Database.getPrayerByDate(prevYearLastDate);
 
-    if (!prevYearData) {
+    if (!cachedPrevYearData) {
       logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
 
-      const prevYearData = await Api.fetchYear(date.getFullYear() - 1);
-      Database.saveAllPrayers(prevYearData);
+      const fetchedPrevYearData = await Api.fetchYear(date.getFullYear() - 1);
+      Database.saveAllPrayers(fetchedPrevYearData);
       Database.markYearAsFetched(date.getFullYear() - 1);
 
       logger.info('SYNC: Previous year data fetched and saved');

@@ -30,6 +30,19 @@ interface PrayerExplanationProps {
   style?: ViewStyle;
 }
 
+/**
+ * Tooltip component explaining extra prayer times
+ *
+ * Displays a floating info box with prayer name, English explanation,
+ * and Arabic explanation. Includes a triangular arrow pointing to
+ * the associated prayer row.
+ *
+ * @param prayerName - Name of the extra prayer (e.g., "Midnight")
+ * @param explanation - English explanation text
+ * @param explanationArabic - Arabic explanation text (numbers auto-converted to Arabic numerals)
+ * @param arrowPosition - Position of the arrow: 'top' (box below row) or 'bottom' (box above row)
+ * @param style - Additional ViewStyle for positioning
+ */
 export default function PrayerExplanation({
   prayerName,
   explanation,

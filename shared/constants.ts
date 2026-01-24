@@ -38,6 +38,13 @@ export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحو�
 export const ISTIJABA_INDEX = 4;
 
 /**
+ * Night prayer names that cross midnight boundary
+ * Used for determining which prayers belong to the previous/next Islamic day
+ * These prayers occur after Isha but before Fajr (the nighttime portion)
+ */
+export const NIGHT_PRAYER_NAMES = ['Midnight', 'Last Third', 'Suhoor'] as const;
+
+/**
  * Human-readable explanations for each extra prayer
  * Used in PrayerExplanation overlay to provide context to users
  * Order aligns with EXTRAS arrays

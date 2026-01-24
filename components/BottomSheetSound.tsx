@@ -123,9 +123,4 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeTitle,
     fontFamily: TEXT.family.medium,
   },
-  text: {
-    color: COLORS.text.secondary,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.family.regular,
-  },
 });

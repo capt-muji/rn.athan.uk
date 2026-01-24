@@ -9,6 +9,7 @@ import {
   TIME_ADJUSTMENTS,
   ANIMATION,
   ISLAMIC_DAY,
+  NIGHT_PRAYER_NAMES,
 } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { createPrayerDatetime } from '@/shared/time';
@@ -148,8 +149,7 @@ export const calculateBelongsToDate = (
 
   // EXTRAS: Night prayers before midnight belong to next day
   if (type === ScheduleType.Extra) {
-    const nightPrayers = ['Midnight', 'Last Third', 'Suhoor'];
-    if (nightPrayers.includes(prayerEnglish) && hours >= 12) {
+    if (NIGHT_PRAYER_NAMES.includes(prayerEnglish as (typeof NIGHT_PRAYER_NAMES)[number]) && hours >= 12) {
       return TimeUtils.formatDateShort(addDays(prayerDateTime, 1));
     }
   }
@@ -243,8 +243,7 @@ function adjustPrayerDateForMidnightCrossing(
 
   // EXTRAS: Night prayers >=12:00 occurred on PREVIOUS calendar day
   if (!isStandard) {
-    const nightPrayers = ['Midnight', 'Last Third', 'Suhoor'];
-    if (nightPrayers.includes(prayerName) && hours >= 12) {
+    if (NIGHT_PRAYER_NAMES.includes(prayerName as (typeof NIGHT_PRAYER_NAMES)[number]) && hours >= 12) {
       return TimeUtils.formatDateShort(addDays(baseDate, -1));
     }
   }
