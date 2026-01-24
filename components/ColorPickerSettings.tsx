@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable, Modal } from 'react-native';
 import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } from 'reanimated-color-picker';
 
-import { TEXT, STYLES, COLORS } from '@/shared/constants';
+import { TEXT, STYLES, COLORS, SPACING, RADIUS, SHADOW, SIZE } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
@@ -205,9 +205,9 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeSmall,
   },
   colorPreviewContainer: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    width: SIZE.iconWrapper.sm,
+    height: SIZE.iconWrapper.sm,
+    borderRadius: RADIUS.xl,
     borderWidth: 2,
     borderColor: COLORS.text.primary,
     justifyContent: 'center',
@@ -231,8 +231,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   modalContent: {
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
+    borderTopLeftRadius: RADIUS.sheet,
+    borderTopRightRadius: RADIUS.sheet,
     paddingBottom: 40,
     paddingTop: 10,
     borderWidth: 1,
@@ -240,9 +240,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.surface.sheet,
     borderColor: COLORS.surface.sheetBorder,
     shadowColor: COLORS.modal.shadow,
-    shadowOffset: { width: 0, height: -50 },
-    shadowOpacity: 0.25,
-    shadowRadius: 150,
+    ...SHADOW.colorPickerModal,
     elevation: 15,
   },
 
@@ -251,8 +249,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 24,
-    paddingVertical: 24,
+    paddingHorizontal: SPACING.xxl,
+    paddingVertical: SPACING.xxl,
   },
   headerSide: {
     width: 80,
@@ -267,9 +265,9 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     backgroundColor: COLORS.icon.background,
-    height: 40,
+    height: SIZE.buttonHeight.md,
     width: 80,
-    borderRadius: 8,
+    borderRadius: RADIUS.md,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -287,20 +285,20 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.modal.saveBackground,
     borderWidth: 1,
     borderColor: COLORS.modal.saveBorder,
-    height: 40,
+    height: SIZE.buttonHeight.md,
     width: 80,
-    borderRadius: 8,
+    borderRadius: RADIUS.md,
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   // --- Color Picker ---
   colorPicker: {
-    paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingHorizontal: SPACING.xl,
+    paddingTop: SPACING.xl,
   },
   previewContainer: {
-    padding: 30,
+    padding: SPACING.xxxl,
     alignItems: 'center',
   },
   previewBar: {
@@ -316,18 +314,18 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   panel: {
-    marginBottom: 20,
-    borderRadius: 12,
+    marginBottom: SPACING.xl,
+    borderRadius: RADIUS.xl,
   },
   hueSlider: {
-    marginBottom: 20,
-    borderRadius: 8,
+    marginBottom: SPACING.xl,
+    borderRadius: RADIUS.md,
   },
   swatches: {
     marginTop: 10,
     paddingBottom: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: 8,
+    gap: SPACING.sm,
   },
 });

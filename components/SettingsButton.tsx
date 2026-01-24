@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 
 import SettingsIcon from '@/assets/icons/settings.svg';
 import { useAnimationScale } from '@/hooks/useAnimation';
-import { COLORS } from '@/shared/constants';
+import { COLORS, SIZE, RADIUS, SHADOW } from '@/shared/constants';
 import { showSettingsSheet } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -38,13 +38,11 @@ export default function SettingsButton() {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,
-    borderRadius: 50,
+    borderRadius: RADIUS.rounded,
     borderWidth: 1,
-    shadowOffset: { width: 1, height: 10 },
-    shadowOpacity: 1,
-    shadowRadius: 10,
+    ...SHADOW.button,
     elevation: 5, // Android shadow (stacking handled by render order in index.tsx)
-    width: 43,
+    width: SIZE.settingsButton,
     alignItems: 'center',
   },
   icon: {

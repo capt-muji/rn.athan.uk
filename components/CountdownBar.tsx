@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useCountdownBar } from '@/hooks/useCountdownBar';
-import { ANIMATION, COLORS } from '@/shared/constants';
+import { ANIMATION, COLORS, RADIUS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { countdownBarColorAtom } from '@/stores/ui';
@@ -165,19 +165,19 @@ const styles = StyleSheet.create({
   container: {
     height: 3,
     width: 100,
-    borderRadius: 2,
+    borderRadius: RADIUS.xs,
     alignSelf: 'center',
     backgroundColor: COLORS.countdown.background,
   },
   elapsed: {
     position: 'absolute',
     height: '100%',
-    borderRadius: 2,
+    borderRadius: RADIUS.xs,
   },
   glow: {
     position: 'absolute',
     height: '100%',
-    borderRadius: 2,
+    borderRadius: RADIUS.xs,
     shadowOffset: { width: 0, height: 0 },
   },
 });

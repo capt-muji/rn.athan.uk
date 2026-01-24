@@ -1,7 +1,7 @@
 import { BottomSheetBackdrop, BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import { StyleSheet, View } from 'react-native';
 
-import { COLORS } from '@/shared/constants';
+import { COLORS, RADIUS } from '@/shared/constants';
 
 /**
  * Shared background component for bottom sheets
@@ -45,5 +45,5 @@ export const bottomSheetStyles = StyleSheet.create({
   container: { flex: 1 },
   indicator: { backgroundColor: COLORS.text.secondary },
   backdrop: { backgroundColor: COLORS.surface.backdrop },
-  sheetBackground: { borderTopLeftRadius: 24, borderTopRightRadius: 24 },
+  sheetBackground: { borderTopLeftRadius: RADIUS.sheet, borderTopRightRadius: RADIUS.sheet },
 });

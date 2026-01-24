@@ -10,6 +10,7 @@ import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-rean
 import BottomSheetSettings from '@/components/BottomSheetSettings';
 import BottomSheetSound from '@/components/BottomSheetSound';
 import InitialWidthMeasurement from '@/components/InitialWidthMeasurement';
+import { COLORS } from '@/shared/constants';
 import { triggerSyncLoadable } from '@/stores/sync';
 
 // Prevent splash screen from automatically hiding
@@ -42,7 +43,7 @@ export default function Layout() {
   }, []);
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#2c1c77' }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
       <StatusBar style="light" translucent />
       <InitialWidthMeasurement />
       <BottomSheetModalProvider>

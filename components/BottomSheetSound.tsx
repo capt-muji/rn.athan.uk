@@ -9,7 +9,7 @@ import { ALL_AUDIOS } from '@/assets/audio';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import * as Device from '@/device/notifications';
-import { COLORS, TEXT } from '@/shared/constants';
+import { COLORS, TEXT, SPACING, SIZE, RADIUS } from '@/shared/constants';
 import { rescheduleAllNotifications, setSoundPreference } from '@/stores/notifications';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
@@ -102,14 +102,14 @@ const styles = StyleSheet.create({
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 30,
+    paddingVertical: SPACING.xl,
+    paddingHorizontal: SPACING.xxxl,
     gap: 10,
   },
   iconWrapper: {
-    width: 26,
-    height: 26,
-    borderRadius: 8,
+    width: SIZE.iconWrapper.md,
+    height: SIZE.iconWrapper.md,
+    borderRadius: RADIUS.md,
     backgroundColor: COLORS.icon.background,
     alignItems: 'center',
     justifyContent: 'center',
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: COLORS.text.primary,
-    fontSize: TEXT.size + 2,
+    fontSize: TEXT.sizeTitle,
     fontFamily: TEXT.family.medium,
   },
   text: {

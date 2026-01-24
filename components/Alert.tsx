@@ -10,7 +10,7 @@ import { useAlertPopupState } from '@/hooks/useAlertPopupState';
 import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { COLORS, TEXT, STYLES } from '@/shared/constants';
+import { COLORS, TEXT, STYLES, RADIUS, SHADOW } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, AlertIcon, ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
@@ -205,13 +205,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   popup: {
-    shadowOffset: { width: 1, height: 10 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
+    ...SHADOW.prayer,
     position: 'absolute',
     alignSelf: 'center',
     right: '100%',
-    borderRadius: 50,
+    borderRadius: RADIUS.rounded,
     paddingVertical: 15,
     paddingHorizontal: 30,
     flexDirection: 'row',
