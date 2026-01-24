@@ -7,7 +7,7 @@ import Screen from '@/app/Screen';
 import BackgroundGradients from '@/components/BackgroundGradients';
 import SettingsButton from '@/components/SettingsButton';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
-import { ANIMATION, COLORS, SIZE, PLATFORM, SPACING } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
 export default function Navigation() {
@@ -31,11 +31,7 @@ export default function Navigation() {
         <Screen type={ScheduleType.Extra} />
       </PagerView>
 
-      <View
-        style={[
-          styles.dotsContainer,
-          { bottom: Platform.OS === 'android' ? PLATFORM.android.navigationBottomPadding : bottom },
-        ]}>
+      <View style={[styles.dotsContainer, { bottom: bottom + (Platform.OS === 'android' ? SPACING.md : 0) }]}>
         <View style={styles.buttonWrapper}>
           <SettingsButton />
         </View>
