@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 
 import Icon from '@/assets/icons/masjid.svg';
+import { COLORS } from '@/shared/constants';
 
 type MasjidProps = {
   width?: number;
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    shadowColor: '#EF9C29',
+    shadowColor: COLORS.masjid.glow,
     shadowOffset: { width: 5, height: 5 },
     shadowOpacity: 0.2,
     shadowRadius: 10,

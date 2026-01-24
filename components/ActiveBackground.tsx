@@ -15,7 +15,6 @@ export default function ActiveBackground({ type }: Props) {
   // NEW: Use sequence-based prayer data
   // See: ai/adr/005-timing-system-overhaul.md
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
-  const isStandard = type === ScheduleType.Standard;
 
   // Filter to today's prayers and find the next prayer index within that list
   // This gives us 0-5 for standard, 0-6 for extras (same as old schedule.nextIndex)
@@ -46,7 +45,7 @@ export default function ActiveBackground({ type }: Props) {
   }, [yPosition]); // Dependencies ensure animations update when values change
 
   const computedStyles: ViewStyle = {
-    shadowColor: isStandard ? COLORS.shadow.standard : COLORS.shadow.extra,
+    shadowColor: COLORS.shadow.prayer,
     elevation: 0, // Must be 0 to stay below Prayer components on Android
     zIndex: -1, // Ensure it's behind prayer text
   };

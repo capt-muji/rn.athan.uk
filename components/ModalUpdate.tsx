@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 import Modal from '@/components/Modal';
-import { TEXT } from '@/shared/constants';
+import { COLORS, TEXT } from '@/shared/constants';
 
 type Props = {
   visible: boolean;
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
     textAlign: 'center',
-    color: '#344e5c',
+    color: COLORS.light.textSecondary,
     lineHeight: 22,
     letterSpacing: 0.2,
     marginBottom: 24,
@@ -53,18 +53,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cancelButton: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: COLORS.light.buttonCancel,
   },
   updateButton: {
-    backgroundColor: '#000',
+    backgroundColor: COLORS.light.buttonPrimary,
   },
   cancelText: {
-    color: '#344e5c',
+    color: COLORS.light.textSecondary,
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.medium,
   },
   updateText: {
-    color: '#fff',
+    color: COLORS.light.background,
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.medium,
   },
