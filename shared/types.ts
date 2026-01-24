@@ -181,6 +181,8 @@ export enum Icon {
   PLAY = 'PLAY',
   PAUSE = 'PAUSE',
   INFO = 'INFO',
+  CHECK = 'CHECK',
+  CLOSE = 'CLOSE',
 }
 
 // =============================================================================
