@@ -9,7 +9,7 @@ import SettingsIcon from '@/assets/icons/settings.svg';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import ColorPickerSettings from '@/components/ColorPickerSettings';
 import SettingsToggle from '@/components/SettingsToggle';
-import { TEXT, STYLES, COLORS } from '@/shared/constants';
+import { TEXT, STYLES, COLORS, SPACING, SIZE, RADIUS } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
   showSecondsAtom,
@@ -108,20 +108,20 @@ const styles = StyleSheet.create({
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 20,
+    padding: SPACING.xl,
     gap: 10,
   },
   iconWrapper: {
-    width: 26,
-    height: 26,
-    borderRadius: 8,
+    width: SIZE.iconWrapper.md,
+    height: SIZE.iconWrapper.md,
+    borderRadius: RADIUS.md,
     backgroundColor: COLORS.icon.background,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     color: COLORS.text.primary,
-    fontSize: TEXT.size + 2,
+    fontSize: TEXT.sizeTitle,
     fontFamily: TEXT.family.medium,
   },
   listItem: {
@@ -144,9 +144,9 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   musicButton: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    width: SIZE.iconWrapper.sm,
+    height: SIZE.iconWrapper.sm,
+    borderRadius: RADIUS.xl,
     backgroundColor: COLORS.interactive.active,
     borderWidth: 1,
     borderColor: COLORS.interactive.activeBorder,

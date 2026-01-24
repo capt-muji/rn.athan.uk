@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 import Modal from '@/components/Modal';
-import { COLORS, TEXT } from '@/shared/constants';
+import { COLORS, TEXT, SPACING, RADIUS } from '@/shared/constants';
 
 type Props = {
   visible: boolean;
@@ -34,21 +34,21 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     textAlign: 'center',
     color: COLORS.light.textSecondary,
-    lineHeight: 22,
-    letterSpacing: 0.2,
-    marginBottom: 24,
-    marginTop: 4,
+    lineHeight: TEXT.lineHeight.default,
+    letterSpacing: TEXT.letterSpacing.default,
+    marginBottom: SPACING.xxl,
+    marginTop: SPACING.xs,
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     width: '100%',
-    gap: 8,
+    gap: SPACING.sm,
   },
   button: {
     flex: 1,
-    paddingVertical: 12,
-    borderRadius: 10,
+    paddingVertical: SPACING.md,
+    borderRadius: RADIUS.lg,
     alignItems: 'center',
     justifyContent: 'center',
   },

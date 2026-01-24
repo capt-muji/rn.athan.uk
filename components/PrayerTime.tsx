@@ -6,7 +6,7 @@ import Animated from 'react-native-reanimated';
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { COLORS, TEXT } from '@/shared/constants';
+import { COLORS, TEXT, SPACING } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
@@ -79,6 +79,6 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
-    marginLeft: 15,
+    marginLeft: SPACING.lg - 1,
   },
 });

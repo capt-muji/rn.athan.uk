@@ -9,7 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
-import { TEXT, COLORS } from '@/shared/constants';
+import { TEXT, COLORS, SPACING, RADIUS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 
@@ -53,11 +53,11 @@ export default function PrayerAgo({ type }: Props) {
 const styles = StyleSheet.create({
   prayerAgo: {
     textAlign: 'center',
-    fontSize: TEXT.sizeSmall - 2,
+    fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    paddingHorizontal: 12,
+    paddingHorizontal: SPACING.md,
     paddingVertical: 6,
-    borderRadius: 999,
+    borderRadius: RADIUS.pill,
     overflow: 'hidden',
     alignSelf: 'center',
   },

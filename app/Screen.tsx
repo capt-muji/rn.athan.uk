@@ -6,7 +6,7 @@ import Countdown from '@/components/Countdown';
 import Day from '@/components/Day';
 import List from '@/components/List';
 import PrayerAgo from '@/components/PrayerAgo';
-import { SCREEN } from '@/shared/constants';
+import { SCREEN, PLATFORM, SIZE } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { showTimePassedAtom } from '@/stores/ui';
 
@@ -19,12 +19,12 @@ export default function Screen({ type }: Props) {
   const showTimePassed = useAtomValue(showTimePassedAtom);
 
   // Android: ignore bottom insets (nav bar is auto-hidden)
-  const bottomPadding = Platform.OS === 'android' ? 15 : insets.bottom;
+  const bottomPadding = Platform.OS === 'android' ? PLATFORM.android.bottomPadding : insets.bottom;
 
   const computedStyles: ViewStyle = {
     paddingTop: insets.top + SCREEN.paddingTop,
     paddingBottom: bottomPadding,
-    maxWidth: 700,
+    maxWidth: SIZE.screenMaxWidth,
     width: '100%',
     alignSelf: 'center',
   };

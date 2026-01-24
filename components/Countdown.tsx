@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
 import CountdownBar from '@/components/CountdownBar';
 import { useCountdown } from '@/hooks/useCountdown';
-import { COLORS, STYLES, TEXT } from '@/shared/constants';
+import { COLORS, STYLES, TEXT, SPACING } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { overlayCountdownAtom } from '@/stores/countdown';
@@ -54,21 +54,21 @@ export default function Countdown({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     height: STYLES.countdown.height,
-    marginBottom: 50,
+    marginBottom: SPACING.section,
     marginTop: 10,
     justifyContent: 'center',
   },
   text: {
     textAlign: 'center',
     fontSize: TEXT.sizeSmall,
-    marginBottom: 8,
+    marginBottom: SPACING.sm,
     color: COLORS.text.secondary,
   },
   countdown: {
     color: COLORS.text.primary,
-    fontSize: TEXT.size + 8,
+    fontSize: TEXT.sizeLarge,
     textAlign: 'center',
     fontFamily: TEXT.family.medium,
-    marginBottom: 16,
+    marginBottom: SPACING.lg,
   },
 });

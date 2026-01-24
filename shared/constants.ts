@@ -118,6 +118,30 @@ export const TEXT = {
   size: 18,
   /** Secondary font size for auxiliary text */
   sizeSmall: 16,
+  /** Large font size for countdown prayer name (size + 8) */
+  sizeLarge: 26,
+  /** Title font size for modal headers (size + 2) */
+  sizeTitle: 20,
+  /** Heading font size for error screens */
+  sizeHeading: 28,
+  /** Detail font size for small text (sizeSmall - 2) */
+  sizeDetail: 14,
+  /** Arabic explanation font size */
+  sizeArabic: 15,
+  /** Line height presets */
+  lineHeight: {
+    /** Default line height for body text */
+    default: 22,
+    /** Line height for Arabic text */
+    arabic: 24,
+  },
+  /** Letter spacing presets */
+  letterSpacing: {
+    /** Default letter spacing */
+    default: 0.2,
+    /** Wide letter spacing for titles */
+    wide: 0.3,
+  },
 };
 
 // =============================================================================
@@ -134,6 +158,168 @@ export const SCREEN = {
   /** Top padding for screen content */
   paddingTop: 17,
 };
+
+// =============================================================================
+// SPACING
+// =============================================================================
+
+/**
+ * Spacing constants for margins, paddings, and gaps
+ * Use semantic names for consistent spacing across components
+ */
+export const SPACING = {
+  /** Extra small spacing (4px) - tiny margins */
+  xs: 4,
+  /** Small spacing (8px) - small gaps, margins */
+  sm: 8,
+  /** Medium spacing (12px) - default padding, matches SCREEN.paddingHorizontal */
+  md: 12,
+  /** Large spacing (16px) - countdown margins */
+  lg: 16,
+  /** Extra large spacing (20px) - prayer padding */
+  xl: 20,
+  /** 2x Extra large spacing (24px) - modal padding */
+  xxl: 24,
+  /** 3x Extra large spacing (30px) - bottom sheet padding */
+  xxxl: 30,
+  /** Section spacing (50px) - large section margins */
+  section: 50,
+} as const;
+
+// =============================================================================
+// BORDER RADIUS
+// =============================================================================
+
+/**
+ * Border radius presets for consistent rounded corners
+ * Range from subtle rounding to fully circular (pill) shapes
+ */
+export const RADIUS = {
+  /** Extra small radius (2px) - countdown bar */
+  xs: 2,
+  /** Small radius (5px) - error button */
+  sm: 5,
+  /** Medium radius (8px) - prayer rows, info boxes, buttons */
+  md: 8,
+  /** Large radius (10px) - modal buttons */
+  lg: 10,
+  /** Extra large radius (12px) - toggles, color picker panels */
+  xl: 12,
+  /** 2x Extra large radius (16px) - modals */
+  xxl: 16,
+  /** Sheet radius (24px) - bottom sheets */
+  sheet: 24,
+  /** Rounded radius (50px) - rounded elements like alert popup */
+  rounded: 50,
+  /** Pill radius (999px) - fully rounded pill shapes */
+  pill: 999,
+} as const;
+
+// =============================================================================
+// SHADOWS
+// =============================================================================
+
+/**
+ * Shadow presets for elevation effects
+ * Each preset includes offset, opacity, and radius for consistent shadows
+ */
+export const SHADOW = {
+  /** Prayer row shadow */
+  prayer: {
+    shadowOffset: { width: 1, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+  /** Settings button shadow */
+  button: {
+    shadowOffset: { width: 1, height: 10 },
+    shadowOpacity: 1,
+    shadowRadius: 10,
+  },
+  /** Modal shadow */
+  modal: {
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.75,
+    shadowRadius: 35,
+  },
+  /** Masjid icon shadow */
+  masjid: {
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+  },
+  /** Color picker modal shadow (upward) */
+  colorPickerModal: {
+    shadowOffset: { width: 0, height: -50 },
+    shadowOpacity: 0.25,
+    shadowRadius: 150,
+  },
+} as const;
+
+// =============================================================================
+// COMPONENT SIZES
+// =============================================================================
+
+/**
+ * Fixed dimensions for UI components
+ * Use for consistent sizing across the app
+ */
+export const SIZE = {
+  /** Icon wrapper dimensions */
+  iconWrapper: {
+    /** Small icon wrapper (24px) */
+    sm: 24,
+    /** Medium icon wrapper (26px) */
+    md: 26,
+  },
+  /** Toggle switch dimensions */
+  toggle: {
+    /** Toggle width */
+    width: 44,
+    /** Toggle height */
+    height: 24,
+    /** Toggle dot size */
+    dotSize: 20,
+    /** Toggle dot translateX when active */
+    translateX: 18,
+  },
+  /** Navigation dot diameter */
+  navigationDot: 6,
+  /** Masjid icon dimensions */
+  masjid: {
+    width: 45,
+    height: 45,
+  },
+  /** Settings button size */
+  settingsButton: 43,
+  /** Button heights */
+  buttonHeight: {
+    /** Small button height */
+    sm: 24,
+    /** Medium button height */
+    md: 40,
+  },
+  /** Maximum screen content width */
+  screenMaxWidth: 700,
+} as const;
+
+// =============================================================================
+// PLATFORM-SPECIFIC
+// =============================================================================
+
+/**
+ * Platform-specific styling adjustments
+ * Use with Platform.OS checks for cross-platform consistency
+ */
+export const PLATFORM = {
+  /** Android-specific values */
+  android: {
+    /** Bottom padding for screens */
+    bottomPadding: 15,
+    /** Navigation bar bottom padding */
+    navigationBottomPadding: 40,
+  },
+} as const;
 
 // =============================================================================
 // COLOR PALETTE
@@ -309,6 +495,18 @@ export const COLORS = {
   masjid: {
     /** Golden glow/shadow color */
     glow: '#EF9C29',
+  },
+
+  /** Navigation colors */
+  navigation: {
+    /** Navigation background (matches gradient.screen.start) */
+    background: '#031a4c',
+    /** Root layout background */
+    rootBackground: '#2c1c77',
+    /** Loading spinner color */
+    activityIndicator: '#8d73ff',
+    /** Navigation dot color */
+    dot: '#cf98f4',
   },
 
   /** Light mode colors (system modals, update dialogs) */
