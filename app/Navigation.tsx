@@ -7,7 +7,7 @@ import Screen from '@/app/Screen';
 import BackgroundGradients from '@/components/BackgroundGradients';
 import SettingsButton from '@/components/SettingsButton';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
-import { ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE, PLATFORM } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
 export default function Navigation() {
@@ -23,7 +23,7 @@ export default function Navigation() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#031a4c' }}>
+    <View style={{ flex: 1, backgroundColor: COLORS.navigation.background }}>
       <BackgroundGradients />
 
       <PagerView style={{ flex: 1 }} initialPage={0} overdrag={true} onPageSelected={handlePageSelected}>
@@ -31,7 +31,11 @@ export default function Navigation() {
         <Screen type={ScheduleType.Extra} />
       </PagerView>
 
-      <View style={[styles.dotsContainer, { bottom: Platform.OS === 'android' ? 40 : bottom }]}>
+      <View
+        style={[
+          styles.dotsContainer,
+          { bottom: Platform.OS === 'android' ? PLATFORM.android.navigationBottomPadding : bottom },
+        ]}>
         <View style={styles.buttonWrapper}>
           <SettingsButton />
         </View>
@@ -61,9 +65,9 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   dot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: '#cf98f4',
+    width: SIZE.navigationDot,
+    height: SIZE.navigationDot,
+    borderRadius: SIZE.navigationDot / 2,
+    backgroundColor: COLORS.navigation.dot,
   },
 });

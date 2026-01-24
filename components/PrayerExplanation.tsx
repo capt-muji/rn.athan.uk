@@ -2,7 +2,7 @@ import { StyleSheet, View, ViewStyle, Text } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import ICON_PATHS from '@/assets/icons/icons';
-import { TEXT, COLORS } from '@/shared/constants';
+import { TEXT, COLORS, SIZE, RADIUS } from '@/shared/constants';
 import { AlertIcon } from '@/shared/types';
 
 // Convert English numbers to Arabic numerals
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   infoBox: {
     backgroundColor: COLORS.surface.elevated,
-    borderRadius: 8,
+    borderRadius: RADIUS.md,
     borderWidth: 1,
     borderColor: COLORS.surface.elevatedBorder,
     minWidth: 300,
@@ -129,9 +129,9 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   iconWrapper: {
-    width: 26,
-    height: 26,
-    borderRadius: 8,
+    width: SIZE.iconWrapper.md,
+    height: SIZE.iconWrapper.md,
+    borderRadius: RADIUS.md,
     backgroundColor: COLORS.icon.background,
     alignItems: 'center',
     justifyContent: 'center',
@@ -145,14 +145,14 @@ const styles = StyleSheet.create({
     color: COLORS.icon.primary,
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
-    lineHeight: 22,
+    lineHeight: TEXT.lineHeight.default,
     marginBottom: 14,
   },
   infoExplanationArabic: {
     color: COLORS.icon.primary,
-    fontSize: 15,
+    fontSize: TEXT.sizeArabic,
     fontFamily: TEXT.family.regular,
     textAlign: 'right',
-    lineHeight: 24,
+    lineHeight: TEXT.lineHeight.arabic,
   },
 });

@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { COLORS, STYLES } from '@/shared/constants';
+import { COLORS, STYLES, RADIUS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
 interface Props {
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: STYLES.prayer.height,
-    borderRadius: 8,
+    borderRadius: RADIUS.md,
   },
 });
