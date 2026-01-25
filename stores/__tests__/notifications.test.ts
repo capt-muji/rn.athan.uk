@@ -16,8 +16,9 @@ import {
   EXTRAS_ENGLISH,
   EXTRAS_ARABIC,
   NOTIFICATION_REFRESH_HOURS,
+  DEFAULT_REMINDER_INTERVAL,
 } from '@/shared/constants';
-import { ScheduleType } from '@/shared/types';
+import { AlertType, ScheduleType } from '@/shared/types';
 import {
   getPrayerArrays,
   createPrayerAlertAtom,
@@ -27,6 +28,16 @@ import {
   getPrayerAlertAtom,
   shouldRescheduleNotifications,
   lastNotificationScheduleAtom,
+  createReminderAlertAtom,
+  createReminderIntervalAtom,
+  standardReminderAlertAtoms,
+  extraReminderAlertAtoms,
+  standardReminderIntervalAtoms,
+  extraReminderIntervalAtoms,
+  getReminderAlertAtom,
+  getReminderIntervalAtom,
+  setPrayerAlertType,
+  getReminderAlertType,
 } from '@/stores/notifications';
 
 // =============================================================================
@@ -336,5 +347,190 @@ describe('lastNotificationScheduleAtom', () => {
 
     store.set(lastNotificationScheduleAtom, timestamp);
     expect(store.get(lastNotificationScheduleAtom)).toBe(timestamp);
+  });
+});
+
+// =============================================================================
+// REMINDER ATOM FACTORY TESTS
+// =============================================================================
+
+describe('createReminderAlertAtom', () => {
+  it('creates atom for Standard schedule prayer', () => {
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 0);
+    expect(atom).toBeDefined();
+  });
+
+  it('creates atom for Extra schedule prayer', () => {
+    const atom = createReminderAlertAtom(ScheduleType.Extra, 0);
+    expect(atom).toBeDefined();
+  });
+
+  it('creates atoms with default value of 0 (AlertType.Off)', () => {
+    const store = createStore();
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 0);
+    const value = store.get(atom);
+    expect(value).toBe(0); // AlertType.Off
+  });
+
+  it('creates different atoms for different prayers', () => {
+    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 0);
+    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 1);
+    expect(atom1).not.toBe(atom2);
+  });
+});
+
+describe('createReminderIntervalAtom', () => {
+  it('creates atom for Standard schedule prayer', () => {
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 0);
+    expect(atom).toBeDefined();
+  });
+
+  it('creates atom for Extra schedule prayer', () => {
+    const atom = createReminderIntervalAtom(ScheduleType.Extra, 0);
+    expect(atom).toBeDefined();
+  });
+
+  it('creates atoms with default value of DEFAULT_REMINDER_INTERVAL', () => {
+    const store = createStore();
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 0);
+    const value = store.get(atom);
+    expect(value).toBe(DEFAULT_REMINDER_INTERVAL);
+  });
+});
+
+// =============================================================================
+// REMINDER ATOM ARRAYS TESTS
+// =============================================================================
+
+describe('standardReminderAlertAtoms', () => {
+  it('has 6 atoms (one for each standard prayer)', () => {
+    expect(standardReminderAlertAtoms).toHaveLength(6);
+  });
+
+  it('all atoms are defined', () => {
+    standardReminderAlertAtoms.forEach((atom) => {
+      expect(atom).toBeDefined();
+    });
+  });
+
+  it('atoms have default value of 0', () => {
+    const store = createStore();
+    standardReminderAlertAtoms.forEach((atom) => {
+      expect(store.get(atom)).toBe(0);
+    });
+  });
+});
+
+describe('extraReminderAlertAtoms', () => {
+  it('has 5 atoms (one for each extra prayer)', () => {
+    expect(extraReminderAlertAtoms).toHaveLength(5);
+  });
+
+  it('all atoms are defined', () => {
+    extraReminderAlertAtoms.forEach((atom) => {
+      expect(atom).toBeDefined();
+    });
+  });
+});
+
+describe('standardReminderIntervalAtoms', () => {
+  it('has 6 atoms (one for each standard prayer)', () => {
+    expect(standardReminderIntervalAtoms).toHaveLength(6);
+  });
+
+  it('atoms have default value of DEFAULT_REMINDER_INTERVAL', () => {
+    const store = createStore();
+    standardReminderIntervalAtoms.forEach((atom) => {
+      expect(store.get(atom)).toBe(DEFAULT_REMINDER_INTERVAL);
+    });
+  });
+});
+
+describe('extraReminderIntervalAtoms', () => {
+  it('has 5 atoms (one for each extra prayer)', () => {
+    expect(extraReminderIntervalAtoms).toHaveLength(5);
+  });
+});
+
+// =============================================================================
+// REMINDER HELPER TESTS
+// =============================================================================
+
+describe('getReminderAlertAtom', () => {
+  it('returns correct atom from standardReminderAlertAtoms', () => {
+    const atom = getReminderAlertAtom(ScheduleType.Standard, 0);
+    expect(atom).toBe(standardReminderAlertAtoms[0]);
+  });
+
+  it('returns correct atom from extraReminderAlertAtoms', () => {
+    const atom = getReminderAlertAtom(ScheduleType.Extra, 0);
+    expect(atom).toBe(extraReminderAlertAtoms[0]);
+  });
+
+  it('returns different atoms for different indices', () => {
+    const atom0 = getReminderAlertAtom(ScheduleType.Standard, 0);
+    const atom1 = getReminderAlertAtom(ScheduleType.Standard, 1);
+    expect(atom0).not.toBe(atom1);
+  });
+});
+
+describe('getReminderIntervalAtom', () => {
+  it('returns correct atom from standardReminderIntervalAtoms', () => {
+    const atom = getReminderIntervalAtom(ScheduleType.Standard, 0);
+    expect(atom).toBe(standardReminderIntervalAtoms[0]);
+  });
+
+  it('returns correct atom from extraReminderIntervalAtoms', () => {
+    const atom = getReminderIntervalAtom(ScheduleType.Extra, 0);
+    expect(atom).toBe(extraReminderIntervalAtoms[0]);
+  });
+});
+
+// =============================================================================
+// CONSTRAINT ENFORCEMENT TESTS
+// =============================================================================
+
+describe('setPrayerAlertType constraint enforcement', () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { getDefaultStore } = require('jotai/vanilla');
+  const store = getDefaultStore();
+
+  beforeEach(() => {
+    // Reset atoms for testing
+    store.set(standardPrayerAlertAtoms[0], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[0], AlertType.Sound);
+  });
+
+  it('disables reminder when at-time alert is set to Off', () => {
+    // First verify reminder is enabled
+    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+
+    // Disable at-time alert
+    setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Off);
+
+    // Reminder should also be disabled
+    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Off);
+  });
+
+  it('does not affect reminder when at-time alert is set to Silent', () => {
+    // Verify initial state
+    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+
+    // Set at-time to Silent
+    setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Silent);
+
+    // Reminder should remain Sound
+    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+  });
+
+  it('does not affect reminder when at-time alert is set to Sound', () => {
+    // Set reminder to Silent first
+    store.set(standardReminderAlertAtoms[0], AlertType.Silent);
+
+    // Set at-time to Sound
+    setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Sound);
+
+    // Reminder should remain Silent
+    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Silent);
   });
 });

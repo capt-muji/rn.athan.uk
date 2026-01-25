@@ -7,6 +7,10 @@ import {
   genNotificationContent,
   createDefaultAndroidChannel,
   initializeNotifications,
+  getReminderNotificationSound,
+  genReminderNotificationContent,
+  genReminderTriggerDate,
+  createReminderAndroidChannel,
 } from '../notifications';
 import { isFriday } from '../time';
 import { AlertType } from '../types';
@@ -285,5 +289,104 @@ describe('initializeNotifications', () => {
     // Should not throw
     await expect(initializeNotifications(checkPermissions, refreshFn)).resolves.toBeUndefined();
     expect(refreshFn).not.toHaveBeenCalled();
+  });
+});
+
+// =============================================================================
+// REMINDER NOTIFICATION TESTS
+// =============================================================================
+
+describe('getReminderNotificationSound', () => {
+  it('returns false for Off alert type', () => {
+    expect(getReminderNotificationSound(AlertType.Off)).toBe(false);
+  });
+
+  it('returns false for Silent alert type', () => {
+    expect(getReminderNotificationSound(AlertType.Silent)).toBe(false);
+  });
+
+  it('returns reminders.wav for Sound alert type', () => {
+    expect(getReminderNotificationSound(AlertType.Sound)).toBe('reminders.wav');
+  });
+});
+
+describe('genReminderNotificationContent', () => {
+  it('creates content with correct title format', () => {
+    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
+    expect(content.title).toBe('Fajr in 15 min');
+  });
+
+  it('creates content with different intervals', () => {
+    expect(genReminderNotificationContent('Dhuhr', 'الظهر', 5, AlertType.Sound).title).toBe('Dhuhr in 5 min');
+    expect(genReminderNotificationContent('Asr', 'العصر', 30, AlertType.Sound).title).toBe('Asr in 30 min');
+  });
+
+  it('includes arabic name in body', () => {
+    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
+    expect(content.body).toContain('الفجر');
+  });
+
+  it('includes sound for Sound alert type', () => {
+    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
+    expect(content.sound).toBe('reminders.wav');
+  });
+
+  it('returns false for sound on Silent alert type', () => {
+    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Silent);
+    expect(content.sound).toBe(false);
+  });
+
+  it('sets autoDismiss to true', () => {
+    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
+    expect(content.autoDismiss).toBe(true);
+  });
+});
+
+describe('genReminderTriggerDate', () => {
+  it('subtracts correct minutes from prayer time', () => {
+    const prayerTrigger = genTriggerDate('2026-01-24', '06:15');
+    const reminderTrigger = genReminderTriggerDate('2026-01-24', '06:15', 15);
+
+    // Reminder should be 15 minutes before prayer
+    const diffMs = prayerTrigger.getTime() - reminderTrigger.getTime();
+    const diffMinutes = diffMs / (60 * 1000);
+    expect(diffMinutes).toBe(15);
+  });
+
+  it('handles 5 minute interval', () => {
+    const reminderTrigger = genReminderTriggerDate('2026-01-24', '12:00', 5);
+
+    expect(reminderTrigger.getHours()).toBe(11);
+    expect(reminderTrigger.getMinutes()).toBe(55);
+  });
+
+  it('handles 30 minute interval', () => {
+    const reminderTrigger = genReminderTriggerDate('2026-01-24', '12:00', 30);
+
+    expect(reminderTrigger.getHours()).toBe(11);
+    expect(reminderTrigger.getMinutes()).toBe(30);
+  });
+
+  it('handles crossing hour boundary', () => {
+    const reminderTrigger = genReminderTriggerDate('2026-01-24', '06:10', 15);
+
+    expect(reminderTrigger.getHours()).toBe(5);
+    expect(reminderTrigger.getMinutes()).toBe(55);
+  });
+
+  it('handles midnight crossing', () => {
+    const reminderTrigger = genReminderTriggerDate('2026-01-24', '00:10', 15);
+
+    // Should go to previous day at 23:55
+    expect(reminderTrigger.getHours()).toBe(23);
+    expect(reminderTrigger.getMinutes()).toBe(55);
+    expect(reminderTrigger.getDate()).toBe(23); // Previous day
+  });
+});
+
+describe('createReminderAndroidChannel', () => {
+  it('does not throw on iOS (returns early)', async () => {
+    // Default mock has Platform.OS = 'ios'
+    await expect(createReminderAndroidChannel()).resolves.toBeUndefined();
   });
 });

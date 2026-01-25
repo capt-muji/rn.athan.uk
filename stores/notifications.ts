@@ -1,4 +1,4 @@
-import { differenceInHours, differenceInMinutes, differenceInSeconds, addHours, formatISO } from 'date-fns';
+import { differenceInHours, differenceInMinutes, differenceInSeconds, addHours, formatISO, subMinutes } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
@@ -10,11 +10,13 @@ import {
   PRAYERS_ARABIC,
   NOTIFICATION_ROLLING_DAYS,
   NOTIFICATION_REFRESH_HOURS,
+  DEFAULT_REMINDER_INTERVAL,
+  REMINDER_BUFFER_SECONDS,
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
-import { AlertType, ScheduleType } from '@/shared/types';
+import { AlertType, ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber } from '@/stores/storage';
 
@@ -97,6 +99,70 @@ export const standardPrayerAlertAtoms = PRAYERS_ENGLISH.map((_, index) =>
  */
 export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((_, index) => createPrayerAlertAtom(ScheduleType.Extra, index));
 
+// =============================================================================
+// REMINDER ATOMS
+// =============================================================================
+
+/**
+ * Factory function to create a reminder alert atom for persisting reminder notification preferences
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @returns Jotai atom with MMKV persistence for the reminder alert type
+ */
+export const createReminderAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const type = isStandard ? 'standard' : 'extra';
+
+  return atomWithStorageNumber(`preference_reminder_alert_${type}_${prayerIndex}`, AlertType.Off);
+};
+
+/**
+ * Factory function to create a reminder interval atom for persisting reminder timing preferences
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @returns Jotai atom with MMKV persistence for the reminder interval
+ */
+export const createReminderIntervalAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const type = isStandard ? 'standard' : 'extra';
+
+  return atomWithStorageNumber(`preference_reminder_interval_${type}_${prayerIndex}`, DEFAULT_REMINDER_INTERVAL);
+};
+
+/**
+ * Array of reminder alert atoms for all standard prayers
+ * Each atom persists the user's reminder notification preference for that prayer
+ */
+export const standardReminderAlertAtoms = PRAYERS_ENGLISH.map((_, index) =>
+  createReminderAlertAtom(ScheduleType.Standard, index)
+);
+
+/**
+ * Array of reminder alert atoms for all extra prayers
+ * Each atom persists the user's reminder notification preference for that prayer
+ */
+export const extraReminderAlertAtoms = EXTRAS_ENGLISH.map((_, index) =>
+  createReminderAlertAtom(ScheduleType.Extra, index)
+);
+
+/**
+ * Array of reminder interval atoms for all standard prayers
+ * Each atom persists the user's reminder interval preference for that prayer
+ */
+export const standardReminderIntervalAtoms = PRAYERS_ENGLISH.map((_, index) =>
+  createReminderIntervalAtom(ScheduleType.Standard, index)
+);
+
+/**
+ * Array of reminder interval atoms for all extra prayers
+ * Each atom persists the user's reminder interval preference for that prayer
+ */
+export const extraReminderIntervalAtoms = EXTRAS_ENGLISH.map((_, index) =>
+  createReminderIntervalAtom(ScheduleType.Extra, index)
+);
+
 /**
  * Atom storing the user's preferred Athan sound index (0-15)
  * Persisted to MMKV storage
@@ -154,6 +220,9 @@ export const getPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: numb
 /**
  * Sets the alert type for a specific prayer
  *
+ * When setting at-time alert to Off, also disables the reminder alert
+ * (reminder requires at-time to be enabled).
+ *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
  * @param alertType New alert type (Off, Silent, or Sound)
@@ -161,6 +230,92 @@ export const getPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: numb
 export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: number, alertType: AlertType) => {
   const atom = getPrayerAlertAtom(scheduleType, prayerIndex);
   store.set(atom, alertType);
+
+  // Constraint: when at-time alert is Off, reminder must also be Off
+  if (alertType === AlertType.Off) {
+    const reminderAtom = getReminderAlertAtom(scheduleType, prayerIndex);
+    store.set(reminderAtom, AlertType.Off);
+  }
+};
+
+// =============================================================================
+// REMINDER HELPERS
+// =============================================================================
+
+/**
+ * Gets the Jotai atom for a specific prayer's reminder alert setting
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @returns Jotai atom for the prayer's reminder alert type
+ */
+export const getReminderAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const atoms = isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms;
+
+  return atoms[prayerIndex];
+};
+
+/**
+ * Gets the current reminder alert type for a specific prayer
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @returns Current AlertType (Off, Silent, or Sound) for reminder
+ */
+export const getReminderAlertType = (scheduleType: ScheduleType, prayerIndex: number): AlertType => {
+  const atom = getReminderAlertAtom(scheduleType, prayerIndex);
+  return store.get(atom);
+};
+
+/**
+ * Sets the reminder alert type for a specific prayer
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param alertType New alert type (Off, Silent, or Sound)
+ */
+export const setReminderAlertType = (scheduleType: ScheduleType, prayerIndex: number, alertType: AlertType) => {
+  const atom = getReminderAlertAtom(scheduleType, prayerIndex);
+  store.set(atom, alertType);
+};
+
+/**
+ * Gets the Jotai atom for a specific prayer's reminder interval setting
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @returns Jotai atom for the prayer's reminder interval
+ */
+export const getReminderIntervalAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const atoms = isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms;
+
+  return atoms[prayerIndex];
+};
+
+/**
+ * Gets the current reminder interval for a specific prayer
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @returns Current reminder interval in minutes
+ */
+export const getReminderInterval = (scheduleType: ScheduleType, prayerIndex: number): ReminderInterval => {
+  const atom = getReminderIntervalAtom(scheduleType, prayerIndex);
+  return store.get(atom) as ReminderInterval;
+};
+
+/**
+ * Sets the reminder interval for a specific prayer
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param interval Reminder interval in minutes
+ */
+export const setReminderInterval = (scheduleType: ScheduleType, prayerIndex: number, interval: ReminderInterval) => {
+  const atom = getReminderIntervalAtom(scheduleType, prayerIndex);
+  store.set(atom, interval);
 };
 
 /**
@@ -305,6 +460,159 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
   Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 };
 
+// =============================================================================
+// REMINDER SCHEDULING
+// =============================================================================
+
+/**
+ * Schedules a single reminder notification for a prayer on a specific date
+ *
+ * Handles validation, Istijaba filtering, and database storage.
+ * Returns a promise that resolves when reminder is scheduled
+ * or undefined if the reminder was skipped.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @param date Date string in YYYY-MM-DD format
+ * @param englishName English prayer name
+ * @param arabicName Arabic prayer name
+ * @param alertType Alert type (Off, Silent, Sound)
+ * @param intervalMinutes Reminder interval in minutes
+ * @returns Promise resolving when complete, or undefined if skipped
+ */
+async function scheduleReminderNotificationForDate(
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  date: string,
+  englishName: string,
+  arabicName: string,
+  alertType: AlertType,
+  intervalMinutes: ReminderInterval
+): Promise<void> {
+  const dateObj = TimeUtils.createLondonDate(date);
+  const prayerData = Database.getPrayerByDate(dateObj);
+  if (!prayerData) return;
+
+  const prayerTime = prayerData[englishName.toLowerCase() as keyof typeof prayerData];
+
+  // Calculate reminder trigger time
+  const prayerDateTime = NotificationUtils.genTriggerDate(date, prayerTime);
+  const reminderDateTime = subMinutes(prayerDateTime, intervalMinutes);
+  const now = TimeUtils.createLondonDate();
+
+  // Skip if reminder time is already past or within buffer
+  const secondsUntilReminder = (reminderDateTime.getTime() - now.getTime()) / 1000;
+  if (secondsUntilReminder < REMINDER_BUFFER_SECONDS) {
+    logger.info('REMINDER: Skipping past or imminent reminder:', {
+      date,
+      prayerTime,
+      englishName,
+      intervalMinutes,
+      secondsUntilReminder,
+    });
+    return;
+  }
+
+  // Skip Istijaba on non-Fridays
+  if (englishName.toLowerCase() === 'istijaba' && !TimeUtils.isFriday(dateObj)) {
+    logger.info('REMINDER: Skipping Istijaba on non-Friday:', { date, prayerTime });
+    return;
+  }
+
+  const notification = await Device.addOneScheduledReminderForPrayer(
+    englishName,
+    arabicName,
+    date,
+    prayerTime,
+    intervalMinutes,
+    alertType
+  );
+
+  await Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, notification);
+}
+
+/**
+ * Schedule multiple reminders (X days) for a single prayer
+ *
+ * Clears existing reminders, then schedules new ones for the next X days
+ * based on the NOTIFICATION_ROLLING_DAYS constant.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @param englishName English prayer name
+ * @param arabicName Arabic prayer name
+ * @param alertType Alert type (Off, Silent, Sound)
+ */
+const _addMultipleScheduleRemindersForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  englishName: string,
+  arabicName: string,
+  alertType: AlertType
+) => {
+  // Cancel all existing reminders for this prayer
+  await clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+
+  const nextXDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
+  const intervalMinutes = getReminderInterval(scheduleType, prayerIndex);
+
+  // Schedule reminders for each day in parallel
+  await Promise.all(
+    nextXDays.map((date) =>
+      scheduleReminderNotificationForDate(
+        scheduleType,
+        prayerIndex,
+        date,
+        englishName,
+        arabicName,
+        alertType,
+        intervalMinutes
+      ).catch((error) => logger.error('Failed to schedule reminder:', error))
+    )
+  );
+
+  logger.info('REMINDER: Scheduled multiple reminders:', { scheduleType, prayerIndex, englishName });
+};
+
+/**
+ * Schedule multiple reminders for a single prayer (public entry point)
+ *
+ * Guards against concurrent scheduling using withSchedulingLock.
+ * Schedules reminders for the next NOTIFICATION_ROLLING_DAYS days.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param englishName English prayer name
+ * @param arabicName Arabic prayer name
+ * @param alertType Alert type (Off, Silent, Sound)
+ * @returns Promise that resolves when scheduling is complete
+ */
+export const addMultipleScheduleRemindersForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  englishName: string,
+  arabicName: string,
+  alertType: AlertType
+) => {
+  return withSchedulingLock(
+    () => _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, alertType),
+    'addMultipleScheduleRemindersForPrayer'
+  );
+};
+
+/**
+ * Clears all scheduled reminders for a specific prayer
+ *
+ * Cancels reminders via Expo API and removes database records.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ */
+export const clearAllScheduledRemindersForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+  await Device.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+  Database.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+};
+
 /**
  * Schedule all notifications for a schedule based on current preferences (internal)
  */
@@ -328,6 +636,35 @@ const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleTyp
 
   await Promise.all(promises);
   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
+};
+
+/**
+ * Schedule all reminders for a schedule based on current preferences (internal)
+ */
+const _addAllScheduleRemindersForSchedule = async (scheduleType: ScheduleType) => {
+  logger.info('REMINDER: Scheduling all reminders for schedule:', { scheduleType });
+
+  const { english: prayers, arabic: arabicPrayers } = getPrayerArrays(scheduleType);
+
+  const promises = prayers.map(async (_, index) => {
+    const reminderAlertType = getReminderAlertType(scheduleType, index);
+    if (reminderAlertType === AlertType.Off) return;
+
+    // Constraint: reminder requires at-time alert to be enabled
+    const atTimeAlertType = getPrayerAlertType(scheduleType, index);
+    if (atTimeAlertType === AlertType.Off) return;
+
+    return _addMultipleScheduleRemindersForPrayer(
+      scheduleType,
+      index,
+      prayers[index],
+      arabicPrayers[index],
+      reminderAlertType
+    );
+  });
+
+  await Promise.all(promises);
+  logger.info('REMINDER: Rescheduled all reminders for schedule:', { scheduleType });
 };
 
 /**
@@ -367,22 +704,26 @@ export const shouldRescheduleNotifications = (): boolean => {
  * Reschedules all notifications for both Standard and Extra schedules (internal)
  */
 const _rescheduleAllNotifications = async () => {
-  // Cancel ALL scheduled notifications globally
+  // Cancel ALL scheduled notifications globally (includes reminders)
   await Notifications.cancelAllScheduledNotificationsAsync();
   logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
 
-  // Clear database records for both schedules
+  // Clear database records for both schedules (notifications and reminders)
   Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
   Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Extra);
+  Database.clearAllScheduledRemindersForSchedule(ScheduleType.Standard);
+  Database.clearAllScheduledRemindersForSchedule(ScheduleType.Extra);
   logger.info('NOTIFICATION: Cleared database records');
 
-  // Schedule all enabled notifications for both schedules
+  // Schedule all enabled notifications and reminders for both schedules
   await Promise.all([
     _addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
     _addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
+    _addAllScheduleRemindersForSchedule(ScheduleType.Standard),
+    _addAllScheduleRemindersForSchedule(ScheduleType.Extra),
   ]);
 
-  logger.info('NOTIFICATION: Rescheduled all notifications');
+  logger.info('NOTIFICATION: Rescheduled all notifications and reminders');
 };
 
 /**

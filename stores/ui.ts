@@ -9,6 +9,23 @@ const store = getDefaultStore();
 const emptyCoordinates: PageCoordinates = { pageX: 0, pageY: 0, width: 0, height: 0 };
 
 // =============================================================================
+// ALERT SHEET STATE
+// =============================================================================
+
+export interface AlertSheetState {
+  type: ScheduleType;
+  index: number;
+  prayerEnglish: string;
+  prayerArabic: string;
+}
+
+/** Current alert sheet state (which prayer is being edited) */
+export const alertSheetStateAtom = atom<AlertSheetState | null>(null);
+
+/** Reference to the alert bottom sheet modal */
+export const alertSheetModalAtom = atom<BottomSheetModal | null>(null);
+
+// =============================================================================
 // ATOMS - Ephemeral State
 // =============================================================================
 
@@ -89,6 +106,21 @@ export const setBottomSheetModal = (modal: BottomSheetModal | null) => store.set
 
 /** Sets the settings bottom sheet modal reference */
 export const setSettingsSheetModal = (modal: BottomSheetModal | null) => store.set(settingsSheetModalAtom, modal);
+
+/** Sets the alert bottom sheet modal reference */
+export const setAlertSheetModal = (modal: BottomSheetModal | null) => store.set(alertSheetModalAtom, modal);
+
+/** Shows the alert bottom sheet for a specific prayer */
+export const showAlertSheet = (state: AlertSheetState) => {
+  store.set(alertSheetStateAtom, state);
+  store.get(alertSheetModalAtom)?.present();
+};
+
+/** Hides the alert bottom sheet */
+export const hideAlertSheet = () => store.get(alertSheetModalAtom)?.dismiss();
+
+/** Gets the current alert sheet state */
+export const getAlertSheetState = () => store.get(alertSheetStateAtom);
 
 /** Sets the index of the currently playing sound preview */
 export const setPlayingSoundIndex = (index: number | null) => store.set(playingSoundIndexAtom, index);

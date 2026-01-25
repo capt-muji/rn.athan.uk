@@ -1,32 +1,30 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { StyleSheet, Pressable, Text, View, ViewStyle } from 'react-native';
+import { StyleSheet, Pressable, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
 import ALERT_ICONS from '@/assets/icons/svg/alerts';
-import IconView from '@/components/Icon';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
-import { useAlertPopupState } from '@/hooks/useAlertPopupState';
 import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { COLORS, TEXT, STYLES, RADIUS, SHADOW, SPACING, SIZE, ANIMATION, ELEVATION } from '@/shared/constants';
+import { STYLES, SPACING, SIZE, ANIMATION } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, ScheduleType } from '@/shared/types';
-import { getPrayerAlertAtom, setPrayerAlertType } from '@/stores/notifications';
+import { getPrayerAlertAtom } from '@/stores/notifications';
 import { overlayAtom } from '@/stores/overlay';
-import { refreshUIAtom } from '@/stores/ui';
+import { refreshUIAtom, showAlertSheet } from '@/stores/ui';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 type AlertIconType = Icon.BELL_RING | Icon.BELL_SLASH | Icon.SPEAKER;
 
-const ALERT_CONFIGS: { icon: AlertIconType; label: string; type: AlertType }[] = [
-  { icon: Icon.BELL_SLASH, label: 'Off', type: AlertType.Off },
-  { icon: Icon.BELL_RING, label: 'Silent', type: AlertType.Silent },
-  { icon: Icon.SPEAKER, label: 'Sound', type: AlertType.Sound },
+const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType }[] = [
+  { icon: Icon.BELL_SLASH, type: AlertType.Off },
+  { icon: Icon.BELL_RING, type: AlertType.Silent },
+  { icon: Icon.SPEAKER, type: AlertType.Sound },
 ];
 
 interface Props {
@@ -38,35 +36,40 @@ interface Props {
 /**
  * Alert component for prayer notification preferences
  *
- * Cycles through Off → Silent → Sound alert types on press.
- * Shows animated popup feedback when changing alert type.
- *
- * @see useAlertAnimations - Animation logic
- * @see useAlertPopupState - Popup timing logic
+ * Opens a bottom sheet on press with:
+ * - At-time alert options (Off/Silent/Sound)
+ * - Reminder toggle with options when enabled
+ * - Reminder interval selection (5-30 min)
  */
 export default function Alert({ type, index, isOverlay = false }: Props) {
-  // State
-  const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
-  const [iconIndex, setIconIndex] = useState(alertAtom);
-  const [popupIconIndex, setPopupIconIndex] = useState(alertAtom);
+  // =============================================================================
+  // STATE & REFS
+  // =============================================================================
+
+  const [isPressed, setIsPressed] = useState(false);
 
   // Atoms
+  const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
   const refreshUI = useAtomValue(refreshUIAtom);
   const overlay = useAtomValue(overlayAtom);
 
-  // Custom hooks
+  // =============================================================================
+  // CUSTOM HOOKS
+  // =============================================================================
+
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index, isOverlay);
-  const { handleAlertChange, ensurePermissions } = useNotification();
-  const { AnimScale, AnimOpacity, AnimBounce, AnimFill, resetPopupAnimations, hidePopup } = useAlertAnimations({
+  const { ensurePermissions } = useNotification();
+  const { AnimScale, AnimFill } = useAlertAnimations({
     initialColorPos: Prayer.ui.initialColorPos,
   });
-  const { isPopupActive, showPopup, clearTimeouts } = useAlertPopupState({
-    onShow: resetPopupAnimations,
-    onHide: hidePopup,
-  });
 
-  // Memoized values
+  // =============================================================================
+  // DERIVED STATE
+  // =============================================================================
+
+  const iconIndex = alertAtom;
+
   const isSelectedForOverlay = useMemo(
     () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
     [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
@@ -90,7 +93,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   useEffect(() => {
     if (
       !isSelectedForOverlay &&
-      !isPopupActive &&
+      !isPressed &&
       !Schedule.isLastPrayerPassed &&
       Schedule.nextPrayerIndex === 0 &&
       index !== 0
@@ -100,27 +103,11 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     }
   }, [Schedule.displayDate, isSelectedForOverlay]);
 
-  // Update fill color based on selection state
+  // Update fill color based on selection/pressed state
   useEffect(() => {
-    const colorPos = isSelectedForOverlay || Prayer.isOverlay || isPopupActive ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = isSelectedForOverlay || Prayer.isOverlay || isPressed ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: ANIMATION.durationVeryFast });
-  }, [isSelectedForOverlay, isPopupActive, Prayer.isOverlay]);
-
-  // =============================================================================
-  // STATE SYNC EFFECTS
-  // =============================================================================
-
-  // Sync alert preferences with state
-  useEffect(() => {
-    setIconIndex(alertAtom);
-    setPopupIconIndex(alertAtom);
-  }, [alertAtom]);
-
-  // Disable popup on overlay open/close
-  useEffect(() => {
-    clearTimeouts();
-    AnimOpacity.value.value = 0;
-  }, [overlay.isOn]);
+  }, [isSelectedForOverlay, isPressed, Prayer.isOverlay]);
 
   // =============================================================================
   // HANDLERS
@@ -129,52 +116,19 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const handlePress = useCallback(async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    const nextIndex = (iconIndex + 1) % ALERT_CONFIGS.length;
-    const nextAlertType = ALERT_CONFIGS[nextIndex].type;
-
-    // Check permissions if enabling notifications
-    if (nextAlertType !== AlertType.Off) {
-      const hasPermission = await ensurePermissions();
-      if (!hasPermission) return;
+    // Check permissions before opening sheet
+    if (alertAtom === AlertType.Off) {
+      await ensurePermissions();
     }
 
-    // Update UI state immediately (optimistic update)
-    setPopupIconIndex(nextIndex);
-    setIconIndex(nextIndex);
-
-    // Show popup with animations
-    showPopup();
-
-    // Persist the change (debounced)
-    const success = await handleAlertChange(type, index, Prayer.english, Prayer.arabic, nextAlertType);
-
-    if (success) {
-      setPrayerAlertType(type, index, nextAlertType);
-    } else {
-      // Revert on failure
-      setPopupIconIndex(alertAtom);
-      setIconIndex(alertAtom);
-    }
-  }, [
-    iconIndex,
-    ensurePermissions,
-    showPopup,
-    handleAlertChange,
-    type,
-    index,
-    Prayer.english,
-    Prayer.arabic,
-    alertAtom,
-  ]);
-
-  // =============================================================================
-  // COMPUTED STYLES
-  // =============================================================================
-
-  const computedStylePopup: ViewStyle = {
-    shadowColor: COLORS.shadow.alert,
-    backgroundColor: Prayer.isOverlay && !Prayer.isNext ? COLORS.prayer.activeBackground : 'black',
-  };
+    // Open bottom sheet
+    showAlertSheet({
+      type,
+      index,
+      prayerEnglish: Prayer.english,
+      prayerArabic: Prayer.arabic,
+    });
+  }, [type, index, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions]);
 
   // =============================================================================
   // RENDER
@@ -184,8 +138,14 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     <View style={styles.container}>
       <Pressable
         onPress={handlePress}
-        onPressIn={() => AnimScale.animate(0.9)}
-        onPressOut={() => AnimScale.animate(1)}
+        onPressIn={() => {
+          setIsPressed(true);
+          AnimScale.animate(0.9);
+        }}
+        onPressOut={() => {
+          setIsPressed(false);
+          AnimScale.animate(1);
+        }}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
           <Svg viewBox="0 0 256 256" width={SIZE.icon.md} height={SIZE.icon.md}>
@@ -193,11 +153,6 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
           </Svg>
         </Animated.View>
       </Pressable>
-
-      <Animated.View style={[styles.popup, computedStylePopup, AnimOpacity.style, AnimBounce.style]}>
-        <IconView type={ALERT_CONFIGS[popupIconIndex].icon} size={SIZE.icon.md} color={COLORS.text.primary} />
-        <Text style={styles.label}>{ALERT_CONFIGS[popupIconIndex].label}</Text>
-      </Animated.View>
     </View>
   );
 }
@@ -211,23 +166,5 @@ const styles = StyleSheet.create({
     paddingRight: STYLES.prayer.padding.right,
     paddingLeft: SPACING.mid - 1,
     justifyContent: 'center',
-  },
-  popup: {
-    ...SHADOW.prayer,
-    position: 'absolute',
-    alignSelf: 'center',
-    right: '100%',
-    borderRadius: RADIUS.rounded,
-    paddingVertical: SPACING.popup,
-    paddingHorizontal: SPACING.xxxl,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: SPACING.gap,
-    gap: SPACING.popup,
-    elevation: ELEVATION.standard,
-  },
-  label: {
-    fontSize: TEXT.size,
-    color: COLORS.text.primary,
   },
 });

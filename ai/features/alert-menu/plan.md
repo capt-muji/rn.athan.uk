@@ -10,6 +10,7 @@
 ## Summary
 
 Transform the prayer alert from a cycle-through popup to a **floating popup menu** with:
+
 1. At-Time Alert (Off/Silent/Sound)
 2. Pre-Prayer Reminder (Off/Silent/Sound) - requires at-time enabled
 3. Reminder Interval (5/10/15/20/25/30 min) - visible when reminder enabled
@@ -23,13 +24,16 @@ Transform the prayer alert from a cycle-through popup to a **floating popup menu
 ## Key Behavioral Changes (v9)
 
 ### 1. No Debounce Required
+
 The alert icon now acts as a simple **toggle** for the popup menu:
+
 - Tap → opens menu
 - Tap again (or tap outside) → closes menu
 
 This toggle behavior makes spam-click protection unnecessary. No debounce is implemented.
 
 ### 2. Deferred Commit Pattern
+
 Notification rescheduling **ONLY** happens when the menu closes:
 
 ```
@@ -51,11 +55,13 @@ Menu Closes (via any trigger):
 ```
 
 **Benefits:**
+
 - No notification churn during menu interaction
 - User can change mind multiple times before committing
 - Zero impact if user opens menu without changing anything
 
 ### 3. Auto-Close on Timer (NEW in v9)
+
 **Same behavior as Overlay.tsx:** When countdown reaches ≤ 2 seconds, auto-close the menu.
 
 ```typescript
@@ -70,6 +76,7 @@ useEffect(() => {
 **Why:** Prevents menu from blocking the UI when prayer time is imminent.
 
 ### 4. Dim Alert Visual Feedback (NEW in v9)
+
 When tapping an alert that is **dim** (not the "next" prayer, not passed):
 
 ```typescript
@@ -101,7 +108,9 @@ const handleCloseMenu = useCallback(async () => {
 **Why:** Visual feedback shows which alert is being configured.
 
 ### 5. App Force-Close Behavior (CONFIRMED)
+
 If user opens menu, makes changes, but **force-closes the app** (without closing the menu):
+
 - Changes are **NOT committed** (intentional)
 - State remains in sync (Jotai atoms unchanged)
 - Next app open shows original values
@@ -134,7 +143,7 @@ const listMeasurements = useAtomValue(measurementsListAtom);
 const { height: screenHeight, width: screenWidth } = Dimensions.get('window');
 
 // Calculate row Y position
-const rowY = listMeasurements.pageY + (index * STYLES.prayer.height);
+const rowY = listMeasurements.pageY + index * STYLES.prayer.height;
 
 // Menu dimensions (estimated)
 const MENU_HEIGHT = 280; // Approximate height for all sections
@@ -144,7 +153,7 @@ const MENU_WIDTH = 200;
 const menuTop = Math.max(
   SPACING.xl, // Min top padding
   Math.min(
-    rowY + (STYLES.prayer.height / 2) - (MENU_HEIGHT / 2),
+    rowY + STYLES.prayer.height / 2 - MENU_HEIGHT / 2,
     screenHeight - MENU_HEIGHT - SPACING.xl // Max bottom
   )
 );
@@ -166,19 +175,22 @@ if (listMeasurements.pageY === 0) {
 ### Why Modal (Not View)
 
 **Justification:** A View with absolute positioning inside Alert.tsx gets clipped by parent ScrollView/container boundaries. Modal escapes the React component tree, providing:
+
 - Full-screen backdrop for tap-away dismissal
 - No z-index conflicts with parent containers
 - Built-in animation support
 
-**Alternative considered:** Portal pattern in _layout.tsx - rejected for added complexity.
+**Alternative considered:** Portal pattern in \_layout.tsx - rejected for added complexity.
 
 ### What This Eliminates
+
 - No `AlertMenuPortal.tsx` file
 - No `alertMenuStateAtom` in stores/ui.ts
 - No changes to `_layout.tsx`
 - No `measureInWindow` calls
 
 ### What We Keep
+
 - Menu positioned near alert with arrow
 - Tap-away dismissal (Modal's backdrop)
 - **Deferred commit** (no save/cancel buttons, but scheduling happens on close)
@@ -191,6 +203,7 @@ if (listMeasurements.pageY === 0) {
 ## Phases
 
 ### Phase 0: Documentation
+
 - [x] Create ADR-006-popup-menu-alert-settings.md
 - [x] Update ai/features/alert-menu/description.md
 - [x] Update ai/features/alert-menu/plan.md (this file)
@@ -205,7 +218,7 @@ if (listMeasurements.pageY === 0) {
 
 Add to the React Patterns section in AGENTS.md:
 
-```markdown
+````markdown
 ### forwardRef + useImperativeHandle Pattern
 
 Use this pattern when a parent component needs to read child state without lifting state up:
@@ -238,14 +251,17 @@ const Parent = () => {
   return <Child ref={childRef} />;
 };
 ```
+````
 
 **When to use:**
+
 - Parent needs to read child's local state (e.g., deferred commit pattern)
 - Child owns UI state, parent owns commit/submit logic
 - Avoids lifting state up or creating Jotai atoms for temporary state
 
 **First used:** AlertMenu.tsx (Alert Menu Popup feature)
-```
+
+````
 
 **Acceptance Criteria:**
 - [ ] forwardRef pattern documented in AGENTS.md
@@ -295,9 +311,10 @@ export interface AlertMenuState {
   reminderType: AlertType;
   interval: number;
 }
-```
+````
 
 **In shared/constants.ts:**
+
 ```typescript
 // Add in NOTIFICATION CONFIGURATION section
 
@@ -320,6 +337,7 @@ export const validateReminderInterval = (value: unknown): number => {
 ```
 
 **Acceptance Criteria:**
+
 - [ ] ReminderInterval type exported from types.ts
 - [ ] **AlertMenuState interface** exported from types.ts (consolidated location)
 - [ ] REMINDER_INTERVALS array exported from constants.ts
@@ -445,6 +463,7 @@ export const setReminderInterval = (scheduleType: ScheduleType, prayerIndex: num
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Reminder alert atoms created for all 11 prayers
 - [ ] Reminder interval atoms created for all 11 prayers
 - [ ] All 6 helper functions implemented with bounds checking
@@ -510,13 +529,14 @@ export const clearAllScheduledRemindersForSchedule = (scheduleType: ScheduleType
 // UPDATE cleanup() function - add these lines:
 export const cleanup = () => {
   // ... existing prefixes ...
-  clearPrefix('scheduled_reminders_');           // All reminder tracking
-  clearPrefix('preference_reminder_');           // Reminder alert preferences
-  clearPrefix('preference_reminder_interval_');  // Reminder interval preferences
+  clearPrefix('scheduled_reminders_'); // All reminder tracking
+  clearPrefix('preference_reminder_'); // Reminder alert preferences
+  clearPrefix('preference_reminder_interval_'); // Reminder interval preferences
 };
 ```
 
 **Acceptance Criteria:**
+
 - [ ] addOneScheduledReminderForPrayer function added
 - [ ] getAllScheduledRemindersForPrayer function added
 - [ ] clearAllScheduledRemindersForPrayer function added
@@ -602,6 +622,7 @@ export const initializeNotifications = async (
 ```
 
 **Acceptance Criteria:**
+
 - [ ] genReminderNotificationContent returns correct format
 - [ ] Title format: "{Prayer} in {X} min"
 - [ ] Sound: reminders.wav for Sound type, false for Silent
@@ -680,15 +701,18 @@ export const addOneScheduledReminderForPrayer = async (
 export const clearAllScheduledRemindersForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
   const reminders = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
-  await Promise.all(
-    reminders.map((r) => Notifications.cancelScheduledNotificationAsync(r.id))
-  );
+  await Promise.all(reminders.map((r) => Notifications.cancelScheduledNotificationAsync(r.id)));
 
-  logger.info('REMINDER SYSTEM: Cancelled all reminders for prayer:', { scheduleType, prayerIndex, count: reminders.length });
+  logger.info('REMINDER SYSTEM: Cancelled all reminders for prayer:', {
+    scheduleType,
+    prayerIndex,
+    count: reminders.length,
+  });
 };
 ```
 
 **Acceptance Criteria:**
+
 - [ ] addOneScheduledReminderForPrayer schedules at (prayer time - interval)
 - [ ] Uses 'reminder' channel on Android
 - [ ] Returns { id, date, time } for database storage
@@ -762,7 +786,7 @@ async function scheduleReminderNotificationForDate(
         prayerTime,
         englishName,
         intervalMinutes,
-        secondsUntilTrigger
+        secondsUntilTrigger,
       });
       return;
     }
@@ -849,6 +873,7 @@ export const clearAllScheduledRemindersForPrayer = async (scheduleType: Schedule
 ```
 
 **Acceptance Criteria:**
+
 - [ ] REMINDER_BUFFER_SECONDS = 30 with documented rationale
 - [ ] scheduleReminderNotificationForDate handles all edge cases
 - [ ] Istijaba filtering for non-Fridays
@@ -892,6 +917,7 @@ export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Setting at-time to Off atomically sets reminder to Off
 - [ ] Clears scheduled reminders (fire-and-forget)
 - [ ] Errors logged but don't block UI
@@ -899,7 +925,7 @@ export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
 
 ---
 
-**Task 2.6: Update _rescheduleAllNotifications**
+**Task 2.6: Update \_rescheduleAllNotifications**
 
 - **File:** `stores/notifications.ts`
 - **Change Type:** Modified
@@ -961,8 +987,9 @@ const _rescheduleAllNotifications = async () => {
 ```
 
 **Acceptance Criteria:**
-- [ ] _addAllScheduleRemindersForSchedule function added
-- [ ] _rescheduleAllNotifications clears reminder database records
+
+- [ ] \_addAllScheduleRemindersForSchedule function added
+- [ ] \_rescheduleAllNotifications clears reminder database records
 - [ ] Schedules reminders in parallel with at-time notifications
 - [ ] All 4 operations (2 schedules × 2 types) run in parallel
 
@@ -1042,13 +1069,7 @@ const commitAlertMenuChanges = useCallback(
       if (atTimeChanged) {
         // setPrayerAlertType handles the constraint:
         // when at-time = Off, it auto-disables reminder
-        await handleAlertChange(
-          scheduleType,
-          prayerIndex,
-          englishName,
-          arabicName,
-          current.atTimeType
-        );
+        await handleAlertChange(scheduleType, prayerIndex, englishName, arabicName, current.atTimeType);
       }
 
       // 2. Commit reminder change (only if at-time is not Off)
@@ -1094,12 +1115,13 @@ const commitAlertMenuChanges = useCallback(
 // Add to return object:
 return {
   handleAlertChange,
-  commitAlertMenuChanges,  // NEW - for deferred commit
+  commitAlertMenuChanges, // NEW - for deferred commit
   ensurePermissions,
 };
 ```
 
 **Acceptance Criteria:**
+
 - [ ] commitAlertMenuChanges added to useNotification hook
 - [ ] Compares original vs current state before committing
 - [ ] Skips all scheduling if nothing changed (returns true)
@@ -1394,6 +1416,7 @@ const styles = StyleSheet.create({
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Three sections render correctly
 - [ ] Sections show/hide based on LOCAL state (at-time Off hides reminder, reminder Off hides interval)
 - [ ] **NO immediate notification scheduling** - local state only
@@ -1450,6 +1473,7 @@ const styles = StyleSheet.create({
 ```
 
 **Acceptance Criteria:**
+
 - [ ] SVG arrow points right (toward alert icon)
 - [ ] Fill matches COLORS.surface.elevated
 - [ ] Border matches COLORS.surface.elevatedBorder
@@ -1722,6 +1746,7 @@ const styles = StyleSheet.create({
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Modal opens on press (toggle behavior - no debounce)
 - [ ] Tap outside Modal OR tap alert icon again → closes menu
 - [ ] **DEFERRED COMMIT:** On close, calls commitAlertMenuChanges with original vs current state
@@ -1755,12 +1780,14 @@ const styles = StyleSheet.create({
 - **Complexity:** Small
 
 **Pre-deletion verification:**
+
 ```bash
 grep -r "useAlertPopupState" --include="*.ts" --include="*.tsx"
 # Should only show: components/Alert.tsx (which we're modifying)
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Verify only Alert.tsx imports this hook
 - [ ] Delete the file
 - [ ] Verify yarn validate passes
@@ -1780,6 +1807,7 @@ ls -la assets/audio/reminders.wav
 ```
 
 **Acceptance Criteria:**
+
 - [ ] reminders.wav exists in assets/audio
 - [ ] File is valid audio file
 
@@ -2090,6 +2118,7 @@ describe('validateReminderInterval', () => {
 ```
 
 **Edge Case Tests:**
+
 ```typescript
 describe('Edge Cases', () => {
   describe('Midnight Crossing', () => {
@@ -2130,6 +2159,7 @@ describe('Edge Cases', () => {
 ```
 
 **Database Tests:**
+
 ```typescript
 // stores/__tests__/database.test.ts
 
@@ -2164,6 +2194,7 @@ describe('Reminder Record Management', () => {
 ```
 
 **Acceptance Criteria:**
+
 - [ ] ~40 unit test cases added
 - [ ] All reminder atom functions tested
 - [ ] Constraint enforcement tested
@@ -2255,6 +2286,7 @@ describe('Alert Menu Integration', () => {
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Integration test file created
 - [ ] Deferred commit pattern tested (open/close without changes = no impact)
 - [ ] Toggle behavior tested (no debounce)
@@ -2276,6 +2308,7 @@ describe('Alert Menu Integration', () => {
 **Task 4.5: Expanded Manual Testing Checklist**
 
 **Deferred Commit Pattern (NEW):**
+
 - [ ] Open menu, make NO changes, close → zero notification scheduling (verify logs)
 - [ ] Open menu, change at-time to Sound, close → notifications scheduled ON CLOSE
 - [ ] Open menu, change multiple options, close → single commit with all changes
@@ -2283,29 +2316,34 @@ describe('Alert Menu Integration', () => {
 - [ ] Changes reflect immediately in UI while menu open (local state)
 
 **Toggle Behavior (No Debounce):**
+
 - [ ] Tap alert icon → menu opens
 - [ ] Tap alert icon again while menu open → menu closes (with commit)
 - [ ] Rapid tap-tap-tap → toggles correctly, no spam issues
 - [ ] Tap outside menu → closes menu (with commit)
 
 **Auto-Close on Timer (v9):**
+
 - [ ] Open menu, wait for countdown to reach 2 seconds → menu auto-closes
 - [ ] Auto-close triggers commit (verify with logs)
 - [ ] Changes made before auto-close are committed
 - [ ] No changes made + auto-close = zero scheduling impact
 
 **Dim Alert Visual Feedback (v9):**
+
 - [ ] Tap dim alert (not next prayer) → alert lights up when menu opens
 - [ ] Tap bright alert (next prayer) → no change in brightness
 - [ ] Close menu on dim alert → alert returns to dim state
 - [ ] Visual transition is smooth (AnimFill animation)
 
 **App Force-Close Behavior:**
+
 - [ ] Open menu, make changes, force-close app → changes NOT saved
 - [ ] Reopen app → original values shown (not the uncommitted changes)
 - [ ] State remains consistent after force-close
 
 **Core Functionality:**
+
 - [ ] Tap alert icon → popup appears near icon with arrow
 - [ ] Tap outside popup → popup closes (commits changes)
 - [ ] At-time Off/Silent/Sound all work (local state updates immediately)
@@ -2318,36 +2356,43 @@ describe('Alert Menu Integration', () => {
 - [ ] Popup position correct for all prayer rows (top/middle/bottom)
 
 **Platform Tests:**
+
 - [ ] Test on iOS (notifications, sounds)
 - [ ] Test on Android (notification channel, reminders.wav)
 - [ ] Test with notifications disabled in system settings
 
 **Visual/UX Tests:**
+
 - [ ] Popup clamping at screen top (first prayer)
 - [ ] Popup clamping at screen bottom (last prayer)
 - [ ] Arrow alignment with alert icon
 - [ ] Animation smooth on open/close
 
 **Prayer-Specific Tests:**
+
 - [ ] Test Istijaba reminder on Friday (should schedule)
 - [ ] Test Istijaba reminder on Saturday-Thursday (should skip)
 - [ ] Test Midnight/Last Third reminders (night prayers)
 
 **Timing Tests:**
+
 - [ ] Test each interval option (5/10/15/20/25/30 min)
 - [ ] Verify notification shows correct "X minutes before"
 - [ ] Verify reminder sound plays
 
 **State Tests:**
+
 - [ ] Overlay guard (popup doesn't open when overlay active)
 - [ ] Haptic feedback on all interactions
 - [ ] Stale measurements guard (doesn't open before measurements ready)
 
 **Error Tests:**
+
 - [ ] Behavior when notification permission denied
 - [ ] Behavior when scheduling fails (should log, not crash)
 
 **Accessibility Tests:**
+
 - [ ] VoiceOver announces "At prayer time" section and options
 - [ ] TalkBack navigates through all selectable options
 - [ ] Screen reader announces selected state for radio options
@@ -2356,6 +2401,7 @@ describe('Alert Menu Integration', () => {
 - [ ] Focus trap works within modal (no focus escape)
 
 **Performance Tests:**
+
 - [ ] Menu opens without noticeable delay
 - [ ] Commit on close doesn't block UI (verify with slow network simulation)
 - [ ] No excessive re-renders during menu interaction (verify with React DevTools)
@@ -2364,25 +2410,26 @@ describe('Alert Menu Integration', () => {
 
 ## File Modifications Summary
 
-| File                             | Change Type  | Description                                  |
-| -------------------------------- | ------------ | -------------------------------------------- |
-| `shared/types.ts`                | Modified     | Add ReminderInterval type                    |
-| `shared/constants.ts`            | Modified     | Add REMINDER_INTERVALS, validateReminderInterval |
-| `stores/notifications.ts`        | Modified     | Add reminder atoms, scheduling, constraints  |
-| `stores/database.ts`             | Modified     | Add reminder database functions, cleanup     |
-| `shared/notifications.ts`        | Modified     | Add content generator, channel, init         |
-| `device/notifications.ts`        | Modified     | Add device scheduling functions              |
-| `hooks/useNotification.ts`       | Modified     | Add handleReminderChange, handleIntervalChange |
-| `components/AlertMenu.tsx`       | **New**      | Menu content with 3 sections                 |
-| `components/AlertMenuArrow.tsx`  | **New**      | SVG arrow pointing right                     |
-| `components/Alert.tsx`           | Modified     | Add Modal, remove cycling popup              |
-| `hooks/useAlertPopupState.ts`    | **Delete**   | No longer needed                             |
-| `stores/__tests__/notifications.test.ts` | Modified | Add ~40 reminder tests                |
-| `shared/__tests__/notifications.test.ts` | Modified | Add content generator tests          |
-| `shared/__tests__/constants.test.ts` | Modified | Add validation tests                     |
-| `stores/__tests__/database.test.ts` | Modified | Add reminder database tests               |
+| File                                     | Change Type | Description                                      |
+| ---------------------------------------- | ----------- | ------------------------------------------------ |
+| `shared/types.ts`                        | Modified    | Add ReminderInterval type                        |
+| `shared/constants.ts`                    | Modified    | Add REMINDER_INTERVALS, validateReminderInterval |
+| `stores/notifications.ts`                | Modified    | Add reminder atoms, scheduling, constraints      |
+| `stores/database.ts`                     | Modified    | Add reminder database functions, cleanup         |
+| `shared/notifications.ts`                | Modified    | Add content generator, channel, init             |
+| `device/notifications.ts`                | Modified    | Add device scheduling functions                  |
+| `hooks/useNotification.ts`               | Modified    | Add handleReminderChange, handleIntervalChange   |
+| `components/AlertMenu.tsx`               | **New**     | Menu content with 3 sections                     |
+| `components/AlertMenuArrow.tsx`          | **New**     | SVG arrow pointing right                         |
+| `components/Alert.tsx`                   | Modified    | Add Modal, remove cycling popup                  |
+| `hooks/useAlertPopupState.ts`            | **Delete**  | No longer needed                                 |
+| `stores/__tests__/notifications.test.ts` | Modified    | Add ~40 reminder tests                           |
+| `shared/__tests__/notifications.test.ts` | Modified    | Add content generator tests                      |
+| `shared/__tests__/constants.test.ts`     | Modified    | Add validation tests                             |
+| `stores/__tests__/database.test.ts`      | Modified    | Add reminder database tests                      |
 
 **NOT modified (simplified architecture):**
+
 - `stores/ui.ts` - No new atoms needed
 - `app/_layout.tsx` - No portal needed
 
@@ -2402,16 +2449,17 @@ describe('Alert Menu Integration', () => {
 | Lost changes on crash          | Low        | Low    | Acceptable: user can re-open and re-select    |
 
 **Risks Eliminated by v6 Changes:**
+
 - ~~Rapid taps cause issues~~ - Toggle pattern handles naturally, no debounce needed
 - ~~Notification churn during interaction~~ - Deferred commit, only schedules on close
 - ~~Unnecessary rescheduling~~ - State comparison skips if nothing changed
 
 **v9 Risk Considerations:**
-| Risk                           | Likelihood | Impact | Mitigation                                    |
+| Risk | Likelihood | Impact | Mitigation |
 | ------------------------------ | ---------- | ------ | --------------------------------------------- |
-| Auto-close interrupts user     | Low        | Low    | 2s threshold gives enough warning             |
-| Dim animation conflicts        | Low        | Low    | wasDimRef tracks state, AnimFill is atomic    |
-| Countdown atom not ready       | Low        | Medium | Guard: only auto-close if timeLeft > 0        |
+| Auto-close interrupts user | Low | Low | 2s threshold gives enough warning |
+| Dim animation conflicts | Low | Low | wasDimRef tracks state, AnimFill is atomic |
+| Countdown atom not ready | Low | Medium | Guard: only auto-close if timeLeft > 0 |
 
 ---
 
@@ -2437,14 +2485,15 @@ describe('Alert Menu Integration', () => {
 
 ## Specialist Review Scores (Target: 100/100)
 
-| Specialist   | v4 | v5 | v6 | v7 | v8 | Issues Addressed in v9                           |
-| ------------ | -- | -- | -- | -- | -- | ------------------------------------------------ |
-| ReviewerQA   | 87 | 95 | 97 | 97 | 97 | Auto-close, dim feedback, force-close behavior   |
-| Architect    | 80 | 100| 92 | 97 | 97 | Timer integration, AnimFill reuse                |
-| Implementer  | 76 | 93 | 82 | 97 | 97 | countdownAtom, wasDimRef, AnimFill callbacks     |
-| TestWriter   | 41 | 90 | 83 | 87 | 95 | Auto-close tests, dim feedback tests             |
+| Specialist  | v4  | v5  | v6  | v7  | v8  | Issues Addressed in v9                         |
+| ----------- | --- | --- | --- | --- | --- | ---------------------------------------------- |
+| ReviewerQA  | 87  | 95  | 97  | 97  | 97  | Auto-close, dim feedback, force-close behavior |
+| Architect   | 80  | 100 | 92  | 97  | 97  | Timer integration, AnimFill reuse              |
+| Implementer | 76  | 93  | 82  | 97  | 97  | countdownAtom, wasDimRef, AnimFill callbacks   |
+| TestWriter  | 41  | 90  | 83  | 87  | 95  | Auto-close tests, dim feedback tests           |
 
 **v9 Changes (user feedback):**
+
 1. **Auto-close on timer** - Menu auto-closes when countdown ≤ 2 seconds (same as Overlay.tsx)
 2. **Dim alert visual feedback** - Dim alerts light up when menu opens, return to dim on close
 3. **App force-close confirmation** - Explicitly documented that uncommitted changes are lost
@@ -2455,6 +2504,7 @@ describe('Alert Menu Integration', () => {
 8. **New manual tests** - Auto-close, dim feedback, force-close verification
 
 **v10 Fixes (specialist feedback):**
+
 1. **Fixed countdownAtom import** - Changed from non-existent `countdownAtom` to `getCountdownAtom(type)` from `stores/countdown.ts`
 2. **Added useMemo** - Countdown atom selection memoized based on schedule type
 3. **Consolidated AlertMenuState** - Moved interface to single location in `shared/types.ts`
@@ -2462,6 +2512,7 @@ describe('Alert Menu Integration', () => {
 5. **Updated Task 1.1** - Acceptance criteria now includes AlertMenuState interface export
 
 **v11 Fixes (specialist feedback - ReviewerQA 93, Implementer 93):**
+
 1. **commitInProgressRef** - Prevents opening menu during async commit (rapid toggle guard)
 2. **autoCloseTriggeredRef** - Prevents double auto-close trigger
 3. **Task 3.0** - Removed local AlertMenuState, now imports from `@/shared/types`
@@ -2470,6 +2521,7 @@ describe('Alert Menu Integration', () => {
 6. **forwardRef documentation** - Added note that this is a new pattern for codebase
 
 **v12 Final (minor recommendations from specialists - all 96/95+):**
+
 1. **Warning haptic** - Added `Haptics.notificationAsync(Warning)` when commitInProgressRef blocks open
 2. **Race condition tests** - Added 8 explicit test cases for commitInProgressRef and autoCloseTriggeredRef
 3. **Task 0.4** - Added task to document forwardRef pattern in ai/AGENTS.md
