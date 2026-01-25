@@ -1,4 +1,4 @@
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useCallback } from 'react';
@@ -9,7 +9,7 @@ import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import ColorPickerSettings from '@/components/ColorPickerSettings';
 import SettingsToggle from '@/components/SettingsToggle';
-import { TEXT, STYLES, COLORS, SPACING, SIZE, RADIUS, HIT_SLOP } from '@/shared/constants';
+import { TEXT, COLORS, SPACING, SIZE, RADIUS, HIT_SLOP } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
   showSecondsAtom,
@@ -23,7 +23,6 @@ import {
 
 export default function BottomSheetSettings() {
   const { bottom: safeBottom } = useSafeAreaInsets();
-  // Android: ignore bottom insets (nav bar is auto-hidden)
   const bottom = Platform.OS === 'android' ? 0 : safeBottom;
 
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
@@ -45,108 +44,146 @@ export default function BottomSheetSettings() {
   return (
     <BottomSheetModal
       ref={(ref) => setSettingsSheetModal(ref)}
-      snapPoints={['60%']}
+      snapPoints={['70%']}
       enableDynamicSizing={false}
       onDismiss={handleDismiss}
       style={bottomSheetStyles.modal}
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
-      <View style={bottomSheetStyles.container}>
-        <View style={styles.titleRow}>
-          <View style={styles.iconWrapper}>
-            <SettingsIcon width={14} height={14} color={COLORS.icon.primary} />
+      <BottomSheetScrollView style={styles.content} contentContainerStyle={{ paddingBottom: bottom + SPACING.xxxl }}>
+        {/* Header */}
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.title}>Settings</Text>
+            <Text style={styles.subtitle}>Change your preferences</Text>
           </View>
-          <Text style={styles.title}>Settings</Text>
+          <View style={styles.headerIcon}>
+            <SettingsIcon width={16} height={16} color="rgba(165, 180, 252, 0.8)" />
+          </View>
         </View>
 
-        <Pressable
-          style={styles.listItem}
-          onPress={handleAthanPress}
-          hitSlop={HIT_SLOP.md}
-          accessibilityLabel="Change athan"
-          accessibilityHint="Opens athan sound selection"
-          accessibilityRole="button">
-          <Text style={styles.listItemLabel}>Change athan</Text>
-          <View style={styles.rightContainer}>
-            <Pressable
-              style={styles.musicButton}
-              onPress={handleAthanPress}
-              hitSlop={HIT_SLOP.md}
-              accessibilityLabel="Change athan"
-              accessibilityHint="Opens athan sound selection">
+        {/* Sound Card */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Sound</Text>
+          <Text style={styles.cardHint}>Customize athan sound</Text>
+          <Pressable
+            style={styles.athanButton}
+            onPress={handleAthanPress}
+            hitSlop={HIT_SLOP.md}
+            accessibilityLabel="Change athan"
+            accessibilityRole="button">
+            <View style={styles.musicButton}>
               <Text style={styles.musicIcon}>♪</Text>
-            </Pressable>
+            </View>
+            <Text style={styles.athanLabel}>Change athan</Text>
             <Text style={styles.chevron}>›</Text>
+          </Pressable>
+        </View>
+
+        {/* Display Card */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Display</Text>
+          <Text style={styles.cardHint}>Customize how information is shown</Text>
+          <View style={styles.toggleList}>
+            <SettingsToggle label="Show hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
+            <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
+            <SettingsToggle label="Show time passed" value={showTimePassed} onToggle={() => setShowTimePassed(!showTimePassed)} />
+            <SettingsToggle label="Show arabic names" value={showArabicNames} onToggle={() => setShowArabicNames(!showArabicNames)} />
           </View>
-        </Pressable>
-        <SettingsToggle label="Show hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
-        <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
-        <SettingsToggle
-          label="Show time passed"
-          value={showTimePassed}
-          onToggle={() => setShowTimePassed(!showTimePassed)}
-        />
-        <SettingsToggle
-          label="Show arabic names"
-          value={showArabicNames}
-          onToggle={() => setShowArabicNames(!showArabicNames)}
-        />
-        <SettingsToggle
-          label="Show countdown bar"
-          value={countdownBarShown}
-          onToggle={() => setCountdownBarShown(!countdownBarShown)}
-        />
-        <ColorPickerSettings />
-        <View style={{ height: bottom + 20 }} />
-      </View>
+        </View>
+
+        {/* Countdown Bar Card */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Countdown Bar</Text>
+          <Text style={styles.cardHint}>Progress indicator settings</Text>
+          <View style={styles.toggleList}>
+            <SettingsToggle label="Show countdown bar" value={countdownBarShown} onToggle={() => setCountdownBarShown(!countdownBarShown)} />
+            <ColorPickerSettings />
+          </View>
+        </View>
+      </BottomSheetScrollView>
     </BottomSheetModal>
   );
 }
 
 const styles = StyleSheet.create({
-  titleRow: {
+  content: {
+    paddingHorizontal: SPACING.xl,
+  },
+
+  // Header
+  header: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: SPACING.xl,
-    gap: SPACING.gap,
+    justifyContent: 'space-between',
+    paddingTop: SPACING.xxl,
+    paddingHorizontal: SPACING.lg,
+    marginBottom: SPACING.xxxl,
   },
-  iconWrapper: {
-    width: SIZE.iconWrapper.md,
-    height: SIZE.iconWrapper.md,
+  headerIcon: {
+    width: 40,
+    height: 40,
     borderRadius: RADIUS.md,
-    backgroundColor: COLORS.icon.background,
+    backgroundColor: 'rgba(99, 102, 241, 0.15)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    color: COLORS.text.primary,
-    fontSize: TEXT.sizeTitle,
+    fontSize: 22,
     fontFamily: TEXT.family.medium,
+    color: '#fff',
+    letterSpacing: -0.3,
+    marginBottom: SPACING.xxs,
   },
-  listItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: STYLES.prayer.height,
-    paddingHorizontal: STYLES.prayer.padding.left,
-    borderBottomWidth: 1,
-    borderBottomColor: COLORS.border.subtle,
-  },
-  listItemLabel: {
-    color: COLORS.text.primary,
+  subtitle: {
+    fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
+    color: 'rgba(86, 134, 189, 0.725)',
+    marginTop: SPACING.xs,
   },
-  rightContainer: {
+
+  // Cards
+  card: {
+    backgroundColor: 'rgba(99, 102, 241, 0.06)',
+    borderRadius: RADIUS.xl,
+    borderWidth: 0.5,
+    borderColor: 'rgba(99, 102, 241, 0.15)',
+    padding: SPACING.lg,
+    marginBottom: SPACING.md,
+  },
+  cardTitle: {
+    fontSize: TEXT.sizeDetail,
+    fontFamily: TEXT.family.medium,
+    color: '#d8eaf8',
+    marginBottom: SPACING.sm - 1,
+  },
+  cardHint: {
+    fontSize: TEXT.sizeDetail,
+    fontFamily: TEXT.family.regular,
+    color: 'rgba(86, 134, 189, 0.725)',
+  },
+
+  // Toggle list
+  toggleList: {
+    marginTop: SPACING.md,
+    gap: SPACING.xs,
+  },
+
+  // Athan button
+  athanButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: SPACING.gap,
+    marginTop: SPACING.md,
+    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+    borderRadius: RADIUS.md,
+    padding: SPACING.sm,
+    paddingRight: SPACING.md,
   },
   musicButton: {
-    width: SIZE.iconWrapper.sm,
-    height: SIZE.iconWrapper.sm,
-    borderRadius: RADIUS.xl,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
     backgroundColor: COLORS.interactive.active,
     borderWidth: 1,
     borderColor: COLORS.interactive.activeBorder,
@@ -155,7 +192,14 @@ const styles = StyleSheet.create({
   },
   musicIcon: {
     color: COLORS.text.primary,
-    fontSize: SIZE.icon.sm,
+    fontSize: 10,
+  },
+  athanLabel: {
+    flex: 1,
+    marginLeft: SPACING.sm,
+    color: COLORS.text.primary,
+    fontFamily: TEXT.family.regular,
+    fontSize: TEXT.sizeDetail,
   },
   chevron: {
     color: COLORS.icon.primary,

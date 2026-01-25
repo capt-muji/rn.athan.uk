@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { Pressable, Text, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import { TEXT, STYLES, COLORS, SIZE, RADIUS, ANIMATION, HIT_SLOP } from '@/shared/constants';
+import { TEXT, COLORS, SIZE, RADIUS, ANIMATION, HIT_SLOP, SPACING } from '@/shared/constants';
 
 interface SettingsToggleProps {
   label: string;
@@ -39,15 +39,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: STYLES.prayer.height,
-    paddingHorizontal: STYLES.prayer.padding.left,
-    borderBottomWidth: 1,
-    borderBottomColor: COLORS.border.subtle,
+    paddingVertical: SPACING.smd,
   },
   label: {
     color: COLORS.text.primary,
     fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
+    fontSize: TEXT.sizeDetail,
   },
   toggle: {
     width: SIZE.toggle.width,
