@@ -53,7 +53,7 @@ export default function Day({ type }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: SPACING.header,
+    marginBottom: SPACING.xl,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
