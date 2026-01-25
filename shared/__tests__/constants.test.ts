@@ -121,8 +121,8 @@ describe('REMINDER_INTERVALS', () => {
 });
 
 describe('DEFAULT_REMINDER_INTERVAL', () => {
-  it('is 15 minutes', () => {
-    expect(DEFAULT_REMINDER_INTERVAL).toBe(15);
+  it('is 5 minutes', () => {
+    expect(DEFAULT_REMINDER_INTERVAL).toBe(5);
   });
 
   it('is a valid reminder interval', () => {
