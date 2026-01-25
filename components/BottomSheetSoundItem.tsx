@@ -2,12 +2,12 @@ import { AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { Pressable, StyleSheet, Text, ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, Text, LayoutChangeEvent } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import IconView from '@/components/Icon';
 import { useAnimationScale } from '@/hooks/useAnimation';
-import { COLORS, TEXT, SPACING, RADIUS } from '@/shared/constants';
+import { TEXT, SPACING, RADIUS } from '@/shared/constants';
 import { Icon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
@@ -19,9 +19,10 @@ interface Props {
   audio: AudioSource;
   onSelect: (index: number) => void;
   tempSelection: number | null;
+  onLayout?: (e: LayoutChangeEvent) => void;
 }
 
-export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelection }: Props) {
+export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelection, onLayout }: Props) {
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const playingIndex = useAtomValue(playingSoundIndexAtom);
 
@@ -70,27 +71,17 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   const activeColor = '#fff';
   const inactiveColor = 'rgba(86, 134, 189, 0.725)';
 
-  const computedStyleOption: ViewStyle = {
-    backgroundColor: isSelected ? COLORS.interactive.active : 'rgba(99, 102, 241, 0.08)',
-    borderWidth: 1,
-    borderColor: isSelected ? COLORS.interactive.activeBorder : 'transparent',
-  };
-
   return (
-    <AnimatedPressable style={[styles.option, computedStyleOption]} onPress={handlePress}>
+    <Pressable style={styles.option} onPress={handlePress} onLayout={onLayout}>
       <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>Athan {index + 1}</Text>
       <AnimatedPressable
         style={[styles.icon, AnimScale.style]}
         onPress={playSound}
         onPressIn={() => AnimScale.animate(0.9)}
         onPressOut={() => AnimScale.animate(1)}>
-        <IconView
-          type={isPlaying ? Icon.PAUSE : Icon.PLAY}
-          size={18}
-          color={isActive ? activeColor : inactiveColor}
-        />
+        <IconView type={isPlaying ? Icon.PAUSE : Icon.PLAY} size={18} color={isActive ? activeColor : inactiveColor} />
       </AnimatedPressable>
-    </AnimatedPressable>
+    </Pressable>
   );
 }
 
@@ -100,8 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: RADIUS.md,
-    marginHorizontal: SPACING.sm,
-    paddingVertical: SPACING.smd,
+    paddingVertical: SPACING.sm,
     paddingLeft: SPACING.md,
   },
   text: {
