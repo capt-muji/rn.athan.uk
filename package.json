@@ -12,9 +12,9 @@
     "clean": "rm -rf ios android node_modules yarn.lock .expo .vscode .husky && yarn cache clean && rm -rf /tmp/metro-*",
     "add": "echo 'Use: `npx expo install <package>` for Expo/RN packages, yarn add <package> for others'",
     "husky": "husky install && husky add .husky/pre-commit 'npx lint-staged && yarn validate'",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "validate": "tsc --noEmit && eslint . && prettier --check . && jest",
+    "test": "DEBUG_TESTS=1 jest",
+    "test:watch": "DEBUG_TESTS=1 jest --watch",
+    "validate": "tsc --noEmit & T=$!; eslint . & E=$!; prettier --check . & P=$!; jest --silent & J=$!; wait $T && wait $E && wait $P && wait $J",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

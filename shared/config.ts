@@ -9,3 +9,4 @@ export const APP_CONFIG = {
 // Environment helpers
 export const isProd = () => APP_CONFIG.env === 'prod';
 export const isPreview = () => APP_CONFIG.env === 'preview';
+export const isTest = () => process.env.NODE_ENV === 'test';
