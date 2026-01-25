@@ -88,6 +88,7 @@ User taps Alert icon
 ```
 
 **Key principles:**
+
 1. Notification rescheduling ONLY happens on menu close, and ONLY if something changed
 2. No debounce needed (toggle pattern handles spam clicks naturally)
 3. Auto-close at 2s matches Overlay.tsx behavior (still commits changes)
@@ -95,17 +96,17 @@ User taps Alert icon
 
 ### Components Affected
 
-| Component                 | Change Type  | Description                              |
-| ------------------------- | ------------ | ---------------------------------------- |
-| `shared/types.ts`         | Modified     | Add ReminderInterval type and constants  |
-| `stores/notifications.ts` | Modified     | Add reminder atoms, scheduling functions |
-| `stores/database.ts`      | Modified     | Add reminder database functions          |
-| `shared/notifications.ts` | Modified     | Add reminder Android channel             |
-| `device/notifications.ts` | Modified     | Add addOneScheduledReminderForPrayer     |
-| `components/AlertMenu.tsx`| **New**      | Popup menu content component             |
-| `components/AlertMenuArrow.tsx` | **New** | SVG arrow pointing to alert icon        |
-| `components/Alert.tsx`    | Modified     | Add Modal, remove cycling popup          |
-| `hooks/useAlertPopupState.ts` | **Delete** | No longer needed                       |
+| Component                       | Change Type | Description                              |
+| ------------------------------- | ----------- | ---------------------------------------- |
+| `shared/types.ts`               | Modified    | Add ReminderInterval type and constants  |
+| `stores/notifications.ts`       | Modified    | Add reminder atoms, scheduling functions |
+| `stores/database.ts`            | Modified    | Add reminder database functions          |
+| `shared/notifications.ts`       | Modified    | Add reminder Android channel             |
+| `device/notifications.ts`       | Modified    | Add addOneScheduledReminderForPrayer     |
+| `components/AlertMenu.tsx`      | **New**     | Popup menu content component             |
+| `components/AlertMenuArrow.tsx` | **New**     | SVG arrow pointing to alert icon         |
+| `components/Alert.tsx`          | Modified    | Add Modal, remove cycling popup          |
+| `hooks/useAlertPopupState.ts`   | **Delete**  | No longer needed                         |
 
 ### State Changes
 
@@ -138,7 +139,7 @@ None - all local notifications.
 | At-time changed to Off when reminder enabled | Auto-disable reminder, clear scheduled reminders |
 | Istijaba reminder on non-Friday              | Skip scheduling (same as at-time)                |
 | Reminder time already passed                 | Skip scheduling for that day                     |
-| App restart                                  | All preferences restored from MMKV              |
+| App restart                                  | All preferences restored from MMKV               |
 
 ## Error Handling
 
@@ -169,12 +170,12 @@ yarn validate
 
 ## Risks & Mitigations
 
-| Risk                                       | Likelihood | Impact | Mitigation                                  |
-| ------------------------------------------ | ---------- | ------ | ------------------------------------------- |
-| iOS 64 notification limit exceeded         | Low        | High   | 2-day rolling window keeps count at ~44 max |
-| Menu position off-screen                   | Medium     | Medium | Math.max/min clamping for bounds            |
-| Z-index conflicts with Overlay             | Low        | Medium | Guard: don't open if overlay.isOn           |
-| Reminder + at-time race condition          | Low        | Medium | Use withSchedulingLock for all scheduling   |
+| Risk                               | Likelihood | Impact | Mitigation                                  |
+| ---------------------------------- | ---------- | ------ | ------------------------------------------- |
+| iOS 64 notification limit exceeded | Low        | High   | 2-day rolling window keeps count at ~44 max |
+| Menu position off-screen           | Medium     | Medium | Math.max/min clamping for bounds            |
+| Z-index conflicts with Overlay     | Low        | Medium | Guard: don't open if overlay.isOn           |
+| Reminder + at-time race condition  | Low        | Medium | Use withSchedulingLock for all scheduling   |
 
 ## Open Questions
 
