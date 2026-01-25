@@ -7,6 +7,7 @@ import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } fro
 
 import CheckIcon from '@/assets/icons/svg/check.svg';
 import CloseIcon from '@/assets/icons/svg/close.svg';
+import CountdownBar from '@/components/CountdownBar';
 import { TEXT, STYLES, COLORS, SPACING, RADIUS, SHADOW, SIZE, ELEVATION, HIT_SLOP } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
@@ -149,9 +150,7 @@ export default function ColorPickerSettings() {
             </View>
 
             <View style={styles.previewContainer}>
-              <View style={styles.previewBar}>
-                <View style={[styles.previewProgress, { width: '65%', backgroundColor: selectedColor }]} />
-              </View>
+              <CountdownBar previewColor={selectedColor} previewProgress={65} scale={2.5} />
             </View>
 
             <ColorPicker value={selectedColor} onChangeJS={handleColorPreview} style={styles.colorPicker}>
@@ -293,18 +292,6 @@ const styles = StyleSheet.create({
   previewContainer: {
     padding: SPACING.xxxl,
     alignItems: 'center',
-  },
-  previewBar: {
-    height: SIZE.bar.sm,
-    width: '50%',
-    maxWidth: 350,
-    backgroundColor: COLORS.colorPicker.buttonBackground,
-    borderRadius: SIZE.bar.sm / 2,
-    overflow: 'hidden',
-  },
-  previewProgress: {
-    height: '100%',
-    borderRadius: SIZE.bar.sm / 2,
   },
   panel: {
     marginBottom: SPACING.xl,
