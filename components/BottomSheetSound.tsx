@@ -8,8 +8,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ALL_AUDIOS } from '@/assets/audio';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
+import IconView from '@/components/Icon';
 import * as Device from '@/device/notifications';
-import { COLORS, TEXT, SPACING, SIZE, RADIUS } from '@/shared/constants';
+import { TEXT, SPACING, RADIUS } from '@/shared/constants';
+import { Icon } from '@/shared/types';
 import { rescheduleAllNotifications, setSoundPreference } from '@/stores/notifications';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
@@ -20,11 +22,8 @@ interface AudioItem {
 
 export default function BottomSheetSound() {
   const { bottom: safeBottom } = useSafeAreaInsets();
-  // Android: ignore bottom insets (nav bar is auto-hidden)
   const bottom = Platform.OS === 'android' ? 0 : safeBottom;
 
-  // Temporary state to track selection before committing
-  // This allows us to preview the selection without triggering notification updates
   const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
 
   const data = useMemo(
@@ -37,11 +36,7 @@ export default function BottomSheetSound() {
       <BottomSheetSoundItem
         index={parseInt(item.id)}
         audio={item.audio}
-        // onSelect updates the temporary selection when user taps an item
-        // This doesn't trigger any notification updates yet
         onSelect={setTempSoundSelection}
-        // tempSelection is used for UI feedback while the sheet is open
-        // Falls back to the actual stored preference if no temporary selection
         tempSelection={tempSoundSelection}
       />
     ),
@@ -54,16 +49,12 @@ export default function BottomSheetSound() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     clearAudio();
 
-    // Only update preferences and notifications when sheet closes
-    // and user has made a selection
     if (tempSoundSelection === null) return;
 
-    // Update the persisted sound preference with user's selection
     setSoundPreference(tempSoundSelection);
     await Device.updateAndroidChannel(tempSoundSelection);
     await rescheduleAllNotifications();
 
-    // Clear temporary selection state since changes are now persisted
     setTempSoundSelection(null);
   }, [tempSoundSelection]);
 
@@ -78,49 +69,101 @@ export default function BottomSheetSound() {
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
-      <View style={bottomSheetStyles.container}>
-        <View style={styles.titleRow}>
-          <View style={styles.iconWrapper}>
-            <Text style={styles.musicIcon}>♪</Text>
+      <View style={styles.content}>
+        {/* Header */}
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.title}>Select Athan</Text>
+            <Text style={styles.subtitle}>Choose your notification sound</Text>
           </View>
-          <Text style={styles.title}>Select Athan</Text>
+          <View style={styles.headerIcon}>
+            <IconView type={Icon.SPEAKER} size={16} color="rgba(165, 180, 252, 0.8)" />
+          </View>
         </View>
 
-        <BottomSheetFlatList<AudioItem>
-          data={data}
-          keyExtractor={(item: AudioItem) => item.id}
-          renderItem={renderItem}
-          contentContainerStyle={{ paddingBottom: bottom + 20 }}
-          showsVerticalScrollIndicator={false}
-        />
+        {/* Sound List Card */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Available Sounds</Text>
+          <Text style={styles.cardHint}>Tap to select, press play to preview</Text>
+          <BottomSheetFlatList<AudioItem>
+            data={data}
+            keyExtractor={(item: AudioItem) => item.id}
+            renderItem={renderItem}
+            contentContainerStyle={[styles.listContent, { paddingBottom: bottom + SPACING.xl }]}
+            showsVerticalScrollIndicator={false}
+            style={styles.list}
+          />
+        </View>
       </View>
     </BottomSheetModal>
   );
 }
 
 const styles = StyleSheet.create({
-  titleRow: {
+  content: {
+    flex: 1,
+    paddingHorizontal: SPACING.xl,
+  },
+
+  // Header
+  header: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: SPACING.xl,
-    paddingHorizontal: SPACING.xxxl,
-    gap: SPACING.gap,
+    justifyContent: 'space-between',
+    paddingTop: SPACING.xxl,
+    paddingHorizontal: SPACING.lg,
+    marginBottom: SPACING.xxxl,
   },
-  iconWrapper: {
-    width: SIZE.iconWrapper.md,
-    height: SIZE.iconWrapper.md,
+  headerIcon: {
+    width: 40,
+    height: 40,
     borderRadius: RADIUS.md,
-    backgroundColor: COLORS.icon.background,
+    backgroundColor: 'rgba(99, 102, 241, 0.15)',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  musicIcon: {
-    color: COLORS.icon.primary,
-    fontSize: SIZE.icon.sm,
-  },
   title: {
-    color: COLORS.text.primary,
-    fontSize: TEXT.sizeTitle,
+    fontSize: 22,
     fontFamily: TEXT.family.medium,
+    color: '#fff',
+    letterSpacing: -0.3,
+    marginBottom: SPACING.xxs,
+  },
+  subtitle: {
+    fontSize: TEXT.sizeDetail,
+    fontFamily: TEXT.family.regular,
+    color: 'rgba(86, 134, 189, 0.725)',
+    marginTop: SPACING.xs,
+  },
+
+  // Card
+  card: {
+    flex: 1,
+    backgroundColor: 'rgba(99, 102, 241, 0.06)',
+    borderRadius: RADIUS.xl,
+    borderWidth: 0.5,
+    borderColor: 'rgba(99, 102, 241, 0.15)',
+    padding: SPACING.lg,
+    paddingBottom: 0,
+  },
+  cardTitle: {
+    fontSize: TEXT.sizeDetail,
+    fontFamily: TEXT.family.medium,
+    color: '#d8eaf8',
+    marginBottom: SPACING.sm - 1,
+  },
+  cardHint: {
+    fontSize: TEXT.sizeDetail,
+    fontFamily: TEXT.family.regular,
+    color: 'rgba(86, 134, 189, 0.725)',
+  },
+
+  // List
+  list: {
+    marginTop: SPACING.md,
+    marginHorizontal: -SPACING.sm,
+  },
+  listContent: {
+    gap: SPACING.xs,
   },
 });
