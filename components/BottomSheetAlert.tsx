@@ -60,7 +60,7 @@ function SegmentedControl({ options, selected, onSelect, disabled }: SegmentedCo
                 onSelect(option.value);
               }
             }}>
-            <IconView type={option.icon} size={16} color={isSelected ? '#fff' : 'rgba(255,255,255,0.4)'} />
+            <IconView type={option.icon} size={14} color={isSelected ? '#fff' : 'rgba(255,255,255,0.4)'} />
             <Text style={[segmentStyles.label, isSelected && segmentStyles.labelSelected]}>{option.label}</Text>
           </Pressable>
         );
@@ -84,8 +84,8 @@ const segmentStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: SPACING.xs,
-    paddingVertical: SPACING.sm + 2,
+    gap: SPACING.sm,
+    paddingVertical: SPACING.smd,
     borderRadius: RADIUS.md - 2,
   },
   first: {},
@@ -205,16 +205,17 @@ function Stepper({ value, onDecrement, onIncrement }: StepperProps) {
 
 const stepperStyles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
-    padding: 2,
+    padding: 3,
   },
   button: {
-    width: 32,
-    height: 32,
+    paddingVertical: SPACING.smd,
+    paddingHorizontal: SPACING.lg,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: RADIUS.md - 2,
@@ -223,29 +224,29 @@ const stepperStyles = StyleSheet.create({
     opacity: 0.3,
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.medium,
-    color: '#fff',
+    color: 'rgba(148, 163, 184, 0.8)',
   },
   buttonTextDisabled: {
-    color: 'rgba(148, 163, 184, 0.5)',
+    color: 'rgba(148, 163, 184, 0.4)',
   },
   valueContainer: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'baseline',
     justifyContent: 'center',
+    paddingHorizontal: SPACING.sm,
   },
   value: {
-    fontSize: 13,
+    fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.medium,
     color: '#fff',
   },
   unit: {
-    fontSize: 11,
+    fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
     color: 'rgba(148, 163, 184, 0.7)',
-    marginLeft: 2,
+    marginLeft: 3,
   },
 });
 
@@ -269,8 +270,8 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
         }}>
         <IconView
           type={Icon.BELL_RING}
-          size={12}
-          color={selected === AlertType.Silent ? '#fff' : 'rgba(148, 163, 184, 0.8)'}
+          size={14}
+          color={selected === AlertType.Silent ? '#ffffff' : 'rgba(255,255,255,0.4)'}
         />
         <Text style={[typeSelectorStyles.label, selected === AlertType.Silent && typeSelectorStyles.labelSelected]}>
           Silent
@@ -284,8 +285,8 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
         }}>
         <IconView
           type={Icon.SPEAKER}
-          size={12}
-          color={selected === AlertType.Sound ? '#fff' : 'rgba(148, 163, 184, 0.8)'}
+          size={14}
+          color={selected === AlertType.Sound ? '#fff' : 'rgba(255,255,255,0.4)'}
         />
         <Text style={[typeSelectorStyles.label, selected === AlertType.Sound && typeSelectorStyles.labelSelected]}>
           Sound
@@ -297,25 +298,26 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
 
 const typeSelectorStyles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: 'row',
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
-    padding: 2,
+    padding: 3,
   },
   option: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 4,
-    paddingVertical: SPACING.sm,
+    gap: SPACING.sm,
+    paddingVertical: SPACING.smd,
     borderRadius: RADIUS.md - 2,
   },
   selected: {
     backgroundColor: COLORS.interactive.active,
   },
   label: {
-    fontSize: 11,
+    fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.medium,
     color: 'rgba(148, 163, 184, 0.9)',
   },
@@ -442,14 +444,14 @@ export default function BottomSheetAlert() {
           </View>
 
           {isReminderOn && (
-            <View style={styles.cardOptions}>
-              <View style={styles.cardOption}>
-                <Text style={styles.cardOptionLabel}>Type</Text>
+            <View style={styles.reminderOptions}>
+              <View style={styles.optionRow}>
+                <Text style={styles.optionLabel}>Sound</Text>
                 <TypeSelector selected={reminderAlert} onSelect={handleReminderTypeSelect} />
               </View>
 
-              <View style={styles.cardOption}>
-                <Text style={styles.cardOptionLabel}>Before</Text>
+              <View style={styles.optionRow}>
+                <Text style={styles.optionLabel}>Before</Text>
                 <Stepper
                   value={reminderInterval}
                   onDecrement={() => {
@@ -512,7 +514,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: 'rgba(99, 102, 241, 0.06)',
     borderRadius: RADIUS.xl,
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: 'rgba(99, 102, 241, 0.15)',
     padding: SPACING.lg,
     marginBottom: SPACING.md,
@@ -537,23 +539,22 @@ const styles = StyleSheet.create({
     color: 'rgba(148, 163, 184, 0.7)',
     marginTop: 2,
   },
-  cardOptions: {
-    flexDirection: 'row',
+  reminderOptions: {
     marginTop: SPACING.lg,
-    paddingTop: SPACING.lg,
+    paddingTop: SPACING.md,
     borderTopWidth: 1,
     borderTopColor: 'rgba(99, 102, 241, 0.15)',
+    gap: SPACING.sm,
+  },
+  optionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: SPACING.md,
   },
-  cardOption: {
-    flex: 1,
-    gap: SPACING.xs,
-  },
-  cardOptionLabel: {
-    fontSize: 11,
-    fontFamily: TEXT.family.medium,
-    color: 'rgba(148, 163, 184, 0.7)',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
+  optionLabel: {
+    fontSize: 13,
+    fontFamily: TEXT.family.regular,
+    color: 'rgba(148, 163, 184, 0.8)',
+    width: 100,
   },
 });

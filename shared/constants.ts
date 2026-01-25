@@ -211,6 +211,8 @@ export const SPACING = {
   py: 6,
   /** Small spacing (8px) - small gaps, margins */
   sm: 8,
+  /** Gap spacing (10px) - small medium gaps, margins  */
+  smd: 10,
   /** Gap spacing (10px) - common gap between elements */
   gap: 10,
   /** Medium spacing (12px) - default padding, matches SCREEN.paddingHorizontal */
