@@ -203,6 +203,8 @@ export const SCREEN = {
 export const SPACING = {
   /** Negative overlap (-1px) - arrow positioning for tooltips */
   overlap: -1,
+  /** Extra small spacing (2px) - tiny tiny margins */
+  xxs: 2,
   /** Extra small spacing (4px) - tiny margins */
   xs: 4,
   /** Quarter spacing (5px) - between xs and py */
