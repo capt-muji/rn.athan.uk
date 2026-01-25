@@ -210,11 +210,11 @@ const stepperStyles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
-    padding: 3,
+    padding: 2,
   },
   button: {
-    width: 44,
-    height: 36,
+    width: 32,
+    height: 32,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: RADIUS.md - 2,
@@ -223,7 +223,7 @@ const stepperStyles = StyleSheet.create({
     opacity: 0.3,
   },
   buttonText: {
-    fontSize: 22,
+    fontSize: 18,
     fontFamily: TEXT.family.medium,
     color: '#fff',
   },
@@ -237,15 +237,15 @@ const stepperStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   value: {
-    fontSize: TEXT.size,
+    fontSize: 13,
     fontFamily: TEXT.family.medium,
     color: '#fff',
   },
   unit: {
-    fontSize: TEXT.sizeDetail,
+    fontSize: 11,
     fontFamily: TEXT.family.regular,
     color: 'rgba(148, 163, 184, 0.7)',
-    marginLeft: 4,
+    marginLeft: 2,
   },
 });
 
@@ -267,8 +267,14 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
           onSelect(AlertType.Silent);
         }}>
-        <IconView type={Icon.BELL_RING} size={14} color={selected === AlertType.Silent ? '#fff' : 'rgba(148, 163, 184, 0.8)'} />
-        <Text style={[typeSelectorStyles.label, selected === AlertType.Silent && typeSelectorStyles.labelSelected]}>Silent</Text>
+        <IconView
+          type={Icon.BELL_RING}
+          size={12}
+          color={selected === AlertType.Silent ? '#fff' : 'rgba(148, 163, 184, 0.8)'}
+        />
+        <Text style={[typeSelectorStyles.label, selected === AlertType.Silent && typeSelectorStyles.labelSelected]}>
+          Silent
+        </Text>
       </Pressable>
       <Pressable
         style={[typeSelectorStyles.option, selected === AlertType.Sound && typeSelectorStyles.selected]}
@@ -276,8 +282,14 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
           onSelect(AlertType.Sound);
         }}>
-        <IconView type={Icon.SPEAKER} size={14} color={selected === AlertType.Sound ? '#fff' : 'rgba(148, 163, 184, 0.8)'} />
-        <Text style={[typeSelectorStyles.label, selected === AlertType.Sound && typeSelectorStyles.labelSelected]}>Sound</Text>
+        <IconView
+          type={Icon.SPEAKER}
+          size={12}
+          color={selected === AlertType.Sound ? '#fff' : 'rgba(148, 163, 184, 0.8)'}
+        />
+        <Text style={[typeSelectorStyles.label, selected === AlertType.Sound && typeSelectorStyles.labelSelected]}>
+          Sound
+        </Text>
       </Pressable>
     </View>
   );
@@ -288,22 +300,22 @@ const typeSelectorStyles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
-    padding: 3,
+    padding: 2,
   },
   option: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: SPACING.xs,
-    paddingVertical: SPACING.sm + 2,
+    gap: 4,
+    paddingVertical: SPACING.sm,
     borderRadius: RADIUS.md - 2,
   },
   selected: {
     backgroundColor: COLORS.interactive.active,
   },
   label: {
-    fontSize: TEXT.sizeDetail,
+    fontSize: 11,
     fontFamily: TEXT.family.medium,
     color: 'rgba(148, 163, 184, 0.9)',
   },
@@ -405,7 +417,7 @@ export default function BottomSheetAlert() {
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.headerIcon}>
-            <IconView type={Icon.BELL_RING} size={20} color="rgba(165, 180, 252, 0.8)" />
+            <IconView type={Icon.BELL_RING} size={16} color="rgba(165, 180, 252, 0.8)" />
           </View>
           <View>
             <Text style={styles.title}>{sheetState?.prayerEnglish ?? ''}</Text>
@@ -437,7 +449,7 @@ export default function BottomSheetAlert() {
               </View>
 
               <View style={styles.cardOption}>
-                <Text style={styles.cardOptionLabel}>Minutes before</Text>
+                <Text style={styles.cardOptionLabel}>Before</Text>
                 <Stepper
                   value={reminderInterval}
                   onDecrement={() => {
@@ -446,7 +458,8 @@ export default function BottomSheetAlert() {
                   }}
                   onIncrement={() => {
                     const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
-                    if (idx < REMINDER_INTERVALS.length - 1) setReminderInterval(REMINDER_INTERVALS[idx + 1] as ReminderInterval);
+                    if (idx < REMINDER_INTERVALS.length - 1)
+                      setReminderInterval(REMINDER_INTERVALS[idx + 1] as ReminderInterval);
                   }}
                 />
               </View>
@@ -471,12 +484,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: SPACING.md,
+    paddingTop: SPACING.lg,
     marginBottom: SPACING.xl,
   },
   headerIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: RADIUS.lg,
+    width: 32,
+    height: 32,
+    borderRadius: RADIUS.md,
     backgroundColor: 'rgba(99, 102, 241, 0.15)',
     alignItems: 'center',
     justifyContent: 'center',
@@ -490,8 +504,8 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    color: 'rgba(148, 163, 184, 0.8)',
-    marginTop: 2,
+    color: 'rgba(165, 180, 252, 0.7)',
+    marginTop: SPACING.xs,
   },
 
   // Cards - shadcn inspired with indigo theme
@@ -524,18 +538,22 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   cardOptions: {
+    flexDirection: 'row',
     marginTop: SPACING.lg,
     paddingTop: SPACING.lg,
     borderTopWidth: 1,
     borderTopColor: 'rgba(99, 102, 241, 0.15)',
-    gap: SPACING.lg,
+    gap: SPACING.md,
   },
   cardOption: {
-    gap: SPACING.sm,
+    flex: 1,
+    gap: SPACING.xs,
   },
   cardOptionLabel: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
-    color: 'rgba(148, 163, 184, 0.8)',
+    fontSize: 11,
+    fontFamily: TEXT.family.medium,
+    color: 'rgba(148, 163, 184, 0.7)',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
 });
