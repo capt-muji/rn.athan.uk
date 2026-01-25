@@ -2,12 +2,12 @@ import { AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { Pressable, StyleSheet, ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, Text, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import IconView from '@/components/Icon';
-import { useAnimationColor, useAnimationScale } from '@/hooks/useAnimation';
-import { ANIMATION, COLORS, SCREEN, STYLES, TEXT, SPACING, RADIUS } from '@/shared/constants';
+import { useAnimationScale } from '@/hooks/useAnimation';
+import { COLORS, TEXT, SPACING, RADIUS } from '@/shared/constants';
 import { Icon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
@@ -30,39 +30,23 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
 
   const isPlaying = playingIndex === index;
   const isSelected = index === (tempSelection ?? selectedSound);
-
-  const textAnimation = useAnimationColor(isPlaying || isSelected ? 1 : 0, {
-    fromColor: COLORS.text.secondary,
-    toColor: COLORS.text.primary,
-  });
-  const iconAnimation = useAnimationColor(isPlaying ? 1 : 0, {
-    fromColor: COLORS.text.secondary,
-    toColor: COLORS.text.primary,
-  });
+  const isActive = isPlaying || isSelected;
 
   const AnimScale = useAnimationScale(1);
 
-  // Stop playing when another sound is selected
   useEffect(() => {
     if (playingIndex !== index && status.playing) {
       player.pause();
     }
   }, [playingIndex, index, status.playing]);
 
-  // Detect when playback finishes
   useEffect(() => {
     if (isPlaying && !status.playing && status.currentTime > 0 && status.duration > 0) {
-      // Check if playback finished (near the end)
       if (status.currentTime >= status.duration - 0.1) {
         setPlayingSoundIndex(null);
       }
     }
   }, [isPlaying, status.playing, status.currentTime, status.duration]);
-
-  useEffect(() => {
-    textAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
-    iconAnimation.animate(isPlaying || isSelected ? 1 : 0, { duration: ANIMATION.duration });
-  }, [isPlaying, isSelected]);
 
   const handlePress = () => {
     onSelect(index);
@@ -78,27 +62,33 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
       return;
     }
 
-    // Reset to beginning and play
     player.seekTo(0);
     player.play();
     setPlayingSoundIndex(index);
   };
 
+  const activeColor = '#fff';
+  const inactiveColor = 'rgba(86, 134, 189, 0.725)';
+
   const computedStyleOption: ViewStyle = {
-    backgroundColor: isSelected ? COLORS.interactive.active : 'transparent',
+    backgroundColor: isSelected ? COLORS.interactive.active : 'rgba(99, 102, 241, 0.08)',
     borderWidth: 1,
     borderColor: isSelected ? COLORS.interactive.activeBorder : 'transparent',
   };
 
   return (
     <AnimatedPressable style={[styles.option, computedStyleOption]} onPress={handlePress}>
-      <Animated.Text style={[styles.text, textAnimation.style]}>Athan {index + 1}</Animated.Text>
+      <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>Athan {index + 1}</Text>
       <AnimatedPressable
         style={[styles.icon, AnimScale.style]}
         onPress={playSound}
         onPressIn={() => AnimScale.animate(0.9)}
         onPressOut={() => AnimScale.animate(1)}>
-        <IconView type={isPlaying ? Icon.PAUSE : Icon.PLAY} size={22} animatedStyle={iconAnimation.style} />
+        <IconView
+          type={isPlaying ? Icon.PAUSE : Icon.PLAY}
+          size={18}
+          color={isActive ? activeColor : inactiveColor}
+        />
       </AnimatedPressable>
     </AnimatedPressable>
   );
@@ -110,15 +100,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: RADIUS.md,
-    marginHorizontal: SCREEN.paddingHorizontal,
-    height: STYLES.prayer.height,
-    paddingLeft: SPACING.xl,
+    marginHorizontal: SPACING.sm,
+    paddingVertical: SPACING.smd,
+    paddingLeft: SPACING.md,
   },
   text: {
-    fontSize: TEXT.size,
+    fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
   },
   icon: {
-    padding: SPACING.xl,
+    padding: SPACING.md,
   },
 });
