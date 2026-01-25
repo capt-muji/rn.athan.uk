@@ -64,9 +64,9 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      fajr: '05:37',
-      sunrise: addMinutes(-100),
-      dhuhr: addMinutes(-1),
+      fajr: addMinutes(11),
+      sunrise: addMinutes(1),
+      dhuhr: addMinutes(1),
       asr: addMinutes(1),
       magrib: addMinutes(10),
       isha: addMinutes(100),
