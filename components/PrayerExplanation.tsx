@@ -57,13 +57,16 @@ export default function PrayerExplanation({
 
       {/* Info box */}
       <View style={styles.infoBox}>
-        {/* Header with icon and title */}
+        {/* Header with title and icon */}
         <View style={styles.infoHeader}>
+          <Text style={styles.infoTitle}>{prayerName}</Text>
           <View style={styles.iconWrapper}>
             <InfoIcon width={13} height={13} style={{ color: COLORS.icon.primary }} />
           </View>
-          <Text style={styles.infoTitle}>{prayerName}</Text>
         </View>
+
+        {/* Separator */}
+        <View style={styles.separator} />
 
         {/* English explanation */}
         <Text style={styles.infoExplanation}>{explanation}</Text>
@@ -119,8 +122,14 @@ const styles = StyleSheet.create({
   infoHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: SPACING.mid,
-    gap: SPACING.gap,
+    justifyContent: 'space-between',
+    paddingBottom: SPACING.lg,
+  },
+  separator: {
+    height: 0.5,
+    backgroundColor: COLORS.surface.elevatedBorder,
+    opacity: 0.5,
+    marginBottom: SPACING.lg,
   },
   iconWrapper: {
     width: SIZE.iconWrapper.md,
