@@ -7,6 +7,7 @@ import { LogBox, Text } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
+import BottomSheetAlert from '@/components/BottomSheetAlert';
 import BottomSheetSettings from '@/components/BottomSheetSettings';
 import BottomSheetSound from '@/components/BottomSheetSound';
 import InitialWidthMeasurement from '@/components/InitialWidthMeasurement';
@@ -50,6 +51,7 @@ export default function Layout() {
         <Slot />
         <BottomSheetSound />
         <BottomSheetSettings />
+        <BottomSheetAlert />
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );

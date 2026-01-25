@@ -231,6 +231,45 @@ import { Prayer } from '@/components/Prayer';
 - Run: `yarn test` or `yarn test:watch`
 - Mock RN modules in `shared/__mocks__/`
 
+### Component Communication Patterns
+
+**forwardRef + useImperativeHandle (Child exposes state to parent):**
+
+Use when a parent component needs to read internal state from a child component (e.g., for deferred commit on modal close). This is a new pattern for this codebase - use sparingly.
+
+```typescript
+// Child component (AlertMenu.tsx)
+import { forwardRef, useImperativeHandle, useState } from 'react';
+
+export interface AlertMenuRef {
+  getCurrentState: () => AlertMenuState;
+}
+
+export const AlertMenu = forwardRef<AlertMenuRef, Props>(({ type, index }, ref) => {
+  const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(AlertType.Off);
+  const [reminderAlert, setReminderAlert] = useState<AlertType>(AlertType.Off);
+
+  useImperativeHandle(ref, () => ({
+    getCurrentState: () => ({ atTimeAlert, reminderAlert }),
+  }));
+
+  return <View>...</View>;
+});
+
+// Parent component (Alert.tsx)
+import { useRef } from 'react';
+import { AlertMenu, AlertMenuRef } from './AlertMenu';
+
+const alertMenuRef = useRef<AlertMenuRef>(null);
+
+const handleClose = () => {
+  const state = alertMenuRef.current?.getCurrentState();
+  // Compare with original state and commit if changed
+};
+
+return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
+```
+
 ### Refactoring Patterns
 
 **Helper Function Extraction:**

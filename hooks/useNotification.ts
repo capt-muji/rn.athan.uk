@@ -2,7 +2,7 @@ import * as Notifications from 'expo-notifications';
 import { Platform, Alert, Linking } from 'react-native';
 
 import logger from '@/shared/logger';
-import { AlertType, ScheduleType } from '@/shared/types';
+import { AlertMenuState, AlertType, ScheduleType } from '@/shared/types';
 import * as NotificationStore from '@/stores/notifications';
 
 // Configure notifications to show when app is foregrounded
@@ -222,9 +222,113 @@ export const useNotification = () => {
     }
   };
 
+  /**
+   * Commits alert menu changes using deferred commit pattern
+   *
+   * Compares the original state with the current state and only schedules
+   * notifications/reminders if there were actual changes. This prevents
+   * unnecessary rescheduling when the menu is closed without changes.
+   *
+   * @param scheduleType Schedule type (Standard or Extra)
+   * @param prayerIndex Index of the prayer in its schedule (0-based)
+   * @param englishName English prayer name
+   * @param arabicName Arabic prayer name
+   * @param originalState The original state when the menu was opened
+   * @param currentState The current state when the menu is being closed
+   * @returns Promise resolving to boolean indicating success
+   */
+  const commitAlertMenuChanges = async (
+    scheduleType: ScheduleType,
+    prayerIndex: number,
+    englishName: string,
+    arabicName: string,
+    originalState: AlertMenuState,
+    currentState: AlertMenuState
+  ): Promise<boolean> => {
+    try {
+      const atTimeChanged = originalState.atTimeAlert !== currentState.atTimeAlert;
+      const reminderChanged =
+        originalState.reminderAlert !== currentState.reminderAlert ||
+        originalState.reminderInterval !== currentState.reminderInterval;
+
+      // No changes, skip scheduling
+      if (!atTimeChanged && !reminderChanged) {
+        logger.info('NOTIFICATION: No changes detected, skipping commit');
+        return true;
+      }
+
+      // Check permissions if enabling any notification
+      if (
+        (currentState.atTimeAlert !== AlertType.Off || currentState.reminderAlert !== AlertType.Off) &&
+        !(await ensurePermissions())
+      ) {
+        logger.warn('NOTIFICATION: Permissions not granted');
+        return false;
+      }
+
+      // Handle at-time alert changes
+      if (atTimeChanged) {
+        // Persist the new at-time alert type (this also handles constraint enforcement)
+        NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, currentState.atTimeAlert);
+
+        if (currentState.atTimeAlert === AlertType.Off) {
+          await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+        } else {
+          await NotificationStore.addMultipleScheduleNotificationsForPrayer(
+            scheduleType,
+            prayerIndex,
+            englishName,
+            arabicName,
+            currentState.atTimeAlert
+          );
+        }
+      }
+
+      // Handle reminder changes (only if at-time is enabled)
+      if (reminderChanged && currentState.atTimeAlert !== AlertType.Off) {
+        // Persist the new reminder alert type and interval
+        NotificationStore.setReminderAlertType(scheduleType, prayerIndex, currentState.reminderAlert);
+        NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);
+
+        if (currentState.reminderAlert === AlertType.Off) {
+          await NotificationStore.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+        } else {
+          await NotificationStore.addMultipleScheduleRemindersForPrayer(
+            scheduleType,
+            prayerIndex,
+            englishName,
+            arabicName,
+            currentState.reminderAlert
+          );
+        }
+      }
+
+      // If at-time was turned off, reminder is also cleared via constraint enforcement
+      // But we need to clear the scheduled reminders too
+      if (atTimeChanged && currentState.atTimeAlert === AlertType.Off) {
+        await NotificationStore.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+      }
+
+      logger.info('NOTIFICATION: Committed alert menu changes:', {
+        scheduleType,
+        prayerIndex,
+        englishName,
+        atTimeChanged,
+        reminderChanged,
+        currentState,
+      });
+
+      return true;
+    } catch (error) {
+      logger.error('NOTIFICATION: Failed to commit alert menu changes:', error);
+      return false;
+    }
+  };
+
   return {
     handleAlertChange,
     checkInitialPermissions,
     ensurePermissions,
+    commitAlertMenuChanges,
   };
 };

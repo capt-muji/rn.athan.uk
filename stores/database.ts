@@ -194,6 +194,59 @@ export const getAllScheduledNotificationsForPrayer = (scheduleType: ScheduleType
   return notifications;
 };
 
+// =============================================================================
+// REMINDER DATABASE FUNCTIONS
+// =============================================================================
+
+/**
+ * Adds a scheduled reminder record for a prayer
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @param notification Notification data to store
+ */
+export const addOneScheduledReminderForPrayer = (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  notification: NotificationUtils.ScheduledNotification
+) => {
+  const key = `scheduled_reminders_${scheduleType}_${prayerIndex}_${notification.id}`;
+
+  setItem(key, notification);
+
+  logger.info('REMINDER DB: Added:', notification);
+};
+
+/**
+ * Gets all scheduled reminders for a specific prayer
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @returns Array of scheduled reminders
+ */
+export const getAllScheduledRemindersForPrayer = (scheduleType: ScheduleType, prayerIndex: number) => {
+  const prefix = `scheduled_reminders_${scheduleType}_${prayerIndex}`;
+  const reminders = getAllWithPrefix(prefix);
+
+  logger.info('REMINDER DB: Read:', reminders);
+  return reminders;
+};
+
+/**
+ * Clears all scheduled reminder records for a specific prayer
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ */
+export function clearAllScheduledRemindersForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
+  clearPrefix(`scheduled_reminders_${scheduleType}_${prayerIndex}`);
+}
+
+/**
+ * Clears all scheduled reminder records for a schedule type
+ * @param scheduleType Schedule type (Standard or Extra)
+ */
+export function clearAllScheduledRemindersForSchedule(scheduleType: ScheduleType) {
+  clearPrefix(`scheduled_reminders_${scheduleType}`);
+}
+
 /**
  * Clears data from storage - uncomment lines to clear specific data
  * Organized by category for easy selection
@@ -217,6 +270,9 @@ export const cleanup = () => {
   clearPrefix('preference_show_time_passed'); // Show time passed
   clearPrefix('preference_show_arabic_names'); // Show Arabic names
   clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
+  clearPrefix('scheduled_reminders_'); // All scheduled reminder tracking
+  clearPrefix('preference_reminder_alert_'); // Reminder alert preferences
+  clearPrefix('preference_reminder_interval_'); // Reminder interval preferences
   clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
   clearPrefix('popup_update_last_check'); // Last app update check timestamp
   clearPrefix('app_installed_version'); // Installed app version
