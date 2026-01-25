@@ -60,7 +60,7 @@ function SegmentedControl({ options, selected, onSelect, disabled }: SegmentedCo
                 onSelect(option.value);
               }
             }}>
-            <IconView type={option.icon} size={14} color={isSelected ? '#fff' : 'rgba(255,255,255,0.4)'} />
+            <IconView type={option.icon} size={13} color={isSelected ? '#fff' : 'rgb(95, 133, 177)'} />
             <Text style={[segmentStyles.label, isSelected && segmentStyles.labelSelected]}>{option.label}</Text>
           </Pressable>
         );
@@ -94,9 +94,9 @@ const segmentStyles = StyleSheet.create({
     backgroundColor: COLORS.interactive.active,
   },
   label: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
-    color: 'rgba(148, 163, 184, 0.9)',
+    fontSize: TEXT.sizeDetail - 1,
+    fontFamily: TEXT.family.regular,
+    color: 'rgb(95, 133, 177)',
   },
   labelSelected: {
     color: '#fff',
@@ -226,10 +226,10 @@ const stepperStyles = StyleSheet.create({
   buttonText: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.medium,
-    color: 'rgba(148, 163, 184, 0.8)',
+    color: 'rgb(234, 242, 250)',
   },
   buttonTextDisabled: {
-    color: 'rgba(148, 163, 184, 0.4)',
+    color: 'rgb(50, 98, 150)',
   },
   valueContainer: {
     flexDirection: 'row',
@@ -245,7 +245,7 @@ const stepperStyles = StyleSheet.create({
   unit: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    color: 'rgba(148, 163, 184, 0.7)',
+    color: 'rgb(95, 133, 177)',
     marginLeft: 3,
   },
 });
@@ -270,8 +270,8 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
         }}>
         <IconView
           type={Icon.BELL_RING}
-          size={14}
-          color={selected === AlertType.Silent ? '#ffffff' : 'rgba(255,255,255,0.4)'}
+          size={13}
+          color={selected === AlertType.Silent ? '#ffffff' : 'rgb(95, 133, 177)'}
         />
         <Text style={[typeSelectorStyles.label, selected === AlertType.Silent && typeSelectorStyles.labelSelected]}>
           Silent
@@ -283,11 +283,7 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
           onSelect(AlertType.Sound);
         }}>
-        <IconView
-          type={Icon.SPEAKER}
-          size={14}
-          color={selected === AlertType.Sound ? '#fff' : 'rgba(255,255,255,0.4)'}
-        />
+        <IconView type={Icon.SPEAKER} size={13} color={selected === AlertType.Sound ? '#fff' : 'rgb(95, 133, 177)'} />
         <Text style={[typeSelectorStyles.label, selected === AlertType.Sound && typeSelectorStyles.labelSelected]}>
           Sound
         </Text>
@@ -318,8 +314,8 @@ const typeSelectorStyles = StyleSheet.create({
   },
   label: {
     fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
-    color: 'rgba(148, 163, 184, 0.9)',
+    fontFamily: TEXT.family.regular,
+    color: 'rgb(95, 133, 177)',
   },
   labelSelected: {
     color: '#fff',
@@ -418,18 +414,19 @@ export default function BottomSheetAlert() {
       <BottomSheetView style={[styles.content, { paddingBottom: bottom + SPACING.xxxl }]}>
         {/* Header */}
         <View style={styles.header}>
-          <View style={styles.headerIcon}>
-            <IconView type={Icon.BELL_RING} size={16} color="rgba(165, 180, 252, 0.8)" />
-          </View>
           <View>
             <Text style={styles.title}>{sheetState?.prayerEnglish ?? ''}</Text>
             <Text style={styles.subtitle}>Notification settings</Text>
+          </View>
+          <View style={styles.headerIcon}>
+            <IconView type={Icon.BELL_RING} size={16} color="rgba(165, 180, 252, 0.8)" />
           </View>
         </View>
 
         {/* Prayer Alert Card */}
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>At prayer time</Text>
+          <Text style={styles.cardTitle}>Athan</Text>
+          <Text style={styles.cardHint}>Notification at the prayer time</Text>
           <SegmentedControl options={ALERT_OPTIONS} selected={atTimeAlert} onSelect={handleAlertSelect} />
         </View>
 
@@ -438,7 +435,7 @@ export default function BottomSheetAlert() {
           <View style={styles.cardRow}>
             <View>
               <Text style={styles.cardTitle}>Reminder</Text>
-              <Text style={styles.cardHint}>Notify before prayer</Text>
+              <Text style={styles.cardHint}>Notification before prayer</Text>
             </View>
             <Toggle value={isReminderOn} onToggle={handleReminderToggle} disabled={!canEnableReminder} />
           </View>
@@ -485,13 +482,13 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: SPACING.md,
-    paddingTop: SPACING.lg,
-    marginBottom: SPACING.xl,
+    justifyContent: 'space-between',
+    paddingTop: SPACING.xxl,
+    marginBottom: SPACING.xxxl,
   },
   headerIcon: {
-    width: 32,
-    height: 32,
+    width: 40,
+    height: 40,
     borderRadius: RADIUS.md,
     backgroundColor: 'rgba(99, 102, 241, 0.15)',
     alignItems: 'center',
@@ -502,11 +499,12 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.medium,
     color: '#fff',
     letterSpacing: -0.3,
+    marginBottom: SPACING.xxs,
   },
   subtitle: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    color: 'rgba(165, 180, 252, 0.7)',
+    color: 'rgba(86, 134, 189, 0.725)',
     marginTop: SPACING.xs,
   },
 
@@ -525,8 +523,8 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.medium,
-    color: 'rgba(226, 232, 240, 0.9)',
-    marginBottom: SPACING.sm,
+    color: '#d8eaf8',
+    marginBottom: SPACING.sm - 1,
   },
   cardRow: {
     flexDirection: 'row',
@@ -536,14 +534,14 @@ const styles = StyleSheet.create({
   cardHint: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    color: 'rgba(148, 163, 184, 0.7)',
-    marginTop: 2,
+    color: 'rgba(86, 134, 189, 0.725)',
+    marginBottom: SPACING.md,
   },
   reminderOptions: {
     marginTop: SPACING.lg,
-    paddingTop: SPACING.md,
+    paddingTop: SPACING.lg2,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(99, 102, 241, 0.15)',
+    borderTopColor: 'rgba(99, 102, 241, 0.07)',
     gap: SPACING.sm,
   },
   optionRow: {
@@ -554,7 +552,7 @@ const styles = StyleSheet.create({
   optionLabel: {
     fontSize: 13,
     fontFamily: TEXT.family.regular,
-    color: 'rgba(148, 163, 184, 0.8)',
+    color: 'rgb(146, 184, 228)',
     width: 100,
   },
 });
