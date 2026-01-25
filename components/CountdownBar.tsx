@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: GLOSS_HEIGHT,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0)',
   },
   trackShadow: {
     position: 'absolute',
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: GLOSS_HEIGHT,
-    backgroundColor: 'rgba(0, 0, 0, 0.18)',
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
   bar: {
     position: 'absolute',
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: GLOSS_HEIGHT,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
   tipContainer: {
     position: 'absolute',
