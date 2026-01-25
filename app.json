@@ -69,6 +69,7 @@
         {
           "icon": "./assets/icons/config/icon-android-notification.png",
           "sounds": [
+            "./assets/audio/reminders.wav",
             "./assets/audio/athan1.wav",
             "./assets/audio/athan2.wav",
             "./assets/audio/athan3.wav",
