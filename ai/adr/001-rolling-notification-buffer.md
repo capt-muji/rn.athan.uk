@@ -132,23 +132,32 @@ A planned feature will allow users to receive **pre-prayer reminder notification
 ### Feature Description
 
 - Users can set reminders for 5, 10, 15, 20, 25, or 30 minutes before each prayer
-- Reminders are configured **per-prayer** (each prayer can have its own setting)
-- Reminder notifications always include sound
-- The reminder is a separate notification from the on-time prayer notification
+- Reminders are configured **per-prayer** (each prayer can have its own interval)
+- Reminder settings: **On/Off toggle**, then if On: **Silent** or **Sound**
+- Reminder sound uses a **hardcoded `reminder.wav` file** (not user-selectable like at-time Athan sounds)
+- Reminders require an at-time notification to be enabled (cannot have reminder-only)
+- The reminder is a separate notification from the at-time prayer notification
 
 ### Notification Options (with reminders)
 
-| Option                 | Notifications per prayer |
-| ---------------------- | ------------------------ |
-| None                   | 1                        |
-| Silent                 | 1                        |
-| Sound                  | 1                        |
-| Sound + 5min reminder  | 2                        |
-| Sound + 10min reminder | 2                        |
-| Sound + 15min reminder | 2                        |
-| Sound + 20min reminder | 2                        |
-| Sound + 25min reminder | 2                        |
-| Sound + 30min reminder | 2                        |
+Each prayer has two settings:
+
+1. **At-time notification**: None / Silent / Sound (user-selectable Athan)
+2. **Reminder notification**: Off / On+Silent / On+Sound (hardcoded `reminder.wav`)
+
+**Constraint:** Reminders require at-time notification to be enabled. If at-time is "None", reminder is unavailable.
+
+| At-Time Setting | Reminder Setting | Total Notifications | Description                        |
+| --------------- | ---------------- | ------------------- | ---------------------------------- |
+| None            | (unavailable)    | 0                   | No notifications for this prayer   |
+| Silent          | Off              | 1                   | Silent notification at prayer time |
+| Silent          | On + Silent      | 2                   | Silent reminder + silent at-time   |
+| Silent          | On + Sound       | 2                   | Sound reminder + silent at-time    |
+| Sound           | Off              | 1                   | Sound notification at prayer time  |
+| Sound           | On + Silent      | 2                   | Silent reminder + sound at-time    |
+| Sound           | On + Sound       | 2                   | Sound reminder + sound at-time     |
+
+**Reminder intervals:** 5, 10, 15, 20, 25, or 30 minutes before prayer time (configured per-prayer).
 
 ### Impact on Rolling Window
 
@@ -189,9 +198,10 @@ The rolling window has been reduced to improve app responsiveness:
 
 ## Revision History
 
-| Date       | Author | Change                                                                                                  |
-| ---------- | ------ | ------------------------------------------------------------------------------------------------------- |
-| 2026-01-15 | muji   | Initial draft                                                                                           |
-| 2026-01-15 | muji   | Added Planned Feature: Reminder Notifications section (current: 6 days, future: 3 days)                 |
-| 2026-01-17 | muji   | IMPLEMENTED: Reduced NOTIFICATION_ROLLING_DAYS from 6 to 3 to improve app responsiveness                |
-| 2026-01-17 | muji   | IMPLEMENTED: Reduced NOTIFICATION_ROLLING_DAYS from 3 to 2 and NOTIFICATION_REFRESH_HOURS from 24 to 12 |
+| Date       | Author | Change                                                                                                        |
+| ---------- | ------ | ------------------------------------------------------------------------------------------------------------- |
+| 2026-01-15 | muji   | Initial draft                                                                                                 |
+| 2026-01-15 | muji   | Added Planned Feature: Reminder Notifications section (current: 6 days, future: 3 days)                       |
+| 2026-01-17 | muji   | IMPLEMENTED: Reduced NOTIFICATION_ROLLING_DAYS from 6 to 3 to improve app responsiveness                      |
+| 2026-01-17 | muji   | IMPLEMENTED: Reduced NOTIFICATION_ROLLING_DAYS from 3 to 2 and NOTIFICATION_REFRESH_HOURS from 24 to 12       |
+| 2026-01-25 | muji   | Updated reminder feature spec: On/Off toggle + Silent/Sound, hardcoded reminder.wav, requires at-time enabled |
