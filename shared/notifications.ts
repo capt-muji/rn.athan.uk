@@ -1,10 +1,10 @@
-import { format, addDays, isBefore } from 'date-fns';
+import { format, addDays, isBefore, subMinutes } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import { AlertType } from '@/shared/types';
+import { AlertType, ReminderInterval } from '@/shared/types';
 
 export interface ScheduledNotification {
   id: string;
@@ -71,6 +71,55 @@ export const genNotificationContent = (
 };
 
 /**
+ * Gets notification sound for reminder based on alert type
+ * Reminders use a separate sound file (reminders.wav)
+ */
+export const getReminderNotificationSound = (alertType: AlertType): string | false => {
+  if (alertType !== AlertType.Sound) return false;
+
+  return 'reminders.wav';
+};
+
+/**
+ * Creates notification content for pre-prayer reminder
+ * @param englishName English prayer name
+ * @param arabicName Arabic prayer name
+ * @param intervalMinutes Minutes before prayer time
+ * @param alertType Alert type (Off/Silent/Sound)
+ * @returns Notification content input
+ */
+export const genReminderNotificationContent = (
+  englishName: string,
+  arabicName: string,
+  intervalMinutes: ReminderInterval,
+  alertType: AlertType
+): Notifications.NotificationContentInput => {
+  return {
+    title: `${englishName} in ${intervalMinutes} min`,
+    body: `\u200E${arabicName}`, // LTR mark
+    sound: getReminderNotificationSound(alertType),
+    color: '#5a3af7',
+    autoDismiss: true,
+    sticky: false,
+    priority: Notifications.AndroidNotificationPriority.HIGH,
+    interruptionLevel: 'active',
+  };
+};
+
+/**
+ * Creates trigger date for reminder notification
+ * @param date Date string in YYYY-MM-DD format
+ * @param time Time string in HH:mm format
+ * @param intervalMinutes Minutes before prayer time to trigger reminder
+ * @returns Date object for reminder scheduling
+ */
+export const genReminderTriggerDate = (date: string, time: string, intervalMinutes: ReminderInterval): Date => {
+  const prayerTime = genTriggerDate(date, time);
+  const reminderTime = subMinutes(prayerTime, intervalMinutes);
+  return reminderTime;
+};
+
+/**
  * Checks if a scheduled notification is outdated
  */
 export const isNotificationOutdated = (notification: ScheduledNotification): boolean => {
@@ -115,6 +164,22 @@ export const createDefaultAndroidChannel = async () => {
 };
 
 /**
+ * Creates Android notification channel for reminders
+ * Uses a separate channel for pre-prayer reminder notifications
+ */
+export const createReminderAndroidChannel = async () => {
+  if (Platform.OS !== 'android') return;
+
+  await Notifications.setNotificationChannelAsync('reminder', {
+    name: 'Prayer Reminders',
+    sound: 'reminders.wav',
+    importance: Notifications.AndroidImportance.HIGH,
+    enableVibrate: true,
+    vibrationPattern: [0, 250, 250, 250],
+  });
+};
+
+/**
  * Initializes notifications
  * Uses dependency injection to avoid circular import with stores/notifications.ts
  *
@@ -127,6 +192,7 @@ export const initializeNotifications = async (
 ) => {
   try {
     await createDefaultAndroidChannel();
+    await createReminderAndroidChannel();
 
     const hasPermission = await checkPermissions();
     if (hasPermission) await refreshFn();

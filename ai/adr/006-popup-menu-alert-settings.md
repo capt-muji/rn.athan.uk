@@ -9,6 +9,7 @@
 ## Context
 
 The app needs a UI for configuring per-prayer notification settings:
+
 - At-time alert (Off/Silent/Sound)
 - Pre-prayer reminder (Off/Silent/Sound)
 - Reminder interval (5/10/15/20/25/30 minutes)
@@ -40,6 +41,7 @@ Implementation approach:
 **Key architectural decision:** Notification rescheduling only happens when the menu closes, not on each option tap.
 
 **Why:**
+
 - User can make multiple changes (at-time, reminder, interval) before committing
 - Avoids unnecessary notification churn during menu interaction
 - If user makes no changes and closes menu, nothing happens (no impact)
@@ -47,6 +49,7 @@ Implementation approach:
 - If app is force-closed while menu open, changes are NOT committed (intentional)
 
 **How it works:**
+
 1. On menu open: Load current values into local state, snapshot original values
 2. On option tap: Update local state only (UI reflects change immediately)
 3. On menu close: Compare local state vs original snapshot
@@ -54,17 +57,20 @@ Implementation approach:
 5. If unchanged: Do nothing (zero notification impact)
 
 **Menu close triggers (all trigger commit):**
+
 - User taps outside menu (backdrop)
 - User taps alert icon again (toggle)
 - **Auto-close when countdown ≤ 2 seconds** (same as Overlay.tsx)
 - Android back button
 
 **NOT a close trigger (no commit):**
+
 - App force-closed/killed while menu open → uncommitted changes lost (intentional)
 
 ### Visual Feedback for Dim Alerts
 
 When tapping an alert icon that is dim (not the "next" prayer):
+
 1. On menu open: Alert icon lights up (AnimFill.animate(1))
 2. While menu open: Alert stays bright
 3. On menu close: Alert returns to dim state (AnimFill.animate(0))
@@ -72,6 +78,7 @@ When tapping an alert icon that is dim (not the "next" prayer):
 ### No Debounce Needed
 
 The alert icon now acts as a simple toggle for the popup menu:
+
 - First tap → opens menu
 - Second tap (or tap outside) → closes menu
 
@@ -125,9 +132,9 @@ This toggle behavior makes spam-click protection unnecessary. No debounce is imp
 
 **Why Rejected:** Bottom sheets are the established pattern for app-wide settings (sound selection, app settings). Using one for prayer-specific settings creates inconsistency.
 
-### Alternative 2: Portal Pattern in _layout.tsx
+### Alternative 2: Portal Pattern in \_layout.tsx
 
-**Description:** Create AlertMenuPortal.tsx in _layout.tsx with Jotai atoms for state management.
+**Description:** Create AlertMenuPortal.tsx in \_layout.tsx with Jotai atoms for state management.
 
 **Pros:**
 
@@ -136,7 +143,7 @@ This toggle behavior makes spam-click protection unnecessary. No debounce is imp
 
 **Cons:**
 
-- More complex architecture (new file, new atoms, _layout changes)
+- More complex architecture (new file, new atoms, \_layout changes)
 - Requires alertMenuStateAtom in stores/ui.ts
 - Modal achieves same result with less code
 

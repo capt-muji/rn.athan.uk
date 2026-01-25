@@ -174,6 +174,25 @@ export enum AlertType {
   Sound = 2,
 }
 
+/**
+ * Valid reminder intervals in minutes before prayer time
+ * Used for pre-prayer reminder notifications
+ */
+export type ReminderInterval = 5 | 10 | 15 | 20 | 25 | 30;
+
+/**
+ * State for the AlertMenu popup component
+ * Tracks both at-time alert and pre-prayer reminder settings
+ */
+export interface AlertMenuState {
+  /** At-time alert type (Off/Silent/Sound) */
+  atTimeAlert: AlertType;
+  /** Pre-prayer reminder alert type (Off/Silent/Sound) */
+  reminderAlert: AlertType;
+  /** Reminder interval in minutes */
+  reminderInterval: ReminderInterval;
+}
+
 export enum Icon {
   BELL_RING = 'BELL_RING',
   BELL_SLASH = 'BELL_SLASH',

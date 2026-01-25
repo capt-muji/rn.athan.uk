@@ -68,6 +68,32 @@ export const EXTRAS_EXPLANATIONS = [
 export const NOTIFICATION_ROLLING_DAYS = 2;
 
 /**
+ * Valid reminder intervals in minutes before prayer time
+ * User can select from these options in the AlertMenu popup
+ */
+export const REMINDER_INTERVALS = [5, 10, 15, 20, 25, 30] as const;
+
+/**
+ * Default reminder interval (15 minutes before prayer)
+ */
+export const DEFAULT_REMINDER_INTERVAL = 15;
+
+/**
+ * Buffer in seconds - if a reminder would fire within this many seconds, skip it
+ * Prevents scheduling reminders that would fire almost immediately
+ */
+export const REMINDER_BUFFER_SECONDS = 30;
+
+/**
+ * Validates that a value is a valid reminder interval
+ * @param value Value to validate
+ * @returns True if value is a valid ReminderInterval
+ */
+export const validateReminderInterval = (value: number): boolean => {
+  return REMINDER_INTERVALS.includes(value as (typeof REMINDER_INTERVALS)[number]);
+};
+
+/**
  * Hours between automatic notification refreshes
  * Notifications rescheduled when this interval elapses and app enters foreground
  */
