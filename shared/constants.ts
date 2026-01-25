@@ -74,9 +74,9 @@ export const NOTIFICATION_ROLLING_DAYS = 2;
 export const REMINDER_INTERVALS = [5, 10, 15, 20, 25, 30] as const;
 
 /**
- * Default reminder interval (15 minutes before prayer)
+ * Default reminder interval (5 minutes before prayer)
  */
-export const DEFAULT_REMINDER_INTERVAL = 15;
+export const DEFAULT_REMINDER_INTERVAL = 5;
 
 /**
  * Buffer in seconds - if a reminder would fire within this many seconds, skip it

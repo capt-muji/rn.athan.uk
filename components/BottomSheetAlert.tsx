@@ -3,12 +3,7 @@ import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useCallback, useState, useEffect, useMemo } from 'react';
 import { StyleSheet, Text, View, Pressable, Platform, LayoutChangeEvent } from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  withTiming,
-  interpolateColor,
-  useDerivedValue,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming, interpolateColor, useDerivedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
@@ -128,6 +123,7 @@ const segmentStyles = StyleSheet.create({
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
     padding: 3,
+    marginTop: SPACING.md,
   },
   disabled: {
     opacity: 0.4,
@@ -547,7 +543,7 @@ export default function BottomSheetAlert() {
         {/* Prayer Alert Card */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Athan</Text>
-          <Text style={styles.cardHint}>Notification at the prayer time</Text>
+          <Text style={styles.cardHint}>Notify at prayer time</Text>
           <SegmentedControl options={ALERT_OPTIONS} selected={atTimeAlert} onSelect={handleAlertSelect} />
         </View>
 
@@ -556,7 +552,7 @@ export default function BottomSheetAlert() {
           <View style={styles.cardRow}>
             <View>
               <Text style={styles.cardTitle}>Reminder</Text>
-              <Text style={styles.cardHint}>Notification before prayer</Text>
+              <Text style={styles.cardHint}>Notify before prayer time</Text>
             </View>
             <Toggle value={isReminderOn} onToggle={handleReminderToggle} disabled={!canEnableReminder} />
           </View>
@@ -657,7 +653,6 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
     color: 'rgba(86, 134, 189, 0.725)',
-    marginBottom: SPACING.md,
   },
   reminderOptions: {
     marginTop: SPACING.lg,
