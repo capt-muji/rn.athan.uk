@@ -43,6 +43,10 @@ const DEFAULT_COLOR = SWATCH_COLORS[0];
 // COMPONENT
 // =============================================================================
 
+interface ColorPickerSettingsProps {
+  last?: boolean;
+}
+
 /**
  * Color picker settings component for countdown bar customization
  *
@@ -59,7 +63,7 @@ const DEFAULT_COLOR = SWATCH_COLORS[0];
  * // In settings panel
  * <ColorPickerSettings />
  */
-export default function ColorPickerSettings() {
+export default function ColorPickerSettings({ last }: ColorPickerSettingsProps) {
   const { bottom } = useSafeAreaInsets();
   const [countdownBarColor, setCountdownBarColor] = useAtom(countdownBarColorAtom);
   const [countdownBarShown] = useAtom(countdownBarShownAtom);
@@ -176,17 +180,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: STYLES.prayer.height,
-    paddingHorizontal: STYLES.prayer.padding.left,
-    borderBottomWidth: 1,
-    borderBottomColor: COLORS.border.subtle,
+    paddingVertical: SPACING.smd,
   },
 
   // --- Label Styles ---
   label: {
     color: COLORS.text.primary,
     fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
+    fontSize: TEXT.sizeDetail,
   },
   labelDisabled: {
     color: COLORS.text.disabled,
