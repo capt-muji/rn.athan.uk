@@ -1,8 +1,10 @@
-import { BottomSheetModal, BottomSheetFlatList } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { AudioSource } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
-import { useMemo, useCallback, useState } from 'react';
-import { StyleSheet, Text, View, ListRenderItemInfo, Platform } from 'react-native';
+import { useAtomValue } from 'jotai';
+import { useCallback, useState } from 'react';
+import { StyleSheet, Text, View, Platform, LayoutChangeEvent } from 'react-native';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ALL_AUDIOS } from '@/assets/audio';
@@ -10,38 +12,41 @@ import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/comp
 import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
 import IconView from '@/components/Icon';
 import * as Device from '@/device/notifications';
-import { TEXT, SPACING, RADIUS } from '@/shared/constants';
+import { TEXT, SPACING, RADIUS, COLORS, ANIMATION } from '@/shared/constants';
 import { Icon } from '@/shared/types';
-import { rescheduleAllNotifications, setSoundPreference } from '@/stores/notifications';
+import { soundPreferenceAtom, rescheduleAllNotifications, setSoundPreference } from '@/stores/notifications';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 
-interface AudioItem {
-  id: string;
-  audio: AudioSource;
-}
+const ITEM_GAP = SPACING.xs;
 
 export default function BottomSheetSound() {
   const { bottom: safeBottom } = useSafeAreaInsets();
   const bottom = Platform.OS === 'android' ? 0 : safeBottom;
 
+  const selectedSound = useAtomValue(soundPreferenceAtom);
   const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
+  const [itemHeight, setItemHeight] = useState(0);
 
-  const data = useMemo(
-    () => ALL_AUDIOS.map((audio, index) => ({ id: index.toString(), audio: audio as AudioSource })),
-    []
+  const currentSelection = tempSoundSelection ?? selectedSound;
+
+  // Measure first item to get consistent height
+  const handleItemLayout = useCallback(
+    (e: LayoutChangeEvent) => {
+      if (itemHeight === 0) {
+        setItemHeight(e.nativeEvent.layout.height);
+      }
+    },
+    [itemHeight]
   );
 
-  const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<AudioItem>) => (
-      <BottomSheetSoundItem
-        index={parseInt(item.id)}
-        audio={item.audio}
-        onSelect={setTempSoundSelection}
-        tempSelection={tempSoundSelection}
-      />
-    ),
-    [tempSoundSelection]
-  );
+  const indicatorStyle = useAnimatedStyle(() => {
+    const translateY = currentSelection * (itemHeight + ITEM_GAP);
+    return {
+      transform: [{ translateY: withTiming(translateY, { duration: ANIMATION.duration }) }],
+      height: itemHeight,
+      opacity: itemHeight > 0 ? 1 : 0,
+    };
+  }, [currentSelection, itemHeight]);
 
   const clearAudio = useCallback(() => setPlayingSoundIndex(null), []);
 
@@ -69,7 +74,7 @@ export default function BottomSheetSound() {
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
-      <View style={styles.content}>
+      <BottomSheetScrollView style={styles.content} contentContainerStyle={{ paddingBottom: bottom + SPACING.xxxl }}>
         {/* Header */}
         <View style={styles.header}>
           <View>
@@ -83,25 +88,32 @@ export default function BottomSheetSound() {
 
         {/* Sound List Card */}
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Available Sounds</Text>
-          <Text style={styles.cardHint}>Tap to select, press play to preview</Text>
-          <BottomSheetFlatList<AudioItem>
-            data={data}
-            keyExtractor={(item: AudioItem) => item.id}
-            renderItem={renderItem}
-            contentContainerStyle={[styles.listContent, { paddingBottom: bottom + SPACING.xl }]}
-            showsVerticalScrollIndicator={false}
-            style={styles.list}
-          />
+          <Text style={styles.cardHint}>Tap to select, close to save</Text>
+
+          <View style={styles.listContainer}>
+            {/* Sliding indicator */}
+            <Animated.View style={[styles.indicator, indicatorStyle]} />
+
+            {/* Sound items */}
+            {ALL_AUDIOS.map((audio, index) => (
+              <BottomSheetSoundItem
+                key={index}
+                index={index}
+                audio={audio as AudioSource}
+                onSelect={setTempSoundSelection}
+                tempSelection={tempSoundSelection}
+                onLayout={index === 0 ? handleItemLayout : undefined}
+              />
+            ))}
+          </View>
         </View>
-      </View>
+      </BottomSheetScrollView>
     </BottomSheetModal>
   );
 }
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
     paddingHorizontal: SPACING.xl,
   },
 
@@ -138,19 +150,11 @@ const styles = StyleSheet.create({
 
   // Card
   card: {
-    flex: 1,
     backgroundColor: 'rgba(99, 102, 241, 0.06)',
     borderRadius: RADIUS.xl,
     borderWidth: 0.5,
     borderColor: 'rgba(99, 102, 241, 0.15)',
     padding: SPACING.lg,
-    paddingBottom: 0,
-  },
-  cardTitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
-    color: '#d8eaf8',
-    marginBottom: SPACING.sm - 1,
   },
   cardHint: {
     fontSize: TEXT.sizeDetail,
@@ -159,11 +163,18 @@ const styles = StyleSheet.create({
   },
 
   // List
-  list: {
+  listContainer: {
     marginTop: SPACING.md,
-    marginHorizontal: -SPACING.sm,
+    gap: ITEM_GAP,
   },
-  listContent: {
-    gap: SPACING.xs,
+  indicator: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: COLORS.interactive.active,
+    borderRadius: RADIUS.md,
+    borderWidth: 1,
+    borderColor: COLORS.interactive.activeBorder,
   },
 });
