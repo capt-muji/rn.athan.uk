@@ -17,10 +17,11 @@ import { overlayAtom } from '@/stores/overlay';
 import { countdownBarColorAtom } from '@/stores/ui';
 
 const BAR_WIDTH = 100;
-const BAR_HEIGHT = 2;
+const BAR_HEIGHT = 2.5;
+const HIGHLIGHT_HEIGHT = 0.75;
+const SHADOW_HEIGHT = 0.75;
 const WARNING_THRESHOLD = 10;
 
-// Pre-defined timing configs
 const TIMING_CONFIG_FAST = {
   duration: 950,
   easing: Easing.bezier(0.33, 0, 0.1, 1),
@@ -61,19 +62,12 @@ export default function CountdownBar({ type }: Props) {
     opacity: opacityValue.value,
   }));
 
-  const colorStyle = useAnimatedStyle(() => {
+  const barColorStyle = useAnimatedStyle(() => {
     const color = interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]);
     return {
       backgroundColor: color,
-      shadowColor: color,
     };
   });
-
-  const glowStyle = useAnimatedStyle(() => ({
-    shadowOpacity: 0.4,
-    shadowRadius: 7,
-    elevation: 7,
-  }));
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -124,27 +118,23 @@ export default function CountdownBar({ type }: Props) {
       accessibilityValue={{ min: 0, max: 100, now: progress }}
       accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}>
       <Animated.View style={styles.track}>
-        {/* Glow effect */}
-        <Animated.View style={[styles.glow, animatedStyle, colorStyle, glowStyle]} />
+        {/* Track glossy highlight */}
+        <Animated.View style={styles.trackHighlight} />
+        {/* Track glossy shadow */}
+        <Animated.View style={styles.trackShadow} />
         {/* Main countdown bar */}
-        <Animated.View style={[styles.bar, animatedStyle, colorStyle]} />
+        <Animated.View style={[styles.bar, animatedStyle, barColorStyle]}>
+          <Animated.View style={styles.barHighlight} />
+          <Animated.View style={styles.barShadow} />
+        </Animated.View>
       </Animated.View>
     </Animated.View>
   );
 }
 
-const BORDER_WIDTH = 0.5;
-const GAP = 0.25;
-const OUTER_RADIUS = BAR_HEIGHT / 2 + GAP + BORDER_WIDTH;
-
 const styles = StyleSheet.create({
   wrapper: {
     alignSelf: 'center',
-    borderWidth: BORDER_WIDTH,
-    borderColor: '#152866e7',
-    borderRadius: OUTER_RADIUS,
-    padding: GAP,
-    // Shadow for floating effect
     shadowColor: '#03103a',
     shadowOpacity: 0.3,
     shadowRadius: 5,
@@ -154,17 +144,45 @@ const styles = StyleSheet.create({
     height: BAR_HEIGHT,
     width: BAR_WIDTH,
     borderRadius: BAR_HEIGHT / 2,
-    backgroundColor: '#112262e7',
+    backgroundColor: '#1a3a6e',
+    overflow: 'hidden',
+  },
+  trackHighlight: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: HIGHLIGHT_HEIGHT,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  trackShadow: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: SHADOW_HEIGHT,
+    backgroundColor: 'rgba(0, 0, 0, 0.18)',
   },
   bar: {
     position: 'absolute',
     height: '100%',
     borderRadius: BAR_HEIGHT / 2,
+    overflow: 'hidden',
   },
-  glow: {
+  barHighlight: {
     position: 'absolute',
-    height: '100%',
-    borderRadius: BAR_HEIGHT / 2,
-    shadowOffset: { width: 0, height: 0 },
+    top: 0,
+    left: 0,
+    right: 0,
+    height: HIGHLIGHT_HEIGHT,
+    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+  },
+  barShadow: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: SHADOW_HEIGHT,
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
 });
