@@ -603,9 +603,9 @@ export const COLORS = {
     /** Save button text */
     saveText: 'rgba(230, 220, 255, 1)',
     /** Save button background */
-    saveBackground: 'rgba(80, 21, 181, 0.65)',
+    saveBackground: 'rgba(83, 18, 195, 1)',
     /** Save button border */
-    saveBorder: 'rgba(103, 43, 207, 0.75)',
+    saveBorder: 'rgba(103, 43, 207, 1)',
   },
 
   /** Error screen colors */
