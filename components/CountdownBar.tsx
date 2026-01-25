@@ -18,8 +18,7 @@ import { countdownBarColorAtom } from '@/stores/ui';
 
 const BAR_WIDTH = 100;
 const BAR_HEIGHT = 2.5;
-const HIGHLIGHT_HEIGHT = 0.75;
-const SHADOW_HEIGHT = 0.75;
+const GLOSS_HEIGHT = 0.75;
 const WARNING_THRESHOLD = 10;
 
 const TIMING_CONFIG_FAST = {
@@ -118,11 +117,8 @@ export default function CountdownBar({ type }: Props) {
       accessibilityValue={{ min: 0, max: 100, now: progress }}
       accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}>
       <Animated.View style={styles.track}>
-        {/* Track glossy highlight */}
         <Animated.View style={styles.trackHighlight} />
-        {/* Track glossy shadow */}
         <Animated.View style={styles.trackShadow} />
-        {/* Main countdown bar */}
         <Animated.View style={[styles.bar, animatedStyle, barColorStyle]}>
           <Animated.View style={styles.barHighlight} />
           <Animated.View style={styles.barShadow} />
@@ -152,7 +148,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: HIGHLIGHT_HEIGHT,
+    height: GLOSS_HEIGHT,
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
   },
   trackShadow: {
@@ -160,7 +156,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: SHADOW_HEIGHT,
+    height: GLOSS_HEIGHT,
     backgroundColor: 'rgba(0, 0, 0, 0.18)',
   },
   bar: {
@@ -174,7 +170,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: HIGHLIGHT_HEIGHT,
+    height: GLOSS_HEIGHT,
     backgroundColor: 'rgba(255, 255, 255, 0.25)',
   },
   barShadow: {
@@ -182,7 +178,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: SHADOW_HEIGHT,
+    height: GLOSS_HEIGHT,
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
 });
