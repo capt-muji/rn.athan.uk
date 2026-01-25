@@ -1,9 +1,14 @@
 import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useCallback, useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Pressable, Platform } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { useCallback, useState, useEffect, useMemo } from 'react';
+import { StyleSheet, Text, View, Pressable, Platform, LayoutChangeEvent } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+  interpolateColor,
+  useDerivedValue,
+} from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
@@ -40,31 +45,79 @@ interface SegmentedControlProps {
   disabled?: boolean;
 }
 
-function SegmentedControl({ options, selected, onSelect, disabled }: SegmentedControlProps) {
+const SEGMENT_COLORS = {
+  selected: '#fff',
+  unselected: 'rgb(95, 133, 177)',
+};
+
+interface AnimatedSegmentOptionProps {
+  option: SegmentOption;
+  isSelected: boolean;
+  onPress: () => void;
+}
+
+function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentOptionProps) {
+  const progress = useDerivedValue(() => withTiming(isSelected ? 1 : 0, { duration: ANIMATION.duration }));
+
+  const labelStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(progress.value, [0, 1], [SEGMENT_COLORS.unselected, SEGMENT_COLORS.selected]),
+  }));
+
+  const selectedIconOpacity = useAnimatedStyle(() => ({
+    opacity: progress.value,
+  }));
+
+  const unselectedIconOpacity = useAnimatedStyle(() => ({
+    opacity: 1 - progress.value,
+  }));
+
   return (
-    <View style={[segmentStyles.container, disabled && segmentStyles.disabled]}>
-      {options.map((option, index) => {
-        const isSelected = selected === option.value;
-        return (
-          <Pressable
-            key={option.value}
-            style={[
-              segmentStyles.option,
-              index === 0 && segmentStyles.first,
-              index === options.length - 1 && segmentStyles.last,
-              isSelected && segmentStyles.selected,
-            ]}
-            onPress={() => {
-              if (!disabled) {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                onSelect(option.value);
-              }
-            }}>
-            <IconView type={option.icon} size={13} color={isSelected ? '#fff' : 'rgb(95, 133, 177)'} />
-            <Text style={[segmentStyles.label, isSelected && segmentStyles.labelSelected]}>{option.label}</Text>
-          </Pressable>
-        );
-      })}
+    <Pressable style={segmentStyles.option} onPress={onPress}>
+      <View style={segmentStyles.iconContainer}>
+        <Animated.View style={[segmentStyles.iconLayer, unselectedIconOpacity]}>
+          <IconView type={option.icon} size={13} color={SEGMENT_COLORS.unselected} />
+        </Animated.View>
+        <Animated.View style={[segmentStyles.iconLayer, selectedIconOpacity]}>
+          <IconView type={option.icon} size={13} color={SEGMENT_COLORS.selected} />
+        </Animated.View>
+      </View>
+      <Animated.Text style={[segmentStyles.label, labelStyle]}>{option.label}</Animated.Text>
+    </Pressable>
+  );
+}
+
+function SegmentedControl({ options, selected, onSelect, disabled }: SegmentedControlProps) {
+  const [containerWidth, setContainerWidth] = useState(0);
+  const padding = 3;
+
+  const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
+  const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / options.length : 0;
+
+  const indicatorStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: withTiming(selectedIndex * optionWidth, { duration: ANIMATION.duration }) }],
+    width: optionWidth,
+  }));
+
+  const handleLayout = useCallback((e: LayoutChangeEvent) => {
+    setContainerWidth(e.nativeEvent.layout.width);
+  }, []);
+
+  return (
+    <View style={[segmentStyles.container, disabled && segmentStyles.disabled]} onLayout={handleLayout}>
+      {containerWidth > 0 && <Animated.View style={[segmentStyles.indicator, indicatorStyle]} />}
+      {options.map((option) => (
+        <AnimatedSegmentOption
+          key={option.value}
+          option={option}
+          isSelected={selected === option.value}
+          onPress={() => {
+            if (!disabled) {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+              onSelect(option.value);
+            }
+          }}
+        />
+      ))}
     </View>
   );
 }
@@ -79,6 +132,16 @@ const segmentStyles = StyleSheet.create({
   disabled: {
     opacity: 0.4,
   },
+  indicator: {
+    position: 'absolute',
+    top: 3,
+    left: 3,
+    bottom: 3,
+    backgroundColor: COLORS.interactive.active,
+    borderRadius: RADIUS.md - 2,
+    borderWidth: 1,
+    borderColor: COLORS.interactive.activeBorder,
+  },
   option: {
     flex: 1,
     flexDirection: 'row',
@@ -88,20 +151,18 @@ const segmentStyles = StyleSheet.create({
     paddingVertical: SPACING.smd,
     borderRadius: RADIUS.md - 2,
   },
-  first: {},
-  last: {},
-  selected: {
-    backgroundColor: COLORS.interactive.active,
-    borderWidth: 1,
-    borderColor: COLORS.interactive.activeBorder,
+  iconContainer: {
+    width: 13,
+    height: 13,
+  },
+  iconLayer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   label: {
     fontSize: TEXT.sizeDetail - 1,
     fontFamily: TEXT.family.regular,
-    color: 'rgb(95, 133, 177)',
-  },
-  labelSelected: {
-    color: '#fff',
   },
 });
 
@@ -261,35 +322,81 @@ interface TypeSelectorProps {
   onSelect: (value: AlertType) => void;
 }
 
-function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
+interface AnimatedTypeSelectorOptionProps {
+  icon: Icon;
+  label: string;
+  isSelected: boolean;
+  onPress: () => void;
+}
+
+function AnimatedTypeSelectorOption({ icon, label, isSelected, onPress }: AnimatedTypeSelectorOptionProps) {
+  const progress = useDerivedValue(() => withTiming(isSelected ? 1 : 0, { duration: ANIMATION.duration }));
+
+  const labelStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(progress.value, [0, 1], [SEGMENT_COLORS.unselected, SEGMENT_COLORS.selected]),
+  }));
+
+  const selectedIconOpacity = useAnimatedStyle(() => ({
+    opacity: progress.value,
+  }));
+
+  const unselectedIconOpacity = useAnimatedStyle(() => ({
+    opacity: 1 - progress.value,
+  }));
+
   return (
-    <View style={typeSelectorStyles.container}>
-      <Pressable
-        style={[typeSelectorStyles.option, selected === AlertType.Silent && typeSelectorStyles.selected]}
+    <Pressable style={typeSelectorStyles.option} onPress={onPress}>
+      <View style={typeSelectorStyles.iconContainer}>
+        <Animated.View style={[typeSelectorStyles.iconLayer, unselectedIconOpacity]}>
+          <IconView type={icon} size={13} color={SEGMENT_COLORS.unselected} />
+        </Animated.View>
+        <Animated.View style={[typeSelectorStyles.iconLayer, selectedIconOpacity]}>
+          <IconView type={icon} size={13} color={SEGMENT_COLORS.selected} />
+        </Animated.View>
+      </View>
+      <Animated.Text style={[typeSelectorStyles.label, labelStyle]}>{label}</Animated.Text>
+    </Pressable>
+  );
+}
+
+function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
+  const [containerWidth, setContainerWidth] = useState(0);
+  const padding = 3;
+  const optionCount = 2;
+
+  const selectedIndex = selected === AlertType.Silent ? 0 : 1;
+  const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / optionCount : 0;
+
+  const indicatorStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: withTiming(selectedIndex * optionWidth, { duration: ANIMATION.duration }) }],
+    width: optionWidth,
+  }));
+
+  const handleLayout = useCallback((e: LayoutChangeEvent) => {
+    setContainerWidth(e.nativeEvent.layout.width);
+  }, []);
+
+  return (
+    <View style={typeSelectorStyles.container} onLayout={handleLayout}>
+      {containerWidth > 0 && <Animated.View style={[typeSelectorStyles.indicator, indicatorStyle]} />}
+      <AnimatedTypeSelectorOption
+        icon={Icon.BELL_RING}
+        label="Silent"
+        isSelected={selected === AlertType.Silent}
         onPress={() => {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
           onSelect(AlertType.Silent);
-        }}>
-        <IconView
-          type={Icon.BELL_RING}
-          size={13}
-          color={selected === AlertType.Silent ? '#ffffff' : 'rgb(95, 133, 177)'}
-        />
-        <Text style={[typeSelectorStyles.label, selected === AlertType.Silent && typeSelectorStyles.labelSelected]}>
-          Silent
-        </Text>
-      </Pressable>
-      <Pressable
-        style={[typeSelectorStyles.option, selected === AlertType.Sound && typeSelectorStyles.selected]}
+        }}
+      />
+      <AnimatedTypeSelectorOption
+        icon={Icon.SPEAKER}
+        label="Sound"
+        isSelected={selected === AlertType.Sound}
         onPress={() => {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
           onSelect(AlertType.Sound);
-        }}>
-        <IconView type={Icon.SPEAKER} size={13} color={selected === AlertType.Sound ? '#fff' : 'rgb(95, 133, 177)'} />
-        <Text style={[typeSelectorStyles.label, selected === AlertType.Sound && typeSelectorStyles.labelSelected]}>
-          Sound
-        </Text>
-      </Pressable>
+        }}
+      />
     </View>
   );
 }
@@ -302,6 +409,16 @@ const typeSelectorStyles = StyleSheet.create({
     borderRadius: RADIUS.md,
     padding: 3,
   },
+  indicator: {
+    position: 'absolute',
+    top: 3,
+    left: 3,
+    bottom: 3,
+    backgroundColor: COLORS.interactive.active,
+    borderRadius: RADIUS.md - 2,
+    borderWidth: 1,
+    borderColor: COLORS.interactive.activeBorder,
+  },
   option: {
     flex: 1,
     flexDirection: 'row',
@@ -311,18 +428,18 @@ const typeSelectorStyles = StyleSheet.create({
     paddingVertical: SPACING.smd,
     borderRadius: RADIUS.md - 2,
   },
-  selected: {
-    backgroundColor: COLORS.interactive.active,
-    borderWidth: 1,
-    borderColor: COLORS.interactive.activeBorder,
+  iconContainer: {
+    width: 13,
+    height: 13,
+  },
+  iconLayer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   label: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    color: 'rgb(95, 133, 177)',
-  },
-  labelSelected: {
-    color: '#fff',
   },
 });
 
