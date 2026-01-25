@@ -14,72 +14,88 @@ import Animated, {
 
 import { useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS } from '@/shared/constants';
-import type { ScheduleType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { countdownBarColorAtom } from '@/stores/ui';
 
-/** Bar dimensions (percentage-based width for responsiveness) */
+/** Bar dimensions */
 const BAR_WIDTH = 100;
 const BAR_HEIGHT = 2.5;
 const GLOSS_HEIGHT = 0.75;
-const TIP_WIDTH = 1.5;
 
-/** Progress threshold for warning state (last 10%) */
+/** Pulsing tip indicator */
+const TIP_WIDTH = 2;
+const TIP_OFFSET = 0.9;
+const TIP_TINT_AMOUNT = 0.15; // 0 = bar color, 1 = white
+const TIP_OPACITY_MIN = 0.85;
+const TIP_OPACITY_MAX = 1.0;
+const TIP_PULSE_DURATION = 2500;
+
+/** Warning state triggers in final 10% */
 const WARNING_THRESHOLD = 10;
 
-/** Animation timing for large progress jumps (>50%) */
+const TRACK_COLOR = '#1a3a6e';
+
+/** Fast timing for large progress jumps (>50%) */
 const TIMING_CONFIG_FAST = {
   duration: 950,
   easing: Easing.bezier(0.33, 0, 0.1, 1),
 };
 
-/** Animation timing for normal progress updates */
+/** Linear timing for normal 1-second updates */
 const TIMING_CONFIG_LINEAR = {
   duration: 1000,
   easing: Easing.linear,
 };
 
-/** Tip pulse animation duration (one direction) */
-const TIP_PULSE_DURATION = 1200;
-
 interface Props {
-  type: ScheduleType;
+  /** Schedule type for countdown calculation (required in normal mode) */
+  type?: ScheduleType;
+  /** Override color for preview mode (bypasses color atom) */
+  previewColor?: string;
+  /** Fixed progress value for preview mode (0-100, bypasses countdown hook) */
+  previewProgress?: number;
+  /** Scale multiplier for the entire bar (default: 1) */
+  scale?: number;
 }
 
 /**
  * Animated countdown progress bar showing time remaining until next prayer.
  *
  * Features:
- * - Glossy 3D appearance with highlights and shadows
+ * - Glossy 3D appearance with highlight/shadow layers
  * - Smooth width transitions as time elapses
- * - Color transition to warning state in final 10%
- * - Pulsing tip indicator for visual feedback
+ * - Color transition to warning (orange) in final 10%
+ * - Pulsing tip indicator at the leading edge
  * - Respects reduced motion preferences
  * - Hides when overlay is active
+ *
+ * Preview mode: Pass `previewColor` and/or `previewProgress` to render a static
+ * preview that bypasses the countdown hook and color atom.
  */
-export default function CountdownBar({ type }: Props) {
-  const { progress: elapsedProgress, isReady } = useCountdownBar(type);
+export default function CountdownBar({ type, previewColor, previewProgress, scale = 1 }: Props) {
+  const isPreviewMode = previewColor !== undefined || previewProgress !== undefined;
+
+  const { progress: elapsedProgress, isReady } = useCountdownBar(type ?? ScheduleType.Standard);
   const reducedMotion = useReducedMotion();
 
   const overlay = useAtomValue(overlayAtom);
-  const countdownBarColor = useAtomValue(countdownBarColorAtom);
+  const atomColor = useAtomValue(countdownBarColorAtom);
 
-  // Convert elapsed percentage to remaining percentage
-  const progress = isReady ? 100 - elapsedProgress : 0;
-  const isWarning = progress <= WARNING_THRESHOLD;
+  const countdownBarColor = previewColor ?? atomColor;
+  const progress = previewProgress ?? (isReady ? 100 - elapsedProgress : 0);
+  const isWarning = !isPreviewMode && progress <= WARNING_THRESHOLD;
 
-  // Animation shared values
   const widthValue = useSharedValue(progress);
   const colorValue = useSharedValue(0);
   const opacityValue = useSharedValue(overlay.isOn ? 0 : 1);
   const tipPulse = useSharedValue(0);
 
-  // Refs for tracking state changes
   const isFirstRender = useRef(true);
   const isFirstOpacityRender = useRef(true);
   const prevProgress = useRef(progress);
 
-  // Start tip pulse animation
+  // Tip pulse animation (infinite loop)
   useEffect(() => {
     if (reducedMotion) return;
     tipPulse.value = withRepeat(
@@ -91,7 +107,7 @@ export default function CountdownBar({ type }: Props) {
     );
   }, [reducedMotion]);
 
-  // Update progress and color animations
+  // Progress width and warning color animation
   useEffect(() => {
     if (isFirstRender.current) {
       widthValue.value = progress;
@@ -104,6 +120,7 @@ export default function CountdownBar({ type }: Props) {
         widthValue.value = progress;
         colorValue.value = progress > WARNING_THRESHOLD ? 0 : 1;
       } else {
+        // Use fast timing for large jumps (e.g., prayer transition)
         const timingConfig = progressDiff > 50 ? TIMING_CONFIG_FAST : TIMING_CONFIG_LINEAR;
         widthValue.value = withTiming(progress, timingConfig);
         colorValue.value = withTiming(progress > WARNING_THRESHOLD ? 0 : 1, {
@@ -115,8 +132,10 @@ export default function CountdownBar({ type }: Props) {
     prevProgress.current = progress;
   }, [progress, reducedMotion]);
 
-  // Handle visibility based on overlay state
+  // Visibility based on overlay state (skip in preview mode)
   useEffect(() => {
+    if (isPreviewMode) return;
+
     const shouldShow = !overlay.isOn;
 
     if (isFirstOpacityRender.current) {
@@ -130,10 +149,9 @@ export default function CountdownBar({ type }: Props) {
         easing: Easing.linear,
       });
     }
-  }, [overlay.isOn, reducedMotion]);
+  }, [overlay.isOn, reducedMotion, isPreviewMode]);
 
-  // Animated styles
-  const opacityStyle = useAnimatedStyle(() => ({
+  const wrapperOpacityStyle = useAnimatedStyle(() => ({
     opacity: opacityValue.value,
   }));
 
@@ -145,29 +163,30 @@ export default function CountdownBar({ type }: Props) {
     backgroundColor: interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]),
   }));
 
-  const tipContainerStyle = useAnimatedStyle(() => ({
-    left: (widthValue.value / 100) * BAR_WIDTH - 1,
+  const tipPositionStyle = useAnimatedStyle(() => ({
+    left: (widthValue.value / 100) * BAR_WIDTH - TIP_OFFSET,
   }));
 
-  const tipOvalStyle = useAnimatedStyle(() => {
+  const tipAppearanceStyle = useAnimatedStyle(() => {
     const baseColor = interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]);
-    const tintColor = interpolateColor(0.3, [0, 1], [baseColor, '#ffffff']);
+    const tintColor = interpolateColor(TIP_TINT_AMOUNT, [0, 1], [baseColor, '#ffffff']);
     return {
       backgroundColor: tintColor,
-      opacity: 0.5 + tipPulse.value * 0.5,
-      transform: [{ scaleX: 0.8 + tipPulse.value * 0.2 }],
+      opacity: TIP_OPACITY_MIN + tipPulse.value * (TIP_OPACITY_MAX - TIP_OPACITY_MIN),
     };
   });
 
+  const scaleStyle = scale !== 1 ? { transform: [{ scale }] } : undefined;
+
   return (
     <Animated.View
-      style={[styles.wrapper, opacityStyle]}
+      style={[styles.wrapper, wrapperOpacityStyle, scaleStyle]}
       accessible
       accessibilityRole="progressbar"
       accessibilityLabel={`Prayer countdown: ${Math.round(progress)} percent remaining`}
       accessibilityValue={{ min: 0, max: 100, now: progress }}
       accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}>
-      {/* Track (background) */}
+      {/* Track (background trough) */}
       <Animated.View style={styles.track}>
         <Animated.View style={styles.trackHighlight} />
         <Animated.View style={styles.trackShadow} />
@@ -180,8 +199,8 @@ export default function CountdownBar({ type }: Props) {
       </Animated.View>
 
       {/* Pulsing tip indicator */}
-      <Animated.View style={[styles.tipContainer, tipContainerStyle]} pointerEvents="none">
-        <Animated.View style={[styles.tipOval, tipOvalStyle]} />
+      <Animated.View style={[styles.tipContainer, tipPositionStyle]} pointerEvents="none">
+        <Animated.View style={[styles.tipOval, tipAppearanceStyle]} />
       </Animated.View>
     </Animated.View>
   );
@@ -200,7 +219,7 @@ const styles = StyleSheet.create({
     height: BAR_HEIGHT,
     width: BAR_WIDTH,
     borderRadius: BAR_HEIGHT / 2,
-    backgroundColor: '#1a3a6e',
+    backgroundColor: TRACK_COLOR,
     overflow: 'hidden',
   },
   trackHighlight: {
@@ -245,7 +264,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     height: BAR_HEIGHT,
-    width: 0,
+    width: 1,
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'visible',
