@@ -2,17 +2,31 @@ import { AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { Pressable, StyleSheet, Text, LayoutChangeEvent } from 'react-native';
-import Animated from 'react-native-reanimated';
+import { Pressable, StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+  useDerivedValue,
+  interpolateColor,
+} from 'react-native-reanimated';
 
 import IconView from '@/components/Icon';
 import { useAnimationScale } from '@/hooks/useAnimation';
-import { TEXT, SPACING, RADIUS } from '@/shared/constants';
+import { TEXT, SPACING, RADIUS, ANIMATION } from '@/shared/constants';
 import { Icon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+const COUNTDOWN_COLOR_SELECTED = 'rgba(165, 180, 252, 0.8)';
+const COUNTDOWN_COLOR_UNSELECTED = 'rgba(86, 134, 189, 0.725)';
+
+function formatTime(seconds: number): string {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
 
 interface Props {
   index: number;
@@ -34,6 +48,27 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   const isActive = isPlaying || isSelected;
 
   const AnimScale = useAnimationScale(1);
+
+  const remainingTime = status.duration > 0 ? status.duration - status.currentTime : 0;
+  const showCountdown = isPlaying && status.playing && remainingTime > 0;
+
+  // Animated values for countdown
+  const countdownOpacity = useDerivedValue(() =>
+    withTiming(showCountdown ? 1 : 0, { duration: ANIMATION.durationFast })
+  );
+
+  const countdownColorProgress = useDerivedValue(() =>
+    withTiming(isSelected ? 1 : 0, { duration: ANIMATION.durationFast })
+  );
+
+  const countdownStyle = useAnimatedStyle(() => ({
+    opacity: countdownOpacity.value,
+    color: interpolateColor(
+      countdownColorProgress.value,
+      [0, 1],
+      [COUNTDOWN_COLOR_UNSELECTED, COUNTDOWN_COLOR_SELECTED]
+    ),
+  }));
 
   useEffect(() => {
     if (playingIndex !== index && status.playing) {
@@ -74,13 +109,18 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
   return (
     <Pressable style={styles.option} onPress={handlePress} onLayout={onLayout}>
       <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>Athan {index + 1}</Text>
-      <AnimatedPressable
-        style={[styles.icon, AnimScale.style]}
-        onPress={playSound}
-        onPressIn={() => AnimScale.animate(0.9)}
-        onPressOut={() => AnimScale.animate(1)}>
-        <IconView type={isPlaying ? Icon.PAUSE : Icon.PLAY} size={18} color={isActive ? activeColor : inactiveColor} />
-      </AnimatedPressable>
+      <View style={styles.rightContainer}>
+        <Animated.Text style={[styles.countdown, countdownStyle]}>
+          {formatTime(remainingTime)}
+        </Animated.Text>
+        <AnimatedPressable
+          style={[styles.icon, AnimScale.style]}
+          onPress={playSound}
+          onPressIn={() => AnimScale.animate(0.9)}
+          onPressOut={() => AnimScale.animate(1)}>
+          <IconView type={isPlaying ? Icon.PAUSE : Icon.PLAY} size={18} color={isActive ? activeColor : inactiveColor} />
+        </AnimatedPressable>
+      </View>
     </Pressable>
   );
 }
@@ -97,6 +137,15 @@ const styles = StyleSheet.create({
   text: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
+  },
+  rightContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  countdown: {
+    fontSize: TEXT.sizeSmall,
+    fontFamily: TEXT.family.regular,
+    marginRight: SPACING.xs,
   },
   icon: {
     padding: SPACING.md,
