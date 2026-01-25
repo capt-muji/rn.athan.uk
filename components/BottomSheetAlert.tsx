@@ -92,6 +92,8 @@ const segmentStyles = StyleSheet.create({
   last: {},
   selected: {
     backgroundColor: COLORS.interactive.active,
+    borderWidth: 1,
+    borderColor: COLORS.interactive.activeBorder,
   },
   label: {
     fontSize: TEXT.sizeDetail - 1,
@@ -311,6 +313,8 @@ const typeSelectorStyles = StyleSheet.create({
   },
   selected: {
     backgroundColor: COLORS.interactive.active,
+    borderWidth: 1,
+    borderColor: COLORS.interactive.activeBorder,
   },
   label: {
     fontSize: TEXT.sizeDetail,
@@ -484,6 +488,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingTop: SPACING.xxl,
+    paddingHorizontal: SPACING.lg,
     marginBottom: SPACING.xxxl,
   },
   headerIcon: {
