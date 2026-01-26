@@ -305,8 +305,8 @@ describe('getReminderNotificationSound', () => {
     expect(getReminderNotificationSound(AlertType.Silent)).toBe(false);
   });
 
-  it('returns reminders.wav for Sound alert type', () => {
-    expect(getReminderNotificationSound(AlertType.Sound)).toBe('reminders.wav');
+  it('returns reminder.wav for Sound alert type', () => {
+    expect(getReminderNotificationSound(AlertType.Sound)).toBe('reminder.wav');
   });
 });
 
@@ -328,7 +328,7 @@ describe('genReminderNotificationContent', () => {
 
   it('includes sound for Sound alert type', () => {
     const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
-    expect(content.sound).toBe('reminders.wav');
+    expect(content.sound).toBe('reminder.wav');
   });
 
   it('returns false for sound on Silent alert type', () => {

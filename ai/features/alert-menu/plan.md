@@ -122,7 +122,7 @@ If user opens menu, makes changes, but **force-closes the app** (without closing
 ## Key Constraints (from ADR-001)
 
 - Reminders require at-time notification to be enabled
-- Reminder sound is hardcoded `reminders.wav` (not user-selectable)
+- Reminder sound is hardcoded `reminder.wav` (not user-selectable)
 - Each prayer configured independently (per-prayer settings)
 - Max 2 notifications per prayer (at-time + reminder)
 - **Notification limit:** 11 prayers x 2 notifications x 2 days = 44 max (under iOS 64 limit)
@@ -567,7 +567,7 @@ import { AlertType } from '@/shared/types';
  *
  * @example
  * genReminderNotificationContent("Fajr", "الفجر", 15, AlertType.Sound)
- * // Returns: { title: "Fajr in 15 min", body: "‎الفجر", sound: "reminders.wav" }
+ * // Returns: { title: "Fajr in 15 min", body: "‎الفجر", sound: "reminder.wav" }
  */
 export const genReminderNotificationContent = (
   englishName: string,
@@ -578,7 +578,7 @@ export const genReminderNotificationContent = (
   return {
     title: `${englishName} in ${intervalMinutes} min`,
     body: `\u200E${arabicName}`, // LTR mark for Arabic
-    sound: alertType === AlertType.Sound ? 'reminders.wav' : false,
+    sound: alertType === AlertType.Sound ? 'reminder.wav' : false,
     color: '#5a3af7',
     priority: Notifications.AndroidNotificationPriority.HIGH,
     interruptionLevel: 'timeSensitive',
@@ -595,7 +595,7 @@ export const createReminderAndroidChannel = async () => {
   await Notifications.setNotificationChannelAsync('reminder', {
     name: 'Prayer Reminders',
     importance: Notifications.AndroidImportance.HIGH,
-    sound: 'reminders.wav',
+    sound: 'reminder.wav',
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
   });
@@ -625,10 +625,10 @@ export const initializeNotifications = async (
 
 - [ ] genReminderNotificationContent returns correct format
 - [ ] Title format: "{Prayer} in {X} min"
-- [ ] Sound: reminders.wav for Sound type, false for Silent
+- [ ] Sound: reminder.wav for Sound type, false for Silent
 - [ ] createReminderAndroidChannel creates channel with ID 'reminder'
 - [ ] initializeNotifications calls createReminderAndroidChannel
-- [ ] Verify reminders.wav exists in assets/audio
+- [ ] Verify reminder.wav exists in assets/audio
 
 ---
 
@@ -1796,19 +1796,19 @@ grep -r "useAlertPopupState" --include="*.ts" --include="*.tsx"
 
 ### Phase 4: Integration & Testing
 
-**Task 4.1: Verify reminders.wav exists**
+**Task 4.1: Verify reminder.wav exists**
 
 - **Action:** Verify audio file exists
 - **Complexity:** Small
 
 ```bash
-ls -la assets/audio/reminders.wav
+ls -la assets/audio/reminder.wav
 # Should exist and have reasonable file size
 ```
 
 **Acceptance Criteria:**
 
-- [ ] reminders.wav exists in assets/audio
+- [ ] reminder.wav exists in assets/audio
 - [ ] File is valid audio file
 
 ---
@@ -2094,7 +2094,7 @@ describe('commitAlertMenuChanges (Deferred Commit)', () => {
 describe('genReminderNotificationContent', () => {
   it('creates content with "{Prayer} in {X} min" title format');
   it('includes Arabic name in body with LTR mark');
-  it('uses reminders.wav for Sound alert type');
+  it('uses reminder.wav for Sound alert type');
   it('returns false for sound on Silent alert type');
   it('returns false for sound on Off alert type');
   it('sets correct priority and interruptionLevel');
@@ -2358,7 +2358,7 @@ describe('Alert Menu Integration', () => {
 **Platform Tests:**
 
 - [ ] Test on iOS (notifications, sounds)
-- [ ] Test on Android (notification channel, reminders.wav)
+- [ ] Test on Android (notification channel, reminder.wav)
 - [ ] Test with notifications disabled in system settings
 
 **Visual/UX Tests:**
@@ -2444,7 +2444,7 @@ describe('Alert Menu Integration', () => {
 | Notification race conditions   | Low        | Low    | withSchedulingLock on commit                  |
 | Stale measurements             | Low        | Medium | Guard: `if (listMeasurements.pageY === 0)`    |
 | Invalid interval in storage    | Low        | Low    | validateReminderInterval with fallback        |
-| Android reminders.wav missing  | Low        | High   | Task 4.1: Verify file exists                  |
+| Android reminder.wav missing   | Low        | High   | Task 4.1: Verify file exists                  |
 | State comparison bug on close  | Low        | Medium | Unit tests for all state comparison scenarios |
 | Lost changes on crash          | Low        | Low    | Acceptable: user can re-open and re-select    |
 
