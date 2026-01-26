@@ -144,7 +144,7 @@ export const sync = async () => {
   try {
     handleAppUpgrade();
 
-    if (true || needsDataUpdate()) await updatePrayerData();
+    if (needsDataUpdate()) await updatePrayerData();
     else logger.info('SYNC: Data already up to date');
 
     const date = TimeUtils.createLondonDate();
