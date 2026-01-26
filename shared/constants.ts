@@ -324,8 +324,8 @@ export const SHADOW = {
  */
 export const COUNTDOWN_BAR = {
   WIDTH: 100,
-  HEIGHT: 2,
-  GLOSS_HEIGHT: 0.75,
+  HEIGHT: 2.5,
+  GLOSS_HEIGHT: 0.5,
   TRACK_COLOR: '#153569',
   WARNING_THRESHOLD: 10,
 } as const;
