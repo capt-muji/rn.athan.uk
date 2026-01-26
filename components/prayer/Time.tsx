@@ -91,5 +91,9 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
     textAlign: 'center',
     marginLeft: SPACING.lg - 1,
+    // Text shadow for depth
+    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 6,
   },
 });
