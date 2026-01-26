@@ -4,8 +4,9 @@ import { useEffect, useMemo } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import Alert from '@/components/Alert';
-import PrayerTime from '@/components/PrayerTime';
+import Alert from './Alert';
+import Time from './Time';
+
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
@@ -99,7 +100,7 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
       {showArabicNames && (
         <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
       )}
-      <PrayerTime index={index} type={type} isOverlay={isOverlay} />
+      <Time index={index} type={type} isOverlay={isOverlay} />
       <Alert index={index} type={type} isOverlay={isOverlay} />
     </Pressable>
   );

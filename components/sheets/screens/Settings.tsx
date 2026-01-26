@@ -5,10 +5,10 @@ import { useCallback } from 'react';
 import { StyleSheet, Text, View, Pressable, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import ColorPicker from './ColorPicker';
+import { Header, SettingsToggle, renderSheetBackground, renderBackdrop, bottomSheetStyles } from '../parts';
+
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
-import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
-import ColorPickerSettings from '@/components/ColorPickerSettings';
-import SettingsToggle from '@/components/SettingsToggle';
 import { TEXT, COLORS, SPACING, SIZE, RADIUS, HIT_SLOP } from '@/shared/constants';
 import {
   hijriDateEnabledAtom,
@@ -52,16 +52,11 @@ export default function BottomSheetSettings() {
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
       <BottomSheetScrollView style={styles.content} contentContainerStyle={{ paddingBottom: bottom + SPACING.xxxl }}>
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.title}>Settings</Text>
-            <Text style={styles.subtitle}>Set your preferences</Text>
-          </View>
-          <View style={styles.headerIcon}>
-            <SettingsIcon width={16} height={16} color="rgba(165, 180, 252, 0.8)" />
-          </View>
-        </View>
+        <Header
+          title="Settings"
+          subtitle="Set your preferences"
+          icon={<SettingsIcon width={16} height={16} color="rgba(165, 180, 252, 0.8)" />}
+        />
 
         {/* Sound Card */}
         <View style={styles.card}>
@@ -112,7 +107,7 @@ export default function BottomSheetSettings() {
               value={countdownBarShown}
               onToggle={() => setCountdownBarShown(!countdownBarShown)}
             />
-            <ColorPickerSettings />
+            <ColorPicker />
           </View>
         </View>
       </BottomSheetScrollView>
@@ -123,37 +118,6 @@ export default function BottomSheetSettings() {
 const styles = StyleSheet.create({
   content: {
     paddingHorizontal: SPACING.xl,
-  },
-
-  // Header
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: SPACING.xxl,
-    paddingHorizontal: SPACING.lg,
-    marginBottom: SPACING.xxxl,
-  },
-  headerIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: RADIUS.md,
-    backgroundColor: 'rgba(99, 102, 241, 0.15)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 22,
-    fontFamily: TEXT.family.medium,
-    color: '#fff',
-    letterSpacing: -0.3,
-    marginBottom: SPACING.xxs,
-  },
-  subtitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
-    color: 'rgba(86, 134, 189, 0.725)',
-    marginTop: SPACING.xs,
   },
 
   // Cards

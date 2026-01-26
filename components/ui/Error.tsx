@@ -1,7 +1,8 @@
 import * as Updates from 'expo-updates';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import Masjid from '@/components/Masjid';
+import Masjid from './Masjid';
+
 import { COLORS, TEXT, SPACING, RADIUS } from '@/shared/constants';
 import * as Database from '@/stores/database';
 

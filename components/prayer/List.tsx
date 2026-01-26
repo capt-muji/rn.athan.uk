@@ -2,8 +2,9 @@ import { useAtomValue } from 'jotai';
 import { useEffect, useRef } from 'react';
 import { View, StyleSheet, InteractionManager } from 'react-native';
 
-import ActiveBackground from '@/components/ActiveBackground';
-import Prayer from '@/components/Prayer';
+import ActiveBackground from './ActiveBackground';
+
+import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { SCREEN, SPACING } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';

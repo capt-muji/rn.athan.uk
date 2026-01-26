@@ -310,6 +310,64 @@ export const SHADOW = {
 } as const;
 
 // =============================================================================
+// COUNTDOWN BAR
+// =============================================================================
+
+/**
+ * Countdown bar dimensions and configuration
+ */
+export const COUNTDOWN_BAR = {
+  WIDTH: 100,
+  HEIGHT: 2,
+  GLOSS_HEIGHT: 0.75,
+  TRACK_COLOR: '#153569',
+  WARNING_THRESHOLD: 10,
+} as const;
+
+/**
+ * Pulsing tip indicator at the leading edge of countdown bar
+ */
+export const COUNTDOWN_TIP = {
+  WIDTH: 2,
+  OFFSET: 0.9,
+  TINT_AMOUNT: 0.15,
+  PULSE_DURATION: 2500,
+} as const;
+
+// =============================================================================
+// COLOR PICKER
+// =============================================================================
+
+/**
+ * Primary swatch colors for quick selection (first is default)
+ */
+export const COLOR_PICKER_SWATCHES = [
+  '#00ffea', // cyan (default)
+  '#ff3366', // hot pink
+  '#00ff88', // mint green
+  '#ff9500', // orange
+  '#ffee00', // yellow
+  '#7b68ee', // medium purple
+] as const;
+
+/**
+ * Secondary swatch colors for additional options
+ */
+export const COLOR_PICKER_SWATCHES_2 = [
+  '#ff2d2d', // red
+  '#00bfff', // deep sky blue
+  '#ff69b4', // pink
+  '#32cd32', // lime green
+  '#dc2eff', // magenta
+  '#1f8bff', // blue
+] as const;
+
+/**
+ * Default countdown bar color (cyan)
+ */
+export const COLOR_PICKER_DEFAULT = COLOR_PICKER_SWATCHES[0];
+
+// =============================================================================
 // COMPONENT SIZES
 // =============================================================================
 

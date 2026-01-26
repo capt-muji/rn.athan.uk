@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import Navigation from '@/app/Navigation';
-import Error from '@/components/Error';
-import ModalUpdate from '@/components/ModalUpdate';
-import Overlay from '@/components/Overlay';
+import { ModalUpdate } from '@/components/modals';
+import { Overlay } from '@/components/overlay';
+import { Error } from '@/components/ui';
 import { initializeListeners } from '@/device/listeners';
 import { openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
