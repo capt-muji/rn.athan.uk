@@ -186,7 +186,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 const styles = StyleSheet.create({
   wrapper: {
     alignSelf: 'center',
-    shadowColor: '#110856',
+    shadowColor: '#1b0f75',
     shadowOpacity: 0.25,
     shadowRadius: 5,
     elevation: 8,
