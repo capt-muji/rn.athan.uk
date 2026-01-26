@@ -20,21 +20,21 @@ import { countdownBarColorAtom } from '@/stores/ui';
 
 /** Bar dimensions */
 const BAR_WIDTH = 100;
-const BAR_HEIGHT = 2.5;
+const BAR_HEIGHT = 2;
 const GLOSS_HEIGHT = 0.75;
 
 /** Pulsing tip indicator */
 const TIP_WIDTH = 2;
 const TIP_OFFSET = 0.9;
 const TIP_TINT_AMOUNT = 0.15; // 0 = bar color, 1 = white
-const TIP_OPACITY_MIN = 0.85;
-const TIP_OPACITY_MAX = 1.0;
+// const TIP_OPACITY_MIN = 0.85;
+// const TIP_OPACITY_MAX = 1.0;
 const TIP_PULSE_DURATION = 2500;
 
 /** Warning state triggers in final 10% */
 const WARNING_THRESHOLD = 10;
 
-const TRACK_COLOR = '#1a3a6e';
+const TRACK_COLOR = '#153569';
 
 /** Fast timing for large progress jumps (>50%) */
 const TIMING_CONFIG_FAST = {
@@ -172,7 +172,6 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     const tintColor = interpolateColor(TIP_TINT_AMOUNT, [0, 1], [baseColor, '#ffffff']);
     return {
       backgroundColor: tintColor,
-      opacity: TIP_OPACITY_MIN + tipPulse.value * (TIP_OPACITY_MAX - TIP_OPACITY_MIN),
     };
   });
 
@@ -236,7 +235,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: GLOSS_HEIGHT,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   bar: {
     position: 'absolute',
@@ -258,20 +257,17 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: GLOSS_HEIGHT,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   tipContainer: {
     position: 'absolute',
-    top: 0,
     height: BAR_HEIGHT,
-    width: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    overflow: 'visible',
   },
   tipOval: {
     position: 'absolute',
-    width: TIP_WIDTH,
+    width: TIP_WIDTH + 1,
     height: BAR_HEIGHT,
     borderRadius: TIP_WIDTH / 2,
   },
