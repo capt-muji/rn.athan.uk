@@ -2,10 +2,10 @@ import { useAtomValue } from 'jotai';
 import { View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import Countdown from '@/components/Countdown';
-import Day from '@/components/Day';
-import List from '@/components/List';
-import PrayerAgo from '@/components/PrayerAgo';
+import { Countdown } from '@/components/countdown';
+import { Day } from '@/components/day';
+import { List } from '@/components/prayer';
+import { PrayerAgo } from '@/components/prayer';
 import { SCREEN, SIZE } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { showTimePassedAtom } from '@/stores/ui';

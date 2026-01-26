@@ -7,10 +7,8 @@ import { LogBox, Text } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
-import BottomSheetAlert from '@/components/BottomSheetAlert';
-import BottomSheetSettings from '@/components/BottomSheetSettings';
-import BottomSheetSound from '@/components/BottomSheetSound';
-import InitialWidthMeasurement from '@/components/InitialWidthMeasurement';
+import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
+import { InitialWidthMeasurement } from '@/components/ui';
 import { COLORS } from '@/shared/constants';
 import { triggerSyncLoadable } from '@/stores/sync';
 
