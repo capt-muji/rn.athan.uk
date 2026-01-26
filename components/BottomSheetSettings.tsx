@@ -212,5 +212,6 @@ const styles = StyleSheet.create({
     color: COLORS.icon.primary,
     fontSize: SIZE.icon.md,
     fontWeight: '300',
+    lineHeight: SIZE.icon.md,
   },
 });
