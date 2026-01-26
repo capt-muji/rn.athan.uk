@@ -316,6 +316,7 @@ const stepperStyles = StyleSheet.create({
 interface TypeSelectorProps {
   selected: AlertType;
   onSelect: (value: AlertType) => void;
+  disabled?: boolean;
 }
 
 interface AnimatedTypeSelectorOptionProps {
@@ -355,7 +356,7 @@ function AnimatedTypeSelectorOption({ icon, label, isSelected, onPress }: Animat
   );
 }
 
-function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
+function TypeSelector({ selected, onSelect, disabled }: TypeSelectorProps) {
   const [containerWidth, setContainerWidth] = useState(0);
   const padding = 3;
   const optionCount = 2;
@@ -380,6 +381,7 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
         label="Silent"
         isSelected={selected === AlertType.Silent}
         onPress={() => {
+          if (disabled) return;
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
           onSelect(AlertType.Silent);
         }}
@@ -389,6 +391,7 @@ function TypeSelector({ selected, onSelect }: TypeSelectorProps) {
         label="Sound"
         isSelected={selected === AlertType.Sound}
         onPress={() => {
+          if (disabled) return;
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
           onSelect(AlertType.Sound);
         }}
@@ -557,30 +560,30 @@ export default function BottomSheetAlert() {
             <Toggle value={isReminderOn} onToggle={handleReminderToggle} disabled={!canEnableReminder} />
           </View>
 
-          {isReminderOn && (
-            <View style={styles.reminderOptions}>
-              <View style={styles.optionRow}>
-                <Text style={styles.optionLabel}>Sound</Text>
-                <TypeSelector selected={reminderAlert} onSelect={handleReminderTypeSelect} />
-              </View>
-
-              <View style={styles.optionRow}>
-                <Text style={styles.optionLabel}>Before</Text>
-                <Stepper
-                  value={reminderInterval}
-                  onDecrement={() => {
-                    const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
-                    if (idx > 0) setReminderInterval(REMINDER_INTERVALS[idx - 1] as ReminderInterval);
-                  }}
-                  onIncrement={() => {
-                    const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
-                    if (idx < REMINDER_INTERVALS.length - 1)
-                      setReminderInterval(REMINDER_INTERVALS[idx + 1] as ReminderInterval);
-                  }}
-                />
-              </View>
+          <View style={[styles.reminderOptions, !isReminderOn && styles.optionsDisabled]}>
+            <View style={styles.optionRow}>
+              <Text style={styles.optionLabel}>Sound</Text>
+              <TypeSelector selected={reminderAlert} onSelect={handleReminderTypeSelect} disabled={!isReminderOn} />
             </View>
-          )}
+
+            <View style={styles.optionRow}>
+              <Text style={styles.optionLabel}>Before</Text>
+              <Stepper
+                value={reminderInterval}
+                onDecrement={() => {
+                  if (!isReminderOn) return;
+                  const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
+                  if (idx > 0) setReminderInterval(REMINDER_INTERVALS[idx - 1] as ReminderInterval);
+                }}
+                onIncrement={() => {
+                  if (!isReminderOn) return;
+                  const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
+                  if (idx < REMINDER_INTERVALS.length - 1)
+                    setReminderInterval(REMINDER_INTERVALS[idx + 1] as ReminderInterval);
+                }}
+              />
+            </View>
+          </View>
         </View>
       </BottomSheetView>
     </BottomSheetModal>
@@ -660,6 +663,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: 'rgba(99, 102, 241, 0.07)',
     gap: SPACING.sm,
+  },
+  optionsDisabled: {
+    opacity: 0.4,
   },
   optionRow: {
     flexDirection: 'row',
