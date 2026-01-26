@@ -283,6 +283,12 @@ export const SHADOW = {
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
+  /** Prayer row shadow (extras page) - more compact */
+  prayerExtras: {
+    shadowOffset: { width: 1, height: 6 },
+    shadowOpacity: 0.35,
+    shadowRadius: 6,
+  },
   /** Settings button shadow */
   button: {
     shadowOffset: { width: 1, height: 10 },
@@ -623,6 +629,8 @@ export const COLORS = {
   shadow: {
     /** Active prayer shadow */
     prayer: '#081a76',
+    /** Active prayer shadow (extras page) */
+    prayerExtras: '#38086e',
     /** Settings button shadow */
     button: '#27035c',
     /** Alert popup shadow */
@@ -645,6 +653,8 @@ export const COLORS = {
   glow: {
     /** Purple glow for overlay component */
     overlay: '#8000ff',
+    /** Purple glow for overlay component (extras page) */
+    overlayExtras: '#630fb7',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -653,6 +663,8 @@ export const COLORS = {
   prayer: {
     /** Active prayer highlight background */
     activeBackground: '#0847e5',
+    /** Active prayer highlight background (extras page) */
+    activeBackgroundExtras: '#5c00b8',
   },
 
   prayerAgo: {

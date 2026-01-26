@@ -28,9 +28,12 @@ export default function ActiveBackground({ type }: Props) {
   // Initialize animations with starting values
   // These shared values are created once and persist between renders
   const AnimTranslateY = useAnimationTranslateY(yPosition);
+  const activeColor =
+    type === ScheduleType.Standard ? COLORS.prayer.activeBackground : COLORS.prayer.activeBackgroundExtras;
+
   const AnimBackgroundColor = useAnimationBackgroundColor(1, {
     fromColor: 'transparent',
-    toColor: COLORS.prayer.activeBackground,
+    toColor: activeColor,
   });
 
   // This effect runs after render and handles all animation logic
@@ -44,8 +47,13 @@ export default function ActiveBackground({ type }: Props) {
     AnimTranslateY.animate(yPosition);
   }, [yPosition]); // Dependencies ensure animations update when values change
 
+  const isStandard = type === ScheduleType.Standard;
+  const shadowStyle = isStandard ? SHADOW.prayer : SHADOW.prayerExtras;
+  const shadowColor = isStandard ? COLORS.shadow.prayer : COLORS.shadow.prayerExtras;
+
   const computedStyles: ViewStyle = {
-    shadowColor: COLORS.shadow.prayer,
+    ...shadowStyle,
+    shadowColor,
     elevation: 0, // Must be 0 to stay below Prayer components on Android
     zIndex: -1, // Ensure it's behind prayer text
   };
@@ -55,7 +63,6 @@ export default function ActiveBackground({ type }: Props) {
 
 const styles = StyleSheet.create({
   background: {
-    ...SHADOW.prayer,
     position: 'absolute',
     width: '100%',
     height: STYLES.prayer.height,

@@ -84,6 +84,13 @@ export default function Overlay() {
     left: dateMeasurements?.pageX ?? 0,
   };
 
+  // Colors and shadows based on schedule type
+  const isExtra = overlay.scheduleType === ScheduleType.Extra;
+  const glowColor = isExtra ? COLORS.glow.overlayExtras : COLORS.glow.overlay;
+  const activeBackgroundColor = isExtra ? COLORS.prayer.activeBackgroundExtras : COLORS.prayer.activeBackground;
+  const shadowColor = isExtra ? COLORS.shadow.prayerExtras : COLORS.shadow.prayer;
+  const shadowStyle = isExtra ? SHADOW.prayerExtras : SHADOW.prayer;
+
   const computedStylePrayer: ViewStyle = {
     top:
       (listMeasurements?.pageY ?? 0) +
@@ -91,7 +98,9 @@ export default function Overlay() {
       overlay.selectedPrayerIndex * STYLES.prayer.height,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
-    ...(selectedPrayer.isNext && styles.activeBackground),
+    ...shadowStyle,
+    shadowColor,
+    ...(selectedPrayer.isNext && { backgroundColor: activeBackgroundColor }),
   };
 
   // First 3 items (indices 0, 1, 2) show info box below, rest show above
@@ -123,7 +132,6 @@ export default function Overlay() {
 
   const computedStyleInfoBox = showInfoBoxAbove ? computedStyleInfoBoxAbove : computedStyleInfoBoxBelow;
 
-  const isExtra = overlay.scheduleType === ScheduleType.Extra;
   const prayerName = isExtra ? EXTRAS_ENGLISH[overlay.selectedPrayerIndex] : null;
   const explanation = isExtra ? EXTRAS_EXPLANATIONS[overlay.selectedPrayerIndex] : null;
   const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[overlay.selectedPrayerIndex] : null;
@@ -168,7 +176,7 @@ export default function Overlay() {
       />
 
       <Glow
-        color={COLORS.glow.overlay}
+        color={glowColor}
         style={{
           top: -window.width / 1.25,
           left: -window.width / 2,
@@ -198,14 +206,9 @@ const styles = StyleSheet.create({
   },
   prayer: {
     ...STYLES.prayer.border,
-    ...SHADOW.prayer,
     position: 'absolute',
     width: '100%',
     height: STYLES.prayer.height,
-    shadowColor: COLORS.shadow.prayer,
-  },
-  activeBackground: {
-    backgroundColor: COLORS.prayer.activeBackground,
   },
   gradientContainer: {
     zIndex: -1,
