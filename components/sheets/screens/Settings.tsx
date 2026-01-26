@@ -1,12 +1,10 @@
-import { BottomSheetModal, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useCallback } from 'react';
-import { StyleSheet, Text, View, Pressable, Platform } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 import ColorPicker from './ColorPicker';
-import { Header, SettingsToggle, renderSheetBackground, renderBackdrop, bottomSheetStyles } from '../parts';
+import { Sheet, SettingsToggle } from '../parts';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { TEXT, COLORS, SPACING, SIZE, RADIUS, HIT_SLOP } from '@/shared/constants';
@@ -22,9 +20,6 @@ import {
 } from '@/stores/ui';
 
 export default function BottomSheetSettings() {
-  const { bottom: safeBottom } = useSafeAreaInsets();
-  const bottom = Platform.OS === 'android' ? 0 : safeBottom;
-
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
@@ -42,84 +37,70 @@ export default function BottomSheetSettings() {
   };
 
   return (
-    <BottomSheetModal
-      ref={(ref) => setSettingsSheetModal(ref)}
+    <Sheet
+      setRef={setSettingsSheetModal}
+      title="Settings"
+      subtitle="Set your preferences"
+      icon={<SettingsIcon width={16} height={16} color="rgba(165, 180, 252, 0.8)" />}
       snapPoints={['70%']}
-      enableDynamicSizing={false}
-      onDismiss={handleDismiss}
-      style={bottomSheetStyles.modal}
-      backgroundComponent={renderSheetBackground}
-      handleIndicatorStyle={bottomSheetStyles.indicator}
-      backdropComponent={renderBackdrop}>
-      <BottomSheetScrollView style={styles.content} contentContainerStyle={{ paddingBottom: bottom + SPACING.xxxl }}>
-        <Header
-          title="Settings"
-          subtitle="Set your preferences"
-          icon={<SettingsIcon width={16} height={16} color="rgba(165, 180, 252, 0.8)" />}
-        />
-
-        {/* Sound Card */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Sound</Text>
-          <Pressable
-            style={styles.athanButton}
-            onPress={handleAthanPress}
-            hitSlop={HIT_SLOP.md}
-            accessibilityLabel="Change athan"
-            accessibilityRole="button">
-            <View style={styles.musicButton}>
-              <Text style={styles.musicIcon}>♪</Text>
-            </View>
-            <Text style={styles.athanLabel}>Change athan</Text>
-            <Text style={styles.chevron}>›</Text>
-          </Pressable>
-        </View>
-
-        {/* Display Card */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Display</Text>
-          <View style={styles.toggleList}>
-            <SettingsToggle
-              label="Show hijri date"
-              value={hijriEnabled}
-              onToggle={() => setHijriEnabled(!hijriEnabled)}
-            />
-            <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
-            <SettingsToggle
-              label="Show time passed"
-              value={showTimePassed}
-              onToggle={() => setShowTimePassed(!showTimePassed)}
-            />
-            <SettingsToggle
-              label="Show arabic names"
-              value={showArabicNames}
-              onToggle={() => setShowArabicNames(!showArabicNames)}
-            />
+      onDismiss={handleDismiss}>
+      {/* Sound Card */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Sound</Text>
+        <Pressable
+          style={styles.athanButton}
+          onPress={handleAthanPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel="Change athan"
+          accessibilityRole="button">
+          <View style={styles.musicButton}>
+            <Text style={styles.musicIcon}>♪</Text>
           </View>
-        </View>
+          <Text style={styles.athanLabel}>Change athan</Text>
+          <Text style={styles.chevron}>›</Text>
+        </Pressable>
+      </View>
 
-        {/* Countdown Bar Card */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Countdown Bar</Text>
-          <View style={styles.toggleList}>
-            <SettingsToggle
-              label="Show countdown bar"
-              value={countdownBarShown}
-              onToggle={() => setCountdownBarShown(!countdownBarShown)}
-            />
-            <ColorPicker />
-          </View>
+      {/* Display Card */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Display</Text>
+        <View style={styles.toggleList}>
+          <SettingsToggle
+            label="Show hijri date"
+            value={hijriEnabled}
+            onToggle={() => setHijriEnabled(!hijriEnabled)}
+          />
+          <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
+          <SettingsToggle
+            label="Show time passed"
+            value={showTimePassed}
+            onToggle={() => setShowTimePassed(!showTimePassed)}
+          />
+          <SettingsToggle
+            label="Show arabic names"
+            value={showArabicNames}
+            onToggle={() => setShowArabicNames(!showArabicNames)}
+          />
         </View>
-      </BottomSheetScrollView>
-    </BottomSheetModal>
+      </View>
+
+      {/* Countdown Bar Card */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Countdown Bar</Text>
+        <View style={styles.toggleList}>
+          <SettingsToggle
+            label="Show countdown bar"
+            value={countdownBarShown}
+            onToggle={() => setCountdownBarShown(!countdownBarShown)}
+          />
+          <ColorPicker />
+        </View>
+      </View>
+    </Sheet>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
-    paddingHorizontal: SPACING.xl,
-  },
-
   // Cards
   card: {
     backgroundColor: 'rgba(99, 102, 241, 0.06)',

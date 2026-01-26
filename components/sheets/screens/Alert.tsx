@@ -1,20 +1,9 @@
-import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useCallback, useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, Text, View } from 'react-native';
 
-import {
-  Header,
-  SegmentedControl,
-  Stepper,
-  Toggle,
-  renderSheetBackground,
-  renderBackdrop,
-  bottomSheetStyles,
-  type SegmentOption,
-} from '../parts';
+import { Sheet, SegmentedControl, Stepper, Toggle, type SegmentOption } from '../parts';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
@@ -35,9 +24,6 @@ const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
 ];
 
 export default function BottomSheetAlert() {
-  const { bottom: safeBottom } = useSafeAreaInsets();
-  const bottom = Platform.OS === 'android' ? 0 : safeBottom;
-
   const sheetState = useAtomValue(alertSheetStateAtom);
   const { commitAlertMenuChanges, ensurePermissions } = useNotification();
 
@@ -107,73 +93,64 @@ export default function BottomSheetAlert() {
   }, []);
 
   return (
-    <BottomSheetModal
-      ref={(ref) => setAlertSheetModal(ref)}
+    <Sheet
+      setRef={setAlertSheetModal}
+      title={sheetState?.prayerEnglish ?? ''}
+      subtitle="Close to save"
+      icon={<IconView type={Icon.BELL_RING} size={16} color="rgba(165, 180, 252, 0.8)" />}
       enableDynamicSizing
-      enablePanDownToClose
-      onDismiss={handleDismiss}
-      style={bottomSheetStyles.modal}
-      backgroundComponent={renderSheetBackground}
-      handleIndicatorStyle={bottomSheetStyles.indicator}
-      backdropComponent={renderBackdrop}>
-      <BottomSheetView style={[styles.content, { paddingBottom: bottom + SPACING.xxxl }]}>
-        <Header
-          title={sheetState?.prayerEnglish ?? ''}
-          subtitle="Close to save"
-          icon={<IconView type={Icon.BELL_RING} size={16} color="rgba(165, 180, 252, 0.8)" />}
-        />
+      scrollable={false}
+      onDismiss={handleDismiss}>
+      {/* Prayer Alert Card */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Athan</Text>
+        <Text style={styles.cardHint}>Notification at prayer time</Text>
+        <View style={{ marginTop: SPACING.md }}>
+          <SegmentedControl options={ALERT_OPTIONS} selected={atTimeAlert} onSelect={handleAlertSelect} />
+        </View>
+      </View>
 
-        {/* Prayer Alert Card */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Athan</Text>
-          <Text style={styles.cardHint}>Notification at prayer time</Text>
-          <View style={{ marginTop: SPACING.md }}>
-            <SegmentedControl options={ALERT_OPTIONS} selected={atTimeAlert} onSelect={handleAlertSelect} />
+      {/* Reminder Card */}
+      <View style={[styles.card, !canEnableReminder && styles.cardDisabled]}>
+        <View style={styles.cardRow}>
+          <View>
+            <Text style={styles.cardTitle}>Reminder</Text>
+            <Text style={styles.cardHint}>Notification before prayer time</Text>
           </View>
+          <Toggle value={isReminderOn} onToggle={handleReminderToggle} disabled={!canEnableReminder} />
         </View>
 
-        {/* Reminder Card */}
-        <View style={[styles.card, !canEnableReminder && styles.cardDisabled]}>
-          <View style={styles.cardRow}>
-            <View>
-              <Text style={styles.cardTitle}>Reminder</Text>
-              <Text style={styles.cardHint}>Notification before prayer time</Text>
-            </View>
-            <Toggle value={isReminderOn} onToggle={handleReminderToggle} disabled={!canEnableReminder} />
+        <View style={[styles.reminderOptions, !isReminderOn && styles.optionsDisabled]}>
+          <View style={styles.optionRow}>
+            <Text style={styles.optionLabel}>Sound</Text>
+            <SegmentedControl
+              options={REMINDER_TYPE_OPTIONS}
+              selected={reminderType}
+              onSelect={handleReminderTypeSelect}
+              disabled={!isReminderOn}
+            />
           </View>
 
-          <View style={[styles.reminderOptions, !isReminderOn && styles.optionsDisabled]}>
-            <View style={styles.optionRow}>
-              <Text style={styles.optionLabel}>Sound</Text>
-              <SegmentedControl
-                options={REMINDER_TYPE_OPTIONS}
-                selected={reminderType}
-                onSelect={handleReminderTypeSelect}
-                disabled={!isReminderOn}
-              />
-            </View>
-
-            <View style={styles.optionRow}>
-              <Text style={styles.optionLabel}>Before</Text>
-              <Stepper
-                value={reminderInterval}
-                onDecrement={() => {
-                  const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
-                  if (idx > 0) setReminderInterval(REMINDER_INTERVALS[idx - 1] as ReminderInterval);
-                }}
-                onIncrement={() => {
-                  const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
-                  if (idx < REMINDER_INTERVALS.length - 1)
-                    setReminderInterval(REMINDER_INTERVALS[idx + 1] as ReminderInterval);
-                }}
-                unit="min"
-                disabled={!isReminderOn}
-              />
-            </View>
+          <View style={styles.optionRow}>
+            <Text style={styles.optionLabel}>Before</Text>
+            <Stepper
+              value={reminderInterval}
+              onDecrement={() => {
+                const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
+                if (idx > 0) setReminderInterval(REMINDER_INTERVALS[idx - 1] as ReminderInterval);
+              }}
+              onIncrement={() => {
+                const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
+                if (idx < REMINDER_INTERVALS.length - 1)
+                  setReminderInterval(REMINDER_INTERVALS[idx + 1] as ReminderInterval);
+              }}
+              unit="min"
+              disabled={!isReminderOn}
+            />
           </View>
         </View>
-      </BottomSheetView>
-    </BottomSheetModal>
+      </View>
+    </Sheet>
   );
 }
 
@@ -182,10 +159,6 @@ export default function BottomSheetAlert() {
 // =============================================================================
 
 const styles = StyleSheet.create({
-  content: {
-    paddingHorizontal: SPACING.xl,
-  },
-
   // Cards - shadcn inspired with indigo theme
   card: {
     backgroundColor: 'rgba(99, 102, 241, 0.06)',
