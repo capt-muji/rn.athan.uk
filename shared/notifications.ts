@@ -3,6 +3,7 @@ import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
+import { toArabicNumbers } from '@/shared/text';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, ReminderInterval } from '@/shared/types';
 
@@ -97,7 +98,7 @@ export const genReminderNotificationContent = (
 ): Notifications.NotificationContentInput => {
   return {
     title: `${englishName} in ${intervalMinutes} min`,
-    body: `\u200E${arabicName}`, // LTR mark
+    body: `\u200E${arabicName} بعد ${toArabicNumbers(String(intervalMinutes))} دقائق`, // LTR mark + Arabic "in X mins"
     sound: getReminderNotificationSound(alertType),
     color: '#5a3af7',
     autoDismiss: true,
