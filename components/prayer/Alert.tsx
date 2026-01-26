@@ -147,7 +147,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
           AnimScale.animate(1);
         }}
         style={styles.iconContainer}>
-        <Animated.View style={[styles.iconShadow, AnimScale.style]}>
+        <Animated.View style={AnimScale.style}>
           <Svg viewBox="0 0 256 256" width={SIZE.icon.md} height={SIZE.icon.md}>
             <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={AnimFill.animatedProps} />
           </Svg>
@@ -166,12 +166,5 @@ const styles = StyleSheet.create({
     paddingRight: STYLES.prayer.padding.right,
     paddingLeft: SPACING.mid - 1,
     justifyContent: 'center',
-  },
-  iconShadow: {
-    // Shadow for depth (matches text shadow)
-    shadowColor: 'rgba(0, 0, 0, 0.2)',
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 6,
-    shadowOpacity: 1,
   },
 });
