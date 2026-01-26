@@ -1,5 +1,7 @@
 import { differenceInHours, differenceInMinutes, differenceInSeconds, addHours, formatISO, subMinutes } from 'date-fns';
+import * as BackgroundTask from 'expo-background-task';
 import * as Notifications from 'expo-notifications';
+import * as TaskManager from 'expo-task-manager';
 import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
@@ -12,6 +14,8 @@ import {
   NOTIFICATION_REFRESH_HOURS,
   DEFAULT_REMINDER_INTERVAL,
   REMINDER_BUFFER_SECONDS,
+  BACKGROUND_TASK_NAME,
+  BACKGROUND_TASK_INTERVAL_HOURS,
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
@@ -786,4 +790,153 @@ export const refreshNotifications = async () => {
       throw error;
     }
   }, 'refreshNotifications');
+};
+
+// =============================================================================
+// BACKGROUND TASK
+// =============================================================================
+
+/**
+ * Reschedule notifications from background task
+ *
+ * Unlike foreground refresh, this does NOT check shouldRescheduleNotifications()
+ * because the OS controls background task timing (~3 hours minimum).
+ * We always reschedule when the background task runs for consistency.
+ *
+ * Exported for use by the background task defined in device/tasks.ts
+ *
+ * @throws Error if rescheduling fails
+ */
+export const rescheduleAllNotificationsFromBackground = async () => {
+  logger.info('BACKGROUND_TASK: Starting background reschedule');
+
+  return withSchedulingLock(async () => {
+    try {
+      await _rescheduleAllNotifications();
+      store.set(lastNotificationScheduleAtom, Date.now());
+      logger.info('BACKGROUND_TASK: Background reschedule complete');
+    } catch (error) {
+      logger.error('BACKGROUND_TASK: Failed to reschedule from background:', error);
+      throw error;
+    }
+  }, 'backgroundReschedule');
+};
+
+/**
+ * Registers the background task for notification refresh
+ *
+ * Should be called during app initialization after notification permissions are granted.
+ * The task will run approximately every 3 hours (system-controlled).
+ *
+ * Platform notes:
+ * - iOS: Requires physical device (doesn't work on simulators)
+ * - Android: Uses WorkManager, 15-minute minimum interval enforced
+ * - Both: System controls actual timing, may be delayed based on battery/network/usage
+ *
+ * @returns Promise that resolves when registration is complete
+ */
+export const registerBackgroundTask = async () => {
+  try {
+    // Check if background tasks are available on this device
+    const status = await BackgroundTask.getStatusAsync();
+    if (status === BackgroundTask.BackgroundTaskStatus.Restricted) {
+      logger.warn(
+        'BACKGROUND_TASK: Background tasks restricted by system (Low Power Mode or Background App Refresh disabled)',
+        {
+          taskName: BACKGROUND_TASK_NAME,
+        }
+      );
+      return;
+    }
+
+    const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_TASK_NAME);
+
+    if (isRegistered) {
+      logger.info('BACKGROUND_TASK: Task already registered', { taskName: BACKGROUND_TASK_NAME });
+      return;
+    }
+
+    const intervalSeconds = BACKGROUND_TASK_INTERVAL_HOURS * 60 * 60;
+
+    await BackgroundTask.registerTaskAsync(BACKGROUND_TASK_NAME, {
+      minimumInterval: intervalSeconds,
+    });
+
+    logger.info('BACKGROUND_TASK: Task registered successfully', {
+      taskName: BACKGROUND_TASK_NAME,
+      minimumIntervalHours: BACKGROUND_TASK_INTERVAL_HOURS,
+      minimumIntervalSeconds: intervalSeconds,
+    });
+  } catch (error) {
+    // Log but don't throw - background task is a fallback, not critical
+    logger.error('BACKGROUND_TASK: Failed to register task', {
+      taskName: BACKGROUND_TASK_NAME,
+      error,
+    });
+  }
+};
+
+/**
+ * Unregisters the background task
+ *
+ * Call this if you need to disable background refresh (e.g., for testing or rollback).
+ *
+ * @returns Promise that resolves when unregistration is complete
+ */
+export const unregisterBackgroundTask = async () => {
+  try {
+    const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_TASK_NAME);
+
+    if (!isRegistered) {
+      logger.info('BACKGROUND_TASK: Task not registered, nothing to unregister', { taskName: BACKGROUND_TASK_NAME });
+      return;
+    }
+
+    await BackgroundTask.unregisterTaskAsync(BACKGROUND_TASK_NAME);
+
+    logger.info('BACKGROUND_TASK: Task unregistered successfully', { taskName: BACKGROUND_TASK_NAME });
+  } catch (error) {
+    logger.error('BACKGROUND_TASK: Failed to unregister task', {
+      taskName: BACKGROUND_TASK_NAME,
+      error,
+    });
+  }
+};
+
+/**
+ * Gets the current status of the background task
+ *
+ * Useful for debugging and monitoring background task state.
+ *
+ * @returns Promise with task registration status and system availability
+ */
+export const getBackgroundTaskStatus = async () => {
+  try {
+    const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_TASK_NAME);
+    const status = await BackgroundTask.getStatusAsync();
+
+    const statusLabel = status === BackgroundTask.BackgroundTaskStatus.Available ? 'Available' : 'Restricted';
+
+    logger.info('BACKGROUND_TASK: Status check', {
+      taskName: BACKGROUND_TASK_NAME,
+      isRegistered,
+      systemStatus: statusLabel,
+    });
+
+    return {
+      isRegistered,
+      systemStatus: status,
+      systemStatusLabel: statusLabel,
+    };
+  } catch (error) {
+    logger.error('BACKGROUND_TASK: Failed to get status', {
+      taskName: BACKGROUND_TASK_NAME,
+      error,
+    });
+    return {
+      isRegistered: false,
+      systemStatus: BackgroundTask.BackgroundTaskStatus.Restricted,
+      systemStatusLabel: 'Error',
+    };
+  }
 };

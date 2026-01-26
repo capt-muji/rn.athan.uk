@@ -10,8 +10,9 @@ import { initializeListeners } from '@/device/listeners';
 import { openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
 import { COLORS, SIZE } from '@/shared/constants';
+import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
-import { refreshNotifications } from '@/stores/notifications';
+import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { syncLoadable } from '@/stores/sync';
 import { popupUpdateEnabledAtom, setPopupUpdateEnabled } from '@/stores/ui';
 
@@ -21,8 +22,10 @@ export default function Index() {
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
 
   useEffect(() => {
-    // Initialize notifications and create channel on first load
-    initializeNotifications(checkInitialPermissions, refreshNotifications);
+    // Initialize notifications, register background task, and create channel on first load
+    initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
+      logger.error('Failed to initialize notifications:', error)
+    );
 
     // Initialize background/foreground state listeners (sync UI as needed)
     initializeListeners(checkInitialPermissions);
