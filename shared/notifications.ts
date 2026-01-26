@@ -74,12 +74,12 @@ export const genNotificationContent = (
 
 /**
  * Gets notification sound for reminder based on alert type
- * Reminders use a separate sound file (reminders.wav)
+ * Reminders use a separate sound file (reminder.wav)
  */
 export const getReminderNotificationSound = (alertType: AlertType): string | false => {
   if (alertType !== AlertType.Sound) return false;
 
-  return 'reminders.wav';
+  return 'reminder.wav';
 };
 
 /**
@@ -176,7 +176,7 @@ export const createReminderAndroidChannel = async () => {
 
   await Notifications.setNotificationChannelAsync('reminder', {
     name: 'Prayer Reminders',
-    sound: 'reminders.wav',
+    sound: 'reminder.wav',
     importance: Notifications.AndroidImportance.HIGH,
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
