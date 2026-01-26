@@ -169,13 +169,9 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}>
       {/* Track (background trough) */}
       <Animated.View style={styles.track}>
-        <Animated.View style={styles.trackHighlight} />
-        <Animated.View style={styles.trackShadow} />
-
         {/* Progress bar */}
         <Animated.View style={[styles.bar, barWidthStyle, barColorStyle]}>
           <Animated.View style={styles.barHighlight} />
-          <Animated.View style={styles.barShadow} />
         </Animated.View>
       </Animated.View>
 
@@ -190,8 +186,8 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 const styles = StyleSheet.create({
   wrapper: {
     alignSelf: 'center',
-    shadowColor: '#03103a',
-    shadowOpacity: 0.3,
+    shadowColor: '#110856',
+    shadowOpacity: 0.25,
     shadowRadius: 5,
     elevation: 8,
     overflow: 'visible',
@@ -202,22 +198,6 @@ const styles = StyleSheet.create({
     borderRadius: COUNTDOWN_BAR.HEIGHT / 2,
     backgroundColor: COUNTDOWN_BAR.TRACK_COLOR,
     overflow: 'hidden',
-  },
-  trackHighlight: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: COUNTDOWN_BAR.GLOSS_HEIGHT,
-    backgroundColor: 'rgba(255, 255, 255, 0)',
-  },
-  trackShadow: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: COUNTDOWN_BAR.GLOSS_HEIGHT,
-    backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   bar: {
     position: 'absolute',
@@ -231,15 +211,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: COUNTDOWN_BAR.GLOSS_HEIGHT,
-    backgroundColor: 'rgba(255, 255, 255, 0.25)',
-  },
-  barShadow: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: COUNTDOWN_BAR.GLOSS_HEIGHT,
-    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },
   tipContainer: {
     position: 'absolute',
