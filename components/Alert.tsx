@@ -103,11 +103,11 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     }
   }, [Schedule.displayDate, isSelectedForOverlay]);
 
-  // Update fill color based on selection/pressed state
+  // Update fill color based on selection state
   useEffect(() => {
-    const colorPos = isSelectedForOverlay || Prayer.isOverlay || isPressed ? 1 : Prayer.ui.initialColorPos;
+    const colorPos = isSelectedForOverlay || Prayer.isOverlay ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: ANIMATION.durationVeryFast });
-  }, [isSelectedForOverlay, isPressed, Prayer.isOverlay]);
+  }, [isSelectedForOverlay, Prayer.isOverlay]);
 
   // =============================================================================
   // HANDLERS
