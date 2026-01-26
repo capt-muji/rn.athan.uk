@@ -6,10 +6,9 @@ import { StyleSheet, Pressable, View, ViewStyle, Platform } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import Countdown from '@/components/Countdown';
-import Glow from '@/components/Glow';
-import Prayer from '@/components/Prayer';
-import PrayerExplanation from '@/components/PrayerExplanation';
+import { Countdown } from '@/components/countdown';
+import { Prayer, PrayerExplanation } from '@/components/prayer';
+import { Glow } from '@/components/ui';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';

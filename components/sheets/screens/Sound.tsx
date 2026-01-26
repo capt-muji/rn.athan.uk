@@ -7,10 +7,10 @@ import { StyleSheet, Text, View, Platform, LayoutChangeEvent } from 'react-nativ
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Header, SoundItem, renderSheetBackground, renderBackdrop, bottomSheetStyles } from '../parts';
+
 import { ALL_AUDIOS } from '@/assets/audio';
-import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from '@/components/BottomSheetShared';
-import BottomSheetSoundItem from '@/components/BottomSheetSoundItem';
-import IconView from '@/components/Icon';
+import { IconView } from '@/components/ui';
 import * as Device from '@/device/notifications';
 import { TEXT, SPACING, RADIUS, COLORS, ANIMATION } from '@/shared/constants';
 import { Icon } from '@/shared/types';
@@ -75,16 +75,11 @@ export default function BottomSheetSound() {
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
       <BottomSheetScrollView style={styles.content} contentContainerStyle={{ paddingBottom: bottom + SPACING.xxxl }}>
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.title}>Select Athan</Text>
-            <Text style={styles.subtitle}>Close to save</Text>
-          </View>
-          <View style={styles.headerIcon}>
-            <IconView type={Icon.SPEAKER} size={16} color="rgba(165, 180, 252, 0.8)" />
-          </View>
-        </View>
+        <Header
+          title="Select Athan"
+          subtitle="Close to save"
+          icon={<IconView type={Icon.SPEAKER} size={16} color="rgba(165, 180, 252, 0.8)" />}
+        />
 
         {/* Sound List Card */}
         <View style={styles.card}>
@@ -96,7 +91,7 @@ export default function BottomSheetSound() {
 
             {/* Sound items */}
             {ALL_AUDIOS.map((audio, index) => (
-              <BottomSheetSoundItem
+              <SoundItem
                 key={index}
                 index={index}
                 audio={audio as AudioSource}
@@ -115,37 +110,6 @@ export default function BottomSheetSound() {
 const styles = StyleSheet.create({
   content: {
     paddingHorizontal: SPACING.xl,
-  },
-
-  // Header
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: SPACING.xxl,
-    paddingHorizontal: SPACING.lg,
-    marginBottom: SPACING.xxxl,
-  },
-  headerIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: RADIUS.md,
-    backgroundColor: 'rgba(99, 102, 241, 0.15)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 22,
-    fontFamily: TEXT.family.medium,
-    color: '#fff',
-    letterSpacing: -0.3,
-    marginBottom: SPACING.xxs,
-  },
-  subtitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
-    color: 'rgba(86, 134, 189, 0.725)',
-    marginTop: SPACING.xs,
   },
 
   // Card

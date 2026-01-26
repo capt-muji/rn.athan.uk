@@ -2,7 +2,8 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import CountdownBar from '@/components/CountdownBar';
+import Bar from './Bar';
+
 import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, STYLES, TEXT, SPACING } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
@@ -45,7 +46,7 @@ export default function Countdown({ type }: Props) {
       <View>
         <Text style={[styles.text]}>{displayName}</Text>
         <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
-        {countdownBarShown && <CountdownBar type={type} />}
+        {countdownBarShown && <Bar type={type} />}
       </View>
     </Animated.View>
   );

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 
-import Modal from '@/components/Modal';
+import Modal from './Modal';
+
 import { COLORS, TEXT, SPACING, RADIUS } from '@/shared/constants';
 
 type Props = {

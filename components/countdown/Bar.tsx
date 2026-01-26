@@ -13,28 +13,10 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useCountdownBar } from '@/hooks/useCountdownBar';
-import { ANIMATION, COLORS } from '@/shared/constants';
+import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { countdownBarColorAtom } from '@/stores/ui';
-
-/** Bar dimensions */
-const BAR_WIDTH = 100;
-const BAR_HEIGHT = 2;
-const GLOSS_HEIGHT = 0.75;
-
-/** Pulsing tip indicator */
-const TIP_WIDTH = 2;
-const TIP_OFFSET = 0.9;
-const TIP_TINT_AMOUNT = 0.15; // 0 = bar color, 1 = white
-// const TIP_OPACITY_MIN = 0.85;
-// const TIP_OPACITY_MAX = 1.0;
-const TIP_PULSE_DURATION = 2500;
-
-/** Warning state triggers in final 10% */
-const WARNING_THRESHOLD = 10;
-
-const TRACK_COLOR = '#153569';
 
 /** Fast timing for large progress jumps (>50%) */
 const TIMING_CONFIG_FAST = {
@@ -84,7 +66,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 
   const countdownBarColor = previewColor ?? atomColor;
   const progress = previewProgress ?? (isReady ? 100 - elapsedProgress : 0);
-  const isWarning = !isPreviewMode && progress <= WARNING_THRESHOLD;
+  const isWarning = !isPreviewMode && progress <= COUNTDOWN_BAR.WARNING_THRESHOLD;
 
   const widthValue = useSharedValue(progress);
   const colorValue = useSharedValue(0);
@@ -100,8 +82,8 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     if (reducedMotion) return;
     tipPulse.value = withRepeat(
       withSequence(
-        withTiming(1, { duration: TIP_PULSE_DURATION, easing: Easing.inOut(Easing.ease) }),
-        withTiming(0, { duration: TIP_PULSE_DURATION, easing: Easing.inOut(Easing.ease) })
+        withTiming(1, { duration: COUNTDOWN_TIP.PULSE_DURATION, easing: Easing.inOut(Easing.ease) }),
+        withTiming(0, { duration: COUNTDOWN_TIP.PULSE_DURATION, easing: Easing.inOut(Easing.ease) })
       ),
       -1
     );
@@ -111,19 +93,19 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
   useEffect(() => {
     if (isFirstRender.current) {
       widthValue.value = progress;
-      colorValue.value = progress > WARNING_THRESHOLD ? 0 : 1;
+      colorValue.value = progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1;
       isFirstRender.current = false;
     } else {
       const progressDiff = Math.abs(progress - prevProgress.current);
 
       if (reducedMotion) {
         widthValue.value = progress;
-        colorValue.value = progress > WARNING_THRESHOLD ? 0 : 1;
+        colorValue.value = progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1;
       } else {
         // Use fast timing for large jumps (e.g., prayer transition)
         const timingConfig = progressDiff > 50 ? TIMING_CONFIG_FAST : TIMING_CONFIG_LINEAR;
         widthValue.value = withTiming(progress, timingConfig);
-        colorValue.value = withTiming(progress > WARNING_THRESHOLD ? 0 : 1, {
+        colorValue.value = withTiming(progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1, {
           duration: ANIMATION.durationMedium,
           easing: Easing.linear,
         });
@@ -164,12 +146,12 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
   }));
 
   const tipPositionStyle = useAnimatedStyle(() => ({
-    left: (widthValue.value / 100) * BAR_WIDTH - TIP_OFFSET,
+    left: (widthValue.value / 100) * COUNTDOWN_BAR.WIDTH - COUNTDOWN_TIP.OFFSET,
   }));
 
   const tipAppearanceStyle = useAnimatedStyle(() => {
     const baseColor = interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]);
-    const tintColor = interpolateColor(TIP_TINT_AMOUNT, [0, 1], [baseColor, '#ffffff']);
+    const tintColor = interpolateColor(COUNTDOWN_TIP.TINT_AMOUNT, [0, 1], [baseColor, '#ffffff']);
     return {
       backgroundColor: tintColor,
     };
@@ -215,10 +197,10 @@ const styles = StyleSheet.create({
     overflow: 'visible',
   },
   track: {
-    height: BAR_HEIGHT,
-    width: BAR_WIDTH,
-    borderRadius: BAR_HEIGHT / 2,
-    backgroundColor: TRACK_COLOR,
+    height: COUNTDOWN_BAR.HEIGHT,
+    width: COUNTDOWN_BAR.WIDTH,
+    borderRadius: COUNTDOWN_BAR.HEIGHT / 2,
+    backgroundColor: COUNTDOWN_BAR.TRACK_COLOR,
     overflow: 'hidden',
   },
   trackHighlight: {
@@ -226,7 +208,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: GLOSS_HEIGHT,
+    height: COUNTDOWN_BAR.GLOSS_HEIGHT,
     backgroundColor: 'rgba(255, 255, 255, 0)',
   },
   trackShadow: {
@@ -234,13 +216,13 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: GLOSS_HEIGHT,
+    height: COUNTDOWN_BAR.GLOSS_HEIGHT,
     backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   bar: {
     position: 'absolute',
     height: '100%',
-    borderRadius: BAR_HEIGHT / 2,
+    borderRadius: COUNTDOWN_BAR.HEIGHT / 2,
     overflow: 'hidden',
   },
   barHighlight: {
@@ -248,7 +230,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: GLOSS_HEIGHT,
+    height: COUNTDOWN_BAR.GLOSS_HEIGHT,
     backgroundColor: 'rgba(255, 255, 255, 0.25)',
   },
   barShadow: {
@@ -256,19 +238,19 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: GLOSS_HEIGHT,
+    height: COUNTDOWN_BAR.GLOSS_HEIGHT,
     backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   tipContainer: {
     position: 'absolute',
-    height: BAR_HEIGHT,
+    height: COUNTDOWN_BAR.HEIGHT,
     justifyContent: 'center',
     alignItems: 'center',
   },
   tipOval: {
     position: 'absolute',
-    width: TIP_WIDTH + 1,
-    height: BAR_HEIGHT,
-    borderRadius: TIP_WIDTH / 2,
+    width: COUNTDOWN_TIP.WIDTH + 1,
+    height: COUNTDOWN_BAR.HEIGHT,
+    borderRadius: COUNTDOWN_TIP.WIDTH / 2,
   },
 });
