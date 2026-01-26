@@ -71,7 +71,7 @@ export default function ColorPickerSettings({ last }: ColorPickerSettingsProps) 
   const [selectedColor, setSelectedColor] = useState(countdownBarColor);
 
   const isDisabled = !countdownBarShown;
-  const opacity = countdownBarShown ? 1 : 0.4;
+  const opacity = countdownBarShown ? 1 : 0.25;
 
   // =============================================================================
   // HANDLERS
