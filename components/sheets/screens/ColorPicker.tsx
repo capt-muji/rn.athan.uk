@@ -115,7 +115,7 @@ export default function ColorPickerSettings() {
 
       <Modal visible={showPicker} transparent animationType="slide" onRequestClose={handleDismiss}>
         <View style={styles.modalOverlay}>
-          <View style={[styles.modalContent, { paddingBottom: bottom }]}>
+          <View style={[styles.modalContent, { paddingBottom: bottom + 50 }]}>
             <View style={styles.modalHeader}>
               <View style={styles.headerSide}>
                 <Pressable onPress={handleDismiss} hitSlop={HIT_SLOP.md} style={styles.cancelButton}>

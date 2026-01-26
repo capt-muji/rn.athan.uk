@@ -1,4 +1,5 @@
 export { default as Header } from './Header';
+export { default as Sheet } from './Sheet';
 export { default as LabeledToggle } from './LabeledToggle';
 export { default as SegmentedControl, type SegmentOption } from './SegmentedControl';
 export { renderSheetBackground, renderBackdrop, bottomSheetStyles } from './Shared';
