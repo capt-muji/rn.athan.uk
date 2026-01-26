@@ -8,6 +8,8 @@
  * - shouldRescheduleNotifications logic
  */
 
+import * as BackgroundTask from 'expo-background-task';
+import * as TaskManager from 'expo-task-manager';
 import { createStore } from 'jotai';
 
 import {
@@ -17,6 +19,8 @@ import {
   EXTRAS_ARABIC,
   NOTIFICATION_REFRESH_HOURS,
   DEFAULT_REMINDER_INTERVAL,
+  BACKGROUND_TASK_NAME,
+  BACKGROUND_TASK_INTERVAL_HOURS,
 } from '@/shared/constants';
 import { AlertType, ScheduleType } from '@/shared/types';
 import {
@@ -38,6 +42,10 @@ import {
   getReminderIntervalAtom,
   setPrayerAlertType,
   getReminderAlertType,
+  registerBackgroundTask,
+  unregisterBackgroundTask,
+  getBackgroundTaskStatus,
+  rescheduleAllNotificationsFromBackground,
 } from '@/stores/notifications';
 
 // =============================================================================
@@ -532,5 +540,190 @@ describe('setPrayerAlertType constraint enforcement', () => {
 
     // Reminder should remain Silent
     expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Silent);
+  });
+});
+
+// =============================================================================
+// BACKGROUND TASK TESTS
+// ADR-007: Background Task Notification Refresh
+// =============================================================================
+
+describe('registerBackgroundTask', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('checks system status before registering', async () => {
+    await registerBackgroundTask();
+
+    expect(BackgroundTask.getStatusAsync).toHaveBeenCalled();
+  });
+
+  it('skips registration when background tasks are restricted', async () => {
+    (BackgroundTask.getStatusAsync as jest.Mock).mockResolvedValueOnce(BackgroundTask.BackgroundTaskStatus.Restricted);
+
+    await registerBackgroundTask();
+
+    expect(BackgroundTask.registerTaskAsync).not.toHaveBeenCalled();
+  });
+
+  it('checks if task is already registered', async () => {
+    await registerBackgroundTask();
+
+    expect(TaskManager.isTaskRegisteredAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
+  });
+
+  it('skips registration when task is already registered', async () => {
+    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
+
+    await registerBackgroundTask();
+
+    expect(BackgroundTask.registerTaskAsync).not.toHaveBeenCalled();
+  });
+
+  it('registers task with correct name and interval', async () => {
+    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
+
+    await registerBackgroundTask();
+
+    expect(BackgroundTask.registerTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME, {
+      minimumInterval: BACKGROUND_TASK_INTERVAL_HOURS * 60 * 60,
+    });
+  });
+
+  it('does not throw when registration fails', async () => {
+    (BackgroundTask.registerTaskAsync as jest.Mock).mockRejectedValueOnce(new Error('Registration failed'));
+
+    // Should not throw
+    await expect(registerBackgroundTask()).resolves.toBeUndefined();
+  });
+});
+
+describe('unregisterBackgroundTask', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('checks if task is registered before unregistering', async () => {
+    await unregisterBackgroundTask();
+
+    expect(TaskManager.isTaskRegisteredAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
+  });
+
+  it('skips unregistration when task is not registered', async () => {
+    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
+
+    await unregisterBackgroundTask();
+
+    expect(BackgroundTask.unregisterTaskAsync).not.toHaveBeenCalled();
+  });
+
+  it('unregisters task when it is registered', async () => {
+    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
+
+    await unregisterBackgroundTask();
+
+    expect(BackgroundTask.unregisterTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
+  });
+
+  it('does not throw when unregistration fails', async () => {
+    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
+    (BackgroundTask.unregisterTaskAsync as jest.Mock).mockRejectedValueOnce(new Error('Unregistration failed'));
+
+    // Should not throw
+    await expect(unregisterBackgroundTask()).resolves.toBeUndefined();
+  });
+});
+
+describe('getBackgroundTaskStatus', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('returns registration status and system status', async () => {
+    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
+    (BackgroundTask.getStatusAsync as jest.Mock).mockResolvedValueOnce(BackgroundTask.BackgroundTaskStatus.Available);
+
+    const status = await getBackgroundTaskStatus();
+
+    expect(status.isRegistered).toBe(true);
+    expect(status.systemStatus).toBe(BackgroundTask.BackgroundTaskStatus.Available);
+    expect(status.systemStatusLabel).toBe('Available');
+  });
+
+  it('returns Restricted label when system status is restricted', async () => {
+    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
+    (BackgroundTask.getStatusAsync as jest.Mock).mockResolvedValueOnce(BackgroundTask.BackgroundTaskStatus.Restricted);
+
+    const status = await getBackgroundTaskStatus();
+
+    expect(status.isRegistered).toBe(false);
+    expect(status.systemStatusLabel).toBe('Restricted');
+  });
+
+  it('returns error status when check fails', async () => {
+    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockRejectedValueOnce(new Error('Check failed'));
+
+    const status = await getBackgroundTaskStatus();
+
+    expect(status.isRegistered).toBe(false);
+    expect(status.systemStatusLabel).toBe('Error');
+  });
+});
+
+describe('rescheduleAllNotificationsFromBackground', () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { getDefaultStore } = require('jotai/vanilla');
+  const store = getDefaultStore();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    store.set(lastNotificationScheduleAtom, 0);
+  });
+
+  it('updates lastNotificationScheduleAtom on success', async () => {
+    const beforeCall = Date.now();
+
+    await rescheduleAllNotificationsFromBackground();
+
+    const lastSchedule = store.get(lastNotificationScheduleAtom);
+    expect(lastSchedule).toBeGreaterThanOrEqual(beforeCall);
+  });
+
+  it('does not check shouldRescheduleNotifications (always reschedules)', async () => {
+    // Set a very recent schedule time
+    store.set(lastNotificationScheduleAtom, Date.now());
+
+    const beforeCall = Date.now();
+
+    // Should still reschedule despite recent schedule
+    await rescheduleAllNotificationsFromBackground();
+
+    const lastSchedule = store.get(lastNotificationScheduleAtom);
+    expect(lastSchedule).toBeGreaterThanOrEqual(beforeCall);
+  });
+});
+
+// =============================================================================
+// BACKGROUND TASK CONSTANTS TESTS
+// =============================================================================
+
+describe('Background task constants', () => {
+  it('BACKGROUND_TASK_NAME is defined', () => {
+    expect(BACKGROUND_TASK_NAME).toBe('NOTIFICATION_REFRESH_TASK');
+  });
+
+  it('BACKGROUND_TASK_INTERVAL_HOURS is 3 hours', () => {
+    expect(BACKGROUND_TASK_INTERVAL_HOURS).toBe(3);
+  });
+
+  it('foreground and background intervals are offset (not equal)', () => {
+    // ADR-007: Intervals are offset to reduce collision risk
+    expect(NOTIFICATION_REFRESH_HOURS).not.toBe(BACKGROUND_TASK_INTERVAL_HOURS);
+  });
+
+  it('background interval is above Android minimum (15 min)', () => {
+    const backgroundIntervalMinutes = BACKGROUND_TASK_INTERVAL_HOURS * 60;
+    expect(backgroundIntervalMinutes).toBeGreaterThan(15);
   });
 });

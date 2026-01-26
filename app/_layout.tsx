@@ -1,3 +1,7 @@
+// IMPORTANT: Import background task definition FIRST to ensure it's registered in global scope
+// before any other code runs. This allows the OS to find the task even when waking a killed app.
+import '@/device/tasks';
+
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
