@@ -66,7 +66,8 @@ export const genNotificationContent = (
     autoDismiss: false,
     sticky: false,
     priority: Notifications.AndroidNotificationPriority.MAX,
-    interruptionLevel: 'timeSensitive',
+    // 'critical' bypasses silent mode and DnD on iOS (requires Apple entitlement approval)
+    interruptionLevel: 'critical',
   };
 };
 
@@ -102,7 +103,8 @@ export const genReminderNotificationContent = (
     autoDismiss: true,
     sticky: false,
     priority: Notifications.AndroidNotificationPriority.HIGH,
-    interruptionLevel: 'active',
+    // 'critical' bypasses silent mode and DnD on iOS (requires Apple entitlement approval)
+    interruptionLevel: 'critical',
   };
 };
 
@@ -160,6 +162,7 @@ export const createDefaultAndroidChannel = async () => {
     importance: Notifications.AndroidImportance.MAX,
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
+    bypassDnd: true,
   });
 };
 
@@ -176,6 +179,7 @@ export const createReminderAndroidChannel = async () => {
     importance: Notifications.AndroidImportance.HIGH,
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
+    bypassDnd: true,
   });
 };
 
