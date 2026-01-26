@@ -115,10 +115,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
-    // Text shadow for depth
-    textShadowColor: 'rgba(0, 0, 0, 0.2)',
-    textShadowOffset: { width: 0, height: 3 },
-    textShadowRadius: 6,
   },
   english: {
     paddingLeft: STYLES.prayer.padding.left,
