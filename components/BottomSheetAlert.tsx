@@ -361,7 +361,7 @@ function TypeSelector({ selected, onSelect, disabled }: TypeSelectorProps) {
   const padding = 3;
   const optionCount = 2;
 
-  const selectedIndex = selected === AlertType.Silent ? 0 : 1;
+  const selectedIndex = selected === AlertType.Sound ? 1 : 0;
   const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / optionCount : 0;
 
   const indicatorStyle = useAnimatedStyle(() => ({
@@ -461,6 +461,7 @@ export default function BottomSheetAlert() {
 
   const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(AlertType.Off);
   const [reminderAlert, setReminderAlert] = useState<AlertType>(AlertType.Off);
+  const [reminderType, setReminderType] = useState<AlertType.Silent | AlertType.Sound>(AlertType.Silent);
   const [reminderInterval, setReminderInterval] = useState<ReminderInterval>(DEFAULT_REMINDER_INTERVAL);
   const [originalState, setOriginalState] = useState<{
     atTimeAlert: AlertType;
@@ -480,6 +481,7 @@ export default function BottomSheetAlert() {
 
       setAtTimeAlert(prayerAlert);
       setReminderAlert(reminder);
+      setReminderType(reminder === AlertType.Sound ? AlertType.Sound : AlertType.Silent);
       setReminderInterval(interval);
       setOriginalState({ atTimeAlert: prayerAlert, reminderAlert: reminder, reminderInterval: interval });
     }
@@ -514,11 +516,12 @@ export default function BottomSheetAlert() {
 
   const handleReminderToggle = useCallback(() => {
     if (!canEnableReminder) return;
-    setReminderAlert(isReminderOn ? AlertType.Off : AlertType.Silent);
-  }, [canEnableReminder, isReminderOn]);
+    setReminderAlert(isReminderOn ? AlertType.Off : reminderType);
+  }, [canEnableReminder, isReminderOn, reminderType]);
 
   const handleReminderTypeSelect = useCallback((type: AlertType) => {
     setReminderAlert(type);
+    setReminderType(type as AlertType.Silent | AlertType.Sound);
   }, []);
 
   return (
@@ -563,7 +566,7 @@ export default function BottomSheetAlert() {
           <View style={[styles.reminderOptions, !isReminderOn && styles.optionsDisabled]}>
             <View style={styles.optionRow}>
               <Text style={styles.optionLabel}>Sound</Text>
-              <TypeSelector selected={reminderAlert} onSelect={handleReminderTypeSelect} disabled={!isReminderOn} />
+              <TypeSelector selected={reminderType} onSelect={handleReminderTypeSelect} disabled={!isReminderOn} />
             </View>
 
             <View style={styles.optionRow}>
