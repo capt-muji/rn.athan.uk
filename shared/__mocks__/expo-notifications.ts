@@ -18,12 +18,13 @@ export const AndroidImportance = {
   MAX: 5,
 };
 
-export const setNotificationChannelAsync = async () => {};
-export const scheduleNotificationAsync = async () => 'mock-notification-id';
-export const cancelScheduledNotificationAsync = async () => {};
-export const getAllScheduledNotificationsAsync = async () => [];
-export const getPermissionsAsync = async () => ({ status: 'granted' });
-export const requestPermissionsAsync = async () => ({ status: 'granted' });
+export const setNotificationChannelAsync = jest.fn().mockResolvedValue(undefined);
+export const scheduleNotificationAsync = jest.fn().mockResolvedValue('mock-notification-id');
+export const cancelScheduledNotificationAsync = jest.fn().mockResolvedValue(undefined);
+export const cancelAllScheduledNotificationsAsync = jest.fn().mockResolvedValue(undefined);
+export const getAllScheduledNotificationsAsync = jest.fn().mockResolvedValue([]);
+export const getPermissionsAsync = jest.fn().mockResolvedValue({ status: 'granted' });
+export const requestPermissionsAsync = jest.fn().mockResolvedValue({ status: 'granted' });
 
 export interface NotificationContentInput {
   title?: string;

@@ -580,6 +580,10 @@ Read ai/prompts/quick.md and run "Add JSDoc to File" for shared/time.ts
 - **No nested function calls** - Each function call stored in variable, then passed to other functions.
 - **Tests before refactoring** - Capture current behavior with tests before making changes.
 
+**Recent Decisions:**
+
+- [2026-01-26] Background Task Notification Refresh: Dual-layer refresh with 4-hour foreground and 3-hour background task using expo-background-task (see ai/adr/007-background-task-notification-refresh.md)
+
 **See Also:** `ai/adr/` for architectural decision records.
 
 ## 12. Change / PR Checklist

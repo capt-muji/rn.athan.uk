@@ -185,18 +185,28 @@ export const createReminderAndroidChannel = async () => {
  *
  * @param checkPermissions Function to check notification permissions
  * @param refreshFn Function to refresh notifications (injected to break cycle)
+ * @param registerBackgroundTaskFn Optional function to register background task (injected to break cycle)
  */
 export const initializeNotifications = async (
   checkPermissions: () => Promise<boolean>,
-  refreshFn: () => Promise<void>
+  refreshFn: () => Promise<void>,
+  registerBackgroundTaskFn?: () => Promise<void>
 ) => {
   try {
     await createDefaultAndroidChannel();
     await createReminderAndroidChannel();
 
     const hasPermission = await checkPermissions();
-    if (hasPermission) await refreshFn();
-    else logger.info('NOTIFICATION: Notifications disabled, skipping refresh');
+    if (hasPermission) {
+      await refreshFn();
+
+      // Register background task for notification refresh when app is closed
+      if (registerBackgroundTaskFn) {
+        await registerBackgroundTaskFn();
+      }
+    } else {
+      logger.info('NOTIFICATION: Notifications disabled, skipping refresh and background task registration');
+    }
   } catch (error) {
     logger.error('NOTIFICATION: Failed to initialize notifications:', error);
   }

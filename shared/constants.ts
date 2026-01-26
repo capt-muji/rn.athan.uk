@@ -94,10 +94,28 @@ export const validateReminderInterval = (value: number): boolean => {
 };
 
 /**
- * Hours between automatic notification refreshes
+ * Hours between automatic foreground notification refreshes
  * Notifications rescheduled when this interval elapses and app enters foreground
+ * Offset from background task interval (3 hours) to reduce collision risk
  */
-export const NOTIFICATION_REFRESH_HOURS = 12;
+export const NOTIFICATION_REFRESH_HOURS = 4;
+
+// =============================================================================
+// BACKGROUND TASK CONFIGURATION
+// =============================================================================
+
+/**
+ * Unique identifier for the background notification refresh task
+ * Used by expo-task-manager to register and identify the task
+ */
+export const BACKGROUND_TASK_NAME = 'NOTIFICATION_REFRESH_TASK';
+
+/**
+ * Hours between background task executions (minimum interval)
+ * System may delay execution; this is a minimum, not exact timing
+ * Offset from foreground refresh (4 hours) to reduce collision risk
+ */
+export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
 
 // =============================================================================
 // TIME CALCULATIONS
