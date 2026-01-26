@@ -642,7 +642,7 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
   },
   cardDisabled: {
-    opacity: 0.4,
+    opacity: 0.25,
   },
   cardTitle: {
     fontSize: TEXT.sizeDetail,
@@ -668,7 +668,7 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
   },
   optionsDisabled: {
-    opacity: 0.4,
+    opacity: 0.25,
   },
   optionRow: {
     flexDirection: 'row',
