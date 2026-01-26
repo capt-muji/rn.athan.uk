@@ -1,13 +1,11 @@
-import { BottomSheetModal, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { AudioSource } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useCallback, useState } from 'react';
-import { StyleSheet, Text, View, Platform, LayoutChangeEvent } from 'react-native';
+import { StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Header, SoundItem, renderSheetBackground, renderBackdrop, bottomSheetStyles } from '../parts';
+import { Sheet, SoundItem } from '../parts';
 
 import { ALL_AUDIOS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
@@ -20,9 +18,6 @@ import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
 const ITEM_GAP = SPACING.xs;
 
 export default function BottomSheetSound() {
-  const { bottom: safeBottom } = useSafeAreaInsets();
-  const bottom = Platform.OS === 'android' ? 0 : safeBottom;
-
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
   const [itemHeight, setItemHeight] = useState(0);
@@ -64,54 +59,40 @@ export default function BottomSheetSound() {
   }, [tempSoundSelection]);
 
   return (
-    <BottomSheetModal
-      ref={(ref) => setBottomSheetModal(ref)}
+    <Sheet
+      setRef={setBottomSheetModal}
+      title="Select Athan"
+      subtitle="Close to save"
+      icon={<IconView type={Icon.SPEAKER} size={16} color="rgba(165, 180, 252, 0.8)" />}
       snapPoints={['80%']}
-      enableDynamicSizing={false}
       onDismiss={handleDismiss}
-      onAnimate={clearAudio}
-      style={bottomSheetStyles.modal}
-      backgroundComponent={renderSheetBackground}
-      handleIndicatorStyle={bottomSheetStyles.indicator}
-      backdropComponent={renderBackdrop}>
-      <BottomSheetScrollView style={styles.content} contentContainerStyle={{ paddingBottom: bottom + SPACING.xxxl }}>
-        <Header
-          title="Select Athan"
-          subtitle="Close to save"
-          icon={<IconView type={Icon.SPEAKER} size={16} color="rgba(165, 180, 252, 0.8)" />}
-        />
+      onAnimate={clearAudio}>
+      {/* Sound List Card */}
+      <View style={styles.card}>
+        <Text style={styles.cardHint}>Notification sound</Text>
 
-        {/* Sound List Card */}
-        <View style={styles.card}>
-          <Text style={styles.cardHint}>Notification sound</Text>
+        <View style={styles.listContainer}>
+          {/* Sliding indicator */}
+          <Animated.View style={[styles.indicator, indicatorStyle]} />
 
-          <View style={styles.listContainer}>
-            {/* Sliding indicator */}
-            <Animated.View style={[styles.indicator, indicatorStyle]} />
-
-            {/* Sound items */}
-            {ALL_AUDIOS.map((audio, index) => (
-              <SoundItem
-                key={index}
-                index={index}
-                audio={audio as AudioSource}
-                onSelect={setTempSoundSelection}
-                tempSelection={tempSoundSelection}
-                onLayout={index === 0 ? handleItemLayout : undefined}
-              />
-            ))}
-          </View>
+          {/* Sound items */}
+          {ALL_AUDIOS.map((audio, index) => (
+            <SoundItem
+              key={index}
+              index={index}
+              audio={audio as AudioSource}
+              onSelect={setTempSoundSelection}
+              tempSelection={tempSoundSelection}
+              onLayout={index === 0 ? handleItemLayout : undefined}
+            />
+          ))}
         </View>
-      </BottomSheetScrollView>
-    </BottomSheetModal>
+      </View>
+    </Sheet>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
-    paddingHorizontal: SPACING.xl,
-  },
-
   // Card
   card: {
     backgroundColor: 'rgba(99, 102, 241, 0.06)',
