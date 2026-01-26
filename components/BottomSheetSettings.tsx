@@ -56,7 +56,7 @@ export default function BottomSheetSettings() {
         <View style={styles.header}>
           <View>
             <Text style={styles.title}>Settings</Text>
-            <Text style={styles.subtitle}>Change your preferences</Text>
+            <Text style={styles.subtitle}>Set your preferences</Text>
           </View>
           <View style={styles.headerIcon}>
             <SettingsIcon width={16} height={16} color="rgba(165, 180, 252, 0.8)" />
@@ -66,7 +66,6 @@ export default function BottomSheetSettings() {
         {/* Sound Card */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Sound</Text>
-          <Text style={styles.cardHint}>Customize athan sound</Text>
           <Pressable
             style={styles.athanButton}
             onPress={handleAthanPress}
@@ -84,21 +83,35 @@ export default function BottomSheetSettings() {
         {/* Display Card */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Display</Text>
-          <Text style={styles.cardHint}>Customize how information is shown</Text>
           <View style={styles.toggleList}>
-            <SettingsToggle label="Show hijri date" value={hijriEnabled} onToggle={() => setHijriEnabled(!hijriEnabled)} />
+            <SettingsToggle
+              label="Show hijri date"
+              value={hijriEnabled}
+              onToggle={() => setHijriEnabled(!hijriEnabled)}
+            />
             <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
-            <SettingsToggle label="Show time passed" value={showTimePassed} onToggle={() => setShowTimePassed(!showTimePassed)} />
-            <SettingsToggle label="Show arabic names" value={showArabicNames} onToggle={() => setShowArabicNames(!showArabicNames)} />
+            <SettingsToggle
+              label="Show time passed"
+              value={showTimePassed}
+              onToggle={() => setShowTimePassed(!showTimePassed)}
+            />
+            <SettingsToggle
+              label="Show arabic names"
+              value={showArabicNames}
+              onToggle={() => setShowArabicNames(!showArabicNames)}
+            />
           </View>
         </View>
 
         {/* Countdown Bar Card */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Countdown Bar</Text>
-          <Text style={styles.cardHint}>Progress indicator settings</Text>
           <View style={styles.toggleList}>
-            <SettingsToggle label="Show countdown bar" value={countdownBarShown} onToggle={() => setCountdownBarShown(!countdownBarShown)} />
+            <SettingsToggle
+              label="Show countdown bar"
+              value={countdownBarShown}
+              onToggle={() => setCountdownBarShown(!countdownBarShown)}
+            />
             <ColorPickerSettings />
           </View>
         </View>
@@ -155,12 +168,6 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.medium,
-    color: '#d8eaf8',
-    marginBottom: SPACING.sm - 1,
-  },
-  cardHint: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
     color: 'rgba(86, 134, 189, 0.725)',
   },
 
