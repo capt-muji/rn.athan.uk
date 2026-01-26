@@ -539,7 +539,7 @@ export default function BottomSheetAlert() {
         <View style={styles.header}>
           <View>
             <Text style={styles.title}>{sheetState?.prayerEnglish ?? ''}</Text>
-            <Text style={styles.subtitle}>Notifications - close to save </Text>
+            <Text style={styles.subtitle}>Close to save </Text>
           </View>
           <View style={styles.headerIcon}>
             <IconView type={Icon.BELL_RING} size={16} color="rgba(165, 180, 252, 0.8)" />
@@ -549,7 +549,7 @@ export default function BottomSheetAlert() {
         {/* Prayer Alert Card */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Athan</Text>
-          <Text style={styles.cardHint}>Notify at prayer time</Text>
+          <Text style={styles.cardHint}>Notification at prayer time</Text>
           <SegmentedControl options={ALERT_OPTIONS} selected={atTimeAlert} onSelect={handleAlertSelect} />
         </View>
 
@@ -558,7 +558,7 @@ export default function BottomSheetAlert() {
           <View style={styles.cardRow}>
             <View>
               <Text style={styles.cardTitle}>Reminder</Text>
-              <Text style={styles.cardHint}>Notify before prayer time</Text>
+              <Text style={styles.cardHint}>Notification before prayer time</Text>
             </View>
             <Toggle value={isReminderOn} onToggle={handleReminderToggle} disabled={!canEnableReminder} />
           </View>

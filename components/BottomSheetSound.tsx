@@ -79,7 +79,7 @@ export default function BottomSheetSound() {
         <View style={styles.header}>
           <View>
             <Text style={styles.title}>Select Athan</Text>
-            <Text style={styles.subtitle}>Prayer time notification sound</Text>
+            <Text style={styles.subtitle}>Close to save</Text>
           </View>
           <View style={styles.headerIcon}>
             <IconView type={Icon.SPEAKER} size={16} color="rgba(165, 180, 252, 0.8)" />
@@ -88,7 +88,7 @@ export default function BottomSheetSound() {
 
         {/* Sound List Card */}
         <View style={styles.card}>
-          <Text style={styles.cardHint}>Sounds - close to save</Text>
+          <Text style={styles.cardHint}>Notification sound</Text>
 
           <View style={styles.listContainer}>
             {/* Sliding indicator */}
