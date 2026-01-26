@@ -266,33 +266,27 @@ export const useNotification = () => {
         return false;
       }
 
-      // Handle at-time alert changes
-      if (atTimeChanged) {
-        // Persist the new at-time alert type (this also handles constraint enforcement)
-        NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, currentState.atTimeAlert);
+      // Persist preferences
+      NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, currentState.atTimeAlert);
+      NotificationStore.setReminderAlertType(scheduleType, prayerIndex, currentState.reminderAlert);
+      NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);
 
-        if (currentState.atTimeAlert === AlertType.Off) {
-          await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
-        } else {
-          await NotificationStore.addMultipleScheduleNotificationsForPrayer(
-            scheduleType,
-            prayerIndex,
-            englishName,
-            arabicName,
-            currentState.atTimeAlert
-          );
-        }
-      }
+      // Clear existing notifications and reminders
+      await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+      await NotificationStore.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
-      // Handle reminder changes (only if at-time is enabled)
-      if (reminderChanged && currentState.atTimeAlert !== AlertType.Off) {
-        // Persist the new reminder alert type and interval
-        NotificationStore.setReminderAlertType(scheduleType, prayerIndex, currentState.reminderAlert);
-        NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);
+      // Schedule based on desired end state
+      if (currentState.atTimeAlert !== AlertType.Off) {
+        await NotificationStore.addMultipleScheduleNotificationsForPrayer(
+          scheduleType,
+          prayerIndex,
+          englishName,
+          arabicName,
+          currentState.atTimeAlert
+        );
 
-        if (currentState.reminderAlert === AlertType.Off) {
-          await NotificationStore.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
-        } else {
+        // Schedule reminder if enabled (reminder requires at-time to be enabled)
+        if (currentState.reminderAlert !== AlertType.Off) {
           await NotificationStore.addMultipleScheduleRemindersForPrayer(
             scheduleType,
             prayerIndex,
@@ -301,12 +295,6 @@ export const useNotification = () => {
             currentState.reminderAlert
           );
         }
-      }
-
-      // If at-time was turned off, reminder is also cleared via constraint enforcement
-      // But we need to clear the scheduled reminders too
-      if (atTimeChanged && currentState.atTimeAlert === AlertType.Off) {
-        await NotificationStore.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
       }
 
       logger.info('NOTIFICATION: Committed alert menu changes:', {
