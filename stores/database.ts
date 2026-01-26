@@ -88,6 +88,36 @@ export const clearPrefix = (prefix: string) => {
 };
 
 /**
+ * Clears ALL keys EXCEPT those matching the keep prefixes (whitelist approach)
+ * This is safer than blacklist deletion - unknown/orphaned keys get cleaned up
+ * @param keepPrefixes Array of string prefixes for keys to preserve
+ */
+export const clearAllExcept = (keepPrefixes: string[]) => {
+  const allKeys = database.getAllKeys();
+  const keysToDelete: string[] = [];
+  const keysToKeep: string[] = [];
+
+  for (const key of allKeys) {
+    const shouldKeep = keepPrefixes.some((prefix) => key.startsWith(prefix));
+    if (shouldKeep) {
+      keysToKeep.push(key);
+    } else {
+      keysToDelete.push(key);
+    }
+  }
+
+  for (const key of keysToDelete) {
+    database.remove(key);
+    logger.info(`MMKV DELETE: ${key}`);
+  }
+
+  logger.info(`MMKV CLEANUP: Deleted ${keysToDelete.length} keys, kept ${keysToKeep.length} keys`);
+  if (keysToKeep.length > 0) {
+    logger.info(`MMKV KEPT: [${keysToKeep.join(', ')}]`);
+  }
+};
+
+/**
  * Saves all prayer times to storage
  * Each prayer is stored with key format: prayer_YYYY-MM-DD
  * @param prayers Array of transformed prayer data from API
@@ -248,32 +278,11 @@ export function clearAllScheduledRemindersForSchedule(scheduleType: ScheduleType
 }
 
 /**
- * Clears data from storage - uncomment lines to clear specific data
- * Organized by category for easy selection
+ * Full cleanup - clears ALL data from storage (keeps nothing)
+ * Uses whitelist approach: deletes everything not in keep list
+ * Since keep list is empty, this wipes all data
  */
 export const cleanup = () => {
-  // --- Prayer Data ---
-  clearPrefix('prayer_'); // Daily prayer times data
-  clearPrefix('fetched_years'); // Years that have been fetched from API
-  clearPrefix('display_date'); // Current display date
-  clearPrefix('measurements_list'); // List component position
-  clearPrefix('measurements_date'); // Date component position
-  clearPrefix('prayer_max_english_width_standard'); // Max width for standard prayers
-  clearPrefix('prayer_max_english_width_extra'); // Max width for extra prayers
-  clearPrefix('preference_alert_standard_'); // Standard prayer alerts (6 prayers)
-  clearPrefix('preference_alert_extra_'); // Extra prayer alerts (4 prayers)
-  clearPrefix('preference_sound'); // Selected Athan sound
-  clearPrefix('preference_countdownbar_shown'); // Countdown bar visibility
-  clearPrefix('preference_countdownbar_color'); // Countdown bar color
-  clearPrefix('preference_hijri_date'); // Hijri date display
-  clearPrefix('preference_show_seconds'); // Show seconds
-  clearPrefix('preference_show_time_passed'); // Show time passed
-  clearPrefix('preference_show_arabic_names'); // Show Arabic names
-  clearPrefix('scheduled_notifications_'); // All scheduled notification tracking
-  clearPrefix('scheduled_reminders_'); // All scheduled reminder tracking
-  clearPrefix('preference_reminder_alert_'); // Reminder alert preferences
-  clearPrefix('preference_reminder_interval_'); // Reminder interval preferences
-  clearPrefix('last_notification_schedule_check'); // Last notification refresh timestamp
-  clearPrefix('popup_update_last_check'); // Last app update check timestamp
-  clearPrefix('app_installed_version'); // Installed app version
+  // Full cleanup keeps NOTHING - complete wipe
+  clearAllExcept([]);
 };
