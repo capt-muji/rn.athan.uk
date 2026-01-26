@@ -88,7 +88,7 @@ export default function BottomSheetSound() {
 
         {/* Sound List Card */}
         <View style={styles.card}>
-          <Text style={styles.cardHint}>Tap to select, close to save</Text>
+          <Text style={styles.cardHint}>Sounds - close to save</Text>
 
           <View style={styles.listContainer}>
             {/* Sliding indicator */}

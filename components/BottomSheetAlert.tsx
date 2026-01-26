@@ -533,7 +533,7 @@ export default function BottomSheetAlert() {
         <View style={styles.header}>
           <View>
             <Text style={styles.title}>{sheetState?.prayerEnglish ?? ''}</Text>
-            <Text style={styles.subtitle}>Notification settings</Text>
+            <Text style={styles.subtitle}>Notifications - close to save </Text>
           </View>
           <View style={styles.headerIcon}>
             <IconView type={Icon.BELL_RING} size={16} color="rgba(165, 180, 252, 0.8)" />
