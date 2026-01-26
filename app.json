@@ -3,7 +3,7 @@
     "newArchEnabled": true,
     "name": "Athan",
     "slug": "athan",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -73,7 +73,7 @@
         {
           "icon": "./assets/icons/config/icon-android-notification.png",
           "sounds": [
-            "./assets/audio/reminders.wav",
+            "./assets/audio/reminder.wav",
             "./assets/audio/athan1.wav",
             "./assets/audio/athan2.wav",
             "./assets/audio/athan3.wav",

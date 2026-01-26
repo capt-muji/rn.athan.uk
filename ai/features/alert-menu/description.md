@@ -21,7 +21,7 @@ Transform the prayer alert from a cycle-through popup (Off -> Silent -> Sound) t
 
 ## Non-Goals
 
-- User-selectable reminder sound (hardcoded to `reminders.wav`)
+- User-selectable reminder sound (hardcoded to `reminder.wav`)
 - More than 2 notifications per prayer (at-time + reminder max)
 - Global reminder settings (all settings are per-prayer)
 
@@ -51,7 +51,7 @@ Transform the prayer alert from a cycle-through popup (Off -> Silent -> Sound) t
 
 - [ ] Reminder section visible only when at-time != Off
 - [ ] Reminder options: Off (default) / Silent / Sound
-- [ ] Reminder sound is hardcoded (plays reminders.wav)
+- [ ] Reminder sound is hardcoded (plays reminder.wav)
 - [ ] Reminder disabled automatically when at-time set to Off
 
 ### Story 3: Configure Reminder Interval
@@ -179,7 +179,7 @@ yarn validate
 
 ## Open Questions
 
-- [x] Reminder sound file name? **Answer:** `reminders.wav` (hardcoded)
+- [x] Reminder sound file name? **Answer:** `reminder.wav` (hardcoded)
 - [x] Max notifications per prayer? **Answer:** 2 (at-time + reminder)
 - [x] Default reminder interval? **Answer:** 15 minutes
 
