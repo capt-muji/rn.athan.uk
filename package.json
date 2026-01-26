@@ -14,7 +14,7 @@
     "husky": "husky install && husky add .husky/pre-commit 'npx lint-staged && yarn validate'",
     "test": "DEBUG_TESTS=1 jest",
     "test:watch": "DEBUG_TESTS=1 jest --watch",
-    "validate": "tsc --noEmit & T=$!; eslint . & E=$!; prettier --check . & P=$!; jest --silent & J=$!; wait $T && wait $E && wait $P && wait $J",
+    "validate": "tsc --noEmit && eslint . && prettier --check . && jest --silent",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
