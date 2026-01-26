@@ -17,6 +17,7 @@ export const updateAndroidChannel = async (sound: number) => {
     importance: Notifications.AndroidImportance.MAX,
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
+    bypassDnd: true,
   });
 
   return channelId;
