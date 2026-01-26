@@ -10,6 +10,7 @@
 ## Vision
 
 Transform the `components/` folder from 27 files (~3,700 LOC) with several monolithic files into a collection of small, focused, reusable components. Each component should ideally be:
+
 - **< 150 lines** (single responsibility)
 - **Self-contained** (own styles, no embedded sub-components)
 - **Reusable** where patterns repeat
@@ -21,20 +22,20 @@ Transform the `components/` folder from 27 files (~3,700 LOC) with several monol
 
 ### Components by Size (Refactoring Priority)
 
-| Priority | File | Lines | Embedded Components | Action |
-|----------|------|-------|---------------------|--------|
-| **P0** | BottomSheetAlert.tsx | 684 | SegmentedControl, Toggle, Stepper, TypeSelector | Extract 2, delete 1 |
-| **P1** | ColorPickerSettings.tsx | 312 | Likely has sliders, previews | Analyze & extract |
-| **P1** | CountdownBar.tsx | 274 | Animated segments? | Analyze & extract |
-| **P2** | BottomSheetSettings.tsx | 217 | Setting rows? | Analyze |
-| **P2** | Overlay.tsx | 214 | Multiple overlays? | Analyze |
-| **P2** | BottomSheetSound.tsx | 180 | Sound items? | Analyze |
-| **P3** | Alert.tsx | 170 | - | Review |
-| **P3** | PrayerExplanation.tsx | 161 | - | Review |
-| **P3** | BottomSheetSoundItem.tsx | 153 | - | Review |
-| OK | Prayer.tsx | 125 | - | Keep |
-| OK | PrayerTime.tsx | 95 | - | Keep |
-| OK | Others (<100 lines) | 16-82 | - | Keep |
+| Priority | File                     | Lines | Embedded Components                             | Action              |
+| -------- | ------------------------ | ----- | ----------------------------------------------- | ------------------- |
+| **P0**   | BottomSheetAlert.tsx     | 684   | SegmentedControl, Toggle, Stepper, TypeSelector | Extract 2, delete 1 |
+| **P1**   | ColorPickerSettings.tsx  | 312   | Likely has sliders, previews                    | Analyze & extract   |
+| **P1**   | CountdownBar.tsx         | 274   | Animated segments?                              | Analyze & extract   |
+| **P2**   | BottomSheetSettings.tsx  | 217   | Setting rows?                                   | Analyze             |
+| **P2**   | Overlay.tsx              | 214   | Multiple overlays?                              | Analyze             |
+| **P2**   | BottomSheetSound.tsx     | 180   | Sound items?                                    | Analyze             |
+| **P3**   | Alert.tsx                | 170   | -                                               | Review              |
+| **P3**   | PrayerExplanation.tsx    | 161   | -                                               | Review              |
+| **P3**   | BottomSheetSoundItem.tsx | 153   | -                                               | Review              |
+| OK       | Prayer.tsx               | 125   | -                                               | Keep                |
+| OK       | PrayerTime.tsx           | 95    | -                                               | Keep                |
+| OK       | Others (<100 lines)      | 16-82 | -                                               | Keep                |
 
 **Total:** 27 components, ~3,700 LOC
 
@@ -78,34 +79,42 @@ components/
 ## Phased Approach
 
 ### Phase 1: BottomSheetAlert.tsx (Current Focus)
+
 **Tasks:** ~15 tasks
 **Goal:** 684 → ~270 lines
 
 Detailed plan below in "BottomSheetAlert Refactoring" section.
 
 ### Phase 2: ColorPickerSettings.tsx
+
 **Tasks:** ~10-15 tasks
 **Goal:** 312 → ~150 lines
 
 Requires analysis - likely contains:
+
 - Color sliders
 - Color preview
 - Preset buttons
 
 ### Phase 3: CountdownBar.tsx
+
 **Tasks:** ~8-12 tasks
 **Goal:** 274 → ~150 lines
 
 Requires analysis - likely contains:
+
 - Animated progress segments
 - Time display components
 
 ### Phase 4: Medium Files (180-220 lines)
+
 **Tasks:** ~15-20 tasks
 **Files:** BottomSheetSettings, Overlay, BottomSheetSound
 
 ### Phase 5: Review & Consolidation
+
 **Tasks:** ~10-15 tasks
+
 - Identify cross-cutting patterns
 - Create shared primitives
 - Optional: folder reorganization
@@ -114,14 +123,14 @@ Requires analysis - likely contains:
 
 ## Task Breakdown Summary
 
-| Phase | Focus | Est. Tasks |
-|-------|-------|------------|
-| 1 | BottomSheetAlert.tsx | 15 |
-| 2 | ColorPickerSettings.tsx | 12 |
-| 3 | CountdownBar.tsx | 10 |
-| 4 | Medium files (3 files) | 18 |
-| 5 | Review & consolidation | 12 |
-| **Total** | | **~67 tasks** |
+| Phase     | Focus                   | Est. Tasks    |
+| --------- | ----------------------- | ------------- |
+| 1         | BottomSheetAlert.tsx    | 15            |
+| 2         | ColorPickerSettings.tsx | 12            |
+| 3         | CountdownBar.tsx        | 10            |
+| 4         | Medium files (3 files)  | 18            |
+| 5         | Review & consolidation  | 12            |
+| **Total** |                         | **~67 tasks** |
 
 ---
 
@@ -138,6 +147,7 @@ Requires analysis - likely contains:
 After rigorous analysis by 4 specialist agents (Performance Validator, Practitioner Simulator, Synthesis Architect, Final Arbiter), we've determined the optimal refactoring approach for `BottomSheetAlert.tsx` (684 lines).
 
 **Key Findings:**
+
 1. **Performance concerns are overblown** - Extraction is safe from a Reanimated perspective
 2. **TypeSelector duplicates SegmentedControl** - This is the primary consolidation target
 3. **Toggle is NOT duplicate** - SettingsToggle and Toggle serve different compositional roles
@@ -186,18 +196,20 @@ The Performance Validator agent examined the actual Reanimated code patterns and
 
 ### Why Extraction is SAFE
 
-| Pattern | Location | Analysis |
-|---------|----------|----------|
-| `useDerivedValue` | Lines 55, 330 | Creates component-local shared values - no cross-boundary passing |
-| `useAnimatedStyle` | Lines 57-67, 91-94, 176-178, 332-342, 367-370 | All use `withTiming()` which runs entirely on UI thread |
-| `interpolateColor` | Lines 58, 333 | Standard prop-driven animation pattern |
+| Pattern            | Location                                      | Analysis                                                          |
+| ------------------ | --------------------------------------------- | ----------------------------------------------------------------- |
+| `useDerivedValue`  | Lines 55, 330                                 | Creates component-local shared values - no cross-boundary passing |
+| `useAnimatedStyle` | Lines 57-67, 91-94, 176-178, 332-342, 367-370 | All use `withTiming()` which runs entirely on UI thread           |
+| `interpolateColor` | Lines 58, 333                                 | Standard prop-driven animation pattern                            |
 
 **Evidence from Codebase:**
+
 - `SettingsToggle.tsx` (69 lines) - Uses identical pattern, already extracted, works fine
 - `BottomSheetSoundItem.tsx` (153 lines) - Uses same Reanimated patterns in separate file
 - `ActiveBackground.tsx` (64 lines) - Complex animation hooks, extracted, works fine
 
 **Risk Assessment:**
+
 - Frame time impact: **Negligible (<0.1ms)**
 - Perceptual lag: **None**
 - Worklet optimization: **Unchanged**
@@ -233,6 +245,7 @@ function AnimatedTypeSelectorOption({ icon, label, isSelected, onPress }) {
 ```
 
 **TypeSelector is just SegmentedControl with hardcoded 2 options.** Both components:
+
 - Use identical indicator animation pattern
 - Use identical option animation pattern
 - Share the same `SEGMENT_COLORS` constant
@@ -242,12 +255,13 @@ function AnimatedTypeSelectorOption({ icon, label, isSelected, onPress }) {
 
 ### Toggle vs SettingsToggle (NOT DUPLICATION)
 
-| Component | Props | Layout | Purpose |
-|-----------|-------|--------|---------|
-| `SettingsToggle.tsx` (69 lines) | `{ label, value, onToggle }` | Row with label + toggle | Labeled toggle for settings lists |
-| `Toggle` in BottomSheetAlert (53 lines) | `{ value, onToggle, disabled }` | Standalone toggle | Raw control for card layouts |
+| Component                               | Props                           | Layout                  | Purpose                           |
+| --------------------------------------- | ------------------------------- | ----------------------- | --------------------------------- |
+| `SettingsToggle.tsx` (69 lines)         | `{ label, value, onToggle }`    | Row with label + toggle | Labeled toggle for settings lists |
+| `Toggle` in BottomSheetAlert (53 lines) | `{ value, onToggle, disabled }` | Standalone toggle       | Raw control for card layouts      |
 
 **These serve different compositional roles.** Merging them would:
+
 - Require optional `label` prop (code smell)
 - Create one component with two responsibilities
 - Add wrapper indirection for 95% of use cases
@@ -284,6 +298,7 @@ const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
 ```
 
 **Changes:**
+
 1. Add `REMINDER_TYPE_OPTIONS` constant after `ALERT_OPTIONS` (line ~454)
 2. Update TypeSelector usage to SegmentedControl (line 569)
 3. Delete TypeSelector component (lines 312-443)
@@ -298,12 +313,13 @@ const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
 
 Extract 2 components to separate files, consolidate TypeSelector:
 
-| New File | Source Lines | Lines | Content |
-|----------|--------------|-------|---------|
-| `components/SegmentedControl.tsx` | 26-163 | ~170 | SegmentedControl + AnimatedSegmentOption + segmentStyles |
-| `components/Stepper.tsx` | 220-310 | ~100 | Stepper + stepperStyles |
+| New File                          | Source Lines | Lines | Content                                                  |
+| --------------------------------- | ------------ | ----- | -------------------------------------------------------- |
+| `components/SegmentedControl.tsx` | 26-163       | ~170  | SegmentedControl + AnimatedSegmentOption + segmentStyles |
+| `components/Stepper.tsx`          | 220-310      | ~100  | Stepper + stepperStyles                                  |
 
 **BottomSheetAlert.tsx After:**
+
 - Toggle (53 lines) - Keep inline
 - Main component (239 lines) - With imports
 - styles (84 lines)
@@ -317,11 +333,11 @@ Extract 2 components to separate files, consolidate TypeSelector:
 
 ### Summary Table
 
-| Step | Action | Files |
-|------|--------|-------|
-| 1 | Create SegmentedControl.tsx | NEW: `components/SegmentedControl.tsx` |
-| 2 | Create Stepper.tsx | NEW: `components/Stepper.tsx` |
-| 3 | Update BottomSheetAlert.tsx | MODIFY: `components/BottomSheetAlert.tsx` |
+| Step | Action                      | Files                                     |
+| ---- | --------------------------- | ----------------------------------------- |
+| 1    | Create SegmentedControl.tsx | NEW: `components/SegmentedControl.tsx`    |
+| 2    | Create Stepper.tsx          | NEW: `components/Stepper.tsx`             |
+| 3    | Update BottomSheetAlert.tsx | MODIFY: `components/BottomSheetAlert.tsx` |
 
 **Result:** 684 lines → ~270 lines (-60%)
 
@@ -405,17 +421,20 @@ import { ReminderInterval } from '@/shared/types';
 #### 3.1 Update Imports
 
 **Add:**
+
 ```typescript
 import SegmentedControl, { SegmentOption } from '@/components/SegmentedControl';
 import Stepper from '@/components/Stepper';
 ```
 
 **Remove from imports (no longer needed locally):**
+
 - `useMemo` (was only used by SegmentedControl)
 - `LayoutChangeEvent` (was only used by SegmentedControl/TypeSelector)
 - `interpolateColor, useDerivedValue` (was only used by SegmentedControl/TypeSelector)
 
 **Updated imports:**
+
 ```typescript
 import { useCallback, useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Pressable, Platform } from 'react-native';
@@ -424,10 +443,10 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
 #### 3.2 Delete Code Blocks
 
-| Lines | What | Action |
-|-------|------|--------|
-| 26-163 | SegmentedControl + segmentStyles | DELETE (moved to new file) |
-| 220-310 | Stepper + stepperStyles | DELETE (moved to new file) |
+| Lines   | What                              | Action                                |
+| ------- | --------------------------------- | ------------------------------------- |
+| 26-163  | SegmentedControl + segmentStyles  | DELETE (moved to new file)            |
+| 220-310 | Stepper + stepperStyles           | DELETE (moved to new file)            |
 | 312-443 | TypeSelector + typeSelectorStyles | DELETE (replaced by SegmentedControl) |
 
 #### 3.3 Add Constants
@@ -461,6 +480,7 @@ const REMINDER_TYPE_OPTIONS: SegmentOption<AlertType.Silent | AlertType.Sound>[]
 #### 3.5 Add JSDoc Comment
 
 At top of file:
+
 ```typescript
 /**
  * Alert settings bottom sheet for per-prayer notification configuration.
@@ -560,6 +580,7 @@ npx expo start
 ### Rollback Plan
 
 If issues arise:
+
 1. Git revert the 3 file changes
 2. Original BottomSheetAlert.tsx is intact in git history
 
@@ -567,24 +588,24 @@ If issues arise:
 
 ## What NOT To Do
 
-| Action | Why Not |
-|--------|---------|
-| Create 11 folders | Overkill at 3.5K LOC, 27 components |
-| Create barrel exports (index.ts) | Premature, adds maintenance burden |
-| Merge Toggle + SettingsToggle | Different compositional roles |
+| Action                                  | Why Not                                 |
+| --------------------------------------- | --------------------------------------- |
+| Create 11 folders                       | Overkill at 3.5K LOC, 27 components     |
+| Create barrel exports (index.ts)        | Premature, adds maintenance burden      |
+| Merge Toggle + SettingsToggle           | Different compositional roles           |
 | Create AnimatedSelectOption abstraction | Premature, adds complexity for 48 lines |
-| Generalize Prayer.tsx, List.tsx, etc. | Jotai hooks are correct pattern |
-| Rename existing files | Churn without benefit |
+| Generalize Prayer.tsx, List.tsx, etc.   | Jotai hooks are correct pattern         |
+| Rename existing files                   | Churn without benefit                   |
 
 ---
 
 ## Decision Matrix
 
-| Action | Effort | Risk | Benefit | Verdict |
-|--------|--------|------|---------|---------|
-| Option A: Delete TypeSelector only | Low (30 min) | Very Low | Medium (-131 lines) | **QUICK WIN** |
-| Option B: Extract 2 + delete TypeSelector | Medium (2-3 hrs) | Low | High (-414 lines) | **RECOMMENDED** |
-| Original Plan: Extract 4 + 11 folders | High (8+ hrs) | Medium | Low (over-engineering) | **REJECT** |
+| Action                                    | Effort           | Risk     | Benefit                | Verdict         |
+| ----------------------------------------- | ---------------- | -------- | ---------------------- | --------------- |
+| Option A: Delete TypeSelector only        | Low (30 min)     | Very Low | Medium (-131 lines)    | **QUICK WIN**   |
+| Option B: Extract 2 + delete TypeSelector | Medium (2-3 hrs) | Low      | High (-414 lines)      | **RECOMMENDED** |
+| Original Plan: Extract 4 + 11 folders     | High (8+ hrs)    | Medium   | Low (over-engineering) | **REJECT**      |
 
 ---
 
@@ -626,12 +647,12 @@ If issues arise:
 
 ## Agent Analysis Summary
 
-| Agent | Score | Key Finding |
-|-------|-------|-------------|
-| **Performance Validator** | N/A | Performance claims overblown. Extraction is SAFE. |
-| **Practitioner Simulator** | N/A | TypeSelector is just SegmentedControl with hardcoded options |
-| **Synthesis Architect** | 72/100 | Cognitive load justifies extraction even without reuse |
-| **Final Arbiter** | 82/100 | Delete TypeSelector. Everything else is premature. |
+| Agent                      | Score  | Key Finding                                                  |
+| -------------------------- | ------ | ------------------------------------------------------------ |
+| **Performance Validator**  | N/A    | Performance claims overblown. Extraction is SAFE.            |
+| **Practitioner Simulator** | N/A    | TypeSelector is just SegmentedControl with hardcoded options |
+| **Synthesis Architect**    | 72/100 | Cognitive load justifies extraction even without reuse       |
+| **Final Arbiter**          | 82/100 | Delete TypeSelector. Everything else is premature.           |
 
 **Consensus:** Option B provides the best balance of effort vs benefit. The file's 684 lines with 5 StyleSheets is genuinely problematic for navigation and maintenance.
 
@@ -641,12 +662,12 @@ If issues arise:
 
 **Do NOT act on these now. Revisit when:**
 
-| Condition | Action |
-|-----------|--------|
-| Second use of SegmentedControl appears | Consider keeping extraction |
-| Codebase exceeds 5K LOC | Consider folder organization |
-| New developer struggles with file discovery | Create components/README.md |
-| 50+ components | Consider barrel exports |
+| Condition                                   | Action                       |
+| ------------------------------------------- | ---------------------------- |
+| Second use of SegmentedControl appears      | Consider keeping extraction  |
+| Codebase exceeds 5K LOC                     | Consider folder organization |
+| New developer struggles with file discovery | Create components/README.md  |
+| 50+ components                              | Consider barrel exports      |
 
 ---
 
@@ -669,11 +690,13 @@ components/
 ## Phase 1: BottomSheetAlert.tsx (~15 tasks)
 
 ### 1.1 Analysis & Setup
+
 - [ ] **Task 1.1.1:** Read and analyze BottomSheetAlert.tsx structure
 - [ ] **Task 1.1.2:** Identify all embedded components and their dependencies
 - [ ] **Task 1.1.3:** Document component interfaces and props
 
 ### 1.2 Extract SegmentedControl
+
 - [ ] **Task 1.2.1:** Create `components/SegmentedControl.tsx` file
 - [ ] **Task 1.2.2:** Copy SegmentedControl code (lines 26-163)
 - [ ] **Task 1.2.3:** Add generic type parameter `<T extends string>`
@@ -681,12 +704,14 @@ components/
 - [ ] **Task 1.2.5:** Add JSDoc documentation with usage example
 
 ### 1.3 Extract Stepper
+
 - [ ] **Task 1.3.1:** Create `components/Stepper.tsx` file
 - [ ] **Task 1.3.2:** Copy Stepper code (lines 220-310)
 - [ ] **Task 1.3.3:** Export `StepperProps` type
 - [ ] **Task 1.3.4:** Add JSDoc documentation
 
 ### 1.4 Update BottomSheetAlert.tsx
+
 - [ ] **Task 1.4.1:** Add imports for SegmentedControl and Stepper
 - [ ] **Task 1.4.2:** Remove extracted SegmentedControl code (lines 26-163)
 - [ ] **Task 1.4.3:** Remove extracted Stepper code (lines 220-310)
@@ -697,6 +722,7 @@ components/
 - [ ] **Task 1.4.8:** Clean up unused imports
 
 ### 1.5 Testing & Verification
+
 - [ ] **Task 1.5.1:** Test SegmentedControl animations (Athan section)
 - [ ] **Task 1.5.2:** Test Toggle animations (Reminder section)
 - [ ] **Task 1.5.3:** Test Stepper increment/decrement
@@ -709,18 +735,21 @@ components/
 ## Phase 2: ColorPickerSettings.tsx (~12 tasks)
 
 ### 2.1 Analysis
+
 - [ ] **Task 2.1.1:** Read and analyze ColorPickerSettings.tsx (312 lines)
 - [ ] **Task 2.1.2:** Identify embedded components (sliders, previews, etc.)
 - [ ] **Task 2.1.3:** Document component boundaries and dependencies
 - [ ] **Task 2.1.4:** Create extraction plan
 
 ### 2.2 Extract Components (TBD based on analysis)
+
 - [ ] **Task 2.2.1:** Extract component A (e.g., ColorSlider)
 - [ ] **Task 2.2.2:** Extract component B (e.g., ColorPreview)
 - [ ] **Task 2.2.3:** Extract component C (e.g., PresetButton)
 - [ ] **Task 2.2.4:** Update imports and usage
 
 ### 2.3 Testing
+
 - [ ] **Task 2.3.1:** Test color selection functionality
 - [ ] **Task 2.3.2:** Test slider interactions
 - [ ] **Task 2.3.3:** Test preset buttons
@@ -731,17 +760,20 @@ components/
 ## Phase 3: CountdownBar.tsx (~10 tasks)
 
 ### 3.1 Analysis
+
 - [ ] **Task 3.1.1:** Read and analyze CountdownBar.tsx (274 lines)
 - [ ] **Task 3.1.2:** Identify animated segments and sub-components
 - [ ] **Task 3.1.3:** Document animation patterns
 - [ ] **Task 3.1.4:** Create extraction plan
 
 ### 3.2 Extract Components (TBD based on analysis)
+
 - [ ] **Task 3.2.1:** Extract component A (e.g., ProgressSegment)
 - [ ] **Task 3.2.2:** Extract component B (e.g., TimeDisplay)
 - [ ] **Task 3.2.3:** Update imports and usage
 
 ### 3.3 Testing
+
 - [ ] **Task 3.3.1:** Test countdown animations
 - [ ] **Task 3.3.2:** Test segment transitions
 - [ ] **Task 3.3.3:** Verify timing accuracy
@@ -751,6 +783,7 @@ components/
 ## Phase 4: Medium Files (~18 tasks)
 
 ### 4.1 BottomSheetSettings.tsx (217 lines)
+
 - [ ] **Task 4.1.1:** Analyze structure and embedded components
 - [ ] **Task 4.1.2:** Extract setting row component if applicable
 - [ ] **Task 4.1.3:** Extract section component if applicable
@@ -758,23 +791,27 @@ components/
 - [ ] **Task 4.1.5:** Test all settings interactions
 
 ### 4.2 Overlay.tsx (214 lines)
+
 - [ ] **Task 4.2.1:** Analyze structure and overlay types
 - [ ] **Task 4.2.2:** Extract overlay variants if applicable
 - [ ] **Task 4.2.3:** Update main file
 - [ ] **Task 4.2.4:** Test overlay animations
 
 ### 4.3 BottomSheetSound.tsx (180 lines)
+
 - [ ] **Task 4.3.1:** Analyze structure
 - [ ] **Task 4.3.2:** Check for reusable patterns with BottomSheetSoundItem
 - [ ] **Task 4.3.3:** Extract shared components if any
 - [ ] **Task 4.3.4:** Update and test
 
 ### 4.4 Alert.tsx (170 lines)
+
 - [ ] **Task 4.4.1:** Analyze structure
 - [ ] **Task 4.4.2:** Extract sub-components if applicable
 - [ ] **Task 4.4.3:** Test alert functionality
 
 ### 4.5 PrayerExplanation.tsx (161 lines)
+
 - [ ] **Task 4.5.1:** Analyze structure
 - [ ] **Task 4.5.2:** Extract sub-components if applicable
 - [ ] **Task 4.5.3:** Test explanation display
@@ -784,24 +821,28 @@ components/
 ## Phase 5: Review & Consolidation (~12 tasks)
 
 ### 5.1 Cross-cutting Patterns
+
 - [ ] **Task 5.1.1:** Audit all extracted components for consistency
 - [ ] **Task 5.1.2:** Identify shared animation patterns
 - [ ] **Task 5.1.3:** Identify shared style patterns
 - [ ] **Task 5.1.4:** Create shared constants if needed
 
 ### 5.2 Shared Primitives
+
 - [ ] **Task 5.2.1:** Review Card/Container patterns across sheets
 - [ ] **Task 5.2.2:** Review Button/Pressable patterns
 - [ ] **Task 5.2.3:** Consider extracting shared primitives
 - [ ] **Task 5.2.4:** Update components to use shared primitives
 
 ### 5.3 Optional: Folder Reorganization
+
 - [ ] **Task 5.3.1:** Decide on folder structure (flat vs. grouped)
 - [ ] **Task 5.3.2:** If grouped: create folders (primitives/, sheets/, prayer/, layout/)
 - [ ] **Task 5.3.3:** Move files to appropriate folders
 - [ ] **Task 5.3.4:** Update all import paths
 
 ### 5.4 Documentation
+
 - [ ] **Task 5.4.1:** Create components/README.md with component inventory
 - [ ] **Task 5.4.2:** Document component usage patterns
 - [ ] **Task 5.4.3:** Final review and cleanup
@@ -810,13 +851,13 @@ components/
 
 ## Task Summary
 
-| Phase | Tasks | Status |
-|-------|-------|--------|
-| Phase 1: BottomSheetAlert | 15 | Ready |
-| Phase 2: ColorPickerSettings | 12 | Needs Analysis |
-| Phase 3: CountdownBar | 10 | Needs Analysis |
-| Phase 4: Medium Files | 18 | Needs Analysis |
-| Phase 5: Consolidation | 12 | Deferred |
-| **Total** | **67** | |
+| Phase                        | Tasks  | Status         |
+| ---------------------------- | ------ | -------------- |
+| Phase 1: BottomSheetAlert    | 15     | Ready          |
+| Phase 2: ColorPickerSettings | 12     | Needs Analysis |
+| Phase 3: CountdownBar        | 10     | Needs Analysis |
+| Phase 4: Medium Files        | 18     | Needs Analysis |
+| Phase 5: Consolidation       | 12     | Deferred       |
+| **Total**                    | **67** |                |
 
 **Note:** Phase 2-5 task counts are estimates. Actual tasks will be refined after analysis of each file.

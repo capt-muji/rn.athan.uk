@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import Masjid from '@/components/Masjid';
+import { Masjid } from '@/components/ui';
 import { COLORS, SCREEN, TEXT, SPACING } from '@/shared/constants';
 import { formatDateLong, formatHijriDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';

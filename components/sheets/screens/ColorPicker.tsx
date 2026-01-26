@@ -7,45 +7,22 @@ import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } fro
 
 import CheckIcon from '@/assets/icons/svg/check.svg';
 import CloseIcon from '@/assets/icons/svg/close.svg';
-import CountdownBar from '@/components/CountdownBar';
-import { TEXT, STYLES, COLORS, SPACING, RADIUS, SHADOW, SIZE, ELEVATION, HIT_SLOP } from '@/shared/constants';
+import { CountdownBar } from '@/components/countdown';
+import {
+  TEXT,
+  COLORS,
+  SPACING,
+  RADIUS,
+  SHADOW,
+  SIZE,
+  ELEVATION,
+  HIT_SLOP,
+  COLOR_PICKER_SWATCHES,
+  COLOR_PICKER_SWATCHES_2,
+  COLOR_PICKER_DEFAULT,
+} from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
-
-// =============================================================================
-// CONSTANTS
-// =============================================================================
-
-/** Primary swatch colors for quick selection (first is default) */
-const SWATCH_COLORS = [
-  '#00ffea', // cyan (default)
-  '#ff3366', // hot pink
-  '#00ff88', // mint green
-  '#ff9500', // orange
-  '#ffee00', // yellow
-  '#7b68ee', // medium purple
-];
-
-/** Secondary swatch colors for additional options */
-const SWATCH_COLORS_2 = [
-  '#ff2d2d', // red
-  '#00bfff', // deep sky blue
-  '#ff69b4', // pink
-  '#32cd32', // lime green
-  '#dc2eff', // gold
-  '#1f8bff', // medium orchid
-];
-
-/** Default color when reset is pressed */
-const DEFAULT_COLOR = SWATCH_COLORS[0];
-
-// =============================================================================
-// COMPONENT
-// =============================================================================
-
-interface ColorPickerSettingsProps {
-  last?: boolean;
-}
 
 /**
  * Color picker settings component for countdown bar customization
@@ -63,7 +40,7 @@ interface ColorPickerSettingsProps {
  * // In settings panel
  * <ColorPickerSettings />
  */
-export default function ColorPickerSettings({ last }: ColorPickerSettingsProps) {
+export default function ColorPickerSettings() {
   const { bottom } = useSafeAreaInsets();
   const [countdownBarColor, setCountdownBarColor] = useAtom(countdownBarColorAtom);
   const [countdownBarShown] = useAtom(countdownBarShownAtom);
@@ -100,7 +77,7 @@ export default function ColorPickerSettings({ last }: ColorPickerSettingsProps) 
     if (isDisabled) return;
     logger.info('ColorPickerSettings: Resetting to default color');
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    setCountdownBarColor(DEFAULT_COLOR);
+    setCountdownBarColor(COLOR_PICKER_DEFAULT);
     setShowPicker(false);
   }, [isDisabled, setCountdownBarColor]);
 
@@ -113,7 +90,7 @@ export default function ColorPickerSettings({ last }: ColorPickerSettingsProps) 
   // COMPUTED VALUES
   // =============================================================================
 
-  const isCustomColor = countdownBarColor !== DEFAULT_COLOR;
+  const isCustomColor = countdownBarColor !== COLOR_PICKER_DEFAULT;
 
   // =============================================================================
   // RENDER
@@ -160,8 +137,8 @@ export default function ColorPickerSettings({ last }: ColorPickerSettingsProps) 
             <ColorPicker value={selectedColor} onChangeJS={handleColorPreview} style={styles.colorPicker}>
               <Panel1 style={styles.panel} />
               <HueSlider style={styles.hueSlider} />
-              <Swatches colors={SWATCH_COLORS} style={styles.swatches} />
-              <Swatches colors={SWATCH_COLORS_2} style={styles.swatches} />
+              <Swatches colors={[...COLOR_PICKER_SWATCHES]} style={styles.swatches} />
+              <Swatches colors={[...COLOR_PICKER_SWATCHES_2]} style={styles.swatches} />
             </ColorPicker>
           </View>
         </View>

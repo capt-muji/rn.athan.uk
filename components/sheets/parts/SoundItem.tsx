@@ -3,14 +3,9 @@ import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { Pressable, StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  withTiming,
-  useDerivedValue,
-  interpolateColor,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming, useDerivedValue, interpolateColor } from 'react-native-reanimated';
 
-import IconView from '@/components/Icon';
+import { IconView } from '@/components/ui';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { TEXT, SPACING, RADIUS, ANIMATION } from '@/shared/constants';
 import { Icon } from '@/shared/types';
@@ -110,15 +105,17 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
     <Pressable style={styles.option} onPress={handlePress} onLayout={onLayout}>
       <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>Athan {index + 1}</Text>
       <View style={styles.rightContainer}>
-        <Animated.Text style={[styles.countdown, countdownStyle]}>
-          {formatTime(remainingTime)}
-        </Animated.Text>
+        <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(remainingTime)}</Animated.Text>
         <AnimatedPressable
           style={[styles.icon, AnimScale.style]}
           onPress={playSound}
           onPressIn={() => AnimScale.animate(0.9)}
           onPressOut={() => AnimScale.animate(1)}>
-          <IconView type={isPlaying ? Icon.PAUSE : Icon.PLAY} size={18} color={isActive ? activeColor : inactiveColor} />
+          <IconView
+            type={isPlaying ? Icon.PAUSE : Icon.PLAY}
+            size={18}
+            color={isActive ? activeColor : inactiveColor}
+          />
         </AnimatedPressable>
       </View>
     </Pressable>
