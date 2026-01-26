@@ -79,7 +79,7 @@ export default function BottomSheetSound() {
         <View style={styles.header}>
           <View>
             <Text style={styles.title}>Select Athan</Text>
-            <Text style={styles.subtitle}>Choose your notification sound</Text>
+            <Text style={styles.subtitle}>Prayer time notification sound</Text>
           </View>
           <View style={styles.headerIcon}>
             <IconView type={Icon.SPEAKER} size={16} color="rgba(165, 180, 252, 0.8)" />
