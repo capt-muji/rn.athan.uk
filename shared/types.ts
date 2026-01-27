@@ -28,9 +28,9 @@ export interface IApiSingleTime {
   asr_2: string;
   /** Asr congregation time (not used in app) */
   asr_jamat: string;
-  /** Maghrib prayer time in HH:mm format */
+  /** Magrib prayer time in HH:mm format */
   magrib: string;
-  /** Maghrib congregation time (not used in app) */
+  /** Magrib congregation time (not used in app) */
   magrib_jamat: string;
   /** Isha prayer time in HH:mm format */
   isha: string;
@@ -77,11 +77,11 @@ export interface IApiResponse {
  * Transformation happens in shared/prayer.ts:transformApiData()
  *
  * Derived prayers calculated from API data:
- * - midnight: Midpoint between Maghrib and Fajr (Islamic midnight, not 00:00)
+ * - midnight: Midpoint between Magrib and Fajr (Islamic midnight, not 00:00)
  * - last third: Start of last third of night + 5 min adjustment
  * - suhoor: 40 minutes before Fajr (pre-dawn meal)
  * - duha: 20 minutes after Sunrise (forenoon prayer)
- * - istijaba: 59 minutes before Maghrib on Fridays only (supplication time)
+ * - istijaba: 59 minutes before Magrib on Fridays only (supplication time)
  *
  * Stored in MMKV with key format: prayer_YYYY-MM-DD
  * Cache lifetime: Until next app upgrade (see stores/version.ts)
@@ -112,15 +112,15 @@ export interface ISingleApiResponseTransformed {
  * - Sunrise: Marks end of Fajr time
  * - Dhuhr: Midday prayer
  * - Asr: Afternoon prayer
- * - Maghrib: Sunset prayer
+ * - Magrib: Sunset prayer
  * - Isha: Night prayer
  *
  * Extra Schedule (4-5 prayers):
- * - Midnight: Islamic midnight (midpoint Maghrib-Fajr, not 00:00)
+ * - Midnight: Islamic midnight (midpoint Magrib-Fajr, not 00:00)
  * - Last Third: Last third of night begins (blessed time for prayer)
  * - Suhoor: Pre-dawn meal time (40 min before Fajr)
  * - Duha: Forenoon prayer (20 min after Sunrise)
- * - Istijaba: Supplication time (59 min before Maghrib, Fridays only)
+ * - Istijaba: Supplication time (59 min before Magrib, Fridays only)
  *
  * Users can toggle between schedules via the tab navigation.
  * Each schedule has independent notification preferences and display state.
