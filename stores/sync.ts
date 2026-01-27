@@ -98,7 +98,8 @@ const needsDataUpdate = (): boolean => {
  */
 const updatePrayerData = async () => {
   logger.info('SYNC: Starting data refresh');
-  Database.cleanup();
+  // Clear prayer cache but preserve app version to prevent upgrade detection loop
+  Database.clearAllExcept(['app_installed_version']);
 
   try {
     // SCENARIO 3: December - Proactively fetch current year + next year

@@ -71,7 +71,7 @@ export const measurementsDateAtom = atom<PageCoordinates>(emptyCoordinates);
 export const countdownBarShownAtom = atomWithStorageBoolean('preference_countdownbar_shown', true);
 
 /** Color of the countdown bar (hex string) */
-export const countdownBarColorAtom = atomWithStorageString('preference_countdownbar_color', '#01BFFF');
+export const countdownBarColorAtom = atomWithStorageString('preference_countdownbar_color', '#ffd000');
 
 /** Whether to display dates in Hijri (Islamic) calendar format */
 export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);

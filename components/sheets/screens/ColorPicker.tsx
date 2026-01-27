@@ -101,11 +101,13 @@ export default function ColorPickerSettings() {
       <Pressable style={[styles.container, { opacity }]} onPress={handlePress} hitSlop={HIT_SLOP.md}>
         <Text style={[styles.label, isDisabled && styles.labelDisabled]}>Countdown bar color</Text>
         <View style={styles.rightContainer}>
-          {isCustomColor && (
-            <Pressable onPress={handleReset} hitSlop={HIT_SLOP.sm} style={styles.resetButton}>
-              <Text style={styles.resetText}>Reset</Text>
-            </Pressable>
-          )}
+          <Pressable
+            onPress={handleReset}
+            hitSlop={HIT_SLOP.sm}
+            style={[styles.resetButton, { opacity: isCustomColor ? 1 : 0 }]}
+            disabled={!isCustomColor}>
+            <Text style={styles.resetText}>Reset</Text>
+          </Pressable>
           <View style={styles.colorPreviewContainer}>
             <View style={[styles.colorPreview, { backgroundColor: countdownBarColor }]} />
           </View>
@@ -183,7 +185,7 @@ const styles = StyleSheet.create({
   resetText: {
     color: COLORS.text.secondary,
     fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeSmall,
+    fontSize: TEXT.sizeDetail,
   },
   colorPreviewContainer: {
     width: SIZE.iconWrapper.sm,
