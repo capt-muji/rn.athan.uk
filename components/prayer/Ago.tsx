@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -30,17 +30,27 @@ interface Props {
 export default function PrayerAgo({ type }: Props) {
   const { prayerAgo, minutesElapsed, isReady: prayerAgoReady } = usePrayerAgo(type);
   const overlay = useAtomValue(overlayAtom);
+  const hasInitialized = useRef(false);
 
   // Color state: 0=normal, 1=recent (≤5 mins)
-  const isRecentValue = useSharedValue(minutesElapsed <= 5 ? 1 : 0);
+  const isRecentValue = useSharedValue(0);
 
-  // Animate color transition when recent state changes
+  // Sync color state: immediate on first valid data, animate on subsequent changes
   useEffect(() => {
-    isRecentValue.value = withTiming(minutesElapsed <= 5 ? 1 : 0, {
-      duration: ANIMATION.durationMedium,
-      easing: Easing.linear,
-    });
-  }, [minutesElapsed]);
+    if (!prayerAgoReady) return;
+
+    const targetValue = minutesElapsed <= 5 ? 1 : 0;
+
+    if (!hasInitialized.current) {
+      isRecentValue.value = targetValue;
+      hasInitialized.current = true;
+    } else {
+      isRecentValue.value = withTiming(targetValue, {
+        duration: ANIMATION.durationMedium,
+        easing: Easing.linear,
+      });
+    }
+  }, [minutesElapsed, prayerAgoReady]);
 
   // Fade out when overlay opens
   const prayerAgoOpacity = useAnimatedStyle(() => ({

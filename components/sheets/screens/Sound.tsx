@@ -1,9 +1,9 @@
 import { AudioSource } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { Sheet, SoundItem } from '../parts';
 
@@ -21,6 +21,8 @@ export default function BottomSheetSound() {
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
   const [itemHeight, setItemHeight] = useState(0);
+  const hasInitialized = useRef(false);
+  const translateY = useSharedValue(0);
 
   const currentSelection = tempSoundSelection ?? selectedSound;
 
@@ -34,14 +36,28 @@ export default function BottomSheetSound() {
     [itemHeight]
   );
 
-  const indicatorStyle = useAnimatedStyle(() => {
-    const translateY = currentSelection * (itemHeight + ITEM_GAP);
-    return {
-      transform: [{ translateY: withTiming(translateY, { duration: ANIMATION.duration }) }],
+  // Update translateY: no animation on first render, animate on subsequent changes
+  useEffect(() => {
+    if (itemHeight === 0) return;
+
+    const targetY = currentSelection * (itemHeight + ITEM_GAP);
+
+    if (!hasInitialized.current) {
+      translateY.value = targetY;
+      hasInitialized.current = true;
+    } else {
+      translateY.value = withTiming(targetY, { duration: ANIMATION.duration });
+    }
+  }, [currentSelection, itemHeight]);
+
+  const indicatorStyle = useAnimatedStyle(
+    () => ({
+      transform: [{ translateY: translateY.value }],
       height: itemHeight,
       opacity: itemHeight > 0 ? 1 : 0,
-    };
-  }, [currentSelection, itemHeight]);
+    }),
+    [itemHeight]
+  );
 
   const clearAudio = useCallback(() => setPlayingSoundIndex(null), []);
 
