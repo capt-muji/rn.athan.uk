@@ -150,17 +150,17 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 | **Sunrise** |
 | **Dhuhr**   |
 | **Asr**     |
-| **Magrib** |
+| **Magrib**  |
 | **Isha**    |
 
 ### Extra Prayers (5)
 
-| Prayer                  | Time                                     |
-| ----------------------- | ---------------------------------------- |
+| Prayer                  | Time                                    |
+| ----------------------- | --------------------------------------- |
 | **Midnight**            | Midpoint between Magrib and Fajr        |
-| **Last Third of Night** | 5 minutes after last third begins        |
-| **Suhoor**              | 40 minutes before Fajr                   |
-| **Duha**                | 20 minutes after Sunrise                 |
+| **Last Third of Night** | 5 minutes after last third begins       |
+| **Suhoor**              | 40 minutes before Fajr                  |
+| **Duha**                | 20 minutes after Sunrise                |
 | **Istijaba**            | 59 minutes before Magrib (Fridays only) |
 
 <br/>

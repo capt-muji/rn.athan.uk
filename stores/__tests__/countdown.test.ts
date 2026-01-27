@@ -26,9 +26,7 @@ jest.mock('@/stores/schedule', () => ({
     english: 'Fajr',
     datetime: new Date('2026-01-20T06:15:00'),
   })),
-  getSequenceAtom: jest.fn((type: string) =>
-    type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom
-  ),
+  getSequenceAtom: jest.fn((type: string) => (type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom)),
   standardDisplayDateAtom: atom('2026-01-20'),
   extraDisplayDateAtom: atom('2026-01-20'),
 }));
@@ -43,12 +41,7 @@ jest.mock('@/stores/atoms/overlay', () => ({
   overlayAtom: mockOverlayAtom,
 }));
 
-import {
-  standardCountdownAtom,
-  extraCountdownAtom,
-  overlayCountdownAtom,
-  getCountdownAtom,
-} from '../countdown';
+import { standardCountdownAtom, extraCountdownAtom, overlayCountdownAtom, getCountdownAtom } from '../countdown';
 
 import { ScheduleType } from '@/shared/types';
 
