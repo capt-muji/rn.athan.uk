@@ -77,7 +77,7 @@ describe('calculateBelongsToDate', () => {
     });
 
     it('assigns Last Third to next day when hour >= 12', () => {
-      // This handles the case where midnight/last third are calculated from previous evening's maghrib
+      // This handles the case where midnight/last third are calculated from previous evening's magrib
       // If the datetime shows >= 12 (afternoon), it means it's actually part of NEXT day's night
       const datetime = createPrayerDatetime('2026-01-18', '23:30'); // Late night, belongs to next day
       const result = calculateBelongsToDate(ScheduleType.Extra, 'Last Third', '2026-01-18', datetime);
@@ -578,7 +578,7 @@ describe('transformApiData', () => {
     expect(result[0].duha).toBe('07:50');
   });
 
-  it('calculates istijaba correctly (before maghrib)', () => {
+  it('calculates istijaba correctly (before magrib)', () => {
     const input: IApiResponse = {
       city: 'London',
       times: {
@@ -601,7 +601,7 @@ describe('transformApiData', () => {
     };
 
     const result = transformApiData(input);
-    // Istijaba is maghrib - 60 minutes (TIME_ADJUSTMENTS.istijaba = -60) = 16:00
+    // Istijaba is magrib - 60 minutes (TIME_ADJUSTMENTS.istijaba = -60) = 16:00
     expect(result[0].istijaba).toBe('16:00');
   });
 });

@@ -33,7 +33,7 @@ const createInitialCountdown = (): CountdownStore => ({ timeLeft: 10, name: 'Faj
 
 // --- Atoms ---
 
-/** Countdown state for Standard schedule (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) */
+/** Countdown state for Standard schedule (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha) */
 export const standardCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 
 /** Countdown state for Extra schedule (Midnight, Last Third, Suhoor, Duha, Istijaba) */

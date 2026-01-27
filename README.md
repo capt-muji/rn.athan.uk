@@ -150,18 +150,18 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 | **Sunrise** |
 | **Dhuhr**   |
 | **Asr**     |
-| **Maghrib** |
+| **Magrib** |
 | **Isha**    |
 
 ### Extra Prayers (5)
 
 | Prayer                  | Time                                     |
 | ----------------------- | ---------------------------------------- |
-| **Midnight**            | Midpoint between Maghrib and Fajr        |
+| **Midnight**            | Midpoint between Magrib and Fajr        |
 | **Last Third of Night** | 5 minutes after last third begins        |
 | **Suhoor**              | 40 minutes before Fajr                   |
 | **Duha**                | 20 minutes after Sunrise                 |
-| **Istijaba**            | 59 minutes before Maghrib (Fridays only) |
+| **Istijaba**            | 59 minutes before Magrib (Fridays only) |
 
 <br/>
 
@@ -419,7 +419,7 @@ The notification system maintains a **2-day rolling buffer** of scheduled notifi
 **Key Features:**
 
 - 2 days of notifications scheduled ahead for each enabled prayer
-- 11 prayers total: 6 Standard (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) + 5 Extra (Midnight, Last Third, Suhoor, Duha, Istijaba)
+- 11 prayers total: 6 Standard (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha) + 5 Extra (Midnight, Last Third, Suhoor, Duha, Istijaba)
 - Concurrent scheduling protection with global `isScheduling` guard
 - Maintains consistency even when app is closed or backgrounded
 - Persists through app restarts and offline usage

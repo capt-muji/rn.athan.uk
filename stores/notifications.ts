@@ -90,7 +90,7 @@ export const createPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: n
 };
 
 /**
- * Array of alert atoms for all standard prayers (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha)
+ * Array of alert atoms for all standard prayers (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha)
  * Each atom persists the user's notification preference for that prayer
  */
 export const standardPrayerAlertAtoms = PRAYERS_ENGLISH.map((_, index) =>
