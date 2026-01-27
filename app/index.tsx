@@ -1,3 +1,4 @@
+import * as SplashScreen from 'expo-splash-screen';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
@@ -33,6 +34,13 @@ export default function Index() {
     // Check for updates in background (currently disabled - github raw URL changed)
     // checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
   }, []);
+
+  // Hide splash screen once sync completes
+  useEffect(() => {
+    if (state !== 'loading') {
+      SplashScreen.hideAsync();
+    }
+  }, [state]);
 
   const handleCloseUpdate = () => {
     setPopupUpdateEnabled(false);
