@@ -1,6 +1,7 @@
 import * as Haptics from 'expo-haptics';
+import { useEffect, useRef } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { COLORS, SIZE, RADIUS, ANIMATION } from '@/shared/constants';
 
@@ -22,8 +23,19 @@ interface ToggleProps {
  * <Toggle value={isOn} onToggle={() => setIsOn(!isOn)} />
  */
 export default function Toggle({ value, onToggle, disabled }: ToggleProps) {
+  const isFirstRender = useRef(true);
+  const translateX = useSharedValue(value ? SIZE.toggle.translateX : 0);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    translateX.value = withTiming(value ? SIZE.toggle.translateX : 0, { duration: ANIMATION.duration });
+  }, [value]);
+
   const thumbStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: withTiming(value ? SIZE.toggle.translateX : 0, { duration: ANIMATION.duration }) }],
+    transform: [{ translateX: translateX.value }],
   }));
 
   const handlePress = () => {
