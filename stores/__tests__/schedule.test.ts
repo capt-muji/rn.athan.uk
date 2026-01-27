@@ -58,15 +58,6 @@ import {
   createDisplayDateAtom,
   setSequence,
   refreshSequence,
-  getNextPrayer,
-  getPrevPrayer,
-  getDisplayDate,
-  standardNextPrayerAtom,
-  extraNextPrayerAtom,
-  standardPrevPrayerAtom,
-  extraPrevPrayerAtom,
-  standardDisplayDateAtom,
-  extraDisplayDateAtom,
 } from '../schedule';
 
 import { ScheduleType, Prayer, ISingleApiResponseTransformed } from '@/shared/types';
@@ -746,4 +737,3 @@ describe('edge cases', () => {
     expect(result?.belongsToDate).toBe('2026-01-20');
   });
 });
-

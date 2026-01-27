@@ -35,7 +35,7 @@ This ADR resolves the ambiguity and establishes clear rules for all timing scena
 
 | Term                    | Definition                                                                                                                                          |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Midnight (prayer)       | Midpoint between yesterday's Magrib and today's Fajr. Can occur before or after 00:00.                                                             |
+| Midnight (prayer)       | Midpoint between yesterday's Magrib and today's Fajr. Can occur before or after 00:00.                                                              |
 | System midnight         | 00:00 on the system clock (English midnight). The app does NOT use this as a trigger.                                                               |
 | Day boundary (Standard) | After Isha passes. Schedule advances to tomorrow, date updates.                                                                                     |
 | Day boundary (Extras)   | After Duha passes (non-Friday) or after Istijaba passes (Friday).                                                                                   |
