@@ -67,8 +67,7 @@ export const genNotificationContent = (
     autoDismiss: false,
     sticky: false,
     priority: Notifications.AndroidNotificationPriority.MAX,
-    // 'critical' bypasses silent mode and DnD on iOS (requires Apple entitlement approval)
-    interruptionLevel: 'critical',
+    interruptionLevel: 'timeSensitive',
   };
 };
 
@@ -104,8 +103,7 @@ export const genReminderNotificationContent = (
     autoDismiss: true,
     sticky: false,
     priority: Notifications.AndroidNotificationPriority.HIGH,
-    // 'critical' bypasses silent mode and DnD on iOS (requires Apple entitlement approval)
-    interruptionLevel: 'critical',
+    interruptionLevel: 'timeSensitive',
   };
 };
 
