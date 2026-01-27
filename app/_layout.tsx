@@ -6,7 +6,6 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useLayoutEffect } from 'react';
 import { LogBox, Text } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
@@ -41,10 +40,6 @@ Text.defaultProps = {
 };
 
 export default function Layout() {
-  useLayoutEffect(() => {
-    SplashScreen.hide();
-  }, []);
-
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
       <StatusBar style="light" translucent />
