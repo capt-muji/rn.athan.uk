@@ -366,7 +366,7 @@ export const COUNTDOWN_TIP = {
  * Primary swatch colors for quick selection (first is default)
  */
 export const COLOR_PICKER_SWATCHES = [
-  '#00ffea', // cyan (default)
+  '#ffd000', // gold (default)
   '#ff3366', // hot pink
   '#00ff88', // mint green
   '#ff9500', // orange

@@ -151,7 +151,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 
   const tipAppearanceStyle = useAnimatedStyle(() => {
     const baseColor = interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]);
-    const tintColor = interpolateColor(COUNTDOWN_TIP.TINT_AMOUNT, [0, 1], [baseColor, '#ffffff']);
+    const tintColor = interpolateColor(COUNTDOWN_TIP.TINT_AMOUNT, [0, 1], [baseColor, '#000000']);
     return {
       backgroundColor: tintColor,
     };

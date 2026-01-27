@@ -17,8 +17,8 @@ import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 
-/** MMKV database instance */
-export const database = createMMKV();
+/** MMKV database instance - explicit ID required for Android production persistence */
+export const database = createMMKV({ id: 'athan-storage' });
 
 /**
  * Gets a JSON-parsed item from storage
