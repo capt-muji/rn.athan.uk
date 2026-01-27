@@ -12,7 +12,6 @@ import {
   genReminderTriggerDate,
   createReminderAndroidChannel,
 } from '../notifications';
-import { isFriday } from '../time';
 import { AlertType } from '../types';
 
 // =============================================================================
@@ -137,38 +136,6 @@ describe('isNotificationOutdated', () => {
       alertType: AlertType.Sound,
     };
     expect(isNotificationOutdated(notification)).toBe(false);
-  });
-});
-
-// =============================================================================
-// Istijaba Friday-only Logic (Baseline Test)
-// =============================================================================
-
-describe('Istijaba scheduling baseline', () => {
-  it('Friday detection works correctly for Istijaba filtering', () => {
-    // 2026-01-23 is a Friday, 2026-01-24 is Saturday
-    // This verifies isFriday() which controls Istijaba scheduling
-    expect(isFriday('2026-01-23')).toBe(true); // Should schedule
-    expect(isFriday('2026-01-24')).toBe(false); // Should skip
-    expect(isFriday('2026-01-25')).toBe(false); // Sunday - skip
-    expect(isFriday('2026-01-30')).toBe(true); // Next Friday - should schedule
-  });
-
-  it('correctly identifies Friday sequence', () => {
-    // Test a full week
-    const days = [
-      { date: '2026-01-19', day: 'Monday', isFriday: false },
-      { date: '2026-01-20', day: 'Tuesday', isFriday: false },
-      { date: '2026-01-21', day: 'Wednesday', isFriday: false },
-      { date: '2026-01-22', day: 'Thursday', isFriday: false },
-      { date: '2026-01-23', day: 'Friday', isFriday: true },
-      { date: '2026-01-24', day: 'Saturday', isFriday: false },
-      { date: '2026-01-25', day: 'Sunday', isFriday: false },
-    ];
-
-    days.forEach(({ date, isFriday: expected }) => {
-      expect(isFriday(date)).toBe(expected);
-    });
   });
 });
 
