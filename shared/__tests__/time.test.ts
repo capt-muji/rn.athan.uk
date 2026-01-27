@@ -98,23 +98,23 @@ describe('formatTimeAgo', () => {
 
 describe('getLastThirdOfNight', () => {
   it('calculates last third correctly for winter night', () => {
-    // Maghrib 18:45, Fajr 06:15 = 11.5h night
-    // 2/3 of 11.5h = 7h 40m after Maghrib = 02:25
+    // Magrib 18:45, Fajr 06:15 = 11.5h night
+    // 2/3 of 11.5h = 7h 40m after Magrib = 02:25
     const result = getLastThirdOfNight('18:45', '06:15');
     expect(result).toBe('02:25');
   });
 
   it('calculates last third for summer night (short)', () => {
-    // Summer: Maghrib late, Fajr early (short night)
-    // Maghrib 21:00, Fajr 03:30 = 6.5h night
-    // 2/3 of 6.5h = 4h 20m after Maghrib = 01:20
+    // Summer: Magrib late, Fajr early (short night)
+    // Magrib 21:00, Fajr 03:30 = 6.5h night
+    // 2/3 of 6.5h = 4h 20m after Magrib = 01:20
     const result = getLastThirdOfNight('21:00', '03:30');
     expect(result).toBe('01:20');
   });
 
   it('calculates last third for equinox night (equal)', () => {
-    // Maghrib 18:00, Fajr 06:00 = 12h night
-    // 2/3 of 12h = 8h after Maghrib = 02:00
+    // Magrib 18:00, Fajr 06:00 = 12h night
+    // 2/3 of 12h = 8h after Magrib = 02:00
     const result = getLastThirdOfNight('18:00', '06:00');
     expect(result).toBe('02:00');
   });
@@ -122,22 +122,22 @@ describe('getLastThirdOfNight', () => {
 
 describe('getMidnightTime', () => {
   it('calculates Islamic midnight correctly for winter night', () => {
-    // Maghrib 18:45, Fajr 06:15 = 11.5h night
-    // Midpoint = 5h 45m after Maghrib = 00:30
+    // Magrib 18:45, Fajr 06:15 = 11.5h night
+    // Midpoint = 5h 45m after Magrib = 00:30
     const result = getMidnightTime('18:45', '06:15');
     expect(result).toBe('00:30');
   });
 
   it('calculates Islamic midnight for summer night (short)', () => {
-    // Maghrib 21:00, Fajr 03:30 = 6.5h night
-    // Midpoint = 3h 15m after Maghrib = 00:15
+    // Magrib 21:00, Fajr 03:30 = 6.5h night
+    // Midpoint = 3h 15m after Magrib = 00:15
     const result = getMidnightTime('21:00', '03:30');
     expect(result).toBe('00:15');
   });
 
   it('calculates Islamic midnight for equinox night', () => {
-    // Maghrib 18:00, Fajr 06:00 = 12h night
-    // Midpoint = 6h after Maghrib = 00:00
+    // Magrib 18:00, Fajr 06:00 = 12h night
+    // Midpoint = 6h after Magrib = 00:00
     const result = getMidnightTime('18:00', '06:00');
     expect(result).toBe('00:00');
   });
@@ -147,11 +147,11 @@ describe('night boundary parsing consistency', () => {
   it('produces mathematically consistent results', () => {
     // Both functions should produce consistent results
     // Islamic midnight should always be before last third
-    const maghribTime = '18:00';
+    const magribTime = '18:00';
     const fajrTime = '06:00';
 
-    const midnight = getMidnightTime(maghribTime, fajrTime);
-    const lastThird = getLastThirdOfNight(maghribTime, fajrTime);
+    const midnight = getMidnightTime(magribTime, fajrTime);
+    const lastThird = getLastThirdOfNight(magribTime, fajrTime);
 
     // Parse times to compare
     const [midH, midM] = midnight.split(':').map(Number);
@@ -491,14 +491,14 @@ describe('DST transitions', () => {
 
 describe('getLastThirdOfNight edge cases', () => {
   it('handles very short summer night', () => {
-    // Summer solstice: Maghrib 21:15, Fajr 02:45 = 5.5h night
+    // Summer solstice: Magrib 21:15, Fajr 02:45 = 5.5h night
     const result = getLastThirdOfNight('21:15', '02:45');
     expect(result).toBeDefined();
     expect(result).toMatch(/^\d{2}:\d{2}$/);
   });
 
   it('handles very long winter night', () => {
-    // Winter solstice: Maghrib 15:50, Fajr 07:15 = 15h 25m night
+    // Winter solstice: Magrib 15:50, Fajr 07:15 = 15h 25m night
     const result = getLastThirdOfNight('15:50', '07:15');
     expect(result).toBeDefined();
     expect(result).toMatch(/^\d{2}:\d{2}$/);
@@ -507,14 +507,14 @@ describe('getLastThirdOfNight edge cases', () => {
 
 describe('getMidnightTime edge cases', () => {
   it('handles early Islamic midnight (winter)', () => {
-    // Very early Maghrib, late Fajr
+    // Very early Magrib, late Fajr
     const result = getMidnightTime('15:50', '07:15');
     expect(result).toBeDefined();
     expect(result).toMatch(/^\d{2}:\d{2}$/);
   });
 
   it('handles late Islamic midnight (summer)', () => {
-    // Late Maghrib, early Fajr
+    // Late Magrib, early Fajr
     const result = getMidnightTime('21:15', '02:45');
     expect(result).toBeDefined();
     expect(result).toMatch(/^\d{2}:\d{2}$/);

@@ -11,7 +11,7 @@
 
 The Athan app displays prayer schedules for a given date with two independent schedules:
 
-- **Standard Schedule**: Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha (6 prayers)
+- **Standard Schedule**: Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha (6 prayers)
 - **Extras Schedule**: Midnight, Last Third, Suhoor, Duha, Istijaba (5 prayers, Istijaba only on Fridays)
 
 ### The Problem with ADR-002
@@ -20,13 +20,13 @@ ADR-002 used English midnight (00:00) as the day boundary. This created several 
 
 1. **Countdown visibility**: Countdown hidden after last prayer until 00:00 (dead period)
 2. **Edge cases deferred**: Isha after midnight, Last Third before midnight
-3. **New complexity**: The Midnight prayer (Maghrib-Fajr midpoint) can occur before or after 00:00
+3. **New complexity**: The Midnight prayer (Magrib-Fajr midpoint) can occur before or after 00:00
 
 ### The Midnight Prayer Confusion
 
 The term "midnight" now has two distinct meanings:
 
-- **Midnight (prayer)**: The midpoint between Maghrib and Fajr (~23:00-00:30 depending on season)
+- **Midnight (prayer)**: The midpoint between Magrib and Fajr (~23:00-00:30 depending on season)
 - **System midnight**: 00:00 on the system clock (English midnight)
 
 This ADR resolves the ambiguity and establishes clear rules for all timing scenarios.
@@ -35,7 +35,7 @@ This ADR resolves the ambiguity and establishes clear rules for all timing scena
 
 | Term                    | Definition                                                                                                                                          |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Midnight (prayer)       | Midpoint between yesterday's Maghrib and today's Fajr. Can occur before or after 00:00.                                                             |
+| Midnight (prayer)       | Midpoint between yesterday's Magrib and today's Fajr. Can occur before or after 00:00.                                                             |
 | System midnight         | 00:00 on the system clock (English midnight). The app does NOT use this as a trigger.                                                               |
 | Day boundary (Standard) | After Isha passes. Schedule advances to tomorrow, date updates.                                                                                     |
 | Day boundary (Extras)   | After Duha passes (non-Friday) or after Istijaba passes (Friday).                                                                                   |
@@ -59,7 +59,7 @@ Use **prayer-based day boundaries** where each schedule advances independently a
 ```
 STANDARD SCHEDULE:
 ┌──────────────────────────────────────────────────────────────────┐
-│  Fajr → Sunrise → Dhuhr → Asr → Maghrib → Isha [ADVANCE]        │
+│  Fajr → Sunrise → Dhuhr → Asr → Magrib → Isha [ADVANCE]        │
 │   ↑                                              ↓               │
 │   │                                    Schedule shifts to        │
 │   │                                    tomorrow, nextIndex=0     │
@@ -162,9 +162,9 @@ if (todayPrayer.date !== today) {
 ```
 Time: 14:30 (2:30pm) on 2026-01-18
 Standard Schedule: date = 2026-01-18
-Prayers: Fajr 06:12, Sunrise 07:48, Dhuhr 12:14, Asr 14:15, Maghrib 16:45, Isha 18:15
-nextIndex: 4 (Maghrib)
-Countdown: 2h 15m until Maghrib
+Prayers: Fajr 06:12, Sunrise 07:48, Dhuhr 12:14, Asr 14:15, Magrib 16:45, Isha 18:15
+nextIndex: 4 (Magrib)
+Countdown: 2h 15m until Magrib
 ```
 
 **Flow:** Countdown counts down. At 16:45, nextIndex becomes 5 (Isha). At 18:15, nextIndex wraps to 0, schedule advances to Jan 19.
@@ -231,7 +231,7 @@ Countdown: 15m until Isha
 
 ```
 Time: 22:00 on 2026-12-15
-Midnight prayer: 22:45 (midpoint of Maghrib 16:00 and Fajr 06:30)
+Midnight prayer: 22:45 (midpoint of Magrib 16:00 and Fajr 06:30)
 Extras Schedule: date = 2026-12-15
 nextIndex: 0 (Midnight)
 Countdown: 45m until Midnight
@@ -253,7 +253,7 @@ nextIndex: 0 (Midnight)
 Countdown: 45m until Midnight
 ```
 
-**Critical rule:** The Midnight prayer calculated from June 21's Maghrib and June 22's Fajr belongs to June 21's Extras schedule, even though its time is 00:15 on June 22.
+**Critical rule:** The Midnight prayer calculated from June 21's Magrib and June 22's Fajr belongs to June 21's Extras schedule, even though its time is 00:15 on June 22.
 
 ---
 
@@ -490,7 +490,7 @@ store.set(scheduleAtom, {
 
 **Why rejected:** Would require artificial delays or premature advances. Each schedule has different "last prayer" timing.
 
-### Alternative 3: Islamic Day Start (Maghrib)
+### Alternative 3: Islamic Day Start (Magrib)
 
 **Why rejected:** User confusion - displayed date wouldn't match phone/calendar. Users expect date to match their device.
 

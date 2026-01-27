@@ -32,7 +32,7 @@ Implementation approach:
 1. When user taps an Extra prayer, open the Overlay (existing behavior)
 2. Add explanation text below the prayer row in the Overlay
 3. Explanation appears only for the tapped prayer
-4. Standard prayers (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) show no explanation text
+4. Standard prayers (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha) show no explanation text
 5. Delete ModalTimesExplained component and remove its trigger from Navigation.tsx
 6. Remove or deprecate `popup_times_explained_enabled` MMKV storage key
 

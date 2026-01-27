@@ -106,7 +106,7 @@ describe('ago display', () => {
 
   it('shows "X ago" when 60 seconds elapsed', () => {
     const prevPrayer = createMockPrayer({
-      english: 'Maghrib',
+      english: 'Magrib',
       datetime: new Date('2026-01-27T17:00:00'),
     });
     const now = new Date('2026-01-27T17:01:00');
@@ -114,7 +114,7 @@ describe('ago display', () => {
 
     const result = calculatePrayerAgo(prevPrayer, now);
 
-    expect(result.prayerAgo).toBe('Maghrib 1m ago');
+    expect(result.prayerAgo).toBe('Magrib 1m ago');
     expect(result.minutesElapsed).toBe(1);
   });
 

@@ -163,7 +163,7 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
   },
   {
     type: ScheduleType.Standard,
-    english: 'Maghrib',
+    english: 'Magrib',
     arabic: 'المغرب',
     datetime: new Date('2026-01-18T16:45:00'),
     time: '16:45',
@@ -236,7 +236,7 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
   },
   {
     type: ScheduleType.Standard,
-    english: 'Maghrib',
+    english: 'Magrib',
     arabic: 'المغرب',
     datetime: new Date('2026-06-21T21:21:00'),
     time: '21:21',
@@ -281,8 +281,8 @@ export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
  * Time: 11:30pm
  * Scenario: Summer, Midnight prayer is at 12:30am (after system midnight)
  *
- * The Midnight prayer is calculated as: (Maghrib + Fajr) / 2
- * In summer: Maghrib 21:21, Fajr 02:47 → Midnight ≈ 00:04
+ * The Midnight prayer is calculated as: (Magrib + Fajr) / 2
+ * In summer: Magrib 21:21, Fajr 02:47 → Midnight ≈ 00:04
  */
 export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
   // Yesterday's Duha (for context)

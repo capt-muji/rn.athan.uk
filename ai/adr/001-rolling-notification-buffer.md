@@ -15,7 +15,7 @@ The Athan app needs to deliver prayer time notifications reliably on iOS and And
 3. **User behavior varies**: Some users close the app regularly, others leave it running indefinitely without ever closing it
 4. **Debugging difficulty**: Background task execution is extremely difficult to debug and test reliably
 
-The system needs to schedule notifications for multiple daily prayers (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) plus optional extras (Last Third, Suhoor, Duha, Istijaba), each potentially with custom alert offsets.
+The system needs to schedule notifications for multiple daily prayers (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha) plus optional extras (Last Third, Suhoor, Duha, Istijaba), each potentially with custom alert offsets.
 
 **Notification count variability**: The number of notifications per day depends on user settings. With basic settings (~10/day), a 6-day window fits under iOS limits. However, planned features like pre-prayer reminders could double this to ~20/day, requiring a shorter window.
 

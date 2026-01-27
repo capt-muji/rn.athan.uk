@@ -17,7 +17,7 @@ The Athan app displays prayer schedules for a given date. The app needs a consis
 Several factors complicate this decision:
 
 1. **User expectations**: Users expect the displayed date to match their phone's clock and calendar
-2. **Islamic day boundary**: Traditionally, the Islamic day begins at Maghrib (sunset), not midnight
+2. **Islamic day boundary**: Traditionally, the Islamic day begins at Magrib (sunset), not midnight
 3. **Variable prayer times**: Prayer times shift throughout the year—Isha can occur before or after 00:00 depending on location and season
 4. **Two schedule screens**: The app has both Standard prayers (Fajr through Isha) and Extra prayers (Last Third, Suhoor, Duha, Istijaba)
 5. **London-specific**: The app currently targets London only, where prayer times can vary significantly by season
@@ -46,7 +46,7 @@ Prayer times change throughout the year. Edge cases will emerge:
 
 1. **Isha after English midnight**: Isha at 00:15 on the 18th still belongs to the 17th's schedule
 2. **Last Third before English midnight**: Last Third at 23:45 on the 17th should belong to the 17th's schedule
-3. **Middle of the Night prayer** (planned): A new Extra prayer at the halfway point between Maghrib and Fajr—usually around 23:00 but sometimes after 00:00
+3. **Middle of the Night prayer** (planned): A new Extra prayer at the halfway point between Magrib and Fajr—usually around 23:00 but sometimes after 00:00
 
 These edge cases will break:
 
@@ -101,7 +101,7 @@ User familiarity and predictability outweigh technical correctness. Users expect
 
 **Pros:**
 
-- Aligns with Islamic tradition (day starts at Maghrib/after Isha)
+- Aligns with Islamic tradition (day starts at Magrib/after Isha)
 - Prayers always belong to the correct Islamic date
 - No edge cases for Isha timing
 
