@@ -687,7 +687,7 @@ export const COLORS = {
 
   prayerAgo: {
     /** Prayer ago badge text */
-    text: 'rgba(160, 200, 255, 0.50)',
+    text: 'rgba(129, 167, 220, 0.5)',
     /** Background gradient for prayer ago badge */
     gradient: {
       start: 'rgba(99, 169, 255, 0.06)',
