@@ -217,11 +217,42 @@ describe('isJanuaryFirst', () => {
 });
 
 describe('isDecember', () => {
-  it('returns boolean based on current month', () => {
-    // This test just verifies the function returns a boolean
-    // Actual result depends on when tests are run
-    const result = isDecember();
-    expect(typeof result).toBe('boolean');
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('returns true in December', () => {
+    jest.setSystemTime(new Date('2026-12-15T12:00:00'));
+    expect(isDecember()).toBe(true);
+  });
+
+  it('returns true on December 1st', () => {
+    jest.setSystemTime(new Date('2026-12-01T00:00:00'));
+    expect(isDecember()).toBe(true);
+  });
+
+  it('returns true on December 31st', () => {
+    jest.setSystemTime(new Date('2026-12-31T23:59:59'));
+    expect(isDecember()).toBe(true);
+  });
+
+  it('returns false in January', () => {
+    jest.setSystemTime(new Date('2026-01-15T12:00:00'));
+    expect(isDecember()).toBe(false);
+  });
+
+  it('returns false in November', () => {
+    jest.setSystemTime(new Date('2026-11-30T12:00:00'));
+    expect(isDecember()).toBe(false);
+  });
+
+  it('returns false in June', () => {
+    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    expect(isDecember()).toBe(false);
   });
 });
 
@@ -245,12 +276,44 @@ describe('createLondonDate', () => {
     const date = createLondonDate(input);
     expect(date).toBeInstanceOf(Date);
   });
+
+  it('creates valid non-NaN date', () => {
+    const date = createLondonDate('2026-06-15');
+    expect(isNaN(date.getTime())).toBe(false);
+  });
+
+  it('preserves date components for winter date (GMT)', () => {
+    // Winter: London is GMT (UTC+0)
+    const date = createLondonDate('2026-01-15');
+    // The date should represent January 15, 2026 in London
+    expect(date.getFullYear()).toBe(2026);
+    expect(date.getMonth()).toBe(0); // January
+    expect(date.getDate()).toBe(15);
+  });
+
+  it('preserves date components for summer date (BST)', () => {
+    // Summer: London is BST (UTC+1)
+    const date = createLondonDate('2026-07-15');
+    expect(date.getFullYear()).toBe(2026);
+    expect(date.getMonth()).toBe(6); // July
+    expect(date.getDate()).toBe(15);
+  });
 });
 
 describe('formatDateLong', () => {
   it('formats date correctly', () => {
     const result = formatDateLong('2026-01-18');
     expect(result).toMatch(/Sun, 18 Jan 2026/);
+  });
+
+  it('includes day of week', () => {
+    const result = formatDateLong('2026-01-23'); // Friday
+    expect(result).toMatch(/Fri/);
+  });
+
+  it('formats different months correctly', () => {
+    expect(formatDateLong('2026-06-15')).toMatch(/Jun/);
+    expect(formatDateLong('2026-12-25')).toMatch(/Dec/);
   });
 });
 
@@ -295,6 +358,31 @@ describe('createPrayerDatetime', () => {
     const result = createPrayerDatetime('2026-01-18', '14:30');
     // The result should represent 14:30 London time
     expect(result).toBeInstanceOf(Date);
+    expect(isNaN(result.getTime())).toBe(false);
+  });
+
+  it('creates valid datetime for early morning times', () => {
+    const result = createPrayerDatetime('2026-01-18', '05:30');
+    expect(result).toBeInstanceOf(Date);
+    expect(isNaN(result.getTime())).toBe(false);
+  });
+
+  it('creates valid datetime for late night times', () => {
+    const result = createPrayerDatetime('2026-01-18', '23:45');
+    expect(result).toBeInstanceOf(Date);
+    expect(isNaN(result.getTime())).toBe(false);
+  });
+
+  it('creates chronologically correct datetimes', () => {
+    const earlier = createPrayerDatetime('2026-01-18', '06:00');
+    const later = createPrayerDatetime('2026-01-18', '12:00');
+    expect(later.getTime()).toBeGreaterThan(earlier.getTime());
+  });
+
+  it('handles day boundary correctly', () => {
+    const today = createPrayerDatetime('2026-01-18', '23:59');
+    const tomorrow = createPrayerDatetime('2026-01-19', '00:01');
+    expect(tomorrow.getTime()).toBeGreaterThan(today.getTime());
   });
 });
 

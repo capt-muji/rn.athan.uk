@@ -52,7 +52,7 @@ describe('calculateBelongsToDate', () => {
       expect(result).toBe('2026-01-19');
     });
 
-    it('assigns Maghrib to current day', () => {
+    it('assigns Magrib to current day', () => {
       const datetime = createPrayerDatetime('2026-01-19', '17:45');
       const result = calculateBelongsToDate(ScheduleType.Standard, 'Magrib', '2026-01-19', datetime);
       expect(result).toBe('2026-01-19');

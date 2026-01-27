@@ -23,6 +23,10 @@ import {
   addOneScheduledNotificationForPrayer,
   getAllScheduledNotificationsForSchedule,
   getAllScheduledNotificationsForPrayer,
+  addOneScheduledReminderForPrayer,
+  getAllScheduledRemindersForPrayer,
+  clearAllScheduledRemindersForPrayer,
+  clearAllScheduledRemindersForSchedule,
 } from '../database';
 
 import { ScheduledNotification } from '@/shared/notifications';
@@ -409,6 +413,118 @@ describe('notification scheduling records', () => {
 
       const extraNotifications = getAllScheduledNotificationsForSchedule(ScheduleType.Extra);
       expect(extraNotifications).toHaveLength(1);
+    });
+  });
+});
+
+// =============================================================================
+// REMINDER RECORD MANAGEMENT
+// =============================================================================
+
+describe('reminder scheduling records', () => {
+  const createMockReminder = (id: string, englishName = 'Fajr'): ScheduledNotification => ({
+    id,
+    date: '2026-01-24',
+    time: '05:55',
+    englishName,
+    arabicName: 'الفجر',
+    alertType: AlertType.Sound,
+  });
+
+  const mockReminder = createMockReminder('test-reminder-id');
+
+  describe('addOneScheduledReminderForPrayer', () => {
+    it('stores reminder with correct key format', () => {
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, mockReminder);
+
+      const key = `scheduled_reminders_${ScheduleType.Standard}_0_${mockReminder.id}`;
+      const stored = getItem(key);
+      expect(stored).toEqual(mockReminder);
+    });
+
+    it('stores reminders for different prayers separately', () => {
+      const fajrReminder = createMockReminder('fajr-reminder', 'Fajr');
+      const dhuhrReminder = createMockReminder('dhuhr-reminder', 'Dhuhr');
+
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, fajrReminder);
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 2, dhuhrReminder);
+
+      const fajrKey = `scheduled_reminders_${ScheduleType.Standard}_0_fajr-reminder`;
+      const dhuhrKey = `scheduled_reminders_${ScheduleType.Standard}_2_dhuhr-reminder`;
+
+      expect(getItem(fajrKey)).toEqual(fajrReminder);
+      expect(getItem(dhuhrKey)).toEqual(dhuhrReminder);
+    });
+  });
+
+  describe('getAllScheduledRemindersForPrayer', () => {
+    beforeEach(() => {
+      // Add multiple reminders for same prayer (different days)
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('day1'));
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('day2'));
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 1, createMockReminder('other'));
+    });
+
+    it('returns reminders only for specified prayer', () => {
+      const result = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
+      expect(result).toHaveLength(2);
+    });
+
+    it('does not include reminders from other prayers', () => {
+      const result = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 1);
+      expect(result).toHaveLength(1);
+    });
+
+    it('returns empty array when no reminders exist', () => {
+      database.clearAll();
+      const result = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 5);
+      expect(result).toEqual([]);
+    });
+  });
+
+  describe('clearAllScheduledRemindersForPrayer', () => {
+    beforeEach(() => {
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('fajr-1'));
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('fajr-2'));
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 1, createMockReminder('sunrise'));
+    });
+
+    it('clears all reminders for specified prayer', () => {
+      clearAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
+
+      const fajrReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
+      expect(fajrReminders).toHaveLength(0);
+    });
+
+    it('does not clear reminders for other prayers', () => {
+      clearAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
+
+      const sunriseReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 1);
+      expect(sunriseReminders).toHaveLength(1);
+    });
+  });
+
+  describe('clearAllScheduledRemindersForSchedule', () => {
+    beforeEach(() => {
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('std-1'));
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 1, createMockReminder('std-2'));
+      addOneScheduledReminderForPrayer(ScheduleType.Extra, 0, createMockReminder('ext-1'));
+    });
+
+    it('clears all reminders for Standard schedule', () => {
+      clearAllScheduledRemindersForSchedule(ScheduleType.Standard);
+
+      const fajrReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
+      const sunriseReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 1);
+      expect(fajrReminders).toHaveLength(0);
+      expect(sunriseReminders).toHaveLength(0);
+    });
+
+    it('does not clear Extra schedule reminders', () => {
+      clearAllScheduledRemindersForSchedule(ScheduleType.Standard);
+
+      const extraReminders = getAllScheduledRemindersForPrayer(ScheduleType.Extra, 0);
+      expect(extraReminders).toHaveLength(1);
     });
   });
 });

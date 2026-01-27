@@ -1,178 +1,139 @@
 /**
  * Unit tests for stores/countdown.ts
  *
- * Tests countdown store atoms and their initial state:
- * - standardCountdownAtom
- * - extraCountdownAtom
- * - overlayCountdownAtom
+ * Tests countdown state management including:
+ * - Countdown atom default values
+ * - Atom selection by schedule type
  */
 
-import { createStore } from 'jotai';
-
-import { standardCountdownAtom, extraCountdownAtom, overlayCountdownAtom } from '../countdown';
+import { createStore, atom } from 'jotai';
 
 // =============================================================================
-// COUNTDOWN ATOMS TESTS
+// MOCK SETUP
 // =============================================================================
 
-describe('countdown atoms', () => {
-  describe('standardCountdownAtom', () => {
-    it('is defined', () => {
-      expect(standardCountdownAtom).toBeDefined();
-    });
+jest.mock('@/shared/time', () => ({
+  createLondonDate: jest.fn(() => new Date('2026-01-20T10:00:00')),
+  getSecondsBetween: jest.fn(() => 3600),
+}));
 
-    it('has correct initial structure', () => {
-      const store = createStore();
-      const value = store.get(standardCountdownAtom);
+const mockStandardSequenceAtom = atom(null);
+const mockExtraSequenceAtom = atom(null);
 
-      expect(value).toHaveProperty('timeLeft');
-      expect(value).toHaveProperty('name');
-    });
+jest.mock('@/stores/schedule', () => ({
+  refreshSequence: jest.fn(),
+  getNextPrayer: jest.fn(() => ({
+    english: 'Fajr',
+    datetime: new Date('2026-01-20T06:15:00'),
+  })),
+  getSequenceAtom: jest.fn((type: string) =>
+    type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom
+  ),
+  standardDisplayDateAtom: atom('2026-01-20'),
+  extraDisplayDateAtom: atom('2026-01-20'),
+}));
 
-    it('has initial timeLeft of 10', () => {
-      const store = createStore();
-      const value = store.get(standardCountdownAtom);
-      expect(value.timeLeft).toBe(10);
-    });
+const mockOverlayAtom = atom({
+  isOn: false,
+  selectedPrayerIndex: 0,
+  scheduleType: 'standard',
+});
 
-    it('has initial name of Fajr', () => {
-      const store = createStore();
-      const value = store.get(standardCountdownAtom);
-      expect(value.name).toBe('Fajr');
-    });
+jest.mock('@/stores/atoms/overlay', () => ({
+  overlayAtom: mockOverlayAtom,
+}));
 
-    it('can be updated with new countdown state', () => {
-      const store = createStore();
+import {
+  standardCountdownAtom,
+  extraCountdownAtom,
+  overlayCountdownAtom,
+  getCountdownAtom,
+} from '../countdown';
 
-      store.set(standardCountdownAtom, { timeLeft: 3600, name: 'Dhuhr' });
+import { ScheduleType } from '@/shared/types';
 
-      const value = store.get(standardCountdownAtom);
-      expect(value.timeLeft).toBe(3600);
-      expect(value.name).toBe('Dhuhr');
-    });
+// =============================================================================
+// SETUP
+// =============================================================================
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
+// =============================================================================
+// DEFAULT VALUES TESTS
+// =============================================================================
+
+describe('countdown atoms defaults', () => {
+  it('standardCountdownAtom has default timeLeft of 10 and name Fajr', () => {
+    const store = createStore();
+    const value = store.get(standardCountdownAtom);
+    expect(value).toEqual({ timeLeft: 10, name: 'Fajr' });
   });
 
-  describe('extraCountdownAtom', () => {
-    it('is defined', () => {
-      expect(extraCountdownAtom).toBeDefined();
-    });
-
-    it('has correct initial structure', () => {
-      const store = createStore();
-      const value = store.get(extraCountdownAtom);
-
-      expect(value).toHaveProperty('timeLeft');
-      expect(value).toHaveProperty('name');
-    });
-
-    it('has initial timeLeft of 10', () => {
-      const store = createStore();
-      const value = store.get(extraCountdownAtom);
-      expect(value.timeLeft).toBe(10);
-    });
-
-    it('has initial name of Fajr', () => {
-      const store = createStore();
-      const value = store.get(extraCountdownAtom);
-      expect(value.name).toBe('Fajr');
-    });
-
-    it('can be updated with new countdown state', () => {
-      const store = createStore();
-
-      store.set(extraCountdownAtom, { timeLeft: 7200, name: 'Midnight' });
-
-      const value = store.get(extraCountdownAtom);
-      expect(value.timeLeft).toBe(7200);
-      expect(value.name).toBe('Midnight');
-    });
+  it('extraCountdownAtom has default timeLeft of 10 and name Fajr', () => {
+    const store = createStore();
+    const value = store.get(extraCountdownAtom);
+    expect(value).toEqual({ timeLeft: 10, name: 'Fajr' });
   });
 
-  describe('overlayCountdownAtom', () => {
-    it('is defined', () => {
-      expect(overlayCountdownAtom).toBeDefined();
-    });
-
-    it('has correct initial structure', () => {
-      const store = createStore();
-      const value = store.get(overlayCountdownAtom);
-
-      expect(value).toHaveProperty('timeLeft');
-      expect(value).toHaveProperty('name');
-    });
-
-    it('has initial timeLeft of 10', () => {
-      const store = createStore();
-      const value = store.get(overlayCountdownAtom);
-      expect(value.timeLeft).toBe(10);
-    });
-
-    it('has initial name of Fajr', () => {
-      const store = createStore();
-      const value = store.get(overlayCountdownAtom);
-      expect(value.name).toBe('Fajr');
-    });
-
-    it('can be updated with new countdown state', () => {
-      const store = createStore();
-
-      store.set(overlayCountdownAtom, { timeLeft: 0, name: 'Prayer' });
-
-      const value = store.get(overlayCountdownAtom);
-      expect(value.timeLeft).toBe(0);
-      expect(value.name).toBe('Prayer');
-    });
+  it('overlayCountdownAtom has default timeLeft of 10', () => {
+    const store = createStore();
+    const value = store.get(overlayCountdownAtom);
+    expect(value.timeLeft).toBe(10);
   });
 });
 
 // =============================================================================
-// COUNTDOWN STORE STRUCTURE TESTS
+// getCountdownAtom TESTS
 // =============================================================================
 
-describe('countdown store structure', () => {
-  it('all countdown atoms have same structure', () => {
+describe('getCountdownAtom', () => {
+  it('returns standardCountdownAtom for Standard schedule type', () => {
+    const result = getCountdownAtom(ScheduleType.Standard);
+    expect(result).toBe(standardCountdownAtom);
+  });
+
+  it('returns extraCountdownAtom for Extra schedule type', () => {
+    const result = getCountdownAtom(ScheduleType.Extra);
+    expect(result).toBe(extraCountdownAtom);
+  });
+
+  it('returns different atoms for different schedule types', () => {
+    const standardAtom = getCountdownAtom(ScheduleType.Standard);
+    const extraAtom = getCountdownAtom(ScheduleType.Extra);
+    expect(standardAtom).not.toBe(extraAtom);
+  });
+});
+
+// =============================================================================
+// ATOM BEHAVIOR TESTS
+// =============================================================================
+
+describe('countdown atom behavior', () => {
+  it('atoms can be updated', () => {
     const store = createStore();
-
-    const standard = store.get(standardCountdownAtom);
-    const extra = store.get(extraCountdownAtom);
-    const overlay = store.get(overlayCountdownAtom);
-
-    // All should have the same keys
-    expect(Object.keys(standard)).toEqual(['timeLeft', 'name']);
-    expect(Object.keys(extra)).toEqual(['timeLeft', 'name']);
-    expect(Object.keys(overlay)).toEqual(['timeLeft', 'name']);
+    store.set(standardCountdownAtom, { timeLeft: 100, name: 'Dhuhr' });
+    expect(store.get(standardCountdownAtom)).toEqual({ timeLeft: 100, name: 'Dhuhr' });
   });
 
   it('countdown atoms are independent', () => {
     const store = createStore();
+    store.set(standardCountdownAtom, { timeLeft: 50, name: 'Asr' });
+    store.set(extraCountdownAtom, { timeLeft: 75, name: 'Midnight' });
 
-    // Update each atom independently
-    store.set(standardCountdownAtom, { timeLeft: 100, name: 'Fajr' });
-    store.set(extraCountdownAtom, { timeLeft: 200, name: 'Midnight' });
-    store.set(overlayCountdownAtom, { timeLeft: 300, name: 'Dhuhr' });
-
-    // Verify they are independent
-    expect(store.get(standardCountdownAtom).timeLeft).toBe(100);
-    expect(store.get(extraCountdownAtom).timeLeft).toBe(200);
-    expect(store.get(overlayCountdownAtom).timeLeft).toBe(300);
+    expect(store.get(standardCountdownAtom).name).toBe('Asr');
+    expect(store.get(extraCountdownAtom).name).toBe('Midnight');
   });
 
-  it('timeLeft can be zero', () => {
-    const store = createStore();
+  it('different stores have independent state', () => {
+    const store1 = createStore();
+    const store2 = createStore();
 
-    store.set(standardCountdownAtom, { timeLeft: 0, name: 'Asr' });
+    store1.set(standardCountdownAtom, { timeLeft: 100, name: 'Dhuhr' });
+    store2.set(standardCountdownAtom, { timeLeft: 200, name: 'Asr' });
 
-    const value = store.get(standardCountdownAtom);
-    expect(value.timeLeft).toBe(0);
-  });
-
-  it('timeLeft can be large values', () => {
-    const store = createStore();
-
-    // 24 hours in seconds
-    store.set(standardCountdownAtom, { timeLeft: 86400, name: 'Isha' });
-
-    const value = store.get(standardCountdownAtom);
-    expect(value.timeLeft).toBe(86400);
+    expect(store1.get(standardCountdownAtom).timeLeft).toBe(100);
+    expect(store2.get(standardCountdownAtom).timeLeft).toBe(200);
   });
 });
