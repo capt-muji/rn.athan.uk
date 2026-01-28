@@ -3,7 +3,7 @@
 <br/>
 
 <div align="center">
-  <img src="./assets/icons/masjid.svg" width="100" height="100" alt="Mosque icon" />
+  <img src="./assets/icons/svg/masjid.svg" width="100" height="100" alt="Mosque icon" />
 </div>
 <br/>
 
@@ -158,10 +158,10 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 | Prayer                  | Time                                    |
 | ----------------------- | --------------------------------------- |
 | **Midnight**            | Midpoint between Magrib and Fajr        |
-| **Last Third of Night** | 5 minutes after last third begins       |
-| **Suhoor**              | 40 minutes before Fajr                  |
+| **Last Third of Night** | Start of last third of night            |
+| **Suhoor**              | 20 minutes before Fajr                  |
 | **Duha**                | 20 minutes after Sunrise                |
-| **Istijaba**            | 59 minutes before Magrib (Fridays only) |
+| **Istijaba**            | 60 minutes before Magrib (Fridays only) |
 
 <br/>
 
@@ -210,47 +210,61 @@ The codebase follows a clean architecture pattern with clear separation of conce
 │   ├── Navigation.tsx     # Tab navigation (Standard/Extra)
 │   └── Screen.tsx         # Screen wrapper
 │
-├── components/            # UI components (presentational)
-│   ├── Prayer.tsx         # Prayer row display
-│   ├── Countdown.tsx          # Countdown countdown
-│   ├── Alert.tsx          # Alert notification icon
-│   ├── Overlay.tsx        # Full-screen overlay
-│   ├── CountdownBar.tsx  # Progress indicator
-│   └── ...                # Other UI components
+├── components/            # UI components (organized by feature)
+│   ├── prayer/            # Prayer display (Prayer, Alert, Time, Ago, etc.)
+│   ├── countdown/         # Countdown timer (Countdown, Bar)
+│   ├── overlay/           # Full-screen overlay
+│   ├── sheets/            # Bottom sheets (screens/, parts/)
+│   ├── modals/            # Modal dialogs (Modal, Update)
+│   ├── ui/                # Shared UI (Icon, Masjid, Glow, Error, etc.)
+│   └── day/               # Day component
 │
 ├── hooks/                 # Custom React hooks (logic extraction)
-│   ├── usePrayer.ts       # Prayer state and actions
-│   ├── useSchedule.ts     # Schedule management
-│   ├── useNotification.ts # Notification handling
-│   ├── useAnimation.ts    # Animation utilities
-│   └── ...                # Other hooks
+│   ├── useAlertAnimations.ts  # Alert icon animations
+│   ├── useAnimation.ts        # Animation utilities
+│   ├── useCountdown.ts        # Countdown state hook
+│   ├── useCountdownBar.ts     # Progress bar hook
+│   ├── useNotification.ts     # Notification handling
+│   ├── usePrayer.ts           # Prayer state and actions
+│   ├── usePrayerAgo.ts        # Time-ago display
+│   ├── usePrayerSequence.ts   # Prayer sequence logic
+│   ├── useSchedule.ts         # Schedule management
+│   └── useWindowDimensions.ts # Screen dimension hook
 │
 ├── stores/                # State management (Jotai atoms)
 │   ├── schedule.ts        # Prayer sequence state
 │   ├── notifications.ts   # Notification state
-│   ├── countdown.ts           # Countdown state
+│   ├── countdown.ts       # Countdown state
 │   ├── overlay.ts         # Overlay state
 │   ├── sync.ts            # Data sync and initialization
 │   ├── database.ts        # MMKV storage wrapper
-│   └── ...                # Other stores
+│   ├── storage.ts         # MMKV instance setup
+│   ├── ui.ts              # UI state atoms
+│   └── version.ts         # App version management
 │
 ├── shared/                # Shared utilities and constants
+│   ├── config.ts          # App configuration
 │   ├── constants.ts       # App constants (colors, timings, etc.)
-│   ├── types.ts           # TypeScript type definitions
-│   ├── time.ts            # Time manipulation utilities
-│   ├── prayer.ts          # Prayer creation and calculations
+│   ├── logger.ts          # Logging wrapper (Pino)
 │   ├── notifications.ts   # Notification utilities
-│   └── logger.ts          # Logging wrapper (Pino)
+│   ├── prayer.ts          # Prayer creation and calculations
+│   ├── text.ts            # Text formatting utilities
+│   ├── time.ts            # Time manipulation utilities
+│   ├── types.ts           # TypeScript type definitions
+│   └── versionUtils.ts    # Version comparison utilities
 │
 ├── api/                   # API client
-│   └── client.ts          # Prayer times API fetch/transform
+│   ├── client.ts          # Prayer times API fetch/transform
+│   └── config.ts          # API configuration
 │
 ├── device/                # Device-specific code
 │   ├── notifications.ts   # Platform notification handlers
 │   ├── listeners.ts       # App state listeners
-│   └── updates.ts         # App update handling
+│   ├── updates.ts         # App update handling
+│   └── tasks.ts           # Background task management
 │
 ├── mocks/                 # Mock data for development
+│   ├── full.ts            # Full mock dataset
 │   ├── simple.ts          # Simplified mock data
 │   └── timing-system-schema.ts  # Type schema for mocks
 │
@@ -414,7 +428,7 @@ In the output, you'll find options to open the app in a:
 
 #### Overview
 
-The notification system maintains a **2-day rolling buffer** of scheduled notifications that refreshes every 12 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
+The notification system maintains a **2-day rolling buffer** of scheduled notifications that refreshes every 4 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
 
 **Key Features:**
 
@@ -428,29 +442,32 @@ The notification system maintains a **2-day rolling buffer** of scheduled notifi
 
 Notifications are rescheduled in the following scenarios:
 
-| Scenario                        | Function                                      | When                          | Scope                           | Trigger                                                                                                       |
-| ------------------------------- | --------------------------------------------- | ----------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **User Changes Audio**          | `rescheduleAllNotifications()`                | Immediately                   | Both schedules (all 11 prayers) | When user closes audio selection bottom sheet with new selection                                              |
-| **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | Immediately                   | Single prayer only              | When user taps alert icon on a prayer                                                                         |
-| **App Launch**                  | `refreshNotifications()`                      | If ≥12hrs since last schedule | Both schedules (all 11 prayers) | When app starts - only reschedules if never scheduled before OR last schedule was ≥12 hours ago               |
-| **App Resumes from Background** | `refreshNotifications()`                      | If ≥12hrs since last schedule | Both schedules (all 11 prayers) | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥12 hours ago |
+| Scenario                        | Function                                      | When                         | Scope                           | Trigger                                                                                                      |
+| ------------------------------- | --------------------------------------------- | ---------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **User Changes Audio**          | `rescheduleAllNotifications()`                | Immediately                  | Both schedules (all 11 prayers) | When user closes audio selection bottom sheet with new selection                                             |
+| **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | When sheet closes            | Single prayer only              | When user closes alert sheet with changes                                                                    |
+| **App Launch**                  | `refreshNotifications()`                      | If ≥4hrs since last schedule | Both schedules (all 11 prayers) | When app starts - only reschedules if never scheduled before OR last schedule was ≥4 hours ago               |
+| **App Resumes from Background** | `refreshNotifications()`                      | If ≥4hrs since last schedule | Both schedules (all 11 prayers) | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥4 hours ago |
 
 #### How It Works
 
-**User-Triggered Scenarios (3):**
+**User-Triggered Scenarios (2):**
 
-- When user makes a change (audio or individual prayer alert), notifications are immediately rescheduled
-- Bypasses the 12-hour check for responsive updates
+- When user makes a change (audio or individual prayer alert), notifications are rescheduled when sheet closes
+- Bypasses the 4-hour check for responsive updates
 - The `isScheduling` guard prevents concurrent operations during these user actions
 
-**Automatic Refresh Scenarios (2):**
+**Automatic Refresh Scenarios (3):**
 
-- Triggered at app launch and when resuming from background
-- Uses 12-hour refresh interval to avoid unnecessary rescheduling
-- Checks `shouldRescheduleNotifications()` which returns `true` only if:
-  - First time ever (no previous schedule timestamp), OR
-  - ≥12 hours elapsed since `last_notification_schedule_check` timestamp
-- If criteria not met, logs skip and returns early
+- **Foreground refresh** (app launch / resume from background):
+  - Uses 4-hour refresh interval to avoid unnecessary rescheduling
+  - Checks `shouldRescheduleNotifications()` which returns `true` only if:
+    - First time ever (no previous schedule timestamp), OR
+    - ≥4 hours elapsed since `last_notification_schedule_check` timestamp
+  - If criteria not met, logs skip and returns early
+- **Background task** (~3 hour intervals, OS-controlled):
+  - Does NOT check elapsed time - always reschedules when task runs
+  - Ensures notifications stay fresh even if app isn't opened
 - When rescheduling happens:
   1. Cancels ALL existing notifications (Expo API + database)
   2. Reschedules 2 days ahead for all enabled prayers in both schedules
@@ -474,7 +491,8 @@ All 4 entry points are protected by a single global `isScheduling` flag wrapped 
 
 #### Constants
 
-| Constant                     | Value | Description                            |
-| ---------------------------- | ----- | -------------------------------------- |
-| `NOTIFICATION_ROLLING_DAYS`  | 2     | Days ahead to schedule notifications   |
-| `NOTIFICATION_REFRESH_HOURS` | 12    | Hours between automatic refresh cycles |
+| Constant                         | Value | Description                              |
+| -------------------------------- | ----- | ---------------------------------------- |
+| `NOTIFICATION_ROLLING_DAYS`      | 2     | Days ahead to schedule notifications     |
+| `NOTIFICATION_REFRESH_HOURS`     | 4     | Hours between foreground refresh cycles  |
+| `BACKGROUND_TASK_INTERVAL_HOURS` | 3     | Hours between background task executions |
