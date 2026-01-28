@@ -1,4 +1,4 @@
-import { format, setHours, setMinutes, intervalToDuration, isFuture, isToday, isYesterday, subDays } from 'date-fns';
+import { addDays, format, setHours, setMinutes, intervalToDuration, isFuture, isToday, isYesterday } from 'date-fns';
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
 import { TIME_ADJUSTMENTS } from '@/shared/constants';
@@ -137,9 +137,9 @@ export const getCurrentYear = (): number => createLondonDate().getFullYear();
  * Night boundary result for Islamic night calculations
  */
 interface NightBoundaries {
-  /** Magrib datetime (yesterday's sunset) */
+  /** Magrib datetime (today's sunset) */
   magrib: Date;
-  /** Fajr datetime (today's dawn) */
+  /** Fajr datetime (tomorrow's dawn) */
   fajr: Date;
 }
 
@@ -148,12 +148,12 @@ interface NightBoundaries {
  *
  * This helper extracts the common parsing logic used by getLastThirdOfNight
  * and getMidnightTime. It creates Date objects representing:
- * - Magrib: Yesterday's sunset (night starts)
- * - Fajr: Today's dawn (night ends)
+ * - Magrib: Today's sunset (night starts)
+ * - Fajr: Tomorrow's dawn (night ends)
  *
  * @param magribTime Magrib time in HH:mm format (e.g., "18:45")
  * @param fajrTime Fajr time in HH:mm format (e.g., "06:15")
- * @returns Object with magrib (yesterday) and fajr (today) as Date objects
+ * @returns Object with magrib (today) and fajr (tomorrow) as Date objects
  *
  * @example
  * const { magrib, fajr } = parseNightBoundaries("18:45", "06:15");
@@ -163,16 +163,16 @@ function parseNightBoundaries(magribTime: string, fajrTime: string): NightBounda
   const [mHours, mMinutes] = magribTime.split(':').map(Number);
   const [fHours, fMinutes] = fajrTime.split(':').map(Number);
 
-  // Magrib from yesterday
+  // Magrib from today
   const magribBase = createLondonDate();
   const magribWithMinutes = setMinutes(magribBase, mMinutes);
-  const magribWithHours = setHours(magribWithMinutes, mHours);
-  const magrib = subDays(magribWithHours, 1);
+  const magrib = setHours(magribWithMinutes, mHours);
 
-  // Fajr from today
+  // Fajr from tomorrow
   const fajrBase = createLondonDate();
   const fajrWithMinutes = setMinutes(fajrBase, fMinutes);
-  const fajr = setHours(fajrWithMinutes, fHours);
+  const fajrWithHours = setHours(fajrWithMinutes, fHours);
+  const fajr = addDays(fajrWithHours, 1);
 
   return { magrib, fajr };
 }
@@ -186,8 +186,8 @@ function parseNightBoundaries(magribTime: string, fajrTime: string): NightBounda
  * The last third begins 2/3 through this period and is a blessed time for prayer.
  *
  * Calculation:
- * 1. Night starts: Yesterday's Magrib (e.g., 18:45 Jan 19)
- * 2. Night ends: Today's Fajr (e.g., 06:15 Jan 20)
+ * 1. Night starts: Today's Magrib (e.g., 18:45 Jan 19)
+ * 2. Night ends: Tomorrow's Fajr (e.g., 06:15 Jan 20)
  * 3. Night duration: 11 hours 30 minutes (690 minutes)
  * 4. Last third starts: 2/3 through = 460 minutes after Magrib = 02:25 Jan 20
  * 5. +5 minute adjustment applied (see TIME_ADJUSTMENTS.lastThird)
@@ -196,8 +196,8 @@ function parseNightBoundaries(magribTime: string, fajrTime: string): NightBounda
  * The +5 minute adjustment provides a safety buffer to ensure the prayer time
  * is well within the last third period.
  *
- * @param magribTime Magrib time from yesterday in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time from today in HH:mm format (e.g., "06:15")
+ * @param magribTime Magrib time from today in HH:mm format (e.g., "18:45")
+ * @param fajrTime Fajr time from tomorrow in HH:mm format (e.g., "06:15")
  * @returns Start time of the last third in HH:mm format (e.g., "02:30")
  *
  * @see parseNightBoundaries - Helper that parses the input times
@@ -235,16 +235,16 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
  * - In winter (short days): Islamic midnight can be as early as ~23:15
  *
  * Calculation:
- * 1. Night starts: Yesterday's Magrib (e.g., 18:45 Jan 19)
- * 2. Night ends: Today's Fajr (e.g., 06:15 Jan 20)
+ * 1. Night starts: Today's Magrib (e.g., 18:45 Jan 19)
+ * 2. Night ends: Tomorrow's Fajr (e.g., 06:15 Jan 20)
  * 3. Night duration: 11 hours 30 minutes (690 minutes)
  * 4. Midpoint: 345 minutes after Magrib = 00:30 Jan 20
  * 5. Final time: 00:30 Jan 20 (Islamic midnight)
  *
  * No adjustment is applied to this calculation - it's the pure midpoint.
  *
- * @param magribTime Magrib time from yesterday in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time from today in HH:mm format (e.g., "06:15")
+ * @param magribTime Magrib time from today in HH:mm format (e.g., "18:45")
+ * @param fajrTime Fajr time from tomorrow in HH:mm format (e.g., "06:15")
  * @returns Islamic midnight time in HH:mm format (e.g., "00:30")
  *
  * @see parseNightBoundaries - Helper that parses the input times

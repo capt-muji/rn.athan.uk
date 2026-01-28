@@ -62,7 +62,11 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 
   const entries = Object.entries(apiData.times);
 
-  entries.forEach(([date, times]) => {
+  entries.forEach(([date, times], index) => {
+    // Use next day's Fajr for midnight/last-third calculation (the night that starts tonight)
+    // Fall back to same day's Fajr for the last day of the year
+    const nextDayFajr = entries[index + 1]?.[1]?.fajr ?? times.fajr;
+
     const schedule: ISingleApiResponseTransformed = {
       date,
       fajr: times.fajr,
@@ -71,8 +75,8 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       asr: times.asr,
       magrib: times.magrib,
       isha: times.isha,
-      midnight: TimeUtils.getMidnightTime(times.magrib, times.fajr),
-      'last third': TimeUtils.getLastThirdOfNight(times.magrib, times.fajr),
+      midnight: TimeUtils.getMidnightTime(times.magrib, nextDayFajr),
+      'last third': TimeUtils.getLastThirdOfNight(times.magrib, nextDayFajr),
       suhoor: TimeUtils.adjustTime(times.fajr, TIME_ADJUSTMENTS.suhoor),
       duha: TimeUtils.adjustTime(times.sunrise, TIME_ADJUSTMENTS.duha),
       istijaba: TimeUtils.adjustTime(times.magrib, TIME_ADJUSTMENTS.istijaba),
