@@ -3,7 +3,7 @@
     "newArchEnabled": true,
     "name": "Athan",
     "slug": "athan",
-    "version": "1.0.34",
+    "version": "1.2.6",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -38,15 +38,15 @@
         "POST_NOTIFICATIONS",
         "USE_EXACT_ALARM",
         "SCHEDULE_EXACT_ALARM",
-        "WAKE_LOCK"
+        "WAKE_LOCK",
+        "ACCESS_NOTIFICATION_POLICY"
       ]
     },
     "plugins": [
       [
         "expo-navigation-bar",
         {
-          "visibility": "hidden",
-          "behavior": "overlay-swipe",
+          "visibility": "visible",
           "barStyle": "light",
           "backgroundColor": "#00000000"
         }
@@ -70,6 +70,7 @@
         {
           "icon": "./assets/icons/config/icon-android-notification.png",
           "sounds": [
+            "./assets/audio/reminder.wav",
             "./assets/audio/athan1.wav",
             "./assets/audio/athan2.wav",
             "./assets/audio/athan3.wav",
@@ -97,7 +98,8 @@
       ],
       "expo-router",
       "expo-audio",
-      "expo-asset"
+      "expo-asset",
+      "expo-background-task"
     ],
     "experiments": {
       "typedRoutes": true

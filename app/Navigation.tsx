@@ -4,50 +4,41 @@ import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Screen from '@/app/Screen';
-import BackgroundGradients from '@/components/BackgroundGradients';
+import { BackgroundGradients } from '@/components/ui';
+import { SettingsButton } from '@/components/ui';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
-import { ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { setPagePosition, setPopupTimesExplained, getPopupTimesExplained, setScrollPosition } from '@/stores/ui';
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
   const dot0Animation = useAnimationOpacity(1);
   const dot1Animation = useAnimationOpacity(0.25);
 
-  const handlePageScroll = (e: { nativeEvent: { position: number; offset: number } }) => {
-    const { position, offset } = e.nativeEvent;
-    setScrollPosition(position + offset);
-  };
-
   const handlePageSelected = (e: { nativeEvent: { position: number } }) => {
     const position = e.nativeEvent.position;
 
     dot0Animation.animate(position === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
     dot1Animation.animate(position === 1 ? 1 : 0.25, { duration: ANIMATION.duration });
-
-    setPagePosition(position);
-
-    if (position === 1 && getPopupTimesExplained() === 0) setPopupTimesExplained(1);
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#5b1eaa' }}>
+    <View style={{ flex: 1, backgroundColor: COLORS.navigation.background }}>
       <BackgroundGradients />
 
-      <PagerView
-        style={{ flex: 1 }}
-        initialPage={0}
-        overdrag={true}
-        onPageScroll={handlePageScroll}
-        onPageSelected={handlePageSelected}>
+      <PagerView style={{ flex: 1 }} initialPage={0} overdrag={true} onPageSelected={handlePageSelected}>
         <Screen type={ScheduleType.Standard} />
         <Screen type={ScheduleType.Extra} />
       </PagerView>
 
-      <View style={[styles.dotsContainer, { bottom: bottom + 20 + (Platform.OS === 'android' ? 15 : 0) }]}>
-        <Animated.View style={[styles.dot, dot0Animation.style]} />
-        <Animated.View style={[styles.dot, dot1Animation.style]} />
+      <View style={[styles.dotsContainer, { bottom: bottom + (Platform.OS === 'android' ? SPACING.md : 0) }]}>
+        <View style={styles.buttonWrapper}>
+          <SettingsButton />
+        </View>
+        <View style={styles.dotsRow}>
+          <Animated.View style={[styles.dot, dot0Animation.style]} />
+          <Animated.View style={[styles.dot, dot1Animation.style]} />
+        </View>
       </View>
     </View>
   );
@@ -55,15 +46,24 @@ export default function Navigation() {
 
 const styles = StyleSheet.create({
   dotsContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
+    alignItems: 'center',
     position: 'absolute',
     alignSelf: 'center',
-    gap: 8,
+    gap: SPACING.sm,
+  },
+  buttonWrapper: {
+    position: 'absolute',
+    bottom: SIZE.nav.bottomOffset, // Position above dots
+  },
+  dotsRow: {
+    flexDirection: 'row',
+    gap: SPACING.sm,
   },
   dot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: 'white',
+    width: SIZE.navigationDot,
+    height: SIZE.navigationDot,
+    borderRadius: SIZE.navigationDot / 2,
+    backgroundColor: COLORS.navigation.dot,
   },
 });
