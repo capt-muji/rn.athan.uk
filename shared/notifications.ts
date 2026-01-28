@@ -96,7 +96,7 @@ export const genReminderNotificationContent = (
   alertType: AlertType
 ): Notifications.NotificationContentInput => {
   return {
-    title: `${englishName} in ${intervalMinutes} min`,
+    title: `${englishName} in ${intervalMinutes}m`,
     body: `\u200E${arabicName} بعد ${toArabicNumbers(String(intervalMinutes))} دقائق`, // LTR mark + Arabic "in X mins"
     sound: getReminderNotificationSound(alertType),
     color: '#5a3af7',
