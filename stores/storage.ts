@@ -1,9 +1,22 @@
+/**
+ * Storage atom factories for Jotai with MMKV persistence
+ *
+ * These factories create atoms that automatically sync with MMKV storage.
+ * Values are loaded on initialization (getOnInit: true).
+ */
+
 import { atomWithStorage } from 'jotai/utils';
 
 import { database } from '@/stores/database';
 
 const defaultOpts = { getOnInit: true };
 
+/**
+ * Creates a Jotai atom backed by MMKV storage for number values
+ * @param key Storage key
+ * @param initialValue Default value if not found in storage
+ * @returns Jotai atom with MMKV persistence
+ */
 export const atomWithStorageNumber = (key: string, initialValue: number) =>
   atomWithStorage(
     key,
@@ -19,6 +32,12 @@ export const atomWithStorageNumber = (key: string, initialValue: number) =>
     defaultOpts
   );
 
+/**
+ * Creates a Jotai atom backed by MMKV storage for boolean values
+ * @param key Storage key
+ * @param initialValue Default value if not found in storage
+ * @returns Jotai atom with MMKV persistence
+ */
 export const atomWithStorageBoolean = (key: string, initialValue: boolean) =>
   atomWithStorage(
     key,
@@ -34,6 +53,12 @@ export const atomWithStorageBoolean = (key: string, initialValue: boolean) =>
     defaultOpts
   );
 
+/**
+ * Creates a Jotai atom backed by MMKV storage for string values
+ * @param key Storage key
+ * @param initialValue Default value if not found in storage
+ * @returns Jotai atom with MMKV persistence
+ */
 export const atomWithStorageString = (key: string, initialValue: string) =>
   atomWithStorage(
     key,
@@ -44,36 +69,6 @@ export const atomWithStorageString = (key: string, initialValue: string) =>
         return value === undefined ? initialValue : value;
       },
       setItem: (key, value) => database.set(key, value),
-      removeItem: (key) => database.remove(key),
-    },
-    defaultOpts
-  );
-
-export const atomWithStorageArray = <T = unknown>(key: string, initialValue: T[]) =>
-  atomWithStorage<T[]>(
-    key,
-    initialValue,
-    {
-      getItem: (key, initialValue) => {
-        const value = database.getString(key);
-        return value === undefined ? initialValue : (JSON.parse(value) as T[]);
-      },
-      setItem: (key, value) => database.set(key, JSON.stringify(value)),
-      removeItem: (key) => database.remove(key),
-    },
-    defaultOpts
-  );
-
-export const atomWithStorageObject = <T extends object = Record<string, unknown>>(key: string, initialValue: T) =>
-  atomWithStorage<T>(
-    key,
-    initialValue,
-    {
-      getItem: (key, initialValue) => {
-        const value = database.getString(key);
-        return value === undefined ? initialValue : (JSON.parse(value) as T);
-      },
-      setItem: (key, value) => database.set(key, JSON.stringify(value)),
       removeItem: (key) => database.remove(key),
     },
     defaultOpts

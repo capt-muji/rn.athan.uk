@@ -1,6 +1,18 @@
-import { addDays, subDays, format } from 'date-fns';
+import { addDays, subDays } from 'date-fns';
 
+import { formatDateShort } from '@/shared/time';
 import { IApiResponse } from '@/shared/types';
+
+/**
+ * Mock data for testing prayer times
+ *
+ * MIDNIGHT PRAYER TESTING:
+ * - Midnight is calculated as: (Magrib + Fajr) / 2
+ * - Example: Magrib 16:14 → Fajr 05:35 (next day)
+ *   Night duration: 13h 21m → Midnight ≈ 22:52
+ * - The midnight field is automatically calculated during transformApiData()
+ * - Check Page 2 (Extras) to see Midnight as first prayer
+ */
 
 const now = new Date();
 
@@ -9,14 +21,12 @@ const addMinutes = (minutesToAdd: number) => {
   return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 };
 
-const formatDateLong = (date: Date) => format(date, 'yyyy-MM-dd');
-
-const dayBeforeYesterday = formatDateLong(subDays(now, 2));
-const yesterday = formatDateLong(subDays(now, 1));
-const today = formatDateLong(now);
+const dayBeforeYesterday = formatDateShort(subDays(now, 2));
+const yesterday = formatDateShort(subDays(now, 1));
+const today = formatDateShort(now);
 const daysAhead = Array.from({ length: 10 }, (_, i) => i + 1);
 const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.map((d) =>
-  formatDateLong(addDays(now, d))
+  formatDateShort(addDays(now, d))
 );
 
 export const MOCK_DATA_SIMPLE: IApiResponse = {
@@ -44,7 +54,7 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       dhuhr: '11:50',
       asr: '13:49',
       magrib: '16:14',
-      isha: '17:47',
+      isha: '23:59',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -54,12 +64,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(-1),
-      sunrise: addMinutes(-1),
-      dhuhr: addMinutes(-1),
-      asr: addMinutes(10),
-      magrib: addMinutes(1),
-      isha: addMinutes(2),
+      fajr: addMinutes(-200),
+      sunrise: addMinutes(-190),
+      dhuhr: addMinutes(-11),
+      asr: addMinutes(11),
+      magrib: addMinutes(80),
+      isha: addMinutes(100),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -69,12 +79,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day1]: {
       date: day1,
-      fajr: addMinutes(-11),
-      sunrise: addMinutes(-21),
-      dhuhr: addMinutes(-31),
-      asr: addMinutes(-41),
-      magrib: addMinutes(-51),
-      isha: addMinutes(-61),
+      fajr: '00:10',
+      sunrise: '08:16',
+      dhuhr: '11:50',
+      asr: '13:49',
+      magrib: '16:14',
+      isha: '13:59',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
