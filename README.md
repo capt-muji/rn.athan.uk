@@ -54,101 +54,91 @@ A React Native mobile app for Muslim prayer times in London, UK
 <br/>
 <br/>
 
+## 📝 Recent Updates
+
+### All Features Complete (2026-01-21)
+
+All 11 development features have been completed, tested, and archived:
+
+- ✅ **Timing System Overhaul**: Major refactor to prayer-centric model (ADR-005)
+- ✅ **Timing System Bugfixes**: 5 post-refactor bugs resolved
+- ✅ **Isha Display Bug**: Critical Standard schedule fix
+- ✅ **Islamic Day Boundary**: Prayer-based day advancement
+- ✅ **CountdownBar Midnight Fix**: Accurate midnight progress display
+- ✅ **Midnight Prayer**: New Extra prayer (midpoint Magrib-Fajr)
+- ✅ **Prayer Explanations**: Contextual overlay help text
+- ✅ **Overlay Date Display**: Formatted date in overlay
+- ✅ **Measurement Improvements**: Android font scaling fix
+- ✅ **Codebase Cleanup**: ~100 lines duplication eliminated
+
+<br/>
+<br/>
+
 ## 🗺 Roadmap
 
 ### Completed Features
 
 - [x] Prayer times display with real-time countdown
-- [x] Midnight reset with animations
+- [x] Prayer-based day boundary with smooth animations (Islamic midnight)
 - [x] Offline support with local data caching
 - [x] Customizable notifications with multiple alert modes
 - [x] Over 10 selectable Athan audio notification options
 - [x] View tomorrow's prayer times
 - [x] Automatic yearly data refresh
-- [x] Multipage with special times (Third of night, Duha, Suhoor, Istijaba)
+- [x] Multipage with special times (Midnight, Third of night, Duha, Suhoor, Istijaba)
 - [x] Large overlay font overlay for visually impaired
-- [x] Fix UI timer drift when app in background
-- [x] Add a "Tips" popup on first ever open
-- [x] Change app name on homescreen to 'Athan'
-- [x] Refactor English width calculation to run once
-- [x] Only check for update every 24hrs
-- [x] Do not cache app version URL check
-- [x] Only show "Information" popup on 2nd page
-- [x] Create Android notification outline icon
-- [x] Swap from Skia background to expo-linear-gradient (better android performance)
-- [x] Optimise app to be iPad friendly
-- [x] Replace Skia with expo-linear-gradient
-- [x] Upgrade to Expo SDK v52+ (new architecture)
-- [x] Upgrade to Reanimated v4 (needs new architecture)
-- [x] Timer on popup
-- [x] Enable IOS 'active' alert for notifications
-- [x] Remove redundant background task logic
-- [x] Upgrade to Expo SDK 54 with React 19 & React Native 0.81
-- [x] Migrate from expo-av to expo-audio (SDK 54 requirement)
-- [x] Upgrade MMKV to v4 (Nitro Module)
-- [x] Pin all package versions (prevent breaking upgrades)
+- [x] Fix UI countdown drift when app in background
+- [x] Settings bottom sheet with progress bar toggle, Hijri date, Athan sound selector
+- [x] SDK 54 upgrade (React 19, RN 0.81, Expo 54)
 
-### Immediate Improvements
+### Known Limitations
 
-- [x] BUG-2: Fix double notifications on IOS & Android:
-      The app currently send two notifications at the exact same time for each notification enabled.
-      We dont know if this happens when the user does not change athan selection (athan audio selection deals with modifying channels etc).
-      It could also not be related to channels because IOS also gets duplicate notifications.
-
-- [ ] BUG-3 (this bug is unfixable. it only happens on SOME android devices): Fix Android delayed notifcations on some devices:
-      All IOS devices correctly time the notifications. But on some android devices, the notifications are not exact.
-      Some notifications appear almost an entire 1-3mins before the athan time or sometimes even 1-3mins after.
-      Sometimes 1-3mins before and after.
-      Solutions tried and not worked:
-  1.  Battery optimisation
-  1.  Exact alarm permissions
-  1.  Different native notifications library (all use the same native APIs under the hood, so no difference)
+- BUG-3: Some Android devices may receive notifications 1-3 minutes off (hardware/driver issue, unfixable in app)
 
 ### Upcoming Improvements
 
-- [ ] Fix building locally on my device (mac mini m1) instead of having to build on expo (which uses up monthly 15 builds)
-- [ ] Handle different versions of android for critical notifications (Alarms & Reminders)
-- [ ] Add widget support
-- [ ] Add Qibla direction finder
-- [ ] Support for locations outside London (will be an open source standalone project)
+- [ ] Building locally (mac mini m1)
+- [ ] Widget support
+- [ ] Qibla direction finder
+- [ ] Multi-location support (separate open source project)
 
-## 📡 Data source
+<br/>
+<br/>
+
+## 📡 Data Source
 
 Prayer times data sourced from [London Prayer Times](https://www.londonprayertimes.com/)
+
+<br/>
 
 ## ⚡ Features
 
 ### Display & User Interface
 
-- 📅 **Daily Prayer Times**: View all 5 standard prayers (Fajr, Dhuhr, Asr, Maghrib, Isha) plus 4 special prayers
-- ⏰ **Real-time Countdown**: Live timer showing exact time remaining until next prayer
-- 🔄 **Tomorrow's Prayer Times**: Swipe between today and tomorrow's schedule with PagerView
-- 🔍 **Large Overlay Font**: Accessible mode for visually impaired users with jumbo text display
-- 🌙 **Smart Prayer Tracking**: Automatically tracks which prayers have passed, which is next, and upcoming prayers
+- 📅 **Daily Prayer Times**: View all 5 standard prayers plus 5 special prayers
+- ⏰ **Real-time Countdown**: Live countdown showing exact time remaining
+- 🔄 **Tomorrow's Prayer Times**: Swipe between today and tomorrow
+- 🔍 **Large Overlay Font**: Accessible mode for visually impaired
+- 🌙 **Smart Prayer Tracking**: Automatically tracks passed/next/upcoming prayers
+- ⚙️ **Settings**: Tap Masjid icon for progress bar, Hijri date, Athan sound
+- 🗓️ **Hijri Date**: Optional Islamic calendar format
 
 ### Notifications & Alerts
 
-- 🔔 **Customizable Alerts** with three modes per prayer:
-  - **Off**: No notifications
-  - **Silent**: Banner only (no sound)
-  - **Sound**: Athan audio + vibration + notification banner
-- 📢 **16 Selectable Athan Sounds**: Choose from multiple Islamic call-to-prayer audio options
-- 📅 **Smart Notification Buffer**: 6-day rolling schedule that auto-refreshes every 24 hours
-- 🔒 **Dual Mute Controls**: Separately enable/disable Standard (5 prayers) and Extra (4 prayers) schedules
-- 🛡️ **Duplicate Prevention**: Concurrent scheduling protection prevents double notifications even with rapid user interactions
+- 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer
+- 📢 **16 Selectable Athan Sounds**: Multiple Islamic audio options
+- 📅 **Smart Notification Buffer**: 2-day rolling schedule
+- 🛡️ **Duplicate Prevention**: Concurrent scheduling protection
 
 ### Data & Offline Support
 
-- 💾 **Local Data Caching**: Entire year's prayer times stored locally using MMKV v4 (Nitro Module)
-- 🔄 **Automatic Yearly Refresh**: Detects year transition and fetches next year's data automatically
-- 📱 **Full Offline Support**: Works completely offline after initial data sync
-- 🎯 **Precise Synchronization**: Countdown timers sync with system clock to eliminate drift
+- 💾 **Local Data Caching**: Entire year stored in MMKV v4
+- 🔄 **Automatic Yearly Refresh**: Detects year transition, fetches new data
+- 📱 **Full Offline Support**: Works after initial sync
+- 🎯 **Precise Synchronization**: Countdown countdowns sync with system clock
+- ⬆️ **Smart App Upgrades**: Clears stale cache, preserves preferences
 
-### Performance & Reliability
-
-- ⚡ **Lightweight**: Optimized for low-end devices and minimal battery impact
-- 🔐 **Persistent Storage**: Prayer preferences and schedules survive app restarts
-- 🌍 **Background Stability**: Maintains notification accuracy when app is backgrounded or device is locked
+<br/>
 
 ## 🕌 Prayer Times
 
@@ -160,240 +150,171 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 | **Sunrise** |
 | **Dhuhr**   |
 | **Asr**     |
-| **Maghrib** |
+| **Magrib**  |
 | **Isha**    |
 
-### Extra Prayers (4)
+### Extra Prayers (5)
 
-| Prayer                  | Time                                     |
-| ----------------------- | ---------------------------------------- |
-| **Suhoor**              | 40 minutes before Fajr                   |
-| **Duha**                | 20 minutes after Sunrise                 |
-| **Last Third of Night** | 5 minutes after last third begins        |
-| **Istijaba**            | 59 minutes before Maghrib (Fridays only) |
+| Prayer                  | Time                                    |
+| ----------------------- | --------------------------------------- |
+| **Midnight**            | Midpoint between Magrib and Fajr        |
+| **Last Third of Night** | 5 minutes after last third begins       |
+| **Suhoor**              | 40 minutes before Fajr                  |
+| **Duha**                | 20 minutes after Sunrise                |
+| **Istijaba**            | 59 minutes before Magrib (Fridays only) |
 
-## 🛠 Technical Implementation
+<br/>
 
-### Recent Upgrades (SDK 54 Migration)
+## 🛠 Technical Overview
 
-**Completed**: Expo SDK 52 → 54, React 18.3 → 19.1, React Native 0.76 → 0.81
+### Architecture
 
-**Major Changes:**
+- **Framework**: React Native 0.81.5, Expo 54.0.31
+- **State**: Jotai atoms (no Redux/Context)
+- **Storage**: MMKV v4 (Nitro Module)
+- **Animation**: Reanimated 4 (worklets)
+- **Notifications**: Expo Notifications
+- **Dates**: date-fns / date-fns-tz (London timezone)
 
-- **Audio System**: Migrated from `expo-av` (deprecated) to `expo-audio` with new `useAudioPlayer` + `useAudioPlayerStatus` hooks
-- **Storage**: Upgraded MMKV to v4 (now a Nitro Module) - uses `createMMKV()` and `.remove()` methods
-- **Edge-to-edge**: Removed deprecated `react-native-edge-to-edge`, now using `expo-status-bar`
-- **Background Tasks**: Removed deprecated `expo-background-fetch` and `device/tasks.ts`
-- **Notifications**: Updated to handle `shouldShowBanner` and `shouldShowList` required in SDK 54
-- **Version Pinning**: All dependencies pinned to exact versions to prevent breaking changes
+### Key Design Decisions
+
+1. **Prayer-Centric Timing**: Full DateTime objects, not date+time strings (avoids midnight-crossing bugs)
+2. **Prayer-Based Day Boundary**: Schedule advances after final prayer, not midnight
+3. **Independent Schedules**: Standard and Extras can show different dates
+4. **NO FALLBACKS**: Data layer always provides complete data, UI layer trusts the data
 
 ### Data Flow
 
-The app follows a three-phase lifecycle for prayer time data management:
-
-**1. First Launch - Data Initialization**
-
-- Fetch entire year's prayer times from London Prayer Times API
-- Process & transform: Strip historical dates (before today), calculate special prayer times
-- Add derived prayers: Duha (20 mins after Sunrise), Suhoor (40 mins before Fajr), Istijaba (59 mins before Maghrib on Fridays)
-- Cache to MMKV: Store processed data locally with key format `prayer_YYYY-MM-DD`
-- Track fetched years: Record `{year: boolean}` in MMKV to avoid re-fetching
-- Result: App now works completely offline
-
-**2. Daily Operations - State Management**
-
-- Load today's prayers from MMKV cache (key: `prayer_YYYY-MM-DD`)
-- Calculate prayer states: Identify which have passed, which is next, which are upcoming
-- Manage notifications: Apply user's alert preferences per prayer (Off/Silent/Sound)
-- Sync with clock: Timer system counts down to next prayer with microsecond precision
-- Midnight reset: At stroke of midnight, trigger new day initialization via midnight timer
-- User changes: When user toggles alerts or changes audio, reschedule notifications immediately (protected by concurrent guard)
-
-**3. Year Transition - Automatic Renewal**
-
-- Detect boundary: When user reaches last prayer of year (Isha on Dec 31)
-- Fetch next year: Automatically trigger API call for new year's data
-- Seamless transition: No manual intervention needed; new year's data automatically cached and available
-
-**Storage Architecture:**
-
 ```
-MMKV (Fast encrypted local storage)
-├── Prayer Data
-│   ├── prayer_2025-01-10 → {fajr, dhuhr, asr, maghrib, isha, ...}
-│   └── fetched_years → {2024: true, 2025: true}
-├── Notification Schedule
-│   ├── scheduled_notifications_standard_[0-5]_[id]
-│   ├── last_notification_schedule_check → timestamp
-│   └── preference_mute_standard/extra → boolean
-└── User Preferences
-    ├── preference_alert_standard_[0-5] → AlertType
-    ├── preference_sound → number (0-15 for 16 Athan sounds)
-    └── preference_mute_standard/extra → boolean
+API → Process (strip old dates, calculate special prayers) → Cache MMKV → Display → Schedule notifications
 ```
 
-### Timer System
+### Storage (MMKV)
 
-The app runs **4 concurrent timers** simultaneously, each with a specific responsibility:
+```
+MMKV
+├── Prayer Data: prayer_YYYY-MM-DD
+├── Fetched Years: fetched_years
+├── Notifications: scheduled_notifications_*
+└── Preferences: preference_*
+```
 
-#### Timer Types & Functions
+### Codebase Organization
 
-| Timer        | Purpose                                                          | Updates               | Trigger          |
-| ------------ | ---------------------------------------------------------------- | --------------------- | ---------------- |
-| **Standard** | Countdown to next Standard prayer (Fajr/Dhuhr/Asr/Maghrib/Isha)  | Main display          | Prayer queue     |
-| **Extra**    | Countdown to next Extra prayer (Suhoor/Duha/Last Third/Istijaba) | Page 2 display        | Prayer queue     |
-| **Overlay**  | Countdown to user-selected prayer from overlay modal             | Overlay display       | Manual selection |
-| **Midnight** | Watches for day boundary at 00:00                                | Triggers new day sync | 24-hour cycle    |
+The codebase follows a clean architecture pattern with clear separation of concerns:
 
-#### How They Work
+```
+├── app/                    # App entry points and navigation
+│   ├── index.tsx          # Root component, initialization
+│   ├── _layout.tsx        # App layout wrapper
+│   ├── Navigation.tsx     # Tab navigation (Standard/Extra)
+│   └── Screen.tsx         # Screen wrapper
+│
+├── components/            # UI components (presentational)
+│   ├── Prayer.tsx         # Prayer row display
+│   ├── Countdown.tsx          # Countdown countdown
+│   ├── Alert.tsx          # Alert notification icon
+│   ├── Overlay.tsx        # Full-screen overlay
+│   ├── CountdownBar.tsx  # Progress indicator
+│   └── ...                # Other UI components
+│
+├── hooks/                 # Custom React hooks (logic extraction)
+│   ├── usePrayer.ts       # Prayer state and actions
+│   ├── useSchedule.ts     # Schedule management
+│   ├── useNotification.ts # Notification handling
+│   ├── useAnimation.ts    # Animation utilities
+│   └── ...                # Other hooks
+│
+├── stores/                # State management (Jotai atoms)
+│   ├── schedule.ts        # Prayer sequence state
+│   ├── notifications.ts   # Notification state
+│   ├── countdown.ts           # Countdown state
+│   ├── overlay.ts         # Overlay state
+│   ├── sync.ts            # Data sync and initialization
+│   ├── database.ts        # MMKV storage wrapper
+│   └── ...                # Other stores
+│
+├── shared/                # Shared utilities and constants
+│   ├── constants.ts       # App constants (colors, timings, etc.)
+│   ├── types.ts           # TypeScript type definitions
+│   ├── time.ts            # Time manipulation utilities
+│   ├── prayer.ts          # Prayer creation and calculations
+│   ├── notifications.ts   # Notification utilities
+│   └── logger.ts          # Logging wrapper (Pino)
+│
+├── api/                   # API client
+│   └── client.ts          # Prayer times API fetch/transform
+│
+├── device/                # Device-specific code
+│   ├── notifications.ts   # Platform notification handlers
+│   ├── listeners.ts       # App state listeners
+│   └── updates.ts         # App update handling
+│
+├── mocks/                 # Mock data for development
+│   ├── simple.ts          # Simplified mock data
+│   └── timing-system-schema.ts  # Type schema for mocks
+│
+└── ai/                    # AI agent instructions and ADRs
+    ├── AGENTS.md          # Agent behavior instructions
+    ├── prompts/           # AI prompt templates
+    ├── adr/               # Architecture Decision Records
+    └── memory-archive.md  # AI context archive
+```
 
-**Synchronization with System Clock:**
+### Key Patterns
 
-- Timers sync with system clock to eliminate drift (avoids "stale" countdowns when app is backgrounded)
-- Sub-millisecond precision via `useAnimationTimer` hook with Reanimated 4
-- Automatic recovery if app resumes after time jump (e.g., device hibernation)
+1. **Data Flow**: Components → Hooks → Stores → Shared/Api → MMKV
+2. **State Management**: Jotai atoms with derived atoms for computed values
+3. **Animations**: Reanimated worklets with custom hooks
+4. **Date Handling**: All dates in London timezone using date-fns-tz
 
-**Independent & Concurrent:**
+### Code Quality
 
-- All 4 timers run independently without blocking each other
-- Standard & Extra timers can countdown simultaneously to different prayers
-- Overlay timer updates in real-time while user is viewing modal
-- Midnight timer runs silently in background until day boundary
+- **Testing**: Jest with ts-jest for unit tests (`yarn test`)
+- **Type Safety**: Full TypeScript coverage with strict mode
+- **Linting**: ESLint + Prettier (120 char lines, 2 spaces, single quotes)
+- **Logging**: Pino logger (no console.log statements)
+- **JSDoc**: All public functions documented with examples
 
-**Automatic State Transitions:**
+### Architecture Patterns
 
-- When a prayer time arrives, active timer:
-  1. Cancels current countdown
-  2. Moves to next prayer in queue
-  3. Starts new countdown
-  4. Triggers notification if enabled
+The codebase follows established patterns for consistency:
 
-**Midnight Reset Behavior:**
+1. **Helper Function Extraction**: Complex logic extracted into named functions
+   - Example: `parseNightBoundaries()` in time.ts
+   - Example: `getYesterdayFinalPrayer()` in schedule.ts
 
-- Midnight timer detects 24-hour boundary
-- Triggers `sync()` to fetch fresh prayer data
-- Resets all counters for new day
-- Re-evaluates notification status (some may have expired)
+2. **Section Comments**: Files organized with clear section headers
 
-### Progress Bar
+   ```typescript
+   // =============================================================================
+   // SECTION NAME
+   // =============================================================================
+   ```
 
-The progress bar provides a real-time visual representation of the countdown timer displayed above it. It shows how much time has elapsed between the previous prayer and the next prayer.
+3. **Animation Hook Extraction**: Component animations encapsulated in hooks
+   - Example: `useAlertAnimations.ts` for Alert component
 
-#### Visual Behavior
+4. **Scheduling Lock Pattern**: Concurrent operation protection
+   - Example: `withSchedulingLock()` in notifications.ts
 
-**Width Animation:**
+See `ai/adr/` for Architecture Decision Records.
 
-- The bar's width represents the percentage of time elapsed in the current prayer window
-- 0% width = Just passed previous prayer (100% time remaining)
-- 100% width = About to reach next prayer (0% time remaining)
-- Formula: `progress = (timeElapsed / totalDuration) * 100`
-- Smooth animations with platform-specific easing (950ms for large jumps, 1000ms for normal countdown)
+## 🎨 Tech Stack
 
-**Color Gradient:**
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
+![Pino](https://img.shields.io/badge/Pino-FFF000?style=for-the-badge&logo=pino&logoColor=black)
+![Skia](https://img.shields.io/badge/Skia-0D1117?style=for-the-badge&logo=skia&logoColor=white)
+![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
+![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)
+![Reanimated](https://img.shields.io/badge/Reanimated_4-6B52AE?style=for-the-badge)
+![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
 
-- Dynamically interpolates from green (`#d3ff8b`) to dark red-pink (`#d63384`) as time elapses
-- Transitions smoothly throughout the prayer window
-- Visual indicator of time urgency
-
-**Glow Effects:**
-
-- **Platform-specific rendering:**
-  - iOS: Uses `shadowRadius` (15px → 8px) and `shadowOpacity` (0.9 → 1.0)
-  - Android: Uses `elevation` (15 → 10) for shadow spread
-- **Warning state** (≤10% time remaining):
-  - Activates intense neon glow effect
-  - Additional glow layer with 500ms fade-in animation
-  - Provides visual urgency as prayer time approaches
-
-**State Management:**
-
-- Automatically hides (opacity: 0) when overlay display is active
-- Container always reserves 3px height to prevent layout shifts
-- Uses Reanimated 4 shared values for high-performance animations
-- Supports both Standard and Extra prayer schedules
-
-#### Edge Cases
-
-**Midnight Transition:**
-
-- When next prayer is Fajr (first of day), calculates time elapsed since yesterday's Isha
-- Fetches previous day's prayer data to ensure accurate progress calculation
-- Handles 24-hour wrap-around seamlessly
-
-**Timer Synchronization:**
-
-- Progress bar syncs with the active timer type (Standard/Extra/Overlay)
-- Recalculates on every timer tick for precise visual feedback
-- Prevents drift by using same time calculation as countdown timer
-
-### Notification System
-
-#### Overview
-
-The notification system maintains a **6-day rolling buffer** of scheduled notifications that refreshes every 24 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
-
-**Key Features:**
-
-- 6 days of notifications scheduled ahead for each enabled prayer
-- Concurrent scheduling protection with global `isScheduling` guard
-- Maintains consistency even when app is closed or backgrounded
-- Persists through app restarts and offline usage
-- Separate mute controls for Standard (5 prayers) and Extra (4 prayers) schedules
-
-#### Notification Rescheduling Scenarios
-
-Notifications are rescheduled in the following scenarios:
-
-| Scenario                        | Function                                      | Time-Based   | Scope                            | Trigger                                                                                                       |
-| ------------------------------- | --------------------------------------------- | ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **User Changes Audio**          | `rescheduleAllNotifications()`                | ❌ Immediate | Both schedules (all 9 prayers)   | When user closes audio selection bottom sheet with new selection                                              |
-| **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | ❌ Immediate | Single prayer only               | When user taps alert icon on a prayer (450ms debounce)                                                        |
-| **User Mutes/Unmutes**          | `addAllScheduleNotificationsForSchedule()`    | ❌ Immediate | One schedule (Standard or Extra) | When user clicks "Enable all" / "Disable all" button (450ms debounce)                                         |
-| **App Launch**                  | `refreshNotifications()`                      | ✅ ≥24 hours | Both schedules (all 9 prayers)   | When app starts - only reschedules if never scheduled before OR last schedule was ≥24 hours ago               |
-| **App Resumes from Background** | `refreshNotifications()`                      | ✅ ≥24 hours | Both schedules (all 9 prayers)   | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥24 hours ago |
-
-#### How It Works
-
-**User-Triggered Scenarios (3):**
-
-- When user makes a change (audio, individual prayer alert, or mute toggle), notifications are immediately rescheduled
-- Bypasses the 24-hour check for responsive updates
-- The `isScheduling` guard prevents concurrent operations during these user actions
-
-**Automatic Refresh Scenarios (2):**
-
-- Triggered at app launch and when resuming from background
-- Uses 24-hour refresh interval to avoid unnecessary rescheduling
-- Checks `shouldRescheduleNotifications()` which returns `true` only if:
-  - First time ever (no previous schedule timestamp), OR
-  - ≥24 hours elapsed since `last_notification_schedule_check` timestamp
-- If criteria not met, logs skip and returns early
-- When rescheduling happens:
-  1. Cancels ALL existing notifications (global + per-prayer)
-  2. Reschedules 6 days ahead for all enabled prayers
-  3. Updates `last_notification_schedule_check` timestamp
-
-#### Concurrent Scheduling Protection
-
-All 5 entry points are protected by a single global `isScheduling` flag:
-
-- When any scheduling operation starts, `isScheduling` is set to `true`
-- If another operation tries to start while `isScheduling` is true, it returns early
-- After operation completes (success or error), `isScheduling` is reset to `false` in finally block
-- Prevents double notifications even if user rapidly clicks multiple UI elements or if background refresh coincides with user action
-
-**Protected against:**
-
-- Spam clicking alert icons while previous alert is scheduling
-- Rapidly switching audio selections
-- Mute/unmute toggle spam
-- Background refresh colliding with user actions
-- Any combination of the above
-
-#### Constants
-
-- `NOTIFICATION_ROLLING_DAYS = 6`: How many days ahead to schedule
-- `NOTIFICATION_REFRESH_HOURS = 24`: How often to refresh the rolling buffer
+<br/>
 
 ## 🚀 Development
 
@@ -445,98 +366,8 @@ In the output, you'll find options to open the app in a:
 - Development build
 - Android emulator
 - iOS simulator
-- Expo Go
 
-### Code Quality
-
-The project uses ESLint and Prettier for code consistency and quality:
-
-- Prettier maintains consistent code formatting
-- ESLint enforces code quality rules
-- Pre-commit hooks automatically format and lint code
-- VS Code `Prettier` and `ESLint` extensions recommended for real-time formatting and linting
-
-## 🎨 Tech Stack
-
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
-![Pino](https://img.shields.io/badge/Pino-FFF000?style=for-the-badge&logo=pino&logoColor=black)
-![Skia](https://img.shields.io/badge/Skia-0D1117?style=for-the-badge&logo=skia&logoColor=white)
-![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
-![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)
-![Reanimated](https://img.shields.io/badge/Reanimated_4-6B52AE?style=for-the-badge)
-![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
-
-## 🗄️ MMKV Storage Keys
-
-MMKV provides encrypted, fast local storage. Below is a complete reference of all keys, their purpose, and lifecycle.
-
-### Prayer Data
-
-| Key                 | Type   | Purpose                                                          | Lifetime                         | Set When                        |
-| ------------------- | ------ | ---------------------------------------------------------------- | -------------------------------- | ------------------------------- |
-| `prayer_YYYY-MM-DD` | Object | Daily prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha + extras)    | End of day                       | First launch or year transition |
-| `fetched_years`     | Object | Track which years have been fetched (`{2024: true, 2025: true}`) | Indefinite (prevents re-fetches) | After fetching a year's data    |
-| `display_date`      | String | Currently displayed date (for multi-day view state)              | Session                          | User swipes between dates       |
-
-**Cache Behavior:** Prayer data never expires—persists until device cache clears or app uninstalled. Year transition automatically fetches new year when needed.
-
-### Notifications
-
-| Key                                             | Type    | Purpose                                                   | Lifetime            | Set When                                                 |
-| ----------------------------------------------- | ------- | --------------------------------------------------------- | ------------------- | -------------------------------------------------------- |
-| `scheduled_notifications_standard_[index]_[id]` | String  | Unique ID tracking Standard prayer notification scheduled | Until prayer passes | When scheduling Standard prayer notification (index 0-5) |
-| `scheduled_notifications_extra_[index]_[id]`    | String  | Unique ID tracking Extra prayer notification scheduled    | Until prayer passes | When scheduling Extra prayer notification (index 0-3)    |
-| `last_notification_schedule_check`              | Number  | Timestamp of last notification refresh                    | Indefinite          | After every `refreshNotifications()` call (24h check)    |
-| `preference_mute_standard`                      | Boolean | Whether Standard prayers (5 main) notifications are muted | Indefinite          | User taps mute/unmute button                             |
-| `preference_mute_extra`                         | Boolean | Whether Extra prayers (4 special) notifications are muted | Indefinite          | User taps mute/unmute button                             |
-| `preference_sound`                              | Number  | Index of selected Athan sound (0-15 for 16 sounds)        | Indefinite          | User selects audio from BottomSheetSound                 |
-
-**Notification Refresh:** Every 24 hours OR on app resume after backgrounding, notifications are re-evaluated. Old past-prayer entries are cleaned up automatically.
-
-### Prayer Alert Preferences
-
-| Key                               | Type   | Purpose                                                                         | Values                     | Set When                                |
-| --------------------------------- | ------ | ------------------------------------------------------------------------------- | -------------------------- | --------------------------------------- |
-| `preference_alert_standard_[0-5]` | Number | Alert type for each Standard prayer (Fajr=0, Dhuhr=1, Asr=2, Maghrib=3, Isha=4) | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Standard prayer |
-| `preference_alert_extra_[0-3]`    | Number | Alert type for each Extra prayer (Last Third=0, Suhoor=1, Duha=2, Istijaba=3)   | `0=Off, 1=Silent, 2=Sound` | User taps alert icon on Extra prayer    |
-
-**Behavior:** When preference changes, notifications for that specific prayer are immediately rescheduled (protected by `isScheduling` guard).
-
-### UI State & Caching
-
-| Key                                 | Type    | Purpose                                                 | Lifetime   | Set When                              | Impact                                               |
-| ----------------------------------- | ------- | ------------------------------------------------------- | ---------- | ------------------------------------- | ---------------------------------------------------- |
-| `prayer_max_english_width_standard` | Number  | Cached max width of Standard prayer names for layout    | Session    | First render of prayer list           | Prevents repeated measurements, improves performance |
-| `prayer_max_english_width_extra`    | Number  | Cached max width of Extra prayer names for layout       | Session    | First render of extra prayer list     | Used for responsive text sizing                      |
-| `measurements_list`                 | Object  | Cached measurements for prayer list item positioning    | Session    | Component mount                       | Optimizes layout calculations, prevents jank         |
-| `measurements_date`                 | Object  | Cached measurements for date display area               | Session    | Component mount                       | Improves date bar rendering performance              |
-| `popup_tip_athan_enabled`           | Boolean | Whether "First Time Tips" popup has been shown          | Indefinite | App first launch                      | Only shows once in user's lifetime                   |
-| `popup_times_explained_enabled`     | Boolean | Whether "Prayer Times Explanation" popup has been shown | Indefinite | First visit to Page 2                 | Only shows once per user                             |
-| `popup_update_last_check`           | Number  | Timestamp of last app update check                      | Indefinite | After checking GitHub for new version | Only checks once per 24h (avoids API spam)           |
-
-**UI Cache Lifetime:** Measurement caches are cleared on app restart (session-based). Popup states persist indefinitely unless user manually clears app data.
-
-### Screenshots
-
-<div align="center">
-  <img src="./assets/marketing/screenshots/app-shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
-  <img src="./assets/marketing/screenshots/app-shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot10.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot11.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot13.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot12.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-</div>
+<br/>
 
 ## Athans
 
@@ -557,6 +388,93 @@ MMKV provides encrypted, fast local storage. Below is a complete reference of al
 - Athan 15: https://www.youtube.com/watch?v=CxI53S_otJA
 - Athan 16: Unspecified
 
-## Icons
+<br/>
 
-- Masjid icon by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+### Screenshots
+
+<div align="center">
+  <img src="./assets/marketing/screenshots/app-shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
+  <img src="./assets/marketing/screenshots/app-shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot10.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot11.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot13.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+  <img src="./assets/marketing/screenshots/app-shot12.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
+</div>
+
+<br/>
+
+### Notification System
+
+#### Overview
+
+The notification system maintains a **2-day rolling buffer** of scheduled notifications that refreshes every 12 hours. This ensures users always have notifications queued ahead while preventing duplication and keeping the system efficient.
+
+**Key Features:**
+
+- 2 days of notifications scheduled ahead for each enabled prayer
+- 11 prayers total: 6 Standard (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha) + 5 Extra (Midnight, Last Third, Suhoor, Duha, Istijaba)
+- Concurrent scheduling protection with global `isScheduling` guard
+- Maintains consistency even when app is closed or backgrounded
+- Persists through app restarts and offline usage
+
+#### Notification Rescheduling Scenarios
+
+Notifications are rescheduled in the following scenarios:
+
+| Scenario                        | Function                                      | When                          | Scope                           | Trigger                                                                                                       |
+| ------------------------------- | --------------------------------------------- | ----------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **User Changes Audio**          | `rescheduleAllNotifications()`                | Immediately                   | Both schedules (all 11 prayers) | When user closes audio selection bottom sheet with new selection                                              |
+| **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | Immediately                   | Single prayer only              | When user taps alert icon on a prayer                                                                         |
+| **App Launch**                  | `refreshNotifications()`                      | If ≥12hrs since last schedule | Both schedules (all 11 prayers) | When app starts - only reschedules if never scheduled before OR last schedule was ≥12 hours ago               |
+| **App Resumes from Background** | `refreshNotifications()`                      | If ≥12hrs since last schedule | Both schedules (all 11 prayers) | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥12 hours ago |
+
+#### How It Works
+
+**User-Triggered Scenarios (3):**
+
+- When user makes a change (audio or individual prayer alert), notifications are immediately rescheduled
+- Bypasses the 12-hour check for responsive updates
+- The `isScheduling` guard prevents concurrent operations during these user actions
+
+**Automatic Refresh Scenarios (2):**
+
+- Triggered at app launch and when resuming from background
+- Uses 12-hour refresh interval to avoid unnecessary rescheduling
+- Checks `shouldRescheduleNotifications()` which returns `true` only if:
+  - First time ever (no previous schedule timestamp), OR
+  - ≥12 hours elapsed since `last_notification_schedule_check` timestamp
+- If criteria not met, logs skip and returns early
+- When rescheduling happens:
+  1. Cancels ALL existing notifications (Expo API + database)
+  2. Reschedules 2 days ahead for all enabled prayers in both schedules
+  3. Updates `last_notification_schedule_check` timestamp
+
+#### Concurrent Scheduling Protection
+
+All 4 entry points are protected by a single global `isScheduling` flag wrapped in `withSchedulingLock()`:
+
+- When any scheduling operation starts, `isScheduling` is set to `true`
+- If another operation tries to start while `isScheduling` is true, it returns early
+- After operation completes (success or error), `isScheduling` is reset to `false` in finally block
+- Prevents double notifications even if user rapidly clicks multiple UI elements or if background refresh coincides with user action
+
+**Protected against:**
+
+- Spam clicking alert icons while previous alert is scheduling
+- Rapidly switching audio selections
+- Background refresh colliding with user actions
+- Any combination of the above
+
+#### Constants
+
+| Constant                     | Value | Description                            |
+| ---------------------------- | ----- | -------------------------------------- |
+| `NOTIFICATION_ROLLING_DAYS`  | 2     | Days ahead to schedule notifications   |
+| `NOTIFICATION_REFRESH_HOURS` | 12    | Hours between automatic refresh cycles |

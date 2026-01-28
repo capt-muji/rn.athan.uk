@@ -1,49 +1,46 @@
+import * as SplashScreen from 'expo-splash-screen';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, View, Platform } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import Navigation from '@/app/Navigation';
-import Error from '@/components/Error';
-import ModalTimesExplained from '@/components/ModalTimesExplained';
-import ModalTips from '@/components/ModalTips';
-import ModalUpdate from '@/components/ModalUpdate';
-import Overlay from '@/components/Overlay';
+import { ModalUpdate } from '@/components/modals';
+import { Overlay } from '@/components/overlay';
+import { Error } from '@/components/ui';
 import { initializeListeners } from '@/device/listeners';
 import { openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
+import { COLORS, SIZE } from '@/shared/constants';
+import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
+import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { syncLoadable } from '@/stores/sync';
-import {
-  popupTipAthanEnabledAtom,
-  setPopupTipAthanEnabled,
-  popupUpdateEnabledAtom,
-  setPopupUpdateEnabled,
-  popupTimesExplainedAtom,
-  setPopupTimesExplained,
-} from '@/stores/ui';
+import { popupUpdateEnabledAtom, setPopupUpdateEnabled } from '@/stores/ui';
 
 export default function Index() {
   const { checkInitialPermissions } = useNotification();
   const { state } = useAtomValue(syncLoadable);
-  const modalTipEnabled = useAtomValue(popupTipAthanEnabledAtom);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
-  const modalTimesExplained = useAtomValue(popupTimesExplainedAtom);
 
   useEffect(() => {
-    // Initialize notifications and create channel on first load
-    initializeNotifications(checkInitialPermissions);
+    // Initialize notifications, register background task, and create channel on first load
+    initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
+      logger.error('Failed to initialize notifications:', error)
+    );
 
     // Initialize background/foreground state listeners (sync UI as needed)
     initializeListeners(checkInitialPermissions);
 
-    // TODO: Temporarily disabled because github raw URL has been changed
-    // Check for updates in background
+    // Check for updates in background (currently disabled - github raw URL changed)
     // checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
   }, []);
 
-  const handleCloseTip = () => {
-    setPopupTipAthanEnabled(false);
-  };
+  // Hide splash screen once sync completes
+  useEffect(() => {
+    if (state !== 'loading') {
+      SplashScreen.hideAsync();
+    }
+  }, [state]);
 
   const handleCloseUpdate = () => {
     setPopupUpdateEnabled(false);
@@ -54,14 +51,10 @@ export default function Index() {
     setPopupUpdateEnabled(false);
   };
 
-  const handleCloseTimesExplained = () => {
-    setPopupTimesExplained(2);
-  };
-
   if (state === 'loading') {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size={Platform.select({ ios: 48, android: 32 })} color="#8d73ff" />
+        <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
       </View>
     );
   }
@@ -70,10 +63,8 @@ export default function Index() {
   return (
     <>
       <ModalUpdate visible={updateAvailable} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
-      <ModalTips visible={modalTipEnabled} onClose={handleCloseTip} />
-      <ModalTimesExplained visible={modalTimesExplained === 1} onClose={handleCloseTimesExplained} />
-      <Overlay />
       <Navigation />
+      <Overlay />
     </>
   );
 }

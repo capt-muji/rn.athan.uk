@@ -1,32 +1,27 @@
+/**
+ * Sync layer - App initialization and data fetching
+ * Uses the prayer-centric sequence model
+ *
+ * @see ai/adr/005-timing-system-overhaul.md
+ */
+
 import { atom } from 'jotai';
 import { loadable } from 'jotai/utils';
-import { getDefaultStore } from 'jotai/vanilla';
 
 import * as Api from '@/api/client';
-import { PRAYER_INDEX_ASR } from '@/shared/constants';
+import { APP_CONFIG } from '@/shared/config';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
+import * as Countdown from '@/stores/countdown';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
-import { atomWithStorageString } from '@/stores/storage';
-import * as Timer from '@/stores/timer';
-
-const store = getDefaultStore();
+import { handleAppUpgrade } from '@/stores/version';
 
 // --- Atoms ---
 export const syncLoadable = loadable(atom(async () => sync()));
-export const dateAtom = atomWithStorageString('display_date', '');
 
-// --- Actions ---
-export const triggerSyncLoadable = () => store.get(syncLoadable);
-
-// Update the stored date based on the current schedule's Asr prayer time
-const setDate = () => {
-  const schedule = store.get(ScheduleStore.standardScheduleAtom);
-  const currentDateFromData = schedule.today[PRAYER_INDEX_ASR].date;
-  store.set(dateAtom, currentDateFromData);
-};
+// --- Helpers ---
 
 // Check if we need to pre-fetch next year's data
 // Returns true if it's December and we haven't yet fetched next year's data
@@ -36,24 +31,54 @@ const shouldFetchNextYear = (): boolean => {
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
 };
 
-// Initialize or reinitialize the app's core state
-// 1. Sets up both standard and extra prayer schedules
-// 2. Updates the stored date
-// 3. Starts the prayer time monitoring timers
-const initializeAppState = async (date: Date) => {
-  ScheduleStore.setSchedule(ScheduleType.Standard, date);
-  ScheduleStore.setSchedule(ScheduleType.Extra, date);
-
-  setDate();
-
-  Timer.startTimers();
+// --- Actions ---
+export const triggerSyncLoadable = () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { getDefaultStore } = require('jotai/vanilla');
+  return getDefaultStore().get(syncLoadable);
 };
 
-// Determines if the app needs to fetch fresh prayer time data
-// Returns true if:
-// 1. Schedule is empty (no data for today)
-// 2. It's December and next year's data needs fetching
+/**
+ * Initialize or reinitialize the app's core state
+ * 1. Sets up both standard and extra prayer sequences
+ * 2. Starts the prayer time monitoring countdowns
+ */
+const initializeAppState = async (date: Date) => {
+  // SCENARIO 1: January 1st - Fetch previous year's Dec 31 data for CountdownBar
+  // This is MANDATORY - CountdownBar needs yesterday's Isha time to calculate progress
+  if (TimeUtils.isJanuaryFirst(date)) {
+    const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
+    const cachedPrevYearData = Database.getPrayerByDate(prevYearLastDate);
+
+    if (!cachedPrevYearData) {
+      logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
+
+      const fetchedPrevYearData = await Api.fetchYear(date.getFullYear() - 1);
+      Database.saveAllPrayers(fetchedPrevYearData);
+      Database.markYearAsFetched(date.getFullYear() - 1);
+
+      logger.info('SYNC: Previous year data fetched and saved');
+    }
+  }
+
+  // Initialize prayer sequences (prayer-centric model)
+  // See: ai/adr/005-timing-system-overhaul.md
+  ScheduleStore.setSequence(ScheduleType.Standard, date);
+  ScheduleStore.setSequence(ScheduleType.Extra, date);
+
+  Countdown.startCountdowns();
+};
+
+/**
+ * Determines if the app needs to fetch fresh prayer time data
+ * Returns true if:
+ * 1. Dev mode is enabled (EXPO_PUBLIC_DEV_MODE=true)
+ * 2. Schedule is empty (no data for today)
+ * 3. It's December and next year's data needs fetching
+ */
 const needsDataUpdate = (): boolean => {
+  if (APP_CONFIG.isDev) return true;
+
   const now = TimeUtils.createLondonDate();
   const data = Database.getPrayerByDate(now);
 
@@ -65,38 +90,61 @@ const needsDataUpdate = (): boolean => {
   return false;
 };
 
-// Fetches and stores new prayer time data
-// 1. Cleans up old data
-// 2. Fetches current year (and optionally next year) data
-// 3. Saves data to local storage and marks years as fetched
+/**
+ * Fetches and stores new prayer time data
+ * 1. Cleans up old data
+ * 2. Fetches current year (and optionally next year) data
+ * 3. Saves data to local storage and marks years as fetched
+ */
 const updatePrayerData = async () => {
   logger.info('SYNC: Starting data refresh');
-  Database.cleanup();
+  // Clear prayer cache but preserve app version to prevent upgrade detection loop
+  Database.clearAllExcept(['app_installed_version']);
 
   try {
-    const { currentYearData, nextYearData, currentYear } = await Api.fetchPrayerData(shouldFetchNextYear());
+    // SCENARIO 3: December - Proactively fetch current year + next year
+    if (shouldFetchNextYear()) {
+      const currentYear = TimeUtils.getCurrentYear();
+      const nextYear = currentYear + 1;
 
-    Database.saveAllPrayers(currentYearData);
-    Database.markYearAsFetched(currentYear);
+      const [currentYearData, nextYearData] = await Promise.all([Api.fetchYear(currentYear), Api.fetchYear(nextYear)]);
 
-    if (nextYearData) {
+      Database.saveAllPrayers(currentYearData);
+      Database.markYearAsFetched(currentYear);
+
       Database.saveAllPrayers(nextYearData);
-      Database.markYearAsFetched(currentYear + 1);
+      Database.markYearAsFetched(nextYear);
+
+      logger.info('SYNC: Data refresh complete (current + next year)', { currentYear, nextYear });
     }
-    logger.info('SYNC: Data refresh complete');
+    // SCENARIO 2: Standard sync - Fetch current year only
+    else {
+      const currentYear = TimeUtils.getCurrentYear();
+      const data = await Api.fetchYear(currentYear);
+
+      Database.saveAllPrayers(data);
+      Database.markYearAsFetched(currentYear);
+
+      logger.info('SYNC: Data refresh complete (current year only)', { year: currentYear });
+    }
   } catch (error) {
     logger.error('SYNC: Failed to update prayer data', { error });
     throw error;
   }
 };
 
-// Main synchronization function - App entry point
-// Flow:
-// 1. Checks if data update is needed
-// 2. Fetches new data if required
-// 3. Initializes app state with current date
+/**
+ * Main synchronization function - App entry point
+ * Flow:
+ * 1. Checks for app upgrade and clears cache if needed
+ * 2. Checks if data update is needed
+ * 3. Fetches new data if required
+ * 4. Initializes app state with current date
+ */
 export const sync = async () => {
   try {
+    handleAppUpgrade();
+
     if (needsDataUpdate()) await updatePrayerData();
     else logger.info('SYNC: Data already up to date');
 

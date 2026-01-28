@@ -1,95 +1,861 @@
+// =============================================================================
+// PRAYER NAMES
+// =============================================================================
+
+/**
+ * English names for the 6 standard daily prayers
+ * Order matches UI display sequence (Fajr → Sunrise → Dhuhr → Asr → Magrib → Isha)
+ */
 export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
+
+/**
+ * Arabic names for the 6 standard daily prayers
+ * Must align 1:1 with PRAYERS_ENGLISH for correct bilingual display
+ */
 export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
-export const PRAYER_INDEX_ASR = 3; // Used to display the date
 
-export const EXTRAS_ENGLISH = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'];
-export const EXTRAS_ARABIC = ['آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
-export const ISTIJABA_INDEX = 3;
+// =============================================================================
+// SPECIAL PRAYERS (EXTRAS)
+// =============================================================================
 
-export const NOTIFICATION_ROLLING_DAYS = 6;
-export const NOTIFICATION_REFRESH_HOURS = 24;
+/**
+ * English names for 5 special/blessed prayer times
+ * Order: Midnight, Last Third, Suhoor, Duha, Istijaba
+ * Note: Istijaba only displays on Fridays
+ */
+export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 
-export const TIME_ADJUSTMENTS = {
-  lastThird: 5, // minutes after last third of the night
-  suhoor: -40, // minutes before fajr
-  duha: 20, // minutes after sunrise
-  istijaba: -59, // minutes before magrib
+/**
+ * Arabic names for 5 special prayer times
+ * Must align 1:1 with EXTRAS_ENGLISH for correct bilingual display
+ */
+export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
+
+/**
+ * Index position of Istijaba prayer in EXTRAS arrays (0-indexed: 4)
+ * Used for special handling: Istijaba notifications only scheduled on Fridays
+ */
+export const ISTIJABA_INDEX = 4;
+
+/**
+ * Night prayer names that cross midnight boundary
+ * Used for determining which prayers belong to the previous/next Islamic day
+ * These prayers occur after Isha but before Fajr (the nighttime portion)
+ */
+export const NIGHT_PRAYER_NAMES = ['Midnight', 'Last Third', 'Suhoor'] as const;
+
+/**
+ * Human-readable explanations for each extra prayer
+ * Used in PrayerExplanation overlay to provide context to users
+ * Order aligns with EXTRAS arrays
+ */
+export const EXTRAS_EXPLANATIONS = [
+  'Halfway between Magrib and Fajr',
+  'Start of the last third of the night',
+  '20 mins before Fajr',
+  '20 mins after Sunrise',
+  '1 hour before Magrib (Fridays only)',
+] as const;
+
+// =============================================================================
+// NOTIFICATION CONFIGURATION
+// =============================================================================
+
+/**
+ * Number of days ahead to schedule notifications (2-day rolling buffer)
+ * Ensures notifications are always queued ahead without overwhelming the system
+ */
+export const NOTIFICATION_ROLLING_DAYS = 2;
+
+/**
+ * Valid reminder intervals in minutes before prayer time
+ * User can select from these options in the AlertMenu popup
+ */
+export const REMINDER_INTERVALS = [5, 10, 15, 20, 25, 30] as const;
+
+/**
+ * Default reminder interval (5 minutes before prayer)
+ */
+export const DEFAULT_REMINDER_INTERVAL = 5;
+
+/**
+ * Buffer in seconds - if a reminder would fire within this many seconds, skip it
+ * Prevents scheduling reminders that would fire almost immediately
+ */
+export const REMINDER_BUFFER_SECONDS = 30;
+
+/**
+ * Validates that a value is a valid reminder interval
+ * @param value Value to validate
+ * @returns True if value is a valid ReminderInterval
+ */
+export const validateReminderInterval = (value: number): boolean => {
+  return REMINDER_INTERVALS.includes(value as (typeof REMINDER_INTERVALS)[number]);
 };
 
+/**
+ * Hours between automatic foreground notification refreshes
+ * Notifications rescheduled when this interval elapses and app enters foreground
+ * Offset from background task interval (3 hours) to reduce collision risk
+ */
+export const NOTIFICATION_REFRESH_HOURS = 4;
+
+// =============================================================================
+// BACKGROUND TASK CONFIGURATION
+// =============================================================================
+
+/**
+ * Unique identifier for the background notification refresh task
+ * Used by expo-task-manager to register and identify the task
+ */
+export const BACKGROUND_TASK_NAME = 'NOTIFICATION_REFRESH_TASK';
+
+/**
+ * Hours between background task executions (minimum interval)
+ * System may delay execution; this is a minimum, not exact timing
+ * Offset from foreground refresh (4 hours) to reduce collision risk
+ */
+export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
+
+// =============================================================================
+// TIME CALCULATIONS
+// =============================================================================
+
+/**
+ * Minute offsets for calculating special prayer times
+ * Positive values = add minutes, negative = subtract from base prayer time
+ * Used in shared/time.ts adjustTime() calculations
+ */
+export const TIME_ADJUSTMENTS = {
+  lastThird: 0, // start of the last third of the night
+  suhoor: -20, // minutes before Fajr
+  duha: 20, // minutes after Sunrise
+  istijaba: -60, // 1 hour before Magrib (Fridays only)
+};
+
+/**
+ * Time-related constants in milliseconds
+ * Used for time-based calculations (buffer checking, duration computations)
+ */
+export const TIME_CONSTANTS = {
+  ONE_DAY_MS: 24 * 60 * 60 * 1000,
+} as const;
+
+/**
+ * Islamic day boundary configuration
+ * Defines when early morning prayers belong to previous Islamic day
+ */
+export const ISLAMIC_DAY = {
+  /** Hour threshold for early morning (6am). Prayers before this hour may belong to previous Islamic day */
+  EARLY_MORNING_CUTOFF_HOUR: 6,
+} as const;
+
+// =============================================================================
+// UI TEXT & TYPOGRAPHY
+// =============================================================================
+
+/**
+ * Global text styling configuration
+ * Font family (Roboto) and size hierarchy for consistent typography across app
+ */
 export const TEXT = {
   family: {
+    /** Regular weight font for body text */
     regular: 'Roboto-Regular',
+    /** Medium weight font for emphasis text */
     medium: 'Roboto-Medium',
   },
+  /** Base font size for prayer names and time displays */
   size: 18,
+  /** Secondary font size for auxiliary text */
   sizeSmall: 16,
-  sizeSmaller: 14,
-  opacity: 0.5,
-  opacityHigher: 0.75,
+  /** Large font size for countdown prayer name (size + 8) */
+  sizeLarge: 26,
+  /** Title font size for modal headers (size + 2) */
+  sizeTitle: 20,
+  /** Heading font size for error screens */
+  sizeHeading: 28,
+  /** Detail font size for small text (sizeSmall - 2) */
+  sizeDetail: 14,
+  /** Arabic explanation font size */
+  sizeArabic: 15,
+  /** Line height presets */
+  lineHeight: {
+    /** Default line height for body text */
+    default: 22,
+    /** Line height for Arabic text */
+    arabic: 24,
+  },
+  /** Letter spacing presets */
+  letterSpacing: {
+    /** Default letter spacing */
+    default: 0.2,
+    /** Wide letter spacing for titles */
+    wide: 0.3,
+  },
 };
 
+// =============================================================================
+// SCREEN LAYOUT
+// =============================================================================
+
+/**
+ * Screen-level layout padding constants
+ * Ensures consistent spacing and alignment across all screens
+ */
 export const SCREEN = {
+  /** Horizontal padding for screen edges */
   paddingHorizontal: 12,
+  /** Top padding for screen content */
   paddingTop: 17,
 };
 
+// =============================================================================
+// SPACING
+// =============================================================================
+
+/**
+ * Spacing constants for margins, paddings, and gaps
+ * Use semantic names for consistent spacing across components
+ */
+export const SPACING = {
+  /** Negative overlap (-1px) - arrow positioning for tooltips */
+  overlap: -1,
+  /** Extra small spacing (2px) - tiny tiny margins */
+  xxs: 2,
+  /** Extra small spacing (4px) - tiny margins */
+  xs: 4,
+  /** Quarter spacing (5px) - between xs and py */
+  quart: 5,
+  /** Small spacing (6px) - small vertical padding */
+  py: 6,
+  /** Small spacing (8px) - small gaps, margins */
+  sm: 8,
+  /** Gap spacing (10px) - small medium gaps, margins  */
+  smd: 10,
+  /** Gap spacing (10px) - common gap between elements */
+  gap: 10,
+  /** Medium spacing (12px) - default padding, matches SCREEN.paddingHorizontal */
+  md: 12,
+  /** Mid spacing (14px) - between md and lg */
+  mid: 14,
+  /** Popup spacing (15px) - popup/sheet padding */
+  popup: 15,
+  /** Large spacing (16px) - countdown margins */
+  lg: 16,
+  /** Secondary large spacing (18px) - between lg and xl */
+  lg2: 18,
+  /** Extra large spacing (20px) - prayer padding */
+  xl: 20,
+  /** 2x Extra large spacing (24px) - modal padding */
+  xxl: 24,
+  /** Header spacing (28px) - header/section spacing */
+  header: 28,
+  /** 3x Extra large spacing (30px) - bottom sheet padding */
+  xxxl: 30,
+  /** Section spacing (50px) - large section margins */
+  section: 50,
+} as const;
+
+// =============================================================================
+// BORDER RADIUS
+// =============================================================================
+
+/**
+ * Border radius presets for consistent rounded corners
+ * Range from subtle rounding to fully circular (pill) shapes
+ */
+export const RADIUS = {
+  /** Extra small radius (2px) - countdown bar */
+  xs: 2,
+  /** Small radius (5px) - error button */
+  sm: 5,
+  /** Medium radius (8px) - prayer rows, info boxes, buttons */
+  md: 8,
+  /** Large radius (10px) - modal buttons */
+  lg: 10,
+  /** Extra large radius (12px) - toggles, color picker panels */
+  xl: 12,
+  /** 2x Extra large radius (16px) - modals */
+  xxl: 16,
+  /** Sheet radius (24px) - bottom sheets */
+  sheet: 24,
+  /** Rounded radius (50px) - rounded elements like alert popup */
+  rounded: 50,
+  /** Pill radius (999px) - fully rounded pill shapes */
+  pill: 999,
+} as const;
+
+// =============================================================================
+// SHADOWS
+// =============================================================================
+
+/**
+ * Shadow presets for elevation effects
+ * Each preset includes offset, opacity, and radius for consistent shadows
+ */
+export const SHADOW = {
+  /** Prayer row shadow */
+  prayer: {
+    shadowOffset: { width: 1, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+  /** Prayer row shadow (extras page) - more compact */
+  prayerExtras: {
+    shadowOffset: { width: 1, height: 6 },
+    shadowOpacity: 0.35,
+    shadowRadius: 6,
+  },
+  /** Settings button shadow */
+  button: {
+    shadowOffset: { width: 1, height: 10 },
+    shadowOpacity: 1,
+    shadowRadius: 10,
+  },
+  /** Modal shadow */
+  modal: {
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.75,
+    shadowRadius: 35,
+  },
+  /** Masjid icon shadow */
+  masjid: {
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+  },
+  /** Color picker modal shadow (upward) */
+  colorPickerModal: {
+    shadowOffset: { width: 0, height: -50 },
+    shadowOpacity: 0.25,
+    shadowRadius: 150,
+  },
+} as const;
+
+// =============================================================================
+// COUNTDOWN BAR
+// =============================================================================
+
+/**
+ * Countdown bar dimensions and configuration
+ */
+export const COUNTDOWN_BAR = {
+  WIDTH: 100,
+  HEIGHT: 2.5,
+  GLOSS_HEIGHT: 0.5,
+  TRACK_COLOR: '#153569',
+  WARNING_THRESHOLD: 10,
+} as const;
+
+/**
+ * Pulsing tip indicator at the leading edge of countdown bar
+ */
+export const COUNTDOWN_TIP = {
+  WIDTH: 2,
+  OFFSET: 0.9,
+  TINT_AMOUNT: 0.15,
+  PULSE_DURATION: 2500,
+} as const;
+
+// =============================================================================
+// COLOR PICKER
+// =============================================================================
+
+/**
+ * Primary swatch colors for quick selection (first is default)
+ */
+export const COLOR_PICKER_SWATCHES = [
+  '#ffd000', // gold (default)
+  '#ff3366', // hot pink
+  '#00ff88', // mint green
+  '#ff9500', // orange
+  '#ffee00', // yellow
+  '#7b68ee', // medium purple
+] as const;
+
+/**
+ * Secondary swatch colors for additional options
+ */
+export const COLOR_PICKER_SWATCHES_2 = [
+  '#ff2d2d', // red
+  '#00bfff', // deep sky blue
+  '#ff69b4', // pink
+  '#32cd32', // lime green
+  '#dc2eff', // magenta
+  '#1f8bff', // blue
+] as const;
+
+/**
+ * Default countdown bar color (cyan)
+ */
+export const COLOR_PICKER_DEFAULT = COLOR_PICKER_SWATCHES[0];
+
+// =============================================================================
+// COMPONENT SIZES
+// =============================================================================
+
+/**
+ * Fixed dimensions for UI components
+ * Use for consistent sizing across the app
+ */
+export const SIZE = {
+  /** Icon dimensions */
+  icon: {
+    /** Small icon (14px) - settings icon, music icon */
+    sm: 14,
+    /** Medium icon (20px) - alert icons, chevrons */
+    md: 20,
+    /** Large icon (22px) - play button */
+    lg: 22,
+  },
+  /** Icon wrapper dimensions */
+  iconWrapper: {
+    /** Small icon wrapper (24px) */
+    sm: 24,
+    /** Medium icon wrapper (26px) */
+    md: 26,
+  },
+  /** Toggle switch dimensions */
+  toggle: {
+    /** Toggle width */
+    width: 44,
+    /** Toggle height */
+    height: 24,
+    /** Toggle dot size */
+    dotSize: 20,
+    /** Toggle dot translateX when active */
+    translateX: 18,
+  },
+  /** Dot dimensions (color preview circles) */
+  dot: {
+    /** Large dot (18px) */
+    lg: 18,
+  },
+  /** Bar dimensions */
+  bar: {
+    /** Extra small bar height (3px) */
+    xs: 3,
+    /** Small bar height (6px) */
+    sm: 6,
+    /** Default bar width (100px) */
+    width: 100,
+  },
+  /** Button dimensions */
+  button: {
+    /** Standard modal button width (80px) */
+    width: 80,
+    /** Standard modal button height (40px) */
+    height: 40,
+    /** Icon-only button width (43px) */
+    icon: 43,
+  },
+  /** Tooltip dimensions */
+  tooltip: {
+    /** Minimum width for tooltip/info boxes (300px) */
+    minWidth: 300,
+  },
+  /** Modal dimensions */
+  modal: {
+    /** Maximum modal width (500px) */
+    maxWidth: 500,
+  },
+  /** Navigation dimensions */
+  nav: {
+    /** Bottom offset for navigation elements (25px) */
+    bottomOffset: 25,
+  },
+  /** Loading spinner size (unified across platforms) */
+  activityIndicator: 48,
+  /** Navigation dot diameter */
+  navigationDot: 6,
+  /** Maximum screen content width */
+  screenMaxWidth: 700,
+} as const;
+
+// =============================================================================
+// LAYOUT
+// =============================================================================
+
+/**
+ * Layout constants for responsive dimensions
+ * Use percentage-based widths for flexible layouts
+ */
+export const LAYOUT = {
+  /** Modal layout */
+  modal: {
+    /** Modal width as percentage */
+    width: '85%',
+  },
+} as const;
+
+// =============================================================================
+// GLOW
+// =============================================================================
+
+/**
+ * Glow effect configuration
+ * Used for calculating glow dimensions relative to screen size
+ */
+export const GLOW = {
+  /** Size multiplier for glow relative to screen width */
+  sizeFactor: 1.5,
+} as const;
+
+// =============================================================================
+// PLATFORM-SPECIFIC
+// =============================================================================
+
+/**
+ * Platform-specific styling adjustments
+ * Use with Platform.OS checks for cross-platform consistency
+ */
+export const PLATFORM = {
+  /** Android-specific values */
+  android: {
+    /** Bottom padding for screens */
+    bottomPadding: 15,
+    /** Navigation bar bottom padding */
+    navigationBottomPadding: 40,
+  },
+} as const;
+
+// =============================================================================
+// HIT SLOP
+// =============================================================================
+
+/**
+ * Touch target expansion for pressable elements
+ * Improves tap accuracy without changing visual size
+ */
+export const HIT_SLOP = {
+  /** Small hit area expansion (8px) */
+  sm: 8,
+  /** Standard hit area expansion (10px) */
+  md: 10,
+  /** Large hit area expansion (15px) */
+  lg: 15,
+} as const;
+
+// =============================================================================
+// ELEVATION (Android shadows)
+// =============================================================================
+
+/**
+ * Android elevation values for shadow depth
+ * Higher values create more prominent shadows
+ */
+export const ELEVATION = {
+  /** No elevation - element sits flat */
+  none: 0,
+  /** Subtle elevation (5) - settings button */
+  subtle: 5,
+  /** Standard elevation (15) - popups, sheets */
+  standard: 15,
+  /** Maximum elevation (25) - modals */
+  maximum: 25,
+} as const;
+
+// =============================================================================
+// COLOR PALETTE
+// =============================================================================
+
+/**
+ * Application color palette
+ * Organized by semantic role: text, surface, interactive, icons, etc.
+ */
 export const COLORS = {
-  gradientScreen1Start: '#031a4c',
-  gradientScreen1End: '#5b1eaa',
+  // ───────────────────────────────────────────────────────────────────────────
+  // TEXT HIERARCHY
+  // ───────────────────────────────────────────────────────────────────────────
+  text: {
+    /** Primary text: active prayers, main content */
+    primary: '#ffffff',
+    /** Secondary text: labels, descriptions */
+    secondary: 'rgba(160, 200, 255, 0.54)',
+    /** Muted text: inactive prayers, timestamps */
+    muted: 'rgba(138, 169, 214, 0.38)',
+    /** Disabled/hint text */
+    disabled: 'rgba(146, 211, 255, 0.65)',
+    /** Emphasis text: info box titles */
+    emphasis: 'rgba(224, 231, 255, 1)',
+  },
 
-  gradientScreen2Start: '#320088',
-  gradientScreen2End: '#140035',
+  // ───────────────────────────────────────────────────────────────────────────
+  // SURFACES & BACKGROUNDS
+  // ───────────────────────────────────────────────────────────────────────────
+  surface: {
+    /** Bottom sheet background */
+    sheet: '#0b183a',
+    /** Bottom sheet border */
+    sheetBorder: '#0f1d46',
+    /** Bottom sheet backdrop overlay */
+    backdrop: '#000116',
+    /** Elevated surface (info boxes, modals) */
+    elevated: 'rgba(18, 6, 42, 1)',
+    /** Elevated surface border */
+    elevatedBorder: 'rgba(45, 22, 106, 0.29)',
+  },
 
-  activePrayer: '#ffffff',
-  inactivePrayer: '#8aa9d662',
+  // ───────────────────────────────────────────────────────────────────────────
+  // GRADIENTS
+  // ───────────────────────────────────────────────────────────────────────────
+  gradient: {
+    /** Main screen background gradient */
+    screen: { start: '#031a4c', end: '#5b1eaa' },
+    /** Overlay background gradient */
+    overlay: { start: '#110022', end: '#000000' },
+  },
 
-  activeBackground: '#0847e5',
-  standardActiveBackgroundShadow: '#081a76',
-  extraActiveBackgroundShadow: '#061e5b',
+  // ───────────────────────────────────────────────────────────────────────────
+  // INTERACTIVE ELEMENTS (toggles, selections)
+  // ───────────────────────────────────────────────────────────────────────────
+  interactive: {
+    /** Active toggle/selection background */
+    active: '#5015b5',
+    /** Active toggle/selection border */
+    activeBorder: '#672bcf',
+    /** Inactive toggle background */
+    inactive: '#303f6c',
+    /** Inactive toggle border */
+    inactiveBorder: '#3b3977',
+  },
 
-  textSecondary: '#a0c8ff89',
+  // ───────────────────────────────────────────────────────────────────────────
+  // ICONS
+  // ───────────────────────────────────────────────────────────────────────────
+  icon: {
+    /** Primary icon fill color */
+    primary: 'rgba(165, 180, 252, 1)',
+    /** Icon wrapper background */
+    background: 'rgba(99, 102, 241, 0.2)',
+    /** Muted icon color */
+    muted: 'rgba(177, 143, 255, 0.46)',
+  },
 
-  glows: {
+  // ───────────────────────────────────────────────────────────────────────────
+  // BORDERS & DIVIDERS
+  // ───────────────────────────────────────────────────────────────────────────
+  border: {
+    /** Subtle separator lines (6% opacity) */
+    subtle: 'rgba(255, 255, 255, 0.06)',
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // SHADOWS
+  // ───────────────────────────────────────────────────────────────────────────
+  shadow: {
+    /** Active prayer shadow */
+    prayer: '#081a76',
+    /** Active prayer shadow (extras page) */
+    prayerExtras: '#38086e',
+    /** Settings button shadow */
+    button: '#27035c',
+    /** Alert popup shadow */
+    alert: '#010931',
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // FEEDBACK STATES
+  // ───────────────────────────────────────────────────────────────────────────
+  feedback: {
+    /** Success/recent state (bright blue-white) */
+    success: '#d5e8ff',
+    /** Warning state (countdown < 10%) */
+    warning: '#ff0080',
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // GLOWS & EFFECTS
+  // ───────────────────────────────────────────────────────────────────────────
+  glow: {
+    /** Purple glow for overlay component */
     overlay: '#8000ff',
-    bottomsheet: '#8000ff',
+    /** Purple glow for overlay component (extras page) */
+    overlayExtras: '#630fb7',
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // PRAYER-SPECIFIC
+  // ───────────────────────────────────────────────────────────────────────────
+  prayer: {
+    /** Active prayer highlight background */
+    activeBackground: '#0847e5',
+    /** Active prayer highlight background (extras page) */
+    activeBackgroundExtras: '#0847e5',
+  },
+
+  prayerAgo: {
+    /** Prayer ago badge text */
+    text: 'rgba(128, 162, 212, 0.45)',
+    /** Background gradient for prayer ago badge */
+    gradient: {
+      start: 'rgba(73, 75, 160, 0.15)',
+      end: 'rgba(70, 100, 160, 0.25)',
+    },
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // COMPONENT-SPECIFIC
+  // ───────────────────────────────────────────────────────────────────────────
+  /** Settings button (transparent style) */
+  settingsButton: {
+    background: 'rgba(105, 65, 198, 0.29)',
+    border: 'rgba(91, 51, 184, 0.46)',
+  },
+
+  /** Countdown bar */
+  countdown: {
+    background: 'rgba(126, 189, 241, 0.19)',
+  },
+
+  /** Color picker */
+  colorPicker: {
+    buttonBackground: 'rgba(79, 126, 180, 0.24)',
+  },
+
+  /** Modal/dialog specific colors */
+  modal: {
+    /** Modal shadow color */
+    shadow: '#113f9b',
+    /** Save button text */
+    saveText: 'rgba(230, 220, 255, 1)',
+    /** Save button background */
+    saveBackground: 'rgba(83, 18, 195, 1)',
+    /** Save button border */
+    saveBorder: 'rgba(103, 43, 207, 1)',
+  },
+
+  /** Error screen colors */
+  error: {
+    /** Error screen button background */
+    buttonBackground: '#030005',
+  },
+
+  /** Masjid icon */
+  masjid: {
+    /** Golden glow/shadow color */
+    glow: '#EF9C29',
+  },
+
+  /** Navigation colors */
+  navigation: {
+    /** Navigation background (matches gradient.screen.start) */
+    background: '#031a4c',
+    /** Root layout background */
+    rootBackground: '#2c1c77',
+    /** Loading spinner color */
+    activityIndicator: '#8d73ff',
+    /** Navigation dot color */
+    dot: '#cf98f4',
+  },
+
+  /** Light mode colors (system modals, update dialogs) */
+  light: {
+    /** Light background */
+    background: '#ffffff',
+    /** Primary dark text */
+    text: '#1a1a1a',
+    /** Secondary text */
+    textSecondary: '#344e5c',
+    /** Cancel button background */
+    buttonCancel: '#f5f5f5',
+    /** Primary button background */
+    buttonPrimary: '#000000',
+    /** Modal backdrop overlay */
+    backdrop: 'rgba(0, 0, 0, 0.75)',
+    /** Modal shadow */
+    shadow: '#12001e',
   },
 };
 
+// =============================================================================
+// ANIMATION TIMING
+// =============================================================================
+
+/**
+ * Animation timing constants
+ * Durations for different animation speeds, delays for cascade effects, debounce intervals
+ */
 export const ANIMATION = {
+  /** Very fast animation (50ms) - quick color transitions */
+  durationVeryFast: 50,
+  /** Fast animation (75ms) - alert popup fade */
+  durationFast: 75,
+  /** Fade animation (150ms) - overlay opacity */
+  durationFade: 150,
+  /** Standard animation duration (200ms) - fast transitions */
   duration: 200,
+  /** Medium animation (500ms) - state changes, color interpolation */
+  durationMedium: 500,
+  /** Slow animation duration (1000ms) - deliberate movements */
   durationSlow: 1000,
-  durationSlower: 1500,
-  durationSlowest: 2250,
+  /** Delay between consecutive prayer animations during cascade effect */
   cascadeDelay: 150,
-  popupDuration: 500,
+  /** Debounce interval for rapid user interactions */
   debounce: 450,
 };
 
+// =============================================================================
+// OVERLAY LAYERING
+// =============================================================================
+
+/**
+ * Z-index layering configuration for overlay components
+ * Ensures proper visual stacking order (popup > overlay > content > glow)
+ */
 export const OVERLAY = {
   zindexes: {
+    /** Popup/z-modal layer (highest) */
     popup: 1000,
+    /** Main overlay layer */
     overlay: 2,
+    /** Glow effect layer (behind overlay) */
     glow: -1,
   },
 };
 
+// =============================================================================
+// COMPONENT STYLES
+// =============================================================================
+
+/**
+ * Dimension constants for UI components
+ * Fixed heights, padding, border radius, and shadow configurations
+ */
 export const STYLES = {
-  timer: {
+  countdown: {
+    /** Fixed height of countdown component in pixels */
     height: 60,
   },
   prayer: {
+    /** Fixed height of each prayer row component */
     height: 57,
     padding: {
+      /** Left padding for prayer row text */
       left: 20,
+      /** Right padding for prayer row text */
       right: 20,
     },
     border: {
+      /** Border radius for prayer row containers */
       borderRadius: 8,
-    },
-    shadow: {
-      shadowOffset: { width: 1, height: 10 },
-      shadowOpacity: 0.5,
-      shadowRadius: 10,
     },
   },
 };
+
+// =============================================================================
+// ARABIC EXPLANATIONS
+// =============================================================================
+
+/**
+ * Arabic translations of extra prayer explanations
+ * Used in bilingual UI displays
+ */
+export const EXTRAS_EXPLANATIONS_ARABIC = [
+  'نصف الليل بين المغرب والفجر',
+  'عند بداية الثلث الأخير من الليل',
+  '20 دقيقة قبل الفجر',
+  '20 دقيقة بعد الشروق',
+  'ساعة قبل المغرب (الجمعة فقط)',
+] as const;
