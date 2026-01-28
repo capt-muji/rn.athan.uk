@@ -78,10 +78,10 @@ export interface IApiResponse {
  *
  * Derived prayers calculated from API data:
  * - midnight: Midpoint between Magrib and Fajr (Islamic midnight, not 00:00)
- * - last third: Start of last third of night + 5 min adjustment
- * - suhoor: 40 minutes before Fajr (pre-dawn meal)
+ * - last third: Start of last third of night
+ * - suhoor: 20 minutes before Fajr (pre-dawn meal)
  * - duha: 20 minutes after Sunrise (forenoon prayer)
- * - istijaba: 59 minutes before Magrib on Fridays only (supplication time)
+ * - istijaba: 60 minutes before Magrib on Fridays only (supplication time)
  *
  * Stored in MMKV with key format: prayer_YYYY-MM-DD
  * Cache lifetime: Until next app upgrade (see stores/version.ts)
