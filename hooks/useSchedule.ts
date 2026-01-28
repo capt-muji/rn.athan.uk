@@ -1,30 +1,48 @@
-import { useAtomValue } from 'jotai';
+/**
+ * Hook for accessing prayer schedule data
+ * Uses the prayer-centric sequence model
+ *
+ * @see ai/adr/005-timing-system-overhaul.md
+ */
 
-import * as TimeUtils from '@/shared/time';
+import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ScheduleType } from '@/shared/types';
-import { getScheduleMutedState } from '@/stores/notifications';
-import { standardScheduleAtom, extraScheduleAtom } from '@/stores/schedule';
-import { getTempMutedAtom } from '@/stores/ui';
 
+/**
+ * Hook for accessing filtered prayer schedule data
+ *
+ * Filters the prayer sequence to show only today's prayers (matching displayDate).
+ * Provides schedule metadata for UI rendering.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Object with today's prayers, display date, and schedule metadata
+ *
+ * @example
+ * const { prayers, displayDate, nextPrayerIndex, isReady } = useSchedule(ScheduleType.Standard);
+ * if (isReady) {
+ *   prayers.forEach((prayer, index) => {
+ *     const isNext = index === nextPrayerIndex;
+ *   });
+ * }
+ */
 export const useSchedule = (type: ScheduleType) => {
   const isStandard = type === ScheduleType.Standard;
 
-  const schedule = useAtomValue(isStandard ? standardScheduleAtom : extraScheduleAtom);
-  const tempMuted = useAtomValue(getTempMutedAtom(type));
-  const persistedMuted = getScheduleMutedState(type);
+  // Use sequence model (prayer-centric)
+  const { prayers, displayDate, isReady } = usePrayerSequence(type);
 
-  // Use the temporary override if set, otherwise fall back to persisted
-  const currentMuted = tempMuted !== null ? tempMuted : persistedMuted;
+  // Filter to today's prayers
+  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
 
-  const lastIndex = Object.keys(schedule.today).length - 1;
-  const lastPrayer = schedule.today[lastIndex];
-  const isLastPrayerPassed = TimeUtils.isTimePassed(lastPrayer.time);
+  // Calculate nextPrayerIndex relative to filtered todayPrayers
+  const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
 
   return {
-    schedule,
+    prayers: todayPrayers,
+    displayDate,
+    nextPrayerIndex: nextPrayerIndex >= 0 ? nextPrayerIndex : -1,
     isStandard,
-    isLastPrayerPassed,
-    persistedMuted,
-    currentMuted,
+    isLastPrayerPassed: todayPrayers.every((p) => p.isPassed),
+    isReady,
   };
 };

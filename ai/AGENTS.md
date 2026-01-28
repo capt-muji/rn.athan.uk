@@ -11,39 +11,42 @@
 **What we're building:** Athan.uk - A Muslim prayer times app for London with real-time countdown, offline support, and customizable notifications.
 
 **Core Features:**
+
 - Real-time prayer countdown with sub-millisecond precision
-- 6-day rolling notification buffer with custom Athan sounds
+- 2-day rolling notification buffer with custom Athan sounds
 - Full offline support via MMKV caching
 - Large overlay display for visually impaired users
 - Year-boundary detection and automatic data refresh
 
 **Non-Goals:**
+
 - Multi-city support (London-only for now)
 - User accounts or cloud sync
 - Social features
 
 **Invariants:**
+
 - Prayer times must always be accurate (API is source of truth)
 - App must work fully offline after first sync
 - Notifications must fire on time, even if app is backgrounded
 
 ## 2. Stack & Versions
 
-| Category | Technology | Version |
-|----------|------------|---------|
-| Framework | React Native | 0.81.5 |
-| Platform | Expo | 54.0.31 |
-| UI Library | React | 19.1.0 |
-| Language | TypeScript | 5.9.3 (strict) |
-| Routing | Expo Router | 6.0.21 |
-| State | Jotai | 2.16.1 |
-| Storage | React Native MMKV | 4.1.1 |
-| Animation | React Native Reanimated | 4.1.6 |
-| Audio | Expo Audio | 1.1.1 |
-| Notifications | Expo Notifications | 0.32.16 |
-| Dates | date-fns / date-fns-tz | 4.1.0 / 3.2.0 |
-| Logging | Pino | 9.14.0 |
-| Package Manager | Yarn | 1.x |
+| Category        | Technology              | Version        |
+| --------------- | ----------------------- | -------------- |
+| Framework       | React Native            | 0.81.5         |
+| Platform        | Expo                    | 54.0.31        |
+| UI Library      | React                   | 19.1.0         |
+| Language        | TypeScript              | 5.9.3 (strict) |
+| Routing         | Expo Router             | 6.0.21         |
+| State           | Jotai                   | 2.16.1         |
+| Storage         | React Native MMKV       | 4.1.1          |
+| Animation       | React Native Reanimated | 4.1.6          |
+| Audio           | Expo Audio              | 1.1.1          |
+| Notifications   | Expo Notifications      | 0.32.16        |
+| Dates           | date-fns / date-fns-tz  | 4.1.0 / 3.2.0  |
+| Logging         | Pino                    | 9.14.0         |
+| Package Manager | Yarn                    | 1.x            |
 
 ## 3. Repo Map & Entry Points
 
@@ -56,18 +59,22 @@
 │   └── Screen.tsx         # Screen wrapper
 ├── components/            # Reusable UI components
 │   ├── Prayer.tsx         # Prayer time display row
-│   ├── ProgressBar.tsx    # Countdown progress bar
+│   ├── CountdownBar.tsx    # Countdown progress bar
 │   ├── Overlay.tsx        # Large text overlay (accessibility)
+│   ├── BottomSheetShared.tsx # Shared bottom sheet utilities (background, backdrop, styles)
+│   ├── BottomSheetSettings.tsx # Settings bottom sheet (Masjid icon tap)
 │   ├── BottomSheetSound.tsx # Athan sound selector
+│   ├── SettingsToggle.tsx # Reusable toggle component for settings
 │   ├── Alert.tsx          # Alert component
 │   └── Modal*.tsx         # Modal popups (Tips, Times, Update)
 ├── stores/                # Jotai atoms & state management
 │   ├── database.ts        # MMKV storage interface
-│   ├── notifications.ts   # Notification scheduling (6-day buffer)
+│   ├── notifications.ts   # Notification scheduling (2-day buffer)
 │   ├── sync.ts            # API sync logic
-│   ├── timer.ts           # Timer state atoms
+│   ├── countdown.ts           # Countdown state atoms
 │   ├── schedule.ts        # Schedule atoms
 │   ├── overlay.ts         # Overlay state
+│   ├── version.ts         # App version detection & cache clearing
 │   └── ui.ts              # UI state (date, settings)
 ├── hooks/                 # Custom React hooks
 │   ├── useAnimation.ts    # Reanimated animation hook
@@ -76,60 +83,137 @@
 │   └── useSchedule.ts     # Schedule hook
 ├── shared/                # Utility functions
 │   ├── logger.ts          # Pino logger instance
-│   ├── time.ts            # Time calculations
+│   ├── time.ts            # Time calculations (parseNightBoundaries helper)
 │   ├── notifications.ts   # Notification utilities
-│   └── types.ts           # TypeScript interfaces
+│   ├── types.ts           # TypeScript interfaces
+│   ├── __tests__/         # Unit tests (Jest)
+│   └── __mocks__/         # Module mocks for testing
 ├── device/                # Platform-specific code
-├── mocks/                 # Test fixtures
+├── mocks/                 # Test fixtures & schema documentation
+│   ├── simple.ts          # Mock API data for development testing
+│   ├── full.ts            # Full year mock data
+│   └── timing-system-schema.ts  # NEW: Data structure reference for timing overhaul
 ├── assets/                # Icons, images, audio (16 Athan sounds)
 └── ai/               # AI agent documentation
 ```
 
 **Key Entry Points:**
+
 - App entry: `expo-router/entry` (auto-generated)
 - Root layout: `app/_layout.tsx` (initializes providers, triggers sync)
 - State entry: `stores/` (Jotai atoms)
 - Database: `stores/database.ts` (MMKV wrapper)
 
 **Key Data Flow:**
+
 ```
-API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV → Display with Reanimated timers → Schedule notifications
+API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV → Display with Reanimated countdowns → Schedule notifications
+```
+
+**Architecture Diagram:**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                   APP                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
+│  │   Screens   │    │ Components  │    │   Hooks     │    │   Stores    │  │
+│  │  app/*.tsx  │───▶│ components/ │◀───│  hooks/     │◀───│  stores/    │  │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └──────┬──────┘  │
+│                                                                   │         │
+│  ┌────────────────────────────────────────────────────────────────┼───────┐ │
+│  │                         SHARED LAYER                           │       │ │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │       │ │
+│  │  │ time.ts  │  │prayer.ts │  │  types   │  │constants │       │       │ │
+│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │       │ │
+│  └────────────────────────────────────────────────────────────────┼───────┘ │
+│                                                                   │         │
+│  ┌────────────────────────────────────────────────────────────────▼───────┐ │
+│  │                         DEVICE LAYER                                   │ │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                 │ │
+│  │  │ MMKV Storage │  │ Notifications│  │   Updates    │                 │ │
+│  │  │  database.ts │  │   device/    │  │   device/    │                 │ │
+│  │  └──────────────┘  └──────────────┘  └──────────────┘                 │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**File Dependency Map:**
+
+```
+Prayer Display Flow:
+  stores/schedule.ts (atoms)
+    └─▶ hooks/useSchedule.ts
+         └─▶ hooks/usePrayer.ts
+              └─▶ components/Prayer.tsx
+                   └─▶ components/PrayerTime.tsx, PrayerAgo.tsx, Alert.tsx
+
+Countdown Flow:
+  stores/countdown.ts (atoms)
+    └─▶ hooks/useCountdown.ts
+         └─▶ components/Countdown.tsx
+    └─▶ hooks/useCountdownBar.ts
+         └─▶ components/CountdownBar.tsx
+
+Notification Flow:
+  shared/notifications.ts (utilities)
+    └─▶ stores/notifications.ts (scheduling logic)
+         └─▶ hooks/useNotification.ts
+              └─▶ components/Alert.tsx
+
+Settings Flow:
+  stores/ui.ts (preference atoms)
+    └─▶ components/BottomSheetSettings.tsx
+         └─▶ components/SettingsToggle.tsx, ColorPickerSettings.tsx
+
+Data Sync Flow:
+  api/client.ts
+    └─▶ stores/sync.ts
+         └─▶ stores/database.ts (MMKV)
+              └─▶ stores/schedule.ts
 ```
 
 ## 4. Golden Paths (How We Do X)
 
 ### State Management (Jotai)
+
 - Atoms defined in `stores/*.ts`
 - Use `atomWithStorage` for persisted state
 - Use `createJSONStorage` with MMKV backend
-- Example: `stores/ui.ts`, `stores/timer.ts`
+- Example: `stores/ui.ts`, `stores/countdown.ts`
 
 ### Storage (MMKV)
+
 - Use wrapper in `stores/database.ts`
 - Keys: `prayer_YYYY-MM-DD`, `scheduled_notifications_*`, `preference_*`
 - Always use structured keys with prefixes
 
 ### Logging (Pino)
+
 - Import from `shared/logger.ts`
 - Never use `console.log` (ESLint forbids it)
 - Use structured logging: `logger.info({ context }, 'message')`
 
 ### Animation (Reanimated 4)
+
 - Use worklets for performance
 - Example: `hooks/useAnimation.ts`
 - Shared values with `useSharedValue`
 
 ### Components
+
 - Functional components only (no class components)
 - Use hooks for logic extraction
 - Follow Expo Router file-based routing conventions
 
 ### Error Handling
+
 - Use `try/catch` for async operations
 - Display errors via `components/Alert.tsx`
 - Log errors with Pino before displaying
 
 ### Imports
+
 ```typescript
 // 1. External (React, libraries)
 import { useState } from 'react';
@@ -140,34 +224,194 @@ import { logger } from '@/shared/logger';
 import { Prayer } from '@/components/Prayer';
 ```
 
+### Testing (Jest)
+
+- Use Jest with ts-jest for unit tests
+- Tests in `__tests__/` subdirectories
+- Run: `yarn test` or `yarn test:watch`
+- Mock RN modules in `shared/__mocks__/`
+
+### Component Communication Patterns
+
+**forwardRef + useImperativeHandle (Child exposes state to parent):**
+
+Use when a parent component needs to read internal state from a child component (e.g., for deferred commit on modal close). This is a new pattern for this codebase - use sparingly.
+
+```typescript
+// Child component (AlertMenu.tsx)
+import { forwardRef, useImperativeHandle, useState } from 'react';
+
+export interface AlertMenuRef {
+  getCurrentState: () => AlertMenuState;
+}
+
+export const AlertMenu = forwardRef<AlertMenuRef, Props>(({ type, index }, ref) => {
+  const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(AlertType.Off);
+  const [reminderAlert, setReminderAlert] = useState<AlertType>(AlertType.Off);
+
+  useImperativeHandle(ref, () => ({
+    getCurrentState: () => ({ atTimeAlert, reminderAlert }),
+  }));
+
+  return <View>...</View>;
+});
+
+// Parent component (Alert.tsx)
+import { useRef } from 'react';
+import { AlertMenu, AlertMenuRef } from './AlertMenu';
+
+const alertMenuRef = useRef<AlertMenuRef>(null);
+
+const handleClose = () => {
+  const state = alertMenuRef.current?.getCurrentState();
+  // Compare with original state and commit if changed
+};
+
+return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
+```
+
+### Refactoring Patterns
+
+**Helper Function Extraction:**
+
+- Extract duplicated logic into named helper functions
+- Keep helpers private (not exported) when used in one file
+- Add JSDoc with `@example` for reusable helpers
+- Example: `parseNightBoundaries()` in `shared/time.ts`
+
+**Section Comments:**
+
+```typescript
+// =============================================================================
+// SECTION NAME
+// =============================================================================
+```
+
+**Animation Hook Extraction:**
+
+- Complex animation logic goes in dedicated hooks
+- Hooks return animation values + control functions
+- Example: `useAlertAnimations.ts`, `useAlertPopupState.ts`
+
+**Concurrent Operation Protection:**
+
+- Use lock patterns for scheduling/async operations
+- Example: `withSchedulingLock()` in `stores/notifications.ts`
+
+### Task Recipes
+
+#### Add a New Setting Toggle
+
+1. **Add atom** in `stores/ui.ts`:
+
+   ```typescript
+   export const mySettingAtom = atomWithStorage('preference_my_setting', false, storage);
+   ```
+
+2. **Add to BottomSheetSettings.tsx**:
+
+   ```typescript
+   const [mySetting, setMySetting] = useAtom(mySettingAtom);
+   // Add SettingsToggle component in JSX
+   <SettingsToggle
+     icon={<MyIcon />}
+     label="My Setting"
+     value={mySetting}
+     onValueChange={setMySetting}
+   />
+   ```
+
+3. **Use in components** via `useAtomValue(mySettingAtom)`
+
+#### Add a New Notification Type
+
+1. **Add alert atom** in `stores/notifications.ts`:
+
+   ```typescript
+   // Follow existing pattern for prayer alerts
+   export const myAlertAtom = atomWithStorage('alert_my_type', AlertType.Off, storage);
+   ```
+
+2. **Add scheduling logic** in `stores/notifications.ts`:
+   - Add to `_addMultipleScheduleNotificationsForPrayer` or create new function
+   - Follow `scheduleNotificationForDate` pattern
+
+3. **Add UI control** in relevant component using `Alert.tsx` pattern
+
+4. **Add tests** in `shared/__tests__/notifications.test.ts`
+
+#### Add a New Utility Function
+
+1. **Add function** to appropriate file in `shared/`:
+
+   ```typescript
+   /**
+    * Description of what it does
+    * @param input - Description
+    * @returns Description
+    */
+   export const myFunction = (input: string): string => {
+     // Implementation
+   };
+   ```
+
+2. **Add tests** in `shared/__tests__/[filename].test.ts`:
+   - Copy from `_template.test.ts`
+   - Test happy path, edge cases, errors
+
+3. **Run validation**: `yarn validate`
+
+#### Add a New Hook
+
+1. **Create file** `hooks/useMyHook.ts`:
+
+   ```typescript
+   /**
+    * Hook description
+    * @returns What it returns
+    */
+   export const useMyHook = () => {
+     // Use existing hooks as reference (useSchedule.ts, usePrayer.ts)
+   };
+   ```
+
+2. **Export pattern**: Use `export const` (not `export function`)
+
+3. **If uses animations**: Follow `useAlertAnimations.ts` pattern
+
+4. **If uses popups/timers**: Follow `useAlertPopupState.ts` pattern
+
 ## 5. File Types & Locations
 
-| Type | Location | Naming |
-|------|----------|--------|
-| Components | `components/` | PascalCase.tsx |
-| Hooks | `hooks/` | useCamelCase.ts |
-| Stores | `stores/` | camelCase.ts |
-| Utilities | `shared/` | camelCase.ts |
-| Types | `shared/types.ts` | Centralized |
-| Tests | Co-located | `*.test.ts` |
+| Type         | Location                            | Naming                        |
+| ------------ | ----------------------------------- | ----------------------------- |
+| Components   | `components/`                       | PascalCase.tsx                |
+| Hooks        | `hooks/`                            | useCamelCase.ts               |
+| Stores       | `stores/`                           | camelCase.ts                  |
+| Utilities    | `shared/`                           | camelCase.ts                  |
+| Types        | `shared/types.ts`                   | Centralized                   |
+| Tests        | Co-located                          | `*.test.ts`                   |
 | **Features** | `ai/features/[name]/description.md` | **User-written requirements** |
-| **Progress** | `ai/features/[name]/progress.md` | **AI-generated task tracker** |
-| **Archive** | `ai/features/archive/[name]/` | **Completed features** |
-| ADRs | `ai/adr/` | NNN-title.md |
-
+| **Progress** | `ai/features/[name]/progress.md`    | **AI-generated task tracker** |
+| ADRs         | `ai/adr/`                           | NNN-title.md                  |
 
 ## 6. Commands (Copy/Paste Ready)
 
 ### Development
+
 ```bash
 yarn start              # Start Expo dev server (clears cache)
 yarn ios               # Build and run on iOS simulator
 yarn android           # Build and run on Android emulator
 yarn reset             # Full clean: rm builds, reinstall, start fresh
 yarn clean             # Clear cache and node_modules
+yarn validate          # Run typecheck + lint + format check + tests (use before commits)
+yarn format            # Format all files with Prettier
+yarn format:check      # Check formatting without changing files
 ```
 
 ### File-Scoped (Fast)
+
 ```bash
 eslint src/foo.ts                    # Lint single file
 prettier --write src/foo.ts          # Format single file
@@ -175,17 +419,45 @@ tsc --noEmit                         # Typecheck project
 ```
 
 ### Pre-commit (Automatic)
-- Husky + lint-staged runs Prettier and ESLint on staged files
+
+- Husky + lint-staged runs Prettier, ESLint, and tests on staged files
+
+### AI Session Prompts
+
+Use these prompts to start specialized sessions:
+
+| Task                 | Prompt File                    | Description                         |
+| -------------------- | ------------------------------ | ----------------------------------- |
+| **Cleanup/Refactor** | `ai/prompts/cleanup.md`        | DRY, simplify, document, format     |
+| **Documentation**    | `ai/prompts/document.md`       | Add JSDoc, comments, README updates |
+| **Quick Commands**   | `ai/prompts/quick.md`          | One-liner prompts for common tasks  |
+| **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
+| **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
+
+**Quick Start Examples:**
+
+```
+# Cleanup session
+Read ai/prompts/cleanup.md
+
+# Add docs to a file
+Read ai/prompts/document.md
+
+# One-liner tasks
+Read ai/prompts/quick.md and run "Add JSDoc to File" for shared/time.ts
+```
 
 ## 7. Boundaries & Permissions (Three-Tier)
 
 ### Always Do
+
 - Read files, list files
 - Run file-scoped lint/test/typecheck
 - Clean up empty files/folders created this session
 - Match existing code patterns
 
 ### Ask First
+
 - Install dependencies
 - Delete non-empty files
 - Modify MMKV schema keys
@@ -193,6 +465,8 @@ tsc --noEmit                         # Typecheck project
 - Modify app.json or eas.json
 
 ### Never Do
+
+- **Git write operations** - NEVER run `git add`, `git commit`, `git push`, `git pull`, `git merge`, `git rebase`. User handles all git operations manually.
 - Commit secrets/keys
 - Edit node_modules
 - Remove failing tests
@@ -204,12 +478,14 @@ tsc --noEmit                         # Typecheck project
 ## 8. Consistency & Best Practices
 
 ### Prime Directive: Match Existing Patterns
+
 1. **Read Before Writing**: Examine 2-3 similar files first
 2. **Pattern Matching**: Code must be indistinguishable from existing codebase
 3. **Zero New Patterns**: No new libraries without approval
 4. **Consistency > Cleverness**: Use existing approach even if you know a "better way"
 
 ### React Native / Expo Patterns
+
 - Functional components with hooks
 - Jotai for state (not Redux, not Context for global state)
 - MMKV for storage (not AsyncStorage)
@@ -217,11 +493,27 @@ tsc --noEmit                         # Typecheck project
 - Expo Router for navigation (file-based)
 
 ### TypeScript
+
 - Strict mode enabled
 - Path alias: `@/*` maps to project root
 - Types centralized in `shared/types.ts`
 
+### Code Style Rules
+
+- **No nested function calls as parameters**: Each function call must be stored in a variable, then passed to other functions
+
+  ```typescript
+  // BAD - nested function calls
+  const result = setHours(setMinutes(createDate(), minutes), hours);
+
+  // GOOD - each call in its own variable
+  const baseDate = createDate();
+  const dateWithMinutes = setMinutes(baseDate, minutes);
+  const result = setHours(dateWithMinutes, hours);
+  ```
+
 ### Formatting (Prettier)
+
 - Print width: 120
 - Tab width: 2 spaces
 - Single quotes
@@ -241,6 +533,7 @@ tsc --noEmit                         # Typecheck project
 ## 10. Orchestrator + Specialists + Skills
 
 ### Orchestrator Responsibilities
+
 - Decompose work into tasks
 - Route to appropriate specialist
 - Guide user through proper workflow
@@ -251,29 +544,47 @@ tsc --noEmit                         # Typecheck project
 
 ### Specialist Roles
 
-| Specialist | Responsibility | When to Use |
-|------------|---------------|-------------|
-| RepoMapper | Discover codebase structure | New repo, onboarding |
-| Architect | Plan features, draft specs | New feature, complex bug |
-| Implementer | Write production code | After spec approved |
-| TestWriter | Create test coverage | After implementation |
-| ReviewerQA | Security/quality review | Before merge |
+**CRITICAL: Implementer Workflow**
+
+- NEVER run compile/typecheck commands (tsc, yarn tsc, etc.)
+- After implementation, swap to ReviewerQA to verify code consistency
+- Always ask user to test manually when 100% confident code works
+
+| Specialist  | Responsibility              | When to Use              |
+| ----------- | --------------------------- | ------------------------ |
+| RepoMapper  | Discover codebase structure | New repo                 |
+| Architect   | Plan features, draft specs  | New feature, complex bug |
+| Implementer | Write production code       | After spec approved      |
+| TestWriter  | Create test coverage        | After implementation     |
+| ReviewerQA  | Security/quality review     | Before merge             |
 
 ### Decision Tree
+
 - **New feature?** → Architect (spec) → Implementer → TestWriter
 - **Bug with error?** → Implementer + TestWriter
 - **Bug without error?** → Architect (trace logic)
 - **Refactor?** → ReviewerQA (risks) → Implementer
 
 ### Skills
+
 - APIContract, SecurityAudit, PerformanceProfile, DocumentationAudit, ConsistencyAudit, CleanupAudit
 
-## 11. Memory / Lessons Learned (Append-Only)
+## 11. Memory / Lessons Learned
 
-- [2026-01-15] Init: Repository initialized with AI agent workflow system
-- [2026-01-15] Notifications: Use 6-day rolling window, not background refresh—both iOS and Android throttle background tasks unreliably (see ai/adr/001-rolling-notification-buffer.md)
-- [2026-01-15] Day Boundary: Use English midnight (00:00) for date reset—user familiarity over Islamic day boundary; known edge cases deferred (see ai/adr/002-english-midnight-day-boundary.md)
-- [2026-01-15] Notifications: Reminder feature will require reducing rolling window from 6 to 3 days (see ai/adr/001-rolling-notification-buffer.md)
+**Key Principles:**
+
+- **NO FALLBACKS** - Fix root cause, don't mask problems. If data is missing, throw error.
+- **Prayer-centric model** - Use full DateTime objects, not separate date/time strings. Prevents midnight-crossing bugs.
+- **Schedule independence** - Standard and Extras schedules can show different dates.
+- **Countdown always visible** - No "All prayers finished" state.
+- **No nested function calls** - Each function call stored in variable, then passed to other functions.
+- **Tests before refactoring** - Capture current behavior with tests before making changes.
+
+**Recent Decisions:**
+
+- [2026-01-26] Background Task Notification Refresh: Dual-layer refresh with 4-hour foreground and 3-hour background task using expo-background-task (see ai/adr/007-background-task-notification-refresh.md)
+
+**See Also:** `ai/adr/` for architectural decision records.
 
 ## 12. Change / PR Checklist
 
@@ -292,12 +603,14 @@ tsc --noEmit                         # Typecheck project
 ## 13. Session Lifecycle
 
 ### Session Start
+
 1. Load this file (ai/AGENTS.md)
 2. Initialize session artifact tracker
 3. Acknowledge: "Context loaded. Operating as Orchestrator. Ready."
 4. Ask: "What's the goal for this session?"
 
 ### Session End
+
 1. Cleanup: Remove empty files/folders created this session
 2. Summary: What was done, verification steps, what's next
 3. Documentation check: Did we update README if needed?
@@ -318,11 +631,13 @@ tsc --noEmit                         # Typecheck project
 ## 15. Documentation Standards
 
 ### When to Document
+
 - **Always**: Public APIs, exported functions, complex algorithms
 - **Usually**: Internal functions with side effects
 - **Never**: Self-explanatory code, simple getters/setters
 
 ### Comment Quality
+
 ```typescript
 // Good: Explains WHY
 // Safari doesn't support lookbehind regex, using workaround
@@ -334,6 +649,7 @@ for (const user of users) { ... }
 ```
 
 ### README Update Triggers
+
 - Adding user-facing feature
 - Changing installation/setup
 - Modifying environment variables

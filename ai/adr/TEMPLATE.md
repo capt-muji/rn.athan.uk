@@ -17,34 +17,43 @@
 ## Consequences
 
 ### Positive
+
 - [Benefit 1]
 - [Benefit 2]
 
 ### Negative
+
 - [Tradeoff 1]
 - [Tradeoff 2]
 
 ### Neutral
+
 - [Side effect that isn't clearly positive or negative]
 
 ## Alternatives Considered
 
 ### Alternative 1: [Name]
+
 **Description:** [What this alternative involves]
 **Pros:**
+
 - [Pro 1]
 
 **Cons:**
+
 - [Con 1]
 
 **Why Rejected:** [Reason]
 
 ### Alternative 2: [Name]
+
 **Description:** [What this alternative involves]
 **Pros:**
+
 - [Pro 1]
 
 **Cons:**
+
 - [Con 1]
 
 **Why Rejected:** [Reason]
@@ -62,6 +71,6 @@
 
 ## Revision History
 
-| Date | Author | Change |
-|------|--------|--------|
+| Date         | Author | Change        |
+| ------------ | ------ | ------------- |
 | [YYYY-MM-DD] | [Name] | Initial draft |

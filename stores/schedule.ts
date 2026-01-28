@@ -1,79 +1,362 @@
+/**
+ * Schedule store - prayer sequence management
+ * Uses the prayer-centric sequence model
+ *
+ * @see ai/adr/005-timing-system-overhaul.md
+ */
+
+import { subDays } from 'date-fns';
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
+import { PRAYERS_ENGLISH, PRAYERS_ARABIC, EXTRAS_ENGLISH, EXTRAS_ARABIC, TIME_CONSTANTS } from '@/shared/constants';
+import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import { ITransformedPrayer, ScheduleAtom, ScheduleStore, ScheduleType } from '@/shared/types';
+import { ISingleApiResponseTransformed, Prayer, PrayerSequence, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
 const store = getDefaultStore();
 
-// --- Initial State ---
+// --- Sequence Atoms (Prayer-Centric Model) ---
 
-const createInitialPrayer = (scheduleType: ScheduleType): ITransformedPrayer => ({
-  index: 0,
-  date: '2024-11-15',
-  english: 'Fajr',
-  arabic: 'الفجر',
-  time: '00:01',
-  type: scheduleType,
-});
+/** Standard schedule prayer sequence (null until initialized) */
+export const standardSequenceAtom = atom<PrayerSequence | null>(null);
 
-const createInitialSchedule = (scheduleType: ScheduleType): ScheduleStore => ({
-  type: scheduleType,
-  today: { 0: createInitialPrayer(scheduleType) },
-  tomorrow: { 0: createInitialPrayer(scheduleType) },
-  nextIndex: 0,
-});
+/** Extra schedule prayer sequence (null until initialized) */
+export const extraSequenceAtom = atom<PrayerSequence | null>(null);
 
-// --- Atoms ---
-
-export const standardScheduleAtom = atom<ScheduleStore>(createInitialSchedule(ScheduleType.Standard));
-export const extraScheduleAtom = atom<ScheduleStore>(createInitialSchedule(ScheduleType.Extra));
-
-// --- Helpers ---
-
-// Create daily schedules based on provided date and next day
-const buildDailySchedules = (type: ScheduleType, date: Date) => {
-  const nextDate = TimeUtils.createLondonDate(date);
-
-  nextDate.setDate(date.getDate() + 1);
-
-  const dataToday = Database.getPrayerByDate(date);
-  const dataTomorrow = Database.getPrayerByDate(nextDate);
-
-  if (!dataToday || !dataTomorrow) throw new Error('Missing prayer data');
-
-  return {
-    today: PrayerUtils.createSchedule(dataToday, type),
-    tomorrow: PrayerUtils.createSchedule(dataTomorrow, type),
-  };
+/** Helper to get the sequence atom for a schedule type */
+export const getSequenceAtom = (type: ScheduleType) => {
+  return type === ScheduleType.Standard ? standardSequenceAtom : extraSequenceAtom;
 };
+
+// --- Helper Functions ---
+
+/**
+ * Fetches yesterday's final prayer for progress bar calculation
+ *
+ * Used when next prayer is first in sequence (e.g., at 1am when Fajr is next).
+ * The progress bar needs the previous prayer (last night's Isha or Istijaba)
+ * to calculate elapsed time.
+ *
+ * Handles Istijaba filtering: On non-Fridays, Istijaba is excluded from Extras,
+ * so the final prayer would be Duha instead.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Yesterday's final prayer
+ *
+ * @example
+ * // At 1am on Saturday, for Standard schedule:
+ * // Returns: Isha from Friday night
+ * const prevPrayer = getYesterdayFinalPrayer(ScheduleType.Standard);
+ *
+ * // At 1am on Saturday, for Extra schedule:
+ * // Returns: Duha from Friday (Istijaba not shown on Saturday)
+ * const prevPrayer = getYesterdayFinalPrayer(ScheduleType.Extra);
+ */
+function getYesterdayFinalPrayer(type: ScheduleType): Prayer {
+  const yesterday = subDays(TimeUtils.createLondonDate(), 1);
+  const prevDayData = Database.getPrayerByDate(yesterday)!;
+
+  // Sync layer ensures data exists - no null check needed
+  // See ADR-004: "Trust the data layer: UI never has fallbacks"
+  const isStandard = type === ScheduleType.Standard;
+  let englishNames = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  let arabicNames = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+
+  // Filter out Istijaba on non-Fridays for Extras
+  if (!isStandard && !TimeUtils.isFriday(yesterday)) {
+    englishNames = englishNames.filter((name) => name.toLowerCase() !== 'istijaba');
+    arabicNames = arabicNames.filter((name) => name !== 'استجابة');
+  }
+
+  const finalIndex = englishNames.length - 1;
+  const prayerKey = englishNames[finalIndex].toLowerCase();
+  const prayerTime = prevDayData[prayerKey as keyof ISingleApiResponseTransformed];
+
+  const prayer = PrayerUtils.createPrayer({
+    type,
+    english: englishNames[finalIndex],
+    arabic: arabicNames[finalIndex],
+    date: TimeUtils.formatDateShort(yesterday),
+    time: prayerTime,
+  });
+
+  logger.info('PREV_PRAYER: Fetched yesterday final prayer', {
+    type,
+    prayer: prayer.english,
+    time: prayer.time,
+  });
+
+  return prayer;
+}
+
+// --- Derived Selector Atoms ---
+
+/**
+ * Creates a derived atom that returns the next upcoming prayer
+ *
+ * Finds the first prayer with datetime > now in the sequence.
+ * With a 3-day buffer, this should always return a prayer.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Derived atom resolving to Prayer | null
+ *
+ * @see getNextPrayer - Direct accessor for imperative code
+ */
+export const createNextPrayerAtom = (type: ScheduleType) => {
+  return atom((get) => {
+    const sequence = get(getSequenceAtom(type));
+    if (!sequence) return null;
+
+    const now = TimeUtils.createLondonDate();
+    // 3-day buffer guarantees next prayer exists, but satisfy TypeScript
+    return sequence.prayers.find((p) => p.datetime > now) ?? null;
+  });
+};
+
+/**
+ * Creates a derived atom that returns the previous prayer (before next)
+ *
+ * Used for progress bar calculation to show elapsed time since last prayer.
+ *
+ * Edge Case: When next prayer is first in sequence (e.g., 1am before Fajr),
+ * uses getYesterdayFinalPrayer to fetch yesterday's final prayer from database.
+ * This ensures the progress bar works correctly across day boundaries.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Derived atom resolving to Prayer | null
+ *
+ * @see getYesterdayFinalPrayer - Helper for day-boundary edge case
+ * @see getPrevPrayer - Direct accessor for imperative code
+ */
+export const createPrevPrayerAtom = (type: ScheduleType) => {
+  return atom((get) => {
+    const sequence = get(getSequenceAtom(type));
+    if (!sequence) return null;
+
+    const now = TimeUtils.createLondonDate();
+    const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
+
+    // Normal case: Previous prayer is in sequence
+    if (nextIndex > 0) {
+      return sequence.prayers[nextIndex - 1];
+    }
+
+    // Edge case: Next prayer is first in sequence (nextIndex === 0)
+    // This happens at 1am when Fajr (6am) is next prayer
+    // Use helper to fetch yesterday's final prayer
+    if (nextIndex === 0) {
+      return getYesterdayFinalPrayer(type);
+    }
+
+    // No future prayers found - should never happen with 3-day sequence buffer
+    return null;
+  });
+};
+
+/**
+ * Creates a derived atom that returns the display date
+ *
+ * The display date is the belongsToDate of the next upcoming prayer.
+ * This can differ from the calendar date due to Islamic day boundaries:
+ * - Isha at 1am on Jan 19 calendar date belongs to Jan 18 Islamic day
+ * - Midnight at 23:17 on Jan 18 calendar date belongs to Jan 19 Islamic day
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Derived atom resolving to date string (YYYY-MM-DD) | null
+ *
+ * @see getDisplayDate - Direct accessor for imperative code
+ * @see ADR-004 - Islamic day boundary handling
+ *
+ * @example
+ * // At 2am on Jan 19 (before Fajr), Standard schedule:
+ * // Returns: "2026-01-18" (belongs to previous Islamic day)
+ */
+export const createDisplayDateAtom = (type: ScheduleType) => {
+  return atom((get) => {
+    const sequence = get(getSequenceAtom(type));
+    if (!sequence) return null;
+
+    const now = TimeUtils.createLondonDate();
+    // 3-day buffer guarantees next prayer exists
+    return sequence.prayers.find((p) => p.datetime > now)!.belongsToDate;
+  });
+};
+
+// Pre-created derived atoms for convenience
+export const standardNextPrayerAtom = createNextPrayerAtom(ScheduleType.Standard);
+export const extraNextPrayerAtom = createNextPrayerAtom(ScheduleType.Extra);
+export const standardPrevPrayerAtom = createPrevPrayerAtom(ScheduleType.Standard);
+export const extraPrevPrayerAtom = createPrevPrayerAtom(ScheduleType.Extra);
+export const standardDisplayDateAtom = createDisplayDateAtom(ScheduleType.Standard);
+export const extraDisplayDateAtom = createDisplayDateAtom(ScheduleType.Extra);
 
 // --- Actions ---
 
-const getScheduleAtom = (type: ScheduleType): ScheduleAtom => {
-  return type === ScheduleType.Standard ? standardScheduleAtom : extraScheduleAtom;
+/**
+ * Sets the prayer sequence for a schedule type
+ * Creates a 3-day buffer of prayers starting from the given date
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @param date Start date for the sequence
+ */
+export const setSequence = (type: ScheduleType, date: Date): void => {
+  const sequenceAtom = getSequenceAtom(type);
+  const sequence = PrayerUtils.createPrayerSequence(type, date, 3);
+
+  store.set(sequenceAtom, sequence);
+
+  logger.info('SEQUENCE: Set sequence', {
+    type,
+    startDate: TimeUtils.formatDateShort(date),
+    prayerCount: sequence.prayers.length,
+  });
 };
 
-export const getSchedule = (type: ScheduleType): ScheduleStore => store.get(getScheduleAtom(type));
+/**
+ * Helper: Filter prayers to keep only relevant ones
+ * Keeps future prayers, passed prayers for current display date, and previous prayer
+ */
+function filterRelevantPrayers(
+  prayers: Prayer[],
+  now: Date,
+  currentDisplayDate: string | null,
+  nextIndex: number
+): Prayer[] {
+  return prayers.filter((p, index) => {
+    // Always keep future prayers
+    if (p.datetime > now) return true;
+    // Keep passed prayers that belong to current display date (for display purposes)
+    if (currentDisplayDate && p.belongsToDate === currentDisplayDate) return true;
+    // Keep the immediate previous prayer (for progress bar: Isha→Fajr transition)
+    if (nextIndex > 0 && index === nextIndex - 1) return true;
+    return false;
+  });
+}
 
-export const setSchedule = (type: ScheduleType, date: Date): void => {
-  const scheduleAtom = getScheduleAtom(type);
-  const currentSchedule = store.get(scheduleAtom);
+/**
+ * Helper: Check if we need to fetch more prayers
+ * Returns true if less than 24 hours of prayer buffer remains
+ */
+function shouldFetchMorePrayers(prayers: Prayer[], now: Date): boolean {
+  const lastPrayer = prayers[prayers.length - 1];
+  return !lastPrayer || lastPrayer.datetime.getTime() - now.getTime() < TIME_CONSTANTS.ONE_DAY_MS;
+}
 
-  const { today, tomorrow } = buildDailySchedules(type, date);
-  const nextIndex = PrayerUtils.findNextPrayerIndex(today);
+/**
+ * Helper: Merge existing and new prayers, removing duplicates
+ * Deduplication based on prayer name and datetime
+ */
+function mergeAndDeduplicatePrayers(existingPrayers: Prayer[], newPrayers: Prayer[]): Prayer[] {
+  const existingSet = new Set(existingPrayers.map((p) => `${p.english}_${p.datetime.getTime()}`));
+  const uniqueNewPrayers = newPrayers.filter((p) => !existingSet.has(`${p.english}_${p.datetime.getTime()}`));
 
-  store.set(scheduleAtom, { ...currentSchedule, type, today, tomorrow, nextIndex });
+  return [...existingPrayers, ...uniqueNewPrayers].sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
+}
+
+/**
+ * Refreshes the prayer sequence by removing passed prayers and fetching more if needed
+ * Called when a prayer passes to keep the sequence fresh
+ *
+ * IMPORTANT: Keeps passed prayers that belong to the current display date.
+ * This ensures Midnight (23:17 Jan 18, belongsTo Jan 19) remains visible when displaying Jan 19.
+ * Memory-safe: passed prayers for OTHER dates are removed.
+ *
+ * @param type Schedule type (Standard or Extra)
+ */
+export const refreshSequence = (type: ScheduleType): void => {
+  const sequenceAtom = getSequenceAtom(type);
+  const sequence = store.get(sequenceAtom);
+
+  if (!sequence) {
+    logger.warn('SEQUENCE: Cannot refresh - sequence not initialized', { type });
+    return;
+  }
+
+  const now = TimeUtils.createLondonDate();
+
+  // Find the next future prayer to determine the current display date
+  const nextFuturePrayer = sequence.prayers.find((p) => p.datetime > now);
+  const currentDisplayDate = nextFuturePrayer?.belongsToDate ?? null;
+
+  // Find index of next prayer
+  const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
+
+  // Filter relevant prayers using helper
+  const relevantPrayers = filterRelevantPrayers(sequence.prayers, now, currentDisplayDate, nextIndex);
+
+  // Check if we need to fetch more prayers using helper
+  if (shouldFetchMorePrayers(relevantPrayers, now)) {
+    // Fetch more days starting from tomorrow
+    const tomorrow = TimeUtils.createLondonDate();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const newSequence = PrayerUtils.createPrayerSequence(type, tomorrow, 3);
+
+    // Merge and deduplicate using helper
+    const mergedPrayers = mergeAndDeduplicatePrayers(relevantPrayers, newSequence.prayers);
+
+    store.set(sequenceAtom, { type, prayers: mergedPrayers });
+
+    logger.info('SEQUENCE: Refreshed with new prayers', {
+      type,
+      previousCount: sequence.prayers.length,
+      newCount: mergedPrayers.length,
+    });
+  } else {
+    // Just update with filtered prayers (no new fetch needed)
+    store.set(sequenceAtom, { type, prayers: relevantPrayers });
+
+    logger.info('SEQUENCE: Refreshed (filtered passed prayers)', {
+      type,
+      previousCount: sequence.prayers.length,
+      newCount: relevantPrayers.length,
+    });
+  }
 };
 
-export const incrementNextIndex = (type: ScheduleType): void => {
-  const scheduleAtom = getScheduleAtom(type);
-  const schedule = getSchedule(type);
+/**
+ * Gets the next upcoming prayer from the sequence
+ * Pure read operation - does NOT trigger refresh
+ * Callers must handle null case and refresh if needed
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Next prayer or null if sequence not initialized or empty
+ *
+ * @example
+ * const next = getNextPrayer(ScheduleType.Standard);
+ * if (!next) {
+ *   refreshSequence(type);
+ *   // Then retry or handle loading state
+ * }
+ */
+export const getNextPrayer = (type: ScheduleType): Prayer | null => {
+  const nextPrayerAtom = type === ScheduleType.Standard ? standardNextPrayerAtom : extraNextPrayerAtom;
+  return store.get(nextPrayerAtom);
+};
 
-  const isLastPrayer = schedule.nextIndex === Object.keys(schedule.today).length - 1;
-  const nextIndex = isLastPrayer ? 0 : schedule.nextIndex + 1;
+/**
+ * Gets the previous prayer (before the next upcoming prayer)
+ * Used for progress bar calculation
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Previous prayer or null if not available
+ */
+export const getPrevPrayer = (type: ScheduleType): Prayer | null => {
+  const prevPrayerAtom = type === ScheduleType.Standard ? standardPrevPrayerAtom : extraPrevPrayerAtom;
+  return store.get(prevPrayerAtom);
+};
 
-  store.set(scheduleAtom, { ...schedule, nextIndex });
+/**
+ * Gets the current display date for a schedule
+ * The display date is the belongsToDate of the next prayer
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Display date string (YYYY-MM-DD) or null
+ */
+export const getDisplayDate = (type: ScheduleType): string | null => {
+  const displayDateAtom = type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom;
+  return store.get(displayDateAtom);
 };
