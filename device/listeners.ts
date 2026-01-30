@@ -7,13 +7,14 @@ import { sync } from '@/stores/sync';
 import { setRefreshUI } from '@/stores/ui';
 
 /**
- * Ensures Android navigation bar is visible with transparent background
+ * Ensures Android navigation bar is visible with solid black background
+ * Forces black regardless of system theme preferences
  * No-op on iOS
  */
-const configureNavigationBar = async () => {
+export const configureNavigationBar = async () => {
   if (Platform.OS !== 'android') return;
   await NavigationBar.setVisibilityAsync('visible');
-  await NavigationBar.setBackgroundColorAsync('transparent');
+  await NavigationBar.setBackgroundColorAsync('#000000');
 };
 
 /**
