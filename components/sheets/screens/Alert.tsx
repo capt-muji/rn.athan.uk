@@ -106,7 +106,12 @@ export default function BottomSheetAlert() {
         <Text style={styles.cardTitle}>Athan</Text>
         <Text style={styles.cardHint}>Notification at prayer time</Text>
         <View style={{ marginTop: SPACING.md }}>
-          <SegmentedControl options={ALERT_OPTIONS} selected={atTimeAlert} onSelect={handleAlertSelect} />
+          <SegmentedControl
+            key={sheetState ? `athan-${sheetState.type}-${sheetState.index}` : 'athan'}
+            options={ALERT_OPTIONS}
+            selected={atTimeAlert}
+            onSelect={handleAlertSelect}
+          />
         </View>
       </View>
 
@@ -124,6 +129,7 @@ export default function BottomSheetAlert() {
           <View style={styles.optionRow}>
             <Text style={styles.optionLabel}>Sound</Text>
             <SegmentedControl
+              key={sheetState ? `reminder-${sheetState.type}-${sheetState.index}` : 'reminder'}
               options={REMINDER_TYPE_OPTIONS}
               selected={reminderType}
               onSelect={handleReminderTypeSelect}
