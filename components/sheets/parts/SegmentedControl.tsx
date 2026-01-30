@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
-import { useCallback, useState, useMemo } from 'react';
+import { useCallback, useState, useMemo, useRef, useEffect } from 'react';
 import { StyleSheet, View, Pressable, LayoutChangeEvent } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming, interpolateColor, useDerivedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming, interpolateColor, useSharedValue } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { TEXT, SPACING, RADIUS, COLORS, ANIMATION } from '@/shared/constants';
@@ -44,7 +44,18 @@ interface AnimatedSegmentOptionProps {
 }
 
 function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentOptionProps) {
-  const progress = useDerivedValue(() => withTiming(isSelected ? 1 : 0, { duration: ANIMATION.duration }));
+  const hasInitialized = useRef(false);
+  const progress = useSharedValue(isSelected ? 1 : 0);
+
+  useEffect(() => {
+    const target = isSelected ? 1 : 0;
+    if (!hasInitialized.current) {
+      progress.value = target;
+      hasInitialized.current = true;
+    } else {
+      progress.value = withTiming(target, { duration: ANIMATION.duration });
+    }
+  }, [isSelected]);
 
   const labelStyle = useAnimatedStyle(() => ({
     color: interpolateColor(progress.value, [0, 1], [SEGMENT_COLORS.unselected, SEGMENT_COLORS.selected]),
@@ -91,12 +102,27 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
 export default function SegmentedControl({ options, selected, onSelect, disabled }: SegmentedControlProps) {
   const [containerWidth, setContainerWidth] = useState(0);
   const padding = 3;
+  const hasInitialized = useRef(false);
+  const translateX = useSharedValue(0);
 
   const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
   const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / options.length : 0;
 
+  useEffect(() => {
+    if (optionWidth === 0) return;
+
+    const targetX = selectedIndex * optionWidth;
+
+    if (!hasInitialized.current) {
+      translateX.value = targetX;
+      hasInitialized.current = true;
+    } else {
+      translateX.value = withTiming(targetX, { duration: ANIMATION.duration });
+    }
+  }, [selectedIndex, optionWidth]);
+
   const indicatorStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: withTiming(selectedIndex * optionWidth, { duration: ANIMATION.duration }) }],
+    transform: [{ translateX: translateX.value }],
     width: optionWidth,
   }));
 
