@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Header from './Header';
 import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from './Shared';
 
-import { SPACING, OVERLAY } from '@/shared/constants';
+import { SPACING, OVERLAY, ELEVATION } from '@/shared/constants';
 
 const SHEET_BOTTOM_PADDING = 50;
 
@@ -91,7 +91,7 @@ export default function Sheet({
       onDismiss={onDismiss}
       onAnimate={onAnimate}
       style={bottomSheetStyles.modal}
-      containerStyle={{ zIndex: OVERLAY.zindexes.popup }}
+      containerStyle={{ zIndex: OVERLAY.zindexes.popup, elevation: ELEVATION.standard }}
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
