@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: TEXT.sizeSmall,
-    marginBottom: SPACING.xxs,
+    marginBottom: SPACING.xxs + 1,
     color: COLORS.text.secondary,
     // Text shadow for depth
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
