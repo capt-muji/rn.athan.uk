@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useCallback } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { Platform, StyleSheet, Text, View, Pressable } from 'react-native';
 
 import ColorPicker from './ColorPicker';
 import { Sheet, SettingsToggle } from '../parts';
@@ -144,7 +144,8 @@ const styles = StyleSheet.create({
   },
   musicIcon: {
     color: COLORS.text.primary,
-    fontSize: 10,
+    fontSize: Platform.OS === 'android' ? 14 : 10,
+    marginTop: Platform.OS === 'android' ? -2.5 : 0,
   },
   athanLabel: {
     flex: 1,
