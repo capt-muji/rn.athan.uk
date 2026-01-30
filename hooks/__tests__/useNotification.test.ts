@@ -49,21 +49,27 @@ jest.mock('expo-notifications', () => ({
 // Mock NotificationStore functions
 const mockClearAllScheduledNotificationForPrayer = jest.fn();
 const mockAddMultipleScheduleNotificationsForPrayer = jest.fn();
+const mockAddMultipleScheduleNotificationsForPrayerInternal = jest.fn();
 const mockSetPrayerAlertType = jest.fn();
 const mockSetReminderAlertType = jest.fn();
 const mockSetReminderInterval = jest.fn();
 const mockClearAllScheduledRemindersForPrayer = jest.fn();
 const mockAddMultipleScheduleRemindersForPrayer = jest.fn();
+const mockAddMultipleScheduleRemindersForPrayerInternal = jest.fn();
 
 jest.mock('@/stores/notifications', () => ({
   clearAllScheduledNotificationForPrayer: (...args: unknown[]) => mockClearAllScheduledNotificationForPrayer(...args),
   addMultipleScheduleNotificationsForPrayer: (...args: unknown[]) =>
     mockAddMultipleScheduleNotificationsForPrayer(...args),
+  addMultipleScheduleNotificationsForPrayerInternal: (...args: unknown[]) =>
+    mockAddMultipleScheduleNotificationsForPrayerInternal(...args),
   setPrayerAlertType: (...args: unknown[]) => mockSetPrayerAlertType(...args),
   setReminderAlertType: (...args: unknown[]) => mockSetReminderAlertType(...args),
   setReminderInterval: (...args: unknown[]) => mockSetReminderInterval(...args),
   clearAllScheduledRemindersForPrayer: (...args: unknown[]) => mockClearAllScheduledRemindersForPrayer(...args),
   addMultipleScheduleRemindersForPrayer: (...args: unknown[]) => mockAddMultipleScheduleRemindersForPrayer(...args),
+  addMultipleScheduleRemindersForPrayerInternal: (...args: unknown[]) =>
+    mockAddMultipleScheduleRemindersForPrayerInternal(...args),
 }));
 
 // Helper to get fresh useNotification module with mocks properly applied
@@ -422,11 +428,21 @@ describe('commitAlertMenuChanges', () => {
     mockClearAllScheduledRemindersForPrayer.mockResolvedValue(undefined);
     mockAddMultipleScheduleNotificationsForPrayer.mockResolvedValue(undefined);
     mockAddMultipleScheduleRemindersForPrayer.mockResolvedValue(undefined);
+    mockAddMultipleScheduleNotificationsForPrayerInternal.mockResolvedValue(undefined);
+    mockAddMultipleScheduleRemindersForPrayerInternal.mockResolvedValue(undefined);
     mockSetPrayerAlertType.mockImplementation(() => {});
     mockSetReminderAlertType.mockImplementation(() => {});
     mockSetReminderInterval.mockImplementation(() => {});
     (Notifications.getPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'granted' });
   });
+
+  // Shared constants for combination matrix tests
+  const ALERT_TYPES = [AlertType.Off, AlertType.Silent, AlertType.Sound] as const;
+  const ALERT_TYPE_NAMES: Record<AlertType, string> = {
+    [AlertType.Off]: 'Off',
+    [AlertType.Silent]: 'Silent',
+    [AlertType.Sound]: 'Sound',
+  };
 
   const createState = (
     atTime: AlertType = AlertType.Off,
@@ -437,6 +453,44 @@ describe('commitAlertMenuChanges', () => {
     reminderAlert: reminder,
     reminderInterval: interval,
   });
+
+  /**
+   * Asserts scheduling behavior based on alert types.
+   * - At-time: scheduled if not Off
+   * - Reminder: scheduled only if BOTH at-time and reminder are not Off
+   */
+  const expectCorrectScheduling = (
+    atTimeAlert: AlertType,
+    reminderAlert: AlertType,
+    scheduleType: ScheduleType,
+    prayerIndex: number,
+    englishName: string,
+    arabicName: string
+  ) => {
+    if (atTimeAlert !== AlertType.Off) {
+      expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalledWith(
+        scheduleType,
+        prayerIndex,
+        englishName,
+        arabicName,
+        atTimeAlert
+      );
+    } else {
+      expect(mockAddMultipleScheduleNotificationsForPrayerInternal).not.toHaveBeenCalled();
+    }
+
+    if (atTimeAlert !== AlertType.Off && reminderAlert !== AlertType.Off) {
+      expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalledWith(
+        scheduleType,
+        prayerIndex,
+        englishName,
+        arabicName,
+        reminderAlert
+      );
+    } else {
+      expect(mockAddMultipleScheduleRemindersForPrayerInternal).not.toHaveBeenCalled();
+    }
+  };
 
   describe('no changes detected', () => {
     it('returns true without scheduling when no changes', async () => {
@@ -468,7 +522,7 @@ describe('commitAlertMenuChanges', () => {
 
       expect(result).toBe(true);
       expect(mockSetPrayerAlertType).toHaveBeenCalledWith(ScheduleType.Standard, 0, AlertType.Sound);
-      expect(mockAddMultipleScheduleNotificationsForPrayer).toHaveBeenCalled();
+      expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalled();
     });
 
     it('disables at-time alert (Sound -> Off)', async () => {
@@ -505,7 +559,7 @@ describe('commitAlertMenuChanges', () => {
 
       expect(result).toBe(true);
       expect(mockSetReminderAlertType).toHaveBeenCalledWith(ScheduleType.Standard, 0, AlertType.Sound);
-      expect(mockAddMultipleScheduleRemindersForPrayer).toHaveBeenCalled();
+      expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalled();
     });
 
     it('disables reminder (Sound -> Off)', async () => {
@@ -581,9 +635,7 @@ describe('commitAlertMenuChanges', () => {
 
   describe('error handling', () => {
     it('returns false on error', async () => {
-      mockSetPrayerAlertType.mockImplementation(() => {
-        throw new Error('Storage error');
-      });
+      mockClearAllScheduledNotificationForPrayer.mockRejectedValue(new Error('Scheduling error'));
 
       const { commitAlertMenuChanges } = getUseNotification()();
       const original = createState(AlertType.Off);
@@ -592,6 +644,423 @@ describe('commitAlertMenuChanges', () => {
       const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
 
       expect(result).toBe(false);
+    });
+
+    it('rolls back preferences when scheduling fails', async () => {
+      mockAddMultipleScheduleNotificationsForPrayerInternal.mockRejectedValue(new Error('Scheduling error'));
+
+      const { commitAlertMenuChanges } = getUseNotification()();
+      const original = createState(AlertType.Off, AlertType.Off, 15);
+      const current = createState(AlertType.Sound, AlertType.Sound, 30);
+
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+      expect(result).toBe(false);
+
+      // Preferences are first set to new values, then rolled back to original
+      // Last call should be the rollback to original values
+      expect(mockSetPrayerAlertType).toHaveBeenLastCalledWith(ScheduleType.Standard, 0, AlertType.Off);
+      expect(mockSetReminderAlertType).toHaveBeenLastCalledWith(ScheduleType.Standard, 0, AlertType.Off);
+      expect(mockSetReminderInterval).toHaveBeenLastCalledWith(ScheduleType.Standard, 0, 15);
+    });
+  });
+
+  // ===========================================================================
+  // COMPREHENSIVE COMBINATION MATRIX
+  // Tests all 9 combinations of at-time (Off, Silent, Sound) × reminder (Off, Silent, Sound)
+  // ===========================================================================
+
+  describe('all at-time × reminder combinations', () => {
+    ALERT_TYPES.forEach((atTimeAlert) => {
+      ALERT_TYPES.forEach((reminderAlert) => {
+        const atTimeName = ALERT_TYPE_NAMES[atTimeAlert];
+        const reminderName = ALERT_TYPE_NAMES[reminderAlert];
+
+        describe(`at-time=${atTimeName}, reminder=${reminderName}`, () => {
+          it('schedules correct notifications', async () => {
+            const { commitAlertMenuChanges } = getUseNotification()();
+            const original = createState(AlertType.Off, AlertType.Off);
+            const current = createState(atTimeAlert, reminderAlert);
+
+            const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+            expect(result).toBe(true);
+            expectCorrectScheduling(atTimeAlert, reminderAlert, ScheduleType.Standard, 0, 'Fajr', 'الفجر');
+          });
+
+          it('persists correct preferences', async () => {
+            const { commitAlertMenuChanges } = getUseNotification()();
+            const original = createState(AlertType.Off, AlertType.Off);
+            const current = createState(atTimeAlert, reminderAlert, 20);
+
+            await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+            expect(mockSetPrayerAlertType).toHaveBeenCalledWith(ScheduleType.Standard, 0, atTimeAlert);
+            expect(mockSetReminderAlertType).toHaveBeenCalledWith(ScheduleType.Standard, 0, reminderAlert);
+            expect(mockSetReminderInterval).toHaveBeenCalledWith(ScheduleType.Standard, 0, 20);
+          });
+
+          it('clears existing notifications before scheduling', async () => {
+            const { commitAlertMenuChanges } = getUseNotification()();
+            // Use Sound/Sound with interval 30 as original so there's always a change
+            const original = createState(AlertType.Sound, AlertType.Sound, 30);
+            const current = createState(atTimeAlert, reminderAlert, 15);
+
+            await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+            expect(mockClearAllScheduledNotificationForPrayer).toHaveBeenCalledWith(ScheduleType.Standard, 0);
+            expect(mockClearAllScheduledRemindersForPrayer).toHaveBeenCalledWith(ScheduleType.Standard, 0);
+          });
+        });
+      });
+    });
+  });
+
+  // ===========================================================================
+  // STATE TRANSITION TESTS
+  // Tests changing FROM one state TO another
+  // ===========================================================================
+
+  describe('state transitions', () => {
+    describe('enabling both at-time and reminder simultaneously', () => {
+      it('schedules both when going from Off/Off to Sound/Sound', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Off, AlertType.Off);
+        const current = createState(AlertType.Sound, AlertType.Sound);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalledTimes(1);
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalledTimes(1);
+      });
+
+      it('schedules both when going from Off/Off to Silent/Silent', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Off, AlertType.Off);
+        const current = createState(AlertType.Silent, AlertType.Silent);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Silent
+        );
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Silent
+        );
+      });
+
+      it('saves interval before scheduling when enabling both with custom interval', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        // User's exact scenario: Off/Off with default interval -> Silent/Silent with 5 min
+        const original = createState(AlertType.Off, AlertType.Off, 15);
+        const current = createState(AlertType.Silent, AlertType.Silent, 5);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 3, 'Asr', 'العصر', original, current);
+
+        expect(result).toBe(true);
+        // Interval must be saved BEFORE scheduling so getReminderInterval reads correct value
+        expect(mockSetReminderInterval).toHaveBeenCalledWith(ScheduleType.Standard, 3, 5);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalled();
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalled();
+      });
+    });
+
+    describe('disabling both at-time and reminder simultaneously', () => {
+      it('clears both when going from Sound/Sound to Off/Off', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Sound);
+        const current = createState(AlertType.Off, AlertType.Off);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockClearAllScheduledNotificationForPrayer).toHaveBeenCalled();
+        expect(mockClearAllScheduledRemindersForPrayer).toHaveBeenCalled();
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).not.toHaveBeenCalled();
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('changing types while keeping enabled', () => {
+      it('reschedules when changing at-time from Silent to Sound', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Silent, AlertType.Silent);
+        const current = createState(AlertType.Sound, AlertType.Silent);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Sound
+        );
+      });
+
+      it('reschedules when changing reminder from Silent to Sound', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Silent);
+        const current = createState(AlertType.Sound, AlertType.Sound);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Sound
+        );
+      });
+
+      it('reschedules when changing at-time from Sound to Silent', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Off);
+        const current = createState(AlertType.Silent, AlertType.Off);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Silent
+        );
+      });
+
+      it('reschedules when changing reminder from Sound to Silent', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Sound);
+        const current = createState(AlertType.Sound, AlertType.Silent);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Silent
+        );
+      });
+    });
+
+    describe('interval-only changes', () => {
+      it('reschedules reminders when only interval changes (15 -> 30)', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Sound, 15);
+        const current = createState(AlertType.Sound, AlertType.Sound, 30);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        // Should clear and reschedule both
+        expect(mockClearAllScheduledNotificationForPrayer).toHaveBeenCalledWith(ScheduleType.Standard, 0);
+        expect(mockClearAllScheduledRemindersForPrayer).toHaveBeenCalledWith(ScheduleType.Standard, 0);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalled();
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalled();
+        expect(mockSetReminderInterval).toHaveBeenCalledWith(ScheduleType.Standard, 0, 30);
+      });
+
+      it('reschedules reminders when only interval changes with Silent types (5 -> 20)', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Silent, AlertType.Silent, 5);
+        const current = createState(AlertType.Silent, AlertType.Silent, 20);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Silent
+        );
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Silent
+        );
+        expect(mockSetReminderInterval).toHaveBeenCalledWith(ScheduleType.Standard, 0, 20);
+      });
+
+      it('reschedules when interval changes even with mixed types (Sound/Silent, 10 -> 25)', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Silent, 10);
+        const current = createState(AlertType.Sound, AlertType.Silent, 25);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Sound
+        );
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalledWith(
+          ScheduleType.Standard,
+          0,
+          'Fajr',
+          'الفجر',
+          AlertType.Silent
+        );
+      });
+    });
+
+    describe('disabling at-time also disables reminder scheduling', () => {
+      it('does not schedule reminder when disabling at-time (Sound/Sound -> Off/Sound)', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Sound);
+        const current = createState(AlertType.Off, AlertType.Sound);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).not.toHaveBeenCalled();
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).not.toHaveBeenCalled();
+        // But preferences are still saved
+        expect(mockSetPrayerAlertType).toHaveBeenCalledWith(ScheduleType.Standard, 0, AlertType.Off);
+        expect(mockSetReminderAlertType).toHaveBeenCalledWith(ScheduleType.Standard, 0, AlertType.Sound);
+      });
+    });
+  });
+
+  // ===========================================================================
+  // EXTRA SCHEDULE TYPE TESTS - ALL 9 COMBINATIONS
+  // ===========================================================================
+
+  describe('Extra schedule type - all combinations', () => {
+    ALERT_TYPES.forEach((atTimeAlert) => {
+      ALERT_TYPES.forEach((reminderAlert) => {
+        const atTimeName = ALERT_TYPE_NAMES[atTimeAlert];
+        const reminderName = ALERT_TYPE_NAMES[reminderAlert];
+        const isNoChange = atTimeAlert === AlertType.Off && reminderAlert === AlertType.Off;
+
+        it(`Extra: at-time=${atTimeName}, reminder=${reminderName}`, async () => {
+          const { commitAlertMenuChanges } = getUseNotification()();
+          // Use Sound/Sound/30 as original to ensure change detection triggers
+          // (except for Off/Off which we test separately as a no-op)
+          const original = isNoChange
+            ? createState(AlertType.Off, AlertType.Off)
+            : createState(AlertType.Sound, AlertType.Sound, 30);
+          const current = createState(atTimeAlert, reminderAlert, 15);
+
+          const result = await commitAlertMenuChanges(
+            ScheduleType.Extra,
+            2,
+            'Midnight',
+            'نصف الليل',
+            original,
+            current
+          );
+
+          expect(result).toBe(true);
+
+          if (isNoChange) {
+            // Off/Off -> Off/Off: no changes, early return
+            expect(mockAddMultipleScheduleNotificationsForPrayerInternal).not.toHaveBeenCalled();
+            expect(mockAddMultipleScheduleRemindersForPrayerInternal).not.toHaveBeenCalled();
+            expect(mockSetPrayerAlertType).not.toHaveBeenCalled();
+            return;
+          }
+
+          expectCorrectScheduling(atTimeAlert, reminderAlert, ScheduleType.Extra, 2, 'Midnight', 'نصف الليل');
+
+          // Verify preferences are saved
+          expect(mockSetPrayerAlertType).toHaveBeenCalledWith(ScheduleType.Extra, 2, atTimeAlert);
+          expect(mockSetReminderAlertType).toHaveBeenCalledWith(ScheduleType.Extra, 2, reminderAlert);
+        });
+      });
+    });
+
+    describe('Extra schedule state transitions', () => {
+      it('Extra: enables both (Off/Off -> Sound/Sound)', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Off, AlertType.Off);
+        const current = createState(AlertType.Sound, AlertType.Sound);
+
+        const result = await commitAlertMenuChanges(
+          ScheduleType.Extra,
+          1,
+          'Last Third',
+          'الثلث الأخير',
+          original,
+          current
+        );
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).toHaveBeenCalledTimes(1);
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalledTimes(1);
+      });
+
+      it('Extra: disables both (Sound/Sound -> Off/Off)', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Sound);
+        const current = createState(AlertType.Off, AlertType.Off);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Extra, 0, 'Suhoor', 'السحور', original, current);
+
+        expect(result).toBe(true);
+        expect(mockClearAllScheduledNotificationForPrayer).toHaveBeenCalledWith(ScheduleType.Extra, 0);
+        expect(mockClearAllScheduledRemindersForPrayer).toHaveBeenCalledWith(ScheduleType.Extra, 0);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).not.toHaveBeenCalled();
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).not.toHaveBeenCalled();
+      });
+
+      it('Extra: interval change (15 -> 30)', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Sound, 15);
+        const current = createState(AlertType.Sound, AlertType.Sound, 30);
+
+        const result = await commitAlertMenuChanges(ScheduleType.Extra, 2, 'Midnight', 'نصف الليل', original, current);
+
+        expect(result).toBe(true);
+        expect(mockSetReminderInterval).toHaveBeenCalledWith(ScheduleType.Extra, 2, 30);
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).toHaveBeenCalled();
+      });
+
+      it('Extra: disabling at-time keeps reminder preference but does not schedule', async () => {
+        const { commitAlertMenuChanges } = getUseNotification()();
+        const original = createState(AlertType.Sound, AlertType.Sound);
+        const current = createState(AlertType.Off, AlertType.Sound);
+
+        const result = await commitAlertMenuChanges(
+          ScheduleType.Extra,
+          1,
+          'Last Third',
+          'الثلث الأخير',
+          original,
+          current
+        );
+
+        expect(result).toBe(true);
+        expect(mockAddMultipleScheduleNotificationsForPrayerInternal).not.toHaveBeenCalled();
+        expect(mockAddMultipleScheduleRemindersForPrayerInternal).not.toHaveBeenCalled();
+        // Preferences still saved
+        expect(mockSetPrayerAlertType).toHaveBeenCalledWith(ScheduleType.Extra, 1, AlertType.Off);
+        expect(mockSetReminderAlertType).toHaveBeenCalledWith(ScheduleType.Extra, 1, AlertType.Sound);
+      });
     });
   });
 });
