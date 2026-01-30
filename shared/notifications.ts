@@ -3,7 +3,6 @@ import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
-import { toArabicNumbers } from '@/shared/text';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, ReminderInterval } from '@/shared/types';
 
@@ -52,16 +51,16 @@ export const getNotificationSound = (alertType: AlertType, soundIndex: number): 
 
 /**
  * Creates notification content based on alert type
+ * English-only, title only (no body)
  */
 export const genNotificationContent = (
   englishName: string,
-  arabicName: string,
+  _arabicName: string,
   alertType: AlertType,
   soundIndex: number
 ): Notifications.NotificationContentInput => {
   return {
-    title: `${englishName} \u2004`,
-    body: `\u200E${arabicName}`, // LTR mark
+    title: englishName,
     sound: getNotificationSound(alertType, soundIndex),
     color: '#5a3af7',
     autoDismiss: false,
@@ -83,21 +82,21 @@ export const getReminderNotificationSound = (alertType: AlertType): string | fal
 
 /**
  * Creates notification content for pre-prayer reminder
+ * English-only, title only (no body)
  * @param englishName English prayer name
- * @param arabicName Arabic prayer name
+ * @param _arabicName Arabic prayer name (unused, kept for API compatibility)
  * @param intervalMinutes Minutes before prayer time
  * @param alertType Alert type (Off/Silent/Sound)
  * @returns Notification content input
  */
 export const genReminderNotificationContent = (
   englishName: string,
-  arabicName: string,
+  _arabicName: string,
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Notifications.NotificationContentInput => {
   return {
     title: `${englishName} in ${intervalMinutes}m`,
-    body: `\u200E${arabicName} بعد ${toArabicNumbers(String(intervalMinutes))} دقائق`, // LTR mark + Arabic "in X mins"
     sound: getReminderNotificationSound(alertType),
     color: '#5a3af7',
     autoDismiss: true,
