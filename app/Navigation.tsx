@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     position: 'absolute',
     bottom: SIZE.nav.bottomOffset, // Position above dots
+    zIndex: 0, // Lowest z-index - should never appear above sheets or overlays
   },
   dotsRow: {
     flexDirection: 'row',

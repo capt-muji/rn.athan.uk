@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.rounded,
     borderWidth: 1,
     ...SHADOW.button,
-    elevation: ELEVATION.subtle, // Android shadow (stacking handled by render order in index.tsx)
+    elevation: ELEVATION.subtle, // Android shadow
+    zIndex: 0, // Lowest z-index - should never appear above sheets or overlays
     width: SIZE.button.icon,
     alignItems: 'center',
   },
