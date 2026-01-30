@@ -578,6 +578,10 @@ const _addMultipleScheduleRemindersForPrayer = async (
   logger.info('REMINDER: Scheduled multiple reminders:', { scheduleType, prayerIndex, englishName });
 };
 
+// Export internal functions for coordinated operations (bypasses scheduling lock)
+export const addMultipleScheduleNotificationsForPrayerInternal = _addMultipleScheduleNotificationsForPrayer;
+export const addMultipleScheduleRemindersForPrayerInternal = _addMultipleScheduleRemindersForPrayer;
+
 /**
  * Schedule multiple reminders for a single prayer (public entry point)
  *
