@@ -245,39 +245,39 @@ export const useNotification = () => {
     originalState: AlertMenuState,
     currentState: AlertMenuState
   ): Promise<boolean> => {
+    const atTimeChanged = originalState.atTimeAlert !== currentState.atTimeAlert;
+    const reminderChanged =
+      originalState.reminderAlert !== currentState.reminderAlert ||
+      originalState.reminderInterval !== currentState.reminderInterval;
+
+    // No changes, skip scheduling
+    if (!atTimeChanged && !reminderChanged) {
+      logger.info('NOTIFICATION: No changes detected, skipping commit');
+      return true;
+    }
+
+    // Check permissions if enabling any notification
+    if (
+      (currentState.atTimeAlert !== AlertType.Off || currentState.reminderAlert !== AlertType.Off) &&
+      !(await ensurePermissions())
+    ) {
+      logger.warn('NOTIFICATION: Permissions not granted');
+      return false;
+    }
+
+    // Save preferences first (optimistic update)
+    NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, currentState.atTimeAlert);
+    NotificationStore.setReminderAlertType(scheduleType, prayerIndex, currentState.reminderAlert);
+    NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);
+
     try {
-      const atTimeChanged = originalState.atTimeAlert !== currentState.atTimeAlert;
-      const reminderChanged =
-        originalState.reminderAlert !== currentState.reminderAlert ||
-        originalState.reminderInterval !== currentState.reminderInterval;
-
-      // No changes, skip scheduling
-      if (!atTimeChanged && !reminderChanged) {
-        logger.info('NOTIFICATION: No changes detected, skipping commit');
-        return true;
-      }
-
-      // Check permissions if enabling any notification
-      if (
-        (currentState.atTimeAlert !== AlertType.Off || currentState.reminderAlert !== AlertType.Off) &&
-        !(await ensurePermissions())
-      ) {
-        logger.warn('NOTIFICATION: Permissions not granted');
-        return false;
-      }
-
-      // Persist preferences
-      NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, currentState.atTimeAlert);
-      NotificationStore.setReminderAlertType(scheduleType, prayerIndex, currentState.reminderAlert);
-      NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);
-
       // Clear existing notifications and reminders
       await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
       await NotificationStore.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
       // Schedule based on desired end state
       if (currentState.atTimeAlert !== AlertType.Off) {
-        await NotificationStore.addMultipleScheduleNotificationsForPrayer(
+        await NotificationStore.addMultipleScheduleNotificationsForPrayerInternal(
           scheduleType,
           prayerIndex,
           englishName,
@@ -287,7 +287,7 @@ export const useNotification = () => {
 
         // Schedule reminder if enabled (reminder requires at-time to be enabled)
         if (currentState.reminderAlert !== AlertType.Off) {
-          await NotificationStore.addMultipleScheduleRemindersForPrayer(
+          await NotificationStore.addMultipleScheduleRemindersForPrayerInternal(
             scheduleType,
             prayerIndex,
             englishName,
@@ -308,7 +308,12 @@ export const useNotification = () => {
 
       return true;
     } catch (error) {
-      logger.error('NOTIFICATION: Failed to commit alert menu changes:', error);
+      // Rollback preferences on failure
+      NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, originalState.atTimeAlert);
+      NotificationStore.setReminderAlertType(scheduleType, prayerIndex, originalState.reminderAlert);
+      NotificationStore.setReminderInterval(scheduleType, prayerIndex, originalState.reminderInterval);
+
+      logger.error('NOTIFICATION: Failed to commit alert menu changes, rolled back:', error);
       return false;
     }
   };
