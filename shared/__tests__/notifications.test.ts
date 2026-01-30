@@ -165,10 +165,10 @@ describe('getNotificationSound', () => {
 // =============================================================================
 
 describe('genNotificationContent', () => {
-  it('creates content with correct title and body', () => {
+  it('creates content with correct English-only title', () => {
     const content = genNotificationContent('Fajr', 'الفجر', AlertType.Sound, 0);
-    expect(content.title).toContain('Fajr');
-    expect(content.body).toContain('الفجر');
+    expect(content.title).toBe('Fajr');
+    expect(content.body).toBeUndefined();
   });
 
   it('includes sound for Sound alert type', () => {
@@ -281,16 +281,12 @@ describe('genReminderNotificationContent', () => {
   it('creates content with correct title format', () => {
     const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
     expect(content.title).toBe('Fajr in 15m');
+    expect(content.body).toBeUndefined();
   });
 
   it('creates content with different intervals', () => {
     expect(genReminderNotificationContent('Dhuhr', 'الظهر', 5, AlertType.Sound).title).toBe('Dhuhr in 5m');
     expect(genReminderNotificationContent('Asr', 'العصر', 30, AlertType.Sound).title).toBe('Asr in 30m');
-  });
-
-  it('includes arabic name in body', () => {
-    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
-    expect(content.body).toContain('الفجر');
   });
 
   it('includes sound for Sound alert type', () => {

@@ -648,7 +648,7 @@ export const COLORS = {
     /** Active prayer shadow */
     prayer: '#081a76',
     /** Active prayer shadow (extras page) */
-    prayerExtras: '#38086e',
+    prayerExtras: '#6e006b',
     /** Settings button shadow */
     button: '#27035c',
     /** Alert popup shadow */
@@ -682,7 +682,7 @@ export const COLORS = {
     /** Active prayer highlight background */
     activeBackground: '#0847e5',
     /** Active prayer highlight background (extras page) */
-    activeBackgroundExtras: '#0847e5',
+    activeBackgroundExtras: '#a800a3',
   },
 
   prayerAgo: {
