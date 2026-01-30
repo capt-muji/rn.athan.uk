@@ -7,7 +7,7 @@ import Navigation from '@/app/Navigation';
 import { ModalUpdate } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { Error } from '@/components/ui';
-import { initializeListeners } from '@/device/listeners';
+import { configureNavigationBar, initializeListeners } from '@/device/listeners';
 import { openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
 import { COLORS, SIZE } from '@/shared/constants';
@@ -23,6 +23,9 @@ export default function Index() {
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
 
   useEffect(() => {
+    // Configure Android navigation bar (force black)
+    configureNavigationBar();
+
     // Initialize notifications, register background task, and create channel on first load
     initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
       logger.error('Failed to initialize notifications:', error)

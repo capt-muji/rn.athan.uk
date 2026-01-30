@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
   container: {
     height: STYLES.countdown.height,
     marginBottom: SPACING.section,
-    marginTop: 10,
+    marginTop: 6,
     justifyContent: 'center',
   },
   text: {
     textAlign: 'center',
     fontSize: TEXT.sizeSmall,
-    marginBottom: SPACING.sm,
+    marginBottom: SPACING.xxs,
     color: COLORS.text.secondary,
     // Text shadow for depth
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
