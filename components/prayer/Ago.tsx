@@ -33,18 +33,22 @@ export default function PrayerAgo({ type }: Props) {
   const hasInitialized = useRef(false);
 
   // Color state: 0=normal, 1=recent (≤5 mins)
-  const isRecentValue = useSharedValue(0);
+  // Initialize to correct state immediately (no flash) - minutesElapsed has correct value from lazy initializer
+  const isRecentValue = useSharedValue(minutesElapsed <= 5 ? 1 : 0);
 
-  // Sync color state: immediate on first valid data, animate on subsequent changes
+  // Sync color state: skip first render (already correct), animate subsequent changes
   useEffect(() => {
     if (!prayerAgoReady) return;
 
     const targetValue = minutesElapsed <= 5 ? 1 : 0;
 
     if (!hasInitialized.current) {
+      // First valid data: set value immediately (no animation)
+      // Handles case where store wasn't hydrated during initial useSharedValue
       isRecentValue.value = targetValue;
       hasInitialized.current = true;
     } else {
+      // Subsequent changes: animate
       isRecentValue.value = withTiming(targetValue, {
         duration: ANIMATION.durationMedium,
         easing: Easing.linear,
