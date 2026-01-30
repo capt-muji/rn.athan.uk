@@ -31,7 +31,11 @@ export default function Navigation() {
         <Screen type={ScheduleType.Extra} />
       </PagerView>
 
-      <View style={[styles.dotsContainer, { bottom: bottom + (Platform.OS === 'android' ? SPACING.md : 0) }]}>
+      <View
+        style={[
+          styles.dotsContainer,
+          { bottom: bottom + (Platform.OS === 'android' || Platform.OS === 'macos' ? SPACING.md : 0) },
+        ]}>
         <View style={styles.buttonWrapper}>
           <SettingsButton />
         </View>
