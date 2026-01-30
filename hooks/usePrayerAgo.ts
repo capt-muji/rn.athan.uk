@@ -5,6 +5,36 @@ import { createLondonDate } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { getPrevPrayer } from '@/stores/schedule';
 
+interface PrayerAgoState {
+  prayerAgo: string;
+  minutesElapsed: number;
+  isReady: boolean;
+}
+
+/**
+ * Pure function to calculate prayer-ago state
+ * Extracted outside hook for use in lazy initializer
+ */
+const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
+  try {
+    const prevPrayer = getPrevPrayer(type);
+    if (!prevPrayer) {
+      return { prayerAgo: '', minutesElapsed: 0, isReady: false };
+    }
+
+    const now = createLondonDate();
+    const secondsElapsed = Math.floor((now.getTime() - prevPrayer.datetime.getTime()) / 1000);
+    const minutes = Math.floor(secondsElapsed / 60);
+    const timeAgo = formatTimeAgo(secondsElapsed);
+
+    const agoText = secondsElapsed < 60 ? `${prevPrayer.english} now` : `${prevPrayer.english} ${timeAgo} ago`;
+
+    return { prayerAgo: agoText, minutesElapsed: minutes, isReady: true };
+  } catch {
+    return { prayerAgo: '', minutesElapsed: 0, isReady: false };
+  }
+};
+
 /**
  * Returns formatted prayer-ago text showing how long ago the previous prayer was
  *
@@ -20,40 +50,19 @@ import { getPrevPrayer } from '@/stores/schedule';
  * // prayerAgo: "Asr 2h 30m ago" (if 2.5h since Asr)
  * // minutesElapsed: 150 (if 2.5h since Asr)
  */
-export const usePrayerAgo = (type: ScheduleType): { prayerAgo: string; minutesElapsed: number; isReady: boolean } => {
-  const [prayerAgo, setPrayerAgo] = useState<string>('');
-  const [minutesElapsed, setMinutesElapsed] = useState<number>(0);
-  const [isReady, setIsReady] = useState(false);
+export const usePrayerAgo = (type: ScheduleType): PrayerAgoState => {
+  // Single object state with lazy initializer - calculates synchronously on mount
+  const [state, setState] = useState(() => calculatePrayerAgo(type));
 
   const updatePrayerAgo = useCallback(() => {
-    try {
-      const prevPrayer = getPrevPrayer(type);
-      if (!prevPrayer) {
-        setIsReady(false);
-        return;
-      }
-
-      const now = createLondonDate();
-      const secondsElapsed = Math.floor((now.getTime() - prevPrayer.datetime.getTime()) / 1000);
-      const minutes = Math.floor(secondsElapsed / 60);
-      const timeAgo = formatTimeAgo(secondsElapsed);
-
-      const agoText = secondsElapsed < 60 ? `${prevPrayer.english} now` : `${prevPrayer.english} ${timeAgo} ago`;
-
-      setPrayerAgo(agoText);
-      setMinutesElapsed(minutes);
-      setIsReady(true);
-    } catch {
-      setIsReady(false);
-    }
+    setState(calculatePrayerAgo(type));
   }, [type]);
 
   useEffect(() => {
-    updatePrayerAgo();
-
+    // No initial call needed - lazy initializer already calculated
     const interval = setInterval(updatePrayerAgo, 1000);
     return () => clearInterval(interval);
   }, [updatePrayerAgo]);
 
-  return { prayerAgo, minutesElapsed, isReady };
+  return state;
 };
