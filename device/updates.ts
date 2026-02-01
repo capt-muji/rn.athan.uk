@@ -8,7 +8,7 @@ import logger from '@/shared/logger';
 import { isNewerVersion } from '@/shared/versionUtils';
 import { setPopupUpdateLastCheck, getPopupUpdateLastCheck } from '@/stores/ui';
 
-const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/mugtaba-subahi/rn.athan.uk/main/releases.json';
+const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/USER-NAME/rn.athan.uk/main/releases.json';
 const IS_IOS = Platform.OS === 'ios';
 
 // Use native URI schemes instead of web URLs
