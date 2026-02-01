@@ -28,6 +28,7 @@
       "backgroundColor": "#2c1c77"
     },
     "android": {
+      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/config/icon-android-adaptive.png",
         "backgroundColor": "#2c1c77"
