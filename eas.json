@@ -19,7 +19,8 @@
   "submit": {
     "production": {
       "android": {
-        "track": "alpha"
+        "track": "alpha",
+        "serviceAccountKeyPath": "~/.config/athan/athan-486118-66c0837dd5c5.json"
       }
     }
   }
