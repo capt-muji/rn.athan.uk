@@ -1,21 +1,9 @@
-import * as NavigationBar from 'expo-navigation-bar';
-import { AppState, AppStateStatus, Platform } from 'react-native';
+import { AppState, AppStateStatus } from 'react-native';
 
 import { initializeNotifications } from '@/shared/notifications';
 import { refreshNotifications } from '@/stores/notifications';
 import { sync } from '@/stores/sync';
 import { setRefreshUI } from '@/stores/ui';
-
-/**
- * Ensures Android navigation bar is visible with solid black background
- * Forces black regardless of system theme preferences
- * No-op on iOS
- */
-export const configureNavigationBar = async () => {
-  if (Platform.OS !== 'android') return;
-  await NavigationBar.setVisibilityAsync('visible');
-  await NavigationBar.setBackgroundColorAsync('#000000');
-};
 
 /**
  * Initializes app state change listeners
@@ -30,7 +18,6 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
       // Only initialize notifications when coming from background
       // NOT on initial app launch (handled by app/index.tsx)
       if (previousAppState === 'background') {
-        configureNavigationBar();
         initializeNotifications(checkPermissions, refreshNotifications);
       }
 

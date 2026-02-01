@@ -45,11 +45,12 @@
     },
     "plugins": [
       [
-        "expo-navigation-bar",
+        "react-native-edge-to-edge",
         {
-          "visibility": "visible",
-          "barStyle": "light",
-          "backgroundColor": "#000000"
+          "android": {
+            "parentTheme": "Default",
+            "enforceNavigationBarContrast": false
+          }
         }
       ],
       [
