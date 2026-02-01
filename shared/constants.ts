@@ -682,7 +682,7 @@ export const COLORS = {
     /** Active prayer highlight background */
     activeBackground: '#0847e5',
     /** Active prayer highlight background (extras page) */
-    activeBackgroundExtras: '#a800a3',
+    activeBackgroundExtras: '#9200a2',
   },
 
   prayerAgo: {
