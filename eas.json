@@ -19,11 +19,6 @@
   "submit": {
     "production": {
       "android": {
-        "track": "production"
-      }
-    },
-    "closed": {
-      "android": {
         "track": "alpha"
       }
     }
