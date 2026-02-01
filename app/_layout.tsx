@@ -5,10 +5,11 @@ import '@/device/tasks';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { LogBox, Text } from 'react-native';
+import { LogBox, Text, View } from 'react-native';
+import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
 import { InitialWidthMeasurement } from '@/components/ui';
@@ -39,17 +40,36 @@ Text.defaultProps = {
   maxFontSizeMultiplier: 1,
 };
 
+function NavigationBarBackground() {
+  const insets = useSafeAreaInsets();
+  return (
+    <View
+      style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: insets.bottom,
+        backgroundColor: '#000000',
+      }}
+    />
+  );
+}
+
 export default function Layout() {
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
-      <StatusBar style="light" translucent />
-      <InitialWidthMeasurement />
-      <BottomSheetModalProvider>
-        <Slot />
-        <BottomSheetSound />
-        <BottomSheetSettings />
-        <BottomSheetAlert />
-      </BottomSheetModalProvider>
-    </GestureHandlerRootView>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
+        <SystemBars style="light" hidden={{ statusBar: false, navigationBar: false }} />
+        <InitialWidthMeasurement />
+        <BottomSheetModalProvider>
+          <Slot />
+          <BottomSheetSound />
+          <BottomSheetSettings />
+          <BottomSheetAlert />
+        </BottomSheetModalProvider>
+        <NavigationBarBackground />
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 }
