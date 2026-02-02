@@ -123,7 +123,7 @@ export default function Overlay() {
     bottom:
       window.height -
       (listMeasurements?.pageY ?? 0) -
-      (Platform.OS === 'android' ? insets.top : 0) -
+      (Platform.OS === 'android' ? insets.top + insets.bottom : 0) -
       overlay.selectedPrayerIndex * STYLES.prayer.height +
       SPACING.sm,
     left: listMeasurements?.pageX ?? 0,

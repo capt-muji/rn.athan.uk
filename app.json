@@ -3,10 +3,10 @@
     "newArchEnabled": true,
     "name": "Athan",
     "slug": "athan",
-    "version": "1.2.8",
+    "version": "1.2.9",
     "orientation": "portrait",
     "scheme": "athan",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "light",
     "icon": "./assets/icons/config/icon-ios.png",
     "backgroundColor": "#2c1c77",
     "splash": {
