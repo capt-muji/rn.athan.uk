@@ -34,7 +34,7 @@ export default function Navigation() {
       <View
         style={[
           styles.dotsContainer,
-          { bottom: bottom + (Platform.OS === 'android' || Platform.OS === 'macos' ? SPACING.md : 0) },
+          { bottom: Platform.OS === 'android' ? bottom + SPACING.md : Math.max(bottom, SPACING.xl) },
         ]}>
         <View style={styles.buttonWrapper}>
           <SettingsButton />
