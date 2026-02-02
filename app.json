@@ -92,12 +92,6 @@
           ]
         }
       ],
-      [
-        "react-native-permissions",
-        {
-          "iosPermissions": []
-        }
-      ],
       "expo-router",
       "expo-audio",
       "expo-asset",
