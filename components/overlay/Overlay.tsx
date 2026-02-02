@@ -105,6 +105,7 @@ export default function Overlay() {
 
   // First 3 items (indices 0, 1, 2) show info box below, rest show above
   const showInfoBoxAbove = overlay.selectedPrayerIndex >= 3;
+  const INFO_BOX_HEIGHT = 300;
 
   // Info box positioned below prayer row (for first 3 items)
   const computedStyleInfoBoxBelow: ViewStyle = {
@@ -116,18 +117,21 @@ export default function Overlay() {
       SPACING.sm,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
+    height: INFO_BOX_HEIGHT,
   };
 
   // Info box positioned above prayer row (for items 4+)
   const computedStyleInfoBoxAbove: ViewStyle = {
-    bottom:
-      window.height -
-      (listMeasurements?.pageY ?? 0) -
-      (Platform.OS === 'android' ? insets.top + insets.bottom : 0) -
-      overlay.selectedPrayerIndex * STYLES.prayer.height +
+    top:
+      (listMeasurements?.pageY ?? 0) +
+      (Platform.OS === 'android' ? insets.top : 0) +
+      overlay.selectedPrayerIndex * STYLES.prayer.height -
+      INFO_BOX_HEIGHT -
       SPACING.sm,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
+    height: INFO_BOX_HEIGHT,
+    justifyContent: 'flex-end',
   };
 
   const computedStyleInfoBox = showInfoBoxAbove ? computedStyleInfoBoxAbove : computedStyleInfoBoxBelow;
