@@ -1,4 +1,5 @@
 import { AppState, AppStateStatus } from 'react-native';
+import { SystemBars } from 'react-native-edge-to-edge';
 
 import { initializeNotifications } from '@/shared/notifications';
 import { refreshNotifications } from '@/stores/notifications';
@@ -15,9 +16,12 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
   // Handle both initial state and state changes
   const handleAppStateChange = (newState: AppStateStatus) => {
     if (newState === 'active') {
-      // Only initialize notifications when coming from background
+      // Only run these when coming from background
       // NOT on initial app launch (handled by app/index.tsx)
       if (previousAppState === 'background') {
+        // Re-apply system bars styling on Android (fixes transparency reset)
+        SystemBars.setStyle('light');
+
         initializeNotifications(checkPermissions, refreshNotifications);
       }
 
