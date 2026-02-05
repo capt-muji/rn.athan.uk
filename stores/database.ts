@@ -276,13 +276,3 @@ export function clearAllScheduledRemindersForPrayer(scheduleType: ScheduleType, 
 export function clearAllScheduledRemindersForSchedule(scheduleType: ScheduleType) {
   clearPrefix(`scheduled_reminders_${scheduleType}`);
 }
-
-/**
- * Full cleanup - clears ALL data from storage (keeps nothing)
- * Uses whitelist approach: deletes everything not in keep list
- * Since keep list is empty, this wipes all data
- */
-export const cleanup = () => {
-  // Full cleanup keeps NOTHING - complete wipe
-  clearAllExcept([]);
-};
