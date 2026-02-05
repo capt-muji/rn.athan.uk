@@ -175,9 +175,9 @@ export const soundPreferenceAtom = atomWithStorageNumber('preference_sound', 0);
 
 /**
  * Atom storing timestamp of last notification schedule refresh
- * Used to determine if notifications need rescheduling (12-hour cycle)
+ * Used to determine if notifications need rescheduling (4-hour cycle)
  */
-export const lastNotificationScheduleAtom = atomWithStorageNumber('last_notification_schedule_check', 0);
+export const lastNotificationScheduleAtom = atomWithStorageNumber('preference_last_notification_schedule_check', 0);
 
 // =============================================================================
 // ALERT HELPERS

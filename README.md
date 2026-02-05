@@ -463,7 +463,7 @@ Notifications are rescheduled in the following scenarios:
   - Uses 4-hour refresh interval to avoid unnecessary rescheduling
   - Checks `shouldRescheduleNotifications()` which returns `true` only if:
     - First time ever (no previous schedule timestamp), OR
-    - ≥4 hours elapsed since `last_notification_schedule_check` timestamp
+    - ≥4 hours elapsed since `preference_last_notification_schedule_check` timestamp
   - If criteria not met, logs skip and returns early
 - **Background task** (~3 hour intervals, OS-controlled):
   - Does NOT check elapsed time - always reschedules when task runs
@@ -471,7 +471,7 @@ Notifications are rescheduled in the following scenarios:
 - When rescheduling happens:
   1. Cancels ALL existing notifications (Expo API + database)
   2. Reschedules 2 days ahead for all enabled prayers in both schedules
-  3. Updates `last_notification_schedule_check` timestamp
+  3. Updates `preference_last_notification_schedule_check` timestamp
 
 #### Concurrent Scheduling Protection
 
