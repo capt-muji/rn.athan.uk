@@ -254,10 +254,10 @@ describe('updatePrayerData behavior', () => {
     mockGetPrayerByDate.mockReturnValue(null);
   });
 
-  it('clears cache except app version before fetching', async () => {
+  it('clears cache except app version and preferences before fetching', async () => {
     await sync();
 
-    expect(mockClearAllExcept).toHaveBeenCalledWith(['app_installed_version']);
+    expect(mockClearAllExcept).toHaveBeenCalledWith(['app_installed_version', 'preference_']);
   });
 
   it('fetches current year data', async () => {
