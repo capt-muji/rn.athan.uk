@@ -8,7 +8,7 @@ import * as Database from '@/stores/database';
 
 export default function Error() {
   const handleRefresh = async () => {
-    Database.cleanup();
+    Database.clearAllExcept(['app_installed_version', 'preference_']);
     await Updates.reloadAsync(); // force reload the entire app
   };
 
