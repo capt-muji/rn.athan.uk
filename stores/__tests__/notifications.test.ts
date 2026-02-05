@@ -261,7 +261,7 @@ describe('soundPreferenceAtom', () => {
 // =============================================================================
 // shouldRescheduleNotifications TESTS
 // ADR-001: Rolling Window Notification Buffer
-// - Refresh every NOTIFICATION_REFRESH_HOURS (12 hours)
+// - Refresh every NOTIFICATION_REFRESH_HOURS (4 hours)
 // - Returns true when refresh is needed, false otherwise
 // =============================================================================
 
