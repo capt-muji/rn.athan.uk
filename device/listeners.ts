@@ -21,6 +21,7 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
       if (previousAppState === 'background') {
         // Re-apply system bars styling on Android (fixes transparency reset)
         SystemBars.setStyle('light');
+        SystemBars.setHidden({ navigationBar: false });
 
         initializeNotifications(checkPermissions, refreshNotifications);
       }
