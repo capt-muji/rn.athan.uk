@@ -1,3 +1,4 @@
+import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, {
@@ -16,6 +17,7 @@ import Svg, { Circle, Defs, G, Line, Mask, Path, RadialGradient, Rect, Stop } fr
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { isRamadan } from '@/shared/time';
+import { decorationsEnabledAtom } from '@/stores/ui';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 const AnimatedLine = Animated.createAnimatedComponent(Line);
@@ -102,7 +104,7 @@ export default function RamadanDecorations() {
   const moonBob = useSharedValue(0);
   const moonGlowOpacity = useSharedValue(0);
 
-  if (!isRamadan()) return null;
+  const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
 
   // Android height includes nav bar — scale down vertical positions
   const vScale = Platform.OS === 'android' ? 0.6 : 1;
@@ -162,6 +164,8 @@ export default function RamadanDecorations() {
       -1
     );
   }, [bob0, bob1, bob2, glow0, glow1, glow2, maxStarY, moonBob, moonGlowOpacity]);
+
+  if (!isRamadan() || !decorationsEnabled) return null;
 
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="none">

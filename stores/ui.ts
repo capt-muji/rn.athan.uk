@@ -85,6 +85,9 @@ export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_p
 /** Whether to show Arabic prayer names alongside English */
 export const showArabicNamesAtom = atomWithStorageBoolean('preference_show_arabic_names', true);
 
+/** Whether seasonal decorations (Ramadan, Eid, etc.) are shown */
+export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorations_enabled', true);
+
 // =============================================================================
 // ACTIONS
 // =============================================================================
