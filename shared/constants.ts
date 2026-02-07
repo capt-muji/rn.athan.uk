@@ -148,6 +148,8 @@ export const TIME_CONSTANTS = {
 export const ISLAMIC_DAY = {
   /** Hour threshold for early morning (6am). Prayers before this hour may belong to previous Islamic day */
   EARLY_MORNING_CUTOFF_HOUR: 6,
+  /** Days before Ramadan to start showing decorations (from Sha'ban day 30 - this value) */
+  RAMADAN_DECORATION_DAYS_BEFORE: 15,
 } as const;
 
 // =============================================================================
