@@ -57,7 +57,7 @@ const HANGINGS: {
 }[] = [
   // Midground star (left) — slow, wide sway
   {
-    xPct: 0.24,
+    xPct: 0.26,
     lineLen: 77,
     size: 6.6,
     bobDuration: 7130,
@@ -407,9 +407,12 @@ function FloatingStar({
   const gradientId = `starGlow${index}`;
   const cx = glowR;
   const cy = glowR;
+  const isStarType = type === 'star';
 
   const moveStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: bobOffset.value }],
+    transform: isStarType
+      ? [{ translateY: bobOffset.value }, { scale: 0.7 + glowOpacity.value * 0.5 }]
+      : [{ translateY: bobOffset.value }],
   }));
 
   const glowProps = useAnimatedProps(() => ({ opacity: glowOpacity.value }));
