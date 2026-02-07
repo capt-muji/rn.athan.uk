@@ -6,6 +6,7 @@ import {
   isFriday,
   isDecember,
   isRamadan,
+  isDecorationSeason,
   isJanuaryFirst,
   createLondonDate,
   formatDateLong,
@@ -289,6 +290,31 @@ describe('isRamadan', () => {
   it("returns false 16+ days before Ramadan (Sha'ban 14, 1447 = 2026-02-02)", () => {
     jest.setSystemTime(new Date('2026-02-02T12:00:00'));
     expect(isRamadan()).toBe(false);
+  });
+});
+
+describe('isDecorationSeason', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('returns true during Ramadan', () => {
+    jest.setSystemTime(new Date('2026-03-10T12:00:00'));
+    expect(isDecorationSeason()).toBe(true);
+  });
+
+  it('returns true during pre-Ramadan window', () => {
+    jest.setSystemTime(new Date('2026-02-03T12:00:00'));
+    expect(isDecorationSeason()).toBe(true);
+  });
+
+  it('returns false outside decoration seasons', () => {
+    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    expect(isDecorationSeason()).toBe(false);
   });
 });
 
