@@ -57,7 +57,7 @@ const HANGINGS: {
 }[] = [
   // Midground star (left) — slow, wide sway
   {
-    xPct: 0.28,
+    xPct: 0.24,
     lineLen: 77,
     size: 6.6,
     bobDuration: 7130,
@@ -151,7 +151,7 @@ export default function RamadanDecorations() {
   // Android height includes nav bar — scale down vertical positions
   const vScale = Platform.OS === 'android' ? 0.6 : 1;
   const svgHeight = height * 0.385 * vScale;
-  const moonCx = width * 0.13;
+  const moonCx = width * 0.16;
   const moonCy = insetTop + 62;
   const moonR = 15;
   const maxStarY = insetTop + 65;
@@ -342,9 +342,9 @@ function FloatingMoon({
         </Defs>
 
         <AnimatedCircle cx={localCx - 6} cy={localCy + 4} r={glowR} fill="url(#moonGlow)" animatedProps={glowProps} />
-        <MoonSparks cx={localCx - 6} cy={localCy + 4} glowR={glowR * 0.6} />
         <Circle cx={localCx} cy={localCy} r={r} fill={MOON_COLOR} opacity={1} mask="url(#crescentMask)" />
       </Svg>
+      <MoonSparks cx={localCx - 6} cy={localCy + 4} glowR={glowR * 0.6} />
     </Animated.View>
   );
 }
@@ -454,7 +454,6 @@ function FloatingStar({
             animatedProps={flickerProps}
           />
         )}
-        {type === 'lantern' && <LanternSparks cx={cx} cy={cy} glowR={glowR} />}
         {type === 'lantern' ? (
           <G
             transform={`translate(${cx - (visualSize * 3.6) / 2}, ${cy - (visualSize * 3.6) / 2}) scale(${(visualSize * 3.6) / 396.586})`}
@@ -480,6 +479,7 @@ function FloatingStar({
           <Path d={fivePointStar(cx, cy, visualSize, visualSize * 0.4)} fill={STAR_COLOR} opacity={bodyOpacity} />
         )}
       </Svg>
+      {type === 'lantern' && <LanternSparks cx={cx} cy={cy} glowR={glowR} />}
     </Animated.View>
   );
 }
@@ -579,7 +579,7 @@ function LanternSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: numbe
   );
 }
 
-/** Single spark particle — fades in/out and drifts upward */
+/** Single spark particle — fades in/out and drifts upward (GPU-composited View) */
 function SparkDot({
   cx,
   baseCy,
@@ -595,17 +595,34 @@ function SparkDot({
   hot: boolean;
   progress: SharedValue<number>;
 }) {
-  const props = useAnimatedProps(() => {
+  const diameter = r * 2;
+
+  const style = useAnimatedStyle(() => {
     const p = progress.value;
     // Fade in over first 30%, fade out over remaining 70%
     const opacity = p < 0.3 ? (p / 0.3) * 0.85 : ((1 - p) / 0.7) * 0.85;
     return {
       opacity,
-      cy: baseCy - p * drift,
+      transform: [{ translateY: -p * drift }],
     };
   });
 
-  return <AnimatedCircle cx={cx} r={r} fill={hot ? SPARK_COLOR_HOT : SPARK_COLOR} animatedProps={props} />;
+  return (
+    <Animated.View
+      style={[
+        {
+          position: 'absolute',
+          left: cx - r,
+          top: baseCy - r,
+          width: diameter,
+          height: diameter,
+          borderRadius: r,
+          backgroundColor: hot ? SPARK_COLOR_HOT : SPARK_COLOR,
+        },
+        style,
+      ]}
+    />
+  );
 }
 
 /** Generates a 5-pointed star path centered at (cx, cy) */
