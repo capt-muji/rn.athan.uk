@@ -1,7 +1,11 @@
+import { useAtomValue } from 'jotai';
 import { StyleSheet, View } from 'react-native';
 
+import RamadanIcon from '@/assets/icons/svg/masjid-ramadan.svg';
 import Icon from '@/assets/icons/svg/masjid.svg';
 import { COLORS, SHADOW } from '@/shared/constants';
+import { isRamadan } from '@/shared/time';
+import { decorationsEnabledAtom } from '@/stores/ui';
 
 type MasjidProps = {
   width?: number;
@@ -9,9 +13,11 @@ type MasjidProps = {
 };
 
 export default function Masjid({ height = 45, width = 45 }: MasjidProps) {
+  const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
+  const MasjidIcon = isRamadan() && decorationsEnabled ? RamadanIcon : Icon;
   return (
     <View style={styles.container}>
-      <Icon style={styles.icon} height={height} width={width} />
+      <MasjidIcon style={styles.icon} height={height} width={width} />
     </View>
   );
 }
