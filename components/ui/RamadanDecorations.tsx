@@ -24,7 +24,8 @@ const AnimatedLine = Animated.createAnimatedComponent(Line);
 
 // --- Colors (tuned for #031a4c → #5b1eaa background) ---
 const COLOR = '#FFC947';
-const GLOW_COLOR = '#FF9F1C';
+const GLOW_CENTER = '#FFECB3';
+const GLOW_MID = '#FFD54F';
 const THREAD_COLOR = '#C9A87C';
 const GLOW_PULSE_DURATION = 3000;
 
@@ -40,6 +41,7 @@ const HANGINGS: {
   threadWidth: number;
   threadOpacity: number;
   bodyOpacity: number;
+  glowMin: number;
   glowMax: number;
 }[] = [
   // Midground star (left)
@@ -53,8 +55,9 @@ const HANGINGS: {
     type: 'star',
     threadWidth: 0.5,
     threadOpacity: 0.07,
-    bodyOpacity: 0.55,
-    glowMax: 0.3,
+    bodyOpacity: 1,
+    glowMin: 0.4,
+    glowMax: 0.7,
   },
   // Foreground lantern (right) — strongest presence
   {
@@ -67,8 +70,9 @@ const HANGINGS: {
     type: 'lantern',
     threadWidth: 0.7,
     threadOpacity: 0.14,
-    bodyOpacity: 0.75,
-    glowMax: 0.45,
+    bodyOpacity: 1,
+    glowMin: 0.5,
+    glowMax: 0.9,
   },
   // Background star (far right) — most subtle
   {
@@ -81,8 +85,9 @@ const HANGINGS: {
     type: 'star',
     threadWidth: 0.35,
     threadOpacity: 0.04,
-    bodyOpacity: 0.4,
-    glowMax: 0.2,
+    bodyOpacity: 1,
+    glowMin: 0.3,
+    glowMax: 0.55,
   },
 ];
 
@@ -119,7 +124,7 @@ export default function RamadanDecorations() {
   const moonTipY = moonCy - 17.7;
 
   // Moon glow radius (determines Animated.View size)
-  const moonGlowR = moonR * 4;
+  const moonGlowR = moonR * 2.5;
   const moonSvgSize = moonGlowR * 2;
 
   useEffect(() => {
@@ -137,12 +142,13 @@ export default function RamadanDecorations() {
         ),
         -1
       );
+      glows[i].value = star.glowMin;
       glows[i].value = withDelay(
         star.glowDelay,
         withRepeat(
           withSequence(
             withTiming(star.glowMax, { duration: GLOW_PULSE_DURATION, easing: ease }),
-            withTiming(0, { duration: GLOW_PULSE_DURATION, easing: ease })
+            withTiming(star.glowMin, { duration: GLOW_PULSE_DURATION, easing: ease })
           ),
           -1
         )
@@ -156,10 +162,11 @@ export default function RamadanDecorations() {
     );
 
     // Moon glow pulse
+    moonGlowOpacity.value = 0.55;
     moonGlowOpacity.value = withRepeat(
       withSequence(
-        withTiming(0.25, { duration: GLOW_PULSE_DURATION, easing: ease }),
-        withTiming(0, { duration: GLOW_PULSE_DURATION, easing: ease })
+        withTiming(0.9, { duration: GLOW_PULSE_DURATION, easing: ease }),
+        withTiming(0.55, { duration: GLOW_PULSE_DURATION, easing: ease })
       ),
       -1
     );
@@ -265,8 +272,10 @@ function FloatingMoon({
       <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
         <Defs>
           <RadialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-            <Stop offset="0%" stopColor={GLOW_COLOR} stopOpacity={1} />
-            <Stop offset="40%" stopColor={COLOR} stopOpacity={0.4} />
+            <Stop offset="0%" stopColor={GLOW_MID} stopOpacity={0.4} />
+            <Stop offset="15%" stopColor={COLOR} stopOpacity={0.25} />
+            <Stop offset="35%" stopColor={COLOR} stopOpacity={0.12} />
+            <Stop offset="65%" stopColor={COLOR} stopOpacity={0.03} />
             <Stop offset="100%" stopColor={COLOR} stopOpacity={0} />
           </RadialGradient>
           <Mask id="crescentMask">
@@ -276,8 +285,8 @@ function FloatingMoon({
           </Mask>
         </Defs>
 
-        <AnimatedCircle cx={localCx} cy={localCy} r={glowR} fill="url(#moonGlow)" animatedProps={glowProps} />
-        <Circle cx={localCx} cy={localCy} r={r} fill={COLOR} opacity={0.65} mask="url(#crescentMask)" />
+        <AnimatedCircle cx={localCx - 6} cy={localCy + 4} r={glowR} fill="url(#moonGlow)" animatedProps={glowProps} />
+        <Circle cx={localCx} cy={localCy} r={r} fill={COLOR} opacity={1} mask="url(#crescentMask)" />
       </Svg>
     </Animated.View>
   );
@@ -333,7 +342,7 @@ function FloatingStar({
   bodyOpacity: number;
 }) {
   const visualSize = type === 'lantern' ? size * 1.5 : size;
-  const glowR = visualSize * 4.6;
+  const glowR = visualSize * 4;
   const baseStarY = lineLen + size; // attachment point stays based on original size
   const svgSize = glowR * 2;
   const gradientId = `starGlow${index}`;
@@ -355,8 +364,11 @@ function FloatingStar({
       <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
         <Defs>
           <RadialGradient id={gradientId} cx="50%" cy="50%" r="50%">
-            <Stop offset="0%" stopColor={GLOW_COLOR} stopOpacity={1} />
-            <Stop offset="40%" stopColor={COLOR} stopOpacity={0.4} />
+            <Stop offset="0%" stopColor={GLOW_CENTER} stopOpacity={1} />
+            <Stop offset="8%" stopColor={GLOW_MID} stopOpacity={0.75} />
+            <Stop offset="18%" stopColor={COLOR} stopOpacity={0.4} />
+            <Stop offset="40%" stopColor={COLOR} stopOpacity={0.15} />
+            <Stop offset="70%" stopColor={COLOR} stopOpacity={0.04} />
             <Stop offset="100%" stopColor={COLOR} stopOpacity={0} />
           </RadialGradient>
         </Defs>
