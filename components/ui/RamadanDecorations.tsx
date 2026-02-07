@@ -91,6 +91,20 @@ const HANGINGS: {
   },
 ];
 
+/** Spark/firefly particles around lantern glow */
+const SPARK_COLOR = '#FFD700'; // bright gold
+const SPARK_COLOR_HOT = '#FFF1A8'; // hot white-gold for larger sparks
+const SPARKS = [
+  { angle: 8, dist: 0.53, size: 1.2, delay: 0, duration: 2800, drift: 2, hot: true },
+  { angle: 62, dist: 0.74, size: 0.4, delay: 400, duration: 1500, drift: 5, hot: false },
+  { angle: 101, dist: 0.58, size: 0.9, delay: 1200, duration: 2200, drift: 3, hot: true },
+  { angle: 143, dist: 0.78, size: 0.35, delay: 700, duration: 1400, drift: 4.5, hot: false },
+  { angle: 196, dist: 0.52, size: 1.1, delay: 200, duration: 3200, drift: 1.5, hot: true },
+  { angle: 232, dist: 0.68, size: 0.5, delay: 1500, duration: 1700, drift: 5.5, hot: false },
+  { angle: 279, dist: 0.63, size: 0.55, delay: 900, duration: 2600, drift: 3.5, hot: false },
+  { angle: 337, dist: 0.5, size: 0.7, delay: 500, duration: 3500, drift: 1, hot: true },
+];
+
 export default function RamadanDecorations() {
   const { width, height } = useWindowDimensions();
   const { top: insetTop } = useSafeAreaInsets();
@@ -373,6 +387,7 @@ function FloatingStar({
           </RadialGradient>
         </Defs>
         <AnimatedCircle cx={cx} cy={cy} r={glowR} fill={`url(#${gradientId})`} animatedProps={glowProps} />
+        {type === 'lantern' && <LanternSparks cx={cx} cy={cy} glowR={glowR} />}
         {type === 'lantern' ? (
           <G
             transform={`translate(${cx - (visualSize * 3.6) / 2}, ${cy - (visualSize * 3.6) / 2}) scale(${(visualSize * 3.6) / 396.586})`}
@@ -400,6 +415,84 @@ function FloatingStar({
       </Svg>
     </Animated.View>
   );
+}
+
+/** Animated spark particles that float around the lantern glow */
+function LanternSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: number }) {
+  const p0 = useSharedValue(0);
+  const p1 = useSharedValue(0);
+  const p2 = useSharedValue(0);
+  const p3 = useSharedValue(0);
+  const p4 = useSharedValue(0);
+  const p5 = useSharedValue(0);
+  const p6 = useSharedValue(0);
+  const p7 = useSharedValue(0);
+  const progress = [p0, p1, p2, p3, p4, p5, p6, p7];
+
+  useEffect(() => {
+    SPARKS.forEach((spark, i) => {
+      progress[i].value = withDelay(
+        spark.delay,
+        withRepeat(
+          withSequence(
+            withTiming(1, { duration: spark.duration, easing: Easing.linear }),
+            withTiming(0, { duration: 10 })
+          ),
+          -1
+        )
+      );
+    });
+  }, [p0, p1, p2, p3, p4, p5, p6, p7]);
+
+  return (
+    <>
+      {SPARKS.map((spark, i) => {
+        const rad = (spark.angle * Math.PI) / 180;
+        const sparkX = cx + Math.cos(rad) * glowR * spark.dist;
+        const sparkY = cy + Math.sin(rad) * glowR * spark.dist;
+        return (
+          <SparkDot
+            key={i}
+            cx={sparkX}
+            baseCy={sparkY}
+            r={spark.size}
+            drift={spark.drift}
+            hot={spark.hot}
+            progress={progress[i]}
+          />
+        );
+      })}
+    </>
+  );
+}
+
+/** Single spark particle — fades in/out and drifts upward */
+function SparkDot({
+  cx,
+  baseCy,
+  r,
+  drift,
+  hot,
+  progress,
+}: {
+  cx: number;
+  baseCy: number;
+  r: number;
+  drift: number;
+  hot: boolean;
+  progress: SharedValue<number>;
+}) {
+  const props = useAnimatedProps(() => {
+    const p = progress.value;
+    // Fade in over first 30%, fade out over remaining 70%
+    const opacity = p < 0.3 ? (p / 0.3) * 0.85 : ((1 - p) / 0.7) * 0.85;
+    return {
+      opacity,
+      cy: baseCy - p * drift,
+    };
+  });
+
+  return <AnimatedCircle cx={cx} r={r} fill={hot ? SPARK_COLOR_HOT : SPARK_COLOR} animatedProps={props} />;
 }
 
 /** Generates a 5-pointed star path centered at (cx, cy) */
