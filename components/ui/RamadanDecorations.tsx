@@ -62,7 +62,7 @@ const HANGINGS: {
     size: 6.6,
     bobDuration: 7130,
     glowDelay: 1200,
-    dropFraction: 0.55,
+    dropFraction: 0.4,
     type: 'star',
     threadWidth: 0.5,
     threadOpacity: 0.07,
