@@ -8,7 +8,7 @@ import { ModalUpdate } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { Error } from '@/components/ui';
 import { initializeListeners } from '@/device/listeners';
-import { openStore } from '@/device/updates';
+import { checkForUpdates, openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
 import { COLORS, SIZE } from '@/shared/constants';
 import logger from '@/shared/logger';
@@ -31,8 +31,8 @@ export default function Index() {
     // Initialize background/foreground state listeners (sync UI as needed)
     initializeListeners(checkInitialPermissions);
 
-    // Check for updates in background (currently disabled - github raw URL changed)
-    // checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
+    // Check for updates in background
+    checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
   }, []);
 
   // Hide splash screen once sync completes

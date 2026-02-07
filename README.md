@@ -140,6 +140,51 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 
 <br/>
 
+## 🔄 Update Popup
+
+The app checks for new versions once every 24 hours on launch (`device/updates.ts`). The installed version is compared against the store/remote version using semantic versioning (`shared/versionUtils.ts`):
+
+| Scenario                                          | Result                                                                                                                                                                                                   |
+| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Remote version greater than installed version** | User sees a dismissible update popup with "Later" and "Update" buttons. "Update" opens the platform's app store. "Later" dismisses the popup. The popup will reappear on the next launch after 24 hours. |
+| **Remote version equal to installed version**     | Nothing happens. No popup shown. The user is on the latest version.                                                                                                                                      |
+| **Remote version less than installed version**    | Nothing happens. No popup shown. The user has a newer version than what is listed remotely (e.g., the remote config hasn't been updated yet after a release).                                            |
+| **Remote version is `null` or fetch fails**       | Nothing happens. No popup shown. The check is silently skipped and retried after 24 hours. The app never crashes from a failed update check.                                                             |
+
+The popup modal is implemented in `components/modals/Update.tsx` and its state is managed by `popupUpdateEnabledAtom` in `stores/ui.ts`.
+
+### Version Sources
+
+Environment is determined by `EXPO_PUBLIC_ENV` via `isProd()` in `shared/config.ts`. When set to `prod`, the production path is used; all other values (`preview`, `local`, unset) use the UAT path.
+
+| Environment    | iOS                                                                   | Android                                                    |
+| -------------- | --------------------------------------------------------------------- | ---------------------------------------------------------- |
+| **Production** | iTunes Lookup API (`itunes.apple.com/lookup?bundleId=...&country=gb`) | `releases.json` → `production.updatePopup.android.version` |
+| **UAT**        | `releases.json` → `uat.updatePopup.ios.version`                       | `releases.json` → `uat.updatePopup.android.version`        |
+
+Production iOS uses the iTunes API for automatic detection. All other combinations read from `releases.json` at the repository root on the `main` branch (fetched via `raw.githubusercontent.com`). Changes to `releases.json` on other branches have no effect.
+
+> **Note:** `production.updatePopup.ios.version` is set to `null` by design — production iOS version detection is fully automatic via the iTunes API, so this field is never read. Setting it to any value has no effect. It exists for structural consistency.
+
+Each entry in `releases.json` has a `_comment` field explaining its purpose, the version comparison behavior, and when to update it.
+
+### Release Workflow
+
+1. Push new app update to stores
+2. Wait for store release
+3. Update the appropriate version in `releases.json` on `main` branch
+4. Users on outdated versions see the update popup on next launch (within 24 hours)
+
+### Throttle & Failure Behavior
+
+The 24-hour throttle timer is always set regardless of whether the check succeeds or fails. This means:
+
+- On success: the next check occurs no sooner than 24 hours later
+- On failure (network error, malformed response, etc.): the check is silently skipped and the next retry occurs no sooner than 24 hours later
+- The app never shows an error to the user for a failed update check
+
+<br/>
+
 ## 🕌 Prayer Times
 
 ### Standard Prayers (6)
