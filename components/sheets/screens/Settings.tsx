@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Platform, StyleSheet, Text, View, Pressable } from 'react-native';
 
 import ColorPicker from './ColorPicker';
@@ -8,11 +8,13 @@ import { Sheet, SettingsToggle } from '../parts';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { TEXT, COLORS, SPACING, SIZE, RADIUS, HIT_SLOP } from '@/shared/constants';
+import { isDecorationSeason } from '@/shared/time';
 import {
   hijriDateEnabledAtom,
   showSecondsAtom,
   showTimePassedAtom,
   showArabicNamesAtom,
+  decorationsEnabledAtom,
   countdownBarShownAtom,
   setSettingsSheetModal,
   hideSettingsSheet,
@@ -25,6 +27,8 @@ export default function BottomSheetSettings() {
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
   const [showArabicNames, setShowArabicNames] = useAtom(showArabicNamesAtom);
+  const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
+  const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
 
   const handleDismiss = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -81,6 +85,13 @@ export default function BottomSheetSettings() {
             value={showArabicNames}
             onToggle={() => setShowArabicNames(!showArabicNames)}
           />
+          {showDecorationToggle && (
+            <SettingsToggle
+              label="Show decorations"
+              value={decorationsEnabled}
+              onToggle={() => setDecorationsEnabled(!decorationsEnabled)}
+            />
+          )}
         </View>
       </View>
 

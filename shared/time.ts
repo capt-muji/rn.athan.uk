@@ -143,6 +143,15 @@ export const isRamadan = (): boolean => {
 };
 
 /**
+ * Checks if the current date falls within any decoration season (Ramadan, Eid, etc.)
+ * Single extension point — add future season checks here.
+ * @returns boolean indicating if decorations should be available
+ */
+export const isDecorationSeason = (): boolean => {
+  return isRamadan();
+};
+
+/**
  * Checks if a given date is January 1st (needed for CountdownBar yesterday's data)
  * @param date Date object
  * @returns boolean indicating if the date is January 1st
