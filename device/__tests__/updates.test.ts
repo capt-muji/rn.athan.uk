@@ -446,7 +446,7 @@ describe('openStore', () => {
   it('opens App Store URL on iOS', async () => {
     await openStore();
 
-    expect(mockOpenURL).toHaveBeenCalledWith('itms-apps://apps.apple.com/app/id123456789');
+    expect(mockOpenURL).toHaveBeenCalledWith('https://apps.apple.com/gb/app/athan-london/id123456789');
   });
 
   it('logs error when Linking.openURL throws on iOS', async () => {
