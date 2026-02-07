@@ -1,10 +1,26 @@
 {
-  "prod": {
-    "ios": {
-      "version": "1.0.27"
-    },
-    "android": {
-      "version": "1.0.27"
+  "production": {
+    "updatePopup": {
+      "ios": {
+        "version": null,
+        "_comment": "NOT USED. Production iOS detects the latest App Store version automatically via the iTunes Lookup API (this file is never fetched for production iOS). Kept for structural consistency. Setting this to any value has no effect on production iOS builds. Update popups on production iOS are triggered by App Store releases, no manual version management needed here."
+      },
+      "android": {
+        "version": "1.0.0",
+        "_comment": "Set this to the latest Play Store version. Compared against the user's installed version on app launch (once per 24h). If this value is HIGHER than installed: user sees a dismissible update popup directing them to the Play Store. If EQUAL or LOWER than installed: nothing happens, no popup shown. Update this value on the main branch after each Play Store release to trigger the update popup on users' devices on their next app launch (once per 24h) on Android production builds."
+      }
+    }
+  },
+  "uat": {
+    "updatePopup": {
+      "ios": {
+        "version": "1.0.0",
+        "_comment": "Set this to the latest TestFlight build version. Compared against the tester's installed version on app launch (once per 24h). If this value is HIGHER than installed: tester sees a dismissible update popup directing them to the App Store. If EQUAL or LOWER than installed: nothing happens, no popup shown. This version property is required and managed here because there is no public API for TestFlight versions. Update this value on the main branch after each TestFlight release to trigger the update popup on testers' devices on their next app launch (once per 24h) on IOS UAT builds."
+      },
+      "android": {
+        "version": "1.0.0",
+        "_comment": "Set this to the latest internal testing build version. Compared against the tester's installed version on app launch (once per 24h). If this value is HIGHER than installed: tester sees a dismissible update popup directing them to the Play Store. If EQUAL or LOWER than installed: nothing happens, no popup shown. This version property is required and managed here because Play Store internal testing versions are not publicly queryable. Update this value on the main branch after each internal testing release to trigger the update popup on testers' devices on their next app launch (once per 24h) on Android UAT builds."
+      }
     }
   }
 }
