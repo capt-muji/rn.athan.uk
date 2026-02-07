@@ -23,11 +23,22 @@ const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 
 // --- Colors (tuned for #031a4c → #5b1eaa background) ---
-const COLOR = '#FFC947';
-const GLOW_CENTER = '#FFECB3';
-const GLOW_MID = '#FFD54F';
+const MOON_COLOR = '#FFC947';
+const MOON_GLOW_MID = '#FFD54F';
 const THREAD_COLOR = '#C9A87C';
 const GLOW_PULSE_DURATION = 3000;
+
+// Lantern palette (gold body + warm candle glow)
+const LANTERN_COLOR = '#FFC947';
+const LANTERN_GLOW_CENTER = '#FFECB3';
+const LANTERN_GLOW_MID = '#FFD54F';
+const LANTERN_FLICKER_CENTER = '#FFF3E0'; // warm white core
+const LANTERN_FLICKER_MID = '#FFAB40'; // deep amber edge
+
+// Star palette (gold, matching moon/lantern)
+const STAR_COLOR = '#FFC947';
+const STAR_GLOW_CENTER = '#FFECB3';
+const STAR_GLOW_MID = '#FFD54F';
 
 /** Hanging configs — variable speeds, distances, glow delays, depth, and types */
 const HANGINGS: {
@@ -44,14 +55,14 @@ const HANGINGS: {
   glowMin: number;
   glowMax: number;
 }[] = [
-  // Midground star (left)
+  // Midground star (left) — slow, wide sway
   {
     xPct: 0.28,
     lineLen: 77,
     size: 6.6,
-    bobDuration: 4500,
-    glowDelay: 800,
-    dropFraction: 0.7,
+    bobDuration: 7130,
+    glowDelay: 1200,
+    dropFraction: 0.55,
     type: 'star',
     threadWidth: 0.5,
     threadOpacity: 0.07,
@@ -62,9 +73,9 @@ const HANGINGS: {
   // Foreground lantern (right) — strongest presence
   {
     xPct: 0.78,
-    lineLen: 115,
+    lineLen: 95,
     size: 7.2,
-    bobDuration: 3200,
+    bobDuration: 5500,
     glowDelay: 1600,
     dropFraction: 1.0,
     type: 'lantern',
@@ -74,14 +85,14 @@ const HANGINGS: {
     glowMin: 0.5,
     glowMax: 0.9,
   },
-  // Background star (far right) — most subtle
+  // Background star (far right) — quick, shallow bounce
   {
-    xPct: 0.9,
+    xPct: 0.87,
     lineLen: 88,
     size: 5.3,
-    bobDuration: 5800,
-    glowDelay: 400,
-    dropFraction: 0.5,
+    bobDuration: 3400,
+    glowDelay: 200,
+    dropFraction: 0.35,
     type: 'star',
     threadWidth: 0.35,
     threadOpacity: 0.04,
@@ -105,6 +116,15 @@ const SPARKS = [
   { angle: 337, dist: 0.5, size: 0.7, delay: 500, duration: 3500, drift: 1, hot: true },
 ];
 
+/** Spark particles for the moon — fewer and softer than lantern */
+const MOON_SPARKS = [
+  { angle: 30, dist: 0.55, size: 0.7, delay: 0, duration: 3200, drift: 2.5, hot: true },
+  { angle: 120, dist: 0.7, size: 0.35, delay: 600, duration: 1800, drift: 4, hot: false },
+  { angle: 200, dist: 0.5, size: 0.8, delay: 1100, duration: 2700, drift: 2, hot: true },
+  { angle: 270, dist: 0.65, size: 0.4, delay: 400, duration: 2100, drift: 3.5, hot: false },
+  { angle: 340, dist: 0.48, size: 0.6, delay: 800, duration: 3600, drift: 1.5, hot: true },
+];
+
 export default function RamadanDecorations() {
   const { width, height } = useWindowDimensions();
   const { top: insetTop } = useSafeAreaInsets();
@@ -119,6 +139,9 @@ export default function RamadanDecorations() {
   const bobs = [bob0, bob1, bob2];
   const glows = [glow0, glow1, glow2];
 
+  // Lantern candle flicker
+  const lanternFlicker = useSharedValue(0.6);
+
   // Moon motion
   const moonBob = useSharedValue(0);
   const moonGlowOpacity = useSharedValue(0);
@@ -129,7 +152,7 @@ export default function RamadanDecorations() {
   const vScale = Platform.OS === 'android' ? 0.6 : 1;
   const svgHeight = height * 0.385 * vScale;
   const moonCx = width * 0.13;
-  const moonCy = insetTop + 76;
+  const moonCy = insetTop + 62;
   const moonR = 15;
   const maxStarY = insetTop + 65;
 
@@ -169,6 +192,24 @@ export default function RamadanDecorations() {
       );
     });
 
+    // Lantern candle flicker — irregular sequence to feel organic
+    const flickerEase = Easing.inOut(Easing.quad);
+    lanternFlicker.value = withRepeat(
+      withSequence(
+        withTiming(0.8, { duration: 500, easing: flickerEase }),
+        withTiming(0.55, { duration: 700, easing: flickerEase }),
+        withTiming(0.75, { duration: 400, easing: flickerEase }),
+        withTiming(0.6, { duration: 800, easing: flickerEase }),
+        withTiming(0.85, { duration: 550, easing: flickerEase }),
+        withTiming(0.5, { duration: 750, easing: flickerEase }),
+        withTiming(0.7, { duration: 450, easing: flickerEase }),
+        withTiming(0.55, { duration: 900, easing: flickerEase }),
+        withTiming(0.78, { duration: 600, easing: flickerEase }),
+        withTiming(0.6, { duration: 650, easing: flickerEase })
+      ),
+      -1
+    );
+
     // Moon gentle bob
     moonBob.value = withRepeat(
       withSequence(withTiming(7, { duration: 4500, easing: ease }), withTiming(0, { duration: 4500, easing: ease })),
@@ -184,7 +225,7 @@ export default function RamadanDecorations() {
       ),
       -1
     );
-  }, [bob0, bob1, bob2, glow0, glow1, glow2, maxStarY, moonBob, moonGlowOpacity]);
+  }, [bob0, bob1, bob2, glow0, glow1, glow2, lanternFlicker, maxStarY, moonBob, moonGlowOpacity]);
 
   if (!isRamadan() || !decorationsEnabled) return null;
 
@@ -223,6 +264,7 @@ export default function RamadanDecorations() {
         <FloatingStar
           key={i}
           index={i}
+          flickerOpacity={star.type === 'lantern' ? lanternFlicker : undefined}
           x={width * star.xPct}
           lineLen={star.lineLen * vScale}
           size={star.size}
@@ -286,11 +328,11 @@ function FloatingMoon({
       <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
         <Defs>
           <RadialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-            <Stop offset="0%" stopColor={GLOW_MID} stopOpacity={0.4} />
-            <Stop offset="15%" stopColor={COLOR} stopOpacity={0.25} />
-            <Stop offset="35%" stopColor={COLOR} stopOpacity={0.12} />
-            <Stop offset="65%" stopColor={COLOR} stopOpacity={0.03} />
-            <Stop offset="100%" stopColor={COLOR} stopOpacity={0} />
+            <Stop offset="0%" stopColor={MOON_GLOW_MID} stopOpacity={0.4} />
+            <Stop offset="15%" stopColor={MOON_COLOR} stopOpacity={0.25} />
+            <Stop offset="35%" stopColor={MOON_COLOR} stopOpacity={0.12} />
+            <Stop offset="65%" stopColor={MOON_COLOR} stopOpacity={0.03} />
+            <Stop offset="100%" stopColor={MOON_COLOR} stopOpacity={0} />
           </RadialGradient>
           <Mask id="crescentMask">
             <Rect x={0} y={0} width={svgSize} height={svgSize} fill="black" />
@@ -300,7 +342,8 @@ function FloatingMoon({
         </Defs>
 
         <AnimatedCircle cx={localCx - 6} cy={localCy + 4} r={glowR} fill="url(#moonGlow)" animatedProps={glowProps} />
-        <Circle cx={localCx} cy={localCy} r={r} fill={COLOR} opacity={1} mask="url(#crescentMask)" />
+        <MoonSparks cx={localCx - 6} cy={localCy + 4} glowR={glowR * 0.6} />
+        <Circle cx={localCx} cy={localCy} r={r} fill={MOON_COLOR} opacity={1} mask="url(#crescentMask)" />
       </Svg>
     </Animated.View>
   );
@@ -338,6 +381,7 @@ function HangingWire({
 /** Star/lantern shape + glow — Animated.View with translateY for reliable movement */
 function FloatingStar({
   index,
+  flickerOpacity,
   x,
   lineLen,
   size,
@@ -347,6 +391,7 @@ function FloatingStar({
   bodyOpacity,
 }: {
   index: number;
+  flickerOpacity?: SharedValue<number>;
   x: number;
   lineLen: number;
   size: number;
@@ -368,6 +413,11 @@ function FloatingStar({
   }));
 
   const glowProps = useAnimatedProps(() => ({ opacity: glowOpacity.value }));
+  const flickerProps = useAnimatedProps(() => ({
+    opacity: flickerOpacity ? flickerOpacity.value : 0,
+  }));
+
+  const flickerGradientId = `flickerGlow${index}`;
 
   return (
     <Animated.View
@@ -378,15 +428,32 @@ function FloatingStar({
       <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
         <Defs>
           <RadialGradient id={gradientId} cx="50%" cy="50%" r="50%">
-            <Stop offset="0%" stopColor={GLOW_CENTER} stopOpacity={1} />
-            <Stop offset="8%" stopColor={GLOW_MID} stopOpacity={0.75} />
-            <Stop offset="18%" stopColor={COLOR} stopOpacity={0.4} />
-            <Stop offset="40%" stopColor={COLOR} stopOpacity={0.15} />
-            <Stop offset="70%" stopColor={COLOR} stopOpacity={0.04} />
-            <Stop offset="100%" stopColor={COLOR} stopOpacity={0} />
+            <Stop offset="0%" stopColor={type === 'lantern' ? LANTERN_GLOW_CENTER : STAR_GLOW_CENTER} stopOpacity={1} />
+            <Stop offset="8%" stopColor={type === 'lantern' ? LANTERN_GLOW_MID : STAR_GLOW_MID} stopOpacity={0.75} />
+            <Stop offset="18%" stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.4} />
+            <Stop offset="40%" stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.15} />
+            <Stop offset="70%" stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.04} />
+            <Stop offset="100%" stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0} />
           </RadialGradient>
+          {type === 'lantern' && (
+            <RadialGradient id={flickerGradientId} cx="50%" cy="55%" r="35%">
+              <Stop offset="0%" stopColor={LANTERN_FLICKER_CENTER} stopOpacity={0.9} />
+              <Stop offset="30%" stopColor={LANTERN_GLOW_MID} stopOpacity={0.5} />
+              <Stop offset="60%" stopColor={LANTERN_FLICKER_MID} stopOpacity={0.2} />
+              <Stop offset="100%" stopColor={LANTERN_FLICKER_MID} stopOpacity={0} />
+            </RadialGradient>
+          )}
         </Defs>
         <AnimatedCircle cx={cx} cy={cy} r={glowR} fill={`url(#${gradientId})`} animatedProps={glowProps} />
+        {type === 'lantern' && (
+          <AnimatedCircle
+            cx={cx}
+            cy={cy + visualSize * 0.3}
+            r={glowR * 0.45}
+            fill={`url(#${flickerGradientId})`}
+            animatedProps={flickerProps}
+          />
+        )}
         {type === 'lantern' && <LanternSparks cx={cx} cy={cy} glowR={glowR} />}
         {type === 'lantern' ? (
           <G
@@ -394,26 +461,72 @@ function FloatingStar({
             opacity={bodyOpacity}>
             <Path
               d="M281.603,179.637c0.828,0,1.5-0.671,1.5-1.5v-4.601h4.451c0.828,0,1.5-0.671,1.5-1.5v-9.699c0-0.829-0.672-1.5-1.5-1.5h-24.146c-3.842-27.97-40.149-45.072-56.818-51.509c0.26-0.794,0.404-1.637,0.404-2.515c0-3.405-2.109-6.332-5.133-7.646c1.078-0.939,1.76-2.294,1.76-3.806c0-1.994-1.182-3.722-2.906-4.57l-0.781-6.204c3.354-0.748,5.861-3.736,5.861-7.315v-0.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.5c0,3.579,2.508,6.567,5.861,7.315l-0.781,6.204c-1.725,0.849-2.906,2.576-2.906,4.57c0,1.512,0.682,2.866,1.758,3.806c-3.021,1.313-5.131,4.24-5.131,7.646c0,0.877,0.144,1.721,0.404,2.515c-16.67,6.437-52.977,23.539-56.818,51.509h-24.148c-0.828,0-1.5,0.671-1.5,1.5v9.699c0,0.829,0.672,1.5,1.5,1.5h4.451v4.601c0,0.829,0.672,1.5,1.5,1.5h3.271v162.282h-3.271c-0.828,0-1.5,0.671-1.5,1.5v4.598h-4.451c-0.828,0-1.5,0.671-1.5,1.5v9.702c0,0.829,0.672,1.5,1.5,1.5h32.018c17.57,23.99,57.244,35.867,57.244,35.867s39.674-11.877,57.244-35.867h32.016c0.828,0,1.5-0.671,1.5-1.5v-9.702c0-0.829-0.672-1.5-1.5-1.5h-4.451v-4.598c0-0.829-0.672-1.5-1.5-1.5h-3.27V179.637H281.603z M161.343,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z M221.644,331.651h-46.701V228.584c0-24.726,23.352-40.929,23.352-40.929s23.35,16.203,23.35,40.929V331.651z M262.04,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z"
-              fill={COLOR}
+              fill={LANTERN_COLOR}
             />
             <Path
               d="M198.294,39.054c4.143,0,7.5-3.358,7.5-7.5v-0.963c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.963C190.794,35.695,194.151,39.054,198.294,39.054z"
-              fill={COLOR}
+              fill={LANTERN_COLOR}
             />
             <Path
               d="M198.294,15.962c4.143,0,7.5-3.357,7.5-7.5V7.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,12.604,194.151,15.962,198.294,15.962z"
-              fill={COLOR}
+              fill={LANTERN_COLOR}
             />
             <Path
               d="M198.294,62.145c4.143,0,7.5-3.358,7.5-7.5v-0.962c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,58.786,194.151,62.145,198.294,62.145z"
-              fill={COLOR}
+              fill={LANTERN_COLOR}
             />
           </G>
         ) : (
-          <Path d={fivePointStar(cx, cy, visualSize, visualSize * 0.4)} fill={COLOR} opacity={bodyOpacity} />
+          <Path d={fivePointStar(cx, cy, visualSize, visualSize * 0.4)} fill={STAR_COLOR} opacity={bodyOpacity} />
         )}
       </Svg>
     </Animated.View>
+  );
+}
+
+/** Animated spark particles that float around the moon glow */
+function MoonSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: number }) {
+  const p0 = useSharedValue(0);
+  const p1 = useSharedValue(0);
+  const p2 = useSharedValue(0);
+  const p3 = useSharedValue(0);
+  const p4 = useSharedValue(0);
+  const progress = [p0, p1, p2, p3, p4];
+
+  useEffect(() => {
+    MOON_SPARKS.forEach((spark, i) => {
+      progress[i].value = withDelay(
+        spark.delay,
+        withRepeat(
+          withSequence(
+            withTiming(1, { duration: spark.duration, easing: Easing.linear }),
+            withTiming(0, { duration: 10 })
+          ),
+          -1
+        )
+      );
+    });
+  }, [p0, p1, p2, p3, p4]);
+
+  return (
+    <>
+      {MOON_SPARKS.map((spark, i) => {
+        const rad = (spark.angle * Math.PI) / 180;
+        const sparkX = cx + Math.cos(rad) * glowR * spark.dist;
+        const sparkY = cy + Math.sin(rad) * glowR * spark.dist;
+        return (
+          <SparkDot
+            key={i}
+            cx={sparkX}
+            baseCy={sparkY}
+            r={spark.size}
+            drift={spark.drift}
+            hot={spark.hot}
+            progress={progress[i]}
+          />
+        );
+      })}
+    </>
   );
 }
 
