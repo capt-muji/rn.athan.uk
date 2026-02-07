@@ -12,7 +12,7 @@ const IS_IOS = Platform.OS === 'ios';
 const ITUNES_LOOKUP_URL = 'https://itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb';
 const RELEASES_URL = 'https://raw.githubusercontent.com/capt-muji/rn.athan.uk/main/releases.json';
 
-const APP_STORE_URL = `itms-apps://apps.apple.com/app/id${APP_CONFIG.iosAppId}`;
+const APP_STORE_URL = `https://apps.apple.com/gb/app/athan-london/id${APP_CONFIG.iosAppId}`;
 const PLAY_STORE_URL = `market://details?id=${APP_CONFIG.androidPackage}`;
 
 type PlatformVersion = { version: string | null };
