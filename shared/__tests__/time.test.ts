@@ -5,6 +5,7 @@ import {
   getMidnightTime,
   isFriday,
   isDecember,
+  isRamadan,
   isJanuaryFirst,
   createLondonDate,
   formatDateLong,
@@ -253,6 +254,41 @@ describe('isDecember', () => {
   it('returns false in June', () => {
     jest.setSystemTime(new Date('2026-06-15T12:00:00'));
     expect(isDecember()).toBe(false);
+  });
+});
+
+describe('isRamadan', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('returns true during Ramadan (2026-03-10 falls in Ramadan 1447)', () => {
+    jest.setSystemTime(new Date('2026-03-10T12:00:00'));
+    expect(isRamadan()).toBe(true);
+  });
+
+  it('returns false outside Ramadan', () => {
+    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    expect(isRamadan()).toBe(false);
+  });
+
+  it("returns true 15 days before Ramadan (Sha'ban 15, 1447 = 2026-02-03)", () => {
+    jest.setSystemTime(new Date('2026-02-03T12:00:00'));
+    expect(isRamadan()).toBe(true);
+  });
+
+  it("returns true in late Sha'ban (Sha'ban 27, 1447 = 2026-02-15)", () => {
+    jest.setSystemTime(new Date('2026-02-15T12:00:00'));
+    expect(isRamadan()).toBe(true);
+  });
+
+  it("returns false 16+ days before Ramadan (Sha'ban 14, 1447 = 2026-02-02)", () => {
+    jest.setSystemTime(new Date('2026-02-02T12:00:00'));
+    expect(isRamadan()).toBe(false);
   });
 });
 

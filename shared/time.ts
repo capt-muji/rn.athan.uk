@@ -1,7 +1,7 @@
 import { addDays, format, setHours, setMinutes, intervalToDuration, isFuture, isToday, isYesterday } from 'date-fns';
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
-import { TIME_ADJUSTMENTS } from '@/shared/constants';
+import { ISLAMIC_DAY, TIME_ADJUSTMENTS } from '@/shared/constants';
 
 // =============================================================================
 // DATE CREATION & CONVERSION
@@ -113,6 +113,34 @@ export const isFriday = (date?: string | Date): boolean => {
  * @returns boolean indicating if current month is December
  */
 export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
+
+/**
+ * Checks if the current date falls within Ramadan or the last days of Sha'ban
+ * Uses ISLAMIC_DAY.RAMADAN_DECORATION_DAYS_BEFORE to determine the pre-Ramadan window
+ * Uses the islamic-umalqura calendar via Intl.DateTimeFormat
+ * @returns boolean indicating if current date is during Ramadan season
+ */
+export const isRamadan = (): boolean => {
+  try {
+    const date = createLondonDate();
+    const monthFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', { month: 'numeric' });
+    const month = monthFmt.format(date);
+
+    // During Ramadan (month 9)
+    if (month === '9') return true;
+
+    // Pre-Ramadan window in Sha'ban
+    if (month === '8') {
+      const dayFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', { day: 'numeric' });
+      const day = parseInt(dayFmt.format(date), 10);
+      return day >= 30 - ISLAMIC_DAY.RAMADAN_DECORATION_DAYS_BEFORE;
+    }
+
+    return false;
+  } catch {
+    return false;
+  }
+};
 
 /**
  * Checks if a given date is January 1st (needed for CountdownBar yesterday's data)

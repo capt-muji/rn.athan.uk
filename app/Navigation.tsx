@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Screen from '@/app/Screen';
-import { BackgroundGradients } from '@/components/ui';
+import { BackgroundGradients, RamadanDecorations } from '@/components/ui';
 import { SettingsButton } from '@/components/ui';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
@@ -25,6 +25,7 @@ export default function Navigation() {
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.navigation.background }}>
       <BackgroundGradients />
+      <RamadanDecorations />
 
       <PagerView style={{ flex: 1 }} initialPage={0} overdrag={true} onPageSelected={handlePageSelected}>
         <Screen type={ScheduleType.Standard} />
