@@ -114,7 +114,8 @@ const HANGINGS: {
 ];
 
 /** Cloud fill colors */
-const CLOUD_FILLS = ['#4a3d7a', '#3d3270', '#433578'] as const;
+// Cloud fills — all close to background (#031a4c → #5b1eaa), darker = more distant
+const CLOUD_FILLS = ['#2b1d5e', '#2e2068', '#301a6e'] as const;
 
 /** Randomized cloud configs — height relative to moon, wrapping across screen */
 function useCloudConfigs(moonR: number, moonCy: number, moonBobMax: number, screenWidth: number, starMaxY: number) {
