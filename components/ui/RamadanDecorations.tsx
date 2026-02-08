@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, {
   Easing,
@@ -66,9 +66,9 @@ const HANGINGS: {
   glowMin: number;
   glowMax: number;
 }[] = [
-  // Midground star (left) — slow, wide sway
+  // Midground star (right) — slow, wide sway
   {
-    xPct: 0.26,
+    xPct: 0.87,
     lineLen: 77,
     size: 6.6,
     bobDuration: 7130,
@@ -96,9 +96,9 @@ const HANGINGS: {
     glowMin: 0.5,
     glowMax: 0.9,
   },
-  // Background star (far right) — quick, shallow bounce
+  // Background star (left) — quick, shallow bounce
   {
-    xPct: 0.87,
+    xPct: 0.26,
     lineLen: 68,
     size: 5.3,
     bobDuration: 3400,
@@ -113,13 +113,92 @@ const HANGINGS: {
   },
 ];
 
-/** Misty cloud configs — two clouds at different sizes for depth */
-const CLOUDS = [
-  // Smaller cloud — left side near moon
-  { xPct: 0.14, yOffset: 53, scale: 0.6, opacity: 0.22, fill: '#4a3d7a', driftDuration: 50000, driftAmount: 30 },
-  // Large cloud — right side near right star
-  { xPct: 0.88, yOffset: 60, scale: 0.85, opacity: 0.3, fill: '#3d3270', driftDuration: 40000, driftAmount: 27 },
-] as const;
+/** Cloud fill colors */
+const CLOUD_FILLS = ['#4a3d7a', '#3d3270', '#433578'] as const;
+
+/** Randomized cloud configs — height relative to moon, wrapping across screen */
+function useCloudConfigs(moonR: number, moonCy: number, moonBobMax: number, screenWidth: number, starMaxY: number) {
+  return useMemo(() => {
+    const moonH = moonR * 2;
+    // Height constraints: 70% – 200% of moon height, +30% size boost
+    const sizeBoost = 1.3;
+    const minH = moonH * 0.7 * sizeBoost;
+    const maxH = moonH * 2 * sizeBoost;
+
+    // Two base heights + third at 1.5× the largest
+    const smallH = minH + Math.random() * (maxH * 0.4 - minH);
+    const largeH = Math.min(smallH * (1.3 + Math.random() * 0.7), maxH);
+    const topH = largeH * 1.5;
+
+    const smallScale = smallH / 100;
+    const largeScale = largeH / 100;
+    const topScale = topH / 100;
+
+    // Opacity proportional to cloud height (32-60% range)
+    const heights = [smallH, largeH, topH];
+    const hMin = Math.min(...heights);
+    const hMax = Math.max(...heights);
+    const hRange = hMax - hMin || 1;
+    const opacityFor = (h: number) => 0.27 + ((h - hMin) / hRange) * 0.24;
+
+    // Same random direction for all
+    const direction = Math.random() > 0.5 ? 1 : -1;
+
+    // Random start positions (0-1 progress offset)
+    const startPos = [Math.random(), Math.random(), Math.random()];
+
+    // Speed: base ~36-46s to cross screen
+    const baseDuration = 40635 + Math.random() * 11288;
+
+    // Cloud widths (for wrapping distance calc, include mist padding)
+    const smallW = 160 * smallScale * 1.4;
+    const largeW = 160 * largeScale * 1.4;
+    const topW = 160 * topScale * 1.4;
+
+    // Lowest point clouds can touch = middle of moon's vertical movement
+    const moonMidY = moonCy + moonBobMax / 2 + moonR;
+    // Small cloud bottom at moon mid-bob point
+    const smallCloudTop = moonMidY - smallH;
+    // Large cloud starts from halfway up the small cloud
+    const largeCloudTop = smallCloudTop + smallH / 2 - largeH;
+
+    // Top cloud: always higher than both, not connected
+    // Min clearance: touching the higher cloud or clearing by 70% of second largest (largeH)
+    const higherCloudTop = Math.min(smallCloudTop, largeCloudTop);
+    const minClearance = largeH * 0.7;
+    // Bottom of top cloud can be at most at higherCloudTop (touching) minus clearance
+    const topCloudMaxBottom = higherCloudTop - minClearance;
+    // Top cloud can't go higher than the max star height
+    const topCloudMinTop = starMaxY - topH;
+    // Random position between min top and max bottom
+    const topCloudMaxTop = topCloudMaxBottom - topH;
+    const topCloudTop = topCloudMinTop + Math.random() * Math.max(0, topCloudMaxTop - topCloudMinTop);
+
+    return {
+      direction,
+      clouds: [
+        // Small (back) cloud
+        {
+          scale: smallScale, opacity: opacityFor(smallH), fill: CLOUD_FILLS[0],
+          top: smallCloudTop, totalDist: screenWidth + smallW,
+          duration: baseDuration, path: CLOUD_PATH_REAR, startPos: startPos[0],
+        },
+        // Large (mid) cloud
+        {
+          scale: largeScale, opacity: opacityFor(largeH), fill: CLOUD_FILLS[1],
+          top: largeCloudTop, totalDist: screenWidth + largeW,
+          duration: baseDuration * 0.85, path: CLOUD_PATH_FRONT, startPos: startPos[1],
+        },
+        // Top (largest) cloud — 1.5× large, highest position
+        {
+          scale: topScale, opacity: opacityFor(topH), fill: CLOUD_FILLS[2],
+          top: topCloudTop, totalDist: screenWidth + topW,
+          duration: baseDuration * 0.7, path: CLOUD_PATH_TOP, startPos: startPos[2],
+        },
+      ],
+    };
+  }, [moonR, moonCy, moonBobMax, screenWidth, starMaxY]);
+}
 
 /** Spark/firefly particles around lantern glow */
 const SPARK_COLOR = '#FFD700'; // bright gold
@@ -161,10 +240,11 @@ export default function RamadanDecorations() {
   // Lantern candle flicker
   const lanternFlicker = useSharedValue(0.6);
 
-  // Cloud drift
-  const cloudDrift0 = useSharedValue(0);
-  const cloudDrift1 = useSharedValue(0);
-  const cloudDrifts = [cloudDrift0, cloudDrift1];
+  // Cloud progress (0→1 linear, wrapping)
+  const cloudProg0 = useSharedValue(0);
+  const cloudProg1 = useSharedValue(0);
+  const cloudProg2 = useSharedValue(0);
+  const cloudProgs = [cloudProg0, cloudProg1, cloudProg2];
 
   // Moon motion
   const moonBob = useSharedValue(0);
@@ -187,6 +267,11 @@ export default function RamadanDecorations() {
   // Moon glow radius (determines Animated.View size)
   const moonGlowR = moonR * 2.5;
   const moonSvgSize = moonGlowR * 2;
+
+  const moonBobMax = 7; // matches the withTiming(7, ...) in useEffect
+  // Highest point any star reaches (smallest lineLen + size)
+  const starHighestY = Math.min(...HANGINGS.filter(h => h.type === 'star').map(h => h.lineLen * vScale + h.size));
+  const cloudConfig = useCloudConfigs(moonR, moonCy, moonBobMax, width, starHighestY);
 
   useEffect(() => {
     const ease = Easing.inOut(Easing.ease);
@@ -234,21 +319,26 @@ export default function RamadanDecorations() {
       -1
     );
 
-    // Cloud drift — slow horizontal oscillation
-    CLOUDS.forEach((cloud, i) => {
-      cloudDrifts[i].value = withRepeat(
-        withSequence(
-          withTiming(cloud.driftAmount, { duration: cloud.driftDuration / 2, easing: ease }),
-          withTiming(-cloud.driftAmount, { duration: cloud.driftDuration / 2, easing: ease })
-        ),
-        -1,
-        true
+    // Cloud progress — linear wrapping loop, random start position
+    cloudConfig.clouds.forEach((cloud, i) => {
+      // Start at random position, complete first partial cycle, then full loops
+      const remaining = 1 - cloud.startPos;
+      cloudProgs[i].value = cloud.startPos;
+      cloudProgs[i].value = withSequence(
+        withTiming(1, { duration: cloud.duration * remaining, easing: Easing.linear }),
+        withRepeat(
+          withSequence(
+            withTiming(0, { duration: 0 }),
+            withTiming(1, { duration: cloud.duration, easing: Easing.linear })
+          ),
+          -1
+        )
       );
     });
 
     // Moon gentle bob
     moonBob.value = withRepeat(
-      withSequence(withTiming(7, { duration: 4500, easing: ease }), withTiming(0, { duration: 4500, easing: ease })),
+      withSequence(withTiming(moonBobMax, { duration: 4500, easing: ease }), withTiming(0, { duration: 4500, easing: ease })),
       -1
     );
 
@@ -261,7 +351,7 @@ export default function RamadanDecorations() {
       ),
       -1
     );
-  }, [bob0, bob1, bob2, cloudDrift0, cloudDrift1, glow0, glow1, glow2, lanternFlicker, maxStarY, moonBob, moonGlowOpacity]);
+  }, [bob0, bob1, bob2, cloudConfig, cloudProg0, cloudProg1, cloudProg2, glow0, glow1, glow2, lanternFlicker, maxStarY, moonBob, moonGlowOpacity]);
 
   if (!isRamadan() || !decorationsEnabled) return null;
 
@@ -282,27 +372,10 @@ export default function RamadanDecorations() {
             opacity={star.threadOpacity}
           />
         ))}
+
       </Svg>
 
-      {/* zIndex 1: Back cloud (small, left side) */}
-      <MistyCloud
-        config={CLOUDS[0]}
-        screenWidth={width}
-        insetTop={insetTop}
-        drift={cloudDrifts[0]}
-        zIndex={1}
-      />
-
-      {/* zIndex 2: Front cloud (large, right side) */}
-      <MistyCloud
-        config={CLOUDS[1]}
-        screenWidth={width}
-        insetTop={insetTop}
-        drift={cloudDrifts[1]}
-        zIndex={2}
-      />
-
-      {/* zIndex 3: Moon — in front of clouds */}
+      {/* zIndex 1: Moon */}
       <FloatingMoon
         cx={moonCx}
         cy={moonCy}
@@ -311,10 +384,10 @@ export default function RamadanDecorations() {
         svgSize={moonSvgSize}
         bobOffset={moonBob}
         glowOpacity={moonGlowOpacity}
-        zIndex={3}
+        zIndex={1}
       />
 
-      {/* zIndex 4: Left star — in front of clouds */}
+      {/* zIndex 2: Left star */}
       <FloatingStar
         index={0}
         x={width * HANGINGS[0].xPct}
@@ -324,10 +397,10 @@ export default function RamadanDecorations() {
         bobOffset={bobs[0]}
         glowOpacity={glows[0]}
         bodyOpacity={HANGINGS[0].bodyOpacity}
-        zIndex={4}
+        zIndex={2}
       />
 
-      {/* zIndex 5: Right star — in front of clouds */}
+      {/* zIndex 3: Right star */}
       <FloatingStar
         index={2}
         x={width * HANGINGS[2].xPct}
@@ -337,10 +410,37 @@ export default function RamadanDecorations() {
         bobOffset={bobs[2]}
         glowOpacity={glows[2]}
         bodyOpacity={HANGINGS[2].bodyOpacity}
+        zIndex={3}
+      />
+
+      {/* zIndex 4: Small cloud (back) — in front of stars/moon */}
+      <MistyCloud
+        config={cloudConfig.clouds[0]}
+        direction={cloudConfig.direction}
+        screenWidth={width}
+        progress={cloudProgs[0]}
+        zIndex={4}
+      />
+
+      {/* zIndex 5: Large cloud (mid) — in front of stars/moon */}
+      <MistyCloud
+        config={cloudConfig.clouds[1]}
+        direction={cloudConfig.direction}
+        screenWidth={width}
+        progress={cloudProgs[1]}
         zIndex={5}
       />
 
-      {/* zIndex 6: Lantern — in front of everything */}
+      {/* zIndex 6: Top cloud (largest) — in front of stars/moon */}
+      <MistyCloud
+        config={cloudConfig.clouds[2]}
+        direction={cloudConfig.direction}
+        screenWidth={width}
+        progress={cloudProgs[2]}
+        zIndex={6}
+      />
+
+      {/* zIndex 7: Lantern — in front of everything */}
       <FloatingStar
         index={1}
         flickerOpacity={lanternFlicker}
@@ -351,7 +451,7 @@ export default function RamadanDecorations() {
         bobOffset={bobs[1]}
         glowOpacity={glows[1]}
         bodyOpacity={HANGINGS[1].bodyOpacity}
-        zIndex={6}
+        zIndex={7}
       />
     </View>
   );
@@ -571,11 +671,22 @@ function FloatingStar({
 }
 
 /**
- * Cloud SVG path in a 160×100 viewBox.
- * Bumpy top (arcs), flat bottom — narrower cloud silhouette.
+ * Front cloud SVG path — 160×100 viewBox, bumpy top, flat bottom.
  */
-const CLOUD_PATH =
+const CLOUD_PATH_FRONT =
   'M 24,70 Q 8,70 8,55 Q 8,40 24,38 Q 26,18 44,18 Q 58,10 72,22 Q 84,8 104,18 Q 124,5 136,22 Q 152,18 154,40 Q 160,45 160,55 Q 160,70 144,70 Z';
+
+/**
+ * Rear cloud SVG path — 160×100 viewBox, wider/flatter silhouette, flat bottom.
+ */
+const CLOUD_PATH_REAR =
+  'M 16,72 Q 4,72 4,60 Q 4,50 18,48 Q 20,34 40,30 Q 52,22 68,32 Q 82,20 100,28 Q 116,18 132,30 Q 146,26 150,42 Q 158,46 158,58 Q 158,72 142,72 Z';
+
+/**
+ * Top cloud SVG path — 160×100 viewBox, elongated/stretched shape, flat bottom.
+ */
+const CLOUD_PATH_TOP =
+  'M 20,74 Q 6,74 6,62 Q 6,52 20,50 Q 24,38 42,34 Q 56,26 74,36 Q 88,24 108,34 Q 122,22 138,34 Q 148,30 152,44 Q 160,48 160,60 Q 160,74 144,74 Z';
 
 // Misty layers: each rendered at increasing scale + decreasing opacity
 const CLOUD_MIST_LAYERS = [
@@ -586,43 +697,42 @@ const CLOUD_MIST_LAYERS = [
 ];
 
 
-/** Misty cloud — SVG cloud path rendered in layered scales for soft feathered edges */
+/** Misty cloud — wraps across screen, both clouds move in the same direction */
 function MistyCloud({
   config,
+  direction,
   screenWidth,
-  insetTop,
-  drift,
+  progress,
   zIndex,
 }: {
-  config: (typeof CLOUDS)[number];
+  config: ReturnType<typeof useCloudConfigs>['clouds'][number];
+  direction: number;
   screenWidth: number;
-  insetTop: number;
-  drift: SharedValue<number>;
+  progress: SharedValue<number>;
   zIndex: number;
 }) {
-  const { xPct, yOffset, scale, opacity, fill } = config;
-  // Base viewBox is 160×100; scale it up
+  const { scale, opacity, fill, top: cloudTop, totalDist, path } = config;
   const w = 160 * scale;
   const h = 100 * scale;
-  // Extra padding for mist layers (largest layer is 1.4× base)
   const pad = Math.max(w, h) * 0.25;
   const svgW = w + pad * 2;
   const svgH = h + pad * 2;
-  const left = screenWidth * xPct - svgW / 2;
-  const top = insetTop + yOffset - svgH / 2;
 
-  const driftStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: drift.value }],
+  // Start position: fully off-screen on one side
+  const startX = direction > 0 ? -svgW : screenWidth;
+  const travel = direction > 0 ? totalDist : -totalDist;
+
+  const moveStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: startX + progress.value * travel }],
   }));
 
   const fadeMaskId = `cloudFade${zIndex}`;
 
   return (
     <Animated.View
-      style={[{ position: 'absolute', left, top, width: svgW, height: svgH, zIndex }, driftStyle]}>
+      style={[{ position: 'absolute', left: 0, top: cloudTop, width: svgW, height: svgH, zIndex }, moveStyle]}>
       <Svg width={svgW} height={svgH}>
         <Defs>
-          {/* Vertical fade — fully visible top half, fades to transparent at bottom */}
           <SvgLinearGradient id={fadeMaskId} x1="0" y1="0" x2="0" y2="1">
             <Stop offset="0%" stopColor="white" stopOpacity={1} />
             <Stop offset="55%" stopColor="white" stopOpacity={1} />
@@ -640,7 +750,7 @@ function MistyCloud({
             const ly = (svgH - lh) / 2;
             return (
               <G key={i} transform={`translate(${lx}, ${ly}) scale(${(lw / 160).toFixed(3)}, ${(lh / 100).toFixed(3)})`}>
-                <Path d={CLOUD_PATH} fill={fill} opacity={opacity * layer.opacityMul} />
+                <Path d={path} fill={fill} opacity={opacity * layer.opacityMul} />
               </G>
             );
           })}
