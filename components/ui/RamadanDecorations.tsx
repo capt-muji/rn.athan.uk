@@ -13,7 +13,18 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, G, Line, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, {
+  Circle,
+  Defs,
+  G,
+  Line,
+  LinearGradient as SvgLinearGradient,
+  Mask,
+  Path,
+  RadialGradient,
+  Rect,
+  Stop,
+} from 'react-native-svg';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { isRamadan } from '@/shared/time';
@@ -75,9 +86,9 @@ const HANGINGS: {
     xPct: 0.78,
     lineLen: 95,
     size: 7.2,
-    bobDuration: 5500,
+    bobDuration: 6875,
     glowDelay: 1600,
-    dropFraction: 1.0,
+    dropFraction: 1.4,
     type: 'lantern',
     threadWidth: 0.7,
     threadOpacity: 0.14,
@@ -88,7 +99,7 @@ const HANGINGS: {
   // Background star (far right) — quick, shallow bounce
   {
     xPct: 0.87,
-    lineLen: 88,
+    lineLen: 68,
     size: 5.3,
     bobDuration: 3400,
     glowDelay: 200,
@@ -102,15 +113,23 @@ const HANGINGS: {
   },
 ];
 
+/** Misty cloud configs — two clouds at different sizes for depth */
+const CLOUDS = [
+  // Smaller cloud — left side near moon
+  { xPct: 0.14, yOffset: 53, scale: 0.6, opacity: 0.22, fill: '#4a3d7a', driftDuration: 50000, driftAmount: 30 },
+  // Large cloud — right side near right star
+  { xPct: 0.88, yOffset: 60, scale: 0.85, opacity: 0.3, fill: '#3d3270', driftDuration: 40000, driftAmount: 27 },
+] as const;
+
 /** Spark/firefly particles around lantern glow */
 const SPARK_COLOR = '#FFD700'; // bright gold
 const SPARK_COLOR_HOT = '#FFF1A8'; // hot white-gold for larger sparks
 const SPARKS = [
-  { angle: 8, dist: 0.53, size: 1.2, delay: 0, duration: 2800, drift: 2, hot: true },
+  { angle: 8, dist: 0.53, size: 0.9, delay: 0, duration: 2800, drift: 2, hot: true },
   { angle: 62, dist: 0.74, size: 0.4, delay: 400, duration: 1500, drift: 5, hot: false },
-  { angle: 101, dist: 0.58, size: 0.9, delay: 1200, duration: 2200, drift: 3, hot: true },
+  { angle: 101, dist: 0.58, size: 0.7, delay: 1200, duration: 2200, drift: 3, hot: true },
   { angle: 143, dist: 0.78, size: 0.35, delay: 700, duration: 1400, drift: 4.5, hot: false },
-  { angle: 196, dist: 0.52, size: 1.1, delay: 200, duration: 3200, drift: 1.5, hot: true },
+  { angle: 196, dist: 0.52, size: 0.85, delay: 200, duration: 3200, drift: 1.5, hot: true },
   { angle: 232, dist: 0.68, size: 0.5, delay: 1500, duration: 1700, drift: 5.5, hot: false },
   { angle: 279, dist: 0.63, size: 0.55, delay: 900, duration: 2600, drift: 3.5, hot: false },
   { angle: 337, dist: 0.5, size: 0.7, delay: 500, duration: 3500, drift: 1, hot: true },
@@ -141,6 +160,11 @@ export default function RamadanDecorations() {
 
   // Lantern candle flicker
   const lanternFlicker = useSharedValue(0.6);
+
+  // Cloud drift
+  const cloudDrift0 = useSharedValue(0);
+  const cloudDrift1 = useSharedValue(0);
+  const cloudDrifts = [cloudDrift0, cloudDrift1];
 
   // Moon motion
   const moonBob = useSharedValue(0);
@@ -210,6 +234,18 @@ export default function RamadanDecorations() {
       -1
     );
 
+    // Cloud drift — slow horizontal oscillation
+    CLOUDS.forEach((cloud, i) => {
+      cloudDrifts[i].value = withRepeat(
+        withSequence(
+          withTiming(cloud.driftAmount, { duration: cloud.driftDuration / 2, easing: ease }),
+          withTiming(-cloud.driftAmount, { duration: cloud.driftDuration / 2, easing: ease })
+        ),
+        -1,
+        true
+      );
+    });
+
     // Moon gentle bob
     moonBob.value = withRepeat(
       withSequence(withTiming(7, { duration: 4500, easing: ease }), withTiming(0, { duration: 4500, easing: ease })),
@@ -225,7 +261,7 @@ export default function RamadanDecorations() {
       ),
       -1
     );
-  }, [bob0, bob1, bob2, glow0, glow1, glow2, lanternFlicker, maxStarY, moonBob, moonGlowOpacity]);
+  }, [bob0, bob1, bob2, cloudDrift0, cloudDrift1, glow0, glow1, glow2, lanternFlicker, maxStarY, moonBob, moonGlowOpacity]);
 
   if (!isRamadan() || !decorationsEnabled) return null;
 
@@ -248,7 +284,25 @@ export default function RamadanDecorations() {
         ))}
       </Svg>
 
-      {/* Moon body + glow as Animated.View (translateY for bob) */}
+      {/* zIndex 1: Back cloud (small, left side) */}
+      <MistyCloud
+        config={CLOUDS[0]}
+        screenWidth={width}
+        insetTop={insetTop}
+        drift={cloudDrifts[0]}
+        zIndex={1}
+      />
+
+      {/* zIndex 2: Front cloud (large, right side) */}
+      <MistyCloud
+        config={CLOUDS[1]}
+        screenWidth={width}
+        insetTop={insetTop}
+        drift={cloudDrifts[1]}
+        zIndex={2}
+      />
+
+      {/* zIndex 3: Moon — in front of clouds */}
       <FloatingMoon
         cx={moonCx}
         cy={moonCy}
@@ -257,23 +311,48 @@ export default function RamadanDecorations() {
         svgSize={moonSvgSize}
         bobOffset={moonBob}
         glowOpacity={moonGlowOpacity}
+        zIndex={3}
       />
 
-      {/* Stars + glows as Animated.Views (translateY actually works here) */}
-      {HANGINGS.map((star, i) => (
-        <FloatingStar
-          key={i}
-          index={i}
-          flickerOpacity={star.type === 'lantern' ? lanternFlicker : undefined}
-          x={width * star.xPct}
-          lineLen={star.lineLen * vScale}
-          size={star.size}
-          type={star.type}
-          bobOffset={bobs[i]}
-          glowOpacity={glows[i]}
-          bodyOpacity={star.bodyOpacity}
-        />
-      ))}
+      {/* zIndex 4: Left star — in front of clouds */}
+      <FloatingStar
+        index={0}
+        x={width * HANGINGS[0].xPct}
+        lineLen={HANGINGS[0].lineLen * vScale}
+        size={HANGINGS[0].size}
+        type={HANGINGS[0].type}
+        bobOffset={bobs[0]}
+        glowOpacity={glows[0]}
+        bodyOpacity={HANGINGS[0].bodyOpacity}
+        zIndex={4}
+      />
+
+      {/* zIndex 5: Right star — in front of clouds */}
+      <FloatingStar
+        index={2}
+        x={width * HANGINGS[2].xPct}
+        lineLen={HANGINGS[2].lineLen * vScale}
+        size={HANGINGS[2].size}
+        type={HANGINGS[2].type}
+        bobOffset={bobs[2]}
+        glowOpacity={glows[2]}
+        bodyOpacity={HANGINGS[2].bodyOpacity}
+        zIndex={5}
+      />
+
+      {/* zIndex 6: Lantern — in front of everything */}
+      <FloatingStar
+        index={1}
+        flickerOpacity={lanternFlicker}
+        x={width * HANGINGS[1].xPct}
+        lineLen={HANGINGS[1].lineLen * vScale}
+        size={HANGINGS[1].size}
+        type={HANGINGS[1].type}
+        bobOffset={bobs[1]}
+        glowOpacity={glows[1]}
+        bodyOpacity={HANGINGS[1].bodyOpacity}
+        zIndex={6}
+      />
     </View>
   );
 }
@@ -304,6 +383,7 @@ function FloatingMoon({
   svgSize,
   bobOffset,
   glowOpacity,
+  zIndex,
 }: {
   cx: number;
   cy: number;
@@ -312,6 +392,7 @@ function FloatingMoon({
   svgSize: number;
   bobOffset: SharedValue<number>;
   glowOpacity: SharedValue<number>;
+  zIndex?: number;
 }) {
   const localCx = glowR;
   const localCy = glowR;
@@ -324,7 +405,7 @@ function FloatingMoon({
 
   return (
     <Animated.View
-      style={[{ position: 'absolute', left: cx - glowR, top: cy - glowR, width: svgSize, height: svgSize }, moveStyle]}>
+      style={[{ position: 'absolute', left: cx - glowR, top: cy - glowR, width: svgSize, height: svgSize, zIndex }, moveStyle]}>
       <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
         <Defs>
           <RadialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
@@ -389,6 +470,7 @@ function FloatingStar({
   bobOffset,
   glowOpacity,
   bodyOpacity,
+  zIndex,
 }: {
   index: number;
   flickerOpacity?: SharedValue<number>;
@@ -399,6 +481,7 @@ function FloatingStar({
   bobOffset: SharedValue<number>;
   glowOpacity: SharedValue<number>;
   bodyOpacity: number;
+  zIndex?: number;
 }) {
   const visualSize = type === 'lantern' ? size * 1.5 : size;
   const glowR = visualSize * 4;
@@ -425,7 +508,7 @@ function FloatingStar({
   return (
     <Animated.View
       style={[
-        { position: 'absolute', left: x - glowR, top: baseStarY - glowR, width: svgSize, height: svgSize },
+        { position: 'absolute', left: x - glowR, top: baseStarY - glowR, width: svgSize, height: svgSize, zIndex },
         moveStyle,
       ]}>
       <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
@@ -483,6 +566,86 @@ function FloatingStar({
         )}
       </Svg>
       {type === 'lantern' && <LanternSparks cx={cx} cy={cy} glowR={glowR} />}
+    </Animated.View>
+  );
+}
+
+/**
+ * Cloud SVG path in a 160×100 viewBox.
+ * Bumpy top (arcs), flat bottom — narrower cloud silhouette.
+ */
+const CLOUD_PATH =
+  'M 24,70 Q 8,70 8,55 Q 8,40 24,38 Q 26,18 44,18 Q 58,10 72,22 Q 84,8 104,18 Q 124,5 136,22 Q 152,18 154,40 Q 160,45 160,55 Q 160,70 144,70 Z';
+
+// Misty layers: each rendered at increasing scale + decreasing opacity
+const CLOUD_MIST_LAYERS = [
+  { scale: 1.0, opacityMul: 1.0 },
+  { scale: 1.12, opacityMul: 0.5 },
+  { scale: 1.25, opacityMul: 0.22 },
+  { scale: 1.4, opacityMul: 0.08 },
+];
+
+
+/** Misty cloud — SVG cloud path rendered in layered scales for soft feathered edges */
+function MistyCloud({
+  config,
+  screenWidth,
+  insetTop,
+  drift,
+  zIndex,
+}: {
+  config: (typeof CLOUDS)[number];
+  screenWidth: number;
+  insetTop: number;
+  drift: SharedValue<number>;
+  zIndex: number;
+}) {
+  const { xPct, yOffset, scale, opacity, fill } = config;
+  // Base viewBox is 160×100; scale it up
+  const w = 160 * scale;
+  const h = 100 * scale;
+  // Extra padding for mist layers (largest layer is 1.4× base)
+  const pad = Math.max(w, h) * 0.25;
+  const svgW = w + pad * 2;
+  const svgH = h + pad * 2;
+  const left = screenWidth * xPct - svgW / 2;
+  const top = insetTop + yOffset - svgH / 2;
+
+  const driftStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: drift.value }],
+  }));
+
+  const fadeMaskId = `cloudFade${zIndex}`;
+
+  return (
+    <Animated.View
+      style={[{ position: 'absolute', left, top, width: svgW, height: svgH, zIndex }, driftStyle]}>
+      <Svg width={svgW} height={svgH}>
+        <Defs>
+          {/* Vertical fade — fully visible top half, fades to transparent at bottom */}
+          <SvgLinearGradient id={fadeMaskId} x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0%" stopColor="white" stopOpacity={1} />
+            <Stop offset="55%" stopColor="white" stopOpacity={1} />
+            <Stop offset="100%" stopColor="white" stopOpacity={0} />
+          </SvgLinearGradient>
+          <Mask id={`${fadeMaskId}m`}>
+            <Rect x={0} y={0} width={svgW} height={svgH} fill={`url(#${fadeMaskId})`} />
+          </Mask>
+        </Defs>
+        <G mask={`url(#${fadeMaskId}m)`}>
+          {CLOUD_MIST_LAYERS.map((layer, i) => {
+            const lw = w * layer.scale;
+            const lh = h * layer.scale;
+            const lx = (svgW - lw) / 2;
+            const ly = (svgH - lh) / 2;
+            return (
+              <G key={i} transform={`translate(${lx}, ${ly}) scale(${(lw / 160).toFixed(3)}, ${(lh / 100).toFixed(3)})`}>
+                <Path d={CLOUD_PATH} fill={fill} opacity={opacity * layer.opacityMul} />
+              </G>
+            );
+          })}
+        </G>
+      </Svg>
     </Animated.View>
   );
 }
