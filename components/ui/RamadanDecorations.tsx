@@ -115,7 +115,7 @@ const HANGINGS: {
 
 /** Cloud fill colors */
 // Cloud fills — all close to background (#031a4c → #5b1eaa), darker = more distant
-const CLOUD_FILLS = ['#2b1d5e', '#2e2068', '#301a6e'] as const;
+const CLOUD_FILLS = ['#2b1d5e', '#2e2068', '#212367'] as const;
 
 /** Randomized cloud configs — height relative to moon, wrapping across screen */
 function useCloudConfigs(moonR: number, moonCy: number, moonBobMax: number, screenWidth: number, starMaxY: number) {
@@ -180,21 +180,36 @@ function useCloudConfigs(moonR: number, moonCy: number, moonBobMax: number, scre
       clouds: [
         // Small (back) cloud
         {
-          scale: smallScale, opacity: opacityFor(smallH), fill: CLOUD_FILLS[0],
-          top: smallCloudTop, totalDist: screenWidth + smallW,
-          duration: baseDuration, path: CLOUD_PATH_REAR, startPos: startPos[0],
+          scale: smallScale,
+          opacity: opacityFor(smallH),
+          fill: CLOUD_FILLS[0],
+          top: smallCloudTop,
+          totalDist: screenWidth + smallW,
+          duration: baseDuration,
+          path: CLOUD_PATH_REAR,
+          startPos: startPos[0],
         },
         // Large (mid) cloud
         {
-          scale: largeScale, opacity: opacityFor(largeH), fill: CLOUD_FILLS[1],
-          top: largeCloudTop, totalDist: screenWidth + largeW,
-          duration: baseDuration * 0.85, path: CLOUD_PATH_FRONT, startPos: startPos[1],
+          scale: largeScale,
+          opacity: opacityFor(largeH),
+          fill: CLOUD_FILLS[1],
+          top: largeCloudTop,
+          totalDist: screenWidth + largeW,
+          duration: baseDuration * 0.85,
+          path: CLOUD_PATH_FRONT,
+          startPos: startPos[1],
         },
         // Top (largest) cloud — 1.5× large, highest position
         {
-          scale: topScale, opacity: opacityFor(topH), fill: CLOUD_FILLS[2],
-          top: topCloudTop, totalDist: screenWidth + topW,
-          duration: baseDuration * 0.7, path: CLOUD_PATH_TOP, startPos: startPos[2],
+          scale: topScale,
+          opacity: opacityFor(topH),
+          fill: CLOUD_FILLS[2],
+          top: topCloudTop,
+          totalDist: screenWidth + topW,
+          duration: baseDuration * 0.7,
+          path: CLOUD_PATH_TOP,
+          startPos: startPos[2],
         },
       ],
     };
@@ -271,7 +286,7 @@ export default function RamadanDecorations() {
 
   const moonBobMax = 7; // matches the withTiming(7, ...) in useEffect
   // Highest point any star reaches (smallest lineLen + size)
-  const starHighestY = Math.min(...HANGINGS.filter(h => h.type === 'star').map(h => h.lineLen * vScale + h.size));
+  const starHighestY = Math.min(...HANGINGS.filter((h) => h.type === 'star').map((h) => h.lineLen * vScale + h.size));
   const cloudConfig = useCloudConfigs(moonR, moonCy, moonBobMax, width, starHighestY);
 
   useEffect(() => {
@@ -339,7 +354,10 @@ export default function RamadanDecorations() {
 
     // Moon gentle bob
     moonBob.value = withRepeat(
-      withSequence(withTiming(moonBobMax, { duration: 4500, easing: ease }), withTiming(0, { duration: 4500, easing: ease })),
+      withSequence(
+        withTiming(moonBobMax, { duration: 4500, easing: ease }),
+        withTiming(0, { duration: 4500, easing: ease })
+      ),
       -1
     );
 
@@ -352,7 +370,22 @@ export default function RamadanDecorations() {
       ),
       -1
     );
-  }, [bob0, bob1, bob2, cloudConfig, cloudProg0, cloudProg1, cloudProg2, glow0, glow1, glow2, lanternFlicker, maxStarY, moonBob, moonGlowOpacity]);
+  }, [
+    bob0,
+    bob1,
+    bob2,
+    cloudConfig,
+    cloudProg0,
+    cloudProg1,
+    cloudProg2,
+    glow0,
+    glow1,
+    glow2,
+    lanternFlicker,
+    maxStarY,
+    moonBob,
+    moonGlowOpacity,
+  ]);
 
   if (!isRamadan() || !decorationsEnabled) return null;
 
@@ -373,7 +406,6 @@ export default function RamadanDecorations() {
             opacity={star.threadOpacity}
           />
         ))}
-
       </Svg>
 
       {/* zIndex 1: Moon */}
@@ -506,7 +538,10 @@ function FloatingMoon({
 
   return (
     <Animated.View
-      style={[{ position: 'absolute', left: cx - glowR, top: cy - glowR, width: svgSize, height: svgSize, zIndex }, moveStyle]}>
+      style={[
+        { position: 'absolute', left: cx - glowR, top: cy - glowR, width: svgSize, height: svgSize, zIndex },
+        moveStyle,
+      ]}>
       <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
         <Defs>
           <RadialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
@@ -697,7 +732,6 @@ const CLOUD_MIST_LAYERS = [
   { scale: 1.4, opacityMul: 0.08 },
 ];
 
-
 /** Misty cloud — wraps across screen, both clouds move in the same direction */
 function MistyCloud({
   config,
@@ -750,7 +784,9 @@ function MistyCloud({
             const lx = (svgW - lw) / 2;
             const ly = (svgH - lh) / 2;
             return (
-              <G key={i} transform={`translate(${lx}, ${ly}) scale(${(lw / 160).toFixed(3)}, ${(lh / 100).toFixed(3)})`}>
+              <G
+                key={i}
+                transform={`translate(${lx}, ${ly}) scale(${(lw / 160).toFixed(3)}, ${(lh / 100).toFixed(3)})`}>
                 <Path d={path} fill={fill} opacity={opacity * layer.opacityMul} />
               </G>
             );
