@@ -12,7 +12,7 @@ const emptyCoordinates: PageCoordinates = { pageX: 0, pageY: 0, width: 0, height
 // ALERT SHEET STATE
 // =============================================================================
 
-export interface AlertSheetState {
+interface AlertSheetState {
   type: ScheduleType;
   index: number;
   prayerEnglish: string;

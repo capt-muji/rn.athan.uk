@@ -16,7 +16,7 @@ import {
   extraPrevPrayerAtom,
 } from '@/stores/schedule';
 
-export interface UseCountdownBarResult {
+interface UseCountdownBarResult {
   /** Progress percentage (0-100) */
   progress: number;
   /** Whether the countdown bar is ready to display */
