@@ -164,7 +164,7 @@ export const calculateBelongsToDate = (
 /**
  * Parameters for creating a Prayer object
  */
-export interface CreatePrayerParams {
+interface CreatePrayerParams {
   type: ScheduleType;
   english: string;
   arabic: string;

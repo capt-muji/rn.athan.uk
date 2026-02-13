@@ -26,29 +26,31 @@ import { atomWithStorageNumber } from '@/stores/storage';
 
 const store = getDefaultStore();
 
-// Guard against concurrent notification scheduling
-let isScheduling = false;
+// Queue-based scheduling lock — operations run sequentially, never dropped
+let schedulingQueue: Promise<void> = Promise.resolve();
 
 /**
- * Helper function to wrap async operations with scheduling lock
- * Prevents concurrent notification scheduling operations
+ * Helper function to wrap async operations with scheduling queue
+ * Operations are chained sequentially — each waits for the previous to finish.
+ * Unlike a skip-based lock, no operations are dropped.
  * @param operation The async operation to execute
  * @param operationName Name of the operation for logging
- * @returns Result of the operation or void if already scheduling
+ * @returns Result of the operation
  */
-async function withSchedulingLock<T>(operation: () => Promise<T>, operationName: string): Promise<T | void> {
-  if (isScheduling) {
-    logger.info(`NOTIFICATION: Already scheduling, skipping ${operationName}`);
-    return;
-  }
+async function withSchedulingLock<T>(operation: () => Promise<T>, operationName: string): Promise<T> {
+  const result = new Promise<T>((resolve, reject) => {
+    schedulingQueue = schedulingQueue.then(async () => {
+      logger.info(`NOTIFICATION: Starting ${operationName}`);
+      try {
+        const value = await operation();
+        resolve(value);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  });
 
-  isScheduling = true;
-
-  try {
-    return await operation();
-  } finally {
-    isScheduling = false;
-  }
+  return result;
 }
 
 // =============================================================================
@@ -417,41 +419,6 @@ const _addMultipleScheduleNotificationsForPrayer = async (
 };
 
 /**
- * Schedule multiple notifications for a single prayer (public entry point)
- *
- * Guards against concurrent scheduling using withSchedulingLock.
- * Schedules notifications for the next NOTIFICATION_ROLLING_DAYS days.
- *
- * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule (0-based)
- * @param englishName English prayer name (e.g., "Fajr", "Midnight")
- * @param arabicName Arabic prayer name (e.g., "الفجر", "نصف الليل")
- * @param alertType Alert type (Off, Silent, Sound)
- * @returns Promise that resolves when scheduling is complete
- *
- * @example
- * await addMultipleScheduleNotificationsForPrayer(
- *   ScheduleType.Standard,
- *   0, // Fajr
- *   "Fajr",
- *   "الفجر",
- *   AlertType.Sound
- * );
- */
-export const addMultipleScheduleNotificationsForPrayer = async (
-  scheduleType: ScheduleType,
-  prayerIndex: number,
-  englishName: string,
-  arabicName: string,
-  alertType: AlertType
-) => {
-  return withSchedulingLock(
-    () => _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, alertType),
-    'addMultipleScheduleNotificationsForPrayer'
-  );
-};
-
-/**
  * Clears all scheduled notifications for a specific prayer
  *
  * Cancels notifications via Expo API and removes database records.
@@ -459,7 +426,7 @@ export const addMultipleScheduleNotificationsForPrayer = async (
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
  */
-export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
   await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
   Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 };
@@ -578,36 +545,6 @@ const _addMultipleScheduleRemindersForPrayer = async (
   logger.info('REMINDER: Scheduled multiple reminders:', { scheduleType, prayerIndex, englishName });
 };
 
-// Export internal functions for coordinated operations (bypasses scheduling lock)
-export const addMultipleScheduleNotificationsForPrayerInternal = _addMultipleScheduleNotificationsForPrayer;
-export const addMultipleScheduleRemindersForPrayerInternal = _addMultipleScheduleRemindersForPrayer;
-
-/**
- * Schedule multiple reminders for a single prayer (public entry point)
- *
- * Guards against concurrent scheduling using withSchedulingLock.
- * Schedules reminders for the next NOTIFICATION_ROLLING_DAYS days.
- *
- * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule (0-based)
- * @param englishName English prayer name
- * @param arabicName Arabic prayer name
- * @param alertType Alert type (Off, Silent, Sound)
- * @returns Promise that resolves when scheduling is complete
- */
-export const addMultipleScheduleRemindersForPrayer = async (
-  scheduleType: ScheduleType,
-  prayerIndex: number,
-  englishName: string,
-  arabicName: string,
-  alertType: AlertType
-) => {
-  return withSchedulingLock(
-    () => _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, alertType),
-    'addMultipleScheduleRemindersForPrayer'
-  );
-};
-
 /**
  * Clears all scheduled reminders for a specific prayer
  *
@@ -616,9 +553,53 @@ export const addMultipleScheduleRemindersForPrayer = async (
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
  */
-export const clearAllScheduledRemindersForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+const clearAllScheduledRemindersForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
   await Device.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
   Database.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+};
+
+/**
+ * Atomically updates all notifications and reminders for a single prayer
+ *
+ * Wraps clear+schedule in a single lock acquisition to prevent race conditions.
+ * At-time and reminder operations run in parallel (independent MMKV keys and OS notification IDs).
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param englishName English prayer name
+ * @param arabicName Arabic prayer name
+ * @param atTimeAlert At-time alert type (Off, Silent, Sound)
+ * @param reminderAlert Reminder alert type (Off, Silent, Sound)
+ */
+export const updatePrayerNotifications = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  englishName: string,
+  arabicName: string,
+  atTimeAlert: AlertType,
+  reminderAlert: AlertType
+) => {
+  return withSchedulingLock(async () => {
+    const promises: Promise<void>[] = [];
+
+    if (atTimeAlert !== AlertType.Off) {
+      promises.push(
+        _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, atTimeAlert)
+      );
+    } else {
+      promises.push(clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex));
+    }
+
+    if (atTimeAlert !== AlertType.Off && reminderAlert !== AlertType.Off) {
+      promises.push(
+        _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, reminderAlert)
+      );
+    } else {
+      promises.push(clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex));
+    }
+
+    await Promise.all(promises);
+  }, 'updatePrayerNotifications');
 };
 
 /**
@@ -712,6 +693,14 @@ export const shouldRescheduleNotifications = (): boolean => {
  * Reschedules all notifications for both Standard and Extra schedules (internal)
  */
 const _rescheduleAllNotifications = async () => {
+  // Log current preference state for debugging preference-reset reports
+  const preferenceSnapshot = PRAYERS_ENGLISH.map((prayer, i) => ({
+    prayer,
+    alert: getPrayerAlertType(ScheduleType.Standard, i),
+    reminder: getReminderAlertType(ScheduleType.Standard, i),
+  }));
+  logger.info('NOTIFICATION: Preference snapshot before reschedule:', preferenceSnapshot);
+
   // Cancel ALL scheduled notifications globally (includes reminders)
   await Notifications.cancelAllScheduledNotificationsAsync();
   logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');

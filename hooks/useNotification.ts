@@ -57,19 +57,10 @@ const showSettingsDialog = (): Promise<boolean> => {
  * @returns Object containing notification handlers
  *
  * @example
- * const { handleAlertChange, checkInitialPermissions, ensurePermissions } = useNotification();
+ * const { commitAlertMenuChanges, checkInitialPermissions, ensurePermissions } = useNotification();
  *
  * // On app launch
  * const hasPermission = await checkInitialPermissions();
- *
- * // When user taps alert icon
- * const success = await handleAlertChange(
- *   ScheduleType.Standard,
- *   0, // Fajr index
- *   "Fajr",
- *   "الفجر",
- *   AlertType.Sound
- * );
  *
  * // Before enabling notifications
  * const granted = await ensurePermissions();
@@ -150,79 +141,6 @@ export const useNotification = () => {
   };
 
   /**
-   * Handles alert type changes for a prayer
-   *
-   * Called when user taps the alert icon to cycle through Off → Silent → Sound.
-   * Manages permission checks and notification scheduling.
-   *
-   * @param scheduleType Schedule type (Standard or Extra)
-   * @param prayerIndex Index of the prayer in its schedule (0-based)
-   * @param englishName English prayer name (e.g., "Fajr")
-   * @param arabicName Arabic prayer name (e.g., "الفجر")
-   * @param alertType New alert type (Off, Silent, Sound)
-   * @returns Promise resolving to boolean indicating success
-   *
-   * @example
-   * const success = await handleAlertChange(
-   *   ScheduleType.Standard,
-   *   0,
-   *   "Fajr",
-   *   "الفجر",
-   *   AlertType.Sound
-   * );
-   *
-   * if (success) {
-   *   // Update UI to reflect new alert type
-   *   setPrayerAlertType(type, index, alertType);
-   * } else {
-   *   // Revert UI to previous state
-   * }
-   */
-  const handleAlertChange = async (
-    scheduleType: ScheduleType,
-    prayerIndex: number,
-    englishName: string,
-    arabicName: string,
-    alertType: AlertType
-  ): Promise<boolean> => {
-    try {
-      // Always allow turning off notifications without permission check
-      if (alertType === AlertType.Off) {
-        await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
-        return true;
-      }
-
-      // Check/request permissions for enabling notifications
-      const hasPermission = await ensurePermissions();
-      if (!hasPermission) {
-        logger.warn('NOTIFICATION: Permissions not granted');
-        return false;
-      }
-
-      // Schedule notifications
-      await NotificationStore.addMultipleScheduleNotificationsForPrayer(
-        scheduleType,
-        prayerIndex,
-        englishName,
-        arabicName,
-        alertType
-      );
-
-      logger.info('NOTIFICATION: Updated settings:', {
-        scheduleType,
-        prayerIndex,
-        englishName,
-        alertType,
-      });
-
-      return true;
-    } catch (error) {
-      logger.error('NOTIFICATION: Failed to update settings:', error);
-      return false;
-    }
-  };
-
-  /**
    * Commits alert menu changes using deferred commit pattern
    *
    * Compares the original state with the current state and only schedules
@@ -271,31 +189,14 @@ export const useNotification = () => {
     NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);
 
     try {
-      // Clear existing notifications and reminders
-      await NotificationStore.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
-      await NotificationStore.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
-
-      // Schedule based on desired end state
-      if (currentState.atTimeAlert !== AlertType.Off) {
-        await NotificationStore.addMultipleScheduleNotificationsForPrayerInternal(
-          scheduleType,
-          prayerIndex,
-          englishName,
-          arabicName,
-          currentState.atTimeAlert
-        );
-
-        // Schedule reminder if enabled (reminder requires at-time to be enabled)
-        if (currentState.reminderAlert !== AlertType.Off) {
-          await NotificationStore.addMultipleScheduleRemindersForPrayerInternal(
-            scheduleType,
-            prayerIndex,
-            englishName,
-            arabicName,
-            currentState.reminderAlert
-          );
-        }
-      }
+      await NotificationStore.updatePrayerNotifications(
+        scheduleType,
+        prayerIndex,
+        englishName,
+        arabicName,
+        currentState.atTimeAlert,
+        currentState.reminderAlert
+      );
 
       logger.info('NOTIFICATION: Committed alert menu changes:', {
         scheduleType,
@@ -319,7 +220,6 @@ export const useNotification = () => {
   };
 
   return {
-    handleAlertChange,
     checkInitialPermissions,
     ensurePermissions,
     commitAlertMenuChanges,

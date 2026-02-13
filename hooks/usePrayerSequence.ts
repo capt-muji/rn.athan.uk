@@ -20,14 +20,14 @@ import {
  * Prayer with derived status fields
  * Extends Prayer with isPassed and isNext computed from current time
  */
-export interface PrayerWithStatus extends Prayer {
+interface PrayerWithStatus extends Prayer {
   /** Whether this prayer has passed (datetime < now) */
   isPassed: boolean;
   /** Whether this is the next upcoming prayer */
   isNext: boolean;
 }
 
-export interface UsePrayerSequenceResult {
+interface UsePrayerSequenceResult {
   /** All prayers with derived isPassed and isNext status */
   prayers: PrayerWithStatus[];
   /** The display date (belongsToDate of next prayer) */
