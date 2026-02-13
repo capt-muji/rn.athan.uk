@@ -12,7 +12,7 @@ import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { standardNextPrayerAtom, extraNextPrayerAtom } from '@/stores/schedule';
 
-export interface UseCountdownResult {
+interface UseCountdownResult {
   /** Seconds remaining until the next prayer */
   timeLeft: number;
   /** Name of the next prayer */

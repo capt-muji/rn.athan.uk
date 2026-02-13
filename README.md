@@ -81,14 +81,16 @@ All 11 development features have been completed, tested, and archived:
 - [x] Prayer times display with real-time countdown
 - [x] Prayer-based day boundary with smooth animations (Islamic midnight)
 - [x] Offline support with local data caching
-- [x] Customizable notifications with multiple alert modes
-- [x] Over 10 selectable Athan audio notification options
+- [x] Customizable notifications with multiple alert modes (at-time + reminder)
+- [x] 16 selectable Athan audio notification options
 - [x] View tomorrow's prayer times
 - [x] Automatic yearly data refresh
 - [x] Multipage with special times (Midnight, Third of night, Duha, Suhoor, Istijaba)
 - [x] Large overlay font overlay for visually impaired
 - [x] Fix UI countdown drift when app in background
-- [x] Settings bottom sheet with progress bar toggle, Hijri date, Athan sound selector
+- [x] Settings bottom sheet (countdown bar, Hijri date, seconds, time passed, Arabic names, decorations, color picker)
+- [x] Alert menu with per-prayer at-time and reminder notification controls
+- [x] Background notification refresh task (~3 hour intervals)
 - [x] SDK 54 upgrade (React 19, RN 0.81, Expo 54)
 
 ### Known Limitations
@@ -120,15 +122,17 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 🔄 **Tomorrow's Prayer Times**: Swipe between today and tomorrow
 - 🔍 **Large Overlay Font**: Accessible mode for visually impaired
 - 🌙 **Smart Prayer Tracking**: Automatically tracks passed/next/upcoming prayers
-- ⚙️ **Settings**: Tap Masjid icon for progress bar, Hijri date, Athan sound
+- ⚙️ **Settings**: Countdown bar toggle + color picker, Hijri date, show seconds, time passed, Arabic names, seasonal decorations
 - 🗓️ **Hijri Date**: Optional Islamic calendar format
+- 🕌 **Arabic Prayer Names**: Optional dual-language display
 
 ### Notifications & Alerts
 
-- 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer
+- 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer (at-time and reminder)
+- ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval
 - 📢 **16 Selectable Athan Sounds**: Multiple Islamic audio options
 - 📅 **Smart Notification Buffer**: 2-day rolling schedule
-- 🛡️ **Duplicate Prevention**: Concurrent scheduling protection
+- 🛡️ **Sequential Scheduling Queue**: Operations queued and executed in order, never dropped
 
 ### Data & Offline Support
 
@@ -240,7 +244,7 @@ API → Process (strip old dates, calculate special prayers) → Cache MMKV → 
 MMKV
 ├── Prayer Data: prayer_YYYY-MM-DD
 ├── Fetched Years: fetched_years
-├── Notifications: scheduled_notifications_*
+├── Notifications: scheduled_notifications_*, scheduled_reminders_*
 └── Preferences: preference_*
 ```
 
@@ -277,10 +281,12 @@ The codebase follows a clean architecture pattern with clear separation of conce
 │   └── useWindowDimensions.ts # Screen dimension hook
 │
 ├── stores/                # State management (Jotai atoms)
+│   ├── atoms/
+│   │   └── overlay.ts     # Overlay atom (state)
 │   ├── schedule.ts        # Prayer sequence state
 │   ├── notifications.ts   # Notification state
 │   ├── countdown.ts       # Countdown state
-│   ├── overlay.ts         # Overlay state
+│   ├── overlay.ts         # Overlay actions
 │   ├── sync.ts            # Data sync and initialization
 │   ├── database.ts        # MMKV storage wrapper
 │   ├── storage.ts         # MMKV instance setup
@@ -308,16 +314,17 @@ The codebase follows a clean architecture pattern with clear separation of conce
 │   ├── updates.ts         # App update handling
 │   └── tasks.ts           # Background task management
 │
-├── mocks/                 # Mock data for development
-│   ├── full.ts            # Full mock dataset
-│   ├── simple.ts          # Simplified mock data
-│   └── timing-system-schema.ts  # Type schema for mocks
+├── mocks/                 # Mock data for development and testing
+│   ├── full.ts            # Full API response mock dataset
+│   ├── simple.ts          # Simplified mock data (used in dev mode)
+│   └── timing-system-schema.ts  # Timing system type reference and examples
 │
 └── ai/                    # AI agent instructions and ADRs
     ├── AGENTS.md          # Agent behavior instructions
+    ├── USAGE.md           # AI usage guide
     ├── prompts/           # AI prompt templates
     ├── adr/               # Architecture Decision Records
-    └── memory-archive.md  # AI context archive
+    └── features/          # Feature specifications
 ```
 
 ### Key Patterns
@@ -354,7 +361,7 @@ The codebase follows established patterns for consistency:
 3. **Animation Hook Extraction**: Component animations encapsulated in hooks
    - Example: `useAlertAnimations.ts` for Alert component
 
-4. **Scheduling Lock Pattern**: Concurrent operation protection
+4. **Sequential Queue Pattern**: Queue-based scheduling lock for notification operations
    - Example: `withSchedulingLock()` in notifications.ts
 
 See `ai/adr/` for Architecture Decision Records.
@@ -367,7 +374,6 @@ See `ai/adr/` for Architecture Decision Records.
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
 ![Pino](https://img.shields.io/badge/Pino-FFF000?style=for-the-badge&logo=pino&logoColor=black)
-![Skia](https://img.shields.io/badge/Skia-0D1117?style=for-the-badge&logo=skia&logoColor=white)
 ![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
 ![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)
 ![Reanimated](https://img.shields.io/badge/Reanimated_4-6B52AE?style=for-the-badge)
@@ -479,60 +485,74 @@ The notification system maintains a **2-day rolling buffer** of scheduled notifi
 
 - 2 days of notifications scheduled ahead for each enabled prayer
 - 11 prayers total: 6 Standard (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha) + 5 Extra (Midnight, Last Third, Suhoor, Duha, Istijaba)
-- Concurrent scheduling protection with global `isScheduling` guard
+- Sequential scheduling queue (operations chained, never dropped)
 - Maintains consistency even when app is closed or backgrounded
 - Persists through app restarts and offline usage
 
 #### Notification Rescheduling Scenarios
 
-Notifications are rescheduled in the following scenarios:
+All 14 scenarios grouped by behaviour:
 
-| Scenario                        | Function                                      | When                         | Scope                           | Trigger                                                                                                      |
-| ------------------------------- | --------------------------------------------- | ---------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| **User Changes Audio**          | `rescheduleAllNotifications()`                | Immediately                  | Both schedules (all 11 prayers) | When user closes audio selection bottom sheet with new selection                                             |
-| **User Toggles Prayer Alert**   | `addMultipleScheduleNotificationsForPrayer()` | When sheet closes            | Single prayer only              | When user closes alert sheet with changes                                                                    |
-| **App Launch**                  | `refreshNotifications()`                      | If ≥4hrs since last schedule | Both schedules (all 11 prayers) | When app starts - only reschedules if never scheduled before OR last schedule was ≥4 hours ago               |
-| **App Resumes from Background** | `refreshNotifications()`                      | If ≥4hrs since last schedule | Both schedules (all 11 prayers) | When app returns to foreground after being backgrounded - only reschedules if last schedule was ≥4 hours ago |
+**Global Reschedule (scenarios 1–4)**
 
-#### How It Works
+| #   | Trigger           | Entry Point                    | What it does                                       | When                                          |
+| --- | ----------------- | ------------------------------ | -------------------------------------------------- | --------------------------------------------- |
+| 1   | App launch        | `refreshNotifications()`       | Checks staleness, then full cancel + reschedule    | If ≥4 hrs since last schedule (or first time) |
+| 2   | Foreground resume | `refreshNotifications()`       | Same staleness check as app launch                 | If ≥4 hrs since last schedule                 |
+| 3   | Background task   | `refreshNotifications()`       | Unconditional full cancel + reschedule             | Always (~3 hr OS-controlled intervals)        |
+| 4   | Sound change      | `rescheduleAllNotifications()` | Full cancel + reschedule, bypasses staleness check | Immediately when audio sheet closes           |
 
-**User-Triggered Scenarios (2):**
+Steps:
 
-- When user makes a change (audio or individual prayer alert), notifications are rescheduled when sheet closes
-- Bypasses the 4-hour check for responsive updates
-- The `isScheduling` guard prevents concurrent operations during these user actions
+1. `Notifications.cancelAllScheduledNotificationsAsync()` — cancels ALL OS-level notifications
+2. `Database.clearAllScheduledNotificationsForSchedule()` × 2 — deletes `scheduled_notifications_*` MMKV keys for Standard + Extra
+3. `Database.clearAllScheduledRemindersForSchedule()` × 2 — deletes `scheduled_reminders_*` MMKV keys for Standard + Extra
+4. For each enabled prayer: `Device.addOneScheduledNotificationForPrayer()` + `Database.addOneScheduledNotificationForPrayer()` × NOTIFICATION_ROLLING_DAYS
+5. For each enabled reminder: `Device.addOneScheduledReminderForPrayer()` + `Database.addOneScheduledReminderForPrayer()` × NOTIFICATION_ROLLING_DAYS
+6. Updates `preference_last_notification_schedule_check` timestamp
 
-**Automatic Refresh Scenarios (3):**
+**Per-Prayer Update (scenarios 5–11)**
 
-- **Foreground refresh** (app launch / resume from background):
-  - Uses 4-hour refresh interval to avoid unnecessary rescheduling
-  - Checks `shouldRescheduleNotifications()` which returns `true` only if:
-    - First time ever (no previous schedule timestamp), OR
-    - ≥4 hours elapsed since `preference_last_notification_schedule_check` timestamp
-  - If criteria not met, logs skip and returns early
-- **Background task** (~3 hour intervals, OS-controlled):
-  - Does NOT check elapsed time - always reschedules when task runs
-  - Ensures notifications stay fresh even if app isn't opened
-- When rescheduling happens:
-  1. Cancels ALL existing notifications (Expo API + database)
-  2. Reschedules 2 days ahead for all enabled prayers in both schedules
-  3. Updates `preference_last_notification_schedule_check` timestamp
+| #   | Trigger                  | Entry Point                   | What it does                                           | When                                      |
+| --- | ------------------------ | ----------------------------- | ------------------------------------------------------ | ----------------------------------------- |
+| 5   | Enable at-time alert     | `updatePrayerNotifications()` | Clears + schedules at-time for one prayer              | Sheet closes via `commitAlertMenuChanges` |
+| 6   | Disable at-time alert    | `updatePrayerNotifications()` | Clears at-time for one prayer, schedules nothing       | Sheet closes via `commitAlertMenuChanges` |
+| 7   | Change at-time sound     | `updatePrayerNotifications()` | Clears + re-schedules at-time with new sound           | Sheet closes via `commitAlertMenuChanges` |
+| 8   | Enable reminder          | `updatePrayerNotifications()` | Clears + schedules reminder for one prayer             | Sheet closes via `commitAlertMenuChanges` |
+| 9   | Disable reminder         | `updatePrayerNotifications()` | Clears reminder for one prayer, schedules nothing      | Sheet closes via `commitAlertMenuChanges` |
+| 10  | Change reminder sound    | `updatePrayerNotifications()` | Clears + re-schedules reminder with new sound          | Sheet closes via `commitAlertMenuChanges` |
+| 11  | Change reminder interval | `updatePrayerNotifications()` | Clears + re-schedules reminder with new minutes offset | Sheet closes via `commitAlertMenuChanges` |
 
-#### Concurrent Scheduling Protection
+Steps:
 
-All 4 entry points are protected by a single global `isScheduling` flag wrapped in `withSchedulingLock()`:
+1. `Device.clearAllScheduledNotificationForPrayer()` — cancels OS notifications matching this prayer's stored IDs
+2. `Database.clearAllScheduledNotificationsForPrayer()` — deletes MMKV keys for this prayer
+3. Same for reminders if reminder changed
+4. Schedule new notifications/reminders for this prayer × NOTIFICATION_ROLLING_DAYS
+5. At-time + reminder run in parallel within single lock acquisition
 
-- When any scheduling operation starts, `isScheduling` is set to `true`
-- If another operation tries to start while `isScheduling` is true, it returns early
-- After operation completes (success or error), `isScheduling` is reset to `false` in finally block
-- Prevents double notifications even if user rapidly clicks multiple UI elements or if background refresh coincides with user action
+**Cache Clear (scenarios 12–14)** — wipe only, reschedule happens on next app launch/resume
 
-**Protected against:**
+| #   | Trigger        | Entry Point           | What it does                             | When                          |
+| --- | -------------- | --------------------- | ---------------------------------------- | ----------------------------- |
+| 12  | App upgrade    | `clearUpgradeCache()` | Wipes all non-preference MMKV keys       | On version mismatch at launch |
+| 13  | Error boundary | `clearUpgradeCache()` | Same wipe, recovers from corrupt state   | On unrecoverable error        |
+| 14  | Concurrent ops | `clearUpgradeCache()` | Same wipe, recovers from lock contention | On lock contention recovery   |
 
-- Spam clicking alert icons while previous alert is scheduling
-- Rapidly switching audio selections
-- Background refresh colliding with user actions
-- Any combination of the above
+Steps:
+
+1. `Database.clearAllExcept(['app_installed_version', 'preference_'])` — deletes all non-preference MMKV keys
+2. `Database.database.remove('preference_last_notification_schedule_check')` — forces next `shouldRescheduleNotifications()` to return true
+3. Actual rescheduling happens on next `refreshNotifications()` call (app launch or foreground resume)
+
+#### Sequential Scheduling Queue
+
+All entry points are protected by `withSchedulingLock()`, a queue-based concurrency mechanism:
+
+- Operations are chained onto a `Promise` queue and execute sequentially
+- Unlike a skip-based lock, **no operations are ever dropped** — every request runs in order
+- Prevents double notifications from concurrent scheduling while ensuring all user actions complete
+- `updatePrayerNotifications()` runs clear+schedule atomically within a single lock acquisition — at-time and reminder operations execute in parallel (independent MMKV keys and OS notification IDs)
 
 #### Constants
 

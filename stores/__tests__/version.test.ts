@@ -22,11 +22,15 @@ const { mockExpoConfig, resetMockExpoConfig } = require('expo-constants');
 const mockGetItem = jest.fn();
 const mockSetItem = jest.fn();
 const mockClearAllExcept = jest.fn();
+const mockDatabaseRemove = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   getItem: (key: string) => mockGetItem(key),
   setItem: (key: string, value: unknown) => mockSetItem(key, value),
   clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
+  database: {
+    remove: (key: string) => mockDatabaseRemove(key),
+  },
 }));
 
 // Mock compareVersions
@@ -277,6 +281,12 @@ describe('clearUpgradeCache', () => {
 
     const prefixes = mockClearAllExcept.mock.calls[0][0];
     expect(prefixes).toContain('app_installed_version');
+  });
+
+  it('resets notification schedule timestamp to force reschedule after upgrade', () => {
+    clearUpgradeCache();
+
+    expect(mockDatabaseRemove).toHaveBeenCalledWith('preference_last_notification_schedule_check');
   });
 });
 

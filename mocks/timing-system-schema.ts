@@ -1,111 +1,30 @@
 /**
  * TIMING SYSTEM SCHEMA REFERENCE
  *
- * This file documents the data structures for the timing system overhaul.
- * It shows the transformation from API response → MMKV storage → Runtime state.
+ * Schema reference for the prayer-centric timing model.
+ * Shows the transformation from API response → MMKV storage → Runtime state.
  *
- * KEY INSIGHT: The new system uses full DateTime objects instead of separate
- * date/time strings, eliminating midnight-crossing bugs.
+ * KEY INSIGHT: Full DateTime objects instead of separate date/time strings
+ * eliminate midnight-crossing bugs.
  *
  * @see ai/adr/005-timing-system-overhaul.md
- * @see ai/features/timing-system-overhaul/
  */
 
+import type { Prayer, PrayerSequence, StoredPrayer, StoredPrayerSequence } from '@/shared/types';
 import { ScheduleType } from '@/shared/types';
 
 // =============================================================================
-// TIMING SYSTEM SCHEMA REFERENCE (New Prayer-Centric Model)
+// TIMING SYSTEM SCHEMA REFERENCE (Prayer-Centric Model)
 // See: ai/adr/005-timing-system-overhaul.md
 // =============================================================================
 
 /**
- * Prayer with full datetime object
+ * Core types: Prayer, StoredPrayer, PrayerSequence, StoredPrayerSequence
+ * Defined in shared/types.ts — imported above, re-exported here for reference.
  *
- * THE FIX: datetime is a full moment in time, so datetime > now is ALWAYS correct.
- * No midnight-crossing bugs possible.
+ * @see shared/types.ts for canonical definitions
  */
-export interface Prayer {
-  /** Schedule type: 'standard' or 'extra' */
-  type: ScheduleType;
-
-  /** English name: "Fajr", "Isha", "Midnight", etc. */
-  english: string;
-
-  /** Arabic name: "الفجر", "العشاء", etc. */
-  arabic: string;
-
-  /**
-   * FULL DATETIME - The actual moment in time
-   *
-   * This is the key difference from the old system.
-   * Instead of { date: "2026-06-22", time: "01:00" }
-   * We have:   datetime: new Date("2026-06-22T01:00:00")
-   *
-   * Comparisons are now trivial:
-   * - isPassed = datetime < now
-   * - isNext = datetime > now
-   * - countdown = datetime - now
-   */
-  datetime: Date;
-
-  /**
-   * Original time string (for display purposes)
-   * Kept for backward compatibility with UI components
-   */
-  time: string;
-
-  /**
-   * Which Islamic day this prayer belongs to (per ADR-004)
-   *
-   * IMPORTANT: This is NOT always the calendar date of the datetime!
-   *
-   * Example: Summer London, Isha at 1am on June 22
-   * - datetime: 2026-06-22T01:00:00 (actual moment)
-   * - belongsToDate: "2026-06-21" (Islamic day it belongs to)
-   *
-   * This is used for:
-   * - Display date in the UI
-   * - Grouping prayers by Islamic day
-   */
-  belongsToDate: string;
-}
-
-/**
- * NEW: Serialized prayer for MMKV storage
- *
- * JavaScript Date objects cannot be stored in MMKV directly.
- * We convert datetime to ISO string before storage.
- */
-export interface StoredPrayer {
-  type: ScheduleType;
-  english: string;
-  arabic: string;
-  datetime: string; // ISO string: "2026-01-18T06:12:00.000Z"
-  time: string;
-  belongsToDate: string;
-}
-
-/**
- * NEW: Prayer sequence - single sorted array
- *
- * Replaces the yesterday/today/tomorrow structure.
- * Contains 48-72 hours of prayers, sorted by datetime.
- */
-export interface PrayerSequence {
-  /** Schedule type: 'standard' or 'extra' */
-  type: ScheduleType;
-
-  /** Prayers sorted by datetime, next 48-72 hours */
-  prayers: Prayer[];
-}
-
-/**
- * NEW: Serialized sequence for MMKV storage
- */
-export interface StoredPrayerSequence {
-  type: ScheduleType;
-  prayers: StoredPrayer[];
-}
+export type { Prayer, PrayerSequence, StoredPrayer, StoredPrayerSequence };
 
 // =============================================================================
 // SECTION 3: REAL-WORLD EXAMPLES
@@ -196,9 +115,9 @@ export const EXAMPLE_WINTER_STANDARD: Prayer[] = [
  * Time: 11:00pm
  * Scenario: London summer, Isha is at 1:00am the next calendar day
  *
- * THIS IS THE BUG THE NEW SYSTEM FIXES:
- * - Current system: isTimePassed("01:00") at 23:00 returns TRUE (WRONG!)
- * - New system: datetime > now returns TRUE (CORRECT!)
+ * THIS IS THE BUG THE PRAYER-CENTRIC MODEL FIXES:
+ * - Old system: isTimePassed("01:00") at 23:00 returns TRUE (WRONG!)
+ * - Current system: datetime > now returns TRUE (CORRECT!)
  */
 export const EXAMPLE_SUMMER_ISHA_AFTER_MIDNIGHT: Prayer[] = [
   // Earlier prayers from June 21
@@ -309,7 +228,7 @@ export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
   {
     type: ScheduleType.Extra,
     english: 'Midnight',
-    arabic: 'منتصف الليل',
+    arabic: 'نصف الليل',
     datetime: new Date('2026-06-22T00:04:00'), // NOTE: June 22 at 00:04!
     time: '00:04',
     belongsToDate: '2026-06-21', // Belongs to June 21's Extras
@@ -317,7 +236,7 @@ export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
   {
     type: ScheduleType.Extra,
     english: 'Last Third',
-    arabic: 'الثلث الأخير',
+    arabic: 'آخر ثلث',
     datetime: new Date('2026-06-22T01:38:00'),
     time: '01:38',
     belongsToDate: '2026-06-21',
@@ -352,7 +271,7 @@ export const EXAMPLE_SUMMER_EXTRAS_MIDNIGHT_AFTER_00: Prayer[] = [
   {
     type: ScheduleType.Extra,
     english: 'Midnight',
-    arabic: 'منتصف الليل',
+    arabic: 'نصف الليل',
     datetime: new Date('2026-06-23T00:05:00'),
     time: '00:05',
     belongsToDate: '2026-06-22',
@@ -387,7 +306,7 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
   {
     type: ScheduleType.Extra,
     english: 'Istijaba',
-    arabic: 'الإستجابة',
+    arabic: 'استجابة',
     datetime: new Date('2026-01-23T12:30:00'),
     time: '12:30',
     belongsToDate: '2026-01-23',
@@ -396,7 +315,7 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
   {
     type: ScheduleType.Extra,
     english: 'Midnight',
-    arabic: 'منتصف الليل',
+    arabic: 'نصف الليل',
     datetime: new Date('2026-01-23T23:15:00'), // Night of Jan 23 → morning of Jan 24
     time: '23:15',
     belongsToDate: '2026-01-24', // Belongs to Friday's Extras
@@ -404,7 +323,7 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
   {
     type: ScheduleType.Extra,
     english: 'Last Third',
-    arabic: 'الثلث الأخير',
+    arabic: 'آخر ثلث',
     datetime: new Date('2026-01-24T02:40:00'),
     time: '02:40',
     belongsToDate: '2026-01-24',
@@ -438,7 +357,7 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
   {
     type: ScheduleType.Extra,
     english: 'Istijaba',
-    arabic: 'الإستجابة',
+    arabic: 'استجابة',
     datetime: new Date('2026-01-24T12:30:00'),
     time: '12:30',
     belongsToDate: '2026-01-24', // FINAL prayer of Friday's Extras
@@ -447,7 +366,7 @@ export const EXAMPLE_FRIDAY_EXTRAS_WITH_ISTIJABA: Prayer[] = [
   {
     type: ScheduleType.Extra,
     english: 'Midnight',
-    arabic: 'منتصف الليل',
+    arabic: 'نصف الليل',
     datetime: new Date('2026-01-24T23:20:00'), // Night of Jan 24
     time: '23:20',
     belongsToDate: '2026-01-25', // Belongs to Saturday's Extras
@@ -506,24 +425,21 @@ export const EXAMPLE_EMPTY_SEQUENCE_SCENARIO = {
   },
 
   /**
-   * How to handle this in code:
+   * How this is handled in the actual codebase:
+   *
+   * @see stores/schedule.ts → getNextPrayer(type) — pure read, returns Prayer | null
+   * @see stores/schedule.ts → refreshSequence(type) — prunes passed prayers, fetches more
    *
    * ```typescript
-   * function getNextPrayer(type: ScheduleType): Prayer | 'loading' {
-   *   const sequence = store.get(getSequenceAtom(type));
-   *   const next = sequence.prayers.find(p => p.datetime > now);
-   *
-   *   if (!next) {
-   *     // All prayers passed - need to refresh
-   *     refreshSequence(type);
-   *     return 'loading';
-   *   }
-   *
-   *   return next;
+   * // stores/schedule.ts
+   * const next = getNextPrayer(ScheduleType.Standard);
+   * if (!next) {
+   *   refreshSequence(type);
+   *   // Then retry or handle loading state
    * }
    * ```
    */
-  handlingCode: 'See comment above',
+  handlingCode: 'See stores/schedule.ts',
 
   /**
    * UI behavior during refresh:
@@ -690,22 +606,24 @@ export const EXAMPLE_STORED_PRAYER: StoredPrayer = {
 };
 
 /**
- * MMKV storage keys for the new system
+ * MMKV storage keys
  *
- * The prayer data storage format (prayer_YYYY-MM-DD) remains UNCHANGED.
- * We add new keys for the sequence cache.
+ * The prayer data storage format (prayer_YYYY-MM-DD) is unchanged.
  */
 export const MMKV_KEYS = {
-  // Existing keys (unchanged)
+  // Active keys
   PRAYER_DATA: 'prayer_YYYY-MM-DD', // ISingleApiResponseTransformed
   FETCHED_YEARS: 'fetched_years', // { [year: number]: boolean }
-  DISPLAY_DATE_STANDARD: 'display_date_standard', // Will be DEPRECATED (derived)
-  DISPLAY_DATE_EXTRA: 'display_date_extra', // Will be DEPRECATED (derived)
 
-  // New keys for sequence cache (optional - can be rebuilt from prayer data)
-  SEQUENCE_STANDARD: 'sequence_standard', // StoredPrayerSequence
-  SEQUENCE_EXTRA: 'sequence_extra', // StoredPrayerSequence
-  SEQUENCE_LAST_REFRESH: 'sequence_last_refresh', // timestamp
+  // REMOVED: Display dates are now derived from createDisplayDateAtom in stores/schedule.ts
+  // DISPLAY_DATE_STANDARD: 'display_date_standard',
+  // DISPLAY_DATE_EXTRA: 'display_date_extra',
+
+  // NOT IMPLEMENTED: Sequences are built fresh from prayer data at runtime
+  // via createPrayerSequence() in shared/prayer.ts — not cached in MMKV
+  // SEQUENCE_STANDARD: 'sequence_standard',
+  // SEQUENCE_EXTRA: 'sequence_extra',
+  // SEQUENCE_LAST_REFRESH: 'sequence_last_refresh',
 };
 
 // =============================================================================
@@ -723,6 +641,7 @@ const NOW = new Date('2026-01-18T10:00:00');
 
 /**
  * Find next prayer: First prayer with datetime > now
+ * @see stores/schedule.ts → createNextPrayerAtom
  */
 export function deriveNextPrayer(prayers: Prayer[], now: Date): Prayer | undefined {
   return prayers.find((p) => p.datetime > now);
@@ -730,6 +649,7 @@ export function deriveNextPrayer(prayers: Prayer[], now: Date): Prayer | undefin
 
 /**
  * Check if prayer has passed: datetime < now
+ * @see hooks/usePrayerSequence.ts → PrayerWithStatus.isPassed
  */
 export function deriveIsPassed(prayer: Prayer, now: Date): boolean {
   return prayer.datetime < now;
@@ -737,6 +657,7 @@ export function deriveIsPassed(prayer: Prayer, now: Date): boolean {
 
 /**
  * Calculate countdown in seconds: datetime - now
+ * @see stores/countdown.ts → startSequenceCountdown
  */
 export function deriveCountdown(prayer: Prayer, now: Date): number {
   return Math.floor((prayer.datetime.getTime() - now.getTime()) / 1000);
@@ -744,6 +665,7 @@ export function deriveCountdown(prayer: Prayer, now: Date): number {
 
 /**
  * Get previous prayer: The prayer before nextPrayer in the array
+ * @see stores/schedule.ts → createPrevPrayerAtom
  */
 export function derivePrevPrayer(prayers: Prayer[], now: Date): Prayer | undefined {
   const nextIndex = prayers.findIndex((p) => p.datetime > now);
@@ -752,6 +674,7 @@ export function derivePrevPrayer(prayers: Prayer[], now: Date): Prayer | undefin
 
 /**
  * Get display date: The belongsToDate of the next prayer
+ * @see stores/schedule.ts → createDisplayDateAtom
  */
 export function deriveDisplayDate(prayers: Prayer[], now: Date): string {
   const nextPrayer = deriveNextPrayer(prayers, now);
@@ -760,6 +683,7 @@ export function deriveDisplayDate(prayers: Prayer[], now: Date): string {
 
 /**
  * Calculate progress bar percentage
+ * @see hooks/useCountdownBar.ts
  */
 export function deriveProgress(prayers: Prayer[], now: Date): number {
   const nextPrayer = deriveNextPrayer(prayers, now);
@@ -787,48 +711,18 @@ export const DERIVATION_EXAMPLE = {
 };
 
 // =============================================================================
-// SECTION 6: SERIALIZATION FUNCTIONS
+// SECTION 6: SERIALIZATION
 // =============================================================================
 
 /**
- * Convert Prayer to StoredPrayer (for MMKV storage)
+ * Serialization is NOT currently used at runtime.
+ *
+ * Sequences are built fresh from MMKV raw data (prayer_YYYY-MM-DD keys)
+ * on every app init via createPrayerSequence() in shared/prayer.ts.
+ *
+ * StoredPrayer and StoredPrayerSequence types are defined in shared/types.ts
+ * and reserved for potential future caching of sequences to MMKV.
  */
-export function serializePrayer(prayer: Prayer): StoredPrayer {
-  return {
-    ...prayer,
-    datetime: prayer.datetime.toISOString(),
-  };
-}
-
-/**
- * Convert StoredPrayer to Prayer (from MMKV storage)
- */
-export function deserializePrayer(stored: StoredPrayer): Prayer {
-  return {
-    ...stored,
-    datetime: new Date(stored.datetime),
-  };
-}
-
-/**
- * Convert PrayerSequence to StoredPrayerSequence
- */
-export function serializeSequence(sequence: PrayerSequence): StoredPrayerSequence {
-  return {
-    type: sequence.type,
-    prayers: sequence.prayers.map(serializePrayer),
-  };
-}
-
-/**
- * Convert StoredPrayerSequence to PrayerSequence
- */
-export function deserializeSequence(stored: StoredPrayerSequence): PrayerSequence {
-  return {
-    type: stored.type,
-    prayers: stored.prayers.map(deserializePrayer),
-  };
-}
 
 // =============================================================================
 // SECTION 7: belongsToDate CALCULATION
@@ -837,72 +731,34 @@ export function deserializeSequence(stored: StoredPrayerSequence): PrayerSequenc
 /**
  * Calculate which Islamic day a prayer belongs to
  *
- * This follows ADR-004 rules:
- * - Standard: Day advances after Isha passes
- * - Extras: Day advances after Duha/Istijaba passes
+ * Canonical implementation: shared/prayer.ts → calculateBelongsToDate()
  *
- * IMPORTANT: A prayer's belongsToDate may differ from its datetime's calendar date!
+ * Rules (per ADR-004):
+ * - STANDARD: Isha between 00:00-06:00 (London time) belongs to previous day
+ * - EXTRAS: Night prayers (Midnight, Last Third, Suhoor) at >=12:00 belong to next day
  *
- * Example: Isha at 1am on June 22
- * - datetime calendar date: June 22
- * - belongsToDate: June 21 (it's the final prayer of June 21's Islamic day)
+ * Implementation details:
+ * - Uses getLondonHours() via toZonedTime() for timezone-correct hour extraction
+ * - Isha cutoff: hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR (6)
+ * - Night prayer check: NIGHT_PRAYER_NAMES constant from shared/constants.ts
+ * - Date math: addDays() from date-fns
+ * - Date format: TimeUtils.formatDateShort() → YYYY-MM-DD
+ *
+ * @see shared/prayer.ts:141-162 for the actual implementation
+ * @see shared/constants.ts → ISLAMIC_DAY, NIGHT_PRAYER_NAMES
  */
-export function calculateBelongsToDate(
-  type: ScheduleType,
-  prayerEnglish: string,
-  calendarDate: string,
-  prayerDateTime: Date
-): string {
-  // For Standard schedule:
-  // All prayers belong to their calendar date (the day Fajr starts a new Islamic day)
-  if (type === ScheduleType.Standard) {
-    // If Isha is after midnight (e.g., 01:00), it belongs to YESTERDAY
-    // because the Islamic day started with yesterday's Fajr
-    const hours = prayerDateTime.getHours();
-    if (prayerEnglish === 'Isha' && hours < 12) {
-      // Isha before noon means it crossed midnight - belongs to previous day
-      const prevDate = new Date(prayerDateTime);
-      prevDate.setDate(prevDate.getDate() - 1);
-      return prevDate.toISOString().split('T')[0];
-    }
-    return calendarDate;
-  }
-
-  // For Extras schedule:
-  // Midnight, Last Third, Suhoor belong to the NEXT day (the day they're preparing for)
-  // Because the Extras day starts after Duha/Istijaba
-  if (type === ScheduleType.Extra) {
-    const nightPrayers = ['Midnight', 'Last Third', 'Suhoor'];
-    if (nightPrayers.includes(prayerEnglish)) {
-      // These prayers occur at night but belong to the day that starts with Duha
-      // If Midnight is at 23:00 on Jan 17, it belongs to Jan 18's Extras schedule
-      // If Midnight is at 00:30 on Jan 18, it STILL belongs to Jan 18's Extras schedule
-      const hours = prayerDateTime.getHours();
-      if (hours >= 12) {
-        // Night prayer before midnight - belongs to tomorrow
-        const nextDate = new Date(prayerDateTime);
-        nextDate.setDate(nextDate.getDate() + 1);
-        return nextDate.toISOString().split('T')[0];
-      }
-      // Night prayer after midnight - belongs to same calendar day
-      return calendarDate;
-    }
-    // Duha and Istijaba belong to their calendar date
-    return calendarDate;
-  }
-
-  return calendarDate;
-}
 
 // =============================================================================
 // SECTION 8: COMPARISON TABLE
 // =============================================================================
 
 /**
- * SIDE-BY-SIDE COMPARISON
+ * HISTORICAL COMPARISON: Before (pre-overhaul) vs Current system
+ *
+ * Kept for historical context. The "Before" system no longer exists in the codebase.
  *
  * ┌─────────────────┬────────────────────────────────┬────────────────────────────────┐
- * │ Aspect          │ Current System                 │ New System                     │
+ * │ Aspect          │ Before (pre-overhaul)          │ Current                        │
  * ├─────────────────┼────────────────────────────────┼────────────────────────────────┤
  * │ Storage         │ 3 maps: yesterday/today/       │ 1 array: prayers[]             │
  * │                 │ tomorrow                       │                                │

@@ -104,6 +104,13 @@ export const clearUpgradeCache = (): void => {
   try {
     Database.clearAllExcept(UPGRADE_KEEP_PREFIXES);
 
+    // Force notification reschedule by resetting the schedule timestamp
+    // This ensures old OS-level notifications are cancelled after upgrade
+    // Note: Jotai atom reads from MMKV lazily on first access, so removing the
+    // key before shouldRescheduleNotifications() is called ensures it returns true
+    Database.database.remove('preference_last_notification_schedule_check');
+    logger.info('VERSION: Reset notification schedule timestamp to force reschedule');
+
     const duration = Date.now() - startTime;
     logger.info('VERSION: Cache clear completed successfully', { duration });
   } catch (error) {
