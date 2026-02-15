@@ -60,7 +60,7 @@ export const genNotificationContent = (
   soundIndex: number
 ): Notifications.NotificationContentInput => {
   return {
-    title: englishName,
+    title: `${englishName} now`,
     sound: getNotificationSound(alertType, soundIndex),
     color: '#5a3af7',
     autoDismiss: false,
