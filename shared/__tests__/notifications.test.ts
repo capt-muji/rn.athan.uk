@@ -167,7 +167,7 @@ describe('getNotificationSound', () => {
 describe('genNotificationContent', () => {
   it('creates content with correct English-only title', () => {
     const content = genNotificationContent('Fajr', 'الفجر', AlertType.Sound, 0);
-    expect(content.title).toBe('Fajr');
+    expect(content.title).toBe('Fajr now');
     expect(content.body).toBeUndefined();
   });
 
