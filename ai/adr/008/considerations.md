@@ -104,6 +104,66 @@ Multiple reviews noted monitoring is "non-negotiable" for a scraping system. Is 
 
 ---
 
+### Site Navigation
+
+**#13 — Homepage vs prayer page gap?**
+Real-world testing against WLICC revealed that Google Maps returns the mosque homepage, not the prayer times page. The extraction prompt assumes the right content is already fetched.
+
+> **Decision: Add Site Navigation phase.** A two-pass step between Homepage Fetch and Pre-processing: (1) discover the prayer times page link from the homepage, (2) verify the page shows current data before extracting. Many sites default to the current month on first load — check content first before attempting URL parameter manipulation. See ADR.md "Site Navigation (Pre-Extraction)" section and `navigation-prompt.md`.
+
+---
+
+## Real-World Test Results
+
+### WLICC — West London Islamic Cultural Centre
+
+**Mosque:** WLICC, 7 Bridges Place, Parsons Green, London SW6 4HW
+**Website:** wlicc.org/prayertime
+**Google Maps URL:** Points to wlicc.org (homepage, not prayer page)
+
+**Key findings:**
+
+1. **Third-party aggregators were inaccurate:** Aggregator sites showed times 2-6 minutes off from the mosque's own timetable, and none included jamaat (congregation) times. This validates the ADR's core thesis — mosque-specific scraping provides data that aggregators cannot.
+
+2. **Navigation required:** Google Maps returned the homepage. The prayer times page is at `/prayertime`, discoverable via a "Prayer Time" link in the site navigation.
+
+3. **Date handling is nuanced:** The prayer page defaults to the current month on first load with **no URL query parameter**. A months dropdown exists — only when a user selects a different month does the URL update with a `?month=N` parameter. This means:
+   - For the current month: a simple fetch of `/prayertime` returns correct data
+   - For other months (e.g., fetching ahead): the `?month=N` parameter is needed
+   - The navigation step should check content first, not assume URL parameters are always needed
+
+4. **Extraction difficulty: Easy** — Clean HTML table with separate "Start" and "Jama'ah" columns for each prayer. The extraction prompt would handle this with high confidence.
+
+5. **Scrapability: High** (once navigated to the correct page)
+
+**Implications for the pipeline:**
+
+- Homepage → prayer page navigation is a required step, not optional
+- Content verification (does the page already show today's data?) should precede URL parameter discovery
+- Sites with JS-driven dropdowns may need Puppeteer to change months, but simple first-load fetches work for the current month
+
+### ICCUK — Islamic Cultural Centre UK
+
+**Mosque:** ICCUK, 146 Park Road, London NW8 7RG
+**Website:** iccuk.org
+**Google Maps URL:** Points to iccuk.org (homepage)
+
+**Key findings:**
+
+1. **LLM-only navigation failed:** When given raw HTML, the LLM could parse links and identify prayer-related URLs, but it could not render the page, click links, observe results, or interact with JavaScript-driven UI. This was link scraping, not navigation.
+
+2. **Browser required:** The site uses dynamic content that requires JavaScript rendering. Raw HTML fetches miss content that only appears after JS execution.
+
+3. **Validates Crawl4AI decision:** This test case proved that navigation requires a real browser (Crawl4AI/Playwright) with an LLM analysing rendered content — not an LLM reading raw HTML.
+
+**Implications for the pipeline:**
+
+- Navigation must use a real browser (Crawl4AI/Playwright), not raw HTML + LLM
+- An LLM inside Crawl4AI analyses rendered pages to decide where to navigate
+- This is a two-LLM architecture: navigation LLM (find the page) + extraction LLM (parse the times)
+
+---
+
 ## Remaining Open Questions
 
 Only two items remain unresolved:

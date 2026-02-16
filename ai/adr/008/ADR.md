@@ -101,15 +101,21 @@ The mosque's website is the **single source of truth**. No calculation-based fal
 │   │    SCRAPING PIPELINE      │   │                  │ (mirrors)
 │   │                           │   │                  ▼
 │   │  1. Google Maps Places    │   │  ┌───────────────────────────────────┐
-│   │  2. Website Fetch         │   │  │  DATA STORE (Public GitHub Repo)  │
-│   │  3. Pre-processing        │   │  │                                   │
-│   │  4. LLM Extraction        │   │  │  JSON files per mosque,           │
-│   │  5. Post-processing       │   │──│  organized by region.             │
-│   │     & Validation          │   │  │                                   │
-│   └───────────────────────────┘   │  │  This IS the primary data store.  │
-│                                   │  │  Backend writes here; app reads   │
-└───────────────────────────────────┘  │  via jsDelivr CDN.                │
-                                       └───────────────────────────────────┘
+│   │  2. Homepage Fetch        │   │  │  DATA STORE (Public GitHub Repo)  │
+│   │     (Crawl4AI/Playwright) │   │  │                                   │
+│   │  3. Site Navigation       │   │  │  JSON files per mosque,           │
+│   │     (Navigation LLM +    │   │  │  organized by region.             │
+│   │      Crawl4AI browser)   │   │──│                                   │
+│   │  4. Date Verification     │   │  │  This IS the primary data store.  │
+│   │  5. Pre-processing        │   │  │                                   │
+│   │     (Markdown conversion) │   │  │  Backend writes here; app reads   │
+│   │  6. LLM Extraction        │   │  │  via jsDelivr CDN.                │
+│   │     (Opus 4.6)            │   │  │                                   │
+│   │  7. Post-processing       │   │
+│   │     & Validation          │   │
+│   └───────────────────────────┘   │
+│                                   │
+└───────────────────────────────────┘
 ```
 
 ### Data Collection Strategy: Demand-Driven Caching
@@ -161,6 +167,73 @@ A dedicated extraction prompt has been engineered and is preserved in Appendix B
 7. **English aliases only** — Scoped to UK mosques. Aliases cover common UK transliterations: Fajr/Subh, Dhuhr/Zuhr, Asr/Asar, Maghrib/Magrib, Isha/Esha, Sunrise/Shuruq.
 
 8. **No madhab preference logic** — The mosque's website is the single source of truth. Whatever times they post is what gets extracted. The system does not choose between Hanafi and Shafi'i — the mosque has already made that decision.
+
+### Site Navigation (Pre-Extraction)
+
+Real-world testing revealed a critical gap in the scraping pipeline: the URL from Google Maps is typically the mosque's **homepage**, not the prayer times page. The extraction prompt handles parsing content into JSON perfectly, but there's no step ensuring the **right content** is fetched first.
+
+This is a two-pass approach inserted between Homepage Fetch and Pre-processing:
+
+#### Pass 1: Prayer Page Discovery (from homepage)
+
+- Fetch the homepage URL from Google Maps
+- Scan HTML for links containing prayer-related keywords (`prayer`, `salah`, `namaz`, `timetable`, `times`, `prayertime`)
+- Also check for download links (PDF/CSV) that may contain timetables
+- If a dedicated prayer times page is found → fetch that page
+- If no prayer-related links found → use homepage content as-is
+
+#### Pass 2: Content Verification (from prayer page)
+
+- Check if the fetched prayer page already contains the current month/date — **many sites default to the current month on first load without any URL parameters**
+- If the content already has today's data → proceed to pre-processing (no further navigation needed)
+- If the content shows a different month/date:
+  - Inspect HTML for navigation patterns: dropdowns, tab links, URL parameters (`?month=`, `?m=`), date pickers
+  - Note: some sites only add URL parameters when the user interacts with a dropdown — the default load may have no query string at all
+  - Try the discovered parameter with the correct month value and re-fetch
+- If still wrong → flag as stale, proceed with available content (the extraction prompt handles stale detection via `date_on_page` + low confidence)
+
+**Implementation: Crawl4AI with Playwright + Navigation LLM (two-LLM architecture)**
+
+Real-world testing against ICCUK (iccuk.org) demonstrated that LLM-based navigation on raw HTML is fundamentally inadequate. An LLM reading raw HTML can parse links and guess URLs, but it cannot render JavaScript, click elements, observe results, or interact with dropdowns. This amounts to link scraping, not navigation — and breaks on any site with dynamic content, SPAs, or JS-driven UI.
+
+Navigation requires a **real browser** combined with an **LLM for decision-making**. Every mosque website is structured differently, so the LLM analyses each rendered page to decide where to navigate — there is no heuristics-first approach. The implementation uses **Crawl4AI** (open-source Playwright wrapper) with a navigation LLM to:
+
+1. Render the homepage in a real browser (handles JS, CSR, SPAs)
+2. Pass the rendered page content to a **navigation LLM** that identifies which link leads to the prayer timetable
+3. Click the identified link, wait for page load, verify rendered content has current month/date
+4. If wrong date — interact with dropdowns, select elements, or date pickers to navigate to the correct month
+5. Extract rendered HTML/Markdown and pass to the Opus 4.6 extraction prompt
+
+This is a two-LLM architecture: a **navigation LLM** (configured inside Crawl4AI, model TBD — best for web navigation) finds the right page, then the **extraction LLM** (Opus 4.6) parses the prayer times into structured JSON. See `navigation-prompt.md` for the full navigation strategy and prompt.
+
+### Web Crawling Technology
+
+The navigation and rendering layer requires a real browser to handle the diversity of mosque websites (static HTML, server-side rendered, client-side rendered SPAs, JS-driven dropdowns). Five options were evaluated:
+
+| Option                | Type                      | Navigation                    | Extraction Control                       | Cost                |
+| --------------------- | ------------------------- | ----------------------------- | ---------------------------------------- | ------------------- |
+| **Crawl4AI**          | Open-source, self-hosted  | Playwright browser automation | Full — custom Opus prompt                | Free (compute only) |
+| Vercel Agent Browser  | Open-source CLI (TS/Rust) | LLM-driven snapshot+refs      | None — navigation only, no extraction    | Free (compute only) |
+| Firecrawl (FIRE-1)    | SaaS agent                | Autonomous (Gemini-based)     | Limited — uses Gemini, not custom prompt | $0.03-0.15/page     |
+| Browserbase           | Cloud browser API         | Manual scripting              | Full                                     | Usage-based         |
+| Self-hosted Puppeteer | Library                   | Manual scripting              | Full                                     | Free (compute only) |
+
+**Decision: Crawl4AI.**
+
+Key reasons:
+
+- **Open-source, self-hosted** — no vendor lock-in, no per-page fees, full control over the pipeline
+- **Playwright-based** — real Chromium browser that handles all site types (static, SSR, CSR, SPAs)
+- **Built-in Markdown conversion** — reduces pre-processing work before LLM extraction
+- **Async crawling** — efficient for batch operations when multiple mosques need refreshing
+- **Custom extraction prompt** — preserves the Opus 4.6 extraction prompt as the single LLM layer (unlike Firecrawl's FIRE-1 which forces Gemini for navigation)
+- **LLM extraction patterns** — has built-in support for passing rendered content to an LLM, aligning with the existing pipeline design
+
+Firecrawl's FIRE-1 agent was the closest alternative — it provides autonomous multi-step navigation (clicking links, filling forms, scrolling). However, it uses Gemini internally for navigation decisions, which conflicts with the goal of using a single custom Opus prompt for all extraction. It also adds per-page costs ($0.03-0.15) that scale with usage.
+
+Vercel's Agent Browser (`vercel-labs/agent-browser`, 12k GitHub stars, Apache 2.0) was also evaluated. It introduces a novel snapshot+refs system purpose-built for LLM-driven navigation: the browser takes an accessibility-tree snapshot with deterministic element references (`@e1`, `@e2`), the LLM picks which ref to click/fill, and the CLI executes the action — reducing token usage by ~82% compared to sending full page content (5.5K chars vs 31K per navigation cycle). This is an elegant navigation pattern. However, Agent Browser is a navigation tool, not a scraper — it has no built-in Markdown conversion, no content extraction pipeline, and no async batch crawling. Using it would require bolting on a separate extraction layer to achieve what Crawl4AI provides end-to-end. It is also TypeScript/Rust rather than Python, adding a language boundary to the backend pipeline.
+
+**Cost:** Crawl4AI itself is free (open-source). The navigation LLM adds a small cost per scrape (~$0.001-0.01) for the structural analysis call that decides where to click. The navigation model (TBD — best for web navigation) is separate from the Opus 4.6 extraction model. Total navigation cost is significantly less than extraction.
 
 ### Validation Pipeline (Post-LLM)
 
@@ -264,8 +337,10 @@ User Device (untrusted)          Backend (trusted)              GitHub (public r
                                     for nearest mosque(s)
                                  8. Check data repo for fresh
                                     data → if yes, return it
-                                 9. Fetch → LLM extract →
-                                    validate → commit to repo
+                                 9. Crawl4AI renders homepage →
+                                    navigates to prayer page →
+                                    LLM extract → validate →
+                                    commit to repo
 ◀── JSON + mosque metadata ────
 10. Cache in MMKV, display
     times, schedule notifications
@@ -352,8 +427,9 @@ The backend runs as serverless cloud functions. No cron jobs needed — all scra
 Requirements:
 
 - HTTP endpoint for prayer times (`GET /times`)
-- Headless browser capability (Puppeteer/Playwright for JS-rendered sites)
-- LLM API access (Claude or similar)
+- **Crawl4AI** — open-source Playwright wrapper for browser-based navigation, rendering, and Markdown conversion (see "Web Crawling Technology" section)
+- Headless browser capability (Playwright via Crawl4AI for JS-rendered sites, navigation, dropdown interaction)
+- LLM API access (Claude Opus 4.6 for extraction)
 - GitHub API access (for writing to the data repo)
 
 ### Cost Projections
@@ -362,9 +438,10 @@ Requirements:
 | Service | Cost |
 |---------|------|
 | Google Maps Places API | ~$0.032 per nearby search (skipped on cache refresh) |
-| Website fetch | Free (server-side HTTP) |
-| LLM API call | ~$0.03-0.10 per extraction (Opus 4.6) |
-| **Total per scrape** | **~$0.01-0.08** |
+| Crawl4AI rendering (homepage → prayer page) | Free (open-source, self-hosted — compute cost only) |
+| Navigation LLM (prayer page discovery) | ~$0.001-0.01 per navigation (model TBD — best for web navigation) |
+| Extraction LLM (prayer times parsing) | ~$0.03-0.10 per extraction (Opus 4.6) |
+| **Total per scrape** | **~$0.03-0.14** |
 
 **Ongoing costs are purely demand-driven.** A mosque that no user requests costs nothing. Monthly spend depends entirely on how many unique mosque-days users request. Example projections:
 
@@ -570,13 +647,14 @@ All extractions use **Opus 4.6 only** — accuracy over cost. The extraction pro
 
 ### Key Files to Create (Backend)
 
-| File                    | Purpose                                                                   |
-| ----------------------- | ------------------------------------------------------------------------- |
-| `functions/discover.ts` | Prayer times endpoint — lat/long → check cache → scrape if stale → return |
-| `functions/scrape.ts`   | Scraping pipeline — fetch → preprocess → LLM → validate                   |
-| `functions/prompt.ts`   | LLM prompt template and variable injection                                |
-| `functions/validate.ts` | Post-LLM validation (ordering, plausibility, confidence gate)             |
-| `functions/github.ts`   | GitHub API integration for writing to data repo                           |
+| File                    | Purpose                                                                       |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| `functions/discover.ts` | Prayer times endpoint — lat/long → check cache → scrape if stale → return     |
+| `functions/scrape.ts`   | Scraping pipeline — fetch → navigate → preprocess → LLM → validate            |
+| `functions/navigate.ts` | Crawl4AI navigation — browser-based prayer page discovery + date verification |
+| `functions/prompt.ts`   | LLM prompt template and variable injection                                    |
+| `functions/validate.ts` | Post-LLM validation (ordering, plausibility, confidence gate)                 |
+| `functions/github.ts`   | GitHub API integration for writing to data repo                               |
 
 ### Extraction Prompt Location
 
@@ -650,23 +728,28 @@ These items were raised during the initial discussion and subsequent review. Mos
 
 ## Reference Documents
 
-Both source documents that informed this ADR have been moved into this folder (`ai/adr/008/`), and are also preserved verbatim as appendices below:
+Source documents and prompts are maintained alongside this ADR in `ai/adr/008/`:
 
 - `ai/adr/008/future.txt` — Original ideation document (also Appendix A below)
 - `ai/adr/008/extraction-prompt.md` — LLM extraction prompt (also Appendix B below)
+- `ai/adr/008/navigation-prompt.md` — Crawl4AI + navigation LLM strategy (two-LLM architecture for site navigation)
 
 ---
 
 ## Revision History
 
-| Date       | Author | Change                                                                                                                                   |
-| ---------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-02-16 | muji   | Initial draft from ideation discussion                                                                                                   |
-| 2026-02-16 | muji   | Resolve Open Question #3: GitHub repo is primary data store, served via jsDelivr CDN                                                     |
-| 2026-02-16 | muji   | Resolve Open Questions #1 (deferred), #2, #4, #5; fix stale-data language                                                                |
-| 2026-02-16 | muji   | Add request pipeline & security model section; update open questions intro                                                               |
-| 2026-02-16 | muji   | Fix pipeline (cache-first + attestation); add backend auth subsection; replace jsDelivr with GitHub raw; strengthen invariants #1 and #4 |
-| 2026-02-16 | muji   | Post-review updates: Opus-only model selection, resolve open questions #6-#11, truncation exception for timetable pages                  |
+| Date       | Author | Change                                                                                                                                                       |
+| ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2026-02-16 | muji   | Initial draft from ideation discussion                                                                                                                       |
+| 2026-02-16 | muji   | Resolve Open Question #3: GitHub repo is primary data store, served via jsDelivr CDN                                                                         |
+| 2026-02-16 | muji   | Resolve Open Questions #1 (deferred), #2, #4, #5; fix stale-data language                                                                                    |
+| 2026-02-16 | muji   | Add request pipeline & security model section; update open questions intro                                                                                   |
+| 2026-02-16 | muji   | Fix pipeline (cache-first + attestation); add backend auth subsection; replace jsDelivr with GitHub raw; strengthen invariants #1 and #4                     |
+| 2026-02-16 | muji   | Post-review updates: Opus-only model selection, resolve open questions #6-#11, truncation exception for timetable pages                                      |
+| 2026-02-16 | muji   | Add Site Navigation phase to scraping pipeline (prayer page discovery + date verification); add navigation prompt; WLICC test case                           |
+| 2026-02-16 | muji   | Add Crawl4AI as navigation/rendering layer; browser-first navigation replaces LLM-only approach; ICCUK test case validates decision                          |
+| 2026-02-16 | muji   | Revise to two-LLM architecture: navigation LLM always used (not heuristics-first); add navigation LLM cost to projections; ICCUK test case in considerations |
+| 2026-02-16 | muji   | Add Vercel Agent Browser to web crawling technology comparison; decision remains Crawl4AI (end-to-end pipeline vs navigation-only)                           |
 
 ---
 
