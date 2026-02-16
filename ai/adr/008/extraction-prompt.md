@@ -138,7 +138,7 @@ Website content:
 1. Strip `<nav>`, `<footer>`, `<script>`, `<style>` tags
 2. Check for prayer keywords before calling LLM — skip if none found
 3. Headless browser fallback: re-fetch with Puppeteer if raw HTML is empty but Google Maps confirms mosque
-4. Truncate large pages around prayer keyword clusters (±2000 chars)
+4. Truncate large pages around prayer keyword clusters (±2000 chars). **Exception:** skip truncation for pages identified as full timetables (monthly/yearly) — send complete content to avoid cutting off today's row
 
 ## Post-processing (After LLM Response)
 
