@@ -363,7 +363,7 @@ Requirements:
 |---------|------|
 | Google Maps Places API | ~$0.032 per nearby search (skipped on cache refresh) |
 | Website fetch | Free (server-side HTTP) |
-| LLM API call | ~$0.01-0.05 per extraction (Haiku/Sonnet) |
+| LLM API call | ~$0.03-0.10 per extraction (Opus 4.6) |
 | **Total per scrape** | **~$0.01-0.08** |
 
 **Ongoing costs are purely demand-driven.** A mosque that no user requests costs nothing. Monthly spend depends entirely on how many unique mosque-days users request. Example projections:
@@ -378,15 +378,13 @@ Costs scale linearly with actual user demand, not with the number of discovered 
 
 ### LLM Model Selection for Extraction
 
-The extraction task is structured data extraction from HTML tables — not complex reasoning. Model recommendation:
+All extractions use **Opus 4.6 only** — accuracy over cost. The extraction prompt (see Appendix B) requires Opus for reliable structured data extraction across the full range of mosque website layouts, including complex tables, PDFs, and images.
 
-| Model                        | Use case                           | Cost        | Accuracy                 |
-| ---------------------------- | ---------------------------------- | ----------- | ------------------------ |
-| Haiku/Sonnet                 | Primary — HTML table extraction    | Low         | High for structured data |
-| Opus                         | Fallback — complex/ambiguous pages | High        | Highest                  |
-| Vision model (Claude/GPT-4V) | Image-based timetables, PDFs       | Medium-High | Varies                   |
+| Model    | Use case                               | Cost | Accuracy |
+| -------- | -------------------------------------- | ---- | -------- |
+| Opus 4.6 | All extraction — HTML, PDF, image, OCR | High | Highest  |
 
-**Recommended approach:** Try Haiku first. If confidence is "low", retry with Sonnet. Reserve Opus/vision models for `image_ocr` and `pdf_text` source types where visual understanding matters.
+**Rationale:** While Haiku/Sonnet could handle simple HTML tables, the decision is to use a single model for all source types to maximise accuracy and avoid the complexity of a tiered fallback system. Cost is monitored but not capped (see Open Question #8).
 
 ---
 
@@ -609,14 +607,14 @@ Essential monitoring:
 | Mosque website changes layout   | Medium     | LLM extraction may fail or return wrong data | Confidence scoring catches most failures; next user request triggers a fresh scrape attempt                |
 | LLM hallucinates prayer times   | Low        | Users get wrong times (worse than no times)  | Validation pipeline: ordering check, plausibility bounds, confidence gate                                  |
 | Google Maps returns wrong place | Low        | Scrape a non-mosque website                  | Status field ("not_relevant") catches this; keyword gating in pre-processing                               |
-| Cost overruns from high usage   | Low        | Monthly bill exceeds budget                  | Start with Haiku (cheapest), scale model up only when needed; cache aggressively                           |
+| Cost overruns from high usage   | Low-Medium | Monthly bill exceeds budget                  | Opus-only is expensive; monitor costs, cache aggressively, cost ceiling as circuit breaker                 |
 | GitHub rate limits              | Low        | Can't write to data repo                     | Buffer writes; reads fail gracefully with an error (same-day local cache is acceptable, stale data is not) |
 
 ---
 
 ## Open Questions
 
-These items were raised during the initial discussion. All have been resolved or deferred:
+These items were raised during the initial discussion and subsequent review. Most have been resolved or deferred:
 
 1. ~~**Which cloud platform for the backend?**~~ **Deferred:** Infrastructure choice (Cloudflare Workers, AWS Lambda, Vercel Functions) does not impact the architecture. Decision deferred until implementation begins.
 
@@ -627,6 +625,18 @@ These items were raised during the initial discussion. All have been resolved or
 4. ~~**Cache TTL on the mobile app.**~~ **Resolved:** Cache data for as long as the data is valid — driven by the `data_range` field from the LLM extraction (see "Data Collection Strategy" section). Yearly timetable → cache for 1 year. Daily timetable → cache for 1 day. The only variable that needs frequent checking is user location — if the user moves, their nearest mosque changes regardless of cache freshness. Stale data (past `data_range.to`) must never be silently displayed.
 
 5. ~~**What happens when a user is in London?**~~ **Resolved:** The current app behaviour is unchanged for London users — the existing London Prayer Times API remains the data source with no location features. The new multi-location system only activates when the user is outside London.
+
+6. ~~**GitHub repo race conditions (concurrent scrapes)?**~~ **Resolved:** Use an in-memory Map in the cloud function to track in-flight mosque IDs. If a second request arrives for a mosque already being scraped, it waits for the first to finish rather than triggering a duplicate scrape. Simple concurrency lock, not an external queue.
+
+7. ~~**Monthly timetable truncation?**~~ **Resolved:** Pre-processing step 4 (truncate to ±2000 chars) is skipped for pages identified as full timetables (monthly/yearly). Full content is sent to the LLM to avoid cutting off today's row.
+
+8. ~~**Grace period for stale data?**~~ **Resolved:** Yesterday's data remains valid until today's Fajr time. Uses the Islamic day boundary (Fajr-to-Fajr) as the natural cutoff — if the user opens the app at 5:55am and yesterday's times are cached, they are still valid for the remaining minutes before Fajr.
+
+9. **jsDelivr CDN propagation delay** — **Open.** After committing to GitHub, jsDelivr cache takes minutes to update. For initial testing, use raw GitHub URLs (`raw.githubusercontent.com`) directly. CDN layer can be added later with zero architectural changes. Revisit when moving to production.
+
+10. ~~**LLM budget ceiling?**~~ **Resolved:** No hard ceiling. Monitor costs and adjust if unreasonable. Opus-only model selection (see "LLM Model Selection") is the most expensive tier.
+
+11. ~~**Monitoring infrastructure?**~~ **Resolved:** No existing monitoring infrastructure. Setting up scraping success rates, confidence distribution, cost tracking, and stale data alerts is additional implementation work beyond the core pipeline. See "Monitoring & Observability" section.
 
 ---
 
@@ -656,6 +666,7 @@ Both source documents that informed this ADR have been moved into this folder (`
 | 2026-02-16 | muji   | Resolve Open Questions #1 (deferred), #2, #4, #5; fix stale-data language                                                                |
 | 2026-02-16 | muji   | Add request pipeline & security model section; update open questions intro                                                               |
 | 2026-02-16 | muji   | Fix pipeline (cache-first + attestation); add backend auth subsection; replace jsDelivr with GitHub raw; strengthen invariants #1 and #4 |
+| 2026-02-16 | muji   | Post-review updates: Opus-only model selection, resolve open questions #6-#11, truncation exception for timetable pages                  |
 
 ---
 
@@ -852,7 +863,7 @@ Website content:
 1. Strip `<nav>`, `<footer>`, `<script>`, `<style>` tags
 2. Check for prayer keywords before calling LLM — skip if none found
 3. Headless browser fallback: re-fetch with Puppeteer if raw HTML is empty but Google Maps confirms mosque
-4. Truncate large pages around prayer keyword clusters (±2000 chars)
+4. Truncate large pages around prayer keyword clusters (±2000 chars). **Exception:** skip truncation for pages identified as full timetables (monthly/yearly) — send complete content to avoid cutting off today's row
 
 ## Post-processing (After LLM Response)
 
