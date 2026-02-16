@@ -35,7 +35,6 @@ const AnimatedLine = Animated.createAnimatedComponent(Line);
 
 // --- Colors (tuned for #031a4c → #5b1eaa background) ---
 const MOON_COLOR = '#FFC947';
-const MOON_GLOW_MID = '#FFD54F';
 const THREAD_COLOR = '#C9A87C';
 const GLOW_PULSE_DURATION = 3000;
 
@@ -281,7 +280,7 @@ export default function RamadanDecorations() {
   const moonTipY = moonCy - 17.7;
 
   // Moon glow radius (determines Animated.View size)
-  const moonGlowR = moonR * 2.5;
+  const moonGlowR = moonR * 2.7;
   const moonSvgSize = moonGlowR * 2;
 
   const moonBobMax = 7; // matches the withTiming(7, ...) in useEffect
@@ -527,7 +526,12 @@ function FloatingMoon({
   glowOpacity: SharedValue<number>;
   zIndex?: number;
 }) {
-  const localCx = glowR;
+  // Glow is offset (-2, +4) from moon center — pad the SVG so it isn't clipped
+  const padLeft = 2;
+  const padBottom = 4;
+  const svgW = svgSize + padLeft;
+  const svgH = svgSize + padBottom;
+  const localCx = glowR + padLeft;
   const localCy = glowR;
 
   const moveStyle = useAnimatedStyle(() => ({
@@ -539,29 +543,29 @@ function FloatingMoon({
   return (
     <Animated.View
       style={[
-        { position: 'absolute', left: cx - glowR, top: cy - glowR, width: svgSize, height: svgSize, zIndex },
+        { position: 'absolute', left: cx - glowR - padLeft, top: cy - glowR, width: svgW, height: svgH, zIndex },
         moveStyle,
       ]}>
-      <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
+      <Svg width={svgW} height={svgH} viewBox={`0 0 ${svgW} ${svgH}`}>
         <Defs>
           <RadialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-            <Stop offset="0%" stopColor={MOON_GLOW_MID} stopOpacity={0.4} />
-            <Stop offset="15%" stopColor={MOON_COLOR} stopOpacity={0.25} />
-            <Stop offset="35%" stopColor={MOON_COLOR} stopOpacity={0.12} />
-            <Stop offset="65%" stopColor={MOON_COLOR} stopOpacity={0.03} />
+            <Stop offset="0%" stopColor={MOON_COLOR} stopOpacity={0.13} />
+            <Stop offset="15%" stopColor={MOON_COLOR} stopOpacity={0.13} />
+            <Stop offset="35%" stopColor={MOON_COLOR} stopOpacity={0.13} />
+            <Stop offset="65%" stopColor={MOON_COLOR} stopOpacity={0.045} />
             <Stop offset="100%" stopColor={MOON_COLOR} stopOpacity={0} />
           </RadialGradient>
           <Mask id="crescentMask">
-            <Rect x={0} y={0} width={svgSize} height={svgSize} fill="black" />
+            <Rect x={0} y={0} width={svgW} height={svgH} fill="black" />
             <Circle cx={localCx} cy={localCy} r={r} fill="white" />
             <Circle cx={localCx + 5} cy={localCy - 5} r={r * 0.92} fill="black" />
           </Mask>
         </Defs>
 
-        <AnimatedCircle cx={localCx - 6} cy={localCy + 4} r={glowR} fill="url(#moonGlow)" animatedProps={glowProps} />
+        <AnimatedCircle cx={localCx - 2} cy={localCy + 4} r={glowR} fill="url(#moonGlow)" animatedProps={glowProps} />
         <Circle cx={localCx} cy={localCy} r={r} fill={MOON_COLOR} opacity={1} mask="url(#crescentMask)" />
       </Svg>
-      <MoonSparks cx={localCx - 6} cy={localCy + 4} glowR={glowR * 0.6} />
+      <MoonSparks cx={localCx - 2} cy={localCy + 4} glowR={glowR * 0.6} />
     </Animated.View>
   );
 }
