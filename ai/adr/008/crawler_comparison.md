@@ -3,6 +3,10 @@
 **Context:** ADR-008 Multi-Location Expansion via AI-Powered Mosque Scraping
 **Date:** 2026-02-16
 
+> **Resolved (2026-02-16):** The open decisions in sections 8 and 9 have been resolved.
+> Browser Use (Option A) with Gemini 3 Pro for navigation, Opus 4.6 for extraction.
+> See `tool-decision.md` for the full rationale.
+
 ---
 
 ## 1. Methodology
@@ -299,7 +303,7 @@ Mosque Website → Browser Use (Navigation LLM)
 
 The 3 pro-Browser-Use reports make the stronger technical argument: navigation is the hardest problem, Crawl4AI cannot do LLM-driven navigation, and Browser Use handles it natively. However, the 2 pro-Crawl4AI reports correctly note its superior extraction pipeline features.
 
-**Decision: Deferred.** Test all three options against 10-20 real mosque websites during pre-implementation validation. The validation should measure: navigation success rate (does it find the prayer times page?), extraction accuracy (does it get the right JSON?), and latency.
+~~**Decision: Deferred.**~~ **Resolved: Option A (Browser Use only).** Navigation is the hardest problem and Browser Use solves it natively. Crawl4AI's optimization features (Markdown conversion, BM25 filtering, batch crawling) are not needed for reliability — Opus 4.6 handles noisy HTML content well without preprocessing. Crawl4AI can be added later as a content-cleaning step (Option C) only if validation testing shows extraction accuracy suffering. See `tool-decision.md`.
 
 ---
 
@@ -325,7 +329,7 @@ Two models emerged as candidates for the extraction step. No decision is made he
 
 If Gemini 3 Pro proves equally accurate at direct HTML-to-JSON extraction (not just code generation), it offers significant advantages: larger context window (1M vs 200K), faster inference, lower cost, and multimodal PDF/image support. But this is unproven for the specific pipeline task.
 
-**Decision: Deferred.** Test both models against 10-20 real mosque websites. Measure extraction accuracy (F1 against manually verified ground truth), cost per extraction, and latency.
+~~**Decision: Deferred.**~~ **Resolved: Opus 4.6 for extraction.** The Zyte benchmark measures scraping code generation, not direct HTML-to-JSON extraction. Opus 4.6's ~95%+ F1 for direct structured extraction is proven; Gemini 3 Pro's performance on this specific task is not. Gemini 3 Pro is used for navigation instead (72.7% ScreenSpot-Pro, 85.4% tau2-bench). See `tool-decision.md`.
 
 ---
 
