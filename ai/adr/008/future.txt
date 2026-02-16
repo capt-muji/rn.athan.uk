@@ -1,0 +1,27 @@
+// Current Application Overview:
+// The current app provides prayer times for Muslims in London by querying a prayer time API. It uses a fixed data source for a specific location (London) and displays daily prayer times accurately.
+
+// Intended Expanded Approach:
+// 1. User Location Integration: The app will enable location services. When users are outside London, a "Fetch Prayer Times" button will allow them to initiate a localized search.
+
+// 2. Location-Based Mosque Identification: Upon user request, the app will capture latitude and longitude, then run a Google Maps query to find the closest mosque (by proximity to the user’s location).
+
+// 3. AI-Based Scraping: Instead of relying on structured APIs or static selectors, a machine learning model will be employed to parse each mosque’s unique HTML structure. The AI will detect patterns and extract prayer times from a wide variety of page layouts. This will include scenarios where the times are in HTML tables, as well as cases where the prayer times are presented as PDFs or images.
+
+// 4. Data Persistence and Public Repo: After each user request that triggers a new mosque discovery, if that mosque is not already in the repo, the app will push the newly scraped prayer times to a public repository. This ensures that over time, the repo grows organically with each new request, avoiding scheduled updates while still keeping the data set current.
+
+// 5. Update Strategy: Updates happen dynamically—each time a user requests a prayer time for a new location, if that mosque is missing, it is added to the repo immediately. Thus, the repository grows based on real-time demand, ensuring global coverage as needed.
+
+// AI Model Fine-Tuning:
+// 1. Data Collection: Compile a diverse set of at least 100 mock websites representing different mosques. Ensure variety: different layouts, formats, and structures. Specifically include cases where prayer times are embedded in HTML tables, PDFs, or images.  
+// 2. Labeling: For each mock website, annotate the ground truth prayer times manually. Ensure you have a consistent reference format for comparison.
+  
+// 3. Model Selection: Choose a flexible extraction model—consider a combination of NLP and computer vision if PDFs or images are involved. Fine-tune the model using the mock data set, ensuring it learns to identify prayer times regardless of layout format (e.g., table, image, PDF).  
+// 4. Testing: Create unit tests that run the model against all 100 mock sites. Validate extraction accuracy by comparing model output against the annotated ground truth.  
+// 5. Robustness Considerations: Ensure edge cases (PDF, image-based times, monthly or yearly schedules) are included in the test set. The model must recognize different time formats—daily, monthly, yearly—and extract them correctly.
+
+// Alternative Approaches Considered but Rejected:
+// - Calculation-Based: Using predefined astronomical algorithms (e.g., Umm al-Qura, ISNA) was rejected because some mosques use unique local adjustments that these calculations cannot accommodate accurately.
+// - Crowdsourcing: Allowing users to input prayer times was dismissed due to inconsistent user data, low accuracy, and the burden it places on users.
+// - Manual User Input: Requiring users to input or adjust times was also rejected to maintain seamlessness and minimize user effort.
+// - Single Static Dataset: Relying on a single global public API was discarded due to known inaccuracies and regional mismatches.
