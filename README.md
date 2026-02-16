@@ -56,20 +56,20 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ## 📝 Recent Updates
 
-### All Features Complete (2026-01-21)
+### v1.5.1 (2026-02-16)
 
-All 11 development features have been completed, tested, and archived:
+- ✅ **Notification title improvement**: Added "now" indicator to prayer notification titles
+- ✅ **Multi-location ADR**: Architecture decision record for UK-wide mosque prayer times via AI-powered scraping ([ADR-008](ai/adr/008/ADR.md))
 
-- ✅ **Timing System Overhaul**: Major refactor to prayer-centric model (ADR-005)
-- ✅ **Timing System Bugfixes**: 5 post-refactor bugs resolved
-- ✅ **Isha Display Bug**: Critical Standard schedule fix
-- ✅ **Islamic Day Boundary**: Prayer-based day advancement
-- ✅ **CountdownBar Midnight Fix**: Accurate midnight progress display
-- ✅ **Midnight Prayer**: New Extra prayer (midpoint Magrib-Fajr)
-- ✅ **Prayer Explanations**: Contextual overlay help text
-- ✅ **Overlay Date Display**: Formatted date in overlay
-- ✅ **Measurement Improvements**: Android font scaling fix
-- ✅ **Codebase Cleanup**: ~100 lines duplication eliminated
+### v1.5.0
+
+- ✅ **Notification cleanup**: Scheduling improvements, documentation, and full scenario coverage (14 scenarios documented)
+
+### v1.4.0 — v1.4.2
+
+- ✅ **Update popup**: Version checking with App Store / Play Store redirect
+- ✅ **Ramadan decorations**: Animated lantern, moon, stars, spark particles with glow effects
+- ✅ **Cloud animations**: Ambient cloud layer
 
 <br/>
 <br/>
@@ -92,6 +92,9 @@ All 11 development features have been completed, tested, and archived:
 - [x] Alert menu with per-prayer at-time and reminder notification controls
 - [x] Background notification refresh task (~3 hour intervals)
 - [x] SDK 54 upgrade (React 19, RN 0.81, Expo 54)
+- [x] Update popup with version checking and store redirect
+- [x] Ramadan seasonal decorations (lantern, moon, stars, spark particles, clouds)
+- [x] Notification system documentation and scenario coverage (14 scenarios)
 
 ### Known Limitations
 
@@ -99,10 +102,9 @@ All 11 development features have been completed, tested, and archived:
 
 ### Upcoming Improvements
 
-- [ ] Building locally (mac mini m1)
-- [ ] Widget support
+- [ ] iOS widget (WidgetKit)
+- [ ] Multi-location support — UK mosques via AI-powered scraping ([ADR-008](ai/adr/008/ADR.md))
 - [ ] Qibla direction finder
-- [ ] Multi-location support (separate open source project)
 
 <br/>
 <br/>

@@ -430,7 +430,6 @@ Use these prompts to start specialized sessions:
 | -------------------- | ------------------------------ | ----------------------------------- |
 | **Cleanup/Refactor** | `ai/prompts/cleanup.md`        | DRY, simplify, document, format     |
 | **Documentation**    | `ai/prompts/document.md`       | Add JSDoc, comments, README updates |
-| **Quick Commands**   | `ai/prompts/quick.md`          | One-liner prompts for common tasks  |
 | **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
 | **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
 
@@ -442,9 +441,6 @@ Read ai/prompts/cleanup.md
 
 # Add docs to a file
 Read ai/prompts/document.md
-
-# One-liner tasks
-Read ai/prompts/quick.md and run "Add JSDoc to File" for shared/time.ts
 ```
 
 ## 7. Boundaries & Permissions (Three-Tier)
