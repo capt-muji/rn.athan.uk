@@ -90,30 +90,78 @@ const needsDataUpdate = (): boolean => {
   return false;
 };
 
+// Check if the current year's data is already fetched and cached
+const isCurrentYearCached = (): boolean => {
+  const fetchedYears = Database.getItem('fetched_years') || {};
+  const currentYear = TimeUtils.getCurrentYear();
+  const now = TimeUtils.createLondonDate();
+  const todayData = Database.getPrayerByDate(now);
+
+  return Boolean(fetchedYears[currentYear]) && Boolean(todayData);
+};
+
 /**
  * Fetches and stores new prayer time data
- * 1. Cleans up old data
+ * 1. Cleans up old data (skipped when current year is already cached)
  * 2. Fetches current year (and optionally next year) data
  * 3. Saves data to local storage and marks years as fetched
  */
 const updatePrayerData = async () => {
   logger.info('SYNC: Starting data refresh');
-  // Clear prayer cache but preserve app version and user preferences
-  Database.clearAllExcept(['app_installed_version', 'preference_']);
 
   try {
-    // SCENARIO 3: December - Proactively fetch current year + next year
+    // SCENARIO 3a: December, current year already cached - fetch next year only
+    // Keeps cache intact: no wipe, no current-year refetch on every December retry
+    // while the next year dataset is not yet published on the API
+    if (shouldFetchNextYear() && isCurrentYearCached()) {
+      const currentYear = TimeUtils.getCurrentYear();
+      const nextYear = currentYear + 1;
+
+      try {
+        const nextYearData = await Api.fetchYear(nextYear);
+
+        Database.saveAllPrayers(nextYearData);
+        Database.markYearAsFetched(nextYear);
+
+        logger.info('SYNC: Data refresh complete (next year only)', { nextYear });
+      } catch (error) {
+        logger.warn('SYNC: Next year data not yet available, will retry on next sync', { nextYear, error });
+      }
+
+      return;
+    }
+
+    // Clear prayer cache but preserve app version and user preferences
+    Database.clearAllExcept(['app_installed_version', 'preference_']);
+
+    // SCENARIO 3b: December, current year not cached - Proactively fetch current year + next year
+    // Years settle independently: next year may not be populated on the API yet
+    // (empty dataset), which must not prevent the current year from being saved
     if (shouldFetchNextYear()) {
       const currentYear = TimeUtils.getCurrentYear();
       const nextYear = currentYear + 1;
 
-      const [currentYearData, nextYearData] = await Promise.all([Api.fetchYear(currentYear), Api.fetchYear(nextYear)]);
+      const [currentYearResult, nextYearResult] = await Promise.allSettled([
+        Api.fetchYear(currentYear),
+        Api.fetchYear(nextYear),
+      ]);
 
-      Database.saveAllPrayers(currentYearData);
-      Database.markYearAsFetched(currentYear);
+      if (currentYearResult.status === 'fulfilled') {
+        Database.saveAllPrayers(currentYearResult.value);
+        Database.markYearAsFetched(currentYear);
+      }
 
-      Database.saveAllPrayers(nextYearData);
-      Database.markYearAsFetched(nextYear);
+      if (nextYearResult.status === 'fulfilled') {
+        Database.saveAllPrayers(nextYearResult.value);
+        Database.markYearAsFetched(nextYear);
+      } else {
+        logger.warn('SYNC: Next year data not yet available, will retry on next sync', {
+          nextYear,
+          error: nextYearResult.reason,
+        });
+      }
+
+      if (currentYearResult.status === 'rejected') throw currentYearResult.reason;
 
       logger.info('SYNC: Data refresh complete (current + next year)', { currentYear, nextYear });
     }

@@ -24,7 +24,8 @@ const validateApiResponse = async (response: Response): Promise<IApiResponse> =>
   if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
   const data: IApiResponse = await response.json();
-  if (!data?.city) throw new Error('Incomplete data received');
+  // An unpopulated year returns HTTP 200 with an empty `times` object - treat as failure
+  if (Object.keys(data?.times ?? {}).length === 0) throw new Error('Incomplete data received');
 
   return data;
 };
