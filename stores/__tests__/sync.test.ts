@@ -344,6 +344,110 @@ describe('December prefetch behavior', () => {
     expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2026);
     expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2027);
   });
+
+  it('still saves current year when next year fetch fails (empty dataset)', async () => {
+    mockGetCurrentYear.mockReturnValue(2026);
+    mockFetchYear.mockImplementation(async (year: number) => {
+      if (year === 2027) throw new Error('Incomplete data received');
+      return createMockYearData();
+    });
+
+    await sync();
+
+    expect(mockFetchYear).toHaveBeenCalledWith(2026);
+    expect(mockFetchYear).toHaveBeenCalledWith(2027);
+    expect(mockSaveAllPrayers).toHaveBeenCalledTimes(1);
+    expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2026);
+    expect(mockMarkYearAsFetched).not.toHaveBeenCalledWith(2027);
+  });
+
+  it('resolves and initializes app when only next year fails', async () => {
+    mockFetchYear.mockImplementation(async (year: number) => {
+      if (year === 2027) throw new Error('Incomplete data received');
+      return createMockYearData();
+    });
+
+    await expect(sync()).resolves.toBeUndefined();
+    expect(mockSetSequence).toHaveBeenCalledTimes(2);
+    expect(mockStartCountdowns).toHaveBeenCalled();
+  });
+
+  it('retries next year on subsequent sync until it succeeds', async () => {
+    const yearData = createMockYearData();
+    mockFetchYear.mockImplementation(async (year: number) => {
+      if (year === 2027) throw new Error('Incomplete data received');
+      return yearData;
+    });
+
+    // First sync: next year not yet populated on API
+    await sync();
+    expect(mockMarkYearAsFetched).not.toHaveBeenCalledWith(2027);
+
+    // Second sync: API now populated
+    mockFetchYear.mockResolvedValue(yearData);
+    await sync();
+
+    expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2027);
+    expect(mockFetchYear.mock.calls.filter(([year]) => year === 2027)).toHaveLength(2);
+  });
+
+  it('throws when both years fail', async () => {
+    mockFetchYear.mockRejectedValue(new Error('API unavailable'));
+
+    await expect(sync()).rejects.toThrow('API unavailable');
+    expect(mockSaveAllPrayers).not.toHaveBeenCalled();
+    expect(mockMarkYearAsFetched).not.toHaveBeenCalled();
+  });
+
+  it('fetches only next year when current year is already cached', async () => {
+    mockGetCurrentYear.mockReturnValue(2026);
+    mockGetItem.mockReturnValue({ 2026: true });
+    mockGetPrayerByDate.mockReturnValue(createMockPrayerData('2026-12-15'));
+    mockFetchYear.mockResolvedValue(createMockYearData());
+
+    await sync();
+
+    // Only next year fetched, cache not cleared or rewritten for current year
+    expect(mockFetchYear).toHaveBeenCalledTimes(1);
+    expect(mockFetchYear).toHaveBeenCalledWith(2027);
+    expect(mockFetchYear).not.toHaveBeenCalledWith(2026);
+    expect(mockClearAllExcept).not.toHaveBeenCalled();
+    expect(mockSaveAllPrayers).toHaveBeenCalledTimes(1);
+    expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2027);
+    expect(mockMarkYearAsFetched).not.toHaveBeenCalledWith(2026);
+  });
+
+  it('retries only next year on later December syncs while current year stays cached', async () => {
+    mockGetCurrentYear.mockReturnValue(2026);
+
+    // First sync: no cache - full refresh, next year not yet on API
+    mockGetItem.mockReturnValue({});
+    mockGetPrayerByDate.mockReturnValue(null);
+    mockFetchYear.mockImplementation(async (year: number) => {
+      if (year === 2027) throw new Error('Incomplete data received');
+      return createMockYearData();
+    });
+
+    await sync();
+
+    // Later sync: current year cached - only next year attempted, cache preserved
+    mockGetItem.mockReturnValue({ 2026: true });
+    mockGetPrayerByDate.mockReturnValue(createMockPrayerData('2026-12-15'));
+    mockFetchYear.mockClear();
+    mockClearAllExcept.mockClear();
+    mockSetSequence.mockClear();
+    mockStartCountdowns.mockClear();
+    mockFetchYear.mockRejectedValue(new Error('Incomplete data received'));
+
+    await expect(sync()).resolves.toBeUndefined();
+
+    expect(mockFetchYear).toHaveBeenCalledTimes(1);
+    expect(mockFetchYear).toHaveBeenCalledWith(2027);
+    expect(mockFetchYear).not.toHaveBeenCalledWith(2026);
+    expect(mockClearAllExcept).not.toHaveBeenCalled();
+    expect(mockSetSequence).toHaveBeenCalledTimes(2);
+    expect(mockStartCountdowns).toHaveBeenCalled();
+  });
 });
 
 // =============================================================================
