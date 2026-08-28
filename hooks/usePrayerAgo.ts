@@ -1,8 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import { formatTimeAgo } from '@/shared/time';
-import { createLondonDate } from '@/shared/time';
-import { ScheduleType } from '@/shared/types';
+import { createLondonDate, formatTimeAgo } from '@/shared/time';
+import type { ScheduleType } from '@/shared/types';
 import { getPrevPrayer } from '@/stores/schedule';
 
 interface PrayerAgoState {

@@ -7,9 +7,9 @@
 
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { ScheduleType } from '@/shared/types';
+import type { ScheduleType } from '@/shared/types';
 import { overlayAtom as overlayAtomImport } from '@/stores/atoms/overlay';
-import { startCountdownOverlay, getCountdownAtom } from '@/stores/countdown';
+import { getCountdownAtom, startCountdownOverlay } from '@/stores/countdown';
 import { getNextPrayer } from '@/stores/schedule';
 
 // Re-export for backward compatibility
@@ -76,4 +76,4 @@ const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
   startCountdownOverlay();
 };
 
-export { toggleOverlay, setSelectedPrayerIndex };
+export { setSelectedPrayerIndex, toggleOverlay };

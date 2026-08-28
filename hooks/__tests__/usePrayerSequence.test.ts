@@ -7,7 +7,7 @@
  * - Ready state and edge cases
  */
 
-import { ScheduleType, Prayer, PrayerSequence } from '@/shared/types';
+import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
 
 // =============================================================================
 // MOCK SETUP

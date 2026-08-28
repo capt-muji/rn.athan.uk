@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { TextStyle } from 'react-native';
-import Animated, { AnimatedStyle } from 'react-native-reanimated';
+import type { TextStyle } from 'react-native';
+import Animated, { type AnimatedStyle } from 'react-native-reanimated';
 
 import ICONS from '@/assets/icons/svg';
-import { Icon as IconType } from '@/shared/types';
+import type { Icon as IconType } from '@/shared/types';
 
 /**
  * Props for the Icon component

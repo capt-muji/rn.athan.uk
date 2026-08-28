@@ -1,4 +1,4 @@
-import { IApiResponse } from '@/shared/types';
+import type { IApiResponse } from '@/shared/types';
 
 export const MOCK_DATA_FULL: IApiResponse = {
   city: 'london',

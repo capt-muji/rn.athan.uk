@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
-import { useAnimationScale, useAnimationOpacity, useAnimationBounce, useAnimationFill } from '@/hooks/useAnimation';
-import { COLORS, ANIMATION } from '@/shared/constants';
+import { useAnimationBounce, useAnimationFill, useAnimationOpacity, useAnimationScale } from '@/hooks/useAnimation';
+import { ANIMATION, COLORS } from '@/shared/constants';
 
 interface UseAlertAnimationsParams {
   /** Initial position for fill animation (0 = inactive, 1 = active) */

@@ -1,8 +1,8 @@
 import * as Notifications from 'expo-notifications';
-import { Platform, Alert, Linking } from 'react-native';
+import { Alert, Linking, Platform } from 'react-native';
 
 import logger from '@/shared/logger';
-import { AlertMenuState, AlertType, ScheduleType } from '@/shared/types';
+import { type AlertMenuState, AlertType, type ScheduleType } from '@/shared/types';
 import * as NotificationStore from '@/stores/notifications';
 
 // Configure notifications to show when app is foregrounded

@@ -1,19 +1,19 @@
-import { AudioSource } from 'expo-audio';
+import type { AudioSource } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
+import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-
-import { Sheet, SoundItem } from '../parts';
 
 import { ALL_AUDIOS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import * as Device from '@/device/notifications';
-import { TEXT, SPACING, RADIUS, COLORS, ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { Icon } from '@/shared/types';
-import { soundPreferenceAtom, rescheduleAllNotifications, setSoundPreference } from '@/stores/notifications';
+import { rescheduleAllNotifications, setSoundPreference, soundPreferenceAtom } from '@/stores/notifications';
 import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
+
+import { Sheet, SoundItem } from '../parts';
 
 const ITEM_GAP = SPACING.xs;
 
@@ -77,9 +77,9 @@ export default function BottomSheetSound() {
   return (
     <Sheet
       setRef={setBottomSheetModal}
-      title="Select Athan"
-      subtitle="Close to save"
-      icon={<IconView type={Icon.SPEAKER} size={16} color="rgba(165, 180, 252, 0.8)" />}
+      title='Select Athan'
+      subtitle='Close to save'
+      icon={<IconView type={Icon.SPEAKER} size={16} color='rgba(165, 180, 252, 0.8)' />}
       snapPoints={['80%']}
       onDismiss={handleDismiss}
       onAnimate={clearAudio}>

@@ -9,7 +9,7 @@ import { useAtomValue } from 'jotai';
 
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ScheduleType } from '@/shared/types';
-import { englishWidthStandardAtom, englishWidthExtraAtom } from '@/stores/ui';
+import { englishWidthExtraAtom, englishWidthStandardAtom } from '@/stores/ui';
 
 /**
  * Hook for accessing individual prayer data with derived status

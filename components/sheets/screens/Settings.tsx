@@ -1,25 +1,25 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useCallback, useMemo } from 'react';
-import { Platform, StyleSheet, Text, View, Pressable } from 'react-native';
-
-import ColorPicker from './ColorPicker';
-import { Sheet, SettingsToggle } from '../parts';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
-import { TEXT, COLORS, SPACING, SIZE, RADIUS, HIT_SLOP } from '@/shared/constants';
+import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
 import {
-  hijriDateEnabledAtom,
-  showSecondsAtom,
-  showTimePassedAtom,
-  showArabicNamesAtom,
-  decorationsEnabledAtom,
   countdownBarShownAtom,
-  setSettingsSheetModal,
+  decorationsEnabledAtom,
   hideSettingsSheet,
+  hijriDateEnabledAtom,
+  setSettingsSheetModal,
+  showArabicNamesAtom,
+  showSecondsAtom,
   showSheet,
+  showTimePassedAtom,
 } from '@/stores/ui';
+
+import { SettingsToggle, Sheet } from '../parts';
+import ColorPicker from './ColorPicker';
 
 export default function BottomSheetSettings() {
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
@@ -43,9 +43,9 @@ export default function BottomSheetSettings() {
   return (
     <Sheet
       setRef={setSettingsSheetModal}
-      title="Settings"
-      subtitle="Set your preferences"
-      icon={<SettingsIcon width={16} height={16} color="rgba(165, 180, 252, 0.8)" />}
+      title='Settings'
+      subtitle='Set your preferences'
+      icon={<SettingsIcon width={16} height={16} color='rgba(165, 180, 252, 0.8)' />}
       snapPoints={['70%']}
       onDismiss={handleDismiss}>
       {/* Sound Card */}
@@ -55,8 +55,8 @@ export default function BottomSheetSettings() {
           style={styles.athanButton}
           onPress={handleAthanPress}
           hitSlop={HIT_SLOP.md}
-          accessibilityLabel="Change athan"
-          accessibilityRole="button">
+          accessibilityLabel='Change athan'
+          accessibilityRole='button'>
           <View style={styles.musicButton}>
             <Text style={styles.musicIcon}>♪</Text>
           </View>
@@ -70,24 +70,24 @@ export default function BottomSheetSettings() {
         <Text style={styles.cardTitle}>Display</Text>
         <View style={styles.toggleList}>
           <SettingsToggle
-            label="Show hijri date"
+            label='Show hijri date'
             value={hijriEnabled}
             onToggle={() => setHijriEnabled(!hijriEnabled)}
           />
-          <SettingsToggle label="Show seconds" value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
+          <SettingsToggle label='Show seconds' value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
           <SettingsToggle
-            label="Show time passed"
+            label='Show time passed'
             value={showTimePassed}
             onToggle={() => setShowTimePassed(!showTimePassed)}
           />
           <SettingsToggle
-            label="Show arabic names"
+            label='Show arabic names'
             value={showArabicNames}
             onToggle={() => setShowArabicNames(!showArabicNames)}
           />
           {showDecorationToggle && (
             <SettingsToggle
-              label="Show decorations"
+              label='Show decorations'
               value={decorationsEnabled}
               onToggle={() => setDecorationsEnabled(!decorationsEnabled)}
             />
@@ -100,7 +100,7 @@ export default function BottomSheetSettings() {
         <Text style={styles.cardTitle}>Countdown Bar</Text>
         <View style={styles.toggleList}>
           <SettingsToggle
-            label="Show countdown bar"
+            label='Show countdown bar'
             value={countdownBarShown}
             onToggle={() => setCountdownBarShown(!countdownBarShown)}
           />

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { TEXT, SPACING, RADIUS } from '@/shared/constants';
+import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 
 interface BottomSheetHeaderProps {
   title: string;

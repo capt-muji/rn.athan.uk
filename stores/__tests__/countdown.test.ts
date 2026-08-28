@@ -6,7 +6,7 @@
  * - Atom selection by schedule type
  */
 
-import { createStore, atom } from 'jotai';
+import { atom, createStore } from 'jotai';
 
 // =============================================================================
 // MOCK SETUP
@@ -41,9 +41,9 @@ jest.mock('@/stores/atoms/overlay', () => ({
   overlayAtom: mockOverlayAtom,
 }));
 
-import { standardCountdownAtom, extraCountdownAtom, overlayCountdownAtom, getCountdownAtom } from '../countdown';
-
 import { ScheduleType } from '@/shared/types';
+
+import { extraCountdownAtom, getCountdownAtom, overlayCountdownAtom, standardCountdownAtom } from '../countdown';
 
 // =============================================================================
 // SETUP

@@ -340,7 +340,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 
 - **Testing**: Jest with ts-jest for unit tests (`yarn test`)
 - **Type Safety**: Full TypeScript coverage with strict mode
-- **Linting**: ESLint + Prettier (120 char lines, 2 spaces, single quotes)
+- **Linting**: Biome (lint + format, 120 char lines, 2 spaces, single quotes)
 - **Logging**: Pino logger (no console.log statements)
 - **JSDoc**: All public functions documented with examples
 
@@ -373,8 +373,7 @@ See `ai/adr/` for Architecture Decision Records.
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
+![Biome](https://img.shields.io/badge/Biome-60A5FA?style=for-the-badge&logo=biome&logoColor=white)
 ![Pino](https://img.shields.io/badge/Pino-FFF000?style=for-the-badge&logo=pino&logoColor=black)
 ![MMKV Storage](https://img.shields.io/badge/MMKV-2C4F7C?style=for-the-badge)
 ![Jotai](https://img.shields.io/badge/Jotai-FF4154?style=for-the-badge)

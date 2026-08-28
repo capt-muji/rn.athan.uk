@@ -1,22 +1,22 @@
 import {
-  formatTime,
-  formatTimeAgo,
-  getLastThirdOfNight,
-  getMidnightTime,
-  isFriday,
-  isDecember,
-  isRamadan,
-  isDecorationSeason,
-  isJanuaryFirst,
+  adjustTime,
   createLondonDate,
+  createPrayerDatetime,
   formatDateLong,
   formatDateShort,
-  getSecondsBetween,
-  createPrayerDatetime,
   formatHijriDateLong,
-  isDateYesterdayOrFuture,
+  formatTime,
+  formatTimeAgo,
   getCurrentYear,
-  adjustTime,
+  getLastThirdOfNight,
+  getMidnightTime,
+  getSecondsBetween,
+  isDateYesterdayOrFuture,
+  isDecember,
+  isDecorationSeason,
+  isFriday,
+  isJanuaryFirst,
+  isRamadan,
 } from '../time';
 
 // =============================================================================
@@ -341,7 +341,7 @@ describe('createLondonDate', () => {
 
   it('creates valid non-NaN date', () => {
     const date = createLondonDate('2026-06-15');
-    expect(isNaN(date.getTime())).toBe(false);
+    expect(Number.isNaN(date.getTime())).toBe(false);
   });
 
   it('preserves date components for winter date (GMT)', () => {
@@ -420,19 +420,19 @@ describe('createPrayerDatetime', () => {
     const result = createPrayerDatetime('2026-01-18', '14:30');
     // The result should represent 14:30 London time
     expect(result).toBeInstanceOf(Date);
-    expect(isNaN(result.getTime())).toBe(false);
+    expect(Number.isNaN(result.getTime())).toBe(false);
   });
 
   it('creates valid datetime for early morning times', () => {
     const result = createPrayerDatetime('2026-01-18', '05:30');
     expect(result).toBeInstanceOf(Date);
-    expect(isNaN(result.getTime())).toBe(false);
+    expect(Number.isNaN(result.getTime())).toBe(false);
   });
 
   it('creates valid datetime for late night times', () => {
     const result = createPrayerDatetime('2026-01-18', '23:45');
     expect(result).toBeInstanceOf(Date);
-    expect(isNaN(result.getTime())).toBe(false);
+    expect(Number.isNaN(result.getTime())).toBe(false);
   });
 
   it('creates chronologically correct datetimes', () => {

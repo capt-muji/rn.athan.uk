@@ -1,16 +1,16 @@
 import {
-  genNextXDays,
-  isPrayerTimeInFuture,
-  isNotificationOutdated,
-  genTriggerDate,
-  getNotificationSound,
-  genNotificationContent,
   createDefaultAndroidChannel,
-  initializeNotifications,
-  getReminderNotificationSound,
+  createReminderAndroidChannel,
+  genNextXDays,
+  genNotificationContent,
   genReminderNotificationContent,
   genReminderTriggerDate,
-  createReminderAndroidChannel,
+  genTriggerDate,
+  getNotificationSound,
+  getReminderNotificationSound,
+  initializeNotifications,
+  isNotificationOutdated,
+  isPrayerTimeInFuture,
 } from '../notifications';
 import { AlertType } from '../types';
 
@@ -208,7 +208,7 @@ describe('genNextXDays boundary cases', () => {
     days.forEach((day) => {
       const date = new Date(day);
       expect(date).toBeInstanceOf(Date);
-      expect(isNaN(date.getTime())).toBe(false);
+      expect(Number.isNaN(date.getTime())).toBe(false);
     });
   });
 });

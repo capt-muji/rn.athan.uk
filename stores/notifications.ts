@@ -1,4 +1,4 @@
-import { differenceInHours, differenceInMinutes, differenceInSeconds, addHours, formatISO, subMinutes } from 'date-fns';
+import { addHours, differenceInHours, differenceInMinutes, differenceInSeconds, formatISO, subMinutes } from 'date-fns';
 import * as BackgroundTask from 'expo-background-task';
 import * as Notifications from 'expo-notifications';
 import * as TaskManager from 'expo-task-manager';
@@ -6,21 +6,21 @@ import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
 import {
-  PRAYERS_ENGLISH,
-  EXTRAS_ENGLISH,
-  EXTRAS_ARABIC,
-  PRAYERS_ARABIC,
-  NOTIFICATION_ROLLING_DAYS,
-  NOTIFICATION_REFRESH_HOURS,
-  DEFAULT_REMINDER_INTERVAL,
-  REMINDER_BUFFER_SECONDS,
-  BACKGROUND_TASK_NAME,
   BACKGROUND_TASK_INTERVAL_HOURS,
+  BACKGROUND_TASK_NAME,
+  DEFAULT_REMINDER_INTERVAL,
+  EXTRAS_ARABIC,
+  EXTRAS_ENGLISH,
+  NOTIFICATION_REFRESH_HOURS,
+  NOTIFICATION_ROLLING_DAYS,
+  PRAYERS_ARABIC,
+  PRAYERS_ENGLISH,
+  REMINDER_BUFFER_SECONDS,
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
-import { AlertType, ReminderInterval, ScheduleType } from '@/shared/types';
+import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber } from '@/stores/storage';
 

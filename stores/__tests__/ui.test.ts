@@ -37,61 +37,61 @@ jest.mock('jotai', () => {
 });
 
 jest.mock('../storage', () => ({
-  atomWithStorageBoolean: (key: string, defaultValue: boolean) => {
+  atomWithStorageBoolean: (_key: string, defaultValue: boolean) => {
     const { atom } = jest.requireActual('jotai');
     return atom(defaultValue);
   },
-  atomWithStorageNumber: (key: string, defaultValue: number) => {
+  atomWithStorageNumber: (_key: string, defaultValue: number) => {
     const { atom } = jest.requireActual('jotai');
     return atom(defaultValue);
   },
-  atomWithStorageString: (key: string, defaultValue: string) => {
+  atomWithStorageString: (_key: string, defaultValue: string) => {
     const { atom } = jest.requireActual('jotai');
     return atom(defaultValue);
   },
 }));
 
+import { ScheduleType } from '@/shared/types';
+
 import {
-  alertSheetStateAtom,
   alertSheetModalAtom,
+  alertSheetStateAtom,
+  bottomSheetModalAtom,
+  countdownBarColorAtom,
+  countdownBarShownAtom,
+  englishWidthExtraAtom,
+  englishWidthStandardAtom,
+  getAlertSheetState,
+  getMeasurementsDate,
+  getMeasurementsList,
+  getPopupUpdateLastCheck,
+  hideAlertSheet,
+  hideSettingsSheet,
+  hijriDateEnabledAtom,
+  measurementsDateAtom,
+  measurementsListAtom,
   playingSoundIndexAtom,
-  refreshUIAtom,
   popupUpdateEnabledAtom,
   popupUpdateLastCheckAtom,
-  bottomSheetModalAtom,
-  settingsSheetModalAtom,
-  englishWidthStandardAtom,
-  englishWidthExtraAtom,
-  measurementsListAtom,
-  measurementsDateAtom,
-  countdownBarShownAtom,
-  countdownBarColorAtom,
-  hijriDateEnabledAtom,
-  showSecondsAtom,
-  showTimePassedAtom,
-  showArabicNamesAtom,
-  showSheet,
-  showSettingsSheet,
-  hideSettingsSheet,
-  setBottomSheetModal,
-  setSettingsSheetModal,
+  refreshUIAtom,
   setAlertSheetModal,
-  showAlertSheet,
-  hideAlertSheet,
-  getAlertSheetState,
+  setBottomSheetModal,
+  setEnglishWidth,
+  setMeasurementsDate,
+  setMeasurementsList,
   setPlayingSoundIndex,
-  setRefreshUI,
   setPopupUpdateEnabled,
   setPopupUpdateLastCheck,
-  getPopupUpdateLastCheck,
-  setEnglishWidth,
-  getMeasurementsList,
-  setMeasurementsList,
-  getMeasurementsDate,
-  setMeasurementsDate,
+  setRefreshUI,
+  setSettingsSheetModal,
+  settingsSheetModalAtom,
+  showAlertSheet,
+  showArabicNamesAtom,
+  showSecondsAtom,
+  showSettingsSheet,
+  showSheet,
+  showTimePassedAtom,
 } from '../ui';
-
-import { ScheduleType } from '@/shared/types';
 
 // =============================================================================
 // SETUP

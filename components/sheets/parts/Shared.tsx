@@ -1,7 +1,7 @@
-import { BottomSheetBackdrop, BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
+import { BottomSheetBackdrop, type BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import { StyleSheet, View } from 'react-native';
 
-import { COLORS, RADIUS, SPACING, OVERLAY } from '@/shared/constants';
+import { COLORS, OVERLAY, RADIUS, SPACING } from '@/shared/constants';
 
 /**
  * Shared background component for bottom sheets

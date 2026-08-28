@@ -50,12 +50,12 @@ jest.mock('@/shared/config', () => ({
 // Import after mocks - version.ts imports come last since they depend on mocks
 // eslint-disable-next-line import/order
 import {
+  clearUpgradeCache,
   getInstalledVersion,
   getStoredVersion,
+  handleAppUpgrade,
   setStoredVersion,
   wasAppUpgraded,
-  clearUpgradeCache,
-  handleAppUpgrade,
 } from '../version';
 
 // =============================================================================
