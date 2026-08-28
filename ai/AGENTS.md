@@ -3,7 +3,7 @@
 ## 0. Scope & Discovery
 
 - **Recursive Logic**: Subdirectory `AGENTS.md` overrides root for that folder
-- **Tool Compatibility**: This file is tool-agnostic. Pointers (CLAUDE.md, .cursorrules) redirect here
+- **Tool Compatibility**: This file is tool-agnostic. Pointers (root AGENTS.md, .cursorrules) redirect here
 - **Risk Profile**: Aggressive (fix and report)
 
 ## 1. Project North Star
@@ -442,6 +442,12 @@ Read ai/prompts/cleanup.md
 # Add docs to a file
 Read ai/prompts/document.md
 ```
+
+### AI Tooling (project-scoped)
+
+- **Skills**: `.agents/skills/` — 24 official Expo skills (`expo-*`, `eas-*`). Auto-loaded natively by opencode; `.agents/skills/` is also the cross-harness standard (Codex, Cursor, Gemini CLI, amp, cline). Load via the skill tool when a task matches (e.g., `expo-upgrade` for SDK upgrades).
+- **Expo MCP**: `https://mcp.expo.dev/mcp` (remote) — configured in `opencode.json`. If switching harnesses, add this endpoint to the new harness's MCP config.
+- **Expo docs**: docs-mcp-server has the project's current Expo SDK version indexed (library: `expo`).
 
 ## 7. Boundaries & Permissions (Three-Tier)
 
