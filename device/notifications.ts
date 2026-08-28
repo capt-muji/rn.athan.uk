@@ -23,7 +23,29 @@ export const updateAndroidChannel = async (sound: number) => {
   return channelId;
 };
 
+/**
+ * Builds the deterministic identifier for an at-time prayer notification.
+ * Same identifier = idempotent replace on both platforms (Android PendingIntent is
+ * derived from the identifier; iOS UNUserNotificationCenter replaces by identifier),
+ * so re-scheduling can never create a duplicate even if MMKV bookkeeping is lost.
+ */
+export const prayerNotificationIdentifier = (scheduleType: ScheduleType, englishName: string, date: string) =>
+  `athan_${scheduleType}_${englishName.toLowerCase()}_${date}`;
+
+/**
+ * Builds the deterministic identifier for a pre-prayer reminder notification.
+ * Includes the interval so changed intervals get a fresh identity (old one is
+ * cancelled via the per-prayer clear before re-scheduling).
+ */
+export const reminderNotificationIdentifier = (
+  scheduleType: ScheduleType,
+  englishName: string,
+  date: string,
+  intervalMinutes: ReminderInterval
+) => `reminder_${scheduleType}_${englishName.toLowerCase()}_${date}_${intervalMinutes}`;
+
 export const addOneScheduledNotificationForPrayer = async (
+  scheduleType: ScheduleType,
   englishName: string,
   arabicName: string,
   date: string,
@@ -33,9 +55,11 @@ export const addOneScheduledNotificationForPrayer = async (
 ): Promise<NotificationUtils.ScheduledNotification> => {
   const triggerDate = NotificationUtils.genTriggerDate(date, time);
   const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, soundPreference);
+  const identifier = prayerNotificationIdentifier(scheduleType, englishName, date);
 
   try {
     const id = await Notifications.scheduleNotificationAsync({
+      identifier,
       content,
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DATE,
@@ -46,7 +70,7 @@ export const addOneScheduledNotificationForPrayer = async (
     });
 
     const notification = { id, date, time, englishName, arabicName, alertType };
-    logger.info('NOTIFICATION SYSTEM: Scheduled:', notification);
+    logger.info('NOTIFICATION SYSTEM: Scheduled:', { ...notification, identifier });
     return notification;
   } catch (error) {
     logger.error('NOTIFICATION SYSTEM: Failed to schedule:', error);
@@ -76,6 +100,7 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 
 /**
  * Schedules a single reminder notification for a prayer
+ * @param scheduleType Schedule type (Standard or Extra) - part of the deterministic identifier
  * @param englishName English prayer name
  * @param arabicName Arabic prayer name
  * @param date Date string in YYYY-MM-DD format
@@ -85,6 +110,7 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
  * @returns Scheduled notification data
  */
 export const addOneScheduledReminderForPrayer = async (
+  scheduleType: ScheduleType,
   englishName: string,
   arabicName: string,
   date: string,
@@ -94,9 +120,11 @@ export const addOneScheduledReminderForPrayer = async (
 ): Promise<NotificationUtils.ScheduledNotification> => {
   const triggerDate = NotificationUtils.genReminderTriggerDate(date, time, intervalMinutes);
   const content = NotificationUtils.genReminderNotificationContent(englishName, arabicName, intervalMinutes, alertType);
+  const identifier = reminderNotificationIdentifier(scheduleType, englishName, date, intervalMinutes);
 
   try {
     const id = await Notifications.scheduleNotificationAsync({
+      identifier,
       content,
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DATE,
@@ -107,7 +135,7 @@ export const addOneScheduledReminderForPrayer = async (
     });
 
     const notification = { id, date, time, englishName, arabicName, alertType };
-    logger.info('REMINDER SYSTEM: Scheduled:', notification);
+    logger.info('REMINDER SYSTEM: Scheduled:', { ...notification, identifier });
     return notification;
   } catch (error) {
     logger.error('REMINDER SYSTEM: Failed to schedule:', error);
