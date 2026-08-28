@@ -36,8 +36,8 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
   const prayer = todayPrayers[index];
 
-  // Loading state only
-  if (!isReady) {
+  // Loading state or index out of range (schedule refreshed mid-selection)
+  if (!isReady || !prayer) {
     return {
       english: '',
       arabic: '',
