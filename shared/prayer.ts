@@ -327,3 +327,35 @@ export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCou
     prayers,
   };
 };
+
+/**
+ * Returns the display order of prayers as a list of sequence indices.
+ *
+ * The prayer sequence is chronologically sorted (countdown/progress logic depends on
+ * it), but the Extra page displays in canonical array order - EXTRAS_ENGLISH - so that
+ * Friday Istijaba (magrib - 60 min) shows last instead of between Midnight and Last
+ * Third (Midnight belongs to the displayed day while chronologically falling late
+ * evening, which is what pushed Istijaba mid-list chronologically).
+ *
+ * Standard prayers are chronological == canonical, so indices pass through unchanged.
+ *
+ * @param prayers Prayers for one display date (chronologically ordered)
+ * @param type Schedule type (Standard or Extra)
+ * @returns Indices into the input array, in canonical display order
+ *
+ * @example
+ * // Friday extras chronologically: [Duha 09:00, Istijaba 15:14, Midnight 23:17]
+ * canonicalDisplayOrder(prayers, ScheduleType.Extra)
+ * // Returns: [2, 0, 1] -> Midnight, Duha, Istijaba
+ */
+export const canonicalDisplayOrder = (prayers: Prayer[], type: ScheduleType): number[] => {
+  const identityOrder = prayers.map((_, index) => index);
+  if (type !== ScheduleType.Extra) return identityOrder;
+
+  const canonicalRank = (english: string): number => {
+    const rank = EXTRAS_ENGLISH.indexOf(english);
+    return rank === -1 ? EXTRAS_ENGLISH.length : rank;
+  };
+
+  return identityOrder.sort((a, b) => canonicalRank(prayers[a].english) - canonicalRank(prayers[b].english));
+};

@@ -1,5 +1,6 @@
 import {
   calculateBelongsToDate,
+  canonicalDisplayOrder,
   createPrayer,
   filterApiData,
   getCascadeDelay,
@@ -7,7 +8,7 @@ import {
   transformApiData,
 } from '../prayer';
 import { createPrayerDatetime } from '../time';
-import { type IApiResponse, ScheduleType } from '../types';
+import { type IApiResponse, type Prayer, ScheduleType } from '../types';
 
 // =============================================================================
 // calculateBelongsToDate TESTS
@@ -603,5 +604,60 @@ describe('transformApiData', () => {
     const result = transformApiData(input);
     // Istijaba is magrib - 60 minutes (TIME_ADJUSTMENTS.istijaba = -60) = 16:00
     expect(result[0].istijaba).toBe('16:00');
+  });
+});
+
+// =============================================================================
+// canonicalDisplayOrder TESTS (F.4 - Friday Extra display order)
+// =============================================================================
+
+describe('canonicalDisplayOrder', () => {
+  const buildPrayers = (entries: { english: string; time: string }[]): Prayer[] =>
+    entries.map((entry) => ({
+      english: entry.english,
+      datetime: createPrayerDatetime('2026-08-28', entry.time),
+    })) as unknown as Prayer[];
+
+  it('passes indices through unchanged for the Standard schedule', () => {
+    const prayers = buildPrayers([
+      { english: 'Fajr', time: '05:30' },
+      { english: 'Sunrise', time: '07:00' },
+    ]);
+
+    expect(canonicalDisplayOrder(prayers, ScheduleType.Standard)).toEqual([0, 1]);
+  });
+
+  it('orders Friday Extras canonically: Istijaba last despite chronological position', () => {
+    // Real Friday shape: Midnight belongs to the displayed day but chronologically
+    // falls late evening, pushing Istijaba mid-list under pure chronological order
+    const prayers = buildPrayers([
+      { english: 'Duha', time: '09:00' },
+      { english: 'Istijaba', time: '15:14' },
+      { english: 'Midnight', time: '23:17' },
+    ]);
+
+    expect(canonicalDisplayOrder(prayers, ScheduleType.Extra)).toEqual([2, 0, 1]);
+  });
+
+  it('returns identity order when chronological already equals canonical', () => {
+    const prayers = buildPrayers([
+      { english: 'Midnight', time: '00:30' },
+      { english: 'Last Third', time: '03:30' },
+      { english: 'Suhoor', time: '04:30' },
+      { english: 'Duha', time: '09:00' },
+      { english: 'Istijaba', time: '15:14' },
+    ]);
+
+    expect(canonicalDisplayOrder(prayers, ScheduleType.Extra)).toEqual([0, 1, 2, 3, 4]);
+  });
+
+  it('keeps unknown prayer names after the canonical ones in stable relative order', () => {
+    const prayers = buildPrayers([
+      { english: 'Mystery', time: '10:00' },
+      { english: 'Istijaba', time: '15:14' },
+      { english: 'Midnight', time: '23:17' },
+    ]);
+
+    expect(canonicalDisplayOrder(prayers, ScheduleType.Extra)).toEqual([2, 1, 0]);
   });
 });
