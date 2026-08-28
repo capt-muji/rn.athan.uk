@@ -323,3 +323,28 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Status**: pre-existing in production (SDK 54 identical) — NOT a migration
   regression; kept as-is for zero-loss parity. Owner to decide: keep chronological
   (document) or switch Extra display to canonical-with-Istijaba-last.
+
+### 5. [FIXED] Global font-scaling guard was dead code on SDK 57 (React 19 defaultProps removal)
+
+- **Finding**: the app-wide `Text.defaultProps = { allowFontScaling: false, ... }`
+  mutation in `app/_layout.tsx` stopped applying after the SDK 57 migration. RN 0.86
+  turned `Text` into a function component (`Libraries/Text/Text.js` exports a bare
+  `TextImpl` function), and React 19 removed defaultProps support for function
+  components. The handoff watch-item ("verify font-scaling on device") was confirmed:
+  at OS accessibility text size `accessibility-XXXL` the app scaled every label
+  ~3x and the layout broke (overlapping header text, wrapped row names).
+- **Why not render-patching / createElement patching**: React calls function
+  components directly (`Text.render` is never invoked), and React 19's `createElement`
+  export is getter-frozen (mutation throws `Invariant`).
+- **Fix**: `jsx-runtime-shim.ts` + a Metro `resolveRequest` hook
+  (`metro.config.js`) that redirects `react/jsx-runtime` / `react/jsx-dev-runtime`
+  imports through the shim, which injects `allowFontScaling: false` +
+  `maxFontSizeMultiplier: 1` into every Text element created via the automatic JSX
+  runtime — same coverage as the old defaultProps for all app code and for
+  precompiled libs that render text via the JSX runtime (reanimated's
+  `Animated.Text` verified to import `react/jsx-runtime`). Boundary: elements created
+  via classic `React.createElement` inside npm libs are NOT intercepted (frozen
+  exports) — no lib-rendered Text exists in the app today.
+- **Verification**: sim at `accessibility-XXXL` — pre-fix screenshot showed scaled,
+  overlapping text; post-fix screenshot identical to normal-size rendering with the
+  countdown ticking normally. Content size restored to default afterwards.

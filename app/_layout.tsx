@@ -5,7 +5,7 @@ import '@/device/tasks';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { LogBox, Text } from 'react-native';
+import { LogBox } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
@@ -30,14 +30,9 @@ configureReanimatedLogger({
   strict: false,
 });
 
-// Disable font scaling for all text components (prevents system font size from breaking layout)
-// @ts-expect-error defaultProps is deprecated but still works for this use case
-Text.defaultProps = {
-  // @ts-expect-error defaultProps is deprecated but still works for this use case
-  ...Text.defaultProps,
-  allowFontScaling: false,
-  maxFontSizeMultiplier: 1,
-};
+// Global Text font-scaling defaults live in jsx-runtime-shim.ts (wired via
+// metro.config.js): React 19 removed defaultProps for function components, which
+// made the previous Text.defaultProps mutation inert on RN 0.86.
 
 export default function Layout() {
   return (
