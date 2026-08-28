@@ -165,11 +165,18 @@ const startCountdownOverlay = () => {
   clearCountdown(CountdownKey.Overlay);
   store.set(overlayCountdownAtom, { timeLeft, name });
 
+  // Clock-based ticks (same model as startSequenceCountdown): the old decrement
+  // counter drifted late under JS-thread load, which froze the overlay countdown
+  // on its final seconds
   countdowns[CountdownKey.Overlay] = setInterval(() => {
-    const currentTime = store.get(overlayCountdownAtom).timeLeft - 1;
-    if (currentTime <= 0) return clearCountdown(CountdownKey.Overlay);
-
-    store.set(overlayCountdownAtom, { timeLeft: currentTime, name });
+    const now = TimeUtils.createLondonDate();
+    const secondsLeft = TimeUtils.getSecondsBetween(now, selectedPrayer.datetime);
+    if (secondsLeft <= 0) {
+      clearCountdown(CountdownKey.Overlay);
+      store.set(overlayCountdownAtom, { timeLeft: 0, name });
+      return;
+    }
+    store.set(overlayCountdownAtom, { timeLeft: secondsLeft, name });
   }, 1000);
 };
 
