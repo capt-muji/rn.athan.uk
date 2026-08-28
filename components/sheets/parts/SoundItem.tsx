@@ -1,13 +1,13 @@
-import { AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { Pressable, StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming, useDerivedValue, interpolateColor } from 'react-native-reanimated';
+import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { useAnimationScale } from '@/hooks/useAnimation';
-import { TEXT, SPACING, RADIUS, ANIMATION } from '@/shared/constants';
+import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { Icon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';

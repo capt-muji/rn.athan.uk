@@ -1,3 +1,5 @@
+import { Icon } from '@/shared/types';
+
 import BellRingIcon from './bell-ring.svg';
 import BellSlashIcon from './bell-slash.svg';
 import CheckIcon from './check.svg';
@@ -6,8 +8,6 @@ import InfoIcon from './info.svg';
 import PauseIcon from './pause.svg';
 import PlayIcon from './play.svg';
 import SpeakerIcon from './speaker.svg';
-
-import { Icon } from '@/shared/types';
 
 const ICONS: Record<Icon, typeof BellRingIcon> = {
   [Icon.BELL_RING]: BellRingIcon,

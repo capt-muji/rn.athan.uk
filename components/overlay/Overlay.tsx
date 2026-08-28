@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { StyleSheet, Pressable, View, ViewStyle, Platform } from 'react-native';
+import { Platform, Pressable, StyleSheet, View, type ViewStyle } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -13,22 +13,22 @@ import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import {
-  OVERLAY,
   ANIMATION,
-  SCREEN,
-  STYLES,
   COLORS,
-  TEXT,
-  SHADOW,
-  SPACING,
   EXTRAS_ENGLISH,
   EXTRAS_EXPLANATIONS,
   EXTRAS_EXPLANATIONS_ARABIC,
+  OVERLAY,
+  SCREEN,
+  SHADOW,
+  SPACING,
+  STYLES,
+  TEXT,
 } from '@/shared/constants';
 import { formatDateLong, formatHijriDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
-import { measurementsListAtom, measurementsDateAtom, hijriDateEnabledAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom, measurementsDateAtom, measurementsListAtom } from '@/stores/ui';
 
 /**
  * Full-screen overlay for focused prayer view

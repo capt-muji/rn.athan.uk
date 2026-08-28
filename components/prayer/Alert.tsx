@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { StyleSheet, Pressable, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
@@ -10,9 +10,9 @@ import { useAlertAnimations } from '@/hooks/useAlertAnimations';
 import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { STYLES, SPACING, SIZE, ANIMATION } from '@/shared/constants';
+import { ANIMATION, SIZE, SPACING, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
-import { AlertType, Icon, ScheduleType } from '@/shared/types';
+import { AlertType, Icon, type ScheduleType } from '@/shared/types';
 import { getPrayerAlertAtom } from '@/stores/notifications';
 import { overlayAtom } from '@/stores/overlay';
 import { refreshUIAtom, showAlertSheet } from '@/stores/ui';
@@ -148,7 +148,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
         }}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
-          <Svg viewBox="0 0 256 256" width={SIZE.icon.md} height={SIZE.icon.md}>
+          <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>
             <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={AnimFill.animatedProps} />
           </Svg>
         </Animated.View>

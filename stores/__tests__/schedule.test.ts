@@ -48,19 +48,19 @@ jest.mock('@/stores/database', () => ({
   getPrayerByDate: (date: Date) => mockGetPrayerByDate(date),
 }));
 
+import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
+
 // Import after mocks are set up
 import {
-  standardSequenceAtom,
-  extraSequenceAtom,
-  getSequenceAtom,
+  createDisplayDateAtom,
   createNextPrayerAtom,
   createPrevPrayerAtom,
-  createDisplayDateAtom,
-  setSequence,
+  extraSequenceAtom,
+  getSequenceAtom,
   refreshSequence,
+  setSequence,
+  standardSequenceAtom,
 } from '../schedule';
-
-import { ScheduleType, Prayer, ISingleApiResponseTransformed } from '@/shared/types';
 
 // =============================================================================
 // TEST HELPERS

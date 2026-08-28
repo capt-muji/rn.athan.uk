@@ -1,13 +1,13 @@
 import {
   calculateBelongsToDate,
   createPrayer,
+  filterApiData,
   getCascadeDelay,
   getLongestPrayerNameIndex,
-  filterApiData,
   transformApiData,
 } from '../prayer';
 import { createPrayerDatetime } from '../time';
-import { ScheduleType, IApiResponse } from '../types';
+import { type IApiResponse, ScheduleType } from '../types';
 
 // =============================================================================
 // calculateBelongsToDate TESTS

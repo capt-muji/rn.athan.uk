@@ -1,14 +1,14 @@
 import { useAtomValue } from 'jotai';
 import { useEffect, useRef } from 'react';
-import { View, StyleSheet, InteractionManager } from 'react-native';
-
-import ActiveBackground from './ActiveBackground';
+import { InteractionManager, StyleSheet, View } from 'react-native';
 
 import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { SCREEN, SPACING } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { countdownBarShownAtom, getMeasurementsList, setMeasurementsList } from '@/stores/ui';
+
+import ActiveBackground from './ActiveBackground';
 
 interface Props {
   type: ScheduleType;

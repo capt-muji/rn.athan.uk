@@ -1,10 +1,10 @@
 import { useAtomValue } from 'jotai';
-import { Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
-import { TEXT, PRAYERS_ENGLISH, EXTRAS_ENGLISH } from '@/shared/constants';
+import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, TEXT } from '@/shared/constants';
 import { getLongestPrayerNameIndex } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
-import { setEnglishWidth, englishWidthStandardAtom, englishWidthExtraAtom } from '@/stores/ui';
+import { englishWidthExtraAtom, englishWidthStandardAtom, setEnglishWidth } from '@/stores/ui';
 
 /**
  * Measures the width of the longest prayer name for both standard and extra schedules

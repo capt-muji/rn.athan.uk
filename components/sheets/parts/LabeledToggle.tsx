@@ -1,8 +1,8 @@
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
+
+import { COLORS, HIT_SLOP, SPACING, TEXT } from '@/shared/constants';
 
 import Toggle from './Toggle';
-
-import { TEXT, COLORS, HIT_SLOP, SPACING } from '@/shared/constants';
 
 interface LabeledToggleProps {
   label: string;
