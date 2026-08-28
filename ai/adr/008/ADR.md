@@ -424,13 +424,14 @@ Requirements:
 ### Cost Projections
 
 **Per scrape (discovery or cache refresh):**
-| Service | Cost |
-|---------|------|
-| Google Maps Places API | ~$0.032 per nearby search (skipped on cache refresh) |
+
+| Service                                        | Cost                                                     |
+| ---------------------------------------------- | -------------------------------------------------------- |
+| Google Maps Places API                         | ~$0.032 per nearby search (skipped on cache refresh)     |
 | Browser Use rendering (homepage → prayer page) | Free (open-source, self-hosted — Cloud Run compute only) |
-| Gemini 3 Pro (navigation decisions) | ~$0.001-0.01 per navigation |
-| Opus 4.6 (prayer times extraction) | ~$0.03-0.10 per extraction |
-| **Total per scrape** | **~$0.03-0.14** |
+| Gemini 3 Pro (navigation decisions)            | ~$0.001-0.01 per navigation                              |
+| Opus 4.6 (prayer times extraction)             | ~$0.03-0.10 per extraction                               |
+| **Total per scrape**                           | **~$0.03-0.14**                                          |
 
 **Ongoing costs are purely demand-driven.** A mosque that no user requests costs nothing. Monthly spend depends entirely on how many unique mosque-days users request. Example projections:
 

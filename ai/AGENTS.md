@@ -32,21 +32,21 @@
 
 ## 2. Stack & Versions
 
-| Category        | Technology              | Version        |
-| --------------- | ----------------------- | -------------- |
-| Framework       | React Native            | 0.81.5         |
-| Platform        | Expo                    | 54.0.31        |
-| UI Library      | React                   | 19.1.0         |
-| Language        | TypeScript              | 5.9.3 (strict) |
-| Routing         | Expo Router             | 6.0.21         |
-| State           | Jotai                   | 2.16.1         |
-| Storage         | React Native MMKV       | 4.1.1          |
-| Animation       | React Native Reanimated | 4.1.6          |
-| Audio           | Expo Audio              | 1.1.1          |
-| Notifications   | Expo Notifications      | 0.32.16        |
-| Dates           | date-fns / date-fns-tz  | 4.1.0 / 3.2.0  |
-| Logging         | Pino                    | 9.14.0         |
-| Package Manager | Yarn                    | 1.x            |
+| Category        | Technology              | Version         |
+| --------------- | ----------------------- | --------------- |
+| Framework       | React Native            | 0.86.3          |
+| Platform        | Expo                    | 57.0.17         |
+| UI Library      | React                   | 19.2.3          |
+| Language        | TypeScript              | ~6.0.3 (strict) |
+| Routing         | Expo Router             | ~57.0.17        |
+| State           | Jotai                   | 2.20.3          |
+| Storage         | React Native MMKV       | 4.3.2           |
+| Animation       | React Native Reanimated | 4.5.1           |
+| Audio           | Expo Audio              | ~57.0.4         |
+| Notifications   | Expo Notifications      | ~57.0.15        |
+| Dates           | date-fns / date-fns-tz  | 4.4.0 / 3.2.0   |
+| Logging         | Pino                    | 9.14.0          |
+| Package Manager | Yarn                    | 1.x             |
 
 ## 3. Repo Map & Entry Points
 
