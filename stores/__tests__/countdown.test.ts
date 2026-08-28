@@ -6,7 +6,7 @@
  * - Atom selection by schedule type
  */
 
-import { atom, createStore } from 'jotai';
+import { createStore, atom as mockAtom } from 'jotai';
 
 // =============================================================================
 // MOCK SETUP
@@ -17,8 +17,8 @@ jest.mock('@/shared/time', () => ({
   getSecondsBetween: jest.fn(() => 3600),
 }));
 
-const mockStandardSequenceAtom = atom(null);
-const mockExtraSequenceAtom = atom(null);
+const mockStandardSequenceAtom = mockAtom(null);
+const mockExtraSequenceAtom = mockAtom(null);
 
 jest.mock('@/stores/schedule', () => ({
   refreshSequence: jest.fn(),
@@ -27,11 +27,11 @@ jest.mock('@/stores/schedule', () => ({
     datetime: new Date('2026-01-20T06:15:00'),
   })),
   getSequenceAtom: jest.fn((type: string) => (type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom)),
-  standardDisplayDateAtom: atom('2026-01-20'),
-  extraDisplayDateAtom: atom('2026-01-20'),
+  standardDisplayDateAtom: mockAtom('2026-01-20'),
+  extraDisplayDateAtom: mockAtom('2026-01-20'),
 }));
 
-const mockOverlayAtom = atom({
+const mockOverlayAtom = mockAtom({
   isOn: false,
   selectedPrayerIndex: 0,
   scheduleType: 'standard',
@@ -43,7 +43,13 @@ jest.mock('@/stores/atoms/overlay', () => ({
 
 import { ScheduleType } from '@/shared/types';
 
-import { extraCountdownAtom, getCountdownAtom, overlayCountdownAtom, standardCountdownAtom } from '../countdown';
+// Require (not import) after mocks - babel hoists ESM imports above the mock declarations
+const {
+  extraCountdownAtom,
+  getCountdownAtom,
+  overlayCountdownAtom,
+  standardCountdownAtom,
+}: typeof import('../countdown') = require('../countdown');
 
 // =============================================================================
 // SETUP

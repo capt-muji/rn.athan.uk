@@ -37,7 +37,7 @@
 | Framework       | React Native            | 0.86.3          |
 | Platform        | Expo                    | 57.0.17         |
 | UI Library      | React                   | 19.2.3          |
-| Language        | TypeScript              | ~6.0.3 (strict) |
+| Language        | TypeScript              | 7.0.2 (strict)  |
 | Routing         | Expo Router             | ~57.0.17        |
 | State           | Jotai                   | 2.20.3          |
 | Storage         | React Native MMKV       | 4.3.2           |
@@ -227,10 +227,12 @@ import { Prayer } from '@/components/Prayer';
 
 ### Testing (Jest)
 
-- Use Jest with ts-jest for unit tests
+- Use Jest with babel-jest + @babel/preset-typescript (transform-only; typecheck lives in `tsc --noEmit`)
 - Tests in `__tests__/` subdirectories
 - Run: `yarn test` or `yarn test:watch`
-- Mock RN modules in `shared/__mocks__/`### Component Communication Patterns
+- Mock RN modules in `shared/__mocks__/`
+- Babel hoists ESM imports above `jest.mock` factories: reference mock variables only via `mock`-prefixed
+  names, and `require()` the module under test after mock declarations when the factory closes over them### Component Communication Patterns
 
 **forwardRef + useImperativeHandle (Child exposes state to parent):**
 
