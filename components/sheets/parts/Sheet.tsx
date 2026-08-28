@@ -1,12 +1,11 @@
-import { BottomSheetModal, BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetScrollView, BottomSheetView } from '@expo/ui/community/bottom-sheet';
 import { useCallback } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { ELEVATION, OVERLAY, SPACING } from '@/shared/constants';
+import { COLORS, ELEVATION, OVERLAY, RADIUS, SPACING } from '@/shared/constants';
 
 import Header from './Header';
-import { bottomSheetStyles, renderBackdrop, renderSheetBackground } from './Shared';
 
 const SHEET_BOTTOM_PADDING = 50;
 
@@ -23,8 +22,6 @@ interface SheetProps {
   children: React.ReactNode;
   /** Called when sheet is dismissed */
   onDismiss?: () => void;
-  /** Called when sheet animation starts */
-  onAnimate?: () => void;
   /** Snap points for the sheet. Ignored if enableDynamicSizing is true */
   snapPoints?: (string | number)[];
   /** Enable dynamic sizing based on content */
@@ -61,7 +58,6 @@ export default function Sheet({
   icon,
   children,
   onDismiss,
-  onAnimate,
   snapPoints = ['70%'],
   enableDynamicSizing = false,
   scrollable = true,
@@ -89,12 +85,11 @@ export default function Sheet({
       enableDynamicSizing={enableDynamicSizing}
       enablePanDownToClose
       onDismiss={onDismiss}
-      onAnimate={onAnimate}
-      style={bottomSheetStyles.modal}
-      containerStyle={{ zIndex: OVERLAY.zindexes.popup, elevation: ELEVATION.standard }}
-      backgroundComponent={renderSheetBackground}
-      handleIndicatorStyle={bottomSheetStyles.indicator}
-      backdropComponent={renderBackdrop}>
+      backgroundStyle={{
+        backgroundColor: COLORS.surface.sheet,
+        borderTopLeftRadius: RADIUS.sheet,
+        borderTopRightRadius: RADIUS.sheet,
+      }}>
       <ContentWrapper style={scrollable ? styles.content : undefined} {...contentStyle}>
         <Header title={title} subtitle={subtitle} icon={icon} />
         {children}

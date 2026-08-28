@@ -1,4 +1,4 @@
-import type { BottomSheetModal } from '@gorhom/bottom-sheet';
+import type { BottomSheetModal } from '@expo/ui/community/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
 import { type PageCoordinates, ScheduleType } from '@/shared/types';
