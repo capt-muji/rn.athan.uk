@@ -8,12 +8,12 @@
 import { useAtomValue } from 'jotai';
 
 import * as TimeUtils from '@/shared/time';
-import { Prayer, ScheduleType } from '@/shared/types';
+import { type Prayer, ScheduleType } from '@/shared/types';
 import {
-  standardSequenceAtom,
+  extraDisplayDateAtom,
   extraSequenceAtom,
   standardDisplayDateAtom,
-  extraDisplayDateAtom,
+  standardSequenceAtom,
 } from '@/stores/schedule';
 
 /**

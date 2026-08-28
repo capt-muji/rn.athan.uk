@@ -1,8 +1,8 @@
 import * as Haptics from 'expo-haptics';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { TEXT, SPACING, RADIUS, REMINDER_INTERVALS } from '@/shared/constants';
-import { ReminderInterval } from '@/shared/types';
+import { RADIUS, REMINDER_INTERVALS, SPACING, TEXT } from '@/shared/constants';
+import type { ReminderInterval } from '@/shared/types';
 
 // =============================================================================
 // TYPES

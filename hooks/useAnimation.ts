@@ -1,18 +1,18 @@
 import { useCallback } from 'react';
 import {
-  useSharedValue,
-  withTiming,
-  withSpring,
-  withDelay,
-  useAnimatedStyle,
+  cancelAnimation,
+  Easing,
+  interpolate,
   interpolateColor,
   runOnJS,
-  interpolate,
   useAnimatedProps,
-  WithTimingConfig,
-  WithSpringConfig,
-  Easing,
-  cancelAnimation,
+  useAnimatedStyle,
+  useSharedValue,
+  type WithSpringConfig,
+  type WithTimingConfig,
+  withDelay,
+  withSpring,
+  withTiming,
 } from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';

@@ -11,7 +11,7 @@
 import * as Notifications from 'expo-notifications';
 import { Alert, Linking } from 'react-native';
 
-import { AlertMenuState, AlertType, ScheduleType } from '@/shared/types';
+import { type AlertMenuState, AlertType, ScheduleType } from '@/shared/types';
 
 // =============================================================================
 // TYPE DEFINITIONS

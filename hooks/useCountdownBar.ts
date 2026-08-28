@@ -10,10 +10,10 @@ import { useAtomValue } from 'jotai';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import {
-  standardNextPrayerAtom,
   extraNextPrayerAtom,
-  standardPrevPrayerAtom,
   extraPrevPrayerAtom,
+  standardNextPrayerAtom,
+  standardPrevPrayerAtom,
 } from '@/stores/schedule';
 
 interface UseCountdownBarResult {

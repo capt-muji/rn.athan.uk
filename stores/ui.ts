@@ -1,7 +1,7 @@
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import type { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
-import { PageCoordinates, ScheduleType } from '@/shared/types';
+import { type PageCoordinates, ScheduleType } from '@/shared/types';
 import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '@/stores/storage';
 
 const store = getDefaultStore();

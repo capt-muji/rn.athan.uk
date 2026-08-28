@@ -1,7 +1,7 @@
 import { addDays, subDays } from 'date-fns';
 
 import { formatDateShort } from '@/shared/time';
-import { IApiResponse } from '@/shared/types';
+import type { IApiResponse } from '@/shared/types';
 
 /**
  * Mock data for testing prayer times

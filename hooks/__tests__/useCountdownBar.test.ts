@@ -5,7 +5,7 @@
  * Note: React hook behavior requires @testing-library/react-hooks.
  */
 
-import { ScheduleType, Prayer } from '@/shared/types';
+import { type Prayer, ScheduleType } from '@/shared/types';
 
 // =============================================================================
 // MOCK SETUP
