@@ -288,18 +288,30 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Residual**: SDK 54 exposure of the same race is unknown (never reproduced there);
   the guard is correct under both.
 
-### 2. [DEFERRED] @gorhom/bottom-sheet → @expo/ui/community/bottom-sheet
+### 2. [FIXED] @gorhom/bottom-sheet + react-native-pager-view → @expo/ui community drop-ins
 
-- **Context**: SDK 56+ ships `@expo/ui` drop-in replacements for `@gorhom/bottom-sheet`
-  and `react-native-pager-view`, backed by native SwiftUI sheet / Compose
-  ModalBottomSheet instead of Reanimated + GestureHandler.
-- **Why deferred (owner decision)**: the drop-in intentionally changes the presentation
-  and animation layer (native modal presentation vs Reanimated-driven inline modals,
-  different backdrop handling, no persistent inline peek). Zero-visual-drift mandate
-  makes the swap a deliberate future session with side-by-side visual review and real
-  Android device testing — not part of a version bump.
-- **Status**: staying on `@gorhom/bottom-sheet@5.2.14` (bug-fix-only 5.2.8→5.2.14,
-  peers verified). Revisit as a standalone UI-refresh initiative.
+- **What**: all three sheets (Alert, Settings, Sound) now use
+  `@expo/ui/community/bottom-sheet` (`BottomSheetModal`, `BottomSheetScrollView`,
+  `BottomSheetView`, compat `BottomSheetModalProvider`); the home pager uses
+  `@expo/ui/community/pager-view`. Both old dependencies removed. Backed by native
+  SwiftUI sheets (iOS) / Compose ModalBottomSheet + HorizontalPager (Android).
+- **Behavior deltas (accepted by owner when un-deferring)**:
+  - Presentation is native modal instead of Reanimated-driven inline modal.
+  - `backdropComponent`/`backgroundComponent`/`handleIndicatorStyle` are no-ops on
+    native: the sheet background color + top radius now go through `backgroundStyle`;
+    the custom dim layer was replaced by the system backdrop/scrim.
+  - Android supports only 2 snap states (partial ~50% / expanded).
+  - Pager `overdrag` prop dropped (no native equivalent).
+  - `enablePanDownToClose` kept explicitly: on Android it also enables back-button
+    and scrim-tap dismissal - the "back closes the sheet" feature arrives with this
+    migration (Android device verification still pending).
+  - Sound sheet's `onAnimate={clearAudio}` dropped (prop removed in the drop-in);
+    `handleDismiss` already clears audio.
+- **Verification**: DEBUG build (all sheets present/content/dismiss: swipe-down +
+  backdrop-tap; pager both pages + day rollover), then Release build (gear reachable;
+  Settings sheet content + backdrop dismiss re-verified). 26 suites / 710 tests green.
+  In-sheet synthetic taps do not register under automation (same with @gorhom);
+  human-touch flows re-check on the real-device pass.
 
 ### 3. [ACCEPTED] Per-prayer alert config is index-keyed, not name-keyed
 
