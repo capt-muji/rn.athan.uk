@@ -1,6 +1,6 @@
 # ADR-007: Background Task Notification Refresh
 
-**Status:** Proposed
+**Status:** Accepted (implemented 1.5.x; ADR corrected 2026-08-29 — see Revision History)
 **Date:** 2026-01-26
 **Decision Makers:** muji
 
@@ -58,7 +58,7 @@ Implement a **dual-layer notification refresh strategy**:
 
 3. **Extensive logging**: Background tasks are notoriously difficult to debug. Both layers log extensively to aid troubleshooting.
 
-4. **Concurrent execution handling**: If both layers attempt to run simultaneously, `withSchedulingLock()` ensures only one executes. The second caller returns immediately without waiting (skip, not queue).
+4. **Concurrent execution handling**: If both layers attempt to run simultaneously, `withSchedulingLock()` serializes them — operations are chained in a sequential queue, a second caller waits its turn, and no operation is ever dropped. (The original draft described a skip-based lock where the second caller returns immediately; the shipped implementation is a queue — see `withSchedulingLock` in `stores/notifications.ts`.)
 
 ### Architecture
 
@@ -126,9 +126,16 @@ Implement a **dual-layer notification refresh strategy**:
 
    ```typescript
    await BackgroundTask.registerTaskAsync(BACKGROUND_TASK_NAME, {
-     minimumInterval: 3 * 60 * 60, // 3 hours in seconds (exceeds Android's 15-min and iOS default minimums)
-   });
+    minimumInterval: 3 * 60 * 60, // 3 hours in seconds (exceeds Android's 15-min and iOS default minimums)
+  });
    ```
+
+   Registration runs on cold launch (`app/index.tsx`) AND on every foreground-return
+   (`device/listeners.ts` → `initializeNotifications(..., registerBackgroundTask)`).
+   This is idempotent: `registerBackgroundTask` early-returns via
+   `TaskManager.isTaskRegisteredAsync(BACKGROUND_TASK_NAME)`, so re-invocation only
+   re-checks registration (covering the case where the OS dropped the task while the
+   app process stayed alive across many background stints).
 
 4. **iOS configuration** (automatic via expo prebuild):
    - `UIBackgroundModes` includes `processing`
@@ -273,3 +280,4 @@ If background tasks cause issues:
 | Date       | Author | Change        |
 | ---------- | ------ | ------------- |
 | 2026-01-26 | muji   | Initial draft |
+| 2026-08-29 | muji   | Corrected §Decision 4 + architecture diagram: `withSchedulingLock` is a sequential queue (no skip, no drops), not the skip-based lock the draft described. Documented that task registration runs on launch AND foreground-return (idempotent `isTaskRegisteredAsync` guard) — the foreground-return path previously omitted registration (ISSUES #9). Status: Proposed → Accepted. |
