@@ -288,30 +288,39 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Residual**: SDK 54 exposure of the same race is unknown (never reproduced there);
   the guard is correct under both.
 
-### 2. [FIXED] @gorhom/bottom-sheet + react-native-pager-view → @expo/ui community drop-ins
+### 2. [REVERTED] @expo/ui community bottom sheets → back to @gorhom/bottom-sheet 5.2.14
 
-- **What**: all three sheets (Alert, Settings, Sound) now use
-  `@expo/ui/community/bottom-sheet` (`BottomSheetModal`, `BottomSheetScrollView`,
-  `BottomSheetView`, compat `BottomSheetModalProvider`); the home pager uses
-  `@expo/ui/community/pager-view`. Both old dependencies removed. Backed by native
-  SwiftUI sheets (iOS) / Compose ModalBottomSheet + HorizontalPager (Android).
-- **Behavior deltas (accepted by owner when un-deferring)**:
-  - Presentation is native modal instead of Reanimated-driven inline modal.
-  - `backdropComponent`/`backgroundComponent`/`handleIndicatorStyle` are no-ops on
-    native: the sheet background color + top radius now go through `backgroundStyle`;
-    the custom dim layer was replaced by the system backdrop/scrim.
-  - Android supports only 2 snap states (partial ~50% / expanded).
-  - Pager `overdrag` prop dropped (no native equivalent).
-  - `enablePanDownToClose` kept explicitly: on Android it also enables back-button
-    and scrim-tap dismissal - the "back closes the sheet" feature arrives with this
-    migration (Android device verification still pending).
-  - Sound sheet's `onAnimate={clearAudio}` dropped (prop removed in the drop-in);
-    `handleDismiss` already clears audio.
-- **Verification**: DEBUG build (all sheets present/content/dismiss: swipe-down +
-  backdrop-tap; pager both pages + day rollover), then Release build (gear reachable;
-  Settings sheet content + backdrop dismiss re-verified). 26 suites / 710 tests green.
-  In-sheet synthetic taps do not register under automation (same with @gorhom);
-  human-touch flows re-check on the real-device pass.
+- **Outcome**: the @expo/ui sheets migration (d5ec3a5) was tried and reverted by
+  owner decision after four escalating attempts. Final state:
+  `@gorhom/bottom-sheet@5.2.14` restored verbatim from 500087b (`Sheet.tsx`,
+  `Shared.tsx`, sheets barrel re-exports, `stores/ui.ts` modal atoms back to
+  `BottomSheetModal` refs, `SheetControls` type removed, `_layout.tsx`
+  `BottomSheetModalProvider` re-wrapped). `@expo/ui` retained for the home
+  PagerView only (`app/Navigation.tsx`).
+- **Why the native drop-in failed (d5ec3a5)**: on iOS 26, fractional-height sheets
+  render as floating cards with side margins; the backdrop dim is system-controlled
+  (too weak); the drag indicator is glued to the top edge and unstyleable;
+  backdrop-tap behavior differs. Owner rejected the look.
+- **Why custom replacements failed**: inline Reanimated sheet (e989435) fixed the
+  visuals but drag-to-dismiss only worked on the header (the Alert sheet's header
+  zone was dead to drags). A gorhom-style coordination rewrite (RNGH ScrollView +
+  `simultaneousWithExternalGesture`) crashed with a fatal JS exception (SIGABRT via
+  RCTExceptionsManager) when dragging the scrollable sheets —
+  `~/Library/Logs/DiagnosticReports/Athan-2026-08-28-22*.ips`. A manual-activation
+  pan + plain RN ScrollView was stable but drags starting on content never handed
+  off to the sheet, and scrollable sheets showed parallax (content separating from
+  the panel). The coordination layer proved too complex.
+- **One addition on top of the revert**: Android hardware back now dismisses any
+  open sheet instead of exiting the app — `BackHandler` in `Sheet.tsx`, gated on
+  presented state (`onChange` index !== −1), so LIFO registration order dismisses
+  the top sheet when Sound stacks over Settings. The pre-revert app did not have
+  this; Android emulator/device verification pending.
+- **Verification**: `yarn validate` green (26 suites / 710 tests); Release sim pass —
+  all three sheets flush to the bottom + full width, drag-anywhere dismisses as one
+  piece (no parallax), native scroll with header scroll-away + elastic top bounce,
+  Sound opens at 80% with default scroll indicator, Alert compact + commits changes,
+  dark 0.9 backdrop that does NOT close on tap (drag-only dismissal, by design),
+  home pager intact.
 
 ### 3. [ACCEPTED] Per-prayer alert config is index-keyed, not name-keyed
 
@@ -360,3 +369,31 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Verification**: sim at `accessibility-XXXL` — pre-fix screenshot showed scaled,
   overlapping text; post-fix screenshot identical to normal-size rendering with the
   countdown ticking normally. Content size restored to default afterwards.
+
+### 6. [OPEN] Countdown final-seconds intermittent stretch
+
+- **Symptom**: the countdown's last ~2s occasionally stretch on screen. Works most
+  of the time — two clean observations including a day rollover
+  (5→4→3→2→1→cascade).
+- **Hypothesis**: JS-thread tick jitter at the transition moment; one historical
+  report was from a crashing build (JS stalls stall the ticker). Both tickers are
+  now clock-based (97a34af, same fix as d0598a6 for the sequence ticker), so the
+  remaining exposure is delivery jitter, not counter drift.
+- **Protocol**: watch ~10 transitions on the clean post-revert Release build noting
+  conditions; if reproduced, add temporary pino tick-timestamp logging.
+
+### 7. [OPEN] Android minute-boundary skew (status bar vs countdown)
+
+- **Symptom**: on some Android phones the status bar flips to the prayer minute
+  while the app countdown still shows ~10s remaining.
+- **Hypothesis**: device epoch vs displayed-time skew (NITZ; cf. #11 clock-skew) —
+  the countdown is computed from `Date.now()` vs minute-exact prayer datetimes, so
+  a device clock ahead of true time displays the transition consistently late.
+- **Protocol**: on an affected phone, log `Date.now()` at the status-bar minute
+  flip vs the prayer datetime. The countdown path is platform-agnostic by design —
+  no `Platform` checks exist there; do not add any.
+
+### 8. [OPEN] Biome useExhaustiveDependencies backlog
+
+- 72 warn-level hits (77 warnings total), pre-existing from the Biome migration
+  (9a116f6). Suppression is not warranted — schedule a dedicated cleanup session.
