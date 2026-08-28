@@ -3,6 +3,7 @@ import Constants from 'expo-constants';
 import logger from '@/shared/logger';
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
+import { migrateIndexKeyedAlertPreferences } from '@/stores/notifications';
 
 // Guard to prevent multiple upgrade handlers from running
 let upgradeHandled = false;
@@ -154,5 +155,11 @@ export const handleAppUpgrade = (): void => {
 
   // Always update stored version to current version
   setStoredVersion(installedVersion);
+
+  // Migrate legacy index-keyed alert preference keys to name-keyed keys.
+  // Runs on every launch (no-op after the first); must complete before any
+  // notification scheduling reads the preference atoms.
+  migrateIndexKeyedAlertPreferences();
+
   logger.info('VERSION: Upgrade check completed');
 };
