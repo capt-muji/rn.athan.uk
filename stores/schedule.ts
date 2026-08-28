@@ -9,11 +9,11 @@ import { subDays } from 'date-fns';
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { PRAYERS_ENGLISH, PRAYERS_ARABIC, EXTRAS_ENGLISH, EXTRAS_ARABIC, TIME_CONSTANTS } from '@/shared/constants';
+import { EXTRAS_ARABIC, EXTRAS_ENGLISH, PRAYERS_ARABIC, PRAYERS_ENGLISH, TIME_CONSTANTS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import { ISingleApiResponseTransformed, Prayer, PrayerSequence, ScheduleType } from '@/shared/types';
+import { type ISingleApiResponseTransformed, type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
 const store = getDefaultStore();

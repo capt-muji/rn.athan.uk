@@ -1,11 +1,11 @@
 import * as Haptics from 'expo-haptics';
-import { useCallback, useState, useMemo, useRef, useEffect } from 'react';
-import { StyleSheet, View, Pressable, LayoutChangeEvent } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming, interpolateColor, useSharedValue } from 'react-native-reanimated';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { type LayoutChangeEvent, Pressable, StyleSheet, View } from 'react-native';
+import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
-import { TEXT, SPACING, RADIUS, COLORS, ANIMATION } from '@/shared/constants';
-import { AlertType, Icon } from '@/shared/types';
+import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import type { AlertType, Icon } from '@/shared/types';
 
 // =============================================================================
 // TYPES

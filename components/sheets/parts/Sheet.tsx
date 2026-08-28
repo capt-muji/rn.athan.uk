@@ -1,12 +1,12 @@
 import { BottomSheetModal, BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
 import { useCallback } from 'react';
-import { StyleSheet, Platform } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import Header from './Header';
-import { renderSheetBackground, renderBackdrop, bottomSheetStyles } from './Shared';
+import { ELEVATION, OVERLAY, SPACING } from '@/shared/constants';
 
-import { SPACING, OVERLAY, ELEVATION } from '@/shared/constants';
+import Header from './Header';
+import { bottomSheetStyles, renderBackdrop, renderSheetBackground } from './Shared';
 
 const SHEET_BOTTOM_PADDING = 50;
 

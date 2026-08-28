@@ -1,8 +1,8 @@
 import { useAtomValue } from 'jotai';
 import { StyleSheet, View } from 'react-native';
 
-import RamadanIcon from '@/assets/icons/svg/masjid-ramadan.svg';
 import Icon from '@/assets/icons/svg/masjid.svg';
+import RamadanIcon from '@/assets/icons/svg/masjid-ramadan.svg';
 import { COLORS, SHADOW } from '@/shared/constants';
 import { isRamadan } from '@/shared/time';
 import { decorationsEnabledAtom } from '@/stores/ui';

@@ -1,14 +1,14 @@
 import { useAtomValue } from 'jotai';
 import { useRef } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { Masjid } from '@/components/ui';
-import { COLORS, SCREEN, TEXT, SPACING } from '@/shared/constants';
+import { COLORS, SCREEN, SPACING, TEXT } from '@/shared/constants';
 import { formatDateLong, formatHijriDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { standardDisplayDateAtom, extraDisplayDateAtom } from '@/stores/schedule';
-import { getMeasurementsDate, setMeasurementsDate, hijriDateEnabledAtom } from '@/stores/ui';
+import { extraDisplayDateAtom, standardDisplayDateAtom } from '@/stores/schedule';
+import { getMeasurementsDate, hijriDateEnabledAtom, setMeasurementsDate } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;

@@ -32,10 +32,10 @@ jest.mock('@/shared/logger', () => ({
   isPreview: (value: boolean) => mockIsPreview(value),
 }));
 
+import type { IApiSingleTime } from '@/shared/types';
+
 // Import after mocks
 import { fetchYear } from '../client';
-
-import { IApiSingleTime } from '@/shared/types';
 
 // =============================================================================
 // TEST HELPERS

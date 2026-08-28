@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
-import { standardNextPrayerAtom, extraNextPrayerAtom } from '@/stores/schedule';
+import { extraNextPrayerAtom, standardNextPrayerAtom } from '@/stores/schedule';
 
 interface UseCountdownResult {
   /** Seconds remaining until the next prayer */

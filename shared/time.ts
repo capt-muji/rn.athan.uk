@@ -1,4 +1,4 @@
-import { addDays, format, setHours, setMinutes, intervalToDuration, isFuture, isToday, isYesterday } from 'date-fns';
+import { addDays, format, intervalToDuration, isFuture, isToday, isYesterday, setHours, setMinutes } from 'date-fns';
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
 import { ISLAMIC_DAY, TIME_ADJUSTMENTS } from '@/shared/constants';

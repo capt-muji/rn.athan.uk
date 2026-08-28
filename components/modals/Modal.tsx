@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated';
 
-import { COLORS, TEXT, ANIMATION, OVERLAY, RADIUS, SPACING, SHADOW, ELEVATION, LAYOUT, SIZE } from '@/shared/constants';
+import { ANIMATION, COLORS, ELEVATION, LAYOUT, OVERLAY, RADIUS, SHADOW, SIZE, SPACING, TEXT } from '@/shared/constants';
 
 type Props = {
   visible: boolean;

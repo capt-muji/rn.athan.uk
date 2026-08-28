@@ -13,9 +13,9 @@ import { createJSONStorage } from 'jotai/utils';
 import { createMMKV } from 'react-native-mmkv';
 
 import logger from '@/shared/logger';
-import * as NotificationUtils from '@/shared/notifications';
+import type * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
-import { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+import type { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 
 /** MMKV database instance - explicit ID required for Android production persistence */
 export const database = createMMKV({ id: 'athan-storage' });

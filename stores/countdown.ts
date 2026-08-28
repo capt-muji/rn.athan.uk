@@ -9,14 +9,14 @@ import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import * as TimeUtils from '@/shared/time';
-import { CountdownStore, ScheduleType, CountdownKey } from '@/shared/types';
+import { CountdownKey, type CountdownStore, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
 import {
-  refreshSequence,
+  extraDisplayDateAtom,
   getNextPrayer,
   getSequenceAtom,
+  refreshSequence,
   standardDisplayDateAtom,
-  extraDisplayDateAtom,
 } from '@/stores/schedule';
 
 const store = getDefaultStore();
@@ -182,4 +182,4 @@ const startCountdowns = () => {
   startCountdownOverlay();
 };
 
-export { startCountdowns, startCountdownOverlay };
+export { startCountdownOverlay, startCountdowns };

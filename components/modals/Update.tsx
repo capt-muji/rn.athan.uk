@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+
+import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 
 import Modal from './Modal';
-
-import { COLORS, TEXT, SPACING, RADIUS } from '@/shared/constants';
 
 type Props = {
   visible: boolean;
@@ -12,7 +12,7 @@ type Props = {
 
 export default function ModalUpdate({ visible, onClose, onUpdate }: Props) {
   return (
-    <Modal visible={visible} title="Update Available!">
+    <Modal visible={visible} title='Update Available!'>
       <Text style={styles.message}>
         A new version is available.
         {'\n'}Would you like to update now?
