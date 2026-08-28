@@ -52,14 +52,20 @@ export const useCountdown = (type: ScheduleType): UseCountdownResult => {
     // Initial calculation
     const calculateTimeLeft = () => {
       const now = TimeUtils.createLondonDate();
-      return Math.max(0, TimeUtils.getSecondsBetween(now, nextPrayer.datetime));
+      return TimeUtils.getSecondsBetween(now, nextPrayer.datetime);
     };
 
     setTimeLeft(calculateTimeLeft());
 
     // Set up interval
     const intervalId = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      // Hold the last shown second while the sequence refresh advances to the next
+      // prayer (floor-rounding reaches 0 up to a second before the true time, and the
+      // refresh itself takes a tick) - prevents the UI from freezing at "0s".
+      setTimeLeft((previous) => {
+        const seconds = calculateTimeLeft();
+        return seconds > 0 ? seconds : previous;
+      });
     }, 1000);
 
     return () => clearInterval(intervalId);

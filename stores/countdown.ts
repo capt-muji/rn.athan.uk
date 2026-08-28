@@ -73,7 +73,6 @@ const startSequenceCountdown = (type: ScheduleType) => {
   const nextPrayer = getNextPrayer(type)!;
   const now = TimeUtils.createLondonDate();
   const timeLeft = TimeUtils.getSecondsBetween(now, nextPrayer.datetime);
-  const name = nextPrayer.english;
 
   const isStandard = type === ScheduleType.Standard;
   const countdownKey = isStandard ? CountdownKey.Standard : CountdownKey.Extra;
@@ -81,13 +80,17 @@ const startSequenceCountdown = (type: ScheduleType) => {
 
   // Clear existing countdown and set initial state
   clearCountdown(countdownKey);
-  store.set(countdownAtom, { timeLeft, name });
+  store.set(countdownAtom, { timeLeft, name: nextPrayer.english });
 
-  // Start countdown interval
+  // Each tick recomputes from the clock instead of decrementing a stored counter:
+  // a decrement drifts late under JS-thread load, which froze the UI countdown at 0s
+  // until this ticker finally crossed zero (most visible on day rollover).
   countdowns[countdownKey] = setInterval(() => {
-    const currentTime = store.get(countdownAtom).timeLeft - 1;
+    const upcoming = getNextPrayer(type);
+    if (!upcoming) return;
 
-    if (currentTime <= 0) {
+    const tickNow = TimeUtils.createLondonDate();
+    if (tickNow.getTime() >= upcoming.datetime.getTime()) {
       clearCountdown(countdownKey);
 
       // Refresh sequence to advance to next prayer
@@ -97,14 +100,16 @@ const startSequenceCountdown = (type: ScheduleType) => {
       return startSequenceCountdown(type);
     }
 
+    const secondsLeft = TimeUtils.getSecondsBetween(tickNow, upcoming.datetime);
+
     // Auto-close overlay when countdown is 2 seconds or less
     const overlay = store.get(overlayAtom);
-    if (overlay.isOn && overlay.scheduleType === type && currentTime <= 2) {
+    if (overlay.isOn && overlay.scheduleType === type && secondsLeft <= 2) {
       store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
     // Update countdown atom
-    store.set(countdownAtom, { timeLeft: currentTime, name });
+    store.set(countdownAtom, { timeLeft: secondsLeft, name: upcoming.english });
   }, 1000);
 };
 
