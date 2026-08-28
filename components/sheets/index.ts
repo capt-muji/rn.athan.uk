@@ -2,8 +2,11 @@
 
 // Parts
 export {
+  bottomSheetStyles,
   Header,
   LabeledToggle,
+  renderBackdrop,
+  renderSheetBackground,
   SegmentedControl,
   type SegmentOption,
   SoundItem,
