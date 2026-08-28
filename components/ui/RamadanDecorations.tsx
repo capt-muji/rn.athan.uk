@@ -3,7 +3,7 @@ import { useEffect, useMemo } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, {
   Easing,
-  SharedValue,
+  type SharedValue,
   useAnimatedProps,
   useAnimatedStyle,
   useSharedValue,
@@ -18,12 +18,12 @@ import Svg, {
   Defs,
   G,
   Line,
-  LinearGradient as SvgLinearGradient,
   Mask,
   Path,
   RadialGradient,
   Rect,
   Stop,
+  LinearGradient as SvgLinearGradient,
 } from 'react-native-svg';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
@@ -389,7 +389,7 @@ export default function RamadanDecorations() {
   if (!isRamadan() || !decorationsEnabled) return null;
 
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+    <View style={StyleSheet.absoluteFill} pointerEvents='none'>
       {/* Main SVG: wires only (moon string + hanging wires) */}
       <Svg width={width} height={svgHeight} viewBox={`0 0 ${width} ${svgHeight}`}>
         {/* Moon string — animated to follow moon bob */}
@@ -548,22 +548,22 @@ function FloatingMoon({
       ]}>
       <Svg width={svgW} height={svgH} viewBox={`0 0 ${svgW} ${svgH}`}>
         <Defs>
-          <RadialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-            <Stop offset="0%" stopColor={MOON_COLOR} stopOpacity={0.13} />
-            <Stop offset="15%" stopColor={MOON_COLOR} stopOpacity={0.13} />
-            <Stop offset="35%" stopColor={MOON_COLOR} stopOpacity={0.13} />
-            <Stop offset="65%" stopColor={MOON_COLOR} stopOpacity={0.045} />
-            <Stop offset="100%" stopColor={MOON_COLOR} stopOpacity={0} />
+          <RadialGradient id='moonGlow' cx='50%' cy='50%' r='50%'>
+            <Stop offset='0%' stopColor={MOON_COLOR} stopOpacity={0.13} />
+            <Stop offset='15%' stopColor={MOON_COLOR} stopOpacity={0.13} />
+            <Stop offset='35%' stopColor={MOON_COLOR} stopOpacity={0.13} />
+            <Stop offset='65%' stopColor={MOON_COLOR} stopOpacity={0.045} />
+            <Stop offset='100%' stopColor={MOON_COLOR} stopOpacity={0} />
           </RadialGradient>
-          <Mask id="crescentMask">
-            <Rect x={0} y={0} width={svgW} height={svgH} fill="black" />
-            <Circle cx={localCx} cy={localCy} r={r} fill="white" />
-            <Circle cx={localCx + 5} cy={localCy - 5} r={r * 0.92} fill="black" />
+          <Mask id='crescentMask'>
+            <Rect x={0} y={0} width={svgW} height={svgH} fill='black' />
+            <Circle cx={localCx} cy={localCy} r={r} fill='white' />
+            <Circle cx={localCx + 5} cy={localCy - 5} r={r * 0.92} fill='black' />
           </Mask>
         </Defs>
 
-        <AnimatedCircle cx={localCx - 2} cy={localCy + 4} r={glowR} fill="url(#moonGlow)" animatedProps={glowProps} />
-        <Circle cx={localCx} cy={localCy} r={r} fill={MOON_COLOR} opacity={1} mask="url(#crescentMask)" />
+        <AnimatedCircle cx={localCx - 2} cy={localCy + 4} r={glowR} fill='url(#moonGlow)' animatedProps={glowProps} />
+        <Circle cx={localCx} cy={localCy} r={r} fill={MOON_COLOR} opacity={1} mask='url(#crescentMask)' />
       </Svg>
       <MoonSparks cx={localCx - 2} cy={localCy + 4} glowR={glowR * 0.6} />
     </Animated.View>
@@ -653,20 +653,20 @@ function FloatingStar({
       ]}>
       <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
         <Defs>
-          <RadialGradient id={gradientId} cx="50%" cy="50%" r="50%">
-            <Stop offset="0%" stopColor={type === 'lantern' ? LANTERN_GLOW_CENTER : STAR_GLOW_CENTER} stopOpacity={1} />
-            <Stop offset="8%" stopColor={type === 'lantern' ? LANTERN_GLOW_MID : STAR_GLOW_MID} stopOpacity={0.75} />
-            <Stop offset="18%" stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.4} />
-            <Stop offset="40%" stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.15} />
-            <Stop offset="70%" stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.04} />
-            <Stop offset="100%" stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0} />
+          <RadialGradient id={gradientId} cx='50%' cy='50%' r='50%'>
+            <Stop offset='0%' stopColor={type === 'lantern' ? LANTERN_GLOW_CENTER : STAR_GLOW_CENTER} stopOpacity={1} />
+            <Stop offset='8%' stopColor={type === 'lantern' ? LANTERN_GLOW_MID : STAR_GLOW_MID} stopOpacity={0.75} />
+            <Stop offset='18%' stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.4} />
+            <Stop offset='40%' stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.15} />
+            <Stop offset='70%' stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.04} />
+            <Stop offset='100%' stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0} />
           </RadialGradient>
           {type === 'lantern' && (
-            <RadialGradient id={flickerGradientId} cx="50%" cy="55%" r="35%">
-              <Stop offset="0%" stopColor={LANTERN_FLICKER_CENTER} stopOpacity={0.9} />
-              <Stop offset="30%" stopColor={LANTERN_GLOW_MID} stopOpacity={0.5} />
-              <Stop offset="60%" stopColor={LANTERN_FLICKER_MID} stopOpacity={0.2} />
-              <Stop offset="100%" stopColor={LANTERN_FLICKER_MID} stopOpacity={0} />
+            <RadialGradient id={flickerGradientId} cx='50%' cy='55%' r='35%'>
+              <Stop offset='0%' stopColor={LANTERN_FLICKER_CENTER} stopOpacity={0.9} />
+              <Stop offset='30%' stopColor={LANTERN_GLOW_MID} stopOpacity={0.5} />
+              <Stop offset='60%' stopColor={LANTERN_FLICKER_MID} stopOpacity={0.2} />
+              <Stop offset='100%' stopColor={LANTERN_FLICKER_MID} stopOpacity={0} />
             </RadialGradient>
           )}
         </Defs>
@@ -685,19 +685,19 @@ function FloatingStar({
             transform={`translate(${cx - (visualSize * 3.6) / 2}, ${cy - (visualSize * 3.6) / 2}) scale(${(visualSize * 3.6) / 396.586})`}
             opacity={bodyOpacity}>
             <Path
-              d="M281.603,179.637c0.828,0,1.5-0.671,1.5-1.5v-4.601h4.451c0.828,0,1.5-0.671,1.5-1.5v-9.699c0-0.829-0.672-1.5-1.5-1.5h-24.146c-3.842-27.97-40.149-45.072-56.818-51.509c0.26-0.794,0.404-1.637,0.404-2.515c0-3.405-2.109-6.332-5.133-7.646c1.078-0.939,1.76-2.294,1.76-3.806c0-1.994-1.182-3.722-2.906-4.57l-0.781-6.204c3.354-0.748,5.861-3.736,5.861-7.315v-0.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.5c0,3.579,2.508,6.567,5.861,7.315l-0.781,6.204c-1.725,0.849-2.906,2.576-2.906,4.57c0,1.512,0.682,2.866,1.758,3.806c-3.021,1.313-5.131,4.24-5.131,7.646c0,0.877,0.144,1.721,0.404,2.515c-16.67,6.437-52.977,23.539-56.818,51.509h-24.148c-0.828,0-1.5,0.671-1.5,1.5v9.699c0,0.829,0.672,1.5,1.5,1.5h4.451v4.601c0,0.829,0.672,1.5,1.5,1.5h3.271v162.282h-3.271c-0.828,0-1.5,0.671-1.5,1.5v4.598h-4.451c-0.828,0-1.5,0.671-1.5,1.5v9.702c0,0.829,0.672,1.5,1.5,1.5h32.018c17.57,23.99,57.244,35.867,57.244,35.867s39.674-11.877,57.244-35.867h32.016c0.828,0,1.5-0.671,1.5-1.5v-9.702c0-0.829-0.672-1.5-1.5-1.5h-4.451v-4.598c0-0.829-0.672-1.5-1.5-1.5h-3.27V179.637H281.603z M161.343,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z M221.644,331.651h-46.701V228.584c0-24.726,23.352-40.929,23.352-40.929s23.35,16.203,23.35,40.929V331.651z M262.04,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z"
+              d='M281.603,179.637c0.828,0,1.5-0.671,1.5-1.5v-4.601h4.451c0.828,0,1.5-0.671,1.5-1.5v-9.699c0-0.829-0.672-1.5-1.5-1.5h-24.146c-3.842-27.97-40.149-45.072-56.818-51.509c0.26-0.794,0.404-1.637,0.404-2.515c0-3.405-2.109-6.332-5.133-7.646c1.078-0.939,1.76-2.294,1.76-3.806c0-1.994-1.182-3.722-2.906-4.57l-0.781-6.204c3.354-0.748,5.861-3.736,5.861-7.315v-0.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.5c0,3.579,2.508,6.567,5.861,7.315l-0.781,6.204c-1.725,0.849-2.906,2.576-2.906,4.57c0,1.512,0.682,2.866,1.758,3.806c-3.021,1.313-5.131,4.24-5.131,7.646c0,0.877,0.144,1.721,0.404,2.515c-16.67,6.437-52.977,23.539-56.818,51.509h-24.148c-0.828,0-1.5,0.671-1.5,1.5v9.699c0,0.829,0.672,1.5,1.5,1.5h4.451v4.601c0,0.829,0.672,1.5,1.5,1.5h3.271v162.282h-3.271c-0.828,0-1.5,0.671-1.5,1.5v4.598h-4.451c-0.828,0-1.5,0.671-1.5,1.5v9.702c0,0.829,0.672,1.5,1.5,1.5h32.018c17.57,23.99,57.244,35.867,57.244,35.867s39.674-11.877,57.244-35.867h32.016c0.828,0,1.5-0.671,1.5-1.5v-9.702c0-0.829-0.672-1.5-1.5-1.5h-4.451v-4.598c0-0.829-0.672-1.5-1.5-1.5h-3.27V179.637H281.603z M161.343,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z M221.644,331.651h-46.701V228.584c0-24.726,23.352-40.929,23.352-40.929s23.35,16.203,23.35,40.929V331.651z M262.04,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z'
               fill={LANTERN_COLOR}
             />
             <Path
-              d="M198.294,39.054c4.143,0,7.5-3.358,7.5-7.5v-0.963c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.963C190.794,35.695,194.151,39.054,198.294,39.054z"
+              d='M198.294,39.054c4.143,0,7.5-3.358,7.5-7.5v-0.963c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.963C190.794,35.695,194.151,39.054,198.294,39.054z'
               fill={LANTERN_COLOR}
             />
             <Path
-              d="M198.294,15.962c4.143,0,7.5-3.357,7.5-7.5V7.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,12.604,194.151,15.962,198.294,15.962z"
+              d='M198.294,15.962c4.143,0,7.5-3.357,7.5-7.5V7.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,12.604,194.151,15.962,198.294,15.962z'
               fill={LANTERN_COLOR}
             />
             <Path
-              d="M198.294,62.145c4.143,0,7.5-3.358,7.5-7.5v-0.962c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,58.786,194.151,62.145,198.294,62.145z"
+              d='M198.294,62.145c4.143,0,7.5-3.358,7.5-7.5v-0.962c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,58.786,194.151,62.145,198.294,62.145z'
               fill={LANTERN_COLOR}
             />
           </G>
@@ -772,10 +772,10 @@ function MistyCloud({
       style={[{ position: 'absolute', left: 0, top: cloudTop, width: svgW, height: svgH, zIndex }, moveStyle]}>
       <Svg width={svgW} height={svgH}>
         <Defs>
-          <SvgLinearGradient id={fadeMaskId} x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0%" stopColor="white" stopOpacity={1} />
-            <Stop offset="55%" stopColor="white" stopOpacity={1} />
-            <Stop offset="100%" stopColor="white" stopOpacity={0} />
+          <SvgLinearGradient id={fadeMaskId} x1='0' y1='0' x2='0' y2='1'>
+            <Stop offset='0%' stopColor='white' stopOpacity={1} />
+            <Stop offset='55%' stopColor='white' stopOpacity={1} />
+            <Stop offset='100%' stopColor='white' stopOpacity={0} />
           </SvgLinearGradient>
           <Mask id={`${fadeMaskId}m`}>
             <Rect x={0} y={0} width={svgW} height={svgH} fill={`url(#${fadeMaskId})`} />

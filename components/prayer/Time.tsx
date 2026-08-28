@@ -6,9 +6,9 @@ import Animated from 'react-native-reanimated';
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { COLORS, TEXT, SPACING, ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS, SPACING, TEXT } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
-import { ScheduleType } from '@/shared/types';
+import type { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 import { refreshUIAtom } from '@/stores/ui';
 

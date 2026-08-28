@@ -35,7 +35,9 @@ const createStorage = () => {
     },
     contains: (key: string) => key in storage,
     clearAll: () => {
-      Object.keys(storage).forEach((key) => delete storage[key]);
+      Object.keys(storage).forEach((key) => {
+        delete storage[key];
+      });
     },
     getAllKeys: () => Object.keys(storage),
   };

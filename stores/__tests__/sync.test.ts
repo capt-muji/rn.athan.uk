@@ -79,10 +79,10 @@ jest.mock('@/shared/config', () => ({
   isTest: () => true,
 }));
 
+import { type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+
 // Import after mocks
 import { sync, syncLoadable, triggerSyncLoadable } from '../sync';
-
-import { ScheduleType, ISingleApiResponseTransformed } from '@/shared/types';
 
 // =============================================================================
 // TEST HELPERS

@@ -1,9 +1,9 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, type ViewStyle } from 'react-native';
 import Reanimated from 'react-native-reanimated';
-import Svg, { RadialGradient, Stop, Circle } from 'react-native-svg';
+import Svg, { Circle, RadialGradient, Stop } from 'react-native-svg';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { OVERLAY, GLOW } from '@/shared/constants';
+import { GLOW, OVERLAY } from '@/shared/constants';
 
 const AnimatedSvg = Reanimated.createAnimatedComponent(Svg);
 
@@ -24,14 +24,14 @@ export default function Glow({ color, style, baseOpacity = 0.5, size }: GlowProp
       height={computedSize}
       viewBox={`0 0 ${computedSize} ${computedSize}`}
       style={[styles.glow, style]}>
-      <RadialGradient id="radialGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-        <Stop offset="0%" stopColor={color} stopOpacity={baseOpacity * 0.75} />
-        <Stop offset="35%" stopColor={color} stopOpacity={baseOpacity * 0.4} />
-        <Stop offset="65%" stopColor={color} stopOpacity={baseOpacity * 0.15} />
-        <Stop offset="85%" stopColor={color} stopOpacity={baseOpacity * 0.05} />
-        <Stop offset="100%" stopColor={color} stopOpacity="0" />
+      <RadialGradient id='radialGlow' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'>
+        <Stop offset='0%' stopColor={color} stopOpacity={baseOpacity * 0.75} />
+        <Stop offset='35%' stopColor={color} stopOpacity={baseOpacity * 0.4} />
+        <Stop offset='65%' stopColor={color} stopOpacity={baseOpacity * 0.15} />
+        <Stop offset='85%' stopColor={color} stopOpacity={baseOpacity * 0.05} />
+        <Stop offset='100%' stopColor={color} stopOpacity='0' />
       </RadialGradient>
-      <Circle cx={computedSize / 2} cy={computedSize / 2} r={computedSize / 2} fill="url(#radialGlow)" />
+      <Circle cx={computedSize / 2} cy={computedSize / 2} r={computedSize / 2} fill='url(#radialGlow)' />
     </AnimatedSvg>
   );
 }

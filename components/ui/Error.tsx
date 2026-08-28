@@ -1,12 +1,12 @@
 import * as Updates from 'expo-updates';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import Masjid from './Masjid';
-
-import { COLORS, TEXT, SPACING, RADIUS } from '@/shared/constants';
+import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import * as Database from '@/stores/database';
 
-export default function Error() {
+import Masjid from './Masjid';
+
+export default function ErrorScreen() {
   const handleRefresh = async () => {
     Database.clearAllExcept(['app_installed_version', 'preference_']);
     await Updates.reloadAsync(); // force reload the entire app

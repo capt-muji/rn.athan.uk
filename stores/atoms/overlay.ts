@@ -7,7 +7,7 @@
 
 import { atom } from 'jotai';
 
-import { OverlayStore, ScheduleType } from '@/shared/types';
+import { type OverlayStore, ScheduleType } from '@/shared/types';
 
 /**
  * Overlay state atom

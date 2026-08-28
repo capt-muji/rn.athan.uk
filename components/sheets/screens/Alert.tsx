@@ -1,16 +1,16 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
-import { Sheet, SegmentedControl, Stepper, Toggle, type SegmentOption } from '../parts';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
-import { TEXT, SPACING, RADIUS, REMINDER_INTERVALS, DEFAULT_REMINDER_INTERVAL } from '@/shared/constants';
-import { AlertType, Icon, ReminderInterval } from '@/shared/types';
+import { DEFAULT_REMINDER_INTERVAL, RADIUS, REMINDER_INTERVALS, SPACING, TEXT } from '@/shared/constants';
+import { AlertType, Icon, type ReminderInterval } from '@/shared/types';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
+
+import { SegmentedControl, type SegmentOption, Sheet, Stepper, Toggle } from '../parts';
 
 const ALERT_OPTIONS: SegmentOption[] = [
   { value: AlertType.Off, label: 'Off', icon: Icon.BELL_SLASH },
@@ -96,8 +96,8 @@ export default function BottomSheetAlert() {
     <Sheet
       setRef={setAlertSheetModal}
       title={sheetState?.prayerEnglish ?? ''}
-      subtitle="Close to save"
-      icon={<IconView type={Icon.BELL_RING} size={16} color="rgba(165, 180, 252, 0.8)" />}
+      subtitle='Close to save'
+      icon={<IconView type={Icon.BELL_RING} size={16} color='rgba(165, 180, 252, 0.8)' />}
       enableDynamicSizing
       scrollable={false}
       onDismiss={handleDismiss}>
@@ -150,7 +150,7 @@ export default function BottomSheetAlert() {
                 if (idx < REMINDER_INTERVALS.length - 1)
                   setReminderInterval(REMINDER_INTERVALS[idx + 1] as ReminderInterval);
               }}
-              unit="min"
+              unit='min'
               disabled={!isReminderOn}
             />
           </View>

@@ -163,7 +163,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     <Animated.View
       style={[styles.wrapper, wrapperOpacityStyle, scaleStyle]}
       accessible
-      accessibilityRole="progressbar"
+      accessibilityRole='progressbar'
       accessibilityLabel={`Prayer countdown: ${Math.round(progress)} percent remaining`}
       accessibilityValue={{ min: 0, max: 100, now: progress }}
       accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}>
@@ -176,7 +176,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       </Animated.View>
 
       {/* Pulsing tip indicator */}
-      <Animated.View style={[styles.tipContainer, tipPositionStyle]} pointerEvents="none">
+      <Animated.View style={[styles.tipContainer, tipPositionStyle]} pointerEvents='none'>
         <Animated.View style={[styles.tipOval, tipAppearanceStyle]} />
       </Animated.View>
     </Animated.View>

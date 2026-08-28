@@ -7,7 +7,7 @@
  * - Null prayer handling
  */
 
-import { ScheduleType, Prayer } from '@/shared/types';
+import { type Prayer, ScheduleType } from '@/shared/types';
 
 // =============================================================================
 // MOCK SETUP

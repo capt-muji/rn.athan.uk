@@ -2,23 +2,23 @@ import { addDays, getHours } from 'date-fns';
 import { toZonedTime } from 'date-fns-tz';
 
 import {
-  PRAYERS_ENGLISH,
-  PRAYERS_ARABIC,
-  EXTRAS_ENGLISH,
-  EXTRAS_ARABIC,
-  TIME_ADJUSTMENTS,
   ANIMATION,
+  EXTRAS_ARABIC,
+  EXTRAS_ENGLISH,
   ISLAMIC_DAY,
   NIGHT_PRAYER_NAMES,
+  PRAYERS_ARABIC,
+  PRAYERS_ENGLISH,
+  TIME_ADJUSTMENTS,
 } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { createPrayerDatetime } from '@/shared/time';
 import {
-  ISingleApiResponseTransformed,
-  IApiResponse,
-  IApiTimes,
-  Prayer,
-  PrayerSequence,
+  type IApiResponse,
+  type IApiTimes,
+  type ISingleApiResponseTransformed,
+  type Prayer,
+  type PrayerSequence,
   ScheduleType,
 } from '@/shared/types';
 import * as Database from '@/stores/database';

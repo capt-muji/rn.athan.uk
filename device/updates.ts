@@ -1,10 +1,10 @@
-import { Platform, Linking } from 'react-native';
+import { Linking, Platform } from 'react-native';
 
 import { APP_CONFIG, isProd } from '@/shared/config';
 import { TIME_CONSTANTS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { isNewerVersion } from '@/shared/versionUtils';
-import { setPopupUpdateLastCheck, getPopupUpdateLastCheck } from '@/stores/ui';
+import { getPopupUpdateLastCheck, setPopupUpdateLastCheck } from '@/stores/ui';
 import { getInstalledVersion } from '@/stores/version';
 
 const IS_IOS = Platform.OS === 'ios';

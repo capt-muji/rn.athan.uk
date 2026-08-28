@@ -1,4 +1,4 @@
-import { AppState, AppStateStatus } from 'react-native';
+import { AppState, type AppStateStatus } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 
 import { initializeNotifications } from '@/shared/notifications';
