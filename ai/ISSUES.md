@@ -135,12 +135,15 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Owner conclusion**: foreground refresh (4h gate) is the only layer that has ever
   worked in practice.
 
-### 9. [OPEN] ADR-007 documentation drift + registration gap
+### 9. [FIXED 1.5.3] ADR-007 documentation drift + registration gap
 
-- ADR-007 line 61 claims skip-based lock; `withSchedulingLock`
+- ADR-007 line 61 claimed skip-based lock; `withSchedulingLock`
   (stores/notifications.ts:29-54) is a sequential queue. Background task registration
-  missing from foreground-return path (see #8). Minor, fold into next notification
-  ADR/update.
+  missing from foreground-return path (see #8).
+- **Fix (2026-08-29)**: ADR corrected (lock semantics + architecture-diagram label +
+  Status Proposed → Accepted, revision history row added); `device/listeners.ts`
+  foreground-return now passes `registerBackgroundTask` to `initializeNotifications`
+  (idempotent — guarded by `isTaskRegisteredAsync`).
 
 ---
 
@@ -333,17 +336,18 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Decision**: no change now (zero-loss mandate; production parity). Future
   hardening candidate: key alert config by prayer name + date.
 
-### 4. [OPEN] Friday Extra-page display order differs from the canonical array
+### 4. [FIXED 1.5.3] Friday Extra-page display order differs from the canonical array
 
 - **Expected (owner)**: Midnight, Last Third, Suhoor, Duha, and — Fridays only —
   Istijaba last.
-- **Actual**: `createPrayerSequence` sorts chronologically
-  (`shared/prayer.ts:323`), so on a real Friday Istijaba (magrib − 60 min) appears
-  between Midnight and Last Third. On non-Fridays chronological order equals the
-  canonical array, which is why this is invisible most of the week.
-- **Status**: pre-existing in production (SDK 54 identical) — NOT a migration
-  regression; kept as-is for zero-loss parity. Owner to decide: keep chronological
-  (document) or switch Extra display to canonical-with-Istijaba-last.
+- **Was**: `createPrayerSequence` sorts chronologically (`shared/prayer.ts`), so on a
+  real Friday Istijaba (magrib − 60 min) appeared between Midnight and Last Third
+  instead of last. Invisible most of the week (non-Friday chronological == canonical).
+- **Fix (500087b, owner decision)**: Extras display follows the canonical array via
+  `canonicalDisplayOrder(prayers, type)` (`shared/prayer.ts`); `List.tsx` renders in
+  canonical order while rows keep their sequence indices, so selection/countdown
+  semantics are unchanged. Istijaba always last on Fridays. Verified on sim
+  (Friday 2026-08-28) + 4 unit tests; owner-confirmed matching long-observed behavior.
 
 ### 5. [FIXED] Global font-scaling guard was dead code on SDK 57 (React 19 defaultProps removal)
 
