@@ -119,7 +119,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 
 ### Display & User Interface
 
-- 📅 **Daily Prayer Times**: View all 5 standard prayers plus 5 special prayers
+- 📅 **Daily Prayer Times**: View all 6 standard prayers plus 5 special prayers
 - ⏰ **Real-time Countdown**: Live countdown showing exact time remaining
 - 🔄 **Tomorrow's Prayer Times**: Swipe between today and tomorrow
 - 🔍 **Large Overlay Font**: Accessible mode for visually impaired
@@ -135,6 +135,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 - 📢 **16 Selectable Athan Sounds**: Multiple Islamic audio options
 - 📅 **Smart Notification Buffer**: 2-day rolling schedule
 - 🛡️ **Sequential Scheduling Queue**: Operations queued and executed in order, never dropped
+- 🪪 **Deterministic Notification IDs**: `athan_<schedule>_<prayer>_<date>` (reminders include the interval) — re-scheduling with the same ID replaces in place on both platforms, so orphaned alarms can never double-fire
 
 ### Data & Offline Support
 
@@ -220,7 +221,8 @@ The 24-hour throttle timer is always set regardless of whether the check succeed
 
 ### Architecture
 
-- **Framework**: React Native 0.81.5, Expo 54.0.31
+- **Framework**: React Native 0.86.3, Expo 57.0.18
+- **Language**: TypeScript 7.0 (strict)
 - **State**: Jotai atoms (no Redux/Context)
 - **Storage**: MMKV v4 (Nitro Module)
 - **Animation**: Reanimated 4 (worklets)
@@ -247,7 +249,8 @@ MMKV
 ├── Prayer Data: prayer_YYYY-MM-DD
 ├── Fetched Years: fetched_years
 ├── Notifications: scheduled_notifications_*, scheduled_reminders_*
-└── Preferences: preference_*
+└── Preferences: preference_* (alert/reminder settings keyed by prayer name,
+    e.g. preference_alert_standard_fajr, preference_reminder_interval_extra_istijaba)
 ```
 
 ### Codebase Organization
@@ -258,7 +261,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 ├── app/                    # App entry points and navigation
 │   ├── index.tsx          # Root component, initialization
 │   ├── _layout.tsx        # App layout wrapper
-│   ├── Navigation.tsx     # Tab navigation (Standard/Extra)
+│   ├── Navigation.tsx     # Pager navigation (Standard/Extra pages)
 │   └── Screen.tsx         # Screen wrapper
 │
 ├── components/            # UI components (organized by feature)
@@ -338,7 +341,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 
 ### Code Quality
 
-- **Testing**: Jest with ts-jest for unit tests (`yarn test`)
+- **Testing**: Jest with babel-jest + @babel/preset-typescript for unit tests (`yarn test`); typechecking is a separate `tsc --noEmit` step
 - **Type Safety**: Full TypeScript coverage with strict mode
 - **Linting**: Biome (lint + format, 120 char lines, 2 spaces, single quotes)
 - **Logging**: Pino logger (no console.log statements)
@@ -386,8 +389,8 @@ See `ai/adr/` for Architecture Decision Records.
 
 ### Prerequisites
 
-- Node.js 16+
-- Expo CLI (v54+)
+- Node.js 20+
+- Expo CLI (v57+)
 - iOS: Xcode 15+ (for iOS simulator/device builds)
 - Android: Android Studio with NDK (for native module builds)
 
@@ -487,6 +490,8 @@ The notification system maintains a **2-day rolling buffer** of scheduled notifi
 - 2 days of notifications scheduled ahead for each enabled prayer
 - 11 prayers total: 6 Standard (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha) + 5 Extra (Midnight, Last Third, Suhoor, Duha, Istijaba)
 - Sequential scheduling queue (operations chained, never dropped)
+- Deterministic identifiers per notification (`athan_<schedule>_<prayer>_<date>`, reminders append `_<intervalMinutes>`) — scheduling an existing ID replaces it natively (Android PendingIntent / iOS UNUserNotificationCenter), making duplicate alarms structurally impossible
+- Per-prayer alert and reminder preferences are stored under name-based keys (`preference_alert_<schedule>_<prayer>`) and migrated automatically from the legacy index-based keys on upgrade
 - Maintains consistency even when app is closed or backgrounded
 - Persists through app restarts and offline usage
 
