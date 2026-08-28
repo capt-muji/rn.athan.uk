@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { COLORS, SIZE, RADIUS, ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS, RADIUS, SIZE } from '@/shared/constants';
 
 interface ToggleProps {
   value: boolean;

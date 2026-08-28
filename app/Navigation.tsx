@@ -4,8 +4,7 @@ import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Screen from '@/app/Screen';
-import { BackgroundGradients, RamadanDecorations } from '@/components/ui';
-import { SettingsButton } from '@/components/ui';
+import { BackgroundGradients, RamadanDecorations, SettingsButton } from '@/components/ui';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';

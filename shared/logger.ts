@@ -1,6 +1,6 @@
 import pino from 'pino';
 
-import { isProd, isPreview, isTest } from '@/shared/config';
+import { isPreview, isProd, isTest } from '@/shared/config';
 
 /** Logs are disabled in prod, preview, and test (unless DEBUG_TESTS=1) */
 const isLoggingEnabled = () => {
@@ -64,4 +64,4 @@ const logger = {
 export default logger;
 
 // Re-exported from config for convenience
-export { isProd, isPreview, isTest };
+export { isPreview, isProd, isTest };
