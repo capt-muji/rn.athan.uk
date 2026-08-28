@@ -77,33 +77,40 @@ export const getPrayerArrays = (scheduleType: ScheduleType) => {
 /**
  * Factory function to create a prayer alert atom for persisting notification preferences
  *
+ * Keys are name-based (not index-based) so preferences survive schedule/data changes
+ * and can never bind to the wrong prayer.
+ *
  * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param prayerName English prayer name (e.g. "Fajr", "Last Third")
  * @returns Jotai atom with MMKV persistence for the alert type
  *
  * @example
- * const fajrAlertAtom = createPrayerAlertAtom(ScheduleType.Standard, 0);
+ * const fajrAlertAtom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
  */
-export const createPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+export const createPrayerAlertAtom = (scheduleType: ScheduleType, prayerName: string) => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const type = isStandard ? 'standard' : 'extra';
 
-  return atomWithStorageNumber(`preference_alert_${type}_${prayerIndex}`, AlertType.Off);
+  return atomWithStorageNumber(`preference_alert_${type}_${prayerName.toLowerCase()}`, AlertType.Off);
 };
 
 /**
  * Array of alert atoms for all standard prayers (Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha)
- * Each atom persists the user's notification preference for that prayer
+ * Each atom persists the user's notification preference for that prayer.
+ * Array positions align with PRAYERS_ENGLISH so index-based lookups keep working.
  */
-export const standardPrayerAlertAtoms = PRAYERS_ENGLISH.map((_, index) =>
-  createPrayerAlertAtom(ScheduleType.Standard, index)
+export const standardPrayerAlertAtoms = PRAYERS_ENGLISH.map((prayerName) =>
+  createPrayerAlertAtom(ScheduleType.Standard, prayerName)
 );
 
 /**
  * Array of alert atoms for all extra prayers (Duha, Istijaba, Midnight, Last Third, Suhoor)
- * Each atom persists the user's notification preference for that prayer
+ * Each atom persists the user's notification preference for that prayer.
+ * Array positions align with EXTRAS_ENGLISH so index-based lookups keep working.
  */
-export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((_, index) => createPrayerAlertAtom(ScheduleType.Extra, index));
+export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((prayerName) =>
+  createPrayerAlertAtom(ScheduleType.Extra, prayerName)
+);
 
 // =============================================================================
 // REMINDER ATOMS
@@ -112,62 +119,108 @@ export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((_, index) => createPray
 /**
  * Factory function to create a reminder alert atom for persisting reminder notification preferences
  *
+ * Keys are name-based (not index-based); see createPrayerAlertAtom.
+ *
  * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param prayerName English prayer name
  * @returns Jotai atom with MMKV persistence for the reminder alert type
  */
-export const createReminderAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+export const createReminderAlertAtom = (scheduleType: ScheduleType, prayerName: string) => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const type = isStandard ? 'standard' : 'extra';
 
-  return atomWithStorageNumber(`preference_reminder_alert_${type}_${prayerIndex}`, AlertType.Off);
+  return atomWithStorageNumber(`preference_reminder_alert_${type}_${prayerName.toLowerCase()}`, AlertType.Off);
 };
 
 /**
  * Factory function to create a reminder interval atom for persisting reminder timing preferences
  *
+ * Keys are name-based (not index-based); see createPrayerAlertAtom.
+ *
  * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param prayerName English prayer name
  * @returns Jotai atom with MMKV persistence for the reminder interval
  */
-export const createReminderIntervalAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+export const createReminderIntervalAtom = (scheduleType: ScheduleType, prayerName: string) => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const type = isStandard ? 'standard' : 'extra';
 
-  return atomWithStorageNumber(`preference_reminder_interval_${type}_${prayerIndex}`, DEFAULT_REMINDER_INTERVAL);
+  return atomWithStorageNumber(
+    `preference_reminder_interval_${type}_${prayerName.toLowerCase()}`,
+    DEFAULT_REMINDER_INTERVAL
+  );
 };
 
 /**
  * Array of reminder alert atoms for all standard prayers
  * Each atom persists the user's reminder notification preference for that prayer
  */
-export const standardReminderAlertAtoms = PRAYERS_ENGLISH.map((_, index) =>
-  createReminderAlertAtom(ScheduleType.Standard, index)
+export const standardReminderAlertAtoms = PRAYERS_ENGLISH.map((prayerName) =>
+  createReminderAlertAtom(ScheduleType.Standard, prayerName)
 );
 
 /**
  * Array of reminder alert atoms for all extra prayers
  * Each atom persists the user's reminder notification preference for that prayer
  */
-export const extraReminderAlertAtoms = EXTRAS_ENGLISH.map((_, index) =>
-  createReminderAlertAtom(ScheduleType.Extra, index)
+export const extraReminderAlertAtoms = EXTRAS_ENGLISH.map((prayerName) =>
+  createReminderAlertAtom(ScheduleType.Extra, prayerName)
 );
 
 /**
  * Array of reminder interval atoms for all standard prayers
  * Each atom persists the user's reminder interval preference for that prayer
  */
-export const standardReminderIntervalAtoms = PRAYERS_ENGLISH.map((_, index) =>
-  createReminderIntervalAtom(ScheduleType.Standard, index)
+export const standardReminderIntervalAtoms = PRAYERS_ENGLISH.map((prayerName) =>
+  createReminderIntervalAtom(ScheduleType.Standard, prayerName)
 );
 
 /**
  * Array of reminder interval atoms for all extra prayers
  * Each atom persists the user's reminder interval preference for that prayer
  */
-export const extraReminderIntervalAtoms = EXTRAS_ENGLISH.map((_, index) =>
-  createReminderIntervalAtom(ScheduleType.Extra, index)
+export const extraReminderIntervalAtoms = EXTRAS_ENGLISH.map((prayerName) =>
+  createReminderIntervalAtom(ScheduleType.Extra, prayerName)
 );
+
+/**
+ * One-time migration: index-keyed alert preference keys -> name-keyed keys
+ *
+ * Alert/reminder preferences were stored as preference_alert_standard_<index> etc.
+ * The index only maps to the intended prayer while data is canonical, so keys are now
+ * preference_alert_standard_<name>. Copies any old index-key value to the name key
+ * (first migration wins) and removes the old key. No-op after the first run; safe to
+ * call on every launch. Must run before any atom reads preferences (called from
+ * handleAppUpgrade).
+ */
+export const migrateIndexKeyedAlertPreferences = (): void => {
+  let migrated = 0;
+
+  const migrate = (oldKey: string, newKey: string) => {
+    const oldValue = Database.database.getString(oldKey);
+    if (oldValue === undefined) return;
+
+    if (Database.database.getString(newKey) === undefined) {
+      Database.database.set(newKey, oldValue);
+      migrated += 1;
+    }
+    Database.database.remove(oldKey);
+  };
+
+  (['standard', 'extra'] as const).forEach((type) => {
+    const prayerNames = type === 'standard' ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+    prayerNames.forEach((prayerName, index) => {
+      const name = prayerName.toLowerCase();
+      migrate(`preference_alert_${type}_${index}`, `preference_alert_${type}_${name}`);
+      migrate(`preference_reminder_alert_${type}_${index}`, `preference_reminder_alert_${type}_${name}`);
+      migrate(`preference_reminder_interval_${type}_${index}`, `preference_reminder_interval_${type}_${name}`);
+    });
+  });
+
+  if (migrated > 0) {
+    logger.info('NOTIFICATION: Migrated index-keyed alert preferences to name keys', { migrated });
+  }
+};
 
 /**
  * Atom storing the user's preferred Athan sound index (0-15)
@@ -368,6 +421,7 @@ async function scheduleNotificationForDate(
   }
 
   const notification = await Device.addOneScheduledNotificationForPrayer(
+    scheduleType,
     englishName,
     arabicName,
     date,
@@ -491,6 +545,7 @@ async function scheduleReminderNotificationForDate(
   }
 
   const notification = await Device.addOneScheduledReminderForPrayer(
+    scheduleType,
     englishName,
     arabicName,
     date,
