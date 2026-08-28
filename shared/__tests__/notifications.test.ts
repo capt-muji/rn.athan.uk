@@ -1,3 +1,5 @@
+import { formatInTimeZone } from 'date-fns-tz';
+
 import {
   createDefaultAndroidChannel,
   createReminderAndroidChannel,
@@ -13,6 +15,8 @@ import {
   isPrayerTimeInFuture,
 } from '../notifications';
 import { AlertType } from '../types';
+
+const londonDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, 'Europe/London', 'yyyy-MM-dd');
 
 // =============================================================================
 // genNextXDays TESTS
@@ -41,8 +45,7 @@ describe('genNextXDays', () => {
 
   it('starts from today', () => {
     const days = genNextXDays(1);
-    const today = new Date().toISOString().split('T')[0];
-    expect(days[0]).toBe(today);
+    expect(days[0]).toBe(londonDate());
   });
 
   it('generates consecutive days', () => {
