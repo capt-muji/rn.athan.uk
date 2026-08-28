@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@expo/ui": "~57.0.14",
+    "@gorhom/bottom-sheet": "5.2.14",
     "date-fns": "4.4.0",
     "date-fns-tz": "3.2.0",
     "expo": "~57.0.18",
