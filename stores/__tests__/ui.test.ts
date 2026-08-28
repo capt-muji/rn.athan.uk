@@ -53,7 +53,8 @@ jest.mock('../storage', () => ({
 
 import { ScheduleType } from '@/shared/types';
 
-import {
+// Require (not import) after mocks - babel hoists ESM imports above the mock declarations
+const {
   alertSheetModalAtom,
   alertSheetStateAtom,
   bottomSheetModalAtom,
@@ -91,7 +92,7 @@ import {
   showSettingsSheet,
   showSheet,
   showTimePassedAtom,
-} from '../ui';
+} = require('../ui');
 
 // =============================================================================
 // SETUP
