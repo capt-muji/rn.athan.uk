@@ -5,6 +5,7 @@ import { InteractionManager, StyleSheet, View } from 'react-native';
 import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { SCREEN, SPACING } from '@/shared/constants';
+import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { countdownBarShownAtom, getMeasurementsList, setMeasurementsList } from '@/stores/ui';
 
@@ -26,6 +27,10 @@ export default function List({ type }: Props) {
   // Filter prayers to current displayDate
   // This automatically handles Friday Istijaba logic via createPrayerSequence
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
+
+  // Extra page renders in canonical order (Istijaba last on Fridays); each row keeps
+  // its sequence index so Prayer/overlay/countdown semantics are unchanged
+  const displayOrder = canonicalDisplayOrder(todayPrayers, type);
 
   const measureList = () => {
     if (!listRef.current || !isStandard) return;
@@ -66,8 +71,8 @@ export default function List({ type }: Props) {
   return (
     <View ref={listRef} onLayout={handleLayout} style={[styles.container]}>
       <ActiveBackground type={type} />
-      {todayPrayers.map((_, index) => (
-        <Prayer key={index} index={index} type={type} />
+      {displayOrder.map((prayerIndex) => (
+        <Prayer key={prayerIndex} index={prayerIndex} type={type} />
       ))}
     </View>
   );

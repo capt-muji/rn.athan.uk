@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated';
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { ANIMATION, COLORS, ISTIJABA_INDEX, STYLES, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
 import { overlayAtom, setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
@@ -62,7 +62,10 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    if (!Schedule.isStandard && index === ISTIJABA_INDEX && Prayer.isPassed) return;
+    // Name-based check: the row's sequence index shifts with display order, so an
+    // index comparison cannot identify Istijaba (the old ISTIJABA_INDEX check was
+    // dead since the list became chronological)
+    if (!Schedule.isStandard && Prayer.english === 'Istijaba' && Prayer.isPassed) return;
 
     setSelectedPrayerIndex(type, index);
     toggleOverlay();
