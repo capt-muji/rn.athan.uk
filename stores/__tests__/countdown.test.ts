@@ -8,6 +8,9 @@
 
 import { createStore, atom as mockAtom } from 'jotai';
 
+import * as TimeUtils from '@/shared/time';
+import { refreshSequence } from '@/stores/schedule';
+
 // =============================================================================
 // MOCK SETUP
 // =============================================================================
@@ -49,6 +52,7 @@ const {
   getCountdownAtom,
   overlayCountdownAtom,
   standardCountdownAtom,
+  startCountdowns,
 }: typeof import('../countdown') = require('../countdown');
 
 // =============================================================================
@@ -134,5 +138,37 @@ describe('countdown atom behavior', () => {
 
     expect(store1.get(standardCountdownAtom).timeLeft).toBe(100);
     expect(store2.get(standardCountdownAtom).timeLeft).toBe(200);
+  });
+});
+
+// =============================================================================
+// SEQUENCE COUNTDOWN TRANSITION TESTS
+// =============================================================================
+
+describe('sequence countdown transition (clock-based)', () => {
+  it('refreshes the sequence when the clock reaches the prayer time, not on a decremented zero', () => {
+    jest.useFakeTimers();
+
+    // Prayer at 06:15:00; the clock starts 2s before it and advances one tick at a time.
+    // Both Standard and Extra tickers read the clock (2 inits + 2 ticks per advance).
+    const clockAt = (time: string) => (TimeUtils.createLondonDate as jest.Mock).mockReturnValueOnce(new Date(time));
+    clockAt('2026-01-20T06:14:58'); // standard initial countdown state
+    clockAt('2026-01-20T06:14:58'); // extra initial countdown state
+    clockAt('2026-01-20T06:14:59'); // tick 1: standard
+    clockAt('2026-01-20T06:14:59'); // tick 1: extra
+    (TimeUtils.createLondonDate as jest.Mock).mockReturnValue(new Date('2026-01-20T06:15:00')); // tick 2 onward
+    (TimeUtils.getSecondsBetween as jest.Mock).mockReturnValue(2);
+
+    startCountdowns();
+
+    jest.advanceTimersByTime(1000); // tick 1: one second left, no transition yet
+    expect(refreshSequence).not.toHaveBeenCalled();
+
+    jest.advanceTimersByTime(1000); // tick 2: the clock has reached the prayer time
+    expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Standard);
+    expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Extra);
+
+    jest.clearAllTimers();
+    jest.useRealTimers();
   });
 });
