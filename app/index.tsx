@@ -6,7 +6,7 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import Navigation from '@/app/Navigation';
 import { ModalUpdate } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
-import { Error } from '@/components/ui';
+import { ErrorScreen } from '@/components/ui';
 import { initializeListeners } from '@/device/listeners';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
@@ -58,7 +58,7 @@ export default function Index() {
       </View>
     );
   }
-  if (state === 'hasError') return <Error />;
+  if (state === 'hasError') return <ErrorScreen />;
 
   return (
     <>

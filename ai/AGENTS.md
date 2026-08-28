@@ -46,6 +46,7 @@
 | Notifications   | Expo Notifications      | ~57.0.15        |
 | Dates           | date-fns / date-fns-tz  | 4.4.0 / 3.2.0   |
 | Logging         | Pino                    | 9.14.0          |
+| Lint + Format   | Biome                   | 2.5.11          |
 | Package Manager | Yarn                    | 1.x             |
 
 ## 3. Repo Map & Entry Points
@@ -191,7 +192,7 @@ Data Sync Flow:
 ### Logging (Pino)
 
 - Import from `shared/logger.ts`
-- Never use `console.log` (ESLint forbids it)
+- Never use `console.log` (Biome `noConsole` forbids it)
 - Use structured logging: `logger.info({ context }, 'message')`
 
 ### Animation (Reanimated 4)
@@ -229,9 +230,7 @@ import { Prayer } from '@/components/Prayer';
 - Use Jest with ts-jest for unit tests
 - Tests in `__tests__/` subdirectories
 - Run: `yarn test` or `yarn test:watch`
-- Mock RN modules in `shared/__mocks__/`
-
-### Component Communication Patterns
+- Mock RN modules in `shared/__mocks__/`### Component Communication Patterns
 
 **forwardRef + useImperativeHandle (Child exposes state to parent):**
 
@@ -405,22 +404,22 @@ yarn ios               # Build and run on iOS simulator
 yarn android           # Build and run on Android emulator
 yarn reset             # Full clean: rm builds, reinstall, start fresh
 yarn clean             # Clear cache and node_modules
-yarn validate          # Run typecheck + lint + format check + tests (use before commits)
-yarn format            # Format all files with Prettier
-yarn format:check      # Check formatting without changing files
+yarn validate          # Run typecheck + biome (lint/format) + tests (use before commits)
+yarn format            # Biome: format + safe lint fixes + organize imports
+yarn format:check      # Check formatting/lint without changing files
 ```
 
 ### File-Scoped (Fast)
 
 ```bash
-eslint src/foo.ts                    # Lint single file
-prettier --write src/foo.ts          # Format single file
-tsc --noEmit                         # Typecheck project
+npx biome check src/foo.ts            # Lint + format-check single file
+npx biome check --write src/foo.ts    # Fix single file
+npx tsc --noEmit                      # Typecheck project
 ```
 
 ### Pre-commit (Automatic)
 
-- Husky + lint-staged runs Prettier, ESLint, and tests on staged files
+- Husky + lint-staged runs Biome and tests on staged files
 
 ### AI Session Prompts
 
@@ -515,13 +514,11 @@ Read ai/prompts/document.md
   const result = setHours(dateWithMinutes, hours);
   ```
 
-### Formatting (Prettier)
+### Formatting (Biome)
 
-- Print width: 120
-- Tab width: 2 spaces
-- Single quotes
-- Semicolons required
-- Trailing commas (es5)
+- Config: `biome.json` (line width: 120, 2 spaces, single quotes, es5 trailing commas)
+- Import order enforced by `organizeImports`: external → `@/` internal → relative, blank line between groups
+- `yarn format` applies formatting + safe lint fixes + import organization
 
 ## 9. Agentic Protocol (Loop Discipline)
 

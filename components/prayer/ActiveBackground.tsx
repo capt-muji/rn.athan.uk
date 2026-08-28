@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, type ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { COLORS, STYLES, RADIUS, SHADOW } from '@/shared/constants';
+import { COLORS, RADIUS, SHADOW, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 
 interface Props {

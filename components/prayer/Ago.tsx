@@ -2,16 +2,16 @@ import { useAtomValue } from 'jotai';
 import { useEffect, useRef } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  interpolateColor,
   Easing,
+  interpolateColor,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
 } from 'react-native-reanimated';
 
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
-import { TEXT, COLORS, SPACING, RADIUS, ANIMATION } from '@/shared/constants';
-import { ScheduleType } from '@/shared/types';
+import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import type { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/overlay';
 
 interface Props {

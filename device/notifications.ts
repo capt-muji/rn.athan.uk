@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
-import { AlertType, ReminderInterval, ScheduleType } from '@/shared/types';
+import { AlertType, type ReminderInterval, type ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
 export const updateAndroidChannel = async (sound: number) => {

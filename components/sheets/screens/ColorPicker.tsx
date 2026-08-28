@@ -1,25 +1,25 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
-import { useState, useCallback } from 'react';
-import { StyleSheet, Text, View, Pressable, Modal } from 'react-native';
+import { useCallback, useState } from 'react';
+import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import ColorPicker, { HueSlider, Panel1, Swatches, type ColorFormatsObject } from 'reanimated-color-picker';
+import ColorPicker, { type ColorFormatsObject, HueSlider, Panel1, Swatches } from 'reanimated-color-picker';
 
 import CheckIcon from '@/assets/icons/svg/check.svg';
 import CloseIcon from '@/assets/icons/svg/close.svg';
 import { CountdownBar } from '@/components/countdown';
 import {
-  TEXT,
+  COLOR_PICKER_DEFAULT,
+  COLOR_PICKER_SWATCHES,
+  COLOR_PICKER_SWATCHES_2,
   COLORS,
-  SPACING,
+  ELEVATION,
+  HIT_SLOP,
   RADIUS,
   SHADOW,
   SIZE,
-  ELEVATION,
-  HIT_SLOP,
-  COLOR_PICKER_SWATCHES,
-  COLOR_PICKER_SWATCHES_2,
-  COLOR_PICKER_DEFAULT,
+  SPACING,
+  TEXT,
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
@@ -115,7 +115,7 @@ export default function ColorPickerSettings() {
         </View>
       </Pressable>
 
-      <Modal visible={showPicker} transparent animationType="slide" onRequestClose={handleDismiss}>
+      <Modal visible={showPicker} transparent animationType='slide' onRequestClose={handleDismiss}>
         <View style={styles.modalOverlay}>
           <View style={[styles.modalContent, { paddingBottom: bottom + 50 }]}>
             <View style={styles.modalHeader}>

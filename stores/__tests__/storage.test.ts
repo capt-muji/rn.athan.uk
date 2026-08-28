@@ -30,7 +30,7 @@ jest.mock('jotai/utils', () => ({
 }));
 
 // Import after mocks
-import { atomWithStorageNumber, atomWithStorageBoolean, atomWithStorageString } from '../storage';
+import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '../storage';
 
 // =============================================================================
 // RESET MOCKS

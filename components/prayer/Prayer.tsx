@@ -1,20 +1,20 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo } from 'react';
-import { StyleSheet, Pressable } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
-
-import Alert from './Alert';
-import Time from './Time';
 
 import { useAnimationColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { TEXT, COLORS, STYLES, ISTIJABA_INDEX, ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS, ISTIJABA_INDEX, STYLES, TEXT } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
-import { ScheduleType } from '@/shared/types';
+import type { ScheduleType } from '@/shared/types';
 import { overlayAtom, setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
 import { refreshUIAtom, showArabicNamesAtom } from '@/stores/ui';
+
+import Alert from './Alert';
+import Time from './Time';
 
 interface Props {
   type: ScheduleType;

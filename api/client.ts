@@ -1,9 +1,9 @@
 import { API_CONFIG } from '@/api/config';
 import { MOCK_DATA_SIMPLE } from '@/mocks/simple';
-import logger, { isProd, isPreview } from '@/shared/logger';
+import logger, { isPreview, isProd } from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
+import type { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
 
 // Constructs the API URL with required parameters:
 // - format (JSON/XML)

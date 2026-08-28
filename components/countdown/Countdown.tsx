@@ -2,15 +2,15 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import Bar from './Bar';
-
 import { useCountdown } from '@/hooks/useCountdown';
-import { COLORS, STYLES, TEXT, SPACING } from '@/shared/constants';
+import { COLORS, SPACING, STYLES, TEXT } from '@/shared/constants';
 import { formatTime } from '@/shared/time';
-import { ScheduleType } from '@/shared/types';
+import type { ScheduleType } from '@/shared/types';
 import { overlayCountdownAtom } from '@/stores/countdown';
 import { overlayAtom } from '@/stores/overlay';
 import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
+
+import Bar from './Bar';
 
 interface Props {
   type: ScheduleType;

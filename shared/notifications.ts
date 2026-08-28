@@ -1,10 +1,10 @@
-import { format, addDays, isBefore, subMinutes } from 'date-fns';
+import { addDays, format, isBefore, subMinutes } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import { AlertType, ReminderInterval } from '@/shared/types';
+import { AlertType, type ReminderInterval } from '@/shared/types';
 
 export interface ScheduledNotification {
   id: string;

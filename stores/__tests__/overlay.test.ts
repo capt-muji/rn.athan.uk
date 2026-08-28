@@ -53,7 +53,7 @@ jest.mock('@/stores/atoms/overlay', () => ({
 
 // Import after mocks
 // eslint-disable-next-line import/order
-import { toggleOverlay, setSelectedPrayerIndex } from '../overlay';
+import { setSelectedPrayerIndex, toggleOverlay } from '../overlay';
 
 // =============================================================================
 // TEST SETUP
