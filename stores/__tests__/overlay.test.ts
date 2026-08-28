@@ -26,8 +26,8 @@ const mockStoreGet = jest.fn();
 const mockStoreSet = jest.fn();
 
 // Track which atom is being accessed
-const overlayAtomSymbol = Symbol('overlayAtom');
-const countdownAtomSymbol = Symbol('countdownAtom');
+const mockOverlayAtomSymbol = Symbol('overlayAtom');
+const mockCountdownAtomSymbol = Symbol('countdownAtom');
 
 jest.mock('jotai/vanilla', () => ({
   getDefaultStore: () => ({
@@ -44,16 +44,15 @@ jest.mock('@/stores/schedule', () => ({
 const mockStartCountdownOverlay = jest.fn();
 jest.mock('@/stores/countdown', () => ({
   startCountdownOverlay: () => mockStartCountdownOverlay(),
-  getCountdownAtom: () => countdownAtomSymbol,
+  getCountdownAtom: () => mockCountdownAtomSymbol,
 }));
 
 jest.mock('@/stores/atoms/overlay', () => ({
-  overlayAtom: overlayAtomSymbol,
+  overlayAtom: mockOverlayAtomSymbol,
 }));
 
-// Import after mocks
-// eslint-disable-next-line import/order
-import { setSelectedPrayerIndex, toggleOverlay } from '../overlay';
+// Require (not import) after mocks - babel hoists ESM imports above the mock declarations
+const { setSelectedPrayerIndex, toggleOverlay } = require('../overlay');
 
 // =============================================================================
 // TEST SETUP
@@ -72,10 +71,10 @@ beforeEach(() => {
 
   // Smart mock that returns different values based on atom
   mockStoreGet.mockImplementation((atom: symbol) => {
-    if (atom === overlayAtomSymbol) {
+    if (atom === mockOverlayAtomSymbol) {
       return { ...mockOverlayState };
     }
-    if (atom === countdownAtomSymbol) {
+    if (atom === mockCountdownAtomSymbol) {
       return { ...mockCountdownState };
     }
     return {};
@@ -96,7 +95,7 @@ describe('toggleOverlay', () => {
 
       toggleOverlay();
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ isOn: true }));
+      expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
     });
 
     it('closes overlay when currently open', () => {
@@ -104,7 +103,7 @@ describe('toggleOverlay', () => {
 
       toggleOverlay();
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ isOn: false }));
+      expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: false }));
     });
   });
 
@@ -115,7 +114,7 @@ describe('toggleOverlay', () => {
 
       toggleOverlay(true);
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ isOn: true }));
+      expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
     });
 
     it('forces overlay closed when force=false', () => {
@@ -123,7 +122,7 @@ describe('toggleOverlay', () => {
 
       toggleOverlay(false);
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ isOn: false }));
+      expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: false }));
     });
 
     it('keeps overlay open when force=true and already open', () => {
@@ -132,7 +131,7 @@ describe('toggleOverlay', () => {
 
       toggleOverlay(true);
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ isOn: true }));
+      expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
     });
   });
 
@@ -170,7 +169,7 @@ describe('toggleOverlay', () => {
 
       toggleOverlay(false);
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ isOn: false }));
+      expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: false }));
     });
   });
 
@@ -181,7 +180,7 @@ describe('toggleOverlay', () => {
 
       toggleOverlay(true);
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ isOn: true }));
+      expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
     });
   });
 });
@@ -197,7 +196,10 @@ describe('setSelectedPrayerIndex', () => {
 
       setSelectedPrayerIndex(ScheduleType.Standard, 3);
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ selectedPrayerIndex: 3 }));
+      expect(mockStoreSet).toHaveBeenCalledWith(
+        mockOverlayAtomSymbol,
+        expect.objectContaining({ selectedPrayerIndex: 3 })
+      );
     });
 
     it('updates schedule type', () => {
@@ -206,7 +208,7 @@ describe('setSelectedPrayerIndex', () => {
       setSelectedPrayerIndex(ScheduleType.Extra, 1);
 
       expect(mockStoreSet).toHaveBeenCalledWith(
-        overlayAtomSymbol,
+        mockOverlayAtomSymbol,
         expect.objectContaining({ scheduleType: ScheduleType.Extra })
       );
     });
@@ -246,7 +248,10 @@ describe('setSelectedPrayerIndex', () => {
 
       setSelectedPrayerIndex(ScheduleType.Standard, 5);
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ selectedPrayerIndex: 5 }));
+      expect(mockStoreSet).toHaveBeenCalledWith(
+        mockOverlayAtomSymbol,
+        expect.objectContaining({ selectedPrayerIndex: 5 })
+      );
     });
   });
 
@@ -256,7 +261,10 @@ describe('setSelectedPrayerIndex', () => {
 
       setSelectedPrayerIndex(ScheduleType.Standard, 0);
 
-      expect(mockStoreSet).toHaveBeenCalledWith(overlayAtomSymbol, expect.objectContaining({ selectedPrayerIndex: 0 }));
+      expect(mockStoreSet).toHaveBeenCalledWith(
+        mockOverlayAtomSymbol,
+        expect.objectContaining({ selectedPrayerIndex: 0 })
+      );
     });
 
     it('preserves other overlay state properties', () => {
@@ -270,7 +278,7 @@ describe('setSelectedPrayerIndex', () => {
       setSelectedPrayerIndex(ScheduleType.Extra, 4);
 
       expect(mockStoreSet).toHaveBeenCalledWith(
-        overlayAtomSymbol,
+        mockOverlayAtomSymbol,
         expect.objectContaining({
           isOn: true,
           selectedPrayerIndex: 4,

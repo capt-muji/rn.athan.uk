@@ -29,8 +29,8 @@ jest.mock('jotai/utils', () => ({
   atomWithStorage: (...args: unknown[]) => mockAtomWithStorage(...args),
 }));
 
-// Import after mocks
-import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '../storage';
+// Require (not import) after mocks - babel hoists ESM imports above the mock declarations
+const { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } = require('../storage');
 
 // =============================================================================
 // RESET MOCKS
