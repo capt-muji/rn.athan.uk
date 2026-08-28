@@ -447,6 +447,7 @@ Read ai/prompts/document.md
 
 - **Skills**: `.agents/skills/` — 24 official Expo skills (`expo-*`, `eas-*`). Auto-loaded natively by opencode; `.agents/skills/` is also the cross-harness standard (Codex, Cursor, Gemini CLI, amp, cline). Load via the skill tool when a task matches (e.g., `expo-upgrade` for SDK upgrades).
 - **Expo MCP**: `https://mcp.expo.dev/mcp` (remote) — configured in `opencode.json`. If switching harnesses, add this endpoint to the new harness's MCP config.
+- **Mobile MCP**: `@mobilenext/mobile-mcp` (local, via npx) — configured in `opencode.json`. Controls iOS Simulator / Android emulator: launch app, tap, swipe, list UI elements, screenshot, read crash reports. Requires a booted simulator (`xcrun simctl boot "iPhone 16"`) or running emulator. Use for post-change smoke testing. For ANIMATION verification (Reanimated): record video (`mobile_start_screen_recording`/`mobile_stop_screen_recording`, or `xcrun simctl io booted recordVideo out.mp4`), extract frames with `ffmpeg -i out.mp4 -vf fps=8 frames/f_%03d.png`, then read frames as images — opencode cannot send video files directly (text+image attachments only).
 - **Expo docs**: docs-mcp-server has the project's current Expo SDK version indexed (library: `expo`).
 
 ## 7. Boundaries & Permissions (Three-Tier)
