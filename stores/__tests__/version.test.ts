@@ -47,6 +47,14 @@ jest.mock('@/shared/config', () => ({
   isTest: () => true,
 }));
 
+// Mock the alert-preference migration (version.ts must call it, but its storage
+// interactions are covered by stores/__tests__/notifications.test.ts)
+const mockMigrateIndexKeyedAlertPreferences = jest.fn();
+
+jest.mock('@/stores/notifications', () => ({
+  migrateIndexKeyedAlertPreferences: () => mockMigrateIndexKeyedAlertPreferences(),
+}));
+
 // Import after mocks - version.ts imports come last since they depend on mocks
 // eslint-disable-next-line import/order
 import {
