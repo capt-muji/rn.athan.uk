@@ -23,6 +23,7 @@ import {
   PRAYERS_ENGLISH,
 } from '@/shared/constants';
 import { AlertType, ScheduleType } from '@/shared/types';
+import * as Database from '@/stores/database';
 import {
   createPrayerAlertAtom,
   createReminderAlertAtom,
@@ -37,6 +38,7 @@ import {
   getReminderAlertType,
   getReminderIntervalAtom,
   lastNotificationScheduleAtom,
+  migrateIndexKeyedAlertPreferences,
   registerBackgroundTask,
   rescheduleAllNotificationsFromBackground,
   setPrayerAlertType,
@@ -132,35 +134,83 @@ describe('getPrayerArrays', () => {
 
 describe('createPrayerAlertAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createPrayerAlertAtom(ScheduleType.Standard, 0);
+    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createPrayerAlertAtom(ScheduleType.Extra, 0);
+    const atom = createPrayerAlertAtom(ScheduleType.Extra, 'Duha');
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of 0 (AlertType.Off)', () => {
     const store = createStore();
-    const atom = createPrayerAlertAtom(ScheduleType.Standard, 0);
+    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
     const value = store.get(atom);
     expect(value).toBe(0); // AlertType.Off
   });
 
+  it('persists under a name-based storage key', () => {
+    const store = createStore();
+    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
+    store.set(atom, AlertType.Sound);
+
+    expect(Database.database.getString('preference_alert_standard_fajr')).toBe('2');
+  });
+
   it('creates different atoms for different prayers', () => {
-    const atom1 = createPrayerAlertAtom(ScheduleType.Standard, 0);
-    const atom2 = createPrayerAlertAtom(ScheduleType.Standard, 1);
+    const atom1 = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom2 = createPrayerAlertAtom(ScheduleType.Standard, 'Asr');
 
     // They should be different atom instances
     expect(atom1).not.toBe(atom2);
   });
 
   it('creates different atoms for different schedule types', () => {
-    const standardAtom = createPrayerAlertAtom(ScheduleType.Standard, 0);
-    const extraAtom = createPrayerAlertAtom(ScheduleType.Extra, 0);
+    const standardAtom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
+    const extraAtom = createPrayerAlertAtom(ScheduleType.Extra, 'Fajr');
 
     expect(standardAtom).not.toBe(extraAtom);
+  });
+});
+
+// =============================================================================
+// migrateIndexKeyedAlertPreferences TESTS
+// =============================================================================
+
+describe('migrateIndexKeyedAlertPreferences', () => {
+  it('copies index-keyed alert values to name keys and removes the old keys', () => {
+    Database.database.set('preference_alert_standard_0', '2'); // Fajr = Sound
+    Database.database.set('preference_reminder_alert_extra_4', '1'); // Istijaba reminder = Silent
+    Database.database.set('preference_reminder_interval_standard_2', '20'); // Dhuhr interval
+
+    migrateIndexKeyedAlertPreferences();
+
+    expect(Database.database.getString('preference_alert_standard_fajr')).toBe('2');
+    expect(Database.database.getString('preference_reminder_alert_extra_istijaba')).toBe('1');
+    expect(Database.database.getString('preference_reminder_interval_standard_dhuhr')).toBe('20');
+
+    expect(Database.database.contains('preference_alert_standard_0')).toBe(false);
+    expect(Database.database.contains('preference_reminder_alert_extra_4')).toBe(false);
+    expect(Database.database.contains('preference_reminder_interval_standard_2')).toBe(false);
+  });
+
+  it('keeps the name-keyed value when both old and new keys exist', () => {
+    Database.database.set('preference_alert_standard_0', '1');
+    Database.database.set('preference_alert_standard_fajr', '2');
+
+    migrateIndexKeyedAlertPreferences();
+
+    expect(Database.database.getString('preference_alert_standard_fajr')).toBe('2');
+    expect(Database.database.contains('preference_alert_standard_0')).toBe(false);
+  });
+
+  it('is a no-op when no index-keyed keys remain', () => {
+    migrateIndexKeyedAlertPreferences();
+    const keysAfterFirstRun = Database.database.getAllKeys();
+
+    migrateIndexKeyedAlertPreferences();
+    expect(Database.database.getAllKeys()).toEqual(keysAfterFirstRun);
   });
 });
 
@@ -364,43 +414,43 @@ describe('lastNotificationScheduleAtom', () => {
 
 describe('createReminderAlertAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createReminderAlertAtom(ScheduleType.Standard, 0);
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createReminderAlertAtom(ScheduleType.Extra, 0);
+    const atom = createReminderAlertAtom(ScheduleType.Extra, 'Duha');
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of 0 (AlertType.Off)', () => {
     const store = createStore();
-    const atom = createReminderAlertAtom(ScheduleType.Standard, 0);
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
     const value = store.get(atom);
     expect(value).toBe(0); // AlertType.Off
   });
 
   it('creates different atoms for different prayers', () => {
-    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 0);
-    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 1);
+    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 'Asr');
     expect(atom1).not.toBe(atom2);
   });
 });
 
 describe('createReminderIntervalAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createReminderIntervalAtom(ScheduleType.Standard, 0);
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr');
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createReminderIntervalAtom(ScheduleType.Extra, 0);
+    const atom = createReminderIntervalAtom(ScheduleType.Extra, 'Duha');
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of DEFAULT_REMINDER_INTERVAL', () => {
     const store = createStore();
-    const atom = createReminderIntervalAtom(ScheduleType.Standard, 0);
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr');
     const value = store.get(atom);
     expect(value).toBe(DEFAULT_REMINDER_INTERVAL);
   });

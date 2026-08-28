@@ -159,9 +159,9 @@ export interface PageCoordinates {
  * - Plays selected Athan sound from bottom sheet
  * - Default for important prayers (Fajr, Dhuhr, etc.)
  *
- * Stored per-prayer in MMKV with key format:
- * - preference_alert_standard_{index} (e.g., preference_alert_standard_0 for Fajr)
- * - preference_alert_extra_{index}
+ * Stored per-prayer in MMKV with name-based keys (index keys were migrated):
+ * - preference_alert_standard_{prayer_name} (e.g., preference_alert_standard_fajr)
+ * - preference_alert_extra_{prayer_name}
  *
  * Values are stored as integers (0, 1, 2) to save space.
  */
