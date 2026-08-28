@@ -2,7 +2,7 @@ import { AppState, type AppStateStatus } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 
 import { initializeNotifications } from '@/shared/notifications';
-import { refreshNotifications } from '@/stores/notifications';
+import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { sync } from '@/stores/sync';
 import { setRefreshUI } from '@/stores/ui';
 
@@ -23,7 +23,7 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
         SystemBars.setStyle('light');
         SystemBars.setHidden({ navigationBar: false });
 
-        initializeNotifications(checkPermissions, refreshNotifications);
+        initializeNotifications(checkPermissions, refreshNotifications, registerBackgroundTask);
       }
 
       // Only run sync when coming from background

@@ -1,3 +1,5 @@
+import { formatInTimeZone } from 'date-fns-tz';
+
 import {
   calculateBelongsToDate,
   canonicalDisplayOrder,
@@ -9,6 +11,8 @@ import {
 } from '../prayer';
 import { createPrayerDatetime } from '../time';
 import { type IApiResponse, type Prayer, ScheduleType } from '../types';
+
+const londonDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, 'Europe/London', 'yyyy-MM-dd');
 
 // =============================================================================
 // calculateBelongsToDate TESTS
@@ -344,9 +348,9 @@ describe('filterApiData', () => {
   };
 
   it('keeps today and future dates', () => {
-    const today = new Date().toISOString().split('T')[0];
-    const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
-    const nextWeek = new Date(Date.now() + 7 * 86400000).toISOString().split('T')[0];
+    const today = londonDate();
+    const tomorrow = londonDate(86400000);
+    const nextWeek = londonDate(7 * 86400000);
 
     const input = createMockApiResponse([today, tomorrow, nextWeek]);
     const result = filterApiData(input);
@@ -358,8 +362,8 @@ describe('filterApiData', () => {
   });
 
   it('keeps yesterday (needed for progress bar)', () => {
-    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-    const today = new Date().toISOString().split('T')[0];
+    const yesterday = londonDate(-86400000);
+    const today = londonDate();
 
     const input = createMockApiResponse([yesterday, today]);
     const result = filterApiData(input);
@@ -369,9 +373,9 @@ describe('filterApiData', () => {
   });
 
   it('filters out dates older than yesterday', () => {
-    const twoDaysAgo = new Date(Date.now() - 2 * 86400000).toISOString().split('T')[0];
-    const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().split('T')[0];
-    const today = new Date().toISOString().split('T')[0];
+    const twoDaysAgo = londonDate(-2 * 86400000);
+    const weekAgo = londonDate(-7 * 86400000);
+    const today = londonDate();
 
     const input = createMockApiResponse([weekAgo, twoDaysAgo, today]);
     const result = filterApiData(input);
