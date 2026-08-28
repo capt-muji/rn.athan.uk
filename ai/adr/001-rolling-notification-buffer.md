@@ -168,10 +168,11 @@ Each prayer has two settings:
 - iOS limit: 64 notifications
 
 **Window size calculation:**
-| Scenario | Per day | 6-day total | 3-day total | 2-day total |
-|----------|---------|-------------|-------------|-------------|
-| No reminders | ~10 | 60 ✓ | 30 ✓ | 20 ✓ |
-| All reminders | ~20 | 120 ✗ | 60 ✓ | 40 ✓ |
+
+| Scenario      | Per day | 6-day total | 3-day total | 2-day total |
+| ------------- | ------- | ----------- | ----------- | ----------- |
+| No reminders  | ~10     | 60 ✓        | 30 ✓        | 20 ✓        |
+| All reminders | ~20     | 120 ✗       | 60 ✓        | 40 ✓        |
 
 ### Required Change
 
