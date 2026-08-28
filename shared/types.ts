@@ -132,6 +132,12 @@ export enum ScheduleType {
   Extra = 'extra',
 }
 
+/** Imperative controls exposed by bottom sheets (held in stores for present/dismiss) */
+export interface SheetControls {
+  present: () => void;
+  dismiss: () => void;
+}
+
 export interface PageCoordinates {
   pageX: number;
   pageY: number;

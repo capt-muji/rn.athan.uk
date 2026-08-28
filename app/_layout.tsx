@@ -2,7 +2,6 @@
 // before any other code runs. This allows the OS to find the task even when waking a killed app.
 import '@/device/tasks';
 
-import { BottomSheetModalProvider } from '@expo/ui/community/bottom-sheet';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { LogBox } from 'react-native';
@@ -39,12 +38,10 @@ export default function Layout() {
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
       <SystemBars style='light' hidden={{ navigationBar: false }} />
       <InitialWidthMeasurement />
-      <BottomSheetModalProvider>
-        <Slot />
-        <BottomSheetSound />
-        <BottomSheetSettings />
-        <BottomSheetAlert />
-      </BottomSheetModalProvider>
+      <Slot />
+      <BottomSheetSound />
+      <BottomSheetSettings />
+      <BottomSheetAlert />
     </GestureHandlerRootView>
   );
 }
