@@ -8,7 +8,7 @@ export default function BackgroundGradients() {
     <LinearGradient
       colors={[COLORS.gradient.screen.start, COLORS.gradient.screen.end]}
       locations={[0, 1]}
-      style={StyleSheet.absoluteFillObject}
+      style={StyleSheet.absoluteFill}
       start={{ x: 0, y: 0.25 }}
       end={{ x: 1, y: 1 }}
     />
