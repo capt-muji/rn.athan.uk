@@ -1,7 +1,6 @@
-import type { BottomSheetModal } from '@expo/ui/community/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
-import { type PageCoordinates, ScheduleType } from '@/shared/types';
+import { type PageCoordinates, ScheduleType, type SheetControls } from '@/shared/types';
 import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '@/stores/storage';
 
 const store = getDefaultStore();
@@ -23,7 +22,7 @@ interface AlertSheetState {
 export const alertSheetStateAtom = atom<AlertSheetState | null>(null);
 
 /** Reference to the alert bottom sheet modal */
-export const alertSheetModalAtom = atom<BottomSheetModal | null>(null);
+export const alertSheetModalAtom = atom<SheetControls | null>(null);
 
 // =============================================================================
 // ATOMS - Ephemeral State
@@ -42,10 +41,10 @@ export const popupUpdateEnabledAtom = atom(false);
 export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last_check', 0);
 
 /** Reference to the sound selection bottom sheet modal */
-export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
+export const bottomSheetModalAtom = atom<SheetControls | null>(null);
 
 /** Reference to the settings bottom sheet modal */
-export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
+export const settingsSheetModalAtom = atom<SheetControls | null>(null);
 
 // =============================================================================
 // ATOMS - Layout Measurements
@@ -105,13 +104,13 @@ export const showSettingsSheet = () => store.get(settingsSheetModalAtom)?.presen
 export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
 
 /** Sets the sound selection bottom sheet modal reference */
-export const setBottomSheetModal = (modal: BottomSheetModal | null) => store.set(bottomSheetModalAtom, modal);
+export const setBottomSheetModal = (modal: SheetControls | null) => store.set(bottomSheetModalAtom, modal);
 
 /** Sets the settings bottom sheet modal reference */
-export const setSettingsSheetModal = (modal: BottomSheetModal | null) => store.set(settingsSheetModalAtom, modal);
+export const setSettingsSheetModal = (modal: SheetControls | null) => store.set(settingsSheetModalAtom, modal);
 
 /** Sets the alert bottom sheet modal reference */
-export const setAlertSheetModal = (modal: BottomSheetModal | null) => store.set(alertSheetModalAtom, modal);
+export const setAlertSheetModal = (modal: SheetControls | null) => store.set(alertSheetModalAtom, modal);
 
 /** Shows the alert bottom sheet for a specific prayer */
 export const showAlertSheet = (state: AlertSheetState) => {
