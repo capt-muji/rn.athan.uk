@@ -1,3 +1,5 @@
+import { formatInTimeZone } from 'date-fns-tz';
+
 import {
   adjustTime,
   createLondonDate,
@@ -18,6 +20,8 @@ import {
   isJanuaryFirst,
   isRamadan,
 } from '../time';
+
+const londonDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, 'Europe/London', 'yyyy-MM-dd');
 
 // =============================================================================
 // FORMATTING TESTS
@@ -471,28 +475,21 @@ describe('formatHijriDateLong', () => {
 
 describe('isDateYesterdayOrFuture', () => {
   it('returns true for yesterday', () => {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    const dateStr = yesterday.toISOString().split('T')[0];
+    const dateStr = londonDate(-86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
   });
 
   it('returns true for today', () => {
-    const today = new Date().toISOString().split('T')[0];
-    expect(isDateYesterdayOrFuture(today)).toBe(true);
+    expect(isDateYesterdayOrFuture(londonDate())).toBe(true);
   });
 
   it('returns true for tomorrow', () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const dateStr = tomorrow.toISOString().split('T')[0];
+    const dateStr = londonDate(86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
   });
 
   it('returns false for two days ago', () => {
-    const twoDaysAgo = new Date();
-    twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-    const dateStr = twoDaysAgo.toISOString().split('T')[0];
+    const dateStr = londonDate(-2 * 86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(false);
   });
 });
