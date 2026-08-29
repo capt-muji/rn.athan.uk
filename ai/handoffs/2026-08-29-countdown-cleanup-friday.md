@@ -1,22 +1,55 @@
-# HANDOFF — Countdown Tick Integrity (F.6 + F.7), Biome Cleanup (F.8), Friday Order Verify (F.4), Overlay Misalignment (F.9)
+# HANDOFF — APK Permission Audit (#13), Countdown Tick Integrity (F.6 + F.7), Biome Cleanup (F.8), Friday Order Verify (F.4)
 
 Project: Athan.uk — React Native prayer-times app (Expo SDK 57, RN 0.86.3, TypeScript 7.0.2, Yarn 1, Biome).
-Repo: /Users/muji/repos/rn.athan.uk, branch uat, commit 664f67c, tree clean, pushed.
+Repo: /Users/muji/repos/rn.athan.uk, branch uat, commit 73be02a+ (clean, pushed).
 
 Read ai/AGENTS.md first. Key rules: yarn validate before every commit; never console.log (Pino only);
 no new deps without approval; no Platform checks in the countdown path (by design); match existing patterns.
 
-## 0a. F.9 (ADDED 2026-08-29, AFTER THIS HANDOFF WAS FIRST WRITTEN) — OVERLAY MISALIGNMENT REGRESSION
+## 0a. RESOLVED SINCE THIS HANDOFF WAS FIRST DRAFTED (context — do not redo)
 
-Owner-reported regression, highest user-visible severity of everything in this handoff — consider
-tackling it FIRST despite the work order below. Full analysis, diagnosis protocol, and fix direction
-are in ai/ISSUES.md §F.9 — read that entry before touching anything. Summary: the large-text overlay
-copy of a tapped prayer row now renders ~70px ABOVE the real row (was pixel-perfect pre-migration).
-Positioning = one-shot cached `measureInWindow` (components/prayer/List.tsx:35-49, cache never
-invalidated) + `index * rowHeight` + an Android `+ insets.top` term (components/overlay/Overlay.tsx:83,
-96, 113, 126) that likely double-counts under edge-to-edge. Suspected iOS mechanism: layout shift
-after the one-shot measure (stale cache). Diagnosis is logic-only: log cached pageY vs fresh
-measureInWindow at overlay-open; fix = measure fresh at open + correct the Android term.
+- **F.9 overlay misalignment — FIXED and owner-confirmed (2026-08-29)**. Root cause: the
+  @expo/ui/community/pager-view native pager hosted pages in a container whose coordinate
+  space is offset ~status-bar-height from the JS hierarchy, shifting `measureInWindow`
+  results ~70px. Fix: react-native-pager-view@8.0.2 restored (import + `overdrag`),
+  **@expo/ui removed from the project entirely** (Navigation.tsx was its last consumer).
+  The load-time one-shot measurement architecture is deliberately kept — the owner
+  reviewed and REJECTED a press-time re-measure approach as unnecessary; do not
+  reintroduce it. Full story in ai/ISSUES.md §F.9.
+- ISSUES #9 fixed (ADR-007 corrected + background-task registration wired into
+  foreground-return, idempotent).
+- Bottom sheets on @gorhom/bottom-sheet 5.2.14 + Android hardware-back dismissal —
+  owner-verified; Android physical-device pass still pending (owner checklist item).
+
+## 0b. STEP 0 — APK PERMISSION AUDIT (ISSUES #13, owner-requested, ~15-30 min)
+
+The question: do `USE_EXACT_ALARM` + `SCHEDULE_EXACT_ALARM` (declared in app.json
+android.permissions) actually survive into a built APK's MERGED manifest? Repo is CNG
+(no android/ dir) — app.json is merged with Expo module manifests at prebuild.
+
+1. `npx expo prebuild --platform android --no-install` (android/ is gitignored).
+2. `cd android && ./gradlew assembleRelease --console=plain` (~10-20 min first run;
+   gradle downloads dominate). GOTCHA from 2026-08-29: if a previous gradle run was
+   killed, its daemon holds `~/.gradle/caches/journal-1` locks — run `./gradlew --stop`
+   and `pkill -f GradleDaemon` first, and run builds in the BACKGROUND with output to a
+   log file (`nohup ./gradlew assembleRelease > /tmp/gradle.log 2>&1 &`) so tool
+   timeouts don't kill them.
+3. Locate the APK: `android/app/build/outputs/apk/release/` (app-release.apk or
+   app-release-unsigned.apk — unsigned is fine for manifest inspection).
+4. Inspect: `"$ANDROID_HOME/build-tools/<ver>/aapt" dump permissions <apk>` and
+   `aapt dump xmltree <apk> AndroidManifest.xml | grep -i -A1 alarm`.
+5. Expected (from app.json + prebuild source manifest): RECEIVE_BOOT_COMPLETED,
+   POST_NOTIFICATIONS, USE_EXACT_ALARM, SCHEDULE_EXACT_ALARM, WAKE_LOCK,
+   ACCESS_NOTIFICATION_POLICY, plus lib-injected INTERNET, VIBRATE,
+   MODIFY_AUDIO_SETTINGS, RECORD_AUDIO (expo-audio), FOREGROUND_SERVICE(+_MEDIA_PLAYBACK),
+   SYSTEM_ALERT_WINDOW, READ/WRITE_EXTERNAL_STORAGE (maxSdk 32).
+6. Analysis for the ledger: if both exact-alarm permissions are present → #13's
+   manifest half closes (the remaining risk is Play policy review of USE_EXACT_ALARM —
+   an athan/prayer-times app is defensible as an alarm-clock core-function app; that's
+   an owner/Play-Console matter, not code). If absent → investigate expo-notifications'
+   manifest contribution and app.json merging. Update ISSUES #13 with the ground truth
+   + the full permission dump.
+7. Cleanup optional: `rm -rf android/` (regenerable; ~1GB).
 
 ## 0. HARD CONSTRAINTS FOR THIS SESSION
 
@@ -27,31 +60,34 @@ measureInWindow at overlay-open; fix = measure fresh at open + correct the Andro
    behavior question arises — do not guess library semantics from memory.
 3. **Use docs-mcp-server** for API questions (expo, react-native). The project's Expo SDK version
    is already indexed (library: `expo`).
-4. Owner's stated work order: **F.8 first, then F.6, then F.7, then F.4** (F.4 is verify-only).
-   F.9 (§0a above) was added later at high severity — confirm the order with the owner at
-   session start; it may jump the queue.
+4. Owner's stated work order: **Step 0 (APK audit), then F.8, then F.6+F.7 (one
+   investigation), then F.4** (F.4 is verify-only).
 5. Git write ops are authorized for this session (branch per issue, commit, merge to uat, push).
    Follow the repo's commit-message convention: `1.5.3 - <description>`.
 6. The `.husky/pre-commit` hook runs lint-staged + full validate (~30s). Tests are London-day-safe
    as of 7ea441f (see §6.5) — `yarn validate` should be 26 suites / 710 tests green on a clean tree.
-7. An `android/` directory may exist untracked (generated by `expo prebuild` during the 2026-08-29
-   APK permission audit, gitignored). If the audit's gradle build is not needed anymore, you may
-   `rm -rf android/` to reclaim ~1GB; regenerate anytime with `npx expo prebuild --platform android
-   --no-install`.
+7. An `ios/` directory exists untracked (regenerated by the 2026-08-29 debug build;
+   gitignored). `android/` does not exist — Step 0's prebuild creates it; it is
+   regenerable and gitignored. If you switch from debug to Release builds, delete
+   `ios/` first so prebuild regenerates from current package.json (a stale prebuild
+   silently keeps old native deps).
 
 ## 1. WHERE THE CODEBASE STANDS (do not re-litigate)
 
 - Bottom sheets run on @gorhom/bottom-sheet 5.2.14, restored verbatim from 500087b, owner-verified
   on sim. Android hardware-back dismissal added (BackHandler in components/sheets/parts/Sheet.tsx,
   gated on presented state via onChange). Android physical-device verification still pending —
-  NOT this session's problem.
+  owner checklist item, not this session's work.
+- Home pager: react-native-pager-view@8.0.2 (reverted from @expo/ui; F.9 fix, owner-confirmed).
+  **@expo/ui is GONE from the project** — do not re-add it; it cost two reverts.
 - ISSUES #12 (double notifications) is FIXED in code (d20ccf5, deterministic identifiers in
-  device/notifications.ts) pending on-device confirmation. The ledger header may still say OPEN —
-  if you touch the ledger, flip it with a note; otherwise leave it.
+  device/notifications.ts) pending on-device confirmation.
 - ISSUES #9 is FIXED (7ea441f): ADR-007 corrected, foreground-return now registers the background
   task (idempotent).
 - ISSUES F.4 is FIXED in code (500087b, `canonicalDisplayOrder` in shared/prayer.ts). This session
   only re-verifies visually on a real Friday (§5). No code.
+- ISSUES F.9 is FIXED (73be02a) — see §0a. The overlay measurement architecture is settled; do not
+  touch List.tsx/Day.tsx/Overlay.tsx positioning.
 
 ## 2. THE FOUR ISSUES, ONE PARAGRAPH EACH
 
@@ -272,14 +308,17 @@ regressed and it is not a two-line fix.
    (`xcrun simctl launch <UDID> com.mugtaba.athan`) — the auto-launch dev-client URL error is benign.
 7. In-sheet synthetic taps do not register under @gorhom (documented) — irrelevant this session
    unless you touch sheets; you shouldn't.
-8. Do not touch: sheets (@gorhom, owner-verified), pager (@expo/ui), notification scheduling logic,
-   jsx-runtime-shim, BackHandler in Sheet.tsx.
+8. Do not touch: sheets (@gorhom, owner-verified), the home pager (react-native-pager-view,
+   owner-verified), the overlay measurement architecture (List.tsx/Day.tsx/Overlay.tsx — F.9
+   settled), notification scheduling logic, jsx-runtime-shim, BackHandler in Sheet.tsx.
 9. If F.6/F.7 instrumentation on a physical Android device is needed, the owner runs the phone —
    prepare a build (`eas build` dev profile or `npx expo run:android --device`) and a precise
    observation protocol (which screen, which prayer, note displayed value at status-bar flip).
 
 ## 7. REFERENCE — COMMITS & CODE MAP
 
+- 73be02a revert/pager-to-rn-pager-view — F.9 fix: react-native-pager-view@8.0.2 restored,
+  @expo/ui removed entirely.
 - 7ea441f fix/adr007-registration-drift — ADR-007 corrected; listeners.ts registers background task
   on foreground-return; ledger #9/F.4 flipped; London-day test fixes.
 - 788e984 revert/bottom-sheets-to-gorhom — @gorhom 5.2.14 restored; BackHandler addition.
