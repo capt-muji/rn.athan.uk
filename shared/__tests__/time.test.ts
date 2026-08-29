@@ -42,24 +42,25 @@ describe('formatTime', () => {
   });
 
   it('formats minutes correctly', () => {
-    expect(formatTime(60)).toBe('1m 0s');
+    expect(formatTime(60)).toBe('1m'); // whole minute: never "1m 0s"
+    expect(formatTime(61)).toBe('1m 1s');
     expect(formatTime(90)).toBe('1m 30s');
     expect(formatTime(599)).toBe('9m 59s');
   });
 
   it('formats hours correctly', () => {
-    expect(formatTime(3600)).toBe('1h 0s'); // Minutes omitted when 0
+    expect(formatTime(3600)).toBe('1h'); // whole hour: never "1h 0s"
     expect(formatTime(3665)).toBe('1h 1m 5s');
-    expect(formatTime(7200)).toBe('2h 0s'); // Minutes omitted when 0
+    expect(formatTime(7200)).toBe('2h'); // whole 2h: never "2h 0s"
   });
 
   it('converts days to hours', () => {
-    expect(formatTime(90000)).toBe('25h 0s'); // 25 hours, minutes omitted when 0
+    expect(formatTime(90000)).toBe('25h'); // whole hours: no trailing "0s"
   });
 
   it('handles the 24h and multi-day boundaries', () => {
     expect(formatTime(86399)).toBe('23h 59m 59s');
-    expect(formatTime(86400)).toBe('24h 0s'); // exactly one day -> 24h
+    expect(formatTime(86400)).toBe('24h'); // exactly one day -> 24h, no "0s"
     expect(formatTime(90061)).toBe('25h 1m 1s'); // day + hour + minute + second
   });
 
