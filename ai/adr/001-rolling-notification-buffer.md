@@ -27,9 +27,9 @@ Implement a **2-day rolling window** for notification scheduling with the follow
 2. **Refresh triggers**:
    - When the app is opened (for users who close the app)
    - When the app is brought to foreground (for users who never close the app)
-3. **Refresh frequency**: Re-schedule every 12 hours (`NOTIFICATION_REFRESH_HOURS = 12`)
-4. **Debounced scheduling**: When users change alert settings, debounce the re-scheduling to minimize redundant operations
-5. **Concurrency guard**: Use `isScheduling` flag to prevent race conditions during scheduling
+3. **Refresh frequency**: Re-schedule at most every 4 hours (`NOTIFICATION_REFRESH_HOURS = 4`, offset from the 3-hour background task interval to reduce collision risk — see ADR-007)
+4. **Settings changes**: Re-schedule the affected prayer immediately via `updatePrayerNotifications` (no debounce; the scheduling lock serializes it)
+5. **Concurrency guard**: Sequential scheduling queue (`withSchedulingLock` in stores/notifications.ts) — operations never overlap and are never dropped
 
 ## Consequences
 
@@ -42,12 +42,11 @@ Implement a **2-day rolling window** for notification scheduling with the follow
 
 ### Negative
 
-- Higher notification count scheduled (3 days × multiple prayers × potential custom offsets)
-- Users who don't open the app for 3+ days will miss notifications
+- Higher notification count scheduled (2 days × multiple prayers × potential custom offsets)
+- Users who don't open the app for 2+ days will miss notifications
 
 ### Neutral
 
-- Requires debouncing on settings changes to avoid excessive re-scheduling
 - Trade-off between window size (reliability) and notification count (iOS limit headroom)
 
 ## Alternatives Considered
@@ -109,8 +108,9 @@ Implement a **2-day rolling window** for notification scheduling with the follow
 
 - Constants defined in `shared/constants.ts`: `NOTIFICATION_ROLLING_DAYS`, `NOTIFICATION_REFRESH_HOURS`
 - Core scheduling logic in `stores/notifications.ts`
-- `isScheduling` flag prevents concurrent scheduling operations
-- Debounce on alert preference changes prevents excessive re-scheduling
+- Sequential scheduling queue (`withSchedulingLock`) prevents concurrent scheduling operations without dropping any
+- Settings changes re-schedule the affected prayer immediately (`updatePrayerNotifications`)
+- Rescheduling is schedule-first-then-cancel-stale with a post-reschedule sweep (issue #15, 2026-08-29): same-identifier scheduling replaces atomically and nothing is ever bulk-cancelled, so a mid-batch process death can no longer leave the app with zero scheduled notifications
 - `genNextXDays()` helper generates the date range for scheduling
 - Smart skipping: past prayer times and non-Friday Istijaba are excluded
 
@@ -206,3 +206,4 @@ The rolling window has been reduced to improve app responsiveness:
 | 2026-01-17 | muji   | IMPLEMENTED: Reduced NOTIFICATION_ROLLING_DAYS from 6 to 3 to improve app responsiveness                      |
 | 2026-01-17 | muji   | IMPLEMENTED: Reduced NOTIFICATION_ROLLING_DAYS from 3 to 2 and NOTIFICATION_REFRESH_HOURS from 24 to 12       |
 | 2026-01-25 | muji   | Updated reminder feature spec: On/Off toggle + Silent/Sound, hardcoded reminder.wav, requires at-time enabled |
+| 2026-08-29 | muji   | Corrected drift vs code: refresh interval is 4h (set by ADR-007, not 12h); concurrency guard is the withSchedulingLock sequential queue (not an isScheduling flag); settings changes re-schedule immediately (no debounce); documented the issue-#15 schedule-first reschedule strategy; fixed stale 3-day counts |
