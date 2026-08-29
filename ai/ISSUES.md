@@ -360,6 +360,8 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   canonical order while rows keep their sequence indices, so selection/countdown
   semantics are unchanged. Istijaba always last on Fridays. Verified on sim
   (Friday 2026-08-28) + 4 unit tests; owner-confirmed matching long-observed behavior.
+- **Re-verify on real Friday 2026-09-04**: open Extras page, confirm order reads
+  Midnight / Last Third / Suhoor / Duha / Istijaba (last). Verify-only, no code.
 
 ### 5. [FIXED] Global font-scaling guard was dead code on SDK 57 (React 19 defaultProps removal)
 
@@ -386,33 +388,68 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   overlapping text; post-fix screenshot identical to normal-size rendering with the
   countdown ticking normally. Content size restored to default afterwards.
 
-### 6. [OPEN] Countdown final-seconds intermittent stretch
+### 6. [FIXED 1.5.3] Countdown final-seconds intermittent stretch
 
-- **Symptom**: the countdown's last ~2s occasionally stretch on screen. Works most
-  of the time — two clean observations including a day rollover
-  (5→4→3→2→1→cascade).
-- **Hypothesis**: JS-thread tick jitter at the transition moment; one historical
-  report was from a crashing build (JS stalls stall the ticker). Both tickers are
-  now clock-based (97a34af, same fix as d0598a6 for the sequence ticker), so the
-  remaining exposure is delivery jitter, not counter drift.
-- **Protocol**: watch ~10 transitions on the clean post-revert Release build noting
-  conditions; if reproduced, add temporary pino tick-timestamp logging.
+- **Symptom**: the countdown's last ~2s occasionally stretch on screen; sometimes the
+  final digit froze at "2s" and jumped straight to the next prayer.
+- **Root cause (proven by TICK instrumentation, 2026-08-29 sim baseline)**:
+  1. Every ticker was a plain `setInterval(fn, 1000)`, which re-arms from ACTUAL
+     delivery time — JS-thread latency compounds. Measured on a clean run: median
+     inter-tick gap 1016ms, phase marching +17ms/s (516ms→717ms in one minute).
+     At transitions the cascade (refreshSequence + atom churn + re-render) spiked
+     delivery to 1500-3000ms gaps right at `computed <= 1` — the visible stretch.
+  2. `floor` rounding produced computed=0 during the entire final second; the
+     hold-latch masked it as "1s" but any transition slowness stretched that digit.
+  3. Sync re-entrancy (loadable double-eval + AppState foreground storms) could
+     leave MULTIPLE store intervals alive per key (6 concurrent std tickers
+     observed for 15 min) — each doing `createLondonDate()` (full tz format+parse)
+     per tick: self-inflicted ~12-18 tz round-trips/sec.
+- **Fix** (`fix/f6-f7-countdown-tick-integrity`):
+  - Wall-second self-correcting chain: each tick scheduled as
+    `setTimeout(tick, 1000 - (Date.now() % 1000))` — digits flip just after :000
+    like the status bar, and any late delivery is absorbed by the next shorter
+    delay (drift cannot accumulate).
+  - Per-tick diffs computed as `target.getTime() - Date.now()` against the stored
+    UTC-instant targets (offset cancels; no tz work per tick; full ms precision).
+  - Ceil display contract: last visible digit is 1s, 0s never displays, the swap
+    to the next prayer happens at the boundary instant (hold at 1 across the
+    refresh gap). Owner-specified rule, pinned by unit tests.
+  - Single-ticker-by-construction: every start clears + replaces under an
+    ownership guard, so re-entrant `startCountdowns()` can never stack intervals.
+- **Verified**: transitions fire 5ms/4ms after the minute boundary (were 400-900ms);
+  tick phase locked at 9-16ms across entire runs and across process restarts;
+  no computed value < 1 anywhere; 739 tests green incl. ticker-integrity suite
+  (re-entrancy immunity, alignment, self-correction, full-sweep never-0s,
+  transition no-leak, overlay hold-at-1s) and pinned DST-crossing windows.
 
-### 7. [OPEN] Android minute-boundary skew (status bar vs countdown)
+### 7. [FIXED 1.5.3 in code — on-device confirm pending] Android minute-boundary skew (status bar vs countdown)
 
-- **Symptom**: on some Android phones the status bar flips to the prayer minute
-  while the app countdown still shows ~10s remaining.
-- **Hypothesis**: device epoch vs displayed-time skew (NITZ; cf. #11 clock-skew) —
-  the countdown is computed from `Date.now()` vs minute-exact prayer datetimes, so
-  a device clock ahead of true time displays the transition consistently late.
-- **Protocol**: on an affected phone, log `Date.now()` at the status-bar minute
-  flip vs the prayer datetime. The countdown path is platform-agnostic by design —
-  no `Platform` checks exist there; do not add any.
+- **Symptom**: on some Android phones (OnePlus 8T, Oppo Find X8) the status bar
+  flips to the prayer minute while the app still shows ~2-10s remaining.
+- **Owner's decisive logic (2026-08-29)**: status bar and `Date.now()` read the
+  SAME system clock — device-clock skew cannot produce an intra-device
+  disagreement. The app can only lag its own device via (a) stale displayed
+  values (tick delivery latency) or (b) deterministic phase misalignment.
+- **Root cause (mechanism (a), proven on sim)**: the old `setInterval` tickers
+  drifted +17ms/s under load (weaker Android hardware drifts faster — 2-10s of
+  accumulated skew matches minutes-to-hours of app-open time) plus arbitrary
+  start phase (up to ~1s structural offset). Both eliminated by the F.6 fix:
+  wall-second alignment (digits flip at :000 with the status bar) and
+  self-correcting scheduling (no accumulation).
+- **On-device confirm protocol (OnePlus 8T, dev build)**: at a prayer minute,
+  watch the status bar flip vs the app's 1s→swap. Expect the swap within ~100ms
+  of the flip. Optionally capture `adb logcat` TICK debug lines: every `computed`
+  write should carry `phase < 100` and the swap at `transitionMs` small.
+- The countdown path remains platform-agnostic — no Platform checks exist there.
 
-### 8. [OPEN] Biome useExhaustiveDependencies backlog
+### 8. [FIXED 1.5.3] Biome useExhaustiveDependencies backlog
 
-- 72 warn-level hits (77 warnings total), pre-existing from the Biome migration
-  (9a116f6). Suppression is not warranted — schedule a dedicated cleanup session.
+- 72 warn-level hits + 5 noArrayIndexKey (77 warnings total), pre-existing from
+  the Biome migration (9a116f6). **Cleared 2026-08-29** (merged e2d679e): stable
+  deps (Reanimated shared values, useCallback-stable animate fns) added to
+  arrays where provably identity-stable; deliberate omissions/extra-deps
+  suppressed with per-line justifications (re-fire signals, per-render closures,
+  static list keys). `biome check .` reports zero warnings; rule never disabled.
 
 ### 9. [FIXED 1.5.3] Overlay renders ~70px above the tapped prayer row (was pixel-perfect pre-migration)
 
