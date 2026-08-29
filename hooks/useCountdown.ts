@@ -66,7 +66,7 @@ export const useCountdown = (type: ScheduleType): UseCountdownResult => {
 
       // seconds clamps at 1: while the sequence refresh advances to the next
       // prayer, the display holds the last digit ("1s") instead of "0s"
-      logger.info('TICK: hook', {
+      logger.debug('TICK: hook', {
         which,
         wall,
         computed: seconds,
