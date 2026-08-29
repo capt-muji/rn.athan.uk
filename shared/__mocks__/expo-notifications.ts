@@ -26,6 +26,16 @@ export const getAllScheduledNotificationsAsync = jest.fn().mockResolvedValue([])
 export const getPermissionsAsync = jest.fn().mockResolvedValue({ status: 'granted' });
 export const requestPermissionsAsync = jest.fn().mockResolvedValue({ status: 'granted' });
 
+export const SchedulableTriggerInputTypes = {
+  DATE: 'date',
+  DAILY: 'daily',
+  WEEKLY: 'weekly',
+  YEARLY: 'yearly',
+  CALENDAR: 'calendar',
+  LOCATION: 'location',
+  UNKNOWN: 'unknown',
+} as const;
+
 export interface NotificationContentInput {
   title?: string;
   body?: string;

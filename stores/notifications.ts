@@ -70,6 +70,28 @@ export const getPrayerArrays = (scheduleType: ScheduleType) => {
   };
 };
 
+/**
+ * Cancels notifications whose identifiers are no longer part of the intended
+ * schedule (schedule-first-then-cancel-stale, issue #15).
+ *
+ * Per-id failures are logged and skipped — a single uncancelable id must not
+ * abort the batch; the post-reschedule sweep retries any survivors.
+ *
+ * @param ids Identifiers to cancel at the OS level
+ */
+const _cancelStaleNotificationIds = async (ids: string[]) => {
+  if (ids.length === 0) return;
+
+  const promises = ids.map((id) =>
+    Device.cancelScheduledNotificationById(id).catch((error) =>
+      logger.warn('NOTIFICATION: Failed to cancel stale notification:', { id, error })
+    )
+  );
+  await Promise.all(promises);
+
+  logger.info('NOTIFICATION: Cancelled stale notifications:', { count: ids.length, ids });
+};
+
 // =============================================================================
 // ATOMS
 // =============================================================================
@@ -381,8 +403,6 @@ export const setReminderInterval = (scheduleType: ScheduleType, prayerIndex: num
  * Schedules a single notification for a prayer on a specific date
  *
  * Handles validation, Istijaba filtering, and database storage.
- * Returns a promise that resolves when notification is scheduled
- * or undefined if the notification was skipped.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
@@ -391,7 +411,9 @@ export const setReminderInterval = (scheduleType: ScheduleType, prayerIndex: num
  * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
  * @param sound Sound preference index
- * @returns Promise resolving when complete, or undefined if skipped
+ * @returns Promise resolving to the attempted identifier — scheduled or, on
+ *   failure, whatever OS notification the identifier already had — or null
+ *   when the day was skipped (no data, past time, non-Friday Istijaba)
  */
 async function scheduleNotificationForDate(
   scheduleType: ScheduleType,
@@ -401,43 +423,62 @@ async function scheduleNotificationForDate(
   arabicName: string,
   alertType: AlertType,
   sound: number
-): Promise<void> {
+): Promise<string | null> {
   const dateObj = TimeUtils.createLondonDate(date);
   const prayerData = Database.getPrayerByDate(dateObj);
-  if (!prayerData) return;
+  if (!prayerData) return null;
 
   const prayerTime = prayerData[englishName.toLowerCase() as keyof typeof prayerData];
 
   // Skip past prayers
   if (!NotificationUtils.isPrayerTimeInFuture(date, prayerTime)) {
     logger.info('Skipping past prayer:', { date, time: prayerTime, englishName });
-    return;
+    return null;
   }
 
   // Skip Istijaba on non-Fridays
   if (englishName.toLowerCase() === 'istijaba' && !TimeUtils.isFriday(dateObj)) {
     logger.info('Skipping Istijaba on non-Friday:', { date, time: prayerTime });
-    return;
+    return null;
   }
 
-  const notification = await Device.addOneScheduledNotificationForPrayer(
-    scheduleType,
-    englishName,
-    arabicName,
-    date,
-    prayerTime,
-    alertType,
-    sound
-  );
+  const identifier = Device.prayerNotificationIdentifier(scheduleType, englishName, date);
 
-  await Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification);
+  try {
+    const notification = await Device.addOneScheduledNotificationForPrayer(
+      scheduleType,
+      englishName,
+      arabicName,
+      date,
+      prayerTime,
+      alertType,
+      sound
+    );
+
+    await Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification);
+    return notification.id;
+  } catch (error) {
+    logger.error('Failed to schedule prayer notification:', error);
+
+    // The identifier is deterministic, so whatever OS notification it already
+    // had must survive this failure — record it so neither the per-prayer
+    // stale-cancel nor the post-reschedule sweep removes it (issue #15).
+    const survivedNotification = { id: identifier, date, time: prayerTime, englishName, arabicName, alertType };
+    Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, survivedNotification);
+
+    return identifier;
+  }
 }
 
 /**
  * Schedule multiple notifications (X days) for a single prayer
  *
- * Clears existing notifications, then schedules new ones for the next X days
- * based on the NOTIFICATION_ROLLING_DAYS constant.
+ * Schedule-first-then-cancel-stale (issue #15): deterministic identifiers give
+ * same-ID scheduling atomic replace semantics, so new notifications are
+ * scheduled BEFORE anything is cancelled — the OS never holds fewer
+ * notifications than it did before, and process death mid-batch can no longer
+ * zero the alarm set. Only identifiers no longer attempted (day rolled out of
+ * the window, prayer skipped) are cancelled afterwards.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
@@ -454,22 +495,33 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   arabicName: string,
   alertType: AlertType
 ) => {
-  // Cancel all existing notifications for this prayer
-  await clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
+  const existingRecords = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
+  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
   const nextXDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
   const sound = getSoundPreference();
 
-  // Schedule notifications for each day in parallel
-  await Promise.all(
+  // Schedule notifications for each day in parallel. Each result is the
+  // attempted identifier (null only when the day was skipped), so a failed
+  // scheduling keeps the existing OS notification alive instead of staling it.
+  const attempts = await Promise.all(
     nextXDays.map((date) =>
-      scheduleNotificationForDate(scheduleType, prayerIndex, date, englishName, arabicName, alertType, sound).catch(
-        (error) => logger.error('Failed to schedule prayer notification:', error)
-      )
+      scheduleNotificationForDate(scheduleType, prayerIndex, date, englishName, arabicName, alertType, sound)
     )
   );
 
-  logger.info('NOTIFICATION: Scheduled multiple notifications:', { scheduleType, prayerIndex, englishName });
+  const attemptedIds = new Set(attempts.filter((id): id is string => id !== null));
+  const staleIds = existingRecords.map((record) => record.id).filter((id) => !attemptedIds.has(id));
+
+  await _cancelStaleNotificationIds(staleIds);
+
+  logger.info('NOTIFICATION: Scheduled multiple notifications:', {
+    scheduleType,
+    prayerIndex,
+    englishName,
+    scheduledDays: attemptedIds.size,
+    staleCancelled: staleIds.length,
+  });
 };
 
 /**
@@ -493,8 +545,6 @@ const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType
  * Schedules a single reminder notification for a prayer on a specific date
  *
  * Handles validation, Istijaba filtering, and database storage.
- * Returns a promise that resolves when reminder is scheduled
- * or undefined if the reminder was skipped.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
@@ -503,7 +553,9 @@ const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType
  * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
  * @param intervalMinutes Reminder interval in minutes
- * @returns Promise resolving when complete, or undefined if skipped
+ * @returns Promise resolving to the attempted identifier — scheduled or, on
+ *   failure, whatever OS reminder the identifier already had — or null when
+ *   the day was skipped (past/imminent, non-Friday Istijaba)
  */
 async function scheduleReminderNotificationForDate(
   scheduleType: ScheduleType,
@@ -513,10 +565,10 @@ async function scheduleReminderNotificationForDate(
   arabicName: string,
   alertType: AlertType,
   intervalMinutes: ReminderInterval
-): Promise<void> {
+): Promise<string | null> {
   const dateObj = TimeUtils.createLondonDate(date);
   const prayerData = Database.getPrayerByDate(dateObj);
-  if (!prayerData) return;
+  if (!prayerData) return null;
 
   const prayerTime = prayerData[englishName.toLowerCase() as keyof typeof prayerData];
 
@@ -535,33 +587,50 @@ async function scheduleReminderNotificationForDate(
       intervalMinutes,
       secondsUntilReminder,
     });
-    return;
+    return null;
   }
 
   // Skip Istijaba on non-Fridays
   if (englishName.toLowerCase() === 'istijaba' && !TimeUtils.isFriday(dateObj)) {
     logger.info('REMINDER: Skipping Istijaba on non-Friday:', { date, prayerTime });
-    return;
+    return null;
   }
 
-  const notification = await Device.addOneScheduledReminderForPrayer(
-    scheduleType,
-    englishName,
-    arabicName,
-    date,
-    prayerTime,
-    intervalMinutes,
-    alertType
-  );
+  const identifier = Device.reminderNotificationIdentifier(scheduleType, englishName, date, intervalMinutes);
 
-  await Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, notification);
+  try {
+    const notification = await Device.addOneScheduledReminderForPrayer(
+      scheduleType,
+      englishName,
+      arabicName,
+      date,
+      prayerTime,
+      intervalMinutes,
+      alertType
+    );
+
+    await Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, notification);
+    return notification.id;
+  } catch (error) {
+    logger.error('Failed to schedule reminder:', error);
+
+    // Keep whatever OS reminder this deterministic identifier already had
+    // alive — record it so the stale-cancel and sweep skip it (issue #15).
+    const survivedReminder = { id: identifier, date, time: prayerTime, englishName, arabicName, alertType };
+    Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, survivedReminder);
+
+    return identifier;
+  }
 }
 
 /**
  * Schedule multiple reminders (X days) for a single prayer
  *
- * Clears existing reminders, then schedules new ones for the next X days
- * based on the NOTIFICATION_ROLLING_DAYS constant.
+ * Schedule-first-then-cancel-stale (issue #15), mirroring the at-time
+ * notification path: reminders are scheduled before anything is cancelled.
+ * Reminder identifiers include the interval, so an interval change schedules
+ * the new-interval reminders first and cancels the old-interval identifiers
+ * only afterwards — the user briefly has two, never zero.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
@@ -576,14 +645,16 @@ const _addMultipleScheduleRemindersForPrayer = async (
   arabicName: string,
   alertType: AlertType
 ) => {
-  // Cancel all existing reminders for this prayer
-  await clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+  const existingRecords = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+  Database.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
   const nextXDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
   const intervalMinutes = getReminderInterval(scheduleType, prayerIndex);
 
-  // Schedule reminders for each day in parallel
-  await Promise.all(
+  // Schedule reminders for each day in parallel. Each result is the attempted
+  // identifier (null only when skipped) — a failed scheduling keeps the
+  // existing OS reminder alive instead of staling it (see above).
+  const attempts = await Promise.all(
     nextXDays.map((date) =>
       scheduleReminderNotificationForDate(
         scheduleType,
@@ -593,11 +664,22 @@ const _addMultipleScheduleRemindersForPrayer = async (
         arabicName,
         alertType,
         intervalMinutes
-      ).catch((error) => logger.error('Failed to schedule reminder:', error))
+      )
     )
   );
 
-  logger.info('REMINDER: Scheduled multiple reminders:', { scheduleType, prayerIndex, englishName });
+  const attemptedIds = new Set(attempts.filter((id): id is string => id !== null));
+  const staleIds = existingRecords.map((record) => record.id).filter((id) => !attemptedIds.has(id));
+
+  await _cancelStaleNotificationIds(staleIds);
+
+  logger.info('REMINDER: Scheduled multiple reminders:', {
+    scheduleType,
+    prayerIndex,
+    englishName,
+    scheduledDays: attemptedIds.size,
+    staleCancelled: staleIds.length,
+  });
 };
 
 /**
@@ -659,6 +741,11 @@ export const updatePrayerNotifications = async (
 
 /**
  * Schedule all notifications for a schedule based on current preferences (internal)
+ *
+ * Prayers whose alert is Off are actively cleared (records + OS notifications)
+ * instead of skipped — a global reschedule must leave the database describing
+ * exactly the intended set, healing any settings commit that was interrupted
+ * by process death (issue #15).
  */
 const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
   logger.info('NOTIFICATION: Scheduling all notifications for schedule:', { scheduleType });
@@ -667,7 +754,9 @@ const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleTyp
 
   const promises = prayers.map(async (_, index) => {
     const alertType = getPrayerAlertType(scheduleType, index);
-    if (alertType === AlertType.Off) return;
+    if (alertType === AlertType.Off) {
+      return clearAllScheduledNotificationForPrayer(scheduleType, index);
+    }
 
     return _addMultipleScheduleNotificationsForPrayer(
       scheduleType,
@@ -684,6 +773,10 @@ const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleTyp
 
 /**
  * Schedule all reminders for a schedule based on current preferences (internal)
+ *
+ * Reminders are only kept while BOTH the reminder alert and the at-time alert
+ * are enabled; everything else is actively cleared so the post-reschedule
+ * sweep sees records that describe exactly the intended set (see above).
  */
 const _addAllScheduleRemindersForSchedule = async (scheduleType: ScheduleType) => {
   logger.info('REMINDER: Scheduling all reminders for schedule:', { scheduleType });
@@ -692,11 +785,14 @@ const _addAllScheduleRemindersForSchedule = async (scheduleType: ScheduleType) =
 
   const promises = prayers.map(async (_, index) => {
     const reminderAlertType = getReminderAlertType(scheduleType, index);
-    if (reminderAlertType === AlertType.Off) return;
 
     // Constraint: reminder requires at-time alert to be enabled
     const atTimeAlertType = getPrayerAlertType(scheduleType, index);
-    if (atTimeAlertType === AlertType.Off) return;
+    const reminderEnabled = reminderAlertType !== AlertType.Off && atTimeAlertType !== AlertType.Off;
+
+    if (!reminderEnabled) {
+      return clearAllScheduledRemindersForPrayer(scheduleType, index);
+    }
 
     return _addMultipleScheduleRemindersForPrayer(
       scheduleType,
@@ -745,7 +841,49 @@ export const shouldRescheduleNotifications = (): boolean => {
 };
 
 /**
+ * Post-reschedule reconciliation (issue #15)
+ *
+ * Compares the OS's pending notifications against the database records — the
+ * intended set — and cancels anything the OS holds beyond them: turned-off
+ * prayers, superseded reminder intervals, orphans from before deterministic
+ * identifiers, and strays left by earlier versions whose bookkeeping was
+ * wiped on upgrade. Live notifications are never touched. Also logs a
+ * verification count so degraded states surface in the logs.
+ */
+const _sweepStaleScheduledNotifications = async () => {
+  const records = [
+    ...Database.getAllScheduledNotificationsForSchedule(ScheduleType.Standard),
+    ...Database.getAllScheduledNotificationsForSchedule(ScheduleType.Extra),
+    ...Database.getAllScheduledRemindersForSchedule(ScheduleType.Standard),
+    ...Database.getAllScheduledRemindersForSchedule(ScheduleType.Extra),
+  ];
+
+  const scheduled = await Notifications.getAllScheduledNotificationsAsync();
+  const osIdentifiers = scheduled.map((request) => request.identifier);
+  const staleIds = NotificationUtils.findStaleScheduledNotificationIds(osIdentifiers, records);
+
+  if (staleIds.length > 0) {
+    logger.warn('NOTIFICATION: Sweep found stale OS notifications:', { count: staleIds.length, staleIds });
+
+    await _cancelStaleNotificationIds(staleIds);
+  }
+
+  logger.info('NOTIFICATION: Post-reschedule verification:', {
+    dbRecords: records.length,
+    osPending: osIdentifiers.length,
+    staleCancelled: staleIds.length,
+  });
+};
+
+/**
  * Reschedules all notifications for both Standard and Extra schedules (internal)
+ *
+ * Schedule-first strategy (issue #15): nothing is bulk-cancelled. Same-identifier
+ * scheduling atomically replaces every notification, the per-prayer paths cancel
+ * only their own stale identifiers afterwards, and the final sweep removes
+ * anything the OS holds beyond the intended set. Process death mid-batch can no
+ * longer leave the app with zero scheduled notifications — unrefreshed prayers
+ * keep their previous alarms until the next successful refresh.
  */
 const _rescheduleAllNotifications = async () => {
   // Log current preference state for debugging preference-reset reports
@@ -756,17 +894,6 @@ const _rescheduleAllNotifications = async () => {
   }));
   logger.info('NOTIFICATION: Preference snapshot before reschedule:', preferenceSnapshot);
 
-  // Cancel ALL scheduled notifications globally (includes reminders)
-  await Notifications.cancelAllScheduledNotificationsAsync();
-  logger.info('NOTIFICATION: Cancelled all scheduled notifications via Expo API');
-
-  // Clear database records for both schedules (notifications and reminders)
-  Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
-  Database.clearAllScheduledNotificationsForSchedule(ScheduleType.Extra);
-  Database.clearAllScheduledRemindersForSchedule(ScheduleType.Standard);
-  Database.clearAllScheduledRemindersForSchedule(ScheduleType.Extra);
-  logger.info('NOTIFICATION: Cleared database records');
-
   // Schedule all enabled notifications and reminders for both schedules
   await Promise.all([
     _addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
@@ -775,6 +902,9 @@ const _rescheduleAllNotifications = async () => {
     _addAllScheduleRemindersForSchedule(ScheduleType.Extra),
   ]);
 
+  // Heal the OS to match the database: cancel strays, verify counts
+  await _sweepStaleScheduledNotifications();
+
   logger.info('NOTIFICATION: Rescheduled all notifications and reminders');
 };
 
@@ -782,7 +912,9 @@ const _rescheduleAllNotifications = async () => {
  * Reschedules all notifications for both Standard and Extra schedules
  *
  * Used when changing sound preferences or when a full refresh is needed.
- * Cancels all existing notifications and re-schedules based on current preferences.
+ * Replaces every scheduled notification in place (same-identifier replace),
+ * cancels stale identifiers, and sweeps anything the OS holds beyond the
+ * intended set — no bulk cancel, no zero-notification window (issue #15).
  * Guards against concurrent scheduling using withSchedulingLock.
  *
  * @returns Promise that resolves when rescheduling is complete
