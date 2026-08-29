@@ -102,9 +102,32 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ### Upcoming Improvements
 
-- [ ] iOS widget (WidgetKit)
 - [ ] Multi-location support — UK mosques via AI-powered scraping ([ADR-008](ai/adr/008/ADR.md))
 - [ ] Qibla direction finder
+
+<br/>
+<br/>
+
+## 📱 iOS Widgets
+
+Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](https://docs.expo.dev/versions/latest/sdk/widgets/) and [`@expo/ui`](https://docs.expo.dev/versions/latest/sdk/ui/swift-ui/) — no native SwiftUI code required.
+
+| Widget | Families | Shows |
+| --- | --- | --- |
+| **Prayer Times** (home screen) | Small, Medium | Next prayer (English + Arabic), live countdown, accent-coloured progress bar; Medium adds today's six prayers with the next one highlighted |
+| **Next Prayer** (Lock Screen) | Circular, Rectangular, Inline | Live countdown to the next prayer, rendered in the system's vibrant (monochrome) style |
+
+**Always in sync, never stale:**
+
+- The app pushes a **14-day timeline** (one entry per prayer boundary plus a midnight rollover) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, and the 3-hour background task.
+- Between boundaries the widgets stay live on their own via SwiftUI timer intervals — the countdown ticks every second and the progress bar fills continuously with **zero app involvement and no refresh budget**.
+- Entries transition automatically at each prayer time and the Medium widget's day list rolls over at London midnight (DST-safe via the same zoned-time logic as the app).
+
+**Widget preferences:** the widget honours the app's countdown bar accent colour (`preference_countdownbar_color`) and Arabic-names setting, keeping it visually identical to the app.
+
+**Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan*. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan*.
+
+> Widgets require a development build or production binary (iOS 16.4+); they are not available in Expo Go.
 
 <br/>
 <br/>

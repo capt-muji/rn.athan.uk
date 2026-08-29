@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@expo/ui": "~57.0.14",
     "@gorhom/bottom-sheet": "5.2.14",
     "date-fns": "4.4.0",
     "date-fns-tz": "3.2.0",
@@ -46,6 +47,7 @@
     "expo-system-ui": "~57.0.3",
     "expo-task-manager": "~57.0.14",
     "expo-updates": "~57.0.19",
+    "expo-widgets": "~57.0.15",
     "jotai": "2.20.3",
     "react": "19.2.3",
     "react-native": "0.86.3",

@@ -23,6 +23,7 @@ import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber } from '@/stores/storage';
+import * as PrayerWidgets from '@/stores/widget';
 
 const store = getDefaultStore();
 
@@ -904,6 +905,11 @@ const _rescheduleAllNotifications = async () => {
 
   // Heal the OS to match the database: cancel strays, verify counts
   await _sweepStaleScheduledNotifications();
+
+  // Push fresh data to the iOS widgets — this runs wherever notifications do
+  // (foreground refresh gate + background task), keeping widgets in sync with
+  // the app even when the app is never opened
+  await PrayerWidgets.refreshPrayerWidgets();
 
   logger.info('NOTIFICATION: Rescheduled all notifications and reminders');
 };

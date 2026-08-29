@@ -1,6 +1,11 @@
 module.exports = {
   testEnvironment: 'node',
   moduleNameMapper: {
+    // Widget layout modules register native widgets as an import side effect —
+    // stub them (and their JSX) out for tests. Must precede the '^@/(.*)$'
+    // catch-all, which would otherwise win.
+    '^@/widgets/PrayerWidget$': '<rootDir>/shared/__mocks__/widgets/PrayerWidget.ts',
+    '^@/widgets/LockPrayerWidget$': '<rootDir>/shared/__mocks__/widgets/LockPrayerWidget.ts',
     '^@/(.*)$': '<rootDir>/$1',
     // Mock React Native modules that don't work in Node environment
     '^expo-constants$': '<rootDir>/shared/__mocks__/expo-constants.ts',
