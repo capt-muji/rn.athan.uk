@@ -24,7 +24,7 @@ interface UseCountdownResult {
 
 /**
  * Returns a live countdown to the next prayer
- * Updates every second via internal interval
+ * Updates every wall-clock second, flipping just after :000
  *
  * @param type Schedule type (Standard or Extra)
  * @returns Object with timeLeft (seconds), prayerName, and isReady
@@ -41,43 +41,50 @@ export const useCountdown = (type: ScheduleType): UseCountdownResult => {
   const which = type === ScheduleType.Standard ? 'std' : 'extra';
   const nextPrayer = useAtomValue(nextPrayerAtom);
 
-  // State for countdown (updated every second)
+  // State for countdown (updated every second; ceil rounding, never 0s)
   const [timeLeft, setTimeLeft] = useState(() => {
     if (!nextPrayer) return 0;
-    return TimeUtils.getSecondsBetween(TimeUtils.createLondonDate(), nextPrayer.datetime);
+    return TimeUtils.getSecondsRemaining(nextPrayer.datetime);
   });
 
-  // Update countdown every second
+  // Update countdown every wall-clock second
   useEffect(() => {
     if (!nextPrayer) return;
 
     // Initial calculation
-    const calculateTimeLeft = () => {
-      const now = TimeUtils.createLondonDate();
-      return TimeUtils.getSecondsBetween(now, nextPrayer.datetime);
-    };
+    setTimeLeft(TimeUtils.getSecondsRemaining(nextPrayer.datetime));
 
-    setTimeLeft(calculateTimeLeft());
-
-    // Set up interval
-    const intervalId = setInterval(() => {
+    // Wall-second-aligned ticks: each next tick is scheduled against the next
+    // :000 boundary, so JS-thread delivery latency self-corrects instead of
+    // compounding (a plain 1s interval measured +17ms/s of phase drift) and
+    // digits flip with the system clock. Each tick recomputes from the clock —
+    // countdown targets are true UTC instants, so the diff needs no timezone
+    // conversion (the offset cancels).
+    const tick = () => {
       const wall = Date.now();
-      const seconds = calculateTimeLeft();
+      const seconds = TimeUtils.getSecondsRemaining(nextPrayer.datetime);
 
-      // Hold the last shown second while the sequence refresh advances to the next
-      // prayer (floor-rounding reaches 0 up to a second before the true time, and the
-      // refresh itself takes a tick) - prevents the UI from freezing at "0s".
+      // seconds clamps at 1: while the sequence refresh advances to the next
+      // prayer, the display holds the last digit ("1s") instead of "0s"
       logger.info('TICK: hook', {
         which,
         wall,
         computed: seconds,
         phase: wall % 1000,
-        held: seconds <= 0,
+        held: wall >= nextPrayer.datetime.getTime(),
       });
-      setTimeLeft((previous) => (seconds > 0 ? seconds : previous));
-    }, 1000);
+      setTimeLeft(seconds);
+    };
 
-    return () => clearInterval(intervalId);
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const loop = () => {
+      tick();
+      timeoutId = setTimeout(loop, TimeUtils.getWallSecondDelay());
+    };
+
+    timeoutId = setTimeout(loop, TimeUtils.getWallSecondDelay());
+
+    return () => clearTimeout(timeoutId);
   }, [nextPrayer, which]);
 
   return {
