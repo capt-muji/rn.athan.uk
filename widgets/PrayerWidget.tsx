@@ -14,7 +14,7 @@ import {
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
-import type { PrayerWidgetDayPrayer, PrayerWidgetProps } from './types';
+import type { PrayerWidgetDayPrayer, PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
  * Home screen widget: next prayer with a live countdown (systemSmall) plus
