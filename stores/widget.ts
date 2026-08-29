@@ -46,6 +46,37 @@ export const readWidgetSettings = (): PrayerWidgetSettings => {
   };
 };
 
+/** Debounce for settings-driven pushes: batches a burst of preference changes
+ *  (color picker drag, toggles) into a single timeline push. */
+const SETTINGS_PUSH_DEBOUNCE_MS = 1000;
+
+let settingsPushTimer: ReturnType<typeof setTimeout> | null = null;
+let settingsSyncInitialized = false;
+
+/**
+ * Keeps the widgets aligned with in-app settings: any change to a
+ * widget-visible preference re-pushes the timeline (debounced), so widgets
+ * follow the app while it is in the foreground instead of waiting for the
+ * next sync. Idempotent; no-op off iOS.
+ */
+export const initWidgetSettingsSync = (): void => {
+  if (settingsSyncInitialized || Platform.OS !== 'ios') return;
+  settingsSyncInitialized = true;
+
+  const store = getDefaultStore();
+  const schedulePush = () => {
+    if (settingsPushTimer !== null) clearTimeout(settingsPushTimer);
+    settingsPushTimer = setTimeout(() => {
+      settingsPushTimer = null;
+      void refreshPrayerWidgets();
+    }, SETTINGS_PUSH_DEBOUNCE_MS);
+  };
+
+  store.sub(countdownBarColorAtom, schedulePush);
+  store.sub(countdownBarShownAtom, schedulePush);
+  store.sub(showArabicNamesAtom, schedulePush);
+};
+
 /**
  * Pushes a fresh timeline to both widgets from the cached prayer data.
  *
