@@ -74,12 +74,32 @@ describe('buildPrayerWidgetTimeline', () => {
     expect(first.prevEpochMs).toBe(createPrayerDatetime('2026-06-15', '13:10').getTime());
   });
 
-  it('creates one entry per prayer boundary plus a midnight rollover per day', () => {
+  it('creates one entry per prayer boundary plus a midnight rollover and stale guard', () => {
     const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), '#ffd000', true);
 
     // Boundaries after now: Asr, Magrib, Isha today + 6 tomorrow = 9
     // Midnights: 1 (between Isha 22:45 and tomorrow's Fajr 03:30)
-    expect(entries).toHaveLength(10);
+    // Stale guard: 1 (after the final prayer)
+    expect(entries).toHaveLength(11);
+  });
+
+  it('ends with a stale guard entry five minutes after the final prayer', () => {
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), '#ffd000', true);
+
+    const finalPrayer = createPrayerDatetime('2026-06-16', '22:45');
+    const last = entries[entries.length - 1];
+
+    expect(last.date.getTime()).toBe(finalPrayer.getTime() + 5 * 60 * 1000);
+    expect(last.props.stale).toBe(true);
+    expect(last.props.dayPrayers).toEqual([]);
+    // Chronologically last
+    expect(last.date.getTime()).toBe(Math.max(...entries.map((entry) => entry.date.getTime())));
+  });
+
+  it('never marks real segment entries as stale', () => {
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), '#ffd000', true);
+
+    expect(entries.slice(0, -1).every((entry) => entry.props.stale !== true)).toBe(true);
   });
 
   it('sorts entries chronologically even when midnight precedes an early prayer', () => {

@@ -30,6 +30,10 @@ import type { PrayerWidgetDayPrayer, PrayerWidgetProps } from '@/widgets/types';
  *  correct without the app opening. */
 const TIMELINE_DAYS = 14;
 
+/** Delay between the final real entry and the stale entry, keeping entries
+ *  within WidgetKit's minimum ~5-minute spacing guidance. */
+const STALE_ENTRY_DELAY_MS = 5 * 60 * 1000;
+
 /**
  * Finds the first London midnight strictly after the given instant.
  * Uses the same zoned-time conversion as prayer datetimes, so DST
@@ -67,15 +71,17 @@ const buildDayList = (prayers: Prayer[], entryDate: Date, prevIndex: number): Pr
 
 /**
  * Builds one timeline entry per prayer boundary plus one per London midnight,
- * starting at `now`. Each entry carries the full props snapshot for its
- * segment: the upcoming prayer, the segment bounds (for the live countdown
- * and progress bar), and that day's prayer list (which rolls over at midnight).
+ * starting at `now`, capped by a terminal stale entry after the final prayer.
+ * Each entry carries the full props snapshot for its segment: the upcoming
+ * prayer, the segment bounds (for the live countdown and progress bar), and
+ * that day's prayer list (which rolls over at midnight).
  *
  * @param now Current instant
  * @param sequence Chronologically sorted prayer sequence (must span `now`)
  * @param accentColor User's countdown bar accent color (hex)
  * @param showArabic Whether Arabic prayer names are enabled
- * @returns Sorted timeline entries, empty when the sequence does not cover `now`
+ * @returns Sorted timeline entries ending with the stale guard, empty when the
+ *  sequence does not cover `now`
  */
 export const buildPrayerWidgetTimeline = (
   now: Date,
@@ -125,6 +131,26 @@ export const buildPrayerWidgetTimeline = (
     cursor = nextPrayer.datetime;
     prevIndex += 1;
   }
+
+  // Terminal stale entry: once every real segment has passed, WidgetKit keeps
+  // re-rendering the final entry — make that a designed "open Athan to
+  // refresh" card instead of silently stale times with clamped 0:00 countdowns.
+  const finalPrayer = prayers[prayers.length - 1];
+  const finalEpochMs = finalPrayer.datetime.getTime();
+  entries.push({
+    date: new Date(finalEpochMs + STALE_ENTRY_DELAY_MS),
+    props: {
+      nextName: finalPrayer.english,
+      nextArabic: finalPrayer.arabic,
+      nextTime: finalPrayer.time,
+      nextEpochMs: finalEpochMs,
+      prevEpochMs: finalEpochMs,
+      accentColor,
+      showArabic,
+      dayPrayers: [],
+      stale: true,
+    },
+  });
 
   // WidgetKit requires chronological entries; the midnight insertion can
   // otherwise land after a boundary that sits just past midnight (early

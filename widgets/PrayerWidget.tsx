@@ -36,8 +36,39 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   const ICON_PRIMARY = '#a5b4fc';
   const TRACK = '#153569';
   const DIVIDER = 'rgba(255, 255, 255, 0.08)';
-
   const isFullColor = environment.widgetRenderingMode == null || environment.widgetRenderingMode === 'fullColor';
+
+  // Terminal state: every timeline entry has passed and the app has not
+  // re-pushed — ask the user to open the app instead of showing stale times.
+  // Tapping a widget opens the app by default, so the card is the button.
+  if (props.stale) {
+    return (
+      <ZStack modifiers={[containerBackground(GRADIENT_START, 'widget')]}>
+        {isFullColor && (
+          <Rectangle
+            modifiers={[
+              foregroundStyle({
+                type: 'linearGradient',
+                colors: [GRADIENT_START, GRADIENT_END],
+                startPoint: { x: 0, y: 0.25 },
+                endPoint: { x: 1, y: 1 },
+              }),
+              clipShape('containerRelativeShape'),
+            ]}
+          />
+        )}
+        <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Image systemName='moon.stars.fill' size={26} color={ICON_PRIMARY} />
+          <Text modifiers={[font({ size: 14, weight: 'semibold' }), foregroundStyle(TEXT_PRIMARY)]}>
+            Times out of date
+          </Text>
+          <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(TEXT_SECONDARY)]}>
+            Open Athan to refresh
+          </Text>
+        </VStack>
+      </ZStack>
+    );
+  }
 
   // Props are JSON-serialized across the bridge — rebuild Dates from epoch ms
   const prevDate = new Date(props.prevEpochMs);
