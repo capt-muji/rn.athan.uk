@@ -1,5 +1,5 @@
 /**
- * Unit tests for stores/widget.ts
+ * Unit tests for shared/widgetTimeline.ts
  *
  * Tests the iOS widget timeline builder:
  * - buildPrayerWidgetTimeline: entry generation, midnight rollovers, sorting
@@ -9,7 +9,7 @@
 
 import { createPrayerDatetime } from '@/shared/time';
 import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
-import { buildPrayerWidgetTimeline } from '@/stores/widget';
+import { buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
 
 // =============================================================================
 // TEST HELPERS
