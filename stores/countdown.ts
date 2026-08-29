@@ -120,7 +120,7 @@ const startSequenceCountdown = (type: ScheduleType) => {
       // Refresh sequence to advance to next prayer
       const transitionStart = Date.now();
       refreshSequence(type);
-      logger.info('TICK: transition', { which, transitionMs: Date.now() - transitionStart });
+      logger.debug('TICK: transition', { which, transitionMs: Date.now() - transitionStart });
 
       // Restart countdown with new next prayer
       return startSequenceCountdown(type);
@@ -136,7 +136,7 @@ const startSequenceCountdown = (type: ScheduleType) => {
       store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
-    logger.info('TICK', { which, wall: nowMs, computed: secondsLeft });
+    logger.debug('TICK', { which, wall: nowMs, computed: secondsLeft });
 
     // Update countdown atom
     store.set(countdownAtom, { timeLeft: secondsLeft, name: upcoming.english });
@@ -206,7 +206,7 @@ const startCountdownOverlay = () => {
     const nowMs = Date.now();
     const secondsLeft = TimeUtils.getSecondsRemaining(selectedPrayer.datetime);
 
-    logger.info('TICK', { which: 'overlay', wall: nowMs, computed: secondsLeft });
+    logger.debug('TICK', { which: 'overlay', wall: nowMs, computed: secondsLeft });
 
     if (nowMs >= selectedPrayer.datetime.getTime()) {
       clearCountdown(CountdownKey.Overlay);
