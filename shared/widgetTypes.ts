@@ -9,6 +9,28 @@
 /** State of a single prayer row in the widget's day list */
 export type PrayerWidgetRowState = 'passed' | 'next' | 'upcoming';
 
+/**
+ * Current schema version of the widget props contract. Bump when the props
+ * shape changes: it lets layouts detect and tolerate entries written by an
+ * older app version still sitting in the shared timeline store.
+ */
+export const WIDGET_PROPS_VERSION = 1;
+
+/**
+ * The slice of in-app settings the widgets honor. The widget has no
+ * configuration of its own — it always mirrors these app preferences.
+ * One function reads this snapshot (see stores/widget.ts), and one entry
+ * field maps per setting.
+ */
+export interface PrayerWidgetSettings {
+  /** Countdown bar accent color (preference_countdownbar_color) */
+  accentColor: string;
+  /** Arabic prayer names next to English (preference_show_arabic_names) */
+  showArabic: boolean;
+  /** Whether the countdown bar renders at all (preference_countdownbar_shown) */
+  showBar: boolean;
+}
+
 /** One row of the day list shown in the medium home screen widget */
 export interface PrayerWidgetDayPrayer {
   /** English prayer name, e.g. "Asr" */
@@ -26,9 +48,11 @@ export interface PrayerWidgetDayPrayer {
  * One timeline entry per segment between consecutive prayers.
  */
 export interface PrayerWidgetProps {
+  /** Props schema version (WIDGET_PROPS_VERSION) for cross-release tolerance */
+  v: number;
   /** English name of the upcoming prayer, e.g. "Asr" */
   nextName: string;
-  /** Arabic name of the upcoming prayer */
+  /** Arabic name of the upcoming prayer (empty string when Arabic names are off) */
   nextArabic: string;
   /** Upcoming prayer time in HH:mm, e.g. "15:32" */
   nextTime: string;
@@ -40,6 +64,8 @@ export interface PrayerWidgetProps {
   accentColor: string;
   /** Whether to display Arabic prayer names (user preference) */
   showArabic: boolean;
+  /** Whether the countdown bar renders (user preference; bar hidden in-app = hidden on widget) */
+  showBar: boolean;
   /** Today's six prayers with per-entry pass/future states (medium widget list) */
   dayPrayers: PrayerWidgetDayPrayer[];
   /**
