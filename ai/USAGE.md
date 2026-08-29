@@ -36,14 +36,14 @@ Offsets are minutes **from launch** (negative = already passed). One
 minute-between-prayers spacing gives a transition every minute for a fast
 repro loop; widen them to watch longer final-countdowns.
 
-**Night-testing constraint (00:00–05:59):** `calculateBelongsToDate`
-(shared/prayer.ts, intended behavior) assigns any Isha in that window to the
-PREVIOUS Islamic day — real London Isha never lands there, but a night-time
-mock does. Effect: at the Magrib→Isha handoff the display date flips a day
-early and the rollover cascade fires before Isha. To test the handoff/rollover
-cleanly, simulate during 06:00–23:59, or at night give `isha` an offset large
-enough to land at/after 06:00. Countdown ticking and pre-Isha transitions are
-unaffected at any hour.
+**Night-testing constraint (00:00–05:59):** the intended midnight-crossing
+rules apply — `adjustPrayerDateForMidnightCrossing` moves a Standard Isha in
+that window to *tomorrow's* datetime, and `calculateBelongsToDate` assigns it
+to *yesterday's* Islamic day. Correct for a real post-midnight Isha (real
+London Isha never lands there), but a night-time mock triggers both: at the
+Magrib→Isha handoff the countdown skips to the next day's Fajr and the
+rollover cascade fires early. Test the handoff/rollover during 06:00–23:59.
+Countdown ticking and pre-Isha transitions are unaffected at any hour.
 
 ### Rerun the simulation (iPhone 16 sim, Release, mock data)
 
