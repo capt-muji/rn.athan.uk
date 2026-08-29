@@ -8,7 +8,6 @@
 
 import { createStore, atom as mockAtom } from 'jotai';
 
-import * as TimeUtils from '@/shared/time';
 import { refreshSequence } from '@/stores/schedule';
 
 // =============================================================================
@@ -16,8 +15,9 @@ import { refreshSequence } from '@/stores/schedule';
 // =============================================================================
 
 jest.mock('@/shared/time', () => ({
-  createLondonDate: jest.fn(() => new Date('2026-01-20T10:00:00')),
-  getSecondsBetween: jest.fn(() => 3600),
+  // Delegate to real semantics so faked Date.now drives every calculation
+  getSecondsRemaining: (target: Date) => Math.max(1, Math.ceil((target.getTime() - Date.now()) / 1000)),
+  getWallSecondDelay: () => 1000 - (Date.now() % 1000),
 }));
 
 const mockStandardSequenceAtom = mockAtom(null);
@@ -27,7 +27,7 @@ jest.mock('@/stores/schedule', () => ({
   refreshSequence: jest.fn(),
   getNextPrayer: jest.fn(() => ({
     english: 'Fajr',
-    datetime: new Date('2026-01-20T06:15:00'),
+    datetime: new Date('2026-01-20T06:15:00Z'),
   })),
   getSequenceAtom: jest.fn((type: string) => (type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom)),
   standardDisplayDateAtom: mockAtom('2026-01-20'),
@@ -146,27 +146,49 @@ describe('countdown atom behavior', () => {
 // =============================================================================
 
 describe('sequence countdown transition (clock-based)', () => {
-  it('refreshes the sequence when the clock reaches the prayer time, not on a decremented zero', () => {
+  it('refreshes the sequence when the wall clock reaches the prayer time, never displaying 0s', () => {
     jest.useFakeTimers();
 
-    // Prayer at 06:15:00; the clock starts 2s before it and advances one tick at a time.
-    // Both Standard and Extra tickers read the clock (2 inits + 2 ticks per advance).
-    const clockAt = (time: string) => (TimeUtils.createLondonDate as jest.Mock).mockReturnValueOnce(new Date(time));
-    clockAt('2026-01-20T06:14:58'); // standard initial countdown state
-    clockAt('2026-01-20T06:14:58'); // extra initial countdown state
-    clockAt('2026-01-20T06:14:59'); // tick 1: standard
-    clockAt('2026-01-20T06:14:59'); // tick 1: extra
-    (TimeUtils.createLondonDate as jest.Mock).mockReturnValue(new Date('2026-01-20T06:15:00')); // tick 2 onward
-    (TimeUtils.getSecondsBetween as jest.Mock).mockReturnValue(2);
+    // Prayer at 06:15:00Z; system clock starts exactly on 06:14:58Z (2s away).
+    // Fake timers fake Date.now, so the tickers' wall-second scheduling is
+    // deterministic: first tick at +1000ms, then one per second.
+    jest.setSystemTime(new Date('2026-01-20T06:14:58.000Z'));
+
+    // The store module writes to jotai's default store — read the same one
+    const { getDefaultStore } = require('jotai/vanilla');
+    const defaultStore = getDefaultStore();
 
     startCountdowns();
 
-    jest.advanceTimersByTime(1000); // tick 1: one second left, no transition yet
+    // Initial state before any tick: ceil(2s) = 2, never 0
+    expect(defaultStore.get(standardCountdownAtom).timeLeft).toBe(2);
+
+    jest.advanceTimersByTime(1000); // tick at 06:14:59: 1s left, no transition
+    expect(refreshSequence).not.toHaveBeenCalled();
+    expect(defaultStore.get(standardCountdownAtom).timeLeft).toBe(1);
+
+    jest.advanceTimersByTime(999); // still inside 06:14:59 (tick fired at :59.000)
     expect(refreshSequence).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(1000); // tick 2: the clock has reached the prayer time
+    jest.advanceTimersByTime(1); // tick at 06:15:00: the clock reached the prayer
     expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Standard);
     expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Extra);
+
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
+  it('holds the final digit at 1s across the boundary tick instead of 0s', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:59.500Z'));
+
+    const { getDefaultStore } = require('jotai/vanilla');
+    const defaultStore = getDefaultStore();
+
+    startCountdowns();
+
+    // 500ms remain: ceil rounds up to the digit being lived through -> 1
+    expect(defaultStore.get(standardCountdownAtom).timeLeft).toBe(1);
 
     jest.clearAllTimers();
     jest.useRealTimers();
