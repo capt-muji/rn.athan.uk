@@ -425,6 +425,6 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   coordinates) is deliberately KEPT as-is — it was correct pre-migration and the
   press-time re-measure alternative was considered and rejected by the owner
   (unnecessary inefficiency).
-- **Verification**: owner manual pass on a clean Release build (fresh install,
-  MMKV wiped) — overlay must sit pixel-perfectly on the tapped row on both pages,
+- **Verification**: owner-confirmed 2026-08-29 on a clean debug build (fresh prebuild,
+  fresh install, MMKV wiped) — overlay pixel-perfect on tapped rows on both pages,
   pager swipe + overdrag intact.
