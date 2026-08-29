@@ -22,10 +22,6 @@ import type { Prayer, PrayerSequence } from '@/shared/types';
 import type { PrayerWidgetDayPrayer, PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
-/** Delay between the final real entry and the stale entry, keeping entries
- *  within WidgetKit's minimum ~5-minute spacing guidance. */
-export const STALE_ENTRY_DELAY_MS = 5 * 60 * 1000;
-
 /**
  * Minimum spacing between adjacent timeline entries. WidgetKit guidance asks
  * for entries "at least about 5 minutes apart" — closer entries may be
@@ -33,7 +29,6 @@ export const STALE_ENTRY_DELAY_MS = 5 * 60 * 1000;
  * day-list rollover.
  */
 export const MIN_ENTRY_SPACING_MS = 5 * 60 * 1000;
-
 /**
  * Finds the first London midnight strictly after the given instant.
  * Uses the same zoned-time conversion as prayer datetimes, so DST
@@ -168,10 +163,13 @@ export const buildPrayerWidgetTimeline = (
   // Terminal stale entry: once every real segment has passed, WidgetKit keeps
   // re-rendering the final entry — make that a designed "open Athan to
   // refresh" card instead of silently stale times with clamped 0:00 countdowns.
+  // It flips exactly at the final prayer like every other boundary, pushed to
+  // the minimum spacing if the last emitted entry sits pathologically close.
   const finalPrayer = prayers[prayers.length - 1];
   const finalEpochMs = finalPrayer.datetime.getTime();
+  const staleMs = Math.max(finalEpochMs, (lastEmittedMs ?? finalEpochMs) + MIN_ENTRY_SPACING_MS);
   entries.push({
-    date: new Date(finalEpochMs + STALE_ENTRY_DELAY_MS),
+    date: new Date(staleMs),
     props: {
       v: WIDGET_PROPS_VERSION,
       nextName: finalPrayer.english,
