@@ -590,7 +590,7 @@ Read ai/prompts/document.md
 **Recent Decisions:**
 
 - [2026-01-26] Background Task Notification Refresh: Dual-layer refresh with 4-hour foreground and 3-hour background task using expo-background-task (see ai/adr/007-background-task-notification-refresh.md)
-- [2026-08-29] iOS Widgets: Home screen + Lock Screen widgets via expo-widgets@~57.0.15. `stores/widget.ts` pushes a 14-day timeline (prayer boundaries + midnight rollovers) from `refreshPrayerWidgets()`, called from `sync()` and `_rescheduleAllNotifications()`. Live ticking between boundaries via SwiftUI `timerInterval` (Text + ProgressView). Widget layouts live in `widgets/` and are registered via the expo-widgets config plugin in app.json (widget kinds: `PrayerWidget`, `PrayerLockWidget`; app group `group.com.mugtaba.athan`).
+- [2026-08-29] iOS Widgets: Home screen + Lock Screen widgets via expo-widgets@~57.0.15. `stores/widget.ts` pushes a 14-day timeline (prayer boundaries + midnight rollovers) from `refreshPrayerWidgets()`, called from `sync()` and `_rescheduleAllNotifications()`. Live ticking between boundaries via SwiftUI `timerInterval` (Text + ProgressView). Widget layouts live in `widgets/` and are registered via the expo-widgets config plugin in app.json (widget kinds: `PrayerWidget`, `PrayerLockWidget`; app group `group.com.mugtaba.athan`). Terminal stale-guard entry (final prayer + 5 min, `stale: true` props) renders an "open Athan to refresh" card once the timeline runs dry — deliberate re-engagement guard given the 2-day notification window (background task keeps notifications alive independently).
 
 **Widget architecture invariants (expo-widgets):**
 
