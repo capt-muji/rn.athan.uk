@@ -65,6 +65,7 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
     ),
   }));
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: player ref is stable for the sound's lifetime; effect intentionally keyed on playback-state changes
   useEffect(() => {
     if (playingIndex !== index && status.playing) {
       player.pause();

@@ -48,7 +48,7 @@ export default function BottomSheetSound() {
     } else {
       translateY.value = withTiming(targetY, { duration: ANIMATION.duration });
     }
-  }, [currentSelection, itemHeight]);
+  }, [currentSelection, itemHeight, translateY]);
 
   const indicatorStyle = useAnimatedStyle(
     () => ({
@@ -72,7 +72,7 @@ export default function BottomSheetSound() {
     await rescheduleAllNotifications();
 
     setTempSoundSelection(null);
-  }, [tempSoundSelection]);
+  }, [tempSoundSelection, clearAudio]);
 
   return (
     <Sheet
@@ -94,6 +94,7 @@ export default function BottomSheetSound() {
           {/* Sound items */}
           {ALL_AUDIOS.map((audio, index) => (
             <SoundItem
+              // biome-ignore lint/suspicious/noArrayIndexKey: ALL_AUDIOS is a static sound list, never reordered or filtered
               key={index}
               index={index}
               audio={audio as AudioSource}

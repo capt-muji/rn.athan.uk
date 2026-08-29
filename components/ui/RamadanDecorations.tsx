@@ -288,6 +288,7 @@ export default function RamadanDecorations() {
   const starHighestY = Math.min(...HANGINGS.filter((h) => h.type === 'star').map((h) => h.lineLen * vScale + h.size));
   const cloudConfig = useCloudConfigs(moonR, moonCy, moonBobMax, width, starHighestY);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: bobs/glows/cloudProgs arrays are re-created each render; their stable shared-value elements are the listed deps
   useEffect(() => {
     const ease = Easing.inOut(Easing.ease);
 
@@ -397,6 +398,7 @@ export default function RamadanDecorations() {
 
         {HANGINGS.map((star, i) => (
           <HangingWire
+            // biome-ignore lint/suspicious/noArrayIndexKey: HANGINGS is a static decorative config, never reordered
             key={i}
             x={width * star.xPct}
             lineLen={star.lineLen * vScale}
@@ -789,6 +791,7 @@ function MistyCloud({
             const ly = (svgH - lh) / 2;
             return (
               <G
+                // biome-ignore lint/suspicious/noArrayIndexKey: static cloud layer config, never reordered
                 key={i}
                 transform={`translate(${lx}, ${ly}) scale(${(lw / 160).toFixed(3)}, ${(lh / 100).toFixed(3)})`}>
                 <Path d={path} fill={fill} opacity={opacity * layer.opacityMul} />
@@ -810,6 +813,7 @@ function MoonSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: number }
   const p4 = useSharedValue(0);
   const progress = [p0, p1, p2, p3, p4];
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: progress array is re-created each render; its stable shared-value elements are the listed deps
   useEffect(() => {
     MOON_SPARKS.forEach((spark, i) => {
       progress[i].value = withDelay(
@@ -833,6 +837,7 @@ function MoonSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: number }
         const sparkY = cy + Math.sin(rad) * glowR * spark.dist;
         return (
           <SparkDot
+            // biome-ignore lint/suspicious/noArrayIndexKey: MOON_SPARKS is a static decorative config, never reordered
             key={i}
             cx={sparkX}
             baseCy={sparkY}
@@ -859,6 +864,7 @@ function LanternSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: numbe
   const p7 = useSharedValue(0);
   const progress = [p0, p1, p2, p3, p4, p5, p6, p7];
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: progress array is re-created each render; its stable shared-value elements are the listed deps
   useEffect(() => {
     SPARKS.forEach((spark, i) => {
       progress[i].value = withDelay(
@@ -882,6 +888,7 @@ function LanternSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: numbe
         const sparkY = cy + Math.sin(rad) * glowR * spark.dist;
         return (
           <SparkDot
+            // biome-ignore lint/suspicious/noArrayIndexKey: SPARKS is a static decorative config, never reordered
             key={i}
             cx={sparkX}
             baseCy={sparkY}
