@@ -11,6 +11,9 @@ const isLoggingEnabled = () => {
 
 const pinoLogger = pino({
   enabled: isLoggingEnabled(),
+  // Debug emits in dev/local builds only (logging disabled in prod/preview);
+  // the countdown TICK instrumentation logs at debug level
+  level: 'debug',
   transport: {
     target: 'pino-pretty',
     options: {
