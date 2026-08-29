@@ -49,6 +49,7 @@ export default function List({ type }: Props) {
   };
 
   // Re-measure when countdown bar visibility changes (affects list position)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: measureList is re-created each render; countdownBarShown/isStandard are the deliberate re-measure triggers
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
