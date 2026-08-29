@@ -5,6 +5,7 @@ import { initializeNotifications } from '@/shared/notifications';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { sync } from '@/stores/sync';
 import { setRefreshUI } from '@/stores/ui';
+import { initWidgetSettingsSync } from '@/stores/widget';
 
 /**
  * Initializes app state change listeners
@@ -12,6 +13,9 @@ import { setRefreshUI } from '@/stores/ui';
  */
 export const initializeListeners = (checkPermissions: () => Promise<boolean>) => {
   let previousAppState = AppState.currentState;
+
+  // Widgets follow in-app settings while the app runs (debounced re-push)
+  initWidgetSettingsSync();
 
   // Handle both initial state and state changes
   const handleAppStateChange = (newState: AppStateStatus) => {
