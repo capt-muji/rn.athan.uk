@@ -122,6 +122,7 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 - The app pushes a **14-day timeline** (one entry per prayer boundary plus a midnight rollover) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, and the 3-hour background task.
 - Between boundaries the widgets stay live on their own via SwiftUI timer intervals — the countdown ticks every second and the progress bar fills continuously with **zero app involvement and no refresh budget**.
 - Entries transition automatically at each prayer time and the Medium widget's day list rolls over at London midnight (DST-safe via the same zoned-time logic as the app).
+- If the app stays unopened past the full timeline, the widgets switch to a **"Times out of date — open Athan to refresh"** card instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
 
 **Widget preferences:** the widget honours the app's countdown bar accent colour (`preference_countdownbar_color`) and Arabic-names setting, keeping it visually identical to the app.
 
