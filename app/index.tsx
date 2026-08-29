@@ -22,6 +22,7 @@ export default function Index() {
   const { state } = useAtomValue(syncLoadable);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: mount-only initialization — checkInitialPermissions is a per-render function, intentionally captured once; re-adding it would re-register listeners on every render
   useEffect(() => {
     // Initialize notifications, register background task, and create channel on first load
     initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
