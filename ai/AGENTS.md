@@ -416,6 +416,22 @@ yarn format            # Biome: format + safe lint fixes + organize imports
 yarn format:check      # Check formatting/lint without changing files
 ```
 
+### Versioning (bump on EVERY commit)
+
+**The rule:** every commit, no matter how small, ships with a version bump in **BOTH `app.json` (`expo.version`) AND `package.json` (`version`)** — always kept in sync:
+
+| Change type | Bump | Example |
+| --- | --- | --- |
+| Any small tweak, fix, docs/code change (every commit) | **Patch** (3rd segment +1) | `1.7.0` → `1.7.1` → `1.7.2` |
+| Completed feature / big task / whole plan | **Minor** (2nd segment +1, patch reset) | `1.6.x` → `1.7.0` (the iOS widgets plan) |
+| Breaking change | **Major** (1st segment +1) | `1.x` → `2.0.0` |
+
+- **Format: strict `MAJOR.MINOR.PATCH`** — plain integers, no leading zeros, no `v` prefix, no `-beta`/`-rc` suffixes. Write `1.7.1`, never `1.7.01` / `v1.7.1` / `1.7.1-beta`.
+- **Why this format:** the update popup (`device/updates.ts`) compares the installed version (`Constants.expoConfig.version` ← `app.json`) against the remote version using `compareVersions` in `shared/versionUtils.ts` — numeric, per-segment, dot-separated (`"1.7.10" > "1.7.1"`, missing segments = 0). Leading zeros happen to parse (`"1.7.01"` reads as `1.7.1`) but are forbidden anyway: Apple/Google stores and iTunes Lookup require plain numeric dotted versions, and consistency avoids ever having two spellings of the same version in the wild.
+- **Side effect (intended):** a version increase triggers `handleAppUpgrade()` on first launch after update — prayer cache wipe + refetch, preference migration. Never "skip" the bump to avoid this.
+- **NEVER touch `releases.json` from a feature branch or session** — the owner updates it manually on `main` after each store release. It drives the update popup for Android + UAT iOS (production iOS reads the live App Store version via iTunes Lookup automatically).
+- Commit messages are prefixed with the new version (repo convention): `1.7.1 - fix: ...`.
+
 ### File-Scoped (Fast)
 
 ```bash
@@ -604,6 +620,7 @@ Read ai/prompts/document.md
 
 ## 12. Change / PR Checklist
 
+- [ ] Version bumped per Versioning policy (§6): patch in `app.json` + `package.json` for every commit; minor for a completed feature/plan; `releases.json` untouched
 - [ ] Diff is small and focused
 - [ ] File-scoped checks green (lint/format/typecheck)
 - [ ] Consistency verified: Code matches existing patterns
