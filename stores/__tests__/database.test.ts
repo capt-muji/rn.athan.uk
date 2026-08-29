@@ -23,6 +23,7 @@ import {
   getAllScheduledNotificationsForPrayer,
   getAllScheduledNotificationsForSchedule,
   getAllScheduledRemindersForPrayer,
+  getAllScheduledRemindersForSchedule,
   getAllWithPrefix,
   getItem,
   getPrayerByDate,
@@ -478,6 +479,31 @@ describe('reminder scheduling records', () => {
     it('returns empty array when no reminders exist', () => {
       database.clearAll();
       const result = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 5);
+      expect(result).toEqual([]);
+    });
+  });
+
+  describe('getAllScheduledRemindersForSchedule', () => {
+    beforeEach(() => {
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('std-0'));
+      addOneScheduledReminderForPrayer(ScheduleType.Standard, 1, createMockReminder('std-1'));
+      addOneScheduledReminderForPrayer(ScheduleType.Extra, 0, createMockReminder('ext-0'));
+    });
+
+    it('returns all reminders for Standard schedule across prayers', () => {
+      const result = getAllScheduledRemindersForSchedule(ScheduleType.Standard);
+      expect(result).toHaveLength(2);
+      expect(result.map((reminder) => reminder.id).sort()).toEqual(['std-0', 'std-1']);
+    });
+
+    it('returns all reminders for Extra schedule', () => {
+      const result = getAllScheduledRemindersForSchedule(ScheduleType.Extra);
+      expect(result).toHaveLength(1);
+    });
+
+    it('returns empty array when no reminders exist', () => {
+      database.clearAll();
+      const result = getAllScheduledRemindersForSchedule(ScheduleType.Standard);
       expect(result).toEqual([]);
     });
   });
