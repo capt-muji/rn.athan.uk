@@ -16,6 +16,62 @@ Read ai/AGENTS.md and begin as Orchestrator.
 
 ---
 
+## 🎯 Mock Cascade Simulation (countdown/transition testing)
+
+The mock feed (`mocks/simple.ts`, active whenever `EXPO_PUBLIC_ENV` is not
+`prod`/`preview` — the default for local Release builds) builds TODAY's prayer
+times **relative to app launch**. Edit the offsets to stage transitions:
+
+```ts
+// mocks/simple.ts — [today] block
+fajr: addMinutes(-10),   // passed 10m before launch
+sunrise: addMinutes(1),  // transition 1m after launch
+dhuhr: addMinutes(2),    // 2m
+asr: addMinutes(3),      // 3m
+magrib: addMinutes(4),   // 4m
+isha: addMinutes(5),     // 5m
+```
+
+Offsets are minutes **from launch** (negative = already passed). One
+minute-between-prayers spacing gives a transition every minute for a fast
+repro loop; widen them to watch longer final-countdowns.
+
+### Rerun the simulation (iPhone 16 sim, Release, mock data)
+
+```bash
+# 1. Rebuild + install (first run ~15 min; incremental ~4-6 min)
+npx expo run:ios --configuration Release
+
+# 2. Clean relaunch — IMPORTANT: bypasses the dev-client URL the build's
+#    auto-launch opens (which parks the app on a "connecting to Metro" screen)
+UDID=8FB33B9F-A3D4-4776-A4E6-4BE17228E9DC
+xcrun simctl terminate $UDID com.mugtaba.athan 2>/dev/null; sleep 2
+date "+%H:%M:%S.%N LAUNCH (T0)"
+xcrun simctl launch $UDID com.mugtaba.athan
+
+# 3. (Optional) stream the countdown TICK debug logs while transitions play out
+xcrun simctl spawn $UDID log stream --predicate 'eventMessage CONTAINS "TICK"' --level debug | tee /tmp/tick-stream.txt
+# ...watch N minutes, then Ctrl-C. (Debug entries are stream-only —
+#  `log show` cannot retrieve them afterwards; `log show --info` works
+#  for info-level history.)
+
+# 4. On-screen check without screenshots: the a11y tree exposes the countdown
+#    text directly (e.g. "Fajr", "1m 42s", "Magrib 1m ago")
+```
+
+Transitions land on the wall second containing each target (mock targets are
+launch-relative, i.e. arbitrary sub-second phase; real prayer times are
+minute-exact, so real transitions fire within ~20ms of the :00 boundary).
+
+### What healthy looks like
+
+- TICK `phase` (=`wall % 1000`) stays 10–30ms — digits flip with the status bar
+- `computed` counts down to 1 and swaps to the next prayer at the boundary —
+  never 0 (display contract)
+- Transitions (`TICK: transition`) show small `transitionMs`
+
+---
+
 ## 📋 Task Templates
 
 ### 1. New Feature (Planning + Implementation)
