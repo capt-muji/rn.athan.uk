@@ -69,7 +69,7 @@ export default function Overlay() {
       backgroundOpacity.animate(0, { duration: ANIMATION.duration });
       dateOpacity.animate(0, { duration: ANIMATION.duration });
     }
-  }, [overlay.isOn]);
+  }, [overlay.isOn, backgroundOpacity.animate, dateOpacity.animate]);
 
   const computedStyleContainer: ViewStyle = {
     pointerEvents: overlay.isOn ? 'auto' : 'none',

@@ -54,7 +54,7 @@ export default function PrayerAgo({ type }: Props) {
         easing: Easing.linear,
       });
     }
-  }, [minutesElapsed, prayerAgoReady]);
+  }, [minutesElapsed, prayerAgoReady, isRecentValue]);
 
   // Fade out when overlay opens
   const prayerAgoOpacity = useAnimatedStyle(() => ({
