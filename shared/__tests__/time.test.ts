@@ -13,6 +13,8 @@ import {
   getLastThirdOfNight,
   getMidnightTime,
   getSecondsBetween,
+  getSecondsRemaining,
+  getWallSecondDelay,
   isDateYesterdayOrFuture,
   isDecember,
   isDecorationSeason,
@@ -577,5 +579,93 @@ describe('getMidnightTime edge cases', () => {
     const result = getMidnightTime('21:15', '02:45');
     expect(result).toBeDefined();
     expect(result).toMatch(/^\d{2}:\d{2}$/);
+  });
+});
+
+describe('getSecondsRemaining (ceil display contract)', () => {
+  const targetFromNow = (msAhead: number) => new Date(Date.now() + msAhead);
+  let nowSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    nowSpy = jest.spyOn(Date, 'now').mockReturnValue(1_700_000_000_000);
+  });
+
+  afterEach(() => {
+    nowSpy.mockRestore();
+  });
+
+  it('rounds up: 2.5s remaining displays as 3s', () => {
+    expect(getSecondsRemaining(targetFromNow(2500))).toBe(3);
+  });
+
+  it('exact second boundaries are exact: 2.0s remaining displays as 2s', () => {
+    expect(getSecondsRemaining(targetFromNow(2000))).toBe(2);
+  });
+
+  it('whole minutes flip on the boundary: 59.9995s remaining displays as 60s', () => {
+    expect(getSecondsRemaining(targetFromNow(59_999.5))).toBe(60);
+  });
+
+  it('final second always displays 1s: 0.5s remaining', () => {
+    expect(getSecondsRemaining(targetFromNow(500))).toBe(1);
+  });
+
+  it('never displays 0s: 0ms remaining holds at 1s', () => {
+    expect(getSecondsRemaining(targetFromNow(0))).toBe(1);
+  });
+
+  it('holds at 1s once the target has passed (latch until caller advances target)', () => {
+    expect(getSecondsRemaining(targetFromNow(-5000))).toBe(1);
+  });
+});
+
+describe('getWallSecondDelay (phase alignment)', () => {
+  let nowSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    nowSpy = jest.spyOn(Date, 'now');
+  });
+
+  afterEach(() => {
+    nowSpy.mockRestore();
+  });
+
+  it('returns ms to the next :000 boundary', () => {
+    nowSpy.mockReturnValue(1700000001234);
+    expect(getWallSecondDelay()).toBe(766);
+  });
+
+  it('lands shortly after the boundary, never at zero delay', () => {
+    nowSpy.mockReturnValue(1700000001000);
+    expect(getWallSecondDelay()).toBe(1000);
+  });
+
+  it('always returns a value in (0, 1000]', () => {
+    nowSpy.mockReturnValue(1700000000999);
+    const delay = getWallSecondDelay();
+    expect(delay).toBeGreaterThan(0);
+    expect(delay).toBeLessThanOrEqual(1000);
+  });
+});
+
+describe('countdown targets are true UTC instants (Fix A foundation)', () => {
+  it('createPrayerDatetime returns the exact UTC instant (GMT, winter)', () => {
+    const datetime = createPrayerDatetime('2026-01-18', '06:12');
+    expect(datetime.toISOString()).toBe('2026-01-18T06:12:00.000Z');
+  });
+
+  it('createPrayerDatetime returns the exact UTC instant (BST +01:00, summer)', () => {
+    const datetime = createPrayerDatetime('2026-06-15', '06:12');
+    expect(datetime.toISOString()).toBe('2026-06-15T05:12:00.000Z');
+  });
+
+  it('diffing a target against Date.now() needs no timezone conversion (offsets cancel)', () => {
+    // Target 13:00 BST = 12:00 UTC; now 11:00 UTC -> exactly 1h remaining
+    const datetime = createPrayerDatetime('2026-06-15', '13:00');
+    const fakeNow = new Date('2026-06-15T11:00:00Z').getTime();
+    const nowSpy = jest.spyOn(Date, 'now').mockReturnValue(fakeNow);
+    const seconds = getSecondsRemaining(datetime);
+    nowSpy.mockRestore();
+    expect(seconds).toBe(3600);
   });
 });
