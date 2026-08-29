@@ -26,6 +26,14 @@ import type { PrayerWidgetDayPrayer, PrayerWidgetProps } from '@/shared/widgetTy
 export const STALE_ENTRY_DELAY_MS = 5 * 60 * 1000;
 
 /**
+ * Minimum spacing between adjacent timeline entries. WidgetKit guidance asks
+ * for entries "at least about 5 minutes apart" — closer entries may be
+ * coalesced, which would silently skip a prayer-boundary flip or a midnight
+ * day-list rollover.
+ */
+export const MIN_ENTRY_SPACING_MS = 5 * 60 * 1000;
+
+/**
  * Finds the first London midnight strictly after the given instant.
  * Uses the same zoned-time conversion as prayer datetimes, so DST
  * transitions resolve to the correct instant.
@@ -65,7 +73,10 @@ const buildDayList = (prayers: Prayer[], entryDate: Date, prevIndex: number): Pr
  * starting at `now`, capped by a terminal stale entry after the final prayer.
  * Each entry carries the full props snapshot for its segment: the upcoming
  * prayer, the segment bounds (for the live countdown and progress bar), and
- * that day's prayer list (which rolls over at midnight).
+ * that day's prayer list (which rolls over at midnight). Adjacent entries are
+ * kept at least MIN_ENTRY_SPACING_MS apart (WidgetKit guidance): imminent
+ * midnights are skipped and the first entry is backdated when a boundary is
+ * too close to `now`.
  *
  * @param now Current instant
  * @param sequence Chronologically sorted prayer sequence (must span `now`)
@@ -108,15 +119,40 @@ export const buildPrayerWidgetTimeline = (
 
   let cursor = now;
   let prevIndex = firstNextIndex - 1;
+  let lastEmittedMs: number | null = null;
 
   while (prevIndex + 1 < prayers.length) {
     const nextPrayer = prayers[prevIndex + 1];
+    const midnight = nextLondonMidnightAfter(cursor);
+    const midnightMs = midnight.getTime();
+    const boundaryMs = nextPrayer.datetime.getTime();
+
+    // A midnight rollover is worth an entry only when it keeps the minimum
+    // spacing on both sides: after the previously emitted entry, and before
+    // the boundary that follows. When skipped, the day list simply rolls over
+    // at the next boundary entry instead.
+    const midnightEmitted =
+      midnightMs < boundaryMs &&
+      (lastEmittedMs === null || midnightMs - lastEmittedMs >= MIN_ENTRY_SPACING_MS) &&
+      boundaryMs - midnightMs >= MIN_ENTRY_SPACING_MS;
+
+    // The first entry must date at or before `now` so the widget has content
+    // immediately, but the next emitted entry still needs its 5 minutes: when
+    // a midnight or boundary is imminent, backdate the first entry. An
+    // earlier-dated entry is already "active" at push time, so this is safe.
+    if (lastEmittedMs === null) {
+      const firstFollowingMs = midnightEmitted ? Math.min(midnightMs, boundaryMs) : boundaryMs;
+      if (firstFollowingMs - cursor.getTime() < MIN_ENTRY_SPACING_MS) {
+        cursor = new Date(firstFollowingMs - MIN_ENTRY_SPACING_MS);
+      }
+    }
 
     entries.push(makeEntry(cursor, prevIndex));
+    lastEmittedMs = cursor.getTime();
 
-    const midnight = nextLondonMidnightAfter(cursor);
-    if (midnight.getTime() < nextPrayer.datetime.getTime()) {
+    if (midnightEmitted) {
       entries.push(makeEntry(midnight, prevIndex));
+      lastEmittedMs = midnightMs;
     }
 
     cursor = nextPrayer.datetime;
