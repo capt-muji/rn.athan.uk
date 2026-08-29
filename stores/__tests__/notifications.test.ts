@@ -68,6 +68,12 @@ jest.mock('@/shared/logger', () => ({
   isTest: () => true,
 }));
 
+// Mock Widget store: notification reschedules also push widget timelines;
+// stub it so tests never load the widget extension modules
+jest.mock('@/stores/widget', () => ({
+  refreshPrayerWidgets: jest.fn(async () => undefined),
+}));
+
 // =============================================================================
 // getPrayerArrays HELPER TESTS
 // =============================================================================
