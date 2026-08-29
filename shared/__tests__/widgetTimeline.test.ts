@@ -93,13 +93,15 @@ describe('buildPrayerWidgetTimeline', () => {
     expect(entries).toHaveLength(11);
   });
 
-  it('ends with a stale guard entry five minutes after the final prayer', () => {
+  it('ends with a stale guard entry exactly at the final prayer boundary', () => {
     const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
 
     const finalPrayer = createPrayerDatetime('2026-06-16', '22:45');
     const last = entries[entries.length - 1];
 
-    expect(last.date.getTime()).toBe(finalPrayer.getTime() + 5 * 60 * 1000);
+    // The final prayer flips straight to the stale card (the last real entry
+    // is hours earlier, so the minimum spacing never delays it here)
+    expect(last.date.getTime()).toBe(finalPrayer.getTime());
     expect(last.props.stale).toBe(true);
     expect(last.props.dayPrayers).toEqual([]);
     // Chronologically last
