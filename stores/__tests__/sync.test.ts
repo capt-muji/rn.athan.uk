@@ -198,6 +198,32 @@ describe('sync', () => {
     expect(mockStartCountdowns).toHaveBeenCalled();
   });
 
+  it('waits for the widget timeline push before sync resolves', async () => {
+    let resolveRefresh: (() => void) | undefined;
+    mockRefreshPrayerWidgets.mockImplementation(
+      () =>
+        new Promise<void>((resolve) => {
+          resolveRefresh = resolve;
+        })
+    );
+
+    let syncResolved = false;
+    const syncPromise = sync().then(() => {
+      syncResolved = true;
+      return 'done';
+    });
+
+    // Flush every pending microtask: if initializeAppState were
+    // fire-and-forget, sync() would already have resolved here
+    await Promise.resolve();
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(syncResolved).toBe(false);
+
+    resolveRefresh?.();
+    await expect(syncPromise).resolves.toBe('done');
+  });
+
   it('throws on failure', async () => {
     const error = new Error('Network failure');
     mockHandleAppUpgrade.mockImplementation(() => {

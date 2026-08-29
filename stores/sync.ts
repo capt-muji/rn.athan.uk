@@ -202,7 +202,10 @@ export const sync = async () => {
 
     const date = TimeUtils.createLondonDate();
 
-    initializeAppState(date);
+    // Awaited so callers (and syncLoadable) see completion only after the
+    // widget timeline push has finished — a fire-and-forget here previously
+    // surfaced push errors as unhandled rejections
+    await initializeAppState(date);
   } catch (error) {
     logger.error('SYNC: Failed', { error });
     throw error;
