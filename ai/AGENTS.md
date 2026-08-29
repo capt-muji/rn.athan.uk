@@ -76,7 +76,12 @@
 │   ├── schedule.ts        # Schedule atoms
 │   ├── overlay.ts         # Overlay state
 │   ├── version.ts         # App version detection & cache clearing
-│   └── ui.ts              # UI state (date, settings)
+│   ├── ui.ts              # UI state (date, settings)
+│   └── widget.ts          # iOS widget timeline builder + pusher (expo-widgets)
+├── widgets/               # iOS widget layouts (expo-widgets + @expo/ui SwiftUI)
+│   ├── PrayerWidget.tsx   # Home screen widget (systemSmall + systemMedium)
+│   ├── LockPrayerWidget.tsx # Lock Screen widget (accessoryCircular/Rectangular/Inline)
+│   └── types.ts           # Shared widget prop contract (JSON-safe, epoch ms dates)
 ├── hooks/                 # Custom React hooks
 │   ├── useAnimation.ts    # Reanimated animation hook
 │   ├── useNotification.ts # Notification management
@@ -585,6 +590,15 @@ Read ai/prompts/document.md
 **Recent Decisions:**
 
 - [2026-01-26] Background Task Notification Refresh: Dual-layer refresh with 4-hour foreground and 3-hour background task using expo-background-task (see ai/adr/007-background-task-notification-refresh.md)
+- [2026-08-29] iOS Widgets: Home screen + Lock Screen widgets via expo-widgets@~57.0.15. `stores/widget.ts` pushes a 14-day timeline (prayer boundaries + midnight rollovers) from `refreshPrayerWidgets()`, called from `sync()` and `_rescheduleAllNotifications()`. Live ticking between boundaries via SwiftUI `timerInterval` (Text + ProgressView). Widget layouts live in `widgets/` and are registered via the expo-widgets config plugin in app.json (widget kinds: `PrayerWidget`, `PrayerLockWidget`; app group `group.com.mugtaba.athan`).
+
+**Widget architecture invariants (expo-widgets):**
+
+- The `'widget'` directive makes Babel serialize ONLY the function body into a string; the widget extension evaluates it in a separate JS runtime where `@expo/ui` components/modifiers are globals. Never reference module-scope values inside a widget function; helpers must live inside the function body.
+- Widget props are JSON-only — pass epoch ms, never Date objects; rebuild Dates inside the widget.
+- Widget modules MUST be statically imported (dynamic `import()` creates lazy Metro bundles where the widget transform does not apply, and the native constructor then throws `ERR_ARGUMENT_CAST`).
+- `updateTimeline` requires the layout to be registered first (a side effect of importing the widget module).
+- Keep entries ≥5 min apart (WidgetKit rule) and sorted chronologically; `buildPrayerWidgetTimeline` handles both.
 
 **See Also:** `ai/adr/` for architectural decision records.
 
