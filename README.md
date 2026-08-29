@@ -119,12 +119,18 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 **Always in sync, never stale:**
 
-- The app pushes a **14-day timeline** (one entry per prayer boundary plus a midnight rollover) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, and the 3-hour background task.
+- The app pushes a **14-day timeline** (one entry per prayer boundary plus a midnight rollover) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, the 3-hour background task, and — debounced — any change to a widget-visible setting.
 - Between boundaries the widgets stay live on their own via SwiftUI timer intervals — the countdown ticks every second and the progress bar fills continuously with **zero app involvement and no refresh budget**.
-- Entries transition automatically at each prayer time and the Medium widget's day list rolls over at London midnight (DST-safe via the same zoned-time logic as the app).
-- If the app stays unopened past the full timeline, the widgets switch to a **"Times out of date — open Athan to refresh"** card instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
+- Entries transition automatically at each prayer time and the Medium widget's day list rolls over at London midnight (DST-safe via the same zoned-time logic as the app). Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time.
+- If the app stays unopened past the full timeline, the widgets switch to a **"Times out of date — open Athan to refresh"** card at the final prayer instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
 
-**Widget preferences:** the widget honours the app's countdown bar accent colour (`preference_countdownbar_color`) and Arabic-names setting, keeping it visually identical to the app.
+**Widget preferences — the widget has no configuration of its own; it mirrors the app:**
+
+- Countdown bar accent colour (`preference_countdownbar_color`)
+- Countdown bar visibility (`preference_countdownbar_shown` — hidden in-app = hidden on the widget)
+- Arabic prayer names (`preference_show_arabic_names`)
+
+Changing any of these in the app re-pushes the widget timeline within about a second.
 
 **Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan*. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan*.
 
