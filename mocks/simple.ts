@@ -14,7 +14,17 @@ import type { IApiResponse } from '@/shared/types';
  * - Check Page 2 (Extras) to see Midnight as first prayer
  */
 
-const now = new Date();
+const realNow = new Date();
+
+// Night-simulation guard: calculateBelongsToDate (shared/prayer.ts) reassigns an
+// Isha landing between 00:00-06:00 to the PREVIOUS Islamic day — valid for real
+// data (London Isha never lands there) but it breaks night-time simulations: at
+// the Magrib->Isha handoff the display date jumps a day early. When simulating
+// during 00:00-05:59, shift the whole mock clock past 06:00 (same calendar day)
+// so the configured offsets keep their exact relative spacing on valid input.
+const MOCK_CLOCK_SHIFT_MINUTES = realNow.getHours() < 6 ? 6 * 60 : 0;
+
+const now = new Date(realNow.getTime() + MOCK_CLOCK_SHIFT_MINUTES * 60000);
 
 const addMinutes = (minutesToAdd: number) => {
   const date = new Date(now.getTime() + minutesToAdd * 60000);
@@ -69,11 +79,11 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       // Isha +5m. Tweak these offsets to move the transitions; rebuild + relaunch
       // to rerun the simulation (runbook: ai/USAGE.md "Mock cascade simulation").
       fajr: addMinutes(-10),
-      sunrise: addMinutes(1),
-      dhuhr: addMinutes(2),
-      asr: addMinutes(3),
-      magrib: addMinutes(4),
-      isha: addMinutes(5),
+      sunrise: addMinutes(-3),
+      dhuhr: addMinutes(-2),
+      asr: addMinutes(-1),
+      magrib: addMinutes(1),
+      isha: addMinutes(2),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -87,8 +97,8 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       sunrise: '08:16',
       dhuhr: '11:50',
       asr: '13:49',
-      magrib: '16:14',
-      isha: '13:59',
+      magrib: '19:14',
+      isha: '20:59',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
