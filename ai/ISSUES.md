@@ -350,18 +350,22 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 
 ### 4. [FIXED 1.5.3] Friday Extra-page display order differs from the canonical array
 
-- **Expected (owner)**: Midnight, Last Third, Suhoor, Duha, and — Fridays only —
-  Istijaba last.
-- **Was**: `createPrayerSequence` sorts chronologically (`shared/prayer.ts`), so on a
-  real Friday Istijaba (magrib − 60 min) appeared between Midnight and Last Third
-  instead of last. Invisible most of the week (non-Friday chronological == canonical).
+- **Invariant (owner, 2026-08-29 — never re-litigate)**: Extras page order is fixed by
+  the data model and can never change: **Midnight 1st, Last Third 2nd, Suhoor 3rd,
+  Duha 4th, Istijaba 5th (Friday-only, always last)**.
+- **Origin (corrected 2026-08-29)**: the pre-refactor app (production through May 2025,
+  `f3d7ce0`) rendered extras POSITIONALLY from the fixed array — Istijaba last by
+  construction, no ordering logic to get wrong. The Jan-2026 ADR-005 timing refactor
+  replaced that with the chronological sequence render (`todayPrayers.map`), which on
+  Fridays pushed Istijaba mid-list. It was logged as an SDK-57 "migration finding"
+  only because migration-era builds were the first the owner saw — NOT a migration
+  regression.
 - **Fix (500087b, owner decision)**: Extras display follows the canonical array via
   `canonicalDisplayOrder(prayers, type)` (`shared/prayer.ts`); `List.tsx` renders in
-  canonical order while rows keep their sequence indices, so selection/countdown
-  semantics are unchanged. Istijaba always last on Fridays. Verified on sim
-  (Friday 2026-08-28) + 4 unit tests; owner-confirmed matching long-observed behavior.
-- **Re-verify on real Friday 2026-09-04**: open Extras page, confirm order reads
-  Midnight / Last Third / Suhoor / Duha / Istijaba (last). Verify-only, no code.
+  canonical order while rows keep their sequence indices, so selection/countdown/
+  notification semantics are unchanged. Verified on sim (Friday 2026-08-28) + 4 unit
+  tests; owner-confirmed matching long-observed behavior. **Closed — no further
+  verification needed** (the order is an invariant, unit-pinned).
 
 ### 5. [FIXED] Global font-scaling guard was dead code on SDK 57 (React 19 defaultProps removal)
 
