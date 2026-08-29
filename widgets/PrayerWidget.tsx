@@ -38,10 +38,167 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   const DIVIDER = 'rgba(255, 255, 255, 0.08)';
   const isFullColor = environment.widgetRenderingMode == null || environment.widgetRenderingMode === 'fullColor';
 
-  // Terminal state: every timeline entry has passed and the app has not
-  // re-pushed — ask the user to open the app instead of showing stale times.
-  // Tapping a widget opens the app by default, so the card is the button.
-  if (props.stale) {
+  // Neutral card for states without renderable data: the gallery/jiggle
+  // placeholder (iOS invokes the layout with no props — expo-widgets stores
+  // no initial props) and any unexpected rendering error (caught below).
+  const NeutralCard = ({ title, subtitle }: { title: string; subtitle: string }) => (
+    <ZStack modifiers={[containerBackground(GRADIENT_START, 'widget')]}>
+      {isFullColor && (
+        <Rectangle
+          modifiers={[
+            foregroundStyle({
+              type: 'linearGradient',
+              colors: [GRADIENT_START, GRADIENT_END],
+              startPoint: { x: 0, y: 0.25 },
+              endPoint: { x: 1, y: 1 },
+            }),
+            clipShape('containerRelativeShape'),
+          ]}
+        />
+      )}
+      <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+        <Image systemName='moon.stars.fill' size={26} color={ICON_PRIMARY} />
+        <Text modifiers={[font({ size: 14, weight: 'semibold' }), foregroundStyle(TEXT_PRIMARY)]}>{title}</Text>
+        <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(TEXT_SECONDARY)]}>{subtitle}</Text>
+      </VStack>
+    </ZStack>
+  );
+
+  // Placeholder path: props are entirely absent (gallery preview, jiggle
+  // mode, or a first-add before the app has ever pushed a timeline).
+  if (props == null) {
+    return <NeutralCard title='Athan' subtitle='Prayer times for London' />;
+  }
+
+  try {
+    // Terminal state: every timeline entry has passed and the app has not
+    // re-pushed — ask the user to open the app instead of showing stale times.
+    // Tapping a widget opens the app by default, so the card is the button.
+    // Entries from an older app version missing segment bounds degrade here too.
+    const segmentValid = typeof props.nextEpochMs === 'number' && typeof props.prevEpochMs === 'number';
+    if (props.stale === true || !segmentValid) {
+      return <NeutralCard title='Times out of date' subtitle='Open Athan to refresh' />;
+    }
+
+    // Props are JSON-serialized across the bridge — rebuild Dates from epoch ms
+    const prevDate = new Date(props.prevEpochMs);
+    const nextDate = new Date(props.nextEpochMs);
+    const countdownInterval = { lower: prevDate, upper: nextDate };
+    const accent = typeof props.accentColor === 'string' ? props.accentColor : '#ffd000';
+    const dayPrayers = Array.isArray(props.dayPrayers) ? props.dayPrayers : [];
+
+    const NextHeader = () => (
+      <HStack spacing={5}>
+        <Image systemName='moon.stars.fill' size={11} color={ICON_PRIMARY} />
+        <Text modifiers={[font({ size: 10, weight: 'semibold' }), foregroundStyle(TEXT_SECONDARY)]}>NEXT PRAYER</Text>
+      </HStack>
+    );
+
+    const NextPrayer = ({ nameSize, arabicSize }: { nameSize: number; arabicSize: number }) => (
+      <VStack alignment='leading' spacing={1}>
+        <HStack spacing={6}>
+          <Text modifiers={[font({ size: nameSize, weight: 'bold' }), foregroundStyle(TEXT_PRIMARY), lineLimit(1)]}>
+            {props.nextName}
+          </Text>
+          {props.showArabic !== false && props.nextArabic ? (
+            <Text
+              modifiers={[font({ size: arabicSize, weight: 'medium' }), foregroundStyle(TEXT_SECONDARY), lineLimit(1)]}>
+              {props.nextArabic}
+            </Text>
+          ) : null}
+        </HStack>
+        <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(TEXT_SECONDARY)]}>
+          at {props.nextTime}
+        </Text>
+      </VStack>
+    );
+
+    // Self-filling progress bar across the current prayer segment, tinted with
+    // the user's countdown bar accent color. The system label is hidden — a
+    // timer-interval ProgressView renders its own ticking text by default.
+    const SegmentBar = () => (
+      <ZStack modifiers={[frame({ maxWidth: Infinity, height: 5 })]}>
+        <Capsule modifiers={[foregroundStyle(TRACK), frame({ maxWidth: Infinity, height: 5 })]} />
+        <ProgressView
+          timerInterval={countdownInterval}
+          countsDown={false}
+          modifiers={[tint(accent), labelsHidden(), frame({ maxWidth: Infinity })]}
+        />
+      </ZStack>
+    );
+
+    const Countdown = ({ size }: { size: number }) => (
+      <Text
+        timerInterval={countdownInterval}
+        modifiers={[
+          font({ size, weight: 'semibold', design: 'rounded' }),
+          monospacedDigit(),
+          foregroundStyle(TEXT_PRIMARY),
+          frame({ maxWidth: Infinity }),
+        ]}
+      />
+    );
+
+    const DayRow = (row: PrayerWidgetDayPrayer) => {
+      const isNext = row.state === 'next';
+      const isPassed = row.state === 'passed';
+      const rowColor = isPassed ? TEXT_MUTED : TEXT_PRIMARY;
+      const highlightModifiers = isNext ? [background(HIGHLIGHT), clipShape('roundedRectangle', 6)] : [];
+
+      return (
+        <HStack
+          key={row.name}
+          spacing={8}
+          modifiers={[padding({ horizontal: 7, vertical: 3 }), frame({ maxWidth: Infinity }), ...highlightModifiers]}>
+          <Text
+            modifiers={[
+              font({ size: 13, weight: isNext ? 'semibold' : 'regular' }),
+              foregroundStyle(rowColor),
+              lineLimit(1),
+            ]}>
+            {row.name}
+          </Text>
+          <Spacer />
+          <Text modifiers={[font({ size: 13, weight: 'regular' }), monospacedDigit(), foregroundStyle(rowColor)]}>
+            {row.time}
+          </Text>
+        </HStack>
+      );
+    };
+
+    const smallLayout = (
+      <VStack
+        alignment='leading'
+        spacing={4}
+        modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+        <NextHeader />
+        <Spacer />
+        <NextPrayer nameSize={22} arabicSize={15} />
+        <Spacer />
+        <Countdown size={30} />
+        {props.showBar !== false && <SegmentBar />}
+      </VStack>
+    );
+
+    const mediumLayout = (
+      <HStack spacing={10} modifiers={[padding({ all: 12 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+        <VStack alignment='leading' spacing={3} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <NextHeader />
+          <Spacer />
+          <NextPrayer nameSize={20} arabicSize={14} />
+          <Spacer />
+          <Countdown size={24} />
+          {props.showBar !== false && <SegmentBar />}
+        </VStack>
+        <Rectangle modifiers={[foregroundStyle(DIVIDER), frame({ width: 1, maxHeight: Infinity })]} />
+        <VStack alignment='leading' spacing={1} modifiers={[frame({ width: 122, maxHeight: Infinity })]}>
+          {dayPrayers.map((row) => DayRow(row))}
+        </VStack>
+      </HStack>
+    );
+
+    // Only paint the full-color gradient in fullColor mode; accented (tinted)
+    // home screen widgets recolor everything anyway.
     return (
       <ZStack modifiers={[containerBackground(GRADIENT_START, 'widget')]}>
         {isFullColor && (
@@ -57,154 +214,14 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
             ]}
           />
         )}
-        <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-          <Image systemName='moon.stars.fill' size={26} color={ICON_PRIMARY} />
-          <Text modifiers={[font({ size: 14, weight: 'semibold' }), foregroundStyle(TEXT_PRIMARY)]}>
-            Times out of date
-          </Text>
-          <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(TEXT_SECONDARY)]}>
-            Open Athan to refresh
-          </Text>
-        </VStack>
+        {environment.widgetFamily === 'systemMedium' ? mediumLayout : smallLayout}
       </ZStack>
     );
+  } catch {
+    // Never let a rendering error blank the widget: a minimal card beats a
+    // dead surface the user cannot distinguish from a broken widget.
+    return <NeutralCard title='Athan' subtitle='Open the app to refresh' />;
   }
-
-  // Props are JSON-serialized across the bridge — rebuild Dates from epoch ms
-  const prevDate = new Date(props.prevEpochMs);
-  const nextDate = new Date(props.nextEpochMs);
-  const countdownInterval = { lower: prevDate, upper: nextDate };
-
-  const NextHeader = () => (
-    <HStack spacing={5}>
-      <Image systemName='moon.stars.fill' size={11} color={ICON_PRIMARY} />
-      <Text modifiers={[font({ size: 10, weight: 'semibold' }), foregroundStyle(TEXT_SECONDARY)]}>NEXT PRAYER</Text>
-    </HStack>
-  );
-
-  const NextPrayer = ({ nameSize, arabicSize }: { nameSize: number; arabicSize: number }) => (
-    <VStack alignment='leading' spacing={1}>
-      <HStack spacing={6}>
-        <Text modifiers={[font({ size: nameSize, weight: 'bold' }), foregroundStyle(TEXT_PRIMARY), lineLimit(1)]}>
-          {props.nextName}
-        </Text>
-        {props.showArabic && (
-          <Text
-            modifiers={[font({ size: arabicSize, weight: 'medium' }), foregroundStyle(TEXT_SECONDARY), lineLimit(1)]}>
-            {props.nextArabic}
-          </Text>
-        )}
-      </HStack>
-      <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(TEXT_SECONDARY)]}>
-        at {props.nextTime}
-      </Text>
-    </VStack>
-  );
-
-  // Self-filling progress bar across the current prayer segment, tinted with
-  // the user's countdown bar accent color. The system label is hidden — a
-  // timer-interval ProgressView renders its own ticking text by default.
-  const SegmentBar = () => (
-    <ZStack modifiers={[frame({ maxWidth: Infinity, height: 5 })]}>
-      <Capsule modifiers={[foregroundStyle(TRACK), frame({ maxWidth: Infinity, height: 5 })]} />
-      <ProgressView
-        timerInterval={countdownInterval}
-        countsDown={false}
-        modifiers={[tint(props.accentColor), labelsHidden(), frame({ maxWidth: Infinity })]}
-      />
-    </ZStack>
-  );
-
-  const Countdown = ({ size }: { size: number }) => (
-    <Text
-      timerInterval={countdownInterval}
-      modifiers={[
-        font({ size, weight: 'semibold', design: 'rounded' }),
-        monospacedDigit(),
-        foregroundStyle(TEXT_PRIMARY),
-        frame({ maxWidth: Infinity }),
-      ]}
-    />
-  );
-
-  const DayRow = (row: PrayerWidgetDayPrayer) => {
-    const isNext = row.state === 'next';
-    const isPassed = row.state === 'passed';
-    const rowColor = isPassed ? TEXT_MUTED : TEXT_PRIMARY;
-    const highlightModifiers = isNext ? [background(HIGHLIGHT), clipShape('roundedRectangle', 6)] : [];
-
-    return (
-      <HStack
-        key={row.name}
-        spacing={8}
-        modifiers={[padding({ horizontal: 7, vertical: 3 }), frame({ maxWidth: Infinity }), ...highlightModifiers]}>
-        <Text
-          modifiers={[
-            font({ size: 13, weight: isNext ? 'semibold' : 'regular' }),
-            foregroundStyle(rowColor),
-            lineLimit(1),
-          ]}>
-          {row.name}
-        </Text>
-        <Spacer />
-        <Text modifiers={[font({ size: 13, weight: 'regular' }), monospacedDigit(), foregroundStyle(rowColor)]}>
-          {row.time}
-        </Text>
-      </HStack>
-    );
-  };
-
-  const smallLayout = (
-    <VStack
-      alignment='leading'
-      spacing={4}
-      modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-      <NextHeader />
-      <Spacer />
-      <NextPrayer nameSize={22} arabicSize={15} />
-      <Spacer />
-      <Countdown size={30} />
-      {props.showBar !== false && <SegmentBar />}
-    </VStack>
-  );
-
-  const mediumLayout = (
-    <HStack spacing={10} modifiers={[padding({ all: 12 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-      <VStack alignment='leading' spacing={3} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-        <NextHeader />
-        <Spacer />
-        <NextPrayer nameSize={20} arabicSize={14} />
-        <Spacer />
-        <Countdown size={24} />
-        {props.showBar !== false && <SegmentBar />}
-      </VStack>
-      <Rectangle modifiers={[foregroundStyle(DIVIDER), frame({ width: 1, maxHeight: Infinity })]} />
-      <VStack alignment='leading' spacing={1} modifiers={[frame({ width: 122, maxHeight: Infinity })]}>
-        {props.dayPrayers.map((row) => DayRow(row))}
-      </VStack>
-    </HStack>
-  );
-
-  // Only paint the full-color gradient in fullColor mode; accented (tinted)
-  // home screen widgets recolor everything anyway.
-  return (
-    <ZStack modifiers={[containerBackground(GRADIENT_START, 'widget')]}>
-      {isFullColor && (
-        <Rectangle
-          modifiers={[
-            foregroundStyle({
-              type: 'linearGradient',
-              colors: [GRADIENT_START, GRADIENT_END],
-              startPoint: { x: 0, y: 0.25 },
-              endPoint: { x: 1, y: 1 },
-            }),
-            clipShape('containerRelativeShape'),
-          ]}
-        />
-      )}
-      {environment.widgetFamily === 'systemMedium' ? mediumLayout : smallLayout}
-    </ZStack>
-  );
 };
 
 export default createWidget('PrayerWidget', PrayerWidget);
