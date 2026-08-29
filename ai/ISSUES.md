@@ -368,6 +368,10 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   presented state (`onChange` index !== −1), so LIFO registration order dismisses
   the top sheet when Sound stacks over Settings. The pre-revert app did not have
   this; Android emulator/device verification pending.
+- **Android verified 2026-08-29** (emulator, Pixel 10 / API 35 / edge-to-edge,
+  fresh 1.6.0 Release build): hardware-back dismissed the Settings sheet and
+  left the app alive — BackHandler confirmed on a real Android runtime.
+  On-device (ColorOS gesture nav) confirm still open.
 - **Verification**: `yarn validate` green (26 suites / 710 tests); Release sim pass —
   all three sheets flush to the bottom + full width, drag-anywhere dismisses as one
   piece (no parallax), native scroll with header scroll-away + elastic top bounce,
@@ -517,3 +521,35 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Verification**: owner-confirmed 2026-08-29 on a clean debug build (fresh prebuild,
   fresh install, MMKV wiped) — overlay pixel-perfect on tapped rows on both pages,
   pager swipe + overdrag intact.
+
+### 10. [FIXED 1.6.0 — pending review] Android overlay renders one status-bar too LOW (edge-to-edge coordinate realignment)
+
+- **Symptom (owner, 2026-08-29, Android emulator Pixel 10 / API 35)**: tapping a
+  prayer row opens the overlay shifted DOWN by exactly the status-bar height
+  (measured 63px at 420dpi); header/countdown fine; iOS unaffected. uiautomator
+  evidence: real Fajr row [32,600][1049,749] vs overlay copy [32,663] — delta 63px.
+- **Root cause (git + RN source verified, not assumed)**:
+  - The Jan-2025 correction `+ (Platform.OS === 'android' ? insets.top : 0)` in
+    Overlay.tsx (commit d747bc3, Expo 51 / RN 0.74.5 old-arch /
+    react-native-edge-to-edge@1.4.0) was CORRECT then: RN 0.74.5's old-arch
+    measureInWindow returned screen-absolute coords ("including things like the
+    status bar", UIImplementation.java:534) while the root view sat BELOW the
+    status bar — the overlay's absolute origin was insets.top down-screen, so
+    the manual +insets.top closed the gap.
+  - On SDK 57 (RN 0.86.3 new arch + react-native-edge-to-edge@1.8.1 +
+    targetSdk 35) both halves changed: measureInWindow is window-absolute
+    (ReactCommon DOM.cpp: measureInWindow → getLayoutMetricsFromRoot with
+    includeViewportOffset=true) AND the root spans the full window
+    (EdgeToEdgeModuleImpl.kt:72 WindowCompat.setDecorFitsSystemWindows(false)).
+    Raw pageY is now the exact on-screen position; the old correction
+    double-counted the status bar.
+- **Fix**: removed the Android `+ insets.top` term at all four sites in
+  Overlay.tsx (date, prayer row, info box below/above). No constants, no
+  per-device math — the inset is embodied exactly once inside the measurement,
+  so software/hardware status bars, notches, and any density resolve
+  identically. Countdown header keeps its intentional insets.top (it WANTS to
+  sit below the bar). iOS path byte-identical (the removed term added 0 there).
+- **Verification (fresh pm-cleared 1.6.0 Release install on emulator)**:
+  overlay Fajr [32,600] == real [32,600] exact; deep row Isha (index 5)
+  [32,1348][1049,1498] identical; date element identical. One ±1px bottom-edge
+  rounding on the top row only = DIP→px rounding, not misalignment.
