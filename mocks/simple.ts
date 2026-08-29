@@ -14,17 +14,14 @@ import type { IApiResponse } from '@/shared/types';
  * - Check Page 2 (Extras) to see Midnight as first prayer
  */
 
-const realNow = new Date();
-
-// Night-simulation guard: calculateBelongsToDate (shared/prayer.ts) reassigns an
-// Isha landing between 00:00-06:00 to the PREVIOUS Islamic day — valid for real
-// data (London Isha never lands there) but it breaks night-time simulations: at
-// the Magrib->Isha handoff the display date jumps a day early. When simulating
-// during 00:00-05:59, shift the whole mock clock past 06:00 (same calendar day)
-// so the configured offsets keep their exact relative spacing on valid input.
-const MOCK_CLOCK_SHIFT_MINUTES = realNow.getHours() < 6 ? 6 * 60 : 0;
-
-const now = new Date(realNow.getTime() + MOCK_CLOCK_SHIFT_MINUTES * 60000);
+// Simulating during 00:00-05:59: calculateBelongsToDate (shared/prayer.ts,
+// working as intended) assigns an Isha in that window to the PREVIOUS Islamic
+// day, so a mock Isha staged just after midnight trips it (real London Isha
+// never lands there). Effect at night: the display date flips at the
+// Magrib->Isha handoff and the rollover cascade fires early. To test the
+// Maghrib->Isha handoff and day rollover cleanly, simulate during 06:00-23:59,
+// or at night use an isha offset large enough to land at/after 06:00.
+const now = new Date();
 
 const addMinutes = (minutesToAdd: number) => {
   const date = new Date(now.getTime() + minutesToAdd * 60000);
