@@ -45,6 +45,8 @@
 | Audio           | Expo Audio              | ~57.0.4         |
 | Notifications   | Expo Notifications      | ~57.0.15        |
 | Dates           | date-fns / date-fns-tz  | 4.4.0 / 3.2.0   |
+| Widgets         | expo-widgets            | ~57.0.15        |
+| Widget UI       | @expo/ui (SwiftUI)      | ~57.0.14        |
 | Logging         | Pino                    | 9.14.0          |
 | Lint + Format   | Biome                   | 2.5.11          |
 | Package Manager | Yarn                    | 1.x             |
@@ -77,11 +79,10 @@
 │   ├── overlay.ts         # Overlay state
 │   ├── version.ts         # App version detection & cache clearing
 │   ├── ui.ts              # UI state (date, settings)
-│   └── widget.ts          # iOS widget timeline builder + pusher (expo-widgets)
-├── widgets/               # iOS widget layouts (expo-widgets + @expo/ui SwiftUI)
+│   └── widget.ts          # Widget IO layer: reads cache + prefs, pushes timelines (iOS)
+├── widgets/               # iOS widget LAYOUTS only ('widget'-directive functions, serialized at build)
 │   ├── PrayerWidget.tsx   # Home screen widget (systemSmall + systemMedium)
-│   ├── LockPrayerWidget.tsx # Lock Screen widget (accessoryCircular/Rectangular/Inline)
-│   └── types.ts           # Shared widget prop contract (JSON-safe, epoch ms dates)
+│   └── LockPrayerWidget.tsx # Lock Screen widget (accessoryCircular/Rectangular/Inline)
 ├── hooks/                 # Custom React hooks
 │   ├── useAnimation.ts    # Reanimated animation hook
 │   ├── useNotification.ts # Notification management
@@ -92,7 +93,9 @@
 │   ├── time.ts            # Time calculations (parseNightBoundaries helper)
 │   ├── notifications.ts   # Notification utilities
 │   ├── types.ts           # TypeScript interfaces
-│   ├── __tests__/         # Unit tests (Jest)
+│   ├── widgetTimeline.ts  # PURE widget timeline builder (no RN imports)
+│   ├── widgetTypes.ts     # Widget props contract + settings snapshot types
+│   ├── __tests__/         # Unit tests (Jest) incl. widget contract & simulation suites
 │   └── __mocks__/         # Module mocks for testing
 ├── device/                # Platform-specific code
 ├── mocks/                 # Test fixtures & schema documentation
@@ -606,15 +609,18 @@ Read ai/prompts/document.md
 **Recent Decisions:**
 
 - [2026-01-26] Background Task Notification Refresh: Dual-layer refresh with 4-hour foreground and 3-hour background task using expo-background-task (see ai/adr/007-background-task-notification-refresh.md)
-- [2026-08-29] iOS Widgets: Home screen + Lock Screen widgets via expo-widgets@~57.0.15. `stores/widget.ts` pushes a 14-day timeline (prayer boundaries + midnight rollovers) from `refreshPrayerWidgets()`, called from `sync()` and `_rescheduleAllNotifications()`. Live ticking between boundaries via SwiftUI `timerInterval` (Text + ProgressView). Widget layouts live in `widgets/` and are registered via the expo-widgets config plugin in app.json (widget kinds: `PrayerWidget`, `PrayerLockWidget`; app group `group.com.mugtaba.athan`). Terminal stale-guard entry (final prayer + 5 min, `stale: true` props) renders an "open Athan to refresh" card once the timeline runs dry — deliberate re-engagement guard given the 2-day notification window (background task keeps notifications alive independently).
+- [2026-08-29] iOS Widgets: Home screen + Lock Screen widgets via expo-widgets@~57.0.15. `stores/widget.ts` pushes a 14-day timeline (prayer boundaries + midnight rollovers) from `refreshPrayerWidgets()`, called from `sync()` and `_rescheduleAllNotifications()`. Live ticking between boundaries via SwiftUI `timerInterval` (Text + ProgressView). Widget layouts live in `widgets/` and are registered via the expo-widgets config plugin in app.json (widget kinds: `PrayerWidget`, `PrayerLockWidget`; app group `group.com.mugtaba.athan`). Terminal stale-guard entry at the final prayer (`stale: true` props) renders an "open Athan to refresh" card once the timeline runs dry — deliberate re-engagement guard given the 2-day notification window (background task keeps notifications alive independently).
+- [2026-08-29] Widget architecture revision (1.7.2–1.8.0): pure builder extracted to `shared/widgetTimeline.ts` (types in `shared/widgetTypes.ts`); `stores/widget.ts` is the thin IO layer. Widgets have NO configuration of their own — they mirror the app via `PrayerWidgetSettings` (`readWidgetSettings()` reads the three widget-visible preference atoms; `initWidgetSettingsSync()` re-pushes debounced on change). Props carry a schema version (`v`) and layouts guard `props == null` (the gallery/placeholder path renders with no props), catch render errors to a neutral card, and default every field defensively. Adjacent timeline entries enforce WidgetKit's ~5-minute minimum spacing (first entry backdated, imminent midnights skipped). `formatDateShort` now resolves London wall time (was device-local — wrong cache keys/belongsToDate off-UK). Automated guard suites: `widgetContract.test.ts` (AST: no module-scope refs, palette ≡ COLORS, static imports only) and `widgetSimulation.test.ts` (virtual-week model test: ~4,000 instants across DST + early-Isha fixtures assert the active entry at every instant).
 
 **Widget architecture invariants (expo-widgets):**
 
-- The `'widget'` directive makes Babel serialize ONLY the function body into a string; the widget extension evaluates it in a separate JS runtime where `@expo/ui` components/modifiers are globals. Never reference module-scope values inside a widget function; helpers must live inside the function body.
-- Widget props are JSON-only — pass epoch ms, never Date objects; rebuild Dates inside the widget.
+- The `'widget'` directive makes Babel serialize ONLY the function body into a string; the widget extension evaluates it in a separate JS runtime where `@expo/ui` components/modifiers are globals. Never reference module-scope values inside a widget function; helpers must live inside the function body. (Enforced by `widgetContract.test.ts`.)
+- Widget props are JSON-only — pass epoch ms, never Date objects; rebuild Dates inside the widget. Every entry carries `v` (schema version); layouts must tolerate older/missing fields with defensive defaults and treat missing epoch bounds as the refresh card.
+- iOS renders the gallery/jiggle placeholder with NO props (57.0.15 stores no initial props) — every widget layout must guard `props == null`.
 - Widget modules MUST be statically imported (dynamic `import()` creates lazy Metro bundles where the widget transform does not apply, and the native constructor then throws `ERR_ARGUMENT_CAST`).
-- `updateTimeline` requires the layout to be registered first (a side effect of importing the widget module).
-- Keep entries ≥5 min apart (WidgetKit rule) and sorted chronologically; `buildPrayerWidgetTimeline` handles both.
+- `updateTimeline` requires the layout to be registered first (a side effect of importing the widget module). It writes the whole entry array into the app-group UserDefaults and reloads; the extension serves it with a hardcoded `.atEnd` policy — after the last entry the LAST entry re-renders forever, which is why the terminal stale guard exists.
+- Keep entries ≥5 min apart (WidgetKit rule) and sorted chronologically; `buildPrayerWidgetTimeline` handles both, including backdating the first entry and skipping midnights that cannot keep spacing.
+- Settings flow one way: app preference atoms → `readWidgetSettings()` → props field → layout conditional. Adding a widget-visible setting = one atom read + one `PrayerWidgetSettings` field + one prop + one conditional. Never add widget-side configuration.
 
 **See Also:** `ai/adr/` for architectural decision records.
 
