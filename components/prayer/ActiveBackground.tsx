@@ -45,7 +45,7 @@ export default function ActiveBackground({ type }: Props) {
   useEffect(() => {
     AnimBackgroundColor.animate(1);
     AnimTranslateY.animate(yPosition);
-  }, [yPosition]); // Dependencies ensure animations update when values change
+  }, [yPosition, AnimBackgroundColor.animate, AnimTranslateY.animate]); // Dependencies ensure animations update when values change
 
   const isStandard = type === ScheduleType.Standard;
   const shadowStyle = isStandard ? SHADOW.prayer : SHADOW.prayerExtras;

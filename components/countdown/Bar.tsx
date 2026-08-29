@@ -87,7 +87,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       ),
       -1
     );
-  }, [reducedMotion]);
+  }, [reducedMotion, tipPulse]);
 
   // Progress width and warning color animation
   useEffect(() => {
@@ -112,7 +112,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       }
     }
     prevProgress.current = progress;
-  }, [progress, reducedMotion]);
+  }, [progress, reducedMotion, widthValue, colorValue]);
 
   // Visibility based on overlay state (skip in preview mode)
   useEffect(() => {
@@ -131,7 +131,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
         easing: Easing.linear,
       });
     }
-  }, [overlay.isOn, reducedMotion, isPreviewMode]);
+  }, [overlay.isOn, reducedMotion, isPreviewMode, opacityValue]);
 
   const wrapperOpacityStyle = useAnimatedStyle(() => ({
     opacity: opacityValue.value,
