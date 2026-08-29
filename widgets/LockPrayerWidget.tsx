@@ -1,4 +1,4 @@
-import { Text, VStack } from '@expo/ui/swift-ui';
+import { Image, Text, VStack } from '@expo/ui/swift-ui';
 import { font, foregroundStyle, frame, lineLimit, monospacedDigit } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
@@ -18,6 +18,38 @@ const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironme
   // opacity hierarchy and let the system tint the content.
   const WHITE = '#ffffff';
   const WHITE_SECONDARY = 'rgba(255, 255, 255, 0.6)';
+
+  // Terminal state: every timeline entry has passed and the app has not
+  // re-pushed — ask the user to open the app instead of showing stale times.
+  // Tapping a widget opens the app by default, so the card is the button.
+  if (props.stale) {
+    if (environment.widgetFamily === 'accessoryCircular') {
+      return <Image systemName='arrow.clockwise' color={WHITE} size={16} />;
+    }
+
+    if (environment.widgetFamily === 'accessoryInline') {
+      return (
+        <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          Athan — open to refresh times
+        </Text>
+      );
+    }
+
+    // accessoryRectangular
+    return (
+      <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+        <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+          ATHAN
+        </Text>
+        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          Times out of date
+        </Text>
+        <Text modifiers={[font({ size: 11, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+          Open app to refresh
+        </Text>
+      </VStack>
+    );
+  }
 
   // Props are JSON-serialized across the bridge — rebuild Dates from epoch ms
   const prevDate = new Date(props.prevEpochMs);

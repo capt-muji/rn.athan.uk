@@ -42,4 +42,10 @@ export interface PrayerWidgetProps {
   showArabic: boolean;
   /** Today's six prayers with per-entry pass/future states (medium widget list) */
   dayPrayers: PrayerWidgetDayPrayer[];
+  /**
+   * Terminal "out of date" entry — rendered when the whole timeline has
+   * passed and the app has not re-pushed. Shows an "open Athan to refresh"
+   * card instead of silently stale times. Absent on normal entries.
+   */
+  stale?: boolean;
 }
