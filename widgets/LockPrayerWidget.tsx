@@ -19,85 +19,124 @@ const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironme
   const WHITE = '#ffffff';
   const WHITE_SECONDARY = 'rgba(255, 255, 255, 0.6)';
 
-  // Terminal state: every timeline entry has passed and the app has not
-  // re-pushed — ask the user to open the app instead of showing stale times.
-  // Tapping a widget opens the app by default, so the card is the button.
-  if (props.stale) {
+  // Neutral fallbacks for states without renderable data: the gallery/jiggle
+  // placeholder (iOS invokes the layout with no props) and any unexpected
+  // rendering error (caught below).
+  const neutralForFamily = () => {
     if (environment.widgetFamily === 'accessoryCircular') {
-      return <Image systemName='arrow.clockwise' color={WHITE} size={16} />;
+      return <Image systemName='moon.stars.fill' color={WHITE} size={16} />;
     }
 
     if (environment.widgetFamily === 'accessoryInline') {
       return (
         <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          Athan — open to refresh times
+          Athan — prayer times
         </Text>
       );
     }
 
-    // accessoryRectangular
     return (
       <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
         <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
           ATHAN
         </Text>
         <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          Times out of date
-        </Text>
-        <Text modifiers={[font({ size: 11, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
-          Open app to refresh
+          Open to load times
         </Text>
       </VStack>
     );
+  };
+
+  // Placeholder path: props are entirely absent (gallery preview, jiggle
+  // mode, or a first-add before the app has ever pushed a timeline).
+  if (props == null) {
+    return neutralForFamily();
   }
 
-  // Props are JSON-serialized across the bridge — rebuild Dates from epoch ms
-  const prevDate = new Date(props.prevEpochMs);
-  const nextDate = new Date(props.nextEpochMs);
-  const countdownInterval = { lower: prevDate, upper: nextDate };
+  try {
+    // Entries from an older app version missing segment bounds degrade to the
+    // refresh card rather than rendering a broken countdown.
+    const segmentValid = typeof props.nextEpochMs === 'number' && typeof props.prevEpochMs === 'number';
+    if (props.stale === true || !segmentValid) {
+      if (environment.widgetFamily === 'accessoryCircular') {
+        return <Image systemName='arrow.clockwise' color={WHITE} size={16} />;
+      }
 
-  if (environment.widgetFamily === 'accessoryCircular') {
-    // A timer-interval ProgressView renders its own ticking label next to the
-    // ring even with labelsHidden, which double-renders in the tiny circular
-    // area — so the circular family shows the bare live countdown instead.
+      if (environment.widgetFamily === 'accessoryInline') {
+        return (
+          <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            Athan — open to refresh times
+          </Text>
+        );
+      }
+
+      // accessoryRectangular
+      return (
+        <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+            ATHAN
+          </Text>
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            Times out of date
+          </Text>
+          <Text modifiers={[font({ size: 11, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+            Open app to refresh
+          </Text>
+        </VStack>
+      );
+    }
+
+    // Props are JSON-serialized across the bridge — rebuild Dates from epoch ms
+    const prevDate = new Date(props.prevEpochMs);
+    const nextDate = new Date(props.nextEpochMs);
+    const countdownInterval = { lower: prevDate, upper: nextDate };
+
+    if (environment.widgetFamily === 'accessoryCircular') {
+      // A timer-interval ProgressView renders its own ticking label next to the
+      // ring even with labelsHidden, which double-renders in the tiny circular
+      // area — so the circular family shows the bare live countdown instead.
+      return (
+        <Text
+          timerInterval={countdownInterval}
+          modifiers={[
+            font({ size: 9, weight: 'semibold', design: 'rounded' }),
+            monospacedDigit(),
+            lineLimit(1),
+            foregroundStyle(WHITE),
+            frame({ width: 44, height: 44 }),
+          ]}
+        />
+      );
+    }
+
+    if (environment.widgetFamily === 'accessoryInline') {
+      return (
+        <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          {props.nextName} {props.nextTime}
+          <Text timerInterval={countdownInterval} modifiers={[monospacedDigit(), foregroundStyle(WHITE_SECONDARY)]} />
+        </Text>
+      );
+    }
+
+    // accessoryRectangular (default)
     return (
-      <Text
-        timerInterval={countdownInterval}
-        modifiers={[
-          font({ size: 9, weight: 'semibold', design: 'rounded' }),
-          monospacedDigit(),
-          lineLimit(1),
-          foregroundStyle(WHITE),
-          frame({ width: 44, height: 44 }),
-        ]}
-      />
+      <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+        <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+          NEXT PRAYER
+        </Text>
+        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          {props.nextName} · {props.nextTime}
+        </Text>
+        <Text
+          timerInterval={countdownInterval}
+          modifiers={[font({ size: 11, weight: 'medium' }), monospacedDigit(), foregroundStyle(WHITE_SECONDARY)]}
+        />
+      </VStack>
     );
+  } catch {
+    // Never let a rendering error blank the Lock Surface.
+    return neutralForFamily();
   }
-
-  if (environment.widgetFamily === 'accessoryInline') {
-    return (
-      <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-        {props.nextName} {props.nextTime}
-        <Text timerInterval={countdownInterval} modifiers={[monospacedDigit(), foregroundStyle(WHITE_SECONDARY)]} />
-      </Text>
-    );
-  }
-
-  // accessoryRectangular (default)
-  return (
-    <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-      <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
-        NEXT PRAYER
-      </Text>
-      <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-        {props.nextName} · {props.nextTime}
-      </Text>
-      <Text
-        timerInterval={countdownInterval}
-        modifiers={[font({ size: 11, weight: 'medium' }), monospacedDigit(), foregroundStyle(WHITE_SECONDARY)]}
-      />
-    </VStack>
-  );
 };
 
 export default createWidget('PrayerLockWidget', PrayerLockWidget);
