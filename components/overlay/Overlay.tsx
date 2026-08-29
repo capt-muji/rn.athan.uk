@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { Platform, Pressable, StyleSheet, View, type ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, View, type ViewStyle } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -79,8 +79,14 @@ export default function Overlay() {
     top: insets.top + SCREEN.paddingTop,
   };
 
+  // Overlay positioning is window-absolute: measureInWindow (RN 0.86 new arch)
+  // returns coordinates with the viewport offset included, and the edge-to-edge
+  // root view spans the full window — so the raw pageY/pageX is already the
+  // exact on-screen position. No per-device inset math belongs here (the
+  // pre-SDK-57 "+ insets.top on Android" correction double-counted the status
+  // bar and shifted the overlay down by its height).
   const computedStyleDate: ViewStyle = {
-    top: (dateMeasurements?.pageY ?? 0) + (Platform.OS === 'android' ? insets.top : 0),
+    top: dateMeasurements?.pageY ?? 0,
     left: dateMeasurements?.pageX ?? 0,
   };
 
@@ -92,10 +98,7 @@ export default function Overlay() {
   const shadowStyle = isExtra ? SHADOW.prayerExtras : SHADOW.prayer;
 
   const computedStylePrayer: ViewStyle = {
-    top:
-      (listMeasurements?.pageY ?? 0) +
-      (Platform.OS === 'android' ? insets.top : 0) +
-      overlay.selectedPrayerIndex * STYLES.prayer.height,
+    top: (listMeasurements?.pageY ?? 0) + overlay.selectedPrayerIndex * STYLES.prayer.height,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
     ...shadowStyle,
@@ -111,7 +114,6 @@ export default function Overlay() {
   const computedStyleInfoBoxBelow: ViewStyle = {
     top:
       (listMeasurements?.pageY ?? 0) +
-      (Platform.OS === 'android' ? insets.top : 0) +
       overlay.selectedPrayerIndex * STYLES.prayer.height +
       STYLES.prayer.height +
       SPACING.sm,
@@ -124,7 +126,6 @@ export default function Overlay() {
   const computedStyleInfoBoxAbove: ViewStyle = {
     top:
       (listMeasurements?.pageY ?? 0) +
-      (Platform.OS === 'android' ? insets.top : 0) +
       overlay.selectedPrayerIndex * STYLES.prayer.height -
       INFO_BOX_HEIGHT -
       SPACING.sm,
