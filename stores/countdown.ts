@@ -8,6 +8,7 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
+import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { CountdownKey, type CountdownStore, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
@@ -94,13 +95,19 @@ const startSequenceCountdown = (type: ScheduleType) => {
       clearCountdown(countdownKey);
 
       // Refresh sequence to advance to next prayer
+      const transitionStart = Date.now();
       refreshSequence(type);
+      logger.info('TICK: transition', {
+        which: isStandard ? 'std' : 'extra',
+        transitionMs: Date.now() - transitionStart,
+      });
 
       // Restart countdown with new next prayer
       return startSequenceCountdown(type);
     }
 
     const secondsLeft = TimeUtils.getSecondsBetween(tickNow, upcoming.datetime);
+    logger.info('TICK', { which: isStandard ? 'std' : 'extra', wall: Date.now(), computed: secondsLeft });
 
     // Auto-close overlay when countdown is 2 seconds or less
     const overlay = store.get(overlayAtom);
@@ -171,6 +178,7 @@ const startCountdownOverlay = () => {
   countdowns[CountdownKey.Overlay] = setInterval(() => {
     const now = TimeUtils.createLondonDate();
     const secondsLeft = TimeUtils.getSecondsBetween(now, selectedPrayer.datetime);
+    logger.info('TICK', { which: 'overlay', wall: Date.now(), computed: secondsLeft });
     if (secondsLeft <= 0) {
       clearCountdown(CountdownKey.Overlay);
       store.set(overlayCountdownAtom, { timeLeft: 0, name });
