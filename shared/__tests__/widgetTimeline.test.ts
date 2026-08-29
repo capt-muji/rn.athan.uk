@@ -7,9 +7,11 @@
  * - Empty-sequence and exhausted-span guards
  */
 
-import { createPrayerDatetime } from '@/shared/time';
+import { addDays } from 'date-fns';
+
+import { createPrayerDatetime, formatDateShort } from '@/shared/time';
 import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
-import { buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
+import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
 
 // =============================================================================
 // TEST HELPERS
@@ -218,5 +220,269 @@ describe('buildPrayerWidgetTimeline', () => {
     // First entry's segment start falls back to the entry date itself
     expect(entries[0].props.prevEpochMs).toBe(NOW.getTime());
     expect(entries[0].props.nextName).toBe('Fajr');
+  });
+});
+
+// =============================================================================
+// MINIMUM ENTRY SPACING (WidgetKit ~5-minute guidance)
+// =============================================================================
+
+describe('minimum entry spacing', () => {
+  it('backdates the first entry when a midnight is under five minutes away', () => {
+    // Push at 23:57 — midnight is 3 minutes later, so the first entry moves
+    // to 23:55 (5 minutes before midnight). Earlier-dated entries are already
+    // active at push time, so the widget still renders immediately.
+    const pushAt = createPrayerDatetime('2026-06-15', '23:57');
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), '#ffd000', true);
+
+    const midnight = createPrayerDatetime('2026-06-16', '00:00').getTime();
+    expect(entries[0].date.getTime()).toBe(midnight - MIN_ENTRY_SPACING_MS);
+    expect(midnight - entries[0].date.getTime()).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);
+  });
+
+  it('backdates the first entry when a prayer boundary is under five minutes away', () => {
+    // Push at 17:44 with Asr at 17:45 — the boundary flip must stay at 17:45,
+    // so the first entry backs up to 17:40 to keep the spacing.
+    const pushAt = createPrayerDatetime('2026-06-15', '17:44');
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), '#ffd000', true);
+
+    const asrBoundary = createPrayerDatetime('2026-06-15', '17:45').getTime();
+    expect(entries[0].props.nextName).toBe('Asr');
+    expect(entries[0].date.getTime()).toBe(asrBoundary - MIN_ENTRY_SPACING_MS);
+    expect(asrBoundary - entries[0].date.getTime()).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);
+  });
+
+  it('skips a midnight entry when the following prayer is under five minutes after it', () => {
+    // Synthetic Fajr at 00:03 the day after tomorrow — the midnight rollover
+    // would sit 3 minutes before the boundary, so it is skipped and the day
+    // list rolls over at the Fajr boundary entry instead.
+    const sequence: PrayerSequence = {
+      type: ScheduleType.Standard,
+      prayers: [
+        ...makeDay('2026-06-15'),
+        makePrayer('2026-06-16', '00:03', 'Fajr', 'الفجر'),
+        ...makeDay('2026-06-16').slice(1),
+      ],
+    };
+
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, '#ffd000', true);
+    const midnight = createPrayerDatetime('2026-06-16', '00:00').getTime();
+
+    expect(entries.some((entry) => entry.date.getTime() === midnight)).toBe(false);
+
+    // The day list still rolls over — at the Fajr boundary entry
+    const fajrBoundary = createPrayerDatetime('2026-06-16', '00:03').getTime();
+    const fajrEntry = entries.find((entry) => entry.date.getTime() === fajrBoundary);
+    expect(fajrEntry).toBeDefined();
+    if (!fajrEntry) return;
+    expect(fajrEntry.props.dayPrayers.map((row) => row.name)).toEqual([
+      'Fajr',
+      'Sunrise',
+      'Dhuhr',
+      'Asr',
+      'Magrib',
+      'Isha',
+    ]);
+    expect(fajrEntry.props.dayPrayers[0].state).toBe('passed');
+  });
+
+  it('keeps every adjacent entry at least five minutes apart across a full-day sweep of push instants', () => {
+    const dayStart = createPrayerDatetime('2026-06-15', '00:00').getTime();
+
+    for (let minute = 0; minute < 24 * 60; minute++) {
+      const pushAt = new Date(dayStart + minute * 60 * 1000);
+      const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), '#ffd000', true);
+
+      for (let i = 1; i < entries.length; i++) {
+        const gapMs = entries[i].date.getTime() - entries[i - 1].date.getTime();
+        if (gapMs < MIN_ENTRY_SPACING_MS) {
+          throw new Error(`Push at minute ${minute}: entries ${i - 1}→${i} only ${gapMs / 1000}s apart`);
+        }
+      }
+    }
+  });
+
+  it('keeps the first entry dated at or before the push instant in every sweep case', () => {
+    const dayStart = createPrayerDatetime('2026-06-15', '00:00').getTime();
+
+    for (let minute = 0; minute < 24 * 60; minute++) {
+      const pushAt = new Date(dayStart + minute * 60 * 1000);
+      const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), '#ffd000', true);
+
+      if (entries[0].date.getTime() > pushAt.getTime()) {
+        throw new Error(`Push at minute ${minute}: first entry dated after now`);
+      }
+    }
+  });
+});
+
+// =============================================================================
+// DST TRANSITIONS (Europe/London)
+// =============================================================================
+
+describe('DST transitions', () => {
+  it('builds correct midnights and boundaries across the autumn clock change (2026-10-25)', () => {
+    // Clocks fall back 02:00 BST → 01:00 GMT on Sunday 2026-10-25
+    const sequence: PrayerSequence = {
+      type: ScheduleType.Standard,
+      prayers: [...makeDay('2026-10-24'), ...makeDay('2026-10-25'), ...makeDay('2026-10-26')],
+    };
+    const pushAt = createPrayerDatetime('2026-10-24', '12:00');
+
+    const entries = buildPrayerWidgetTimeline(pushAt, sequence, '#ffd000', true);
+
+    // One midnight per London day in the span — the final day's midnight
+    // never materializes: the timeline ends at the final prayer, and the
+    // stale guard takes over from there
+    for (const date of ['2026-10-25', '2026-10-26']) {
+      const midnight = createPrayerDatetime(date, '00:00').getTime();
+      expect(entries.some((entry) => entry.date.getTime() === midnight)).toBe(true);
+    }
+
+    // Chronological order, no duplicate instants
+    const times = entries.map((entry) => entry.date.getTime());
+    const sorted = [...times].sort((a, b) => a - b);
+    expect(times).toEqual(sorted);
+    expect(new Set(times).size).toBe(times.length);
+  });
+
+  it('builds correct midnights across the spring clock change (2027-03-28)', () => {
+    // Clocks spring forward 01:00 GMT → 02:00 BST on Sunday 2027-03-28
+    const sequence: PrayerSequence = {
+      type: ScheduleType.Standard,
+      prayers: [...makeDay('2027-03-27'), ...makeDay('2027-03-28'), ...makeDay('2027-03-29')],
+    };
+    const pushAt = createPrayerDatetime('2027-03-27', '12:00');
+
+    const entries = buildPrayerWidgetTimeline(pushAt, sequence, '#ffd000', true);
+
+    for (const date of ['2027-03-28', '2027-03-29']) {
+      const midnight = createPrayerDatetime(date, '00:00').getTime();
+      expect(entries.some((entry) => entry.date.getTime() === midnight)).toBe(true);
+    }
+
+    const times = entries.map((entry) => entry.date.getTime());
+    const sorted = [...times].sort((a, b) => a - b);
+    expect(times).toEqual(sorted);
+    expect(new Set(times).size).toBe(times.length);
+  });
+});
+
+// =============================================================================
+// EDGE CASES AT BOUNDARIES AND INSTANTS
+// =============================================================================
+
+describe('boundary edge cases', () => {
+  it('flips immediately when now is exactly on a prayer datetime', () => {
+    // At the Asr instant itself the segment flips to Magrib (Asr is prev)
+    const pushAt = createPrayerDatetime('2026-06-15', '17:45');
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), '#ffd000', true);
+
+    expect(entries[0].props.nextName).toBe('Magrib');
+    expect(entries[0].props.prevEpochMs).toBe(pushAt.getTime());
+  });
+
+  it('treats now exactly at midnight as the start of the new day', () => {
+    const pushAt = createPrayerDatetime('2026-06-16', '00:00');
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), '#ffd000', true);
+
+    expect(entries[0].date.getTime()).toBe(pushAt.getTime());
+    expect(entries[0].props.nextName).toBe('Fajr');
+    expect(entries[0].props.dayPrayers[0].name).toBe('Fajr');
+    expect(entries[0].props.dayPrayers[0].state).toBe('next');
+  });
+
+  it('survives duplicate prayer datetimes without duplicate entries', () => {
+    const duplicated = makePrayer('2026-06-15', '17:45', 'Asr', 'العصر');
+    const sequence: PrayerSequence = {
+      type: ScheduleType.Standard,
+      prayers: [...makeSequence().prayers, duplicated],
+    };
+
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, '#ffd000', true);
+
+    const times = entries.map((entry) => entry.date.getTime());
+    expect(new Set(times).size).toBe(times.length);
+    const sorted = [...times].sort((a, b) => a - b);
+    expect(times).toEqual(sorted);
+  });
+
+  it('degrades gracefully across a missing cache day', () => {
+    // Day 2026-06-16 absent from the sequence: the widget keeps the last
+    // segment across the gap; the gap day's midnight entry carries an empty
+    // day list (no prayers belong to it).
+    const sequence: PrayerSequence = {
+      type: ScheduleType.Standard,
+      prayers: [...makeDay('2026-06-15'), ...makeDay('2026-06-17')],
+    };
+
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, '#ffd000', true);
+
+    const gapMidnight = createPrayerDatetime('2026-06-16', '00:00').getTime();
+    const gapEntry = entries.find((entry) => entry.date.getTime() === gapMidnight);
+    expect(gapEntry).toBeDefined();
+    if (!gapEntry) return;
+    expect(gapEntry.props.dayPrayers).toEqual([]);
+
+    const times = entries.map((entry) => entry.date.getTime());
+    const sorted = [...times].sort((a, b) => a - b);
+    expect(times).toEqual(sorted);
+    expect(entries[entries.length - 1].props.stale).toBe(true);
+  });
+});
+
+// =============================================================================
+// VOLUME & PAYLOAD INVARIANTS (16-day span, as pushed in production)
+// =============================================================================
+
+describe('volume and payload invariants', () => {
+  const SPAN_DAYS = 16;
+  const makeSpanSequence = (): PrayerSequence => {
+    const baseDay = createPrayerDatetime('2026-06-14', '12:00');
+    const prayers: Prayer[] = [];
+    for (let i = 0; i < SPAN_DAYS; i++) {
+      const day = addDays(baseDay, i);
+      const dateString = formatDateShort(day);
+      prayers.push(...makeDay(dateString));
+    }
+    return { type: ScheduleType.Standard, prayers };
+  };
+
+  it('emits exactly one entry per boundary and date-rollover plus the stale guard', () => {
+    const sequence = makeSpanSequence();
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, '#ffd000', true);
+
+    // The last prayer at or before now starts the first segment — iterations
+    // (and their midnight rollovers) only run from there onward
+    const lastPrayerAtOrBeforeNow = sequence.prayers
+      .filter((prayer) => prayer.datetime.getTime() <= NOW.getTime())
+      .at(-1);
+    expect(lastPrayerAtOrBeforeNow).toBeDefined();
+    if (!lastPrayerAtOrBeforeNow) return;
+
+    const boundariesAfterNow = sequence.prayers.filter((prayer) => prayer.datetime.getTime() > NOW.getTime());
+    // Every prayer after now becomes a boundary entry, except the final one
+    // (the loop stops there — the stale guard takes over after it)
+    const expectedBoundaryEntries = boundariesAfterNow.length - 1;
+    // One midnight per adjacent pair that crosses a London date change, from
+    // the first segment onward (pairs entirely in the past emit nothing)
+    const expectedMidnights = sequence.prayers.filter((prayer, index) => {
+      if (index === 0) return false;
+      const previous = sequence.prayers[index - 1];
+      const crossesLondonDate = formatDateShort(previous.datetime) !== formatDateShort(prayer.datetime);
+      const fromFirstSegmentOnward = previous.datetime.getTime() >= lastPrayerAtOrBeforeNow.datetime.getTime();
+      return crossesLondonDate && fromFirstSegmentOnward;
+    }).length;
+
+    expect(entries).toHaveLength(1 + expectedBoundaryEntries + expectedMidnights + 1);
+    expect(entries[entries.length - 1].props.stale).toBe(true);
+  });
+
+  it('keeps the serialized payload well under UserDefaults comfort size', () => {
+    const sequence = makeSpanSequence();
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, '#ffd000', true);
+
+    const payloadSize = JSON.stringify(entries).length;
+    expect(payloadSize).toBeLessThan(120_000);
   });
 });

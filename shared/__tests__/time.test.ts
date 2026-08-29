@@ -398,6 +398,19 @@ describe('formatDateShort', () => {
     const result = formatDateShort(date);
     expect(result).toMatch(/2026-01-18/);
   });
+
+  it('returns the London calendar date even when the device timezone differs', () => {
+    // 23:30 UTC on June 15 is 00:30 London (BST, UTC+1) on June 16 — a device
+    // in New York would locally read June 15. The London date must win.
+    const instant = new Date('2026-06-15T23:30:00Z');
+    expect(formatDateShort(instant)).toBe('2026-06-16');
+  });
+
+  it('returns the London calendar date around winter midnight (GMT)', () => {
+    // 23:30 UTC on Dec 20 is 23:30 London (GMT, UTC+0) — still Dec 20.
+    const instant = new Date('2026-12-20T23:30:00Z');
+    expect(formatDateShort(instant)).toBe('2026-12-20');
+  });
 });
 
 // =============================================================================
