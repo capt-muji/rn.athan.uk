@@ -298,8 +298,10 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   `@gorhom/bottom-sheet@5.2.14` restored verbatim from 500087b (`Sheet.tsx`,
   `Shared.tsx`, sheets barrel re-exports, `stores/ui.ts` modal atoms back to
   `BottomSheetModal` refs, `SheetControls` type removed, `_layout.tsx`
-  `BottomSheetModalProvider` re-wrapped). `@expo/ui` retained for the home
-  PagerView only (`app/Navigation.tsx`).
+  `BottomSheetModalProvider` re-wrapped). `@expo/ui` later removed ENTIRELY
+  (2026-08-29): the home pager reverted to react-native-pager-view@8.0.2 after the
+  native pager's shifted child coordinate space broke overlay positioning (F.9) —
+  nothing in the app references @expo/ui anymore.
 - **Why the native drop-in failed (d5ec3a5)**: on iOS 26, fractional-height sheets
   render as floating cards with side margins; the backdrop dim is system-controlled
   (too weak); the drag indicator is glued to the top edge and unstyleable;
@@ -402,62 +404,27 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - 72 warn-level hits (77 warnings total), pre-existing from the Biome migration
   (9a116f6). Suppression is not warranted — schedule a dedicated cleanup session.
 
-### 9. [OPEN — REGRESSION, SDK 57] Overlay renders ~70px above the tapped prayer row (was pixel-perfect pre-migration)
+### 9. [FIXED 1.5.3] Overlay renders ~70px above the tapped prayer row (was pixel-perfect pre-migration)
 
 - **Symptom (owner, 2026-08-29, iOS)**: tapping a prayer row (e.g. Asr) opens the
   large-text overlay, but the overlay's copy of the row sits ~70px HIGHER than the
-  actual row it should cover pixel-perfectly. The main display itself is perfect —
-  only the absolutely-positioned overlay copy is out of sync. Pre-migration (SDK 54)
-  the overlay rendered exactly on top of the source row. Suspected culprits per
-  owner: the edge-to-edge migration and/or screen-wrapper changes; both are plausible
-  (see mechanisms below).
-- **How overlay positioning works**:
-  - `components/prayer/List.tsx:35-49` — the Standard list container measures itself
-    ONCE via `listRef.current.measureInWindow((x, y, w, h))` and caches
-    `{pageX, pageY, width, height}` in `measurementsListAtom` (`stores/ui.ts:61`).
-    `handleLayout` early-returns if the cache is non-empty (`width > 0`) — the cache
-    is NEVER invalidated except by the countdown-bar toggle effect (`List.tsx:52-66`).
-  - `components/day/Day.tsx:33` — same pattern for the date label
-    (`measurementsDateAtom`).
-  - `components/overlay/Overlay.tsx:83,96,113,126` — overlay copies are absolutely
-    positioned at `top: pageY + (Platform.OS === 'android' ? insets.top : 0) +
-    index * STYLES.prayer.height`. Overlay mounts as a sibling of `<Navigation />`
-    at the app root (`app/index.tsx:67`), so its coordinate origin is the window.
-- **Mechanism hypotheses (ranked)**:
-  1. **Stale one-shot measurement + post-measure layout shift (iOS — matches the
-     reported direction)**: the cached `pageY` is captured at the list's FIRST
-     layout. If anything above the list grows AFTER that measurement (countdown
-     header content settling, hijri-date row, splash-hide reflow, safe-area/layout
-     settling under React 19 / RN 0.86 timing), the list moves DOWN by that delta
-     while the cache still holds the old, smaller `pageY` — every overlay afterwards
-     renders that delta too HIGH. ~70px ≈ the header growth. The migration didn't
-     change this code; it plausibly flipped the layout-timing race so the shift now
-     lands after the one-shot measure. Re-measure triggers are missing for every
-     layout input except `countdownBarShown`.
-  2. **Android inset double-count (inverse-direction bug, same feature)**: the
-     `+ insets.top` term was calibrated when `measureInWindow()` on Android returned
-     coordinates below the status bar. Under edge-to-edge (SDK 57 default;
-     `react-native-edge-to-edge` in `_layout.tsx`), `measureInWindow` returns true
-     window coordinates INCLUDING the status-bar area, so adding `insets.top` again
-     double-counts → overlay renders ~insets.top (24-48dp) too LOW on Android.
-     Verify against the react-native-edge-to-edge docs (coordinate-semantics
-     section) before fixing.
-  3. Screen-wrapper / router container changes shifting the overlay's absolute
-     origin — lower likelihood (mount point is app root), but confirm the router's
-     root view starts at y=0 on both platforms.
-- **Diagnosis protocol (logic-only, no screenshots)**: on overlay open, log
-  `getMeasurementsList().pageY` (cached) vs a FRESH `measureInWindow()` of the list
-  container and of the tapped row (the row Pressable can measure itself on press in
-  `components/prayer/Prayer.tsx` handlePress). The delta between cached and fresh is
-  the bug magnitude; log via pino. Run once on iOS sim + once on any Android.
-- **Fix direction (follow-up session)**:
-  1. Measure FRESH at overlay-open time (or invalidate the cache on every layout
-     input: page settle, header changes, toggles) instead of trusting the one-shot
-     cache — kills hypothesis 1 by construction.
-  2. Correct the Android term per edge-to-edge semantics (likely remove
-     `+ insets.top`, but verify empirically per the docs).
-  3. Keep `index * STYLES.prayer.height` math; rows are fixed-height
-     (`components/prayer/Prayer.tsx` container height).
-  4. Acceptance: on both platforms, overlay copy top == tapped row top (fresh
-     measure delta ≈ 0) across: cold start, countdown-bar toggled, hijri toggled,
-     seconds toggled, pager swiped away and back, overlay reopened repeatedly.
+  actual row it should cover pixel-perfectly. Survived cache clears + full reinstalls
+  (`yarn reset` ×2) — real regression, not stale data.
+- **Root cause**: the `@expo/ui/community/pager-view` native pager (d5ec3a5) hosts
+  pages in a native container whose coordinate space is offset from the JS view
+  hierarchy by roughly the status-bar inset. The overlay's one-shot
+  `measureInWindow` (components/prayer/List.tsx, Day.tsx) returned coordinates in
+  that shifted space, while the overlay itself is absolutely positioned from the
+  window origin (components/overlay/Overlay.tsx container) — every overlay copy
+  landed ~62pt (~70px) high. The measurement architecture itself was innocent.
+- **Fix (owner decision: revert the pager, keep the original architecture)**:
+  react-native-pager-view@8.0.2 restored (import + `overdrag` prop, app/Navigation.tsx);
+  @expo/ui removed entirely (Navigation.tsx was its last consumer — with the sheets
+  already back on @gorhom, nothing references it). The load-time one-shot
+  measurement design (measure once via onLayout, position from cached page
+  coordinates) is deliberately KEPT as-is — it was correct pre-migration and the
+  press-time re-measure alternative was considered and rejected by the owner
+  (unnecessary inefficiency).
+- **Verification**: owner manual pass on a clean Release build (fresh install,
+  MMKV wiped) — overlay must sit pixel-perfectly on the tapped row on both pages,
+  pager swipe + overdrag intact.
