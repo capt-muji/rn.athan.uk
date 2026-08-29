@@ -2,7 +2,7 @@ import { Image, Text, VStack } from '@expo/ui/swift-ui';
 import { font, foregroundStyle, frame, lineLimit, monospacedDigit } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
-import type { PrayerWidgetProps } from './types';
+import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
  * Lock Screen widget: live countdown to the next prayer, rendered in the
