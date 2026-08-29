@@ -668,4 +668,32 @@ describe('countdown targets are true UTC instants (Fix A foundation)', () => {
     nowSpy.mockRestore();
     expect(seconds).toBe(3600);
   });
+
+  it('countdown window crossing the October fallback counts the real elapsed time (8.5h, not 7.5h)', () => {
+    // Last Sunday of October 2026: clocks fall back 02:00 BST -> 01:00 GMT.
+    // From Sat 23:00 BST (22:00Z) to Sun 06:30 GMT (06:30Z) = 8h30m of real time —
+    // the fallback hour is included because the phone really waits that long.
+    const target = createPrayerDatetime('2026-10-25', '06:30'); // after fallback -> GMT
+    expect(target.toISOString()).toBe('2026-10-25T06:30:00.000Z');
+
+    const fakeNow = new Date('2026-10-24T22:00:00Z').getTime(); // Sat 23:00 BST
+    const nowSpy = jest.spyOn(Date, 'now').mockReturnValue(fakeNow);
+    const seconds = getSecondsRemaining(target);
+    nowSpy.mockRestore();
+    expect(seconds).toBe(8.5 * 3600);
+  });
+
+  it('countdown window crossing the March spring-forward counts the real elapsed time (6.5h, not 7.5h)', () => {
+    // Last Sunday of March 2026: clocks spring forward 01:00 GMT -> 02:00 BST.
+    // From Sat 23:00 GMT (23:00Z) to Sun 06:30 BST (05:30Z) = 6h30m of real time —
+    // the skipped hour is excluded because it never happens (naive wall math: 7.5h).
+    const target = createPrayerDatetime('2026-03-29', '06:30'); // after spring-forward -> BST
+    expect(target.toISOString()).toBe('2026-03-29T05:30:00.000Z');
+
+    const fakeNow = new Date('2026-03-28T23:00:00Z').getTime(); // Sat 23:00 GMT
+    const nowSpy = jest.spyOn(Date, 'now').mockReturnValue(fakeNow);
+    const seconds = getSecondsRemaining(target);
+    nowSpy.mockRestore();
+    expect(seconds).toBe(6.5 * 3600);
+  });
 });
