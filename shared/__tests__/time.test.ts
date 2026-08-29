@@ -57,6 +57,12 @@ describe('formatTime', () => {
     expect(formatTime(90000)).toBe('25h 0s'); // 25 hours, minutes omitted when 0
   });
 
+  it('handles the 24h and multi-day boundaries', () => {
+    expect(formatTime(86399)).toBe('23h 59m 59s');
+    expect(formatTime(86400)).toBe('24h 0s'); // exactly one day -> 24h
+    expect(formatTime(90061)).toBe('25h 1m 1s'); // day + hour + minute + second
+  });
+
   describe('hideSeconds option', () => {
     it('shows seconds when hideSeconds=false (default)', () => {
       expect(formatTime(3665)).toBe('1h 1m 5s');
@@ -529,19 +535,35 @@ describe('adjustTime', () => {
 // =============================================================================
 
 describe('DST transitions', () => {
-  describe('Spring forward (last Sunday of March)', () => {
-    it('handles createPrayerDatetime during spring DST', () => {
-      // In 2026, clocks spring forward on March 29 at 1:00 AM -> 2:00 AM
-      const result = createPrayerDatetime('2026-03-29', '02:30');
-      expect(result).toBeInstanceOf(Date);
+  describe('Spring forward (last Sunday of March 2026: 01:00 GMT -> 02:00 BST)', () => {
+    it('maps a pre-transition time with GMT offset', () => {
+      expect(createPrayerDatetime('2026-03-29', '00:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
+    });
+
+    it('maps the nonexistent skipped hour via the pre-transition offset (date-fns-tz 3.2.0 semantics)', () => {
+      // 01:30 wall time never exists on this date; the library resolves it as if
+      // the old GMT offset still applied — once a year, midnight-prayer-only
+      expect(createPrayerDatetime('2026-03-29', '01:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
+    });
+
+    it('maps a post-transition time with BST offset', () => {
+      expect(createPrayerDatetime('2026-03-29', '02:30').toISOString()).toBe('2026-03-29T01:30:00.000Z');
     });
   });
 
-  describe('Fall back (last Sunday of October)', () => {
-    it('handles createPrayerDatetime during fall DST overlap', () => {
-      // In 2026, clocks fall back on October 25 at 2:00 AM -> 1:00 AM
-      const result = createPrayerDatetime('2026-10-25', '01:30');
-      expect(result).toBeInstanceOf(Date);
+  describe('Fall back (last Sunday of October 2026: 02:00 BST -> 01:00 GMT)', () => {
+    it('maps a pre-transition time with BST offset', () => {
+      expect(createPrayerDatetime('2026-10-25', '00:30').toISOString()).toBe('2026-10-24T23:30:00.000Z');
+    });
+
+    it('maps the duplicated hour to the LATER occurrence (date-fns-tz 3.2.0 semantics)', () => {
+      // 01:30 happens twice (01:30 BST then 01:30 GMT); the library picks GMT —
+      // once a year, midnight-prayer-only
+      expect(createPrayerDatetime('2026-10-25', '01:30').toISOString()).toBe('2026-10-25T01:30:00.000Z');
+    });
+
+    it('maps a post-transition time with GMT offset', () => {
+      expect(createPrayerDatetime('2026-10-25', '02:30').toISOString()).toBe('2026-10-25T02:30:00.000Z');
     });
   });
 });
@@ -617,6 +639,15 @@ describe('getSecondsRemaining (ceil display contract)', () => {
   it('holds at 1s once the target has passed (latch until caller advances target)', () => {
     expect(getSecondsRemaining(targetFromNow(-5000))).toBe(1);
   });
+
+  it('any overshoot past a whole second rounds to the next digit: 1001ms remaining -> 2', () => {
+    expect(getSecondsRemaining(targetFromNow(1001))).toBe(2);
+  });
+
+  it('large horizons keep exact ceil semantics', () => {
+    expect(getSecondsRemaining(targetFromNow(1001))).toBe(2);
+    expect(getSecondsRemaining(targetFromNow(365 * 86400 * 1000 + 1))).toBe(365 * 86400 + 1);
+  });
 });
 
 describe('getWallSecondDelay (phase alignment)', () => {
@@ -645,6 +676,15 @@ describe('getWallSecondDelay (phase alignment)', () => {
     const delay = getWallSecondDelay();
     expect(delay).toBeGreaterThan(0);
     expect(delay).toBeLessThanOrEqual(1000);
+  });
+
+  it('mid-second phases map to their exact complement', () => {
+    nowSpy.mockReturnValue(1700000000500);
+    expect(getWallSecondDelay()).toBe(500);
+    nowSpy.mockReturnValue(1700000000999);
+    expect(getWallSecondDelay()).toBe(1);
+    nowSpy.mockReturnValue(1700000000001);
+    expect(getWallSecondDelay()).toBe(999);
   });
 });
 
