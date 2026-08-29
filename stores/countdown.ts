@@ -8,6 +8,7 @@
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
+import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
 import { CountdownKey, type CountdownStore, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
@@ -21,7 +22,7 @@ import {
 
 const store = getDefaultStore();
 
-const countdowns: Record<CountdownKey, ReturnType<typeof setInterval> | undefined> = {
+const countdowns: Record<CountdownKey, ReturnType<typeof setTimeout> | undefined> = {
   [CountdownKey.Standard]: undefined,
   [CountdownKey.Extra]: undefined,
   [CountdownKey.Overlay]: undefined,
@@ -54,63 +55,98 @@ export const getCountdownAtom = (type: ScheduleType) => {
 
 // --- Actions ---
 
-// Clears the interval for the specified countdown key
+// Cancels the pending tick for the specified countdown key (timeout and interval ids
+// share one timer space, so clearTimeout covers both)
 const clearCountdown = (countdownKey: CountdownKey) => {
   if (!countdowns[countdownKey]) return;
 
-  clearInterval(countdowns[countdownKey]!);
+  clearTimeout(countdowns[countdownKey]!);
   countdowns[countdownKey] = undefined;
+};
+
+/**
+ * Runs tick once per wall-clock second, flipping just after :000.
+ *
+ * Each next tick is a fresh setTimeout aimed at the next :000 boundary: a plain
+ * setInterval re-arms from actual delivery time, so every millisecond of JS-thread
+ * latency compounds and the phase drifts later forever (measured +17ms/s under
+ * load). Scheduling from the wall clock self-corrects — a late tick is followed by
+ * a shorter delay, keeping digits aligned with the system clock (F.7).
+ */
+const startWallClockTicker = (countdownKey: CountdownKey, tick: () => void) => {
+  clearCountdown(countdownKey);
+
+  const loop = () => {
+    // The id that armed this invocation; still in countdowns until replaced
+    const invocationId = countdowns[countdownKey];
+
+    tick();
+
+    // tick() may restart the ticker (sequence transition) or clear it (overlay
+    // countdown ended) — only re-arm while this loop is still the owning ticker,
+    // otherwise we would clobber the replacement's handle and leak this chain
+    if (countdowns[countdownKey] !== invocationId) return;
+
+    countdowns[countdownKey] = setTimeout(loop, TimeUtils.getWallSecondDelay());
+  };
+
+  countdowns[countdownKey] = setTimeout(loop, TimeUtils.getWallSecondDelay());
 };
 
 /**
  * Sequence-based countdown using prayer-centric model
  *
  * Uses getNextPrayer(type) to get countdown target
- * Calculates countdown from nextPrayer.datetime - now
+ * Calculates countdown from nextPrayer.datetime - Date.now() (true UTC instants:
+ * the offset cancels in a difference, so no timezone conversion per tick)
  * Calls refreshSequence() when prayer passes
  */
 const startSequenceCountdown = (type: ScheduleType) => {
   const nextPrayer = getNextPrayer(type)!;
-  const now = TimeUtils.createLondonDate();
-  const timeLeft = TimeUtils.getSecondsBetween(now, nextPrayer.datetime);
 
   const isStandard = type === ScheduleType.Standard;
   const countdownKey = isStandard ? CountdownKey.Standard : CountdownKey.Extra;
   const countdownAtom = getCountdownAtom(type);
+  const which = isStandard ? 'std' : 'extra';
 
-  // Clear existing countdown and set initial state
-  clearCountdown(countdownKey);
-  store.set(countdownAtom, { timeLeft, name: nextPrayer.english });
-
-  // Each tick recomputes from the clock instead of decrementing a stored counter:
-  // a decrement drifts late under JS-thread load, which froze the UI countdown at 0s
-  // until this ticker finally crossed zero (most visible on day rollover).
-  countdowns[countdownKey] = setInterval(() => {
+  const tick = () => {
     const upcoming = getNextPrayer(type);
     if (!upcoming) return;
 
-    const tickNow = TimeUtils.createLondonDate();
-    if (tickNow.getTime() >= upcoming.datetime.getTime()) {
+    const nowMs = Date.now();
+    if (nowMs >= upcoming.datetime.getTime()) {
       clearCountdown(countdownKey);
 
       // Refresh sequence to advance to next prayer
+      const transitionStart = Date.now();
       refreshSequence(type);
+      logger.debug('TICK: transition', { which, transitionMs: Date.now() - transitionStart });
 
       // Restart countdown with new next prayer
       return startSequenceCountdown(type);
     }
 
-    const secondsLeft = TimeUtils.getSecondsBetween(tickNow, upcoming.datetime);
+    const secondsLeft = TimeUtils.getSecondsRemaining(upcoming.datetime);
 
-    // Auto-close overlay when countdown is 2 seconds or less
+    // Auto-close overlay when its countdown displays "2s" or less
+    // (ceil rounding: 2s covers the final full 3-second window before the prayer)
     const overlay = store.get(overlayAtom);
-    if (overlay.isOn && overlay.scheduleType === type && secondsLeft <= 2) {
+    const overlayMsLeft = upcoming.datetime.getTime() - nowMs;
+    if (overlay.isOn && overlay.scheduleType === type && overlayMsLeft <= 3000) {
       store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
+    logger.debug('TICK', { which, wall: nowMs, computed: secondsLeft });
+
     // Update countdown atom
     store.set(countdownAtom, { timeLeft: secondsLeft, name: upcoming.english });
-  }, 1000);
+  };
+
+  // Initial state before the first aligned tick (ceil: never displays 0s)
+  const timeLeft = TimeUtils.getSecondsRemaining(nextPrayer.datetime);
+  store.set(countdownAtom, { timeLeft, name: nextPrayer.english });
+
+  startWallClockTicker(countdownKey, tick);
 };
 
 /**
@@ -158,34 +194,38 @@ const startCountdownOverlay = () => {
     : null;
   const selectedPrayer = nextOccurrence ?? prayer;
 
-  // Calculate countdown from prayer datetime
-  const timeLeft = TimeUtils.getSecondsBetween(now, selectedPrayer.datetime);
+  // Calculate countdown from prayer datetime (ceil: never displays 0s)
+  const timeLeft = TimeUtils.getSecondsRemaining(selectedPrayer.datetime);
   const name = selectedPrayer.english;
 
-  clearCountdown(CountdownKey.Overlay);
   store.set(overlayCountdownAtom, { timeLeft, name });
 
-  // Clock-based ticks (same model as startSequenceCountdown): the old decrement
-  // counter drifted late under JS-thread load, which froze the overlay countdown
-  // on its final seconds
-  countdowns[CountdownKey.Overlay] = setInterval(() => {
-    const now = TimeUtils.createLondonDate();
-    const secondsLeft = TimeUtils.getSecondsBetween(now, selectedPrayer.datetime);
-    if (secondsLeft <= 0) {
+  // Wall-second-aligned ticks recomputing from the clock (same model as the
+  // sequence tickers): digits flip with the system clock and never freeze
+  startWallClockTicker(CountdownKey.Overlay, () => {
+    const nowMs = Date.now();
+    const secondsLeft = TimeUtils.getSecondsRemaining(selectedPrayer.datetime);
+
+    logger.debug('TICK', { which: 'overlay', wall: nowMs, computed: secondsLeft });
+
+    if (nowMs >= selectedPrayer.datetime.getTime()) {
       clearCountdown(CountdownKey.Overlay);
-      store.set(overlayCountdownAtom, { timeLeft: 0, name });
+      // Hold at 1s: the display contract never shows 0s
+      store.set(overlayCountdownAtom, { timeLeft: 1, name });
       return;
     }
+
     store.set(overlayCountdownAtom, { timeLeft: secondsLeft, name });
-  }, 1000);
+  });
 };
 
 /**
  * Initializes all countdowns for the app
  *
- * Starts countdown intervals for Standard schedule, Extra schedule, and overlay.
- * Called during app initialization after prayer sequences are loaded.
- * Each countdown ticks every second and refreshes the sequence when a prayer passes.
+ * Starts countdown tickers for Standard schedule, Extra schedule, and overlay.
+ * Called during app initialization after prayer sequences are loaded, and again
+ * on every foreground-return sync. Tickers are keyed: each start replaces any
+ * previous one, so repeated initialization never stacks intervals.
  */
 const startCountdowns = () => {
   startSequenceCountdown(ScheduleType.Standard);

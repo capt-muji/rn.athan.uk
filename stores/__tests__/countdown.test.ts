@@ -8,7 +8,6 @@
 
 import { createStore, atom as mockAtom } from 'jotai';
 
-import * as TimeUtils from '@/shared/time';
 import { refreshSequence } from '@/stores/schedule';
 
 // =============================================================================
@@ -16,8 +15,10 @@ import { refreshSequence } from '@/stores/schedule';
 // =============================================================================
 
 jest.mock('@/shared/time', () => ({
-  createLondonDate: jest.fn(() => new Date('2026-01-20T10:00:00')),
-  getSecondsBetween: jest.fn(() => 3600),
+  // All helpers are pure and Date.now-driven: delegate to the real module so a
+  // faked system clock makes every path deterministic (incl. tz conversions,
+  // which read the same faked clock)
+  ...jest.requireActual('@/shared/time'),
 }));
 
 const mockStandardSequenceAtom = mockAtom(null);
@@ -27,7 +28,7 @@ jest.mock('@/stores/schedule', () => ({
   refreshSequence: jest.fn(),
   getNextPrayer: jest.fn(() => ({
     english: 'Fajr',
-    datetime: new Date('2026-01-20T06:15:00'),
+    datetime: new Date('2026-01-20T06:15:00Z'),
   })),
   getSequenceAtom: jest.fn((type: string) => (type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom)),
   standardDisplayDateAtom: mockAtom('2026-01-20'),
@@ -146,29 +147,247 @@ describe('countdown atom behavior', () => {
 // =============================================================================
 
 describe('sequence countdown transition (clock-based)', () => {
-  it('refreshes the sequence when the clock reaches the prayer time, not on a decremented zero', () => {
+  it('refreshes the sequence when the wall clock reaches the prayer time, never displaying 0s', () => {
     jest.useFakeTimers();
 
-    // Prayer at 06:15:00; the clock starts 2s before it and advances one tick at a time.
-    // Both Standard and Extra tickers read the clock (2 inits + 2 ticks per advance).
-    const clockAt = (time: string) => (TimeUtils.createLondonDate as jest.Mock).mockReturnValueOnce(new Date(time));
-    clockAt('2026-01-20T06:14:58'); // standard initial countdown state
-    clockAt('2026-01-20T06:14:58'); // extra initial countdown state
-    clockAt('2026-01-20T06:14:59'); // tick 1: standard
-    clockAt('2026-01-20T06:14:59'); // tick 1: extra
-    (TimeUtils.createLondonDate as jest.Mock).mockReturnValue(new Date('2026-01-20T06:15:00')); // tick 2 onward
-    (TimeUtils.getSecondsBetween as jest.Mock).mockReturnValue(2);
+    // Prayer at 06:15:00Z; system clock starts exactly on 06:14:58Z (2s away).
+    // Fake timers fake Date.now, so the tickers' wall-second scheduling is
+    // deterministic: first tick at +1000ms, then one per second.
+    jest.setSystemTime(new Date('2026-01-20T06:14:58.000Z'));
+
+    // The store module writes to jotai's default store — read the same one
+    const { getDefaultStore } = require('jotai/vanilla');
+    const defaultStore = getDefaultStore();
 
     startCountdowns();
 
-    jest.advanceTimersByTime(1000); // tick 1: one second left, no transition yet
+    // Initial state before any tick: ceil(2s) = 2, never 0
+    expect(defaultStore.get(standardCountdownAtom).timeLeft).toBe(2);
+
+    jest.advanceTimersByTime(1000); // tick at 06:14:59: 1s left, no transition
+    expect(refreshSequence).not.toHaveBeenCalled();
+    expect(defaultStore.get(standardCountdownAtom).timeLeft).toBe(1);
+
+    jest.advanceTimersByTime(999); // still inside 06:14:59 (tick fired at :59.000)
     expect(refreshSequence).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(1000); // tick 2: the clock has reached the prayer time
+    jest.advanceTimersByTime(1); // tick at 06:15:00: the clock reached the prayer
     expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Standard);
     expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Extra);
 
     jest.clearAllTimers();
     jest.useRealTimers();
+  });
+
+  it('holds the final digit at 1s across the boundary tick instead of 0s', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:59.500Z'));
+
+    const { getDefaultStore } = require('jotai/vanilla');
+    const defaultStore = getDefaultStore();
+
+    startCountdowns();
+
+    // 500ms remain: ceil rounds up to the digit being lived through -> 1
+    expect(defaultStore.get(standardCountdownAtom).timeLeft).toBe(1);
+
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+});
+
+// =============================================================================
+// WALL-CLOCK TICKER INTEGRITY TESTS (F.6/F.7)
+// =============================================================================
+
+describe('ticker integrity (wall-second chain)', () => {
+  const { getDefaultStore } = require('jotai/vanilla');
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('is immune to re-entrancy: repeated startCountdowns never stacks tickers', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
+
+    // Baseline: 2026-08-29 baseline logs showed sync re-entrancy leaving up to SIX
+    // concurrent std intervals; each start must fully replace the previous ticker
+    startCountdowns();
+    const baselineTimers = jest.getTimerCount();
+
+    startCountdowns();
+    startCountdowns();
+    startCountdowns();
+    startCountdowns();
+
+    expect(jest.getTimerCount()).toBe(baselineTimers);
+
+    // And exactly one atom write per wall second (a leaked chain would double-write)
+    const defaultStore = getDefaultStore();
+    const writes: number[] = [];
+    const unsub = defaultStore.sub(standardCountdownAtom, () => {
+      writes.push(defaultStore.get(standardCountdownAtom).timeLeft);
+    });
+
+    jest.advanceTimersByTime(5000);
+
+    expect(writes.length).toBe(5);
+    unsub();
+  });
+
+  it('aligns the first tick to the next wall-second boundary regardless of start phase', () => {
+    jest.useFakeTimers();
+    // Clock starts mid-second at :00.350 — first tick must land at :01.000, not :01.350
+    jest.setSystemTime(new Date('2026-01-20T10:00:00.350Z'));
+
+    const defaultStore = getDefaultStore();
+    let firstTickAt: number | null = null;
+
+    startCountdowns();
+
+    // Subscribe after init: the first captured write is then the first TICK
+    const unsub = defaultStore.sub(standardCountdownAtom, () => {
+      if (firstTickAt === null) firstTickAt = Date.now();
+    });
+
+    jest.advanceTimersByTime(649);
+    expect(firstTickAt).toBeNull(); // no tick before the boundary
+
+    jest.advanceTimersByTime(1);
+    expect(firstTickAt).toBe(new Date('2026-01-20T10:00:01.000Z').getTime());
+    unsub();
+  });
+
+  it('self-corrects after a late tick: the next tick re-anchors to :000', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
+
+    const defaultStore = getDefaultStore();
+    const tickTimes: number[] = [];
+    const unsub = defaultStore.sub(standardCountdownAtom, () => {
+      tickTimes.push(Date.now());
+    });
+
+    startCountdowns();
+
+    // A coarse advance delivers the +1000ms tick "late" (clock already at +1600
+    // when the callback runs its scheduling) — the chain must absorb it: the
+    // NEXT tick still lands exactly on the +2000ms wall-second boundary
+    jest.advanceTimersByTime(1600);
+    jest.advanceTimersByTime(400);
+
+    expect(tickTimes.length).toBeGreaterThanOrEqual(2);
+    for (const t of tickTimes) {
+      expect(t % 1000).toBe(0);
+    }
+    unsub();
+  });
+
+  it('never displays 0s across a full countdown and swaps at the boundary', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
+
+    // Target advances when refreshSequence runs — exactly like the real store:
+    // the refresh updates the sequence synchronously BEFORE the restart reads it
+    const asrTime = new Date('2026-01-20T06:15:00.000Z').getTime();
+    const magribTime = new Date('2026-01-20T07:00:00.000Z').getTime();
+    const { getNextPrayer } = require('@/stores/schedule');
+    let sequenceRefreshed = false;
+    (refreshSequence as jest.Mock).mockImplementation(() => {
+      sequenceRefreshed = true;
+    });
+    (getNextPrayer as jest.Mock).mockImplementation(() =>
+      sequenceRefreshed
+        ? { english: 'Magrib', datetime: new Date(magribTime) }
+        : { english: 'Asr', datetime: new Date(asrTime) }
+    );
+
+    const defaultStore = getDefaultStore();
+    const values: number[] = [];
+    const unsub = defaultStore.sub(standardCountdownAtom, () => {
+      values.push(defaultStore.get(standardCountdownAtom).timeLeft);
+    });
+
+    startCountdowns();
+    jest.advanceTimersByTime(7000); // 5..1, boundary at +5s, then next prayer
+
+    // The display contract: counts down to 1, swaps to the next prayer at the
+    // boundary instant, and 0 never appears
+    expect(values).not.toContain(0);
+    expect(values.slice(0, 5)).toEqual([5, 4, 3, 2, 1]);
+    // After the boundary (06:15:00) the next prayer (07:00, 45m away) takes over
+    expect(values).toContain(2700);
+    expect(values.indexOf(2700)).toBe(5);
+    unsub();
+  });
+
+  it('does not leak a dead chain across a transition restart', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:59.000Z'));
+
+    const asrTime = new Date('2026-01-20T06:15:00.000Z').getTime();
+    const magribTime = new Date('2026-01-20T07:00:00.000Z').getTime();
+    const { getNextPrayer } = require('@/stores/schedule');
+    let sequenceRefreshed = false;
+    (refreshSequence as jest.Mock).mockImplementation(() => {
+      sequenceRefreshed = true;
+    });
+    (getNextPrayer as jest.Mock).mockImplementation(() =>
+      sequenceRefreshed
+        ? { english: 'Magrib', datetime: new Date(magribTime) }
+        : { english: 'Asr', datetime: new Date(asrTime) }
+    );
+
+    startCountdowns();
+    const beforeTransition = jest.getTimerCount();
+
+    jest.advanceTimersByTime(1500); // cross the 06:15:00 boundary
+
+    expect(refreshSequence).toHaveBeenCalled();
+    // The transition restart replaced the std/extra chains 1:1 — no strays
+    expect(jest.getTimerCount()).toBe(beforeTransition);
+  });
+});
+
+// =============================================================================
+// OVERLAY COUNTDOWN TESTS
+// =============================================================================
+
+describe('overlay countdown end state', () => {
+  const { getDefaultStore } = require('jotai/vanilla');
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('holds at 1s when its target passes — never displays 0s', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockStandardSequenceAtom, {
+      type: 'standard',
+      prayers: [{ english: 'Fajr', datetime: new Date('2026-01-20T10:00:02.000Z'), belongsToDate: '2026-01-20' }],
+    });
+    defaultStore.set(mockOverlayAtom, {
+      isOn: true,
+      selectedPrayerIndex: 0,
+      scheduleType: 'standard',
+    });
+
+    const { startCountdownOverlay } = require('../countdown');
+    startCountdownOverlay();
+
+    jest.advanceTimersByTime(2500); // target passes at +2s
+
+    const finalValue = defaultStore.get(overlayCountdownAtom);
+    expect(finalValue.timeLeft).toBe(1);
+    expect(finalValue.name).toBe('Fajr');
+    expect(jest.getTimerCount()).toBe(0); // ticker stopped cleanly
   });
 });

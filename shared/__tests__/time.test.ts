@@ -13,6 +13,8 @@ import {
   getLastThirdOfNight,
   getMidnightTime,
   getSecondsBetween,
+  getSecondsRemaining,
+  getWallSecondDelay,
   isDateYesterdayOrFuture,
   isDecember,
   isDecorationSeason,
@@ -53,6 +55,12 @@ describe('formatTime', () => {
 
   it('converts days to hours', () => {
     expect(formatTime(90000)).toBe('25h 0s'); // 25 hours, minutes omitted when 0
+  });
+
+  it('handles the 24h and multi-day boundaries', () => {
+    expect(formatTime(86399)).toBe('23h 59m 59s');
+    expect(formatTime(86400)).toBe('24h 0s'); // exactly one day -> 24h
+    expect(formatTime(90061)).toBe('25h 1m 1s'); // day + hour + minute + second
   });
 
   describe('hideSeconds option', () => {
@@ -527,19 +535,35 @@ describe('adjustTime', () => {
 // =============================================================================
 
 describe('DST transitions', () => {
-  describe('Spring forward (last Sunday of March)', () => {
-    it('handles createPrayerDatetime during spring DST', () => {
-      // In 2026, clocks spring forward on March 29 at 1:00 AM -> 2:00 AM
-      const result = createPrayerDatetime('2026-03-29', '02:30');
-      expect(result).toBeInstanceOf(Date);
+  describe('Spring forward (last Sunday of March 2026: 01:00 GMT -> 02:00 BST)', () => {
+    it('maps a pre-transition time with GMT offset', () => {
+      expect(createPrayerDatetime('2026-03-29', '00:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
+    });
+
+    it('maps the nonexistent skipped hour via the pre-transition offset (date-fns-tz 3.2.0 semantics)', () => {
+      // 01:30 wall time never exists on this date; the library resolves it as if
+      // the old GMT offset still applied — once a year, midnight-prayer-only
+      expect(createPrayerDatetime('2026-03-29', '01:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
+    });
+
+    it('maps a post-transition time with BST offset', () => {
+      expect(createPrayerDatetime('2026-03-29', '02:30').toISOString()).toBe('2026-03-29T01:30:00.000Z');
     });
   });
 
-  describe('Fall back (last Sunday of October)', () => {
-    it('handles createPrayerDatetime during fall DST overlap', () => {
-      // In 2026, clocks fall back on October 25 at 2:00 AM -> 1:00 AM
-      const result = createPrayerDatetime('2026-10-25', '01:30');
-      expect(result).toBeInstanceOf(Date);
+  describe('Fall back (last Sunday of October 2026: 02:00 BST -> 01:00 GMT)', () => {
+    it('maps a pre-transition time with BST offset', () => {
+      expect(createPrayerDatetime('2026-10-25', '00:30').toISOString()).toBe('2026-10-24T23:30:00.000Z');
+    });
+
+    it('maps the duplicated hour to the LATER occurrence (date-fns-tz 3.2.0 semantics)', () => {
+      // 01:30 happens twice (01:30 BST then 01:30 GMT); the library picks GMT —
+      // once a year, midnight-prayer-only
+      expect(createPrayerDatetime('2026-10-25', '01:30').toISOString()).toBe('2026-10-25T01:30:00.000Z');
+    });
+
+    it('maps a post-transition time with GMT offset', () => {
+      expect(createPrayerDatetime('2026-10-25', '02:30').toISOString()).toBe('2026-10-25T02:30:00.000Z');
     });
   });
 });
@@ -577,5 +601,139 @@ describe('getMidnightTime edge cases', () => {
     const result = getMidnightTime('21:15', '02:45');
     expect(result).toBeDefined();
     expect(result).toMatch(/^\d{2}:\d{2}$/);
+  });
+});
+
+describe('getSecondsRemaining (ceil display contract)', () => {
+  const targetFromNow = (msAhead: number) => new Date(Date.now() + msAhead);
+  let nowSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    nowSpy = jest.spyOn(Date, 'now').mockReturnValue(1_700_000_000_000);
+  });
+
+  afterEach(() => {
+    nowSpy.mockRestore();
+  });
+
+  it('rounds up: 2.5s remaining displays as 3s', () => {
+    expect(getSecondsRemaining(targetFromNow(2500))).toBe(3);
+  });
+
+  it('exact second boundaries are exact: 2.0s remaining displays as 2s', () => {
+    expect(getSecondsRemaining(targetFromNow(2000))).toBe(2);
+  });
+
+  it('whole minutes flip on the boundary: 59.9995s remaining displays as 60s', () => {
+    expect(getSecondsRemaining(targetFromNow(59_999.5))).toBe(60);
+  });
+
+  it('final second always displays 1s: 0.5s remaining', () => {
+    expect(getSecondsRemaining(targetFromNow(500))).toBe(1);
+  });
+
+  it('never displays 0s: 0ms remaining holds at 1s', () => {
+    expect(getSecondsRemaining(targetFromNow(0))).toBe(1);
+  });
+
+  it('holds at 1s once the target has passed (latch until caller advances target)', () => {
+    expect(getSecondsRemaining(targetFromNow(-5000))).toBe(1);
+  });
+
+  it('any overshoot past a whole second rounds to the next digit: 1001ms remaining -> 2', () => {
+    expect(getSecondsRemaining(targetFromNow(1001))).toBe(2);
+  });
+
+  it('large horizons keep exact ceil semantics', () => {
+    expect(getSecondsRemaining(targetFromNow(1001))).toBe(2);
+    expect(getSecondsRemaining(targetFromNow(365 * 86400 * 1000 + 1))).toBe(365 * 86400 + 1);
+  });
+});
+
+describe('getWallSecondDelay (phase alignment)', () => {
+  let nowSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    nowSpy = jest.spyOn(Date, 'now');
+  });
+
+  afterEach(() => {
+    nowSpy.mockRestore();
+  });
+
+  it('returns ms to the next :000 boundary', () => {
+    nowSpy.mockReturnValue(1700000001234);
+    expect(getWallSecondDelay()).toBe(766);
+  });
+
+  it('lands shortly after the boundary, never at zero delay', () => {
+    nowSpy.mockReturnValue(1700000001000);
+    expect(getWallSecondDelay()).toBe(1000);
+  });
+
+  it('always returns a value in (0, 1000]', () => {
+    nowSpy.mockReturnValue(1700000000999);
+    const delay = getWallSecondDelay();
+    expect(delay).toBeGreaterThan(0);
+    expect(delay).toBeLessThanOrEqual(1000);
+  });
+
+  it('mid-second phases map to their exact complement', () => {
+    nowSpy.mockReturnValue(1700000000500);
+    expect(getWallSecondDelay()).toBe(500);
+    nowSpy.mockReturnValue(1700000000999);
+    expect(getWallSecondDelay()).toBe(1);
+    nowSpy.mockReturnValue(1700000000001);
+    expect(getWallSecondDelay()).toBe(999);
+  });
+});
+
+describe('countdown targets are true UTC instants (Fix A foundation)', () => {
+  it('createPrayerDatetime returns the exact UTC instant (GMT, winter)', () => {
+    const datetime = createPrayerDatetime('2026-01-18', '06:12');
+    expect(datetime.toISOString()).toBe('2026-01-18T06:12:00.000Z');
+  });
+
+  it('createPrayerDatetime returns the exact UTC instant (BST +01:00, summer)', () => {
+    const datetime = createPrayerDatetime('2026-06-15', '06:12');
+    expect(datetime.toISOString()).toBe('2026-06-15T05:12:00.000Z');
+  });
+
+  it('diffing a target against Date.now() needs no timezone conversion (offsets cancel)', () => {
+    // Target 13:00 BST = 12:00 UTC; now 11:00 UTC -> exactly 1h remaining
+    const datetime = createPrayerDatetime('2026-06-15', '13:00');
+    const fakeNow = new Date('2026-06-15T11:00:00Z').getTime();
+    const nowSpy = jest.spyOn(Date, 'now').mockReturnValue(fakeNow);
+    const seconds = getSecondsRemaining(datetime);
+    nowSpy.mockRestore();
+    expect(seconds).toBe(3600);
+  });
+
+  it('countdown window crossing the October fallback counts the real elapsed time (8.5h, not 7.5h)', () => {
+    // Last Sunday of October 2026: clocks fall back 02:00 BST -> 01:00 GMT.
+    // From Sat 23:00 BST (22:00Z) to Sun 06:30 GMT (06:30Z) = 8h30m of real time —
+    // the fallback hour is included because the phone really waits that long.
+    const target = createPrayerDatetime('2026-10-25', '06:30'); // after fallback -> GMT
+    expect(target.toISOString()).toBe('2026-10-25T06:30:00.000Z');
+
+    const fakeNow = new Date('2026-10-24T22:00:00Z').getTime(); // Sat 23:00 BST
+    const nowSpy = jest.spyOn(Date, 'now').mockReturnValue(fakeNow);
+    const seconds = getSecondsRemaining(target);
+    nowSpy.mockRestore();
+    expect(seconds).toBe(8.5 * 3600);
+  });
+
+  it('countdown window crossing the March spring-forward counts the real elapsed time (6.5h, not 7.5h)', () => {
+    // Last Sunday of March 2026: clocks spring forward 01:00 GMT -> 02:00 BST.
+    // From Sat 23:00 GMT (23:00Z) to Sun 06:30 BST (05:30Z) = 6h30m of real time —
+    // the skipped hour is excluded because it never happens (naive wall math: 7.5h).
+    const target = createPrayerDatetime('2026-03-29', '06:30'); // after spring-forward -> BST
+    expect(target.toISOString()).toBe('2026-03-29T05:30:00.000Z');
+
+    const fakeNow = new Date('2026-03-28T23:00:00Z').getTime(); // Sat 23:00 GMT
+    const nowSpy = jest.spyOn(Date, 'now').mockReturnValue(fakeNow);
+    const seconds = getSecondsRemaining(target);
+    nowSpy.mockRestore();
+    expect(seconds).toBe(6.5 * 3600);
   });
 });
