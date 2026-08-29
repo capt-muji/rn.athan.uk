@@ -32,7 +32,7 @@ export default function Toggle({ value, onToggle, disabled }: ToggleProps) {
       return;
     }
     translateX.value = withTiming(value ? SIZE.toggle.translateX : 0, { duration: ANIMATION.duration });
-  }, [value]);
+  }, [value, translateX]);
 
   const thumbStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: translateX.value }],

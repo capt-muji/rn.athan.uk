@@ -55,7 +55,7 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
     } else {
       progress.value = withTiming(target, { duration: ANIMATION.duration });
     }
-  }, [isSelected]);
+  }, [isSelected, progress]);
 
   const labelStyle = useAnimatedStyle(() => ({
     color: interpolateColor(progress.value, [0, 1], [SEGMENT_COLORS.unselected, SEGMENT_COLORS.selected]),
@@ -119,7 +119,7 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
     } else {
       translateX.value = withTiming(targetX, { duration: ANIMATION.duration });
     }
-  }, [selectedIndex, optionWidth]);
+  }, [selectedIndex, optionWidth, translateX]);
 
   const indicatorStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: translateX.value }],
