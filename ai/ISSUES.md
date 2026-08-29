@@ -173,16 +173,15 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   OEM delivery deferral beats even setAlarmClock in some configurations.
   DECISION: stay on expo-notifications; no library swap without new evidence.
 
-### 11. [OPEN] ±60s EARLY — device clock skew (hypothesis, testable)
+### 11. [CLOSED — WONTFIX by owner] ±60s EARLY — device clock skew (hypothesis, testable)
 
 - No Android alarm API can fire early (platform guarantee). Alarms are `RTC_WAKEUP` =
   device wall-clock. Offline secondary phones drift; OnePlus "Sleep Standby Optimization"
   cuts network at night (dontkillmyapp.com/oneplus) → no NTP correction → clock ahead →
   alarms fire "early" in real time.
-- **Test procedure**: when a notification fires early on 8T/Find X8, immediately compare
-  phone clock vs a reference (iPhone). Also check Settings date/time auto-sync state.
-- **If confirmed**: unfixable in-app (RTC is the only correct primitive for wall-clock
-  times); mitigate via owner keeping phone online or accepting skew on secondary device.
+- **Decision (owner, 2026-08-29)**: dropped — "not something we can handle" in-app.
+  If it resurfaces, the informal test remains: compare phone clock vs a reference when
+  a notification fires early; mitigation is keeping the phone online (NTP correction).
 
 ### 12. [OPEN] DOUBLE notifications — orphan-alarm race (missing deterministic IDs)
 
