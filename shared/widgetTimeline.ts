@@ -19,7 +19,8 @@ import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import * as TimeUtils from '@/shared/time';
 import type { Prayer, PrayerSequence } from '@/shared/types';
-import type { PrayerWidgetDayPrayer, PrayerWidgetProps } from '@/shared/widgetTypes';
+import type { PrayerWidgetDayPrayer, PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
+import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
 /** Delay between the final real entry and the stale entry, keeping entries
  *  within WidgetKit's minimum ~5-minute spacing guidance. */
@@ -54,7 +55,12 @@ const nextLondonMidnightAfter = (date: Date): Date => {
  * @param entryDate Date of the timeline entry
  * @param prevIndex Index of the prayer starting the entry's segment
  */
-const buildDayList = (prayers: Prayer[], entryDate: Date, prevIndex: number): PrayerWidgetDayPrayer[] => {
+const buildDayList = (
+  prayers: Prayer[],
+  entryDate: Date,
+  prevIndex: number,
+  showArabic: boolean
+): PrayerWidgetDayPrayer[] => {
   const dateString = TimeUtils.formatDateShort(entryDate);
 
   return prayers
@@ -62,7 +68,7 @@ const buildDayList = (prayers: Prayer[], entryDate: Date, prevIndex: number): Pr
     .filter(({ prayer }) => prayer.belongsToDate === dateString)
     .map(({ prayer, index }) => ({
       name: prayer.english,
-      arabic: prayer.arabic,
+      arabic: showArabic ? prayer.arabic : '',
       time: prayer.time,
       state: index <= prevIndex ? 'passed' : index === prevIndex + 1 ? 'next' : 'upcoming',
     }));
@@ -80,16 +86,14 @@ const buildDayList = (prayers: Prayer[], entryDate: Date, prevIndex: number): Pr
  *
  * @param now Current instant
  * @param sequence Chronologically sorted prayer sequence (must span `now`)
- * @param accentColor User's countdown bar accent color (hex)
- * @param showArabic Whether Arabic prayer names are enabled
+ * @param settings The in-app settings snapshot the widget mirrors
  * @returns Sorted timeline entries ending with the stale guard, empty when the
  *  sequence does not cover `now`
  */
 export const buildPrayerWidgetTimeline = (
   now: Date,
   sequence: PrayerSequence,
-  accentColor: string,
-  showArabic: boolean
+  settings: PrayerWidgetSettings
 ): WidgetTimelineEntry<PrayerWidgetProps>[] => {
   const entries: WidgetTimelineEntry<PrayerWidgetProps>[] = [];
   const prayers = sequence.prayers;
@@ -105,14 +109,16 @@ export const buildPrayerWidgetTimeline = (
     return {
       date,
       props: {
+        v: WIDGET_PROPS_VERSION,
         nextName: next.english,
-        nextArabic: next.arabic,
+        nextArabic: settings.showArabic ? next.arabic : '',
         nextTime: next.time,
         nextEpochMs: next.datetime.getTime(),
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
-        accentColor,
-        showArabic,
-        dayPrayers: buildDayList(prayers, date, prevIndex),
+        accentColor: settings.accentColor,
+        showArabic: settings.showArabic,
+        showBar: settings.showBar,
+        dayPrayers: buildDayList(prayers, date, prevIndex, settings.showArabic),
       },
     };
   };
@@ -167,13 +173,15 @@ export const buildPrayerWidgetTimeline = (
   entries.push({
     date: new Date(finalEpochMs + STALE_ENTRY_DELAY_MS),
     props: {
+      v: WIDGET_PROPS_VERSION,
       nextName: finalPrayer.english,
-      nextArabic: finalPrayer.arabic,
+      nextArabic: settings.showArabic ? finalPrayer.arabic : '',
       nextTime: finalPrayer.time,
       nextEpochMs: finalEpochMs,
       prevEpochMs: finalEpochMs,
-      accentColor,
-      showArabic,
+      accentColor: settings.accentColor,
+      showArabic: settings.showArabic,
+      showBar: settings.showBar,
       dayPrayers: [],
       stale: true,
     },

@@ -164,7 +164,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
       <NextPrayer nameSize={22} arabicSize={15} />
       <Spacer />
       <Countdown size={30} />
-      <SegmentBar />
+      {props.showBar !== false && <SegmentBar />}
     </VStack>
   );
 
@@ -176,7 +176,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
         <NextPrayer nameSize={20} arabicSize={14} />
         <Spacer />
         <Countdown size={24} />
-        <SegmentBar />
+        {props.showBar !== false && <SegmentBar />}
       </VStack>
       <Rectangle modifiers={[foregroundStyle(DIVIDER), frame({ width: 1, maxHeight: Infinity })]} />
       <VStack alignment='leading' spacing={1} modifiers={[frame({ width: 122, maxHeight: Infinity })]}>
