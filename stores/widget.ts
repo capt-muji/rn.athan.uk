@@ -21,7 +21,8 @@ import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
-import { countdownBarColorAtom, showArabicNamesAtom } from '@/stores/ui';
+import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
+import { countdownBarColorAtom, countdownBarShownAtom, showArabicNamesAtom } from '@/stores/ui';
 import PrayerLockWidget from '@/widgets/LockPrayerWidget';
 import PrayerWidget from '@/widgets/PrayerWidget';
 
@@ -29,6 +30,21 @@ import PrayerWidget from '@/widgets/PrayerWidget';
  *  stored timeline when it runs out, so this is how long the widget stays
  *  correct without the app opening. */
 const TIMELINE_DAYS = 14;
+
+/**
+ * Reads the slice of in-app settings the widgets mirror. The widget has no
+ * configuration of its own; adding a widget-visible setting means adding a
+ * field here, on PrayerWidgetSettings, and honoring it in the layouts.
+ */
+export const readWidgetSettings = (): PrayerWidgetSettings => {
+  const store = getDefaultStore();
+
+  return {
+    accentColor: store.get(countdownBarColorAtom),
+    showArabic: store.get(showArabicNamesAtom),
+    showBar: store.get(countdownBarShownAtom),
+  };
+};
 
 /**
  * Pushes a fresh timeline to both widgets from the cached prayer data.
@@ -50,11 +66,7 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
     const startDate = addDays(now, -1);
     const sequence = PrayerUtils.createPrayerSequence(ScheduleType.Standard, startDate, TIMELINE_DAYS + 1);
 
-    const store = getDefaultStore();
-    const accentColor = store.get(countdownBarColorAtom);
-    const showArabic = store.get(showArabicNamesAtom);
-
-    const entries = buildPrayerWidgetTimeline(now, sequence, accentColor, showArabic);
+    const entries = buildPrayerWidgetTimeline(now, sequence, readWidgetSettings());
     if (entries.length === 0) {
       logger.warn('WIDGET: No timeline entries built — prayer cache is likely empty');
       return;
