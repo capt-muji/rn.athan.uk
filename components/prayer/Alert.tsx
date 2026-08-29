@@ -80,6 +80,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // =============================================================================
 
   // Force animation to respect new state immediately when refreshing
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos is read from the fresh render closure at signal time
   useEffect(() => {
     AnimFill.animate(Prayer.ui.initialColorPos);
   }, [refreshUI]);
@@ -87,9 +88,10 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Animate when next prayer changes
   useEffect(() => {
     if (Prayer.isNext) AnimFill.animate(1);
-  }, [Prayer.isNext]);
+  }, [Prayer.isNext, AnimFill.animate]);
 
   // Cascade animation when date changes and we're at first prayer
+  // biome-ignore lint/correctness/useExhaustiveDependencies: displayDate is the deliberate cascade trigger; the remaining values are read once per date change by design
   useEffect(() => {
     if (
       !isSelectedForOverlay &&
@@ -104,6 +106,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   }, [Schedule.displayDate, isSelectedForOverlay]);
 
   // Update fill color based on selection state
+  // biome-ignore lint/correctness/useExhaustiveDependencies: keyed on selection only; initialColorPos changes are handled by the refresh/next/cascade effects
   useEffect(() => {
     const colorPos = isSelectedForOverlay || Prayer.isOverlay ? 1 : Prayer.ui.initialColorPos;
     AnimFill.animate(colorPos, { duration: ANIMATION.durationVeryFast });
