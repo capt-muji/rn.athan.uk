@@ -75,12 +75,18 @@ export const formatHijriDateLong = (date: string): string => {
 };
 
 /**
- * Formats a date into YYYY-MM-DD format
+ * Formats a date into YYYY-MM-DD format (London timezone)
+ *
+ * Converts through London wall time first (like formatDateLong), so the result
+ * is the London calendar date of the instant regardless of the device's
+ * timezone — required for cache keys and belongsToDate matching.
+ *
  * @param date Date object
  * @returns Date string in YYYY-MM-DD format
  */
 export const formatDateShort = (date: Date): string => {
-  return format(date, 'yyyy-MM-dd');
+  const londonDate = createLondonDate(date);
+  return format(londonDate, 'yyyy-MM-dd');
 };
 
 // =============================================================================
