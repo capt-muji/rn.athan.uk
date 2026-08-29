@@ -64,12 +64,16 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
+      // Simulated cascade (minutes from app launch): Fajr passed 10m ago, then a
+      // transition every minute — Sunrise +1m, Dhuhr +2m, Asr +3m, Magrib +4m,
+      // Isha +5m. Tweak these offsets to move the transitions; rebuild + relaunch
+      // to rerun the simulation (runbook: ai/USAGE.md "Mock cascade simulation").
       fajr: addMinutes(-10),
-      sunrise: addMinutes(-5),
-      dhuhr: addMinutes(-1),
-      asr: addMinutes(1),
-      magrib: addMinutes(2),
-      isha: addMinutes(3),
+      sunrise: addMinutes(1),
+      dhuhr: addMinutes(2),
+      asr: addMinutes(3),
+      magrib: addMinutes(4),
+      isha: addMinutes(5),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
