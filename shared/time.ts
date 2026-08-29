@@ -349,6 +349,49 @@ export const getSecondsBetween = (from: Date, to: Date): number => {
 };
 
 /**
+ * Whole seconds remaining until a target instant, for live countdown display.
+ *
+ * Rounding model (countdown display contract):
+ * - Rounds UP (ceil): each digit owns exactly the wall second being lived
+ *   through, so digits flip on the :000 boundary like the system clock.
+ * - The final second displays "1s" — never "0s" — because a countdown reads
+ *   "N seconds remaining" and the swap to the next prayer happens at zero.
+ * - Once the target has passed, holds at 1 until the caller advances the
+ *   target (prevents a frozen "0s" while the sequence refresh runs).
+ *
+ * Uses Date.now() directly: countdown targets are true UTC instants (built
+ * via createPrayerDatetime/fromZonedTime), so no timezone conversion is
+ * needed for a difference — the offset cancels.
+ *
+ * @param target Target instant (prayer datetime)
+ * @returns Seconds remaining, always >= 1
+ *
+ * @example
+ * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "42s"
+ */
+export const getSecondsRemaining = (target: Date): number => {
+  const msLeft = target.getTime() - Date.now();
+  return Math.max(1, Math.ceil(msLeft / 1000));
+};
+
+/**
+ * Delay needed to align a timer with the next wall-clock second boundary.
+ *
+ * Tickers started with a bare setInterval fire at an arbitrary sub-second
+ * phase; scheduling the first tick with this delay makes digits flip just
+ * after :000, matching the system clock (F.7 status-bar parity).
+ *
+ * @returns Milliseconds until the next :000 wall-second boundary (1-1000)
+ *
+ * @example
+ * const delay = getWallSecondDelay();
+ * setTimeout(() => setInterval(tick, 1000), delay);
+ */
+export const getWallSecondDelay = (): number => {
+  return 1000 - (Date.now() % 1000);
+};
+
+/**
  * Converts seconds into human-readable time format with flexible precision
  *
  * Formatting Rules:
