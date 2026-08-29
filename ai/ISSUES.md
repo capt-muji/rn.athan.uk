@@ -204,18 +204,28 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   → stale entries REMOVED, never re-fired, ExpoSchedulingDelegate.kt:61-64); JS re-post
   duplicates (same tag+id replaces, ExpoPresentationDelegate.kt:108-112).
 
-### 13. [OPEN] Shipped Android manifest never verified (CNG + Play policy risk)
+### 13. [CLOSED 1.5.3 — manifest half] Shipped Android manifest never verified (CNG + Play policy risk)
 
-- Repo is CNG (no android/ dir). app.json declares USE_EXACT_ALARM + SCHEDULE_EXACT_ALARM
-  (correct structure for prebuild merge). BUT `USE_EXACT_ALARM` is Play-policy-restricted
-  to alarm-clock/calendar core-function apps — Review may strip it from shipped builds.
-  `SCHEDULE_EXACT_ALARM` is denied-by-default on Android 13+ fresh installs
-  (developer.android.com schedule-exact-alarms page) and also denied after
-  backup-restore to Android 14+.
-- **Ground-truth check (run once per affected phone)**:
+- **VERIFIED 2026-08-29 (ground truth)**: `npx expo prebuild --platform android --no-install` +
+  `./gradlew assembleRelease` (19m20s, clean) → `aapt dump permissions app-release.apk` on the
+  MERGED manifest. Both exact-alarm permissions survive prebuild merging:
+  - `USE_EXACT_ALARM` ✓ (manifest line 25) — Play-policy review remains an owner/Play-Console
+    matter (alarm-clock core-function app is defensible), not a code issue.
+  - `SCHEDULE_EXACT_ALARM` ✓ (line 23) — denied-by-default on Android 13+ fresh installs;
+    runtime-grant observability stays open under #14.
+- Full dump (app.json-declared first): RECEIVE_BOOT_COMPLETED, POST_NOTIFICATIONS,
+  USE_EXACT_ALARM, SCHEDULE_EXACT_ALARM, WAKE_LOCK, ACCESS_NOTIFICATION_POLICY; lib-injected:
+  INTERNET, ACCESS_NETWORK_STATE, VIBRATE, MODIFY_AUDIO_SETTINGS, RECORD_AUDIO (expo-audio),
+  FOREGROUND_SERVICE + FOREGROUND_SERVICE_MEDIA_PLAYBACK, SYSTEM_ALERT_WINDOW,
+  READ/WRITE_EXTERNAL_STORAGE (maxSdk 32), C2DM RECEIVE + Finsky INSTALL_REFERRER
+  (expo-updates/play-services), DYNAMIC_RECEIVER_NOT_EXPORTED (AndroidX), plus a block of
+  harmless launcher-badge permissions (ShortcutBadger via notifications stack:
+  Samsung/HTC/Sony/Huawei/Oppo/OPPO generic READ/WRITE_SETTINGS badge perms).
+- **Ground-truth check on a phone (run once per affected phone)**:
   `adb shell dumpsys package com.mugtaba.athan | grep -i -A2 EXACT`
-- If permission absent → all exactness bets are off regardless of toggles → add
-  runtime check + guided grant flow (ACTION_REQUEST_SCHEDULE_EXACT_ALARM).
+- If permission absent at RUNTIME (Android 13+ default-deny) → all exactness bets are off
+  regardless of the manifest → #14 observability module + guided grant flow
+  (ACTION_REQUEST_SCHEDULE_EXACT_ALARM).
 
 ### 14. [OPEN] No exact-alarm / power-state observability
 
