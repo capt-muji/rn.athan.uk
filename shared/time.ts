@@ -437,8 +437,9 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
 
   const parts = [totalHours && `${totalHours}h`, minutes && `${minutes}m`].filter(Boolean);
 
-  // Always show seconds if shouldShowSeconds is true, or if there are no other parts (e.g., "0s")
-  if (shouldShowSeconds || parts.length === 0) {
+  // "0s" never appears beside another unit — a whole minute reads "1m", not "1m 0s".
+  // Seconds render only when non-zero (and permitted), or when alone (e.g., "45s", "0s")
+  if ((shouldShowSeconds && secs) || parts.length === 0) {
     parts.push(`${secs ?? 0}s`);
   }
 
