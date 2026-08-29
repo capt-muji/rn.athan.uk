@@ -247,7 +247,7 @@ export const addOneScheduledReminderForPrayer = (
 };
 
 /**
- * Gets all scheduled reminders for a specific prayer
+ * Gets all scheduled reminders for a prayer
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
  * @returns Array of scheduled reminders
@@ -255,6 +255,21 @@ export const addOneScheduledReminderForPrayer = (
 export const getAllScheduledRemindersForPrayer = (scheduleType: ScheduleType, prayerIndex: number) => {
   const prefix = `scheduled_reminders_${scheduleType}_${prayerIndex}`;
   const reminders = getAllWithPrefix(prefix);
+
+  logger.info('REMINDER DB: Read:', reminders);
+  return reminders;
+};
+
+/**
+ * Gets all scheduled reminders for a schedule type
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @returns Array of scheduled reminders
+ */
+export const getAllScheduledRemindersForSchedule = (
+  scheduleType: ScheduleType
+): NotificationUtils.ScheduledNotification[] => {
+  const prefix = `scheduled_reminders_${scheduleType}`;
+  const reminders: NotificationUtils.ScheduledNotification[] = getAllWithPrefix(prefix);
 
   logger.info('REMINDER DB: Read:', reminders);
   return reminders;

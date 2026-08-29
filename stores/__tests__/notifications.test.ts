@@ -9,9 +9,11 @@
  */
 
 import * as BackgroundTask from 'expo-background-task';
+import * as Notifications from 'expo-notifications';
 import * as TaskManager from 'expo-task-manager';
 import { createStore } from 'jotai';
 
+import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import {
   BACKGROUND_TASK_INTERVAL_HOURS,
   BACKGROUND_TASK_NAME,
@@ -22,7 +24,9 @@ import {
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
 } from '@/shared/constants';
-import { AlertType, ScheduleType } from '@/shared/types';
+import logger from '@/shared/logger';
+import type { ScheduledNotification } from '@/shared/notifications';
+import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   createPrayerAlertAtom,
@@ -39,7 +43,9 @@ import {
   getReminderIntervalAtom,
   lastNotificationScheduleAtom,
   migrateIndexKeyedAlertPreferences,
+  refreshNotifications,
   registerBackgroundTask,
+  rescheduleAllNotifications,
   rescheduleAllNotificationsFromBackground,
   setPrayerAlertType,
   shouldRescheduleNotifications,
@@ -48,7 +54,19 @@ import {
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
   unregisterBackgroundTask,
+  updatePrayerNotifications,
 } from '@/stores/notifications';
+
+// Explicit logger mock: the moduleNameMapper's generic '^@/(.*)$' key resolves
+// '@/shared/logger' before the dedicated mock entry can, so logger assertions
+// in this file need a module factory (same pattern as api/__tests__/client.test.ts).
+jest.mock('@/shared/logger', () => ({
+  __esModule: true,
+  default: { info: jest.fn(), warn: jest.fn(), error: jest.fn(), debug: jest.fn() },
+  isProd: () => false,
+  isPreview: () => false,
+  isTest: () => true,
+}));
 
 // =============================================================================
 // getPrayerArrays HELPER TESTS
@@ -775,5 +793,452 @@ describe('Background task constants', () => {
   it('background interval is above Android minimum (15 min)', () => {
     const backgroundIntervalMinutes = BACKGROUND_TASK_INTERVAL_HOURS * 60;
     expect(backgroundIntervalMinutes).toBeGreaterThan(15);
+  });
+});
+
+// =============================================================================
+// RESCHEDULE STRATEGY (issue #15: zero-notification window)
+// =============================================================================
+
+describe('reschedule strategy (issue #15: zero-notification window)', () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { getDefaultStore } = require('jotai/vanilla');
+  const store = getDefaultStore();
+
+  // Frozen at 09:00 London (BST) on Saturday 2026-08-29 — deterministic
+  // genNextXDays window [2026-08-29, 2026-08-30] and future-safe seed times.
+  const FROZEN_NOW = new Date('2026-08-29T08:00:00Z');
+  const TODAY = '2026-08-29';
+  const TOMORROW = '2026-08-30';
+  const YESTERDAY = '2026-08-28';
+  const SEED_TIME = '12:00'; // 3h after frozen now — future for at-time and reminders
+
+  // In-memory OS model: identifier-keyed pending notifications with the same
+  // replace/cancel semantics the platform notification centers provide.
+  const osState = new Set<string>();
+
+  const scheduleMock = Notifications.scheduleNotificationAsync as jest.Mock;
+  const cancelMock = Notifications.cancelScheduledNotificationAsync as jest.Mock;
+  const getAllMock = Notifications.getAllScheduledNotificationsAsync as jest.Mock;
+  const cancelAllMock = Notifications.cancelAllScheduledNotificationsAsync as jest.Mock;
+
+  const fajrId = (date: string) => prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date);
+  const fajrReminderId = (date: string, interval: number) =>
+    reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', date, interval as ReminderInterval);
+
+  const seedPrayerDay = (date: string, time = SEED_TIME) => {
+    const prayer: ISingleApiResponseTransformed = {
+      date,
+      fajr: time,
+      sunrise: time,
+      dhuhr: time,
+      asr: time,
+      magrib: time,
+      isha: time,
+      midnight: time,
+      'last third': time,
+      suhoor: time,
+      duha: time,
+      istijaba: time,
+    };
+    Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+  };
+
+  const seedPrayerWindow = () => {
+    seedPrayerDay(TODAY);
+    seedPrayerDay(TOMORROW);
+  };
+
+  const notificationRecord = (id: string, englishName = 'Fajr'): ScheduledNotification => ({
+    id,
+    date: TODAY,
+    time: SEED_TIME,
+    englishName,
+    arabicName: 'الفجر',
+    alertType: AlertType.Sound,
+  });
+
+  const seedRecords = (ids: string[]) => {
+    ids.forEach((id) => {
+      Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, notificationRecord(id));
+    });
+  };
+
+  const seedReminderRecords = (ids: string[]) => {
+    ids.forEach((id) => {
+      Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, notificationRecord(id));
+    });
+  };
+
+  const enableFajrAlerts = (atTime: AlertType, reminder: AlertType = AlertType.Off) => {
+    store.set(standardPrayerAlertAtoms[0], atTime);
+    store.set(standardReminderAlertAtoms[0], reminder);
+  };
+
+  const osIdentifiers = () => Array.from(osState).sort();
+
+  const cancelCalls = () => cancelMock.mock.calls.map((call) => call[0] as string);
+
+  const orderOfLastCallWith = (mock: jest.Mock, arg: string) => {
+    const calls = mock.mock.calls.map((call) => call[0]);
+    const index = calls.lastIndexOf(arg);
+    return mock.mock.invocationCallOrder[index];
+  };
+
+  const orderOfLastScheduleWith = (identifier: string) => {
+    const calls = scheduleMock.mock.calls.map((call) => (call[0] as { identifier: string }).identifier);
+    const index = calls.lastIndexOf(identifier);
+    return scheduleMock.mock.invocationCallOrder[index];
+  };
+
+  const maxScheduleOrder = () => Math.max(0, ...scheduleMock.mock.invocationCallOrder);
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    jest.setSystemTime(FROZEN_NOW);
+
+    osState.clear();
+    Database.database.clearAll();
+    jest.clearAllMocks();
+
+    [standardPrayerAlertAtoms, extraPrayerAlertAtoms, standardReminderAlertAtoms, extraReminderAlertAtoms].forEach(
+      (atoms) => {
+        atoms.forEach((atom) => {
+          store.set(atom, AlertType.Off);
+        });
+      }
+    );
+    [standardReminderIntervalAtoms, extraReminderIntervalAtoms].forEach((atoms) => {
+      atoms.forEach((atom) => {
+        store.set(atom, DEFAULT_REMINDER_INTERVAL);
+      });
+    });
+    store.set(lastNotificationScheduleAtom, 0);
+    store.set(soundPreferenceAtom, 0);
+
+    scheduleMock.mockImplementation(({ identifier }: { identifier: string }) => {
+      osState.add(identifier);
+      return Promise.resolve(identifier);
+    });
+    cancelMock.mockImplementation((id: string) => {
+      osState.delete(id);
+      return Promise.resolve(undefined);
+    });
+    getAllMock.mockImplementation(() => Promise.resolve(Array.from(osState).map((identifier) => ({ identifier }))));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  afterAll(() => {
+    scheduleMock.mockResolvedValue('mock-notification-id');
+    cancelMock.mockResolvedValue(undefined);
+    getAllMock.mockResolvedValue([]);
+  });
+
+  // -- global ordering guarantees --------------------------------------------
+
+  it('never bulk-cancels or bulk-wipes during a global reschedule', async () => {
+    const scheduleWipe = jest.spyOn(Database, 'clearAllScheduledNotificationsForSchedule');
+    const reminderWipe = jest.spyOn(Database, 'clearAllScheduledRemindersForSchedule');
+
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    await rescheduleAllNotifications();
+
+    expect(cancelAllMock).not.toHaveBeenCalled();
+    expect(scheduleWipe).not.toHaveBeenCalled();
+    expect(reminderWipe).not.toHaveBeenCalled();
+  });
+
+  it('never bulk-cancels via refreshNotifications or the background reschedule', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    await refreshNotifications();
+    expect(cancelAllMock).not.toHaveBeenCalled();
+
+    await rescheduleAllNotificationsFromBackground();
+    expect(cancelAllMock).not.toHaveBeenCalled();
+  });
+
+  it('re-schedules identical identifiers without a single cancel (zero window)', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    const todayId = fajrId(TODAY);
+    const tomorrowId = fajrId(TOMORROW);
+    seedRecords([todayId, tomorrowId]);
+    osState.add(todayId);
+    osState.add(tomorrowId);
+
+    await rescheduleAllNotifications();
+
+    expect(cancelMock).not.toHaveBeenCalled();
+    expect(osIdentifiers()).toEqual([todayId, tomorrowId].sort());
+
+    const recordIds = Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0)
+      .map((record) => record.id)
+      .sort();
+    expect(recordIds).toEqual([todayId, tomorrowId].sort());
+  });
+
+  it('cancels rolled-out window days only after the new window is scheduled', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    const yesterdayId = fajrId(YESTERDAY);
+    const todayId = fajrId(TODAY);
+    const tomorrowId = fajrId(TOMORROW);
+    seedRecords([yesterdayId, todayId]);
+    osState.add(yesterdayId);
+    osState.add(todayId);
+
+    await rescheduleAllNotifications();
+
+    expect(osIdentifiers()).toEqual([todayId, tomorrowId].sort());
+
+    const staleCancelOrder = orderOfLastCallWith(cancelMock, yesterdayId);
+    expect(staleCancelOrder).toBeGreaterThan(0);
+    expect(staleCancelOrder).toBeGreaterThan(maxScheduleOrder());
+  });
+
+  // -- failure resilience ------------------------------------------------------
+
+  it('keeps the existing OS notification alive when re-scheduling it fails', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    const todayId = fajrId(TODAY);
+    const tomorrowId = fajrId(TOMORROW);
+    seedRecords([todayId, tomorrowId]);
+    osState.add(todayId);
+    osState.add(tomorrowId);
+
+    scheduleMock.mockImplementation(({ identifier }: { identifier: string }) => {
+      if (identifier === tomorrowId) return Promise.reject(new Error('OS refused'));
+      osState.add(identifier);
+      return Promise.resolve(identifier);
+    });
+
+    await rescheduleAllNotifications();
+
+    // The failed identifier was never cancelled — its previous alarm survives
+    expect(osState.has(tomorrowId)).toBe(true);
+    expect(cancelCalls()).not.toContain(tomorrowId);
+
+    // Bookkeeping records it so the sweep does not remove it either
+    const recordIds = Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0).map(
+      (record) => record.id
+    );
+    expect(recordIds).toContain(tomorrowId);
+    expect(logger.error).toHaveBeenCalled();
+  });
+
+  it('keeps the existing OS reminder alive when re-scheduling it fails', async () => {
+    enableFajrAlerts(AlertType.Sound, AlertType.Sound);
+    seedPrayerWindow();
+
+    const oldTodayId = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
+    seedReminderRecords([oldTodayId]);
+    osState.add(oldTodayId);
+
+    scheduleMock.mockImplementation(({ identifier }: { identifier: string }) => {
+      if (identifier === oldTodayId) return Promise.reject(new Error('OS refused'));
+      osState.add(identifier);
+      return Promise.resolve(identifier);
+    });
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has(oldTodayId)).toBe(true);
+
+    const reminderIds = Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0).map((record) => record.id);
+    expect(reminderIds).toContain(oldTodayId);
+  });
+
+  // -- reminders ---------------------------------------------------------------
+
+  it('schedules the new reminder interval before cancelling the old one', async () => {
+    enableFajrAlerts(AlertType.Sound, AlertType.Sound);
+    store.set(standardReminderIntervalAtoms[0], 10);
+    seedPrayerWindow();
+
+    const oldTodayId = fajrReminderId(TODAY, 5);
+    const newTodayId = fajrReminderId(TODAY, 10);
+    const oldTomorrowId = fajrReminderId(TOMORROW, 5);
+    seedReminderRecords([oldTodayId, oldTomorrowId]);
+    osState.add(oldTodayId);
+    osState.add(oldTomorrowId);
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has(newTodayId)).toBe(true);
+    expect(osState.has(oldTodayId)).toBe(false);
+
+    const oldCancelOrder = orderOfLastCallWith(cancelMock, oldTodayId);
+    const newScheduleOrder = orderOfLastScheduleWith(newTodayId);
+    expect(oldCancelOrder).toBeGreaterThan(newScheduleOrder);
+  });
+
+  it('cancels reminder records whose reminder time already passed (skipped days)', async () => {
+    enableFajrAlerts(AlertType.Sound, AlertType.Sound);
+    seedPrayerDay(TODAY, '09:03'); // reminder 08:58 < now 09:00 → skipped
+    seedPrayerDay(TOMORROW);
+
+    const oldTodayId = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
+    const tomorrowId = fajrReminderId(TOMORROW, DEFAULT_REMINDER_INTERVAL);
+    seedReminderRecords([oldTodayId]);
+    osState.add(oldTodayId);
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has(oldTodayId)).toBe(false);
+    expect(osState.has(tomorrowId)).toBe(true);
+  });
+
+  // -- sweep -------------------------------------------------------------------
+
+  it('sweeps OS notifications of prayers the user turned off', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    const strayDhuhrId = prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', TODAY);
+    osState.add(strayDhuhrId);
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has(strayDhuhrId)).toBe(false);
+    expect(logger.warn).toHaveBeenCalledWith('NOTIFICATION: Sweep found stale OS notifications:', expect.anything());
+  });
+
+  it('heals the post-upgrade state: empty records, populated OS', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    // clearUpgradeCache wipes scheduled_* records; the OS keeps its notifications
+    osState.add('legacy-uuid-1');
+    osState.add('legacy-uuid-2');
+    const staleDhuhrId = prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', TOMORROW);
+    osState.add(staleDhuhrId);
+
+    await rescheduleAllNotifications();
+
+    const todayId = fajrId(TODAY);
+    const tomorrowId = fajrId(TOMORROW);
+    expect(osIdentifiers()).toEqual([todayId, tomorrowId].sort());
+    expect(osState.has('legacy-uuid-1')).toBe(false);
+    expect(osState.has('legacy-uuid-2')).toBe(false);
+
+    const recordIds = Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0)
+      .map((record) => record.id)
+      .sort();
+    expect(recordIds).toEqual([todayId, tomorrowId].sort());
+  });
+
+  it('logs a post-reschedule verification count', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    await rescheduleAllNotifications();
+
+    expect(logger.info).toHaveBeenCalledWith('NOTIFICATION: Post-reschedule verification:', {
+      dbRecords: 2,
+      osPending: 2,
+      staleCancelled: 0,
+    });
+  });
+
+  it('surfaces a sweep failure instead of silently losing verification', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    getAllMock.mockRejectedValue(new Error('OS query failed'));
+
+    await expect(rescheduleAllNotifications()).rejects.toThrow('OS query failed');
+    expect(logger.error).toHaveBeenCalled();
+  });
+
+  it('clears notifications of prayers whose alert is off (heals interrupted settings commit)', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    // Alert was turned off but the process died before its notifications were
+    // cancelled — records and OS notifications both still present
+    const dhuhrTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', TODAY);
+    Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 2, notificationRecord(dhuhrTodayId, 'Dhuhr'));
+    osState.add(dhuhrTodayId);
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has(dhuhrTodayId)).toBe(false);
+    expect(Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 2)).toHaveLength(0);
+  });
+
+  it('clears reminders when the reminder alert is off but at-time stays on', async () => {
+    enableFajrAlerts(AlertType.Sound, AlertType.Sound);
+    seedPrayerWindow();
+
+    // Reminder turned off after reminders were already scheduled
+    const reminderId = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
+    seedReminderRecords([reminderId]);
+    osState.add(reminderId);
+    store.set(standardReminderAlertAtoms[0], AlertType.Off);
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has(reminderId)).toBe(false);
+    expect(Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0)).toHaveLength(0);
+
+    // The at-time notification survives
+    expect(osState.has(fajrId(TODAY))).toBe(true);
+  });
+
+  // -- single-prayer toggle path ----------------------------------------------
+
+  it('updatePrayerNotifications replaces in place without cancelling live identifiers', async () => {
+    seedPrayerWindow();
+    const todayId = fajrId(TODAY);
+    const tomorrowId = fajrId(TOMORROW);
+    seedRecords([todayId, tomorrowId]);
+    osState.add(todayId);
+    osState.add(tomorrowId);
+
+    await updatePrayerNotifications(ScheduleType.Standard, 0, 'Fajr', 'الفجر', AlertType.Sound, AlertType.Off);
+
+    expect(cancelMock).not.toHaveBeenCalled();
+    expect(osIdentifiers()).toEqual([todayId, tomorrowId].sort());
+  });
+
+  it('updatePrayerNotifications turning alerts off cancels only that prayer', async () => {
+    seedPrayerWindow();
+    const todayId = fajrId(TODAY);
+    const ishaTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'Isha', TODAY);
+    seedRecords([todayId]);
+    Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 5, notificationRecord(ishaTodayId, 'Isha'));
+    osState.add(todayId);
+    osState.add(ishaTodayId);
+
+    await updatePrayerNotifications(ScheduleType.Standard, 0, 'Fajr', 'الفجر', AlertType.Off, AlertType.Off);
+
+    expect(osState.has(todayId)).toBe(false);
+    expect(osState.has(ishaTodayId)).toBe(true);
+  });
+
+  // -- extras ------------------------------------------------------------------
+
+  it('schedules the Extra schedule through the same strategy', async () => {
+    store.set(extraPrayerAlertAtoms[3], AlertType.Silent); // Duha
+    seedPrayerWindow();
+
+    await rescheduleAllNotifications();
+
+    const duhaTodayId = prayerNotificationIdentifier(ScheduleType.Extra, 'Duha', TODAY);
+    const duhaTomorrowId = prayerNotificationIdentifier(ScheduleType.Extra, 'Duha', TOMORROW);
+    expect(osState.has(duhaTodayId)).toBe(true);
+    expect(osState.has(duhaTomorrowId)).toBe(true);
+    expect(cancelAllMock).not.toHaveBeenCalled();
   });
 });
