@@ -1,5 +1,5 @@
-import PagerView from '@expo/ui/community/pager-view';
 import { Platform, StyleSheet, View } from 'react-native';
+import PagerView from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -26,7 +26,7 @@ export default function Navigation() {
       <BackgroundGradients />
       <RamadanDecorations />
 
-      <PagerView style={{ flex: 1 }} initialPage={0} onPageSelected={handlePageSelected}>
+      <PagerView style={{ flex: 1 }} initialPage={0} overdrag={true} onPageSelected={handlePageSelected}>
         <Screen type={ScheduleType.Standard} />
         <Screen type={ScheduleType.Extra} />
       </PagerView>
