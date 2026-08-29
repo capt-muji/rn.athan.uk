@@ -78,7 +78,7 @@ export const useCountdown = (type: ScheduleType): UseCountdownResult => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [nextPrayer]);
+  }, [nextPrayer, which]);
 
   return {
     timeLeft,
