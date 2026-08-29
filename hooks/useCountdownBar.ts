@@ -7,7 +7,6 @@
 
 import { useAtomValue } from 'jotai';
 
-import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import {
   extraNextPrayerAtom,
@@ -49,11 +48,13 @@ export const useCountdownBar = (type: ScheduleType): UseCountdownBarResult => {
     return { progress: 0, isReady: false };
   }
 
-  const now = TimeUtils.createLondonDate();
+  // True UTC instants on both sides (prayer datetimes + Date.now): the offset
+  // cancels in the ratio, no timezone conversion needed
+  const nowMs = Date.now();
 
   // Calculate progress: (elapsed / total) * 100
   const totalMs = nextPrayer.datetime.getTime() - prevPrayer.datetime.getTime();
-  const elapsedMs = now.getTime() - prevPrayer.datetime.getTime();
+  const elapsedMs = nowMs - prevPrayer.datetime.getTime();
 
   // Clamp to 0-100 range
   const progress = Math.min(100, Math.max(0, (elapsedMs / totalMs) * 100));
