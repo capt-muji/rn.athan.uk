@@ -1,6 +1,6 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-08-28 (sessions: December sync loop fix + notification reliability research + SDK 54→57 migration)
+Last updated: 2026-08-29 (session: #15 zero-notification-window fix — schedule-first-then-cancel-stale + post-reschedule sweep; #7/#16 platform-split dropped by owner — both platforms stay identical at 2 days; #14 module dropped in favour of the adb ground-truth checklist; #11 dropped as unfixable in-app; #8 stays parked)
 
 Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not yet fixed · [DEFERRED] accepted, revisit later · [ACCEPTED] intended behavior, documented
 
@@ -102,7 +102,7 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 
 ## B. Notifications — 2-day window & background tasks
 
-### 7. [OPEN] 2-day rolling notification horizon is the ceiling
+### 7. [CLOSED — WONTFIX by owner] 2-day rolling notification horizon is the ceiling
 
 - **What**: `NOTIFICATION_ROLLING_DAYS = 2` (shared/constants.ts:68) → `genNextXDays(2)`
   → only [today, tomorrow] ever scheduled (stores/notifications.ts:406,527). No code
@@ -113,8 +113,9 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   (UNUserNotificationCenter; verified SchedulerModule.swift uses add(request)).
   ~11 prayers+reminders/day × N days must stay « 64 on iOS → keep iOS at 2 days.
 - **Constraint — Android**: ~500 alarms per app limit; 16/day × 14 days ≈ 224 → safe.
-- **Planned fix**: platform-split constant: Android 14 days, iOS 2 days.
-  Background task then becomes optional repair, not a load-bearing component.
+- **Decision (owner, 2026-08-29)**: platform-split REJECTED — "both platforms should
+  work exactly the same, identical." Horizon stays 2 days on both platforms; the
+  1-week-without-opening goal is dropped. (#16 closes with this.)
 
 ### 8. [OPEN] Background task has effectively never worked
 
@@ -227,34 +228,72 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   regardless of the manifest → #14 observability module + guided grant flow
   (ACTION_REQUEST_SCHEDULE_EXACT_ALARM).
 
-### 14. [OPEN] No exact-alarm / power-state observability
+### 14. [CLOSED — WONTFIX by owner, adb checklist instead] No exact-alarm / power-state observability
 
 - expo-notifications exposes NO canScheduleExactAlarms API (docs verified; no open Expo
   feature request either). App cannot detect degraded mode; logs show nothing.
-- Planned: ~30-line LOCAL Expo module (repo modules/ dir, no npm dep) exposing
+- Planned was a ~30-line LOCAL Expo module (repo modules/ dir, no npm dep) exposing
   `canScheduleExactAlarms()` + `isIgnoringBatteryOptimizations()`; logged every refresh;
-  optional one-time settings banner. Power allowlist also grants exact-alarm exemption
-  (Android docs: allowlisted apps always permitted setExact) — one flow fixes both.
+  optional one-time settings banner.
+- **Decision (owner, 2026-08-29)**: module REJECTED — it would only ever run on dev
+  builds with adb available (prod silences logs), and `adb shell dumpsys` reads the same
+  system state with zero code. Ground-truth checklist on each affected phone instead:
+  1. `adb shell dumpsys package com.mugtaba.athan | grep -i -A2 EXACT` (runtime grant —
+     answers #10 suspect 1: canScheduleExactAlarms actually false despite toggle UI)
+  2. `adb shell dumpsys deviceidle whitelist | grep mugtaba` (power allowlist state)
+  Fold into the same phone sitting as the F.7 / #12 / back-gesture confirms.
 
 ---
 
 ## D. Notifications — structural risks
 
-### 15. [OPEN] Zero-notification window during global reschedule
+### 15. [FIXED 1.6.0] Zero-notification window during global reschedule
 
-- `_rescheduleAllNotifications` (stores/notifications.ts:695-724): global
-  cancelAllScheduledNotificationsAsync + wipe DB records BEFORE scheduling new ones.
-  Process death mid-batch → app has ZERO scheduled notifications and no DB records;
+- **Symptom**: `_rescheduleAllNotifications` (stores/notifications.ts) ran
+  `cancelAllScheduledNotificationsAsync()` globally and wiped ALL DB records
+  BEFORE scheduling new ones. Process death mid-batch (ColorOS kills
+  aggressively) → app has ZERO scheduled notifications and no DB records;
   recovery only on next successful refresh trigger (launch/foreground/4h gate).
-  Per-date failures are swallowed (.catch(logger.error)) — partial batches don't abort.
-- **Planned**: schedule-first-then-cancel-stale strategy (enabled cleanly by
-  deterministic IDs from #12), plus post-refresh verification: compare
-  getAllScheduledNotificationsAsync() count vs expected; log mismatch.
+- **Fix (schedule-first-then-cancel-stale, enabled by deterministic IDs from
+  #12's d20ccf5)**:
+  - Global reschedule no longer bulk-cancels or bulk-wipes anything. Same-ID
+    scheduling atomically replaces every notification (Android PendingIntent
+    and iOS UNUserNotificationCenter both key on the identifier).
+  - Per-prayer paths (at-time + reminders): read old records → clear DB
+    bookkeeping only → schedule the new window → cancel only identifiers no
+    longer attempted. Identical windows schedule with ZERO cancels; an
+    interval change briefly holds two reminders, never zero.
+  - Failed scheduling attempts record a "survived" DB record for the
+    attempted identifier — whatever OS notification it already had stays
+    alive and the sweep will not remove it.
+  - Prayers/reminders whose preferences are Off are actively cleared during
+    global reschedule (heals an interrupted settings commit — records and OS
+    entries for disabled prayers can no longer linger and keep firing).
+  - Post-reschedule sweep (`_sweepStaleScheduledNotifications`): compares
+    OS pending identifiers vs DB records (the intended set) and cancels
+    anything extra — turned-off prayers, superseded intervals, pre-#12 UUID
+    orphans, strays from an upgrade's record wipe (OS notifications survive
+    app updates; the sweep heals the desync on first reschedule).
+    Warn on anything swept; info verification log of dbRecords/osPending/
+    staleCancelled counts. Sweep failure surfaces (rejects) — callers log.
+- **Tests**: 28 new across shared/__tests__/notifications.test.ts (pure
+  one-directional diff), stores/__tests__/database.test.ts (schedule-level
+  reminder reader), stores/__tests__/notifications.test.ts (frozen-clock
+  suite with an in-memory OS model: no-bulk-cancel pins for all three entry
+  points, zero-cancel identical window, stale-after-schedule ordering,
+  failed-attempt survival for notifications and reminders, interval change
+  ordering, sweep healing incl. upgrade scenario + verification logging +
+  failure propagation, single-prayer toggle paths, extras path, Off-healing).
+  `yarn validate`: 26 suites / 767 green.
+- **Result**: the OS never holds fewer notifications than before at any
+  instant during a reschedule; process death mid-batch leaves previously
+  scheduled notifications firing and the next refresh heals bookkeeping.
 
-### 16. [OPEN] iOS 64-pending hard cap constrains any horizon increase
+### 16. [CLOSED with #7] iOS 64-pending hard cap constrains any horizon increase
 
 - Any iOS horizon increase silently loses farthest notifications (system keeps soonest
-  64). Must stay 2 days on iOS (see #7). Trivially handled by platform-split constant.
+  64). Must stay 2 days on iOS (see #7). Trivially handled by platform-split constant —
+  now moot: owner rejected the platform split; horizon stays 2 days on both platforms.
 
 ---
 
