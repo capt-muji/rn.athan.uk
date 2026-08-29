@@ -3,6 +3,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import {
   createDefaultAndroidChannel,
   createReminderAndroidChannel,
+  findStaleScheduledNotificationIds,
   genNextXDays,
   genNotificationContent,
   genReminderNotificationContent,
@@ -13,6 +14,7 @@ import {
   initializeNotifications,
   isNotificationOutdated,
   isPrayerTimeInFuture,
+  type ScheduledNotification,
 } from '../notifications';
 import { AlertType } from '../types';
 
@@ -354,5 +356,73 @@ describe('createReminderAndroidChannel', () => {
   it('does not throw on iOS (returns early)', async () => {
     // Default mock has Platform.OS = 'ios'
     await expect(createReminderAndroidChannel()).resolves.toBeUndefined();
+  });
+});
+
+// =============================================================================
+// findStaleScheduledNotificationIds TESTS
+// =============================================================================
+
+describe('findStaleScheduledNotificationIds', () => {
+  const record = (id: string): ScheduledNotification => ({
+    id,
+    date: '2026-08-29',
+    time: '06:00',
+    englishName: 'Fajr',
+    arabicName: 'الفجر',
+    alertType: AlertType.Silent,
+  });
+
+  it('returns empty when the OS matches the records exactly', () => {
+    const osIds = ['athan_standard_fajr_2026-08-29', 'athan_standard_isha_2026-08-30'];
+    const records = [record('athan_standard_fajr_2026-08-29'), record('athan_standard_isha_2026-08-30')];
+
+    expect(findStaleScheduledNotificationIds(osIds, records)).toEqual([]);
+  });
+
+  it('returns OS identifiers that have no record (orphans)', () => {
+    const osIds = ['athan_standard_fajr_2026-08-29', 'legacy-uuid-orphan'];
+    const records = [record('athan_standard_fajr_2026-08-29')];
+
+    expect(findStaleScheduledNotificationIds(osIds, records)).toEqual(['legacy-uuid-orphan']);
+  });
+
+  it('returns every OS identifier when records are empty (post-upgrade wipe)', () => {
+    const osIds = ['athan_standard_fajr_2026-08-29', 'athan_extra_duha_2026-08-29'];
+
+    expect(findStaleScheduledNotificationIds(osIds, [])).toEqual(osIds);
+  });
+
+  it('returns empty when the OS holds nothing', () => {
+    const records = [record('athan_standard_fajr_2026-08-29')];
+
+    expect(findStaleScheduledNotificationIds([], records)).toEqual([]);
+  });
+
+  it('does NOT report records without an OS entry (already-fired prayers)', () => {
+    // One-directional diff: a fired notification is gone from the OS — it is
+    // not stale, and must never be "cancelled" or counted as a problem.
+    const osIds = ['athan_standard_isha_2026-08-29'];
+    const records = [record('athan_standard_isha_2026-08-29'), record('athan_standard_fajr_2026-08-29')];
+
+    expect(findStaleScheduledNotificationIds(osIds, records)).toEqual([]);
+  });
+
+  it('preserves the OS order of the stale identifiers', () => {
+    const osIds = ['stale-b', 'kept', 'stale-a', 'stale-c'];
+    const records = [record('kept')];
+
+    expect(findStaleScheduledNotificationIds(osIds, records)).toEqual(['stale-b', 'stale-a', 'stale-c']);
+  });
+
+  it('handles duplicate records for the same identifier', () => {
+    const osIds = ['kept', 'stale'];
+    const records = [record('kept'), record('kept')];
+
+    expect(findStaleScheduledNotificationIds(osIds, records)).toEqual(['stale']);
+  });
+
+  it('returns empty for empty inputs', () => {
+    expect(findStaleScheduledNotificationIds([], [])).toEqual([]);
   });
 });
