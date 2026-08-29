@@ -62,6 +62,13 @@ jest.mock('@/stores/countdown', () => ({
   startCountdowns: () => mockStartCountdowns(),
 }));
 
+// Mock Widget store
+const mockRefreshPrayerWidgets = jest.fn();
+
+jest.mock('@/stores/widget', () => ({
+  refreshPrayerWidgets: () => mockRefreshPrayerWidgets(),
+}));
+
 // Mock version store
 const mockHandleAppUpgrade = jest.fn();
 

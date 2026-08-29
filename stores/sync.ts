@@ -17,6 +17,7 @@ import * as Countdown from '@/stores/countdown';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
 import { handleAppUpgrade } from '@/stores/version';
+import * as PrayerWidgets from '@/stores/widget';
 
 // --- Atoms ---
 export const syncLoadable = loadable(atom(async () => sync()));
@@ -67,6 +68,9 @@ const initializeAppState = async (date: Date) => {
   ScheduleStore.setSequence(ScheduleType.Extra, date);
 
   Countdown.startCountdowns();
+
+  // Push fresh data to the iOS widgets (no-op off iOS, failure-tolerant)
+  await PrayerWidgets.refreshPrayerWidgets();
 };
 
 /**
