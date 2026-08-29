@@ -130,6 +130,38 @@ export const isNotificationOutdated = (notification: ScheduledNotification): boo
 };
 
 /**
+ * Finds OS-scheduled notifications that no longer have a database record.
+ *
+ * After a reschedule, the database describes exactly the intended set of
+ * notifications (deterministic identifiers, records rewritten per prayer).
+ * Anything still pending in the OS beyond those records is stale: turned-off
+ * prayers, superseded reminder intervals, or orphans from earlier versions
+ * whose bookkeeping was lost. Cancelling exactly these heals the OS to match
+ * the database without ever touching live notifications.
+ *
+ * The diff is one-directional: records without an OS entry (e.g. prayers that
+ * fired while the app was closed) are NOT stale — the OS already removed them.
+ *
+ * @param osIdentifiers Identifiers of notifications currently pending in the OS
+ * @param dbRecords Notification records describing the intended scheduled set
+ * @returns OS identifiers with no database record, in original order
+ *
+ * @example
+ * findStaleScheduledNotificationIds(
+ *   ['athan_standard_fajr_2026-08-29', 'legacy-uuid'],
+ *   [{ id: 'athan_standard_fajr_2026-08-29', ... }]
+ * ) // ['legacy-uuid']
+ */
+export const findStaleScheduledNotificationIds = (
+  osIdentifiers: string[],
+  dbRecords: ScheduledNotification[]
+): string[] => {
+  const recordedIds = new Set(dbRecords.map((record) => record.id));
+
+  return osIdentifiers.filter((identifier) => !recordedIds.has(identifier));
+};
+
+/**
  * Checks if a given prayer time is in the future
  */
 export const isPrayerTimeInFuture = (date: string, time: string): boolean => {
