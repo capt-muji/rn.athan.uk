@@ -38,6 +38,7 @@ interface UseCountdownResult {
 
 export const useCountdown = (type: ScheduleType): UseCountdownResult => {
   const nextPrayerAtom = type === ScheduleType.Standard ? standardNextPrayerAtom : extraNextPrayerAtom;
+  const which = type === ScheduleType.Standard ? 'std' : 'extra';
   const nextPrayer = useAtomValue(nextPrayerAtom);
 
   // State for countdown (updated every second)
@@ -67,7 +68,7 @@ export const useCountdown = (type: ScheduleType): UseCountdownResult => {
       // prayer (floor-rounding reaches 0 up to a second before the true time, and the
       // refresh itself takes a tick) - prevents the UI from freezing at "0s".
       logger.info('TICK: hook', {
-        which: type === ScheduleType.Standard ? 'std' : 'extra',
+        which,
         wall,
         computed: seconds,
         phase: wall % 1000,
