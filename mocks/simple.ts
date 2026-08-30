@@ -76,15 +76,18 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     [today]: {
       date: today,
       // Simulated cascade (minutes from app launch): the early prayers are
-      // already past and Maghrib sits 11 minutes ahead. Watch the widget
-      // count down minute-ceil labels ("11m" → "1m") and flip to Isha at the
-      // boundary. Relaunch the app to rerun the simulation.
+      // already past, Maghrib is 2 minutes ahead, Isha 2 minutes after that,
+      // and tomorrow's Fajr (below) is 6 minutes out — so a single relaunch
+      // demos every transition with 2-minute waits: Maghrib → Isha → next
+      // day's Fajr (footer day flips). Before 06:00 the midnight rule moves
+      // the night Isha to tomorrow's date, which keeps the same real-time
+      // gaps. Relaunch the app to rerun the simulation.
       fajr: addMinutes(-10),
       sunrise: addMinutes(-8),
       dhuhr: addMinutes(-6),
       asr: addMinutes(-4),
-      magrib: addMinutes(11),
-      isha: addMinutes(20),
+      magrib: addMinutes(2),
+      isha: addMinutes(4),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -94,7 +97,11 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day1]: {
       date: day1,
-      fajr: '04:47',
+      // Fajr is launch-relative (+6m) to close the 2-minute transition chain:
+      // after the mock Isha passes, the next prayer is this Fajr and the
+      // widget/app roll to the next day. The rest of the day keeps realistic
+      // times (sunrise ~1h after launch).
+      fajr: addMinutes(6),
       sunrise: '06:24',
       dhuhr: '13:06',
       asr: '17:15',
