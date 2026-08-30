@@ -75,19 +75,20 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      // Simulated cascade (minutes from app launch): the early prayers are
-      // already past, Maghrib is 2 minutes ahead, Isha 2 minutes after that,
-      // and tomorrow's Fajr (below) is 6 minutes out — so a single relaunch
-      // demos every transition with 2-minute waits: Maghrib → Isha → next
-      // day's Fajr (footer day flips). Before 06:00 the midnight rule moves
-      // the night Isha to tomorrow's date, which keeps the same real-time
-      // gaps. Relaunch the app to rerun the simulation.
-      fajr: addMinutes(-10),
-      sunrise: addMinutes(-8),
-      dhuhr: addMinutes(-6),
-      asr: addMinutes(-4),
-      magrib: addMinutes(2),
-      isha: addMinutes(4),
+      // ROLLOVER DEMO (minutes from app launch): every prayer is 2 minutes
+      // after the previous one and ISHA is next, 2 minutes out — at launch
+      // the active background sits on Isha (row 6, all earlier rows passed);
+      // 2 minutes later Isha passes and the app/widget roll to the next
+      // day's Fajr (list resets, pill to row 1, footer day flips Sun → Mon).
+      // day1's Fajr (below) is +4 to close the chain. Before 06:00 the
+      // midnight rule moves the night Isha to tomorrow's date, which keeps
+      // the same real-time gaps. Relaunch the app to rerun the simulation.
+      fajr: addMinutes(-8),
+      sunrise: addMinutes(-6),
+      dhuhr: addMinutes(-4),
+      asr: addMinutes(-2),
+      magrib: addMinutes(0),
+      isha: addMinutes(2),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -97,12 +98,15 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day1]: {
       date: day1,
-      // Fajr is launch-relative (+6m) to close the 2-minute transition chain:
-      // after the mock Isha passes, the next prayer is this Fajr and the
-      // widget/app roll to the next day. The rest of the day keeps realistic
-      // times (sunrise ~1h after launch).
-      fajr: addMinutes(6),
-      sunrise: '06:24',
+      // Fajr (+4m) and Sunrise (+6m) are launch-relative to close the
+      // rollover chain: after the mock Isha (+2m) passes, the next prayer is
+      // this Fajr and the widget/app roll to the next day (footer day flips
+      // Sun → Mon, list resets with the pill back on row 1) — then Sunrise
+      // follows 2 minutes later. Sunrise MUST stay launch-relative: a fixed
+      // clock time can land before the re-seeded Fajr and put Sunrise first
+      // in the day's list. The rest of the day keeps realistic times.
+      fajr: addMinutes(4),
+      sunrise: addMinutes(6),
       dhuhr: '13:06',
       asr: '17:15',
       magrib: '20:04',

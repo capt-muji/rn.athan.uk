@@ -12,6 +12,7 @@ import { getDefaultStore } from 'jotai';
 
 import { createLondonDate, formatDateShort, formatHijriDateLong } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
+import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom, popupUpdateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
@@ -170,7 +171,7 @@ describe('refreshPrayerWidgets integration', () => {
     const lockEntries = lockPush()[0][0];
     expect(homeEntries.length).toBeGreaterThan(0);
     expect(homeEntries).toEqual(lockEntries);
-    expect(homeEntries[0].props.v).toBe(2);
+    expect(homeEntries[0].props.v).toBe(WIDGET_PROPS_VERSION);
   });
 
   it('skips the push entirely when the prayer cache is empty', async () => {
