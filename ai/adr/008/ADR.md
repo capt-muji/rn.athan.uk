@@ -1,6 +1,6 @@
 # ADR-008: Multi-Location Expansion via AI-Powered Mosque Scraping
 
-**Status:** Proposed
+**Status:** Deferred indefinitely — see [ADR-009](../009/ADR.md), which concluded scraping is unnecessary (mushahadah data + calculation instead)
 **Date:** 2026-02-16
 **Decision Makers:** muji
 
