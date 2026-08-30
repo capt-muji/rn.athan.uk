@@ -195,13 +195,18 @@ describe('palette literals', () => {
 
     // App-theme anchors the widget must mirror (from COLORS / COUNTDOWN_BAR).
     // While the design session cycles layouts, the anchors track the ACTIVE
-    // design's declared core palette (every value is a COLORS entry).
-    // The winning design ("Flat royal"): solid COLORS.navigation.rootBackground
-    // card, hero = COLORS.feedback.success brightened a touch, footer =
-    // COLORS.text.muted
-    const anchors = ['#2c1c77', '#e6f0ff', 'rgba(160, 200, 255, 0.54)', 'rgba(138, 169, 214, 0.38)'].map(
-      normalizeColor
-    );
+    // design's declared core palette (widget-only values are listed in the
+    // second test). The winning design ("Flat royal"): solid
+    // COLORS.navigation.rootBackground card, uppercase periwinkle prayer name,
+    // hero = COLORS.feedback.success brightened a touch, absolute time =
+    // COLORS.text.secondary, footer nudged toward secondary
+    const anchors = [
+      '#2c1c77',
+      '#e6f0ff',
+      'rgba(160, 200, 255, 0.54)',
+      'rgba(163, 185, 252, 0.62)',
+      'rgba(157, 188, 246, 0.48)',
+    ].map(normalizeColor);
 
     for (const anchor of anchors) {
       expect(anchor).not.toBeNull();
@@ -212,18 +217,23 @@ describe('palette literals', () => {
 
   it('every literal in both widgets is an app-theme color or an explicit widget-specific value', () => {
     // Deliberate widget-only colors: the Lock Screen's vibrant secondary white,
-    // and the home widget's hero — the app's soft success-white brightened a
-    // touch (#d5e8ff → #e6f0ff) per the owner's design call
-    const widgetSpecific = ['rgba(255, 255, 255, 0.6)', '#e6f0ff'].map(normalizeColor);
+    // the home widget's hero (the app's soft success-white brightened a touch,
+    // #d5e8ff → #e6f0ff), the prayer name's periwinkle lean into the card
+    // purple, and the footer's nudge toward the absolute-time secondary
+    const widgetSpecific = [
+      'rgba(255, 255, 255, 0.6)',
+      '#e6f0ff',
+      'rgba(163, 185, 252, 0.62)',
+      'rgba(157, 188, 246, 0.48)',
+    ].map(normalizeColor);
 
     const appTheme = [
       COLORS.gradient.screen.start,
       COLORS.gradient.screen.end,
       COLORS.text.primary,
       COLORS.text.secondary,
-      // Home-widget design accents (same app theme, active-prayer treatments)
+      // Home-widget design accent (same app theme)
       COLORS.navigation.rootBackground,
-      COLORS.text.muted,
     ].map(normalizeColor);
 
     const allowed = new Set([...appTheme, ...widgetSpecific].map((c) => JSON.stringify(c)));

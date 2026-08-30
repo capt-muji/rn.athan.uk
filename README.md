@@ -56,6 +56,10 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ## 📝 Recent Updates
 
+### v1.9.1 (2026-08-30)
+
+- ✅ **Widget visual polish**: the home screen prayer name is now an uppercase letter-spaced eyebrow in a soft periwinkle that fades into the purple card, the `Sat · London` footer sits closer to the absolute time's tone, and the Lock Screen rectangular widget pairs the countdown with the prayer name (`Maghrib · 9m`) with the absolute `HH:mm` below — the duplicate-countdown circular face is retired (orphaned placements render blank)
+
 ### v1.9.0 (2026-08-30)
 
 - ✅ **Home screen widget redesign**: "Flat royal" app-theme card (prayer name · minute-ceil countdown · `HH:mm` · `Sat · London` footer), minute-ceil labels everywhere (seconds never display; `59s` → `1m`), a label-flip scheduler that re-pushes within 250ms of every minute change while the app runs, and realistic launch-relative mock data for repeatable testing
@@ -118,8 +122,8 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 | Widget | Families | Shows |
 | --- | --- | --- |
-| **Next Prayer** (home screen) | Small | The next prayer only, on the deep-purple app-theme card: prayer name, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · London` footer |
-| **Next Prayer** (Lock Screen) | Circular, Rectangular, Inline | The next prayer, its time, and the same minute-ceil countdown, rendered in the system's vibrant (monochrome) style |
+| **Next Prayer** (home screen) | Small | The next prayer only, on the deep-purple app-theme card: prayer name in uppercase periwinkle, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · London` footer |
+| **Next Prayer** (Lock Screen) | Rectangular, Inline | The next prayer paired with the minute-ceil countdown (`Maghrib · 9m`) and the absolute `HH:mm` below, rendered in the system's vibrant (monochrome) style |
 
 **Always in sync, never stale:**
 
@@ -135,7 +139,7 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 Changing it in the app re-pushes the widget timeline within about a second.
 
-**Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan*. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan*.
+**Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan*. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan* (the circular face is retired and renders blank — it exists only so already-placed circles disappear cleanly; remove one by long-pressing the Lock Screen and tapping it).
 
 > Widgets require a development build or production binary (iOS 16.4+); they are not available in Expo Go.
 
