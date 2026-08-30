@@ -9,6 +9,7 @@ import {
   minimumScaleFactor,
   monospacedDigit,
   padding,
+  textCase,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
@@ -28,13 +29,17 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 const PrayerWidget = (props: PrayerWidgetProps, _environment: WidgetEnvironment) => {
   'widget';
 
-  // Palette: solid COLORS.navigation.rootBackground card. Hero is the app's
-  // soft success-white brightened a touch (#d5e8ff → #e6f0ff); the footer
-  // fades to COLORS.text.muted.
+  // Palette: solid COLORS.navigation.rootBackground card. The prayer name is
+  // an uppercase periwinkle eyebrow (widget-only indigo lean so it fades into
+  // the card, letter-spaced); the hero is the app's soft success-white
+  // brightened a touch (#d5e8ff → #e6f0ff); the absolute time stays
+  // COLORS.text.secondary; the footer sits just under the absolute time's
+  // color (widget-only nudge toward secondary — must stay fainter than it).
   const CARD_BACKGROUND = '#2c1c77';
+  const NAME_COLOR = 'rgba(163, 185, 252, 0.62)';
   const TEXT_PRIMARY = '#e6f0ff';
   const TEXT_SECONDARY = 'rgba(160, 200, 255, 0.54)';
-  const TEXT_MUTED = 'rgba(138, 169, 214, 0.38)';
+  const TEXT_FOOTER = 'rgba(157, 188, 246, 0.48)';
 
   // Neutral card for states without renderable data: the gallery/jiggle
   // placeholder (iOS invokes the layout with no props — expo-widgets stores
@@ -91,8 +96,10 @@ const PrayerWidget = (props: PrayerWidgetProps, _environment: WidgetEnvironment)
           <VStack spacing={6}>
             <Text
               modifiers={[
-                font({ size: 13, weight: 'regular' }),
-                foregroundStyle(TEXT_SECONDARY),
+                font({ size: 11, weight: 'semibold' }),
+                foregroundStyle(NAME_COLOR),
+                textCase('uppercase'),
+                kerning(1.2),
                 lineLimit(1),
                 minimumScaleFactor(0.6),
               ]}>
@@ -115,7 +122,7 @@ const PrayerWidget = (props: PrayerWidgetProps, _environment: WidgetEnvironment)
           <Text
             modifiers={[
               font({ size: 9, weight: 'medium' }),
-              foregroundStyle(TEXT_MUTED),
+              foregroundStyle(TEXT_FOOTER),
               kerning(0.4),
               lineLimit(1),
               minimumScaleFactor(0.6),
