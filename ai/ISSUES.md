@@ -229,6 +229,9 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   (expo-updates/play-services), DYNAMIC_RECEIVER_NOT_EXPORTED (AndroidX), plus a block of
   harmless launcher-badge permissions (ShortcutBadger via notifications stack:
   Samsung/HTC/Sony/Huawei/Oppo/OPPO generic READ/WRITE_SETTINGS badge perms).
+- **Fixed at source 1.12.3**: RECORD_AUDIO (expo-audio) removed — app.json plugin now sets
+  `microphonePermission: false` + `recordAudioAndroid: false` (playback-only app; privacy.html
+  claims no microphone). Re-run the merged-manifest dump on the next release APK to confirm.
 - **Ground-truth check on a phone (run once per affected phone)**:
   `adb shell dumpsys package com.mugtaba.athan | grep -i -A2 EXACT`
 - If permission absent at RUNTIME (Android 13+ default-deny) → all exactness bets are off
