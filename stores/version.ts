@@ -48,6 +48,33 @@ export const setStoredVersion = (version: string): void => {
 };
 
 /**
+ * Gets the version the What's New modal was last shown for
+ * @returns Version string or null if not stored
+ */
+export const getWhatsNewShownVersion = (): string | null => {
+  try {
+    return Database.getItem(WHATS_NEW_SHOWN_VERSION_KEY);
+  } catch (error) {
+    logger.warn("VERSION: Failed to read What's New shown version", { error });
+    return null;
+  }
+};
+
+/**
+ * Records the version the What's New modal has been shown for
+ * Called on modal display (not dismiss) so a crash mid-display cannot loop it
+ * @param version - Version string to store
+ */
+export const setWhatsNewShownVersion = (version: string): void => {
+  try {
+    Database.setItem(WHATS_NEW_SHOWN_VERSION_KEY, version);
+    logger.info("VERSION: What's New shown version updated", { version });
+  } catch (error) {
+    logger.error("VERSION: Failed to store What's New shown version", { version, error });
+  }
+};
+
+/**
  * Checks if the app was upgraded (version increased)
  * @returns true if upgrade detected (or first install), false otherwise
  */
@@ -81,6 +108,13 @@ export const wasAppUpgraded = (): boolean => {
 };
 
 /**
+ * Storage key holding the version the What's New modal was last shown for.
+ * Seeded to the installed version on fresh install (modal never shows for
+ * them), left untouched on upgrade (differs from installed → modal shows).
+ */
+const WHATS_NEW_SHOWN_VERSION_KEY = 'whats_new_shown_version';
+
+/**
  * Key prefixes to KEEP during upgrade cleanup (whitelist approach)
  * Everything NOT starting with these prefixes will be deleted
  * This ensures orphaned/unknown keys are cleaned up automatically
@@ -88,6 +122,7 @@ export const wasAppUpgraded = (): boolean => {
 const UPGRADE_KEEP_PREFIXES: string[] = [
   // System State - NEVER delete
   'app_installed_version', // Version tracker itself
+  'whats_new_shown_version', // What's New display tracker (see shared/whatsNew.ts)
 
   // User Preferences - must persist across upgrades
   'preference_', // All user preferences (alerts, sound, countdownbar, hijri, show_*, reminder_*)
@@ -155,6 +190,11 @@ export const handleAppUpgrade = (): void => {
 
   // Always update stored version to current version
   setStoredVersion(installedVersion);
+
+  // Fresh install: seed the What's New tracker so the modal never shows for
+  // new users. Upgrades leave it untouched - its difference from the
+  // installed version is what triggers the modal (see shared/whatsNew.ts)
+  if (!storedVersion) setWhatsNewShownVersion(installedVersion);
 
   // Migrate legacy index-keyed alert preference keys to name-keyed keys.
   // Runs on every launch (no-op after the first); must complete before any
