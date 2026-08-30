@@ -495,6 +495,7 @@ Read ai/prompts/document.md
 ### Never Do
 
 - **Git write operations** - NEVER run `git add`, `git commit`, `git push`, `git pull`, `git merge`, `git rebase`. User handles all git operations manually.
+- **Sleep > 15 seconds** - NEVER sleep longer than 15 seconds in any shell command, for any reason. For long-running work (builds, emulators, installs), poll in a loop of ≤15-second cycles, checking status every cycle. Do not circumvent this rule (no longer sleeps, no sparse far-apart checks).
 - Commit secrets/keys
 - Edit node_modules
 - Remove failing tests
