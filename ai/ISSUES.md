@@ -313,9 +313,7 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   3. System-wide Battery → Deep optimization / Adaptive Battery / Sleep Standby
      Optimization off on 8T (these are DIFFERENT toggles from per-app battery
      optimization already tried)
-- **Phase 1 implementation order** (all in-repo, no new deps): deterministic IDs →
-  platform-split horizon (14d Android / 2d iOS) → local diagnostics module + allowlist
-  flow → post-refresh verification logging → close #8/#9 doc rot in ADR update.
+- **Phase 1 implementation order**: resolved/outdated as of 2026-08-30 — deterministic IDs shipped (d20ccf5); the platform-split horizon (#7/#16) and the diagnostics module (#14) were rejected/wontfixed by the owner, so the remaining ordering is moot.
 
 ---
 
