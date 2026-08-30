@@ -135,8 +135,8 @@ const updatePrayerData = async () => {
       return;
     }
 
-    // Clear prayer cache but preserve app version and user preferences
-    Database.clearAllExcept(['app_installed_version', 'preference_']);
+    // Clear prayer cache but preserve app version, What's New tracker, and user preferences
+    Database.clearAllExcept(['app_installed_version', 'whats_new_shown_version', 'preference_']);
 
     // SCENARIO 3b: December, current year not cached - Proactively fetch current year + next year
     // Years settle independently: next year may not be populated on the API yet
