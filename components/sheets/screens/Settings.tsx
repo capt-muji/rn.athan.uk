@@ -3,14 +3,17 @@ import { useAtom } from 'jotai';
 import { useCallback, useMemo } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 
+import InfoIcon from '@/assets/icons/svg/info.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
+import { WHATS_NEW } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
   hideSettingsSheet,
   hijriDateEnabledAtom,
+  setPopupWhatsNewEnabled,
   setSettingsSheetModal,
   showArabicNamesAtom,
   showSecondsAtom,
@@ -38,6 +41,14 @@ export default function BottomSheetSettings() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
     setTimeout(() => showSheet(), 150);
+  };
+
+  // Re-opens the What's New modal for the installed version - display-only,
+  // never touches the shown-version tracker
+  const handleWhatsNewPress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    hideSettingsSheet();
+    setTimeout(() => setPopupWhatsNewEnabled(true), 150);
   };
 
   return (
@@ -107,6 +118,25 @@ export default function BottomSheetSettings() {
           <ColorPicker />
         </View>
       </View>
+
+      {/* About Card - hidden on silent releases (no What's New content) */}
+      {WHATS_NEW ? (
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>About</Text>
+          <Pressable
+            style={styles.whatsNewButton}
+            onPress={handleWhatsNewPress}
+            hitSlop={HIT_SLOP.md}
+            accessibilityLabel="What's new"
+            accessibilityRole='button'>
+            <View style={styles.infoButton}>
+              <InfoIcon width={12} height={12} color={COLORS.text.primary} />
+            </View>
+            <Text style={styles.whatsNewLabel}>What&#8217;s new</Text>
+            <Text style={styles.chevron}>›</Text>
+          </Pressable>
+        </View>
+      ) : null}
     </Sheet>
   );
 }
@@ -142,6 +172,32 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
     paddingRight: SPACING.md,
+  },
+  whatsNewButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: SPACING.md,
+    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+    borderRadius: RADIUS.md,
+    padding: SPACING.sm,
+    paddingRight: SPACING.md,
+  },
+  infoButton: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: COLORS.interactive.active,
+    borderWidth: 1,
+    borderColor: COLORS.interactive.activeBorder,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  whatsNewLabel: {
+    flex: 1,
+    marginLeft: SPACING.sm,
+    color: COLORS.text.primary,
+    fontFamily: TEXT.family.regular,
+    fontSize: TEXT.sizeDetail,
   },
   musicButton: {
     width: 20,
