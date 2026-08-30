@@ -2,10 +2,12 @@
  * Pure timeline builder for the Athan iOS widgets.
  *
  * Builds timeline entries from a prayer sequence (one entry per prayer
- * boundary plus a midnight rollover per day) for WidgetKit to render: between
- * entries the widgets stay live on their own because countdown text and
- * progress bars use SwiftUI timer intervals, so the system ticks them every
- * second without any app involvement.
+ * boundary) for WidgetKit to render. WidgetKit cannot tick custom-format
+ * text, so the countdown — which must mirror the app's exact formatTime
+ * style — is precomputed per entry and refreshed by stepped entries every
+ * five minutes (WidgetKit's minimum entry spacing) within a 24-hour
+ * horizon; beyond it, entries flip only at prayer boundaries. The progress
+ * bar stays live on its own between entries via SwiftUI timer intervals.
  *
  * Pure module: no React Native imports — deterministic and unit-testable.
  *
@@ -14,76 +16,81 @@
  * @see stores/widget.ts - IO layer that pushes built entries to the widgets
  */
 
-import { addDays, format } from 'date-fns';
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import * as TimeUtils from '@/shared/time';
-import type { Prayer, PrayerSequence } from '@/shared/types';
-import type { PrayerWidgetDayPrayer, PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
+import type { PrayerSequence } from '@/shared/types';
+import type { PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
 /**
  * Minimum spacing between adjacent timeline entries. WidgetKit guidance asks
  * for entries "at least about 5 minutes apart" — closer entries may be
- * coalesced, which would silently skip a prayer-boundary flip or a midnight
- * day-list rollover.
+ * coalesced, which would silently skip a prayer-boundary flip or a countdown
+ * step.
  */
 export const MIN_ENTRY_SPACING_MS = 5 * 60 * 1000;
-/**
- * Finds the first London midnight strictly after the given instant.
- * Uses the same zoned-time conversion as prayer datetimes, so DST
- * transitions resolve to the correct instant.
- */
-const nextLondonMidnightAfter = (date: Date): Date => {
-  const londonWall = TimeUtils.createLondonDate(date);
-  const nextDay = addDays(londonWall, 1);
-  const dateString = format(nextDay, 'yyyy-MM-dd');
-  return TimeUtils.createPrayerDatetime(dateString, '00:00');
-};
 
 /**
- * Builds the six-row day list for the Islamic day matching the entry's
- * London date. States are relative to the entry date: prayers at or before
- * the segment start are passed, the next one is highlighted, the rest upcoming.
+ * Cadence of the stepped countdown entries. Equal to the minimum entry
+ * spacing by design: the label refreshes as often as WidgetKit will reliably
+ * honor.
+ */
+export const COUNTDOWN_STEP_MS = MIN_ENTRY_SPACING_MS;
+
+/**
+ * How long from the push instant the countdown label stays stepped. Within
+ * the horizon the label is at most one step stale; beyond it, entries flip
+ * only at prayer boundaries (the label then holds until the next boundary —
+ * acceptable degradation for a widget the app has not refreshed in over a
+ * day, and it bounds the timeline payload size).
+ */
+export const STEPPED_COUNTDOWN_HOURS = 24;
+
+/**
+ * Formats the countdown for a timeline entry as a minute-ceil label
+ * ("1h 12m", "45m", "1m") — seconds never render at any distance and the
+ * value always rounds up, so the label holds until the true minute flips.
+ * The rounding mirrors getSecondsRemaining in shared/time.ts — ceil, with a
+ * floor of 1s.
  *
- * @param prayers Chronologically sorted sequence prayers
- * @param entryDate Date of the timeline entry
- * @param prevIndex Index of the prayer starting the entry's segment
+ * @param at The instant the label describes (entry date, or the push for a
+ *   backdated first entry)
+ * @param target The upcoming prayer datetime
  */
-const buildDayList = (
-  prayers: Prayer[],
-  entryDate: Date,
-  prevIndex: number,
-  showArabic: boolean
-): PrayerWidgetDayPrayer[] => {
-  const dateString = TimeUtils.formatDateShort(entryDate);
-
-  return prayers
-    .map((prayer, index) => ({ prayer, index }))
-    .filter(({ prayer }) => prayer.belongsToDate === dateString)
-    .map(({ prayer, index }) => ({
-      name: prayer.english,
-      arabic: showArabic ? prayer.arabic : '',
-      time: prayer.time,
-      state: index <= prevIndex ? 'passed' : index === prevIndex + 1 ? 'next' : 'upcoming',
-    }));
+const formatCountdownAt = (at: Date, target: Date): string => {
+  const msLeft = target.getTime() - at.getTime();
+  const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
+  return TimeUtils.formatCountdownMinutes(secondsRemaining);
 };
 
 /**
- * Builds one timeline entry per prayer boundary plus one per London midnight,
- * starting at `now`, capped by a terminal stale entry after the final prayer.
- * Each entry carries the full props snapshot for its segment: the upcoming
- * prayer, the segment bounds (for the live countdown and progress bar), and
- * that day's prayer list (which rolls over at midnight). Adjacent entries are
- * kept at least MIN_ENTRY_SPACING_MS apart (WidgetKit guidance): imminent
- * midnights are skipped and the first entry is backdated when a boundary is
- * too close to `now`.
+ * Formats the next prayer's date in the app's date style (Hijri when the
+ * preference is on), matching the home screen's Day component.
+ *
+ * @param belongsToDate The prayer's Islamic day (YYYY-MM-DD)
+ * @param hijriDate Whether the app's Hijri date preference is on
+ */
+const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
+  return hijriDate ? TimeUtils.formatHijriDateLong(belongsToDate) : TimeUtils.formatDateLong(belongsToDate);
+};
+
+/**
+ * Builds one timeline entry per prayer boundary, with stepped countdown
+ * entries every COUNTDOWN_STEP_MS inside the stepped horizon, starting at
+ * `now`, capped by a terminal stale entry after the final prayer. Each entry
+ * carries the full props snapshot for its segment: the upcoming prayer, the
+ * segment bounds (for the live progress bar), the precomputed countdown
+ * label, and the upcoming prayer's date. Adjacent entries always keep at
+ * least MIN_ENTRY_SPACING_MS apart: the first entry is backdated when a
+ * boundary is too close to `now`, and steps stop one spacing short of the
+ * boundary they precede.
  *
  * @param now Current instant
  * @param sequence Chronologically sorted prayer sequence (must span `now`)
  * @param settings The in-app settings snapshot the widget mirrors
- * @returns Sorted timeline entries ending with the stale guard, empty when the
- *  sequence does not cover `now`
+ * @returns Chronological timeline entries ending with the stale guard, empty
+ *  when the sequence does not cover `now`
  */
 export const buildPrayerWidgetTimeline = (
   now: Date,
@@ -97,26 +104,27 @@ export const buildPrayerWidgetTimeline = (
   const firstNextIndex = prayers.findIndex((prayer) => prayer.datetime.getTime() > now.getTime());
   if (firstNextIndex === -1) return entries;
 
-  const makeEntry = (date: Date, prevIndex: number): WidgetTimelineEntry<PrayerWidgetProps> => {
+  const makeEntry = (date: Date, prevIndex: number, labelAt: Date = date): WidgetTimelineEntry<PrayerWidgetProps> => {
     const next = prayers[prevIndex + 1];
     const prev = prevIndex >= 0 ? prayers[prevIndex] : null;
+    const countdownLabel = formatCountdownAt(labelAt, next.datetime);
+    const dateLabel = formatDateLabel(next.belongsToDate, settings.hijriDate);
 
     return {
       date,
       props: {
         v: WIDGET_PROPS_VERSION,
         nextName: next.english,
-        nextArabic: settings.showArabic ? next.arabic : '',
         nextTime: next.time,
         nextEpochMs: next.datetime.getTime(),
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
-        accentColor: settings.accentColor,
-        showArabic: settings.showArabic,
-        showBar: settings.showBar,
-        dayPrayers: buildDayList(prayers, date, prevIndex, settings.showArabic),
+        countdownLabel,
+        dateLabel,
       },
     };
   };
+
+  const steppedUntilMs = now.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
   let cursor = now;
   let prevIndex = firstNextIndex - 1;
@@ -124,36 +132,33 @@ export const buildPrayerWidgetTimeline = (
 
   while (prevIndex + 1 < prayers.length) {
     const nextPrayer = prayers[prevIndex + 1];
-    const midnight = nextLondonMidnightAfter(cursor);
-    const midnightMs = midnight.getTime();
     const boundaryMs = nextPrayer.datetime.getTime();
 
-    // A midnight rollover is worth an entry only when it keeps the minimum
-    // spacing on both sides: after the previously emitted entry, and before
-    // the boundary that follows. When skipped, the day list simply rolls over
-    // at the next boundary entry instead.
-    const midnightEmitted =
-      midnightMs < boundaryMs &&
-      (lastEmittedMs === null || midnightMs - lastEmittedMs >= MIN_ENTRY_SPACING_MS) &&
-      boundaryMs - midnightMs >= MIN_ENTRY_SPACING_MS;
-
     // The first entry must date at or before `now` so the widget has content
-    // immediately, but the next emitted entry still needs its 5 minutes: when
-    // a midnight or boundary is imminent, backdate the first entry. An
+    // immediately, but the boundary flip still needs its 5 minutes of
+    // spacing: backdate the first entry when the boundary is imminent. An
     // earlier-dated entry is already "active" at push time, so this is safe.
-    if (lastEmittedMs === null) {
-      const firstFollowingMs = midnightEmitted ? Math.min(midnightMs, boundaryMs) : boundaryMs;
-      if (firstFollowingMs - cursor.getTime() < MIN_ENTRY_SPACING_MS) {
-        cursor = new Date(firstFollowingMs - MIN_ENTRY_SPACING_MS);
-      }
+    if (lastEmittedMs === null && boundaryMs - cursor.getTime() < MIN_ENTRY_SPACING_MS) {
+      cursor = new Date(boundaryMs - MIN_ENTRY_SPACING_MS);
     }
 
-    entries.push(makeEntry(cursor, prevIndex));
-    lastEmittedMs = cursor.getTime();
+    // The backdated first entry displays immediately, so its label must
+    // describe the remaining time at the push — not at its backdated date
+    // (which would show a phantom larger countdown, e.g. "5m" for a prayer
+    // only 2 minutes away).
+    const segmentStart = cursor;
+    entries.push(makeEntry(segmentStart, prevIndex, lastEmittedMs === null ? now : segmentStart));
+    lastEmittedMs = segmentStart.getTime();
 
-    if (midnightEmitted) {
-      entries.push(makeEntry(midnight, prevIndex));
-      lastEmittedMs = midnightMs;
+    // Stepped countdown entries: stop one spacing short of the boundary so
+    // the flip entry keeps its gap. A boundary that somehow predates the
+    // segment start (duplicate prayer datetimes) yields no steps.
+    if (segmentStart.getTime() < steppedUntilMs) {
+      const lastStepMs = Math.min(boundaryMs - MIN_ENTRY_SPACING_MS, steppedUntilMs);
+      for (let stepMs = segmentStart.getTime() + COUNTDOWN_STEP_MS; stepMs <= lastStepMs; stepMs += COUNTDOWN_STEP_MS) {
+        entries.push(makeEntry(new Date(stepMs), prevIndex));
+        lastEmittedMs = stepMs;
+      }
     }
 
     cursor = nextPrayer.datetime;
@@ -173,22 +178,14 @@ export const buildPrayerWidgetTimeline = (
     props: {
       v: WIDGET_PROPS_VERSION,
       nextName: finalPrayer.english,
-      nextArabic: settings.showArabic ? finalPrayer.arabic : '',
       nextTime: finalPrayer.time,
       nextEpochMs: finalEpochMs,
       prevEpochMs: finalEpochMs,
-      accentColor: settings.accentColor,
-      showArabic: settings.showArabic,
-      showBar: settings.showBar,
-      dayPrayers: [],
+      countdownLabel: '0s',
+      dateLabel: formatDateLabel(finalPrayer.belongsToDate, settings.hijriDate),
       stale: true,
     },
   });
-
-  // WidgetKit requires chronological entries; the midnight insertion can
-  // otherwise land after a boundary that sits just past midnight (early
-  // morning Isha in summer).
-  entries.sort((a, b) => a.date.getTime() - b.date.getTime());
 
   return entries;
 };
