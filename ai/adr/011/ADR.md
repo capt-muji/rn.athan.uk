@@ -45,7 +45,7 @@ The owner's observations that drove the change: seconds in a static label look w
 - `shared/__tests__/widgetTimeline.test.ts` — ceil semantics, push-anchored backdate labels, minute-ceil parity across every entry.
 - `shared/__tests__/widgetSimulation.test.ts` — ~4,000-instant virtual week asserting the active label at every instant.
 - `stores/__tests__/widgetIo.test.ts` — flip-scheduler cadence (one push per minute flip, at any distance).
-- On-simulator evidence: `24h` and `2h` states screenshot-verified (`evidence/final-24h.png`, `evidence/final-2h.png`); owner manually verified the `2m → 1m → next prayer (23h 56m)` descent live.
+- On-simulator verification: `24h` and `2h` states screenshot-verified during the 1.9.0 session (screenshots not retained); owner manually verified the `2m → 1m → next prayer (23h 56m)` descent live.
 
 ## See Also
 

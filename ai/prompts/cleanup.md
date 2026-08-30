@@ -57,7 +57,7 @@ For each file in scope:
 For each issue:
 
 1. **Apply fix** following AGENTS.md patterns
-2. **Run file-scoped check**: `npx eslint [file] && npx prettier --write [file]`
+2. **Run file-scoped check**: `npx biome check --write [file]`
 3. **Verify no regressions**: If file has tests, run them
 
 ## Phase 4: Verify
