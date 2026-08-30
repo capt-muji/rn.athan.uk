@@ -38,6 +38,9 @@ export const refreshUIAtom = atom<number>(Date.now());
 /** Whether the app update popup should be shown */
 export const popupUpdateEnabledAtom = atom(false);
 
+/** Whether the What's New popup should be shown (post-update announcement) */
+export const popupWhatsNewEnabledAtom = atom(false);
+
 /** Timestamp of last update check (persisted) */
 export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last_check', 0);
 
@@ -133,6 +136,9 @@ export const setRefreshUI = (timestamp: number) => store.set(refreshUIAtom, time
 
 /** Sets whether the app update popup should be shown */
 export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdateEnabledAtom, enabled);
+
+/** Sets whether the What's New popup should be shown */
+export const setPopupWhatsNewEnabled = (enabled: boolean) => store.set(popupWhatsNewEnabledAtom, enabled);
 
 /** Sets the timestamp of the last app update check */
 export const setPopupUpdateLastCheck = (timestamp: number) => store.set(popupUpdateLastCheckAtom, timestamp);
