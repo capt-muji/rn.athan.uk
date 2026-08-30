@@ -3,9 +3,9 @@
  *
  * Reads the cached prayer data and the user's widget-relevant preferences,
  * builds the timeline with the pure builder in shared/widgetTimeline.ts, and
- * pushes it to both widgets via expo-widgets. Between entries the widgets stay
- * live on their own: countdown text and progress bars use SwiftUI timer
- * intervals, so the system ticks them every second without any app involvement.
+ * pushes it to both widgets via expo-widgets. WidgetKit renders each entry
+ * at its own date; while the app runs, a label-flip scheduler re-pushes at
+ * every countdown minute change so the widget never shows a stale minute.
  *
  * @see shared/widgetTimeline.ts - pure timeline builder
  * @see widgets/PrayerWidget.tsx - home screen widget layout
@@ -22,7 +22,7 @@ import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
-import { countdownBarColorAtom, countdownBarShownAtom, showArabicNamesAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom } from '@/stores/ui';
 import PrayerLockWidget from '@/widgets/LockPrayerWidget';
 import PrayerWidget from '@/widgets/PrayerWidget';
 
@@ -40,9 +40,7 @@ export const readWidgetSettings = (): PrayerWidgetSettings => {
   const store = getDefaultStore();
 
   return {
-    accentColor: store.get(countdownBarColorAtom),
-    showArabic: store.get(showArabicNamesAtom),
-    showBar: store.get(countdownBarShownAtom),
+    hijriDate: store.get(hijriDateEnabledAtom),
   };
 };
 
@@ -50,7 +48,12 @@ export const readWidgetSettings = (): PrayerWidgetSettings => {
  *  (color picker drag, toggles) into a single timeline push. */
 const SETTINGS_PUSH_DEBOUNCE_MS = 1000;
 
+/** Epsilon after a countdown minute flip before re-pushing, so the push lands
+ *  cleanly on the new minute rather than racing the boundary instant. */
+const LABEL_FLIP_EPSILON_MS = 250;
+
 let settingsPushTimer: ReturnType<typeof setTimeout> | null = null;
+let labelFlipPushTimer: ReturnType<typeof setTimeout> | null = null;
 let settingsSyncInitialized = false;
 
 /**
@@ -72,9 +75,33 @@ export const initWidgetSettingsSync = (): void => {
     }, SETTINGS_PUSH_DEBOUNCE_MS);
   };
 
-  store.sub(countdownBarColorAtom, schedulePush);
-  store.sub(countdownBarShownAtom, schedulePush);
-  store.sub(showArabicNamesAtom, schedulePush);
+  store.sub(hijriDateEnabledAtom, schedulePush);
+};
+
+/**
+ * Keeps the countdown label in sync while the app runs: the minute-ceil
+ * label changes exactly when the remaining time crosses a whole minute, so
+ * each push schedules the next one at that instant (plus a small epsilon).
+ * The widget therefore re-renders within a quarter second of every true
+ * minute flip — no blind 60s polling, no drift. Re-arms from fresh data on
+ * every push; a suspended (backgrounded) timer coalesces into one fire on
+ * foreground, which doubles as a refresh when the user returns.
+ */
+const scheduleLabelFlipPush = (nextEpochMs: number): void => {
+  if (labelFlipPushTimer !== null) clearTimeout(labelFlipPushTimer);
+  labelFlipPushTimer = null;
+
+  if (typeof nextEpochMs !== 'number') return;
+  const msRemaining = nextEpochMs - Date.now();
+  if (msRemaining <= 0) return;
+
+  const msIntoMinute = msRemaining % 60000;
+  const msUntilFlip = (msIntoMinute === 0 ? 60000 : msIntoMinute) + LABEL_FLIP_EPSILON_MS;
+
+  labelFlipPushTimer = setTimeout(() => {
+    labelFlipPushTimer = null;
+    void refreshPrayerWidgets();
+  }, msUntilFlip);
 };
 
 /**
@@ -113,6 +140,8 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
       next: entries[0].props.nextName,
       nextAt: entries[0].props.nextTime,
     });
+
+    scheduleLabelFlipPush(entries[0].props.nextEpochMs);
   } catch (error) {
     logger.warn('WIDGET: Failed to refresh widget timelines', { error });
   }

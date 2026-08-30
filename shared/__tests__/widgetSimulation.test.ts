@@ -9,21 +9,29 @@
  *
  * - segment: the entry's prev/next prayers are exactly the prayers
  *   surrounding the instant, so the countdown interval always brackets it
- * - day list: rows and pass/next/upcoming states match the Islamic day of
- *   the entry's London date
- * - staleness: never before the stale entry's date, always after it
+ * - countdown label: matches the minute-ceil formatter
+ *   (formatCountdownMinutes) evaluated at the entry's date
+ * - staleness: inside the stepped horizon the active entry is never more
+ *   than one countdown step old
+ * - date label: the next prayer's Islamic day, in the app's date format
+ * - staleness guard: never before the stale entry's date, always after it
  * - spacing: every adjacent entry pair keeps the WidgetKit minimum
  *
  * This replaces weeks of physical-device observation with a deterministic
- * replay: if the builder ever emits a missing flip, a wrong rollover, or a
+ * replay: if the builder ever emits a missing flip, a wrong label, or a
  * gap, some sampled instant exposes it.
  */
 
 import { addDays } from 'date-fns';
 
-import { createPrayerDatetime, formatDateShort } from '@/shared/time';
+import { createPrayerDatetime, formatCountdownMinutes, formatDateLong, formatDateShort } from '@/shared/time';
 import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
-import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
+import {
+  buildPrayerWidgetTimeline,
+  COUNTDOWN_STEP_MS,
+  MIN_ENTRY_SPACING_MS,
+  STEPPED_COUNTDOWN_HOURS,
+} from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 
 // =============================================================================
@@ -34,7 +42,9 @@ const PUSH_AT = createPrayerDatetime('2026-10-18', '12:00');
 const SPAN_START = '2026-10-17';
 const SPAN_DAYS = 16;
 
-const SETTINGS: PrayerWidgetSettings = { accentColor: '#ffd000', showArabic: true, showBar: true };
+const SETTINGS: PrayerWidgetSettings = {
+  hijriDate: false,
+};
 
 /** Realistic October London times */
 const OCTOBER_TIMES: [string, string, string][] = [
@@ -103,28 +113,6 @@ const activeEntryAt = <T extends { date: Date }>(entries: T[], instant: number):
   return active;
 };
 
-const expectedDayList = (prayers: Prayer[], entryDate: Date) => {
-  const dateString = formatDateShort(entryDate);
-  const lastPrayerAtOrBeforeEntry = (() => {
-    let found: Prayer | undefined;
-    for (const prayer of prayers) {
-      if (prayer.datetime.getTime() <= entryDate.getTime()) found = prayer;
-      else break;
-    }
-    return found;
-  })();
-  const prevIndex = lastPrayerAtOrBeforeEntry ? prayers.indexOf(lastPrayerAtOrBeforeEntry) : -1;
-
-  return prayers
-    .map((prayer, index) => ({ prayer, index }))
-    .filter(({ prayer }) => prayer.belongsToDate === dateString)
-    .map(({ prayer, index }) => ({
-      name: prayer.english,
-      time: prayer.time,
-      state: index <= prevIndex ? 'passed' : index === prevIndex + 1 ? 'next' : 'upcoming',
-    }));
-};
-
 // =============================================================================
 // THE VIRTUAL WEEK
 // =============================================================================
@@ -139,8 +127,9 @@ describe('virtual week model test', () => {
   // real entry sits within the minimum spacing of it
   const lastRealEntryMs = entries[entries.length - 2].date.getTime();
   const staleDateMs = Math.max(finalPrayer.datetime.getTime(), lastRealEntryMs + MIN_ENTRY_SPACING_MS);
+  const horizonMs = PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
-  /** Every interesting instant: entry dates, prayers, midnights, stale — all ±1s */
+  /** Every interesting instant: entry dates, prayers, stale — all ±1s */
   const sampleInstants = (): number[] => {
     const instants = new Set<number>();
 
@@ -152,14 +141,6 @@ describe('virtual week model test', () => {
 
     for (const entry of entries) add(entry.date.getTime());
     for (const prayer of prayers) add(prayer.datetime.getTime());
-
-    const startDay = createPrayerDatetime(SPAN_START, '12:00');
-    for (let dayIndex = 0; dayIndex <= SPAN_DAYS; dayIndex++) {
-      const day = addDays(startDay, dayIndex);
-      const midnight = createPrayerDatetime(formatDateShort(day), '00:00');
-      add(midnight.getTime());
-    }
-
     add(staleDateMs);
 
     // Deterministic coverage between events: every 7 minutes across the span
@@ -182,7 +163,7 @@ describe('virtual week model test', () => {
     }
   });
 
-  it('shows an active entry whose segment brackets the instant, with a matching day list', () => {
+  it('shows an active entry that brackets the instant with an app-format countdown', () => {
     const instants = sampleInstants();
     const timelineStartMs = entries[0].date.getTime();
 
@@ -231,51 +212,63 @@ describe('virtual week model test', () => {
         throw new Error(`Countdown interval does not bracket ${new Date(instant).toISOString()}`);
       }
 
-      // Day list matches the entry date's Islamic day
-      const expectedRows = expectedDayList(prayers, active.date);
-      const actualRows = props.dayPrayers.map((row) => ({ name: row.name, time: row.time, state: row.state }));
-      expect(actualRows).toEqual(expectedRows);
+      // The label is the minute-ceil value at the entry's date (the push
+      // instant for a backdated first entry)
+      const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
+      const msLeft = nextMs - labelAnchorMs;
+      const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
+      const expectedLabel = formatCountdownMinutes(secondsRemaining);
+      if (props.countdownLabel !== expectedLabel) {
+        throw new Error(
+          `Countdown label mismatch at ${new Date(instant).toISOString()}: entry says ` +
+            `"${props.countdownLabel}", app formatter says "${expectedLabel}"`
+        );
+      }
+
+      // The date label is the next prayer's Islamic day in the app format
+      if (props.dateLabel !== formatDateLong(nextPrayer.belongsToDate)) {
+        throw new Error(
+          `Date label mismatch at ${new Date(instant).toISOString()}: entry says ` +
+            `"${props.dateLabel}", expected "${formatDateLong(nextPrayer.belongsToDate)}"`
+        );
+      }
+
+      // Inside the stepped horizon the label is never more than one step old
+      if (instant <= horizonMs && instant - active.date.getTime() > COUNTDOWN_STEP_MS) {
+        throw new Error(
+          `Label at ${new Date(instant).toISOString()} is ${(instant - active.date.getTime()) / 60000} minutes stale (max one step)`
+        );
+      }
     }
   });
 
-  it('flips the highlighted day-list row exactly at the boundary instants', () => {
-    const nextRowsAt = (instant: number) => {
-      const active = activeEntryAt(entries, instant);
-      return active?.props.dayPrayers.find((row) => row.state === 'next')?.name;
-    };
+  it('flips the countdown target exactly at the boundary instants', () => {
+    const nextAt = (instant: number) => activeEntryAt(entries, instant)?.props.nextName;
 
-    // Just before Asr on the push day the next row is Asr; just after the
-    // Asr boundary the next row is Magrib
+    // Just before Asr on the push day the target is Asr; just after the
+    // Asr boundary it is Magrib
     const asrBoundary = createPrayerDatetime('2026-10-18', '15:20').getTime();
-    expect(nextRowsAt(asrBoundary - 1000)).toBe('Asr');
-    expect(nextRowsAt(asrBoundary)).toBe('Magrib');
-    expect(nextRowsAt(asrBoundary + 1000)).toBe('Magrib');
+    expect(nextAt(asrBoundary - 1000)).toBe('Asr');
+    expect(nextAt(asrBoundary)).toBe('Magrib');
+    expect(nextAt(asrBoundary + 1000)).toBe('Magrib');
   });
 
-  it('rolls the day list at midnight while keeping the night segment', () => {
-    // Midnight of the push day: Isha (19:40) already passed, Fajr is next —
-    // but the list has already rolled to the new day
-    const midnight = createPrayerDatetime('2026-10-19', '00:00').getTime();
-    const active = activeEntryAt(entries, midnight);
+  it('shows the next day before midnight once Isha has passed', () => {
+    // 23:00 on the push day: Isha (19:40) has passed, Fajr is next — the
+    // date label already rolls to the 19th while it is still the 18th
+    const lateEvening = createPrayerDatetime('2026-10-18', '23:00').getTime();
+    const active = activeEntryAt(entries, lateEvening);
 
     expect(active).toBeDefined();
     if (!active) return;
     expect(active.props.nextName).toBe('Fajr');
     expect(active.props.prevEpochMs).toBe(createPrayerDatetime('2026-10-18', '19:40').getTime());
-    expect(active.props.dayPrayers.map((row) => row.name)).toEqual([
-      'Fajr',
-      'Sunrise',
-      'Dhuhr',
-      'Asr',
-      'Magrib',
-      'Isha',
-    ]);
+    expect(active.props.dateLabel).toBe(formatDateLong('2026-10-19'));
   });
 
-  it('treats an early-morning Isha as the previous Islamic day next row', () => {
+  it('treats an early-morning Isha as the next prayer of its Islamic day', () => {
     // Oct 20's Isha is at 01:05 on Oct 21. After Oct 20's Magrib (18:05),
-    // the next prayer is the early Isha and it appears as the next row of
-    // Oct 20's day list.
+    // the next prayer is the early Isha and the date label is Oct 20's day.
     const afterMagrib = createPrayerDatetime('2026-10-20', '19:00').getTime();
     const active = activeEntryAt(entries, afterMagrib);
 
@@ -283,12 +276,7 @@ describe('virtual week model test', () => {
     if (!active) return;
     expect(active.props.nextName).toBe('Isha');
     expect(active.props.nextTime).toBe('01:05');
-
-    const nextRow = active.props.dayPrayers.find((row) => row.state === 'next');
-    expect(nextRow?.name).toBe('Isha');
-    expect(nextRow?.time).toBe('01:05');
-    // Six rows: the early Isha replaced the normal one on Oct 20's list
-    expect(active.props.dayPrayers).toHaveLength(6);
+    expect(active.props.dateLabel).toBe(formatDateLong('2026-10-20'));
   });
 
   it('crosses the DST fall-back night without gaps or double entries', () => {
@@ -300,9 +288,9 @@ describe('virtual week model test', () => {
       (entry) => entry.date.getTime() >= nightStart && entry.date.getTime() <= nightEnd
     );
 
-    // Midnight rollover, Fajr, Sunrise — plus the Isha boundary entry just
-    // before the window opens keeps the segment continuous
-    expect(windowEntries.length).toBeGreaterThanOrEqual(3);
+    // Beyond the stepped horizon only boundary flips cross this window
+    // (Fajr and Sunrise on Oct 25) — still continuous with legal spacing
+    expect(windowEntries.length).toBeGreaterThanOrEqual(2);
     for (let i = 1; i < windowEntries.length; i++) {
       const gapMs = windowEntries[i].date.getTime() - windowEntries[i - 1].date.getTime();
       expect(gapMs).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);

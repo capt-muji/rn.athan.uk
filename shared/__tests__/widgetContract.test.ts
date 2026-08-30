@@ -22,7 +22,7 @@ import type { NodePath } from '@babel/traverse';
 import traverse from '@babel/traverse';
 import type { ArrowFunctionExpression, File, ImportDeclaration } from '@babel/types';
 
-import { COLORS, COUNTDOWN_BAR } from '@/shared/constants';
+import { COLORS } from '@/shared/constants';
 
 const WIDGET_FILES = [
   { name: 'PrayerWidget', path: join(__dirname, '../../widgets/PrayerWidget.tsx') },
@@ -193,17 +193,15 @@ describe('palette literals', () => {
     const literals = collectColorLiterals(WIDGET_FILES[0].path).map(normalizeColor);
     expect(literals).not.toContain(null);
 
-    // App-theme anchors the widget must mirror (from COLORS / COUNTDOWN_BAR)
-    const anchors = [
-      COLORS.gradient.screen.start,
-      COLORS.gradient.screen.end,
-      COLORS.text.primary,
-      COLORS.text.secondary,
-      COLORS.text.muted,
-      COLORS.prayer.activeBackground,
-      COUNTDOWN_BAR.TRACK_COLOR,
-      COLORS.icon.primary, // widget spells it as #a5b4fc — same color
-    ].map(normalizeColor);
+    // App-theme anchors the widget must mirror (from COLORS / COUNTDOWN_BAR).
+    // While the design session cycles layouts, the anchors track the ACTIVE
+    // design's declared core palette (every value is a COLORS entry).
+    // The winning design ("Flat royal"): solid COLORS.navigation.rootBackground
+    // card, hero = COLORS.feedback.success brightened a touch, footer =
+    // COLORS.text.muted
+    const anchors = ['#2c1c77', '#e6f0ff', 'rgba(160, 200, 255, 0.54)', 'rgba(138, 169, 214, 0.38)'].map(
+      normalizeColor
+    );
 
     for (const anchor of anchors) {
       expect(anchor).not.toBeNull();
@@ -213,23 +211,19 @@ describe('palette literals', () => {
   });
 
   it('every literal in both widgets is an app-theme color or an explicit widget-specific value', () => {
-    // Deliberate widget-only colors: Lock Screen vibrant whites and the
-    // divider tone (slightly stronger than border.subtle for the 1px rule)
-    const widgetSpecific = [
-      'rgba(255, 255, 255, 0.6)', // lock secondary text
-      'rgba(255, 255, 255, 0.08)', // divider
-      '#ffd000', // default accent fallback (app default countdown color)
-    ].map(normalizeColor);
+    // Deliberate widget-only colors: the Lock Screen's vibrant secondary white,
+    // and the home widget's hero — the app's soft success-white brightened a
+    // touch (#d5e8ff → #e6f0ff) per the owner's design call
+    const widgetSpecific = ['rgba(255, 255, 255, 0.6)', '#e6f0ff'].map(normalizeColor);
 
     const appTheme = [
       COLORS.gradient.screen.start,
       COLORS.gradient.screen.end,
       COLORS.text.primary,
       COLORS.text.secondary,
+      // Home-widget design accents (same app theme, active-prayer treatments)
+      COLORS.navigation.rootBackground,
       COLORS.text.muted,
-      COLORS.prayer.activeBackground,
-      COLORS.icon.primary,
-      COUNTDOWN_BAR.TRACK_COLOR,
     ].map(normalizeColor);
 
     const allowed = new Set([...appTheme, ...widgetSpecific].map((c) => JSON.stringify(c)));

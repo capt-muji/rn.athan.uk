@@ -419,17 +419,20 @@ export const getWallSecondDelay = (): number => {
  *
  * @param seconds Time in seconds (can be negative, but returns "0s")
  * @param hideSeconds If true, hides seconds when time > 60s (default: false)
+ * @param forceHideSeconds If true, seconds never render at any distance —
+ *   the label is hours+minutes only (widget countdown label; default: false)
  * @returns Formatted time string
  *
  * @example
  * formatTime(3665) // "1h 1m 5s" (default shows seconds)
  * formatTime(3665, true) // "1h 1m" (hideSeconds in effect)
  * formatTime(45, true) // "45s" (shows seconds in last 60s)
+ * formatTime(45, true, true) // "1m" (forceHideSeconds: hours+minutes only)
  * formatTime(0) // "0s"
  * formatTime(-100) // "0s"
  * formatTime(90000) // "25h 0s" (days converted to hours)
  */
-export const formatTime = (seconds: number, hideSeconds = false): string => {
+export const formatTime = (seconds: number, hideSeconds = false, forceHideSeconds = false): string => {
   if (seconds < 0) return '0s';
 
   const ms = seconds * 1000;
@@ -439,7 +442,7 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
   const totalHours = (days || 0) * 24 + (hours || 0);
 
   // Hide seconds if requested and time is over ~10 minutes (show seconds only in last 10m)
-  const shouldShowSeconds = !hideSeconds || seconds <= 599;
+  const shouldShowSeconds = !forceHideSeconds && (!hideSeconds || seconds <= 599);
 
   const parts = [totalHours && `${totalHours}h`, minutes && `${minutes}m`].filter(Boolean);
 
@@ -450,6 +453,32 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
   }
 
   return parts.join(' ');
+};
+
+/**
+ * Formats remaining seconds as a minute-ceil countdown label — the widget's
+ * display policy: hours + minutes only, seconds never render, and the value
+ * always rounds UP to the next minute (1h 59m 01s → "2h", 59s → "1m").
+ *
+ * @param seconds Time remaining in seconds (values ≤ 0 clamp to "1m" —
+ *   the label holds its final minute until the next-prayer flip)
+ * @returns "Xh Ym" over an hour ("2h", "5h 21m"), else "Xm" ("45m", "1m")
+ *
+ * @example
+ * formatCountdownMinutes(7141) // "2h" (1h 59m 1s rounds up)
+ * formatCountdownMinutes(19201) // "5h 21m"
+ * formatCountdownMinutes(59) // "1m"
+ * formatCountdownMinutes(1) // "1m"
+ * formatCountdownMinutes(0) // "1m"
+ */
+export const formatCountdownMinutes = (seconds: number): string => {
+  const totalMinutes = Math.max(1, Math.ceil(seconds / 60));
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  if (hours === 0) return `${minutes}m`;
+  if (minutes === 0) return `${hours}h`;
+  return `${hours}h ${minutes}m`;
 };
 
 /**
