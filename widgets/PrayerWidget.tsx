@@ -1,4 +1,4 @@
-import { Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+import { HStack, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
   containerBackground,
   font,
@@ -8,7 +8,9 @@ import {
   lineLimit,
   minimumScaleFactor,
   monospacedDigit,
+  offset,
   padding,
+  shadow,
   textCase,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
@@ -16,9 +18,21 @@ import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
- * Home screen widget (systemSmall): the next prayer only — the "Flat royal"
- * design: solid root-purple card, centered symmetric trio (prayer name,
- * minute-ceil countdown hero, absolute HH:mm) over the day · city footer.
+ * Home screen widget (systemSmall + systemMedium).
+ *
+ * systemSmall — the "Flat royal" design: solid root-purple card, centered
+ * symmetric trio (prayer name, minute-ceil countdown hero, absolute HH:mm)
+ * over the day · city footer.
+ *
+ * systemMedium — the left half repeats the small trio verbatim; the right
+ * half replicates the app's Standard page list: the day's six prayers in
+ * chronological order with the blue active background on the next prayer,
+ * passed rows solid white, upcoming rows muted. No alert icons, no
+ * countdown bar, no Arabic names. State changes snap between entries:
+ * expo-widgets rebuilds its whole view tree per timeline entry with fresh
+ * view identities, so SwiftUI animation cannot fire (2026-08-30 decision —
+ * accepted; do not reintroduce animation modifiers here).
+ *
  * The hero always renders the builder's precomputed label ("1h 12m", "2m",
  * "1m") — seconds never display; the app re-pushes at each minute flip
  * while it runs. All layout helpers must live inside this function — the
@@ -26,7 +40,7 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * extension's separate JS runtime, where @expo/ui components and modifiers
  * resolve as globals.
  */
-const PrayerWidget = (props: PrayerWidgetProps, _environment: WidgetEnvironment) => {
+const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
   // Palette: solid COLORS.navigation.rootBackground card. The prayer name is
@@ -40,6 +54,32 @@ const PrayerWidget = (props: PrayerWidgetProps, _environment: WidgetEnvironment)
   const TEXT_PRIMARY = '#e6f0ff';
   const TEXT_SECONDARY = 'rgba(160, 200, 255, 0.54)';
   const TEXT_FOOTER = 'rgba(157, 188, 246, 0.48)';
+
+  // Medium list palette — the app's Standard page mirrored: row text follows
+  // the app's states (isPassed || isNext → COLORS.text.primary, upcoming →
+  // COLORS.text.muted), and the pill's shadow is COLORS.shadow.prayer at the
+  // app's SHADOW.prayer opacity. The pill fill is the app's active
+  // background (#0847e5) with the smallest lift toward sky — lightened a
+  // touch and leaned a few degrees cyan so the 22pt widget rows read the
+  // app's tone.
+  const ACTIVE_BACKGROUND = '#1157e6';
+  const ACTIVE_SHADOW = 'rgba(8, 26, 118, 0.5)';
+  const ROW_PASSED = '#ffffff';
+  const ROW_UPCOMING = 'rgba(138, 169, 214, 0.38)';
+
+  // Medium list geometry: fixed row height so the floating pill's offset is
+  // exact and the spacing never jumps (the app's rows are a fixed 57pt for
+  // the same reason). Six rows of 22pt fill the systemMedium inner height
+  // (158pt card − 2×13pt padding = 132pt) exactly on iPhone 16-class
+  // devices; the 12pt row text sits with ~3pt of air above and below inside
+  // each pill. The corner radius keeps the app's pill-to-row proportion
+  // (8pt on a 57pt row ≈ 4pt on a 22pt row). The list column is a fixed
+  // width — narrower than its half of the card — so name and time sit close
+  // together and the whole list leans left of the card's right edge.
+  const ROW_HEIGHT = 22;
+  const ROW_TEXT_SIZE = 12;
+  const ROW_CORNER_RADIUS = 4;
+  const LIST_WIDTH = 140;
 
   // Neutral card for states without renderable data: the gallery/jiggle
   // placeholder (iOS invokes the layout with no props — expo-widgets stores
@@ -79,56 +119,150 @@ const PrayerWidget = (props: PrayerWidgetProps, _environment: WidgetEnvironment)
         : '';
     const footer = dayPart ? `${dayPart} · London` : 'London';
 
-    // Hero caps at the app's TEXT.sizeLarge so the worst-case label ("24h")
-    // clears the card edges with room to spare.
-    const heroModifiers = [
-      font({ size: 26, weight: 'bold' }),
-      monospacedDigit(),
-      foregroundStyle(TEXT_PRIMARY),
-      lineLimit(1),
-      minimumScaleFactor(0.6),
-    ];
-
-    return (
-      <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
-        <VStack spacing={0} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-          <Spacer />
-          <VStack spacing={6}>
-            <Text
-              modifiers={[
-                font({ size: 11, weight: 'semibold' }),
-                foregroundStyle(NAME_COLOR),
-                textCase('uppercase'),
-                kerning(1.2),
-                lineLimit(1),
-                minimumScaleFactor(0.6),
-              ]}>
-              {props.nextName}
-            </Text>
-            {typeof props.countdownLabel === 'string' && props.countdownLabel.length > 0 ? (
-              <Text modifiers={heroModifiers}>{props.countdownLabel}</Text>
-            ) : null}
-            <Text
-              modifiers={[
-                font({ size: 13, weight: 'regular' }),
-                monospacedDigit(),
-                foregroundStyle(TEXT_SECONDARY),
-                lineLimit(1),
-              ]}>
-              {props.nextTime}
-            </Text>
-          </VStack>
-          <Spacer />
+    // The hero column — the small widget's centered trio plus the footer,
+    // shared verbatim by both families so the countdown reads identically.
+    const HeroColumn = () => (
+      <VStack spacing={0} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+        <Spacer />
+        <VStack spacing={6}>
           <Text
             modifiers={[
-              font({ size: 9, weight: 'medium' }),
-              foregroundStyle(TEXT_FOOTER),
-              kerning(0.4),
+              font({ size: 11, weight: 'semibold' }),
+              foregroundStyle(NAME_COLOR),
+              textCase('uppercase'),
+              kerning(1.2),
               lineLimit(1),
               minimumScaleFactor(0.6),
             ]}>
-            {footer}
+            {props.nextName}
           </Text>
+          {typeof props.countdownLabel === 'string' && props.countdownLabel.length > 0 ? (
+            <Text
+              modifiers={[
+                font({ size: 26, weight: 'bold' }),
+                monospacedDigit(),
+                foregroundStyle(TEXT_PRIMARY),
+                lineLimit(1),
+                minimumScaleFactor(0.6),
+              ]}>
+              {props.countdownLabel}
+            </Text>
+          ) : null}
+          <Text
+            modifiers={[
+              font({ size: 13, weight: 'regular' }),
+              monospacedDigit(),
+              foregroundStyle(TEXT_SECONDARY),
+              lineLimit(1),
+            ]}>
+            {props.nextTime}
+          </Text>
+        </VStack>
+        <Spacer />
+        <Text
+          modifiers={[
+            font({ size: 9, weight: 'medium' }),
+            foregroundStyle(TEXT_FOOTER),
+            kerning(0.4),
+            lineLimit(1),
+            minimumScaleFactor(0.6),
+          ]}>
+          {footer}
+        </Text>
+      </VStack>
+    );
+
+    // The medium list is only renderable with a complete day snapshot:
+    // entries from older app versions (props v2) or a malformed sequence
+    // fall back to the hero-only composition instead of a broken list.
+    const rows = Array.isArray(props.prayers) ? props.prayers : [];
+    const activeIndex = typeof props.activeIndex === 'number' ? props.activeIndex : -1;
+    const listValid = rows.length > 0 && activeIndex >= 0 && activeIndex < rows.length;
+
+    if (environment.widgetFamily === 'systemMedium' && listValid) {
+      // One row per prayer: name leading, time trailing (the app's row
+      // anatomy), colored by state — passed and active rows solid, upcoming
+      // rows muted (the app's isPassed || isNext → primary rule). The row
+      // block is inset a few points each side (on the list ZStack below), so
+      // the pill sits narrower than the column with slight padding left and
+      // right — which also brings the name and time closer together.
+      const Row = ({ name, time, index }: { name: string; time: string; index: number }) => {
+        const rowColor = index <= activeIndex ? ROW_PASSED : ROW_UPCOMING;
+
+        return (
+          <HStack
+            spacing={0}
+            modifiers={[frame({ maxWidth: Infinity, height: ROW_HEIGHT }), padding({ leading: 10, trailing: 10 })]}>
+            <Text
+              modifiers={[
+                font({ size: ROW_TEXT_SIZE, weight: 'regular' }),
+                foregroundStyle(rowColor),
+                lineLimit(1),
+                minimumScaleFactor(0.8),
+              ]}>
+              {name}
+            </Text>
+            <Spacer />
+            <Text
+              modifiers={[
+                font({ size: ROW_TEXT_SIZE, weight: 'regular' }),
+                monospacedDigit(),
+                foregroundStyle(rowColor),
+                lineLimit(1),
+              ]}>
+              {time}
+            </Text>
+          </HStack>
+        );
+      };
+
+      // The floating active background — the app's ActiveBackground
+      // architecture: a native rounded-rectangle shape (a shape view fills
+      // the width its stack proposes — an empty stack with a maxWidth frame
+      // collapses to zero width in the widget runtime) positioned behind the
+      // next prayer's row, with the app's shadow (#081a76 at SHADOW.prayer's
+      // 0.5 opacity) scaled to widget rows.
+      const pillY = activeIndex * ROW_HEIGHT;
+
+      const ActivePill = () => (
+        <RoundedRectangle
+          cornerRadius={ROW_CORNER_RADIUS}
+          modifiers={[
+            foregroundStyle(ACTIVE_BACKGROUND),
+            shadow({ radius: 4, x: 1, y: 4, color: ACTIVE_SHADOW }),
+            frame({ height: ROW_HEIGHT }),
+            offset({ y: pillY }),
+          ]}
+        />
+      );
+
+      return (
+        <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+          <HStack
+            spacing={14}
+            modifiers={[
+              padding({ leading: 13, trailing: 20, top: 13, bottom: 13 }),
+              frame({ maxWidth: Infinity, maxHeight: Infinity }),
+            ]}>
+            <HeroColumn />
+            <ZStack alignment='top' modifiers={[frame({ width: LIST_WIDTH }), padding({ leading: 4, trailing: 4 })]}>
+              <ActivePill />
+              <VStack spacing={0} alignment='leading' modifiers={[frame({ maxWidth: Infinity })]}>
+                {rows.map((row, index) => (
+                  <Row key={row.name} name={row.name} time={row.time} index={index} />
+                ))}
+              </VStack>
+            </ZStack>
+          </HStack>
+        </ZStack>
+      );
+    }
+
+    // systemSmall (or the medium fallback): the hero alone fills the card.
+    return (
+      <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+        <VStack spacing={0} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <HeroColumn />
         </VStack>
       </ZStack>
     );
