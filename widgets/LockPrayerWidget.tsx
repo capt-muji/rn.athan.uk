@@ -1,4 +1,4 @@
-import { Text, VStack } from '@expo/ui/swift-ui';
+import { Image, Text, VStack } from '@expo/ui/swift-ui';
 import { font, foregroundStyle, frame, lineLimit, monospacedDigit, opacity } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
@@ -75,14 +75,14 @@ const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironme
         );
       }
 
-      // accessoryRectangular
+      // accessoryRectangular — the moon-and-stars mark (the home widget's
+      // stale-card icon, rendered here in the system's vibrant monochrome)
+      // above the out-of-date title and refresh call
       return (
         <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-          <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
-            ATHAN
-          </Text>
+          <Image systemName='moon.stars.fill' size={14} color={WHITE} />
           <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            Times out of date
+            Out of date
           </Text>
           <Text modifiers={[font({ size: 11, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
             Open app to refresh
