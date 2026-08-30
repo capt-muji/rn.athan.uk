@@ -56,6 +56,12 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ## 📝 Recent Updates
 
+### v1.10.0 – v1.12.1 (2026-08-30)
+
+- ✅ **Medium home screen widget**: the 2×4 size pairs the small widget's trio (name · countdown · `HH:mm`) with the day's six prayers exactly like the app's Standard page — the blue active background on the next prayer, passed rows solid, upcoming rows muted, rolling to the next day at Isha (no alert icons, no countdown bar)
+- ✅ **Eyebrow pill badge**: the prayer name sits in a soft capsule — periwinkle-white lowercase text over a whisper of sky blue (a hint of the active-prayer blue)
+- ✅ **Stale card redesign**: when the timeline runs dry, every surface shows the moon-and-stars mark above "Out of date" with an "Open Athan to refresh" call (two lines on the small card, one on medium)
+
 ### v1.9.1 (2026-08-30)
 
 - ✅ **Widget visual polish**: the home screen prayer name is now an uppercase letter-spaced eyebrow in a soft periwinkle that fades into the purple card, the `Sat · London` footer sits closer to the absolute time's tone, and the Lock Screen rectangular widget pairs the countdown with the prayer name (`Maghrib · 9m`) with the absolute `HH:mm` below — the duplicate-countdown circular face is retired (orphaned placements render blank)
@@ -110,7 +116,7 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 | Widget | Families | Shows |
 | --- | --- | --- |
-| **Next Prayer** (home screen) | Small, Medium | **Small** — the next prayer only, on the deep-purple app-theme card: prayer name in uppercase periwinkle, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · London` footer. **Medium** — the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the blue active background on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
+| **Next Prayer** (home screen) | Small, Medium | **Small** — the next prayer only, on the deep-purple app-theme card: prayer name in lowercase inside a soft pill (periwinkle-white text over a sky-blue whisper), minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · London` footer. **Medium** — the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the blue active background on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
 | **Next Prayer** (Lock Screen) | Rectangular, Inline | The next prayer paired with the minute-ceil countdown (`Maghrib · 9m`) and the absolute `HH:mm` below, rendered in the system's vibrant (monochrome) style |
 
 **Always in sync, never stale:**
@@ -119,7 +125,7 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 - The countdown label is a **minute-ceil value** — seconds never display at any distance and the label always rounds up (`1h 59m 01s` → `2h`, `59s` → `1m`), holding its value until the true minute flips. It is precomputed per timeline entry and refreshed by stepped entries every 5 minutes (WidgetKit's minimum entry spacing) for the first 24 hours; beyond that it updates at each prayer boundary.
 - While the app is running, a **label-flip scheduler** re-pushes the timeline within a quarter second of every countdown minute change, so the widget never shows a stale minute for long. Backgrounded timers coalesce into one refresh on the app's return to the foreground.
 - Entries transition automatically at each prayer time; once Isha has passed, the widget flips to the next day's Fajr with the date already rolled over (DST-safe via the same zoned-time logic as the app). Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time (whose label describes the push instant, never a backdated one).
-- If the app stays unopened past the full timeline, the widgets switch to a **"Times out of date — open Athan to refresh"** card at the final prayer instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
+- If the app stays unopened past the full timeline, the widgets switch to the **stale card** — the moon-and-stars mark above "Out of date" with an "Open Athan to refresh" call (two lines on the small card, one line on medium) — instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
 
 **Widget preferences — the widget has no configuration of its own; it mirrors the app:**
 
