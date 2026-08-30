@@ -208,10 +208,11 @@ Each entry in `releases.json` has a `_comment` field explaining its purpose, the
 
 ### Release Workflow
 
-1. Push new app update to stores
-2. Wait for store release
-3. Update the appropriate version in `releases.json` on `main` branch
-4. Users on outdated versions see the update popup on next launch (within 24 hours)
+1. Fill in the What's New content for this release in `shared/whatsNew.ts` (see below)
+2. Push new app update to stores
+3. Wait for store release
+4. Update the appropriate version in `releases.json` on `main` branch
+5. Users on outdated versions see the update popup on next launch (within 24 hours)
 
 ### Throttle & Failure Behavior
 
@@ -220,6 +221,38 @@ The 24-hour throttle timer is always set regardless of whether the check succeed
 - On success: the next check occurs no sooner than 24 hours later
 - On failure (network error, malformed response, etc.): the check is silently skipped and the next retry occurs no sooner than 24 hours later
 - The app never shows an error to the user for a failed update check
+
+<br/>
+
+## 🆕 What's New Popup
+
+After a user updates the app, a one-time "What's New" modal tells them what they got (`shared/whatsNew.ts` + `components/modals/WhatsNew.tsx`). It exists because ~half the base auto-updates (never seeing store release notes) — this is the only channel that reliably reaches them.
+
+| Scenario                                        | Result                                                                                              |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Update to a release with What's New content** | Modal shows once, on the first launch after the update (works identically for auto and manual updates) |
+| **Update skipping several versions**            | Same modal — only the installed version's items, never accumulated history                          |
+| **Update to a silent release (content is null)**| No modal — bug-fix-only releases stay quiet                                                         |
+| **Fresh install**                               | Never shows — the shown-version tracker is seeded at first boot                                     |
+| **Uninstall + reinstall**                        | Never shows — storage is wiped, reinstall counts as a fresh install                                 |
+| **Relaunch on the same version**                 | Never shows again — shown once per version, marked on display (crash-safe)                          |
+
+Behavior notes:
+
+- The version in the title is read from the installed binary at runtime (never a hand-typed string; EAS manages store versions remotely)
+- Every item declares its platform availability with glyphs in the leading column: Apple for iOS-exclusive, Android for Android-exclusive, both stacked for cross-platform — identical on every device, never a filter
+- If the update nag is also eligible (user landed on a non-latest version), What's New shows first; the nag appears after Continue — modals never stack
+- Settings → About → "What's new" re-opens the modal anytime (hidden automatically on silent releases)
+
+### Release Ritual (What's New)
+
+Every store release, edit `WHATS_NEW` in `shared/whatsNew.ts`:
+
+1. Set `version` to the store version being submitted
+2. List 1–4 **user-facing items only** — new abilities, removed functionality, behavior changes users will notice. No technical work (SDK migrations, performance, refactors belong in store release notes/README). Factual copy, no marketing
+3. Set `WHATS_NEW` to `null` to silent-ship a release (fixes/polish only)
+
+A content contract test (`shared/__tests__/whatsNew.test.ts`) guards the shape: item count, title/body length caps, valid icons and platforms. Dev preview: `EXPO_PUBLIC_WHATS_NEW_PREVIEW=1` in `.env` forces the modal on cold launch (dev builds only). Design rationale: [ADR-012](ai/adr/012/ADR.md).
 
 <br/>
 
