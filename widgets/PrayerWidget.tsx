@@ -12,7 +12,6 @@ import {
   offset,
   padding,
   shadow,
-  textCase,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
@@ -139,7 +138,6 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
               modifiers={[
                 font({ size: 11, weight: 'semibold' }),
                 foregroundStyle(EYEBROW_TEXT),
-                textCase('uppercase'),
                 kerning(1.2),
                 lineLimit(1),
                 minimumScaleFactor(0.6),
