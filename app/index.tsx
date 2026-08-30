@@ -4,23 +4,33 @@ import { useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import Navigation from '@/app/Navigation';
-import { ModalUpdate } from '@/components/modals';
+import { ModalUpdate, ModalWhatsNew } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
 import { initializeListeners } from '@/device/listeners';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
+import { APP_CONFIG } from '@/shared/config';
 import { COLORS, SIZE } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
+import { shouldShowWhatsNew, WHATS_NEW } from '@/shared/whatsNew';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { syncLoadable } from '@/stores/sync';
-import { popupUpdateEnabledAtom, setPopupUpdateEnabled } from '@/stores/ui';
+import {
+  popupUpdateEnabledAtom,
+  popupWhatsNewEnabledAtom,
+  setPopupUpdateEnabled,
+  setPopupWhatsNewEnabled,
+} from '@/stores/ui';
+import { getInstalledVersion, getWhatsNewShownVersion, setWhatsNewShownVersion } from '@/stores/version';
 
 export default function Index() {
   const { checkInitialPermissions } = useNotification();
   const { state } = useAtomValue(syncLoadable);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
+  const whatsNewVisible = useAtomValue(popupWhatsNewEnabledAtom);
+  const installedVersion = getInstalledVersion();
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: mount-only initialization — checkInitialPermissions is a per-render function, intentionally captured once; re-adding it would re-register listeners on every render
   useEffect(() => {
@@ -34,6 +44,16 @@ export default function Index() {
 
     // Check for updates in background
     checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
+
+    // Show the What's New modal once after an update (never on fresh installs -
+    // stores/version.ts seeds the shown-version for new users). Marking shown
+    // on display (not dismiss) makes a mid-display crash unable to re-loop it
+    if (shouldShowWhatsNew(installedVersion, getWhatsNewShownVersion(), WHATS_NEW)) {
+      setWhatsNewShownVersion(installedVersion);
+      setPopupWhatsNewEnabled(true);
+    } else if (__DEV__ && APP_CONFIG.whatsNewPreview) {
+      setPopupWhatsNewEnabled(true);
+    }
   }, []);
 
   // Hide splash screen once sync completes
@@ -52,6 +72,10 @@ export default function Index() {
     setPopupUpdateEnabled(false);
   };
 
+  const handleContinueWhatsNew = () => {
+    setPopupWhatsNewEnabled(false);
+  };
+
   if (state === 'loading') {
     return (
       <View style={styles.loadingContainer}>
@@ -63,7 +87,16 @@ export default function Index() {
 
   return (
     <>
-      <ModalUpdate visible={updateAvailable} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
+      {WHATS_NEW ? (
+        <ModalWhatsNew
+          visible={whatsNewVisible}
+          version={installedVersion}
+          items={WHATS_NEW.items}
+          onContinue={handleContinueWhatsNew}
+        />
+      ) : null}
+      {/* Gated so the nag never stacks on top of the What's New modal */}
+      <ModalUpdate visible={updateAvailable && !whatsNewVisible} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
       <Navigation />
       <Overlay />
     </>

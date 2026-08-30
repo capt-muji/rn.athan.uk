@@ -61,8 +61,10 @@ import {
   clearUpgradeCache,
   getInstalledVersion,
   getStoredVersion,
+  getWhatsNewShownVersion,
   handleAppUpgrade,
   setStoredVersion,
+  setWhatsNewShownVersion,
   wasAppUpgraded,
 } from '../version';
 
@@ -183,6 +185,57 @@ describe('setStoredVersion', () => {
 });
 
 // =============================================================================
+// getWhatsNewShownVersion TESTS
+// =============================================================================
+
+describe('getWhatsNewShownVersion', () => {
+  it('returns the stored shown version from MMKV', () => {
+    mockGetItem.mockImplementation((key: string) => (key === 'whats_new_shown_version' ? '1.12.2' : null));
+
+    const result = getWhatsNewShownVersion();
+
+    expect(result).toBe('1.12.2');
+    expect(mockGetItem).toHaveBeenCalledWith('whats_new_shown_version');
+  });
+
+  it('returns null when no shown version stored (pre-feature upgrade)', () => {
+    mockGetItem.mockReturnValue(null);
+
+    expect(getWhatsNewShownVersion()).toBeNull();
+  });
+
+  it('handles database read errors gracefully', () => {
+    mockGetItem.mockImplementation(() => {
+      throw new Error('MMKV read error');
+    });
+
+    // Should return null on error, not throw
+    expect(getWhatsNewShownVersion()).toBeNull();
+  });
+});
+
+// =============================================================================
+// setWhatsNewShownVersion TESTS
+// =============================================================================
+
+describe('setWhatsNewShownVersion', () => {
+  it('stores the shown version in MMKV under the what\u2019s new key', () => {
+    setWhatsNewShownVersion('1.13.0');
+
+    expect(mockSetItem).toHaveBeenCalledWith('whats_new_shown_version', '1.13.0');
+  });
+
+  it('handles database write errors gracefully', () => {
+    mockSetItem.mockImplementation(() => {
+      throw new Error('MMKV write error');
+    });
+
+    // Should not throw
+    expect(() => setWhatsNewShownVersion('1.13.0')).not.toThrow();
+  });
+});
+
+// =============================================================================
 // wasAppUpgraded TESTS
 // =============================================================================
 
@@ -265,7 +318,11 @@ describe('clearUpgradeCache', () => {
   it('calls clearAllExcept with whitelist prefixes', () => {
     clearUpgradeCache();
 
-    expect(mockClearAllExcept).toHaveBeenCalledWith(['app_installed_version', 'preference_']);
+    expect(mockClearAllExcept).toHaveBeenCalledWith([
+      'app_installed_version',
+      'whats_new_shown_version',
+      'preference_',
+    ]);
   });
 
   it('handles database errors gracefully', () => {
@@ -411,10 +468,12 @@ describe('full upgrade flow', () => {
     // First install: detect upgrade -> clear cache -> store version
     expect(mockClearAllExcept).toHaveBeenCalled();
     expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.34');
+    // Fresh install seeds the What's New tracker so the modal never shows
+    expect(mockSetItem).toHaveBeenCalledWith('whats_new_shown_version', '1.0.34');
   });
 
   it('completes standard upgrade flow', () => {
-    mockGetItem.mockReturnValue('1.0.34');
+    mockGetItem.mockImplementation((key: string) => (key === 'app_installed_version' ? '1.0.34' : null));
     mockCompareVersions.mockReturnValue(1);
     const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35');
 
@@ -422,20 +481,26 @@ describe('full upgrade flow', () => {
 
     expect(mockClearAllExcept).toHaveBeenCalled();
     expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.35');
+    // Upgrade leaves the What's New tracker untouched (differs from installed)
+    expect(mockSetItem).not.toHaveBeenCalledWith('whats_new_shown_version', expect.anything());
   });
 
   it('completes no-change flow', () => {
-    mockGetItem.mockReturnValue('1.0.34');
+    mockGetItem.mockImplementation((key: string) => (key === 'app_installed_version' ? '1.0.34' : null));
     const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.34');
 
     handle();
 
     expect(mockClearAllExcept).not.toHaveBeenCalled();
     expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.34');
+    // Same-version relaunch: no What's New seeding (existing users on the
+    // feature version have their tracker already; absent means "show if
+    // this session is the upgrade to the feature release")
+    expect(mockSetItem).not.toHaveBeenCalledWith('whats_new_shown_version', expect.anything());
   });
 
   it('completes downgrade flow (no cache clear)', () => {
-    mockGetItem.mockReturnValue('1.0.34');
+    mockGetItem.mockImplementation((key: string) => (key === 'app_installed_version' ? '1.0.34' : null));
     mockCompareVersions.mockReturnValue(-1);
     const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.33');
 

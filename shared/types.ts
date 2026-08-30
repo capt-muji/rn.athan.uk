@@ -202,6 +202,9 @@ export enum Icon {
   INFO = 'INFO',
   CHECK = 'CHECK',
   CLOSE = 'CLOSE',
+  WIDGET = 'WIDGET',
+  APPLE = 'APPLE',
+  ANDROID = 'ANDROID',
 }
 
 // =============================================================================
