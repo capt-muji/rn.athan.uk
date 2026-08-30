@@ -10,10 +10,10 @@
 import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
-import { createLondonDate, formatDateShort } from '@/shared/time';
+import { createLondonDate, formatDateShort, formatHijriDateLong } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
-import { countdownBarColorAtom, countdownBarShownAtom, popupUpdateEnabledAtom, showArabicNamesAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom, popupUpdateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
 import PrayerLockWidget from '@/widgets/LockPrayerWidget';
 import PrayerWidget from '@/widgets/PrayerWidget';
@@ -71,42 +71,37 @@ describe('initWidgetSettingsSync', () => {
     jest.useRealTimers();
   });
 
-  it('re-pushes the timeline when a widget-visible setting changes', async () => {
+  it('re-pushes the timeline when the Hijri setting changes', async () => {
     const store = getDefaultStore();
-    store.set(countdownBarColorAtom, '#00ff88');
+    store.set(hijriDateEnabledAtom, !store.get(hijriDateEnabledAtom));
 
     await jest.advanceTimersByTimeAsync(1000);
 
     expect(widgetPush()).toHaveLength(1);
     expect(lockPush()).toHaveLength(1);
-    expect(widgetPush()[0][0][0].props.accentColor).toBe('#00ff88');
-  });
-
-  it('carries the bar-visibility setting into the re-pushed timeline', async () => {
-    const store = getDefaultStore();
-    store.set(countdownBarShownAtom, false);
-
-    await jest.advanceTimersByTimeAsync(1000);
-
-    expect(widgetPush()[0][0][0].props.showBar).toBe(false);
+    // Date label rendered in Hijri for the next prayer's day (label parity
+    // itself is covered by the widgetTimeline suites)
+    const first = widgetPush()[0][0][0];
+    const nextDate = formatDateShort(new Date(first.props.nextEpochMs));
+    expect(first.props.dateLabel).toBe(formatHijriDateLong(nextDate));
   });
 
   it('collapses a burst of setting changes into a single push', async () => {
     const store = getDefaultStore();
-    store.set(countdownBarColorAtom, '#123456');
+    store.set(hijriDateEnabledAtom, true);
     await jest.advanceTimersByTimeAsync(300);
-    store.set(showArabicNamesAtom, false);
+    store.set(hijriDateEnabledAtom, false);
     await jest.advanceTimersByTimeAsync(300);
-    store.set(countdownBarShownAtom, !store.get(countdownBarShownAtom));
+    store.set(hijriDateEnabledAtom, true);
 
     await jest.advanceTimersByTimeAsync(1000);
 
     expect(widgetPush()).toHaveLength(1);
     expect(lockPush()).toHaveLength(1);
-    // The debounced push carries the FINAL state of every changed setting
-    const props = widgetPush()[0][0][0].props;
-    expect(props.accentColor).toBe('#123456');
-    expect(props.showArabic).toBe(false);
+    // The debounced push carries the FINAL state of the changed setting
+    const first = widgetPush()[0][0][0];
+    const nextDate = formatDateShort(new Date(first.props.nextEpochMs));
+    expect(first.props.dateLabel).toBe(formatHijriDateLong(nextDate));
   });
 
   it('ignores changes to settings the widget does not show', async () => {
@@ -121,7 +116,7 @@ describe('initWidgetSettingsSync', () => {
 
   it('does not push while the debounce window is still open', async () => {
     const store = getDefaultStore();
-    store.set(countdownBarColorAtom, '#abcdef');
+    store.set(hijriDateEnabledAtom, !store.get(hijriDateEnabledAtom));
 
     await jest.advanceTimersByTimeAsync(900);
 
@@ -133,7 +128,7 @@ describe('initWidgetSettingsSync', () => {
     initWidgetSettingsSync();
 
     const store = getDefaultStore();
-    store.set(countdownBarColorAtom, '#112233');
+    store.set(hijriDateEnabledAtom, !store.get(hijriDateEnabledAtom));
     await jest.advanceTimersByTimeAsync(1000);
 
     expect(widgetPush()).toHaveLength(1);
@@ -141,11 +136,11 @@ describe('initWidgetSettingsSync', () => {
 
   it('pushes again for a later change after an earlier one fired', async () => {
     const store = getDefaultStore();
-    store.set(countdownBarColorAtom, '#445566');
+    store.set(hijriDateEnabledAtom, !store.get(hijriDateEnabledAtom));
     await jest.advanceTimersByTimeAsync(1000);
     expect(widgetPush()).toHaveLength(1);
 
-    store.set(showArabicNamesAtom, !store.get(showArabicNamesAtom));
+    store.set(hijriDateEnabledAtom, !store.get(hijriDateEnabledAtom));
     await jest.advanceTimersByTimeAsync(1000);
 
     expect(widgetPush()).toHaveLength(2);
@@ -175,7 +170,7 @@ describe('refreshPrayerWidgets integration', () => {
     const lockEntries = lockPush()[0][0];
     expect(homeEntries.length).toBeGreaterThan(0);
     expect(homeEntries).toEqual(lockEntries);
-    expect(homeEntries[0].props.v).toBe(1);
+    expect(homeEntries[0].props.v).toBe(2);
   });
 
   it('skips the push entirely when the prayer cache is empty', async () => {
