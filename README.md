@@ -56,6 +56,10 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ## 📝 Recent Updates
 
+### v1.9.0 (2026-08-30)
+
+- ✅ **Home screen widget redesign**: "Flat royal" app-theme card (prayer name · minute-ceil countdown · `HH:mm` · `Sat · London` footer), minute-ceil labels everywhere (seconds never display; `59s` → `1m`), a label-flip scheduler that re-pushes within 250ms of every minute change while the app runs, and realistic launch-relative mock data for repeatable testing
+
 ### v1.5.1 (2026-02-16)
 
 - ✅ **Notification title improvement**: Added "now" indicator to prayer notification titles
@@ -114,23 +118,22 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 | Widget | Families | Shows |
 | --- | --- | --- |
-| **Prayer Times** (home screen) | Small, Medium | Next prayer (English + Arabic), live countdown, accent-coloured progress bar; Medium adds today's six prayers with the next one highlighted |
-| **Next Prayer** (Lock Screen) | Circular, Rectangular, Inline | Live countdown to the next prayer, rendered in the system's vibrant (monochrome) style |
+| **Next Prayer** (home screen) | Small | The next prayer only, on the deep-purple app-theme card: prayer name, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · London` footer |
+| **Next Prayer** (Lock Screen) | Circular, Rectangular, Inline | The next prayer, its time, and the same minute-ceil countdown, rendered in the system's vibrant (monochrome) style |
 
 **Always in sync, never stale:**
 
-- The app pushes a **14-day timeline** (one entry per prayer boundary plus a midnight rollover) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, the 3-hour background task, and — debounced — any change to a widget-visible setting.
-- Between boundaries the widgets stay live on their own via SwiftUI timer intervals — the countdown ticks every second and the progress bar fills continuously with **zero app involvement and no refresh budget**.
-- Entries transition automatically at each prayer time and the Medium widget's day list rolls over at London midnight (DST-safe via the same zoned-time logic as the app). Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time.
+- The app pushes a **14-day timeline** (one entry per prayer boundary) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, the 3-hour background task, and — debounced — any change to a widget-visible setting.
+- The countdown label is a **minute-ceil value** — seconds never display at any distance and the label always rounds up (`1h 59m 01s` → `2h`, `59s` → `1m`), holding its value until the true minute flips. It is precomputed per timeline entry and refreshed by stepped entries every 5 minutes (WidgetKit's minimum entry spacing) for the first 24 hours; beyond that it updates at each prayer boundary.
+- While the app is running, a **label-flip scheduler** re-pushes the timeline within a quarter second of every countdown minute change, so the widget never shows a stale minute for long. Backgrounded timers coalesce into one refresh on the app's return to the foreground.
+- Entries transition automatically at each prayer time; once Isha has passed, the widget flips to the next day's Fajr with the date already rolled over (DST-safe via the same zoned-time logic as the app). Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time (whose label describes the push instant, never a backdated one).
 - If the app stays unopened past the full timeline, the widgets switch to a **"Times out of date — open Athan to refresh"** card at the final prayer instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
 
 **Widget preferences — the widget has no configuration of its own; it mirrors the app:**
 
-- Countdown bar accent colour (`preference_countdownbar_color`)
-- Countdown bar visibility (`preference_countdownbar_shown` — hidden in-app = hidden on the widget)
-- Arabic prayer names (`preference_show_arabic_names`)
+- Hijri dates (`preference_hijri_date` — the footer shows the Hijri month when enabled)
 
-Changing any of these in the app re-pushes the widget timeline within about a second.
+Changing it in the app re-pushes the widget timeline within about a second.
 
 **Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan*. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan*.
 
