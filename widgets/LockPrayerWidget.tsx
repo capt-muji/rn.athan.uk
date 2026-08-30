@@ -1,15 +1,17 @@
 import { Text, VStack } from '@expo/ui/swift-ui';
-import { font, foregroundStyle, frame, lineLimit, monospacedDigit } from '@expo/ui/swift-ui/modifiers';
+import { font, foregroundStyle, frame, lineLimit, monospacedDigit, opacity } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
 import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
- * Lock Screen widget: the next prayer with a minute-ceil countdown label,
- * rendered in the system's vibrant (monochrome) accessory style. All layout
- * helpers must live inside this function — the 'widget' directive serializes
- * only this function body into the widget extension's separate JS runtime,
- * where @expo/ui components and modifiers resolve as globals.
+ * Lock Screen widget (accessoryRectangular + accessoryInline; the circular
+ * face is retired and renders blank — see the guard below). The rectangular
+ * face pairs the countdown with the prayer name and puts the absolute HH:mm
+ * below — the countdown reads once, beside the name. All layout helpers must
+ * live inside this function — the 'widget' directive serializes only this
+ * function body into the widget extension's separate JS runtime, where
+ * @expo/ui components and modifiers resolve as globals.
  */
 const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
@@ -23,20 +25,6 @@ const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironme
   // placeholder (iOS invokes the layout with no props) and any unexpected
   // rendering error (caught below). Text-only — no icons anywhere.
   const neutralForFamily = () => {
-    if (environment.widgetFamily === 'accessoryCircular') {
-      return (
-        <Text
-          modifiers={[
-            font({ size: 10, weight: 'semibold' }),
-            foregroundStyle(WHITE),
-            lineLimit(1),
-            frame({ width: 44, height: 44 }),
-          ]}>
-          Athan
-        </Text>
-      );
-    }
-
     if (environment.widgetFamily === 'accessoryInline') {
       return (
         <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
@@ -63,25 +51,22 @@ const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironme
     return neutralForFamily();
   }
 
+  // The circular face is retired (it duplicated the rectangular countdown),
+  // but iOS keeps user-placed circular instances alive even after the family
+  // leaves supportedFamilies — orphaned placements freeze on their last
+  // render. Keep the family registered and blank the layout instead: every
+  // circular placement, past or future, renders nothing at all.
+  if (environment.widgetFamily === 'accessoryCircular') {
+    return (
+      <Text modifiers={[font({ size: 9, weight: 'semibold' }), opacity(0), frame({ width: 44, height: 44 })]}> </Text>
+    );
+  }
+
   try {
     // Entries from an older app version missing segment bounds degrade to the
     // refresh card rather than rendering a broken countdown.
     const segmentValid = typeof props.nextEpochMs === 'number' && typeof props.prevEpochMs === 'number';
     if (props.stale === true || !segmentValid) {
-      if (environment.widgetFamily === 'accessoryCircular') {
-        return (
-          <Text
-            modifiers={[
-              font({ size: 10, weight: 'semibold' }),
-              foregroundStyle(WHITE),
-              lineLimit(1),
-              frame({ width: 44, height: 44 }),
-            ]}>
-            Refresh
-          </Text>
-        );
-      }
-
       if (environment.widgetFamily === 'accessoryInline') {
         return (
           <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
@@ -111,23 +96,6 @@ const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironme
     // time instead of a system timer (whose colon format we don't use).
     const hasCountdownLabel = typeof props.countdownLabel === 'string' && props.countdownLabel.length > 0;
 
-    if (environment.widgetFamily === 'accessoryCircular') {
-      // The circular face shows just the countdown ("2h", "9m").
-      const circularModifiers = [
-        font({ size: 9, weight: 'semibold', design: 'rounded' }),
-        monospacedDigit(),
-        lineLimit(1),
-        foregroundStyle(WHITE),
-        frame({ width: 44, height: 44 }),
-      ];
-
-      if (hasCountdownLabel) {
-        return <Text modifiers={circularModifiers}>{props.countdownLabel}</Text>;
-      }
-
-      return <Text modifiers={circularModifiers}>{props.nextTime}</Text>;
-    }
-
     if (environment.widgetFamily === 'accessoryInline') {
       const countdownModifiers = [monospacedDigit(), foregroundStyle(WHITE_SECONDARY)];
 
@@ -144,20 +112,20 @@ const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironme
       );
     }
 
-    // accessoryRectangular (default): the prayer with its time and the
-    // countdown below
+    // accessoryRectangular (default): the prayer with its countdown, the
+    // absolute time below
     const rectangularModifiers = [
       font({ size: 11, weight: 'medium' }),
       monospacedDigit(),
       foregroundStyle(WHITE_SECONDARY),
     ];
 
+    const header = hasCountdownLabel ? `${props.nextName} · ${props.countdownLabel}` : props.nextName;
+
     return (
       <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {props.nextName} · {props.nextTime}
-        </Text>
-        {hasCountdownLabel ? <Text modifiers={rectangularModifiers}>{props.countdownLabel}</Text> : null}
+        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>{header}</Text>
+        <Text modifiers={rectangularModifiers}>{props.nextTime}</Text>
       </VStack>
     );
   } catch {
