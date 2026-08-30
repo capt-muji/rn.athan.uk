@@ -212,6 +212,7 @@ describe('palette literals', () => {
       'rgba(190, 205, 252, 0.9)',
       'rgba(90, 160, 245, 0.08)',
       'rgba(138, 169, 214, 0.38)',
+      '#a5b4fc',
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -239,6 +240,8 @@ describe('palette literals', () => {
       'rgba(157, 188, 246, 0.48)',
       '#1157e6',
       'rgba(8, 26, 118, 0.5)',
+      // Stale card: the 1.7.0 moon-and-stars mark (COLORS.icon.primary)
+      '#a5b4fc',
     ].map(normalizeColor);
 
     const appTheme = [
