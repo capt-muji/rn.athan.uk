@@ -1,6 +1,6 @@
 # ADR-005: Timing System Overhaul
 
-**Status:** Proposed
+**Status:** Accepted (implemented — this is the current timing architecture)
 **Date:** 2026-01-18
 **Decision Makers:** muji
 **Supersedes:** None (complements ADR-004)

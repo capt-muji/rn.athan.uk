@@ -27,6 +27,8 @@ The app currently includes a modal (`ModalTimesExplained.tsx`) that displays exp
 
 **Remove the ModalTimesExplained modal entirely and replace it with contextual explanations shown one-at-a-time in the Overlay when a user taps on a specific prayer.**
 
+(Note: `components/prayer/Explanation.tsx` is the live implementation of this overlay explanation — it is not a remnant of the removed modal.)
+
 Implementation approach:
 
 1. When user taps an Extra prayer, open the Overlay (existing behavior)

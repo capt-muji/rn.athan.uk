@@ -1,6 +1,6 @@
 # ADR-010: Widget Redesign — Next-Prayer-Only with Exact App Countdown Format
 
-**Status:** Accepted — display policy superseded by [ADR-011](../011-widget-countdown-display-and-update-policy.md) (architecture unchanged)
+**Status:** Accepted — display policy superseded by [ADR-011](../011/ADR.md) (architecture unchanged)
 **Date:** 2026-08-29
 **Decision Makers:** muji
 
