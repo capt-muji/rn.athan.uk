@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.9.3",
+    "version": "1.10.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -104,9 +104,9 @@
             {
               "name": "PrayerWidget",
               "displayName": "Next Prayer",
-              "description": "The next prayer with its time, date, and a countdown in the app's exact format.",
+              "description": "A countdown to the next prayer.",
               "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemSmall"]
+              "supportedFamilies": ["systemSmall", "systemMedium"]
             },
             {
               "name": "PrayerLockWidget",

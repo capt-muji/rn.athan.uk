@@ -11,7 +11,7 @@
  * shape changes: it lets layouts detect and tolerate entries written by an
  * older app version still sitting in the shared timeline store.
  */
-export const WIDGET_PROPS_VERSION = 2;
+export const WIDGET_PROPS_VERSION = 3;
 
 /**
  * The slice of in-app settings the widgets honor. The widget has no
@@ -22,6 +22,17 @@ export const WIDGET_PROPS_VERSION = 2;
 export interface PrayerWidgetSettings {
   /** Whether dates render in Hijri (preference_hijri_date) */
   hijriDate: boolean;
+}
+
+/**
+ * One row of the medium widget's day list — the day's six prayers in
+ * chronological order, exactly as the app's Standard page shows them.
+ */
+export interface WidgetPrayerRow {
+  /** English prayer name, e.g. "Fajr" */
+  name: string;
+  /** Prayer time in HH:mm, e.g. "05:35" */
+  time: string;
 }
 
 /**
@@ -49,6 +60,21 @@ export interface PrayerWidgetProps {
   countdownLabel: string;
   /** Date of the upcoming prayer in the app's format (Hijri when enabled) */
   dateLabel: string;
+  /**
+   * The displayed day's prayers for the medium widget's list — the six
+   * Standard prayers of the upcoming prayer's belongsToDate (the list rolls
+   * to the next day exactly when the countdown target does, mirroring the
+   * app's displayDate semantics). Rows before the active one are past,
+   * rows after it are upcoming. Absent on entries from older app versions
+   * (the medium layout degrades to the single-prayer composition).
+   */
+  prayers?: WidgetPrayerRow[];
+  /**
+   * Index of the active (next) prayer within `prayers` — the row carrying
+   * the blue active background. -1 when the next prayer is not part of the
+   * displayed day (should not happen; guarded in the layout).
+   */
+  activeIndex?: number;
   /**
    * Terminal "out of date" entry — rendered when the whole timeline has
    * passed and the app has not re-pushed. Shows an "open Athan to refresh"

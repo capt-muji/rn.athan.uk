@@ -19,8 +19,8 @@
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import * as TimeUtils from '@/shared/time';
-import type { PrayerSequence } from '@/shared/types';
-import type { PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
+import type { Prayer, PrayerSequence } from '@/shared/types';
+import type { PrayerWidgetProps, PrayerWidgetSettings, WidgetPrayerRow } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
 /**
@@ -76,15 +76,36 @@ const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
 };
 
 /**
+ * Builds the medium widget's day list for a segment: the six Standard
+ * prayers of the upcoming prayer's belongsToDate, in chronological order —
+ * the same set the app's Standard page shows for its displayDate. The list
+ * rolls to the next day exactly when the countdown target does (at Isha),
+ * mirroring the app's displayDate semantics. The active row is the upcoming
+ * prayer itself; rows before it have passed, rows after it are upcoming.
+ *
+ * @param prayers Chronologically sorted prayer sequence
+ * @param next The upcoming prayer anchoring the displayed day
+ * @returns The day's rows and the active row index (-1 when `next` is not
+ *   part of its own day — a malformed sequence; the layout degrades)
+ */
+const buildDayList = (prayers: Prayer[], next: Prayer): { rows: WidgetPrayerRow[]; activeIndex: number } => {
+  const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === next.belongsToDate);
+  const activeIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === next.datetime.getTime());
+  const rows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time }));
+
+  return { rows, activeIndex };
+};
+
+/**
  * Builds one timeline entry per prayer boundary, with stepped countdown
  * entries every COUNTDOWN_STEP_MS inside the stepped horizon, starting at
  * `now`, capped by a terminal stale entry after the final prayer. Each entry
  * carries the full props snapshot for its segment: the upcoming prayer, the
  * segment bounds (for the live progress bar), the precomputed countdown
- * label, and the upcoming prayer's date. Adjacent entries always keep at
- * least MIN_ENTRY_SPACING_MS apart: the first entry is backdated when a
- * boundary is too close to `now`, and steps stop one spacing short of the
- * boundary they precede.
+ * label, the upcoming prayer's date, and the medium widget's day list.
+ * Adjacent entries always keep at least MIN_ENTRY_SPACING_MS apart: the
+ * first entry is backdated when a boundary is too close to `now`, and steps
+ * stop one spacing short of the boundary they precede.
  *
  * @param now Current instant
  * @param sequence Chronologically sorted prayer sequence (must span `now`)
@@ -109,6 +130,7 @@ export const buildPrayerWidgetTimeline = (
     const prev = prevIndex >= 0 ? prayers[prevIndex] : null;
     const countdownLabel = formatCountdownAt(labelAt, next.datetime);
     const dateLabel = formatDateLabel(next.belongsToDate, settings.hijriDate);
+    const dayList = buildDayList(prayers, next);
 
     return {
       date,
@@ -120,6 +142,8 @@ export const buildPrayerWidgetTimeline = (
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
         countdownLabel,
         dateLabel,
+        prayers: dayList.rows,
+        activeIndex: dayList.activeIndex,
       },
     };
   };
