@@ -1,4 +1,4 @@
-import { HStack, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+import { HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
   background,
   containerBackground,
@@ -70,6 +70,10 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   const ROW_PASSED = '#ffffff';
   const ROW_UPCOMING = 'rgba(138, 169, 214, 0.38)';
 
+  // Stale-card palette — the 1.7.0 moon-and-stars mark (COLORS.icon.primary)
+  // above the out-of-date title and a plain-text refresh call.
+  const STALE_ICON = '#a5b4fc';
+
   // Medium list geometry: fixed row height so the floating pill's offset is
   // exact and the spacing never jumps (the app's rows are a fixed 57pt for
   // the same reason). Six rows of 22pt fill the systemMedium inner height
@@ -83,6 +87,40 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   const ROW_TEXT_SIZE = 12;
   const ROW_CORNER_RADIUS = 4;
   const LIST_WIDTH = 140;
+
+  // Terminal state: every timeline entry has passed and the app has not
+  // re-pushed — ask the user to open the app instead of showing stale times.
+  // The 1.7.0 moon-and-stars mark sits above the title; the refresh call is
+  // plain text — "Open Athan / to refresh" split over two lines on the
+  // small card, one line on the medium card (the black ErrorScreen-button
+  // look was tried and rejected 2026-08-30). Tapping the widget opens the
+  // app by default, so the whole card is the button.
+  const StaleCard = () => {
+    const refreshLine = (line: string) => (
+      <Text modifiers={[font({ size: 12, weight: 'regular' }), foregroundStyle(TEXT_SECONDARY), lineLimit(1)]}>
+        {line}
+      </Text>
+    );
+
+    return (
+      <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+        <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Spacer />
+          <Image systemName='moon.stars.fill' size={26} color={STALE_ICON} />
+          <Text modifiers={[font({ size: 14, weight: 'semibold' }), foregroundStyle(TEXT_PRIMARY)]}>Out of date</Text>
+          {environment.widgetFamily === 'systemMedium' ? (
+            refreshLine('Open Athan to refresh')
+          ) : (
+            <VStack spacing={1}>
+              {refreshLine('Open Athan')}
+              {refreshLine('to refresh')}
+            </VStack>
+          )}
+          <Spacer />
+        </VStack>
+      </ZStack>
+    );
+  };
 
   // Neutral card for states without renderable data: the gallery/jiggle
   // placeholder (iOS invokes the layout with no props — expo-widgets stores
@@ -104,12 +142,11 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
 
   try {
     // Terminal state: every timeline entry has passed and the app has not
-    // re-pushed — ask the user to open the app instead of showing stale times.
-    // Tapping a widget opens the app by default, so the card is the button.
-    // Entries from an older app version missing segment bounds degrade here too.
+    // re-pushed — the moon-and-stars refresh card. Entries from an older
+    // app version missing segment bounds degrade here too.
     const segmentValid = typeof props.nextEpochMs === 'number' && typeof props.prevEpochMs === 'number';
     if (props.stale === true || !segmentValid) {
-      return <NeutralCard title='Times out of date' subtitle='Open Athan to refresh' />;
+      return <StaleCard />;
     }
 
     // Footer: three-letter day of the next prayer's date, then the city —
