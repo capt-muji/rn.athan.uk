@@ -1,5 +1,7 @@
 import { Icon } from '@/shared/types';
 
+import AndroidIcon from './android.svg';
+import AppleIcon from './apple.svg';
 import BellRingIcon from './bell-ring.svg';
 import BellSlashIcon from './bell-slash.svg';
 import CheckIcon from './check.svg';
@@ -8,6 +10,7 @@ import InfoIcon from './info.svg';
 import PauseIcon from './pause.svg';
 import PlayIcon from './play.svg';
 import SpeakerIcon from './speaker.svg';
+import WidgetIcon from './widget.svg';
 
 const ICONS: Record<Icon, typeof BellRingIcon> = {
   [Icon.BELL_RING]: BellRingIcon,
@@ -18,6 +21,9 @@ const ICONS: Record<Icon, typeof BellRingIcon> = {
   [Icon.INFO]: InfoIcon,
   [Icon.CHECK]: CheckIcon,
   [Icon.CLOSE]: CloseIcon,
+  [Icon.WIDGET]: WidgetIcon,
+  [Icon.APPLE]: AppleIcon,
+  [Icon.ANDROID]: AndroidIcon,
 };
 
 export default ICONS;
