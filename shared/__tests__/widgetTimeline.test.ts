@@ -442,7 +442,11 @@ describe('volume and payload invariants', () => {
     const sequence = makeSpanSequence();
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
 
+    // The medium widget's day list (six rows + activeIndex per entry) grew
+    // the payload ~30% over the pre-v3 size; 155KB across ~380 entries is
+    // still trivial for the app-group UserDefaults plist (parsed once per
+    // widget reload), so the comfort budget is 200KB.
     const payloadSize = JSON.stringify(entries).length;
-    expect(payloadSize).toBeLessThan(120_000);
+    expect(payloadSize).toBeLessThan(200_000);
   });
 });

@@ -199,13 +199,17 @@ describe('palette literals', () => {
     // second test). The winning design ("Flat royal"): solid
     // COLORS.navigation.rootBackground card, uppercase periwinkle prayer name,
     // hero = COLORS.feedback.success brightened a touch, absolute time =
-    // COLORS.text.secondary, footer nudged toward secondary
+    // COLORS.text.secondary, footer nudged toward secondary. The medium list
+    // anchors the app's Standard page: the muted upcoming rows under
+    // COLORS.text.primary rows (the pill fill is a widget-specific lift of
+    // COLORS.prayer.activeBackground toward sky — see the second test).
     const anchors = [
       '#2c1c77',
       '#e6f0ff',
       'rgba(160, 200, 255, 0.54)',
       'rgba(163, 185, 252, 0.62)',
       'rgba(157, 188, 246, 0.48)',
+      'rgba(138, 169, 214, 0.38)',
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -219,12 +223,18 @@ describe('palette literals', () => {
     // Deliberate widget-only colors: the Lock Screen's vibrant secondary white,
     // the home widget's hero (the app's soft success-white brightened a touch,
     // #d5e8ff → #e6f0ff), the prayer name's periwinkle lean into the card
-    // purple, and the footer's nudge toward the absolute-time secondary
+    // purple, the footer's nudge toward the absolute-time secondary, the
+    // medium pill's sky lift of the app's active background (#0847e5 with the
+    // smallest lift toward sky — the 22pt rows read darker than the app's
+    // 57pt rows), and the pill's shadow (COLORS.shadow.prayer at the app's
+    // SHADOW.prayer opacity — the modifier takes no separate opacity)
     const widgetSpecific = [
       'rgba(255, 255, 255, 0.6)',
       '#e6f0ff',
       'rgba(163, 185, 252, 0.62)',
       'rgba(157, 188, 246, 0.48)',
+      '#1157e6',
+      'rgba(8, 26, 118, 0.5)',
     ].map(normalizeColor);
 
     const appTheme = [
@@ -234,6 +244,8 @@ describe('palette literals', () => {
       COLORS.text.secondary,
       // Home-widget design accent (same app theme)
       COLORS.navigation.rootBackground,
+      // Medium list palette — the app's Standard page mirrored
+      COLORS.text.muted,
     ].map(normalizeColor);
 
     const allowed = new Set([...appTheme, ...widgetSpecific].map((c) => JSON.stringify(c)));

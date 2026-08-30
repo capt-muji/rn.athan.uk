@@ -110,7 +110,7 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 | Widget | Families | Shows |
 | --- | --- | --- |
-| **Next Prayer** (home screen) | Small | The next prayer only, on the deep-purple app-theme card: prayer name in uppercase periwinkle, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · London` footer |
+| **Next Prayer** (home screen) | Small, Medium | **Small** — the next prayer only, on the deep-purple app-theme card: prayer name in uppercase periwinkle, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · London` footer. **Medium** — the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the blue active background on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
 | **Next Prayer** (Lock Screen) | Rectangular, Inline | The next prayer paired with the minute-ceil countdown (`Maghrib · 9m`) and the absolute `HH:mm` below, rendered in the system's vibrant (monochrome) style |
 
 **Always in sync, never stale:**

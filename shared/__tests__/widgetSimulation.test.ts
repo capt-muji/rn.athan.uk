@@ -233,6 +233,26 @@ describe('virtual week model test', () => {
         );
       }
 
+      // The medium widget's day list is exactly the app's Standard page for
+      // the next prayer's day (same rows, same order), and the active row is
+      // the countdown target itself
+      const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === nextPrayer.belongsToDate);
+      const expectedRows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time }));
+      const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
+
+      if (!Array.isArray(props.prayers) || props.activeIndex !== expectedActiveIndex) {
+        throw new Error(
+          `Day list state mismatch at ${new Date(instant).toISOString()}: entry says ` +
+            `activeIndex ${props.activeIndex}, expected ${expectedActiveIndex}`
+        );
+      }
+      if (JSON.stringify(props.prayers) !== JSON.stringify(expectedRows)) {
+        throw new Error(`Day list rows mismatch at ${new Date(instant).toISOString()}`);
+      }
+      if (props.prayers?.[expectedActiveIndex]?.name !== props.nextName) {
+        throw new Error(`Active row is not the countdown target at ${new Date(instant).toISOString()}`);
+      }
+
       // Inside the stepped horizon the label is never more than one step old
       if (instant <= horizonMs && instant - active.date.getTime() > COUNTDOWN_STEP_MS) {
         throw new Error(
@@ -251,6 +271,28 @@ describe('virtual week model test', () => {
     expect(nextAt(asrBoundary - 1000)).toBe('Asr');
     expect(nextAt(asrBoundary)).toBe('Magrib');
     expect(nextAt(asrBoundary + 1000)).toBe('Magrib');
+  });
+
+  it('slides the active row down the list and rolls it over after Isha', () => {
+    const activeRowAt = (instant: number) => {
+      const active = activeEntryAt(entries, instant);
+      const props = active?.props;
+      if (!props || !Array.isArray(props.prayers) || typeof props.activeIndex !== 'number') return null;
+      return { index: props.activeIndex, name: props.prayers[props.activeIndex]?.name };
+    };
+
+    // Within Oct 18 the active index advances one row per prayer boundary
+    const magribBoundary = createPrayerDatetime('2026-10-18', '18:05').getTime();
+    expect(activeRowAt(magribBoundary - 1000)).toEqual({ index: 4, name: 'Magrib' });
+    expect(activeRowAt(magribBoundary + 1000)).toEqual({ index: 5, name: 'Isha' });
+
+    // After Isha the list rolls to the NEXT day with the pill back on row 1
+    const afterIsha = createPrayerDatetime('2026-10-18', '20:00').getTime();
+    expect(activeRowAt(afterIsha)).toEqual({ index: 0, name: 'Fajr' });
+
+    const rolled = activeEntryAt(entries, afterIsha)?.props;
+    const rolledDay = prayers.filter((prayer) => prayer.belongsToDate === '2026-10-19');
+    expect(rolled?.prayers?.map((row) => row.time)).toEqual(rolledDay.map((prayer) => prayer.time));
   });
 
   it('shows the next day before midnight once Isha has passed', () => {
