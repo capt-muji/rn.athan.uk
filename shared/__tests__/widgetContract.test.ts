@@ -235,6 +235,8 @@ describe('palette literals', () => {
       'rgba(157, 188, 246, 0.48)',
       '#1157e6',
       'rgba(8, 26, 118, 0.5)',
+      // Eyebrow pill badge experiment (uncommitted test): soft fill
+      'rgba(163, 185, 252, 0.13)',
     ].map(normalizeColor);
 
     const appTheme = [
