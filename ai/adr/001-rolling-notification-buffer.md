@@ -197,6 +197,52 @@ The rolling window has been reduced to improve app responsiveness:
 
 ---
 
+## Appendix: Rescheduling Triggers (the 14 scenarios)
+
+All entry points serialize through `withSchedulingLock()` — a promise-queue, so no operation is ever dropped.
+
+**Global Reschedule (1–4)**
+
+| # | Trigger | Entry point | What it does | When |
+| - | --- | --- | --- | --- |
+| 1 | App launch | `refreshNotifications()` | Staleness check, then full reschedule | If ≥4h since last schedule (or first time) |
+| 2 | Foreground resume | `refreshNotifications()` | Same staleness check | If ≥4h since last schedule |
+| 3 | Background task | `refreshNotifications()` | Unconditional reschedule | Always (~3h OS-controlled intervals) |
+| 4 | Sound change | `rescheduleAllNotifications()` | Full reschedule, bypasses staleness check | Immediately when the audio sheet closes |
+
+Order (issue #15, schedule-first — no bulk cancel, no zero-notification window):
+
+1. Schedule all enabled notifications + reminders for Standard + Extra × `NOTIFICATION_ROLLING_DAYS` (same-identifier scheduling replaces atomically)
+2. `_sweepStaleScheduledNotifications()` — cancel identifiers the OS holds beyond the intended set, verify counts
+3. `refreshPrayerWidgets()` — keep the iOS widgets in sync
+4. Update `preference_last_notification_schedule_check`
+
+**Per-Prayer Update (5–11)** — all via `updatePrayerNotifications()` when the alert-menu sheet closes (`commitAlertMenuChanges`)
+
+| # | Trigger | What it does |
+| - | --- | --- |
+| 5 | Enable at-time alert | Clears + schedules at-time for one prayer |
+| 6 | Disable at-time alert | Clears at-time for one prayer |
+| 7 | Change at-time sound | Clears + re-schedules with new sound |
+| 8 | Enable reminder | Clears + schedules reminder |
+| 9 | Disable reminder | Clears reminder |
+| 10 | Change reminder sound | Clears + re-schedules with new sound |
+| 11 | Change reminder interval | Clears + re-schedules with new offset |
+
+Steps: cancel this prayer's stored OS identifiers + MMKV keys (at-time and/or reminder), schedule fresh ones × `NOTIFICATION_ROLLING_DAYS` — at-time and reminder run in parallel inside a single lock acquisition.
+
+**Cache Clear (12–14)** — wipe only; rescheduling happens on the next launch/resume
+
+| # | Trigger | Entry point | What it does | When |
+| - | --- | --- | --- | --- |
+| 12 | App upgrade | `clearUpgradeCache()` | Wipes all non-preference MMKV keys | On version mismatch at launch |
+| 13 | Error boundary | `clearUpgradeCache()` | Same wipe, recovers corrupt state | On unrecoverable error |
+| 14 | Concurrent ops | `clearUpgradeCache()` | Same wipe, recovers lock contention | On lock-contention recovery |
+
+Steps: `Database.clearAllExcept(['app_installed_version', 'preference_'])` + remove `preference_last_notification_schedule_check` (forces the next staleness check to pass).
+
+---
+
 ## Revision History
 
 | Date       | Author | Change                                                                                                        |
@@ -207,3 +253,4 @@ The rolling window has been reduced to improve app responsiveness:
 | 2026-01-17 | muji   | IMPLEMENTED: Reduced NOTIFICATION_ROLLING_DAYS from 3 to 2 and NOTIFICATION_REFRESH_HOURS from 24 to 12       |
 | 2026-01-25 | muji   | Updated reminder feature spec: On/Off toggle + Silent/Sound, hardcoded reminder.wav, requires at-time enabled |
 | 2026-08-29 | muji   | Corrected drift vs code: refresh interval is 4h (set by ADR-007, not 12h); concurrency guard is the withSchedulingLock sequential queue (not an isScheduling flag); settings changes re-schedule immediately (no debounce); documented the issue-#15 schedule-first reschedule strategy; fixed stale 3-day counts |
+| 2026-08-30 | muji   | Moved the 14-scenario rescheduling matrix here from the README (docs cleanup); global-reschedule steps corrected to the schedule-first order |
