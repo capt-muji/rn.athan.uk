@@ -44,23 +44,20 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
-  // Palette: solid COLORS.navigation.rootBackground card. The prayer name is
-  // an uppercase periwinkle eyebrow (widget-only indigo lean so it fades into
-  // the card, letter-spaced); the hero is the app's soft success-white
-  // brightened a touch (#d5e8ff → #e6f0ff); the absolute time stays
-  // COLORS.text.secondary; the footer sits just under the absolute time's
-  // color (widget-only nudge toward secondary — must stay fainter than it).
+  // Palette: solid COLORS.navigation.rootBackground card. The prayer name
+  // is an uppercase eyebrow in a soft pill — periwinkle-white text over a
+  // whisper of sky blue (a hint of the active-prayer blue), the design the
+  // owner selected from the 2026-08-30 badge sessions. The hero is the
+  // app's soft success-white brightened a touch (#d5e8ff → #e6f0ff); the
+  // absolute time stays COLORS.text.secondary; the footer sits just under
+  // the absolute time's color (widget-only nudge toward secondary — must
+  // stay fainter than it).
   const CARD_BACKGROUND = '#2c1c77';
-  const NAME_COLOR = 'rgba(163, 185, 252, 0.62)';
+  const EYEBROW_TEXT = 'rgba(190, 205, 252, 0.9)';
+  const EYEBROW_PILL = 'rgba(90, 160, 245, 0.08)';
   const TEXT_PRIMARY = '#e6f0ff';
   const TEXT_SECONDARY = 'rgba(160, 200, 255, 0.54)';
   const TEXT_FOOTER = 'rgba(157, 188, 246, 0.48)';
-
-  // TEST (uncommitted experiment): the eyebrow prayer name sits in a single
-  // Tailwind-style pill — a very soft blue fill (almost invisible) with
-  // ample padding. One capsule only: a second, outer capsule reads as two
-  // pills at widget scale (owner rejected the ring treatment).
-  const BADGE_FILL = 'rgba(163, 185, 252, 0.13)';
 
   // Medium list palette — the app's Standard page mirrored: row text follows
   // the app's states (isPassed || isNext → COLORS.text.primary, upcoming →
@@ -136,12 +133,12 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
             spacing={0}
             modifiers={[
               padding({ leading: 9, trailing: 9, top: 4, bottom: 4 }),
-              background(BADGE_FILL, { shape: 'capsule' }),
+              background(EYEBROW_PILL, { shape: 'capsule' }),
             ]}>
             <Text
               modifiers={[
                 font({ size: 11, weight: 'semibold' }),
-                foregroundStyle(NAME_COLOR),
+                foregroundStyle(EYEBROW_TEXT),
                 textCase('uppercase'),
                 kerning(1.2),
                 lineLimit(1),
