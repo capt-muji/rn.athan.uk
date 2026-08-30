@@ -5,16 +5,16 @@
  * - Native updateTimeline throwing: swallowed and logged (widgets are a
  *   surface, never a crash path)
  * - Partial cache: builds from whatever days exist, never fails
- * - readWidgetSettings: snapshots all three widget-visible preferences
+ * - readWidgetSettings: snapshots both widget-visible preferences
  */
 
-import { addDays } from 'date-fns';
+import { addDays, format } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import { createLondonDate, formatDateShort } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
-import { countdownBarColorAtom, countdownBarShownAtom, showArabicNamesAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom } from '@/stores/ui';
 import { readWidgetSettings, refreshPrayerWidgets } from '@/stores/widget';
 import PrayerLockWidget from '@/widgets/LockPrayerWidget';
 import PrayerWidget from '@/widgets/PrayerWidget';
@@ -62,7 +62,8 @@ describe('refreshPrayerWidgets error tolerance', () => {
   });
 
   it('still pushes the lock widget when the home widget survives', async () => {
-    seedPrayerCache(1);
+    // Two days so an upcoming prayer exists no matter what time the suite runs
+    seedPrayerCache(2);
     (PrayerLockWidget.updateTimeline as jest.Mock).mockImplementation(() => {
       throw new Error('lock boom');
     });
@@ -83,17 +84,76 @@ describe('refreshPrayerWidgets error tolerance', () => {
   });
 });
 
+describe('label-flip re-push scheduler', () => {
+  const minutesAhead = (minutes: number): string => {
+    const date = createLondonDate();
+    date.setMinutes(date.getMinutes() + minutes);
+    return format(date, 'HH:mm');
+  };
+
+  /** Seeds a cache whose Maghrib sits `minutes` ahead of now. */
+  const seedUpcomingMagrib = (minutes: number) => {
+    const now = createLondonDate();
+    const dates = [-1, 0, 1].map((offset) => formatDateShort(addDays(now, offset)));
+    Database.saveAllPrayers(
+      dates.map((date) => ({
+        ...makeDayData(date),
+        fajr: minutesAhead(-10),
+        sunrise: minutesAhead(-8),
+        dhuhr: minutesAhead(-6),
+        asr: minutesAhead(-4),
+        magrib: minutesAhead(minutes),
+        isha: minutesAhead(minutes + 9),
+      }))
+    );
+  };
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    (PrayerWidget.updateTimeline as jest.Mock).mockReset();
+    (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
+  it('re-pushes as each countdown minute flips', async () => {
+    seedUpcomingMagrib(11);
+
+    await refreshPrayerWidgets();
+    expect(widgetPush()).toHaveLength(1);
+
+    // The next label flip (10m remaining) happens 60s after the push: the
+    // scheduler re-pushes right after it, within a minute's window
+    await jest.advanceTimersByTimeAsync(60 * 1000 + 300);
+    expect(widgetPush()).toHaveLength(2);
+
+    await jest.advanceTimersByTimeAsync(60 * 1000);
+    expect(widgetPush()).toHaveLength(3);
+  });
+
+  it('re-pushes every minute for far-out prayers too', async () => {
+    seedPrayerCache(2);
+
+    await refreshPrayerWidgets();
+    expect(widgetPush()).toHaveLength(1);
+
+    // The label minute changes at any distance, so a flip lands within any
+    // 59-second window
+    await jest.advanceTimersByTimeAsync(59 * 1000);
+    expect(widgetPush()).toHaveLength(2);
+  });
+});
+
 describe('readWidgetSettings', () => {
-  it('snapshots all three widget-visible preferences', () => {
+  it('snapshots the widget-visible preferences', () => {
     const store = getDefaultStore();
-    store.set(countdownBarColorAtom, '#abcdef');
-    store.set(showArabicNamesAtom, false);
-    store.set(countdownBarShownAtom, false);
+    store.set(hijriDateEnabledAtom, true);
 
     expect(readWidgetSettings()).toEqual({
-      accentColor: '#abcdef',
-      showArabic: false,
-      showBar: false,
+      hijriDate: true,
     });
   });
 });
