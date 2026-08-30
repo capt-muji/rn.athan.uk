@@ -1,6 +1,6 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-08-29 (session: #15 zero-notification-window fix — schedule-first-then-cancel-stale + post-reschedule sweep; #7/#16 platform-split dropped by owner — both platforms stay identical at 2 days; #14 module dropped in favour of the adb ground-truth checklist; #11 dropped as unfixable in-app; #8 stays parked)
+Last updated: 2026-08-30 (docs catch-up session: #12 closed as FIXED 1.6.0 — its deterministic-ID fix (d20ccf5) shipped with the #15 reschedule rework; on-device double-notification confirm still pending on owner phones. #4/#5 stay DEFERRED, #8/#10 stay OPEN — untouched by owner decision. Widget work 1.10–1.12.1 landed on uat; see ai/AGENTS.md Recent Decisions.)
 
 Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not yet fixed · [DEFERRED] accepted, revisit later · [ACCEPTED] intended behavior, documented
 
@@ -183,7 +183,15 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   If it resurfaces, the informal test remains: compare phone clock vs a reference when
   a notification fires early; mitigation is keeping the phone online (NTP correction).
 
-### 12. [OPEN] DOUBLE notifications — orphan-alarm race (missing deterministic IDs)
+### 12. [FIXED 1.6.0 — on-device confirm pending] DOUBLE notifications — orphan-alarm race (missing deterministic IDs)
+
+- **Status (2026-08-30)**: closed in code. The deterministic identifiers
+  (`${scheduleType}_${prayerIndex}_${date}_${kind}`, d20ccf5) shipped with the
+  #15 reschedule rework — same-ID scheduling replaces idempotently on both
+  platforms, and the post-reschedule sweep cancels anything the DB doesn't
+  know about (healing pre-fix UUID orphans on first reschedule). Owner
+  on-device confirmation that doubles are gone is still outstanding; reopen
+  if a double is ever observed again.
 
 - **Race (code-verified)**: `scheduleNotificationForDate` does
   `await scheduleNotificationAsync()` THEN `await Database.addOneScheduledNotification...`
