@@ -1,5 +1,6 @@
 import { HStack, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
+  background,
   containerBackground,
   font,
   foregroundStyle,
@@ -54,6 +55,12 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   const TEXT_PRIMARY = '#e6f0ff';
   const TEXT_SECONDARY = 'rgba(160, 200, 255, 0.54)';
   const TEXT_FOOTER = 'rgba(157, 188, 246, 0.48)';
+
+  // TEST (uncommitted experiment): the eyebrow prayer name sits in a single
+  // Tailwind-style pill — a very soft blue fill (almost invisible) with
+  // ample padding. One capsule only: a second, outer capsule reads as two
+  // pills at widget scale (owner rejected the ring treatment).
+  const BADGE_FILL = 'rgba(163, 185, 252, 0.13)';
 
   // Medium list palette — the app's Standard page mirrored: row text follows
   // the app's states (isPassed || isNext → COLORS.text.primary, upcoming →
@@ -125,17 +132,24 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
       <VStack spacing={0} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
         <Spacer />
         <VStack spacing={6}>
-          <Text
+          <HStack
+            spacing={0}
             modifiers={[
-              font({ size: 11, weight: 'semibold' }),
-              foregroundStyle(NAME_COLOR),
-              textCase('uppercase'),
-              kerning(1.2),
-              lineLimit(1),
-              minimumScaleFactor(0.6),
+              padding({ leading: 9, trailing: 9, top: 4, bottom: 4 }),
+              background(BADGE_FILL, { shape: 'capsule' }),
             ]}>
-            {props.nextName}
-          </Text>
+            <Text
+              modifiers={[
+                font({ size: 11, weight: 'semibold' }),
+                foregroundStyle(NAME_COLOR),
+                textCase('uppercase'),
+                kerning(1.2),
+                lineLimit(1),
+                minimumScaleFactor(0.6),
+              ]}>
+              {props.nextName}
+            </Text>
+          </HStack>
           {typeof props.countdownLabel === 'string' && props.countdownLabel.length > 0 ? (
             <Text
               modifiers={[
