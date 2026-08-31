@@ -174,15 +174,25 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
       return <StaleCard />;
     }
 
-    // Footer: three-letter day of the next prayer's date, then the city —
-    // "Sat · London". Derived from the precomputed dateLabel ("Sat, 29 Aug
-    // 2026" → "Sat"; Hijri labels yield the 3-letter month, e.g. "Raj").
-    // Entries from a v1 app version without a dateLabel degrade to "London".
-    const dayPart =
-      typeof props.dateLabel === 'string' && props.dateLabel.length > 0
-        ? props.dateLabel.split(',')[0].slice(0, 3)
-        : '';
-    const footer = dayPart ? `${dayPart} · London` : 'London';
+    // Footer: the next prayer's full day name, then the short city —
+    // "Monday · Lon". Derived from the precomputed dateLabel ("Mon, 15 Jun
+    // 2026" → "Monday"); Hijri labels carry their month ("Rajab 1, 1447" →
+    // "Rajab 1"). Entries from a v1 app version without a dateLabel degrade
+    // to just the city.
+    const FULL_DAYS: Record<string, string> = {
+      Sun: 'Sunday',
+      Mon: 'Monday',
+      Tue: 'Tuesday',
+      Wed: 'Wednesday',
+      Thu: 'Thursday',
+      Fri: 'Friday',
+      Sat: 'Saturday',
+    };
+    const rawDayPart =
+      typeof props.dateLabel === 'string' && props.dateLabel.length > 0 ? props.dateLabel.split(',')[0] : '';
+    const shortDay = rawDayPart.slice(0, 3);
+    const dayPart = FULL_DAYS[shortDay] ?? rawDayPart;
+    const footer = dayPart ? `${dayPart} · Lon` : 'Lon';
 
     // The hero column — the small widget's centered trio plus the footer,
     // shared verbatim by both families so the countdown reads identically.
