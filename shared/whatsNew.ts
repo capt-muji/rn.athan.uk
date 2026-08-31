@@ -49,7 +49,7 @@ export interface WhatsNewRelease {
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewRelease | null = {
-  version: '1.14.2',
+  version: '1.15.0',
   items: [
     {
       title: 'Home & Lock widgets',

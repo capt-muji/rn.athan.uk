@@ -102,7 +102,7 @@ describe('label-flip re-push scheduler', () => {
     return format(date, 'HH:mm');
   };
 
-  /** Seeds a cache whose Maghrib sits `minutes` ahead of now. */
+  /** Seeds a cache whose Magrib sits `minutes` ahead of now. */
   const seedUpcomingMagrib = (minutes: number) => {
     const now = createLondonDate();
     const dates = [-1, 0, 1].map((offset) => formatDateShort(addDays(now, offset)));
