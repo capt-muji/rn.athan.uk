@@ -600,6 +600,7 @@ Read ai/prompts/document.md
 
 **Key Principles:**
 
+- **NO RECENT-DECISIONS ENTRIES FOR NON-FUNCTIONAL TWEAKS** — small visual nudges, comment edits, mock-data churn, version bumps etc. get NO history entry in this file (owner rule 2026-08-31). Reserve "Recent Decisions" for functional/behavioral changes and durable lessons; logging every tweak just bloats the file.
 - **NO FALLBACKS** - Fix root cause, don't mask problems. If data is missing, throw error.
 - **Prayer-centric model** - Use full DateTime objects, not separate date/time strings. Prevents midnight-crossing bugs.
 - **Schedule independence** - Standard and Extras schedules can show different dates.

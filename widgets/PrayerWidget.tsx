@@ -64,7 +64,6 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
 
   // Blob lighting (theme 42's glow): three blurred orbs anchored to the
   // card's corners, colored per theme. Empty string = orb off.
-  const BLOB_A = 'rgba(249, 168, 212, 0.5)';
   const BLOB_B = 'rgba(147, 197, 253, 0.42)';
   const BLOB_C = 'rgba(196, 181, 253, 0.4)';
 
@@ -138,8 +137,13 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
     // The rose orb anchors to the medium card's absolute x (~114pt from the
     // left edge) on BOTH families — center-relative offsets would drop it
     // into the small card's top-left corner instead of topping the hero
-    // where the medium places it.
-    const roseOrbX = environment.widgetFamily === 'systemSmall' ? 35 : -55;
+    // where the medium places it. The small card also softens the orb
+    // (wider blur) — at medium blur its hotspot pools too hot in the top
+    // right corner of the tighter card.
+    const roseOrbX = environment.widgetFamily === 'systemSmall' ? 59 : -5;
+    const roseOrbBlur = environment.widgetFamily === 'systemSmall' ? 75 : 65;
+    const roseOrbColor =
+      environment.widgetFamily === 'systemSmall' ? 'rgba(255, 105, 180, 0.45)' : 'rgba(255, 105, 180, 0.38)';
 
     // The blob lighting layer — blurred orbs anchored to the card's
     // corners, colored by the theme's BLOB_* constants (empty = skipped).
@@ -149,8 +153,8 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
           modifiers={[
             frame({ width: 170, height: 170 }),
             offset({ x: roseOrbX, y: -75 }),
-            foregroundStyle(BLOB_A),
-            blur(45),
+            foregroundStyle(roseOrbColor),
+            blur(roseOrbBlur),
           ]}
         />
         <Circle
