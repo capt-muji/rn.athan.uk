@@ -68,7 +68,7 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ### v1.9.1 (2026-08-30)
 
-- ✅ **Widget visual polish**: the home screen prayer name is now an uppercase letter-spaced eyebrow in a soft periwinkle that fades into the purple card, the `Sat · London` footer sits closer to the absolute time's tone, and the Lock Screen rectangular widget pairs the countdown with the prayer name (`Maghrib · 9m`) with the absolute `HH:mm` below — the duplicate-countdown circular face is retired (orphaned placements render blank)
+- ✅ **Widget visual polish**: the home screen prayer name is now an uppercase letter-spaced eyebrow in a soft periwinkle that fades into the purple card, the `Sat · London` footer sits closer to the absolute time's tone, and the Lock Screen rectangular widget pairs the countdown with the prayer name (`Magrib · 9m`) with the absolute `HH:mm` below — the duplicate-countdown circular face is retired (orphaned placements render blank)
 
 ### v1.9.0 (2026-08-30)
 
@@ -122,7 +122,7 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 | --- | --- | --- |
 | **Next Prayer** (home screen) | Small, Medium | **Small** — the next prayer only, on the translucent "Cotton Candy" card: uppercase bold rose prayer name, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · Lon` footer. **Medium** — the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the indigo active pill on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
 | **Extra Times** (home screen) | Small, Medium | The same two sizes for the Extras schedule. **Small** — identical to the prayer widget (next extra time only). **Medium** — the app's Extras page list in canonical order: Midnight, Last Third, Suhoor, Duha, Istijaba (Fridays only — 4 rows normally, 5 on Fridays), center-anchored vertically so the spacing stays symmetric as the list grows, with a **rose** active pill instead of indigo |
-| **Next Prayer** (Lock Screen) | Rectangular, Inline | The next prayer paired with the minute-ceil countdown (`Maghrib · 9m`) and the absolute `HH:mm` below, rendered in the system's vibrant (monochrome) style |
+| **Next Prayer** (Lock Screen) | Rectangular, Inline | The next prayer paired with the minute-ceil countdown (`Magrib · 9m`) and the absolute `HH:mm` below, rendered in the system's vibrant (monochrome) style |
 | **Extra Times** (Lock Screen) | Rectangular, Inline | The same faces for the Extras schedule — the next extra time with its countdown and absolute `HH:mm`, in the same vibrant style |
 
 **Always in sync, never stale:**
@@ -191,6 +191,18 @@ Every selectable Athan sound comes from a public recording
 
 <br/>
 
+## 🎙️ Reminder Audio Sources
+
+Every reminder sound is custom recorded audio for reminders — recorded and edited by the maintainer in [Audacity](https://www.audacityteam.org/), not published elsewhere.
+
+<br/>
+
+## 🎛️ Source Projects
+
+The full Audacity projects for all Athan and reminder audio (for anyone who wants to edit, remix, or re-export the sounds) are available on the [releases page](https://github.com/capt-muji/rn.athan.uk/releases).
+
+<br/>
+
 ## ⚡ Features
 
 ### Display & User Interface
@@ -207,7 +219,7 @@ Every selectable Athan sound comes from a public recording
 ### Notifications & Alerts
 
 - 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer (at-time and reminder)
-- ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval
+- ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval — every prayer × interval plays its own custom audio (see [Reminder Audio Sources](#-reminder-audio-sources))
 - 📢 **Selectable Athan Sounds**: Every sound linked to its source (see [Athan Audio Sources](#-athan-audio-sources))
 - 📅 **Smart Notification Buffer**: 2-day rolling schedule
 - 🛡️ **Sequential Scheduling Queue**: Operations queued and executed in order, never dropped

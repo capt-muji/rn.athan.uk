@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { ALL_AUDIOS } from '@/assets/audio';
+import { ATHAN_AUDIOS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import * as Device from '@/device/notifications';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
@@ -92,9 +92,9 @@ export default function BottomSheetSound() {
           <Animated.View style={[styles.indicator, indicatorStyle]} />
 
           {/* Sound items */}
-          {ALL_AUDIOS.map((audio, index) => (
+          {ATHAN_AUDIOS.map((audio, index) => (
             <SoundItem
-              // biome-ignore lint/suspicious/noArrayIndexKey: ALL_AUDIOS is a static sound list, never reordered or filtered
+              // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_AUDIOS is a static sound list, never reordered or filtered
               key={index}
               index={index}
               audio={audio as AudioSource}
