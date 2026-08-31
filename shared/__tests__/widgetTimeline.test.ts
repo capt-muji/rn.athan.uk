@@ -45,10 +45,17 @@ const SETTINGS: PrayerWidgetSettings = {
 const SETTINGS_HIJRI: PrayerWidgetSettings = { ...SETTINGS, hijriDate: true };
 
 /** Builds a Prayer with a real London datetime */
-const makePrayer = (date: string, time: string, english: string, arabic: string, belongsToDate?: string): Prayer => {
+const makePrayer = (
+  date: string,
+  time: string,
+  english: string,
+  arabic: string,
+  belongsToDate?: string,
+  type: ScheduleType = ScheduleType.Standard
+): Prayer => {
   const datetime = createPrayerDatetime(date, time);
   return {
-    type: ScheduleType.Standard,
+    type,
     english,
     arabic,
     datetime,
@@ -76,6 +83,61 @@ const makeSequence = (): PrayerSequence => ({
   type: ScheduleType.Standard,
   prayers: [...makeDay('2026-06-15'), ...makeDay('2026-06-16')],
 });
+
+// =============================================================================
+// EXTRAS FIXTURES — mirror createPrayerSequence(ScheduleType.Extra, ...)
+// =============================================================================
+
+/**
+ * Winter extras times for raw day X (from transformApiData): Midnight
+ * 23:52 (hours >= 12 — the creation rules place it the PREVIOUS calendar
+ * evening with belongsToDate X), Last Third 02:15, Suhoor 05:55, Duha
+ * 08:10, Istijaba 16:00 (Fridays only). Chronological extras order per raw
+ * day X: [Midnight X-1 23:52, Last Third X 02:15, Suhoor X 05:55, Duha X
+ * 08:10, Istijaba X 16:00].
+ */
+const EXTRA_TIMES = {
+  midnight: '23:52',
+  lastThird: '02:15',
+  suhoor: '05:55',
+  duha: '08:10',
+  istijaba: '16:00',
+} as const;
+
+/** 2026-06-19 is a Friday; the fixture spans Mon 2026-06-15 → Sat 2026-06-20 */
+const FRIDAY = '2026-06-19';
+
+/** Builds day X's extras prayers exactly as createPrayerSequence(Extra) would */
+const makeExtrasDay = (rawDate: string, isFriday: boolean): Prayer[] => {
+  const prayers: Prayer[] = [];
+  const previousDay = formatDateShort(addDays(createPrayerDatetime(rawDate, '12:00'), -1));
+
+  prayers.push(makePrayer(previousDay, EXTRA_TIMES.midnight, 'Midnight', 'منتصف الليل', rawDate, ScheduleType.Extra));
+  prayers.push(makePrayer(rawDate, EXTRA_TIMES.lastThird, 'Last Third', 'الثلث الأخير', rawDate, ScheduleType.Extra));
+  prayers.push(makePrayer(rawDate, EXTRA_TIMES.suhoor, 'Suhoor', 'السحور', rawDate, ScheduleType.Extra));
+  prayers.push(makePrayer(rawDate, EXTRA_TIMES.duha, 'Duha', 'الضحى', rawDate, ScheduleType.Extra));
+
+  if (isFriday) {
+    prayers.push(makePrayer(rawDate, EXTRA_TIMES.istijaba, 'Istijaba', 'الاستجابة', rawDate, ScheduleType.Extra));
+  }
+
+  return prayers;
+};
+
+/** Extras sequence spanning 2026-06-15 → 2026-06-20 (Friday 19 included) */
+const makeExtrasSequence = (): PrayerSequence => {
+  const baseDay = createPrayerDatetime('2026-06-15', '12:00');
+  const prayers: Prayer[] = [];
+
+  for (let i = 0; i < 6; i++) {
+    const day = addDays(baseDay, i);
+    const dateString = formatDateShort(day);
+    prayers.push(...makeExtrasDay(dateString, dateString === FRIDAY));
+  }
+
+  prayers.sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
+  return { type: ScheduleType.Extra, prayers };
+};
 
 // =============================================================================
 // BUILDPRAYERWIDGETTIMELINE TESTS
@@ -207,6 +269,15 @@ describe('buildPrayerWidgetTimeline', () => {
     const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
 
     expect(entries.every((entry) => entry.props.v === WIDGET_PROPS_VERSION)).toBe(true);
+  });
+
+  it('stamps standard entries and lists the day chronologically for the medium list', () => {
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const first = entries[0].props;
+
+    expect(first.schedule).toBe('standard');
+    expect(first.prayers?.map((row) => row.name)).toEqual(['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha']);
+    expect(first.activeIndex).toBe(3);
   });
 
   it('always rounds the label up to the next minute', () => {
@@ -414,6 +485,117 @@ describe('boundary edge cases', () => {
 });
 
 // =============================================================================
+// EXTRAS SCHEDULE (canonical ordering, Friday Istijaba, schedule stamping)
+// =============================================================================
+
+describe('extras schedule timeline', () => {
+  it('stamps every entry — including the stale guard — with the extras schedule', () => {
+    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS);
+
+    expect(entries.every((entry) => entry.props.schedule === 'extra')).toBe(true);
+    expect(entries[entries.length - 1].props.stale).toBe(true);
+    expect(entries[entries.length - 1].props.schedule).toBe('extra');
+  });
+
+  it('shows a canonical 4-row day list on non-Fridays with the next time active', () => {
+    // Monday 14:00: Monday's extras have all passed — next is Tuesday's
+    // Midnight (datetime Mon 23:52, belongsToDate Tue), so the list rolls to
+    // Tuesday: 4 rows in canonical order, Midnight active at index 0
+    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS);
+    const first = entries[0].props;
+
+    expect(first.nextName).toBe('Midnight');
+    expect(first.schedule).toBe('extra');
+    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha']);
+    expect(first.activeIndex).toBe(0);
+  });
+
+  it('grows the day list to 5 rows with Istijaba last on Fridays', () => {
+    // Friday 12:00: next is Friday's Istijaba (16:00) — canonical order puts
+    // it LAST even though it is chronologically the final upcoming row
+    const fridayNoon = createPrayerDatetime(FRIDAY, '12:00');
+    const entries = buildPrayerWidgetTimeline(fridayNoon, makeExtrasSequence(), SETTINGS);
+    const first = entries[0].props;
+
+    expect(first.nextName).toBe('Istijaba');
+    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba']);
+    expect(first.activeIndex).toBe(4);
+  });
+
+  it('reveals the Friday list on Thursday evening, mirroring displayDate semantics', () => {
+    // Thursday 22:00: next is the Midnight belonging to Friday (its datetime
+    // sits Thursday 23:52 — the sequence's night prayers for day X precede
+    // day X chronologically) — the list is already Friday's 5 rows with
+    // Istijaba last
+    const thursdayNight = createPrayerDatetime('2026-06-18', '22:00');
+    const entries = buildPrayerWidgetTimeline(thursdayNight, makeExtrasSequence(), SETTINGS);
+    const first = entries[0].props;
+
+    expect(first.nextName).toBe('Midnight');
+    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba']);
+    expect(first.activeIndex).toBe(0);
+  });
+
+  it('rolls to the next day at the final extra boundary of the day', () => {
+    // At the Istijaba boundary the countdown target becomes the night's
+    // Midnight, whose belongsToDate is Saturday — the list rolls with it
+    const istijabaBoundary = createPrayerDatetime(FRIDAY, EXTRA_TIMES.istijaba);
+    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS);
+    const rollEntry = entries.find((entry) => entry.date.getTime() === istijabaBoundary.getTime());
+
+    expect(rollEntry).toBeDefined();
+    if (!rollEntry) return;
+    expect(rollEntry.props.nextName).toBe('Midnight');
+    expect(rollEntry.props.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha']);
+    expect(rollEntry.props.activeIndex).toBe(0);
+  });
+
+  it('anchors the final stepped entry one spacing before a non-grid boundary', () => {
+    // The Duha→Midnight segment (08:10→23:52) is not a multiple of the
+    // step, so the aligned grid alone would leave a stale tail before the
+    // flip: the builder places an anchor entry exactly one spacing before
+    // the boundary, and nothing may sit between it and the flip
+    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS);
+    const anchorMs = createPrayerDatetime('2026-06-15', '23:47').getTime();
+    const boundaryMs = createPrayerDatetime('2026-06-15', '23:52').getTime();
+
+    const anchor = entries.find((entry) => entry.date.getTime() === anchorMs);
+    expect(anchor).toBeDefined();
+    if (!anchor) return;
+    expect(anchor.props.nextName).toBe('Midnight');
+
+    const between = entries.filter((entry) => entry.date.getTime() > anchorMs && entry.date.getTime() < boundaryMs);
+    expect(between).toHaveLength(0);
+
+    const flip = entries.find((entry) => entry.date.getTime() === boundaryMs);
+    expect(flip).toBeDefined();
+    if (!flip) return;
+    expect(flip.props.nextName).toBe('Last Third');
+  });
+
+  it('sorts canonically even when the sequence order contradicts the canonical order', () => {
+    // Hand-built day mirroring the canonicalDisplayOrder contract example:
+    // chronologically [Duha 09:00, Istijaba 15:14, Midnight 23:17] all
+    // belonging to one day — the medium list must read canonically
+    const date = '2026-06-15';
+    const sequence: PrayerSequence = {
+      type: ScheduleType.Extra,
+      prayers: [
+        makePrayer(date, '09:00', 'Duha', 'الضحى', date, ScheduleType.Extra),
+        makePrayer(date, '15:14', 'Istijaba', 'الاستجابة', date, ScheduleType.Extra),
+        makePrayer(date, '23:17', 'Midnight', 'منتصف الليل', date, ScheduleType.Extra),
+      ],
+    };
+
+    const entries = buildPrayerWidgetTimeline(createPrayerDatetime(date, '08:00'), sequence, SETTINGS);
+
+    expect(entries[0].props.nextName).toBe('Duha');
+    expect(entries[0].props.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Duha', 'Istijaba']);
+    expect(entries[0].props.activeIndex).toBe(1);
+  });
+});
+
+// =============================================================================
 // VOLUME & PAYLOAD INVARIANTS (16-day span, as pushed in production)
 // =============================================================================
 
@@ -446,6 +628,29 @@ describe('volume and payload invariants', () => {
     // the payload ~30% over the pre-v3 size; 155KB across ~380 entries is
     // still trivial for the app-group UserDefaults plist (parsed once per
     // widget reload), so the comfort budget is 200KB.
+    const payloadSize = JSON.stringify(entries).length;
+    expect(payloadSize).toBeLessThan(200_000);
+  });
+
+  it('bounds the extras entry count and payload under the same budgets', () => {
+    // 16-day extras span (2026-06-14 → 2026-06-29) containing the Fridays
+    // 2026-06-19 and 2026-06-26 — 4 rows per day, 5 on Fridays
+    const baseDay = createPrayerDatetime('2026-06-14', '12:00');
+    const prayers: Prayer[] = [];
+    for (let i = 0; i < SPAN_DAYS; i++) {
+      const day = addDays(baseDay, i);
+      const dateString = formatDateShort(day);
+      const weekday = day.getUTCDay();
+      prayers.push(...makeExtrasDay(dateString, weekday === 5));
+    }
+    prayers.sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
+    const sequence: PrayerSequence = { type: ScheduleType.Extra, prayers };
+
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
+
+    expect(entries[entries.length - 1].props.stale).toBe(true);
+    expect(entries.length).toBeLessThan(500);
+
     const payloadSize = JSON.stringify(entries).length;
     expect(payloadSize).toBeLessThan(200_000);
   });
