@@ -196,10 +196,10 @@ describe('palette literals', () => {
     // second test). The winning design (2026-08-31 "Cotton Candy"): a
     // translucent white pane over the wallpaper, rose prayer name, dark ink
     // hero, blue-tinted secondary/footer, solid indigo selection pill with
-    // pale pink text, soft blackish-blue passed rows, and pastel blob
+    // pale pink text, soft blackish-blue passed rows, and white orb glow
     // lighting.
     const anchors = [
-      'rgba(255, 250, 253, 0.55)',
+      'rgba(234, 239, 246, 0.8)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
@@ -211,9 +211,7 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.32)',
       '#db2777',
       'rgba(79, 70, 229, 0.35)',
-      'rgba(255, 105, 180, 0.27)',
-      'rgba(255, 105, 180, 0.22)',
-      'rgba(196, 181, 253, 0.4)',
+      'rgba(255, 255, 255, 0.4)',
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -233,7 +231,7 @@ describe('palette literals', () => {
       '#ffffff',
       'rgba(255, 255, 255, 0.6)',
       // Home widget — Cotton Candy pane + type
-      'rgba(255, 250, 253, 0.55)',
+      'rgba(234, 239, 246, 0.8)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
@@ -246,10 +244,8 @@ describe('palette literals', () => {
       // List rows
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
-      // Pastel blob lighting
-      'rgba(255, 105, 180, 0.27)',
-      'rgba(255, 105, 180, 0.22)',
-      'rgba(196, 181, 253, 0.4)',
+      // White orb glow lighting
+      'rgba(255, 255, 255, 0.4)',
     ].map(normalizeColor);
 
     const allowed = new Set(widgetSpecific.map((c) => JSON.stringify(c)));
