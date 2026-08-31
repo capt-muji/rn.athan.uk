@@ -41,8 +41,9 @@ const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.
 
 // Realistic London times copied verbatim from mocks/full.ts, 13 contiguous
 // days (2024-08-28 through 2024-09-09) carrying the API's real autumn solar
-// drift. TODAY and DAY 1's Fajr/Sunrise are launch-relative instead.
-// Jamat fields are unused placeholders.
+// drift. TODAY pins Fajr/Sunrise to early-AM clocks (Fajr never before
+// midnight) and seeds the rest launch-relative; DAY 1's Fajr/Sunrise are
+// launch-relative too. Jamat fields are unused placeholders.
 export const MOCK_DATA_SIMPLE: IApiResponse = {
   city: 'london',
   times: {
@@ -78,9 +79,9 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(-2),
-      sunrise: addMinutes(0),
-      dhuhr: addMinutes(157),
+      fajr: '00:30',
+      sunrise: '06:00',
+      dhuhr: addMinutes(97),
       asr: addMinutes(180),
       magrib: addMinutes(240),
       isha: addMinutes(300),
