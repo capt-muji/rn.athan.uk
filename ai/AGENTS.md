@@ -636,6 +636,8 @@ Read ai/prompts/document.md
 
 - [2026-08-31] Mock resting state revised (1.13.3): mocks/simple.ts days are realistic values copied verbatim from mocks/full.ts (2024-08-28 → 09-09, autumn drift); TODAY stays launch-relative for widget testing — Fajr −2m, Sunrise 0, Dhuhr next at +157m (2h 37m), Asr +180/Maghrib +240/Isha +300, day1 Fajr/Sunrise +310/+312 close the rollover chain. `addMinutes` is exported and kept for future cascades. Owner preference: no narrative comments in mocks/simple.ts — the offsets are churned constantly, comments rot. The uppercase-eyebrow trial was reverted same-session (owner: normal letters, again).
 
+- [2026-08-31] Glow geometry fix (1.13.4): the rose orb anchors to the medium card's ABSOLUTE x (~114pt from the left edge) on both families (`roseOrbX` = +35 small / −55 medium) — center-relative offsets dropped it into the small card's top-left corner instead of topping the hero where the medium places it. KEY LESSON: blob orbs must anchor to absolute card coordinates, not center-relative offsets, whenever the two families share a composition.
+
 **Widget architecture invariants (expo-widgets):**
 
 - The `'widget'` directive makes Babel serialize ONLY the function body into a string; the widget extension evaluates it in a separate JS runtime where `@expo/ui` components/modifiers are globals. Never reference module-scope values inside a widget function; helpers must live inside the function body. (Enforced by `widgetContract.test.ts`.)
