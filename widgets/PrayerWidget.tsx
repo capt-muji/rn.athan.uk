@@ -62,9 +62,8 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   const STROKE_COLOR = 'rgba(79, 70, 229, 0.35)';
   const STROKE_WIDTH = 1;
 
-  // Blob lighting (theme 42's glow): three blurred orbs anchored to the
+  // Blob lighting (theme 42's glow): two blurred orbs anchored to the
   // card's corners, colored per theme. Empty string = orb off.
-  const BLOB_B = 'rgba(147, 197, 253, 0.42)';
   const BLOB_C = 'rgba(196, 181, 253, 0.4)';
 
   // Medium list geometry: fixed row height so the floating pill's offset is
@@ -143,7 +142,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
     const roseOrbX = environment.widgetFamily === 'systemSmall' ? 59 : -5;
     const roseOrbBlur = environment.widgetFamily === 'systemSmall' ? 75 : 65;
     const roseOrbColor =
-      environment.widgetFamily === 'systemSmall' ? 'rgba(255, 105, 180, 0.45)' : 'rgba(255, 105, 180, 0.38)';
+      environment.widgetFamily === 'systemSmall' ? 'rgba(255, 105, 180, 0.27)' : 'rgba(255, 105, 180, 0.22)';
 
     // The blob lighting layer — blurred orbs anchored to the card's
     // corners, colored by the theme's BLOB_* constants (empty = skipped).
@@ -156,9 +155,6 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
             foregroundStyle(roseOrbColor),
             blur(roseOrbBlur),
           ]}
-        />
-        <Circle
-          modifiers={[frame({ width: 160, height: 160 }), offset({ x: 65, y: 85 }), foregroundStyle(BLOB_B), blur(45)]}
         />
         <Circle
           modifiers={[frame({ width: 130, height: 130 }), offset({ x: -70, y: 60 }), foregroundStyle(BLOB_C), blur(40)]}
@@ -174,24 +170,14 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
       return <StaleCard />;
     }
 
-    // Footer: the next prayer's full day name, then the short city —
-    // "Monday · Lon". Derived from the precomputed dateLabel ("Mon, 15 Jun
-    // 2026" → "Monday"); Hijri labels carry their month ("Rajab 1, 1447" →
-    // "Rajab 1"). Entries from a v1 app version without a dateLabel degrade
-    // to just the city.
-    const FULL_DAYS: Record<string, string> = {
-      Sun: 'Sunday',
-      Mon: 'Monday',
-      Tue: 'Tuesday',
-      Wed: 'Wednesday',
-      Thu: 'Thursday',
-      Fri: 'Friday',
-      Sat: 'Saturday',
-    };
-    const rawDayPart =
-      typeof props.dateLabel === 'string' && props.dateLabel.length > 0 ? props.dateLabel.split(',')[0] : '';
-    const shortDay = rawDayPart.slice(0, 3);
-    const dayPart = FULL_DAYS[shortDay] ?? rawDayPart;
+    // Footer: three-letter day of the next prayer's date, then the short
+    // city — "Mon · Lon". Derived from the precomputed dateLabel ("Mon, 15
+    // Jun 2026" → "Mon"); Hijri labels yield their month ("Rajab" → "Raj").
+    // Entries from a v1 app version without a dateLabel degrade to "Lon".
+    const dayPart =
+      typeof props.dateLabel === 'string' && props.dateLabel.length > 0
+        ? props.dateLabel.split(',')[0].slice(0, 3)
+        : '';
     const footer = dayPart ? `${dayPart} · Lon` : 'Lon';
 
     // The hero column — the small widget's centered trio plus the footer,
