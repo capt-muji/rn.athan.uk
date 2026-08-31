@@ -56,14 +56,8 @@ export const WHATS_NEW: WhatsNewRelease | null = {
   items: [
     {
       icon: Icon.WIDGET,
-      title: 'Home Screen widget',
-      body: 'You can now add widgets to your Home Screen.',
-      platform: 'ios',
-    },
-    {
-      icon: Icon.WIDGET,
-      title: 'Lock Screen widget',
-      body: 'You can now add widgets to your Lock Screen.',
+      title: 'Home & Lock widgets',
+      body: 'Add prayer times to your Home and Lock Screen',
       platform: 'ios',
     },
   ],
