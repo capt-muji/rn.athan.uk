@@ -22,8 +22,6 @@ import type { NodePath } from '@babel/traverse';
 import traverse from '@babel/traverse';
 import type { ArrowFunctionExpression, File, ImportDeclaration } from '@babel/types';
 
-import { COLORS } from '@/shared/constants';
-
 const WIDGET_FILES = [
   { name: 'PrayerWidget', path: join(__dirname, '../../widgets/PrayerWidget.tsx') },
   { name: 'PrayerLockWidget', path: join(__dirname, '../../widgets/LockPrayerWidget.tsx') },
@@ -189,30 +187,33 @@ describe('palette literals', () => {
     return literals;
   };
 
-  it('home widget palette stays anchored to the app theme constants', () => {
+  it('home widget palette stays anchored to the active design core', () => {
     const literals = collectColorLiterals(WIDGET_FILES[0].path).map(normalizeColor);
     expect(literals).not.toContain(null);
 
-    // App-theme anchors the widget must mirror (from COLORS / COUNTDOWN_BAR).
     // While the design session cycles layouts, the anchors track the ACTIVE
     // design's declared core palette (widget-only values are listed in the
-    // second test). The winning design ("Flat royal"): solid
-    // COLORS.navigation.rootBackground card, hero = COLORS.feedback.success
-    // brightened a touch, absolute time = COLORS.text.secondary, footer
-    // nudged toward secondary. The medium list anchors the app's Standard
-    // page: the muted upcoming rows under COLORS.text.primary rows (the pill
-    // fill is a widget-specific lift of COLORS.prayer.activeBackground toward
-    // sky — see the second test). The eyebrow pill anchors its own pair:
-    // periwinkle-white text over the sky-blue whisper.
+    // second test). The winning design (2026-08-31 "Cotton Candy"): a
+    // translucent white pane over the wallpaper, rose prayer name, dark ink
+    // hero, blue-tinted secondary/footer, solid indigo selection pill with
+    // pale pink text, soft blackish-blue passed rows, and pastel blob
+    // lighting.
     const anchors = [
-      '#2c1c77',
-      '#e6f0ff',
-      'rgba(160, 200, 255, 0.54)',
-      'rgba(157, 188, 246, 0.48)',
-      'rgba(190, 205, 252, 0.9)',
-      'rgba(90, 160, 245, 0.08)',
-      'rgba(138, 169, 214, 0.38)',
-      '#a5b4fc',
+      'rgba(255, 250, 253, 0.55)',
+      '#db2777',
+      '#1e1b2e',
+      'rgba(42, 68, 130, 0.42)',
+      'rgba(42, 68, 130, 0.34)',
+      '#4f46e5',
+      '#fce7f3',
+      'rgba(30, 27, 75, 0.45)',
+      '#2f3d5c',
+      'rgba(42, 68, 130, 0.32)',
+      '#db2777',
+      'rgba(79, 70, 229, 0.35)',
+      'rgba(249, 168, 212, 0.5)',
+      'rgba(147, 197, 253, 0.42)',
+      'rgba(196, 181, 253, 0.4)',
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -223,39 +224,35 @@ describe('palette literals', () => {
   });
 
   it('every literal in both widgets is an app-theme color or an explicit widget-specific value', () => {
-    // Deliberate widget-only colors: the Lock Screen's vibrant secondary white,
-    // the home widget's hero (the app's soft success-white brightened a touch,
-    // #d5e8ff → #e6f0ff), the footer's nudge toward the absolute-time
-    // secondary, the eyebrow pill's pair (periwinkle-white text over a
-    // sky-blue whisper — a hint of the active-prayer blue; the badge design
-    // selected in the 2026-08-30 session), the medium pill's sky lift of the
-    // app's active background (#0847e5 with the smallest lift toward sky), and
-    // the pill's shadow (COLORS.shadow.prayer at the app's SHADOW.prayer
-    // opacity — the modifier takes no separate opacity)
+    // Deliberate widget-only colors: the Lock Screen's vibrant secondary
+    // white, and the home widget's "Cotton Candy" palette — every value is
+    // widget-specific by design (the widget deliberately mirrors the
+    // wallpaper instead of the app theme, so no COLORS.* anchors apply).
     const widgetSpecific = [
+      // Lock Screen accessory widgets
+      '#ffffff',
       'rgba(255, 255, 255, 0.6)',
-      '#e6f0ff',
-      'rgba(190, 205, 252, 0.9)',
-      'rgba(90, 160, 245, 0.08)',
-      'rgba(157, 188, 246, 0.48)',
-      '#1157e6',
-      'rgba(8, 26, 118, 0.5)',
-      // Stale card: the 1.7.0 moon-and-stars mark (COLORS.icon.primary)
-      '#a5b4fc',
+      // Home widget — Cotton Candy pane + type
+      'rgba(255, 250, 253, 0.55)',
+      '#db2777',
+      '#1e1b2e',
+      'rgba(42, 68, 130, 0.42)',
+      'rgba(42, 68, 130, 0.34)',
+      // Active selection pill
+      '#4f46e5',
+      '#fce7f3',
+      'rgba(30, 27, 75, 0.45)',
+      'rgba(79, 70, 229, 0.35)',
+      // List rows
+      '#2f3d5c',
+      'rgba(42, 68, 130, 0.32)',
+      // Pastel blob lighting
+      'rgba(249, 168, 212, 0.5)',
+      'rgba(147, 197, 253, 0.42)',
+      'rgba(196, 181, 253, 0.4)',
     ].map(normalizeColor);
 
-    const appTheme = [
-      COLORS.gradient.screen.start,
-      COLORS.gradient.screen.end,
-      COLORS.text.primary,
-      COLORS.text.secondary,
-      // Home-widget design accent (same app theme)
-      COLORS.navigation.rootBackground,
-      // Medium list palette — the app's Standard page mirrored
-      COLORS.text.muted,
-    ].map(normalizeColor);
-
-    const allowed = new Set([...appTheme, ...widgetSpecific].map((c) => JSON.stringify(c)));
+    const allowed = new Set(widgetSpecific.map((c) => JSON.stringify(c)));
 
     for (const { path } of WIDGET_FILES) {
       const literals = collectColorLiterals(path).map(normalizeColor);

@@ -1,6 +1,6 @@
-import { HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+import { Circle, HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
-  background,
+  blur,
   containerBackground,
   font,
   foregroundStyle,
@@ -12,6 +12,7 @@ import {
   offset,
   padding,
   shadow,
+  strokeBorder,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
@@ -43,36 +44,29 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
-  // Palette: solid COLORS.navigation.rootBackground card. The prayer name
-  // is an uppercase eyebrow in a soft pill — periwinkle-white text over a
-  // whisper of sky blue (a hint of the active-prayer blue), the design the
-  // owner selected from the 2026-08-30 badge sessions. The hero is the
-  // app's soft success-white brightened a touch (#d5e8ff → #e6f0ff); the
-  // absolute time stays COLORS.text.secondary; the footer sits just under
-  // the absolute time's color (widget-only nudge toward secondary — must
-  // stay fainter than it).
-  const CARD_BACKGROUND = '#2c1c77';
-  const EYEBROW_TEXT = 'rgba(190, 205, 252, 0.9)';
-  const EYEBROW_PILL = 'rgba(90, 160, 245, 0.08)';
-  const TEXT_PRIMARY = '#e6f0ff';
-  const TEXT_SECONDARY = 'rgba(160, 200, 255, 0.54)';
-  const TEXT_FOOTER = 'rgba(157, 188, 246, 0.48)';
+  // THEME 48 — FINAL v2: theme 47 with one change — the active row pill is
+  // indigo (#4f46e5, exactly 44 Pill Indigo Full) instead of rose.
+  const CARD_BACKGROUND = 'rgba(255, 250, 253, 0.55)';
+  const EYEBROW_TEXT = '#db2777';
+  const TEXT_PRIMARY = '#1e1b2e';
+  const TEXT_SECONDARY = 'rgba(42, 68, 130, 0.42)';
+  const TEXT_FOOTER = 'rgba(42, 68, 130, 0.34)';
 
-  // Medium list palette — the app's Standard page mirrored: row text follows
-  // the app's states (isPassed || isNext → COLORS.text.primary, upcoming →
-  // COLORS.text.muted), and the pill's shadow is COLORS.shadow.prayer at the
-  // app's SHADOW.prayer opacity. The pill fill is the app's active
-  // background (#0847e5) with the smallest lift toward sky — lightened a
-  // touch and leaned a few degrees cyan so the 22pt widget rows read the
-  // app's tone.
-  const ACTIVE_BACKGROUND = '#1157e6';
-  const ACTIVE_SHADOW = 'rgba(8, 26, 118, 0.5)';
-  const ROW_PASSED = '#ffffff';
-  const ROW_UPCOMING = 'rgba(138, 169, 214, 0.38)';
+  const ACTIVE_BACKGROUND = '#4f46e5';
+  const ACTIVE_ROW_TEXT = '#fce7f3';
+  const ACTIVE_SHADOW = 'rgba(30, 27, 75, 0.45)';
+  const ROW_PASSED = '#2f3d5c';
+  const ROW_UPCOMING = 'rgba(42, 68, 130, 0.32)';
 
-  // Stale-card palette — the 1.7.0 moon-and-stars mark (COLORS.icon.primary)
-  // above the out-of-date title and a plain-text refresh call.
-  const STALE_ICON = '#a5b4fc';
+  const STALE_ICON = '#db2777';
+  const STROKE_COLOR = 'rgba(79, 70, 229, 0.35)';
+  const STROKE_WIDTH = 1;
+
+  // Blob lighting (theme 42's glow): three blurred orbs anchored to the
+  // card's corners, colored per theme. Empty string = orb off.
+  const BLOB_A = 'rgba(249, 168, 212, 0.5)';
+  const BLOB_B = 'rgba(147, 197, 253, 0.42)';
+  const BLOB_C = 'rgba(196, 181, 253, 0.4)';
 
   // Medium list geometry: fixed row height so the floating pill's offset is
   // exact and the spacing never jumps (the app's rows are a fixed 57pt for
@@ -141,6 +135,27 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   }
 
   try {
+    // The blob lighting layer — blurred orbs anchored to the card's
+    // corners, colored by the theme's BLOB_* constants (empty = skipped).
+    const Blobs = () => (
+      <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+        <Circle
+          modifiers={[
+            frame({ width: 170, height: 170 }),
+            offset({ x: -55, y: -75 }),
+            foregroundStyle(BLOB_A),
+            blur(45),
+          ]}
+        />
+        <Circle
+          modifiers={[frame({ width: 160, height: 160 }), offset({ x: 65, y: 85 }), foregroundStyle(BLOB_B), blur(45)]}
+        />
+        <Circle
+          modifiers={[frame({ width: 130, height: 130 }), offset({ x: -70, y: 60 }), foregroundStyle(BLOB_C), blur(40)]}
+        />
+      </ZStack>
+    );
+
     // Terminal state: every timeline entry has passed and the app has not
     // re-pushed — the moon-and-stars refresh card. Entries from an older
     // app version missing segment bounds degrade here too.
@@ -165,23 +180,16 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
       <VStack spacing={0} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
         <Spacer />
         <VStack spacing={6}>
-          <HStack
-            spacing={0}
+          <Text
             modifiers={[
-              padding({ leading: 9, trailing: 9, top: 4, bottom: 4 }),
-              background(EYEBROW_PILL, { shape: 'capsule' }),
+              font({ size: 12, weight: 'semibold' }),
+              foregroundStyle(EYEBROW_TEXT),
+              kerning(0.5),
+              lineLimit(1),
+              minimumScaleFactor(0.6),
             ]}>
-            <Text
-              modifiers={[
-                font({ size: 11, weight: 'semibold' }),
-                foregroundStyle(EYEBROW_TEXT),
-                kerning(1.2),
-                lineLimit(1),
-                minimumScaleFactor(0.6),
-              ]}>
-              {props.nextName}
-            </Text>
-          </HStack>
+            {props.nextName}
+          </Text>
           {typeof props.countdownLabel === 'string' && props.countdownLabel.length > 0 ? (
             <Text
               modifiers={[
@@ -233,7 +241,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
       // the pill sits narrower than the column with slight padding left and
       // right — which also brings the name and time closer together.
       const Row = ({ name, time, index }: { name: string; time: string; index: number }) => {
-        const rowColor = index <= activeIndex ? ROW_PASSED : ROW_UPCOMING;
+        const rowColor = index === activeIndex ? ACTIVE_ROW_TEXT : index < activeIndex ? ROW_PASSED : ROW_UPCOMING;
 
         return (
           <HStack
@@ -275,7 +283,17 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
           cornerRadius={ROW_CORNER_RADIUS}
           modifiers={[
             foregroundStyle(ACTIVE_BACKGROUND),
-            shadow({ radius: 4, x: 1, y: 4, color: ACTIVE_SHADOW }),
+            strokeBorder({
+              color: STROKE_COLOR,
+              style: { lineWidth: STROKE_WIDTH },
+              shape: 'roundedRectangle',
+              cornerRadius: ROW_CORNER_RADIUS,
+            }),
+            shadow(
+              ACTIVE_SHADOW
+                ? { radius: 4, x: 1, y: 4, color: ACTIVE_SHADOW }
+                : { radius: 0, x: 0, y: 0, color: ACTIVE_SHADOW }
+            ),
             frame({ height: ROW_HEIGHT }),
             offset({ y: pillY }),
           ]}
@@ -284,6 +302,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
 
       return (
         <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+          <Blobs />
           <HStack
             spacing={14}
             modifiers={[
@@ -307,6 +326,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
     // systemSmall (or the medium fallback): the hero alone fills the card.
     return (
       <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+        <Blobs />
         <VStack spacing={0} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <HeroColumn />
         </VStack>
