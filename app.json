@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.14.0",
+    "version": "1.14.1",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -127,7 +127,7 @@
               "name": "PrayerLockWidget",
               "displayName": "Next Prayer",
               "description": "Live countdown to the next prayer on your Lock Screen.",
-              "supportedFamilies": ["accessoryCircular", "accessoryRectangular", "accessoryInline"]
+              "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
             },
             {
               "name": "ExtrasLockWidget",
