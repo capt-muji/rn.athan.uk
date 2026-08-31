@@ -46,7 +46,7 @@ export const genTriggerDate = (date: string, time: string): Date => {
 export const getNotificationSound = (alertType: AlertType, soundIndex: number): string | false => {
   if (alertType !== AlertType.Sound) return false;
 
-  return `athan${soundIndex + 1}.wav`;
+  return `athan${soundIndex + 1}.mp3`;
 };
 
 /**
@@ -71,13 +71,28 @@ export const genNotificationContent = (
 };
 
 /**
- * Gets notification sound for reminder based on alert type
- * Reminders use a separate sound file (reminder.wav)
+ * Converts an English prayer name to a filename-safe slug
+ * Android res/raw resource names allow [a-z0-9_] only
+ *
+ * @example
+ * prayerNameSlug('Last Third') // 'last_third'
  */
-export const getReminderNotificationSound = (alertType: AlertType): string | false => {
+const prayerNameSlug = (englishName: string): string => englishName.toLowerCase().replace(/\s+/g, '_');
+
+/**
+ * Gets notification sound for a pre-prayer reminder based on alert type
+ * Every prayer × interval combination has its own audio file
+ * (reminder_fajr_5.mp3 … reminder_istijaba_30.mp3)
+ */
+export const getReminderNotificationSound = (
+  alertType: AlertType,
+  englishName: string,
+  intervalMinutes: ReminderInterval
+): string | false => {
   if (alertType !== AlertType.Sound) return false;
 
-  return 'reminder.wav';
+  const slug = prayerNameSlug(englishName);
+  return `reminder_${slug}_${intervalMinutes}.mp3`;
 };
 
 /**
@@ -97,7 +112,7 @@ export const genReminderNotificationContent = (
 ): Notifications.NotificationContentInput => {
   return {
     title: `${englishName} in ${intervalMinutes}m`,
-    sound: getReminderNotificationSound(alertType),
+    sound: getReminderNotificationSound(alertType, englishName, intervalMinutes),
     color: '#5a3af7',
     autoDismiss: true,
     sticky: false,
@@ -183,12 +198,30 @@ export const genNextXDays = (numberOfDays: number): string[] => {
   });
 };
 
+/**
+ * Android channel ID for an at-time Athan sound
+ * Suffixed `_v2` because channel sounds are immutable once created — the wav→mp3
+ * swap required fresh IDs (legacy channels are deleted by deleteLegacyAndroidAudioChannels)
+ */
+export const athanAndroidChannelId = (soundIndex: number): string => `athan_${soundIndex + 1}_v2`;
+
+/**
+ * Android channel ID for a pre-prayer reminder sound (one channel per prayer × interval audio)
+ * No `_v2` suffix needed: the legacy generation had a single `reminder` channel, so these IDs never existed before
+ */
+export const reminderAndroidChannelId = (englishName: string, intervalMinutes: ReminderInterval): string => {
+  const slug = prayerNameSlug(englishName);
+  return `reminder_${slug}_${intervalMinutes}`;
+};
+
 export const createDefaultAndroidChannel = async () => {
   if (Platform.OS !== 'android') return;
 
-  await Notifications.setNotificationChannelAsync('athan_1', {
+  const channelId = athanAndroidChannelId(0);
+
+  await Notifications.setNotificationChannelAsync(channelId, {
     name: 'Athan 1',
-    sound: 'athan1.wav',
+    sound: 'athan1.mp3',
     importance: Notifications.AndroidImportance.MAX,
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
@@ -196,21 +229,48 @@ export const createDefaultAndroidChannel = async () => {
   });
 };
 
+/** Channel IDs created this session — skips repeat setNotificationChannelAsync calls across reschedules */
+const createdReminderChannels = new Set<string>();
+
 /**
- * Creates Android notification channel for reminders
- * Uses a separate channel for pre-prayer reminder notifications
+ * Creates the Android notification channel for a prayer × interval reminder sound
+ * Called at schedule time so only combinations actually scheduled materialize as channels
  */
-export const createReminderAndroidChannel = async () => {
+export const createReminderAndroidChannel = async (englishName: string, intervalMinutes: ReminderInterval) => {
   if (Platform.OS !== 'android') return;
 
-  await Notifications.setNotificationChannelAsync('reminder', {
-    name: 'Prayer Reminders',
-    sound: 'reminder.wav',
+  const channelId = reminderAndroidChannelId(englishName, intervalMinutes);
+  if (createdReminderChannels.has(channelId)) return;
+
+  const slug = prayerNameSlug(englishName);
+
+  await Notifications.setNotificationChannelAsync(channelId, {
+    name: `${englishName} in ${intervalMinutes}m Reminder`,
+    sound: `reminder_${slug}_${intervalMinutes}.mp3`,
     importance: Notifications.AndroidImportance.HIGH,
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
     bypassDnd: true,
   });
+
+  createdReminderChannels.add(channelId);
+};
+
+/**
+ * Deletes the pre-mp3 channel generation (`athan_1`…`athan_16` + the single `reminder` channel)
+ * Their sounds are immutable on Android and point at removed .wav resources, so old installs
+ * must move to the `_v2` / per-prayer channels. Safe on every init: deleting an absent
+ * channel is a system no-op (fresh installs never had them), and no live code recreates these IDs.
+ */
+export const deleteLegacyAndroidAudioChannels = async () => {
+  if (Platform.OS !== 'android') return;
+
+  const legacyAthanIds = Array.from({ length: 16 }, (_, i) => `athan_${i + 1}`);
+  const legacyChannelIds = ['reminder', ...legacyAthanIds];
+  const promises = legacyChannelIds.map((channelId) =>
+    Notifications.deleteNotificationChannelAsync(channelId).catch(() => undefined)
+  );
+  await Promise.all(promises);
 };
 
 /**
@@ -227,8 +287,8 @@ export const initializeNotifications = async (
   registerBackgroundTaskFn?: () => Promise<void>
 ) => {
   try {
+    await deleteLegacyAndroidAudioChannels();
     await createDefaultAndroidChannel();
-    await createReminderAndroidChannel();
 
     const hasPermission = await checkPermissions();
     if (hasPermission) {
