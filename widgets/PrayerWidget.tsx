@@ -170,14 +170,26 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
       return <StaleCard />;
     }
 
-    // Footer: three-letter day of the next prayer's date, then the short
-    // city — "Mon · Lon". Derived from the precomputed dateLabel ("Mon, 15
-    // Jun 2026" → "Mon"); Hijri labels yield their month ("Rajab" → "Raj").
+    // Footer: the next prayer's date marker, then the short city. The
+    // Gregorian setting yields the weekday — "Mon · Lon" (dateLabel "Mon,
+    // 15 Jun 2026"). The Hijri setting yields the three-letter month plus
+    // the day — "Raj 1 · Lon" (dateLabel "Rajab 1, 1447"; Intl's "Rabiʻ I
+    // 12" drops the numeral — shared prefixes accepted for consistency).
     // Entries from a v1 app version without a dateLabel degrade to "Lon".
-    const dayPart =
-      typeof props.dateLabel === 'string' && props.dateLabel.length > 0
-        ? props.dateLabel.split(',')[0].slice(0, 3)
-        : '';
+    const datePrefix =
+      typeof props.dateLabel === 'string' && props.dateLabel.length > 0 ? props.dateLabel.split(',')[0] : '';
+    // NOTE: plain string separator only — the widget extension's JS runtime
+    // does not split on regex separators (/\s+/ silently returns the whole
+    // string, which rendered "Rabiʻ II 18 · Lon" before this fix).
+    const dateTokens = datePrefix.split(' ');
+    let dayPart = '';
+    if (dateTokens.length === 1) {
+      dayPart = dateTokens[0];
+    } else if (dateTokens.length > 1) {
+      const monthPrefix = dateTokens[0].slice(0, 3);
+      const dayNumber = dateTokens[dateTokens.length - 1];
+      dayPart = `${monthPrefix} ${dayNumber}`;
+    }
     const footer = dayPart ? `${dayPart} · Lon` : 'Lon';
 
     // The hero column — the small widget's centered trio plus the footer,
