@@ -17,6 +17,11 @@
  * - staleness guard: never before the stale entry's date, always after it
  * - spacing: every adjacent entry pair keeps the WidgetKit minimum
  *
+ * A second virtual week runs the SAME span through the Extra schedule
+ * (two Fridays inside), additionally asserting the medium list's canonical
+ * EXTRAS_ENGLISH ordering, Istijaba's Friday-only presence (5 rows on
+ * Fridays, 4 otherwise), and the extras `schedule` stamp on every entry.
+ *
  * This replaces weeks of physical-device observation with a deterministic
  * replay: if the builder ever emits a missing flip, a wrong label, or a
  * gap, some sampled instant exposes it.
@@ -24,6 +29,7 @@
 
 import { addDays } from 'date-fns';
 
+import { EXTRAS_ENGLISH } from '@/shared/constants';
 import { createPrayerDatetime, formatCountdownMinutes, formatDateLong, formatDateShort } from '@/shared/time';
 import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
 import {
@@ -342,6 +348,255 @@ describe('virtual week model test', () => {
   it('ends the timeline with the stale guard after the final prayer', () => {
     const last = entries[entries.length - 1];
     expect(last.props.stale).toBe(true);
+    expect(last.date.getTime()).toBe(staleDateMs);
+    expect(activeEntryAt(entries, staleDateMs)?.props.stale).toBe(true);
+    expect(activeEntryAt(entries, staleDateMs - 1000)?.props.stale).not.toBe(true);
+  });
+});
+
+// =============================================================================
+// EXTRAS VIRTUAL WEEK — same span, extra schedule, two Fridays inside
+// =============================================================================
+
+/**
+ * Winter extras clock times (see transformApiData): Midnight 23:52 sits the
+ * PREVIOUS calendar evening while belonging to the raw day (the creation
+ * rule for night prayers with hours >= 12); Last Third 02:15, Suhoor 05:55,
+ * Duha 08:10 land on the raw day; Istijaba 16:00 exists only on Fridays
+ * (2026-10-23 and 2026-10-30 inside the span).
+ */
+const EXTRAS_TIMES = {
+  midnight: '23:52',
+  lastThird: '02:15',
+  suhoor: '05:55',
+  duha: '08:10',
+  istijaba: '16:00',
+} as const;
+
+const makeExtrasFixturePrayer = (date: string, time: string, english: string, belongsToDate: string): Prayer => ({
+  type: ScheduleType.Extra,
+  english,
+  arabic: english,
+  datetime: createPrayerDatetime(date, time),
+  time,
+  belongsToDate,
+});
+
+const makeExtrasSequence = (): PrayerSequence => {
+  const prayers: Prayer[] = [];
+  const startDay = createPrayerDatetime(SPAN_START, '12:00');
+
+  for (let dayIndex = 0; dayIndex < SPAN_DAYS; dayIndex++) {
+    const day = addDays(startDay, dayIndex);
+    const dateString = formatDateShort(day);
+    const previousDay = formatDateShort(addDays(day, -1));
+    const isFriday = createPrayerDatetime(dateString, '12:00').getUTCDay() === 5;
+
+    prayers.push(makeExtrasFixturePrayer(previousDay, EXTRAS_TIMES.midnight, 'Midnight', dateString));
+    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.lastThird, 'Last Third', dateString));
+    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.suhoor, 'Suhoor', dateString));
+    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.duha, 'Duha', dateString));
+
+    if (isFriday) {
+      prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.istijaba, 'Istijaba', dateString));
+    }
+  }
+
+  prayers.sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
+  return { type: ScheduleType.Extra, prayers };
+};
+
+/** Canonical display rank of an extras prayer (EXTRAS_ENGLISH order) */
+const extrasRank = (english: string): number => {
+  const rank = EXTRAS_ENGLISH.indexOf(english);
+  return rank === -1 ? EXTRAS_ENGLISH.length : rank;
+};
+
+describe('extras virtual week model test', () => {
+  const sequence = makeExtrasSequence();
+  const prayers = sequence.prayers;
+  const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, SETTINGS);
+
+  const finalPrayer = prayers[prayers.length - 1];
+  const lastRealEntryMs = entries[entries.length - 2].date.getTime();
+  const staleDateMs = Math.max(finalPrayer.datetime.getTime(), lastRealEntryMs + MIN_ENTRY_SPACING_MS);
+  const horizonMs = PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
+
+  const sampleInstants = (): number[] => {
+    const instants = new Set<number>();
+
+    const add = (ms: number) => {
+      instants.add(ms - 1000);
+      instants.add(ms);
+      instants.add(ms + 1000);
+    };
+
+    for (const entry of entries) add(entry.date.getTime());
+    for (const prayer of prayers) add(prayer.datetime.getTime());
+    add(staleDateMs);
+
+    const spanStart = PUSH_AT.getTime();
+    for (let ms = spanStart; ms <= staleDateMs; ms += 7 * 60 * 1000) {
+      instants.add(ms);
+    }
+
+    return [...instants].sort((a, b) => a - b);
+  };
+
+  it('keeps the timeline start at or before the push instant', () => {
+    expect(entries[0].date.getTime()).toBeLessThanOrEqual(PUSH_AT.getTime());
+  });
+
+  it('keeps every adjacent entry pair at least the minimum spacing apart', () => {
+    for (let i = 1; i < entries.length; i++) {
+      const gapMs = entries[i].date.getTime() - entries[i - 1].date.getTime();
+      expect(gapMs).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);
+    }
+  });
+
+  it('stamps every entry with the extras schedule', () => {
+    expect(entries.every((entry) => entry.props.schedule === 'extra')).toBe(true);
+  });
+
+  it('shows an active entry that brackets the instant with a canonical day list', () => {
+    const instants = sampleInstants();
+    const timelineStartMs = entries[0].date.getTime();
+
+    for (const instant of instants) {
+      if (instant < timelineStartMs) continue;
+
+      const active = activeEntryAt(entries, instant);
+      if (active === undefined) {
+        throw new Error(`No active entry at ${new Date(instant).toISOString()}`);
+      }
+
+      const props = active.props;
+
+      if (instant >= staleDateMs) {
+        if (props.stale !== true) {
+          throw new Error(`Expected stale card active at ${new Date(instant).toISOString()}`);
+        }
+        continue;
+      }
+
+      if (props.stale === true) {
+        throw new Error(`Stale card active too early at ${new Date(instant).toISOString()}`);
+      }
+
+      // Independent expectation: the extras surrounding this instant
+      const prevPrayer = prayers.filter((prayer) => prayer.datetime.getTime() <= instant).at(-1);
+      const nextPrayer = prayers.find((prayer) => prayer.datetime.getTime() > instant);
+
+      if (!prevPrayer || !nextPrayer) {
+        throw new Error(`Instant ${new Date(instant).toISOString()} not bracketed by fixture prayers`);
+      }
+
+      const nextMs = nextPrayer.datetime.getTime();
+
+      if (props.nextEpochMs !== nextMs || props.prevEpochMs !== prevPrayer.datetime.getTime()) {
+        throw new Error(`Segment mismatch at ${new Date(instant).toISOString()}`);
+      }
+
+      // The label is the minute-ceil value at the entry's date
+      const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
+      const msLeft = nextMs - labelAnchorMs;
+      const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
+      const expectedLabel = formatCountdownMinutes(secondsRemaining);
+      if (props.countdownLabel !== expectedLabel) {
+        throw new Error(`Countdown label mismatch at ${new Date(instant).toISOString()}`);
+      }
+
+      // The date label is the next prayer's Islamic day in the app format
+      if (props.dateLabel !== formatDateLong(nextPrayer.belongsToDate)) {
+        throw new Error(`Date label mismatch at ${new Date(instant).toISOString()}`);
+      }
+
+      // The medium widget's day list is exactly the app's Extras page for
+      // the next prayer's day: same rows in CANONICAL order (chronological
+      // filtering, then EXTRAS_ENGLISH ranking), Istijaba present only on
+      // Fridays, and the active row is the countdown target itself
+      const dayPrayers = prayers
+        .filter((prayer) => prayer.belongsToDate === nextPrayer.belongsToDate)
+        .sort((a, b) => extrasRank(a.english) - extrasRank(b.english));
+      const expectedRows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time }));
+      const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
+
+      if (!Array.isArray(props.prayers) || props.activeIndex !== expectedActiveIndex) {
+        throw new Error(
+          `Day list state mismatch at ${new Date(instant).toISOString()}: entry says ` +
+            `activeIndex ${props.activeIndex}, expected ${expectedActiveIndex}`
+        );
+      }
+      if (JSON.stringify(props.prayers) !== JSON.stringify(expectedRows)) {
+        throw new Error(`Day list rows mismatch at ${new Date(instant).toISOString()}`);
+      }
+      if (props.prayers?.[expectedActiveIndex]?.name !== props.nextName) {
+        throw new Error(`Active row is not the countdown target at ${new Date(instant).toISOString()}`);
+      }
+
+      // Istijaba appears in a day list only when that day is a Friday
+      const istijabaRow = props.prayers?.find((row) => row.name === 'Istijaba');
+      if (istijabaRow !== undefined) {
+        const isFridayBelong = createPrayerDatetime(nextPrayer.belongsToDate, '12:00').getUTCDay() === 5;
+        if (!isFridayBelong) {
+          throw new Error(`Istijaba listed on a non-Friday day at ${new Date(instant).toISOString()}`);
+        }
+      }
+
+      // Inside the stepped horizon the label is never more than two steps
+      // old. One step is the design cadence, but a segment whose length is
+      // not a multiple of the step (real prayer times rarely are) must
+      // absorb the remainder somewhere: with WidgetKit's 5-minute spacing
+      // floor, a uniform one-step grid cannot hit both the segment start
+      // and the boundary anchor — one gap of up to two steps is
+      // mathematically unavoidable (the builder places it mid-segment and
+      // guarantees the anchor sits exactly one spacing before the flip).
+      if (instant <= horizonMs && instant - active.date.getTime() > 2 * COUNTDOWN_STEP_MS) {
+        throw new Error(`Label at ${new Date(instant).toISOString()} is more than two steps stale`);
+      }
+    }
+  });
+
+  it('flips the countdown target exactly at the Duha boundary on a Friday', () => {
+    const nextAt = (instant: number) => activeEntryAt(entries, instant)?.props.nextName;
+
+    // Friday 2026-10-23: Duha 08:10 hands off to Istijaba 16:00
+    const duhaBoundary = createPrayerDatetime('2026-10-23', '08:10').getTime();
+    expect(nextAt(duhaBoundary - 1000)).toBe('Duha');
+    expect(nextAt(duhaBoundary)).toBe('Istijaba');
+    expect(nextAt(duhaBoundary + 1000)).toBe('Istijaba');
+  });
+
+  it('grows Friday to five rows with Istijaba active last, then rolls at its boundary', () => {
+    const activeRowAt = (instant: number) => {
+      const active = activeEntryAt(entries, instant);
+      const props = active?.props;
+      if (!props || !Array.isArray(props.prayers) || typeof props.activeIndex !== 'number') return null;
+      return {
+        index: props.activeIndex,
+        name: props.prayers[props.activeIndex]?.name,
+        rowCount: props.prayers.length,
+      };
+    };
+
+    // Friday midday: Istijaba active at canonical index 4 of 5 rows
+    const fridayNoon = createPrayerDatetime('2026-10-23', '12:00').getTime();
+    expect(activeRowAt(fridayNoon)).toEqual({ index: 4, name: 'Istijaba', rowCount: 5 });
+
+    // At the Istijaba boundary the list rolls to Saturday's four rows with
+    // the night's Midnight active at index 0 — Istijaba disappears
+    const istijabaBoundary = createPrayerDatetime('2026-10-23', '16:00').getTime();
+    expect(activeRowAt(istijabaBoundary)).toEqual({ index: 0, name: 'Midnight', rowCount: 4 });
+
+    // A non-Friday midday list is four rows with Duha active at index 3
+    const sundayNoon = createPrayerDatetime('2026-10-25', '12:00').getTime();
+    expect(activeRowAt(sundayNoon)).toEqual({ index: 0, name: 'Midnight', rowCount: 4 });
+  });
+
+  it('ends the timeline with an extras-stamped stale guard after the final prayer', () => {
+    const last = entries[entries.length - 1];
+    expect(last.props.stale).toBe(true);
+    expect(last.props.schedule).toBe('extra');
     expect(last.date.getTime()).toBe(staleDateMs);
     expect(activeEntryAt(entries, staleDateMs)?.props.stale).toBe(true);
     expect(activeEntryAt(entries, staleDateMs - 1000)?.props.stale).not.toBe(true);

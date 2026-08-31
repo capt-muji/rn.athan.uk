@@ -16,8 +16,8 @@ import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 import { readWidgetSettings, refreshPrayerWidgets } from '@/stores/widget';
-import PrayerLockWidget from '@/widgets/LockPrayerWidget';
-import PrayerWidget from '@/widgets/PrayerWidget';
+import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import { ExtrasWidget, PrayerWidget } from '@/widgets/PrayerWidget';
 
 const makeDayData = (date: string): ISingleApiResponseTransformed => ({
   date,
@@ -45,11 +45,14 @@ const seedPrayerCache = (days: number) => {
 };
 
 const widgetPush = () => (PrayerWidget.updateTimeline as jest.Mock).mock.calls;
+const extrasPush = () => (ExtrasWidget.updateTimeline as jest.Mock).mock.calls;
 
 describe('refreshPrayerWidgets error tolerance', () => {
   beforeEach(() => {
     (PrayerWidget.updateTimeline as jest.Mock).mockReset();
     (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
+    (ExtrasWidget.updateTimeline as jest.Mock).mockReset();
+    (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
   });
 
   it('swallows a native updateTimeline throw and logs it', async () => {
@@ -81,6 +84,14 @@ describe('refreshPrayerWidgets error tolerance', () => {
     expect(entries.length).toBeGreaterThan(0);
     // The stale guard must be the terminal entry even on a short cache
     expect(entries[entries.length - 1].props.stale).toBe(true);
+
+    // The extras pair receives its own schedule's timeline — a different
+    // countdown target and an extras-stamped schedule field
+    const extraEntries = extrasPush()[0][0];
+    expect(extraEntries.length).toBeGreaterThan(0);
+    expect(extraEntries).not.toEqual(entries);
+    expect(extraEntries[0].props.schedule).toBe('extra');
+    expect(entries[0].props.schedule).toBe('standard');
   });
 });
 
@@ -112,6 +123,8 @@ describe('label-flip re-push scheduler', () => {
     jest.useFakeTimers();
     (PrayerWidget.updateTimeline as jest.Mock).mockReset();
     (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
+    (ExtrasWidget.updateTimeline as jest.Mock).mockReset();
+    (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
   });
 
   afterEach(() => {

@@ -18,8 +18,8 @@ import { createLondonDate, formatDateShort } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { refreshPrayerWidgets } from '@/stores/widget';
-import PrayerLockWidget from '@/widgets/LockPrayerWidget';
-import PrayerWidget from '@/widgets/PrayerWidget';
+import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import { ExtrasWidget, PrayerWidget } from '@/widgets/PrayerWidget';
 
 describe('refreshPrayerWidgets platform gate', () => {
   it('is a no-op on Android: no cache reads, no native pushes', async () => {
@@ -45,5 +45,7 @@ describe('refreshPrayerWidgets platform gate', () => {
 
     expect(PrayerWidget.updateTimeline).not.toHaveBeenCalled();
     expect(PrayerLockWidget.updateTimeline).not.toHaveBeenCalled();
+    expect(ExtrasWidget.updateTimeline).not.toHaveBeenCalled();
+    expect(ExtrasLockWidget.updateTimeline).not.toHaveBeenCalled();
   });
 });
