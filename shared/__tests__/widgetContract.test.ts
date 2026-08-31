@@ -211,7 +211,8 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.32)',
       '#db2777',
       'rgba(79, 70, 229, 0.35)',
-      'rgba(249, 168, 212, 0.5)',
+      'rgba(255, 105, 180, 0.45)',
+      'rgba(255, 105, 180, 0.38)',
       'rgba(147, 197, 253, 0.42)',
       'rgba(196, 181, 253, 0.4)',
     ].map(normalizeColor);
@@ -247,7 +248,8 @@ describe('palette literals', () => {
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
       // Pastel blob lighting
-      'rgba(249, 168, 212, 0.5)',
+      'rgba(255, 105, 180, 0.45)',
+      'rgba(255, 105, 180, 0.38)',
       'rgba(147, 197, 253, 0.42)',
       'rgba(196, 181, 253, 0.4)',
     ].map(normalizeColor);
