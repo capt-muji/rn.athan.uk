@@ -5,15 +5,20 @@ import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
- * Lock Screen widget (accessoryRectangular + accessoryInline; the circular
- * face is retired and renders blank — see the guard below). The rectangular
- * face pairs the countdown with the prayer name and puts the absolute HH:mm
- * below — the countdown reads once, beside the name. All layout helpers must
- * live inside this function — the 'widget' directive serializes only this
- * function body into the widget extension's separate JS runtime, where
- * @expo/ui components and modifiers resolve as globals.
+ * Lock Screen widget layouts (accessoryRectangular + accessoryInline),
+ * registered twice on one shared layout: 'PrayerLockWidget' renders the
+ * Standard schedule, 'ExtrasLockWidget' the Extra schedule. Lock Screen
+ * accessories render in vibrant monochrome — white with opacity hierarchy —
+ * so the two kinds are visually identical; only the timeline data differs.
+ * The circular face is retired and renders blank — see the guard below.
+ * The rectangular face pairs the countdown with the prayer name and puts
+ * the absolute HH:mm below — the countdown reads once, beside the name.
+ * All layout helpers must live inside this function — the 'widget'
+ * directive serializes only this function body into the widget extension's
+ * separate JS runtime, where @expo/ui components and modifiers resolve as
+ * globals.
  */
-const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
+const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
   // Lock Screen accessories render in vibrant mode — stick to white with
@@ -134,4 +139,7 @@ const PrayerLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironme
   }
 };
 
-export default createWidget('PrayerLockWidget', PrayerLockWidget);
+// One layout, two kinds: identical rendering, different timelines — the
+// standard pair and the extras pair (see widgets/PrayerWidget.tsx).
+export const PrayerLockWidget = createWidget('PrayerLockWidget', AthanLockWidget);
+export const ExtrasLockWidget = createWidget('ExtrasLockWidget', AthanLockWidget);

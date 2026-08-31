@@ -56,6 +56,10 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ## 📝 Recent Updates
 
+### v1.14.0 (2026-08-31)
+
+- ✅ **Extra Times widgets**: a second Home screen pair ("Extra Times", small + medium) and a second Lock Screen pair (rectangular + inline) mirroring the app's Extras page — Midnight, Last Third, Suhoor, Duha, and Friday-only Istijaba. Styling is identical to the prayer widgets; the medium list reads in the app's canonical order (Istijaba last on Fridays — 4 rows normally, 5 on Fridays) and center-anchors vertically so the top/bottom spacing stays symmetric, with a rose active pill instead of indigo. One shared layout serves both schedules, so the pairs can never drift apart.
+
 ### v1.10.0 – v1.12.1 (2026-08-30)
 
 - ✅ **Medium home screen widget**: the 2×4 size pairs the small widget's trio (name · countdown · `HH:mm`) with the day's six prayers exactly like the app's Standard page — the blue active background on the next prayer, passed rows solid, upcoming rows muted, rolling to the next day at Isha (no alert icons, no countdown bar)
@@ -96,7 +100,7 @@ Full history: `git log --oneline` (every commit carries its version number).
 - [x] Update popup with version checking and store redirect
 - [x] Ramadan seasonal decorations (lantern, moon, stars, spark particles, clouds)
 - [x] Notification system documentation and scenario coverage (14 scenarios)
-- [x] iOS home screen + Lock Screen widgets (v1.7–v1.9)
+- [x] iOS home screen + Lock Screen widgets, prayer + extras pairs (v1.7–v1.14)
 
 ### Known Limitations
 
@@ -116,15 +120,17 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 | Widget | Families | Shows |
 | --- | --- | --- |
-| **Next Prayer** (home screen) | Small, Medium | **Small** — the next prayer only, on the deep-purple app-theme card: prayer name in lowercase inside a soft pill (periwinkle-white text over a sky-blue whisper), minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · London` footer. **Medium** — the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the blue active background on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
+| **Next Prayer** (home screen) | Small, Medium | **Small** — the next prayer only, on the translucent "Cotton Candy" card: uppercase bold rose prayer name, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · Lon` footer. **Medium** — the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the indigo active pill on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
+| **Extra Times** (home screen) | Small, Medium | The same two sizes for the Extras schedule. **Small** — identical to the prayer widget (next extra time only). **Medium** — the app's Extras page list in canonical order: Midnight, Last Third, Suhoor, Duha, Istijaba (Fridays only — 4 rows normally, 5 on Fridays), center-anchored vertically so the spacing stays symmetric as the list grows, with a **rose** active pill instead of indigo |
 | **Next Prayer** (Lock Screen) | Rectangular, Inline | The next prayer paired with the minute-ceil countdown (`Maghrib · 9m`) and the absolute `HH:mm` below, rendered in the system's vibrant (monochrome) style |
+| **Extra Times** (Lock Screen) | Rectangular, Inline | The same faces for the Extras schedule — the next extra time with its countdown and absolute `HH:mm`, in the same vibrant style |
 
 **Always in sync, never stale:**
 
-- The app pushes a **14-day timeline** (one entry per prayer boundary) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, the 3-hour background task, and — debounced — any change to a widget-visible setting.
-- The countdown label is a **minute-ceil value** — seconds never display at any distance and the label always rounds up (`1h 59m 01s` → `2h`, `59s` → `1m`), holding its value until the true minute flips. It is precomputed per timeline entry and refreshed by stepped entries every 5 minutes (WidgetKit's minimum entry spacing) for the first 24 hours; beyond that it updates at each prayer boundary.
-- While the app is running, a **label-flip scheduler** re-pushes the timeline within a quarter second of every countdown minute change, so the widget never shows a stale minute for long. Backgrounded timers coalesce into one refresh on the app's return to the foreground.
-- Entries transition automatically at each prayer time; once Isha has passed, the widget flips to the next day's Fajr with the date already rolled over (DST-safe via the same zoned-time logic as the app). Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time (whose label describes the push instant, never a backdated one).
+- The app pushes a **14-day timeline per schedule** (one entry per boundary, four widgets in two pairs) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, the 3-hour background task, and — debounced — any change to a widget-visible setting.
+- The countdown label is a **minute-ceil value** — seconds never display at any distance and the label always rounds up (`1h 59m 01s` → `2h`, `59s` → `1m`), holding its value until the true minute flips. It is precomputed per timeline entry and refreshed by stepped entries every 5 minutes (WidgetKit's minimum entry spacing) for the first 24 hours; beyond that it updates at each boundary. The final step before a boundary always anchors exactly one spacing ahead of the flip.
+- While the app is running, a **label-flip scheduler** re-pushes both timelines within a quarter second of every countdown minute change (armed at whichever schedule's label flips next), so no widget shows a stale minute for long. Backgrounded timers coalesce into one refresh on the app's return to the foreground.
+- Entries transition automatically at each time's boundary; the list rolls to the next day exactly when the countdown target does (at Isha for the prayer widgets, at the night's Midnight for the extras widgets) — DST-safe via the same zoned-time logic as the app. Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time (whose label describes the push instant, never a backdated one).
 - If the app stays unopened past the full timeline, the widgets switch to the **stale card** — the moon-and-stars mark above "Out of date" with an "Open Athan to refresh" call (two lines on the small card, one line on medium) — instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
 
 **Widget preferences — the widget has no configuration of its own; it mirrors the app:**
@@ -133,7 +139,7 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 Changing it in the app re-pushes the widget timeline within about a second.
 
-**Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan*. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan* (the circular face is retired and renders blank — it exists only so already-placed circles disappear cleanly; remove one by long-pressing the Lock Screen and tapping it).
+**Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan* → choose **Next Prayer** or **Extra Times**. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan* (the circular face is retired and renders blank — it exists only so already-placed circles disappear cleanly; remove one by long-pressing the Lock Screen and tapping it).
 
 > Widgets require a development build or production binary (iOS 16.4+); they are not available in Expo Go.
 
