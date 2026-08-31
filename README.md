@@ -139,7 +139,7 @@ Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](
 
 Changing it in the app re-pushes the widget timeline within about a second.
 
-**Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan* → choose **Next Prayer** or **Extra Times**. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan* (the circular face is retired and renders blank — it exists only so already-placed circles disappear cleanly; remove one by long-pressing the Lock Screen and tapping it).
+**Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan* → choose **Next Prayer** or **Extra Times**. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan* (rectangular + inline faces per schedule; the circular face was retired in v1.9.1 and fully removed from the picker in v1.14.1).
 
 > Widgets require a development build or production binary (iOS 16.4+); they are not available in Expo Go.
 
