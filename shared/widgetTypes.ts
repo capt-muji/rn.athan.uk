@@ -25,8 +25,9 @@ export interface PrayerWidgetSettings {
 }
 
 /**
- * One row of the medium widget's day list — the day's six prayers in
- * chronological order, exactly as the app's Standard page shows them.
+ * One row of the medium widget's day list — the displayed day's prayers,
+ * exactly as the corresponding app page shows them (chronological for the
+ * Standard schedule, canonical EXTRAS_ENGLISH order for the Extra schedule).
  */
 export interface WidgetPrayerRow {
   /** English prayer name, e.g. "Fajr" */
@@ -36,14 +37,23 @@ export interface WidgetPrayerRow {
 }
 
 /**
- * Timeline props pushed to both widgets at every prayer boundary.
- * One timeline entry per prayer segment; within the stepped countdown
- * horizon the builder additionally emits one entry every five minutes so
- * the precomputed countdown label stays close to the truth.
+ * Timeline props pushed to all four widgets at every prayer boundary (the
+ * standard pair and the extras pair each receive their own schedule's
+ * timeline). One timeline entry per prayer segment; within the stepped
+ * countdown horizon the builder additionally emits one entry every five
+ * minutes so the precomputed countdown label stays close to the truth.
  */
 export interface PrayerWidgetProps {
   /** Props schema version (WIDGET_PROPS_VERSION) for cross-release tolerance */
   v: number;
+  /**
+   * Which schedule the timeline describes: 'standard' (the six prayers) or
+   * 'extra' (Midnight, Last Third, Suhoor, Duha, Friday Istijaba). Drives the
+   * active-pill palette in the medium home widget — indigo for standard,
+   * rose for extra. Absent on entries from older app versions, which render
+   * in the standard palette (only the standard kind ever stored them).
+   */
+  schedule?: 'standard' | 'extra';
   /** English name of the upcoming prayer, e.g. "Asr" */
   nextName: string;
   /** Upcoming prayer time in HH:mm, e.g. "15:32" */
@@ -61,10 +71,12 @@ export interface PrayerWidgetProps {
   /** Date of the upcoming prayer in the app's format (Hijri when enabled) */
   dateLabel: string;
   /**
-   * The displayed day's prayers for the medium widget's list — the six
-   * Standard prayers of the upcoming prayer's belongsToDate (the list rolls
-   * to the next day exactly when the countdown target does, mirroring the
-   * app's displayDate semantics). Rows before the active one are past,
+   * The displayed day's prayers for the medium widget's list — the prayers
+   * of the upcoming prayer's belongsToDate (the list rolls to the next day
+   * exactly when the countdown target does, mirroring the app's displayDate
+   * semantics). Standard entries are chronological; extras entries are in
+   * canonical EXTRAS_ENGLISH order with Istijaba present only on Fridays
+   * (4 rows normally, 5 on Fridays). Rows before the active one are past,
    * rows after it are upcoming. Absent on entries from older app versions
    * (the medium layout degrades to the single-prayer composition).
    */

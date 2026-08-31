@@ -197,7 +197,8 @@ describe('palette literals', () => {
     // translucent white pane over the wallpaper, rose prayer name, dark ink
     // hero, blue-tinted secondary/footer, solid indigo selection pill with
     // pale pink text, soft blackish-blue passed rows, and white orb glow
-    // lighting.
+    // lighting. The extras widgets (1.14.0) swap the medium pill's indigo
+    // trio for rose — same structure, rose-tinted stroke/shadow.
     const anchors = [
       'rgba(234, 239, 246, 0.8)',
       '#db2777',
@@ -212,6 +213,9 @@ describe('palette literals', () => {
       '#db2777',
       'rgba(79, 70, 229, 0.35)',
       'rgba(255, 255, 255, 0.4)',
+      // Extras medium pill — the rose trio
+      'rgba(61, 10, 38, 0.45)',
+      'rgba(219, 39, 119, 0.35)',
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -236,11 +240,14 @@ describe('palette literals', () => {
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
       'rgba(42, 68, 130, 0.34)',
-      // Active selection pill
+      // Active selection pill — standard indigo trio + extras rose trio
       '#4f46e5',
       '#fce7f3',
       'rgba(30, 27, 75, 0.45)',
       'rgba(79, 70, 229, 0.35)',
+      '#db2777',
+      'rgba(61, 10, 38, 0.45)',
+      'rgba(219, 39, 119, 0.35)',
       // List rows
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
@@ -273,10 +280,10 @@ describe('static import discipline', () => {
     }
   });
 
-  it('stores/widget.ts statically imports both widget modules', () => {
+  it('stores/widget.ts statically imports all four widget kinds', () => {
     const source = readFileSync(join(__dirname, '../../stores/widget.ts'), 'utf8');
-    expect(source).toMatch(/import PrayerWidget from '@\/widgets\/PrayerWidget'/);
-    expect(source).toMatch(/import PrayerLockWidget from '@\/widgets\/LockPrayerWidget'/);
+    expect(source).toMatch(/import \{ ExtrasWidget, PrayerWidget \} from '@\/widgets\/PrayerWidget'/);
+    expect(source).toMatch(/import \{ ExtrasLockWidget, PrayerLockWidget \} from '@\/widgets\/LockPrayerWidget'/);
     expect(source).not.toMatch(/import\s*\(/);
   });
 });
