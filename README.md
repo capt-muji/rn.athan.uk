@@ -87,7 +87,7 @@ Full history: `git log --oneline` (every commit carries its version number).
 - [x] Prayer-based day boundary with smooth animations (Islamic midnight)
 - [x] Offline support with local data caching
 - [x] Customizable notifications with multiple alert modes (at-time + reminder)
-- [x] 16 selectable Athan audio notification options
+- [x] Selectable Athan audio notification options (sources credited in the README)
 - [x] View tomorrow's prayer times
 - [x] Automatic yearly data refresh
 - [x] Multipage with special times (Midnight, Third of night, Duha, Suhoor, Istijaba)
@@ -152,6 +152,45 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 
 <br/>
 
+## 🎵 Athan Audio Sources
+
+Every selectable Athan sound comes from a public recording
+
+1. [Athan 1](https://www.youtube.com/watch?v=_FLhwe8lk14)
+2. [Athan 2](https://youtu.be/GwRoKbB-aWo)
+3. [Athan 3](https://youtu.be/pY_7ahJV8Qo)
+4. [Athan 4](https://www.youtube.com/watch?v=EwCb9d-aYsw)
+5. [Athan 5](https://www.youtube.com/watch?v=MaEzj5eRmjc)
+6. [Athan 6](https://www.youtube.com/watch?v=iaWZ_3D6vOQ)
+7. [Athan 7](https://www.youtube.com/watch?v=qijUyKRiaHw)
+8. [Athan 8](https://www.tiktok.com/@sy._454/video/7478742017174965526)
+9. [Athan 9](https://vm.tiktok.com/ZN8eTKymA)
+10. [Athan 10](https://vm.tiktok.com/ZN8ewBrH3)
+11. [Athan 11](https://vm.tiktok.com/ZN8dJroHG)
+12. [Athan 12](https://vm.tiktok.com/ZN8RxBFGL)
+13. [Athan 13](https://www.youtube.com/watch?v=vS0zBleiJuk)
+14. [Athan 14](https://www.youtube.com/watch?v=LxchYJnAY6c)
+15. [Athan 15](https://www.youtube.com/watch?v=LSPXGersP-k)
+16. [Athan 16](https://www.youtube.com/watch?v=uSU_perLUC4)
+17. [Athan 17](https://www.youtube.com/watch?v=IqwB9fS8vdo&list=PLN-zlYr1ZP07sMCdy-qToyZ2HQTwDU0iz&index=6)
+18. [Athan 18](https://www.youtube.com/watch?v=G96FEkkFCzg)
+19. [Athan 19](https://www.youtube.com/watch?v=aB-1qzmtxaA)
+20. [Athan 20](https://vm.tiktok.com/ZN8ewMvhL)
+21. [Athan 21](https://vm.tiktok.com/ZN8ewVELB)
+22. [Athan 22](https://www.youtube.com/watch?v=4_LN0hznp-A)
+23. [Athan 23](https://www.youtube.com/watch?v=9Y-8AtTDx20)
+24. [Athan 24](https://www.youtube.com/watch?v=eLGZQpfGEh8)
+25. [Athan 25](https://youtu.be/4POoJPsLuz0)
+26. [Athan 26](https://www.youtube.com/watch?v=CcAqiX3SNIo)
+27. [Athan 27](https://www.dailymotion.com/video/x8gmb7b)
+28. [Athan 28](https://www.youtube.com/watch?v=WVLSfmZcsp0)
+29. [Athan 29](https://www.youtube.com/watch?v=keTILkYmLJM)
+30. [Athan 30](https://www.youtube.com/watch?v=a1U-G2DnC_4)
+31. [Athan 31](https://www.youtube.com/watch?v=eRqwFHzJrGc&list=PLN-zlYr1ZP07sMCdy-qToyZ2HQTwDU0iz&index=13)
+32. [Athan 32](https://www.youtube.com/watch?v=j-G8vgDpxiI)
+
+<br/>
+
 ## ⚡ Features
 
 ### Display & User Interface
@@ -169,7 +208,7 @@ Prayer times data sourced from [London Prayer Times](https://www.londonprayertim
 
 - 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer (at-time and reminder)
 - ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval
-- 📢 **16 Selectable Athan Sounds**: Multiple Islamic audio options
+- 📢 **Selectable Athan Sounds**: Every sound linked to its source (see [Athan Audio Sources](#-athan-audio-sources))
 - 📅 **Smart Notification Buffer**: 2-day rolling schedule
 - 🛡️ **Sequential Scheduling Queue**: Operations queued and executed in order, never dropped
 - 🪪 **Deterministic Notification IDs**: `athan_<schedule>_<prayer>_<date>` (reminders include the interval) — re-scheduling with the same ID replaces in place on both platforms, so orphaned alarms can never double-fire
@@ -469,7 +508,7 @@ See `ai/adr/` for Architecture Decision Records.
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 24+
 - Expo CLI (v57+)
 - iOS: Xcode 15+ (for iOS simulator/device builds)
 - Android: Android Studio with NDK (for native module builds)
