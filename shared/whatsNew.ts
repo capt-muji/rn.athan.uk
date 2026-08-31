@@ -57,12 +57,12 @@ export const WHATS_NEW: WhatsNewRelease | null = {
       platform: 'ios',
     },
     {
-      title: 'Reminder sounds',
-      body: 'Every reminder now has its own sound',
-    },
-    {
       title: 'Athan sounds',
       body: 'New Athan sounds added',
+    },
+    {
+      title: 'Reminder sounds',
+      body: 'Every reminder now has its own sound',
     },
   ],
 };
