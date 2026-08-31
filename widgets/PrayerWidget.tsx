@@ -21,9 +21,9 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 /**
  * Home screen widget (systemSmall + systemMedium).
  *
- * systemSmall — the "Flat royal" design: solid root-purple card, centered
- * symmetric trio (prayer name, minute-ceil countdown hero, absolute HH:mm)
- * over the day · city footer.
+ * systemSmall — a translucent blue-grey pane with soft white orb glow,
+ * centered symmetric trio (prayer name, minute-ceil countdown hero,
+ * absolute HH:mm) over the day · city footer.
  *
  * systemMedium — the left half repeats the small trio verbatim; the right
  * half replicates the app's Standard page list: the day's six prayers in
@@ -44,9 +44,9 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
-  // THEME 48 — FINAL v2: theme 47 with one change — the active row pill is
-  // indigo (#4f46e5, exactly 44 Pill Indigo Full) instead of rose.
-  const CARD_BACKGROUND = 'rgba(255, 250, 253, 0.55)';
+  // The active row pill is indigo (#4f46e5, "Pill Indigo Full" from the
+  // app's sound-picker selection) over pale pink text.
+  const CARD_BACKGROUND = 'rgba(234, 239, 246, 0.8)';
   const EYEBROW_TEXT = '#db2777';
   const TEXT_PRIMARY = '#1e1b2e';
   const TEXT_SECONDARY = 'rgba(42, 68, 130, 0.42)';
@@ -62,9 +62,8 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   const STROKE_COLOR = 'rgba(79, 70, 229, 0.35)';
   const STROKE_WIDTH = 1;
 
-  // Blob lighting (theme 42's glow): two blurred orbs anchored to the
-  // card's corners, colored per theme. Empty string = orb off.
-  const BLOB_C = 'rgba(196, 181, 253, 0.4)';
+  // Bottom-left orb of the white glow lighting (see Blobs below).
+  const BOTTOM_ORB_COLOR = 'rgba(255, 255, 255, 0.4)';
 
   // Medium list geometry: fixed row height so the floating pill's offset is
   // exact and the spacing never jumps (the app's rows are a fixed 57pt for
@@ -133,31 +132,37 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   }
 
   try {
-    // The rose orb anchors to the medium card's absolute x (~114pt from the
-    // left edge) on BOTH families — center-relative offsets would drop it
-    // into the small card's top-left corner instead of topping the hero
-    // where the medium places it. The small card also softens the orb
-    // (wider blur) — at medium blur its hotspot pools too hot in the top
-    // right corner of the tighter card.
-    const roseOrbX = environment.widgetFamily === 'systemSmall' ? 59 : -5;
-    const roseOrbBlur = environment.widgetFamily === 'systemSmall' ? 75 : 65;
-    const roseOrbColor =
-      environment.widgetFamily === 'systemSmall' ? 'rgba(255, 105, 180, 0.27)' : 'rgba(255, 105, 180, 0.22)';
+    // The top orb's anchor and blur differ per family: on the small card it
+    // sits right of center with a wider blur (at medium blur its hotspot
+    // pools too hot in the tighter card); on the medium card it tops the
+    // hero near the horizontal center.
+    const topOrbX = environment.widgetFamily === 'systemSmall' ? 30 : -5;
+    const topOrbBlur = environment.widgetFamily === 'systemSmall' ? 38 : 33;
+    const topOrbColor = '#ffffff';
 
-    // The blob lighting layer — blurred orbs anchored to the card's
-    // corners, colored by the theme's BLOB_* constants (empty = skipped).
+    // The white glow lighting — three blurred orbs: a top orb above the
+    // hero, a faint bottom-left orb, and a small centered orb rising
+    // through the countdown.
     const Blobs = () => (
       <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
         <Circle
           modifiers={[
-            frame({ width: 170, height: 170 }),
-            offset({ x: roseOrbX, y: -75 }),
-            foregroundStyle(roseOrbColor),
-            blur(roseOrbBlur),
+            frame({ width: 85, height: 85 }),
+            offset({ x: topOrbX, y: -38 }),
+            foregroundStyle(topOrbColor),
+            blur(topOrbBlur),
           ]}
         />
         <Circle
-          modifiers={[frame({ width: 130, height: 130 }), offset({ x: -70, y: 60 }), foregroundStyle(BLOB_C), blur(40)]}
+          modifiers={[
+            frame({ width: 130, height: 130 }),
+            offset({ x: -70, y: 60 }),
+            foregroundStyle(BOTTOM_ORB_COLOR),
+            blur(40),
+          ]}
+        />
+        <Circle
+          modifiers={[frame({ width: 34, height: 34 }), offset({ x: 0, y: 8 }), foregroundStyle(topOrbColor), blur(30)]}
         />
       </ZStack>
     );
@@ -219,7 +224,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
               ]}>
               {props.countdownLabel}
             </Text>
-          ) : null}
+          ) : null}{' '}
           <Text
             modifiers={[
               font({ size: 13, weight: 'regular' }),
@@ -294,8 +299,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
       // architecture: a native rounded-rectangle shape (a shape view fills
       // the width its stack proposes — an empty stack with a maxWidth frame
       // collapses to zero width in the widget runtime) positioned behind the
-      // next prayer's row, with the app's shadow (#081a76 at SHADOW.prayer's
-      // 0.5 opacity) scaled to widget rows.
+      // next prayer's row, with a deep indigo shadow scaled to widget rows.
       const pillY = activeIndex * ROW_HEIGHT;
 
       const ActivePill = () => (
@@ -309,11 +313,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
               shape: 'roundedRectangle',
               cornerRadius: ROW_CORNER_RADIUS,
             }),
-            shadow(
-              ACTIVE_SHADOW
-                ? { radius: 4, x: 1, y: 4, color: ACTIVE_SHADOW }
-                : { radius: 0, x: 0, y: 0, color: ACTIVE_SHADOW }
-            ),
+            shadow({ radius: 4, x: 1, y: 4, color: ACTIVE_SHADOW }),
             frame({ height: ROW_HEIGHT }),
             offset({ y: pillY }),
           ]}
