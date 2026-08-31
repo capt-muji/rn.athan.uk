@@ -12,6 +12,9 @@ const BADGE_GLYPH: Record<string, Icon> = {
   Android: Icon.ANDROID,
 };
 
+/** De-emphasized faint blue - version number and platform notes */
+const FAINT_BLUE = 'rgba(42, 68, 130, 0.32)';
+
 type Props = {
   visible: boolean;
   /** Installed app version rendered under the title (never a hand-typed string) */
@@ -23,7 +26,7 @@ type Props = {
 export default function ModalWhatsNew({ visible, version, items, onContinue }: Props) {
   return (
     <Modal visible={visible} title="What's New">
-      <Text style={styles.version}>Version {version}</Text>
+      <Text style={styles.version}>v{version}</Text>
       <View style={styles.list}>
         {items.map((item) => (
           <View key={item.title} style={styles.item}>
@@ -36,7 +39,10 @@ export default function ModalWhatsNew({ visible, version, items, onContinue }: P
             </View>
             <View style={styles.itemText}>
               <Text style={styles.title}>{item.title}</Text>
-              <Text style={styles.body}>{item.body}</Text>
+              <Text style={styles.body}>
+                {item.body}
+                {item.platform === 'ios' && <Text style={styles.bodyPlatform}> (iOS only)</Text>}
+              </Text>
             </View>
           </View>
         ))}
@@ -53,11 +59,11 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
     textAlign: 'center',
-    color: COLORS.light.textSecondary,
+    color: FAINT_BLUE,
     lineHeight: TEXT.lineHeight.default,
     letterSpacing: TEXT.letterSpacing.default,
     marginBottom: SPACING.xl,
-    marginTop: -SPACING.xs,
+    marginTop: -SPACING.sm,
   },
   list: {
     width: '100%',
@@ -90,6 +96,9 @@ const styles = StyleSheet.create({
     lineHeight: TEXT.lineHeight.default,
     letterSpacing: TEXT.letterSpacing.default,
     marginTop: 2,
+  },
+  bodyPlatform: {
+    color: FAINT_BLUE,
   },
   button: {
     width: '100%',
