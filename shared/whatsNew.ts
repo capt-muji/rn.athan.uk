@@ -21,7 +21,6 @@
  * @see ai/adr/012/ADR.md
  */
 
-import { Icon } from '@/shared/types';
 import { compareVersions } from '@/shared/versionUtils';
 
 /** Platforms an item can be exclusive to */
@@ -29,8 +28,6 @@ export type WhatsNewPlatform = 'ios' | 'android';
 
 /** One entry in the What's New list */
 export interface WhatsNewItem {
-  /** Leading icon shown beside the title */
-  icon: Icon;
   /** Short factual title (max MAX_TITLE_LENGTH chars) */
   title: string;
   /** One-line factual description (max MAX_BODY_LENGTH chars) */
@@ -55,10 +52,17 @@ export const WHATS_NEW: WhatsNewRelease | null = {
   version: '1.13.0',
   items: [
     {
-      icon: Icon.WIDGET,
       title: 'Home & Lock widgets',
       body: 'Add prayer times to your Home and Lock Screen',
       platform: 'ios',
+    },
+    {
+      title: 'Reminder sounds',
+      body: 'Every reminder now has its own sound',
+    },
+    {
+      title: 'Athan sounds',
+      body: 'New Athan sounds added',
     },
   ],
 };

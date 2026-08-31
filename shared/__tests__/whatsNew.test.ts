@@ -7,8 +7,6 @@
  * - WHATS_NEW content - shape, limits, and validity (guards future edits)
  */
 
-import { Icon } from '@/shared/types';
-
 import {
   getPlatformBadges,
   MAX_WHATS_NEW_BODY_LENGTH,
@@ -22,7 +20,6 @@ import {
 
 const release = (items: WhatsNewItem[]): WhatsNewRelease => ({ version: '1.13.0', items });
 const item = (overrides: Partial<WhatsNewItem> = {}): WhatsNewItem => ({
-  icon: Icon.CHECK,
   title: 'Test title',
   body: 'Test body',
   ...overrides,
@@ -120,10 +117,6 @@ describe('WHATS_NEW content contract', () => {
   it('has unique item titles (stable render keys)', () => {
     const titles = content.items.map((entry) => entry.title);
     expect(new Set(titles).size).toBe(titles.length);
-  });
-
-  it.each(content.items.map((entry) => [entry.title, entry]))('item "%s" has a valid icon', (_title, entry) => {
-    expect(Object.values(Icon)).toContain(entry.icon);
   });
 
   it.each(content.items.map((entry) => [entry.title, entry]))(
