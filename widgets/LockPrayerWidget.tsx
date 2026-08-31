@@ -1,5 +1,5 @@
 import { Image, Text, VStack } from '@expo/ui/swift-ui';
-import { font, foregroundStyle, frame, lineLimit, monospacedDigit, opacity } from '@expo/ui/swift-ui/modifiers';
+import { font, foregroundStyle, frame, lineLimit, monospacedDigit } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 
 import type { PrayerWidgetProps } from '@/shared/widgetTypes';
@@ -10,9 +10,11 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * Standard schedule, 'ExtrasLockWidget' the Extra schedule. Lock Screen
  * accessories render in vibrant monochrome — white with opacity hierarchy —
  * so the two kinds are visually identical; only the timeline data differs.
- * The circular face is retired and renders blank — see the guard below.
  * The rectangular face pairs the countdown with the prayer name and puts
  * the absolute HH:mm below — the countdown reads once, beside the name.
+ * The circular face is fully unregistered since 1.14.1 (it existed in
+ * store builds for ~a day before its 1.9.1 retirement, so the orphan
+ * freeze risk was accepted — see ai/AGENTS.md).
  * All layout helpers must live inside this function — the 'widget'
  * directive serializes only this function body into the widget extension's
  * separate JS runtime, where @expo/ui components and modifiers resolve as
@@ -54,17 +56,6 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   // mode, or a first-add before the app has ever pushed a timeline).
   if (props == null) {
     return neutralForFamily();
-  }
-
-  // The circular face is retired (it duplicated the rectangular countdown),
-  // but iOS keeps user-placed circular instances alive even after the family
-  // leaves supportedFamilies — orphaned placements freeze on their last
-  // render. Keep the family registered and blank the layout instead: every
-  // circular placement, past or future, renders nothing at all.
-  if (environment.widgetFamily === 'accessoryCircular') {
-    return (
-      <Text modifiers={[font({ size: 9, weight: 'semibold' }), opacity(0), frame({ width: 44, height: 44 })]}> </Text>
-    );
   }
 
   try {
