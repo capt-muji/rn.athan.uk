@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.13.9",
+    "version": "1.14.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -117,10 +117,23 @@
               "supportedFamilies": ["systemSmall", "systemMedium"]
             },
             {
+              "name": "ExtrasWidget",
+              "displayName": "Extra Times",
+              "description": "A countdown to the next extra time.",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": ["systemSmall", "systemMedium"]
+            },
+            {
               "name": "PrayerLockWidget",
               "displayName": "Next Prayer",
               "description": "Live countdown to the next prayer on your Lock Screen.",
               "supportedFamilies": ["accessoryCircular", "accessoryRectangular", "accessoryInline"]
+            },
+            {
+              "name": "ExtrasLockWidget",
+              "displayName": "Extra Times",
+              "description": "Live countdown to the next extra time on your Lock Screen.",
+              "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
             }
           ]
         }

@@ -1,5 +1,5 @@
 /**
- * Pure timeline builder for the Athan iOS widgets.
+ * Pure timeline builder for the Athan iOS widgets (standard + extras pairs).
  *
  * Builds timeline entries from a prayer sequence (one entry per prayer
  * boundary) for WidgetKit to render. WidgetKit cannot tick custom-format
@@ -9,17 +9,25 @@
  * horizon; beyond it, entries flip only at prayer boundaries. The progress
  * bar stays live on its own between entries via SwiftUI timer intervals.
  *
+ * Schedule-agnostic: the same loop serves both the Standard sequence (home
+ * + Lock widgets) and the Extra sequence (extras home + Lock widgets); only
+ * the day-list assembly differs — Standard rows stay chronological while
+ * Extra rows sort into canonical EXTRAS_ENGLISH order (Istijaba last on
+ * Fridays), mirroring the two app pages. Every entry stamps its schedule
+ * so the layouts can branch (the extras medium pill renders rose).
+ *
  * Pure module: no React Native imports — deterministic and unit-testable.
  *
- * @see widgets/PrayerWidget.tsx - home screen widget layout
- * @see widgets/LockPrayerWidget.tsx - Lock Screen widget layout
+ * @see widgets/PrayerWidget.tsx - home screen widget layouts (both schedules)
+ * @see widgets/LockPrayerWidget.tsx - Lock Screen widget layouts (both schedules)
  * @see stores/widget.ts - IO layer that pushes built entries to the widgets
  */
 
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
+import { EXTRAS_ENGLISH } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
-import type { Prayer, PrayerSequence } from '@/shared/types';
+import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
 import type { PrayerWidgetProps, PrayerWidgetSettings, WidgetPrayerRow } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
@@ -40,10 +48,14 @@ export const COUNTDOWN_STEP_MS = MIN_ENTRY_SPACING_MS;
 
 /**
  * How long from the push instant the countdown label stays stepped. Within
- * the horizon the label is at most one step stale; beyond it, entries flip
- * only at prayer boundaries (the label then holds until the next boundary —
- * acceptable degradation for a widget the app has not refreshed in over a
- * day, and it bounds the timeline payload size).
+ * the horizon the label refreshes at the step cadence; beyond it, entries
+ * flip only at prayer boundaries (the label then holds until the next
+ * boundary — acceptable degradation for a widget the app has not refreshed
+ * in over a day, and it bounds the timeline payload size). Segment lengths
+ * that are not multiples of the step absorb the remainder in one gap of up
+ * to two steps mid-segment (WidgetKit's spacing floor makes one step
+ * everywhere mathematically impossible); the final step always anchors
+ * exactly one spacing before the boundary flip.
  */
 export const STEPPED_COUNTDOWN_HOURS = 24;
 
@@ -76,20 +88,45 @@ const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
 };
 
 /**
- * Builds the medium widget's day list for a segment: the six Standard
- * prayers of the upcoming prayer's belongsToDate, in chronological order —
- * the same set the app's Standard page shows for its displayDate. The list
- * rolls to the next day exactly when the countdown target does (at Isha),
- * mirroring the app's displayDate semantics. The active row is the upcoming
- * prayer itself; rows before it have passed, rows after it are upcoming.
+ * Canonical display rank of an extras prayer — its index in EXTRAS_ENGLISH
+ * (Midnight, Last Third, Suhoor, Duha, Istijaba). Mirrors canonicalRank in
+ * shared/prayer.ts without importing it: that module transitively pulls in
+ * the MMKV database (React Native), which would break this pure module.
+ * Unknown names rank last, stably.
+ */
+const extrasCanonicalRank = (english: string): number => {
+  const rank = EXTRAS_ENGLISH.indexOf(english);
+  return rank === -1 ? EXTRAS_ENGLISH.length : rank;
+};
+
+/**
+ * Builds the medium widget's day list for a segment: the prayers of the
+ * upcoming prayer's belongsToDate, ordered exactly as the corresponding app
+ * page shows them — chronological for Standard, canonical EXTRAS_ENGLISH
+ * order for Extra (so Friday's Istijaba reads last, not mid-list). The list
+ * rolls to the next day exactly when the countdown target does, mirroring
+ * the app's displayDate semantics. The active row is the upcoming prayer
+ * itself; rows before it have passed, rows after it are upcoming. Istijaba
+ * appears only on Fridays by construction — the sequence itself excludes
+ * it on non-Fridays (see getPrayerNamesForDate in shared/prayer.ts).
  *
  * @param prayers Chronologically sorted prayer sequence
  * @param next The upcoming prayer anchoring the displayed day
+ * @param type The sequence's schedule type
  * @returns The day's rows and the active row index (-1 when `next` is not
  *   part of its own day — a malformed sequence; the layout degrades)
  */
-const buildDayList = (prayers: Prayer[], next: Prayer): { rows: WidgetPrayerRow[]; activeIndex: number } => {
+const buildDayList = (
+  prayers: Prayer[],
+  next: Prayer,
+  type: ScheduleType
+): { rows: WidgetPrayerRow[]; activeIndex: number } => {
   const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === next.belongsToDate);
+
+  if (type === ScheduleType.Extra) {
+    dayPrayers.sort((a, b) => extrasCanonicalRank(a.english) - extrasCanonicalRank(b.english));
+  }
+
   const activeIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === next.datetime.getTime());
   const rows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time }));
 
@@ -130,12 +167,13 @@ export const buildPrayerWidgetTimeline = (
     const prev = prevIndex >= 0 ? prayers[prevIndex] : null;
     const countdownLabel = formatCountdownAt(labelAt, next.datetime);
     const dateLabel = formatDateLabel(next.belongsToDate, settings.hijriDate);
-    const dayList = buildDayList(prayers, next);
+    const dayList = buildDayList(prayers, next, sequence.type);
 
     return {
       date,
       props: {
         v: WIDGET_PROPS_VERSION,
+        schedule: sequence.type,
         nextName: next.english,
         nextTime: next.time,
         nextEpochMs: next.datetime.getTime(),
@@ -174,14 +212,35 @@ export const buildPrayerWidgetTimeline = (
     entries.push(makeEntry(segmentStart, prevIndex, lastEmittedMs === null ? now : segmentStart));
     lastEmittedMs = segmentStart.getTime();
 
-    // Stepped countdown entries: stop one spacing short of the boundary so
-    // the flip entry keeps its gap. A boundary that somehow predates the
-    // segment start (duplicate prayer datetimes) yields no steps.
+    // Stepped countdown entries: the grid is anchored to the segment start,
+    // but the FINAL step always sits exactly one spacing before the boundary
+    // (the aligned grid alone can leave a tail gap of almost two spacings
+    // when the segment length is not a multiple of the step — real prayer
+    // times rarely are). When the horizon, not the boundary, caps the
+    // segment, the plain aligned grid holds (staleness beyond the anchor is
+    // accepted degradation outside the stepped window). A boundary that
+    // somehow predates the segment start (duplicate prayer datetimes)
+    // yields no steps.
     if (segmentStart.getTime() < steppedUntilMs) {
-      const lastStepMs = Math.min(boundaryMs - MIN_ENTRY_SPACING_MS, steppedUntilMs);
-      for (let stepMs = segmentStart.getTime() + COUNTDOWN_STEP_MS; stepMs <= lastStepMs; stepMs += COUNTDOWN_STEP_MS) {
+      const boundaryCutoffMs = boundaryMs - MIN_ENTRY_SPACING_MS;
+      const cappedByHorizon = boundaryCutoffMs > steppedUntilMs;
+      const lastStepMs = Math.min(boundaryCutoffMs, steppedUntilMs);
+      // Aligned steps must keep one spacing of room to the boundary cutoff
+      // so the anchor entry below never violates the spacing floor
+      const alignedCutoffMs = cappedByHorizon ? lastStepMs : boundaryCutoffMs - MIN_ENTRY_SPACING_MS;
+
+      for (
+        let stepMs = segmentStart.getTime() + COUNTDOWN_STEP_MS;
+        stepMs <= alignedCutoffMs;
+        stepMs += COUNTDOWN_STEP_MS
+      ) {
         entries.push(makeEntry(new Date(stepMs), prevIndex));
         lastEmittedMs = stepMs;
+      }
+
+      if (!cappedByHorizon && lastStepMs - lastEmittedMs >= MIN_ENTRY_SPACING_MS) {
+        entries.push(makeEntry(new Date(lastStepMs), prevIndex));
+        lastEmittedMs = lastStepMs;
       }
     }
 
@@ -201,6 +260,7 @@ export const buildPrayerWidgetTimeline = (
     date: new Date(staleMs),
     props: {
       v: WIDGET_PROPS_VERSION,
+      schedule: sequence.type,
       nextName: finalPrayer.english,
       nextTime: finalPrayer.time,
       nextEpochMs: finalEpochMs,
