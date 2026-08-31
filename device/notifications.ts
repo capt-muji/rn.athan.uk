@@ -9,11 +9,11 @@ import * as Database from '@/stores/database';
 export const updateAndroidChannel = async (sound: number) => {
   if (Platform.OS !== 'android') return;
 
-  const channelId = `athan_${sound + 1}`;
+  const channelId = NotificationUtils.athanAndroidChannelId(sound);
 
   await Notifications.setNotificationChannelAsync(channelId, {
     name: `Athan ${sound + 1}`,
-    sound: `athan${sound + 1}.wav`,
+    sound: `athan${sound + 1}.mp3`,
     importance: Notifications.AndroidImportance.MAX,
     enableVibrate: true,
     vibrationPattern: [0, 250, 250, 250],
@@ -56,6 +56,9 @@ export const addOneScheduledNotificationForPrayer = async (
   const triggerDate = NotificationUtils.genTriggerDate(date, time);
   const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, soundPreference);
   const identifier = prayerNotificationIdentifier(scheduleType, englishName, date);
+  // Only include channelId for Android when alert type is Sound
+  const athanChannelId =
+    alertType === AlertType.Sound ? NotificationUtils.athanAndroidChannelId(soundPreference) : undefined;
 
   try {
     const id = await Notifications.scheduleNotificationAsync({
@@ -64,8 +67,7 @@ export const addOneScheduledNotificationForPrayer = async (
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DATE,
         date: triggerDate,
-        // Only include channelId for Android when alert type is Sound
-        channelId: alertType === AlertType.Sound ? `athan_${soundPreference + 1}` : undefined,
+        channelId: athanChannelId,
       },
     });
 
@@ -121,6 +123,14 @@ export const addOneScheduledReminderForPrayer = async (
   const triggerDate = NotificationUtils.genReminderTriggerDate(date, time, intervalMinutes);
   const content = NotificationUtils.genReminderNotificationContent(englishName, arabicName, intervalMinutes, alertType);
   const identifier = reminderNotificationIdentifier(scheduleType, englishName, date, intervalMinutes);
+  const isAndroidSound = alertType === AlertType.Sound && Platform.OS === 'android';
+  const reminderChannelId = isAndroidSound
+    ? NotificationUtils.reminderAndroidChannelId(englishName, intervalMinutes)
+    : undefined;
+
+  if (isAndroidSound) {
+    await NotificationUtils.createReminderAndroidChannel(englishName, intervalMinutes);
+  }
 
   try {
     const id = await Notifications.scheduleNotificationAsync({
@@ -129,8 +139,7 @@ export const addOneScheduledReminderForPrayer = async (
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DATE,
         date: triggerDate,
-        // Only include channelId for Android when alert type is Sound
-        channelId: alertType === AlertType.Sound && Platform.OS === 'android' ? 'reminder' : undefined,
+        channelId: reminderChannelId,
       },
     });
 

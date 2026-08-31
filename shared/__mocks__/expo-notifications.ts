@@ -19,6 +19,7 @@ export const AndroidImportance = {
 };
 
 export const setNotificationChannelAsync = jest.fn().mockResolvedValue(undefined);
+export const deleteNotificationChannelAsync = jest.fn().mockResolvedValue(undefined);
 export const scheduleNotificationAsync = jest.fn().mockResolvedValue('mock-notification-id');
 export const cancelScheduledNotificationAsync = jest.fn().mockResolvedValue(undefined);
 export const cancelAllScheduledNotificationsAsync = jest.fn().mockResolvedValue(undefined);

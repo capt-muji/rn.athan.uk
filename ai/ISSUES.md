@@ -395,7 +395,7 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Exposure**: With chronologically sane data, index↔name always align with
   `PRAYERS_ENGLISH`, so this is safe in production. It only misbinds with synthetic
   mock data whose times invert the canonical order (e.g. mock day1 has
-  isha 13:59 < maghrib 16:14, so post-rollover index 4 = Isha).
+  isha 13:59 < magrib 16:14, so post-rollover index 4 = Isha).
 - **Decision**: no change now (zero-loss mandate; production parity). Future
   hardening candidate: key alert config by prayer name + date.
 
