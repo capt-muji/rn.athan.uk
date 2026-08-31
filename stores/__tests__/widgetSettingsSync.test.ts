@@ -16,8 +16,8 @@ import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom, popupUpdateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
-import PrayerLockWidget from '@/widgets/LockPrayerWidget';
-import PrayerWidget from '@/widgets/PrayerWidget';
+import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import { ExtrasWidget, PrayerWidget } from '@/widgets/PrayerWidget';
 
 // =============================================================================
 // TEST HELPERS
@@ -53,6 +53,8 @@ const seedPrayerCache = () => {
 
 const widgetPush = () => (PrayerWidget.updateTimeline as jest.Mock).mock.calls;
 const lockPush = () => (PrayerLockWidget.updateTimeline as jest.Mock).mock.calls;
+const extrasPush = () => (ExtrasWidget.updateTimeline as jest.Mock).mock.calls;
+const extrasLockPush = () => (ExtrasLockWidget.updateTimeline as jest.Mock).mock.calls;
 
 // =============================================================================
 // SETTINGS-FOLLOW SUBSCRIPTION
@@ -157,6 +159,8 @@ describe('refreshPrayerWidgets integration', () => {
     jest.useRealTimers();
     (PrayerWidget.updateTimeline as jest.Mock).mockClear();
     (PrayerLockWidget.updateTimeline as jest.Mock).mockClear();
+    (ExtrasWidget.updateTimeline as jest.Mock).mockClear();
+    (ExtrasLockWidget.updateTimeline as jest.Mock).mockClear();
   });
 
   it('pushes a non-empty timeline to both widgets from the seeded cache', async () => {
@@ -166,12 +170,23 @@ describe('refreshPrayerWidgets integration', () => {
 
     expect(widgetPush()).toHaveLength(1);
     expect(lockPush()).toHaveLength(1);
+    expect(extrasPush()).toHaveLength(1);
+    expect(extrasLockPush()).toHaveLength(1);
 
     const homeEntries = widgetPush()[0][0];
     const lockEntries = lockPush()[0][0];
+    const extraEntries = extrasPush()[0][0];
+    const extraLockEntries = extrasLockPush()[0][0];
     expect(homeEntries.length).toBeGreaterThan(0);
     expect(homeEntries).toEqual(lockEntries);
     expect(homeEntries[0].props.v).toBe(WIDGET_PROPS_VERSION);
+
+    // The extras pair carries its own schedule's timeline — same contract,
+    // different countdown targets, extras-stamped
+    expect(extraEntries).toEqual(extraLockEntries);
+    expect(extraEntries).not.toEqual(homeEntries);
+    expect(homeEntries[0].props.schedule).toBe('standard');
+    expect(extraEntries[0].props.schedule).toBe('extra');
   });
 
   it('skips the push entirely when the prayer cache is empty', async () => {
@@ -181,5 +196,7 @@ describe('refreshPrayerWidgets integration', () => {
 
     expect(widgetPush()).toHaveLength(0);
     expect(lockPush()).toHaveLength(0);
+    expect(extrasPush()).toHaveLength(0);
+    expect(extrasLockPush()).toHaveLength(0);
   });
 });
