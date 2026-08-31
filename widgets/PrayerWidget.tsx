@@ -236,10 +236,12 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
     if (environment.widgetFamily === 'systemMedium' && listValid) {
       // One row per prayer: name leading, time trailing (the app's row
       // anatomy), colored by state — passed and active rows solid, upcoming
-      // rows muted (the app's isPassed || isNext → primary rule). The row
-      // block is inset a few points each side (on the list ZStack below), so
-      // the pill sits narrower than the column with slight padding left and
-      // right — which also brings the name and time closer together.
+      // rows muted (the app's isPassed || isNext → primary rule). Every
+      // time is bold, every name regular (owner decision 2026-08-31). The
+      // row block is inset a few points each side (on the list ZStack
+      // below), so the pill sits narrower than the column with slight
+      // padding left and right — which also brings the name and time
+      // closer together.
       const Row = ({ name, time, index }: { name: string; time: string; index: number }) => {
         const rowColor = index === activeIndex ? ACTIVE_ROW_TEXT : index < activeIndex ? ROW_PASSED : ROW_UPCOMING;
 
@@ -259,7 +261,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
             <Spacer />
             <Text
               modifiers={[
-                font({ size: ROW_TEXT_SIZE, weight: 'regular' }),
+                font({ size: ROW_TEXT_SIZE, weight: 'bold' }),
                 monospacedDigit(),
                 foregroundStyle(rowColor),
                 lineLimit(1),
