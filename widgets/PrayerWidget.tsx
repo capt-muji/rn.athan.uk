@@ -135,6 +135,12 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
   }
 
   try {
+    // The rose orb anchors to the medium card's absolute x (~114pt from the
+    // left edge) on BOTH families — center-relative offsets would drop it
+    // into the small card's top-left corner instead of topping the hero
+    // where the medium places it.
+    const roseOrbX = environment.widgetFamily === 'systemSmall' ? 35 : -55;
+
     // The blob lighting layer — blurred orbs anchored to the card's
     // corners, colored by the theme's BLOB_* constants (empty = skipped).
     const Blobs = () => (
@@ -142,7 +148,7 @@ const PrayerWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) 
         <Circle
           modifiers={[
             frame({ width: 170, height: 170 }),
-            offset({ x: -55, y: -75 }),
+            offset({ x: roseOrbX, y: -75 }),
             foregroundStyle(BLOB_A),
             blur(45),
           ]}
