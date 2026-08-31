@@ -41,7 +41,9 @@ export default function ModalWhatsNew({ visible, version, items, onContinue }: P
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.body}>
                 {item.body}
-                {item.platform === 'ios' && <Text style={styles.bodyPlatform}> (iOS only)</Text>}
+                {item.platform && (
+                  <Text style={styles.bodyPlatform}> ({item.platform === 'ios' ? 'iOS' : 'Android'} only)</Text>
+                )}
               </Text>
             </View>
           </View>
