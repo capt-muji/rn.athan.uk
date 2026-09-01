@@ -109,7 +109,12 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     activeRowText: isExtra ? '#ffeaf4' : '#e3eaff',
     pillFill: isExtra ? '#a123aa' : '#0847e5',
     pillStroke: isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)',
-    pillShadow: { color: 'rgba(34, 26, 98, 0.45)', radius: 9, x: 0, y: 2 },
+    pillShadow: {
+      color: isExtra ? 'rgba(95, 10, 115, 0.5)' : 'rgba(10, 30, 140, 0.5)',
+      radius: 9,
+      x: 0,
+      y: 2,
+    },
     orbsSmall: {
       top: 'rgba(128, 0, 255, 0.25)',
       bottom: 'rgba(128, 0, 255, 0.45)',
