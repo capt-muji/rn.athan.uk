@@ -207,12 +207,11 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.34)',
       '#4f46e5',
       '#fce7f3',
-      'rgba(30, 27, 75, 0.45)',
+      'rgba(10, 42, 155, 0.4)',
+      'rgba(110, 0, 107, 0.35)',
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
       'rgba(79, 70, 229, 0.35)',
-      'rgba(255, 255, 255, 0.4)',
-      'rgba(61, 10, 38, 0.45)',
       'rgba(219, 39, 119, 0.35)',
       // Dark palette — Violet Dusk
       'rgba(26, 26, 92, 0.88)', // card
@@ -228,6 +227,8 @@ describe('palette literals', () => {
       'rgba(8, 71, 229, 0.35)', // standard stroke
       'rgba(128, 0, 255, 0.25)', // violet glows (small top + medium main)
       'rgba(128, 0, 255, 0.45)', // small bottom-left glow
+      'rgba(128, 0, 255, 0.34)', // small bottom-right glow — bottom-left at 75%
+      'rgba(255, 255, 255, 0.75)', // light small bottom-right glow
       'rgba(99, 15, 183, 0.55)', // medium bottom-left ultraviolet glow
     ].map(normalizeColor);
 
@@ -255,13 +256,12 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.34)',
       '#4f46e5',
       '#fce7f3',
-      'rgba(30, 27, 75, 0.45)',
+      'rgba(10, 42, 155, 0.4)',
+      'rgba(110, 0, 107, 0.35)',
       'rgba(79, 70, 229, 0.35)',
-      'rgba(61, 10, 38, 0.45)',
       'rgba(219, 39, 119, 0.35)',
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
-      'rgba(255, 255, 255, 0.4)',
       // Home widget — dark Violet Dusk
       'rgba(26, 26, 92, 0.88)',
       '#ff69b4',
@@ -275,6 +275,8 @@ describe('palette literals', () => {
       'rgba(8, 71, 229, 0.35)',
       'rgba(128, 0, 255, 0.25)',
       'rgba(128, 0, 255, 0.45)',
+      'rgba(128, 0, 255, 0.34)',
+      'rgba(255, 255, 255, 0.75)',
       'rgba(128, 0, 255, 0.3)',
       'rgba(165, 180, 252, 0.3)',
       'rgba(99, 15, 183, 0.55)',
@@ -305,9 +307,23 @@ describe('static import discipline', () => {
     }
   });
 
-  it('stores/widget.ts statically imports all four widget kinds', () => {
+  it('stores/widget.ts statically imports all eight home widget kinds', () => {
     const source = readFileSync(join(__dirname, '../../stores/widget.ts'), 'utf8');
-    expect(source).toMatch(/import \{ ExtrasWidget, PrayerWidget \} from '@\/widgets\/PrayerWidget'/);
+    const homeImport = source.match(/import \{[^}]*\} from '@\/widgets\/PrayerWidget'/s);
+    expect(homeImport).not.toBeNull();
+    const homeKinds = [
+      'ExtrasWidget',
+      'ExtrasWidgetDark',
+      'ExtrasWidgetDarkMedium',
+      'ExtrasWidgetMedium',
+      'PrayerWidget',
+      'PrayerWidgetDark',
+      'PrayerWidgetDarkMedium',
+      'PrayerWidgetMedium',
+    ];
+    for (const kind of homeKinds) {
+      expect(homeImport?.[0]).toContain(kind);
+    }
     expect(source).toMatch(/import \{ ExtrasLockWidget, PrayerLockWidget \} from '@\/widgets\/LockPrayerWidget'/);
     expect(source).not.toMatch(/import\s*\(/);
   });

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.16.2",
+    "version": "1.17.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -193,17 +193,59 @@
           "widgets": [
             {
               "name": "PrayerWidget",
-              "displayName": "Next Prayer",
+              "displayName": "Next Prayer (Light)",
               "description": "A countdown to the next prayer.",
               "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemSmall", "systemMedium"]
+              "supportedFamilies": ["systemSmall"]
             },
             {
               "name": "ExtrasWidget",
-              "displayName": "Extra Times",
+              "displayName": "Extra Times (Light)",
               "description": "A countdown to the next extra time.",
               "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemSmall", "systemMedium"]
+              "supportedFamilies": ["systemSmall"]
+            },
+            {
+              "name": "PrayerWidgetMedium",
+              "displayName": "Next Prayer (Light)",
+              "description": "A countdown to the next prayer.",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": ["systemMedium"]
+            },
+            {
+              "name": "ExtrasWidgetMedium",
+              "displayName": "Extra Times (Light)",
+              "description": "A countdown to the next extra time.",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": ["systemMedium"]
+            },
+            {
+              "name": "PrayerWidgetDark",
+              "displayName": "Next Prayer (Dark)",
+              "description": "A countdown to the next prayer.",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": ["systemSmall"]
+            },
+            {
+              "name": "ExtrasWidgetDark",
+              "displayName": "Extra Times (Dark)",
+              "description": "A countdown to the next extra time.",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": ["systemSmall"]
+            },
+            {
+              "name": "PrayerWidgetDarkMedium",
+              "displayName": "Next Prayer (Dark)",
+              "description": "A countdown to the next prayer.",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": ["systemMedium"]
+            },
+            {
+              "name": "ExtrasWidgetDarkMedium",
+              "displayName": "Extra Times (Dark)",
+              "description": "A countdown to the next extra time.",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": ["systemMedium"]
             },
             {
               "name": "PrayerLockWidget",

@@ -17,7 +17,16 @@ import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 import { readWidgetSettings, refreshPrayerWidgets } from '@/stores/widget';
 import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
-import { ExtrasWidget, PrayerWidget } from '@/widgets/PrayerWidget';
+import {
+  ExtrasWidget,
+  ExtrasWidgetDark,
+  ExtrasWidgetDarkMedium,
+  ExtrasWidgetMedium,
+  PrayerWidget,
+  PrayerWidgetDark,
+  PrayerWidgetDarkMedium,
+  PrayerWidgetMedium,
+} from '@/widgets/PrayerWidget';
 
 const makeDayData = (date: string): ISingleApiResponseTransformed => ({
   date,
@@ -46,14 +55,24 @@ const seedPrayerCache = (days: number) => {
 
 const widgetPush = () => (PrayerWidget.updateTimeline as jest.Mock).mock.calls;
 const extrasPush = () => (ExtrasWidget.updateTimeline as jest.Mock).mock.calls;
+const darkPush = () => (PrayerWidgetDark.updateTimeline as jest.Mock).mock.calls;
+const mediumPush = () => (PrayerWidgetMedium.updateTimeline as jest.Mock).mock.calls;
+
+const resetWidgetMocks = () => {
+  (PrayerWidget.updateTimeline as jest.Mock).mockReset();
+  (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
+  (ExtrasWidget.updateTimeline as jest.Mock).mockReset();
+  (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
+  (PrayerWidgetDark.updateTimeline as jest.Mock).mockReset();
+  (ExtrasWidgetDark.updateTimeline as jest.Mock).mockReset();
+  (PrayerWidgetMedium.updateTimeline as jest.Mock).mockReset();
+  (ExtrasWidgetMedium.updateTimeline as jest.Mock).mockReset();
+  (PrayerWidgetDarkMedium.updateTimeline as jest.Mock).mockReset();
+  (ExtrasWidgetDarkMedium.updateTimeline as jest.Mock).mockReset();
+};
 
 describe('refreshPrayerWidgets error tolerance', () => {
-  beforeEach(() => {
-    (PrayerWidget.updateTimeline as jest.Mock).mockReset();
-    (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
-    (ExtrasWidget.updateTimeline as jest.Mock).mockReset();
-    (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
-  });
+  beforeEach(resetWidgetMocks);
 
   it('swallows a native updateTimeline throw and logs it', async () => {
     seedPrayerCache(1);
@@ -92,6 +111,16 @@ describe('refreshPrayerWidgets error tolerance', () => {
     expect(extraEntries).not.toEqual(entries);
     expect(extraEntries[0].props.schedule).toBe('extra');
     expect(entries[0].props.schedule).toBe('standard');
+
+    // The dark kind receives its own theme-stamped copy of the timeline
+    const darkEntries = darkPush()[0][0];
+    expect(darkEntries.length).toBe(entries.length);
+    expect(darkEntries[0].props.theme).toBe('dark');
+    expect(entries[0].props.theme).toBe('light');
+
+    // The medium kind shares its theme's timeline verbatim
+    expect(mediumPush()).toHaveLength(1);
+    expect(mediumPush()[0][0]).toBe(entries);
   });
 });
 
@@ -121,10 +150,7 @@ describe('label-flip re-push scheduler', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    (PrayerWidget.updateTimeline as jest.Mock).mockReset();
-    (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
-    (ExtrasWidget.updateTimeline as jest.Mock).mockReset();
-    (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
+    resetWidgetMocks();
   });
 
   afterEach(() => {
