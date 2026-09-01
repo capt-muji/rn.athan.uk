@@ -195,9 +195,10 @@ describe('palette literals', () => {
     // literal must appear in the layout). Light: the 2026-08-31 "Cotton
     // Candy" pane — rose name, dark ink hero, blue-tinted secondary,
     // indigo/rose pills with pale pink text. Dark (2026-09-01 "Violet
-    // Dusk", owner-approved): navy-violet card, pink name, white hero,
-    // 23%-tinted secondary/upcoming, app indigo + muted magenta pills,
-    // neutral violet depth shadow, violet/ultraviolet orb glows.
+    // Dusk", owner-approved): navy-violet card on every size, pink name,
+    // white hero, periwinkle-tinted small texts with blue-grey medium
+    // texts, app indigo + muted magenta pills, neutral violet depth
+    // shadow, merged violet/electric-violet/blue orb glows.
     const anchors = [
       // Light palette
       'rgba(252, 252, 254, 0.92)',
@@ -214,21 +215,27 @@ describe('palette literals', () => {
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
       // Dark palette — Violet Dusk
-      'rgba(26, 26, 92, 0.88)', // card
+      'rgba(26, 26, 92, 0.88)', // card — every dark size
       '#ff69b4', // eyebrow + stale mark
       '#ffffff', // hero / passed / active row text
-      'rgba(173, 193, 254, 0.54)', // secondary — 23% tint
-      'rgba(173, 193, 254, 0.6)', // upcoming rows — 23% tint
-      'rgba(156, 169, 222, 0.38)', // footer — 23% tint
+      'rgba(173, 193, 254, 0.54)', // secondary — smalls
+      'rgba(173, 193, 254, 0.6)', // upcoming rows — smalls
+      'rgba(156, 169, 222, 0.38)', // footer — smalls
+      'rgba(160, 182, 228, 0.54)', // secondary — mediums, blue-grey
+      'rgba(160, 182, 228, 0.6)', // upcoming rows — mediums, blue-grey
+      'rgba(146, 164, 212, 0.38)', // footer — mediums, blue-grey
       '#a123aa', // extras pill
       '#0847e5', // standard pill — app prayer.activeBackground
       'rgba(34, 26, 98, 0.45)', // pill depth shadow
       'rgba(146, 0, 162, 0.35)', // extras stroke
       'rgba(8, 71, 229, 0.35)', // standard stroke
-      'rgba(128, 0, 255, 0.25)', // violet glows (small top + medium main)
-      'rgba(128, 0, 255, 0.45)', // small bottom-left glow
-      'rgba(128, 0, 255, 0.34)', // small bottom-right glow — bottom-left at 75%
-      'rgba(99, 15, 183, 0.55)', // medium bottom-left ultraviolet glow
+      'rgba(128, 0, 255, 0.25)', // small top glow
+      'rgba(128, 0, 255, 0.45)', // small + medium bottom-left glow
+      'rgba(128, 0, 255, 0.34)', // small bottom-right glow
+      'rgba(165, 180, 252, 0.3)', // small center glow
+      'rgba(155, 30, 255, 0.22)', // medium top glow — electric violet
+      'rgba(130, 145, 240, 0.3)', // medium center glow
+      'rgba(55, 75, 235, 0.17)', // medium bottom-right glow — blue
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -267,6 +274,9 @@ describe('palette literals', () => {
       'rgba(173, 193, 254, 0.54)',
       'rgba(173, 193, 254, 0.6)',
       'rgba(156, 169, 222, 0.38)',
+      'rgba(160, 182, 228, 0.54)',
+      'rgba(160, 182, 228, 0.6)',
+      'rgba(146, 164, 212, 0.38)',
       '#a123aa',
       '#0847e5',
       'rgba(34, 26, 98, 0.45)',
@@ -275,9 +285,10 @@ describe('palette literals', () => {
       'rgba(128, 0, 255, 0.25)',
       'rgba(128, 0, 255, 0.45)',
       'rgba(128, 0, 255, 0.34)',
-      'rgba(128, 0, 255, 0.3)',
       'rgba(165, 180, 252, 0.3)',
-      'rgba(99, 15, 183, 0.55)',
+      'rgba(155, 30, 255, 0.22)',
+      'rgba(130, 145, 240, 0.3)',
+      'rgba(55, 75, 235, 0.17)',
     ].map(normalizeColor);
 
     const allowed = new Set(widgetSpecific.map((c) => JSON.stringify(c)));

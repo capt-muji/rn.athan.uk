@@ -101,11 +101,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     card: 'rgba(26, 26, 92, 0.88)',
     eyebrow: '#ff69b4',
     hero: '#ffffff',
-    secondary: 'rgba(173, 193, 254, 0.54)',
-    footer: 'rgba(156, 169, 222, 0.38)',
+    secondary: isMedium ? 'rgba(160, 182, 228, 0.54)' : 'rgba(173, 193, 254, 0.54)',
+    footer: isMedium ? 'rgba(146, 164, 212, 0.38)' : 'rgba(156, 169, 222, 0.38)',
     staleIcon: '#ff69b4',
     rowPassed: '#ffffff',
-    rowUpcoming: 'rgba(173, 193, 254, 0.6)',
+    rowUpcoming: isMedium ? 'rgba(160, 182, 228, 0.6)' : 'rgba(173, 193, 254, 0.6)',
     activeRowText: '#ffffff',
     pillFill: isExtra ? '#a123aa' : '#0847e5',
     pillStroke: isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)',
@@ -122,15 +122,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       corner: { color: 'rgba(128, 0, 255, 0.34)', size: 130, x: 70, y: 60, blur: 40 },
     },
     orbsMedium: {
-      top: 'rgba(128, 0, 255, 0.25)',
-      bottom: 'rgba(99, 15, 183, 0.55)',
-      center: 'rgba(128, 0, 255, 0.3)',
-      topSize: 110,
+      top: 'rgba(155, 30, 255, 0.22)',
+      bottom: 'rgba(128, 0, 255, 0.45)',
+      center: 'rgba(130, 145, 240, 0.3)',
+      topSize: 165,
       topY: -75,
-      bottomSize: 170,
-      bottomX: -130,
+      bottomSize: 195,
+      bottomX: -110,
       centerSize: 44,
-      corner: { color: 'rgba(128, 0, 255, 0.25)', size: 170, x: 75, y: 58, blur: 33 },
+      corner: { color: 'rgba(55, 75, 235, 0.17)', size: 255, x: 95, y: 58, blur: 75 },
     },
   };
 
@@ -139,7 +139,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   // The top orb's x and blur anchor to each family's absolute card coords —
   // center-relative offsets land it in the small card's corner on medium.
   const topOrbX = isMedium ? -5 : 30;
-  const topOrbBlur = isMedium ? 33 : 38;
+  const topOrbBlur = isMedium ? 60 : 38;
+  const bottomOrbBlur = isMedium ? 82 : 40;
 
   // Fixed row height keeps the floating pill's offset exact and the
   // spacing static. Six 22pt rows fill the systemMedium inner height
@@ -202,7 +203,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   // bottom-left orb, and a small centered orb rising through the countdown.
   // An orb larger than the card's layout height inflates the card's content
   // area and pushes the footer toward the bottom edge — oversized orbs
-  // (the medium 170s) therefore render from a 94pt layout frame scaled up
+  // (the medium 165s–195s) therefore render from a 94pt layout frame scaled up
   // via scaleEffect, a visual transform that cannot affect layout; the
   // blur divides by the scale to land the same softness.
   const OVERSIZE_ORB_LAYOUT = 94;
@@ -216,6 +217,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     }
     const bottomLayoutSize = orbLayoutSize(orbs.bottomSize);
     const bottomScale = orbScale(orbs.bottomSize);
+    const topLayoutSize = orbLayoutSize(orbs.topSize);
+    const topScale = orbScale(orbs.topSize);
     const cornerLayoutSize = orbs.corner ? orbLayoutSize(orbs.corner.size) : 0;
     const cornerScale = orbs.corner ? orbScale(orbs.corner.size) : 1;
 
@@ -223,10 +226,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
         <Circle
           modifiers={[
-            frame({ width: orbs.topSize, height: orbs.topSize }),
+            frame({ width: topLayoutSize, height: topLayoutSize }),
+            scaleEffect(topScale),
             offset({ x: topOrbX, y: orbs.topY }),
             foregroundStyle(orbs.top),
-            blur(topOrbBlur),
+            blur(topOrbBlur / topScale),
           ]}
         />
         <Circle
@@ -235,7 +239,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
             scaleEffect(bottomScale),
             offset({ x: orbs.bottomX, y: 60 }),
             foregroundStyle(orbs.bottom),
-            blur(40 / bottomScale),
+            blur(bottomOrbBlur / bottomScale),
           ]}
         />
         <Circle
