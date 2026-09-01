@@ -62,69 +62,89 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   'widget';
 
   // Dual palette — the system color scheme themes the widget. Light keeps
-  // the translucent blue-grey pane; dark mirrors the app's own screen: a
-  // deep navy card (COLORS.gradient.screen.start at the light pane's 0.8
-  // translucency), white hero (text.primary), the app's exact secondary
-  // and muted label tints, and the app's own indigo/purple active pills
-  // with their real shadows. WidgetKit re-renders the layout when the
-  // system appearance flips, so no timeline re-push is needed for the
-  // theme itself.
+  // the translucent blue-grey pane; dark mirrors the app's own screen.
+  // WidgetKit re-renders the layout when the system appearance flips, so
+  // no timeline re-push is needed for the theme itself.
   const isDark = environment.colorScheme === 'dark';
-
-  const CARD_BACKGROUND_LIGHT = 'rgba(234, 239, 246, 0.8)';
-  const CARD_BACKGROUND_DARK = 'rgba(3, 26, 76, 0.8)';
-  const CARD_BACKGROUND = isDark ? CARD_BACKGROUND_DARK : CARD_BACKGROUND_LIGHT;
-
-  // Light: bare rose accent. Dark: the app's countdown-name tint
-  // (COLORS.text.secondary) — the app renders this exact element that way.
-  const EYEBROW_TEXT = isDark ? 'rgba(160, 200, 255, 0.54)' : '#db2777';
-
-  // Light: dark ink hero. Dark: the app's white primary text.
-  const TEXT_PRIMARY = isDark ? '#ffffff' : '#1e1b2e';
-  const TEXT_SECONDARY = isDark ? 'rgba(160, 200, 255, 0.54)' : 'rgba(42, 68, 130, 0.42)';
-  const TEXT_FOOTER = isDark ? 'rgba(138, 169, 214, 0.38)' : 'rgba(42, 68, 130, 0.34)';
-
-  // The active row pill. Light: indigo (#4f46e5, "Pill Indigo Full" from
-  // the app's sound-picker selection) over pale pink text on the standard
-  // widgets, rose (#db2777 — the widget family's own accent) with a
-  // rose-tinted stroke and deep rose shadow on the extras widgets. Dark:
-  // the app's own active backgrounds — #0847e5 (prayer.activeBackground)
-  // and #9200a2 (activeBackgroundExtras) — with white row text and the
-  // app's real pill shadows (shadow.prayer / prayerExtras). Entries from
-  // older app versions carry no `schedule` and render the standard trio.
   const isExtra = props?.schedule === 'extra';
 
+  // ── DARK PALETTE ("Violet Dusk", owner-approved 2026-09-01) ──────────────
+  // Navy-violet card with violet/ultraviolet orb glow, pink eyebrow, and
+  // pills that keep their light-mode geometry. The pill shadow is neutral
+  // depth (a darker card tone — pink casts read as neon, black reads
+  // harsh). Secondary/footer/upcoming tints are the light theme's blues
+  // blended 23% toward pinkish-purple to match the theme.
+  const CARD_BACKGROUND_DARK = 'rgba(26, 26, 92, 0.88)';
+  const EYEBROW_TEXT_DARK = '#ff69b4';
+  const TEXT_PRIMARY_DARK = '#ffffff';
+  const TEXT_SECONDARY_DARK = 'rgba(173, 193, 254, 0.54)';
+  const TEXT_FOOTER_DARK = 'rgba(156, 169, 222, 0.38)';
+  const ACTIVE_BACKGROUND_DARK = isExtra ? '#a123aa' : '#0847e5';
+  const ACTIVE_ROW_TEXT_DARK = '#ffffff';
+  const SHADOW_COLOR_DARK = 'rgba(34, 26, 98, 0.45)';
+  const SHADOW_RADIUS_DARK = 9;
+  const SHADOW_X_DARK = 0;
+  const SHADOW_Y_DARK = 2;
+  const STROKE_COLOR_DARK = isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)';
+  const ROW_PASSED_DARK = '#ffffff';
+  const ROW_UPCOMING_DARK = 'rgba(173, 193, 254, 0.6)';
+  const STALE_ICON_DARK = '#ff69b4';
+  // Small-card orbs: violet glows, the bottom-left one strongest.
+  const TOP_ORB_COLOR_DARK = 'rgba(128, 0, 255, 0.25)';
+  const BOTTOM_ORB_COLOR_DARK = 'rgba(128, 0, 255, 0.45)';
+  const CENTER_ORB_COLOR_DARK = 'rgba(165, 180, 252, 0.3)';
+  // Medium-card orbs: point-sized orbs cover a far smaller fraction of
+  // the wide card, so they scale up (≤170pt, the proven safe ceiling) and
+  // the base orb anchors near the left edge; the main orb rides high
+  // (y −75) so it reads off-center like an ambient light, not a spot.
+  const TOP_ORB_COLOR_MEDIUM_DARK = 'rgba(128, 0, 255, 0.25)';
+  const BOTTOM_ORB_COLOR_MEDIUM_DARK = 'rgba(99, 15, 183, 0.55)';
+  const CENTER_ORB_COLOR_MEDIUM_DARK = 'rgba(128, 0, 255, 0.3)';
+  const TOP_ORB_SIZE_M_DARK = 110;
+  const TOP_ORB_Y_M_DARK = -75;
+  const BOTTOM_ORB_SIZE_M_DARK = 170;
+  const BOTTOM_ORB_X_M_DARK = -130;
+  const CENTER_ORB_SIZE_M_DARK = 44;
+  // ── END DARK PALETTE ─────────────────────────────────────────────────────
+
+  const CARD_BACKGROUND_LIGHT = 'rgba(234, 239, 246, 0.8)';
+  const CARD_BACKGROUND = isDark ? CARD_BACKGROUND_DARK : CARD_BACKGROUND_LIGHT;
+
+  const EYEBROW_TEXT = isDark ? EYEBROW_TEXT_DARK : '#db2777';
+
+  const TEXT_PRIMARY = isDark ? TEXT_PRIMARY_DARK : '#1e1b2e';
+  const TEXT_SECONDARY = isDark ? TEXT_SECONDARY_DARK : 'rgba(42, 68, 130, 0.42)';
+  const TEXT_FOOTER = isDark ? TEXT_FOOTER_DARK : 'rgba(42, 68, 130, 0.34)';
+
+  // The active row pill. Light: indigo (#4f46e5) over pale pink text on
+  // the standard widgets, rose (#db2777) with a rose-tinted stroke and
+  // deep rose shadow on the extras widgets. Dark: per the design knobs.
+  // Entries from older app versions carry no `schedule` and render the
+  // standard trio.
   const ACTIVE_BACKGROUND_LIGHT = isExtra ? '#db2777' : '#4f46e5';
-  const ACTIVE_BACKGROUND_DARK = isExtra ? '#9200a2' : '#0847e5';
   const ACTIVE_BACKGROUND = isDark ? ACTIVE_BACKGROUND_DARK : ACTIVE_BACKGROUND_LIGHT;
 
-  const ACTIVE_ROW_TEXT = isDark ? '#ffffff' : '#fce7f3';
+  const ACTIVE_ROW_TEXT = isDark ? ACTIVE_ROW_TEXT_DARK : '#fce7f3';
 
   const ACTIVE_SHADOW_LIGHT = isExtra ? 'rgba(61, 10, 38, 0.45)' : 'rgba(30, 27, 75, 0.45)';
-  const ACTIVE_SHADOW_DARK = isExtra ? '#6e006b' : '#081a76';
-  const ACTIVE_SHADOW = isDark ? ACTIVE_SHADOW_DARK : ACTIVE_SHADOW_LIGHT;
+  const ACTIVE_SHADOW = isDark ? SHADOW_COLOR_DARK : ACTIVE_SHADOW_LIGHT;
 
-  // Dark rows follow the app exactly: passed and active rows white
-  // (text.primary — the app's isPassed || isNext → primary rule), upcoming
-  // rows muted (text.muted).
-  const ROW_PASSED = isDark ? '#ffffff' : '#2f3d5c';
-  const ROW_UPCOMING = isDark ? 'rgba(138, 169, 214, 0.38)' : 'rgba(42, 68, 130, 0.32)';
+  const ROW_PASSED = isDark ? ROW_PASSED_DARK : '#2f3d5c';
+  const ROW_UPCOMING = isDark ? ROW_UPCOMING_DARK : 'rgba(42, 68, 130, 0.32)';
 
-  // Stale card mark: rose in light, the app's periwinkle icon fill
-  // (COLORS.icon.primary) in dark.
-  const STALE_ICON = isDark ? '#a5b4fc' : '#db2777';
+  const STALE_ICON = isDark ? STALE_ICON_DARK : '#db2777';
 
-  // The stroke stays the light convention in both themes — the pill fill
-  // at 0.35 — applied to the app's dark fills.
   const STROKE_LIGHT = isExtra ? 'rgba(219, 39, 119, 0.35)' : 'rgba(79, 70, 229, 0.35)';
-  const STROKE_DARK = isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)';
-  const STROKE_COLOR = isDark ? STROKE_DARK : STROKE_LIGHT;
+  const STROKE_COLOR = isDark ? STROKE_COLOR_DARK : STROKE_LIGHT;
   const STROKE_WIDTH = 1;
 
-  // Bottom-left orb of the glow lighting (see Blobs below). Light: white.
-  // Dark: the app's gradient end (COLORS.gradient.screen.end) — the purple
-  // rise at the bottom of the app's own screen.
-  const BOTTOM_ORB_COLOR = isDark ? 'rgba(91, 30, 170, 0.5)' : 'rgba(255, 255, 255, 0.4)';
+  // Shadow geometry: light keeps the lifted 4pt throw; dark geometry
+  // follows the shadow-treatment knobs above.
+  const SHADOW_RADIUS = isDark ? SHADOW_RADIUS_DARK : 4;
+  const SHADOW_X = isDark ? SHADOW_X_DARK : 1;
+  const SHADOW_Y = isDark ? SHADOW_Y_DARK : 4;
+
+  const BOTTOM_ORB_COLOR = isDark ? BOTTOM_ORB_COLOR_DARK : 'rgba(255, 255, 255, 0.4)';
 
   // Medium list geometry: fixed row height so the floating pill's offset is
   // exact and the spacing never jumps (the app's rows are a fixed 57pt for
@@ -201,10 +221,27 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     // hero near the horizontal center.
     const topOrbX = environment.widgetFamily === 'systemSmall' ? 30 : -5;
     const topOrbBlur = environment.widgetFamily === 'systemSmall' ? 38 : 33;
-    // Light: white glow. Dark: the app's periwinkle icon tint
-    // (COLORS.icon.primary) softened — it reads as a haze on the navy
-    // card, not a spotlight.
-    const topOrbColor = isDark ? 'rgba(165, 180, 252, 0.35)' : '#ffffff';
+    const topOrbColor = !isDark
+      ? '#ffffff'
+      : environment.widgetFamily === 'systemMedium'
+        ? TOP_ORB_COLOR_MEDIUM_DARK
+        : TOP_ORB_COLOR_DARK;
+    const centerOrbColor = !isDark
+      ? '#ffffff'
+      : environment.widgetFamily === 'systemMedium'
+        ? CENTER_ORB_COLOR_MEDIUM_DARK
+        : CENTER_ORB_COLOR_DARK;
+    const bottomOrbColor = !isDark
+      ? BOTTOM_ORB_COLOR
+      : environment.widgetFamily === 'systemMedium'
+        ? BOTTOM_ORB_COLOR_MEDIUM_DARK
+        : BOTTOM_ORB_COLOR_DARK;
+    const isMedium = environment.widgetFamily === 'systemMedium';
+    const topOrbSize = isDark && isMedium ? TOP_ORB_SIZE_M_DARK : 85;
+    const topOrbY = isDark && isMedium ? TOP_ORB_Y_M_DARK : -38;
+    const bottomOrbSize = isDark && isMedium ? BOTTOM_ORB_SIZE_M_DARK : 130;
+    const bottomOrbX = isDark && isMedium ? BOTTOM_ORB_X_M_DARK : -70;
+    const centerOrbSize = isDark && isMedium ? CENTER_ORB_SIZE_M_DARK : 34;
 
     // The glow lighting — three blurred orbs: a top orb above the
     // hero, a faint bottom-left orb, and a small centered orb rising
@@ -214,22 +251,27 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
         <Circle
           modifiers={[
-            frame({ width: 85, height: 85 }),
-            offset({ x: topOrbX, y: -38 }),
+            frame({ width: topOrbSize, height: topOrbSize }),
+            offset({ x: topOrbX, y: topOrbY }),
             foregroundStyle(topOrbColor),
             blur(topOrbBlur),
           ]}
         />
         <Circle
           modifiers={[
-            frame({ width: 130, height: 130 }),
-            offset({ x: -70, y: 60 }),
-            foregroundStyle(BOTTOM_ORB_COLOR),
+            frame({ width: bottomOrbSize, height: bottomOrbSize }),
+            offset({ x: bottomOrbX, y: 60 }),
+            foregroundStyle(bottomOrbColor),
             blur(40),
           ]}
         />
         <Circle
-          modifiers={[frame({ width: 34, height: 34 }), offset({ x: 0, y: 8 }), foregroundStyle(topOrbColor), blur(30)]}
+          modifiers={[
+            frame({ width: centerOrbSize, height: centerOrbSize }),
+            offset({ x: 0, y: 8 }),
+            foregroundStyle(centerOrbColor),
+            blur(30),
+          ]}
         />
       </ZStack>
     );
@@ -383,7 +425,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
               shape: 'roundedRectangle',
               cornerRadius: ROW_CORNER_RADIUS,
             }),
-            shadow({ radius: 4, x: 1, y: 4, color: ACTIVE_SHADOW }),
+            shadow({ radius: SHADOW_RADIUS, x: SHADOW_X, y: SHADOW_Y, color: ACTIVE_SHADOW }),
             frame({ height: ROW_HEIGHT }),
             offset({ y: pillY }),
           ]}
