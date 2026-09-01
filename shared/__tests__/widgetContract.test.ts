@@ -228,7 +228,8 @@ describe('palette literals', () => {
       'rgba(146, 164, 212, 0.38)', // footer — mediums, blue-grey
       '#a123aa', // extras pill
       '#0847e5', // standard pill — app prayer.activeBackground
-      'rgba(34, 26, 98, 0.45)', // pill depth shadow
+      'rgba(10, 30, 140, 0.5)', // pill depth shadow — standard, deep blue
+      'rgba(95, 10, 115, 0.5)', // pill depth shadow — extras, deep pinky purple
       'rgba(146, 0, 162, 0.35)', // extras stroke
       'rgba(8, 71, 229, 0.35)', // standard stroke
       'rgba(128, 0, 255, 0.25)', // small top glow
@@ -281,7 +282,8 @@ describe('palette literals', () => {
       'rgba(146, 164, 212, 0.38)',
       '#a123aa',
       '#0847e5',
-      'rgba(34, 26, 98, 0.45)',
+      'rgba(10, 30, 140, 0.5)',
+      'rgba(95, 10, 115, 0.5)',
       'rgba(146, 0, 162, 0.35)',
       'rgba(8, 71, 229, 0.35)',
       'rgba(128, 0, 255, 0.25)',
