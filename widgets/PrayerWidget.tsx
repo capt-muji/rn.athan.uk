@@ -178,6 +178,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
 
     return (
       <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+        <Blobs />
         <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Spacer />
           <Image systemName='moon.stars.fill' size={26} color={STALE_ICON} />
@@ -214,68 +215,65 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     return <NeutralCard title='Athan' subtitle='Prayer times for London' />;
   }
 
+  // The glow lighting — three blurred orbs: a main orb above the hero
+  // (high on the medium card), a bottom-left orb, and a small centered
+  // orb rising through the countdown. White in light; violet and
+  // ultraviolet in dark. Defined before the cards so the stale and
+  // neutral states share the theme's lighting too.
+  const topOrbX = environment.widgetFamily === 'systemSmall' ? 30 : -5;
+  const topOrbBlur = environment.widgetFamily === 'systemSmall' ? 38 : 33;
+  const topOrbColor = !isDark
+    ? '#ffffff'
+    : environment.widgetFamily === 'systemMedium'
+      ? TOP_ORB_COLOR_MEDIUM_DARK
+      : TOP_ORB_COLOR_DARK;
+  const centerOrbColor = !isDark
+    ? '#ffffff'
+    : environment.widgetFamily === 'systemMedium'
+      ? CENTER_ORB_COLOR_MEDIUM_DARK
+      : CENTER_ORB_COLOR_DARK;
+  const bottomOrbColor = !isDark
+    ? BOTTOM_ORB_COLOR
+    : environment.widgetFamily === 'systemMedium'
+      ? BOTTOM_ORB_COLOR_MEDIUM_DARK
+      : BOTTOM_ORB_COLOR_DARK;
+  const isMedium = environment.widgetFamily === 'systemMedium';
+  const topOrbSize = isDark && isMedium ? TOP_ORB_SIZE_M_DARK : 85;
+  const topOrbY = isDark && isMedium ? TOP_ORB_Y_M_DARK : -38;
+  const bottomOrbSize = isDark && isMedium ? BOTTOM_ORB_SIZE_M_DARK : 130;
+  const bottomOrbX = isDark && isMedium ? BOTTOM_ORB_X_M_DARK : -70;
+  const centerOrbSize = isDark && isMedium ? CENTER_ORB_SIZE_M_DARK : 34;
+
+  const Blobs = () => (
+    <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+      <Circle
+        modifiers={[
+          frame({ width: topOrbSize, height: topOrbSize }),
+          offset({ x: topOrbX, y: topOrbY }),
+          foregroundStyle(topOrbColor),
+          blur(topOrbBlur),
+        ]}
+      />
+      <Circle
+        modifiers={[
+          frame({ width: bottomOrbSize, height: bottomOrbSize }),
+          offset({ x: bottomOrbX, y: 60 }),
+          foregroundStyle(bottomOrbColor),
+          blur(40),
+        ]}
+      />
+      <Circle
+        modifiers={[
+          frame({ width: centerOrbSize, height: centerOrbSize }),
+          offset({ x: 0, y: 8 }),
+          foregroundStyle(centerOrbColor),
+          blur(30),
+        ]}
+      />
+    </ZStack>
+  );
+
   try {
-    // The top orb's anchor and blur differ per family: on the small card it
-    // sits right of center with a wider blur (at medium blur its hotspot
-    // pools too hot in the tighter card); on the medium card it tops the
-    // hero near the horizontal center.
-    const topOrbX = environment.widgetFamily === 'systemSmall' ? 30 : -5;
-    const topOrbBlur = environment.widgetFamily === 'systemSmall' ? 38 : 33;
-    const topOrbColor = !isDark
-      ? '#ffffff'
-      : environment.widgetFamily === 'systemMedium'
-        ? TOP_ORB_COLOR_MEDIUM_DARK
-        : TOP_ORB_COLOR_DARK;
-    const centerOrbColor = !isDark
-      ? '#ffffff'
-      : environment.widgetFamily === 'systemMedium'
-        ? CENTER_ORB_COLOR_MEDIUM_DARK
-        : CENTER_ORB_COLOR_DARK;
-    const bottomOrbColor = !isDark
-      ? BOTTOM_ORB_COLOR
-      : environment.widgetFamily === 'systemMedium'
-        ? BOTTOM_ORB_COLOR_MEDIUM_DARK
-        : BOTTOM_ORB_COLOR_DARK;
-    const isMedium = environment.widgetFamily === 'systemMedium';
-    const topOrbSize = isDark && isMedium ? TOP_ORB_SIZE_M_DARK : 85;
-    const topOrbY = isDark && isMedium ? TOP_ORB_Y_M_DARK : -38;
-    const bottomOrbSize = isDark && isMedium ? BOTTOM_ORB_SIZE_M_DARK : 130;
-    const bottomOrbX = isDark && isMedium ? BOTTOM_ORB_X_M_DARK : -70;
-    const centerOrbSize = isDark && isMedium ? CENTER_ORB_SIZE_M_DARK : 34;
-
-    // The glow lighting — three blurred orbs: a top orb above the
-    // hero, a faint bottom-left orb, and a small centered orb rising
-    // through the countdown. White in light; periwinkle/purple (the
-    // app's icon tint and gradient end) in dark.
-    const Blobs = () => (
-      <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-        <Circle
-          modifiers={[
-            frame({ width: topOrbSize, height: topOrbSize }),
-            offset({ x: topOrbX, y: topOrbY }),
-            foregroundStyle(topOrbColor),
-            blur(topOrbBlur),
-          ]}
-        />
-        <Circle
-          modifiers={[
-            frame({ width: bottomOrbSize, height: bottomOrbSize }),
-            offset({ x: bottomOrbX, y: 60 }),
-            foregroundStyle(bottomOrbColor),
-            blur(40),
-          ]}
-        />
-        <Circle
-          modifiers={[
-            frame({ width: centerOrbSize, height: centerOrbSize }),
-            offset({ x: 0, y: 8 }),
-            foregroundStyle(centerOrbColor),
-            blur(30),
-          ]}
-        />
-      </ZStack>
-    );
-
     // Terminal state: every timeline entry has passed and the app has not
     // re-pushed — the moon-and-stars refresh card. Entries from an older
     // app version missing segment bounds degrade here too.
