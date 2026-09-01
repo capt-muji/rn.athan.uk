@@ -126,7 +126,7 @@ const activeEntryAt = <T extends { date: Date }>(entries: T[], instant: number):
 describe('virtual week model test', () => {
   const sequence = makeSequence();
   const prayers = sequence.prayers;
-  const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, SETTINGS);
+  const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, SETTINGS, 'light');
 
   const finalPrayer = prayers[prayers.length - 1];
   // The stale entry flips at the final prayer, pushed later only if the last
@@ -415,7 +415,7 @@ const extrasRank = (english: string): number => {
 describe('extras virtual week model test', () => {
   const sequence = makeExtrasSequence();
   const prayers = sequence.prayers;
-  const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, SETTINGS);
+  const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, SETTINGS, 'light');
 
   const finalPrayer = prayers[prayers.length - 1];
   const lastRealEntryMs = entries[entries.length - 2].date.getTime();
