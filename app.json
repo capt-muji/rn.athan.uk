@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.15.0",
+    "version": "1.15.1",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -184,6 +184,7 @@
         }
       ],
       "./plugins/removeUnusedAndroidPermissions",
+      "./plugins/gradleJvmMemory",
       "expo-asset",
       "expo-background-task",
       [
