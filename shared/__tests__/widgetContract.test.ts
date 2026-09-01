@@ -200,7 +200,7 @@ describe('palette literals', () => {
     // neutral violet depth shadow, violet/ultraviolet orb glows.
     const anchors = [
       // Light palette
-      'rgba(234, 239, 246, 0.8)',
+      'rgba(252, 252, 254, 0.92)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
@@ -228,7 +228,6 @@ describe('palette literals', () => {
       'rgba(128, 0, 255, 0.25)', // violet glows (small top + medium main)
       'rgba(128, 0, 255, 0.45)', // small bottom-left glow
       'rgba(128, 0, 255, 0.34)', // small bottom-right glow — bottom-left at 75%
-      'rgba(255, 255, 255, 0.75)', // light small bottom-right glow
       'rgba(99, 15, 183, 0.55)', // medium bottom-left ultraviolet glow
     ].map(normalizeColor);
 
@@ -249,7 +248,7 @@ describe('palette literals', () => {
       '#ffffff',
       'rgba(255, 255, 255, 0.6)',
       // Home widget — light Cotton Candy
-      'rgba(234, 239, 246, 0.8)',
+      'rgba(252, 252, 254, 0.92)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
@@ -276,7 +275,6 @@ describe('palette literals', () => {
       'rgba(128, 0, 255, 0.25)',
       'rgba(128, 0, 255, 0.45)',
       'rgba(128, 0, 255, 0.34)',
-      'rgba(255, 255, 255, 0.75)',
       'rgba(128, 0, 255, 0.3)',
       'rgba(165, 180, 252, 0.3)',
       'rgba(99, 15, 183, 0.55)',

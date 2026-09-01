@@ -70,33 +70,18 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   const isDark = theme === 'dark';
   const isMedium = environment.widgetFamily === 'systemMedium';
 
-  // Two self-contained palettes: text colors, the active-pill treatment,
-  // and the orb lighting per card family. Fixed-size orbs are capped at
+  // Two self-contained palettes: text colors and the active-pill
+  // treatment. The orb lighting is DARK-only — the light cards sit on
+  // their plain translucent background. Fixed-size orbs are capped at
   // 170pt — anything larger inflates the card ZStack past the system slot
   // and pushes the standard list's flush footer into the card's bottom
-  // edge (verified at 185pt). The MEDIUM orb geometry (positions, sizes,
-  // blur) is IDENTICAL in both themes — only the colors differ, and the
-  // light theme renders every orb pure white. The main orb rides high
-  // off-center (ambient light, not a spot); the bottom-left orb anchors
-  // near the left edge; the below-list orb sits centered under the day
-  // list to fill the dark bottom-center. Small cards mirror their
-  // bottom-left orb onto the bottom right at 75% strength to lift the
-  // dark corner. The light theme renders every orb white (the small
-  // corner runs at 75% so it stays softer than the bottom-left).
-  const LIGHT_ORBS = {
-    top: '#ffffff',
-    bottom: '#ffffff',
-    center: '#ffffff',
-    topSize: 85,
-    topY: -38,
-    bottomSize: 130,
-    bottomX: -70,
-    centerSize: 34,
-    corner: { color: 'rgba(255, 255, 255, 0.75)', size: 130, x: 70, y: 60, blur: 40 },
-  };
-
+  // edge (verified at 185pt). The main orb rides high off-center
+  // (ambient light, not a spot); the bottom-left orb anchors near the
+  // left edge; the below-list orb sits centered under the day list to
+  // fill the dark bottom-center. Small cards mirror their bottom-left
+  // orb onto the bottom right at 75% strength to lift the dark corner.
   const LIGHT = {
-    card: 'rgba(234, 239, 246, 0.8)',
+    card: 'rgba(252, 252, 254, 0.92)',
     eyebrow: '#db2777',
     hero: '#1e1b2e',
     secondary: 'rgba(42, 68, 130, 0.42)',
@@ -110,18 +95,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     // The app's own active-pill shadows: the pill's hue, not black — a
     // same-hue shadow reads as a soft glow while still lifting the pill.
     pillShadow: { color: isExtra ? 'rgba(110, 0, 107, 0.35)' : 'rgba(10, 42, 155, 0.4)', radius: 6, x: 0, y: 3 },
-    orbsSmall: LIGHT_ORBS,
-    orbsMedium: {
-      top: '#ffffff',
-      bottom: '#ffffff',
-      center: '#ffffff',
-      topSize: 110,
-      topY: -75,
-      bottomSize: 170,
-      bottomX: -130,
-      centerSize: 44,
-      corner: { color: '#ffffff', size: 170, x: 75, y: 58, blur: 33 },
-    },
   };
 
   const DARK = {
@@ -162,7 +135,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   };
 
   const palette = isDark ? DARK : LIGHT;
-  const orbs = isMedium ? palette.orbsMedium : palette.orbsSmall;
+  const orbs = isDark ? (isMedium ? DARK.orbsMedium : DARK.orbsSmall) : null;
   // The top orb's x and blur anchor to each family's absolute card coords —
   // center-relative offsets land it in the small card's corner on medium.
   const topOrbX = isMedium ? -5 : 30;
@@ -235,51 +208,58 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   const OVERSIZE_ORB_LAYOUT = 94;
   const orbLayoutSize = (size: number): number => (size > 155 ? OVERSIZE_ORB_LAYOUT : size);
   const orbScale = (size: number): number => size / orbLayoutSize(size);
-  const bottomLayoutSize = orbLayoutSize(orbs.bottomSize);
-  const bottomScale = orbScale(orbs.bottomSize);
-  const cornerLayoutSize = orbs.corner ? orbLayoutSize(orbs.corner.size) : 0;
-  const cornerScale = orbs.corner ? orbScale(orbs.corner.size) : 1;
 
-  const Blobs = () => (
-    <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-      <Circle
-        modifiers={[
-          frame({ width: orbs.topSize, height: orbs.topSize }),
-          offset({ x: topOrbX, y: orbs.topY }),
-          foregroundStyle(orbs.top),
-          blur(topOrbBlur),
-        ]}
-      />
-      <Circle
-        modifiers={[
-          frame({ width: bottomLayoutSize, height: bottomLayoutSize }),
-          scaleEffect(bottomScale),
-          offset({ x: orbs.bottomX, y: 60 }),
-          foregroundStyle(orbs.bottom),
-          blur(40 / bottomScale),
-        ]}
-      />
-      <Circle
-        modifiers={[
-          frame({ width: orbs.centerSize, height: orbs.centerSize }),
-          offset({ x: 0, y: 8 }),
-          foregroundStyle(orbs.center),
-          blur(30),
-        ]}
-      />
-      {orbs.corner ? (
+  // The light theme renders no orbs — only the dark cards carry the blur.
+  const Blobs = () => {
+    if (!orbs) {
+      return null;
+    }
+    const bottomLayoutSize = orbLayoutSize(orbs.bottomSize);
+    const bottomScale = orbScale(orbs.bottomSize);
+    const cornerLayoutSize = orbs.corner ? orbLayoutSize(orbs.corner.size) : 0;
+    const cornerScale = orbs.corner ? orbScale(orbs.corner.size) : 1;
+
+    return (
+      <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
         <Circle
           modifiers={[
-            frame({ width: cornerLayoutSize, height: cornerLayoutSize }),
-            scaleEffect(cornerScale),
-            offset({ x: orbs.corner.x, y: orbs.corner.y }),
-            foregroundStyle(orbs.corner.color),
-            blur(orbs.corner.blur / cornerScale),
+            frame({ width: orbs.topSize, height: orbs.topSize }),
+            offset({ x: topOrbX, y: orbs.topY }),
+            foregroundStyle(orbs.top),
+            blur(topOrbBlur),
           ]}
         />
-      ) : null}
-    </ZStack>
-  );
+        <Circle
+          modifiers={[
+            frame({ width: bottomLayoutSize, height: bottomLayoutSize }),
+            scaleEffect(bottomScale),
+            offset({ x: orbs.bottomX, y: 60 }),
+            foregroundStyle(orbs.bottom),
+            blur(40 / bottomScale),
+          ]}
+        />
+        <Circle
+          modifiers={[
+            frame({ width: orbs.centerSize, height: orbs.centerSize }),
+            offset({ x: 0, y: 8 }),
+            foregroundStyle(orbs.center),
+            blur(30),
+          ]}
+        />
+        {orbs.corner ? (
+          <Circle
+            modifiers={[
+              frame({ width: cornerLayoutSize, height: cornerLayoutSize }),
+              scaleEffect(cornerScale),
+              offset({ x: orbs.corner.x, y: orbs.corner.y }),
+              foregroundStyle(orbs.corner.color),
+              blur(orbs.corner.blur / cornerScale),
+            ]}
+          />
+        ) : null}
+      </ZStack>
+    );
+  };
 
   try {
     // Every timeline entry has passed, or an older app version wrote the
