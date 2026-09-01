@@ -19,7 +19,16 @@ import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { refreshPrayerWidgets } from '@/stores/widget';
 import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
-import { ExtrasWidget, PrayerWidget } from '@/widgets/PrayerWidget';
+import {
+  ExtrasWidget,
+  ExtrasWidgetDark,
+  ExtrasWidgetDarkMedium,
+  ExtrasWidgetMedium,
+  PrayerWidget,
+  PrayerWidgetDark,
+  PrayerWidgetDarkMedium,
+  PrayerWidgetMedium,
+} from '@/widgets/PrayerWidget';
 
 describe('refreshPrayerWidgets platform gate', () => {
   it('is a no-op on Android: no cache reads, no native pushes', async () => {
@@ -47,5 +56,11 @@ describe('refreshPrayerWidgets platform gate', () => {
     expect(PrayerLockWidget.updateTimeline).not.toHaveBeenCalled();
     expect(ExtrasWidget.updateTimeline).not.toHaveBeenCalled();
     expect(ExtrasLockWidget.updateTimeline).not.toHaveBeenCalled();
+    expect(PrayerWidgetDark.updateTimeline).not.toHaveBeenCalled();
+    expect(ExtrasWidgetDark.updateTimeline).not.toHaveBeenCalled();
+    expect(PrayerWidgetMedium.updateTimeline).not.toHaveBeenCalled();
+    expect(ExtrasWidgetMedium.updateTimeline).not.toHaveBeenCalled();
+    expect(PrayerWidgetDarkMedium.updateTimeline).not.toHaveBeenCalled();
+    expect(ExtrasWidgetDarkMedium.updateTimeline).not.toHaveBeenCalled();
   });
 });

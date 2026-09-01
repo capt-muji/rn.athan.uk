@@ -17,7 +17,16 @@ import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom, popupUpdateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
 import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
-import { ExtrasWidget, PrayerWidget } from '@/widgets/PrayerWidget';
+import {
+  ExtrasWidget,
+  ExtrasWidgetDark,
+  ExtrasWidgetDarkMedium,
+  ExtrasWidgetMedium,
+  PrayerWidget,
+  PrayerWidgetDark,
+  PrayerWidgetDarkMedium,
+  PrayerWidgetMedium,
+} from '@/widgets/PrayerWidget';
 
 // =============================================================================
 // TEST HELPERS
@@ -55,6 +64,25 @@ const widgetPush = () => (PrayerWidget.updateTimeline as jest.Mock).mock.calls;
 const lockPush = () => (PrayerLockWidget.updateTimeline as jest.Mock).mock.calls;
 const extrasPush = () => (ExtrasWidget.updateTimeline as jest.Mock).mock.calls;
 const extrasLockPush = () => (ExtrasLockWidget.updateTimeline as jest.Mock).mock.calls;
+const darkPush = () => (PrayerWidgetDark.updateTimeline as jest.Mock).mock.calls;
+const extrasDarkPush = () => (ExtrasWidgetDark.updateTimeline as jest.Mock).mock.calls;
+const mediumPush = () => (PrayerWidgetMedium.updateTimeline as jest.Mock).mock.calls;
+const extrasMediumPush = () => (ExtrasWidgetMedium.updateTimeline as jest.Mock).mock.calls;
+const darkMediumPush = () => (PrayerWidgetDarkMedium.updateTimeline as jest.Mock).mock.calls;
+const extrasDarkMediumPush = () => (ExtrasWidgetDarkMedium.updateTimeline as jest.Mock).mock.calls;
+
+const resetWidgetMocks = () => {
+  (PrayerWidget.updateTimeline as jest.Mock).mockClear();
+  (PrayerLockWidget.updateTimeline as jest.Mock).mockClear();
+  (ExtrasWidget.updateTimeline as jest.Mock).mockClear();
+  (ExtrasLockWidget.updateTimeline as jest.Mock).mockClear();
+  (PrayerWidgetDark.updateTimeline as jest.Mock).mockClear();
+  (ExtrasWidgetDark.updateTimeline as jest.Mock).mockClear();
+  (PrayerWidgetMedium.updateTimeline as jest.Mock).mockClear();
+  (ExtrasWidgetMedium.updateTimeline as jest.Mock).mockClear();
+  (PrayerWidgetDarkMedium.updateTimeline as jest.Mock).mockClear();
+  (ExtrasWidgetDarkMedium.updateTimeline as jest.Mock).mockClear();
+};
 
 // =============================================================================
 // SETTINGS-FOLLOW SUBSCRIPTION
@@ -157,10 +185,7 @@ describe('initWidgetSettingsSync', () => {
 describe('refreshPrayerWidgets integration', () => {
   beforeEach(() => {
     jest.useRealTimers();
-    (PrayerWidget.updateTimeline as jest.Mock).mockClear();
-    (PrayerLockWidget.updateTimeline as jest.Mock).mockClear();
-    (ExtrasWidget.updateTimeline as jest.Mock).mockClear();
-    (ExtrasLockWidget.updateTimeline as jest.Mock).mockClear();
+    resetWidgetMocks();
   });
 
   it('pushes a non-empty timeline to both widgets from the seeded cache', async () => {
@@ -172,6 +197,12 @@ describe('refreshPrayerWidgets integration', () => {
     expect(lockPush()).toHaveLength(1);
     expect(extrasPush()).toHaveLength(1);
     expect(extrasLockPush()).toHaveLength(1);
+    expect(darkPush()).toHaveLength(1);
+    expect(extrasDarkPush()).toHaveLength(1);
+    expect(mediumPush()).toHaveLength(1);
+    expect(extrasMediumPush()).toHaveLength(1);
+    expect(darkMediumPush()).toHaveLength(1);
+    expect(extrasDarkMediumPush()).toHaveLength(1);
 
     const homeEntries = widgetPush()[0][0];
     const lockEntries = lockPush()[0][0];
@@ -187,6 +218,16 @@ describe('refreshPrayerWidgets integration', () => {
     expect(extraEntries).not.toEqual(homeEntries);
     expect(homeEntries[0].props.schedule).toBe('standard');
     expect(extraEntries[0].props.schedule).toBe('extra');
+
+    // The dark kinds carry theme-stamped copies of their schedule's timeline
+    const darkEntries = darkPush()[0][0];
+    const extrasDarkEntries = extrasDarkPush()[0][0];
+    expect(homeEntries[0].props.theme).toBe('light');
+    expect(darkEntries[0].props.theme).toBe('dark');
+    expect(extrasDarkEntries[0].props.theme).toBe('dark');
+    expect(extrasDarkEntries[0].props.schedule).toBe('extra');
+    expect(darkEntries.length).toBe(homeEntries.length);
+    expect(darkEntries).not.toEqual(homeEntries);
   });
 
   it('skips the push entirely when the prayer cache is empty', async () => {
@@ -198,5 +239,11 @@ describe('refreshPrayerWidgets integration', () => {
     expect(lockPush()).toHaveLength(0);
     expect(extrasPush()).toHaveLength(0);
     expect(extrasLockPush()).toHaveLength(0);
+    expect(darkPush()).toHaveLength(0);
+    expect(extrasDarkPush()).toHaveLength(0);
+    expect(mediumPush()).toHaveLength(0);
+    expect(extrasMediumPush()).toHaveLength(0);
+    expect(darkMediumPush()).toHaveLength(0);
+    expect(extrasDarkMediumPush()).toHaveLength(0);
   });
 });

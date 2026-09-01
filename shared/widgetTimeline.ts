@@ -14,7 +14,8 @@
  * the day-list assembly differs — Standard rows stay chronological while
  * Extra rows sort into canonical EXTRAS_ENGLISH order (Istijaba last on
  * Fridays), mirroring the two app pages. Every entry stamps its schedule
- * so the layouts can branch (the extras medium pill renders rose).
+ * and the caller's theme so the layouts can branch (the extras medium pill
+ * renders rose; the theme selects the palette).
  *
  * Pure module: no React Native imports — deterministic and unit-testable.
  *
@@ -28,7 +29,7 @@ import type { WidgetTimelineEntry } from 'expo-widgets';
 import { EXTRAS_ENGLISH } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
-import type { PrayerWidgetProps, PrayerWidgetSettings, WidgetPrayerRow } from '@/shared/widgetTypes';
+import type { PrayerWidgetProps, PrayerWidgetSettings, WidgetPrayerRow, WidgetTheme } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
 /**
@@ -147,13 +148,16 @@ const buildDayList = (
  * @param now Current instant
  * @param sequence Chronologically sorted prayer sequence (must span `now`)
  * @param settings The in-app settings snapshot the widget mirrors
+ * @param theme Palette stamped on every entry — each gallery kind (the
+ *   Light/Dark home pairs) receives its own theme-stamped timeline
  * @returns Chronological timeline entries ending with the stale guard, empty
  *  when the sequence does not cover `now`
  */
 export const buildPrayerWidgetTimeline = (
   now: Date,
   sequence: PrayerSequence,
-  settings: PrayerWidgetSettings
+  settings: PrayerWidgetSettings,
+  theme: WidgetTheme
 ): WidgetTimelineEntry<PrayerWidgetProps>[] => {
   const entries: WidgetTimelineEntry<PrayerWidgetProps>[] = [];
   const prayers = sequence.prayers;
@@ -174,6 +178,7 @@ export const buildPrayerWidgetTimeline = (
       props: {
         v: WIDGET_PROPS_VERSION,
         schedule: sequence.type,
+        theme,
         nextName: next.english,
         nextTime: next.time,
         nextEpochMs: next.datetime.getTime(),
@@ -261,6 +266,7 @@ export const buildPrayerWidgetTimeline = (
     props: {
       v: WIDGET_PROPS_VERSION,
       schedule: sequence.type,
+      theme,
       nextName: finalPrayer.english,
       nextTime: finalPrayer.time,
       nextEpochMs: finalEpochMs,
