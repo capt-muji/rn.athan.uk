@@ -216,8 +216,10 @@ describe('palette literals', () => {
       'rgba(219, 39, 119, 0.35)',
       // Dark palette — Violet Dusk
       'rgba(26, 26, 92, 0.88)', // card — every dark size
+      '#ffffff', // hero / passed rows
+      '#e3eaff', // active row text — standard, white + hint of blue
+      '#ffeaf4', // active row text — extras, white + hint of pink
       '#ff69b4', // eyebrow + stale mark
-      '#ffffff', // hero / passed / active row text
       'rgba(173, 193, 254, 0.54)', // secondary — smalls
       'rgba(173, 193, 254, 0.6)', // upcoming rows — smalls
       'rgba(156, 169, 222, 0.38)', // footer — smalls
@@ -289,6 +291,8 @@ describe('palette literals', () => {
       'rgba(155, 30, 255, 0.22)',
       'rgba(130, 145, 240, 0.3)',
       'rgba(55, 75, 235, 0.17)',
+      '#e3eaff',
+      '#ffeaf4',
     ].map(normalizeColor);
 
     const allowed = new Set(widgetSpecific.map((c) => JSON.stringify(c)));
