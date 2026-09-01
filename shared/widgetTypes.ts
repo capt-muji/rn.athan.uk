@@ -11,7 +11,16 @@
  * shape changes: it lets layouts detect and tolerate entries written by an
  * older app version still sitting in the shared timeline store.
  */
-export const WIDGET_PROPS_VERSION = 3;
+export const WIDGET_PROPS_VERSION = 4;
+
+/**
+ * Which palette a home widget renders: 'light' or 'dark'. This is a
+ * timeline-entry property, not a user setting — the gallery offers a Light
+ * and a Dark kind per schedule, and each kind receives its own
+ * theme-stamped timeline, so a widget's look is fixed at placement and does
+ * not follow the system appearance.
+ */
+export type WidgetTheme = 'light' | 'dark';
 
 /**
  * The slice of in-app settings the widgets honor. The widget has no
@@ -54,6 +63,13 @@ export interface PrayerWidgetProps {
    * in the standard palette (only the standard kind ever stored them).
    */
   schedule?: 'standard' | 'extra';
+  /**
+   * Palette this entry renders — stamped by the builder per widget kind
+   * (the gallery's Light/Dark pairs). Absent on entries from older app
+   * versions and on the props-less gallery placeholder, where the layout
+   * falls back to the system color scheme.
+   */
+  theme?: WidgetTheme;
   /** English name of the upcoming prayer, e.g. "Asr" */
   nextName: string;
   /** Upcoming prayer time in HH:mm, e.g. "15:32" */

@@ -1,14 +1,22 @@
 /**
  * Widget IO layer - pushes iOS home screen and Lock Screen widget timelines
- * for BOTH schedules: the standard pair (PrayerWidget + PrayerLockWidget)
- * and the extras pair (ExtrasWidget + ExtrasLockWidget).
+ * for BOTH schedules and BOTH home themes. Each home kind is size-exclusive
+ * (small and medium register separately so the gallery groups smalls before
+ * mediums), and every kind receives its own schedule- and theme-stamped
+ * timeline: the standard light trio (PrayerWidget + PrayerWidgetMedium +
+ * PrayerLockWidget), the standard dark pair (PrayerWidgetDark +
+ * PrayerWidgetDarkMedium), the extras light trio (ExtrasWidget +
+ * ExtrasWidgetMedium + ExtrasLockWidget), and the extras dark pair
+ * (ExtrasWidgetDark + ExtrasWidgetDarkMedium).
  *
  * Reads the cached prayer data and the user's widget-relevant preferences,
- * builds one timeline per schedule with the pure builder in
- * shared/widgetTimeline.ts, and pushes each to its two widgets via
- * expo-widgets. WidgetKit renders each entry at its own date; while the app
- * runs, a label-flip scheduler re-pushes at the earliest countdown minute
- * change across both schedules so no widget shows a stale minute.
+ * builds one timeline per schedule AND theme with the pure builder in
+ * shared/widgetTimeline.ts, and pushes each to its widgets via
+ * expo-widgets. A widget's theme is fixed at placement (the gallery's
+ * Light/Dark kinds) — it never follows the system appearance. WidgetKit
+ * renders each entry at its own date; while the app runs, a label-flip
+ * scheduler re-pushes at the earliest countdown minute change across both
+ * schedules so no widget shows a stale minute.
  *
  * @see shared/widgetTimeline.ts - pure timeline builder
  * @see widgets/PrayerWidget.tsx - home screen widget layouts (both schedules)
@@ -27,7 +35,16 @@ import { buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
-import { ExtrasWidget, PrayerWidget } from '@/widgets/PrayerWidget';
+import {
+  ExtrasWidget,
+  ExtrasWidgetDark,
+  ExtrasWidgetDarkMedium,
+  ExtrasWidgetMedium,
+  PrayerWidget,
+  PrayerWidgetDark,
+  PrayerWidgetDarkMedium,
+  PrayerWidgetMedium,
+} from '@/widgets/PrayerWidget';
 
 /** Days of prayer boundaries scheduled ahead — the widget re-reads this
  *  stored timeline when it runs out, so this is how long the widget stays
@@ -121,8 +138,10 @@ const scheduleLabelFlipPush = (targets: number[]): void => {
 };
 
 /**
- * Pushes a fresh timeline to all four widgets from the cached prayer data —
- * one timeline per schedule, two widgets per timeline.
+ * Pushes a fresh timeline to all ten widgets from the cached prayer data —
+ * one timeline per schedule per theme; the lock pair shares the light
+ * timelines (its layouts are text-only and ignore the theme), and each
+ * home schedule+theme pair feeds its small and medium kinds alike.
  *
  * Includes yesterday in the sequence span so the segment covering `now`
  * starts at the real previous prayer (yesterday's Isha or last extra time)
@@ -145,8 +164,10 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
     const standardSequence = PrayerUtils.createPrayerSequence(ScheduleType.Standard, startDate, TIMELINE_DAYS + 1);
     const extraSequence = PrayerUtils.createPrayerSequence(ScheduleType.Extra, startDate, TIMELINE_DAYS + 1);
 
-    const standardEntries = buildPrayerWidgetTimeline(now, standardSequence, settings);
-    const extraEntries = buildPrayerWidgetTimeline(now, extraSequence, settings);
+    const standardEntries = buildPrayerWidgetTimeline(now, standardSequence, settings, 'light');
+    const standardDarkEntries = buildPrayerWidgetTimeline(now, standardSequence, settings, 'dark');
+    const extraEntries = buildPrayerWidgetTimeline(now, extraSequence, settings, 'light');
+    const extraDarkEntries = buildPrayerWidgetTimeline(now, extraSequence, settings, 'dark');
 
     if (standardEntries.length === 0 || extraEntries.length === 0) {
       logger.warn('WIDGET: Empty timeline built — prayer cache is likely empty', {
@@ -159,9 +180,12 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
 
     // Static imports register all widget layouts into the app group as a
     // side effect of module evaluation — required before updateTimeline works.
-    if (standardEntries.length > 0) {
+    if (standardEntries.length > 0 && standardDarkEntries.length > 0) {
       PrayerWidget.updateTimeline(standardEntries);
+      PrayerWidgetMedium.updateTimeline(standardEntries);
       PrayerLockWidget.updateTimeline(standardEntries);
+      PrayerWidgetDark.updateTimeline(standardDarkEntries);
+      PrayerWidgetDarkMedium.updateTimeline(standardDarkEntries);
       flipTargets.push(standardEntries[0].props.nextEpochMs);
 
       logger.info('WIDGET: Standard timeline pushed', {
@@ -171,9 +195,12 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
       });
     }
 
-    if (extraEntries.length > 0) {
+    if (extraEntries.length > 0 && extraDarkEntries.length > 0) {
       ExtrasWidget.updateTimeline(extraEntries);
+      ExtrasWidgetMedium.updateTimeline(extraEntries);
       ExtrasLockWidget.updateTimeline(extraEntries);
+      ExtrasWidgetDark.updateTimeline(extraDarkEntries);
+      ExtrasWidgetDarkMedium.updateTimeline(extraDarkEntries);
       flipTargets.push(extraEntries[0].props.nextEpochMs);
 
       logger.info('WIDGET: Extras timeline pushed', {
