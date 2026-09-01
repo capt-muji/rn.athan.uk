@@ -33,6 +33,12 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * countdown hero, absolute HH:mm) over the day · city footer. Identical
  * for both schedules.
  *
+ * Theming: the system color scheme drives the palette — light keeps the
+ * blue-grey family above; dark re-tints every color to the app's own
+ * screen palette (navy card, white hero, app secondary/muted tints, app
+ * indigo/purple pills, periwinkle glow). Structure is identical in both
+ * themes; only the palette constants branch.
+ *
  * systemMedium — the left half repeats the small trio verbatim; the right
  * half replicates the app's page list: the displayed day's prayers with the
  * active background on the next prayer, passed rows solid white, upcoming
@@ -55,31 +61,70 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
-  // The active row pill: indigo (#4f46e5, "Pill Indigo Full" from the
-  // app's sound-picker selection) over pale pink text on the standard
-  // widgets; rose (#db2777 — the widget family's own accent) with a
-  // rose-tinted stroke and deep rose shadow on the extras widgets. The
-  // pale pink row text is shared — it reads on both fills. Entries from
+  // Dual palette — the system color scheme themes the widget. Light keeps
+  // the translucent blue-grey pane; dark mirrors the app's own screen: a
+  // deep navy card (COLORS.gradient.screen.start at the light pane's 0.8
+  // translucency), white hero (text.primary), the app's exact secondary
+  // and muted label tints, and the app's own indigo/purple active pills
+  // with their real shadows. WidgetKit re-renders the layout when the
+  // system appearance flips, so no timeline re-push is needed for the
+  // theme itself.
+  const isDark = environment.colorScheme === 'dark';
+
+  const CARD_BACKGROUND_LIGHT = 'rgba(234, 239, 246, 0.8)';
+  const CARD_BACKGROUND_DARK = 'rgba(3, 26, 76, 0.8)';
+  const CARD_BACKGROUND = isDark ? CARD_BACKGROUND_DARK : CARD_BACKGROUND_LIGHT;
+
+  // Light: bare rose accent. Dark: the app's countdown-name tint
+  // (COLORS.text.secondary) — the app renders this exact element that way.
+  const EYEBROW_TEXT = isDark ? 'rgba(160, 200, 255, 0.54)' : '#db2777';
+
+  // Light: dark ink hero. Dark: the app's white primary text.
+  const TEXT_PRIMARY = isDark ? '#ffffff' : '#1e1b2e';
+  const TEXT_SECONDARY = isDark ? 'rgba(160, 200, 255, 0.54)' : 'rgba(42, 68, 130, 0.42)';
+  const TEXT_FOOTER = isDark ? 'rgba(138, 169, 214, 0.38)' : 'rgba(42, 68, 130, 0.34)';
+
+  // The active row pill. Light: indigo (#4f46e5, "Pill Indigo Full" from
+  // the app's sound-picker selection) over pale pink text on the standard
+  // widgets, rose (#db2777 — the widget family's own accent) with a
+  // rose-tinted stroke and deep rose shadow on the extras widgets. Dark:
+  // the app's own active backgrounds — #0847e5 (prayer.activeBackground)
+  // and #9200a2 (activeBackgroundExtras) — with white row text and the
+  // app's real pill shadows (shadow.prayer / prayerExtras). Entries from
   // older app versions carry no `schedule` and render the standard trio.
-  const CARD_BACKGROUND = 'rgba(234, 239, 246, 0.8)';
-  const EYEBROW_TEXT = '#db2777';
-  const TEXT_PRIMARY = '#1e1b2e';
-  const TEXT_SECONDARY = 'rgba(42, 68, 130, 0.42)';
-  const TEXT_FOOTER = 'rgba(42, 68, 130, 0.34)';
-
   const isExtra = props?.schedule === 'extra';
-  const ACTIVE_BACKGROUND = isExtra ? '#db2777' : '#4f46e5';
-  const ACTIVE_ROW_TEXT = '#fce7f3';
-  const ACTIVE_SHADOW = isExtra ? 'rgba(61, 10, 38, 0.45)' : 'rgba(30, 27, 75, 0.45)';
-  const ROW_PASSED = '#2f3d5c';
-  const ROW_UPCOMING = 'rgba(42, 68, 130, 0.32)';
 
-  const STALE_ICON = '#db2777';
-  const STROKE_COLOR = isExtra ? 'rgba(219, 39, 119, 0.35)' : 'rgba(79, 70, 229, 0.35)';
+  const ACTIVE_BACKGROUND_LIGHT = isExtra ? '#db2777' : '#4f46e5';
+  const ACTIVE_BACKGROUND_DARK = isExtra ? '#9200a2' : '#0847e5';
+  const ACTIVE_BACKGROUND = isDark ? ACTIVE_BACKGROUND_DARK : ACTIVE_BACKGROUND_LIGHT;
+
+  const ACTIVE_ROW_TEXT = isDark ? '#ffffff' : '#fce7f3';
+
+  const ACTIVE_SHADOW_LIGHT = isExtra ? 'rgba(61, 10, 38, 0.45)' : 'rgba(30, 27, 75, 0.45)';
+  const ACTIVE_SHADOW_DARK = isExtra ? '#6e006b' : '#081a76';
+  const ACTIVE_SHADOW = isDark ? ACTIVE_SHADOW_DARK : ACTIVE_SHADOW_LIGHT;
+
+  // Dark rows follow the app exactly: passed and active rows white
+  // (text.primary — the app's isPassed || isNext → primary rule), upcoming
+  // rows muted (text.muted).
+  const ROW_PASSED = isDark ? '#ffffff' : '#2f3d5c';
+  const ROW_UPCOMING = isDark ? 'rgba(138, 169, 214, 0.38)' : 'rgba(42, 68, 130, 0.32)';
+
+  // Stale card mark: rose in light, the app's periwinkle icon fill
+  // (COLORS.icon.primary) in dark.
+  const STALE_ICON = isDark ? '#a5b4fc' : '#db2777';
+
+  // The stroke stays the light convention in both themes — the pill fill
+  // at 0.35 — applied to the app's dark fills.
+  const STROKE_LIGHT = isExtra ? 'rgba(219, 39, 119, 0.35)' : 'rgba(79, 70, 229, 0.35)';
+  const STROKE_DARK = isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)';
+  const STROKE_COLOR = isDark ? STROKE_DARK : STROKE_LIGHT;
   const STROKE_WIDTH = 1;
 
-  // Bottom-left orb of the white glow lighting (see Blobs below).
-  const BOTTOM_ORB_COLOR = 'rgba(255, 255, 255, 0.4)';
+  // Bottom-left orb of the glow lighting (see Blobs below). Light: white.
+  // Dark: the app's gradient end (COLORS.gradient.screen.end) — the purple
+  // rise at the bottom of the app's own screen.
+  const BOTTOM_ORB_COLOR = isDark ? 'rgba(91, 30, 170, 0.5)' : 'rgba(255, 255, 255, 0.4)';
 
   // Medium list geometry: fixed row height so the floating pill's offset is
   // exact and the spacing never jumps (the app's rows are a fixed 57pt for
@@ -156,11 +201,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     // hero near the horizontal center.
     const topOrbX = environment.widgetFamily === 'systemSmall' ? 30 : -5;
     const topOrbBlur = environment.widgetFamily === 'systemSmall' ? 38 : 33;
-    const topOrbColor = '#ffffff';
+    // Light: white glow. Dark: the app's periwinkle icon tint
+    // (COLORS.icon.primary) softened — it reads as a haze on the navy
+    // card, not a spotlight.
+    const topOrbColor = isDark ? 'rgba(165, 180, 252, 0.35)' : '#ffffff';
 
-    // The white glow lighting — three blurred orbs: a top orb above the
+    // The glow lighting — three blurred orbs: a top orb above the
     // hero, a faint bottom-left orb, and a small centered orb rising
-    // through the countdown.
+    // through the countdown. White in light; periwinkle/purple (the
+    // app's icon tint and gradient end) in dark.
     const Blobs = () => (
       <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
         <Circle
