@@ -11,6 +11,7 @@ import {
   monospacedDigit,
   offset,
   padding,
+  scaleEffect,
   shadow,
   strokeBorder,
   textCase,
@@ -20,169 +21,180 @@ import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
- * Home screen widget layouts (systemSmall + systemMedium), registered twice
- * on one shared layout: 'PrayerWidget' renders the Standard schedule,
- * 'ExtrasWidget' the Extra schedule (Midnight, Last Third, Suhoor, Duha,
- * Friday Istijaba). The 'widget' directive serializes this single function
- * body into both kinds' app-group slots, so the two widgets can never drift
- * apart structurally — the ONLY rendered difference is the extras medium
- * pill's rose palette, branched on the entry's `schedule` prop.
+ * Home screen widget layout (systemSmall + systemMedium), one shared
+ * function registered under EIGHT kinds: for each schedule (PrayerWidget
+ * = Standard, ExtrasWidget = Extra) and each theme (light, dark) there is
+ * a small kind and a medium kind — size-exclusive kinds are what let the
+ * gallery list all smalls before all mediums within each theme. The
+ * 'widget' directive serializes this single function body into every
+ * kind's app-group slot, so they can never drift structurally — the ONLY
+ * rendered differences branch on the entry's props (`schedule` selects
+ * the extras pill colors, `theme` selects the Light/Dark palette) and on
+ * environment.widgetFamily. A widget's look is therefore fixed at
+ * placement (the gallery's Light and Dark kinds) and never follows the
+ * system appearance; only the props-less gallery placeholder falls back
+ * to the system color scheme.
  *
- * systemSmall — a translucent blue-grey pane with soft white orb glow,
- * centered symmetric trio (uppercase bold rose prayer name, minute-ceil
- * countdown hero, absolute HH:mm) over the day · city footer. Identical
- * for both schedules.
+ * systemSmall — a translucent card with soft orb glow, a centered trio
+ * (bold prayer name, minute-ceil countdown hero, absolute HH:mm) over the
+ * day · city footer. Identical for both schedules.
  *
- * Theming: the system color scheme drives the palette — light keeps the
- * blue-grey family above; dark re-tints every color to the app's own
- * screen palette (navy card, white hero, app secondary/muted tints, app
- * indigo/purple pills, periwinkle glow). Structure is identical in both
- * themes; only the palette constants branch.
- *
- * systemMedium — the left half repeats the small trio verbatim; the right
- * half replicates the app's page list: the displayed day's prayers with the
- * active background on the next prayer, passed rows solid white, upcoming
+ * systemMedium — the left half repeats the small trio; the right half
+ * replicates the app's page list: the displayed day's prayers with a
+ * floating active pill on the next prayer, passed rows solid, upcoming
  * rows muted. Standard lists the six prayers chronologically; extras list
- * in canonical order (Midnight, Last Third, Suhoor, Duha, Istijaba-last on
- * Fridays — 4 rows normally, 5 on Fridays) and center-anchor vertically so
- * the top/bottom insets stay symmetric as the list grows. No alert icons,
- * no countdown bar, no Arabic names. State changes snap between entries:
- * expo-widgets rebuilds its whole view tree per timeline entry with fresh
- * view identities, so SwiftUI animation cannot fire (2026-08-30 decision —
- * accepted; do not reintroduce animation modifiers here).
+ * in canonical order (Midnight, Last Third, Suhoor, Duha, Istijaba last
+ * on Fridays — 4 rows normally, 5 on Fridays) and center-anchor
+ * vertically. No alert icons, no countdown bar, no Arabic names.
  *
- * The hero always renders the builder's precomputed label ("1h 12m", "2m",
- * "1m") — seconds never display; the app re-pushes at each minute flip
- * while it runs. All layout helpers must live inside this function — the
- * 'widget' directive serializes only this function body into the widget
- * extension's separate JS runtime, where @expo/ui components and modifiers
- * resolve as globals.
+ * The hero always renders the builder's precomputed label ("1h 12m",
+ * "2m", "1m") — seconds never display; the app re-pushes at each minute
+ * flip while it runs. State changes snap between entries: expo-widgets
+ * rebuilds its whole view tree per timeline entry with fresh view
+ * identities, so SwiftUI animation cannot fire — do not reintroduce
+ * animation modifiers here. All layout helpers must live inside this
+ * function — the 'widget' directive serializes only this body into the
+ * widget extension's separate JS runtime, where @expo/ui components and
+ * modifiers resolve as globals.
  */
 const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
-  // Dual palette — the system color scheme themes the widget. Light keeps
-  // the translucent blue-grey pane; dark mirrors the app's own screen.
-  // WidgetKit re-renders the layout when the system appearance flips, so
-  // no timeline re-push is needed for the theme itself.
-  const isDark = environment.colorScheme === 'dark';
+  // Theme and schedule arrive on the entry — each gallery kind receives
+  // its own timeline, so the palette is fixed at placement. The props-less
+  // gallery placeholder (and legacy entries without `theme`) falls back to
+  // the system color scheme.
   const isExtra = props?.schedule === 'extra';
+  const fallbackTheme = environment.colorScheme === 'dark' ? 'dark' : 'light';
+  const theme = props?.theme ?? fallbackTheme;
+  const isDark = theme === 'dark';
+  const isMedium = environment.widgetFamily === 'systemMedium';
 
-  // ── DARK PALETTE ("Violet Dusk", owner-approved 2026-09-01) ──────────────
-  // Navy-violet card with violet/ultraviolet orb glow, pink eyebrow, and
-  // pills that keep their light-mode geometry. The pill shadow is neutral
-  // depth (a darker card tone — pink casts read as neon, black reads
-  // harsh). Secondary/footer/upcoming tints are the light theme's blues
-  // blended 23% toward pinkish-purple to match the theme.
-  const CARD_BACKGROUND_DARK = 'rgba(26, 26, 92, 0.88)';
-  const EYEBROW_TEXT_DARK = '#ff69b4';
-  const TEXT_PRIMARY_DARK = '#ffffff';
-  const TEXT_SECONDARY_DARK = 'rgba(173, 193, 254, 0.54)';
-  const TEXT_FOOTER_DARK = 'rgba(156, 169, 222, 0.38)';
-  const ACTIVE_BACKGROUND_DARK = isExtra ? '#a123aa' : '#0847e5';
-  const ACTIVE_ROW_TEXT_DARK = '#ffffff';
-  const SHADOW_COLOR_DARK = 'rgba(34, 26, 98, 0.45)';
-  const SHADOW_RADIUS_DARK = 9;
-  const SHADOW_X_DARK = 0;
-  const SHADOW_Y_DARK = 2;
-  const STROKE_COLOR_DARK = isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)';
-  const ROW_PASSED_DARK = '#ffffff';
-  const ROW_UPCOMING_DARK = 'rgba(173, 193, 254, 0.6)';
-  const STALE_ICON_DARK = '#ff69b4';
-  // Small-card orbs: violet glows, the bottom-left one strongest.
-  const TOP_ORB_COLOR_DARK = 'rgba(128, 0, 255, 0.25)';
-  const BOTTOM_ORB_COLOR_DARK = 'rgba(128, 0, 255, 0.45)';
-  const CENTER_ORB_COLOR_DARK = 'rgba(165, 180, 252, 0.3)';
-  // Medium-card orbs: point-sized orbs cover a far smaller fraction of
-  // the wide card, so they scale up (≤170pt, the proven safe ceiling) and
-  // the base orb anchors near the left edge; the main orb rides high
-  // (y −75) so it reads off-center like an ambient light, not a spot.
-  const TOP_ORB_COLOR_MEDIUM_DARK = 'rgba(128, 0, 255, 0.25)';
-  const BOTTOM_ORB_COLOR_MEDIUM_DARK = 'rgba(99, 15, 183, 0.55)';
-  const CENTER_ORB_COLOR_MEDIUM_DARK = 'rgba(128, 0, 255, 0.3)';
-  const TOP_ORB_SIZE_M_DARK = 110;
-  const TOP_ORB_Y_M_DARK = -75;
-  const BOTTOM_ORB_SIZE_M_DARK = 170;
-  const BOTTOM_ORB_X_M_DARK = -130;
-  const CENTER_ORB_SIZE_M_DARK = 44;
-  // ── END DARK PALETTE ─────────────────────────────────────────────────────
+  // Two self-contained palettes: text colors, the active-pill treatment,
+  // and the orb lighting per card family. Fixed-size orbs are capped at
+  // 170pt — anything larger inflates the card ZStack past the system slot
+  // and pushes the standard list's flush footer into the card's bottom
+  // edge (verified at 185pt). The MEDIUM orb geometry (positions, sizes,
+  // blur) is IDENTICAL in both themes — only the colors differ, and the
+  // light theme renders every orb pure white. The main orb rides high
+  // off-center (ambient light, not a spot); the bottom-left orb anchors
+  // near the left edge; the below-list orb sits centered under the day
+  // list to fill the dark bottom-center. Small cards mirror their
+  // bottom-left orb onto the bottom right at 75% strength to lift the
+  // dark corner. The light theme renders every orb white (the small
+  // corner runs at 75% so it stays softer than the bottom-left).
+  const LIGHT_ORBS = {
+    top: '#ffffff',
+    bottom: '#ffffff',
+    center: '#ffffff',
+    topSize: 85,
+    topY: -38,
+    bottomSize: 130,
+    bottomX: -70,
+    centerSize: 34,
+    corner: { color: 'rgba(255, 255, 255, 0.75)', size: 130, x: 70, y: 60, blur: 40 },
+  };
 
-  const CARD_BACKGROUND_LIGHT = 'rgba(234, 239, 246, 0.8)';
-  const CARD_BACKGROUND = isDark ? CARD_BACKGROUND_DARK : CARD_BACKGROUND_LIGHT;
+  const LIGHT = {
+    card: 'rgba(234, 239, 246, 0.8)',
+    eyebrow: '#db2777',
+    hero: '#1e1b2e',
+    secondary: 'rgba(42, 68, 130, 0.42)',
+    footer: 'rgba(42, 68, 130, 0.34)',
+    staleIcon: '#db2777',
+    rowPassed: '#2f3d5c',
+    rowUpcoming: 'rgba(42, 68, 130, 0.32)',
+    activeRowText: '#fce7f3',
+    pillFill: isExtra ? '#db2777' : '#4f46e5',
+    pillStroke: isExtra ? 'rgba(219, 39, 119, 0.35)' : 'rgba(79, 70, 229, 0.35)',
+    // The app's own active-pill shadows: the pill's hue, not black — a
+    // same-hue shadow reads as a soft glow while still lifting the pill.
+    pillShadow: { color: isExtra ? 'rgba(110, 0, 107, 0.35)' : 'rgba(10, 42, 155, 0.4)', radius: 6, x: 0, y: 3 },
+    orbsSmall: LIGHT_ORBS,
+    orbsMedium: {
+      top: '#ffffff',
+      bottom: '#ffffff',
+      center: '#ffffff',
+      topSize: 110,
+      topY: -75,
+      bottomSize: 170,
+      bottomX: -130,
+      centerSize: 44,
+      corner: { color: '#ffffff', size: 170, x: 75, y: 58, blur: 33 },
+    },
+  };
 
-  const EYEBROW_TEXT = isDark ? EYEBROW_TEXT_DARK : '#db2777';
+  const DARK = {
+    card: 'rgba(26, 26, 92, 0.88)',
+    eyebrow: '#ff69b4',
+    hero: '#ffffff',
+    secondary: 'rgba(173, 193, 254, 0.54)',
+    footer: 'rgba(156, 169, 222, 0.38)',
+    staleIcon: '#ff69b4',
+    rowPassed: '#ffffff',
+    rowUpcoming: 'rgba(173, 193, 254, 0.6)',
+    activeRowText: '#ffffff',
+    pillFill: isExtra ? '#a123aa' : '#0847e5',
+    pillStroke: isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)',
+    pillShadow: { color: 'rgba(34, 26, 98, 0.45)', radius: 9, x: 0, y: 2 },
+    orbsSmall: {
+      top: 'rgba(128, 0, 255, 0.25)',
+      bottom: 'rgba(128, 0, 255, 0.45)',
+      center: 'rgba(165, 180, 252, 0.3)',
+      topSize: 85,
+      topY: -38,
+      bottomSize: 130,
+      bottomX: -70,
+      centerSize: 34,
+      corner: { color: 'rgba(128, 0, 255, 0.34)', size: 130, x: 70, y: 60, blur: 40 },
+    },
+    orbsMedium: {
+      top: 'rgba(128, 0, 255, 0.25)',
+      bottom: 'rgba(99, 15, 183, 0.55)',
+      center: 'rgba(128, 0, 255, 0.3)',
+      topSize: 110,
+      topY: -75,
+      bottomSize: 170,
+      bottomX: -130,
+      centerSize: 44,
+      corner: { color: 'rgba(128, 0, 255, 0.25)', size: 170, x: 75, y: 58, blur: 33 },
+    },
+  };
 
-  const TEXT_PRIMARY = isDark ? TEXT_PRIMARY_DARK : '#1e1b2e';
-  const TEXT_SECONDARY = isDark ? TEXT_SECONDARY_DARK : 'rgba(42, 68, 130, 0.42)';
-  const TEXT_FOOTER = isDark ? TEXT_FOOTER_DARK : 'rgba(42, 68, 130, 0.34)';
+  const palette = isDark ? DARK : LIGHT;
+  const orbs = isMedium ? palette.orbsMedium : palette.orbsSmall;
+  // The top orb's x and blur anchor to each family's absolute card coords —
+  // center-relative offsets land it in the small card's corner on medium.
+  const topOrbX = isMedium ? -5 : 30;
+  const topOrbBlur = isMedium ? 33 : 38;
 
-  // The active row pill. Light: indigo (#4f46e5) over pale pink text on
-  // the standard widgets, rose (#db2777) with a rose-tinted stroke and
-  // deep rose shadow on the extras widgets. Dark: per the design knobs.
-  // Entries from older app versions carry no `schedule` and render the
-  // standard trio.
-  const ACTIVE_BACKGROUND_LIGHT = isExtra ? '#db2777' : '#4f46e5';
-  const ACTIVE_BACKGROUND = isDark ? ACTIVE_BACKGROUND_DARK : ACTIVE_BACKGROUND_LIGHT;
-
-  const ACTIVE_ROW_TEXT = isDark ? ACTIVE_ROW_TEXT_DARK : '#fce7f3';
-
-  const ACTIVE_SHADOW_LIGHT = isExtra ? 'rgba(61, 10, 38, 0.45)' : 'rgba(30, 27, 75, 0.45)';
-  const ACTIVE_SHADOW = isDark ? SHADOW_COLOR_DARK : ACTIVE_SHADOW_LIGHT;
-
-  const ROW_PASSED = isDark ? ROW_PASSED_DARK : '#2f3d5c';
-  const ROW_UPCOMING = isDark ? ROW_UPCOMING_DARK : 'rgba(42, 68, 130, 0.32)';
-
-  const STALE_ICON = isDark ? STALE_ICON_DARK : '#db2777';
-
-  const STROKE_LIGHT = isExtra ? 'rgba(219, 39, 119, 0.35)' : 'rgba(79, 70, 229, 0.35)';
-  const STROKE_COLOR = isDark ? STROKE_COLOR_DARK : STROKE_LIGHT;
-  const STROKE_WIDTH = 1;
-
-  // Shadow geometry: light keeps the lifted 4pt throw; dark geometry
-  // follows the shadow-treatment knobs above.
-  const SHADOW_RADIUS = isDark ? SHADOW_RADIUS_DARK : 4;
-  const SHADOW_X = isDark ? SHADOW_X_DARK : 1;
-  const SHADOW_Y = isDark ? SHADOW_Y_DARK : 4;
-
-  const BOTTOM_ORB_COLOR = isDark ? BOTTOM_ORB_COLOR_DARK : 'rgba(255, 255, 255, 0.4)';
-
-  // Medium list geometry: fixed row height so the floating pill's offset is
-  // exact and the spacing never jumps (the app's rows are a fixed 57pt for
-  // the same reason). Six rows of 22pt fill the systemMedium inner height
-  // exactly on iPhone 16-class devices, so the standard list sits flush
-  // with zero inset; the extras lists (4 rows, 5 on Fridays) center
-  // vertically between equal Spacers — see the list column below. The 12pt
-  // row text sits with ~3pt of air above and below inside each pill. The
-  // corner radius keeps the app's pill-to-row proportion (8pt on a 57pt row
-  // ≈ 4pt on a 22pt row). The list column is a fixed width — narrower than
-  // its half of the card — so name and time sit close together and the
-  // whole list leans left of the card's right edge.
+  // Fixed row height keeps the floating pill's offset exact and the
+  // spacing static. Six 22pt rows fill the systemMedium inner height
+  // exactly, so the standard list sits flush; the shorter extras lists
+  // center between equal Spacers (see the list column below). The corner
+  // radius keeps the app's pill-to-row proportion.
   const ROW_HEIGHT = 22;
   const ROW_TEXT_SIZE = 12;
   const ROW_CORNER_RADIUS = 4;
   const LIST_WIDTH = 140;
 
   // Terminal state: every timeline entry has passed and the app has not
-  // re-pushed — ask the user to open the app instead of showing stale times.
-  // The 1.7.0 moon-and-stars mark sits above the title; the refresh call is
-  // plain text — "Open Athan / to refresh" split over two lines on the
-  // small card, one line on the medium card (the black ErrorScreen-button
-  // look was tried and rejected 2026-08-30). Tapping the widget opens the
-  // app by default, so the whole card is the button.
+  // re-pushed. Tapping the widget opens the app, so the whole card is the
+  // refresh button.
   const StaleCard = () => {
     const refreshLine = (line: string) => (
-      <Text modifiers={[font({ size: 12, weight: 'regular' }), foregroundStyle(TEXT_SECONDARY), lineLimit(1)]}>
+      <Text modifiers={[font({ size: 12, weight: 'regular' }), foregroundStyle(palette.secondary), lineLimit(1)]}>
         {line}
       </Text>
     );
 
     return (
-      <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+      <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
         <Blobs />
         <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Spacer />
-          <Image systemName='moon.stars.fill' size={26} color={STALE_ICON} />
-          <Text modifiers={[font({ size: 14, weight: 'semibold' }), foregroundStyle(TEXT_PRIMARY)]}>Out of date</Text>
+          <Image systemName='moon.stars.fill' size={26} color={palette.staleIcon} />
+          <Text modifiers={[font({ size: 14, weight: 'semibold' }), foregroundStyle(palette.hero)]}>Out of date</Text>
           {environment.widgetFamily === 'systemMedium' ? (
             refreshLine('Open Athan to refresh')
           ) : (
@@ -201,98 +213,88 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   // placeholder (iOS invokes the layout with no props — expo-widgets stores
   // no initial props) and any unexpected rendering error (caught below).
   const NeutralCard = ({ title, subtitle }: { title: string; subtitle: string }) => (
-    <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+    <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
       <VStack spacing={5} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-        <Text modifiers={[font({ size: 15, weight: 'semibold' }), foregroundStyle(TEXT_PRIMARY)]}>{title}</Text>
-        <Text modifiers={[font({ size: 12, weight: 'regular' }), foregroundStyle(TEXT_SECONDARY)]}>{subtitle}</Text>
+        <Text modifiers={[font({ size: 15, weight: 'semibold' }), foregroundStyle(palette.hero)]}>{title}</Text>
+        <Text modifiers={[font({ size: 12, weight: 'regular' }), foregroundStyle(palette.secondary)]}>{subtitle}</Text>
       </VStack>
     </ZStack>
   );
 
-  // Placeholder path: props are entirely absent (gallery preview, jiggle
-  // mode, or a first-add before the app has ever pushed a timeline).
   if (props == null) {
     return <NeutralCard title='Athan' subtitle='Prayer times for London' />;
   }
 
-  // The glow lighting — three blurred orbs: a main orb above the hero
-  // (high on the medium card), a bottom-left orb, and a small centered
-  // orb rising through the countdown. White in light; violet and
-  // ultraviolet in dark. Defined before the cards so the stale and
-  // neutral states share the theme's lighting too.
-  const topOrbX = environment.widgetFamily === 'systemSmall' ? 30 : -5;
-  const topOrbBlur = environment.widgetFamily === 'systemSmall' ? 38 : 33;
-  const topOrbColor = !isDark
-    ? '#ffffff'
-    : environment.widgetFamily === 'systemMedium'
-      ? TOP_ORB_COLOR_MEDIUM_DARK
-      : TOP_ORB_COLOR_DARK;
-  const centerOrbColor = !isDark
-    ? '#ffffff'
-    : environment.widgetFamily === 'systemMedium'
-      ? CENTER_ORB_COLOR_MEDIUM_DARK
-      : CENTER_ORB_COLOR_DARK;
-  const bottomOrbColor = !isDark
-    ? BOTTOM_ORB_COLOR
-    : environment.widgetFamily === 'systemMedium'
-      ? BOTTOM_ORB_COLOR_MEDIUM_DARK
-      : BOTTOM_ORB_COLOR_DARK;
-  const isMedium = environment.widgetFamily === 'systemMedium';
-  const topOrbSize = isDark && isMedium ? TOP_ORB_SIZE_M_DARK : 85;
-  const topOrbY = isDark && isMedium ? TOP_ORB_Y_M_DARK : -38;
-  const bottomOrbSize = isDark && isMedium ? BOTTOM_ORB_SIZE_M_DARK : 130;
-  const bottomOrbX = isDark && isMedium ? BOTTOM_ORB_X_M_DARK : -70;
-  const centerOrbSize = isDark && isMedium ? CENTER_ORB_SIZE_M_DARK : 34;
+  // The glow lighting — three blurred orbs: a main orb above the hero, a
+  // bottom-left orb, and a small centered orb rising through the countdown.
+  // An orb larger than the card's layout height inflates the card's content
+  // area and pushes the footer toward the bottom edge — oversized orbs
+  // (the medium 170s) therefore render from a 94pt layout frame scaled up
+  // via scaleEffect, a visual transform that cannot affect layout; the
+  // blur divides by the scale to land the same softness.
+  const OVERSIZE_ORB_LAYOUT = 94;
+  const orbLayoutSize = (size: number): number => (size > 155 ? OVERSIZE_ORB_LAYOUT : size);
+  const orbScale = (size: number): number => size / orbLayoutSize(size);
+  const bottomLayoutSize = orbLayoutSize(orbs.bottomSize);
+  const bottomScale = orbScale(orbs.bottomSize);
+  const cornerLayoutSize = orbs.corner ? orbLayoutSize(orbs.corner.size) : 0;
+  const cornerScale = orbs.corner ? orbScale(orbs.corner.size) : 1;
 
   const Blobs = () => (
     <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
       <Circle
         modifiers={[
-          frame({ width: topOrbSize, height: topOrbSize }),
-          offset({ x: topOrbX, y: topOrbY }),
-          foregroundStyle(topOrbColor),
+          frame({ width: orbs.topSize, height: orbs.topSize }),
+          offset({ x: topOrbX, y: orbs.topY }),
+          foregroundStyle(orbs.top),
           blur(topOrbBlur),
         ]}
       />
       <Circle
         modifiers={[
-          frame({ width: bottomOrbSize, height: bottomOrbSize }),
-          offset({ x: bottomOrbX, y: 60 }),
-          foregroundStyle(bottomOrbColor),
-          blur(40),
+          frame({ width: bottomLayoutSize, height: bottomLayoutSize }),
+          scaleEffect(bottomScale),
+          offset({ x: orbs.bottomX, y: 60 }),
+          foregroundStyle(orbs.bottom),
+          blur(40 / bottomScale),
         ]}
       />
       <Circle
         modifiers={[
-          frame({ width: centerOrbSize, height: centerOrbSize }),
+          frame({ width: orbs.centerSize, height: orbs.centerSize }),
           offset({ x: 0, y: 8 }),
-          foregroundStyle(centerOrbColor),
+          foregroundStyle(orbs.center),
           blur(30),
         ]}
       />
+      {orbs.corner ? (
+        <Circle
+          modifiers={[
+            frame({ width: cornerLayoutSize, height: cornerLayoutSize }),
+            scaleEffect(cornerScale),
+            offset({ x: orbs.corner.x, y: orbs.corner.y }),
+            foregroundStyle(orbs.corner.color),
+            blur(orbs.corner.blur / cornerScale),
+          ]}
+        />
+      ) : null}
     </ZStack>
   );
 
   try {
-    // Terminal state: every timeline entry has passed and the app has not
-    // re-pushed — the moon-and-stars refresh card. Entries from an older
-    // app version missing segment bounds degrade here too.
+    // Every timeline entry has passed, or an older app version wrote the
+    // entry without segment bounds — both degrade to the refresh card.
     const segmentValid = typeof props.nextEpochMs === 'number' && typeof props.prevEpochMs === 'number';
     if (props.stale === true || !segmentValid) {
       return <StaleCard />;
     }
 
-    // Footer: the next prayer's date marker, then the short city. The
-    // Gregorian setting yields the weekday — "Mon · Lon" (dateLabel "Mon,
-    // 15 Jun 2026"). The Hijri setting yields the three-letter month plus
-    // the day — "Raj 1 · Lon" (dateLabel "Rajab 1, 1447"; Intl's "Rabiʻ I
-    // 12" drops the numeral — shared prefixes accepted for consistency).
-    // Entries from a v1 app version without a dateLabel degrade to "Lon".
+    // Footer: the next prayer's date marker, then the short city.
+    // Gregorian yields "Mon · Lon"; Hijri yields "Raj 1 · Lon". NOTE: plain
+    // string separator only — the extension's JS runtime does not split on
+    // regex separators (/\s+/ silently returns the whole string).
     const datePrefix =
       typeof props.dateLabel === 'string' && props.dateLabel.length > 0 ? props.dateLabel.split(',')[0] : '';
-    // NOTE: plain string separator only — the widget extension's JS runtime
-    // does not split on regex separators (/\s+/ silently returns the whole
-    // string, which rendered "Rabiʻ II 18 · Lon" before this fix).
     const dateTokens = datePrefix.split(' ');
     let dayPart = '';
     if (dateTokens.length === 1) {
@@ -304,6 +306,21 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     }
     const footer = dayPart ? `${dayPart} · Lon` : 'Lon';
 
+    // The medium list is only renderable with a complete day snapshot:
+    // entries from older app versions or a malformed sequence fall back to
+    // the hero-only composition instead of a broken list.
+    const rows = Array.isArray(props.prayers) ? props.prayers : [];
+    const activeIndex = typeof props.activeIndex === 'number' ? props.activeIndex : -1;
+    const listValid = rows.length > 0 && activeIndex >= 0 && activeIndex < rows.length;
+
+    // minLength 0 on the list column's Spacers removes their default
+    // minimum, which inflated the HStack's height and pushed the shared
+    // hero column's footer past the card's 13pt inset. After that the
+    // standard 6-row list still lays the hero column 1pt short of the
+    // smalls' inset, so a half-point lift restores it (the runtime applies
+    // the offset at double strength).
+    const footerLift = isMedium && rows.length >= 6 ? 0.5 : 0;
+
     // The hero column — the small widget's centered trio plus the footer,
     // shared verbatim by both families so the countdown reads identically.
     const HeroColumn = () => (
@@ -313,7 +330,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
           <Text
             modifiers={[
               font({ size: 12, weight: 'bold' }),
-              foregroundStyle(EYEBROW_TEXT),
+              foregroundStyle(palette.eyebrow),
               textCase('uppercase'),
               kerning(0.5),
               lineLimit(1),
@@ -326,7 +343,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
               modifiers={[
                 font({ size: 26, weight: 'bold' }),
                 monospacedDigit(),
-                foregroundStyle(TEXT_PRIMARY),
+                foregroundStyle(palette.hero),
                 lineLimit(1),
                 minimumScaleFactor(0.6),
               ]}>
@@ -337,7 +354,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
             modifiers={[
               font({ size: 13, weight: 'regular' }),
               monospacedDigit(),
-              foregroundStyle(TEXT_SECONDARY),
+              foregroundStyle(palette.secondary),
               lineLimit(1),
             ]}>
             {props.nextTime}
@@ -347,34 +364,24 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
         <Text
           modifiers={[
             font({ size: 9, weight: 'medium' }),
-            foregroundStyle(TEXT_FOOTER),
+            foregroundStyle(palette.footer),
             kerning(0.4),
             lineLimit(1),
             minimumScaleFactor(0.6),
+            offset({ y: footerLift }),
           ]}>
           {footer}
         </Text>
       </VStack>
     );
 
-    // The medium list is only renderable with a complete day snapshot:
-    // entries from older app versions (props v2) or a malformed sequence
-    // fall back to the hero-only composition instead of a broken list.
-    const rows = Array.isArray(props.prayers) ? props.prayers : [];
-    const activeIndex = typeof props.activeIndex === 'number' ? props.activeIndex : -1;
-    const listValid = rows.length > 0 && activeIndex >= 0 && activeIndex < rows.length;
-
-    if (environment.widgetFamily === 'systemMedium' && listValid) {
+    if (isMedium && listValid) {
       // One row per prayer: name leading, time trailing (the app's row
       // anatomy), colored by state — passed and active rows solid, upcoming
-      // rows muted (the app's isPassed || isNext → primary rule). Every
-      // time is bold, every name regular (owner decision 2026-08-31). The
-      // row block is inset a few points each side (on the list ZStack
-      // below), so the pill sits narrower than the column with slight
-      // padding left and right — which also brings the name and time
-      // closer together.
+      // rows muted. Every time bold, every name regular (owner rule).
       const Row = ({ name, time, index }: { name: string; time: string; index: number }) => {
-        const rowColor = index === activeIndex ? ACTIVE_ROW_TEXT : index < activeIndex ? ROW_PASSED : ROW_UPCOMING;
+        const rowColor =
+          index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
 
         return (
           <HStack
@@ -403,27 +410,26 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
         );
       };
 
-      // The floating active background — the app's ActiveBackground
-      // architecture: a native rounded-rectangle shape (a shape view fills
-      // the width its stack proposes — an empty stack with a maxWidth frame
-      // collapses to zero width in the widget runtime) positioned behind the
-      // next prayer's row, with a deep shadow scaled to widget rows. The
-      // pill anchors to the row BLOCK's top (activeIndex · rowHeight), so it
-      // tracks the active row wherever the centered list below places it.
+      // The floating active background. A native shape view fills the
+      // width its stack proposes — an empty stack with a maxWidth frame
+      // collapses to zero width in the widget runtime. The pill anchors to
+      // the row BLOCK's top (activeIndex · rowHeight), so it tracks the
+      // active row wherever the centered list below places it.
       const pillY = activeIndex * ROW_HEIGHT;
+      const pillShadow = palette.pillShadow;
 
       const ActivePill = () => (
         <RoundedRectangle
           cornerRadius={ROW_CORNER_RADIUS}
           modifiers={[
-            foregroundStyle(ACTIVE_BACKGROUND),
+            foregroundStyle(palette.pillFill),
             strokeBorder({
-              color: STROKE_COLOR,
-              style: { lineWidth: STROKE_WIDTH },
+              color: palette.pillStroke,
+              style: { lineWidth: 1 },
               shape: 'roundedRectangle',
               cornerRadius: ROW_CORNER_RADIUS,
             }),
-            shadow({ radius: SHADOW_RADIUS, x: SHADOW_X, y: SHADOW_Y, color: ACTIVE_SHADOW }),
+            shadow({ radius: pillShadow.radius, x: pillShadow.x, y: pillShadow.y, color: pillShadow.color }),
             frame({ height: ROW_HEIGHT }),
             offset({ y: pillY }),
           ]}
@@ -431,7 +437,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       );
 
       return (
-        <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+        <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
           <Blobs />
           <HStack
             spacing={14}
@@ -441,17 +447,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
             ]}>
             <HeroColumn />
             {/* The list column: the row block (pill + rows) centers
-                vertically between equal Spacers — the same centering
-                pattern the hero column uses. The standard 6-row list fills
-                the card's inner height exactly (insets are zero); the
-                extras 4/5-row lists get symmetric top/bottom insets, so the
-                spacing stays balanced when the Friday row grows the list.
-                A fixed track height or a maxHeight frame cannot be used
-                here: Infinity frames do not make stacks greedy in the
-                widget runtime, and hardcoding the track would break on
-                other card sizes. */}
+                vertically between equal Spacers — Infinity frames do not
+                make stacks greedy in the widget runtime, so Spacer-
+                centering is the only reliable vertical centering. The
+                standard 6-row list fills the card's inner height exactly;
+                the extras 4/5-row lists get symmetric insets. */}
             <VStack spacing={0} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-              <Spacer />
+              <Spacer minLength={0} />
               <ZStack alignment='top' modifiers={[frame({ width: LIST_WIDTH }), padding({ leading: 4, trailing: 4 })]}>
                 <ActivePill />
                 <VStack spacing={0} alignment='leading' modifiers={[frame({ maxWidth: Infinity })]}>
@@ -460,7 +462,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
                   ))}
                 </VStack>
               </ZStack>
-              <Spacer />
+              <Spacer minLength={0} />
             </VStack>
           </HStack>
         </ZStack>
@@ -469,7 +471,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
 
     // systemSmall (or the medium fallback): the hero alone fills the card.
     return (
-      <ZStack modifiers={[containerBackground(CARD_BACKGROUND, 'widget')]}>
+      <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
         <Blobs />
         <VStack spacing={0} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <HeroColumn />
@@ -483,9 +485,17 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   }
 };
 
-// One layout, two kinds: the same serialized function body is registered
-// under both names — the standard pair and the extras pair differ only in
-// which timeline stores/widget.ts pushes to them (and the entry's
-// `schedule` prop, which the palette branch above reads).
+// One layout, eight kinds: the same serialized function body backs the
+// light pair, the dark pair, and each pair's small + medium kinds — the
+// gallery lists one row per kind, and size-exclusive kinds are what make
+// the smalls group before the mediums within each theme. stores/widget.ts
+// pushes every kind its own schedule- and theme-stamped timeline; the
+// entry props and environment.widgetFamily do the rest.
 export const PrayerWidget = createWidget('PrayerWidget', AthanHomeWidget);
 export const ExtrasWidget = createWidget('ExtrasWidget', AthanHomeWidget);
+export const PrayerWidgetMedium = createWidget('PrayerWidgetMedium', AthanHomeWidget);
+export const ExtrasWidgetMedium = createWidget('ExtrasWidgetMedium', AthanHomeWidget);
+export const PrayerWidgetDark = createWidget('PrayerWidgetDark', AthanHomeWidget);
+export const ExtrasWidgetDark = createWidget('ExtrasWidgetDark', AthanHomeWidget);
+export const PrayerWidgetDarkMedium = createWidget('PrayerWidgetDarkMedium', AthanHomeWidget);
+export const ExtrasWidgetDarkMedium = createWidget('ExtrasWidgetDarkMedium', AthanHomeWidget);
