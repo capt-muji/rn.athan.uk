@@ -145,13 +145,13 @@ const makeExtrasSequence = (): PrayerSequence => {
 
 describe('buildPrayerWidgetTimeline', () => {
   it('starts with an entry at now', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     expect(entries[0].date.getTime()).toBe(NOW.getTime());
   });
 
   it('first entry points at the next prayer after now (Asr) with app-format labels', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
     const first = entries[0].props;
 
     expect(first.nextName).toBe('Asr');
@@ -165,7 +165,7 @@ describe('buildPrayerWidgetTimeline', () => {
   });
 
   it('emits stepped countdown entries every five minutes inside the horizon', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     const stepMs = NOW.getTime() + COUNTDOWN_STEP_MS;
     const step = entries.find((entry) => entry.date.getTime() === stepMs);
@@ -178,7 +178,7 @@ describe('buildPrayerWidgetTimeline', () => {
 
   it('emits only boundary entries beyond the stepped countdown horizon', () => {
     const sequence = makeSequence();
-    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
     const horizonMs = NOW.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
     const boundaryMs = new Set(sequence.prayers.map((prayer) => prayer.datetime.getTime()));
 
@@ -189,7 +189,7 @@ describe('buildPrayerWidgetTimeline', () => {
   });
 
   it('keeps every instant inside the horizon within one step of a fresher label', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
     const horizonMs = NOW.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
     for (let instantMs = NOW.getTime(); instantMs <= horizonMs; instantMs += 60 * 1000) {
@@ -206,7 +206,7 @@ describe('buildPrayerWidgetTimeline', () => {
   });
 
   it('flips to the next day at the Isha boundary, before midnight', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     // Isha boundary 22:45 on June 15: next becomes June 16's Fajr and the
     // date label rolls to the 16th while it is still the 15th
@@ -227,7 +227,7 @@ describe('buildPrayerWidgetTimeline', () => {
       prayers: [...makeDay('2026-06-16'), makePrayer('2026-06-17', '01:10', 'Isha', 'العشاء', '2026-06-16')],
     };
 
-    const entries = buildPrayerWidgetTimeline(createPrayerDatetime('2026-06-16', '12:00'), sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(createPrayerDatetime('2026-06-16', '12:00'), sequence, SETTINGS, 'light');
 
     expect(entries[0].props.nextName).toBe('Dhuhr');
     const ishaLabel = entries.find((entry) => entry.props.nextTime === '01:10');
@@ -238,7 +238,7 @@ describe('buildPrayerWidgetTimeline', () => {
   });
 
   it('ends with a stale guard entry at the final prayer boundary', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     const finalPrayer = createPrayerDatetime('2026-06-16', '22:45');
     const last = entries[entries.length - 1];
@@ -252,13 +252,13 @@ describe('buildPrayerWidgetTimeline', () => {
   });
 
   it('never marks real segment entries as stale', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     expect(entries.slice(0, -1).every((entry) => entry.props.stale !== true)).toBe(true);
   });
 
   it('sorts entries chronologically', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     const times = entries.map((entry) => entry.date.getTime());
     const sorted = [...times].sort((a, b) => a - b);
@@ -266,13 +266,13 @@ describe('buildPrayerWidgetTimeline', () => {
   });
 
   it('carries the schema version into every entry', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     expect(entries.every((entry) => entry.props.v === WIDGET_PROPS_VERSION)).toBe(true);
   });
 
   it('stamps standard entries and lists the day chronologically for the medium list', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
     const first = entries[0].props;
 
     expect(first.schedule).toBe('standard');
@@ -280,12 +280,34 @@ describe('buildPrayerWidgetTimeline', () => {
     expect(first.activeIndex).toBe(3);
   });
 
+  it('stamps the theme on every entry, stale guard included', () => {
+    const darkEntries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'dark');
+    const lightEntries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS, 'light');
+
+    expect(darkEntries.every((entry) => entry.props.theme === 'dark')).toBe(true);
+    expect(lightEntries.every((entry) => entry.props.theme === 'light')).toBe(true);
+    expect(darkEntries[darkEntries.length - 1].props.stale).toBe(true);
+  });
+
+  it('builds identical light and dark timelines except the theme stamp', () => {
+    const lightEntries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
+    const darkEntries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'dark');
+
+    expect(lightEntries.length).toBe(darkEntries.length);
+    for (let index = 0; index < lightEntries.length; index++) {
+      const { theme: _lightTheme, ...lightProps } = lightEntries[index].props;
+      const { theme: _darkTheme, ...darkProps } = darkEntries[index].props;
+      expect(lightEntries[index].date).toEqual(darkEntries[index].date);
+      expect(lightProps).toEqual(darkProps);
+    }
+  });
+
   it('always rounds the label up to the next minute', () => {
     const asrMs = createPrayerDatetime('2026-06-15', '17:45').getTime();
     // 11m 37s left reads "12m" — never the lower minute, never seconds
     const pushAt = new Date(asrMs - (11 * 60 + 37) * 1000);
 
-    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
 
     expect(entries[0].props.countdownLabel).toBe('12m');
   });
@@ -295,7 +317,7 @@ describe('buildPrayerWidgetTimeline', () => {
     // 9m 59s left → "10m"; anything under a minute reads "1m" until the flip
     const pushAt = new Date(asrMs - (9 * 60 + 59) * 1000);
 
-    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
 
     expect(entries[0].props.countdownLabel).toBe('10m');
   });
@@ -305,7 +327,7 @@ describe('buildPrayerWidgetTimeline', () => {
     // Sub-minute remainder proves the ceil rounding matches getSecondsRemaining
     const pushAt = new Date(asrMs - (2 * 60 + 59.4) * 1000);
 
-    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
 
     for (const entry of entries) {
       if (entry.props.stale === true) continue;
@@ -319,21 +341,21 @@ describe('buildPrayerWidgetTimeline', () => {
   });
 
   it('formats date labels in Hijri when the preference is on', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS_HIJRI);
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS_HIJRI, 'light');
 
     expect(entries[0].props.dateLabel).toBe(formatHijriDateLong('2026-06-15'));
     expect(entries.every((entry) => entry.props.dateLabel.length > 0)).toBe(true);
   });
 
   it('returns an empty array when the sequence has no prayers', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, { type: ScheduleType.Standard, prayers: [] }, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, { type: ScheduleType.Standard, prayers: [] }, SETTINGS, 'light');
 
     expect(entries).toEqual([]);
   });
 
   it('returns an empty array when now is past the last prayer in the sequence', () => {
     const late = createPrayerDatetime('2026-06-16', '23:59');
-    const entries = buildPrayerWidgetTimeline(late, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(late, makeSequence(), SETTINGS, 'light');
 
     expect(entries).toEqual([]);
   });
@@ -342,7 +364,7 @@ describe('buildPrayerWidgetTimeline', () => {
     // Sequence starts tomorrow; now has no previous prayer in the span
     const sequence: PrayerSequence = { type: ScheduleType.Standard, prayers: makeDay('2026-06-16') };
 
-    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     expect(entries.length).toBeGreaterThan(0);
     // First entry's segment start falls back to the entry date itself
@@ -360,7 +382,7 @@ describe('minimum entry spacing', () => {
     // Push at 17:44 with Asr at 17:45 — the boundary flip must stay at 17:45,
     // so the first entry backs up to 17:40 to keep the spacing.
     const pushAt = createPrayerDatetime('2026-06-15', '17:44');
-    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
 
     const asrBoundary = createPrayerDatetime('2026-06-15', '17:45').getTime();
     expect(entries[0].props.nextName).toBe('Asr');
@@ -375,7 +397,7 @@ describe('minimum entry spacing', () => {
 
     for (let minute = 0; minute < 24 * 60; minute++) {
       const pushAt = new Date(dayStart + minute * 60 * 1000);
-      const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS);
+      const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
 
       for (let i = 1; i < entries.length; i++) {
         const gapMs = entries[i].date.getTime() - entries[i - 1].date.getTime();
@@ -391,7 +413,7 @@ describe('minimum entry spacing', () => {
 
     for (let minute = 0; minute < 24 * 60; minute++) {
       const pushAt = new Date(dayStart + minute * 60 * 1000);
-      const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS);
+      const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
 
       if (entries[0].date.getTime() > pushAt.getTime()) {
         throw new Error(`Push at minute ${minute}: first entry dated after now`);
@@ -413,7 +435,7 @@ describe('DST transitions', () => {
     };
     const pushAt = createPrayerDatetime('2026-10-24', '12:00');
 
-    const entries = buildPrayerWidgetTimeline(pushAt, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(pushAt, sequence, SETTINGS, 'light');
 
     const times = entries.map((entry) => entry.date.getTime());
     const sorted = [...times].sort((a, b) => a - b);
@@ -429,7 +451,7 @@ describe('DST transitions', () => {
     };
     const pushAt = createPrayerDatetime('2027-03-27', '12:00');
 
-    const entries = buildPrayerWidgetTimeline(pushAt, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(pushAt, sequence, SETTINGS, 'light');
 
     const times = entries.map((entry) => entry.date.getTime());
     const sorted = [...times].sort((a, b) => a - b);
@@ -446,7 +468,7 @@ describe('boundary edge cases', () => {
   it('flips immediately when now is exactly on a prayer datetime', () => {
     // At the Asr instant itself the segment flips to Magrib (Asr is prev)
     const pushAt = createPrayerDatetime('2026-06-15', '17:45');
-    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
 
     expect(entries[0].props.nextName).toBe('Magrib');
     expect(entries[0].props.prevEpochMs).toBe(pushAt.getTime());
@@ -459,7 +481,7 @@ describe('boundary edge cases', () => {
       prayers: [...makeSequence().prayers, duplicated],
     };
 
-    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     const times = entries.map((entry) => entry.date.getTime());
     expect(new Set(times).size).toBe(times.length);
@@ -475,7 +497,7 @@ describe('boundary edge cases', () => {
       prayers: [...makeDay('2026-06-15'), ...makeDay('2026-06-17')],
     };
 
-    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     const times = entries.map((entry) => entry.date.getTime());
     const sorted = [...times].sort((a, b) => a - b);
@@ -490,7 +512,7 @@ describe('boundary edge cases', () => {
 
 describe('extras schedule timeline', () => {
   it('stamps every entry — including the stale guard — with the extras schedule', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS, 'light');
 
     expect(entries.every((entry) => entry.props.schedule === 'extra')).toBe(true);
     expect(entries[entries.length - 1].props.stale).toBe(true);
@@ -501,7 +523,7 @@ describe('extras schedule timeline', () => {
     // Monday 14:00: Monday's extras have all passed — next is Tuesday's
     // Midnight (datetime Mon 23:52, belongsToDate Tue), so the list rolls to
     // Tuesday: 4 rows in canonical order, Midnight active at index 0
-    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS, 'light');
     const first = entries[0].props;
 
     expect(first.nextName).toBe('Midnight');
@@ -514,7 +536,7 @@ describe('extras schedule timeline', () => {
     // Friday 12:00: next is Friday's Istijaba (16:00) — canonical order puts
     // it LAST even though it is chronologically the final upcoming row
     const fridayNoon = createPrayerDatetime(FRIDAY, '12:00');
-    const entries = buildPrayerWidgetTimeline(fridayNoon, makeExtrasSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(fridayNoon, makeExtrasSequence(), SETTINGS, 'light');
     const first = entries[0].props;
 
     expect(first.nextName).toBe('Istijaba');
@@ -528,7 +550,7 @@ describe('extras schedule timeline', () => {
     // day X chronologically) — the list is already Friday's 5 rows with
     // Istijaba last
     const thursdayNight = createPrayerDatetime('2026-06-18', '22:00');
-    const entries = buildPrayerWidgetTimeline(thursdayNight, makeExtrasSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(thursdayNight, makeExtrasSequence(), SETTINGS, 'light');
     const first = entries[0].props;
 
     expect(first.nextName).toBe('Midnight');
@@ -540,7 +562,7 @@ describe('extras schedule timeline', () => {
     // At the Istijaba boundary the countdown target becomes the night's
     // Midnight, whose belongsToDate is Saturday — the list rolls with it
     const istijabaBoundary = createPrayerDatetime(FRIDAY, EXTRA_TIMES.istijaba);
-    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS, 'light');
     const rollEntry = entries.find((entry) => entry.date.getTime() === istijabaBoundary.getTime());
 
     expect(rollEntry).toBeDefined();
@@ -555,7 +577,7 @@ describe('extras schedule timeline', () => {
     // step, so the aligned grid alone would leave a stale tail before the
     // flip: the builder places an anchor entry exactly one spacing before
     // the boundary, and nothing may sit between it and the flip
-    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS, 'light');
     const anchorMs = createPrayerDatetime('2026-06-15', '23:47').getTime();
     const boundaryMs = createPrayerDatetime('2026-06-15', '23:52').getTime();
 
@@ -587,7 +609,7 @@ describe('extras schedule timeline', () => {
       ],
     };
 
-    const entries = buildPrayerWidgetTimeline(createPrayerDatetime(date, '08:00'), sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(createPrayerDatetime(date, '08:00'), sequence, SETTINGS, 'light');
 
     expect(entries[0].props.nextName).toBe('Duha');
     expect(entries[0].props.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Duha', 'Istijaba']);
@@ -614,7 +636,7 @@ describe('volume and payload invariants', () => {
 
   it('bounds the entry count to boundaries plus one stepped day plus the guard', () => {
     const sequence = makeSpanSequence();
-    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     expect(entries[entries.length - 1].props.stale).toBe(true);
     expect(entries.length).toBeLessThan(500);
@@ -622,7 +644,7 @@ describe('volume and payload invariants', () => {
 
   it('keeps the serialized payload well under UserDefaults comfort size', () => {
     const sequence = makeSpanSequence();
-    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     // The medium widget's day list (six rows + activeIndex per entry) grew
     // the payload ~30% over the pre-v3 size; 155KB across ~380 entries is
@@ -646,7 +668,7 @@ describe('volume and payload invariants', () => {
     prayers.sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
     const sequence: PrayerSequence = { type: ScheduleType.Extra, prayers };
 
-    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS);
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     expect(entries[entries.length - 1].props.stale).toBe(true);
     expect(entries.length).toBeLessThan(500);
