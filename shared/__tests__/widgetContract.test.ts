@@ -198,8 +198,11 @@ describe('palette literals', () => {
     // hero, blue-tinted secondary/footer, solid indigo selection pill with
     // pale pink text, soft blackish-blue passed rows, and white orb glow
     // lighting. The extras widgets (1.14.0) swap the medium pill's indigo
-    // trio for rose — same structure, rose-tinted stroke/shadow.
+    // trio for rose — same structure, rose-tinted stroke/shadow. The dark
+    // theme (1.16.0) re-tints every role to the app's own palette — each
+    // dark literal below is the app value it mirrors.
     const anchors = [
+      // Light palette
       'rgba(234, 239, 246, 0.8)',
       '#db2777',
       '#1e1b2e',
@@ -216,6 +219,20 @@ describe('palette literals', () => {
       // Extras medium pill — the rose trio
       'rgba(61, 10, 38, 0.45)',
       'rgba(219, 39, 119, 0.35)',
+      // Dark palette (app-anchored)
+      'rgba(3, 26, 76, 0.8)', // card — COLORS.gradient.screen.start @ 0.8
+      'rgba(160, 200, 255, 0.54)', // eyebrow/secondary — COLORS.text.secondary
+      '#ffffff', // hero/passed/active rows — COLORS.text.primary
+      'rgba(138, 169, 214, 0.38)', // footer/upcoming — COLORS.text.muted
+      '#0847e5', // standard pill — COLORS.prayer.activeBackground
+      '#9200a2', // extras pill — COLORS.prayer.activeBackgroundExtras
+      '#081a76', // standard pill shadow — COLORS.shadow.prayer
+      '#6e006b', // extras pill shadow — COLORS.shadow.prayerExtras
+      '#a5b4fc', // stale mark — COLORS.icon.primary
+      'rgba(91, 30, 170, 0.5)', // bottom orb — COLORS.gradient.screen.end @ 0.5
+      'rgba(165, 180, 252, 0.35)', // top orb — COLORS.icon.primary @ 0.35
+      'rgba(8, 71, 229, 0.35)', // standard stroke — dark fill @ 0.35
+      'rgba(146, 0, 162, 0.35)', // extras stroke — dark fill @ 0.35
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -227,20 +244,23 @@ describe('palette literals', () => {
 
   it('every literal in both widgets is an app-theme color or an explicit widget-specific value', () => {
     // Deliberate widget-only colors: the Lock Screen's vibrant secondary
-    // white, and the home widget's "Cotton Candy" palette — every value is
-    // widget-specific by design (the widget deliberately mirrors the
-    // wallpaper instead of the app theme, so no COLORS.* anchors apply).
+    // white, and the home widget's "Cotton Candy" light palette — every
+    // light value is widget-specific by design (the light widget mirrors
+    // the wallpaper instead of the app theme, so no COLORS.* anchors
+    // apply). The DARK palette values mirror the app exactly but are
+    // inlined as literals (the widget runtime cannot import COLORS), so
+    // they are listed here too.
     const widgetSpecific = [
       // Lock Screen accessory widgets
       '#ffffff',
       'rgba(255, 255, 255, 0.6)',
-      // Home widget — Cotton Candy pane + type
+      // Home widget — Cotton Candy pane + type (light)
       'rgba(234, 239, 246, 0.8)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
       'rgba(42, 68, 130, 0.34)',
-      // Active selection pill — standard indigo trio + extras rose trio
+      // Active selection pill — standard indigo trio + extras rose trio (light)
       '#4f46e5',
       '#fce7f3',
       'rgba(30, 27, 75, 0.45)',
@@ -248,11 +268,24 @@ describe('palette literals', () => {
       '#db2777',
       'rgba(61, 10, 38, 0.45)',
       'rgba(219, 39, 119, 0.35)',
-      // List rows
+      // List rows (light)
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
-      // White orb glow lighting
+      // White orb glow lighting (light)
       'rgba(255, 255, 255, 0.4)',
+      // Dark palette — app-anchored literals
+      'rgba(3, 26, 76, 0.8)',
+      'rgba(160, 200, 255, 0.54)',
+      'rgba(138, 169, 214, 0.38)',
+      '#0847e5',
+      '#9200a2',
+      '#081a76',
+      '#6e006b',
+      '#a5b4fc',
+      'rgba(91, 30, 170, 0.5)',
+      'rgba(165, 180, 252, 0.35)',
+      'rgba(8, 71, 229, 0.35)',
+      'rgba(146, 0, 162, 0.35)',
     ].map(normalizeColor);
 
     const allowed = new Set(widgetSpecific.map((c) => JSON.stringify(c)));
