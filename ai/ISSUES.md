@@ -576,9 +576,19 @@ production release; G.6 noted but deferred by owner.
 ### G.1 [OPEN — RELEASE BLOCKER] Five home screen widgets permanently blank
 
 - **STATUS (end of session 2026-09-02)**: failure chain PROVEN on device and
-  REPRODUCED on an iOS 18.5 simulator as a sustained ~100% CPU render loop.
+  REPRODUCED on an iOS 18.5 simulator as sustained ~100% CPU render loop.
   Construct-level bisection STARTED (two data points in, see Bisect Log) —
   this is the exact resume point for the next session.
+- **STATUS (end of session 2026-09-02, ROUND 2 — ROOT CAUSE FOUND AND
+  SOURCE-PROVEN; construct bisection CLOSED)**: the "render loop" is NOT a
+  livelock and NOT construct-specific. It is expo-widgets' own view-identity
+  architecture making every SwiftUI body re-evaluation a full-tree teardown:
+  bursts of 100% CPU per reload that scale with widget count/tree mass
+  (~5–13 CPU-seconds per kind-placement), which converge (decay) only when
+  WidgetKit's post-reload update sequence stops. Per-minute pushes × 10 kinds
+  overlap the bursts → permanent saturation on-device. Full mechanism and fix
+  options below ("ROOT CAUSE — SOURCE-PROVEN" + "FIX DESIGN — decision
+  needed").
 - **THE FAILURE CHAIN (all steps evidenced from the XS via USB syslog +
   crash reports)**: the widget extension gets CPU-saturated by an in-widget
   SwiftUI render oscillation → it misses WidgetKit's ~30s watchdog for
@@ -659,6 +669,71 @@ production release; G.6 noted but deferred by owner.
        fluke of page/position); the code-level construct bisect (orbs-off
        variant — an early `return null;` was inserted in `Blobs` at session
        end and REVERTED before handoff; redo it as step one).
+    - **ROUND 2 CORRECTIONS (2026-09-02 session 2, all re-measured with an
+      explicit ignition protocol)**: the previous session's page model was
+      partly an illusion — the oscillating extension serves TORN frames, so
+      element-tree snapshots mid-churn showed arbitrary subsets of ONE widget
+      page as if they were separate pages. Points 2 and 4's attributions do
+      not survive ignition control:
+      - "Calm" readings taken WITHOUT fresh reload requests are meaningless:
+        after sim boot (or any quiet period) the extension sits at 0.0% no
+        matter what is placed; the loop only ignites when fresh
+        `reloadTimelines` requests arrive (app foreground push → HOME).
+        Point 2 and the 06:15 idle reading were both un-ignited states.
+      - Orb removal (Blobs early `return null`, cold-evaluated via pkill +
+        relaunch): dark set STILL ignites 91→100%. ⇒ **orbs EXONERATED**
+        (point 4's "orbs implicated" is dead).
+      - 2 light smalls alone, ignited: 0→86→100→99.7→88→0 — a ~10–12 s
+        BURST that DECAYS. Repeatable. ⇒ point 2's "light smalls calm" was
+        an un-ignited misread; even the tiniest trees burst.
+      - 4 smalls (light pair + dark pair, orbless), ignited: ~52 s at ~100%,
+        then decay to 0. Burst length scales with widget count/tree mass.
+      - 1 light medium + 3 smalls, ignited: burst ≥ measured window; mediums
+        behave as mass-scaling, not as a distinct livelock (mechanism below
+        makes construct-bisection moot).
+      - Loop persists with NO Athan widget on-screen (App Library visible,
+        adjacent-page render trees stay live in SpringBoard) and across
+        extension respawns (poisoned reload queue re-ignites each new
+        process) — "sustained 100%" readings were overlapping bursts from
+        still-firing per-minute pushes.
+  - **ROOT CAUSE — SOURCE-PROVEN (2026-09-02 session 2; read from the pinned
+    node_modules sources, `sample` stack, and measurements)**:
+    1. `expo-modules-core` `SwiftUIViewDefinition.swift:22` — `Children()` =
+       `ForEach(props.children ?? [], id: \.id)`, keyed on `ObjectIdentifier`.
+    2. `expo-widgets` `Widgets/DynamicView.swift:26` — every `WidgetsDynamicView`
+       struct init generates a FRESH RANDOM UUID (`NodeIdentityWrapper(id:
+       UUID())`; upstream TODO literally calls it a "Hack"). `updateChildren`
+       (line 155) rebuilds the whole child array on EVERY parent body eval.
+       ⇒ every body evaluation produces an all-new identity set → ForEach
+       removes+reinserts the ENTIRE subtree → recursive
+       `DynamicViewList.applyNodes` / `SubgraphElements.makeElements` /
+       AttributeGraph update storm (exact `sample` stack: 1263/1263 main
+       thread samples in `AG::Graph::update_attribute` + friends).
+    3. `expo-widgets` `Widgets/EntryView.swift:27-31` — the ROOT body reads
+       the app-group UserDefaults layout key AND `@Environment(\.self)` (the
+       whole environment as a dependency) and re-runs the JS layout eval +
+       environment JSON serialization per evaluation. This is the device's
+       12/sec per-kind layout-read storm.
+    4. `expo-widgets` `ios/WidgetObject.swift:21` — every JS
+       `updateTimeline()` call ends in its own
+       `WidgetCenter.shared.reloadTimelines(ofKind:)`. Our
+       `refreshPrayerWidgets()` calls it 10× (8 home kinds + 2 lock kinds)
+       per minute-flip → 10 reload tasks/minute, each triggering the burst
+       above for that kind's visible placements.
+    5. Net effect: each kind-placement costs ~5–13 CPU-seconds of render
+       churn per reload pass. On A12: bursts overlap the per-minute cadence →
+       `getTimelines` misses the ~30 s watchdog → chronod +1 h backoff → the
+       label-flip scheduler keeps spawning doomed reloads → first-come-
+       first-served starvation → permanent blanks (G.1) and delayed first
+       renders (G.2). On fast hosts bursts are ms-scale → widgets "work".
+    6. **Upstream status**: expo/expo@main STILL carries the random-UUID hack
+       (identical file, fetched via opensrc 2026-09-02). No fixed version
+       exists to upgrade to. No public issue/report found — we are the first
+       to characterize this (it needs many kinds + per-minute reloads +
+       slow hardware to surface). Filing an upstream issue is worthwhile.
+    7. Timeline archive itself is HEALTHY (348 entries, 285× exactly-5-min
+       steps + boundary flips; verified from the sim app-group plist) —
+       entry density is NOT a driver.
   - Interpretation so far: the calm tree is the light small (hero trio
     only). Both ORBS (dark smalls) and the MEDIUM composition (2-col
     HStack + day list + floating pill + footerLift) oscillate. No single
@@ -673,52 +748,94 @@ production release; G.6 noted but deferred by owner.
   strength in the widget runtime — 1.17.0 lesson), translucent
   `containerBackground` (`rgba(255,250,253,0.55)` on light kinds).
   Lock layout uses NONE of these and never loops.
-- **NEXT SESSION — exact procedure**:
-  1. `xcrun simctl boot 15DD2E5A-47DE-4934-A3CF-E36A34E34251` (iPhone-185).
-     Debug app already built: `/tmp/dd18d/Build/Products/
-     Debug-iphonesimulator/Athan.app` (Release copy at `/tmp/dd18`).
-     Reinstall if the sim was erased. Metro:
-     `nohup npx expo start --port 8081 > /tmp/metro-athan-fix.log`
-     (stay on `fix/g-device-regressions`).
-  2. Launch the app (auto-connects to localhost:8081), wait for TICK logs,
-     press HOME, swipe right to the dark page, then measure CPU (command
-     above). Baseline should read ~100%.
-  3. Code-bisect by editing `widgets/PrayerWidget.tsx`, then `xcrun
-     simctl terminate <udid> com.mugtaba.athan && xcrun simctl launch
-     <udid> com.mugtaba.athan` (module eval re-registers layouts +
-     re-pushes; wait for the "WIDGET: … timeline pushed" logs), then
-     measure. WidgetKit reload latency: allow ≥60 s before trusting a
-     "calm" reading; the extension caches evaluated layouts per process —
-     `pkill -x ExpoWidgetsTarget` to force cold evaluation if suspicious.
-  4. Bisect order: (a) `Blobs` early `return null` → dark smalls calm?
-     (b) narrow the orbs: drop `blur` (plain fill) vs drop `scaleEffect`
-     (true frame) vs drop `offset`; (c) medium: hide pill → hide day-list
-     rows → hide `footerLift` → hide Spacer-centering; (d) re-test the
-     light medium alone for a clean medium-only signal.
-  5. FIX DESIGN after the culprit lands (owner vetoes STAND: minute label
-     cadence, 14-day `TIMELINE_DAYS`, payload size). Expected shape:
-     replace the looping construct with settled geometry (e.g. opaque
-     gradient instead of live blur; fixed frames instead of
-     Infinity+Spacer) AND consolidate pushes to ONE
-     `WidgetCenter.reloadAllTimelines()` per minute-flip instead of 10
-     per-kind reloads (10× fewer reload tasks; cadence unchanged — also
-     G.2's candidate fix).
-  6. SHIP: version bump BOTH app.json + package.json (1.17.7), `yarn
-     validate`, `npx eas-cli build --profile development --platform ios
-     --non-interactive --no-wait` (credentials stored), owner verifies on
-     the XS: all 8 home kinds render AND stay rendered ≥10 min, zero new
-     `ExpoWidgetsTarget.cpu_resource` reports, zero `Watchdog provision
-     violated` lines in a fresh `idevicesyslog` capture.
+  - **FIX DESIGN — decision taken 2026-09-02 (owner): WAIT for the upstream
+    fix as the primary path; our-side hygiene landed as 1.17.8.**
+    1. **UPSTREAM FIX TRACKING — expo/expo PR #49244 — THIS IS THE FIX
+       (owner: "our bread and butter"). CHECK IT EVERY SESSION.**
+       <https://github.com/expo/expo/pull/49244> — "[expo-widgets][iOS]
+       Keep SwiftUI view identity stable across updates so animations work"
+       by mahdidavoodi7, opened 2026-08-22, last activity 2026-09-01.
+       It replaces the random-UUID-per-render identity with stable
+       path-based identities (honoring JSX `key` — our day-list rows use
+       `key={row.name}`), deliberately EXCLUDES `entryIndex` so timeline
+       advances update in place instead of demolishing the tree, with a
+       bounded 4096-entry LRU identity cache. Expo's review bot verified
+       "the diagnosis in this pull request is correct"; maintainer jakex7
+       (author of the original hack) ran verify/review passes 2026-08-31;
+       bot status "Ready for human review". This kills the G.1/G.2 failure
+       chain at the root: renders drop from ~5–13 CPU-s per widget to
+       millisecond in-place updates.
+       - **Watch procedure**: `curl -s
+         https://api.github.com/repos/expo/expo/pulls/49244 | jq
+         '.state, .merged_at, .updated_at'` + the expo-widgets releases:
+         `curl -s
+         https://api.github.com/repos/expo/expo/releases?per_page=100 |
+         jq '.[] | select(.tag_name | contains("expo-widgets")) |
+         .tag_name' | head -5` — or watch
+         <https://github.com/expo/expo/blob/main/packages/expo-widgets/CHANGELOG.md>.
+         The PR sits in the UNRELEASED 57.0.x bug-fix section of the
+         changelog → expected to ship as `expo-widgets@57.0.16` (patch
+         bump, `npx expo install`), NOT an SDK-58 upgrade.
+       - **On release**: bump `expo-widgets` + matching `@expo/ui`, re-run
+         the sim ignite-protocol burst measurement (expect ms-scale),
+         EAS dev build, XS acceptance protocol (all 8 home kinds render +
+         stay ≥10 min, zero new cpu_resource reports, zero watchdog
+         lines). WATCH-ITEM: stable identity may enable system default
+         update animations (text fades) — owner's no-settling rule says
+         suppress if visible (one-line layout change).
+       - **Fallback if merged-but-unreleased past ~a week** and the XS
+         needs fixing sooner: patch-package backport of the MERGED code
+         (low risk at that point — human-approved). Delete the patch at
+         57.0.16. Backport note: one hunk touches `render()`, which main
+         has changed separately (#49535, unreleased) — resolve against
+         57.0.15's file.
+       - **Not fixed by the PR (ours)**: the JS push-path cost (G.6) and
+         the 10-reloads/min floor (10 kinds × minute-exact labels is the
+         UX; minute-aligned London times make both schedules flip at every
+         wall-clock :00 together, so per-schedule timers coincide by
+         design — reload count is unchanged and becomes harmless once
+         renders are cheap).
+    2. **Landed 2026-09-02 (1.17.8) — `stores/widget.ts` rework (our-side
+       prep)**: PER-SCHEDULE label-flip timers + pushers (a flip re-pushes
+       only that schedule's five kinds; schedules fail independently; one
+       empty schedule no longer blocks the other's timer) + a London-date-
+       keyed prayer-sequence cache so the per-minute flip pushes never
+       re-read the prayer DB or re-run the tz sequence math (the G.6 JS
+       cost) — full refreshes always rebuild before caching, so data wipes
+       and settings changes can never serve stale. Pinned by two new
+       tests in `stores/__tests__/widgetSettingsSync.test.ts` (flip pushes
+       each schedule's kinds only; flip pushes reuse the cached sequence
+       across a DB wipe). `yarn validate` 33 suites / 895 tests green.
+    3. Tree-mass reduction in layouts — deferred: owner walked every pixel
+       of the design; visual risk for a linear gain.
+  - **SHIP + VERIFY protocol (after the 57.0.16 update)**: bump BOTH
+    app.json + package.json (1.17.9 — 1.17.8 was consumed by the Phase 1
+    prep), `yarn validate`,
+    `npx eas-cli build --profile development --platform ios
+    --non-interactive --no-wait`, owner verifies on the XS: all 8 home kinds
+    render AND stay rendered ≥10 min, zero new `ExpoWidgetsTarget.
+    cpu_resource` reports, zero `Watchdog provision violated` lines in a
+    fresh `idevicesyslog` capture. Sim-side smoke: ignite protocol (foreground
+    app → push → HOME) shows bursts ≤ a few seconds and full decay between
+    minute-flips.
 - **Evidence files (all in /tmp — survive until reboot)**:
   `/tmp/xs-syslog.txt` (full device syslog, ~1.5M lines; analysis window
   offset in `/tmp/syslog-mark.txt` = 906268; slice at `/tmp/window.log`),
   `/tmp/xs-crashlogs/` (4× cpu_resource + JetsamEvent-2026-03-24 + old
   Athan-2026-08-17 crash), `/tmp/sim18-ext.log` (sim chronod+extension
-  stream), `/tmp/fix-build.ipa` + `/tmp/fixipa/` (dissected dev build),
+  stream, session 1), `/tmp/sim18-live.log` (session-2 live log stream —
+  kind-level Request/liveView lines + "Ignored view update for reason:
+  [timelineAdvancedOrNewArchive]"), `/tmp/extsample1.txt` (macOS `sample`
+  of the burning extension — the DynamicViewList/AttributeGraph stack),
+  `/tmp/fix-build.ipa` + `/tmp/fixipa/` (dissected dev build),
   `/tmp/build18.log`, `/tmp/build18d.log`, `/tmp/metro-athan-baseline.log`
-  (89 s JS-freeze evidence), `/tmp/metro-athan-fix.log`. Device syslog
-  tooling: `idevicesyslog`/`idevicecrashreport` installed via brew
-  (libimobiledevice); pairing validated for XS UDID
+  (89 s JS-freeze evidence), `/tmp/metro-athan-fix-session1.log` (session-1
+  fix-build log, archived) + `/tmp/metro-athan-fix.log` (session-2 log).
+  App-group archive for kind timelines (sim):
+  `~/Library/Developer/CoreSimulator/Devices/15DD…/data/Containers/Shared/
+  AppGroup/AA2FE8C7…/Library/Preferences/group.com.mugtaba.athan.plist`.
+  Device syslog tooling: `idevicesyslog`/`idevicecrashreport` installed via
+  brew (libimobiledevice); pairing validated for XS UDID
   `00008020-0015585C22D2002E` — replug + re-trust if asked.
 - **RED boxes note (dev builds only)**: DEBUG `DynamicView.swift` renders
   failures as red boxes; release maps them to invisible `EmptyView`.
