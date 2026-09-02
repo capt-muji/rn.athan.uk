@@ -3,6 +3,7 @@
 import '@/device/tasks';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { setAudioModeAsync } from 'expo-audio';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { LogBox } from 'react-native';
@@ -13,6 +14,7 @@ import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-rean
 import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
 import { InitialWidthMeasurement } from '@/components/ui';
 import { COLORS } from '@/shared/constants';
+import logger from '@/shared/logger';
 import { triggerSyncLoadable } from '@/stores/sync';
 
 // Prevent splash screen from automatically hiding
@@ -20,6 +22,16 @@ SplashScreen.preventAutoHideAsync();
 
 // Call API During App Start in background
 setTimeout(triggerSyncLoadable, 0);
+
+// Athan sound previews must be audible regardless of the ring/silent switch:
+// until a mode is set explicitly, the app runs on iOS's default session
+// category (.soloAmbient), which the mute switch silences — expo-audio
+// configures nothing on its own (AudioModule.swift only touches the session
+// inside setAudioModeAsync). mixWithOthers stays the interruption mode, so
+// previews never steal focus from background audio.
+setAudioModeAsync({ playsInSilentMode: true }).catch((error) => {
+  logger.warn('AUDIO: Failed to set audio mode', { error });
+});
 
 // Ignore logs
 LogBox.ignoreLogs(['Require cycle']);
