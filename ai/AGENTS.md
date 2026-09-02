@@ -457,6 +457,7 @@ Use these prompts to start specialized sessions:
 | **Documentation**    | `ai/prompts/document.md`       | Add JSDoc, comments, README updates |
 | **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
 | **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
+| **Android BG campaign** | `ai/prompts/android-background-task.md` | Execute the resumable Android background-task verification campaign (runbook-driven) |
 
 **Quick Start Examples:**
 

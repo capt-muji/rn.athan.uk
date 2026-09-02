@@ -5,6 +5,10 @@ with zero re-discovery. Read §1 (status), then run §4 (resume protocol).
 Companion docs: ISSUES.md #8 (root cause + evidence), ADR-007 (architecture),
 AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
 
+**One-shot entry point:** `ai/prompts/android-background-task.md` — the
+executable campaign prompt. Point a fresh session at it ("read and execute")
+for the Android verification campaign; it drives off this runbook's tracker.
+
 ---
 
 ## 1. STATUS TRACKER (update after every session)
@@ -13,7 +17,7 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
 
 | Scenario | Build | Result | Evidence |
 |---|---|---|---|
-| Simulated trigger ×3 | dev 1.17.10 | ✅ 3/3 clean, 1.3–2.0s | Metro start.log |
+| Simulated trigger ×3 | dev 1.18.0 | ✅ 3/3 clean, 1.3–2.0s | Metro start.log |
 | Natural fire — foreground | dev | ✅ +14s, +0s after due (2×) | dasd Submitted 20:50/21:06 |
 | Natural fire — backgrounded | dev | ✅ +36s after due | dasd 21:21:35 |
 | Natural fire — headless cold-launch (process killed) | RELEASE | ✅ fired at due, resubmit exact +15:00 | dasd 21:59:25→22:14:25 |
@@ -25,13 +29,13 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
 | Config persistence | RELEASE | ✅ task registration survives app updates (upgrade install) | EXTaskService restore 21:43 |
 | Object-level proof | RELEASE | ✅ `submitTaskRequest: <BGProcessingTaskRequest: … earliestBeginDate: +15:00, requiresExternalPower=0, requiresNetworkConnectivity=1>` | overnight.log 22:38:01 |
 
-**iOS resting state:** Release 1.17.10 preview build (15-min interval, bgDebug on)
+**iOS resting state:** Release preview build @ commit 70dac78 (15-min interval, bgDebug on; labeled 1.17.10 pre-minor-bump — code identical to 1.18.0)
 installed on the XS; overnight filtered syslog capture at
 `/tmp/opencode/bg/overnight.log` (recreate via §5.4). Ship config = 180 min,
 verified in code + arithmetic; no further iOS work pending except
 (optional) owner force-quit test + morning soak review.
 
-### Android — PENDING (fix already shipped in 1.17.10, needs device verification)
+### Android — PENDING (fix already shipped in 1.18.0, needs device verification)
 
 | # | Device / OS skin | Status | Notes |
 |---|---|---|---|
@@ -48,7 +52,7 @@ ISSUES #14 adb ground-truth checklist —
 
 ---
 
-## 2. THE FIX UNDER TEST (shipped 1.17.10 — same on both platforms)
+## 2. THE FIX UNDER TEST (shipped 1.18.0 — same on both platforms)
 
 1. `minimumInterval` is **MINUTES** (expo-background-task docs; iOS ×60 for
    earliestBeginDate; Android `Duration.ofMinutes`). We passed 10800 SECONDS
