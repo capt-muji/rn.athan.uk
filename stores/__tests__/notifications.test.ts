@@ -16,6 +16,7 @@ import { createStore } from 'jotai';
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import {
   BACKGROUND_TASK_INTERVAL_HOURS,
+  BACKGROUND_TASK_INTERVAL_MINUTES,
   BACKGROUND_TASK_NAME,
   DEFAULT_REMINDER_INTERVAL,
   EXTRAS_ARABIC,
@@ -72,6 +73,10 @@ jest.mock('@/shared/logger', () => ({
 // stub it so tests never load the widget extension modules
 jest.mock('@/stores/widget', () => ({
   refreshPrayerWidgets: jest.fn(async () => undefined),
+}));
+
+jest.mock('@/stores/sync', () => ({
+  sync: jest.fn(async () => undefined),
 }));
 
 // =============================================================================
@@ -647,22 +652,26 @@ describe('registerBackgroundTask', () => {
     expect(TaskManager.isTaskRegisteredAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
   });
 
-  it('skips registration when task is already registered', async () => {
+  it('unregisters an already-registered task so re-registration carries fresh options', async () => {
     (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
 
     await registerBackgroundTask();
 
-    expect(BackgroundTask.registerTaskAsync).not.toHaveBeenCalled();
+    expect(BackgroundTask.unregisterTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
+    expect(BackgroundTask.registerTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME, {
+      minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
+    });
   });
 
-  it('registers task with correct name and interval', async () => {
+  it('registers task with correct name and interval in minutes', async () => {
     (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
 
     await registerBackgroundTask();
 
     expect(BackgroundTask.registerTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME, {
-      minimumInterval: BACKGROUND_TASK_INTERVAL_HOURS * 60 * 60,
+      minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
     });
+    expect(BackgroundTask.unregisterTaskAsync).not.toHaveBeenCalled();
   });
 
   it('does not throw when registration fails', async () => {
@@ -776,6 +785,39 @@ describe('rescheduleAllNotificationsFromBackground', () => {
     const lastSchedule = store.get(lastNotificationScheduleAtom);
     expect(lastSchedule).toBeGreaterThanOrEqual(beforeCall);
   });
+
+  it('refreshes prayer data (sync) before rescheduling — year-boundary guard', async () => {
+    const { sync: mockSync } = require('@/stores/sync');
+    mockSync.mockClear();
+    (logger.info as jest.Mock).mockClear();
+
+    await rescheduleAllNotificationsFromBackground();
+
+    expect(mockSync).toHaveBeenCalledTimes(1);
+    const rescheduleCall = (logger.info as jest.Mock).mock.calls.find(
+      ([msg]) => msg === 'BACKGROUND_TASK: Background reschedule complete'
+    );
+    // Sync ran and the reschedule still completed
+    expect(rescheduleCall).toBeDefined();
+    expect(logger.error).not.toHaveBeenCalledWith(
+      'BACKGROUND_TASK: Data refresh failed, rescheduling from cache',
+      expect.anything()
+    );
+  });
+
+  it('still reschedules from cache when sync fails (best-effort data contract)', async () => {
+    const { sync: mockSync } = require('@/stores/sync');
+    mockSync.mockRejectedValueOnce(new Error('API unreachable'));
+
+    await expect(rescheduleAllNotificationsFromBackground()).resolves.toBeUndefined();
+
+    expect(logger.error).toHaveBeenCalledWith(
+      'BACKGROUND_TASK: Data refresh failed, rescheduling from cache',
+      expect.objectContaining({ error: expect.any(Error) })
+    );
+    const lastSchedule = store.get(lastNotificationScheduleAtom);
+    expect(lastSchedule).toBeGreaterThan(0);
+  });
 });
 
 // =============================================================================
@@ -791,14 +833,20 @@ describe('Background task constants', () => {
     expect(BACKGROUND_TASK_INTERVAL_HOURS).toBe(3);
   });
 
+  it('BACKGROUND_TASK_INTERVAL_MINUTES is a positive number of minutes', () => {
+    // ISSUES #8: minimumInterval is documented in MINUTES (expo-background-task);
+    // production resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 (Jest runs with
+    // NODE_ENV=test, so the development 15-minute fast-iteration branch is not taken)
+    expect(BACKGROUND_TASK_INTERVAL_MINUTES).toBe(BACKGROUND_TASK_INTERVAL_HOURS * 60);
+  });
+
   it('foreground and background intervals are offset (not equal)', () => {
     // ADR-007: Intervals are offset to reduce collision risk
     expect(NOTIFICATION_REFRESH_HOURS).not.toBe(BACKGROUND_TASK_INTERVAL_HOURS);
   });
 
   it('background interval is above Android minimum (15 min)', () => {
-    const backgroundIntervalMinutes = BACKGROUND_TASK_INTERVAL_HOURS * 60;
-    expect(backgroundIntervalMinutes).toBeGreaterThan(15);
+    expect(BACKGROUND_TASK_INTERVAL_HOURS * 60).toBeGreaterThan(15);
   });
 });
 
