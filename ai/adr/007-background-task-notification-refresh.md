@@ -133,7 +133,7 @@ Implement a **dual-layer notification refresh strategy**:
     IMPORTANT: `minimumInterval` is documented in MINUTES. The original draft passed
     `3 * 60 * 60` (seconds), which iOS interpreted as 10800 MINUTES = a +7.5-day
     `earliestBeginDate` — re-armed on every launch by the native restore path, the task
-    was never due (ISSUES #8, fixed 1.17.10). Registration also unregisters first when
+    was never due (ISSUES #8, fixed 1.18.0). Registration also unregisters first when
     already registered, so the persisted options can never go stale.
 
    Registration runs on cold launch (`app/index.tsx`) AND on every foreground-return
@@ -287,4 +287,4 @@ If background tasks cause issues:
 | ---------- | ------ | ------------- |
 | 2026-01-26 | muji   | Initial draft |
 | 2026-08-29 | muji   | Corrected §Decision 4 + architecture diagram: `withSchedulingLock` is a sequential queue (no skip, no drops), not the skip-based lock the draft described. Documented that task registration runs on launch AND foreground-return (idempotent `isTaskRegisteredAsync` guard) — the foreground-return path previously omitted registration (ISSUES #9). Status: Proposed → Accepted. |
-| 2026-09-02 | muji   | Unit correction + always-re-register (ISSUES #8 fix, 1.17.10): `minimumInterval` is MINUTES — the draft's `3 * 60 * 60` seconds scheduled the task +7.5 days out on iOS and Android. `registerBackgroundTask` now unregisters before registering so persisted options refresh every launch (the old `isTaskRegisteredAsync` early-return let a stale 10800 persist forever). Device-verified on iPhone XS/iOS 18.7.10: natural fires in foreground/backgrounded states, dasd windows match the interval exactly, dasd rate-limits sub-hour cadences (180-min value is safe). |
+| 2026-09-02 | muji   | Unit correction + always-re-register (ISSUES #8 fix, 1.18.0): `minimumInterval` is MINUTES — the draft's `3 * 60 * 60` seconds scheduled the task +7.5 days out on iOS and Android. `registerBackgroundTask` now unregisters before registering so persisted options refresh every launch (the old `isTaskRegisteredAsync` early-return let a stale 10800 persist forever). Device-verified on iPhone XS/iOS 18.7.10: natural fires in foreground/backgrounded states, dasd windows match the interval exactly, dasd rate-limits sub-hour cadences (180-min value is safe). |
