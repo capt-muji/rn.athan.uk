@@ -91,6 +91,13 @@ const resetWidgetMocks = () => {
 describe('initWidgetSettingsSync', () => {
   beforeEach(() => {
     jest.useFakeTimers();
+    // Pin the fake clock to :30 of the current minute. A push arms the
+    // label-flip timer (fires at the countdown target's next minute flip);
+    // when the wall-clock anchor lands inside the final ~750ms of a minute,
+    // that timer sits inside the test's 1s advance and fires a spurious
+    // extra push (the G.7 flake). At :30 the flip is ~30s away — outside
+    // every advance in this suite.
+    jest.setSystemTime(Math.floor(Date.now() / 60000) * 60000 + 30_000);
     (PrayerWidget.updateTimeline as jest.Mock).mockClear();
     (PrayerLockWidget.updateTimeline as jest.Mock).mockClear();
     seedPrayerCache();

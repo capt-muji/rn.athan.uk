@@ -612,6 +612,7 @@ Read ai/prompts/document.md
 - **No `Platform` checks in the countdown path** - The countdown pipeline is platform-agnostic by mandate.
 - **Extras display order invariant (owner)** - Midnight 1st, Last Third 2nd, Suhoor 3rd, Duha 4th, Istijaba 5th (Friday-only, always last). Enforced by `canonicalDisplayOrder` + `EXTRAS_ENGLISH`; never re-litigate.
 - **Overlay measurement** - One-shot load-time `measureInWindow` (List/Day/Overlay); owner rejected press-time re-measure.
+- **No mount-time visual settling** (owner rule 2026-09-02) - components must first-frame in their settled state: animated primitives initialize to their true target, never animate into place on load (Toggle's first-evaluation snap exists for this - a toggle mounted ON appears settled; only value CHANGES animate). Preserve the snap in any animated component.
 - **Biome `useExhaustiveDependencies` is never disabled** - Not globally, not per-file in biome.json; use `// biome-ignore lint/correctness/useExhaustiveDependencies: <why>` directly above the diagnostic line (between JSX attribute lines for JSX attributes).
 - **@expo/ui is allowed ONLY inside widget layouts** (`widgets/*.tsx`, evaluated in the widget extension's JS runtime) - never in app UI: its native pager's shifted coordinate space caused the F.9 overlay regression and was removed from app screens (see ISSUES.md F.2/F.9).
 

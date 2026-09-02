@@ -672,10 +672,12 @@ production release; G.6 noted but deferred by owner.
   skip) — an interrupted/stale animation leaves the thumb at its old position
   while the track color derives synchronously from the `value` prop and stays
   correct.
-- **Planned fix**: replace the effect-driven animation with a reactive
-  `useDerivedValue(() => withTiming(value ? X : 0))` — the thumb then cannot
-  desync from `value`. Verify with the exact repro sequence above (video
-  frames if needed).
+- **Fix (implemented 2026-09-02, device verify pending)**: replaced the
+  effect-driven animation with a reactive
+  `useDerivedValue(() => withTiming(value ? X : 0))` — the thumb re-derives
+  from `value` on the UI thread and cannot desync. Also the candidate fix
+  for the intermittent rapid-press crash (G.8). Verify with the exact repro
+  sequence above on the next TestFlight build.
 
 ### G.4 [OPEN — RELEASE BLOCKER] Sound preview plays no audio on iOS device
 
@@ -689,10 +691,37 @@ production release; G.6 noted but deferred by owner.
   audio-session setup in the codebase) — on iOS the playback category is
   never set, so previews are at the mercy of the default session (silent
   switch / no playback guarantees).
-- **Next steps**: reproduce on simulator + device with ringer on/off; verify
-  mp3 `require()` sources resolve through `useAudioPlayer` on device; check
-  expo-audio changelog for iOS regressions; likely fix = set the audio mode
-  (`playsInSilentMode` etc.) at app init or sounds-sheet open.
+- **Simulator release build PASSES (2026-09-02, twice — the second pass on
+  the rebuild with the single-player refactor + audio mode)**: audio audible
+  + countdown ticking on iPhone 16 sim / iOS 26 Release — code, mp3 assets,
+  and bundling are all fine. The failure is device-specific (XS / iOS 18.7.7,
+  ring mode ON at 100% volume — the mute-switch theory is RULED OUT by the
+  owner).
+- **Upstream investigated**: expo#40448 (local assets fail silently in iOS
+  release builds) was real but fixed in expo-audio 1.0.14 — our 57.0.4
+  (latest 57.x) includes the fix, and our sim release build plays, so that
+  is not our bug. No later 57.x patch exists to bump to.
+- **Leading root cause**: the sounds sheet created **one native AVPlayer per
+  row — 32 concurrent players** (each with periodic time observers and its
+  own session activity), a count that DOUBLED from 16 to 32 in 1.15.0 —
+  exactly the regression window. On an A12/4GB device running iOS 18 this
+  exhausts audio resources; the sim (iOS 26, no mute switch, desktop
+  resources) never notices.
+- **Fix (implemented 2026-09-02, device verify pending)** — two parts:
+  1. **Single shared player**: `Sound.tsx` owns ONE `useAudioPlayer` keyed
+     to the playing row's source (the hook releases/recreates per source —
+     never more than one live instance); `SoundItem` is now presentational
+     (props: isSelected/isPlaying/status + callbacks; visuals identical).
+     Playback arms from an effect that runs after the source swap;
+     finish-clear logic moved to the sheet verbatim.
+  2. **Explicit audio mode**: `app/_layout.tsx` calls
+     `setAudioModeAsync({ playsInSilentMode: true })` at startup — until a
+     mode is set, the app runs iOS's default `.soloAmbient` category, which
+     the ring/silent switch mutes (expo-audio configures nothing on its
+     own). Previews must be audible in silent mode regardless; partial
+     payload is safe (every native AudioMode field has a default;
+     `interruptionMode` stays `mixWithOthers`).
+  Verify on the XS: previews play + countdown ticks.
 
 ### G.5 [OPEN — RELEASE BLOCKER] Sound preview countdown no longer displays
 
@@ -704,6 +733,9 @@ production release; G.6 noted but deferred by owner.
   reports `playing`/`duration` (player not actually started, or mp3 metadata
   not loaded), the countdown stays hidden. Fixing G.4's playback should
   restore the status stream; verify both together on device.
+- **Simulator release build PASSES (2026-09-02)**: countdown ticks alongside
+  audible audio — confirms the G.4/G.5 pair is device-side; retest on the XS
+  after the audio-mode fix.
 
 ### G.6 [OPEN — noted, deferred by owner] App-wide sluggishness on device
 
@@ -730,3 +762,40 @@ production release; G.6 noted but deferred by owner.
 - **Planned fix (own commit)**: pin the clock — `jest.setSystemTime` to a
   fixed instant aligned safely inside a minute (e.g. :30) — or
   advance/settle the flip timer explicitly before asserting counts.
+- **Fix implemented (2026-09-02, ships with G.3's change)**: fake clock
+  pinned to :30 of the seeded minute in the subscription describe's
+  beforeEach — flip timer now ~30 s from any test's ≤2 s advances.
+
+### G.8 [OPEN — RELEASE BLOCKER, intermittent] Rapid settings-toggle pressing crashed the app (iOS)
+
+- **Symptom (owner, iPhone XS TestFlight 1.17.4, 2026-09-02)**: rapid-pressing
+  settings toggles (hijri date and others) crashed the app to springboard
+  once. Did NOT reproduce after an app restart with identical actions —
+  intermittent, state-dependent. Android untested.
+- **No crash log captured yet** (restart cleared the repro; report should
+  still exist on device). If it recurs: Settings → Privacy & Security →
+  Analytics & Improvements → Analytics Data → `Athan-2026-09-02-*.ips`, or
+  Xcode → Organizer → Crashes. Attach the exception thread/frames to this
+  entry before any further fix attempts.
+- **Suspects (ranked)**:
+  1. Reanimated JS→UI shared-value assignment race under rapid `withTiming`
+     interruptions in `Toggle.tsx` — the same subsystem as the G.3 knob
+     desync (proven misbehaving under exactly this interaction). The G.3 fix
+     (useDerivedValue rewrite) removes the entire JS-side assignment path;
+     animation re-derivation now happens reactively on the UI thread.
+  2. JS-thread saturation from the widget pipeline mid-toggle (G.6)
+     widening the race window.
+- **Action taken**: G.3's Toggle fix implemented as the candidate remediation
+  (same commit). Retest rapid toggling on the next build; if a crash recurs,
+  pull the .ips and reopen with the stack.
+- **Release-sim verification (2026-09-02, iPhone 16 / iOS 26, Release build
+  with the Toggle fix)**: owner spammed the settings icon, sheet open/close,
+  and every toggle for a full session — zero crash reports in
+  DiagnosticReports, zero fatal/exception lines in the unified log, app and
+  widget-extension processes alive at the end. No crash reproduced. The XS
+  TestFlight retest remains the final gate (the original crash was
+  intermittent).
+- **Second release-sim pass (same day, rebuild with ALL fixes: Toggle,
+  single-player sound sheet, audio mode)**: everything working; sustained
+  5-second toggle spam shows only a ≤0.5 s lag tail (JS-thread contention
+  under deliberate spam — accepted by owner, not a defect).

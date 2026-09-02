@@ -1,7 +1,5 @@
-import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import type { AudioStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
-import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
@@ -9,8 +7,6 @@ import { IconView } from '@/components/ui';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { Icon } from '@/shared/types';
-import { soundPreferenceAtom } from '@/stores/notifications';
-import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -25,21 +21,30 @@ function formatTime(seconds: number): string {
 
 interface Props {
   index: number;
-  audio: AudioSource;
+  isSelected: boolean;
+  isPlaying: boolean;
+  /** Shared sheet player status — meaningful only on the playing row */
+  status: AudioStatus;
   onSelect: (index: number) => void;
-  tempSelection: number | null;
+  onPlayPress: (index: number) => void;
   onLayout?: (e: LayoutChangeEvent) => void;
 }
 
-export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelection, onLayout }: Props) {
-  const selectedSound = useAtomValue(soundPreferenceAtom);
-  const playingIndex = useAtomValue(playingSoundIndexAtom);
-
-  const player = useAudioPlayer(audio);
-  const status = useAudioPlayerStatus(player);
-
-  const isPlaying = playingIndex === index;
-  const isSelected = index === (tempSelection ?? selectedSound);
+/**
+ * Presentational sound row. The single audio player lives at the sheet level
+ * (BottomSheetSound) — one AVPlayer for the whole list instead of one per
+ * row, which exhausted audio resources on older devices (G.4/G.5). All
+ * visuals are unchanged: selection highlight, countdown fade, press scale.
+ */
+export default function BottomSheetSoundItem({
+  index,
+  isSelected,
+  isPlaying,
+  status,
+  onSelect,
+  onPlayPress,
+  onLayout,
+}: Props) {
   const isActive = isPlaying || isSelected;
 
   const AnimScale = useAnimationScale(1);
@@ -65,38 +70,14 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
     ),
   }));
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: player ref is stable for the sound's lifetime; effect intentionally keyed on playback-state changes
-  useEffect(() => {
-    if (playingIndex !== index && status.playing) {
-      player.pause();
-    }
-  }, [playingIndex, index, status.playing]);
-
-  useEffect(() => {
-    if (isPlaying && !status.playing && status.currentTime > 0 && status.duration > 0) {
-      if (status.currentTime >= status.duration - 0.1) {
-        setPlayingSoundIndex(null);
-      }
-    }
-  }, [isPlaying, status.playing, status.currentTime, status.duration]);
-
   const handlePress = () => {
     onSelect(index);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
-  const playSound = () => {
+  const handlePlayPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    if (isPlaying) {
-      player.pause();
-      setPlayingSoundIndex(null);
-      return;
-    }
-
-    player.seekTo(0);
-    player.play();
-    setPlayingSoundIndex(index);
+    onPlayPress(index);
   };
 
   const activeColor = '#fff';
@@ -109,7 +90,7 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
         <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(remainingTime)}</Animated.Text>
         <AnimatedPressable
           style={[styles.icon, AnimScale.style]}
-          onPress={playSound}
+          onPress={handlePlayPress}
           onPressIn={() => AnimScale.animate(0.9)}
           onPressOut={() => AnimScale.animate(1)}>
           <IconView
