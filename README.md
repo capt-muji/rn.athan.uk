@@ -99,7 +99,7 @@ Full history: `git log --oneline` (every commit carries its version number).
 - [x] Fix UI countdown drift when app in background
 - [x] Settings bottom sheet (countdown bar, Hijri date, seconds, time passed, Arabic names, decorations, color picker)
 - [x] Alert menu with per-prayer at-time and reminder notification controls
-- [x] Background notification refresh task (~3 hour intervals)
+- [x] Background notification refresh task (~6 hour intervals, verified on device to keep the buffer rolling unattended — incl. reboots and closed-app states)
 - [x] SDK 57 upgrade (React 19, RN 0.86, Expo 57)
 - [x] Update popup with version checking and store redirect
 - [x] Ramadan seasonal decorations (lantern, moon, stars, spark particles, clouds)
@@ -133,7 +133,7 @@ Each home-screen widget's Light or Dark look is fixed when you place it — it n
 
 **Always in sync, never stale:**
 
-- The app pushes a **14-day timeline per schedule × theme** (one entry per boundary, eight home widgets in four schedule×theme pairs plus the two Lock Screen pairs) at every point fresh data is known: app sync, foreground return, the 4-hour notification refresh, the 3-hour background task, and — debounced — any change to a widget-visible setting.
+- The app pushes a **14-day timeline per schedule × theme** (one entry per boundary, eight home widgets in four schedule×theme pairs plus the two Lock Screen pairs) at every point fresh data is known: app sync, foreground return, the 12-hour notification refresh, the 6-hour background task, and — debounced — any change to a widget-visible setting.
 - The countdown label is a **minute-ceil value** — seconds never display at any distance and the label always rounds up (`1h 59m 01s` → `2h`, `59s` → `1m`), holding its value until the true minute flips. It is precomputed per timeline entry and refreshed by stepped entries every 5 minutes (WidgetKit's minimum entry spacing) for the first 24 hours; beyond that it updates at each boundary. The final step before a boundary always anchors exactly one spacing ahead of the flip.
 - While the app is running, a **label-flip scheduler** re-pushes both timelines within a quarter second of every countdown minute change (armed at whichever schedule's label flips next), so no widget shows a stale minute for long. Backgrounded timers coalesce into one refresh on the app's return to the foreground.
 - Entries transition automatically at each time's boundary; the list rolls to the next day exactly when the countdown target does (at Isha for the prayer widgets, at the night's Midnight for the extras widgets) — DST-safe via the same zoned-time logic as the app. Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time (whose label describes the push instant, never a backdated one).
@@ -227,7 +227,7 @@ The full Audacity projects for all Athan and reminder audio (for anyone who want
 - 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer (at-time and reminder)
 - ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval — every prayer × interval plays its own custom audio (see [Reminder Audio Sources](#-reminder-audio-sources))
 - 📢 **Selectable Athan Sounds**: Every sound linked to its source (see [Athan Audio Sources](#-athan-audio-sources))
-- 📅 **Smart Notification Buffer**: 2-day rolling schedule
+- 📅 **Smart Notification Buffer**: 2-day rolling schedule that keeps renewing itself in the background (~every 6 hours) even if the app is never opened
 - 🛡️ **Sequential Scheduling Queue**: Operations queued and executed in order, never dropped
 - 🪪 **Deterministic Notification IDs**: `athan_<schedule>_<prayer>_<date>` (reminders include the interval) — re-scheduling with the same ID replaces in place on both platforms, so orphaned alarms can never double-fire
 
