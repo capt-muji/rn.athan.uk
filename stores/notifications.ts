@@ -6,7 +6,7 @@ import { getDefaultStore } from 'jotai';
 
 import * as Device from '@/device/notifications';
 import {
-  BACKGROUND_TASK_INTERVAL_HOURS,
+  BACKGROUND_TASK_INTERVAL_MINUTES,
   BACKGROUND_TASK_NAME,
   DEFAULT_REMINDER_INTERVAL,
   EXTRAS_ARABIC,
@@ -23,6 +23,7 @@ import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber } from '@/stores/storage';
+import { sync } from '@/stores/sync';
 import * as PrayerWidgets from '@/stores/widget';
 
 const store = getDefaultStore();
@@ -996,6 +997,16 @@ export const refreshNotifications = async () => {
 export const rescheduleAllNotificationsFromBackground = async () => {
   logger.info('BACKGROUND_TASK: Starting background reschedule');
 
+  // Refresh prayer data first so a year boundary can never leave the rolling
+  // window dry — needsDataUpdate makes this a no-op when the cache is fresh.
+  // Best-effort by design: a sync failure (e.g. API unreachable) must not
+  // skip the reschedule itself, which still rolls the window from cache.
+  try {
+    await sync();
+  } catch (error) {
+    logger.error('BACKGROUND_TASK: Data refresh failed, rescheduling from cache', { error });
+  }
+
   return withSchedulingLock(async () => {
     try {
       await _rescheduleAllNotifications();
@@ -1035,23 +1046,23 @@ export const registerBackgroundTask = async () => {
       return;
     }
 
+    // Always unregister first so registration carries CURRENT options —
+    // expo-task-manager persists options and the native restore path
+    // resubmits the BGTask request with the PERSISTED minimumInterval
+    // (ISSUES.md #8: stale 10800 kept re-arming the task +7.5 days)
     const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_TASK_NAME);
-
     if (isRegistered) {
-      logger.info('BACKGROUND_TASK: Task already registered', { taskName: BACKGROUND_TASK_NAME });
-      return;
+      await BackgroundTask.unregisterTaskAsync(BACKGROUND_TASK_NAME);
+      logger.info('BACKGROUND_TASK: Unregistered for options refresh', { taskName: BACKGROUND_TASK_NAME });
     }
 
-    const intervalSeconds = BACKGROUND_TASK_INTERVAL_HOURS * 60 * 60;
-
     await BackgroundTask.registerTaskAsync(BACKGROUND_TASK_NAME, {
-      minimumInterval: intervalSeconds,
+      minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
     });
 
     logger.info('BACKGROUND_TASK: Task registered successfully', {
       taskName: BACKGROUND_TASK_NAME,
-      minimumIntervalHours: BACKGROUND_TASK_INTERVAL_HOURS,
-      minimumIntervalSeconds: intervalSeconds,
+      minimumIntervalMinutes: BACKGROUND_TASK_INTERVAL_MINUTES,
     });
   } catch (error) {
     // Log but don't throw - background task is a fallback, not critical

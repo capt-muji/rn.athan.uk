@@ -1,6 +1,6 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-09-02 (TestFlight device-test session: section G added — six open issues from iPhone XS / iOS 18.7.7 / 1.17.4 release testing, ALL G.1–G.5 marked release blockers by owner. Earlier: #12 closed as FIXED 1.6.0 — on-device double-notification confirm still pending; #4/#5 stay DEFERRED, #8/#10 stay OPEN — untouched by owner decision.)
+Last updated: 2026-09-02 (background-task deep-dive session: #8 FIXED 1.17.10 and device-verified on iPhone XS / iOS 18.7.10 across the full lifecycle matrix — root cause was a seconds-vs-minutes unit bug in `minimumInterval` plus re-arm starvation; ladder evidence added. Earlier: section G added — six open issues from iPhone XS / iOS 18.7.7 / 1.17.4 release testing, ALL G.1–G.5 marked release blockers by owner. Earlier: #12 closed as FIXED 1.6.0 — on-device double-notification confirm still pending; #4/#5 stay DEFERRED, #10 stays OPEN.)
 
 Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not yet fixed · [DEFERRED] accepted, revisit later · [ACCEPTED] intended behavior, documented
 
@@ -117,24 +117,82 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   work exactly the same, identical." Horizon stays 2 days on both platforms; the
   1-week-without-opening goal is dropped. (#16 closes with this.)
 
-### 8. [OPEN] Background task has effectively never worked
+### 8. [FIXED 1.17.10 — device-verified] Background task never ran — unit bug + re-arm starvation
 
-- **Native facts** (expo-background-task 1.0.10 source, verified):
-  - Android 8+: self-rescheduling OneTimeWorkRequest with `NetworkType.CONNECTED`
-    constraint (BackgroundTaskScheduler.kt:93-95) — never runs offline; ALSO skipped
-    whenever app is foregrounded (runTasks inForeground check).
-  - Android <8: PeriodicWorkRequest WITHOUT the network constraint (inconsistency).
-  - iOS: `BGProcessingTaskRequest` with `requiresNetworkConnectivity=true`,
-    `requiresExternalPower=false` (BackgroundTaskScheduler.swift:106-113) — processing
-    tasks are opportunistic (idle+charging, often deferred days).
-- **OEM facts**: ColorOS/OxygenOS-family suppress BOOT_COMPLETED and defer WorkManager
-  for non-whitelisted backgrounded apps (documented across Notifee upstream issues,
-  dontkillmyapp.com/oneplus + /oppo).
-- **App-side facts**: task registered ONLY on cold launch (app/index.tsx:27 →
-  registerBackgroundTask arg); the foreground-return path (device/listeners.ts:26) calls
-  initializeNotifications with only 2 args — no registration.
-- **Owner conclusion**: foreground refresh (4h gate) is the only layer that has ever
-  worked in practice.
+**Runbook:** every scenario in the verification matrix below is scripted for
+replay (incl. the pending 5-device Android campaign) in
+`ai/RUNBOOK-background-tasks.md` §1 status tracker + §5 procedures.
+
+- **Root cause 1 (ours, both platforms — PRIMARY)**: `minimumInterval` is documented
+  in MINUTES (BackgroundTask.types.d.ts; Android WorkManager TimeUnit.MINUTES at
+  BackgroundTaskScheduler.kt:150; iOS BackgroundTaskConsumer.swift:45 reads minutes
+  → ×60 → earliestBeginDate). We passed SECONDS (`10800`) → iOS scheduled the
+  BGProcessingTaskRequest **+7.5 days out** (BackgroundTaskScheduler.swift:95);
+  Android initialDelay 7.5 days (BackgroundTaskScheduler.kt:114
+  `Duration.ofMinutes(10800)`). ADR-007's draft carried the seconds mental model over
+  from the deprecated expo-background-fetch API.
+- **Root cause 2 (compounding starvation)**: `EXTaskService._restoreTasks` resubmits
+  the request on EVERY process launch with the PERSISTED options → every app open
+  re-armed `earliestBeginDate = now + 7.5 days` → for any user opening the app at
+  least weekly, the task was NEVER due. Persisted options never refreshed because
+  `registerBackgroundTask` early-returned on `isTaskRegisteredAsync` (expo-task-manager
+  persists registrations across launches AND installs-updates).
+- **Live evidence (iPhone XS, iOS 18.7.10, 2026-09-02 session)**: native syslog
+  `EXTaskService: Restoring tasks configuration: … minimumInterval = 10800`; after fix
+  the dasd submission windows prove the arithmetic (`Submitted … (21:05:48 …)` exactly
+  +15 min after the 20:50:48 run at the 15-min debug rung).
+- **Fix (1.17.10)**: `BACKGROUND_TASK_INTERVAL_MINUTES` in shared/constants.ts —
+  resolution order: `EXPO_PUBLIC_BG_INTERVAL_MINUTES` env (ladder experiments) → 15 in
+  development builds (fast iteration) → 180 in production (ADR-007's 3h, unchanged);
+  `registerBackgroundTask` now ALWAYS unregisters + registers so persisted options can
+  never go stale (self-heals every existing install carrying 10800).
+- **Verification matrix (all on-device, dev build @ 15-min rung unless noted)**:
+  - Simulated (`triggerTaskWorkerForTestingAsync`): 3/3 clean full-chain runs ~1.3–2.0s
+    (handler → TaskService → JS task → reschedule → verification counts → resubmit).
+  - Natural fire, FOREGROUND: 20:50:54 (+14s after due) and 21:06:03 (second cycle,
+    zero app interaction — chain self-perpetuates); on the RELEASE build:
+    22:53:59 (+58s after due; window re-armed to exactly +15:00).
+  - Natural fire, BACKGROUNDED: 21:21:35 (+36s after due; another app foregrounded).
+  - Cold-launch HEADLESS (process externally killed): system relaunched the app on
+    schedule (runningboardd "DAS Prewarm launch"), but DEV builds cannot load JS
+    headlessly — the RN bundle URL requires the dev-client launcher UI; Metro is
+    unreachable from a headless cold start. This is structural to dev builds, NOT a
+    bug in ours or expo's: RELEASE builds embed JS and work (verified: persisted
+    config survives app updates; fresh submit at exactly +15m on Release 1.17.10).
+  - dasd rate limit: at 15-min cadence, after ~4 rapid runs dasd logs "Skipping
+    processing … their group is full" every ~60s and defers execution → **sub-hour
+    intervals are not sustainable**; the 180-min ship value sits far under budget.
+    Deferrals recover — budget drained at 21:35 admitted the 21:59 execution.
+  - REBOOT SURVIVAL (verified 22:18–22:30): device rebooted with the app's pending
+    request in flight and the phone left LOCKED post-boot. ~11 min after boot the
+    system cold-launched the app headlessly (pid 380), full RN boot re-registered the
+    task, and dasd submitted a fresh request with the window at exactly +15:00
+    (22:30:04 → 22:45:04). The rolling chain survives unattended reboots on iOS.
+  - User FORCE-QUIT: not remotely testable (requires app-switcher swipe; sets a
+    runningboard flag that disables background relaunch until the next manual open —
+    Apple platform rule for ALL apps). Existing recovery paths: 2-day notification
+    buffer (survives force-quit/reboot — UNUserNotificationCenter persists) +
+    foreground refresh on next open + widget stale card.
+- **Upstream constraints (expo-background-task 57.0.14, ACCEPTED — no local patch)**:
+  iOS `BGProcessingTaskRequest.requiresNetworkConnectivity = true` hardcoded
+  (BackgroundTaskScheduler.swift:93) — our task is offline-capable (MMKV), so offline
+  devices defer needlessly; `getStatusAsync()` never reports Background App Refresh
+  disabled (expo/expo#48786) — our "restricted" check is blind to it. Android:
+  `NetworkType.CONNECTED` constraint (never runs offline), inForeground skip
+  (defers +60 min while app foregrounded), plus OEM killers (#10/#13 family).
+  Android unit bug is fixed by the same change but REMAINS DEVICE-UNVERIFIED (no
+  Android connected this session).
+- **Android reboot/longevity facts (source-verified 2026-09-02, for the next
+  Android session)**: WorkManager persists unique work across reboots and process
+  death (self-rescheduling OneTimeWorkRequest re-enqueued from the DB), and
+  expo-notifications ships a BOOT_COMPLETED receiver (NotificationsService.kt) that
+  re-registers persisted triggers after boot — so Android's notification chain
+  natively survives reboot; the Android side of the 1-year-unattended goal is
+  bounded by the #10 ColorOS exactness problems + OEM killers, not by persistence.
+  The BG-task interval fix is symmetric: BackgroundTaskScheduler.kt reads
+  `minimumInterval` in minutes (`Duration.ofMinutes`, TimeUnit.MINUTES) — the same
+  10800 unit bug delayed Android's worker 7.5 days; 1.17.10 fixes both platforms
+  with the one constant.
 
 ### 9. [FIXED 1.5.3] ADR-007 documentation drift + registration gap
 
@@ -156,6 +214,12 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   (ExpoSchedulingDelegate.kt:105-121, both installed 0.32.16 AND current main/57.0.11):
   `if (SDK_INT < S || canScheduleExactAlarms()) setExactAndAllowWhileIdle else setAndAllowWhileIdle`
   — SILENT fallback, no log, no error, no JS-visible state.
+  RE-CONFIRMED against installed expo-notifications 57.0.15 (2026-09-02 session):
+  same code at delegates/ExpoSchedulingDelegate.kt:106-114 — still silent, still no
+  JS-visible observability. The next Android device session should START with the
+  #14 adb ground-truth checklist (`dumpsys package … EXACT` + `deviceidle whitelist`)
+  before anything else — it disambiguates suspect 1 (permission actually revoked at
+  runtime) from suspect 2 (ColorOS process-freeze deferring delivery).
 - **Device matrix confirms mechanism**: iPhone (UNUserNotificationCenter) = perfect;
   OnePlus 5T (Android ≤10, `SDK_INT < S` → always exact) = perfect; Galaxy = perfect;
   ONLY the two ColorOS-family Android 13+ phones (8T, Find X8) drift.

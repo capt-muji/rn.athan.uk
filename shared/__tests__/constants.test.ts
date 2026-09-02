@@ -189,3 +189,55 @@ describe('validateReminderInterval', () => {
     expect(validateReminderInterval(15.5)).toBe(false);
   });
 });
+
+// =============================================================================
+// BACKGROUND TASK INTERVAL RESOLUTION TESTS (ISSUES.md #8)
+// minimumInterval is MINUTES — resolution: env override > dev 15 > prod 180
+// =============================================================================
+
+describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
+  const requireFreshConstants = () => {
+    let mod: typeof import('../constants');
+    jest.isolateModules(() => {
+      mod = require('../constants');
+    });
+    return mod!;
+  };
+
+  afterEach(() => {
+    delete process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES;
+    process.env.NODE_ENV = 'test';
+  });
+
+  it('resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 (180) outside development without env', () => {
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(180);
+  });
+
+  it('resolves to 15 in development builds (fast iteration)', () => {
+    process.env.NODE_ENV = 'development';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(15);
+  });
+
+  it('resolves to the EXPO_PUBLIC_BG_INTERVAL_MINUTES env override when set', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '45';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(45);
+  });
+
+  it('ignores an invalid env override (non-numeric)', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = 'soon';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(180);
+  });
+
+  it('ignores a non-positive env override', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '0';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(180);
+  });
+});

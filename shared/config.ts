@@ -6,6 +6,8 @@ export const APP_CONFIG = {
   androidPackage: process.env.EXPO_PUBLIC_ANDROID_PACKAGE,
   /** Dev-only force of the What's New modal on cold launch (EXPO_PUBLIC_WHATS_NEW_PREVIEW=1) */
   whatsNewPreview: process.env.EXPO_PUBLIC_WHATS_NEW_PREVIEW === '1',
+  /** Enables background task debug snapshots outside __DEV__ (EXPO_PUBLIC_BG_DEBUG=1) */
+  bgDebug: process.env.EXPO_PUBLIC_BG_DEBUG === '1',
 };
 
 // Environment helpers

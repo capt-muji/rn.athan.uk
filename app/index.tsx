@@ -7,6 +7,7 @@ import Navigation from '@/app/Navigation';
 import { ModalUpdate, ModalWhatsNew } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
+import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { useNotification } from '@/hooks/useNotification';
@@ -41,6 +42,9 @@ export default function Index() {
 
     // Initialize background/foreground state listeners (sync UI as needed)
     initializeListeners(checkInitialPermissions);
+
+    // Debug instrumentation for the notification-refresh background task (ISSUES.md #8)
+    runBackgroundTaskDebugSequence();
 
     // Check for updates in background
     checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));

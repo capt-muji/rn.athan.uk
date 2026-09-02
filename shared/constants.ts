@@ -117,6 +117,27 @@ export const BACKGROUND_TASK_NAME = 'NOTIFICATION_REFRESH_TASK';
  */
 export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
 
+/**
+ * Background task minimum interval in MINUTES passed to expo-background-task
+ *
+ * expo-background-task's `minimumInterval` option is documented in MINUTES
+ * (Android WorkManager TimeUnit.MINUTES; iOS multiplies by 60 for
+ * earliestBeginDate). Passing seconds here scheduled the task 60x too far
+ * out (10800 = 7.5 days) — see ISSUES.md #8.
+ *
+ * Resolution order:
+ * - EXPO_PUBLIC_BG_INTERVAL_MINUTES env var (interval-ladder experiments)
+ * - 15 minutes in development builds (fast iteration)
+ * - BACKGROUND_TASK_INTERVAL_HOURS * 60 in production (3 hours)
+ */
+const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
+const isEnvIntervalValid = Number.isFinite(envIntervalMinutes) && envIntervalMinutes > 0;
+export const BACKGROUND_TASK_INTERVAL_MINUTES = isEnvIntervalValid
+  ? envIntervalMinutes
+  : process.env.NODE_ENV === 'development'
+    ? 15
+    : BACKGROUND_TASK_INTERVAL_HOURS * 60;
+
 // =============================================================================
 // TIME CALCULATIONS
 // =============================================================================
