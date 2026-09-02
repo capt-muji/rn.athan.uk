@@ -14,9 +14,15 @@
  * shared/widgetTimeline.ts, and pushes each to its widgets via
  * expo-widgets. A widget's theme is fixed at placement (the gallery's
  * Light/Dark kinds) — it never follows the system appearance. WidgetKit
- * renders each entry at its own date; while the app runs, a label-flip
- * scheduler re-pushes at the earliest countdown minute change across both
- * schedules so no widget shows a stale minute.
+ * renders each entry at its own date.
+ *
+ * While the app runs, PER-SCHEDULE label-flip schedulers re-push at each
+ * countdown target's minute change: a standard flip re-pushes only the five
+ * standard kinds, an extras flip only the five extras kinds (each schedule
+ * pushes independently — one failing or empty schedule never blocks the
+ * other; see ISSUES.md §G.1 for the render-cost context). Flip pushes
+ * reuse a cached multi-day prayer sequence, so the per-minute pushes never
+ * re-read the prayer DB — only data- or settings-driven refreshes do.
  *
  * @see shared/widgetTimeline.ts - pure timeline builder
  * @see widgets/PrayerWidget.tsx - home screen widget layouts (both schedules)
@@ -30,7 +36,7 @@ import { Platform } from 'react-native';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import { ScheduleType } from '@/shared/types';
+import { type PrayerSequence, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { hijriDateEnabledAtom } from '@/stores/ui';
@@ -73,8 +79,51 @@ const SETTINGS_PUSH_DEBOUNCE_MS = 1000;
 const LABEL_FLIP_EPSILON_MS = 250;
 
 let settingsPushTimer: ReturnType<typeof setTimeout> | null = null;
-let labelFlipPushTimer: ReturnType<typeof setTimeout> | null = null;
 let settingsSyncInitialized = false;
+
+/** One label-flip timer per schedule — each schedule's label flips on its own
+ *  countdown target, so each re-pushes independently of the other. */
+const flipPushTimers: { [schedule in ScheduleType]: ReturnType<typeof setTimeout> | null } = {
+  [ScheduleType.Standard]: null,
+  [ScheduleType.Extra]: null,
+};
+
+interface CachedSequence {
+  key: string;
+  sequence: PrayerSequence;
+}
+
+/**
+ * Cache of the multi-day prayer sequences, keyed by the London wall date of
+ * the sequence's start (yesterday). Label-flip pushes fire every minute while
+ * the app runs and only the head entry's label changes, so they reuse this
+ * cache instead of re-reading ~30 days of MMKV records and re-running the
+ * timezone math each time. Invalidation is by construction: the date key
+ * rolls over at London midnight, and every full refresh (data sync,
+ * notification reschedule, settings change) rebuilds before caching — so a
+ * wipe or data change can never serve a stale sequence.
+ */
+const sequenceCache: { [schedule in ScheduleType]: CachedSequence | null } = {
+  [ScheduleType.Standard]: null,
+  [ScheduleType.Extra]: null,
+};
+
+const sequenceCacheKey = (startDate: Date): string => TimeUtils.formatDateShort(startDate);
+
+const rebuildSequence = (schedule: ScheduleType, startDate: Date): PrayerSequence => {
+  const sequence = PrayerUtils.createPrayerSequence(schedule, startDate, TIMELINE_DAYS + 1);
+  sequenceCache[schedule] = { key: sequenceCacheKey(startDate), sequence };
+  return sequence;
+};
+
+const sequenceFor = (schedule: ScheduleType, startDate: Date): PrayerSequence => {
+  const cached = sequenceCache[schedule];
+  const key = sequenceCacheKey(startDate);
+  if (cached?.key === key) {
+    return cached.sequence;
+  }
+  return rebuildSequence(schedule, startDate);
+};
 
 /**
  * Keeps the widgets aligned with in-app settings: any change to a
@@ -112,48 +161,45 @@ const msUntilMinuteFlip = (targetEpochMs: number): number | null => {
 };
 
 /**
- * Keeps the countdown labels of BOTH schedules in sync while the app runs:
- * the minute-ceil label changes exactly when the remaining time crosses a
- * whole minute, so each push schedules the next one at the earliest
- * upcoming flip across all live countdown targets — the widget whose label
- * changes next dictates the re-push instant. Each widget therefore
- * re-renders within a quarter second of every true minute flip — no blind
- * 60s polling, no drift. Re-arms from fresh data on every push; a suspended
- * (backgrounded) timer coalesces into one fire on foreground, which doubles
- * as a refresh when the user returns.
+ * Arms ONE schedule's label-flip push: the minute-ceil label changes exactly
+ * when the remaining time crosses a whole minute, so each push re-arms at
+ * that schedule's next flip — its widget re-renders within a quarter second
+ * of every true minute change on its own countdown. Re-arms from fresh data
+ * on every push; a suspended (backgrounded) timer coalesces into one fire on
+ * foreground, which doubles as a refresh when the user returns.
  */
-const scheduleLabelFlipPush = (targets: number[]): void => {
-  if (labelFlipPushTimer !== null) clearTimeout(labelFlipPushTimer);
-  labelFlipPushTimer = null;
+const scheduleLabelFlipPush = (schedule: ScheduleType, targetEpochMs: number): void => {
+  const existing = flipPushTimers[schedule];
+  if (existing !== null) {
+    clearTimeout(existing);
+    flipPushTimers[schedule] = null;
+  }
 
-  const upcomingFlips = targets.map(msUntilMinuteFlip).filter((flip) => flip !== null);
-  if (upcomingFlips.length === 0) return;
+  const msUntilFlip = msUntilMinuteFlip(targetEpochMs);
+  if (msUntilFlip === null) return;
 
-  const msUntilFlip = Math.min(...upcomingFlips);
-
-  labelFlipPushTimer = setTimeout(() => {
-    labelFlipPushTimer = null;
-    void refreshPrayerWidgets();
+  flipPushTimers[schedule] = setTimeout(() => {
+    flipPushTimers[schedule] = null;
+    void pushScheduleTimelines(schedule, { reuseCachedSequence: true });
   }, msUntilFlip);
 };
 
 /**
- * Pushes a fresh timeline to all ten widgets from the cached prayer data —
- * one timeline per schedule per theme; the lock pair shares the light
- * timelines (its layouts are text-only and ignore the theme), and each
- * home schedule+theme pair feeds its small and medium kinds alike.
+ * Pushes ONE schedule's timelines to its five widget kinds — light small +
+ * medium + lock share the light entries; the dark small + medium pair gets
+ * the theme-stamped dark copy. Label-flip pushes (`reuseCachedSequence`)
+ * skip the sequence rebuild; full refreshes always rebuild it first so data
+ * and settings changes can never read through the cache.
  *
- * Includes yesterday in the sequence span so the segment covering `now`
- * starts at the real previous prayer (yesterday's Isha or last extra time)
- * instead of `now` — the same reason the app's countdown bar fetches
- * yesterday's data.
- *
- * iOS only and failure-tolerant: widgets are a surface, not a critical
- * path, so any error is logged and swallowed. Safe to call at every point
- * where fresh data or preferences are known (sync, notification refresh,
- * background task, settings changes).
+ * iOS only and failure-tolerant per schedule: widgets are a surface, not a
+ * critical path, so any error is logged and swallowed. Safe to call at every
+ * point where fresh data or preferences are known (sync, notification
+ * refresh, background task, settings changes).
  */
-export const refreshPrayerWidgets = async (): Promise<void> => {
+const pushScheduleTimelines = async (
+  schedule: ScheduleType,
+  options?: { reuseCachedSequence?: boolean }
+): Promise<void> => {
   if (Platform.OS !== 'ios') return;
 
   try {
@@ -161,57 +207,63 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
     const startDate = addDays(now, -1);
     const settings = readWidgetSettings();
 
-    const standardSequence = PrayerUtils.createPrayerSequence(ScheduleType.Standard, startDate, TIMELINE_DAYS + 1);
-    const extraSequence = PrayerUtils.createPrayerSequence(ScheduleType.Extra, startDate, TIMELINE_DAYS + 1);
+    // Includes yesterday in the sequence span so the segment covering `now`
+    // starts at the real previous prayer (yesterday's Isha or last extra
+    // time) instead of `now` — the same reason the app's countdown bar
+    // fetches yesterday's data.
+    const sequence = options?.reuseCachedSequence
+      ? sequenceFor(schedule, startDate)
+      : rebuildSequence(schedule, startDate);
 
-    const standardEntries = buildPrayerWidgetTimeline(now, standardSequence, settings, 'light');
-    const standardDarkEntries = buildPrayerWidgetTimeline(now, standardSequence, settings, 'dark');
-    const extraEntries = buildPrayerWidgetTimeline(now, extraSequence, settings, 'light');
-    const extraDarkEntries = buildPrayerWidgetTimeline(now, extraSequence, settings, 'dark');
+    const lightEntries = buildPrayerWidgetTimeline(now, sequence, settings, 'light');
+    const darkEntries = buildPrayerWidgetTimeline(now, sequence, settings, 'dark');
 
-    if (standardEntries.length === 0 || extraEntries.length === 0) {
+    if (lightEntries.length === 0 || darkEntries.length === 0) {
       logger.warn('WIDGET: Empty timeline built — prayer cache is likely empty', {
-        standardEntries: standardEntries.length,
-        extraEntries: extraEntries.length,
+        schedule,
+        entries: lightEntries.length,
       });
+      return;
     }
-
-    const flipTargets: number[] = [];
 
     // Static imports register all widget layouts into the app group as a
     // side effect of module evaluation — required before updateTimeline works.
-    if (standardEntries.length > 0 && standardDarkEntries.length > 0) {
-      PrayerWidget.updateTimeline(standardEntries);
-      PrayerWidgetMedium.updateTimeline(standardEntries);
-      PrayerLockWidget.updateTimeline(standardEntries);
-      PrayerWidgetDark.updateTimeline(standardDarkEntries);
-      PrayerWidgetDarkMedium.updateTimeline(standardDarkEntries);
-      flipTargets.push(standardEntries[0].props.nextEpochMs);
-
-      logger.info('WIDGET: Standard timeline pushed', {
-        entries: standardEntries.length,
-        next: standardEntries[0].props.nextName,
-        nextAt: standardEntries[0].props.nextTime,
-      });
+    if (schedule === ScheduleType.Standard) {
+      PrayerWidget.updateTimeline(lightEntries);
+      PrayerWidgetMedium.updateTimeline(lightEntries);
+      PrayerLockWidget.updateTimeline(lightEntries);
+      PrayerWidgetDark.updateTimeline(darkEntries);
+      PrayerWidgetDarkMedium.updateTimeline(darkEntries);
+    } else {
+      ExtrasWidget.updateTimeline(lightEntries);
+      ExtrasWidgetMedium.updateTimeline(lightEntries);
+      ExtrasLockWidget.updateTimeline(lightEntries);
+      ExtrasWidgetDark.updateTimeline(darkEntries);
+      ExtrasWidgetDarkMedium.updateTimeline(darkEntries);
     }
 
-    if (extraEntries.length > 0 && extraDarkEntries.length > 0) {
-      ExtrasWidget.updateTimeline(extraEntries);
-      ExtrasWidgetMedium.updateTimeline(extraEntries);
-      ExtrasLockWidget.updateTimeline(extraEntries);
-      ExtrasWidgetDark.updateTimeline(extraDarkEntries);
-      ExtrasWidgetDarkMedium.updateTimeline(extraDarkEntries);
-      flipTargets.push(extraEntries[0].props.nextEpochMs);
+    scheduleLabelFlipPush(schedule, lightEntries[0].props.nextEpochMs);
 
-      logger.info('WIDGET: Extras timeline pushed', {
-        entries: extraEntries.length,
-        next: extraEntries[0].props.nextName,
-        nextAt: extraEntries[0].props.nextTime,
-      });
-    }
-
-    scheduleLabelFlipPush(flipTargets);
+    const scheduleLabel = schedule === ScheduleType.Standard ? 'Standard' : 'Extras';
+    logger.info(`WIDGET: ${scheduleLabel} timeline pushed`, {
+      entries: lightEntries.length,
+      next: lightEntries[0].props.nextName,
+      nextAt: lightEntries[0].props.nextTime,
+    });
   } catch (error) {
-    logger.warn('WIDGET: Failed to refresh widget timelines', { error });
+    logger.warn('WIDGET: Failed to refresh widget timelines', { schedule, error });
   }
+};
+
+/**
+ * Pushes a fresh timeline to all ten widgets from the cached prayer data —
+ * both schedules, rebuilding their sequences so the caches repopulate.
+ * Call this wherever fresh data or preferences are known; the per-schedule
+ * label-flip timers handle the in-between minute pushes themselves.
+ */
+export const refreshPrayerWidgets = async (): Promise<void> => {
+  if (Platform.OS !== 'ios') return;
+
+  await pushScheduleTimelines(ScheduleType.Standard);
+  await pushScheduleTimelines(ScheduleType.Extra);
 };

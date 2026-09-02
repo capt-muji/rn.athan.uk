@@ -73,22 +73,24 @@ Debug+Metro on the sim (exact procedure in ISSUES.md §G.1 "NEXT SESSION").
 ## 5. RESUME HERE (next session)
 
 1. Read `ai/AGENTS.md`, this file, then `ai/ISSUES.md` §G.1 end-to-end.
-2. Follow ISSUES.md §G.1 → "NEXT SESSION — exact procedure" verbatim:
-   boot iPhone-185, ensure Metro + the Debug app are up, re-baseline the
-   ~100% churn on the dark page, then code-bisect `widgets/PrayerWidget.tsx`
-   (Blobs-off first, then medium constructs) with the terminate/relaunch +
-   top-sampling loop.
-3. After the culprit is found: design the fix within the owner vetoes
-   (minute cadence, 14-day horizon, payload size) — expected: settled
-   geometry for the looping construct + consolidate pushes to ONE
-   `reloadAllTimelines()` per minute-flip.
-4. Ship: bump BOTH app.json + package.json to 1.17.8 (the v1.17.7 slot was
-   consumed by the docs checkpoint), `yarn validate`, EAS dev build
-   non-interactive, owner device-verifies
-   (all 8 kinds render + stay ≥10 min, no cpu_resource reports, no
-   watchdog lines in a fresh idevicesyslog capture).
-5. Then discuss merging `fix/g-device-regressions` into `uat` and the
-   TestFlight release round.
+2. **FIRST ACTION — check the MR** (owner: "our bread and butter"):
+   `curl -s https://api.github.com/repos/expo/expo/pulls/49244 | jq
+   '.state, .merged_at, .updated_at'` and the expo-widgets changelog for a
+   57.0.16 release. Full watch/upgrade/fallback procedure is in ISSUES.md
+   §G.1 "UPSTREAM FIX TRACKING".
+3. If 57.0.16 is out: bump `expo-widgets` + `@expo/ui`, sim ignite-protocol
+   burst check (expect ms), EAS dev build non-interactive, owner
+   device-verifies on the XS (all 8 kinds render + stay ≥10 min, no
+   cpu_resource reports, no watchdog lines), ship as 1.17.9 → TestFlight.
+4. If not out yet: report status to owner; optional fallback = patch-package
+   backport of the MERGED code (see ISSUES.md §G.1 for the hunk-conflict
+   note). Do NOT backport while it's still an unapproved PR without asking.
+5. 1.17.8 (uncommitted at handoff unless committed this session) = Phase 1
+   our-side prep in `stores/widget.ts`: per-schedule flip timers + sequence
+   cache, 895 tests green. Widgets code is READY for the MR landing —
+   no further prep needed.
+6. Then discuss merging `fix/g-device-regressions` into `uat` and the
+   TestFlight release round (G.3/G.4/G.5/G.7/G.8 fixes + this work).
 
 ## 6. Hard-won environment facts (do not rediscover)
 
