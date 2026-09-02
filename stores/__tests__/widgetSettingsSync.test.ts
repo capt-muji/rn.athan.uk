@@ -186,6 +186,67 @@ describe('initWidgetSettingsSync', () => {
 });
 
 // =============================================================================
+// PER-SCHEDULE LABEL-FLIP PUSHES
+// =============================================================================
+
+describe('label-flip pushes', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+    // Same :30 pinning discipline as the subscription suite: the flip timers
+    // arm at the countdown target's next minute flip, which for minute-aligned
+    // targets is the next wall-clock :00 (+250ms epsilon) — ~30s away at :30,
+    // outside every advance below except the deliberate one.
+    jest.setSystemTime(Math.floor(Date.now() / 60000) * 60000 + 30_000);
+    resetWidgetMocks();
+    seedPrayerCache();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
+  it('re-pushes every schedule at the minute flip, each to only its own kinds', async () => {
+    await refreshPrayerWidgets();
+    resetWidgetMocks();
+
+    // Minute-aligned targets flip at the next wall-clock :00 + epsilon
+    const msIntoMinute = Date.now() % 60000;
+    const msToFlip = 60000 - msIntoMinute + 250;
+    await jest.advanceTimersByTimeAsync(msToFlip);
+
+    expect(widgetPush()).toHaveLength(1);
+    expect(lockPush()).toHaveLength(1);
+    expect(darkPush()).toHaveLength(1);
+    expect(mediumPush()).toHaveLength(1);
+    expect(darkMediumPush()).toHaveLength(1);
+    expect(extrasPush()).toHaveLength(1);
+    expect(extrasLockPush()).toHaveLength(1);
+    expect(extrasDarkPush()).toHaveLength(1);
+    expect(extrasMediumPush()).toHaveLength(1);
+    expect(extrasDarkMediumPush()).toHaveLength(1);
+  });
+
+  it('flip pushes reuse the cached sequence instead of re-reading the prayer DB', async () => {
+    await refreshPrayerWidgets();
+    resetWidgetMocks();
+    // Wipe the underlying cache: a label-flip push must still produce full
+    // timelines from the cached sequence (per-minute pushes never touch the
+    // DB — the next full refresh is what heals an emptied cache).
+    Database.clearPrefix('prayer_');
+
+    const msIntoMinute = Date.now() % 60000;
+    const msToFlip = 60000 - msIntoMinute + 250;
+    await jest.advanceTimersByTimeAsync(msToFlip);
+
+    expect(widgetPush()).toHaveLength(1);
+    const entries = widgetPush()[0][0];
+    expect(entries.length).toBeGreaterThan(0);
+    expect(extrasPush()).toHaveLength(1);
+  });
+});
+
+// =============================================================================
 // REFRESH INTEGRATION (subscription path exercises the same pusher)
 // =============================================================================
 
