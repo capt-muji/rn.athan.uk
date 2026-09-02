@@ -1,6 +1,6 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-08-30 (docs catch-up session: #12 closed as FIXED 1.6.0 — its deterministic-ID fix (d20ccf5) shipped with the #15 reschedule rework; on-device double-notification confirm still pending on owner phones. #4/#5 stay DEFERRED, #8/#10 stay OPEN — untouched by owner decision. Widget work 1.10–1.12.1 landed on uat; see ai/AGENTS.md Recent Decisions.)
+Last updated: 2026-09-02 (TestFlight device-test session: section G added — six open issues from iPhone XS / iOS 18.7.7 / 1.17.4 release testing, ALL G.1–G.5 marked release blockers by owner. Earlier: #12 closed as FIXED 1.6.0 — on-device double-notification confirm still pending; #4/#5 stay DEFERRED, #8/#10 stay OPEN — untouched by owner decision.)
 
 Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not yet fixed · [DEFERRED] accepted, revisit later · [ACCEPTED] intended behavior, documented
 
@@ -562,3 +562,171 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   overlay Fajr [32,600] == real [32,600] exact; deep row Isha (index 5)
   [32,1348][1049,1498] identical; date element identical. One ±1px bottom-edge
   rounding on the top row only = DIP→px rounding, not misalignment.
+
+---
+
+## G. TestFlight device test — release blockers (iPhone XS, iOS 18.7.7, 2026-09-02)
+
+Context: first release+real-device widget/audio validation (all prior widget work
+was verified debug/release on iOS 26 simulator). Device: iPhone XS (A12, 4GB RAM,
+iOS 18.7.7 — XS cannot go past iOS 18), factory reset, only this app installed,
+build 1.17.4 TestFlight. Owner ruling: every G.1–G.5 must be fixed before
+production release; G.6 noted but deferred by owner.
+
+### G.1 [OPEN — RELEASE BLOCKER] Five home screen widgets permanently blank
+
+- **Symptom**: `PrayerWidgetMedium`, `ExtrasWidgetMedium`,
+  `PrayerWidgetDarkMedium`, `ExtrasWidgetDarkMedium` (all four mediums) and
+  `ExtrasWidgetDark` (small) render a blank system-tinted surface (purple on
+  light kinds, dark on dark kinds) permanently — never render content across
+  30+ minutes of watching, a device restart (app reopened, waited 10 + 10 min
+  again), and app relaunches. Tapping them opens the app correctly.
+- **Working on the same device**: `PrayerWidget`, `ExtrasWidget`,
+  `PrayerWidgetDark` (the three non-dark-extras smalls) render instantly and
+  stay correct. Both Lock Screen kinds were blank at placement but recovered
+  after ~60 s and work perfectly (delayed first render — see G.2, not a
+  permanent blank).
+- **Why this is hard**: `ExtrasWidgetDark` shares the EXACT same serialized
+  layout function, render path, and props shape as the working
+  `PrayerWidgetDark`/`ExtrasWidget` smalls (only color/data fields differ) —
+  no layout-code difference can explain it. All 10 kinds share one extension
+  process; 5 widgets render fine there, so the runtime/bundle/storage work
+  generally.
+- **Ruled out** (with evidence): data volume/slowness (owner rebuttal upheld —
+  same data renders in three working smalls); build configuration (owner
+  confirmed Release config was verified working on simulator, incl. mediums);
+  global expo-widgets regression (upstream #47963 "widgets render blank on
+  SDK 57/iOS 26" — closed unresolved without repro; our locks recovering and
+  5 healthy widgets contradict a global failure); reload-budget throttle as
+  the primary cause (fresh pushes after restart never healed the blanks);
+  `Toast`/layout code path for ExtrasWidgetDark (identical to working kinds).
+- **Release-build observability trap**: `expo-widgets` `DynamicView.swift`
+  maps render failures/unknown nodes to `EmptyView()` outside `#if DEBUG` —
+  every failure mode is an invisible blank on TestFlight. The simulator's
+  release pass proves the layouts are correct code; the failure is
+  environmental to the device (iOS 18 / A12 / 4GB).
+- **Candidate root causes (ranked, diagnostics pending)**:
+  1. Per-process widget-extension memory ceiling (jetsam): all 10 placed
+     widgets render in one process; mediums are the heaviest trees (6-row
+     list + pill + stroke/shadow; dark kinds add 4 blurred orbs — blur up to
+     82, corner orb 255pt/blur 75). A deterministic kill mid-render freezes
+     the same set blank on every retry; the recovered locks (tiny text-only
+     trees) fit. NOTE: per-process ceiling is unrelated to free RAM/storage —
+     an empty factory-reset phone does not exonerate this.
+  2. iOS-18-specific failure in medium-only modifiers (pill
+     `strokeBorder`/`shadow`/`offset`) — cannot explain ExtrasWidgetDark.
+  3. App-group UserDefaults write failures for specific kind keys — silent
+     `cfprefsd` losses are documented platform-wide; we write ~10 × ~155KB
+     timeline arrays every minute while foregrounded. Would explain
+     ExtrasWidgetDark if its key specifically fails.
+- **Agreed diagnostics (Phase 0, owner's phone, no code)**:
+  1. Clean page → add ONLY `PrayerWidgetMedium` → wait 2 min. Renders ⇒
+     load-dependent ⇒ memory. Blank alone ⇒ medium-path bug.
+  2. Clean page → add ONLY `ExtrasWidgetDark` → wait 2 min. Renders ⇒
+     load-dependent. Blank alone ⇒ its storage key.
+  3. Settings → Privacy & Security → Analytics & Improvements → Analytics
+     Data → `JetsamEvent-*.ips` timestamped during blank episodes = positive
+     proof of memory kills.
+  - Follow-ups: dev-signed Release build on device → Console.app WidgetKit
+    per-widget render results (`Request ended for <kind> — success/error`);
+    container download → inspect `group.com.mugtaba.athan` plist for the 5
+    kinds' `__expo_widgets_*_timeline`/`*_layout` keys; in-app `getTimeline()`
+    readback diagnostic after each push.
+- **Fix branches per verdict**: memory ⇒ lighten medium render cost (orbs/
+  blur/corner-orb design trade-offs — owner decision, no device branch exists
+  in the widget layout env); iOS-18 modifier bug ⇒ bisect medium composition
+  with diagnostic layouts; storage ⇒ reliable persistence (file-in-container
+  patch for expo-widgets' hardcoded UserDefaults path).
+
+### G.2 [OPEN — RELEASE BLOCKER] ~60 s blank window when adding any widget
+
+- **Symptom**: a freshly added widget shows the blank/purple placeholder for
+  up to ~60 s before its first render (observed: extras light small blank
+  until "the widget updates"; both lock widgets ~60 s). Users will read this
+  as broken widgets on first use.
+- **Suspected mechanism**: first-render delivery latency — the same ~60 s
+  WidgetKit reload latency already documented in ai/AGENTS.md under push
+  barrages. `stores/widget.ts` label-flip scheduler re-pushes all 10 widgets
+  every minute while foregrounded (~10 `WidgetCenter` reloads/min against
+  Apple's documented 40–70 reloads/day per widget budget).
+- **Owner constraint**: minute-accurate label updates must stay — cadence
+  reduction is REJECTED. Fix must preserve visible freshness while making a
+  freshly placed widget render immediately from already-stored timelines
+  (stored timelines exist at placement — the delay is delivery, not data).
+  Candidates: ensure placement-time snapshot renders without waiting for a
+  reload; consolidate reload calls (one `reloadAllTimelines` instead of 10
+  per-kind reloads per push); push on launch/backgrounding/settings/data
+  changes while relying on the precomputed 5-min step entries between.
+
+### G.3 [OPEN — RELEASE BLOCKER] Settings toggle thumb desyncs from track/value
+
+- **Symptom**: toggle track stays purple (on) and the preference is active,
+  but the white thumb sits in the OFF position. Repro: with "Show hijri date"
+  disabled → disable "Show seconds" → enable "Show hijri date" → enable
+  "Show seconds" → hijri toggle shows knob-off/track-purple while hijri is
+  enabled. Closing and reopening the sheet shows the correct ON state — the
+  value and persisted state were always correct; only the thumb animation is
+  wrong.
+- **Root cause**: `components/sheets/parts/Toggle.tsx` drives the thumb via
+  `useEffect` + `withTiming` on a shared value (with an `isFirstRender`
+  skip) — an interrupted/stale animation leaves the thumb at its old position
+  while the track color derives synchronously from the `value` prop and stays
+  correct.
+- **Planned fix**: replace the effect-driven animation with a reactive
+  `useDerivedValue(() => withTiming(value ? X : 0))` — the thumb then cannot
+  desync from `value`. Verify with the exact repro sequence above (video
+  frames if needed).
+
+### G.4 [OPEN — RELEASE BLOCKER] Sound preview plays no audio on iOS device
+
+- **Symptom**: Sounds sheet → tap a preview's play button → no audio at all
+  on the iPhone XS TestFlight build. Worked previously.
+- **Facts established (2026-09-02)**: `SoundItem.tsx`/`Sound.tsx` have had NO
+  functional changes since the 1.5.3 era (git log verified) — the regression
+  window is the **1.15.0 audio restructure** (wav→mp3, `ATHAN_AUDIOS` in
+  `assets/audio/index.ts` created then) and/or the SDK 57 expo-audio bump.
+  The app configures **no audio mode anywhere** (no `setAudioModeAsync` /
+  audio-session setup in the codebase) — on iOS the playback category is
+  never set, so previews are at the mercy of the default session (silent
+  switch / no playback guarantees).
+- **Next steps**: reproduce on simulator + device with ringer on/off; verify
+  mp3 `require()` sources resolve through `useAudioPlayer` on device; check
+  expo-audio changelog for iOS regressions; likely fix = set the audio mode
+  (`playsInSilentMode` etc.) at app init or sounds-sheet open.
+
+### G.5 [OPEN — RELEASE BLOCKER] Sound preview countdown no longer displays
+
+- **Symptom**: while a preview plays, the seconds counter beside the play
+  icon (e.g. ticking through a 29 s track) no longer appears.
+- **Root cause (likely shared with G.4)**: `SoundItem.tsx` gates the countdown
+  on `isPlaying && status.playing && remainingTime > 0` where
+  `remainingTime = status.duration - status.currentTime`. If expo-audio never
+  reports `playing`/`duration` (player not actually started, or mp3 metadata
+  not loaded), the countdown stays hidden. Fixing G.4's playback should
+  restore the status stream; verify both together on device.
+
+### G.6 [OPEN — noted, deferred by owner] App-wide sluggishness on device
+
+- **Symptom**: "everything feels very slow" on the XS TestFlight build.
+- **Suspected contributor**: the per-minute widget pipeline on the JS thread
+  (2 × 15-day prayer sequences, 4 timelines × ~380 entries, ~1.5 MB bridge
+  serialization, 10 UserDefaults writes + 10 reloads every minute while
+  foregrounded — `stores/widget.ts` label-flip scheduler).
+- **Owner ruling**: update cadence stays as-is; not a release gate. Optional
+  future optimization if pursued: cache sequences/timelines and rebuild only
+  the head entry's label per minute.
+
+### G.7 [OPEN — flaky test] widgetSettingsSync "pushes again for a later change" fires a spurious third push ~1–2% of runs
+
+- **Observed (2026-09-02)**: pre-commit `yarn validate` rejected a docs-only
+  commit — `stores/__tests__/widgetSettingsSync.test.ts:168` expected 2
+  pushes, got 3. Passes in isolation immediately after (8/8).
+- **Mechanism**: the test's first debounced push arms the label-flip
+  `setTimeout` (`scheduleLabelFlipPush`, delay = ms to the target's next
+  minute flip, computed from the faked-but-real-anchored clock). When the
+  second `advanceTimersByTimeAsync(1000)` happens to cross that flip window
+  (depends on the real wall-clock second the suite started at, ~750/60000 of
+  runs), a third `refreshPrayerWidgets` fires inside the assertion window.
+- **Planned fix (own commit)**: pin the clock — `jest.setSystemTime` to a
+  fixed instant aligned safely inside a minute (e.g. :30) — or
+  advance/settle the flip timer explicitly before asserting counts.
