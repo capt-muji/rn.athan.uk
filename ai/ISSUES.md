@@ -575,6 +575,158 @@ production release; G.6 noted but deferred by owner.
 
 ### G.1 [OPEN — RELEASE BLOCKER] Five home screen widgets permanently blank
 
+- **STATUS (end of session 2026-09-02)**: failure chain PROVEN on device and
+  REPRODUCED on an iOS 18.5 simulator as a sustained ~100% CPU render loop.
+  Construct-level bisection STARTED (two data points in, see Bisect Log) —
+  this is the exact resume point for the next session.
+- **THE FAILURE CHAIN (all steps evidenced from the XS via USB syslog +
+  crash reports)**: the widget extension gets CPU-saturated by an in-widget
+  SwiftUI render oscillation → it misses WidgetKit's ~30s watchdog for
+  `getTimelines` → syslog signature: `CHSErrorDomain Code=1050
+  "timelineReloadFailed"` wrapping `Code=1001 "Watchdog provision violated
+  for getTimelines(1)"` → chronod schedules the next retry **+1 HOUR out**
+  → the app's every-minute pushes keep spawning replacement attempts that
+  merge into the same doomed task → kinds that lose the render race stay
+  blank "permanently" (recovery is perpetually an hour away), and kinds
+  whose retry budget exhausts stop being served at all. The rendered output
+  of a kind that DID succeed once stays visible as a stale good snapshot
+  even while its reloads fail (observed: `PrayerWidget` visually working
+  while its own reloads timed out).
+- **Device evidence, enumerated**:
+  1. Four `ExpoWidgetsTarget.cpu_resource-*.ips` on 2026-09-02 alone
+     (01:54, 02:59, 04:29, 04:53 — spanning TestFlight, baseline dev build
+     and fix dev build): "90 seconds cpu time over 136 seconds (66% cpu
+     average), exceeding limit of 50% cpu over 180 seconds". Heaviest stack
+     = DEEP RECURSIVE SwiftUICore/AttributeGraph traversal (render churn,
+     not JSON/parse work).
+  2. Every `reload:` begin → 30 s → `Reload failed` (watchdog) in the
+     syslog window; the cycle repeats every ~30 s for as long as watched.
+  3. Render-side read storm (NOT request-side): layout-key lookups in the
+     app-group prefs at `PrayerWidget` 1,519 / 2 min (~12/sec),
+     `PrayerWidgetMedium` 848, `ExtrasWidget` 548, `PrayerWidgetDark` 333,
+     `PrayerLockWidget` 4,212 (~35/sec while the lock screen was visible),
+     while `ExtrasWidgetMedium` + `ExtrasWidgetDarkMedium` got only **2**
+     (retry budgets exhausted — the permanently-blank set) and actual
+     chronod→extension `Request began` events were only **22** in the same
+     window.
+  4. One-by-one re-add experiment on device (owner narrated): FIRST kind
+     added (`PrayerWidget` light small) renders; every subsequent kind red —
+     first-come-first-served CPU starvation, NOT a per-kind defect. Gallery
+     previews flipped from red to rendering as load eased mid-experiment.
+  5. Only JetsamEvent on device is 2026-03-24 (predates all testing) —
+     **memory-kill theory is DEAD**.
+  6. Lock Screen widgets unaffected throughout (tiny trees, same process,
+     same storage).
+- **Ruled out (with evidence)**:
+  - Storage/entitlements: dissected the EAS dev IPA (`/tmp/fixipa`) — both
+    binaries carry `ExpoWidgetsAppGroupIdentifier=group.com.mugtaba.athan`
+    in Info.plist AND in code-signature entitlements; both ad-hoc profiles
+    (`*[expo] com.mugtaba.athan [ExpoWidgetsTarget] AdHoc …`) allow the
+    group; XS UDID provisioned. The app-side pushes pass expo-widgets'
+    updateTimeline no-layout guard (it throws if the layout key is
+    missing), proving layouts+timelines are written and readable. Lock
+    widgets read the same suite fine.
+  - Dev-vs-release extension runtime: `ExpoWidgets.bundle` inside the dev
+    build's extension is a PRODUCTION Metro bundle (`__DEV__=false`) —
+    identical in dev and release builds.
+  - Request storm as the primary driver: only 22 timeline requests in the
+    device window (see #3) — the storm is the render side.
+  - Data volume, mute switch, build config: ruled out earlier (see below).
+- **Simulator experiments (iOS 18.5 runtime 22F77 on sim `iPhone-185`,
+  created this session — Xcode 26 refuses to download 18.7; 18.5 runs under
+  Rosetta x86_64 which is FINE, the slower host even helps)**:
+  - All 8 kinds RENDER correctly and within seconds on the sim (owner
+    eyewitnessed placements + previews). The sim never blanks — the host is
+    too fast for the watchdog to trip. The loop shows up ONLY as CPU.
+  - **THE REPRO**: home screen visible with widget placements → extension
+    ramps 0 → 90 → ~100% CPU sustained. App foregrounded (screen showing
+    the app): extension IDLES at 0% between the ~2-per-30s push requests.
+    Measurement: `EXT_PID=$(pgrep -x ExpoWidgetsTarget | head -1); top
+    -pid $EXT_PID -l 8 -s 3`.
+  - iOS 26.5 control (iPhone 16 sim): 4 requests/30s, renders fine — but
+    NOTE: only request-rate was sampled there; CPU was never sampled with
+    the home screen visible. Do not cite 26.5 as "calm" until re-measured
+    the same way.
+  - **BISECT LOG (removal-based, screen visible, no code changes needed —
+    remove widgets via jiggle mode, sample CPU after each)**:
+    1. Light page visible: 2 light smalls + 2 light mediums → **~100%**.
+    2. Removed BOTH light mediums (2 light smalls remain visible) → **0%**.
+       ⇒ LIGHT SMALLS ARE CALM; the light MEDIUM composition loops.
+    3. Dark page visible: dark extras medium + 2 dark smalls → **~100%**.
+    4. Removed the dark medium (2 dark SMALLS remain visible) → **~100%**.
+       ⇒ DARK SMALLS LOOP — orbs implicated independent of the medium tree.
+    5. NOT YET RUN: light mediums re-added alone (re-confirm #2 was not a
+       fluke of page/position); the code-level construct bisect (orbs-off
+       variant — an early `return null;` was inserted in `Blobs` at session
+       end and REVERTED before handoff; redo it as step one).
+  - Interpretation so far: the calm tree is the light small (hero trio
+    only). Both ORBS (dark smalls) and the MEDIUM composition (2-col
+    HStack + day list + floating pill + footerLift) oscillate. No single
+    shared construct — either two independent loops, or a size/depth-
+    triggered recursive layout path in iOS 18's AttributeGraph.
+- **Construct suspects (all inside `widgets/PrayerWidget.tsx`; known-fragile
+  geometry per ai/AGENTS.md lessons)**: oversized-orb rendering (94pt frame
+  + `scaleEffect(size/94)` + `blur(blur/scale)` — 1.17.0 lesson),
+  `Spacer`-centering inside `maxHeight: Infinity` stacks (1.14.0 lesson),
+  the medium pill track (`RoundedRectangle` + `strokeBorder` + `shadow` +
+  `offset`), `footerLift` half-point offset (offset applies at DOUBLE
+  strength in the widget runtime — 1.17.0 lesson), translucent
+  `containerBackground` (`rgba(255,250,253,0.55)` on light kinds).
+  Lock layout uses NONE of these and never loops.
+- **NEXT SESSION — exact procedure**:
+  1. `xcrun simctl boot 15DD2E5A-47DE-4934-A3CF-E36A34E34251` (iPhone-185).
+     Debug app already built: `/tmp/dd18d/Build/Products/
+     Debug-iphonesimulator/Athan.app` (Release copy at `/tmp/dd18`).
+     Reinstall if the sim was erased. Metro:
+     `nohup npx expo start --port 8081 > /tmp/metro-athan-fix.log`
+     (stay on `fix/g-device-regressions`).
+  2. Launch the app (auto-connects to localhost:8081), wait for TICK logs,
+     press HOME, swipe right to the dark page, then measure CPU (command
+     above). Baseline should read ~100%.
+  3. Code-bisect by editing `widgets/PrayerWidget.tsx`, then `xcrun
+     simctl terminate <udid> com.mugtaba.athan && xcrun simctl launch
+     <udid> com.mugtaba.athan` (module eval re-registers layouts +
+     re-pushes; wait for the "WIDGET: … timeline pushed" logs), then
+     measure. WidgetKit reload latency: allow ≥60 s before trusting a
+     "calm" reading; the extension caches evaluated layouts per process —
+     `pkill -x ExpoWidgetsTarget` to force cold evaluation if suspicious.
+  4. Bisect order: (a) `Blobs` early `return null` → dark smalls calm?
+     (b) narrow the orbs: drop `blur` (plain fill) vs drop `scaleEffect`
+     (true frame) vs drop `offset`; (c) medium: hide pill → hide day-list
+     rows → hide `footerLift` → hide Spacer-centering; (d) re-test the
+     light medium alone for a clean medium-only signal.
+  5. FIX DESIGN after the culprit lands (owner vetoes STAND: minute label
+     cadence, 14-day `TIMELINE_DAYS`, payload size). Expected shape:
+     replace the looping construct with settled geometry (e.g. opaque
+     gradient instead of live blur; fixed frames instead of
+     Infinity+Spacer) AND consolidate pushes to ONE
+     `WidgetCenter.reloadAllTimelines()` per minute-flip instead of 10
+     per-kind reloads (10× fewer reload tasks; cadence unchanged — also
+     G.2's candidate fix).
+  6. SHIP: version bump BOTH app.json + package.json (1.17.7), `yarn
+     validate`, `npx eas-cli build --profile development --platform ios
+     --non-interactive --no-wait` (credentials stored), owner verifies on
+     the XS: all 8 home kinds render AND stay rendered ≥10 min, zero new
+     `ExpoWidgetsTarget.cpu_resource` reports, zero `Watchdog provision
+     violated` lines in a fresh `idevicesyslog` capture.
+- **Evidence files (all in /tmp — survive until reboot)**:
+  `/tmp/xs-syslog.txt` (full device syslog, ~1.5M lines; analysis window
+  offset in `/tmp/syslog-mark.txt` = 906268; slice at `/tmp/window.log`),
+  `/tmp/xs-crashlogs/` (4× cpu_resource + JetsamEvent-2026-03-24 + old
+  Athan-2026-08-17 crash), `/tmp/sim18-ext.log` (sim chronod+extension
+  stream), `/tmp/fix-build.ipa` + `/tmp/fixipa/` (dissected dev build),
+  `/tmp/build18.log`, `/tmp/build18d.log`, `/tmp/metro-athan-baseline.log`
+  (89 s JS-freeze evidence), `/tmp/metro-athan-fix.log`. Device syslog
+  tooling: `idevicesyslog`/`idevicecrashreport` installed via brew
+  (libimobiledevice); pairing validated for XS UDID
+  `00008020-0015585C22D2002E` — replug + re-trust if asked.
+- **RED boxes note (dev builds only)**: DEBUG `DynamicView.swift` renders
+  failures as red boxes; release maps them to invisible `EmptyView`.
+  Two red sources exist: `EntryView` "No layout found for
+  `<group>::<Kind>`" and unknown-node `Unable to get the view for: <type>`
+  (red + text). The owner's red boxes showed no readable text on-device —
+  never resolved which; irrelevant now that the CPU/watchdog chain is
+  proven, but remember red ≠ necessarily "layout string missing".
 - **Symptom**: `PrayerWidgetMedium`, `ExtrasWidgetMedium`,
   `PrayerWidgetDarkMedium`, `ExtrasWidgetDarkMedium` (all four mediums) and
   `ExtrasWidgetDark` (small) render a blank system-tinted surface (purple on
@@ -605,7 +757,8 @@ production release; G.6 noted but deferred by owner.
   every failure mode is an invisible blank on TestFlight. The simulator's
   release pass proves the layouts are correct code; the failure is
   environmental to the device (iOS 18 / A12 / 4GB).
-- **Candidate root causes (ranked, diagnostics pending)**:
+- **Candidate root causes (SUPERSEDED — root cause found above, kept for
+  history)**:
   1. Per-process widget-extension memory ceiling (jetsam): all 10 placed
      widgets render in one process; mediums are the heaviest trees (6-row
      list + pill + stroke/shadow; dark kinds add 4 blurred orbs — blur up to
@@ -657,8 +810,15 @@ production release; G.6 noted but deferred by owner.
   reload; consolidate reload calls (one `reloadAllTimelines` instead of 10
   per-kind reloads per push); push on launch/backgrounding/settings/data
   changes while relying on the precomputed 5-min step entries between.
+- **2026-09-02 update**: G.1's root cause (render-loop CPU saturation →
+  watchdog → +1 h retry backoff) explains most of this window on-device;
+  the same consolidation (one `reloadAllTimelines` per flip) is the leading
+  candidate fix for BOTH G.1 and G.2. Re-assess the residual delay after
+  the G.1 layout fix lands. Sim note: on iOS 18.5 sim placements render
+  within seconds (owner witnessed), so ~60 s is largely a DEVICE/
+  reload-latency phenomenon.
 
-### G.3 [OPEN — RELEASE BLOCKER] Settings toggle thumb desyncs from track/value
+### G.3 [FIXED — device-verified 2026-09-02, dev build v1.17.6] Settings toggle thumb desyncs from track/value
 
 - **Symptom**: toggle track stays purple (on) and the preference is active,
   but the white thumb sits in the OFF position. Repro: with "Show hijri date"
@@ -672,14 +832,14 @@ production release; G.6 noted but deferred by owner.
   skip) — an interrupted/stale animation leaves the thumb at its old position
   while the track color derives synchronously from the `value` prop and stays
   correct.
-- **Fix (implemented 2026-09-02, device verify pending)**: replaced the
+- **Fix (implemented 2026-09-02, DEVICE-VERIFIED same day)**: replaced the
   effect-driven animation with a reactive
   `useDerivedValue(() => withTiming(value ? X : 0))` — the thumb re-derives
-  from `value` on the UI thread and cannot desync. Also the candidate fix
-  for the intermittent rapid-press crash (G.8). Verify with the exact repro
-  sequence above on the next TestFlight build.
+  from `value` on the UI thread and cannot desync. Owner spammed hijri +
+  seconds toggles 30 s+ on the XS dev build (v1.17.6): knob always in the
+  correct position, no crash (also closes G.8's repro).
 
-### G.4 [OPEN — RELEASE BLOCKER] Sound preview plays no audio on iOS device
+### G.4 [FIXED — device-verified 2026-09-02, dev build v1.17.6] Sound preview plays no audio on iOS device
 
 - **Symptom**: Sounds sheet → tap a preview's play button → no audio at all
   on the iPhone XS TestFlight build. Worked previously.
@@ -707,6 +867,13 @@ production release; G.6 noted but deferred by owner.
   exactly the regression window. On an A12/4GB device running iOS 18 this
   exhausts audio resources; the sim (iOS 26, no mute switch, desktop
   resources) never notices.
+- **Device A/B baseline (2026-09-02, EAS dev build v1.17.5 on the XS, Metro
+  logs)**: previews STILL silent and countdown still absent in debug config —
+  reproduces outside TestFlight/release wrappers. Play icon and selection
+  state change correctly (JS tap path healthy) and the Metro log contains
+  zero audio/player events during the taps (baseline ships no sound-sheet
+  logging) — consistent with players being created but never actually
+  producing audio/status.
 - **Fix (implemented 2026-09-02, device verify pending)** — two parts:
   1. **Single shared player**: `Sound.tsx` owns ONE `useAudioPlayer` keyed
      to the playing row's source (the hook releases/recreates per source —
@@ -722,8 +889,12 @@ production release; G.6 noted but deferred by owner.
      payload is safe (every native AudioMode field has a default;
      `interruptionMode` stays `mixWithOthers`).
   Verify on the XS: previews play + countdown ticks.
+- **DEVICE VERDICT (2026-09-02, dev build v1.17.6)**: owner confirmed
+  previews audible, spammable, stoppable — "everything works great with the
+  audio" (muted-switch test not explicitly re-run; re-check on the
+  TestFlight release round).
 
-### G.5 [OPEN — RELEASE BLOCKER] Sound preview countdown no longer displays
+### G.5 [FIXED — device-verified 2026-09-02, dev build v1.17.6] Sound preview countdown no longer displays
 
 - **Symptom**: while a preview plays, the seconds counter beside the play
   icon (e.g. ticking through a 29 s track) no longer appears.
@@ -736,6 +907,10 @@ production release; G.6 noted but deferred by owner.
 - **Simulator release build PASSES (2026-09-02)**: countdown ticks alongside
   audible audio — confirms the G.4/G.5 pair is device-side; retest on the XS
   after the audio-mode fix.
+- **Device A/B baseline (2026-09-02, dev build)**: countdown absent alongside
+  the silent previews on the XS — pairs exactly with G.4 as expected.
+- **DEVICE VERDICT (2026-09-02, dev build v1.17.6)**: countdown ticks beside
+  the play icon while previews play — FIXED alongside G.4.
 
 ### G.6 [OPEN — noted, deferred by owner] App-wide sluggishness on device
 
@@ -747,6 +922,32 @@ production release; G.6 noted but deferred by owner.
 - **Owner ruling**: update cadence stays as-is; not a release gate. Optional
   future optimization if pursued: cache sequences/timelines and rebuild only
   the head entry's label per minute.
+- **Additional device report (2026-09-02, fix build)**: after the app sat
+  MINIMIMIZED and was relaunched, the owner hit severe sluggishness (~2 FPS
+  feel, unresponsive taps) that cleared after a full close+restart —
+  consistent with the foreground-return coalesced burst (accumulated
+  timers/pushes firing at once). Sim corroboration same day: the app
+  foregrounded = extension idles between the per-minute push requests, so
+  the pressure is episodic (bursty), not constant. The 89 s freeze
+  (baseline build, G.4's 32-AVPlayer teardown) is FIXED by the single-player
+  refactor — but ordinary push/reschedule bursts can still stall low-end
+  devices; revisit cadence engineering (consolidated reloads, cached
+  timeline rebuilds) only if the owner reopens this.
+- **Measured on dev build (2026-09-02, XS, Metro log)**: the sluggishness is
+  episodic JS-thread FREEZES, not constant slowness. The per-second TICK logs
+  show exactly ONE 89,299 ms total JS stall all session — beginning right
+  after sound-preview taps (which fired `rescheduleAllNotifications` + both
+  widget-timeline pushes) and Sounds-sheet close. During the freeze every tap
+  was dead (no haptics, no sheet, no overlay) while pager swipes kept working
+  (UI thread unaffected); after ~90 s the app snapped back all at once.
+  Outside that window the JS thread showed ZERO gaps >400 ms. Prime suspect:
+  the baseline's 32-AVPlayer creation/teardown (G.4 architecture) piled on
+  the reschedule burst — the single-player refactor is the candidate
+  remediation. Also observed post-freeze: the settings sheet closed itself
+  once ("crashed" without killing the app) and afterwards its button fired
+  haptic + press animation but no longer presented, while the alert sheet and
+  overlay still opened — sheet-stack corruption under saturation (cross-ref
+  G.8).
 
 ### G.7 [OPEN — flaky test] widgetSettingsSync "pushes again for a later change" fires a spurious third push ~1–2% of runs
 
@@ -766,7 +967,7 @@ production release; G.6 noted but deferred by owner.
   pinned to :30 of the seeded minute in the subscription describe's
   beforeEach — flip timer now ~30 s from any test's ≤2 s advances.
 
-### G.8 [OPEN — RELEASE BLOCKER, intermittent] Rapid settings-toggle pressing crashed the app (iOS)
+### G.8 [FIXED — device-verified 2026-09-02, dev build v1.17.6; intermittent, watch for recurrence] Rapid settings-toggle pressing crashed the app (iOS)
 
 - **Symptom (owner, iPhone XS TestFlight 1.17.4, 2026-09-02)**: rapid-pressing
   settings toggles (hijri date and others) crashed the app to springboard
@@ -799,3 +1000,14 @@ production release; G.6 noted but deferred by owner.
   single-player sound sheet, audio mode)**: everything working; sustained
   5-second toggle spam shows only a ≤0.5 s lag tail (JS-thread contention
   under deliberate spam — accepted by owner, not a defect).
+- **Dev-build corroboration (2026-09-02, XS)**: during the 89 s JS freeze
+  (see G.6) the settings sheet closed itself and stopped presenting while
+  haptics still fired — state-dependent instability under JS saturation,
+  matching the intermittent nature of the original crash. The freeze source
+  (32-player teardown, G.4 fix) and the Toggle rewrite are both on the fix
+  branch; retest there.
+- **DEVICE VERDICT (2026-09-02, dev build v1.17.6)**: 30 s+ of sustained
+  toggle spam (hijri, seconds, others) — NO crash, no sheet corruption;
+  sluggish-then-recovered by full app restart. Original crash never
+  reproduced with the fix. Keep this header's "watch for recurrence" caveat
+  through the next TestFlight release round.
