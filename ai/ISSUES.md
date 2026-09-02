@@ -1,6 +1,6 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-09-02 (background-task deep-dive session: #8 FIXED 1.17.10 and device-verified on iPhone XS / iOS 18.7.10 across the full lifecycle matrix — root cause was a seconds-vs-minutes unit bug in `minimumInterval` plus re-arm starvation; ladder evidence added. Earlier: section G added — six open issues from iPhone XS / iOS 18.7.7 / 1.17.4 release testing, ALL G.1–G.5 marked release blockers by owner. Earlier: #12 closed as FIXED 1.6.0 — on-device double-notification confirm still pending; #4/#5 stay DEFERRED, #10 stays OPEN.)
+Last updated: 2026-09-02 (background-task deep-dive session: #8 FIXED 1.18.0 and device-verified on iPhone XS / iOS 18.7.10 across the full lifecycle matrix — root cause was a seconds-vs-minutes unit bug in `minimumInterval` plus re-arm starvation; ladder evidence added. Earlier: section G added — six open issues from iPhone XS / iOS 18.7.7 / 1.17.4 release testing, ALL G.1–G.5 marked release blockers by owner. Earlier: #12 closed as FIXED 1.6.0 — on-device double-notification confirm still pending; #4/#5 stay DEFERRED, #10 stays OPEN.)
 
 Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not yet fixed · [DEFERRED] accepted, revisit later · [ACCEPTED] intended behavior, documented
 
@@ -117,7 +117,7 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   work exactly the same, identical." Horizon stays 2 days on both platforms; the
   1-week-without-opening goal is dropped. (#16 closes with this.)
 
-### 8. [FIXED 1.17.10 — device-verified] Background task never ran — unit bug + re-arm starvation
+### 8. [FIXED 1.18.0 — device-verified] Background task never ran — unit bug + re-arm starvation
 
 **Runbook:** every scenario in the verification matrix below is scripted for
 replay (incl. the pending 5-device Android campaign) in
@@ -141,7 +141,7 @@ replay (incl. the pending 5-device Android campaign) in
   `EXTaskService: Restoring tasks configuration: … minimumInterval = 10800`; after fix
   the dasd submission windows prove the arithmetic (`Submitted … (21:05:48 …)` exactly
   +15 min after the 20:50:48 run at the 15-min debug rung).
-- **Fix (1.17.10)**: `BACKGROUND_TASK_INTERVAL_MINUTES` in shared/constants.ts —
+- **Fix (1.18.0)**: `BACKGROUND_TASK_INTERVAL_MINUTES` in shared/constants.ts —
   resolution order: `EXPO_PUBLIC_BG_INTERVAL_MINUTES` env (ladder experiments) → 15 in
   development builds (fast iteration) → 180 in production (ADR-007's 3h, unchanged);
   `registerBackgroundTask` now ALWAYS unregisters + registers so persisted options can
@@ -158,7 +158,7 @@ replay (incl. the pending 5-device Android campaign) in
     headlessly — the RN bundle URL requires the dev-client launcher UI; Metro is
     unreachable from a headless cold start. This is structural to dev builds, NOT a
     bug in ours or expo's: RELEASE builds embed JS and work (verified: persisted
-    config survives app updates; fresh submit at exactly +15m on Release 1.17.10).
+    config survives app updates; fresh submit at exactly +15m on Release 1.18.0).
   - dasd rate limit: at 15-min cadence, after ~4 rapid runs dasd logs "Skipping
     processing … their group is full" every ~60s and defers execution → **sub-hour
     intervals are not sustainable**; the 180-min ship value sits far under budget.
@@ -191,7 +191,7 @@ replay (incl. the pending 5-device Android campaign) in
   bounded by the #10 ColorOS exactness problems + OEM killers, not by persistence.
   The BG-task interval fix is symmetric: BackgroundTaskScheduler.kt reads
   `minimumInterval` in minutes (`Duration.ofMinutes`, TimeUnit.MINUTES) — the same
-  10800 unit bug delayed Android's worker 7.5 days; 1.17.10 fixes both platforms
+  10800 unit bug delayed Android's worker 7.5 days; 1.18.0 fixes both platforms
   with the one constant.
 
 ### 9. [FIXED 1.5.3] ADR-007 documentation drift + registration gap
@@ -873,7 +873,7 @@ production release; G.6 noted but deferred by owner.
     3. Tree-mass reduction in layouts — deferred: owner walked every pixel
        of the design; visual risk for a linear gain.
   - **SHIP + VERIFY protocol (after the 57.0.16 update)**: bump BOTH
-    app.json + package.json (1.17.10 — 1.17.8 = Phase 1 prep, 1.17.9 =
+    app.json + package.json (was 1.17.10 at time of writing — 1.17.8 = Phase 1 prep, 1.17.9 =
     the session-2 docs/branch sync; neither shipped to a store), `yarn
     validate`, `npx eas-cli build --profile development --platform ios
     --non-interactive --no-wait`, owner verifies on the XS: all 8 home kinds
