@@ -5,6 +5,8 @@ with zero re-discovery. Read §1 (status), then run §4 (resume protocol).
 Companion docs: ISSUES.md #8 (root cause + evidence), ADR-007 (architecture),
 AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
 
+**Pending EAS artifacts (2026-09-02/03 session end):** Android 15-min rung ipa/apk build `2f6e9948-04d5-44fd-8028-b85d196e7b72` (was in queue at session end — check `npx eas-cli build:view`), iOS ship-config (360-min) build `f00cd1ff-f2d6-4753-9683-2d641f4205f4` (install on the XS for the overnight/multi-day soak of the exact ship artifact).
+
 **One-shot entry point:** `ai/prompts/android-background-task.md` — the
 executable campaign prompt. Point a fresh session at it ("read and execute")
 for the Android verification campaign; it drives off this runbook's tracker.
@@ -25,13 +27,13 @@ for the Android verification campaign; it drives off this runbook's tracker.
 | Reboot survival (locked, no passcode) | RELEASE | ✅ app relaunched headlessly ~11min post-boot, re-armed exact +15:00 | dasd 22:29:50/22:30:04/22:34:28 |
 | Sustained cadence 15-min | dev+RELEASE | ✅ chain self-perpetuates; ⚠️ dasd rate-limits after ~4 rapid runs ("group is full", recovers) | overnight.log |
 | User force-quit | — | ❌ not remotely testable (Apple disables bg relaunch until next open; platform rule). Recovery: 2-day buffer + next-open refresh | docs |
-| Rate limit | RELEASE | ⚠️ sub-hour intervals unsustainable; 180-min ship value far under budget | dasd skips 21:35–21:59 |
+| Rate limit | RELEASE | ⚠️ sub-hour intervals unsustainable; ship value since retuned to 360 min | dasd skips 21:35–21:59 |
 | Config persistence | RELEASE | ✅ task registration survives app updates (upgrade install) | EXTaskService restore 21:43 |
 | Object-level proof | RELEASE | ✅ `submitTaskRequest: <BGProcessingTaskRequest: … earliestBeginDate: +15:00, requiresExternalPower=0, requiresNetworkConnectivity=1>` | overnight.log 22:38:01 |
 
 **iOS resting state:** Release preview build @ commit 70dac78 (15-min interval, bgDebug on; labeled 1.17.10 pre-minor-bump — code identical to 1.18.0)
 installed on the XS; overnight filtered syslog capture at
-`/tmp/opencode/bg/overnight.log` (recreate via §5.4). Ship config = 180 min,
+`~/bg-evidence/overnight.log` (recreate via §4). Ship config = 360 min (6h),
 verified in code + arithmetic; no further iOS work pending except
 (optional) owner force-quit test + morning soak review.
 
@@ -52,12 +54,12 @@ ISSUES #14 adb ground-truth checklist —
 
 ---
 
-## 2. THE FIX UNDER TEST (shipped 1.18.0 — same on both platforms)
+## 2. THE FIX UNDER TEST (shipped 1.18.0; intervals retuned same session — same on both platforms)
 
 1. `minimumInterval` is **MINUTES** (expo-background-task docs; iOS ×60 for
    earliestBeginDate; Android `Duration.ofMinutes`). We passed 10800 SECONDS
    = 7.5 DAYS on both platforms. Now: `BACKGROUND_TASK_INTERVAL_MINUTES`
-   (shared/constants.ts) — env `EXPO_PUBLIC_BG_INTERVAL_MINUTES` → dev 15 → prod 180.
+   (shared/constants.ts) — env `EXPO_PUBLIC_BG_INTERVAL_MINUTES` → dev 15 → prod **360 (6h)**. Foreground gate: `NOTIFICATION_REFRESH_HOURS` = **12h** (pure fallback; background layer is primary). ADR-007 rev 3.
 2. `registerBackgroundTask` (stores/notifications.ts) ALWAYS unregisters-then-
    registers — persisted options can never go stale (self-heals old installs).
 3. Task body (`rescheduleAllNotificationsFromBackground`) awaits `sync()` first
@@ -72,7 +74,7 @@ ISSUES #14 adb ground-truth checklist —
 |---|---|---|---|
 | Dev (JS via Metro) | `yarn start` + installed dev build | 15 (dev default) | CANNOT run headless bg tasks (Metro trap) — foreground/simulate testing only |
 | Release @ rung N | eas.json preview profile + `"env": {"EXPO_PUBLIC_BG_INTERVAL_MINUTES": "N", "EXPO_PUBLIC_BG_DEBUG": "1"}` then `npx eas-cli build --profile preview --platform ios --no-wait` | N | embedded JS — REQUIRED for headless/natural-fire scenarios; revert eas.json after kick |
-| Ship config | preview profile, NO env | 180 | final resting artifact |
+| Ship config | preview profile, NO env | 360 (6h) | final resting artifact |
 | Android dev/release | `eas build --profile development|preview --platform android` | same constants | install via `adb install -r <apk>` |
 
 Env vars are baked at bundle time — each interval rung needs its own build
@@ -85,6 +87,7 @@ snapshot log (`persistedOptions.minimumInterval`).
 2. Tools check (mac): `xcrun devicectl list devices` (iOS),
    `adb devices` (Android), `/tmp/opencode/bg/pymd3-venv/bin/pymobiledevice3 version`.
    If venv gone: `python3 -m venv /tmp/opencode/bg/pymd3-venv && …/bin/pip install pymobiledevice3`.
+   Prefer evidence files under `~/bg-evidence/` (survives /tmp cleanup).
 3. iOS log channel: `…/pymobiledevice3 syslog live | grep --line-buffered -iE "expo.modules.backgroundtask|Athan\{React\}|group is full|Prewarm"`
    (idevicesyslog is DEAD on iOS 18 — do not use).
    Android log channel: `adb -s <serial> logcat -v time | grep --line-buffered -iE "backgroundtask|WorkManager|expo|AlarmManager"`
@@ -126,7 +129,7 @@ re-arms +interval and resets the observation).
    iOS expects dasd rate-limit deferrals at sub-hour intervals (they recover).
 **G. Rate-limit probe (iOS)** — hammer the trigger 4–5× rapidly, then watch
    `group is full` deferrals and recovery latency. Informs the floor for the
-   interval; 180 min is the chosen ship value.
+   interval; 360 min (6h) is the chosen ship value (owner, post-verification).
 
 **Pass criteria (all devices):** A/B/C/E fire within minutes of due and re-arm
 at exactly +interval (iOS dasd `Submitted:` window / Android: WorkManager

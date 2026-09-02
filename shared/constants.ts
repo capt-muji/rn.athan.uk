@@ -96,9 +96,13 @@ export const validateReminderInterval = (value: number): boolean => {
 /**
  * Hours between automatic foreground notification refreshes
  * Notifications rescheduled when this interval elapses and app enters foreground
- * Offset from background task interval (3 hours) to reduce collision risk
+ *
+ * The foreground layer is the FALLBACK: the 6-hour background task keeps the
+ * 2-day window rolling on its own, and this gate only matters when that layer
+ * has been starved (force-quit, new install). Needs just 1 successful run per
+ * 48h — 12 hours gives 4 attempts. Owner decision 2026-09-02 (ADR-007 rev 3).
  */
-export const NOTIFICATION_REFRESH_HOURS = 4;
+export const NOTIFICATION_REFRESH_HOURS = 12;
 
 // =============================================================================
 // BACKGROUND TASK CONFIGURATION
@@ -113,9 +117,13 @@ export const BACKGROUND_TASK_NAME = 'NOTIFICATION_REFRESH_TASK';
 /**
  * Hours between background task executions (minimum interval)
  * System may delay execution; this is a minimum, not exact timing
- * Offset from foreground refresh (4 hours) to reduce collision risk
+ *
+ * PRIMARY layer: keeps the 2-day rolling window rolling unattended. Needs 1
+ * successful run per 48h; 6 hours gives 8 attempts. Leniency matters — iOS
+ * dasd rate-limits aggressive cadences, so longer intervals are far more
+ * likely to execute on schedule (owner decision 2026-09-02, ADR-007 rev 3).
  */
-export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
+export const BACKGROUND_TASK_INTERVAL_HOURS = 6;
 
 /**
  * Background task minimum interval in MINUTES passed to expo-background-task
@@ -128,7 +136,7 @@ export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
  * Resolution order:
  * - EXPO_PUBLIC_BG_INTERVAL_MINUTES env var (interval-ladder experiments)
  * - 15 minutes in development builds (fast iteration)
- * - BACKGROUND_TASK_INTERVAL_HOURS * 60 in production (3 hours)
+ * - BACKGROUND_TASK_INTERVAL_HOURS * 60 in production (6 hours)
  */
 const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
 const isEnvIntervalValid = Number.isFinite(envIntervalMinutes) && envIntervalMinutes > 0;

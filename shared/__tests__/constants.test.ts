@@ -192,7 +192,7 @@ describe('validateReminderInterval', () => {
 
 // =============================================================================
 // BACKGROUND TASK INTERVAL RESOLUTION TESTS (ISSUES.md #8)
-// minimumInterval is MINUTES — resolution: env override > dev 15 > prod 180
+// minimumInterval is MINUTES — resolution: env override > dev 15 > prod 360 (6h)
 // =============================================================================
 
 describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
@@ -209,10 +209,10 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     process.env.NODE_ENV = 'test';
   });
 
-  it('resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 (180) outside development without env', () => {
+  it('resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 (360) outside development without env', () => {
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(180);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
   });
 
   it('resolves to 15 in development builds (fast iteration)', () => {
@@ -231,13 +231,13 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = 'soon';
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(180);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
   });
 
   it('ignores a non-positive env override', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '0';
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(180);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
   });
 });

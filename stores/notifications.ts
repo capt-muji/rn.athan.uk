@@ -987,7 +987,7 @@ export const refreshNotifications = async () => {
  * Reschedule notifications from background task
  *
  * Unlike foreground refresh, this does NOT check shouldRescheduleNotifications()
- * because the OS controls background task timing (~3 hours minimum).
+ * because the OS controls background task timing (~6 hours minimum).
  * We always reschedule when the background task runs for consistency.
  *
  * Exported for use by the background task defined in device/tasks.ts
@@ -1023,7 +1023,7 @@ export const rescheduleAllNotificationsFromBackground = async () => {
  * Registers the background task for notification refresh
  *
  * Should be called during app initialization after notification permissions are granted.
- * The task will run approximately every 3 hours (system-controlled).
+ * The task will run approximately every 6 hours (system-controlled).
  *
  * Platform notes:
  * - iOS: Requires physical device (doesn't work on simulators)
