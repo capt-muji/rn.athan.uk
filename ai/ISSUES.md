@@ -809,9 +809,9 @@ production release; G.6 noted but deferred by owner.
     3. Tree-mass reduction in layouts — deferred: owner walked every pixel
        of the design; visual risk for a linear gain.
   - **SHIP + VERIFY protocol (after the 57.0.16 update)**: bump BOTH
-    app.json + package.json (1.17.9 — 1.17.8 was consumed by the Phase 1
-    prep), `yarn validate`,
-    `npx eas-cli build --profile development --platform ios
+    app.json + package.json (1.17.10 — 1.17.8 = Phase 1 prep, 1.17.9 =
+    the session-2 docs/branch sync; neither shipped to a store), `yarn
+    validate`, `npx eas-cli build --profile development --platform ios
     --non-interactive --no-wait`, owner verifies on the XS: all 8 home kinds
     render AND stay rendered ≥10 min, zero new `ExpoWidgetsTarget.
     cpu_resource` reports, zero `Watchdog provision violated` lines in a
