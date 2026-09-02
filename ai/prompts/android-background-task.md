@@ -22,7 +22,7 @@ device I connect, in parallel, and keep the tracker truthful.
   double-notification / manifest / observability history — the adb ground-truth
    checklist in #14 is your FIRST action per device).
 3. `ai/adr/007-background-task-notification-refresh.md` — the architecture you
-   are verifying (3h background layer + 4h foreground gate; schedule-first +
+   are verifying (6h background layer + 12h foreground gate per ADR-007 rev 3; schedule-first +
    sweep; always-unregister-then-register).
 
 ## Session start protocol
@@ -62,13 +62,13 @@ not "fix" (owner decisions #13/#14 stand).
   to the `preview` profile in eas.json, `npx eas-cli build --profile preview
   --platform android --no-wait`, then REVERT eas.json. Install:
   `adb -s <serial> install -r <apk>`.
-- **Ship-config build:** preview profile with NO env (180 min) — final
+- **Ship-config build:** preview profile with NO env (360 min / 6h) — final
   resting artifact per device.
 - Dev builds only for simulate-trigger work (Metro-dependent; useless for
   headless tests — see runbook §7 lesson 1, it applies to Android too via
   the dev-client URL trap).
 - Ladder protocol (15→30→60→120→180) ONLY if 15-min rung exposes Android-side
-  throttling; otherwise 15 verifies mechanics and 180 ships. Android has no
+  throttling; otherwise 15 verifies mechanics and 360 (6h) ships. Android has no
   dasd-style processing budget — WorkManager enforces ≥15 min, which is the floor.
 
 ## Scenario matrix (per device — runbook §5 has the full procedures)

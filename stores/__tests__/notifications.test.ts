@@ -829,8 +829,8 @@ describe('Background task constants', () => {
     expect(BACKGROUND_TASK_NAME).toBe('NOTIFICATION_REFRESH_TASK');
   });
 
-  it('BACKGROUND_TASK_INTERVAL_HOURS is 3 hours', () => {
-    expect(BACKGROUND_TASK_INTERVAL_HOURS).toBe(3);
+  it('BACKGROUND_TASK_INTERVAL_HOURS is 6 hours', () => {
+    expect(BACKGROUND_TASK_INTERVAL_HOURS).toBe(6);
   });
 
   it('BACKGROUND_TASK_INTERVAL_MINUTES is a positive number of minutes', () => {
@@ -838,6 +838,7 @@ describe('Background task constants', () => {
     // production resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 (Jest runs with
     // NODE_ENV=test, so the development 15-minute fast-iteration branch is not taken)
     expect(BACKGROUND_TASK_INTERVAL_MINUTES).toBe(BACKGROUND_TASK_INTERVAL_HOURS * 60);
+    expect(BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
   });
 
   it('foreground and background intervals are offset (not equal)', () => {
