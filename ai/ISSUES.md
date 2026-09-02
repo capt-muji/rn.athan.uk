@@ -143,9 +143,13 @@ replay (incl. the pending 5-device Android campaign) in
   +15 min after the 20:50:48 run at the 15-min debug rung).
 - **Fix (1.18.0)**: `BACKGROUND_TASK_INTERVAL_MINUTES` in shared/constants.ts —
   resolution order: `EXPO_PUBLIC_BG_INTERVAL_MINUTES` env (ladder experiments) → 15 in
-  development builds (fast iteration) → 180 in production (ADR-007's 3h, unchanged);
+  development builds (fast iteration) → 360 in production (6h — owner retune 2026-09-02
+  post-verification: longer intervals are more OS-lenient; 8 attempts per required 1-per-48h;
+  ADR-007 rev 3);
   `registerBackgroundTask` now ALWAYS unregisters + registers so persisted options can
-  never go stale (self-heals every existing install carrying 10800).
+  never go stale (self-heals every existing install carrying 10800). Same session:
+  foreground gate NOTIFICATION_REFRESH_HOURS 4h → 12h — the foreground layer is now
+  the FALLBACK (background task is primary), needing 1 run per 48h.
 - **Verification matrix (all on-device, dev build @ 15-min rung unless noted)**:
   - Simulated (`triggerTaskWorkerForTestingAsync`): 3/3 clean full-chain runs ~1.3–2.0s
     (handler → TaskService → JS task → reschedule → verification counts → resubmit).
@@ -161,7 +165,7 @@ replay (incl. the pending 5-device Android campaign) in
     config survives app updates; fresh submit at exactly +15m on Release 1.18.0).
   - dasd rate limit: at 15-min cadence, after ~4 rapid runs dasd logs "Skipping
     processing … their group is full" every ~60s and defers execution → **sub-hour
-    intervals are not sustainable**; the 180-min ship value sits far under budget.
+    intervals are not sustainable**; any multi-hour value sits far under budget (ship value retuned to 360 min).
     Deferrals recover — budget drained at 21:35 admitted the 21:59 execution.
   - REBOOT SURVIVAL (verified 22:18–22:30): device rebooted with the app's pending
     request in flight and the phone left LOCKED post-boot. ~11 min after boot the
