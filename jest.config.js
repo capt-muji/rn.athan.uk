@@ -6,6 +6,8 @@ module.exports = {
     // catch-all, which would otherwise win.
     '^@/widgets/PrayerWidget$': '<rootDir>/shared/__mocks__/widgets/PrayerWidget.ts',
     '^@/widgets/LockPrayerWidget$': '<rootDir>/shared/__mocks__/widgets/LockPrayerWidget.ts',
+    // Same shadowing rule: specific module mocks must precede the catch-all
+    '^@/shared/logger$': '<rootDir>/shared/__mocks__/logger.ts',
     '^@/(.*)$': '<rootDir>/$1',
     // Mock React Native modules that don't work in Node environment
     '^expo-constants$': '<rootDir>/shared/__mocks__/expo-constants.ts',
@@ -14,7 +16,6 @@ module.exports = {
     '^expo-background-task$': '<rootDir>/shared/__mocks__/expo-background-task.ts',
     '^expo-task-manager$': '<rootDir>/shared/__mocks__/expo-task-manager.ts',
     '^react-native$': '<rootDir>/shared/__mocks__/react-native.ts',
-    '^@/shared/logger$': '<rootDir>/shared/__mocks__/logger.ts',
   },
   testMatch: ['**/__tests__/**/*.test.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
