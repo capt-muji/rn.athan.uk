@@ -17,17 +17,18 @@ fix on branch). G.8 fixed through 30s+ device spam (watch for recurrence).
 G.6 deferred by owner (evidence recorded). **G.1 root cause PROVEN, fix
 bisection IN PROGRESS — this is the remaining work.**
 
-## 2. Git state (authoritative, end of session)
+## 2. Git state (authoritative, end of session 2 — 2026-09-02)
 
-- `fix/g-device-regressions` @ (post-checkpoint) — **v1.17.7 = docs
-  checkpoint** (ISSUES §G dossier + this handoff + version bump only, zero
-  code changes). Pushed to origin. **Currently checked out.**
-- Working tree CLEAN after the checkpoint. Owner authorizes commits
-  explicitly (the checkpoint commit was explicitly requested).
-- `uat` @ `d7c5c52` (v1.17.5 baseline), `main` untouched. No git writes
-  without explicit owner instruction.
-- The temporary bisection edit in `widgets/PrayerWidget.tsx` was REVERTED —
-  tree is semantically identical to b262075.
+- `uat` @ `3caed85` = **v1.17.8**, pushed to origin. **Currently checked
+  out.** Carries the whole G-round: G.3/G.4/G.5/G.7/G.8 device fixes
+  (1.17.6), the G.1 dossier (1.17.7), and the widget push-path rework
+  (1.17.8: per-schedule flip timers + prayer-sequence cache, 895 tests).
+- `fix/g-device-regressions` was fast-forward-merged into `uat` and then
+  DELETED (local + origin) by owner instruction — uat is the single source
+  of truth for this effort. Cut a FRESH branch from uat for the 57.0.16
+  update round.
+- `main` untouched. No git writes without explicit owner instruction.
+- Working tree CLEAN.
 
 ## 3. G.1 in one paragraph (full dossier in ISSUES.md §G.1)
 
@@ -81,16 +82,18 @@ Debug+Metro on the sim (exact procedure in ISSUES.md §G.1 "NEXT SESSION").
 3. If 57.0.16 is out: bump `expo-widgets` + `@expo/ui`, sim ignite-protocol
    burst check (expect ms), EAS dev build non-interactive, owner
    device-verifies on the XS (all 8 kinds render + stay ≥10 min, no
-   cpu_resource reports, no watchdog lines), ship as 1.17.9 → TestFlight.
+   cpu_resource reports, no watchdog lines), ship as 1.17.10 → TestFlight.
 4. If not out yet: report status to owner; optional fallback = patch-package
    backport of the MERGED code (see ISSUES.md §G.1 for the hunk-conflict
    note). Do NOT backport while it's still an unapproved PR without asking.
-5. 1.17.8 (uncommitted at handoff unless committed this session) = Phase 1
+5. 1.17.8 (committed `3caed85`, merged to uat) = Phase 1
    our-side prep in `stores/widget.ts`: per-schedule flip timers + sequence
    cache, 895 tests green. Widgets code is READY for the MR landing —
    no further prep needed.
-6. Then discuss merging `fix/g-device-regressions` into `uat` and the
-   TestFlight release round (G.3/G.4/G.5/G.7/G.8 fixes + this work).
+6. Next: the TestFlight release round for the whole G-series
+   (G.3/G.4/G.5/G.7/G.8 fixes + this work) once G.1's upstream fix lands.
+   Cut the update branch from `uat` (the old fix branch is deleted — uat
+   is the source of truth).
 
 ## 6. Hard-won environment facts (do not rediscover)
 
@@ -98,7 +101,8 @@ Debug+Metro on the sim (exact procedure in ISSUES.md §G.1 "NEXT SESSION").
   f1f82bc2 (v1.17.6, b262075). Apple team 9V3WAU9Z54, XS UDID
   00008020-0015585C22D2002E. `eas` is NOT global — always `npx eas-cli`.
 - Metro for dev builds: `nohup npx expo start --port 8081 >
-  /tmp/metro-athan-fix.log` from the repo root on the fix branch; the sim
+  /tmp/metro-athan-fix.log` from the repo root (on `uat` now — the fix
+  branch was merged and deleted); the sim
   app auto-connects to localhost:8081; the XS connects via
   exp://192.168.0.10:8081 (same Wi-Fi).
 - Device capture: `idevicesyslog > file` (pairing validated; replug+trust
