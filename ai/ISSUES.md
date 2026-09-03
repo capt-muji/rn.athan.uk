@@ -353,6 +353,13 @@ replay (incl. the pending 5-device Android campaign) in
   is RULED OUT — expo-notifications' exact-path alarms are windowed by these OEM layers
   regardless of which expo app schedules them. PR #49687 body updated with this as the minimal
   reproducer (and an unverified `flags=0x9` claim corrected to `window=0`).
+- **PR fix hardware-verified (2026-09-03, same session)**: all three `/verify` defects fixed
+  and the alarm-clock path proven on the affected hardware — `DATE` and `DAILY` `alarmClock`
+  arms store `window=0 flags=0x9` on both 8T and Find X8 while plain siblings store windowed
+  (`flags=0x4`); F8 same-minute delivery **+0ms** (alarmClock) vs **+12.7s** (plain); the
+  pinned `serialVersionUID` survived a real install-over update; the sub-API-31 guard works on
+  API 28/29. Option extended to daily/weekly/monthly/yearly triggers (measured SUID pins);
+  PR retitled to "scheduled triggers".
 - **Corroboration**: owner audibly received on-time notifications on the 8T (06:00:11, 06:04:00)
   while the F8's same-instant notifications deferred (+21.6s heard; 06:00 alarm deferred past
   +5m unheard) — the exact lived inconsistency that opened #10.
