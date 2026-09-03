@@ -42,16 +42,23 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
   Transfer, or USB-debugging off/on. Expect it every 8T reboot; the other three phones are stable.
 
 ## PENDING (next session, in order)
-1. **8T Auto-launch test (needs on-phone UI — owner):** OnePlus Settings → App management →
-   Athan BGTest (and the real app!) → Battery/Auto-launch → ENABLE → reboot #3 → verify job +
-   alarms re-arm without opening the app. Confirms the #19 mechanism + the owner-facing mitigation.
-2. **iOS soak** — app stayed foreground through the 07:18:46 due (dasd deferral, expected);
+1. **iOS soak** — app stayed foreground through the 07:18:46 due (dasd deferral, expected);
    grep ship-soak2.log AFTER the phone backgrounds for the first 360-min fire + exact +6:00:00
    re-arm. Next due = last app launch + 6h (any open resets it).
-3. **PR #49687 watch** — append replies to issue #167 + respond (anonymous; no personal info).
-4. **Prod-config Android soak (optional)** — the A9/A10 headless 10-min hang (above) deserves a
+2. **PR #49687 watch** — append replies to issue #167 + respond (anonymous; no personal info).
+   Body now carries the three-layer isolation section (raw SDK exact / bare expo windowed /
+   full app windowed — 4/4 correlation).
+3. **Prod-config Android soak (optional)** — the A9/A10 headless 10-min hang (above) deserves a
    prod-config pass if it persists beyond dev builds.
-5. Upstream #49244 (expo-widgets identity fix) still in re-verification — unchanged.
+4. Upstream #49244 (expo-widgets identity fix) still in re-verification — unchanged.
+
+**RESOLVED mid-session (2026-09-03 08:07 — for the record):** 8T Auto-launch test **PASS**.
+Owner enabled Allow auto-launch for both apps → reboot #3 → job #u0a27/22 (same number as
+pre-reboot = boot receivers re-armed from persisted state, no app launch) + 14/14 alarms
+present ~2 min after boot. Reboots #1/#2 (Auto-launch OFF) never re-armed; only delta = the
+toggle → causal (ISSUES #19 → MITIGATED). Gotcha: the re-arm lands up to ~2 min AFTER
+sys.boot_completed=1 — never read a verdict at +60s. The 8T's 14-alarm schedule (owner-audible):
+today 09:38/11:01/12:01/13:01 + Sep-4 00:15/01:43/12:51/13:06/13:11/13:13/13:33/16:44.
 
 ## Standing environment facts (unchanged, verify cheaply)
 - Serials: 8T `543e5ac2` · 3T `8f7ada76` · Find X8 `G6RWBAQ4VKWWEAIZ` · 5T `a2b9dbf`
