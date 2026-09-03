@@ -48,9 +48,12 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
   Transfer, or USB-debugging off/on. Expect it every 8T reboot; the other three phones are stable.
 
 ## PENDING (next session, in order)
-1. **PR #49687 — @vonovak ran `/verify` 2026-09-03 08:24 BST** (expo-bot investigation
-   run 33727974592 in flight; findings post as a PR comment). CHECK THE PR FIRST next
-   session — respond to any findings (anonymous; no personal info), append to issue #167.
+1. **PR #49687 — @vonovak ran `/verify`; ALL THREE defects fixed + HARDWARE-VERIFIED
+   (2026-09-03 session)**: `5453e21` (non-null showIntent, SDK_INT guard, pinned DateTrigger
+   SUID) then `8c0eecb` (extension to daily/weekly/monthly/yearly, measured SUIDs). On-device:
+   alarmClock arms store `window=0 flags=0x9` on 8T+F8 (plain siblings windowed); F8 +0ms vs
+   +12.7s; SUID pin survived install-over; sub-31 guard works. NO human review verdict yet —
+   CHECK THE PR FIRST next session and respond to any findings (anonymous).
 2. **iOS soak** — app stayed foreground through the 07:18:46 due (dasd deferral, expected);
    grep ship-soak2.log AFTER the phone backgrounds for the first 360-min fire + exact +6:00:00
    re-arm. Next due = last app launch + 6h (any open resets it). Still no fire at 09:06
