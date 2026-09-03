@@ -1,6 +1,6 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-09-03 (session 2 of the Android 4-device campaign: #17 bare-expo control — app exonerated, minimal reproducer appended to upstream PR #49687; #18 added — Android force-stop cancels scheduled alarms. Earlier: 2026-09-02 background-task deep-dive: #8 FIXED 1.18.0 device-verified iOS; section G release blockers; #12 closed 1.6.0; #4/#5 DEFERRED; #10 OPEN.)
+Last updated: 2026-09-03 (session 2 of the Android 4-device campaign: #17 bare-expo control — app exonerated, minimal reproducer appended to upstream PR #49687; #18 added — Android force-stop cancels scheduled alarms; #19 MITIGATED — 8T boot re-arm block, Auto-launch causal; #20 added — post-reboot headless task body hang, upstream candidate. Earlier: 2026-09-02 #8 FIXED 1.18.0 device-verified iOS; section G release blockers; #12 closed 1.6.0; #4/#5 DEFERRED; #10 OPEN.)
 
 Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not yet fixed · [DEFERRED] accepted, revisit later · [ACCEPTED] intended behavior, documented
 
@@ -380,6 +380,34 @@ replay (incl. the pending 5-device Android campaign) in
   possible; this caps Android's force-quit resilience at "next open".   OEM task-killers that
   use force-stop semantics (the 3T's ~04:0x OEM kill) hit the same wall — which is why the
   background-task chain (self-healing on open) matters more than the buffer there.
+
+### 20. [OPEN — upstream candidate] Android: post-reboot headless background-task body NEVER completes (hang→cancel loop); reboot persistence is chain-only
+
+- **Measured (2026-09-03, post-reboot cycles on 3T + 5T + Find X8 + 8T — 4/4)**: after every
+  reboot, each due cycle fires the worker headlessly (process spawns, RN boots,
+  `BackgroundTaskConsumer: didRegister: NOTIFICATION_REFRESH_TASK`, `runTasks: executing`)
+  — then `ReactNativeJS: No task registered for key expo-task-manager` at ~+2s, then JS
+  silence for exactly 10:00.000 → `WM-WorkerWrapper: CancellationException: Task was
+  cancelled` (WorkManager goAsync hard cap) → chain re-enqueues → repeat every cycle.
+  The task body (sync + notification reschedule) NEVER runs post-reboot. Warm-process
+  cycles complete in ~1s; the pre-reboot headless cold-launch (scenario C, process death
+  WITHOUT reboot) completed in +50.3s — the hang is specific to the POST-REBOOT headless
+  context.
+- **Consequences**: (a) "chain survives reboot" is CHAIN-ONLY — the self-perpetuation is
+  the cancel→re-arm loop; (b) alarms re-arm at boot via BOOT_COMPLETED (native path), fire
+  as scheduled, but nothing schedules replacements → the notification buffer DRAINS to 0
+  within its ~2-day horizon after any reboot unless the app is opened (observed: 3T/5T at
+  0 pending alarms within ~40 min of reboot). iOS contrast: post-reboot headless relaunch
+  verified FULL body execution (dasd resubmit exact +15).
+- **Suspect (upstream)**: expo-background-task / expo-task-manager headless task
+  registration after a reboot restore — the `No task registered for key expo-task-manager`
+  warning at +2s is the abort signature (the worker's JS bridge never resolves). Not yet
+  source-traced — next session: opensrc expo-background-task 57.0.14/15, find the headless
+  executor + the "expo-task-manager" key lookup, then file an upstream issue with this
+  evidence (4-device, deterministic, ~10:00 signature).
+- **Interim owner-facing implication**: after any Android reboot, notifications keep firing
+  from the existing buffer but stop refreshing until the next app open (same recovery as
+  #18/#19 — self-heal on open). The 2-day buffer bounds the exposure.
 
 ### 19. [MITIGATED 2026-09-03 — Auto-launch confirmed causal] 8T loses the WorkManager chain AND notification alarms on every reboot (until next app open)
 
