@@ -7,6 +7,118 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
 
 **Pending EAS artifacts (2026-09-02/03 session end):** Android 15-min rung ipa/apk build `2f6e9948-04d5-44fd-8028-b85d196e7b72` (was in queue at session end — check `npx eas-cli build:view`), iOS ship-config (360-min) build `f00cd1ff-f2d6-4753-9683-2d641f4205f4` (install on the XS for the overnight/multi-day soak of the exact ship artifact).
 
+**⏸ SESSION-END RESUME POINT #2 (2026-09-03 06:35 — read this first in the next session):**
+
+## What is DONE (verified, evidence banked)
+- **Scenario A ✓** (2 clean cycles, +54/+67/+77ms), **B ✓** (3+ cycles, executes backgrounded),
+  **C ✓** (5T cold-launch headless +50.3s incl. spawn, chain survives), chains re-arm at
+  **exactly +15:00:00 ±30ms** on all four devices. Sustained soak ran ~3h (F, passing — jobs
+  #12-14 cycling at session end). iOS ship-config soak: registered at exactly +6:00:00, first
+  fire ~07:18 BST 09-03 (check `~/bg-evidence/ship-soak2.log` for `Athan{BackgroundTasks}` /
+  dasd activity; part1 has the registration proof).
+- **Notification root cause characterized** (ISSUES #17): OEM windowed delivery; bare-metal
+  API table (setAlarmClock +3-45ms everywhere vs inexact +20s-5m12s); full bisection ruled out
+  every call parameter.
+- **Upstream PR FILED: [expo/expo#49687](https://github.com/expo/expo/pull/49687)** (fork branch
+  `capt-muji:notifications-android-alarm-clock`; tracking issue in this repo: #167 — WATCH FOR
+  REPLIES each session and append them there).
+
+## What is PENDING (do these next, in order)
+1. **THE NEXT EXPERIMENT (owner-requested, highest priority): bare-minimum EXPO app.**
+   Rules out our app itself as the trigger for OEM windowed storage. Protocol:
+   - `npx create-expo-app@latest /tmp/opencode/bg/bare-expo --template blank-typescript`
+   - `npx expo install expo-notifications`
+   - Add ~10 lines: schedule ONE `DATE` trigger notification 10 min out (with a channelId
+     created via `setNotificationChannelAsync`), no other dependencies, no other code.
+   - Build preview: `eas build --profile preview --platform android --local --non-interactive`
+     with the campaign env block (suffix `bareexpo` + ENV pinning per §1's ENV PINNING note —
+     reuse the exact pattern from the session artifacts block).
+   - Install on **8T (543e5ac2) + Find X8 (G6RWBAQ4VKWWEAIZ)** (the windowed-storage phones),
+     accept the permission dialog (uiautomator tap — see §1 lessons), launch once.
+   - **DECISIVE READ**: `adb shell dumpsys alarm | grep -A3 bareexpo` → `window=0` (exact —
+     then OUR app's weight/behavior triggers the windowing; investigate app-side) vs
+     `window=+1h` (windowing applies to ANY expo app → purely expo/OEM interplay; strengthens
+     the PR's case and the setAlarmClock fix).
+2. **Scenario D (deliberate force-stop)**: `am force-stop com.mugtaba.athan.bgtest` on 2 phones;
+   verify chain dies (job gone), the 2-day notification buffer still fires at its alarm times,
+   then relaunch → verify re-registration (the 3T's OEM-kill at ~04:0x already showed this
+   pattern end-to-end once).
+3. **Scenario E (reboot, ABSOLUTELY LAST)**: `adb -s <serial> reboot` all four; post-boot
+   verify WorkManager job persists (dumpsys) and the chain fires on schedule; notifications
+   survive (BOOT_COMPLETED re-arm). Phones return to lock screens — nothing after this needs UI.
+4. **iOS soak review**: first 6h fire landed on time? grep ship-soak2.log.
+5. **PR watch**: any review comments → append to GitHub issue #167 + respond.
+6. **8T alert-enabling is DONE** (34 alarms incl. extras, 04:5x). 3T/5T/F8 done (24/24/18).
+
+## Standing environment facts (unchanged, verify cheaply)
+- Serials: 8T `543e5ac2` · 3T `8f7ada76` · Find X8 `G6RWBAQ4VKWWEAIZ` · 5T `a2b9dbf`
+- Test app: `com.mugtaba.athan.bgtest` v1.18.1 (15-min rung, bgDebug, mock data — env=local
+  couples mock-gate to logging-gate; API wipe-refetch every cycle is dev-build-normal).
+  APK preserved at `~/bg-evidence/athan-bgtest-1.18.1-15min-rung.apk`.
+- Bare rigs installed: `com.muji.barealarm` (targetSdk 33) + `com.muji.barealarm36` (36, has
+  BURST + fidelity arms). Sources at `/tmp/opencode/bg/bare-alarm/` (may not survive reboot of
+  the MAC — the APKs are on the phones; re-install from `~/bg-evidence/` copies if needed —
+  COPY THEM THERE FIRST in the next session).
+- Logcat pipelines (filtered) + 8T keepalive (10s WAKEUP loop — 8T refuses svc stayon) +
+  caffeinate need re-arming if the Mac slept; see §1 macOS daemon lessons (nohup+disown, never
+  in a command that might time out, wrap pipelines in bash -c).
+- Screen state: keep-awake armed on all phones; 8T PIN-locks anyway (keepalive wakes to lock
+  screen; UI automation needs the owner to unlock — ask ONLY if a pending step needs UI).
+- ColorOS 16 logcat quota drops app logs (dumpsys is authoritative); install dialogs need
+  uiautomator taps; Play Protect blocks self-signed installs (verifier settings toggle).
+*(Superseded mid-session 01:33 pause block: build completed locally as build-1788398966295.apk
+after the queue sat >1h; the 01:42/Fajr natural experiments were extracted and are recorded in
+the §1 verdict blocks below. Historical record only.)*
+- **Background daemons (nohup + disown, verified surviving tool-call boundaries)**: caffeinate -dims; 4× per-device FILTERED logcat pipelines at `/tmp/opencode/bg/<name>-logcat.log` (pattern: backgroundtask|workermanager|WM-WorkerWrapper|AlarmManager|expo|mugtaba|ReactNativeJS|NotificationService|frozen|standby); 8T WAKEUP keepalive (10s loop); EAS build watcher (`/tmp/opencode/bg/build-watch.log`). Verify on resume: `pgrep -f "grep --line-buffered" | wc -l` (expect 4-8) + `tail build-watch.log`.
+  **macOS daemon lessons (do not relearn)**: (1) no `setsid` on macOS — use `nohup … & disown` (zsh builtin). (2) A bash-tool command that hits its TIMEOUT SIGKILLs its whole process group INCLUDING nohup'd background jobs started in it — never start long-lived daemons in a command that might time out. (3) `nohup adb logcat | grep > f &` protects only adb — nohup the `bash -c` pipeline wrapper or the grep dies with the shell and adb dies on SIGPIPE.
+- **iOS**: ship soak live (`~/bg-evidence/ship-soak.log`, full unfiltered syslog); registration verified `earliestBeginDate` = submit + exactly 6:00:00; first expected fire ~07:18 BST — grep `Athan{BackgroundTasks}` + dasd `Submitted`/`DASActivity` lines.
+- Working tree committed+pushed at session end (1.18.2 checkpoint: runbook + ISSUES + app.config.ts; owner instructed).
+- Upstream check done this session: PR #49244 open, in re-verification (key/index namespace fix committed; no expo-widgets release yet).
+
+**TEST APP DEPLOYED (2026-09-03 03:04–03:09):** `build-1788398966295.apk` (local eas build, ~15 min
+— queue bypass; remote queue had sat >1h) = `com.mugtaba.athan.bgtest` v1.18.1 "Athan BGTest",
+15-min rung + bgDebug + env-pinned. Installed + launched on ALL FOUR. Registration evidence:
+8T/3T/5T `Enqueuing worker … '15' minutes delay` at 03:04:31-32 (due 03:19:3x); Find X8
+initially SILENT — two ColorOS-16 lessons:
+1. **`pm grant POST_NOTIFICATIONS` does NOT suppress the app's permission dialog** (dialog
+   appeared despite pre-grant attempt) — and **the dialog BLOCKS app boot/registration** until
+   answered (adb-tap Allow via uiautomator coordinates; then job appeared immediately:
+   `Minimum latency: +14m59s997ms`, due 03:23:45).
+2. **ColorOS 16 per-process logcat quota**: `LOG_FLOWCTRL: ==LOGS OVER PROC QUOTA(300) … DROPPED==`
+   — boot chatter exhausts a 300-row budget and ALL subsequent app logs (incl.
+   BackgroundTaskScheduler/ReactNativeJS evidence) are dropped. Use dumpsys
+   (jobscheduler/alarm) as the authoritative channel on this phone; logcat evidence may
+   recover after the rate window.
+**SCENARIO A PASS #1 (2026-09-03 03:19–03:24, first natural fires at 15-min rung, app foreground):**
+| Device | Due | Fired | Delta | Body | Re-arm |
+|---|---|---|---|---|---|
+| 8T | 03:19:31.155 | 03:19:31.209 | **+54ms** | EXECUTED (sync+reschedule, 0.5s) | ✅ '15' min exact |
+| 3T | 03:19:32.294 | 03:19:32.371 | **+77ms** | foreground-skip (min(60,15)=15 deferral) | ✅ |
+| 5T | 03:19:32.275 | 03:19:32.342 | **+67ms** | foreground-skip | ✅ |
+| Find X8 | 03:23:45 | ~03:23:45 | at due (dumpsys job #0→#1) | (logcat quota-blind) | ✅ +14m59s993ms |
+Notes: 8T body executed because its app wasn't foreground (keepalive/lock state) — B-like datapoint.
+Fresh-install alert defaults are ALL OFF (preference snapshot alert:0 reminder:0 ×6) → 0 bgtest
+alarms is correct; enabling alerts via UI automation next (delivery A/B needs scheduled
+notifications). Test build is env=local ⇒ `APP_CONFIG.isDev` ⇒ `needsDataUpdate()` true always
+(shared/config.ts + sync.ts:84) — every 15-min cycle wipe-refetches the API: expected dev-build
+behavior, NOT a bug; production no-ops on fresh cache.
+
+**SCENARIO A PASS #2 (03:34-35, all four via dumpsys job-ID increments — the authoritative
+channel; device logcat buffers rotate):** 8T `#u0a27/2` +14m59s990ms · 3T `#u0a113/2`
++14m59s971ms · 5T `#u0a696/2` +14m59s984ms · F8 `#u0a43/2` +14m59s997ms. Re-arm arithmetic
+exact within 30ms across 4 devices/OEMs.
+
+**Alerts enabled via UI automation (03:2x-03:37)** — bell-icon → Athan sheet → Sound ×6 standard
+prayers, per phone: **F8 18 alarms / 3T 24 / 5T 24** (8T deferred: PIN-locked, no UI access;
+chain unaffected — fires fine). NOTE: fresh alarms on the GRANTED exact path STILL show
+`window=+1h0m0s0ms exactAllowReason=policy_permission flags=0x4` on ColorOS 16 — same nominal
+window as the Play app's stale alarms (flags differ: 0x4 vs 0x8) ⇒ either ColorOS displays
+exact alarms with a nominal window or silently downgrades them to windowed; the mock-instant
+delivery deltas will discriminate empirically. Also noted: test build uses MOCK prayer data
+(env=local gates `api/client.ts:37` mock branch — mock-gate ≡ logging-gate, they cannot be
+decoupled without code change) — irrelevant for chain verification; mock instants are still
+exact alarm targets for delivery-precision measurement.
+
 **One-shot entry point:** `ai/prompts/android-background-task.md` — the
 executable campaign prompt. Point a fresh session at it ("read and execute")
 for the Android verification campaign; it drives off this runbook's tracker.
@@ -36,16 +148,176 @@ installed on the XS; overnight filtered syslog capture at
 `~/bg-evidence/overnight.log` (recreate via §4). Ship config = 360 min (6h),
 verified in code + arithmetic; no further iOS work pending except
 (optional) owner force-quit test + morning soak review.
+**UPDATE 2026-09-03 01:18:** ship-config IPA (athan-1.18.1-ship360.ipa) INSTALLED on the XS over the rung build,
+cold-boot registration verified live: `submitTaskRequest: <BGProcessingTaskRequest: … earliestBeginDate: 06:18:46 +0000>`
+= submit + EXACTLY 6:00:00 — object-level proof of the 360-min ship arithmetic (persisted-config-survives-update re-confirmed
+in passing: the cancel×2→submit sequence = the always-unregister-then-register self-heal flow re-running on the new binary).
+Unfiltered soak capture running at `~/bg-evidence/ship-soak.log`; first expected fire ~07:18 BST. NOTE: a devicectl launch
+immediately after install can attach to a stale/racing instance that never registers — terminate by pid + relaunch to verify.
+Ship build has NO bgDebug (no JS logs expected; dasd/BackgroundTasks subsystem lines only).
 
-### Android — PENDING (fix already shipped in 1.18.0, needs device verification)
+### Android — IN PROGRESS (2026-09-03 session; fix shipped 1.18.0, verifying on live fleet)
 
-| # | Device / OS skin | Status | Notes |
-|---|---|---|---|
-| 1 | OnePlus 5T (Android ≤10) | ⏳ not started | `SDK_INT < S` → always exact alarms |
-| 2 | OnePlus 8T (ColorOS 13+) | ⏳ not started | ISSUES #10 primary suspect |
-| 3 | Oppo Find X8 (ColorOS) | ⏳ not started | ISSUES #10 |
-| 4 | Samsung (OneUI) | ⏳ not started | |
-| 5 | (Android 14/15/16 spare) | ⏳ not started | |
+Fleet connected (all `adb` shell-verified, RSA accepted, `svc power stayon usb` armed,
+per-device logcats at `/tmp/opencode/bg/<name>-logcat.log`):
+
+| # | Device / OS (serial) | Ground truth (ISSUES #14) | Play app | Live BG job (dumpsys) | Status |
+|---|---|---|---|---|---|
+| 1 | OnePlus 3T / Android 9 (`8f7ada76`) | SDK<12: always-exact; deviceidle whitelist ✓ | 1.2.9 | ⚠️ `+7d11h59m59s` job live | Ground truth ✅ |
+| 2 | OnePlus 5T / Android 10 (`a2b9dbf`) | SDK<12: always-exact; whitelist ✗ (absent) | 1.5.2 | ⚠️ `+7d11h59m59s` job live | Ground truth ✅ |
+| 3 | OnePlus 8T / Android 12 (`543e5ac2`) | `SCHEDULE_EXACT_ALARM: granted=true`; whitelist ✓; standby-optimization OFF (user) | 1.5.2 | ⚠️ `+7d11h59m59s` job live | Ground truth ✅ |
+| 4 | Oppo Find X8 / Android 16 (`G6RWBAQ4VKWWEAIZ`) | `USE_EXACT_ALARM: granted=true` (carries exactness); `POST_NOTIFICATIONS: granted=true`; whitelist ✓; sleep-standby OFF (user); quota trackers calm | 1.5.2 | ⚠️ `+7d11h59m59s` job live | Ground truth ✅ |
+| 5 | Samsung (OneUI) | — (joins later via campaign prompt) | — | — | ⏳ |
+
+**Ground-truth verdicts (2026-09-03):**
+- **#10 suspect 1 (runtime exact-alarm revoke → silent inexact fallback) DISCONFIRMED on both
+  suspect phones** — 8T grants SCHEDULE_EXACT_ALARM at runtime; Find X8 carries USE_EXACT_ALARM
+  install-grant. The exact path (`setExactAndAllowWhileIdle`) is ACTIVE on both. Residual ±60s
+  drift must be delivery-side (suspect 2: ColorOS process-freeze / broadcast delivery deferral) —
+  investigate during natural-fire deltas.
+- **Unit bug empirically live on ALL FOUR production installs**: every phone's persisted
+  WorkManager job shows `Minimum latency: +7d11h59m59s` (7.5 days = 10800 passed as minutes) —
+  device-level confirmation of ISSUES #8's Android half (was source-verified only).
+- **NEW #10 lead (2026-09-03 01:16 dumpsys alarm baseline → CORRECTED 01:50 with policy detail)**:
+  both suspects' pending Play-app alarms are **INEXACT while-idle** (`window=+1h0m0s0ms`,
+  `flags=0x8` = ALLOW_WHILE_IDLE without exact window) — scheduled during the owner's earlier
+  exact-alarm-toggle-off period and NEVER re-scheduled since (1.5.2's BG task is the dead
+  +7d11h job; app unopened for ages). The CURRENT runtime grant is true on both phones
+  (ground truth above) — so #10 suspect 1 (silent inexact fallback) is CONFIRMED RETROSPECTIVELY
+  as the historical scheduling-time cause; the inexact alarms it produced are still live.
+  **ColorOS exposes `policyWhenElapsed` per alarm with decomposed deferral penalties** — the
+  04:11 Fajr-cluster alarm currently carries `app_standby=-53m38s device_idle=-1h31m59s
+  battery_saver=-5m6s` and a net planned `adjustment=+2h23m43s` (delivery ~06:34 if policy
+  doesn't improve before then). This is the multi-minute drift the owner sees on unattended
+  days. A/B test tonight: 1.5.2's stale inexact alarms vs 1.18.1 test app's fresh EXACT
+  (window-zero) alarms on the same phones.
+- Natural-experiment windows (all Play-app alarms, same instants across phones):
+  01:42:00 + Fajr cluster 04:11/04:21/04:36 + 06:33 — delivery deltas being recorded per
+  phone (alarm dispatch vs notification post vs scheduled instant).
+
+**01:42 EXPERIMENT RESULT (2026-09-03, captured live):**
+- **Find X8 (ColorOS 16, INEXACT while-idle alarm [see policy correction above], all conditions
+  favorable: charging/screen-on/whitelisted/permission granted): dispatch +81.4s late** —
+  AlarmManager `sending alarm origWhen 01:42:00.000` logged 01:43:21.421. App-side then FAST:
+  cold `Start proc` 01:43:21.430 (+9ms after dispatch), notification posted ~01:43:21.704
+  (~+284ms). **Deferral is in the OS alarm dispatch layer, BEFORE any app code runs** — and
+  this was the SOFT case (favorable conditions softened the policy penalties; the same alarm
+  class carries a planned +2h23m adjustment in unattended state). Also: post went to
+  `expo_notifications_fallback_notification_channel` flags=SILENT (1.5.2 scheduled request's
+  channel unresolvable at cold post).
+- **8T (OxygenOS 12, INEXACT-window alarm): dispatch +11.0s** (01:42:11.021 cold Start proc).
+  Counterintuitive: the "worse" alarm on the "older" OS was 7× more punctual tonight.
+- **Controls did not participate — and that is ITSELF evidence**: 5T + 3T have NO pending
+  notification alarms (only WorkManager's 10-year ACTION_FORCE_STOP_RESCHEDULE placeholder);
+  their 2-day buffers expired because the BG task never ran (the live 7.5-day jobs) — the exact
+  unattended-rot the 1.18.0 fix addresses.
+- **Owner report (2026-09-03, user testimony — deliberately VAGUE, do not cite as measurement):
+  Find X8 drift in daily use is "sometimes ~60s, sometimes minutes" — both directions, unquantified.**
+  "Early" ⇒ clock-skew signature (#11: offline NTP drift), "late" ⇒ alarm-queue deferral
+  (tonight's +81s best-case measurement is its floor). Device-clock skew now logged at
+  every fire event (baseline: all four ±3s vs Mac at 01:16).
+- **AOSP docs (fetched 2026-09-03, the authoritative fix-case citation):** `setExactAndAllowWhileIdle`
+  = "a **nearly** precise time" (Google's own hedge — OEMs exploit the slack; our +81s fits);
+  `setAlarmClock` = "a **precise** time … the system **never adjusts their delivery time** …
+  most critical … leaves low-power modes if necessary". Inexact `set()`/`setAndAllowWhileIdle()`
+  on 12+ = "within one hour" unless battery restrictions. USE_EXACT_ALARM: auto-granted,
+  not user-revocable, Play-policy-gated (we declare both — fine).
+- **ColorOS freezer machinery observed live** (OplusHansManager cycling WhatsApp frozen↔unfrozen
+  in the capture window) — the freeze layer exists and runs constantly; not implicated in THIS
+  event (process was dead; dispatch itself deferred) but available for worse deferrals.
+- IMPLICATION: the fix path for #10-late is upstream `setAlarmClock()` (dedicated high-priority
+  queue, Doze-exempt, OEM clock-app treatment) — expo-notifications exposes nothing today
+  (grep-verified). Empirical soak data (Fajr cluster + test-app 15-min cycle) to build the case.
+- **User-visible corroboration (owner, 01:57)**: both suspect phones' lock screens show the
+  Last Third notification (the 01:42 experiment's payload, not dismissed) — the logcat-derived
+  deltas (+11s 8T / +81s F8) are real delivered notifications, not log artifacts.
+- **Fajr cluster observed (F8, stale inexact alarms under policy)**: 04:11 → dispatched
+  04:13:21.421 (**+2m21.4s**); 04:21 → 04:23:21.421 (**+2m21.4s**); 04:36 → 04:38:21.429
+  (**+2m21.4s**) — THREE IDENTICAL deltas: the ColorOS deferral is a deterministic coalescing
+  quantum (~141.42s in this policy state), not random jitter. Combined with the 01:42 (+81.4s
+  best-case) and the policyWhenElapsed planned +2h23m worst-case, deferral is a conditions-
+  dependent CONTINUUM matching the owner's reported 60s-to-minutes drift. App-side post latency
+  ~0.3s throughout — deferral is 100% OS alarm queue.
+
+**APP NOTIFICATION DELIVERY — FINAL EMPIRICAL BLOCK (06:00–06:05, mock-instant alarms,
+owner-audible corroboration included):**
+| Event | 8T (A12) | Find X8 (A16) |
+|---|---|---|
+| 06:00:00 Sunrise | fired 06:00:11.8 (+11.8s) — **owner HEARD it** ("Adan number one, at 6:00") | deferred deep into its +17m window — NOT dispatched by 06:05, no post record; **owner did NOT hear it** |
+| 06:04:00 Asr | fired 06:04:00.078 (**+78ms**) — owner heard | dispatched 06:04:21.6 (**+21.6s**) — owner heard |
+| Dhuhr 04:41 | — | posted late (record present at 06:05; window-deferred) |
+
+**Synthesis — the #10 story is closed-loop:** the app's alarms land WINDOWED on both OEMs
+(per-package OS policy; every call-parameter differential ruled out via bare bisection).
+Windowed delivery = on-time when the OS is lenient (8T +78ms..+12s tonight), seconds-to-minutes
+late as policy pressure grows (F8 +21.6s tonight → +2m21.4s quantum in deeper state → +2h23m
+planned worst-case unattended). The owner's "sometimes 60s, sometimes minutes, sometimes early"
+= the lenient/pressurized continuum (+ clock-skew for "early"). Bare exact/alarm-clock alarms
+are immune in every tested condition (sub-150ms, even RESTRICTED bucket, even 2-day distance).
+**FIX: prayer notifications must move to `setAlarmClock` (upstream expo-notifications PR —
+never proposed, grep-verified) — proven viable on all four devices.**
+**BARE-METAL CONTROL EXPERIMENT (2026-09-03 05:03–05:29 — the session's decisive data):**
+Hand-built receiver-only APK (`com.muji.barealarm`/`barealarm36`, plain javac+d8+aapt2, zero
+expo/RN/Kotlin; schedules via explicit `am broadcast`) run on all four phones. API arms fired:
+
+| API | 3T (A9) | 5T (A10) | 8T (A12) | Find X8 (A16) |
+|---|---|---|---|---|
+| setExactAndAllowWhileIdle | **+13ms** | **+41ms** | **+42ms** | **+15ms / +12ms** |
+| exact + FLAG_MUTABLE pi | — | — | +124ms | +11ms |
+| setAlarmClock | +18ms | +43ms | pending | pending |
+| setAndAllowWhileIdle (inexact) | **+5m12s** | **+2m0s** | — | — |
+| plain set() | +71.6s | +2m53s | +20.3s | — |
+
+**VERDICTS:** (1) All four phones deliver EXACT and ALARMCLOCK alarms within ~10–125ms — even
+from a RESTRICTED-bucket (50) app; the OS alarm queues are NOT broken. (2) INEXACT alarms drift
+2–5.2 MINUTES — precisely the owner's #10 symptom. (3) Mutable PendingIntent innocent. (4)
+setAlarmClock stores window=0 at ANY distance (2-day arm verified) — the viable fix channel.
+**Bisection of why the expo app's exact calls store windowed (+1h, flags=0x4) while byte-equivalent
+bare calls store exact (window=0, flags=0x5) — ALL RULED OUT:** targetSdk (33 vs 36 — bare36 exact
+at both), permissions (bgtest grants verified granted=true), PendingIntent mutability/URI/foreground-
+flag (fidelity arms), alarm count (30+ burst all window=0), schedule distance (2-day arms window=0),
+standby bucket (bare RESTRICTED=50 still exact; app ACTIVE=10 still windowed), androidx version
+(single-instruction passthrough verified in the app's own dex), shipped delegate bytecode (verified
+correct gate + call). The differential is OS-side per-package policy (OEM app-classification
+suspected — not observable from adb). Irrespective of cause: whenever the app's alarms land
+windowed, delivery drifts minutes-scale (owner's symptom); setAlarmClock is immune in every
+tested condition → upstream PR is THE fix. Play Protect blocks self-signed sideloads on ColorOS 16
+(disable via `settings put global package_verifier_enable 0` + `verifier_verify_adb_installs 0`
+then restore); Android 8+ requires EXPLICIT-component broadcasts to manifest receivers.
+**SCENARIO B (backgrounded, KEYCODE_HOME at 03:49:20) — PASSING:**
+- **SCENARIO C PASS (5T, 04:49)**: process dead since 04:34 → due 04:49:02.963 → WorkManager
+  COLD-LAUNCHED the dead app headlessly (new pid 20774), `doWork: Running worker` at
+  04:49:53.278 (**+50.3s incl. cold process spawn**), re-enqueued '15' minutes — **chain
+  survives process death** (the core C criterion, matching the iOS cold-launch result).
+- 5T hard evidence: fired 04:03:59.798 (due ~04:04), body EXECUTED (`Task successfully
+  finished`), re-armed +15 exact → **B pass #1**. Fires continue on ~15-min cadence.
+- **dumpsys gotcha (do not relearn)**: the `Minimum latency` field on OxygenOS/ColorOS is a
+  STATIC display of the requested delay (+14m59s9xx constant between reads) — NOT live
+  remaining. Authoritative fire evidence = JOB # increments per enqueue + logcat timestamps.
+- **OEM-killer live event (3T, OxygenOS 9) at ~04:0x**: backgrounded bgtest app was FORCE-STOPPED
+  by the OS (`stopped=true`, job cancelled, no fire — scenario-D semantics invoked by the OEM).
+  Same-family A/B: 5T (Android 10) keeps its chain. Recovery verified: relaunch → re-registers
+  instantly (job #4, fresh +15). The 3T now doubles as the OEM-killer observatory — expect its
+  chain to die whenever backgrounded; each relaunch self-heals.
+- Fajr-cluster Play-app deltas on F8 (stale inexact alarms): 04:11 → +2m21.4s (see above).
+- 5T lacks the deviceidle whitelist (only fleet member) — useful A/B observatory for OEM killer effects.
+- OEM battery killers neutralized by owner at session start (8T sleep-standby OFF; Find X8
+  sleep-standby OFF, balanced mode, no adaptive-battery option on ColorOS 16).
+- Device clock skew baseline (vs Mac): all four within ±3s.
+
+**Session artifacts:** test build side-by-side via `applicationIdSuffix` — `app.config.ts`
+(env `EXPO_ANDROID_SUFFIX`, no-op without it) + eas.json preview env
+(`EXPO_PUBLIC_BG_INTERVAL_MINUTES=15`, `EXPO_PUBLIC_BG_DEBUG=1`, suffix `bgtest`) →
+`com.mugtaba.athan.bgtest` "Athan BGTest", fresh EAS keystore, versionCode 1.
+Build `b894b302-b7d5-4914-b453-69944da9b297` (superseded `4efab297`, cancelled pre-run).
+Play Store apps on all phones remain untouched (signatures differ; install-over impossible).
+**ENV PINNING (critical, learned the hard way):** the preview-profile env MUST pin all three:
+`EXPO_PUBLIC_ENV=local` (server-side EAS environments hold `preview`/`prod` values that would
+DISABLE pino logging + bgDebug snapshots via shared/logger.ts's isProd/isPreview gate) and
+`EXPO_PUBLIC_API_KEY=<real>` (the repo's committed `.env` holds the DEV placeholder `key`,
+which the londonprayertimes API rejects with 403 — sync would fail on fresh installs).
+Precedence (expo docs, EAS Workflows §environment): profile `env` > EAS server environment >
+.env files — profile env is the only layer that deterministically wins.
 
 **Android-first-actions on each device (before anything else):**
 ISSUES #14 adb ground-truth checklist —
@@ -164,25 +436,50 @@ D degrades gracefully to the 2-day buffer and recovers on open.
 - jest moduleNameMapper: specific `^@/…$` mocks MUST precede `^@/(.*)$`
   catch-all (logger's entry was silently shadowed — fixed 2026-09-02).
 
-## 8. ANDROID-SPECIFIC BRIEF (from source, pre-verified)
+## 8. ANDROID-SPECIFIC BRIEF (source-verified 2026-09-03 against installed 57.0.15/57.0.14)
 
-- Same unit fix applies (BackgroundTaskScheduler.kt reads minutes:
-  `setInitialDelay(Duration.ofMinutes(N))` + `TimeUnit.MINUTES` periodic).
-- Upstream constraints: `NetworkType.CONNECTED` (never runs offline — our task
-  is offline-capable), inForeground skip (defers +60 min while foregrounded),
-  self-rescheduling OneTimeWorkRequest (Android 8+) keeps the chain alive.
-- Persistence: WorkManager survives reboot/process death natively; expo-
-  notifications ships a BOOT_COMPLETED receiver that re-registers triggers.
-- Exactness (ISSUES #10/#12/#13/#14): silent inexact fallback confirmed still
-  present in installed 57.0.15 (ExpoSchedulingDelegate.kt:106-114). Run the
-  §1 ground-truth dumpsys checklist FIRST on every ColorOS device.
-- adb WorkManager introspection:
-  `adb shell dumpsys jobscheduler | grep -A5 mugtaba` and
-  `adb shell am dumpheap` not needed — prefer logcat tag
-  `expo.modules.backgroundtask` + `WM-WorkerWrapper`.
+- Unit chain CONFIRMED end-to-end: JS `registerTaskAsync(name, {minimumInterval: N})` →
+  `BackgroundTaskConsumer.kt:51` reads N (minutes, no transform) → `Duration.ofMinutes(N)`
+  initial delay + `Enqueuing worker … 'N' minutes delay` log (BackgroundTaskScheduler.kt:101).
+  The old 10800 value = `+7d11h59m59s` — matches the live persisted jobs found on all four
+  fleet phones 2026-09-03 (dumpsys jobscheduler ground truth).
+- Chain mechanics (BackgroundTaskScheduler.kt): self-rescheduling OneTimeWorkRequest (O+)
+  re-enqueues APPEND with fresh +interval after each run (line 250-252). WorkManager persists
+  unique work across reboot/process death natively; expo-notifications ships BOOT_COMPLETED
+  (NotificationsService SETUP_ACTIONS) re-arming persisted triggers.
+- **Every app launch resets the window**: our always-unregister-then-register → counter 0 →
+  stopWorker CANCELS the enqueued work → fresh +interval enqueue. (Guard at line 88-94 only
+  skips replace when ENQUEUED/RUNNING — our unregister cancels first, so it never fires.)
+  NEVER relaunch mid-window on Android either.
+- inForeground deferral is `min(60, interval)` (line 226): at the 15-min rung that's +15 min,
+  NOT +60 — judge scenario A accordingly. Trigger: OnActivityEntersForeground/Background flags.
+- Upstream constraints: `NetworkType.CONNECTED` (never runs offline), OEM killers (#10/#13).
+- Delivery path (expo-notifications, NotificationsService.kt): alarm PendingIntent →
+  BroadcastReceiver IN THE APP PROCESS → `onReceive` goAsync + raw thread → present +
+  re-schedule. Frozen/cold process = delivery latency risk (#10 suspect 2).
+- Exactness branch (ExpoSchedulingDelegate.kt:105-121): `SDK<S || canScheduleExactAlarms()` →
+  `setExactAndAllowWhileIdle`, else SILENT `setAndAllowWhileIdle` fallback.
+  Ground truth 2026-09-03: exact path ACTIVE on both suspects (8T runtime grant, Find X8
+  USE_EXACT_ALARM install-grant) → #10 drift is delivery-side, not permission-side.
+- **setAlarmClock() is NOT exposed anywhere in expo-notifications** (grep-verified 2026-09-03)
+  — the highest-reliability channel (Doze-exempt, OEM-protected, user-intent signal) is the
+  upstream fix candidate if delivery-side drift is empirically confirmed.
+- JS logs in release builds surface as `ReactNativeJS` tag logcat lines (pino→console). Logger
+  is enabled in our preview builds ONLY because `EXPO_PUBLIC_ENV` is unset (env 'local');
+  if a future profile sets `EXPO_PUBLIC_ENV=preview`, bgDebug snapshots vanish silently.
+- adb WorkManager introspection: `dumpsys jobscheduler | grep -A5 mugtaba` (look for
+  `Minimum latency` on the SystemJobService job = live window), logcat tags
+  `BackgroundTaskScheduler` + `WM-WorkerWrapper`.
+- OnePlus/Oppo quirk (8T/OxygenOS 12): `svc power stayon` does NOT stick and shell CANNOT
+  write settings (WRITE_SECURE_SETTINGS/WRITE_SETTINGS denied) — keep-awake there requires a
+  polling WAKEUP loop (10s cycles) instead of the one-shot used on the other phones.
 
 ## 9. UPSTREAM TRACKING
 
+- **expo/expo#49687 (FILED 2026-09-03 by this campaign)** — opt-in `alarmClock` DateTriggerInput
+  → `AlarmManager.setAlarmClock()`; fixes OEM windowed delivery (ISSUES #17 / #10 root cause).
+  Fork branch: capt-muji:notifications-android-alarm-clock. CHECK STATUS EVERY SESSION — once
+  merged, adopt for prayer-time notifications and retire the drift observatory.
 - expo/expo#48786 — getStatusAsync blind to Background App Refresh (accepted).
 - expo/expo#44540 — simulate-trigger TaskService race (known trap).
 - `requiresNetworkConnectivity=true` hardcoded — candidate upstream PR

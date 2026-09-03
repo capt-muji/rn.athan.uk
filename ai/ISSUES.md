@@ -321,6 +321,37 @@ replay (incl. the pending 5-device Android campaign) in
   2. `adb shell dumpsys deviceidle whitelist | grep mugtaba` (power allowlist state)
   Fold into the same phone sitting as the F.7 / #12 / back-gesture confirms.
 
+### 17. [OPEN — UPSTREAM PR FILED] OEM windowed delivery of scheduled notifications (root cause of #10's late fires)
+
+- **Status (2026-09-03, deep-dive session with 4-device bench)**: root cause empirically
+  characterized; upstream fix proposed as [expo/expo#49687](https://github.com/expo/expo/pull/49687)
+  (opt-in `alarmClock: true` on DateTriggerInput → `AlarmManager.setAlarmClock()`).
+- **Mechanism (all measured, none inferred)**: on OnePlus 8T (OxygenOS 12) and Oppo Find X8
+  (ColorOS 16), alarms scheduled through expo-notifications' EXACT path are stored by the OS
+  with a 1-hour deferral window (dumpsys: `window=+1h0m0s0ms flags=0x4`) and delivered inside
+  it per battery policy — +21s (lenient, charging/screen-on) → +2m21.4s ×3 identical (batching
+  quantum) → +2h23m planned worst (unattended state, from ColorOS `policyWhenElapsed`).
+  App-side post latency stays ~0.3s throughout; the deferral is 100% OS alarm queue.
+- **Bare-metal control** (hand-built receiver-only APK, no expo/RN/Kotlin): `setAlarmClock()`
+  delivers **+3–43ms on all four fleet phones** in EVERY tested condition (incl. restricted
+  standby bucket, 2-day distance); bare `setExactAndAllowWhileIdle` +12–42ms; inexact APIs
+  +20s–5m12s. The OS alarm queues are NOT broken — the windowed storage applied to the
+  library-scheduled alarms is the differential.
+- **Bisection (all ruled out as the cause of the windowed storage)**: targetSdk 33 vs 36,
+  PendingIntent mutability/URI/foreground-flag, alarm count (30+ burst), standby bucket
+  (RESTRICTED bare app still exact; ACTIVE expo app still windowed), schedule distance
+  (2-day arms), androidx version (single-instruction passthrough verified in the shipped dex),
+  shipped delegate bytecode (verified correct). Cause is per-package OS policy, not observable
+  from adb — documented in the PR; the alarm-clock channel sidesteps it entirely.
+- **Corroboration**: owner audibly received on-time notifications on the 8T (06:00:11, 06:04:00)
+  while the F8's same-instant notifications deferred (+21.6s heard; 06:00 alarm deferred past
+  +5m unheard) — the exact lived inconsistency that opened #10.
+- **Owner-facing implications**: (a) once #49687 merges (or via a local interim if needed),
+  prayer-time notifications move to `alarmClock: true`; (b) the Play app's CURRENT stale alarms
+  (1.5.2, scheduled during the revoke-era) remain inexact until the store app updates and
+  reschedules — the 1.18.x reschedule-on-open self-heals them on update; (c) "early" fires
+  remain #11 clock-skew territory (not app-fixable).
+
 ---
 
 ## D. Notifications — structural risks
