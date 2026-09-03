@@ -48,8 +48,26 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
 2. **PR #49687 watch** — append replies to issue #167 + respond (anonymous; no personal info).
    Body now carries the three-layer isolation section (raw SDK exact / bare expo windowed /
    full app windowed — 4/4 correlation).
-3. **Prod-config Android soak (optional)** — the A9/A10 headless 10-min hang (above) deserves a
-   prod-config pass if it persists beyond dev builds.
+3. **BENCH CHANGE (owner, 2026-09-03 08:15): F8 + 3T + 8T left ARMED for a MULTI-DAY
+   UNATTENDED SOAK; owner regains access "in a few days".** Phones stay bench-connected +
+   charging; do NOT wipe/reboot/unplug them. **Owner is disabling the OS NOTIFICATION
+   PERMISSION (App-Info → Notifications — NOT the in-app alert toggles, which would trigger
+   the app's reschedule logic and CANCEL the mock alarm set). Display-only by design:
+   alarms still dispatch, chain still cycles, everything stays adb-observable (logcat
+   AlarmManager lines = the delivery channel while muted; notification-history/deltas
+   resume when re-enabled). Apps stay installed; on return the owner re-enables the
+   permission and the soak resumes audibly. VERIFY on return-check: on the F8 (only A13+
+   phone) confirm the alarm registry KEPT REFRESHING across cycles while permission was
+   revoked — if our scheduling is permission-gated anywhere, its buffer would have drained
+   to 0 (the 3T/8T use the legacy pre-13 toggle; no runtime-permission semantics).**
+   5T + XS remain the reachable bench. On phone return, run the RETURN OBSERVATION (see
+   scenario-d.log soak-start block): job-counter growth vs soak start (8T #22 / F8 #27 /
+   3T #20), alarm registries, notification history delivery deltas for the mock alarms
+   (8T's 14 incl. overnight 00:15/01:43), any natural reboot behavior (8T Auto-launch),
+   F8 windowed drift over multi-day distance. KNOWN RISK: 3T had 0 pending alarms at soak
+   start (its 10-min-hang → cancelled reschedules may starve the buffer on A9) — if still
+   0 on return, escalate the A9/A10 headless hang to a real prod-config investigation; if
+   healed, it was transient.
 4. Upstream #49244 (expo-widgets identity fix) still in re-verification — unchanged.
 
 **RESOLVED mid-session (2026-09-03 08:07 — for the record):** 8T Auto-launch test **PASS**.
