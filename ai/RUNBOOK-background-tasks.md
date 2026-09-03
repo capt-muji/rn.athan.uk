@@ -5,50 +5,53 @@ with zero re-discovery. Read §1 (status), then run §4 (resume protocol).
 Companion docs: ISSUES.md #8 (root cause + evidence), ADR-007 (architecture),
 AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
 
-**Pending EAS artifacts (2026-09-02/03 session end):** Android 15-min rung ipa/apk build `2f6e9948-04d5-44fd-8028-b85d196e7b72` (was in queue at session end — check `npx eas-cli build:view`), iOS ship-config (360-min) build `f00cd1ff-f2d6-4753-9683-2d641f4205f4` (install on the XS for the overnight/multi-day soak of the exact ship artifact).
+**Pending EAS artifacts — RESOLVED 2026-09-03 (line kept for history):** Android 15-min rung build `2f6e9948` was CANCELED (superseded by the local build installed on all four); iOS ship-config build `f00cd1ff` FINISHED — its IPA **is** `~/bg-evidence/athan-1.18.1-ship360.ipa`, installed on the XS at 01:18, soak live. No EAS artifacts outstanding.
 
-**⏸ SESSION-END RESUME POINT #2 (2026-09-03 06:35 — read this first in the next session):**
+**⏸ SESSION-END RESUME POINT #3 (2026-09-03 ~07:2x — read this first in the next session):**
 
-## What is DONE (verified, evidence banked)
-- **Scenario A ✓** (2 clean cycles, +54/+67/+77ms), **B ✓** (3+ cycles, executes backgrounded),
-  **C ✓** (5T cold-launch headless +50.3s incl. spawn, chain survives), chains re-arm at
-  **exactly +15:00:00 ±30ms** on all four devices. Sustained soak ran ~3h (F, passing — jobs
-  #12-14 cycling at session end). iOS ship-config soak: registered at exactly +6:00:00, first
-  fire ~07:18 BST 09-03 (check `~/bg-evidence/ship-soak2.log` for `Athan{BackgroundTasks}` /
-  dasd activity; part1 has the registration proof).
-- **Notification root cause characterized** (ISSUES #17): OEM windowed delivery; bare-metal
-  API table (setAlarmClock +3-45ms everywhere vs inexact +20s-5m12s); full bisection ruled out
-  every call parameter.
-- **Upstream PR FILED: [expo/expo#49687](https://github.com/expo/expo/pull/49687)** (fork branch
-  `capt-muji:notifications-android-alarm-clock`; tracking issue in this repo: #167 — WATCH FOR
-  REPLIES each session and append them there).
+## DONE this session (evidence in ~/bg-evidence/scenario-d.log + below)
+1. **BARE-EXPO EXPERIMENT ✓ — THE DECISIVE RESULT (owner-requested; bottom-up methodology: level 0 raw SDK ✅ → level 1 bare expo → level 100 full app).**
+   A blank `create-expo-app --template blank-typescript` (SDK 57.0.19) + `expo-notifications` 57.0.16 ONLY, ~10 lines (permissions → channel `bare` → ONE DATE trigger +10 min), package `com.muji.bareexpo`, local EAS build (~2 min on warm caches). Sources: `/tmp/opencode/bg/bare-expo/`; APK preserved `~/bg-evidence/bareexpo-level1.apk`.
+   - **Storage matrix (dumpsys alarm, fresh schedule, exact path ACTIVE — 8T SCHEDULE_EXACT_ALARM granted, F8 USE_EXACT_ALARM granted, 3T/5T SDK<S):** 8T `window=+7m29s985ms flags=0x4` **WINDOWED**; F8 `window=+7m29s990ms flags=0x4` **WINDOWED**; 3T/5T `window=0 flags=0x5` EXACT — **identical to the full app on all four (4/4 correlation). OUR APP IS EXONERATED; the windowing is an expo-notifications↔OEM interplay that applies to ANY expo app.**
+   - **Delivery deltas when it fired:** 3T +1ms / 5T +0ms (alarm trigger vs due) vs **8T +14.2s, F8 +27.8s** (frozen process unfrozen by dispatch — same signature as the full app). Windowed storage = seconds-late delivery even for a single-notification minimal app in favorable conditions.
+   - PR #49687 body UPDATED with this as the minimal reproducer (+ corrected an unverified `flags=0x9` claim to the load-bearing `window=0`). PR still OPEN, no human review yet.
+   - NOTE: window display shrinks toward due (nominal +1h at distance → +7m30s at 10-min distance); `policyWhenElapsed` carries the policy detail.
+2. **SCENARIO D ✓ (all four, deliberate force-stop 06:46:19):** chain dies (job gone ✓) AND — the real finding — **force-stop CANCELS ALL scheduled notification alarms** (alarm registry 0 bgtest entries on all four; zero dispatches in the 07:04/07:07 windows where 8T/F8/3T alarms were pre-stop pending). **The 2-day buffer does NOT survive force-stop on Android** — platform divergence from iOS (pending UNNotificationRequests survive force-quit there). Recovery verified: relaunch all four → fresh WorkManager registration (job #16→18 / #14→16 / #14→17 / #17→18) + full alarm reschedule from persisted triggers. So D degrades to "no buffer until next open" — recovery is the same self-heal.
+3. **iOS ship-soak first-window review (07:18:46 due):** NO fire at due — app (pid 3041) foreground continuously since ≤03:52 (owner's phone in active use, widget churn visible in log). dasd defers processing tasks for foregrounded apps → expected, not a failure; no recent resubmission (due stands from the 01:18:46 registration). **Next review: after the app backgrounds (tonight/later today).** Soak capture live (`ship-soak2.log`, ~115MB and growing).
+4. barealarm APKs copied to `~/bg-evidence/com.muji.barealarm{,36}.apk` ✓ (was "do first" item).
 
-## What is PENDING (do these next, in order)
-1. **THE NEXT EXPERIMENT (owner-requested, highest priority): bare-minimum EXPO app.**
-   Rules out our app itself as the trigger for OEM windowed storage. Protocol:
-   - `npx create-expo-app@latest /tmp/opencode/bg/bare-expo --template blank-typescript`
-   - `npx expo install expo-notifications`
-   - Add ~10 lines: schedule ONE `DATE` trigger notification 10 min out (with a channelId
-     created via `setNotificationChannelAsync`), no other dependencies, no other code.
-   - Build preview: `eas build --profile preview --platform android --local --non-interactive`
-     with the campaign env block (suffix `bareexpo` + ENV pinning per §1's ENV PINNING note —
-     reuse the exact pattern from the session artifacts block).
-   - Install on **8T (543e5ac2) + Find X8 (G6RWBAQ4VKWWEAIZ)** (the windowed-storage phones),
-     accept the permission dialog (uiautomator tap — see §1 lessons), launch once.
-   - **DECISIVE READ**: `adb shell dumpsys alarm | grep -A3 bareexpo` → `window=0` (exact —
-     then OUR app's weight/behavior triggers the windowing; investigate app-side) vs
-     `window=+1h` (windowing applies to ANY expo app → purely expo/OEM interplay; strengthens
-     the PR's case and the setAlarmClock fix).
-2. **Scenario D (deliberate force-stop)**: `am force-stop com.mugtaba.athan.bgtest` on 2 phones;
-   verify chain dies (job gone), the 2-day notification buffer still fires at its alarm times,
-   then relaunch → verify re-registration (the 3T's OEM-kill at ~04:0x already showed this
-   pattern end-to-end once).
-3. **Scenario E (reboot, ABSOLUTELY LAST)**: `adb -s <serial> reboot` all four; post-boot
-   verify WorkManager job persists (dumpsys) and the chain fires on schedule; notifications
-   survive (BOOT_COMPLETED re-arm). Phones return to lock screens — nothing after this needs UI.
-4. **iOS soak review**: first 6h fire landed on time? grep ship-soak2.log.
-5. **PR watch**: any review comments → append to GitHub issue #167 + respond.
-6. **8T alert-enabling is DONE** (34 alarms incl. extras, 04:5x). 3T/5T/F8 done (24/24/18).
+## Scenario E results (2026-09-03 07:39–07:53 — reboot ×1 fleet-wide, ×2 on 8T; app NEVER opened post-boot)
+- **3T ✓ / 5T ✓ / F8 ✓ — chain survives reboot.** Post-boot headless fires at due ~07:39:45:
+  3T +0.7s, 5T +0.4s (both headless cold-launches; task REGISTERED + Executed). F8's boot
+  re-enqueue shifted its due slightly; it then completed FULL normal cycles (#19→#25→#26,
+  sync fetch visible). Notification alarms re-armed via BOOT_COMPLETED on all three (22/22/12).
+  CAVEAT (dev-build only): on A9/A10 the post-reboot headless task body HUNG exactly 10:00.000 →
+  WorkManager goAsync `CancellationException: Task was cancelled` → chain re-enqueued fresh
+  (#17→#18, #19→#20). Suspect: dev sync wipe-refetch in the headless cold context on old
+  runtimes (network was UP); production sync no-ops on fresh cache — watch for it on the
+  prod-config soak but do not chase on dev builds.
+- **8T ✗ — OxygenOS 12 blocks boot re-arm entirely (ISSUES #19).** Both reboots: job GONE +
+  0 notification alarms despite boot_completed=1, receivers registered (BOOT_COMPLETED/REBOOT/
+  QUICKBOOT_POWERON + NOTIFICATION_EVENT in manifest), and a live job #21 + 28 alarms at
+  reboot #2. Manual BOOT_COMPLETED = protected broadcast (SecurityException) — delivery to
+  this package simply never happens (OnePlus auto-launch management suspected; sideloaded app
+  defaults OFF). Self-heal on open verified (job #21 + 28 alarms from one launch).
+  Owner-facing: an 8T-class user loses ALL notifications on every reboot until next app open.
+- **8T USB lesson (repeated):** after EVERY reboot the 8T failed to re-enumerate on adb
+  (charge-only USB default / RSA flap). Fixes that worked: owner replug + USB-mode → File
+  Transfer, or USB-debugging off/on. Expect it every 8T reboot; the other three phones are stable.
+
+## PENDING (next session, in order)
+1. **8T Auto-launch test (needs on-phone UI — owner):** OnePlus Settings → App management →
+   Athan BGTest (and the real app!) → Battery/Auto-launch → ENABLE → reboot #3 → verify job +
+   alarms re-arm without opening the app. Confirms the #19 mechanism + the owner-facing mitigation.
+2. **iOS soak** — app stayed foreground through the 07:18:46 due (dasd deferral, expected);
+   grep ship-soak2.log AFTER the phone backgrounds for the first 360-min fire + exact +6:00:00
+   re-arm. Next due = last app launch + 6h (any open resets it).
+3. **PR #49687 watch** — append replies to issue #167 + respond (anonymous; no personal info).
+4. **Prod-config Android soak (optional)** — the A9/A10 headless 10-min hang (above) deserves a
+   prod-config pass if it persists beyond dev builds.
+5. Upstream #49244 (expo-widgets identity fix) still in re-verification — unchanged.
 
 ## Standing environment facts (unchanged, verify cheaply)
 - Serials: 8T `543e5ac2` · 3T `8f7ada76` · Find X8 `G6RWBAQ4VKWWEAIZ` · 5T `a2b9dbf`
@@ -56,9 +59,17 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
   couples mock-gate to logging-gate; API wipe-refetch every cycle is dev-build-normal).
   APK preserved at `~/bg-evidence/athan-bgtest-1.18.1-15min-rung.apk`.
 - Bare rigs installed: `com.muji.barealarm` (targetSdk 33) + `com.muji.barealarm36` (36, has
-  BURST + fidelity arms). Sources at `/tmp/opencode/bg/bare-alarm/` (may not survive reboot of
-  the MAC — the APKs are on the phones; re-install from `~/bg-evidence/` copies if needed —
-  COPY THEM THERE FIRST in the next session).
+  BURST + fidelity arms) + `com.muji.bareexpo` (blank SDK-57 expo app, the level-1 experiment rig).
+  APK copies SAFE in `~/bg-evidence/`: `com.muji.barealarm.apk`, `com.muji.barealarm36.apk`,
+  `bareexpo-level1.apk` (+ sources `/tmp/opencode/bg/bare-expo/`, `/tmp/opencode/bg/bare-alarm/` —
+  may not survive Mac reboot).
+- **adb install lesson (2026-09-03, do not relearn): Play Protect consent dialogs BLOCK adb install
+  with no output until answered.** The 8T popped `PlayProtectDialogsActivity` ("Send app for a
+  security check?") — its shell CANNOT disable the verifier (WRITE_SECURE_SETTINGS denied, §8 quirk),
+  so: `uiautomator dump` → tap **"Don't send"** → install proceeds (one dismissal sufficed for the
+  retry). The F8/3T/5T use `settings put global package_verifier_enable 0` + `verifier_verify_adb_installs 0`
+  (restore after). Symptom signature: `adb install` hangs indefinitely with zero output; check
+  `dumpsys window | grep mCurrentFocus` for the PlayProtect dialog FIRST.
 - Logcat pipelines (filtered) + 8T keepalive (10s WAKEUP loop — 8T refuses svc stayon) +
   caffeinate need re-arming if the Mac slept; see §1 macOS daemon lessons (nohup+disown, never
   in a command that might time out, wrap pipelines in bash -c).
@@ -389,9 +400,13 @@ re-arms +interval and resets the observation).
    due: system must relaunch the app headlessly and run the task. Dev builds
    CANNOT do this (Metro trap) — Release builds only.
 **D. User force-quit** — needs hands: swipe-kill the app (iOS) / Recents-dismiss
-   or `am force-stop` (Android). Expected: NO background relaunch until next
-   manual open (both platforms document this). Verify notifications still fire
-   from the existing 2-day set; verify recovery on next open.
+  or `am force-stop` (Android). Expected: NO background relaunch until next
+  manual open (both platforms document this). ~~Verify notifications still fire
+  from the existing 2-day set~~ **CORRECTED 2026-09-03 (issue #18): on Android,
+  force-stop CANCELS all scheduled alarms — the buffer does NOT survive; verify
+  instead that the alarm registry is empty and that recovery on next open
+  re-registers the chain + full buffer.** iOS: buffer survives (verified).
+  Verify recovery on next open.
 **E. Reboot** — iOS: `xcrun devicectl device reboot --device <UDID>`;
    Android: `adb -s <serial> reboot`. Watch post-boot: chain must re-arm
    (WorkManager + BOOT_COMPLETED receiver make Android persistence native;

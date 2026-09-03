@@ -1,6 +1,6 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-09-02 (background-task deep-dive session: #8 FIXED 1.18.0 and device-verified on iPhone XS / iOS 18.7.10 across the full lifecycle matrix — root cause was a seconds-vs-minutes unit bug in `minimumInterval` plus re-arm starvation; ladder evidence added. Earlier: section G added — six open issues from iPhone XS / iOS 18.7.7 / 1.17.4 release testing, ALL G.1–G.5 marked release blockers by owner. Earlier: #12 closed as FIXED 1.6.0 — on-device double-notification confirm still pending; #4/#5 stay DEFERRED, #10 stays OPEN.)
+Last updated: 2026-09-03 (session 2 of the Android 4-device campaign: #17 bare-expo control — app exonerated, minimal reproducer appended to upstream PR #49687; #18 added — Android force-stop cancels scheduled alarms. Earlier: 2026-09-02 background-task deep-dive: #8 FIXED 1.18.0 device-verified iOS; section G release blockers; #12 closed 1.6.0; #4/#5 DEFERRED; #10 OPEN.)
 
 Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not yet fixed · [DEFERRED] accepted, revisit later · [ACCEPTED] intended behavior, documented
 
@@ -343,6 +343,16 @@ replay (incl. the pending 5-device Android campaign) in
   (2-day arms), androidx version (single-instruction passthrough verified in the shipped dex),
   shipped delegate bytecode (verified correct). Cause is per-package OS policy, not observable
   from adb — documented in the PR; the alarm-clock channel sidesteps it entirely.
+- **Bare-EXPO control (2026-09-03, the level-1 experiment — app exonerated):** a blank
+  `create-expo-app --template blank-typescript` + `expo-notifications` only (~10 lines, ONE
+  DATE trigger) reproduces the windowed storage **identically**: 8T `window=+7m29s985ms
+  flags=0x4` and F8 `window=+7m29s990ms flags=0x4` (WINDOWED, exact-path permission verified
+  granted), 3T/5T `window=0 flags=0x5` (EXACT) — 4/4 correlation with the full app.
+  Delivery when it fired: 8T **+14.2s** / F8 **+27.8s** (frozen process unfrozen by dispatch)
+  vs 3T/5T **+0-1ms**. Conclusion: app weight/behavior (alarm count, channels, other modules)
+  is RULED OUT — expo-notifications' exact-path alarms are windowed by these OEM layers
+  regardless of which expo app schedules them. PR #49687 body updated with this as the minimal
+  reproducer (and an unverified `flags=0x9` claim corrected to `window=0`).
 - **Corroboration**: owner audibly received on-time notifications on the 8T (06:00:11, 06:04:00)
   while the F8's same-instant notifications deferred (+21.6s heard; 06:00 alarm deferred past
   +5m unheard) — the exact lived inconsistency that opened #10.
@@ -351,6 +361,43 @@ replay (incl. the pending 5-device Android campaign) in
   (1.5.2, scheduled during the revoke-era) remain inexact until the store app updates and
   reschedules — the 1.18.x reschedule-on-open self-heals them on update; (c) "early" fires
   remain #11 clock-skew territory (not app-fixable).
+
+### 18. [ACCEPTED — platform behavior, documented 2026-09-03] Android force-stop cancels ALL scheduled notification alarms (buffer does not survive force-stop)
+
+- **Measured (Scenario D, all four fleet devices)**: `am force-stop com.mugtaba.athan.bgtest`
+  → WorkManager job gone AND the entire pending-alarm registry for the package cleared
+  (`dumpsys alarm` 0 entries on each device, vs 4+ pending NOTIFICATION_EVENT alarms
+  pre-stop); zero alarm dispatches in the windows where the pre-stop alarms were due
+  (07:04/07:07 observed). This is AOSP force-stop semantics (alarms removed with the
+  package's scheduled work), not OEM-specific.
+- **Platform divergence**: on iOS, pending UNUserNotificationCenter requests SURVIVE
+  user force-quit (documented + relied on in #8's recovery design). On Android, the 2-day
+  buffer does NOT ride out a force-stop — recovery is exclusively the next app open
+  (relaunch re-registers the WorkManager chain + reschedules the full buffer from persisted
+  triggers — verified on all four, job counters incremented fresh).
+- **Implication**: the D-scenario expectation in RUNBOOK §5 ("notifications still fire from
+  the existing 2-day set") is WRONG for Android — updated in the runbook. No app-side fix
+  possible; this caps Android's force-quit resilience at "next open".   OEM task-killers that
+  use force-stop semantics (the 3T's ~04:0x OEM kill) hit the same wall — which is why the
+  background-task chain (self-healing on open) matters more than the buffer there.
+
+### 19. [OPEN — OxygenOS 12 boot re-arm block] 8T loses the WorkManager chain AND notification alarms on every reboot (until next app open)
+
+- **Measured (Scenario E, 2026-09-03, 2/2 reboots)**: OnePlus 8T / OxygenOS 12 — after each
+  reboot (app NOT opened; boot completed; live job + 28 alarms present at reboot time):
+  `dumpsys jobscheduler` has NO bgtest job and `dumpsys alarm` has 0 notification alarms.
+  The 3T (OxygenOS 9), 5T (Android 10) and Find X8 (ColorOS 16) all re-armed + fired on
+  schedule headlessly after the same reboots.
+- **Mechanism (pinned by elimination)**: the app's BOOT_COMPLETED/REBOOT/QUICKBOOT_POWERON
+  receivers ARE in the merged manifest; a manually-sent BOOT_COMPLETED is a protected
+  broadcast (SecurityException). Boot delivery to this package simply never occurs —
+  consistent with OnePlus' per-app "Auto-launch" management (default OFF for sideloaded
+  apps), which silences boot receivers without any adb-visible state.
+- **Impact**: an 8T-class user loses ALL scheduled notifications + the background chain on
+  every device reboot until the next app open (self-heal verified: one launch restores
+  job + full buffer). The chain-never-dies promise holds only between reboots on this OEM.
+- **Next step (owner, needs phone UI)**: enable Auto-launch for the app in OnePlus settings,
+  reboot, verify job + alarms re-arm without opening the app (RUNBOOK resume point #3 item 1).
 
 ---
 
