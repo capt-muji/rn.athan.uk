@@ -21,15 +21,21 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
 4. barealarm APKs copied to `~/bg-evidence/com.muji.barealarm{,36}.apk` ✓ (was "do first" item).
 
 ## Scenario E results (2026-09-03 07:39–07:53 — reboot ×1 fleet-wide, ×2 on 8T; app NEVER opened post-boot)
-- **3T ✓ / 5T ✓ / F8 ✓ — chain survives reboot.** Post-boot headless fires at due ~07:39:45:
-  3T +0.7s, 5T +0.4s (both headless cold-launches; task REGISTERED + Executed). F8's boot
-  re-enqueue shifted its due slightly; it then completed FULL normal cycles (#19→#25→#26,
-  sync fetch visible). Notification alarms re-armed via BOOT_COMPLETED on all three (22/22/12).
-  CAVEAT (dev-build only): on A9/A10 the post-reboot headless task body HUNG exactly 10:00.000 →
-  WorkManager goAsync `CancellationException: Task was cancelled` → chain re-enqueued fresh
-  (#17→#18, #19→#20). Suspect: dev sync wipe-refetch in the headless cold context on old
-  runtimes (network was UP); production sync no-ops on fresh cache — watch for it on the
-  prod-config soak but do not chase on dev builds.
+- **3T ✓ / 5T ✓ / F8 ✓ — chain survives reboot (chain-only — see #20 below).** Post-boot
+  headless fires at due ~07:39:45: 3T +0.7s, 5T +0.4s (both headless cold-launches; task
+  REGISTERED + Executed). Notification alarms re-armed via BOOT_COMPLETED on all three
+  (22/22/12).
+  **⚠️ SUPERSEDED "dev-build only" CAVEAT — the post-reboot headless task-body hang is
+  ALL-ANDROID, 4/4 devices (ISSUES #20):** every post-reboot cycle fires → `No task
+  registered for key expo-task-manager` at +2s → JS silence for exactly 10:00.000 → goAsync
+  `CancellationException` → re-enqueue. F8 (08:46 capture on the 8T too) included — the
+  earlier "F8 completed FULL normal cycles" read was actually the same cancel→re-arm loop
+  (job-counter growth does NOT prove task success). Chain self-perpetuates; task body
+  (sync + reschedule) NEVER runs post-reboot → buffers drain to 0 within ~2 days of a
+  reboot without an app open (3T/5T observed flat-0 for 60+ min). Warm-process and
+  process-death (no reboot) headless runs COMPLETE fine — the hang is specific to the
+  post-REBOOT headless context. Upstream candidate: expo-background-task/task-manager
+  headless registration after reboot restore.
 - **8T ✗ — OxygenOS 12 blocks boot re-arm entirely (ISSUES #19).** Both reboots: job GONE +
   0 notification alarms despite boot_completed=1, receivers registered (BOOT_COMPLETED/REBOOT/
   QUICKBOOT_POWERON + NOTIFICATION_EVENT in manifest), and a live job #21 + 28 alarms at
@@ -42,12 +48,13 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
   Transfer, or USB-debugging off/on. Expect it every 8T reboot; the other three phones are stable.
 
 ## PENDING (next session, in order)
-1. **iOS soak** — app stayed foreground through the 07:18:46 due (dasd deferral, expected);
+1. **PR #49687 — @vonovak ran `/verify` 2026-09-03 08:24 BST** (expo-bot investigation
+   run 33727974592 in flight; findings post as a PR comment). CHECK THE PR FIRST next
+   session — respond to any findings (anonymous; no personal info), append to issue #167.
+2. **iOS soak** — app stayed foreground through the 07:18:46 due (dasd deferral, expected);
    grep ship-soak2.log AFTER the phone backgrounds for the first 360-min fire + exact +6:00:00
-   re-arm. Next due = last app launch + 6h (any open resets it).
-2. **PR #49687 watch** — append replies to issue #167 + respond (anonymous; no personal info).
-   Body now carries the three-layer isolation section (raw SDK exact / bare expo windowed /
-   full app windowed — 4/4 correlation).
+   re-arm. Next due = last app launch + 6h (any open resets it). Still no fire at 09:06
+   (app in active use all morning).
 3. **BENCH CHANGE (owner, 2026-09-03 08:15): F8 + 3T + 8T left ARMED for a MULTI-DAY
    UNATTENDED SOAK; owner regains access "in a few days".** Phones stay bench-connected +
    charging; do NOT wipe/reboot/unplug them. **Owner is disabling the OS NOTIFICATION
