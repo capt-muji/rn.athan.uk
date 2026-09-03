@@ -381,23 +381,28 @@ replay (incl. the pending 5-device Android campaign) in
   use force-stop semantics (the 3T's ~04:0x OEM kill) hit the same wall — which is why the
   background-task chain (self-healing on open) matters more than the buffer there.
 
-### 19. [OPEN — OxygenOS 12 boot re-arm block] 8T loses the WorkManager chain AND notification alarms on every reboot (until next app open)
+### 19. [MITIGATED 2026-09-03 — Auto-launch confirmed causal] 8T loses the WorkManager chain AND notification alarms on every reboot (until next app open)
 
-- **Measured (Scenario E, 2026-09-03, 2/2 reboots)**: OnePlus 8T / OxygenOS 12 — after each
-  reboot (app NOT opened; boot completed; live job + 28 alarms present at reboot time):
-  `dumpsys jobscheduler` has NO bgtest job and `dumpsys alarm` has 0 notification alarms.
-  The 3T (OxygenOS 9), 5T (Android 10) and Find X8 (ColorOS 16) all re-armed + fired on
-  schedule headlessly after the same reboots.
+- **Measured (Scenario E, 2026-09-03, reboots #1/#2 with Auto-launch OFF)**: OnePlus 8T /
+  OxygenOS 12 — after each reboot (app NOT opened; boot completed; live job + 28 alarms present
+  at reboot time): `dumpsys jobscheduler` has NO bgtest job and `dumpsys alarm` has 0
+  notification alarms. The 3T (OxygenOS 9), 5T (Android 10) and Find X8 (ColorOS 16) all
+  re-armed + fired on schedule headlessly after the same reboots.
 - **Mechanism (pinned by elimination)**: the app's BOOT_COMPLETED/REBOOT/QUICKBOOT_POWERON
   receivers ARE in the merged manifest; a manually-sent BOOT_COMPLETED is a protected
-  broadcast (SecurityException). Boot delivery to this package simply never occurs —
-  consistent with OnePlus' per-app "Auto-launch" management (default OFF for sideloaded
-  apps), which silences boot receivers without any adb-visible state.
-- **Impact**: an 8T-class user loses ALL scheduled notifications + the background chain on
-  every device reboot until the next app open (self-heal verified: one launch restores
-  job + full buffer). The chain-never-dies promise holds only between reboots on this OEM.
-- **Next step (owner, needs phone UI)**: enable Auto-launch for the app in OnePlus settings,
-  reboot, verify job + alarms re-arm without opening the app (RUNBOOK resume point #3 item 1).
+  broadcast (SecurityException). Boot delivery to this package simply never occurs — OnePlus'
+  per-app "Auto-launch" management (default OFF for sideloaded apps) silences boot receivers
+  without any adb-visible state.
+- **FIX VERIFIED (reboot #3, owner enabled Allow auto-launch for both apps)**: job
+  #u0a27/22 (SAME number as pre-reboot — boot receivers re-armed from persisted state, no app
+  launch) + 14/14 alarms present ~2 min after boot. Only delta vs the failing reboots = the
+  Auto-launch toggle → causal. NOTE: the re-arm lands up to ~2 min after boot_completed (first
+  read at +60s raced it — allow settling time before reading verdicts).
+- **Owner-facing**: an OxygenOS-12-class user loses ALL scheduled notifications + the
+  background chain on every reboot until the next app open — UNLESS the app's Auto-launch is
+  enabled (user action in OnePlus settings; cannot be requested by the app). The real Athan
+  app has Auto-launch enabled by the owner as of 2026-09-03. Consider a docs/FAQ note for
+  OnePlus users; there is no programmatic fix (by OEM design).
 
 ---
 
