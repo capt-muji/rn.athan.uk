@@ -48,16 +48,22 @@ AGENTS.md "Recent Decisions" 2026-09-02 (lessons).
   Transfer, or USB-debugging off/on. Expect it every 8T reboot; the other three phones are stable.
 
 ## PENDING (next session, in order)
-1. **PR #49687 — @vonovak ran `/verify`; ALL THREE defects fixed + HARDWARE-VERIFIED
-   (2026-09-03 session)**: `5453e21` (non-null showIntent, SDK_INT guard, pinned DateTrigger
-   SUID) then `8c0eecb` (extension to daily/weekly/monthly/yearly, measured SUIDs). On-device:
-   alarmClock arms store `window=0 flags=0x9` on 8T+F8 (plain siblings windowed); F8 +0ms vs
-   +12.7s; SUID pin survived install-over; sub-31 guard works. NO human review verdict yet —
-   CHECK THE PR FIRST next session and respond to any findings (anonymous).
-2. **iOS soak** — app stayed foreground through the 07:18:46 due (dasd deferral, expected);
-   grep ship-soak2.log AFTER the phone backgrounds for the first 360-min fire + exact +6:00:00
-   re-arm. Next due = last app launch + 6h (any open resets it). Still no fire at 09:06
-   (app in active use all morning).
+1. **PR #49687 — vonovak + amandeepmittal APPROVED (2 approvals), docs merged onto the branch by
+   Expo; ALL checks green EXCEPT `android-test-e2e (36)`, a known REPO-WIDE outage** (every
+   executed run since 2026-09-03 ~15:00 fails identically: `test_suite_summary_result_text`;
+   fails on maintainers' own PRs too; fix PR #49731 "Skip network-dependent specs when their
+   host is unreachable" still open as of 09-04;    historical precedent #45533 fixed the same
+   outage in ~10h). Re-run from a fork account is impossible (repo-admin needed). A comment was
+   posted 09-04 asking for a re-run once the suite is fixed (no waiver request). CHECK THE PR FIRST next session.
+2. **iOS soak — FIRST 360-MIN SHIP FIRE VERIFIED ✅ (2026-09-03 07:20:53, post-campaign)**: the
+   ship task ran at 07:20:53 (due 07:18:46; dasd gave only +2m07s despite app foreground — far
+   more lenient than feared; this is the maintenance task, NOT a notification, so zero delivery
+   impact). `Athan{BackgroundTasks}`: Running/Starting BGProcessingTask → "Marking task complete
+   with success" (3.5s) → cancel→`submitTaskRequest: earliestBeginDate 12:20:56 +0000` = submit
+   + **exactly 6:00:00** (self-heal re-arm arithmetic confirmed object-level). Capture
+   (`ship-soak2.log`) died 11:49 BST (syslog pipeline ended ~27h later; phone keeps executing on
+   its own). This CLOSES the iOS soak-review item. The XS is back with the owner — no further
+   iOS observation is required unless the owner reconnects.
 3. **BENCH CHANGE (owner, 2026-09-03 08:15): F8 + 3T + 8T left ARMED for a MULTI-DAY
    UNATTENDED SOAK; owner regains access "in a few days".** Phones stay bench-connected +
    charging; do NOT wipe/reboot/unplug them. **Owner is disabling the OS NOTIFICATION
