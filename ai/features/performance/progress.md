@@ -5,29 +5,29 @@
 ## State
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
-- **Phase**: campaign CLOSED through 1.20.0; session 12-13 add-on (Android shadow/glow parity)
-  SHIPPED + owner-confirmed, committed as 1.20.1. Devices: 3T (API 28 floor) + Galaxy S23 base
-  (API 36 modern reference, serial S23_SERIAL, test app `com.mugtaba.athan.shadowtest` installed
-  beside the owner's Play app — which stays untouched). RESUME: the next-session queue in the
+- **Phase**: campaign CLOSED through 1.20.0; sessions 12-13 add-on (Android shadow/glow parity)
+  SHIPPED + owner-confirmed (1.20.1). The Galaxy S23 (Android 16/API 36) was a TEMPORARY LOAN for
+  the shadow work — returned + test app uninstalled; it did NOT join the fleet (the 3T remains
+  THE Android verification device; a modern-Android device can be borrowed again if needed — the
+  shadow lessons per API tier are in the session-13 entry). RESUME: the next-session queue in the
   session-13 log entry (extras pill-slot canonical fix w/ owner approval, swipe-perf pass, 3T
   final-shadow pass, iOS rebuild + eyeball, parked backlog).
-- **Builds**: repo @ 1.20.1. 3T runs the resting 1.20.0 build (s10.1 code; shadow work NOT yet
-  installed there — queued). S23 runs the final tuned shadow/glow build (Ramadan-forced variant
-  left installed for the owner's demo; the committed tree has NO force). iOS NOT rebuilt since
-  the s10.4 build (shadow work is Platform-gated Android-only, but the next iOS pass should
-  still eyeball Day/Prayer surfaces).
-- **Device state (end of s13)**: 3T healthy, app foreground-settled. S23 unlocked-debug,
-  stay-awake on, shadowtest app running the owner-approved visuals.
-- **Evidence**: s10/s11 in /var/folders/.../T/opencode/perf21/{s101,s102,s103}; S23 shadow/glow
+- **Builds**: repo @ 1.20.2. 3T runs the resting 1.20.0 build (s10.1 code; the shadow/glow work
+  is NOT yet installed there — queued as the 3T pass). iOS NOT rebuilt since the s10.4 build
+  (shadow work is Platform-gated Android-only, but the next iOS pass should still eyeball
+  Day/Prayer surfaces).
+- **Device state (end of s13)**: 3T healthy, app foreground-settled. S23 returned to the owner
+  (test app removed; Play app untouched).
+- **Evidence**: s10/s11 in /var/folders/.../T/opencode/perf21/{s101,s102,s103}; the shadow/glow
   arc in perf21/s23/{shadow-tune,glow-evidence(01-10 + glow-tour.mp4),perf(atrace+swipe pts)}.
-- **Standing owner directives**: 3T + S23 are the Android verification devices (iOS = owner
-  eyeball); FPS-first evidence; 30fps FLOOR for big animations (per-second countdown text exempt);
-  quality over speed; physical devices only; Release builds; no store deployments; never sleep
-  >15s in one command; commits only on explicit owner instruction (version bump per commit);
-  iOS widgets + notification semantics measure-only; iterate the vision subagent when delegation
-  friction appears; iOS visuals are the pixel bar — challenge owner proposals explicitly;
-  minimal animated-element count; perf-test EVERY change; never uninstall the owner's Play Store
-  app on the S23 — use the suffixed test id.
+- **Standing owner directives**: 3T is THE Android verification device (borrowed modern devices
+  are temporary; never uninstall the owner's personal apps — use the suffixed test id); iOS =
+  owner eyeball; FPS-first evidence; 30fps FLOOR for big animations (per-second countdown text
+  exempt); quality over speed; physical devices only; Release builds; no store deployments;
+  never sleep >15s in one command; commits only on explicit owner instruction (version bump per
+  commit); iOS widgets + notification semantics measure-only; iterate the vision subagent when
+  delegation friction appears; iOS visuals are the pixel bar — challenge owner proposals
+  explicitly; minimal animated-element count; perf-test EVERY change.
 
 ### HANDOFF RULE (read first)
 
@@ -151,12 +151,14 @@ Iteration protocol: profile → root-cause → fix → rebuild Release → re-me
 
 ## Log
 
-- 2026-09-06 (session 13 END — ANDROID SHADOW/GLOW SHIPPED, S23 JOINS THE FLEET; committed as
-  1.20.1): the owner's post-campaign ask — make Android match iOS's (a) active-pill depth shadow,
-  (b) masjid golden glow (silhouette-shaped). DEVICE FLEET: the Galaxy S23 base (SM-S911B,
-  Android 16 / API 36, serial S23_SERIAL) joined as the modern-Android reference; a separate
-  test app (`com.mugtaba.athan.shadowtest`, via a throwaway build.gradle applicationId override —
-  android/ is gitignored) installs beside the owner's Play Store app (untouched). ANDROID SHADOW
+- 2026-09-06 (session 13 END — ANDROID SHADOW/GLOW SHIPPED; committed as 1.20.1, docs corrected
+  in 1.20.2): the owner's post-campaign ask — make Android match iOS's (a) active-pill depth
+  shadow, (b) masjid golden glow (silhouette-shaped). DEVICE: the Galaxy S23 base (SM-S911B,
+  Android 16 / API 36, serial S23_SERIAL) was a TEMPORARY LOAN for this work — returned at
+  session end with the test app (`com.mugtaba.athan.shadowtest`, via a throwaway build.gradle
+  applicationId override — android/ is gitignored) uninstalled; the owner's Play Store app was
+  never touched. The S23 did NOT join the fleet (the 3T stays THE Android device); borrow a
+  modern device again if the API-31+ tier matters. ANDROID SHADOW
   LADDER (researched): API 21 elevation (grey), API 28 colored+RN boxShadow (3T's ceiling),
   API 31 RenderEffect (silhouette-class, Pixel 6/S22 era+), S23 = 36. FINDINGS: (1) any transform
   in the ancestry clips RN's boxShadow drawable to view bounds on API 28 (the pill's slide) — but
