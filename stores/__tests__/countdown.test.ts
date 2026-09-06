@@ -24,16 +24,28 @@ jest.mock('@/shared/time', () => ({
 const mockStandardSequenceAtom = mockAtom(null);
 const mockExtraSequenceAtom = mockAtom(null);
 
-jest.mock('@/stores/schedule', () => ({
-  refreshSequence: jest.fn(),
-  getNextPrayer: jest.fn(() => ({
-    english: 'Fajr',
-    datetime: new Date('2026-01-20T06:15:00Z'),
-  })),
-  getSequenceAtom: jest.fn((type: string) => (type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom)),
-  standardDisplayDateAtom: mockAtom('2026-01-20'),
-  extraDisplayDateAtom: mockAtom('2026-01-20'),
-}));
+jest.mock('@/stores/schedule', () => {
+  // Atoms created inside the factory: the module under test reads them at
+  // require time (makeBarAtoms runs during module init), before outer const
+  // declarations initialize — eager outer references would be TDZ errors
+  const { atom } = require('jotai');
+  return {
+    refreshSequence: jest.fn(),
+    getNextPrayer: jest.fn(() => ({
+      english: 'Fajr',
+      datetime: new Date('2026-01-20T06:15:00Z'),
+    })),
+    getSequenceAtom: jest.fn((type: string) =>
+      type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom
+    ),
+    standardDisplayDateAtom: atom('2026-01-20'),
+    extraDisplayDateAtom: atom('2026-01-20'),
+    standardNextPrayerAtom: atom(null),
+    extraNextPrayerAtom: atom(null),
+    standardPrevPrayerAtom: atom(null),
+    extraPrevPrayerAtom: atom(null),
+  };
+});
 
 const mockOverlayAtom = mockAtom({
   isOn: false,
@@ -51,10 +63,16 @@ import { ScheduleType } from '@/shared/types';
 const {
   extraCountdownAtom,
   getCountdownAtom,
+  getCountdownDisplayAtom,
+  getBarProgressAtom,
+  getBarWarningAtom,
   overlayCountdownAtom,
   standardCountdownAtom,
+  standardCountdownDisplayAtom,
   startCountdowns,
 }: typeof import('../countdown') = require('../countdown');
+
+const { showSecondsAtom } = require('@/stores/ui');
 
 // =============================================================================
 // SETUP
@@ -389,5 +407,166 @@ describe('overlay countdown end state', () => {
     expect(finalValue.timeLeft).toBe(1);
     expect(finalValue.name).toBe('Fajr');
     expect(jest.getTimerCount()).toBe(0); // ticker stopped cleanly
+  });
+});
+
+// =============================================================================
+// BOUNDARY SELECTION ADVANCE (ADR-014 — selection-follows-next-prayer)
+// =============================================================================
+
+describe('boundary selection advance (ADR-014)', () => {
+  const { getDefaultStore } = require('jotai/vanilla');
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  const armBoundaryMocks = () => {
+    // Prayers on the display day; the sequence atom itself is NOT rewritten by
+    // the mocked refreshSequence — the advance re-reads it as-is
+    const asr = { english: 'Asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' };
+    const magrib = { english: 'Magrib', datetime: new Date('2026-01-20T07:00:00.000Z'), belongsToDate: '2026-01-20' };
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockStandardSequenceAtom, { type: 'standard', prayers: [asr, magrib] });
+
+    const { getNextPrayer } = require('@/stores/schedule');
+    let sequenceRefreshed = false;
+    (refreshSequence as jest.Mock).mockImplementation(() => {
+      sequenceRefreshed = true;
+    });
+    (getNextPrayer as jest.Mock).mockImplementation(() =>
+      sequenceRefreshed
+        ? { english: 'Magrib', datetime: new Date('2026-01-20T07:00:00.000Z'), belongsToDate: '2026-01-20' }
+        : { english: 'Asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' }
+    );
+
+    return { asr, magrib };
+  };
+
+  it('advances the overlay selection to the new next prayer and retargets the countdown — no auto-close', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
+    armBoundaryMocks();
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockOverlayAtom, {
+      isOn: true,
+      selectedPrayerIndex: 0, // Asr — the prayer about to pass
+      scheduleType: 'standard',
+    });
+
+    startCountdowns();
+    jest.advanceTimersByTime(7000); // Asr passes at 06:15:00; now 06:15:02
+
+    // The overlay rode the cascade: selection followed to Magrib, still open
+    expect(defaultStore.get(mockOverlayAtom)).toEqual({
+      isOn: true,
+      selectedPrayerIndex: 1,
+      scheduleType: 'standard',
+    });
+
+    // The overlay countdown retargeted to the new next prayer (07:00 target:
+    // 2700s at the boundary, then two per-second ticks)
+    expect(defaultStore.get(overlayCountdownAtom)).toEqual({ timeLeft: 2698, name: 'Magrib' });
+  });
+
+  it('leaves the selection untouched when a different prayer is selected', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
+    armBoundaryMocks();
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockOverlayAtom, {
+      isOn: true,
+      selectedPrayerIndex: 1, // Magrib — NOT the passing prayer
+      scheduleType: 'standard',
+    });
+
+    startCountdowns();
+    jest.advanceTimersByTime(7000);
+
+    expect(defaultStore.get(mockOverlayAtom).selectedPrayerIndex).toBe(1);
+    expect(defaultStore.get(mockOverlayAtom).isOn).toBe(true);
+  });
+
+  it('leaves the selection untouched when the overlay is open on the other schedule', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
+    armBoundaryMocks();
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockOverlayAtom, {
+      isOn: true,
+      selectedPrayerIndex: 0,
+      scheduleType: 'extra', // the standard boundary must not touch it
+    });
+
+    startCountdowns();
+    jest.advanceTimersByTime(7000);
+
+    expect(defaultStore.get(mockOverlayAtom).scheduleType).toBe('extra');
+    expect(defaultStore.get(mockOverlayAtom).selectedPrayerIndex).toBe(0);
+    expect(defaultStore.get(mockOverlayAtom).isOn).toBe(true);
+  });
+});
+
+// =============================================================================
+// RENDER-GRANULAR SELECTORS (#10)
+// =============================================================================
+
+describe('render-granular selectors', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('display selector emits the formatted string — identical displayed strings stay identical', () => {
+    const store = createStore();
+    store.set(showSecondsAtom, false);
+
+    store.set(standardCountdownAtom, { timeLeft: 3665, name: 'Fajr' });
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');
+
+    // 35s closer — same displayed minute band (1h 1m spans 3660-3719s), string unchanged
+    store.set(standardCountdownAtom, { timeLeft: 3700, name: 'Fajr' });
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');
+
+    // Drops out of the 1-minute band — string flips
+    store.set(standardCountdownAtom, { timeLeft: 3600, name: 'Fajr' });
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1h');
+
+    expect(getCountdownDisplayAtom(ScheduleType.Standard)).toBe(standardCountdownDisplayAtom);
+  });
+
+  it('display selector follows the seconds preference (last-10-minutes rule)', () => {
+    const store = createStore();
+    store.set(showSecondsAtom, false);
+
+    store.set(standardCountdownAtom, { timeLeft: 45, name: 'Fajr' });
+    expect(store.get(standardCountdownDisplayAtom)).toBe('45s');
+  });
+
+  it('bar progress is quantized to 1px steps and warning flips at the exact threshold', () => {
+    jest.spyOn(Date, 'now');
+    const store = createStore();
+    const scheduleMock = require('@/stores/schedule');
+    const prev = new Date('2026-01-20T08:00:00.000Z');
+    const next = new Date('2026-01-20T08:16:40.000Z'); // 1000s window: 1s = 0.1%
+
+    Date.now = () => prev.getTime() + 500_400; // exact 50.04%
+    store.set(scheduleMock.standardPrevPrayerAtom, { datetime: prev });
+    store.set(scheduleMock.standardNextPrayerAtom, { datetime: next });
+    store.set(standardCountdownAtom, { timeLeft: 500, name: 'Fajr' }); // 1/s cadence dependency
+
+    expect(store.get(getBarProgressAtom(ScheduleType.Standard))).toBe(50); // sub-pixel creep dropped
+    expect(store.get(getBarWarningAtom(ScheduleType.Standard))).toBe(false); // 49.96% remaining > 10%
+
+    Date.now = () => prev.getTime() + 902_000; // 90.2% elapsed → 9.8% remaining
+    store.set(standardCountdownAtom, { timeLeft: 98, name: 'Fajr' }); // recompute trigger
+    expect(store.get(getBarProgressAtom(ScheduleType.Standard))).toBe(90);
+    expect(store.get(getBarWarningAtom(ScheduleType.Standard))).toBe(true);
   });
 });

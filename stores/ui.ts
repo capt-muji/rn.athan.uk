@@ -1,6 +1,7 @@
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
+import { perfMark } from '@/shared/perf';
 import { type PageCoordinates, ScheduleType } from '@/shared/types';
 import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '@/stores/storage';
 
@@ -99,10 +100,16 @@ export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorat
 export const getPopupUpdateLastCheck = () => store.get(popupUpdateLastCheckAtom);
 
 /** Presents the sound selection bottom sheet */
-export const showSheet = () => store.get(bottomSheetModalAtom)?.present();
+export const showSheet = () => {
+  perfMark('sheet_sound_present');
+  store.get(bottomSheetModalAtom)?.present();
+};
 
 /** Presents the settings bottom sheet */
-export const showSettingsSheet = () => store.get(settingsSheetModalAtom)?.present();
+export const showSettingsSheet = () => {
+  perfMark('sheet_settings_present');
+  store.get(settingsSheetModalAtom)?.present();
+};
 
 /** Dismisses the settings bottom sheet */
 export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
@@ -118,6 +125,7 @@ export const setAlertSheetModal = (modal: BottomSheetModal | null) => store.set(
 
 /** Shows the alert bottom sheet for a specific prayer */
 export const showAlertSheet = (state: AlertSheetState) => {
+  perfMark('sheet_alert_present');
   store.set(alertSheetStateAtom, state);
   store.get(alertSheetModalAtom)?.present();
 };

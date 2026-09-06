@@ -322,6 +322,7 @@ describe('clearUpgradeCache', () => {
       'app_installed_version',
       'whats_new_shown_version',
       'preference_',
+      'prayer_max_english_width_',
     ]);
   });
 

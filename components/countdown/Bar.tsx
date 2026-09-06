@@ -7,27 +7,19 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion,
   useSharedValue,
-  withRepeat,
-  withSequence,
   withTiming,
 } from 'react-native-reanimated';
 
 import { useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/overlay';
+import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { countdownBarColorAtom } from '@/stores/ui';
 
 /** Fast timing for large progress jumps (>50%) */
 const TIMING_CONFIG_FAST = {
   duration: 950,
   easing: Easing.bezier(0.33, 0, 0.1, 1),
-};
-
-/** Linear timing for normal 1-second updates */
-const TIMING_CONFIG_LINEAR = {
-  duration: 1000,
-  easing: Easing.linear,
 };
 
 interface Props {
@@ -58,67 +50,70 @@ interface Props {
 export default function CountdownBar({ type, previewColor, previewProgress, scale = 1 }: Props) {
   const isPreviewMode = previewColor !== undefined || previewProgress !== undefined;
 
-  const { progress: elapsedProgress, isReady } = useCountdownBar(type ?? ScheduleType.Standard);
+  const {
+    progress: elapsedProgress,
+    isReady,
+    isWarning: countdownWarning,
+  } = useCountdownBar(type ?? ScheduleType.Standard);
   const reducedMotion = useReducedMotion();
 
-  const overlay = useAtomValue(overlayAtom);
+  const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const atomColor = useAtomValue(countdownBarColorAtom);
 
   const countdownBarColor = previewColor ?? atomColor;
   const progress = previewProgress ?? (isReady ? 100 - elapsedProgress : 0);
-  const isWarning = !isPreviewMode && progress <= COUNTDOWN_BAR.WARNING_THRESHOLD;
+  const isWarning = !isPreviewMode && countdownWarning;
 
   const widthValue = useSharedValue(progress);
   const colorValue = useSharedValue(0);
-  const opacityValue = useSharedValue(overlay.isOn ? 0 : 1);
-  const tipPulse = useSharedValue(0);
+  const opacityValue = useSharedValue(overlayIsOn ? 0 : 1);
 
   const isFirstRender = useRef(true);
   const isFirstOpacityRender = useRef(true);
   const prevProgress = useRef(progress);
 
-  // Tip pulse animation (infinite loop)
-  useEffect(() => {
-    if (reducedMotion) return;
-    tipPulse.value = withRepeat(
-      withSequence(
-        withTiming(1, { duration: COUNTDOWN_TIP.PULSE_DURATION, easing: Easing.inOut(Easing.ease) }),
-        withTiming(0, { duration: COUNTDOWN_TIP.PULSE_DURATION, easing: Easing.inOut(Easing.ease) })
-      ),
-      -1
-    );
-  }, [reducedMotion, tipPulse]);
-
   // Progress width and warning color animation
   useEffect(() => {
     if (isFirstRender.current) {
       widthValue.value = progress;
-      colorValue.value = progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1;
+      colorValue.value = isWarning ? 1 : 0;
       isFirstRender.current = false;
     } else {
       const progressDiff = Math.abs(progress - prevProgress.current);
 
       if (reducedMotion) {
         widthValue.value = progress;
-        colorValue.value = progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1;
+        colorValue.value = isWarning ? 1 : 0;
+      } else if (progressDiff > 50) {
+        // Large jumps (prayer transition refill) are visible — animate them.
+        // Width animates a Yoga layout property, so this is the only path
+        // allowed to drive per-frame layout work
+        widthValue.value = withTiming(progress, TIMING_CONFIG_FAST);
+        colorValue.value = withTiming(isWarning ? 1 : 0, {
+          duration: ANIMATION.durationMedium,
+          easing: Easing.linear,
+        });
       } else {
-        // Use fast timing for large jumps (e.g., prayer transition)
-        const timingConfig = progressDiff > 50 ? TIMING_CONFIG_FAST : TIMING_CONFIG_LINEAR;
-        widthValue.value = withTiming(progress, timingConfig);
-        colorValue.value = withTiming(progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1, {
+        // The per-second creep is sub-pixel at every countdown length (a 1s
+        // step of a multi-hour countdown moves the bar under 0.1px) — a 1s
+        // withTiming here relaid out the bar at 60fps for an invisible
+        // change (measured 60+ points of main-thread CPU on the 3T).
+        // Direct-set; the boundary color flip keeps its smooth transition
+        widthValue.value = progress;
+        colorValue.value = withTiming(isWarning ? 1 : 0, {
           duration: ANIMATION.durationMedium,
           easing: Easing.linear,
         });
       }
     }
     prevProgress.current = progress;
-  }, [progress, reducedMotion, widthValue, colorValue]);
+  }, [progress, isWarning, reducedMotion, widthValue, colorValue]);
 
   // Visibility based on overlay state (skip in preview mode)
   useEffect(() => {
     if (isPreviewMode) return;
 
-    const shouldShow = !overlay.isOn;
+    const shouldShow = !overlayIsOn;
 
     if (isFirstOpacityRender.current) {
       opacityValue.value = shouldShow ? 1 : 0;
@@ -131,7 +126,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
         easing: Easing.linear,
       });
     }
-  }, [overlay.isOn, reducedMotion, isPreviewMode, opacityValue]);
+  }, [overlayIsOn, reducedMotion, isPreviewMode, opacityValue]);
 
   const wrapperOpacityStyle = useAnimatedStyle(() => ({
     opacity: opacityValue.value,

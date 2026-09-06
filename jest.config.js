@@ -15,6 +15,7 @@ module.exports = {
     '^expo-notifications$': '<rootDir>/shared/__mocks__/expo-notifications.ts',
     '^expo-background-task$': '<rootDir>/shared/__mocks__/expo-background-task.ts',
     '^expo-task-manager$': '<rootDir>/shared/__mocks__/expo-task-manager.ts',
+    '^react-native-performance$': '<rootDir>/shared/__mocks__/react-native-performance.ts',
     '^react-native$': '<rootDir>/shared/__mocks__/react-native.ts',
   },
   testMatch: ['**/__tests__/**/*.test.ts'],

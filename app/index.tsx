@@ -15,6 +15,7 @@ import { APP_CONFIG } from '@/shared/config';
 import { COLORS, SIZE } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
+import { perfMark, perfMeasure } from '@/shared/perf';
 import { shouldShowWhatsNew, WHATS_NEW } from '@/shared/whatsNew';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { syncLoadable } from '@/stores/sync';
@@ -63,6 +64,10 @@ export default function Index() {
   // Hide splash screen once sync completes
   useEffect(() => {
     if (state !== 'loading') {
+      // JS-clock only: native marks live on a skewed timeline (see perf.ts),
+      // so cross-clock launch spans are reconstructed offline from ring ts
+      perfMark('home_content');
+      perfMeasure('js_to_content', 'perf_monitor_init');
       SplashScreen.hideAsync();
     }
   }, [state]);

@@ -9,6 +9,7 @@ import { ATHAN_AUDIOS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import * as Device from '@/device/notifications';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { perfMark, perfMeasure } from '@/shared/perf';
 import { Icon } from '@/shared/types';
 import { rescheduleAllNotifications, setSoundPreference, soundPreferenceAtom } from '@/stores/notifications';
 import { playingSoundIndexAtom, setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
@@ -104,15 +105,23 @@ export default function BottomSheetSound() {
 
   const clearAudio = useCallback(() => setPlayingSoundIndex(null), []);
 
+  // Primitive-only props feed the memoized rows: the status object changes
+  // identity many times per second during playback — deriving whole seconds
+  // here means a tick only re-renders the playing row, and only when its
+  // displayed countdown second actually changes
+  const playingRemainingSeconds =
+    playingIndex !== null && status.duration > 0 ? Math.max(0, Math.floor(status.duration - status.currentTime)) : 0;
+
   const handleDismiss = useCallback(async () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     clearAudio();
 
     if (tempSoundSelection === null) return;
 
+    perfMark('sound_commit_start');
     setSoundPreference(tempSoundSelection);
     await Device.updateAndroidChannel(tempSoundSelection);
     await rescheduleAllNotifications();
+    perfMeasure('sound_commit', 'sound_commit_start');
 
     setTempSoundSelection(null);
   }, [tempSoundSelection, clearAudio]);
@@ -125,7 +134,10 @@ export default function BottomSheetSound() {
       icon={<IconView type={Icon.SPEAKER} size={16} color='rgba(165, 180, 252, 0.8)' />}
       snapPoints={['80%']}
       onDismiss={handleDismiss}
-      onAnimate={clearAudio}>
+      onAnimate={clearAudio}
+      perfName='sheet_sound'
+      closeHaptic={Haptics.ImpactFeedbackStyle.Medium}
+      stackBehavior='push'>
       {/* Sound List Card */}
       <View style={styles.card}>
         <Text style={styles.cardHint}>Notification sound</Text>
@@ -142,7 +154,8 @@ export default function BottomSheetSound() {
               index={index}
               isSelected={index === currentSelection}
               isPlaying={playingIndex === index}
-              status={status}
+              remainingSeconds={playingIndex === index ? playingRemainingSeconds : 0}
+              isAudible={status.playing}
               onSelect={setTempSoundSelection}
               onPlayPress={handlePlayPress}
               onLayout={index === 0 ? handleItemLayout : undefined}

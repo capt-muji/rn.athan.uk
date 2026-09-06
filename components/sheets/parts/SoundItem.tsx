@@ -1,11 +1,12 @@
-import type { AudioStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
+import { memo } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { perfMark } from '@/shared/perf';
 import { Icon } from '@/shared/types';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -23,8 +24,10 @@ interface Props {
   index: number;
   isSelected: boolean;
   isPlaying: boolean;
-  /** Shared sheet player status — meaningful only on the playing row */
-  status: AudioStatus;
+  /** Whole seconds left in the playing preview — meaningful only on the playing row */
+  remainingSeconds: number;
+  /** Whether the shared sheet player is audibly playing (false while paused/seeking) */
+  isAudible: boolean;
   onSelect: (index: number) => void;
   onPlayPress: (index: number) => void;
   onLayout?: (e: LayoutChangeEvent) => void;
@@ -35,12 +38,19 @@ interface Props {
  * (BottomSheetSound) — one AVPlayer for the whole list instead of one per
  * row, which exhausted audio resources on older devices (G.4/G.5). All
  * visuals are unchanged: selection highlight, countdown fade, press scale.
+ *
+ * Memoized with primitive props only: the sheet player's status object
+ * changes identity many times per second during playback, and re-rendering
+ * all 32 rows per tick was the sound-sheet jank (perf campaign #6) — now a
+ * status tick only re-renders the playing row (and only when its whole-second
+ * countdown actually changes).
  */
-export default function BottomSheetSoundItem({
+function SoundItemImpl({
   index,
   isSelected,
   isPlaying,
-  status,
+  remainingSeconds,
+  isAudible,
   onSelect,
   onPlayPress,
   onLayout,
@@ -49,8 +59,7 @@ export default function BottomSheetSoundItem({
 
   const AnimScale = useAnimationScale(1);
 
-  const remainingTime = status.duration > 0 ? status.duration - status.currentTime : 0;
-  const showCountdown = isPlaying && status.playing && remainingTime > 0;
+  const showCountdown = isPlaying && isAudible && remainingSeconds > 0;
 
   // Animated values for countdown
   const countdownOpacity = useDerivedValue(() =>
@@ -71,11 +80,13 @@ export default function BottomSheetSoundItem({
   }));
 
   const handlePress = () => {
+    perfMark('sound_select_tap', { index });
     onSelect(index);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
   const handlePlayPress = () => {
+    perfMark('sound_play_tap', { index });
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     onPlayPress(index);
   };
@@ -87,7 +98,7 @@ export default function BottomSheetSoundItem({
     <Pressable style={styles.option} onPress={handlePress} onLayout={onLayout}>
       <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>Athan {index + 1}</Text>
       <View style={styles.rightContainer}>
-        <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(remainingTime)}</Animated.Text>
+        <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(remainingSeconds)}</Animated.Text>
         <AnimatedPressable
           style={[styles.icon, AnimScale.style]}
           onPress={handlePlayPress}
@@ -130,3 +141,5 @@ const styles = StyleSheet.create({
     padding: SPACING.md,
   },
 });
+
+export default memo(SoundItemImpl);

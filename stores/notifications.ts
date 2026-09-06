@@ -19,6 +19,7 @@ import {
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
+import { perfMark, perfMeasure } from '@/shared/perf';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -40,13 +41,18 @@ let schedulingQueue: Promise<void> = Promise.resolve();
  * @returns Result of the operation
  */
 async function withSchedulingLock<T>(operation: () => Promise<T>, operationName: string): Promise<T> {
+  perfMark(`sched_${operationName}_enqueue`, { operation: operationName });
   const result = new Promise<T>((resolve, reject) => {
     schedulingQueue = schedulingQueue.then(async () => {
       logger.info(`NOTIFICATION: Starting ${operationName}`);
+      perfMeasure(`sched_${operationName}_queue_wait`, `sched_${operationName}_enqueue`);
+      perfMark(`sched_${operationName}_start`);
       try {
         const value = await operation();
+        perfMeasure(`sched_${operationName}`, `sched_${operationName}_start`);
         resolve(value);
       } catch (error) {
+        perfMeasure(`sched_${operationName}`, `sched_${operationName}_start`);
         reject(error);
       }
     });
@@ -887,7 +893,7 @@ const _sweepStaleScheduledNotifications = async () => {
  * longer leave the app with zero scheduled notifications — unrefreshed prayers
  * keep their previous alarms until the next successful refresh.
  */
-const _rescheduleAllNotifications = async () => {
+const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boolean } = {}) => {
   // Log current preference state for debugging preference-reset reports
   const preferenceSnapshot = PRAYERS_ENGLISH.map((prayer, i) => ({
     prayer,
@@ -909,8 +915,33 @@ const _rescheduleAllNotifications = async () => {
 
   // Push fresh data to the iOS widgets — this runs wherever notifications do
   // (foreground refresh gate + background task), keeping widgets in sync with
-  // the app even when the app is never opened
-  await PrayerWidgets.refreshPrayerWidgets();
+  // the app even when the app is never opened. Measured from the caller: the
+  // widget IO layer itself is measure-only this campaign.
+  //
+  // Foreground paths defer the push past the next paint (the timeline build
+  // saturates the JS thread ~0.5s per schedule on the A12 and used to land
+  // exactly on the sheet-dismiss home reveal — the #2 burst; same pattern as
+  // stores/sync.ts). The background task awaits it so iOS keeps the process
+  // alive until widgets are refreshed. The deferred branch needs the explicit
+  // catch: nothing awaits it anymore.
+  if (options.deferWidgetRefresh) {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        perfMark('widget_push_start');
+        PrayerWidgets.refreshPrayerWidgets()
+          .catch((error) => {
+            logger.warn('WIDGET: Deferred push failed', { error });
+          })
+          .finally(() => {
+            perfMeasure('widget_push', 'widget_push_start');
+          });
+      }, 0);
+    });
+  } else {
+    perfMark('widget_push_start');
+    await PrayerWidgets.refreshPrayerWidgets();
+    perfMeasure('widget_push', 'widget_push_start');
+  }
 
   logger.info('NOTIFICATION: Rescheduled all notifications and reminders');
 };
@@ -934,7 +965,8 @@ const _rescheduleAllNotifications = async () => {
 export const rescheduleAllNotifications = async () => {
   return withSchedulingLock(async () => {
     try {
-      await _rescheduleAllNotifications();
+      // Foreground UI commit path (sheet dismiss) — defer the widget push
+      await _rescheduleAllNotifications({ deferWidgetRefresh: true });
     } catch (error) {
       logger.error('NOTIFICATION: Failed to reschedule notifications:', error);
       throw error;
@@ -969,7 +1001,8 @@ export const refreshNotifications = async () => {
 
   return withSchedulingLock(async () => {
     try {
-      await _rescheduleAllNotifications();
+      // Foreground refresh gate — defer the widget push past the paint
+      await _rescheduleAllNotifications({ deferWidgetRefresh: true });
       store.set(lastNotificationScheduleAtom, Date.now());
       logger.info('NOTIFICATION: Refresh complete');
     } catch (error) {

@@ -266,6 +266,12 @@ export default function RamadanDecorations() {
   const moonGlowOpacity = useSharedValue(0);
 
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
+  // Invisible decorations must not run animations: the effect below arms ~13
+  // infinite Reanimated loops that tick the UI thread at 60fps for ~10 months
+  // a year while this component renders nothing (measured 93% main-thread CPU
+  // idle on the 3T). Visibility re-evaluates on every render; the effect
+  // re-arms when it flips true.
+  const visible = isRamadan() && decorationsEnabled;
 
   // Android height includes nav bar — scale down vertical positions
   const vScale = Platform.OS === 'android' ? 0.6 : 1;
@@ -290,6 +296,8 @@ export default function RamadanDecorations() {
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: bobs/glows/cloudProgs arrays are re-created each render; their stable shared-value elements are the listed deps
   useEffect(() => {
+    if (!visible) return;
+
     const ease = Easing.inOut(Easing.ease);
 
     HANGINGS.forEach((star, i) => {
@@ -385,9 +393,10 @@ export default function RamadanDecorations() {
     maxStarY,
     moonBob,
     moonGlowOpacity,
+    visible,
   ]);
 
-  if (!isRamadan() || !decorationsEnabled) return null;
+  if (!visible) return null;
 
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents='none'>

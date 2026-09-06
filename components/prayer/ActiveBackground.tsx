@@ -1,11 +1,13 @@
+import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 import { StyleSheet, type ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimation';
+import { useAnimationBackgroundColor, useAnimationOpacity, useAnimationTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { COLORS, RADIUS, SHADOW, STYLES } from '@/shared/constants';
+import { ANIMATION, COLORS, RADIUS, SHADOW, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
+import { overlayAtom } from '@/stores/atoms/overlay';
 
 interface Props {
   type: ScheduleType;
@@ -16,7 +18,7 @@ export default function ActiveBackground({ type }: Props) {
   // See: ai/adr/005-timing-system-overhaul.md
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
 
-  // Filter to today's prayers and find the next prayer index within that list
+  // Filter prayers to today's prayers and find the next prayer index within that list
   // This gives us 0-5 for standard, 0-6 for extras (same as old schedule.nextIndex)
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
   const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
@@ -35,6 +37,18 @@ export default function ActiveBackground({ type }: Props) {
     fromColor: 'transparent',
     toColor: activeColor,
   });
+
+  // Per-element veil (ADR-014): the pill fades out while the overlay is open
+  // unless its row IS the selected one (the selected next prayer keeps it —
+  // exactly what the old overlay's copied row background showed)
+  const overlay = useAtomValue(overlayAtom);
+  const isHiddenByOverlay =
+    overlay.isOn && overlay.scheduleType === type && overlay.selectedPrayerIndex !== nextPrayerIndex;
+  const AnimOpacity = useAnimationOpacity(1);
+
+  useEffect(() => {
+    AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
+  }, [isHiddenByOverlay, AnimOpacity.animate]);
 
   // This effect runs after render and handles all animation logic
   // Benefits:
@@ -58,7 +72,11 @@ export default function ActiveBackground({ type }: Props) {
     zIndex: -1, // Ensure it's behind prayer text
   };
 
-  return <Animated.View style={[styles.background, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style]} />;
+  return (
+    <Animated.View
+      style={[styles.background, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style, AnimOpacity.style]}
+    />
+  );
 }
 
 const styles = StyleSheet.create({

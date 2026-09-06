@@ -20,7 +20,8 @@ import { handleAppUpgrade } from '@/stores/version';
 import * as PrayerWidgets from '@/stores/widget';
 
 // --- Atoms ---
-export const syncLoadable = loadable(atom(async () => sync()));
+// Startup defers the widget timeline push past first content (see sync options)
+export const syncLoadable = loadable(atom(async () => sync({ deferWidgetRefresh: true })));
 
 // --- Helpers ---
 
@@ -43,8 +44,15 @@ export const triggerSyncLoadable = () => {
  * Initialize or reinitialize the app's core state
  * 1. Sets up both standard and extra prayer sequences
  * 2. Starts the prayer time monitoring countdowns
+ * 3. Pushes fresh data to the iOS widgets (failure-tolerant)
+ *
+ * @param date Current London date
+ * @param deferWidgetRefresh Fire the widget push without awaiting it — the
+ *   timeline build+push costs ~0.5s per schedule on the A12 and must not gate
+ *   first content. Only the startup path may defer; the background-task body
+ *   still awaits so iOS keeps the process alive until widgets are refreshed.
  */
-const initializeAppState = async (date: Date) => {
+const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
   // SCENARIO 1: January 1st - Fetch previous year's Dec 31 data for CountdownBar
   // This is MANDATORY - CountdownBar needs yesterday's Isha time to calculate progress
   if (TimeUtils.isJanuaryFirst(date)) {
@@ -69,8 +77,23 @@ const initializeAppState = async (date: Date) => {
 
   Countdown.startCountdowns();
 
-  // Push fresh data to the iOS widgets (no-op off iOS, failure-tolerant)
-  await PrayerWidgets.refreshPrayerWidgets();
+  // Push fresh data to the iOS widgets (no-op off iOS, failure-tolerant).
+  // Deferred path needs the explicit catch: an unhandled rejection here would
+  // crash the app after syncLoadable has already resolved (nothing awaits it).
+  // A plain fire-and-forget still contends with the first content render —
+  // the timeline build saturates the JS thread for ~0.5s per schedule, so the
+  // defer must land past the first paint (rAF + setTimeout macrotask hop)
+  if (deferWidgetRefresh) {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        PrayerWidgets.refreshPrayerWidgets().catch((error) => {
+          logger.warn('WIDGET: Deferred refresh failed', { error });
+        });
+      }, 0);
+    });
+  } else {
+    await PrayerWidgets.refreshPrayerWidgets();
+  }
 };
 
 /**
@@ -135,8 +158,15 @@ const updatePrayerData = async () => {
       return;
     }
 
-    // Clear prayer cache but preserve app version, What's New tracker, and user preferences
-    Database.clearAllExcept(['app_installed_version', 'whats_new_shown_version', 'preference_']);
+    // Clear prayer cache but preserve app version, What's New tracker, user
+    // preferences, and the cached prayer-name column widths (constants —
+    // deleting them forces a remeasure that visibly reflows the prayer list)
+    Database.clearAllExcept([
+      'app_installed_version',
+      'whats_new_shown_version',
+      'preference_',
+      'prayer_max_english_width_',
+    ]);
 
     // SCENARIO 3b: December, current year not cached - Proactively fetch current year + next year
     // Years settle independently: next year may not be populated on the API yet
@@ -192,8 +222,11 @@ const updatePrayerData = async () => {
  * 2. Checks if data update is needed
  * 3. Fetches new data if required
  * 4. Initializes app state with current date
+ *
+ * @param options.deferWidgetRefresh Don't block completion on the iOS widget
+ *   timeline push (startup only — the background task must await it)
  */
-export const sync = async () => {
+export const sync = async (options: { deferWidgetRefresh?: boolean } = {}) => {
   try {
     handleAppUpgrade();
 
@@ -203,9 +236,11 @@ export const sync = async () => {
     const date = TimeUtils.createLondonDate();
 
     // Awaited so callers (and syncLoadable) see completion only after the
-    // widget timeline push has finished — a fire-and-forget here previously
-    // surfaced push errors as unhandled rejections
-    await initializeAppState(date);
+    // app state is fully initialized; the widget push defers past first
+    // content on the startup path (a fire-and-forget without the explicit
+    // catch in initializeAppState previously surfaced push errors as
+    // unhandled rejections)
+    await initializeAppState(date, options.deferWidgetRefresh === true);
   } catch (error) {
     logger.error('SYNC: Failed', { error });
     throw error;

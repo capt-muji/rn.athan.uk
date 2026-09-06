@@ -1,14 +1,32 @@
-import { BottomSheetModal, BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
+import {
+  BottomSheetModal,
+  type BottomSheetModalProps,
+  BottomSheetScrollView,
+  BottomSheetView,
+} from '@gorhom/bottom-sheet';
+import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BackHandler, Platform, StyleSheet } from 'react-native';
+import { Easing } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ELEVATION, OVERLAY, SPACING } from '@/shared/constants';
+import { perfMark, perfMeasure } from '@/shared/perf';
 
 import Header from './Header';
 import { bottomSheetStyles, renderBackdrop, renderSheetBackground } from './Shared';
 
 const SHEET_BOTTOM_PADDING = 50;
+
+/**
+ * Snappier sheet motion than the library defaults: the default Android timing
+ * uses Easing.out(Easing.exp), whose exponential tail makes the close settle
+ * drag; cubic-out finishes crisp. iOS default spring is tightened the same way.
+ */
+const SHEET_ANIMATION_CONFIGS = Platform.select({
+  android: { duration: 200, easing: Easing.out(Easing.cubic) },
+  default: { damping: 42, stiffness: 500, mass: 1 },
+});
 
 interface SheetProps {
   /** Function to set the modal ref for external control */
@@ -25,12 +43,32 @@ interface SheetProps {
   onDismiss?: () => void;
   /** Called when sheet animation starts */
   onAnimate?: () => void;
+  /**
+   * Performance mark prefix for open/close timing (e.g. 'sheet_settings').
+   * Produces <perfName>_open (present → settled) and <perfName>_close measures
+   * when EXPO_PUBLIC_PERF_MONITOR=1
+   */
+  perfName?: string;
   /** Snap points for the sheet. Ignored if enableDynamicSizing is true */
   snapPoints?: (string | number)[];
   /** Enable dynamic sizing based on content */
   enableDynamicSizing?: boolean;
   /** Use scrollable content area */
   scrollable?: boolean;
+  /**
+   * Haptic style fired when a close animation STARTS (back, backdrop, swipe,
+   * or programmatic) so completion feels acknowledged immediately instead of
+   * waiting for the dismiss callback
+   */
+  closeHaptic?: Haptics.ImpactFeedbackStyle;
+  /**
+   * Bottom-sheet stack behavior when presented over another sheet. Default
+   * 'switch' serializes: the lib waits for the previous sheet to unmount
+   * before animating this one in. 'push' presents immediately on top — used
+   * by the sound sheet so "Change athan" closes settings and opens it
+   * concurrently.
+   */
+  stackBehavior?: BottomSheetModalProps['stackBehavior'];
 }
 
 /**
@@ -63,9 +101,12 @@ export default function Sheet({
   children,
   onDismiss,
   onAnimate,
+  perfName,
   snapPoints = ['70%'],
   enableDynamicSizing = false,
   scrollable = true,
+  closeHaptic,
+  stackBehavior,
 }: SheetProps) {
   const { bottom: safeBottom } = useSafeAreaInsets();
   const bottom = Platform.OS === 'android' ? 0 : safeBottom;
@@ -91,9 +132,36 @@ export default function Sheet({
     [setRef]
   );
 
-  const handleChange = useCallback((index: number) => {
-    setPresented(index !== -1);
-  }, []);
+  const handleAnimate = useCallback(
+    (_fromIndex: number, toIndex: number | null) => {
+      if (perfName) {
+        if (toIndex === 0) {
+          perfMark(`${perfName}_animate`);
+        } else if (toIndex === null || toIndex < 0) {
+          perfMark(`${perfName}_close_start`);
+        }
+      }
+      if (closeHaptic && (toIndex === null || toIndex < 0)) {
+        Haptics.impactAsync(closeHaptic);
+      }
+      onAnimate?.();
+    },
+    [perfName, onAnimate, closeHaptic]
+  );
+
+  const handleChange = useCallback(
+    (index: number) => {
+      setPresented(index !== -1);
+      if (!perfName) return;
+      if (index === 0) {
+        perfMeasure(`${perfName}_open`, `${perfName}_present`);
+        perfMeasure(`${perfName}_open_anim`, `${perfName}_animate`);
+      } else {
+        perfMeasure(`${perfName}_close`, `${perfName}_close_start`);
+      }
+    },
+    [perfName]
+  );
 
   const ContentWrapper = scrollable ? BottomSheetScrollView : BottomSheetView;
   const contentStyle = scrollable
@@ -106,8 +174,10 @@ export default function Sheet({
       snapPoints={enableDynamicSizing ? undefined : snapPoints}
       enableDynamicSizing={enableDynamicSizing}
       enablePanDownToClose
+      animationConfigs={SHEET_ANIMATION_CONFIGS}
+      stackBehavior={stackBehavior}
       onDismiss={onDismiss}
-      onAnimate={onAnimate}
+      onAnimate={handleAnimate}
       onChange={handleChange}
       style={bottomSheetStyles.modal}
       containerStyle={{ zIndex: OVERLAY.zindexes.popup, elevation: ELEVATION.standard }}

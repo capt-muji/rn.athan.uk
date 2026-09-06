@@ -8,18 +8,16 @@
 import { useAtomValue } from 'jotai';
 
 import { ScheduleType } from '@/shared/types';
-import {
-  extraNextPrayerAtom,
-  extraPrevPrayerAtom,
-  standardNextPrayerAtom,
-  standardPrevPrayerAtom,
-} from '@/stores/schedule';
+import { getBarProgressAtom, getBarWarningAtom } from '@/stores/countdown';
+import { extraNextPrayerAtom, standardNextPrayerAtom } from '@/stores/schedule';
 
 interface UseCountdownBarResult {
-  /** Progress percentage (0-100) */
+  /** Elapsed progress percentage (0-100), quantized to bar-pixel steps (#10) */
   progress: number;
   /** Whether the countdown bar is ready to display */
   isReady: boolean;
+  /** Whether remaining time is within the warning threshold (exact, flips at second resolution) */
+  isWarning: boolean;
 }
 
 /**
@@ -27,40 +25,31 @@ interface UseCountdownBarResult {
  * Simple calculation: (now - prev.datetime) / (next.datetime - prev.datetime) * 100
  * No special "first prayer" or "yesterday" logic needed with the new model
  *
+ * Render-granular (#10): progress is quantized to bar-pixel steps (the bar's
+ * visible resolution — per-second creep is sub-pixel) and the warning flip is
+ * an exact boolean, so the subscriber re-renders ~once per pixel-step or
+ * threshold crossing instead of every second. The underlying derived atoms
+ * still recompute each store tick for boundary correctness.
+ *
  * @param type Schedule type (Standard or Extra)
- * @returns Object with progress (0-100) and isReady
+ * @returns Object with progress, isReady, and isWarning
  *
  * @example
- * const { progress, isReady } = useCountdownBar(ScheduleType.Standard);
+ * const { progress, isReady, isWarning } = useCountdownBar(ScheduleType.Standard);
  * if (isReady) {
- *   // Render countdown bar at {progress}%
+ *   // Render countdown bar at {100 - progress}% remaining
  * }
  */
 export const useCountdownBar = (type: ScheduleType): UseCountdownBarResult => {
   const nextPrayerAtom = type === ScheduleType.Standard ? standardNextPrayerAtom : extraNextPrayerAtom;
-  const prevPrayerAtom = type === ScheduleType.Standard ? standardPrevPrayerAtom : extraPrevPrayerAtom;
 
   const nextPrayer = useAtomValue(nextPrayerAtom);
-  const prevPrayer = useAtomValue(prevPrayerAtom);
-
-  // Cannot calculate progress without both prayers
-  if (!nextPrayer || !prevPrayer) {
-    return { progress: 0, isReady: false };
-  }
-
-  // True UTC instants on both sides (prayer datetimes + Date.now): the offset
-  // cancels in the ratio, no timezone conversion needed
-  const nowMs = Date.now();
-
-  // Calculate progress: (elapsed / total) * 100
-  const totalMs = nextPrayer.datetime.getTime() - prevPrayer.datetime.getTime();
-  const elapsedMs = nowMs - prevPrayer.datetime.getTime();
-
-  // Clamp to 0-100 range
-  const progress = Math.min(100, Math.max(0, (elapsedMs / totalMs) * 100));
+  const progress = useAtomValue(getBarProgressAtom(type));
+  const isWarning = useAtomValue(getBarWarningAtom(type));
 
   return {
     progress,
-    isReady: true,
+    isReady: nextPrayer !== null,
+    isWarning,
   };
 };

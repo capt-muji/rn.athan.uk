@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import InfoIcon from '@/assets/icons/svg/info.svg';
@@ -33,14 +33,10 @@ export default function BottomSheetSettings() {
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
 
-  const handleDismiss = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-  }, []);
-
   const handleAthanPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
-    setTimeout(() => showSheet(), 150);
+    showSheet();
   };
 
   // Re-opens the What's New modal for the installed version - display-only,
@@ -58,7 +54,8 @@ export default function BottomSheetSettings() {
       subtitle='Set your preferences'
       icon={<SettingsIcon width={16} height={16} color='rgba(165, 180, 252, 0.8)' />}
       snapPoints={['70%']}
-      onDismiss={handleDismiss}>
+      perfName='sheet_settings'
+      closeHaptic={Haptics.ImpactFeedbackStyle.Medium}>
       {/* Sound Card */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Sound</Text>

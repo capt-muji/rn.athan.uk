@@ -1251,6 +1251,22 @@ production release; G.6 noted but deferred by owner.
   haptic + press animation but no longer presented, while the alert sheet and
   overlay still opened — sheet-stack corruption under saturation (cross-ref
   G.8).
+- **Performance campaign measurement update (2026-09-06, perf/testing branch,
+  3T floor device)**: the sluggishness classes above were measured and
+  largely eliminated at the source. Idle CPU 80.6% → **19.3%** (invisible
+  animation gating, tick consolidation, overlay unmount→pre-mount, per-second
+  render elimination); the sheet-dismiss/foreground bursts now defer widget
+  pushes past the paint (the iOS 1.1-1.4s dismiss burst → commit 56ms, push
+  ~530ms later off-path); the 89s-freeze class (32-AVPlayer teardown) was
+  already fixed by the single-player refactor. All big animations verified at
+  the 30fps floor — overlay open/close (first+steady, 60fps cadence,
+  vision-verified), sheet entrances (alert was 235/202ms gaps → zero >33ms
+  misses), pager swipes (60fps). REMAINING known costs: the per-minute widget
+  label-flip pipeline (owner-deferred, unchanged) and a phantom 60fps
+  Choreographer loop at idle (~6-7% CPU, fresh-process reproducible, root
+  cause narrowed to an eternally-active Reanimated frame callback —
+  `ai/features/performance/progress.md` #14). Harness: `e2e/` +
+  `ai/RUNBOOK-performance-testing.md`.
 
 ### G.7 [OPEN — flaky test] widgetSettingsSync "pushes again for a later change" fires a spurious third push ~1–2% of runs
 
