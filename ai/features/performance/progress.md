@@ -5,32 +5,29 @@
 ## State
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
-- **Phase**: s10 QUEUE COMPLETE (session 11): #20 CLOSED — per-element overlay shipped + pixel
-  parity + countdown merge + boundary recordings + idle gate + campaign wrap (ADR-014 →
-  Implemented, AGENTS.md §Performance Design Rules now 12 + campaign-closure Recent Decisions
-  entry). REMAINING: the owner's iOS EYEBALL pass = the final acceptance gate (XS rebuilt
-  2026-09-06 16:32, Release gate-ON; row-shadow question pre-answered in code —
-  ActiveBackground carries SHADOW.prayer natively) + the owner's commit ritual (working tree:
-  the s10.1 countdown-merge code + docs, uncommitted per directive; jest 931/931).
-- **Builds**: Android = resting build 21 (16:27:39, gate-ON, mock byte-identical to HEAD) on
-  the 3T; the S10 BASELINE commit ab3ab7c (1.19.0) is superseded on-device by the s10.1 code.
-  iOS = Release gate-ON rebuilt + installed + launched on the XS (16:32, BUILD SUCCEEDED).
-- **Device state (end of s11)**: 3T healthy (~31% process band, battery full, keep-awake on),
-  app foreground, overlay closed after the idle-gate runs. XS: fresh 1.19.0+s10.1 install
-  launched once (16:32:47).
-- **Baseline evidence dir**: `ai/features/performance/baseline/` (Phases 1+2); s7 evidence in
-  /var/folders/.../T/opencode/perf12/; s9 in perf20/ + e2e/evidence/{overlay-open,overlay-open-dim,
-  open-final}-*; s10/s11 evidence in /var/folders/.../T/opencode/perf21/{s101,s102,s103}/
-  (s101 = merge frames+vision, s102 = boundary takes a/b5/c + vision reads, s103 = idle atrace).
-- **Standing owner directives**: 3T is THE verification device (3T-only testing; iOS = owner eyeball);
-  FPS-first evidence; 30fps FLOOR for big animations (per-second countdown text exempt); quality over
-  speed; physical devices only; Release builds; no store deployments; never sleep >15s in one command;
-  no commits (owner's ritual incl. version bump); iOS widgets + notification semantics measure-only;
-  iterate the vision subagent config when delegation friction appears. S9 ADDITIONS: the finished
-  overlay must be VISUALLY IDENTICAL / pixel-perfect to the original (owner bar — frame evidence is
-  the arbiter); CHALLENGE owner proposals explicitly (owner directive — don't rubber-stamp); minimal
-  animated-element count preferred (drove the bands-vs-per-element decision); perf-test EVERY change
-  as we go.
+- **Phase**: campaign CLOSED through 1.20.0; session 12-13 add-on (Android shadow/glow parity)
+  SHIPPED + owner-confirmed, committed as 1.20.1. Devices: 3T (API 28 floor) + Galaxy S23 base
+  (API 36 modern reference, serial S23_SERIAL, test app `com.mugtaba.athan.shadowtest` installed
+  beside the owner's Play app — which stays untouched). RESUME: the next-session queue in the
+  session-13 log entry (extras pill-slot canonical fix w/ owner approval, swipe-perf pass, 3T
+  final-shadow pass, iOS rebuild + eyeball, parked backlog).
+- **Builds**: repo @ 1.20.1. 3T runs the resting 1.20.0 build (s10.1 code; shadow work NOT yet
+  installed there — queued). S23 runs the final tuned shadow/glow build (Ramadan-forced variant
+  left installed for the owner's demo; the committed tree has NO force). iOS NOT rebuilt since
+  the s10.4 build (shadow work is Platform-gated Android-only, but the next iOS pass should
+  still eyeball Day/Prayer surfaces).
+- **Device state (end of s13)**: 3T healthy, app foreground-settled. S23 unlocked-debug,
+  stay-awake on, shadowtest app running the owner-approved visuals.
+- **Evidence**: s10/s11 in /var/folders/.../T/opencode/perf21/{s101,s102,s103}; S23 shadow/glow
+  arc in perf21/s23/{shadow-tune,glow-evidence(01-10 + glow-tour.mp4),perf(atrace+swipe pts)}.
+- **Standing owner directives**: 3T + S23 are the Android verification devices (iOS = owner
+  eyeball); FPS-first evidence; 30fps FLOOR for big animations (per-second countdown text exempt);
+  quality over speed; physical devices only; Release builds; no store deployments; never sleep
+  >15s in one command; commits only on explicit owner instruction (version bump per commit);
+  iOS widgets + notification semantics measure-only; iterate the vision subagent when delegation
+  friction appears; iOS visuals are the pixel bar — challenge owner proposals explicitly;
+  minimal animated-element count; perf-test EVERY change; never uninstall the owner's Play Store
+  app on the S23 — use the suffixed test id.
 
 ### HANDOFF RULE (read first)
 
@@ -154,6 +151,75 @@ Iteration protocol: profile → root-cause → fix → rebuild Release → re-me
 
 ## Log
 
+- 2026-09-06 (session 13 END — ANDROID SHADOW/GLOW SHIPPED, S23 JOINS THE FLEET; committed as
+  1.20.1): the owner's post-campaign ask — make Android match iOS's (a) active-pill depth shadow,
+  (b) masjid golden glow (silhouette-shaped). DEVICE FLEET: the Galaxy S23 base (SM-S911B,
+  Android 16 / API 36, serial S23_SERIAL) joined as the modern-Android reference; a separate
+  test app (`com.mugtaba.athan.shadowtest`, via a throwaway build.gradle applicationId override —
+  android/ is gitignored) installs beside the owner's Play Store app (untouched). ANDROID SHADOW
+  LADDER (researched): API 21 elevation (grey), API 28 colored+RN boxShadow (3T's ceiling),
+  API 31 RenderEffect (silhouette-class, Pixel 6/S22 era+), S23 = 36. FINDINGS: (1) any transform
+  in the ancestry clips RN's boxShadow drawable to view bounds on API 28 (the pill's slide) — but
+  NOT on API 36; (2) borderRadius + boxShadow on the same view KILLED the shadow outright on the
+  3T but renders rounded correctly on the S23; (3) SVGR (svg-transformer) silently DROPS <filter>
+  elements ("not supported by react-native-svg") — while react-native-svg 15.15.4 fully supports
+  Filter/FeDropShadow when used as DIRECT TSX components; (4) FeDropShadow re-rasterizes on every
+  parent redraw — 2.3s page-swipe freezes on the S23 — fixed with renderToHardwareTextureAndroid
+  (rasterize once; verified: worst gap 42ms @120Hz). FINAL ARCHITECTURE (Android-only, Platform-
+  gated; iOS byte-identical): pill shadow lives on the ACTIVE PRAYER ROW (static view, same rect
+  as the pill, RADIUS.md rounded, fades with the row under the veil) — works on BOTH the 3T and
+  S23; masjid glow = direct-TSX glow components (masjidGlow/masjidRamadanGlow.tsx, AUTO-GENERATED
+  from the icon SVGs — regenerate when the icons change) with exact-unit viewBox alignment +
+  hardware texture. OWNER-TUNED (3 iterations): pill standard rgba(28,22,145,0.4) — dark indigo
+  nudged violet, NEVER bright (rgba(64,42,165) read "white" — reverted); extras rgba(110,0,107,
+  0.32); glow stdDeviation 165u / floodOpacity 0.22 / group 0.6 (wide faint halo). Ramadan
+  decorations' own glows = SVG radial gradients — cross-platform already, nothing ported; forced
+  via a throwaway isRamadan() for the owner's live review + evidence (glow-evidence/01-10 +
+  glow-tour.mp4). PERF NOTES: decorations idle ≈48 doFrames/s continuous + ~80ms swipe hitches
+  measured WITH DECORATIONS OFF TOO (pre-existing pager behavior, not decoration-caused) —
+  candidate future pass. KNOWN PRE-EXISTING BUG (fix written in session 12, REVERTED with the
+  owner's "revert everything" and NOT re-applied — needs their explicit approval; changes iOS
+  too): ActiveBackground maps the next prayer's SEQUENCE index straight to a display slot,
+  ignoring canonicalDisplayOrder — the extras pill parks on the wrong row whenever extras
+  canonical ≠ chronological (2+ future extras prayers); without the fix, the row-shadow (correct,
+  isNext-based) can visibly divorce from the misparked pill. NEXT SESSION QUEUE: (1) extras
+  pill-slot canonical fix re-application (owner approval + iOS note); (2) swipe-perf pass (~80ms
+  pager hitches, both decoration states); (3) 3T pass over the FINAL tuned shadows (row-shadow
+  verified pre-tuning; colors re-check); (4) iOS rebuild + owner eyeball incl. shadow-session
+  parity; (5) parked backlog: #15 cold-start levers, phantom Choreographer loop on next RN/Expo
+  upgrade, expo-widgets PR #49244 tracking. Battery at commit: jest 931/931, tsc + biome clean.
+- 2026-09-06 (session 12 — ANDROID SHADOW/GLOW PARITY, owner-requested post-campaign add-on;
+  UNCOMMITTED for owner review): owner directive: iOS is pixel-perfect — make Android match the
+  iOS (a) active-background depth shadow (both pages) and (b) the masjid's golden glow. ROOT
+  CAUSES: both were iOS-only legacy shadow* props (Android no-ops); the modern RN 0.86
+  `boxShadow` prop renders on Android API 28+ via a background drawable (OutsetBoxShadowDrawable
+  — offset/blur/color, NO elevation → no z-reorder). FIXES (4 files, Platform-gated, iOS styles
+  byte-identical): (1) SHADOW_ANDROID presets in shared/constants.ts mirroring the iOS presets;
+  (2) masjid glow = boxShadow on the Masjid container View — WORKS DIRECTLY (vision-verified:
+  golden rgba(239,156,41,~0.2), offset +5/+5, soft 25-28px falloff outside the silhouette);
+  (3) pill shadow: CANNOT live on the pill — empirical ladder (5 debug builds): any transform in
+  the ancestry (the pill's slide translateY, static OR Reanimated, own OR ancestor) CLIPS the
+  boxShadow drawable's out-of-bounds painting (Android render behavior; wrapper+margins does NOT
+  escape it) — so the shadow lives on the ACTIVE PRAYER ROW (static view, same rect as the pill,
+  interior clipOutRect makes paint order irrelevant, and it fades WITH the row under the overlay
+  veil ≡ the iOS pill-shadow lifecycle). KNOWN VISUAL DELTA vs iOS: during the 0.87s boundary
+  slide the shadow sits on the destination row while the fill slides in (transform-clip makes
+  a riding shadow impossible on Android). PRE-EXISTING BUG FOUND + FIXED (both platforms):
+  ActiveBackground mapped the next prayer's SEQUENCE index straight to a display slot — extras'
+  canonical order is a permutation → the pill sat on the WRONG ROW whenever 2+ future extras
+  prayers existed (3T evidence: pill on Midnight row 0 while bright/active row = Suhoor row 2);
+  fix = map through canonicalDisplayOrder (List.tsx's own permutation) — this CHANGES iOS
+  BEHAVIOR TOO (bug fix — flagged for the owner's iOS eyeball). VERIFIED (3T, build 17:54:31,
+  vision): std shadow α≈0.5 spec-exact soft 50px falloff; extras shadow magenta tint
+  α≈0.24-0.30 decaying (spec 0.35); masjid glow pass; pill==bright row==shadow all pages;
+  no regressions (fill exact, text crisp, inactive rows clean). jest 931/931 + tsc + biome
+  green. API<28 Android: no shadow (graceful no-op). HARNESS LESSONS: (1) RN Android boxShadow
+  + transform = clipped shadow — shadows must live on non-transformed views; (2) screenshots
+  right after a fresh install catch the LOADING frame — always re-shoot after content settles;
+  (3) `expo run:android` sometimes silently skips the install (lastUpdateTime vs behavior —
+  verify by behavior, not timestamp). STATUS: 4 files modified, NOT committed (owner review
+  first — their explicit instruction); suggest 1.20.1 patch on approval. NEXT: owner review →
+  commit ritual → iOS rebuild + eyeball (extras pill now correct there too).
 - 2026-09-06 (session 11 END — s10.4 + s10.5 WRAP): iOS rebuilt (Release, gate-ON, xcodebuild
   BUILD SUCCEEDED 16:32, devicectl install + launch OK on the XS) — the owner's eyeball pass is
   the final acceptance gate; row-shadow question PRE-ANSWERED in code: ActiveBackground.tsx:65-70

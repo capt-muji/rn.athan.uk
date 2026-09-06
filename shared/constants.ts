@@ -364,6 +364,21 @@ export const SHADOW = {
   },
 } as const;
 
+/**
+ * Android counterparts of the iOS shadow presets (Platform-gated in the
+ * components): RN 0.86 renders boxShadow via a background drawable on
+ * API 28+ — a true offset/blur/color shadow with NO elevation, so it never
+ * reorders z. Each string mirrors its iOS preset's offset/radius/color+opacity.
+ */
+export const SHADOW_ANDROID = {
+  /** Prayer row shadow — purple-blue blend tuned against the navy-violet bg (owner-directed hue) */
+  prayer: '1px 10px 10px rgba(28, 22, 145, 0.4)',
+  /** Prayer row shadow, extras page (mirrors SHADOW.prayerExtras) */
+  prayerExtras: '1px 6px 6px rgba(110, 0, 107, 0.32)',
+  /** Masjid icon glow (mirrors SHADOW.masjid + COLORS.masjid.glow) */
+  masjid: '5px 5px 10px rgba(239, 156, 41, 0.2)',
+} as const;
+
 // =============================================================================
 // COUNTDOWN BAR
 // =============================================================================
