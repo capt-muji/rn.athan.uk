@@ -1,0 +1,33 @@
+{
+  "_comment": "OnePlus 3T (3T_SERIAL) medians, Release gate-ON. s7 build (2026-09-06, #16/#17/#18 landed). Numbers are dev-env (EXPO_PUBLIC_ENV unset -> mock API): every launch runs the mock refresh pipeline production never does; deltas remain valid across builds sharing the env, absolute startup numbers are NOT comparable to production.",
+  "js_to_content": 1076,
+  "overlay_open": 80,
+  "overlay_close": 190,
+  "sheet_alert_open": 456,
+  "sheet_settings_open": 370,
+  "sheet_sound_open": 807,
+  "toggle_tap_ms": 0,
+  "_animation_floors": {
+    "_comment": "30fps floor audit results (compositor/atrace), not marks",
+    "overlay_open_first": "PASS 16-17ms cadence, vision-verified smooth",
+    "overlay_open_steady": "PASS 60fps",
+    "overlay_close_first": "PASS 60fps, vision-verified",
+    "overlay_close_steady": "PASS 60fps (SF latency)",
+    "sheet_alert_entrance": "PASS zero >33ms misses post-#10 (was 235/202ms)",
+    "pager_swipe": "PASS 24x17ms",
+    "idle_traversal_bumps": "NONE in 5s (was 6.7+12.4ms per second pre-#10)"
+  },
+  "_idle": {
+    "cpu_median_pct": 19.3,
+    "_note": "phantom 60fps Choreographer loop ~6-7% remains (root-cause parked; see progress.md #14)"
+  },
+  "sheet_settings_close": 202,
+  "_s7_notes": {
+    "overlay_open_family": "61-89ms after #17 derived overlay atoms (was 162-230)",
+    "sheet_animation_config": "200ms cubic-out Android / tightened spring iOS (#18); cadence 16-17ms on open+close",
+    "tap_decomposition": "input->JS ~130ms (device floor, sendevent), JS commit+effect 61-89ms, +1 vsync fade start",
+    "sound_sheet_mount_cap": "animation starts ~600ms after present (32-row mount on every present; owner-accepted, no virtualization)",
+    "phantom_60fps_loop": "UPSTREAM (persists at bare-View level; 7-build bisect; ~22.5% isolated CPU)",
+    "launch_text_jitter": "#16 fixed: width-cache keys preserved through data wipes"
+  }
+}

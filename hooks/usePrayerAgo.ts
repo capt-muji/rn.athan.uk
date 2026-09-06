@@ -54,7 +54,17 @@ export const usePrayerAgo = (type: ScheduleType): PrayerAgoState => {
   const [state, setState] = useState(() => calculatePrayerAgo(type));
 
   const updatePrayerAgo = useCallback(() => {
-    setState(calculatePrayerAgo(type));
+    setState((prev) => {
+      const next = calculatePrayerAgo(type);
+      // The ago text changes once per minute (or once per second only inside
+      // the first-minute "now" window) — re-rendering the page every second
+      // for an identical string is pure idle burn, so bail out on no-change
+      const unchanged =
+        next.prayerAgo === prev.prayerAgo &&
+        next.minutesElapsed === prev.minutesElapsed &&
+        next.isReady === prev.isReady;
+      return unchanged ? prev : next;
+    });
   }, [type]);
 
   useEffect(() => {

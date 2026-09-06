@@ -4,22 +4,24 @@ import { useEffect, useMemo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useAnimationColor } from '@/hooks/useAnimation';
+import { useAnimationColor, useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
-import { overlayAtom, setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
+import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
+import { setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
 import { refreshUIAtom, showArabicNamesAtom } from '@/stores/ui';
 
 import Alert from './Alert';
 import Time from './Time';
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 interface Props {
   type: ScheduleType;
   index: number;
-  isOverlay?: boolean;
 }
 
 /**
@@ -31,29 +33,22 @@ interface Props {
  *
  * @param type - Schedule type (Standard or Extra)
  * @param index - Prayer index within the schedule
- * @param isOverlay - Whether this is rendered in the overlay (default: false)
  */
-export default function Prayer({ type, index, isOverlay = false }: Props) {
+export default function Prayer({ type, index }: Props) {
   const refreshUI = useAtomValue(refreshUIAtom);
   const showArabicNames = useAtomValue(showArabicNamesAtom);
 
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
-  const overlay = useAtomValue(overlayAtom);
+  const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
+  const isHiddenByOverlay = useAtomValue(useMemo(() => getOverlayHiddenAtom(type, index), [type, index]));
 
   const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
   });
 
-  // Detect if this prayer is currently selected in the overlay.
-  // Note: Alert.tsx uses Prayer.isOverlay prop because Alert components render separately
-  // inside the overlay. For Prayer.tsx and PrayerTime.tsx in the main schedule, we detect
-  // overlay selection via overlayAtom to animate when tapped (before overlay renders).
-  const isSelectedForOverlay = useMemo(
-    () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
-    [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
-  );
+  const AnimOpacity = useAnimationOpacity(1);
 
   const computedStyleEnglish = {
     width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left,
@@ -91,24 +86,31 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
     }
   }, [Schedule.displayDate, isSelectedForOverlay]);
 
-  // Overlay-aware animation: bright when selected, return to natural state when closed
+  // Overlay-aware animation: bright when selected, return to natural state when closed.
+  // 150ms ≈ the original overlay's perceived row-rise pace (x19: 87→254 over ~150ms)
   // biome-ignore lint/correctness/useExhaustiveDependencies: keyed on selection only; initialColorPos changes are handled by the refresh/next/cascade effects
   useEffect(() => {
     const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimColor.animate(colorPos, { duration: ANIMATION.durationVeryFast });
+    AnimColor.animate(colorPos, { duration: ANIMATION.durationFade });
   }, [isSelectedForOverlay]);
 
+  // Per-element veil (ADR-014): non-selected rows fade out with the overlay's
+  // 200ms fade — the old overlay hid them under the opaque gradient
+  useEffect(() => {
+    AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
+  }, [isHiddenByOverlay, AnimOpacity.animate]);
+
   return (
-    <Pressable style={styles.container} onPress={handlePress}>
+    <AnimatedPressable style={[styles.container, AnimOpacity.style]} onPress={handlePress}>
       <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, AnimColor.style]}>
         {Prayer.english}
       </Animated.Text>
       {showArabicNames && (
         <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
       )}
-      <Time index={index} type={type} isOverlay={isOverlay} />
-      <Alert index={index} type={type} isOverlay={isOverlay} />
-    </Pressable>
+      <Time index={index} type={type} />
+      <Alert index={index} type={type} />
+    </AnimatedPressable>
   );
 }
 

@@ -8,10 +8,11 @@ const config = appJson.expo as ExpoConfig;
 // artifact installs beside the Play Store app (signatures differ; install -r is impossible).
 // Without the env var this config is byte-identical to app.json.
 const androidSuffix = process.env.EXPO_ANDROID_SUFFIX;
+const nameSuffix = process.env.EXPO_NAME_SUFFIX ?? 'BGTest';
 
 if (androidSuffix && config.android?.package) {
   config.android.package = `${config.android.package}.${androidSuffix}`;
-  config.name = `${config.name} BGTest`;
+  config.name = `${config.name} ${nameSuffix}`;
 }
 
 export default config;

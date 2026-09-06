@@ -15,7 +15,12 @@ import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/compo
 import { InitialWidthMeasurement } from '@/components/ui';
 import { COLORS } from '@/shared/constants';
 import logger from '@/shared/logger';
+import { initPerfMonitor } from '@/shared/perf';
 import { triggerSyncLoadable } from '@/stores/sync';
+
+// Performance monitor first (no-op unless EXPO_PUBLIC_PERF_MONITOR=1) so launch
+// marks exist before any other app code reports against them
+initPerfMonitor();
 
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();

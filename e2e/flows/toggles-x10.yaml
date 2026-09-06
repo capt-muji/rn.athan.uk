@@ -1,0 +1,24 @@
+appId: com.mugtaba.athan
+name: toggles-x10
+tags:
+  - baseline
+---
+# Toggle write-path suite. "Show seconds" (540,1570) flips ON then OFF each
+# iteration — final state restored; verify from pixels, never toggle history.
+- tapOn:
+    point: '540, 1730'
+- waitForAnimationToEnd:
+    timeout: 2500
+- repeat:
+    times: 10
+    commands:
+      - tapOn:
+          point: '540, 1570'
+      - waitForAnimationToEnd:
+          timeout: 1500
+      - tapOn:
+          point: '540, 1570'
+      - waitForAnimationToEnd:
+          timeout: 1500
+- pressKey: back
+- assertVisible: 'London, UK'

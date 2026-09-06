@@ -1,7 +1,13 @@
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, View } from 'react-native';
-import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  interpolateColor,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
@@ -102,28 +108,29 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
 export default function SegmentedControl({ options, selected, onSelect, disabled }: SegmentedControlProps) {
   const [containerWidth, setContainerWidth] = useState(0);
   const padding = 3;
-  const hasInitialized = useRef(false);
-  const translateX = useSharedValue(0);
-
   const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
   const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / options.length : 0;
 
-  useEffect(() => {
-    if (optionWidth === 0) return;
-
+  // Derived, not effect-driven (the Toggle pattern): first evaluation SNAPS so
+  // the indicator first-frames settled at its target — an effect-driven snap
+  // ran after paint and the worklet-applied width landed even later, so the
+  // indicator briefly rendered at its intrinsic 2px border width. The width is
+  // a static render-time style (applied synchronously with the commit), never
+  // a worklet value. The snap is not consumed while geometry is unknown
+  // (optionWidth 0 before the first onLayout).
+  const isFirstEvaluation = useSharedValue(true);
+  const translateX = useDerivedValue(() => {
+    if (optionWidth === 0) return 0;
     const targetX = selectedIndex * optionWidth;
-
-    if (!hasInitialized.current) {
-      translateX.value = targetX;
-      hasInitialized.current = true;
-    } else {
-      translateX.value = withTiming(targetX, { duration: ANIMATION.duration });
+    if (isFirstEvaluation.value) {
+      isFirstEvaluation.value = false;
+      return targetX;
     }
-  }, [selectedIndex, optionWidth, translateX]);
+    return withTiming(targetX, { duration: ANIMATION.duration });
+  });
 
   const indicatorStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: translateX.value }],
-    width: optionWidth,
   }));
 
   const handleLayout = useCallback((e: LayoutChangeEvent) => {
@@ -132,7 +139,7 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
 
   return (
     <View style={[styles.container, disabled && styles.disabled]} onLayout={handleLayout}>
-      {containerWidth > 0 && <Animated.View style={[styles.indicator, indicatorStyle]} />}
+      {containerWidth > 0 && <Animated.View style={[styles.indicator, { width: optionWidth }, indicatorStyle]} />}
       {options.map((option) => (
         <AnimatedSegmentOption
           key={option.value}

@@ -12,7 +12,7 @@ import Animated, {
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import type { ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/overlay';
+import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 
 interface Props {
   type: ScheduleType;
@@ -29,7 +29,7 @@ interface Props {
  */
 export default function PrayerAgo({ type }: Props) {
   const { prayerAgo, minutesElapsed, isReady: prayerAgoReady } = usePrayerAgo(type);
-  const overlay = useAtomValue(overlayAtom);
+  const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const hasInitialized = useRef(false);
 
   // Color state: 0=normal, 1=recent (≤5 mins)
@@ -58,7 +58,7 @@ export default function PrayerAgo({ type }: Props) {
 
   // Fade out when overlay opens
   const prayerAgoOpacity = useAnimatedStyle(() => ({
-    opacity: withTiming(overlay.isOn ? 0 : 1, { duration: ANIMATION.durationFade }),
+    opacity: withTiming(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade }),
   }));
 
   // Smooth color transition

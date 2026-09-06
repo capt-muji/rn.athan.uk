@@ -1,0 +1,99 @@
+2026-09-06 00:24:06.935212 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":1,"ts":154233491,"name":"perf_monitor_init","type":"mark","duration":0}
+2026-09-06 00:24:08.553069 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":2,"ts":154236563,"name":"home_content","type":"mark","duration":0}
+2026-09-06 00:24:08.553127 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":3,"ts":154235113,"name":"js_to_content","type":"measure","duration":1451}
+2026-09-06 00:24:08.553203 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":4,"ts":343828544,"name":"launch_native","type":"measure","duration":107}
+2026-09-06 00:24:08.553265 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":5,"ts":343828997,"name":"launch_js_bundle","type":"measure","duration":58}
+2026-09-06 00:25:18.710848 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":6,"ts":154377045,"name":"sheet_settings_present","type":"mark","duration":0}
+2026-09-06 00:25:18.825782 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":7,"ts":154377218,"name":"sheet_settings_animate","type":"mark","duration":0}
+2026-09-06 00:25:19.475142 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":8,"ts":154377812,"name":"sheet_settings_open","type":"measure","duration":770}
+2026-09-06 00:25:19.475257 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":9,"ts":154377902,"name":"sheet_settings_open_anim","type":"measure","duration":680}
+2026-09-06 00:25:31.221721 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":10,"ts":154402036,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:25:44.028339 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":11,"ts":154427644,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:25:56.785545 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":12,"ts":154453161,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:26:09.313155 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":13,"ts":154478212,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:26:21.935914 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":14,"ts":154503458,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:26:34.604528 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":15,"ts":154528800,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:26:47.134146 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":16,"ts":154553864,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:27:00.257416 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":17,"ts":154580116,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:27:12.587950 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":18,"ts":154604768,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:30:17.256824 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":19,"ts":154974147,"name":"sheet_settings_close_start","type":"mark","duration":0}
+2026-09-06 00:30:17.947363 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":20,"ts":154974832,"name":"sheet_settings_close","type":"measure","duration":688}
+2026-09-06 00:30:26.362136 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":21,"ts":154992351,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:26.595339 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":22,"ts":154992824,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:27.796470 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":23,"ts":154995218,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:27.998145 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":24,"ts":154995418,"name":"pager_page","type":"measure","duration":207,"detail":{"position":1}}
+2026-09-06 00:30:28.012399 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":25,"ts":154995655,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:30.029562 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":26,"ts":154999699,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:30.230159 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":27,"ts":154999899,"name":"pager_page","type":"measure","duration":195,"detail":{"position":0}}
+2026-09-06 00:30:30.246904 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":28,"ts":155000128,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:32.615853 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":29,"ts":155004857,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:32.815062 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":30,"ts":155005058,"name":"pager_page","type":"measure","duration":205,"detail":{"position":1}}
+2026-09-06 00:30:32.831768 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":31,"ts":155005297,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:34.832123 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":32,"ts":155009292,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:35.033710 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":33,"ts":155009494,"name":"pager_page","type":"measure","duration":212,"detail":{"position":0}}
+2026-09-06 00:30:35.048844 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":34,"ts":155009731,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:37.383616 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":35,"ts":155014396,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:37.600716 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":36,"ts":155014613,"name":"pager_page","type":"measure","duration":223,"detail":{"position":1}}
+2026-09-06 00:30:37.616854 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":37,"ts":155014868,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:39.668441 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":38,"ts":155018968,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:39.867941 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":39,"ts":155019168,"name":"pager_page","type":"measure","duration":203,"detail":{"position":0}}
+2026-09-06 00:30:39.885517 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":40,"ts":155019401,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:42.203501 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":41,"ts":155024035,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:42.405715 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":42,"ts":155024235,"name":"pager_page","type":"measure","duration":206,"detail":{"position":1}}
+2026-09-06 00:30:42.425632 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":43,"ts":155024471,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:44.405161 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":44,"ts":155028440,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:44.621109 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":45,"ts":155028876,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:44.621342 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":46,"ts":155028876,"name":"pager_page","type":"measure","duration":0,"detail":{"position":0}}
+2026-09-06 00:30:47.055797 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":47,"ts":155033736,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:47.256381 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":48,"ts":155033937,"name":"pager_page","type":"measure","duration":208,"detail":{"position":1}}
+2026-09-06 00:30:47.289211 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":49,"ts":155034211,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:49.306584 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":50,"ts":155038241,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:49.506157 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":51,"ts":155038441,"name":"pager_page","type":"measure","duration":205,"detail":{"position":0}}
+2026-09-06 00:30:49.526212 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":52,"ts":155038677,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:51.891485 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":53,"ts":155043416,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:52.107640 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":54,"ts":155043850,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:52.108345 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":55,"ts":155043850,"name":"pager_page","type":"measure","duration":0,"detail":{"position":1}}
+2026-09-06 00:30:54.059475 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":56,"ts":155047751,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:54.259190 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":57,"ts":155047951,"name":"pager_page","type":"measure","duration":202,"detail":{"position":0}}
+2026-09-06 00:30:54.275903 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":58,"ts":155048184,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:56.610479 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":59,"ts":155052853,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:56.826856 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":60,"ts":155053290,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:56.827016 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":61,"ts":155053290,"name":"pager_page","type":"measure","duration":0,"detail":{"position":1}}
+2026-09-06 00:30:58.828041 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":62,"ts":155057286,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:30:59.034112 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":63,"ts":155057490,"name":"pager_page","type":"measure","duration":212,"detail":{"position":0}}
+2026-09-06 00:30:59.044009 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":64,"ts":155057720,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:01.379098 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":65,"ts":155062398,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:01.512067 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":66,"ts":155062531,"name":"pager_page","type":"measure","duration":123,"detail":{"position":1}}
+2026-09-06 00:31:01.528587 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":67,"ts":155062689,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:03.513613 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":68,"ts":155066658,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:03.713923 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":69,"ts":155066859,"name":"pager_page","type":"measure","duration":202,"detail":{"position":0}}
+2026-09-06 00:31:03.730108 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":70,"ts":155067094,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:06.132460 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":71,"ts":155071889,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:06.331427 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":72,"ts":155072089,"name":"pager_page","type":"measure","duration":208,"detail":{"position":1}}
+2026-09-06 00:31:06.347744 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":73,"ts":155072328,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:08.416649 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":74,"ts":155076463,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:08.616098 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":75,"ts":155076663,"name":"pager_page","type":"measure","duration":203,"detail":{"position":0}}
+2026-09-06 00:31:08.633289 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":76,"ts":155076899,"name":"pager_swipe_start","type":"mark","duration":0}
+2026-09-06 00:31:10.895310 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":77,"ts":155081401,"name":"sheet_settings_present","type":"mark","duration":0}
+2026-09-06 00:31:10.933242 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":78,"ts":155081501,"name":"sheet_settings_animate","type":"mark","duration":0}
+2026-09-06 00:31:11.617111 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":79,"ts":155082134,"name":"sheet_settings_open","type":"measure","duration":729}
+2026-09-06 00:31:11.617223 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":80,"ts":155082184,"name":"sheet_settings_open_anim","type":"measure","duration":678}
+2026-09-06 00:31:13.168675 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":81,"ts":155085966,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:14.385125 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":82,"ts":155088388,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:15.550578 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":83,"ts":155090721,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:16.764119 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":84,"ts":155093136,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:17.970758 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":85,"ts":155095562,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:19.175552 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":86,"ts":155097966,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:20.366608 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":87,"ts":155100338,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:21.510502 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":88,"ts":155102634,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:22.712645 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":89,"ts":155105036,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:31:23.910916 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":90,"ts":155107417,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show seconds"}}
+2026-09-06 00:32:54.592945 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":91,"ts":155288779,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:33:01.352510 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":92,"ts":155302320,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:33:08.062875 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":93,"ts":155315724,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show arabic names"}}
+2026-09-06 00:34:50.511064 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":94,"ts":155520660,"name":"sheet_settings_close_start","type":"mark","duration":0}
+2026-09-06 00:34:51.198761 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":95,"ts":155521348,"name":"sheet_settings_close","type":"measure","duration":676}
+2026-09-06 00:34:56.213095 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":96,"ts":155532029,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+2026-09-06 00:34:56.213189 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":97,"ts":155532029,"name":"overlay_open","type":"measure","duration":34}
+2026-09-06 00:35:02.127129 Athan{React}[12224] <DEBUG>: PERF_MARK {"seq":98,"ts":155543845,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+2026-09-06 00:35:02.127243 Athan{React}[12224] <INFO>: PERF_MEASURE {"seq":99,"ts":155543845,"name":"overlay_close","type":"measure","duration":46}

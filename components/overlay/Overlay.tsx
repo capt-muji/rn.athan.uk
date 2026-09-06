@@ -1,59 +1,51 @@
 import * as Haptics from 'expo-haptics';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
-import { Pressable, StyleSheet, View, type ViewStyle } from 'react-native';
+import { useLayoutEffect, useState } from 'react';
+import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
 import Reanimated from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Countdown } from '@/components/countdown';
-import { Prayer, PrayerExplanation } from '@/components/prayer';
-import { Glow } from '@/components/ui';
+import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
+import { PrayerExplanation } from '@/components/prayer';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
-import { usePrayer } from '@/hooks/usePrayer';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import {
   ANIMATION,
-  COLORS,
   EXTRAS_ENGLISH,
   EXTRAS_EXPLANATIONS,
   EXTRAS_EXPLANATIONS_ARABIC,
   OVERLAY,
-  SCREEN,
-  SHADOW,
   SPACING,
   STYLES,
-  TEXT,
 } from '@/shared/constants';
-import { formatDateLong, formatHijriDateLong } from '@/shared/time';
+import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
-import { hijriDateEnabledAtom, measurementsDateAtom, measurementsListAtom } from '@/stores/ui';
+import { measurementsListAtom } from '@/stores/ui';
 
 /**
- * Full-screen overlay for focused prayer view
+ * Overlay input layer for the focused prayer view (ADR-014, per-element)
  *
- * Displays a selected prayer in an expanded view with:
- * - Large countdown timer at the top
- * - Selected prayer row with notification controls
- * - Prayer explanation tooltip (for extra prayers)
- * - Date display (Gregorian or Hijri)
- * - Gradient background with glow effect
+ * No content is duplicated and NOTHING visual sits over the page: the
+ * background morphs to the veil gradient behind everything (VeilBackdrop),
+ * non-selected content fades itself out, and the selected row / hero / date
+ * highlight in place. This layer owns only input (the press-catcher with the
+ * selected row exempt) and the extras explanation box.
  *
- * The overlay positions the prayer row to match its original location
- * in the schedule list for a seamless transition effect.
+ * box-none while open: the catcher children remain tappable but the container
+ * itself is never a touch target — taps in the row exempt pass through to the
+ * REAL in-place row (RN hit-testing stops at the topmost candidate view).
+ * While closed the subtree is display:none (ADR-013) — no draw, no
+ * hit-testing; the latch delays the hide until the close fade-out finishes.
  */
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
-  const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
-  const backgroundOpacity = useAnimationOpacity(0);
-  const dateOpacity = useAnimationOpacity(0);
+
+  const [visible, setVisible] = useState(overlay.isOn);
+
+  const layerOpacity = useAnimationOpacity(0);
 
   const listMeasurements = useAtomValue(measurementsListAtom);
-  const dateMeasurements = useAtomValue(measurementsDateAtom);
-  const hijriEnabled = useAtomValue(hijriDateEnabledAtom);
 
-  const insets = useSafeAreaInsets();
   const window = useWindowDimensions();
 
   const handleClose = () => {
@@ -61,54 +53,43 @@ export default function Overlay() {
     toggleOverlay();
   };
 
-  useEffect(() => {
+  // Layout effect: fires synchronously after the commit — the mark measures
+  // the true commit span, not scheduler-deferred effect-flush latency
+  useLayoutEffect(() => {
     if (overlay.isOn) {
-      backgroundOpacity.animate(1, { duration: ANIMATION.duration });
-      dateOpacity.animate(1, { duration: ANIMATION.duration });
-    } else {
-      backgroundOpacity.animate(0, { duration: ANIMATION.duration });
-      dateOpacity.animate(0, { duration: ANIMATION.duration });
+      setVisible(true);
+      perfMeasure('overlay_open', 'overlay_open_start');
+      layerOpacity.animate(1, { duration: ANIMATION.duration });
+      return;
     }
-  }, [overlay.isOn, backgroundOpacity.animate, dateOpacity.animate]);
 
+    perfMeasure('overlay_close', 'overlay_close_start');
+    layerOpacity.animate(0, { duration: ANIMATION.duration });
+
+    // Hold the subtree displayable through the fade-out, then hide it
+    const hideTimer = setTimeout(() => setVisible(false), ANIMATION.duration);
+
+    return () => clearTimeout(hideTimer);
+  }, [overlay.isOn, layerOpacity.animate]);
+
+  // box-none: catchers catch, the row exempt falls through to the real row
   const computedStyleContainer: ViewStyle = {
-    pointerEvents: overlay.isOn ? 'auto' : 'none',
+    pointerEvents: overlay.isOn ? 'box-none' : 'none',
+    display: visible ? 'flex' : 'none',
   };
 
-  const computedStyleCountdown: ViewStyle = {
-    top: insets.top + SCREEN.paddingTop,
-  };
+  const catcherRegions = buildCatcherRegions({
+    windowWidth: window.width,
+    windowHeight: window.height,
+    list: listMeasurements.width > 0 ? listMeasurements : null,
+    rowIndex: overlay.selectedPrayerIndex,
+  });
 
-  // Overlay positioning is window-absolute: measureInWindow (RN 0.86 new arch)
-  // returns coordinates with the viewport offset included, and the edge-to-edge
-  // root view spans the full window — so the raw pageY/pageX is already the
-  // exact on-screen position. No per-device inset math belongs here (the
-  // pre-SDK-57 "+ insets.top on Android" correction double-counted the status
-  // bar and shifted the overlay down by its height).
-  const computedStyleDate: ViewStyle = {
-    top: dateMeasurements?.pageY ?? 0,
-    left: dateMeasurements?.pageX ?? 0,
-  };
-
-  // Colors and shadows based on schedule type
-  const isExtra = overlay.scheduleType === ScheduleType.Extra;
-  const glowColor = isExtra ? COLORS.glow.overlayExtras : COLORS.glow.overlay;
-  const activeBackgroundColor = isExtra ? COLORS.prayer.activeBackgroundExtras : COLORS.prayer.activeBackground;
-  const shadowColor = isExtra ? COLORS.shadow.prayerExtras : COLORS.shadow.prayer;
-  const shadowStyle = isExtra ? SHADOW.prayerExtras : SHADOW.prayer;
-
-  const computedStylePrayer: ViewStyle = {
-    top: (listMeasurements?.pageY ?? 0) + overlay.selectedPrayerIndex * STYLES.prayer.height,
-    left: listMeasurements?.pageX ?? 0,
-    width: listMeasurements?.width ?? 0,
-    ...shadowStyle,
-    shadowColor,
-    ...(selectedPrayer.isNext && { backgroundColor: activeBackgroundColor }),
-  };
-
-  // First 3 items (indices 0, 1, 2) show info box below, rest show above
+  // Info box geometry: unchanged from the copy era (list measurement anchors)
   const showInfoBoxAbove = overlay.selectedPrayerIndex >= 3;
   const INFO_BOX_HEIGHT = 300;
+
+  const isExtra = overlay.scheduleType === ScheduleType.Extra;
 
   // Info box positioned below prayer row (for first 3 items)
   const computedStyleInfoBoxBelow: ViewStyle = {
@@ -141,27 +122,10 @@ export default function Overlay() {
   const explanation = isExtra ? EXTRAS_EXPLANATIONS[overlay.selectedPrayerIndex] : null;
   const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[overlay.selectedPrayerIndex] : null;
 
-  const formattedDate = hijriEnabled ? formatHijriDateLong(selectedPrayer.date) : formatDateLong(selectedPrayer.date);
-
   return (
-    <Reanimated.View style={[styles.container, computedStyleContainer, backgroundOpacity.style]}>
-      {/* Countdown */}
-      <View style={[styles.countdown, computedStyleCountdown]}>
-        <Countdown type={overlay.scheduleType} />
-      </View>
-      <Pressable style={{ flex: 1 }} onPress={handleClose} />
-
-      {/* Date */}
-      <Reanimated.Text style={[styles.date, computedStyleDate as object, dateOpacity.style]}>
-        {formattedDate}
-      </Reanimated.Text>
-
-      {/* Prayer overlay */}
-      <View style={[styles.prayer, computedStylePrayer]}>
-        <Prayer index={overlay.selectedPrayerIndex} type={overlay.scheduleType} isOverlay />
-      </View>
-
-      {/* Prayer explanation box */}
+    <Reanimated.View style={[styles.container, computedStyleContainer, layerOpacity.style]}>
+      {/* Prayer explanation box (extras only — overlay-native UI, faded by
+          this layer; the background morph lives in VeilBackdrop) */}
       {isExtra && prayerName && explanation && explanationArabic && (
         <PrayerExplanation
           prayerName={prayerName}
@@ -172,21 +136,14 @@ export default function Overlay() {
         />
       )}
 
-      {/* Gradient background */}
-      <LinearGradient
-        colors={[COLORS.gradient.overlay.start, COLORS.gradient.overlay.end]}
-        style={[StyleSheet.absoluteFill, styles.gradientContainer]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-      />
-
-      <Glow
-        color={glowColor}
-        style={{
-          top: -window.width / 1.25,
-          left: -window.width / 2,
-        }}
-      />
+      {/* Press-catcher: everything except the selected row closes the overlay */}
+      {catcherRegions.map((region) => (
+        <Pressable
+          key={region.id}
+          onPress={handleClose}
+          style={[styles.catcher, { top: region.top, left: region.left, width: region.width, height: region.height }]}
+        />
+      ))}
     </Reanimated.View>
   );
 }
@@ -200,26 +157,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: OVERLAY.zindexes.overlay,
   },
-  countdown: {
+  catcher: {
     position: 'absolute',
-    pointerEvents: 'none',
-    left: 0,
-    right: 0,
-  },
-  date: {
-    position: 'absolute',
-    pointerEvents: 'none',
-    color: COLORS.text.secondary,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.family.regular,
-  },
-  prayer: {
-    ...STYLES.prayer.border,
-    position: 'absolute',
-    width: '100%',
-    height: STYLES.prayer.height,
-  },
-  gradientContainer: {
-    zIndex: -1,
   },
 });

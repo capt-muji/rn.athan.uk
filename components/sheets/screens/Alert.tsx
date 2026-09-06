@@ -56,7 +56,6 @@ export default function BottomSheetAlert() {
   }, [sheetState]);
 
   const handleDismiss = useCallback(async () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     if (sheetState && originalState) {
       await commitAlertMenuChanges(
         sheetState.type,
@@ -100,7 +99,9 @@ export default function BottomSheetAlert() {
       icon={<IconView type={Icon.BELL_RING} size={16} color='rgba(165, 180, 252, 0.8)' />}
       enableDynamicSizing
       scrollable={false}
-      onDismiss={handleDismiss}>
+      onDismiss={handleDismiss}
+      perfName='sheet_alert'
+      closeHaptic={Haptics.ImpactFeedbackStyle.Light}>
       {/* Prayer Alert Card */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Athan</Text>

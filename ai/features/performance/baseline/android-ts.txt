@@ -1,0 +1,106 @@
+09-06 00:44:31.201 18722 19018 D ReactNativeJS: PERF_MARK {"seq":296,"ts":35280021,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:44:31.203 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":297,"ts":35280023,"name":"overlay_open","type":"measure","duration":187}
+09-06 00:44:35.772 18722 19018 D ReactNativeJS: PERF_MARK {"seq":298,"ts":35289155,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:44:35.773 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":299,"ts":35289155,"name":"overlay_close","type":"measure","duration":195}
+09-06 00:44:40.309 18722 19018 D ReactNativeJS: PERF_MARK {"seq":300,"ts":35298236,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:44:40.311 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":301,"ts":35298238,"name":"overlay_open","type":"measure","duration":185}
+09-06 00:44:44.506 18722 19018 D ReactNativeJS: PERF_MARK {"seq":302,"ts":35306628,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:44:44.506 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":303,"ts":35306629,"name":"overlay_close","type":"measure","duration":190}
+09-06 00:44:48.389 18722 19018 D ReactNativeJS: PERF_MARK {"seq":304,"ts":35314413,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:44:48.389 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":305,"ts":35314413,"name":"overlay_open","type":"measure","duration":173}
+09-06 00:44:52.676 18722 19018 D ReactNativeJS: PERF_MARK {"seq":306,"ts":35322979,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:44:52.677 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":307,"ts":35322980,"name":"overlay_close","type":"measure","duration":182}
+09-06 00:44:57.462 18722 19018 D ReactNativeJS: PERF_MARK {"seq":308,"ts":35332554,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:44:57.462 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":309,"ts":35332554,"name":"overlay_open","type":"measure","duration":178}
+09-06 00:45:01.591 18722 19018 D ReactNativeJS: PERF_MARK {"seq":310,"ts":35340816,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:01.591 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":311,"ts":35340816,"name":"overlay_close","type":"measure","duration":174}
+09-06 00:45:05.686 18722 19018 D ReactNativeJS: PERF_MARK {"seq":312,"ts":35349010,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:05.686 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":313,"ts":35349010,"name":"overlay_open","type":"measure","duration":170}
+09-06 00:45:10.433 18722 19018 D ReactNativeJS: PERF_MARK {"seq":314,"ts":35358453,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:10.433 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":315,"ts":35358453,"name":"overlay_close","type":"measure","duration":190}
+09-06 00:45:14.288 18722 19018 D ReactNativeJS: PERF_MARK {"seq":316,"ts":35366205,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:14.288 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":317,"ts":35366205,"name":"overlay_open","type":"measure","duration":177}
+09-06 00:45:18.601 18722 19018 D ReactNativeJS: PERF_MARK {"seq":318,"ts":35374802,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:18.601 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":319,"ts":35374802,"name":"overlay_close","type":"measure","duration":208}
+09-06 00:45:23.387 18722 19018 D ReactNativeJS: PERF_MARK {"seq":320,"ts":35384394,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:23.388 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":321,"ts":35384395,"name":"overlay_open","type":"measure","duration":188}
+09-06 00:45:27.609 18722 19018 D ReactNativeJS: PERF_MARK {"seq":322,"ts":35392818,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:27.610 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":323,"ts":35392818,"name":"overlay_close","type":"measure","duration":208}
+09-06 00:45:31.273 18722 19018 D ReactNativeJS: PERF_MARK {"seq":324,"ts":35400171,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:31.273 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":325,"ts":35400171,"name":"overlay_open","type":"measure","duration":182}
+09-06 00:45:35.566 18722 19018 D ReactNativeJS: PERF_MARK {"seq":326,"ts":35408758,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:35.566 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":327,"ts":35408758,"name":"overlay_close","type":"measure","duration":183}
+09-06 00:45:39.435 18722 19018 D ReactNativeJS: PERF_MARK {"seq":328,"ts":35416496,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:39.435 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":329,"ts":35416496,"name":"overlay_open","type":"measure","duration":182}
+09-06 00:45:43.580 18722 19018 D ReactNativeJS: PERF_MARK {"seq":330,"ts":35424788,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:43.580 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":331,"ts":35424788,"name":"overlay_close","type":"measure","duration":180}
+09-06 00:45:47.458 18722 19018 D ReactNativeJS: PERF_MARK {"seq":332,"ts":35432549,"name":"overlay_open_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:47.458 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":333,"ts":35432549,"name":"overlay_open","type":"measure","duration":174}
+09-06 00:45:52.498 18722 19018 D ReactNativeJS: PERF_MARK {"seq":334,"ts":35442612,"name":"overlay_close_start","type":"mark","duration":0,"detail":{"scheduleType":"standard"}}
+09-06 00:45:52.499 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":335,"ts":35442613,"name":"overlay_close","type":"measure","duration":192}
+09-06 00:46:20.484 18722 19018 D ReactNativeJS: PERF_MARK {"seq":336,"ts":35498785,"name":"sheet_settings_present","type":"mark","duration":0}
+09-06 00:46:20.668 18722 19018 D ReactNativeJS: PERF_MARK {"seq":337,"ts":35499148,"name":"sheet_settings_animate","type":"mark","duration":0}
+09-06 00:46:20.921 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":338,"ts":35499221,"name":"sheet_settings_open","type":"measure","duration":437}
+09-06 00:46:20.921 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":339,"ts":35499401,"name":"sheet_settings_open_anim","type":"measure","duration":259}
+09-06 00:46:26.692 18722 19018 D ReactNativeJS: PERF_MARK {"seq":340,"ts":35511115,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:46:32.153 18722 19018 D ReactNativeJS: PERF_MARK {"seq":341,"ts":35522074,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:46:36.403 18722 19018 D ReactNativeJS: PERF_MARK {"seq":342,"ts":35530551,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:46:41.247 18722 19018 D ReactNativeJS: PERF_MARK {"seq":343,"ts":35540239,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:46:45.849 18722 19018 D ReactNativeJS: PERF_MARK {"seq":344,"ts":35549429,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:46:50.363 18722 19018 D ReactNativeJS: PERF_MARK {"seq":345,"ts":35558460,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:46:54.583 18722 19018 D ReactNativeJS: PERF_MARK {"seq":346,"ts":35566901,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:46:58.510 18722 19018 D ReactNativeJS: PERF_MARK {"seq":347,"ts":35574790,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:05.154 18722 19018 D ReactNativeJS: PERF_MARK {"seq":348,"ts":35588069,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:09.322 18722 19018 D ReactNativeJS: PERF_MARK {"seq":349,"ts":35596393,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:13.451 18722 19018 D ReactNativeJS: PERF_MARK {"seq":350,"ts":35604659,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:17.844 18722 19018 D ReactNativeJS: PERF_MARK {"seq":351,"ts":35613461,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:22.078 18722 19018 D ReactNativeJS: PERF_MARK {"seq":352,"ts":35621882,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:25.539 18722 19018 D ReactNativeJS: PERF_MARK {"seq":353,"ts":35628828,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:30.084 18722 19018 D ReactNativeJS: PERF_MARK {"seq":354,"ts":35637903,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:34.161 18722 19018 D ReactNativeJS: PERF_MARK {"seq":355,"ts":35646044,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:39.046 18722 19018 D ReactNativeJS: PERF_MARK {"seq":356,"ts":35655824,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:43.830 18722 19018 D ReactNativeJS: PERF_MARK {"seq":357,"ts":35665399,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:48.968 18722 19018 D ReactNativeJS: PERF_MARK {"seq":358,"ts":35675687,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:54.139 18722 19018 D ReactNativeJS: PERF_MARK {"seq":359,"ts":35686038,"name":"toggle_tap","type":"mark","duration":0,"detail":{"label":"Show hijri date"}}
+09-06 00:47:56.505 18722 19018 D ReactNativeJS: PERF_MARK {"seq":360,"ts":35690823,"name":"sheet_settings_close_start","type":"mark","duration":0}
+09-06 00:47:56.777 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":361,"ts":35691096,"name":"sheet_settings_close","type":"measure","duration":259}
+09-06 00:48:12.423 18722 19018 D ReactNativeJS: PERF_MARK {"seq":362,"ts":35722663,"name":"sheet_settings_present","type":"mark","duration":0}
+09-06 00:48:12.589 18722 19018 D ReactNativeJS: PERF_MARK {"seq":363,"ts":35722988,"name":"sheet_settings_animate","type":"mark","duration":0}
+09-06 00:48:12.862 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":364,"ts":35723103,"name":"sheet_settings_open","type":"measure","duration":416}
+09-06 00:48:12.862 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":365,"ts":35723261,"name":"sheet_settings_open_anim","type":"measure","duration":258}
+09-06 00:48:17.462 18722 19018 D ReactNativeJS: PERF_MARK {"seq":366,"ts":35732740,"name":"sheet_settings_close_start","type":"mark","duration":0}
+09-06 00:48:17.630 18722 19018 D ReactNativeJS: PERF_MARK {"seq":367,"ts":35733074,"name":"sheet_sound_present","type":"mark","duration":0}
+09-06 00:48:18.104 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":368,"ts":35733382,"name":"sheet_settings_close","type":"measure","duration":555}
+09-06 00:48:18.259 18722 19018 D ReactNativeJS: PERF_MARK {"seq":369,"ts":35734312,"name":"sheet_sound_animate","type":"mark","duration":0}
+09-06 00:48:18.463 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":370,"ts":35733908,"name":"sheet_sound_open","type":"measure","duration":834}
+09-06 00:48:18.463 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":371,"ts":35734516,"name":"sheet_sound_open_anim","type":"measure","duration":226}
+09-06 00:48:25.911 18722 19018 D ReactNativeJS: PERF_MARK {"seq":372,"ts":35749524,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:48:31.330 18722 19018 D ReactNativeJS: PERF_MARK {"seq":373,"ts":35760472,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:48:36.991 18722 19018 D ReactNativeJS: PERF_MARK {"seq":374,"ts":35771708,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:48:42.494 18722 19018 D ReactNativeJS: PERF_MARK {"seq":375,"ts":35782798,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:48:48.030 18722 19018 D ReactNativeJS: PERF_MARK {"seq":376,"ts":35793786,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:48:52.380 18722 19018 D ReactNativeJS: PERF_MARK {"seq":377,"ts":35802495,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:48:57.904 18722 19018 D ReactNativeJS: PERF_MARK {"seq":378,"ts":35813518,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:49:03.509 18722 19018 D ReactNativeJS: PERF_MARK {"seq":379,"ts":35824737,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:49:09.262 18722 19018 D ReactNativeJS: PERF_MARK {"seq":380,"ts":35836239,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:49:14.347 18722 19018 D ReactNativeJS: PERF_MARK {"seq":381,"ts":35846508,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:49:19.536 18722 19018 D ReactNativeJS: PERF_MARK {"seq":382,"ts":35856819,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:49:25.564 18722 19018 D ReactNativeJS: PERF_MARK {"seq":383,"ts":35868863,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:49:31.082 18722 19018 D ReactNativeJS: PERF_MARK {"seq":384,"ts":35879917,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:49:35.847 18722 19018 D ReactNativeJS: PERF_MARK {"seq":385,"ts":35889505,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:49:41.476 18722 19018 D ReactNativeJS: PERF_MARK {"seq":386,"ts":35900692,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:49:45.800 18722 19018 D ReactNativeJS: PERF_MARK {"seq":387,"ts":35909333,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:49:51.313 18722 19018 D ReactNativeJS: PERF_MARK {"seq":388,"ts":35920440,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:49:55.591 18722 19018 D ReactNativeJS: PERF_MARK {"seq":389,"ts":35928925,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:50:03.065 18722 19018 D ReactNativeJS: PERF_MARK {"seq":390,"ts":35943810,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":0}}
+09-06 00:50:09.305 18722 19018 D ReactNativeJS: PERF_MARK {"seq":391,"ts":35956342,"name":"sound_select_tap","type":"mark","duration":0,"detail":{"index":1}}
+09-06 00:50:11.800 18722 19018 D ReactNativeJS: PERF_MARK {"seq":392,"ts":35961414,"name":"sheet_sound_close_start","type":"mark","duration":0}
+09-06 00:50:12.114 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":393,"ts":35961728,"name":"sheet_sound_close","type":"measure","duration":287}
+09-06 00:50:12.114 18722 19018 D ReactNativeJS: PERF_MARK {"seq":394,"ts":35962016,"name":"sound_commit_start","type":"mark","duration":0}
+09-06 00:50:12.188 18722 19018 D ReactNativeJS: PERF_MARK {"seq":395,"ts":35962133,"name":"sched_rescheduleAllNotifications_enqueue","type":"mark","duration":0,"detail":{"operation":"rescheduleAllNotifications"}}
+09-06 00:50:12.188 18722 19018 D ReactNativeJS: PERF_MARK {"seq":396,"ts":35962134,"name":"sched_rescheduleAllNotifications_start","type":"mark","duration":0}
+09-06 00:50:12.188 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":397,"ts":35962133,"name":"sched_rescheduleAllNotifications_queue_wait","type":"measure","duration":1}
+09-06 00:50:12.211 18722 19018 D ReactNativeJS: PERF_MARK {"seq":398,"ts":35962230,"name":"widget_push_start","type":"mark","duration":0}
+09-06 00:50:12.211 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":399,"ts":35962113,"name":"sound_commit","type":"measure","duration":117}
+09-06 00:50:12.211 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":400,"ts":35962157,"name":"sched_rescheduleAllNotifications","type":"measure","duration":74}
+09-06 00:50:12.211 18722 19018 I ReactNativeJS: PERF_MEASURE {"seq":401,"ts":35962230,"name":"widget_push","type":"measure","duration":0}

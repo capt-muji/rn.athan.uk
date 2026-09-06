@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 import { COLORS, HIT_SLOP, SPACING, TEXT } from '@/shared/constants';
+import { perfMark } from '@/shared/perf';
 
 import Toggle from './Toggle';
 
@@ -17,10 +18,15 @@ interface LabeledToggleProps {
  * <LabeledToggle label="Enable feature" value={enabled} onToggle={() => setEnabled(!enabled)} />
  */
 export default function LabeledToggle({ label, value, onToggle }: LabeledToggleProps) {
+  const handleToggle = () => {
+    perfMark('toggle_tap', { label });
+    onToggle();
+  };
+
   return (
-    <Pressable style={styles.container} onPress={onToggle} hitSlop={HIT_SLOP.md}>
+    <Pressable style={styles.container} onPress={handleToggle} hitSlop={HIT_SLOP.md}>
       <Text style={styles.label}>{label}</Text>
-      <Toggle value={value} onToggle={onToggle} />
+      <Toggle value={value} onToggle={handleToggle} />
     </Pressable>
   );
 }

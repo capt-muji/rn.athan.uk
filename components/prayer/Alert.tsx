@@ -13,8 +13,8 @@ import { useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, SIZE, SPACING, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
+import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { getPrayerAlertAtom } from '@/stores/notifications';
-import { overlayAtom } from '@/stores/overlay';
 import { refreshUIAtom, showAlertSheet } from '@/stores/ui';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
@@ -30,7 +30,6 @@ const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType }[] = [
 interface Props {
   type: ScheduleType;
   index: number;
-  isOverlay?: boolean;
 }
 
 /**
@@ -41,7 +40,7 @@ interface Props {
  * - Reminder toggle with options when enabled
  * - Reminder interval selection (5-30 min)
  */
-export default function Alert({ type, index, isOverlay = false }: Props) {
+export default function Alert({ type, index }: Props) {
   // =============================================================================
   // STATE & REFS
   // =============================================================================
@@ -51,14 +50,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   // Atoms
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
   const refreshUI = useAtomValue(refreshUIAtom);
-  const overlay = useAtomValue(overlayAtom);
 
   // =============================================================================
   // CUSTOM HOOKS
   // =============================================================================
 
   const Schedule = useSchedule(type);
-  const Prayer = usePrayer(type, index, isOverlay);
+  const Prayer = usePrayer(type, index);
   const { ensurePermissions } = useNotification();
   const { AnimScale, AnimFill } = useAlertAnimations({
     initialColorPos: Prayer.ui.initialColorPos,
@@ -70,10 +68,7 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
 
   const iconIndex = alertAtom;
 
-  const isSelectedForOverlay = useMemo(
-    () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
-    [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
-  );
+  const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
 
   // =============================================================================
   // ANIMATION EFFECTS
@@ -105,12 +100,13 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
     }
   }, [Schedule.displayDate, isSelectedForOverlay]);
 
-  // Update fill color based on selection state
+  // Update fill color based on selection state.
+  // 150ms ≈ the original overlay's perceived row-rise pace (x19: 87→254 over ~150ms)
   // biome-ignore lint/correctness/useExhaustiveDependencies: keyed on selection only; initialColorPos changes are handled by the refresh/next/cascade effects
   useEffect(() => {
-    const colorPos = isSelectedForOverlay || Prayer.isOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimFill.animate(colorPos, { duration: ANIMATION.durationVeryFast });
-  }, [isSelectedForOverlay, Prayer.isOverlay]);
+    const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
+    AnimFill.animate(colorPos, { duration: ANIMATION.durationFade });
+  }, [isSelectedForOverlay]);
 
   // =============================================================================
   // HANDLERS

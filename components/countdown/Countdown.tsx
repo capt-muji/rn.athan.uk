@@ -4,11 +4,10 @@ import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
 import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, SPACING, STYLES, TEXT } from '@/shared/constants';
-import { formatTime } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
-import { overlayCountdownAtom } from '@/stores/countdown';
-import { overlayAtom } from '@/stores/overlay';
-import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
+import { overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { overlayCountdownDisplayAtom, overlayCountdownNameAtom } from '@/stores/countdown';
+import { countdownBarShownAtom } from '@/stores/ui';
 
 import Bar from './Bar';
 
@@ -19,25 +18,25 @@ interface Props {
 export default function Countdown({ type }: Props) {
   // NEW: Use sequence-based countdown hook
   // See: ai/adr/005-timing-system-overhaul.md
-  const { timeLeft, prayerName, isReady } = useCountdown(type);
+  const { displayTime: sequenceDisplay, prayerName, isReady } = useCountdown(type);
 
-  const overlay = useAtomValue(overlayAtom);
-  const showSeconds = useAtomValue(showSecondsAtom);
+  const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const countdownBarShown = useAtomValue(countdownBarShownAtom);
 
   // Overlay mode uses dedicated overlay countdown atom (selected prayer countdown)
-  const overlayCountdown = useAtomValue(overlayCountdownAtom);
+  const overlayName = useAtomValue(overlayCountdownNameAtom);
+  const overlayDisplay = useAtomValue(overlayCountdownDisplayAtom);
 
   // Use countdown when overlay is on, otherwise use sequence-based countdown
-  const displayName = overlay.isOn ? overlayCountdown.name : prayerName;
-  const displayTime = overlay.isOn ? overlayCountdown.timeLeft : timeLeft;
+  const displayName = overlayIsOn ? overlayName : prayerName;
+  const displayTime = overlayIsOn ? overlayDisplay : sequenceDisplay;
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: withTiming(overlay.isOn ? 1.5 : 1) }, { translateY: withTiming(overlay.isOn ? 5 : 0) }],
+    transform: [{ scale: withTiming(overlayIsOn ? 1.5 : 1) }, { translateY: withTiming(overlayIsOn ? 5 : 0) }],
   }));
 
   // Show loading state if countdown not ready (sequence not initialized)
-  if (!isReady && !overlay.isOn) {
+  if (!isReady && !overlayIsOn) {
     return null;
   }
 
@@ -45,7 +44,7 @@ export default function Countdown({ type }: Props) {
     <Animated.View style={[styles.container]}>
       <View>
         <Text style={[styles.text]}>{displayName}</Text>
-        <Animated.Text style={[styles.countdown, animatedStyle]}>{formatTime(displayTime, !showSeconds)}</Animated.Text>
+        <Animated.Text style={[styles.countdown, animatedStyle]}>{displayTime}</Animated.Text>
         {countdownBarShown && <Bar type={type} />}
       </View>
     </Animated.View>
