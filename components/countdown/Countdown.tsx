@@ -6,7 +6,6 @@ import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, SPACING, STYLES, TEXT } from '@/shared/constants';
 import type { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
-import { overlayCountdownDisplayAtom, overlayCountdownNameAtom } from '@/stores/countdown';
 import { countdownBarShownAtom } from '@/stores/ui';
 
 import Bar from './Bar';
@@ -18,18 +17,14 @@ interface Props {
 export default function Countdown({ type }: Props) {
   // NEW: Use sequence-based countdown hook
   // See: ai/adr/005-timing-system-overhaul.md
-  const { displayTime: sequenceDisplay, prayerName, isReady } = useCountdown(type);
+  //
+  // While the overlay is open on this schedule the page countdown atom itself
+  // carries the selected prayer's countdown (ADR-014 countdown merge — the
+  // sequence ticker writes the display target); no second subscription exists
+  const { displayTime, prayerName, isReady } = useCountdown(type);
 
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const countdownBarShown = useAtomValue(countdownBarShownAtom);
-
-  // Overlay mode uses dedicated overlay countdown atom (selected prayer countdown)
-  const overlayName = useAtomValue(overlayCountdownNameAtom);
-  const overlayDisplay = useAtomValue(overlayCountdownDisplayAtom);
-
-  // Use countdown when overlay is on, otherwise use sequence-based countdown
-  const displayName = overlayIsOn ? overlayName : prayerName;
-  const displayTime = overlayIsOn ? overlayDisplay : sequenceDisplay;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(overlayIsOn ? 1.5 : 1) }, { translateY: withTiming(overlayIsOn ? 5 : 0) }],
@@ -43,7 +38,7 @@ export default function Countdown({ type }: Props) {
   return (
     <Animated.View style={[styles.container]}>
       <View>
-        <Text style={[styles.text]}>{displayName}</Text>
+        <Text style={[styles.text]}>{prayerName}</Text>
         <Animated.Text style={[styles.countdown, animatedStyle]}>{displayTime}</Animated.Text>
         {countdownBarShown && <Bar type={type} />}
       </View>

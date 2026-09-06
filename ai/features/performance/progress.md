@@ -5,34 +5,23 @@
 ## State
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
-- **Phase**: s10 IN PROGRESS — #20 per-element re-architecture SHIPPED (build 16, 3T) +
-  **PIXEL PARITY ACHIEVED** per the final settled-pair vision diff (fix queue empty; hero glyphs
-  XOR 0.19%, pill/veil/glow identical; the ONLY differences are the three sanctioned: location
-  added [dim, above the date], date WHITE [original's copy was slate-blue], date position
-  UNCHANGED — bbox identical to the original). Owner verdicts so far: in-place approach
-  "definitely more performant / a lot more smooth on the 3T" than the copy original; pixel bar =
-  1:1 with the original modulo those three. Architecture: per-element fades (5 non-selected rows,
-  pill-when-not-selected, dots+settings+decorations wrapper, Masjid; Ago+Bar pre-existing) +
-  VeilBackdrop (gradient + glow inside the underlay) + thin input layer (catcher, box-none,
-  row-exempt + extras explanation) + scrollEnabled swipe gate + lock removed w/
-  selection-follows-next-prayer. Open animation 60fps (15-18ms cadence) on the per-element build.
-  NEXT: s10 queue below (countdown merge first), then campaign wrap (ADR-014 status, AGENTS.md
-  lessons: box-none hit-testing, pager scrollEnabled, mark-semantics, capture-artifact vetting).
-- **Builds**: Release, ORIGINAL app id, gate-ON. Android = build 17 (the 1.19.0 baseline: build 16's
-  code + version bump), installed + smoke-verified 2026-09-06 ~14:50 (overlay parity re-confirmed
-  post-upgrade: veil/date/glow/row-fades all pass; width-cache keys KEPT through the upgrade wipe —
-  the #16 whitelist works on the real upgrade path). NOTE: Android system versionName still reads
-  1.18.9 (gradle regenerates at prebuild — known expo gotcha; the JS-side version that drives the
-  update popup + upgrade flow IS 1.19.0; the owner's release flow re-syncs gradle). Committed as
-  1.19.0 on `perf/testing` and pushed — this commit is the S10 BASELINE. iOS NOT rebuilt this
-  campaign (3T-only directive; REBUILD iOS before the next iOS eyeball pass — Day/Prayer/Time/
-  Alert/Navigation/Overlay all changed).
-- **Device state (end of s9)**: 3T healthy (33-38°C, no rogue agents, battery full), app
-  foreground-settled with overlay CLOSED, keep-awake on. Maestro stalled once mid-session (killed +
-  raw sendevent/logcat taps used as fallback — harness note in the log).
+- **Phase**: s10 QUEUE COMPLETE (session 11): #20 CLOSED — per-element overlay shipped + pixel
+  parity + countdown merge + boundary recordings + idle gate + campaign wrap (ADR-014 →
+  Implemented, AGENTS.md §Performance Design Rules now 12 + campaign-closure Recent Decisions
+  entry). REMAINING: the owner's iOS EYEBALL pass = the final acceptance gate (XS rebuilt
+  2026-09-06 16:32, Release gate-ON; row-shadow question pre-answered in code —
+  ActiveBackground carries SHADOW.prayer natively) + the owner's commit ritual (working tree:
+  the s10.1 countdown-merge code + docs, uncommitted per directive; jest 931/931).
+- **Builds**: Android = resting build 21 (16:27:39, gate-ON, mock byte-identical to HEAD) on
+  the 3T; the S10 BASELINE commit ab3ab7c (1.19.0) is superseded on-device by the s10.1 code.
+  iOS = Release gate-ON rebuilt + installed + launched on the XS (16:32, BUILD SUCCEEDED).
+- **Device state (end of s11)**: 3T healthy (~31% process band, battery full, keep-awake on),
+  app foreground, overlay closed after the idle-gate runs. XS: fresh 1.19.0+s10.1 install
+  launched once (16:32:47).
 - **Baseline evidence dir**: `ai/features/performance/baseline/` (Phases 1+2); s7 evidence in
-  /var/folders/.../T/opencode/perf12/; s9 evidence in /var/folders/.../T/opencode/perf20/ +
-  e2e/evidence/{overlay-open,overlay-open-dim,open-final}-*.
+  /var/folders/.../T/opencode/perf12/; s9 in perf20/ + e2e/evidence/{overlay-open,overlay-open-dim,
+  open-final}-*; s10/s11 evidence in /var/folders/.../T/opencode/perf21/{s101,s102,s103}/
+  (s101 = merge frames+vision, s102 = boundary takes a/b5/c + vision reads, s103 = idle atrace).
 - **Standing owner directives**: 3T is THE verification device (3T-only testing; iOS = owner eyeball);
   FPS-first evidence; 30fps FLOOR for big animations (per-second countdown text exempt); quality over
   speed; physical devices only; Release builds; no store deployments; never sleep >15s in one command;
@@ -133,7 +122,7 @@ Ordered backlog (from code dive; re-prioritize by measured impact):
 | 17 | NEW (s7, owner report): TAP→ACTION LATENCY — haptic fires immediately on prayer-item tap but the overlay takes ~500-700ms to visibly start; same ~500ms for the alert sheet after its icon tap. Campaign marks measured overlay_open 170-230ms (tap→effect) + ~116ms pre-animation stall; owner-perceived gap is larger post-reboot. Measure tap→first-visible-frame precisely (video + marks aligned), decompose (input→JS→commit→first animation frame), close the gap | **PARTIAL FIX LANDED (s7) — overlay path ~2.3x faster commit**: DECOMPOSITION (true-fidelity taps via raw kernel sendevent on the synaptics s3320 touchscreen, one-shell date-bracketed): tap-up→JS handler ≈ **130ms** (RN input dispatch + Pressable responder on SD820 — device floor, not app code); JS commit+effect (overlay_open mark) was **168-203ms**; +1 vsync to fade start ≈ ~325ms tap→animation + ~60-100ms fade-perceptibility ≈ the felt ~400ms+ (owner's 500-700 includes post-reboot system load). ROOT CAUSE of the fat commit: EVERY prayer row component (Prayer+Time+Alert ×12 rows + overlay copy ≈ 37 components) subscribed to the whole `overlayAtom` object — one tap re-rendered all of them. FIX: `stores/atoms/overlay.ts` gains `overlayIsOnAtom` (derived boolean — Countdown/Bar/Ago) + `getOverlaySelectedAtom(type,index)` (module-cached derived per-row selection atom — Prayer/Time/Alert); a toggle now re-renders only the rows whose selection flipped + overlay + isOn consumers. MEASURED (3T, build 08:03:14): overlay_open **61-89ms** across 5 cycles (was 168-203; baseline 162-230) → tap→animation ≈ 210ms, perceived ≈ 270-310ms. Alert-sheet path = #18's durations work. Input→JS 130ms floor documented. jest 928/928, biome+tsc green. Frame-quality re-audit folded into #18's video pass | owner eyeball 2026-09-06 | overlay_open 168-203ms → **61-89ms** |
 | 18 | NEW (s7, owner report): SHEET SPEED + CHOREOGRAPHY — (a) sheets close slowly with a slow-down at the very end (spring settle tail) — want faster closes AND haptic feedback earlier on close (notify completion); (b) settings → "Change athan" CLOSES settings THEN OPENS sound serially — want concurrent close+open; (c) sheet OPEN entrances feel slow (~500ms springs) — consider tightening durations across BottomSheetModal configs. Behavior stays 1:1 in effect (faster ≠ different); springs/durations are the levers | **DONE + VERIFIED (s7)**: (1) ROOT CAUSE of the tail: @gorhom default Android config = 250ms `Easing.out(Easing.exp)` — exponential tail drags the settle. FIX: Sheet.tsx passes `SHEET_ANIMATION_CONFIGS` = Android `{200ms, Easing.out(Easing.cubic)}` / iOS tightened spring `{damping 42, stiffness 500, mass 1}`. MEASURED: open_anim marks 152-200ms; close visual cluster ~115-150ms; alert-OPEN/CLOSE + settings-OPEN cadence ALL 16-17ms (60fps, floor PASS with headroom); plain close no longer settles slowly (cubic-out has no asymptote). (2) Close haptic EARLIER: new Sheet prop `closeHaptic` fires in onAnimate when the close STARTS (back/backdrop/swipe/programmatic — all paths); the three screens' onDismiss handlers no longer fire it at completion (Settings Medium, Sound Medium, Alert Light — same styles as before). (3) Change-athan CONCURRENCY: root-caused TWO serializers — the 150ms setTimeout (removed: hideSettingsSheet() + showSheet() same tick) and the lib's default `stackBehavior='switch'` (unmounts-then-presents; Sound sheet now `stackBehavior='push'`). Marks confirm sound_present + settings_close_start fire the SAME ms. RESIDUAL (owner-accepted s7): the sound sheet's animation still starts ~600ms after present because @gorhom unmounts modal content on every dismiss and re-mounting the 32 SoundItems is JS-thread work; owner directive: keep rendering ALL 32 rows (static, fixed, minimal — NO virtualization/lazy-load/FlashList). Net UX: tap → settings drops immediately → sound rises after its mount. (4) open durations tightened via the same config (d subsumed). jest 928/928, biome+tsc green; builds 08:10:12 + 08:20:53. HARNESS: settings "Change athan" row center = (540,1138) on the 3T; pull screenrecord files only after the recording's time limit elapses (moov atom otherwise missing) | owner eyeball 2026-09-06 | open_anim 152-200ms; cadence 16-17ms everywhere; sound animate-start still +600ms (mount-bound, accepted) |
 | 19 | NEW (s7, owner report — PRE-EXISTING DEFECT): overlay prayer-row DOUBLE-EXPOSURE jitter — the overlay duplicates the selected prayer row on top of the original; during the overlay's 0→100% fade-in the underlying original row (English name, Arabic name, time, alert icon, active background — BOTH pages) shimmers/jitters because the overlay copy renders a different shade of white → a visible crossfade. Capture frame evidence from every piece (open, held, close), then fix (may be subsumed by #20's re-architecture — sequence: evidence first, then decide) | **EVIDENCE CAPTURED (s7, vision-audited; fix = #20)**: recording perf12/x19 (open on ACTIVE row → close → open on DIM row). PIXELS: Dhuhr band mean 74.2 → **55.7 dip** → 72.1 settled; text max 255 → 190 → 254 (settled ≠ pre-tap: the "different shade"). VISION: at every instant exactly ONE aligned render (no visible double image) — the crossover is TEMPORAL: whole row dims to ~75% at ~100ms (semi-transparent dark overlay layers over the still-bright original while the copy is also ~80%-alpha — a bluish veil, soft halos, zero full-white pixels), then settles as the overlay's own re-render — Latin text pixel-identical but Arabic re-rasterizes ~1.5px shifted + bell 1px wider (the "crawl"). Close = symmetric dip then pixel-perfect original return (XOR 3-19px — underlay never unmounted, Rule-5 compliant). DIM-row open (Asr): smooth monotonic 87→254, NO dip — the in-place AnimColor path is already correct. Owner context folded in: crossover hits text+active-bg+icons alike on both pages; exists ONLY because the overlay duplicates content on top. Root fix = #20 in-place re-architecture (single fade opacity animating the whole stack is structurally incapable of not dimming the underlay mid-fade) | owner eyeball 2026-09-06 | evidence perf12/x19 (74 frames + 6 vision-audited crops) |
-| 20 | NEW (s7, owner directive): OVERLAY RE-ARCHITECTURE — attempt a completely different approach: instead of a full-screen absolutely-positioned overlay that DUPLICATES the prayer row/countdown/date (with measureInWindow positioning), dim everything else and highlight the selected prayer + date + countdown IN PLACE using the existing components (top-left glow + fully dark background stay). **OWNER PROCESS DIRECTIVE (s7): split into a PLANNING session first — deep-dive, brainstorm, self-questioning, architectural research, bigger context window — then a BUILD session that implements it, both resuming from this file. THIS session only: capture #19 evidence + write the planning brief (ai/features/performance/overlay-rearchitecture-brief.md) so the planning session starts fully armed.** CRITICAL parity requirements (owner): 1:1 behavior before/after incl. performance testing; tapping an UPCOMING prayer (dim text) must still animate it to bright white (the overlay currently handles this); the overlay countdown (selected prayer, scale 1.5) must survive; overlay z-order/hit-testing 1:1; the underlay must stay live during the fade (no teardown jitter). **REMOVE THE 2s PRE-BOUNDARY LOCK (owner-sanctioned behavior change — the ONE deliberate deviation from 1:1)**: today the overlay auto-closes ~2-3s before the prayer (stores/countdown.ts `overlayMsLeft <= 3000` auto-close) AND refuses to open in that window — the lock exists ONLY because animating the active-background move to the next prayer inside the duplicated overlay tree is hard. With in-place components the cascade/next-prayer transition is just the normal list animation the app already does — the lock becomes unnecessary. GOAL (owner): UI stays fully consistent with the overlay open through countdown-finish/cascade/next-prayer transitions; no auto-close, no open-refusal. Owner s7 context (verbatim intent): the crossover exists ONLY because the overlay sits on top duplicating content — a 100%-white row must STAY 100% through open (no dim-to-50% crossover); a dimmed row animates smoothly from its dim value to 100% (already feels right — the in-place AnimColor path); the SAME crossover hits the active background, alert icons, full text — everything duplicated. Reusing the original mainscreen components in place should eliminate the crossover by construction. | **DESIGN READY (s8 planning session — ADR-014)**: veil-with-holes in-place re-architecture designed, written to `ai/adr/014/ADR.md`. Candidates: per-element dimming REJECTED (diffuse touch surface ~10 components, approximate settled look), composite-fix-the-duplicate REJECTED (#19 evidence — dip or teardown); CHOSEN: the root layer keeps ONLY the banded opaque gradient (static holes at hero/date/selected-row — the SAME one-shot measurements + math as today's copy positioning) + Glow + extras Explanation + 4-region press-catcher; ALL content in-place (selection atoms, hero swap+scale 1.5, Bar/Ago fades already exist — untouched; new overlay-awareness ONLY in Day date content/color + Time passed-selection next-occurrence time). Boundary semantic (2s-lock removal): selection-follows-next-prayer (hole jumps, next row rises, countdown retargets ≡ sequence countdown, pill cascades veiled; stick-and-count-tomorrow rejected). Hit-test/z-order 1:1 matrix in ADR §4. NO implementation this session. NEXT: BUILD session — "read progress.md + ADR-014 and build the overlay re-architecture per the ADR, perf-testing as you go"; ADR §7 = the parity bar | owner directive 2026-09-06 | design complete (ADR-014) |
+| 20 | NEW (s7, owner directive): OVERLAY RE-ARCHITECTURE — attempt a completely different approach: instead of a full-screen absolutely-positioned overlay that DUPLICATES the prayer row/countdown/date (with measureInWindow positioning), dim everything else and highlight the selected prayer + date + countdown IN PLACE using the existing components (top-left glow + fully dark background stay). **OWNER PROCESS DIRECTIVE (s7): split into a PLANNING session first — deep-dive, brainstorm, self-questioning, architectural research, bigger context window — then a BUILD session that implements it, both resuming from this file. THIS session only: capture #19 evidence + write the planning brief (ai/features/performance/overlay-rearchitecture-brief.md) so the planning session starts fully armed.** CRITICAL parity requirements (owner): 1:1 behavior before/after incl. performance testing; tapping an UPCOMING prayer (dim text) must still animate it to bright white (the overlay currently handles this); the overlay countdown (selected prayer, scale 1.5) must survive; overlay z-order/hit-testing 1:1; the underlay must stay live during the fade (no teardown jitter). **REMOVE THE 2s PRE-BOUNDARY LOCK (owner-sanctioned behavior change — the ONE deliberate deviation from 1:1)**: today the overlay auto-closes ~2-3s before the prayer (stores/countdown.ts `overlayMsLeft <= 3000` auto-close) AND refuses to open in that window — the lock exists ONLY because animating the active-background move to the next prayer inside the duplicated overlay tree is hard. With in-place components the cascade/next-prayer transition is just the normal list animation the app already does — the lock becomes unnecessary. GOAL (owner): UI stays fully consistent with the overlay open through countdown-finish/cascade/next-prayer transitions; no auto-close, no open-refusal. Owner s7 context (verbatim intent): the crossover exists ONLY because the overlay sits on top duplicating content — a 100%-white row must STAY 100% through open (no dim-to-50% crossover); a dimmed row animates smoothly from its dim value to 100% (already feels right — the in-place AnimColor path); the SAME crossover hits the active background, alert icons, full text — everything duplicated. Reusing the original mainscreen components in place should eliminate the crossover by construction. | **CLOSED (s10-s11) — SHIPPED as the PER-ELEMENT variant + pixel parity + countdown merge** (ADR-014 Implemented; bands-with-holes superseded after the owner rejected any cutout): per-row schedule-gated hidden atoms + pill/chrome/Masjid fades + VeilBackdrop + box-none catcher + scrollEnabled gate; 2s lock GONE (selection-follows-next-prayer, boundary-verified incl. open-tween collision + Isha→Fajr roll); countdown merged into the page atom (2 timers ever); parity vs original = XOR 0.19% modulo the three sanctioned deltas; owner-confirmed smooth on the 3T; iOS rebuilt for the owner eyeball (row-shadow pre-answered in code). See ADR-014 Implementation Outcome + session 10/11 log entries | owner directive 2026-09-06 | design complete (ADR-014) |
 
 Iteration protocol: profile → root-cause → fix → rebuild Release → re-measure BOTH devices
 → jest green → log delta here. Device is never the excuse.
@@ -165,6 +154,94 @@ Iteration protocol: profile → root-cause → fix → rebuild Release → re-me
 
 ## Log
 
+- 2026-09-06 (session 11 END — s10.4 + s10.5 WRAP): iOS rebuilt (Release, gate-ON, xcodebuild
+  BUILD SUCCEEDED 16:32, devicectl install + launch OK on the XS) — the owner's eyeball pass is
+  the final acceptance gate; row-shadow question PRE-ANSWERED in code: ActiveBackground.tsx:65-70
+  carries SHADOW.prayer/SHADOW.prayerExtras + COLORS.shadow.* natively (the old copy's constants —
+  iOS renders the real pill's shadow; verify visually at the pass). WRAP: ADR-014 → **Implemented**
+  (status rewritten + Implementation Outcome section appended: the pivot history, what shipped,
+  the countdown merge, the full §7 checklist results incl. the two supersedes — bands seams n/a,
+  iOS owner pass pending); AGENTS.md §Performance Design Rules extended 8 → 12 (mark-semantics
+  drift + settled-frame diffs; capture-artifact vetting incl. recorder-t0 drift, encoder drops,
+  stale AX dumps, recorder-death-with-shell, device-clock skew; box-none fall-through + pager
+  scrollEnabled hit-testing; state-merging over parallel state) + ONE campaign-closure Recent
+  Decisions entry; #20 table row → CLOSED; State block rewritten for handoff. Mock restored
+  byte-identical (verified vs HEAD). Final battery re-run on the resting tree: jest 931/931,
+  tsc clean, biome clean. Working tree (uncommitted, owner's ritual): stores/countdown.ts,
+  stores/overlay.ts, components/countdown/Countdown.tsx, shared/types.ts, both test files,
+  AGENTS.md, ai/adr/014/ADR.md, progress.md. CAMPAIGN RESUME POINT: owner iOS eyeball → any fix
+  queue it produces → owner commit ritual (suggest 1.20.0, minor — completed feature per §6).
+- 2026-09-06 (session 11 — s10.2 BOUNDARY RECORDING + s10.3 IDLE GATE: ALL PASS): builds 19-21
+  (gate-ON, mock-churned per case, RESTORED byte-identical + final resting build 16:27:39).
+  s10.2a (overlay OPEN ~2min, rides Dhuhr→Asr; perf21/s102/rec-a + vision): countdown-finish =
+  6s→…→1s hold (never 0s); hero swap ATOMIC at frame granularity (fa_068 "Dhuhr/1s" → fa_069
+  "Asr/2h 58m"); store transition 16ms (TICK log); pill slide = the dense 60fps run (70 frames,
+  single connected blob, exactly one row-pitch 150px, monotonic, 0.87s, never two/zero pills);
+  no veil drop/blink; overlay STILL OPEN after (AX: hero Asr 2h57m31s, highlight advanced,
+  catcher frames the Asr row). The coarse "2h 58m" for ~1s = display contract (ceil landed on
+  2h58m00s; 0s never renders). s10.2b (NO-OPEN-REFUSAL ≤2s + open-tween/cascade COLLISION;
+  rec-b5 + vision over ALL 121 frames): tap at ~1.3s-to-boundary → overlay_open 187ms — the
+  old ≤3s lock would have REFUSED; boundary 0.33s later hit WHILE the 500ms scale tween ran;
+  all 121 frames exactly one pill + one coherent hero string (three atomic text states 1s →
+  2h 58m → 2h 57m 59s), no blink/close; ONE caveat (pre-existing, by design): 2-frame (33ms)
+  row-label crossfade dip mid-pill-slide (the s9 150ms row-brighten pace; pill stays opaque —
+  the selection indicator never disappears). s10.2c (Isha→Fajr DATE-ROLL; rec-c + vision over
+  all 131 frames): 1s hold; hero+DATE swap ATOMIC in the SAME frame (Rabiʻ I 24→25, band
+  pixel-identical position); pill flight row 6→row 1 (full 5-row jump) = one rigid 148px band,
+  0.82s, decelerating, exactly 1 pill in 131/131 frames; no auto-close (0 overlay_close marks
+  all three cases); post-roll AX: hero Dhuhr 20h52m42s, date rolled, highlight on new day's
+  Dhuhr row. NOTE: the mock's "next" after Isha is day1 Dhuhr 13:06 (morning prayers precede
+  its launch-relative evening Fajr — documented mock shape); mechanics identical. HARNESS
+  LESSONS (durable): (1) the 3T clock runs ~3.3s BEHIND the mac — time taps by DEVICE clock
+  (adb shell date), never shell arithmetic; (2) a headless BG-task/ALARM respawn can own a
+  dev launch (pre-spawned process evaluates the mock's `now` up to ~20s before am start) —
+  verify perf_monitor_init lands within ~2s of am start, else force-stop and re-launch; (3)
+  mocks/simple addMinutes returns CLOCK STRINGS (seconds truncated) → launch-relative
+  boundaries land on clean wall :00 — boundary_dev = (init_mark − ~1.5s + 2m) truncated to the
+  minute; tap at boundary−1.2s via tight device-clock compare loop; (4) a bash tool call must
+  COMPLETE within its own timeout — background the recorder in one short call, never let a
+  wait-loop eat the call (the recorder dies with the killed shell). s10.3 IDLE GATE (final
+  resting build, 5s atrace each state): overlay CLOSED = 0 performMeasure / 0 performLayout /
+  12 traversals (the per-second countdown TEXT commits — showSeconds is ON on this install,
+  the owner-exempt family; s6 measured 0 with seconds off) → ZERO overlay-driven renders while
+  closed; overlay OPEN = 7 traversals / 0 / 0, doFrame 301≈305 (the documented upstream phantom
+  Choreographer loop) — OPEN ≡ CLOSED cadence, the merge adds NO timer/render cost (process
+  ~31% in the established band). NEXT: s10.4 iOS rebuild + owner eyeball (row-shadow question),
+  then s10.5 campaign wrap.
+- 2026-09-06 (session 11 — s10.1 COUNTDOWN MERGE SHIPPED + VERIFIED): executed queue item 1 on
+  baseline ab3ab7c (build 18, 15:12:06, gate-ON). CHANGE: the sequence ticker now writes
+  `overlay-open ? selectedTarget : next` directly into the PAGE countdown atom
+  (`writeDisplayCountdown` in stores/countdown.ts — per-second from the tick + instantly from
+  stores/overlay.ts on open/selection/close; the boundary-restart initial write covers the
+  advance); hold-at-1s for a passed display target comes FREE from getSecondsRemaining's
+  ≥1 clamp (Math.max(1, ceil)); boundary detection unchanged (always the true next via
+  getNextPrayer); overlayCountdownAtom + Name/Display derived atoms + CountdownKey.Overlay +
+  Countdown.tsx's dual subscription ALL DELETED — 2 timers ever, enforced by the CountdownKey
+  enum type. Zero visual change mandate held: the 1↔1.5 scale/translate tween is
+  overlayIsOnAtom-driven, untouched. BONUS FIX (found in review): the baseline's
+  startCountdowns() reset the overlay countdown on every foreground-return sync — an open
+  overlay's countdown would freeze/0s on foreground return; the merged design is structurally
+  immune (no separate overlay countdown exists). Documented edge semantics change (dead edge):
+  null overlay target (stale index mid-roll) now falls back to the true next prayer instead of
+  the old "Prayer/0s" placeholder — writing 0s into a page atom would violate the display
+  contract. VERIFICATION: jest 931/931 (+1 net: merged-target suite — instant-write-while-open,
+  true-next-when-closed, hold-at-1s w/ both chains armed, boundary advance now asserted on the
+  PAGE atom {2698, Magrib}, other-schedule page atom unhijacked), tsc + biome clean. 3T frames
+  (perf21/s101, one 15s take: open-on-PASSED-Fajr → close → reopen-on-NEXT-Dhuhr): all three
+  transitions 60fps (open 17f @15-18ms + one 35ms; close 18f consecutive @15-18ms; open2 17f
+  @15-18ms + one 34ms) — 30fps floor PASS. VISION (settled + first-anim frames): instant swap
+  PASS (first animation frame already reads the selected target at 1.00x — swap precedes all
+  animation), ticking-while-open PASS (29h9m10s→7s→4s monotonic; AX live-read 1h34m34s on the
+  seamless reopen), close-restore PASS (Dhuhr 1h36m3s, ledger continuous), scale EXACTLY 1.500x
+  (78/52px), name never scales, no 0s/blank/ghost/clipping. The vision flag "29h 9m ≠ ~9h" =
+  mock by design (day1.fajr addMinutes(310) → tomorrow 20:26; the s4-verified 29h tomorrow-Fajr
+  precedent) and "bar missing" = pre-existing Bar.tsx hides-under-overlay — both closed, zero
+  defects. Marks: overlay_open 183-215 / close 254 — the post-s9 semantics band (commit-time
+  instrument; FRAME EVIDENCE IS THE ARBITER, JS CPU unaffected). Harness note: video-t0↔shell-t
+  drift ~0.3-1s; align bursts to logcat mark timestamps, not shell sleep arithmetic (open2's
+  burst initially mis-windowed, corrected via the 15:17:02.156 mark). NEXT: s10.2 boundary
+  recording (mock edits + rebuilds per case, RESTORE mock after), s10.3 idle atrace, s10.4 iOS
+  rebuild + owner eyeball, s10.5 wrap.
 - 2026-09-06 (session 10 — #20 PER-ELEMENT SHIPPED + PARITY ACHIEVED): executed the pivot the owner
   approved ("continue as you were" after the cutout objection): bands/veilGeometry hole logic
   DELETED (catcher-only geometry kept, renamed catcherGeometry.ts + tests); Overlay is now a thin

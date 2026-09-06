@@ -277,7 +277,6 @@ export interface StoredPrayerSequence {
 export enum CountdownKey {
   Standard = 'standard',
   Extra = 'extra',
-  Overlay = 'overlay',
 }
 
 export interface CountdownStore {

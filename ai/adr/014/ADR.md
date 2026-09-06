@@ -1,6 +1,6 @@
 # ADR-014: Overlay Re-Architecture — In-Place Highlight with Veil-with-Holes
 
-**Status:** Accepted (design phase; owner delegated the final calls — "easiest and cleanest")
+**Status:** Implemented — per the **per-element variant** (see [Implementation Outcome](#implementation-outcome)); the bands/veilGeometry design below was superseded mid-build after owner review. The decision STRUCTURE (in-place content, lock removal, selection-follows-next-prayer, VeilBackdrop, hit-test matrix, parity checklist) shipped as designed.
 **Date:** 2026-09-06
 **Decision Makers:** <user> (owner directive #20), performance campaign session 8 (planning)
 **Input:** `ai/features/performance/overlay-rearchitecture-brief.md`, #19 vision-audited evidence (`perf12/x19`)
@@ -123,3 +123,49 @@ No changes: `Countdown.tsx`, `Bar.tsx`, `Ago.tsx`, Prayer's selection effects, `
 - The 2s lock is gone; the overlay rides the cascade (selection-follows-next-prayer is the normative boundary semantic — reuse for any future overlay-like surface).
 - Band geometry depends on the existing one-shot measurements (accepted; accuracy envelope identical to today's copy positioning).
 - ADR-013's Overlay pattern (pre-mount + `display:none` + deferred hide) continues unchanged — now with near-zero content of its own.
+
+---
+
+## Implementation Outcome
+
+**Shipped 2026-09-06, sessions 9-11 (1.19.0 baseline + s10 queue; owner-confirmed smooth + pixel-parity).**
+
+**Architecture pivot (session 9→10):** build 14 shipped the bands-with-holes variant; the owner
+rejected ANY cutout mechanism ("still uses a cutout approach"). The pivot: **per-element fades** —
+no layer over content at all. Non-selected rows fade via schedule-gated
+`getOverlayHiddenAtom(type,index)` (module-cached; the off-screen page stays cold; the selected
+row's hidden state never flips), the ActiveBackground pill fades when its row ≠ selected, and
+dots+settings+RamadanDecorations fade via one chrome opacity; Day's Masjid fades.
+**VeilBackdrop STAYS unchanged** (it is what puts surviving content on the veil gradient in
+BOTH designs), as do the box-none catcher (4 regions, row-exempt — catcherGeometry.ts) and the
+pager `scrollEnabled` gate. The bands/veilGeometry hole logic was deleted.
+
+**Boundary semantics (as designed):** the ≤2s lock is gone; selection-follows-next-prayer rides
+the cascade. Session 10 additionally landed the **countdown merge**: the sequence ticker writes
+`overlay-open ? selectedTarget : next` directly into the page countdown atom
+(`writeDisplayCountdown` — instant writes on open/selection/advance/close; hold-at-1s via the
+ceil clamp; boundary detection always on the true next prayer); the `overlayCountdownAtom`
+family and Countdown.tsx's dual subscription are deleted — exactly **2 countdown timers** in
+the app, open or closed.
+
+**Parity verification (3T, Release, gate-ON; §7 checklist):**
+1. jest 931/931, tsc + biome clean. ✅
+2. Marks in the post-s9 band (open 183-215ms / close 254ms) — mark semantics = commit-time
+   instrument; frame evidence is the arbiter (session 9 lesson, holds). ✅
+3. Frames + vision: #19 dip ABSENT (row 255 every frame on active-row open); open/close 60fps
+   cadence (15-18ms); settled-frame side-by-side vs the ORIGINAL = parity achieved
+   (hero XOR 0.19%, pill/veil/glow identical; the only deltas are the three owner-sanctioned:
+   location added, date white, date position unchanged). ✅
+4. Boundary recordings (s10.2): mid-day Dhuhr→Asr (atomic hero swap, single-pill 150px slide,
+   0.87s at 60fps, 1s hold never 0s); open-tween/cascade collision (tap at ~1.3s pre-boundary —
+   no refusal — boundary 0.33s later mid-tween: all 121 frames one coherent state); Isha→Fajr
+   date-roll (hero+date atomic same-frame swap, pill flight row 6→row 1, 0.82s). ✅
+5. Hit-test matrix executed on-device (session 10). ✅
+6. Idle gate: overlay closed = zero overlay-driven renders (0 measure/layout; traversals only
+   the per-second countdown-text family); overlay OPEN ≡ closed cadence — the merge adds no
+   timer. ✅
+7. Lock gone: verified in 4 above (no auto-close, no open-refusal). ✅
+8. Superseded with the bands (no gradient seams exist in the per-element design). n/a
+9. iOS rebuilt (Release, gate-ON, 2026-09-06); owner eyeball = acceptance gate (row-shadow
+   question pre-answered in code: `ActiveBackground` carries `SHADOW.prayer`/`COLORS.shadow.*`
+   natively). ⏳ owner pass pending at time of writing.

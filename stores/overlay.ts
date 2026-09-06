@@ -12,7 +12,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 import { perfMark } from '@/shared/perf';
 import type { ScheduleType } from '@/shared/types';
 import { overlayAtom as overlayAtomImport } from '@/stores/atoms/overlay';
-import { resetOverlayCountdown, startCountdownOverlay } from '@/stores/countdown';
+import { writeDisplayCountdown } from '@/stores/countdown';
 
 // Re-export for backward compatibility
 export { overlayAtom } from '@/stores/atoms/overlay';
@@ -38,18 +38,17 @@ const toggleOverlay = (force?: boolean) => {
   perfMark(newState ? 'overlay_open_start' : 'overlay_close_start', { scheduleType: overlay.scheduleType });
   store.set(overlayAtom, { ...overlay, isOn: newState });
 
-  // The overlay countdown ticker is on-demand: start it when the overlay
-  // becomes visible, stop it (and reset the placeholder) when it closes —
-  // a closed overlay must not keep a per-second ticker alive
-  if (newState) startCountdownOverlay();
-  else resetOverlayCountdown();
+  // Instant page-countdown write (ADR-014 countdown merge): the page atom
+  // must flip to its new display target on the toggle instant — waiting for
+  // the next wall-second tick would show the stale target for up to 1s
+  writeDisplayCountdown(overlay.scheduleType);
 };
 
 /**
  * Sets the selected prayer for overlay display
  *
- * Updates the overlay state with the new prayer index and schedule type.
- * Restarts the overlay countdown for the selected prayer.
+ * Updates the overlay state with the new prayer index and schedule type,
+ * then writes the new display target into the page countdown atom instantly.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param index Prayer index within the schedule
@@ -57,7 +56,7 @@ const toggleOverlay = (force?: boolean) => {
 const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
   const overlay = store.get(overlayAtom);
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
-  startCountdownOverlay();
+  writeDisplayCountdown(scheduleType);
 };
 
 export { setSelectedPrayerIndex, toggleOverlay };

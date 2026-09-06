@@ -66,7 +66,6 @@ const {
   getCountdownDisplayAtom,
   getBarProgressAtom,
   getBarWarningAtom,
-  overlayCountdownAtom,
   standardCountdownAtom,
   standardCountdownDisplayAtom,
   startCountdowns,
@@ -97,12 +96,6 @@ describe('countdown atoms defaults', () => {
     const store = createStore();
     const value = store.get(extraCountdownAtom);
     expect(value).toEqual({ timeLeft: 10, name: 'Fajr' });
-  });
-
-  it('overlayCountdownAtom has default timeLeft of 10', () => {
-    const store = createStore();
-    const value = store.get(overlayCountdownAtom);
-    expect(value.timeLeft).toBe(10);
   });
 });
 
@@ -371,10 +364,10 @@ describe('ticker integrity (wall-second chain)', () => {
 });
 
 // =============================================================================
-// OVERLAY COUNTDOWN TESTS
+// MERGED OVERLAY DISPLAY TARGET (ADR-014 countdown merge)
 // =============================================================================
 
-describe('overlay countdown end state', () => {
+describe('merged overlay display target (ADR-014 countdown merge)', () => {
   const { getDefaultStore } = require('jotai/vanilla');
 
   afterEach(() => {
@@ -383,7 +376,67 @@ describe('overlay countdown end state', () => {
     jest.restoreAllMocks();
   });
 
-  it('holds at 1s when its target passes — never displays 0s', () => {
+  const mockTrueNextDhuhr = () => {
+    const { getNextPrayer } = require('@/stores/schedule');
+    (getNextPrayer as jest.Mock).mockImplementation(() => ({
+      english: 'Dhuhr',
+      datetime: new Date('2026-01-20T12:00:00.000Z'),
+      belongsToDate: '2026-01-20',
+    }));
+  };
+
+  it('writes the selected target into the page atom while the overlay is open — instantly', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockStandardSequenceAtom, {
+      type: 'standard',
+      prayers: [
+        { english: 'Fajr', datetime: new Date('2026-01-20T10:30:00.000Z'), belongsToDate: '2026-01-20' },
+        { english: 'Dhuhr', datetime: new Date('2026-01-20T12:00:00.000Z'), belongsToDate: '2026-01-20' },
+      ],
+    });
+    defaultStore.set(mockOverlayAtom, {
+      isOn: true,
+      selectedPrayerIndex: 0,
+      scheduleType: 'standard',
+    });
+    mockTrueNextDhuhr();
+
+    const { writeDisplayCountdown } = require('../countdown');
+    writeDisplayCountdown(ScheduleType.Standard);
+
+    // Selected Fajr (30m away) wins over the true next Dhuhr (2h away)
+    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 1800, name: 'Fajr' });
+  });
+
+  it('writes the true next prayer into the page atom when the overlay is closed', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockStandardSequenceAtom, {
+      type: 'standard',
+      prayers: [
+        { english: 'Fajr', datetime: new Date('2026-01-20T10:30:00.000Z'), belongsToDate: '2026-01-20' },
+        { english: 'Dhuhr', datetime: new Date('2026-01-20T12:00:00.000Z'), belongsToDate: '2026-01-20' },
+      ],
+    });
+    defaultStore.set(mockOverlayAtom, {
+      isOn: false,
+      selectedPrayerIndex: 0,
+      scheduleType: 'standard',
+    });
+    mockTrueNextDhuhr();
+
+    const { writeDisplayCountdown } = require('../countdown');
+    writeDisplayCountdown(ScheduleType.Standard);
+
+    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 7200, name: 'Dhuhr' });
+  });
+
+  it('holds the page atom at 1s when the open overlay target passes — never displays 0s', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
@@ -397,16 +450,18 @@ describe('overlay countdown end state', () => {
       selectedPrayerIndex: 0,
       scheduleType: 'standard',
     });
+    mockTrueNextDhuhr();
 
-    const { startCountdownOverlay } = require('../countdown');
-    startCountdownOverlay();
+    startCountdowns();
+    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 2, name: 'Fajr' });
 
-    jest.advanceTimersByTime(2500); // target passes at +2s
+    jest.advanceTimersByTime(2500); // selected target passes at +2s; true next (Dhuhr) still 2h out
 
-    const finalValue = defaultStore.get(overlayCountdownAtom);
-    expect(finalValue.timeLeft).toBe(1);
-    expect(finalValue.name).toBe('Fajr');
-    expect(jest.getTimerCount()).toBe(0); // ticker stopped cleanly
+    // getSecondsRemaining's clamp holds the digit at 1 — the display contract
+    const finalValue = defaultStore.get(standardCountdownAtom);
+    expect(finalValue).toEqual({ timeLeft: 1, name: 'Fajr' });
+    // Both sequence chains stay armed: boundary detection is untouched
+    expect(jest.getTimerCount()).toBe(2);
   });
 });
 
@@ -468,9 +523,9 @@ describe('boundary selection advance (ADR-014)', () => {
       scheduleType: 'standard',
     });
 
-    // The overlay countdown retargeted to the new next prayer (07:00 target:
-    // 2700s at the boundary, then two per-second ticks)
-    expect(defaultStore.get(overlayCountdownAtom)).toEqual({ timeLeft: 2698, name: 'Magrib' });
+    // The page countdown atom retargeted to the advanced selection (07:00
+    // target: 2700s at the boundary, then two per-second ticks)
+    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 2698, name: 'Magrib' });
   });
 
   it('leaves the selection untouched when a different prayer is selected', () => {
@@ -510,6 +565,10 @@ describe('boundary selection advance (ADR-014)', () => {
     expect(defaultStore.get(mockOverlayAtom).scheduleType).toBe('extra');
     expect(defaultStore.get(mockOverlayAtom).selectedPrayerIndex).toBe(0);
     expect(defaultStore.get(mockOverlayAtom).isOn).toBe(true);
+
+    // The standard page atom keeps its own true next prayer — the overlay on
+    // the other schedule never hijacks it (2700s at the boundary + 2 ticks)
+    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 2698, name: 'Magrib' });
   });
 });
 

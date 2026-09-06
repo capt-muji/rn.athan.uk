@@ -31,7 +31,6 @@ const store = getDefaultStore();
 const countdowns: Record<CountdownKey, ReturnType<typeof setTimeout> | undefined> = {
   [CountdownKey.Standard]: undefined,
   [CountdownKey.Extra]: undefined,
-  [CountdownKey.Overlay]: undefined,
 };
 
 // --- Initial values ---
@@ -45,9 +44,6 @@ export const standardCountdownAtom = atom<CountdownStore>(createInitialCountdown
 
 /** Countdown state for Extra schedule (Midnight, Last Third, Suha, Duha, Istijaba) */
 export const extraCountdownAtom = atom<CountdownStore>(createInitialCountdown());
-
-/** Countdown state for overlay display (selected prayer) */
-export const overlayCountdownAtom = atom<CountdownStore>(createInitialCountdown());
 
 /**
  * Gets the countdown atom for a schedule type
@@ -87,10 +83,6 @@ export const standardCountdownDisplayAtom = makeCountdownDisplayAtom(standardCou
 export const extraCountdownNameAtom = makeCountdownNameAtom(extraCountdownAtom);
 /** Extra hero countdown display string (render-granular) */
 export const extraCountdownDisplayAtom = makeCountdownDisplayAtom(extraCountdownAtom);
-/** Selected-prayer name as displayed by the overlay countdown */
-export const overlayCountdownNameAtom = makeCountdownNameAtom(overlayCountdownAtom);
-/** Overlay countdown display string (render-granular) */
-export const overlayCountdownDisplayAtom = makeCountdownDisplayAtom(overlayCountdownAtom);
 
 /**
  * Gets the name selector for a schedule type
@@ -244,10 +236,10 @@ const isSelectedIndex = (type: ScheduleType, selectedIndex: number, passingPraye
 };
 
 /**
- * Advances the open overlay's selection to the schedule's new next prayer and
- * retargets the overlay countdown at it (ADR-014 boundary semantic: the veil's
- * row hole jumps to the next row, which rises bright, and the countdown
- * retargets ≡ the sequence countdown).
+ * Advances the open overlay's selection to the schedule's new next prayer
+ * (ADR-014 boundary semantic: the veil's row hole jumps to the next row,
+ * which rises bright). The caller's post-boundary restart writes the page
+ * countdown for the advanced selection immediately.
  */
 const advanceOverlaySelectionToNextPrayer = (type: ScheduleType) => {
   const nextPrayer = getNextPrayer(type);
@@ -265,23 +257,22 @@ const advanceOverlaySelectionToNextPrayer = (type: ScheduleType) => {
 
   const overlay = store.get(overlayAtom);
   store.set(overlayAtom, { ...overlay, selectedPrayerIndex: nextIndex });
-  startCountdownOverlay();
 };
 
 /**
  * Sequence-based countdown using prayer-centric model
  *
- * Uses getNextPrayer(type) to get countdown target
- * Calculates countdown from nextPrayer.datetime - Date.now() (true UTC instants:
- * the offset cancels in a difference, so no timezone conversion per tick)
+ * Boundary detection always runs against the true next prayer via
+ * getNextPrayer(type); the atom write is display-aware (ADR-014 countdown
+ * merge): while the overlay is open on this schedule the page countdown atom
+ * carries the SELECTED prayer's countdown, otherwise the next prayer's.
+ * Calculates countdowns from datetime - Date.now() (true UTC instants: the
+ * offset cancels in a difference, so no timezone conversion per tick).
  * Calls refreshSequence() when prayer passes
  */
 const startSequenceCountdown = (type: ScheduleType) => {
-  const nextPrayer = getNextPrayer(type)!;
-
   const isStandard = type === ScheduleType.Standard;
   const countdownKey = isStandard ? CountdownKey.Standard : CountdownKey.Extra;
-  const countdownAtom = getCountdownAtom(type);
   const which = isStandard ? 'std' : 'extra';
 
   const tick = () => {
@@ -305,33 +296,24 @@ const startSequenceCountdown = (type: ScheduleType) => {
       if (overlayFollowsBoundary) advanceOverlaySelectionToNextPrayer(type);
       logger.debug('TICK: transition', { which, transitionMs: Date.now() - transitionStart });
 
-      // Restart countdown with new next prayer
+      // Restart countdown with new next prayer — the restart's initial write
+      // is display-aware, so an overlay that followed the boundary gets the
+      // advanced selection written instantly
       return startSequenceCountdown(type);
     }
 
-    const secondsLeft = TimeUtils.getSecondsRemaining(upcoming.datetime);
-
-    // Update countdown atom
-    store.set(countdownAtom, { timeLeft: secondsLeft, name: upcoming.english });
+    writeDisplayCountdown(type);
   };
 
-  // Initial state before the first aligned tick (ceil: never displays 0s)
-  const timeLeft = TimeUtils.getSecondsRemaining(nextPrayer.datetime);
-  store.set(countdownAtom, { timeLeft, name: nextPrayer.english });
+  // Initial write before the first aligned tick — display-aware (ceil: never
+  // displays 0s)
+  writeDisplayCountdown(type);
 
   startWallClockTicker(countdownKey, tick);
 };
 
 /**
- * Resets the overlay countdown to a stopped state
- */
-const resetOverlayCountdown = () => {
-  clearCountdown(CountdownKey.Overlay);
-  store.set(overlayCountdownAtom, { timeLeft: 0, name: 'Prayer' });
-};
-
-/**
- * Resolves the prayer the overlay countdown currently targets: the selected
+ * Resolves the prayer the overlay display currently targets: the selected
  * prayer within its schedule's display day, with tomorrow's-occurrence
  * fallback when it has passed (matches usePrayer.ts overlay semantics).
  */
@@ -365,61 +347,49 @@ const getOverlayTarget = (): Prayer | null => {
 };
 
 /**
- * Starts the overlay countdown for the selected prayer
- * Uses sequence-based approach to get prayer by index
+ * Writes the schedule's page countdown atom with what its page must display
+ * right now: the overlay's selected target while the overlay is open on this
+ * schedule, the sequence's next prayer otherwise (ADR-014 countdown merge —
+ * the overlay target rides its schedule's sequence ticker; no separate
+ * overlay countdown atom or timer exists).
  *
- * The tick re-derives its target every second instead of closing over it:
- * the selection can advance at a boundary (selection-follows-next-prayer) and
- * a stale tick firing after the retarget must not freeze the fresh countdown.
+ * Called every wall second by the tick, and instantly on overlay open,
+ * selection change and close (stores/overlay.ts) so the display never waits
+ * for the next tick. A passed display target holds at 1s via
+ * getSecondsRemaining's clamp (the display contract never shows 0s) until
+ * the boundary advance or a new selection retargets it; a missing overlay
+ * target (stale index mid-roll) falls back to the next prayer.
  */
-const startCountdownOverlay = () => {
-  const target = getOverlayTarget();
-  if (!target) {
-    return resetOverlayCountdown();
-  }
+const writeDisplayCountdown = (type: ScheduleType) => {
+  const upcoming = getNextPrayer(type);
+  if (!upcoming) return;
 
-  // Calculate countdown from prayer datetime (ceil: never displays 0s)
+  const countdownAtom = getCountdownAtom(type);
+
+  const overlay = store.get(overlayAtom);
+  const overlayOwnsPage = overlay.isOn && overlay.scheduleType === type;
+
+  const selected = overlayOwnsPage ? getOverlayTarget() : null;
+  const target = selected ?? upcoming;
+
   const timeLeft = TimeUtils.getSecondsRemaining(target.datetime);
-  const name = target.english;
-
-  store.set(overlayCountdownAtom, { timeLeft, name });
-
-  // Wall-second-aligned ticks recomputing from the clock (same model as the
-  // sequence tickers): digits flip with the system clock and never freeze
-  startWallClockTicker(CountdownKey.Overlay, () => {
-    const currentTarget = getOverlayTarget();
-    if (!currentTarget) {
-      return resetOverlayCountdown();
-    }
-
-    const nowMs = Date.now();
-    if (nowMs >= currentTarget.datetime.getTime()) {
-      clearCountdown(CountdownKey.Overlay);
-      // Hold at 1s: the display contract never shows 0s
-      store.set(overlayCountdownAtom, { timeLeft: 1, name: currentTarget.english });
-      return;
-    }
-
-    const secondsLeft = TimeUtils.getSecondsRemaining(currentTarget.datetime);
-    store.set(overlayCountdownAtom, { timeLeft: secondsLeft, name: currentTarget.english });
-  });
+  store.set(countdownAtom, { timeLeft, name: target.english });
 };
 
 /**
  * Initializes all countdowns for the app
  *
- * Starts the sequence tickers for Standard and Extra schedules; the overlay
- * countdown is ON-DEMAND (#4): reset to a placeholder here, started on overlay
- * open, restarted on selection change and boundary advance, reset on close.
- * Called during app initialization after prayer sequences are loaded, and again
- * on every foreground-return sync. Tickers are keyed: each start replaces any
- * previous one, so repeated initialization never stacks intervals.
+ * Starts the sequence tickers for Standard and Extra schedules — the only two
+ * countdown timers in the app (ADR-014 countdown merge: the open overlay's
+ * selected target is written into its schedule's page countdown atom by that
+ * schedule's ticker). Called during app initialization after prayer sequences
+ * are loaded, and again on every foreground-return sync. Tickers are keyed:
+ * each start replaces any previous one, so repeated initialization never
+ * stacks intervals.
  */
 const startCountdowns = () => {
   startSequenceCountdown(ScheduleType.Standard);
   startSequenceCountdown(ScheduleType.Extra);
-
-  resetOverlayCountdown();
 };
 
-export { resetOverlayCountdown, startCountdownOverlay, startCountdowns };
+export { startCountdowns, writeDisplayCountdown };
