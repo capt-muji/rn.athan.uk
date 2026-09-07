@@ -39,7 +39,6 @@ const SPRITES = {
 } as const;
 
 // --- Colors (tuned for #031a4c → #5b1eaa background) — wires render as Views ---
-const MOON_COLOR = '#FFC947';
 const THREAD_COLOR = '#C9A87C';
 const GLOW_PULSE_DURATION = 3000;
 
@@ -225,7 +224,7 @@ const MOON_SPARKS = [
 ];
 
 export default function RamadanDecorations() {
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const { top: insetTop } = useSafeAreaInsets();
 
   // Shared values for each hanging (hooks can't be called in loops)
@@ -261,7 +260,6 @@ export default function RamadanDecorations() {
 
   // Android height includes nav bar — scale down vertical positions
   const vScale = Platform.OS === 'android' ? 0.6 : 1;
-  const svgHeight = height * 0.385 * vScale;
   const moonCx = width * 0.16;
   const moonCy = insetTop + 62;
   const moonR = 15;
@@ -416,7 +414,6 @@ export default function RamadanDecorations() {
 
       {/* zIndex 2: Left star */}
       <FloatingStar
-        index={0}
         x={width * HANGINGS[0].xPct}
         lineLen={HANGINGS[0].lineLen * vScale}
         size={HANGINGS[0].size}
@@ -429,7 +426,6 @@ export default function RamadanDecorations() {
 
       {/* zIndex 3: Right star */}
       <FloatingStar
-        index={2}
         x={width * HANGINGS[2].xPct}
         lineLen={HANGINGS[2].lineLen * vScale}
         size={HANGINGS[2].size}
@@ -455,7 +451,6 @@ export default function RamadanDecorations() {
 
       {/* zIndex 7: Lantern — in front of everything */}
       <FloatingStar
-        index={1}
         flickerOpacity={lanternFlicker}
         x={width * HANGINGS[1].xPct}
         lineLen={HANGINGS[1].lineLen * vScale}
@@ -575,7 +570,6 @@ function FloatingMoon({
 
 /** Star/lantern body + glow sprites — Animated.View with translateY for reliable movement */
 function FloatingStar({
-  index,
   flickerOpacity,
   x,
   lineLen,
@@ -586,7 +580,6 @@ function FloatingStar({
   bodyOpacity,
   zIndex,
 }: {
-  index: number;
   flickerOpacity?: SharedValue<number>;
   x: number;
   lineLen: number;
