@@ -5,6 +5,86 @@
 ## State
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
+- **SESSION 17 END — status: queue 1 DONE (3T flag-ON validation + PR reports + stock restore), queue 3 DONE (owner committed 1.21.2), queue 2 optional item NOT done (owner's call)**
+  - **UPSTREAM CHECK (first action)**: NO new maintainer activity. #58375: javache's threading comment
+    (11:01Z) still the last review; our fix+reply (198f5ca, 11:23Z) awaits his re-review. #58377: no
+    zeyap reply to our C++-backend answer. #58376/#58378: zero reviews. expo #49244 OPEN/REVIEW_REQUIRED
+    untouched since Sep 1; expo-widgets registry still tops at 57.0.17 (no fix). #49687 APPROVED ×2,
+    awaiting expo. Nothing actionable.
+  - **QUEUE 1 DONE — 3T FLAG-ON VALIDATION OF THE FOUR RN PRs (results posted to all 4 PR threads)**:
+    - **Path taken**: main-based combined branch FIRST (validation/all-four-idle-flags-on: 4 fix
+      branches merged into 8cfde6d, config-union conflicts resolved + `yarn featureflags --update`
+      regen, 4 defaults flipped true + regen, published 1000.0.0 to /tmp/maven-local) → **APP BUILD
+      FAILED: RN main is ABI/API-incompatible with the 0.86.3-pinned ecosystem** (safe-area-context
+      Kotlin `uiImplementation` unresolved; worklets + nitro prefab targets not found). **PIVOT:
+      0.86.3 backport** (branch validation/0863-all-four-flags-on at the rn-main clone): the 5 PR
+      commits (ec37b64+198f5ca, d1c9a97, 7ee830d, 0e0a3e5) cherry-picked CLEAN onto v0.86.3 (conflicts
+      ONLY in featureflag config/generated files — same union+regen resolution), defaults flipped via
+      config + regen (never hand-edit generated code), published as **react-android:0.86.3** to
+      /tmp/maven-local (`publishAllToMavenTempLocal -Preact.internal.useHermesStable=true
+      -PreactNativeArchitectures=arm64-v8a`; VERSION_NAME on the 0.86-stable tag is already 0.86.3,
+      hermes = the exact stable the app ships). App side (gitignored android/): /tmp/maven-local as
+      FIRST repo + dependencySubstitution react-android→0.86.3 + gradle.properties arm64-v8a only;
+      gate-ON April-mock Release on the fleettest id. Substitution verified by dexdump: all four
+      flags `iconst_1` in the APK's ReactNativeFeatureFlagsDefaults + gating bytecode present.
+    - **HARNESS FIXES NEEDED**: (1) RN repo needs SDK cmake;3.30.5 (sdkmanager install — repo pins
+      it via CMAKE_VERSION env, SDK only had 3.22.1). (2) The rn-main clone's node_modules were
+      installed for MAIN; the 0.86.3 checkout's settings-plugin autolink (`npx
+      @react-native-community/cli config`) fails on missing chrome-launcher → lighthouse-logger →
+      marky chain — fixed by dropping tarballs into node_modules manually (chrome-launcher@0.15.2,
+      lighthouse-logger, marky, chromium-edge-launcher). (3) Same-coordinate substitution requires
+      clearing `~/.gradle/caches/modules-2/.../react-android/0.86.3` before each app rebuild (gradle
+      keeps the cached AAR; repo order alone is not enough). (4) NEVER delete
+      `~/.gradle/caches/9.3.1/transforms` wholesale — it breaks the RNGP settings-plugin
+      (settings-plugin.jar lives there); daemon stop + modules-2 clear is sufficient (transform keys
+      are content-hash'd). (5) Maestro e2e flows hardcode appId `com.mugtaba.athan` — against the
+      fleettest build use inline MCP flows with `com.mugtaba.athan.fleettest`.
+    - **VALIDATION RESULTS (3T, gate-ON April-mock Release, flags ON, via attribution logging added
+      to the validation branch: PhantomChoreographer POST/RUN lines in ReactChoreographer.kt +
+      hasActiveAnimations count log)**:
+      - **#58376 event dispatch: DISARMED ✅ — 0 posts at idle.** All taps/swipes/press events
+        dispatch correctly.
+      - **#58378 DISPATCH_UI/mount-items: DISARMED ✅ — 1 post (initial mount) then 0.** View
+        commands + commits all functional.
+      - **#58375 timers: WORKS AS DESIGNED — stays armed ~40/s** because the app's perpetual
+        per-second countdown ticker keeps the queue non-empty (bytecode-verified: flag check →
+        isEmpty → skip re-post; the pump only disarms when the queue truly drains). Background:
+        isPaused disarms it completely (0 posts).
+      - **#58377 legacy NativeAnimatedModule: DISARMED ✅** (hasActiveAnimations() false every frame
+        — zero count-log hits; doFrameGuarded no longer self-re-arms). **KEY DISCOVERY: Reanimated
+        (com.swmansion.worklets.runloop.AnimationFrameQueue) REUSES the NATIVE_ANIMATED_MODULE
+        Choreographer CallbackType slot** for its own always-on worklet runloop — armed at idle AND
+        in background (~12/s bg). Attribution MUST read callback class names, not just types.
+      - **fg/bg soak (javache's question)**: HOME → all RN-core pumps silent (TIMERS 0 posts;
+      Reanimated-only ~12/s) → re-foreground → countdown resumed correctly (3h24m→2h55m→2h44m
+      across cycles), onHostResume sync/notification logs fire, overlay/sheets/swipes all live.
+      **No starvation.** Interaction battery 19/19 maestro commands PASS. js_to_content 682-753
+      (in-band). April mock rendered exactly (all six times verified via AX tree).
+      - **HONEST FRAMING for the PRs/app**: "idle doFrames → 0" is NOT achievable for THIS app even
+        with all four flags on — the countdown timer legitimately keeps TIMERS at frame rate and
+        Reanimated's runloop is an independent always-on pump. The PRs' win here = the three
+        non-timer RN-core pumps eliminated; true 0-doFrame idle only exists for timer-idle apps
+        (the s14 blank-View case).
+    - **RESTORE DONE + VERIFIED**: android/build.gradle + gradle.properties reverted (substitution
+      gone, 4 ABIs back), modules-2 react-android cleared, stock Maven-Central 0.86.3 rebuilt
+      (7m50s) + reinstalled on the 3T fleettest id. Stock verified three ways: js_to_content 753
+      in-band, April mock on-screen + countdown ticking, and **disableIdle* symbols ABSENT from the
+      APK dex** (the flags only exist in the PR code — stock 0.86.3 doesn't have them).
+  - **QUEUE 3 DONE**: owner committed **1.21.2** (mock hardcut + s16 progress) BEFORE this session —
+    repo clean at 863d38e; no app-code changes made this session (all work lived in the gitignored
+    android/, the /tmp RN clone, and /tmp/maven-local), so no battery re-run needed.
+  - **QUEUE 2 (optional, NOT done)**: upstream issue/PR for lazy view-config eval with the s16
+    per-module evidence (getNativeComponentAttributes 628ms + UIManager 624ms + BridgelessUIManager
+    391ms on the SD820) — left for an owner decision.
+  - **THROWAWAY STATE (all in /tmp, ephemeral)**: rn-main clone now carries local-only branches
+    validation/all-four-idle-flags-on (main-based, dead end) + validation/0863-all-four-flags-on
+    (the working one, with attribution logging commits on top); node_modules has 4 tarball-dropped
+    packages; /tmp/maven-local holds the validation AARs. Nothing pushed; fork branches untouched.
+  - **S17 SESSION END STATE**: 3T fleettest = clean STOCK gate-ON April-mock build (verified 14:12,
+    countdown ticking). iPhone XS untouched (owner-eyeballed 1.21.1+April Release). Repo @ 1.21.2,
+    working tree clean. **NEXT SESSION: (1) watch #58375 for javache's re-review of 198f5ca +
+    #58377 for zeyap; (2) expo #49244/#49687 tracking; (3) owner decision on the optional lazy
+    view-config upstream issue.**
 - **SESSION 16 IN PROGRESS — status: FIRST ACTION (post-commit regression sweep) DONE + mock hardcut DONE + both devices rebuilt**
   - **SWEEP VERDICT: ALL MARKS IN BAND, no drift from the 1.21.1 commit** (smoke, overlay×10, sheets×10,
     swipes×15, toggles×10, sounds×5, all via baseline-compare on the 3T fleettest build — verified to be
