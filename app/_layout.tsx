@@ -13,6 +13,7 @@ import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-rean
 
 import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
 import { InitialWidthMeasurement } from '@/components/ui';
+import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { initPerfMonitor } from '@/shared/perf';
@@ -52,15 +53,23 @@ configureReanimatedLogger({
 // made the previous Text.defaultProps mutation inert on RN 0.86.
 
 export default function Layout() {
+  // Sheets mount past the first content frame (launch chrome defer — see
+  // hooks/useChromeDeferred.ts); their content mounts on present regardless
+  const chromeDeferred = useChromeDeferred();
+
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
       <SystemBars style='light' hidden={{ navigationBar: false }} />
       <InitialWidthMeasurement />
       <BottomSheetModalProvider>
         <Slot />
-        <BottomSheetSound />
-        <BottomSheetSettings />
-        <BottomSheetAlert />
+        {chromeDeferred && (
+          <>
+            <BottomSheetSound />
+            <BottomSheetSettings />
+            <BottomSheetAlert />
+          </>
+        )}
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );

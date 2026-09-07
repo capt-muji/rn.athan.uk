@@ -9,6 +9,7 @@ import Screen from '@/app/Screen';
 import { VeilBackdrop } from '@/components/overlay';
 import { BackgroundGradients, RamadanDecorations, SettingsButton } from '@/components/ui';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
+import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
@@ -25,6 +26,9 @@ export default function Navigation() {
   const dot1Animation = useAnimationOpacity(0.25);
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const chromeOpacity = useAnimationOpacity(1);
+  // Veil + decorations mount past the first content frame (launch chrome
+  // defer); the veil pairs with the overlay, which defers on the same cadence
+  const chromeDeferred = useChromeDeferred();
 
   // Per-element veil (ADR-014): chrome (dots, settings, decorations) fades
   // out with the overlay's fade — the old overlay hid it under the gradient
@@ -50,13 +54,17 @@ export default function Navigation() {
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.navigation.background }}>
       <BackgroundGradients />
-      <Animated.View style={[styles.chromeLayer, chromeOpacity.style]} pointerEvents='box-none'>
-        <RamadanDecorations />
-      </Animated.View>
-      {/* Veil backdrop (ADR-014): the overlay gradient + glow BEHIND content,
-          so the veil layer's holes reveal in-place content on the same
-          backdrop the old duplicated overlay painted */}
-      <VeilBackdrop />
+      {chromeDeferred && (
+        <>
+          <Animated.View style={[styles.chromeLayer, chromeOpacity.style]} pointerEvents='box-none'>
+            <RamadanDecorations />
+          </Animated.View>
+          {/* Veil backdrop (ADR-014): the overlay gradient + glow BEHIND content,
+              so the veil layer's holes reveal in-place content on the same
+              backdrop the old duplicated overlay painted */}
+          <VeilBackdrop />
+        </>
+      )}
 
       <PagerView
         style={{ flex: 1 }}

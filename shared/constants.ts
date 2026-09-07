@@ -350,12 +350,6 @@ export const SHADOW = {
     shadowOpacity: 0.75,
     shadowRadius: 35,
   },
-  /** Masjid icon shadow */
-  masjid: {
-    shadowOffset: { width: 5, height: 5 },
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-  },
   /** Color picker modal shadow (upward) */
   colorPickerModal: {
     shadowOffset: { width: 0, height: -50 },
@@ -375,8 +369,6 @@ export const SHADOW_ANDROID = {
   prayer: '1px 10px 10px rgba(28, 22, 145, 0.4)',
   /** Prayer row shadow, extras page (mirrors SHADOW.prayerExtras) */
   prayerExtras: '1px 6px 6px rgba(110, 0, 107, 0.32)',
-  /** Masjid icon glow (mirrors SHADOW.masjid + COLORS.masjid.glow) */
-  masjid: '5px 5px 10px rgba(239, 156, 41, 0.2)',
 } as const;
 
 // =============================================================================
@@ -776,12 +768,6 @@ export const COLORS = {
   error: {
     /** Error screen button background */
     buttonBackground: '#030005',
-  },
-
-  /** Masjid icon */
-  masjid: {
-    /** Golden glow/shadow color */
-    glow: '#EF9C29',
   },
 
   /** Navigation colors */

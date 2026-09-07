@@ -5,11 +5,140 @@
 ## State
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
-- **Phase**: campaign CLOSED through 1.20.0; sessions 12-13 add-on (Android shadow/glow parity)
-  SHIPPED + owner-confirmed (1.20.1). NOW: **session 14** — DEVICE RULES: the OnePlus 3T is the
-  PERMANENT baseline (always connected; smooth there = smooth everywhere). Temporarily loaned and
-  connected NOW: OPPO Find X8 (API 35+, modern tier) + OnePlus 5T (API 29, middle tier) —
-  suffixed test app ids only, never touch personal apps; RELEASE both immediately after Phase A.
+- **SESSION 15 IN PROGRESS — status at launch-speed phase (item 4)**:
+  - **UPSTREAM (FIRST ACTION, DONE)**: #58368 fix PR — CLA ✓, analyze_pr ✓ (latest run), api_changes
+    ✓, MERGEABLE, ZERO maintainer feedback yet. #58367 issue — no maintainer comments. #58369 repro PR —
+    bot flagged missing Test Plan + Changelog; description FIXED (valid `## Test plan` +
+    `[General] [Changed]` line) → analyze_pr now **SUCCESS**. Nothing else actionable.
+  - **ITEM 1 EVIDENCE PACK: DONE** (owner eyeball pending; repo copy at **evidence/s15/** —
+    untracked, ~72MB, prune after review; session-workspace mirror at perf21/s15/ has build
+    logs + raw timelapse frames). BEFORE = 05ab92d (SVG), AFTER = HEAD
+    (1.21.0 sprites), both gate-ON Release, Ramadan-forced throwaway (restored), captured on BOTH
+    the 3T (screens + screenrecord videos: 15s standard idle, 10s extras idle, swipe tour, overlay
+    cycle) and the XS (screens + ~2fps DVT-screenshot timelapses — see tooling note). Side-by-side
+    composites + masjid glow close-ups (natural + brightness-boosted) in perf21/s15/composites/.
+    VISION PARITY AUDIT: PASS — moon/lantern/stars/threads same art+positions; masjid art
+    PIXEL-IDENTICAL (corr 0.998+, |diff|≈2.5); halo shape/extent ≤1 lum unit between builds; iOS
+    native-shadow halo ≡ Android baked-sprite halo. TWO AFTER-only cosmetic findings for the
+    owner: (a) iOS faint rectangular seam around the masjid glow sprite (+2.3..+6.7 lum, worst
+    bottom edge; NOT detected on Android); (b) cloud sprite bottoms clip straighter than the
+    SVG's organic fade (iOS clear, Android weak). Fix = re-bake sprites with fade-to-zero
+    padding. The glow is SUBTLE BY DESIGN (s13 spec 0.22 wide halo) — use the -boost- composites.
+    Non-issues: countdown digits/cloud positions differ by capture time; Android Asr/Sunrise row
+    order in the composite = mock launch-relative data artifact (same behavior both builds).
+  - **ITEM 2 EXTRAS PILL DEMO: attempted, NOT reproduced on camera (4 mock states, all rendered
+    canonical-correct)**. Root insight (mechanism now fully understood): night-prayer clocks are
+    back-dated to the display day's small hours → chronological ≡ canonical in all summer arcs;
+    the ActiveBackground.tsx:23-28 (chronological findIndex → slot) vs List.tsx:33
+    (canonicalDisplayOrder) divergence only fires in the WINTER corner (London midnight ≥23:00 →
+    the ≥12h belongsTo-shift in adjustPrayerDateForMidnightCrossing). Synthetic winter arcs kept
+    re-pinning to mock key dates (4 attempts = cap). The s12 original capture survives:
+    perf21/s15/pill-demo/s12-original-evidence-crop.png (annotated) + 4 canonical-correct state
+    shots + EVIDENCE-PACK.md §2. Mock restored byte-identical. OWNER DECISION: apply the
+    one-liner (changes iOS too) vs accept winter-only cosmetic risk.
+  - **ITEM 3 iOS REBUILD: DONE** — clean 1.21.0 Release installed on the XS (resting state
+    verified via DVT screenshot; standard page clean, no popup). Owner live-eyeball list in
+    EVIDENCE-PACK.md §3 (overlay/sheets/extras/sound/masjid-nativeshadow).
+  - **iOS CAPTURE TOOLING (durable lesson)**: maestro 2.10.0's physical-iOS driver is BROKEN —
+    the shipped jar is missing `driver/ios/MaestroDriverLib/**` sources (MaestroDriverLib/
+    Info.plist + 6 swift files; build fails "Build input file cannot be found"). I patched
+    ~/.maestro/lib/maestro-cli-2.10.0.jar with sources from mobile-dev-inc/maestro@v2.10.0
+    (backup .bak-s15 beside it) — driver then BUILDS and starts (FlyingFox HTTP server up) but
+    the XCTest session exits ("Executed 0 tests") → IOSDriverTimeoutException. Gave up after 2
+    post-fix attempts (loop discipline). WORKING iOS capture path: `pymobiledevice3 developer
+    dvt screenshot` (pip-installed, --break-system-packages) over the macOS native tunnel —
+    works headless, ~1.3s/shot; NO touch injection, NO full-framerate video (would need root
+    `remote tunneld` for more; sudo needs a password — owner can run `sudo pymobiledevice3
+    remote tunneld` in a future session to unlock video).
+  - **NEXT: item 4 launch speed** (chrome defer + module-eval trim + production-env measurement),
+    then item 5 upstream tracking (done: #49244 open/MERGEABLE no merge; #49687 alarmClock PR is
+    the OWNER's own — two approvals (vonovak, amandeepmittal), awaiting expo merge).
+- **ITEM 4 LAUNCH SPEED: DONE (chrome defer shipped as uncommitted work, suggest 1.21.1)**.
+  Baselines (3T, Release, gate-ON, cold ×5 medians, am start -W ThisTime): dev-env 3585 /
+  prod-env 3415. CHROME DEFER (new `hooks/useChromeDeferred.ts` — the established rAF+setTimeout
+  post-paint idiom; flips true one frame past mount): the launch-only surfaces mount after the
+  first content frame — sheets ×3 (_layout), Overlay + What's New/update modals (index), veil +
+  decorations (Navigation), and the EXTRAS page content (Screen — off-screen at launch; its flip
+  batches into the SAME commit as Overlay's deferred mount so the overlay's load-time list
+  measurement still finds the extras rows). RESULTS: dev-env ThisTime 3585 → **3161** (−424ms),
+  js_to_content 1008 → **690ms** (−32%); prod-env ThisTime 3415 → **3085** (−330ms). Warm
+  launches unchanged (68-93ms). VERIFICATION: jest 931/931, tsc clean, biome clean (3 pre-existing
+  RamadanDecorations warnings only); overlay_open marks 183/203ms (in-band); overlay/veil/sheets/
+  extras-page behavior smoke PASS — the extras-overlay + tips-tooltip state is PIXEL-IDENTICAL to
+  the original 1.20.0 build below y=543 (cross-checked on the resting original app; the Hijri/
+  seconds display diffs are per-install preferences). KNOWN NUANCE: during Ramadan the
+  decorations mount one frame after content (sub-visible 16ms pop at launch; accepted). NOT
+  DONE / remaining levers: module-eval trim (~0.41s; high effort, uncertain win — needs
+  per-module instrumentation first) and pager page-1 internals. **The owner's <1s cold goal is
+  physically unreachable on the 3T: ~1.8s is pre-JS floor (fork+activity+bundle-read, s7
+  decomposition) + RN runtime init — best-case cold ThisTime on this device ≈ 2.6-2.8s with
+  every lever pulled.** Production iOS build also carries the defer (rebuilt + installed at
+  session end).
+- **FINAL DEVICE STATE (s15 end)**: 3T fleettest = clean HEAD + chrome defer, dev-env resting
+  mock (decorations off, verified); original com.mugtaba.athan 1.20.0 untouched. iPhone XS =
+  clean 1.21.0 + chrome defer Release (standard page verified via DVT screenshot). iOS "What's
+  New" popup did NOT fire on the XS this session (no popup in any capture).
+- **SESSION 15 UNCOMMITTED TREE (owner ritual — suggest 1.21.1 patch)**: app/_layout.tsx,
+  app/index.tsx, app/Navigation.tsx, app/Screen.tsx + NEW hooks/useChromeDeferred.ts (launch
+  chrome defer; no behavior change; all verification above). Battery: jest 931/931, tsc clean,
+  biome clean.
+- **OWNER FEEDBACK ROUND (s15, post-evidence review) — THREE SPRITE DEFECTS FOUND + FIXED
+  (all verified on-device + owner-approved)**: (1) star-body sprite was baked at 25% of its
+  canvas AND off-center (transform compose bug: translate∘scale put the star at bottom-right)
+  → stars 5.5x too small and detached from threads; re-baked filling 92%/centered — measured
+  91% of original diameter, zero thread gap (owner: "stars are perfect"). (2) masjid glow
+  sprite: σ165u halo hard-clipped by the 147.7u canvas margin AND the filter region (bbox+25%)
+  → SQUARE cutoff hugging the mosque; re-baked: 560u margin (3σ+offset), filter region
+  -115%/330%, shadow-only via feComposite out (gold-ghost silhouette REMOVED), dx/dy zeroed
+  (owner asked centered: "slightly to the left and up a little bit"); Masjid.tsx GLOW_MARGIN
+  12→45.5. (3) iOS masjid glow: native shadow followed the icon bitmap alpha — art fills 97%
+  of its canvas → box-shaped shadow, no glow beyond; iOS NOW RENDERS THE SAME SPRITE as
+  Android (Platform gate DELETED, native shadow props dropped from styles.icon) — parity
+  achieved (owner: "I can see the glow on iOS now also. It's perfect."). Evidence:
+  evidence/s15/07-sprite-fixes/ (bug→fix triples). Bake sources: perf21/fleet/png/
+  masjid-glow-v4.svg + decorations/star-body-v2.svg. Battery after: jest 931/931, tsc, biome
+  clean. Throwaways (isRamadan + Dec-10 realistic mock) RESTORED; installed device builds keep
+  the decorated state for owner viewing until they say done.
+- **SESSION 15 FINAL ROUND — OWNER GLOW DECISIONS (all device-verified, iterate-and-approve)**:
+  after the fixes above the owner trialled (a) an orb-style glow (too strong), (b) warm-centre→
+  bg-indigo fade (rejected), (c) the original silhouette at −25% (v5), at −50% (v7), and finally
+  (d) **COMPLETE GLOW REMOVAL — the keeper**: "I like it without the glow. This is amazing."
+  FINAL STATE: Masjid.tsx renders the icon sprite ONLY (no glow, no shadow, both variants, both
+  platforms — pixel-verified zero warm-lift around the mosque); the glow sprite PNGs DELETED
+  from assets; dead tokens removed (SHADOW.masjid, SHADOW_ANDROID.masjid, COLORS.masjid.glow).
+  Bake history (recreatable): perf21/fleet/png/masjid-glow{,-v2..v7,-orb*}.svg.
+- **REALISTIC-DATA PILL DEMO — RESOLVED, NO FIX NEEDED**: owner-churned mock = verbatim full.ts
+  winter days (Dec 9/10/11; Midnight 23:0x ≥12h → the belongsTo shift fires). A background
+  watcher captured the evening window at 08:14 (Duha passed → display rolled to the previous
+  day's set, rows [Midnight 22:17, LT 00:24, Suhoor 05:52, Duha 08:14]): **the pill parked
+  CORRECTLY on Midnight with the countdown showing Midnight** — ALIGNED. The s12 "pill on the
+  wrong row" was an artifact of the launch-relative mock seeds, exactly as the owner suspected.
+  The canonicalDisplayOrder one-liner stays NOT-APPLIED (optional belt-and-braces at most).
+  Evidence: perf21/s15/pill-demo/realistic-evening-mismatch.png (+ -5s.png + .mp4).
+- **SESSION 15 COMMIT (owner-instructed)**: 1.21.1 — chrome defer + star sprite fix + masjid
+  glow removal (owner decision) + iOS sprite parity. Evidence folder emptied per owner.
+  Battery at commit: jest 931/931, tsc clean, biome clean (3 pre-existing warnings).
+- **Phase**: campaign CLOSED through 1.20.0; sessions 12-13 add-on SHIPPED (1.20.1); session 14
+  sprite architecture COMMITTED (1.21.0). NOW: **session 15** — owner-directed evidence + demos.
+  DEVICE RULES: OnePlus 3T PERMANENT baseline (connected; fleettest id + resting original-id
+  1.20.0 build both intact). iPhone XS connected, untouched since s10.4. Find X8 + 5T loans
+  RETURNED + cleaned (inert quarantined bareloop shell may remain on Find X8 — ignore).
+- **SESSION 15 QUEUE (owner-directed order)**:
+  1. Owner evidence pack — before/after VISUALS (screenshots + videos) of decoration + masjid
+     sprite work: SVG build (05ab92d) vs sprite build (HEAD), 3T AND iOS both; masjid glow
+     close-up (universal on 3T); side-by-side composites; restore all throwaways.
+  2. Extras pill demo — video of pill on wrong row (mock evening state; fix = session-12
+     canonicalDisplayOrder one-liner; changes iOS too). Show, don't tell.
+  3. iOS Release rebuild + owner eyeball — overlay, shadow parity, extras surfaces; masjid now
+     PNG sprite + native shadow on iOS.
+  4. Launch speed — cold start 3.5s → <1s via #15 levers (chrome defer + module-eval trim) +
+     production-env measurement.
+  5. Upstream tracking (check, don't fix) — react-native #58368/#58367/#58369 (done: no maintainer
+     feedback; #58369 description fixed for analyze_pr — now PASS) + expo-widgets PR #49244 +
+     Android-notifications expo PR (done: #49244 open/MERGEABLE awaiting merge; #49687
+     alarmClock-delivery PR is the owner's OWN — approved ×2, awaiting expo merge).
+- **Session-15 queue additions (from earlier in the block above)**: none — item 4 launch speed is
+  the remaining engineering item.
 - **SESSION 14 QUEUE (the authoritative order — execute top-down)**:
   - **PHASE A (loans connected; release them immediately after):**
     1. Phantom idle-loop fleet sweep (#14): per device (3T, 5T, Find X8) — install the real app
