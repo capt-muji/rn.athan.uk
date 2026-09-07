@@ -1,10 +1,9 @@
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Image, Platform, StyleSheet, View } from 'react-native';
 import Animated, {
   Easing,
   type SharedValue,
-  useAnimatedProps,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
@@ -13,42 +12,36 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, {
-  Circle,
-  Defs,
-  G,
-  Line,
-  Mask,
-  Path,
-  RadialGradient,
-  Rect,
-  Stop,
-  LinearGradient as SvgLinearGradient,
-} from 'react-native-svg';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { isRamadan } from '@/shared/time';
 import { decorationsEnabledAtom } from '@/stores/ui';
 
-const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-const AnimatedLine = Animated.createAnimatedComponent(Line);
+const AnimatedImage = Animated.createAnimatedComponent(Image);
 
-// --- Colors (tuned for #031a4c → #5b1eaa background) ---
+// All decoration art renders from pre-rasterized sprites (rsvg output from the
+// exact gradient/mask/path definitions that used to live below): animated SVG
+// props (wire y2, glow circle opacity) forced react-native-svg to re-render its
+// tree EVERY frame — a continuous 24ms/frame UI-thread load on the SD820 with
+// decorations visible. Sprites keep every animation (bob, scale, opacity,
+// flicker, drift) as GPU-composited View transforms/opacities instead.
+const SPRITES = {
+  moonGlow: require('@/assets/icons/png/decorations/moon-glow.png'),
+  moonCrescent: require('@/assets/icons/png/decorations/moon-crescent.png'),
+  starGlow: require('@/assets/icons/png/decorations/star-glow.png'),
+  lanternGlow: require('@/assets/icons/png/decorations/lantern-glow.png'),
+  lanternFlicker: require('@/assets/icons/png/decorations/lantern-flicker.png'),
+  starBody: require('@/assets/icons/png/decorations/star-body.png'),
+  lanternBody: require('@/assets/icons/png/decorations/lantern-body.png'),
+  cloudRear0: require('@/assets/icons/png/decorations/cloud-rear-0.png'),
+  cloudFront1: require('@/assets/icons/png/decorations/cloud-front-1.png'),
+  cloudTop2: require('@/assets/icons/png/decorations/cloud-top-2.png'),
+} as const;
+
+// --- Colors (tuned for #031a4c → #5b1eaa background) — wires render as Views ---
 const MOON_COLOR = '#FFC947';
 const THREAD_COLOR = '#C9A87C';
 const GLOW_PULSE_DURATION = 3000;
-
-// Lantern palette (gold body + warm candle glow)
-const LANTERN_COLOR = '#FFC947';
-const LANTERN_GLOW_CENTER = '#FFECB3';
-const LANTERN_GLOW_MID = '#FFD54F';
-const LANTERN_FLICKER_CENTER = '#FFF3E0'; // warm white core
-const LANTERN_FLICKER_MID = '#FFAB40'; // deep amber edge
-
-// Star palette (gold, matching moon/lantern)
-const STAR_COLOR = '#FFC947';
-const STAR_GLOW_CENTER = '#FFECB3';
-const STAR_GLOW_MID = '#FFD54F';
 
 /** Hanging configs — variable speeds, distances, glow delays, depth, and types */
 const HANGINGS: {
@@ -111,10 +104,6 @@ const HANGINGS: {
     glowMax: 0.55,
   },
 ];
-
-/** Cloud fill colors */
-// Cloud fills — all close to background (#031a4c → #5b1eaa), darker = more distant
-const CLOUD_FILLS = ['#2b1d5e', '#2e2068', '#212367'] as const;
 
 /** Randomized cloud configs — height relative to moon, wrapping across screen */
 function useCloudConfigs(moonR: number, moonCy: number, moonBobMax: number, screenWidth: number, starMaxY: number) {
@@ -181,33 +170,30 @@ function useCloudConfigs(moonR: number, moonCy: number, moonBobMax: number, scre
         {
           scale: smallScale,
           opacity: opacityFor(smallH),
-          fill: CLOUD_FILLS[0],
+          sprite: SPRITES.cloudRear0,
           top: smallCloudTop,
           totalDist: screenWidth + smallW,
           duration: baseDuration,
-          path: CLOUD_PATH_REAR,
           startPos: startPos[0],
         },
         // Large (mid) cloud
         {
           scale: largeScale,
           opacity: opacityFor(largeH),
-          fill: CLOUD_FILLS[1],
+          sprite: SPRITES.cloudFront1,
           top: largeCloudTop,
           totalDist: screenWidth + largeW,
           duration: baseDuration * 0.85,
-          path: CLOUD_PATH_FRONT,
           startPos: startPos[1],
         },
         // Top (largest) cloud — 1.5× large, highest position
         {
           scale: topScale,
           opacity: opacityFor(topH),
-          fill: CLOUD_FILLS[2],
+          sprite: SPRITES.cloudTop2,
           top: topCloudTop,
           totalDist: screenWidth + topW,
           duration: baseDuration * 0.7,
-          path: CLOUD_PATH_TOP,
           startPos: startPos[2],
         },
       ],
@@ -285,9 +271,9 @@ export default function RamadanDecorations() {
   const moonTipX = moonCx - 5.3;
   const moonTipY = moonCy - 17.7;
 
-  // Moon glow radius (determines Animated.View size)
+  // Moon glow radius (determines the sprite View size)
   const moonGlowR = moonR * 2.7;
-  const moonSvgSize = moonGlowR * 2;
+  const moonSpriteSize = moonGlowR * 2;
 
   const moonBobMax = 7; // matches the withTiming(7, ...) in useEffect
   // Highest point any star reaches (smallest lineLen + size)
@@ -400,23 +386,21 @@ export default function RamadanDecorations() {
 
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents='none'>
-      {/* Main SVG: wires only (moon string + hanging wires) */}
-      <Svg width={width} height={svgHeight} viewBox={`0 0 ${width} ${svgHeight}`}>
-        {/* Moon string — animated to follow moon bob */}
-        <MoonWire x={moonTipX} baseY={moonTipY} bobOffset={moonBob} />
+      {/* Wires: thin strips whose scaleY (origin at the top) follows the same
+          bob shared values that move the hangings — GPU transform, no SVG */}
+      <WireStrip x={moonTipX} baseLen={moonTipY} bobOffset={moonBob} width={0.4} opacity={0.06} />
 
-        {HANGINGS.map((star, i) => (
-          <HangingWire
-            // biome-ignore lint/suspicious/noArrayIndexKey: HANGINGS is a static decorative config, never reordered
-            key={i}
-            x={width * star.xPct}
-            lineLen={star.lineLen * vScale}
-            bobOffset={bobs[i]}
-            strokeWidth={star.threadWidth}
-            opacity={star.threadOpacity}
-          />
-        ))}
-      </Svg>
+      {HANGINGS.map((star, i) => (
+        <WireStrip
+          // biome-ignore lint/suspicious/noArrayIndexKey: HANGINGS is a static decorative config, never reordered
+          key={i}
+          x={width * star.xPct}
+          baseLen={star.lineLen * vScale}
+          bobOffset={bobs[i]}
+          width={star.threadWidth}
+          opacity={star.threadOpacity}
+        />
+      ))}
 
       {/* zIndex 1: Moon */}
       <FloatingMoon
@@ -424,7 +408,7 @@ export default function RamadanDecorations() {
         cy={moonCy}
         r={moonR}
         glowR={moonGlowR}
-        svgSize={moonSvgSize}
+        spriteSize={moonSpriteSize}
         bobOffset={moonBob}
         glowOpacity={moonGlowOpacity}
         zIndex={1}
@@ -456,32 +440,18 @@ export default function RamadanDecorations() {
         zIndex={3}
       />
 
-      {/* zIndex 4: Small cloud (back) — in front of stars/moon */}
-      <MistyCloud
-        config={cloudConfig.clouds[0]}
-        direction={cloudConfig.direction}
-        screenWidth={width}
-        progress={cloudProgs[0]}
-        zIndex={4}
-      />
-
-      {/* zIndex 5: Large cloud (mid) — in front of stars/moon */}
-      <MistyCloud
-        config={cloudConfig.clouds[1]}
-        direction={cloudConfig.direction}
-        screenWidth={width}
-        progress={cloudProgs[1]}
-        zIndex={5}
-      />
-
-      {/* zIndex 6: Top cloud (largest) — in front of stars/moon */}
-      <MistyCloud
-        config={cloudConfig.clouds[2]}
-        direction={cloudConfig.direction}
-        screenWidth={width}
-        progress={cloudProgs[2]}
-        zIndex={6}
-      />
+      {/* zIndex 4-6: clouds (back → front) */}
+      {cloudConfig.clouds.map((cloud, i) => (
+        <MistyCloud
+          // biome-ignore lint/suspicious/noArrayIndexKey: stable cloud config order
+          key={i}
+          config={cloud}
+          direction={cloudConfig.direction}
+          screenWidth={width}
+          progress={cloudProgs[i]}
+          zIndex={4 + i}
+        />
+      ))}
 
       {/* zIndex 7: Lantern — in front of everything */}
       <FloatingStar
@@ -500,19 +470,39 @@ export default function RamadanDecorations() {
   );
 }
 
-/** Moon wire — animated y2 follows bob */
-function MoonWire({ x, baseY, bobOffset }: { x: number; baseY: number; bobOffset: SharedValue<number> }) {
-  const lineProps = useAnimatedProps(() => ({ y2: baseY + bobOffset.value }));
+/** Wire strip — scaleY (origin top) replaces the SVG's animated y2 1:1 */
+function WireStrip({
+  x,
+  baseLen,
+  bobOffset,
+  width,
+  opacity,
+}: {
+  x: number;
+  baseLen: number;
+  bobOffset: SharedValue<number>;
+  width: number;
+  opacity: number;
+}) {
+  const style = useAnimatedStyle(() => ({
+    transform: [{ scaleY: (baseLen + bobOffset.value) / baseLen }],
+  }));
 
   return (
-    <AnimatedLine
-      x1={x}
-      y1={0}
-      x2={x}
-      stroke={THREAD_COLOR}
-      strokeWidth={0.4}
-      opacity={0.06}
-      animatedProps={lineProps}
+    <Animated.View
+      style={[
+        {
+          position: 'absolute',
+          left: x - width / 2,
+          top: 0,
+          width,
+          height: baseLen,
+          backgroundColor: THREAD_COLOR,
+          opacity,
+        },
+        styles.wireOrigin,
+        style,
+      ]}
     />
   );
 }
@@ -523,7 +513,7 @@ function FloatingMoon({
   cy,
   r,
   glowR,
-  svgSize,
+  spriteSize,
   bobOffset,
   glowOpacity,
   zIndex,
@@ -532,16 +522,16 @@ function FloatingMoon({
   cy: number;
   r: number;
   glowR: number;
-  svgSize: number;
+  spriteSize: number;
   bobOffset: SharedValue<number>;
   glowOpacity: SharedValue<number>;
   zIndex?: number;
 }) {
-  // Glow is offset (-2, +4) from moon center — pad the SVG so it isn't clipped
+  // Glow is offset (-2, +4) from moon center — pad the sprite box so it isn't clipped
   const padLeft = 2;
   const padBottom = 4;
-  const svgW = svgSize + padLeft;
-  const svgH = svgSize + padBottom;
+  const boxW = spriteSize + padLeft;
+  const boxH = spriteSize + padBottom;
   const localCx = glowR + padLeft;
   const localCy = glowR;
 
@@ -549,68 +539,41 @@ function FloatingMoon({
     transform: [{ translateY: bobOffset.value }],
   }));
 
-  const glowProps = useAnimatedProps(() => ({ opacity: glowOpacity.value }));
+  const glowStyle = useAnimatedStyle(() => ({ opacity: glowOpacity.value }));
 
   return (
     <Animated.View
       style={[
-        { position: 'absolute', left: cx - glowR - padLeft, top: cy - glowR, width: svgW, height: svgH, zIndex },
+        { position: 'absolute', left: cx - glowR - padLeft, top: cy - glowR, width: boxW, height: boxH, zIndex },
         moveStyle,
       ]}>
-      <Svg width={svgW} height={svgH} viewBox={`0 0 ${svgW} ${svgH}`}>
-        <Defs>
-          <RadialGradient id='moonGlow' cx='50%' cy='50%' r='50%'>
-            <Stop offset='0%' stopColor={MOON_COLOR} stopOpacity={0.13} />
-            <Stop offset='15%' stopColor={MOON_COLOR} stopOpacity={0.13} />
-            <Stop offset='35%' stopColor={MOON_COLOR} stopOpacity={0.13} />
-            <Stop offset='65%' stopColor={MOON_COLOR} stopOpacity={0.045} />
-            <Stop offset='100%' stopColor={MOON_COLOR} stopOpacity={0} />
-          </RadialGradient>
-          <Mask id='crescentMask'>
-            <Rect x={0} y={0} width={svgW} height={svgH} fill='black' />
-            <Circle cx={localCx} cy={localCy} r={r} fill='white' />
-            <Circle cx={localCx + 5} cy={localCy - 5} r={r * 0.92} fill='black' />
-          </Mask>
-        </Defs>
-
-        <AnimatedCircle cx={localCx - 2} cy={localCy + 4} r={glowR} fill='url(#moonGlow)' animatedProps={glowProps} />
-        <Circle cx={localCx} cy={localCy} r={r} fill={MOON_COLOR} opacity={1} mask='url(#crescentMask)' />
-      </Svg>
+      <AnimatedImage
+        source={SPRITES.moonGlow}
+        style={[
+          styles.sprite,
+          {
+            position: 'absolute',
+            left: localCx - 2 - glowR,
+            top: localCy + 4 - glowR,
+            width: spriteSize,
+            height: spriteSize,
+          },
+          glowStyle,
+        ]}
+      />
+      <Image
+        source={SPRITES.moonCrescent}
+        style={[
+          styles.sprite,
+          { position: 'absolute', left: localCx - r, top: localCy - r, width: r * 2, height: r * 2 },
+        ]}
+      />
       <MoonSparks cx={localCx - 2} cy={localCy + 4} glowR={glowR * 0.6} />
     </Animated.View>
   );
 }
 
-/** Wire only — stays in the main SVG, y2 animated to follow star */
-function HangingWire({
-  x,
-  lineLen,
-  bobOffset,
-  strokeWidth,
-  opacity,
-}: {
-  x: number;
-  lineLen: number;
-  bobOffset: SharedValue<number>;
-  strokeWidth: number;
-  opacity: number;
-}) {
-  const lineProps = useAnimatedProps(() => ({ y2: lineLen + bobOffset.value }));
-
-  return (
-    <AnimatedLine
-      x1={x}
-      y1={0}
-      x2={x}
-      stroke={THREAD_COLOR}
-      strokeWidth={strokeWidth}
-      opacity={opacity}
-      animatedProps={lineProps}
-    />
-  );
-}
-
-/** Star/lantern shape + glow — Animated.View with translateY for reliable movement */
+/** Star/lantern body + glow sprites — Animated.View with translateY for reliable movement */
 function FloatingStar({
   index,
   flickerOpacity,
@@ -637,8 +600,7 @@ function FloatingStar({
   const visualSize = type === 'lantern' ? size * 1.5 : size;
   const glowR = visualSize * 4;
   const baseStarY = lineLen + size; // attachment point stays based on original size
-  const svgSize = glowR * 2;
-  const gradientId = `starGlow${index}`;
+  const spriteSize = glowR * 2;
   const cx = glowR;
   const cy = glowR;
   const isStarType = type === 'star';
@@ -649,103 +611,79 @@ function FloatingStar({
       : [{ translateY: bobOffset.value }],
   }));
 
-  const glowProps = useAnimatedProps(() => ({ opacity: glowOpacity.value }));
-  const flickerProps = useAnimatedProps(() => ({
+  const glowStyle = useAnimatedStyle(() => ({ opacity: glowOpacity.value }));
+  const flickerStyle = useAnimatedStyle(() => ({
     opacity: flickerOpacity ? flickerOpacity.value : 0,
   }));
-
-  const flickerGradientId = `flickerGlow${index}`;
 
   return (
     <Animated.View
       style={[
-        { position: 'absolute', left: x - glowR, top: baseStarY - glowR, width: svgSize, height: svgSize, zIndex },
+        {
+          position: 'absolute',
+          left: x - glowR,
+          top: baseStarY - glowR,
+          width: spriteSize,
+          height: spriteSize,
+          zIndex,
+        },
         moveStyle,
       ]}>
-      <Svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
-        <Defs>
-          <RadialGradient id={gradientId} cx='50%' cy='50%' r='50%'>
-            <Stop offset='0%' stopColor={type === 'lantern' ? LANTERN_GLOW_CENTER : STAR_GLOW_CENTER} stopOpacity={1} />
-            <Stop offset='8%' stopColor={type === 'lantern' ? LANTERN_GLOW_MID : STAR_GLOW_MID} stopOpacity={0.75} />
-            <Stop offset='18%' stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.4} />
-            <Stop offset='40%' stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.15} />
-            <Stop offset='70%' stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0.04} />
-            <Stop offset='100%' stopColor={type === 'lantern' ? LANTERN_COLOR : STAR_COLOR} stopOpacity={0} />
-          </RadialGradient>
-          {type === 'lantern' && (
-            <RadialGradient id={flickerGradientId} cx='50%' cy='55%' r='35%'>
-              <Stop offset='0%' stopColor={LANTERN_FLICKER_CENTER} stopOpacity={0.9} />
-              <Stop offset='30%' stopColor={LANTERN_GLOW_MID} stopOpacity={0.5} />
-              <Stop offset='60%' stopColor={LANTERN_FLICKER_MID} stopOpacity={0.2} />
-              <Stop offset='100%' stopColor={LANTERN_FLICKER_MID} stopOpacity={0} />
-            </RadialGradient>
-          )}
-        </Defs>
-        <AnimatedCircle cx={cx} cy={cy} r={glowR} fill={`url(#${gradientId})`} animatedProps={glowProps} />
-        {type === 'lantern' && (
-          <AnimatedCircle
-            cx={cx}
-            cy={cy + visualSize * 0.3}
-            r={glowR * 0.45}
-            fill={`url(#${flickerGradientId})`}
-            animatedProps={flickerProps}
-          />
-        )}
-        {type === 'lantern' ? (
-          <G
-            transform={`translate(${cx - (visualSize * 3.6) / 2}, ${cy - (visualSize * 3.6) / 2}) scale(${(visualSize * 3.6) / 396.586})`}
-            opacity={bodyOpacity}>
-            <Path
-              d='M281.603,179.637c0.828,0,1.5-0.671,1.5-1.5v-4.601h4.451c0.828,0,1.5-0.671,1.5-1.5v-9.699c0-0.829-0.672-1.5-1.5-1.5h-24.146c-3.842-27.97-40.149-45.072-56.818-51.509c0.26-0.794,0.404-1.637,0.404-2.515c0-3.405-2.109-6.332-5.133-7.646c1.078-0.939,1.76-2.294,1.76-3.806c0-1.994-1.182-3.722-2.906-4.57l-0.781-6.204c3.354-0.748,5.861-3.736,5.861-7.315v-0.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.5c0,3.579,2.508,6.567,5.861,7.315l-0.781,6.204c-1.725,0.849-2.906,2.576-2.906,4.57c0,1.512,0.682,2.866,1.758,3.806c-3.021,1.313-5.131,4.24-5.131,7.646c0,0.877,0.144,1.721,0.404,2.515c-16.67,6.437-52.977,23.539-56.818,51.509h-24.148c-0.828,0-1.5,0.671-1.5,1.5v9.699c0,0.829,0.672,1.5,1.5,1.5h4.451v4.601c0,0.829,0.672,1.5,1.5,1.5h3.271v162.282h-3.271c-0.828,0-1.5,0.671-1.5,1.5v4.598h-4.451c-0.828,0-1.5,0.671-1.5,1.5v9.702c0,0.829,0.672,1.5,1.5,1.5h32.018c17.57,23.99,57.244,35.867,57.244,35.867s39.674-11.877,57.244-35.867h32.016c0.828,0,1.5-0.671,1.5-1.5v-9.702c0-0.829-0.672-1.5-1.5-1.5h-4.451v-4.598c0-0.829-0.672-1.5-1.5-1.5h-3.27V179.637H281.603z M161.343,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z M221.644,331.651h-46.701V228.584c0-24.726,23.352-40.929,23.352-40.929s23.35,16.203,23.35,40.929V331.651z M262.04,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z'
-              fill={LANTERN_COLOR}
-            />
-            <Path
-              d='M198.294,39.054c4.143,0,7.5-3.358,7.5-7.5v-0.963c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.963C190.794,35.695,194.151,39.054,198.294,39.054z'
-              fill={LANTERN_COLOR}
-            />
-            <Path
-              d='M198.294,15.962c4.143,0,7.5-3.357,7.5-7.5V7.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,12.604,194.151,15.962,198.294,15.962z'
-              fill={LANTERN_COLOR}
-            />
-            <Path
-              d='M198.294,62.145c4.143,0,7.5-3.358,7.5-7.5v-0.962c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,58.786,194.151,62.145,198.294,62.145z'
-              fill={LANTERN_COLOR}
-            />
-          </G>
-        ) : (
-          <Path d={fivePointStar(cx, cy, visualSize, visualSize * 0.4)} fill={STAR_COLOR} opacity={bodyOpacity} />
-        )}
-      </Svg>
+      <AnimatedImage
+        source={type === 'lantern' ? SPRITES.lanternGlow : SPRITES.starGlow}
+        style={[styles.sprite, styles.fill, glowStyle]}
+      />
+      {type === 'lantern' && (
+        <AnimatedImage
+          source={SPRITES.lanternFlicker}
+          style={[
+            styles.sprite,
+            {
+              position: 'absolute',
+              left: cx - glowR * 0.45,
+              top: cy + visualSize * 0.3 - glowR * 0.45,
+              width: glowR * 0.9,
+              height: glowR * 0.9,
+            },
+            flickerStyle,
+          ]}
+        />
+      )}
+      {type === 'lantern' ? (
+        <Image
+          source={SPRITES.lanternBody}
+          style={[
+            styles.sprite,
+            {
+              position: 'absolute',
+              left: cx - (visualSize * 3.6) / 2,
+              top: cy - (visualSize * 3.6) / 2,
+              width: visualSize * 3.6,
+              height: visualSize * 3.6,
+              opacity: bodyOpacity,
+            },
+          ]}
+        />
+      ) : (
+        <Image
+          source={SPRITES.starBody}
+          style={[
+            styles.sprite,
+            {
+              position: 'absolute',
+              left: cx - visualSize,
+              top: cy - visualSize,
+              width: visualSize * 2,
+              height: visualSize * 2,
+              opacity: bodyOpacity,
+            },
+          ]}
+        />
+      )}
       {type === 'lantern' && <LanternSparks cx={cx} cy={cy} glowR={glowR} />}
     </Animated.View>
   );
 }
-
-/**
- * Front cloud SVG path — 160×100 viewBox, bumpy top, flat bottom.
- */
-const CLOUD_PATH_FRONT =
-  'M 24,70 Q 8,70 8,55 Q 8,40 24,38 Q 26,18 44,18 Q 58,10 72,22 Q 84,8 104,18 Q 124,5 136,22 Q 152,18 154,40 Q 160,45 160,55 Q 160,70 144,70 Z';
-
-/**
- * Rear cloud SVG path — 160×100 viewBox, wider/flatter silhouette, flat bottom.
- */
-const CLOUD_PATH_REAR =
-  'M 16,72 Q 4,72 4,60 Q 4,50 18,48 Q 20,34 40,30 Q 52,22 68,32 Q 82,20 100,28 Q 116,18 132,30 Q 146,26 150,42 Q 158,46 158,58 Q 158,72 142,72 Z';
-
-/**
- * Top cloud SVG path — 160×100 viewBox, elongated/stretched shape, flat bottom.
- */
-const CLOUD_PATH_TOP =
-  'M 20,74 Q 6,74 6,62 Q 6,52 20,50 Q 24,38 42,34 Q 56,26 74,36 Q 88,24 108,34 Q 122,22 138,34 Q 148,30 152,44 Q 160,48 160,60 Q 160,74 144,74 Z';
-
-// Misty layers: each rendered at increasing scale + decreasing opacity
-const CLOUD_MIST_LAYERS = [
-  { scale: 1.0, opacityMul: 1.0 },
-  { scale: 1.12, opacityMul: 0.5 },
-  { scale: 1.25, opacityMul: 0.22 },
-  { scale: 1.4, opacityMul: 0.08 },
-];
 
 /** Misty cloud — wraps across screen, both clouds move in the same direction */
 function MistyCloud({
@@ -761,54 +699,27 @@ function MistyCloud({
   progress: SharedValue<number>;
   zIndex: number;
 }) {
-  const { scale, opacity, fill, top: cloudTop, totalDist, path } = config;
+  const { scale, opacity, sprite, top: cloudTop, totalDist } = config;
   const w = 160 * scale;
   const h = 100 * scale;
   const pad = Math.max(w, h) * 0.25;
-  const svgW = w + pad * 2;
-  const svgH = h + pad * 2;
+  const boxW = w + pad * 2;
+  const boxH = h + pad * 2;
 
   // Start position: fully off-screen on one side
-  const startX = direction > 0 ? -svgW : screenWidth;
+  const startX = direction > 0 ? -boxW : screenWidth;
   const travel = direction > 0 ? totalDist : -totalDist;
 
   const moveStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: startX + progress.value * travel }],
   }));
 
-  const fadeMaskId = `cloudFade${zIndex}`;
-
   return (
     <Animated.View
-      style={[{ position: 'absolute', left: 0, top: cloudTop, width: svgW, height: svgH, zIndex }, moveStyle]}>
-      <Svg width={svgW} height={svgH}>
-        <Defs>
-          <SvgLinearGradient id={fadeMaskId} x1='0' y1='0' x2='0' y2='1'>
-            <Stop offset='0%' stopColor='white' stopOpacity={1} />
-            <Stop offset='55%' stopColor='white' stopOpacity={1} />
-            <Stop offset='100%' stopColor='white' stopOpacity={0} />
-          </SvgLinearGradient>
-          <Mask id={`${fadeMaskId}m`}>
-            <Rect x={0} y={0} width={svgW} height={svgH} fill={`url(#${fadeMaskId})`} />
-          </Mask>
-        </Defs>
-        <G mask={`url(#${fadeMaskId}m)`}>
-          {CLOUD_MIST_LAYERS.map((layer, i) => {
-            const lw = w * layer.scale;
-            const lh = h * layer.scale;
-            const lx = (svgW - lw) / 2;
-            const ly = (svgH - lh) / 2;
-            return (
-              <G
-                // biome-ignore lint/suspicious/noArrayIndexKey: static cloud layer config, never reordered
-                key={i}
-                transform={`translate(${lx}, ${ly}) scale(${(lw / 160).toFixed(3)}, ${(lh / 100).toFixed(3)})`}>
-                <Path d={path} fill={fill} opacity={opacity * layer.opacityMul} />
-              </G>
-            );
-          })}
-        </G>
-      </Svg>
+      style={[{ position: 'absolute', left: 0, top: cloudTop, width: boxW, height: boxH, zIndex }, moveStyle]}>
+      {/* Sprite canvas is precomposed: cloud path × 4 mist layers + the
+          vertical fade mask, in the exact 240:180 canvas proportions */}
+      <Image source={sprite} style={[styles.sprite, styles.fill, { opacity }]} />
     </Animated.View>
   );
 }
@@ -958,14 +869,17 @@ function SparkDot({
   );
 }
 
-/** Generates a 5-pointed star path centered at (cx, cy) */
-function fivePointStar(cx: number, cy: number, outerR: number, innerR: number): string {
-  const points: string[] = [];
-  for (let i = 0; i < 5; i++) {
-    const outerAngle = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
-    const innerAngle = outerAngle + Math.PI / 5;
-    points.push(`${cx + outerR * Math.cos(outerAngle)},${cy + outerR * Math.sin(outerAngle)}`);
-    points.push(`${cx + innerR * Math.cos(innerAngle)},${cy + innerR * Math.sin(innerAngle)}`);
-  }
-  return `M${points[0]} L${points.slice(1).join(' L')} Z`;
-}
+const styles = StyleSheet.create({
+  sprite: {
+    // Sprites carry their own alpha; never let the image view add tint or fade
+    resizeMode: 'stretch',
+  },
+  fill: {
+    width: '100%',
+    height: '100%',
+  },
+  // scaleY must pivot at the wire's attachment point (top), not the center
+  wireOrigin: {
+    transformOrigin: ['50%', '0%'],
+  } as const,
+});
