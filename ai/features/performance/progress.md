@@ -5,7 +5,121 @@
 ## State
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
-- **SESSION 15 IN PROGRESS — status at launch-speed phase (item 4)**:
+- **SESSION 16 IN PROGRESS — status: FIRST ACTION (post-commit regression sweep) DONE + mock hardcut DONE + both devices rebuilt**
+  - **SWEEP VERDICT: ALL MARKS IN BAND, no drift from the 1.21.1 commit** (smoke, overlay×10, sheets×10,
+    swipes×15, toggles×10, sounds×5, all via baseline-compare on the 3T fleettest build — verified to be
+    exact 1.21.1 content before measuring: gate-ON marks flowing, js_to_content 673-710, no masjid glow,
+    no decorations, mock behavior = committed mock). Numbers: cold ThisTime 3069-3083 (s15 band 3161);
+    js_to_content 673/710 (band 690); overlay_open 208 / close 228 (post-s9 semantics band 183-215/~254 —
+    the json's 80 is stale pre-s9, Rule 9); sheet_alert_open 402 (456); sheet_settings_open 368-414
+    (370); sheet_settings_close 210-217 (202; one 388 sample through the Change-athan concurrent path,
+    n=1, overlap with the 32-row mount — not drift); sheet_sound_open 825 (807); pager_page 17 (floor
+    held). Toggles had ONE flow failure = HUMAN INTERFERENCE: mark timeline shows 2 page-swipes +
+    settings open+close + 1 swipe between 10:18:54-59, ALL BEFORE maestro's first command (10:19:00) —
+    the owner's hand on the 3T right after the April build landed (3AM maestro runs = s15 XS captures,
+    stale-maestro + digitizer-ghost eliminated; manual step-by-step repro flawless; re-ran clean).
+    HARNESS LESSON: cross-check unexpected flow failures against the mark/metadata timeline — if input
+    fired between commands, it wasn't the flow; ask before re-running with the owner near the devices.
+  - **MOCK HARDCUT (owner-instructed, queue item 4 DECIDED — do it permanently)**: mocks/simple.ts 5
+    days around TODAY (dayBeforeYesterday→day2) = full.ts **2024-04-23..27 verbatim** (Apr 25 → TODAY:
+    Fajr 04:05, Sunrise 05:40, Dhuhr 13:04, Asr 16:57, Magrib 20:18, Isha 21:31; real spring drift,
+    Isha 21:27-21:33 never enters the 00:00-05:59 midnight-crossing window). Jamat/asr_2 stay '00:00'
+    placeholders (file's documented invariant). day3-10 keep the autumn block. **addMinutes + helpers
+    KEPT with a DO NOT DELETE comment (owner explicit: future widget-cascade testing)**. jest 931/931,
+    tsc + biome clean. UNCOMMITTED (owner's ritual).
+  - **BOTH DEVICES REBUILT with the April mock (owner-instructed)**: Android gate-ON Release
+    (metro cache + generated bundle cleared per protocol) — installed on 3T fleettest, verified live
+    (all six April times on-screen, Dhuhr next, ThisTime 3069 in-band). iOS Release gate-ON
+    (xcodebuild BUILD SUCCEEDED 10:39) — installed + launched on the XS via devicectl, verified via
+    DVT screenshot (April times live, no popup, Dhuhr 2h24m next; the XS's own showSeconds pref ON —
+    per-install, expected). New builds report versionName 1.21.1 (app.json syncs at build; the
+    gitignored build.gradle "1.18.9" dumpsys reading was the OLD build only).
+  - **QUEUE ITEM 2 DONE (s16): PER-MODULE EVAL INSTRUMENTATION + MEASUREMENT — verdict:
+    module-eval trim is NOT app-actionable; the floor statement is CONFIRMED with per-module
+    evidence.** Method: throwaway babel plugin (perf21/s16/module-eval-plugin.js — prepends
+    start-ts + appends completion call per module; first module installs a global aggregator that
+    dumps ranked results to logcat 8s after startup; wired via a throwaway root babel.config.js,
+    DELETED after) on the gate-ON April-mock Release build, 3T, warm launch (ThisTime 3120,
+    js_to_content 685 — in-band). 2375 modules evaluated. TOP SELF-EVAL: react-native core
+    **1643ms** = getNativeComponentAttributes 628 + UIManager 624 + BridgelessUIManager 391
+    (view-config giants — native-sync + object-literal bytecode on the SD820); expo-router tree
+    **1107ms** cumulative (~75 modules 25-75ms each); gesture-handler 182 (reanimatedWrapper.ts
+    alone) + reanimated 113 + worklets 27; expo-modules-core 56; date-fns-tz 26; ALL app code
+    negligible (biggest: mocks/simple.ts 37ms — dev-only). Conclusion: the eval cost lives in
+    framework view-configs + the router tree, both upstream (theoretical levers = lazy view
+    configs in RN core / expo-router tree-shaking — NOT this app). The 2.6-2.8s cold floor on
+    the 3T stands; <1s remains pre-JS-impossible. HARNESS LESSONS: (1) babel plugin API in the
+    Expo-57/Babel-8 pipeline: state.file only exists INSIDE visitors (factory-arg state threw);
+    (2) global.performance installs MID-STARTUP (InitializeCore) — lock ONE clock
+    (global.__meNow) at first module or durations go absurdly negative; Date.now fallback =
+    1ms quantization (fine for ranking); (3) the CJS transform hoists import-requires ABOVE the
+    injected prelude → spans are naturally SELF time (requires' nested evals excluded); (4) the
+    metro env-blind gotcha bites BOTH ways — changing a babel plugin's CONTENT requires clearing
+    metro cache AND the generated bundle (build3 shipped a stale instrumented bundle with
+    gradle reporting the task up-to-date). Restored + verified: throwaway babel.config.js
+    deleted, clean gate-ON April build reinstalled (ThisTime 3083, js_to_content 672, zero
+    MODULE_EVAL lines, April times on-screen), jest 931/931 + tsc + biome on the resting tree.
+  - **UPSTREAM CHECK (s16, item 3) — MAINTAINER FEEDBACK LANDED, owner decision pending**:
+    (1) **#58368 fix PR — javache (RN core) commented 2026-09-07 09:41**: "We looked at improving
+    some of these in the past, but it's very easy to cause regressions here, especially when
+    foregrounding/background. Can you split this PR into the different changes, and add feature flags
+    so they can control the rollout?" → ASKED FOR: split into per-pump PRs (JavaTimerManager /
+    FabricEventDispatcher / NativeAnimatedModule / FabricUIManager) + rollout feature flags. Owner to
+    greenlight the rework (substantial: 4 PRs + flag plumbing; the s16 queue said "check, don't chase").
+    (2) #58367 issue: OPEN, no maintainer engagement (bot reprocer warning + our cross-link only).
+    (3) **#58369 repro PR: CLOSED by maintainer** 09:38 ("Please don't publish if you do not want
+    review") — repro PRs should be DRAFTS; the repro info lives in the issue + fix PR cross-links.
+    Leave closed; do not reopen.
+    (4) **expo #49244: STILL OPEN/UNMERGED — and 57.0.16/57.0.17 do NOT contain the fix** (verified by
+    downloading the published tarball: DynamicView.swift still carries `let uuid =
+    NodeIdentityWrapper(id: UUID())` with the "Hack" TODO). Do NOT bump; G.1 workaround state unchanged.
+    (5) #49687 alarmClock (owner's own): OPEN, APPROVED ×2, not merged — still awaiting expo.
+  - **UPSTREAM REWORK (s16, owner-greenlit "Rework now") — DONE: #58368 SPLIT INTO 4 FLAGGED PRs,
+    all OPEN/MERGEABLE, analyze_pr SUCCESS (after `## Changelog:` COLON fix — the validator greps
+    for "changelog:"; repo: react/react-native; fork branches fix/android-idle-*-choreographer)**:
+    - **#58375 TIMERS_EVENTS** (JavaTimerManager): doFrame disarms when queue drains; createTimer
+      re-arms lazily — headless-aware guard `!isPaused || isRunningTasks` (mirrors clearFrameCallback).
+    - **#58376 event dispatch** (FabricEventDispatcher): doFrame one-shot (the misleadingly-named
+      inner dispatchBatchedEvents() only RE-POSTS the callback); re-arm already exists via
+      maybeDispatchBatchedEvents + onHostResume.
+    - **#58377 NATIVE_ANIMATED_MODULE** (NativeAnimatedModule): armed only while animations active;
+      re-arms in didDispatchMountItems AND on operation-enqueue (addOperation/addUnbatchedOperation/
+      addPreOperation — imperative JS starts with zero pending mounts); enqueuedAnimationOnFrame now
+      @Volatile (cross-thread writes; ReactChoreographer.postFrameCallback hops to UI internally).
+    - **#58378 DISPATCH_UI** (FabricUIManager + MountItemDispatcher): finally-block re-schedules only
+      when hasPendingItems(); NEW re-arm path MountItemDispatcher.onItemsQueued (ItemDispatchListener
+      +1 method; called flag-gated from the three AnyThread adds; FabricUIManager hops to UI queue →
+      schedule(); schedule() widened private→package) — closes a REAL starvation hole the original
+      #58368 had: off-UI-thread view commands (dispatchCommand is @AnyThread) relied on the
+      always-armed pump for eventual dispatch.
+    - Flags: disableIdle{Timers,EventDispatchFrameCallback,NativeAnimated,MountItem}FrameCallbackRearm
+      Android — defaultValue false (= main behavior), expectedReleaseValue true, ossReleaseStage
+      'experimental'; added via scripts/featureflags/ReactNativeFeatureFlags.config.js +
+      `yarn --cwd packages/react-native featureflags` regen.
+    - Verified: gradle compileReleaseKotlin (+JavaWithJavac for #58378) per branch — ALL BUILD
+      SUCCESSFUL (build cmd needs `-Preact.internal.useHermesStable=true`; RN clone at perf21/fleet/
+      upstream/rn-main, now FULL checkout — was sparse; node_modules installed). #58368 closed with
+      a comment linking all four. UNDONE (test-plan boxes): on-device flag-ON validation on the 3T
+      (needs an RN-from-source build with flags forced on, substituted into the app — s14 local-maven
+      harness; javache's fg/bg soak question) — next session candidate.
+  - **S16 UPSTREAM ROUND 2 (live maintainer engagement)**: (a) javache line-comment on #58375 —
+    "This is now called off the UI thread" (createTimer re-arm posted to ReactChoreographer from
+    the module thread; the null-choreographer fallback hop does NOT cover the initialized case) —
+    FIXED in 198f5ca: lazy re-arm now routes through setChoreographerCallback() on
+    UiThreadUtil.runOnUiThread (idempotent, same entry point as onHostResume); compile-clean,
+    pushed, replied. (b) javache on #58377 cc'd zeyap: "worth doing when C++ Animated is close to
+    rolling out?" — answered factually: the C++ backend is driven from FabricUIManager's
+    doFrameGuarded → driveCxxAnimations (demand-gated by #58378); #58377 only affects the platform
+    Kotlin implementation when the C++ backend is off. WATCH BOTH THREADS next session.
+  - **S16 SESSION END STATE**: queue 1 DONE (owner iOS eyeball PASS — "looks perfect, very nice");
+    queue 2 DONE (module-eval instrumentation, above); queue 3 DONE (upstream check + rework +
+    round-2 feedback); queue 4 DONE (April mock hardcut, both devices rebuilt+verified). Devices:
+    3T fleettest = clean gate-ON April-mock build (verified 12:38); iPhone XS = 1.21.1+April
+    Release (owner-eyeballed). Repo: ONLY mocks/simple.ts modified (uncommitted, owner ritual —
+    suggest 1.21.2 patch: "hardcut mock to full.ts Apr 23-27"). jest 931/931, tsc + biome clean.
+    **NEXT SESSION FIRST ACTIONS: (1) 3T flag-ON validation of the four RN PRs (owner-APPROVED
+    substitution build); (2) check javache/zeyap threads on #58375/#58377.**
+- **SESSION 15 (history) — status at launch-speed phase (item 4)**:
   - **UPSTREAM (FIRST ACTION, DONE)**: #58368 fix PR — CLA ✓, analyze_pr ✓ (latest run), api_changes
     ✓, MERGEABLE, ZERO maintainer feedback yet. #58367 issue — no maintainer comments. #58369 repro PR —
     bot flagged missing Test Plan + Changelog; description FIXED (valid `## Test plan` +
