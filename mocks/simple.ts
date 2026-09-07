@@ -24,8 +24,9 @@ import type { IApiResponse } from '@/shared/types';
 // and day rollover cleanly, simulate during 06:00-23:59.
 const now = new Date();
 
-// Launch-relative time seeder, kept for future mock cascades (e.g. rapid
-// prayer-to-prayer transition testing) — today's resting data is realistic.
+// DO NOT DELETE — launch-relative time seeder, kept for future mock cascades
+// (e.g. rapid prayer-to-prayer transition / widget cascade testing). Today's
+// resting data is hardcoded realistic; this helper is not currently called.
 export const addMinutes = (minutesToAdd: number) => {
   const date = new Date(now.getTime() + minutesToAdd * 60000);
   return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -39,22 +40,22 @@ const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.
   formatDateShort(addDays(now, d))
 );
 
-// Realistic London times copied verbatim from mocks/full.ts, 13 contiguous
-// days (2024-08-28 through 2024-09-09) carrying the API's real autumn solar
-// drift. TODAY pins Fajr/Sunrise to early-AM clocks (Fajr never before
-// midnight) and seeds the rest launch-relative; DAY 1's Fajr/Sunrise are
-// launch-relative too. Jamat fields are unused placeholders.
+// Realistic London times copied verbatim from mocks/full.ts. The 5 days
+// around TODAY (dayBeforeYesterday → day2) are 2024-04-23 through
+// 2024-04-27 carrying the API's real spring solar drift; days 3-10 ahead
+// keep the 2024-08-28 → 2024-09-09 autumn block. Jamat fields are unused
+// placeholders.
 export const MOCK_DATA_SIMPLE: IApiResponse = {
   city: 'london',
   times: {
     [dayBeforeYesterday]: {
       date: dayBeforeYesterday,
-      fajr: '04:42',
-      sunrise: '06:19',
-      dhuhr: '13:08',
-      asr: '17:20',
-      magrib: '20:11',
-      isha: '21:07',
+      fajr: '04:10',
+      sunrise: '05:44',
+      dhuhr: '13:04',
+      asr: '16:56',
+      magrib: '20:14',
+      isha: '21:27',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -64,12 +65,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [yesterday]: {
       date: yesterday,
-      fajr: '04:34',
-      sunrise: '06:06',
-      dhuhr: '13:06',
-      asr: '16:47',
-      magrib: '19:56',
-      isha: '21:06',
+      fajr: '04:07',
+      sunrise: '05:42',
+      dhuhr: '13:04',
+      asr: '16:56',
+      magrib: '20:16',
+      isha: '21:29',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -79,12 +80,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      fajr: '00:30',
-      sunrise: '06:00',
-      dhuhr: addMinutes(97),
-      asr: addMinutes(180),
-      magrib: addMinutes(240),
-      isha: addMinutes(300),
+      fajr: '04:05',
+      sunrise: '05:40',
+      dhuhr: '13:04',
+      asr: '16:57',
+      magrib: '20:18',
+      isha: '21:31',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -94,12 +95,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day1]: {
       date: day1,
-      fajr: addMinutes(310),
-      sunrise: addMinutes(312),
-      dhuhr: '13:06',
-      asr: '16:44',
-      magrib: '19:51',
-      isha: '21:01',
+      fajr: '04:03',
+      sunrise: '05:38',
+      dhuhr: '13:03',
+      asr: '16:58',
+      magrib: '20:19',
+      isha: '21:31',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -109,12 +110,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day2]: {
       date: day2,
-      fajr: '04:39',
-      sunrise: '06:11',
-      dhuhr: '13:06',
-      asr: '16:43',
-      magrib: '19:49',
-      isha: '21:00',
+      fajr: '04:00',
+      sunrise: '05:36',
+      dhuhr: '13:03',
+      asr: '16:58',
+      magrib: '20:21',
+      isha: '21:33',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
