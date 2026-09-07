@@ -10,6 +10,7 @@ import { ErrorScreen } from '@/components/ui';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
 import { checkForUpdates, openStore } from '@/device/updates';
+import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { useNotification } from '@/hooks/useNotification';
 import { APP_CONFIG } from '@/shared/config';
 import { COLORS, SIZE } from '@/shared/constants';
@@ -33,6 +34,8 @@ export default function Index() {
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const whatsNewVisible = useAtomValue(popupWhatsNewEnabledAtom);
   const installedVersion = getInstalledVersion();
+  // Overlay + modals mount past the first content frame (launch chrome defer)
+  const chromeDeferred = useChromeDeferred();
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: mount-only initialization — checkInitialPermissions is a per-render function, intentionally captured once; re-adding it would re-register listeners on every render
   useEffect(() => {
@@ -96,7 +99,7 @@ export default function Index() {
 
   return (
     <>
-      {WHATS_NEW ? (
+      {chromeDeferred && WHATS_NEW ? (
         <ModalWhatsNew
           visible={whatsNewVisible}
           version={installedVersion}
@@ -105,9 +108,15 @@ export default function Index() {
         />
       ) : null}
       {/* Gated so the nag never stacks on top of the What's New modal */}
-      <ModalUpdate visible={updateAvailable && !whatsNewVisible} onClose={handleCloseUpdate} onUpdate={handleUpdate} />
+      {chromeDeferred && (
+        <ModalUpdate
+          visible={updateAvailable && !whatsNewVisible}
+          onClose={handleCloseUpdate}
+          onUpdate={handleUpdate}
+        />
+      )}
       <Navigation />
-      <Overlay />
+      {chromeDeferred && <Overlay />}
     </>
   );
 }
