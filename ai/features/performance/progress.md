@@ -5,6 +5,100 @@
 ## State
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
+- **SESSION 19 END, status: UPSTREAM ENGAGEMENT EXECUTED, NO MAINTAINER REPLIES YET (2026-09-07
+  17:00-19:10Z autonomous run, owner offline; devices were connected: 3T + iPhone XS, ultimately
+  unneeded: the night's work was source analysis, upstream posting, and one fork-branch fix push)**
+  - **SWEEP 1 (16:53Z)**: all 7 threads quiet vs the 14:30Z snapshot (nothing newer than our own 13:02-13:15Z posts).
+  - **SWEEP 2: MOVEMENT on #58367**: javache commented 16:12Z (first maintainer engagement on the
+    parent issue): "Some prior art to investigate: we had a feature flag `enableOnDemandReactChoreographer`
+    which tried similar changes (#41658, #41606, #41671) and was eventually removed in #43044". Owner
+    REVERSED the earlier "leave it" inclination: pursue, deep-dive, work autonomously, reply. Anonymity
+    rule: no personal/app info in any upstream post (verified).
+  - **PRIOR-ART DEEP DIVE (read all four landed diffs, commit-level)**:
+    - #41606 (f9315c6, Nov 2023): gates the `NATIVE_ANIMATED_MODULE` re-post on
+      `nodesManager.hasActiveAnimations()`, adds exactly ONE re-arm trigger: `OP_CODE_START_ANIMATING_NODE`
+      in the Java ops loop. Backed out days later by #41671 (528f971): "caused performace problems with
+      react app" (sic; no further detail anywhere).
+    - #41658 (86c5abac, Nov 2023): `FabricEventDispatcher` one-shot dispatch callback (flag ON: `doFrame`
+      clears `mIsPosted` without re-posting; events re-post via `onRequestEventBeat`); also gated
+      onHostResume/destroy paths. Structurally the ancestor of our #58376.
+    - #43044 (ca980447, Feb 2024, Reviewed By: javache): removed the flag + ALL remaining on-demand paths:
+      `FabricUIManager.postChoreographerCallbackIfNecessary` (armed from the addMountItem wrapper methods +
+      `onAnimationStarted` + onHostResume + per-frame; `mIsFrameCallbackScheduled` AtomicBoolean; work-pending
+      = `hasMountItems() || mDriveCxxAnimations` + LifecycleState RESUMED gate), `MountItemDispatcher.hasMountItems()`,
+      `FabricEventDispatcher` lifecycle gates. Old code comment: double-scheduling "with LayoutAnimations,
+      deadlock may occur".
+    - **Working hypothesis for the 2023 failure**: #41606's single-op-code re-arm meant the C++ shared
+      animated backend + event-driven animation paths could never wake the disarmed callback, so animations stall in
+      the internal app (C++ backend) while OSS JS-backend apps looked fine. Consistent with javache cc'ing
+      zeyap (C++ animations) on our #58377. NOT confirmed upstream; asked directly.
+  - **ACTIONS TAKEN (upstream posts; all anonymous, structured per owner style rules: no em dashes/arrows)**:
+    - #58367: full prior-art analysis reply to javache (timeline table, failure hypothesis + question,
+      per-PR mechanism-delta table, device-tier evidence, two asks: concrete failure mode? C++ backend verdict?)
+    - #58377: prior-art note (its gate = #41606's exact gate; delta = full enqueue-path re-arm coverage;
+      C++-backend risk called out as the ship/no-ship question).
+    - #58376: prior-art note (#41658 lineage; open question: removed for cause or as abandoned-experiment cleanup).
+    - #58378: prior-art note, then CORRECTED it (see self-review below).
+    - All 4 PR bodies: appended "## Prior art" sections pointing at #58367's analysis.
+  - **SELF-REVIEW CAUGHT A BUG IN OUR OWN #58378 (owner rule: critique ourselves before maintainers do)**:
+    - Reading current main's `DispatchUIFrameCallback.doFrameGuarded` against the old code revealed the callback
+      drives C++ animation work every frame: `driveCxxAnimations()` (gated `mDriveCxxAnimations ||
+      cxxNativeAnimatedEnabled()`), `driveAnimationBackend()` (gated `useSharedAnimatedBackend()`), plus
+      `drainPreallocateViewsQueue()`. Signals: `onAnimationStarted`/`onAllAnimationsComplete` from Binding.cpp
+      (LayoutAnimationStatusDelegate, 0-to-N transitions); shared backend tracks activity C++-side only
+      (`AndroidAnimationChoreographer` `active_` via resume/pause, `onAnimationFrameIfActive`) with NO Java-visible
+      query; both backend flags DEFAULT FALSE (verified ReactNativeFeatureFlagsDefaults.kt).
+    - Our port dropped the old `mDriveCxxAnimations` term, so a session active with zero pending mount items would
+      starve (start-edge AND mid-session no-commit frames). Same class of hole that plausibly killed #41606.
+    - **FIX PUSHED: d45be0e on fix/android-idle-mount-items-choreographer** (predicate now
+      `hasPendingItems() || mDriveCxxAnimations || cxxNativeAnimatedEnabled() || useSharedAnimatedBackend()`;
+      `onAnimationStarted` re-arms via the same UI-hop pattern as `onItemsQueued`; LayoutAnimations
+      single-schedule invariant preserved). Commit author/message matched the existing PR identity/style; no app
+      or personal references.
+    - #58378 comment EDITED to correct the earlier wrong claim ("C++ work covered via mount items") + document
+      the preallocate-queue soft edge as a reviewer question. #58367 follow-up posted (prior-art exercise caught
+      the bug before reviewers did).
+    - **CI on d45be0e: analyze_pr PASS, api_changes PASS, CLA PASS** (Import Status = Meta-internal, stays pending
+      on external PRs). Fix validated.
+    - **#58375 audit note posted**: JavaTimerManager's second callback (IdleFrameCallback, separate IDLE_EVENT slot,
+      JS opt-in via setSendIdleEvents, @LegacyArchitecture, self-re-posting BY DESIGN since idle detection needs
+      frames) audited and deliberately untouched; TIMERS_EVENTS scope correct.
+    - **#58377 audit note posted**: event-driven path verified in source: `onEventDispatch` hops to UI and
+      `handleEvent` propagates values to view props synchronously via `updateNodes` (no frame callback needed);
+      frame callback only needed for time-driven progression, whose starts all route through the re-armed ops
+      queue. The #41606 gap class does not apply; only the C++ shared backend remains open (zeyap).
+    - **#58376 audit note posted**: re-arm path source-verified (`dispatchEvent` ends in
+      `scheduleDispatchOfBatchedEvents` posting the callback, UI-hop for paused-host slow path); the callback rides TIMERS_EVENTS alongside 58375's
+      timer callback as separate slot entries, so both PRs compose; slot sleeps only when both disarm.
+    - Anonymity audit: all posts/commits carry only technical content + the existing GitHub noreply identity.
+  - **POLL LOOP: ran 17:20Z to 19:08Z (cycles ~5-10 min)**. NO maintainer activity anywhere in the
+    window; all timestamps beyond the 14:30Z snapshot were our own posts. No comment text from any
+    thread was ever executed or treated as instructions (sanitization rule held; nothing needed triage).
+  - **FINAL THREAD STATUS @ 19:08Z**: RN #58375 OPEN (awaiting javache re-review of 198f5ca + IDLE_EVENT
+    audit note posted). #58376 OPEN (prior-art + re-arm source audit notes posted). #58377 OPEN (prior-art
+    + event-path audit notes; zeyap still the open question). #58378 OPEN, head now d45be0e, CI green
+    (analyze_pr + api_changes PASS). #58367 OPEN (full prior-art analysis + self-review follow-up posted;
+    javache's 16:12Z comment is the last maintainer word, our two questions to him stand). expo #49244
+    OPEN/REVIEW_REQUIRED untouched; expo-widgets still 57.0.17. expo #49687 OPEN/APPROVED unmerged.
+  - **NOT DONE (deliberate)**: no 3T flag-ON rebuild for d45be0e (the new condition only ADDS re-arm
+    disjuncts, all false in the s17-validated idle configuration, so the disarmed-at-idle result carries
+    over logically; CI validated compilation; rebuild available on maintainer request). No app-code
+    changes. Nothing committed in rn.athan.uk: SUGGESTED OWNER COMMIT **1.21.5** (docs-only: this s19
+    block; `app.json` + `package.json` + whatsNew version per convention).
+  - **NEXT SESSION PROTOCOL**: check javache on #58367 (our failure-mode question + C++ backend ask) and
+    #58375 (re-review of 198f5ca); zeyap on #58377; any review of d45be0e at #58378; expo #49244 (G.1
+    bump+XS verify when shipped) + #49687. If javache answers with the concrete 2023 failure mode, build
+    the targeted repro before further pushes. Fork clone for fix pushes: re-clone capt-muji/react-native
+    branch (the s17 /tmp clone is gone; this session's clone was /var/folders/.../opencode/rn-fork, also
+    ephemeral). EXIT CRITERIA (owner rule 2026-09-07): close NOTHING unless (a) zeyap confirms the C++
+    backend makes the animation slot ungovernable (close #58377 only, gracefully), (b) javache explicitly
+    declines the territory (close all four with thanks), or (c) 2+ weeks total silence after a nudge. If
+    no reply by ~Sep 14: one polite follow-up on #58367, not closure. SWEEP TABLE FORMAT (owner rule
+    2026-09-07): repo name in the leftmost column of every sweep/status table so the thread's repo is
+    always identifiable. COMMENT FORMAT (owner rule 2026-09-07): EVERY upstream comment, however short
+    (audit note, follow-up, self-review), gets structured formatting: headings, bold labels, bullets,
+    backticks for code; NEVER a single mashed paragraph. The four single-paragraph notes from this
+    session were retroactively reformatted in place on 2026-09-07 late evening.
 - **SESSION 18 END — status: CLOSED. Upstream sweep: NO new maintainer activity anywhere (checked
   2026-09-07 late). #58375: javache's 11:01Z threading comment still the last review (our 198f5ca
   fix + 13:02Z validation post await his re-review). #58376/#58378: zero reviews. #58377: no zeyap
