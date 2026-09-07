@@ -5,6 +5,27 @@
 ## State
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
+- **SESSION 18 END — status: CLOSED. Upstream sweep: NO new maintainer activity anywhere (checked
+  2026-09-07 late). #58375: javache's 11:01Z threading comment still the last review (our 198f5ca
+  fix + 13:02Z validation post await his re-review). #58376/#58378: zero reviews. #58377: no zeyap
+  reply. All four RN PRs MERGEABLE/BLOCKED (awaiting review only — NO main-drift conflicts). expo
+  #49244 untouched since Aug 31 (REVIEW_REQUIRED); expo-widgets stable still tops 57.0.17 (beyond
+  it only 58.0.0-canary prereleases — not the fix) → G.1 no-op. #49687 APPROVED ×2 unmerged,
+  awaiting expo. QUEUE 2 DECIDED — OWNER DROPPED the lazy view-config upstream filing after a
+  benefit/risk walkthrough (best ~10-25% cold-start cut on SD820-class only, ~50-150ms on modern
+  devices, zero immediate benefit; s16 evidence stays in this file; the phantom-loop PRs already
+  carry our upstream contribution). NO work done on devices, repo, or upstream this session —
+  campaign closed, upstream-tracking only. NEXT SESSION: same protocol — check #58375 (javache
+  re-review) / #58377 (zeyap) / #58378 / #58376 first; expo #49244 (bump+XS verify via G.1 when
+  the fix ships) + #49687; else nothing.**
+  - **S18 CLOSE-OUT (owner-instructed, same session)**: committed **1.21.4** (app.json + package.json
+    bump; whatsNew.ts version → 1.21.4, items unchanged per owner "version number only"; this s18
+    block) on perf/testing, pushed, then **fast-forward-merged uat → 1.21.4** (uat was an ancestor;
+    only perf/testing merged — it contains fix/background-scheduling by ancestry and ALL origin/main
+    content by patch-equivalence; feature/ios-widgets deliberately NOT merged: superseded by the
+    1.10→1.17.4 widget arc, merging would regress the redesigns) and pushed. Pruned 17 stale local
+    1.5.x-era tail branches (chore/*, fix/*, feat/*, revert/*, migration — all fully contained, all
+    local-only). **RESUME LINE: uat @ 1.21.4 is now the single campaign continuation branch.**
 - **SESSION 17 END — status: queue 1 DONE (3T flag-ON validation + PR reports + stock restore), queue 3 DONE (owner committed 1.21.2), queue 2 optional item NOT done (owner's call)**
   - **UPSTREAM CHECK (first action)**: NO new maintainer activity. #58375: javache's threading comment
     (11:01Z) still the last review; our fix+reply (198f5ca, 11:23Z) awaits his re-review. #58377: no
