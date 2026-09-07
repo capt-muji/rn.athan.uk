@@ -100,11 +100,13 @@ export default function Prayer({ type, index }: Props) {
     AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
   }, [isHiddenByOverlay, AnimOpacity.animate]);
 
-  // Android depth shadow for the active row (API 28+): lives on the row (the
+  // Android depth shadow for the active row: lives on the row (the
   // pill's slide transform clips Android's boxShadow drawable on old Android)
-  // and borderRadius mirrors the pill's corners so the shadow is rounded
+  // and borderRadius mirrors the pill's corners so the shadow is rounded.
+  // API >= 29 only — borderRadius + boxShadow together are dropped outright on
+  // API 28 (verified: no shadow, hard edges; renders correctly from 29 up)
   const activeShadowStyle: ViewStyle | null =
-    Platform.OS === 'android' && Prayer.isNext
+    Platform.OS === 'android' && Platform.Version >= 29 && Prayer.isNext
       ? {
           borderRadius: RADIUS.md,
           boxShadow: Schedule.isStandard ? SHADOW_ANDROID.prayer : SHADOW_ANDROID.prayerExtras,

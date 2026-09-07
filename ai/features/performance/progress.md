@@ -6,18 +6,150 @@
 
 - **Branch**: `perf/testing` (from `fix/background-scheduling` @ 1.18.9)
 - **Phase**: campaign CLOSED through 1.20.0; sessions 12-13 add-on (Android shadow/glow parity)
-  SHIPPED + owner-confirmed (1.20.1). The Galaxy S23 (Android 16/API 36) was a TEMPORARY LOAN for
-  the shadow work — returned + test app uninstalled; it did NOT join the fleet (the 3T remains
-  THE Android verification device; a modern-Android device can be borrowed again if needed — the
-  shadow lessons per API tier are in the session-13 entry). RESUME: the next-session queue in the
-  session-13 log entry (extras pill-slot canonical fix w/ owner approval, swipe-perf pass, 3T
-  final-shadow pass, iOS rebuild + eyeball, parked backlog).
+  SHIPPED + owner-confirmed (1.20.1). NOW: **session 14** — DEVICE RULES: the OnePlus 3T is the
+  PERMANENT baseline (always connected; smooth there = smooth everywhere). Temporarily loaned and
+  connected NOW: OPPO Find X8 (API 35+, modern tier) + OnePlus 5T (API 29, middle tier) —
+  suffixed test app ids only, never touch personal apps; RELEASE both immediately after Phase A.
+- **SESSION 14 QUEUE (the authoritative order — execute top-down)**:
+  - **PHASE A (loans connected; release them immediately after):**
+    1. Phantom idle-loop fleet sweep (#14): per device (3T, 5T, Find X8) — install the real app
+       (suffixed id), settle, 10s idle atrace (doFrame count/durations + top CPU) + the
+       blank-`<View>` build on any reproducer. Outcome (a) reproduces on Find X8 →
+       dependency-strip bisect (Reanimated out → expo-modules out → bare RN template) until it
+       dies → prep upstream PR w/ minimal repro; (b) 3T/5T-only → document as legacy-tier, close
+       #14, no PR.
+    2. Shadow tier check on the loans — verify committed 1.20.1 row-shadow + masjid glows: Find X8
+       (should render fully — the modern target); 5T rounded-corner row-shadow at API 29 (renders
+       or not → decides the exact Platform.Version gate threshold).
+    3. Ramadan decorations on modern hardware — quick decoration-load measurement on the Find X8
+       (baseline for the optimization; NO fixes on the loan).
+  - **PHASE B (3T + iPhone XS; unlimited time, the real work):**
+    4. ~~3T rebuild + owner shadow verification~~ **DONE (s14)**: row-shadow renders ABSENT
+       but graceful on API 28 → gated `Platform.Version >= 29`; masjid glow went UNIVERSAL
+       via baked sprite (gate deleted); renderToHardwareTextureAndroid verified no-freeze on
+       the old GPU. Owner pre-approved the 3T look ("correct shadows" on all devices).
+    5. ~~Swipe smoothness pass~~ **DONE (s14)**: masjid SVG record cost (56ms hitches) → PNG
+       sprites; worst swipe frame 33.6ms, body 60fps. See B5 entry below.
+    6. ~~Ramadan decorations smoothness~~ **DONE (s14)**: sprite rewrite, 38fps → 60fps
+       continuous, parity PASS. See B6 entry below.
+    7. Extras pill demo — video of the pill parking on the wrong row (mock an evening state;
+       fix = session-12 canonicalDisplayOrder one-liner; changes iOS too). Show, don't tell;
+       owner decides. **→ SESSION 15**
+    7b. **OWNER EVIDENCE PACK (session 15, owner-directed): before/after VISUALS of the
+       decoration + masjid PNG work — screenshots AND videos of the standard page with
+       decorations, before (SVG) vs after (sprites). PROCEDURE: the SVG version is still at
+       git HEAD (session-14 work is uncommitted) — build from HEAD (`git stash` the working
+       tree, gate-ON Release, install fleettest on the 3T, force isRamadan() throwaway,
+       capture screenrecord 15s + screenshot), then restore the stash (`git stash pop`),
+       rebuild, capture the same. Present both videos + screenshots side-by-side for the
+       owner's eyeball (perf numbers already logged: 38→60fps). Include the masjid glow
+       close-up (now universal on the 3T). RESTORE isRamadan + verify stash integrity after.
+    8. iOS Release rebuild + owner eyeball — overlay, shadow parity, extras surfaces (XS
+       untouched since s10.4). NOTE: iOS now renders the masjid from the PNG sprite + native
+       shadow — eyeball it too. **→ SESSION 15**
+    9. Launch speed — cold start 3.5s → <1s via #15 levers (chrome defer + module-eval trim)
+       + production-env measurement. **→ SESSION 15**
+    10. Upstream tracking (check, don't fix) — OUR react-native #58367/#58368/#58369 (FIRST
+        ACTION, see below) + expo-widgets PR #49244, the Android-notifications expo PR.
+        **→ SESSION 15**
 - **Builds**: repo @ 1.20.2. 3T runs the resting 1.20.0 build (s10.1 code; the shadow/glow work
-  is NOT yet installed there — queued as the 3T pass). iOS NOT rebuilt since the s10.4 build
+  is NOT yet installed there — queued as Phase B item 4). iOS NOT rebuilt since the s10.4 build
   (shadow work is Platform-gated Android-only, but the next iOS pass should still eyeball
   Day/Prayer surfaces).
-- **Device state (end of s13)**: 3T healthy, app foreground-settled. S23 returned to the owner
-  (test app removed; Play app untouched).
+- **A2 STATUS (session 14): SHADOW TIER CHECK DONE + OWNER-APPROVED**. Find X8 (API 36) + 5T
+  (API 29): rounded row-shadow RENDERS on both (vision-measured: corner-following tinted halo
+  ~25-50px, correct spec tints, zero artifacts — note it reads as an additive glow on navy, which
+  IS a correct outset boxShadow). Owner eyeball-approved on Find X8 + 5T + 3T ("correct shadows,
+  both pages"). GATE DECISION: renders at API 29 → threshold = API ≥ 29 IF the 3T (API 28) pass
+  breaks; current code has NO API gate (Platform.OS only). 3T nuance recorded: owner approved the
+  3T's CURRENT look, which is the OLD 1.20.0 build (no shadow work) — pre-approves the gate path.
+- **NEXT-SESSION QUEUE ADDITION (owner directive): FIRST ACTION — check upstream replies on
+  react/react-native #58368 (fix PR) / #58367 (issue) / #58369 (repro PR)**. Status at session
+  14 end: CLA SIGNED by owner ✓, changelog format fixed ✓ (analyze_pr PASS, Meta CLA PASS,
+  Meta Import PASS), repro cross-linked ✓ — everything actionable done; awaiting maintainer
+  review. Action any reviewer feedback (the re-arm-trigger completeness questions are the
+  likely thread; devices NOT needed unless requested).
+- **A3 STATUS (session 14): DECORATION BASELINE CAPTURED (Find X8)**. Forced-Ramadan build
+  (throwaway isRamadan()=true, restored after): decorations confirmed visible (vision: moon +
+  stars + lantern + mosque + glows) and the load is a REAL 60fps animation: 599 doFrames/10s with
+  608 frames SUBMITTED, per-frame cost 11.8-22.3ms median 16.4ms on the D9400 — baseline for B6
+  (3T comparison: ~48fps continuous). Evidence perf21/fleet/a3-decorations/.
+- **LOANS RELEASED (session 14)**: Find X8 + 5T wiped of all test apps (rawloop/rn086blank/
+  fleettest/bareloop) + keep-awake restored + returned. ONE exception: com.muji.bareloop on the
+  Find X8 is stuck in a ColorOS quarantine (all adb uninstall routes = DELETE_FAILED_INTERNAL_
+  ERROR; inert, no activities — owner can remove by hand if it shows in Settings). 3T cleaned of
+  bisect tools (keeps resting original-id 1.20.0 + fleettest).
+- **B5 DONE (session 14): SWIPE HITCH ROOT-CAUSED + FIXED — the masjid SVG's record cost**.
+  Anatomy (atrace): every swipe's opening frames re-record the whole window; the 30-path
+  masjid SVG's Java-side re-walk cost 36-41ms of Record inside 46-56ms doFrames (bisect:
+  icon blanked → worst swipe doFrame 56.2→9.96ms). renderToHardwareTextureAndroid FAILED
+  (re-rasterized every full invalidation: 102ms first swipe — REVERTED). FIX: pre-rasterized
+  PNG sprites (rsvg from the exact SVG sources, transparent bg, @1x/2x/3x + glow variants)
+  on BOTH platforms per owner directive (efficiency everywhere; iOS keeps its native shadow
+  props as pixel bar). RESULT: worst swipe doFrame 56.2 → 33.6ms (body at 60fps, p90 3.4ms;
+  the remaining 33.6 = touch-dispatch floor 6-11ms + normal ~21ms scene record — single
+  marginal frame, floor effectively held; further reduction = diminishing-risk, owner's call).
+- **B6 DONE (session 14): DECORATION SPRITE REWRITE — 38fps → 60fps CONTINUOUS**. Owner
+  stutter report (overlay open w/ decorations = very jittery) confirmed the mechanism: the
+  animated SVG props (wire y2, 5 glow-circle opacities) forced react-native-svg to re-render
+  every frame — 380 doFrames/10s at 24.4ms median (UI thread saturated). REWRITE: every art
+  piece pre-rasterized (16 sprites: moon/glow/crescent, star glow/body, lantern glow/flicker/
+  body, 3 precomposed clouds w/ mist+fade baked); wires = scaleY strips (transformOrigin top);
+  ALL animations preserved as the SAME shared values driving GPU View transforms/opacities.
+  RESULT: 596 doFrames/10s = **60fps sustained**, median 13.5ms (-45%), max 17.9ms (was
+  41.3) — ZERO floor violations; overlay_open w/ decorations 211-216ms (in the 183-215
+  established band — the owner's stutter case fixed by removing the competing load).
+  VISION PARITY: PASS (identical art/positions/glows; one sub-visible 1px-vs-2px crescent AA
+  nuance at 4x zoom; star brightness = twinkle phase not sprite). Evidence:
+  perf21/fleet/b6-decorations/{before,after}/ incl. before/after mp4s.
+- **MASJID GLOW NOW UNIVERSAL (owner insight)**: baked the exact s13 FeDropShadow spec
+  (canvas 849.4u, gold silhouette @0.6 + shadow dx/dy 62 σ165 #EF9C29 @0.22) into glow
+  sprites — the API ≥ 29 gate for the masjid glow is DELETED (a bitmap renders identically
+  everywhere): the 3T gets the same golden halo as the Find X8/iOS-class for the first
+  time. Masjid.tsx: Android = glow sprite + icon sprite (no live SVG anywhere); iOS = icon
+  sprite + native shadow. The ROW-pill boxShadow gate (API ≥ 29) REMAINS (that one is RN's
+  drawable, genuinely dead at 28 — B4-verified absent-but-graceful on the 3T).
+- **SESSION 14 UNCOMMITTED TREE (owner's commit ritual — suggest 1.21.0 minor)**: modified
+  components/prayer/Prayer.tsx (row-shadow ≥29 gate), components/ui/Masjid.tsx (sprites,
+  universal glow), components/ui/RamadanDecorations.tsx (sprite rewrite), global.d.ts (png
+  module decl), ai/features/performance/progress.md; NEW ai/features/performance/
+  phantom-loop-investigation.md + assets/icons/png/** (masjid @1x/2x/3x ×2 variants,
+  decorations 12 sprites). Battery on resting tree: jest 931/931, tsc clean, biome clean
+  (3 benign warnings in RamadanDecorations re animated-style deps). All throwaways restored
+  (isRamadan, masjid backup); mock churn = none. android/ (gitignored) still carries the
+  fleettest applicationId + label for suffixed test installs.
+- **FULL LOAN CLEANUP (owner directive, end of session 14)**: Find X8 + 5T wiped of EVERYTHING
+  ever compiled across all campaigns (bareexpo/barealarm/barealarm36/athan.bgtest/fleettest/
+  rawloop/rn086blank/bareloop); ONLY the owner's original com.mugtaba.athan remains on each.
+  ONE exception: com.muji.bareloop on the Find X8 is ColorOS-quarantined — survives even
+  reinstall+uninstall (DELETE_FAILED_INTERNAL_ERROR; "No activity found", cannot launch, inert
+  ~68MB); owner can remove via Settings→Apps or after a reboot. 5T is 100% clean.
+- **A1 STATUS (session 14): PHANTOM LOOP #14 ROOT-CAUSED + PATCH-VALIDATED — RN-CORE, ALL
+  TIERS**. Loop reproduces on 3T (API 28, 597-598/10s, ~22.5% CPU), 5T (API 29, 599-601, ~9.3%),
+  Find X8 (API 36, 587-601, ~3.5-6.8%) with the REAL app, a blank-View build, a stock Expo 57
+  blank template, AND a stock RN 0.86.3 CLI template — while a raw-Java zero-dependency Activity
+  gets 0 doFrames/0 frames (OS floor clean). Every looping cell renders 0 frames (gfxinfo) =
+  pure waste, foreground-only. ROOT CAUSE: FOUR unconditional pump-forever frame callbacks in
+  RN 0.86.3 (JavaTimerManager.kt:317, FabricEventDispatcher.kt:153, NativeAnimatedModule.kt:353,
+  FabricUIManager.java:1631 finally-schedule) — runtime-attributed via a logging
+  ReactChoreographer port (tag PhantomChoreographer) + patch-validated on the Find X8: demand-
+  gating timers+dispatcher, then kill-switching the NativeAnimated+DispatchUI pumps → **0
+  doFrames at idle, app alive** (2 suppressed posts total = each pump kept only itself alive).
+  Full dossier (matrix, replication, proposed 4-part upstream fix, before/after): ai/features/
+  performance/phantom-loop-investigation.md. **UPSTREAM FILED (owner-sanctioned)**: issue
+  react/react-native#58367 + PR react/react-native#58368 (5-file Kotlin/Java diff, demand-gated
+  re-arm for all four pumps; fork branch fix/android-idle-choreographer-pumps; deep prior-art
+  search first — NO duplicates existed). TRACK #58368 EVERY SESSION (CLA may need owner
+  signature). Harness artifacts: perf21/fleet/ (traces + parse_doFrame.py + sweep.sh + patch/
+  sources + local-maven substitution build + upstream/ clone). Find X8 still runs the PUMPSKILLED
+  rn086blank build at session midpoint (needs real-app restore for A2).
+- **Device state (session 14 END → session 15 resume)**: OnePlus 3T connected (permanent):
+  runs the suffixed `com.mugtaba.athan.fleettest` build with ALL session-14 work (gated
+  shadows + universal glow + sprite decorations) AND the resting original-id 1.20.0 build —
+  both intact. iPhone XS connected, untouched since the s10.4 build. Loans (Find X8 + 5T)
+  RETURNED + fully cleaned (one inert ColorOS-quarantined bareloop shell may remain on the
+  Find X8 — hand-remove via Settings/reboot). android/ (gitignored) carries the fleettest
+  applicationId suffix for future test installs.
 - **Evidence**: s10/s11 in /var/folders/.../T/opencode/perf21/{s101,s102,s103}; the shadow/glow
   arc in perf21/s23/{shadow-tune,glow-evidence(01-10 + glow-tour.mp4),perf(atrace+swipe pts)}.
 - **Standing owner directives**: 3T is THE Android verification device (borrowed modern devices
