@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { memo, useRef } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
@@ -26,8 +26,6 @@ interface Props {
   isPlaying: boolean;
   /** Whole seconds left in the playing preview — meaningful only on the playing row */
   remainingSeconds: number;
-  /** Whether the shared sheet player is audibly playing (false while paused/seeking) */
-  isAudible: boolean;
   onSelect: (index: number) => void;
   onPlayPress: (index: number) => void;
   onLayout?: (e: LayoutChangeEvent) => void;
@@ -45,23 +43,27 @@ interface Props {
  * status tick only re-renders the playing row (and only when its whole-second
  * countdown actually changes).
  */
-function SoundItemImpl({
-  index,
-  isSelected,
-  isPlaying,
-  remainingSeconds,
-  isAudible,
-  onSelect,
-  onPlayPress,
-  onLayout,
-}: Props) {
+function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelect, onPlayPress, onLayout }: Props) {
   const isActive = isPlaying || isSelected;
 
   const AnimScale = useAnimationScale(1);
 
-  const showCountdown = isPlaying && isAudible && remainingSeconds > 0;
+  // Countdown visibility is edge-synchronized with the row's state flip:
+  // appear only once real remaining data exists (the player reports duration
+  // ~100-300ms after the tap — appearing earlier showed stale/zero text),
+  // stay through status churn (playing/duration oscillate at load — hiding on
+  // those flickered), and hide the moment isPlaying flips false, which is the
+  // same instant the icon swaps to play and the label deactivates.
+  const [countdownVisible, setCountdownVisible] = useState(false);
+  useEffect(() => {
+    if (!isPlaying) {
+      setCountdownVisible(false);
+      return;
+    }
+    if (remainingSeconds > 0) setCountdownVisible(true);
+  }, [isPlaying, remainingSeconds]);
 
-  // The countdown fades over ~150ms after it hides, and remainingSeconds
+  // The countdown fades over ~75ms after it hides, and remainingSeconds
   // drops to 0 the instant playback stops or the player reloads — without
   // this latch the fading text flashes "0:00" (and again on the next tap's
   // fade-in before the new duration arrives). Freeze the last positive
@@ -72,7 +74,7 @@ function SoundItemImpl({
 
   // Animated values for countdown
   const countdownOpacity = useDerivedValue(() =>
-    withTiming(showCountdown ? 1 : 0, { duration: ANIMATION.durationFast })
+    withTiming(countdownVisible ? 1 : 0, { duration: ANIMATION.durationFast })
   );
 
   const countdownColorProgress = useDerivedValue(() =>
