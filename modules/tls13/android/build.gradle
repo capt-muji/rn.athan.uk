@@ -1,0 +1,26 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+group = 'expo.modules.tls13'
+version = '0.1.0'
+
+android {
+    namespace "expo.modules.tls13"
+
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 24
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation project(':expo-modules-core')
+    // Already shipped in the app's tree via expo's GMS transitives; declared
+    // here so this module sees ProviderInstaller on its compile classpath
+    implementation 'com.google.android.gms:play-services-base:18.1.0'
+}

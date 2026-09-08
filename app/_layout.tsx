@@ -1,6 +1,9 @@
 // IMPORTANT: Import background task definition FIRST to ensure it's registered in global scope
 // before any other code runs. This allows the OS to find the task even when waking a killed app.
 import '@/device/tasks';
+// TLS 1.3 provider observability (Android <=9; the install itself runs
+// natively before any HTTP client exists - see modules/tls13)
+import '@/device/tls13';
 // Synchronous cache hydration: populates prayer sequences (and starts the
 // countdown tickers) from MMKV before first render on warm-cache launches —
 // no-op returning false on fresh installs and upgrade launches
