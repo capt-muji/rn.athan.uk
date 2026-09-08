@@ -1,4 +1,5 @@
 module.exports = {
+  setupFiles: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'node',
   moduleNameMapper: {
     // Widget layout modules register native widgets as an import side effect —

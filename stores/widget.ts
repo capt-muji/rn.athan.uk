@@ -33,6 +33,7 @@ import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 import { Platform } from 'react-native';
 
+import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
@@ -150,7 +151,7 @@ const sequenceFor = (schedule: ScheduleType, startDate: Date): PrayerSequence =>
  * next sync. Idempotent; no-op off iOS.
  */
 export const initWidgetSettingsSync = (): void => {
-  if (settingsSyncInitialized || Platform.OS !== 'ios') return;
+  if (settingsSyncInitialized || Platform.OS !== 'ios' || !FEATURE_FLAGS.widgets) return;
   settingsSyncInitialized = true;
 
   const store = getDefaultStore();
@@ -218,7 +219,7 @@ const pushScheduleTimelines = async (
   schedule: ScheduleType,
   options?: { reuseCachedSequence?: boolean }
 ): Promise<void> => {
-  if (Platform.OS !== 'ios') return;
+  if (Platform.OS !== 'ios' || !FEATURE_FLAGS.widgets) return;
 
   try {
     const now = TimeUtils.createLondonDate();
@@ -285,7 +286,7 @@ const pushScheduleTimelines = async (
  * label-flip timers handle the in-between minute pushes themselves.
  */
 export const refreshPrayerWidgets = async (): Promise<void> => {
-  if (Platform.OS !== 'ios') return;
+  if (Platform.OS !== 'ios' || !FEATURE_FLAGS.widgets) return;
 
   await pushScheduleTimelines(ScheduleType.Standard);
   await pushScheduleTimelines(ScheduleType.Extra);

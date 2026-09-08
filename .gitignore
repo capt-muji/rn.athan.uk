@@ -22,3 +22,7 @@ coverage/
 
 expo-env.d.ts
 # @end expo-cli
+# Local expo module gradle build outputs (source under modules/ is tracked)
+modules/**/build/
+modules/**/.gradle/
+.env
