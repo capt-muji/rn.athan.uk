@@ -169,7 +169,6 @@ export default function BottomSheetSound() {
                 isSelected={index === currentSelection}
                 isPlaying={playingIndex === index}
                 remainingSeconds={playingIndex === index ? playingRemainingSeconds : 0}
-                isAudible={status.playing}
                 onSelect={setTempSoundSelection}
                 onPlayPress={handlePlayPress}
                 onLayout={index === 0 ? handleItemLayout : undefined}
