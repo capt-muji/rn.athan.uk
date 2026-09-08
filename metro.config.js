@@ -10,6 +10,13 @@ module.exports = (() => {
   config.transformer = {
     ...transformer,
     babelTransformerPath: require.resolve('react-native-svg-transformer/expo'),
+    // THROWAWAY perf22 experiment: defer module evaluation to first use.
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: true,
+        inlineRequires: true,
+      },
+    }),
   };
   config.resolver = {
     ...resolver,
