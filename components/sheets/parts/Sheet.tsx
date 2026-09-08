@@ -21,11 +21,14 @@ const SHEET_BOTTOM_PADDING = 50;
 /**
  * Snappier sheet motion than the library defaults: the default Android timing
  * uses Easing.out(Easing.exp), whose exponential tail makes the close settle
- * drag; cubic-out finishes crisp. iOS default spring is tightened the same way.
+ * drag; cubic-out finishes crisp. iOS uses the duration-form spring, which
+ * completes at its duration instead of crossing rest thresholds — the
+ * 2026-09-08 owner report had dismiss committing ~400ms after the sheet
+ * looked closed, because onDismiss waits for spring completion.
  */
 const SHEET_ANIMATION_CONFIGS = Platform.select({
   android: { duration: 200, easing: Easing.out(Easing.cubic) },
-  default: { damping: 42, stiffness: 500, mass: 1 },
+  default: { duration: 220, dampingRatio: 0.9 },
 });
 
 interface SheetProps {
@@ -55,12 +58,6 @@ interface SheetProps {
   enableDynamicSizing?: boolean;
   /** Use scrollable content area */
   scrollable?: boolean;
-  /**
-   * Haptic style fired when a close animation STARTS (back, backdrop, swipe,
-   * or programmatic) so completion feels acknowledged immediately instead of
-   * waiting for the dismiss callback
-   */
-  closeHaptic?: Haptics.ImpactFeedbackStyle;
   /**
    * Called once, the first time the sheet fully opens (settles on its first
    * snap point). Used by the settings sheet to warm the sound list — the
@@ -113,7 +110,6 @@ export default function Sheet({
   snapPoints = ['70%'],
   enableDynamicSizing = false,
   scrollable = true,
-  closeHaptic,
   stackBehavior,
 }: SheetProps) {
   const { bottom: safeBottom } = useSafeAreaInsets();
@@ -150,13 +146,21 @@ export default function Sheet({
           perfMark(`${perfName}_close_start`);
         }
       }
-      if (closeHaptic && (toIndex === null || toIndex < 0)) {
-        Haptics.impactAsync(closeHaptic);
-      }
       onAnimate?.();
     },
-    [perfName, onAnimate, closeHaptic]
+    [perfName, onAnimate]
   );
+
+  // One unified close haptic for every sheet (owner rule 2026-09-08: native
+  // consistency): a single Light impact when the sheet finishes closing, on
+  // every close path — swipe, backdrop, back, programmatic — landing on the
+  // same tick as any dismiss-time commit (the alert sheet's save and icon
+  // bounce). Firing at close start instead buzzed the moment a drag began,
+  // detached from the outcome.
+  const handleDismiss = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    onDismiss?.();
+  }, [onDismiss]);
 
   const handleChange = useCallback(
     (index: number) => {
@@ -189,7 +193,7 @@ export default function Sheet({
       enablePanDownToClose
       animationConfigs={SHEET_ANIMATION_CONFIGS}
       stackBehavior={stackBehavior}
-      onDismiss={onDismiss}
+      onDismiss={handleDismiss}
       onAnimate={handleAnimate}
       onChange={handleChange}
       style={bottomSheetStyles.modal}

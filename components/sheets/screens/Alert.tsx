@@ -1,4 +1,3 @@
-import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -69,8 +68,7 @@ export default function BottomSheetAlert() {
       enableDynamicSizing
       scrollable={false}
       onDismiss={handleDismiss}
-      perfName='sheet_alert'
-      closeHaptic={Haptics.ImpactFeedbackStyle.Light}>
+      perfName='sheet_alert'>
       {sheetState && (
         <AlertSheetBody
           key={`${sheetState.type}:${sheetState.index}`}

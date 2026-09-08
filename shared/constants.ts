@@ -824,8 +824,8 @@ export const ANIMATION = {
   durationSlow: 1000,
   /** Delay between consecutive prayer animations during cascade effect */
   cascadeDelay: 150,
-  /** Debounce interval for rapid user interactions */
-  debounce: 450,
+  /** Alert icon change-bounce: dip to 0.6 before the spring pop home (ms) */
+  alertBounceDip: 90,
 };
 
 // =============================================================================

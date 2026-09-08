@@ -1,5 +1,4 @@
 import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
-import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
@@ -147,7 +146,6 @@ export default function BottomSheetSound() {
       onDismiss={handleDismiss}
       onAnimate={clearAudio}
       perfName='sheet_sound'
-      closeHaptic={Haptics.ImpactFeedbackStyle.Medium}
       onFirstPresent={setSoundListReady}
       stackBehavior='push'>
       {/* Card + 32 rows mount once the settings sheet (the only path here)

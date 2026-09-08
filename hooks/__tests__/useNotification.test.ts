@@ -43,6 +43,14 @@ jest.mock('expo-notifications', () => ({
   setNotificationHandler: jest.fn(),
 }));
 
+// Mock expo-haptics (the rollback error haptic; native module, no place in unit tests)
+jest.mock('expo-haptics', () => ({
+  notificationAsync: jest.fn(),
+  impactAsync: jest.fn(),
+  NotificationFeedbackType: { Success: 'success', Warning: 'warning', Error: 'error' },
+  ImpactFeedbackStyle: { Light: 'light', Medium: 'medium', Heavy: 'heavy' },
+}));
+
 // Logger is mocked via moduleNameMapper in jest.config.js
 
 // Mock NotificationStore functions

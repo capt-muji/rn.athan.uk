@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 
+import { useAlertSwapBounce } from '@/hooks/useAlertSwapBounce';
 import { useAnimationBounce, useAnimationFill, useAnimationOpacity, useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, COLORS } from '@/shared/constants';
 
@@ -26,6 +27,7 @@ export const useAlertAnimations = ({ initialColorPos }: UseAlertAnimationsParams
   const AnimScale = useAnimationScale(1);
   const AnimOpacity = useAnimationOpacity(0);
   const AnimBounce = useAnimationBounce(0);
+  const AnimSwap = useAlertSwapBounce();
   const AnimFill = useAnimationFill(initialColorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
@@ -52,6 +54,7 @@ export const useAlertAnimations = ({ initialColorPos }: UseAlertAnimationsParams
     AnimScale,
     AnimOpacity,
     AnimBounce,
+    AnimSwap,
     AnimFill,
     resetPopupAnimations,
     hidePopup,
