@@ -83,6 +83,8 @@
 ├── widgets/               # iOS widget LAYOUTS only ('widget'-directive functions, serialized at build)
 │   ├── PrayerWidget.tsx   # Home screen layouts — ONE shared function registered as PrayerWidget + ExtrasWidget (systemSmall trio; systemMedium adds the day list with the active pill: indigo standard / rose extras)
 │   └── LockPrayerWidget.tsx # Lock Screen layouts — ONE shared function registered as PrayerLockWidget + ExtrasLockWidget (accessoryRectangular/Inline; circular registered but renders blank)
+├── modules/               # Local Expo modules (compiled in via autolinking)
+│   └── tls13/             # Android: TLS 1.3 provider install via ContentProvider (ISSUES.md #21 — API is TLS 1.3-only; Android <=9 needs GMS ProviderInstaller BEFORE any HTTP client is built)
 ├── hooks/                 # Custom React hooks
 │   ├── useAnimation.ts    # Reanimated animation hook
 │   ├── useNotification.ts # Notification management
@@ -202,6 +204,16 @@ Data Sync Flow:
 - Import from `shared/logger.ts`
 - Never use `console.log` (Biome `noConsole` forbids it)
 - Use structured logging: `logger.info({ context }, 'message')`
+
+### Feature Flags (build-time, statically folded)
+
+- **Design**: env transport + ONE typed reader. `shared/flags.ts` holds `FEATURE_FLAGS`; each flag is `process.env.EXPO_PUBLIC_<NAME> === '1'` with JSDoc naming its flip condition. Only the exact string `1` enables; absence/`0`/typos disable (fail direction: mistakes disable, never enable). Metro inlines the value at build time, so disabled branches dead-code-eliminate in Release.
+- **Single reader rule**: no module other than `shared/flags.ts` may spell an `EXPO_PUBLIC` flag variable. The one exception: `app.config.ts` mirrors the `widgets` flag to strip the `expo-widgets` plugin at prebuild (importing TS there would need `tsx`); `shared/__tests__/flags.test.ts` pins the mirror and the flag in lockstep.
+- **Catalog**: `.env.example` (committed) documents every variable; local `.env` stays untracked and holds personal values; production builds pass the API key inline via shell env only.
+- **Tests**: `jest.setup.js` (setupFiles) sets `EXPO_PUBLIC_WIDGETS=1` globally; disabled-path tests delete the variable and `jest.resetModules()` + `jest.isolateModules()` to re-evaluate `flags.ts` fresh.
+- **What's New interplay**: items may declare `flags: ['widgets']`; `filterWhatsNewItems` removes them when disabled and `VISIBLE_WHATS_NEW` (null when nothing remains) is what UI consumes — a dark feature can never be advertised.
+- **Lifecycle**: when a flag's flip condition lands, change the default in `flags.ts` in a version-bumped release; once stable, delete the flag (gate, `.env.example` line, and all). Flags are scaffolding, not furniture.
+- **Current flags**: `widgets` (iOS Home/Lock widgets, OFF — G.1/G.2 render-chain breakage until `expo-widgets@57.0.16` from expo/expo#49244 is verified on the XS per the G.1 acceptance protocol; Android is unaffected by this flag — widgets are iOS-only).
 
 ### Animation (Reanimated 4)
 
@@ -449,6 +461,31 @@ yarn format:check      # Check formatting/lint without changing files
 - **Side effect (intended):** a version increase triggers `handleAppUpgrade()` on first launch after update — prayer cache wipe + refetch, preference migration. Never "skip" the bump to avoid this.
 - **NEVER touch `releases.json` from a feature branch or session** — the owner updates it manually on `main` after each store release. It drives the update popup for Android + UAT iOS (production iOS reads the live App Store version via iTunes Lookup automatically).
 - Commit messages are prefixed with the new version (repo convention): `1.7.1 - fix: ...`.
+
+### Native Version Sync (device Release builds)
+
+`android/` and `ios/` are git-ignored prebuild artifacts; `expo run:android`/`run:ios` never re-sync them while they exist, so their embedded `versionName`/`MARKETING_VERSION` go stale (they sat at 1.18.9/1.16.2 while `app.json` said 1.22.x — the app-info lie on test devices). Store builds are unaffected: EAS cloud builds prebuild fresh from `app.json` and `autoIncrement` owns the Store `versionCode`. Local `versionCode`/`CURRENT_PROJECT_VERSION` stay 1, fine for side-loads (`adb install -r` tolerates equal).
+
+Before every local Release device build, re-run prebuild so native versions match `app.json`, then verify. ORDER MATTERS: bump the version in `app.json` FIRST, then prebuild, then build (`expo run:*` never resyncs an existing native dir — violating this order shipped 1.22.10 code stamped 1.22.9 once):
+
+```bash
+# iPhone XS IPHONE_UDID
+npx expo prebuild -p ios --no-install
+grep -A1 CFBundleShortVersionString ios/Athan/Info.plist  # must show the app.json version
+# (the plist literal is authoritative; post-clean the pbxproj MARKETING_VERSION stays a template 1.0)
+npx expo run:ios --configuration Release --device IPHONE_UDID
+
+# OnePlus 3T (3T_SERIAL) — env vars REQUIRED on prebuild too: without them android/ regenerates
+# as the plain Play package id and the fleettest install ritual breaks
+EXPO_ANDROID_SUFFIX=fleettest EXPO_NAME_SUFFIX=FleetTest npx expo prebuild -p android --no-install
+grep -n versionName android/app/build.gradle                # must show the app.json version
+EXPO_ANDROID_SUFFIX=fleettest EXPO_NAME_SUFFIX=FleetTest npx expo run:android --variant release
+# then the usual tail: kill the CLI at "Installing", poll `dumpsys package
+# com.mugtaba.athan.fleettest | grep lastUpdateTime` until settled, launch with a DOUBLED
+# `am start` (first start after install lands on the launcher, the second sticks)
+```
+
+Prebuild re-syncs the widget target sources as well (2026-08-30 lesson); `app.json` is unchanged between rituals so output should round-trip, but eyeball the first post-prebuild build. `yarn reset` also fixes the versions (it deletes both native folders) but reinstalls everything; the prebuild step is the targeted form.
 
 ### File-Scoped (Fast)
 
@@ -702,6 +739,9 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 - **@expo/ui is allowed ONLY inside widget layouts** (`widgets/*.tsx`, evaluated in the widget extension's JS runtime) - never in app UI: its native pager's shifted coordinate space caused the F.9 overlay regression and was removed from app screens (see ISSUES.md F.2/F.9).
 
 **Recent Decisions:**
+
+- [2026-09-08] Feature flags + widgets gated OFF + What's New versioned archive (1.22.9/1.22.10): `shared/flags.ts` is the single typed reader (`EXPO_PUBLIC_<NAME> === '1'` enables; absence/typo disables — see the Feature Flags golden path above). The `widgets` flag is OFF everywhere until `expo-widgets@57.0.16` (expo/expo#49244, the G.1/G.2 render-chain fix) is verified on the XS; when OFF, `app.config.ts` strips the expo-widgets plugin (no extension in the build, no gallery entries, push paths statically dead — Android unaffected, widgets are iOS-only). What's New became a GROWING ARCHIVE: each item carries the version it shipped in (`null` parks it — the widgets item's wording is preserved parked); `filterWhatsNewItems` shows only the current release's unflagged items; archive cap 20 enforced by test (supersedes ADR-012's single-entry rewrite ritual). `.env.example` is the committed variable catalog; local `.env` stays untracked (it historically tracked a PLACEHOLDER key only — no real key was ever committed). All pre-1.22.10 local builds ran MOCK data (env unset = local), which masked ISSUES.md #21 for weeks — prod-config verification is now part of any release-candidate build.
+- [2026-09-08] Android 9 TLS 1.3 fix (1.22.10, ISSUES.md #21): the prayer API accepts TLS 1.3 only; Android 9 ships it disabled and okhttp clients snapshot SSLContext.getDefault() BEFORE JS runs (debug worked, release failed — a raw-socket probe proved the patched JVM could handshake while the app fetch could not). Fix: `modules/tls13` with a manifest-merged ContentProvider calling GMS `ProviderInstaller.installIfNeeded` before Application.onCreate (play-services-base already in the tree — no new dependency; no-op on Android 10+). KEY LESSON: any "fix the provider then fetch" logic must run before client construction, i.e. native init, never from JS.
 
 - [2026-09-08] Alert icon change-bounce + sheet close choreography (1.22.6): changing a prayer's alert now bounces the row icon (owner-picked Pop of five on-device candidates: dip to 0.6, glyph swap fired at the trough via the withSequence segment callback, spring home; `hooks/useAlertSwapBounce.ts`, duration in `ANIMATION.alertBounceDip`). Trigger rule: an effect keyed on the alert atom transition only (prevRef guard, first evaluation snaps, mount settled, commit rollback correctly replays); the rendered glyph lags the atom through `displayedAlert` state so the swap lands inside the animation; press AnimScale stays on the outer wrapper, the bounce on an inner one. Sheet close choreography: ONE unified close haptic for every sheet, fired at dismiss completion inside Sheet.tsx (Light; the per-sheet `closeHaptic` prop is deleted, superseding the 2026-09-06 close-START decision) so it lands on the alert commit tick; iOS sheet spring is now duration-form (220ms, dampingRatio 0.9) because raw springs complete at rest-threshold crossing, which fired onDismiss ~400ms after the close began (the owner-reported close-to-bounce gap; the commit was never the delay, the atom flips before scheduling). Alert commit rollback is deliberately haptic-free (an on-device feel-test found Heavy indistinguishable from Light; the icon snapping back is the signal); the old 450ms ANIMATION.debounce constant (pre-sheet popup era, unreferenced) is deleted. Fix-session prompt preserved at `ai/prompts/alert-icon-change-animation.md`.
 - [2026-09-06] Performance campaign CLOSED (sessions 1-11; ADR-014 Implemented, #20 done): the overlay re-architecture shipped as the **per-element variant** (bands-with-holes superseded after the owner rejected any cutout mechanism) — per-row schedule-gated hidden atoms, pill/chrome/Masjid fades, VeilBackdrop + box-none catcher + pager scrollEnabled gate retained; the ≤2s pre-boundary lock is GONE (selection-follows-next-prayer rides the cascade — verified on-device through mid-day, open-tween-collision, and Isha→Fajr date-roll boundaries: atomic hero/date swaps, single-pill invariants, no auto-close, no open-refusal). The **countdown merge** (s10): the sequence ticker writes `overlay-open ? selectedTarget : next` into the page countdown atom (instant writes on open/selection/advance/close; hold-at-1s via the ceil clamp; boundary detection always on the true next prayer) — `overlayCountdownAtom` family deleted, exactly 2 countdown timers app-wide, overlay-open ≡ overlay-closed idle render cadence (atrace-verified). Cumulative campaign: idle CPU 80.6% → ~19-31% band on the 3T, all big animations at/above the 30fps floor with vision-audited frames, pixel parity vs the original modulo three owner-sanctioned deltas. Performance Design Rules extended to 12 (mark-semantics, settled-frame diffs, capture-artifact vetting, box-none/scrollEnabled hit-testing, state-merging). Full history + harness lessons: `ai/features/performance/progress.md`.

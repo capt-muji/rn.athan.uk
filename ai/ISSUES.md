@@ -1,6 +1,6 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-09-03 (session 2 of the Android 4-device campaign: #17 bare-expo control — app exonerated, minimal reproducer appended to upstream PR #49687; #18 added — Android force-stop cancels scheduled alarms; #19 MITIGATED — 8T boot re-arm block, Auto-launch causal; #20 added — post-reboot headless task body hang, upstream candidate. Earlier: 2026-09-02 #8 FIXED 1.18.0 device-verified iOS; section G release blockers; #12 closed 1.6.0; #4/#5 DEFERRED; #10 OPEN.)
+Last updated: 2026-09-08 (session: #21 FIXED 1.22.10 — Android 9 TLS 1.3-only API blocked all real fetches; ContentProvider-based ProviderInstaller module; widgets feature-flagged OFF pending expo-widgets 57.0.16 (G.1/G.2); What's New became a versioned archive. Upstream watch: #49687 MERGED 2026-09-08T13:10Z, rides SDK 58, no 57.x backport; adoption step + shipped `delivery: 'alarmClock'` API recorded in #17. Earlier 2026-09-03, session 2 of the Android 4-device campaign: #17 bare-expo control — app exonerated, minimal reproducer appended to upstream PR #49687; #18 added — Android force-stop cancels scheduled alarms; #19 MITIGATED — 8T boot re-arm block, Auto-launch causal; #20 added — post-reboot headless task body hang, upstream candidate. Earlier: 2026-09-02 #8 FIXED 1.18.0 device-verified iOS; section G release blockers; #12 closed 1.6.0; #4/#5 DEFERRED; #10 OPEN.)
 
 Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not yet fixed · [DEFERRED] accepted, revisit later · [ACCEPTED] intended behavior, documented
 
@@ -321,11 +321,29 @@ replay (incl. the pending 5-device Android campaign) in
   2. `adb shell dumpsys deviceidle whitelist | grep mugtaba` (power allowlist state)
   Fold into the same phone sitting as the F.7 / #12 / back-gesture confirms.
 
-### 17. [OPEN — UPSTREAM PR FILED] OEM windowed delivery of scheduled notifications (root cause of #10's late fires)
+### 17. [OPEN — UPSTREAM FIX MERGED, RIDES SDK 58] OEM windowed delivery of scheduled notifications (root cause of #10's late fires)
 
 - **Status (2026-09-03, deep-dive session with 4-device bench)**: root cause empirically
   characterized; upstream fix proposed as [expo/expo#49687](https://github.com/expo/expo/pull/49687)
   (opt-in `alarmClock: true` on DateTriggerInput → `AlarmManager.setAlarmClock()`).
+- **Status (2026-09-08, upstream watch delta)**: #49687 MERGED to `main` at 2026-09-08T13:10Z
+  (vonovak). The fix sits in the changelog's Unpublished block, so it rides the SDK 58 line.
+  No 57.x backport exists: no backport PR references it, and the newest npm 57.x
+  (`57.0.17`, 2026-09-04) predates the merge; the first npm artifact carrying the fix is
+  `58.0.0-canary-20260908-e343e6e`. Per owner rule, no speculative SDK 58 upgrade: adoption
+  waits for the SDK 58 release (recorded under Owner-facing implications below). Watch
+  signal: `npm dist-tag ls expo` gaining `sdk-58`, or a `58.0.0-beta.x` publish; as of
+  2026-09-08 only per-commit canaries exist and no beta has been announced.
+- **Shipped API differs from the draft**: the merged option is `delivery: 'alarmClock'`
+  (`NotificationDelivery = 'bestEffort' | 'alarmClock'` in `Notifications.types.ts`, default
+  `'bestEffort'`, Android-only, degrades to best-effort without the exact-alarm permission)
+  on `DateTriggerInput` and the daily/weekly/monthly/yearly triggers. The draft's boolean
+  `alarmClock: true` did not ship; the hardware verification below ran on the draft branch,
+  the alarm-clock path itself (`setAlarmClock()`, `window=0 flags=0x9`) is unchanged.
+- **SDK 58 upgrade flag**: the same Unpublished changelog block carries a breaking change
+  ([#49072](https://github.com/expo/expo/pull/49072)): notifications arriving in the
+  foreground now present by default unless `setNotificationHandler` says otherwise. Audit
+  our handler behavior during the SDK 58 upgrade.
 - **Mechanism (all measured, none inferred)**: on OnePlus 8T (OxygenOS 12) and Oppo Find X8
   (ColorOS 16), alarms scheduled through expo-notifications' EXACT path are stored by the OS
   with a 1-hour deferral window (dumpsys: `window=+1h0m0s0ms flags=0x4`) and delivered inside
@@ -363,8 +381,12 @@ replay (incl. the pending 5-device Android campaign) in
 - **Corroboration**: owner audibly received on-time notifications on the 8T (06:00:11, 06:04:00)
   while the F8's same-instant notifications deferred (+21.6s heard; 06:00 alarm deferred past
   +5m unheard) — the exact lived inconsistency that opened #10.
-- **Owner-facing implications**: (a) once #49687 merges (or via a local interim if needed),
-  prayer-time notifications move to `alarmClock: true`; (b) the Play app's CURRENT stale alarms
+- **Owner-facing implications**: (a) #49687 merged 2026-09-08 but rides SDK 58, so the
+  adoption step is: on the SDK 58 upgrade, set `delivery: 'alarmClock'` on our
+  `DateTriggerInput`s for exact Athan/reminder notifications in `stores/notifications.ts`,
+  then device-verify on the 4-device bench per the #10/#17 protocol (8T/F8 alarms store
+  `window=0 flags=0x9`, same-minute delivery +0ms vs windowed plain siblings); (b) the Play
+  app's CURRENT stale alarms
   (1.5.2, scheduled during the revoke-era) remain inexact until the store app updates and
   reschedules — the 1.18.x reschedule-on-open self-heals them on update; (c) "early" fires
   remain #11 clock-skew territory (not app-fixable).
@@ -415,6 +437,18 @@ replay (incl. the pending 5-device Android campaign) in
 - **Interim owner-facing implication**: after any Android reboot, notifications keep firing
   from the existing buffer but stop refreshing until the next app open (same recovery as
   #18/#19 — self-heal on open). The 2-day buffer bounds the exposure.
+
+### 21. [FIXED 1.22.10] Android 9: TLS 1.3-only API + provider snapshot ordering broke every real-data fetch
+
+- **Symptom (2026-09-08, first production-config local build on the 3T)**: error screen ("Something went wrong") on fresh launch; sync failed with `SSLHandshakeException: Handshake failed` in ~0.5s. Identical APK worked perfectly on the 5T (Android 10) and S23 (Android 14).
+- **Root cause chain (all measured)**:
+  1. `www.londonprayertimes.com` accepts TLS 1.3 ONLY (mac forcing `--tls-max 1.2` gets a protocol-version alert; `openssl s_client -tls1_2` fails).
+  2. Android 9 ships TLS 1.3 DISABLED in its Conscrypt provider (enabled from Android 10 — exactly why the 5T worked). System curl on both old OnePlus phones also cannot handshake with this server (000).
+  3. Google Play Services' `ProviderInstaller` is the documented remedy, and `play-services-base` was already in the APK's dependency tree. BUT installing it from JS (early module eval) fixed DEBUG and NOT RELEASE: okhttp-based clients snapshot `SSLContext.getDefault()` when they are BUILT, and the release runtime constructs them before any JS runs. Verified: a raw `SSLSocket` handshake to the API host from the patched JVM succeeded (`handshake-ok:TLSv1.3`) while the app's fetch failed a moment later.
+- **Fix (1.22.10)**: `modules/tls13` — a local Expo module whose `Tls13InitProvider` (a ContentProvider, manifest-merged from the module) calls `ProviderInstaller.installIfNeeded` on API < 29. ContentProviders initialize before `Application.onCreate`, hence before React Native and every HTTP client exist. JS side (`device/tls13.ts`) is observability only. No new dependency (play-services-base already shipped); no-op on Android 10+.
+- **Masking lesson**: every pre-1.22.10 local build on every device ran launch-relative MOCK data (`EXPO_PUBLIC_ENV` unset → local; `.env` also held a placeholder key). The 3T's real-network path had never been exercised until the first prod-config build; the failure was invisible for weeks of bench testing.
+- **Related noise (non-fatal, unfixed)**: on this 3T, fetch threads log `NoClassDefFoundError: android.webkit.PacProcessor` spam — Chrome 138 as WebView provider on API 28 no longer ships the legacy `android.webkit.PacProcessor` stubs, and OxygenOS' webviewupdate minimum-version lock (`372913652`) blocks switching to the ancient standalone WebView package (v74). The errors are caught internally; fetches succeed once TLS works. Only reproducible on OEM-broken WebView states.
+- **Production impact**: every real Android 9 user would have hit the error screen on the API's TLS 1.3-only policy; this module fixes the whole population. Device-verified: 3T Release build fetches real data, settles at 22.5% idle CPU (inside the 19-31% campaign band).
 
 ### 19. [MITIGATED 2026-09-03 — Auto-launch confirmed causal] 8T loses the WorkManager chain AND notification alarms on every reboot (until next app open)
 
