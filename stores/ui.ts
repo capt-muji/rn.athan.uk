@@ -13,7 +13,7 @@ const emptyCoordinates: PageCoordinates = { pageX: 0, pageY: 0, width: 0, height
 // ALERT SHEET STATE
 // =============================================================================
 
-interface AlertSheetState {
+export interface AlertSheetState {
   type: ScheduleType;
   index: number;
   prayerEnglish: string;
@@ -50,6 +50,28 @@ export const popupUpdateEnabledAtom = atom(false);
  * point: the user is one tap away from the sound sheet and sees nothing.
  */
 export const soundListReadyAtom = atom(false);
+
+/**
+ * Whether the Masjid header icon's bitmap has loaded (session-scoped).
+ *
+ * The icon renders from a PNG, so its bitmap arrives through Fresco's async
+ * pipeline after the first content commit — perf22 pulled first paint early
+ * enough to win that race, and the icon popped in ~200ms after the splash
+ * revealed the screen. The splash now holds until this flips (onLoadEnd on
+ * the Image), so the first visible frame is complete by construction.
+ */
+export const masjidIconLoadedAtom = atom(false);
+
+/**
+ * Whether the Ramadan decoration sprites have all loaded (session-scoped).
+ *
+ * The decorations render ~12 async PNG sprites that arrive through Fresco
+ * after the first content commit — without a gate they pop in a few hundred
+ * ms after the splash reveals (the mosque-icon race, on every sprite). The
+ * splash holds until every sprite's onLoadEnd fires; the launch gate skips
+ * the wait entirely when decorations are not expected this session.
+ */
+export const decorationsLoadedAtom = atom(false);
 
 /** Whether the What's New popup should be shown (post-update announcement) */
 export const popupWhatsNewEnabledAtom = atom(false);
@@ -156,6 +178,12 @@ export const setRefreshUI = (timestamp: number) => store.set(refreshUIAtom, time
 
 /** Allows the sound sheet's list to mount (set when the settings sheet first fully opens) */
 export const setSoundListReady = () => store.set(soundListReadyAtom, true);
+
+/** Marks the Masjid header icon's bitmap as loaded (splash gate) */
+export const markMasjidIconLoaded = () => store.set(masjidIconLoadedAtom, true);
+
+/** Marks all Ramadan decoration sprites as loaded (splash gate) */
+export const markDecorationsLoaded = () => store.set(decorationsLoadedAtom, true);
 
 /** Sets whether the app update popup should be shown */
 export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdateEnabledAtom, enabled);

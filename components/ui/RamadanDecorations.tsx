@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Image, Platform, StyleSheet, View } from 'react-native';
 import Animated, {
   Easing,
@@ -15,7 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { isRamadan } from '@/shared/time';
-import { decorationsEnabledAtom } from '@/stores/ui';
+import { decorationsEnabledAtom, markDecorationsLoaded } from '@/stores/ui';
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 
@@ -380,6 +380,22 @@ export default function RamadanDecorations() {
     visible,
   ]);
 
+  // Splash-gate accounting: every Image the visible tree renders reports via
+  // onLoadEnd, and the splash reveals once all land (the mosque-icon Fresco
+  // race generalized to sprites — see masjidIconLoadedAtom). The expected
+  // total derives from the same configs that render the tree, so adding a
+  // hanging or cloud keeps it correct. onLoadEnd fires on failure too, so a
+  // lost bitmap can never wedge the splash. Hooks live above the visibility
+  // early-return.
+  const loadedSpritesRef = useRef(0);
+  const starCount = HANGINGS.filter((h) => h.type === 'star').length;
+  const lanternCount = HANGINGS.length - starCount;
+  const expectedSprites = 2 + starCount * 2 + lanternCount * 3 + cloudConfig.clouds.length;
+  const handleSpriteLoad = useCallback(() => {
+    loadedSpritesRef.current += 1;
+    if (loadedSpritesRef.current >= expectedSprites) markDecorationsLoaded();
+  }, [expectedSprites]);
+
   if (!visible) return null;
 
   return (
@@ -410,6 +426,7 @@ export default function RamadanDecorations() {
         bobOffset={moonBob}
         glowOpacity={moonGlowOpacity}
         zIndex={1}
+        onSpriteLoad={handleSpriteLoad}
       />
 
       {/* zIndex 2: Left star */}
@@ -422,6 +439,7 @@ export default function RamadanDecorations() {
         glowOpacity={glows[0]}
         bodyOpacity={HANGINGS[0].bodyOpacity}
         zIndex={2}
+        onSpriteLoad={handleSpriteLoad}
       />
 
       {/* zIndex 3: Right star */}
@@ -434,6 +452,7 @@ export default function RamadanDecorations() {
         glowOpacity={glows[2]}
         bodyOpacity={HANGINGS[2].bodyOpacity}
         zIndex={3}
+        onSpriteLoad={handleSpriteLoad}
       />
 
       {/* zIndex 4-6: clouds (back → front) */}
@@ -446,6 +465,7 @@ export default function RamadanDecorations() {
           screenWidth={width}
           progress={cloudProgs[i]}
           zIndex={4 + i}
+          onSpriteLoad={handleSpriteLoad}
         />
       ))}
 
@@ -460,6 +480,7 @@ export default function RamadanDecorations() {
         glowOpacity={glows[1]}
         bodyOpacity={HANGINGS[1].bodyOpacity}
         zIndex={7}
+        onSpriteLoad={handleSpriteLoad}
       />
     </View>
   );
@@ -512,6 +533,7 @@ function FloatingMoon({
   bobOffset,
   glowOpacity,
   zIndex,
+  onSpriteLoad,
 }: {
   cx: number;
   cy: number;
@@ -521,6 +543,7 @@ function FloatingMoon({
   bobOffset: SharedValue<number>;
   glowOpacity: SharedValue<number>;
   zIndex?: number;
+  onSpriteLoad: () => void;
 }) {
   // Glow is offset (-2, +4) from moon center — pad the sprite box so it isn't clipped
   const padLeft = 2;
@@ -544,6 +567,7 @@ function FloatingMoon({
       ]}>
       <AnimatedImage
         source={SPRITES.moonGlow}
+        onLoadEnd={onSpriteLoad}
         style={[
           styles.sprite,
           {
@@ -558,6 +582,7 @@ function FloatingMoon({
       />
       <Image
         source={SPRITES.moonCrescent}
+        onLoadEnd={onSpriteLoad}
         style={[
           styles.sprite,
           { position: 'absolute', left: localCx - r, top: localCy - r, width: r * 2, height: r * 2 },
@@ -579,6 +604,7 @@ function FloatingStar({
   glowOpacity,
   bodyOpacity,
   zIndex,
+  onSpriteLoad,
 }: {
   flickerOpacity?: SharedValue<number>;
   x: number;
@@ -589,6 +615,7 @@ function FloatingStar({
   glowOpacity: SharedValue<number>;
   bodyOpacity: number;
   zIndex?: number;
+  onSpriteLoad: () => void;
 }) {
   const visualSize = type === 'lantern' ? size * 1.5 : size;
   const glowR = visualSize * 4;
@@ -624,11 +651,13 @@ function FloatingStar({
       ]}>
       <AnimatedImage
         source={type === 'lantern' ? SPRITES.lanternGlow : SPRITES.starGlow}
+        onLoadEnd={onSpriteLoad}
         style={[styles.sprite, styles.fill, glowStyle]}
       />
       {type === 'lantern' && (
         <AnimatedImage
           source={SPRITES.lanternFlicker}
+          onLoadEnd={onSpriteLoad}
           style={[
             styles.sprite,
             {
@@ -645,6 +674,7 @@ function FloatingStar({
       {type === 'lantern' ? (
         <Image
           source={SPRITES.lanternBody}
+          onLoadEnd={onSpriteLoad}
           style={[
             styles.sprite,
             {
@@ -660,6 +690,7 @@ function FloatingStar({
       ) : (
         <Image
           source={SPRITES.starBody}
+          onLoadEnd={onSpriteLoad}
           style={[
             styles.sprite,
             {
@@ -685,12 +716,14 @@ function MistyCloud({
   screenWidth,
   progress,
   zIndex,
+  onSpriteLoad,
 }: {
   config: ReturnType<typeof useCloudConfigs>['clouds'][number];
   direction: number;
   screenWidth: number;
   progress: SharedValue<number>;
   zIndex: number;
+  onSpriteLoad: () => void;
 }) {
   const { scale, opacity, sprite, top: cloudTop, totalDist } = config;
   const w = 160 * scale;
@@ -712,7 +745,7 @@ function MistyCloud({
       style={[{ position: 'absolute', left: 0, top: cloudTop, width: boxW, height: boxH, zIndex }, moveStyle]}>
       {/* Sprite canvas is precomposed: cloud path × 4 mist layers + the
           vertical fade mask, in the exact 240:180 canvas proportions */}
-      <Image source={sprite} style={[styles.sprite, styles.fill, { opacity }]} />
+      <Image source={sprite} onLoadEnd={onSpriteLoad} style={[styles.sprite, styles.fill, { opacity }]} />
     </Animated.View>
   );
 }

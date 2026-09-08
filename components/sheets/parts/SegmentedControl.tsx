@@ -111,26 +111,26 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
   const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
   const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / options.length : 0;
 
-  // Derived, not effect-driven (the Toggle pattern): first evaluation SNAPS so
-  // the indicator first-frames settled at its target — an effect-driven snap
-  // ran after paint and the worklet-applied width landed even later, so the
-  // indicator briefly rendered at its intrinsic 2px border width. The width is
-  // a static render-time style (applied synchronously with the commit), never
-  // a worklet value. The snap is not consumed while geometry is unknown
-  // (optionWidth 0 before the first onLayout).
+  // The indicator's position is percent-of-own-width — the pill's width IS one
+  // segment — so the target needs no measured geometry and the first worklet
+  // evaluation, whenever it runs, already yields the settled position. The
+  // static transform on the element covers even the pre-worklet attach paint.
+  // The previous px target (index × measured optionWidth) was only computable
+  // after onLayout, and its post-layout snap lost the race against the sheet
+  // entrance on first opens: the pill painted at the Off slot (translateX 0)
+  // and slid into place. Mount settles; only selection CHANGES animate.
   const isFirstEvaluation = useSharedValue(true);
-  const translateX = useDerivedValue(() => {
-    if (optionWidth === 0) return 0;
-    const targetX = selectedIndex * optionWidth;
+  const translateXPercent = useDerivedValue(() => {
+    const target = selectedIndex * 100;
     if (isFirstEvaluation.value) {
       isFirstEvaluation.value = false;
-      return targetX;
+      return target;
     }
-    return withTiming(targetX, { duration: ANIMATION.duration });
+    return withTiming(target, { duration: ANIMATION.duration });
   });
 
   const indicatorStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: translateX.value }],
+    transform: [{ translateX: `${translateXPercent.value}%` }],
   }));
 
   const handleLayout = useCallback((e: LayoutChangeEvent) => {
@@ -139,7 +139,15 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
 
   return (
     <View style={[styles.container, disabled && styles.disabled]} onLayout={handleLayout}>
-      {containerWidth > 0 && <Animated.View style={[styles.indicator, { width: optionWidth }, indicatorStyle]} />}
+      {containerWidth > 0 && (
+        <Animated.View
+          style={[
+            styles.indicator,
+            { width: optionWidth, transform: [{ translateX: `${selectedIndex * 100}%` }] },
+            indicatorStyle,
+          ]}
+        />
+      )}
       {options.map((option) => (
         <AnimatedSegmentOption
           key={option.value}

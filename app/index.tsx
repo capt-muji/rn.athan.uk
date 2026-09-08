@@ -17,11 +17,15 @@ import { COLORS, SIZE } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
+import { isRamadan } from '@/shared/time';
 import { shouldShowWhatsNew, WHATS_NEW } from '@/shared/whatsNew';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
 import {
+  decorationsEnabledAtom,
+  decorationsLoadedAtom,
+  masjidIconLoadedAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
   setPopupUpdateEnabled,
@@ -37,6 +41,17 @@ export default function Index() {
   const sequenceReady = useAtomValue(standardSequenceAtom) !== null;
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const whatsNewVisible = useAtomValue(popupWhatsNewEnabledAtom);
+  // Splash gate: the Masjid icon's PNG arrives async (Fresco) after the first
+  // content commit — hold the splash until its bitmap exists so the first
+  // revealed frame is complete (no icon pop-in)
+  const masjidIconLoaded = useAtomValue(masjidIconLoadedAtom);
+  // Same race on the ~12 Ramadan decoration sprites: wait only when the
+  // decorations are expected this session (mirrors RamadanDecorations'
+  // visibility condition, computed synchronously so the gate knows at the
+  // first commit — the component itself mounts chrome-deferred a frame later)
+  const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
+  const decorationsExpected = isRamadan() && decorationsEnabled;
+  const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
   const installedVersion = getInstalledVersion();
   // Overlay + modals mount past the first content frame (launch chrome defer)
   const chromeDeferred = useChromeDeferred();
@@ -78,20 +93,26 @@ export default function Index() {
     return () => clearTimeout(initHandle);
   }, []);
 
-  // Hide the splash screen once content exists: either the synchronous cache
-  // bootstrap already hydrated the sequences (first commit paints content) or
-  // the async sync atom left its loading state. Fires exactly once.
+  // Hide the splash screen once content exists AND the launch art has loaded:
+  // either the synchronous cache bootstrap already hydrated the sequences
+  // (first commit paints content) or the async sync atom left its loading
+  // state. The perf mark keeps its content-only semantics; only the reveal
+  // waits for the Masjid icon and, in Ramadan mode, the decoration sprites.
   useEffect(() => {
     const contentExists = sequenceReady || state !== 'loading';
-    if (!contentExists || contentCommittedRef.current) return;
-    contentCommittedRef.current = true;
+    if (contentExists && !contentCommittedRef.current) {
+      contentCommittedRef.current = true;
 
-    // JS-clock only: native marks live on a skewed timeline (see perf.ts),
-    // so cross-clock launch spans are reconstructed offline from ring ts
-    perfMark('home_content');
-    perfMeasure('js_to_content', 'perf_monitor_init');
-    SplashScreen.hideAsync();
-  }, [sequenceReady, state]);
+      // JS-clock only: native marks live on a skewed timeline (see perf.ts),
+      // so cross-clock launch spans are reconstructed offline from ring ts
+      perfMark('home_content');
+      perfMeasure('js_to_content', 'perf_monitor_init');
+    }
+    const revealReady = contentExists && masjidIconLoaded && (!decorationsExpected || decorationsLoaded);
+    if (revealReady) {
+      SplashScreen.hideAsync();
+    }
+  }, [sequenceReady, state, masjidIconLoaded, decorationsExpected, decorationsLoaded]);
 
   const handleCloseUpdate = () => {
     setPopupUpdateEnabled(false);
