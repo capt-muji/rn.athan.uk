@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
@@ -61,6 +61,15 @@ function SoundItemImpl({
 
   const showCountdown = isPlaying && isAudible && remainingSeconds > 0;
 
+  // The countdown fades over ~150ms after it hides, and remainingSeconds
+  // drops to 0 the instant playback stops or the player reloads — without
+  // this latch the fading text flashes "0:00" (and again on the next tap's
+  // fade-in before the new duration arrives). Freeze the last positive
+  // value; 0 never displays (same contract as the main countdown).
+  const lastPositiveRemainingRef = useRef(1);
+  if (remainingSeconds > 0) lastPositiveRemainingRef.current = remainingSeconds;
+  const displaySeconds = remainingSeconds > 0 ? remainingSeconds : lastPositiveRemainingRef.current;
+
   // Animated values for countdown
   const countdownOpacity = useDerivedValue(() =>
     withTiming(showCountdown ? 1 : 0, { duration: ANIMATION.durationFast })
@@ -98,7 +107,7 @@ function SoundItemImpl({
     <Pressable style={styles.option} onPress={handlePress} onLayout={onLayout}>
       <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>Athan {index + 1}</Text>
       <View style={styles.rightContainer}>
-        <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(remainingSeconds)}</Animated.Text>
+        <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(displaySeconds)}</Animated.Text>
         <AnimatedPressable
           style={[styles.icon, AnimScale.style]}
           onPress={handlePlayPress}
