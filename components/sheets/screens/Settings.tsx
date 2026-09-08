@@ -7,7 +7,7 @@ import InfoIcon from '@/assets/icons/svg/info.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
-import { WHATS_NEW } from '@/shared/whatsNew';
+import { VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
@@ -120,8 +120,8 @@ export default function BottomSheetSettings() {
         </View>
       </View>
 
-      {/* About Card - hidden on silent releases (no What's New content) */}
-      {WHATS_NEW ? (
+      {/* About Card - hidden on silent releases (no visible What's New content) */}
+      {VISIBLE_WHATS_NEW ? (
         <View style={styles.card}>
           <Text style={styles.cardTitle}>About</Text>
           <Pressable

@@ -14,11 +14,12 @@ import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { useNotification } from '@/hooks/useNotification';
 import { APP_CONFIG } from '@/shared/config';
 import { COLORS, SIZE } from '@/shared/constants';
+import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { isRamadan } from '@/shared/time';
-import { shouldShowWhatsNew, WHATS_NEW } from '@/shared/whatsNew';
+import { shouldShowWhatsNew, VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
@@ -59,6 +60,9 @@ export default function Index() {
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: mount-only initialization — checkInitialPermissions is a per-render function, intentionally captured once; re-adding it would re-register listeners on every render
   useEffect(() => {
+    // Self-describing builds: every log capture names its flag set
+    logger.info('APP: feature flags resolved', FEATURE_FLAGS);
+
     // Post-paint settling window: the first moments after content commit are
     // when users swipe to the extras page. Notification init (bridge +
     // channel work), listeners, and the update check add nothing visible —
@@ -83,7 +87,7 @@ export default function Index() {
     // Show the What's New modal once after an update (never on fresh installs -
     // stores/version.ts seeds the shown-version for new users). Marking shown
     // on display (not dismiss) makes a mid-display crash unable to re-loop it
-    if (shouldShowWhatsNew(installedVersion, getWhatsNewShownVersion(), WHATS_NEW)) {
+    if (shouldShowWhatsNew(installedVersion, getWhatsNewShownVersion(), VISIBLE_WHATS_NEW)) {
       setWhatsNewShownVersion(installedVersion);
       setPopupWhatsNewEnabled(true);
     } else if (__DEV__ && APP_CONFIG.whatsNewPreview) {
@@ -140,11 +144,11 @@ export default function Index() {
 
   return (
     <>
-      {chromeDeferred && WHATS_NEW ? (
+      {chromeDeferred && VISIBLE_WHATS_NEW ? (
         <ModalWhatsNew
           visible={whatsNewVisible}
           version={installedVersion}
-          items={WHATS_NEW.items}
+          items={VISIBLE_WHATS_NEW.items}
           onContinue={handleContinueWhatsNew}
         />
       ) : null}

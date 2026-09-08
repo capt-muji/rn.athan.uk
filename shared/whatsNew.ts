@@ -1,68 +1,85 @@
 /**
  * What's New - post-update announcement content and display rules
  *
- * A single bundled release-note entry for the CURRENT app version, shown once
- * on the first launch after a store update (never on fresh installs).
+ * A growing archive of release-note items, each stamped with the version it
+ * shipped in. The modal shows only the CURRENT release's items, once, on the
+ * first launch after a store update (never on fresh installs).
  *
  * Maintenance ritual (every store release):
- * 1. Fill `version` with the store version being submitted
- * 2. Rewrite `items` with user-facing changes only (new abilities, removed
- *    functionality, behavior changes users will notice) - no technical work
- *    (migrations, performance, refactors belong in App Store notes/README)
- * 3. Set `WHATS_NEW` to null to silent-ship a release (bug-fix-only updates)
+ * 1. Stamp items shipping in this release with the release's version
+ * 2. Leave drafted future items at version: null (parked, never shown)
+ * 3. When a parked item ships, stamp it with that release's version
+ * 4. Prune the archive past MAX_WHATS_NEW_ARCHIVE entries (oldest first)
+ * 5. A release with no newly stamped items silent-ships automatically
  *
  * Display rules:
- * - Shows ONLY the installed version's items, never accumulated history -
+ * - Shows ONLY the current release's items, never accumulated history -
  *   skipped intermediate versions are dominated by the final feature state
  * - `platform` declares an item's availability: Apple/Android glyphs render
  *   in the item's leading column (both stacked for cross-platform items) -
  *   informational on every device, never a filter
+ * - `version` and `flags` ARE filters: items stamped with another release,
+ *   parked (null), or gated behind a disabled feature flag are removed
+ *   (VISIBLE_WHATS_NEW), so a dark or future feature is never advertised
  *
  * @see ai/adr/012/ADR.md
  */
 
+import { FEATURE_FLAGS, type FeatureFlagId } from '@/shared/flags';
 import { compareVersions } from '@/shared/versionUtils';
 
-/** Platforms an item can be exclusive to */
+/** Platforms an item can exclusive to */
 export type WhatsNewPlatform = 'ios' | 'android';
 
-/** One entry in the What's New list */
+/** One entry in the What's New archive */
 export interface WhatsNewItem {
-  /** Short factual title (max MAX_TITLE_LENGTH chars) */
+  /** Short factual title (max MAX_WHATS_NEW_TITLE_LENGTH chars) */
   title: string;
-  /** One-line factual description (max MAX_BODY_LENGTH chars) */
+  /** One-line factual description (max MAX_WHATS_NEW_BODY_LENGTH chars) */
   body: string;
   /** Marks the item as exclusive to a platform (badged on the other platform) */
   platform?: WhatsNewPlatform;
+  /** Feature flags that must be enabled for the item to show - makes it
+   * impossible to advertise a feature that is flagged off in the build */
+  flags?: FeatureFlagId[];
+  /** Release this item shipped in; null parks the item (drafted, never
+   * shown) until stamped with a shipping version */
+  version: string | null;
 }
 
 /** The release notes for the current version */
 export interface WhatsNewRelease {
   /** Store version these notes ship with (dev sanity only - never rendered) */
   version: string;
-  /** 1-4 user-facing items */
+  /** Archived items across releases; only the current version's show */
   items: WhatsNewItem[];
 }
 
 // =============================================================================
-// CONTENT - edit this each release (or set to null to silent-ship)
+// CONTENT - grow per release; prune past MAX_WHATS_NEW_ARCHIVE
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewRelease | null = {
-  version: '1.22.7',
+  version: '1.22.9',
   items: [
-    {
-      title: 'Home & Lock widgets',
-      body: 'Add prayer times to your Home and Lock Screen',
-      platform: 'ios',
-    },
     {
       title: 'Athan sounds',
       body: 'New Athan sounds added',
+      version: '1.22.9',
     },
     {
       title: 'Reminder sounds',
       body: 'Every reminder now has its own sound',
+      version: '1.22.9',
+    },
+    {
+      // PARKED: ships with the release that enables the widgets flag
+      // (expo-widgets@57.0.16, ISSUES.md G.1) - stamp its version then
+      title: 'Home & Lock widgets',
+      body: 'Add prayer times to your Home and Lock Screen',
+      platform: 'ios',
+      flags: ['widgets'],
+      version: null,
     },
   ],
 };
@@ -71,8 +88,10 @@ export const WHATS_NEW: WhatsNewRelease | null = {
 // CONTENT LIMITS - enforced by shared/__tests__/whatsNew.test.ts
 // =============================================================================
 
-/** Maximum number of items per release (keeps the modal scannable) */
+/** Maximum items shown per release (keeps the modal scannable) */
 export const MAX_WHATS_NEW_ITEMS = 4;
+/** Maximum archived items before pruning (oldest first) */
+export const MAX_WHATS_NEW_ARCHIVE = 20;
 /** Maximum title length in characters */
 export const MAX_WHATS_NEW_TITLE_LENGTH = 32;
 /** Maximum body length in characters */
@@ -110,6 +129,37 @@ export const shouldShowWhatsNew = (
 
   return compareVersions(installedVersion, shownVersion) > 0;
 };
+
+/**
+ * Filters the archive down to what this build may present
+ *
+ * An item shows only when BOTH hold: it is stamped with the presenting
+ * release's version (parked null items and other releases' items stay
+ * archived), and every feature flag it declares is enabled. Pure: the
+ * parameters keep tests deterministic.
+ *
+ * @param items - Archived items across releases
+ * @param releaseVersion - The release presenting the list
+ * @param flags - Enabled-flag record (defaults to this build's flags)
+ * @returns Items safe to show for this release in this build
+ */
+export const filterWhatsNewItems = (
+  items: WhatsNewItem[],
+  releaseVersion: string,
+  flags: Record<FeatureFlagId, boolean> = FEATURE_FLAGS
+): WhatsNewItem[] =>
+  items.filter((item) => item.version === releaseVersion && !(item.flags ?? []).some((flag) => !flags[flag]));
+
+/**
+ * The release as this build may present it: WHATS_NEW reduced to the
+ * current version's visible items, or null when nothing remains
+ * (silent-ship semantics apply everywhere downstream).
+ */
+export const VISIBLE_WHATS_NEW: WhatsNewRelease | null = (() => {
+  if (!WHATS_NEW) return null;
+  const items = filterWhatsNewItems(WHATS_NEW.items, WHATS_NEW.version);
+  return items.length > 0 ? { ...WHATS_NEW, items } : null;
+})();
 
 /**
  * Returns the platform availability badges for an item
