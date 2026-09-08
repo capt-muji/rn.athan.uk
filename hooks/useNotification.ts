@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
 import { Alert, Linking, Platform } from 'react-native';
 
@@ -213,6 +214,10 @@ export const useNotification = () => {
       NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, originalState.atTimeAlert);
       NotificationStore.setReminderAlertType(scheduleType, prayerIndex, originalState.reminderAlert);
       NotificationStore.setReminderInterval(scheduleType, prayerIndex, originalState.reminderInterval);
+
+      // Strongest error signal (owner rule 2026-09-08): the rollback is
+      // otherwise quiet apart from the icon snapping back
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
 
       logger.error('NOTIFICATION: Failed to commit alert menu changes, rolled back:', error);
       return false;

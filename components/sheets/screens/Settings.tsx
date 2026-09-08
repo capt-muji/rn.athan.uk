@@ -59,8 +59,7 @@ export default function BottomSheetSettings() {
       // The sound sheet is only reachable through this sheet: warming its
       // 32-row list on our first full open builds it invisibly, one tap
       // before it is needed (and off the launch path)
-      onFirstPresent={setSoundListReady}
-      closeHaptic={Haptics.ImpactFeedbackStyle.Medium}>
+      onFirstPresent={setSoundListReady}>
       {/* Sound Card */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Sound</Text>

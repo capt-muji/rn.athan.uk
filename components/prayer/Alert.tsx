@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
@@ -51,6 +51,13 @@ export default function Alert({ type, index }: Props) {
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
   const refreshUI = useAtomValue(refreshUIAtom);
 
+  // Glyph shown this frame — lags the atom through the change-bounce so the
+  // swap lands inside the animation (trough for exit-style candidates), not
+  // as an instant snap at the atom flip. Initialized to the atom: mount is
+  // settled, first frame shows the correct glyph.
+  const [displayedAlert, setDisplayedAlert] = useState<AlertType>(alertAtom);
+  const prevAlertRef = useRef<AlertType>(alertAtom);
+
   // =============================================================================
   // CUSTOM HOOKS
   // =============================================================================
@@ -58,15 +65,16 @@ export default function Alert({ type, index }: Props) {
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const { ensurePermissions } = useNotification();
-  const { AnimScale, AnimFill } = useAlertAnimations({
+  const { AnimScale, AnimFill, AnimSwap } = useAlertAnimations({
     initialColorPos: Prayer.ui.initialColorPos,
   });
+  const playSwapBounce = AnimSwap.play;
 
   // =============================================================================
   // DERIVED STATE
   // =============================================================================
 
-  const iconIndex = alertAtom;
+  const iconIndex = displayedAlert;
 
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
 
@@ -108,6 +116,18 @@ export default function Alert({ type, index }: Props) {
     AnimFill.animate(colorPos, { duration: ANIMATION.durationFade });
   }, [isSelectedForOverlay]);
 
+  // Change-bounce: the icon pops ONLY when the alert value itself changes
+  // (sheet-dismiss commit, or a commit rollback flipping it back — the replay
+  // on revert is correct). First evaluation snaps: mount and plain re-renders
+  // stay settled (the Toggle first-evaluation pattern), and a sheet that
+  // closes without changes plays nothing. The glyph swap is handed to the
+  // bounce, which fires it at the dip trough.
+  useEffect(() => {
+    if (prevAlertRef.current === alertAtom) return;
+    prevAlertRef.current = alertAtom;
+    playSwapBounce(alertAtom, setDisplayedAlert);
+  }, [alertAtom, playSwapBounce]);
+
   // =============================================================================
   // HANDLERS
   // =============================================================================
@@ -147,9 +167,11 @@ export default function Alert({ type, index }: Props) {
         }}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
-          <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>
-            <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={AnimFill.animatedProps} />
-          </Svg>
+          <Animated.View style={AnimSwap.style}>
+            <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>
+              <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={AnimFill.animatedProps} />
+            </Svg>
+          </Animated.View>
         </Animated.View>
       </Pressable>
     </View>
