@@ -1,4 +1,5 @@
 import { useAtomValue } from 'jotai';
+import { getDefaultStore } from 'jotai/vanilla';
 import { memo, useLayoutEffect } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
@@ -13,7 +14,8 @@ import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
-import { overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { overlayAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { toggleOverlay } from '@/stores/overlay';
 
 // Navigation re-renders on overlay toggles (scrollEnabled gate) — memoized so
 // the flip updates ONLY the pager's native prop, never the page subtrees
@@ -45,6 +47,16 @@ export default function Navigation() {
 
   const handlePageSelected = (e: { nativeEvent: { position: number } }) => {
     const position = e.nativeEvent.position;
+
+    // Self-heal (chaos 2026-09-08, finding 2): a native drag begun in a
+    // momentary overlay-closed instant settles even after scrollEnabled flips
+    // back to false. If the pager lands on the other schedule under an open
+    // overlay, close the overlay instead of rendering it over the wrong page
+    const overlay = getDefaultStore().get(overlayAtom);
+    const settledSchedule = position === 0 ? ScheduleType.Standard : ScheduleType.Extra;
+    if (overlay.isOn && settledSchedule !== overlay.scheduleType) {
+      toggleOverlay(false);
+    }
 
     perfMeasure('pager_page', 'pager_swipe_start', { position });
     dot0Animation.animate(position === 0 ? 1 : 0.25, { duration: ANIMATION.duration });

@@ -2,7 +2,7 @@ import { useAtomValue } from 'jotai';
 import { Image, StyleSheet, View } from 'react-native';
 
 import { isRamadan } from '@/shared/time';
-import { decorationsEnabledAtom } from '@/stores/ui';
+import { decorationsEnabledAtom, markMasjidIconLoaded } from '@/stores/ui';
 
 type MasjidProps = {
   width?: number;
@@ -26,7 +26,9 @@ export default function Masjid({ height = 45, width = 45 }: MasjidProps) {
   const variant = useRamadanIcon ? 'ramadan' : 'standard';
   return (
     <View style={styles.container}>
-      <Image source={ICON_SOURCES[variant]} style={[styles.icon, { height, width }]} />
+      {/* onLoadEnd fires on success AND failure: the splash gate must never
+          wedge on a lost bitmap. Warm-cache deliveries still fire it. */}
+      <Image source={ICON_SOURCES[variant]} style={[styles.icon, { height, width }]} onLoadEnd={markMasjidIconLoaded} />
     </View>
   );
 }

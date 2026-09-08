@@ -1,14 +1,14 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useCallback, useEffect, useState } from 'react';
+import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { DEFAULT_REMINDER_INTERVAL, RADIUS, REMINDER_INTERVALS, SPACING, TEXT } from '@/shared/constants';
-import { AlertType, Icon, type ReminderInterval } from '@/shared/types';
+import { type AlertMenuState, AlertType, Icon, type ReminderInterval } from '@/shared/types';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
-import { alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
+import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
 import { SegmentedControl, type SegmentOption, Sheet, Stepper, Toggle } from '../parts';
 
@@ -23,50 +23,110 @@ const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
   { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
 ];
 
+interface AlertSheetBodyRef {
+  /** Values snapshotted at mount — the change-detection baseline for the deferred commit */
+  getOriginalState: () => AlertMenuState;
+  /** Live draft values at the moment of the call */
+  getCurrentState: () => AlertMenuState;
+}
+
+interface AlertSheetBodyProps {
+  sheetState: AlertSheetState;
+  ensurePermissions: () => Promise<boolean>;
+}
+
 export default function BottomSheetAlert() {
   const sheetState = useAtomValue(alertSheetStateAtom);
   const { commitAlertMenuChanges, ensurePermissions } = useNotification();
+  const bodyRef = useRef<AlertSheetBodyRef>(null);
 
-  const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(AlertType.Off);
-  const [reminderAlert, setReminderAlert] = useState<AlertType>(AlertType.Off);
-  const [reminderType, setReminderType] = useState<AlertType.Silent | AlertType.Sound>(AlertType.Silent);
-  const [reminderInterval, setReminderInterval] = useState<ReminderInterval>(DEFAULT_REMINDER_INTERVAL);
-  const [originalState, setOriginalState] = useState<{
-    atTimeAlert: AlertType;
-    reminderAlert: AlertType;
-    reminderInterval: ReminderInterval;
-  } | null>(null);
+  // Fires synchronously before React unmounts the modal content (@gorhom
+  // BottomSheetModal calls onDismiss right after scheduling the unmount), so
+  // the body ref is still live here — see AlertSheetBody below
+  const handleDismiss = useCallback(async () => {
+    if (!sheetState) return;
+    const body = bodyRef.current;
+    if (!body) return;
+
+    const originalState = body.getOriginalState();
+    const currentState = body.getCurrentState();
+    await commitAlertMenuChanges(
+      sheetState.type,
+      sheetState.index,
+      sheetState.prayerEnglish,
+      sheetState.prayerArabic,
+      originalState,
+      currentState
+    );
+  }, [sheetState, commitAlertMenuChanges]);
+
+  return (
+    <Sheet
+      setRef={setAlertSheetModal}
+      title={sheetState?.prayerEnglish ?? ''}
+      subtitle='Close to save'
+      icon={<IconView type={Icon.BELL_RING} size={16} color='rgba(165, 180, 252, 0.8)' />}
+      enableDynamicSizing
+      scrollable={false}
+      onDismiss={handleDismiss}
+      perfName='sheet_alert'
+      closeHaptic={Haptics.ImpactFeedbackStyle.Light}>
+      {sheetState && (
+        <AlertSheetBody
+          key={`${sheetState.type}:${sheetState.index}`}
+          ref={bodyRef}
+          sheetState={sheetState}
+          ensurePermissions={ensurePermissions}
+        />
+      )}
+    </Sheet>
+  );
+}
+
+// =============================================================================
+// SHEET BODY
+// =============================================================================
+
+/**
+ * Alert sheet content, keyed per prayer by the parent so it remounts on every
+ * open (the modal unmounts its content on dismiss, and the key covers prayer
+ * changes while mounted).
+ *
+ * Draft state initializes AT MOUNT from the synchronous MMKV-backed store
+ * getters, so the values are correct in the same render that mounts the
+ * content — an effect-driven load painted the Off defaults first and
+ * corrected them after, which surfaced as the first-frame flash. The parent
+ * reads the draft via the imperative handle at dismiss for the deferred
+ * commit (the AlertMenu pattern, ai/AGENTS.md §Component Communication).
+ */
+const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ sheetState, ensurePermissions }, ref) => {
+  const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(() =>
+    getPrayerAlertType(sheetState.type, sheetState.index)
+  );
+  const [reminderAlert, setReminderAlert] = useState<AlertType>(() =>
+    getReminderAlertType(sheetState.type, sheetState.index)
+  );
+  const [reminderType, setReminderType] = useState<AlertType.Silent | AlertType.Sound>(() => {
+    const reminder = getReminderAlertType(sheetState.type, sheetState.index);
+    return reminder === AlertType.Sound ? AlertType.Sound : AlertType.Silent;
+  });
+  const [reminderInterval, setReminderInterval] = useState<ReminderInterval>(
+    () => (getReminderInterval(sheetState.type, sheetState.index) as ReminderInterval) || DEFAULT_REMINDER_INTERVAL
+  );
+
+  const originalStateRef = useRef<AlertMenuState>({
+    atTimeAlert,
+    reminderAlert,
+    reminderInterval,
+  });
+
+  useImperativeHandle(ref, () => ({
+    getOriginalState: () => originalStateRef.current,
+    getCurrentState: () => ({ atTimeAlert, reminderAlert, reminderInterval }),
+  }));
 
   const isReminderOn = reminderAlert !== AlertType.Off;
   const canEnableReminder = atTimeAlert !== AlertType.Off;
-
-  useEffect(() => {
-    if (sheetState) {
-      const prayerAlert = getPrayerAlertType(sheetState.type, sheetState.index);
-      const reminder = getReminderAlertType(sheetState.type, sheetState.index);
-      const interval =
-        (getReminderInterval(sheetState.type, sheetState.index) as ReminderInterval) || DEFAULT_REMINDER_INTERVAL;
-
-      setAtTimeAlert(prayerAlert);
-      setReminderAlert(reminder);
-      setReminderType(reminder === AlertType.Sound ? AlertType.Sound : AlertType.Silent);
-      setReminderInterval(interval);
-      setOriginalState({ atTimeAlert: prayerAlert, reminderAlert: reminder, reminderInterval: interval });
-    }
-  }, [sheetState]);
-
-  const handleDismiss = useCallback(async () => {
-    if (sheetState && originalState) {
-      await commitAlertMenuChanges(
-        sheetState.type,
-        sheetState.index,
-        sheetState.prayerEnglish,
-        sheetState.prayerArabic,
-        originalState,
-        { atTimeAlert, reminderAlert, reminderInterval }
-      );
-    }
-  }, [sheetState, originalState, atTimeAlert, reminderAlert, reminderInterval, commitAlertMenuChanges]);
 
   const handleAlertSelect = useCallback(
     async (type: AlertType) => {
@@ -92,23 +152,14 @@ export default function BottomSheetAlert() {
   }, []);
 
   return (
-    <Sheet
-      setRef={setAlertSheetModal}
-      title={sheetState?.prayerEnglish ?? ''}
-      subtitle='Close to save'
-      icon={<IconView type={Icon.BELL_RING} size={16} color='rgba(165, 180, 252, 0.8)' />}
-      enableDynamicSizing
-      scrollable={false}
-      onDismiss={handleDismiss}
-      perfName='sheet_alert'
-      closeHaptic={Haptics.ImpactFeedbackStyle.Light}>
+    <>
       {/* Prayer Alert Card */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Athan</Text>
         <Text style={styles.cardHint}>Notification at prayer time</Text>
         <View style={{ marginTop: SPACING.md }}>
           <SegmentedControl
-            key={sheetState ? `athan-${sheetState.type}-${sheetState.index}` : 'athan'}
+            key={`athan-${sheetState.type}-${sheetState.index}`}
             options={ALERT_OPTIONS}
             selected={atTimeAlert}
             onSelect={handleAlertSelect}
@@ -130,7 +181,7 @@ export default function BottomSheetAlert() {
           <View style={styles.optionRow}>
             <Text style={styles.optionLabel}>Sound</Text>
             <SegmentedControl
-              key={sheetState ? `reminder-${sheetState.type}-${sheetState.index}` : 'reminder'}
+              key={`reminder-${sheetState.type}-${sheetState.index}`}
               options={REMINDER_TYPE_OPTIONS}
               selected={reminderType}
               onSelect={handleReminderTypeSelect}
@@ -157,9 +208,9 @@ export default function BottomSheetAlert() {
           </View>
         </View>
       </View>
-    </Sheet>
+    </>
   );
-}
+});
 
 // =============================================================================
 // STYLES

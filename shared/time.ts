@@ -127,6 +127,11 @@ export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
  * @returns boolean indicating if current date is during Ramadan season
  */
 export const isRamadan = (): boolean => {
+  // Build-time preview gate, statically folded OFF in production builds (the
+  // EXPO_PUBLIC_BG_DEBUG idiom): building with EXPO_PUBLIC_FORCE_RAMADAN=1
+  // flips the whole season — icon variant, decorations, settings toggle —
+  // for off-season device evaluation
+  if (process.env.EXPO_PUBLIC_FORCE_RAMADAN === '1') return true;
   try {
     const date = createLondonDate();
     const monthFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', { month: 'numeric' });
