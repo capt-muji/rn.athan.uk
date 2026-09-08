@@ -60,17 +60,17 @@ export interface WhatsNewRelease {
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewRelease | null = {
-  version: '1.22.9',
+  version: '1.22.11',
   items: [
     {
       title: 'Athan sounds',
       body: 'New Athan sounds added',
-      version: '1.22.9',
+      version: '1.22.11',
     },
     {
       title: 'Reminder sounds',
       body: 'Every reminder now has its own sound',
-      version: '1.22.9',
+      version: '1.22.11',
     },
     {
       // PARKED: ships with the release that enables the widgets flag

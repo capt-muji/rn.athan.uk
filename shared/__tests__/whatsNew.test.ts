@@ -8,11 +8,14 @@
  */
 
 import {
+  filterWhatsNewItems,
   getPlatformBadges,
+  MAX_WHATS_NEW_ARCHIVE,
   MAX_WHATS_NEW_BODY_LENGTH,
   MAX_WHATS_NEW_ITEMS,
   MAX_WHATS_NEW_TITLE_LENGTH,
   shouldShowWhatsNew,
+  VISIBLE_WHATS_NEW,
   WHATS_NEW,
   type WhatsNewItem,
   type WhatsNewRelease,
@@ -22,6 +25,7 @@ const release = (items: WhatsNewItem[]): WhatsNewRelease => ({ version: '1.13.0'
 const item = (overrides: Partial<WhatsNewItem> = {}): WhatsNewItem => ({
   title: 'Test title',
   body: 'Test body',
+  version: '1.13.0',
   ...overrides,
 });
 
@@ -109,9 +113,9 @@ describe('WHATS_NEW content contract', () => {
     expect(content.version).toMatch(/^\d+\.\d+\.\d+$/);
   });
 
-  it(`has between 1 and ${MAX_WHATS_NEW_ITEMS} items`, () => {
+  it(`archives between 1 and ${MAX_WHATS_NEW_ARCHIVE} items`, () => {
     expect(content.items.length).toBeGreaterThanOrEqual(1);
-    expect(content.items.length).toBeLessThanOrEqual(MAX_WHATS_NEW_ITEMS);
+    expect(content.items.length).toBeLessThanOrEqual(MAX_WHATS_NEW_ARCHIVE);
   });
 
   it('has unique item titles (stable render keys)', () => {
@@ -143,4 +147,66 @@ describe('WHATS_NEW content contract', () => {
       }
     }
   );
+});
+
+// =============================================================================
+// filterWhatsNewItems / VISIBLE_WHATS_NEW TESTS
+// =============================================================================
+
+describe('filterWhatsNewItems', () => {
+  const flagsOn = { widgets: true };
+  const flagsOff = { widgets: false };
+
+  it('shows items stamped with the presenting release', () => {
+    const items = [item({ version: '1.13.0' })];
+    expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(1);
+  });
+
+  it('hides items stamped with a different release', () => {
+    const items = [item({ version: '1.12.0' })];
+    expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(0);
+  });
+
+  it('hides parked (null version) items until stamped', () => {
+    const items = [item({ version: null })];
+    expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(0);
+  });
+
+  it('hides a matching item when its flag is disabled', () => {
+    const items = [item({ flags: ['widgets'] })];
+    expect(filterWhatsNewItems(items, '1.13.0', flagsOff)).toHaveLength(0);
+    expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(1);
+  });
+
+  it('keeps only the current release among a mixed archive', () => {
+    const items = [
+      item({ title: 'Old', version: '1.11.0' }),
+      item({ title: 'Now', version: '1.13.0' }),
+      item({ title: 'Parked', version: null }),
+      item({ title: 'Future', version: '1.14.0' }),
+    ];
+    const visible = filterWhatsNewItems(items, '1.13.0', flagsOn);
+    expect(visible.map((entry) => entry.title)).toEqual(['Now']);
+  });
+});
+
+describe('VISIBLE_WHATS_NEW', () => {
+  it('shows only current-release items, or nothing on a silent release', () => {
+    const visible = VISIBLE_WHATS_NEW?.items ?? [];
+    expect(visible.length).toBeLessThanOrEqual(MAX_WHATS_NEW_ITEMS);
+    for (const entry of visible) {
+      expect(entry.version).toBe(WHATS_NEW?.version);
+    }
+    const anyCurrentReleaseItems = (WHATS_NEW?.items ?? []).some((entry) => entry.version === WHATS_NEW?.version);
+    if (!anyCurrentReleaseItems) {
+      expect(VISIBLE_WHATS_NEW).toBeNull();
+    }
+  });
+
+  it('keeps the parked widgets item in the archive (wording preserved, never shown)', () => {
+    const parked = WHATS_NEW?.items.find((entry) => entry.version === null);
+    expect(parked?.title).toBe('Home & Lock widgets');
+    expect(parked?.flags).toEqual(['widgets']);
+    expect((VISIBLE_WHATS_NEW?.items ?? []).map((entry) => entry.title)).not.toContain('Home & Lock widgets');
+  });
 });

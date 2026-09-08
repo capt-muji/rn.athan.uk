@@ -1,7 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Easing, Platform, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated';
 
 import { ANIMATION, COLORS, ELEVATION, LAYOUT, OVERLAY, RADIUS, SHADOW, SIZE, SPACING, TEXT } from '@/shared/constants';
+
+/**
+ * Modal motion mirrors the sheets' recipe (SHEET_ANIMATION_CONFIGS in
+ * components/sheets/parts/Sheet.tsx): Android 200ms cubic-out, iOS the
+ * duration-form spring (220ms, dampingRatio 0.9). The previous soft spring
+ * (stiffness 100) settled visibly slower than the sheet the modal opens from.
+ */
+const MODAL_ENTERING = Platform.select({
+  android: SlideInDown.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic)),
+  default: SlideInDown.springify().duration(220).dampingRatio(0.9),
+});
+
+const MODAL_EXITING = Platform.select({
+  android: SlideOutDown.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic)),
+  default: SlideOutDown.springify().duration(220).dampingRatio(0.9),
+});
 
 type Props = {
   visible: boolean;
@@ -15,10 +31,7 @@ export default function Modal({ visible, children, title }: Props) {
   return (
     <Animated.View style={styles.container} entering={FadeIn} exiting={FadeOut}>
       <View style={styles.backdrop} />
-      <Animated.View
-        style={styles.modal}
-        entering={SlideInDown.springify().damping(20).mass(0.95).stiffness(100)}
-        exiting={SlideOutDown.duration(ANIMATION.duration)}>
+      <Animated.View style={styles.modal} entering={MODAL_ENTERING} exiting={MODAL_EXITING}>
         <View style={styles.content}>
           <Text style={styles.title}>{title}</Text>
           {children}
