@@ -1,6 +1,10 @@
 // IMPORTANT: Import background task definition FIRST to ensure it's registered in global scope
 // before any other code runs. This allows the OS to find the task even when waking a killed app.
 import '@/device/tasks';
+// Synchronous cache hydration: populates prayer sequences (and starts the
+// countdown tickers) from MMKV before first render on warm-cache launches —
+// no-op returning false on fresh installs and upgrade launches
+import '@/stores/bootstrap';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setAudioModeAsync } from 'expo-audio';

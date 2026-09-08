@@ -62,6 +62,13 @@ interface SheetProps {
    */
   closeHaptic?: Haptics.ImpactFeedbackStyle;
   /**
+   * Called once, the first time the sheet fully opens (settles on its first
+   * snap point). Used by the settings sheet to warm the sound list — the
+   * sound sheet is only reachable through settings, so its 32-row list
+   * builds invisibly while the user is one tap away
+   */
+  onFirstPresent?: () => void;
+  /**
    * Bottom-sheet stack behavior when presented over another sheet. Default
    * 'switch' serializes: the lib waits for the previous sheet to unmount
    * before animating this one in. 'push' presents immediately on top — used
@@ -101,6 +108,7 @@ export default function Sheet({
   children,
   onDismiss,
   onAnimate,
+  onFirstPresent,
   perfName,
   snapPoints = ['70%'],
   enableDynamicSizing = false,
@@ -114,6 +122,7 @@ export default function Sheet({
 
   const modalRef = useRef<BottomSheetModal | null>(null);
   const [presented, setPresented] = useState(false);
+  const firstPresentFiredRef = useRef(false);
 
   useEffect(() => {
     if (!presented) return;
@@ -152,6 +161,10 @@ export default function Sheet({
   const handleChange = useCallback(
     (index: number) => {
       setPresented(index !== -1);
+      if (index === 0 && !firstPresentFiredRef.current) {
+        firstPresentFiredRef.current = true;
+        onFirstPresent?.();
+      }
       if (!perfName) return;
       if (index === 0) {
         perfMeasure(`${perfName}_open`, `${perfName}_present`);
@@ -160,7 +173,7 @@ export default function Sheet({
         perfMeasure(`${perfName}_close`, `${perfName}_close_start`);
       }
     },
-    [perfName]
+    [perfName, onFirstPresent]
   );
 
   const ContentWrapper = scrollable ? BottomSheetScrollView : BottomSheetView;

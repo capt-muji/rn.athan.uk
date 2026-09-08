@@ -196,8 +196,24 @@ export const extraDisplayDateAtom = createDisplayDateAtom(ScheduleType.Extra);
 // --- Actions ---
 
 /**
+ * Cheap signature identifying a sequence's content: same length plus same
+ * first and last prayer instants means the same canonical day data (used by
+ * setSequence to skip identical writes)
+ */
+const sequenceSignature = (sequence: PrayerSequence): string =>
+  `${sequence.prayers.length}|${sequence.prayers[0]?.datetime.getTime() ?? 0}|${
+    sequence.prayers[sequence.prayers.length - 1]?.datetime.getTime() ?? 0
+  }`;
+
+/**
  * Sets the prayer sequence for a schedule type
  * Creates a 3-day buffer of prayers starting from the given date
+ *
+ * Identical writes are skipped: the cache bootstrap hydrates sequences before
+ * first paint and sync() rebuilds them afterwards — when both produce the same
+ * sequence (warm cache), skipping the store.set avoids a full row re-render
+ * pass that no pixel ever sees (perf22 render audit: rows rendered ~2.4x at
+ * launch pre-skip)
  *
  * @param type Schedule type (Standard or Extra)
  * @param date Start date for the sequence
@@ -205,6 +221,16 @@ export const extraDisplayDateAtom = createDisplayDateAtom(ScheduleType.Extra);
 export const setSequence = (type: ScheduleType, date: Date): void => {
   const sequenceAtom = getSequenceAtom(type);
   const sequence = PrayerUtils.createPrayerSequence(type, date, 3);
+
+  const current = store.get(sequenceAtom);
+  if (current && sequenceSignature(current) === sequenceSignature(sequence)) {
+    logger.info('SEQUENCE: Set sequence skipped (identical)', {
+      type,
+      startDate: TimeUtils.formatDateShort(date),
+      prayerCount: sequence.prayers.length,
+    });
+    return;
+  }
 
   store.set(sequenceAtom, sequence);
 

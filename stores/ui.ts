@@ -39,6 +39,18 @@ export const refreshUIAtom = atom<number>(Date.now());
 /** Whether the app update popup should be shown */
 export const popupUpdateEnabledAtom = atom(false);
 
+/**
+ * Whether the sound sheet's 32-row list may mount (session-scoped).
+ *
+ * The list is invisible until the sound sheet opens, and the only path to it
+ * runs through the settings sheet, so building it on launch was pure
+ * first-paint-adjacent waste — but building it on the sound sheet's own first
+ * present showed a visible ~300ms pop-in (header arrives, list mounts during
+ * the present). The settings sheet flipping fully open is the natural warm
+ * point: the user is one tap away from the sound sheet and sees nothing.
+ */
+export const soundListReadyAtom = atom(false);
+
 /** Whether the What's New popup should be shown (post-update announcement) */
 export const popupWhatsNewEnabledAtom = atom(false);
 
@@ -141,6 +153,9 @@ export const setPlayingSoundIndex = (index: number | null) => store.set(playingS
 
 /** Triggers a UI refresh by updating the timestamp */
 export const setRefreshUI = (timestamp: number) => store.set(refreshUIAtom, timestamp);
+
+/** Allows the sound sheet's list to mount (set when the settings sheet first fully opens) */
+export const setSoundListReady = () => store.set(soundListReadyAtom, true);
 
 /** Sets whether the app update popup should be shown */
 export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdateEnabledAtom, enabled);

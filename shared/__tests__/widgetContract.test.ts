@@ -322,10 +322,20 @@ describe('static import discipline', () => {
     }
   });
 
-  it('stores/widget.ts statically imports all eight home widget kinds', () => {
+  it('stores/widget.ts requires all eight home widget kinds via the lazy iOS getters', () => {
     const source = readFileSync(join(__dirname, '../../stores/widget.ts'), 'utf8');
-    const homeImport = source.match(/import \{[^}]*\} from '@\/widgets\/PrayerWidget'/s);
-    expect(homeImport).not.toBeNull();
+    // Layout modules load through synchronous requires inside the iOS-only
+    // push paths (Android never evaluates @expo/ui). Async import() chunks
+    // remain banned — the widget transform does not apply to lazy bundles.
+    expect(source).toMatch(/require\('@\/widgets\/PrayerWidget'\)/);
+    expect(source).toMatch(/require\('@\/widgets\/LockPrayerWidget'\)/);
+    // Async import() chunks remain banned — the widget transform does not
+    // apply to lazy bundles. Type-only `typeof import(...)` is allowed.
+    expect(source).not.toMatch(/(?<!typeof )import\s*\(/);
+    for (const getter of ['getHomeWidgets()', 'getLockWidgets()']) {
+      expect(source).toContain(getter);
+    }
+    // Every home kind still reaches updateTimeline through a getter reference
     const homeKinds = [
       'ExtrasWidget',
       'ExtrasWidgetDark',
@@ -337,10 +347,9 @@ describe('static import discipline', () => {
       'PrayerWidgetMedium',
     ];
     for (const kind of homeKinds) {
-      expect(homeImport?.[0]).toContain(kind);
+      const updateCall = new RegExp(`(home|lock)\\.${kind}\\.updateTimeline`);
+      expect(source).toMatch(updateCall);
     }
-    expect(source).toMatch(/import \{ ExtrasLockWidget, PrayerLockWidget \} from '@\/widgets\/LockPrayerWidget'/);
-    expect(source).not.toMatch(/import\s*\(/);
   });
 });
 

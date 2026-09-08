@@ -12,7 +12,13 @@ import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { Icon } from '@/shared/types';
 import { rescheduleAllNotifications, setSoundPreference, soundPreferenceAtom } from '@/stores/notifications';
-import { playingSoundIndexAtom, setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
+import {
+  playingSoundIndexAtom,
+  setBottomSheetModal,
+  setPlayingSoundIndex,
+  setSoundListReady,
+  soundListReadyAtom,
+} from '@/stores/ui';
 
 import { Sheet, SoundItem } from '../parts';
 
@@ -21,6 +27,11 @@ const ITEM_GAP = SPACING.xs;
 export default function BottomSheetSound() {
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const playingIndex = useAtomValue(playingSoundIndexAtom);
+  // The 32-row list mounts only once the settings sheet has fully opened
+  // (the only path here runs through it) — off the launch path AND complete
+  // by the first present, so the sheet never pops in. The self-trigger
+  // covers any path that skips settings.
+  const soundListReady = useAtomValue(soundListReadyAtom);
   const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
   const [itemHeight, setItemHeight] = useState(0);
   const hasInitialized = useRef(false);
@@ -137,32 +148,36 @@ export default function BottomSheetSound() {
       onAnimate={clearAudio}
       perfName='sheet_sound'
       closeHaptic={Haptics.ImpactFeedbackStyle.Medium}
+      onFirstPresent={setSoundListReady}
       stackBehavior='push'>
-      {/* Sound List Card */}
-      <View style={styles.card}>
-        <Text style={styles.cardHint}>Notification sound</Text>
+      {/* Card + 32 rows mount once the settings sheet (the only path here)
+          has fully opened — invisible warming, complete before first present */}
+      {soundListReady && (
+        <View style={styles.card}>
+          <Text style={styles.cardHint}>Notification sound</Text>
 
-        <View style={styles.listContainer}>
-          {/* Sliding indicator */}
-          <Animated.View style={[styles.indicator, indicatorStyle]} />
+          <View style={styles.listContainer}>
+            {/* Sliding indicator */}
+            <Animated.View style={[styles.indicator, indicatorStyle]} />
 
-          {/* Sound items */}
-          {ATHAN_AUDIOS.map((_, index) => (
-            <SoundItem
-              // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_AUDIOS is a static sound list, never reordered or filtered
-              key={index}
-              index={index}
-              isSelected={index === currentSelection}
-              isPlaying={playingIndex === index}
-              remainingSeconds={playingIndex === index ? playingRemainingSeconds : 0}
-              isAudible={status.playing}
-              onSelect={setTempSoundSelection}
-              onPlayPress={handlePlayPress}
-              onLayout={index === 0 ? handleItemLayout : undefined}
-            />
-          ))}
+            {/* Sound items */}
+            {ATHAN_AUDIOS.map((_, index) => (
+              <SoundItem
+                // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_AUDIOS is a static list, never reordered or filtered
+                key={index}
+                index={index}
+                isSelected={index === currentSelection}
+                isPlaying={playingIndex === index}
+                remainingSeconds={playingIndex === index ? playingRemainingSeconds : 0}
+                isAudible={status.playing}
+                onSelect={setTempSoundSelection}
+                onPlayPress={handlePlayPress}
+                onLayout={index === 0 ? handleItemLayout : undefined}
+              />
+            ))}
+          </View>
         </View>
-      </View>
+      )}
     </Sheet>
   );
 }

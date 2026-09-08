@@ -40,17 +40,35 @@ import { type PrayerSequence, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { hijriDateEnabledAtom } from '@/stores/ui';
-import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
-import {
-  ExtrasWidget,
-  ExtrasWidgetDark,
-  ExtrasWidgetDarkMedium,
-  ExtrasWidgetMedium,
-  PrayerWidget,
-  PrayerWidgetDark,
-  PrayerWidgetDarkMedium,
-  PrayerWidgetMedium,
-} from '@/widgets/PrayerWidget';
+
+// Widget layout modules are required LAZILY inside the iOS-only push paths:
+// their evaluation registers the layouts (a side effect) and pulls in
+// @expo/ui, which only the iOS widget runtime needs. A synchronous require
+// keeps everything in the main bundle (the widget Babel transform still
+// applies at build time — the ERR_ARGUMENT_CAST invariant bans async dynamic
+// import chunks, not deferred sync requires) while Android never evaluates
+// ~170 modules of dead widget code at launch.
+type HomeWidgets = typeof import('@/widgets/PrayerWidget');
+type LockWidgets = typeof import('@/widgets/LockPrayerWidget');
+
+let homeWidgets: HomeWidgets | null = null;
+let lockWidgets: LockWidgets | null = null;
+
+const getHomeWidgets = (): HomeWidgets => {
+  const cached = homeWidgets;
+  if (cached) return cached;
+  const loaded = require('@/widgets/PrayerWidget') as HomeWidgets;
+  homeWidgets = loaded;
+  return loaded;
+};
+
+const getLockWidgets = (): LockWidgets => {
+  const cached = lockWidgets;
+  if (cached) return cached;
+  const loaded = require('@/widgets/LockPrayerWidget') as LockWidgets;
+  lockWidgets = loaded;
+  return loaded;
+};
 
 /** Days of prayer boundaries scheduled ahead — the widget re-reads this
  *  stored timeline when it runs out, so this is how long the widget stays
@@ -226,20 +244,25 @@ const pushScheduleTimelines = async (
       return;
     }
 
-    // Static imports register all widget layouts into the app group as a
-    // side effect of module evaluation — required before updateTimeline works.
+    // The lazy requires register all widget layouts into the app group as a
+    // side effect of module evaluation — required before updateTimeline works
+    // (first iOS push pays the registration; Android never reaches here)
     if (schedule === ScheduleType.Standard) {
-      PrayerWidget.updateTimeline(lightEntries);
-      PrayerWidgetMedium.updateTimeline(lightEntries);
-      PrayerLockWidget.updateTimeline(lightEntries);
-      PrayerWidgetDark.updateTimeline(darkEntries);
-      PrayerWidgetDarkMedium.updateTimeline(darkEntries);
+      const home = getHomeWidgets();
+      const lock = getLockWidgets();
+      home.PrayerWidget.updateTimeline(lightEntries);
+      home.PrayerWidgetMedium.updateTimeline(lightEntries);
+      lock.PrayerLockWidget.updateTimeline(lightEntries);
+      home.PrayerWidgetDark.updateTimeline(darkEntries);
+      home.PrayerWidgetDarkMedium.updateTimeline(darkEntries);
     } else {
-      ExtrasWidget.updateTimeline(lightEntries);
-      ExtrasWidgetMedium.updateTimeline(lightEntries);
-      ExtrasLockWidget.updateTimeline(lightEntries);
-      ExtrasWidgetDark.updateTimeline(darkEntries);
-      ExtrasWidgetDarkMedium.updateTimeline(darkEntries);
+      const home = getHomeWidgets();
+      const lock = getLockWidgets();
+      home.ExtrasWidget.updateTimeline(lightEntries);
+      home.ExtrasWidgetMedium.updateTimeline(lightEntries);
+      lock.ExtrasLockWidget.updateTimeline(lightEntries);
+      home.ExtrasWidgetDark.updateTimeline(darkEntries);
+      home.ExtrasWidgetDarkMedium.updateTimeline(darkEntries);
     }
 
     scheduleLabelFlipPush(schedule, lightEntries[0].props.nextEpochMs);

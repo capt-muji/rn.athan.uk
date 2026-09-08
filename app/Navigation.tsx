@@ -69,6 +69,11 @@ export default function Navigation() {
       <PagerView
         style={{ flex: 1 }}
         initialPage={0}
+        // Pre-materialize the adjacent page's native view at layout time.
+        // ViewPager2's default (OFFSCREEN_PAGE_LIMIT_DEFAULT) creates pages
+        // lazily on first swipe, which showed a ~300ms empty page + frame
+        // drops the first time a user swiped to Extras after launch.
+        offscreenPageLimit={1}
         overdrag={true}
         // Swipes are blocked while the overlay is open (hit-test parity: the
         // old full-screen layer swallowed every gesture; the row hole now
