@@ -4,9 +4,13 @@ import { Platform } from 'react-native';
 
 import {
   athanAndroidChannelId,
+  atTimeAndroidChannelId,
   createDefaultAndroidChannel,
+  createExtrasAndroidChannel,
   createReminderAndroidChannel,
   deleteLegacyAndroidAudioChannels,
+  EXTRAS_NOTIFICATION_SOUND,
+  extrasAndroidChannelId,
   findStaleScheduledNotificationIds,
   genNextXDays,
   genNotificationContent,
@@ -155,19 +159,32 @@ describe('isNotificationOutdated', () => {
 
 describe('getNotificationSound', () => {
   it('returns false for non-Sound alert types', () => {
-    expect(getNotificationSound(AlertType.Off, 0)).toBe(false);
-    expect(getNotificationSound(AlertType.Silent, 0)).toBe(false);
+    expect(getNotificationSound(AlertType.Off, 'Fajr', 0)).toBe(false);
+    expect(getNotificationSound(AlertType.Silent, 'Fajr', 0)).toBe(false);
+    expect(getNotificationSound(AlertType.Off, 'Sunrise', 0)).toBe(false);
+    expect(getNotificationSound(AlertType.Silent, 'Last Third', 0)).toBe(false);
   });
 
-  it('returns correct sound file for Sound alert type', () => {
-    expect(getNotificationSound(AlertType.Sound, 0)).toBe('athan1.mp3');
-    expect(getNotificationSound(AlertType.Sound, 1)).toBe('athan2.mp3');
-    expect(getNotificationSound(AlertType.Sound, 2)).toBe('athan3.mp3');
+  it('returns the selected athan for the 5 daily prayers', () => {
+    expect(getNotificationSound(AlertType.Sound, 'Fajr', 0)).toBe('athan1.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'Dhuhr', 1)).toBe('athan2.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'Asr', 2)).toBe('athan3.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'Magrib', 15)).toBe('athan16.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'Isha', 31)).toBe('athan32.mp3');
   });
 
-  it('handles various sound indices', () => {
-    expect(getNotificationSound(AlertType.Sound, 15)).toBe('athan16.mp3');
-    expect(getNotificationSound(AlertType.Sound, 31)).toBe('athan32.mp3');
+  it('returns the fixed extras sound for Sunrise + all extras regardless of the selected athan (ISSUES #23 boundary)', () => {
+    expect(getNotificationSound(AlertType.Sound, 'Sunrise', 0)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'Midnight', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'Last Third', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'Suhoor', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'Duha', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'Istijaba', 31)).toBe(EXTRAS_NOTIFICATION_SOUND);
+  });
+
+  it('is case-insensitive on the prayer name', () => {
+    expect(getNotificationSound(AlertType.Sound, 'magrib', 0)).toBe('athan1.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'sunrise', 0)).toBe(EXTRAS_NOTIFICATION_SOUND);
   });
 });
 
@@ -185,6 +202,14 @@ describe('genNotificationContent', () => {
   it('includes sound for Sound alert type', () => {
     const content = genNotificationContent('Fajr', 'الفجر', AlertType.Sound, 0);
     expect(content.sound).toBe('athan1.mp3');
+  });
+
+  it('uses the fixed extras sound for Sunrise + extras at-time content', () => {
+    const sunrise = genNotificationContent('Sunrise', 'الشروق', AlertType.Sound, 4);
+    const lastThird = genNotificationContent('Last Third', 'آخر ثلث', AlertType.Sound, 4);
+    expect(sunrise.title).toBe('Sunrise now');
+    expect(sunrise.sound).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(lastThird.sound).toBe(EXTRAS_NOTIFICATION_SOUND);
   });
 
   it('returns false for sound on Silent alert type', () => {
@@ -282,6 +307,57 @@ describe('reminderAndroidChannelId', () => {
 
   it('slugs multi-word prayer names to filename-safe underscores', () => {
     expect(reminderAndroidChannelId('Last Third', 15)).toBe('reminder_last_third_15');
+  });
+});
+
+describe('atTimeAndroidChannelId', () => {
+  it('routes the 5 daily prayers to the selected athan channel', () => {
+    expect(atTimeAndroidChannelId('Fajr', 0)).toBe('athan_1_v2');
+    expect(atTimeAndroidChannelId('Isha', 31)).toBe('athan_32_v2');
+  });
+
+  it('routes Sunrise + all extras to the fixed extras channel', () => {
+    expect(atTimeAndroidChannelId('Sunrise', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('Midnight', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('Last Third', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('Suhoor', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('Duha', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('Istijaba', 7)).toBe(extrasAndroidChannelId);
+  });
+});
+
+describe('createExtrasAndroidChannel', () => {
+  it('does not throw on iOS (returns early)', async () => {
+    await expect(createExtrasAndroidChannel()).resolves.toBeUndefined();
+  });
+
+  describe('on Android', () => {
+    beforeEach(() => {
+      Platform.OS = 'android';
+      (setNotificationChannelAsync as jest.Mock).mockClear();
+    });
+
+    afterEach(() => {
+      Platform.OS = 'ios';
+    });
+
+    it('creates the channel once per process with the fixed sound and at-time settings', async () => {
+      await createExtrasAndroidChannel();
+      await createExtrasAndroidChannel();
+
+      expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
+      expect(setNotificationChannelAsync).toHaveBeenCalledWith(
+        extrasAndroidChannelId,
+        expect.objectContaining({
+          name: 'Extra Times',
+          sound: EXTRAS_NOTIFICATION_SOUND,
+          importance: AndroidImportance.MAX,
+          enableVibrate: true,
+          vibrationPattern: [0, 250, 250, 250],
+          bypassDnd: true,
+        })
+      );
+    });
   });
 });
 
