@@ -742,6 +742,8 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 
 **Recent Decisions:**
 
+- [2026-09-09] Large-screen adaptation IN FLIGHT (feat/large-screen-adaptation @ 1.23.0 checkpoint, pushed, NOT merged): content column `SIZE.contentMaxWidth: 500` on the Screen pages (pager stays full-width so the whole screen swipes — owner requirement), `SIZE.modal.maxWidth: 400` + `SIZE.modal.buttonWidth: 160` for both modals' buttons, live `useWindowDimensions` (re-export of RN's hook — the old mount-time memo froze overlay/glow geometry on resizable windows; the owner's Mac "Designed for iPad" resize was the live bug), List re-measures on window change, `ios.requireFullScreen` + `plugins/portraitOnlyIpad.js` portrait-lock iPad, What's New item stamped 1.23.0 (wording pending owner). DURABLE LESSONS: (1) Yoga ignores BOTH `alignSelf:center` AND auto margins on absolutely-positioned views — the @gorhom sheet body is absolute with left:0/right:0 and these cannot center a maxWidth-capped card; the fix must constrain OUR flex children inside the body (still open — the sole blocker; resume from ai/prompts/large-screen-adaptation.md). (2) Maestro on iPad: slow coordinate drags (600-700ms) from the left half silently fail while `direction:` swipes and fast (200-300ms) drags page fine — a WDA synthesis artifact, present on BASELINE builds too, never mistake it for an app regression. (3) `expo run:android` with multiple devices targets the FIRST connected — on this bench that is the owner-managed 3T; always pass `--device emulator-5554` or use gradle directly. (4) Owner workflow for UI iteration: one change, one booted iPad simulator, owner clicks around and judges — no screenshot loops, no vision subagent (too slow). Evidence folders stay uncommitted (self-`.gitignore`d) and the owner reviews files directly.
+
 - [2026-09-09] Bug-fix session 1 of 3 (1.22.23/1.22.24/1.22.25, ISSUES #22/#23/#24 closed, all device-verified with vision-audited frames): (1) **#23 extras at-time sound**: only the 5 daily prayers (Fajr, Dhuhr, Asr, Magrib, Isha) play the selected athan; Sunrise + ALL extras at-time play the fixed owner-built `assets/audio/reminders/reminder.mp3` (`EXTRAS_NOTIFICATION_SOUND`). The boundary lives in ONE place (`isDailyPrayer` in shared/notifications.ts) feeding both `getNotificationSound` and `atTimeAndroidChannelId` — prayer-aware, NOT schedule-aware (Sunrise is standard-page but extras-audio). Android channel `extras_at_time` (fresh id, first generation, no `_v2` needed) is created at init AND at schedule time (module-flag dedup) because headless BG-task reschedules never run UI init and Android drops notifications to nonexistent channels. (2) **#24 splash two-path**: `coldLaunchRef` first-render snapshot in app/index.tsx — cold launches (no content at mount) hide the splash at the first committed spinner frame; warm launches keep the 1.22.5 reveal gate; the classification can never re-latch. Verified: 3T fresh install shows the spinner for the whole 4.25s fetch; warm reveal still complete-on-first-frame (icon present, single cross-fade). (3) **#22 width fix confirmed on fresh install** (grow-only cache measured right on the congested first launch; zero drift across relaunches). PROCESS: the owner REDIRECTED mid-session from EAS cloud builds to LOCAL release builds on connected devices (prebuild ritual + `eas env:exec preview '<cmd>'` injects the API key from the EAS environment into local builds without the secret ever touching the transcript — remember `env:exec` takes the environment POSITIONALLY, not `--environment`); all image evidence is read by the VISION SUBAGENT only, never self-interpreted.
 - [2026-09-08] Feature flags + widgets gated OFF + What's New versioned archive (1.22.9/1.22.10): `shared/flags.ts` is the single typed reader (`EXPO_PUBLIC_<NAME> === '1'` enables; absence/typo disables — see the Feature Flags golden path above). The `widgets` flag is OFF everywhere until `expo-widgets@57.0.16` (expo/expo#49244, the G.1/G.2 render-chain fix) is verified on the XS; when OFF, `app.config.ts` strips the expo-widgets plugin (no extension in the build, no gallery entries, push paths statically dead — Android unaffected, widgets are iOS-only). What's New became a GROWING ARCHIVE: each item carries the version it shipped in (`null` parks it — the widgets item's wording is preserved parked); `filterWhatsNewItems` shows only the current release's unflagged items; archive cap 20 enforced by test (supersedes ADR-012's single-entry rewrite ritual). `.env.example` is the committed variable catalog; local `.env` stays untracked (it historically tracked a PLACEHOLDER key only — no real key was ever committed). All pre-1.22.10 local builds ran MOCK data (env unset = local), which masked ISSUES.md #21 for weeks — prod-config verification is now part of any release-candidate build.
 - [2026-09-08] Android 9 TLS 1.3 fix (1.22.10, ISSUES.md #21): the prayer API accepts TLS 1.3 only; Android 9 ships it disabled and okhttp clients snapshot SSLContext.getDefault() BEFORE JS runs (debug worked, release failed — a raw-socket probe proved the patched JVM could handshake while the app fetch could not). Fix: `modules/tls13` with a manifest-merged ContentProvider calling GMS `ProviderInstaller.installIfNeeded` before Application.onCreate (play-services-base already in the tree — no new dependency; no-op on Android 10+). KEY LESSON: any "fix the provider then fetch" logic must run before client construction, i.e. native init, never from JS.
@@ -853,14 +855,26 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 
 ### Comment Quality
 
+**Hard rule (owner directive 2026-09-09): comments explain WHY, compactly. Never WHAT.**
+
+- The code already shows the what. A comment restating it is clutter.
+- Critique every comment before writing it: if removing it loses nothing, do not write it.
+- NO comments on styling/layout values. Styling is a choice; the values speak for themselves. The only exception is a non-obvious quirk another engineer would trip over (e.g. "auto margins because this view is absolutely positioned").
+- No history logs, no owner-rules-with-dates, no provenance in comments. That context belongs in AGENTS.md or ISSUES.md, not the code.
+- WHY-comments for logic, quirks, and workarounds: one to three lines, never longer.
+
 ```typescript
-// Good: Explains WHY
+// Good: Explains WHY (a quirk the code cannot express)
 // Safari doesn't support lookbehind regex, using workaround
 const result = safariCompatibleRegex(input);
 
 // Bad: Explains WHAT (obvious from code)
 // Loop through users
 for (const user of users) { ... }
+
+// Bad: styling annotation with provenance clutter
+// 1.5x SPACING.xxl (owner rule 2026-09-09: 50% more air between list and button)
+marginBottom: 36,
 ```
 
 ### README Update Triggers

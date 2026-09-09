@@ -60,8 +60,13 @@ export interface WhatsNewRelease {
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewRelease | null = {
-  version: '1.22.22',
+  version: '1.23.0',
   items: [
+    {
+      title: 'iPad & tablet support',
+      body: 'Athan now presents the phone view you know, centered, on iPad, Android tablets and Mac',
+      version: '1.23.0',
+    },
     {
       title: 'Athan sounds',
       body: 'New Athan sounds added',

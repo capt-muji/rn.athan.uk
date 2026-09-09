@@ -1,7 +1,7 @@
 import { BottomSheetBackdrop, type BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import { StyleSheet, View } from 'react-native';
 
-import { COLORS, OVERLAY, RADIUS, SPACING } from '@/shared/constants';
+import { COLORS, OVERLAY, RADIUS, SIZE, SPACING } from '@/shared/constants';
 
 /**
  * Shared background component for bottom sheets
@@ -41,7 +41,16 @@ export const renderBackdrop = (props: BottomSheetBackdropProps) => (
  * Includes modal padding, container, indicator, backdrop, and background styles
  */
 export const bottomSheetStyles = StyleSheet.create({
-  modal: { paddingTop: SPACING.popup },
+  // Auto margins, not alignSelf: the @gorhom sheet body is absolutely
+  // positioned with left:0/right:0, so auto margins are the only way to
+  // center a maxWidth-capped card inside it
+  modal: {
+    paddingTop: SPACING.popup,
+    width: '100%',
+    maxWidth: SIZE.contentMaxWidth,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
   container: { flex: 1 },
   indicator: { backgroundColor: COLORS.text.secondary },
   backdrop: { backgroundColor: COLORS.surface.backdrop },
