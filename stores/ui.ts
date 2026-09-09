@@ -200,8 +200,18 @@ export const setPopupUpdateLastCheck = (timestamp: number) => store.set(popupUpd
  * @param width Measured width in pixels
  */
 export const setEnglishWidth = (type: ScheduleType, width: number) => {
+  // Grow-toward-truth: a first-launch measurement can land before the custom
+  // font registers (fallback-font metrics are narrower) and write-once
+  // caching would pin that wrong width forever (ISSUES #22 - "Sunrise"
+  // wrapping until the user cleared data). Accepting only measurements that
+  // WIDEN the cache self-heals a bad value on the next launch's measure
+  // while correct values never change (no reflow churn after settle).
+  if (width <= 0) return;
+
   const isStandard = type === ScheduleType.Standard;
   const atom = isStandard ? englishWidthStandardAtom : englishWidthExtraAtom;
+  const cached = store.get(atom);
+  if (width <= cached) return;
 
   store.set(atom, width);
 };

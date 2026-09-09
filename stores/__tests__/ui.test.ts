@@ -298,14 +298,56 @@ describe('preference setter functions', () => {
 describe('measurement functions', () => {
   const mockCoordinates = { pageX: 100, pageY: 200, width: 300, height: 400 };
 
+  // Jest auto-resets mock implementations between tests; re-establish the
+  // Map-backed store at the top of each width test so the comparison path
+  // reads and writes real (per-test) state
+  const resetWidthStore = () => {
+    mockStoreValues.clear();
+    mockDefaultStoreGet.mockImplementation((atom) => mockStoreValues.get(atom));
+    mockDefaultStoreSet.mockImplementation((atom, value) => mockStoreValues.set(atom, value));
+    mockDefaultStoreSet.mockClear();
+  };
+
   it('setEnglishWidth sets Standard atom', () => {
+    resetWidthStore();
     setEnglishWidth(ScheduleType.Standard, 150);
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthStandardAtom, 150);
   });
 
   it('setEnglishWidth sets Extra atom', () => {
+    resetWidthStore();
     setEnglishWidth(ScheduleType.Extra, 120);
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthExtraAtom, 120);
+  });
+
+  it('setEnglishWidth ignores zero and negative measurements', () => {
+    resetWidthStore();
+    setEnglishWidth(ScheduleType.Standard, 0);
+    setEnglishWidth(ScheduleType.Standard, -5);
+    expect(mockDefaultStoreSet).not.toHaveBeenCalled();
+  });
+
+  it('setEnglishWidth never narrows the cache (grow-toward-truth, ISSUES #22)', () => {
+    resetWidthStore();
+    setEnglishWidth(ScheduleType.Standard, 150);
+    mockDefaultStoreSet.mockClear();
+
+    // A narrower re-measure (e.g. fallback-font metrics) must not overwrite
+    setEnglishWidth(ScheduleType.Standard, 90);
+    expect(mockDefaultStoreSet).not.toHaveBeenCalled();
+
+    // An equal re-measure is a no-op: correct values never rewrite (no churn)
+    setEnglishWidth(ScheduleType.Standard, 150);
+    expect(mockDefaultStoreSet).not.toHaveBeenCalled();
+  });
+
+  it('setEnglishWidth self-heals a too-narrow cached value on a wider measure', () => {
+    resetWidthStore();
+    setEnglishWidth(ScheduleType.Standard, 90);
+    mockDefaultStoreSet.mockClear();
+
+    setEnglishWidth(ScheduleType.Standard, 150);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthStandardAtom, 150);
   });
 
   it('getMeasurementsList returns value', () => {
