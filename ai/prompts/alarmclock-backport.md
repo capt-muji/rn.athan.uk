@@ -46,9 +46,13 @@ frozen at cut time and never rebased.
    scripts (branch-only; the sanctioned exception to no-new-deps). `npx patch-package
    expo-notifications` and verify `patches/expo-notifications+<version>.patch` contains
    exactly the backport.
-4. Usage diff (the ONLY app-code change, written to port verbatim to SDK 58):
+4. Usage diff (the ONLY functional app-code change, written to port verbatim to SDK 58):
    `delivery: 'alarmClock'` on the `DateTriggerInput`s for Athan and reminder
    notifications in `stores/notifications.ts`.
+5. What's New re-stamp (branch-only, rides the 1.24.0 bump): in `shared/whatsNew.ts` set
+   `WHATS_NEW.version` AND the three shipped items (Tablet support, Athan sounds,
+   Reminder sounds) from `'1.23.1'` to `'1.24.0'` — identical content, so the 1.24.0
+   popup presents the same three items. The parked widgets item stays `version: null`.
 5. Build config (branch-only, never merges): the APK must carry the real package id and
    REAL data. First verify the EAS `preview` environment:
    `eas env:vars --environment preview` — it must contain `EXPO_PUBLIC_API_KEY` and a
@@ -67,10 +71,10 @@ frozen at cut time and never rebased.
    (GLOBAL eas CLI only — `npx eas-cli` inside the repo crashes on minimatch). Expo's
    build server runs yarn install → the postinstall hook applies the patch → the patched
    Kotlin compiles into the Release APK. Native Kotlin means a real build, never OTA.
-8. Owner installs the APK on 3T, 5T, 8T, Find X8 DIRECTLY from the EAS build page in
-   each phone's browser (internal distribution link — no adb, no Mac; every phone is
-   already clean) and the IPA on the XS via the same link or `xcrun devicectl` (XS is
-   registered for internal provisioning — campaign precedent 1.18.1 ship360 IPA).
+8. Owner installs EVERYTHING personally from the EAS build page in each device's browser
+   (both platforms, no exceptions — no adb, no devicectl, every device is already clean):
+   the APK on 3T, 5T, 8T, Find X8 and the IPA on the XS (registered for internal
+   provisioning — campaign precedent 1.18.1 ship360 IPA).
    Objective confirmation ONLY on the connected 3T after its first schedule:
    `adb -s 3T_SERIAL shell dumpsys alarm | grep -A2 mugtaba` — athan entries must show
    `window=0` (alarm-clock class; was `window=+1h0m0s0ms` windowed). All other devices:
@@ -99,9 +103,10 @@ frozen at cut time and never rebased.
 | B2 Diff extracted + drift reconciled onto installed 57.x | not started |
 | B3 patch-package patch generated + postinstall wired | not started |
 | B4 `delivery: 'alarmClock'` adopted in `stores/notifications.ts` | not started |
+| B4b What's New re-stamped to 1.24.0 (same three items, parked widgets item untouched) | not started |
 | B5 eas.json preview profile wired to the `preview` EAS environment (real key, non-local env; branch-only) | not started |
 | B6 validate green, committed, pushed | not started |
-| B7 EAS APK + parity IPA built at 1.24.0; owner installs via the EAS link on 3T/5T/8T/Find X8 (already clean) and on the XS; dumpsys `window=0` confirmed on the connected 3T | not started |
+| B7 EAS APK + parity IPA built at 1.24.0; owner installs BOTH personally via the EAS link (APK on 3T/5T/8T/Find X8, IPA on the XS; devices already clean); dumpsys `window=0` confirmed on the connected 3T | not started |
 | B8 Daily-use verdict (delivery punctuality on OEM phones) | pending owner use |
 | B9 Real release carries #49687; branch + patch deleted; usage diff ported | waiting on SDK 58 |
 | B10 ISSUES #22 addendum | SKIPPED per owner 2026-09-09 (fixed 1.22.19; rides daily use if ever revisited) |
