@@ -511,6 +511,7 @@ Use these prompts to start specialized sessions:
 | **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
 | **Android BG campaign** | `ai/prompts/android-background-task.md` | Execute the resumable Android background-task verification campaign (runbook-driven) |
 | **Large-screen adaptation** | `ai/prompts/large-screen-adaptation.md` | Resumable feature: phone-view scaling for iPad/tablet/desktop-web (tracker inside) |
+| **alarmClock backport** | `ai/prompts/alarmclock-backport.md` | RUNS LAST: #49687 backport onto SDK 57 via patch-package, throwaway branch + EAS preview (tracker inside) |
 
 **Quick Start Examples:**
 
