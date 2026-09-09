@@ -26,6 +26,10 @@ The owner wants weeks/months of real-device testing of exact alarm delivery BEFO
 8. Build: `eas build --platform android --profile preview --non-interactive --no-wait` (global `eas` CLI; never `npx eas-cli` inside the repo — minimatch crash). Owner installs the APK on the bench phones and verifies per the #10/#17 protocol (8T/Find X8 alarms store `window=0 flags=0x9`, same-minute delivery +0ms).
 9. **Deletion day**: the moment an SDK-57.x patch or SDK 58 release carries #49687 (watch: expo-notifications CHANGELOG on the sdk-57 branch + npm), delete the branch and patch, install the real release, port the usage diff from step 6.
 
+## Additional task (owner-added 2026-09-08): fix ISSUES #22 in this session
+
+The owner will connect the OnePlus 3T: on the EAS 1.22.11 build, "Sunrise" wraps to two lines on the standard page (trailing "e" alone; never seen before; other devices fine). Debug with the device: inspect the `prayer_max_english_width_*` write-once measurement on fresh installs first (the 2026-09-06 width-cache lesson in AGENTS.md), then any local-vs-EAS build text-rendering delta. Fix, verify on the 3T, include in this branch's commits (the branch stays unmerged, but the fix itself must also land on uat as its own version-bumped commit — coordinate with the owner).
+
 ## Constraints
 
 - Branch never merges to uat/main. No speculative SDK 58 upgrade. `releases.json` untouched. Version bump every commit.
@@ -43,3 +47,4 @@ The owner wants weeks/months of real-device testing of exact alarm delivery BEFO
 | B6 EAS preview built; owner installed on bench phones | not started |
 | B7 Device verification per #10/#17 protocol (results) | not started |
 | B8 Real release carries fix; branch + patch deleted; usage diff ported | not started |
+| B9 ISSUES #22 Sunrise wrap fixed on the 3T (+ fix landed on uat) | not started |

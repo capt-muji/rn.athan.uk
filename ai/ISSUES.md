@@ -462,6 +462,12 @@ replay (incl. the pending 5-device Android campaign) in
 - **Related noise (non-fatal, unfixed)**: on this 3T, fetch threads log `NoClassDefFoundError: android.webkit.PacProcessor` spam — Chrome 138 as WebView provider on API 28 no longer ships the legacy `android.webkit.PacProcessor` stubs, and OxygenOS' webviewupdate minimum-version lock (`372913652`) blocks switching to the ancient standalone WebView package (v74). The errors are caught internally; fetches succeed once TLS works. Only reproducible on OEM-broken WebView states.
 - **Production impact**: every real Android 9 user would have hit the error screen on the API's TLS 1.3-only policy; this module fixes the whole population. Device-verified: 3T Release build fetches real data, settles at 22.5% idle CPU (inside the 19-31% campaign band).
 
+### 22. [OPEN — scheduled with the alarmClock backport session] "Sunrise" wraps to two lines on the standard page (3T, EAS build)
+
+- **Symptom (owner, 2026-09-08, OnePlus 3T, EAS preview build 1.22.11, fresh install)**: the English name column renders "Sunrise" across two lines with the trailing "e" alone on its own line. Never reproduced on any prior build; other devices render it fine per the owner. Launch is also slightly slower on the 3T (accepted; other devices fine — likely first-launch measure + sync on the old device).
+- **Suspects (debug with the 3T connected)**: the write-once `prayer_max_english_width_*` MMKV measure on fresh installs (AGENTS.md 2026-09-06 lesson: a wiped install re-measures at launch; if the measure lands in a squeezed first-paint state the column stays wrong until the next wipe), and any text-rendering delta between local Release builds (local prebuild, debug keystore) and the EAS build (cloud prebuild, remote keystore). The wrap being device-specific points at measurement, not layout code.
+- **Fix scheduled**: in or immediately before the alarmClock backport session (`ai/prompts/alarmclock-backport.md`) — the owner connects the 3T there for debugging.
+
 ### 19. [MITIGATED 2026-09-03 — Auto-launch confirmed causal] 8T loses the WorkManager chain AND notification alarms on every reboot (until next app open)
 
 - **Measured (Scenario E, 2026-09-03, reboots #1/#2 with Auto-launch OFF)**: OnePlus 8T /
