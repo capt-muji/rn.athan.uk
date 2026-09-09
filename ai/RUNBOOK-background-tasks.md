@@ -547,12 +547,15 @@ D degrades gracefully to the 2-day buffer and recovers on open.
 
 ## 9. UPSTREAM TRACKING
 
-- **expo/expo#49687 (FILED 2026-09-03 by this campaign)** — opt-in `alarmClock` DateTriggerInput
-  → `AlarmManager.setAlarmClock()`; fixes OEM windowed delivery (ISSUES #17 / #10 root cause).
-  Fork branch: capt-muji:notifications-android-alarm-clock. CHECK STATUS EVERY SESSION — once
-  merged, adopt for prayer-time notifications and retire the drift observatory.
-- expo/expo#48786 — getStatusAsync blind to Background App Refresh (accepted).
-- expo/expo#44540 — simulate-trigger TaskService race (known trap).
+- **expo/expo#49687 (FILED 2026-09-03 by this campaign)** — MERGED to main 2026-09-08, rides
+  SDK 58 (no 57.x backport as of 2026-09-09). Adopted on the throwaway
+  `experiment/alarmclock-backport` branch via patch-package +
+  `expo.autolinking.android.buildFromSource`; fleet-verified `window=0` on 3T/8T/Find X8/5T/S23
+  (2026-09-09). Full tracker + deletion-day checklist: `ai/prompts/alarmclock-backport.md`.
+- expo/expo#48786 — getStatusAsync blind to Background App Refresh (informational only; owner
+  accepted 2026-09-09 that BAR-off users go silent after the 2-day buffer — detection/warning
+  deliberately not built, revisit only if observed in daily use).
+- expo/expo#44540 — simulate-trigger TaskService race: CLOSED upstream via #44646 (2026-09-09).
 - `requiresNetworkConnectivity=true` hardcoded — candidate upstream PR
   (would remove needless offline deferral; our task is offline-capable).
   Owner decision 2026-09-02: accept + document, no patch-package.
