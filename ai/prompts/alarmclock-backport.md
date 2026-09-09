@@ -75,6 +75,17 @@ frozen at cut time and never rebased.
    (both platforms, no exceptions — no adb, no devicectl, every device is already clean):
    the APK on 3T, 5T, 8T, Find X8 and the IPA on the XS (registered for internal
    provisioning — campaign precedent 1.18.1 ship360 IPA).
+
+   iOS INSTALL PATH (owner question 2026-09-09 — discuss and verify in this session, no
+   TestFlight/ASC detour): the internal-distribution IPA installs straight from the EAS
+   build page in Safari, like Android — ad-hoc/development signed (paid account = 1-year
+   profile). BEFORE building, verify the XS is registered: `eas device:list` must show
+   UDID IPHONE_UDID; if absent, `eas device:create` walks the owner through
+   registration on the phone, then build. After install, one-time trust step on the
+   phone: Settings → General → VPN & Device Management → trust the developer cert.
+   FALLBACK (owner-sanctioned exception if the link route fails): the agent installs the
+   IPA over USB: `xcrun devicectl device install app --device IPHONE_UDID
+   <path.ipa>`. Same result; the owner just does not tap the button personally.
    Objective confirmation ONLY on the connected 3T after its first schedule:
    `adb -s 3T_SERIAL shell dumpsys alarm | grep -A2 mugtaba` — athan entries must show
    `window=0` (alarm-clock class; was `window=+1h0m0s0ms` windowed). All other devices:
