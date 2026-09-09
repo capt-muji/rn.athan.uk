@@ -40,11 +40,32 @@ export const genTriggerDate = (date: string, time: string): Date => {
 };
 
 /**
+ * The 5 daily prayers whose at-time notifications play the user's selected
+ * athan. Every other at-time prayer (Sunrise + all extras) plays the fixed
+ * built-in reminder sound instead (ISSUES.md #23 — note this boundary is
+ * prayer-aware, not schedule-aware: Sunrise sits on the standard page but
+ * uses the extras audio).
+ */
+const DAILY_PRAYERS = new Set(['fajr', 'dhuhr', 'asr', 'magrib', 'isha']);
+
+/**
+ * Fixed built-in audio for at-time Sunrise + extras notifications
+ * (assets/audio/reminders/reminder.mp3 — owner-created, not user-selectable)
+ */
+export const EXTRAS_NOTIFICATION_SOUND = 'reminder.mp3';
+
+/**
+ * Whether an at-time notification for this prayer plays the selected athan
+ */
+export const isDailyPrayer = (englishName: string): boolean => DAILY_PRAYERS.has(englishName.toLowerCase());
+
+/**
  * Gets notification sound based on alert type
  * Returns false for silent notifications (SDK 54 requirement)
  */
-export const getNotificationSound = (alertType: AlertType, soundIndex: number): string | false => {
+export const getNotificationSound = (alertType: AlertType, englishName: string, soundIndex: number): string | false => {
   if (alertType !== AlertType.Sound) return false;
+  if (!isDailyPrayer(englishName)) return EXTRAS_NOTIFICATION_SOUND;
 
   return `athan${soundIndex + 1}.mp3`;
 };
@@ -61,7 +82,7 @@ export const genNotificationContent = (
 ): Notifications.NotificationContentInput => {
   return {
     title: `${englishName} now`,
-    sound: getNotificationSound(alertType, soundIndex),
+    sound: getNotificationSound(alertType, englishName, soundIndex),
     color: '#5a3af7',
     autoDismiss: false,
     sticky: false,
@@ -214,6 +235,20 @@ export const reminderAndroidChannelId = (englishName: string, intervalMinutes: R
   return `reminder_${slug}_${intervalMinutes}`;
 };
 
+/**
+ * Android channel ID for the fixed at-time Sunrise + extras sound
+ * Fresh ID that never existed under a different sound (ISSUES.md #23) — same
+ * reasoning as the reminder channels: no `_v2` suffix needed on a first generation
+ */
+export const extrasAndroidChannelId = 'extras_at_time';
+
+/**
+ * Android channel for an at-time notification: the selected athan's channel
+ * for the 5 daily prayers, the fixed extras channel for everything else
+ */
+export const atTimeAndroidChannelId = (englishName: string, soundIndex: number): string =>
+  isDailyPrayer(englishName) ? athanAndroidChannelId(soundIndex) : extrasAndroidChannelId;
+
 export const createDefaultAndroidChannel = async () => {
   if (Platform.OS !== 'android') return;
 
@@ -231,6 +266,31 @@ export const createDefaultAndroidChannel = async () => {
 
 /** Channel IDs created this session — skips repeat setNotificationChannelAsync calls across reschedules */
 const createdReminderChannels = new Set<string>();
+
+/** Whether the extras at-time channel was created this process (dedup mirrors createdReminderChannels) */
+let extrasChannelCreated = false;
+
+/**
+ * Creates the Android notification channel for the fixed at-time Sunrise +
+ * extras sound. Called from initializeNotifications and again at schedule time
+ * so headless background-task reschedules (which never run UI init) still find
+ * the channel — Android drops notifications posted to nonexistent channels.
+ */
+export const createExtrasAndroidChannel = async () => {
+  if (Platform.OS !== 'android') return;
+  if (extrasChannelCreated) return;
+
+  await Notifications.setNotificationChannelAsync(extrasAndroidChannelId, {
+    name: 'Extra Times',
+    sound: EXTRAS_NOTIFICATION_SOUND,
+    importance: Notifications.AndroidImportance.MAX,
+    enableVibrate: true,
+    vibrationPattern: [0, 250, 250, 250],
+    bypassDnd: true,
+  });
+
+  extrasChannelCreated = true;
+};
 
 /**
  * Creates the Android notification channel for a prayer × interval reminder sound
@@ -289,6 +349,7 @@ export const initializeNotifications = async (
   try {
     await deleteLegacyAndroidAudioChannels();
     await createDefaultAndroidChannel();
+    await createExtrasAndroidChannel();
 
     const hasPermission = await checkPermissions();
     if (hasPermission) {

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.22.22",
+    "version": "1.22.23",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -170,7 +170,8 @@
             "./assets/audio/reminders/reminder_istijaba_15.mp3",
             "./assets/audio/reminders/reminder_istijaba_20.mp3",
             "./assets/audio/reminders/reminder_istijaba_25.mp3",
-            "./assets/audio/reminders/reminder_istijaba_30.mp3"
+            "./assets/audio/reminders/reminder_istijaba_30.mp3",
+            "./assets/audio/reminders/reminder.mp3"
           ]
         }
       ],
