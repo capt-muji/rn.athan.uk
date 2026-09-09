@@ -14,7 +14,7 @@ Repo state: `uat` @ 1.22.20. Read `ai/ISSUES.md` #22 and #23 in full before star
 
 The full spec is in the issue: only the 5 daily prayers (Fajr, Dhuhr, Asr, Magrib, Isha) use the selected athan; Sunrise + all extras (Midnight, Last Third, Suhoor, Duha, Istijaba) use a separate built-in audio the owner created but has NOT imported.
 
-1. Locate the audio: check the GitHub Releases `audio-sources-v1` tag assets and any local paths the owner may have left. If unfindable, implement everything EXCEPT the asset itself (a named constant pointing at `assets/audio/extras/extras.mp3` + wiring + tests), leave the file slot empty with a clear blocker note, and flag in the report — do not pick a substitute sound on your own.
+1. Import the audio: copy `$HOME/Documents/athan-reminders/reminder.mp3` into `assets/audio/` (244KB, verified on disk 2026-09-09). This is the fixed built-in sound for Sunrise + all extras at-time notifications. See ISSUES #23 for the full 3-category sound mapping.
 2. Implement per the sketch in the issue (schedule/prayer-aware `getNotificationSound`, dedicated Android channel with a fresh id — channel sounds are immutable after creation, `athan_*_v2` pattern, app.json `sounds` array entry, `initializeNotifications` channel creation).
 3. `yarn validate` green; tests for the new mapping (the 5 vs everything-else boundary is the critical assertion).
 4. Commit (version-bumped, silent What's New), push the branch, merge to uat per tonight's standing flow (owner has authorized commit/push/merge for these autonomous sessions).
