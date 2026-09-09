@@ -6,9 +6,11 @@ campaign's decisive finding — OEM windowed delivery of scheduled alarms — is
 by expo/expo#49687 (merged, rides SDK 58; real-device testing continues via the
 alarmClock backport session, `ai/prompts/alarmclock-backport.md`). Dropped as stale/optional:
 the multi-day soak return-observation (phones returned to daily use) and the Samsung OneUI
-5th device (optional OEM diversity). STILL OPEN: ISSUES #20 (post-reboot headless task-body
-hang — all-Android upstream candidate, diagnosed with evidence, NOT yet filed upstream) and
-the ISSUES #10/#17 delivery drift in production until the #49687 adoption ships in the app.
+5th device (optional OEM diversity). CLOSED 2026-09-09 as accepted behavior: ISSUES #20 (post-reboot
+headless task-body hang) — the owner accepted the degradation (reboot + no app open within
+the 2-day buffer = silence; apps-asleep-after-reboot is platform behavior, not worth
+fighting; iOS unaffected). Only ISSUES #10/#17 delivery drift remains, and that closes when
+the #49687 adoption ships in the app.
 This file remains the reference: §1 for per-device ground truth, §5 for the verification
 procedures (reused by the backport session's device protocol), §8 for the Android source
 findings.

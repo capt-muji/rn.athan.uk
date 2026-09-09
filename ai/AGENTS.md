@@ -802,7 +802,7 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 - Countdown labels: `countdownLabel` must always come from `formatCountdownMinutes` (ceil to the next minute, seconds never render) evaluated at the entry date — or at the push instant for a backdated first entry — never hand-formatted in a layout or builder branch. `timerInterval` is banned in layouts: it renders Apple's colon clock, not our format.
 - Settings flow one way: app preference atoms → `readWidgetSettings()` → props field → layout conditional. Today that is `hijriDate` only. Adding a widget-visible setting = one atom read + one `PrayerWidgetSettings` field + one prop + one conditional. Never add widget-side configuration.
 
-**See Also:** `ai/adr/` for architectural decision records; `ai/RUNBOOK-background-tasks.md` — background-task/device-testing runbook, CAMPAIGN CLOSED 2026-09-09 (kept as protocol reference; ISSUES #20 is the only open item, an unfiled upstream candidate).
+**See Also:** `ai/adr/` for architectural decision records; `ai/RUNBOOK-background-tasks.md` — background-task/device-testing runbook, CAMPAIGN CLOSED 2026-09-09 (kept as protocol reference; ISSUES #20 closed as owner-accepted behavior, #10/#17 close when the #49687 adoption ships).
 
 ## 12. Change / PR Checklist
 

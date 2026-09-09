@@ -422,7 +422,9 @@ replay (incl. the pending 5-device Android campaign) in
   use force-stop semantics (the 3T's ~04:0x OEM kill) hit the same wall — which is why the
   background-task chain (self-healing on open) matters more than the buffer there.
 
-### 20. [OPEN — upstream candidate] Android: post-reboot headless background-task body NEVER completes (hang→cancel loop); reboot persistence is chain-only
+### 20. [CLOSED 2026-09-09 — ACCEPTED BEHAVIOR, owner rationale: post-reboot app-open within the 2-day buffer is the bare-minimum user expectation] Android: post-reboot headless background-task body NEVER completes (hang→cancel loop); reboot persistence is chain-only
+
+- **Closure (owner, 2026-09-09)**: after a reboot, already-scheduled notifications still fire (BOOT_COMPLETED re-arms the alarm registry natively — the 2-day buffer executes), and every non-reboot path (warm process, process-death headless) completes the refresh task fine. Only the post-reboot headless REFRESH hangs (OS puts apps to sleep until opened — expected platform behavior across OEMs, not worth fighting). Accepted degradation: a user who reboots and does not open the app within the ~2-day horizon goes silent afterward. iOS is unaffected (post-reboot headless relaunch verified with full body execution). Not filed upstream; reopen only if the bare-minimum expectation changes.
 
 - **Measured (2026-09-03, post-reboot cycles on 3T + 5T + Find X8 + 8T — 4/4)**: after every
   reboot, each due cycle fires the worker headlessly (process spawns, RN boots,
