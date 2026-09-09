@@ -510,6 +510,7 @@ Use these prompts to start specialized sessions:
 | **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
 | **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
 | **Android BG campaign** | `ai/prompts/android-background-task.md` | Execute the resumable Android background-task verification campaign (runbook-driven) |
+| **Large-screen adaptation** | `ai/prompts/large-screen-adaptation.md` | Resumable feature: phone-view scaling for iPad/tablet/desktop-web (tracker inside) |
 
 **Quick Start Examples:**
 
