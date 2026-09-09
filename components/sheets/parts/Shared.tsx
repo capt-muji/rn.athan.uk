@@ -7,10 +7,14 @@ import { COLORS, OVERLAY, RADIUS, SIZE, SPACING } from '@/shared/constants';
  * Shared background component for bottom sheets
  * Renders a flat background with border
  */
+// Pinned vertically but not horizontally: the lib body pins left/right,
+// so Yoga alignment can only center children that carry no horizontal
+// insets — the cap+center therefore lives here and on the content column.
 export const renderSheetBackground = () => (
   <View
     style={[
-      StyleSheet.absoluteFill,
+      { position: 'absolute', top: 0, bottom: 0 },
+      bottomSheetStyles.column,
       bottomSheetStyles.sheetBackground,
       {
         borderWidth: 1,
@@ -41,15 +45,11 @@ export const renderBackdrop = (props: BottomSheetBackdropProps) => (
  * Includes modal padding, container, indicator, backdrop, and background styles
  */
 export const bottomSheetStyles = StyleSheet.create({
-  // Auto margins, not alignSelf: the @gorhom sheet body is absolutely
-  // positioned with left:0/right:0, so auto margins are the only way to
-  // center a maxWidth-capped card inside it
-  modal: {
-    paddingTop: SPACING.popup,
+  modal: { paddingTop: SPACING.popup },
+  column: {
+    alignSelf: 'center',
     width: '100%',
     maxWidth: SIZE.contentMaxWidth,
-    marginLeft: 'auto',
-    marginRight: 'auto',
   },
   container: { flex: 1 },
   indicator: { backgroundColor: COLORS.text.secondary },

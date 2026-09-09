@@ -6,11 +6,12 @@ import {
 } from '@gorhom/bottom-sheet';
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { BackHandler, Platform, StyleSheet } from 'react-native';
+import { BackHandler, Platform, StyleSheet, View } from 'react-native';
 import { Easing } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { ELEVATION, OVERLAY, SPACING } from '@/shared/constants';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
+import { ELEVATION, OVERLAY, SIZE, SPACING } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
 
 import Header from './Header';
@@ -115,6 +116,13 @@ export default function Sheet({
   const { bottom: safeBottom } = useSafeAreaInsets();
   const bottom = Platform.OS === 'android' ? 0 : safeBottom;
   const contentPadding = bottom + SPACING.xxxl + SHEET_BOTTOM_PADDING;
+  const { width: windowWidth } = useWindowDimensions();
+  // Capped via explicit width + insets because the lib pins this container
+  // left/right (maxWidth/alignment cannot act). Capping here, not only the
+  // card, keeps the full-width sheet body from covering the area beside
+  // the card, so side taps reach the backdrop and close.
+  const sideInset = Math.max(0, (windowWidth - SIZE.contentMaxWidth) / 2);
+  const containerWidth = Math.min(windowWidth, SIZE.contentMaxWidth);
 
   const modalRef = useRef<BottomSheetModal | null>(null);
   const [presented, setPresented] = useState(false);
@@ -183,7 +191,7 @@ export default function Sheet({
   const ContentWrapper = scrollable ? BottomSheetScrollView : BottomSheetView;
   const contentStyle = scrollable
     ? { contentContainerStyle: { paddingBottom: contentPadding } }
-    : { style: [styles.content, { paddingBottom: contentPadding }] };
+    : { style: { paddingBottom: contentPadding } };
 
   return (
     <BottomSheetModal
@@ -197,13 +205,18 @@ export default function Sheet({
       onAnimate={handleAnimate}
       onChange={handleChange}
       style={bottomSheetStyles.modal}
-      containerStyle={{ zIndex: OVERLAY.zindexes.popup, elevation: ELEVATION.standard }}
+      containerStyle={[
+        { zIndex: OVERLAY.zindexes.popup, elevation: ELEVATION.standard },
+        { width: containerWidth, marginLeft: sideInset, marginRight: sideInset },
+      ]}
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
-      <ContentWrapper style={scrollable ? styles.content : undefined} {...contentStyle}>
-        <Header title={title} subtitle={subtitle} icon={icon} />
-        {children}
+      <ContentWrapper {...contentStyle}>
+        <View style={[bottomSheetStyles.column, styles.content]}>
+          <Header title={title} subtitle={subtitle} icon={icon} />
+          {children}
+        </View>
       </ContentWrapper>
     </BottomSheetModal>
   );
