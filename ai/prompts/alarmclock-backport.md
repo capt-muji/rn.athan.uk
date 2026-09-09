@@ -6,11 +6,14 @@ main. Read `ai/AGENTS.md` first, act as Orchestrator.
 ## Owner's plan (2026-09-09, authoritative)
 
 Patch the merged upstream fix into `node_modules/expo-notifications` via patch-package,
-build ONE real Android APK (`com.mugtaba.athan`, Release compilation, exactly what would
-ship to production — just hand-distributed), uninstall the Play Store app on all phones
-first, install this as the one true app, and use it in daily life. The codebase is then
-untouched until SDK 58 ships, at which point the patch and the branch are deleted and the
-real release carries the fix. Nothing on the branch may leak into uat/main; the branch is
+then submit TWO EAS cloud builds at the same version: the real Android APK
+(`com.mugtaba.athan`, Release compilation, exactly what would ship to production) and an
+iOS IPA purely for version parity (#49687 is Android-only — iOS gets no functional
+change). The owner installs the Android APK on all phones DIRECTLY from the EAS build
+page (no Mac/adb connection needed — the phones are already clean of every previous
+install) and uses it as the one true app in daily life. The codebase is then untouched
+until SDK 58 ships, at which point the patch and the branch are deleted and the real
+release carries the fix. Nothing on the branch may leak into uat/main; the branch is
 frozen at cut time and never rebased.
 
 ## Facts
@@ -58,18 +61,20 @@ frozen at cut time and never rebased.
 6. `yarn validate` green; MINOR version bump (1.24.0 — feature grade, distinguishes the
    daily-use build from the 1.23.x line); commit; push branch.
 7. Build on EAS CLOUD ONLY — no local compilation ever on this branch (no
-   `expo run:android`, no gradle, no local EAS builds):
-   `eas build --platform android --profile preview --non-interactive --no-wait`
+   `expo run:android`, no gradle, no local EAS builds). Submit BOTH platforms at 1.24.0:
+   `eas build --platform android --profile preview --non-interactive --no-wait` and
+   `eas build --platform ios --profile preview --non-interactive --no-wait`
    (GLOBAL eas CLI only — `npx eas-cli` inside the repo crashes on minimatch). Expo's
    build server runs yarn install → the postinstall hook applies the patch → the patched
    Kotlin compiles into the Release APK. Native Kotlin means a real build, never OTA.
-8. Owner UNINSTALLS the existing Play Store app on every phone FIRST (same package id;
-   signature differs from a store install), then installs the APK on 3T (`3T_SERIAL`),
-   5T (`a2b9dbf`), 8T (`8T_SERIAL`), Find X8 (`X8_SERIAL`) as the one true app.
-   One objective confirmation per device after the first schedule:
-   `adb shell dumpsys alarm | grep -A2 mugtaba` — athan entries must show
-   `window=0` (alarm-clock class; was `window=+1h0m0s0ms` windowed). After that,
-   verification is daily use: prayers land at the minute, no 60s-to-minutes drift.
+8. Owner installs the APK on 3T, 5T, 8T, Find X8 DIRECTLY from the EAS build page in
+   each phone's browser (internal distribution link — no adb, no Mac; every phone is
+   already clean) and the IPA on the XS via the same link or `xcrun devicectl` (XS is
+   registered for internal provisioning — campaign precedent 1.18.1 ship360 IPA).
+   Objective confirmation ONLY on the connected 3T after its first schedule:
+   `adb -s 3T_SERIAL shell dumpsys alarm | grep -A2 mugtaba` — athan entries must show
+   `window=0` (alarm-clock class; was `window=+1h0m0s0ms` windowed). All other devices:
+   verification is daily use — prayers land at the minute, no 60s-to-minutes drift.
 9. **Deletion day (SDK 58 or a 57.x patch carrying #49687)**: delete the branch and the
    patch, remove the postinstall script and devDep, upgrade, port the step-4 usage diff
    verbatim. Watch: expo-notifications CHANGELOG on the sdk-57 branch + npm. When the
@@ -96,7 +101,7 @@ frozen at cut time and never rebased.
 | B4 `delivery: 'alarmClock'` adopted in `stores/notifications.ts` | not started |
 | B5 eas.json preview profile wired to the `preview` EAS environment (real key, non-local env; branch-only) | not started |
 | B6 validate green, committed, pushed | not started |
-| B7 EAS APK built; Play app uninstalled on each phone; APK installed on 3T/5T/8T/Find X8 as the one true app; dumpsys `window=0` confirmed per device | not started |
+| B7 EAS APK + parity IPA built at 1.24.0; owner installs via the EAS link on 3T/5T/8T/Find X8 (already clean) and on the XS; dumpsys `window=0` confirmed on the connected 3T | not started |
 | B8 Daily-use verdict (delivery punctuality on OEM phones) | pending owner use |
 | B9 Real release carries #49687; branch + patch deleted; usage diff ported | waiting on SDK 58 |
 | B10 ISSUES #22 addendum | SKIPPED per owner 2026-09-09 (fixed 1.22.19; rides daily use if ever revisited) |
