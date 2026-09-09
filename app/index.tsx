@@ -102,7 +102,22 @@ export default function Index() {
   // (first commit paints content) or the async sync atom left its loading
   // state. The perf mark keeps its content-only semantics; only the reveal
   // waits for the Masjid icon and, in Ramadan mode, the decoration sprites.
+  //
+  // Two paths (ISSUES.md #24): cold launches (no cache at mount — fresh
+  // install, upgrade wipe, year gap) hide the splash as soon as the spinner
+  // frame commits instead of holding through the entire network fetch;
+  // warm launches keep the reveal-ready gate so the first revealed frame is
+  // complete (the 1.22.5 no-icon-pop-in fix). The snapshot is taken during
+  // the first render only — sync completing later can never re-latch the gate.
+  const coldLaunchRef = useRef(!sequenceReady && state === 'loading');
+
   useEffect(() => {
+    if (coldLaunchRef.current) {
+      // Cold launch: the spinner branch owns the first committed frame —
+      // reveal it immediately; content swaps in when the fetch completes
+      SplashScreen.hideAsync();
+    }
+
     const contentExists = sequenceReady || state !== 'loading';
     if (contentExists && !contentCommittedRef.current) {
       contentCommittedRef.current = true;
@@ -112,7 +127,8 @@ export default function Index() {
       perfMark('home_content');
       perfMeasure('js_to_content', 'perf_monitor_init');
     }
-    const revealReady = contentExists && masjidIconLoaded && (!decorationsExpected || decorationsLoaded);
+    const revealReady =
+      !coldLaunchRef.current && contentExists && masjidIconLoaded && (!decorationsExpected || decorationsLoaded);
     if (revealReady) {
       SplashScreen.hideAsync();
     }
