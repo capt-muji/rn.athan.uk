@@ -509,7 +509,7 @@ Use these prompts to start specialized sessions:
 | **Documentation**    | `ai/prompts/document.md`       | Add JSDoc, comments, README updates |
 | **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
 | **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
-| **Android BG campaign** | `ai/prompts/android-background-task.md` | Execute the resumable Android background-task verification campaign (runbook-driven) |
+| **Android BG campaign** | `ai/prompts/android-background-task.md` | CLOSED 2026-09-09: verification complete (runbook CLOSED header summarizes outcome; #20 upstream candidate remains the only open item) |
 | **Large-screen adaptation** | `ai/prompts/large-screen-adaptation.md` | Resumable feature: phone-view scaling for iPad/tablet/desktop-web (tracker inside) |
 | **alarmClock backport** | `ai/prompts/alarmclock-backport.md` | RUNS LAST: #49687 backport onto SDK 57 via patch-package, throwaway branch + EAS preview (tracker inside) |
 
@@ -802,7 +802,7 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 - Countdown labels: `countdownLabel` must always come from `formatCountdownMinutes` (ceil to the next minute, seconds never render) evaluated at the entry date — or at the push instant for a backdated first entry — never hand-formatted in a layout or builder branch. `timerInterval` is banned in layouts: it renders Apple's colon clock, not our format.
 - Settings flow one way: app preference atoms → `readWidgetSettings()` → props field → layout conditional. Today that is `hijriDate` only. Adding a widget-visible setting = one atom read + one `PrayerWidgetSettings` field + one prop + one conditional. Never add widget-side configuration.
 
-**See Also:** `ai/adr/` for architectural decision records; `ai/RUNBOOK-background-tasks.md` for the background-task/device-testing runbook with per-device status tracking (iOS complete 2026-09-02; Android 5-device campaign pending — resume there).
+**See Also:** `ai/adr/` for architectural decision records; `ai/RUNBOOK-background-tasks.md` — background-task/device-testing runbook, CAMPAIGN CLOSED 2026-09-09 (kept as protocol reference; ISSUES #20 is the only open item, an unfiled upstream candidate).
 
 ## 12. Change / PR Checklist
 
