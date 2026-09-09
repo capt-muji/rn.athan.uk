@@ -1,4 +1,17 @@
-# Runbook — Background Task & Notification Scheduling (iOS ✅ / Android ⏳)
+# Runbook — Background Task & Notification Scheduling (iOS ✅ / Android ✅ — CAMPAIGN CLOSED 2026-09-09)
+
+**CAMPAIGN CLOSED 2026-09-09 (owner directive):** Android chain verification completed on
+the 4-phone fleet (2026-09-03, scenarios A/B/C/E/F pass), iOS complete 2026-09-02, and the
+campaign's decisive finding — OEM windowed delivery of scheduled alarms — is fixed upstream
+by expo/expo#49687 (merged, rides SDK 58; real-device testing continues via the
+alarmClock backport session, `ai/prompts/alarmclock-backport.md`). Dropped as stale/optional:
+the multi-day soak return-observation (phones returned to daily use) and the Samsung OneUI
+5th device (optional OEM diversity). STILL OPEN: ISSUES #20 (post-reboot headless task-body
+hang — all-Android upstream candidate, diagnosed with evidence, NOT yet filed upstream) and
+the ISSUES #10/#17 delivery drift in production until the #49687 adoption ships in the app.
+This file remains the reference: §1 for per-device ground truth, §5 for the verification
+procedures (reused by the backport session's device protocol), §8 for the Android source
+findings.
 
 **Purpose:** replicate the 2026-09-02 iOS deep-dive on any device, any session,
 with zero re-discovery. Read §1 (status), then run §4 (resume protocol).
