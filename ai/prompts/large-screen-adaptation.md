@@ -49,5 +49,6 @@ Repo state at session start (post SDK-57 patch sweep): `uat` @ **1.22.13** (the 
 | Standing: #49244 merged? | open 2026-09-08 |
 | Standing: owner installed EAS 1.22.11 on 3T/8T/F8 | DONE 2026-09-08 (owner) |
 | Standing: SDK 58 announced? | no 2026-09-08 |
+| Standing: alarmClock backport (#49687 merge `257006e` onto expo-notifications 57.0.17, patch-package, throwaway branch + EAS preview) | SCHEDULED AFTER THIS FEATURE — owner order: at the very end (see ISSUES #17) |
 
 Append a dated line under the tracker after each session summarizing deltas; keep this file the single resume point.

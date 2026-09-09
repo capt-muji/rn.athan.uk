@@ -334,6 +334,18 @@ replay (incl. the pending 5-device Android campaign) in
   waits for the SDK 58 release (recorded under Owner-facing implications below). Watch
   signal: `npm dist-tag ls expo` gaining `sdk-58`, or a `58.0.0-beta.x` publish; as of
   2026-09-08 only per-commit canaries exist and no beta has been announced.
+- **Backport experiment (owner-ordered 2026-09-08, sequenced AFTER the large-screen
+  feature, at the very end)**: patch-package backport of the MERGED #49687 state (merge
+  commit `257006e` on expo/expo main - includes the maintainer's pre-merge adjustments;
+  NOT our draft) onto installed `expo-notifications@57.0.17`. Mechanism per the G.1
+  fallback precedent: extract the merged diff for `NotificationScheduler.kt`,
+  `NotificationTriggers.kt`, `ExpoSchedulingDelegate.kt`, `NotificationScheduler.types.ts`,
+  `Notifications.types.ts`, `scheduleNotificationAsync.ts`; reconcile any main-vs-57.0.17
+  drift; `patch-package` devDependency + postinstall (branch-only, never merged);
+  add `delivery: 'alarmClock'` to our DateTriggerInputs on the branch; branch
+  `experiment/alarmclock-backport` from uat; EAS preview build (Android) for weeks/months
+  of owner testing ahead of SDK 58. DELETE branch + patch the day an SDK release carries
+  the fix.
 - **Shipped API differs from the draft**: the merged option is `delivery: 'alarmClock'`
   (`NotificationDelivery = 'bestEffort' | 'alarmClock'` in `Notifications.types.ts`, default
   `'bestEffort'`, Android-only, degrades to best-effort without the exact-alarm permission)
