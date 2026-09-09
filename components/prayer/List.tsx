@@ -4,6 +4,7 @@ import { InteractionManager, StyleSheet, View } from 'react-native';
 
 import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { SCREEN, SPACING } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
@@ -23,6 +24,9 @@ export default function List({ type }: Props) {
   const listRef = useRef<View>(null);
   const isFirstRender = useRef(true);
   const countdownBarShown = useAtomValue(countdownBarShownAtom);
+  // Live window size: a resize (iPad multitasking, Mac window) re-centers
+  // the column and stales the stored pageX/pageY; phones never resize
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
   // Filter prayers to current displayDate
   // This automatically handles Friday Istijaba logic via createPrayerSequence
@@ -48,8 +52,9 @@ export default function List({ type }: Props) {
     measureList();
   };
 
-  // Re-measure when countdown bar visibility changes (affects list position)
-  // biome-ignore lint/correctness/useExhaustiveDependencies: measureList is re-created each render; countdownBarShown/isStandard are the deliberate re-measure triggers
+  // Re-measure when the countdown bar toggles (list position shifts) or the
+  // window resizes (the column re-centers and the stored rect goes stale)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: measureList is re-created each render; countdownBarShown/isStandard and the window dims are the deliberate re-measure triggers
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -64,7 +69,7 @@ export default function List({ type }: Props) {
     });
 
     return () => handle.cancel();
-  }, [countdownBarShown, isStandard]);
+  }, [countdownBarShown, isStandard, windowWidth, windowHeight]);
 
   // Show nothing if sequence not ready
   if (!isReady) return null;

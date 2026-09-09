@@ -27,7 +27,7 @@ export default function Screen({ type }: Props) {
   const computedStyles: ViewStyle = {
     paddingTop: insets.top + SCREEN.paddingTop,
     paddingBottom: insets.bottom,
-    maxWidth: SIZE.screenMaxWidth,
+    maxWidth: SIZE.contentMaxWidth,
     width: '100%',
     alignSelf: 'center',
   };
