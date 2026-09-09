@@ -6,10 +6,12 @@ main. Read `ai/AGENTS.md` first, act as Orchestrator.
 ## Owner's plan (2026-09-09, authoritative)
 
 Patch the merged upstream fix into `node_modules/expo-notifications` via patch-package,
-build ONE Android preview APK, install it on all four Android phones, and use it in daily
-life. The codebase is then untouched until SDK 58 ships, at which point the patch and the
-branch are deleted and the real release carries the fix. Nothing on the branch may leak
-into uat/main; the branch is frozen at cut time and never rebased.
+build ONE real Android APK (`com.mugtaba.athan`, Release compilation, exactly what would
+ship to production — just hand-distributed), uninstall the Play Store app on all phones
+first, install this as the one true app, and use it in daily life. The codebase is then
+untouched until SDK 58 ships, at which point the patch and the branch are deleted and the
+real release carries the fix. Nothing on the branch may leak into uat/main; the branch is
+frozen at cut time and never rebased.
 
 ## Facts
 
@@ -44,27 +46,32 @@ into uat/main; the branch is frozen at cut time and never rebased.
 4. Usage diff (the ONLY app-code change, written to port verbatim to SDK 58):
    `delivery: 'alarmClock'` on the `DateTriggerInput`s for Athan and reminder
    notifications in `stores/notifications.ts`.
-5. Build config (branch-only, never merges): add a temporary env block to the eas.json
-   `preview` profile so the APK installs side-by-side with the Play app (all four phones
-   have the Play app; a differently-signed same-id APK cannot install over it):
-   `"env": {"EXPO_ANDROID_SUFFIX": "alarmtest", "EXPO_NAME_SUFFIX": "AlarmTest"}`.
-   Do NOT pin `EXPO_PUBLIC_BG_INTERVAL_MINUTES` (ship default 360) and do NOT put the
-   API key in eas.json — the EAS server `preview` environment already provides it
-   (profile env > server env > .env).
+5. Build config (branch-only, never merges): the APK must carry the real package id and
+   REAL data. First verify the EAS `preview` environment:
+   `eas env:vars --environment preview` — it must contain `EXPO_PUBLIC_API_KEY` and a
+   non-local `EXPO_PUBLIC_ENV` (unset `EXPO_PUBLIC_ENV` means mock data — a daily-use
+   build must not ship mock). If `EXPO_PUBLIC_ENV` is missing there, pin
+   `"EXPO_PUBLIC_ENV": "preview"` in the profile env. Then add
+   `"environment": "preview"` to the eas.json `preview` profile (Release compilation,
+   internal distribution = directly installable APK; no app-id suffix, no name suffix).
+   NEVER put the API key itself in eas.json.
 6. `yarn validate` green; version bump (patch from current uat); commit; push branch.
 7. Build: `eas build --platform android --profile preview --non-interactive --no-wait`
    (GLOBAL eas CLI only — `npx eas-cli` inside the repo crashes on minimatch). The
    postinstall hook applies the patch inside the EAS build automatically; native Kotlin
    means a real build, never OTA.
-8. Owner installs `com.mugtaba.athan.alarmtest` on 3T (`3T_SERIAL`), 5T (`a2b9dbf`),
-   8T (`8T_SERIAL`), Find X8 (`X8_SERIAL`) and switches daily use to it.
+8. Owner UNINSTALLS the existing Play Store app on every phone FIRST (same package id;
+   signature differs from a store install), then installs the APK on 3T (`3T_SERIAL`),
+   5T (`a2b9dbf`), 8T (`8T_SERIAL`), Find X8 (`X8_SERIAL`) as the one true app.
    One objective confirmation per device after the first schedule:
    `adb shell dumpsys alarm | grep -A2 mugtaba` — athan entries must show
    `window=0` (alarm-clock class; was `window=+1h0m0s0ms` windowed). After that,
    verification is daily use: prayers land at the minute, no 60s-to-minutes drift.
 9. **Deletion day (SDK 58 or a 57.x patch carrying #49687)**: delete the branch and the
    patch, remove the postinstall script and devDep, upgrade, port the step-4 usage diff
-   verbatim. Watch: expo-notifications CHANGELOG on the sdk-57 branch + npm.
+   verbatim. Watch: expo-notifications CHANGELOG on the sdk-57 branch + npm. When the
+   next store release goes out, verify the Play install replaces the side-loaded APK
+   (if the EAS keystore differs from the Play upload key, uninstall-first once more).
 
 ## Constraints
 
@@ -83,9 +90,9 @@ into uat/main; the branch is frozen at cut time and never rebased.
 | B2 Diff extracted + drift reconciled onto installed 57.x | not started |
 | B3 patch-package patch generated + postinstall wired | not started |
 | B4 `delivery: 'alarmClock'` adopted in `stores/notifications.ts` | not started |
-| B5 eas.json preview env suffix (branch-only) added | not started |
+| B5 eas.json preview profile wired to the `preview` EAS environment (real key, non-local env; branch-only) | not started |
 | B6 validate green, committed, pushed | not started |
-| B7 EAS preview APK built; owner installed on 3T/5T/8T/Find X8; dumpsys `window=0` confirmed per device | not started |
+| B7 EAS APK built; Play app uninstalled on each phone; APK installed on 3T/5T/8T/Find X8 as the one true app; dumpsys `window=0` confirmed per device | not started |
 | B8 Daily-use verdict (delivery punctuality on OEM phones) | pending owner use |
 | B9 Real release carries #49687; branch + patch deleted; usage diff ported | waiting on SDK 58 |
 | B10 ISSUES #22 addendum | SKIPPED per owner 2026-09-09 (fixed 1.22.19; rides daily use if ever revisited) |
