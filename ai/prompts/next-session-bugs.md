@@ -1,8 +1,8 @@
-# Next Session: Bug-Fix Session — #22 Width Verification (3T) + #23 Extras Sound (session 1 of 3)
+# Next Session: Bug-Fix Session — #22 Width Verify + #23 Extras Sound + #24 Splash Minimization (session 1 of 3)
 
 Read `ai/AGENTS.md` first, act as Orchestrator. This is session 1 of an owner-ordered 3-session autonomous chain: (1) bugs, (2) widescreen (`ai/prompts/large-screen-adaptation.md`), (3) alarmClock patch (`ai/prompts/alarmclock-backport.md`). At session end, hand the owner the widescreen paste-block.
 
-Repo state: `uat` @ 1.22.20. Read `ai/ISSUES.md` #22 and #23 in full before starting. The owner may or may not have the OnePlus 3T still connected — check `adb devices`; all work except 3T verification proceeds without it.
+Repo state: `uat` @ 1.22.20. Read `ai/ISSUES.md` #22 and #23 in full before starting. The owner has connected all 3 devices: OnePlus 3T, Oppo Find X8, and iPhone XS (check `adb devices` + `xcrun devicectl list devices` to confirm serials; they may disconnect during the session — proceed without them and note what couldn't be verified).
 
 ## Task A — ISSUES #22 device verification (branch `fix/width-verify-extras-sound` from uat)
 
@@ -18,6 +18,20 @@ The full spec is in the issue: only the 5 daily prayers (Fajr, Dhuhr, Asr, Magri
 2. Implement per the sketch in the issue (schedule/prayer-aware `getNotificationSound`, dedicated Android channel with a fresh id — channel sounds are immutable after creation, `athan_*_v2` pattern, app.json `sounds` array entry, `initializeNotifications` channel creation).
 3. `yarn validate` green; tests for the new mapping (the 5 vs everything-else boundary is the critical assertion).
 4. Commit (version-bumped, silent What's New), push the branch, merge to uat per tonight's standing flow (owner has authorized commit/push/merge for these autonomous sessions).
+
+## Task C — ISSUES #24 splash minimization (same branch)
+
+The splash currently holds through the entire first-launch network fetch because `SplashScreen.hideAsync()` gates on `contentExists` (which requires sync completion). The spinner (ActivityIndicator) already exists in the `!sequenceReady && state === 'loading'` branch but the user never sees it. The owner wants: "hide the splash as fast as possible, show the spinner as soon as possible."
+
+1. Read `app/index.tsx` lines 96-115 (the splash gate effect) and `app/_layout.tsx` (the `SplashScreen.preventAutoHideAsync()` call). Understand the two paths:
+   - Warm-cache (99% of launches): sequence hydrates synchronously from MMKV, content exists at first commit, splash hides on the first complete frame — ALREADY FAST, must not regress.
+   - Cold/fresh-install: no cache, sync fetches from the API, `state === 'loading'` until data arrives — splash currently holds the ENTIRE time. THIS is what changes.
+2. Design: on the cold path, dismiss the splash as soon as the app's own chrome + spinner render (first JS frame), not when content exists. The warm path keeps its current gating (Masjid icon + content + splash-holds-for-complete-first-frame, the 1.22.5 fix). The distinction may need a "content exists at mount" check: if `sequenceReady` is false and `state === 'loading'` at mount time (cold), hide splash immediately; if content hydrated synchronously (warm), keep the current reveal-ready gate.
+3. Verify on the connected devices:
+   - 3T (slowest Android): fresh install (uninstall + install a build from this branch), confirm the spinner is visible during fetch, confirm prayer times render after sync, confirm no crash or flash-of-empty-content.
+   - iPhone XS: same fresh-install check.
+   - Warm-cache relaunch on both: confirm splash is still brief and the first revealed frame is complete (no icon pop-in regression from 1.22.5).
+4. `yarn validate` green; commit with a clear message describing the two-path design.
 
 ## Session end
 
@@ -47,4 +61,6 @@ ai/prompts/alarmclock-backport.md.
 | B1 Extras audio located (or blocker documented) | not started |
 | B2 5-vs-rest sound mapping implemented + channels + app.json | not started |
 | B3 validate green, committed, pushed, merged to uat | not started |
+| C1 Splash two-path design implemented (cold = spinner ASAP, warm = unchanged) | not started |
+| C2 Verified on 3T + XS: spinner visible on fresh install, warm path unchanged | not started |
 | Session end: tracker + report + widescreen paste-block handed | not started |
