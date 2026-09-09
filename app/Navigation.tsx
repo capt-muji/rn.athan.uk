@@ -78,6 +78,8 @@ export default function Navigation() {
         </>
       )}
 
+      {/* Pages self-constrain (Screen maxWidth) so the pager stays
+          full-width and the whole screen stays swipeable */}
       <PagerView
         style={{ flex: 1 }}
         initialPage={0}

@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 
 import Modal from './Modal';
 
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     color: COLORS.light.textSecondary,
     lineHeight: TEXT.lineHeight.default,
     letterSpacing: TEXT.letterSpacing.default,
-    marginBottom: SPACING.xxl,
+    marginBottom: 36,
     marginTop: SPACING.xs,
   },
   buttonContainer: {
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
+    maxWidth: SIZE.modal.buttonWidth,
     paddingVertical: SPACING.md,
     borderRadius: RADIUS.lg,
     alignItems: 'center',

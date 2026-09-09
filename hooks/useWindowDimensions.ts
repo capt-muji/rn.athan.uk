@@ -1,17 +1,7 @@
-import { useMemo } from 'react';
-import { Dimensions } from 'react-native';
+export { useWindowDimensions } from 'react-native';
 
-/**
- * Hook for accessing window dimensions
- *
- * Returns memoized window dimensions to prevent unnecessary recalculations.
- * Dimensions are captured once at mount time.
- *
- * @returns Window dimensions object with width and height
- *
- * @example
- * const { width, height } = useWindowDimensions();
- */
-export const useWindowDimensions = () => {
-  return useMemo(() => Dimensions.get('window'), []);
-};
+// RN's live hook (re-renders on real dimension changes). This module
+// previously memoized the launch-time size, which froze every
+// absolute-geometry consumer (overlay catchers, veil glow) on resizable
+// windows. Phones never fire dimension changes, so behavior there is
+// identical.
