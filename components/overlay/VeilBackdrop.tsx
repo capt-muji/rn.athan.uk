@@ -7,7 +7,7 @@ import Reanimated from 'react-native-reanimated';
 import { Glow } from '@/components/ui';
 import { useAnimationOpacity } from '@/hooks/useAnimation';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { ANIMATION, COLORS } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
 
@@ -37,14 +37,15 @@ export default function VeilBackdrop() {
   const isExtra = overlay.scheduleType === ScheduleType.Extra;
   const glowColor = isExtra ? COLORS.glow.overlayExtras : COLORS.glow.overlay;
 
-  // Stable while the window size holds — MemoizedGlow skips re-renders on
-  // toggles and re-renders only when the schedule type flips the glow color
+  // Anchored to the content column so the glow keeps phone proportions on
+  // large screens; reduces exactly to the old -width/2 math on phones
+  const columnWidth = Math.min(window.width, SIZE.contentMaxWidth);
   const glowStyle = useMemo(
     () => ({
-      top: -window.width / 1.25,
-      left: -window.width / 2,
+      top: -columnWidth / 1.25,
+      left: window.width / 2 - columnWidth,
     }),
-    [window.width]
+    [window.width, columnWidth]
   );
 
   return (

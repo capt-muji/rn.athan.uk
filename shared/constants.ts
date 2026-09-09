@@ -495,8 +495,10 @@ export const SIZE = {
   },
   /** Modal dimensions */
   modal: {
-    /** Maximum modal width (500px) */
-    maxWidth: 500,
+    /** Maximum modal width (400px) — keeps the card compact on large screens */
+    maxWidth: 400,
+    /** Shared width of all modal action buttons */
+    buttonWidth: 160,
   },
   /** Navigation dimensions */
   nav: {
@@ -507,8 +509,12 @@ export const SIZE = {
   activityIndicator: 20,
   /** Navigation dot diameter */
   navigationDot: 6,
-  /** Maximum screen content width */
-  screenMaxWidth: 700,
+  /**
+   * Content column cap for large screens (iPad/tablet/Mac windows). The
+   * pager itself stays full-width so the whole screen remains swipeable;
+   * phones are narrower than this, so the cap never binds there.
+   */
+  contentMaxWidth: 500,
 } as const;
 
 // =============================================================================
