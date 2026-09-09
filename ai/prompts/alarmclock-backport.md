@@ -55,11 +55,14 @@ frozen at cut time and never rebased.
    `"environment": "preview"` to the eas.json `preview` profile (Release compilation,
    internal distribution = directly installable APK; no app-id suffix, no name suffix).
    NEVER put the API key itself in eas.json.
-6. `yarn validate` green; version bump (patch from current uat); commit; push branch.
-7. Build: `eas build --platform android --profile preview --non-interactive --no-wait`
-   (GLOBAL eas CLI only — `npx eas-cli` inside the repo crashes on minimatch). The
-   postinstall hook applies the patch inside the EAS build automatically; native Kotlin
-   means a real build, never OTA.
+6. `yarn validate` green; MINOR version bump (1.24.0 — feature grade, distinguishes the
+   daily-use build from the 1.23.x line); commit; push branch.
+7. Build on EAS CLOUD ONLY — no local compilation ever on this branch (no
+   `expo run:android`, no gradle, no local EAS builds):
+   `eas build --platform android --profile preview --non-interactive --no-wait`
+   (GLOBAL eas CLI only — `npx eas-cli` inside the repo crashes on minimatch). Expo's
+   build server runs yarn install → the postinstall hook applies the patch → the patched
+   Kotlin compiles into the Release APK. Native Kotlin means a real build, never OTA.
 8. Owner UNINSTALLS the existing Play Store app on every phone FIRST (same package id;
    signature differs from a store install), then installs the APK on 3T (`3T_SERIAL`),
    5T (`a2b9dbf`), 8T (`8T_SERIAL`), Find X8 (`X8_SERIAL`) as the one true app.
@@ -76,7 +79,8 @@ frozen at cut time and never rebased.
 ## Constraints
 
 - Branch never merges to uat/main; frozen at cut; never rebased onto later uat.
-- `releases.json` untouched. Version bump every commit on the branch.
+- ALL compilation on EAS cloud. No local builds of any kind on this branch.
+- `releases.json` untouched. Version: minor bump 1.24.0 on the branch.
 - Phone quirks stand: doubled `am start` on the 3T; 8T Auto-launch re-enable after
   reinstall (#19 mitigated); 8T USB re-enumeration after reboots; Play Protect blocks
   sideloads on ColorOS 16 (`settings put global package_verifier_enable 0` +
