@@ -60,7 +60,7 @@ export interface WhatsNewRelease {
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewRelease | null = {
-  version: '1.22.16',
+  version: '1.22.17',
   items: [
     {
       title: 'Athan sounds',
