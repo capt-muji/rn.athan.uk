@@ -1300,7 +1300,9 @@ production release; G.6 noted but deferred by owner.
 - **DEVICE VERDICT (2026-09-02, dev build v1.17.6)**: countdown ticks beside
   the play icon while previews play — FIXED alongside G.4.
 
-### G.6 [OPEN — noted, deferred by owner] App-wide sluggishness on device
+### G.6 [CLOSED 2026-09-09 — OWNER-ACCEPTED performance] App-wide sluggishness on device
+
+- **Closure (owner, 2026-09-09)**: performance accepted across the fleet — 3T slow but acceptable (the campaign's floor device; all big animations verified at the 30fps floor there), 5T acceptable, everything higher fine. The 2026-09-06 performance campaign already eliminated the measured sluggishness classes (idle CPU 80.6% → 19.3%, sheet-dismiss/foreground bursts deferred off-path, the 89s freeze fixed by the single-player refactor). The two recorded leftovers are moot or upstream: the per-minute widget label-flip pipeline is statically dead while the widgets flag is OFF, and the phantom ~6-7% Choreographer loop is an upstream RN/Expo/Reanimated artifact (performance progress notes #14). Reopen only with a new device report.
 
 - **Symptom**: "everything feels very slow" on the XS TestFlight build.
 - **Suspected contributor**: the per-minute widget pipeline on the JS thread
@@ -1353,7 +1355,7 @@ production release; G.6 noted but deferred by owner.
   `ai/features/performance/progress.md` #14). Harness: `e2e/` +
   `ai/RUNBOOK-performance-testing.md`.
 
-### G.7 [OPEN — flaky test] widgetSettingsSync "pushes again for a later change" fires a spurious third push ~1–2% of runs
+### G.7 [CLOSED 2026-09-09 — fix shipped 2026-09-02, header lag] widgetSettingsSync "pushes again for a later change" fires a spurious third push ~1–2% of runs
 
 - **Observed (2026-09-02)**: pre-commit `yarn validate` rejected a docs-only
   commit — `stores/__tests__/widgetSettingsSync.test.ts:168` expected 2
