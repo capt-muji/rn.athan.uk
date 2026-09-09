@@ -28,7 +28,7 @@ The owner wants weeks/months of real-device testing of exact alarm delivery BEFO
 
 ## Additional task (owner-added 2026-09-08): fix ISSUES #22 in this session
 
-The owner will connect the OnePlus 3T: on the EAS 1.22.11 build, "Sunrise" wraps to two lines on the standard page (trailing "e" alone; never seen before; other devices fine). Debug with the device: inspect the `prayer_max_english_width_*` write-once measurement on fresh installs first (the 2026-09-06 width-cache lesson in AGENTS.md), then any local-vs-EAS build text-rendering delta. Fix, verify on the 3T, include in this branch's commits (the branch stays unmerged, but the fix itself must also land on uat as its own version-bumped commit — coordinate with the owner).
+ISSUES #22 is FIXED in 1.22.19 (self-healing grow-only width cache — see the issue). This session only VERIFIES on the OnePlus 3T the owner connects: fresh install, confirm the English column measures correctly (or heals by second launch), no wrap across relaunches, and capture a fresh-install launch timeline (perf marks) to confirm the original wrong-measure window (font race hypothesis).
 
 ## Constraints
 
@@ -47,4 +47,4 @@ The owner will connect the OnePlus 3T: on the EAS 1.22.11 build, "Sunrise" wraps
 | B6 EAS preview built; owner installed on bench phones | not started |
 | B7 Device verification per #10/#17 protocol (results) | not started |
 | B8 Real release carries fix; branch + patch deleted; usage diff ported | not started |
-| B9 ISSUES #22 Sunrise wrap fixed on the 3T (+ fix landed on uat) | not started |
+| B9 ISSUES #22 fixed in 1.22.19 (self-healing grow-only width cache) — VERIFY on the 3T: healed width persists, no wrap across relaunches | verify pending |
