@@ -503,8 +503,8 @@ export const SIZE = {
     /** Bottom offset for navigation elements (25px) */
     bottomOffset: 25,
   },
-  /** Loading spinner size (unified across platforms) */
-  activityIndicator: 48,
+  /** Loading spinner size (matches the iOS 'small' 20pt spinner; Android renders this as dp) */
+  activityIndicator: 20,
   /** Navigation dot diameter */
   navigationDot: 6,
   /** Maximum screen content width */
