@@ -67,6 +67,10 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     (setNotificationChannelAsync as jest.Mock).mockClear();
   });
 
+  afterEach(() => {
+    Platform.OS = 'ios';
+  });
+
   it('attaches the athan_N_v2 channel for Sound alerts (channel follows the selected sound)', async () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
@@ -80,6 +84,68 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
 
     const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
     expect(trigger.channelId).toBe('athan_5_v2');
+  });
+
+  it('attaches the fixed extras channel for Sunrise (standard page, extras audio — ISSUES #23)', async () => {
+    await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      'Sunrise',
+      'الشروق',
+      '2026-09-01',
+      '06:15',
+      AlertType.Sound,
+      4
+    );
+
+    const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
+    expect(trigger.channelId).toBe('extras_at_time');
+  });
+
+  it('attaches the fixed extras channel for extras prayers (Last Third)', async () => {
+    await addOneScheduledNotificationForPrayer(
+      ScheduleType.Extra,
+      'Last Third',
+      'آخر ثلث',
+      '2026-09-01',
+      '01:30',
+      AlertType.Sound,
+      4
+    );
+
+    const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
+    expect(trigger.channelId).toBe('extras_at_time');
+  });
+
+  it('creates the extras channel before scheduling an extras Sound notification (Android)', async () => {
+    Platform.OS = 'android';
+
+    await addOneScheduledNotificationForPrayer(
+      ScheduleType.Extra,
+      'Midnight',
+      'نصف الليل',
+      '2026-09-01',
+      '23:59',
+      AlertType.Sound,
+      0
+    );
+
+    expect(setNotificationChannelAsync).toHaveBeenCalledWith('extras_at_time', expect.anything());
+  });
+
+  it('creates no channel for a daily-prayer Sound notification on Android (athan channels have their own lifecycle)', async () => {
+    Platform.OS = 'android';
+
+    await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      'Isha',
+      'العشاء',
+      '2026-09-01',
+      '21:00',
+      AlertType.Sound,
+      4
+    );
+
+    expect(setNotificationChannelAsync).not.toHaveBeenCalled();
   });
 
   it('omits the channelId for Silent alerts', async () => {
