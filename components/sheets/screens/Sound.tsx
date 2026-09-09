@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { ATHAN_AUDIOS } from '@/assets/audio';
+import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import * as Device from '@/device/notifications';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
@@ -57,15 +57,17 @@ export default function BottomSheetSound() {
   }, [playingIndex, player]);
 
   // Clip finished — clear the playing row (was per-item before the
-  // single-player refactor)
+  // single-player refactor). The status hook keeps the released player's
+  // last payload until the replacement emits its own; a status from another
+  // instance must never reap a freshly armed one (ISSUES #25).
   useEffect(() => {
-    const isPlaying = playingIndex !== null;
-    if (isPlaying && !status.playing && status.currentTime > 0 && status.duration > 0) {
+    if (playingIndex === null || status.id !== player.id) return;
+    if (!status.playing && status.currentTime > 0 && status.duration > 0) {
       if (status.currentTime >= status.duration - 0.1) {
         setPlayingSoundIndex(null);
       }
     }
-  }, [playingIndex, status.playing, status.currentTime, status.duration]);
+  }, [playingIndex, player.id, status.id, status.playing, status.currentTime, status.duration]);
 
   const handlePlayPress = useCallback(
     (index: number) => {
@@ -118,9 +120,18 @@ export default function BottomSheetSound() {
   // Primitive-only props feed the memoized rows: the status object changes
   // identity many times per second during playback — deriving whole seconds
   // here means a tick only re-renders the playing row, and only when its
-  // displayed countdown second actually changes
+  // displayed countdown second actually changes. Live values come only from
+  // the current player (a stale payload from the released instance would
+  // flash the previous clip's leftover seconds, ISSUES #25), rounded so the
+  // first value stays steady while iOS refines its provisional duration;
+  // until the fresh player reports, the clip's tabulated seconds stand in
+  // so the countdown lands in the same frame as the icon flip.
   const playingRemainingSeconds =
-    playingIndex !== null && status.duration > 0 ? Math.max(0, Math.floor(status.duration - status.currentTime)) : 0;
+    playingIndex !== null
+      ? status.id === player.id && status.duration > 0
+        ? Math.max(0, Math.round(status.duration - status.currentTime))
+        : ATHAN_DURATION_SECONDS[playingIndex]
+      : 0;
 
   const handleDismiss = useCallback(async () => {
     clearAudio();

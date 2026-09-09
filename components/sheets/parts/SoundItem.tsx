@@ -49,11 +49,10 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   const AnimScale = useAnimationScale(1);
 
   // Countdown visibility is edge-synchronized with the row's state flip:
-  // appear only once real remaining data exists (the player reports duration
-  // ~100-300ms after the tap — appearing earlier showed stale/zero text),
-  // stay through status churn (playing/duration oscillate at load — hiding on
-  // those flickered), and hide the moment isPlaying flips false, which is the
-  // same instant the icon swaps to play and the label deactivates.
+  // appear the frame the row starts playing (the sheet supplies the clip's
+  // tabulated seconds instantly, live status takes over on load), and hide
+  // the moment isPlaying flips false — the same instant the icon swaps and
+  // the label deactivates.
   const [countdownVisible, setCountdownVisible] = useState(false);
   useEffect(() => {
     if (!isPlaying) {
@@ -63,26 +62,21 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
     if (remainingSeconds > 0) setCountdownVisible(true);
   }, [isPlaying, remainingSeconds]);
 
-  // The countdown fades over ~75ms after it hides, and remainingSeconds
-  // drops to 0 the instant playback stops or the player reloads — without
-  // this latch the fading text flashes "0:00" (and again on the next tap's
-  // fade-in before the new duration arrives). Freeze the last positive
-  // value; 0 never displays (same contract as the main countdown).
+  // remainingSeconds drops to 0 while the clip's final fraction of a second
+  // is still playing (and again on stop/switch) — without this latch the
+  // text flashes "0:00". Freeze the last positive value; 0 never displays
+  // (same contract as the main countdown).
   const lastPositiveRemainingRef = useRef(1);
   if (remainingSeconds > 0) lastPositiveRemainingRef.current = remainingSeconds;
   const displaySeconds = remainingSeconds > 0 ? remainingSeconds : lastPositiveRemainingRef.current;
 
-  // Animated values for countdown
-  const countdownOpacity = useDerivedValue(() =>
-    withTiming(countdownVisible ? 1 : 0, { duration: ANIMATION.durationFast })
-  );
-
+  // Countdown color tweens; opacity snaps with the icon flip (a tween here
+  // ran ~75ms behind the instant play/pause swap and read as desync).
   const countdownColorProgress = useDerivedValue(() =>
     withTiming(isSelected ? 1 : 0, { duration: ANIMATION.durationFast })
   );
 
   const countdownStyle = useAnimatedStyle(() => ({
-    opacity: countdownOpacity.value,
     color: interpolateColor(
       countdownColorProgress.value,
       [0, 1],
@@ -109,7 +103,9 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
     <Pressable style={styles.option} onPress={handlePress} onLayout={onLayout}>
       <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>Athan {index + 1}</Text>
       <View style={styles.rightContainer}>
-        <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(displaySeconds)}</Animated.Text>
+        <Animated.Text style={[styles.countdown, { opacity: countdownVisible ? 1 : 0 }, countdownStyle]}>
+          {formatTime(displaySeconds)}
+        </Animated.Text>
         <AnimatedPressable
           style={[styles.icon, AnimScale.style]}
           onPress={handlePlayPress}
