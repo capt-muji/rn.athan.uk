@@ -55,12 +55,12 @@ ai/prompts/alarmclock-backport.md.
 
 | Step | Status |
 | --- | --- |
-| A1 Branch created, EAS preview build kicked | not started |
-| A2 3T: fresh install, Sunrise one-line, stable across relaunches | not started |
-| A3 ISSUES #22 verdict recorded | not started |
-| B1 Extras audio located (or blocker documented) | not started |
-| B2 5-vs-rest sound mapping implemented + channels + app.json | not started |
-| B3 validate green, committed, pushed, merged to uat | not started |
-| C1 Splash two-path design implemented (cold = spinner ASAP, warm = unchanged) | not started |
-| C2 Verified on 3T + XS: spinner visible on fresh install, warm path unchanged | not started |
-| Session end: tracker + report + widescreen paste-block handed | not started |
+| A1 Branch created, build kicked | done 2026-09-09 (owner redirected mid-session: NO EAS cloud; local Release builds on the 3T + XS via prebuild ritual instead) |
+| A2 3T: fresh install, Sunrise one-line, stable across relaunches | done 2026-09-09 (bounds identical across fresh + 3 relaunches; vision-audited) |
+| A3 ISSUES #22 verdict recorded | done 2026-09-09 (FIXED confirmed, issue closed with device evidence) |
+| B1 Extras audio located (or blocker documented) | done 2026-09-09 (imported, 244,652 bytes byte-identical) |
+| B2 5-vs-rest sound mapping implemented + channels + app.json | done 2026-09-09 (1.22.23) |
+| B3 validate green, committed, pushed, merged to uat | done 2026-09-09 (964 tests green; merged after device verification) |
+| C1 Splash two-path design implemented (cold = spinner ASAP, warm = unchanged) | done 2026-09-09 (1.22.24) |
+| C2 Verified on 3T + XS: spinner visible on fresh install, warm path unchanged | done 2026-09-09 (vision-audited frames on both devices) |
+| Session end: tracker + report + widescreen paste-block handed | done 2026-09-09 |

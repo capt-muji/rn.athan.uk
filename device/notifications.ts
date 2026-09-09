@@ -56,9 +56,18 @@ export const addOneScheduledNotificationForPrayer = async (
   const triggerDate = NotificationUtils.genTriggerDate(date, time);
   const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, soundPreference);
   const identifier = prayerNotificationIdentifier(scheduleType, englishName, date);
-  // Only include channelId for Android when alert type is Sound
-  const athanChannelId =
-    alertType === AlertType.Sound ? NotificationUtils.athanAndroidChannelId(soundPreference) : undefined;
+  // Only include channelId for Sound alerts; the channel is prayer-aware
+  // (selected athan for the 5 daily prayers, fixed extras channel for
+  // Sunrise + extras — ISSUES.md #23)
+  const atTimeChannelId =
+    alertType === AlertType.Sound ? NotificationUtils.atTimeAndroidChannelId(englishName, soundPreference) : undefined;
+
+  // The extras channel is created at schedule time too: headless background-task
+  // reschedules run without UI init, and Android drops notifications posted to
+  // nonexistent channels (same reasoning as the reminder channels)
+  if (alertType === AlertType.Sound && Platform.OS === 'android' && !NotificationUtils.isDailyPrayer(englishName)) {
+    await NotificationUtils.createExtrasAndroidChannel();
+  }
 
   try {
     const id = await Notifications.scheduleNotificationAsync({
@@ -67,7 +76,7 @@ export const addOneScheduledNotificationForPrayer = async (
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DATE,
         date: triggerDate,
-        channelId: athanChannelId,
+        channelId: atTimeChannelId,
       },
     });
 
