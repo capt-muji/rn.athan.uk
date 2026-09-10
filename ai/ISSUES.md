@@ -60,14 +60,22 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Possible fix**: Store Dec 31 (or last-day) record separately before clearing, or fetch
   single-date via the API's `date` param instead of full year.
 
-### 5. [DEFERRED] Dec 31 derived times use same-day Fajr fallback (~1-2 min error)
+### 5. [FIXED 2026-09-10, 1.24.6] Dec 31 derived times use same-day Fajr fallback (~1-2 min error)
 
 - **What**: `transformApiData` (shared/prayer.ts:68) computes Midnight/Last-Third using
   next day's Fajr, falling back to SAME day's Fajr for the last entry of the year —
   because no next-year data exists in the same payload. Slightly wrong for the night of
-  Dec 31→Jan 1.
+  Dec 31→Jan 1. Confirmed it does not self-heal: the wrong value, once cached, is never
+  revisited even after both years become available.
 - **Impact**: Cosmetic-level (1-2 min) on derived extras only, one night per year.
-- **Possible fix**: After both years cached, recompute Dec 31 entry using Jan 1 Fajr.
+- **Fix**: `correctYearBoundaryDerivedTimes` (shared/prayer.ts) recomputes just the
+  midnight/last-third fields once the real next-year Fajr is cached; `stores/sync.ts`'s
+  `fixYearBoundaryDerivedTimes` calls it at the three points a year-boundary fetch can
+  complete a Dec-31/Jan-1 pair (December next-year-only, December both-years, and the
+  Jan-1 previous-year fetch). No-op (same object reference, no write) when nothing needs
+  correcting. 9 new unit tests (recomputation correctness + sync orchestration), full
+  suite green — not device-verified (not practically triggerable live; correctness rests
+  on the unit tests given this is core prayer-time data).
 
 ### 6. [ACCEPTED] Year-end data retention — how old-year cleanup actually behaves
 
