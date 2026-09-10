@@ -1,13 +1,13 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect, useMemo } from 'react';
-import { Platform, Pressable, StyleSheet, type ViewStyle } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationColor, useAnimationOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { useSchedule } from '@/hooks/useSchedule';
-import { ANIMATION, COLORS, RADIUS, SHADOW_ANDROID, STYLES, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
 import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
@@ -100,21 +100,8 @@ export default function Prayer({ type, index }: Props) {
     AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
   }, [isHiddenByOverlay, AnimOpacity.animate]);
 
-  // Android depth shadow for the active row: lives on the row (the
-  // pill's slide transform clips Android's boxShadow drawable on old Android)
-  // and borderRadius mirrors the pill's corners so the shadow is rounded.
-  // API >= 29 only — borderRadius + boxShadow together are dropped outright on
-  // API 28 (verified: no shadow, hard edges; renders correctly from 29 up)
-  const activeShadowStyle: ViewStyle | null =
-    Platform.OS === 'android' && Platform.Version >= 29 && Prayer.isNext
-      ? {
-          borderRadius: RADIUS.md,
-          boxShadow: Schedule.isStandard ? SHADOW_ANDROID.prayer : SHADOW_ANDROID.prayerExtras,
-        }
-      : null;
-
   return (
-    <AnimatedPressable style={[styles.container, AnimOpacity.style, activeShadowStyle]} onPress={handlePress}>
+    <AnimatedPressable style={[styles.container, AnimOpacity.style]} onPress={handlePress}>
       <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, AnimColor.style]}>
         {Prayer.english}
       </Animated.Text>

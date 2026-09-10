@@ -102,10 +102,7 @@ export const getCountdownNameAtom = (type: ScheduleType) =>
 export const getCountdownDisplayAtom = (type: ScheduleType) =>
   type === ScheduleType.Standard ? standardCountdownDisplayAtom : extraCountdownDisplayAtom;
 
-// --- Bar selectors (#10: quantized progress + exact warning flip) ---
-
-/** One bar pixel of progress: sub-pixel per-second creep is invisible, so it rounds away */
-const BAR_STEP_PCT = 100 / COUNTDOWN_BAR.WIDTH;
+// --- Bar selectors (#10: progress at 1/s cadence + exact warning flip) ---
 
 const getPrevPrayerAtom = (type: ScheduleType) =>
   type === ScheduleType.Standard ? standardPrevPrayerAtom : extraPrevPrayerAtom;
@@ -114,9 +111,12 @@ const getNextPrayerAtom = (type: ScheduleType) =>
   type === ScheduleType.Standard ? standardNextPrayerAtom : extraNextPrayerAtom;
 
 /**
- * Elapsed progress percentage, quantized to bar-pixel steps. Depends on the
+ * Elapsed progress percentage, raw at second resolution. Depends on the
  * countdown atom purely for the 1/s recompute cadence — the value derives
- * from the schedule's prev/next boundaries and the wall clock.
+ * from the schedule's prev/next boundaries and the wall clock. The bar
+ * re-issues its width animation on every change, which is also the resume
+ * self-heal: a write dropped while the host was suspended is replaced by
+ * the next tick's, so a stale bar can never outlive one second.
  */
 const makeBarProgressAtom = (type: ScheduleType) =>
   atom((get) => {
@@ -129,8 +129,7 @@ const makeBarProgressAtom = (type: ScheduleType) =>
     const totalMs = next.datetime.getTime() - prev.datetime.getTime();
     if (totalMs <= 0) return 0;
 
-    const rawPct = (elapsedMs / totalMs) * 100;
-    return Math.round(rawPct / BAR_STEP_PCT) * BAR_STEP_PCT;
+    return (elapsedMs / totalMs) * 100;
   });
 
 /**

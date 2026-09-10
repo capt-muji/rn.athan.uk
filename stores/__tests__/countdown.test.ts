@@ -608,7 +608,7 @@ describe('render-granular selectors', () => {
     expect(store.get(standardCountdownDisplayAtom)).toBe('45s');
   });
 
-  it('bar progress is quantized to 1px steps and warning flips at the exact threshold', () => {
+  it('bar progress is raw per-second resolution and warning flips at the exact threshold', () => {
     jest.spyOn(Date, 'now');
     const store = createStore();
     const scheduleMock = require('@/stores/schedule');
@@ -620,12 +620,14 @@ describe('render-granular selectors', () => {
     store.set(scheduleMock.standardNextPrayerAtom, { datetime: next });
     store.set(standardCountdownAtom, { timeLeft: 500, name: 'Fajr' }); // 1/s cadence dependency
 
-    expect(store.get(getBarProgressAtom(ScheduleType.Standard))).toBe(50); // sub-pixel creep dropped
+    // Raw resolution: the bar re-issues its width animation every second, so
+    // a write dropped while the host was suspended heals on the next tick
+    expect(store.get(getBarProgressAtom(ScheduleType.Standard))).toBeCloseTo(50.04, 2);
     expect(store.get(getBarWarningAtom(ScheduleType.Standard))).toBe(false); // 49.96% remaining > 10%
 
     Date.now = () => prev.getTime() + 902_000; // 90.2% elapsed → 9.8% remaining
     store.set(standardCountdownAtom, { timeLeft: 98, name: 'Fajr' }); // recompute trigger
-    expect(store.get(getBarProgressAtom(ScheduleType.Standard))).toBe(90);
+    expect(store.get(getBarProgressAtom(ScheduleType.Standard))).toBeCloseTo(90.2, 2);
     expect(store.get(getBarWarningAtom(ScheduleType.Standard))).toBe(true);
   });
 });
