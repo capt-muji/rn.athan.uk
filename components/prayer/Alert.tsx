@@ -7,15 +7,17 @@ import Svg, { Path } from 'react-native-svg';
 
 import ALERT_ICONS from '@/assets/icons/svg/alerts';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
+import { useDerivedFill } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
 import { usePrayer } from '@/hooks/usePrayer';
+import { usePrevious } from '@/hooks/usePrevious';
 import { useSchedule } from '@/hooks/useSchedule';
-import { ANIMATION, SIZE, SPACING, STYLES } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { getPrayerAlertAtom } from '@/stores/notifications';
-import { refreshUIAtom, showAlertSheet } from '@/stores/ui';
+import { showAlertSheet } from '@/stores/ui';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
@@ -49,7 +51,6 @@ export default function Alert({ type, index }: Props) {
 
   // Atoms
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
-  const refreshUI = useAtomValue(refreshUIAtom);
 
   // Glyph shown this frame — lags the atom through the change-bounce so the
   // swap lands inside the animation (trough for exit-style candidates), not
@@ -65,9 +66,7 @@ export default function Alert({ type, index }: Props) {
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const { ensurePermissions } = useNotification();
-  const { AnimScale, AnimFill, AnimSwap } = useAlertAnimations({
-    initialColorPos: Prayer.ui.initialColorPos,
-  });
+  const { AnimScale, AnimSwap } = useAlertAnimations();
   const playSwapBounce = AnimSwap.play;
 
   // =============================================================================
@@ -78,44 +77,26 @@ export default function Alert({ type, index }: Props) {
 
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
 
+  const previousDisplayDate = usePrevious(Schedule.displayDate);
+  const isCascadeRoll =
+    previousDisplayDate !== Schedule.displayDate &&
+    !isSelectedForOverlay &&
+    !isPressed &&
+    !Schedule.isLastPrayerPassed &&
+    Schedule.nextPrayerIndex === 0 &&
+    index !== 0;
+
+  const fillPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
+  const fillProps = useDerivedFill(fillPos, {
+    fromColor: COLORS.text.muted,
+    toColor: COLORS.text.primary,
+    duration: ANIMATION.durationFade,
+    delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
+  });
+
   // =============================================================================
   // ANIMATION EFFECTS
   // =============================================================================
-
-  // Force animation to respect new state immediately when refreshing
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos and isSelectedForOverlay are read from the fresh render closure at signal time
-  useEffect(() => {
-    const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimFill.animate(colorPos);
-  }, [refreshUI]);
-
-  // Animate when next prayer changes
-  useEffect(() => {
-    if (Prayer.isNext) AnimFill.animate(1);
-  }, [Prayer.isNext, AnimFill.animate]);
-
-  // Cascade animation when date changes and we're at first prayer
-  // biome-ignore lint/correctness/useExhaustiveDependencies: displayDate is the deliberate cascade trigger; the remaining values are read once per date change by design
-  useEffect(() => {
-    if (
-      !isSelectedForOverlay &&
-      !isPressed &&
-      !Schedule.isLastPrayerPassed &&
-      Schedule.nextPrayerIndex === 0 &&
-      index !== 0
-    ) {
-      const delay = getCascadeDelay(index, type);
-      AnimFill.animate(0, { delay });
-    }
-  }, [Schedule.displayDate, isSelectedForOverlay]);
-
-  // Update fill color based on selection state.
-  // 150ms ≈ the original overlay's perceived row-rise pace (x19: 87→254 over ~150ms)
-  // biome-ignore lint/correctness/useExhaustiveDependencies: keyed on selection only; initialColorPos changes are handled by the refresh/next/cascade effects
-  useEffect(() => {
-    const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimFill.animate(colorPos, { duration: ANIMATION.durationFade });
-  }, [isSelectedForOverlay]);
 
   // Change-bounce: the icon pops ONLY when the alert value itself changes
   // (sheet-dismiss commit, or a commit rollback flipping it back — the replay
@@ -170,7 +151,7 @@ export default function Alert({ type, index }: Props) {
         <Animated.View style={AnimScale.style}>
           <Animated.View style={AnimSwap.style}>
             <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>
-              <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={AnimFill.animatedProps} />
+              <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={fillProps} />
             </Svg>
           </Animated.View>
         </Animated.View>

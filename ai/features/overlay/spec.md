@@ -50,6 +50,11 @@ anywhere in the app:
 2. The app is closed. The state is in memory only, so a cold start is closed.
 3. The 2 second rule.
 
+A defensive self-heal (section 5) also closes the overlay if a pager swipe ever
+settles on the other schedule while it is open. The `scrollEnabled` gate makes
+this unreachable in normal use; it exists only to prevent an overlay over the
+wrong page.
+
 ### 3.1 The 2 second rule
 
 - While the overlay is open on a schedule, it closes when that schedule's NEXT
@@ -72,8 +77,31 @@ anywhere in the app:
 - A write that was stranded (see section 8) snaps to the correct state in the
   first visible frame.
 
-This holds for: minimise and return, switch away and return, lock and unlock,
-and any combination.
+The OS suspends or freezes the JS timers while the app is backgrounded, so the
+countdowns and animations do not keep running in the background. The design is
+instant catch-up, not background execution. On `active` the foreground handler
+runs, in order: `checkOverlayBoundary` (the 2 second rule), `resyncCountdowns`
+(recompute the countdown atoms and catch up a boundary crossed while
+suspended), then `bumpResync` (every derived animation re-runs and snaps, and
+every consumer mapper re-applies so native props such as the SVG alert fill are
+re-asserted). This holds for: minimise and return, switch away and return, lock
+and unlock, and any combination.
+
+Decided, 2026-09-10 (`ai/features/presentation-rearchitecture/`): continuous
+background/foreground ticking ("the UI must never stop") is not achievable
+without unacceptable app-store-policy risk. Sourced against RN/Android/
+Reanimated source and official store policy: JS timers and Reanimated's own
+UI-thread mapper loop stop within about one activity transition of
+backgrounding on both platforms, well before OS-level suspension/freezing even
+applies; `expo-background-task`/`expo-task-manager` are headless-only and
+cannot drive a mounted UI; a real foreground service or an iOS background-audio
+keep-alive trick with no genuine matching functionality is a recognized
+rejection pattern under Apple App Review 2.5.4 and Google Play's
+foreground-service policy; the one community library with real background
+capability and confirmed New Architecture support (`notifee`) is now archived.
+Instant catch-up on foreground is the ceiling, and is the design. This
+supersedes the "postponed" note in prior revisions of this file. Not
+revisited unless the underlying platform constraints change.
 
 ## 5. Hit testing
 
@@ -138,15 +166,23 @@ data refreshes.
 
 ### 7.4 Open and close are explicit
 
-`openOverlay` and `closeOverlay(reason)` are the only writers of `isOn`. The
-open guard refuses when the true remaining milliseconds to the next prayer are
-2000 or fewer (not the coarse displayed atom).
+`isOn` is written by `openOverlay`, `closeOverlay`, and the boundary check
+`checkOverlayBoundary` (which lives in the countdown store to avoid a store
+cycle). Nothing else writes it. The open guard refuses when the true remaining
+milliseconds to the next prayer are 2000 or fewer (not the coarse displayed
+atom).
 
 ### 7.5 Resume counter
 
-A monotonic counter bumps on every foreground transition. Derived worklets take
-it as a dependency so they re-run and snap on resume even when the target is
-unchanged.
+`resyncAtom` (`stores/ui.ts`) bumps on every foreground transition. Two layers
+consume it. The derived value worklets take it as a dependency so they re-run
+and snap on resume even when the target is unchanged. Every consumer mapper
+(`useDerivedOpacity`/`Color`/`BackgroundColor`/`TranslateY`/`Fill`) also passes
+it to `useAnimatedStyle`/`useAnimatedProps`, so the mapper restarts and
+re-applies its current value on resume. A re-render alone does not re-apply an
+animated prop, and a snap to an unchanged value is a no-op, so without the
+consumer dependency a native prop that went stale across a suspend (the SVG
+alert fill) would never be re-asserted.
 
 ### 7.6 Display latch
 
@@ -169,6 +205,10 @@ below is that class.
 | Resume slider or bar stranded | Dropped write with no later trigger | Resume counter re-runs derived worklets |
 | Overlay vanished on return | Display latch desync, or the atom-guard race | Latch reconciles; guard reads true milliseconds |
 | Open then instantly close | Guard read the coarse displayed atom, up to one second stale | Guard reads true remaining milliseconds |
+| Alert icon dimmed on resume while the name/time stayed bright | Animated prop not re-applied on re-render, and a snap to an unchanged value is a no-op | Consumer mappers take the resume counter so they re-apply on foreground |
+| Countdown bar animated a slow catch-up from the pre-suspend width | The effect animated the large resume jump; JS timers were frozen in the background | Snap on resume; `resyncCountdowns` recomputes instantly |
+
+**2026-09-10 root-cause confirmation** (`ai/features/presentation-rearchitecture/`): the whole class above traces to a real, filed, fixed upstream defect in Reanimated's Android native code ([reanimated#9574](https://github.com/software-mansion/react-native-reanimated/issues/9574), fixed in 4.5.3, present through 4.5.1). `NodesManager.kt`'s `onHostPause()` clears its own "animation running" flag then immediately sets it back to `true`, so the synchronous prop-flush fallback stays gated off for the entire backgrounded window and any prop write lands late, racing a 2-second native GC eviction. iOS has no equivalent lifecycle hook in Reanimated's source at all, which is why every symptom in this table only ever reproduced on Android. Fixed by upgrading to `react-native-reanimated` 4.6.0 + `react-native-worklets` 0.12.2 (see `ai/AGENTS.md` 2026-09-10 decision log for the full verification record). The `resync`-counter pattern above remains correct and necessary as belt-and-braces, but was never sufficient alone: a mapper restart recomputes against the same stored `oldValues`, so an unchanged target is still skipped by Reanimated's own equality gate regardless of the restart.
 
 Durable lessons:
 
@@ -179,6 +219,20 @@ Durable lessons:
   the existing write path.
 - A component that derives its style from the atom cannot strand; a component
   that writes it from an effect can.
+- Never pass `easing: undefined` explicitly to `withTiming`. It overrides
+  Reanimated's default easing and aborts with "undefined is not a function" on
+  the first non-snap evaluation (the mount snap hides it). Omit the key.
+- Reanimated re-applies an animated style or prop only when its mapper runs (a
+  shared value change or a mapper restart), never on a plain re-render. Any prop
+  that exists only through `animatedProps` (SVG `fill`) must take the resume
+  counter in its mapper dependencies so it is re-applied on foreground.
+- JS timers are frozen in the background on both platforms. Never rely on
+  background ticking; recompute and snap on foreground.
+- `SharedValue.modify()` is the one public, documented API that bypasses
+  Reanimated's "unchanged value" skip, but it only guarantees the mapper's
+  listener chain fires, not that `updateProps` is reached: the mapper rerun it
+  triggers still calls `styleUpdater` with no `forceUpdate` argument. Treat it
+  as necessary-but-not-sufficient, never a substitute for a real value change.
 
 ## 9. Verification
 
@@ -201,3 +255,5 @@ Durable lessons:
 | 2026-09 | Non-selected rows hidden from the screen reader while open |
 | 2026-09 | Minor version bump |
 | 2026-09 | Snap on resume, no movement |
+| 2026-09-10 | Root cause confirmed as a fixed upstream Reanimated Android defect; fixed by upgrading to 4.6.0 (+ worklets 0.12.2), not a further app-level rewrite |
+| 2026-09-10 | Continuous background ticking decided against for good; instant foreground catch-up is the permanent design, not a placeholder |

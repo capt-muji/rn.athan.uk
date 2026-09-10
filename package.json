@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.23.15",
+  "version": "1.24.4",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -56,11 +56,11 @@
     "react-native-nitro-modules": "0.37.1",
     "react-native-pager-view": "8.0.2",
     "react-native-performance": "6.0.0",
-    "react-native-reanimated": "4.5.1",
+    "react-native-reanimated": "4.6.0",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
     "react-native-svg": "15.15.4",
-    "react-native-worklets": "0.10.1",
+    "react-native-worklets": "0.12.2",
     "reanimated-color-picker": "5.1.2"
   },
   "devDependencies": {
