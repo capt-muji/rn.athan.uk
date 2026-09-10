@@ -492,7 +492,7 @@ describe('overlay pre-boundary auto-close', () => {
     return near;
   };
 
-  it('closes the overlay as it enters the final 3-second window', () => {
+  it('closes the overlay as it enters the final 2-second window', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T06:14:56.000Z'));
     armBoundaryMocks();
@@ -507,7 +507,7 @@ describe('overlay pre-boundary auto-close', () => {
     startCountdowns();
     expect(defaultStore.get(mockOverlayAtom).isOn).toBe(true);
 
-    jest.advanceTimersByTime(1000); // 06:14:57 — 3s left
+    jest.advanceTimersByTime(2000); // 06:14:58 — 2s left
 
     expect(defaultStore.get(mockOverlayAtom).isOn).toBe(false);
   });

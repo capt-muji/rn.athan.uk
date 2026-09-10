@@ -120,7 +120,7 @@ describe('settings atoms default values', () => {
 
   it('countdownBarColorAtom has default hex color', () => {
     const store = createStore();
-    expect(store.get(countdownBarColorAtom)).toBe('#ffd000');
+    expect(store.get(countdownBarColorAtom)).toBe('#00ff88');
   });
 });
 

@@ -255,10 +255,10 @@ const startSequenceCountdown = (type: ScheduleType) => {
       return startSequenceCountdown(type);
     }
 
-    // Pre-boundary lock: close the overlay as it enters the final 3-second
+    // Pre-boundary lock: close the overlay as it enters the final 2-second
     // window so it never straddles the boundary
     const overlayMsLeft = upcoming.datetime.getTime() - nowMs;
-    if (overlay.isOn && overlay.scheduleType === type && overlayMsLeft <= 3000) {
+    if (overlay.isOn && overlay.scheduleType === type && overlayMsLeft <= 2000) {
       store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
