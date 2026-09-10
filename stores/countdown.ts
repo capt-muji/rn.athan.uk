@@ -215,50 +215,6 @@ const startWallClockTicker = (countdownKey: CountdownKey, tick: () => void) => {
 };
 
 /**
- * Whether the overlay's selected index (within the passing prayer's display
- * day) is the prayer that is passing right now — the condition for the
- * selection-follows-next-prayer advance (ADR-014).
- */
-const isSelectedIndex = (type: ScheduleType, selectedIndex: number, passingPrayer: Prayer): boolean => {
-  const sequenceAtom = getSequenceAtom(type);
-  const sequence = store.get(sequenceAtom);
-  if (!sequence) return false;
-
-  const todayPrayers = sequence.prayers.filter((p) => p.belongsToDate === passingPrayer.belongsToDate);
-  const selected = todayPrayers[selectedIndex];
-
-  return (
-    !!selected &&
-    selected.english === passingPrayer.english &&
-    selected.datetime.getTime() === passingPrayer.datetime.getTime()
-  );
-};
-
-/**
- * Advances the open overlay's selection to the schedule's new next prayer
- * (ADR-014 boundary semantic: the veil's row hole jumps to the next row,
- * which rises bright). The caller's post-boundary restart writes the page
- * countdown for the advanced selection immediately.
- */
-const advanceOverlaySelectionToNextPrayer = (type: ScheduleType) => {
-  const nextPrayer = getNextPrayer(type);
-  if (!nextPrayer) return;
-
-  const sequenceAtom = getSequenceAtom(type);
-  const sequence = store.get(sequenceAtom);
-  if (!sequence) return;
-
-  const todayPrayers = sequence.prayers.filter((p) => p.belongsToDate === nextPrayer.belongsToDate);
-  const nextIndex = todayPrayers.findIndex(
-    (p) => p.english === nextPrayer.english && p.datetime.getTime() === nextPrayer.datetime.getTime()
-  );
-  if (nextIndex < 0) return;
-
-  const overlay = store.get(overlayAtom);
-  store.set(overlayAtom, { ...overlay, selectedPrayerIndex: nextIndex });
-};
-
-/**
  * Sequence-based countdown using prayer-centric model
  *
  * Boundary detection always runs against the true next prayer via
@@ -279,26 +235,31 @@ const startSequenceCountdown = (type: ScheduleType) => {
     if (!upcoming) return;
 
     const nowMs = Date.now();
+    const overlay = store.get(overlayAtom);
+
     if (nowMs >= upcoming.datetime.getTime()) {
       clearCountdown(countdownKey);
 
-      // Overlay rides the cascade (ADR-014): when the open overlay highlights
-      // the prayer that just passed, its selection follows to the new next
-      // prayer — no auto-close, no open-refusal (the 2s lock is gone)
-      const overlay = store.get(overlayAtom);
-      const overlayFollowsBoundary =
-        overlay.isOn && overlay.scheduleType === type && isSelectedIndex(type, overlay.selectedPrayerIndex, upcoming);
+      // A suspended host crosses the boundary without ever running the T-3s
+      // close tick, so the overlay owes its close here instead
+      if (overlay.isOn && overlay.scheduleType === type) {
+        store.set(overlayAtom, { ...overlay, isOn: false });
+      }
 
       // Refresh sequence to advance to next prayer
       const transitionStart = Date.now();
       refreshSequence(type);
-      if (overlayFollowsBoundary) advanceOverlaySelectionToNextPrayer(type);
       logger.debug('TICK: transition', { which, transitionMs: Date.now() - transitionStart });
 
-      // Restart countdown with new next prayer — the restart's initial write
-      // is display-aware, so an overlay that followed the boundary gets the
-      // advanced selection written instantly
+      // Restart countdown with new next prayer
       return startSequenceCountdown(type);
+    }
+
+    // Pre-boundary lock: close the overlay as it enters the final 3-second
+    // window so it never straddles the boundary
+    const overlayMsLeft = upcoming.datetime.getTime() - nowMs;
+    if (overlay.isOn && overlay.scheduleType === type && overlayMsLeft <= 3000) {
+      store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
     writeDisplayCountdown(type);

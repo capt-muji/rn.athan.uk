@@ -67,9 +67,10 @@ export default function Prayer({ type, index }: Props) {
   };
 
   // Force animation to respect new state immediately when refreshing
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos is read from the fresh render closure at signal time
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos and isSelectedForOverlay are read from the fresh render closure at signal time
   useEffect(() => {
-    AnimColor.animate(Prayer.ui.initialColorPos);
+    const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
+    AnimColor.animate(colorPos);
   }, [refreshUI]);
 
   // Animate when next prayer changes
@@ -99,6 +100,13 @@ export default function Prayer({ type, index }: Props) {
   useEffect(() => {
     AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
   }, [isHiddenByOverlay, AnimOpacity.animate]);
+
+  // Re-issue on resume: the boundary tick closes the overlay from outside React,
+  // and a veil write dropped while the host wound down never re-fires on its own
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; isHiddenByOverlay is read from the fresh render closure at signal time
+  useEffect(() => {
+    AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
+  }, [refreshUI]);
 
   return (
     <AnimatedPressable style={[styles.container, AnimOpacity.style]} onPress={handlePress}>

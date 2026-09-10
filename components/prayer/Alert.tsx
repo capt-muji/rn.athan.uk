@@ -83,9 +83,10 @@ export default function Alert({ type, index }: Props) {
   // =============================================================================
 
   // Force animation to respect new state immediately when refreshing
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos is read from the fresh render closure at signal time
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos and isSelectedForOverlay are read from the fresh render closure at signal time
   useEffect(() => {
-    AnimFill.animate(Prayer.ui.initialColorPos);
+    const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
+    AnimFill.animate(colorPos);
   }, [refreshUI]);
 
   // Animate when next prayer changes

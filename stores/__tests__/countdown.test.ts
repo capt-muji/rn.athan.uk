@@ -466,10 +466,10 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
 });
 
 // =============================================================================
-// BOUNDARY SELECTION ADVANCE (ADR-014 — selection-follows-next-prayer)
+// OVERLAY PRE-BOUNDARY AUTO-CLOSE
 // =============================================================================
 
-describe('boundary selection advance (ADR-014)', () => {
+describe('overlay pre-boundary auto-close', () => {
   const { getDefaultStore } = require('jotai/vanilla');
 
   afterEach(() => {
@@ -479,96 +479,75 @@ describe('boundary selection advance (ADR-014)', () => {
   });
 
   const armBoundaryMocks = () => {
-    // Prayers on the display day; the sequence atom itself is NOT rewritten by
-    // the mocked refreshSequence — the advance re-reads it as-is
-    const asr = { english: 'Asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' };
-    const magrib = { english: 'Magrib', datetime: new Date('2026-01-20T07:00:00.000Z'), belongsToDate: '2026-01-20' };
+    const near = { english: 'Asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' };
+    const far = { english: 'Fajr', datetime: new Date('2026-01-21T04:00:00.000Z'), belongsToDate: '2026-01-20' };
 
     const defaultStore = getDefaultStore();
-    defaultStore.set(mockStandardSequenceAtom, { type: 'standard', prayers: [asr, magrib] });
+    defaultStore.set(mockStandardSequenceAtom, { type: 'standard', prayers: [near, far] });
 
     const { getNextPrayer } = require('@/stores/schedule');
-    let sequenceRefreshed = false;
-    (refreshSequence as jest.Mock).mockImplementation(() => {
-      sequenceRefreshed = true;
-    });
-    (getNextPrayer as jest.Mock).mockImplementation(() =>
-      sequenceRefreshed
-        ? { english: 'Magrib', datetime: new Date('2026-01-20T07:00:00.000Z'), belongsToDate: '2026-01-20' }
-        : { english: 'Asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' }
-    );
+    (getNextPrayer as jest.Mock).mockImplementation((type: string) => (type === 'standard' ? near : far));
+    (refreshSequence as jest.Mock).mockImplementation(() => {});
 
-    return { asr, magrib };
+    return near;
   };
 
-  it('advances the overlay selection to the new next prayer and retargets the countdown — no auto-close', () => {
+  it('closes the overlay as it enters the final 3-second window', () => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
-    armBoundaryMocks();
-
-    const defaultStore = getDefaultStore();
-    defaultStore.set(mockOverlayAtom, {
-      isOn: true,
-      selectedPrayerIndex: 0, // Asr — the prayer about to pass
-      scheduleType: 'standard',
-    });
-
-    startCountdowns();
-    jest.advanceTimersByTime(7000); // Asr passes at 06:15:00; now 06:15:02
-
-    // The overlay rode the cascade: selection followed to Magrib, still open
-    expect(defaultStore.get(mockOverlayAtom)).toEqual({
-      isOn: true,
-      selectedPrayerIndex: 1,
-      scheduleType: 'standard',
-    });
-
-    // The page countdown atom retargeted to the advanced selection (07:00
-    // target: 2700s at the boundary, then two per-second ticks)
-    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 2698, name: 'Magrib' });
-  });
-
-  it('leaves the selection untouched when a different prayer is selected', () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
-    armBoundaryMocks();
-
-    const defaultStore = getDefaultStore();
-    defaultStore.set(mockOverlayAtom, {
-      isOn: true,
-      selectedPrayerIndex: 1, // Magrib — NOT the passing prayer
-      scheduleType: 'standard',
-    });
-
-    startCountdowns();
-    jest.advanceTimersByTime(7000);
-
-    expect(defaultStore.get(mockOverlayAtom).selectedPrayerIndex).toBe(1);
-    expect(defaultStore.get(mockOverlayAtom).isOn).toBe(true);
-  });
-
-  it('leaves the selection untouched when the overlay is open on the other schedule', () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
+    jest.setSystemTime(new Date('2026-01-20T06:14:56.000Z'));
     armBoundaryMocks();
 
     const defaultStore = getDefaultStore();
     defaultStore.set(mockOverlayAtom, {
       isOn: true,
       selectedPrayerIndex: 0,
-      scheduleType: 'extra', // the standard boundary must not touch it
+      scheduleType: 'standard',
     });
 
     startCountdowns();
-    jest.advanceTimersByTime(7000);
-
-    expect(defaultStore.get(mockOverlayAtom).scheduleType).toBe('extra');
-    expect(defaultStore.get(mockOverlayAtom).selectedPrayerIndex).toBe(0);
     expect(defaultStore.get(mockOverlayAtom).isOn).toBe(true);
 
-    // The standard page atom keeps its own true next prayer — the overlay on
-    // the other schedule never hijacks it (2700s at the boundary + 2 ticks)
-    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 2698, name: 'Magrib' });
+    jest.advanceTimersByTime(1000); // 06:14:57 — 3s left
+
+    expect(defaultStore.get(mockOverlayAtom).isOn).toBe(false);
+  });
+
+  it('leaves the overlay alone when it is open on the other schedule', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:56.000Z'));
+    armBoundaryMocks();
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockOverlayAtom, {
+      isOn: true,
+      selectedPrayerIndex: 0,
+      scheduleType: 'extra',
+    });
+
+    startCountdowns();
+    jest.advanceTimersByTime(1000);
+
+    expect(defaultStore.get(mockOverlayAtom).isOn).toBe(true);
+    expect(defaultStore.get(mockOverlayAtom).scheduleType).toBe('extra');
+  });
+
+  it('closes a suspended overlay when the boundary tick catches up', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:58.000Z'));
+    armBoundaryMocks();
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockOverlayAtom, {
+      isOn: true,
+      selectedPrayerIndex: 0,
+      scheduleType: 'standard',
+    });
+
+    startCountdowns();
+    // The host was frozen across the boundary: the next tick lands after 06:15:00
+    jest.advanceTimersByTime(5000);
+
+    expect(defaultStore.get(mockOverlayAtom).isOn).toBe(false);
   });
 });
 

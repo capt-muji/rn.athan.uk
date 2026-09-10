@@ -2,11 +2,8 @@
  * Unit tests for stores/overlay.ts
  *
  * Tests overlay state management including:
- * - toggleOverlay() - visibility control
+ * - toggleOverlay() - visibility control with the pre-boundary guard
  * - setSelectedPrayerIndex() - prayer selection with instant page-countdown write
- *
- * ADR-014: the ≤2s pre-boundary open lock is REMOVED — the overlay rides the
- * countdown-finish cascade via selection-follows-next-prayer (stores/countdown).
  */
 
 import { ScheduleType } from '@/shared/types';
@@ -22,11 +19,14 @@ let mockOverlayState = {
   scheduleType: ScheduleType.Standard,
 };
 
+let mockCountdownState = { timeLeft: 100, name: 'Fajr' };
+
 const mockStoreGet = jest.fn();
 const mockStoreSet = jest.fn();
 
 // Track which atom is being accessed
 const mockOverlayAtomSymbol = Symbol('overlayAtom');
+const mockCountdownAtomSymbol = Symbol('countdownAtom');
 
 jest.mock('jotai/vanilla', () => ({
   getDefaultStore: () => ({
@@ -35,8 +35,14 @@ jest.mock('jotai/vanilla', () => ({
   }),
 }));
 
+const mockGetNextPrayer = jest.fn();
+jest.mock('@/stores/schedule', () => ({
+  getNextPrayer: (type: ScheduleType) => mockGetNextPrayer(type),
+}));
+
 const mockWriteDisplayCountdown = jest.fn();
 jest.mock('@/stores/countdown', () => ({
+  getCountdownAtom: () => mockCountdownAtomSymbol,
   writeDisplayCountdown: () => mockWriteDisplayCountdown(),
 }));
 
@@ -60,14 +66,20 @@ beforeEach(() => {
     selectedPrayerIndex: 0,
     scheduleType: ScheduleType.Standard,
   };
+  mockCountdownState = { timeLeft: 100, name: 'Fajr' };
 
   // Smart mock that returns different values based on atom
   mockStoreGet.mockImplementation((atom: symbol) => {
     if (atom === mockOverlayAtomSymbol) {
       return { ...mockOverlayState };
     }
+    if (atom === mockCountdownAtomSymbol) {
+      return { ...mockCountdownState };
+    }
     return {};
   });
+
+  mockGetNextPrayer.mockReturnValue({ english: 'Dhuhr', datetime: new Date() });
 });
 
 // =============================================================================
@@ -128,33 +140,46 @@ describe('toggleOverlay', () => {
     });
   });
 
-  describe('pre-boundary lock removed (ADR-014)', () => {
-    it('opens inside the final two seconds — no open-refusal', () => {
-      mockOverlayState.isOn = false;
+  describe('pre-boundary lock', () => {
+    it('prevents opening when countdown is 2 seconds or less', () => {
+      mockCountdownState.timeLeft = 2;
 
       toggleOverlay(true);
 
-      // The old canShowOverlay guard (timeLeft > 2) is deleted: opening near
-      // the boundary always succeeds; the overlay rides the cascade instead
+      expect(mockStoreSet).not.toHaveBeenCalled();
+      expect(mockWriteDisplayCountdown).not.toHaveBeenCalled();
+    });
+
+    it('prevents opening at 1 second', () => {
+      mockCountdownState.timeLeft = 1;
+
+      toggleOverlay(true);
+
+      expect(mockStoreSet).not.toHaveBeenCalled();
+    });
+
+    it('allows opening when countdown is above 2 seconds', () => {
+      mockCountdownState.timeLeft = 3;
+
+      toggleOverlay(true);
+
       expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
-      expect(mockWriteDisplayCountdown).toHaveBeenCalled();
     });
 
     it('allows closing regardless of countdown', () => {
       mockOverlayState.isOn = true;
+      mockCountdownState.timeLeft = 1;
 
       toggleOverlay(false);
 
       expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: false }));
     });
 
-    it('opens when all prayers have passed', () => {
-      mockOverlayState.isOn = false;
+    it('allows opening when all prayers have passed', () => {
+      mockGetNextPrayer.mockReturnValue(null);
 
       toggleOverlay(true);
 
-      // The all-passed case was previously special-cased by canShowOverlay;
-      // with the guard gone it opens for the same reason every open does
       expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
     });
   });
@@ -190,10 +215,20 @@ describe('setSelectedPrayerIndex', () => {
       expect(mockWriteDisplayCountdown).toHaveBeenCalled();
     });
 
-    it('selects inside the final two seconds — no selection guard', () => {
+    it('prevents selection when countdown is 2 seconds or less', () => {
+      mockCountdownState.timeLeft = 1;
+
       setSelectedPrayerIndex(ScheduleType.Standard, 3);
 
-      // The old canShowOverlay guard on selection is deleted (ADR-014)
+      expect(mockStoreSet).not.toHaveBeenCalled();
+      expect(mockWriteDisplayCountdown).not.toHaveBeenCalled();
+    });
+
+    it('allows selection when countdown is above 2 seconds', () => {
+      mockCountdownState.timeLeft = 10;
+
+      setSelectedPrayerIndex(ScheduleType.Standard, 3);
+
       expect(mockStoreSet).toHaveBeenCalled();
       expect(mockWriteDisplayCountdown).toHaveBeenCalled();
     });

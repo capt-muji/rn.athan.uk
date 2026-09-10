@@ -17,8 +17,7 @@ export const createLondonDate = (date?: Date | number | string): Date => {
   // Millisecond precision matters at boundaries: the wall-clock ticker commits
   // the boundary transition in the first ~100ms after :00, and a second-truncated
   // "now" equals the prayer datetime exactly, so `datetime < now` reads the
-  // just-passed prayer as still future and the boundary commit paints its row
-  // with the future color (strands until the next re-render trigger)
+  // just-passed prayer as still future and its row settles with the future color
   const londonTime = formatInTimeZone(targetDate, 'Europe/London', 'yyyy-MM-dd HH:mm:ss.SSSXXX');
   return new Date(londonTime);
 };
