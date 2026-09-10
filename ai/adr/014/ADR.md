@@ -1,6 +1,8 @@
 # ADR-014: Overlay Re-Architecture — In-Place Highlight with Veil-with-Holes
 
-**Status:** Implemented — per the **per-element variant** (see [Implementation Outcome](#implementation-outcome)); the bands/veilGeometry design below was superseded mid-build after owner review. The decision STRUCTURE (in-place content, lock removal, selection-follows-next-prayer, VeilBackdrop, hit-test matrix, parity checklist) shipped as designed.
+**Status:** Superseded by [ADR-015](../015/ADR.md) (2026-09-10). The in-place concept is retained; the animation/lifecycle mechanism was replaced after a tail of resume and boundary bugs traced to effect-driven animation state. The text below is kept for history.
+
+**Original status:** Implemented — per the **per-element variant** (see [Implementation Outcome](#implementation-outcome)); the bands/veilGeometry design below was superseded mid-build after owner review. The decision STRUCTURE (in-place content, lock removal, selection-follows-next-prayer, VeilBackdrop, hit-test matrix, parity checklist) shipped as designed.
 **Date:** 2026-09-06
 **Decision Makers:** <user> (owner directive #20), performance campaign session 8 (planning)
 **Input:** `ai/features/performance/overlay-rearchitecture-brief.md`, #19 vision-audited evidence (`perf12/x19`)

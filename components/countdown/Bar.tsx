@@ -10,6 +10,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
@@ -72,10 +73,8 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 
   const widthValue = useSharedValue(progress);
   const colorValue = useSharedValue(0);
-  const opacityValue = useSharedValue(overlayIsOn ? 0 : 1);
 
   const isFirstRender = useRef(true);
-  const isFirstOpacityRender = useRef(true);
   const prevProgress = useRef(progress);
 
   // Progress width and warning color animation
@@ -113,28 +112,10 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     prevProgress.current = progress;
   }, [progress, isWarning, reducedMotion, widthValue, colorValue]);
 
-  // Visibility based on overlay state (skip in preview mode)
-  useEffect(() => {
-    if (isPreviewMode) return;
-
-    const shouldShow = !overlayIsOn;
-
-    if (isFirstOpacityRender.current) {
-      opacityValue.value = shouldShow ? 1 : 0;
-      isFirstOpacityRender.current = false;
-    } else if (reducedMotion) {
-      opacityValue.value = shouldShow ? 1 : 0;
-    } else {
-      opacityValue.value = withTiming(shouldShow ? 1 : 0, {
-        duration: ANIMATION.duration,
-        easing: Easing.linear,
-      });
-    }
-  }, [overlayIsOn, reducedMotion, isPreviewMode, opacityValue]);
-
-  const wrapperOpacityStyle = useAnimatedStyle(() => ({
-    opacity: opacityValue.value,
-  }));
+  // Overlay visibility is derived; reduced motion snaps it
+  const wrapperOpacityStyle = useDerivedOpacity(isPreviewMode || !overlayIsOn ? 1 : 0, {
+    duration: reducedMotion ? 0 : ANIMATION.duration,
+  });
 
   const barWidthStyle = useAnimatedStyle(() => ({
     width: `${widthValue.value}%`,

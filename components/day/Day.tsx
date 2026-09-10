@@ -1,10 +1,10 @@
 import { useAtomValue } from 'jotai';
-import { memo, useEffect, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { Masjid } from '@/components/ui';
-import { useAnimationOpacity } from '@/hooks/useAnimation';
+import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { ANIMATION, COLORS, SCREEN, SPACING, TEXT } from '@/shared/constants';
 import { formatDateLong, formatHijriDateLong } from '@/shared/time';
@@ -24,30 +24,19 @@ interface Props {
 export default function Day({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
-  // NEW: Use sequence-based derived displayDate
-  // See: ai/adr/005-timing-system-overhaul.md
   const displayDateAtom = isStandard ? standardDisplayDateAtom : extraDisplayDateAtom;
   const date = useAtomValue(displayDateAtom) ?? '';
   const hijriEnabled = useAtomValue(hijriDateEnabledAtom);
 
   // Overlay-aware date (ADR-014): while the overlay highlights a prayer on
-  // THIS schedule, the date shows that prayer's next occurrence (what the old
-  // duplicated date copy displayed). The Day block otherwise stays EXACTLY as
-  // the non-overlay visual (owner directive: dim location, WHITE date — no
-  // recolor). Type-scoped derived atoms: the OTHER schedule's Day never
-  // re-renders on toggle.
+  // THIS schedule, the date shows that prayer's next occurrence. Type-scoped
+  // derived atoms: the OTHER schedule's Day never re-renders on toggle.
   const showOverlayDate = useAtomValue(useMemo(() => getOverlayActiveForTypeAtom(type), [type]));
   const overlaySelectedIndex = useAtomValue(useMemo(() => getOverlaySelectedIndexForTypeAtom(type), [type]));
   const OverlayPrayer = usePrayer(type, overlaySelectedIndex, true);
   const dateSource = showOverlayDate ? OverlayPrayer.date : date;
 
-  // Per-element veil (ADR-014): the Masjid icon fades out with the overlay's
-  // fade — the old overlay hid it under the opaque gradient
-  const masjidOpacity = useAnimationOpacity(1);
-
-  useEffect(() => {
-    masjidOpacity.animate(showOverlayDate ? 0 : 1, { duration: ANIMATION.duration });
-  }, [showOverlayDate, masjidOpacity.animate]);
+  const masjidOpacityStyle = useDerivedOpacity(showOverlayDate ? 0 : 1, { duration: ANIMATION.duration });
 
   // Hijri formatting is expensive on the floor device (umalqura Intl) — memo
   // so overlay toggles never re-format an unchanged date string
@@ -62,7 +51,7 @@ export default function Day({ type }: Props) {
         <Text style={styles.location}>London, UK</Text>
         <Text style={styles.date}>{formattedDate}</Text>
       </View>
-      <Animated.View style={masjidOpacity.style}>
+      <Animated.View style={masjidOpacityStyle}>
         <MemoizedMasjid />
       </Animated.View>
     </View>

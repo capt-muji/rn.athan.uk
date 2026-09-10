@@ -1,22 +1,22 @@
 import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
 import { Platform, StyleSheet, type ViewStyle } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { Easing } from 'react-native-reanimated';
 
-import { useAnimationBackgroundColor, useAnimationOpacity, useAnimationTranslateY } from '@/hooks/useAnimation';
+import { useDerivedOpacity, useDerivedTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
-import { refreshUIAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
 }
 
+// Frozen at module scope: a fresh easing function each render would restart
+// the derived mapper on every render
+const PILL_SLIDE_EASING = Easing.elastic(0.5);
+
 export default function ActiveBackground({ type }: Props) {
-  // NEW: Use sequence-based prayer data
-  // See: ai/adr/005-timing-system-overhaul.md
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
 
   // Filter prayers to today's prayers and find the next prayer index within that list
@@ -24,60 +24,23 @@ export default function ActiveBackground({ type }: Props) {
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
   const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
 
-  // These derived values will recompute on every render when dependencies change
-  // This is fine because they're just JavaScript calculations, not shared value modifications
   const yPosition = (isReady && nextPrayerIndex >= 0 ? nextPrayerIndex : 0) * STYLES.prayer.height;
 
-  // Initialize animations with starting values
-  // These shared values are created once and persist between renders
-  const AnimTranslateY = useAnimationTranslateY(yPosition);
+  const translateStyle = useDerivedTranslateY(yPosition, {
+    duration: ANIMATION.durationSlow,
+    easing: PILL_SLIDE_EASING,
+  });
+
   const activeColor =
     type === ScheduleType.Standard ? COLORS.prayer.activeBackground : COLORS.prayer.activeBackgroundExtras;
 
-  const AnimBackgroundColor = useAnimationBackgroundColor(1, {
-    fromColor: 'transparent',
-    toColor: activeColor,
-  });
-
-  // Per-element veil (ADR-014): the pill fades out while the overlay is open
-  // unless its row IS the selected one (the selected next prayer keeps it —
-  // exactly what the old overlay's copied row background showed)
+  // The pill fades out while the overlay is open unless its row IS the selected
+  // one (the selected next prayer keeps it, as the old copied row did)
   const overlay = useAtomValue(overlayAtom);
   const isHiddenByOverlay =
     overlay.isOn && overlay.scheduleType === type && overlay.selectedPrayerIndex !== nextPrayerIndex;
-  const AnimOpacity = useAnimationOpacity(1);
 
-  const refreshUI = useAtomValue(refreshUIAtom);
-
-  useEffect(() => {
-    AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
-  }, [isHiddenByOverlay, AnimOpacity.animate]);
-
-  // Re-issue on resume: the boundary tick closes the overlay from outside React,
-  // and a veil write dropped while the host wound down never re-fires on its own
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; isHiddenByOverlay is read from the fresh render closure at signal time
-  useEffect(() => {
-    AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
-  }, [refreshUI]);
-
-  // This effect runs after render and handles all animation logic
-  // Benefits:
-  // 1. Follows Reanimated v4's worklet rules (no shared value modifications during render)
-  // 2. Still reacts to all Jotai state changes via dependencies
-  // 3. Maintains animation sequence integrity
-  // 4. Prevents animation flicker by running after render is complete
-  useEffect(() => {
-    AnimBackgroundColor.animate(1);
-    AnimTranslateY.animate(yPosition);
-  }, [yPosition, AnimBackgroundColor.animate, AnimTranslateY.animate]); // Dependencies ensure animations update when values change
-
-  // A boundary crossed while the host was suspended can strand the slide, and
-  // yPosition never changes again afterwards — the resume signal is the only
-  // later trigger, so the pill slides from wherever it froze to the current row
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; yPosition is read from the fresh render closure at signal time
-  useEffect(() => {
-    AnimTranslateY.animate(yPosition);
-  }, [refreshUI]);
+  const veilStyle = useDerivedOpacity(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
 
   const isStandard = type === ScheduleType.Standard;
   const shadowStyle = isStandard ? SHADOW.prayer : SHADOW.prayerExtras;
@@ -103,7 +66,7 @@ export default function ActiveBackground({ type }: Props) {
 
   return (
     <Animated.View
-      style={[styles.background, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style, AnimOpacity.style]}
+      style={[styles.background, computedStyles, { backgroundColor: activeColor }, translateStyle, veilStyle]}
     />
   );
 }

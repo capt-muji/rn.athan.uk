@@ -50,6 +50,11 @@ anywhere in the app:
 2. The app is closed. The state is in memory only, so a cold start is closed.
 3. The 2 second rule.
 
+A defensive self-heal (section 5) also closes the overlay if a pager swipe ever
+settles on the other schedule while it is open. The `scrollEnabled` gate makes
+this unreachable in normal use; it exists only to prevent an overlay over the
+wrong page.
+
 ### 3.1 The 2 second rule
 
 - While the overlay is open on a schedule, it closes when that schedule's NEXT
@@ -138,15 +143,17 @@ data refreshes.
 
 ### 7.4 Open and close are explicit
 
-`openOverlay` and `closeOverlay(reason)` are the only writers of `isOn`. The
-open guard refuses when the true remaining milliseconds to the next prayer are
-2000 or fewer (not the coarse displayed atom).
+`isOn` is written by `openOverlay`, `closeOverlay`, and the boundary check
+`checkOverlayBoundary` (which lives in the countdown store to avoid a store
+cycle). Nothing else writes it. The open guard refuses when the true remaining
+milliseconds to the next prayer are 2000 or fewer (not the coarse displayed
+atom).
 
 ### 7.5 Resume counter
 
-A monotonic counter bumps on every foreground transition. Derived worklets take
-it as a dependency so they re-run and snap on resume even when the target is
-unchanged.
+`resyncAtom` (`stores/ui.ts`) bumps on every foreground transition. Derived
+worklets take it as a dependency so they re-run and snap on resume even when
+the target is unchanged.
 
 ### 7.6 Display latch
 
@@ -179,6 +186,9 @@ Durable lessons:
   the existing write path.
 - A component that derives its style from the atom cannot strand; a component
   that writes it from an effect can.
+- Never pass `easing: undefined` explicitly to `withTiming`. It overrides
+  Reanimated's default easing and aborts with "undefined is not a function" on
+  the first non-snap evaluation (the mount snap hides it). Omit the key.
 
 ## 9. Verification
 
