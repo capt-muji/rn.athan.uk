@@ -42,11 +42,13 @@ export default function PrayerTime({ type, index }: Props) {
     Schedule.nextPrayerIndex === 0 &&
     index !== 0;
 
+  // The cascade roll gets the old duration back (durationSlow, 1000ms) — see
+  // components/prayer/Prayer.tsx for why; ordinary selection changes keep 150ms.
   const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
   const colorStyle = useDerivedColor(colorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
-    duration: ANIMATION.durationFade,
+    duration: isCascadeRoll ? ANIMATION.durationSlow : ANIMATION.durationFade,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
 
