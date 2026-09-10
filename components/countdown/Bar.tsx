@@ -22,6 +22,12 @@ const TIMING_CONFIG_FAST = {
   easing: Easing.bezier(0.33, 0, 0.1, 1),
 };
 
+/** Linear timing for normal 1-second updates */
+const TIMING_CONFIG_LINEAR = {
+  duration: 1000,
+  easing: Easing.linear,
+};
+
 interface Props {
   /** Schedule type for countdown calculation (required in normal mode) */
   type?: ScheduleType;
@@ -94,12 +100,10 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
           easing: Easing.linear,
         });
       } else {
-        // The per-second creep is sub-pixel at every countdown length (a 1s
-        // step of a multi-hour countdown moves the bar under 0.1px) — a 1s
-        // withTiming here relaid out the bar at 60fps for an invisible
-        // change (measured 60+ points of main-thread CPU on the 3T).
-        // Direct-set; the boundary color flip keeps its smooth transition
-        widthValue.value = progress;
+        // Re-issued every tick: a width write dropped while the host was
+        // suspended is replaced by the next second's animation, so a stale
+        // bar never outlives one tick after resume
+        widthValue.value = withTiming(progress, TIMING_CONFIG_LINEAR);
         colorValue.value = withTiming(isWarning ? 1 : 0, {
           duration: ANIMATION.durationMedium,
           easing: Easing.linear,

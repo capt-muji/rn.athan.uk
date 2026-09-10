@@ -1,13 +1,14 @@
 import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
-import { StyleSheet, type ViewStyle } from 'react-native';
+import { Platform, StyleSheet, type ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useAnimationBackgroundColor, useAnimationOpacity, useAnimationTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { ANIMATION, COLORS, RADIUS, SHADOW, STYLES } from '@/shared/constants';
+import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
+import { refreshUIAtom } from '@/stores/ui';
 
 interface Props {
   type: ScheduleType;
@@ -46,6 +47,8 @@ export default function ActiveBackground({ type }: Props) {
     overlay.isOn && overlay.scheduleType === type && overlay.selectedPrayerIndex !== nextPrayerIndex;
   const AnimOpacity = useAnimationOpacity(1);
 
+  const refreshUI = useAtomValue(refreshUIAtom);
+
   useEffect(() => {
     AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
   }, [isHiddenByOverlay, AnimOpacity.animate]);
@@ -61,15 +64,34 @@ export default function ActiveBackground({ type }: Props) {
     AnimTranslateY.animate(yPosition);
   }, [yPosition, AnimBackgroundColor.animate, AnimTranslateY.animate]); // Dependencies ensure animations update when values change
 
+  // A boundary crossed while the host was suspended can strand the slide, and
+  // yPosition never changes again afterwards — the resume signal is the only
+  // later trigger, so the pill slides from wherever it froze to the current row
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; yPosition is read from the fresh render closure at signal time
+  useEffect(() => {
+    AnimTranslateY.animate(yPosition);
+  }, [refreshUI]);
+
   const isStandard = type === ScheduleType.Standard;
   const shadowStyle = isStandard ? SHADOW.prayer : SHADOW.prayerExtras;
   const shadowColor = isStandard ? COLORS.shadow.prayer : COLORS.shadow.prayerExtras;
+  // Android depth shadow rides the pill itself so it travels with the slide —
+  // a row-anchored shadow keyed to isNext lands on the new row a full second
+  // before the pill arrives. API >= 29 only: borderRadius + boxShadow together
+  // are dropped outright on API 28
+  const androidBoxShadow =
+    Platform.OS === 'android' && Platform.Version >= 29
+      ? isStandard
+        ? SHADOW_ANDROID.prayer
+        : SHADOW_ANDROID.prayerExtras
+      : undefined;
 
   const computedStyles: ViewStyle = {
     ...shadowStyle,
     shadowColor,
     elevation: 0, // Must be 0 to stay below Prayer components on Android
     zIndex: -1, // Ensure it's behind prayer text
+    ...(androidBoxShadow !== undefined ? { boxShadow: androidBoxShadow } : {}),
   };
 
   return (

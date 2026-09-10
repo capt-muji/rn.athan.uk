@@ -12,7 +12,7 @@ import { getBarProgressAtom, getBarWarningAtom } from '@/stores/countdown';
 import { extraNextPrayerAtom, standardNextPrayerAtom } from '@/stores/schedule';
 
 interface UseCountdownBarResult {
-  /** Elapsed progress percentage (0-100), quantized to bar-pixel steps (#10) */
+  /** Elapsed progress percentage (0-100), recomputed every wall-clock second */
   progress: number;
   /** Whether the countdown bar is ready to display */
   isReady: boolean;
@@ -25,11 +25,9 @@ interface UseCountdownBarResult {
  * Simple calculation: (now - prev.datetime) / (next.datetime - prev.datetime) * 100
  * No special "first prayer" or "yesterday" logic needed with the new model
  *
- * Render-granular (#10): progress is quantized to bar-pixel steps (the bar's
- * visible resolution — per-second creep is sub-pixel) and the warning flip is
- * an exact boolean, so the subscriber re-renders ~once per pixel-step or
- * threshold crossing instead of every second. The underlying derived atoms
- * still recompute each store tick for boundary correctness.
+ * Raw per-second resolution: the bar re-issues its width animation on every
+ * change, so no dropped or stale animation can survive longer than one tick
+ * (a suspended host can drop the resume write; the next tick replaces it).
  *
  * @param type Schedule type (Standard or Extra)
  * @returns Object with progress, isReady, and isWarning
