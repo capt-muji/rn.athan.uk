@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
@@ -9,7 +9,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Screen from '@/app/Screen';
 import { VeilBackdrop } from '@/components/overlay';
 import { BackgroundGradients, RamadanDecorations, SettingsButton } from '@/components/ui';
-import { useAnimationOpacity, useDerivedOpacity } from '@/hooks/useAnimation';
+import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
@@ -24,8 +24,11 @@ const MemoSettingsButton = memo(SettingsButton);
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
-  const dot0Animation = useAnimationOpacity(1);
-  const dot1Animation = useAnimationOpacity(0.25);
+  // Derived from state, not an effect: a suspend-dropped write cannot strand
+  // (see ai/features/overlay/spec.md)
+  const [currentPage, setCurrentPage] = useState(0);
+  const dot0OpacityStyle = useDerivedOpacity(currentPage === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
+  const dot1OpacityStyle = useDerivedOpacity(currentPage === 1 ? 1 : 0.25, { duration: ANIMATION.duration });
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
   // Per-element veil (ADR-014): chrome (dots, settings, decorations) fades out
   // with the overlay — the old overlay hid it under the gradient
@@ -55,8 +58,7 @@ export default function Navigation() {
     }
 
     perfMeasure('pager_page', 'pager_swipe_start', { position });
-    dot0Animation.animate(position === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
-    dot1Animation.animate(position === 1 ? 1 : 0.25, { duration: ANIMATION.duration });
+    setCurrentPage(position);
   };
 
   return (
@@ -105,8 +107,8 @@ export default function Navigation() {
           <MemoSettingsButton />
         </View>
         <View style={styles.dotsRow}>
-          <Animated.View style={[styles.dot, dot0Animation.style]} />
-          <Animated.View style={[styles.dot, dot1Animation.style]} />
+          <Animated.View style={[styles.dot, dot0OpacityStyle]} />
+          <Animated.View style={[styles.dot, dot1OpacityStyle]} />
         </View>
       </Animated.View>
     </View>

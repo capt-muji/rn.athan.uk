@@ -166,36 +166,55 @@ export const useDerivedProgress = (target: number, options?: DerivedTimingOption
   });
 };
 
+// The consumer mappers carry the resume counter as a dependency: on foreground
+// the mapper restarts and re-applies its current value. A re-render alone does
+// not re-apply an animated prop, and a snap to an unchanged value is a no-op,
+// so without this a native prop (SVG fill) that went stale across a suspend is
+// never re-asserted.
 export const useDerivedOpacity = (target: number, options?: DerivedTimingOptions) => {
+  const resync = useAtomValue(resyncAtom);
   const progress = useDerivedProgress(target, options);
-  return useAnimatedStyle(() => ({ opacity: progress.value }));
+  return useAnimatedStyle(() => ({ opacity: progress.value }), [resync]);
 };
 
 export const useDerivedColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
+  const resync = useAtomValue(resyncAtom);
   const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
   const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
-  return useAnimatedStyle(() => ({
-    color: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
-  }));
+  return useAnimatedStyle(
+    () => ({
+      color: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+    }),
+    [resync]
+  );
 };
 
 export const useDerivedBackgroundColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
+  const resync = useAtomValue(resyncAtom);
   const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
   const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
-  return useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
-  }));
+  return useAnimatedStyle(
+    () => ({
+      backgroundColor: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+    }),
+    [resync]
+  );
 };
 
 export const useDerivedTranslateY = (target: number, options?: DerivedTimingOptions) => {
+  const resync = useAtomValue(resyncAtom);
   const progress = useDerivedProgress(target, options);
-  return useAnimatedStyle(() => ({ transform: [{ translateY: progress.value }] }));
+  return useAnimatedStyle(() => ({ transform: [{ translateY: progress.value }] }), [resync]);
 };
 
 export const useDerivedFill = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
+  const resync = useAtomValue(resyncAtom);
   const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
   const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
-  return useAnimatedProps(() => ({
-    fill: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
-  }));
+  return useAnimatedProps(
+    () => ({
+      fill: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+    }),
+    [resync]
+  );
 };

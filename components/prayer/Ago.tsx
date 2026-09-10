@@ -1,15 +1,8 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useRef } from 'react';
 import { StyleSheet } from 'react-native';
-import Animated, {
-  Easing,
-  interpolateColor,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { Easing } from 'react-native-reanimated';
 
-import { useDerivedOpacity } from '@/hooks/useAnimation';
+import { useDerivedBackgroundColor, useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import type { ScheduleType } from '@/shared/types';
@@ -31,48 +24,32 @@ interface Props {
 export default function PrayerAgo({ type }: Props) {
   const { prayerAgo, minutesElapsed, isReady: prayerAgoReady } = usePrayerAgo(type);
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
-  const hasInitialized = useRef(false);
 
-  // Color state: 0=normal, 1=recent (≤5 mins)
-  // Initialize to correct state immediately (no flash) - minutesElapsed has correct value from lazy initializer
-  const isRecentValue = useSharedValue(minutesElapsed <= 5 ? 1 : 0);
-
-  // Sync color state: skip first render (already correct), animate subsequent changes
-  useEffect(() => {
-    if (!prayerAgoReady) return;
-
-    const targetValue = minutesElapsed <= 5 ? 1 : 0;
-
-    if (!hasInitialized.current) {
-      // First valid data: set value immediately (no animation)
-      // Handles case where store wasn't hydrated during initial useSharedValue
-      isRecentValue.value = targetValue;
-      hasInitialized.current = true;
-    } else {
-      // Subsequent changes: animate
-      isRecentValue.value = withTiming(targetValue, {
-        duration: ANIMATION.durationMedium,
-        easing: Easing.linear,
-      });
-    }
-  }, [minutesElapsed, prayerAgoReady, isRecentValue]);
+  // Derived from state, not an effect: first evaluation and resume snap, so a
+  // suspend-dropped write cannot strand (see ai/features/overlay/spec.md)
+  const isRecent = minutesElapsed <= 5 ? 1 : 0;
+  const recentColorOptions = { duration: ANIMATION.durationMedium, easing: Easing.linear };
+  const prayerAgoColorStyle = useDerivedColor(isRecent, {
+    fromColor: COLORS.prayerAgo.text,
+    toColor: COLORS.feedback.success,
+    ...recentColorOptions,
+  });
+  const prayerAgoBackgroundStyle = useDerivedBackgroundColor(isRecent, {
+    fromColor: COLORS.prayerAgo.gradient.start,
+    toColor: COLORS.prayerAgo.gradient.end,
+    ...recentColorOptions,
+  });
 
   // Fade out when overlay opens (derived, so it cannot strand on resume)
   const prayerAgoOpacityStyle = useDerivedOpacity(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade });
 
-  // Smooth color transition
-  const prayerAgoStyle = useAnimatedStyle(() => ({
-    color: interpolateColor(isRecentValue.value, [0, 1], [COLORS.prayerAgo.text, COLORS.feedback.success]),
-    backgroundColor: interpolateColor(
-      isRecentValue.value,
-      [0, 1],
-      [COLORS.prayerAgo.gradient.start, COLORS.prayerAgo.gradient.end]
-    ),
-  }));
-
   if (!prayerAgoReady) return null;
 
-  return <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoStyle]}>{prayerAgo}</Animated.Text>;
+  return (
+    <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>
+      {prayerAgo}
+    </Animated.Text>
+  );
 }
 
 const styles = StyleSheet.create({

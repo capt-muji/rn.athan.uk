@@ -387,4 +387,29 @@ const startCountdowns = () => {
   startSequenceCountdown(ScheduleType.Extra);
 };
 
-export { armOverlayBoundary, checkOverlayBoundary, clearOverlayBoundary, startCountdowns, writeDisplayCountdown };
+/**
+ * Recomputes the countdown immediately on foreground. The OS freezes the JS
+ * timers while the app is backgrounded, so on return the tickers are stale:
+ * this catches up any boundary crossed during the suspend and rewrites the
+ * display atoms before the first visible frame. The instant-resume equivalent
+ * of "keep ticking in the background".
+ */
+const resyncCountdowns = () => {
+  for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
+    const upcoming = getNextPrayer(type);
+    if (upcoming && Date.now() >= upcoming.datetime.getTime()) {
+      refreshSequence(type);
+    }
+  }
+
+  startCountdowns();
+};
+
+export {
+  armOverlayBoundary,
+  checkOverlayBoundary,
+  clearOverlayBoundary,
+  resyncCountdowns,
+  startCountdowns,
+  writeDisplayCountdown,
+};
