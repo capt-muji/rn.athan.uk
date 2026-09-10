@@ -49,12 +49,15 @@ export default function Prayer({ type, index }: Props) {
     Schedule.nextPrayerIndex === 0 &&
     index !== 0;
 
-  // Selected is always fully bright; otherwise the natural passed/next/upcoming position
+  // Selected is always fully bright; otherwise the natural passed/next/upcoming position.
+  // The cascade roll gets the old duration back (durationSlow, 1000ms) — ADR-015's
+  // unification onto durationFade (150ms) silently cut it from a smooth per-row fade
+  // to a near-instant snap; ordinary selection changes keep the fast 150ms.
   const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
   const colorStyle = useDerivedColor(colorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
-    duration: ANIMATION.durationFade,
+    duration: isCascadeRoll ? ANIMATION.durationSlow : ANIMATION.durationFade,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
   const veilStyle = useDerivedOpacity(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
