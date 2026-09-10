@@ -9,6 +9,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import type { ScheduleType } from '@/shared/types';
@@ -56,10 +57,8 @@ export default function PrayerAgo({ type }: Props) {
     }
   }, [minutesElapsed, prayerAgoReady, isRecentValue]);
 
-  // Fade out when overlay opens
-  const prayerAgoOpacity = useAnimatedStyle(() => ({
-    opacity: withTiming(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade }),
-  }));
+  // Fade out when overlay opens (derived, so it cannot strand on resume)
+  const prayerAgoOpacityStyle = useDerivedOpacity(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade });
 
   // Smooth color transition
   const prayerAgoStyle = useAnimatedStyle(() => ({
@@ -73,7 +72,7 @@ export default function PrayerAgo({ type }: Props) {
 
   if (!prayerAgoReady) return null;
 
-  return <Animated.Text style={[styles.prayerAgo, prayerAgoOpacity, prayerAgoStyle]}>{prayerAgo}</Animated.Text>;
+  return <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoStyle]}>{prayerAgo}</Animated.Text>;
 }
 
 const styles = StyleSheet.create({

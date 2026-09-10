@@ -1,10 +1,12 @@
 import { AppState, type AppStateStatus } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 
+import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
+import { checkOverlayBoundary } from '@/stores/countdown';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { sync } from '@/stores/sync';
-import { setRefreshUI } from '@/stores/ui';
+import { bumpResync } from '@/stores/ui';
 import { initWidgetSettingsSync } from '@/stores/widget';
 
 /**
@@ -19,25 +21,26 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
 
   // Handle both initial state and state changes
   const handleAppStateChange = (newState: AppStateStatus) => {
-    if (newState === 'active') {
-      // Only run these when coming from background
-      // NOT on initial app launch (handled by app/index.tsx)
-      if (previousAppState === 'background') {
-        // Re-apply system bars styling on Android (fixes transparency reset)
-        SystemBars.setStyle('light');
-        SystemBars.setHidden({ navigationBar: false });
+    const returningToForeground = newState === 'active' && previousAppState !== 'active';
 
-        initializeNotifications(checkPermissions, refreshNotifications, registerBackgroundTask);
-      }
+    if (returningToForeground) {
+      // A boundary that elapsed while the host was suspended closes the
+      // overlay; then every derived animation re-runs and snaps. When the
+      // deadline has not elapsed both are inert, so resume changes nothing.
+      checkOverlayBoundary();
+      bumpResync();
+    }
 
-      // Only run sync when coming from background
-      // This prevents double initialization since we already sync on launch
-      if (previousAppState === 'background') {
-        sync().then(() => {
-          // Refresh UI after sync is complete
-          setRefreshUI(Date.now());
-        });
-      }
+    if (newState === 'active' && previousAppState === 'background') {
+      // Re-apply system bars styling on Android (fixes transparency reset)
+      SystemBars.setStyle('light');
+      SystemBars.setHidden({ navigationBar: false });
+
+      initializeNotifications(checkPermissions, refreshNotifications, registerBackgroundTask);
+
+      // Refresh prayer data after returning from background (not on launch,
+      // which app/index.tsx already handles)
+      sync().catch((error) => logger.error('LISTENERS: Foreground sync failed', { error }));
     }
 
     previousAppState = newState;

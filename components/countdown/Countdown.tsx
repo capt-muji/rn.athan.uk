@@ -1,7 +1,8 @@
 import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
+import { useDerivedProgress } from '@/hooks/useAnimation';
 import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, SPACING, STYLES, TEXT } from '@/shared/constants';
 import type { ScheduleType } from '@/shared/types';
@@ -26,8 +27,10 @@ export default function Countdown({ type }: Props) {
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const countdownBarShown = useAtomValue(countdownBarShownAtom);
 
+  const overlayProgress = useDerivedProgress(overlayIsOn ? 1 : 0, { defaultTiming: true });
+
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: withTiming(overlayIsOn ? 1.5 : 1) }, { translateY: withTiming(overlayIsOn ? 5 : 0) }],
+    transform: [{ scale: 1 + overlayProgress.value * 0.5 }, { translateY: overlayProgress.value * 5 }],
   }));
 
   // Show loading state if countdown not ready (sequence not initialized)

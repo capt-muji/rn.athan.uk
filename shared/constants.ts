@@ -843,6 +843,12 @@ export const ANIMATION = {
  * Ensures proper visual stacking order (popup > overlay > content > glow)
  */
 export const OVERLAY = {
+  /**
+   * The overlay closes when its schedule's next prayer is within this window
+   * (or has passed). Enforced by wall clock so a suspended crossing is caught
+   * on resume.
+   */
+  closeWindowMs: 2000,
   zindexes: {
     /** Popup/z-modal layer (highest) */
     popup: 1000,

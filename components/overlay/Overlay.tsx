@@ -1,12 +1,12 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
 import { PrayerExplanation } from '@/components/prayer';
-import { useAnimationOpacity } from '@/hooks/useAnimation';
+import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import {
   ANIMATION,
@@ -25,24 +25,16 @@ import { measurementsListAtom } from '@/stores/ui';
 /**
  * Overlay input layer for the focused prayer view (ADR-014, per-element)
  *
- * No content is duplicated and NOTHING visual sits over the page: the
- * background morphs to the veil gradient behind everything (VeilBackdrop),
- * non-selected content fades itself out, and the selected row / hero / date
- * highlight in place. This layer owns only input (the press-catcher with the
- * selected row exempt) and the extras explanation box.
- *
- * box-none while open: the catcher children remain tappable but the container
- * itself is never a touch target — taps in the row exempt pass through to the
- * REAL in-place row (RN hit-testing stops at the topmost candidate view).
- * While closed the subtree is display:none (ADR-013) — no draw, no
- * hit-testing; the latch delays the hide until the close fade-out finishes.
+ * No content is duplicated and NOTHING visual sits over the page. This layer
+ * owns only input (the press-catcher with the selected row exempt) and the
+ * extras explanation box, faded by a derived opacity.
  */
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
 
   const [visible, setVisible] = useState(overlay.isOn);
 
-  const layerOpacity = useAnimationOpacity(0);
+  const layerOpacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, { duration: ANIMATION.duration });
 
   const listMeasurements = useAtomValue(measurementsListAtom);
 
@@ -56,21 +48,22 @@ export default function Overlay() {
   // Layout effect: fires synchronously after the commit — the mark measures
   // the true commit span, not scheduler-deferred effect-flush latency
   useLayoutEffect(() => {
+    perfMeasure(
+      overlay.isOn ? 'overlay_open' : 'overlay_close',
+      overlay.isOn ? 'overlay_open_start' : 'overlay_close_start'
+    );
+  }, [overlay.isOn]);
+
+  // Hold the subtree displayable through the close fade-out, then hide it
+  useEffect(() => {
     if (overlay.isOn) {
       setVisible(true);
-      perfMeasure('overlay_open', 'overlay_open_start');
-      layerOpacity.animate(1, { duration: ANIMATION.duration });
       return;
     }
 
-    perfMeasure('overlay_close', 'overlay_close_start');
-    layerOpacity.animate(0, { duration: ANIMATION.duration });
-
-    // Hold the subtree displayable through the fade-out, then hide it
     const hideTimer = setTimeout(() => setVisible(false), ANIMATION.duration);
-
     return () => clearTimeout(hideTimer);
-  }, [overlay.isOn, layerOpacity.animate]);
+  }, [overlay.isOn]);
 
   // box-none: catchers catch, the row exempt falls through to the real row
   const computedStyleContainer: ViewStyle = {
@@ -123,7 +116,7 @@ export default function Overlay() {
   const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[overlay.selectedPrayerIndex] : null;
 
   return (
-    <Reanimated.View style={[styles.container, computedStyleContainer, layerOpacity.style]}>
+    <Reanimated.View style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
       {/* Prayer explanation box (extras only — overlay-native UI, faded by
           this layer; the background morph lives in VeilBackdrop) */}
       {isExtra && prayerName && explanation && explanationArabic && (

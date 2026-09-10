@@ -15,37 +15,36 @@
 
 jest.mock('react-native-reanimated', () => ({
   useSharedValue: jest.fn((initial: number) => ({ value: initial })),
-  withTiming: jest.fn(),
-  withSpring: jest.fn(),
-  withDelay: jest.fn(),
+  useDerivedValue: jest.fn(() => ({ value: 0 })),
   useAnimatedStyle: jest.fn(() => ({})),
   useAnimatedProps: jest.fn(() => ({})),
   interpolateColor: jest.fn(),
-  interpolate: jest.fn(),
+  withTiming: jest.fn(),
+  withSpring: jest.fn(),
+  withDelay: jest.fn(),
   runOnJS: jest.fn((fn) => fn),
-  cancelAnimation: jest.fn(),
-  Easing: { elastic: jest.fn() },
+}));
+
+jest.mock('@/stores/ui', () => ({
+  resyncAtom: {},
 }));
 
 jest.mock('@/shared/constants', () => ({
-  ANIMATION: { durationSlow: 300 },
-}));
-
-jest.mock('react', () => ({
-  useCallback: (fn: unknown) => fn,
+  ANIMATION: { duration: 200, durationSlow: 300 },
 }));
 
 describe('useAnimation exports', () => {
-  it('exports all 7 animation hooks', () => {
+  it('exports the imperative and derived animation hooks', () => {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const hooks = require('../useAnimation');
 
-    expect(typeof hooks.useAnimationColor).toBe('function');
     expect(typeof hooks.useAnimationOpacity).toBe('function');
     expect(typeof hooks.useAnimationScale).toBe('function');
-    expect(typeof hooks.useAnimationBounce).toBe('function');
-    expect(typeof hooks.useAnimationTranslateY).toBe('function');
-    expect(typeof hooks.useAnimationFill).toBe('function');
-    expect(typeof hooks.useAnimationBackgroundColor).toBe('function');
+    expect(typeof hooks.useDerivedProgress).toBe('function');
+    expect(typeof hooks.useDerivedOpacity).toBe('function');
+    expect(typeof hooks.useDerivedColor).toBe('function');
+    expect(typeof hooks.useDerivedBackgroundColor).toBe('function');
+    expect(typeof hooks.useDerivedTranslateY).toBe('function');
+    expect(typeof hooks.useDerivedFill).toBe('function');
   });
 });

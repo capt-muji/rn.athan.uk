@@ -8,8 +8,9 @@
 import { type Atom, atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { COUNTDOWN_BAR } from '@/shared/constants';
+import { COUNTDOWN_BAR, OVERLAY } from '@/shared/constants';
 import logger from '@/shared/logger';
+import { perfMark } from '@/shared/perf';
 import * as TimeUtils from '@/shared/time';
 import { CountdownKey, type CountdownStore, type Prayer, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
@@ -27,6 +28,10 @@ import {
 import { showSecondsAtom } from '@/stores/ui';
 
 const store = getDefaultStore();
+
+// Captured at open and refreshed each foreground tick. Checked before the
+// refresh so a boundary crossed while suspended still closes.
+let overlayBoundaryMs: number | null = null;
 
 const countdowns: Record<CountdownKey, ReturnType<typeof setTimeout> | undefined> = {
   [CountdownKey.Standard]: undefined,
@@ -214,6 +219,47 @@ const startWallClockTicker = (countdownKey: CountdownKey, tick: () => void) => {
   countdowns[countdownKey] = setTimeout(loop, TimeUtils.getWallSecondDelay());
 };
 
+// =============================================================================
+// OVERLAY CLOSE BOUNDARY (2s wall-clock deadline)
+// =============================================================================
+
+const armOverlayBoundary = (type: ScheduleType) => {
+  const nextPrayer = getNextPrayer(type);
+  overlayBoundaryMs = nextPrayer ? nextPrayer.datetime.getTime() : null;
+};
+
+const clearOverlayBoundary = () => {
+  overlayBoundaryMs = null;
+};
+
+/**
+ * Enforces the overlay's close deadline and refreshes it from the live next
+ * prayer. The stored deadline is checked first, so a resume data-refresh can
+ * never mask a boundary that already elapsed.
+ *
+ * Writes `isOn` directly (not via `stores/overlay.ts`) to keep the countdown
+ * store free of a cycle: the overlay store already imports this module.
+ */
+const checkOverlayBoundary = (): boolean => {
+  const overlay = store.get(overlayAtom);
+  if (!overlay.isOn) {
+    overlayBoundaryMs = null;
+    return false;
+  }
+
+  if (overlayBoundaryMs !== null && Date.now() >= overlayBoundaryMs - OVERLAY.closeWindowMs) {
+    perfMark('overlay_close_start', { scheduleType: overlay.scheduleType });
+    overlayBoundaryMs = null;
+    store.set(overlayAtom, { ...overlay, isOn: false });
+    writeDisplayCountdown(overlay.scheduleType);
+    return true;
+  }
+
+  const nextPrayer = getNextPrayer(overlay.scheduleType);
+  overlayBoundaryMs = nextPrayer ? nextPrayer.datetime.getTime() : null;
+  return false;
+};
+
 /**
  * Sequence-based countdown using prayer-centric model
  *
@@ -231,20 +277,16 @@ const startSequenceCountdown = (type: ScheduleType) => {
   const which = isStandard ? 'std' : 'extra';
 
   const tick = () => {
+    // Overlay close deadline first (stored deadline checked before any refresh)
+    checkOverlayBoundary();
+
     const upcoming = getNextPrayer(type);
     if (!upcoming) return;
 
     const nowMs = Date.now();
-    const overlay = store.get(overlayAtom);
 
     if (nowMs >= upcoming.datetime.getTime()) {
       clearCountdown(countdownKey);
-
-      // A suspended host crosses the boundary without ever running the T-3s
-      // close tick, so the overlay owes its close here instead
-      if (overlay.isOn && overlay.scheduleType === type) {
-        store.set(overlayAtom, { ...overlay, isOn: false });
-      }
 
       // Refresh sequence to advance to next prayer
       const transitionStart = Date.now();
@@ -253,13 +295,6 @@ const startSequenceCountdown = (type: ScheduleType) => {
 
       // Restart countdown with new next prayer
       return startSequenceCountdown(type);
-    }
-
-    // Pre-boundary lock: close the overlay as it enters the final 2-second
-    // window so it never straddles the boundary
-    const overlayMsLeft = upcoming.datetime.getTime() - nowMs;
-    if (overlay.isOn && overlay.scheduleType === type && overlayMsLeft <= 2000) {
-      store.set(overlayAtom, { ...overlay, isOn: false });
     }
 
     writeDisplayCountdown(type);
@@ -352,4 +387,4 @@ const startCountdowns = () => {
   startSequenceCountdown(ScheduleType.Extra);
 };
 
-export { startCountdowns, writeDisplayCountdown };
+export { armOverlayBoundary, checkOverlayBoundary, clearOverlayBoundary, startCountdowns, writeDisplayCountdown };

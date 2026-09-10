@@ -74,7 +74,7 @@ const {
   playingSoundIndexAtom,
   popupUpdateEnabledAtom,
   popupUpdateLastCheckAtom,
-  refreshUIAtom,
+  resyncAtom,
   setAlertSheetModal,
   setBottomSheetModal,
   setEnglishWidth,
@@ -83,8 +83,8 @@ const {
   setPlayingSoundIndex,
   setPopupUpdateEnabled,
   setPopupUpdateLastCheck,
-  setRefreshUI,
   setSettingsSheetModal,
+  bumpResync,
   settingsSheetModalAtom,
   showAlertSheet,
   showArabicNamesAtom,
@@ -267,10 +267,9 @@ describe('preference setter functions', () => {
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(playingSoundIndexAtom, 0);
   });
 
-  it('setRefreshUI sets timestamp', () => {
-    const timestamp = Date.now();
-    setRefreshUI(timestamp);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(refreshUIAtom, timestamp);
+  it('bumpResync advances the counter', () => {
+    bumpResync();
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(resyncAtom, expect.any(Function));
   });
 
   it('setPopupUpdateEnabled sets boolean', () => {
