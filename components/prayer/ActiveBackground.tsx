@@ -4,7 +4,7 @@ import Animated, { Easing } from 'react-native-reanimated';
 
 import { useDerivedOpacity, useDerivedTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
+import { ANIMATION, COLORS, EXTRAS_ENGLISH, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
 
@@ -24,7 +24,17 @@ export default function ActiveBackground({ type }: Props) {
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
   const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
 
-  const yPosition = (isReady && nextPrayerIndex >= 0 ? nextPrayerIndex : 0) * STYLES.prayer.height;
+  // nextPrayerIndex is the next prayer's position in the chronological
+  // sequence, not its on-screen row: Extras rows display in canonical rank
+  // order (see canonicalDisplayOrder), which the chronological index does not
+  // generally match. Resolve the pill's actual visual row from the next
+  // prayer's name (Standard has no such reordering, so its index is already
+  // the visual row).
+  const isExtra = type === ScheduleType.Extra;
+  const nextPrayerVisualRow =
+    isExtra && nextPrayerIndex >= 0 ? EXTRAS_ENGLISH.indexOf(todayPrayers[nextPrayerIndex].english) : nextPrayerIndex;
+
+  const yPosition = (isReady && nextPrayerVisualRow >= 0 ? nextPrayerVisualRow : 0) * STYLES.prayer.height;
 
   const translateStyle = useDerivedTranslateY(yPosition, {
     duration: ANIMATION.durationSlow,
