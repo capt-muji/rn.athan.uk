@@ -552,6 +552,82 @@ describe('overlay pre-boundary auto-close', () => {
 });
 
 // =============================================================================
+// OVERLAY CLOSE DEADLINE (stored boundary)
+// =============================================================================
+
+describe('overlay close deadline', () => {
+  const { getDefaultStore } = require('jotai/vanilla');
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('closes on the stored deadline even when the live next prayer moved far away', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:58.000Z'));
+
+    const defaultStore = getDefaultStore();
+    defaultStore.set(mockOverlayAtom, { isOn: true, selectedPrayerIndex: 0, scheduleType: 'standard' });
+
+    const { getNextPrayer } = require('@/stores/schedule');
+    (getNextPrayer as jest.Mock).mockReturnValue({
+      english: 'Asr',
+      datetime: new Date('2026-01-20T06:15:00.000Z'),
+      belongsToDate: '2026-01-20',
+    });
+
+    const { armOverlayBoundary, checkOverlayBoundary } = require('../countdown');
+    armOverlayBoundary(ScheduleType.Standard);
+
+    // A resume data-refresh advances the live next prayer past the followed one
+    (getNextPrayer as jest.Mock).mockReturnValue({
+      english: 'Magrib',
+      datetime: new Date('2026-01-20T07:00:00.000Z'),
+      belongsToDate: '2026-01-20',
+    });
+
+    jest.setSystemTime(new Date('2026-01-20T06:14:59.500Z')); // inside the stored deadline window
+
+    expect(checkOverlayBoundary()).toBe(true);
+    expect(defaultStore.get(mockOverlayAtom).isOn).toBe(false);
+  });
+});
+
+// =============================================================================
+// FOREGROUND CATCH-UP (resyncCountdowns)
+// =============================================================================
+
+describe('resyncCountdowns', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('refreshes a boundary crossed while suspended and restarts the tickers', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:16:00.000Z')); // one minute after the boundary
+
+    // The stale next prayer is the one that passed while the host was frozen
+    const { getNextPrayer } = require('@/stores/schedule');
+    (getNextPrayer as jest.Mock).mockReturnValue({
+      english: 'Asr',
+      datetime: new Date('2026-01-20T06:15:00.000Z'),
+      belongsToDate: '2026-01-20',
+    });
+
+    const { resyncCountdowns } = require('../countdown');
+    resyncCountdowns();
+
+    expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Standard);
+    expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Extra);
+    expect(jest.getTimerCount()).toBeGreaterThan(0);
+  });
+});
+
+// =============================================================================
 // RENDER-GRANULAR SELECTORS (#10)
 // =============================================================================
 

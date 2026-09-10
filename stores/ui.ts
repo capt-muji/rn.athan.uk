@@ -33,8 +33,11 @@ export const alertSheetModalAtom = atom<BottomSheetModal | null>(null);
 /** Index of currently playing sound preview in bottom sheet (null if none) */
 export const playingSoundIndexAtom = atom<number | null>(null);
 
-/** Timestamp to trigger UI refresh (used for cascade animations) */
-export const refreshUIAtom = atom<number>(Date.now());
+/**
+ * Bumped on every foreground return. Derived animation mappers depend on it so
+ * they re-run and snap on resume, replacing the old `refreshUI` re-fire effects.
+ */
+export const resyncAtom = atom<number>(0);
 
 /** Whether the app update popup should be shown */
 export const popupUpdateEnabledAtom = atom(false);
@@ -173,8 +176,8 @@ export const getAlertSheetState = () => store.get(alertSheetStateAtom);
 /** Sets the index of the currently playing sound preview */
 export const setPlayingSoundIndex = (index: number | null) => store.set(playingSoundIndexAtom, index);
 
-/** Triggers a UI refresh by updating the timestamp */
-export const setRefreshUI = (timestamp: number) => store.set(refreshUIAtom, timestamp);
+/** Triggers a UI refresh by advancing the resume counter */
+export const bumpResync = () => store.set(resyncAtom, (value) => value + 1);
 
 /** Allows the sound sheet's list to mount (set when the settings sheet first fully opens) */
 export const setSoundListReady = () => store.set(soundListReadyAtom, true);

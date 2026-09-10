@@ -1,18 +1,20 @@
 /**
  * Overlay state management
- * Part of the new prayer-centric timing system
  *
- * @see ai/adr/005-timing-system-overhaul.md
- * @see ai/adr/014 (in-place re-architecture; the ≤2s pre-boundary open lock is
- * removed — the overlay rides the cascade via selection-follows-next-prayer)
+ * `isOn` changes only on the owner's tap, app close, and the 2 second schedule
+ * boundary. `openOverlay` and `closeOverlay` are the only writers.
+ *
+ * @see ai/features/overlay/spec.md
+ * @see ai/adr/015/ADR.md
  */
 
 import { getDefaultStore } from 'jotai/vanilla';
 
+import { OVERLAY } from '@/shared/constants';
 import { perfMark } from '@/shared/perf';
 import type { ScheduleType } from '@/shared/types';
 import { overlayAtom as overlayAtomImport } from '@/stores/atoms/overlay';
-import { getCountdownAtom, writeDisplayCountdown } from '@/stores/countdown';
+import { armOverlayBoundary, clearOverlayBoundary, writeDisplayCountdown } from '@/stores/countdown';
 import { getNextPrayer } from '@/stores/schedule';
 
 // Re-export for backward compatibility
@@ -26,58 +28,45 @@ const store = getDefaultStore();
 // --- Actions ---
 
 /**
- * Guards the pre-boundary window: the overlay may not open or retarget inside
- * the final 2 displayed seconds, so it can never straddle a prayer boundary
- * (an all-passed schedule has no boundary to straddle and is always allowed)
+ * Guards against the TRUE remaining milliseconds, not the displayed atom which
+ * can be up to a second stale. An all-passed schedule has no boundary to straddle.
  */
-const canShowOverlay = (type: ScheduleType): boolean => {
+const canOpenOverlay = (type: ScheduleType): boolean => {
   const nextPrayer = getNextPrayer(type);
   if (!nextPrayer) return true;
 
-  const timeLeft = store.get(getCountdownAtom(type)).timeLeft;
-  return timeLeft > 2;
+  return nextPrayer.datetime.getTime() - Date.now() > OVERLAY.closeWindowMs;
 };
 
-/**
- * Toggles the overlay visibility
- *
- * Can force a specific state or toggle current state.
- * Guards against opening when countdown is too low (≤2 seconds).
- *
- * @param force Optional boolean to force specific state (true = open, false = close)
- */
+const openOverlay = (type: ScheduleType, index: number) => {
+  const overlay = store.get(overlayAtom);
+  if (overlay.isOn) return;
+  if (!canOpenOverlay(type)) return;
+
+  perfMark('overlay_open_start', { scheduleType: type });
+  armOverlayBoundary(type);
+  store.set(overlayAtom, { isOn: true, selectedPrayerIndex: index, scheduleType: type });
+
+  // Flip the hero display on the toggle instant, not the next wall-second tick
+  writeDisplayCountdown(type);
+};
+
+const closeOverlay = () => {
+  const overlay = store.get(overlayAtom);
+  if (!overlay.isOn) return;
+
+  perfMark('overlay_close_start', { scheduleType: overlay.scheduleType });
+  clearOverlayBoundary();
+  store.set(overlayAtom, { ...overlay, isOn: false });
+  writeDisplayCountdown(overlay.scheduleType);
+};
+
 const toggleOverlay = (force?: boolean) => {
   const overlay = store.get(overlayAtom);
   const newState = force !== undefined ? force : !overlay.isOn;
 
-  // Don't allow opening if countdown is too low
-  if (!overlay.isOn && newState && !canShowOverlay(overlay.scheduleType)) return;
-
-  perfMark(newState ? 'overlay_open_start' : 'overlay_close_start', { scheduleType: overlay.scheduleType });
-  store.set(overlayAtom, { ...overlay, isOn: newState });
-
-  // Instant page-countdown write (ADR-014 countdown merge): the page atom
-  // must flip to its new display target on the toggle instant — waiting for
-  // the next wall-second tick would show the stale target for up to 1s
-  writeDisplayCountdown(overlay.scheduleType);
+  if (newState) openOverlay(overlay.scheduleType, overlay.selectedPrayerIndex);
+  else closeOverlay();
 };
 
-/**
- * Sets the selected prayer for overlay display
- *
- * Updates the overlay state with the new prayer index and schedule type,
- * then writes the new display target into the page countdown atom instantly.
- * Guards against selection when countdown is too low (≤2 seconds).
- *
- * @param scheduleType Schedule type (Standard or Extra)
- * @param index Prayer index within the schedule
- */
-const setSelectedPrayerIndex = (scheduleType: ScheduleType, index: number) => {
-  if (!canShowOverlay(scheduleType)) return;
-
-  const overlay = store.get(overlayAtom);
-  store.set(overlayAtom, { ...overlay, selectedPrayerIndex: index, scheduleType });
-  writeDisplayCountdown(scheduleType);
-};
-
-export { setSelectedPrayerIndex, toggleOverlay };
+export { closeOverlay, openOverlay, toggleOverlay };

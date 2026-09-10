@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
-import { memo, useLayoutEffect } from 'react';
+import { memo, useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
@@ -9,7 +9,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Screen from '@/app/Screen';
 import { VeilBackdrop } from '@/components/overlay';
 import { BackgroundGradients, RamadanDecorations, SettingsButton } from '@/components/ui';
-import { useAnimationOpacity } from '@/hooks/useAnimation';
+import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
@@ -24,19 +24,18 @@ const MemoSettingsButton = memo(SettingsButton);
 
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
-  const dot0Animation = useAnimationOpacity(1);
-  const dot1Animation = useAnimationOpacity(0.25);
+  // Derived from state, not an effect: a suspend-dropped write cannot strand
+  // (see ai/features/overlay/spec.md)
+  const [currentPage, setCurrentPage] = useState(0);
+  const dot0OpacityStyle = useDerivedOpacity(currentPage === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
+  const dot1OpacityStyle = useDerivedOpacity(currentPage === 1 ? 1 : 0.25, { duration: ANIMATION.duration });
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
-  const chromeOpacity = useAnimationOpacity(1);
+  // Per-element veil (ADR-014): chrome (dots, settings, decorations) fades out
+  // with the overlay — the old overlay hid it under the gradient
+  const chromeOpacityStyle = useDerivedOpacity(overlayIsOn ? 0 : 1, { duration: ANIMATION.duration });
   // Veil + decorations mount past the first content frame (launch chrome
   // defer); the veil pairs with the overlay, which defers on the same cadence
   const chromeDeferred = useChromeDeferred();
-
-  // Per-element veil (ADR-014): chrome (dots, settings, decorations) fades
-  // out with the overlay's fade — the old overlay hid it under the gradient
-  useLayoutEffect(() => {
-    chromeOpacity.animate(overlayIsOn ? 0 : 1, { duration: ANIMATION.duration });
-  }, [overlayIsOn, chromeOpacity.animate]);
 
   const handlePageScrollState = (e: { nativeEvent: { pageScrollState: string } }) => {
     const state = e.nativeEvent.pageScrollState;
@@ -59,8 +58,7 @@ export default function Navigation() {
     }
 
     perfMeasure('pager_page', 'pager_swipe_start', { position });
-    dot0Animation.animate(position === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
-    dot1Animation.animate(position === 1 ? 1 : 0.25, { duration: ANIMATION.duration });
+    setCurrentPage(position);
   };
 
   return (
@@ -68,7 +66,7 @@ export default function Navigation() {
       <BackgroundGradients />
       {chromeDeferred && (
         <>
-          <Animated.View style={[styles.chromeLayer, chromeOpacity.style]} pointerEvents='box-none'>
+          <Animated.View style={[styles.chromeLayer, chromeOpacityStyle]} pointerEvents='box-none'>
             <RamadanDecorations />
           </Animated.View>
           {/* Veil backdrop (ADR-014): the overlay gradient + glow BEHIND content,
@@ -103,14 +101,14 @@ export default function Navigation() {
         style={[
           styles.dotsContainer,
           { bottom: Platform.OS === 'android' ? bottom + SPACING.md : Math.max(bottom, SPACING.xl) },
-          chromeOpacity.style,
+          chromeOpacityStyle,
         ]}>
         <View style={styles.buttonWrapper}>
           <MemoSettingsButton />
         </View>
         <View style={styles.dotsRow}>
-          <Animated.View style={[styles.dot, dot0Animation.style]} />
-          <Animated.View style={[styles.dot, dot1Animation.style]} />
+          <Animated.View style={[styles.dot, dot0OpacityStyle]} />
+          <Animated.View style={[styles.dot, dot1OpacityStyle]} />
         </View>
       </Animated.View>
     </View>

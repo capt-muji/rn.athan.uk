@@ -1,11 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAtomValue } from 'jotai';
-import { memo, useEffect, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 
 import { Glow } from '@/components/ui';
-import { useAnimationOpacity } from '@/hooks/useAnimation';
+import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, SIZE } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
@@ -19,20 +19,14 @@ const MemoizedGlow = memo(Glow);
  * Veil backdrop for the in-place overlay (ADR-014, pixel-parity revision)
  *
  * Sits INSIDE the underlay (above BackgroundGradients, below the pager
- * content) so the veil's holes reveal content resting on the exact gradient
- * the old duplicated overlay painted behind its copies: the opaque overlay
- * gradient plus the top-left glow BEHIND the hero text (crisp, not tinted).
- * Fades in lockstep with the veil layer — the composite is the original
- * overlay's single fade.
+ * content) so the veil reveals content resting on the exact gradient the old
+ * duplicated overlay painted behind its copies.
  */
 export default function VeilBackdrop() {
   const overlay = useAtomValue(overlayAtom);
-  const opacity = useAnimationOpacity(0);
   const window = useWindowDimensions();
 
-  useEffect(() => {
-    opacity.animate(overlay.isOn ? 1 : 0, { duration: ANIMATION.duration });
-  }, [overlay.isOn, opacity.animate]);
+  const opacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, { duration: ANIMATION.duration });
 
   const isExtra = overlay.scheduleType === ScheduleType.Extra;
   const glowColor = isExtra ? COLORS.glow.overlayExtras : COLORS.glow.overlay;
@@ -49,7 +43,7 @@ export default function VeilBackdrop() {
   );
 
   return (
-    <Reanimated.View style={[styles.container, opacity.style]} pointerEvents='none'>
+    <Reanimated.View style={[styles.container, opacityStyle]} pointerEvents='none'>
       <LinearGradient
         colors={[COLORS.gradient.overlay.start, COLORS.gradient.overlay.end]}
         start={{ x: 0, y: 0 }}
