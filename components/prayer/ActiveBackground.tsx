@@ -53,6 +53,13 @@ export default function ActiveBackground({ type }: Props) {
     AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
   }, [isHiddenByOverlay, AnimOpacity.animate]);
 
+  // Re-issue on resume: the boundary tick closes the overlay from outside React,
+  // and a veil write dropped while the host wound down never re-fires on its own
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; isHiddenByOverlay is read from the fresh render closure at signal time
+  useEffect(() => {
+    AnimOpacity.animate(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
+  }, [refreshUI]);
+
   // This effect runs after render and handles all animation logic
   // Benefits:
   // 1. Follows Reanimated v4's worklet rules (no shared value modifications during render)
