@@ -7,6 +7,7 @@ import Reanimated from 'react-native-reanimated';
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
 import { PrayerExplanation } from '@/components/prayer';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
+import { usePrayer } from '@/hooks/usePrayer';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import {
   ANIMATION,
@@ -71,26 +72,32 @@ export default function Overlay() {
     display: visible ? 'flex' : 'none',
   };
 
+  const isExtra = overlay.scheduleType === ScheduleType.Extra;
+
+  // selectedPrayerIndex is the prayer's position in the chronological
+  // sequence (matches usePrayer/getOverlayTarget elsewhere), not its on-screen
+  // row: Extras rows display in canonical rank order (Midnight, Last Third,
+  // Suhoor, Duha, Istijaba — see canonicalDisplayOrder), which the raw
+  // chronological index does not generally match. Resolve the actual visual
+  // row from the selected prayer's name for every position/content lookup
+  // below. Standard has no such reordering, so its index is already correct.
+  const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
+  const visualRowIndex = isExtra ? EXTRAS_ENGLISH.indexOf(selectedPrayer.english) : overlay.selectedPrayerIndex;
+
   const catcherRegions = buildCatcherRegions({
     windowWidth: window.width,
     windowHeight: window.height,
     list: listMeasurements.width > 0 ? listMeasurements : null,
-    rowIndex: overlay.selectedPrayerIndex,
+    rowIndex: visualRowIndex,
   });
 
   // Info box geometry: unchanged from the copy era (list measurement anchors)
-  const showInfoBoxAbove = overlay.selectedPrayerIndex >= 3;
+  const showInfoBoxAbove = visualRowIndex >= 3;
   const INFO_BOX_HEIGHT = 300;
-
-  const isExtra = overlay.scheduleType === ScheduleType.Extra;
 
   // Info box positioned below prayer row (for first 3 items)
   const computedStyleInfoBoxBelow: ViewStyle = {
-    top:
-      (listMeasurements?.pageY ?? 0) +
-      overlay.selectedPrayerIndex * STYLES.prayer.height +
-      STYLES.prayer.height +
-      SPACING.sm,
+    top: (listMeasurements?.pageY ?? 0) + visualRowIndex * STYLES.prayer.height + STYLES.prayer.height + SPACING.sm,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
     height: INFO_BOX_HEIGHT,
@@ -98,11 +105,7 @@ export default function Overlay() {
 
   // Info box positioned above prayer row (for items 4+)
   const computedStyleInfoBoxAbove: ViewStyle = {
-    top:
-      (listMeasurements?.pageY ?? 0) +
-      overlay.selectedPrayerIndex * STYLES.prayer.height -
-      INFO_BOX_HEIGHT -
-      SPACING.sm,
+    top: (listMeasurements?.pageY ?? 0) + visualRowIndex * STYLES.prayer.height - INFO_BOX_HEIGHT - SPACING.sm,
     left: listMeasurements?.pageX ?? 0,
     width: listMeasurements?.width ?? 0,
     height: INFO_BOX_HEIGHT,
@@ -111,9 +114,9 @@ export default function Overlay() {
 
   const computedStyleInfoBox = showInfoBoxAbove ? computedStyleInfoBoxAbove : computedStyleInfoBoxBelow;
 
-  const prayerName = isExtra ? EXTRAS_ENGLISH[overlay.selectedPrayerIndex] : null;
-  const explanation = isExtra ? EXTRAS_EXPLANATIONS[overlay.selectedPrayerIndex] : null;
-  const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[overlay.selectedPrayerIndex] : null;
+  const prayerName = isExtra ? selectedPrayer.english : null;
+  const explanation = isExtra ? EXTRAS_EXPLANATIONS[visualRowIndex] : null;
+  const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[visualRowIndex] : null;
 
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
