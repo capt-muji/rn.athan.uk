@@ -3,7 +3,7 @@ import { SystemBars } from 'react-native-edge-to-edge';
 
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
-import { checkOverlayBoundary } from '@/stores/countdown';
+import { checkOverlayBoundary, resyncCountdowns } from '@/stores/countdown';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { sync } from '@/stores/sync';
 import { bumpResync } from '@/stores/ui';
@@ -25,9 +25,11 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
 
     if (returningToForeground) {
       // A boundary that elapsed while the host was suspended closes the
-      // overlay; then every derived animation re-runs and snaps. When the
-      // deadline has not elapsed both are inert, so resume changes nothing.
+      // overlay; the countdowns catch up to the wall clock; then every derived
+      // animation re-runs and snaps. The OS freezes JS in the background, so
+      // this instant catch-up is what keeps the first visible frame correct.
       checkOverlayBoundary();
+      resyncCountdowns();
       bumpResync();
     }
 

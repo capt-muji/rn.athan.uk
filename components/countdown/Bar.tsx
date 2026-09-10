@@ -15,7 +15,7 @@ import { useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
-import { countdownBarColorAtom } from '@/stores/ui';
+import { countdownBarColorAtom, resyncAtom } from '@/stores/ui';
 
 /** Fast timing for large progress jumps (>50%) */
 const TIMING_CONFIG_FAST = {
@@ -66,6 +66,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const atomColor = useAtomValue(countdownBarColorAtom);
+  const resync = useAtomValue(resyncAtom);
 
   const countdownBarColor = previewColor ?? atomColor;
   const progress = previewProgress ?? (isReady ? 100 - elapsedProgress : 0);
@@ -76,20 +77,26 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 
   const isFirstRender = useRef(true);
   const prevProgress = useRef(progress);
+  const lastResync = useRef(resync);
 
   // Progress width and warning color animation
   useEffect(() => {
+    const isResume = lastResync.current !== resync;
+    lastResync.current = resync;
+
     if (isFirstRender.current) {
       widthValue.value = progress;
       colorValue.value = isWarning ? 1 : 0;
       isFirstRender.current = false;
+    } else if (isResume || reducedMotion) {
+      // Resume snaps: the bar must be correct instantly, never animate a
+      // catch-up from the width it held before the host was suspended
+      widthValue.value = progress;
+      colorValue.value = isWarning ? 1 : 0;
     } else {
       const progressDiff = Math.abs(progress - prevProgress.current);
 
-      if (reducedMotion) {
-        widthValue.value = progress;
-        colorValue.value = isWarning ? 1 : 0;
-      } else if (progressDiff > 50) {
+      if (progressDiff > 50) {
         // Large jumps (prayer transition refill) are visible — animate them.
         // Width animates a Yoga layout property, so this is the only path
         // allowed to drive per-frame layout work
@@ -110,7 +117,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       }
     }
     prevProgress.current = progress;
-  }, [progress, isWarning, reducedMotion, widthValue, colorValue]);
+  }, [progress, isWarning, reducedMotion, widthValue, colorValue, resync]);
 
   // Overlay visibility is derived; reduced motion snaps it
   const wrapperOpacityStyle = useDerivedOpacity(isPreviewMode || !overlayIsOn ? 1 : 0, {

@@ -7,7 +7,7 @@ import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, SPACING, STYLES, TEXT } from '@/shared/constants';
 import type { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
-import { countdownBarShownAtom } from '@/stores/ui';
+import { countdownBarShownAtom, resyncAtom } from '@/stores/ui';
 
 import Bar from './Bar';
 
@@ -26,12 +26,18 @@ export default function Countdown({ type }: Props) {
 
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const countdownBarShown = useAtomValue(countdownBarShownAtom);
+  const resync = useAtomValue(resyncAtom);
 
   const overlayProgress = useDerivedProgress(overlayIsOn ? 1 : 0, { defaultTiming: true });
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: 1 + overlayProgress.value * 0.5 }, { translateY: overlayProgress.value * 5 }],
-  }));
+  // Mapper must take resync as a dependency: a restart alone doesn't force
+  // Reanimated to re-apply an unchanged value (see ai/features/overlay/spec.md)
+  const animatedStyle = useAnimatedStyle(
+    () => ({
+      transform: [{ scale: 1 + overlayProgress.value * 0.5 }, { translateY: overlayProgress.value * 5 }],
+    }),
+    [resync]
+  );
 
   // Show loading state if countdown not ready (sequence not initialized)
   if (!isReady && !overlayIsOn) {

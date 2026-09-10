@@ -596,6 +596,38 @@ describe('overlay close deadline', () => {
 });
 
 // =============================================================================
+// FOREGROUND CATCH-UP (resyncCountdowns)
+// =============================================================================
+
+describe('resyncCountdowns', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('refreshes a boundary crossed while suspended and restarts the tickers', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:16:00.000Z')); // one minute after the boundary
+
+    // The stale next prayer is the one that passed while the host was frozen
+    const { getNextPrayer } = require('@/stores/schedule');
+    (getNextPrayer as jest.Mock).mockReturnValue({
+      english: 'Asr',
+      datetime: new Date('2026-01-20T06:15:00.000Z'),
+      belongsToDate: '2026-01-20',
+    });
+
+    const { resyncCountdowns } = require('../countdown');
+    resyncCountdowns();
+
+    expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Standard);
+    expect(refreshSequence).toHaveBeenCalledWith(ScheduleType.Extra);
+    expect(jest.getTimerCount()).toBeGreaterThan(0);
+  });
+});
+
+// =============================================================================
 // RENDER-GRANULAR SELECTORS (#10)
 // =============================================================================
 
