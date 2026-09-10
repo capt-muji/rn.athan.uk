@@ -11,6 +11,7 @@ import { loadable } from 'jotai/utils';
 import * as Api from '@/api/client';
 import { APP_CONFIG } from '@/shared/config';
 import logger from '@/shared/logger';
+import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import * as Countdown from '@/stores/countdown';
@@ -31,6 +32,23 @@ const shouldFetchNextYear = (): boolean => {
   const fetchedYears = Database.getItem('fetched_years') || {};
   const nextYear = TimeUtils.getCurrentYear() + 1;
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
+};
+
+// Corrects `year`'s Dec 31 derived Midnight/Last-Third once `year + 1`'s Jan 1
+// is also cached (see PrayerUtils.correctYearBoundaryDerivedTimes for why
+// this is needed). A no-op if either date isn't cached yet, or if the derived
+// times are already correct — safe to call speculatively whenever a year
+// boundary fetch has just landed.
+const fixYearBoundaryDerivedTimes = (year: number) => {
+  const decemberThirtyFirst = Database.getPrayerByDate(new Date(year, 11, 31));
+  const nextYearFirstDay = Database.getPrayerByDate(new Date(year + 1, 0, 1));
+  if (!decemberThirtyFirst || !nextYearFirstDay) return;
+
+  const corrected = PrayerUtils.correctYearBoundaryDerivedTimes(decemberThirtyFirst, nextYearFirstDay.fajr);
+  if (corrected === decemberThirtyFirst) return;
+
+  Database.saveAllPrayers([corrected]);
+  logger.info('SYNC: Corrected Dec 31 derived times using next year Fajr', { year });
 };
 
 // --- Actions ---
@@ -65,6 +83,13 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
       const fetchedPrevYearData = await Api.fetchYear(date.getFullYear() - 1);
       Database.saveAllPrayers(fetchedPrevYearData);
       Database.markYearAsFetched(date.getFullYear() - 1);
+
+      // The current year's Jan 1 is already cached by this point — either
+      // fetched earlier in this same call (needsDataUpdate's non-seamless
+      // path, above) or already cached from a prior December's prefetch
+      // (the seamless path, where updatePrayerData is skipped entirely) —
+      // so the previous year's Dec 31 can be corrected immediately either way.
+      fixYearBoundaryDerivedTimes(date.getFullYear() - 1);
 
       logger.info('SYNC: Previous year data fetched and saved');
     }
@@ -150,6 +175,10 @@ const updatePrayerData = async () => {
         Database.saveAllPrayers(nextYearData);
         Database.markYearAsFetched(nextYear);
 
+        // Current year's Dec 31 was cached earlier without next year's Jan 1
+        // available yet; correct it now that next year just landed.
+        fixYearBoundaryDerivedTimes(currentYear);
+
         logger.info('SYNC: Data refresh complete (next year only)', { nextYear });
       } catch (error) {
         logger.warn('SYNC: Next year data not yet available, will retry on next sync', { nextYear, error });
@@ -193,6 +222,12 @@ const updatePrayerData = async () => {
           nextYear,
           error: nextYearResult.reason,
         });
+      }
+
+      // Only correctable when both years actually landed this round — a
+      // failed next-year fetch means there's nothing new to correct with yet.
+      if (currentYearResult.status === 'fulfilled' && nextYearResult.status === 'fulfilled') {
+        fixYearBoundaryDerivedTimes(currentYear);
       }
 
       if (currentYearResult.status === 'rejected') throw currentYearResult.reason;

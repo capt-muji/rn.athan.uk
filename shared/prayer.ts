@@ -88,6 +88,37 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
   return transformations;
 };
 
+/**
+ * Recomputes December 31's derived Midnight/Last-Third using the following
+ * year's Fajr, once it is known.
+ *
+ * transformApiData processes one year's payload at a time, so the last day of
+ * that payload has no next-day entry to read Fajr from and falls back to that
+ * same day's own Fajr (see the nextDayFajr fallback above) — off by whatever
+ * the real dawn-to-dawn drift is for that night, typically 1-2 minutes.
+ * Called once both years are cached (see stores/sync.ts), this corrects just
+ * those two fields using the true next-year Fajr. A no-op (returns the same
+ * object reference) when the derived times are already correct, so callers
+ * can skip writing anything back.
+ *
+ * @param decemberThirtyFirst The cached Dec 31 record to correct
+ * @param nextYearFirstFajr Jan 1 (next year)'s Fajr time, HH:mm
+ * @returns The corrected record, or the same reference if nothing changed
+ */
+export const correctYearBoundaryDerivedTimes = (
+  decemberThirtyFirst: ISingleApiResponseTransformed,
+  nextYearFirstFajr: string
+): ISingleApiResponseTransformed => {
+  const correctedMidnight = TimeUtils.getMidnightTime(decemberThirtyFirst.magrib, nextYearFirstFajr);
+  const correctedLastThird = TimeUtils.getLastThirdOfNight(decemberThirtyFirst.magrib, nextYearFirstFajr);
+
+  const unchanged =
+    correctedMidnight === decemberThirtyFirst.midnight && correctedLastThird === decemberThirtyFirst['last third'];
+  if (unchanged) return decemberThirtyFirst;
+
+  return { ...decemberThirtyFirst, midnight: correctedMidnight, 'last third': correctedLastThird };
+};
+
 // =============================================================================
 // UI HELPER FUNCTIONS
 // Used by components for animations and measurements
