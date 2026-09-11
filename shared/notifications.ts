@@ -1,4 +1,3 @@
-import { addDays, format } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
@@ -155,12 +154,9 @@ export const findStaleScheduledNotificationIds = (
  * Index 0 is the start date (today if not specified)
  */
 export const genNextXDays = (numberOfDays: number): string[] => {
-  const today = TimeUtils.createLondonDate();
+  const today = TimeUtils.getTodayDateString();
 
-  return Array.from({ length: numberOfDays }, (_, i) => {
-    const date = addDays(today, i);
-    return format(date, 'yyyy-MM-dd');
-  });
+  return Array.from({ length: numberOfDays }, (_, i) => TimeUtils.addDaysToDateString(today, i));
 };
 
 /**

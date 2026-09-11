@@ -5,7 +5,6 @@
  * @see ai/adr/005-timing-system-overhaul.md
  */
 
-import { subDays } from 'date-fns';
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
@@ -56,8 +55,9 @@ export const getSequenceAtom = (type: ScheduleType) => {
  * const prevPrayer = getYesterdayFinalPrayer(ScheduleType.Extra);
  */
 function getYesterdayFinalPrayer(type: ScheduleType): Prayer {
-  const yesterday = subDays(TimeUtils.createLondonDate(), 1);
-  const prevDayData = Database.getPrayerByDate(yesterday)!;
+  const today = TimeUtils.getTodayDateString();
+  const yesterday = TimeUtils.getPreviousDateString(today);
+  const prevDayData = Database.getPrayerByDateString(yesterday)!;
 
   // Sync layer ensures data exists - no null check needed
   // See ADR-004: "Trust the data layer: UI never has fallbacks"
@@ -79,7 +79,7 @@ function getYesterdayFinalPrayer(type: ScheduleType): Prayer {
     type,
     english: englishNames[finalIndex],
     arabic: arabicNames[finalIndex],
-    date: TimeUtils.formatDateShort(yesterday),
+    date: yesterday,
     time: prayerTime,
   });
 
@@ -315,11 +315,15 @@ export const refreshSequence = (type: ScheduleType): void => {
 
   // Check if we need to fetch more prayers using helper
   if (shouldFetchMorePrayers(relevantPrayers, now)) {
-    // Fetch more days starting from tomorrow
-    const tomorrow = TimeUtils.createLondonDate();
-    tomorrow.setDate(tomorrow.getDate() + 1);
+    // Normally the buffer still holds today's list and only the days after it
+    // are missing. After a long suspension nothing from today on may be left,
+    // and then today's remaining prayers must come back too, not only tomorrow's
+    const today = TimeUtils.getTodayDateString();
+    const reachesToday = relevantPrayers.some((prayer) => prayer.belongsToDate >= today);
+    const firstNewDay = reachesToday ? TimeUtils.addDaysToDateString(today, 1) : today;
+    const firstNewDayAnchor = TimeUtils.getDayAnchor(firstNewDay);
 
-    const newSequence = PrayerUtils.createPrayerSequence(type, tomorrow, 3);
+    const newSequence = PrayerUtils.createPrayerSequence(type, firstNewDayAnchor, 3);
 
     // Merge and deduplicate using helper
     const mergedPrayers = mergeAndDeduplicatePrayers(relevantPrayers, newSequence.prayers);
@@ -328,6 +332,7 @@ export const refreshSequence = (type: ScheduleType): void => {
 
     logger.info('SEQUENCE: Refreshed with new prayers', {
       type,
+      firstNewDay,
       previousCount: sequence.prayers.length,
       newCount: mergedPrayers.length,
     });

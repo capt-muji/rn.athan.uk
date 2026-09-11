@@ -515,3 +515,4 @@ The Terminology table defines prayer Midnight as the midpoint between yesterday'
 - `getNightTimesForDay` (shared/prayer.ts) works out the night leading into a day from the previous day's Magrib and the day's own Fajr, as exact instants measured in real elapsed time (clock-change nights included). Nothing about the night is stored.
 - Notifications and reminders fire at the list row's own `datetime` (`getPrayerForDate`), so an alert can never land on a different night than its row.
 - The Standard list is unchanged: a calendar prayer day from Fajr to Isha, where an Isha after 00:00 stays with its day.
+- Calendar days are the prayer timezone's on every phone, whatever the phone's own timezone (ISSUES #30).
