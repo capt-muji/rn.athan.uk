@@ -29,7 +29,6 @@
  * @see widgets/LockPrayerWidget.tsx - Lock Screen widget layouts (both schedules)
  */
 
-import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 import { Platform } from 'react-native';
 
@@ -223,7 +222,9 @@ const pushScheduleTimelines = async (
 
   try {
     const now = TimeUtils.createLondonDate();
-    const startDate = addDays(now, -1);
+    const today = TimeUtils.getTodayDateString();
+    const yesterday = TimeUtils.getPreviousDateString(today);
+    const startDate = TimeUtils.getDayAnchor(yesterday);
     const settings = readWidgetSettings();
 
     // Includes yesterday in the sequence span so the segment covering `now`

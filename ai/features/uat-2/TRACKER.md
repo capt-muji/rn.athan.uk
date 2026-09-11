@@ -20,11 +20,11 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 | 5 | Notifications and reminders fire exactly when their row says (one source of truth) | `fix/night-times` | 🔀 uat-2 |
 | 6 | Night times worked out when the list is built (stored night fields and the Dec 31 patch removed) | `fix/night-times` | 🔀 uat-2 |
 | 7 | Heavy tests, a 3T check, and a 5-minute test for the owner | `fix/night-times` | 🔀 uat-2 (3T ✅; owner's 5-minute test pending) |
-| 8 | Phones set to other timezones: dates follow the prayer timezone (needed for v2.0) | `fix/year-boundary` | ⏳ |
-| 9 | The extra download on 1 Jan (ISSUES #4) | `fix/year-boundary` | ⏳ |
-| 10 | More than 3 days in the background: the stop-gap list starts from tomorrow | `fix/year-boundary` | ⏳ |
+| 8 | Phones set to other timezones: dates follow the prayer timezone (needed for v2.0) | `fix/year-boundary` | 🔀 uat-2 (3T ✅, New York time ✅) |
+| 9 | The extra download on 1 Jan (ISSUES #4) | `fix/year-boundary` | 🔀 uat-2 |
+| 10 | More than 3 days in the background: the stop-gap list starts from tomorrow | `fix/year-boundary` | 🔀 uat-2 |
 | 11 | Device checks: one command, run on demand | `test/device-checks` | ⏳ |
-| 12 | Launch time: measure a production build on the 3T | `perf/launch-time` | ⏳ |
+| 12 | Launch time: measure a production build on the 3T | `perf/launch-time` | 🚧 baseline 6.6–6.7 s to first frame (3T, production build); profile next |
 | 13 | Launch time: one change at a time, checked frame by frame | `perf/launch-time` | ⏳ |
 | 14 | "Ago" badge moved onto the shared clock tick | `refactor/tidy-ups` | ⏳ |
 | 15 | Popups tracked by prayer name, not row number | `refactor/tidy-ups` | ⏳ |

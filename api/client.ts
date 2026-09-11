@@ -10,7 +10,7 @@ import type { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types
 // - API key
 // - Year
 // - 24-hour format flag
-const buildApiUrl = (year: number = TimeUtils.createLondonDate().getFullYear()): string => {
+const buildApiUrl = (year: number = TimeUtils.getCurrentYear()): string => {
   const queries = [`format=${API_CONFIG.format}`, `key=${API_CONFIG.key}`, `year=${year}`, '24hours=true'].join('&');
 
   return `${API_CONFIG.endpoint}?${queries}`;

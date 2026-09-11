@@ -20,6 +20,8 @@ const mockIsDecember = jest.fn();
 const mockIsJanuaryFirst = jest.fn();
 
 jest.mock('@/shared/time', () => ({
+  ...jest.requireActual('@/shared/time'),
+  getTodayDateString: () => jest.requireActual('@/shared/time').formatDateShort(mockCreateLondonDate()),
   createLondonDate: () => mockCreateLondonDate(),
   getCurrentYear: () => mockGetCurrentYear(),
   isDecember: () => mockIsDecember(),
@@ -42,6 +44,7 @@ const mockGetItem = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   getPrayerByDate: (date: Date) => mockGetPrayerByDate(date),
+  getPrayerByDateString: (date: string) => mockGetPrayerByDate(date),
   saveAllPrayers: (prayers: unknown) => mockSaveAllPrayers(prayers),
   markYearAsFetched: (year: number) => mockMarkYearAsFetched(year),
   clearAllExcept: (keys: string[]) => mockClearAllExcept(keys),
@@ -655,5 +658,47 @@ describe('sync flow integration', () => {
     expect(mockFetchYear).toHaveBeenCalledWith(2025);
     expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2025);
     expect(mockSetSequence).toHaveBeenCalledTimes(2);
+  });
+});
+
+// =============================================================================
+// YESTERDAY SURVIVES A DATA REFRESH (ISSUES #4)
+// =============================================================================
+
+describe('keeping yesterday through a data refresh (ISSUES #4)', () => {
+  it("saves yesterday's record back straight after the cache wipe", async () => {
+    mockCreateLondonDate.mockReturnValue(new Date('2026-01-20T10:00:00Z'));
+    const yesterdayRecord = createMockPrayerData('2026-01-19');
+    mockGetPrayerByDate.mockImplementation((date: unknown) => (date === '2026-01-19' ? yesterdayRecord : null));
+
+    await sync();
+
+    const restore = mockSaveAllPrayers.mock.calls.findIndex(([records]) => records[0] === yesterdayRecord);
+    expect(restore).toBeGreaterThanOrEqual(0);
+    expect(mockSaveAllPrayers.mock.invocationCallOrder[restore]).toBeGreaterThan(
+      mockClearAllExcept.mock.invocationCallOrder[0]
+    );
+  });
+
+  it('on 1 Jan keeps 31 Dec through the wipe, so last year is not downloaded again', async () => {
+    mockIsJanuaryFirst.mockReturnValue(true);
+    mockCreateLondonDate.mockReturnValue(new Date('2026-01-01T10:00:00Z'));
+    mockGetCurrentYear.mockReturnValue(2026);
+
+    // A storage that behaves like MMKV: the wipe empties it, saves fill it
+    const stored = new Map<string, ISingleApiResponseTransformed>([['2025-12-31', createMockPrayerData('2025-12-31')]]);
+    mockGetPrayerByDate.mockImplementation((date: unknown) =>
+      typeof date === 'string' ? (stored.get(date) ?? null) : null
+    );
+    mockClearAllExcept.mockImplementation(() => stored.clear());
+    mockSaveAllPrayers.mockImplementation((records: ISingleApiResponseTransformed[]) => {
+      for (const record of records) stored.set(record.date, record);
+    });
+
+    await sync();
+
+    expect(mockFetchYear).toHaveBeenCalledWith(2026);
+    expect(mockFetchYear).not.toHaveBeenCalledWith(2025);
+    expect(stored.has('2025-12-31')).toBe(true);
   });
 });
