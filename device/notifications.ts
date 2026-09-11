@@ -1,9 +1,10 @@
+import { subMinutes } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
-import { AlertType, type ReminderInterval, type ScheduleType } from '@/shared/types';
+import { AlertType, type Prayer, type ReminderInterval, type ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
 export const updateAndroidChannel = async (sound: number) => {
@@ -44,16 +45,28 @@ export const reminderNotificationIdentifier = (
   intervalMinutes: ReminderInterval
 ) => `reminder_${scheduleType}_${englishName.toLowerCase()}_${date}_${intervalMinutes}`;
 
+/**
+ * Schedules the at-time notification for one prayer on one day's list
+ *
+ * Fires at the prayer's own datetime — the exact moment its list row and the
+ * countdown show — never at a date/time pair re-read on the device's clock.
+ *
+ * @param scheduleType Schedule type (Standard or Extra) - part of the deterministic identifier
+ * @param date Day of the list the prayer belongs to (YYYY-MM-DD) - part of the identifier
+ * @param prayer The prayer as its list row has it (PrayerUtils.getPrayerForDate)
+ * @param alertType Alert type (Off/Silent/Sound)
+ * @param soundPreference Selected athan index
+ * @returns Scheduled notification data
+ */
 export const addOneScheduledNotificationForPrayer = async (
   scheduleType: ScheduleType,
-  englishName: string,
-  arabicName: string,
   date: string,
-  time: string,
+  prayer: Prayer,
   alertType: AlertType,
   soundPreference: number
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const triggerDate = NotificationUtils.genTriggerDate(date, time);
+  const { english: englishName, arabic: arabicName, time } = prayer;
+  const triggerDate = prayer.datetime;
   const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, soundPreference);
   const identifier = prayerNotificationIdentifier(scheduleType, englishName, date);
   // Only include channelId for Sound alerts; the channel is prayer-aware
@@ -111,25 +124,26 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 
 /**
  * Schedules a single reminder notification for a prayer
+ *
+ * Fires `intervalMinutes` before the prayer's own datetime — the moment its list
+ * row and the countdown show.
+ *
  * @param scheduleType Schedule type (Standard or Extra) - part of the deterministic identifier
- * @param englishName English prayer name
- * @param arabicName Arabic prayer name
- * @param date Date string in YYYY-MM-DD format
- * @param time Time string in HH:mm format
+ * @param date Day of the list the prayer belongs to (YYYY-MM-DD) - part of the identifier
+ * @param prayer The prayer as its list row has it (PrayerUtils.getPrayerForDate)
  * @param intervalMinutes Minutes before prayer time
  * @param alertType Alert type (Off/Silent/Sound)
  * @returns Scheduled notification data
  */
 export const addOneScheduledReminderForPrayer = async (
   scheduleType: ScheduleType,
-  englishName: string,
-  arabicName: string,
   date: string,
-  time: string,
+  prayer: Prayer,
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const triggerDate = NotificationUtils.genReminderTriggerDate(date, time, intervalMinutes);
+  const { english: englishName, arabic: arabicName, time } = prayer;
+  const triggerDate = subMinutes(prayer.datetime, intervalMinutes);
   const content = NotificationUtils.genReminderNotificationContent(englishName, arabicName, intervalMinutes, alertType);
   const identifier = reminderNotificationIdentifier(scheduleType, englishName, date, intervalMinutes);
   const isAndroidSound = alertType === AlertType.Sound && Platform.OS === 'android';

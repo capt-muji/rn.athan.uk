@@ -141,9 +141,10 @@ describe('fetchYear transformation', () => {
       isha: '19:00',
     });
 
-    // Derived prayer times calculated
-    expect(result[0].midnight).toBeDefined();
-    expect(result[0]['last third']).toBeDefined();
+    // Derived prayer times calculated; Midnight and Last Third are never stored —
+    // they belong to the night before a day and are worked out when lists are built
+    expect(result[0]).not.toHaveProperty('midnight');
+    expect(result[0]).not.toHaveProperty('last third');
     expect(result[0].suhoor).toBeDefined();
     expect(result[0].duha).toBeDefined();
     expect(result[0].istijaba).toBeDefined();

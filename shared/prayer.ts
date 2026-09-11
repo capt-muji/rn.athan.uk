@@ -53,7 +53,12 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
 
 /**
  * Transforms API response data into normalized prayer schedule format
- * Adds calculated times for additional prayers and special times
+ * Adds the calculated Suhoor, Duha and Istijaba times (each from the day's own times)
+ *
+ * Midnight and Last Third are not stored: they belong to the night before a day,
+ * which spans two days' records, so they are worked out when the lists are built
+ * (getNightTimesForDay)
+ *
  * @param apiData Filtered API response data
  * @returns Array of transformed prayer schedules
  */
@@ -62,11 +67,7 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 
   const entries = Object.entries(apiData.times);
 
-  entries.forEach(([date, times], index) => {
-    // Use next day's Fajr for midnight/last-third calculation (the night that starts tonight)
-    // Fall back to same day's Fajr for the last day of the year
-    const nextDayFajr = entries[index + 1]?.[1]?.fajr ?? times.fajr;
-
+  entries.forEach(([date, times]) => {
     const schedule: ISingleApiResponseTransformed = {
       date,
       fajr: times.fajr,
@@ -75,8 +76,6 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
       asr: times.asr,
       magrib: times.magrib,
       isha: times.isha,
-      midnight: TimeUtils.getMidnightTime(times.magrib, nextDayFajr),
-      'last third': TimeUtils.getLastThirdOfNight(times.magrib, nextDayFajr),
       suhoor: TimeUtils.adjustTime(times.fajr, TIME_ADJUSTMENTS.suhoor),
       duha: TimeUtils.adjustTime(times.sunrise, TIME_ADJUSTMENTS.duha),
       istijaba: TimeUtils.adjustTime(times.magrib, TIME_ADJUSTMENTS.istijaba),
@@ -88,35 +87,43 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
   return transformations;
 };
 
+// =============================================================================
+// NIGHT TIMES
+// The Extras list opens with the night leading into its day
+// =============================================================================
+
 /**
- * Recomputes December 31's derived Midnight/Last-Third using the following
- * year's Fajr, once it is known.
+ * Midnight and Last Third of the Extras list for a day: the night leading into it
  *
- * transformApiData processes one year's payload at a time, so the last day of
- * that payload has no next-day entry to read Fajr from and falls back to that
- * same day's own Fajr (see the nextDayFajr fallback above) — off by whatever
- * the real dawn-to-dawn drift is for that night, typically 1-2 minutes.
- * Called once both years are cached (see stores/sync.ts), this corrects just
- * those two fields using the true next-year Fajr. A no-op (returns the same
- * object reference) when the derived times are already correct, so callers
- * can skip writing anything back.
+ * A night belongs to the day that follows it (ISSUES #29), so it runs from the
+ * previous day's Magrib to this day's Fajr — two stored records. When the previous
+ * day isn't stored (only ever the first stored day), its Magrib is taken as this
+ * day's Magrib time one day earlier: within a minute or two.
  *
- * @param decemberThirtyFirst The cached Dec 31 record to correct
- * @param nextYearFirstFajr Jan 1 (next year)'s Fajr time, HH:mm
- * @returns The corrected record, or the same reference if nothing changed
+ * @param day Stored record of the day the night belongs to
+ * @param previousDay Stored record of the day before, or null when not stored
+ * @returns Midnight and the start of the last third, as exact instants
+ *
+ * @example
+ * // Friday 23 Oct 2026: Magrib 17:54 BST; Saturday 24 Oct: Fajr 06:02 BST
+ * getNightTimesForDay(saturday24Oct, friday23Oct)
+ * // { midnight: Fri 23 Oct 23:58, lastThird: Sat 24 Oct 01:59 } (London)
  */
-export const correctYearBoundaryDerivedTimes = (
-  decemberThirtyFirst: ISingleApiResponseTransformed,
-  nextYearFirstFajr: string
-): ISingleApiResponseTransformed => {
-  const correctedMidnight = TimeUtils.getMidnightTime(decemberThirtyFirst.magrib, nextYearFirstFajr);
-  const correctedLastThird = TimeUtils.getLastThirdOfNight(decemberThirtyFirst.magrib, nextYearFirstFajr);
+export const getNightTimesForDay = (
+  day: ISingleApiResponseTransformed,
+  previousDay: ISingleApiResponseTransformed | null
+): TimeUtils.NightTimes => {
+  const previousDate = TimeUtils.getPreviousDateString(day.date);
+  const magribTime = previousDay?.date === previousDate ? previousDay.magrib : day.magrib;
 
-  const unchanged =
-    correctedMidnight === decemberThirtyFirst.midnight && correctedLastThird === decemberThirtyFirst['last third'];
-  if (unchanged) return decemberThirtyFirst;
+  return TimeUtils.getNightTimes(previousDate, magribTime, day.date, day.fajr);
+};
 
-  return { ...decemberThirtyFirst, midnight: correctedMidnight, 'last third': correctedLastThird };
+/** The instant of an Extras night row, or undefined for rows timed from the day's own record */
+const getNightRowTime = (nightTimes: TimeUtils.NightTimes, prayerName: string): Date | undefined => {
+  if (prayerName === 'Midnight') return nightTimes.midnight;
+  if (prayerName === 'Last Third') return nightTimes.lastThird;
+  return undefined;
 };
 
 // =============================================================================
@@ -260,7 +267,8 @@ function getPrayerNamesForDate(type: ScheduleType, date: Date): { english: strin
 
 /**
  * Helper: Adjust prayer date for midnight-crossing prayers
- * Handles Isha after midnight (Standard) and night prayers (Extras)
+ * Handles Isha after midnight (Standard) and night prayers with a stored time (Extras);
+ * Midnight and Last Third carry exact instants instead (getNightTimesForDay)
  */
 function adjustPrayerDateForMidnightCrossing(
   type: ScheduleType,
@@ -289,16 +297,34 @@ function adjustPrayerDateForMidnightCrossing(
 /**
  * Helper: Create all prayers for a single day
  * Returns array of Prayer objects for the given date and raw data
+ *
+ * The Extras night rows (Midnight, Last Third) take exact instants from the night
+ * leading into the day; every other row combines the day's date with its stored time
  */
 function createPrayersForSingleDay(
   type: ScheduleType,
   currentDate: Date,
-  rawData: ISingleApiResponseTransformed
+  rawData: ISingleApiResponseTransformed,
+  previousDayData: ISingleApiResponseTransformed | null
 ): Prayer[] {
   const prayers: Prayer[] = [];
   const { english: namesEnglish, arabic: namesArabic } = getPrayerNamesForDate(type, currentDate);
+  const nightTimes = type === ScheduleType.Extra ? getNightTimesForDay(rawData, previousDayData) : null;
 
   namesEnglish.forEach((name, index) => {
+    const nightRowTime = nightTimes ? getNightRowTime(nightTimes, name) : undefined;
+    if (nightRowTime) {
+      prayers.push({
+        type,
+        english: name,
+        arabic: namesArabic[index],
+        datetime: nightRowTime,
+        time: TimeUtils.formatPrayerTime(nightRowTime),
+        belongsToDate: TimeUtils.formatDateShort(currentDate),
+      });
+      return;
+    }
+
     const prayerTime = rawData[name.toLowerCase() as keyof ISingleApiResponseTransformed] as string;
     const [hours] = prayerTime.split(':').map(Number);
     const prayerDateString = adjustPrayerDateForMidnightCrossing(type, name, currentDate, hours);
@@ -338,16 +364,23 @@ function createPrayersForSingleDay(
 export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCount: number): PrayerSequence => {
   const prayers: Prayer[] = [];
 
+  // Extras night rows need the day before each listed day (getNightTimesForDay)
+  let previousDayData = type === ScheduleType.Extra ? Database.getPrayerByDate(addDays(startDate, -1)) : null;
+
   for (let i = 0; i < dayCount; i++) {
     const currentDate = addDays(startDate, i);
 
     // Get raw prayer data for this date from MMKV cache
     const rawData = Database.getPrayerByDate(currentDate);
-    if (!rawData) continue; // Skip if no data for this date
+    if (!rawData) {
+      previousDayData = null;
+      continue; // Skip if no data for this date
+    }
 
     // Create all prayers for this day using helper
-    const dayPrayers = createPrayersForSingleDay(type, currentDate, rawData);
+    const dayPrayers = createPrayersForSingleDay(type, currentDate, rawData, previousDayData);
     prayers.push(...dayPrayers);
+    previousDayData = rawData;
   }
 
   // Sort prayers by datetime (chronological order)
@@ -357,6 +390,35 @@ export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCou
     type,
     prayers,
   };
+};
+
+/**
+ * One prayer on one day's list, exactly as its row has it
+ *
+ * The single source for anything that fires at a prayer's moment: notifications
+ * and reminders use the row's own datetime, so an alert can never land on a
+ * different moment, or a different night, than the countdown and the list show.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @param english English prayer name
+ * @param date Day of the list the prayer belongs to (YYYY-MM-DD)
+ * @returns The prayer, or null when the day isn't stored or the prayer isn't on
+ *   its list (Istijaba outside Fridays)
+ *
+ * @example
+ * // Extras night rows fall on the night before their day
+ * getPrayerForDate(ScheduleType.Extra, 'Midnight', '2026-10-24')
+ * // Returns: { ..., time: '23:58', datetime: Fri 23 Oct 23:58 London, belongsToDate: '2026-10-24' }
+ */
+export const getPrayerForDate = (type: ScheduleType, english: string, date: string): Prayer | null => {
+  const currentDate = TimeUtils.createLondonDate(date);
+  const rawData = Database.getPrayerByDate(currentDate);
+  if (!rawData) return null;
+
+  const previousDayData = type === ScheduleType.Extra ? Database.getPrayerByDate(addDays(currentDate, -1)) : null;
+  const dayPrayers = createPrayersForSingleDay(type, currentDate, rawData, previousDayData);
+
+  return dayPrayers.find((prayer) => prayer.english === english) ?? null;
 };
 
 /**

@@ -7,10 +7,12 @@ import type { IApiResponse } from '@/shared/types';
  * Mock data for testing prayer times
  *
  * MIDNIGHT PRAYER TESTING:
- * - Midnight is calculated as: (Magrib + Fajr) / 2
+ * - Midnight is the midpoint of the night leading into a day: the previous
+ *   day's Magrib to this day's Fajr
  * - Example: Magrib 16:14 → Fajr 05:35 (next day)
- *   Night duration: 13h 21m → Midnight ≈ 22:52
- * - The midnight field is automatically calculated during transformApiData()
+ *   Night duration: 13h 21m → Midnight ≈ 22:54
+ * - Worked out when the lists are built (shared/prayer.ts getNightTimesForDay),
+ *   from two consecutive days below
  * - Check Page 2 (Extras) to see Midnight as first prayer
  */
 
@@ -20,7 +22,8 @@ import type { IApiResponse } from '@/shared/types';
 // day (calculateBelongsToDate) - correct for a real post-midnight Isha, but a
 // night-time mock triggers both: at the Magrib->Isha handoff the countdown
 // skips to the following day's Fajr and the rollover cascade fires early.
-// A real London Isha can fall after 00:00 (handled by the rules above). To test the Magrib->Isha handoff
+// An Isha can fall after 00:00 (high latitudes in summer; the app goes global
+// in v2.0) and is handled by the rules above. To test the Magrib->Isha handoff
 // and day rollover cleanly, simulate during 06:00-23:59.
 const now = new Date();
 

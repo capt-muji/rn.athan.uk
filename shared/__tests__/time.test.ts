@@ -1,5 +1,6 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
+import { TIME_ADJUSTMENTS } from '../constants';
 import {
   adjustTime,
   createLondonDate,
@@ -7,11 +8,12 @@ import {
   formatDateLong,
   formatDateShort,
   formatHijriDateLong,
+  formatPrayerTime,
   formatTime,
   formatTimeAgo,
   getCurrentYear,
-  getLastThirdOfNight,
-  getMidnightTime,
+  getNightTimes,
+  getPreviousDateString,
   getSecondsBetween,
   getSecondsRemaining,
   getWallSecondDelay,
@@ -111,85 +113,124 @@ describe('formatTimeAgo', () => {
 // NIGHT TIME CALCULATIONS (Islamic)
 // =============================================================================
 
-describe('getLastThirdOfNight', () => {
-  it('calculates last third correctly for winter night', () => {
-    // Magrib 18:45, Fajr 06:15 = 11.5h night
-    // 2/3 of 11.5h = 7h 40m after Magrib = 02:25
-    const result = getLastThirdOfNight('18:45', '06:15');
-    expect(result).toBe('02:25');
+describe('getNightTimes', () => {
+  it('calculates Islamic midnight and the last third of a winter night', () => {
+    // Magrib 18:45 on Jan 19, Fajr 06:15 on Jan 20 = 11.5h night (GMT)
+    // Midpoint = 5h 45m after Magrib = 00:30; last third = 7h 40m after Magrib = 02:25
+    const { midnight, lastThird } = getNightTimes('2026-01-19', '18:45', '2026-01-20', '06:15');
+    expect(midnight.toISOString()).toBe('2026-01-20T00:30:00.000Z');
+    expect(lastThird.toISOString()).toBe('2026-01-20T02:25:00.000Z');
   });
 
-  it('calculates last third for summer night (short)', () => {
-    // Summer: Magrib late, Fajr early (short night)
-    // Magrib 21:00, Fajr 03:30 = 6.5h night
-    // 2/3 of 6.5h = 4h 20m after Magrib = 01:20
-    const result = getLastThirdOfNight('21:00', '03:30');
-    expect(result).toBe('01:20');
+  it('calculates a short summer night (BST)', () => {
+    // Magrib 21:00 on Jun 20, Fajr 03:30 on Jun 21 = 6.5h night
+    // Midpoint 00:15 BST; last third 4h 20m after Magrib = 01:20 BST
+    const { midnight, lastThird } = getNightTimes('2026-06-20', '21:00', '2026-06-21', '03:30');
+    expect(midnight.toISOString()).toBe('2026-06-20T23:15:00.000Z');
+    expect(lastThird.toISOString()).toBe('2026-06-21T00:20:00.000Z');
+    expect(formatPrayerTime(midnight)).toBe('00:15');
+    expect(formatPrayerTime(lastThird)).toBe('01:20');
   });
 
-  it('calculates last third for equinox night (equal)', () => {
-    // Magrib 18:00, Fajr 06:00 = 12h night
-    // 2/3 of 12h = 8h after Magrib = 02:00
-    const result = getLastThirdOfNight('18:00', '06:00');
-    expect(result).toBe('02:00');
+  it('puts the midpoint of a 12-hour night exactly at 00:00', () => {
+    // Magrib 18:00, Fajr 06:00 = 12h night: midpoint 00:00, last third 02:00
+    const { midnight, lastThird } = getNightTimes('2026-01-19', '18:00', '2026-01-20', '06:00');
+    expect(midnight.toISOString()).toBe('2026-01-20T00:00:00.000Z');
+    expect(lastThird.toISOString()).toBe('2026-01-20T02:00:00.000Z');
+  });
+
+  it('drops the seconds: a half-minute midpoint shows and fires at the start of its minute', () => {
+    // 581-minute night: midpoint 290.5 min after Magrib (23:18:30), last third 387.33 min (00:55:20)
+    const { midnight, lastThird } = getNightTimes('2026-03-27', '18:28', '2026-03-28', '04:09');
+    expect(midnight.toISOString()).toBe('2026-03-27T23:18:00.000Z');
+    expect(lastThird.toISOString()).toBe('2026-03-28T00:55:00.000Z');
+  });
+
+  it('measures the spring clock-change night in real time (9h 37m, not the 10h 37m on the clock face)', () => {
+    // Magrib Sat 28 Mar 18:30 GMT, Fajr Sun 29 Mar 05:07 BST (04:07 GMT)
+    const { midnight, lastThird } = getNightTimes('2026-03-28', '18:30', '2026-03-29', '05:07');
+    expect(midnight.toISOString()).toBe('2026-03-28T23:18:00.000Z'); // 23:18 GMT
+    expect(lastThird.toISOString()).toBe('2026-03-29T00:54:00.000Z'); // 00:54 GMT, before the clocks jump
+    expect(formatPrayerTime(midnight)).toBe('23:18');
+    expect(formatPrayerTime(lastThird)).toBe('00:54');
+  });
+
+  it('measures the autumn clock-change night in real time (12h 12m, not the 11h 12m on the clock face)', () => {
+    // Magrib Sat 24 Oct 17:52 BST (16:52 GMT), Fajr Sun 25 Oct 05:04 GMT
+    const { midnight, lastThird } = getNightTimes('2026-10-24', '17:52', '2026-10-25', '05:04');
+    expect(midnight.toISOString()).toBe('2026-10-24T22:58:00.000Z'); // 23:58 BST
+    // The last third starts at the second 01:00 (GMT): an exact instant, not an ambiguous clock reading
+    expect(lastThird.toISOString()).toBe('2026-10-25T01:00:00.000Z');
+    expect(formatPrayerTime(midnight)).toBe('23:58');
+    expect(formatPrayerTime(lastThird)).toBe('01:00');
+  });
+
+  it('keeps Midnight before the last third, and both inside the night', () => {
+    const nights: [string, string, string, string][] = [
+      ['2026-01-19', '15:50', '2026-01-20', '07:15'], // long winter night
+      ['2026-06-20', '21:25', '2026-06-21', '02:40'], // short summer night
+      ['2026-03-28', '18:30', '2026-03-29', '05:07'], // spring clock change
+      ['2026-10-24', '17:52', '2026-10-25', '05:04'], // autumn clock change
+    ];
+
+    for (const [previousDate, magrib, date, fajr] of nights) {
+      const { midnight, lastThird } = getNightTimes(previousDate, magrib, date, fajr);
+      expect(createPrayerDatetime(previousDate, magrib).getTime()).toBeLessThan(midnight.getTime());
+      expect(midnight.getTime()).toBeLessThan(lastThird.getTime());
+      expect(lastThird.getTime()).toBeLessThan(createPrayerDatetime(date, fajr).getTime());
+    }
+  });
+
+  it('matches plain clock-face arithmetic on every night without a clock change (sweep)', () => {
+    const hhmm = (minutes: number) =>
+      `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+    const mismatches: string[] = [];
+
+    // A GMT night (January) and a BST night (July), with local midnight of the first date as a UTC instant
+    const nights = [
+      { previousDate: '2026-01-19', date: '2026-01-20', localMidnight: Date.UTC(2026, 0, 19) },
+      { previousDate: '2026-07-19', date: '2026-07-20', localMidnight: Date.UTC(2026, 6, 18, 23) },
+    ];
+
+    for (const { previousDate, date, localMidnight } of nights) {
+      for (let magrib = 15 * 60 + 30; magrib <= 22 * 60; magrib++) {
+        for (let fajr = 90; fajr <= 7 * 60 + 30; fajr += 13) {
+          const night = fajr + 24 * 60 - magrib;
+          const expectedMidnight = localMidnight + Math.floor(magrib + night / 2) * 60_000;
+          const expectedLastThird =
+            localMidnight + Math.floor(magrib + (night * 2) / 3 + TIME_ADJUSTMENTS.lastThird) * 60_000;
+          const { midnight, lastThird } = getNightTimes(previousDate, hhmm(magrib), date, hhmm(fajr));
+          if (midnight.getTime() !== expectedMidnight || lastThird.getTime() !== expectedLastThird) {
+            mismatches.push(`${previousDate} Magrib ${hhmm(magrib)} → Fajr ${hhmm(fajr)}`);
+          }
+        }
+      }
+    }
+
+    expect(mismatches).toEqual([]);
   });
 });
 
-describe('getMidnightTime', () => {
-  it('calculates Islamic midnight correctly for winter night', () => {
-    // Magrib 18:45, Fajr 06:15 = 11.5h night
-    // Midpoint = 5h 45m after Magrib = 00:30
-    const result = getMidnightTime('18:45', '06:15');
-    expect(result).toBe('00:30');
-  });
+describe('night times do not depend on when they are calculated', () => {
+  afterEach(() => jest.useRealTimers());
 
-  it('calculates Islamic midnight for summer night (short)', () => {
-    // Magrib 21:00, Fajr 03:30 = 6.5h night
-    // Midpoint = 3h 15m after Magrib = 00:15
-    const result = getMidnightTime('21:00', '03:30');
-    expect(result).toBe('00:15');
-  });
+  it.each([
+    '2026-01-20T12:00:00.000Z', // ordinary day, second 0
+    '2026-01-20T12:00:45.000Z', // ordinary day, second 45
+    '2026-06-20T11:59:59.900Z', // summer (BST), second 59.9
+    '2026-10-24T11:00:00.000Z', // Saturday before the clocks go back
+    '2026-03-28T12:00:00.000Z', // Saturday before the clocks go forward
+  ])('gives the same instants when run at %s', (iso) => {
+    jest.useFakeTimers().setSystemTime(new Date(iso));
 
-  it('calculates Islamic midnight for equinox night', () => {
-    // Magrib 18:00, Fajr 06:00 = 12h night
-    // Midpoint = 6h after Magrib = 00:00
-    const result = getMidnightTime('18:00', '06:00');
-    expect(result).toBe('00:00');
-  });
-});
-
-describe('night boundary parsing consistency', () => {
-  it('produces mathematically consistent results', () => {
-    // Both functions should produce consistent results
-    // Islamic midnight should always be before last third
-    const magribTime = '18:00';
-    const fajrTime = '06:00';
-
-    const midnight = getMidnightTime(magribTime, fajrTime);
-    const lastThird = getLastThirdOfNight(magribTime, fajrTime);
-
-    // Parse times to compare
-    const [midH, midM] = midnight.split(':').map(Number);
-    const [lastH, lastM] = lastThird.split(':').map(Number);
-    const midMinutes = midH * 60 + midM;
-    const lastMinutes = lastH * 60 + lastM;
-
-    // Last third should be after midnight
-    expect(lastMinutes).toBeGreaterThan(midMinutes);
-  });
-
-  it('handles summer solstice (short night)', () => {
-    const midnight = getMidnightTime('21:00', '03:30');
-    const lastThird = getLastThirdOfNight('21:00', '03:30');
-    expect(midnight).toBeDefined();
-    expect(lastThird).toBeDefined();
-  });
-
-  it('handles winter solstice (long night)', () => {
-    const midnight = getMidnightTime('16:00', '07:00');
-    const lastThird = getLastThirdOfNight('16:00', '07:00');
-    expect(midnight).toBeDefined();
-    expect(lastThird).toBeDefined();
+    expect(getNightTimes('2026-01-19', '17:50', '2026-01-20', '05:40')).toEqual({
+      midnight: new Date('2026-01-19T23:45:00.000Z'),
+      lastThird: new Date('2026-01-20T01:43:00.000Z'),
+    });
+    expect(getNightTimes('2026-10-24', '17:52', '2026-10-25', '05:04')).toEqual({
+      midnight: new Date('2026-10-24T22:58:00.000Z'),
+      lastThird: new Date('2026-10-25T01:00:00.000Z'),
+    });
   });
 });
 
@@ -474,6 +515,39 @@ describe('createPrayerDatetime', () => {
   });
 });
 
+describe('formatPrayerTime', () => {
+  it('reads an instant on the London wall clock (GMT in winter, BST in summer)', () => {
+    expect(formatPrayerTime(new Date('2026-01-18T06:12:00Z'))).toBe('06:12');
+    expect(formatPrayerTime(new Date('2026-06-15T05:12:00Z'))).toBe('06:12');
+  });
+
+  it('round-trips createPrayerDatetime', () => {
+    expect(formatPrayerTime(createPrayerDatetime('2026-10-23', '23:58'))).toBe('23:58');
+    expect(formatPrayerTime(createPrayerDatetime('2026-03-30', '01:54'))).toBe('01:54');
+  });
+});
+
+describe('getPreviousDateString', () => {
+  it('steps back one calendar day', () => {
+    expect(getPreviousDateString('2026-09-11')).toBe('2026-09-10');
+  });
+
+  it('crosses month and year boundaries', () => {
+    expect(getPreviousDateString('2026-03-01')).toBe('2026-02-28');
+    expect(getPreviousDateString('2026-01-01')).toBe('2025-12-31');
+  });
+
+  it('knows leap years', () => {
+    expect(getPreviousDateString('2024-03-01')).toBe('2024-02-29');
+  });
+
+  it('is unaffected by the clock-change days', () => {
+    expect(getPreviousDateString('2026-03-30')).toBe('2026-03-29');
+    expect(getPreviousDateString('2026-03-29')).toBe('2026-03-28');
+    expect(getPreviousDateString('2026-10-26')).toBe('2026-10-25');
+  });
+});
+
 // =============================================================================
 // ADDITIONAL COVERAGE TESTS
 // =============================================================================
@@ -556,7 +630,8 @@ describe('DST transitions', () => {
 
     it('maps the nonexistent skipped hour via the pre-transition offset (date-fns-tz 3.2.0 semantics)', () => {
       // 01:30 wall time never exists on this date; the library resolves it as if
-      // the old GMT offset still applied — once a year, midnight-prayer-only
+      // the old GMT offset still applied. No prayer time is read from the clock in
+      // this hour: the night rows are exact instants (getNightTimes)
       expect(createPrayerDatetime('2026-03-29', '01:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
     });
 
@@ -571,76 +646,15 @@ describe('DST transitions', () => {
     });
 
     it('maps the duplicated hour to the LATER occurrence (date-fns-tz 3.2.0 semantics)', () => {
-      // 01:30 happens twice (01:30 BST then 01:30 GMT); the library picks GMT —
-      // once a year, midnight-prayer-only
+      // 01:30 happens twice (01:30 BST then 01:30 GMT); the library picks GMT. No
+      // prayer time is read from the clock in this hour: the night rows are exact
+      // instants (getNightTimes)
       expect(createPrayerDatetime('2026-10-25', '01:30').toISOString()).toBe('2026-10-25T01:30:00.000Z');
     });
 
     it('maps a post-transition time with GMT offset', () => {
       expect(createPrayerDatetime('2026-10-25', '02:30').toISOString()).toBe('2026-10-25T02:30:00.000Z');
     });
-  });
-});
-
-// =============================================================================
-// NIGHT TIME CALCULATION EDGE CASES
-// =============================================================================
-
-describe('getLastThirdOfNight edge cases', () => {
-  it('handles very short summer night', () => {
-    // Summer solstice: Magrib 21:15, Fajr 02:45 = 5.5h night
-    const result = getLastThirdOfNight('21:15', '02:45');
-    expect(result).toBeDefined();
-    expect(result).toMatch(/^\d{2}:\d{2}$/);
-  });
-
-  it('handles very long winter night', () => {
-    // Winter solstice: Magrib 15:50, Fajr 07:15 = 15h 25m night
-    const result = getLastThirdOfNight('15:50', '07:15');
-    expect(result).toBeDefined();
-    expect(result).toMatch(/^\d{2}:\d{2}$/);
-  });
-});
-
-describe('getMidnightTime edge cases', () => {
-  it('handles early Islamic midnight (winter)', () => {
-    // Very early Magrib, late Fajr
-    const result = getMidnightTime('15:50', '07:15');
-    expect(result).toBeDefined();
-    expect(result).toMatch(/^\d{2}:\d{2}$/);
-  });
-
-  it('handles late Islamic midnight (summer)', () => {
-    // Late Magrib, early Fajr
-    const result = getMidnightTime('21:15', '02:45');
-    expect(result).toBeDefined();
-    expect(result).toMatch(/^\d{2}:\d{2}$/);
-  });
-});
-
-describe('night times do not depend on when they are calculated', () => {
-  afterEach(() => jest.useRealTimers());
-
-  // A whole year is transformed at fetch time, so the result may depend only on the
-  // two times — not on the fetch day's DST context or the second it ran at
-  const cases: [magrib: string, fajr: string, midnight: string, lastThird: string][] = [
-    ['17:50', '05:40', '23:45', '01:43'],
-    ['17:50', '05:41', '23:45', '01:44'],
-    ['16:03', '06:22', '23:12', '01:35'],
-  ];
-
-  it.each([
-    '2026-01-20T12:00:00.000Z', // ordinary day, second 0
-    '2026-01-20T12:00:45.000Z', // ordinary day, second 45
-    '2026-06-20T11:59:59.900Z', // summer (BST), second 59.9
-    '2026-10-24T11:00:00.000Z', // Saturday before the clocks go back
-    '2026-03-28T12:00:00.000Z', // Saturday before the clocks go forward
-  ])('gives the same results when run at %s', (iso) => {
-    jest.useFakeTimers().setSystemTime(new Date(iso));
-    for (const [magrib, fajr, midnight, lastThird] of cases) {
-      expect(getMidnightTime(magrib, fajr)).toBe(midnight);
-      expect(getLastThirdOfNight(magrib, fajr)).toBe(lastThird);
-    }
   });
 });
 
