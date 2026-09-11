@@ -85,14 +85,15 @@ export default function Alert({ type, index }: Props) {
     !Schedule.isLastPrayerPassed &&
     Schedule.nextPrayerIndex === 0 &&
     index !== 0;
+  const previousIsSelected = usePrevious(isSelectedForOverlay);
+  const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
 
-  // The cascade roll gets the old duration back (durationSlow, 1000ms) — see
-  // components/prayer/Prayer.tsx for why; ordinary selection changes keep 150ms.
+  // Timings mirror Prayer.tsx: selection 150ms, next-prayer advance and cascade 1000ms
   const fillPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
   const fillProps = useDerivedFill(fillPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
-    duration: isCascadeRoll ? ANIMATION.durationSlow : ANIMATION.durationFade,
+    duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
 
