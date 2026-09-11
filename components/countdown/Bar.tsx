@@ -29,6 +29,9 @@ const TIMING_CONFIG_LINEAR = {
   easing: Easing.linear,
 };
 
+/** Smallest per-tick width change (dp) worth animating; real prayer intervals never reach it */
+const VISIBLE_STEP_DP = 0.3;
+
 interface Props {
   /** Schedule type for countdown calculation (required in normal mode) */
   type?: ScheduleType;
@@ -77,6 +80,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 
   const isFirstRender = useRef(true);
   const prevProgress = useRef(progress);
+  const prevWarning = useRef(isWarning);
   const lastResync = useRef(resync);
 
   // Progress width and warning color animation
@@ -97,26 +101,29 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       const progressDiff = Math.abs(progress - prevProgress.current);
 
       if (progressDiff > 50) {
-        // Large jumps (prayer transition refill) are visible — animate them.
-        // Width animates a Yoga layout property, so this is the only path
-        // allowed to drive per-frame layout work
+        // Large jumps (prayer transition refill) are visible — animate them
         widthValue.value = withTiming(progress, TIMING_CONFIG_FAST);
+      } else if ((progressDiff / 100) * COUNTDOWN_BAR.WIDTH >= VISIBLE_STEP_DP) {
+        // A visible per-second step (short intervals) keeps its smooth glide
+        widthValue.value = withTiming(progress, TIMING_CONFIG_LINEAR);
+      } else {
+        // Sub-pixel step: still written every tick (a dropped write heals within a
+        // second) but set directly, so an idle bar drives no per-frame layout
+        widthValue.value = progress;
+      }
+
+      if (isWarning !== prevWarning.current) {
         colorValue.value = withTiming(isWarning ? 1 : 0, {
           duration: ANIMATION.durationMedium,
           easing: Easing.linear,
         });
       } else {
-        // Re-issued every tick: a width write dropped while the host was
-        // suspended is replaced by the next second's animation, so a stale
-        // bar never outlives one tick after resume
-        widthValue.value = withTiming(progress, TIMING_CONFIG_LINEAR);
-        colorValue.value = withTiming(isWarning ? 1 : 0, {
-          duration: ANIMATION.durationMedium,
-          easing: Easing.linear,
-        });
+        // Re-asserted every tick like the width, without re-running an animation
+        colorValue.value = isWarning ? 1 : 0;
       }
     }
     prevProgress.current = progress;
+    prevWarning.current = isWarning;
   }, [progress, isWarning, reducedMotion, widthValue, colorValue, resync]);
 
   // Overlay visibility is derived; reduced motion snaps it

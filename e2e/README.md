@@ -61,9 +61,29 @@ verification, never infer visuals from pixels alone.
   never compare absolute startup numbers to production.
 - **Android 9 AX trees are STALE** in `uiautomator dump` — assert live text
   via screencap pixel diffs, not AX dumps. Button coordinates from a fresh
-  dump are fine.
+  dump are fine. On the 3T a dump once returned the tree of a package that
+  had since been uninstalled (`com.mugtaba.athan.fleettest`).
 - **`am start -W` after install is dexopt-inflated** (~4.9s) — discard.
-- **`dumpsys cpuinfo` is lifetime-cumulative** — use `top -n 5 -d 5` medians.
+- **`dumpsys cpuinfo` is lifetime-cumulative, and `top -n 5 -d 5 -b` printed
+  five identical snapshots on the 3T** — measure idle with
+  `scripts/idle-cpu.sh` (per-thread `/proc` deltas over 60s).
+- **Idle must be measured past the mock's compressed window**: today's six
+  mock prayers sit at launch −3…+3 min, so sample ≥4.5 min after a cold launch
+  (idle-cpu.sh does). At night (00:00–06:00) the mock's Isha becomes a
+  post-midnight Isha and the day-roll fires early — test day-rolls in daytime.
+- **`expo run:android --device` takes a device NAME, not an adb serial**: with
+  a serial it prebuilds, then fails — and a `| tail` pipe reports exit 0.
+  Build with `./gradlew assembleRelease` + `adb install -r`, and check
+  `dumpsys package com.mugtaba.athan | grep versionName` before measuring.
+- **What's New appears on the first launch after any upgrade** (including
+  reinstalling a newer build after bisecting an older one) and marks itself
+  shown the moment it appears — do one throwaway launch after each install.
+- **`overlay_open` mark semantics changed in s9** (useLayoutEffect instrument):
+  JS works ~44-78ms then waits on a synchronous UI-thread mount, so the band
+  is ~180-240ms; the 80ms baseline predates it. Compare builds with frame
+  evidence, never this mark (progress.md, "MARKS REGRESSION INVESTIGATION").
+- **zsh does not word-split** `D="adb -s X"; $D shell …` ("command not found")
+  — use a function, and have scripts check every output file is non-empty.
 - **Force-stop before every scripted interaction** (sheet/scroll state).
 - **BACK exits the app when no sheet is open** — flows end with exactly one
   BACK per open sheet.
