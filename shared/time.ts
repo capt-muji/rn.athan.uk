@@ -44,24 +44,28 @@ interface PrayerClock {
 }
 
 /**
- * Reads the prayer timezone's calendar and clock at an instant
- * @param instant Date or epoch milliseconds
- * @returns Year, month (1-12), day, hour (0-23), minute and second there
+ * Offset of the prayer timezone's clock from UTC at an instant, read by Intl
+ * @param instant Epoch milliseconds (whole seconds)
+ * @returns Offset in milliseconds (positive east of UTC, e.g. 3600000 for BST)
  */
-const readPrayerClock = (instant: Date | number): PrayerClock => {
+const readOffsetByIntl = (instant: number): number => {
   const parts = prayerClockFormatter.formatToParts(instant);
   const field = (type: Intl.DateTimeFormatPartTypes): number => Number(parts.find((part) => part.type === type)?.value);
-
-  return {
-    year: field('year'),
-    month: field('month'),
-    day: field('day'),
-    // Some engines print midnight as 24 even with hourCycle h23
-    hour: field('hour') % 24,
-    minute: field('minute'),
-    second: field('second'),
-  };
+  // Some engines print midnight as 24 even with hourCycle h23
+  const hour = field('hour') % 24;
+  const clockAsUtc = Date.UTC(field('year'), field('month') - 1, field('day'), hour, field('minute'), field('second'));
+  return clockAsUtc - Math.floor(instant / 1000) * 1000;
 };
+
+// Intl is slow on the phone's JavaScript engine and the lists read the clock for
+// every row, so offsets are remembered. A UTC day whose offset is the same at its
+// first and last minute has no clock change in it (clocks change at most once a
+// day): one pair of reads covers all of it. On the two days a year the clocks do
+// change, offsets are remembered per quarter hour (every clock change falls on one)
+const QUARTER_HOUR_MS = 15 * MINUTE_MS;
+const DAY_MS = 24 * HOUR_MS;
+const dayOffsets = new Map<string, number | null>();
+const quarterHourOffsets = new Map<number, number>();
 
 /**
  * Offset of the prayer timezone's clock from UTC at an instant
@@ -69,9 +73,43 @@ const readPrayerClock = (instant: Date | number): PrayerClock => {
  * @returns Offset in milliseconds (positive east of UTC, e.g. 3600000 for BST)
  */
 const prayerTimezoneOffset = (instant: number): number => {
-  const clock = readPrayerClock(instant);
-  const clockAsUtc = Date.UTC(clock.year, clock.month - 1, clock.day, clock.hour, clock.minute, clock.second);
-  return clockAsUtc - Math.floor(instant / 1000) * 1000;
+  const utcDay = new Date(instant).toISOString().slice(0, 10);
+  let dayOffset = dayOffsets.get(utcDay);
+  if (dayOffset === undefined) {
+    const dayStart = Date.parse(`${utcDay}T00:00:00Z`);
+    const first = readOffsetByIntl(dayStart);
+    const last = readOffsetByIntl(dayStart + DAY_MS - MINUTE_MS);
+    dayOffset = first === last ? first : null;
+    dayOffsets.set(utcDay, dayOffset);
+  }
+  if (dayOffset !== null) return dayOffset;
+
+  const quarterHour = Math.floor(instant / QUARTER_HOUR_MS);
+  let offset = quarterHourOffsets.get(quarterHour);
+  if (offset === undefined) {
+    offset = readOffsetByIntl(quarterHour * QUARTER_HOUR_MS);
+    quarterHourOffsets.set(quarterHour, offset);
+  }
+  return offset;
+};
+
+/**
+ * Reads the prayer timezone's calendar and clock at an instant
+ * @param instant Date or epoch milliseconds
+ * @returns Year, month (1-12), day, hour (0-23), minute and second there
+ */
+const readPrayerClock = (instant: Date | number): PrayerClock => {
+  const ms = typeof instant === 'number' ? instant : instant.getTime();
+  const clock = new Date(ms + prayerTimezoneOffset(ms));
+
+  return {
+    year: clock.getUTCFullYear(),
+    month: clock.getUTCMonth() + 1,
+    day: clock.getUTCDate(),
+    hour: clock.getUTCHours(),
+    minute: clock.getUTCMinutes(),
+    second: clock.getUTCSeconds(),
+  };
 };
 
 // =============================================================================
