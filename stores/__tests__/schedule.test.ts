@@ -98,8 +98,6 @@ const createMockRawData = (date: string): ISingleApiResponseTransformed => ({
   asr: '14:40',
   magrib: '17:00',
   isha: '18:45',
-  midnight: '23:52',
-  'last third': '02:15',
   suhoor: '05:55',
   duha: '08:10',
   istijaba: '16:00',

@@ -15,11 +15,11 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 |---|---|---|---|
 | 1 | Create uat-2 from uat | `uat-2` | ✅ |
 | 2 | Tracker saved in the repo | `uat-2` | ✅ |
-| 3 | #29: night times from the right Maghrib/Fajr pair | `fix/night-times` | ⏳ |
-| 4 | Clock-change nights measured in real elapsed time | `fix/night-times` | ⏳ |
-| 5 | Notifications and reminders fire exactly when their row says (one source of truth) | `fix/night-times` | ⏳ |
-| 6 | Night times worked out when the list is built (stored night fields and the Dec 31 patch removed) | `fix/night-times` | ⏳ |
-| 7 | Heavy tests, a 3T check, and a 5-minute test for the owner | `fix/night-times` | ⏳ |
+| 3 | #29: night times from the right Maghrib/Fajr pair | `fix/night-times` | ✅ |
+| 4 | Clock-change nights measured in real elapsed time | `fix/night-times` | ✅ |
+| 5 | Notifications and reminders fire exactly when their row says (one source of truth) | `fix/night-times` | ✅ |
+| 6 | Night times worked out when the list is built (stored night fields and the Dec 31 patch removed) | `fix/night-times` | ✅ |
+| 7 | Heavy tests, a 3T check, and a 5-minute test for the owner | `fix/night-times` | 🚧 tests ✅, 3T check next |
 | 8 | Phones set to other timezones: dates follow the prayer timezone (needed for v2.0) | `fix/year-boundary` | ⏳ |
 | 9 | The extra download on 1 Jan (ISSUES #4) | `fix/year-boundary` | ⏳ |
 | 10 | More than 3 days in the background: the stop-gap list starts from tomorrow | `fix/year-boundary` | ⏳ |

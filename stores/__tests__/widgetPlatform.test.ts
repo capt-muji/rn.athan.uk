@@ -42,8 +42,6 @@ describe('refreshPrayerWidgets platform gate', () => {
       asr: '17:45',
       magrib: '21:15',
       isha: '22:45',
-      midnight: '23:52',
-      'last third': '02:15',
       suhoor: '05:55',
       duha: '08:10',
       istijaba: '16:00',

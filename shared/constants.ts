@@ -181,6 +181,12 @@ export const ISLAMIC_DAY = {
   RAMADAN_DECORATION_DAYS_BEFORE: 15,
 } as const;
 
+/**
+ * Timezone of the prayer timetable: every stored prayer time is a wall-clock time here.
+ * The one place to change when the app serves other cities (v2.0)
+ */
+export const PRAYER_TIMEZONE = 'Europe/London';
+
 // =============================================================================
 // UI TEXT & TYPOGRAPHY
 // =============================================================================

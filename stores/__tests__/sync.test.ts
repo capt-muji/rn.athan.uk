@@ -48,16 +48,6 @@ jest.mock('@/stores/database', () => ({
   getItem: (key: string) => mockGetItem(key),
 }));
 
-// Mock PrayerUtils — only the orchestration (when fixYearBoundaryDerivedTimes
-// runs) is this file's concern; the actual recomputation is covered by its
-// own dedicated tests in shared/__tests__/prayer.test.ts
-const mockCorrectYearBoundaryDerivedTimes = jest.fn();
-
-jest.mock('@/shared/prayer', () => ({
-  correctYearBoundaryDerivedTimes: (prayer: unknown, nextYearFirstFajr: string) =>
-    mockCorrectYearBoundaryDerivedTimes(prayer, nextYearFirstFajr),
-}));
-
 // Mock ScheduleStore
 const mockSetSequence = jest.fn();
 
@@ -113,8 +103,6 @@ const createMockPrayerData = (date: string): ISingleApiResponseTransformed => ({
   asr: '14:40',
   magrib: '17:00',
   isha: '18:45',
-  midnight: '23:52',
-  'last third': '02:15',
   suhoor: '05:55',
   duha: '08:10',
   istijaba: '16:00',
@@ -146,9 +134,6 @@ beforeEach(() => {
   mockGetItem.mockReturnValue({});
   mockGetPrayerByDate.mockReturnValue(createMockPrayerData('2026-01-20'));
   mockFetchYear.mockResolvedValue(createMockYearData());
-  // Default: no correction needed (same reference back) — no-op for tests
-  // that aren't specifically exercising the year-boundary fix
-  mockCorrectYearBoundaryDerivedTimes.mockImplementation((prayer) => prayer);
   mockHandleAppUpgrade.mockImplementation(() => {}); // Reset to noop
   mockSaveAllPrayers.mockImplementation(() => {});
   mockMarkYearAsFetched.mockImplementation(() => {});
@@ -499,70 +484,6 @@ describe('December prefetch behavior', () => {
     expect(mockSetSequence).toHaveBeenCalledTimes(2);
     expect(mockStartCountdowns).toHaveBeenCalled();
   });
-
-  describe('year-boundary derived-time correction (ISSUES #5)', () => {
-    // Keyed by full date (year included) with a distinct Fajr per record, so
-    // pairing Dec 31 with its own Fajr or with the wrong year fails these tests
-    const dec31 = { ...createMockPrayerData('2026-12-31'), fajr: '08:04' };
-    const jan1 = { ...createMockPrayerData('2027-01-01'), fajr: '08:06' };
-    const byDate = (records: Record<string, ISingleApiResponseTransformed | null>) => (date: Date) => {
-      const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-      return key in records ? records[key] : createMockPrayerData('2026-01-20'); // other lookups, e.g. "today"
-    };
-
-    it('corrects current year Dec 31 once both years are fetched together', async () => {
-      mockGetCurrentYear.mockReturnValue(2026);
-      mockGetItem.mockReturnValue({}); // neither year cached — Scenario 3b
-      mockGetPrayerByDate.mockImplementation(byDate({ '2026-12-31': dec31, '2027-01-01': jan1 }));
-      const corrected = { ...dec31, midnight: '23:59' };
-      mockCorrectYearBoundaryDerivedTimes.mockReturnValue(corrected);
-
-      await sync();
-
-      expect(mockCorrectYearBoundaryDerivedTimes).toHaveBeenCalledTimes(1);
-      expect(mockCorrectYearBoundaryDerivedTimes).toHaveBeenCalledWith(dec31, '08:06');
-      expect(mockSaveAllPrayers).toHaveBeenCalledWith([corrected]);
-    });
-
-    it('does not correct when the next year fetch failed, even if a Jan 1 record is present', async () => {
-      mockGetCurrentYear.mockReturnValue(2026);
-      mockGetItem.mockReturnValue({});
-      mockGetPrayerByDate.mockImplementation(byDate({ '2026-12-31': dec31, '2027-01-01': jan1 }));
-      mockFetchYear.mockImplementation(async (year: number) => {
-        if (year === 2027) throw new Error('Incomplete data received');
-        return createMockYearData();
-      });
-
-      await sync();
-
-      expect(mockCorrectYearBoundaryDerivedTimes).not.toHaveBeenCalled();
-    });
-
-    it('corrects current year Dec 31 when only next year needed fetching (current already cached)', async () => {
-      mockGetCurrentYear.mockReturnValue(2026);
-      mockGetItem.mockReturnValue({ 2026: true }); // current year already cached — Scenario 3a
-      mockGetPrayerByDate.mockImplementation(byDate({ '2026-12-31': dec31, '2027-01-01': jan1 }));
-      mockFetchYear.mockResolvedValue(createMockYearData());
-
-      await sync();
-
-      expect(mockCorrectYearBoundaryDerivedTimes).toHaveBeenCalledTimes(1);
-      expect(mockCorrectYearBoundaryDerivedTimes).toHaveBeenCalledWith(dec31, '08:06');
-    });
-
-    it('does not save again when the correction is a no-op (same reference back)', async () => {
-      mockGetCurrentYear.mockReturnValue(2026);
-      mockGetItem.mockReturnValue({});
-      mockGetPrayerByDate.mockImplementation(byDate({ '2026-12-31': dec31, '2027-01-01': jan1 }));
-      mockCorrectYearBoundaryDerivedTimes.mockImplementation((prayer) => prayer); // no-op, matches the default
-
-      await sync();
-
-      expect(mockCorrectYearBoundaryDerivedTimes).toHaveBeenCalledWith(dec31, '08:06');
-      // Exactly the 2 saves from the fetch itself (current + next year) — no third save
-      expect(mockSaveAllPrayers).toHaveBeenCalledTimes(2);
-    });
-  });
 });
 
 // =============================================================================
@@ -612,38 +533,6 @@ describe('January 1st edge case', () => {
     await sync();
 
     expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2025);
-  });
-
-  describe('year-boundary derived-time correction (ISSUES #5)', () => {
-    it('corrects the just-fetched previous year Dec 31 using the already-cached current year Jan 1', async () => {
-      const dec31Previous = { ...createMockPrayerData('2025-12-31'), fajr: '08:04' };
-      const jan1Current = { ...createMockPrayerData('2026-01-01'), fajr: '08:06' };
-      // 1st call: needsDataUpdate's "today" check. 2nd: the Jan-1 branch's own
-      // "is Dec 31 cached" check (null -> triggers the fetch). Subsequent
-      // calls are fixYearBoundaryDerivedTimes' own lookups, matched by full date.
-      mockGetPrayerByDate.mockImplementation(
-        (() => {
-          let call = 0;
-          return (date: Date) => {
-            call += 1;
-            if (call === 1) return jan1Current; // needsDataUpdate: today exists
-            if (call === 2) return null; // Jan-1 branch: Dec 31 not cached yet
-            const year = date.getFullYear();
-            if (year === 2025 && date.getMonth() === 11 && date.getDate() === 31) return dec31Previous;
-            if (year === 2026 && date.getMonth() === 0 && date.getDate() === 1) return jan1Current;
-            return null;
-          };
-        })()
-      );
-      const corrected = { ...dec31Previous, midnight: '23:58' };
-      mockCorrectYearBoundaryDerivedTimes.mockReturnValue(corrected);
-
-      await sync();
-
-      expect(mockCorrectYearBoundaryDerivedTimes).toHaveBeenCalledTimes(1);
-      expect(mockCorrectYearBoundaryDerivedTimes).toHaveBeenCalledWith(dec31Previous, '08:06');
-      expect(mockSaveAllPrayers).toHaveBeenCalledWith([corrected]);
-    });
   });
 });
 

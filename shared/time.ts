@@ -1,7 +1,7 @@
 import { format, intervalToDuration, isFuture, isToday, isYesterday, setHours, setMinutes } from 'date-fns';
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
-import { ISLAMIC_DAY, TIME_ADJUSTMENTS } from '@/shared/constants';
+import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
 
 // =============================================================================
 // DATE CREATION & CONVERSION
@@ -38,10 +38,35 @@ export const createLondonDate = (date?: Date | number | string): Date => {
  * // Returns: Date representing 2026-01-18T06:12:00 London time
  */
 export const createPrayerDatetime = (date: string, time: string): Date => {
-  // Create datetime string and interpret it as London time
-  // fromZonedTime: "this datetime IS in London timezone, give me the UTC equivalent"
+  // Create datetime string and interpret it in the prayer timezone
+  // fromZonedTime: "this datetime IS in the prayer timezone, give me the UTC equivalent"
   const isoString = `${date}T${time}:00`;
-  return fromZonedTime(isoString, 'Europe/London');
+  return fromZonedTime(isoString, PRAYER_TIMEZONE);
+};
+
+/**
+ * Formats an exact instant as HH:mm on the prayer timezone's wall clock
+ * @param date Date object (an exact instant)
+ * @returns Time string in HH:mm format
+ *
+ * @example
+ * formatPrayerTime(createPrayerDatetime("2026-10-23", "23:58")) // "23:58"
+ */
+export const formatPrayerTime = (date: Date): string => formatInTimeZone(date, PRAYER_TIMEZONE, 'HH:mm');
+
+/**
+ * Returns the calendar date before a YYYY-MM-DD date
+ * Pure calendar arithmetic — independent of every timezone
+ * @param date Date string in YYYY-MM-DD format
+ * @returns The previous date in YYYY-MM-DD format
+ *
+ * @example
+ * getPreviousDateString("2026-01-01") // "2025-12-31"
+ */
+export const getPreviousDateString = (date: string): string => {
+  const noonUtc = new Date(`${date}T12:00:00Z`);
+  noonUtc.setUTCDate(noonUtc.getUTCDate() - 1);
+  return noonUtc.toISOString().slice(0, 10);
 };
 
 // =============================================================================
@@ -185,88 +210,53 @@ export const getCurrentYear = (): number => createLondonDate().getFullYear();
 // NIGHT TIME CALCULATIONS (Islamic)
 // =============================================================================
 
-const MINUTES_IN_DAY = 24 * 60;
+const MINUTE_MS = 60 * 1000;
 
-const minutesOfDay = (time: string): number => {
-  const [hours, minutes] = time.split(':').map(Number);
-  return hours * 60 + minutes;
-};
+/** Midnight and the last third of one night, as exact instants */
+export interface NightTimes {
+  /** Islamic midnight: the midpoint of the night */
+  midnight: Date;
+  /** Start of the last third of the night */
+  lastThird: Date;
+}
 
-/** Whole minutes (floored, like an HH:mm clock) wrapped into one day, as HH:mm */
-const timeOfDay = (totalMinutes: number): string => {
-  const minutes = ((Math.floor(totalMinutes) % MINUTES_IN_DAY) + MINUTES_IN_DAY) % MINUTES_IN_DAY;
-  return `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
-};
-
-/**
- * Length of the Islamic night in minutes: Magrib to the next day's Fajr, as London
- * wall-clock times. Computed from the two times alone — a whole year is transformed
- * at fetch time, so the result must not depend on the fetch day's DST context, the
- * second the fetch ran at, or the device's timezone (ISSUES #28).
- */
-const nightLengthMinutes = (magribTime: string, fajrTime: string): number =>
-  minutesOfDay(fajrTime) + MINUTES_IN_DAY - minutesOfDay(magribTime);
+/** Start of the whole minute an instant falls in (seconds dropped, like every HH:mm time shown) */
+const floorToMinute = (ms: number): Date => new Date(Math.floor(ms / MINUTE_MS) * MINUTE_MS);
 
 /**
- * Calculates the start time of the last third of the night (Islamic calculation)
+ * Calculates Islamic midnight and the start of the last third for one night
  *
- * Islamic Night Division:
- * In Islamic tradition, the night is divided into thirds for prayer purposes.
- * The night spans from Magrib (sunset) to Fajr (dawn), not system midnight.
- * The last third begins 2/3 through this period and is a blessed time for prayer.
+ * The Islamic date begins at Magrib, and a night belongs to the day that follows it:
+ * the night of Friday runs from Thursday's Magrib to Friday's Fajr (ISSUES #29). The
+ * night spans Magrib (sunset) to Fajr (dawn), not system midnight:
+ * - Midnight is its midpoint (the end of Isha's time)
+ * - The last third starts two-thirds of the way through (plus TIME_ADJUSTMENTS.lastThird)
  *
- * Calculation:
- * 1. Night starts: Today's Magrib (e.g., 18:45 Jan 19)
- * 2. Night ends: Tomorrow's Fajr (e.g., 06:15 Jan 20)
- * 3. Night duration: 11 hours 30 minutes (690 minutes)
- * 4. Last third starts: 2/3 through = 460 minutes after Magrib = 02:25 Jan 20
- * 5. TIME_ADJUSTMENTS.lastThird (currently 0) is added
+ * Measured between real instants, so a night that crosses a clock change (a 23- or
+ * 25-hour day) comes out exact, and the result depends only on the four inputs —
+ * never on the device's timezone or on when this runs (ISSUES #28). Floored to the
+ * whole minute.
  *
- * @param magribTime Magrib time from today in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time from tomorrow in HH:mm format (e.g., "06:15")
- * @returns Start time of the last third in HH:mm format (e.g., "02:25")
+ * @param previousDate Date the night starts on, YYYY-MM-DD
+ * @param magribTime Magrib on that date, HH:mm in the prayer timezone
+ * @param date Date the night ends on (the day it belongs to), YYYY-MM-DD
+ * @param fajrTime Fajr on that date, HH:mm in the prayer timezone
+ * @returns Midnight and the start of the last third
  *
  * @example
- * getLastThirdOfNight("18:45", "06:15")
- * // Returns: "02:25"
+ * // Magrib 18:45 on Jan 19, Fajr 06:15 on Jan 20: a 690-minute night
+ * getNightTimes('2026-01-19', '18:45', '2026-01-20', '06:15')
+ * // { midnight: 2026-01-20 00:30, lastThird: 2026-01-20 02:25 } (London)
  */
-export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
-  const lastThirdStart = minutesOfDay(magribTime) + (nightLengthMinutes(magribTime, fajrTime) * 2) / 3;
-  return timeOfDay(lastThirdStart + TIME_ADJUSTMENTS.lastThird);
-};
+export const getNightTimes = (previousDate: string, magribTime: string, date: string, fajrTime: string): NightTimes => {
+  const start = createPrayerDatetime(previousDate, magribTime).getTime();
+  const length = createPrayerDatetime(date, fajrTime).getTime() - start;
 
-/**
- * Calculates Islamic midnight (midpoint between Magrib and Fajr)
- *
- * Islamic vs System Midnight:
- * Islamic midnight is NOT 00:00 (system midnight). It is the exact midpoint
- * of the Islamic night, which spans from Magrib (sunset) to Fajr (dawn).
- *
- * Why the difference?
- * - System midnight: Fixed at 00:00 every day
- * - Islamic midnight: Varies daily based on sunset/sunrise times
- * - In summer (long days): Islamic midnight can be as late as ~01:00
- * - In winter (short days): Islamic midnight can be as early as ~23:15
- *
- * Calculation:
- * 1. Night starts: Today's Magrib (e.g., 18:45 Jan 19)
- * 2. Night ends: Tomorrow's Fajr (e.g., 06:15 Jan 20)
- * 3. Night duration: 11 hours 30 minutes (690 minutes)
- * 4. Midpoint: 345 minutes after Magrib = 00:30 Jan 20
- * 5. Final time: 00:30 Jan 20 (Islamic midnight)
- *
- * No adjustment is applied to this calculation - it's the pure midpoint.
- *
- * @param magribTime Magrib time from today in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time from tomorrow in HH:mm format (e.g., "06:15")
- * @returns Islamic midnight time in HH:mm format (e.g., "00:30")
- *
- * @example
- * getMidnightTime("18:45", "06:15")
- * // Returns: "00:30" (exact midpoint, no adjustment)
- */
-export const getMidnightTime = (magribTime: string, fajrTime: string): string =>
-  timeOfDay(minutesOfDay(magribTime) + nightLengthMinutes(magribTime, fajrTime) / 2);
+  return {
+    midnight: floorToMinute(start + length / 2),
+    lastThird: floorToMinute(start + (length * 2) / 3 + TIME_ADJUSTMENTS.lastThird * MINUTE_MS),
+  };
+};
 
 /**
  * Adjusts a time string by adding or subtracting minutes
