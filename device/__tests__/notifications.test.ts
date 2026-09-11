@@ -3,7 +3,8 @@
  *
  * Verifies the notification identifier format that gives scheduling idempotent
  * replace semantics (same identifier = replace on Android PendingIntent and iOS
- * UNUserNotificationCenter). See ai/ISSUES.md #12.
+ * UNUserNotificationCenter). See ai/ISSUES.md #12. Also verifies that every
+ * notification fires at its list row's own instant (ISSUES #29).
  */
 
 import { scheduleNotificationAsync, setNotificationChannelAsync } from 'expo-notifications';
@@ -15,7 +16,18 @@ import {
   prayerNotificationIdentifier,
   reminderNotificationIdentifier,
 } from '@/device/notifications';
-import { AlertType, ScheduleType } from '@/shared/types';
+import { createPrayerDatetime } from '@/shared/time';
+import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
+
+/** A list row as PrayerUtils.getPrayerForDate returns it */
+const row = (english: string, arabic: string, date: string, time: string, type = ScheduleType.Standard): Prayer => ({
+  type,
+  english,
+  arabic,
+  datetime: createPrayerDatetime(date, time),
+  time,
+  belongsToDate: date,
+});
 
 describe('prayerNotificationIdentifier', () => {
   it('builds a deterministic at-time identifier from schedule type, prayer name and date', () => {
@@ -74,10 +86,8 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
   it('attaches the athan_N_v2 channel for Sound alerts (channel follows the selected sound)', async () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
-      'Fajr',
-      'الفجر',
       '2026-09-01',
-      '06:15',
+      row('Fajr', 'الفجر', '2026-09-01', '06:15'),
       AlertType.Sound,
       4
     );
@@ -89,10 +99,8 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
   it('attaches the fixed extras channel for Sunrise (standard page, extras audio — ISSUES #23)', async () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
-      'Sunrise',
-      'الشروق',
       '2026-09-01',
-      '06:15',
+      row('Sunrise', 'الشروق', '2026-09-01', '06:15'),
       AlertType.Sound,
       4
     );
@@ -104,10 +112,8 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
   it('attaches the fixed extras channel for extras prayers (Last Third)', async () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Extra,
-      'Last Third',
-      'آخر ثلث',
       '2026-09-01',
-      '01:30',
+      row('Last Third', 'آخر ثلث', '2026-09-01', '01:30', ScheduleType.Extra),
       AlertType.Sound,
       4
     );
@@ -121,10 +127,8 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
 
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Extra,
-      'Midnight',
-      'نصف الليل',
       '2026-09-01',
-      '23:59',
+      row('Midnight', 'نصف الليل', '2026-08-31', '23:59', ScheduleType.Extra),
       AlertType.Sound,
       0
     );
@@ -137,10 +141,8 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
 
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
-      'Isha',
-      'العشاء',
       '2026-09-01',
-      '21:00',
+      row('Isha', 'العشاء', '2026-09-01', '21:00'),
       AlertType.Sound,
       4
     );
@@ -151,10 +153,8 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
   it('omits the channelId for Silent alerts', async () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
-      'Fajr',
-      'الفجر',
       '2026-09-01',
-      '06:15',
+      row('Fajr', 'الفجر', '2026-09-01', '06:15'),
       AlertType.Silent,
       4
     );
@@ -178,11 +178,9 @@ describe('addOneScheduledReminderForPrayer channel wiring', () => {
     Platform.OS = 'android';
 
     await addOneScheduledReminderForPrayer(
-      ScheduleType.Standard,
-      'Last Third',
-      'آخر ثلث',
+      ScheduleType.Extra,
       '2026-09-01',
-      '01:30',
+      row('Last Third', 'آخر ثلث', '2026-09-01', '01:30', ScheduleType.Extra),
       15,
       AlertType.Sound
     );
@@ -197,10 +195,8 @@ describe('addOneScheduledReminderForPrayer channel wiring', () => {
 
     await addOneScheduledReminderForPrayer(
       ScheduleType.Standard,
-      'Fajr',
-      'الفجر',
       '2026-09-01',
-      '06:15',
+      row('Fajr', 'الفجر', '2026-09-01', '06:15'),
       15,
       AlertType.Silent
     );
@@ -213,10 +209,8 @@ describe('addOneScheduledReminderForPrayer channel wiring', () => {
   it('creates no channel on iOS (sound travels on the notification content, not a channel)', async () => {
     await addOneScheduledReminderForPrayer(
       ScheduleType.Standard,
-      'Fajr',
-      'الفجر',
       '2026-09-01',
-      '06:15',
+      row('Fajr', 'الفجر', '2026-09-01', '06:15'),
       15,
       AlertType.Sound
     );
@@ -224,5 +218,67 @@ describe('addOneScheduledReminderForPrayer channel wiring', () => {
     expect(setNotificationChannelAsync).not.toHaveBeenCalled();
     const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
     expect(trigger.channelId).toBeUndefined();
+  });
+});
+
+// =============================================================================
+// TRIGGER INSTANTS (ISSUES #29: the list row is the one source of truth)
+// =============================================================================
+
+describe('trigger instants', () => {
+  beforeEach(() => {
+    (scheduleNotificationAsync as jest.Mock).mockClear();
+  });
+
+  // Midnight of the list for Sat 24 Oct 2026 falls on the night before: Fri 23 Oct 23:58 BST
+  const midnightOf24Oct: Prayer = {
+    ...row('Midnight', 'نصف الليل', '2026-10-23', '23:58', ScheduleType.Extra),
+    belongsToDate: '2026-10-24',
+  };
+
+  it('fires the at-time notification at the row datetime, keyed by its list day', async () => {
+    const record = await addOneScheduledNotificationForPrayer(
+      ScheduleType.Extra,
+      '2026-10-24',
+      midnightOf24Oct,
+      AlertType.Silent,
+      0
+    );
+
+    const request = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0];
+    expect(request.trigger.date.toISOString()).toBe('2026-10-23T22:58:00.000Z');
+    expect(request.identifier).toBe('athan_extra_midnight_2026-10-24');
+    expect(record).toMatchObject({ date: '2026-10-24', time: '23:58', englishName: 'Midnight' });
+  });
+
+  it('fires in the repeated hour of the clock-change night at the exact instant (01:00 GMT, not 01:00 BST)', async () => {
+    const lastThird: Prayer = {
+      type: ScheduleType.Extra,
+      english: 'Last Third',
+      arabic: 'آخر ثلث',
+      datetime: new Date('2026-10-25T01:00:00.000Z'),
+      time: '01:00',
+      belongsToDate: '2026-10-25',
+    };
+
+    await addOneScheduledNotificationForPrayer(ScheduleType.Extra, '2026-10-25', lastThird, AlertType.Silent, 0);
+
+    const request = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0];
+    expect(request.trigger.date.toISOString()).toBe('2026-10-25T01:00:00.000Z');
+  });
+
+  it('fires the reminder exactly its interval before the row datetime', async () => {
+    const record = await addOneScheduledReminderForPrayer(
+      ScheduleType.Extra,
+      '2026-10-24',
+      midnightOf24Oct,
+      15,
+      AlertType.Silent
+    );
+
+    const request = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0];
+    expect(request.trigger.date.toISOString()).toBe('2026-10-23T22:43:00.000Z');
+    expect(request.identifier).toBe('reminder_extra_midnight_2026-10-24_15');
+    expect(record).toMatchObject({ date: '2026-10-24', time: '23:58', englishName: 'Midnight' });
   });
 });

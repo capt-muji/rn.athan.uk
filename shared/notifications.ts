@@ -1,4 +1,4 @@
-import { addDays, format, isBefore, subMinutes } from 'date-fns';
+import { addDays, format } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
@@ -14,30 +14,6 @@ export interface ScheduledNotification {
   arabicName: string;
   alertType: AlertType;
 }
-
-/**
- * Creates notification trigger date from prayer date and time
- *
- * Timezone handling:
- * - Input date/time are interpreted as London timezone (Europe/London)
- * - Output Date object is in system local time but represents the same moment
- * - This ensures notifications fire at the correct prayer time regardless of device timezone
- *
- * @param date Date string in YYYY-MM-DD format (London timezone)
- * @param time Time string in HH:mm format (London timezone)
- * @returns Date object for notification scheduling
- *
- * @example
- * genTriggerDate("2026-01-24", "06:15")
- * // Returns: Date representing 06:15 London time on Jan 24, 2026
- */
-export const genTriggerDate = (date: string, time: string): Date => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const triggerDate = TimeUtils.createLondonDate(date);
-
-  triggerDate.setHours(hours, minutes, 0, 0);
-  return triggerDate;
-};
 
 /**
  * The 5 daily prayers whose at-time notifications play the user's selected
@@ -143,29 +119,6 @@ export const genReminderNotificationContent = (
 };
 
 /**
- * Creates trigger date for reminder notification
- * @param date Date string in YYYY-MM-DD format
- * @param time Time string in HH:mm format
- * @param intervalMinutes Minutes before prayer time to trigger reminder
- * @returns Date object for reminder scheduling
- */
-export const genReminderTriggerDate = (date: string, time: string, intervalMinutes: ReminderInterval): Date => {
-  const prayerTime = genTriggerDate(date, time);
-  const reminderTime = subMinutes(prayerTime, intervalMinutes);
-  return reminderTime;
-};
-
-/**
- * Checks if a scheduled notification is outdated
- */
-export const isNotificationOutdated = (notification: ScheduledNotification): boolean => {
-  const triggerDate = genTriggerDate(notification.date, notification.time);
-  const now = TimeUtils.createLondonDate();
-
-  return isBefore(triggerDate, now);
-};
-
-/**
  * Finds OS-scheduled notifications that no longer have a database record.
  *
  * After a reschedule, the database describes exactly the intended set of
@@ -195,15 +148,6 @@ export const findStaleScheduledNotificationIds = (
   const recordedIds = new Set(dbRecords.map((record) => record.id));
 
   return osIdentifiers.filter((identifier) => !recordedIds.has(identifier));
-};
-
-/**
- * Checks if a given prayer time is in the future
- */
-export const isPrayerTimeInFuture = (date: string, time: string): boolean => {
-  const triggerDate = genTriggerDate(date, time);
-  const now = TimeUtils.createLondonDate();
-  return triggerDate > now;
 };
 
 /**

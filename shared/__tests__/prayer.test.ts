@@ -3,15 +3,14 @@ import { formatInTimeZone } from 'date-fns-tz';
 import {
   calculateBelongsToDate,
   canonicalDisplayOrder,
-  correctYearBoundaryDerivedTimes,
   createPrayer,
   filterApiData,
   getCascadeDelay,
   getLongestPrayerNameIndex,
   transformApiData,
 } from '../prayer';
-import { createPrayerDatetime, getLastThirdOfNight, getMidnightTime } from '../time';
-import { type IApiResponse, type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '../types';
+import { createPrayerDatetime } from '../time';
+import { type IApiResponse, type Prayer, ScheduleType } from '../types';
 
 const londonDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, 'Europe/London', 'yyyy-MM-dd');
 
@@ -469,8 +468,6 @@ describe('transformApiData', () => {
     const result = transformApiData(input);
 
     // Check derived times exist and are in HH:mm format
-    expect(result[0].midnight).toMatch(/^\d{2}:\d{2}$/);
-    expect(result[0]['last third']).toMatch(/^\d{2}:\d{2}$/);
     expect(result[0].suhoor).toMatch(/^\d{2}:\d{2}$/);
     expect(result[0].duha).toMatch(/^\d{2}:\d{2}$/);
     expect(result[0].istijaba).toMatch(/^\d{2}:\d{2}$/);
@@ -611,11 +608,7 @@ describe('transformApiData', () => {
     expect(result[0].istijaba).toBe('16:00');
   });
 
-  it('falls back to same-day Fajr for the last entry of a payload (documents the known gap)', () => {
-    // This is the root cause ISSUES.md #5 describes: transformApiData sees
-    // only one year's entries, so the last one has no next-day entry to read
-    // Fajr from. correctYearBoundaryDerivedTimes (see below) is the fix,
-    // applied once next year's real Jan 1 Fajr is cached.
+  it('never stores Midnight or Last Third: they belong to the night before a day (ISSUES #29)', () => {
     const input: IApiResponse = {
       city: 'London',
       times: {
@@ -637,69 +630,11 @@ describe('transformApiData', () => {
       },
     };
 
-    const result = transformApiData(input);
+    const [result] = transformApiData(input);
 
-    // Same-day Fajr (06:00) fallback, not the real next year's Fajr
-    expect(result[0].midnight).toBe(getMidnightTime('16:00', '06:00'));
-    expect(result[0]['last third']).toBe(getLastThirdOfNight('16:00', '06:00'));
-  });
-});
-
-// =============================================================================
-// correctYearBoundaryDerivedTimes TESTS
-// =============================================================================
-
-describe('correctYearBoundaryDerivedTimes', () => {
-  const decemberThirtyFirst: ISingleApiResponseTransformed = {
-    date: '2026-12-31',
-    fajr: '06:00',
-    sunrise: '07:30',
-    dhuhr: '12:15',
-    asr: '14:30',
-    magrib: '16:00',
-    isha: '17:45',
-    // Computed with the same-day-Fajr fallback (the bug transformApiData
-    // has for a payload's last entry) — a slightly wrong pair on purpose
-    midnight: getMidnightTime('16:00', '06:00'),
-    'last third': getLastThirdOfNight('16:00', '06:00'),
-    suhoor: '05:40',
-    duha: '07:50',
-    istijaba: '15:00',
-  };
-
-  it('recomputes midnight and last third using the real next-year Fajr', () => {
-    const nextYearFirstFajr = '06:05'; // realistically close to, but not equal to, 06:00
-
-    const result = correctYearBoundaryDerivedTimes(decemberThirtyFirst, nextYearFirstFajr);
-
-    expect(result.midnight).toBe(getMidnightTime('16:00', nextYearFirstFajr));
-    expect(result['last third']).toBe(getLastThirdOfNight('16:00', nextYearFirstFajr));
-    // The fallback and the corrected value differ for this fixture — proves
-    // the correction actually changed something, not a vacuous pass
-    expect(result.midnight).not.toBe(decemberThirtyFirst.midnight);
-  });
-
-  it('leaves every other field untouched', () => {
-    const result = correctYearBoundaryDerivedTimes(decemberThirtyFirst, '06:05');
-
-    expect(result.date).toBe(decemberThirtyFirst.date);
-    expect(result.fajr).toBe(decemberThirtyFirst.fajr);
-    expect(result.sunrise).toBe(decemberThirtyFirst.sunrise);
-    expect(result.dhuhr).toBe(decemberThirtyFirst.dhuhr);
-    expect(result.asr).toBe(decemberThirtyFirst.asr);
-    expect(result.magrib).toBe(decemberThirtyFirst.magrib);
-    expect(result.isha).toBe(decemberThirtyFirst.isha);
-    expect(result.suhoor).toBe(decemberThirtyFirst.suhoor);
-    expect(result.duha).toBe(decemberThirtyFirst.duha);
-    expect(result.istijaba).toBe(decemberThirtyFirst.istijaba);
-  });
-
-  it('returns the same object reference when the next-year Fajr matches the same-day fallback exactly', () => {
-    // The fixture's own fallback was computed with fajr '06:00' — passing
-    // that back as "next year's Fajr" means there is nothing to correct
-    const result = correctYearBoundaryDerivedTimes(decemberThirtyFirst, '06:00');
-
-    expect(result).toBe(decemberThirtyFirst);
+    // Worked out from two days' records when the lists are built (getNightTimesForDay)
+    expect(result).not.toHaveProperty('midnight');
+    expect(result).not.toHaveProperty('last third');
   });
 });
 

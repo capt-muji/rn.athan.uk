@@ -76,12 +76,14 @@ export interface IApiResponse {
  * This is the processed version of IApiSingleTime with derived extra prayers added.
  * Transformation happens in shared/prayer.ts:transformApiData()
  *
- * Derived prayers calculated from API data:
- * - midnight: Midpoint between Magrib and Fajr (Islamic midnight, not 00:00)
- * - last third: Start of last third of night
+ * Derived prayers calculated from the day's own API times:
  * - suhoor: 20 minutes before Fajr (pre-dawn meal)
  * - duha: 20 minutes after Sunrise (forenoon prayer)
  * - istijaba: 60 minutes before Magrib on Fridays only (supplication time)
+ *
+ * Midnight and Last Third are not stored: they belong to the night leading into
+ * the day (the previous day's Magrib to this day's Fajr), so shared/prayer.ts
+ * works them out from two records when the lists are built (getNightTimesForDay)
  *
  * Stored in MMKV with key format: prayer_YYYY-MM-DD
  * Cache lifetime: Until next app upgrade (see stores/version.ts)
@@ -96,9 +98,7 @@ export interface ISingleApiResponseTransformed {
   asr: string;
   magrib: string;
   isha: string;
-  /** 5 derived extra prayers (HH:mm format) */
-  midnight: string;
-  'last third': string;
+  /** 3 derived extra prayers (HH:mm format) */
   suhoor: string;
   duha: string;
   istijaba: string;

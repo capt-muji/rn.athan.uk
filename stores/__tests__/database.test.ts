@@ -203,8 +203,6 @@ describe('saveAllPrayers', () => {
     asr: '14:30',
     magrib: '16:45',
     isha: '18:15',
-    midnight: '00:30',
-    'last third': '02:30',
     suhoor: '05:40',
     duha: '07:50',
     istijaba: '12:45',

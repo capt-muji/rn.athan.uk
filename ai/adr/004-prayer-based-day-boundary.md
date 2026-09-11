@@ -507,3 +507,11 @@ store.set(scheduleAtom, {
 | Date       | Author | Change                             |
 | ---------- | ------ | ---------------------------------- |
 | 2026-01-18 | <user>   | Initial draft - supersedes ADR-002 |
+
+## Addendum (2026-09-11): the Extras night, and one moment per prayer
+
+The Terminology table defines prayer Midnight as the midpoint between yesterday's Magrib and today's Fajr. The implementation had drifted: it stored each day's Midnight and Last Third from that day's Magrib and the next day's Fajr, so the Extras list for day D showed the following night's values on the night before D. Fixed in 1.24.12 (ISSUES #29):
+
+- `getNightTimesForDay` (shared/prayer.ts) works out the night leading into a day from the previous day's Magrib and the day's own Fajr, as exact instants measured in real elapsed time (clock-change nights included). Nothing about the night is stored.
+- Notifications and reminders fire at the list row's own `datetime` (`getPrayerForDate`), so an alert can never land on a different night than its row.
+- The Standard list is unchanged: a calendar prayer day from Fajr to Isha, where an Isha after 00:00 stays with its day.
