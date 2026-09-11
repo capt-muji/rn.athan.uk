@@ -548,6 +548,66 @@ describe('getPreviousDateString', () => {
   });
 });
 
+describe('prayer-timezone clock (remembered offsets)', () => {
+  // A reference that asks Intl directly every time, with no memory
+  const reference = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    hourCycle: 'h23',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  const referenceReading = (instant: number): string => {
+    const parts = reference.formatToParts(instant);
+    const field = (type: Intl.DateTimeFormatPartTypes) => parts.find((part) => part.type === type)?.value ?? '';
+    const hour = field('hour') === '24' ? '00' : field('hour');
+    return `${field('year')}-${field('month')}-${field('day')} ${hour}:${field('minute')}`;
+  };
+  const appReading = (instant: number): string =>
+    `${formatDateShort(new Date(instant))} ${formatPrayerTime(new Date(instant))}`;
+
+  it('matches Intl at every quarter hour of 2026', () => {
+    const mismatches: string[] = [];
+    for (let instant = Date.UTC(2026, 0, 1); instant < Date.UTC(2027, 0, 1); instant += 15 * 60_000) {
+      if (appReading(instant) !== referenceReading(instant)) mismatches.push(new Date(instant).toISOString());
+    }
+    expect(mismatches).toEqual([]);
+  });
+
+  it('matches Intl minute by minute across both 2026 clock changes', () => {
+    const mismatches: string[] = [];
+    for (const [from, to] of [
+      [Date.UTC(2026, 2, 28, 22), Date.UTC(2026, 2, 29, 4)],
+      [Date.UTC(2026, 9, 24, 22), Date.UTC(2026, 9, 25, 4)],
+    ]) {
+      for (let instant = from; instant <= to; instant += 60_000) {
+        if (appReading(instant) !== referenceReading(instant)) mismatches.push(new Date(instant).toISOString());
+      }
+    }
+    expect(mismatches).toEqual([]);
+  });
+
+  it('asks Intl at most twice per UTC day touched, then never again for that day', () => {
+    const intlReads = jest.spyOn(Intl.DateTimeFormat.prototype, 'formatToParts');
+    try {
+      // A day no other test reads, so nothing is remembered yet
+      const times = ['04:56', '06:28', '13:02', '16:27', '19:25', '20:39'];
+      const moments = times.map((time) => createPrayerDatetime('2031-05-14', time));
+      // The ±12h probes touch three UTC days: 13, 14 and 15 May
+      expect(intlReads.mock.calls.length).toBeLessThanOrEqual(6);
+
+      intlReads.mockClear();
+      for (const moment of moments) formatPrayerTime(moment);
+      for (const time of times) createPrayerDatetime('2031-05-14', time);
+      expect(intlReads).not.toHaveBeenCalled();
+    } finally {
+      intlReads.mockRestore();
+    }
+  });
+});
+
 describe('calendar helpers (prayer timezone, ISSUES #30)', () => {
   afterEach(() => jest.useRealTimers());
 
