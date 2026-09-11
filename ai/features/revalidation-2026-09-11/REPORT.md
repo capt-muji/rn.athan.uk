@@ -119,27 +119,18 @@ drop bought no measurable smoothness cost. Sheets are unchanged across builds
 (alert 407–416ms, settings 370–387ms). Startup on the dev build (includes the mock
 refresh): native launch ~60ms, JS bundle ~130ms, first content ~1.15s.
 
-## Decisions for the owner
+## Owner decisions (2026-09-11)
 
-1. **Merge `fix/revalidation-2026-09-11` into uat** once it has been tested. The
-   alarm clock branch already carries the same fixes; after the uat merge, merge
-   uat into it as usual.
-2. **ISSUES #29:** which night the Extras Midnight/Last Third values belong to
-   (they are computed from the following night's Maghrib/Fajr pair; 0–3 minutes).
-3. **Reanimated pairing:** 4.6.0 + worklets 0.12.2 (current) sits outside Expo SDK
-   57's tested versions and expo-modules-core's worklets peer range; 4.5.3 +
-   0.10.1 contains the same fix and stays in range. Android builds and runs; the
-   iOS build is unverified either way.
-4. **DST nights (optional):** the two real DST nights use the plain wall-clock
-   midpoint, as they always have; the true elapsed midpoint differs by ~30 min.
-5. **Eyeball the bar (1.24.8) on real data** — it should look identical.
-6. **iOS:** nothing in this revalidation ran on an iPhone (no iOS device was
-   connected). Check 1.24.7–1.24.9 on the XS before merging: resume from
-   background and lock, the Extras overlays, the next-prayer advance and the day
-   roll.
-7. **What's New at release:** the notes are filtered by their own stamp (1.23.15),
-   not the installed version, so every version bump re-shows them to users who
-   already saw them. Re-stamp or clear them for the next store release.
+1. **Merged into uat** after the owner's test (as 1.24.10); uat then merged into
+   `experiment/alarmclock-backport` as usual. The alarm clock branch stays off uat.
+2. **ISSUES #29:** the Extras night leading into day D uses D−1's Maghrib and D's
+   Fajr ("Maghrib yesterday, Fajr today" in the Islamic-day sense) — implemented on
+   its own branch for the owner to test.
+3. **Reanimated:** keep 4.6.0 + worklets 0.12.2.
+4. **DST nights:** left as they are (plain wall-clock midpoint); no change asked for.
+5. **iOS:** the owner will check on the XS.
+6. **What's New:** the three items (never released) re-stamped to 1.24.10 so they
+   show for this version.
 
 ## Re-plan
 
