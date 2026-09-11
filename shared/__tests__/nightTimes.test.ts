@@ -20,11 +20,10 @@ import {
   getPrayerForDate,
   transformApiData,
 } from '@/shared/prayer';
-import { formatDateShort } from '@/shared/time';
 import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
-jest.mock('@/stores/database', () => ({ getPrayerByDate: jest.fn() }));
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
 
 // =============================================================================
 // INDEPENDENT REFERENCE: UTC arithmetic and London's clock-change rule
@@ -83,7 +82,7 @@ const useRecords = (records: ISingleApiResponseTransformed[]) => {
 };
 
 beforeEach(() => {
-  (Database.getPrayerByDate as jest.Mock).mockImplementation((date: Date) => stored.get(formatDateShort(date)) ?? null);
+  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
 /** One day's list exactly as the app builds it */
