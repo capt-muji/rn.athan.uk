@@ -618,6 +618,32 @@ describe('getMidnightTime edge cases', () => {
   });
 });
 
+describe('night times do not depend on when they are calculated', () => {
+  afterEach(() => jest.useRealTimers());
+
+  // A whole year is transformed at fetch time, so the result may depend only on the
+  // two times — not on the fetch day's DST context or the second it ran at
+  const cases: [magrib: string, fajr: string, midnight: string, lastThird: string][] = [
+    ['17:50', '05:40', '23:45', '01:43'],
+    ['17:50', '05:41', '23:45', '01:44'],
+    ['16:03', '06:22', '23:12', '01:35'],
+  ];
+
+  it.each([
+    '2026-01-20T12:00:00.000Z', // ordinary day, second 0
+    '2026-01-20T12:00:45.000Z', // ordinary day, second 45
+    '2026-06-20T11:59:59.900Z', // summer (BST), second 59.9
+    '2026-10-24T11:00:00.000Z', // Saturday before the clocks go back
+    '2026-03-28T12:00:00.000Z', // Saturday before the clocks go forward
+  ])('gives the same results when run at %s', (iso) => {
+    jest.useFakeTimers().setSystemTime(new Date(iso));
+    for (const [magrib, fajr, midnight, lastThird] of cases) {
+      expect(getMidnightTime(magrib, fajr)).toBe(midnight);
+      expect(getLastThirdOfNight(magrib, fajr)).toBe(lastThird);
+    }
+  });
+});
+
 describe('getSecondsRemaining (ceil display contract)', () => {
   const targetFromNow = (msAhead: number) => new Date(Date.now() + msAhead);
   let nowSpy: jest.SpyInstance;
