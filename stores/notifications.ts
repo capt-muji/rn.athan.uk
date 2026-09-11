@@ -20,6 +20,7 @@ import {
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
+import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -432,21 +433,18 @@ async function scheduleNotificationForDate(
   alertType: AlertType,
   sound: number
 ): Promise<string | null> {
-  const dateObj = TimeUtils.createLondonDate(date);
-  const prayerData = Database.getPrayerByDate(dateObj);
-  if (!prayerData) return null;
-
-  const prayerTime = prayerData[englishName.toLowerCase() as keyof typeof prayerData];
-
-  // Skip past prayers
-  if (!NotificationUtils.isPrayerTimeInFuture(date, prayerTime)) {
-    logger.info('Skipping past prayer:', { date, time: prayerTime, englishName });
+  // The list row itself: the notification fires at exactly the moment the list
+  // and countdown show (Extras night rows fall on the night before `date`)
+  const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
+  if (!prayer) {
+    // No data for the day, or Istijaba outside Fridays (not on that day's list)
+    logger.info("Skipping prayer not on this day's list:", { date, englishName });
     return null;
   }
 
-  // Skip Istijaba on non-Fridays
-  if (englishName.toLowerCase() === 'istijaba' && !TimeUtils.isFriday(dateObj)) {
-    logger.info('Skipping Istijaba on non-Friday:', { date, time: prayerTime });
+  // Skip past prayers
+  if (prayer.datetime <= TimeUtils.createLondonDate()) {
+    logger.info('Skipping past prayer:', { date, time: prayer.time, englishName });
     return null;
   }
 
@@ -455,10 +453,8 @@ async function scheduleNotificationForDate(
   try {
     const notification = await Device.addOneScheduledNotificationForPrayer(
       scheduleType,
-      englishName,
-      arabicName,
       date,
-      prayerTime,
+      prayer,
       alertType,
       sound
     );
@@ -471,7 +467,7 @@ async function scheduleNotificationForDate(
     // The identifier is deterministic, so whatever OS notification it already
     // had must survive this failure — record it so neither the per-prayer
     // stale-cancel nor the post-reschedule sweep removes it (issue #15).
-    const survivedNotification = { id: identifier, date, time: prayerTime, englishName, arabicName, alertType };
+    const survivedNotification = { id: identifier, date, time: prayer.time, englishName, arabicName, alertType };
     Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, survivedNotification);
 
     return identifier;
@@ -574,15 +570,17 @@ async function scheduleReminderNotificationForDate(
   alertType: AlertType,
   intervalMinutes: ReminderInterval
 ): Promise<string | null> {
-  const dateObj = TimeUtils.createLondonDate(date);
-  const prayerData = Database.getPrayerByDate(dateObj);
-  if (!prayerData) return null;
-
-  const prayerTime = prayerData[englishName.toLowerCase() as keyof typeof prayerData];
+  // The list row itself: the reminder counts back from exactly the moment the
+  // list and countdown show (Extras night rows fall on the night before `date`)
+  const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
+  if (!prayer) {
+    // No data for the day, or Istijaba outside Fridays (not on that day's list)
+    logger.info("REMINDER: Skipping prayer not on this day's list:", { date, englishName });
+    return null;
+  }
 
   // Calculate reminder trigger time
-  const prayerDateTime = NotificationUtils.genTriggerDate(date, prayerTime);
-  const reminderDateTime = subMinutes(prayerDateTime, intervalMinutes);
+  const reminderDateTime = subMinutes(prayer.datetime, intervalMinutes);
   const now = TimeUtils.createLondonDate();
 
   // Skip if reminder time is already past or within buffer
@@ -590,17 +588,11 @@ async function scheduleReminderNotificationForDate(
   if (secondsUntilReminder < REMINDER_BUFFER_SECONDS) {
     logger.info('REMINDER: Skipping past or imminent reminder:', {
       date,
-      prayerTime,
+      prayerTime: prayer.time,
       englishName,
       intervalMinutes,
       secondsUntilReminder,
     });
-    return null;
-  }
-
-  // Skip Istijaba on non-Fridays
-  if (englishName.toLowerCase() === 'istijaba' && !TimeUtils.isFriday(dateObj)) {
-    logger.info('REMINDER: Skipping Istijaba on non-Friday:', { date, prayerTime });
     return null;
   }
 
@@ -609,10 +601,8 @@ async function scheduleReminderNotificationForDate(
   try {
     const notification = await Device.addOneScheduledReminderForPrayer(
       scheduleType,
-      englishName,
-      arabicName,
       date,
-      prayerTime,
+      prayer,
       intervalMinutes,
       alertType
     );
@@ -624,7 +614,7 @@ async function scheduleReminderNotificationForDate(
 
     // Keep whatever OS reminder this deterministic identifier already had
     // alive — record it so the stale-cancel and sweep skip it (issue #15).
-    const survivedReminder = { id: identifier, date, time: prayerTime, englishName, arabicName, alertType };
+    const survivedReminder = { id: identifier, date, time: prayer.time, englishName, arabicName, alertType };
     Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, survivedReminder);
 
     return identifier;

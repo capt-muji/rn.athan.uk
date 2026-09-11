@@ -15,13 +15,9 @@ import {
   genNextXDays,
   genNotificationContent,
   genReminderNotificationContent,
-  genReminderTriggerDate,
-  genTriggerDate,
   getNotificationSound,
   getReminderNotificationSound,
   initializeNotifications,
-  isNotificationOutdated,
-  isPrayerTimeInFuture,
   reminderAndroidChannelId,
   type ScheduledNotification,
 } from '../notifications';
@@ -68,88 +64,6 @@ describe('genNextXDays', () => {
     // Each subsequent day should be 1 day after the previous
     expect(date1.getTime() - date0.getTime()).toBe(24 * 60 * 60 * 1000);
     expect(date2.getTime() - date1.getTime()).toBe(24 * 60 * 60 * 1000);
-  });
-});
-
-// =============================================================================
-// genTriggerDate TESTS
-// =============================================================================
-
-describe('genTriggerDate', () => {
-  it('creates Date from date and time strings', () => {
-    const result = genTriggerDate('2026-01-18', '06:12');
-    expect(result).toBeInstanceOf(Date);
-  });
-
-  it('sets correct hours and minutes', () => {
-    const result = genTriggerDate('2026-01-18', '14:30');
-    expect(result.getHours()).toBe(14);
-    expect(result.getMinutes()).toBe(30);
-  });
-
-  it('sets seconds to 0', () => {
-    const result = genTriggerDate('2026-01-18', '06:12');
-    expect(result.getSeconds()).toBe(0);
-  });
-});
-
-// =============================================================================
-// isPrayerTimeInFuture TESTS
-// =============================================================================
-
-describe('isPrayerTimeInFuture', () => {
-  it('returns false for past dates', () => {
-    // Use a date far in the past
-    expect(isPrayerTimeInFuture('2020-01-01', '06:00')).toBe(false);
-  });
-
-  it('returns true for future dates', () => {
-    // Use a date far in the future
-    expect(isPrayerTimeInFuture('2030-01-01', '06:00')).toBe(true);
-  });
-
-  it('returns false for yesterday', () => {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    const dateStr = yesterday.toISOString().split('T')[0];
-    expect(isPrayerTimeInFuture(dateStr, '00:00')).toBe(false);
-  });
-
-  it('returns true for tomorrow', () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const dateStr = tomorrow.toISOString().split('T')[0];
-    expect(isPrayerTimeInFuture(dateStr, '23:59')).toBe(true);
-  });
-});
-
-// =============================================================================
-// isNotificationOutdated TESTS
-// =============================================================================
-
-describe('isNotificationOutdated', () => {
-  it('returns true for past notifications', () => {
-    const notification = {
-      id: 'test-1',
-      date: '2020-01-01',
-      time: '06:00',
-      englishName: 'Fajr',
-      arabicName: 'الفجر',
-      alertType: AlertType.Sound,
-    };
-    expect(isNotificationOutdated(notification)).toBe(true);
-  });
-
-  it('returns false for future notifications', () => {
-    const notification = {
-      id: 'test-2',
-      date: '2030-01-01',
-      time: '06:00',
-      englishName: 'Fajr',
-      arabicName: 'الفجر',
-      alertType: AlertType.Sound,
-    };
-    expect(isNotificationOutdated(notification)).toBe(false);
   });
 });
 
@@ -473,48 +387,6 @@ describe('genReminderNotificationContent', () => {
   it('sets autoDismiss to true', () => {
     const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
     expect(content.autoDismiss).toBe(true);
-  });
-});
-
-describe('genReminderTriggerDate', () => {
-  it('subtracts correct minutes from prayer time', () => {
-    const prayerTrigger = genTriggerDate('2026-01-24', '06:15');
-    const reminderTrigger = genReminderTriggerDate('2026-01-24', '06:15', 15);
-
-    // Reminder should be 15 minutes before prayer
-    const diffMs = prayerTrigger.getTime() - reminderTrigger.getTime();
-    const diffMinutes = diffMs / (60 * 1000);
-    expect(diffMinutes).toBe(15);
-  });
-
-  it('handles 5 minute interval', () => {
-    const reminderTrigger = genReminderTriggerDate('2026-01-24', '12:00', 5);
-
-    expect(reminderTrigger.getHours()).toBe(11);
-    expect(reminderTrigger.getMinutes()).toBe(55);
-  });
-
-  it('handles 30 minute interval', () => {
-    const reminderTrigger = genReminderTriggerDate('2026-01-24', '12:00', 30);
-
-    expect(reminderTrigger.getHours()).toBe(11);
-    expect(reminderTrigger.getMinutes()).toBe(30);
-  });
-
-  it('handles crossing hour boundary', () => {
-    const reminderTrigger = genReminderTriggerDate('2026-01-24', '06:10', 15);
-
-    expect(reminderTrigger.getHours()).toBe(5);
-    expect(reminderTrigger.getMinutes()).toBe(55);
-  });
-
-  it('handles midnight crossing', () => {
-    const reminderTrigger = genReminderTriggerDate('2026-01-24', '00:10', 15);
-
-    // Should go to previous day at 23:55
-    expect(reminderTrigger.getHours()).toBe(23);
-    expect(reminderTrigger.getMinutes()).toBe(55);
-    expect(reminderTrigger.getDate()).toBe(23); // Previous day
   });
 });
 

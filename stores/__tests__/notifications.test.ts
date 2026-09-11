@@ -890,8 +890,6 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       asr: time,
       magrib: time,
       isha: time,
-      midnight: time,
-      'last third': time,
       suhoor: time,
       duha: time,
       istijaba: time,
@@ -1295,5 +1293,83 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     expect(osState.has(duhaTodayId)).toBe(true);
     expect(osState.has(duhaTomorrowId)).toBe(true);
     expect(cancelAllMock).not.toHaveBeenCalled();
+  });
+
+  // -- ISSUES #29: every alert fires at its list row's own instant ------------
+
+  it('schedules the Extras night rows at the exact moment their list row shows', async () => {
+    const seedDay = (date: string, fajr: string, magrib: string) => {
+      const prayer: ISingleApiResponseTransformed = {
+        date,
+        fajr,
+        sunrise: '06:10',
+        dhuhr: '13:05',
+        asr: '16:50',
+        magrib,
+        isha: '21:20',
+        suhoor: '04:05',
+        duha: '06:30',
+        istijaba: '18:55',
+      };
+      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+    };
+    seedDay(YESTERDAY, '04:22', '19:58');
+    seedDay(TODAY, '04:23', '19:55');
+    seedDay(TOMORROW, '04:25', '19:53');
+    store.set(standardPrayerAlertAtoms[0], AlertType.Silent); // Fajr
+    store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
+    store.set(extraPrayerAlertAtoms[1], AlertType.Silent); // Last Third
+
+    await rescheduleAllNotifications();
+
+    const triggerOf = (identifier: string): string | undefined =>
+      scheduleMock.mock.calls
+        .map(([request]) => request as { identifier: string; trigger: { date: Date } })
+        .find((request) => request.identifier === identifier)
+        ?.trigger.date.toISOString();
+
+    // Tonight (Sat 29 -> Sun 30 Aug) opens Sunday's list: Magrib Sat 19:55, Fajr Sun 04:25 BST, 8h 30m
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TOMORROW))).toBe(
+      '2026-08-29T23:10:00.000Z'
+    );
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Last Third', TOMORROW))).toBe(
+      '2026-08-30T00:35:00.000Z'
+    );
+    // Saturday's list opened with last night, already over at 09:00: nothing to schedule
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TODAY))).toBeUndefined();
+    // Daily prayers are unchanged: the day's own time on its own date
+    expect(triggerOf(fajrId(TOMORROW))).toBe('2026-08-30T03:25:00.000Z');
+  });
+
+  it('schedules a Midnight that falls before 00:00 on the evening before its list day', async () => {
+    const seedDay = (date: string, fajr: string, magrib: string) => {
+      const prayer: ISingleApiResponseTransformed = {
+        date,
+        fajr,
+        sunrise: '06:10',
+        dhuhr: '13:05',
+        asr: '16:50',
+        magrib,
+        isha: '20:30',
+        suhoor: '04:05',
+        duha: '06:30',
+        istijaba: '18:05',
+      };
+      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+    };
+    // A winter-shaped night on the frozen date: Magrib Sat 19:05, Fajr Sun 04:25 BST, 9h 20m
+    seedDay(TODAY, '04:23', '19:05');
+    seedDay(TOMORROW, '04:25', '19:03');
+    store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
+
+    await rescheduleAllNotifications();
+
+    const midnightId = prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TOMORROW);
+    const request = scheduleMock.mock.calls
+      .map(([call]) => call as { identifier: string; trigger: { date: Date } })
+      .find((call) => call.identifier === midnightId);
+
+    // Sunday's Midnight is Saturday 23:45 BST, this same evening, never Sunday 23:45
+    expect(request?.trigger.date.toISOString()).toBe('2026-08-29T22:45:00.000Z');
   });
 });
