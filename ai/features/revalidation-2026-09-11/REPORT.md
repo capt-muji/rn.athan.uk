@@ -106,7 +106,15 @@ Idle CPU, 60s after the mock window, % of one core:
 
 `overlay_open` medians are 222–244ms on every build from 1.23.13 to 1.24.7 — the band the
 campaign already documented after s9 changed the instrument (JS works ~44–78ms,
-then waits on a synchronous UI-thread mount). Sheets are unchanged across builds
+then waits on a synchronous UI-thread mount). 1.24.8's first run read 262ms, so
+it was re-measured A-B-A on a rested phone (1.24.8, 1.24.7, 1.24.8): 262, 248 and
+252ms. Pooled, 1.24.8 is 255ms against 1.24.7's 248ms — under one frame, inside
+the 4–10ms spread between runs of the same build, and with no code path from the
+bar change into the overlay commit. Frame cadence, which is the real arbiter, over
+six open/close cycles per build: 1.24.7 had 9 of 12 animations at clean 60fps and
+3 gaps over 33ms (worst 50ms); 1.24.8 had 7 of 12 clean and 3 gaps over 33ms
+(worst 73ms, in one open). Not distinguishable at this sample size — the idle-CPU
+drop bought no measurable smoothness cost. Sheets are unchanged across builds
 (alert 407–416ms, settings 370–387ms). Startup on the dev build (includes the mock
 refresh): native launch ~60ms, JS bundle ~130ms, first content ~1.15s.
 
@@ -150,12 +158,17 @@ before, change one thing, verify on the device with frames and pixels.
    still unreproduced outside the original S23 sighting.
 4. **Boundary switch latency** (~236ms on the 3T): switch the countdown first and
    refresh the list a frame later; verify with the clock-sync recording.
-5. **Startup time** (own session): measure first content on a production build,
+5. **Overlay cadence on the 3T:** 1.24.7 and 1.24.8 both miss an occasional frame
+   when the overlay opens or closes (3 of 12 animations had a gap over 33ms, worst
+   50–73ms), where the campaign measured 16–17ms before ADR-015. Find the cause
+   with atrace before changing anything, and add the overlay cadence check to the
+   harness.
+6. **Startup time** (own session): measure first content on a production build,
    profile the JS path, change nothing visible, verify the launch frame by frame.
-6. **Simplification, only once the harness exists:** fold Ago's own 1s interval
+7. **Simplification, only once the harness exists:** fold Ago's own 1s interval
    into the wall-clock tick; key the overlay selection by name instead of index;
    rename `resyncAtom` to what it does (snap values caught up on foreground).
-7. **Keep `e2e/baselines` current.** Re-based in this branch (overlay marks on the
+8. **Keep `e2e/baselines` current.** Re-based in this branch (overlay marks on the
    post-s9 band, idle 24.8% on 1.24.8); update them with every measured change.
 
 **Do not:** add re-assert machinery (`.modify()`, keyed remounts); pursue
