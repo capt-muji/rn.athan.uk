@@ -600,10 +600,36 @@ describe('overlay close deadline', () => {
 // =============================================================================
 
 describe('resyncCountdowns', () => {
+  const stalePrayer = { english: 'Asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' };
+  let previousNextPrayerImpl: ((...args: unknown[]) => unknown) | undefined;
+
+  beforeEach(() => {
+    const { getNextPrayer } = require('@/stores/schedule');
+    previousNextPrayerImpl = (getNextPrayer as jest.Mock).getMockImplementation();
+  });
+
   afterEach(() => {
+    // mockReturnValue outlives clearAllMocks/restoreAllMocks — put the module mock back as it was
+    const { getNextPrayer } = require('@/stores/schedule');
+    if (previousNextPrayerImpl) (getNextPrayer as jest.Mock).mockImplementation(previousNextPrayerImpl);
+    else (getNextPrayer as jest.Mock).mockReset();
     jest.clearAllTimers();
     jest.useRealTimers();
     jest.restoreAllMocks();
+  });
+
+  it('leaves a schedule alone when its next prayer is still ahead, but still restarts the tickers', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:00.000Z')); // one minute before the boundary
+
+    const { getNextPrayer } = require('@/stores/schedule');
+    (getNextPrayer as jest.Mock).mockReturnValue(stalePrayer);
+
+    const { resyncCountdowns } = require('../countdown');
+    resyncCountdowns();
+
+    expect(refreshSequence).not.toHaveBeenCalled();
+    expect(jest.getTimerCount()).toBeGreaterThan(0);
   });
 
   it('refreshes a boundary crossed while suspended and restarts the tickers', () => {
@@ -612,11 +638,7 @@ describe('resyncCountdowns', () => {
 
     // The stale next prayer is the one that passed while the host was frozen
     const { getNextPrayer } = require('@/stores/schedule');
-    (getNextPrayer as jest.Mock).mockReturnValue({
-      english: 'Asr',
-      datetime: new Date('2026-01-20T06:15:00.000Z'),
-      belongsToDate: '2026-01-20',
-    });
+    (getNextPrayer as jest.Mock).mockReturnValue(stalePrayer);
 
     const { resyncCountdowns } = require('../countdown');
     resyncCountdowns();

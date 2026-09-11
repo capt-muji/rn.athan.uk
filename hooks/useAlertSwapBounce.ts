@@ -1,5 +1,4 @@
-import { useAtomValue } from 'jotai';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback } from 'react';
 import {
   Easing,
   runOnJS,
@@ -13,7 +12,6 @@ import {
 
 import { ANIMATION } from '@/shared/constants';
 import type { AlertType } from '@/shared/types';
-import { resyncAtom } from '@/stores/ui';
 
 /**
  * Alert icon change-bounce: the owner-picked Pop effect (2026-09-08, of five
@@ -36,19 +34,15 @@ type GlyphSwap = (icon: AlertType) => void;
 
 /**
  * Dip to SCALE_DIP, swap the glyph at the trough, spring home with overshoot.
- * `swapGlyph` is null on the Y axis — the swap fires once, on X. `onComplete`
- * fires once the spring genuinely settles (never on a background-interrupted
- * sequence, which is exactly the case the resume guard below handles).
+ * `swapGlyph` is null on the Y axis — the swap fires once, on X.
  */
-function popSequence(durationMs: number, target: AlertType, swapGlyph: GlyphSwap | null, onComplete?: () => void) {
+function popSequence(durationMs: number, target: AlertType, swapGlyph: GlyphSwap | null) {
   'worklet';
   return withSequence(
     withTiming(SCALE_DIP, { duration: durationMs, easing: EASE_OUT }, (finished) => {
       if (finished && swapGlyph) runOnJS(swapGlyph)(target);
     }),
-    withSpring(1, POP_SPRING, (finished) => {
-      if (finished && onComplete) runOnJS(onComplete)();
-    })
+    withSpring(1, POP_SPRING)
   );
 }
 
@@ -69,8 +63,6 @@ function popSequence(durationMs: number, target: AlertType, swapGlyph: GlyphSwap
 export const useAlertSwapBounce = () => {
   const scaleX = useSharedValue(1);
   const scaleY = useSharedValue(1);
-  const isBouncing = useRef(false);
-  const resync = useAtomValue(resyncAtom);
 
   const style = useAnimatedStyle(() => ({
     transform: [{ scaleX: scaleX.value }, { scaleY: scaleY.value }],
@@ -79,27 +71,11 @@ export const useAlertSwapBounce = () => {
   const play = useCallback(
     (target: AlertType, swapGlyph: GlyphSwap) => {
       const dip = ANIMATION.alertBounceDip;
-      isBouncing.current = true;
-      scaleX.value = popSequence(dip, target, swapGlyph, () => {
-        isBouncing.current = false;
-      });
+      scaleX.value = popSequence(dip, target, swapGlyph);
       scaleY.value = popSequence(dip, target, null);
     },
     [scaleX, scaleY]
   );
-
-  // The dip-swap-spring sequence is short but not instant; if the app is
-  // backgrounded mid-bounce, JS timers freeze and the spring's completion
-  // callback may never fire, leaving the icon mid-deformation. Snap to rest
-  // on resume rather than leave it stranded (ai/features/overlay/spec.md).
-  // biome-ignore lint/correctness/useExhaustiveDependencies: resync is a deliberate re-fire trigger, not read in the body
-  useEffect(() => {
-    if (isBouncing.current) {
-      scaleX.value = 1;
-      scaleY.value = 1;
-      isBouncing.current = false;
-    }
-  }, [resync, scaleX, scaleY]);
 
   return { style, play };
 };

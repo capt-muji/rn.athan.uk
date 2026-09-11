@@ -127,9 +127,10 @@ ownership of animation state but must reproduce these values exactly.
 | Hero scale and translate | Reanimated default timing |
 | Pill slide | `ANIMATION.durationSlow` (1000ms), `Easing.elastic(0.5)` |
 | Chrome and Masjid veil | `ANIMATION.duration` (200ms) |
-| Countdown bar fade | `ANIMATION.duration` (200ms) |
+| Countdown bar fade | `ANIMATION.duration` (200ms), `Easing.linear` |
 | Ago fade | `ANIMATION.durationFade` (150ms) |
-| Date roll cascade | `getCascadeDelay(index, type)` per row |
+| Row colour on next-prayer advance | `ANIMATION.durationSlow` (1000ms) |
+| Date roll cascade | `ANIMATION.durationSlow` (1000ms), delayed by `getCascadeDelay(index, type)` per row |
 
 Platform styling is intentionally different and stays: iOS uses the view
 shadow; Android API 29 and above uses the `boxShadow` on the pill view, API 28
@@ -202,13 +203,13 @@ below is that class.
 | Two bright rows, or a bright non-selected row | Old row colour never animated down | One derived target per row |
 | Empty pill | Pill opacity or position diverged from atoms | Derived opacity and position |
 | Just-passed row went dim | Second-truncated clock, and effects writing `initialColorPos` that ignored selection | Keep millisecond precision; one derived target that includes selection |
-| Resume slider or bar stranded | Dropped write with no later trigger | Resume counter re-runs derived worklets |
+| Resume slider or bar stranded | Dropped write with no later trigger | Derived values; the resume counter snaps a value caught up on foreground instead of animating it |
 | Overlay vanished on return | Display latch desync, or the atom-guard race | Latch reconciles; guard reads true milliseconds |
 | Open then instantly close | Guard read the coarse displayed atom, up to one second stale | Guard reads true remaining milliseconds |
-| Alert icon dimmed on resume while the name/time stayed bright | Animated prop not re-applied on re-render, and a snap to an unchanged value is a no-op | Consumer mappers take the resume counter so they re-apply on foreground |
+| Alert icon dimmed on resume while the name/time stayed bright | Reanimated's settled-props sync could commit a stale snapshot after resume (upstream #9574, fixed by PR #9527) | Reanimated ≥ 4.5.3 (installed 4.6.0). No app code re-applies an unchanged value (corrected 2026-09-11) |
 | Countdown bar animated a slow catch-up from the pre-suspend width | The effect animated the large resume jump; JS timers were frozen in the background | Snap on resume; `resyncCountdowns` recomputes instantly |
 
-**2026-09-10 root-cause confirmation** (`ai/features/presentation-rearchitecture/`): the whole class above traces to a real, filed, fixed upstream defect in Reanimated's Android native code ([reanimated#9574](https://github.com/software-mansion/react-native-reanimated/issues/9574), fixed in 4.5.3, present through 4.5.1). `NodesManager.kt`'s `onHostPause()` clears its own "animation running" flag then immediately sets it back to `true`, so the synchronous prop-flush fallback stays gated off for the entire backgrounded window and any prop write lands late, racing a 2-second native GC eviction. iOS has no equivalent lifecycle hook in Reanimated's source at all, which is why every symptom in this table only ever reproduced on Android. Fixed by upgrading to `react-native-reanimated` 4.6.0 + `react-native-worklets` 0.12.2 (see `ai/AGENTS.md` 2026-09-10 decision log for the full verification record). The `resync`-counter pattern above remains correct and necessary as belt-and-braces, but was never sufficient alone: a mapper restart recomputes against the same stored `oldValues`, so an unchanged target is still skipped by Reanimated's own equality gate regardless of the restart.
+**Root cause, corrected 2026-09-11** (supersedes the 2026-09-10 note, which named the wrong mechanism): the stale-after-resume class matches upstream [reanimated#9574](https://github.com/software-mansion/react-native-reanimated/issues/9574), an Android-only report by a third party on Reanimated 4.4.0 / RN 0.85.3. The default-on `FORCE_REACT_RENDER_FOR_SETTLED_ANIMATIONS` settled-props sync could hand React a stale snapshot after the app resumed. PR #9527 fixed it (C++ `AnimatedPropsRegistry`, JS `PropsRegistryGarbageCollector` and `AnimatedComponent`); it shipped in 4.5.3 and 4.6.0. The installed 4.6.0 has the fix (`collectSettledUpdates`, `syncedTags_`, `invalidatedTags_`) and 4.5.1 did not. The 2026-09-10 note blamed `NodesManager.kt`'s `onHostPause()`: that file is byte-identical in 4.5.1 and 4.6.0, and re-setting `mCallbackPosted` there is the marker that restarts in-flight animations on resume, not a defect. On native, Reanimated 4.6 ignores the dependency argument of `useAnimatedStyle`/`useAnimatedProps` (web only), so the `[resync]` arrays added in 1.24.1 and 1.24.3 did nothing; 1.24.7 removed them. What the resume counter really does: `useDerivedProgress` reads it inside its worklet, so a value caught up on foreground snaps instead of animating. Device check (OnePlus 3T, 1.24.6, 2026-09-11): overlay open, background, a prayer boundary passes while suspended, resume — the overlay is closed, the pill and every row are correct, and everything that should not change is pixel-identical.
 
 Durable lessons:
 
@@ -222,10 +223,11 @@ Durable lessons:
 - Never pass `easing: undefined` explicitly to `withTiming`. It overrides
   Reanimated's default easing and aborts with "undefined is not a function" on
   the first non-snap evaluation (the mount snap hides it). Omit the key.
-- Reanimated re-applies an animated style or prop only when its mapper runs (a
-  shared value change or a mapper restart), never on a plain re-render. Any prop
-  that exists only through `animatedProps` (SVG `fill`) must take the resume
-  counter in its mapper dependencies so it is re-applied on foreground.
+- Reanimated pushes an animated style or prop only when its mapper computes a
+  changed value. Nothing in app code (dependency arrays, mapper restarts,
+  `.modify()`) re-applies an unchanged value, and on native `useAnimatedStyle` and
+  `useAnimatedProps` ignore their dependency argument entirely (corrected
+  2026-09-11).
 - JS timers are frozen in the background on both platforms. Never rely on
   background ticking; recompute and snap on foreground.
 - `SharedValue.modify()` is the one public, documented API that bypasses

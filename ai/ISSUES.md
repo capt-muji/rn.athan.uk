@@ -67,7 +67,10 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   because no next-year data exists in the same payload. Slightly wrong for the night of
   Dec 31→Jan 1. Confirmed it does not self-heal: the wrong value, once cached, is never
   revisited even after both years become available.
-- **Impact**: Cosmetic-level (1-2 min) on derived extras only, one night per year.
+- **Impact**: Cosmetic at most. With London's real timetable Fajr is flat around the
+  new year (06:26 on Dec 30, Dec 31 and Jan 1 in the 2024 data), so the correction is
+  usually a no-op; the "1-2 min" figure was never measured (revalidation 2026-09-11). See
+  #29 for the related question of which night these values are scheduled on.
 - **Fix**: `correctYearBoundaryDerivedTimes` (shared/prayer.ts) recomputes just the
   midnight/last-third fields once the real next-year Fajr is cached; `stores/sync.ts`'s
   `fixYearBoundaryDerivedTimes` calls it at the three points a year-boundary fetch can
@@ -76,6 +79,11 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   correcting. 9 new unit tests (recomputation correctness + sync orchestration), full
   suite green — not device-verified (not practically triggerable live; correctness rests
   on the unit tests given this is core prayer-time data).
+- **Tests strengthened (1.24.7, revalidation 2026-09-11)**: the original sync tests passed
+  even with the bug re-introduced (every mock record shared one Fajr, and lookups matched
+  month/day only). Records now carry distinct Fajr times and lookups match the full date;
+  proven to fail on three mutations — Dec 31 paired with its own Fajr (4 failures), the
+  wrong year (3), and the both-fetches-succeeded guard removed (1).
 
 ### 6. [ACCEPTED] Year-end data retention — how old-year cleanup actually behaves
 
@@ -1456,3 +1464,23 @@ production release; G.6 noted but deferred by owner.
 - **Where to look**: `components/prayer/List.tsx:33`, `components/prayer/ActiveBackground.tsx:24`, `hooks/usePrayer.ts:36`, and `hooks/useSchedule.ts:35` all independently filter `prayers` to `p.belongsToDate === displayDate`; `displayDate` is the `belongsToDate` of the next future prayer (`stores/schedule.ts:184`). Since only Isha rendered, either `displayDate` was set to a value that only Isha's entry matches, or the other five prayers of the same intended day were computed with a different `belongsToDate` than Isha's. `calculateBelongsToDate` (`shared/prayer.ts:141`) only special-cases Isha before its early-morning cutoff hour, which does not apply here (the observed Isha was at 21:31, not early morning) — the mismatch is not explained by that rule, and is not a mock-authoring artifact either (`mocks/simple.ts` stamps one `date` per whole day-block, so a per-prayer date mismatch in the raw fixture is structurally impossible). Root cause not yet found; likely in how the sequence is built or how `displayDate`/`getNextPrayer` is selected across the cascade, in `stores/schedule.ts`.
 - **Out of scope for the presentation-rearchitecture fix** (ai/features/presentation-rearchitecture/): this is a schedule/sequence data-layer question, not a Reanimated/animation-ownership one — flagged here rather than folded into that session's work.
 - **Verify**: reproduce on the mock rig by watching a day-roll happen live (or forcing one), screenshot immediately after and once more a few minutes later; separately check whether this reproduces against real API data near a real day boundary.
+
+## I. Revalidation findings (2026-09-11)
+
+### 28. [FIXED 2026-09-11, 1.24.9, revalidation] A fetch on the Saturday before a UK clock change shifted every Midnight/Last Third in that fetch by 20–40 minutes
+
+- **What**: `getMidnightTime`/`getLastThirdOfNight` build Maghrib and Fajr on *today's* date (`parseNightBoundaries`, `shared/time.ts:214-230`: `createLondonDate()` for Maghrib, `addDays(…, 1)` for Fajr), not on the record's own date. `transformApiData` runs once per fetched year, so the whole year is computed in the fetch day's DST context.
+- **Evidence** (jest with the system clock pinned, identical inputs Maghrib 17:50 / Fajr 05:40): ordinary day → Midnight 23:45, Last Third 01:43. Run on 2026-10-24 → 00:15 / 01:23 (+30 / −20 min). Run on 2026-03-28 → 23:15 / 02:03 (−30 / +20 min).
+- **Impact**: anyone whose data is fetched on one of those two Saturdays (fresh install, the December/January fetch, or any app update — every version increase wipes and refetches) gets every Midnight and Last Third, and their notifications, off by 20–40 minutes until the next refetch. Separately, the two real DST nights each year are always computed without the clock change (a plain wall-clock midpoint), about 30 minutes off for those two nights.
+- **Also found**: the same Date-based helpers kept the current seconds and milliseconds (`setHours`/`setMinutes` do not reset them), so for nights whose length is not a whole multiple (odd minutes for Midnight, non-multiples of 3 for Last Third) the stored value came out one minute later whenever the fetch ran late in a minute (67% of Maghrib/Fajr pairs at second 45). They also followed the device's own timezone rules rather than London's.
+- **Fix (1.24.9, under the owner's "known local fix, no side effects" authority)**: both helpers compute from the two HH:mm strings alone — wall-clock minutes from Maghrib to the next day's Fajr — so the result no longer depends on when or where the calculation runs. The owner's definition (Midnight = midpoint of today's Maghrib and tomorrow's Fajr) and the documented calculation are unchanged.
+- **Verification**: bit-identical to the previous code run at second 0 on an ordinary day for every Maghrib 15:00–22:59 × Fajr 01:00–07:59 pair (201,600 pairs, winter and summer). New tests pin five run instants (ordinary second 0, second 45, summer second 59.9, both DST-eve Saturdays); 4 of 5 failed on the old code and all pass on the new. Values change only where the old code drifted: by one minute for some nights of a fetch that ran late in a minute, and by 20–40 minutes for a fetch on a DST-eve Saturday.
+- **Unchanged, owner decision if wanted**: the two real DST nights still use the plain wall-clock midpoint (as every ordinary-day fetch always has); computing them from the true elapsed night would shift those two nights by ~30 minutes.
+
+### 29. [DECIDED 2026-09-11 — implementing on its own branch] Which night do the Extras Midnight/Last Third values belong to?
+
+- **Owner decision (2026-09-11)**: Midnight is the first row of the Extras list, so it belongs to the night leading into that day — the midpoint of the *previous* day's Maghrib and *this* day's Fajr ("Maghrib yesterday, Fajr today", in the Islamic-day sense). Last Third follows the same pair.
+
+- **What the code does** (unchanged, and pinned on purpose by `shared/__tests__/prayer.test.ts:76-89, 221-227`): `transformApiData` computes record D's Midnight and Last Third from D's Maghrib and D+1's Fajr — the owner's definition of D's midnight. `adjustPrayerDateForMidnightCrossing` then schedules Extras night prayers at 12:00 or later on D−1, and `calculateBelongsToDate` assigns them to D. So the Extras page for day D shows the night leading *into* D (Midnight on the evening of D−1, Last Third before D's Fajr), consistent with Suhoor, which comes from D's own Fajr.
+- **The question**: the night that actually runs from D−1's Maghrib to D's Fajr is therefore given values computed from the *following* night's pair (D's Maghrib, D+1's Fajr), and its countdown and notifications fire at those times. Experiment with the real modules (synthetic, deliberately exaggerated drift): the night 12-29→12-30 is scheduled at Midnight 23:13 / Last Third 01:37 — record 12-30's values — while that night's own midpoint is 23:11 / 01:34. With real London data the gap is the day-to-day drift of Maghrib and Fajr, roughly 0–3 minutes (larger across a DST night).
+- **Not changed**: the owner states this logic is correct. Options: (a) keep as is; (b) compute the values shown on day D from D−1's Maghrib and D's Fajr, i.e. the night they are scheduled on; (c) keep the values and schedule record D's night prayers on the night after D's Maghrib instead. (b) and (c) would change what the Extras page shows and when its notifications fire, so neither is done without the owner.

@@ -1,4 +1,4 @@
-import { addDays, format, intervalToDuration, isFuture, isToday, isYesterday, setHours, setMinutes } from 'date-fns';
+import { format, intervalToDuration, isFuture, isToday, isYesterday, setHours, setMinutes } from 'date-fns';
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 
 import { ISLAMIC_DAY, TIME_ADJUSTMENTS } from '@/shared/constants';
@@ -185,49 +185,27 @@ export const getCurrentYear = (): number => createLondonDate().getFullYear();
 // NIGHT TIME CALCULATIONS (Islamic)
 // =============================================================================
 
-/**
- * Night boundary result for Islamic night calculations
- */
-interface NightBoundaries {
-  /** Magrib datetime (today's sunset) */
-  magrib: Date;
-  /** Fajr datetime (tomorrow's dawn) */
-  fajr: Date;
-}
+const MINUTES_IN_DAY = 24 * 60;
+
+const minutesOfDay = (time: string): number => {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
+/** Whole minutes (floored, like an HH:mm clock) wrapped into one day, as HH:mm */
+const timeOfDay = (totalMinutes: number): string => {
+  const minutes = ((Math.floor(totalMinutes) % MINUTES_IN_DAY) + MINUTES_IN_DAY) % MINUTES_IN_DAY;
+  return `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+};
 
 /**
- * Parses Magrib and Fajr times into Date objects for night calculations
- *
- * This helper extracts the common parsing logic used by getLastThirdOfNight
- * and getMidnightTime. It creates Date objects representing:
- * - Magrib: Today's sunset (night starts)
- * - Fajr: Tomorrow's dawn (night ends)
- *
- * @param magribTime Magrib time in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time in HH:mm format (e.g., "06:15")
- * @returns Object with magrib (today) and fajr (tomorrow) as Date objects
- *
- * @example
- * const { magrib, fajr } = parseNightBoundaries("18:45", "06:15");
- * const nightDuration = fajr.getTime() - magrib.getTime();
+ * Length of the Islamic night in minutes: Magrib to the next day's Fajr, as London
+ * wall-clock times. Computed from the two times alone — a whole year is transformed
+ * at fetch time, so the result must not depend on the fetch day's DST context, the
+ * second the fetch ran at, or the device's timezone (ISSUES #28).
  */
-function parseNightBoundaries(magribTime: string, fajrTime: string): NightBoundaries {
-  const [mHours, mMinutes] = magribTime.split(':').map(Number);
-  const [fHours, fMinutes] = fajrTime.split(':').map(Number);
-
-  // Magrib from today
-  const magribBase = createLondonDate();
-  const magribWithMinutes = setMinutes(magribBase, mMinutes);
-  const magrib = setHours(magribWithMinutes, mHours);
-
-  // Fajr from tomorrow
-  const fajrBase = createLondonDate();
-  const fajrWithMinutes = setMinutes(fajrBase, fMinutes);
-  const fajrWithHours = setHours(fajrWithMinutes, fHours);
-  const fajr = addDays(fajrWithHours, 1);
-
-  return { magrib, fajr };
-}
+const nightLengthMinutes = (magribTime: string, fajrTime: string): number =>
+  minutesOfDay(fajrTime) + MINUTES_IN_DAY - minutesOfDay(magribTime);
 
 /**
  * Calculates the start time of the last third of the night (Islamic calculation)
@@ -242,35 +220,19 @@ function parseNightBoundaries(magribTime: string, fajrTime: string): NightBounda
  * 2. Night ends: Tomorrow's Fajr (e.g., 06:15 Jan 20)
  * 3. Night duration: 11 hours 30 minutes (690 minutes)
  * 4. Last third starts: 2/3 through = 460 minutes after Magrib = 02:25 Jan 20
- * 5. +5 minute adjustment applied (see TIME_ADJUSTMENTS.lastThird)
- * 6. Final time: 02:30 Jan 20
- *
- * The +5 minute adjustment provides a safety buffer to ensure the prayer time
- * is well within the last third period.
+ * 5. TIME_ADJUSTMENTS.lastThird (currently 0) is added
  *
  * @param magribTime Magrib time from today in HH:mm format (e.g., "18:45")
  * @param fajrTime Fajr time from tomorrow in HH:mm format (e.g., "06:15")
- * @returns Start time of the last third in HH:mm format (e.g., "02:30")
- *
- * @see parseNightBoundaries - Helper that parses the input times
+ * @returns Start time of the last third in HH:mm format (e.g., "02:25")
  *
  * @example
  * getLastThirdOfNight("18:45", "06:15")
- * // Returns: "02:30" (accounting for the +5 min adjustment)
+ * // Returns: "02:25"
  */
 export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
-  const { magrib, fajr } = parseNightBoundaries(magribTime, fajrTime);
-
-  // Calculate night duration and last third start
-  const nightDuration = fajr.getTime() - magrib.getTime();
-  const lastThirdStart = createLondonDate(magrib.getTime() + (nightDuration * 2) / 3);
-
-  // Add minutes to the last third start time
-  const minutesToAdd = TIME_ADJUSTMENTS.lastThird;
-  lastThirdStart.setMinutes(lastThirdStart.getMinutes() + minutesToAdd);
-
-  // Return formatted time string in 24-hour format (HH:mm)
-  return format(lastThirdStart, 'HH:mm');
+  const lastThirdStart = minutesOfDay(magribTime) + (nightLengthMinutes(magribTime, fajrTime) * 2) / 3;
+  return timeOfDay(lastThirdStart + TIME_ADJUSTMENTS.lastThird);
 };
 
 /**
@@ -299,22 +261,12 @@ export const getLastThirdOfNight = (magribTime: string, fajrTime: string): strin
  * @param fajrTime Fajr time from tomorrow in HH:mm format (e.g., "06:15")
  * @returns Islamic midnight time in HH:mm format (e.g., "00:30")
  *
- * @see parseNightBoundaries - Helper that parses the input times
- *
  * @example
  * getMidnightTime("18:45", "06:15")
  * // Returns: "00:30" (exact midpoint, no adjustment)
  */
-export const getMidnightTime = (magribTime: string, fajrTime: string): string => {
-  const { magrib, fajr } = parseNightBoundaries(magribTime, fajrTime);
-
-  // Calculate night duration and midpoint
-  const nightDuration = fajr.getTime() - magrib.getTime();
-  const midnight = createLondonDate(magrib.getTime() + nightDuration / 2);
-
-  // Return formatted time string in 24-hour format (HH:mm)
-  return format(midnight, 'HH:mm');
-};
+export const getMidnightTime = (magribTime: string, fajrTime: string): string =>
+  timeOfDay(minutesOfDay(magribTime) + nightLengthMinutes(magribTime, fajrTime) / 2);
 
 /**
  * Adjusts a time string by adding or subtracting minutes
