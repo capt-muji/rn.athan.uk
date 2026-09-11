@@ -57,15 +57,15 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
   // This is MANDATORY - CountdownBar needs yesterday's final prayer to calculate
   // progress, and the Extras night leading into Jan 1 starts at Dec 31's Magrib
   if (TimeUtils.isJanuaryFirst(date)) {
-    const prevYearLastDate = new Date(date.getFullYear() - 1, 11, 31);
-    const cachedPrevYearData = Database.getPrayerByDate(prevYearLastDate);
+    const previousYear = TimeUtils.getCurrentYear() - 1;
+    const cachedPrevYearData = Database.getPrayerByDateString(`${previousYear}-12-31`);
 
     if (!cachedPrevYearData) {
       logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
 
-      const fetchedPrevYearData = await Api.fetchYear(date.getFullYear() - 1);
+      const fetchedPrevYearData = await Api.fetchYear(previousYear);
       Database.saveAllPrayers(fetchedPrevYearData);
-      Database.markYearAsFetched(date.getFullYear() - 1);
+      Database.markYearAsFetched(previousYear);
 
       logger.info('SYNC: Previous year data fetched and saved');
     }
@@ -161,13 +161,23 @@ const updatePrayerData = async () => {
 
     // Clear prayer cache but preserve app version, What's New tracker, user
     // preferences, and the cached prayer-name column widths (constants —
-    // deleting them forces a remeasure that visibly reflows the prayer list)
+    // deleting them forces a remeasure that visibly reflows the prayer list).
+    // Yesterday's record is carried across the wipe: the countdown bar and the
+    // Extras night leading into today both read it, and on Jan 1 it belongs to
+    // last year's dataset, which would otherwise be downloaded again in full
+    // for that one day (ISSUES #4)
+    const today = TimeUtils.getTodayDateString();
+    const yesterday = TimeUtils.getPreviousDateString(today);
+    const yesterdayData = Database.getPrayerByDateString(yesterday);
+
     Database.clearAllExcept([
       'app_installed_version',
       'whats_new_shown_version',
       'preference_',
       'prayer_max_english_width_',
     ]);
+
+    if (yesterdayData) Database.saveAllPrayers([yesterdayData]);
 
     // SCENARIO 3b: December, current year not cached - Proactively fetch current year + next year
     // Years settle independently: next year may not be populated on the API yet

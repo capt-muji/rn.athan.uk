@@ -2,6 +2,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 
 import { TIME_ADJUSTMENTS } from '../constants';
 import {
+  addDaysToDateString,
   adjustTime,
   createLondonDate,
   createPrayerDatetime,
@@ -12,10 +13,12 @@ import {
   formatTime,
   formatTimeAgo,
   getCurrentYear,
+  getDayAnchor,
   getNightTimes,
   getPreviousDateString,
   getSecondsBetween,
   getSecondsRemaining,
+  getTodayDateString,
   getWallSecondDelay,
   isDateYesterdayOrFuture,
   isDecember,
@@ -262,7 +265,7 @@ describe('isFriday', () => {
 describe('isJanuaryFirst', () => {
   it('correctly identifies January 1st', () => {
     expect(isJanuaryFirst(new Date('2026-01-01'))).toBe(true);
-    expect(isJanuaryFirst(new Date('2026-01-01T23:59:59'))).toBe(true);
+    expect(isJanuaryFirst(new Date('2026-01-01T23:59:59Z'))).toBe(true);
   });
 
   it('correctly identifies non-January 1st', () => {
@@ -282,32 +285,32 @@ describe('isDecember', () => {
   });
 
   it('returns true in December', () => {
-    jest.setSystemTime(new Date('2026-12-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-12-15T12:00:00Z'));
     expect(isDecember()).toBe(true);
   });
 
   it('returns true on December 1st', () => {
-    jest.setSystemTime(new Date('2026-12-01T00:00:00'));
+    jest.setSystemTime(new Date('2026-12-01T00:00:00Z'));
     expect(isDecember()).toBe(true);
   });
 
   it('returns true on December 31st', () => {
-    jest.setSystemTime(new Date('2026-12-31T23:59:59'));
+    jest.setSystemTime(new Date('2026-12-31T23:59:59Z'));
     expect(isDecember()).toBe(true);
   });
 
   it('returns false in January', () => {
-    jest.setSystemTime(new Date('2026-01-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-01-15T12:00:00Z'));
     expect(isDecember()).toBe(false);
   });
 
   it('returns false in November', () => {
-    jest.setSystemTime(new Date('2026-11-30T12:00:00'));
+    jest.setSystemTime(new Date('2026-11-30T12:00:00Z'));
     expect(isDecember()).toBe(false);
   });
 
   it('returns false in June', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
     expect(isDecember()).toBe(false);
   });
 });
@@ -322,27 +325,27 @@ describe('isRamadan', () => {
   });
 
   it('returns true during Ramadan (2026-03-10 falls in Ramadan 1447)', () => {
-    jest.setSystemTime(new Date('2026-03-10T12:00:00'));
+    jest.setSystemTime(new Date('2026-03-10T12:00:00Z'));
     expect(isRamadan()).toBe(true);
   });
 
   it('returns false outside Ramadan', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
     expect(isRamadan()).toBe(false);
   });
 
   it("returns true 15 days before Ramadan (Sha'ban 15, 1447 = 2026-02-03)", () => {
-    jest.setSystemTime(new Date('2026-02-03T12:00:00'));
+    jest.setSystemTime(new Date('2026-02-03T12:00:00Z'));
     expect(isRamadan()).toBe(true);
   });
 
   it("returns true in late Sha'ban (Sha'ban 27, 1447 = 2026-02-15)", () => {
-    jest.setSystemTime(new Date('2026-02-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-02-15T12:00:00Z'));
     expect(isRamadan()).toBe(true);
   });
 
   it("returns false 16+ days before Ramadan (Sha'ban 14, 1447 = 2026-02-02)", () => {
-    jest.setSystemTime(new Date('2026-02-02T12:00:00'));
+    jest.setSystemTime(new Date('2026-02-02T12:00:00Z'));
     expect(isRamadan()).toBe(false);
   });
 });
@@ -357,17 +360,17 @@ describe('isDecorationSeason', () => {
   });
 
   it('returns true during Ramadan', () => {
-    jest.setSystemTime(new Date('2026-03-10T12:00:00'));
+    jest.setSystemTime(new Date('2026-03-10T12:00:00Z'));
     expect(isDecorationSeason()).toBe(true);
   });
 
   it('returns true during pre-Ramadan window', () => {
-    jest.setSystemTime(new Date('2026-02-03T12:00:00'));
+    jest.setSystemTime(new Date('2026-02-03T12:00:00Z'));
     expect(isDecorationSeason()).toBe(true);
   });
 
   it('returns false outside decoration seasons', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
     expect(isDecorationSeason()).toBe(false);
   });
 });
@@ -398,21 +401,18 @@ describe('createLondonDate', () => {
     expect(Number.isNaN(date.getTime())).toBe(false);
   });
 
-  it('preserves date components for winter date (GMT)', () => {
-    // Winter: London is GMT (UTC+0)
-    const date = createLondonDate('2026-01-15');
-    // The date should represent January 15, 2026 in London
-    expect(date.getFullYear()).toBe(2026);
-    expect(date.getMonth()).toBe(0); // January
-    expect(date.getDate()).toBe(15);
+  it('keeps the London calendar date for a winter date (GMT)', () => {
+    // Read the day through formatDateShort, never the phone-local getters (ISSUES #30)
+    expect(formatDateShort(createLondonDate('2026-01-15'))).toBe('2026-01-15');
   });
 
-  it('preserves date components for summer date (BST)', () => {
-    // Summer: London is BST (UTC+1)
-    const date = createLondonDate('2026-07-15');
-    expect(date.getFullYear()).toBe(2026);
-    expect(date.getMonth()).toBe(6); // July
-    expect(date.getDate()).toBe(15);
+  it('keeps the London calendar date for a summer date (BST)', () => {
+    expect(formatDateShort(createLondonDate('2026-07-15'))).toBe('2026-07-15');
+  });
+
+  it('is the same instant it was given, to the millisecond', () => {
+    const instant = new Date('2026-09-11T19:05:05.123Z');
+    expect(createLondonDate(instant).toISOString()).toBe('2026-09-11T19:05:05.123Z');
   });
 });
 
@@ -545,6 +545,41 @@ describe('getPreviousDateString', () => {
     expect(getPreviousDateString('2026-03-30')).toBe('2026-03-29');
     expect(getPreviousDateString('2026-03-29')).toBe('2026-03-28');
     expect(getPreviousDateString('2026-10-26')).toBe('2026-10-25');
+  });
+});
+
+describe('calendar helpers (prayer timezone, ISSUES #30)', () => {
+  afterEach(() => jest.useRealTimers());
+
+  it('adds days across month, year and leap-year boundaries', () => {
+    expect(addDaysToDateString('2026-12-31', 1)).toBe('2027-01-01');
+    expect(addDaysToDateString('2024-02-28', 1)).toBe('2024-02-29');
+    expect(addDaysToDateString('2026-03-01', -1)).toBe('2026-02-28');
+    expect(addDaysToDateString('2026-10-25', 2)).toBe('2026-10-27');
+  });
+
+  it("reads today from London's calendar: 23:30 UTC in summer is already tomorrow there", () => {
+    jest.useFakeTimers().setSystemTime(new Date('2026-06-15T23:30:00Z'));
+    expect(getTodayDateString()).toBe('2026-06-16');
+    expect(isFriday()).toBe(false); // Tuesday 16 June in London
+  });
+
+  it('anchors a calendar day at 12:00 London time', () => {
+    expect(getDayAnchor('2026-01-18').toISOString()).toBe('2026-01-18T12:00:00.000Z');
+    expect(getDayAnchor('2026-06-18').toISOString()).toBe('2026-06-18T11:00:00.000Z');
+    expect(formatDateShort(getDayAnchor('2026-03-29'))).toBe('2026-03-29');
+  });
+
+  it('takes the weekday of an instant from its London date', () => {
+    // 23:30 UTC on Thu 11 June 2026 is 00:30 BST on Fri 12 June
+    expect(isFriday(new Date('2026-06-11T23:30:00Z'))).toBe(true);
+    expect(isFriday('2026-06-12')).toBe(true);
+  });
+
+  it('wraps clock arithmetic past midnight in both directions', () => {
+    expect(adjustTime('00:10', -20)).toBe('23:50');
+    expect(adjustTime('23:50', 20)).toBe('00:10');
+    expect(adjustTime('12:00', -24 * 60)).toBe('12:00');
   });
 });
 

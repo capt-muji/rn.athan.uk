@@ -10,6 +10,7 @@
  */
 
 import { createStore } from 'jotai';
+import { getDefaultStore } from 'jotai/vanilla';
 
 // =============================================================================
 // MOCK SETUP
@@ -21,6 +22,8 @@ const mockIsFriday = jest.fn();
 const mockFormatDateShort = jest.fn();
 
 jest.mock('@/shared/time', () => ({
+  ...jest.requireActual('@/shared/time'),
+  getTodayDateString: () => jest.requireActual('@/shared/time').formatDateShort(mockCreateLondonDate()),
   createLondonDate: () => mockCreateLondonDate(),
   isFriday: (date: Date) => mockIsFriday(date),
   formatDateShort: (date: Date) => mockFormatDateShort(date),
@@ -46,6 +49,7 @@ const mockGetPrayerByDate = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   getPrayerByDate: (date: Date) => mockGetPrayerByDate(date),
+  getPrayerByDateString: (date: string) => mockGetPrayerByDate(date),
 }));
 
 import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
@@ -643,6 +647,57 @@ describe('refreshSequence', () => {
 
     expect(filteredPrayers).toHaveLength(2);
     expect(filteredPrayers[0].english).toBe('Dhuhr');
+  });
+
+  describe('which day the new days start from (ISSUES #31)', () => {
+    const londonDateOf = (date: Date): string => jest.requireActual('@/shared/time').formatDateShort(date);
+    const firstNewDay = (): string => londonDateOf(mockCreatePrayerSequence.mock.calls[0][1] as Date);
+
+    beforeEach(() => {
+      mockCreatePrayerSequence.mockReturnValue(createMockSequence([]));
+    });
+
+    it('rebuilds from today, not tomorrow, when nothing from today on is left (a long suspension)', () => {
+      mockCreateLondonDate.mockReturnValue(new Date('2026-01-20T10:00:00Z'));
+      // A buffer built three days ago: every prayer in it has passed
+      getDefaultStore().set(
+        standardSequenceAtom,
+        createMockSequence([
+          createMockPrayer({
+            english: 'Isha',
+            datetime: new Date('2026-01-17T18:45:00Z'),
+            belongsToDate: '2026-01-17',
+          }),
+        ])
+      );
+
+      refreshSequence(ScheduleType.Standard);
+
+      expect(firstNewDay()).toBe('2026-01-20');
+    });
+
+    it('adds only the days after today while today is still in the buffer', () => {
+      mockCreateLondonDate.mockReturnValue(new Date('2026-01-20T21:00:00Z'));
+      getDefaultStore().set(
+        standardSequenceAtom,
+        createMockSequence([
+          createMockPrayer({
+            english: 'Isha',
+            datetime: new Date('2026-01-20T18:45:00Z'),
+            belongsToDate: '2026-01-20',
+          }),
+          createMockPrayer({
+            english: 'Fajr',
+            datetime: new Date('2026-01-21T06:15:00Z'),
+            belongsToDate: '2026-01-21',
+          }),
+        ])
+      );
+
+      refreshSequence(ScheduleType.Standard);
+
+      expect(firstNewDay()).toBe('2026-01-21');
+    });
   });
 });
 

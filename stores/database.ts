@@ -8,7 +8,6 @@
  * - App state (fetched_years, app_installed_version)
  */
 
-import { format } from 'date-fns';
 import { createJSONStorage } from 'jotai/utils';
 import { createMMKV } from 'react-native-mmkv';
 
@@ -134,20 +133,28 @@ export const saveAllPrayers = (prayers: ISingleApiResponseTransformed[]) => {
 };
 
 /**
- * Gets prayer data for a specific date
- * @param date Date to fetch prayer times for
+ * Gets prayer data for a calendar day of the prayer timetable
+ * @param date Date string in YYYY-MM-DD format
  * @returns Prayer data or null if not found
  */
-export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | null => {
-  const londonDate = TimeUtils.createLondonDate(date);
-  const keyDate = format(londonDate, 'yyyy-MM-dd');
-  const key = `prayer_${keyDate}`;
+export const getPrayerByDateString = (date: string): ISingleApiResponseTransformed | null => {
+  const key = `prayer_${date}`;
 
   const data = database.getString(key);
 
   logger.info(`MMKV READ: ${key}`);
 
   return data ? JSON.parse(data) : null;
+};
+
+/**
+ * Gets prayer data for the day an instant falls on
+ * @param date Any instant; its day is read in the prayer timezone, whatever the phone's own
+ * @returns Prayer data or null if not found
+ */
+export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | null => {
+  const keyDate = TimeUtils.formatDateShort(date);
+  return getPrayerByDateString(keyDate);
 };
 
 /**
