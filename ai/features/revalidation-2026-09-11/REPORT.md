@@ -2,9 +2,10 @@
 
 The owner found that the 2026-09-10 sessions had run on Sonnet 5, lost confidence
 in the work and in the plan, and ordered a full re-audit and re-plan on Opus 5.
-This is the result. Branches: `fix/revalidation-2026-09-11` (1.24.7, correctness
-and docs) and `perf/bar-visible-steps` (1.24.7 + 1.24.8 bar + 1.24.9 night times).
-Nothing is merged to uat.
+This is the result. Everything is on one branch, `fix/revalidation-2026-09-11`
+(uat + 1.24.7 correctness + 1.24.8 bar + 1.24.9 night times), ready to test and to
+merge into uat on the owner's word. `experiment/alarmclock-backport` has the same
+fixes merged in and stays off uat, as the owner decided.
 
 ## Method
 
@@ -120,9 +121,9 @@ refresh): native launch ~60ms, JS bundle ~130ms, first content ~1.15s.
 
 ## Decisions for the owner
 
-1. **What to merge into uat:** `fix/revalidation-2026-09-11` alone (1.24.7), or
-   `perf/bar-visible-steps` (1.24.7 + 1.24.8 + 1.24.9). Then merge uat into
-   `experiment/alarmclock-backport` as usual.
+1. **Merge `fix/revalidation-2026-09-11` into uat** once it has been tested. The
+   alarm clock branch already carries the same fixes; after the uat merge, merge
+   uat into it as usual.
 2. **ISSUES #29:** which night the Extras Midnight/Last Third values belong to
    (they are computed from the following night's Maghrib/Fajr pair; 0–3 minutes).
 3. **Reanimated pairing:** 4.6.0 + worklets 0.12.2 (current) sits outside Expo SDK
