@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import {
   interpolateColor,
   runOnJS,
@@ -143,10 +143,14 @@ interface DerivedTimingOptions {
  */
 export const useDerivedProgress = (target: number, options?: DerivedTimingOptions) => {
   const resync = useAtomValue(resyncAtom);
-  const duration = options?.duration ?? ANIMATION.duration;
-  const delay = options?.delay ?? 0;
-  const easing = options?.easing;
-  const useDefaultTiming = options?.defaultTiming ?? false;
+
+  // Options latch when the target changes, so a re-render mid-transition can't restart it with other timing
+  const latched = useRef({ target, options });
+  if (latched.current.target !== target) latched.current = { target, options };
+  const duration = latched.current.options?.duration ?? ANIMATION.duration;
+  const delay = latched.current.options?.delay ?? 0;
+  const easing = latched.current.options?.easing;
+  const useDefaultTiming = latched.current.options?.defaultTiming ?? false;
 
   const isFirstEvaluation = useSharedValue(true);
   const lastResync = useSharedValue(resync);
@@ -166,55 +170,36 @@ export const useDerivedProgress = (target: number, options?: DerivedTimingOption
   });
 };
 
-// The consumer mappers carry the resume counter as a dependency: on foreground
-// the mapper restarts and re-applies its current value. A re-render alone does
-// not re-apply an animated prop, and a snap to an unchanged value is a no-op,
-// so without this a native prop (SVG fill) that went stale across a suspend is
-// never re-asserted.
 export const useDerivedOpacity = (target: number, options?: DerivedTimingOptions) => {
-  const resync = useAtomValue(resyncAtom);
   const progress = useDerivedProgress(target, options);
-  return useAnimatedStyle(() => ({ opacity: progress.value }), [resync]);
+  return useAnimatedStyle(() => ({ opacity: progress.value }));
 };
 
 export const useDerivedColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
-  const resync = useAtomValue(resyncAtom);
   const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
   const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
-  return useAnimatedStyle(
-    () => ({
-      color: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
-    }),
-    [resync]
-  );
+  return useAnimatedStyle(() => ({
+    color: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+  }));
 };
 
 export const useDerivedBackgroundColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
-  const resync = useAtomValue(resyncAtom);
   const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
   const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
-  return useAnimatedStyle(
-    () => ({
-      backgroundColor: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
-    }),
-    [resync]
-  );
+  return useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+  }));
 };
 
 export const useDerivedTranslateY = (target: number, options?: DerivedTimingOptions) => {
-  const resync = useAtomValue(resyncAtom);
   const progress = useDerivedProgress(target, options);
-  return useAnimatedStyle(() => ({ transform: [{ translateY: progress.value }] }), [resync]);
+  return useAnimatedStyle(() => ({ transform: [{ translateY: progress.value }] }));
 };
 
 export const useDerivedFill = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
-  const resync = useAtomValue(resyncAtom);
   const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
   const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
-  return useAnimatedProps(
-    () => ({
-      fill: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
-    }),
-    [resync]
-  );
+  return useAnimatedProps(() => ({
+    fill: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+  }));
 };
