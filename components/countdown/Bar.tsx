@@ -122,6 +122,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
   // Overlay visibility is derived; reduced motion snaps it
   const wrapperOpacityStyle = useDerivedOpacity(isPreviewMode || !overlayIsOn ? 1 : 0, {
     duration: reducedMotion ? 0 : ANIMATION.duration,
+    easing: Easing.linear,
   });
 
   const barWidthStyle = useAnimatedStyle(() => ({

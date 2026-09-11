@@ -8,6 +8,7 @@ import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
 import { PrayerExplanation } from '@/components/prayer';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
+import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import {
   ANIMATION,
@@ -19,6 +20,7 @@ import {
   STYLES,
 } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
+import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, toggleOverlay } from '@/stores/overlay';
 import { measurementsListAtom } from '@/stores/ui';
@@ -74,15 +76,12 @@ export default function Overlay() {
 
   const isExtra = overlay.scheduleType === ScheduleType.Extra;
 
-  // selectedPrayerIndex is the prayer's position in the chronological
-  // sequence (matches usePrayer/getOverlayTarget elsewhere), not its on-screen
-  // row: Extras rows display in canonical rank order (Midnight, Last Third,
-  // Suhoor, Duha, Istijaba — see canonicalDisplayOrder), which the raw
-  // chronological index does not generally match. Resolve the actual visual
-  // row from the selected prayer's name for every position/content lookup
-  // below. Standard has no such reordering, so its index is already correct.
+  // selectedPrayerIndex is chronological; position uses the row List actually renders
   const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
-  const visualRowIndex = isExtra ? EXTRAS_ENGLISH.indexOf(selectedPrayer.english) : overlay.selectedPrayerIndex;
+  const { prayers, displayDate } = usePrayerSequence(overlay.scheduleType);
+  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
+  const displayRow = canonicalDisplayOrder(todayPrayers, overlay.scheduleType).indexOf(overlay.selectedPrayerIndex);
+  const visualRowIndex = displayRow >= 0 ? displayRow : overlay.selectedPrayerIndex;
 
   const catcherRegions = buildCatcherRegions({
     windowWidth: window.width,
@@ -115,8 +114,10 @@ export default function Overlay() {
   const computedStyleInfoBox = showInfoBoxAbove ? computedStyleInfoBoxAbove : computedStyleInfoBoxBelow;
 
   const prayerName = isExtra ? selectedPrayer.english : null;
-  const explanation = isExtra ? EXTRAS_EXPLANATIONS[visualRowIndex] : null;
-  const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[visualRowIndex] : null;
+  // Explanations follow EXTRAS_ENGLISH order, so the text is looked up by name
+  const explanationIndex = EXTRAS_ENGLISH.indexOf(selectedPrayer.english);
+  const explanation = isExtra ? EXTRAS_EXPLANATIONS[explanationIndex] : null;
+  const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[explanationIndex] : null;
 
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, layerOpacityStyle]}>

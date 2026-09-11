@@ -22,11 +22,17 @@ interface Props {
  * @param type - Schedule type (Standard or Extra)
  */
 export default function PrayerAgo({ type }: Props) {
-  const { prayerAgo, minutesElapsed, isReady: prayerAgoReady } = usePrayerAgo(type);
+  const { prayerAgo, minutesElapsed, isReady } = usePrayerAgo(type);
+
+  // Mounted only once ready, so the colours' first-evaluation snap lands on real data
+  if (!isReady) return null;
+
+  return <PrayerAgoBadge prayerAgo={prayerAgo} minutesElapsed={minutesElapsed} />;
+}
+
+function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minutesElapsed: number }) {
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
 
-  // Derived from state, not an effect: first evaluation and resume snap, so a
-  // suspend-dropped write cannot strand (see ai/features/overlay/spec.md)
   const isRecent = minutesElapsed <= 5 ? 1 : 0;
   const recentColorOptions = { duration: ANIMATION.durationMedium, easing: Easing.linear };
   const prayerAgoColorStyle = useDerivedColor(isRecent, {
@@ -42,8 +48,6 @@ export default function PrayerAgo({ type }: Props) {
 
   // Fade out when overlay opens (derived, so it cannot strand on resume)
   const prayerAgoOpacityStyle = useDerivedOpacity(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade });
-
-  if (!prayerAgoReady) return null;
 
   return (
     <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>

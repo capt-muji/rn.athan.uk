@@ -3,9 +3,11 @@ name: sounds-x5
 tags:
   - baseline
 ---
-# Sound sheet suite (OnePlus 3T pixels): open over settings ("Change athan"
-# row 540,1138), select row 2 then re-select row 1 (selection restored),
-# play/pause row 1 (play icon 930,975), dismiss. One BACK per open sheet.
+# Sound sheet suite (OnePlus 3T pixels): open settings, then "Change athan"
+# (row 540,1138) — which closes settings and opens the sound sheet in the same
+# tick, so only ONE sheet is open from here on. Select row 2 then re-select
+# row 1 (selection restored), play/pause row 1 (play icon 930,975), dismiss
+# with exactly one BACK (a second BACK exits the app to the launcher).
 - tapOn:
     point: '540, 1730'
 - waitForAnimationToEnd:
@@ -32,5 +34,4 @@ tags:
 - pressKey: back
 - waitForAnimationToEnd:
     timeout: 1500
-- pressKey: back
 - assertVisible: 'London, UK'

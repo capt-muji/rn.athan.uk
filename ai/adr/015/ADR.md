@@ -56,9 +56,11 @@ mechanism.
 4. **Exact-millisecond open guard.** Opening is refused when the true remaining
    milliseconds to the next prayer are 2000 or fewer, replacing the coarse
    displayed-atom read that could allow an open inside the final 2 seconds.
-5. **Resume counter.** A monotonic counter bumps on every foreground transition
-   and is a dependency of every derived worklet, so each re-runs and snaps on
-   resume even when its target is unchanged.
+5. **Resume counter.** A monotonic counter bumps on every foreground transition.
+   `useDerivedProgress` reads it inside its worklet, so a value caught up on
+   foreground snaps instead of animating. (Corrected 2026-09-11: it does not
+   re-apply an unchanged value, and nothing in app code can. The
+   stale-after-resume class was fixed upstream in Reanimated; see spec §8.)
 6. **Pixel parity is a hard requirement.** Business logic and styling stay
    identical, including the platform-specific shadows. Only the mechanism
    changes.

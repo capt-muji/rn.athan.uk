@@ -20,7 +20,7 @@ import type { IApiResponse } from '@/shared/types';
 // day (calculateBelongsToDate) - correct for a real post-midnight Isha, but a
 // night-time mock triggers both: at the Magrib->Isha handoff the countdown
 // skips to the following day's Fajr and the rollover cascade fires early.
-// Real London Isha never lands 00:00-06:00. To test the Magrib->Isha handoff
+// A real London Isha can fall after 00:00 (handled by the rules above). To test the Magrib->Isha handoff
 // and day rollover cleanly, simulate during 06:00-23:59.
 const now = new Date();
 
