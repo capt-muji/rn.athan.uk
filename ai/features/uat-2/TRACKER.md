@@ -26,10 +26,10 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 | 11 | Device checks: one command, run on demand | `test/device-checks` | ✅ `yarn check:device` — build identity, permissions, notification channels and every armed alarm; fails when nothing is armed. Optional expected-times file checks the alarm times themselves (no API key) |
 | 12 | Launch time: measure a production build on the 3T | `perf/launch-time` | 🚧 baseline 6.6–6.7 s to first frame (3T, production build); profile next |
 | 13 | Launch time: one change at a time, checked frame by frame | `perf/launch-time` | ⏳ |
-| 14 | "Ago" badge moved onto the shared clock tick | `refactor/tidy-ups` | ⏳ |
-| 15 | Popups tracked by prayer name, not row number | `refactor/tidy-ups` | ⏳ |
-| 16 | Countdown bar 2px too long when full | `refactor/tidy-ups` | ⏳ |
-| 17 | Internal renames (one timezone setting) | `refactor/tidy-ups` | ⏳ |
+| 14 | "Ago" badge moved onto the shared clock tick | `refactor/tidy-ups` | ✅ 1.24.28 — subscribes to the countdown atom with `store.sub` (no extra timer, and no extra render: `useAtomValue` would re-render every second). Its test now calls the hook's real `calculatePrayerAgo` instead of a local copy |
+| 15 | Popups tracked by prayer name, not row number | `refactor/tidy-ups` | ✅ already true since 1.24.7 — `Overlay.tsx` looks the explanation up by name (`EXTRAS_ENGLISH.indexOf`). Verified, no change needed; the remaining index-keyed atoms are row *selection*, which is legitimately positional |
+| 16 | Countdown bar 2px too long when full | `refactor/tidy-ups` | ✅ 1.24.26 — the tip oval is centred on `left`, so it overhung the track by 0.6dp at full (≈2 physical px at 3x) and 2.4dp at empty. Clamped in `components/countdown/tipGeometry.ts`, pure and unit-tested; mid-range positions unchanged |
+| 17 | Internal renames (one timezone setting) | `refactor/tidy-ups` | ✅ 1.24.27 — `createLondonDate` → `createInstant` (it was literally `new Date()`), 40 refs across 20 files. `PRAYER_TIMEZONE` stays the single setting for v2.0; the user-facing "London, UK" is copy, not a name |
 | 18 | Code audit brief | `uat-2` | ⏳ |
 | 19 | Code audit: findings | next session | ⏳ |
 | 20 | Code audit: changes, one at a time | next session | ⏳ |
