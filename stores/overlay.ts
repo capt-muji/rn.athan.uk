@@ -61,6 +61,13 @@ const closeOverlay = () => {
   writeDisplayCountdown(overlay.scheduleType);
 };
 
+/**
+ * No production caller opens through this: both pass `false`, or call
+ * `closeOverlay` directly. Opening implicitly would reuse whatever
+ * `selectedPrayerIndex` the atom still holds, which after a day rollover or a
+ * schedule change is a stale row. Open with `openOverlay(type, index)` and an
+ * index chosen at the call site.
+ */
 const toggleOverlay = (force?: boolean) => {
   const overlay = store.get(overlayAtom);
   const newState = force !== undefined ? force : !overlay.isOn;
