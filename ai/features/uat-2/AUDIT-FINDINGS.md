@@ -706,6 +706,29 @@ CONFIRMED [test].
 than caching a day that cannot be read. This also closes the high-latitude case in finding
 47, where providers emit `"-----"` or omit Sunrise.
 
+### CLOSED in session 5, 1.25.37, `fix/audit-8-47-api-shape-guard`
+
+`validateApiTimes` in `api/client.ts` asserts all six of `fajr`, `sunrise`, `dhuhr`, `asr`,
+`magrib` and `isha` against `^([01]\d|2[0-3]):[0-5]\d$` and throws
+`Malformed prayer time: <date> <name> is <value>`, which names the offending day and field in
+one log line instead of a `RangeError` from three layers down.
+
+**Placed after `filterApiData`, not inside `validateApiResponse`.** The fix direction said the
+latter, and that would have been a regression: `filterApiData` already discards everything
+before yesterday, so validating the raw payload would let one malformed January row reject a
+whole year in December and kill a working app. A day the app never reads cannot crash it. The
+guard therefore runs on exactly the days that get cached, and a pinned test asserts a malformed
+past day is still silently discarded.
+
+All four cases the sweep reproduced are now regression tests, plus the polar-day `"-----"` of
+finding 47, an out-of-range `25:61`, and a day whose value is `null`. Six of the seven were
+shown to fail with the guard lifted out of the pipeline; the seventh is the no-over-rejection
+test, which correctly passes either way. Suite 1041 → 1048, green in all four of `yarn test:tz`.
+
+**Finding 47 is closed by this too** for the crash half. The polar-day *modelling* question —
+what a correct Fajr and Isha are above ~60N when the sun never sets — is untouched and stays
+Tier 5 scope for v2.0, as the endpoint is London-only today (finding 43).
+
 ## 9. RE-RANKED to Tier 6: the EAS dashboard supplies the environment
 
 **Owner, 2026-09-12: the EAS dashboard sets `EXPO_PUBLIC_ENV` and `EXPO_PUBLIC_API_KEY`.** So
