@@ -13,6 +13,7 @@ import {
   EXTRAS_EXPLANATIONS_ARABIC,
   ISTIJABA_INDEX,
   NIGHT_PRAYER_NAMES,
+  NOTIFICATION_ROLLING_DAYS,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
@@ -239,5 +240,44 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
     expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+  });
+});
+
+// =============================================================================
+// iOS PENDING-REQUEST CEILING TESTS
+//
+// iOS keeps only the 64 soonest-firing pending notification requests per app and
+// silently discards the rest. Nothing in the app observes that ceiling at runtime:
+// the mock always resolves and getAllScheduledNotificationsAsync returns an empty
+// array, so without this the constants could be pushed past it by a one-character
+// edit and the whole suite would still pass.
+// =============================================================================
+
+/** UNUserNotificationCenter keeps the soonest-firing 64 requests and drops the remainder */
+const IOS_PENDING_REQUEST_CEILING = 64;
+
+/** Every prayer on both lists can carry an at-time alert AND a pre-prayer reminder */
+const ALERTS_PER_PRAYER = 2;
+
+describe('the rolling buffer fits inside the iOS pending-request ceiling', () => {
+  const prayersPerDay = PRAYERS_ENGLISH.length + EXTRAS_ENGLISH.length;
+  const worstCase = prayersPerDay * ALERTS_PER_PRAYER * NOTIFICATION_ROLLING_DAYS;
+
+  it('schedules at most 64 requests with every prayer fully armed', () => {
+    expect(worstCase).toBeLessThanOrEqual(IOS_PENDING_REQUEST_CEILING);
+  });
+
+  it('pins the arithmetic, so a change to any input has to come through here', () => {
+    expect({ prayersPerDay, days: NOTIFICATION_ROLLING_DAYS, worstCase }).toEqual({
+      prayersPerDay: 11,
+      days: 2,
+      worstCase: 44,
+    });
+  });
+
+  it('shows that one more day would breach the ceiling', () => {
+    const threeDays = prayersPerDay * ALERTS_PER_PRAYER * 3;
+
+    expect(threeDays).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
   });
 });

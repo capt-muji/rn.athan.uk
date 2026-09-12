@@ -1298,6 +1298,23 @@ which are exactly the third day the bump was meant to protect.
 
 CONFIRMED on the arithmetic and on the absence of any guard.
 
+### CLOSED in session 5, 1.25.41, `fix/audit-21-ios-pending-ceiling`
+
+Three cases in `shared/__tests__/constants.test.ts` compute the worst case from the live
+constants — `(PRAYERS_ENGLISH + EXTRAS_ENGLISH) × 2 alerts × NOTIFICATION_ROLLING_DAYS` — and
+assert it stays at or under 64, pin the arithmetic at `11 × 2 × 2 = 44` so a change to any input
+has to be made deliberately here, and assert that three days would breach it. The constant's
+JSDoc now carries the warning and the numbers at the place someone would edit it.
+
+The 64 is re-verified rather than taken on trust: iOS keeps only the **64 soonest-firing**
+pending requests per app and silently discards the remainder, which is what makes a raise
+self-defeating — the dropped requests are the furthest out, exactly the extra day the raise was
+meant to buy.
+
+Confirms the finding as written: with `NOTIFICATION_ROLLING_DAYS` bumped to 3, only this new
+suite fails. The other 1,055 tests pass, so the one-character "more buffer" edit really would
+have shipped green.
+
 ## 22. `cacheSchemaChanged`, the sole gate on wiping the cache, has zero tests
 
 `stores/version.ts:165-179`, called at `:254`.
