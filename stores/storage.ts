@@ -58,7 +58,17 @@ export const atomWithStorageNumber = (key: string, initialValue: number) =>
     {
       getItem: (key, initialValue) => {
         const value = database.getString(key);
-        return value === undefined ? initialValue : Number(value);
+        if (value === undefined) return initialValue;
+        // Anything that is not a finite number falls back to the default. A
+        // corrupt value used to yield NaN, which matches no AlertType branch and
+        // no interval, and an empty string yielded 0, which reads as a real
+        // preference rather than an absent one.
+        const parsed = Number(value);
+        if (!Number.isFinite(parsed) || value.trim() === '') {
+          logger.warn('STORAGE: Unreadable stored number, using the default', { key, initialValue });
+          return initialValue;
+        }
+        return parsed;
       },
       setItem: (key, value) => database.set(key, value.toString()),
       removeItem: (key) => database.remove(key),
