@@ -2242,6 +2242,39 @@ wrapped Istijaba would not be re-dated.
 
 CONFIRMED.
 
+### CLOSED in session 5, 1.25.49, `fix/audit-44-magrib-midnight-crossing`
+
+Three changes in `shared/prayer.ts`, each independently proven by reverting it alone:
+
+1. `adjustPrayerDateForMidnightCrossing` now admits Magrib alongside Isha, so a post-midnight
+   Magrib's **instant** moves to the next calendar day. Closes the 23h56m-early alarm.
+2. `getNightTimesForDay` anchors the night at the day the Magrib really falls on rather than the
+   date it is filed under. Closes the ~26-hour night that threw Islamic Midnight and Last Third
+   past noon.
+3. `calculateBelongsToDate` now admits Magrib alongside Isha, so the **row** stays on its own
+   list day.
+
+**The third was a bug in the first two, caught by self-review rather than by the suite.** Change
+1 moved Magrib's `datetime` *and*, through `createPrayer`, its `belongsToDate`. Probed on the
+Reykjavik fixture, 21 June's Magrib came back with `belongsToDate: 2026-06-22` while Isha
+correctly kept `2026-06-21`. The rendered list filters on `belongsToDate`, so 21 June would have
+shown **no Magrib at all** and 22 June two. The existing Isha clause in `calculateBelongsToDate`
+exists precisely to undo the shift its counterpart applies; Magrib needed the same pairing. All
+1,085 tests passed while that regression was present, which is why it is worth recording how it
+was found.
+
+**Correction: Istijaba needs no fix, contrary to the finding.** It is derived as
+`adjustTime(magrib, -60)` on the day's own record and is not re-dated, so with Magrib at 00:04 on
+D+1 it lands at 23:04 on D — exactly 60 minutes earlier, which is right. A test pins the
+60-minute gap rather than either literal, so it holds at any latitude.
+
+**Why the 06:00 cutoff is safe for Magrib.** A record whose Magrib is genuinely in the small
+hours of its *own* date would need Dhuhr and Asr after it, which contradicts the ordering every
+provider emits. So a small-hours Magrib always means the next day.
+
+**Unchanged for London**, which was the requirement: the whole suite passed before the new tests
+were added, and an explicit London case pins a 19:25 Magrib on its own date.
+
 ## 45. WITHDRAWN: "Asr is hardcoded to the Hanafi calculation"
 
 **Owner ruling, 2026-09-12: the API is the source of truth and the app edits nothing it
