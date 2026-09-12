@@ -17,6 +17,35 @@ part 1". Read that section before anything else in the document.
 The OnePlus 3T holds a **prod build of 1.25.30**, matching `uat-2` HEAD, with real London data,
 Fajr on Sound, one alarm armed and `yarn check:device` green.
 
+## Two owner rulings from the close of session 4. Do not reopen them.
+
+**1. The error screen keeps its single Refresh button, and that button clears the cache.**
+*"IT WAS FINE BEFORE. ONE BUTTON. REFRESH. DOES THE RESET. DONT CARE IF ITS DESTRUCTIVE. IT
+DOESNT DELETE PREFERENCES."* Finding 6 is withdrawn as a defect. The markup and styles are
+byte-identical to where session 4 found them and must stay that way. The owner's second point
+settles the objection rather than trading against it: recovering from that screen needs the
+network whether or not the cache was wiped, because the next launch retries the same fetch, so
+the cached timetable is not something the user currently has. Verified end to end on the 3T:
+offline with no cache gives the error screen, Refresh clears, reloads, refetches and the real
+London times come back.
+
+**2. KEEP EVERY VISUAL EXACTLY AS IT IS.** *"I TOLD YOU TO KEEP ALL THE VISUALS OF THE APP
+EXACTLY THE SAME."* No new buttons, no new copy, no layout changes, no colour changes, in any
+fix. If a finding appears to need a visual change, stop and ask. This includes the four
+accessibility items in Tier 6: adding roles, labels and states is invisible, but anything that
+moves a pixel is not.
+
+**3. The Android notification channels need extreme care.** Owner, at the close of session 4:
+*"be extremely careful with the alarm channels on android. we had many many issues making it
+work before. they need to properly be 1:1 if you touch them."* This governs **finding 5**,
+which is the next step. Channel ids are immutable once created, which is why
+`deleteLegacyAndroidAudioChannels` and the `_v2` suffix exist; a channel's sound cannot be
+changed after creation, and Android silently drops notifications posted to a channel that does
+not exist. Read the whole of `shared/notifications.ts:192-257` and `device/notifications.ts`
+before changing a line, keep the channel ids and their sounds exactly as they are, and verify
+on the device with `yarn check:device` before and after. If the fix cannot be shown to be 1:1
+on channel ids, sounds and importance, do not land it — write it up and ask.
+
 ## Four things session 4 learned that change how you should work
 
 **1. `[test]` is not proof.** Finding 2 was marked `CONFIRMED [test]` and was **wrong about the
@@ -52,7 +81,7 @@ The original prompt's step order still governs. Remaining work, by step:
 
 | Step | Findings | Note |
 | --- | --- | --- |
-| 4 | **5** | Android's five daily athan channels, never created at schedule time. The highest silent-alarm risk left. Device-verify through `yarn check:device`, which session 4 repaired. |
+| 4 | **5** | Android's five daily athan channels, never created at schedule time. The highest silent-alarm risk left, and the one the owner has warned about by name. Read ruling 3 above first. Device-verify through `yarn check:device`, which session 4 repaired. |
 | 5 | **8**, 47 | One guard in `validateApiResponse` closes both, and closes finding 6's escape-hatch question with it. |
 | 6 | **10, 11, 24, 22, 26, 21** | Cheap guards. Each is a small test. |
 | 7 | 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 27, 48, 49, 50, 52, 53, 54, 55, 56, 57 | The rest of Tier 2, in document order. |
@@ -65,15 +94,6 @@ Findings **1** and **45** are settled and need no work. Finding **9** is resolve
 ruling but keeps a live fix direction: an `env` block in `eas.json` stating the contract the
 dashboard already provides, plus a config-time failure when the environment is prod or preview
 and the key is absent or still the placeholder.
-
-## One open question for the owner, not for you to decide
-
-**Finding 6's escape hatch.** The owner's position is that reaching the error screen means
-something has gone wrong, so wiping and refetching is right. Tracing the paths showed that
-holds for a corrupt cache and fails for a failed fetch, which is the common case. The wipe is
-now gone. Finding 8 closes the corrupt-cache path at source. If the owner still wants a reset
-after that, it is a second explicitly labelled destructive button, not the only button on the
-screen. Put it to them once finding 8 has landed.
 
 ## Device and key
 
