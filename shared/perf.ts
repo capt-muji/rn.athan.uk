@@ -17,6 +17,9 @@
  *   extraction on physical devices.
  * - MMKV flushes: every FLUSH_THRESHOLD entries, on app background, and via
  *   perfFlush(). The ring is a snapshot (bounded overwrite), never a log.
+ * - Marks made BEFORE initPerfMonitor() (import-time work such as the
+ *   synchronous cache bootstrap) are buffered and replayed at init, carrying
+ *   their true epoch in detail.at — see pendingMarks.
  */
 
 import { AppState } from 'react-native';
@@ -48,6 +51,17 @@ let perfStorage: ReturnType<typeof createMMKV> | null = null;
 const ring: RingEntry[] = [];
 let seq = 0;
 let epochOffset = 0;
+
+/**
+ * Marks recorded before initPerfMonitor() runs — module-scope work that
+ * happens at import time, ahead of app/_layout.tsx's init call (ISSUES #32).
+ *
+ * A replayed entry's ring `ts` is the REPLAY time, not the capture time: the
+ * authoritative epoch ms travels in `detail.at`. Bounded, so a build whose
+ * monitor never initializes cannot grow this without limit.
+ */
+const PENDING_CAPACITY = 50;
+const pendingMarks: Array<{ name: string; at: number; detail?: Record<string, unknown> }> = [];
 
 /** Converts a PerformanceEntry into the compact ring representation */
 const toRingEntry = (entry: {
@@ -156,6 +170,12 @@ export const initPerfMonitor = (): void => {
 
   AppState.addEventListener('change', handleAppStateChange);
 
+  // Replay pre-init marks in capture order so the import-time window appears
+  // in the timeline ahead of perf_monitor_init (true epoch in detail.at)
+  for (const pending of pendingMarks.splice(0)) {
+    lib.default.mark(pending.name, { detail: { ...pending.detail, at: pending.at } });
+  }
+
   lib.default.mark('perf_monitor_init');
   flushRing('init');
 };
@@ -166,7 +186,13 @@ export const initPerfMonitor = (): void => {
  * @param detail Optional structured payload (JSON-safe)
  */
 export const perfMark = (name: string, detail?: Record<string, unknown>): void => {
-  if (!PERF_ENABLED || !perfModule) return;
+  if (!PERF_ENABLED) return;
+
+  if (!perfModule) {
+    // Pre-init: keep the real epoch; initPerfMonitor replays these
+    if (pendingMarks.length < PENDING_CAPACITY) pendingMarks.push({ name, at: Date.now(), detail });
+    return;
+  }
 
   perfModule.default.mark(name, detail ? { detail } : undefined);
 };

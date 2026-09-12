@@ -21,6 +21,7 @@
  *   moment would be a behavior change, so the spinner covers it)
  */
 
+import { perfMark } from '@/shared/perf';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
@@ -39,14 +40,24 @@ const hydrateFromCache = (): boolean => {
 };
 
 const bootstrapFromCache = (): boolean => {
+  // This module runs at IMPORT time, before app/_layout.tsx reaches
+  // initPerfMonitor(), so these marks are buffered by shared/perf.ts and
+  // replayed when the monitor comes up (ISSUES #32). No-op in normal builds.
+  perfMark('bootstrap_start');
+
   try {
     if (wasAppUpgraded()) return false;
     if (!hydrateFromCache()) return false;
+
+    perfMark('bootstrap_hydrated');
 
     startCountdowns();
     return true;
   } catch {
     return false;
+  } finally {
+    // Marked on every path, including the spinner returns above
+    perfMark('bootstrap_done');
   }
 };
 
