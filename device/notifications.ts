@@ -75,11 +75,19 @@ export const addOneScheduledNotificationForPrayer = async (
   const atTimeChannelId =
     alertType === AlertType.Sound ? NotificationUtils.atTimeAndroidChannelId(englishName, soundPreference) : undefined;
 
-  // The extras channel is created at schedule time too: headless background-task
-  // reschedules run without UI init, and Android drops notifications posted to
-  // nonexistent channels (same reasoning as the reminder channels)
-  if (alertType === AlertType.Sound && Platform.OS === 'android' && !NotificationUtils.isDailyPrayer(englishName)) {
-    await NotificationUtils.createExtrasAndroidChannel();
+  // The at-time channel is created at schedule time too: headless background-task
+  // reschedules run without UI init, and initialization only ever creates the athan
+  // channel for sound index 0 (same reasoning as the reminder channels). Posting to
+  // a channel that does not exist does not drop the notification on expo-notifications
+  // 57 — it substitutes expo_notifications_fallback_notification_channel, which carries
+  // the device's default notification tone, so the alarm rings a generic ding instead
+  // of the athan (device-verified on the 3T, see AUDIT-FINDINGS finding 5)
+  if (alertType === AlertType.Sound && Platform.OS === 'android') {
+    if (NotificationUtils.isDailyPrayer(englishName)) {
+      await NotificationUtils.createAthanAndroidChannel(soundPreference);
+    } else {
+      await NotificationUtils.createExtrasAndroidChannel();
+    }
   }
 
   try {

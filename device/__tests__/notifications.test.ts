@@ -7,7 +7,7 @@
  * notification fires at its list row's own instant (ISSUES #29).
  */
 
-import { scheduleNotificationAsync, setNotificationChannelAsync } from 'expo-notifications';
+import { AndroidImportance, scheduleNotificationAsync, setNotificationChannelAsync } from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import {
@@ -136,9 +136,46 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     expect(setNotificationChannelAsync).toHaveBeenCalledWith('extras_at_time', expect.anything());
   });
 
-  it('creates no channel for a daily-prayer Sound notification on Android (athan channels have their own lifecycle)', async () => {
+  it('creates the selected athan channel before scheduling a daily-prayer Sound notification (Android)', async () => {
     Platform.OS = 'android';
 
+    await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      '2026-09-01',
+      row('Isha', 'العشاء', '2026-09-01', '21:00'),
+      AlertType.Sound,
+      4
+    );
+
+    expect(setNotificationChannelAsync).toHaveBeenCalledWith(
+      'athan_5_v2',
+      expect.objectContaining({ sound: 'athan5.mp3', importance: AndroidImportance.MAX })
+    );
+  });
+
+  it('creates the athan channel once per process across a full reschedule', async () => {
+    Platform.OS = 'android';
+
+    await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      '2026-09-02',
+      row('Fajr', 'الفجر', '2026-09-02', '06:15'),
+      AlertType.Sound,
+      6
+    );
+    await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      '2026-09-02',
+      row('Dhuhr', 'الظهر', '2026-09-02', '13:00'),
+      AlertType.Sound,
+      6
+    );
+
+    const athanCalls = (setNotificationChannelAsync as jest.Mock).mock.calls.filter(([id]) => id === 'athan_7_v2');
+    expect(athanCalls).toHaveLength(1);
+  });
+
+  it('creates no channel for a daily-prayer Sound notification on iOS', async () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
