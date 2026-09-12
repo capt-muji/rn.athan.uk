@@ -1234,6 +1234,11 @@ device write.
 
 ## 32. `device_checks.py` matches the package by substring
 
+**FIXED in 1.25.7** (`fix/audit-32-package-exact-match`). The anchor's last field is read out
+by `OWNER` and compared whole, so a sibling install no longer counts. Verified against the live
+3T dump: byte-identical output on the real dump, and a synthetic `com.example.athan.fleettest`
+entry that the old parser counted as an armed prayer alert now reports FAIL.
+
 `device_checks.py:54`, `if package in anchor.group(0)`. `app.config.ts` exists precisely to
 install `com.example.athan.<suffix>` beside the store app, and
 `"com.example.athan" in "Alarm{... com.example.athan.BGTest}"` is true. A side-by-side test
