@@ -1,3 +1,6 @@
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 /**
  * Unit tests for stores/database.ts
  *
@@ -550,5 +553,49 @@ describe('reminder scheduling records', () => {
       const extraReminders = getAllScheduledRemindersForPrayer(ScheduleType.Extra, 0);
       expect(extraReminders).toHaveLength(1);
     });
+  });
+});
+
+// =============================================================================
+// clearAllExcept CALL-SITE GUARD (audit finding 6)
+// =============================================================================
+
+/**
+ * `clearAllExcept` deletes every prayer record, the fetched-year markers, the
+ * scheduled-notification bookkeeping, the cache shape marker and the measured
+ * column widths. Two places are entitled to do that: the upgrade path, when the
+ * cache shape changed, and the sync path's full refresh.
+ *
+ * `components/ui/Error.tsx` used to call it from the error screen's only button.
+ * That screen is reached from a failed fetch, so the common case was an offline
+ * user with a good timetable on disk being offered a button that destroyed it.
+ * This pins the call sites so a recovery affordance can never become destructive
+ * again by accident.
+ */
+describe('clearAllExcept call sites', () => {
+  const SANCTIONED = ['stores/sync.ts', 'stores/version.ts'];
+
+  const sourceFiles = (dir: string): string[] => {
+    const entries = readdirSync(join(__dirname, '../..', dir), { withFileTypes: true });
+    return entries.flatMap((entry) => {
+      const relative = `${dir}/${entry.name}`;
+      if (entry.isDirectory()) return entry.name === '__tests__' ? [] : sourceFiles(relative);
+      return /\.tsx?$/.test(entry.name) ? [relative] : [];
+    });
+  };
+
+  it('is called only from the upgrade and sync paths', () => {
+    const searched = ['app', 'components', 'device', 'hooks', 'shared', 'stores', 'widgets'];
+    const callers = searched
+      .flatMap((dir) => sourceFiles(dir))
+      .filter((relative) => {
+        const source = readFileSync(join(__dirname, '../..', relative), 'utf8');
+        // Comments discuss this function by name, so strip them before looking
+        // for calls; the declaration in database.ts is not a call site either
+        const code = source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+        return /\bclearAllExcept\(/.test(code) && relative !== 'stores/database.ts';
+      });
+
+    expect(callers.sort()).toEqual(SANCTIONED);
   });
 });

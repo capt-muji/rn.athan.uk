@@ -484,6 +484,24 @@ session-dedup set that `createReminderAndroidChannel` already uses.
 
 ## 6. The error screen's only button deletes the prayer cache
 
+**FIXED in 1.25.29** (`fix/audit-6-error-screen-wipe`). `handleRefresh` reloads and nothing
+else. The wipe is gone, and the reload is wrapped so a failed reload logs instead of producing
+an unhandled rejection.
+
+This is one of the three findings in this document that is **live in production 1.5.2**, and
+it is the one whose failure mode is worst: the screen is reached from a failed fetch, so the
+common case is an offline user whose timetable is fine on disk being offered a single button
+that destroys it. After that every reload finds nothing, fetches, throws, and returns here.
+
+The regression test is a call-site guard in `stores/__tests__/database.test.ts` rather than a
+component test, since there is no renderer. It asserts `clearAllExcept` is called from exactly
+`stores/sync.ts` and `stores/version.ts` across every source directory, with comments stripped
+first so prose naming the function does not count. Restoring the wipe fails it.
+
+Finding 7's boundary landed immediately before this, which is the order the session brief
+required: the boundary routes more traffic to this screen, so the screen had to stop being
+destructive in the same session.
+
 `components/ui/Error.tsx:10-13`, reached from `app/index.tsx:176`.
 
 ```ts
