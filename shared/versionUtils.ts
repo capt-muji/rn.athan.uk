@@ -9,9 +9,23 @@
  * @param v2 - Second version string (e.g. "1.0.34")
  * @returns 1 if v1 > v2, -1 if v1 < v2, 0 if equal
  */
+/**
+ * Splits a version into numeric segments, tolerating the shapes that reach this from outside
+ * the app: a `v` prefix, a missing value, and a non-numeric segment.
+ *
+ * `Number('v1')` is NaN and `NaN || 0` is 0, which inverted the comparison outright —
+ * `'v1.0.1'` read as older than `'1.0.0'`. That matters because the update prompt feeds this
+ * whatever `releases.json` or the iTunes lookup returns, neither of which the app controls.
+ */
+const toVersionParts = (version: string): number[] =>
+  String(version ?? '')
+    .replace(/^v/i, '')
+    .split('.')
+    .map((segment) => Number.parseInt(segment, 10) || 0);
+
 export const compareVersions = (v1: string, v2: string): number => {
-  const parts1 = v1.split('.').map(Number);
-  const parts2 = v2.split('.').map(Number);
+  const parts1 = toVersionParts(v1);
+  const parts2 = toVersionParts(v2);
   const maxLength = Math.max(parts1.length, parts2.length);
 
   for (let i = 0; i < maxLength; i++) {

@@ -1328,6 +1328,23 @@ rather than a crash risk. The existing suite covers only well-formed dotted nume
 
 CONFIRMED, measured.
 
+### CLOSED in session 5, 1.25.55, `fix/audit-18-version-parsing`
+
+`toVersionParts` strips a leading `v`, coerces `undefined`/`null` to an empty string and uses
+`Number.parseInt(segment, 10) || 0`, so every well-formed comparison is unchanged while the
+malformed shapes stop inverting.
+
+**Not fixed, and deliberately:** prerelease ordering. `'1.0.0-beta.1'` still parses as `1.0.0`
+and therefore compares equal rather than lower. Proper semver ordering is a larger change than
+this finding, and the dangerous half lives elsewhere — at `stores/version.ts:99` a shipped
+`"1.25.3-hotfix"` reads as equal, so neither `clearUpgradeCache()` nor
+`forceNotificationReschedule()` runs. That is closed by a version-string shape guard in the
+release ritual, not by the comparator, and is recorded here rather than half-solved.
+
+Four new cases; reverting the parse fails three of them. The fourth — the non-numeric segment
+reading as zero — passes either way, since `NaN || 0` and `parseInt('x') || 0` agree; it is kept
+because it states the intended reading rather than leaving it to coincidence.
+
 ## 19. What's New shows 1.24.30's items headed 1.25.3
 
 `shared/whatsNew.ts:63` versus `app.json:5`.
