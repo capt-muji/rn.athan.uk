@@ -19,7 +19,11 @@ module.exports = {
     '^react-native-performance$': '<rootDir>/shared/__mocks__/react-native-performance.ts',
     '^react-native$': '<rootDir>/shared/__mocks__/react-native.ts',
   },
-  testMatch: ['**/__tests__/**/*.test.ts'],
+  // Both extensions, deliberately: the transform below handles `tsx` and
+  // moduleFileExtensions lists it, so a `.test.tsx` looks supported from every
+  // other line of this file. With a `.ts`-only pattern it is simply never
+  // discovered — it passes review, passes `yarn validate`, and asserts nothing.
+  testMatch: ['**/__tests__/**/*.test.{ts,tsx}'],
   // Parallel agent worktrees live under .claude/worktrees/ INSIDE the repo, so without this
   // every worktree's copy of the suite is discovered and the gate runs the whole project
   // once per worktree — and a half-finished branch in one of them fails the main tree's
