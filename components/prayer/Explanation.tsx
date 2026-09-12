@@ -36,7 +36,12 @@ export default function PrayerExplanation({
   const isArrowOnTop = arrowPosition === 'top';
 
   return (
-    <View style={[styles.container, style]}>
+    // Live region: this box is mounted, not navigated to — the overlay reveals
+    // it behind a fade with no focus change, so without this a screen-reader
+    // user gets no indication that anything appeared. Matches the countdown
+    // Bar's treatment (components/countdown/Bar.tsx). Android-only in React
+    // Native; VoiceOver has no equivalent declarative prop.
+    <View style={[styles.container, style]} accessibilityLiveRegion='polite'>
       {/* Triangle arrow pointing up */}
       {isArrowOnTop && (
         <View style={styles.arrowContainerTop}>

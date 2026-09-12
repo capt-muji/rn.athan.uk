@@ -140,11 +140,18 @@ export default function Overlay() {
         />
       )}
 
-      {/* Press-catcher: everything except the selected row closes the overlay */}
+      {/* Press-catcher: everything except the selected row closes the overlay.
+          All four regions share one name deliberately — they are one dismiss
+          target split only for hit-testing around the exempt row, so wherever
+          a screen-reader user explores outside that row they hear the same
+          thing. Unnamed, they were four anonymous buttons wrapped around the
+          content. */}
       {catcherRegions.map((region) => (
         <Pressable
           key={region.id}
           onPress={handleClose}
+          accessibilityRole='button'
+          accessibilityLabel='Close prayer details'
           style={[styles.catcher, { top: region.top, left: region.left, width: region.width, height: region.height }]}
         />
       ))}
