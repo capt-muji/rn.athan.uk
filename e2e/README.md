@@ -81,9 +81,13 @@ verification, never infer visuals from pixels alone.
   launch does a full mock refresh (~175ms Android). Baseline and iterations
   share it; never compare absolute startup numbers to production. It also
   **writes mock times into the device's MMKV cache**, so any device check about
-  prayer times, notifications or armed alarm times is void until a prod/preview
-  build refetches — and the contamination outlives the build that caused it.
-  The tell is `fajr: addMinutes(-3)` in `mocks/simple.ts`: a "Fajr" three
+  prayer times, notifications or armed alarm times is void until that build
+  refetches. Since the store is namespaced by the same predicate that serves
+  the mock (`stores/database.ts`, AUDIT #25), the fabricated rows stay in
+  `athan-storage-dev` and a prod or preview build installed over the top never
+  reads them — but they persist for the next local build, so a stale mock day
+  is still a live confound within dev. The tell is `fajr: addMinutes(-3)` in
+  `mocks/simple.ts`: TODAY's six rows are launch-relative, so a "Fajr" three
   minutes before the current clock is the mock, not a bug. Logging is disabled
   in prod and preview (`shared/logger.ts`), so the only build that gives both
   real data and logs is none of them — on a real-data device run, the alarm
