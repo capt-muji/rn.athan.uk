@@ -173,6 +173,9 @@ const updatePrayerData = async () => {
     Database.clearAllExcept([
       'app_installed_version',
       'whats_new_shown_version',
+      // Losing this marker reads as "cache of unknown shape" on the next upgrade, which
+      // buys an unnecessary wipe — the opposite of what a full refresh just achieved
+      'cache_schema_version',
       'preference_',
       'prayer_max_english_width_',
     ]);
