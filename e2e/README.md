@@ -15,6 +15,14 @@ everywhere.
   records → per-frame pts (compositor truth) → contact sheet → a vision
   prompt for an image-capable subagent. `FRAME_AUDIT=sf` falls back to
   SurfaceFlinger compositor cadence when video capture is wedged.
+- `scripts/device-checks.sh` (`yarn check:device`) — on-demand audit of what the
+  phone actually has: build identity, permissions, notification channels and
+  every alarm the app has armed (`scripts/device_checks.py` parses
+  `dumpsys alarm`). FAILS on nothing armed, a missing channel, or a trigger that
+  is not a prayer time. Pass a JSON list of `"YYYY-MM-DD HH:MM"` trigger times
+  as the third argument to check the times themselves; no API key is read,
+  passed or stored. Alarm TIMES only mean anything on a production build — local
+  builds run the mock API, whose prayers sit either side of launch.
 - `baselines/` — measured medians + animation-floor verdicts per device.
 
 ## Build (gate-ON Release, REQUIRED before measuring)
@@ -36,6 +44,8 @@ adb -s 3T_SERIAL logcat -s ReactNativeJS -v threadtime   # PERF_MEASURE lines mu
 
 ```sh
 export PATH="$HOME/.maestro/bin:$PATH"
+yarn check:device                                        # what the phone has armed
+yarn check:device 3T_SERIAL com.mugtaba.athan expected-times.json   # check the times too
 e2e/scripts/baseline-compare.sh e2e/flows/overlay-x10.yaml
 e2e/scripts/frame-audit.sh overlay-open 540 974 3        # settle 12s, tap, audit
 FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 540 1730 3   # cadence-only
