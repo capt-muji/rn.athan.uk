@@ -73,6 +73,26 @@ describe('getItem', () => {
     const result = getItem('nested');
     expect(result).toEqual(nested);
   });
+
+  // cacheSchemaChanged compares the read-back marker with `!==` against the number
+  // CACHE_SCHEMA_VERSION. That only works because this round trip preserves the type:
+  // if a number ever came back as a string, the comparison would be true on every
+  // launch and the prayer cache would be wiped on every single upgrade.
+  it('round-trips a number as a number, which the cache schema marker depends on', () => {
+    setItem('cache_schema_version', 1);
+
+    const readBack = getItem('cache_schema_version');
+
+    expect(readBack).toBe(1);
+    expect(typeof readBack).toBe('number');
+    expect(readBack === 1).toBe(true);
+  });
+
+  it('round-trips zero as a number rather than null', () => {
+    setItem('zero_marker', 0);
+
+    expect(getItem('zero_marker')).toBe(0);
+  });
 });
 
 describe('setItem', () => {

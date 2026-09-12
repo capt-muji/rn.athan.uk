@@ -1332,6 +1332,23 @@ trip.
 
 CONFIRMED for the absence of coverage.
 
+### CLOSED in session 5, 1.25.42, `fix/audit-22-cache-schema-tests`
+
+Seven cases in `stores/__tests__/version.test.ts` cover all three wipe-deciding branches —
+missing marker, `undefined` marker, older marker, matching marker, and a read that throws — plus
+the key it reads from, plus one that pins the comparison's type strictness by feeding it the
+*stringified* marker and asserting it still counts as changed.
+
+Two more in `stores/__tests__/database.test.ts` pin the round trip the finding identified as the
+unstated dependency: `setItem('cache_schema_version', 1)` must read back as the **number** 1,
+because `cacheSchemaChanged` compares with `!==` against a number. If that ever returned a
+string the comparison would be true on every launch and the prayer cache would be wiped on every
+upgrade, which is the failure the wipe exists to prevent inverted into a permanent cost. Zero is
+pinned too, since `getItem`'s `value ? … : null` makes falsy round trips worth stating.
+
+Both directions verified by breaking the function: making the missing-marker branch return
+`false` fails four tests, and making the catch branch return `false` fails one.
+
 ## 23. `atomWithStorageNumber` yields NaN for a corrupt value and 0 for an empty string
 
 **FIXED in 1.25.24** (`fix/audit-23-number-parsing`). `getItem` falls back to the initial value
