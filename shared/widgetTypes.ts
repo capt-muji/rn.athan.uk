@@ -82,6 +82,11 @@ export interface PrayerWidgetProps {
    * Countdown to the upcoming prayer as a minute-ceil label ("2h", "1h 12m",
    * "9m", "1m") computed for the entry's date — seconds never render, and
    * the value rounds up so it holds until the true minute flips.
+   *
+   * EMPTY when the builder cannot refresh it before its boundary (an entry
+   * beyond the stepped countdown horizon): a label that has to hold for a
+   * whole segment would over-read by hours, so no countdown is shown at all
+   * and both layouts fall back to the name plus the absolute time.
    */
   countdownLabel: string;
   /** Date of the upcoming prayer in the app's format (Hijri when enabled) */
