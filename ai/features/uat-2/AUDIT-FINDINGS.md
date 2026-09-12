@@ -869,6 +869,24 @@ CONFIRMED for the divergence and the mechanism.
 **Fix direction.** Make the shared mock echo, which is what
 `stores/__tests__/notifications.test.ts:989-991` already does locally.
 
+### CLOSED in session 5, 1.25.40, `fix/audit-11-mock-identifier-echo`
+
+The shared mock is now `jest.fn(async (request) => request?.identifier ?? 'mock-notification-id')`,
+matching the SDK's `request.identifier ?? uuid.v4()`. The constant survives only as the stand-in
+for the SDK's generated uuid, which production never triggers because it always supplies an
+identifier. The `afterAll` in `stores/__tests__/notifications.test.ts` that restored the old
+constant now restores the echo, so the file's own default matches the module's.
+
+Changing the mock broke nothing: the suite stayed at 1052. That is worth stating plainly — the
+finding is about what the mock *could not catch*, not about a live failure, so an unchanged
+suite is the expected result rather than a weak one.
+
+Three new cases in `device/__tests__/notifications.test.ts` pin the invariant in production
+terms rather than mock terms: the at-time record id equals `prayerNotificationIdentifier`, the
+reminder record id equals `reminderNotificationIdentifier` with its interval, and two prayers on
+one day get two distinct ids so their MMKV records cannot collapse onto one key. All three fail
+with the mock reverted to the constant.
+
 ## 61. The pre-commit hook cannot commit a change to `metro.config.js` or `jest.config.js`
 
 Found in session 4 by hitting it: the hook rejected the finding 60 comment fix.

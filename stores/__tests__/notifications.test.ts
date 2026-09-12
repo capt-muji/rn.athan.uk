@@ -1095,7 +1095,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
   });
 
   afterAll(() => {
-    scheduleMock.mockResolvedValue('mock-notification-id');
+    // Back to the shared mock's default, which echoes the identifier the way the SDK does
+    scheduleMock.mockImplementation(({ identifier }: { identifier: string }) => Promise.resolve(identifier));
     cancelMock.mockResolvedValue(undefined);
     getAllMock.mockResolvedValue([]);
   });
