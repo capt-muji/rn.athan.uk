@@ -322,6 +322,23 @@ third rather than first, not a reason to leave it.
 
 ## 4. The migration's writes are invisible to the reminder atoms in the same session
 
+**FIXED in 1.25.23** (`fix/audit-4-migration-through-atoms`). The migration now writes through
+the atom that fronts each destination key, so the migrated value is visible for the rest of the
+launch instead of only on disk. A value that is not a finite number is still copied verbatim
+rather than re-encoded into `NaN`, which keeps the encoding-preserving property the original
+had.
+
+**This one survives the finding 2 correction, and the reason is worth stating.** Finding 2 was
+wrong because its two actors live in different modules, so `inlineRequires` could reorder them.
+Here the atoms and `migrateIndexKeyedAlertPreferences` are in the **same module**: evaluating
+`stores/notifications.ts` in order to call the function necessarily creates every atom first.
+No bundler setting can change that, so the defect is real in Release as well as in jest.
+
+Two regression tests in `stores/__tests__/notifications.test.ts`, 112 to 114. The first asserts
+the value is readable through the atom, not just present in MMKV; reverting the fix makes it
+fail with `Expected: 2, Received: 0`, which is the finding's own symptom. The second pins the
+verbatim copy of a non-numeric value.
+
 Same root cause as finding 2. `stores/notifications.ts:189-215`, `:342`, `:380`.
 
 The at-time alert atoms are rescued by accident: `components/prayer/Alert.tsx:53` does
