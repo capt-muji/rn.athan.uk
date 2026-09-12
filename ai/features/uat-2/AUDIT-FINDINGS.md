@@ -100,6 +100,7 @@ appendix. That suite lives outside the repository and is not committed.
 | 45 | ~~Asr is hardcoded to the Hanafi calculation~~ | 5 | **WITHDRAWN** by owner ruling |
 | 46 | The London-pinned test oracles will fail as false alarms when the timezone flips | 5 | CONFIRMED |
 | 47 | High latitude: no polar-day handling, and a missing Sunrise crashes | 5 | CONFIRMED |
+| 60 | `metro.config.js` calls a load-bearing transform a "THROWAWAY experiment" | 2 | CONFIRMED, found in session 4 |
 | 59 | An Android force-stop disarms every alert and the 12-hour gate stops the next launch restoring it | 1 | CONFIRMED on device, **live in 1.5.2** |
 | 58 | `device_checks.py` crashes when two alarms share a minute | 3 | CONFIRMED, found in session 4 |
 | a-aa | Hygiene, docs and tidiness (27 items), plus four accessibility items | 6 | see Tier 6 |
@@ -618,6 +619,45 @@ CONFIRMED for the divergence and the mechanism.
 
 **Fix direction.** Make the shared mock echo, which is what
 `stores/__tests__/notifications.test.ts:989-991` already does locally.
+
+## 60. `metro.config.js` calls a load-bearing transform a "THROWAWAY experiment"
+
+Found in session 4 while correcting finding 2. The danger here is the comment, not the code.
+
+```js
+// THROWAWAY perf22 experiment: defer module evaluation to first use.
+getTransformOptions: async () => ({
+  transform: { experimentalImportSupport: true, inlineRequires: true },
+}),
+```
+
+Expo's default is `inlineRequires: false` (`@expo/metro-config/build/ExpoMetroConfig.js:346`).
+This project turns it on, and it is anything but throwaway:
+
+- It shipped in `8630f75`, *"1.22.0 - perf: first-paint surgery (perf22 campaign) — launch
+  render work -20%, eval relocation"*. It is a measured performance win, not an experiment.
+- It has already caused one visible defect. `ai/prompts/alert-sheet-first-frame.md:11` records
+  that it *"stretched the first-open snapshot latency until the flash became visible in normal
+  use"*, and tells the reader not to chase the diff.
+- It is the only reason finding 2 is not a live bug. With requires inlined,
+  `stores/version.ts` pulls `@/stores/notifications` at its first use, which is the migration
+  call at the end of `handleAppUpgrade`, so the gate atom is created after the key is removed.
+  Measured on the device, 5 ms after. Turn the line off and the defect is real and silent.
+
+So a maintainer doing exactly what the comment invites, deleting a throwaway experiment, would
+reintroduce an alarm defect with no test to catch it: the jest module graph is eager, so the
+suite behaves as though the line were already off. That is the same dev-versus-release
+divergence that made finding 2 wrong in the first place.
+
+Nothing in `ai/` records the experiment's outcome. The performance campaign's own progress file
+does not mention `inlineRequires` at all.
+
+**Fix direction.** Two lines of comment, no behaviour change: say what it does, cite `8630f75`
+for the measurement, and say that module evaluation order is load-bearing so the line is not to
+be removed without re-checking the order-dependent paths. Whether to keep the transform at all
+is the owner's call and a separate question; this finding is only about the label.
+
+CONFIRMED.
 
 ## 59. An Android force-stop disarms every alert, and the 12-hour gate stops the next launch restoring it
 
