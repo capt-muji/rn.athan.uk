@@ -100,6 +100,7 @@ appendix. That suite lives outside the repository and is not committed.
 | 45 | ~~Asr is hardcoded to the Hanafi calculation~~ | 5 | **WITHDRAWN** by owner ruling |
 | 46 | The London-pinned test oracles will fail as false alarms when the timezone flips | 5 | CONFIRMED |
 | 47 | High latitude: no polar-day handling, and a missing Sunrise crashes | 5 | CONFIRMED |
+| 59 | An Android force-stop disarms every alert and the 12-hour gate stops the next launch restoring it | 1 | CONFIRMED on device, **live in 1.5.2** |
 | 58 | `device_checks.py` crashes when two alarms share a minute | 3 | CONFIRMED, found in session 4 |
 | a-aa | Hygiene, docs and tidiness (27 items), plus four accessibility items | 6 | see Tier 6 |
 
@@ -564,6 +565,82 @@ CONFIRMED for the divergence and the mechanism.
 
 **Fix direction.** Make the shared mock echo, which is what
 `stores/__tests__/notifications.test.ts:989-991` already does locally.
+
+## 59. An Android force-stop disarms every alert, and the 12-hour gate stops the next launch restoring it
+
+Found in session 4 on the live device, not present in the session-3 sweep. **This is the only
+Tier 1 finding in this document that is present in production 1.5.2 and can silence an alarm.**
+
+`stores/notifications.ts:1012-1016`, `:811-818`; `shared/notifications.ts:294-301`;
+`app/index.tsx:88-102`.
+
+**Observed, not inferred.** The OnePlus 3T holds a prod build of 1.25.0 with real London data
+and exactly one alert enabled, Fajr on Sound, confirmed from the app's own screen. Before any
+interaction it had one armed alarm, `2026-09-13 04:57`, which is tomorrow's Fajr. Three
+`frame-audit.sh` runs force-stopped the app as their first step. Afterwards:
+
+```
+$ adb shell dumpsys alarm | grep 'Alarm{.*com.mugtaba.athan'
+  Next wake from idle: Alarm{dab084c ... com.mugtaba.athan}     # a stale restatement
+```
+
+Nothing armed. The app was then cold-launched three times, each left running for 8 to 12
+seconds, and the alarm never came back. Logcat from the app's own pid shows
+`registerTaskAsync: NOTIFICATION_REFRESH_TASK` on each launch, which in
+`initializeNotifications` runs **after** `await refreshFn()`, so the chain provably reached
+`refreshNotifications()` and that call returned without scheduling anything.
+
+**The mechanism.** Android's force-stop cancels every `AlarmManager` alarm the app holds. The
+next launch calls `refreshNotifications()`, whose first statement is
+`if (!shouldRescheduleNotifications()) return`. That gate is purely elapsed time against
+`lastNotificationScheduleAtom` and `NOTIFICATION_REFRESH_HOURS = 12`. It has no idea whether
+anything is actually armed, so it skips, and the user has no alerts for up to twelve hours.
+The background task is no rescue: force-stop cancels WorkManager work too, and its interval is
+six hours.
+
+**Present in production.** `shouldRescheduleNotifications` and the early return in
+`refreshNotifications` are byte-identical at `b9985ea`, the 1.5.2 tree. Every user on the
+store build today is exposed. The reach is wider than deliberate force-stops: OnePlus and
+other OEM battery managers force-stop background apps by policy, which is the owner's own
+device.
+
+**Finding 17 records the adjacent fact and stops one step short.** It notes that force-stop
+cancels alarms and that AGENTS.md's claim of recovery "by next app open" is wrong on buffer
+length. The sharper truth is that the next app open does not recover it **at all** inside the
+gate window, for a reason that has nothing to do with the buffer.
+
+### The obvious fix does not work, and here is why
+
+Asking the OS whether anything is pending, and bypassing the gate when the answer is nothing,
+looks like a two-line fix. It cannot work on Android, verified against the installed source:
+
+- `ExpoSchedulingDelegate.getAllScheduledNotifications()` returns
+  `store.allNotificationRequests`, backed by `SharedPreferencesNotificationsStore`
+  (`node_modules/expo-notifications/android/.../ExpoSchedulingDelegate.kt:19,33-34`).
+- Force-stop cancels AlarmManager alarms. It does **not** clear SharedPreferences.
+- `setupScheduledNotifications()`, the function that re-arms AlarmManager from that store, is
+  reached only from `NotificationsService:829`, whose intent filter lists `BOOT_COMPLETED`,
+  `REBOOT`, `QUICKBOOT_POWERON` and `MY_PACKAGE_REPLACED`
+  (`expo-notifications/android/src/main/AndroidManifest.xml:18-27`). A plain relaunch is none
+  of those.
+
+So after a force-stop `getAllScheduledNotificationsAsync()` returns a full list while zero
+alarms exist. The check would report everything healthy. Recorded so the next reader does not
+spend the same hour on it.
+
+**Fix direction.** There is no cheap way to read AlarmManager state from JS, so detection is
+out and unconditional repair is in: on an Android **cold launch**, reopen the gate rather than
+trusting it, and let the existing schedule-first-then-cancel-stale pass re-arm everything. It
+is idempotent by design, deterministic identifiers give same-identifier replace, and it already
+runs 1500 ms after first content rather than on the paint path. iOS is deliberately excluded:
+`UNUserNotificationCenter` keeps pending notifications across app termination, so the gate is
+correct there and a bypass would be pure cost. This depends on finding 2's `resetStoredAtom`,
+because reopening the gate means writing through `lastNotificationScheduleAtom`, so it lands
+after that.
+
+CONFIRMED on the device. The alarm was restored before leaving the device, by toggling Fajr
+off and back on, and `yarn check:device` reports `1 future prayer alert(s) armed` at
+`2026-09-13 04:57` again.
 
 ---
 
