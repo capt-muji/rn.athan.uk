@@ -54,13 +54,21 @@ export const getSequenceAtom = (type: ScheduleType) => {
  * // Returns: Duha from Friday (Istijaba not shown on Saturday)
  * const prevPrayer = getYesterdayFinalPrayer(ScheduleType.Extra);
  */
-function getYesterdayFinalPrayer(type: ScheduleType): Prayer {
+function getYesterdayFinalPrayer(type: ScheduleType): Prayer | null {
   const today = TimeUtils.getTodayDateString();
   const yesterday = TimeUtils.getPreviousDateString(today);
-  const prevDayData = Database.getPrayerByDateString(yesterday)!;
+  const prevDayData = Database.getPrayerByDateString(yesterday);
 
-  // Sync layer ensures data exists - no null check needed
-  // See ADR-004: "Trust the data layer: UI never has fallbacks"
+  // ADR-004 says the UI trusts the data layer, and it is right that this should
+  // never be missing. But the caller runs during render and already returns null
+  // on every other unexpected shape, so a gap here becomes a dead screen rather
+  // than a missing row. On 1 January the previous year's last day is exactly the
+  // record the sync layer may not have.
+  if (!prevDayData) {
+    logger.warn('SCHEDULE: No record for yesterday, previous prayer unavailable', { yesterday, type });
+    return null;
+  }
+
   const isStandard = type === ScheduleType.Standard;
   let englishNames = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
   let arabicNames = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
@@ -180,8 +188,13 @@ export const createDisplayDateAtom = (type: ScheduleType) => {
     if (!sequence) return null;
 
     const now = TimeUtils.createInstant();
-    // 3-day buffer guarantees next prayer exists
-    return sequence.prayers.find((p) => p.datetime > now)!.belongsToDate;
+    // The 3-day buffer normally guarantees a future prayer, but not on the
+    // evening of 31 December when next year's data is not yet published: every
+    // prayer in the sequence has passed. Returning null matches the no-sequence
+    // branch above and the sibling next/prev atoms, all of which consumers
+    // already handle. Asserting here threw during render instead.
+    const next = sequence.prayers.find((p) => p.datetime > now);
+    return next ? next.belongsToDate : null;
   });
 };
 
