@@ -6,7 +6,9 @@
  * first launch after a store update (never on fresh installs).
  *
  * Maintenance ritual (every store release):
- * 1. Stamp items shipping in this release with the release's version
+ * 1. Stamp items shipping in this release with the release's version, and move
+ *    WHATS_NEW.version to match - the modal shows nothing unless it equals the
+ *    installed version, which is what makes step 5 true
  * 2. Leave drafted future items at version: null (parked, never shown)
  * 3. When a parked item ships, stamp it with that release's version
  * 4. Prune the archive past MAX_WHATS_NEW_ARCHIVE entries (oldest first)
@@ -49,7 +51,9 @@ export interface WhatsNewItem {
 
 /** The release notes for the current version */
 export interface WhatsNewRelease {
-  /** Store version these notes ship with (dev sanity only - never rendered) */
+  /** Store version these notes ship with: never rendered, but it gates the
+   * modal - shouldShowWhatsNew shows nothing unless this is the installed
+   * version, so an un-moved stamp silent-ships the release */
   version: string;
   /** Archived items across releases; only the current version's show */
   items: WhatsNewItem[];
@@ -109,13 +113,21 @@ export const MAX_WHATS_NEW_BODY_LENGTH = 96;
 /**
  * Decides whether the What's New modal should be displayed
  *
- * The modal shows when the shown-version differs from the installed version
- * AND the current release has bundled content:
+ * The modal shows when the bundled notes were stamped for the running binary
+ * AND the shown-version differs from the installed version:
  * - Fresh installs seed the shown-version to the installed version at first
  *   boot (see stores/version.ts handleAppUpgrade), so they never differ
  * - Existing users upgrading have an older (or absent) shown-version
  * - Users skipping versions still see only the installed version's notes -
  *   there is no history to accumulate by construction
+ *
+ * The stamp check is what makes step 5 of the maintenance ritual above true.
+ * `app/index.tsx` heads the modal with the INSTALLED version, while the items
+ * are filtered against the hand-maintained `WHATS_NEW.version`. Nothing
+ * compared the two, so once releases shipped past the last stamp every upgrade
+ * presented that old release's items under today's version number - notes the
+ * user had already read, dated as if they were new. A release whose stamp has
+ * not been moved forward now silent-ships, as the file has always documented.
  *
  * @param installedVersion - Version of the running binary (e.g. '1.13.0')
  * @param shownVersion - Version the modal was last shown for (or seeded with)
@@ -129,6 +141,7 @@ export const shouldShowWhatsNew = (
 ): boolean => {
   if (!whatsNew || whatsNew.items.length === 0) return false;
   if (!installedVersion) return false;
+  if (whatsNew.version !== installedVersion) return false;
   if (shownVersion === installedVersion) return false;
   if (!shownVersion) return true;
 
