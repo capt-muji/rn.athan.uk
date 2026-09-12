@@ -18,6 +18,11 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { mockExpoConfig, resetMockExpoConfig } = require('expo-constants');
 
+// The shared logger mock, reached the same way version.ts reaches it (mapped in
+// jest.config.js). Needed to tell a handled absence from a swallowed throw.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const mockLogger = require('@/shared/logger').default;
+
 // Mock Database
 const mockGetItem = jest.fn();
 const mockSetItem = jest.fn();
@@ -134,6 +139,24 @@ describe('getInstalledVersion', () => {
     const result = getInstalledVersion();
 
     expect(result).toBe('');
+  });
+
+  // `Constants.expoConfig` is itself nullable, which is the whole reason
+  // version.ts reaches through it with `?.`, and until the mock could produce
+  // null no test could reach this at all.
+  //
+  // The return value alone does not prove the `?.` is doing anything — the
+  // try/catch around it returns '' for a thrown TypeError just the same. What
+  // separates them is the warning: `?.` treats a missing config as the expected
+  // state it is, while the catch path would log a failure on every call in a
+  // runtime where expoConfig is legitimately absent.
+  it('returns empty string quietly when expoConfig itself is null', () => {
+    mockExpoConfig.present = false;
+
+    const result = getInstalledVersion();
+
+    expect(result).toBe('');
+    expect(mockLogger.warn).not.toHaveBeenCalled();
   });
 
   it('handles different version formats', () => {
@@ -470,7 +493,7 @@ describe('edge cases', () => {
 
 describe('full upgrade flow', () => {
   // After jest.resetModules(), we need to get a fresh reference to the mock config
-  const getVersionModuleWithConfig = (version: string) => {
+  const getVersionModuleWithConfig = (version: string, { configPresent = true } = {}) => {
     jest.resetModules();
     // Re-setup mocks after module reset (expo-constants is handled via moduleNameMapper)
     jest.mock('@/stores/database', () => ({
@@ -497,6 +520,7 @@ describe('full upgrade flow', () => {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { mockExpoConfig: freshMockConfig } = require('expo-constants');
     freshMockConfig.version = version;
+    freshMockConfig.present = configPresent;
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     return require('../version');
   };
@@ -582,6 +606,36 @@ describe('full upgrade flow', () => {
     handle();
 
     expect(mockSetItem).toHaveBeenCalledWith('cache_schema_version', CACHE_SCHEMA_VERSION);
+  });
+
+  it('bails without stamping anything when expoConfig is null', () => {
+    // A null expoConfig makes getInstalledVersion() return '', and the guard at
+    // the top of handleAppUpgrade then returns early. The cost is not just a
+    // skipped upgrade check: neither the version nor the cache schema marker is
+    // written, so the next launch that CAN read a version finds no marker, reads
+    // the cache as an unknown shape and wipes it. The race guard has already
+    // been set by then, so this session will not retry.
+    mockGetItem.mockImplementation((key: string) => (key === 'app_installed_version' ? '1.0.34' : null));
+    mockCompareVersions.mockReturnValue(1);
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35', { configPresent: false });
+
+    handle();
+
+    expect(mockSetItem).not.toHaveBeenCalledWith('app_installed_version', expect.anything());
+    expect(mockSetItem).not.toHaveBeenCalledWith('cache_schema_version', expect.anything());
+    expect(mockClearAllExcept).not.toHaveBeenCalled();
+    expect(mockMigrateIndexKeyedAlertPreferences).not.toHaveBeenCalled();
+
+    // Positive control, same mocks and the same fixture but for the config being
+    // present. Without it every assertion above would also pass if the flow had
+    // simply never run — which is exactly how a test ends up guarding nothing.
+    const { handleAppUpgrade: handleWithConfig } = getVersionModuleWithConfig('1.0.35');
+
+    handleWithConfig();
+
+    expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.35');
+    expect(mockSetItem).toHaveBeenCalledWith('cache_schema_version', CACHE_SCHEMA_VERSION);
+    expect(mockMigrateIndexKeyedAlertPreferences).toHaveBeenCalled();
   });
 
   it('completes no-change flow', () => {
