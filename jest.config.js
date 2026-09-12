@@ -20,6 +20,11 @@ module.exports = {
     '^react-native$': '<rootDir>/shared/__mocks__/react-native.ts',
   },
   testMatch: ['**/__tests__/**/*.test.ts'],
+  // Parallel agent worktrees live under .claude/worktrees/ INSIDE the repo, so without this
+  // every worktree's copy of the suite is discovered and the gate runs the whole project
+  // once per worktree — and a half-finished branch in one of them fails the main tree's
+  // validate. node_modules is excluded by default; these are not.
+  testPathIgnorePatterns: ['/node_modules/', '/.claude/', '/android/', '/ios/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
     '^.+\\.tsx?$': ['babel-jest', { presets: ['@babel/preset-typescript'], plugins: ['@babel/plugin-transform-modules-commonjs'] }],
