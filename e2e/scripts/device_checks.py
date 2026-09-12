@@ -5,7 +5,10 @@ anchored by a line containing `Alarm{<hash> type <n> when <epoch> <package>}`,
 followed by indented `tag=`, `when=<YYYY-MM-DD HH:MM:SS.mmm>` and, for alarm
 clocks, a `triggerTime=` line. The package name only appears on the anchor line,
 so membership is decided there and the fields are read from the lines that
-follow, up to the next anchor.
+follow, up to the next anchor. An anchor counts only when it carries a queue
+position (`RTC_WAKEUP #0: Alarm{...}`), which is what makes it a batch entry;
+the dump also restates alarms in summary lines such as `Next wake from idle:`,
+and those are the same physical alarm seen twice.
 
 Usage: device_checks.py <alarm-dump> <package> <device-now> [expected-times.json]
 
@@ -36,6 +39,11 @@ import sys
 from datetime import datetime
 
 ANCHOR = re.compile(r"Alarm\{[^}]*\}")
+# Only a batch entry is a real armed alarm. Those carry the queue position,
+# `RTC_WAKEUP #0: Alarm{...}`, while summary lines such as
+# `Next wake from idle: Alarm{...}` restate an alarm that is already in a batch,
+# or has already fired, and counting one is double counting.
+ENTRY = re.compile(r"#\d+: Alarm\{")
 # The package is the last field of the anchor: Alarm{<hash> type <n> when <epoch> <package>}.
 # Reading it out and comparing it whole is what keeps a side-by-side install
 # (com.mugtaba.athan.fleettest) from counting as the store app's alarms.
@@ -56,7 +64,8 @@ def parse_alarms(lines, package):
             if current is not None:
                 alarms.append(current)
             owner = OWNER.search(line)
-            current = {"tag": None, "when": None, "trigger": None} if owner and owner.group(1) == package else None
+            ours = ENTRY.search(line) and owner and owner.group(1) == package
+            current = {"tag": None, "when": None, "trigger": None} if ours else None
             continue
         if current is None:
             continue
