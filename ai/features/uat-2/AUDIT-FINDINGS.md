@@ -165,6 +165,25 @@ and the owner owns that file.
 
 ## 2. `forceNotificationReschedule()` cannot reopen the 12-hour gate
 
+**FIXED in 1.25.18** (`fix/audit-2-reset-stored-atom`). `stores/storage.ts` gains
+`resetStoredAtom(atom, key)`, which writes `RESET` through the atom: that removes the MMKV key
+exactly as before **and** puts the atom back to its initial value, so the next `store.get`
+sees it. The rule is now stated at the top of that file: never write MMKV behind one of these
+atoms. `forceNotificationReschedule()` uses it.
+
+The regression test is the finding's own probe inverted, at
+`stores/__tests__/version.test.ts`: set the gate atom to `Date.now()`, run `clearUpgradeCache()`,
+assert the atom reads 0. Against the previous code it read the stale timestamp. The existing
+assertion that the MMKV key is removed is untouched and still passes, because `RESET` routes
+through the same `removeItem`. 1015 tests to 1016.
+
+Two things worth recording from doing it. `getDefaultStore()` is called inside the helper
+rather than at module scope: `stores/storage.ts` sits near the root of the import graph, and
+creating the default store there would move when every other module's `getDefaultStore()`
+resolves. And the old code's `Database.database.remove` was throwing unnoticed in the
+integration tests, swallowed by `forceNotificationReschedule`'s own try/catch, because that
+helper's mock never supplied a `database` object.
+
 `stores/version.ts:190-197`, `stores/storage.ts:12`, `stores/notifications.ts:266` and
 `:812`. Root cause in `node_modules/jotai/vanilla/utils.js:509`.
 
