@@ -3,25 +3,30 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import logger from '@/shared/logger';
+import { clearUpgradeCache } from '@/stores/version';
 
 import Masjid from './Masjid';
 
 export default function ErrorScreen() {
   /**
-   * Reloads and retries. Deliberately destroys nothing.
+   * Clears the cache and reloads. Owner ruling, 2026-09-12: reaching this screen
+   * means something has gone wrong, so refetching from scratch is the recovery,
+   * and the destruction is acceptable because preferences survive it.
    *
-   * This used to call `clearAllExcept(['app_installed_version', 'preference_'])`
-   * first, which deleted every `prayer_YYYY-MM-DD` record, `fetched_years`, the
-   * scheduled-notification bookkeeping, the cache shape marker and the measured
-   * column widths that ISSUES #22 and #16 deliberately added to both other
-   * keep-lists. The screen is reached from a failed fetch, so the common case was
-   * an offline user with a perfectly good timetable on disk: the one button
-   * offered to them turned a recoverable state into an unrecoverable one, and
-   * every further reload found nothing and came straight back here.
+   * Goes through `clearUpgradeCache` rather than a bare `clearAllExcept`, which
+   * keeps strictly more of what the app cannot refetch. The previous inline list
+   * kept only `app_installed_version` and `preference_`, so it also dropped
+   * `cache_schema_version` and the `prayer_max_english_width_` measurements that
+   * ISSUES #22 and #16 deliberately preserve — losing those reflows the prayer
+   * list on the next launch, which is a visible regression this screen has no
+   * reason to cause. Alert settings, the sound choice and every other
+   * `preference_` key survive either way.
    */
   const handleRefresh = async () => {
+    logger.warn('ERROR SCREEN: Clearing cached data and reloading');
     try {
-      await Updates.reloadAsync();
+      clearUpgradeCache();
+      await Updates.reloadAsync(); // force reload the entire app
     } catch (error) {
       logger.error('ERROR SCREEN: Reload failed', { error });
     }
