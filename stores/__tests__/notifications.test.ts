@@ -11,7 +11,7 @@
 import * as BackgroundTask from 'expo-background-task';
 import * as Notifications from 'expo-notifications';
 import * as TaskManager from 'expo-task-manager';
-import { createStore } from 'jotai';
+import { createStore, getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import {
@@ -241,6 +241,39 @@ describe('migrateIndexKeyedAlertPreferences', () => {
 
     migrateIndexKeyedAlertPreferences();
     expect(Database.database.getAllKeys()).toEqual(keysAfterFirstRun);
+  });
+
+  // Audit finding 4: the atoms are created when this module is evaluated, which
+  // is necessarily before the migration can be called, so each one holds a
+  // pre-migration snapshot. Writing MMKV behind them left every read for the
+  // rest of the launch seeing the default — and the reminder path then actively
+  // CLEARS reminders it believes are Off. These assert the value is visible
+  // through the atom, not just present on disk.
+  it('makes the migrated value visible through the atom in the same session', () => {
+    const store = getDefaultStore();
+    // Earlier cases in this describe leave name keys behind, and migrate() only
+    // writes when the destination is absent
+    Database.database.remove('preference_alert_standard_fajr');
+    Database.database.remove('preference_reminder_alert_extra_istijaba');
+    Database.database.remove('preference_reminder_interval_standard_dhuhr');
+    Database.database.set('preference_alert_standard_0', '2'); // Fajr = Sound
+    Database.database.set('preference_reminder_alert_extra_4', '1'); // Istijaba reminder = Silent
+    Database.database.set('preference_reminder_interval_standard_2', '20'); // Dhuhr interval
+
+    migrateIndexKeyedAlertPreferences();
+
+    expect(store.get(standardPrayerAlertAtoms[0]!)).toBe(AlertType.Sound);
+    expect(store.get(extraReminderAlertAtoms[4]!)).toBe(AlertType.Silent);
+    expect(store.get(standardReminderIntervalAtoms[2]!)).toBe(20);
+  });
+
+  it('copies a non-numeric value verbatim rather than re-encoding it to NaN', () => {
+    Database.database.remove('preference_alert_standard_fajr');
+    Database.database.set('preference_alert_standard_0', 'not-a-number');
+
+    migrateIndexKeyedAlertPreferences();
+
+    expect(Database.database.getString('preference_alert_standard_fajr')).toBe('not-a-number');
   });
 });
 
