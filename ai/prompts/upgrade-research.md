@@ -21,8 +21,10 @@ session 2.**
 
 ## Repo state
 
-- Branch `uat-2` @ **1.24.34**, clean, in sync with `origin/uat-2`. Work on a branch cut
-  from `uat-2`; merge back with `--no-ff`. **`uat` is off limits** — the owner has
+- Branch `uat-2`, clean and in sync with `origin/uat-2`. Run `git log --oneline -3` for
+  the current version rather than trusting a number written here — it moves with every
+  commit, so this file deliberately does not name one. Work on a branch cut from
+  `uat-2`; merge back with `--no-ff`. **`uat` is off limits** — the owner has
   deliberately deferred that merge.
 - OnePlus 3T (`3T_SERIAL`) has **1.24.33** installed with a real alert armed for the next
   Fajr. No device work is required this session; leave it as it is.
