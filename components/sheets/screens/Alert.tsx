@@ -4,7 +4,14 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
-import { DEFAULT_REMINDER_INTERVAL, RADIUS, REMINDER_INTERVALS, SPACING, TEXT } from '@/shared/constants';
+import {
+  DEFAULT_REMINDER_INTERVAL,
+  RADIUS,
+  REMINDER_INTERVALS,
+  SPACING,
+  TEXT,
+  validateReminderInterval,
+} from '@/shared/constants';
 import { type AlertMenuState, AlertType, Icon, type ReminderInterval } from '@/shared/types';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
@@ -108,9 +115,17 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
     const reminder = getReminderAlertType(sheetState.type, sheetState.index);
     return reminder === AlertType.Sound ? AlertType.Sound : AlertType.Silent;
   });
-  const [reminderInterval, setReminderInterval] = useState<ReminderInterval>(
-    () => (getReminderInterval(sheetState.type, sheetState.index) as ReminderInterval) || DEFAULT_REMINDER_INTERVAL
-  );
+  const [reminderInterval, setReminderInterval] = useState<ReminderInterval>(() => {
+    // The declared ReminderInterval is a cast the store makes over a raw MMKV
+    // number, so it is a claim rather than a guarantee. The old `|| DEFAULT`
+    // caught 0 and undefined but let any other stale number through: it would
+    // paint in the Stepper with both arrows dead, because REMINDER_INTERVALS
+    // .indexOf returns -1 and neither branch moves off it, and it would be
+    // committed straight into the reminder offset. Reachable the day
+    // REMINDER_INTERVALS changes, which is exactly when the cast stops holding.
+    const stored = getReminderInterval(sheetState.type, sheetState.index);
+    return validateReminderInterval(stored) ? stored : DEFAULT_REMINDER_INTERVAL;
+  });
 
   const originalStateRef = useRef<AlertMenuState>({
     atTimeAlert,
