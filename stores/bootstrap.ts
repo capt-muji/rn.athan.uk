@@ -13,12 +13,14 @@
  * write at all there (no redundant row re-renders); a real data refresh
  * writes as before.
  *
- * Not hydrated (spinner path preserved, first-launch/upgrade parity with the
- * previous behavior):
+ * Not hydrated (spinner path preserved):
  * - no cached data for today (fresh install, wiped cache, year gap)
- * - app upgrade pending (installed version differs — handleAppUpgrade inside
- *   sync() owns the wipe+refetch; rendering the old version's times for a
- *   moment would be a behavior change, so the spinner covers it)
+ * - a pending upgrade that will WIPE the cache — a version bump AND a moved
+ *   cache shape marker. handleAppUpgrade inside sync() owns that wipe+refetch,
+ *   and rows read under the old shape are exactly the wrong prayer times, so
+ *   the spinner covers it. An ordinary version bump keeps the cache (#34) and
+ *   therefore hydrates: refusing to would hand every store update a cold
+ *   launch with a valid timetable sitting on disk.
  */
 
 import { perfMark } from '@/shared/perf';
@@ -27,7 +29,7 @@ import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
 import * as Database from '@/stores/database';
 import { setSequence } from '@/stores/schedule';
-import { wasAppUpgraded } from '@/stores/version';
+import { cacheSchemaChanged, wasAppUpgraded } from '@/stores/version';
 
 const hydrateFromCache = (): boolean => {
   const now = TimeUtils.createInstant();
@@ -46,7 +48,12 @@ const bootstrapFromCache = (): boolean => {
   perfMark('bootstrap_start');
 
   try {
-    if (wasAppUpgraded()) return false;
+    // Same pair of questions handleAppUpgrade asks moments later, and it gets
+    // the same answers: both markers are written only by handleAppUpgrade,
+    // which runs inside sync() on a setTimeout(0) — after this module has
+    // already been evaluated. So "the wipe is coming" decided here and the
+    // wipe decided there cannot disagree within a launch.
+    if (wasAppUpgraded() && cacheSchemaChanged()) return false;
     if (!hydrateFromCache()) return false;
 
     perfMark('bootstrap_hydrated');
