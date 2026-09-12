@@ -115,6 +115,27 @@ export const wasAppUpgraded = (): boolean => {
 const WHATS_NEW_SHOWN_VERSION_KEY = 'whats_new_shown_version';
 
 /**
+ * Shape version for everything held in the MMKV cache: the prayer days, the
+ * scheduled-notification bookkeeping, the fetched-year markers.
+ *
+ * BUMP THIS ONLY when a release changes the SHAPE of cached data, so that data
+ * written by the previous version can no longer be read correctly — as #29 did
+ * when it removed the stored night fields. Do NOT bump it for ordinary
+ * releases.
+ *
+ * Why it exists: clearing the cache on every version bump is pure cost when the
+ * shape did not change. It forces a refetch, leaves the app with no timetable
+ * at all until that completes (update overnight, open on a train, see nothing),
+ * and until #34 it took the armed notifications with it. The wipe is the right
+ * answer to schema drift — a stale-shaped record read by new code produces a
+ * wrong prayer time, the worst bug this app can have — and the wrong answer to
+ * everything else.
+ */
+export const CACHE_SCHEMA_VERSION = 1;
+
+const CACHE_SCHEMA_VERSION_KEY = 'cache_schema_version';
+
+/**
  * Key prefixes to KEEP during upgrade cleanup (whitelist approach)
  * Everything NOT starting with these prefixes will be deleted
  * This ensures orphaned/unknown keys are cleaned up automatically
@@ -123,6 +144,7 @@ const UPGRADE_KEEP_PREFIXES: string[] = [
   // System State - NEVER delete
   'app_installed_version', // Version tracker itself
   'whats_new_shown_version', // What's New display tracker (see shared/whatsNew.ts)
+  'cache_schema_version', // Cache shape marker (also re-stamped after a wipe)
 
   // User Preferences - must persist across upgrades
   'preference_', // All user preferences (alerts, sound, countdownbar, hijri, show_*, reminder_*)
@@ -131,6 +153,48 @@ const UPGRADE_KEEP_PREFIXES: string[] = [
   // measured column widths are valid forever (recomputing them reflows the list)
   'prayer_max_english_width_',
 ];
+
+/**
+ * Whether the cached data was written under a different shape than this build
+ * expects.
+ *
+ * A missing marker means the cache predates the marker itself, so its shape
+ * cannot be vouched for — treated as changed, which costs exactly one wipe on
+ * the first update after this shipped.
+ */
+export const cacheSchemaChanged = (): boolean => {
+  try {
+    const stored = Database.getItem(CACHE_SCHEMA_VERSION_KEY);
+
+    if (stored === null || stored === undefined) {
+      logger.info('VERSION: No cache schema marker - treating the cache as unknown shape');
+      return true;
+    }
+
+    return stored !== CACHE_SCHEMA_VERSION;
+  } catch (error) {
+    logger.warn('VERSION: Failed to read cache schema version', { error });
+    return true;
+  }
+};
+
+/**
+ * Reopens the 12-hour notification refresh gate so the next foreground
+ * reschedules.
+ *
+ * Jotai reads the key from MMKV lazily on first access, so removing it before
+ * shouldRescheduleNotifications() runs is what makes that return true. Cheap
+ * and idempotent: same-identifier scheduling replaces in place, so a reschedule
+ * that finds nothing to change leaves no gap.
+ */
+const forceNotificationReschedule = (): void => {
+  try {
+    Database.database.remove('preference_last_notification_schedule_check');
+    logger.info('VERSION: Reset notification schedule timestamp to force reschedule');
+  } catch (error) {
+    logger.warn('VERSION: Failed to reset notification schedule timestamp', { error });
+  }
+};
 
 /**
  * Clears cache data that may be incompatible after an upgrade
@@ -144,12 +208,7 @@ export const clearUpgradeCache = (): void => {
   try {
     Database.clearAllExcept(UPGRADE_KEEP_PREFIXES);
 
-    // Force notification reschedule by resetting the schedule timestamp
-    // This ensures old OS-level notifications are cancelled after upgrade
-    // Note: Jotai atom reads from MMKV lazily on first access, so removing the
-    // key before shouldRescheduleNotifications() is called ensures it returns true
-    Database.database.remove('preference_last_notification_schedule_check');
-    logger.info('VERSION: Reset notification schedule timestamp to force reschedule');
+    forceNotificationReschedule();
 
     const duration = Date.now() - startTime;
     logger.info('VERSION: Cache clear completed successfully', { duration });
@@ -185,15 +244,30 @@ export const handleAppUpgrade = (): void => {
     return;
   }
 
-  if (wasAppUpgraded()) {
-    logger.info('VERSION: Upgrade detected - clearing cache');
+  const upgraded = wasAppUpgraded();
+
+  // Two separate questions, conflated until #34. That the app VERSION changed
+  // means new code may schedule differently, so force one reschedule. That the
+  // cached DATA needs clearing is a different question entirely, and only true
+  // when its shape changed — clearing on every release is what emptied the
+  // timetable for offline users and took the armed alerts with it.
+  if (upgraded && cacheSchemaChanged()) {
+    logger.info('VERSION: Cache schema changed - clearing cache', { schema: CACHE_SCHEMA_VERSION });
     clearUpgradeCache();
+  } else if (upgraded) {
+    logger.info('VERSION: Updated, cache schema unchanged - keeping cached data', { schema: CACHE_SCHEMA_VERSION });
+    forceNotificationReschedule();
   } else {
     logger.info('VERSION: No upgrade detected - skipping cache clear');
   }
 
   // Always update stored version to current version
   setStoredVersion(installedVersion);
+
+  // Stamp the shape marker so the next update has something to compare against.
+  // Deliberately outside clearUpgradeCache: it must land whether or not a wipe
+  // ran, and that function's own error handling must never swallow it.
+  Database.setItem(CACHE_SCHEMA_VERSION_KEY, CACHE_SCHEMA_VERSION);
 
   // Fresh install: seed the What's New tracker so the modal never shows for
   // new users. Upgrades leave it untouched - its difference from the

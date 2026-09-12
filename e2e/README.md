@@ -62,13 +62,40 @@ verification, never infer visuals from pixels alone.
 
 ## Gotchas (each cost real time — read twice)
 
-- **Metro env-blindness**: toggling `EXPO_PUBLIC_PERF_MONITOR` requires
-  clearing the metro cache AND deleting the generated Android bundle or the
-  stale transform ships; gradle marks the bundle task UP-TO-DATE on env-only
-  changes.
-- **Dev-env confound**: local builds run the mock API — every launch does a
-  full mock refresh (~175ms Android). Baseline and iterations share it;
-  never compare absolute startup numbers to production.
+- **Metro env-blindness**: changing ANY `EXPO_PUBLIC_*` variable — including
+  `EXPO_PUBLIC_ENV` — requires clearing the metro cache AND deleting the
+  generated Android bundle or the stale transform ships; gradle marks the
+  bundle task UP-TO-DATE on env-only changes, because the environment is not a
+  declared input to `createBundleReleaseJsAndAssets`. **Restarting the gradle
+  daemon is NOT enough**: the fresh daemon holds the new env, but the task
+  still sees unchanged file inputs and skips. Remedy:
+  `find android/app/build -name index.android.bundle -delete`, then
+  `assembleRelease`. Always verify before trusting the APK — compare
+  `unzip -p app-release.apk assets/index.android.bundle | md5` against the
+  previous build, and treat an identical hash as a recycled bundle. Note that
+  `assets/app.config` (the version `Constants.expoConfig` reads) IS regenerated
+  on its own, so a correct version in the APK proves nothing about the bundle:
+  a build can report the new version while still running the old JavaScript.
+- **Dev-env confound**: local builds run the mock API — `api/client.ts` returns
+  `MOCK_DATA_SIMPLE` whenever the env is neither `prod` nor `preview`, so every
+  launch does a full mock refresh (~175ms Android). Baseline and iterations
+  share it; never compare absolute startup numbers to production. It also
+  **writes mock times into the device's MMKV cache**, so any device check about
+  prayer times, notifications or armed alarm times is void until a prod/preview
+  build refetches — and the contamination outlives the build that caused it.
+  The tell is `fajr: addMinutes(-3)` in `mocks/simple.ts`: a "Fajr" three
+  minutes before the current clock is the mock, not a bug. Logging is disabled
+  in prod and preview (`shared/logger.ts`), so the only build that gives both
+  real data and logs is none of them — on a real-data device run, the alarm
+  dump is the evidence and an empty logcat proves nothing either way.
+- **`--verbose` prints no test names here**: `yarn jest <file> --verbose` emitted
+  only the summary (14 lines, no per-test output) with no `verbose`/`silent`/
+  `reporters` setting in `jest.config.js` to explain it. Cause unestablished —
+  what matters is that a passing COUNT is then the only signal, and "the total
+  went up by the three I think I added" is not evidence those three ran. To
+  confirm a specific test executed, filter by name:
+  `yarn jest <file> -t "<phrase>"` and read the `N passed, M skipped` line; a
+  name that does not exist reports 0 matched instead of quietly passing.
 - **Android 9 AX trees are STALE** in `uiautomator dump` — assert live text
   via screencap pixel diffs, not AX dumps. Button coordinates from a fresh
   dump are fine. On the 3T a dump once returned the tree of a package that
