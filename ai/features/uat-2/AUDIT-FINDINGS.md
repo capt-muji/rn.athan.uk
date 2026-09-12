@@ -1232,6 +1232,13 @@ CONFIRMED.
 
 ## 31. `device_checks.py` flags every pre-prayer reminder as a stray alert
 
+**FIXED in 1.25.10** (`fix/audit-31-reminder-offsets`). An armed alert now passes when it lands
+on an expected prayer time or one of `REMINDER_INTERVALS` ahead of one, and the PASS line says
+how many were ahead of a prayer so the evidence stays honest. Verified against the live 3T
+dump with its one armed alert at 04:57, under three expected-time files: a prayer at 05:17,
+which makes the alarm a 20-minute reminder, goes from FAIL to PASS; a prayer at 04:57 stays
+PASS; a prayer at 09:00 stays FAIL. The check still bites on a genuinely stray alarm.
+
 `device_checks.py:97`, `:129-135`. Reminders fire at 5 to 30 minutes before a prayer and
 carry the same `tag=*walarm*:expo.modules.notifications.NOTIFICATION_EVENT` as at-time
 alerts, with no per-notification identifier anywhere in the dump. They therefore can never
