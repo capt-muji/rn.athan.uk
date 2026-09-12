@@ -975,8 +975,54 @@ recurs. The two mechanisms worth suspecting first are the 12-hour gate in
 `shouldRescheduleNotifications` and a race between the cold-launch re-arm and the upgrade's own
 `forceNotificationReschedule`, since both ran on that launch and only that launch.
 
-UNRESOLVED. Observed once, on a real device, with evidence; not reproduced, not explained, not
-fixed.
+### MECHANISM FOUND in session 5, fixed in 1.25.91, `fix/audit-62-reschedule-retry`
+
+An independent review of the scheduling core traced a path that fits every observed fact.
+
+`_rescheduleAllNotifications` correctly refuses to reschedule against an empty prayer cache and
+correctly does **not** stamp the 12-hour gate on that bail, logging that "the next foreground
+will retry". But there are only two callers of `refreshNotifications`: `app/index.tsx` at mount
+plus 1500 ms, and `device/listeners.ts` on a `background → active` transition. **Within one
+foreground session there was exactly one attempt.** `sync()` completing did not trigger another
+— it calls `handleAppUpgrade`, `updatePrayerData` and `initializeAppState`, and never touches
+the notification refresh.
+
+The upgrade launch is where that bites, and it is the launch the sighting happened on:
+
+1. A package replace cancels every AlarmManager alarm.
+2. `bootstrapFromCache` sees `wasAppUpgraded()` and skips synchronous hydration.
+3. `sync()` starts a real network fetch.
+4. At mount + 1500 ms the post-paint refresh runs, finds no prayer data for today, bails, and
+   leaves the gate unstamped.
+5. Nothing re-runs it. The app sits foregrounded with the preference atoms — hence the UI —
+   showing Sound, and no alarms armed.
+6. Toggling the alert calls `updatePrayerNotifications`, which bypasses both the gate and the
+   empty-cache guard and arms immediately. **That is exactly the reported recovery.**
+
+It also explains the three failed reproductions: none of them was an *upgrade* launch, so the
+cache was warm, `getPrayerByDate` succeeded, and the reschedule ran.
+
+Ruled out by the same review, and worth recording so it is not re-suspected: there is no race
+between `forceNotificationReschedule` and `reopenRefreshGateOnColdLaunch` — both write 0 through
+the same atom, `withSchedulingLock` is a FIFO queue rather than a skip-lock so nothing is
+dropped, and the gate stamp is inside the lock callback so a queued-then-bailed operation cannot
+stamp a false success. **The gate was not the culprit; the missing retry behind it was.**
+
+**The fix** is one effect in `app/index.tsx` that re-runs `refreshNotifications()` when
+`syncLoadable` reaches `hasData`. It cannot live in `stores/sync.ts` — `stores/notifications.ts`
+already imports `sync`, so that direction would be a cycle. The gate makes it a no-op whenever
+the first attempt succeeded, so the cost on a normal launch is one atom read.
+
+**Honesty about the evidence:** the original failure was never reproduced, so this is a fix for
+a mechanism that fits, not a fix confirmed against a reproduction. What *is* verified on the 3T
+at 1.25.91: the exact untested ordering from the write-up — a version bump installed over a
+running app, then a force-stop, then a launch — arms correctly, and three further
+force-stop-and-relaunch cycles each disarmed and re-armed. The finding stays open in the sense
+that a recurrence would disprove this; `device-checks.sh` failing loudly on zero alarms is what
+would catch it.
+
+Superseded: UNRESOLVED. Observed once, on a real device, with evidence; not reproduced, not
+explained, not fixed.
 
 ## 61. The pre-commit hook cannot commit a change to `metro.config.js` or `jest.config.js`
 

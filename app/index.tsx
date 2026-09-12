@@ -124,6 +124,20 @@ export default function Index() {
     return () => clearTimeout(initHandle);
   }, []);
 
+  // A reschedule that runs before the first fetch lands bails on an empty cache and
+  // deliberately leaves the gate unstamped so it can run again — but nothing re-ran it
+  // inside the session, and the next attempt was a background-and-foreground away. The
+  // upgrade launch is where that bites: bootstrap refuses to hydrate, sync() has real
+  // fetch work to do, and the post-paint refresh fires ~1.5s in, so the app could sit
+  // foregrounded showing armed alerts with no alarms armed at all. Retrying once when
+  // data lands closes it, and the gate makes it a no-op whenever the first attempt
+  // already succeeded.
+  useEffect(() => {
+    if (state !== 'hasData') return;
+
+    refreshNotifications().catch((error) => logger.error('Failed to refresh notifications after sync:', error));
+  }, [state]);
+
   // Hide the splash screen once content exists AND the launch art has loaded:
   // either the synchronous cache bootstrap already hydrated the sequences
   // (first commit paints content) or the async sync atom left its loading
