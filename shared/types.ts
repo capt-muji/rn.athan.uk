@@ -118,9 +118,12 @@ export interface ISingleApiResponseTransformed {
  * Extra Schedule (4-5 prayers):
  * - Midnight: Islamic midnight (midpoint Magrib-Fajr, not 00:00)
  * - Last Third: Last third of night begins (blessed time for prayer)
- * - Suhoor: Pre-dawn meal time (40 min before Fajr)
+ * - Suhoor: Pre-dawn meal time (20 min before Fajr)
  * - Duha: Forenoon prayer (20 min after Sunrise)
- * - Istijaba: Supplication time (59 min before Magrib, Fridays only)
+ * - Istijaba: Supplication time (60 min before Magrib, Fridays only)
+ *
+ * The three offsets above are TIME_ADJUSTMENTS in shared/constants.ts, which is
+ * the only place they are defined; do not restate a number here without it.
  *
  * Users can toggle between schedules via the tab navigation.
  * Each schedule has independent notification preferences and display state.
