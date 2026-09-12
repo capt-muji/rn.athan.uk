@@ -36,6 +36,10 @@ import sys
 from datetime import datetime
 
 ANCHOR = re.compile(r"Alarm\{[^}]*\}")
+# The package is the last field of the anchor: Alarm{<hash> type <n> when <epoch> <package>}.
+# Reading it out and comparing it whole is what keeps a side-by-side install
+# (com.mugtaba.athan.fleettest) from counting as the store app's alarms.
+OWNER = re.compile(r"Alarm\{\S+ type \d+ when -?\d+ (\S+)\}")
 WHEN = re.compile(r"when=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})")
 TRIGGER = re.compile(r"triggerTime=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})")
 TAG = re.compile(r"tag=(\S+)")
@@ -51,7 +55,8 @@ def parse_alarms(lines, package):
             # A new block starts: keep the previous one if it was ours
             if current is not None:
                 alarms.append(current)
-            current = {"tag": None, "when": None, "trigger": None} if package in anchor.group(0) else None
+            owner = OWNER.search(line)
+            current = {"tag": None, "when": None, "trigger": None} if owner and owner.group(1) == package else None
             continue
         if current is None:
             continue
