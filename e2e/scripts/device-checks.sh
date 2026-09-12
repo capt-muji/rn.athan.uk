@@ -56,6 +56,27 @@ pass "installed: $PKG ${VERSION#versionName=}"
 PID=$(a shell pidof "$PKG" | tr -d '\r ')
 [[ -n $PID ]] && note "running (pid $PID)" || note "not running (alarms survive; they are armed while it runs)"
 
+# Every check below measures whatever is installed. Against a stale build that is a
+# confident pass describing a build nobody is shipping — the same class of lie findings
+# 28-35 were about, one layer out. Compared per component because 1.25.100 sorts BELOW
+# 1.25.95 lexically. ALLOW_STALE=1 for a deliberate comparison against an older build.
+TREE_VERSION=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["expo"]["version"])' \
+  "${0:A:h:h:h}/app.json" 2>/dev/null)
+INSTALLED_VERSION=${VERSION#versionName=}
+if [[ -n $TREE_VERSION && $TREE_VERSION != "$INSTALLED_VERSION" ]]; then
+  ORDER=$(python3 -c '
+import sys
+a = [int(p) for p in sys.argv[1].split(".")]
+b = [int(p) for p in sys.argv[2].split(".")]
+print("behind" if a < b else "ahead")' "$INSTALLED_VERSION" "$TREE_VERSION" 2>/dev/null)
+  if [[ $ORDER == behind && -z ${ALLOW_STALE:-} ]]; then
+    fail "installed $INSTALLED_VERSION is BEHIND the tree's $TREE_VERSION — every check below measures the old build"
+    note "rebuild and reinstall, or set ALLOW_STALE=1 to compare against it deliberately"
+  else
+    note "installed $INSTALLED_VERSION differs from the tree's $TREE_VERSION ($ORDER)"
+  fi
+fi
+
 # --- permissions ------------------------------------------------------------
 print -r -- "== permissions =="
 a shell dumpsys package "$PKG" > "$OUT/package.txt" 2>/dev/null
