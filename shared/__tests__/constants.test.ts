@@ -6,6 +6,7 @@
  */
 
 import {
+  BACKGROUND_TASK_INTERVAL_HOURS,
   DEFAULT_REMINDER_INTERVAL,
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
@@ -378,5 +379,42 @@ describe('the rolling buffer fits inside the iOS pending-request ceiling', () =>
 
   it('shows that one more day would breach the ceiling', () => {
     expect(worstCaseAt(3)).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+  });
+});
+
+// =============================================================================
+// ROLLING HORIZON TESTS
+//
+// The buffer is two LIST days, not 48 hours. Three comments claimed 48h and sized
+// the refresh cadences against it; the real floor is the winter worst case, where a
+// late-evening refresh reaches only as far as the next day's Isha. The arithmetic
+// lives here so the comment cannot drift from the constants again.
+// =============================================================================
+
+describe('the rolling horizon is two list days, not 48 hours', () => {
+  /** Winter worst case from the repo's own fixture: 2026-12-31 Isha is 17:41 */
+  const WINTER_ISHA_HOUR = 17 + 41 / 60;
+
+  /** A refresh that lands just before midnight reaches the least far */
+  const LATEST_REFRESH_HOUR = 23 + 50 / 60;
+
+  it('reaches under 18 hours when a refresh lands late on a winter evening', () => {
+    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
+
+    expect(hoursToTomorrowsLastPrayer).toBeLessThan(18);
+    expect(hoursToTomorrowsLastPrayer).toBeGreaterThan(17);
+  });
+
+  it('is far short of the 48 hours the cadence comments used to claim', () => {
+    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
+
+    expect(hoursToTomorrowsLastPrayer).toBeLessThan(NOTIFICATION_ROLLING_DAYS * 24);
+  });
+
+  it('gives the background task two full attempts inside that floor, not eight', () => {
+    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
+    const attempts = Math.floor(hoursToTomorrowsLastPrayer / BACKGROUND_TASK_INTERVAL_HOURS);
+
+    expect(attempts).toBe(2);
   });
 });
