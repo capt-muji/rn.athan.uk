@@ -24,11 +24,15 @@ module.exports = {
   // every worktree's copy of the suite is discovered and the gate runs the whole project
   // once per worktree — and a half-finished branch in one of them fails the main tree's
   // validate. node_modules is excluded by default; these are not.
-  testPathIgnorePatterns: ['/node_modules/', '/.claude/', '/android/', '/ios/'],
+  //
+  // <rootDir>-anchored, NOT a bare '/.claude/': these are regexes matched against absolute
+  // paths, so the bare form also matches a worktree's OWN path (which contains /.claude/)
+  // and leaves an agent working inside one unable to run the suite at all.
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/.claude/', '<rootDir>/android/', '<rootDir>/ios/'],
   // And keep them out of the module map as well: testPathIgnorePatterns only hides tests,
   // while jest-haste-map still scans for manual mocks and warns "duplicate manual mock found"
   // for every shared/__mocks__ file once per worktree.
-  modulePathIgnorePatterns: ['/.claude/', '/android/', '/ios/'],
+  modulePathIgnorePatterns: ['<rootDir>/.claude/', '<rootDir>/android/', '<rootDir>/ios/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
     '^.+\\.tsx?$': ['babel-jest', { presets: ['@babel/preset-typescript'], plugins: ['@babel/plugin-transform-modules-commonjs'] }],
