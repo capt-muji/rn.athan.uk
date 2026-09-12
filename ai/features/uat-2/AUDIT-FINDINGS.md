@@ -1204,6 +1204,15 @@ CONFIRMED.
 
 ## 30. `device_checks.py` counts a restatement line as an armed alarm
 
+**FIXED in 1.25.8** (`fix/audit-30-restated-alarm`). An anchor counts only when it carries a
+queue position, `RTC_WAKEUP #0: Alarm{...}`, which is what makes it a batch entry. Re-run
+against the same live 3T dump the finding was written from, the count goes from
+`PASS 1 future prayer alert(s) armed (1 already fired)` to `(0 already fired)`, the armed alert
+itself unchanged. The doubling direction was reproduced by re-pointing the restatement at the
+future alarm, and it turned out to be worse than inflation: the old parser raised
+`TypeError: '<' not supported between instances of 'dict' and 'dict'`. That crash has its own
+cause and is recorded as finding 58.
+
 `e2e/scripts/device_checks.py:38`, `ANCHOR = re.compile(r"Alarm\{[^}]*\}")`, matched anywhere
 with no notion of section.
 
