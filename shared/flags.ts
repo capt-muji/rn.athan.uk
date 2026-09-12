@@ -7,10 +7,15 @@
  * absence, '0', or any typo means disabled. Fail direction: mistakes
  * disable, never enable.
  *
- * This file is the single reader: no other module may spell an
- * EXPO_PUBLIC flag variable (the one exception is app.config.ts, which
- * mirrors the widgets flag for native prebuild - shared/__tests__/flags.test.ts
- * pins the two in lockstep).
+ * This file is not the only reader, despite what it used to claim.
+ * app.config.ts mirrors the widgets flag for native prebuild
+ * (shared/__tests__/flags.test.ts pins the two in lockstep), shared/config.ts
+ * reads the environment and the build identity, and four behaviour gates each
+ * spell a variable of their own: shared/constants.ts (BG_INTERVAL_MINUTES),
+ * shared/time.ts (FORCE_RAMADAN), shared/perf.ts (PERF_MONITOR) and
+ * device/backgroundTaskDebug.ts (BG_DEBUG). Those four also require
+ * EXPO_PUBLIC_ENV !== 'prod', so a variable left set cannot reach a release
+ * build; anything added here or there must hold to the same rule.
  *
  * Lifecycle: every flag names its flip condition in JSDoc. When the
  * condition lands, flip the default here in a version-bumped release;

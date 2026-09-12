@@ -25,7 +25,11 @@ const TRIGGER_DELAY_MS = 8000;
 /** Delay after the trigger before the post-run snapshot */
 const POST_RUN_DELAY_MS = 5000;
 
-const isDebugEnabled = () => __DEV__ || process.env.EXPO_PUBLIC_BG_DEBUG === '1';
+// The env opt-in is for Release-config validation builds only; a store build
+// must not run diagnostics on every cold launch even if the variable survives
+// into it. Literal comparison so Metro can fold the clause away.
+const isDebugEnabled = () =>
+  __DEV__ || (process.env.EXPO_PUBLIC_BG_DEBUG === '1' && process.env.EXPO_PUBLIC_ENV !== 'prod');
 
 /**
  * Extracts the fire date from a notification trigger, if it is a date trigger
