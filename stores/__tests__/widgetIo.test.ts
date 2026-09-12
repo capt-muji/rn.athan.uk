@@ -11,7 +11,7 @@
 import { addDays, format } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
-import { createLondonDate, formatDateShort } from '@/shared/time';
+import { createInstant, formatDateShort } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
@@ -42,7 +42,7 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 });
 
 const seedPrayerCache = (days: number) => {
-  const now = createLondonDate();
+  const now = createInstant();
   const data: ISingleApiResponseTransformed[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(now, offset);
@@ -124,14 +124,14 @@ describe('refreshPrayerWidgets error tolerance', () => {
 
 describe('label-flip re-push scheduler', () => {
   const minutesAhead = (minutes: number): string => {
-    const date = createLondonDate();
+    const date = createInstant();
     date.setMinutes(date.getMinutes() + minutes);
     return format(date, 'HH:mm');
   };
 
   /** Seeds a cache whose Magrib sits `minutes` ahead of now. */
   const seedUpcomingMagrib = (minutes: number) => {
-    const now = createLondonDate();
+    const now = createInstant();
     const dates = [-1, 0, 1].map((offset) => formatDateShort(addDays(now, offset)));
     Database.saveAllPrayers(
       dates.map((date) => ({
@@ -147,7 +147,12 @@ describe('label-flip re-push scheduler', () => {
   };
 
   beforeEach(() => {
-    jest.useFakeTimers();
+    // PINNED, not "now": a re-push lands on a minute boundary, so a fake clock
+    // seeded from the real one starts at an arbitrary point in the minute and
+    // the advances below race that boundary. Unpinned, this suite failed about
+    // one run in sixty — rare enough to look like noise, often enough to block
+    // a commit. On the second of a minute, every advance below is exact.
+    jest.useFakeTimers({ now: new Date('2026-09-12T10:30:00.000Z') });
     resetWidgetMocks();
   });
 
@@ -177,9 +182,11 @@ describe('label-flip re-push scheduler', () => {
     await refreshPrayerWidgets();
     expect(widgetPush()).toHaveLength(1);
 
-    // The label minute changes at any distance, so a flip lands within any
-    // 59-second window
-    await jest.advanceTimersByTimeAsync(59 * 1000);
+    // The label minute changes at any distance, so the next flip is one minute
+    // away: advance just past it. 59s was the old value and it only ever passed
+    // by luck — the flip is 60s out from a pinned clock, and from an unpinned
+    // one it is 60s minus however far into the minute the run happened to start
+    await jest.advanceTimersByTimeAsync(60 * 1000 + 300);
     expect(widgetPush()).toHaveLength(2);
   });
 });

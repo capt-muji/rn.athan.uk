@@ -329,7 +329,7 @@ const getOverlayTarget = (): Prayer | null => {
   const prayer = todayPrayers[overlay.selectedPrayerIndex];
   if (!prayer) return null;
 
-  const now = TimeUtils.createLondonDate();
+  const now = TimeUtils.createInstant();
   const isPassed = prayer.datetime < now;
 
   // 3-day buffer contains all prayers sorted, so find next matching prayer name

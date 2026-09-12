@@ -110,7 +110,7 @@ export const createNextPrayerAtom = (type: ScheduleType) => {
     const sequence = get(getSequenceAtom(type));
     if (!sequence) return null;
 
-    const now = TimeUtils.createLondonDate();
+    const now = TimeUtils.createInstant();
     // 3-day buffer guarantees next prayer exists, but satisfy TypeScript
     return sequence.prayers.find((p) => p.datetime > now) ?? null;
   });
@@ -136,7 +136,7 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
     const sequence = get(getSequenceAtom(type));
     if (!sequence) return null;
 
-    const now = TimeUtils.createLondonDate();
+    const now = TimeUtils.createInstant();
     const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
 
     // Normal case: Previous prayer is in sequence
@@ -179,7 +179,7 @@ export const createDisplayDateAtom = (type: ScheduleType) => {
     const sequence = get(getSequenceAtom(type));
     if (!sequence) return null;
 
-    const now = TimeUtils.createLondonDate();
+    const now = TimeUtils.createInstant();
     // 3-day buffer guarantees next prayer exists
     return sequence.prayers.find((p) => p.datetime > now)!.belongsToDate;
   });
@@ -301,7 +301,7 @@ export const refreshSequence = (type: ScheduleType): void => {
     return;
   }
 
-  const now = TimeUtils.createLondonDate();
+  const now = TimeUtils.createInstant();
 
   // Find the next future prayer to determine the current display date
   const nextFuturePrayer = sequence.prayers.find((p) => p.datetime > now);

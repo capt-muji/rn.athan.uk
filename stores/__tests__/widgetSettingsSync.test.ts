@@ -10,7 +10,7 @@
 import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
-import { createLondonDate, formatDateShort, formatHijriDateLong } from '@/shared/time';
+import { createInstant, formatDateShort, formatHijriDateLong } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 import * as Database from '@/stores/database';
@@ -47,7 +47,7 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 
 /** Seeds yesterday/today/tomorrow so the builder always finds upcoming prayers */
 const seedPrayerCache = () => {
-  const now = createLondonDate();
+  const now = createInstant();
   const yesterday = addDays(now, -1);
   const tomorrow = addDays(now, 1);
 

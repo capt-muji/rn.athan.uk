@@ -12,7 +12,7 @@ import { type Prayer, ScheduleType } from '@/shared/types';
 // =============================================================================
 
 jest.mock('@/shared/time', () => ({
-  createLondonDate: jest.fn(() => new Date('2026-01-27T10:00:00')),
+  createInstant: jest.fn(() => new Date('2026-01-27T10:00:00')),
 }));
 
 jest.mock('jotai', () => ({
