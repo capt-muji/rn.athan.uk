@@ -431,6 +431,16 @@ describe('formatDateLong', () => {
     expect(formatDateLong('2026-06-15')).toMatch(/Jun/);
     expect(formatDateLong('2026-12-25')).toMatch(/Dec/);
   });
+
+  // Audit finding 51: these two throwing is WHY components/day/Day.tsx guards its
+  // date instead of coercing null to ''. Pinned so that a future change making
+  // them return a placeholder is noticed, rather than leaving a guard whose
+  // reason has quietly evaporated. Note the Hijri branch is no safer: it calls
+  // formatDateLong from inside its own catch and throws again, uncaught.
+  it('throws on an empty date rather than returning a placeholder', () => {
+    expect(() => formatDateLong('')).toThrow();
+    expect(() => formatHijriDateLong('')).toThrow();
+  });
 });
 
 describe('formatDateShort', () => {
