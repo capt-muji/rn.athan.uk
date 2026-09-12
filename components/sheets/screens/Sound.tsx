@@ -6,11 +6,10 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 
 import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
-import * as Device from '@/device/notifications';
+import { useNotification } from '@/hooks/useNotification';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { perfMark, perfMeasure } from '@/shared/perf';
 import { Icon } from '@/shared/types';
-import { rescheduleAllNotifications, setSoundPreference, soundPreferenceAtom } from '@/stores/notifications';
+import { soundPreferenceAtom } from '@/stores/notifications';
 import {
   playingSoundIndexAtom,
   setBottomSheetModal,
@@ -24,6 +23,7 @@ import { Sheet, SoundItem } from '../parts';
 const ITEM_GAP = SPACING.xs;
 
 export default function BottomSheetSound() {
+  const { commitSoundSelection } = useNotification();
   const selectedSound = useAtomValue(soundPreferenceAtom);
   const playingIndex = useAtomValue(playingSoundIndexAtom);
   // The 32-row list mounts only once the settings sheet has fully opened
@@ -138,14 +138,17 @@ export default function BottomSheetSound() {
 
     if (tempSoundSelection === null) return;
 
-    perfMark('sound_commit_start');
-    setSoundPreference(tempSoundSelection);
-    await Device.updateAndroidChannel(tempSoundSelection);
-    await rescheduleAllNotifications();
-    perfMeasure('sound_commit', 'sound_commit_start');
+    // The commit persists before it schedules (the scheduler reads the
+    // preference mid-flight) and rolls the preference back itself if either
+    // scheduling call rejects, so the displayed Athan can no longer disagree
+    // with the one the OS will play. onDismiss is typed `() => void` and is
+    // called un-awaited, so an escaping rejection here would be silent.
+    await commitSoundSelection(tempSoundSelection);
 
+    // Cleared on BOTH outcomes. Leaving the draft behind after a failure meant
+    // the next dismiss re-committed a selection the user had not touched again.
     setTempSoundSelection(null);
-  }, [tempSoundSelection, clearAudio]);
+  }, [tempSoundSelection, clearAudio, commitSoundSelection]);
 
   return (
     <Sheet
