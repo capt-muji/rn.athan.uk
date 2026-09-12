@@ -26,20 +26,46 @@ Same as session 3. This app is an alarm clock. A prayer time two minutes wrong i
 notification on the wrong night is a serious one. A change that cannot be shown to reduce that
 risk is not worth making this session.
 
-## Three things need the owner before any code moves
+## The app works today. Do not trade that away.
 
-Raise these first, in one message, and carry on with the code while waiting.
+The owner's standing concern, stated at the close of session 3: the app works well now, and a
+repair that breaks something is worse than the defect it fixed. That outranks finishing the
+list. Concretely:
 
-1. **`releases.json` on `main` still says `1.0.0`** (finding 1). The update prompt is dead on
-   production Android and on both UAT channels, and has been since the feature shipped. This is
-   a data edit on `main`, which only the owner touches. It gates every other fix reaching a
-   user. The redesign is ISSUES #35 and is still out of scope.
-2. **Finding 3, the extras preference migration.** It maps pre-January-2026 index keys onto the
-   wrong prayers. The migration also deletes the old keys as it goes, so any install that has
-   already launched since 1.5.3 is past the point where a fix can help. Ask whether a repair is
-   wanted for the installs that have not migrated yet, and accept the answer.
-3. **Finding 45, Asr is Hanafi-only.** A product decision, not a code one. Record the answer in
-   the findings document and move on.
+- **Stop at the end of any change you cannot verify.** A change you cannot show working is not
+  finished, it is pending. Say so and move on rather than stacking a second one on top.
+- **One commit per change, and each one revertable on its own.** No commit may bundle two
+  findings. If a change turns out badly the owner must be able to drop exactly it.
+- **Prefer the smallest fix that closes the finding.** Several of these are one line. None of
+  them is a refactor, and nothing in this document asks for one. If a fix starts growing into
+  a restructure, stop and put the question to the owner instead.
+- **Leave a finding alone rather than guess at it.** Every finding carries a confidence word. A
+  LIKELY or LATENT one that would need a risky change is better left recorded than fixed badly.
+- **Getting through fewer findings well is the better outcome.** Tier 1 done properly and
+  verified beats all six tiers touched. There is no obligation to reach the end of the list.
+
+The findings document is the record either way. Anything not taken this session stays written
+down, with its evidence, for whenever it is worth doing.
+
+## The owner has already ruled on three things. Do not reopen them.
+
+All three are recorded in full under "Owner rulings" in the findings document. In short:
+
+1. **The API is the source of truth and the app edits nothing it returns.** No school or method
+   selection, no offset, not now and not for v2.0. Finding 45 is withdrawn. This is broader
+   than the DST rule AGENTS.md states: **anything that would change a value the API returned is
+   out of bounds.** Re-dating a value to the correct calendar day is a different thing and is
+   still in scope, which is why finding 44 stands.
+2. **`releases.json` stays manual.** The bump after a successful store release is the intended
+   mechanism; replacing it with automatic detection is ISSUES #35 and needs its own session. Do
+   not touch it. The three stale version strings are the owner's to update, not yours.
+3. **The extras preference mis-map gets repaired, and the junk keys get deleted.** The findings
+   document sets out the exact approach: pick the name array by the stored version, since the
+   pre-1.0.27 array is known precisely, then remove every leftover index key. Two traps are
+   written up there and both matter. A `CACHE_SCHEMA_VERSION` bump will **not** clear these,
+   because `UPGRADE_KEEP_PREFIXES` keeps `preference_`. And `handleAppUpgrade` destroys the
+   discriminator before the migration reads it, so the captured `storedVersion` has to be
+   passed in as an argument in the same commit.
 
 ## Order of work, and why
 
