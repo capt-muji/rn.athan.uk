@@ -366,9 +366,12 @@ describe('every day of a real London year (2024)', () => {
 
 describe('a Magrib that falls after midnight', () => {
   // Sunset 00:04 filed under 21 June, a short polar night, Fajr 01:30 on 22 June
+  // Isha must follow Magrib: at 64N in June there is no astronomical twilight, so Isha comes
+  // from a high-latitude rule and lands after sunset, not 24 minutes before it. An Isha before
+  // its own Magrib would also break the Standard chronological-equals-canonical invariant.
   const POLAR = [
-    day('2026-06-21', '01:28', '02:55', '13:30', '17:30', '00:04', '23:40'),
-    day('2026-06-22', '01:30', '02:56', '13:30', '17:30', '00:06', '23:42'),
+    day('2026-06-21', '01:28', '02:55', '13:30', '17:30', '00:04', '00:28'),
+    day('2026-06-22', '01:30', '02:56', '13:30', '17:30', '00:06', '00:30'),
   ];
 
   it('places the Magrib instant on the next calendar day, not 23h56m early', () => {
@@ -409,20 +412,52 @@ describe('a Magrib that falls after midnight', () => {
     expect(Number(formatInTimeZone(midnight.datetime, 'Europe/London', 'HH'))).toBeLessThan(12);
   });
 
-  it('leaves Istijaba an hour before that Magrib, on the earlier date', () => {
+  // Istijaba hangs off Magrib, so it has to follow Magrib across the shift. Deriving it from
+  // the clock string only worked below 01:00, where adjustTime's wrap past midnight happened
+  // to cancel the date shift; at 01:47 (Nome, Alaska) it left Istijaba 25 hours early. The
+  // table is the point — a single fixture at 00:08 passes while the defect is present.
+  it.each(['00:04', '00:47', '01:47', '02:50', '19:25'])(
+    'keeps Istijaba exactly an hour before a Magrib at %s',
+    (magribTime) => {
+      // 2026-06-26 is a Friday, the only day Istijaba is on the list
+      useRecords([
+        day('2026-06-26', '01:32', '02:58', '13:31', '17:31', magribTime, '00:32'),
+        day('2026-06-27', '01:34', '02:59', '13:31', '17:31', magribTime, '00:34'),
+      ]);
+
+      const istijaba = rowOf(listFor(ScheduleType.Extra, '2026-06-26'), 'Istijaba');
+      const magrib = rowOf(listFor(ScheduleType.Standard, '2026-06-26'), 'Magrib');
+
+      expect(magrib.datetime.getTime() - istijaba.datetime.getTime()).toBe(60 * MINUTE);
+      expect(istijaba.belongsToDate).toBe('2026-06-26');
+    }
+  );
+
+  // getPrayerForDate is what every notification reads, so agreement with the rendered list
+  // is the assertion that actually covers the alarm this finding is about
+  it('gives the notification path the same instant the list shows', () => {
     useRecords(POLAR);
 
-    // Friday 2026-06-26 so Istijaba is on the list at all
-    const friday = [
-      day('2026-06-26', '01:32', '02:58', '13:31', '17:31', '00:08', '23:44'),
-      day('2026-06-27', '01:34', '02:59', '13:31', '17:31', '00:10', '23:46'),
-    ];
-    useRecords(friday);
+    const fromList = rowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'Magrib');
+    const fromNotificationPath = getPrayerForDate(ScheduleType.Standard, 'Magrib', '2026-06-21');
 
-    const istijaba = rowOf(listFor(ScheduleType.Extra, '2026-06-26'), 'Istijaba');
-    const magrib = rowOf(listFor(ScheduleType.Standard, '2026-06-26'), 'Magrib');
+    expect(fromNotificationPath?.datetime.getTime()).toBe(fromList.datetime.getTime());
+  });
 
-    expect(magrib.datetime.getTime() - istijaba.datetime.getTime()).toBe(60 * MINUTE);
+  it('crosses into the post-midnight season without a discontinuity', () => {
+    useRecords([
+      day('2026-06-09', '01:26', '02:54', '13:29', '17:29', '23:58', '23:59'),
+      day('2026-06-10', '01:27', '02:54', '13:29', '17:29', '00:02', '00:28'),
+      day('2026-06-11', '01:28', '02:55', '13:30', '17:30', '00:04', '00:30'),
+    ]);
+
+    const before = rowOf(listFor(ScheduleType.Extra, '2026-06-10'), 'Midnight').datetime;
+    const after = rowOf(listFor(ScheduleType.Extra, '2026-06-11'), 'Midnight').datetime;
+
+    // One day apart to the minute, not a twelve-hour jump on the crossing day
+    const dayApart = after.getTime() - before.getTime();
+    expect(dayApart).toBeGreaterThan(23 * 60 * MINUTE);
+    expect(dayApart).toBeLessThan(25 * 60 * MINUTE);
   });
 });
 

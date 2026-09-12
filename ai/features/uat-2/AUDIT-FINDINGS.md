@@ -2320,6 +2320,59 @@ provider emits. So a small-hours Magrib always means the next day.
 **Unchanged for London**, which was the requirement: the whole suite passed before the new tests
 were added, and an explicit London case pins a 19:25 Magrib on its own date.
 
+### Follow-up in 1.25.53, `fix/audit-44-followup-istijaba-instant`, after independent review
+
+An independent reviewer was asked to attack the fix from a different angle. It confirmed the
+cutoff, London's one-to-one behaviour and the `belongsToDate` pairing, and found **one real
+regression the tests were arranged not to see**.
+
+**Istijaba fired 25 hours early whenever Magrib fell between 01:00 and 06:00.** Istijaba is
+`adjustTime(magrib, -60)`, modular clock arithmetic on a string. Below 01:00 the wrap past
+midnight cancelled the new date shift, which is why the original test — a single fixture at
+`00:08` — passed. Above it there is no wrap: Magrib 01:47 (Nome, Alaska, 21 June) gave Istijaba
+00:47 still filed under the old date while Magrib moved to the next.
+
+| Magrib | gap before follow-up | after |
+| --- | ---: | ---: |
+| 00:04 | 60 min | 60 min |
+| 00:47 | 60 min | 60 min |
+| 01:47 | **1500 min** | 60 min |
+| 02:50 | **1500 min** | 60 min |
+| 19:25 (London) | 60 min | 60 min |
+
+It was also a *relative* regression: before the fix both Magrib and Istijaba were wrong by a day
+but mutually consistent, so the gap stayed 60 minutes. Fixing Magrib alone broke the pair.
+
+Istijaba now takes an exact instant, `Magrib instant − 60 min`, joining Midnight and Last Third
+on the path that already exists for precisely this reason. The rule stated plainly: **Suhoor's
+anchor is Fajr, which is never date-shifted, so the wrap rule tracks it; Istijaba's anchor is
+Magrib, which now is, so the wrap rule cannot.** The test is table-driven over the whole window
+because one fixture is what hid it.
+
+Also in the follow-up:
+- `MIDNIGHT_CROSSING_PRAYERS` in `shared/constants.ts` is read by both halves of the matched
+  pair, which previously spelled the same test two different ways a hundred lines apart — the
+  half that was not touched was the half that needed touching.
+- `isAfterMidnight` renamed `isSmallHours`, because its comment claimed a day-shift meaning that
+  is false for Suhoor, Fajr, Sunrise and Duha — all routinely below six, all on their own day.
+- The `POLAR` fixture had Isha 24 minutes *before* its own Magrib, which no calculation method
+  produces and which violates the Standard chronological-equals-canonical invariant. Corrected.
+- New cases: agreement between `getPrayerForDate` — what notifications actually read — and the
+  rendered list, and a season-transition case across `23:58 → 00:02`.
+- The London range in the comment is corrected to 15:55–21:25, the range the repo's own
+  `mocks/full.ts` demonstrates.
+
+**Deliberately not done, recorded rather than left silent:** the finding also asked for a guard
+against a night longer than about 20 hours. The anchor is now correct, so a length guard would
+only bound damage that can no longer occur, and it would need a policy for what to do when it
+trips. Skipped on purpose.
+
+**Also recorded, pre-existing and untouched:** `stores/schedule.ts:82-92`
+(`getYesterdayFinalPrayer`) calls `createPrayer` directly with the raw date and time, bypassing
+`adjustPrayerDateForMidnightCrossing` entirely, so it already mis-dates a post-midnight Isha.
+Magrib never reaches it, so this change does not worsen it. Worth folding into
+`MIDNIGHT_CROSSING_PRAYERS` whenever that site is next touched.
+
 ## 45. WITHDRAWN: "Asr is hardcoded to the Hanafi calculation"
 
 **Owner ruling, 2026-09-12: the API is the source of truth and the app edits nothing it
