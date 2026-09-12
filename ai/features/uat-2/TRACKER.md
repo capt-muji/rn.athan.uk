@@ -37,6 +37,8 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 | 22 | iOS check on the XS | — | 👤 |
 | 23 | Merge uat-2 → uat (on the owner's word) | `uat` | ⏳ |
 | 24 | Update the alarm clock branch from uat | `experiment/alarmclock-backport` | ⏳ |
+| 25 | ISSUES #34: alerts must survive an app update | `fix/notifications-survive-upgrade` | ✅ 1.24.31 — three guards: bail when there is no prayer data, never sweep on empty bookkeeping, stamp the 12-hour gate only when a reschedule actually ran. **Proven on the 3T with a real prod build**: an alert armed at 04:03 came through the 1.24.31 → 1.24.32 upgrade untouched, and the next launch corrected it to the real 04:57. That 04:03 cannot be re-derived from real data, so its survival proves nothing rescheduled it and its presence proves nothing cancelled it |
+| 26 | Clear the cache only when the cache *schema* changes | `fix/notifications-survive-upgrade` | ✅ 1.24.33 — `CACHE_SCHEMA_VERSION` in `stores/version.ts`, bumped deliberately and only when the cached *shape* changes. `handleAppUpgrade` now asks two questions instead of one: an app-version change still forces a reschedule (new code may schedule differently), but the cache is cleared only when `upgraded && cacheSchemaChanged()`. A missing marker counts as changed, so existing users pay exactly one wipe. Same-version relaunch and downgrade still never wipe — pinned by the tests that already existed. Three new tests cover the case that actually changed; 1015 green |
 | — | ISSUES #27: a single row after the day roll | — | ❌ deferred (unreproduced) |
 | — | Popup frame drops on the 3T | — | ❌ deferred (old device) |
 | — | 236ms switch at prayer time | — | ❌ accepted |
