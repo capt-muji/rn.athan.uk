@@ -3553,3 +3553,41 @@ What is worth recording is the **side effect**: exercising a Silent alert once c
 `expo_notifications_fallback_notification_channel` permanently, and it then shows in the app's
 notification settings alongside the athan channels. Cosmetic, not removable by the app, and
 present on the 3T from this session's testing.
+---
+
+## 64. UNRESOLVED: athan15 may already be past the iOS 30-second cliff
+
+Surfaced while closing Tier 6 item d, which asked for a `< 30.0` guard on the athan durations.
+The guard landed (1.26.3), but the work turned up something the item did not anticipate:
+**the three available measures of `athan15.mp3` disagree across exactly the boundary that
+matters.**
+
+| Measure | athan15 | Verdict against iOS's 30 s limit |
+| --- | ---: | --- |
+| `ffprobe`, gapless-aware | 29.974966 s | under, by 25 ms |
+| `mp3-duration` (the repo's decoder) | ~30.03 s | over — but it counts the Xing header frame, over-reporting every file by 52–76 ms |
+| Apple's own `afinfo`, `kAudioFilePropertyEstimatedDuration` | **30.014694 s** | **over, by 15 ms** |
+
+iOS silently falls back to the device's default notification sound for any notification sound
+longer than 30 seconds. **If CoreAudio uses the same estimate `afinfo` reports — decoded packets
+before the gapless trim is applied — then athan15 is already falling back today**, and a user
+who selected it hears the system tone instead of the athan. That is exactly the failure class
+finding 5 was about, arriving by a completely different route.
+
+Three others sit within 60 ms of the cliff on the gapless-aware measure: athan17 (29.951451),
+athan7 and athan16 (29.942109).
+
+**Why this is recorded rather than fixed.** Which measure iOS applies cannot be settled from the
+files: it needs an iPhone with athan15 selected, a fired notification, and an ear or a capture to
+say whether the athan or the system tone played. The iPhone XS is deliberately disconnected this
+session, and re-encoding on a guess would change an audio asset the owner has settled — forbidden
+without asking, and pointless if the premise is wrong.
+
+**Note the instrument trap, because it nearly became this session's fourth fixture bug.** The
+brief said to extend `mp3-duration`, whose error is 52–76 ms — three times the 25 ms margin under
+test. A literal `< 30.0` on its output fails four files that are comfortably under, and the
+tempting repair is to loosen the threshold until it passes. The guard instead reads the LAME
+gapless tag and subtracts it, which agrees with `ffprobe` to within 0.49 ms across all 32 files.
+**When the instrument's error exceeds the margin, the instrument is the finding.**
+
+UNRESOLVED, pending one iPhone test. Do not re-encode anything before that test.
