@@ -5,7 +5,16 @@
  * triggers a debounced timeline re-push. These tests verify the subscription
  * wiring (burst → single push, irrelevant atoms ignored, idempotent init)
  * and that the pushed entries carry the changed setting.
+ *
+ * The suite exercises the ENABLED widget path, which is not the shipped
+ * configuration (jest.setup.js deletes EXPO_PUBLIC_WIDGETS so every suite runs
+ * the flag off by default), so it opts in explicitly below. The mock is
+ * hoisted above the imports on purpose: flags.ts reads the env once at module
+ * evaluation and ESM imports are hoisted, so setting the variable in the file
+ * body would run after @/stores/widget has already captured FEATURE_FLAGS.
  */
+
+jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: true } }));
 
 import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
