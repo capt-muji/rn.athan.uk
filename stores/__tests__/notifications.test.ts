@@ -31,6 +31,7 @@ import * as TimeUtils from '@/shared/time';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
+  canonicalPrayerIndex,
   createPrayerAlertAtom,
   createReminderAlertAtom,
   createReminderIntervalAtom,
@@ -399,6 +400,75 @@ describe('getPrayerAlertAtom', () => {
     expect(atom0).toBe(standardPrayerAlertAtoms[0]);
     expect(atom1).toBe(standardPrayerAlertAtoms[1]);
     expect(atom5).toBe(standardPrayerAlertAtoms[5]);
+  });
+});
+
+// =============================================================================
+// canonicalPrayerIndex TESTS
+// =============================================================================
+
+/**
+ * A prayer row carries its CHRONOLOGICAL index; every atom array here is
+ * CANONICAL. They coincide only while the canonical names happen to be in
+ * chronological order, so these pin the mapping under an order where they do
+ * not — the permutation `shared/__tests__/prayer.test.ts` already fixes as
+ * expected behaviour for a Friday whose Istijaba sorts before Midnight.
+ */
+describe('canonicalPrayerIndex', () => {
+  // Chronological list: Duha, then Istijaba, then Midnight. canonicalDisplayOrder
+  // returns [2, 0, 1] for it, so the row labelled Midnight renders with index 2.
+  const permutedChronological = ['Duha', 'Istijaba', 'Midnight'];
+  const midnightRowIndex = permutedChronological.indexOf('Midnight');
+
+  it('resolves the row labelled Midnight to the canonical Midnight atom, not the row-index atom', () => {
+    const resolved = canonicalPrayerIndex(ScheduleType.Extra, 'Midnight', midnightRowIndex);
+
+    expect(resolved).toBe(EXTRAS_ENGLISH.indexOf('Midnight'));
+    expect(getPrayerAlertAtom(ScheduleType.Extra, resolved)).toBe(
+      extraPrayerAlertAtoms[EXTRAS_ENGLISH.indexOf('Midnight')]
+    );
+
+    // The defect this closes: the raw row index lands on a different prayer's atom
+    expect(midnightRowIndex).not.toBe(EXTRAS_ENGLISH.indexOf('Midnight'));
+    expect(getPrayerAlertAtom(ScheduleType.Extra, midnightRowIndex)).not.toBe(
+      getPrayerAlertAtom(ScheduleType.Extra, resolved)
+    );
+  });
+
+  it('maps every row of the permuted list to its own prayer', () => {
+    const canonicalNames = getPrayerArrays(ScheduleType.Extra).english;
+    const resolvedNames = permutedChronological.map(
+      (prayerName, rowIndex) => canonicalNames[canonicalPrayerIndex(ScheduleType.Extra, prayerName, rowIndex)]
+    );
+
+    expect(resolvedNames).toEqual(permutedChronological);
+  });
+
+  it('is the identity for a canonically ordered schedule', () => {
+    EXTRAS_ENGLISH.forEach((prayerName, index) => {
+      expect(canonicalPrayerIndex(ScheduleType.Extra, prayerName, index)).toBe(index);
+    });
+    PRAYERS_ENGLISH.forEach((prayerName, index) => {
+      expect(canonicalPrayerIndex(ScheduleType.Standard, prayerName, index)).toBe(index);
+    });
+  });
+
+  it('resolves against the schedule it is given, not the other one', () => {
+    // Fajr exists only in the standard schedule
+    expect(canonicalPrayerIndex(ScheduleType.Standard, 'Fajr', 99)).toBe(PRAYERS_ENGLISH.indexOf('Fajr'));
+    expect(canonicalPrayerIndex(ScheduleType.Extra, 'Fajr', 99)).toBe(99);
+  });
+
+  it('falls back to the row index for an unknown name, so a loading frame is unchanged', () => {
+    // usePrayer reports english: '' while the sequence loads or the row is out of range
+    expect(canonicalPrayerIndex(ScheduleType.Extra, '', 3)).toBe(3);
+    expect(canonicalPrayerIndex(ScheduleType.Standard, '', 0)).toBe(0);
+    expect(canonicalPrayerIndex(ScheduleType.Extra, 'Not A Prayer', 2)).toBe(2);
+  });
+
+  it('never returns -1, which would hand useAtomValue an undefined atom', () => {
+    expect(canonicalPrayerIndex(ScheduleType.Extra, '', 0)).not.toBe(-1);
+    expect(getPrayerAlertAtom(ScheduleType.Extra, canonicalPrayerIndex(ScheduleType.Extra, '', 0))).toBeDefined();
   });
 });
 
