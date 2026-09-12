@@ -100,7 +100,11 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
 /**
  * Determines if the app needs to fetch fresh prayer time data
  * Returns true if:
- * 1. Dev mode is enabled (EXPO_PUBLIC_DEV_MODE=true)
+ * 1. APP_CONFIG.isDev — anything that is NOT a prod or preview build. It is
+ *    keyed off EXPO_PUBLIC_ENV (shared/config.ts:2), and it is opt-OUT, not
+ *    opt-in: leave the variable unset and isDev is true, so a bare local build
+ *    refetches on every check. Only EXPO_PUBLIC_ENV=prod or =preview turns it
+ *    off, which is what a shipped build gets.
  * 2. Schedule is empty (no data for today)
  * 3. It's December and next year's data needs fetching
  */
