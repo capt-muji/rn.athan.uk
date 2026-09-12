@@ -1,7 +1,9 @@
+import { getDefaultStore } from 'jotai/vanilla';
 import { useCallback, useEffect, useState } from 'react';
 
 import { createInstant, formatTimeAgo } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
+import { getCountdownAtom } from '@/stores/countdown';
 import { getPrevPrayer } from '@/stores/schedule';
 
 interface PrayerAgoState {
@@ -12,9 +14,13 @@ interface PrayerAgoState {
 
 /**
  * Pure function to calculate prayer-ago state
- * Extracted outside hook for use in lazy initializer
+ *
+ * Exported so tests can call the real thing. There is no renderer in the
+ * dependency tree, so a test that cannot reach this function has to
+ * re-implement it — which is what the previous test did, leaving the hook
+ * itself with no coverage at all.
  */
-const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
+export const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
   try {
     const prevPrayer = getPrevPrayer(type);
     if (!prevPrayer) {
@@ -68,10 +74,16 @@ export const usePrayerAgo = (type: ScheduleType): PrayerAgoState => {
   }, [type]);
 
   useEffect(() => {
-    // No initial call needed - lazy initializer already calculated
-    const interval = setInterval(updatePrayerAgo, 1000);
-    return () => clearInterval(interval);
-  }, [updatePrayerAgo]);
+    // Ride the shared wall-clock tick rather than owning a second one. The
+    // countdown store already writes its atom once per wall second (ADR-013's
+    // tick consolidation: exactly two timers app-wide), and this badge mounts
+    // once per page, so an interval here added one more timer per page for the
+    // same cadence. store.sub does NOT subscribe React — deliberately, since
+    // useAtomValue would re-render every second — so the bail-out above stays
+    // the only thing that decides whether anything re-renders. No initial call
+    // needed: the lazy initializer already calculated.
+    return getDefaultStore().sub(getCountdownAtom(type), updatePrayerAgo);
+  }, [updatePrayerAgo, type]);
 
   return state;
 };
