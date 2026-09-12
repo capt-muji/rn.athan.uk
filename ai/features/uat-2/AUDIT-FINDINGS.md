@@ -1161,6 +1161,24 @@ Four of these tools can return a confident pass having measured nothing.
 
 ## 28. `frame-audit.sh`'s SurfaceFlinger fallback can never print FAIL
 
+**FIXED in 1.25.14** (`fix/audit-28-sf-units`). Both thresholds are milliseconds now, matching
+the values they are compared against. Verified against synthetic `--latency` data covering four
+cases:
+
+| Input | Old verdict | New verdict |
+| --- | --- | --- |
+| 60 frames at 60fps | PASS, measuring nothing (`anim` empty) | PASS, 59 gaps measured |
+| one 50ms miss | PASS | **FAIL** |
+| one 500ms freeze | PASS, freeze invisible | `gaps>100ms: ['500']` printed, cadence PASS |
+| a single frame | PASS | `NO DATA — this is not a pass`, exit 1 |
+
+The freeze case is the one that needed a judgement rather than a units fix. A gap over 100ms is
+either a real freeze or a stretch where nothing was drawn, and SF latency alone cannot tell
+those apart, so it is excluded from the cadence verdict and **printed** rather than silently
+dropped, and the verdict says "cadence only". Deciding a freeze from a gap needs the frames,
+which is what the video path exists for. The baseline's `(SF latency)` verdicts are addressed
+separately below.
+
 `e2e/scripts/frame-audit.sh:44-51`.
 
 ```python
