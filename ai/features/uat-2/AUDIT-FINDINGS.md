@@ -3380,3 +3380,121 @@ rejects. The wipe is therefore harmful when there is a cache and pointless when 
 Finding 8 closes the corrupt-cache path at source by validating the response before it is
 cached. If an explicit escape hatch is still wanted after that, it should be a second, clearly
 labelled destructive button rather than the only button the screen has.
+
+---
+
+# Session 5: what was taken, what was corrected, what is left
+
+Session 5 ran on 2026-09-12 at Opus 5, starting from **1.25.34** and closing at **1.25.92** —
+113 commits, each on its own branch off `uat-2`, merged `--no-ff` and pushed. The suite moved
+**1,036 to 1,194 tests and 43 to 50 suites, and never went down.** The OnePlus 3T ended the
+session green on `yarn check:device`, on the two channels and the one armed alarm it started
+with.
+
+Roughly half the work was done by parallel agents in git worktrees; the merges, the conflict
+resolution and the device verification were done here. Individual findings above carry their own
+`CLOSED` sections where the reasoning is worth keeping; this table is the index.
+
+## Closed with code
+
+| # | Version | What changed |
+| --- | --- | --- |
+| 5 | 1.25.35 | The selected athan channel is created at schedule time |
+| 8, 47 | 1.25.37, 59 | An unreadable API day is dropped rather than cached or fatal |
+| 10 | 1.25.39 | `AlertType`'s persisted integers pinned as a storage contract |
+| 11 | 1.25.40 | The notifications mock echoes the identifier the SDK echoes |
+| 12 | 1.25.85 | Night rows get the buffer every other row already had |
+| 13 | 1.25.54 | A mid-window time correction reaches the store |
+| 14 | 1.25.52 | The cache schema marker survives a full refresh |
+| 15 | 1.25.84 | The AppState listener is armed at mount, not 1500 ms later |
+| 16 | 1.25.82 | The warm cache hydrates on an ordinary update |
+| 18 | 1.25.55 | A `v` prefix no longer inverts `compareVersions` |
+| 19 | 1.25.90 | A release stops presenting another release's notes |
+| 20 | 1.25.51, 61 | The background interval is bounded and integer-only |
+| 21 | 1.25.41 | The rolling buffer is guarded against the iOS 64-request ceiling |
+| 22 | 1.25.42 | `cacheSchemaChanged`, the sole gate on the wipe, is covered |
+| 24 | 1.25.43 | The scheduling failure path is exercised for the first time |
+| 25 | 1.25.83 | Mock-data builds get their own MMKV store |
+| 26 | 1.25.44, 61 | The 99-file audio matrix is closed across every surface |
+| 27 | 1.25.81 | A corrected time replaces the stale copy on merge |
+| 28 | 1.25.92 | The frame audit returns a failure instead of only printing one |
+| 37, 38 | 1.25.86, 87 | The widget countdown stops freezing and over-reading |
+| 44 | 1.25.49, 53 | Magrib crosses midnight, and Istijaba follows it |
+| 46 | 1.25.48 | The timezone oracles key off `PRAYER_TIMEZONE` |
+| 48 | 1.25.80 | The extras alert resolves its preference by name, not row order |
+| 49 | 1.25.79 | The athan rolls back when its reschedule throws |
+| 50 | 1.25.78 | A denied permission no longer shows a selection that will not save |
+| 52 | 1.25.64 | The pre-commit gate is something a fresh clone actually receives |
+| 53 | 1.25.62 | `pino` is declared where it is used |
+| 54 | 1.25.76 | Four debug variables cannot change a production build |
+| 55 | 1.25.63 | The suite runs with the widgets flag off, as it ships |
+| 56 | 1.25.75 | The production logging guarantee is pinned |
+| 62 | 1.25.91 | A bailed reschedule retries when data lands |
+
+Tier 6 closed: **a** (1.25.67), **b** (1.25.65), **e** (1.25.72), **g** (1.25.69), **h**
+(1.25.70), **t** (1.25.58), **u** (1.25.71), **v** (1.25.68), **w** (1.25.73), **y** (1.25.66),
+**aa** (1.25.77), plus the four accessibility items (1.25.88, 89).
+
+## Found in session 5, not in the sweep
+
+- **62**, an armed alert with no alarm, seen once on the device. Recorded unresolved in 1.25.46,
+  mechanism found by review and fixed in 1.25.91. The failure itself was never reproduced.
+- **The jest gate could not survive parallel worktrees.** Agent worktrees live under
+  `.claude/worktrees/` inside the repo, so jest discovered every worktree's copy of the suite —
+  498 suites where there are 45 — and a half-finished branch in any of them failed the main
+  tree's validate. Fixed across 1.25.56, 57 and 60; the patterns must stay `<rootDir>`-anchored,
+  because a bare `/.claude/` also matches a worktree's own path and leaves agents unable to run
+  the gate at all.
+
+## Corrections, and the lesson behind them
+
+**Three of this session's own fixes were wrong, and only one was caught by its own tests.**
+
+1. **Finding 44 moved Magrib to the wrong list day.** Caught by self-review before merge. All
+   1,085 tests passed while the regression was live.
+2. **Finding 44's fix broke Istijaba**, firing it 25 hours early for Magrib between 01:00 and
+   06:00. Caught by an independent reviewer. The single test fixture at 00:08 sat in the one
+   sub-window where the clock-wrap cancelled the date shift.
+3. **Finding 8's guard rejected an entire year** for one unreadable day, and the cache is wiped
+   before the fetch — a permanent brick, and it would have made high-latitude cities permanently
+   unusable. Caught by an independent reviewer. All six rejection tests used a single-day
+   payload, and with one day in the payload "drop the day" and "reject the year" are
+   indistinguishable.
+
+The shared shape is worth stating plainly, because it is the same one every time: **the fixture
+was chosen so the bug could not be observed.** Not a missing test — a present, passing test whose
+inputs sat exactly where two errors cancelled, or where the blast radius had no room to appear.
+Tests written by whoever wrote the fix inherit the author's blind spot. The one defence that
+worked was an independent reviewer given the specific instruction to attack the fixtures.
+
+Smaller corrections, each recorded on its finding: finding 10's "the full suite stays green" was
+false; finding 46's benefit is 5 false alarms, not portability; finding 5's symptom is expo's
+fallback channel and a generic ding, not a dropped notification; finding 22's "none of them had
+a test" overstated it; finding 20's floor comment credited a WorkManager limit that does not
+apply on the shipped path; finding 46 names five sites and there are four.
+
+## Left open
+
+| # | Why |
+| --- | --- |
+| 9 | Needs an `env` block in `eas.json` plus a config-time failure. Not started. |
+| 17 | Documentation only; the horizon claim is still wrong in three places. |
+| 34, 36 | The agent hit the session limit mid-task. |
+| 39, 41 | Widget re-push chain and `belongsToDate` contract. Not started. |
+| 40, 42, 43, 57 | Recorded by the brief as leave-as-is. 40 may now be closed as a side effect of 37 and 38 — unverified. |
+| 45 | Withdrawn by owner ruling. |
+| Tier 6 c, d, f, i, j, k, l, m, n, o, r, s, x, z | Not started. **x** (`noUncheckedIndexedAccess`) was probed and left for the owner: the error count is the decision. |
+
+## Two things the owner has to decide
+
+**What's New now silent-ships.** Finding 19's guard is the correct fix for the code defect, and
+it means every release from here shows no modal until the stamp in `shared/whatsNew.ts` is moved
+to the shipping version. The alternative — re-stamping the version and the items so the modal
+speaks with current copy — is a copy decision and was not made.
+
+**Silent alerts may ring on Android.** A reviewer noticed that `atTimeAndroidChannelId` is
+`undefined` for anything that is not `AlertType.Sound`, so by finding 5's own device-verified
+mechanism a Silent alert lands on expo's fallback channel and plays the device's default tone at
+Android's default vibration. Pre-existing and **not device-verified**. If it holds it is a
+silent-alarm-class defect — a user who chose Silent for Fajr gets a ding at 4 am — and it needs
+its own channel with `sound: null`. Worth checking before anything ships.
