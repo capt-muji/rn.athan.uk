@@ -40,6 +40,11 @@ export default function Stepper({ value, onDecrement, onIncrement, unit = 'min',
   return (
     <View style={[styles.container, disabled && styles.disabled]}>
       <Pressable
+        accessibilityRole='button'
+        // The glyph is a minus sign, which reads as nothing useful; name the action and
+        // the unit so the control is usable without seeing the value beside it
+        accessibilityLabel={`Decrease to ${value - 5} ${unit}`}
+        accessibilityState={{ disabled: !canDecrement }}
         style={[styles.button, !canDecrement && styles.buttonDisabled]}
         onPress={() => {
           if (canDecrement) {
@@ -49,11 +54,14 @@ export default function Stepper({ value, onDecrement, onIncrement, unit = 'min',
         }}>
         <Text style={[styles.buttonText, !canDecrement && styles.buttonTextDisabled]}>−</Text>
       </Pressable>
-      <View style={styles.valueContainer}>
+      <View accessible={true} accessibilityLabel={`${value} ${unit}`} style={styles.valueContainer}>
         <Text style={styles.value}>{value}</Text>
         <Text style={styles.unit}>{unit}</Text>
       </View>
       <Pressable
+        accessibilityRole='button'
+        accessibilityLabel={`Increase to ${value + 5} ${unit}`}
+        accessibilityState={{ disabled: !canIncrement }}
         style={[styles.button, !canIncrement && styles.buttonDisabled]}
         onPress={() => {
           if (canIncrement) {

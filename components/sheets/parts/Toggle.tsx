@@ -51,7 +51,13 @@ export default function Toggle({ value, onToggle, disabled }: ToggleProps) {
   };
 
   return (
-    <Pressable onPress={handlePress} style={[styles.track, value && styles.trackOn, disabled && styles.disabled]}>
+    <Pressable
+      accessibilityRole='switch'
+      // `checked` is what a screen reader announces as on/off; without it the state is
+      // carried only by the thumb's position and the track colour
+      accessibilityState={{ checked: value, disabled: disabled === true }}
+      onPress={handlePress}
+      style={[styles.track, value && styles.trackOn, disabled && styles.disabled]}>
       <Animated.View style={[styles.thumb, thumbStyle]} />
     </Pressable>
   );
