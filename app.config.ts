@@ -4,9 +4,12 @@ import appJson from './app.json';
 
 const config = appJson.expo as ExpoConfig;
 
-// Campaign builds set EXPO_ANDROID_SUFFIX in the eas.json profile env so the test
-// artifact installs beside the Play Store app (signatures differ; install -r is impossible).
-// Without the env var this config is byte-identical to app.json.
+// EXPO_ANDROID_SUFFIX suffixes the Android package so a test artifact installs beside the Play
+// Store app (signatures differ; install -r is impossible). It arrives from the build environment
+// and nothing committed sets it: local device builds pass it inline on the prebuild and run
+// commands (the rituals in ai/AGENTS.md), and the one EAS campaign that used it added a temporary
+// env entry to the preview profile which was never committed. No eas.json profile carries it, so
+// absence is the normal case — without the variable this config is byte-identical to app.json.
 const androidSuffix = process.env.EXPO_ANDROID_SUFFIX;
 const nameSuffix = process.env.EXPO_NAME_SUFFIX ?? 'BGTest';
 
