@@ -3,7 +3,7 @@ import { MOCK_DATA_SIMPLE } from '@/mocks/simple';
 import logger, { isPreview, isProd } from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
-import type { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
+import type { IApiResponse, IApiTimes, ISingleApiResponseTransformed } from '@/shared/types';
 
 // Constructs the API URL with required parameters:
 // - format (JSON/XML)
@@ -37,34 +37,48 @@ const REQUIRED_TIMES = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'] as 
 const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/;
 
 /**
- * Rejects a day the pipeline cannot read, before it reaches MMKV
+ * Drops any day the pipeline cannot read, before it reaches MMKV
  *
- * `createPrayerDatetime` turns a malformed time into `new Date(NaN)`, which throws on
- * the first `toISOString()`, and a missing one throws on `split`. Either way the whole
- * day is built before the requested row is picked out, so one bad field takes down every
- * prayer that day rather than only its own. High-latitude providers emit `"-----"` or
- * omit Sunrise entirely, which is the same failure arriving by a different route.
+ * `createPrayerDatetime` turns a malformed time into `new Date(NaN)`, which throws on the
+ * first `toISOString()`, and a missing one throws on `split`. Either way the whole day is
+ * built before the requested row is picked out, so one bad field takes down every prayer
+ * that day rather than only its own.
  *
- * Runs on the filtered set, so a malformed day the app already discards stays discarded
- * instead of becoming a new way to reject an otherwise usable year.
+ * Per DAY, not per response, and that distinction is the whole point. The endpoint returns a
+ * year, so rejecting the payload would let one unreadable day months away take down the day
+ * the user is standing on — and `updatePrayerData` clears the cache BEFORE it fetches, so a
+ * throw here leaves the app with nothing and the same thing happens on every retry. High
+ * latitude makes that concrete rather than theoretical: providers emit `"-----"` for a whole
+ * polar-summer window, so an all-or-nothing guard would make those cities permanently
+ * unusable instead of unusable for the weeks the sun does not set.
  *
  * @param apiData Filtered API response data
- * @returns The same data, once every kept day is known to be readable
+ * @returns The same data minus any day that cannot be read
  */
 const validateApiTimes = (apiData: IApiResponse): IApiResponse => {
-  const entries = Object.entries(apiData.times);
+  const readableTimes: IApiTimes = {};
+  const today = TimeUtils.getTodayDateString();
+  let todayDropped = false;
 
-  for (const [date, times] of entries) {
-    for (const name of REQUIRED_TIMES) {
-      const value = times?.[name];
-      if (TIME_PATTERN.test(value)) continue;
+  for (const [date, times] of Object.entries(apiData.times)) {
+    const malformed = REQUIRED_TIMES.find((name) => !TIME_PATTERN.test(times?.[name]));
 
-      const shown = JSON.stringify(value);
-      throw new Error(`Malformed prayer time: ${date} ${name} is ${shown}`);
+    if (!malformed) {
+      readableTimes[date] = times;
+      continue;
     }
+
+    const shown = JSON.stringify(times?.[malformed]);
+    logger.warn('API: dropping an unreadable day', { date, field: malformed, value: shown });
+    if (date === today) todayDropped = true;
   }
 
-  return apiData;
+  // Losing a future day degrades the buffer; losing today leaves the app with no times to
+  // show at all, which is worth failing loudly for rather than rendering an empty list
+  if (todayDropped) throw new Error(`Malformed prayer time: ${today} is unreadable`);
+  if (Object.keys(readableTimes).length === 0) throw new Error('Incomplete data received');
+
+  return { city: apiData.city, times: readableTimes };
 };
 
 // Fetches raw prayer time data from API
