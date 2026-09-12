@@ -669,3 +669,81 @@ describe('clearAllExcept call sites', () => {
     expect(refreshKeeps).toEqual(upgradeKeeps);
   });
 });
+
+// =============================================================================
+// MMKV INSTANCE ID TESTS (AUDIT #25)
+// =============================================================================
+
+/**
+ * The store is namespaced by the same predicate that decides whether mock
+ * prayer times are served, so a mock-serving build cannot leave fabricated
+ * rows where a real build will read them.
+ *
+ * The shared react-native-mmkv mock discards the id, so these cases install a
+ * local jest.doMock that records it (the pattern shared/__tests__/perf.test.ts
+ * uses) inside jest.isolateModules — scoped so the rest of this file keeps the
+ * shared mock. shared/config.ts reads EXPO_PUBLIC_ENV at module evaluation,
+ * which is why the graph has to be required fresh per environment.
+ */
+describe('MMKV instance id', () => {
+  const originalEnv = process.env.EXPO_PUBLIC_ENV;
+
+  afterEach(() => {
+    if (originalEnv === undefined) delete process.env.EXPO_PUBLIC_ENV;
+    else process.env.EXPO_PUBLIC_ENV = originalEnv;
+
+    jest.dontMock('react-native-mmkv');
+    jest.resetModules();
+  });
+
+  /** Re-evaluates stores/database.ts under the given env and returns the id it asked for */
+  const idForEnv = (env: string | undefined): string | undefined => {
+    if (env === undefined) delete process.env.EXPO_PUBLIC_ENV;
+    else process.env.EXPO_PUBLIC_ENV = env;
+
+    const ids: Array<string | undefined> = [];
+
+    jest.isolateModules(() => {
+      jest.doMock('react-native-mmkv', () => ({
+        __esModule: true,
+        // Only the import-time call matters here; the returned instance is
+        // never touched, since nothing in database.ts reads at module scope
+        createMMKV: (options: { id?: string }) => {
+          ids.push(options?.id);
+          return {};
+        },
+      }));
+
+      require('../database');
+    });
+
+    expect(ids).toHaveLength(1);
+    return ids[0];
+  };
+
+  it('uses athan-storage in production, the id shipped installs already hold', () => {
+    expect(idForEnv('prod')).toBe('athan-storage');
+  });
+
+  it('uses athan-storage in preview, which serves real data too', () => {
+    expect(idForEnv('preview')).toBe('athan-storage');
+  });
+
+  it('uses a separate store for local builds, which serve MOCK_DATA_SIMPLE', () => {
+    expect(idForEnv('local')).not.toBe('athan-storage');
+  });
+
+  it('uses a separate store when the environment is unset', () => {
+    expect(idForEnv(undefined)).not.toBe('athan-storage');
+  });
+
+  it('agrees with the predicate api/client.ts uses to serve mock data', () => {
+    // The two must move together: the namespace is a guarantee only while the
+    // build that writes fabricated rows is exactly the build denied the real id
+    const client = readFileSync(join(__dirname, '../../api/client.ts'), 'utf8');
+    expect(client).toContain('if (!isProd() && !isPreview()) return MOCK_DATA_SIMPLE;');
+
+    const db = readFileSync(join(__dirname, '../database.ts'), 'utf8');
+    expect(db).toContain("isProd() || isPreview() ? 'athan-storage'");
+  });
+});
