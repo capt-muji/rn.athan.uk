@@ -30,6 +30,12 @@ jest.mock('@/stores/database', () => ({
   clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
   database: {
     remove: (key: string) => mockDatabaseRemove(key),
+    // The gate atom is built while this module initialises, which is before the
+    // consts above leave the temporal dead zone, so these two cannot close over
+    // a hoisted jest.fn. Inert persistence is all the atom needs here: the
+    // assertions are on its in-memory value and on the remove call.
+    getString: () => undefined,
+    set: () => undefined,
   },
 }));
 
@@ -51,11 +57,27 @@ jest.mock('@/shared/config', () => ({
 // interactions are covered by stores/__tests__/notifications.test.ts)
 const mockMigrateIndexKeyedAlertPreferences = jest.fn();
 
-jest.mock('@/stores/notifications', () => ({
-  migrateIndexKeyedAlertPreferences: () => mockMigrateIndexKeyedAlertPreferences(),
-}));
+jest.mock('@/stores/notifications', () => {
+  // version.ts reopens the refresh gate through the atom rather than by removing
+  // the key behind it (audit finding 2), so the mock must expose a real
+  // persisted atom for that write to land on. Requiring the storage factory
+  // rather than the whole notifications module keeps expo-notifications,
+  // background tasks and sync out of this suite.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { atomWithStorageNumber } = require('@/stores/storage');
+  return {
+    migrateIndexKeyedAlertPreferences: () => mockMigrateIndexKeyedAlertPreferences(),
+    lastNotificationScheduleAtom: atomWithStorageNumber('preference_last_notification_schedule_check', 0),
+  };
+});
 
 // Import after mocks - version.ts imports come last since they depend on mocks
+// eslint-disable-next-line import/order
+import { getDefaultStore } from 'jotai/vanilla';
+
+// eslint-disable-next-line import/order
+import { lastNotificationScheduleAtom } from '@/stores/notifications';
+
 // eslint-disable-next-line import/order
 import {
   CACHE_SCHEMA_VERSION,
@@ -356,6 +378,20 @@ describe('clearUpgradeCache', () => {
 
     expect(mockDatabaseRemove).toHaveBeenCalledWith('preference_last_notification_schedule_check');
   });
+
+  // Audit finding 2: removing the MMKV key is not enough. The atom is created
+  // with getOnInit, nothing in the tree subscribes to it, so its snapshot is
+  // what shouldRescheduleNotifications() reads. Before the fix this assertion
+  // saw the stale timestamp and the forced reschedule never happened.
+  it('resets the gate ATOM, not only the key behind it', () => {
+    const store = getDefaultStore();
+    store.set(lastNotificationScheduleAtom, Date.now());
+    expect(store.get(lastNotificationScheduleAtom)).toBeGreaterThan(0);
+
+    clearUpgradeCache();
+
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+  });
 });
 
 // =============================================================================
@@ -440,6 +476,13 @@ describe('full upgrade flow', () => {
       getItem: (key: string) => mockGetItem(key),
       setItem: (key: string, value: unknown) => mockSetItem(key, value),
       clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
+      // The reset goes through the gate atom now, and re-requiring the module
+      // graph rebuilds that atom, which reads storage at creation
+      database: {
+        remove: (key: string) => mockDatabaseRemove(key),
+        getString: () => undefined,
+        set: () => undefined,
+      },
     }));
     jest.mock('@/shared/versionUtils', () => ({
       compareVersions: (v1: string, v2: string) => mockCompareVersions(v1, v2),

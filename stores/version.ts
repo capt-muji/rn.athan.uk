@@ -3,7 +3,8 @@ import Constants from 'expo-constants';
 import logger from '@/shared/logger';
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
-import { migrateIndexKeyedAlertPreferences } from '@/stores/notifications';
+import { lastNotificationScheduleAtom, migrateIndexKeyedAlertPreferences } from '@/stores/notifications';
+import { resetStoredAtom } from '@/stores/storage';
 
 // Guard to prevent multiple upgrade handlers from running
 let upgradeHandled = false;
@@ -182,14 +183,17 @@ export const cacheSchemaChanged = (): boolean => {
  * Reopens the 12-hour notification refresh gate so the next foreground
  * reschedules.
  *
- * Jotai reads the key from MMKV lazily on first access, so removing it before
- * shouldRescheduleNotifications() runs is what makes that return true. Cheap
- * and idempotent: same-identifier scheduling replaces in place, so a reschedule
- * that finds nothing to change leaves no gap.
+ * Goes through the atom, never the key. `lastNotificationScheduleAtom` is read
+ * with `store.get` and nothing in the tree subscribes to it, so it holds the
+ * snapshot taken when `stores/notifications` was evaluated — which is before
+ * this runs. Removing the key on its own left `shouldRescheduleNotifications()`
+ * reading the stale timestamp and skipping the very reschedule this exists to
+ * force. Cheap and idempotent: same-identifier scheduling replaces in place, so
+ * a reschedule that finds nothing to change leaves no gap.
  */
 const forceNotificationReschedule = (): void => {
   try {
-    Database.database.remove('preference_last_notification_schedule_check');
+    resetStoredAtom(lastNotificationScheduleAtom, 'preference_last_notification_schedule_check');
     logger.info('VERSION: Reset notification schedule timestamp to force reschedule');
   } catch (error) {
     logger.warn('VERSION: Failed to reset notification schedule timestamp', { error });
