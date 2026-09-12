@@ -37,7 +37,10 @@ if [[ ${FRAME_AUDIT:-video} == sf ]]; then
   sleep 1
   adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency 'com.mugtaba.athan/com.mugtaba.athan.MainActivity#0'" \
     > "$OUT/latency.txt" 2>&1
-  python3 - "$OUT/latency.txt" << 'EOF'
+  # `|| status=$?` so `set -e` does not abort on a FAIL verdict before it can be
+  # reported; the status is re-raised deliberately below.
+  status=0
+  python3 - "$OUT/latency.txt" << 'EOF' || status=$?
 import sys
 lines = [l.split() for l in open(sys.argv[1]) if len(l.split()) == 3]
 pts = sorted(int(f[1]) for f in lines if int(f[1]) != 0)
@@ -57,9 +60,15 @@ print("gaps>100ms (freeze or idle, needs frames to tell):", [f"{g:.0f}" for g in
 if not anim:
     print("30fps FLOOR: NO DATA — no cadence gaps in the window, this is not a pass")
     sys.exit(1)
-print("30fps FLOOR (cadence only):", "PASS" if all(g <= 34 for g in anim) else "FAIL")
+passed = all(g <= 34 for g in anim)
+print("30fps FLOOR (cadence only):", "PASS" if passed else "FAIL")
+# Exit status, not just text: every caller reads $?, and a measurement tool that
+# prints FAIL while returning success is the same defect finding 28 was about —
+# a confident pass having measured nothing — one layer further out.
+sys.exit(0 if passed else 1)
 EOF
-  echo "evidence: $OUT"; exit 0
+  echo "evidence: $OUT"
+  exit $status
 fi
 
 adb -s "$SERIAL" shell "rm -f /sdcard/frame_audit.mp4"
