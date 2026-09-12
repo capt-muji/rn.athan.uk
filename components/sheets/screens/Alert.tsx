@@ -144,7 +144,12 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
   const handleAlertSelect = useCallback(
     async (type: AlertType) => {
       if (type !== AlertType.Off && atTimeAlert === AlertType.Off) {
-        await ensurePermissions();
+        // A denied prompt must leave the control where it was. commitAlertMenuChanges
+        // re-checks permissions at dismiss and saves nothing without them, so moving
+        // the selection anyway left the user believing the athan was armed for this
+        // prayer when nothing would ever fire. Returning here is also what removes
+        // that second, now-redundant prompt at dismiss.
+        if (!(await ensurePermissions())) return;
       }
       setAtTimeAlert(type);
       if (type === AlertType.Off) {
