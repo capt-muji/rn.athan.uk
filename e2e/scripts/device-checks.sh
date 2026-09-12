@@ -9,7 +9,8 @@
 #
 # expected-times.json (optional) is a JSON list of "YYYY-MM-DD HH:MM" strings —
 # the moments the app should be firing at. When given, every future alarm must
-# match one, and every expected time inside the armed window must be covered.
+# match one, or sit one of the reminder intervals ahead of one. Which prayers are
+# armed is a user preference, so an expected time with no alarm is not a failure.
 # Generate it from the timetable the app is using (see e2e/README.md). No API key
 # is read, passed or stored by this script.
 #

@@ -16,7 +16,11 @@ Usage: device_checks.py <alarm-dump> <package> <device-now> [expected-times.json
 Mac's clock, which can differ.
 
 expected-times.json is a JSON list of "YYYY-MM-DD HH:MM" strings. When given,
-every future NOTIFICATION alarm must match one to the minute.
+every future NOTIFICATION alarm must match one to the minute, or sit one of the
+REMINDER_INTERVALS ahead of one. The dump carries no per-notification identifier,
+so a pre-prayer reminder is indistinguishable from an at-time alert apart from
+its offset; demanding an exact prayer time failed every device with a reminder
+switched on.
 
 Two things this deliberately does not do, both learned from running it against a
 real device:
@@ -36,7 +40,11 @@ Exit status: 0 when everything checks out, 1 on any failure.
 import json
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
+
+# Minutes a pre-prayer reminder can fire ahead of its prayer. Mirrors
+# REMINDER_INTERVALS in shared/constants.ts; keep the two in step.
+REMINDER_INTERVALS = (5, 10, 15, 20, 25, 30)
 
 ANCHOR = re.compile(r"Alarm\{[^}]*\}")
 # Only a batch entry is a real armed alarm. Those carry the queue position,
@@ -143,14 +151,17 @@ def main():
             # nothing was verified at all
             print("  ..    no future prayer alerts to compare against the expected times")
         else:
-            stray = sorted(armed - expected)
+            reminders = {m - timedelta(minutes=i) for m in expected for i in REMINDER_INTERVALS}
+            stray = sorted(armed - expected - reminders)
             if stray:
                 failed = True
-                print(f"  FAIL  {len(stray)} alert(s) do not fire at a prayer time:")
+                print(f"  FAIL  {len(stray)} alert(s) fire at neither a prayer time nor a reminder offset:")
                 for moment in stray[:8]:
                     print(f"        {moment:%Y-%m-%d %H:%M}")
             else:
-                print(f"  PASS  every armed alert fires at a prayer time ({len(armed)} checked)")
+                early = len(armed - expected)
+                print(f"  PASS  every armed alert fires at a prayer time or a reminder offset "
+                      f"({len(armed)} checked, {early} ahead of a prayer)")
 
         # Deliberately no "missing times" check: which prayers are armed is a
         # user preference the timetable cannot express. See the module docstring.
