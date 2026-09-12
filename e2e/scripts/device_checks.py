@@ -97,7 +97,10 @@ def main():
 
     alarms = parse_alarms(open(dump_path, errors="ignore").read().splitlines(), package)
     dated = [(fires_at(a), a) for a in alarms if fires_at(a) is not None]
-    future = sorted((m, a) for m, a in dated if m > now)
+    # Sort on the moment alone. Two alarms can share a minute — a reminder for one
+    # prayer and the at-time alert for another — and falling through to compare the
+    # alarm dicts raises TypeError.
+    future = sorted(((m, a) for m, a in dated if m > now), key=lambda pair: pair[0])
     past = [(m, a) for m, a in dated if m <= now]
 
     failed = False
