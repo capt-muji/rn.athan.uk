@@ -11,6 +11,8 @@
  * and London's clock-change rule), not from the app's own time helpers.
  */
 
+import { formatInTimeZone } from 'date-fns-tz';
+
 import { MOCK_DATA_FULL } from '@/mocks/full';
 import { TIME_ADJUSTMENTS } from '@/shared/constants';
 import {
@@ -350,5 +352,89 @@ describe('every day of a real London year (2024)', () => {
     }
 
     expect(mismatches).toEqual([]);
+  });
+});
+
+// =============================================================================
+// MAGRIB PAST MIDNIGHT (finding 44)
+//
+// Above roughly 60N sunset itself falls after midnight — Reykjavik on 21 June is
+// 00:04 — and a provider still files that under the previous date. Everything here
+// is inert for London, whose Magrib never reaches the small hours, so these cases
+// also serve as the proof that the rule changed nothing for the shipped city.
+// =============================================================================
+
+describe('a Magrib that falls after midnight', () => {
+  // Sunset 00:04 filed under 21 June, a short polar night, Fajr 01:30 on 22 June
+  const POLAR = [
+    day('2026-06-21', '01:28', '02:55', '13:30', '17:30', '00:04', '23:40'),
+    day('2026-06-22', '01:30', '02:56', '13:30', '17:30', '00:06', '23:42'),
+  ];
+
+  it('places the Magrib instant on the next calendar day, not 23h56m early', () => {
+    useRecords(POLAR);
+
+    const magrib = rowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'Magrib');
+
+    expect(formatInTimeZone(magrib.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe('2026-06-22 00:04');
+  });
+
+  it('keeps the night short instead of stretching it to about 26 hours', () => {
+    useRecords(POLAR);
+
+    const list = listFor(ScheduleType.Extra, '2026-06-22');
+    const midnight = rowOf(list, 'Midnight').datetime;
+    const lastThird = rowOf(list, 'Last Third').datetime;
+
+    // Night runs 22 June 00:04 to 22 June 01:30: 86 minutes, midpoint 00:47
+    expect(formatInTimeZone(midnight, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe('2026-06-22 00:47');
+    expect(midnight.getTime()).toBeLessThan(lastThird.getTime());
+  });
+
+  it('keeps the row on its own list day, so 21 June still shows a Magrib', () => {
+    useRecords(POLAR);
+
+    const magrib = rowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'Magrib');
+
+    // datetime moves to the 22nd for the alarm; belongsToDate must not, or the row
+    // leaves the 21st's list and appears on the 22nd's alongside that day's own Magrib
+    expect(magrib.belongsToDate).toBe('2026-06-21');
+  });
+
+  it('keeps Islamic Midnight on the correct side of noon', () => {
+    useRecords(POLAR);
+
+    const midnight = rowOf(listFor(ScheduleType.Extra, '2026-06-22'), 'Midnight');
+
+    expect(Number(formatInTimeZone(midnight.datetime, 'Europe/London', 'HH'))).toBeLessThan(12);
+  });
+
+  it('leaves Istijaba an hour before that Magrib, on the earlier date', () => {
+    useRecords(POLAR);
+
+    // Friday 2026-06-26 so Istijaba is on the list at all
+    const friday = [
+      day('2026-06-26', '01:32', '02:58', '13:31', '17:31', '00:08', '23:44'),
+      day('2026-06-27', '01:34', '02:59', '13:31', '17:31', '00:10', '23:46'),
+    ];
+    useRecords(friday);
+
+    const istijaba = rowOf(listFor(ScheduleType.Extra, '2026-06-26'), 'Istijaba');
+    const magrib = rowOf(listFor(ScheduleType.Standard, '2026-06-26'), 'Magrib');
+
+    expect(magrib.datetime.getTime() - istijaba.datetime.getTime()).toBe(60 * MINUTE);
+  });
+});
+
+describe('London is untouched by the Magrib midnight rule', () => {
+  it('keeps a normal evening Magrib on its own date', () => {
+    useRecords([
+      day('2026-09-12', '04:56', '06:28', '13:02', '16:27', '19:25', '20:39'),
+      day('2026-09-13', '04:57', '06:29', '13:02', '16:26', '19:23', '20:37'),
+    ]);
+
+    const magrib = rowOf(listFor(ScheduleType.Standard, '2026-09-12'), 'Magrib');
+
+    expect(formatInTimeZone(magrib.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe('2026-09-12 19:25');
   });
 });
