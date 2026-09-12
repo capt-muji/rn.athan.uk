@@ -566,7 +566,8 @@ Use these prompts to start specialized sessions:
 | **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
 | **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
 | **Code audit (findings)** | `ai/prompts/audit-findings.md` | CLOSED 2026-09-12: task 19 delivered `ai/features/uat-2/AUDIT-FINDINGS.md`, 57 findings in six tiers |
-| **Code audit (changes)** | `ai/prompts/audit-changes.md` | Session 4 of the 4-session chain: task 20, works the findings one change at a time |
+| **Code audit (changes)** | `ai/prompts/audit-changes.md` | Session 4 of the 4-session chain: task 20, works the findings one change at a time. Part 1 ran 2026-09-12 and closed 18 findings |
+| **Code audit (changes, part 2)** | `ai/prompts/audit-changes-2.md` | Continues task 20 from 1.25.30; carries what part 1 learned about `inlineRequires`, mock contamination and the hook |
 | **Android BG campaign** | `ai/prompts/android-background-task.md` | CLOSED 2026-09-09: verification complete (runbook CLOSED header summarizes outcome; #20 upstream candidate remains the only open item) |
 | **Large-screen adaptation** | `ai/prompts/large-screen-adaptation.md` | Resumable feature: phone-view scaling for iPad/tablet/desktop-web (tracker inside) |
 | **alarmClock backport** | `ai/prompts/alarmclock-backport.md` | RUNS LAST: #49687 backport onto SDK 57 via patch-package, throwaway branch + EAS preview (tracker inside) |
