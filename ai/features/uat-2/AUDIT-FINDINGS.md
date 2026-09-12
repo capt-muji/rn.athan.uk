@@ -1047,6 +1047,19 @@ CONFIRMED for the absence of coverage.
 
 ## 23. `atomWithStorageNumber` yields NaN for a corrupt value and 0 for an empty string
 
+**FIXED in 1.25.24** (`fix/audit-23-number-parsing`). `getItem` falls back to the initial value
+for anything that is not a finite number, and logs a warning naming the key. A legitimate `0`
+still reads as `0`, which is the case the fix must not break: `AlertType.Off` is zero.
+
+Five new cases in `stores/__tests__/storage.test.ts` (22 to 27), covering a corrupt string, an
+empty string, whitespace, `Infinity` and the literal `NaN`, plus one pinning the legitimate
+zero. Reverting the fix fails exactly those five.
+
+This also closes the `athanNaN.mp3` half of the finding for corrupt values, since
+`preference_sound` now falls back to 0 rather than NaN. An out-of-range but well-formed index,
+say 99, still yields `athan99.mp3`; that is a clamp on read rather than a parse, it lands on
+the same channel path as finding 5, and it is handled there.
+
 `stores/storage.ts:25-28`. `undefined` is the only guarded case.
 
 ```

@@ -107,6 +107,32 @@ describe('atomWithStorageNumber', () => {
       expect(result).toBe(-5);
     });
 
+    // Audit finding 23: only `undefined` was guarded. A corrupt value yielded
+    // NaN, which matches no AlertType branch and no reminder interval, and an
+    // empty string yielded 0, which reads as a deliberate Off rather than an
+    // absent preference. This factory backs every numeric preference the app has.
+    it.each([
+      ['a corrupt string', 'not-a-number'],
+      ['an empty string', ''],
+      ['whitespace', '   '],
+      ['Infinity', 'Infinity'],
+      ['the literal NaN', 'NaN'],
+    ])('getItem falls back to the default for %s', (_label, stored) => {
+      mockDatabase.getString.mockReturnValue(stored);
+
+      const result = storageInterface.getItem('test_key', 42);
+
+      expect(result).toBe(42);
+    });
+
+    it('getItem still reads a legitimate zero rather than treating it as absent', () => {
+      mockDatabase.getString.mockReturnValue('0');
+
+      const result = storageInterface.getItem('test_key', 42);
+
+      expect(result).toBe(0);
+    });
+
     it('setItem stores value as string', () => {
       storageInterface.setItem('test_key', 42);
 
