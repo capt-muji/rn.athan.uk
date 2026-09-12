@@ -2038,6 +2038,21 @@ produced any other way.
 
 CONFIRMED. Every `(SF latency)` line in the baseline needs re-verifying after the fix.
 
+### COMPLETED in session 5, 1.25.92, `fix/audit-28-frame-audit-exit-code`
+
+**The 1.25.14 fix corrected the units and the printed verdict, but not the exit status.** A
+genuine 50 ms frame miss printed `FAIL` and the script still exited 0, because the unconditional
+`exit 0` after the heredoc discarded python's status. Every caller reads `$?`, so the script was
+still incapable of *returning* a failure — the same defect one layer further out, and the
+sibling `device-checks.sh` already gets this right with a `FAIL` accumulator.
+
+`sys.exit(0 if passed else 1)`, with the invocation guarded by `|| status=$?` so `set -euo
+pipefail` cannot abort before the verdict is printed, and the status re-raised deliberately.
+
+Verified synthetically in both directions by running the verdict block against generated
+SurfaceFlinger timestamps: 200 frames at 16 ms exits 0 and prints PASS; the same series with one
+50 ms gap exits 1 and prints FAIL.
+
 ## 29. `device-checks.sh` calls a permission present without reading the grant
 
 **FIXED in 1.25.12** (`fix/audit-29-permission-grant`). The script now reads `granted=true`.
