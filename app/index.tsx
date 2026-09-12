@@ -80,11 +80,19 @@ export default function Index() {
     // Self-describing builds: every log capture names its flag set
     logger.info('APP: feature flags resolved', FEATURE_FLAGS);
 
+    // Armed at mount, never deferred: the timeout below is cancelled by a
+    // background inside its window, and when it does fire on a LATER resume it
+    // captures `previousAppState` as 'active' — so that resume silently loses
+    // the whole foreground path (overlay boundary, countdown resync, sync).
+    // Cost is one AppState.addEventListener plus initWidgetSettingsSync, which
+    // returns immediately off iOS and behind the widgets flag.
+    initializeListeners(checkInitialPermissions);
+
     // Post-paint settling window: the first moments after content commit are
     // when users swipe to the extras page. Notification init (bridge +
-    // channel work), listeners, and the update check add nothing visible —
-    // deferring them past that window keeps the first swipes on an idle JS
-    // thread. The 12-hour refresh gate makes a ~1.5s delay immaterial.
+    // channel work) and the update check add nothing visible — deferring them
+    // past that window keeps the first swipes on an idle JS thread. The
+    // 12-hour refresh gate makes a ~1.5s delay immaterial.
     const initHandle = setTimeout(() => {
       // This effect runs once per cold launch, and on Android a cold launch may
       // follow a force-stop that cancelled every armed alarm without touching
@@ -95,9 +103,6 @@ export default function Index() {
       initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
         logger.error('Failed to initialize notifications:', error)
       );
-
-      // Initialize background/foreground state listeners (sync UI as needed)
-      initializeListeners(checkInitialPermissions);
 
       // Debug instrumentation for the notification-refresh background task (ISSUES.md #8)
       runBackgroundTaskDebugSequence();

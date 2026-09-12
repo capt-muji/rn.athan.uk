@@ -9,11 +9,20 @@ import { sync } from '@/stores/sync';
 import { bumpResync } from '@/stores/ui';
 import { initWidgetSettingsSync } from '@/stores/widget';
 
+/** The subscription is never removed, so a second call would stack a duplicate
+ *  handler and double every resume action. The caller's `clearTimeout` cleanup
+ *  used to absorb React StrictMode's double-invoked mount effect in dev;
+ *  registration is synchronous now, so the guard has to live here. */
+let listenersInitialized = false;
+
 /**
  * Initializes app state change listeners
  * Handles notification refresh when app returns from background
  */
 export const initializeListeners = (checkPermissions: () => Promise<boolean>) => {
+  if (listenersInitialized) return;
+  listenersInitialized = true;
+
   let previousAppState = AppState.currentState;
 
   // Widgets follow in-app settings while the app runs (debounced re-push)
