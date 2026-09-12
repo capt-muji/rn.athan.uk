@@ -214,6 +214,9 @@ export const extraReminderIntervalAtoms = EXTRAS_ENGLISH.map((prayerName) =>
   createReminderIntervalAtom(ScheduleType.Extra, prayerName)
 );
 
+/** The persisted-number atoms the migration writes through. */
+type MigratableAtom = (typeof standardPrayerAlertAtoms)[number];
+
 /**
  * One-time migration: index-keyed alert preference keys -> name-keyed keys
  *
@@ -227,24 +230,51 @@ export const extraReminderIntervalAtoms = EXTRAS_ENGLISH.map((prayerName) =>
 export const migrateIndexKeyedAlertPreferences = (): void => {
   let migrated = 0;
 
-  const migrate = (oldKey: string, newKey: string) => {
+  /**
+   * @param target The atom fronting newKey. Writing through it is what makes the
+   *   migrated value visible this session: every atom above was created when this
+   *   module was evaluated, which is necessarily before this function can be
+   *   called, so each one already holds a pre-migration snapshot. A bare
+   *   `database.set` leaves those snapshots in place and every `store.get` for
+   *   the rest of the launch reads the default.
+   */
+  const migrate = (oldKey: string, newKey: string, target: MigratableAtom) => {
     const oldValue = Database.database.getString(oldKey);
     if (oldValue === undefined) return;
 
     if (Database.database.getString(newKey) === undefined) {
-      Database.database.set(newKey, oldValue);
+      const parsed = Number(oldValue);
+      // A well-formed value goes through the atom, which persists it and seeds
+      // the in-memory copy in one step. Anything else is copied verbatim, as it
+      // always was, rather than being re-encoded into NaN.
+      if (Number.isFinite(parsed)) store.set(target, parsed);
+      else Database.database.set(newKey, oldValue);
       migrated += 1;
     }
     Database.database.remove(oldKey);
   };
 
   (['standard', 'extra'] as const).forEach((type) => {
-    const prayerNames = type === 'standard' ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+    const isStandard = type === 'standard';
+    const prayerNames = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+    const alertAtoms = isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms;
+    const reminderAtoms = isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms;
+    const intervalAtoms = isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms;
+
     prayerNames.forEach((prayerName, index) => {
       const name = prayerName.toLowerCase();
-      migrate(`preference_alert_${type}_${index}`, `preference_alert_${type}_${name}`);
-      migrate(`preference_reminder_alert_${type}_${index}`, `preference_reminder_alert_${type}_${name}`);
-      migrate(`preference_reminder_interval_${type}_${index}`, `preference_reminder_interval_${type}_${name}`);
+      const alertAtom = alertAtoms[index];
+      const reminderAtom = reminderAtoms[index];
+      const intervalAtom = intervalAtoms[index];
+      if (!alertAtom || !reminderAtom || !intervalAtom) return;
+
+      migrate(`preference_alert_${type}_${index}`, `preference_alert_${type}_${name}`, alertAtom);
+      migrate(`preference_reminder_alert_${type}_${index}`, `preference_reminder_alert_${type}_${name}`, reminderAtom);
+      migrate(
+        `preference_reminder_interval_${type}_${index}`,
+        `preference_reminder_interval_${type}_${name}`,
+        intervalAtom
+      );
     });
   });
 
