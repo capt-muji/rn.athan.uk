@@ -260,8 +260,20 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
 
   it('honours the lowest rung the interval ladder actually uses', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '15';
+    // NODE_ENV matters: the development fallback is also 15, so without pinning this the
+    // case cannot tell an accepted override from a rejected one
+    process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
     expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(15);
+  });
+
+  // iOS reads the option with `as? Int`: a fraction fails the cast and silently falls back to
+  // 12 hours, while Android truncates — 20 minutes on one platform, 12 hours on the other
+  it('ignores a fractional override, which the two platforms would read differently', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '20.5';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
   });
 
   it('honours a full day, the highest value that is still a choice', () => {

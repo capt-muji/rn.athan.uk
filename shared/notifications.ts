@@ -73,7 +73,7 @@ export const genNotificationContent = (
  * @example
  * prayerNameSlug('Last Third') // 'last_third'
  */
-const prayerNameSlug = (englishName: string): string => englishName.toLowerCase().replace(/\s+/g, '_');
+export const prayerNameSlug = (englishName: string): string => englishName.toLowerCase().replace(/\s+/g, '_');
 
 /**
  * Gets notification sound for a pre-prayer reminder based on alert type
