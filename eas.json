@@ -30,7 +30,7 @@
       },
       "android": {
         "track": "alpha",
-        "serviceAccountKeyPath": "$HOME/.config/athan/athan-486118-66c0837dd5c5.json"
+        "serviceAccountKeyPath": "@secret:GOOGLE_SERVICE_ACCOUNT"
       }
     }
   }
