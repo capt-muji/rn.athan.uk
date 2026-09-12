@@ -29,9 +29,12 @@ module.exports = {
   // once per worktree — and a half-finished branch in one of them fails the main tree's
   // validate. node_modules is excluded by default; these are not.
   //
-  // <rootDir>-anchored, NOT a bare '/.claude/': these are regexes matched against absolute
-  // paths, so the bare form also matches a worktree's OWN path (which contains /.claude/)
-  // and leaves an agent working inside one unable to run the suite at all.
+  // Both lists MUST stay anchored to <rootDir>. These patterns are matched against the
+  // ABSOLUTE path, and an agent worktree's own rootDir is itself under .claude/worktrees/,
+  // so a bare '/.claude/' matches every file in that worktree: jest then reports "No tests
+  // found" there and the pre-commit hook's `yarn validate` can never pass. Anchoring keeps
+  // the main checkout's behaviour identical (its rootDir is the repo root, so its own
+  // .claude/worktrees/ is still skipped) while leaving each worktree able to run its suite.
   testPathIgnorePatterns: ['/node_modules/', '<rootDir>/.claude/', '<rootDir>/android/', '<rootDir>/ios/'],
   // And keep them out of the module map as well: testPathIgnorePatterns only hides tests,
   // while jest-haste-map still scans for manual mocks and warns "duplicate manual mock found"
