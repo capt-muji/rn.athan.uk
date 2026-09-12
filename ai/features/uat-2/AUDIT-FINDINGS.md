@@ -2190,6 +2190,28 @@ table built on top of it.
 
 CONFIRMED for both code paths. The magnitude of the undercount is inference.
 
+### CLOSED in session 5, 1.26.15, `fix/audit-34-idle-cpu-multi-pid`
+
+`PID=$(adb shell pidof …)` on a two-process package yielded the literal `1234512399` — both pids
+concatenated. The `-n` guard passed, `/proc/1234512399/…` matched nothing, and the script printed
+`median 0.0%` and **exited 0**: a confident idle measurement having sampled no process at all.
+
+Now `PIDS=(${=...})` with one `/proc` glob per pid, the count echoed, and the python side
+**failing loudly** on blank samples — naming the files, exiting 1 — instead of reaching the
+arithmetic. Threads born mid-interval are counted; exited threads are counted and the figure is
+declared a lower bound rather than quietly wrong.
+
+Reproduced and verified synthetically against the shipped text of both versions, since no
+multi-process window was available on the device: the bogus `0.0%` / exit 0 becomes
+`MEASUREMENT FAILED` / exit 1; a healthy two-process window reads 24.8% before and after (the
+first pid alone would have said 20.0%); a thread-churn window moves 13.5% → 14.0%, with
+`Choreographer` appearing at 2.7% where it had been absent entirely.
+
+**Not verified without hardware:** that `pidof` actually returns more than one pid for this
+package on the 3T, and what the corrected figure is there. `e2e/baselines/android-3t.json` was
+deliberately **not** updated — its recorded numbers predate the fix and re-measuring them is a
+device task.
+
 ## 35. `device-checks.sh` prints PASS for a check it did not perform
 
 **FIXED in 1.25.16** (`fix/audit-35-unperformed-pass`), pulled forward out of step 8 because
@@ -2263,6 +2285,23 @@ starting at the earliest JS instant, and `stores/bootstrap.ts` already runs befo
 
 CONFIRMED. Measurement hygiene only: `PERF_ENABLED` folds the whole module out of production
 builds and nothing here reaches a prayer time.
+
+### CLOSED in session 5, 1.26.14, `fix/audit-36-perf-ring-epoch-axis`
+
+**Checked before changing anything, and the finding is true.** `react-native-performance`'s
+`timeOrigin` is `now()` — a **monotonic** reading, not a browser-style epoch — so
+`Date.now() - epochOffset + startTime` added elapsed time twice. Confirmed independently against
+the one raw capture in the repo: `home_content.ts − perf_monitor_init.ts` read 3072 for lines
+1.618 s apart.
+
+`ts` is now `epochOffset + entry.startTime`, with `epochOffset = Date.now() - now()` rather than
+`timeOrigin` — the latter is the epoch of *module load* and was only ever right because the
+require happened to sit next to it.
+
+All three new cases fail when reverted: init reads `2000` against an epoch of `1789209000000`,
+and the doubled deltas come out 1800 / 1352 / 3152 against the true 900 / 676 / 1576 — matching
+the finding's own reproduction. The two halves are isolated: with only the `ts` fix, the
+load-before-init case still fails by exactly its 5000 ms gap.
 
 ## 58. `device_checks.py` crashes when two alarms share a minute
 
@@ -2378,6 +2417,22 @@ timer fires once, re-enters the same early return, and the chain is dead for the
 `stores/__tests__/widgetIo.test.ts:75-82` asserts only that the promise resolves.
 
 CONFIRMED. Re-arm in a `finally`.
+
+### CLOSED in session 5, 1.26.13, `fix/audit-39-widget-flip-rearm`
+
+`scheduleLabelFlipPush` was the only re-arm site and sat after all ten `updateTimeline` calls,
+inside the try. A fired timer clears its own slot before the push runs, so any exit that skipped
+it — a native throw, or the empty-timeline early return — left no successor and the per-minute
+chain was dead for the life of the process. The widget then freezes silently.
+
+Re-armed in a `finally`, with `flipTargetEpochMs` captured **before** the native calls so a throw
+still re-arms on the true cadence, and a null or past target falling back to the retry interval.
+
+One non-obvious part worth keeping: an empty build now also drops `sequenceCache[schedule]`.
+Without that the retry reuses the same empty sequence and produces the same empty build forever —
+the chain would re-arm faithfully and never recover, which is a worse failure than stopping.
+
+Three of nine cases fail with the fix reverted.
 
 ## 40. No widget suite can catch 37 or 38
 
