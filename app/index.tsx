@@ -20,7 +20,7 @@ import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { isRamadan } from '@/shared/time';
 import { shouldShowWhatsNew, VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
-import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
+import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLaunch } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
 import {
@@ -86,6 +86,11 @@ export default function Index() {
     // deferring them past that window keeps the first swipes on an idle JS
     // thread. The 12-hour refresh gate makes a ~1.5s delay immaterial.
     const initHandle = setTimeout(() => {
+      // This effect runs once per cold launch, and on Android a cold launch may
+      // follow a force-stop that cancelled every armed alarm without touching
+      // the refresh timestamp. Reopen the gate before the refresh reads it.
+      reopenRefreshGateOnColdLaunch();
+
       // Initialize notifications, register background task, and create channel on first load
       initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
         logger.error('Failed to initialize notifications:', error)
