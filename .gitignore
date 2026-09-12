@@ -1,6 +1,6 @@
 .expo
 .vscode
-.husky
+.husky/_
 dist
 npm-debug.*
 *.jks
