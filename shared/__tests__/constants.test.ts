@@ -241,6 +241,34 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     const mod = requireFreshConstants();
     expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
   });
+
+  // ISSUES.md #8 was seconds passed where minutes were expected: 10800 scheduled the
+  // task 7.5 days out. The floor check caught nothing, because 10800 is positive.
+  it('ignores the seconds-for-minutes mistake that was ISSUES #8', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '10800';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+  });
+
+  it('ignores an override below the Android WorkManager floor of 15 minutes', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '0.001';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+  });
+
+  it('honours the lowest rung the interval ladder actually uses', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '15';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(15);
+  });
+
+  it('honours a full day, the highest value that is still a choice', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '1440';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(1440);
+  });
 });
 
 // =============================================================================

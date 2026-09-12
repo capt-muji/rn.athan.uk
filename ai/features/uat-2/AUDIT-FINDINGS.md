@@ -1325,6 +1325,25 @@ revert ships it, and the background layer is the primary refresh layer.
 
 CONFIRMED for the gap. LIKELY for the ship-a-typo scenario.
 
+### CLOSED in session 5, 1.25.51, `fix/audit-20-bg-interval-ceiling`
+
+`isEnvIntervalValid` now requires `>= MIN_BG_INTERVAL_MINUTES (15)` and
+`<= MAX_BG_INTERVAL_MINUTES (1440)`, both named constants rather than inline numbers so the
+reason each bound exists is readable at the bound. 15 is Android WorkManager's own floor, below
+which the OS silently clamps and an interval-ladder experiment measures something other than
+what it set; 1440 is a day, beyond which an override is the seconds-for-minutes mistake rather
+than a choice.
+
+The bounds were chosen to break no documented workflow: 15 is the lowest rung the background-task
+runbook uses, and no profile in `eas.json` sets the variable at all. A rejected value still falls
+back to the safe 360 rather than failing, so the fail direction is unchanged.
+
+Four new cases: `10800` (the literal ISSUES #8 value) and `0.001` both fall back to 360, while
+`15` and `1440` are honoured. Reverting to the old `> 0` check fails exactly the two rejection
+cases; the two acceptance cases pass either way, which is correct — they exist to prove the
+guard did not narrow the useful range.
+
+
 ## 21. The iOS 64-pending ceiling is one constant increment away, and nothing guards it
 
 `shared/constants.ts:68`; mock at `shared/__mocks__/expo-notifications.ts:23`.
