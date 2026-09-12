@@ -25,7 +25,7 @@ export default function Day({ type }: Props) {
   const isStandard = type === ScheduleType.Standard;
 
   const displayDateAtom = isStandard ? standardDisplayDateAtom : extraDisplayDateAtom;
-  const date = useAtomValue(displayDateAtom) ?? '';
+  const date = useAtomValue(displayDateAtom);
   const hijriEnabled = useAtomValue(hijriDateEnabledAtom);
 
   // Overlay-aware date (ADR-014): while the overlay highlights a prayer on
@@ -40,10 +40,15 @@ export default function Day({ type }: Props) {
 
   // Hijri formatting is expensive on the floor device (umalqura Intl) — memo
   // so overlay toggles never re-format an unchanged date string
-  const formattedDate = useMemo(
-    () => (hijriEnabled ? formatHijriDateLong(dateSource) : formatDateLong(dateSource)),
-    [hijriEnabled, dateSource]
-  );
+  const formattedDate = useMemo(() => {
+    // Day is the only belongsToDate consumer with no isReady gate — List,
+    // usePrayer and useSchedule all have one. Coercing a null date to '' sent
+    // `''.split('-').map(Number)` into an Invalid Date, and date-fns `format`
+    // throws on it; the Hijri branch is no safer, because it calls
+    // formatDateLong from inside its own catch and throws again, uncaught.
+    if (!dateSource) return '';
+    return hijriEnabled ? formatHijriDateLong(dateSource) : formatDateLong(dateSource);
+  }, [hijriEnabled, dateSource]);
 
   return (
     <View style={styles.container}>
