@@ -1272,6 +1272,13 @@ CONFIRMED.
 
 ## 33. `baseline-compare.sh` reports medians from a flow that failed
 
+**FIXED in 1.25.13** (`fix/audit-33-failed-flow`). All three defects, proven with a stubbed
+`maestro` and `adb` so every branch could be driven without a perf build. A failing flow now
+prints one failure line and exits 1 instead of a full comparison table at exit 0. An empty
+mark capture prints what to do about it instead of aborting silently under `set -e` after
+`== marks collected:`. `ROOT` uses `${0:A:h:h}`, so invoked from `/tmp` the baseline now
+resolves and the delta reads `-50` where the previous script reported `n/a` for both columns.
+
 `e2e/scripts/baseline-compare.sh:25` discards maestro's exit code with `|| true`, so a flow
 that missed every tap still produces a full comparison table. At `:11` and `:30`,
 `set -euo pipefail` plus a `grep` that exits 1 on no match aborts the script before the
