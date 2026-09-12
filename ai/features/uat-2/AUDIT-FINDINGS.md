@@ -3487,7 +3487,15 @@ resolution and the device verification were done here. Individual findings above
 
 Tier 6 closed: **a** (1.25.67), **b** (1.25.65), **e** (1.25.72), **g** (1.25.69), **h**
 (1.25.70), **t** (1.25.58), **u** (1.25.71), **v** (1.25.68), **w** (1.25.73), **y** (1.25.66),
-**aa** (1.25.77), plus the four accessibility items (1.25.88, 89).
+**aa** (1.25.77), plus **d** (1.26.3), **f** (1.26.4), **i** (1.26.2), **j** (1.25.98), **k**
+(1.25.99), **l** (1.26.0), **m** (1.25.97), **o** (1.26.5), **r** (1.26.7), **s** (1.26.6) and
+**z** (1.26.1).
+
+Accessibility: item 1, the alert bell (1.25.88); item 2, the overlay catchers and the
+explanation live region (1.25.89); item 3, the sheet controls and the modal (1.26.11). Item 4,
+`allowFontScaling: false`, is a recorded decision rather than a defect and stays as it is.
+**An earlier version of this record claimed all four were closed at 1.25.88 and 1.25.89. Two
+were.** Item 3 was assigned to an agent that produced nothing, and nothing checked.
 
 ## Found in session 5, not in the sweep
 

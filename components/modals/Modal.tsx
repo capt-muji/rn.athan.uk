@@ -31,7 +31,14 @@ export default function Modal({ visible, children, title }: Props) {
   return (
     <Animated.View style={styles.container} entering={FadeIn} exiting={FadeOut}>
       <View style={styles.backdrop} />
-      <Animated.View style={styles.modal} entering={MODAL_ENTERING} exiting={MODAL_EXITING}>
+      {/* Without this the prayer list behind the modal stays reachable by swipe, so a
+          screen-reader user can operate controls they cannot see are covered */}
+      <Animated.View
+        accessibilityViewIsModal={true}
+        accessibilityRole='alert'
+        style={styles.modal}
+        entering={MODAL_ENTERING}
+        exiting={MODAL_EXITING}>
         <View style={styles.content}>
           <Text style={styles.title}>{title}</Text>
           {children}
