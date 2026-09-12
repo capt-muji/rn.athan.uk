@@ -660,6 +660,23 @@ CONFIRMED, reproduced, fixed.
 
 Found in session 4 while correcting finding 2. The danger here is the comment, not the code.
 
+**FIXED in 1.25.22** (`fix/audit-60-metro-comment`). The comment now says what the transform
+does, cites `8630f75` for the measurement, and states that evaluation order is load-bearing and
+not reproduced by jest. The transform itself is untouched.
+
+**The history settles it.** `git show 8630f75` shows the word THROWAWAY was written **in the
+same commit that shipped the change**, as one of *"six coordinated launch-path changes,
+verified on the 3T (Android 9) and iPhone XS"*. It is a drafting label that was never updated
+when the change was kept, and the commit body is the real record:
+
+> `metro.config.js: inlineRequires true (Expo defaults it OFF) — bundle exec 764ms -> 86ms;`
+> `module eval defers to first touch, so toggled-off features never evaluate`
+>
+> `inlineRequires relocates eval (~650ms from pre-entry into the content window, net cold`
+> `total unchanged ~3.17s on the 3T) rather than deleting it`
+
+So the transform stays. It is a measured first-paint win, not an experiment awaiting a verdict.
+
 ```js
 // THROWAWAY perf22 experiment: defer module evaluation to first use.
 getTransformOptions: async () => ({
@@ -688,12 +705,7 @@ divergence that made finding 2 wrong in the first place.
 Nothing in `ai/` records the experiment's outcome. The performance campaign's own progress file
 does not mention `inlineRequires` at all.
 
-**Fix direction.** Two lines of comment, no behaviour change: say what it does, cite `8630f75`
-for the measurement, and say that module evaluation order is load-bearing so the line is not to
-be removed without re-checking the order-dependent paths. Whether to keep the transform at all
-is the owner's call and a separate question; this finding is only about the label.
-
-CONFIRMED.
+CONFIRMED, and closed by a comment rewrite with no behaviour change.
 
 ## 59. An Android force-stop disarms every alert, and the 12-hour gate stops the next launch restoring it
 
