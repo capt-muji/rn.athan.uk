@@ -1502,10 +1502,15 @@ CONFIRMED for the absence of coverage.
 
 ### CLOSED in session 5, 1.25.42, `fix/audit-22-cache-schema-tests`
 
-Seven cases in `stores/__tests__/version.test.ts` cover all three wipe-deciding branches —
+Seven cases in `stores/__tests__/version.test.ts` cover all three wipe-deciding branches directly —
 missing marker, `undefined` marker, older marker, matching marker, and a read that throws — plus
 the key it reads from, plus one that pins the comparison's type strictness by feeding it the
 *stringified* marker and asserting it still counts as changed.
+
+**Correction, from review:** the commit said "none of them had a test". That overstates it. The
+pre-existing `handleAppUpgrade` suite already drove the matching, older and missing branches
+*indirectly*. What genuinely had no coverage was the **catch** branch, the `undefined` case and
+the type strictness — which is still worth closing, but is a narrower claim than the one made.
 
 Two more in `stores/__tests__/database.test.ts` pin the round trip the finding identified as the
 unstated dependency: `setItem('cache_schema_version', 1)` must read back as the **number** 1,
