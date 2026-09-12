@@ -725,6 +725,53 @@ finding 47, an out-of-range `25:61`, and a day whose value is `null`. Six of the
 shown to fail with the guard lifted out of the pipeline; the seventh is the no-over-rejection
 test, which correctly passes either way. Suite 1041 → 1048, green in all four of `yarn test:tz`.
 
+### CORRECTED in 1.25.59, `fix/audit-8-per-day-validation`, after independent review
+
+**The guard as first written was worse than the defect.** It rejected the whole response, and
+`filterApiData` keeps yesterday plus *every future date in the payload* — about 365 days on a
+January fetch. So one unreadable day 200 days away rejected the year. Reproduced:
+
+```
+valid today + one day 200 days out with sunrise "-----"
+  -> REJECTED: Malformed prayer time: 2027-03-31 sunrise is "-----"
+```
+
+Follow it into `stores/sync.ts` and it is a **permanent brick**: `clearAllExcept` wipes the
+prayer cache *before* `fetchYear` runs, so the sequence is wipe, fetch, throw, error screen,
+with nothing cached. `needsDataUpdate()` is still true next launch, so it wipes and throws
+again, and the Refresh button does the same. It self-heals only if the provider fixes that one
+day.
+
+Worse, it defeated the very finding it was meant to close. High-latitude `"-----"` is
+**seasonal**, not a one-day glitch: a Tromsø payload carries a 60-day polar-summer window of
+them, so a user fetching in January would be rejected outright and the app would never work at
+any time of year, instead of working for ten months.
+
+The write-up reasoned about exactly this hazard in the *past* direction and closed only that
+half. The future direction is identical in kind and strictly worse, because the bad day is
+ahead of the user rather than behind.
+
+**Now per-day.** Unreadable days are dropped with a warning naming the day, the field and the
+value; the response is rejected only when **today** is unreadable — the day an alarm clock
+actually needs — or when nothing readable remains at all. The today check is conditional on
+today being present, so the next-year fetch, which never contains today, is unaffected.
+
+**The fixture choice is what hid it, and it is the same shape as finding 44's Istijaba bug.**
+All six original rejection cases used a single-day payload, and with one day in the payload
+"drop the day" and "reject the year" are indistinguishable — the blast radius is structurally
+unobservable. The one blast-radius test probed only the past direction, which the placement
+already handled. Four new cases probe forward: one bad day 200 days out, an unreadable day
+between two readable ones, a 60-day polar window, and an all-unreadable payload that must still
+fail. Restoring the all-or-nothing guard fails nine of the fifteen.
+
+**Recorded, not fixed:** the regex is shape-only. `"5:30"`, `"05:30:00"`, `"05:30 (BST)"` and
+`"24:00"` are all rejected, and none occur on the current London endpoint with `24hours=true`,
+but each is plausible the moment a second provider is added — now a dropped day rather than an
+outage. It also cannot catch six `"00:00"` values, a 12-hour time without a meridiem, or a
+day whose prayers are out of order. A monotonicity assertion on
+`fajr < sunrise < dhuhr < asr < magrib` would close a class the regex cannot, and belongs with
+the worldwide endpoint work.
+
 **Finding 47 is closed by this too** for the crash half. The polar-day *modelling* question —
 what a correct Fajr and Isha are above ~60N when the sun never sets — is untouched and stays
 Tier 5 scope for v2.0, as the endpoint is London-only today (finding 43).
