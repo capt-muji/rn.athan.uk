@@ -81,6 +81,7 @@ import { lastNotificationScheduleAtom } from '@/stores/notifications';
 // eslint-disable-next-line import/order
 import {
   CACHE_SCHEMA_VERSION,
+  cacheSchemaChanged,
   clearUpgradeCache,
   getInstalledVersion,
   getStoredVersion,
@@ -623,5 +624,64 @@ describe('full upgrade flow', () => {
 
     // setItem should only be called once (from first run)
     expect(callCount1).toBe(callCount2);
+  });
+});
+
+// =============================================================================
+// cacheSchemaChanged TESTS
+//
+// This is the sole gate on wiping the prayer cache, and its own doc names the
+// stake: "a stale-shaped record read by new code produces a wrong prayer time,
+// the worst bug this app can have". All three branches decide a wipe, and none
+// of them had a test. The comparison is also type-sensitive — it works only
+// because setItem stringifies the number and getItem parses it back — so the
+// round trip is pinned separately in stores/__tests__/database.test.ts.
+// =============================================================================
+
+describe('cacheSchemaChanged', () => {
+  it('reports changed when no marker has ever been written', () => {
+    mockGetItem.mockReturnValue(null);
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('reports changed when the marker reads back undefined', () => {
+    mockGetItem.mockReturnValue(undefined);
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('reports changed when the stored marker is an older schema', () => {
+    mockGetItem.mockReturnValue(CACHE_SCHEMA_VERSION - 1);
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('reports unchanged when the stored marker matches', () => {
+    mockGetItem.mockReturnValue(CACHE_SCHEMA_VERSION);
+
+    expect(cacheSchemaChanged()).toBe(false);
+  });
+
+  it('reports changed when the read throws, so an unreadable marker never keeps a stale cache', () => {
+    mockGetItem.mockImplementation(() => {
+      throw new Error('MMKV unavailable');
+    });
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('is strict about type: a stringified marker counts as changed', () => {
+    mockGetItem.mockReturnValue(String(CACHE_SCHEMA_VERSION));
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('reads the marker from the cache_schema_version key', () => {
+    mockGetItem.mockReturnValue(CACHE_SCHEMA_VERSION);
+
+    cacheSchemaChanged();
+
+    expect(mockGetItem).toHaveBeenCalledWith('cache_schema_version');
   });
 });
