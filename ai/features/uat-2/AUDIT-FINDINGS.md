@@ -2393,6 +2393,26 @@ test, and that one measures entry age rather than label error.
 
 CONFIRMED.
 
+### CLOSED in session 5, 1.26.12, as a side effect of fixing 37 and 38
+
+The brief recorded 40 as leave-as-is, on the reasoning that writing suites for defects nobody
+had fixed was not worth it. Fixing both defects changed that, and the claim in this finding's
+title is now false — verified rather than assumed, by reverting each fix in turn:
+
+| Reverted | Suite result |
+| --- | --- |
+| finding 37's horizon handling | **3 failed**, 40 passed |
+| finding 38's backward-anchored grid | **1 failed** (near-boundary over-read), 42 passed |
+
+The two mechanisms are covered by different assertions, which is what makes this real rather
+than incidental: 37 is caught by the blank-label and stale-flag cases, 38 by the over-read sweep
+running over a fixture whose segments deliberately do **not** divide by the step. That fixture is
+the whole point — the pre-existing sweep had run only against step-aligned times, where finding
+38 is structurally unobservable, which is exactly why the finding could be marked closed at
+1.25.87 against an empty commit and nobody noticed.
+
+No code change; this is a status correction backed by the two reverts.
+
 ## 41. `widgetSettingsSync` pins the calendar date where the contract is `belongsToDate`
 
 `stores/__tests__/widgetSettingsSync.test.ts:120-122` and `:138-140`. The two coincide only
