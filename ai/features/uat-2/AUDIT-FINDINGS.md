@@ -1976,6 +1976,39 @@ Confirmed while reading, recorded so the next session does not re-derive them.
   last-minute equality check, and falls back to per-quarter-hour reads on change days. That
   correctly handles a 30-minute shift, four transitions a year, and no DST at all. This part
   of the codebase is already global.
+- **Two alerts can land on the same instant, and the app handles it correctly.** The owner
+  asked directly during session 4 whether a reminder and an at-time alert can coincide, and
+  what breaks if they do. They can, every day, and the coincidence is structural rather than a
+  user picking odd times: `TIME_ADJUSTMENTS` puts Suhoor at Fajr minus 20 and Duha at Sunrise
+  plus 20, and 20 is one of `REMINDER_INTERVALS`. Enumerated with the repository's own
+  `transformApiData` and `createPrayer` against a real London day (13 Sep 2026, Fajr 04:57,
+  Sunrise 06:28), there are six same-instant groups:
+
+  | Instant | The two alerts | Why |
+  | --- | --- | --- |
+  | 04:37 | Fajr reminder −20m, **Suhoor at-time** | `suhoor = fajr − 20` |
+  | 06:28 | Sunrise **at-time**, Duha reminder −20m | `duha = sunrise + 20` |
+  | 04:27, 04:32 | Fajr reminder −30m/−25m, Suhoor reminder −10m/−5m | same 20-minute offset |
+  | 06:18, 06:23 | Sunrise reminder −10m/−5m, Duha reminder −30m/−25m | same 20-minute offset |
+
+  **Nothing in the app breaks, and the reason is the identifier scheme.** Every colliding pair
+  carries a distinct deterministic identifier, verified in the same run:
+  `athan_<schedule>_<name>_<date>` for at-time and
+  `reminder_<schedule>_<name>_<date>_<interval>` for reminders
+  (`device/notifications.ts:33` and `:41`). Distinct identifiers mean distinct MMKV record keys
+  at `stores/database.ts:198`, no same-identifier replace, and a reconciliation sweep that sees
+  both as intended rather than either as an orphan. Both are scheduled and both are delivered.
+  On Android they also sit on different channels, so neither can be dropped by the other's
+  channel state.
+
+  What the user hears is two sounds at once, which is a consequence of switching both on and
+  is the owner's call, not a defect. **Not tested on the device**: doing so needs a prod build
+  and a wait until 04:37, so the audible result is reasoned from the scheduling path rather
+  than heard.
+
+  One thing did break, and it was the tooling rather than the app: `device_checks.py` crashed
+  on exactly this input. That is finding 58, fixed.
+
 - **Nothing runs twice at launch.** `startCountdowns()` is called from both bootstrap and
   sync, but `startWallClockTicker` clears first and the loop re-arms only while it still owns
   the handle, so the two-timers invariant holds. `handleAppUpgrade` has its own once-per-launch
