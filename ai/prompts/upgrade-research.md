@@ -127,10 +127,11 @@ time, an alarm time, or the background schedule.
 
 | Step | Status |
 |---|---|
-| React 19.3 release notes read, applicability judged | ⏳ |
-| This Week in React #296 read, applicability judged | ⏳ |
-| Expo Modules 2.0 researched (incl. impact on `modules/tls13`) | ⏳ |
-| Full dependency inventory (installed vs latest) | ⏳ |
-| Changelogs read and grouped | ⏳ |
-| `PLAN.md` written and ranked | ⏳ |
-| Session 2 paste-block handed to owner | ⏳ |
+| React 19.3 release notes read, applicability judged | ✅ Unreachable: every RN release bundles the 19.2.3 reconciler |
+| This Week in React #296 read, applicability judged | ✅ Four items touch us, three of them holds |
+| Expo Modules 2.0 researched (incl. impact on `modules/tls13`) | ✅ iOS-only, SDK 58 beta; zero impact on an Android ContentProvider |
+| Full dependency inventory (installed vs latest) | ✅ PLAN.md §4, incl. the `expo install --fix` downgrade trap |
+| Changelogs read and grouped | ✅ PLAN.md §5 and §6 |
+| `PLAN.md` written and ranked | ✅ `ai/features/upgrades-2026-09/PLAN.md` |
+| Session 2 paste-block handed to owner | ✅ |
+| Added at owner's request: update-prompt / `releases.json` research | ✅ ISSUES.md #35 |

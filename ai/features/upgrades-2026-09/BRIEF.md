@@ -167,13 +167,67 @@ expensive way because the list was not read first, costing a full device run:
 
 ## Model
 
-The owner asked for planning on **Fable 5.1 at max effort**, and explicitly does not
-want to drop below the Opus 5 max-effort bar they have been using. There is no
-published equivalence table between the two models' effort ladders — max is the top of
-the ladder in both, which is the closest honest answer. Sessions 2 and 4 touch prayer
-times and notification scheduling, where the correctness bar is highest.
+**Settled 2026-09-12: Opus 5 at max effort, for every session and every subagent in this
+programme.** The owner checked their plan and it does not include Fable 5.1, so the earlier
+note asking for Fable is void. Owner: *"I said I would use effort max for fable 5.1, but it
+turns out my plan doesn't have fable 5.1. I can only use opus 5 max effort. So that's what
+we will use going forward for everything."* Sessions 2 and 4 touch prayer times and
+notification scheduling, where the correctness bar is highest.
 
 ## Update log
 
 **2026-09-12:** Programme opened. Brief written, session 1 prompt at
 `ai/prompts/upgrade-research.md`, uat-2 tracker and audit brief corrected.
+
+**2026-09-12, session 1 closed.** `ai/features/upgrades-2026-09/PLAN.md` written on
+`research/upgrades-2026-09`. No application code and no dependency changed. What was
+decided:
+
+- **React 19.3 is unreachable, and that is the headline.** React Native ships its own
+  prebuilt copy of the reconciler. `react-native@0.86.3`, `0.87.1` and `0.88.0-rc.0` all
+  report `reconcilerVersion: "19.2.3"`, read directly from the published tarballs, and all
+  three peer `react: ^19.2.3`. Setting `react` to 19.3.0 satisfies the range, changes only
+  the thin element and hook package, and leaves every 19.3 reconciler fix absent. The
+  mismatch is silent: the "Incompatible React versions" guard exists in `react-dom` and not
+  in the React Native renderer. Separately, all five 19.3 headline features are DOM, SSR or
+  RSC, and the codebase uses none of the APIs the core bug fixes touch (no
+  `startTransition`, `useDeferredValue`, `Suspense`, `useEffectEvent`, `<Activity>` or
+  `lazy`). **`react` and `@types/react` hold.**
+- **Expo Modules 2.0 is iOS-only and experimental in SDK 57, official beta in SDK 58,
+  Android still in progress.** `modules/tls13` declares `"platforms": ["android"]`, so
+  there is nothing to migrate now. When Android lands, the available change is one
+  observability `Function("status")` becoming an annotation: 2.0 replaces the JS-facing
+  DSL, and the part that matters is `Tls13InitProvider`, a manifest-merged ContentProvider
+  running before `Application.onCreate`, which the Expo module system does not own.
+  **No action, re-read at SDK 58.**
+- **The Expo 2026-09-11 patch wave is a release-train bump.** Sixteen of the eighteen
+  flagged packages record "no user-facing changes". The two with content do not apply:
+  `@expo/ui` 57.0.18 adds iOS navigation components we do not use (and the `widgets` flag
+  is off), `expo-router` 57.0.21 adds `LocaleProvider` and a native-tabs fix while we use
+  only `Slot`. Take the wave anyway to stay current, as one commit with one device check.
+- **The `alarmClock` delivery option is not in the 57.x line.** PR #49687 appears under
+  `## 58.0.0 — 2026-09-10` in the `main`-branch `expo-notifications` changelog and nowhere
+  in the `sdk-57` one. ISSUES #17 stands; the backport branch stays the only route.
+- **`npx expo install --fix` must never be run.** It would downgrade five packages against
+  `bundledNativeModules.json`: reanimated 4.6.0 to 4.5.1, worklets 0.12.2 to 0.10.1, jest
+  30 to 29.7, typescript 7 to 6.0.3, `@types/jest` 30 to 29.5.14. Session 2 names every
+  package explicitly.
+- **Recommended, in order:** `reanimated-color-picker` 5.1.3 (removes real Reanimated 4.6
+  dev warnings, confirmed `__DEV__`-gated and therefore not suppressed by our
+  `strict: false`), `pino` 10.3.1 (devDep, only breaking change is dropping Node 18),
+  `@biomejs/biome` 2.5.13, optionally `react-native-svg-transformer` 1.5.3, then the Expo
+  wave, then optionally `react-native-svg` 15.15.5.
+- **Held, with reasons in PLAN.md §6:** react, @types/react, react-native 0.87 (SDK 58),
+  jotai 3 (removes `loadable`, used at `stores/sync.ts:24`), pager-view 9 (Android
+  rewritten onto Jetpack Compose, and it is the main swipe surface), gesture-handler 3
+  (New-Arch rewrite, `@gorhom/bottom-sheet` support unverified), safe-area-context 5.9
+  (AGP 9 forward-port), screens 4.27 (RN 0.87 enablement), Babel 8 (blocked: every
+  `babel-preset-expo` plugin is pinned `^7.x`), husky 9 and lint-staged 17 (dev churn).
+- **Added out of scope, at the owner's request: ISSUES #35**, the update-prompt and
+  `releases.json` question. Answers recorded there: a GitHub failure does not break the app,
+  but a failed check burns the whole 24-hour window because the `finally` stamps the
+  throttle unconditionally, and neither fetch has a timeout. Production iOS is already
+  automatic through iTunes Lookup; production Android should move to Google Play In-App
+  Updates; `releases.json` then survives as a testers-only file, which removes the manual
+  release step and dissolves the scale worry. Needs its own session: it is a new native
+  dependency on the release path.
