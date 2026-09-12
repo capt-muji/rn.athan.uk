@@ -3,6 +3,7 @@ import * as BackgroundTask from 'expo-background-task';
 import * as Notifications from 'expo-notifications';
 import * as TaskManager from 'expo-task-manager';
 import { getDefaultStore } from 'jotai';
+import { Platform } from 'react-native';
 
 import * as Device from '@/device/notifications';
 import {
@@ -25,7 +26,7 @@ import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
-import { atomWithStorageNumber } from '@/stores/storage';
+import { atomWithStorageNumber, resetStoredAtom } from '@/stores/storage';
 import { sync } from '@/stores/sync';
 import * as PrayerWidgets from '@/stores/widget';
 
@@ -1101,6 +1102,39 @@ export const rescheduleAllNotifications = async () => {
  *   refreshNotifications();
  * }, [appState]);
  */
+/**
+ * Reopens the 12-hour refresh gate on an Android cold launch.
+ *
+ * Android's force-stop cancels every alarm the app has armed while leaving
+ * `lastNotificationScheduleAtom` untouched, so `refreshNotifications` sees a
+ * recent timestamp and skips: the app stays silent for up to
+ * `NOTIFICATION_REFRESH_HOURS` with nothing armed at all. OEM battery managers
+ * force-stop background apps by policy, so this is not limited to a user doing
+ * it deliberately. Observed on the OnePlus 3T: one armed Fajr alert, force-stop,
+ * then three cold launches that never restored it.
+ *
+ * Detection is not available. `getAllScheduledNotificationsAsync` answers from
+ * `SharedPreferencesNotificationsStore`, which a force-stop does not clear, and
+ * the delegate that re-arms AlarmManager from it runs only on BOOT_COMPLETED,
+ * REBOOT and MY_PACKAGE_REPLACED — never on a plain relaunch. So it would report
+ * a full list while zero alarms exist. The gate is therefore reopened
+ * unconditionally rather than conditionally.
+ *
+ * The cost is one reschedule per cold launch. That is idempotent by design:
+ * deterministic identifiers replace in place, and the pass runs 1500 ms past
+ * first content, off the paint path.
+ *
+ * iOS is excluded deliberately: `UNUserNotificationCenter` keeps pending
+ * notifications across app termination, so the gate is already correct there and
+ * a bypass would be pure cost.
+ */
+export const reopenRefreshGateOnColdLaunch = (): void => {
+  if (Platform.OS !== 'android') return;
+
+  resetStoredAtom(lastNotificationScheduleAtom, 'preference_last_notification_schedule_check');
+  logger.info('NOTIFICATION: Android cold launch, reopening the refresh gate so alarms are re-armed');
+};
+
 export const refreshNotifications = async () => {
   if (!shouldRescheduleNotifications()) {
     logger.info(`NOTIFICATION: Skipping reschedule, last schedule was within ${NOTIFICATION_REFRESH_HOURS} hours`);

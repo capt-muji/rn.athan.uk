@@ -899,6 +899,27 @@ So after a force-stop `getAllScheduledNotificationsAsync()` returns a full list 
 alarms exist. The check would report everything healthy. Recorded so the next reader does not
 spend the same hour on it.
 
+**FIXED in 1.25.30** (`fix/audit-59-cold-launch-rearm`), and **device-verified**.
+
+`reopenRefreshGateOnColdLaunch()` clears the gate through `resetStoredAtom` on an Android cold
+launch, called once from `app/index.tsx`'s mount effect inside the existing 1500 ms post-paint
+defer. iOS returns immediately, since `UNUserNotificationCenter` keeps pending notifications
+across termination and the gate is already correct there.
+
+Verified on the OnePlus 3T with a prod build of 1.25.30, the same protocol that exposed the
+defect:
+
+```
+baseline after upgrade launch   Alarm{410343a ... when 1789271820000}   (13 Sep 04:57, Fajr)
+force-stop                      no prayer alarm armed
+cold launch, t+6s               Alarm{53847c5 ... when 1789271820000}   re-armed
+```
+
+Before the fix, three consecutive cold launches after a force-stop never restored it. Three
+regression tests in `stores/__tests__/coldLaunchRearm.test.ts` pin the Android clear, the iOS
+no-op, and that the MMKV key is removed as well as the atom; disabling the platform check fails
+the first.
+
 **Fix direction.** There is no cheap way to read AlarmManager state from JS, so detection is
 out and unconditional repair is in: on an Android **cold launch**, reopen the gate rather than
 trusting it, and let the existing schedule-first-then-cancel-stale pass re-arm everything. It
