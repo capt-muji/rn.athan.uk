@@ -100,6 +100,7 @@ appendix. That suite lives outside the repository and is not committed.
 | 45 | ~~Asr is hardcoded to the Hanafi calculation~~ | 5 | **WITHDRAWN** by owner ruling |
 | 46 | The London-pinned test oracles will fail as false alarms when the timezone flips | 5 | CONFIRMED |
 | 47 | High latitude: no polar-day handling, and a missing Sunrise crashes | 5 | CONFIRMED |
+| 61 | The pre-commit hook cannot commit a change to `metro.config.js` or `jest.config.js` | 2 | CONFIRMED, found in session 4 |
 | 60 | `metro.config.js` calls a load-bearing transform a "THROWAWAY experiment" | 2 | CONFIRMED, found in session 4 |
 | 59 | An Android force-stop disarms every alert and the 12-hour gate stops the next launch restoring it | 1 | CONFIRMED on device, **live in 1.5.2** |
 | 58 | `device_checks.py` crashes when two alarms share a minute | 3 | CONFIRMED, found in session 4 |
@@ -619,6 +620,41 @@ CONFIRMED for the divergence and the mechanism.
 
 **Fix direction.** Make the shared mock echo, which is what
 `stores/__tests__/notifications.test.ts:989-991` already does locally.
+
+## 61. The pre-commit hook cannot commit a change to `metro.config.js` or `jest.config.js`
+
+Found in session 4 by hitting it: the hook rejected the finding 60 comment fix.
+
+**FIXED in 1.25.21** (`fix/audit-61-lintstaged-unmatched`).
+
+`biome.json:9` excludes two files by name:
+
+```json
+"includes": ["**", "!**/.agents", "!**/metro.config.js", "!**/jest.config.js"]
+```
+
+`package.json`'s lint-staged glob is `**/*.{js,jsx,ts,tsx,mjs}`, which matches both of them.
+Staging either one hands it to `biome check --write`, and Biome exits non-zero when every path
+it was given is ignored:
+
+```
+× No files were processed in the specified paths.
+husky - pre-commit hook exited with code 1 (error)
+```
+
+So a change to either file cannot be committed through the hook at all. The only way past it
+is `--no-verify`, which skips the **entire** gate: Biome on every other staged file, and the
+related-test run with it. A config change is exactly the kind of edit that most deserves the
+tests, and it is the one edit the hook forces you to skip them for.
+
+This compounds finding 52. That finding says the only quality gate is a hook a fresh clone does
+not get; this one says the hook also trains you to bypass itself.
+
+**Fix.** `--no-errors-on-unmatched` on the Biome call, which exists for this exact case. Biome
+still checks everything it is meant to check; it just stops treating "all these paths are
+deliberately ignored" as an error.
+
+CONFIRMED, reproduced, fixed.
 
 ## 60. `metro.config.js` calls a load-bearing transform a "THROWAWAY experiment"
 

@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.25.20",
+  "version": "1.25.21",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -23,7 +23,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,mjs}": [
-      "biome check --write",
+      "biome check --write --no-errors-on-unmatched",
       "jest --bail --findRelatedTests --passWithNoTests"
     ]
   },
