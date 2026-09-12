@@ -2612,3 +2612,106 @@ directly, which is the `opensrc` role: `node_modules/jotai/vanilla/utils.js` for
   of truth on DST, the TLS provider and the launch-time split were taken as given. Where reading
   them was unavoidable they are recorded under "already settled, re-verified in passing", not as
   findings.
+
+---
+
+# Session 4, part 1: what was taken and what was deferred
+
+Session 4 ran on 2026-09-12 at Opus 5, starting from 1.25.6 and closing at **1.25.30**. Twenty
+four version-bumped commits, each on its own branch off `uat-2` and merged back with `--no-ff`,
+pushed as it went. The suite moved **1015 to 1035 tests, 42 to 43 suites, and never went down**.
+The session did not finish the document; what is left is listed below and is the next session's
+work.
+
+## Closed, with code
+
+| # | Branch | Version | Device-verified |
+| --- | --- | --- | --- |
+| 32 | `fix/audit-32-package-exact-match` | 1.25.7 | live dump |
+| 30 | `fix/audit-30-restated-alarm` | 1.25.8 | live dump |
+| 58 | `fix/audit-58-same-instant-sort` | 1.25.9 | live dump |
+| 31 | `fix/audit-31-reminder-offsets` | 1.25.10 | live dump |
+| 29 | `fix/audit-29-permission-grant` | 1.25.12 | live run |
+| 33 | `fix/audit-33-failed-flow` | 1.25.13 | stubbed adb/maestro |
+| 28 | `fix/audit-28-sf-units` | 1.25.14 | synthetic + 3 live runs |
+| 35 | `fix/audit-35-unperformed-pass` | 1.25.16 | live run |
+| 2 | `fix/audit-2-reset-stored-atom` | 1.25.18 | see the correction |
+| 4 | `fix/audit-4-migration-through-atoms` | 1.25.23 | unit |
+| 23 | `fix/audit-23-number-parsing` | 1.25.24 | unit |
+| 3 | `fix/audit-3-extras-mismap` | 1.25.25 | unit |
+| 7 | `fix/audit-7-display-date-guard` | 1.25.27 | unit |
+| 51 | `fix/audit-51-day-null-date` | 1.25.28 | unit |
+| 6 | `fix/audit-6-error-screen-wipe` | 1.25.29 | unit |
+| 59 | `fix/audit-59-cold-launch-rearm` | 1.25.30 | **yes, on the 3T** |
+| 60 | `fix/audit-60-metro-comment-2` | 1.25.22 | n/a, comment |
+| 61 | `fix/audit-61-lintstaged-unmatched` | 1.25.21 | reproduced |
+
+Four further commits are analysis rather than fixes: the simultaneous-alert answer (1.25.11),
+the SF-latency baseline re-verification (1.25.15), the finding 2 correction (1.25.19) and the
+finding 3 population correction (1.25.26).
+
+## Found in session 4, not in the session-3 sweep
+
+- **58**, the alarm parser crashing when two alerts share a minute. Fixed.
+- **59**, an Android force-stop disarming every alert with the 12-hour gate blocking recovery.
+  **Live in production 1.5.2.** Fixed and device-verified.
+- **60**, a load-bearing metro transform labelled a throwaway experiment. Fixed.
+- **61**, the pre-commit hook rejecting any change to `metro.config.js` or `jest.config.js`,
+  forcing `--no-verify` and skipping the whole gate. Fixed.
+
+## Corrections to the session-3 document
+
+**Finding 2 was wrong about Release builds**, and the correction matters more than the finding
+did. It was marked `CONFIRMED [test]`, and the test was right about jest while being wrong
+about the shipped bundle: `metro.config.js` sets `inlineRequires: true`, so module evaluation
+order differs between the two. Measured on the device, `stores/notifications.ts` evaluates 5 ms
+**after** `handleAppUpgrade` removes the gate key, so the atom seeds from an absent key and the
+old code worked. Re-ranked Tier 1 to Tier 2.
+
+**The general lesson, for every remaining finding: `[test]` is not proof.** The session-3 suite
+ran against an eager module graph. Any finding whose mechanism depends on *when* a module first
+evaluates has to be checked on the device, not in jest. Finding 4 was re-checked under this
+light and stands, because its moving parts are in one file and no bundler setting can reorder
+them.
+
+**Finding 3's population was corrected twice**, ending at: the legacy branch reaches anyone who
+has not opened the app since 2026-01-17, because `app_installed_version` moves only on launch
+and an auto-update never touches it.
+
+## Measured on the device
+
+`sched_refreshNotifications`, the reschedule that finding 59's cold-launch re-arm triggers, on
+the OnePlus 3T across four cold launches: **47, 55, 52, 50 ms**. Same capture, `js_to_content`
+746 ms and `launch_js_bundle` 161 ms, so the reschedule is under 7% of the JS-to-content window
+and runs 1500 ms after it. Measured with one alert enabled, which is this device's
+configuration, not the 44-notification worst case. The 128 ms figure quoted from `8630f75` is a
+different configuration and should not be compared directly.
+
+## Finding 25 reproduced by accident, which is worth recording
+
+Taking that measurement needed an `EXPO_PUBLIC_PERF_MONITOR=1` build, which runs the mock API.
+Installing a prod build at the **same version string** afterwards left the fabricated rows in
+place exactly as finding 25 describes: `wasAppUpgraded()` was false, so no wipe ran, and the
+app displayed Fajr 16:34, Sunrise 16:35, Dhuhr 16:36 — the launch-relative mock signature. Note
+that bumping the version would not have helped either, because post-#34 an upgrade only wipes
+when `cacheSchemaChanged()`. The only recovery without root was `adb shell pm clear`, which
+also destroys the user's alert preferences and needs them re-entered by hand.
+
+**Rule for the next session: never build with `EXPO_PUBLIC_PERF_MONITOR=1` on the owner's
+device without planning the `pm clear` and the preference restore that follow it.**
+
+## Deferred, and why
+
+Nothing was deferred on judgement. The session ran out of time, not out of willingness. What
+remains is listed in the next-session prompt at `ai/prompts/audit-changes-2.md`, in the order
+the original brief set out.
+
+The one item genuinely awaiting a decision rather than work: **finding 6's escape hatch.** The
+owner's position is that reaching the error screen means something has gone wrong, so wiping
+and refetching is the right recovery. Tracing the paths showed that is true for a corrupt cache
+and false for a failed fetch, which is the common case — on 1 January, offline, with the whole
+year valid on disk, `initializeAppState` still awaits the previous year's 31 December fetch and
+rejects. The wipe is therefore harmful when there is a cache and pointless when there is not.
+Finding 8 closes the corrupt-cache path at source by validating the response before it is
+cached. If an explicit escape hatch is still wanted after that, it should be a second, clearly
+labelled destructive button rather than the only button the screen has.
