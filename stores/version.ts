@@ -281,7 +281,12 @@ export const handleAppUpgrade = (): void => {
   // Migrate legacy index-keyed alert preference keys to name-keyed keys.
   // Runs on every launch (no-op after the first); must complete before any
   // notification scheduling reads the preference atoms.
-  migrateIndexKeyedAlertPreferences();
+  //
+  // `storedVersion` is the value captured at the top of this function, before
+  // setStoredVersion() overwrote it above. It is the only way to know which
+  // EXTRAS_ENGLISH the index keys were written against, and by this line the key
+  // itself already holds the new version.
+  migrateIndexKeyedAlertPreferences(storedVersion);
 
   logger.info('VERSION: Upgrade check completed');
 };

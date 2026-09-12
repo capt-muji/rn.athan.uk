@@ -273,6 +273,70 @@ atom.
 
 ## 3. The extras preference migration lands on the wrong prayers
 
+**FIXED in 1.25.25** (`fix/audit-3-extras-mismap`), to the owner's ruling exactly.
+
+`migrateIndexKeyedAlertPreferences` now takes the captured `storedVersion` and picks the name
+array from it: below `1.0.27` the index keys are read against
+`['Last Third', 'Suhoor', 'Duha', 'Istijaba']`, from `1.0.27` on against today's
+`EXTRAS_ENGLISH`. The index says what a key **meant**; the destination atom is resolved by
+**name**, so the two index spaces can never be confused again. `handleAppUpgrade` passes the
+value it captured at the top of the function, before `setStoredVersion` overwrites it, which
+is the ordering trap the ruling named.
+
+Both traps from the ruling are handled. The leftover sweep is explicit rather than relying on a
+`CACHE_SCHEMA_VERSION` bump, because `UPGRADE_KEEP_PREFIXES` keeps `preference_` on purpose so
+alarm settings survive a cache wipe; every remaining
+`preference_(alert|reminder_alert|reminder_interval)_(standard|extra)_<digit>` is removed,
+including `extra_4`, which has no counterpart in the four-element legacy array and which the
+loop therefore cannot reach.
+
+A fresh install (`storedVersion` null) and an unreadable version both migrate as today, since
+neither is evidence of a pre-1.0.27 install.
+
+### How narrow the legacy branch really is, asked by the owner and re-researched
+
+The owner pushed back: what does the pre-1.0.27 array buy, and why not just fix forward? Three
+things came out of checking rather than defending.
+
+**"Fix forward" is not an available option.** Fixing forward means migrating with today's array,
+and that *is* the defect. There is no third interpretation: either the code knows which array a
+key was written against, or it must delete the key. Forcing an upgrade does not help either,
+because the values are already in MMKV and the upgrade is the moment they get read.
+
+**The shift is older than the migration, and it is live in production right now.** Production
+1.5.2 still keys preferences by index (`preference_alert_${type}_${prayerIndex}`,
+`b9985ea:stores/notifications.ts:91`) and already carries the modern five-name
+`EXTRAS_ENGLISH`. So the moment 1.0.27 inserted Midnight at position 0, every existing user's
+extras preferences shifted by one — no migration involved. That is the defect name-keying was
+introduced to stop, and `stores/notifications.ts:217-221` already says so. For anyone who has
+opened the app since January 2026 it cannot be undone, and should not be: they have been shown
+the shifted state for months and may have adjusted it.
+
+**Which makes the population narrower than the finding stated.** 1.5.2 only reinterprets the
+stored values, it never rewrites them, so authorship survives. The legacy branch therefore only
+fires for an install whose last run predates 2026-01-17 **and** whose next run is on 1.5.3 or
+later, skipping production 1.5.2 entirely. Anyone who opens 1.5.2 in between gets
+`app_installed_version` stamped to 1.5.2, and from then on the modern array is the right answer
+— not because it matches the original authorship, but because it matches what the app last
+showed them.
+
+That is the honest framing of what the discriminator does: it preserves **the last
+interpretation the user was shown**, not the original intent. Which is the correct goal.
+
+**Kept anyway, and the reasoning is cost rather than reach.** The branch is a dozen lines of
+code behind thirty of comment, it costs one version comparison for everyone else, and it is
+inert unless the stored version is below 1.0.27. The alternative that is genuinely simpler is
+deleting the old extras keys instead of mapping them, three lines, which trades an alarm firing
+on a prayer the user did not choose for an alarm they did choose silently switching off. For an
+alarm clock neither of those is free, and this one is already written and tested.
+
+**The larger prize in this commit is not the legacy array.** It is resolving the destination
+atom by name rather than by index, which makes the migration correct under *any* future
+reordering rather than this one specific insertion. That part earns its place regardless.
+
+Four new tests, 114 to 118. Two deliberate breaks confirm they bite: restoring the mis-map
+fails the pre-1.0.27 mapping test, and removing the sweep fails the leftover test.
+
 `stores/notifications.ts:227-254`.
 
 `migrateIndexKeyedAlertPreferences()` maps `preference_alert_extra_<index>` to
