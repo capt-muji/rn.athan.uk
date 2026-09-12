@@ -78,15 +78,32 @@ The actual position, checked against the GitHub API and the installed source:
 `let uuid = NodeIdentityWrapper(id: UUID())` under a `TODO(@jakex7)` calling it a hack —
 and 57.0.16/17/18 each record "no user-facing changes". The `widgets` flag stays OFF.
 
-Two routes, owner's choice, neither belonging to sessions 1–4:
+**DECIDED 2026-09-12 — patch-package backport, deferred to its own session.** Owner:
+*"We will leave the iOS widget backport patch for another session. Not this session, but
+we will do the same thing we did for the alarm clock. We will also patch it, but we're
+gonna defer that as well."*
 
-1. **Wait for SDK 58.** Clean, no patch to carry, but couples the widget fix to a whole
-   SDK migration.
-2. **patch-package backport of #49810** onto the installed 57.0.18. ISSUES.md G.1
-   already sanctions this shape ("merged-but-unreleased past ~a week... human-approved"),
-   and the clock started 2026-09-11. It is a full session: backport, EAS dev build, then
-   the G.1 acceptance protocol on the XS (all 8 home kinds render and hold ≥10 min, zero
-   `cpu_resource` reports, zero watchdog lines).
+So: backport, **not** "wait for SDK 58". Follow the shape already proven in
+`ai/prompts/alarmclock-backport.md` — patch-package the MERGED upstream code, carry it on
+its own branch, delete the patch when the real release ships. ISSUES.md G.1 already
+sanctions this for merged-but-unreleased code and the clock started 2026-09-11.
+
+Backport target is **#49810**, resolved against the installed **57.0.18** sources — not
+#49244, which never merged. They are different diffs, so G.1's existing backport note
+about a `render()` conflict with #49535 refers to the dead PR and may not apply.
+
+Not part of sessions 1–4. When it happens it needs all four of:
+
+1. the patch itself (`patch-package`, `postinstall` hook, as the alarm-clock branch did);
+2. **the `widgets` flag flipped ON** — this is the part that will catch someone out.
+   While the flag is off, `app.config.ts` strips the expo-widgets plugin at prebuild, so
+   there is no widget extension in the build at all. Patching `node_modules` alone
+   produces a build that appears to change nothing;
+3. an EAS dev build (widgets are iOS-only; local gradle is irrelevant here);
+4. **the iPhone XS reconnected** for the G.1 acceptance protocol — all 8 home kinds
+   render and hold ≥10 min, zero `cpu_resource` reports, zero watchdog lines. The XS is
+   deliberately disconnected for sessions 1–4; this is the one piece of work that needs
+   it back.
 
 ## Device policy — the OnePlus 3T only
 
