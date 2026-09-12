@@ -21,6 +21,12 @@ import * as PrayerWidgets from '@/stores/widget';
 
 // --- Atoms ---
 // Startup defers the widget timeline push past first content (see sync options)
+//
+// `loadable` is deprecated in jotai 2.20.3 and is removed in v3, which is why a
+// dev build logs "[DEPRECATED] loadable ..." once at startup. This is the only
+// call site. The replacement is a userland wrapper around `unwrap`
+// (https://github.com/pmndrs/jotai/pull/3217), so a jotai major upgrade has to
+// bring that wrapper with it rather than expecting a drop-in.
 export const syncLoadable = loadable(atom(async () => sync({ deferWidgetRefresh: true })));
 
 // --- Helpers ---
