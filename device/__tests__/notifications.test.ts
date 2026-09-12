@@ -70,6 +70,64 @@ describe('reminderNotificationIdentifier', () => {
 });
 
 // =============================================================================
+// IDENTIFIER ECHO TESTS
+//
+// The SDK resolves with the identifier it was given, and production stores that
+// resolved value as the record id while the reconciliation sweep diffs stored ids
+// against OS identifiers. If the two ever stop agreeing, every pending alert is
+// classified as an orphan and cancelled immediately after being scheduled.
+// =============================================================================
+
+describe('the scheduled record id echoes the deterministic identifier', () => {
+  beforeEach(() => {
+    (scheduleNotificationAsync as jest.Mock).mockClear();
+  });
+
+  it('returns the at-time identifier as the record id', async () => {
+    const notification = await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      '2026-09-01',
+      row('Fajr', 'الفجر', '2026-09-01', '06:15'),
+      AlertType.Sound,
+      0
+    );
+
+    expect(notification.id).toBe(prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', '2026-09-01'));
+  });
+
+  it('returns the reminder identifier as the record id, interval included', async () => {
+    const notification = await addOneScheduledReminderForPrayer(
+      ScheduleType.Standard,
+      '2026-09-01',
+      row('Fajr', 'الفجر', '2026-09-01', '06:15'),
+      15,
+      AlertType.Silent
+    );
+
+    expect(notification.id).toBe(reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', '2026-09-01', 15));
+  });
+
+  it('gives two prayers on the same day two distinct ids, so their records cannot collapse', async () => {
+    const fajr = await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      '2026-09-01',
+      row('Fajr', 'الفجر', '2026-09-01', '06:15'),
+      AlertType.Silent,
+      0
+    );
+    const isha = await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      '2026-09-01',
+      row('Isha', 'العشاء', '2026-09-01', '21:00'),
+      AlertType.Silent,
+      0
+    );
+
+    expect(fajr.id).not.toBe(isha.id);
+  });
+});
+
+// =============================================================================
 // CHANNEL WIRING TESTS (which channel a scheduled notification carries)
 // =============================================================================
 
