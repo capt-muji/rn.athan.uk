@@ -76,7 +76,15 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
   }));
 
   return (
-    <Pressable style={styles.option} onPress={onPress}>
+    <Pressable
+      accessibilityRole='radio'
+      // Which mode is active is conveyed only by the sliding pill and a colour
+      // interpolation, so without `selected` a screen reader cannot tell Off from Sound —
+      // and this control decides whether a prayer notification fires at all
+      accessibilityState={{ selected: isSelected }}
+      accessibilityLabel={option.label}
+      style={styles.option}
+      onPress={onPress}>
       <View style={styles.iconContainer}>
         <Animated.View style={[styles.iconLayer, unselectedIconOpacity]}>
           <IconView type={option.icon} size={13} color={SEGMENT_COLORS.unselected} />
