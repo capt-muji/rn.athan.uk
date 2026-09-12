@@ -27,6 +27,7 @@ import {
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import type { ScheduledNotification } from '@/shared/notifications';
+import * as TimeUtils from '@/shared/time';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
@@ -762,6 +763,25 @@ describe('rescheduleAllNotificationsFromBackground', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     store.set(lastNotificationScheduleAtom, 0);
+
+    // A reschedule refuses to run against an empty prayer cache — it would
+    // schedule nothing and then sweep away the alarms the OS restored after an
+    // app update. These tests have always meant "a normal device with data", so
+    // seed today; without it they would assert the bail path instead.
+    const today = TimeUtils.getTodayDateString();
+    const seed: ISingleApiResponseTransformed = {
+      date: today,
+      fajr: '12:00',
+      sunrise: '12:00',
+      dhuhr: '12:00',
+      asr: '12:00',
+      magrib: '12:00',
+      isha: '12:00',
+      suhoor: '12:00',
+      duha: '12:00',
+      istijaba: '12:00',
+    };
+    Database.database.set(`prayer_${today}`, JSON.stringify(seed));
   });
 
   it('updates lastNotificationScheduleAtom on success', async () => {
@@ -1212,6 +1232,64 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     await expect(rescheduleAllNotifications()).rejects.toThrow('OS query failed');
     expect(logger.error).toHaveBeenCalled();
+  });
+
+  // -- never lose alerts after an app update -----------------------------------
+  //
+  // An app can update itself in the background. On Android the update wipes the
+  // scheduled_* bookkeeping and the prayer cache, while MY_PACKAGE_REPLACED has
+  // expo-notifications restore the real alarms. The reschedule that follows must
+  // not mistake "no bookkeeping" for "nothing should be armed".
+
+  it('does not cancel the OS alarms when the prayer cache is empty (post-upgrade)', async () => {
+    enableFajrAlerts(AlertType.Sound);
+
+    // Deliberately no seedPrayerWindow(): clearUpgradeCache wiped prayer_* too
+    osState.add(fajrId(TODAY));
+    osState.add(fajrId(TOMORROW));
+
+    await refreshNotifications();
+
+    expect(osIdentifiers()).toEqual([fajrId(TODAY), fajrId(TOMORROW)].sort());
+    expect(cancelCalls()).toEqual([]);
+    expect(cancelAllMock).not.toHaveBeenCalled();
+  });
+
+  it('leaves the refresh gate open after bailing, so the next foreground retries', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    osState.add(fajrId(TODAY));
+
+    await refreshNotifications();
+
+    // Stamping here would buy 12 hours of silence on one moment of missing data
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+  });
+
+  it('does not stamp the background reschedule when the cache is empty', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    osState.add(fajrId(TODAY));
+
+    await rescheduleAllNotificationsFromBackground();
+
+    expect(osIdentifiers()).toEqual([fajrId(TODAY)]);
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+  });
+
+  it('refuses to sweep when there is no bookkeeping to compare against', async () => {
+    // Prayer data present but every alert off, so nothing is scheduled and no
+    // records exist. The stray is left armed on purpose: an unexpected alert is
+    // a smaller harm than cancelling everything the OS holds after an update.
+    seedPrayerWindow();
+    osState.add('legacy-uuid-1');
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has('legacy-uuid-1')).toBe(true);
+    expect(cancelCalls()).not.toContain('legacy-uuid-1');
+    expect(logger.warn).toHaveBeenCalledWith(
+      'NOTIFICATION: Sweep skipped — no records to compare against, refusing to cancel what the OS holds',
+      expect.anything()
+    );
   });
 
   it('clears notifications of prayers whose alert is off (heals interrupted settings commit)', async () => {

@@ -858,6 +858,22 @@ const _sweepStaleScheduledNotifications = async () => {
 
   const scheduled = await Notifications.getAllScheduledNotificationsAsync();
   const osIdentifiers = scheduled.map((request) => request.identifier);
+
+  // Never cancel everything on the strength of no bookkeeping at all. An app
+  // update wipes the scheduled_notifications_* records (they are not in
+  // UPGRADE_KEEP_PREFIXES) while Android's MY_PACKAGE_REPLACED broadcast has
+  // just had expo-notifications restore the real alarms — so an empty record
+  // set here means "we don't know", not "nothing should exist", and sweeping
+  // would delete exactly what was recovered. When the user genuinely turns
+  // every alert off the per-prayer paths have already cancelled the OS entries,
+  // so osIdentifiers is empty too and this guard cannot mask that case.
+  if (records.length === 0 && osIdentifiers.length > 0) {
+    logger.warn('NOTIFICATION: Sweep skipped — no records to compare against, refusing to cancel what the OS holds', {
+      osPending: osIdentifiers.length,
+    });
+    return;
+  }
+
   const staleIds = NotificationUtils.findStaleScheduledNotificationIds(osIdentifiers, records);
 
   if (staleIds.length > 0) {
@@ -891,6 +907,16 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
     reminder: getReminderAlertType(ScheduleType.Standard, i),
   }));
   logger.info('NOTIFICATION: Preference snapshot before reschedule:', preferenceSnapshot);
+
+  // Refuse to reschedule against an empty cache. An upgrade wipes the prayer
+  // data and the refetch is still in flight when the post-paint refresh fires
+  // ~1.5s after first content: scheduling then produces nothing, and the sweep
+  // below would treat every notification the OS still holds as stale. Bailing
+  // leaves the existing alarms alone; the next refresh runs once data exists.
+  if (!Database.getPrayerByDate(TimeUtils.createInstant())) {
+    logger.warn('NOTIFICATION: No prayer data for today — skipping reschedule so nothing is cancelled');
+    return false;
+  }
 
   // Schedule all enabled notifications and reminders for both schedules
   await Promise.all([
@@ -934,6 +960,8 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   }
 
   logger.info('NOTIFICATION: Rescheduled all notifications and reminders');
+
+  return true;
 };
 
 /**
@@ -992,7 +1020,16 @@ export const refreshNotifications = async () => {
   return withSchedulingLock(async () => {
     try {
       // Foreground refresh gate — defer the widget push past the paint
-      await _rescheduleAllNotifications({ deferWidgetRefresh: true });
+      const rescheduled = await _rescheduleAllNotifications({ deferWidgetRefresh: true });
+
+      // Only a real reschedule closes the 12-hour gate. Stamping after a bail
+      // would turn one moment of missing data into half a day of silence: the
+      // app would believe it was up to date while nothing was armed.
+      if (!rescheduled) {
+        logger.warn('NOTIFICATION: Refresh skipped, timestamp not stamped — the next foreground will retry');
+        return;
+      }
+
       store.set(lastNotificationScheduleAtom, Date.now());
       logger.info('NOTIFICATION: Refresh complete');
     } catch (error) {
@@ -1032,7 +1069,15 @@ export const rescheduleAllNotificationsFromBackground = async () => {
 
   return withSchedulingLock(async () => {
     try {
-      await _rescheduleAllNotifications();
+      const rescheduled = await _rescheduleAllNotifications();
+
+      // Same rule as the foreground path: a bail must not be recorded as a
+      // successful schedule, or the next foreground refresh would skip too
+      if (!rescheduled) {
+        logger.warn('BACKGROUND_TASK: Reschedule skipped (no prayer data), timestamp not stamped');
+        return;
+      }
+
       store.set(lastNotificationScheduleAtom, Date.now());
       logger.info('BACKGROUND_TASK: Background reschedule complete');
     } catch (error) {

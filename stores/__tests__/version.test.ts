@@ -58,6 +58,7 @@ jest.mock('@/stores/notifications', () => ({
 // Import after mocks - version.ts imports come last since they depend on mocks
 // eslint-disable-next-line import/order
 import {
+  CACHE_SCHEMA_VERSION,
   clearUpgradeCache,
   getInstalledVersion,
   getStoredVersion,
@@ -321,6 +322,7 @@ describe('clearUpgradeCache', () => {
     expect(mockClearAllExcept).toHaveBeenCalledWith([
       'app_installed_version',
       'whats_new_shown_version',
+      'cache_schema_version',
       'preference_',
       'prayer_max_english_width_',
     ]);
@@ -484,6 +486,58 @@ describe('full upgrade flow', () => {
     expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.35');
     // Upgrade leaves the What's New tracker untouched (differs from installed)
     expect(mockSetItem).not.toHaveBeenCalledWith('whats_new_shown_version', expect.anything());
+  });
+
+  // -- the wipe is gated on the cache SHAPE, not the app version (#34) --------
+  //
+  // Note the flow above still clears: its mock returns null for every key, so
+  // the schema marker is missing and an unknown shape is treated as changed.
+  // That is the one-off wipe existing users get on their first update after
+  // this shipped. The cases below are the ones that actually changed.
+
+  it('does not clear the cache when the app updated but the cache schema did not', () => {
+    // The case #34 made expensive: an ordinary release wiped the prayer cache
+    // and the scheduled-notification bookkeeping, and the sweep then cancelled
+    // every alert the OS had restored. Nothing about the cached shape changed
+    // here, so nothing should be cleared.
+    mockGetItem.mockImplementation((key: string) => {
+      if (key === 'app_installed_version') return '1.0.34';
+      if (key === 'cache_schema_version') return CACHE_SCHEMA_VERSION;
+      return null;
+    });
+    mockCompareVersions.mockReturnValue(1);
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35');
+
+    handle();
+
+    expect(mockClearAllExcept).not.toHaveBeenCalled();
+    expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.35');
+  });
+
+  it('clears the cache when the cache schema version changed', () => {
+    // The protection must still fire when it is genuinely needed: data written
+    // in an older shape and read by new code produces a wrong prayer time.
+    mockGetItem.mockImplementation((key: string) => {
+      if (key === 'app_installed_version') return '1.0.34';
+      if (key === 'cache_schema_version') return CACHE_SCHEMA_VERSION - 1;
+      return null;
+    });
+    mockCompareVersions.mockReturnValue(1);
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35');
+
+    handle();
+
+    expect(mockClearAllExcept).toHaveBeenCalled();
+  });
+
+  it('stamps the cache schema version so the next update has something to compare', () => {
+    mockGetItem.mockImplementation((key: string) => (key === 'app_installed_version' ? '1.0.34' : null));
+    mockCompareVersions.mockReturnValue(1);
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35');
+
+    handle();
+
+    expect(mockSetItem).toHaveBeenCalledWith('cache_schema_version', CACHE_SCHEMA_VERSION);
   });
 
   it('completes no-change flow', () => {
