@@ -790,6 +790,111 @@ describe('refreshSequence', () => {
       expect(firstNewDay()).toBe('2026-01-21');
     });
   });
+
+  /**
+   * mergeAndDeduplicatePrayers is module-private, so these drive it through
+   * refreshSequence: a buffer under 24 hours forces the rebuild, and the
+   * mocked createPrayerSequence stands in for what the cache now says.
+   */
+  describe('merging a rebuild over the in-memory sequence (AUDIT #27)', () => {
+    /** now, and a buffer short enough that refreshSequence rebuilds */
+    const seedShortBuffer = () => {
+      mockCreateLondonDate.mockReturnValue(new Date('2026-01-20T21:00:00Z'));
+      getDefaultStore().set(
+        standardSequenceAtom,
+        createMockSequence([
+          createMockPrayer({
+            english: 'Isha',
+            datetime: new Date('2026-01-20T18:45:00Z'),
+            belongsToDate: '2026-01-20',
+          }),
+          createMockPrayer({
+            english: 'Fajr',
+            datetime: new Date('2026-01-21T06:15:00Z'),
+            belongsToDate: '2026-01-21',
+          }),
+        ])
+      );
+    };
+
+    const storedPrayers = () => getDefaultStore().get(standardSequenceAtom)?.prayers ?? [];
+
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('keeps one row when a prayer comes back at a different time, and takes the new instant', () => {
+      seedShortBuffer();
+
+      // Same prayer of the same Islamic day, corrected by 25 minutes
+      const corrected = createMockPrayer({
+        english: 'Fajr',
+        datetime: new Date('2026-01-21T06:40:00Z'),
+        time: '06:40',
+        belongsToDate: '2026-01-21',
+      });
+      mockCreatePrayerSequence.mockReturnValue(createMockSequence([corrected]));
+
+      refreshSequence(ScheduleType.Standard);
+
+      const fajrs = storedPrayers().filter((p) => p.english === 'Fajr' && p.belongsToDate === '2026-01-21');
+      expect(fajrs).toHaveLength(1);
+      expect(fajrs[0].datetime).toEqual(new Date('2026-01-21T06:40:00Z'));
+      expect(fajrs[0].time).toBe('06:40');
+    });
+
+    it('keeps a same-named prayer of a different Islamic day as its own row', () => {
+      seedShortBuffer();
+
+      mockCreatePrayerSequence.mockReturnValue(
+        createMockSequence([
+          createMockPrayer({
+            english: 'Fajr',
+            datetime: new Date('2026-01-21T06:40:00Z'),
+            belongsToDate: '2026-01-21',
+          }),
+          createMockPrayer({
+            english: 'Fajr',
+            datetime: new Date('2026-01-22T06:14:00Z'),
+            belongsToDate: '2026-01-22',
+          }),
+        ])
+      );
+
+      refreshSequence(ScheduleType.Standard);
+
+      const fajrs = storedPrayers().filter((p) => p.english === 'Fajr');
+      expect(fajrs.map((p) => p.belongsToDate)).toEqual(['2026-01-21', '2026-01-22']);
+    });
+
+    it('leaves the rest of the buffer alone and stays sorted by instant', () => {
+      seedShortBuffer();
+
+      mockCreatePrayerSequence.mockReturnValue(
+        createMockSequence([
+          createMockPrayer({
+            english: 'Fajr',
+            datetime: new Date('2026-01-21T06:40:00Z'),
+            belongsToDate: '2026-01-21',
+          }),
+          createMockPrayer({
+            english: 'Dhuhr',
+            datetime: new Date('2026-01-21T12:25:00Z'),
+            belongsToDate: '2026-01-21',
+          }),
+        ])
+      );
+
+      refreshSequence(ScheduleType.Standard);
+
+      const rows = storedPrayers();
+      // The passed Isha is kept as the previous prayer for the progress bar
+      expect(rows.map((p) => p.english)).toEqual(['Isha', 'Fajr', 'Dhuhr']);
+
+      const instants = rows.map((p) => p.datetime.getTime());
+      expect([...instants].sort((a, b) => a - b)).toEqual(instants);
+    });
+  });
 });
 
 // =============================================================================

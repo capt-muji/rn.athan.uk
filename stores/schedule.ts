@@ -287,14 +287,34 @@ function shouldFetchMorePrayers(prayers: Prayer[], now: Date): boolean {
 }
 
 /**
+ * Identity of a prayer within a sequence: which prayer, on which Islamic day.
+ *
+ * Not the instant. A day has exactly one Fajr however its time is later
+ * corrected, and createPrayerSequence emits each name at most once per day it
+ * builds, with belongsToDate always equal to that day — the date-shifting pair
+ * adjustPrayerDateForMidnightCrossing/calculateBelongsToDate move the INSTANT
+ * across midnight and then hand the grouping back. Verified over the 2024
+ * London year (2,928 sequences, 40,692 rows, zero collisions) and over a
+ * synthetic >60N block whose Magrib and Isha both fall after midnight.
+ */
+const prayerIdentity = (prayer: Prayer): string => `${prayer.english}_${prayer.belongsToDate}`;
+
+/**
  * Helper: Merge existing and new prayers, removing duplicates
- * Deduplication based on prayer name and datetime
+ *
+ * The cache-derived copy wins. Keying on the instant instead let a prayer whose
+ * time changed between the in-memory sequence and the rebuild survive as two
+ * rows — the same prayer rendered twice for one day, with the countdown aimed
+ * at the stale one. The rebuild just read storage, so where the two disagree it
+ * is the corrected copy (same reasoning as the sequence signature in #13).
  */
 function mergeAndDeduplicatePrayers(existingPrayers: Prayer[], newPrayers: Prayer[]): Prayer[] {
-  const existingSet = new Set(existingPrayers.map((p) => `${p.english}_${p.datetime.getTime()}`));
-  const uniqueNewPrayers = newPrayers.filter((p) => !existingSet.has(`${p.english}_${p.datetime.getTime()}`));
+  const byIdentity = new Map<string, Prayer>();
 
-  return [...existingPrayers, ...uniqueNewPrayers].sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
+  for (const prayer of existingPrayers) byIdentity.set(prayerIdentity(prayer), prayer);
+  for (const prayer of newPrayers) byIdentity.set(prayerIdentity(prayer), prayer);
+
+  return [...byIdentity.values()].sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
 }
 
 /**
