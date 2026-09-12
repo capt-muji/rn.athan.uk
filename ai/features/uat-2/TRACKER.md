@@ -19,7 +19,7 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 | 4 | Clock-change nights measured in real elapsed time | `fix/night-times` | 🔀 uat-2 |
 | 5 | Notifications and reminders fire exactly when their row says (one source of truth) | `fix/night-times` | 🔀 uat-2 |
 | 6 | Night times worked out when the list is built (stored night fields and the Dec 31 patch removed) | `fix/night-times` | 🔀 uat-2 |
-| 7 | Heavy tests, a 3T check, and a 5-minute test for the owner | `fix/night-times` | 🔀 uat-2 (3T ✅; owner's 5-minute test pending) |
+| 7 | Heavy tests, a 3T check, and a 5-minute test for the owner | `fix/night-times` | 🔀 uat-2 (3T ✅; recipe written — `ai/features/uat-2/OWNER-TEST-night-times.md`, owner to run) |
 | 8 | Phones set to other timezones: dates follow the prayer timezone (needed for v2.0) | `fix/year-boundary` | 🔀 uat-2 (3T ✅, New York time ✅) |
 | 9 | The extra download on 1 Jan (ISSUES #4) | `fix/year-boundary` | 🔀 uat-2 |
 | 10 | More than 3 days in the background: the stop-gap list starts from tomorrow | `fix/year-boundary` | 🔀 uat-2 |
