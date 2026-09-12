@@ -218,17 +218,31 @@ describe('virtual week model test', () => {
         throw new Error(`Countdown interval does not bracket ${new Date(instant).toISOString()}`);
       }
 
-      // The label is the minute-ceil value at the entry's date (the push
-      // instant for a backdated first entry)
-      const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
-      const msLeft = nextMs - labelAnchorMs;
-      const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
-      const expectedLabel = formatCountdownMinutes(secondsRemaining);
-      if (props.countdownLabel !== expectedLabel) {
-        throw new Error(
-          `Countdown label mismatch at ${new Date(instant).toISOString()}: entry says ` +
-            `"${props.countdownLabel}", app formatter says "${expectedLabel}"`
-        );
+      // An entry the horizon strands — no further step fits inside the
+      // horizon and the boundary is still more than a step away — shows no
+      // countdown at all, because one computed at its date would over-read
+      // by the whole remaining gap. Every other entry carries the minute-ceil
+      // value at its own date (the push instant for a backdated first entry).
+      if (props.countdownLabel === '') {
+        const noStepFits = active.date.getTime() + COUNTDOWN_STEP_MS > horizonMs;
+        const boundaryFarther = nextMs - active.date.getTime() > COUNTDOWN_STEP_MS;
+        if (!noStepFits || !boundaryFarther) {
+          throw new Error(
+            `Countdown blanked without cause at ${new Date(instant).toISOString()}: entry dated ` +
+              `${active.date.toISOString()}, horizon ${new Date(horizonMs).toISOString()}, boundary ${new Date(nextMs).toISOString()}`
+          );
+        }
+      } else {
+        const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
+        const msLeft = nextMs - labelAnchorMs;
+        const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
+        const expectedLabel = formatCountdownMinutes(secondsRemaining);
+        if (props.countdownLabel !== expectedLabel) {
+          throw new Error(
+            `Countdown label mismatch at ${new Date(instant).toISOString()}: entry says ` +
+              `"${props.countdownLabel}", app formatter says "${expectedLabel}"`
+          );
+        }
       }
 
       // The date label is the next prayer's Islamic day in the app format
@@ -497,13 +511,22 @@ describe('extras virtual week model test', () => {
         throw new Error(`Segment mismatch at ${new Date(instant).toISOString()}`);
       }
 
-      // The label is the minute-ceil value at the entry's date
-      const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
-      const msLeft = nextMs - labelAnchorMs;
-      const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
-      const expectedLabel = formatCountdownMinutes(secondsRemaining);
-      if (props.countdownLabel !== expectedLabel) {
-        throw new Error(`Countdown label mismatch at ${new Date(instant).toISOString()}`);
+      // An entry the horizon strands shows no countdown (see the standard
+      // sweep); every other entry carries the minute-ceil value at its date
+      if (props.countdownLabel === '') {
+        const noStepFits = active.date.getTime() + COUNTDOWN_STEP_MS > horizonMs;
+        const boundaryFarther = nextMs - active.date.getTime() > COUNTDOWN_STEP_MS;
+        if (!noStepFits || !boundaryFarther) {
+          throw new Error(`Countdown blanked without cause at ${new Date(instant).toISOString()}`);
+        }
+      } else {
+        const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
+        const msLeft = nextMs - labelAnchorMs;
+        const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
+        const expectedLabel = formatCountdownMinutes(secondsRemaining);
+        if (props.countdownLabel !== expectedLabel) {
+          throw new Error(`Countdown label mismatch at ${new Date(instant).toISOString()}`);
+        }
       }
 
       // The date label is the next prayer's Islamic day in the app format
