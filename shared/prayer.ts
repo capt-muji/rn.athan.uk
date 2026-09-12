@@ -3,6 +3,7 @@ import {
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   ISLAMIC_DAY,
+  MIDNIGHT_CROSSING_PRAYERS,
   NIGHT_PRAYER_NAMES,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
@@ -90,20 +91,38 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 // =============================================================================
 
 /**
- * Whether a clock hour falls in the small hours, meaning the instant belongs to the
- * calendar day after the record carrying it. Six is the cutoff the Islamic-day model
- * already uses for Isha.
+ * Whether a clock hour is in the small hours. On its own this says nothing about dates —
+ * Suhoor, Fajr, Sunrise and Duha are all routinely below six and all belong to their own
+ * day. Only the prayers in MIDNIGHT_CROSSING_PRAYERS carry the day-shift meaning, so every
+ * caller gates on the name as well.
  */
-const isAfterMidnight = (hours: number): boolean => hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR;
+const isSmallHours = (hours: number): boolean => hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR;
 
 /**
  * Whether a Magrib time is really the next day's. Only reachable above roughly 60N, where
- * sunset falls after midnight (Reykjavik, 21 June: 00:04); London's Magrib spans 15:51 to
- * 21:21, so this is always false for the city the app ships for today.
+ * sunset falls after midnight (Reykjavik 00:03, Nome 01:48 on 21 June); London's Magrib
+ * spans 15:55 to 21:25 across the year, so this is always false for the city shipping today.
  */
 const magribCrossesIntoNextDay = (magribTime: string): boolean => {
   const [hours] = magribTime.split(':').map(Number);
-  return isAfterMidnight(hours);
+  return isSmallHours(hours);
+};
+
+/**
+ * The instant Istijaba falls on: an hour before Magrib, measured from Magrib's INSTANT.
+ *
+ * Deriving it from the clock string cannot work once Magrib crosses midnight. `adjustTime`
+ * is modular clock arithmetic, so it turns Magrib 01:47 into Istijaba 00:47 and leaves it
+ * filed under the old date while Magrib moves to the next — putting Istijaba 25 hours early
+ * (Nome, Alaska: sunset 01:47). It only appeared to work below 01:00, where the wrap past
+ * midnight happened to cancel the shift. Midnight and Last Third already take instants
+ * rather than strings for exactly this reason.
+ */
+const getIstijabaTime = (rawData: ISingleApiResponseTransformed, date: string): Date => {
+  const magribDate = magribCrossesIntoNextDay(rawData.magrib) ? TimeUtils.addDaysToDateString(date, 1) : date;
+  const magribInstant = createPrayerDatetime(magribDate, rawData.magrib);
+
+  return new Date(magribInstant.getTime() + TIME_ADJUSTMENTS.istijaba * 60_000);
 };
 
 /**
@@ -206,9 +225,9 @@ export const calculateBelongsToDate = (
   // Magrib needs the identical mapping wherever sunset itself lands after midnight:
   // adjustPrayerDateForMidnightCrossing has already pushed its instant to the next
   // calendar day, and without undoing that here the row would leave its own day's list
-  // and appear on the following one.
-  const crossedMidnight = prayerEnglish === 'Isha' || prayerEnglish === 'Magrib';
-  if (type === ScheduleType.Standard && crossedMidnight && hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR) {
+  // and appear on the following one. The two functions are a matched pair — shifting the
+  // instant without shifting the grouping back moves the row to the wrong card.
+  if (type === ScheduleType.Standard && MIDNIGHT_CROSSING_PRAYERS.includes(prayerEnglish) && isSmallHours(hours)) {
     return TimeUtils.getPreviousDateString(calendarDate);
   }
 
@@ -304,8 +323,7 @@ function adjustPrayerDateForMidnightCrossing(
   // STANDARD: Isha 00:00-06:00 occurs on NEXT calendar day (for countdown).
   // Magrib joins it above ~60N, where sunset itself lands after midnight while the
   // provider still files it under the old date — without this its alarm is 23h56m early.
-  const canCrossMidnight = prayerName === 'Isha' || prayerName === 'Magrib';
-  if (isStandard && canCrossMidnight && isAfterMidnight(hours)) {
+  if (isStandard && MIDNIGHT_CROSSING_PRAYERS.includes(prayerName) && isSmallHours(hours)) {
     return TimeUtils.addDaysToDateString(date, 1);
   }
 
@@ -337,14 +355,18 @@ function createPrayersForSingleDay(
   const nightTimes = type === ScheduleType.Extra ? getNightTimesForDay(rawData, previousDayData) : null;
 
   namesEnglish.forEach((name, index) => {
+    // Istijaba joins the night rows on the exact-instant path: it hangs off Magrib, which
+    // can be date-shifted, so a clock string cannot express it (see getIstijabaTime)
+    const isIstijaba = type === ScheduleType.Extra && name === 'Istijaba';
     const nightRowTime = nightTimes ? getNightRowTime(nightTimes, name) : undefined;
-    if (nightRowTime) {
+    const rowInstant = isIstijaba ? getIstijabaTime(rawData, date) : nightRowTime;
+    if (rowInstant) {
       prayers.push({
         type,
         english: name,
         arabic: namesArabic[index],
-        datetime: nightRowTime,
-        time: TimeUtils.formatPrayerTime(nightRowTime),
+        datetime: rowInstant,
+        time: TimeUtils.formatPrayerTime(rowInstant),
         belongsToDate: date,
       });
       return;
