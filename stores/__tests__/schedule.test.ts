@@ -354,6 +354,28 @@ describe('createPrevPrayerAtom', () => {
     expect(result?.english).toBe('Isha');
   });
 
+  // Audit finding 7, the second non-null assertion: getYesterdayFinalPrayer
+  // asserted the previous day's record exists. On 1 January the previous year's
+  // last day is exactly the record the sync layer may not hold, and this runs
+  // during render, so the throw took the screen down rather than losing a row.
+  it('returns null when yesterday has no cached record', () => {
+    const store = createStore();
+    const now = new Date('2026-01-20T01:00:00');
+    mockCreateLondonDate.mockReturnValue(now);
+
+    const prayers = [createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') })];
+
+    mockGetPrayerByDate.mockReturnValue(null);
+    mockIsFriday.mockReturnValue(false);
+
+    store.set(standardSequenceAtom, createMockSequence(prayers));
+
+    const prevPrayerAtom = createPrevPrayerAtom(ScheduleType.Standard);
+
+    expect(() => store.get(prevPrayerAtom)).not.toThrow();
+    expect(store.get(prevPrayerAtom)).toBeNull();
+  });
+
   it('returns null when no future prayers found (nextIndex === -1)', () => {
     const store = createStore();
     const now = new Date('2026-01-20T23:00:00');
@@ -458,6 +480,31 @@ describe('createDisplayDateAtom', () => {
     const result = store.get(displayDateAtom);
 
     expect(result).toBeNull();
+  });
+
+  // Audit finding 7: this ended in a non-null assertion, so the evening of 31
+  // December with next year's data not yet published — every prayer in the
+  // sequence already passed — threw during render. With no ErrorBoundary on any
+  // route that killed the app until the data appeared. `usePrayerSequence` reads
+  // this atom before its own isReady check, so nothing upstream guarded it.
+  it('returns null when every prayer in the sequence has passed', () => {
+    const store = createStore();
+    mockCreateLondonDate.mockReturnValue(new Date('2026-12-31T23:30:00'));
+
+    const prayers = [
+      createMockPrayer({
+        english: 'Isha',
+        datetime: new Date('2026-12-31T17:40:00'),
+        belongsToDate: '2026-12-31',
+      }),
+    ];
+
+    store.set(standardSequenceAtom, createMockSequence(prayers));
+
+    const displayDateAtom = createDisplayDateAtom(ScheduleType.Standard);
+
+    expect(() => store.get(displayDateAtom)).not.toThrow();
+    expect(store.get(displayDateAtom)).toBeNull();
   });
 
   it('returns belongsToDate of next prayer', () => {
