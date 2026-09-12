@@ -7,20 +7,15 @@ import Navigation from '@/app/Navigation';
 import { ModalUpdate, ModalWhatsNew } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
-import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
-import { initializeListeners } from '@/device/listeners';
-import { checkForUpdates, openStore } from '@/device/updates';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { useNotification } from '@/hooks/useNotification';
 import { APP_CONFIG } from '@/shared/config';
 import { COLORS, SIZE } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
-import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { isRamadan } from '@/shared/time';
 import { shouldShowWhatsNew, VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
-import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
 import {
@@ -86,6 +81,19 @@ export default function Index() {
     // deferring them past that window keeps the first swipes on an idle JS
     // thread. The 12-hour refresh gate makes a ~1.5s delay immaterial.
     const initHandle = setTimeout(() => {
+      // Required here rather than imported at module scope: nothing below is
+      // needed until this settling window, and module-scope imports evaluate
+      // inside the ~900ms of import-graph work that precedes Index's first
+      // render (ISSUES #32). Modules already reached through another path cost
+      // nothing extra here — the require is a cache hit.
+      const { runBackgroundTaskDebugSequence } =
+        require('@/device/backgroundTaskDebug') as typeof import('@/device/backgroundTaskDebug');
+      const { initializeListeners } = require('@/device/listeners') as typeof import('@/device/listeners');
+      const { checkForUpdates } = require('@/device/updates') as typeof import('@/device/updates');
+      const { initializeNotifications } = require('@/shared/notifications') as typeof import('@/shared/notifications');
+      const { refreshNotifications, registerBackgroundTask } =
+        require('@/stores/notifications') as typeof import('@/stores/notifications');
+
       // Initialize notifications, register background task, and create channel on first load
       initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
         logger.error('Failed to initialize notifications:', error)
@@ -156,6 +164,9 @@ export default function Index() {
   };
 
   const handleUpdate = () => {
+    // openStore shares a module with checkForUpdates (deferred above), but runs
+    // from a press handler rather than the settling window — require at use
+    const { openStore } = require('@/device/updates') as typeof import('@/device/updates');
     openStore();
     setPopupUpdateEnabled(false);
   };
