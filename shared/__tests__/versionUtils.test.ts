@@ -83,3 +83,32 @@ describe('isNewerVersion', () => {
     expect(isNewerVersion('1.9.9', '2.0.0')).toBe(true);
   });
 });
+
+// =============================================================================
+// MALFORMED INPUT TESTS
+//
+// compareVersions is fed whatever releases.json or the iTunes lookup returns, and
+// the app controls neither. Number('v1') is NaN, and `NaN || 0` turned that into 0,
+// so a `v` prefix did not merely degrade the comparison — it inverted it.
+// =============================================================================
+
+describe('compareVersions with malformed input', () => {
+  it('treats a v prefix as the same version, not an older one', () => {
+    expect(compareVersions('v1.0.1', '1.0.0')).toBe(1);
+    expect(compareVersions('1.0.1', 'v1.0.0')).toBe(1);
+    expect(compareVersions('v1.0.0', '1.0.0')).toBe(0);
+  });
+
+  it('reports a v-prefixed store version as newer', () => {
+    expect(isNewerVersion('1.25.46', 'v1.26.0')).toBe(true);
+  });
+
+  it('reads a non-numeric segment as zero rather than inverting', () => {
+    expect(compareVersions('1.x.0', '1.0.0')).toBe(0);
+  });
+
+  it('does not throw on an absent version', () => {
+    expect(() => compareVersions(undefined as unknown as string, '1.0.0')).not.toThrow();
+    expect(() => compareVersions('1.0.0', null as unknown as string)).not.toThrow();
+  });
+});
