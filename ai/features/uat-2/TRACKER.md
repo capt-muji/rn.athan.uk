@@ -24,7 +24,7 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 | 9 | The extra download on 1 Jan (ISSUES #4) | `fix/year-boundary` | 🔀 uat-2 |
 | 10 | More than 3 days in the background: the stop-gap list starts from tomorrow | `fix/year-boundary` | 🔀 uat-2 |
 | 11 | Device checks: one command, run on demand | `test/device-checks` | ⏳ |
-| 12 | Launch time: measure a production build on the 3T | `perf/launch-time` | 🚧 baseline 6.6–6.7 s to first frame (3T, production build); profile next |
+| 12 | Launch time: measure a production build on the 3T | `perf/launch-time` | ✅ 6.6 s split (ISSUES #32): 3.1 s TLS provider install (Android ≤9 only, load-bearing), 0.2 s RN init + bundle, ~1.9 s JS → content |
 | 13 | Launch time: one change at a time, checked frame by frame | `perf/launch-time` | ⏳ |
 | 14 | "Ago" badge moved onto the shared clock tick | `refactor/tidy-ups` | ⏳ |
 | 15 | Popups tracked by prayer name, not row number | `refactor/tidy-ups` | ⏳ |
