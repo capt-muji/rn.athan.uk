@@ -146,8 +146,17 @@ export const BACKGROUND_TASK_INTERVAL_HOURS = 6;
  * - 15 minutes in development builds (fast iteration)
  * - BACKGROUND_TASK_INTERVAL_HOURS * 60 in production (6 hours)
  */
+/** Android WorkManager's own floor; below it the OS silently clamps and the ladder lies */
+const MIN_BG_INTERVAL_MINUTES = 15;
+
+/** A day. Beyond this the override is the seconds-for-minutes mistake of ISSUES.md #8, not a choice */
+const MAX_BG_INTERVAL_MINUTES = 1440;
+
 const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
-const isEnvIntervalValid = Number.isFinite(envIntervalMinutes) && envIntervalMinutes > 0;
+const isEnvIntervalValid =
+  Number.isFinite(envIntervalMinutes) &&
+  envIntervalMinutes >= MIN_BG_INTERVAL_MINUTES &&
+  envIntervalMinutes <= MAX_BG_INTERVAL_MINUTES;
 export const BACKGROUND_TASK_INTERVAL_MINUTES = isEnvIntervalValid
   ? envIntervalMinutes
   : process.env.NODE_ENV === 'development'
