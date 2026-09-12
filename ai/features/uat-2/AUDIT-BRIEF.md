@@ -14,7 +14,13 @@ by that.
 
 - **Never commit the API key.** It lives in the session scratchpad and reaches
   builds through the environment only.
-- **No package upgrades.** The owner deferred them: if it works, it works.
+- ~~**No package upgrades.** The owner deferred them: if it works, it works.~~
+  **SUPERSEDED 2026-09-12**: the owner reopened package upgrades — *"this sounds like a
+  good time to upgrade packages"* — as their own programme, briefed at
+  `ai/features/upgrades-2026-09/BRIEF.md`. They are still out of scope for *this* audit
+  (keep the two efforts separate so a finding is never confused with a version bump),
+  but "we cannot change that, it is a dependency" is no longer a valid reason to dismiss
+  a finding. Record it and point at the upgrade programme.
 - **Nothing may assume London.** v2.0 goes global, and other regions do not
   share London's DST rule — the US switches on different dates, Brazil abolished
   DST in 2019, South Asia has none. `PRAYER_TIMEZONE` in `shared/constants.ts`
