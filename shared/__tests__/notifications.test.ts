@@ -2,7 +2,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { AndroidImportance, deleteNotificationChannelAsync, setNotificationChannelAsync } from 'expo-notifications';
 import { Platform } from 'react-native';
 
-import { PRAYER_TIMEZONE } from '../constants';
+import { NOTIFICATION_ROLLING_DAYS, PRAYER_TIMEZONE, PRAYERS_ENGLISH } from '../constants';
 import {
   athanAndroidChannelId,
   atTimeAndroidChannelId,
@@ -17,13 +17,15 @@ import {
   genNextXDays,
   genNotificationContent,
   genReminderNotificationContent,
+  genScheduleDatesForPrayer,
   getNotificationSound,
   getReminderNotificationSound,
   initializeNotifications,
   reminderAndroidChannelId,
+  rollingDaysForPrayer,
   type ScheduledNotification,
 } from '../notifications';
-import { AlertType } from '../types';
+import { AlertType, ScheduleType } from '../types';
 
 /**
  * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
@@ -71,6 +73,54 @@ describe('genNextXDays', () => {
     // Each subsequent day should be 1 day after the previous
     expect(date1.getTime() - date0.getTime()).toBe(24 * 60 * 60 * 1000);
     expect(date2.getTime() - date1.getTime()).toBe(24 * 60 * 60 * 1000);
+  });
+});
+
+// =============================================================================
+// PER-PRAYER ROLLING WINDOW TESTS
+//
+// The window is counted in LIST days. Midnight and Last Third for day D fire on the
+// evening of D minus 1, so at the base window their furthest-out armed alert sits a
+// whole day nearer than every other row's — today's is always already past. One extra
+// list day for those two rows, and only those two, restores that buffer.
+// =============================================================================
+
+describe('rollingDaysForPrayer', () => {
+  it('gives the base window to every standard prayer', () => {
+    PRAYERS_ENGLISH.forEach((name) => {
+      expect(rollingDaysForPrayer(ScheduleType.Standard, name)).toBe(NOTIFICATION_ROLLING_DAYS);
+    });
+  });
+
+  it('gives one extra list day to the two Extras rows that fire the evening before', () => {
+    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Midnight')).toBe(NOTIFICATION_ROLLING_DAYS + 1);
+    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Last Third')).toBe(NOTIFICATION_ROLLING_DAYS + 1);
+  });
+
+  it('leaves Suhoor on the base window, since its instant is on its own date', () => {
+    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Suhoor')).toBe(NOTIFICATION_ROLLING_DAYS);
+  });
+
+  it('gives the base window to the remaining extras', () => {
+    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Duha')).toBe(NOTIFICATION_ROLLING_DAYS);
+    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Istijaba')).toBe(NOTIFICATION_ROLLING_DAYS);
+  });
+
+  it('keys off the schedule as well as the name, so a standard row can never widen', () => {
+    expect(rollingDaysForPrayer(ScheduleType.Standard, 'Midnight')).toBe(NOTIFICATION_ROLLING_DAYS);
+  });
+});
+
+describe('genScheduleDatesForPrayer', () => {
+  it('reaches one list day further for a night row than for a daily prayer', () => {
+    const isha = genScheduleDatesForPrayer(ScheduleType.Standard, 'Isha');
+    const midnight = genScheduleDatesForPrayer(ScheduleType.Extra, 'Midnight');
+
+    expect(isha).toHaveLength(NOTIFICATION_ROLLING_DAYS);
+    expect(midnight).toHaveLength(NOTIFICATION_ROLLING_DAYS + 1);
+    // The shorter window is a prefix of the longer one: same start, one more day on the end
+    expect(midnight.slice(0, isha.length)).toEqual(isha);
+    expect(midnight[0]).toBe(prayerZoneDate());
   });
 });
 

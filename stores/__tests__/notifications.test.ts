@@ -1611,6 +1611,73 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     // Sunday's Midnight is Saturday 23:45 BST, this same evening, never Sunday 23:45
     expect(request?.trigger.date.toISOString()).toBe('2026-08-29T22:45:00.000Z');
   });
+
+  it('reaches one list day further for the night rows, so they keep the buffer everything else has', async () => {
+    // The window is counted in LIST days, and a night row's instant is on the evening
+    // BEFORE its list day. Over the base two-day window today's night row is already past,
+    // leaving one armed against Isha's two — so at the same moment the furthest-out Midnight
+    // is tonight while the furthest-out Isha is tomorrow evening. The fourth day seeded here
+    // is what the extra list day reaches; it must NOT widen the standard rows with it.
+    const seedDay = (date: string, fajr: string, magrib: string) => {
+      const prayer: ISingleApiResponseTransformed = {
+        date,
+        fajr,
+        sunrise: '06:10',
+        dhuhr: '13:05',
+        asr: '16:50',
+        magrib,
+        isha: '21:20',
+        suhoor: '04:05',
+        duha: '06:30',
+        istijaba: '18:55',
+      };
+      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+    };
+    const DAY_AFTER_TOMORROW = '2026-08-31';
+    seedDay(YESTERDAY, '04:22', '19:58');
+    seedDay(TODAY, '04:23', '19:55');
+    seedDay(TOMORROW, '04:25', '19:53');
+    seedDay(DAY_AFTER_TOMORROW, '04:27', '19:51');
+    store.set(standardPrayerAlertAtoms[0], AlertType.Silent); // Fajr
+    store.set(standardReminderAlertAtoms[0], AlertType.Silent); // Fajr reminder
+    store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
+    store.set(extraPrayerAlertAtoms[1], AlertType.Silent); // Last Third
+    store.set(extraPrayerAlertAtoms[2], AlertType.Silent); // Suhoor
+    store.set(extraReminderAlertAtoms[0], AlertType.Silent); // Midnight reminder
+
+    await rescheduleAllNotifications();
+
+    const midnightId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', date);
+    const lastThirdId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Last Third', date);
+    const suhoorId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Suhoor', date);
+
+    // Monday's night rows fire on Sunday evening — reachable only with the extra list day
+    expect(osState.has(midnightId(DAY_AFTER_TOMORROW))).toBe(true);
+    expect(osState.has(lastThirdId(DAY_AFTER_TOMORROW))).toBe(true);
+    // The reminder path takes the same window, or the two would drift apart
+    expect(
+      osState.has(
+        reminderNotificationIdentifier(
+          ScheduleType.Extra,
+          'Midnight',
+          DAY_AFTER_TOMORROW,
+          DEFAULT_REMINDER_INTERVAL as ReminderInterval
+        )
+      )
+    ).toBe(true);
+
+    // Nothing else widens: the standard rows and Suhoor stop at tomorrow, so the iOS
+    // pending-request ceiling still holds
+    expect(osState.has(fajrId(DAY_AFTER_TOMORROW))).toBe(false);
+    expect(osState.has(fajrReminderId(DAY_AFTER_TOMORROW, DEFAULT_REMINDER_INTERVAL))).toBe(false);
+    expect(osState.has(suhoorId(DAY_AFTER_TOMORROW))).toBe(false);
+    expect(osState.has(fajrId(TOMORROW))).toBe(true);
+    expect(osState.has(suhoorId(TOMORROW))).toBe(true);
+
+    // The point of the extra day: the night rows now arm two future instants, like Isha does
+    expect(osState.has(midnightId(TOMORROW))).toBe(true);
+    expect(osState.has(midnightId(TODAY))).toBe(false); // already past at 09:00
+  });
   // ==========================================================================
   // SCHEDULING FAILURE TESTS
   //
