@@ -9,10 +9,11 @@
   "toggle_tap_ms": 0,
   "_animation_floors": {
     "_comment": "30fps floor audit results (compositor/atrace), not marks",
+    "_sf_latency_note": "SF-latency verdicts are single-run and NOT reproducible on their own. Three consecutive corrected runs of overlay-open on 1.25.0 (2026-09-12, 3T) gave FAIL, PASS, FAIL: a 67ms gap at the idle-to-animation boundary in two of three. One run is a sample, not a verdict — take the video path plus a vision read before recording any SF result here.",
     "overlay_open_first": "PASS 16-17ms cadence, vision-verified smooth",
     "overlay_open_steady": "PASS 60fps",
     "overlay_close_first": "PASS 60fps, vision-verified",
-    "overlay_close_steady": "PASS 60fps (SF latency)",
+    "overlay_close_steady": "UNPROVEN — the SF-latency verdict that produced this could not print FAIL (audit finding 28, fixed 1.25.14). Re-measure with the corrected script before quoting it.",
     "sheet_alert_entrance": "PASS zero >33ms misses post-#10 (was 235/202ms)",
     "pager_swipe": "PASS 24x17ms",
     "idle_traversal_bumps": "NONE in 5s (was 6.7+12.4ms per second pre-#10)"
