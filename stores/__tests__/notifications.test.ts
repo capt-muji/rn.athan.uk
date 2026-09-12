@@ -1541,4 +1541,76 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     // Sunday's Midnight is Saturday 23:45 BST, this same evening, never Sunday 23:45
     expect(request?.trigger.date.toISOString()).toBe('2026-08-29T22:45:00.000Z');
   });
+  // ==========================================================================
+  // SCHEDULING FAILURE TESTS
+  //
+  // The real scheduleNotificationAsync rejects on a past trigger date, an absent
+  // Android channel, the iOS pending ceiling and UnavailabilityError, and nothing
+  // in the repository had ever made it reject. The catch block it guards is
+  // correctness-critical: the identifier is deterministic, so whatever OS
+  // notification it already had must survive the failure, and the identifier has
+  // to be re-recorded or the per-prayer stale-cancel and the post-reschedule
+  // sweep would delete a live alert (issue #15).
+  // ==========================================================================
+
+  describe('when the OS rejects a schedule request', () => {
+    /** Rejects only the named identifier; everything else schedules normally */
+    const rejectIdentifier = (target: string) => {
+      scheduleMock.mockImplementation(({ identifier }: { identifier: string }) => {
+        if (identifier === target) return Promise.reject(new Error('Invalid notification channel'));
+        osState.add(identifier);
+        return Promise.resolve(identifier);
+      });
+    };
+
+    it('still records the deterministic identifier, so the failure leaves bookkeeping intact', async () => {
+      const failing = fajrId(TODAY);
+      rejectIdentifier(failing);
+      enableFajrAlerts(AlertType.Sound);
+      seedPrayerWindow();
+
+      await rescheduleAllNotifications();
+
+      const stored = Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
+      expect(stored.map((record) => record.id)).toContain(failing);
+    });
+
+    it('never cancels the OS notification that survived the failed replace', async () => {
+      const failing = fajrId(TODAY);
+      // The OS already holds this identifier from an earlier successful schedule
+      osState.add(failing);
+      rejectIdentifier(failing);
+      enableFajrAlerts(AlertType.Sound);
+      seedPrayerWindow();
+
+      await rescheduleAllNotifications();
+
+      expect(cancelCalls()).not.toContain(failing);
+      expect(osIdentifiers()).toContain(failing);
+    });
+
+    it('does not abort the rest of the batch when one prayer fails', async () => {
+      rejectIdentifier(fajrId(TODAY));
+      enableFajrAlerts(AlertType.Sound);
+      seedPrayerWindow();
+
+      await rescheduleAllNotifications();
+
+      expect(osIdentifiers()).toContain(fajrId(TOMORROW));
+    });
+
+    it('records the reminder identifier too when a reminder request rejects', async () => {
+      const failing = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
+      rejectIdentifier(failing);
+      // A reminder only schedules while its at-time alert is on, which is the same
+      // constraint setPrayerAlertType enforces in the UI
+      enableFajrAlerts(AlertType.Silent, AlertType.Sound);
+      seedPrayerWindow();
+
+      await rescheduleAllNotifications();
+
+      const stored = Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
+      expect(stored.map((record) => record.id)).toContain(failing);
+    });
+  });
 });

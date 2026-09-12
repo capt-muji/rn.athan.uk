@@ -1401,6 +1401,23 @@ That reasoning is right. It has simply never been run.
 
 CONFIRMED.
 
+### CLOSED in session 5, 1.25.43, `fix/audit-24-schedule-rejection`
+
+Four cases in `stores/__tests__/notifications.test.ts` reject a single identifier while the rest
+of the batch schedules normally, which is the realistic shape: one bad channel or one past
+trigger, not a total outage. They assert the deterministic identifier is still recorded, that
+the OS notification which survived the failed replace is **not** cancelled by the sweep, that
+the rest of the batch still schedules, and that a rejected reminder records its identifier too.
+
+The catch block's reasoning is now exercised rather than merely inspected: deleting the
+`survivedNotification` record and returning `null` instead fails three of the four.
+
+**One correction to the test, not the code.** The reminder case first failed because it armed a
+reminder while its at-time alert was `Off`. That is a state the app does not permit —
+`setPrayerAlertType` forces the reminder off with the at-time alert — and the scheduler honours
+the same rule, so nothing was scheduled to reject. The test was wrong and was changed to a valid
+state; the constraint holding in the scheduling path as well as the setter is worth knowing.
+
 ## 25. Mock prayer times outlive the build that wrote them
 
 `stores/database.ts:124-133`, `stores/version.ts:254-262`.
