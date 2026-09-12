@@ -1,6 +1,6 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { TIME_ADJUSTMENTS } from '../constants';
+import { PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '../constants';
 import {
   addDaysToDateString,
   adjustTime,
@@ -28,7 +28,12 @@ import {
   isRamadan,
 } from '../time';
 
-const londonDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, 'Europe/London', 'yyyy-MM-dd');
+/**
+ * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
+ * so this stays an independent oracle. Keyed off PRAYER_TIMEZONE so that moving the app off
+ * London fails the app's code rather than this fixture.
+ */
+const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, PRAYER_TIMEZONE, 'yyyy-MM-dd');
 
 // =============================================================================
 // FORMATTING TESTS
@@ -561,7 +566,7 @@ describe('getPreviousDateString', () => {
 describe('prayer-timezone clock (remembered offsets)', () => {
   // A reference that asks Intl directly every time, with no memory
   const reference = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/London',
+    timeZone: PRAYER_TIMEZONE,
     hourCycle: 'h23',
     year: 'numeric',
     month: '2-digit',
@@ -676,21 +681,21 @@ describe('formatHijriDateLong', () => {
 
 describe('isDateYesterdayOrFuture', () => {
   it('returns true for yesterday', () => {
-    const dateStr = londonDate(-86400000);
+    const dateStr = prayerZoneDate(-86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
   });
 
   it('returns true for today', () => {
-    expect(isDateYesterdayOrFuture(londonDate())).toBe(true);
+    expect(isDateYesterdayOrFuture(prayerZoneDate())).toBe(true);
   });
 
   it('returns true for tomorrow', () => {
-    const dateStr = londonDate(86400000);
+    const dateStr = prayerZoneDate(86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
   });
 
   it('returns false for two days ago', () => {
-    const dateStr = londonDate(-2 * 86400000);
+    const dateStr = prayerZoneDate(-2 * 86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(false);
   });
 });
