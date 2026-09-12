@@ -13,8 +13,19 @@ Usage: device_checks.py <alarm-dump> <package> <device-now> [expected-times.json
 Mac's clock, which can differ.
 
 expected-times.json is a JSON list of "YYYY-MM-DD HH:MM" strings. When given,
-every future alarm must match one to the minute, and every expected time that
-falls inside the armed window must be covered by an alarm.
+every future NOTIFICATION alarm must match one to the minute.
+
+Two things this deliberately does not do, both learned from running it against a
+real device:
+
+- It judges only the app's own notification alarms (tagged
+  expo.modules.notifications.NOTIFICATION_EVENT). Android arms others against
+  the package — ACTION_FORCE_STOP_RESCHEDULE, ten years out — and treating those
+  as prayer times reported a failure that was not one.
+- It does not check that every expected time HAS an alarm. Which prayers are
+  armed is a user preference: with only Fajr enabled, every other prayer time is
+  legitimately absent, and demanding one alarm per timetable entry produced
+  eleven false failures. A check that cries wolf is worse than no check.
 
 Exit status: 0 when everything checks out, 1 on any failure.
 """
@@ -81,48 +92,52 @@ def main():
         print("        open the app once; notifications are scheduled ~1.5s after first content")
         return 1
 
-    if not future:
-        print(f"  FAIL  {len(alarms)} alarm(s) armed but none in the future — the app has stopped rescheduling")
+    # Only the app's own notification alarms are prayer alerts; Android arms
+    # others against the package (e.g. ACTION_FORCE_STOP_RESCHEDULE)
+    is_alert = lambda alarm: "expo.modules.notifications" in (alarm["tag"] or "")
+    alerts = [(m, a) for m, a in future if is_alert(a)]
+    others = [(m, a) for m, a in future if not is_alert(a)]
+
+    def describe(moment, alarm):
+        hours, seconds = divmod(int((moment - now).total_seconds()), 3600)
+        tag = (alarm["tag"] or "").split(":")[-1]
+        return f"        {moment:%Y-%m-%d %H:%M}  in {hours}h {seconds // 60:02d}m   {tag}"
+
+    if not alerts:
+        print(f"  FAIL  no future prayer alerts armed ({len(past)} already fired) — nothing will fire")
+        print("        if alerts are switched on, the app has stopped rescheduling")
         failed = True
     else:
-        print(f"  PASS  {len(future)} future alarm(s) armed ({len(past)} already fired)")
+        print(f"  PASS  {len(alerts)} future prayer alert(s) armed ({len(past)} already fired)")
 
-    for moment, alarm in future[:12]:
-        delta = moment - now
-        hours, seconds = divmod(int(delta.total_seconds()), 3600)
-        tag = (alarm["tag"] or "").split(":")[-1]
-        print(f"        {moment:%Y-%m-%d %H:%M}  in {hours}h {seconds // 60:02d}m   {tag}")
-    if len(future) > 12:
-        print(f"        … and {len(future) - 12} more")
+    for moment, alarm in alerts[:12]:
+        print(describe(moment, alarm))
+    if len(alerts) > 12:
+        print(f"        … and {len(alerts) - 12} more")
+
+    for moment, alarm in others[:4]:
+        print(describe(moment, alarm).replace("        ", "  ..    ", 1))
 
     if expected_path:
         expected = {datetime.strptime(t, "%Y-%m-%d %H:%M") for t in json.load(open(expected_path))}
-        armed = {m.replace(second=0) for m, _ in future}
+        armed = {m.replace(second=0) for m, _ in alerts}
         if not armed:
             # Never PASS an empty set: "0 checked" reads as reassurance while
             # nothing was verified at all
-            print("  ..    no future alarms to compare against the expected times")
+            print("  ..    no future prayer alerts to compare against the expected times")
         else:
             stray = sorted(armed - expected)
             if stray:
                 failed = True
-                print(f"  FAIL  {len(stray)} alarm(s) do not match any expected prayer time:")
+                print(f"  FAIL  {len(stray)} alert(s) do not fire at a prayer time:")
                 for moment in stray[:8]:
                     print(f"        {moment:%Y-%m-%d %H:%M}")
             else:
-                print(f"  PASS  every future alarm matches an expected prayer time ({len(armed)} checked)")
+                print(f"  PASS  every armed alert fires at a prayer time ({len(armed)} checked)")
 
-        # Only judge expected times inside the window the app has actually armed
-        window = sorted(armed)
-        if window:
-            missing = sorted(t for t in expected if window[0] <= t <= window[-1] and t not in armed)
-            if missing:
-                failed = True
-                print(f"  FAIL  {len(missing)} expected time(s) inside the armed window have no alarm:")
-                for moment in missing[:8]:
-                    print(f"        {moment:%Y-%m-%d %H:%M}")
-            else:
-                print("  PASS  no gaps inside the armed window")
+        # Deliberately no "missing times" check: which prayers are armed is a
+        # user preference the timetable cannot express. See the module docstring.
+        print(f"  ..    {len(expected)} expected time(s) supplied; only armed alerts are judged")
 
     return 1 if failed else 0
 
