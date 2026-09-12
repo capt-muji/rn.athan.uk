@@ -723,10 +723,10 @@ describe('DST transitions', () => {
       expect(createPrayerDatetime('2026-03-29', '00:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
     });
 
-    it('maps the nonexistent skipped hour via the pre-transition offset (date-fns-tz 3.2.0 semantics)', () => {
-      // 01:30 wall time never exists on this date; the library resolves it as if
-      // the old GMT offset still applied. No prayer time is read from the clock in
-      // this hour: the night rows are exact instants (getNightTimes)
+    it('maps the nonexistent skipped hour via the pre-transition offset', () => {
+      // 01:30 wall time never exists on this date; createPrayerDatetime resolves it
+      // as if the old GMT offset still applied. No prayer time is read from the clock
+      // in this hour: the night rows are exact instants (getNightTimes)
       expect(createPrayerDatetime('2026-03-29', '01:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
     });
 
@@ -740,10 +740,10 @@ describe('DST transitions', () => {
       expect(createPrayerDatetime('2026-10-25', '00:30').toISOString()).toBe('2026-10-24T23:30:00.000Z');
     });
 
-    it('maps the duplicated hour to the LATER occurrence (date-fns-tz 3.2.0 semantics)', () => {
-      // 01:30 happens twice (01:30 BST then 01:30 GMT); the library picks GMT. No
-      // prayer time is read from the clock in this hour: the night rows are exact
-      // instants (getNightTimes)
+    it('maps the duplicated hour to the LATER occurrence', () => {
+      // 01:30 happens twice (01:30 BST then 01:30 GMT); createPrayerDatetime picks
+      // GMT, the later occurrence. No prayer time is read from the clock in this
+      // hour: the night rows are exact instants (getNightTimes)
       expect(createPrayerDatetime('2026-10-25', '01:30').toISOString()).toBe('2026-10-25T01:30:00.000Z');
     });
 
