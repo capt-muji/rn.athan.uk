@@ -561,16 +561,15 @@ describe('reminder scheduling records', () => {
 // =============================================================================
 
 /**
- * `clearAllExcept` deletes every prayer record, the fetched-year markers, the
- * scheduled-notification bookkeeping, the cache shape marker and the measured
- * column widths. Two places are entitled to do that: the upgrade path, when the
- * cache shape changed, and the sync path's full refresh.
+ * `clearAllExcept` is the raw wipe. Two places call it directly: the upgrade path
+ * and the sync path's full refresh. Anything else that needs to clear the cache
+ * goes through `clearUpgradeCache`, which owns the keep-list.
  *
- * `components/ui/Error.tsx` used to call it from the error screen's only button.
- * That screen is reached from a failed fetch, so the common case was an offline
- * user with a good timetable on disk being offered a button that destroyed it.
- * This pins the call sites so a recovery affordance can never become destructive
- * again by accident.
+ * The error screen's Refresh button does clear the cache — owner ruling,
+ * 2026-09-12: reaching that screen means something has gone wrong, and the
+ * destruction is acceptable because preferences survive. It routes through
+ * `clearUpgradeCache` so it inherits the full keep-list rather than an inline
+ * one, which is what the second test below pins.
  */
 describe('clearAllExcept call sites', () => {
   const SANCTIONED = ['stores/sync.ts', 'stores/version.ts'];
@@ -597,5 +596,29 @@ describe('clearAllExcept call sites', () => {
       });
 
     expect(callers.sort()).toEqual(SANCTIONED);
+  });
+
+  /**
+   * The error screen's reset goes through `clearUpgradeCache`, not through the
+   * raw wipe, precisely so it inherits this list. A user reset must never cost
+   * them their alert settings: they came here because prayer times are broken,
+   * not to start over.
+   */
+  it("keeps preferences and measured widths through the error screen's clear", () => {
+    const version = readFileSync(join(__dirname, '../version.ts'), 'utf8');
+    const keepList = version.slice(
+      version.indexOf('const UPGRADE_KEEP_PREFIXES'),
+      version.indexOf('];', version.indexOf('const UPGRADE_KEEP_PREFIXES'))
+    );
+
+    expect(keepList).toContain("'preference_'");
+    expect(keepList).toContain("'app_installed_version'");
+    expect(keepList).toContain("'prayer_max_english_width_'");
+
+    // Routing through clearUpgradeCache is what earns the keep-list above. An
+    // inline list on the call site would drop prayer_max_english_width_, and
+    // losing that reflows the prayer list on the next launch (ISSUES #22, #16)
+    const errorScreen = readFileSync(join(__dirname, '../../components/ui/Error.tsx'), 'utf8');
+    expect(errorScreen).toContain('clearUpgradeCache()');
   });
 });
