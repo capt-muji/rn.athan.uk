@@ -1346,6 +1346,16 @@ CONFIRMED. One line: `if (!(await ensurePermissions())) return;` before `setAtTi
 
 ## 51. `Day.tsx` coerces a null display date to `''`, which throws rather than falls back
 
+**FIXED in 1.25.28** (`fix/audit-51-day-null-date`). The `?? ''` is gone; the memo returns an
+empty string when there is no date rather than handing one to date-fns. When a date exists
+nothing changes, which is the whole of the one-to-one requirement here.
+
+No component test is possible — there is no React renderer in the dependency tree, which is
+lead 1 in this document. What is testable is the reason the guard exists, so
+`shared/__tests__/time.test.ts` now pins that `formatDateLong('')` and `formatHijriDateLong('')`
+both throw. If either is ever changed to return a placeholder, that test fails and whoever
+makes the change is told the guard's premise has moved.
+
 `components/day/Day.tsx:28` and `:43-46`.
 
 ```tsx
