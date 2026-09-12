@@ -127,36 +127,101 @@ describe('fetchYear day shape', () => {
   it('rejects a time that is not zero-padded HH:mm', async () => {
     const day = { ...createMockTime(today), dhuhr: '11:5' };
 
-    await expectRejection(day, `Malformed prayer time: ${today} dhuhr is "11:5"`);
+    await expectRejection(day, `Malformed prayer time: ${today} is unreadable`);
   });
 
   it('rejects a missing time rather than calling split on undefined', async () => {
     const day: Partial<IApiSingleTime> = { ...createMockTime(today) };
     delete day.isha;
 
-    await expectRejection(day, 'isha is undefined');
+    await expectRejection(day, `Malformed prayer time: ${today} is unreadable`);
   });
 
   it('rejects a non-time placeholder, which is what high latitude sends for polar day', async () => {
     const day = { ...createMockTime(today), sunrise: '-----' };
 
-    await expectRejection(day, 'sunrise is "-----"');
+    await expectRejection(day, `Malformed prayer time: ${today} is unreadable`);
   });
 
   it('rejects an out-of-range time', async () => {
     const day = { ...createMockTime(today), magrib: '25:61' };
 
-    await expectRejection(day, 'magrib is "25:61"');
+    await expectRejection(day, `Malformed prayer time: ${today} is unreadable`);
   });
 
   it('rejects a day with no times at all', async () => {
-    await expectRejection(null, 'fajr is undefined');
+    await expectRejection(null, `Malformed prayer time: ${today} is unreadable`);
   });
 
   it('names the offending day, so the failure is diagnosable from one log line', async () => {
     const day = { ...createMockTime(today), asr: 'x' };
 
-    await expectRejection(day, new RegExp(`Malformed prayer time: ${today} asr is "x"`));
+    await expectRejection(day, new RegExp(`Malformed prayer time: ${today}`));
+  });
+
+  // The single-day fixtures above CANNOT express blast radius: with one day in the payload,
+  // "drop the day" and "reject the year" are indistinguishable. These are the cases that
+  // separate them, and the direction that matters is forward — the endpoint returns a year,
+  // and updatePrayerData clears the cache BEFORE it fetches, so an over-eager rejection
+  // leaves the app with nothing and does the same on every retry.
+  const dayOffset = (days: number) => new Date(Date.now() + days * 86400000).toISOString().split('T')[0] as string;
+
+  it('does not let an unreadable day months away take down the day the user is standing on', async () => {
+    const far = dayOffset(200);
+    global.fetch = jest.fn().mockResolvedValue(
+      createResponse({
+        city: 'london',
+        times: { [today]: createMockTime(today), [far]: { ...createMockTime(far), sunrise: '-----' } },
+      })
+    );
+
+    const result = await fetchYear(2026);
+
+    expect(result.map((day) => day.date)).toEqual([today]);
+  });
+
+  it('keeps the readable days around an unreadable one', async () => {
+    const tomorrow = dayOffset(1);
+    const dayAfter = dayOffset(2);
+    global.fetch = jest.fn().mockResolvedValue(
+      createResponse({
+        city: 'london',
+        times: {
+          [today]: createMockTime(today),
+          [tomorrow]: { ...createMockTime(tomorrow), isha: '' },
+          [dayAfter]: createMockTime(dayAfter),
+        },
+      })
+    );
+
+    const result = await fetchYear(2026);
+
+    expect(result.map((day) => day.date)).toEqual([today, dayAfter]);
+  });
+
+  it('survives a whole polar-summer window of unreadable days', async () => {
+    const times: Record<string, unknown> = { [today]: createMockTime(today) };
+    for (let offset = 100; offset < 160; offset++) {
+      const date = dayOffset(offset);
+      times[date] = { ...createMockTime(date), sunrise: '-----', magrib: '-----' };
+    }
+    global.fetch = jest.fn().mockResolvedValue(createResponse({ city: 'tromso', times }));
+
+    const result = await fetchYear(2026);
+
+    expect(result.map((day) => day.date)).toEqual([today]);
+  });
+
+  it('still fails when every day is unreadable, rather than caching nothing silently', async () => {
+    const tomorrow = dayOffset(1);
+    global.fetch = jest.fn().mockResolvedValue(
+      createResponse({
+        city: 'london',
+        times: { [tomorrow]: { ...createMockTime(tomorrow), fajr: '-----' } },
+      })
+    );
+
+    await expect(fetchYear(2026)).rejects.toThrow('Incomplete data received');
   });
 
   it('does not reject a past day the app already discards', async () => {
