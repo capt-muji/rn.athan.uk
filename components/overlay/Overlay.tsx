@@ -22,7 +22,7 @@ import {
 import { perfMeasure } from '@/shared/perf';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
-import { overlayAtom, toggleOverlay } from '@/stores/overlay';
+import { closeOverlay, overlayAtom } from '@/stores/overlay';
 import { measurementsListAtom } from '@/stores/ui';
 
 /**
@@ -43,9 +43,16 @@ export default function Overlay() {
 
   const window = useWindowDimensions();
 
+  // closeOverlay, not toggleOverlay(): the catchers only ever mean "close", and
+  // toggleOverlay() re-reads isOn from the store rather than from this render.
+  // A tap landing in the frame between an automatic close (the 2 second
+  // schedule boundary) and the re-render that drops pointerEvents would have
+  // read isOn:false and toggled the overlay back ON, at whatever
+  // selectedPrayerIndex was last stored — a stale row, possibly from the
+  // previous day. closeOverlay() is a no-op when already closed.
   const handleClose = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    toggleOverlay();
+    closeOverlay();
   };
 
   // Layout effect: fires synchronously after the commit — the mark measures
