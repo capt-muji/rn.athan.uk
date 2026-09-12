@@ -2675,7 +2675,7 @@ work.
 | 3 | `fix/audit-3-extras-mismap` | 1.25.25 | unit |
 | 7 | `fix/audit-7-display-date-guard` | 1.25.27 | unit |
 | 51 | `fix/audit-51-day-null-date` | 1.25.28 | unit |
-| 6 | `fix/audit-6-error-screen-wipe` | 1.25.29 | unit |
+| 6 | **withdrawn by owner**, see below | 1.25.29, reverted 1.25.33 | error screen driven on the 3T |
 | 59 | `fix/audit-59-cold-launch-rearm` | 1.25.30 | **yes, on the 3T** |
 | 60 | `fix/audit-60-metro-comment-2` | 1.25.22 | n/a, comment |
 | 61 | `fix/audit-61-lintstaged-unmatched` | 1.25.21 | reproduced |
@@ -2739,6 +2739,23 @@ device without planning the `pm clear` and the preference restore that follow it
 Nothing was deferred on judgement. The session ran out of time, not out of willingness. What
 remains is listed in the next-session prompt at `ai/prompts/audit-changes-2.md`, in the order
 the original brief set out.
+
+## Two owner rulings at the close, both carried into the next prompt
+
+**Finding 6 is withdrawn.** The error screen keeps one Refresh button and that button clears
+the cache. Reverted in 1.25.33 with the markup and styles byte-identical to where the session
+found them, and verified end to end on the 3T: offline with no cache gives the error screen,
+Refresh clears, reloads, refetches, and the real London times come back.
+
+**Every visual stays exactly as it is.** No new buttons, no new copy, no layout or colour
+changes in any fix. If a finding appears to need one, stop and ask. The four accessibility
+items in Tier 6 are still fair game, because roles, labels and states move no pixels.
+
+**The Android notification channels need extreme care**, which governs finding 5, the next
+step. Channel ids are immutable once created and a channel's sound cannot be changed after
+creation, which is why `deleteLegacyAndroidAudioChannels` and the `_v2` suffix exist, and
+Android silently drops anything posted to a channel that does not exist. Any change there has
+to be shown 1:1 on ids, sounds and importance, before and after, on the device.
 
 The one item genuinely awaiting a decision rather than work: **finding 6's escape hatch.** The
 owner's position is that reaching the error screen means something has gone wrong, so wiping
