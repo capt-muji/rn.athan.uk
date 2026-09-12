@@ -5,6 +5,7 @@ import { Platform } from 'react-native';
 import {
   athanAndroidChannelId,
   atTimeAndroidChannelId,
+  createAthanAndroidChannel,
   createDefaultAndroidChannel,
   createExtrasAndroidChannel,
   createReminderAndroidChannel,
@@ -271,6 +272,48 @@ describe('createExtrasAndroidChannel', () => {
           bypassDnd: true,
         })
       );
+    });
+  });
+});
+
+describe('createAthanAndroidChannel', () => {
+  it('does not throw on iOS (returns early)', async () => {
+    await expect(createAthanAndroidChannel(3)).resolves.toBeUndefined();
+  });
+
+  describe('on Android', () => {
+    beforeEach(() => {
+      Platform.OS = 'android';
+      (setNotificationChannelAsync as jest.Mock).mockClear();
+    });
+
+    afterEach(() => {
+      Platform.OS = 'ios';
+    });
+
+    it('creates the selected athan channel with the same settings createDefaultAndroidChannel uses', async () => {
+      await createAthanAndroidChannel(4);
+      await createAthanAndroidChannel(4);
+
+      expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
+      expect(setNotificationChannelAsync).toHaveBeenCalledWith(
+        'athan_5_v2',
+        expect.objectContaining({
+          name: 'Athan 5',
+          sound: 'athan5.mp3',
+          importance: AndroidImportance.MAX,
+          enableVibrate: true,
+          vibrationPattern: [0, 250, 250, 250],
+          bypassDnd: true,
+        })
+      );
+    });
+
+    it('dedups per channel ID, not globally — a second sound index still gets its channel', async () => {
+      await createAthanAndroidChannel(9);
+
+      const createdIds = (setNotificationChannelAsync as jest.Mock).mock.calls.map((call) => call[0] as string);
+      expect(createdIds).toEqual(['athan_10_v2']);
     });
   });
 });

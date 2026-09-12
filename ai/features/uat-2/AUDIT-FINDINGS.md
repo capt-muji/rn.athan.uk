@@ -482,6 +482,50 @@ which was not performed.
 `updateAndroidChannel(soundPreference)` when `isDailyPrayer(englishName)`, with the same
 session-dedup set that `createReminderAndroidChannel` already uses.
 
+### CLOSED in session 5, 1.25.35, `fix/audit-5-athan-channels-at-schedule`
+
+The restore trigger is no longer LIKELY, it is **CONFIRMED**, and the symptom above is wrong
+in a way that matters. Performed on the 3T with a real Android Auto Backup cycle — `adb backup
+-noapk`, `pm clear`, `adb restore` — which is exactly the finding's scenario: MMKV comes back
+(`preference_sound = 4`, the Magrib Sound alert still armed and still drawn with the speaker
+icon), notification channels do not. The pre-fix build then created only `athan_1_v2` and
+`extras_at_time`, leaving every daily prayer scheduled to the absent `athan_5_v2`.
+
+**Android does not drop the notification. expo-notifications 57 substitutes its own channel.**
+Driven through a real 19:25 Magrib firing on each build, same restored data, bundles identical
+either side of the one-line guard (`fa78c7b7` fixed, `795f07cb` pre-fix):
+
+| | pre-fix | fixed |
+| --- | --- | --- |
+| posted channel | `expo_notifications_fallback_notification_channel` | `athan_5_v2` |
+| importance | 4 | `pri=2` (MAX) |
+| vibration | `[0, 100, 150, 100]` (Android default) | `[0, 250, 250, 250]` (the app's) |
+| audio | `AudioTrack 44100 Hz stereo` = the device's default tone | `AudioTrack 44100 Hz mono` = `athan5.mp3` |
+
+The sample-rate/channel-count pair is a usable fingerprint for *which file played*, because the
+assets differ: `athan1.mp3` and `athan5.mp3` are 44100 Hz mono, `reminder_magrib_10.mp3` is
+22050 Hz stereo, and the system tone is 44100 Hz stereo. So the real user-visible defect is not
+silence — the alarm rings, which is why it would never be reported as "no notification". It
+rings the phone's generic notification ding in place of the athan, one importance step down.
+That is worse than a drop for an alarm clock: nothing looks broken.
+
+The fallback channel is created by expo on first use and persists, so a device that has hit
+this once keeps the channel in its notification settings afterwards.
+
+Also driven end to end on the device, all green: the sound sheet writing `athan_5_v2` with
+`raw/athan5` on close (and nothing on selection — "Close to save" is literal); a 10-minute
+Magrib reminder firing at 19:15 on `reminder_magrib_10` at 44100 Hz stereo, matching
+`reminder_magrib_10.mp3`; the reminder interval moving 15 → 20 and taking both its channel
+(`reminder_fajr_20`) and its alarm (04:42 → 04:37) with it; and the owner's own configuration,
+Athan 1 with Fajr alone, firing on `athan_1_v2`. Channel dumps before and after the upgrade are
+byte-for-byte identical, so the 1:1 requirement holds.
+
+Two notes for later. Superseded reminder channels are never deleted — `reminder_fajr_15`
+survived the move to 20 with nothing scheduled against it, which is cosmetic but visible in
+Android's notification settings; not filed as a finding, and the same is true of every athan
+channel the user has ever selected. And `pm uninstall -k` is **not** a substitute for the
+backup cycle: it takes MMKV with it, so the preference is gone and the scenario cannot form.
+
 ## 6. The error screen's only button deletes the prayer cache
 
 **OWNER RULING, 2026-09-12: the wipe stays. This finding is WITHDRAWN as a defect.**

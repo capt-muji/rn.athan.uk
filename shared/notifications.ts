@@ -207,6 +207,9 @@ export const createDefaultAndroidChannel = async () => {
 /** Channel IDs created this session — skips repeat setNotificationChannelAsync calls across reschedules */
 const createdReminderChannels = new Set<string>();
 
+/** Athan channel IDs created this session (dedup mirrors createdReminderChannels) */
+const createdAthanChannels = new Set<string>();
+
 /** Whether the extras at-time channel was created this process (dedup mirrors createdReminderChannels) */
 let extrasChannelCreated = false;
 
@@ -230,6 +233,33 @@ export const createExtrasAndroidChannel = async () => {
   });
 
   extrasChannelCreated = true;
+};
+
+/**
+ * Creates the Android notification channel for the selected athan sound.
+ * Called at schedule time for the 5 daily prayers for the same reason the extras
+ * channel is: initialization only ever creates index 0, so any other selected
+ * sound has no channel after a backup restore (channels are system state and are
+ * not restored) and the athan is replaced by expo's fallback channel and its
+ * default tone. Identical settings to createDefaultAndroidChannel — re-creating an
+ * existing channel changes nothing on Android, so this only ever fills a gap.
+ */
+export const createAthanAndroidChannel = async (soundIndex: number) => {
+  if (Platform.OS !== 'android') return;
+
+  const channelId = athanAndroidChannelId(soundIndex);
+  if (createdAthanChannels.has(channelId)) return;
+
+  await Notifications.setNotificationChannelAsync(channelId, {
+    name: `Athan ${soundIndex + 1}`,
+    sound: `athan${soundIndex + 1}.mp3`,
+    importance: Notifications.AndroidImportance.MAX,
+    enableVibrate: true,
+    vibrationPattern: [0, 250, 250, 250],
+    bypassDnd: true,
+  });
+
+  createdAthanChannels.add(channelId);
 };
 
 /**
