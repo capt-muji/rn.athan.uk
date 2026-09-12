@@ -590,6 +590,50 @@ describe('setSequence', () => {
     mockFormatDateShort.mockReturnValue('2026-01-20');
   });
 
+  // The signature was length plus first and last instant, so a corrected time on any
+  // prayer between the ends was invisible and the stale sequence stayed in the store.
+  it('writes a sequence whose only change is a middle prayer', () => {
+    const store = getDefaultStore();
+    const ends = [
+      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') }),
+      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-20T12:00:00') }),
+      createMockPrayer({ english: 'Isha', datetime: new Date('2026-01-20T20:00:00') }),
+    ];
+    const corrected = [
+      ends[0] as Prayer,
+      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-20T12:02:00') }),
+      ends[2] as Prayer,
+    ];
+
+    mockCreatePrayerSequence.mockReturnValue(createMockSequence(ends));
+    setSequence(ScheduleType.Standard, new Date('2026-01-20'));
+
+    mockCreatePrayerSequence.mockReturnValue(createMockSequence(corrected));
+    setSequence(ScheduleType.Standard, new Date('2026-01-20'));
+
+    const stored = store.get(standardSequenceAtom);
+    expect(stored?.prayers[1]?.datetime.toISOString()).toBe(new Date('2026-01-20T12:02:00').toISOString());
+  });
+
+  // The skip is a real perf win (rows rendered ~2.4x at launch without it), so the fix
+  // must not quietly delete it: an identical sequence has to keep the same object
+  it('still skips a write when nothing changed at all', () => {
+    const store = getDefaultStore();
+    const prayers = [
+      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-02-01T06:15:00') }),
+      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-02-01T12:00:00') }),
+    ];
+
+    mockCreatePrayerSequence.mockReturnValue(createMockSequence(prayers));
+    setSequence(ScheduleType.Standard, new Date('2026-02-01'));
+    const first = store.get(standardSequenceAtom);
+
+    mockCreatePrayerSequence.mockReturnValue(createMockSequence(prayers));
+    setSequence(ScheduleType.Standard, new Date('2026-02-01'));
+
+    expect(store.get(standardSequenceAtom)).toBe(first);
+  });
+
   it('creates a 3-day sequence using PrayerUtils', () => {
     const date = new Date('2026-01-20');
     const mockSequence = createMockSequence([createMockPrayer()]);

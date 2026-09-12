@@ -1168,6 +1168,21 @@ CONFIRMED [test]. The probability that the API silently corrects a middle day is
 something I can measure, so treat the likelihood as unknown and the cost of the fix as
 near zero.
 
+### CLOSED in session 5, 1.25.54, `fix/audit-13-sequence-signature`
+
+The signature is now every instant joined, rather than length plus the two endpoints. Length is
+implied by the join, so a Friday gaining Istijaba still differs, and joining ~18 numbers stays
+far cheaper than the row re-render pass the skip exists to avoid.
+
+Two tests, because the fix has two ways to be wrong: a sequence whose only change is a middle
+prayer must reach the store, and an identical sequence must still be skipped — asserted by
+object identity, so a fix that simply deleted the optimisation would fail. Restoring the old
+signature fails the first and not the second, which is the right shape.
+
+Worth noting why this mattered more than it looks: the fallback repair path is not reliable.
+`refreshSequence` only refetches when under 24 hours of buffer remains, so a stale mid-window
+time could persist well past the correction arriving in MMKV.
+
 ## 14. The two cache keep-lists disagree on `cache_schema_version`
 
 `stores/version.ts:143-155` versus `stores/sync.ts:173-178`.
