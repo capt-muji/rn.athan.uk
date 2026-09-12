@@ -221,8 +221,8 @@ export const buildPrayerWidgetTimeline = (
     lastEmittedMs = segmentStart.getTime();
     let lastSegmentEntry = openingEntry;
 
-    // Stepped countdown entries: the grid is anchored to the segment start,
-    // but the FINAL step always sits exactly one spacing before the boundary
+    // Stepped countdown entries: the grid is anchored to the boundary cutoff,
+    // and the FINAL step always sits exactly one spacing before the boundary
     // (the aligned grid alone can leave a tail gap of almost two spacings
     // when the segment length is not a multiple of the step — real prayer
     // times rarely are). When the horizon, not the boundary, caps the
@@ -238,11 +238,25 @@ export const buildPrayerWidgetTimeline = (
       // so the anchor entry below never violates the spacing floor
       const alignedCutoffMs = cappedByHorizon ? lastStepMs : boundaryCutoffMs - MIN_ENTRY_SPACING_MS;
 
+      // Anchored BACKWARDS from the cutoff, not forwards from the segment start. The
+      // segment length is almost never a multiple of the step — real prayer intervals
+      // are not — so the odd remainder has to sit in one gap somewhere. Forwards put it
+      // in the LAST gap, where the countdown is smallest and the same absolute error is
+      // proportionally largest: a widget reading "13m" with 5m10s actually left.
+      // Backwards puts it in the FIRST gap, where the remaining time is largest and the
+      // error is invisible. The five-minute cadence is WidgetKit-forced and unchanged;
+      // only where the remainder lands moves.
+      const stepsDescending: number[] = [];
       for (
-        let stepMs = segmentStart.getTime() + COUNTDOWN_STEP_MS;
-        stepMs <= alignedCutoffMs;
-        stepMs += COUNTDOWN_STEP_MS
+        let stepMs = alignedCutoffMs;
+        stepMs >= segmentStart.getTime() + COUNTDOWN_STEP_MS;
+        stepMs -= COUNTDOWN_STEP_MS
       ) {
+        stepsDescending.push(stepMs);
+      }
+
+      for (let index = stepsDescending.length - 1; index >= 0; index--) {
+        const stepMs = stepsDescending[index] as number;
         lastSegmentEntry = makeEntry(new Date(stepMs), prevIndex);
         entries.push(lastSegmentEntry);
         lastEmittedMs = stepMs;
