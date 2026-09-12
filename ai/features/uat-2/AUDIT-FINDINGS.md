@@ -2282,6 +2282,35 @@ absent from the shipped bundle.
 
 CONFIRMED.
 
+### CLOSED in session 5, 1.25.48, `fix/audit-46-timezone-oracles`
+
+Four real sites now read `PRAYER_TIMEZONE`: the `londonDate` helper in `time.test.ts`,
+`prayer.test.ts` and `notifications.test.ts`, plus the bare `Intl.DateTimeFormat` reference at
+`time.test.ts:564`. The helper is renamed `prayerZoneDate` across all sixteen call sites, because
+a helper called `londonDate` that no longer means London is a worse oracle than a literal. They
+still use `date-fns-tz` and `Intl` directly rather than the app's helpers, so they remain
+independent implementations — only the zone they are asked about is now shared.
+
+**Correction to the finding.** It names five sites; there are four.
+`widgetTimeline.test.ts:426` is a section comment (`// DST TRANSITIONS (Europe/London)`), not a
+pin, and nothing there passes a zone name.
+
+**And a correction to what this is worth, measured rather than asserted.** Flipping
+`PRAYER_TIMEZONE` to `Asia/Tokyo` and running the whole suite:
+
+| | Suites failing | Tests failing |
+| --- | ---: | ---: |
+| before | 7 | 67 |
+| after | 5 | 62 |
+
+So parameterising removes five false alarms and two whole suites' worth, and that is all. It
+does **not** make the suite timezone-portable: 62 tests still fail, because they assert London's
+actual clock values and London's DST rule, not merely its name. The value delivered is narrower
+than "the oracles follow the app" implies — it removes the class where the fixture and the app
+disagree about *which zone they mean*, leaving failures that are honest signals that a test needs
+re-authoring. `nightTimes.test.ts` remains the big one and stays deferred to v2.0 as the finding
+recommends.
+
 ## 47. High latitude: no polar-day handling, and a missing Sunrise crashes
 
 Covered mechanically by finding 8. At high latitude in polar day or night, providers commonly
