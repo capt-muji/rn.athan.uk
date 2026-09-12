@@ -25,7 +25,7 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 | 10 | More than 3 days in the background: the stop-gap list starts from tomorrow | `fix/year-boundary` | 🔀 uat-2 |
 | 11 | Device checks: one command, run on demand | `test/device-checks` | ⏳ |
 | 12 | Launch time: measure a production build on the 3T | `perf/launch-time` | ✅ 6.6 s split (ISSUES #32): 3.1 s TLS provider install (Android ≤9 only, load-bearing), 0.2 s RN init + bundle, ~1.9 s JS → content |
-| 13 | Launch time: one change at a time, checked frame by frame | `perf/launch-time` | 🚧 target: `perf_monitor_init` → first render 856–979 ms (import graph + router mount). Bootstrap ruled out (16–20 ms); TLS provider immovable (ISSUES #21) |
+| 13 | Launch time: one change at a time, checked frame by frame | `perf/launch-time` | ✅ one change tried and measured: deferring index.tsx's settling-window imports moved nothing (median 936 → 909 ms, inside noise) and was reverted. React needs 1–3 ms from module body to first render, so the ~900 ms is router bootstrap + the core import graph; TLS provider immovable (ISSUES #21) |
 | 14 | "Ago" badge moved onto the shared clock tick | `refactor/tidy-ups` | ⏳ |
 | 15 | Popups tracked by prayer name, not row number | `refactor/tidy-ups` | ⏳ |
 | 16 | Countdown bar 2px too long when full | `refactor/tidy-ups` | ⏳ |
