@@ -6,6 +6,37 @@
 - **Tool Compatibility**: This file is tool-agnostic. Pointers (root AGENTS.md, .cursorrules) redirect here
 - **Risk Profile**: Aggressive (fix and report)
 
+### Read at the start of EVERY session, not only this file (owner rule 2026-09-12)
+
+Three things load together. Reading one without the others leaves an agent unaware of tooling
+that is already configured and paid for.
+
+1. **`ai/AGENTS.md`** (this file) — the project memory.
+2. **`opencode.json`** (repo root) — the MCP servers this project has wired up. Four of them:
+   the remote **Expo MCP** (`https://mcp.expo.dev/mcp`, authenticated against the owner's EAS
+   account, so it can read EAS environment variables), **mobile-mcp**, **Maestro MCP**, and
+   **xcodebuildmcp**. Native to opencode; in another harness, read the file and reach for the
+   equivalent. Do not re-derive what is in it.
+3. **`.agents/skills/`** (repo root) — 24 official Expo and EAS skills (`expo-*`, `eas-*`).
+   `.agents/skills/` is the cross-harness standard (opencode, Codex, Cursor, Gemini CLI, amp,
+   cline). Load the matching skill when a task touches its subject rather than working from
+   memory: `expo-upgrade` for SDK work, `eas-app-stores` for store and submission questions,
+   `expo-router`, `expo-ui`, and so on.
+
+### EAS is read-only (owner rule 2026-09-12)
+
+**Never build on EAS and never push anything to it.** Treat the Expo MCP and any EAS access as
+a way to **read** configuration: `EXPO_PUBLIC_ENV`, `EXPO_PUBLIC_API_KEY` and whatever else the
+dashboard sets. That is the whole permitted use. Builds happen on the OnePlus 3T, locally, and
+nowhere else.
+
+### `releases.json` is untouchable (owner rule 2026-09-12)
+
+Live apps in both stores read this file to decide whether to show the update prompt. **Do not
+edit it, do not correct its version strings, do not delete it.** It stops being read only once
+the update-prompt feature is removed from the codebase and that removal has shipped; the file
+is deleted in a separate commit after that, never before. The replacement is ISSUES #35.
+
 ## 1. Project North Star
 
 **What we're building:** Athan.uk - A Muslim prayer times app for London with real-time countdown, offline support, and customizable notifications.
