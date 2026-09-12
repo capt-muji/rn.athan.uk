@@ -55,7 +55,7 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 const seedPrayerCache = (stack: WidgetStack, days: number) => {
   const data: ISingleApiResponseTransformed[] = [];
   for (let offset = -1; offset < days; offset++) {
-    const day = addDays(stack.time.createLondonDate(), offset);
+    const day = addDays(stack.time.createInstant(), offset);
     data.push(makeDayData(stack.time.formatDateShort(day)));
   }
   stack.Database.saveAllPrayers(data);

@@ -22,7 +22,7 @@ const mockIsJanuaryFirst = jest.fn();
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual('@/shared/time'),
   getTodayDateString: () => jest.requireActual('@/shared/time').formatDateShort(mockCreateLondonDate()),
-  createLondonDate: () => mockCreateLondonDate(),
+  createInstant: () => mockCreateLondonDate(),
   getCurrentYear: () => mockGetCurrentYear(),
   isDecember: () => mockIsDecember(),
   isJanuaryFirst: (date: Date) => mockIsJanuaryFirst(date),

@@ -11,7 +11,7 @@
 import { addDays, format } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
-import { createLondonDate, formatDateShort } from '@/shared/time';
+import { createInstant, formatDateShort } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
@@ -42,7 +42,7 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 });
 
 const seedPrayerCache = (days: number) => {
-  const now = createLondonDate();
+  const now = createInstant();
   const data: ISingleApiResponseTransformed[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(now, offset);
@@ -124,14 +124,14 @@ describe('refreshPrayerWidgets error tolerance', () => {
 
 describe('label-flip re-push scheduler', () => {
   const minutesAhead = (minutes: number): string => {
-    const date = createLondonDate();
+    const date = createInstant();
     date.setMinutes(date.getMinutes() + minutes);
     return format(date, 'HH:mm');
   };
 
   /** Seeds a cache whose Magrib sits `minutes` ahead of now. */
   const seedUpcomingMagrib = (minutes: number) => {
-    const now = createLondonDate();
+    const now = createInstant();
     const dates = [-1, 0, 1].map((offset) => formatDateShort(addDays(now, offset)));
     Database.saveAllPrayers(
       dates.map((date) => ({

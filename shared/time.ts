@@ -128,7 +128,7 @@ const readPrayerClock = (instant: Date | number): PrayerClock => {
  * @param date Optional date to convert (defaults to now)
  * @returns Date for that instant
  */
-export const createLondonDate = (date?: Date | number | string): Date => (date ? new Date(date) : new Date());
+export const createInstant = (date?: Date | number | string): Date => (date ? new Date(date) : new Date());
 
 /**
  * Creates a full Date object from date and time strings

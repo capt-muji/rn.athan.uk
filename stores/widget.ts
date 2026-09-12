@@ -221,7 +221,7 @@ const pushScheduleTimelines = async (
   if (Platform.OS !== 'ios' || !FEATURE_FLAGS.widgets) return;
 
   try {
-    const now = TimeUtils.createLondonDate();
+    const now = TimeUtils.createInstant();
     const today = TimeUtils.getTodayDateString();
     const yesterday = TimeUtils.getPreviousDateString(today);
     const startDate = TimeUtils.getDayAnchor(yesterday);

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { createLondonDate, formatTimeAgo } from '@/shared/time';
+import { createInstant, formatTimeAgo } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { getPrevPrayer } from '@/stores/schedule';
 
@@ -21,7 +21,7 @@ const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
       return { prayerAgo: '', minutesElapsed: 0, isReady: false };
     }
 
-    const now = createLondonDate();
+    const now = createInstant();
     const secondsElapsed = Math.floor((now.getTime() - prevPrayer.datetime.getTime()) / 1000);
     const minutes = Math.floor(secondsElapsed / 60);
     const timeAgo = formatTimeAgo(secondsElapsed);

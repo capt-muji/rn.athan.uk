@@ -24,7 +24,7 @@ const mockFormatDateShort = jest.fn();
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual('@/shared/time'),
   getTodayDateString: () => jest.requireActual('@/shared/time').formatDateShort(mockCreateLondonDate()),
-  createLondonDate: () => mockCreateLondonDate(),
+  createInstant: () => mockCreateLondonDate(),
   isFriday: (date: Date) => mockIsFriday(date),
   formatDateShort: (date: Date) => mockFormatDateShort(date),
   createPrayerDatetime: jest.fn((date: string, time: string) => {
