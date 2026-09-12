@@ -34,7 +34,24 @@ import {
 } from '@/stores/ui';
 import { getInstalledVersion, getWhatsNewShownVersion, setWhatsNewShownVersion } from '@/stores/version';
 
+// Measurement-only: fires when this module's BODY runs, so every import above
+// has already evaluated. Between perf_monitor_init (app/_layout.tsx, which runs
+// once _layout's own imports are done) and index_first_render below, it splits
+// the launch window into "router bootstrap + this module's import graph" and
+// "React render" — the fork that decides what is worth deferring (ISSUES #32).
+perfMark('index_module');
+
+// Measurement-only latch: splits the JS→content window into "render started"
+// vs "content committed" (home_content). perfMark is a no-op unless
+// EXPO_PUBLIC_PERF_MONITOR=1, so this costs a boolean check in production.
+let firstRenderMarked = false;
+
 export default function Index() {
+  if (!firstRenderMarked) {
+    firstRenderMarked = true;
+    perfMark('index_first_render');
+  }
+
   const { checkInitialPermissions } = useNotification();
   const { state } = useAtomValue(syncLoadable);
   // Warm-cache launches hydrate sequences synchronously (stores/bootstrap) —
