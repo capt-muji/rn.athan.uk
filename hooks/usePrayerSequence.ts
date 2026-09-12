@@ -64,7 +64,7 @@ export const usePrayerSequence = (type: ScheduleType): UsePrayerSequenceResult =
   const displayDate = useAtomValue(displayDateAtom);
 
   // Calculate from current time
-  const now = TimeUtils.createLondonDate();
+  const now = TimeUtils.createInstant();
   const rawPrayers = sequence?.prayers ?? [];
   const nextPrayerIndex = rawPrayers.findIndex((p) => p.datetime > now);
 

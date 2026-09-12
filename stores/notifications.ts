@@ -443,7 +443,7 @@ async function scheduleNotificationForDate(
   }
 
   // Skip past prayers
-  if (prayer.datetime <= TimeUtils.createLondonDate()) {
+  if (prayer.datetime <= TimeUtils.createInstant()) {
     logger.info('Skipping past prayer:', { date, time: prayer.time, englishName });
     return null;
   }
@@ -581,7 +581,7 @@ async function scheduleReminderNotificationForDate(
 
   // Calculate reminder trigger time
   const reminderDateTime = subMinutes(prayer.datetime, intervalMinutes);
-  const now = TimeUtils.createLondonDate();
+  const now = TimeUtils.createInstant();
 
   // Skip if reminder time is already past or within buffer
   const secondsUntilReminder = (reminderDateTime.getTime() - now.getTime()) / 1000;

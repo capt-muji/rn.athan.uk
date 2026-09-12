@@ -4,7 +4,7 @@ import { TIME_ADJUSTMENTS } from '../constants';
 import {
   addDaysToDateString,
   adjustTime,
-  createLondonDate,
+  createInstant,
   createPrayerDatetime,
   formatDateLong,
   formatDateShort,
@@ -379,40 +379,40 @@ describe('isDecorationSeason', () => {
 // DATE CREATION & CONVERSION
 // =============================================================================
 
-describe('createLondonDate', () => {
+describe('createInstant', () => {
   it('creates a Date object', () => {
-    const date = createLondonDate();
+    const date = createInstant();
     expect(date).toBeInstanceOf(Date);
   });
 
   it('accepts date strings', () => {
-    const date = createLondonDate('2026-01-18');
+    const date = createInstant('2026-01-18');
     expect(date).toBeInstanceOf(Date);
   });
 
   it('accepts Date objects', () => {
     const input = new Date('2026-01-18T12:00:00Z');
-    const date = createLondonDate(input);
+    const date = createInstant(input);
     expect(date).toBeInstanceOf(Date);
   });
 
   it('creates valid non-NaN date', () => {
-    const date = createLondonDate('2026-06-15');
+    const date = createInstant('2026-06-15');
     expect(Number.isNaN(date.getTime())).toBe(false);
   });
 
   it('keeps the London calendar date for a winter date (GMT)', () => {
     // Read the day through formatDateShort, never the phone-local getters (ISSUES #30)
-    expect(formatDateShort(createLondonDate('2026-01-15'))).toBe('2026-01-15');
+    expect(formatDateShort(createInstant('2026-01-15'))).toBe('2026-01-15');
   });
 
   it('keeps the London calendar date for a summer date (BST)', () => {
-    expect(formatDateShort(createLondonDate('2026-07-15'))).toBe('2026-07-15');
+    expect(formatDateShort(createInstant('2026-07-15'))).toBe('2026-07-15');
   });
 
   it('is the same instant it was given, to the millisecond', () => {
     const instant = new Date('2026-09-11T19:05:05.123Z');
-    expect(createLondonDate(instant).toISOString()).toBe('2026-09-11T19:05:05.123Z');
+    expect(createInstant(instant).toISOString()).toBe('2026-09-11T19:05:05.123Z');
   });
 });
 

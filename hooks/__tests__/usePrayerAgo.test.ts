@@ -16,7 +16,7 @@ import { type Prayer, ScheduleType } from '@/shared/types';
 const mockFormatTimeAgo = jest.fn();
 
 jest.mock('@/shared/time', () => ({
-  createLondonDate: jest.fn(),
+  createInstant: jest.fn(),
   formatTimeAgo: (seconds: number) => mockFormatTimeAgo(seconds),
 }));
 

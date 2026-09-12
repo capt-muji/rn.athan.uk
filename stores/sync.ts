@@ -107,7 +107,7 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
 const needsDataUpdate = (): boolean => {
   if (APP_CONFIG.isDev) return true;
 
-  const now = TimeUtils.createLondonDate();
+  const now = TimeUtils.createInstant();
   const data = Database.getPrayerByDate(now);
 
   if (!data) return true;
@@ -122,7 +122,7 @@ const needsDataUpdate = (): boolean => {
 const isCurrentYearCached = (): boolean => {
   const fetchedYears = Database.getItem('fetched_years') || {};
   const currentYear = TimeUtils.getCurrentYear();
-  const now = TimeUtils.createLondonDate();
+  const now = TimeUtils.createInstant();
   const todayData = Database.getPrayerByDate(now);
 
   return Boolean(fetchedYears[currentYear]) && Boolean(todayData);
@@ -244,7 +244,7 @@ export const sync = async (options: { deferWidgetRefresh?: boolean } = {}) => {
     if (needsDataUpdate()) await updatePrayerData();
     else logger.info('SYNC: Data already up to date');
 
-    const date = TimeUtils.createLondonDate();
+    const date = TimeUtils.createInstant();
 
     // Awaited so callers (and syncLoadable) see completion only after the
     // app state is fully initialized; the widget push defers past first

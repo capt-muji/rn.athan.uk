@@ -10,7 +10,7 @@
 // =============================================================================
 
 jest.mock('@/shared/time', () => ({
-  createLondonDate: jest.fn(() => new Date('2026-01-27T10:00:00')),
+  createInstant: jest.fn(() => new Date('2026-01-27T10:00:00')),
   getSecondsBetween: jest.fn((from: Date, to: Date) => Math.floor((to.getTime() - from.getTime()) / 1000)),
 }));
 
