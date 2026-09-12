@@ -2,6 +2,7 @@ import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Image, Platform, StyleSheet, View } from 'react-native';
 import Animated, {
+  cancelAnimation,
   Easing,
   type SharedValue,
   useAnimatedStyle,
@@ -362,6 +363,17 @@ export default function RamadanDecorations() {
       ),
       -1
     );
+
+    // Nothing else stops these. withRepeat(-1) keeps driving the UI thread after the
+    // component returns null, so turning decorations off mid-Ramadan leaves ~13 loops
+    // ticking with nothing on screen — the exact cost the visibility gate exists to
+    // avoid. The same cleanup also stops a cloudConfig identity change from stacking a
+    // second set on top of the first.
+    return () => {
+      for (const value of [...bobs, ...glows, ...cloudProgs, lanternFlicker, moonBob, moonGlowOpacity]) {
+        cancelAnimation(value);
+      }
+    };
   }, [
     bob0,
     bob1,
@@ -773,6 +785,12 @@ function MoonSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: number }
         )
       );
     });
+
+    // An unmounted shared value whose withRepeat(-1) was never cancelled keeps its
+    // worklet scheduled, so the parent's visibility gate alone does not stop these
+    return () => {
+      for (const value of progress) cancelAnimation(value);
+    };
   }, [p0, p1, p2, p3, p4]);
 
   return (
@@ -824,6 +842,12 @@ function LanternSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: numbe
         )
       );
     });
+
+    // An unmounted shared value whose withRepeat(-1) was never cancelled keeps its
+    // worklet scheduled, so the parent's visibility gate alone does not stop these
+    return () => {
+      for (const value of progress) cancelAnimation(value);
+    };
   }, [p0, p1, p2, p3, p4, p5, p6, p7]);
 
   return (
