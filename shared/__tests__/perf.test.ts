@@ -151,6 +151,17 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR unset (default builds)', () => {
       perf.perfFlush('test');
     }).not.toThrow();
   });
+
+  it('buffers nothing from pre-init marks (import-time work stays free)', () => {
+    const perf = requirePerf();
+
+    perf.perfMark('bootstrap_start');
+    perf.perfMark('bootstrap_done');
+    perf.initPerfMonitor();
+
+    expect(mockMmkvInstances).toHaveLength(0);
+    expect(perf.getPerfRing()).toEqual([]);
+  });
 });
 
 // =============================================================================
@@ -173,6 +184,44 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
     const tap = ring.find((entry) => entry.name === 'toggle_tap');
     expect(tap?.detail).toEqual({ label: 'Show hijri date' });
     expect(tap?.ts).toBeGreaterThan(0);
+  });
+
+  it('replays marks made before init, in capture order, carrying their true epoch', () => {
+    process.env.EXPO_PUBLIC_PERF_MONITOR = '1';
+    const perf = requirePerf();
+
+    // Import-time work (stores/bootstrap) marks before the monitor exists
+    const before = Date.now();
+    perf.perfMark('bootstrap_start');
+    perf.perfMark('bootstrap_done', { didBootstrap: true });
+    expect(perf.getPerfRing()).toEqual([]);
+
+    perf.initPerfMonitor();
+
+    const names = perf.getPerfRing().map((entry) => entry.name);
+    expect(names.slice(0, 3)).toEqual(['bootstrap_start', 'bootstrap_done', 'perf_monitor_init']);
+
+    // The ring ts is the REPLAY time, so the capture epoch rides in detail.at
+    const done = perf.getPerfRing().find((entry) => entry.name === 'bootstrap_done');
+    const detail = done?.detail as { didBootstrap: boolean; at: number };
+    expect(detail.didBootstrap).toBe(true);
+    expect(detail.at).toBeGreaterThanOrEqual(before);
+    expect(detail.at).toBeLessThanOrEqual(Date.now());
+  });
+
+  it('bounds the pre-init buffer (a monitor that never starts cannot grow it)', () => {
+    process.env.EXPO_PUBLIC_PERF_MONITOR = '1';
+    const perf = requirePerf();
+
+    for (let i = 0; i < 80; i += 1) {
+      perf.perfMark(`early_${i}`);
+    }
+    perf.initPerfMonitor();
+
+    const replayed = perf.getPerfRing().filter((entry) => entry.name.startsWith('early_'));
+    expect(replayed).toHaveLength(50);
+    expect(replayed[0].name).toBe('early_0');
+    expect(perf.getPerfRing().some((entry) => entry.name === 'early_79')).toBe(false);
   });
 
   it('records a measure only when the start mark exists', () => {
