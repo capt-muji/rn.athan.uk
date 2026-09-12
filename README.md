@@ -348,7 +348,7 @@ A content contract test (`shared/__tests__/whatsNew.test.ts`) guards the shape: 
 
 ### Architecture
 
-- **Framework**: React Native 0.86.3, Expo 57.0.18
+- **Framework**: React Native 0.86.3, Expo 57.0.22
 - **Language**: TypeScript 7.0 (strict)
 - **State**: Jotai atoms (no Redux/Context)
 - **Storage**: MMKV v4 (Nitro Module)
@@ -618,7 +618,7 @@ In the output, you'll find options to open the app in a:
 
 ### Notification System
 
-A **2-day rolling buffer** of scheduled notifications per enabled prayer (6 Standard + 5 Extra), refreshed every 4 hours in the foreground and ~3-hour background-task cycles:
+A **2-day rolling buffer** of scheduled notifications per enabled prayer (6 Standard + 5 Extra), refreshed every 12 hours in the foreground and ~6-hour background-task cycles:
 
 - Deterministic identifiers (`athan_<schedule>_<prayer>_<date>`) make duplicate alarms structurally impossible — rescheduling an existing ID replaces it natively
 - All entry points serialize through `withSchedulingLock()` (queue-based, no operation ever dropped)
