@@ -1,9 +1,10 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
+import { NOTIFICATION_ROLLING_DAYS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import { AlertType, type ReminderInterval } from '@/shared/types';
+import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 
 export interface ScheduledNotification {
   id: string;
@@ -158,6 +159,39 @@ export const genNextXDays = (numberOfDays: number): string[] => {
 
   return Array.from({ length: numberOfDays }, (_, i) => TimeUtils.addDaysToDateString(today, i));
 };
+
+/**
+ * Extras rows whose instant falls on the evening BEFORE the list day they are filed under.
+ *
+ * A night belongs to the day it leads into (ISSUES #29), so Midnight and Last Third for day D
+ * fire on D minus 1. Suhoor is a night row on the list too, but its instant is on its own
+ * date, so it is deliberately not here — and neither is anything on the Standard list.
+ */
+const EVENING_BEFORE_ROWS = new Set(['Midnight', 'Last Third']);
+
+/**
+ * List days to arm for one prayer.
+ *
+ * The window is counted in LIST days, not in hours, so the two rows whose instant precedes
+ * their list day lose a whole day of buffer against every other row: today's night row is
+ * already past whenever the app looks, leaving exactly one armed, while Isha still has two.
+ * One extra list day for those two rows only restores the buffer the rest of the list has.
+ *
+ * The iOS pending-request ceiling is the constraint on this arithmetic and
+ * `shared/__tests__/constants.test.ts` computes the worst case from this very function.
+ */
+export const rollingDaysForPrayer = (scheduleType: ScheduleType, englishName: string): number => {
+  const isEveningBeforeRow = scheduleType === ScheduleType.Extra && EVENING_BEFORE_ROWS.has(englishName);
+
+  return NOTIFICATION_ROLLING_DAYS + (isEveningBeforeRow ? 1 : 0);
+};
+
+/**
+ * The list days to schedule one prayer on — the single source both schedule paths read, so
+ * the at-time and reminder windows cannot drift apart.
+ */
+export const genScheduleDatesForPrayer = (scheduleType: ScheduleType, englishName: string): string[] =>
+  genNextXDays(rollingDaysForPrayer(scheduleType, englishName));
 
 /**
  * Android channel ID for an at-time Athan sound

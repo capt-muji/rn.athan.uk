@@ -13,7 +13,6 @@ import {
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   NOTIFICATION_REFRESH_HOURS,
-  NOTIFICATION_ROLLING_DAYS,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
@@ -626,7 +625,7 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   const existingRecords = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
   Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
-  const nextXDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
+  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(scheduleType, englishName);
   const sound = getSoundPreference();
 
   // Schedule notifications for each day in parallel. Each result is the
@@ -770,7 +769,7 @@ const _addMultipleScheduleRemindersForPrayer = async (
   const existingRecords = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
   Database.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
-  const nextXDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
+  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(scheduleType, englishName);
   const intervalMinutes = getReminderInterval(scheduleType, prayerIndex);
 
   // Schedule reminders for each day in parallel. Each result is the attempted
