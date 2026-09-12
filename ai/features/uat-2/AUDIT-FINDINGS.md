@@ -1463,6 +1463,28 @@ every extras at-time alert have no integrity test at all.
 
 CONFIRMED.
 
+### CLOSED in session 5, 1.25.44, `fix/audit-26-audio-matrix-guard`
+
+New suite `shared/__tests__/audioMatrix.test.ts` (45th suite), nine cases. The expected file set
+is **derived** the way the code derives it — `athan${n}.mp3` from the length of `ATHAN_AUDIOS`,
+`reminder_${slug}_${interval}.mp3` from `PRAYERS_ENGLISH + EXTRAS_ENGLISH × REMINDER_INTERVALS`,
+plus `EXTRAS_NOTIFICATION_SOUND` — and then asserted equal, in both directions, against all four
+shipping surfaces: `assets/audio`, `app.json`'s expo-notifications `sounds[]`, `android res/raw`
+and the iOS bundle. Two more assert every generated resource name and every generated reminder
+channel id is a legal Android name.
+
+`ATHAN_AUDIOS` is counted by reading `assets/audio/index.ts` as text rather than importing it,
+because that module `require()`s the mp3 binaries and jest cannot parse them. This is the same
+approach `athanDurations.test.ts` already uses, for the same reason.
+
+Reminder integrity is now covered: all 67 files decode to a plausible length and carry a
+non-trivial byte size, closing the gap where `athanDurations.test.ts` scanned only the 32
+athans. **A file of correct length containing digital silence is still not caught** — that needs
+PCM decoding — and the test says so where a reader will find it.
+
+Both expansion routes verified to fail: adding a seventh reminder interval fails five of the
+nine, and so does adding a twelfth prayer.
+
 ## 27. `mergeAndDeduplicatePrayers` can duplicate a prayer whose time changed
 
 `stores/schedule.ts:278-283`. Deduplication keys on `english` plus `datetime.getTime()`. If
