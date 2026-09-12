@@ -64,6 +64,14 @@ export const EXTRAS_EXPLANATIONS = [
 /**
  * Number of days ahead to schedule notifications (2-day rolling buffer)
  * Ensures notifications are always queued ahead without overwhelming the system
+ *
+ * DO NOT RAISE THIS WITHOUT DOING THE ARITHMETIC. iOS keeps only the 64
+ * soonest-firing pending requests per app and silently discards the rest, and the
+ * worst case here is every prayer armed at-time AND with a reminder:
+ * 11 prayers x 2 alerts x N days. At 2 days that is 44, with 20 to spare; at 3 it
+ * is 66, and the requests iOS drops are the furthest out — exactly the extra day
+ * the raise was meant to buy. `shared/__tests__/constants.test.ts` fails if this
+ * constant, the prayer arrays or the reminder set ever push the worst case over 64.
  */
 export const NOTIFICATION_ROLLING_DAYS = 2;
 
