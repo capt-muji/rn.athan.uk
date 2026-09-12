@@ -14,21 +14,43 @@
 
 type FakeEntry = { name: string; entryType: string; startTime: number; duration?: number; detail?: unknown };
 
+/** Where the fake's monotonic clock starts — a non-zero origin, so an entry
+ *  dated on the monotonic axis can never be mistaken for one dated on the
+ *  epoch axis by coincidence. */
+const FAKE_CLOCK_ORIGIN = 1000;
+
 // Functional fake: a faithful mini user-timing implementation (entries list,
 // observer fan-out on every entry) so perf.ts's ring/flush/derivation logic
 // runs for real. Observers receive every entry regardless of observed type —
 // the assertions below only rely on names/types, which stay accurate.
+//
+// The clock ADVANCES (see `advance`), and `timeOrigin` is snapshotted at
+// creation while `now()` tracks the clock, exactly as the real library does:
+// its timeOrigin is one now() reading taken when the module loaded. A frozen
+// clock cannot tell the ring's epoch conversion from any other expression
+// that happens to agree at a single instant.
 const createFakePerformance = () => {
   const entries: FakeEntry[] = [];
   const observers: Array<{ callback: (list: { getEntries: () => FakeEntry[] }) => void; type?: string }> = [];
-  const clock = 1000;
+  let clock = FAKE_CLOCK_ORIGIN;
+  // Non-null while delivery is held back, modelling the real observer's
+  // requestAnimationFrame hop between an entry happening and being delivered
+  let held: FakeEntry[] | null = null;
 
-  const addEntry = (entry: FakeEntry) => {
-    entries.push(entry);
+  const dispatch = (entry: FakeEntry) => {
     for (const observer of observers) {
       if (observer.type && observer.type !== entry.entryType) continue;
       observer.callback({ getEntries: () => [entry] });
     }
+  };
+
+  const addEntry = (entry: FakeEntry) => {
+    entries.push(entry);
+    if (held) {
+      held.push(entry);
+      return;
+    }
+    dispatch(entry);
   };
 
   const performance = {
@@ -55,6 +77,26 @@ const createFakePerformance = () => {
     getEntriesByName: (name: string) => entries.filter((entry) => entry.name === name),
   };
 
+  /** Moves the monotonic clock on; callers move the epoch clock in step. */
+  const advance = (ms: number) => {
+    clock += ms;
+  };
+
+  const resetClock = () => {
+    clock = FAKE_CLOCK_ORIGIN;
+    held = null;
+  };
+
+  const holdDelivery = () => {
+    held = [];
+  };
+
+  const releaseDelivery = () => {
+    const pending = held ?? [];
+    held = null;
+    for (const entry of pending) dispatch(entry);
+  };
+
   class PerformanceObserver {
     callback: (list: { getEntries: () => FakeEntry[] }) => void;
     type?: string;
@@ -75,7 +117,7 @@ const createFakePerformance = () => {
 
   const emit = (name: string, entryType: string) => addEntry({ name, entryType, startTime: clock });
 
-  return { performance, PerformanceObserver, emit };
+  return { performance, PerformanceObserver, emit, advance, resetClock, holdDelivery, releaseDelivery };
 };
 
 // Babel hoists jest.mock above imports: factories may only close over
@@ -312,5 +354,99 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
     // A second native-mark batch must not duplicate the derived measures
     mockFakeLib.emit('nativeLaunchEnd', 'react-native-mark');
     expect(launchMeasures('launch_native')).toHaveLength(1);
+  });
+});
+
+// =============================================================================
+// RING TIMESTAMP AXIS
+// =============================================================================
+
+/**
+ * `ts` is the only epoch the offline analysis has. Cross-clock launch spans
+ * are reconstructed by subtracting two of them, so a `ts` that tracks the
+ * reader instead of the event does not merely shift the numbers — it doubles
+ * every span, and a doubled span still looks like a plausible measurement.
+ *
+ * The spans below are the real iOS baseline (perf_monitor_init ->
+ * index_first_render 900ms -> home_content 676ms). Several instants, not one:
+ * the defect is exactly zero at the origin and grows with elapsed time, so a
+ * fixture that only ever looks at the first mark cannot see it, and the
+ * assertion this replaces — `ts > 0` — holds under every version of the
+ * expression.
+ */
+describe('perf ring timestamps', () => {
+  const EPOCH_AT_INIT = Date.UTC(2026, 8, 12, 10, 30, 0);
+
+  beforeEach(() => {
+    mockFakeLib.resetClock();
+    jest.useFakeTimers({ now: EPOCH_AT_INIT });
+    process.env.EXPO_PUBLIC_PERF_MONITOR = '1';
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  /** Moves the epoch clock and the monotonic clock together, as a device does */
+  const advance = (ms: number) => {
+    jest.setSystemTime(Date.now() + ms);
+    mockFakeLib.advance(ms);
+  };
+
+  const tsByName = (perf: ReturnType<typeof requirePerf>, name: string): number | undefined =>
+    perf.getPerfRing().find((entry) => entry.name === name)?.ts;
+
+  it('dates entries on the epoch axis, so mark-to-mark deltas are the true wall spans', () => {
+    const perf = requirePerf();
+    perf.initPerfMonitor();
+
+    advance(900);
+    perf.perfMark('index_first_render');
+    advance(676);
+    perf.perfMark('home_content');
+
+    expect(tsByName(perf, 'perf_monitor_init')).toBe(EPOCH_AT_INIT);
+    expect(tsByName(perf, 'index_first_render')).toBe(EPOCH_AT_INIT + 900);
+    expect(tsByName(perf, 'home_content')).toBe(EPOCH_AT_INIT + 1576);
+
+    // Stated as spans too, because the span is what the analysis reads
+    const init = tsByName(perf, 'perf_monitor_init') as number;
+    const render = tsByName(perf, 'index_first_render') as number;
+    const content = tsByName(perf, 'home_content') as number;
+    expect(render - init).toBe(900);
+    expect(content - render).toBe(676);
+    expect(content - init).toBe(1576);
+  });
+
+  it('dates an entry by when it happened, not when the observer delivered it', () => {
+    const perf = requirePerf();
+    perf.initPerfMonitor();
+
+    // Two marks at the SAME instant; only the delivery differs. The real
+    // observer hops through requestAnimationFrame, and during a cold launch
+    // that hop is long and varies per entry.
+    perf.perfMark('delivered_now');
+    mockFakeLib.holdDelivery();
+    perf.perfMark('delivered_late');
+    advance(400);
+    mockFakeLib.releaseDelivery();
+
+    expect(tsByName(perf, 'delivered_late')).toBe(tsByName(perf, 'delivered_now'));
+    expect(tsByName(perf, 'delivered_late')).toBe(EPOCH_AT_INIT);
+  });
+
+  it('is unaffected by how long the library sat loaded before init ran', () => {
+    const perf = requirePerf();
+
+    // The module loads at import time; app/_layout.tsx calls init later. The
+    // library's timeOrigin is pinned to the load, so an offset derived from it
+    // carries this gap into every entry.
+    advance(5000);
+    perf.initPerfMonitor();
+    advance(900);
+    perf.perfMark('index_first_render');
+
+    expect(tsByName(perf, 'perf_monitor_init')).toBe(EPOCH_AT_INIT + 5000);
+    expect(tsByName(perf, 'index_first_render')).toBe(EPOCH_AT_INIT + 5900);
   });
 });

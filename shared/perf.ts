@@ -67,7 +67,20 @@ let epochOffset = 0;
 const PENDING_CAPACITY = 50;
 const pendingMarks: Array<{ name: string; at: number; detail?: Record<string, unknown> }> = [];
 
-/** Converts a PerformanceEntry into the compact ring representation */
+/**
+ * Converts a PerformanceEntry into the compact ring representation.
+ *
+ * `ts` is `epochOffset + startTime` and nothing else. Both terms live on the
+ * library's monotonic axis, so the sum is a plain epoch: offline analysis can
+ * subtract two of them and get the wall time between the two events. Folding
+ * a fresh `Date.now()` into the expression instead would add the elapsed time
+ * a SECOND time — once through `Date.now()`, once through `startTime` — and
+ * every mark-to-mark span would read about double. It also makes the entry
+ * independent of WHEN the observer ran: delivery is deferred to the next
+ * frame (react-native-performance's PerformanceObserver wraps its callback in
+ * requestAnimationFrame), and during a cold launch that delay varies per
+ * entry, so a delivery-time reading would date each entry by frame jitter.
+ */
 const toRingEntry = (entry: {
   name: string;
   entryType: string;
@@ -78,7 +91,7 @@ const toRingEntry = (entry: {
   seq += 1;
   return {
     seq,
-    ts: Math.round(Date.now() - epochOffset + entry.startTime),
+    ts: Math.round(epochOffset + entry.startTime),
     name: entry.name,
     type: entry.entryType,
     ...(entry.duration !== undefined && { duration: Math.round(entry.duration) }),
@@ -162,7 +175,12 @@ export const initPerfMonitor = (): void => {
   // builds entirely — same pattern as device/tasks.ts's deferred store require.
   const lib = require('react-native-performance') as PerfModule;
   perfModule = lib;
-  epochOffset = Date.now() - lib.default.timeOrigin;
+  // Epoch of the monotonic zero, from two readings of the same instant. Taken
+  // against now(), NOT timeOrigin: despite the browser name, this library's
+  // timeOrigin is its own now() sampled when the module first loaded, so
+  // subtracting it gives the epoch of module load — the zero only while the
+  // require above happens to be what loaded it. now() has no such coupling.
+  epochOffset = Date.now() - lib.default.now();
   perfStorage = createMMKV({ id: MMKV_ID });
 
   new lib.PerformanceObserver(recordEntries).observe({ type: 'mark', buffered: true });
