@@ -127,7 +127,7 @@ describe('fetchYear day shape', () => {
   it('rejects a time that is not zero-padded HH:mm', async () => {
     const day = { ...createMockTime(today), dhuhr: '11:5' };
 
-    await expectRejection(day, 'Malformed prayer time: ' + today + ' dhuhr is "11:5"');
+    await expectRejection(day, `Malformed prayer time: ${today} dhuhr is "11:5"`);
   });
 
   it('rejects a missing time rather than calling split on undefined', async () => {
