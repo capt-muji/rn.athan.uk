@@ -7,6 +7,9 @@
  * - WHATS_NEW content - shape, limits, and validity (guards future edits)
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import {
   filterWhatsNewItems,
   getPlatformBadges,
@@ -21,7 +24,20 @@ import {
   type WhatsNewRelease,
 } from '../whatsNew';
 
-const release = (items: WhatsNewItem[]): WhatsNewRelease => ({ version: '1.13.0', items });
+/**
+ * The version of the running binary, read from app.json the way the store and
+ * `getInstalledVersion` see it. Read from disk, not imported from the module under test, so
+ * a comparison against it cannot come out true just because both sides share one source.
+ */
+const appJson = JSON.parse(readFileSync(join(__dirname, '..', '..', 'app.json'), 'utf8'));
+const INSTALLED_VERSION: string = appJson.expo.version;
+
+/**
+ * A bundled release. The stamp is parameterised because the modal only shows when it equals
+ * the installed version — an upgrade-boundary case has to stamp the notes for the binary
+ * they ship in, exactly as the maintenance ritual requires.
+ */
+const release = (items: WhatsNewItem[], version = '1.13.0'): WhatsNewRelease => ({ version, items });
 const item = (overrides: Partial<WhatsNewItem> = {}): WhatsNewItem => ({
   title: 'Test title',
   body: 'Test body',
@@ -65,18 +81,42 @@ describe('shouldShowWhatsNew', () => {
   });
 
   it('returns false when installed is older than shown (downgrade)', () => {
-    expect(shouldShowWhatsNew('1.12.2', '1.13.0', release([item()]))).toBe(false);
+    // Stamped for the running binary, so it is the downgrade that stops it, not the stamp
+    expect(shouldShowWhatsNew('1.12.2', '1.13.0', release([item()], '1.12.2'))).toBe(false);
   });
 
   it('handles minor and patch upgrade boundaries', () => {
-    expect(shouldShowWhatsNew('1.13.0', '1.12.9', release([item()]))).toBe(true);
-    expect(shouldShowWhatsNew('1.13.1', '1.13.0', release([item()]))).toBe(true);
-    expect(shouldShowWhatsNew('2.0.0', '1.99.99', release([item()]))).toBe(true);
+    // Each release carries the notes stamped for the binary it ships in
+    expect(shouldShowWhatsNew('1.13.0', '1.12.9', release([item()], '1.13.0'))).toBe(true);
+    expect(shouldShowWhatsNew('1.13.1', '1.13.0', release([item()], '1.13.1'))).toBe(true);
+    expect(shouldShowWhatsNew('2.0.0', '1.99.99', release([item()], '2.0.0'))).toBe(true);
   });
 
   it('returns false across every state when whatsNew is null (silent ship wins)', () => {
     expect(shouldShowWhatsNew('1.13.0', '1.10.0', null)).toBe(false);
     expect(shouldShowWhatsNew('1.13.0', '1.13.0', null)).toBe(false);
+  });
+
+  // The modal is headed with the INSTALLED version, so notes stamped for any other release
+  // would present old items under today's number. Releases that ship past the last stamp
+  // must silent-ship instead, which is the contract the file documents.
+  it('returns false when the notes were stamped for an earlier release', () => {
+    expect(shouldShowWhatsNew('1.25.3', '1.24.30', release([item()], '1.24.30'))).toBe(false);
+    expect(shouldShowWhatsNew('1.25.3', null, release([item()], '1.24.30'))).toBe(false);
+  });
+
+  it('returns false when the notes were stamped for a release not yet shipped', () => {
+    expect(shouldShowWhatsNew('1.13.0', '1.12.0', release([item()], '1.14.0'))).toBe(false);
+  });
+
+  it('silent-ships every intermediate release until the stamp is moved forward', () => {
+    const stamped1_24_30 = release([item({ version: '1.24.30' })], '1.24.30');
+
+    expect(shouldShowWhatsNew('1.25.0', '1.24.30', stamped1_24_30)).toBe(false);
+    expect(shouldShowWhatsNew('1.25.1', '1.24.30', stamped1_24_30)).toBe(false);
+    expect(shouldShowWhatsNew('1.25.2', '1.24.30', stamped1_24_30)).toBe(false);
+    // ...and it speaks again the moment the ritual stamps the shipping release
+    expect(shouldShowWhatsNew('1.25.3', '1.24.30', release([item({ version: '1.25.3' })], '1.25.3'))).toBe(true);
   });
 });
 
@@ -194,12 +234,26 @@ describe('VISIBLE_WHATS_NEW', () => {
   it('shows only current-release items, or nothing on a silent release', () => {
     const visible = VISIBLE_WHATS_NEW?.items ?? [];
     expect(visible.length).toBeLessThanOrEqual(MAX_WHATS_NEW_ITEMS);
-    for (const entry of visible) {
-      expect(entry.version).toBe(WHATS_NEW?.version);
-    }
     const anyCurrentReleaseItems = (WHATS_NEW?.items ?? []).some((entry) => entry.version === WHATS_NEW?.version);
     if (!anyCurrentReleaseItems) {
       expect(VISIBLE_WHATS_NEW).toBeNull();
+    }
+  });
+
+  // `expect(entry.version).toBe(WHATS_NEW?.version)` used to stand here, and it was
+  // vacuously true for any stamp: both sides came from the same hand-maintained string, so
+  // the archive could fall arbitrarily far behind the shipping binary without a word. The
+  // version a user actually sees is app.json's, read here from disk rather than from the
+  // module under test, so this is an independent oracle.
+  it('never lets an item stamped for another release reach a user', () => {
+    const installedVersion = INSTALLED_VERSION;
+    // Exactly what app/index.tsx does on launch, for a user upgrading from anywhere
+    const presented = shouldShowWhatsNew(installedVersion, null, VISIBLE_WHATS_NEW)
+      ? (VISIBLE_WHATS_NEW?.items ?? [])
+      : [];
+
+    for (const entry of presented) {
+      expect(entry.version).toBe(installedVersion);
     }
   });
 
