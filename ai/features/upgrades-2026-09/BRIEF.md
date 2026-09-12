@@ -231,3 +231,45 @@ decided:
   Updates; `releases.json` then survives as a testers-only file, which removes the manual
   release step and dissolves the scale worry. Needs its own session: it is a new native
   dependency on the release path.
+
+**2026-09-12, session 2 closed.** The plan executed in full on
+`upgrade/packages-2026-09`, merged into `uat-2` with `--no-ff` as `064d09b` and pushed.
+Six commits, 1.24.38 to 1.25.1, each gated on a green `yarn validate` (42 suites, 1015
+tests).
+
+- **Taken:** `reanimated-color-picker` 5.1.3 (1.24.39), `pino` 10.3.1 (1.24.40),
+  `@biomejs/biome` 2.5.13 (1.24.41), `react-native-svg-transformer` 1.5.3 (1.24.42), the
+  18-package Expo SDK 57 wave as one commit (1.25.0), and the `ai/AGENTS.md` §2 refresh
+  (1.25.1). `npx expo install --fix` was never run; every package was named explicitly,
+  and reanimated 4.6.0, worklets 0.12.2, jest 30.5.1, typescript 7.0.2, `@types/jest`
+  30.0.0, react 19.2.3 and react-native 0.86.3 were all verified unmoved afterwards.
+- **Held: `react-native-svg` 15.15.5**, the last optional item. PLAN.md already found
+  that none of its fixes reach this app, and `expo@57.0.22` still pins 15.15.4, so taking
+  it would put native code ahead of the SDK pin for no benefit. Everything in PLAN.md §6
+  remains held.
+- **The alarm clock did not move.** The armed Fajr alert read `2026-09-13 04:57` before
+  the wave and `2026-09-13 04:57` after it, with `handleAppUpgrade()` wiping the prayer
+  cache and refetching from the live API in between, so every time was re-derived rather
+  than read from storage. Prod build on the 3T, fresh bundle confirmed by md5 change.
+- **PLAN.md's warning that empty changelogs are not proof was tested, not trusted.** Both
+  versions of all 18 packages were unpacked and compared. For `expo-notifications`,
+  `expo-background-task` and `expo-task-manager` the prebuilt `classes.jar` is
+  byte-identical by md5 across the bump, so the compiled Android code on the alarm path
+  did not change at all; `expo-updates` ships no AAR and its source is byte-identical.
+  Only `@expo/ui` and `expo-router` carry real changes, in surfaces this app does not
+  import.
+- **PLAN.md step 7 could not be run.** Arming an alert and watching it fire from
+  background needs clock manipulation, and the 3T has no root: `date` returns
+  `Operation not permitted` and `auto_time` is 1. Probed with a no-op value so nothing
+  could change. The Fajr alarm was left armed for 04:57 so the check happens on the
+  device's own schedule.
+- **Trap worth recording for any future session.** A version bump makes
+  `handleAppUpgrade()` wipe the device's prayer cache, and the committed `.env` carries
+  the placeholder `EXPO_PUBLIC_API_KEY=key` from `.env.example`. Building without the real
+  key therefore strands the phone with no prayer data and no armed alarms, which looks
+  exactly like an upgrade regression. It is not. Have the real key in hand **before**
+  bumping. The error screen is in fact positive proof the build is `prod`, since a
+  non-prod build returns `MOCK_DATA_SIMPLE` instead of attempting a fetch.
+- `ai/AGENTS.md` §2 is no longer drifted. It now carries the verified-at version, and a
+  new subsection naming the five packages `expo install --fix` would downgrade, so that
+  rule lives where someone would actually look rather than only in PLAN.md.
