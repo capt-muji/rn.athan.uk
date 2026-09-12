@@ -9,16 +9,21 @@ or the device verified on the 3T before the next one starts.
 
 ## Read first, in this order
 
-1. `ai/features/uat-2/AUDIT-FINDINGS.md` — **authoritative for this session.** 57 findings in
+1. `ai/AGENTS.md` §0 — **and do what §0 says**, which is to load `opencode.json` and
+   `.agents/skills/` as well. That is an owner rule for every session, not just this one. The
+   four MCP servers and the 24 Expo/EAS skills are already configured; working without them
+   means re-deriving things the project has paid for.
+2. `ai/features/uat-2/AUDIT-FINDINGS.md` — **authoritative for this session.** 57 findings in
    six tiers, ranked by risk to correctness of times, each with its evidence and its
-   confidence. Do not re-derive any of them.
-2. `ai/features/uat-2/AUDIT-BRIEF.md` — the standing constraints and the settled list.
-3. `~/.config/opencode/AGENTS.md` — the owner's global tool rules and step discipline.
+   confidence. Do not re-derive any of them. Read its "What actually reached users" and "Owner
+   rulings" sections before anything else in it.
+3. `ai/features/uat-2/AUDIT-BRIEF.md` — the standing constraints and the settled list.
+4. `~/.config/opencode/AGENTS.md` — the owner's global tool rules and step discipline.
    `opensrc` and `agent-browser` are on PATH; tinyfish and docs-mcp-server are opencode-only,
    so in Claude Code fall back to WebSearch/WebFetch and the context7 MCP, and say which path
    you used.
-4. `e2e/README.md` §Gotchas — **before any build or device work.** Every entry cost real time.
-5. `ai/AGENTS.md` §2 (Stack & Versions), §7 (Boundaries), §9 (Loop discipline).
+5. `e2e/README.md` §Gotchas — **before any build or device work.** Every entry cost real time.
+6. `ai/AGENTS.md` §2 (Stack & Versions), §7 (Boundaries), §9 (Loop discipline).
 
 ## The bar
 
@@ -26,26 +31,29 @@ Same as session 3. This app is an alarm clock. A prayer time two minutes wrong i
 notification on the wrong night is a serious one. A change that cannot be shown to reduce that
 risk is not worth making this session.
 
-## The app works today. Do not trade that away.
+## Break things if you must, but never leave them broken
 
-The owner's standing concern, stated at the close of session 3: the app works well now, and a
-repair that breaks something is worse than the defect it fixed. That outranks finishing the
-list. Concretely:
+The owner is explicit that breakage is acceptable and repair is the job: *"this is the perfect
+time to break things, but any time you break things and you fix them, make sure the outcome is
+always the same, the tests always pass, the behaviour is the same one to one."* That is not
+permission to be careless. It is permission to touch real code, on the condition that each
+change lands whole.
 
-- **Stop at the end of any change you cannot verify.** A change you cannot show working is not
-  finished, it is pending. Say so and move on rather than stacking a second one on top.
-- **One commit per change, and each one revertable on its own.** No commit may bundle two
-  findings. If a change turns out badly the owner must be able to drop exactly it.
-- **Prefer the smallest fix that closes the finding.** Several of these are one line. None of
-  them is a refactor, and nothing in this document asks for one. If a fix starts growing into
-  a restructure, stop and put the question to the owner instead.
-- **Leave a finding alone rather than guess at it.** Every finding carries a confidence word. A
-  LIKELY or LATENT one that would need a risky change is better left recorded than fixed badly.
-- **Getting through fewer findings well is the better outcome.** Tier 1 done properly and
-  verified beats all six tiers touched. There is no obligation to reach the end of the list.
+- **Verify before moving on.** A change you cannot show working is not finished, it is pending.
+  Say so and stop rather than stacking a second change on an unverified one.
+- **One finding, one branch, one commit.** No commit bundles two findings. Rollback has to be
+  surgical.
+- **Prefer the smallest fix that closes the finding.** Most of these are one line. Nothing in
+  the document asks for a refactor. If a fix starts growing into a restructure, stop and put the
+  question to the owner.
+- **Never edit a test to make it pass.** A newly failing test is evidence the change was wrong,
+  or that the test was pinning the defect. Work out which, say which, and only then act.
+- **A finding you would have to guess at stays recorded.** Each carries a confidence word. A
+  LATENT or GUESS item that needs a risky change is better left written down than fixed badly,
+  and saying so is a complete answer.
 
-The findings document is the record either way. Anything not taken this session stays written
-down, with its evidence, for whenever it is worth doing.
+The findings document is the record either way. Anything deferred stays written down with its
+evidence, and the session closes by saying what was deferred and why.
 
 ## The owner has already ruled on three things. Do not reopen them.
 
@@ -66,6 +74,58 @@ All three are recorded in full under "Owner rulings" in the findings document. I
    because `UPGRADE_KEEP_PREFIXES` keeps `preference_`. And `handleAppUpgrade` destroys the
    discriminator before the migration reads it, so the captured `storedVersion` has to be
    passed in as an argument in the same commit.
+
+## Scope: everything
+
+The owner's instruction, 2026-09-12: *"I want to address everything you found. Otherwise what's
+the point of the sweep? Yes, I think we might break some stuff, but that's why you're gonna fix
+it, and make sure the behaviour is exactly one to one to what we had before."*
+
+So work the whole document, not a tier of it. Tier 4 (iOS widgets) is still behind a flag that
+is off, so judge whether each of those is worth doing before the flag flips; everything else is
+in scope. The three withdrawn or re-ranked findings (1, 9, 45) are settled and stay settled.
+
+### The one-to-one rule
+
+Every change closes its finding and changes **nothing else observable**. Same rendered times,
+same countdown, same alerts at the same instants, same preferences honoured, same tests passing
+with the same assertions. Where a fix genuinely must change behaviour, that is the defect being
+removed and nothing beyond it, and the commit message says so in one sentence.
+
+The whole test suite passes before and after every single commit. 42 suites and 1015 tests is
+the current baseline; it must never go down, and a test that starts failing is a signal to stop,
+not to edit the test.
+
+### This is a good moment to break things
+
+Production is **1.5.2 on both stores and nothing newer has been released**. `uat-2` HEAD is 233
+commits ahead of it. Most of what this document describes has never reached a user, so the blast
+radius of a mistake on `uat-2` is the owner's own test device, not the userbase. The findings
+document's "What actually reached users" section has the probe table showing which findings are
+live in 1.5.2 (short answer: 6, 21 and 23) and which are not.
+
+That is the licence to change real things. It is not a licence to skip verification.
+
+## Git workflow
+
+- **A new branch per fix.** Not per tier, not per session. One finding, one branch, so any
+  single change can be rolled back on its own without unpicking others.
+- Branch off `uat-2`, merge back into `uat-2` with `--no-ff`, then **push `uat-2`**.
+- **Never touch `uat`.** Not a commit, not a merge, not a push.
+- Version bump in `app.json`, `package.json` **and** `android/app/build.gradle` on every commit,
+  prefixed `X.Y.Z - `.
+- Git writes are authorised for these autonomous sessions. This is an owner override of
+  `ai/AGENTS.md` §7.
+
+## EAS is read-only
+
+**Never build on EAS. Never push anything to it.** The owner's rule: treat EAS purely as a way
+to **read** configuration, which is what resolves finding 9. `EXPO_PUBLIC_ENV` and
+`EXPO_PUBLIC_API_KEY` are set in the dashboard and may be read; nothing may be written, queued
+or submitted. Builds happen on the OnePlus 3T, locally, and nowhere else.
+
+The remote Expo MCP in `opencode.json` is authenticated against the owner's EAS account, so it
+is the right tool for reading those values. Reading is the entire permitted use.
 
 ## Order of work, and why
 
@@ -99,10 +159,29 @@ closes finding 8 and finding 47 together, and turns a crash into a diagnosable e
 **Step 6. The cheap guards that protect everything above.** Findings 10, 11, 24, 22, 26 and 21.
 Each is a small test. Together they are what stops the next session reintroducing any of this.
 
-**Step 7. The rest of Tier 2**, in the document's order.
+**Step 7. The rest of Tier 2**, in the document's order. Findings 48 to 57 are at the end of
+that tier and are as real as the numbered ones above them.
 
-Tiers 4, 5 and 6 are not this session unless the owner says otherwise. Tier 4 is gated behind
-the `widgets` flag, which is off. Tier 5 costs nothing today.
+**Step 8. The rest of Tier 3.** Findings 34, 35 and 36. The measurement harness should end this
+session telling the truth in every path, not just the ones step 1 needed.
+
+**Step 9. Tier 5, the global-readiness work that is safe to do now.** Finding 44 is the one that
+matters and is fixable today without any endpoint change: Magrib has no midnight-crossing rule,
+which puts Islamic Midnight and Last Third on the wrong side of noon at high latitude. Finding
+46 is parameterising five test oracles on `PRAYER_TIMEZONE`. Finding 43 is scope for v2.0 and is
+a note, not a change. Finding 45 is withdrawn.
+
+**Step 10. Tier 6.** Mechanical, and most of it is deletions: the two dead glow files, the dead
+`@env` block, the redundant MMKV mock, the stale doc comments. Finding 52 (no CI, `.husky`
+gitignored) and finding 53 (`pino` in the wrong section) are the two with real consequences and
+should lead the tier.
+
+**Tier 4, the iOS widgets, needs a judgement call rather than a rule.** The `widgets` flag is
+off, so nothing there reaches a user. Findings 37, 38 and 39 are genuine defects that would ship
+the moment the flag flips, and 37 in particular is a widget confidently reading "9h 50m" five
+minutes before Fajr. Fixing them now is cheap and they are well evidenced. Fixing them later
+means re-reading the whole chain. Recommend doing 37, 38, 39 and 41, and leaving 40 and 42 as
+recorded. Put it to the owner if you disagree.
 
 ## The verification suite from session 3
 
