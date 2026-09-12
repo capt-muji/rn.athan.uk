@@ -64,6 +64,23 @@ different body's rules entirely. Verify each candidate traces back to **Khalid S
 committee and the moonsighting.com method specifically. Record provenance for each: author,
 source of the algorithm, last publish, licence, and whether the numbers reproduce the site's.
 
+**Lead supplied by the owner, unverified — treat it as a candidate, not an answer:**
+
+- <https://www.npmjs.com/package/adhan>, which exposes `CalculationMethod.MoonsightingCommittee()`
+
+The owner's words: *"I don't know if this is the exact one for the moonsighting. I have no idea.
+That's why I also want you to validate it and verify and validate this package, et cetera, if it
+matches exactly."* So the job is not to adopt it because the name matches. Establish whether
+`adhan`'s `MoonsightingCommittee` implements Khalid Shaukat's method and to what fidelity: which
+paper or page it derives from, whether its Fajr and Isha reproduce moonsighting.com's own
+published tables for the same coordinates and dates, how it handles high latitude, and whether
+any part of it is an approximation of the method rather than the method. Diff its output against
+the site's tables for several cities and seasons, including at least one above 60N, and against
+the London unified times from step 2. **Report the deltas in minutes, not as a verdict.**
+
+Read its implementation with the `opensrc` CLI, which the owner confirmed is available for any
+package — the source is the arbiter here, not the README or the docs.
+
 ## What the deliverable has to answer
 
 - The algorithm itself: how Fajr and Isha are derived, the high-latitude behaviour, what
