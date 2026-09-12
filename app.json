@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.25.99",
+    "version": "1.26.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -186,7 +186,6 @@
           "enableBackgroundPlayback": false
         }
       ],
-      "./plugins/removeUnusedAndroidPermissions",
       "./plugins/gradleJvmMemory",
       "./plugins/portraitOnlyIpad",
       "expo-asset",
