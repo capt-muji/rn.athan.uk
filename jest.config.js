@@ -25,6 +25,10 @@ module.exports = {
   // once per worktree — and a half-finished branch in one of them fails the main tree's
   // validate. node_modules is excluded by default; these are not.
   testPathIgnorePatterns: ['/node_modules/', '/.claude/', '/android/', '/ios/'],
+  // And keep them out of the module map as well: testPathIgnorePatterns only hides tests,
+  // while jest-haste-map still scans for manual mocks and warns "duplicate manual mock found"
+  // for every shared/__mocks__ file once per worktree.
+  modulePathIgnorePatterns: ['/.claude/', '/android/', '/ios/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
     '^.+\\.tsx?$': ['babel-jest', { presets: ['@babel/preset-typescript'], plugins: ['@babel/plugin-transform-modules-commonjs'] }],
