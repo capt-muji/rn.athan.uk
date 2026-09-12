@@ -1335,6 +1335,13 @@ CONFIRMED for both code paths. The magnitude of the undercount is inference.
 
 ## 35. `device-checks.sh` prints PASS for a check it did not perform
 
+**FIXED in 1.25.16** (`fix/audit-35-unperformed-pass`), pulled forward out of step 8 because
+finding 5's device verification rests on this tool telling the truth. The prayer-channel sound
+check counts the channels first and fails when there are none to inspect, rather than falling
+through the `||` branch. Both unguarded dumps are guarded: an empty `dumpsys package` or
+`dumpsys notification` now names the transport rather than blaming the app. Live on the 3T the
+verdicts are unchanged and the sound line reads `all 2 prayer channel(s) carry a sound`.
+
 `e2e/scripts/device-checks.sh:105-107`. With zero matching channels the inner `grep -q`
 fails and the `||` branch fires, printing a pass for a set that was never examined. This is
 the trap `device_checks.py:125-127` explicitly documents avoiding. Bounded, because an
