@@ -1172,6 +1172,16 @@ cases:
 | one 500ms freeze | PASS, freeze invisible | `gaps>100ms: ['500']` printed, cadence PASS |
 | a single frame | PASS | `NO DATA — this is not a pass`, exit 1 |
 
+**The baseline re-verification, done and recorded in 1.25.15.** The one `(SF latency)` line in
+`e2e/baselines/android-3t.json` was `"overlay_close_steady": "PASS 60fps (SF latency)"`. It is
+now marked UNPROVEN rather than re-stamped, and the reason is what three live runs showed.
+Against the installed 1.25.0 on the 3T, the corrected script run three times on overlay-open
+gave **FAIL, PASS, FAIL**: a 67ms gap at the idle-to-animation boundary in two of the three.
+So the corrected tool does produce real verdicts, and a single SF run is not one. Two honest
+limits on that measurement: the device holds 1.25.0 while HEAD is further ahead, and
+overlay-open is not the animation the baseline line refers to, because the script drives one
+tap and measuring a close needs two.
+
 The freeze case is the one that needed a judgement rather than a units fix. A gap over 100ms is
 either a real freeze or a stretch where nothing was drawn, and SF latency alone cannot tell
 those apart, so it is excluded from the cadence verdict and **printed** rather than silently
