@@ -2,6 +2,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { AndroidImportance, deleteNotificationChannelAsync, setNotificationChannelAsync } from 'expo-notifications';
 import { Platform } from 'react-native';
 
+import { PRAYER_TIMEZONE } from '../constants';
 import {
   athanAndroidChannelId,
   atTimeAndroidChannelId,
@@ -24,7 +25,12 @@ import {
 } from '../notifications';
 import { AlertType } from '../types';
 
-const londonDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, 'Europe/London', 'yyyy-MM-dd');
+/**
+ * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
+ * so this stays an independent oracle. Keyed off PRAYER_TIMEZONE so that moving the app off
+ * London fails the app's code rather than this fixture.
+ */
+const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, PRAYER_TIMEZONE, 'yyyy-MM-dd');
 
 // =============================================================================
 // genNextXDays TESTS
@@ -53,7 +59,7 @@ describe('genNextXDays', () => {
 
   it('starts from today', () => {
     const days = genNextXDays(1);
-    expect(days[0]).toBe(londonDate());
+    expect(days[0]).toBe(prayerZoneDate());
   });
 
   it('generates consecutive days', () => {

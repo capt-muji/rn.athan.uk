@@ -1,5 +1,6 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
+import { PRAYER_TIMEZONE } from '../constants';
 import {
   calculateBelongsToDate,
   canonicalDisplayOrder,
@@ -12,7 +13,12 @@ import {
 import { createPrayerDatetime } from '../time';
 import { type IApiResponse, type Prayer, ScheduleType } from '../types';
 
-const londonDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, 'Europe/London', 'yyyy-MM-dd');
+/**
+ * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
+ * so this stays an independent oracle. Keyed off PRAYER_TIMEZONE so that moving the app off
+ * London fails the app's code rather than this fixture.
+ */
+const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, PRAYER_TIMEZONE, 'yyyy-MM-dd');
 
 // =============================================================================
 // calculateBelongsToDate TESTS
@@ -348,9 +354,9 @@ describe('filterApiData', () => {
   };
 
   it('keeps today and future dates', () => {
-    const today = londonDate();
-    const tomorrow = londonDate(86400000);
-    const nextWeek = londonDate(7 * 86400000);
+    const today = prayerZoneDate();
+    const tomorrow = prayerZoneDate(86400000);
+    const nextWeek = prayerZoneDate(7 * 86400000);
 
     const input = createMockApiResponse([today, tomorrow, nextWeek]);
     const result = filterApiData(input);
@@ -362,8 +368,8 @@ describe('filterApiData', () => {
   });
 
   it('keeps yesterday (needed for progress bar)', () => {
-    const yesterday = londonDate(-86400000);
-    const today = londonDate();
+    const yesterday = prayerZoneDate(-86400000);
+    const today = prayerZoneDate();
 
     const input = createMockApiResponse([yesterday, today]);
     const result = filterApiData(input);
@@ -373,9 +379,9 @@ describe('filterApiData', () => {
   });
 
   it('filters out dates older than yesterday', () => {
-    const twoDaysAgo = londonDate(-2 * 86400000);
-    const weekAgo = londonDate(-7 * 86400000);
-    const today = londonDate();
+    const twoDaysAgo = prayerZoneDate(-2 * 86400000);
+    const weekAgo = prayerZoneDate(-7 * 86400000);
+    const today = prayerZoneDate();
 
     const input = createMockApiResponse([weekAgo, twoDaysAgo, today]);
     const result = filterApiData(input);
