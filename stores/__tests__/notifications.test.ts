@@ -214,7 +214,7 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     Database.database.set('preference_reminder_alert_extra_4', '1'); // Istijaba reminder = Silent
     Database.database.set('preference_reminder_interval_standard_2', '20'); // Dhuhr interval
 
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
 
     expect(Database.database.getString('preference_alert_standard_fajr')).toBe('2');
     expect(Database.database.getString('preference_reminder_alert_extra_istijaba')).toBe('1');
@@ -229,17 +229,17 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     Database.database.set('preference_alert_standard_0', '1');
     Database.database.set('preference_alert_standard_fajr', '2');
 
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
 
     expect(Database.database.getString('preference_alert_standard_fajr')).toBe('2');
     expect(Database.database.contains('preference_alert_standard_0')).toBe(false);
   });
 
   it('is a no-op when no index-keyed keys remain', () => {
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
     const keysAfterFirstRun = Database.database.getAllKeys();
 
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
     expect(Database.database.getAllKeys()).toEqual(keysAfterFirstRun);
   });
 
@@ -260,7 +260,7 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     Database.database.set('preference_reminder_alert_extra_4', '1'); // Istijaba reminder = Silent
     Database.database.set('preference_reminder_interval_standard_2', '20'); // Dhuhr interval
 
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
 
     expect(store.get(standardPrayerAlertAtoms[0]!)).toBe(AlertType.Sound);
     expect(store.get(extraReminderAlertAtoms[4]!)).toBe(AlertType.Silent);
@@ -271,9 +271,66 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     Database.database.remove('preference_alert_standard_fajr');
     Database.database.set('preference_alert_standard_0', 'not-a-number');
 
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
 
     expect(Database.database.getString('preference_alert_standard_fajr')).toBe('not-a-number');
+  });
+
+  // Audit finding 3 and the owner's ruling of 2026-09-12. Midnight was inserted at
+  // EXTRAS_ENGLISH[0] in 1.0.27, so an install that last ran before then wrote its
+  // extras index keys against ['Last Third', 'Suhoor', 'Duha', 'Istijaba'].
+  // Migrating those with today's array shifts every extra by one: the user gets an
+  // athan at Islamic Midnight they never asked for and silence at Last Third.
+  describe('extras written before 1.0.27', () => {
+    const clearExtras = () => {
+      for (const name of ['midnight', 'last third', 'suhoor', 'duha', 'istijaba']) {
+        Database.database.remove(`preference_alert_extra_${name}`);
+      }
+      for (let i = 0; i < 5; i += 1) Database.database.remove(`preference_alert_extra_${i}`);
+    };
+
+    it('maps index keys against the PRE-1.0.27 array when the stored version is older', () => {
+      clearExtras();
+      Database.database.set('preference_alert_extra_0', '2'); // meant Last Third
+      Database.database.set('preference_alert_extra_3', '1'); // meant Istijaba
+
+      migrateIndexKeyedAlertPreferences('1.0.26');
+
+      expect(Database.database.getString('preference_alert_extra_last third')).toBe('2');
+      expect(Database.database.getString('preference_alert_extra_istijaba')).toBe('1');
+      // the shifted destination must stay untouched
+      expect(Database.database.contains('preference_alert_extra_midnight')).toBe(false);
+    });
+
+    it('maps index keys against the CURRENT array from 1.0.27 onwards', () => {
+      clearExtras();
+      Database.database.set('preference_alert_extra_0', '2'); // meant Midnight
+
+      migrateIndexKeyedAlertPreferences('1.0.27');
+
+      expect(Database.database.getString('preference_alert_extra_midnight')).toBe('2');
+      expect(Database.database.contains('preference_alert_extra_last third')).toBe(false);
+    });
+
+    it('treats an absent stored version as a fresh install and uses the current array', () => {
+      clearExtras();
+      Database.database.set('preference_alert_extra_0', '2');
+
+      migrateIndexKeyedAlertPreferences(null);
+
+      expect(Database.database.getString('preference_alert_extra_midnight')).toBe('2');
+    });
+
+    it('removes every leftover index key, including one with no counterpart', () => {
+      clearExtras();
+      Database.database.set('preference_alert_extra_4', '2'); // no 5th extra pre-1.0.27
+      Database.database.set('preference_reminder_interval_extra_4', '30');
+
+      migrateIndexKeyedAlertPreferences('1.0.26');
+
+      expect(Database.database.contains('preference_alert_extra_4')).toBe(false);
+      expect(Database.database.contains('preference_reminder_interval_extra_4')).toBe(false);
+    });
   });
 });
 

@@ -23,6 +23,7 @@ import { perfMark, perfMeasure } from '@/shared/perf';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
+import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber } from '@/stores/storage';
 import { sync } from '@/stores/sync';
@@ -218,6 +219,44 @@ export const extraReminderIntervalAtoms = EXTRAS_ENGLISH.map((prayerName) =>
 type MigratableAtom = (typeof standardPrayerAlertAtoms)[number];
 
 /**
+ * `EXTRAS_ENGLISH` as it stood up to and including v1.0.26.
+ *
+ * Midnight was inserted at position 0 in 1.0.27 (commit a75a453), seven months
+ * before the name-keyed migration was written. An install whose last run predates
+ * that version wrote its extras index keys against THIS array, so reading them
+ * with today's array shifts every extra by one: the user's Last Third setting
+ * lands on Islamic Midnight, Last Third is left with nothing, and Istijaba's
+ * setting is dropped because there is no fifth index to migrate.
+ */
+const EXTRAS_ENGLISH_PRE_1_0_27 = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'] as const;
+
+/** The version that inserted Midnight at the front of `EXTRAS_ENGLISH`. */
+const EXTRAS_MIDNIGHT_VERSION = '1.0.27';
+
+/** Every index-keyed preference this migration supersedes. */
+const INDEX_KEY_PATTERN = /^preference_(alert|reminder_alert|reminder_interval)_(standard|extra)_\d+$/;
+
+/**
+ * Which `EXTRAS_ENGLISH` the stored index keys were written against.
+ *
+ * `app_installed_version` survives every cache wipe, so it is a reliable
+ * discriminator — but only while it still holds the PREVIOUS version, which is
+ * why `handleAppUpgrade` passes its captured value in rather than letting this
+ * re-read a key it has already overwritten.
+ */
+const usesPreMidnightExtras = (storedVersion: string | null): boolean => {
+  // A fresh install has no index keys at all, so the array chosen cannot matter
+  if (!storedVersion) return false;
+
+  try {
+    return compareVersions(storedVersion, EXTRAS_MIDNIGHT_VERSION) < 0;
+  } catch {
+    // An unreadable version is not evidence of an old install; migrate as today
+    return false;
+  }
+};
+
+/**
  * One-time migration: index-keyed alert preference keys -> name-keyed keys
  *
  * Alert/reminder preferences were stored as preference_alert_standard_<index> etc.
@@ -226,8 +265,12 @@ type MigratableAtom = (typeof standardPrayerAlertAtoms)[number];
  * (first migration wins) and removes the old key. No-op after the first run; safe to
  * call on every launch. Must run before any atom reads preferences (called from
  * handleAppUpgrade).
+ *
+ * @param storedVersion The version the install was last running, captured BEFORE
+ *   `handleAppUpgrade` overwrites it. It selects which `EXTRAS_ENGLISH` the index
+ *   keys were written against; see `usesPreMidnightExtras`.
  */
-export const migrateIndexKeyedAlertPreferences = (): void => {
+export const migrateIndexKeyedAlertPreferences = (storedVersion: string | null): void => {
   let migrated = 0;
 
   /**
@@ -254,18 +297,27 @@ export const migrateIndexKeyedAlertPreferences = (): void => {
     Database.database.remove(oldKey);
   };
 
+  const extrasSourceNames = usesPreMidnightExtras(storedVersion) ? EXTRAS_ENGLISH_PRE_1_0_27 : EXTRAS_ENGLISH;
+
   (['standard', 'extra'] as const).forEach((type) => {
     const isStandard = type === 'standard';
-    const prayerNames = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+    // PRAYERS_ENGLISH has never changed order, so standard needs no discrimination
+    const sourceNames: readonly string[] = isStandard ? PRAYERS_ENGLISH : extrasSourceNames;
+    const currentNames: readonly string[] = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
     const alertAtoms = isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms;
     const reminderAtoms = isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms;
     const intervalAtoms = isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms;
 
-    prayerNames.forEach((prayerName, index) => {
+    sourceNames.forEach((prayerName, index) => {
+      // The index says what the key MEANT when it was written; the atom arrays are
+      // built from today's order, so the destination is resolved by name
+      const currentIndex = currentNames.indexOf(prayerName);
+      if (currentIndex === -1) return;
+
       const name = prayerName.toLowerCase();
-      const alertAtom = alertAtoms[index];
-      const reminderAtom = reminderAtoms[index];
-      const intervalAtom = intervalAtoms[index];
+      const alertAtom = alertAtoms[currentIndex];
+      const reminderAtom = reminderAtoms[currentIndex];
+      const intervalAtom = intervalAtoms[currentIndex];
       if (!alertAtom || !reminderAtom || !intervalAtom) return;
 
       migrate(`preference_alert_${type}_${index}`, `preference_alert_${type}_${name}`, alertAtom);
@@ -277,6 +329,16 @@ export const migrateIndexKeyedAlertPreferences = (): void => {
       );
     });
   });
+
+  // Sweep whatever the loop above could not reach: an index with no counterpart in
+  // the array it was written against, and any key from a shape nobody remembers.
+  // A CACHE_SCHEMA_VERSION bump will never clear these, because UPGRADE_KEEP_PREFIXES
+  // keeps `preference_` on purpose so alarm settings survive a cache wipe.
+  const leftovers = Database.database.getAllKeys().filter((key) => INDEX_KEY_PATTERN.test(key));
+  for (const key of leftovers) Database.database.remove(key);
+  if (leftovers.length > 0) {
+    logger.info('NOTIFICATION: Removed leftover index-keyed preferences', { removed: leftovers.length });
+  }
 
   if (migrated > 0) {
     logger.info('NOTIFICATION: Migrated index-keyed alert preferences to name keys', { migrated });
