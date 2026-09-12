@@ -59,6 +59,10 @@ PID=$(a shell pidof "$PKG" | tr -d '\r ')
 # --- permissions ------------------------------------------------------------
 print -r -- "== permissions =="
 a shell dumpsys package "$PKG" > "$OUT/package.txt" 2>/dev/null
+if [[ ! -s $OUT/package.txt ]]; then
+  fail "dumpsys package returned nothing — permissions were not checked"
+  exit 1
+fi
 # dumpsys lists what the manifest asked for in one block and what was actually
 # granted in another, as `<permission>: granted=<bool>`. Reading only the first
 # says nothing about whether an alert can fire.
@@ -105,6 +109,14 @@ fi
 # --- notification channels --------------------------------------------------
 print -r -- "== notification channels =="
 a shell dumpsys notification --noredact > "$OUT/notification.txt" 2>/dev/null
+if [[ ! -s $OUT/notification.txt ]]; then
+  # Without this the empty dump yields zero channels and the app is blamed for
+  # what is an adb transport problem
+  fail "dumpsys notification returned nothing — channels were not checked"
+  print -r -- "== FAILED =="
+  note "dumps kept in $OUT"
+  exit 1
+fi
 awk -v pkg="$PKG" '
   $0 ~ "AppSettings: " pkg " " { inblk = 1; next }
   /AppSettings: / { inblk = 0 }
@@ -124,9 +136,17 @@ else
     pass "extras_at_time present" || fail "extras_at_time MISSING — extras alerts would be dropped"
   grep -qE "mId='athan_[0-9]+_v2'" "$OUT/channels.txt" &&
     pass "athan_<n>_v2 present" || note "no athan_<n>_v2 channel yet (created when a Sound alert is first set)"
-  grep -E "mId='(extras_at_time|athan_[0-9]+_v2)'" "$OUT/channels.txt" | grep -q "mSound=null" &&
-    fail "a prayer channel has mSound=null — it would fire silently" ||
-    pass "prayer channels carry a sound"
+  # Count first. With no matching channels the inner grep fails and the `||`
+  # branch fires, which printed a pass for a set that was never examined.
+  grep -E "mId='(extras_at_time|athan_[0-9]+_v2)'" "$OUT/channels.txt" > "$OUT/prayer-channels.txt"
+  PRAYER_CHANNELS=$(grep -c . "$OUT/prayer-channels.txt")
+  if (( PRAYER_CHANNELS == 0 )); then
+    fail "no prayer channels to inspect — their sound was not checked"
+  elif grep -q "mSound=null" "$OUT/prayer-channels.txt"; then
+    fail "a prayer channel has mSound=null — it would fire silently"
+  else
+    pass "all $PRAYER_CHANNELS prayer channel(s) carry a sound"
+  fi
 fi
 
 # --- scheduled alarms -------------------------------------------------------
