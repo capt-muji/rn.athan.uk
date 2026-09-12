@@ -154,15 +154,26 @@ export const BACKGROUND_TASK_INTERVAL_HOURS = 6;
  * - 15 minutes in development builds (fast iteration)
  * - BACKGROUND_TASK_INTERVAL_HOURS * 60 in production (6 hours)
  */
-/** Android WorkManager's own floor; below it the OS silently clamps and the ladder lies */
+/**
+ * Lowest rung the interval ladder actually uses, and a policy floor rather than a platform one.
+ * expo-background-task takes OneTimeWorkRequest + setInitialDelay on SDK 26 and above — every
+ * device this ships to — so WorkManager's 15-minute PeriodicWorkRequest floor does not apply
+ * here. iOS is the real constraint: dasd rate-limits sub-hour cadences with "group is full"
+ * deferrals, so anything lower measures the scheduler rather than the app.
+ */
 const MIN_BG_INTERVAL_MINUTES = 15;
 
 /** A day. Beyond this the override is the seconds-for-minutes mistake of ISSUES.md #8, not a choice */
 const MAX_BG_INTERVAL_MINUTES = 1440;
 
 const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
+
+// Integer, not merely finite: iOS reads this option with `as? Int`, so a fractional value
+// fails the cast, falls back to the 12-hour default and disagrees with Android, which
+// truncates. 20.5 would mean 20 minutes on one platform and 12 hours on the other, silently —
+// the same units-mismatch class as ISSUES.md #8 that the range check was added to close.
 const isEnvIntervalValid =
-  Number.isFinite(envIntervalMinutes) &&
+  Number.isInteger(envIntervalMinutes) &&
   envIntervalMinutes >= MIN_BG_INTERVAL_MINUTES &&
   envIntervalMinutes <= MAX_BG_INTERVAL_MINUTES;
 export const BACKGROUND_TASK_INTERVAL_MINUTES = isEnvIntervalValid
