@@ -20,6 +20,8 @@ import {
   REMINDER_INTERVALS,
   validateReminderInterval,
 } from '../constants';
+import { rollingDaysForPrayer } from '../notifications';
+import { ScheduleType } from '../types';
 
 // =============================================================================
 // NIGHT_PRAYER_NAMES TESTS
@@ -301,6 +303,13 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
 // the mock always resolves and getAllScheduledNotificationsAsync returns an empty
 // array, so without this the constants could be pushed past it by a one-character
 // edit and the whole suite would still pass.
+//
+// The window is NOT uniform: the two Extras night rows take one list day more than
+// everything else, because their instant falls on the evening before the list day
+// they are filed under. So the worst case is counted through `rollingDaysForPrayer`,
+// the same function the schedule paths apply — restating the arithmetic from
+// NOTIFICATION_ROLLING_DAYS alone would keep printing a number the app had left
+// behind, which is exactly how a raise could slip past this file.
 // =============================================================================
 
 /** UNUserNotificationCenter keeps the soonest-firing 64 requests and drops the remainder */
@@ -311,23 +320,63 @@ const ALERTS_PER_PRAYER = 2;
 
 describe('the rolling buffer fits inside the iOS pending-request ceiling', () => {
   const prayersPerDay = PRAYERS_ENGLISH.length + EXTRAS_ENGLISH.length;
-  const worstCase = prayersPerDay * ALERTS_PER_PRAYER * NOTIFICATION_ROLLING_DAYS;
+
+  /** Every list day the app actually arms, summed prayer by prayer through the production rule */
+  const listDaysArmed =
+    PRAYERS_ENGLISH.reduce((sum, name) => sum + rollingDaysForPrayer(ScheduleType.Standard, name), 0) +
+    EXTRAS_ENGLISH.reduce((sum, name) => sum + rollingDaysForPrayer(ScheduleType.Extra, name), 0);
+
+  const worstCase = listDaysArmed * ALERTS_PER_PRAYER;
+
+  /** Rows granted more than the base window, counted from the rule rather than named here */
+  const nightRows = EXTRAS_ENGLISH.filter(
+    (name) => rollingDaysForPrayer(ScheduleType.Extra, name) > NOTIFICATION_ROLLING_DAYS
+  ).length;
+
+  /**
+   * The same shape at a hypothetical base window: every prayer for `baseDays`, plus one more
+   * day for each night row. Tied to production by the test below, so it cannot drift.
+   */
+  const worstCaseAt = (baseDays: number) => (prayersPerDay * baseDays + nightRows) * ALERTS_PER_PRAYER;
 
   it('schedules at most 64 requests with every prayer fully armed', () => {
     expect(worstCase).toBeLessThanOrEqual(IOS_PENDING_REQUEST_CEILING);
   });
 
   it('pins the arithmetic, so a change to any input has to come through here', () => {
-    expect({ prayersPerDay, days: NOTIFICATION_ROLLING_DAYS, worstCase }).toEqual({
+    expect({
+      prayersPerDay,
+      days: NOTIFICATION_ROLLING_DAYS,
+      nightRows,
+      worstCase,
+      headroom: IOS_PENDING_REQUEST_CEILING - worstCase,
+    }).toEqual({
       prayersPerDay: 11,
       days: 2,
-      worstCase: 44,
+      nightRows: 2,
+      worstCase: 48,
+      headroom: 16,
     });
   });
 
-  it('shows that one more day would breach the ceiling', () => {
-    const threeDays = prayersPerDay * ALERTS_PER_PRAYER * 3;
+  it('counts the night-row day through the production rule, not a restatement of it', () => {
+    expect(worstCase).toBe(worstCaseAt(NOTIFICATION_ROLLING_DAYS));
+  });
 
-    expect(threeDays).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+  it('grants the extra day to the two evening-before rows and to nothing else', () => {
+    const extended = EXTRAS_ENGLISH.filter(
+      (name) => rollingDaysForPrayer(ScheduleType.Extra, name) > NOTIFICATION_ROLLING_DAYS
+    );
+    const standardExtended = PRAYERS_ENGLISH.filter(
+      (name) => rollingDaysForPrayer(ScheduleType.Standard, name) > NOTIFICATION_ROLLING_DAYS
+    );
+
+    // Suhoor is a night row on the list, but its instant is on its own date: no extra day
+    expect(extended).toEqual(['Midnight', 'Last Third']);
+    expect(standardExtended).toEqual([]);
+  });
+
+  it('shows that one more day would breach the ceiling', () => {
+    expect(worstCaseAt(3)).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
   });
 });
