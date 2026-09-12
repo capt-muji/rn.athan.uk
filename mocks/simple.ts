@@ -27,9 +27,12 @@ import type { IApiResponse } from '@/shared/types';
 // and day rollover cleanly, simulate during 06:00-23:59.
 const now = new Date();
 
-// DO NOT DELETE — launch-relative time seeder, kept for future mock cascades
-// (e.g. rapid prayer-to-prayer transition / widget cascade testing). Today's
-// resting data is hardcoded realistic; this helper is not currently called.
+// Launch-relative time seeder. TODAY's six rows are built from it (below), so
+// a mock day always has prayers just behind and just ahead of the clock —
+// which is also the tell that a device is serving mock data (see e2e/README).
+// 1.21.2 hardcoded TODAY and left this unused; 1.24.7 made it load-bearing
+// again without amending the note, so it read "not currently called" while
+// six call sites used it.
 export const addMinutes = (minutesToAdd: number) => {
   const date = new Date(now.getTime() + minutesToAdd * 60000);
   return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -43,8 +46,9 @@ const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.
   formatDateShort(addDays(now, d))
 );
 
-// Realistic London times copied verbatim from mocks/full.ts. The 5 days
-// around TODAY (dayBeforeYesterday → day2) are 2024-04-23 through
+// Realistic London times copied verbatim from mocks/full.ts, EXCEPT TODAY,
+// whose six rows are launch-relative (addMinutes above). The days around it
+// (dayBeforeYesterday, yesterday, day1, day2) are 2024-04-23 through
 // 2024-04-27 carrying the API's real spring solar drift; days 3-10 ahead
 // keep the 2024-08-28 → 2024-09-09 autumn block. Jamat fields are unused
 // placeholders.

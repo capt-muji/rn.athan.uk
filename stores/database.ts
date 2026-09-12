@@ -11,13 +11,29 @@
 import { createJSONStorage } from 'jotai/utils';
 import { createMMKV } from 'react-native-mmkv';
 
+import { isPreview, isProd } from '@/shared/config';
 import logger from '@/shared/logger';
 import type * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import type { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 
+/**
+ * MMKV instance id, namespaced by the SAME predicate api/client.ts uses to
+ * decide whether to serve MOCK_DATA_SIMPLE.
+ *
+ * A build that fabricates prayer times used to write them into the store a
+ * production build reads, and neither gate clears them: installing a real
+ * build at the same version leaves wasAppUpgraded() false, and post-#34 even a
+ * version bump keeps the cache unless the schema marker moved. So fabricated
+ * rows were served as real times, and survived the build that wrote them.
+ *
+ * Prod and preview keep the original id, byte for byte, so every shipped
+ * install goes on reading the store it already has.
+ */
+const DATABASE_ID = isProd() || isPreview() ? 'athan-storage' : 'athan-storage-dev';
+
 /** MMKV database instance - explicit ID required for Android production persistence */
-export const database = createMMKV({ id: 'athan-storage' });
+export const database = createMMKV({ id: DATABASE_ID });
 
 /**
  * Gets a JSON-parsed item from storage
