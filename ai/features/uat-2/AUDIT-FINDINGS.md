@@ -100,6 +100,7 @@ appendix. That suite lives outside the repository and is not committed.
 | 45 | ~~Asr is hardcoded to the Hanafi calculation~~ | 5 | **WITHDRAWN** by owner ruling |
 | 46 | The London-pinned test oracles will fail as false alarms when the timezone flips | 5 | CONFIRMED |
 | 47 | High latitude: no polar-day handling, and a missing Sunrise crashes | 5 | CONFIRMED |
+| 58 | `device_checks.py` crashes when two alarms share a minute | 3 | CONFIRMED, found in session 4 |
 | a-aa | Hygiene, docs and tidiness (27 items), plus four accessibility items | 6 | see Tier 6 |
 
 ---
@@ -1349,6 +1350,33 @@ starting at the earliest JS instant, and `stores/bootstrap.ts` already runs befo
 
 CONFIRMED. Measurement hygiene only: `PERF_ENABLED` folds the whole module out of production
 builds and nothing here reaches a prayer time.
+
+## 58. `device_checks.py` crashes when two alarms share a minute
+
+Found in session 4 while verifying finding 30, not present in the session-3 sweep.
+
+**FIXED in 1.25.9** (`fix/audit-58-same-instant-sort`).
+
+`device_checks.py:100` sorted `(moment, alarm)` tuples with no key. Python compares tuples
+element by element: when two alarms carry the same moment it falls through to comparing the
+alarm dicts, and dicts have no ordering.
+
+```
+TypeError: '<' not supported between instances of 'dict' and 'dict'
+```
+
+Two same-minute alarms only collide when their parsed fields differ, because equal dicts
+compare equal and never reach `<`. That is the normal case rather than the exotic one: an
+at-time prayer alert carries an `Alarm clock:` block with a `triggerTime`, a pre-prayer
+reminder does not, so a reminder landing on another prayer's exact minute is enough. Any
+reminder interval that happens to line one prayer's offset up with another prayer's time
+produces it.
+
+Reproduced against the live 3T dump with one alarm duplicated at the same instant and given
+an alarm-clock block: traceback, exit 1. With the fix the same input reports both alerts.
+Output on the unmodified dump is byte-identical.
+
+CONFIRMED.
 
 ---
 
