@@ -516,6 +516,25 @@ Never delete prayer data in response to a network error.
 
 ## 7. No error boundary, and the display-date atom throws when nothing is in the future
 
+**FIXED in 1.25.27** (`fix/audit-7-display-date-guard`). All three parts:
+
+- `createDisplayDateAtom` returns `null` when no prayer is in the future, matching its own
+  no-sequence branch and the sibling next/prev atoms that consumers already handle.
+- `getYesterdayFinalPrayer` returns `Prayer | null` and guards the cache read, with a warning
+  naming the missing date. Its caller `createPrevPrayerAtom` already returned `Prayer | null`,
+  so nothing downstream changed shape.
+- `app/_layout.tsx` exports an `ErrorBoundary` that logs the error and renders `ErrorScreen`.
+  Expo Router renders it in place of the route when the subtree throws, which is what
+  `app/index.tsx`'s `hasError` branch could never do since it only covers a rejected promise.
+
+Two regression tests, 35 to 37 in that suite: the 31 December evening with every prayer passed,
+and a 1 January launch with no record for the previous day. Restoring both assertions fails
+exactly those two.
+
+ADR-004's "trust the data layer" still holds as a design rule. What changed is the failure
+mode: these two reads happen during render, so a gap became a dead screen rather than a missing
+row.
+
 `stores/schedule.ts:184`, absence at `app/_layout.tsx` and `app/index.tsx`.
 
 ```
