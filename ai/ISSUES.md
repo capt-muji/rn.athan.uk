@@ -1068,7 +1068,19 @@ production release; G.6 noted but deferred by owner.
          connected does not unblock this; there is nothing shipped to verify.
        - **The patch-package fallback below is now LIVE** (merged, unreleased,
          clock started 2026-09-11). Backport target is #49810, NOT #49244, and
-         resolve against the installed 57.0.18 sources.
+         resolve against the installed 57.0.18 sources. Note the old backport
+         note's `render()`/#49535 conflict warning refers to #49244's diff and
+         may not apply to #49810.
+       - **OWNER DECISION 2026-09-12: we WILL patch it, deferred to its own
+         session.** *"We will do the same thing we did for the alarm clock. We
+         will also patch it, but we're gonna defer that as well."* Shape it like
+         `ai/prompts/alarmclock-backport.md`: patch the merged upstream code on
+         its own branch, delete the patch when the real release ships. Needs the
+         `widgets` flag flipped ON as well as the patch — while it is off,
+         `app.config.ts` strips the expo-widgets plugin at prebuild, so there is
+         no extension in the build and a patched `node_modules` changes nothing
+         observable. Also needs the iPhone XS reconnected (deliberately
+         disconnected 2026-09-12) for the acceptance protocol below.
        - Also merged in the same window: **#50038** (Android Gradle build
          failure when no Android widget is configured) — only relevant if
          Android widgets are ever configured.
