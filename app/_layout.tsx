@@ -11,7 +11,7 @@ import '@/stores/bootstrap';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setAudioModeAsync } from 'expo-audio';
-import { Slot } from 'expo-router';
+import { type ErrorBoundaryProps, Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { LogBox } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
@@ -19,7 +19,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
 import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
-import { InitialWidthMeasurement } from '@/components/ui';
+import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
 import logger from '@/shared/logger';
@@ -29,6 +29,19 @@ import { triggerSyncLoadable } from '@/stores/sync';
 // Performance monitor first (no-op unless EXPO_PUBLIC_PERF_MONITOR=1) so launch
 // marks exist before any other app code reports against them
 initPerfMonitor();
+
+/**
+ * Catches a throw during render anywhere below the root route.
+ *
+ * `app/index.tsx`'s `hasError` branch only covers a rejected `sync()` promise;
+ * it cannot catch a render-time throw, and expo-router exported no boundary on
+ * any route, so one bad value took the whole app down until the data changed.
+ * Expo Router renders this in place of the route when its subtree throws.
+ */
+export function ErrorBoundary({ error }: ErrorBoundaryProps) {
+  logger.error('APP: Render threw, falling back to the error screen', { error: error.message });
+  return <ErrorScreen />;
+}
 
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
