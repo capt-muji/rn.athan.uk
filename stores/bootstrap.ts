@@ -30,7 +30,7 @@ import { setSequence } from '@/stores/schedule';
 import { wasAppUpgraded } from '@/stores/version';
 
 const hydrateFromCache = (): boolean => {
-  const now = TimeUtils.createLondonDate();
+  const now = TimeUtils.createInstant();
   const todayData = Database.getPrayerByDate(now);
   if (!todayData) return false;
 

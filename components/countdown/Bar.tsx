@@ -10,6 +10,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { TIP_OVAL_WIDTH, tipLeftForProgress } from '@/components/countdown/tipGeometry';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
@@ -140,8 +141,9 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     backgroundColor: interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]),
   }));
 
+  // Clamped so the oval cannot overhang the track at either end (tipGeometry)
   const tipPositionStyle = useAnimatedStyle(() => ({
-    left: (widthValue.value / 100) * COUNTDOWN_BAR.WIDTH - COUNTDOWN_TIP.OFFSET,
+    left: tipLeftForProgress(widthValue.value),
   }));
 
   const tipAppearanceStyle = useAnimatedStyle(() => {
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
   },
   tipOval: {
     position: 'absolute',
-    width: COUNTDOWN_TIP.WIDTH + 1,
+    width: TIP_OVAL_WIDTH,
     height: COUNTDOWN_BAR.HEIGHT,
     borderRadius: COUNTDOWN_TIP.WIDTH / 2,
   },

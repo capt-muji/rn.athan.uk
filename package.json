@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.24.25",
+  "version": "1.24.28",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -16,6 +16,7 @@
     "test:debug": "DEBUG_TESTS=1 jest",
     "test:watch": "DEBUG_TESTS=1 jest --watch",
     "test:tz": "for tz in America/New_York Asia/Tokyo Pacific/Kiritimati Pacific/Pago_Pago; do echo \"TZ=$tz\"; TZ=$tz jest --silent || exit 1; done",
+    "check:device": "e2e/scripts/device-checks.sh",
     "validate": "tsc --noEmit && biome check . && jest --silent",
     "format": "biome check --write .",
     "format:check": "biome check ."

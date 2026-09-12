@@ -16,7 +16,7 @@ import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
 const mockCreateLondonDate = jest.fn();
 
 jest.mock('@/shared/time', () => ({
-  createLondonDate: () => mockCreateLondonDate(),
+  createInstant: () => mockCreateLondonDate(),
 }));
 
 jest.mock('jotai', () => ({
