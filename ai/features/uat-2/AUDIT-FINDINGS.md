@@ -887,6 +887,50 @@ reminder record id equals `reminderNotificationIdentifier` with its interval, an
 one day get two distinct ids so their MMKV records cannot collapse onto one key. All three fail
 with the mock reverted to the constant.
 
+## 62. OBSERVED ONCE, NOT REPRODUCED: the app sat with an armed alert and no alarm
+
+Found in session 5 on 2026-09-12 by routine device checking, not by reading code. **Recorded
+rather than fixed, because three deliberate reproduction attempts all failed.** It is written up
+because the symptom is the worst this app has — the UI says an alarm is set and nothing will
+fire — and because the next session should know it has been seen once.
+
+**What was observed.** After installing 1.25.45 on the 3T, `yarn check:device` reported
+`no alarms armed for com.mugtaba.athan`. Fajr was on Sound and drawn with the speaker icon, the
+cache held real London times, the process was alive (pid 10879), and there was no crash in
+logcat. The state persisted for roughly ten minutes across repeated checks, including after the
+What's New modal was dismissed. Toggling Fajr off and back to Sound re-armed it immediately, so
+scheduling itself was healthy.
+
+**What was ruled out.** No runtime code changed between the last passing check at 1.25.40 and
+the failing one at 1.25.45: `git diff` over that range, excluding docs, tests and mocks, is a
+single eight-line JSDoc comment in `shared/constants.ts`. So it is not a regression from the
+session's fixes.
+
+**What would not reproduce**, each tried deliberately afterwards:
+
+| Attempt | Result |
+| --- | --- |
+| force-stop, cold launch, wait 25s | re-armed correctly |
+| install a version bump over the running app | alarms **survived** the install |
+| force-stop with the What's New modal pending, cold launch | re-armed within 20s |
+
+So finding 59's cold-launch re-arm works, the upgrade path works, and the modal does not block
+it. The one path not isolated is the exact original ordering: install a bump over a *running*
+app, then force-stop, then launch — which is what `devcheck.sh` does and what happened at 1.25.45.
+
+**Why it could not be diagnosed further.** Logging is disabled in production builds (finding 56),
+and a prod build is required for real data, so there is no app-side trace of whether the
+reschedule ran and returned nothing or never ran at all.
+
+**What the next session should do.** Reproduce under a preview build with logging on, or add a
+temporary breadcrumb that survives to MMKV, and drive the exact ordering above in a loop until it
+recurs. The two mechanisms worth suspecting first are the 12-hour gate in
+`shouldRescheduleNotifications` and a race between the cold-launch re-arm and the upgrade's own
+`forceNotificationReschedule`, since both ran on that launch and only that launch.
+
+UNRESOLVED. Observed once, on a real device, with evidence; not reproduced, not explained, not
+fixed.
+
 ## 61. The pre-commit hook cannot commit a change to `metro.config.js` or `jest.config.js`
 
 Found in session 4 by hitting it: the hook rejected the finding 60 comment fix.
