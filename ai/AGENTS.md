@@ -32,24 +32,49 @@
 
 ## 2. Stack & Versions
 
+Verified against `package.json` on 2026-09-12 at app version 1.25.0, after the Expo SDK
+57 patch wave. When these drift again, `package.json` is the source of truth.
+
 | Category        | Technology              | Version         |
 | --------------- | ----------------------- | --------------- |
 | Framework       | React Native            | 0.86.3          |
-| Platform        | Expo                    | 57.0.17         |
+| Platform        | Expo                    | ~57.0.22        |
 | UI Library      | React                   | 19.2.3          |
-| Language        | TypeScript              | 7.0.2 (strict)  |
-| Routing         | Expo Router             | ~57.0.17        |
+| Language        | TypeScript              | ~7.0.2 (strict) |
+| Routing         | Expo Router             | ~57.0.21        |
 | State           | Jotai                   | 2.20.3          |
 | Storage         | React Native MMKV       | 4.3.2           |
 | Animation       | React Native Reanimated | 4.6.0 (worklets 0.12.2) |
-| Audio           | Expo Audio              | ~57.0.4         |
-| Notifications   | Expo Notifications      | ~57.0.15        |
+| Audio           | Expo Audio              | ~57.0.5         |
+| Notifications   | Expo Notifications      | ~57.0.18        |
+| Background      | expo-background-task / expo-task-manager | ~57.0.17 / ~57.0.17 |
+| Updates         | expo-updates            | ~57.0.22        |
 | Dates           | date-fns / date-fns-tz  | 4.4.0 / 3.2.0   |
-| Widgets         | expo-widgets            | ~57.0.15        |
-| Widget UI       | @expo/ui (SwiftUI)      | ~57.0.14        |
-| Logging         | Pino                    | 9.14.0          |
-| Lint + Format   | Biome                   | 2.5.11          |
+| Widgets         | expo-widgets            | ~57.0.19        |
+| Widget UI       | @expo/ui (SwiftUI)      | ~57.0.18        |
+| Colour picker   | reanimated-color-picker | 5.1.3           |
+| Logging         | Pino                    | 10.3.1 (dev)    |
+| Testing         | Jest                    | 30.5.1          |
+| Lint + Format   | Biome                   | 2.5.13          |
 | Package Manager | Yarn                    | 1.x             |
+
+### Deliberately ahead of Expo's pins
+
+**Never run `npx expo install --fix`.** It reports against
+`expo/bundledNativeModules.json`, which pins what SDK 57 shipped with, and would silently
+roll back five packages this project moved forward on purpose:
+
+| Package | Installed | `--fix` would install |
+| --- | --- | --- |
+| `react-native-reanimated` | 4.6.0 | 4.5.1 |
+| `react-native-worklets` | 0.12.2 | 0.10.1 |
+| `jest` | 30.5.1 | ~29.7.0 |
+| `@types/jest` | 30.0.0 | 29.5.14 |
+| `typescript` | 7.0.2 | ~6.0.3 |
+
+`npx expo install --check` is safe and reports the same five. Name every package
+explicitly when upgrading. `@types/node` 26.4.0 is also ahead of its `latest` dist-tag on
+purpose, because that tag tracks the Node LTS line.
 
 ## 3. Repo Map & Entry Points
 
