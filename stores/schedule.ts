@@ -209,14 +209,16 @@ export const extraDisplayDateAtom = createDisplayDateAtom(ScheduleType.Extra);
 // --- Actions ---
 
 /**
- * Cheap signature identifying a sequence's content: same length plus same
- * first and last prayer instants means the same canonical day data (used by
- * setSequence to skip identical writes)
+ * Signature identifying a sequence's content, used by setSequence to skip identical writes.
+ *
+ * Every instant, not just the ends: a corrected time on any prayer between them was
+ * invisible to a length-plus-endpoints signature, so the store went on serving the stale
+ * sequence until something else happened to rebuild it. Joining ~18 numbers is still far
+ * cheaper than the row re-render pass the skip exists to avoid, and length is implied by
+ * the join, so a Friday gaining Istijaba still differs.
  */
 const sequenceSignature = (sequence: PrayerSequence): string =>
-  `${sequence.prayers.length}|${sequence.prayers[0]?.datetime.getTime() ?? 0}|${
-    sequence.prayers[sequence.prayers.length - 1]?.datetime.getTime() ?? 0
-  }`;
+  sequence.prayers.map((prayer) => prayer.datetime.getTime()).join('|');
 
 /**
  * Sets the prayer sequence for a schedule type
