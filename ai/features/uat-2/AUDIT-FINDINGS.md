@@ -484,9 +484,43 @@ session-dedup set that `createReminderAndroidChannel` already uses.
 
 ## 6. The error screen's only button deletes the prayer cache
 
-**FIXED in 1.25.29** (`fix/audit-6-error-screen-wipe`). `handleRefresh` reloads and nothing
-else. The wipe is gone, and the reload is wrapped so a failed reload logs instead of producing
-an unhandled rejection.
+**OWNER RULING, 2026-09-12: the wipe stays. This finding is WITHDRAWN as a defect.**
+
+*"IT WAS FINE BEFORE. ONE BUTTON. REFRESH. DOES THE RESET. DONT CARE IF ITS DESTRUCTIVE. IT
+DOESNT DELETE PREFERENCES."*
+
+1.25.29 removed the wipe and 1.25.33 puts it back, with the screen's markup and styles
+byte-identical to where the session found them. The owner's reasoning stands on inspection:
+what the button deletes is the downloaded timetable, the fetched-year markers and the
+notification bookkeeping, all of which the app rebuilds — `forceNotificationReschedule()` runs
+inside the same call, and the sweep's `records.length === 0 && osIdentifiers.length > 0` guard
+means dropping the records cannot mass-cancel anything. Every `preference_` key survives: each
+prayer's alert type, every reminder and interval, the athan choice, and the display toggles.
+
+**The owner's second point closes the objection rather than trading against it.** *"When that
+breaking happens, we expect the user to have a connection, otherwise it can't break through."*
+That is correct for the reach path that existed before this session. `sync()` rejecting is
+almost always a failed fetch, and recovering from it needs the network whether or not the cache
+was wiped: on the next launch the same fetch is attempted and fails the same way. The cached
+timetable is not being displayed while the user sits on this screen, so losing it costs nothing
+they currently have.
+
+The residual is narrow and worth naming precisely: a **non-network** throw reached **offline**,
+where reloading alone would have recovered and a wipe makes it permanent. That path only exists
+from this session onwards, because finding 7 added an `ErrorBoundary` that routes render throws
+here. Finding 8 is what shrinks it, by validating the response so unreadable data is never
+cached in the first place. Worth re-checking once finding 8 lands; not worth a second button.
+
+**What survives from the finding**, and it is small: the call now goes through
+`clearUpgradeCache` rather than the inline `clearAllExcept(['app_installed_version',
+'preference_'])`. Same three things deleted, but the inline list also dropped
+`cache_schema_version` and `prayer_max_english_width_`, and losing the widths reflows the
+prayer list on the next launch — a visible regression the screen has no reason to cause
+(ISSUES #22, #16). The reload also gained a try/catch, since `handleRefresh` was async with
+none.
+
+**Superseded text from 1.25.29 follows, kept because the trace is still the reason the
+`clearUpgradeCache` routing matters.**
 
 This is one of the three findings in this document that is **live in production 1.5.2**, and
 it is the one whose failure mode is worst: the screen is reached from a failed fetch, so the
