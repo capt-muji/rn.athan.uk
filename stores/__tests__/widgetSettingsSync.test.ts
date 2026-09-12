@@ -19,7 +19,7 @@ jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: true } }));
 import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
-import { createInstant, formatDateShort, formatHijriDateLong } from '@/shared/time';
+import { createInstant, formatDateLong, formatDateShort, formatHijriDateLong } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 import * as Database from '@/stores/database';
@@ -41,6 +41,15 @@ import {
 // TEST HELPERS
 // =============================================================================
 
+/**
+ * A London midsummer day. Isha at 01:05 is stored under the day it belongs to
+ * and lands on the NEXT calendar day, so every entry in the Magrib->Isha
+ * segment has a `belongsToDate` one day behind the calendar date of its own
+ * countdown target. That divergence is the whole point of the fixture: with a
+ * pre-midnight Isha the two dates coincide and no assertion here can tell the
+ * contract (belongsToDate) from the most likely way it regresses (the
+ * calendar date of nextEpochMs).
+ */
 const makeDayData = (date: string): ISingleApiResponseTransformed => ({
   date,
   fajr: '03:30',
@@ -48,11 +57,24 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
   dhuhr: '13:10',
   asr: '17:45',
   magrib: '21:15',
-  isha: '22:45',
+  isha: '01:05',
   suhoor: '05:55',
   duha: '08:10',
   istijaba: '16:00',
 });
+
+/**
+ * 23:30:30 London on 21 June — inside the Magrib->Isha segment, so the
+ * countdown target is Isha at 01:05 on the 22nd, which belongs to the 21st.
+ * Seconds are :30 for the reason the beforeEach notes.
+ */
+const NIGHT_INSTANT = new Date('2026-06-21T22:30:30.000Z');
+const NIGHT_BELONGS_TO = '2026-06-21';
+const NIGHT_TARGET_CALENDAR_DATE = '2026-06-22';
+
+/** 14:00:30 London the same day: the target is Asr, whose two dates agree. */
+const AFTERNOON_INSTANT = new Date('2026-06-21T13:00:30.000Z');
+const AFTERNOON_BELONGS_TO = '2026-06-21';
 
 /** Seeds yesterday/today/tomorrow so the builder always finds upcoming prayers */
 const seedPrayerCache = () => {
@@ -98,13 +120,17 @@ const resetWidgetMocks = () => {
 describe('initWidgetSettingsSync', () => {
   beforeEach(() => {
     jest.useFakeTimers();
-    // Pin the fake clock to :30 of the current minute. A push arms the
+    // Pinned to a fixed instant at :30 of the minute. A push arms the
     // label-flip timer (fires at the countdown target's next minute flip);
     // when the wall-clock anchor lands inside the final ~750ms of a minute,
     // that timer sits inside the test's 1s advance and fires a spurious
     // extra push (the G.7 flake). At :30 the flip is ~30s away — outside
-    // every advance in this suite.
-    jest.setSystemTime(Math.floor(Date.now() / 60000) * 60000 + 30_000);
+    // every advance in this suite. The DATE is pinned too, not derived from
+    // the real clock: these tests assert the countdown target's Islamic day,
+    // which only differs from its calendar day inside the night segment, so a
+    // run-time-of-day-dependent anchor would check the interesting case a few
+    // hours out of every twenty-four and pass vacuously the rest.
+    jest.setSystemTime(NIGHT_INSTANT);
     (PrayerWidget.updateTimeline as jest.Mock).mockClear();
     (PrayerLockWidget.updateTimeline as jest.Mock).mockClear();
     seedPrayerCache();
@@ -124,11 +150,10 @@ describe('initWidgetSettingsSync', () => {
 
     expect(widgetPush()).toHaveLength(1);
     expect(lockPush()).toHaveLength(1);
-    // Date label rendered in Hijri for the next prayer's day (label parity
-    // itself is covered by the widgetTimeline suites)
+    // Date label rendered in Hijri for the next prayer's ISLAMIC day (label
+    // parity itself is covered by the widgetTimeline suites)
     const first = widgetPush()[0][0][0];
-    const nextDate = formatDateShort(new Date(first.props.nextEpochMs));
-    expect(first.props.dateLabel).toBe(formatHijriDateLong(nextDate));
+    expect(first.props.dateLabel).toBe(formatHijriDateLong(NIGHT_BELONGS_TO));
   });
 
   it('collapses a burst of setting changes into a single push', async () => {
@@ -145,8 +170,7 @@ describe('initWidgetSettingsSync', () => {
     expect(lockPush()).toHaveLength(1);
     // The debounced push carries the FINAL state of the changed setting
     const first = widgetPush()[0][0][0];
-    const nextDate = formatDateShort(new Date(first.props.nextEpochMs));
-    expect(first.props.dateLabel).toBe(formatHijriDateLong(nextDate));
+    expect(first.props.dateLabel).toBe(formatHijriDateLong(NIGHT_BELONGS_TO));
   });
 
   it('ignores changes to settings the widget does not show', async () => {
@@ -189,6 +213,66 @@ describe('initWidgetSettingsSync', () => {
     await jest.advanceTimersByTimeAsync(1000);
 
     expect(widgetPush()).toHaveLength(2);
+  });
+});
+
+// =============================================================================
+// DATE LABEL CONTRACT
+// =============================================================================
+
+/**
+ * `dateLabel` names the countdown target's belongsToDate — its Islamic day —
+ * not the calendar date the target's instant falls on. The two agree for most
+ * of the day, which is how an assertion against the calendar date stood here
+ * unchallenged; it would also have gone on passing if the builder swapped to
+ * the calendar date, which is the single most likely way the Islamic-day rule
+ * regresses.
+ *
+ * Both ends of the range are pinned on purpose. The night case alone would be
+ * satisfied by a builder that always stepped one day back, and the afternoon
+ * case alone cannot tell the two rules apart at all.
+ */
+describe('widget date label', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+    resetWidgetMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
+  /** Pushes from `instant` with the Hijri preference off, and returns the
+   *  head entry — the one the widget is showing at the push. */
+  const headEntryAt = async (instant: Date) => {
+    jest.setSystemTime(instant);
+    seedPrayerCache();
+    getDefaultStore().set(hijriDateEnabledAtom, false);
+
+    await refreshPrayerWidgets();
+
+    return widgetPush()[0][0][0];
+  };
+
+  it('names the Islamic day, not the calendar day, when the target crosses midnight', async () => {
+    const head = await headEntryAt(NIGHT_INSTANT);
+
+    // The target genuinely is on the next calendar day. Asserted, so the case
+    // cannot quietly stop crossing and leave the check below vacuous.
+    expect(formatDateShort(new Date(head.props.nextEpochMs))).toBe(NIGHT_TARGET_CALENDAR_DATE);
+
+    expect(head.props.dateLabel).toBe(formatDateLong(NIGHT_BELONGS_TO));
+    expect(head.props.dateLabel).not.toBe(formatDateLong(NIGHT_TARGET_CALENDAR_DATE));
+  });
+
+  it('names the same day when the target does not cross midnight', async () => {
+    const head = await headEntryAt(AFTERNOON_INSTANT);
+
+    // Here the two dates agree, which is what stops a blanket day-shift from
+    // passing as a fix for the case above.
+    expect(formatDateShort(new Date(head.props.nextEpochMs))).toBe(AFTERNOON_BELONGS_TO);
+    expect(head.props.dateLabel).toBe(formatDateLong(AFTERNOON_BELONGS_TO));
   });
 });
 
