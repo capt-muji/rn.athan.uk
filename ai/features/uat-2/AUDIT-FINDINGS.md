@@ -312,23 +312,35 @@ introduced to stop, and `stores/notifications.ts:217-221` already says so. For a
 opened the app since January 2026 it cannot be undone, and should not be: they have been shown
 the shifted state for months and may have adjusted it.
 
-**Which makes the population narrower than the finding stated.** 1.5.2 only reinterprets the
-stored values, it never rewrites them, so authorship survives. The legacy branch therefore only
-fires for an install whose last run predates 2026-01-17 **and** whose next run is on 1.5.3 or
-later, skipping production 1.5.2 entirely. Anyone who opens 1.5.2 in between gets
-`app_installed_version` stamped to 1.5.2, and from then on the modern array is the right answer
-— not because it matches the original authorship, but because it matches what the app last
-showed them.
+**The population, corrected twice.** An earlier draft of this section claimed the branch was
+narrower still, because users would pass through 1.5.2 and be stamped by it. That was wrong,
+and the error is worth keeping visible because it is easy to repeat.
+
+`app_installed_version` moves only when the app is **opened**: `setStoredVersion` runs inside
+`handleAppUpgrade`, which `sync()` calls on launch (`b9985ea:stores/version.ts:156` for the
+production tree). An auto-update swaps the binary silently and never runs it. So a user who set
+extras alerts in 2025 and has not opened the app since still holds `app_installed_version` of
+1.0.x today, however many times the store has updated their binary in the background.
+
+The branch therefore fires for **anyone who has not opened the app since 2026-01-17 and whose
+next open lands on a build carrying the migration**. The app has been on the store since
+November 2024, so that is a real population rather than a rounding error.
+
+What stays true from the earlier draft: for anyone who *has* opened 1.5.2, the branch is dead
+code. 1.5.2 already showed them the shifted extras and stamped 1.5.2, so the modern array is
+the right answer for them — not because it matches original authorship, but because it matches
+what the app last showed them. Dead code for active users, load-bearing for dormant ones.
 
 That is the honest framing of what the discriminator does: it preserves **the last
 interpretation the user was shown**, not the original intent. Which is the correct goal.
 
-**Kept anyway, and the reasoning is cost rather than reach.** The branch is a dozen lines of
-code behind thirty of comment, it costs one version comparison for everyone else, and it is
-inert unless the stored version is below 1.0.27. The alternative that is genuinely simpler is
-deleting the old extras keys instead of mapping them, three lines, which trades an alarm firing
-on a prayer the user did not choose for an alarm they did choose silently switching off. For an
-alarm clock neither of those is free, and this one is already written and tested.
+**Kept.** The branch is a dozen lines of code behind thirty of comment, costs one version
+comparison for everyone else, and is inert unless the stored version is below 1.0.27. What it
+prevents is an athan firing at Islamic Midnight for a user who asked for one at Last Third,
+which is the failure class this app can least afford. The alternative that is genuinely
+simpler is deleting the old extras keys instead of mapping them, three lines, which trades that
+for an alarm the user did choose silently switching off. For an alarm clock neither of those is
+free.
 
 **The larger prize in this commit is not the legacy array.** It is resolving the destination
 atom by name rather than by index, which makes the migration correct under *any* future
