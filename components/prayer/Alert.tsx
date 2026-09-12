@@ -16,7 +16,7 @@ import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
-import { getPrayerAlertAtom } from '@/stores/notifications';
+import { canonicalPrayerIndex, getPrayerAlertAtom } from '@/stores/notifications';
 import { showAlertSheet } from '@/stores/ui';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
@@ -49,8 +49,17 @@ export default function Alert({ type, index }: Props) {
 
   const [isPressed, setIsPressed] = useState(false);
 
+  // `index` is CHRONOLOGICAL — List hands each row its position in the
+  // datetime-sorted day — while the alert atoms and the scheduler are both
+  // CANONICAL, keyed off EXTRAS_ENGLISH/PRAYERS_ENGLISH order. Resolve by name
+  // so the bell, the sheet it opens and the scheduler cannot drift apart if the
+  // two orders ever stop coinciding. usePrayer has to run before the atom read
+  // for that; the hook order stays unconditional, which is all React requires.
+  const Prayer = usePrayer(type, index);
+  const alertIndex = canonicalPrayerIndex(type, Prayer.english, index);
+
   // Atoms
-  const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
+  const alertAtom = useAtomValue(getPrayerAlertAtom(type, alertIndex));
 
   // Glyph shown this frame — lags the atom through the change-bounce so the
   // swap lands inside the animation (trough for exit-style candidates), not
@@ -64,7 +73,6 @@ export default function Alert({ type, index }: Props) {
   // =============================================================================
 
   const Schedule = useSchedule(type);
-  const Prayer = usePrayer(type, index);
   const { ensurePermissions } = useNotification();
   const { AnimScale, AnimSwap } = useAlertAnimations();
   const playSwapBounce = AnimSwap.play;
@@ -125,14 +133,15 @@ export default function Alert({ type, index }: Props) {
       await ensurePermissions();
     }
 
-    // Open bottom sheet
+    // Open bottom sheet. The sheet seeds and commits through five store calls
+    // keyed off this index, so handing it the canonical one fixes all five here.
     showAlertSheet({
       type,
-      index,
+      index: alertIndex,
       prayerEnglish: Prayer.english,
       prayerArabic: Prayer.arabic,
     });
-  }, [type, index, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions]);
+  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions]);
 
   // =============================================================================
   // RENDER
