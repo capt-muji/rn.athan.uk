@@ -2142,6 +2142,96 @@ CONFIRMED.
 
 ---
 
+# Research: Android notification channel limits, and why the app cannot overwrite a channel
+
+Asked by the owner in session 5: the app can reach 99 channels if a user exercises every
+sound, so what is the limit, does it differ per Android version and OEM, and would overwriting
+one channel be better than creating many? Answered from AOSP source rather than from memory or
+blog posts, because the blog answers disagree with each other. Read via WebSearch/WebFetch and
+`curl` of the AOSP mirror, `tinyfish` and `docs-mcp-server` being opencode-only.
+
+**Owner ruling, 2026-09-12, on reading this: no change.** *"If the channel doesn't need to be
+overridden, if the limit is very high, then there's no problem at all, we shouldn't bother
+overriding it, because the current solution already works, so we don't want to break something
+that already works."* Recorded here so it is not re-litigated.
+
+## What the app can reach
+
+32 athan sounds, 11 prayers × 6 reminder intervals = 66 reminder channels, plus the one fixed
+`extras_at_time`. **99 is the ceiling**, and only for a user who has at some point selected
+every athan and armed every prayer at every interval. Channels are never deleted, so the count
+is cumulative over the install's life rather than a snapshot of current settings.
+
+## The limit, by Android version
+
+`services/core/java/com/android/server/notification/PreferencesHelper.java`, except Android 9
+where channel storage still lived in `RankingHelper.java`:
+
+| Android | Constant | Limit |
+| --- | --- | --- |
+| 9 (Pie) | no such constant, and no count guard anywhere in `RankingHelper.java` | none |
+| 10 | no such constant, and no count guard | none |
+| 11, 12, 13 | `NOTIFICATION_CHANNEL_COUNT_LIMIT` | **50,000** |
+| 14, 15, master | `NOTIFICATION_CHANNEL_COUNT_LIMIT` | **5,000** |
+
+Groups are capped separately at `NOTIFICATION_CHANNEL_GROUP_COUNT_LIMIT = 6000`; this app
+creates no groups. Over the limit, `createNotificationChannel` throws
+`IllegalStateException("Limit exceed; cannot create more channels")` — it is a crash, not a
+silent drop, so it could never hide. The restore path instead logs
+`Slog.w(TAG, "Skipping further channels for " + r.pkg)` and drops the excess.
+
+So the strictest limit any of the named test devices can impose is 5,000, on the Galaxy S23
+once it is on Android 14 or 15. **99 of 5,000 is 2%.** The OnePlus 3T, 5T and 8 are on 9, 10
+and 13 respectively, which are unlimited, unlimited and 50,000. This is not a per-OEM number:
+it is an AOSP framework constant, and OxygenOS and One UI would have to patch the framework to
+change it, which neither is known to do. There is no headroom problem at any version.
+
+The only real cost of many channels is cosmetic: they all appear in the app's notification
+settings screen, and Google's own docs note that *"the notification settings screen displays
+the number of deleted channels, as a spam prevention mechanism."*
+
+## Why overwriting a channel is not an option
+
+This is the part worth keeping, because it explains the `_v2` suffix and the bug the owner
+remembers hitting. It is Android behaviour, not an expo-notifications bug.
+
+**1. The sound is immutable after creation.** `NotificationChannel.setSound`'s own javadoc:
+*"Only modifiable before the channel is submitted to
+`NotificationManager#createNotificationChannel(NotificationChannel)`."* The same sentence is on
+`setImportance`.
+
+**2. Re-creating an existing channel changes almost nothing.** `PreferencesHelper`'s
+existing-channel branch updates only the name, the description, `blockable`, the group if the
+channel had none, the importance **downward only and only while `getUserLockedFields() == 0`**,
+and `bypassDnd` for apps with DND access. It never touches the sound. Google's docs put the
+same thing plainly: *"Recreating an existing notification channel with its original values
+performs no operation."*
+
+**3. Delete-then-recreate does not escape it, and this is the trap.**
+`deleteNotificationChannelLocked` does not remove the record — it sets a tombstone
+(`setDeleted(true)` plus `setDeletedTimeMs`). A later create with the same id lands on
+`if (existing.isDeleted()) { existing.setDeleted(false); … }`, which **resurrects the old
+record with its old sound**. Tombstones are kept for
+`NOTIFICATION_CHANNEL_DELETION_RETENTION_DAYS = 30` and are only dropped when the policy XML is
+re-parsed. So "delete the channel and make a new one with the new sound" silently keeps the old
+sound for up to 30 days, and then appears to start working — which is exactly the shape of an
+intermittent bug that resists testing. **One channel id per sound is not a workaround. It is
+the only mechanism Android provides.**
+
+## Checked and cleared while here
+
+`setSound`'s javadoc warns against `SCHEME_ANDROID_RESOURCE` URIs because *"resource ids can
+change on app upgrade"*, and this app's channels all carry
+`android.resource://com.mugtaba.athan/raw/athanN`. It is not a problem: the URIs are the
+name-based form, not the numeric-id form, and `getCanonicalizedSoundUri` in master has an
+explicit `SCHEME_ANDROID_RESOURCE` branch that resolves the resource and returns the URI
+verbatim, while `restoreSoundUri` defers to package-install time when the app is not yet
+present. Recorded as checked rather than as a finding. Tier 6 item c's warning stands
+unchanged and for a different reason: `shrinkResources` would delete the raw resources that
+`getIdentifier` looks up at runtime.
+
+---
+
 # Tier 6: hygiene, docs and tidiness
 
 Collected rather than expanded, because none of these can put a wrong time in front of a
