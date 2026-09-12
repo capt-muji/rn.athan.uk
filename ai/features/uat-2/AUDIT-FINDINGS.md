@@ -3492,9 +3492,42 @@ it means every release from here shows no modal until the stamp in `shared/whats
 to the shipping version. The alternative — re-stamping the version and the items so the modal
 speaks with current copy — is a copy decision and was not made.
 
-**Silent alerts may ring on Android.** A reviewer noticed that `atTimeAndroidChannelId` is
-`undefined` for anything that is not `AlertType.Sound`, so by finding 5's own device-verified
-mechanism a Silent alert lands on expo's fallback channel and plays the device's default tone at
-Android's default vibration. Pre-existing and **not device-verified**. If it holds it is a
-silent-alarm-class defect — a user who chose Silent for Fajr gets a ding at 4 am — and it needs
-its own channel with `sound: null`. Worth checking before anything ships.
+**~~Silent alerts may ring on Android.~~ REFUTED on the device — see finding 63 below. No change
+needed, and none should be made.**
+
+
+---
+
+## 63. REFUTED: Silent alerts do not ring, despite landing on expo's fallback channel
+
+Raised by review of 1.25.35, and it was a good hypothesis. `atTimeAndroidChannelId` returns
+`undefined` for anything that is not `AlertType.Sound`, so a Silent alert is posted with no
+channel — and finding 5 established on this very device that expo-notifications 57 substitutes
+`expo_notifications_fallback_notification_channel`, whose sound is
+`content://settings/system/notification_sound`. On Android 8 and above the channel governs
+alerting, so the reasoning predicts a user who chose Silent for Fajr getting the phone's default
+ding at 4 am. That would be a silent-alarm-class defect in the other direction.
+
+**Driven on the 3T at 1.25.91, it does not happen.** Twice, with a control:
+
+| Alert | Posted channel | Vibration | AudioTrack |
+| --- | --- | --- | --- |
+| Fajr, Silent | `expo_notifications_fallback_notification_channel` | none | none |
+| Dhuhr, Silent (fresh key) | `expo_notifications_fallback_notification_channel` | none | none |
+| Asr, **Sound** (control) | `athan_1_v2` | `[0, 250, 250, 250]` | 44100 Hz mono = `athan1.mp3` |
+
+The second run used a notification key never posted before, because Android silences a re-post of
+an existing key and that alone could have produced a false negative. The control ran in the same
+session through the same logcat capture, so "no AudioTrack" is an absence of the event rather
+than an absence of measurement. Note the posted notification carries `groupKey=silent`, which is
+expo's own marker for this path.
+
+**Do not "fix" this.** The owner's ruling on the channels is explicit — they are fragile and any
+change must be shown 1:1 before it lands. Adding a dedicated silent channel would create a new
+channel id on every install to solve a problem that does not exist, and channel ids are immutable
+once created.
+
+What is worth recording is the **side effect**: exercising a Silent alert once creates
+`expo_notifications_fallback_notification_channel` permanently, and it then shows in the app's
+notification settings alongside the athan channels. Cosmetic, not removable by the app, and
+present on the 3T from this session's testing.
