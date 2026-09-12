@@ -506,32 +506,41 @@ export const getWallSecondDelay = (): number => {
  * 2. Days are converted to hours (48 hours, not 2 days)
  * 3. Seconds visibility:
  *    - If hideSeconds=false: Always show seconds (e.g., "1h 30m 45s")
- *    - If hideSeconds=true: Show seconds ONLY in last 60 seconds (e.g., "45s")
- *    - After 60s with hideSeconds=true: Hide seconds (e.g., "1h 30m")
+ *    - If hideSeconds=true: Show seconds only at 599s or less — the final
+ *      ~10 minutes, NOT the final minute (e.g., "9m 59s", "45s")
+ *    - Above 599s with hideSeconds=true: Hide seconds ("10m", "1h 30m")
  * 4. Zero handling:
  *    - Only units with non-zero values are shown
+ *    - A zero seconds value never renders beside another unit: a whole
+ *      minute reads "1m", a whole 25 hours reads "25h"
  *    - If all units are zero: Returns "0s"
  * 5. Spacing: Units separated by single space
  *
  * Use Cases:
  * - Countdown: Use hideSeconds=true to avoid flicker in UI
  * - Precise display: Use hideSeconds=false for exact timing
- * - Last minute urgency: hideSeconds=true shows seconds in final 60s
+ * - Final-stretch urgency: hideSeconds=true shows seconds in the final 599s
  *
  * @param seconds Time in seconds (can be negative, but returns "0s")
- * @param hideSeconds If true, hides seconds when time > 60s (default: false)
- * @param forceHideSeconds If true, seconds never render at any distance —
- *   the label is hours+minutes only (widget countdown label; default: false)
+ * @param hideSeconds If true, hides seconds when time > 599s (default: false)
+ * @param forceHideSeconds If true, seconds are suppressed beside hours and
+ *   minutes at any distance — but they still render when they are the only
+ *   unit, because an empty parts list always falls back to "Ns" (default:
+ *   false). For a label that never shows seconds, use formatCountdownMinutes
+ *   below, which is what the widget actually calls.
  * @returns Formatted time string
+ *
+ * Every example below is pinned by "pins every example in the JSDoc" in
+ * shared/__tests__/time.test.ts. Change one and change both.
  *
  * @example
  * formatTime(3665) // "1h 1m 5s" (default shows seconds)
  * formatTime(3665, true) // "1h 1m" (hideSeconds in effect)
- * formatTime(45, true) // "45s" (shows seconds in last 60s)
- * formatTime(45, true, true) // "1m" (forceHideSeconds: hours+minutes only)
+ * formatTime(45, true) // "45s" (shows seconds inside the final 599s)
+ * formatTime(45, true, true) // "45s" (forceHideSeconds: seconds still render alone)
  * formatTime(0) // "0s"
  * formatTime(-100) // "0s"
- * formatTime(90000) // "25h 0s" (days converted to hours)
+ * formatTime(90000) // "25h" (days converted to hours; no trailing "0s")
  */
 export const formatTime = (seconds: number, hideSeconds = false, forceHideSeconds = false): string => {
   if (seconds < 0) return '0s';

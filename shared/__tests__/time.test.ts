@@ -89,6 +89,52 @@ describe('formatTime', () => {
       expect(formatTime(599, true)).toBe('9m 59s');
       expect(formatTime(45, true)).toBe('45s');
     });
+
+    /**
+     * The threshold the JSDoc used to state as 60s. `shared/time.ts:546` uses
+     * `seconds <= 599`, so a minute and a second still shows seconds; only past
+     * 599s do they drop. Pinned so the two cannot disagree again.
+     */
+    it('draws the hideSeconds threshold at 599s, not at 60s', () => {
+      expect(formatTime(61, true)).toBe('1m 1s');
+      expect(formatTime(120, true)).toBe('2m'); // a whole minute drops "0s" regardless
+      expect(formatTime(599, true)).toBe('9m 59s'); // last second that still shows seconds
+      expect(formatTime(600, true)).toBe('10m');
+      expect(formatTime(601, true)).toBe('10m');
+    });
+  });
+
+  /**
+   * Pins every @example in formatTime's JSDoc, verbatim and in order, so the
+   * block cannot drift from the implementation again. Three of these were wrong
+   * before Tier 6 item a: the 599s threshold was documented as 60s,
+   * `formatTime(90000)` was documented as "25h 0s", and `formatTime(45, true,
+   * true)` was documented as "1m". If you change an expectation here, change the
+   * matching line in shared/time.ts.
+   */
+  describe('JSDoc contract', () => {
+    it('pins every example in the JSDoc', () => {
+      expect(formatTime(3665)).toBe('1h 1m 5s');
+      expect(formatTime(3665, true)).toBe('1h 1m');
+      expect(formatTime(45, true)).toBe('45s');
+      expect(formatTime(45, true, true)).toBe('45s');
+      expect(formatTime(0)).toBe('0s');
+      expect(formatTime(-100)).toBe('0s');
+      expect(formatTime(90000)).toBe('25h');
+    });
+
+    /**
+     * forceHideSeconds suppresses seconds only BESIDE another unit. Under a
+     * minute the parts list is empty and `shared/time.ts:552` falls back to
+     * "Ns", so seconds still render — which is why the flag cannot stand in for
+     * formatCountdownMinutes. No caller passes it today.
+     */
+    it('lets forceHideSeconds suppress seconds only beside another unit', () => {
+      expect(formatTime(3665, true, true)).toBe('1h 1m');
+      expect(formatTime(599, true, true)).toBe('9m');
+      expect(formatTime(45, false, true)).toBe('45s');
+      expect(formatTime(0, true, true)).toBe('0s');
+    });
   });
 });
 
