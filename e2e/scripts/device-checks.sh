@@ -59,9 +59,30 @@ PID=$(a shell pidof "$PKG" | tr -d '\r ')
 # --- permissions ------------------------------------------------------------
 print -r -- "== permissions =="
 a shell dumpsys package "$PKG" > "$OUT/package.txt" 2>/dev/null
-for perm in POST_NOTIFICATIONS RECEIVE_BOOT_COMPLETED WAKE_LOCK; do
-  if grep -q "$perm" "$OUT/package.txt"; then pass "$perm declared"; else note "$perm not declared"; fi
+# dumpsys lists what the manifest asked for in one block and what was actually
+# granted in another, as `<permission>: granted=<bool>`. Reading only the first
+# says nothing about whether an alert can fire.
+# Anchored at the end of the name: permission names are uppercase and underscores,
+# so anything else means the name stopped there and a longer one is not a match.
+declared() { grep -qE "android\.permission\.$1([^A-Z0-9_]|$)" "$OUT/package.txt"; }
+granted() { grep -q "android.permission.$1: granted=true" "$OUT/package.txt"; }
+for perm in RECEIVE_BOOT_COMPLETED WAKE_LOCK; do
+  if granted "$perm"; then pass "$perm granted"
+  elif declared "$perm"; then fail "$perm declared but NOT granted"
+  else fail "$perm not declared"; fi
 done
+# POST_NOTIFICATIONS only becomes a runtime decision on Android 13. Below that it
+# is declared and never granted, and notifications are on unless the user turns
+# them off in settings, which this dump does not express.
+if granted POST_NOTIFICATIONS; then
+  pass "POST_NOTIFICATIONS granted"
+elif ! declared POST_NOTIFICATIONS; then
+  fail "POST_NOTIFICATIONS not declared — nothing can be posted on Android 13 and above"
+elif (( SDK >= 33 )); then
+  fail "POST_NOTIFICATIONS declared but DENIED — no prayer alert can fire"
+else
+  pass "POST_NOTIFICATIONS declared (not a runtime grant below SDK 33, this device is $SDK)"
+fi
 if (( SDK >= 31 )); then
   # Only from Android 12 is exact-alarm a runtime decision worth checking
   STATE=$(a shell cmd appops get "$PKG" SCHEDULE_EXACT_ALARM 2>/dev/null | tr -d '\r' | head -1)

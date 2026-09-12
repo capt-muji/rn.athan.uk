@@ -1192,6 +1192,13 @@ CONFIRMED. Every `(SF latency)` line in the baseline needs re-verifying after th
 
 ## 29. `device-checks.sh` calls a permission present without reading the grant
 
+**FIXED in 1.25.12** (`fix/audit-29-permission-grant`). The script now reads `granted=true`.
+`RECEIVE_BOOT_COMPLETED` and `WAKE_LOCK` are install-time permissions, so declared-but-not-
+granted is a FAIL and absent is a FAIL. `POST_NOTIFICATIONS` is SDK-aware: granted is a PASS,
+absent is a FAIL, and declared-but-denied is a FAIL from SDK 33 up, where it is a runtime
+decision, against a PASS below it, where it is not one. All four branches proven against the
+live 3T dump and edited copies of it; the live run's verdict is unchanged.
+
 `e2e/scripts/device-checks.sh:61-63`. The string `granted=` appears nowhere in the script.
 
 On the live device, `dumpsys package com.mugtaba.athan` lists requested permissions in one
