@@ -2338,6 +2338,37 @@ remaining time is largest and the error is proportionally invisible.
 
 CONFIRMED.
 
+### CLOSED in session 5, 1.26.10, `fix/audit-38-backward-anchored-grid`
+
+**First marked closed at 1.25.87 and it was not.** That commit changed only `app.json` and
+`package.json` — two version-bump lines — and carried a verbatim copy of 1.25.86's message. The
+branch had been cut from finding 37's work and never received its own change, so the cherry-pick
+produced a no-op. Caught by a verification pass over this document's own ledger. Recorded here
+because a false closure is worse than an open finding: the ledger said done and nobody would have
+looked again.
+
+The grid now walks **backwards** from the boundary cutoff instead of forwards from the segment
+start. The remainder is unavoidable — a segment whose length is not a whole number of steps has
+one oversized gap no matter how the steps are placed — so the fix is about *where* it sits.
+Measured on the same fixture, the absolute error is identical and the consequence is not:
+
+| | Worst over-read | What the widget showed |
+| --- | ---: | --- |
+| forwards (as shipped) | 8 min | **"14m" with 6m left** — 133% of the truth |
+| backwards | 8 min | "2h 29m" with 2h21m left — 5.7% of the truth |
+
+**The test that should have caught this was fixture-blind, in exactly the shape this session has
+hit three times before.** `OCTOBER_TIMES` is 05:30, 07:10, 12:40, 15:20, 17:50, 19:40 — every
+segment is a whole number of five-minute steps, so the remainder is zero everywhere and where it
+would land is structurally unobservable. A `RAGGED_TIMES` fixture with deliberately
+non-dividing gaps now runs through the same sweep.
+
+The tolerance was **tightened, not loosened**, which matters given the temptation here. A single
+absolute cap cannot express the finding, because the absolute error is the same either way. The
+sweep now asserts one step within the final hour — where an over-read actually costs a user a
+prayer — and never as much as two steps anywhere. On the unfixed grid the near-boundary
+assertion fails with "over-reads by 8m within the final hour: widget 14m, truth 6m".
+
 ## 39. One native throw permanently kills the widget's per-minute re-push chain
 
 `stores/widget.ts:241-247` and `:270`. `scheduleLabelFlipPush(...)` is the only re-arm site
@@ -3440,7 +3471,8 @@ resolution and the device verification were done here. Individual findings above
 | 26 | 1.25.44, 61 | The 99-file audio matrix is closed across every surface |
 | 27 | 1.25.81 | A corrected time replaces the stale copy on merge |
 | 28 | 1.25.92 | The frame audit returns a failure instead of only printing one |
-| 37, 38 | 1.25.86, 87 | The widget countdown stops freezing and over-reading |
+| 37 | 1.25.86 | The widget countdown stops freezing beyond 24 hours |
+| 38 | 1.26.10 | The step grid anchors backwards, so the remainder lands where it is invisible. **First marked closed at 1.25.87 in error — that commit was empty.** |
 | 44 | 1.25.49, 53 | Magrib crosses midnight, and Istijaba follows it |
 | 46 | 1.25.48 | The timezone oracles key off `PRAYER_TIMEZONE` |
 | 48 | 1.25.80 | The extras alert resolves its preference by name, not row order |

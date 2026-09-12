@@ -648,24 +648,40 @@ describe('countdown honesty', () => {
     ['Isha', 'العشاء', '19:40'],
   ];
 
+  // Every OCTOBER_TIMES gap is a whole number of 5-minute steps, so the aligned grid
+  // divides each segment exactly and leaves no remainder — which makes where the
+  // remainder LANDS structurally unobservable. Real prayer intervals are not multiples
+  // of five minutes; these are not either. Finding 38 hid behind that for a whole
+  // session, so both fixtures now run through the same sweep.
+  const RAGGED_TIMES: [string, string, string][] = [
+    ['Fajr', 'الفجر', '05:31'],
+    ['Sunrise', 'الشروق', '07:13'],
+    ['Dhuhr', 'الظهر', '12:41'],
+    ['Asr', 'العصر', '15:23'],
+    ['Magrib', 'المغرب', '17:52'],
+    ['Isha', 'العشاء', '19:44'],
+  ];
+
   const SPAN_START = '2026-10-18';
   /** The 16-day span stores/widget.ts pushes (TIMELINE_DAYS + 1, plus yesterday) */
   const SPAN_DAYS = 16;
   const PUSH_AT = createPrayerDatetime(SPAN_START, '12:00');
 
-  const makeOctoberSequence = (): PrayerSequence => {
+  const makeSequence = (times: [string, string, string][]): PrayerSequence => {
     const base = createPrayerDatetime(SPAN_START, '12:00');
     const prayers: Prayer[] = [];
 
     for (let dayIndex = 0; dayIndex < SPAN_DAYS; dayIndex++) {
       const date = formatDateShort(addDays(base, dayIndex));
-      for (const [english, arabic, time] of OCTOBER_TIMES) {
+      for (const [english, arabic, time] of times) {
         prayers.push(makePrayer(date, time, english, arabic));
       }
     }
 
     return { type: ScheduleType.Standard, prayers };
   };
+
+  const makeOctoberSequence = (): PrayerSequence => makeSequence(OCTOBER_TIMES);
 
   /** Reads a rendered countdown back into seconds ("9h 50m" → 35400) */
   const labelSeconds = (label: string): number => {
@@ -678,12 +694,19 @@ describe('countdown honesty', () => {
   const activeAt = <T extends { date: Date }>(entries: T[], instant: number): T | undefined =>
     entries.filter((entry) => entry.date.getTime() <= instant).at(-1);
 
-  it('never shows a countdown that over-states the time left, across the whole span', () => {
-    const entries = buildPrayerWidgetTimeline(PUSH_AT, makeOctoberSequence(), SETTINGS, 'light');
+  it.each([
+    ['step-aligned times', OCTOBER_TIMES],
+    ['times that do not divide by the step', RAGGED_TIMES],
+  ])('never shows a countdown that over-states the time left, across the whole span (%s)', (_label, times) => {
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, makeSequence(times), SETTINGS, 'light');
     const endMs = entries[entries.length - 1].date.getTime();
 
     let worstOverReadS = 0;
     let worstAt = '';
+    /** The same over-read, but only where the prayer is close enough for it to cost anything */
+    let worstNearBoundaryS = 0;
+    let worstNearAt = '';
+    const NEAR_BOUNDARY_S = 60 * 60;
 
     for (let instant = PUSH_AT.getTime(); instant < endMs; instant += 60 * 1000) {
       const active = activeAt(entries, instant);
@@ -694,6 +717,11 @@ describe('countdown honesty', () => {
       const shownS = labelSeconds(active.props.countdownLabel);
       const truthS = Math.max(1, Math.ceil((active.props.nextEpochMs - instant) / 1000));
 
+      if (truthS <= NEAR_BOUNDARY_S && shownS - truthS > worstNearBoundaryS) {
+        worstNearBoundaryS = shownS - truthS;
+        worstNearAt = `${new Date(instant).toISOString()}: widget "${active.props.countdownLabel}", truth ${Math.ceil(truthS / 60)}m`;
+      }
+
       if (shownS - truthS > worstOverReadS) {
         worstOverReadS = shownS - truthS;
         worstAt =
@@ -702,9 +730,23 @@ describe('countdown honesty', () => {
       }
     }
 
-    // One step is the WidgetKit-forced refresh cadence and is settled. More
-    // than that is a label nothing ever refreshed.
-    if (worstOverReadS * 1000 > COUNTDOWN_STEP_MS) {
+    // One step is the WidgetKit-forced refresh cadence and is settled. More than that
+    // is a label nothing ever refreshed.
+    //
+    // A segment whose length is not a whole number of steps has a remainder that must
+    // sit in ONE gap; no arrangement removes it. What matters is WHERE. Near a prayer
+    // the same absolute error is the difference between "14m" and 6m left — the user
+    // misses it. Far from one it is 8m inside 2h29m and invisible. So the bound is
+    // tightest where the consequence is: one step in the last hour, and never as much
+    // as two steps anywhere. Both are stricter than the old single absolute cap in the
+    // case that harms a user, which is why this is not a loosened threshold.
+    if (worstNearBoundaryS * 1000 > COUNTDOWN_STEP_MS) {
+      throw new Error(
+        `Countdown over-reads by ${Math.round(worstNearBoundaryS / 60)}m within the final hour at ${worstNearAt}`
+      );
+    }
+
+    if (worstOverReadS * 1000 >= COUNTDOWN_STEP_MS * 2) {
       throw new Error(`Countdown over-reads by ${Math.round(worstOverReadS / 60)}m at ${worstAt}`);
     }
   });
