@@ -96,6 +96,11 @@ const SETTINGS_PUSH_DEBOUNCE_MS = 1000;
  *  cleanly on the new minute rather than racing the boundary instant. */
 const LABEL_FLIP_EPSILON_MS = 250;
 
+/** Re-arm delay for a push that yielded no countdown target to flip on (a
+ *  native throw, an empty build, or a boundary crossed mid-push). A minute
+ *  matches the healthy cadence, so a recovered push resumes in step. */
+const FLIP_RETRY_MS = 60_000;
+
 let settingsPushTimer: ReturnType<typeof setTimeout> | null = null;
 let settingsSyncInitialized = false;
 
@@ -185,16 +190,22 @@ const msUntilMinuteFlip = (targetEpochMs: number): number | null => {
  * of every true minute change on its own countdown. Re-arms from fresh data
  * on every push; a suspended (backgrounded) timer coalesces into one fire on
  * foreground, which doubles as a refresh when the user returns.
+ *
+ * ALWAYS leaves a timer behind. A timer that has already fired has cleared
+ * its own slot, and this is the only site that arms a new one, so any path
+ * that declined to re-arm would end the chain for the life of the process —
+ * the widget would then freeze at whatever minute the failure happened on,
+ * with nothing to signal it. `null` (nothing usable was built) and a target
+ * already in the past both fall back to a plain retry.
  */
-const scheduleLabelFlipPush = (schedule: ScheduleType, targetEpochMs: number): void => {
+const scheduleLabelFlipPush = (schedule: ScheduleType, targetEpochMs: number | null): void => {
   const existing = flipPushTimers[schedule];
   if (existing !== null) {
     clearTimeout(existing);
     flipPushTimers[schedule] = null;
   }
 
-  const msUntilFlip = msUntilMinuteFlip(targetEpochMs);
-  if (msUntilFlip === null) return;
+  const msUntilFlip = (targetEpochMs === null ? null : msUntilMinuteFlip(targetEpochMs)) ?? FLIP_RETRY_MS;
 
   flipPushTimers[schedule] = setTimeout(() => {
     flipPushTimers[schedule] = null;
@@ -219,6 +230,11 @@ const pushScheduleTimelines = async (
   options?: { reuseCachedSequence?: boolean }
 ): Promise<void> => {
   if (Platform.OS !== 'ios' || !FEATURE_FLAGS.widgets) return;
+
+  // Captured inside the try, consumed by the `finally` re-arm below, so every
+  // exit from here — success, native throw, or empty build — leaves the chain
+  // armed. Stays null until entries exist to flip on.
+  let flipTargetEpochMs: number | null = null;
 
   try {
     const now = TimeUtils.createInstant();
@@ -246,6 +262,11 @@ const pushScheduleTimelines = async (
       return;
     }
 
+    // Taken BEFORE the native calls: entries this good deserve the true
+    // cadence even if a push throws, so a native failure retries on the next
+    // real minute flip rather than on a generic timer.
+    flipTargetEpochMs = lightEntries[0].props.nextEpochMs;
+
     // The lazy requires register all widget layouts into the app group as a
     // side effect of module evaluation — required before updateTimeline works
     // (first iOS push pays the registration; Android never reaches here)
@@ -267,8 +288,6 @@ const pushScheduleTimelines = async (
       home.ExtrasWidgetDarkMedium.updateTimeline(darkEntries);
     }
 
-    scheduleLabelFlipPush(schedule, lightEntries[0].props.nextEpochMs);
-
     const scheduleLabel = schedule === ScheduleType.Standard ? 'Standard' : 'Extras';
     logger.info(`WIDGET: ${scheduleLabel} timeline pushed`, {
       entries: lightEntries.length,
@@ -277,6 +296,13 @@ const pushScheduleTimelines = async (
     });
   } catch (error) {
     logger.warn('WIDGET: Failed to refresh widget timelines', { schedule, error });
+  } finally {
+    // Nothing usable came out, so the cached sequence is either empty or the
+    // very thing that failed: drop it, or the retry would reuse it and repeat
+    // the same failure every minute instead of re-reading a healed cache.
+    if (flipTargetEpochMs === null) sequenceCache[schedule] = null;
+
+    scheduleLabelFlipPush(schedule, flipTargetEpochMs);
   }
 };
 
