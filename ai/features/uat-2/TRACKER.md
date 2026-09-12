@@ -19,7 +19,7 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 | 4 | Clock-change nights measured in real elapsed time | `fix/night-times` | 🔀 uat-2 |
 | 5 | Notifications and reminders fire exactly when their row says (one source of truth) | `fix/night-times` | 🔀 uat-2 |
 | 6 | Night times worked out when the list is built (stored night fields and the Dec 31 patch removed) | `fix/night-times` | 🔀 uat-2 |
-| 7 | Heavy tests, a 3T check, and a 5-minute test for the owner | `fix/night-times` | 🔀 uat-2 (3T ✅; recipe written — `ai/features/uat-2/OWNER-TEST-night-times.md`, owner to run) |
+| 7 | Heavy tests, a 3T check, and the 5-minute night-times test | `fix/night-times` | 🔀 uat-2 — ✅ **run on the 3T by the agent**, not handed over: 12 Sep (Midnight 00:12, Last Third 01:46), 24 Oct (23:58 / 01:59) and the clocks-go-back night 25 Oct (23:58 / **01:00**, not ~01:20). Recipe kept at `ai/features/uat-2/OWNER-TEST-night-times.md` for independent checking |
 | 8 | Phones set to other timezones: dates follow the prayer timezone (needed for v2.0) | `fix/year-boundary` | 🔀 uat-2 (3T ✅, New York time ✅) |
 | 9 | The extra download on 1 Jan (ISSUES #4) | `fix/year-boundary` | 🔀 uat-2 |
 | 10 | More than 3 days in the background: the stop-gap list starts from tomorrow | `fix/year-boundary` | 🔀 uat-2 |
@@ -30,7 +30,7 @@ Legend: ✅ done · 🔀 merged into uat-2 · 🚧 in progress · ⏳ to do · �
 | 15 | Popups tracked by prayer name, not row number | `refactor/tidy-ups` | ✅ already true since 1.24.7 — `Overlay.tsx` looks the explanation up by name (`EXTRAS_ENGLISH.indexOf`). Verified, no change needed; the remaining index-keyed atoms are row *selection*, which is legitimately positional |
 | 16 | Countdown bar 2px too long when full | `refactor/tidy-ups` | ✅ 1.24.26 — the tip oval is centred on `left`, so it overhung the track by 0.6dp at full (≈2 physical px at 3x) and 2.4dp at empty. Clamped in `components/countdown/tipGeometry.ts`, pure and unit-tested; mid-range positions unchanged |
 | 17 | Internal renames (one timezone setting) | `refactor/tidy-ups` | ✅ 1.24.27 — `createLondonDate` → `createInstant` (it was literally `new Date()`), 40 refs across 20 files. `PRAYER_TIMEZONE` stays the single setting for v2.0; the user-facing "London, UK" is copy, not a name |
-| 18 | Code audit brief | `uat-2` | ⏳ |
+| 18 | Code audit brief | `uat-2` | ✅ `ai/features/uat-2/AUDIT-BRIEF.md` — scope, standing constraints, what is already settled (do not re-litigate), the leads from ISSUES #33, and where to look in priority order |
 | 19 | Code audit: findings | next session | ⏳ |
 | 20 | Code audit: changes, one at a time | next session | ⏳ |
 | 21 | Owner's manual test of uat-2 | — | 👤 |
