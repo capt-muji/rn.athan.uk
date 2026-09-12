@@ -198,6 +198,65 @@ describe('label-flip re-push scheduler', () => {
     await jest.advanceTimersByTimeAsync(60 * 1000 + 300);
     expect(widgetPush()).toHaveLength(2);
   });
+
+  // The re-arm is the only thing standing between a transient failure and a
+  // widget frozen for the life of the process: the timer that fired has
+  // already cleared its own slot, so a push that returns without arming a new
+  // one ends the chain silently and permanently. Each of these drives ONE
+  // failure and then requires the very next minute to push again.
+
+  it('re-arms after a native throw, so one failed push does not end the chain', async () => {
+    seedUpcomingMagrib(11);
+    // Once: the native side recovers, and only a live chain can show that
+    (PrayerWidget.updateTimeline as jest.Mock).mockImplementationOnce(() => {
+      throw new Error('native boom');
+    });
+
+    await refreshPrayerWidgets();
+    expect(widgetPush()).toHaveLength(1);
+
+    await jest.advanceTimersByTimeAsync(60 * 1000 + 300);
+    expect(widgetPush()).toHaveLength(2);
+
+    // ...and keeps flipping after the recovery, not just the once
+    await jest.advanceTimersByTimeAsync(60 * 1000);
+    expect(widgetPush()).toHaveLength(3);
+  });
+
+  it('re-arms after an empty build and rebuilds the sequence, so a healed cache pushes', async () => {
+    Database.clearPrefix('prayer_');
+
+    await refreshPrayerWidgets();
+    expect(widgetPush()).toHaveLength(0);
+
+    // A sync lands while the app is still open. The retry reuses the cached
+    // sequence by design, so healing depends on the empty push having dropped
+    // that cache — reusing an empty sequence would repeat the failure forever.
+    seedUpcomingMagrib(11);
+    await jest.advanceTimersByTimeAsync(60 * 1000 + 300);
+
+    expect(widgetPush()).toHaveLength(1);
+    expect(widgetPush()[0][0].length).toBeGreaterThan(0);
+  });
+
+  it('survives an empty tick mid-chain rather than dying on it', async () => {
+    seedUpcomingMagrib(11);
+    await refreshPrayerWidgets();
+    expect(widgetPush()).toHaveLength(1);
+
+    // A running chain meets a day it has no data for — the cache is gone and
+    // the sequence key has rolled, so the tick builds nothing. This is the
+    // form the failure takes in the field: not a bad first push, but a
+    // healthy chain silently ending on one bad minute.
+    Database.clearPrefix('prayer_');
+    jest.setSystemTime(Date.now() + 24 * 60 * 60 * 1000);
+    await jest.advanceTimersByTimeAsync(60 * 1000 + 300);
+    expect(widgetPush()).toHaveLength(1);
+
+    seedUpcomingMagrib(11);
+    await jest.advanceTimersByTimeAsync(60 * 1000 + 300);
+    expect(widgetPush()).toHaveLength(2);
+  });
 });
 
 describe('readWidgetSettings', () => {
