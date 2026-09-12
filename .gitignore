@@ -26,3 +26,7 @@ expo-env.d.ts
 modules/**/build/
 modules/**/.gradle/
 .env
+
+# Python bytecode from the e2e scripts (py_compile, imports)
+__pycache__/
+*.pyc
