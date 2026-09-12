@@ -387,10 +387,41 @@ export const getSoundPreference = () => store.get(soundPreferenceAtom);
 export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
 
 /**
+ * Resolves a prayer's CANONICAL index — its position in PRAYERS_ENGLISH /
+ * EXTRAS_ENGLISH — from its English name.
+ *
+ * Two index spaces reach this store and they are not the same thing. Row
+ * indices from the prayer list are CHRONOLOGICAL: positions in the
+ * datetime-sorted list of a day's prayers. Every atom array here is
+ * CANONICAL: built positionally from the name constants, and the scheduler
+ * iterates the same constants. The two coincide only while the canonical names
+ * happen to be in chronological order, which is a property of the data rather
+ * than a guarantee. This module already judged that assumption unsafe once —
+ * see `migrateIndexKeyedAlertPreferences`, which exists because "the index only
+ * maps to the intended prayer while data is canonical". The keys were fixed;
+ * callers reaching them by row index were not.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerName English prayer name (e.g. "Fajr", "Last Third")
+ * @param fallbackIndex Index to return when the name is not in the schedule.
+ *   `usePrayer` reports `english: ''` while the sequence loads or when the row
+ *   index is out of range, and the fallback keeps that frame behaving exactly
+ *   as it did before this indirection existed. Returning -1 instead would hand
+ *   `useAtomValue` an undefined atom and throw.
+ * @returns Canonical index into this module's atom arrays
+ */
+export const canonicalPrayerIndex = (scheduleType: ScheduleType, prayerName: string, fallbackIndex: number): number => {
+  const canonicalIndex = getPrayerArrays(scheduleType).english.indexOf(prayerName);
+  return canonicalIndex === -1 ? fallbackIndex : canonicalIndex;
+};
+
+/**
  * Gets the Jotai atom for a specific prayer's alert setting
  *
  * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param prayerIndex Canonical index of the prayer in its schedule (0-based).
+ *   Callers holding a chronological row index must map it through
+ *   `canonicalPrayerIndex` first.
  * @returns Jotai atom for the prayer's alert type
  */
 export const getPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
