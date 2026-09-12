@@ -23,10 +23,14 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 type AlertIconType = Icon.BELL_RING | Icon.BELL_SLASH | Icon.SPEAKER;
 
-const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType }[] = [
-  { icon: Icon.BELL_SLASH, type: AlertType.Off },
-  { icon: Icon.BELL_RING, type: AlertType.Silent },
-  { icon: Icon.SPEAKER, type: AlertType.Sound },
+// `spoken` is the state's screen-reader name: visually the state is carried
+// only by the glyph shape and its fill colour, and this is the control that
+// decides whether a prayer alerts at all. Kept on ALERT_CONFIGS so the icon and
+// the wording for a state cannot drift apart — the array index IS the AlertType.
+const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType; spoken: string }[] = [
+  { icon: Icon.BELL_SLASH, type: AlertType.Off, spoken: 'off' },
+  { icon: Icon.BELL_RING, type: AlertType.Silent, spoken: 'silent' },
+  { icon: Icon.SPEAKER, type: AlertType.Sound, spoken: 'sound' },
 ];
 
 interface Props {
@@ -159,6 +163,12 @@ export default function Alert({ type, index }: Props) {
           setIsPressed(false);
           AnimScale.animate(1);
         }}
+        accessibilityRole='button'
+        // Named from the atom, not from `displayedAlert`: the glyph lags the
+        // committed value through the change-bounce, and a screen reader must
+        // hear the setting that is actually stored
+        accessibilityLabel={`${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`}
+        accessibilityHint='Opens the alert options for this prayer'
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
           <Animated.View style={AnimSwap.style}>
