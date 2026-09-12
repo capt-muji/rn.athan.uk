@@ -1600,3 +1600,89 @@ production release; G.6 noted but deferred by owner.
 - **Deliberately not done**: adding `scheduled_notifications_` to `UPGRADE_KEEP_PREFIXES`. Preserved records from an older identifier scheme would let old-scheme alarms live on beside new-scheme ones — duplicate alerts for one prayer, which is the thing the sweep exists to prevent.
 - **Trade-off, pinned by test**: with prayer data present and every alert off, records are legitimately empty, so a genuine stray is now left armed. A stray alert is a smaller harm than losing every alert after an update, and the per-prayer paths already cancel on switch-off, so the OS set should be empty in that case anyway.
 - **Process lessons — both were already gotchas in `e2e/README.md`, re-run the expensive way because the list was not read first**: a non-prod build serves `MOCK_DATA_SIMPLE` and writes mock times into the device's own cache, outliving the build that caused it (the tell is `fajr: addMinutes(-3)`, so a "Fajr" three minutes before the clock is the mock, not a bug); and gradle marks the bundle task UP-TO-DATE on env-only changes, so restarting the daemon is **not** sufficient (correcting AGENTS.md:774) — delete `index.android.bundle` and verify by md5, because `assets/app.config` regenerates independently and a correct `versionName` proves nothing about the JavaScript inside. Both entries have been generalised in `e2e/README.md`.
+
+---
+
+## J. Release distribution & the update prompt (2026-09-12)
+
+### 35. [OPEN, needs its own session] The update prompt depends on a hand-edited file on GitHub, and one failed fetch costs a whole day's check
+
+Raised by the owner on 2026-09-12, during the upgrade-research session: *"I really don't
+like having to manually update the releases.json after releasing to the store... if I have
+like a million users it's not scalable... does the app break if GitHub errors?"* Researched
+read-only, no code changed. This entry records the findings so the decision session does
+not start cold.
+
+**How it works today.** `device/updates.ts` fetches a store version once per 24 hours
+(`TIME_CONSTANTS.ONE_DAY_MS`, throttled through `getPopupUpdateLastCheck`), compares it to
+`Constants.expoConfig.version` with `isNewerVersion` from `shared/versionUtils.ts`, and
+sets `popupUpdateEnabled`. Two sources feed it:
+
+- **Production iOS**: `https://itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb`.
+  Fully automatic already. No manual step exists on this path.
+- **Everything else** (production Android, UAT iOS, UAT Android):
+  `https://raw.githubusercontent.com/capt-muji/rn.athan.uk/main/releases.json`, hand-edited
+  on `main` after each store release.
+
+It is called fire-and-forget from `app/index.tsx:101`, inside a `setTimeout(..., 1500)`:
+`checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate))`.
+
+**Question 1: does the app break if GitHub errors? No.** `getStoreVersion()` wraps both
+fetches in `try/catch` and returns `false` on any failure, including a 429, a 404, a DNS
+failure and malformed JSON. `checkForUpdates()` returns `false` when the store version is
+falsy, and it is never awaited on the render path. A GitHub outage produces no popup and no
+other symptom. That part of the design is sound.
+
+**Two real defects found while confirming that**, both small, both in `device/updates.ts`:
+
+1. **A failed check burns the 24-hour window.** The `finally` block runs
+   `setPopupUpdateLastCheck(now)` unconditionally, so a fetch that threw is recorded as a
+   check that happened. A user who launches the app with no signal, which this app is
+   explicitly designed to support offline, silently loses that day's check. The stamp
+   belongs on the success path, or the throttle needs a shorter retry interval after a
+   failure.
+2. **Neither fetch has a timeout or an `AbortController`.** A hung connection leaves a
+   pending promise for the life of the process. Harmless in practice because nothing awaits
+   it, but it means the check neither resolves nor retries within the day.
+
+A third, lower: `openStore()` uses `market://details?id=...` on Android with no
+`https://play.google.com/...` fallback. On a device without the Play client,
+`Linking.openURL` throws and the failure is only logged, so the button does nothing.
+
+**Question 2: scale and rate limits.** GitHub announced on 2025-05-08 that unauthenticated
+rate limits now cover `raw.githubusercontent.com` downloads, and does not publish a number
+for raw. The limits are IP-based and abuse-triggered rather than a documented quota. The
+shape of the exposure is not what it first looks like: each phone is its own IP making at
+most one request per 24 hours, so a million users is a million IPs at one request a day,
+not a million requests from one source. The real objections are different and still
+decisive:
+
+- `raw.githubusercontent.com` carries no SLA and is not intended as a configuration CDN.
+- The limit is IP-based, so users behind carrier-grade NAT share one bucket.
+- A file on `main` is a deploy channel with no staging, no rollback and no review gate.
+- It is a manual step after every release, which is the failure mode the owner actually
+  cares about: forget it and nobody is ever prompted.
+
+**Question 3: can it read the stores directly? Per platform.**
+
+| Channel | Automatic today? | Best available approach |
+|---|---|---|
+| Production iOS | **Yes** | Already on iTunes Lookup. Two improvements: drop the hard-coded `country=gb`, since a user in another storefront gets a wrong or empty result, and note the listing can lag a release by hours |
+| Production Android | No | **Google Play In-App Updates.** Google removed the public "latest version" API deliberately; the sanctioned replacement asks Play itself. It supports a flexible or an immediate flow entirely in-app, with no store redirect. `expo-in-app-updates` (0.12.0, peer `expo: "*"`) wraps it with a config plugin and exposes `checkForUpdate()`, `startUpdate()`, `checkAndStartUpdate()` and update listeners. It also covers iOS by wrapping the same iTunes Search lookup |
+| UAT iOS (TestFlight) | No | **No public API exists.** A hosted JSON is the only option |
+| UAT Android (internal test) | No | **No public API exists.** Internal-test versions are not publicly queryable |
+
+**Recommended shape**, for the decision session to accept or reject: move production
+Android onto Play In-App Updates, keep production iOS on iTunes Lookup, and let
+`releases.json` survive as a **testers-only** file. That removes the manual step from every
+production release, which is the owner's actual complaint, and it collapses the scale
+question entirely, because the remaining consumers are a handful of testers rather than the
+whole user base.
+
+**Known constraint on verifying it**: Play In-App Updates only works for builds installed
+from Play. A side-loaded `fleettest` APK on the 3T cannot exercise it, so acceptance needs
+an internal-test-track install.
+
+**Not done this session.** Session 1 of the upgrades programme is research-only and adds no
+dependency. `expo-in-app-updates` is a new native dependency on the release path and
+deserves its own session with its own device verification.
