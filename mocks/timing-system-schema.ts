@@ -587,14 +587,19 @@ export const EXAMPLE_DST_FALL_BACK: Prayer[] = [
 // =============================================================================
 
 /**
- * How prayers are serialized for MMKV storage
+ * How prayers WOULD be serialized for MMKV storage, if they were.
  *
- * JavaScript Date objects cannot be stored directly in MMKV.
- * We convert to ISO strings before storage, and parse back on load.
+ * They are not: what MMKV actually holds is one
+ * ISingleApiResponseTransformed per day under prayer_YYYY-MM-DD (date plus
+ * HH:mm strings, no datetimes), and sequences are rebuilt from those on every
+ * launch — see MMKV_KEYS below and SECTION 6. "We convert", "we store" below
+ * describe the proposed format, not current behaviour.
  *
- * NOTE: We store LOCAL time without timezone suffix (no 'Z').
- * This ensures the time is interpreted correctly when parsed back.
- * Example: "2026-06-22T01:00:00" (local) NOT "2026-06-22T01:00:00Z" (UTC)
+ * The proposal: JavaScript Date objects cannot be stored directly in MMKV, so
+ * convert to ISO strings before storage and parse back on load, keeping LOCAL
+ * time without the timezone suffix so the time is interpreted correctly when
+ * parsed back. Example: "2026-06-22T01:00:00" (local) NOT
+ * "2026-06-22T01:00:00Z" (UTC).
  */
 export const EXAMPLE_STORED_PRAYER: StoredPrayer = {
   type: ScheduleType.Standard,
