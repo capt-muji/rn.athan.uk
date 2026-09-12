@@ -106,6 +106,77 @@ describe('fetchYear', () => {
 });
 
 // =============================================================================
+// fetchYear() DAY-SHAPE TESTS
+//
+// A malformed or partial day used to reach MMKV and then throw deep in the
+// pipeline, taking every prayer that day down with it rather than only its own.
+// Each case below is one the sweep reproduced against the unguarded pipeline.
+// =============================================================================
+
+describe('fetchYear day shape', () => {
+  const today = new Date().toISOString().split('T')[0] as string;
+
+  const payloadWithToday = (times: unknown) => ({ city: 'london', times: { [today]: times } });
+
+  const expectRejection = async (times: unknown, message: string | RegExp) => {
+    global.fetch = jest.fn().mockResolvedValue(createResponse(payloadWithToday(times)));
+
+    await expect(fetchYear(2026)).rejects.toThrow(message);
+  };
+
+  it('rejects a time that is not zero-padded HH:mm', async () => {
+    const day = { ...createMockTime(today), dhuhr: '11:5' };
+
+    await expectRejection(day, 'Malformed prayer time: ' + today + ' dhuhr is "11:5"');
+  });
+
+  it('rejects a missing time rather than calling split on undefined', async () => {
+    const day: Partial<IApiSingleTime> = { ...createMockTime(today) };
+    delete day.isha;
+
+    await expectRejection(day, 'isha is undefined');
+  });
+
+  it('rejects a non-time placeholder, which is what high latitude sends for polar day', async () => {
+    const day = { ...createMockTime(today), sunrise: '-----' };
+
+    await expectRejection(day, 'sunrise is "-----"');
+  });
+
+  it('rejects an out-of-range time', async () => {
+    const day = { ...createMockTime(today), magrib: '25:61' };
+
+    await expectRejection(day, 'magrib is "25:61"');
+  });
+
+  it('rejects a day with no times at all', async () => {
+    await expectRejection(null, 'fajr is undefined');
+  });
+
+  it('names the offending day, so the failure is diagnosable from one log line', async () => {
+    const day = { ...createMockTime(today), asr: 'x' };
+
+    await expectRejection(day, new RegExp(`Malformed prayer time: ${today} asr is "x"`));
+  });
+
+  it('does not reject a past day the app already discards', async () => {
+    const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().split('T')[0] as string;
+    const payload = {
+      city: 'london',
+      times: {
+        [weekAgo]: { ...createMockTime(weekAgo), fajr: '-----' },
+        [today]: createMockTime(today),
+      },
+    };
+    global.fetch = jest.fn().mockResolvedValue(createResponse(payload));
+
+    const result = await fetchYear(2026);
+
+    expect(result.map((p) => p.date)).toEqual([today]);
+  });
+});
+
+// =============================================================================
 // fetchYear() TRANSFORMATION TESTS
 // =============================================================================
 
