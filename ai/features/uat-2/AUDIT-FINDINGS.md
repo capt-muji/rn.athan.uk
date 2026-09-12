@@ -44,7 +44,7 @@ appendix. That suite lives outside the repository and is not committed.
 | # | Finding | Tier | Confidence |
 | --- | --- | --- | --- |
 | 1 | `releases.json` says 1.0.0: correct today, a release-checklist trap tomorrow. **Do not touch the file** | 6 | RE-RANKED |
-| 2 | `forceNotificationReschedule()` cannot reopen the 12-hour gate | 1 | CONFIRMED [test] |
+| 2 | `forceNotificationReschedule()` cannot reopen the 12-hour gate | ~~1~~ 2 | **CORRECTED on device: latent, not live** |
 | 3 | The extras preference migration lands on the wrong prayers | 1 | CONFIRMED [test] |
 | 4 | The migration's writes are invisible to the reminder atoms in the same session | 1 | CONFIRMED [test] |
 | 5 | Android's five daily athan channels are never created at schedule time | 1 | CONFIRMED |
@@ -164,6 +164,40 @@ for sessions 3 and 4. The three version strings are not: they are a data edit on
 and the owner owns that file.
 
 ## 2. `forceNotificationReschedule()` cannot reopen the 12-hour gate
+
+**CORRECTED 2026-09-12 on the device: this is NOT a live defect in a Release build.** The
+finding's mechanism is real but its premise about evaluation order is wrong for the bundle that
+actually ships. Kept in full below, because the reasoning error is worth seeing, and because
+one config line is all that stands between it being wrong and being right.
+
+**What the device showed.** A Release build of the **unfixed** code, upgraded with the gate
+deliberately closed (verified beforehand: `needsRefresh: false`, `Skipping reschedule, last
+schedule was within 12 hours`), reopened the gate correctly:
+
+```
+15:38:33.102  VERSION: Reset notification schedule timestamp to force reschedule   <- key removed
+15:38:33.107  PROBE: notifications.ts module evaluated  { seeded: 0 }              <- atom created 5 ms LATER
+15:38:35.254  NOTIFICATION: Never scheduled before, needs refresh                  <- gate OPEN
+```
+
+`stores/notifications.ts` is evaluated **after** the key is removed, not before, so the atom is
+seeded from an already-absent key and reads 0. The finding assumed the opposite order, which is
+what jest and a dev bundle do.
+
+**Why the order differs, and why that is itself a finding.** `metro.config.js` sets
+`inlineRequires: true`, under a comment reading *"THROWAWAY perf22 experiment: defer module
+evaluation to first use."* Expo's default is `false`. Inlined requires defer each `require` to
+first use, and `stores/version.ts` uses its `@/stores/notifications` import only for
+`migrateIndexKeyedAlertPreferences()`, the **last** statement of `handleAppUpgrade` — after
+`forceNotificationReschedule()`. Remove that throwaway line and the defect described below
+becomes real and silent. Recorded as finding 60.
+
+**The fix stays, and is better justified than the finding was.** `resetStoredAtom` does not
+depend on evaluation order at all: it clears the key and the atom together, so the behaviour is
+the same whether `inlineRequires` is on or off. What it buys is not a live bug fix but the
+removal of a dependency on a bundler experiment nobody intends to keep.
+
+**Severity: downgraded from Tier 1 to Tier 2**, as a latent defect gated by a config line.
 
 **FIXED in 1.25.18** (`fix/audit-2-reset-stored-atom`). `stores/storage.ts` gains
 `resetStoredAtom(atom, key)`, which writes `RESET` through the atom: that removes the MMKV key
