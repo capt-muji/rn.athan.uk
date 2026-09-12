@@ -90,6 +90,23 @@ export const transformApiData = (apiData: IApiResponse): ISingleApiResponseTrans
 // =============================================================================
 
 /**
+ * Whether a clock hour falls in the small hours, meaning the instant belongs to the
+ * calendar day after the record carrying it. Six is the cutoff the Islamic-day model
+ * already uses for Isha.
+ */
+const isAfterMidnight = (hours: number): boolean => hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR;
+
+/**
+ * Whether a Magrib time is really the next day's. Only reachable above roughly 60N, where
+ * sunset falls after midnight (Reykjavik, 21 June: 00:04); London's Magrib spans 15:51 to
+ * 21:21, so this is always false for the city the app ships for today.
+ */
+const magribCrossesIntoNextDay = (magribTime: string): boolean => {
+  const [hours] = magribTime.split(':').map(Number);
+  return isAfterMidnight(hours);
+};
+
+/**
  * Midnight and Last Third of the Extras list for a day: the night leading into it
  *
  * A night belongs to the day that follows it (ISSUES #29), so it runs from the
@@ -113,7 +130,11 @@ export const getNightTimesForDay = (
   const previousDate = TimeUtils.getPreviousDateString(day.date);
   const magribTime = previousDay?.date === previousDate ? previousDay.magrib : day.magrib;
 
-  return TimeUtils.getNightTimes(previousDate, magribTime, day.date, day.fajr);
+  // Anchoring a post-midnight Magrib to the date it is filed under would start the night a
+  // day early and stretch it to ~26h, throwing Islamic Midnight and Last Third past noon.
+  const nightStart = magribCrossesIntoNextDay(magribTime) ? day.date : previousDate;
+
+  return TimeUtils.getNightTimes(nightStart, magribTime, day.date, day.fajr);
 };
 
 /** The instant of an Extras night row, or undefined for rows timed from the day's own record */
@@ -165,7 +186,7 @@ const getPrayerTimezoneHour = (date: Date): number => {
  * Calculates which Islamic day a prayer belongs to
  *
  * Islamic Day Rule: The day changes after Isha passes.
- * If Isha is between 00:00-06:00, it belongs to the previous day.
+ * If Isha or Magrib is between 00:00-06:00, it belongs to the previous day.
  *
  * @param type Schedule type (Standard or Extra)
  * @param prayerEnglish English name of the prayer
@@ -181,8 +202,13 @@ export const calculateBelongsToDate = (
 ): string => {
   const hours = getPrayerTimezoneHour(prayerDateTime);
 
-  // STANDARD: Isha between 00:00-06:00 belongs to previous day
-  if (type === ScheduleType.Standard && prayerEnglish === 'Isha' && hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR) {
+  // STANDARD: Isha between 00:00-06:00 belongs to previous day.
+  // Magrib needs the identical mapping wherever sunset itself lands after midnight:
+  // adjustPrayerDateForMidnightCrossing has already pushed its instant to the next
+  // calendar day, and without undoing that here the row would leave its own day's list
+  // and appear on the following one.
+  const crossedMidnight = prayerEnglish === 'Isha' || prayerEnglish === 'Magrib';
+  if (type === ScheduleType.Standard && crossedMidnight && hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR) {
     return TimeUtils.getPreviousDateString(calendarDate);
   }
 
@@ -275,8 +301,11 @@ function adjustPrayerDateForMidnightCrossing(
 ): string {
   const isStandard = type === ScheduleType.Standard;
 
-  // STANDARD: Isha 00:00-06:00 occurs on NEXT calendar day (for countdown)
-  if (isStandard && prayerName === 'Isha' && hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR) {
+  // STANDARD: Isha 00:00-06:00 occurs on NEXT calendar day (for countdown).
+  // Magrib joins it above ~60N, where sunset itself lands after midnight while the
+  // provider still files it under the old date — without this its alarm is 23h56m early.
+  const canCrossMidnight = prayerName === 'Isha' || prayerName === 'Magrib';
+  if (isStandard && canCrossMidnight && isAfterMidnight(hours)) {
     return TimeUtils.addDaysToDateString(date, 1);
   }
 
