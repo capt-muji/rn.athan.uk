@@ -308,11 +308,11 @@ export const isDecember = (): boolean => getTodayDateString().slice(5, 7) === '1
  * @returns boolean indicating if current date is during Ramadan season
  */
 export const isRamadan = (): boolean => {
-  // Build-time preview gate, statically folded OFF in production builds (the
-  // EXPO_PUBLIC_BG_DEBUG idiom): building with EXPO_PUBLIC_FORCE_RAMADAN=1
-  // flips the whole season — icon variant, decorations, settings toggle —
-  // for off-season device evaluation
-  if (process.env.EXPO_PUBLIC_FORCE_RAMADAN === '1') return true;
+  // Build-time preview gate: EXPO_PUBLIC_FORCE_RAMADAN=1 flips the whole
+  // season — icon variant, decorations, settings toggle — for off-season
+  // device evaluation. The prod check keeps a variable left set out of a
+  // store build; both operands are literals, so Metro folds the branch away.
+  if (process.env.EXPO_PUBLIC_FORCE_RAMADAN === '1' && process.env.EXPO_PUBLIC_ENV !== 'prod') return true;
   try {
     const date = new Date();
     const monthFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {

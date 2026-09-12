@@ -399,6 +399,28 @@ describe('isRamadan', () => {
     jest.setSystemTime(new Date('2026-02-02T12:00:00Z'));
     expect(isRamadan()).toBe(false);
   });
+
+  describe('EXPO_PUBLIC_FORCE_RAMADAN preview gate', () => {
+    afterEach(() => {
+      delete process.env.EXPO_PUBLIC_FORCE_RAMADAN;
+      delete process.env.EXPO_PUBLIC_ENV;
+    });
+
+    it('forces the season on outside production (off-season device evaluation)', () => {
+      jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
+      process.env.EXPO_PUBLIC_FORCE_RAMADAN = '1';
+      expect(isRamadan()).toBe(true);
+    });
+
+    // A variable left set in a store build would put the app in Ramadan all
+    // year: icon variant, decorations and the settings toggle all follow this.
+    it('is ignored in a prod build', () => {
+      jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
+      process.env.EXPO_PUBLIC_FORCE_RAMADAN = '1';
+      process.env.EXPO_PUBLIC_ENV = 'prod';
+      expect(isRamadan()).toBe(false);
+    });
+  });
 });
 
 describe('isDecorationSeason', () => {

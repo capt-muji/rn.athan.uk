@@ -167,12 +167,17 @@ const MIN_BG_INTERVAL_MINUTES = 15;
 const MAX_BG_INTERVAL_MINUTES = 1440;
 
 const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
-
+// The env override is a measurement tool. A release build must never take it: this interval
+// is the mechanism that keeps the rolling buffer alive, so a variable left set in a store
+// build would silently change alarm delivery. Compared as a literal rather than via isProd(),
+// so Metro folds the branch away.
+//
 // Integer, not merely finite: iOS reads this option with `as? Int`, so a fractional value
 // fails the cast, falls back to the 12-hour default and disagrees with Android, which
 // truncates. 20.5 would mean 20 minutes on one platform and 12 hours on the other, silently —
 // the same units-mismatch class as ISSUES.md #8 that the range check was added to close.
 const isEnvIntervalValid =
+  process.env.EXPO_PUBLIC_ENV !== 'prod' &&
   Number.isInteger(envIntervalMinutes) &&
   envIntervalMinutes >= MIN_BG_INTERVAL_MINUTES &&
   envIntervalMinutes <= MAX_BG_INTERVAL_MINUTES;

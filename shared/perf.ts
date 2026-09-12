@@ -2,10 +2,11 @@
  * Performance instrumentation — performance campaign Phase 2
  * (ai/features/performance/)
  *
- * Build-time gated by EXPO_PUBLIC_PERF_MONITOR=1: every export is a no-op and
- * react-native-performance is never even required when the gate is off, so
- * local and production builds pay zero cost. Measurement builds opt in via the
- * env var (inlined statically by Metro/Babel).
+ * Build-time gated by EXPO_PUBLIC_PERF_MONITOR=1 outside production: every
+ * export is a no-op and react-native-performance is never even required when
+ * the gate is off, so local and production builds pay zero cost. Measurement
+ * builds opt in via the env var (inlined statically by Metro/Babel); a
+ * prod build ignores it, so the variable cannot follow a build to the store.
  *
  * Architecture:
  * - react-native-performance provides the user-timing API (mark/measure) plus
@@ -27,7 +28,10 @@ import { createMMKV } from 'react-native-mmkv';
 
 import logger from '@/shared/logger';
 
-const PERF_ENABLED = process.env.EXPO_PUBLIC_PERF_MONITOR === '1';
+// Both operands are literals Metro inlines, so a production bundle folds this
+// to `false` and drops the require below with it — an isProd() call could not
+// be folded, and the library would ship.
+const PERF_ENABLED = process.env.EXPO_PUBLIC_PERF_MONITOR === '1' && process.env.EXPO_PUBLIC_ENV !== 'prod';
 const RING_CAPACITY = 600;
 const FLUSH_THRESHOLD = 50;
 const MMKV_ID = 'perf-monitor';

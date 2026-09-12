@@ -123,6 +123,7 @@ describe('runBackgroundTaskDebugSequence gating', () => {
   afterEach(() => {
     jest.useRealTimers();
     delete process.env.EXPO_PUBLIC_BG_DEBUG;
+    delete process.env.EXPO_PUBLIC_ENV;
     setDev(true);
   });
 
@@ -144,6 +145,20 @@ describe('runBackgroundTaskDebugSequence gating', () => {
     await jest.advanceTimersByTimeAsync(60_000);
 
     expect(logger.info).toHaveBeenCalledWith('BACKGROUND_TASK_DEBUG: Sequence armed', expect.anything());
+    expect(mockTrigger).not.toHaveBeenCalled();
+  });
+
+  // The variable is meant for Release-config validation builds. If it followed
+  // one to the store, every cold launch would run a diagnostic snapshot.
+  it('no-ops in a prod build even with EXPO_PUBLIC_BG_DEBUG=1', async () => {
+    setDev(false);
+    process.env.EXPO_PUBLIC_BG_DEBUG = '1';
+    process.env.EXPO_PUBLIC_ENV = 'prod';
+
+    runBackgroundTaskDebugSequence();
+    await jest.advanceTimersByTimeAsync(60_000);
+
+    expect(logger.info).not.toHaveBeenCalled();
     expect(mockTrigger).not.toHaveBeenCalled();
   });
 

@@ -207,6 +207,7 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
 
   afterEach(() => {
     delete process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES;
+    delete process.env.EXPO_PUBLIC_ENV;
     process.env.NODE_ENV = 'test';
   });
 
@@ -280,6 +281,15 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '1440';
     const mod = requireFreshConstants();
     expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(1440);
+  });
+
+  // This interval is what keeps the rolling buffer alive, so a ladder value
+  // that followed a build to the store would change alarm delivery for users.
+  it('ignores an otherwise valid override in a prod build', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '45';
+    process.env.EXPO_PUBLIC_ENV = 'prod';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
   });
 });
 
