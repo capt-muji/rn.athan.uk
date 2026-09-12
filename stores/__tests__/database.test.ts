@@ -641,4 +641,31 @@ describe('clearAllExcept call sites', () => {
     const errorScreen = readFileSync(join(__dirname, '../../components/ui/Error.tsx'), 'utf8');
     expect(errorScreen).toContain('clearUpgradeCache()');
   });
+
+  /**
+   * Two independent wipes keep two independently written lists: `clearUpgradeCache`'s
+   * and the full-refresh one inside `updatePrayerData`. They drifted apart once —
+   * sync's dropped `cache_schema_version`, so a full refresh left the cache looking
+   * "unknown shape" and bought an unnecessary wipe on the very next upgrade. Nothing
+   * compared them, so nothing noticed.
+   */
+  it('keeps the two wipe lists in agreement', () => {
+    // Only whole-line quoted entries count; the lists carry trailing comments, and
+    // an apostrophe inside one would otherwise read as a key
+    const extractKeepList = (source: string, anchor: string, close: string): string[] => {
+      const start = source.indexOf(anchor);
+      expect(start).toBeGreaterThan(-1);
+      const body = source.slice(start, source.indexOf(close, start));
+      return [...body.matchAll(/^\s*'([^']+)',/gm)].map((match) => match[1] as string).sort();
+    };
+
+    const version = readFileSync(join(__dirname, '../version.ts'), 'utf8');
+    const sync = readFileSync(join(__dirname, '../sync.ts'), 'utf8');
+
+    const upgradeKeeps = extractKeepList(version, 'const UPGRADE_KEEP_PREFIXES', '];');
+    const refreshKeeps = extractKeepList(sync, 'Database.clearAllExcept([', ']);');
+
+    expect(upgradeKeeps).toHaveLength(5);
+    expect(refreshKeeps).toEqual(upgradeKeeps);
+  });
 });

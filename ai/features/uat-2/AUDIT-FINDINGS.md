@@ -1186,6 +1186,32 @@ turns on.
 
 CONFIRMED.
 
+### CLOSED in session 5, 1.25.52, `fix/audit-14-keep-list-schema-marker`
+
+`cache_schema_version` added to the full-refresh keep-list in `stores/sync.ts`, with a comment
+saying why losing it is expensive rather than merely untidy: a missing marker reads as "cache of
+unknown shape", so the very next upgrade buys a wipe — the opposite of what the full refresh had
+just achieved.
+
+The window is real and was re-confirmed: `sync()` calls `handleAppUpgrade()` first, which stamps
+the marker, and `updatePrayerData` then deletes it later in the same tick. So from any full
+refresh until the next launch, an arriving upgrade wipes needlessly.
+
+`stores/__tests__/sync.test.ts` asserted the exact four-element array and so **pinned the
+defect**; it is inverted, not deleted. A second guard in `stores/__tests__/database.test.ts`
+extracts both lists from source text and asserts they are equal, so they cannot drift again —
+text extraction because that file already reads `version.ts` that way, and because
+`stores/version.ts` is mocked inside the sync suite, which makes importing the constant there
+impossible without re-stating it.
+
+The two lists are now identical, which raises the obvious question of why there are two. Merging
+them into one shared constant is the durable answer and is deliberately **not** done here: it
+moves a constant between modules for a one-key defect. The equality guard buys the same
+protection at a fraction of the risk, and records the intent for whoever does merge them.
+
+Removing the key again fails both tests.
+
+
 ## 15. The AppState listener registers 1500 ms late, and that resume gets no resume handling
 
 `app/index.tsx:88-102`, `device/listeners.ts:17`.
