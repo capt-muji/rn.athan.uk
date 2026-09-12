@@ -1389,6 +1389,28 @@ force-quits at 23:00 in December and reopens 24 hours later has a real gap.
 
 CONFIRMED on the arithmetic. LIKELY on the user-facing gap.
 
+### CLOSED in session 5, 1.25.95, `fix/audit-17-buffer-horizon-docs`
+
+**Documentation only, because there is no code fix available.** Raising
+`NOTIFICATION_ROLLING_DAYS` breaches the iOS 64-request ceiling, which
+`shared/__tests__/constants.test.ts` now pins, and finding 12's night-row extra day is the only
+real horizon improvement obtainable.
+
+Three claims corrected. `shared/constants.ts` said the foreground gate "needs just 1 successful
+run per 48h — 12 hours gives 4 attempts" and the background interval "needs 1 successful run per
+48h; 6 hours gives 8 attempts". `ai/AGENTS.md` said a force-quit is "recovered by next app open
+within the 2-day buffer". All three sized a cadence against a horizon that does not exist: the
+window is two **list days**, so it reaches "tomorrow's last prayer" — roughly 45h after an
+early-morning refresh, but about **18h** in the winter worst case, a 23:50 refresh against the
+repo's own 31 December fixture of Isha 17:41.
+
+The cadences themselves are unchanged; only the reasoning behind them is now true. At the real
+floor, 6 hours gives **two** full attempts rather than eight.
+
+Three arithmetic cases pin the horizon from the constants and the winter fixture, so the numbers
+in the comments cannot drift from the numbers the code produces. Asserting the old 48-hour claim
+instead fails one of them.
+
 ## 18. `compareVersions` inverts on a `v` prefix or any non-numeric segment
 
 `shared/versionUtils.ts:13-19`. `.map(Number)` then `parts[i] || 0`, so NaN silently becomes 0.

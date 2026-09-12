@@ -118,9 +118,16 @@ export const validateReminderInterval = (value: number): boolean => {
  * Notifications rescheduled when this interval elapses and app enters foreground
  *
  * The foreground layer is the FALLBACK: the 6-hour background task keeps the
- * 2-day window rolling on its own, and this gate only matters when that layer
- * has been starved (force-quit, new install). Needs just 1 successful run per
- * 48h — 12 hours gives 4 attempts. Owner decision 2026-09-02 (ADR-007 rev 3).
+ * window rolling on its own, and this gate only matters when that layer has been
+ * starved (force-quit, new install).
+ *
+ * The window is two LIST days, not 48 hours, and the difference matters when
+ * sizing this. `genNextXDays(2)` arms today and tomorrow, so the horizon is
+ * "tomorrow's last prayer" — about 45h after an early-morning refresh, but only
+ * about 18h in the winter worst case (a 23:50 refresh against Isha 17:41).
+ * One successful run per ~18h is the real requirement; 12 hours gives one
+ * guaranteed attempt inside it, not four. Owner decision 2026-09-02
+ * (ADR-007 rev 3) — the cadence is unchanged, only the claim behind it.
  */
 export const NOTIFICATION_REFRESH_HOURS = 12;
 
@@ -138,10 +145,11 @@ export const BACKGROUND_TASK_NAME = 'NOTIFICATION_REFRESH_TASK';
  * Hours between background task executions (minimum interval)
  * System may delay execution; this is a minimum, not exact timing
  *
- * PRIMARY layer: keeps the 2-day rolling window rolling unattended. Needs 1
- * successful run per 48h; 6 hours gives 8 attempts. Leniency matters — iOS
- * dasd rate-limits aggressive cadences, so longer intervals are far more
- * likely to execute on schedule (owner decision 2026-09-02, ADR-007 rev 3).
+ * PRIMARY layer: keeps the rolling window rolling unattended. The window is two
+ * list days rather than 48 hours — about 18h in the winter worst case — so 6
+ * hours gives roughly 3 attempts inside it, not 8. Leniency still matters: iOS
+ * dasd rate-limits aggressive cadences, so longer intervals are far more likely
+ * to execute on schedule (owner decision 2026-09-02, ADR-007 rev 3).
  */
 export const BACKGROUND_TASK_INTERVAL_HOURS = 6;
 
