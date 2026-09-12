@@ -30,6 +30,43 @@ const validateApiResponse = async (response: Response): Promise<IApiResponse> =>
   return data;
 };
 
+/** The six times every list row, notification and derived prayer is built from */
+const REQUIRED_TIMES = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'] as const;
+
+/** 24-hour HH:mm, which is the format `24hours=true` asks the endpoint for */
+const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/;
+
+/**
+ * Rejects a day the pipeline cannot read, before it reaches MMKV
+ *
+ * `createPrayerDatetime` turns a malformed time into `new Date(NaN)`, which throws on
+ * the first `toISOString()`, and a missing one throws on `split`. Either way the whole
+ * day is built before the requested row is picked out, so one bad field takes down every
+ * prayer that day rather than only its own. High-latitude providers emit `"-----"` or
+ * omit Sunrise entirely, which is the same failure arriving by a different route.
+ *
+ * Runs on the filtered set, so a malformed day the app already discards stays discarded
+ * instead of becoming a new way to reject an otherwise usable year.
+ *
+ * @param apiData Filtered API response data
+ * @returns The same data, once every kept day is known to be readable
+ */
+const validateApiTimes = (apiData: IApiResponse): IApiResponse => {
+  const entries = Object.entries(apiData.times);
+
+  for (const [date, times] of entries) {
+    for (const name of REQUIRED_TIMES) {
+      const value = times?.[name];
+      if (TIME_PATTERN.test(value)) continue;
+
+      const shown = JSON.stringify(value);
+      throw new Error(`Malformed prayer time: ${date} ${name} is ${shown}`);
+    }
+  }
+
+  return apiData;
+};
+
 // Fetches raw prayer time data from API
 // Uses mock data in non-production environments
 // Implements no-cache policy for fresh data
@@ -55,7 +92,8 @@ const fetchRawData = async (year?: number): Promise<IApiResponse> => {
 const transformYearData = async (targetYear: number): Promise<ISingleApiResponseTransformed[]> => {
   const data = await fetchRawData(targetYear);
   const filteredData = PrayerUtils.filterApiData(data);
-  return PrayerUtils.transformApiData(filteredData);
+  const validatedData = validateApiTimes(filteredData);
+  return PrayerUtils.transformApiData(validatedData);
 };
 
 // High-level function to get processed prayer data for a specific year
