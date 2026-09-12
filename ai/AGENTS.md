@@ -534,6 +534,7 @@ Use these prompts to start specialized sessions:
 | **Documentation**    | `ai/prompts/document.md`       | Add JSDoc, comments, README updates |
 | **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
 | **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
+| **Code audit (findings)** | `ai/prompts/audit-findings.md` | Session 3 of the 4-session chain: task 19, findings only, changes no application code |
 | **Android BG campaign** | `ai/prompts/android-background-task.md` | CLOSED 2026-09-09: verification complete (runbook CLOSED header summarizes outcome; #20 upstream candidate remains the only open item) |
 | **Large-screen adaptation** | `ai/prompts/large-screen-adaptation.md` | Resumable feature: phone-view scaling for iPad/tablet/desktop-web (tracker inside) |
 | **alarmClock backport** | `ai/prompts/alarmclock-backport.md` | RUNS LAST: #49687 backport onto SDK 57 via patch-package, throwaway branch + EAS preview (tracker inside) |
