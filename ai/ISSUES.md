@@ -1042,8 +1042,44 @@ production release; G.6 noted but deferred by owner.
   Lock layout uses NONE of these and never loops.
   - **FIX DESIGN — decision taken 2026-09-02 (owner): WAIT for the upstream
     fix as the primary path; our-side hygiene landed as 1.17.8.**
-    1. **UPSTREAM FIX TRACKING — expo/expo PR #49244 — THIS IS THE FIX
-       (owner: "our bread and butter"). CHECK IT EVERY SESSION.**
+    0. **[2026-09-12 — #49244 IS DEAD. THE FIX IS NOW #49810, MERGED BUT
+       UNRELEASED, SHIPPING ON THE SDK 58 LINE.]** Verified this session,
+       do not re-derive:
+       - `#49244` was **closed UNMERGED** on 2026-09-11. Maintainer jakex7:
+         *"Thank you, however we decided to take a different approach in
+         keeping stable identities, so I'm going to close this PR."*
+       - He then implemented it himself: **expo/expo#49810**, "[widgets][iOS]
+         Preserve view identity across widget and Live Activity updates",
+         commit `d7a46994`, landed on `main` **2026-09-11** (same day).
+       - **It ships on SDK 58, not a 57.0.x patch.** The expo-widgets
+         CHANGELOG's `## Unpublished` section carries #49810, and the section
+         immediately below it is `## 58.0.0 — 2026-09-10`. The old expectation
+         of "`expo-widgets@57.0.16`" was based on #49244's changelog placement
+         and is void.
+       - **57.0.16, 57.0.17 and 57.0.18 each say "This version does not
+         introduce any user-facing changes."** A higher version number proves
+         nothing here.
+       - **Verified in the installed source**, not inferred:
+         `node_modules/expo-widgets/ios/Widgets/DynamicView.swift:26` still
+         reads `let uuid = NodeIdentityWrapper(id: UUID())` under the comment
+         `// TODO(@jakex7): Hack to satisfy ExpoSwiftUI.AnyChild with random
+         UUID value`. The root cause is still installed.
+       - **Therefore the `widgets` flag stays OFF.** Having the iPhone XS
+         connected does not unblock this; there is nothing shipped to verify.
+       - **The patch-package fallback below is now LIVE** (merged, unreleased,
+         clock started 2026-09-11). Backport target is #49810, NOT #49244, and
+         resolve against the installed 57.0.18 sources.
+       - Also merged in the same window: **#50038** (Android Gradle build
+         failure when no Android widget is configured) — only relevant if
+         Android widgets are ever configured.
+       - Separately, **#48786 is an open ISSUE, not a PR**:
+         `[expo-background-task] iOS getStatusAsync() never reads the real
+         Background App Refresh permission`. Unrelated to widgets; relevant to
+         our background-task path.
+
+    1. ~~**UPSTREAM FIX TRACKING — expo/expo PR #49244 — THIS IS THE FIX
+       (owner: "our bread and butter"). CHECK IT EVERY SESSION.**~~
+       **SUPERSEDED — see item 0. Kept for the diagnosis, which still holds.**
        <https://github.com/expo/expo/pull/49244> — "[expo-widgets][iOS]
        Keep SwiftUI view identity stable across updates so animations work"
        by mahdidavoodi7, opened 2026-08-22, last activity 2026-09-01.

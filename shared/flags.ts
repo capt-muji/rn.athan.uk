@@ -23,8 +23,15 @@ export const FEATURE_FLAGS = {
    * iOS Home/Lock screen widgets (expo-widgets). Disabled: the widget
    * extension is stripped at prebuild and all push paths return early,
    * so the broken-render chain (ISSUES.md G.1/G.2) cannot ship.
-   * Flip condition: expo-widgets@57.0.16 (expo/expo#49244) verified on
-   * the iPhone XS per the G.1 acceptance protocol.
+   * Flip condition (revised 2026-09-12 — the old one can never be met):
+   * expo/expo#49244 was CLOSED UNMERGED on 2026-09-11; the maintainer
+   * reimplemented it as #49810, merged the same day but UNRELEASED, sitting
+   * in expo-widgets' `Unpublished` changelog section above `58.0.0` — so it
+   * ships on the SDK 58 line, not as a 57.0.x patch. Installed 57.0.18 still
+   * carries the random-UUID identity hack (`DynamicView.swift:26`), and
+   * 57.0.16/17/18 each record "no user-facing changes". Flip only once the
+   * fix is genuinely installed AND verified on the iPhone XS per the G.1
+   * acceptance protocol. Full trail in ISSUES.md G.1 item 0.
    */
   widgets: process.env.EXPO_PUBLIC_WIDGETS === '1',
 } as const;
