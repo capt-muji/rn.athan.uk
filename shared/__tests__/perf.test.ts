@@ -118,10 +118,12 @@ const lastMmkvInstance = () => mockMmkvInstances[mockMmkvInstances.length - 1];
 beforeEach(() => {
   jest.resetModules();
   delete process.env.EXPO_PUBLIC_PERF_MONITOR;
+  delete process.env.EXPO_PUBLIC_ENV;
 });
 
 afterEach(() => {
   delete process.env.EXPO_PUBLIC_PERF_MONITOR;
+  delete process.env.EXPO_PUBLIC_ENV;
 });
 
 // =============================================================================
@@ -158,6 +160,22 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR unset (default builds)', () => {
     perf.perfMark('bootstrap_start');
     perf.perfMark('bootstrap_done');
     perf.initPerfMonitor();
+
+    expect(mockMmkvInstances).toHaveLength(0);
+    expect(perf.getPerfRing()).toEqual([]);
+  });
+
+  // The variable can survive into a store build (a stale .env, an EAS profile
+  // secret). Production must ignore it, or a release ships a 600-entry MMKV
+  // ring and the library it is supposed to fold out entirely.
+  it('stays off in a prod build even with EXPO_PUBLIC_PERF_MONITOR=1', () => {
+    process.env.EXPO_PUBLIC_PERF_MONITOR = '1';
+    process.env.EXPO_PUBLIC_ENV = 'prod';
+    const perf = requirePerf();
+
+    perf.initPerfMonitor();
+    perf.perfMark('toggle_tap');
+    perf.perfFlush('test');
 
     expect(mockMmkvInstances).toHaveLength(0);
     expect(perf.getPerfRing()).toEqual([]);
