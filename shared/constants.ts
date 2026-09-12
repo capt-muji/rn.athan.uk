@@ -45,6 +45,14 @@ export const ISTIJABA_INDEX = 4;
 export const NIGHT_PRAYER_NAMES = ['Midnight', 'Last Third', 'Suhoor'] as const;
 
 /**
+ * Standard prayers whose time can land after midnight, so the row's instant belongs to the
+ * next calendar day while the row itself stays on its own day's list. Isha does this at any
+ * latitude; Magrib only above roughly 60N, where sunset itself falls after midnight.
+ * Both halves of that mapping read this list, so they cannot drift apart.
+ */
+export const MIDNIGHT_CROSSING_PRAYERS: string[] = ['Isha', 'Magrib'];
+
+/**
  * Human-readable explanations for each extra prayer
  * Used in PrayerExplanation overlay to provide context to users
  * Order aligns with EXTRAS arrays
