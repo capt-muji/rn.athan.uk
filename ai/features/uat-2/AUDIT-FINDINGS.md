@@ -43,7 +43,7 @@ appendix. That suite lives outside the repository and is not committed.
 
 | # | Finding | Tier | Confidence |
 | --- | --- | --- | --- |
-| 1 | `releases.json` still says 1.0.0, so the update prompt is dead on three of four channels | 1 | CONFIRMED |
+| 1 | `releases.json` says 1.0.0: correct today, a release-checklist trap tomorrow. **Do not touch the file** | 6 | RE-RANKED |
 | 2 | `forceNotificationReschedule()` cannot reopen the 12-hour gate | 1 | CONFIRMED [test] |
 | 3 | The extras preference migration lands on the wrong prayers | 1 | CONFIRMED [test] |
 | 4 | The migration's writes are invisible to the reminder atoms in the same session | 1 | CONFIRMED [test] |
@@ -51,7 +51,7 @@ appendix. That suite lives outside the repository and is not committed.
 | 6 | The error screen's only button deletes the prayer cache | 1 | CONFIRMED |
 | 7 | No error boundary, and the display-date atom throws when nothing is in the future | 1 | CONFIRMED [test] |
 | 8 | A malformed or partial API day crashes the pipeline | 1 | CONFIRMED [test] |
-| 9 | `eas.json` pins no environment, and the default serves mock prayer times | 1 | LIKELY |
+| 9 | `eas.json` pins no environment; the EAS dashboard supplies it, so the repo does not record its own contract | 6 | RESOLVED by owner |
 | 10 | `AlertType`'s persisted integers are pinned by nothing | 1 | CONFIRMED |
 | 11 | The notifications mock breaks the identifier-echo invariant the sweep depends on | 1 | CONFIRMED |
 | 12 | Extras night rows get roughly 19 hours less buffer than every other row | 2 | CONFIRMED [test] |
@@ -106,7 +106,31 @@ appendix. That suite lives outside the repository and is not committed.
 
 # Tier 1: can produce a wrong, missing or silent alert today
 
-## 1. `releases.json` still says 1.0.0, so the update prompt is dead on three of four channels
+## 1. RE-RANKED to Tier 6: `releases.json` is correct today. Do not touch the file.
+
+**This was ranked first, and that was wrong.** It rested on an assumption I could not check
+from the repository and did not flag clearly enough: that releases had shipped past the version
+in the file. They have not. Corrected here rather than quietly edited, because the reasoning
+error is worth keeping visible.
+
+**What is actually true.** Production is 1.5.2 on both stores and nothing newer has been
+released. The file says 1.0.0. `isNewerVersion('1.5.2', '1.0.0')` is false, so no prompt fires,
+**and that is the correct outcome**: there is no newer production release to point a user at.
+The mechanism is behaving exactly as designed.
+
+**Owner ruling, 2026-09-12: the file must not be edited, corrected or deleted.** Live apps in
+both stores fetch it. It stops being read only once the update-prompt feature is removed from
+the codebase and that removal has shipped to users; the file is deleted in a separate commit
+after that, never before. The replacement is ISSUES #35 and keeps its own session.
+
+**What survives as a finding**, and it is a Tier 6 process note rather than a defect: the file
+has never been edited since the feature landed, so the manual bump after a store release is a
+step with no precedent and nothing enforcing it. The first production release past 1.5.2 will
+need it, and the consequence of forgetting is silent. It belongs on the release checklist, not
+in a code change. Finding 18 compounds it: a `v` prefix or any non-numeric segment written into
+that file inverts `compareVersions` and disables the prompt with no log and no error.
+
+The original write-up follows, kept for the record.
 
 `releases.json` on `main`, fetched by `device/updates.ts:13`. App version is 1.25.3
 (`app.json:5`).
@@ -417,7 +441,23 @@ CONFIRMED [test].
 than caching a day that cannot be read. This also closes the high-latitude case in finding
 47, where providers emit `"-----"` or omit Sunrise.
 
-## 9. `eas.json` pins no environment, and the default serves mock prayer times
+## 9. RE-RANKED to Tier 6: the EAS dashboard supplies the environment
+
+**Owner, 2026-09-12: the EAS dashboard sets `EXPO_PUBLIC_ENV` and `EXPO_PUBLIC_API_KEY`.** So
+the contract is closed, and this is not a live risk. The finding survives only as the narrower
+point it should have been: **the repository does not record its own build contract.** Nothing
+in a checkout says where the environment comes from, so the failure mode is invisible to anyone
+reading the code, and nothing fails loudly if a dashboard value is ever removed or renamed.
+
+That is worth one `env` block in `eas.json` stating explicitly what the dashboard already
+provides, plus a hard failure at config time when the environment is prod or preview and the
+key is absent or still the `.env.example` placeholder. Both are cheap, and both turn a silent
+class of failure into a build error.
+
+The original write-up follows, kept because its analysis of the fail-open direction is still
+the reason the guard is worth adding.
+
+### Original write-up
 
 `eas.json:7-18`, `shared/config.ts:2-3`, `api/client.ts:37`.
 
@@ -1527,7 +1567,7 @@ the document.
 | f | The `expo-constants` mock can never produce a null `expoConfig` | `shared/__mocks__/expo-constants.ts:16-20` | The real value is nullable, hence the `?.` at `stores/version.ts:17`. That branch returns `''`, which makes `handleAppUpgrade` bail and never stamp the version or the schema marker. |
 | g | `StoredPrayer` and `StoredPrayerSequence` document a format the app does not use | `shared/types.ts:250-271` | Confident persistence docs, including a bespoke no-`Z` datetime format, for types no runtime module references. A maintainer would reason about timezone bugs that cannot exist. |
 | h | `toggleOverlay()`'s no-argument open branch would reopen a stale row index | `stores/overlay.ts:64-70` | Unreachable today; every call site passes an explicit value. Narrow the signature or delete the branch. |
-| i | `eas.json` hardcodes an absolute `$HOME` path for the Play service-account key | `eas.json:26` | Submission works from one machine, and the filename leaks the GCP project and key id in a public repository. |
+| i | `eas.json` hardcodes an absolute `$HOME` path for the Play service-account key | `eas.json:26` | Change the line, do not rewrite history. Full reasoning below the table. |
 | j | `preview` has no `autoIncrement` under `appVersionSource: "remote"` | `eas.json:12-14` | Two consecutive preview builds carry the same build number, and the store rejects the duplicate. Combined with finding 1, testers are never told. |
 | k | Local release builds always emit `versionCode 1` | `android/app/build.gradle:95` | `app.json` declares no `android.versionCode` and `appVersionSource: remote` covers EAS only, so a local release APK cannot install over a Play build. |
 | l | `plugins/removeUnusedAndroidPermissions.js` is a no-op and a loaded gun | `plugins/removeUnusedAndroidPermissions.js:3` | It targets only `SYSTEM_ALERT_WINDOW`, which is declared only in debug source sets, and `withAndroidManifest` writes only `main`. It removes nothing. It is a name-matched blacklist with no allowlist guard, sitting after `expo-notifications` in the plugin list. |
@@ -1546,6 +1586,56 @@ the document.
 | y | Stale doc on the data-fetch gate | `stores/sync.ts:103` | Documents the trigger as `EXPO_PUBLIC_DEV_MODE=true`. That variable exists nowhere else in the repository. The real gate is `APP_CONFIG.isDev`, keyed off `EXPO_PUBLIC_ENV`. |
 | z | README contradicts itself on cadence and on audio attribution | `README.md:102,230,621` and `:165-196` vs `:578-595` | Two different background intervals, and two contradictory credit lists giving different source URLs for the same numbered athans. In a public MIT repository that is an attribution problem rather than a typo. `:351` also says Expo 57.0.18 where `package.json` says ~57.0.22. |
 | aa | `as ReminderInterval` on a raw MMKV number | `components/sheets/screens/Alert.tsx:112` | The `\|\| DEFAULT_REMINDER_INTERVAL` guard catches 0 and undefined but not a value outside `REMINDER_INTERVALS`. A stale value shows in the Stepper with a dead decrement and flows into the reminder offset. Only bites if the interval list ever changes. `shared/constants.ts:93` already has the validator. |
+
+## On Tier 6 item i: is the GCP project id in `eas.json` worth worrying about?
+
+The owner asked directly, so here is the answer with the evidence rather than a shrug.
+
+**What is exposed.** `eas.json:26` reads
+`"serviceAccountKeyPath": "$HOME/.config/athan/athan-<project>-<12 hex>.json"`. Google's
+default download filename is `<project-id>-<key-id-prefix>.json`, so the line discloses the GCP
+project id and the first twelve characters of the service account key's `private_key_id`, plus
+one machine's home directory.
+
+**What is not exposed, verified across all 2,182 commits:**
+
+```
+$ git log --all --oneline -- '*athan-486118*' '*service-account*' '*serviceAccount*'
+(empty: the key file has never been tracked)
+
+$ git log --all -p -S'"private_key"' --oneline
+(empty: no private key material anywhere in history)
+
+$ git log --all --oneline -S'athan-486118'
+0b6a6b6 added eas preview prod to eas cli      (one commit)
+```
+
+**So: not sensitive, in the sense that matters.** Neither value is a credential. A GCP project
+id is an identifier that appears in ordinary API URLs and error messages; you cannot
+authenticate with it. A `private_key_id` identifies which key was used and is visible to anyone
+already authorised to list keys in the project; it is useless without the private key material,
+which was never committed. The realistic cost is reconnaissance: it tells someone which project
+exists and confirms a Play service account exists on it. That is worth removing, but it is not
+an incident.
+
+**Rewriting history: no, and the reasoning is not laziness.** It is one commit out of 2,182 on
+a public repository with clones and forks. A rewrite force-pushes every SHA, breaks every
+existing clone, and invalidates the commit references this very document cites as evidence.
+GitHub also keeps unreachable objects served until asked to purge them, so the old blob would
+likely survive the exercise anyway. Large cost, real collateral damage, and the thing being
+removed is not a credential.
+
+**Change the current line anyway**, for reasons unrelated to secrecy. It hardcodes one home
+directory, so `eas submit` cannot run from any other machine. The repository's own
+`.agents/skills/eas-app-stores/references/play-store.md:68` documents the form to use instead,
+which keeps the credential in EAS rather than on a path. That fixes the portability problem and
+removes the disclosure from the tip of the tree in the same edit.
+
+**And the general lever worth remembering: if a credential is ever genuinely exposed, rotate
+it, do not rewrite history.** Rotating the Play service account key in GCP invalidates the old
+key immediately and makes any historical key id meaningless. It takes minutes, needs no history
+surgery, and is the only action that actually closes the exposure. History rewriting hides a
+secret; rotation kills it. Nothing here needs rotating, because nothing was exposed.
 
 ## Accessibility
 
@@ -1580,6 +1670,53 @@ accessibility tree, and `Bar.tsx:162-166` carries a full progressbar role, label
 
 ---
 
+# What actually reached users
+
+**Production is 1.5.2 on both the App Store and the Play Store** (owner, 2026-09-12). `uat-2`
+HEAD is 1.25.5. `git log --oneline b9985ea..uat-2` counts **233 commits** between them.
+
+That gap matters more than anything else in this document, and it was not known when the tiers
+were written. Most of the machinery Tier 1 is about postdates the shipped build, so most of
+Tier 1 describes defects **no user has ever been exposed to**. Probed directly against the
+1.5.2 tree at `b9985ea`:
+
+| Finding | Symbol probed | In production 1.5.2 |
+| --- | --- | --- |
+| 2 | `forceNotificationReschedule` | **absent** |
+| 3, 4 | `migrateIndexKeyedAlertPreferences` | **absent** |
+| 5 | `createExtrasAndroidChannel`, `prayerNotificationIdentifier` | **absent** |
+| 14, 22 | `cacheSchemaChanged` | **absent** |
+| 7 | `createDisplayDateAtom` present, the `belongsToDate!` assertion **absent** | partly |
+| 12, 44 | `getNightTimesForDay` | **absent** |
+| 6 | the `clearAllExcept` call in `components/ui/Error.tsx` | **PRESENT** |
+| 21 | `NOTIFICATION_ROLLING_DAYS` | **PRESENT** |
+| 23 | `atomWithStorageNumber` | **PRESENT** |
+
+**This is good news twice over.**
+
+First, finding 3 changes character completely. The mis-mapping migration shipped in **1.5.3**,
+one version *after* production. No production user has ever run it. It can be corrected before
+it runs for the first time, and if it is, nobody is ever mis-mapped. What was a post-mortem is
+now a prevented bug.
+
+Second, it makes session 4 far safer than it looked. Most of these fixes touch code no user has
+seen, so "breaking something" mostly means breaking something that has never worked in the
+field anyway. The small set that genuinely reaches live users today is findings **6, 21 and
+23**, plus whichever Tier 5 and Tier 6 items predate 1.5.2.
+
+**Caveat, stated plainly.** These probes are symbol-presence checks against the 1.5.2 tree, not
+a re-audit of that tree. A finding marked absent above means the code it describes did not
+exist then; it does not mean 1.5.2 was free of some older form of the same defect. If it
+matters for a given finding, re-read the 1.5.2 file rather than trusting this table.
+
+**Nothing has been released since** (owner, 2026-09-12). Work has landed on `uat-2` and on
+`main`, and UAT and iOS builds have been compiled on EAS, but no build past 1.5.2 has been
+pushed to users on either store. Production releases wait for the owner's explicit go-ahead.
+So the whole 233-commit gap is unreleased by intent, not by accident, and session 4's changes
+land in that same unreleased window.
+
+---
+
 # Owner rulings, 2026-09-12
 
 Three findings were put to the owner at the close of session 3. All three are answered, and
@@ -1595,20 +1732,21 @@ Withdrawn in full, above. The generalisation worth carrying forward: **anything 
 change a value the API returned is out of bounds, whatever the justification.** AGENTS.md
 currently phrases this narrowly, as a DST rule. It is broader than that.
 
-## Finding 1, `releases.json`: mechanism is intended, redesign stays out of scope
+## Finding 1, `releases.json`: do not touch the file at all
 
-The manual bump after a successful store release is the intended mechanism today, and
-replacing it with automatic detection (iTunes lookup on iOS, Play In-App Updates on Android)
-is ISSUES #35 and needs its own session. Session 4 does not touch it.
+*"There is code out there that reads this file. So we shouldn't even touch this file at all.
+When we remove this feature from the codebase and push it out, it will no longer read the file.
+Then we make a commit later, after we release, to remove this file."*
 
-What remains in scope is the observation, unchanged: the three version strings on `main` are
-still `1.0.0` while the app is at `1.25.4`, and `git log` shows the file has never been edited
-since the feature shipped. The severity depends on one fact this audit could not establish
-from the repository: whether a Play Store or TestFlight release has actually gone out on those
-channels since then. If yes, those users have been stranded. If the app is live only on the
-App Store, which bypasses this file entirely, then `1.0.0` is correctly parked and waiting for
-the first release on the other channels. **Ranked first in the summary on the assumption that
-releases had shipped; re-rank it once the owner confirms.**
+**Do not edit it, do not correct its version strings, do not delete it.** Apps already in both
+stores fetch it at runtime. The file is removed only after the feature that reads it has been
+removed and that removal has reached users, in a separate commit. The replacement is ISSUES
+#35 and keeps its own session.
+
+The finding itself was re-ranked from Tier 1 to Tier 6 once the release position was known, and
+the correction is written up in full at finding 1. Short version: production is 1.5.2, nothing
+newer has been released, so the prompt not firing is the correct behaviour rather than a
+defect. What remains is a release-checklist note about a manual step that has no precedent.
 
 ## Finding 3, the extras preference mis-map: repair it, and delete the junk
 
