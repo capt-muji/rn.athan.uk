@@ -41,13 +41,23 @@ if [[ ${FRAME_AUDIT:-video} == sf ]]; then
 import sys
 lines = [l.split() for l in open(sys.argv[1]) if len(l.split()) == 3]
 pts = sorted(int(f[1]) for f in lines if int(f[1]) != 0)
+# Every quantity below is MILLISECONDS. The thresholds were once written in
+# seconds, which discarded every real frame gap before the verdict and left
+# all() over an empty list, so this branch could only ever print PASS.
 ms = [(t - pts[0]) / 1e6 for t in pts]
 tail = [m for m in ms if m > ms[-1] - 2500]
 gaps = [tail[i] - tail[i-1] for i in range(1, len(tail))]
-anim = [g for g in gaps if 0 < g <= 0.100]
-print(f"frames(last-2.5s)={len(tail)} anim-cadence-gaps(ms):",
-      [f"{g*1000:.0f}" for g in anim])
-print("30fps FLOOR:", "PASS" if all(g <= 0.034 for g in anim) else "FAIL")
+anim = [g for g in gaps if 0 < g <= 100]
+long = [g for g in gaps if g > 100]
+print(f"frames(last-2.5s)={len(tail)} anim-cadence-gaps(ms):", [f"{g:.0f}" for g in anim])
+# A gap over 100ms is either a real freeze or a stretch where nothing was drawn,
+# and SF latency alone cannot tell those apart. It is excluded from the cadence
+# verdict and printed, never silently dropped.
+print("gaps>100ms (freeze or idle, needs frames to tell):", [f"{g:.0f}" for g in long] or "NONE")
+if not anim:
+    print("30fps FLOOR: NO DATA — no cadence gaps in the window, this is not a pass")
+    sys.exit(1)
+print("30fps FLOOR (cadence only):", "PASS" if all(g <= 34 for g in anim) else "FAIL")
 EOF
   echo "evidence: $OUT"; exit 0
 fi
