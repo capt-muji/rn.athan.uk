@@ -328,9 +328,19 @@ describe('buildPrayerWidgetTimeline', () => {
     const pushAt = new Date(asrMs - (2 * 60 + 59.4) * 1000);
 
     const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
+    const horizonMs = pushAt.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
     for (const entry of entries) {
       if (entry.props.stale === true) continue;
+
+      // An entry the horizon strands carries no label at all; the rule below
+      // governs every entry that shows one
+      if (entry.props.countdownLabel === '') {
+        expect(entry.date.getTime() + COUNTDOWN_STEP_MS).toBeGreaterThan(horizonMs);
+        expect(entry.props.nextEpochMs - entry.date.getTime()).toBeGreaterThan(COUNTDOWN_STEP_MS);
+        continue;
+      }
+
       // A backdated first entry labels the push instant, not its own date
       const labelAnchor = entry.date.getTime() > pushAt.getTime() ? entry.date : pushAt;
       const msLeft = entry.props.nextEpochMs - labelAnchor.getTime();
@@ -614,6 +624,127 @@ describe('extras schedule timeline', () => {
     expect(entries[0].props.nextName).toBe('Duha');
     expect(entries[0].props.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Duha', 'Istijaba']);
     expect(entries[0].props.activeIndex).toBe(1);
+  });
+});
+
+// =============================================================================
+// COUNTDOWN HONESTY
+//
+// These read the label the widget SHOWS and measure it against the truth at
+// that instant, instead of recomputing the builder's own rule. A builder that
+// writes a confidently wrong countdown satisfies the rule-restating tests
+// above but cannot satisfy these.
+// =============================================================================
+
+describe('countdown honesty', () => {
+  /** Realistic October London times. The Isha→Fajr night runs 9h 50m — the
+   *  segment the audit caught reading "9h 50m" five minutes before Fajr. */
+  const OCTOBER_TIMES: [string, string, string][] = [
+    ['Fajr', 'الفجر', '05:30'],
+    ['Sunrise', 'الشروق', '07:10'],
+    ['Dhuhr', 'الظهر', '12:40'],
+    ['Asr', 'العصر', '15:20'],
+    ['Magrib', 'المغرب', '17:50'],
+    ['Isha', 'العشاء', '19:40'],
+  ];
+
+  const SPAN_START = '2026-10-18';
+  /** The 16-day span stores/widget.ts pushes (TIMELINE_DAYS + 1, plus yesterday) */
+  const SPAN_DAYS = 16;
+  const PUSH_AT = createPrayerDatetime(SPAN_START, '12:00');
+
+  const makeOctoberSequence = (): PrayerSequence => {
+    const base = createPrayerDatetime(SPAN_START, '12:00');
+    const prayers: Prayer[] = [];
+
+    for (let dayIndex = 0; dayIndex < SPAN_DAYS; dayIndex++) {
+      const date = formatDateShort(addDays(base, dayIndex));
+      for (const [english, arabic, time] of OCTOBER_TIMES) {
+        prayers.push(makePrayer(date, time, english, arabic));
+      }
+    }
+
+    return { type: ScheduleType.Standard, prayers };
+  };
+
+  /** Reads a rendered countdown back into seconds ("9h 50m" → 35400) */
+  const labelSeconds = (label: string): number => {
+    const match = /^(?:(\d+)h)?(?:\s*(\d+)m)?$/.exec(label);
+    if (label.length === 0 || !match) throw new Error(`Unparseable countdown label "${label}"`);
+    return Number(match[1] ?? 0) * 3600 + Number(match[2] ?? 0) * 60;
+  };
+
+  /** The entry WidgetKit renders at `instant`: the last one dated at or before it */
+  const activeAt = <T extends { date: Date }>(entries: T[], instant: number): T | undefined =>
+    entries.filter((entry) => entry.date.getTime() <= instant).at(-1);
+
+  it('never shows a countdown that over-states the time left, across the whole span', () => {
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, makeOctoberSequence(), SETTINGS, 'light');
+    const endMs = entries[entries.length - 1].date.getTime();
+
+    let worstOverReadS = 0;
+    let worstAt = '';
+
+    for (let instant = PUSH_AT.getTime(); instant < endMs; instant += 60 * 1000) {
+      const active = activeAt(entries, instant);
+      if (!active || active.props.stale === true) continue;
+      // A blank label shows no countdown at all, so it cannot over-state one
+      if (active.props.countdownLabel === '') continue;
+
+      const shownS = labelSeconds(active.props.countdownLabel);
+      const truthS = Math.max(1, Math.ceil((active.props.nextEpochMs - instant) / 1000));
+
+      if (shownS - truthS > worstOverReadS) {
+        worstOverReadS = shownS - truthS;
+        worstAt =
+          `${new Date(instant).toISOString()}: widget "${active.props.nextName} ${active.props.nextTime} — ` +
+          `${active.props.countdownLabel}", truth ${Math.ceil(truthS / 60)}m`;
+      }
+    }
+
+    // One step is the WidgetKit-forced refresh cadence and is settled. More
+    // than that is a label nothing ever refreshed.
+    if (worstOverReadS * 1000 > COUNTDOWN_STEP_MS) {
+      throw new Error(`Countdown over-reads by ${Math.round(worstOverReadS / 60)}m at ${worstAt}`);
+    }
+  });
+
+  it('blanks the countdown the horizon strands, keeping the name, time and day', () => {
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, makeOctoberSequence(), SETTINGS, 'light');
+
+    // The Isha→Fajr night of 20→21 October sits well beyond the 24-hour
+    // horizon, so its only entry is the 19:40 boundary flip. Nothing refreshes
+    // it before Fajr, which is why its countdown cannot be allowed to stand.
+    const ishaBoundary = createPrayerDatetime('2026-10-20', '19:40');
+    const fajrMs = createPrayerDatetime('2026-10-21', '05:30').getTime();
+    const nightEntry = entries.find((entry) => entry.date.getTime() === ishaBoundary.getTime());
+
+    expect(nightEntry).toBeDefined();
+    if (!nightEntry) return;
+
+    const between = entries.filter(
+      (entry) => entry.date.getTime() > ishaBoundary.getTime() && entry.date.getTime() < fajrMs
+    );
+    expect(between).toEqual([]);
+
+    expect(nightEntry.props.countdownLabel).toBe('');
+    // Everything the widget can still state truthfully survives
+    expect(nightEntry.props.nextName).toBe('Fajr');
+    expect(nightEntry.props.nextTime).toBe('05:30');
+    expect(nightEntry.props.dateLabel).toBe(formatDateLong('2026-10-21'));
+  });
+
+  it('keeps a label on every entry the horizon still refreshes', () => {
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, makeOctoberSequence(), SETTINGS, 'light');
+    const horizonMs = PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
+
+    // Blanking is the horizon's degradation only — it must never reach an
+    // entry a later step still refreshes
+    const blankedInsideHorizon = entries.filter(
+      (entry) => entry.date.getTime() + COUNTDOWN_STEP_MS <= horizonMs && entry.props.countdownLabel === ''
+    );
+
+    expect(blankedInsideHorizon).toEqual([]);
   });
 });
 

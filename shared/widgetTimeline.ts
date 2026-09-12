@@ -50,9 +50,11 @@ export const COUNTDOWN_STEP_MS = MIN_ENTRY_SPACING_MS;
 /**
  * How long from the push instant the countdown label stays stepped. Within
  * the horizon the label refreshes at the step cadence; beyond it, entries
- * flip only at prayer boundaries (the label then holds until the next
- * boundary — acceptable degradation for a widget the app has not refreshed
- * in over a day, and it bounds the timeline payload size). Segment lengths
+ * flip only at prayer boundaries and carry NO countdown label at all — a
+ * label that cannot be refreshed before its boundary would over-read by the
+ * whole segment, so the widget shows the name and the absolute time instead
+ * (acceptable degradation for a widget the app has not refreshed in over a
+ * day, and it bounds the timeline payload size). Segment lengths
  * that are not multiples of the step absorb the remainder in one gap of up
  * to two steps mid-segment (WidgetKit's spacing floor makes one step
  * everywhere mathematically impossible); the final step always anchors
@@ -214,8 +216,10 @@ export const buildPrayerWidgetTimeline = (
     // (which would show a phantom larger countdown, e.g. "5m" for a prayer
     // only 2 minutes away).
     const segmentStart = cursor;
-    entries.push(makeEntry(segmentStart, prevIndex, lastEmittedMs === null ? now : segmentStart));
+    const openingEntry = makeEntry(segmentStart, prevIndex, lastEmittedMs === null ? now : segmentStart);
+    entries.push(openingEntry);
     lastEmittedMs = segmentStart.getTime();
+    let lastSegmentEntry = openingEntry;
 
     // Stepped countdown entries: the grid is anchored to the segment start,
     // but the FINAL step always sits exactly one spacing before the boundary
@@ -239,14 +243,35 @@ export const buildPrayerWidgetTimeline = (
         stepMs <= alignedCutoffMs;
         stepMs += COUNTDOWN_STEP_MS
       ) {
-        entries.push(makeEntry(new Date(stepMs), prevIndex));
+        lastSegmentEntry = makeEntry(new Date(stepMs), prevIndex);
+        entries.push(lastSegmentEntry);
         lastEmittedMs = stepMs;
       }
 
       if (!cappedByHorizon && lastStepMs - lastEmittedMs >= MIN_ENTRY_SPACING_MS) {
-        entries.push(makeEntry(new Date(lastStepMs), prevIndex));
+        lastSegmentEntry = makeEntry(new Date(lastStepMs), prevIndex);
+        entries.push(lastSegmentEntry);
         lastEmittedMs = lastStepMs;
       }
+    }
+
+    // Where the HORIZON — not WidgetKit's spacing floor — is what stops the
+    // stepping, the segment's final entry stays freshest all the way to the
+    // flip while its label describes its own date, so it over-reads by the
+    // entire remaining gap. Beyond the horizon a segment gets no steps at
+    // all, which is how a night segment still reads "9h 50m" five minutes
+    // before Fajr: the name, the time and the day stay right and only the
+    // countdown lies, with nothing to signal it for the twelve days until
+    // the stale card. An empty label is the honest degradation — both
+    // layouts already hide it and fall back to the name plus the absolute
+    // time (see the length guards in PrayerWidget.tsx and LockPrayerWidget.tsx).
+    //
+    // A gap the spacing floor forces (a segment too short for a second entry)
+    // is left alone: that staleness is bounded by the segment and is the
+    // settled WidgetKit cost, not this defect.
+    const strandedByHorizon = lastEmittedMs + COUNTDOWN_STEP_MS > steppedUntilMs;
+    if (strandedByHorizon && boundaryMs - lastEmittedMs > COUNTDOWN_STEP_MS) {
+      lastSegmentEntry.props.countdownLabel = '';
     }
 
     cursor = nextPrayer.datetime;
