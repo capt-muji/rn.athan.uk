@@ -1,0 +1,126 @@
+#!/bin/zsh
+# device-checks — one command, run on demand: what the phone ACTUALLY has armed.
+#
+# Reports build identity, notification channels, permissions and every alarm the
+# app has scheduled, and FAILS on the things that silently break an alarm clock:
+# nothing armed, a missing channel, or a trigger that is not a prayer time.
+#
+# Usage: device-checks.sh [device-serial] [package] [expected-times.json]
+#
+# expected-times.json (optional) is a JSON list of "YYYY-MM-DD HH:MM" strings —
+# the moments the app should be firing at. When given, every future alarm must
+# match one, and every expected time inside the armed window must be covered.
+# Generate it from the timetable the app is using (see e2e/README.md). No API key
+# is read, passed or stored by this script.
+#
+# Alarm TIMES are only meaningful on a PRODUCTION build: local/dev builds run the
+# mock API, whose prayers sit a few minutes either side of launch and have
+# usually already fired. Everything else here is build-agnostic.
+#
+# Exit status: 0 all checks passed, 1 at least one FAIL.
+
+set -u
+SERIAL=${1:-3T_SERIAL}
+PKG=${2:-com.mugtaba.athan}
+EXPECTED=${3:-}
+ROOT=${0:A:h:h}
+OUT=$(mktemp -d)
+# zsh does not word-split a command held in a variable — use a function
+a() { adb -s "$SERIAL" "$@"; }
+
+FAIL=0
+pass() { print -r -- "  PASS  $1"; }
+fail() { print -r -- "  FAIL  $1"; FAIL=1; }
+note() { print -r -- "        $1"; }
+
+# --- device and build -------------------------------------------------------
+print -r -- "== device =="
+if ! a get-state >/dev/null 2>&1; then
+  print -r -- "  FAIL  device $SERIAL is not reachable (adb devices)"
+  exit 1
+fi
+SDK=$(a shell getprop ro.build.version.sdk | tr -d '\r')
+print -r -- "  $(a shell getprop ro.product.model | tr -d '\r') — Android $(a shell getprop ro.build.version.release | tr -d '\r') (SDK $SDK), serial $SERIAL"
+# The format string must be quoted FOR THE REMOTE SHELL: adb shell re-splits its
+# arguments, so an unquoted '+%Y-%m-%d %H:%M:%S' reaches date as two arguments
+# and silently returns just the date
+print -r -- "  device clock: $(a shell "date '+%Y-%m-%d %H:%M:%S %Z'" | tr -d '\r')"
+
+VERSION=$(a shell dumpsys package "$PKG" 2>/dev/null | grep -m1 versionName | tr -d ' \r')
+if [[ -z $VERSION ]]; then
+  fail "$PKG is not installed"
+  exit 1
+fi
+pass "installed: $PKG ${VERSION#versionName=}"
+PID=$(a shell pidof "$PKG" | tr -d '\r ')
+[[ -n $PID ]] && note "running (pid $PID)" || note "not running (alarms survive; they are armed while it runs)"
+
+# --- permissions ------------------------------------------------------------
+print -r -- "== permissions =="
+a shell dumpsys package "$PKG" > "$OUT/package.txt" 2>/dev/null
+for perm in POST_NOTIFICATIONS RECEIVE_BOOT_COMPLETED WAKE_LOCK; do
+  if grep -q "$perm" "$OUT/package.txt"; then pass "$perm declared"; else note "$perm not declared"; fi
+done
+if (( SDK >= 31 )); then
+  # Only from Android 12 is exact-alarm a runtime decision worth checking
+  STATE=$(a shell cmd appops get "$PKG" SCHEDULE_EXACT_ALARM 2>/dev/null | tr -d '\r' | head -1)
+  if grep -q "USE_EXACT_ALARM" "$OUT/package.txt"; then
+    pass "USE_EXACT_ALARM declared (exact alarms need no user grant)"
+  elif [[ $STATE == *allow* ]]; then
+    pass "SCHEDULE_EXACT_ALARM allowed"
+  else
+    fail "exact alarms not permitted — prayer alerts will be delayed (${STATE:-no appops entry})"
+  fi
+else
+  note "exact-alarm grant is not a thing below SDK 31 (this device is $SDK) — alarms are exact by default"
+fi
+if a shell dumpsys deviceidle whitelist 2>/dev/null | grep -q "$PKG"; then
+  pass "on the battery (doze) allowlist"
+else
+  note "not on the doze allowlist — Android may defer non-exact work; exact alarms still fire"
+fi
+
+# --- notification channels --------------------------------------------------
+print -r -- "== notification channels =="
+a shell dumpsys notification --noredact > "$OUT/notification.txt" 2>/dev/null
+awk -v pkg="$PKG" '
+  $0 ~ "AppSettings: " pkg " " { inblk = 1; next }
+  /AppSettings: / { inblk = 0 }
+  inblk && /NotificationChannel\{/ { print }
+' "$OUT/notification.txt" > "$OUT/channels.txt"
+
+CHANNELS=$(grep -c . "$OUT/channels.txt")
+if (( CHANNELS == 0 )); then
+  fail "no notification channels — the app has never initialised notifications on this device"
+else
+  pass "$CHANNELS channel(s)"
+  grep -oE "mId='[^']*'.*mImportance=[0-9-]+" "$OUT/channels.txt" |
+    sed -E "s/mId='([^']*)'.*mImportance=([0-9-]+)/        \1 (importance \2)/" | sort | head -12
+  # extras_at_time carries Sunrise + every extra; a missing channel means Android
+  # silently drops those notifications (ISSUES #23)
+  grep -q "mId='extras_at_time'" "$OUT/channels.txt" &&
+    pass "extras_at_time present" || fail "extras_at_time MISSING — extras alerts would be dropped"
+  grep -qE "mId='athan_[0-9]+_v2'" "$OUT/channels.txt" &&
+    pass "athan_<n>_v2 present" || note "no athan_<n>_v2 channel yet (created when a Sound alert is first set)"
+  grep -E "mId='(extras_at_time|athan_[0-9]+_v2)'" "$OUT/channels.txt" | grep -q "mSound=null" &&
+    fail "a prayer channel has mSound=null — it would fire silently" ||
+    pass "prayer channels carry a sound"
+fi
+
+# --- scheduled alarms -------------------------------------------------------
+print -r -- "== scheduled alarms =="
+a shell dumpsys alarm > "$OUT/alarm.txt" 2>/dev/null
+NOW=$(a shell "date '+%Y-%m-%d %H:%M:%S'" | tr -d '\r')
+if [[ ! -s $OUT/alarm.txt ]]; then
+  fail "dumpsys alarm returned nothing"
+else
+  if [[ -n $EXPECTED ]]; then
+    python3 "$ROOT/scripts/device_checks.py" "$OUT/alarm.txt" "$PKG" "$NOW" "$EXPECTED" || FAIL=1
+  else
+    python3 "$ROOT/scripts/device_checks.py" "$OUT/alarm.txt" "$PKG" "$NOW" || FAIL=1
+  fi
+fi
+
+print -r -- "== $( ((FAIL)) && print -n 'FAILED' || print -n 'all checks passed' ) =="
+note "dumps kept in $OUT"
+exit $FAIL
