@@ -164,6 +164,13 @@ export interface PageCoordinates {
  * - preference_alert_extra_{prayer_name}
  *
  * Values are stored as integers (0, 1, 2) to save space.
+ *
+ * Those integers are a STORAGE CONTRACT, not an implementation detail: MMKV holds the
+ * literal "0", "1" or "2", so inserting a member or reordering these three silently
+ * re-reads every existing user's choice as a different one — Sound becomes Silent and
+ * the athan stops playing, with no error. Append new members with explicit values only.
+ * `shared/__tests__/types.test.ts` pins the three numbers; symbol-to-symbol assertions
+ * cannot, because they stay true through a reorder.
  */
 export enum AlertType {
   /** No notification */

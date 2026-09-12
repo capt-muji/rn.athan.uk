@@ -813,6 +813,23 @@ design. `AlertType` is the one that is not.
 **Fix direction.** One test: `expect([AlertType.Off, AlertType.Silent, AlertType.Sound]).toEqual([0, 1, 2])`,
 plus a comment on the enum saying the integers are a storage contract.
 
+### CLOSED in session 5, 1.25.39, `fix/audit-10-alerttype-storage-contract`
+
+New suite `shared/__tests__/types.test.ts` (44th suite): the three integers pinned by value,
+`Off` pinned at zero separately because the falsy checks and the default both lean on it, and
+`Object.values` pinned at exactly `[0, 1, 2]` so an appended member has to be declared here
+first. `ScheduleType`'s strings are pinned in the same file, since they appear inside MMKV key
+names. The enum's JSDoc now states the contract and says why a symbol-to-symbol assertion
+cannot enforce it.
+
+**Correction to the finding.** "The full suite stays green" is wrong. Swapping `Silent` and
+`Sound` and running the whole suite fails **four** tests in two files: the new pin, and three in
+`stores/__tests__/notifications.test.ts` that happen to assert the literal `'2'` in a storage
+key. So the gap was narrower than recorded. It was still worth closing, for two reasons: those
+three are incidental, and would be "fixed" by editing the expected literal rather than read as
+a contract violation; and they only catch a swap of these two members, not an insertion or a
+renumbering that leaves `Sound` at 2.
+
 ## 11. The notifications mock breaks the identifier-echo invariant the sweep depends on
 
 `shared/__mocks__/expo-notifications.ts:23`.
