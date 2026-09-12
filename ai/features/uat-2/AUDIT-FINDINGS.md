@@ -97,7 +97,7 @@ appendix. That suite lives outside the repository and is not committed.
 | 42 | A cache gap makes the widget present the next day's prayer all day | 4 | CONFIRMED |
 | 43 | The API endpoint is London with no city parameter | 5 | CONFIRMED |
 | 44 | Magrib is the one prayer with no midnight-crossing rule | 5 | CONFIRMED |
-| 45 | Asr is hardcoded to the Hanafi calculation | 5 | CONFIRMED |
+| 45 | ~~Asr is hardcoded to the Hanafi calculation~~ | 5 | **WITHDRAWN** by owner ruling |
 | 46 | The London-pinned test oracles will fail as false alarms when the timezone flips | 5 | CONFIRMED |
 | 47 | High latitude: no polar-day handling, and a missing Sunrise crashes | 5 | CONFIRMED |
 | a-aa | Hygiene, docs and tidiness (27 items), plus four accessibility items | 6 | see Tier 6 |
@@ -1459,15 +1459,22 @@ wrapped Istijaba would not be re-dated.
 
 CONFIRMED.
 
-## 45. Asr is hardcoded to the Hanafi calculation
+## 45. WITHDRAWN: "Asr is hardcoded to the Hanafi calculation"
 
-`shared/types.ts:25-28` documents both `asr` (Hanafi) and `asr_2` (Shafi, "not used in app"),
-and `shared/prayer.ts:73` takes `times.asr` unconditionally. The London Unified timetable's
-Hanafi Asr runs typically 45 to 90 minutes later than the Shafi Asr used by most of the
-Muslim world. Going global with this fixed is a wrong time for the majority of new users, and
-it is invisible: no setting, no mention in the UI.
+**Owner ruling, 2026-09-12: the API is the source of truth and the app edits nothing it
+returns. No school selection, no method selection, no offset, not now and not for v2.0.**
 
-CONFIRMED. This is a product decision as much as a code one, and it needs the owner.
+This finding should never have been written. It proposed exactly the correcting that the
+settled principle forbids: the app interprets what the API gives and never adjusts it. The
+London Unified timetable designates one value as Asr, `shared/prayer.ts:73` takes it verbatim,
+and that is the correct behaviour. `asr_2` sits in the response type because the API returns
+it; ignoring it is right.
+
+Recorded as withdrawn rather than deleted so the same argument is not made again. The rule it
+breaks is broader than DST, which is how AGENTS.md currently phrases it: **anything that would
+change a time the API returned is out of bounds, whatever the justification.** Re-dating a time
+to the correct calendar day is not the same thing, which is why finding 44 stands: that one is
+about the app filing an API value under the wrong day, not about altering its value.
 
 ## 46. The London-pinned test oracles will fail as false alarms when the timezone flips
 
@@ -1570,6 +1577,73 @@ wrong time.
 
 Credit where it is due: `Prayer.tsx:85-86` correctly hides non-selected rows from the
 accessibility tree, and `Bar.tsx:162-166` carries a full progressbar role, label and value.
+
+---
+
+# Owner rulings, 2026-09-12
+
+Three findings were put to the owner at the close of session 3. All three are answered, and
+the answers change what session 4 does.
+
+## Finding 45, Asr: withdrawn
+
+*"The API that we use gives us the prayer times and we use those, that's it. It does not allow
+us to provide any changes to it, a +1 or a -1, a different method or school. I do not want to
+change anything. The API is the source of truth. We shouldn't be editing anything."*
+
+Withdrawn in full, above. The generalisation worth carrying forward: **anything that would
+change a value the API returned is out of bounds, whatever the justification.** AGENTS.md
+currently phrases this narrowly, as a DST rule. It is broader than that.
+
+## Finding 1, `releases.json`: mechanism is intended, redesign stays out of scope
+
+The manual bump after a successful store release is the intended mechanism today, and
+replacing it with automatic detection (iTunes lookup on iOS, Play In-App Updates on Android)
+is ISSUES #35 and needs its own session. Session 4 does not touch it.
+
+What remains in scope is the observation, unchanged: the three version strings on `main` are
+still `1.0.0` while the app is at `1.25.4`, and `git log` shows the file has never been edited
+since the feature shipped. The severity depends on one fact this audit could not establish
+from the repository: whether a Play Store or TestFlight release has actually gone out on those
+channels since then. If yes, those users have been stranded. If the app is live only on the
+App Store, which bypasses this file entirely, then `1.0.0` is correctly parked and waiting for
+the first release on the other channels. **Ranked first in the summary on the assumption that
+releases had shipped; re-rank it once the owner confirms.**
+
+## Finding 3, the extras preference mis-map: repair it, and delete the junk
+
+*"We can clear out the database if we're no longer using the keys in there, because we don't
+want to populate the database and keep it populated with junk."*
+
+Two corrections to how that lands, both of which session 4 needs.
+
+**A schema bump will not do it.** `UPGRADE_KEEP_PREFIXES` at `stores/version.ts:150` keeps
+`preference_`, so bumping `CACHE_SCHEMA_VERSION` wipes the prayer cache and leaves every
+preference key, junk included, untouched. Clearing these needs an explicit removal, not a
+schema bump. That separation is deliberate and correct: a user's alarm settings should survive
+a cache wipe.
+
+**The mis-map can be repaired exactly, not guessed at.** There is a reliable discriminator. The
+old array is known precisely, `['Last Third', 'Suhoor', 'Duha', 'Istijaba']` up to and
+including v1.0.26, and `app_installed_version` survives every wipe. So the correct migration
+picks its name array by the stored version:
+
+| Stored version at launch | Array the index keys were written against | Action |
+| --- | --- | --- |
+| Below `1.0.27` | `['Last Third', 'Suhoor', 'Duha', 'Istijaba']` | Migrate against **that** array. Restores the user's actual settings exactly. |
+| `1.0.27` and above | current `EXTRAS_ENGLISH` | Migrate as today. Already correct. |
+| Either | | Remove every `preference_*_extra_<digit>` key afterwards, as it does now |
+
+No data is lost and no alarm lands on a prayer the user did not choose.
+
+**One ordering bug blocks it.** `handleAppUpgrade` captures `storedVersion` at
+`stores/version.ts:238`, overwrites it at `:265`, and only then calls the migration at `:280`.
+By the time the migration runs, the discriminator it needs has already been destroyed. Pass the
+captured value in as an argument; it is a one-line change and it must land in the same commit.
+
+Note also that this repair only reaches installs that still hold index keys. Anything that has
+launched since 1.5.3 already migrated, correctly or not, and the old keys are gone. For those,
+nothing can be recovered and nothing should be attempted.
 
 ---
 
