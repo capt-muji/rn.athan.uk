@@ -26,7 +26,7 @@ export default function ActiveBackground({ type }: Props) {
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
   const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
 
-  // nextPrayerIndex is chronological; the pill sits on the row List actually renders
+  // nextPrayerIndex indexes the sequence's rows; the pill sits on the row List actually renders
   const nextPrayerVisualRow = canonicalDisplayOrder(todayPrayers, type).indexOf(nextPrayerIndex);
 
   const yPosition = (isReady && nextPrayerVisualRow >= 0 ? nextPrayerVisualRow : 0) * STYLES.prayer.height;

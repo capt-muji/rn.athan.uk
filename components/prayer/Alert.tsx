@@ -56,8 +56,8 @@ export default function Alert({ type, index }: Props) {
 
   const [isPressed, setIsPressed] = useState(false);
 
-  // `index` is CHRONOLOGICAL — List hands each row its position in the
-  // datetime-sorted day — while the alert atoms and the scheduler are both
+  // `index` is the row's position in the day as the sequence holds it, while
+  // the alert atoms and the scheduler are both
   // CANONICAL, keyed off EXTRAS_ENGLISH/PRAYERS_ENGLISH order. Resolve by name
   // so the bell, the sheet it opens and the scheduler cannot drift apart if the
   // two orders ever stop coinciding. usePrayer has to run before the atom read

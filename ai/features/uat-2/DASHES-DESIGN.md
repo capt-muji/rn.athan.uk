@@ -124,7 +124,11 @@ Behaviour this produces:
 
 - Segments run between readable instants and hold ends. Each entry's day list is the display date at
   that entry (`resolveDisplayDate`), rows show `--:--` for unreadable times, and `activeIndex` is -1
-  when next is not on that list, which the layouts already render without a pill.
+  when next is not on that list. The medium layout then shows its single-prayer composition, so the
+  date label stays the next prayer's own day: a held day's date is never printed beside the next
+  day's time.
+- Entries stay at least five minutes apart even where a hold end and the next list's first readable
+  row fall within minutes of each other.
 - The stale card anchors on the last readable row. A sequence with no readable row still yields no
   entries. The widgets flag stays off; this keeps them correct for when it is on.
 
@@ -199,7 +203,9 @@ Found by the design review, 2026-09-13. None is built around; each follows from 
 - **A passed unreadable Istijaba cannot be tapped**, exactly as a passed readable one cannot today.
 - **Unreadable Extras night rows show bright early.** R10 read literally lights them once the rows
   above them have passed, which for a leading Midnight is as soon as its list is on screen.
-- **The iOS widget's bar** still starts from the entry's own date when no previous row exists, as it
-  does today; the layouts read missing bounds as the refresh card. Widgets are flagged off.
+- **The iOS widget on a held day** shows the next readable prayer on its own day, not the held day's
+  `--:--` list, because the medium layout draws its list only around an active row. Its
+  `prevEpochMs` still falls back to the entry's own date when no previous row exists, as it does
+  today. Widgets are flagged off.
 - **Downgrading** to a build older than this change reads a stored `null` and fails its sync; Refresh
   recovers it.

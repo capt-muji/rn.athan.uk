@@ -105,7 +105,9 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
     ("Sync layer ensures data exists", ADR-004) — the CountdownBar needs yesterday's
     Isha/Istijaba before the first Fajr of the new year. The Jan-1 branch
     (stores/sync.ts:49-62) re-fetches the previous year ONLY if Dec 31 is missing
-    (non-seamless path).
+    (non-seamless path). (Superseded in session 3 of the uat-2 queue: `getYesterdayFinalPrayer`
+    is gone, the bar's previous row is rebuilt from storage and is simply absent when 31 December
+    is not stored, and the 1 January branch fetches 31 December alone without marking the year.)
   - **Full wipes happen in exactly two places**: `updatePrayerData`
     (`clearAllExcept(['app_installed_version', 'preference_'])`, stores/sync.ts:135 —
     runs only when a full refresh is needed) and `clearUpgradeCache`

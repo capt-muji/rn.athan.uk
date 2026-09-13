@@ -83,7 +83,7 @@ export default function Overlay() {
 
   const isExtra = overlay.scheduleType === ScheduleType.Extra;
 
-  // selectedPrayerIndex is chronological; position uses the row List actually renders
+  // selectedPrayerIndex indexes the sequence's rows; position uses the row List actually renders
   const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
   const { prayers, displayDate } = usePrayerSequence(overlay.scheduleType);
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);

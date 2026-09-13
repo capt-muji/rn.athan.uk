@@ -490,7 +490,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 The codebase follows established patterns for consistency:
 
 1. **Helper Function Extraction**: Complex logic extracted into named functions
-   - Example: `parseNightBoundaries()` in time.ts
+   - Example: `getNightTimes()` in time.ts
    - Example: `getNightTimesForDay()` in prayer.ts
 
 2. **Section Comments**: Files organized with clear section headers

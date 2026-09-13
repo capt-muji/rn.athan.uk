@@ -392,12 +392,11 @@ export const setSoundPreference = (selection: number) => store.set(soundPreferen
  * EXTRAS_ENGLISH — from its English name.
  *
  * Two index spaces reach this store and they are not the same thing. Row
- * indices from the prayer list are CHRONOLOGICAL: positions in the
- * datetime-sorted list of a day's prayers. Every atom array here is
- * CANONICAL: built positionally from the name constants, and the scheduler
- * iterates the same constants. The two coincide only while the canonical names
- * happen to be in chronological order, which is a property of the data rather
- * than a guarantee. This module already judged that assumption unsafe once —
+ * indices from the prayer list are positions in the day's rows as the sequence
+ * holds them. Every atom array here is CANONICAL: built positionally from the
+ * name constants, and the scheduler iterates the same constants. The two
+ * coincide only because the sequence happens to be built in that order, which
+ * is a property of the builder rather than a guarantee this store can rely on. This module already judged that assumption unsafe once —
  * see `migrateIndexKeyedAlertPreferences`, which exists because "the index only
  * maps to the intended prayer while data is canonical". The keys were fixed;
  * callers reaching them by row index were not.
@@ -421,7 +420,7 @@ export const canonicalPrayerIndex = (scheduleType: ScheduleType, prayerName: str
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Canonical index of the prayer in its schedule (0-based).
- *   Callers holding a chronological row index must map it through
+ *   Callers holding a row index from the list must map it through
  *   `canonicalPrayerIndex` first.
  * @returns Jotai atom for the prayer's alert type
  */

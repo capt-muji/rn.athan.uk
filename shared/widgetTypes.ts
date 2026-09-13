@@ -89,7 +89,7 @@ export interface PrayerWidgetProps {
    * and both layouts fall back to the name plus the absolute time.
    */
   countdownLabel: string;
-  /** Date of the list day on screen in the app's format (Hijri when enabled) */
+  /** Date of the upcoming prayer in the app's format (Hijri when enabled) */
   dateLabel: string;
   /**
    * The displayed day's prayers for the medium widget's list: the list day

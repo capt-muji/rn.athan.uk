@@ -513,9 +513,9 @@ export const getPrayerForDate = (type: ScheduleType, english: string, date: stri
  * @returns Indices into the input array, in canonical display order
  *
  * @example
- * // Friday extras chronologically: [Duha 09:00, Istijaba 15:14, Midnight 23:17]
+ * // Friday extras gathered in time order: [Midnight, Last Third, Suhoor, Duha, Istijaba] come back as [0, 1, 2, 3, 4];
+ * // the same rows in any other order come back sorted into that one
  * canonicalDisplayOrder(prayers, ScheduleType.Extra)
- * // Returns: [2, 0, 1] -> Midnight, Duha, Istijaba
  */
 export const canonicalDisplayOrder = (prayers: Prayer[], type: ScheduleType): number[] => {
   const identityOrder = prayers.map((_, index) => index);
