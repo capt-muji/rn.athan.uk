@@ -7,13 +7,26 @@ when it starts, and keep the brief itself in this directory.
 
 | # | Session | Brief | Status |
 | --- | --- | --- | --- |
-| 1 | **Verify every feature on real hardware** — both phones, all 99 sounds, every notification, every Extras row, before/after midnight | `device-verification-sweep.md` | **NEXT** |
-| 2 | **Fetch before wipe** — never clear a usable cache for a fetch that might fail | `data-resilience-swap-not-wipe.md` | queued |
-| 3 | **`--:--` for unreadable times** — per prayer, not per day; the day is still shown | `unavailable-times-dashes.md` | queued |
-| 4 | **Close the test-coverage gaps** — parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | queued |
-| 5 | **Moonsighting.com / Khalid Shaukat research** — v2.0 prerequisite, needs its own clean context | `moonsighting-research.md` | queued |
+| 1 | **Verify every feature on real hardware**: the flip either side of 00:00, both clock changes, high latitude, unreadable times, `uat` against `uat-2` | `device-verification-sweep.md` | **DONE** 2026-09-13, findings 72 to 77 |
+| 2 | **Fetch before wipe**: never clear a usable cache for a fetch that might fail | `data-resilience-swap-not-wipe.md` | **NEXT** |
+| 3 | **`--:--` for unreadable times**: per prayer, not per day; the day is still shown | `unavailable-times-dashes.md` | queued |
+| 4 | **Close the test-coverage gaps**: parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | queued |
+| 5 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context | `moonsighting-research.md` | queued |
 
 Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else.
+
+## Waiting on the owner, from session 1
+
+None of these is a session yet. Each needs the owner's decision first.
+
+- **Finding 74:** after 00:00, a still-due row from yesterday's list leaves the screen and loses its
+  alarm. It is dormant in London and live for v2.0.
+- **Finding 72:** night rows on the first stored day come from a substituted Magrib, and two tests
+  assert that behaviour.
+- **Traced, not run (finding 74):** a Suhoor wrapped onto the evening before loses a day of buffer,
+  and on 1 January a failed previous-year fetch rejects `sync()`.
+- **Leftover channels on the 3T:** cosmetic. Clearing the app's data or uninstalling removes them,
+  and either needs a fresh backup of the owner's data first.
 
 ## Also live, not sessions
 
@@ -21,6 +34,8 @@ Ordering is the owner's, given 2026-09-13: the device sweep runs before everythi
   closures live in `ai/features/uat-2/AUDIT-FINDINGS.md`.
 - Mutation harness: `ai/features/uat-2/mutate.py` and `mutate2.py`. Re-run against any file an
   audit touches; a survivor is a place the suite cannot see.
+- Finding 76: three wrong code comments and a stale `ai/AGENTS.md:523` note, small documentation
+  fixes.
 
 ## Standing rules that apply to every session in this list
 
