@@ -209,10 +209,13 @@ Found by the design review, 2026-09-13. None is built around; each follows from 
   today. Widgets are flagged off.
 - **Downgrading** to a build older than this change reads a stored `null` and fails its sync; Refresh
   recovers it.
-- **Known limits left in place, found by the last reviews.** None is reachable in London's ordinary use.
-  - A 31 December answer that lands after the resume's own check is armed by the next reschedule, not at
-    once: opened between 00:00 and about 01:40 on 1 January with 31 December missing, that night's Last Third
-    alarm is not set.
-  - A sync that stores days and then fails before it finishes skips the re-arm that a successful one gets.
-  - A download landing just before the resume's first refresh reads the days can lead to two identical
-    reschedules. Identifiers are fixed, so the second overwrites the first.
+- **Known limits left in place, found by the last reviews.**
+  - A 31 December answer that lands after the launch or resume refresh is armed by the next reschedule, not at
+    once. After a first install, a reinstall or a Refresh between 00:00 and about 01:40 on 1 January, with 31
+    December missing, that night's Last Third alarm is not set (Midnight has already passed by then).
+  - A sync that stores days and then fails before it finishes (only if setting up the lists or starting the
+    countdowns throws) skips the re-arm that a successful one gets.
+  - A download landing just before the resume's first refresh reads the days leads to two identical
+    reschedules. This is harmless: identifiers are fixed, so the second overwrites the first.
+  - After the clock is set back and then forward, an older 31 December request can clear a newer one's
+    in-flight mark, which costs one extra request.
