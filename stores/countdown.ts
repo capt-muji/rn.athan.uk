@@ -8,9 +8,10 @@
 import { type Atom, atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { COUNTDOWN_BAR, OVERLAY } from '@/shared/constants';
+import { COUNTDOWN_BAR, OVERLAY, UNAVAILABLE_TIME } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { perfMark } from '@/shared/perf';
+import { findNextOccurrence, isReadable, isRowPassed } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { CountdownKey, type CountdownStore, type Prayer, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
@@ -18,6 +19,7 @@ import {
   extraDisplayDateAtom,
   extraNextPrayerAtom,
   extraPrevPrayerAtom,
+  getNextBoundary,
   getNextPrayer,
   getSequenceAtom,
   refreshSequence,
@@ -74,9 +76,15 @@ const makeCountdownNameAtom = (source: Atom<CountdownStore>) => atom((get) => ge
  * the final-10-minutes window formatTime enforces), per minute otherwise.
  * The raw atoms keep ticking 1/s for boundary correctness; consumers of these
  * never re-render on a second that doesn't change what they draw.
+ *
+ * A target with no readable time has nothing to count down to, so it draws
+ * as UNAVAILABLE_TIME (R12).
  */
 const makeCountdownDisplayAtom = (source: Atom<CountdownStore>) =>
-  atom((get) => formatTimeSecondsAware(get(source).timeLeft, get(showSecondsAtom)));
+  atom((get) => {
+    const { timeLeft } = get(source);
+    return timeLeft === null ? UNAVAILABLE_TIME : formatTimeSecondsAware(timeLeft, get(showSecondsAtom));
+  });
 
 const formatTimeSecondsAware = (seconds: number, showSeconds: boolean) => TimeUtils.formatTime(seconds, !showSeconds);
 
@@ -128,7 +136,7 @@ const makeBarProgressAtom = (type: ScheduleType) =>
     get(getCountdownAtom(type));
     const prev = get(getPrevPrayerAtom(type));
     const next = get(getNextPrayerAtom(type));
-    if (!prev?.datetime || !next?.datetime) return 0;
+    if (!prev || !next) return 0;
 
     const elapsedMs = Date.now() - prev.datetime.getTime();
     const totalMs = next.datetime.getTime() - prev.datetime.getTime();
@@ -146,7 +154,7 @@ const makeBarWarningAtom = (type: ScheduleType) =>
     get(getCountdownAtom(type));
     const prev = get(getPrevPrayerAtom(type));
     const next = get(getNextPrayerAtom(type));
-    if (!prev?.datetime || !next?.datetime) return false;
+    if (!prev || !next) return false;
 
     const elapsedMs = Date.now() - prev.datetime.getTime();
     const totalMs = next.datetime.getTime() - prev.datetime.getTime();
@@ -156,10 +164,20 @@ const makeBarWarningAtom = (type: ScheduleType) =>
     return remainingPct <= COUNTDOWN_BAR.WARNING_THRESHOLD;
   });
 
+/**
+ * Whether the bar can be worked out: it needs a readable row on both sides of now (R14)
+ *
+ * Deliberately free of the countdown atom, so it recomputes only when the sequence does, not every second.
+ */
+const makeBarAvailableAtom = (type: ScheduleType) =>
+  atom((get) => get(getNextPrayerAtom(type)) !== null && get(getPrevPrayerAtom(type)) !== null);
+
 const standardBarProgressAtom = makeBarProgressAtom(ScheduleType.Standard);
 const extraBarProgressAtom = makeBarProgressAtom(ScheduleType.Extra);
 const standardBarWarningAtom = makeBarWarningAtom(ScheduleType.Standard);
 const extraBarWarningAtom = makeBarWarningAtom(ScheduleType.Extra);
+const standardBarAvailableAtom = makeBarAvailableAtom(ScheduleType.Standard);
+const extraBarAvailableAtom = makeBarAvailableAtom(ScheduleType.Extra);
 
 /**
  * Gets the quantized bar-progress selector for a schedule type
@@ -178,6 +196,15 @@ export const getBarProgressAtom = (type: ScheduleType) =>
  */
 export const getBarWarningAtom = (type: ScheduleType) =>
   type === ScheduleType.Standard ? standardBarWarningAtom : extraBarWarningAtom;
+
+/**
+ * Gets the bar-availability selector for a schedule type
+ *
+ * @param type - Schedule type (Standard or Extra)
+ * @returns Atom that is true only when both the previous and the next prayer exist
+ */
+export const getBarAvailableAtom = (type: ScheduleType): Atom<boolean> =>
+  type === ScheduleType.Standard ? standardBarAvailableAtom : extraBarAvailableAtom;
 
 // --- Actions ---
 
@@ -224,8 +251,7 @@ const startWallClockTicker = (countdownKey: CountdownKey, tick: () => void) => {
 // =============================================================================
 
 const armOverlayBoundary = (type: ScheduleType) => {
-  const nextPrayer = getNextPrayer(type);
-  overlayBoundaryMs = nextPrayer ? nextPrayer.datetime.getTime() : null;
+  overlayBoundaryMs = getNextBoundary(type)?.getTime() ?? null;
 };
 
 const clearOverlayBoundary = () => {
@@ -234,8 +260,10 @@ const clearOverlayBoundary = () => {
 
 /**
  * Enforces the overlay's close deadline and refreshes it from the live next
- * prayer. The stored deadline is checked first, so a resume data-refresh can
- * never mask a boundary that already elapsed.
+ * boundary: a prayer, or the end of a list day on screen with no readable row,
+ * so the list never changes day under an open overlay. The stored deadline is
+ * checked first, so a resume data-refresh can never mask a boundary that
+ * already elapsed.
  *
  * Writes `isOn` directly (not via `stores/overlay.ts`) to keep the countdown
  * store free of a cycle: the overlay store already imports this module.
@@ -255,21 +283,22 @@ const checkOverlayBoundary = (): boolean => {
     return true;
   }
 
-  const nextPrayer = getNextPrayer(overlay.scheduleType);
-  overlayBoundaryMs = nextPrayer ? nextPrayer.datetime.getTime() : null;
+  armOverlayBoundary(overlay.scheduleType);
   return false;
 };
 
 /**
  * Sequence-based countdown using prayer-centric model
  *
- * Boundary detection always runs against the true next prayer via
- * getNextPrayer(type); the atom write is display-aware (ADR-014 countdown
- * merge): while the overlay is open on this schedule the page countdown atom
- * carries the SELECTED prayer's countdown, otherwise the next prayer's.
+ * Boundary detection always runs against the schedule's next boundary via
+ * getNextBoundary(type): its next readable prayer, or 00:00 London ending a
+ * list day on screen with no readable row, when the list must move on with no
+ * prayer due. The atom write is display-aware (ADR-014 countdown merge): while
+ * the overlay is open on this schedule the page countdown atom carries the
+ * SELECTED prayer's countdown, otherwise the next prayer's.
  * Calculates countdowns from datetime - Date.now() (true UTC instants: the
  * offset cancels in a difference, so no timezone conversion per tick).
- * Calls refreshSequence() when prayer passes
+ * Calls refreshSequence() when a boundary passes
  */
 const startSequenceCountdown = (type: ScheduleType) => {
   const isStandard = type === ScheduleType.Standard;
@@ -280,15 +309,12 @@ const startSequenceCountdown = (type: ScheduleType) => {
     // Overlay close deadline first (stored deadline checked before any refresh)
     checkOverlayBoundary();
 
-    const upcoming = getNextPrayer(type);
-    if (!upcoming) return;
+    const boundary = getNextBoundary(type);
 
-    const nowMs = Date.now();
-
-    if (nowMs >= upcoming.datetime.getTime()) {
+    if (boundary && Date.now() >= boundary.getTime()) {
       clearCountdown(countdownKey);
 
-      // Refresh sequence to advance to next prayer
+      // Refresh sequence to advance past the boundary
       const transitionStart = Date.now();
       refreshSequence(type);
       logger.debug('TICK: transition', { which, transitionMs: Date.now() - transitionStart });
@@ -300,6 +326,11 @@ const startSequenceCountdown = (type: ScheduleType) => {
     writeDisplayCountdown(type);
   };
 
+  // The boundary is worked out on its first read after the sequence changes, so it is read here, as the
+  // initial write reads the next prayer. Left to the first tick, a tick landing exactly on it would count it
+  // as already gone and the countdown would hold at 1s until the boundary after.
+  getNextBoundary(type);
+
   // Initial write before the first aligned tick — display-aware (ceil: never
   // displays 0s)
   writeDisplayCountdown(type);
@@ -309,8 +340,12 @@ const startSequenceCountdown = (type: ScheduleType) => {
 
 /**
  * Resolves the prayer the overlay display currently targets: the selected
- * prayer within its schedule's display day, with tomorrow's-occurrence
+ * prayer within its schedule's display day, with the next-occurrence
  * fallback when it has passed (matches usePrayer.ts overlay semantics).
+ *
+ * A row with no readable time passes by its place on its list, and its next
+ * occurrence is still what opens even when that has no readable time either,
+ * so the overlay can target a row with nothing to count down to (R12).
  */
 const getOverlayTarget = (): Prayer | null => {
   const overlay = store.get(overlayAtom);
@@ -329,16 +364,10 @@ const getOverlayTarget = (): Prayer | null => {
   const prayer = todayPrayers[overlay.selectedPrayerIndex];
   if (!prayer) return null;
 
-  const now = TimeUtils.createInstant();
-  const isPassed = prayer.datetime < now;
+  if (!isRowPassed(sequence.prayers, prayer, TimeUtils.createInstant())) return prayer;
 
-  // 3-day buffer contains all prayers sorted, so find next matching prayer name
-  // Fallback to original prayer if no future occurrence exists (e.g., weekly prayers like Istijaba)
-  const nextOccurrence = isPassed
-    ? sequence.prayers.find((p) => p.english === prayer.english && p.datetime > prayer.datetime)
-    : null;
-
-  return nextOccurrence ?? prayer;
+  // Fallback to original prayer if no later occurrence exists (e.g., weekly prayers like Istijaba)
+  return findNextOccurrence(sequence.prayers, prayer) ?? prayer;
 };
 
 /**
@@ -353,19 +382,24 @@ const getOverlayTarget = (): Prayer | null => {
  * for the next tick. A passed display target holds at 1s via
  * getSecondsRemaining's clamp (the display contract never shows 0s) until
  * the boundary advance or a new selection retargets it; a missing overlay
- * target (stale index mid-roll) falls back to the next prayer.
+ * target (stale index mid-roll) falls back to the next prayer. A target with
+ * no readable time is written with no seconds, and one with nothing at all
+ * leaves the atom as it was.
  */
 const writeDisplayCountdown = (type: ScheduleType) => {
-  const upcoming = getNextPrayer(type);
-  if (!upcoming) return;
-
-  const countdownAtom = getCountdownAtom(type);
-
   const overlay = store.get(overlayAtom);
   const overlayOwnsPage = overlay.isOn && overlay.scheduleType === type;
 
   const selected = overlayOwnsPage ? getOverlayTarget() : null;
-  const target = selected ?? upcoming;
+  const target = selected ?? getNextPrayer(type);
+  if (!target) return;
+
+  const countdownAtom = getCountdownAtom(type);
+
+  if (!isReadable(target)) {
+    store.set(countdownAtom, { timeLeft: null, name: target.english });
+    return;
+  }
 
   const timeLeft = TimeUtils.getSecondsRemaining(target.datetime);
   store.set(countdownAtom, { timeLeft, name: target.english });
@@ -390,14 +424,15 @@ const startCountdowns = () => {
 /**
  * Recomputes the countdown immediately on foreground. The OS freezes the JS
  * timers while the app is backgrounded, so on return the tickers are stale:
- * this catches up any boundary crossed during the suspend and rewrites the
- * display atoms before the first visible frame. The instant-resume equivalent
- * of "keep ticking in the background".
+ * this catches up any boundary crossed during the suspend (a prayer, or the
+ * end of a list day on screen with no readable row) and rewrites the display
+ * atoms before the first visible frame. The instant-resume equivalent of
+ * "keep ticking in the background".
  */
 const resyncCountdowns = () => {
   for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
-    const upcoming = getNextPrayer(type);
-    if (upcoming && Date.now() >= upcoming.datetime.getTime()) {
+    const boundary = getNextBoundary(type);
+    if (boundary && Date.now() >= boundary.getTime()) {
       refreshSequence(type);
     }
   }

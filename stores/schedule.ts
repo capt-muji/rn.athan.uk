@@ -2,20 +2,39 @@
  * Schedule store - prayer sequence management
  * Uses the prayer-centric sequence model
  *
+ * Which row is next, which list is on screen and when that changes are decided by the pure rules in
+ * shared/sequence.ts; this store only holds the sequence and applies them to it.
+ *
  * @see ai/adr/005-timing-system-overhaul.md
+ * @see ai/features/uat-2/DASHES-DESIGN.md
  */
 
 import { atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { EXTRAS_ARABIC, EXTRAS_ENGLISH, PRAYERS_ARABIC, PRAYERS_ENGLISH, TIME_CONSTANTS } from '@/shared/constants';
+import { TIME_CONSTANTS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
+import {
+  compareListOrder,
+  getNextBoundary as findNextBoundary,
+  findNextReadable,
+  findPreviousReadable,
+  isReadable,
+  resolveDisplayDate,
+} from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
-import { type ISingleApiResponseTransformed, type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import { type Prayer, type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 
 const store = getDefaultStore();
+
+/**
+ * Most list days a sequence grows to while it has no readable row still to come
+ *
+ * Two weeks outlasts any realistic gap in the provider's data, and bounds the work when storage holds
+ * nothing readable at all.
+ */
+const MAX_SEQUENCE_DAYS = 14;
 
 // --- Sequence Atoms (Prayer-Centric Model) ---
 
@@ -33,83 +52,77 @@ export const getSequenceAtom = (type: ScheduleType) => {
 // --- Helper Functions ---
 
 /**
- * Fetches yesterday's final prayer for progress bar calculation
+ * The row the countdown bar measures from
  *
- * Used when next prayer is first in sequence (e.g., at 1am when Fajr is next).
- * The progress bar needs the previous prayer (last night's Isha or Istijaba)
- * to calculate elapsed time.
- *
- * Handles Istijaba filtering: On non-Fridays, Istijaba is excluded from Extras,
- * so the final prayer would be Duha instead.
+ * Looked for in the sequence first. When it holds none, the list before next's is built from storage with
+ * the same builder as the sequence, so a post-midnight Isha comes back at its own instant rather than 24
+ * hours early (gap map L3). When that list has no readable row either, as on a 1 January whose 31
+ * December is not stored or after a day with no readable time, there is nothing to measure from and the
+ * bar cannot be worked out (R13, R14).
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Yesterday's final prayer
- *
- * @example
- * // At 1am on Saturday, for Standard schedule:
- * // Returns: Isha from Friday night
- * const prevPrayer = getYesterdayFinalPrayer(ScheduleType.Standard);
- *
- * // At 1am on Saturday, for Extra schedule:
- * // Returns: Duha from Friday (Istijaba not shown on Saturday)
- * const prevPrayer = getYesterdayFinalPrayer(ScheduleType.Extra);
+ * @param prayers The stored sequence
+ * @param next The next readable row
+ * @returns The latest readable row before next, or null when there is none
  */
-function getYesterdayFinalPrayer(type: ScheduleType): Prayer | null {
-  const today = TimeUtils.getTodayDateString();
-  const yesterday = TimeUtils.getPreviousDateString(today);
-  const prevDayData = Database.getPrayerByDateString(yesterday);
+const findPreviousPrayer = (type: ScheduleType, prayers: Prayer[], next: ReadablePrayer): ReadablePrayer | null => {
+  const inSequence = findPreviousReadable(prayers, next);
+  if (inSequence) return inSequence;
 
-  // ADR-004 says the UI trusts the data layer, and it is right that this should
-  // never be missing. But the caller runs during render and already returns null
-  // on every other unexpected shape, so a gap here becomes a dead screen rather
-  // than a missing row. On 1 January the previous year's last day is exactly the
-  // record the sync layer may not have.
-  if (!prevDayData) {
-    logger.warn('SCHEDULE: No record for yesterday, previous prayer unavailable', { yesterday, type });
-    return null;
+  const listBefore = TimeUtils.getPreviousDateString(next.belongsToDate);
+  const fromStorage = findPreviousReadable(PrayerUtils.createPrayersForDate(type, listBefore), next);
+
+  if (!fromStorage) {
+    logger.warn('SCHEDULE: No readable row before next, progress bar unavailable', {
+      type,
+      next: next.english,
+      listBefore,
+    });
   }
 
-  const isStandard = type === ScheduleType.Standard;
-  let englishNames = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  let arabicNames = isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC;
+  return fromStorage;
+};
 
-  // Filter out Istijaba on non-Fridays for Extras
-  if (!isStandard && !TimeUtils.isFriday(yesterday)) {
-    englishNames = englishNames.filter((name) => name.toLowerCase() !== 'istijaba');
-    arabicNames = arabicNames.filter((name) => name !== 'استجابة');
+/**
+ * Adds list days after the last one until a readable row is still to come, up to MAX_SEQUENCE_DAYS
+ *
+ * A run of days with no readable time (a week missing from storage) would otherwise leave nothing to count
+ * down to, and the countdown would disappear until the list reached the far side of the gap.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @param prayers A sequence in list order
+ * @param now Current instant
+ * @returns The same rows, followed by any days added
+ */
+const extendUntilReadable = (type: ScheduleType, prayers: Prayer[], now: Date): Prayer[] => {
+  // No list day to continue from
+  if (prayers.length === 0) return prayers;
+
+  const extended = [...prayers];
+  const listDays = new Set(extended.map((prayer) => prayer.belongsToDate));
+  let lastListDay = extended[extended.length - 1].belongsToDate;
+
+  while (!findNextReadable(extended, now) && listDays.size < MAX_SEQUENCE_DAYS) {
+    lastListDay = TimeUtils.addDaysToDateString(lastListDay, 1);
+    extended.push(...PrayerUtils.createPrayersForDate(type, lastListDay));
+    listDays.add(lastListDay);
   }
 
-  const finalIndex = englishNames.length - 1;
-  const prayerKey = englishNames[finalIndex].toLowerCase();
-  const prayerTime = prevDayData[prayerKey as keyof ISingleApiResponseTransformed];
-
-  const prayer = PrayerUtils.createPrayer({
-    type,
-    english: englishNames[finalIndex],
-    arabic: arabicNames[finalIndex],
-    date: yesterday,
-    time: prayerTime,
-  });
-
-  logger.info('PREV_PRAYER: Fetched yesterday final prayer', {
-    type,
-    prayer: prayer.english,
-    time: prayer.time,
-  });
-
-  return prayer;
-}
+  return extended;
+};
 
 // --- Derived Selector Atoms ---
 
 /**
  * Creates a derived atom that returns the next upcoming prayer
  *
- * Finds the first prayer with datetime > now in the sequence.
- * With a 3-day buffer, this should always return a prayer.
+ * The readable row with the earliest instant after now. A row with no readable time is never next.
+ *
+ * Like every atom here, it depends on the sequence alone, so its answer is worked out when the sequence
+ * changes and then held until the next refresh, even as the clock moves on.
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Derived atom resolving to Prayer | null
+ * @returns Derived atom resolving to the next readable prayer, or null
  *
  * @see getNextPrayer - Direct accessor for imperative code
  */
@@ -118,9 +131,7 @@ export const createNextPrayerAtom = (type: ScheduleType) => {
     const sequence = get(getSequenceAtom(type));
     if (!sequence) return null;
 
-    const now = TimeUtils.createInstant();
-    // 3-day buffer guarantees next prayer exists, but satisfy TypeScript
-    return sequence.prayers.find((p) => p.datetime > now) ?? null;
+    return findNextReadable(sequence.prayers, TimeUtils.createInstant());
   });
 };
 
@@ -129,14 +140,11 @@ export const createNextPrayerAtom = (type: ScheduleType) => {
  *
  * Used for progress bar calculation to show elapsed time since last prayer.
  *
- * Edge Case: When next prayer is first in sequence (e.g., 1am before Fajr),
- * uses getYesterdayFinalPrayer to fetch yesterday's final prayer from database.
- * This ensures the progress bar works correctly across day boundaries.
- *
  * @param type Schedule type (Standard or Extra)
- * @returns Derived atom resolving to Prayer | null
+ * @returns Derived atom resolving to the latest readable prayer before next, or null when there is no
+ * next prayer or nothing readable to measure from
  *
- * @see getYesterdayFinalPrayer - Helper for day-boundary edge case
+ * @see findPreviousPrayer - Where the list before comes from when the sequence does not hold it
  * @see getPrevPrayer - Direct accessor for imperative code
  */
 export const createPrevPrayerAtom = (type: ScheduleType) => {
@@ -144,33 +152,24 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
     const sequence = get(getSequenceAtom(type));
     if (!sequence) return null;
 
-    const now = TimeUtils.createInstant();
-    const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
+    const next = findNextReadable(sequence.prayers, TimeUtils.createInstant());
+    if (!next) return null;
 
-    // Normal case: Previous prayer is in sequence
-    if (nextIndex > 0) {
-      return sequence.prayers[nextIndex - 1];
-    }
-
-    // Edge case: Next prayer is first in sequence (nextIndex === 0)
-    // This happens at 1am when Fajr (6am) is next prayer
-    // Use helper to fetch yesterday's final prayer
-    if (nextIndex === 0) {
-      return getYesterdayFinalPrayer(type);
-    }
-
-    // No future prayers found - should never happen with 3-day sequence buffer
-    return null;
+    return findPreviousPrayer(type, sequence.prayers, next);
   });
 };
 
 /**
  * Creates a derived atom that returns the display date
  *
- * The display date is the belongsToDate of the next upcoming prayer.
- * This can differ from the calendar date due to Islamic day boundaries:
+ * The earliest list day with a readable row still to come, or a list day with no readable row at all
+ * until 00:00 London at its end (resolveDisplayDate). This can differ from the calendar date due to
+ * Islamic day boundaries:
  * - Isha at 1am on Jan 19 calendar date belongs to Jan 18 Islamic day
  * - Midnight at 23:17 on Jan 18 calendar date belongs to Jan 19 Islamic day
+ *
+ * Null when nothing in the sequence is still to come, such as the evening of 31 December before next
+ * year is published. Consumers already handle null, which matches the no-sequence branch.
  *
  * @param type Schedule type (Standard or Extra)
  * @returns Derived atom resolving to date string (YYYY-MM-DD) | null
@@ -187,14 +186,27 @@ export const createDisplayDateAtom = (type: ScheduleType) => {
     const sequence = get(getSequenceAtom(type));
     if (!sequence) return null;
 
-    const now = TimeUtils.createInstant();
-    // The 3-day buffer normally guarantees a future prayer, but not on the
-    // evening of 31 December when next year's data is not yet published: every
-    // prayer in the sequence has passed. Returning null matches the no-sequence
-    // branch above and the sibling next/prev atoms, all of which consumers
-    // already handle. Asserting here threw during render instead.
-    const next = sequence.prayers.find((p) => p.datetime > now);
-    return next ? next.belongsToDate : null;
+    return resolveDisplayDate(sequence.prayers, TimeUtils.createInstant());
+  });
+};
+
+/**
+ * Creates a derived atom that returns the next moment what the schedule shows changes: its next readable
+ * prayer, or 00:00 London ending a list day on screen with no readable row
+ *
+ * Must stay a derived atom held until the sequence changes. The countdown ticker transitions when the
+ * clock reaches this instant, and worked out afresh at that moment it would already be behind, giving the
+ * boundary after it, so the list would never move on.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Derived atom resolving to the boundary instant, or null when nothing is still to come
+ */
+const createNextBoundaryAtom = (type: ScheduleType) => {
+  return atom((get) => {
+    const sequence = get(getSequenceAtom(type));
+    if (!sequence) return null;
+
+    return findNextBoundary(sequence.prayers, TimeUtils.createInstant());
   });
 };
 
@@ -205,24 +217,47 @@ export const standardPrevPrayerAtom = createPrevPrayerAtom(ScheduleType.Standard
 export const extraPrevPrayerAtom = createPrevPrayerAtom(ScheduleType.Extra);
 export const standardDisplayDateAtom = createDisplayDateAtom(ScheduleType.Standard);
 export const extraDisplayDateAtom = createDisplayDateAtom(ScheduleType.Extra);
+const standardNextBoundaryAtom = createNextBoundaryAtom(ScheduleType.Standard);
+const extraNextBoundaryAtom = createNextBoundaryAtom(ScheduleType.Extra);
 
 // --- Actions ---
 
 /**
+ * Identity of a prayer within a sequence: which prayer, on which Islamic day.
+ *
+ * Not the instant. A day has exactly one Fajr however its time is later
+ * corrected, and createPrayerSequence emits each name at most once per day it
+ * builds, with belongsToDate always equal to that day — the date-shifting pair
+ * adjustPrayerDateForMidnightCrossing/calculateBelongsToDate move the INSTANT
+ * across midnight and then hand the grouping back. Verified over the 2024
+ * London year (2,928 sequences, 40,692 rows, zero collisions) and over a
+ * synthetic >60N block whose Magrib and Isha both fall after midnight.
+ */
+const prayerIdentity = (prayer: Prayer): string => `${prayer.english}_${prayer.belongsToDate}`;
+
+/**
  * Signature identifying a sequence's content, used by setSequence to skip identical writes.
  *
- * Every instant, not just the ends: a corrected time on any prayer between them was
+ * Every row, not just the ends: a corrected time on any prayer between them was
  * invisible to a length-plus-endpoints signature, so the store went on serving the stale
- * sequence until something else happened to rebuild it. Joining ~18 numbers is still far
+ * sequence until something else happened to rebuild it. Joining ~18 entries is still far
  * cheaper than the row re-render pass the skip exists to avoid, and length is implied by
  * the join, so a Friday gaining Istijaba still differs.
+ *
+ * Each row is its identity and its instant, or '-' for a row with no readable time. The
+ * identity is what keeps an unreadable row's place in the signature, so the same unreadable
+ * row rebuilt is still identical and skipped, while a row losing or regaining its time is a
+ * change and written.
  */
 const sequenceSignature = (sequence: PrayerSequence): string =>
-  sequence.prayers.map((prayer) => prayer.datetime.getTime()).join('|');
+  sequence.prayers
+    .map((prayer) => `${prayerIdentity(prayer)}@${isReadable(prayer) ? prayer.datetime.getTime() : '-'}`)
+    .join('|');
 
 /**
  * Sets the prayer sequence for a schedule type
- * Creates a 3-day buffer of prayers starting from the given date
+ * Creates a 3-day buffer of prayers starting from the given date, extended while it has no readable row
+ * still to come (extendUntilReadable)
  *
  * Identical writes are skipped: the cache bootstrap hydrates sequences before
  * first paint and sync() rebuilds them afterwards — when both produce the same
@@ -235,7 +270,11 @@ const sequenceSignature = (sequence: PrayerSequence): string =>
  */
 export const setSequence = (type: ScheduleType, date: Date): void => {
   const sequenceAtom = getSequenceAtom(type);
-  const sequence = PrayerUtils.createPrayerSequence(type, date, 3);
+  const built = PrayerUtils.createPrayerSequence(type, date, 3);
+  const sequence: PrayerSequence = {
+    type,
+    prayers: extendUntilReadable(type, built.prayers, TimeUtils.createInstant()),
+  };
 
   const current = store.get(sequenceAtom);
   if (current && sequenceSignature(current) === sequenceSignature(sequence)) {
@@ -258,46 +297,42 @@ export const setSequence = (type: ScheduleType, date: Date): void => {
 
 /**
  * Helper: Filter prayers to keep only relevant ones
- * Keeps future prayers, passed prayers for current display date, and previous prayer
+ *
+ * Keeps readable rows still to come, the previous readable row (for the progress bar: Isha→Fajr), and
+ * every row of the list day on screen and of the list days after it. Those rows are kept or dropped by
+ * their list day as a whole, because a row with no readable time can never be "still to come": dropped
+ * by time, a later day with no readable row would vanish and be skipped (R8), and a list on screen would
+ * lose its unreadable rows. An earlier list day keeps nothing but the previous row.
+ *
+ * @param prayers The sequence
+ * @param now Current instant
+ * @param currentDisplayDate The list day on screen, or null when nothing is still to come
+ * @param previous The previous readable row, or null
  */
 function filterRelevantPrayers(
   prayers: Prayer[],
   now: Date,
   currentDisplayDate: string | null,
-  nextIndex: number
+  previous: ReadablePrayer | null
 ): Prayer[] {
-  return prayers.filter((p, index) => {
-    // Always keep future prayers
-    if (p.datetime > now) return true;
-    // Keep passed prayers that belong to current display date (for display purposes)
-    if (currentDisplayDate && p.belongsToDate === currentDisplayDate) return true;
-    // Keep the immediate previous prayer (for progress bar: Isha→Fajr transition)
-    if (nextIndex > 0 && index === nextIndex - 1) return true;
-    return false;
+  return prayers.filter((prayer) => {
+    if (isReadable(prayer) && prayer.datetime > now) return true;
+    if (prayer === previous) return true;
+    return currentDisplayDate !== null && prayer.belongsToDate >= currentDisplayDate;
   });
 }
 
 /**
  * Helper: Check if we need to fetch more prayers
  * Returns true if less than 24 hours of prayer buffer remains
+ *
+ * Measured by the latest readable row, since a row with no readable time says nothing about how far the
+ * buffer reaches; a buffer with no readable row at all always fetches.
  */
 function shouldFetchMorePrayers(prayers: Prayer[], now: Date): boolean {
-  const lastPrayer = prayers[prayers.length - 1];
-  return !lastPrayer || lastPrayer.datetime.getTime() - now.getTime() < TIME_CONSTANTS.ONE_DAY_MS;
+  const instants = prayers.filter(isReadable).map((prayer) => prayer.datetime.getTime());
+  return instants.length === 0 || Math.max(...instants) - now.getTime() < TIME_CONSTANTS.ONE_DAY_MS;
 }
-
-/**
- * Identity of a prayer within a sequence: which prayer, on which Islamic day.
- *
- * Not the instant. A day has exactly one Fajr however its time is later
- * corrected, and createPrayerSequence emits each name at most once per day it
- * builds, with belongsToDate always equal to that day — the date-shifting pair
- * adjustPrayerDateForMidnightCrossing/calculateBelongsToDate move the INSTANT
- * across midnight and then hand the grouping back. Verified over the 2024
- * London year (2,928 sequences, 40,692 rows, zero collisions) and over a
- * synthetic >60N block whose Magrib and Isha both fall after midnight.
- */
-const prayerIdentity = (prayer: Prayer): string => `${prayer.english}_${prayer.belongsToDate}`;
 
 /**
  * Helper: Merge existing and new prayers, removing duplicates
@@ -307,6 +342,8 @@ const prayerIdentity = (prayer: Prayer): string => `${prayer.english}_${prayer.b
  * rows — the same prayer rendered twice for one day, with the countdown aimed
  * at the stale one. The rebuild just read storage, so where the two disagree it
  * is the corrected copy (same reasoning as the sequence signature in #13).
+ *
+ * Sorted into list order, not by instant: a row with no readable time has no instant to sort by.
  */
 function mergeAndDeduplicatePrayers(existingPrayers: Prayer[], newPrayers: Prayer[]): Prayer[] {
   const byIdentity = new Map<string, Prayer>();
@@ -314,12 +351,13 @@ function mergeAndDeduplicatePrayers(existingPrayers: Prayer[], newPrayers: Praye
   for (const prayer of existingPrayers) byIdentity.set(prayerIdentity(prayer), prayer);
   for (const prayer of newPrayers) byIdentity.set(prayerIdentity(prayer), prayer);
 
-  return [...byIdentity.values()].sort((a, b) => a.datetime.getTime() - b.datetime.getTime());
+  return [...byIdentity.values()].sort(compareListOrder);
 }
 
 /**
  * Refreshes the prayer sequence by removing passed prayers and fetching more if needed
- * Called when a prayer passes to keep the sequence fresh
+ * Called when a boundary passes (a prayer, or the end of a list day held on screen) to keep the sequence
+ * fresh
  *
  * IMPORTANT: Keeps passed prayers that belong to the current display date.
  * This ensures Midnight (23:17 Jan 18, belongsTo Jan 19) remains visible when displaying Jan 19.
@@ -338,15 +376,12 @@ export const refreshSequence = (type: ScheduleType): void => {
 
   const now = TimeUtils.createInstant();
 
-  // Find the next future prayer to determine the current display date
-  const nextFuturePrayer = sequence.prayers.find((p) => p.datetime > now);
-  const currentDisplayDate = nextFuturePrayer?.belongsToDate ?? null;
-
-  // Find index of next prayer
-  const nextIndex = sequence.prayers.findIndex((p) => p.datetime > now);
+  const currentDisplayDate = resolveDisplayDate(sequence.prayers, now);
+  const next = findNextReadable(sequence.prayers, now);
+  const previous = next ? findPreviousReadable(sequence.prayers, next) : null;
 
   // Filter relevant prayers using helper
-  const relevantPrayers = filterRelevantPrayers(sequence.prayers, now, currentDisplayDate, nextIndex);
+  const relevantPrayers = filterRelevantPrayers(sequence.prayers, now, currentDisplayDate, previous);
 
   // Check if we need to fetch more prayers using helper
   if (shouldFetchMorePrayers(relevantPrayers, now)) {
@@ -361,7 +396,11 @@ export const refreshSequence = (type: ScheduleType): void => {
     const newSequence = PrayerUtils.createPrayerSequence(type, firstNewDayAnchor, 3);
 
     // Merge and deduplicate using helper
-    const mergedPrayers = mergeAndDeduplicatePrayers(relevantPrayers, newSequence.prayers);
+    const mergedPrayers = extendUntilReadable(
+      type,
+      mergeAndDeduplicatePrayers(relevantPrayers, newSequence.prayers),
+      now
+    );
 
     store.set(sequenceAtom, { type, prayers: mergedPrayers });
 
@@ -389,7 +428,7 @@ export const refreshSequence = (type: ScheduleType): void => {
  * Callers must handle null case and refresh if needed
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Next prayer or null if sequence not initialized or empty
+ * @returns Next readable prayer or null if sequence not initialized or nothing readable is still to come
  *
  * @example
  * const next = getNextPrayer(ScheduleType.Standard);
@@ -398,7 +437,7 @@ export const refreshSequence = (type: ScheduleType): void => {
  *   // Then retry or handle loading state
  * }
  */
-export const getNextPrayer = (type: ScheduleType): Prayer | null => {
+export const getNextPrayer = (type: ScheduleType): ReadablePrayer | null => {
   const nextPrayerAtom = type === ScheduleType.Standard ? standardNextPrayerAtom : extraNextPrayerAtom;
   return store.get(nextPrayerAtom);
 };
@@ -408,16 +447,15 @@ export const getNextPrayer = (type: ScheduleType): Prayer | null => {
  * Used for progress bar calculation
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Previous prayer or null if not available
+ * @returns Previous readable prayer or null if not available
  */
-export const getPrevPrayer = (type: ScheduleType): Prayer | null => {
+export const getPrevPrayer = (type: ScheduleType): ReadablePrayer | null => {
   const prevPrayerAtom = type === ScheduleType.Standard ? standardPrevPrayerAtom : extraPrevPrayerAtom;
   return store.get(prevPrayerAtom);
 };
 
 /**
  * Gets the current display date for a schedule
- * The display date is the belongsToDate of the next prayer
  *
  * @param type Schedule type (Standard or Extra)
  * @returns Display date string (YYYY-MM-DD) or null
@@ -425,4 +463,19 @@ export const getPrevPrayer = (type: ScheduleType): Prayer | null => {
 export const getDisplayDate = (type: ScheduleType): string | null => {
   const displayDateAtom = type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom;
   return store.get(displayDateAtom);
+};
+
+/**
+ * Gets the next moment what a schedule shows changes: its next readable prayer, or 00:00 London ending a
+ * list day on screen with no readable row
+ *
+ * The one boundary the countdown ticker, the foreground resync and the overlay's open guard and close
+ * deadline all compare the clock against, so the list cannot change day under any of them unannounced.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns The boundary instant, or null when there is no sequence or nothing is still to come
+ */
+export const getNextBoundary = (type: ScheduleType): Date | null => {
+  const nextBoundaryAtom = type === ScheduleType.Standard ? standardNextBoundaryAtom : extraNextBoundaryAtom;
+  return store.get(nextBoundaryAtom);
 };
