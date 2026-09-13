@@ -61,25 +61,35 @@ export interface WhatsNewRelease {
 
 // =============================================================================
 // CONTENT - grow per release; prune past MAX_WHATS_NEW_ARCHIVE
+//
+// WHETHER A RELEASE GETS A MODAL IS AN EDITORIAL DECISION, and it is the owner's
+// (ruling 2026-09-13). A real feature is worth interrupting someone for; a
+// performance pass is not, and popping a modal for one just annoys people.
+//
+// So: move `version` (and the item stamps) to the shipping release when you want
+// the modal to appear, and LEAVE THEM BEHIND when you do not. A stamp older than
+// the installed version is how a release silent-ships, and that is a choice, not
+// a bug. Deliberately NOT covered by a test — a test here would fail every time
+// that choice is made, which is the fastest way to get the guard deleted.
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewRelease | null = {
-  version: '1.26.18',
+  version: '1.26.19',
   items: [
     {
       title: 'Tablet support',
       body: 'Athan now supported on tablets',
-      version: '1.26.18',
+      version: '1.26.19',
     },
     {
       title: 'Athan sounds',
       body: 'New Athan sounds added',
-      version: '1.26.18',
+      version: '1.26.19',
     },
     {
       title: 'Reminder sounds',
       body: 'Every reminder now has its own sound',
-      version: '1.26.18',
+      version: '1.26.19',
     },
     {
       // PARKED: ships with the release that enables the widgets flag

@@ -3635,10 +3635,15 @@ the modal rather than suppressing it. Both halves now hold: the modal shows whil
 a release that forgets to move the stamp silent-ships rather than heading someone else's notes
 with the current version.
 
-Made mechanical rather than remembered: `shared/__tests__/versionLockstep.test.ts` fails if
-`WHATS_NEW.version` or any non-null item stamp drifts from `app.json`, and the session's bump
-helper moves all four alongside the three version strings. Items parked at `version: null` are
-left parked.
+**Deliberately NOT enforced by a test**, on the owner's second ruling the same day: *"I decide
+what goes in the popup modal, and sometimes we release an update which shouldn't need a popup
+modal, because it's just performance improvements — nothing worthy of telling the user and
+annoying them."* A test asserting the stamp tracks `app.json` would fail every time that choice
+is made, which is the fastest way to get a guard deleted. One was written and removed the same
+session; do not re-add it.
+
+The rule lives where someone editing the content will see it, as a comment above `WHATS_NEW`
+itself. Moving the stamp shows the modal; leaving it behind silent-ships. Both are correct.
 
 **~~Silent alerts may ring on Android.~~ REFUTED on the device — see finding 63 below. No change
 needed, and none should be made.**
