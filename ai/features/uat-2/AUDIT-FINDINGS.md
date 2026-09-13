@@ -515,7 +515,8 @@ this once keeps the channel in its notification settings afterwards.
 Also driven end to end on the device, all green: the sound sheet writing `athan_5_v2` with
 `raw/athan5` on close (and nothing on selection — "Close to save" is literal); a 10-minute
 Magrib reminder firing at 19:15 on `reminder_magrib_10` at 44100 Hz stereo, matching
-`reminder_magrib_10.mp3`; the reminder interval moving 15 → 20 and taking both its channel
+`reminder_magrib_10.mp3` (mis-recorded: that reminder plays at 22050 Hz stereo, as "Session 1 of
+the queue" below shows); the reminder interval moving 15 → 20 and taking both its channel
 (`reminder_fajr_20`) and its alarm (04:42 → 04:37) with it; and the owner's own configuration,
 Athan 1 with Fajr alone, firing on `athan_1_v2`. Channel dumps before and after the upgrade are
 byte-for-byte identical, so the 1:1 requirement holds.
@@ -4146,3 +4147,333 @@ nobody remembered. Do not store the dashes — `--:--` is a rendering of absence
 **Visual authority:** the owner authorised exactly `--:--` and an alert control that cannot be
 set. Anything further — a banner, an icon, a colour, an explanation — is a new visual decision
 and needs asking.
+
+---
+
+# Session 1 of the queue: device verification sweep, 2026-09-13
+
+Run on the OnePlus 3T (a local release build of 1.26.28 on the live API, called the prod build
+below, plus local mock builds) and the iPhone XS. Testing only: no application code changed.
+The owner narrowed the scope mid-session, and the narrowing is what this session delivered:
+
+> *"I just want to know that we haven't broken anything from UAT1 to UAT2... I think all the audios
+> work. I think all the reminders work... the only part that I'm not confident with is the flip
+> between midnight and before midnight and after midnight."*
+
+The owner added both London clock changes, the moment the clock reaches 00:00 with the app open,
+and one test of unreadable times, then dropped screenshots (1.26.29) and asked that no notification
+test wait more than two minutes.
+
+**Verdict.** No prayer row and no alarm instant regressed from `uat` to `uat-2`, measured in
+Jest over 6,248 rows (below). On the 3T, every alarm the tests armed fired on its armed second,
+under the list day its identifier names, either side of 00:00 and across both clock changes, on
+real data and on mocks. Three exceptions are findings: an alarm armed from a substituted Magrib
+fires at the wrong instant (finding 72), Android refuses to post a 51st showing notification
+(finding 73), and yesterday's post-midnight rows lose their alarms after a reschedule (finding 74).
+The owner has accepted finding 73. Findings 72 and 74 wait on the owner's decision, findings 75
+and 77 are queued into session 4, and finding 76 has no session yet.
+
+## How it was proven
+
+- **Clock driving, not waiting.** `service call alarm 2` against `auto_time 0` put the 3T three
+  seconds before each armed alarm, so every fire took seconds.
+- **An independent oracle.** A standard-library Python recomputation of every 2026 row from the
+  live payload (fetched 2026-09-13, sha256 `d8fa09f7…fbd1d`) agreed with the app's own
+  `getPrayerForDate` on all 3,700 rows both could compute, to the millisecond. It refused the
+  other two, the 1 January Midnight and Last Third, which need a Magrib the payload does not
+  contain (finding 72). Its armed-set emulator checked the `dumpsys alarm` set to the second at
+  the four October stops.
+- **What proves a fire.** AlarmManager's trigger line at the armed epoch, and the posted
+  identifier, which carries the list day. For Sound alerts, also the AudioTrack format and the
+  exact byte range `dumpsys media.extractor` opened inside the APK, hashed against the 99 files.
+- **What the user sees.** Rows read from Maestro's live `hierarchy` and compared with the oracle.
+
+## Results
+
+### `uat` against `uat-2` in Jest: no regression
+
+Each branch ran its own code over 6,248 rows: the real 2026 year (4,015) and a synthetic table
+putting rows either side of 00:00 (2,233). 842 differ. Running each fix commit against its parent
+attributes every one:
+
+| Class | Rows |
+| --- | --- |
+| #29 night pair, and alerts firing at the row's own moment (1.24.12) | 694 |
+| Finding 44, Magrib crossing midnight (1.25.49) | 146 |
+| Istijaba from Magrib's instant (1.25.53) | 2 |
+| Unexplained | 0 |
+
+Fajr, Sunrise, Dhuhr, Asr and Duha are identical on every input. Isha and Suhoor are identical on
+the list; only their armed instant differs on synthetic crossing days, where `uat` armed them 24
+hours away from its own row.
+
+### Real data: the midnight flip, 00:00 itself, and October's clock change
+
+| Fire | Armed for | Fired | List day in the identifier |
+| --- | --- | --- | --- |
+| Midnight | 18 Oct 00:00:00 BST | 00:00:00, posted at 00:00:00.245 | 18 Oct |
+| Midnight | 18 Oct 23:59 BST | 23:59:00.004 | 19 Oct |
+| Midnight | 24 Oct 23:58 BST | 23:58:00.013 | 25 Oct |
+| Last Third | 25 Oct 01:00 GMT, the second 01:00 | 01:00:00.000, epoch 1792890000 | 25 Oct |
+| Fajr, after the clocks go back | 25 Oct 05:04 GMT | 05:04:00.001 | 25 Oct |
+| Midnight | 25 Oct 22:57 GMT | 22:57:00.001 | 26 Oct |
+| Last Third | 26 Oct 01:00 GMT | 01:00:00.001 | 26 Oct |
+
+Armed sets at 17 Oct 22:00, 18 Oct 23:00, 24 Oct 22:00 and 25 Oct 21:00 each matched the oracle
+5 of 5, with no extras. The rendered Extras lists for 18, 19, 25 and 26 October equal the oracle.
+Across 00:00:00 on 18 October the same app process ran before and after, with no fatal
+exception, and the armed set afterwards was exactly the remaining alarms.
+
+### March's clock change (a local build carrying the payload's own 24 March to 10 April readings)
+
+The API's TLS certificate is valid only from 7 May 2026, so a build that fetches should fail with
+the device clock in March. The March run therefore used a mock, holding the payload's readings
+verbatim under their real dates.
+
+| Fire | Armed for | Fired |
+| --- | --- | --- |
+| Midnight, 29 Mar list | Sat 28 Mar 23:18 GMT | 23:18:00.000 |
+| Last Third, 29 Mar list | Sun 29 Mar 00:54 GMT | 00:54:00.001 |
+| Fajr, after the clocks go forward | 29 Mar 05:07 BST | 05:07:00.005 |
+| Midnight, 30 Mar list | 30 Mar 00:18 BST | 00:18:00.000 |
+| Last Third, 30 Mar list | 30 Mar 01:54 BST | 01:54:00.002 |
+| Fajr | 30 Mar 05:05 BST | 05:05:00.001 |
+
+### Every row either side of 00:00 (high-latitude mock, launched on Fri 25 Sep 2026)
+
+17 of 17 fired on their armed second under the list day their identifier names, three of them
+Midnight re-fires after a harness error (below).
+
+| Row | Before 00:00 | After 00:00 |
+| --- | --- | --- |
+| Istijaba | 23:40, Fri 25 Sep list (Magrib 00:40) | 00:20, Fri 2 Oct list (Magrib 01:20) |
+| Magrib | 22:00, 26 Sep list | 00:40, 25 Sep list; 01:20, 2 Oct list |
+| Isha | 23:30, 26 Sep list | 01:30, 25 Sep list; 02:10, 2 Oct list |
+| Suhoor | 23:50 the evening before, 27 Sep list (Fajr 00:10) | 01:40, 26 Sep list |
+| Midnight | 23:59, 29 Sep list; 23:05, 27 Sep list | 00:00:00, 28 Sep list; 00:01, 30 Sep list; 01:20, 26 Sep list |
+| Last Third | 23:26, 27 Sep list | 01:33, 26 Sep list |
+
+The rendered Friday list shows Magrib 00:40 and Isha 01:30 on Friday, and Istijaba 23:40 on
+Friday's Extras list. Both of finding 68's Istijaba values fired on their armed second: 23:40
+before a 00:40 Magrib, and 00:20 before a 01:20 Magrib. That closes the notification half finding 68
+left for this sweep.
+
+### Sound identity, before the owner closed the audio pass
+
+- Athans 1 to 20 each posted on their own `athan_N_v2` channel at 44100 Hz mono. The extractor
+  opened exactly that athan's bytes each time, with zero fallback tones.
+- The APK holds all 99 files byte-identical to source.
+- One reminder re-checked: `reminder_magrib_10` posted on its own channel at 22050 Hz stereo, and
+  the byte range was `reminder_magrib_10.mp3`. Finding 5's note that it played at 44100 Hz
+  stereo, the fallback fingerprint, was a mis-record.
+
+### Unreadable times (iPhone XS, local builds, Silent)
+
+- **Tomorrow's Asr `--:--`, the day after all `--:--`, and every time four to ten days out
+  `-----`.** Today scheduled 16 notifications. Tomorrow scheduled none: all 16 were skipped,
+  including the seven readable rows. No crash, and nothing armed for an unreadable time.
+- **Today all `--:--`.** The error screen shows, with no crash. Nothing is scheduled at launch or
+  after Refresh. The wipe before the fetch (finding 67) erased the app's records of the 16 alarms
+  already armed, and iOS still fired all 16 over the error screen.
+- The whole-day drop is findings 70 and 71, now seen on the alarms too. Session 3 addresses it.
+
+---
+
+## 72. A substituted Magrib builds the first stored day's night rows, and its Last Third fires
+
+`shared/prayer.ts:149-150` (`getNightTimesForDay`). When the previous day's record is not stored,
+Midnight and Last Third take "this day's Magrib time one day earlier". That is a synthesised prayer
+time, which the owner's ruling (finding 70) forbids without exception.
+
+**Proven on the 3T.** Synced on 30 March, so the first stored day was 29 March. The clock was then
+wound back to 29 March 00:30 GMT without relaunching, and the Last Third alert re-committed. The
+29 March Last Third was armed for **02:15 BST** and fired at 02:15:00.001. Its real value is
+**00:54 GMT**, so it rang 21 minutes late. The error is largest next to a clock change and floors
+to about a minute on ordinary days.
+
+**Reach.** Any list whose previous day is not stored. In normal use that is the day after a
+dropped day (finding 70). On 1 January the only substituted row still ahead is that list's Last
+Third, at about 01:40. Arming it needs a Last Third alert switched on, 31 December missing from the
+cache, and the previous-year fetch to fail. A fresh install has every alert Off, but the error
+screen's Refresh wipes the timetable and keeps preferences (finding 6). The fetch fails while the
+endpoint serves only the current year (finding 69). That rejects `sync()`, but a reschedule before
+that Last Third still arms from today's record (`stores/notifications.ts:1039`). Traced from the
+code, not run.
+
+**Tests pin the defect.** `shared/__tests__/nightTimes.test.ts:194` and `:212` assert the
+substituted values as expected behaviour.
+
+---
+
+## 73. OWNER ACCEPTED: Android refuses an app's 51st showing notification
+
+Android 9 lets one app have 50 notifications showing at once (`MAX_PACKAGE_NOTIFICATIONS = 50`,
+`NotificationManagerService.java:249`, android-9.0.0_r61). At-time athans post with
+`autoDismiss: false` (`shared/notifications.ts:63`), as in production 1.5.2, so each stays in the
+shade until the user swipes it away.
+
+**Proven on the 3T,** on the prod build with every row Silent, without touching the shade.
+50 notifications posted. Then Fajr on 27 September triggered on its second and nothing was posted,
+and neither was Sunrise after it:
+
+```
+09-27 05:24:00.172 E NotificationService: Package has already posted or enqueued 50 notifications.  Not showing more.  package=com.mugtaba.athan
+```
+
+With Sound, that athan would not ring either, and nothing would tell the user. This run was all
+Silent.
+
+| Alerts on | Notifications a day | Days to the cap without clearing |
+| --- | --- | --- |
+| One prayer | 1 | about 50 |
+| All five daily prayers | 5 | about 10 |
+| Standard and Extras | 10 to 11 | about 5 |
+| Plus reminders | up to 22 | about 2 |
+
+**Owner ruling, 2026-09-13:** *"If the user hits 50 notifications, that's not a problem because it's
+not something we expect to happen. However, we don't expect the app to break. It should still
+continue to schedule notifications even if they get rejected."*
+
+**At the cap, the alarms already armed kept triggering on the device. That scheduling is unaffected
+is read from the source.**
+- Android checks the cap only when a notification is posted
+  (`NotificationManagerService.java:4199-4206`). A refused post simply returns (`:4106-4109`), so
+  nothing is thrown back into the app. Scheduling never passes through that check.
+- On the device, the alarms carried on past the first refusal. Sunrise triggered on its second at
+  06:52 and reached Android, which refused it for the same reason.
+- Rescheduling ran twice during the run, with 19 and then 39 notifications showing, and armed 20
+  alarms each time.
+- Not run: a reschedule with exactly 50 showing. It is the same code path, because the cap sits
+  only on posting.
+
+**`autoDismiss: true` would not fix it.**
+- expo-notifications 57.0.18 passes `autoDismiss` to Android's `setAutoCancel`
+  (`ExpoNotificationBuilder.kt:100`). That flag only makes a tap remove the notification
+  (`NotificationManagerService.java:714-718`). A notification nobody touches stays either way, so
+  someone who never clears the shade reaches the cap regardless.
+- It would cost something. Cancelling the notification that is sounding stops its sound
+  (`:5458-5466`). With `true`, tapping an athan while it plays would cut it off. With `false`, the
+  athan should keep playing when tapped (read from the source, not tried).
+- Reminders already use `autoDismiss: true` (`shared/notifications.ts:114`).
+- Two app-side changes could keep a user who never clears the shade under the cap: clearing the
+  app's own old delivered notifications, or posting under a reused tag so that each notification
+  replaces the last, which Android does not count twice
+  (`NotificationManagerService.java:4241-4244`). The ruling above makes neither necessary.
+
+---
+
+## 74. After 00:00, yesterday's still-due rows leave the screen and then lose their alarms
+
+A row filed under yesterday's list with an instant after 00:00 (a Magrib or Isha after midnight,
+or a Friday Istijaba when Magrib is 01:00 or later) drops out twice once the clock passes 00:00:
+- A list rebuilt after 00:00 starts from the calendar day.
+- The rolling window is counted from the calendar day (`shared/notifications.ts` `genNextXDays`).
+- A reschedule cancels every recorded identifier it did not re-attempt
+  (`stores/notifications.ts:625-643`, `:769-795`).
+
+**Proven on the 3T** with the high-latitude mock. Friday's Magrib 00:40 and Isha 01:30 fall on
+Saturday.
+
+| Moment | Screen | Friday's 00:40 and 01:30 armed? |
+| --- | --- | --- |
+| Fri 20:00 | Friday's list with both rows | yes |
+| Sat 00:00:30, app left in front | unchanged | not dumped; nothing ran that could cancel |
+| Sat 00:00:40, after returning to the app | **Saturday's list; both rows gone** | yes |
+| After a full reschedule (the sound sheet) | not re-read | **no, both cancelled** |
+| Clock driven to 00:40 and 01:30 | | **nothing triggered** |
+
+**Reach.** None in London 2026 data; it goes live with the first high-latitude city in v2.0.
+
+**Not a `uat-2` regression.** Both mechanisms are on `uat`; the stale-cancel came in 1.6.0
+(`6b36a14`). `uat-2` fixed when these rows fire (#29's alerts at the row's own moment, finding 44
+and the Istijaba anchor), which is why they fired on the second when nothing rescheduled in
+between. Nothing handles the calendar day passing a list day that still has rows due.
+
+**Not fixed, and not in any queued session.** It waits on the owner's decision. The tests that
+describe the fix are items 6 and 17 of the gap map (finding 77).
+
+Also traced from the code, not run, on the same root: `getYesterdayFinalPrayer`
+(`stores/schedule.ts:82-92`) rebuilds yesterday's last row from its clock reading with no midnight
+shift, so the progress bar gets a post-midnight Isha 24 hours early.
+
+### Two more latent defects found while tracing, not run
+
+- A Suhoor wrapped onto the evening before gets the base window and loses a day of buffer
+  (`shared/notifications.ts:170`, `:183-187`).
+- On 1 January with no 31 December record, a failed previous-year fetch rejects `sync()`
+  (`stores/sync.ts:65-78`). The notification refresh still arms from today's record
+  (`stores/notifications.ts:1039`), which is how finding 72 reaches 1 January.
+
+---
+
+## 75. Eight client tests fail between 00:00 and 00:59 BST
+
+`api/__tests__/client.test.ts`. The fixture computes "today" in UTC while the app uses London time,
+so for the first hour of every BST day the fixture's today is London's yesterday. Measured by
+running the unmodified suite with Jest's clock pinned; nothing was edited. Any commit made in
+that hour fails the pre-commit gate for no reason, because `yarn validate` runs the whole suite
+(`.husky/pre-commit`). The same pinned runs also reproduced Lead 2:
+`stores/__tests__/widgetSettingsSync.test.ts:321` fails at 23:59:41 BST.
+
+---
+
+## 76. Wrong comments, a drifted build number, and the certificate window
+
+- `EVENING_BEFORE_ROWS` (`shared/notifications.ts`) says both night rows fire on the day before.
+  Last Third falls on its own list day on all 364 London days, and Midnight on 203 of them. The
+  extra list day is still right.
+- `shared/types.ts:25-28` labels `asr` Hanafi and `asr_2` Shafi. In the payload `asr_2` is later
+  on 365 of 365 days, and the later Asr is the Hanafi one. The app takes `asr` verbatim, which
+  finding 45's ruling keeps.
+- `stores/notifications.ts:349` documents the athan index as 0-15. 32 athans ship.
+- `app.json` declares Android `versionCode 1000000`, but the main checkout's gitignored `android/`
+  prebuild still says 1, and `ai/AGENTS.md:523` says local builds stay at 1. The 3T now
+  carries 1000000. A build from the stale folder is refused as `INSTALL_FAILED_VERSION_DOWNGRADE`
+  until prebuild re-syncs it.
+- The API's TLS certificate is valid from 7 May to 20 November 2026, read from the certificate.
+  With the device clock outside that window a fetch should fail, and because the cache is wiped
+  first (finding 67) the app would be left without today's times. Not tried on a device.
+
+---
+
+## 77. The unit suite cannot see most of this
+
+49 sub-cases were mapped across the scenarios above; 38 are gaps. The biggest gaps are 15 of 18
+for rows either side of 00:00, and 7 of 7 for the clock reaching 00:00. The full map, with fixture
+values for every missing test, is `ai/features/uat-2/UNIT-TEST-GAPS-2026-09-13.md`. It is queued
+into session 4 (`ai/prompts/coverage-sweep.md`). The tests for findings 72 and 74 will fail
+against today's code by design, so they wait on the owner's decision about those fixes.
+
+## Harness errors this session, recorded so they are not read as app failures
+
+- Athans 21 and 22: Maestro's centring scroll timed out inside the sound sheet, so nothing was
+  selected, and the app correctly kept Athan 20.
+- The first 25 October Last Third fire jumped the clock to the wrong 01:00. Wall-clock arithmetic
+  on an aware London datetime drops `fold`. The alarm was armed correctly; the re-fire in UTC
+  passed.
+- Three high-latitude Midnight fires (00:00, 23:59 and 00:01) failed because the script
+  re-committed Magrib, not Midnight, before them. A commit reschedules only its own row, so
+  Midnight's window had expired.
+- The first cap-test attempt: Isha's sheet had not opened within 1.6 s on the 3T, so a BACK exited
+  the app. The owner also cleared the shade by hand mid-run.
+- The 18 October 00:00:00 record's trigger time was mis-read by the script, which took a process
+  id for it. Logcat shows the request handled at 00:00:00.092 and the notification posted at
+  00:00:00.245.
+- The script marked the reminder re-check FAIL only because it looked the byte range up in the
+  other APK build's map. In the installed build's own map, `54945316:89490` is
+  `reminder_magrib_10.mp3`.
+- The first Athan 1 fire read no file from the extractor. The re-fire at Asr matched `athan1.mp3`.
+- The fire records for athans 16 to 22 carry the same process-id mis-read as the 18 October one.
+- The first reminder re-check armed nothing, straight after the older APK was refused as a version
+  downgrade. The re-run fired.
+
+## State left behind
+
+- **3T:** the prod build (`versionCode 1000000`), the owner's app data restored from an app-only
+  backup, and automatic date and time zone back on. The athan channels the sound tests created
+  remain in Android's notification settings. They are system state and cosmetic. Clearing the
+  app's data removes them, as finding 5's backup cycle showed, and so does an uninstall. Either
+  way the owner's data would need a fresh backup and restore.
+- **iPhone XS:** the prod build installed over the mock build with the owner's data intact, and the
+  local UI-test runner removed.
+- Nothing was built on or pushed to EAS. `releases.json` is untouched.
