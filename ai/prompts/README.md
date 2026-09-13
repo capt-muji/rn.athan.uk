@@ -14,6 +14,7 @@ when it starts, and keep the brief itself in this directory.
 | 5 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context | `moonsighting-research.md` | queued |
 | 6 | **Android: each notification replaces the one before it**: one shared tag, and notifications due at the same instant are left to the system | `replace-previous-notification.md` | queued |
 | 7 | **iOS: find a way for each notification to replace the one before it**: investigate, and prove each answer on the iPhone | `ios-replace-previous-notification.md` | queued |
+| 8 | **Keep yesterday's still-due rows after 00:00**: a Magrib or Isha after midnight stays on screen and keeps its alarm, before v2.0 | `keep-still-due-rows-after-midnight.md` | queued |
 
 Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else.
 Sessions from 6 on sit in the order they were queued until the owner places them.
@@ -22,10 +23,6 @@ Sessions from 6 on sit in the order they were queued until the owner places them
 
 None of these is a session yet. Each needs the owner's decision first.
 
-- **Finding 74:** after 00:00, a still-due row from yesterday's list leaves the screen and loses its
-  alarm. It is dormant in London and live for v2.0.
-- **Finding 72:** night rows on the first stored day come from a substituted Magrib, and two tests
-  assert that behaviour.
 - **Traced, not run (finding 74):** a Suhoor wrapped onto the evening before loses a day of buffer,
   and on 1 January a failed previous-year fetch rejects `sync()`.
 - **Leftover channels on the 3T:** cosmetic. Clearing the app's data or uninstalling removes them,
