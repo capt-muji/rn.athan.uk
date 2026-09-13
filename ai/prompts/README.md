@@ -12,8 +12,11 @@ when it starts, and keep the brief itself in this directory.
 | 3 | **`--:--` for unreadable times**: per prayer, not per day; the day is still shown | `unavailable-times-dashes.md` | queued |
 | 4 | **Close the test-coverage gaps**: parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | queued |
 | 5 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context | `moonsighting-research.md` | queued |
+| 6 | **Android: each notification replaces the one before it**: one shared tag, and notifications due at the same instant are left to the system | `replace-previous-notification.md` | queued |
+| 7 | **iOS: find a way for each notification to replace the one before it**: investigate, and prove each answer on the iPhone | `ios-replace-previous-notification.md` | queued |
 
 Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else.
+Sessions from 6 on sit in the order they were queued until the owner places them.
 
 ## Waiting on the owner, from session 1
 
