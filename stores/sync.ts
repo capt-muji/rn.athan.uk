@@ -69,9 +69,14 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
     if (!cachedPrevYearData) {
       logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
 
+      // Takes its place in line like a refresh, so an older download of last year landing later is dropped
+      const order = ++refreshesBegun;
       const fetchedPrevYearData = await Api.fetchYear(previousYear);
-      Database.saveAllPrayers(fetchedPrevYearData);
-      Database.markYearAsFetched(previousYear);
+      if ((newestDownloadOfYear.get(previousYear) ?? 0) < order) {
+        Database.saveAllPrayers(fetchedPrevYearData);
+        Database.markYearAsFetched(previousYear);
+        newestDownloadOfYear.set(previousYear, order);
+      }
 
       logger.info('SYNC: Previous year data fetched and saved');
     }
@@ -138,26 +143,50 @@ const isCurrentYearCached = (): boolean => {
   return Boolean(fetchedYears[currentYear]) && Boolean(todayData);
 };
 
-/**
- * How many downloads refreshes have stored. A refresh that sees this move while it was still
- * downloading adds its days without wiping, because a wipe could take days that a newer refresh
- * stored and this download does not cover
- */
-let cacheWrites = 0;
+/** Taken as each refresh begins, so downloads can be ordered by when they were asked for */
+let refreshesBegun = 0;
 
 /**
- * Stores a freshly fetched year: swapped in for the cache, or added to it when an overlapping
- * refresh has already stored a download
+ * The newest refresh whose download wiped the cache, and per year the newest whose download of that
+ * year is stored. An older download never replaces a newer one: the later request holds the
+ * provider's newer answer, and the older one could bring back days that answer no longer has
+ */
+let newestSwap = 0;
+const newestDownloadOfYear = new Map<number, number>();
+
+/**
+ * Whether a download holds the day it needs to be trusted over what is stored: today in this year, or
+ * 1 January in a year still to come. One without it is added, but never wipes or blocks another
+ */
+const holdsAnchorDay = (prayers: ISingleApiResponseTransformed[], year: number) => {
+  const today = TimeUtils.getTodayDateString();
+  const todaysYear = Number(today.slice(0, 4));
+  if (year < todaysYear) return true;
+
+  const anchor = year === todaysYear ? today : `${year}-01-01`;
+  return prayers.some((day) => day.date === anchor);
+};
+
+/**
+ * Stores a freshly fetched year: swapped in for the cache, added to it when it lacks today or a refresh
+ * that began later has already swapped, or dropped when one that began later has already stored it
  *
  * Nothing in here awaits: the wipe and the saves are synchronous MMKV calls, so nothing can find
  * the cache empty between them, and a fetch that fails never gets this far to touch it
  *
  * @param prayers The year just fetched, validated and transformed
  * @param year The year those prayers belong to
- * @param writesAtStart `cacheWrites` as it stood when the refresh began
+ * @param order The refresh's place in line, from `refreshesBegun`
  */
-const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: number, writesAtStart: number) => {
-  if (cacheWrites === writesAtStart) {
+const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: number, order: number) => {
+  if ((newestDownloadOfYear.get(year) ?? 0) > order) {
+    logger.info('SYNC: A refresh that began later already stored this year, keeping its download', { year });
+    return;
+  }
+
+  const trusted = holdsAnchorDay(prayers, year);
+
+  if (trusted && newestSwap < order) {
     // Yesterday is carried across the wipe: the countdown bar and the Extras night leading into
     // today both read it, and on 1 January it belongs to last year, which would be downloaded again
     const today = TimeUtils.getTodayDateString();
@@ -184,13 +213,52 @@ const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: numb
     ]);
 
     if (yesterdayData) Database.saveAllPrayers([yesterdayData]);
+    // The wipe took every other year's days, so an entry left for one would drop a download holding its
+    // only copy. The caller puts next year back, and yesterday's year keeps the day it needs
+    const carriedYear = yesterdayData ? Number(yesterday.slice(0, 4)) : undefined;
+    for (const storedYear of [...newestDownloadOfYear.keys()]) {
+      if (storedYear !== year + 1 && storedYear !== carriedYear) newestDownloadOfYear.delete(storedYear);
+    }
+    newestSwap = order;
   } else {
-    logger.info('SYNC: An overlapping refresh already stored a download, adding this one without a wipe', { year });
+    logger.info('SYNC: Adding this download without a wipe', { year, holdsToday: trusted });
   }
 
   Database.saveAllPrayers(prayers);
   Database.markYearAsFetched(year);
-  cacheWrites += 1;
+  if (trusted) newestDownloadOfYear.set(year, order);
+};
+
+/** Read before a swap, whose wipe takes next year's days and marker along with this year's */
+const readStoredYear = (year: number) => {
+  const days: ISingleApiResponseTransformed[] = Database.getAllWithPrefix(`prayer_${year}-`);
+  // The marker stops December downloading the year, so it only goes back when 1 January is stored
+  const marked = Boolean(Database.getItem('fetched_years')?.[year]) && days.some((day) => day.date === `${year}-01-01`);
+  return { days, marked };
+};
+
+/** A marker may only vouch for days that are actually stored, so it goes back with them or not at all */
+const restoreStoredYear = (year: number, stored: ReturnType<typeof readStoredYear>) => {
+  if (stored.days.length === 0) return;
+
+  Database.saveAllPrayers(stored.days);
+  if (stored.marked) Database.markYearAsFetched(year);
+};
+
+/**
+ * Stores next year unless a refresh that began later already has, clearing what an older download
+ * left first, so a day the newer answer lacks cannot survive from the older one. A download without
+ * 1 January stores nothing here: the caller adds it on top of what is kept, unmarked, so December asks again
+ */
+const storeNextYear = (prayers: ISingleApiResponseTransformed[], year: number, order: number) => {
+  if ((newestDownloadOfYear.get(year) ?? 0) > order) return 'dropped';
+  if (!holdsAnchorDay(prayers, year)) return 'incomplete';
+
+  Database.clearPrefix(`prayer_${year}-`);
+  Database.saveAllPrayers(prayers);
+  Database.markYearAsFetched(year);
+  newestDownloadOfYear.set(year, order);
+  return 'stored';
 };
 
 /**
@@ -201,7 +269,7 @@ const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: numb
  */
 const updatePrayerData = async () => {
   logger.info('SYNC: Starting data refresh');
-  const writesAtStart = cacheWrites;
+  const order = ++refreshesBegun;
 
   try {
     const currentYear = TimeUtils.getCurrentYear();
@@ -215,11 +283,10 @@ const updatePrayerData = async () => {
       try {
         const nextYearData = await Api.fetchYear(nextYear);
 
-        Database.saveAllPrayers(nextYearData);
-        Database.markYearAsFetched(nextYear);
-        cacheWrites += 1;
+        const outcome = storeNextYear(nextYearData, nextYear, order);
+        if (outcome === 'incomplete') Database.saveAllPrayers(nextYearData);
 
-        logger.info('SYNC: Data refresh complete (next year only)', { nextYear });
+        logger.info('SYNC: Data refresh complete (next year only)', { nextYear, outcome });
       } catch (error) {
         logger.warn('SYNC: Next year data not yet available, will retry on next sync', { nextYear, error });
       }
@@ -240,21 +307,19 @@ const updatePrayerData = async () => {
 
       if (currentYearResult.status === 'rejected') throw currentYearResult.reason;
 
-      // Read before the wipe takes them, so a failed download of next year keeps what was stored
-      const storedNextYear = Database.getAllWithPrefix(`prayer_${nextYear}-`);
-      const nextYearWasFetched = Boolean(Database.getItem('fetched_years')?.[nextYear]);
+      // Read before the wipe takes them, so next year keeps what was stored when its own download fails
+      // or a refresh that began later has already stored a newer one
+      const storedNextYear = readStoredYear(nextYear);
 
-      replacePrayerCache(currentYearResult.value, currentYear, writesAtStart);
+      replacePrayerCache(currentYearResult.value, currentYear, order);
 
-      if (nextYearResult.status === 'fulfilled') {
-        Database.saveAllPrayers(nextYearResult.value);
-        Database.markYearAsFetched(nextYear);
-      } else {
-        if (storedNextYear.length > 0) {
-          Database.saveAllPrayers(storedNextYear);
-          if (nextYearWasFetched) Database.markYearAsFetched(nextYear);
-        }
+      const ownNextYear = nextYearResult.status === 'fulfilled' ? nextYearResult.value : [];
+      const outcome = nextYearResult.status === 'fulfilled' ? storeNextYear(ownNextYear, nextYear, order) : 'failed';
+      if (outcome !== 'stored') restoreStoredYear(nextYear, storedNextYear);
+      // Added after what was kept, so the days this incomplete download does have are the newer ones
+      if (outcome === 'incomplete') Database.saveAllPrayers(ownNextYear);
 
+      if (nextYearResult.status === 'rejected') {
         logger.warn('SYNC: Next year data not yet available, will retry on next sync', {
           nextYear,
           error: nextYearResult.reason,
@@ -267,7 +332,12 @@ const updatePrayerData = async () => {
     else {
       const data = await Api.fetchYear(currentYear);
 
-      replacePrayerCache(data, currentYear, writesAtStart);
+      // A download that began in November can land after December has stored next year, and a wipe
+      // would take those days with it
+      const storedNextYear = readStoredYear(currentYear + 1);
+
+      replacePrayerCache(data, currentYear, order);
+      restoreStoredYear(currentYear + 1, storedNextYear);
 
       logger.info('SYNC: Data refresh complete (current year only)', { year: currentYear });
     }

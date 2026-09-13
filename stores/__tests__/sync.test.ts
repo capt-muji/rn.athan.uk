@@ -50,6 +50,7 @@ jest.mock('@/stores/database', () => ({
   clearAllExcept: (keys: string[]) => mockClearAllExcept(keys),
   getItem: (key: string) => mockGetItem(key),
   getAllWithPrefix: () => [],
+  clearPrefix: () => {},
 }));
 
 // Mock ScheduleStore
@@ -112,11 +113,11 @@ const createMockPrayerData = (date: string): ISingleApiResponseTransformed => ({
   istijaba: '16:00',
 });
 
-const createMockYearData = () => {
+/** A whole year of days, dated in UTC so the machine's timezone cannot shift them into the year before */
+const createMockYearData = (year = 2026) => {
   const data: ISingleApiResponseTransformed[] = [];
   for (let i = 0; i < 365; i++) {
-    const date = new Date(2026, 0, i + 1);
-    const dateStr = date.toISOString().split('T')[0];
+    const dateStr = new Date(Date.UTC(year, 0, i + 1)).toISOString().split('T')[0];
     data.push(createMockPrayerData(dateStr));
   }
   return data;
@@ -137,7 +138,7 @@ beforeEach(() => {
   mockIsJanuaryFirst.mockReturnValue(false);
   mockGetItem.mockReturnValue({});
   mockGetPrayerByDate.mockReturnValue(createMockPrayerData('2026-01-20'));
-  mockFetchYear.mockResolvedValue(createMockYearData());
+  mockFetchYear.mockImplementation(async (year: number) => createMockYearData(year));
   mockHandleAppUpgrade.mockImplementation(() => {}); // Reset to noop
   mockSaveAllPrayers.mockImplementation(() => {});
   mockMarkYearAsFetched.mockImplementation(() => {});
@@ -375,7 +376,7 @@ describe('December prefetch behavior', () => {
     mockFetchYear.mockImplementation(async (year: number) => {
       callOrder.push(year);
       await new Promise((resolve) => setTimeout(resolve, 10));
-      return createMockYearData();
+      return createMockYearData(year);
     });
 
     await sync();
@@ -439,7 +440,7 @@ describe('December prefetch behavior', () => {
     expect(mockMarkYearAsFetched).not.toHaveBeenCalledWith(2027);
 
     // Second sync: API now populated
-    mockFetchYear.mockResolvedValue(yearData);
+    mockFetchYear.mockImplementation(async (year: number) => createMockYearData(year));
     await sync();
 
     expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2027);
@@ -458,7 +459,7 @@ describe('December prefetch behavior', () => {
     mockGetCurrentYear.mockReturnValue(2026);
     mockGetItem.mockReturnValue({ 2026: true });
     mockGetPrayerByDate.mockReturnValue(createMockPrayerData('2026-12-15'));
-    mockFetchYear.mockResolvedValue(createMockYearData());
+    mockFetchYear.mockImplementation(async (year: number) => createMockYearData(year));
 
     await sync();
 
