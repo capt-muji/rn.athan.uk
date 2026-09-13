@@ -161,9 +161,8 @@ describe('fetchYear day shape', () => {
 
   // The single-day fixtures above CANNOT express blast radius: with one day in the payload,
   // "drop the day" and "reject the year" are indistinguishable. These are the cases that
-  // separate them, and the direction that matters is forward — the endpoint returns a year,
-  // and updatePrayerData clears the cache BEFORE it fetches, so an over-eager rejection
-  // leaves the app with nothing and does the same on every retry.
+  // separate them, and the direction that matters is forward: the endpoint returns a year,
+  // so an over-eager rejection means that year is never stored, and every retry does the same.
   const dayOffset = (days: number) => new Date(Date.now() + days * 86400000).toISOString().split('T')[0] as string;
 
   it('does not let an unreadable day months away take down the day the user is standing on', async () => {

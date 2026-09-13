@@ -8,7 +8,7 @@ when it starts, and keep the brief itself in this directory.
 | # | Session | Brief | Status |
 | --- | --- | --- | --- |
 | 1 | **Verify every feature on real hardware**: the flip either side of 00:00, both clock changes, high latitude, unreadable times, `uat` against `uat-2` | `device-verification-sweep.md` | **DONE** 2026-09-13, findings 72 to 77 |
-| 2 | **Fetch before wipe**: never clear a usable cache for a fetch that might fail | `data-resilience-swap-not-wipe.md` | **NEXT** |
+| 2 | **Fetch before wipe**: never clear a usable cache for a fetch that might fail | `data-resilience-swap-not-wipe.md` | **DONE** 2026-09-13, 1.26.33, finding 67 |
 | 3 | **`--:--` for unreadable times**: per prayer, not per day; the day is still shown | `unavailable-times-dashes.md` | queued |
 | 4 | **Close the test-coverage gaps**: parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | queued |
 | 5 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context | `moonsighting-research.md` | queued |

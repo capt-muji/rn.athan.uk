@@ -46,11 +46,10 @@ const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/;
  *
  * Per DAY, not per response, and that distinction is the whole point. The endpoint returns a
  * year, so rejecting the payload would let one unreadable day months away take down the day
- * the user is standing on — and `updatePrayerData` clears the cache BEFORE it fetches, so a
- * throw here leaves the app with nothing and the same thing happens on every retry. High
- * latitude makes that concrete rather than theoretical: providers emit `"-----"` for a whole
- * polar-summer window, so an all-or-nothing guard would make those cities permanently
- * unusable instead of unusable for the weeks the sun does not set.
+ * the user is standing on: no fetch of that year could ever be stored, and every retry would
+ * fail the same way. High latitude makes that concrete rather than theoretical: providers
+ * emit `"-----"` for a whole polar-summer window, so an all-or-nothing guard would make those
+ * cities permanently unusable instead of unusable for the weeks the sun does not set.
  *
  * @param apiData Filtered API response data
  * @returns The same data minus any day that cannot be read

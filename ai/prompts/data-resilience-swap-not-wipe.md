@@ -1,7 +1,7 @@
 # Session: fetch first, then swap — never clear a usable cache for a fetch that might fail
 
-**Status: NOT STARTED. Raised by the owner on 2026-09-13, queued as session 2** (after the device
-verification sweep). Recorded as finding 67 in `ai/features/uat-2/AUDIT-FINDINGS.md`.
+**Status: DONE 2026-09-13, 1.26.33.** Raised by the owner on 2026-09-13, queued as session 2 (after the device
+verification sweep). Recorded as finding 67 in `ai/features/uat-2/AUDIT-FINDINGS.md`, which now holds the closure, the reviews and the device proof. Items 2 and 4 went to session 3 by owner ruling.
 
 ## Paste this to start the session
 
@@ -16,7 +16,7 @@ Read ai/prompts/data-resilience-swap-not-wipe.md and follow it. It is session 2 
 > before we even consider clearing the cache. Because if we clear the cache, then I have 27 days
 > of nothing."
 
-`stores/sync.ts` → `updatePrayerData` currently does: **clear → await fetch → save.** Every
+`updatePrayerData` in `stores/sync.ts` did, before 1.26.33: **clear, then await the fetch, then save.** Every
 millisecond of that `await` is a window in which the user has no prayer times and recovery
 depends entirely on the network coming back.
 
