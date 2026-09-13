@@ -720,6 +720,21 @@ describe('a failed refresh', () => {
     expect(mockFetchYear).toHaveBeenCalledTimes(2);
   });
 
+  it('still rejects when a swap fails after its wipe has emptied the cache, however much was stored before', async () => {
+    // Tomorrow and the day after are stored until the wipe, so only a check made after the failure can reject
+    const stored = storeHolding(['2026-09-15', '2026-09-16']);
+    mockFetchYear.mockResolvedValue(createMockYearData(2026));
+    mockSaveAllPrayers.mockImplementation(() => {
+      throw new Error('Database write failed');
+    });
+
+    await expect(sync()).rejects.toThrow('Database write failed');
+
+    expect(mockClearAllExcept).toHaveBeenCalled();
+    expect(stored.size).toBe(0);
+    expect(mockSetSequence).not.toHaveBeenCalled();
+  });
+
   it.each([
     { stored: 'nothing', dates: [] },
     { stored: 'only yesterday', dates: ['2026-09-13'] },
@@ -900,10 +915,24 @@ describe('1 January without 31 December (R13)', () => {
   let now: Date;
   let stored: Map<string, ISingleApiResponseTransformed>;
 
+  /** Requests for 31 December the test answers itself, in the order they went out */
+  let heldDays: { resolve: (day: ISingleApiResponseTransformed) => void; reject: (error: Error) => void }[];
+  const holdDay = () =>
+    new Promise<ISingleApiResponseTransformed>((resolve, reject) => {
+      heldDays.push({ resolve, reject });
+    });
+
   beforeEach(() => {
     now = setClock('2027-01-01T10:00:00Z');
     mockGetItem.mockReturnValue({ 2027: true });
     stored = storeHolding(['2027-01-01']);
+    heldDays = [];
+  });
+
+  // A request still on its way holds off another for half a minute, so none may outlive its test into the next
+  afterEach(async () => {
+    for (const day of heldDays.splice(0)) day.reject(new Error('The test ended'));
+    await settle();
   });
 
   /** Both lists set once per sync, and set and refreshed once more each time 31 December lands */
@@ -959,12 +988,7 @@ describe('1 January without 31 December (R13)', () => {
   });
 
   it('resolves with today on screen while the request for 31 December has not answered', async () => {
-    let refuse: ((error: Error) => void) | undefined;
-    mockFetchDay.mockReturnValue(
-      new Promise<ISingleApiResponseTransformed>((_, reject) => {
-        refuse = reject;
-      })
-    );
+    mockFetchDay.mockImplementation(holdDay);
 
     await expect(sync()).resolves.toBeUndefined();
     await settle();
@@ -973,19 +997,10 @@ describe('1 January without 31 December (R13)', () => {
     expect(mockSaveAllPrayers).not.toHaveBeenCalled();
     expect(mockResetStoredAtom).not.toHaveBeenCalled();
     expectTodayShown();
-
-    // Answered at last, so no request is still on its way for the tests after this one
-    refuse?.(new Error('HTTP error! status: 404'));
-    await settle();
   });
 
   it('keeps one request for 31 December on its way however many syncs find the day missing, and asks again once it has failed', async () => {
-    let refuse: ((error: Error) => void) | undefined;
-    mockFetchDay.mockReturnValueOnce(
-      new Promise<ISingleApiResponseTransformed>((_, reject) => {
-        refuse = reject;
-      })
-    );
+    mockFetchDay.mockImplementationOnce(holdDay);
 
     await sync();
     await sync();
@@ -994,7 +1009,7 @@ describe('1 January without 31 December (R13)', () => {
 
     expect(mockFetchDay).toHaveBeenCalledTimes(1);
 
-    refuse?.(new Error('HTTP error! status: 404'));
+    heldDays[0]?.reject(new Error('HTTP error! status: 404'));
     await settle();
     await sync();
     await settle();
@@ -1018,19 +1033,14 @@ describe('1 January without 31 December (R13)', () => {
   });
 
   it('stores a 31 December that lands after sync resolved, rebuilding both lists at that moment and reopening the gate', async () => {
-    let answer: ((day: ISingleApiResponseTransformed) => void) | undefined;
-    mockFetchDay.mockReturnValue(
-      new Promise<ISingleApiResponseTransformed>((resolve) => {
-        answer = resolve;
-      })
-    );
+    mockFetchDay.mockImplementation(holdDay);
 
     await sync();
     await settle();
     expect(mockSaveAllPrayers).not.toHaveBeenCalled();
 
     const later = setClock('2027-01-01T10:20:00Z');
-    answer?.(createMockPrayerData(DECEMBER_31));
+    heldDays[0]?.resolve(createMockPrayerData(DECEMBER_31));
     await settle();
 
     expect(stored.get(DECEMBER_31)).toEqual(createMockPrayerData(DECEMBER_31));
@@ -1043,16 +1053,11 @@ describe('1 January without 31 December (R13)', () => {
   });
 
   it('only logs a refusal that lands after sync resolved', async () => {
-    let refuse: ((error: Error) => void) | undefined;
-    mockFetchDay.mockReturnValue(
-      new Promise<ISingleApiResponseTransformed>((_, reject) => {
-        refuse = reject;
-      })
-    );
+    mockFetchDay.mockImplementation(holdDay);
 
     await sync();
     const error = new Error('HTTP error! status: 404');
-    refuse?.(error);
+    heldDays[0]?.reject(error);
     await settle();
 
     expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('Dec 31'), { error });
@@ -1217,20 +1222,15 @@ describe('1 January without 31 December (R13)', () => {
   });
 
   describe('when syncs find it missing while the request is on its way', () => {
-    let answers: { resolve: (day: ISingleApiResponseTransformed) => void; reject: (error: Error) => void }[];
-
     beforeEach(() => {
-      answers = [];
-      mockFetchDay.mockImplementation(
-        () => new Promise<ISingleApiResponseTransformed>((resolve, reject) => answers.push({ resolve, reject }))
-      );
+      mockFetchDay.mockImplementation(holdDay);
     });
 
     it('stores the one answer once, rebuilding both lists and reopening the gate once', async () => {
       await Promise.all([sync(), sync()]);
       expect(mockFetchDay).toHaveBeenCalledTimes(1);
 
-      answers[0]?.resolve(createMockPrayerData(DECEMBER_31));
+      heldDays[0]?.resolve(createMockPrayerData(DECEMBER_31));
       await settle();
 
       expect(stored.get(DECEMBER_31)).toEqual(createMockPrayerData(DECEMBER_31));
@@ -1252,11 +1252,83 @@ describe('1 January without 31 December (R13)', () => {
       expect(mockFetchYear).toHaveBeenCalledWith(2026);
       expect(fromYearDownload).toBeDefined();
 
-      answers[0]?.resolve({ ...createMockPrayerData(DECEMBER_31), magrib: '16:01' });
+      heldDays[0]?.resolve({ ...createMockPrayerData(DECEMBER_31), magrib: '16:01' });
       await settle();
 
       expect(stored.get(DECEMBER_31)).toBe(fromYearDownload);
       expect(mockRefreshSequence).not.toHaveBeenCalled();
+    });
+  });
+
+  // Android's HTTP client has no timeout, so a request that never settles must not block every retry
+  describe('when the request goes unanswered', () => {
+    const newer = { ...createMockPrayerData(DECEMBER_31), magrib: '16:01' };
+
+    beforeEach(() => {
+      mockFetchDay.mockImplementation(holdDay);
+    });
+
+    it.each([
+      { waited: '29.999 seconds', at: '2027-01-01T10:00:29.999Z', requests: 1 },
+      { waited: '30 seconds', at: '2027-01-01T10:00:30.000Z', requests: 2 },
+    ])('has sent $requests requests once the first has waited $waited', async ({ at, requests }) => {
+      await sync();
+      setClock(at);
+      await sync();
+      await settle();
+
+      expect(mockFetchDay).toHaveBeenCalledTimes(requests);
+    });
+
+    it('asks again straight away when the clock has been set back since the first went out', async () => {
+      await sync();
+      setClock('2027-01-01T09:00:00Z');
+      await sync();
+
+      expect(mockFetchDay).toHaveBeenCalledTimes(2);
+    });
+
+    it('drops the older answer when it lands after the newer one', async () => {
+      await sync();
+      setClock('2027-01-01T10:00:31Z');
+      await sync();
+      expect(mockFetchDay).toHaveBeenCalledTimes(2);
+
+      heldDays[1]?.resolve(newer);
+      await settle();
+      heldDays[0]?.resolve(createMockPrayerData(DECEMBER_31));
+      await settle();
+
+      expect(stored.get(DECEMBER_31)).toBe(newer);
+      expect(mockSaveAllPrayers).toHaveBeenCalledTimes(1);
+    });
+
+    it('lets the newer answer replace the older one when the older lands first', async () => {
+      await sync();
+      setClock('2027-01-01T10:00:31Z');
+      await sync();
+
+      heldDays[0]?.resolve(createMockPrayerData(DECEMBER_31));
+      await settle();
+      heldDays[1]?.resolve(newer);
+      await settle();
+
+      expect(stored.get(DECEMBER_31)).toBe(newer);
+      expect(mockSaveAllPrayers).toHaveBeenCalledTimes(2);
+    });
+
+    it('keeps waiting on the newer request when the older one settles after the newer went out', async () => {
+      await sync();
+      setClock('2027-01-01T10:00:31Z');
+      await sync();
+      heldDays[0]?.reject(new Error('HTTP error! status: 404'));
+      await settle();
+
+      setClock('2027-01-01T10:00:40Z');
+      await sync();
+      await settle();
+
+      expect(mockFetchDay).toHaveBeenCalledTimes(2);
     });
   });
 });

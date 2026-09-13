@@ -5,7 +5,7 @@ import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { checkOverlayBoundary, resyncCountdowns } from '@/stores/countdown';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
-import { sync } from '@/stores/sync';
+import { getArmedDayChanges, sync } from '@/stores/sync';
 import { bumpResync } from '@/stores/ui';
 import { initWidgetSettingsSync } from '@/stores/widget';
 
@@ -49,9 +49,22 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
 
       initializeNotifications(checkPermissions, refreshNotifications, registerBackgroundTask);
 
+      // The refresh above starts before this sync, so days the sync stores reach it too late, and nothing else
+      // refreshes after a resume: 1 January's Fajr, downloaded on the morning of 31 December, would stay unarmed
+      // unless the app is opened again. Read first, so a moved count means this sync changed the days the alarms
+      // read. The scheduling lock queues that refresh behind the running one, and an unmoved count skips it
+      const armedDayChangesBefore = getArmedDayChanges();
+
       // Refresh prayer data after returning from background (not on launch,
       // which app/index.tsx already handles)
-      sync().catch((error) => logger.error('LISTENERS: Foreground sync failed', { error }));
+      sync()
+        .then(() => {
+          if (getArmedDayChanges() === armedDayChangesBefore) return;
+          refreshNotifications().catch((error) =>
+            logger.error('LISTENERS: Refresh after foreground sync failed', { error })
+          );
+        })
+        .catch((error) => logger.error('LISTENERS: Foreground sync failed', { error }));
     }
 
     previousAppState = newState;

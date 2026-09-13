@@ -952,8 +952,8 @@ describe('when refreshes overlap', () => {
 
     const refresh = sync();
     const resumed = sync();
-    // Without 14 December the second is added without a wipe and takes no place in line, so the first still swaps
-    // when it lands, and has to put back the next year its wipe takes
+    // Without 14 December the second is added without a wipe, and though it drew its number from refreshesBegun it
+    // records none for this year, so the first still swaps when it lands and has to put back the next year its wipe takes
     held[2]?.release('2026-12-14');
     held[3]?.fail();
     await resumed;

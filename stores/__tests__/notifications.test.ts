@@ -1001,17 +1001,44 @@ describe('rescheduleAllNotificationsFromBackground', () => {
     expect(lastSchedule).toBeGreaterThan(0);
   });
 
-  it('leaves the gate open when a download changed the days the alarms read while it rescheduled', async () => {
-    const { getArmedDayChanges } = jest.requireMock('@/stores/sync') as { getArmedDayChanges: jest.Mock };
-    getArmedDayChanges.mockReturnValueOnce(3).mockReturnValueOnce(4);
+  describe('when a download changes the days the alarms read', () => {
+    const mockedSync = jest.requireMock('@/stores/sync') as { getArmedDayChanges: jest.Mock; sync: jest.Mock };
+    let armedDayChanges = 0;
 
-    await rescheduleAllNotificationsFromBackground();
+    beforeEach(() => {
+      armedDayChanges = 0;
+      mockedSync.getArmedDayChanges.mockImplementation(() => armedDayChanges);
+    });
 
-    // It read the days before they changed, so a stamp would keep the new ones unarmed for twelve hours
-    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
-    expect(logger.info).toHaveBeenCalledWith(
-      'BACKGROUND_TASK: Days changed during the reschedule, leaving the gate open for the next refresh'
-    );
+    afterEach(() => {
+      mockedSync.getArmedDayChanges.mockImplementation(() => 0);
+    });
+
+    it('leaves the gate open when that happens while it reschedules', async () => {
+      // Landing while the reschedule waits on the OS, after it has read the days
+      (Notifications.getAllScheduledNotificationsAsync as jest.Mock).mockImplementationOnce(async () => {
+        armedDayChanges += 1;
+        return [];
+      });
+
+      await rescheduleAllNotificationsFromBackground();
+
+      // A stamp would keep the new days unarmed for twelve hours
+      expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+      expect(logger.info).toHaveBeenCalledWith(
+        'BACKGROUND_TASK: Days changed during the reschedule, leaving the gate open for the next refresh'
+      );
+    });
+
+    it('stamps the gate when only its own sync changed them, since it reads the days after that sync', async () => {
+      mockedSync.sync.mockImplementationOnce(async () => {
+        armedDayChanges += 1;
+      });
+
+      await rescheduleAllNotificationsFromBackground();
+
+      expect(store.get(lastNotificationScheduleAtom)).toBeGreaterThan(0);
+    });
   });
 });
 
@@ -1467,20 +1494,42 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     expect(store.get(lastNotificationScheduleAtom)).toBe(0);
   });
 
-  it('leaves the refresh gate open when a download changed the days the alarms read while the refresh ran', async () => {
+  describe('when a download changes the days the alarms read during a refresh', () => {
     const { getArmedDayChanges } = jest.requireMock('@/stores/sync') as { getArmedDayChanges: jest.Mock };
-    getArmedDayChanges.mockReturnValueOnce(7).mockReturnValueOnce(8);
-    enableFajrAlerts(AlertType.Sound);
-    seedPrayerWindow();
+    let armedDayChanges = 0;
 
-    await refreshNotifications();
+    beforeEach(() => {
+      armedDayChanges = 0;
+      getArmedDayChanges.mockImplementation(() => armedDayChanges);
+      // The download lands while the first reschedule is arming, after it has read the days
+      const schedule = scheduleMock.getMockImplementation();
+      scheduleMock.mockImplementationOnce((request: { identifier: string }) => {
+        armedDayChanges += 1;
+        return schedule?.(request);
+      });
+      enableFajrAlerts(AlertType.Sound);
+      seedPrayerWindow();
+    });
 
-    // The reschedule itself ran, but over days read before the download changed them
-    expect(scheduleMock).toHaveBeenCalled();
-    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
-    expect(logger.info).toHaveBeenCalledWith(
-      'NOTIFICATION: Days changed during the refresh, leaving the gate open for the next one'
-    );
+    afterEach(() => {
+      getArmedDayChanges.mockImplementation(() => 0);
+    });
+
+    it('leaves the gate open after that refresh', async () => {
+      await refreshNotifications();
+
+      expect(scheduleMock).toHaveBeenCalled();
+      expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+      expect(logger.info).toHaveBeenCalledWith(
+        'NOTIFICATION: Days changed during the refresh, leaving the gate open for the next one'
+      );
+    });
+
+    it('stamps it from a refresh queued behind that one, which reads the days once the lock is its own', async () => {
+      await Promise.all([refreshNotifications(), refreshNotifications()]);
+
+      expect(store.get(lastNotificationScheduleAtom)).toBeGreaterThan(0);
+    });
   });
 
   it('does not stamp the background reschedule when the cache is empty', async () => {

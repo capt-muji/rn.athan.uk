@@ -115,7 +115,7 @@ const saveDownloadedDays = (prayers: ISingleApiResponseTransformed[], armedBefor
   reopenNotificationGate();
 };
 
-/** Whether any of today to today+2, the days the lists are built from, is stored: the test bootstrap hydrates on */
+/** Whether any of today to today+2, the days the lists are built from, is stored: the check stores/bootstrap.ts hydrates on */
 const hasUsableDays = () => {
   const today = TimeUtils.getTodayDateString();
   return [0, 1, 2].some((offset) => Database.getPrayerByDateString(TimeUtils.addDaysToDateString(today, offset)));
@@ -143,8 +143,11 @@ const rebuildSequences = () => {
   }
 };
 
-/** Whether a request for 31 December is still on its way */
-let lastDayRequestPending = false;
+/** When the request for 31 December still on its way began, or null once none is */
+let lastDayRequestStartedAt: number | null = null;
+
+/** How long that request may go unanswered before another may go out */
+const LAST_DAY_REQUEST_PATIENCE_MS = 30_000;
 
 /**
  * SCENARIO 1: 1 January without 31 December. The countdown bars need yesterday's last prayers, and the Extras
@@ -161,12 +164,17 @@ const fetchLastDayOfPreviousYear = () => {
   const lastDayOfPreviousYear = `${previousYear}-12-31`;
   if (Database.getPrayerByDateString(lastDayOfPreviousYear)) return;
 
-  // Each resume syncs, and without a timeout a hanging request would otherwise gain a twin on every one
-  if (lastDayRequestPending) {
-    logger.info('SYNC: Previous year Dec 31 already requested, waiting for that answer');
+  // Each resume syncs, so a slow request would gain a twin on every one. Android's HTTP client has no timeout, so
+  // a request that never settles would otherwise block every retry until the process dies, and moving from dead
+  // mobile data to wifi would not bring the day. After half a minute another may go out, and start order decides
+  // between the two answers. A clock set back is no reason to wait
+  const startedAt = TimeUtils.createInstant().getTime();
+  const pendingFor = lastDayRequestStartedAt === null ? null : startedAt - lastDayRequestStartedAt;
+  if (pendingFor !== null && pendingFor >= 0 && pendingFor < LAST_DAY_REQUEST_PATIENCE_MS) {
+    logger.info('SYNC: Previous year Dec 31 already requested, waiting for that answer', { pendingFor });
     return;
   }
-  lastDayRequestPending = true;
+  lastDayRequestStartedAt = startedAt;
 
   logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
 
@@ -190,7 +198,8 @@ const fetchLastDayOfPreviousYear = () => {
     // Nothing awaits the request, so a failure storing the day or rebuilding the lists has to end here
     .catch((error: unknown) => logger.error('SYNC: Failed to apply previous year Dec 31', { error }))
     .finally(() => {
-      lastDayRequestPending = false;
+      // Only its own mark: a newer request that went out while this one hung is still on its way
+      if (lastDayRequestStartedAt === startedAt) lastDayRequestStartedAt = null;
     });
 };
 
