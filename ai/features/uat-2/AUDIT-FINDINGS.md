@@ -3895,3 +3895,71 @@ One inconsistency worth recording, not fixing: `reminder.mp3` is the only 48 kHz
 only reminder that is not 22050. It is the default reminder, so it is also the most-played file
 in the app. Nothing is wrong with it — it is comfortably under the iOS cliff at 22.785 s and it
 is the outlier that makes the fingerprint table finer rather than coarser.
+
+---
+
+## 67. The cache is wiped before the fetch that replaces it
+
+Raised by the owner, 2026-09-13: *"We need to have the data first, sanitise the data, make sure
+we have the data before we even consider clearing the cache."* Correct as a principle. The
+investigation moved where the damage actually is.
+
+**The December scenario the owner described is already safe.** Three days into December with
+twelve months of use and 27 days of data left, `updatePrayerData` takes scenario 3a —
+`shouldFetchNextYear() && isCurrentYearCached()` — which fetches next year only, warns and
+returns on failure, and **never reaches the wipe.** Those 27 days survive.
+
+**The hole is the path finding 8 opened.** `validateApiTimes` now drops unreadable days rather
+than rejecting the year — the right fix, but it leaves a *hole* in the cache. The morning that
+day arrives:
+
+1. `getPrayerByDate(now)` → null → `needsDataUpdate()` → true.
+2. Not December, so 3a is skipped → **`clearAllExcept` wipes the whole year.**
+3. `Api.fetchYear` runs. Offline, it throws and the user has nothing — not one bad day, the year.
+4. Online, the fetch succeeds and the guard drops the same day again. Today is still missing,
+   `initializeAppState` still fails, and **the next launch wipes and re-downloads the year
+   again.** All day, every launch.
+
+Before finding 8 the bad day was saved and threw at render: error screen, cache intact, Refresh
+available. **The failure mode changed from "one broken day, data intact" to "wipe and
+re-download the year, repeatedly."** Ours, and worse.
+
+Second, smaller: `fetched_years` is not in the preserve list, so a failed fetch also erases the
+record that anything was ever fetched. Nothing local can help the app recover.
+
+**The fix is cheap, and this is the fact that makes it cheap.** `clearAllExcept`
+(`stores/database.ts:110`) and `saveAllPrayers` (`:140`) are both **synchronous** MMKV calls. The
+only reason a window exists is the `await Api.fetchYear(...)` between them. Move the wipe past
+the await and clear+save become one uninterrupted synchronous block — no partial state is even
+representable. Not a rewrite: one call moved past an `await`.
+
+**Deferred deliberately, not forgotten.** This is the data path that has already been broken once
+this month by a change that looked obviously correct, and step 2 of the work — what the app does
+when a fetch fails and the old cache is still good — is a behaviour change the owner has to
+approve. Full brief: `ai/prompts/data-resilience-swap-not-wipe.md`, session 2 in
+`ai/prompts/README.md`.
+
+---
+
+## 68. Istijaba across midnight, stated rather than implied
+
+The owner read finding 44 twice and arrived at the right model the second time: *"If Magrib is
+at 01:20 then Istijaba is at 00:20. If Magrib is at 00:40 then Istijaba is at 23:40 on the
+previous day, because it's before midnight."* **Both correct, and both are what the code does.**
+
+Crossing back over midnight is not a special case anywhere in the source. It falls out of
+subtracting sixty minutes from Magrib's *instant*, which carries its own date — the entire reason
+the clock-string version had to go.
+
+The gap that this exposed was in the tests, not the code: the table at
+`shared/__tests__/nightTimes.test.ts` asserted `magrib − istijaba === 60 min` and the list day,
+which **proves the rule without ever showing it.** A reader — including the owner — cannot see
+from that assertion where Istijaba actually lands. Two cases added in 1.26.23 in the owner's own
+numbers, asserting the literal date and clock on both sides of midnight.
+
+Proved to bite: reverting `getIstijabaTime` to the pre-fix anchoring fails 6 tests; restoring it
+returns 43 green.
+
+Still unproven, and queued for the device sweep: **the notification.** A unit test cannot show
+that the scheduled alarm agrees with the row. Both Magrib values go on the 3T with the clock
+driven to each.

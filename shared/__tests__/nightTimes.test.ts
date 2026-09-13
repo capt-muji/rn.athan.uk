@@ -433,6 +433,31 @@ describe('a Magrib that falls after midnight', () => {
     }
   );
 
+  // The owner's own two cases, in their own numbers (2026-09-13). The gap assertion above
+  // proves the rule without ever showing it, and "one hour before Magrib" is the part of this
+  // finding that got misread — so state the answer rather than imply it. Crossing back over
+  // midnight is not a special case in the code: subtracting from an instant carries the date,
+  // which is the entire reason the clock-string version had to go.
+  it.each([
+    // [Magrib clock, Isha clock, where Magrib lands, where Istijaba lands]
+    ['01:20', '01:44', '2026-06-27 01:20', '2026-06-27 00:20'], // same night, no crossing
+    ['00:40', '01:04', '2026-06-27 00:40', '2026-06-26 23:40'], // Istijaba crosses back
+  ])('puts Istijaba an hour before a Magrib at %s, date and all', (magribTime, ishaTime, magribAt, istijabaAt) => {
+    // 2026-06-26 is a Friday, the only day Istijaba is on the list
+    useRecords([
+      day('2026-06-26', '01:32', '02:58', '13:31', '17:31', magribTime, ishaTime),
+      day('2026-06-27', '01:34', '02:59', '13:31', '17:31', magribTime, ishaTime),
+    ]);
+
+    const istijaba = rowOf(listFor(ScheduleType.Extra, '2026-06-26'), 'Istijaba');
+    const magrib = rowOf(listFor(ScheduleType.Standard, '2026-06-26'), 'Magrib');
+
+    expect(formatInTimeZone(magrib.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe(magribAt);
+    expect(formatInTimeZone(istijaba.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe(istijabaAt);
+    // Wherever the instant lands, the row stays on Friday's list
+    expect(istijaba.belongsToDate).toBe('2026-06-26');
+  });
+
   // getPrayerForDate is what every notification reads, so agreement with the rendered list
   // is the assertion that actually covers the alarm this finding is about
   it('gives the notification path the same instant the list shows', () => {
