@@ -4358,7 +4358,8 @@ is read from the source.**
 - Two app-side changes could keep a user who never clears the shade under the cap: clearing the
   app's own old delivered notifications, or posting under a reused tag so that each notification
   replaces the last, which Android does not count twice
-  (`NotificationManagerService.java:4241-4244`). The ruling above makes neither necessary.
+  (`NotificationManagerService.java:4241-4244`). The ruling above makes neither necessary, though
+  the owner's later spec, finding 78, asks for the second.
 
 ---
 
@@ -4477,3 +4478,37 @@ against today's code by design, so they wait on the owner's decision about those
 - **iPhone XS:** the prod build installed over the mock build with the owner's data intact, and the
   local UI-test runner removed.
 - Nothing was built on or pushed to EAS. `releases.json` is untouched.
+
+---
+
+## 78. OWNER SPEC: each notification replaces the one before it
+
+**Owner, 2026-09-13:** *"Basically, what I want for both platforms is, If I get a notification for
+30 minutes and then another notification for 5 minutes, the 30 minute notification should disappear
+and be overwritten with the 5 minute notification. Same thing for any notification that the
+application produces. It should overwrite the previous notifications, so the user doesn't have to
+keep swiping, to delete all the notifications, and That's it."*
+
+Nothing replaces anything today. On Android, expo-notifications posts each notification with its own
+request identifier as the tag (`service/delegates/ExpoPresentationDelegate.kt:108-112` in its
+Android source), and the app's identifiers are unique (`device/notifications.ts:33-46`), so
+notifications stack. On iOS every delivered notification stays until the user clears it.
+
+**Android: build it (session 6).** Post every notification under one shared tag and id. The owner:
+*"Let's implement this for Android. Let's do this for Android, yes, by adding a tag like you
+mentioned."* It also keeps the app far below finding 73's cap.
+
+**iOS: investigate (session 7).** Session 1 read Apple's documentation as allowing no replacement at
+delivery for notifications scheduled on the phone. The owner does not accept that without proof, so
+session 7 investigates and proves each answer on the iPhone.
+
+**Owner decision: notifications due at the same instant are left to the system.** *"Let's not even
+bother to deal with it. Let just let this system deal with it."* The owner attached one condition:
+*"As long as it's not a default sound, ... then that's fine."* It replaces an earlier ruling,
+withdrawn the same day, that an at-time notification beats a reminder. In London 2026 a few pairs
+fall due together whenever the user picks those alerts and intervals, such as Suhoor with Fajr's
+20-minute reminder, and no athan shares its instant with anything. Nine runs of that pair on the 3T
+posted both notifications every time. In eight, the first to post kept its sound and Android muted
+the second as "recently noisy". In the ninth, the second arrived just outside Android's one-second
+window and its sound cut over the first. Every sound was the app's own file, never a default.
+Which posted first varied from run to run. The session 6 brief has the table.
