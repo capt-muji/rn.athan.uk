@@ -461,6 +461,59 @@ describe('a Magrib that falls after midnight', () => {
   });
 });
 
+// =============================================================================
+// SUHOOR PAST MIDNIGHT
+//
+// Suhoor is a clock string — Fajr minus twenty minutes through adjustTime, which is
+// modular — so any Fajr under 00:20 produces a Suhoor in the 23:xx of the evening
+// before while still filed under Fajr's own date. Two functions correct that as a
+// pair: adjustPrayerDateForMidnightCrossing walks the instant back a day, and
+// calculateBelongsToDate walks the grouping forward again.
+//
+// A mutation sweep found the first half of that pair had no test at all — deleting
+// its branch outright left all 1,213 tests green, the same shape as finding 44,
+// where one half of a matched pair was pinned and the other was not. Reachable
+// above roughly 60N in high summer; inert for London, whose earliest Fajr is 02:38.
+// =============================================================================
+
+describe('a Suhoor that wraps back past midnight', () => {
+  /** Two short polar nights in which Fajr is the only thing that moves */
+  const nightsWithFajr = (fajr: string) => [
+    day('2026-06-20', '00:30', '02:55', '13:00', '17:30', '23:28', '23:52'),
+    day('2026-06-21', fajr, '02:55', '13:00', '17:30', '23:30', '23:54'),
+  ];
+
+  // Either side of the wrap: under 00:20 Suhoor lands in the previous evening, at and
+  // above it stays on its own morning. The span is the point — a fixture on one side
+  // alone cannot tell a working pair from a half-applied one.
+  it.each(['00:00', '00:10', '00:19', '00:20', '00:45', '02:38'])(
+    'stays twenty minutes before a Fajr at %s, on Fajr’s own list',
+    (fajr) => {
+      useRecords(nightsWithFajr(fajr));
+
+      const suhoor = rowOf(listFor(ScheduleType.Extra, '2026-06-21'), 'Suhoor');
+      const fajrRow = rowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'Fajr');
+
+      // Without the instant shift this reads about minus 24 hours: Suhoor after its own Fajr
+      expect(fajrRow.datetime.getTime() - suhoor.datetime.getTime()).toBe(-TIME_ADJUSTMENTS.suhoor * MINUTE);
+      // Without the grouping shift the row leaves the 21st and appears on the 20th's list
+      expect(suhoor.belongsToDate).toBe('2026-06-21');
+    }
+  );
+
+  // The alarm reads getPrayerForDate, not the rendered list, so agreement between them
+  // is what actually proves the notification cannot fire a day out
+  it('gives the notification path the same instant the list shows', () => {
+    useRecords(nightsWithFajr('00:10'));
+
+    const fromList = rowOf(listFor(ScheduleType.Extra, '2026-06-21'), 'Suhoor');
+    const fromNotificationPath = getPrayerForDate(ScheduleType.Extra, 'Suhoor', '2026-06-21');
+
+    expect(fromNotificationPath?.datetime.getTime()).toBe(fromList.datetime.getTime());
+    expect(formatInTimeZone(fromList.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe('2026-06-20 23:50');
+  });
+});
+
 describe('London is untouched by the Magrib midnight rule', () => {
   it('keeps a normal evening Magrib on its own date', () => {
     useRecords([

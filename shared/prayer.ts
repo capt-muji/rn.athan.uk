@@ -231,7 +231,9 @@ export const calculateBelongsToDate = (
     return TimeUtils.getPreviousDateString(calendarDate);
   }
 
-  // EXTRAS: Night prayers before midnight belong to next day
+  // EXTRAS: the other half of that pair for Suhoor — its instant has already gone back a
+  // day, so the grouping comes forward again and the row stays on the list of the Fajr it
+  // precedes rather than on the previous day's
   if (type === ScheduleType.Extra) {
     if (NIGHT_PRAYER_NAMES.includes(prayerEnglish as (typeof NIGHT_PRAYER_NAMES)[number]) && hours >= 12) {
       return TimeUtils.addDaysToDateString(calendarDate, 1);
@@ -327,7 +329,11 @@ function adjustPrayerDateForMidnightCrossing(
     return TimeUtils.addDaysToDateString(date, 1);
   }
 
-  // EXTRAS: Night prayers >=12:00 occurred on PREVIOUS calendar day
+  // EXTRAS: in practice only Suhoor arrives here — Midnight and Last Third carry exact
+  // instants and never take this path. Suhoor is Fajr minus twenty through modular clock
+  // arithmetic, so a Fajr under 00:20 comes back as 23:4x still filed under Fajr's date.
+  // Reading the PM half as "wrapped from the next day" is safe because nothing legitimate
+  // puts Suhoor in an afternoon; the reachable band is only 23:40-23:59.
   if (!isStandard) {
     if (NIGHT_PRAYER_NAMES.includes(prayerName as (typeof NIGHT_PRAYER_NAMES)[number]) && hours >= 12) {
       return TimeUtils.getPreviousDateString(date);
