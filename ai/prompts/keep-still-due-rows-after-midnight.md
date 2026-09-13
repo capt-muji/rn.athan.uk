@@ -34,9 +34,16 @@ London is not affected: the 2026 payload never puts Magrib or Isha after 00:00.
   (`stores/notifications.ts:625-643`, `:769-795`).
 - The list is built from the calendar day (`shared/prayer.ts:419-439`), on every cold launch and
   foreground sync (`stores/sync.ts:82-83`).
-- Same root: `getYesterdayFinalPrayer` rebuilds yesterday's last row without the midnight shift, so
-  the progress bar gets a post-midnight Isha 24 hours early (`stores/schedule.ts:82-92`, traced from
-  the code, not run).
+- The progress bar no longer shares this root. `getYesterdayFinalPrayer` is gone (session 3): the
+  bar's previous row is rebuilt from storage with the list builder, at its real instant, and a row
+  still to come is never used (`findPreviousPrayer` in `stores/schedule.ts`).
+
+**The bar until this lands.** On high latitude, from 1.27.0, a launch after 00:00 while yesterday's
+post-midnight Isha is still due hides the progress bar and the "ago" badge until the next boundary,
+Fajr on both of the mock's shapes. That Isha is the only true previous row and it has not happened,
+and nothing rewrites the sequence when it passes: it is not a boundary, a return to the app refreshes
+only after one, and a sync rebuilds the same rows and skips the write. Keeping yesterday's list in
+the sequence removes this too. London is unaffected.
 
 ## The direction, confirmed by the owner on 2026-09-13
 

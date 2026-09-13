@@ -326,10 +326,11 @@ const startSequenceCountdown = (type: ScheduleType) => {
     writeDisplayCountdown(type);
   };
 
-  // The boundary is worked out on its first read after the sequence changes, so it is read here, alongside
-  // the initial write's read of the next prayer. Any first read made once the boundary has passed would
-  // already name the one after it, and the countdown would hold at 1s until then. A next prayer settled
-  // before this read is covered by the boundary never being later than it (stores/schedule.ts).
+  // The boundary is built from the cached next-prayer and display-date atoms (stores/schedule.ts), each worked
+  // out on its first read after the sequence changes. The screen subscribes them, so they are usually settled
+  // already; read here, they are settled by the time the countdown starts even when nothing has read them.
+  // First read on a tick after the boundary had passed, they would already name the one after it, and the
+  // countdown would hold at 1s until then.
   getNextBoundary(type);
 
   // Initial write before the first aligned tick — display-aware (ceil: never

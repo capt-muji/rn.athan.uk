@@ -1064,44 +1064,48 @@ describe('unreadable rows', () => {
     expect(fifteenth.map((entry) => entry.props.nextName)).not.toContain('Isha');
   });
 
-  it('keeps five minutes between entries when boundaries crowd together, showing what is current by then', () => {
-    // Well-formed times a few minutes apart, which validation accepts (finding 70)
-    const date = '2026-06-15';
-    const crowded: Prayer[] = [
-      makePrayer(date, '03:30', 'Fajr', 'الفجر'),
-      makePrayer(date, '03:31', 'Sunrise', 'الشروق'),
-      makePrayer(date, '03:35', 'Dhuhr', 'الظهر'),
-      makePrayer(date, '17:45', 'Asr', 'العصر'),
-      makePrayer(date, '21:15', 'Magrib', 'المغرب'),
-      makePrayer(date, '22:45', 'Isha', 'العشاء'),
-    ];
-    const entries = buildPrayerWidgetTimeline(
-      createPrayerDatetime(date, '03:00'),
-      standard(crowded),
-      SETTINGS,
-      'light'
-    );
+  // Dhuhr at 03:33 kills the crowded-flip skip's `>=` becoming `===`, and at 03:35 it becoming `>`
+  it.each(['03:33', '03:35'])(
+    'keeps five minutes between entries when boundaries crowd together, showing what is current by then (Dhuhr %s)',
+    (dhuhr) => {
+      // Well-formed times a few minutes apart, which validation accepts (finding 70)
+      const date = '2026-06-15';
+      const crowded: Prayer[] = [
+        makePrayer(date, '03:30', 'Fajr', 'الفجر'),
+        makePrayer(date, '03:31', 'Sunrise', 'الشروق'),
+        makePrayer(date, dhuhr, 'Dhuhr', 'الظهر'),
+        makePrayer(date, '17:45', 'Asr', 'العصر'),
+        makePrayer(date, '21:15', 'Magrib', 'المغرب'),
+        makePrayer(date, '22:45', 'Isha', 'العشاء'),
+      ];
+      const entries = buildPrayerWidgetTimeline(
+        createPrayerDatetime(date, '03:00'),
+        standard(crowded),
+        SETTINGS,
+        'light'
+      );
 
-    for (let i = 1; i < entries.length; i++) {
-      expect(entries[i].date.getTime() - entries[i - 1].date.getTime()).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);
+      for (let i = 1; i < entries.length; i++) {
+        expect(entries[i].date.getTime() - entries[i - 1].date.getTime()).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);
+      }
+
+      // Fajr's flip has its five minutes after the last step, so it stays on its boundary
+      expect(activeAt(entries, at(date, '03:30'))?.date.getTime()).toBe(at(date, '03:30'));
+      expect(activeAt(entries, at(date, '03:30'))?.props.nextName).toBe('Sunrise');
+
+      // Sunrise's flip has to wait until 03:35, when Dhuhr is due or has passed, so it would have nothing to show:
+      // the entry at 03:35 shows what is current then, counted from 03:35, and no entry ever counts down to Dhuhr
+      const settled = activeAt(entries, at(date, '03:35'));
+      expect(settled?.date.getTime()).toBe(at(date, '03:35'));
+      expect(settled?.props).toMatchObject({
+        nextName: 'Asr',
+        prevEpochMs: at(date, dhuhr),
+        countdownLabel: labelFor(at(date, '03:35'), at(date, '17:45')),
+        activeIndex: 3,
+      });
+      expect(entries.some((entry) => entry.props.nextName === 'Dhuhr')).toBe(false);
     }
-
-    // Fajr's flip has its five minutes after the last step, so it stays on its boundary
-    expect(activeAt(entries, at(date, '03:30'))?.date.getTime()).toBe(at(date, '03:30'));
-    expect(activeAt(entries, at(date, '03:30'))?.props.nextName).toBe('Sunrise');
-
-    // Sunrise's flip has to wait until 03:35, which is Dhuhr's own boundary, so it would have nothing to show:
-    // the entry at 03:35 shows what is current then, counted from 03:35, and no entry ever counts down to Dhuhr
-    const settled = activeAt(entries, at(date, '03:35'));
-    expect(settled?.date.getTime()).toBe(at(date, '03:35'));
-    expect(settled?.props).toMatchObject({
-      nextName: 'Asr',
-      prevEpochMs: at(date, '03:35'),
-      countdownLabel: labelFor(at(date, '03:35'), at(date, '17:45')),
-      activeIndex: 3,
-    });
-    expect(entries.some((entry) => entry.props.nextName === 'Dhuhr')).toBe(false);
-  });
+  );
 
   it('passes over unreadable night rows on an Extras list', () => {
     // As when the 16th's Magrib is unreadable: the night leading into the 17th has no Midnight or Last Third

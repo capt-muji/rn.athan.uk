@@ -1365,8 +1365,11 @@ describe('on the real builder', () => {
 
     // Session 7's high-latitude shapes, where a list's last rows fall after 00:00. Launched just after 00:00 the
     // sequence starts at the new calendar day (session 7 has still to change that), so yesterday's Isha still to
-    // come is only in storage, and a bar measured from it would run backwards.
-    it.each([
+    // come is only in storage, and a bar measured from it would run backwards. That Isha is the only true
+    // previous row, so the bar stays hidden until the next boundary rewrites the sequence: the Isha passing is
+    // not a boundary, a return to the foreground refreshes only after one, and a sync rebuilds the same rows and
+    // skips the write.
+    const postMidnightIsha = [
       {
         title: 'Isha at 00:01',
         days: Object.fromEntries(
@@ -1376,10 +1379,11 @@ describe('on the real builder', () => {
           ])
         ),
         launch: '2026-06-20T23:00:30.000Z',
-        next: row('Fajr', '2026-06-21', '2026-06-21T01:40:00.000Z'),
-        // The exact instant: a row at now is no longer next, so it is already the previous row
-        passed: '2026-06-20T23:01:00.000Z',
-        previous: row('Isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
+        isha: row('Isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
+        ishaAt: '2026-06-20T23:01:00.000Z',
+        listDay: '2026-06-21',
+        fajrAt: '2026-06-21T01:40:00.000Z',
+        sunriseAt: '2026-06-21T03:43:00.000Z',
       },
       {
         title: 'Magrib at 00:40 and Isha at 01:30',
@@ -1391,23 +1395,73 @@ describe('on the real builder', () => {
           '2026-09-28': ['03:00', '05:00', '13:00', '17:00', '20:58', '22:30'],
         },
         launch: '2026-09-25T23:00:30.000Z',
-        next: row('Fajr', '2026-09-26', '2026-09-26T01:00:00.000Z'),
-        passed: '2026-09-26T00:31:00.000Z',
-        previous: row('Isha', '2026-09-25', '2026-09-26T00:30:00.000Z'),
+        isha: row('Isha', '2026-09-25', '2026-09-26T00:30:00.000Z'),
+        ishaAt: '2026-09-26T00:30:00.000Z',
+        listDay: '2026-09-26',
+        fajrAt: '2026-09-26T01:00:00.000Z',
+        sunriseAt: '2026-09-26T03:00:00.000Z',
       },
-    ])(
-      "has no bar while yesterday's post-midnight Isha is still to come: $title",
-      ({ days, launch, next, passed, previous }) => {
+    ];
+
+    it.each(postMidnightIsha)(
+      "hides the bar from a launch after 00:00 until Fajr while yesterday's Isha is still due: $title",
+      ({ days, launch, ishaAt, listDay, fajrAt, sunriseAt }) => {
+        const store = getDefaultStore();
+        const screenSubscriptions = [
+          standardNextPrayerAtom,
+          extraNextPrayerAtom,
+          standardDisplayDateAtom,
+          extraDisplayDateAtom,
+          getBarAvailableAtom(STANDARD),
+          getBarAvailableAtom(EXTRA),
+        ].map((subscribed) => store.sub(subscribed, () => {}));
+        const hidden = { next: row('Fajr', listDay, fajrAt), previous: null, barAvailable: false };
+
+        Object.assign(LONDON_2026, days);
+        storeDays(Object.keys(days));
+        launchAt(launch);
+        expect(observe(STANDARD)).toMatchObject(hidden);
+
+        // The ticker runs on past Isha; then the app returns to the foreground and syncs unchanged data
+        jest.advanceTimersByTime(Date.parse(ishaAt) + 5 * 60 * 1000 - Date.parse(launch));
+        expect(observe(STANDARD)).toMatchObject(hidden);
+
+        resyncCountdowns();
+        setSequence(STANDARD, new Date());
+        setSequence(EXTRA, new Date());
+        startCountdowns();
+        expect(observe(STANDARD)).toMatchObject(hidden);
+
+        moveClockTo(new Date(Date.parse(fajrAt) - 2000).toISOString());
+        jest.advanceTimersByTime(1999);
+        expect(observe(STANDARD)).toMatchObject(hidden);
+
+        jest.advanceTimersByTime(1);
+        for (const stop of screenSubscriptions) stop();
+        expect(observe(STANDARD)).toMatchObject({
+          next: row('Sunrise', listDay, sunriseAt),
+          previous: row('Fajr', listDay, fajrAt),
+          barAvailable: true,
+        });
+      }
+    );
+
+    it.each(postMidnightIsha)(
+      "takes yesterday's post-midnight Isha as the previous row only from its own instant: $title",
+      ({ days, launch, isha, ishaAt, listDay, fajrAt }) => {
+        const next = row('Fajr', listDay, fajrAt);
         Object.assign(LONDON_2026, days);
         storeDays(Object.keys(days));
         launchAt(launch);
 
+        // Whenever the sequence is written, the previous row is looked up at that moment
+        moveClockTo(new Date(Date.parse(ishaAt) - 1).toISOString());
+        refreshSequence(STANDARD);
         expect(observe(STANDARD)).toMatchObject({ next, previous: null, barAvailable: false });
 
-        moveClockTo(passed);
+        moveClockTo(ishaAt);
         refreshSequence(STANDARD);
-
-        expect(observe(STANDARD)).toMatchObject({ next, previous, barAvailable: true });
+        expect(observe(STANDARD)).toMatchObject({ next, previous: isha, barAvailable: true });
       }
     );
 
