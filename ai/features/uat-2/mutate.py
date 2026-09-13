@@ -110,7 +110,7 @@ MUTATIONS = [
     # --- session 3: shared/widgetTimeline.ts ---
     ('shared/widgetTimeline.ts', "const segmentFrom = (prayers: Prayer[], at: Date): Segment | null => {\n", "const segmentFrom = (rawPrayers: Prayer[], at: Date): Segment | null => {\n  const prayers = rawPrayers.map((p) => (p.datetime === null ? { ...p, datetime: TimeUtils.createPrayerDatetime(p.belongsToDate, '12:00') } : p)) as Prayer[];\n", 'unreadable row used as a boundary'),
     ('shared/widgetTimeline.ts', 'prayer.belongsToDate === segment.displayDate).sort(compareListOrder)', 'prayer.belongsToDate === segment.next.belongsToDate).sort(compareListOrder)', "day list from next's day, not display date"),
-    ('shared/widgetTimeline.ts', 'formatDateLabel(current.displayDate, settings.hijriDate)', 'formatDateLabel(current.next.belongsToDate, settings.hijriDate)', "date label from next's day, not display date"),
+    ('shared/widgetTimeline.ts', 'formatDateLabel(next.belongsToDate, settings.hijriDate)', 'formatDateLabel(current.displayDate, settings.hijriDate)', "date label from the held day, not next's own day"),
     ('shared/widgetTimeline.ts', 'time: prayer.time ?? UNAVAILABLE_TIME', "time: prayer.time ?? ''", 'unreadable widget row drawn blank'),
 
     # --- session 3: hooks ---
