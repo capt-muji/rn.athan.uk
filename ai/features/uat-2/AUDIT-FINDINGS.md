@@ -3705,4 +3705,27 @@ tempting repair is to loosen the threshold until it passes. The guard instead re
 gapless tag and subtracts it, which agrees with `ffprobe` to within 0.49 ms across all 32 files.
 **When the instrument's error exceeds the margin, the instrument is the finding.**
 
-UNRESOLVED, pending one iPhone test. Do not re-encode anything before that test.
+### RESOLVED by the owner's device test, 2026-09-13. No action needed.
+
+**The owner built to their own iPhone with athan15 selected and heard the athan play.** So iOS
+does **not** use the `kAudioFilePropertyEstimatedDuration` figure `afinfo` reports — it applies
+the gapless trim, and `ffprobe`'s 29.975 s is the number that counts. athan15 is under the cliff
+and nothing is falling back.
+
+That also settles the measure for anyone who re-encodes later: **`ffprobe` is the instrument, not
+`afinfo` and not `mp3-duration`.** The guard added in 1.26.3 already reads the LAME gapless tag
+and agrees with `ffprobe` to within 0.49 ms, so it is measuring the right thing.
+
+**A full sweep of all 99 shipped files, both ways:**
+
+| | `ffprobe` (gapless, what iOS uses) | `afinfo` (estimate) |
+| --- | ---: | ---: |
+| files at or over 30 s | **0** | 1 (athan15, 30.015) |
+| longest athan | athan15, 29.975 | 30.015 |
+| longest reminder | `reminder.mp3`, 22.785 | 22.824 |
+
+Four athans sit within 60 ms of the cliff — athan15, 17, 16 and 7 — so the guard stays worth
+having for a future re-encode. **All 67 reminder files have more than seven seconds of headroom**
+and are not a risk at all.
+
+Superseded: UNRESOLVED, pending one iPhone test.
