@@ -105,7 +105,9 @@ MUTATIONS = [
     ('stores/sync.ts', 'if (!data && !isTodayGapInStoredYear()) return true;', 'if (!data) return true;', 'missing today re-fetched though it is a gap'),
     ('stores/sync.ts', 'key.startsWith(`prayer_${year}-`) && key > todayKey', 'key.startsWith(`prayer_${year}-`) && key !== todayKey', 'a year cut short counts as a gap and is never fetched again'),
     ('stores/sync.ts', ' || isTodayGapInStoredYear();', ';', 'December gap goes back to the error screen'),
-    ('stores/sync.ts', '  Database.saveAllPrayers(prayers);\n  reopenNotificationGate();\n', '  Database.saveAllPrayers(prayers);\n', 'notification gate not reopened after a stored download'),
+    ('stores/sync.ts', '  armedDayChanges += 1;\n  reopenNotificationGate();\n', '  armedDayChanges += 1;\n', 'notification gate not reopened after a stored download'),
+    ('stores/sync.ts', '  armedDayChanges += 1;\n', '', 'a running reschedule stamps over a reopen (counter never moves)'),
+    ('stores/sync.ts', 'isSameRecord(record, Database.getPrayerByDateString(date))', 'true', 'a changed day never reopens the gate'),
 
     # --- session 3: stores/bootstrap.ts ---
     ('stores/bootstrap.ts', 'const anyDayStored = SEQUENCE_DAYS.some((offset) =>', 'const anyDayStored = [0].some((offset) =>', 'hydrate only when today is stored'),
