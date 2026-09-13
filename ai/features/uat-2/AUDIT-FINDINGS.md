@@ -3745,3 +3745,106 @@ having for a future re-encode. **All 67 reminder files have more than seven seco
 and are not a risk at all.
 
 Superseded: UNRESOLVED, pending one iPhone test.
+
+---
+
+## 65. The mutation sweep, and the one real hole it found
+
+Written after the owner asked why the suite let three of my own fixes ship broken. Coverage was
+already high and every suite was green, so the honest answer needed an instrument that does not
+care about either: **break the code on purpose, one small semantic change at a time, and see
+whether anything goes red.** A mutant that survives is a place the suite cannot see.
+
+Fifteen mutations across the eight files the audit touched most. **Thirteen killed, one no-op
+control survived as designed, one real survivor.**
+
+| Mutation | File | Result |
+| --- | --- | --- |
+| small-hours cutoff `<` → `<=` | `shared/prayer.ts` | killed |
+| drop Magrib from the date shift | `shared/prayer.ts` | killed |
+| Istijaba offset off by 1 ms/min | `shared/prayer.ts` | killed |
+| Islamic midnight midpoint drift | `shared/time.ts` | killed |
+| last-third drift | `shared/time.ts` | killed |
+| night rows lose their extra day | `shared/notifications.ts` | killed |
+| athan channel id off by one | `shared/notifications.ts` | killed |
+| time pattern accepts anything | `api/client.ts` | killed |
+| today may be silently dropped | `api/client.ts` | killed |
+| reschedule ignores an empty cache | `stores/notifications.ts` | killed |
+| sequence signature back to first-only | `stores/schedule.ts` | killed |
+| version v-prefix strip removed | `shared/versionUtils.ts` | killed |
+| interval accepts fractions | `shared/constants.ts` | killed |
+| no-op control | `shared/widgetTimeline.ts` | survived (as designed) |
+| **night-row noon boundary `>=` → `>`** | `shared/prayer.ts` | **SURVIVED** |
+
+### Chasing the survivor down produced a finding the boundary itself did not
+
+The first sweep only mutated the boundary, and only the first of the two places it appears. A
+follow-up sweep separated "the suite misses hour 12" from "the suite misses the whole branch",
+across both halves of the pair:
+
+| Mutation | Before | After 1.26.20 |
+| --- | --- | --- |
+| `calculateBelongsToDate`: boundary `>=` → `>` | survived | survives (equivalent — see below) |
+| `calculateBelongsToDate`: whole PM branch removed | killed (3) | killed (6) |
+| `adjustPrayerDateForMidnightCrossing`: boundary | survived | survives (equivalent) |
+| **`adjustPrayerDateForMidnightCrossing`: whole PM branch removed** | **SURVIVED** | **killed (4)** |
+
+**Deleting an entire production branch left 1,213 tests green.** That branch is the instant-shift
+half of the Suhoor midnight-crossing pair: Suhoor is Fajr minus twenty through modular clock
+arithmetic, so a Fajr under 00:20 returns `23:4x` still filed under Fajr's own date. One function
+walks the instant back a day; the other walks the grouping forward again. **The grouping half had
+three tests. The instant half had none** — the identical shape to finding 44, where one half of a
+matched pair was pinned and the other was free to drift.
+
+Closed in 1.26.20 with seven cases over a Fajr either side of 00:20 (`00:00 / 00:10 / 00:19 /
+00:20 / 00:45 / 02:38`, plus notification-path agreement), asserting both the twenty-minute gap
+and the list day. Table-driven because a fixture on one side of the wrap cannot tell a working
+pair from a half-applied one — the lesson of the 00:08 Istijaba fixture.
+
+### The two boundary mutants are equivalent, and will not be tested
+
+`hours >= 12` versus `hours > 12` differ only at exactly `12:00–12:59`. Midnight and Last Third
+take the exact-instant path and never reach the branch, so **Suhoor is the only row that arrives
+here, and it cannot land in an afternoon** — the reachable band is `23:40–23:59`. A test at hour
+12 would assert an input the app cannot produce. The comment above each branch records the
+reachable band instead. **An unkillable mutant is only worth killing when the input is real.**
+
+### What the sweep is worth
+
+Thirteen kills is genuine evidence for the fixes it covers — those tests do constrain the code.
+But the survivor is the point: **it found in one run the exact defect class that took an
+independent reviewer to catch three times this month**, and it found it in a place nobody had
+thought to look, because the branch was correct and simply unwitnessed. Worth re-running against
+any file the audit touches. Script: `scratchpad/mutate.py`, follow-up `mutate2.py`.
+
+---
+
+## Owner question, 2026-09-13: does the app wipe before it fetches, and what did finding 8 change?
+
+Asked directly, so answered from the code rather than from the writeup.
+
+**The wipe comes first, and always has.** `stores/sync.ts` → `updatePrayerData` calls
+`Database.clearAllExcept([...])` at line 183, and only then `Api.fetchYear` at 203/229. On `uat`
+the same two calls sit at 193 and 208/240. **That order is untouched by this audit** — same in
+production, same in `uat-2`.
+
+Two things soften it, both pre-existing: yesterday's record is read out before the wipe and
+written straight back (ISSUES #4), and the wipe is only reached when today's data is already
+missing, or in December when the current year is not cached. The December-refresh path
+(scenario 3a) skips the wipe entirely.
+
+**What finding 8 changed is the new validation step, not the order.** `uat` has no
+`validateApiTimes` at all. I added one, and the first version threw for the whole year if any
+single day was unreadable. Against wipe-first that is fatal: cache emptied → fetch → one bad day
+in December → throw → nothing saved → app shows nothing → every retry does the same. **That is
+the bricking, and it was mine, in the guard, not in the wipe.**
+
+The version on `uat-2` now drops only the days it cannot read and keeps the rest. It throws in
+exactly two cases: today itself is unreadable, or nothing readable is left. Real motivation
+rather than theory — providers emit `"-----"` through a polar-summer window, so an
+all-or-nothing guard would make those cities permanently unusable instead of unusable for the
+weeks the sun does not set.
+
+**Why no test caught it:** all six rejection tests used a single-day payload, and with one day
+in the payload "drop the bad day" and "reject the whole year" produce identical output. The
+fixtures could not express blast radius. Multi-day cases were added in the fix.
