@@ -70,3 +70,23 @@ Partial branch gaps worth a look: `stores/database.ts` (60% branch, lines 95-115
 A true baseline with the widened config, the gaps closed area by area, thresholds raised to lock
 the result in, and a short note in the findings document recording the before and after numbers
 and anything deliberately left uncovered.
+
+## Added by session 1, 2026-09-13: midnight, clock changes, unreadable times, first stored day
+
+The device sweep mapped 49 sub-cases across five scenarios against the suite and found 38 gaps.
+The full map, with the exact fixture values for each missing test, is
+`ai/features/uat-2/UNIT-TEST-GAPS-2026-09-13.md` (finding 77). Its first priority, in order:
+
+1. "never builds Midnight or Last Third from a Magrib the payload did not give"
+2. "arms no alarm from a substituted Magrib on the first stored day"
+3. "opens the 17 and 18 October lists at exactly 00:00:00 and the 19 October list at 23:59 on
+   the 18th"
+4. "arms both 18 October Midnight alarms under their own list-day identifiers"
+5. "crossing 00:00:00 with the app running advances only the Extras sequence, once, and neither
+   display date moves"
+6. "keeps yesterday's list Isha armed when a reschedule runs between 00:00 and its 00:01 instant"
+7. Fix the UTC fixture in `api/__tests__/client.test.ts` (finding 75), then add "rejects the
+   payload when today is unreadable even though every other day reads"
+
+Items 1, 2 and 6 fail against today's code by design, because they describe the fixes for findings
+72 and 74. Write them only once the owner has decided those fixes.
