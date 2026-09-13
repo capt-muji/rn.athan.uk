@@ -49,6 +49,7 @@ jest.mock('@/stores/database', () => ({
   markYearAsFetched: (year: number) => mockMarkYearAsFetched(year),
   clearAllExcept: (keys: string[]) => mockClearAllExcept(keys),
   getItem: (key: string) => mockGetItem(key),
+  getAllWithPrefix: () => [],
 }));
 
 // Mock ScheduleStore
@@ -288,8 +289,20 @@ describe('updatePrayerData behavior', () => {
     mockGetPrayerByDate.mockReturnValue(null);
   });
 
-  it('clears cache except app version, What\u2019s New tracker, and preferences before fetching', async () => {
-    await sync();
+  it('clears cache except app version, What\u2019s New tracker, and preferences only once the fetch has returned', async () => {
+    let returnYear: ((year: ISingleApiResponseTransformed[]) => void) | undefined;
+    mockFetchYear.mockImplementation(
+      () =>
+        new Promise<ISingleApiResponseTransformed[]>((resolve) => {
+          returnYear = resolve;
+        })
+    );
+
+    const syncing = sync();
+    expect(mockClearAllExcept).not.toHaveBeenCalled();
+
+    returnYear?.(createMockYearData());
+    await syncing;
 
     expect(mockClearAllExcept).toHaveBeenCalledWith([
       'app_installed_version',
@@ -297,6 +310,8 @@ describe('updatePrayerData behavior', () => {
       'cache_schema_version',
       'preference_',
       'prayer_max_english_width_',
+      'scheduled_notifications_',
+      'scheduled_reminders_',
     ]);
   });
 
@@ -610,7 +625,7 @@ describe('sync flow integration', () => {
 
     await sync();
 
-    // Full flow: upgrade check -> clear cache -> fetch -> save -> mark -> init
+    // A first launch runs every step: upgrade check, fetch, clear, save, mark and init
     expect(mockHandleAppUpgrade).toHaveBeenCalled();
     expect(mockClearAllExcept).toHaveBeenCalled();
     expect(mockFetchYear).toHaveBeenCalled();
