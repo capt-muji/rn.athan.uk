@@ -1,7 +1,8 @@
 # Deep research: the Moonsighting Committee prayer-time method (Khalid Shaukat)
 
 **Status: NOT STARTED. Queued by the owner on 2026-09-12, to run only after the code-audit
-sessions are complete.**
+sessions are complete. On 2026-09-13 the owner moved it to the end of the queue: it runs last, after
+every other session in `ai/prompts/README.md`.**
 
 ## How to run this
 
@@ -50,11 +51,25 @@ delta is what this app currently ships.
 
 Read the source, not the README:
 
-- <https://github.com/PrayerTimeResearch/PrayerTimeAPI>
+- <https://github.com/PrayerTimeResearch/PrayerTimeAPI>, which the owner asked on 2026-09-13 to be
+  part of this research. It is not a calculation: its README calls it an example of putting
+  moonsighting.com's own prayer-time API on a website, written in Angular 9 under Apache 2.0. The
+  README gives that API as one endpoint, `https://www.moonsighting.com/time_json.php`, and names
+  `https://moonsighting.ahmedbukhamsin.sa/time_json.php` for when the first does not work; the
+  example's own code (`src/app/app.component.ts`) calls only the second. It takes `year`, `tz`
+  (such as `Asia/Riyadh`), `lat`, `lon`, `method` (the README lists 0 Hanafi general, 1 Hanafi
+  Shafag Abyad, 2 Shafi Shafag Ahmar and 3 Shia Jafari), `both` (Asr by both methods: the README
+  says 0 or 1, but its example URL and the code send `false` or `true`, and the code shows the
+  second Asr only for methods 0 to 2) and `time` (0 for 24-hour, 1 for 12-hour).
+  Establish whether the endpoint still answers, which method and parameters reproduce the site's
+  published tables, how it behaves at high latitude, and whether it could serve a worldwide v2.0
+  directly, since today's endpoint is London only with no city parameter (finding 43). Read the
+  source for anything the README leaves out.
 - <https://github.com/mawaqit/prayer-times-moonsighting>
 
-Both are believed to implement this method. Establish what each actually computes, where they
-agree, where they diverge, and whether either matches the London modification.
+The mawaqit package is believed to implement this method. Establish what it and the moonsighting.com
+endpoint actually compute, where they agree, where they diverge, and whether either matches the
+London modification.
 
 ## Step 4: the packages
 
