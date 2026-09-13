@@ -1,10 +1,32 @@
 # Session: verify every feature on real hardware, top to bottom
 
-**Status: NOT STARTED. Queued by the owner on 2026-09-13, and it runs BEFORE every other queued
-session** — before `coverage-sweep.md`, before `moonsighting-research.md`. The owner was explicit:
-*"absolutely before any other sessions, the next session."*
+**Status: DONE, 2026-09-13.** Results are in `ai/features/uat-2/AUDIT-FINDINGS.md` under "Session 1
+of the queue", findings 72 to 77. The owner queued it on 2026-09-13 to run before every other
+session: *"absolutely before any other sessions, the next session."*
 
-## Paste this to start the session
+## How the session ran
+
+The owner narrowed the brief below while it ran. These rulings supersede the brief wherever the two
+disagree:
+
+- **The audio pass closed** after 20 athans were proven byte-exact on the 3T. The owner could
+  hear the repetition: *"you're going in loops and you're testing things that already work"*,
+  and *"I think all the audios work. I think all the reminders work."* No ear check runs on
+  either phone.
+- **The crux became the flip either side of 00:00** for Isha, Magrib, Istijaba, Fajr and the
+  night rows, both London clock changes, the clock reaching 00:00 with the app open, and one
+  test of unreadable times.
+- **No notification test waits more than two minutes.** Drive the clock, or use mock data for
+  rows London never produces, and assert the exact instant.
+- **No screenshots** (1.26.29).
+- **The iPhone XS took the unreadable-times test.** That test needs no clock driving, and the owner
+  offered the iPhone for checks that do not depend on the platform.
+- **Not proven, by that narrowing:** athans 21 to 32, 66 of the 67 reminders, the per-alert-type
+  matrix (item 1 below), the reminder-interval check (item 4), and the iPhone audio pass.
+
+## The prompt that started the session
+
+Kept for the record. The session is done.
 
 ```
 Read ai/prompts/device-verification-sweep.md and follow it. This is session 1 of the queue in
