@@ -162,7 +162,7 @@ Behaviour this produces:
 | Caller | Touches | Interaction with this change |
 | --- | --- | --- |
 | Bootstrap hydrate (module load) | reads today, builds sequences | Today stored with `null`s still hydrates. A missing today still shows the spinner and waits for sync, as now. |
-| Launch sync, foreground sync, background task sync | download, swap, `initializeAppState` | Unchanged apart from the per-field validation. An unreadable today is stored, so `needsDataUpdate()` stays false and nothing re-fetches (finding 67's loop). The 1 January day fetch is not awaited, and only one is in flight at a time (a stalled one gives way after 30 seconds); start order decides if two answers land, and a failure no longer throws. A failed refresh with a usable day from today to today+2 stored sets the lists up instead of rejecting, so the error screen never covers them. |
+| Launch sync, foreground sync, background task sync | download, swap, `initializeAppState` | Unchanged apart from the per-field validation. An unreadable today is stored, so `needsDataUpdate()` stays false and nothing re-fetches (finding 67's loop). The 1 January day fetch is not awaited, and a new one is not sent while one under 30 seconds old is pending (so a stalled one gives way); start order decides if two answers land, and a failure no longer throws. A failed refresh with a usable day from today to today+2 stored sets the lists up instead of rejecting, so the error screen never covers them. |
 | Post-sync and post-paint notification refresh, sheet commit | `getPrayerForDate` per day | An unreadable occurrence is skipped, and the id armed for it earlier is stale-cancelled. The new window guard still bails on an empty cache. |
 | Countdown ticker | `refreshSequence` at a boundary | New boundary at hold end (00:00). Synchronous atom writes only. |
 | Resume listener | `checkOverlayBoundary`, `resyncCountdowns` | Both use the same boundary, so a hold end crossed while suspended is caught up. |
@@ -209,3 +209,10 @@ Found by the design review, 2026-09-13. None is built around; each follows from 
   today. Widgets are flagged off.
 - **Downgrading** to a build older than this change reads a stored `null` and fails its sync; Refresh
   recovers it.
+- **Known limits left in place, found by the last reviews.** None is reachable in London's ordinary use.
+  - A 31 December answer that lands after the resume's own check is armed by the next reschedule, not at
+    once: opened between 00:00 and about 01:40 on 1 January with 31 December missing, that night's Last Third
+    alarm is not set.
+  - A sync that stores days and then fails before it finishes skips the re-arm that a successful one gets.
+  - A download landing just before the resume's first refresh reads the days can lead to two identical
+    reschedules. Identifiers are fixed, so the second overwrites the first.

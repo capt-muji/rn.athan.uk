@@ -49,10 +49,11 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
 
       initializeNotifications(checkPermissions, refreshNotifications, registerBackgroundTask);
 
-      // The refresh above starts before this sync, so days the sync stores reach it too late, and nothing else
-      // refreshes after a resume: 1 January's Fajr, downloaded on the morning of 31 December, would stay unarmed
-      // unless the app is opened again. Read first, so a moved count means this sync changed the days the alarms
-      // read. The scheduling lock queues that refresh behind the running one, and an unmoved count skips it
+      // The refresh above reads the days before this sync's download lands, and nothing else in this session
+      // refreshes after it (the background task does, hours later): 1 January's Fajr, downloaded on the morning of
+      // 31 December, would stay unarmed unless the app is opened again. Read first, so a moved count means this sync
+      // changed the days the alarms read. The scheduling lock queues that refresh behind the running one, and an
+      // unmoved count skips it
       const armedDayChangesBefore = getArmedDayChanges();
 
       // Refresh prayer data after returning from background (not on launch,
