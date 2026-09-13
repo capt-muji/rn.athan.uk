@@ -1065,12 +1065,12 @@ describe('unreadable rows', () => {
   });
 
   it('keeps five minutes between entries when boundaries crowd together, showing what is current by then', () => {
-    // Well-formed times a minute or two apart, which validation accepts (finding 70)
+    // Well-formed times a few minutes apart, which validation accepts (finding 70)
     const date = '2026-06-15';
     const crowded: Prayer[] = [
       makePrayer(date, '03:30', 'Fajr', 'الفجر'),
       makePrayer(date, '03:31', 'Sunrise', 'الشروق'),
-      makePrayer(date, '03:33', 'Dhuhr', 'الظهر'),
+      makePrayer(date, '03:35', 'Dhuhr', 'الظهر'),
       makePrayer(date, '17:45', 'Asr', 'العصر'),
       makePrayer(date, '21:15', 'Magrib', 'المغرب'),
       makePrayer(date, '22:45', 'Isha', 'العشاء'),
@@ -1090,13 +1090,13 @@ describe('unreadable rows', () => {
     expect(activeAt(entries, at(date, '03:30'))?.date.getTime()).toBe(at(date, '03:30'));
     expect(activeAt(entries, at(date, '03:30'))?.props.nextName).toBe('Sunrise');
 
-    // Sunrise's flip has to wait until 03:35, by which time Dhuhr has passed as well: that entry shows
-    // what is current at 03:35, counted from 03:35, and no entry ever counts down to Dhuhr
+    // Sunrise's flip has to wait until 03:35, which is Dhuhr's own boundary, so it would have nothing to show:
+    // the entry at 03:35 shows what is current then, counted from 03:35, and no entry ever counts down to Dhuhr
     const settled = activeAt(entries, at(date, '03:35'));
     expect(settled?.date.getTime()).toBe(at(date, '03:35'));
     expect(settled?.props).toMatchObject({
       nextName: 'Asr',
-      prevEpochMs: at(date, '03:33'),
+      prevEpochMs: at(date, '03:35'),
       countdownLabel: labelFor(at(date, '03:35'), at(date, '17:45')),
       activeIndex: 3,
     });

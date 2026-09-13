@@ -76,6 +76,7 @@ import {
   createDisplayDateAtom,
   createNextPrayerAtom,
   createPrevPrayerAtom,
+  extraDisplayDateAtom,
   extraNextPrayerAtom,
   extraSequenceAtom,
   getDisplayDate,
@@ -85,6 +86,7 @@ import {
   getSequenceAtom,
   refreshSequence,
   setSequence,
+  standardDisplayDateAtom,
   standardNextPrayerAtom,
   standardSequenceAtom,
 } from '../schedule';
@@ -1277,45 +1279,73 @@ describe('on the real builder', () => {
       });
     });
 
-    // The bar keeps the next-prayer atoms subscribed, so they are worked out the moment a sync writes new data,
-    // while the boundary is not worked out until something first reads it. Data landing just before Asr and a
-    // restart just after it left the next prayer on the passed Asr and the boundary on Magrib: nothing moved
-    // on, and the countdown held at 1s until 17:06.
-    it.each([
-      [
-        'a sync restarting the countdowns',
-        startCountdowns,
-        '2026-10-17T14:30:01.000Z',
-        ['Asr', ...Array(10).fill('Magrib')],
-      ],
-      ['a return to the foreground', resyncCountdowns, '2026-10-17T14:30:00.010Z', Array(11).fill('Magrib')],
-    ])(
-      'moves on from Asr after %s lands just past it, with new data written just before it',
-      (_, restart, transition, names) => {
+    // The bar keeps the next-prayer atoms subscribed and the day list keeps the display dates subscribed, so they
+    // are worked out the moment a sync writes new data, while the boundary is not worked out until something
+    // first reads it. New data landing just before a boundary and a restart just after it held the countdown at
+    // 1s on a passed Asr until 17:06, and left a day with no readable time on screen until the next day's Fajr.
+    const races = [
+      {
+        boundary: 'Asr',
+        type: STANDARD,
+        launched: { '2026-10-19': ['magrib'] } as Record<string, RequiredTimeName[] | 'all'>,
+        synced: {} as Record<string, RequiredTimeName[] | 'all'>,
+        launch: '2026-10-17T14:00:00.000Z',
+        at: '2026-10-17T14:30:00.000Z',
+        displayDate: '2026-10-17',
+        countdown: { timeLeft: 9350, name: 'Magrib' },
+      },
+      ...[
+        { type: STANDARD, countdown: { timeLeft: 21290, name: 'Fajr' } },
+        { type: EXTRA, countdown: { timeLeft: 20090, name: 'Suhoor' } },
+      ].map(({ type, countdown }) => ({
+        boundary: '00:00 ending the 18th, which has no readable time',
+        type,
+        launched: { '2026-10-18': 'all' } as Record<string, RequiredTimeName[] | 'all'>,
+        synced: { '2026-10-18': 'all' } as Record<string, RequiredTimeName[] | 'all'>,
+        launch: '2026-10-17T18:28:58.000Z',
+        at: '2026-10-18T23:00:00.000Z',
+        displayDate: '2026-10-19',
+        countdown,
+      })),
+    ];
+    const restarts = [
+      { restartName: 'a sync restarting the countdowns', restart: startCountdowns, firstCheckMs: 1000 },
+      { restartName: 'a return to the foreground', restart: resyncCountdowns, firstCheckMs: 10 },
+    ];
+
+    it.each(races.flatMap((race) => restarts.map((restart) => ({ ...race, ...restart }))))(
+      'moves on at $boundary ($type) after $restartName lands just past it, with new data written just before it',
+      ({ type, launched, synced, launch, at, displayDate, countdown, restart, firstCheckMs }) => {
         const store = getDefaultStore();
-        const barSubscriptions = [standardNextPrayerAtom, extraNextPrayerAtom].map((nextAtom) =>
-          store.sub(nextAtom, () => {})
-        );
+        const screenSubscriptions = [
+          standardNextPrayerAtom,
+          extraNextPrayerAtom,
+          standardDisplayDateAtom,
+          extraDisplayDateAtom,
+        ].map((subscribed) => store.sub(subscribed, () => {}));
+        const boundaryMs = Date.parse(at);
 
-        storeDays(OCT_16_TO_20, { '2026-10-19': ['magrib'] });
-        launchAt('2026-10-17T14:00:00.000Z');
+        storeDays(OCT_16_TO_20, launched);
+        launchAt(launch);
+        jest.advanceTimersByTime(2000);
+        const beforeSync = store.get(getSequenceAtom(type));
 
-        storeDays(OCT_16_TO_20);
-        moveClockTo('2026-10-17T14:29:59.990Z');
+        storeDays(OCT_16_TO_20, synced);
+        moveClockTo(new Date(boundaryMs - 10).toISOString());
         setSequence(STANDARD, new Date());
         setSequence(EXTRA, new Date());
+        expect(store.get(getSequenceAtom(type))).not.toBe(beforeSync);
 
-        moveClockTo('2026-10-17T14:30:00.010Z');
-        const { writes, unsubscribe } = recordSequenceWrites(STANDARD);
-        const countdown = recordCountdown(STANDARD);
+        moveClockTo(new Date(boundaryMs + 10).toISOString());
+        const { writes, unsubscribe } = recordSequenceWrites(type);
         restart();
 
         jest.advanceTimersByTime(10_000);
-        for (const stop of [unsubscribe, countdown.unsubscribe, ...barSubscriptions]) stop();
+        for (const stop of [unsubscribe, ...screenSubscriptions]) stop();
 
-        expect(writes).toEqual([transition]);
-        expect(countdown.values.map(({ name }) => name)).toEqual(names);
-        expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 9350, name: 'Magrib' });
+        expect(writes).toEqual([new Date(boundaryMs + firstCheckMs).toISOString()]);
+        expect(getDisplayDate(type)).toBe(displayDate);
+        expect(store.get(getCountdownAtom(type))).toEqual(countdown);
       }
     );
 
@@ -1332,6 +1362,54 @@ describe('on the real builder', () => {
       expect(writes).toEqual(['2026-10-17T14:30:00.000Z']);
       expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 9360, name: 'Magrib' });
     });
+
+    // Session 7's high-latitude shapes, where a list's last rows fall after 00:00. Launched just after 00:00 the
+    // sequence starts at the new calendar day (session 7 has still to change that), so yesterday's Isha still to
+    // come is only in storage, and a bar measured from it would run backwards.
+    it.each([
+      {
+        title: 'Isha at 00:01',
+        days: Object.fromEntries(
+          ['2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'].map((date) => [
+            date,
+            ['02:40', '04:43', '13:02', '17:20', '21:25', '00:01'],
+          ])
+        ),
+        launch: '2026-06-20T23:00:30.000Z',
+        next: row('Fajr', '2026-06-21', '2026-06-21T01:40:00.000Z'),
+        // The exact instant: a row at now is no longer next, so it is already the previous row
+        passed: '2026-06-20T23:01:00.000Z',
+        previous: row('Isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
+      },
+      {
+        title: 'Magrib at 00:40 and Isha at 01:30',
+        days: {
+          '2026-09-24': ['03:00', '05:00', '13:00', '17:00', '22:30', '23:40'],
+          '2026-09-25': ['02:30', '04:30', '13:00', '17:30', '00:40', '01:30'],
+          '2026-09-26': ['02:00', '04:00', '13:00', '17:30', '22:00', '23:30'],
+          '2026-09-27': ['00:10', '03:00', '13:00', '17:00', '21:00', '22:30'],
+          '2026-09-28': ['03:00', '05:00', '13:00', '17:00', '20:58', '22:30'],
+        },
+        launch: '2026-09-25T23:00:30.000Z',
+        next: row('Fajr', '2026-09-26', '2026-09-26T01:00:00.000Z'),
+        passed: '2026-09-26T00:31:00.000Z',
+        previous: row('Isha', '2026-09-25', '2026-09-26T00:30:00.000Z'),
+      },
+    ])(
+      "has no bar while yesterday's post-midnight Isha is still to come: $title",
+      ({ days, launch, next, passed, previous }) => {
+        Object.assign(LONDON_2026, days);
+        storeDays(Object.keys(days));
+        launchAt(launch);
+
+        expect(observe(STANDARD)).toMatchObject({ next, previous: null, barAvailable: false });
+
+        moveClockTo(passed);
+        refreshSequence(STANDARD);
+
+        expect(observe(STANDARD)).toMatchObject({ next, previous, barAvailable: true });
+      }
+    );
 
     it.each([
       ['Friday: its Istijaba', '2026-10-16T22:59:58.000Z', row('Istijaba', '2026-10-16', '2026-10-16T16:08:00.000Z')],
@@ -1536,6 +1614,36 @@ describe('on the real builder', () => {
       expect(getDisplayDate(EXTRA)).toBe(nextListDay);
     }
   );
+
+  // Session 7's high-latitude Saturday with no readable time: the Sunday's Fajr at 00:10 puts its Suhoor at 23:50
+  // on the Saturday, before the held Saturday's own 00:00, so the Extras list meets that Suhoor first
+  it("moves on at a Suhoor that falls before a held day's 00:00, and at the 00:00 after it", () => {
+    Object.assign(LONDON_2026, {
+      '2026-09-24': ['03:00', '05:00', '13:00', '17:00', '22:30', '23:40'],
+      '2026-09-25': ['02:30', '04:30', '13:00', '17:30', '00:40', '01:30'],
+      '2026-09-26': ['02:00', '04:00', '13:00', '17:30', '22:00', '23:30'],
+      '2026-09-27': ['00:10', '03:00', '13:00', '17:00', '21:00', '22:30'],
+      '2026-09-28': ['03:00', '05:00', '13:00', '17:00', '20:58', '22:30'],
+    });
+    storeDays(['2026-09-24', '2026-09-25', '2026-09-26', '2026-09-27', '2026-09-28'], { '2026-09-26': 'all' });
+    launchAt('2026-09-26T12:00:00.000Z');
+
+    expect(getDisplayDate(EXTRA)).toBe('2026-09-26');
+    expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-09-26T22:50:00.000Z');
+
+    moveClockTo('2026-09-26T22:49:58.000Z');
+    const { writes, unsubscribe } = recordSequenceWrites(EXTRA);
+
+    jest.advanceTimersByTime(2000);
+    expect(writes).toEqual(['2026-09-26T22:50:00.000Z']);
+    expect(getDisplayDate(EXTRA)).toBe('2026-09-26');
+    expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-09-26T23:00:00.000Z');
+
+    jest.advanceTimersByTime(10 * 60 * 1000);
+    unsubscribe();
+    expect(writes).toEqual(['2026-09-26T22:50:00.000Z', '2026-09-26T23:00:00.000Z']);
+    expect(getDisplayDate(EXTRA)).toBe('2026-09-27');
+  });
 
   // ---------------------------------------------------------------------------
   // A lost week: the countdown keeps a target on the far side of the gap
@@ -1820,10 +1928,6 @@ describe('on the real builder', () => {
       expect(magrib17()).toBe(row('Magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'));
     });
 
-    // Only 18 October is stored, so the build on the 17th and the build after midnight hold the same
-    // readable rows, its six, and differ only in the days around it that have none. Those rows are part of
-    // the sequence's content: the later build must be written, not skipped as identical, or the store
-    // keeps a finished day and lacks the day after.
     // With nothing stored every row reads '-', so only each row's identity tells a fortnight from the one
     // starting a day later
     it('writes a rebuild a day later when nothing is stored, though every row of both is unreadable', () => {
@@ -1838,6 +1942,10 @@ describe('on the real builder', () => {
       expect(Object.keys(rowsHeld(STANDARD))[0]).toBe('2026-10-18');
     });
 
+    // Only 18 October is stored, so the build on the 17th and the build after midnight hold the same
+    // readable rows, its six, and differ only in the days around it that have none. Those rows are part of
+    // the sequence's content: the later build must be written, not skipped as identical, or the store
+    // keeps a finished day and lacks the day after.
     it('writes a rebuild whose readable rows are the same but whose unreadable days moved', () => {
       storeDays(['2026-10-18']);
 
