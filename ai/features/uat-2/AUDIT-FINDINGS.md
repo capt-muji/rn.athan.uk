@@ -4448,6 +4448,12 @@ The single-day form was measured the same day, during session 2, for session 3's
 with an `error` field. So in September neither parameter reaches outside the current year. Whether
 31 December is still served on 1 January cannot be checked before 1 January 2027.
 
+Measured again later the same day: with `24hours=true`, the single-day answers for 12 September,
+1 January and 31 December 2026 match the `year=2026` download on all six times. Without it,
+afternoon times come back in 12-hour form (Dhuhr `01:02` for `13:02`) and still pass the `HH:MM`
+check, so the flag is required. `date=2025-12-31` still returns HTTP 404, and `year=2025` still
+returns no days.
+
 ### The false-drop risk is real but self-announcing
 
 The three false-drop rows above all come from the *provider changing format*. A format change
@@ -4837,9 +4843,9 @@ Saturday.
 and the Istijaba anchor), which is why they fired on the second when nothing rescheduled in
 between. Nothing handles the calendar day passing a list day that still has rows due.
 
-**Queued as session 8** (`ai/prompts/keep-still-due-rows-after-midnight.md`), direction confirmed by
-the owner, to land before v2.0. The tests that describe the fix are items 6 and 17 of the gap map
-(finding 77).
+**Queued as session 7 of the queue** (`ai/prompts/keep-still-due-rows-after-midnight.md`),
+direction confirmed by the owner, to land before v2.0. The tests that describe the fix are items 6
+and 17 of the gap map (finding 77).
 
 Also traced from the code, not run, on the same root: `getYesterdayFinalPrayer`
 (`stores/schedule.ts:82-92`) rebuilds yesterday's last row from its clock reading with no midnight
@@ -4942,13 +4948,13 @@ request identifier as the tag (`service/delegates/ExpoPresentationDelegate.kt:10
 Android source), and the app's identifiers are unique (`device/notifications.ts:33-46`), so
 notifications stack. On iOS every delivered notification stays until the user clears it.
 
-**Android: build it (session 6).** Post every notification under one shared tag and id. The owner:
-*"Let's implement this for Android. Let's do this for Android, yes, by adding a tag like you
-mentioned."* It also keeps the app far below finding 73's cap.
+**Android: build it (session 5 of the queue).** Post every notification under one shared tag and
+id. The owner: *"Let's implement this for Android. Let's do this for Android, yes, by adding a tag
+like you mentioned."* It also keeps the app far below finding 73's cap.
 
-**iOS: investigate (session 7).** Session 1 read Apple's documentation as allowing no replacement at
-delivery for notifications scheduled on the phone. The owner does not accept that without proof, so
-session 7 investigates and proves each answer on the iPhone.
+**iOS: investigate (session 6 of the queue).** Session 1 read Apple's documentation as allowing no
+replacement at delivery for notifications scheduled on the phone. The owner does not accept that
+without proof, so that session investigates and proves each answer on the iPhone.
 
 **Owner decision: notifications due at the same instant are left to the system.** *"Let's not even
 bother to deal with it. Let just let this system deal with it."* The owner attached one condition:
@@ -4959,4 +4965,5 @@ fall due together whenever the user picks those alerts and intervals, such as Su
 posted both notifications every time. In eight, the first to post kept its sound and Android muted
 the second as "recently noisy". In the ninth, the second arrived just outside Android's one-second
 window and its sound cut over the first. Every sound was the app's own file, never a default.
-Which posted first varied from run to run. The session 6 brief has the table.
+Which posted first varied from run to run. The Android brief, `replace-previous-notification.md`,
+has the table.

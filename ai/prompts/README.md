@@ -11,13 +11,14 @@ when it starts, and keep the brief itself in this directory.
 | 2 | **Fetch before wipe**: never clear a usable cache for a fetch that might fail | `data-resilience-swap-not-wipe.md` | **DONE** 2026-09-13, 1.26.33, finding 67 |
 | 3 | **`--:--` for unreadable times**: per prayer, not per day; the day is still shown. Extended by the owner during session 2: missing days, dashed-row styling, 1 January, screenshots to approve | `unavailable-times-dashes.md` | **NEXT**, in a fresh session |
 | 4 | **Close the test-coverage gaps**: parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | queued |
-| 5 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context | `moonsighting-research.md` | queued |
-| 6 | **Android: each notification replaces the one before it**: one shared tag, and notifications due at the same instant are left to the system | `replace-previous-notification.md` | queued |
-| 7 | **iOS: find a way for each notification to replace the one before it**: investigate, and prove each answer on the iPhone | `ios-replace-previous-notification.md` | queued |
-| 8 | **Keep yesterday's still-due rows after 00:00**: a Magrib or Isha after midnight stays on screen and keeps its alarm, before v2.0 | `keep-still-due-rows-after-midnight.md` | queued |
+| 5 | **Android: each notification replaces the one before it**: one shared tag, and notifications due at the same instant are left to the system | `replace-previous-notification.md` | queued |
+| 6 | **iOS: find a way for each notification to replace the one before it**: investigate, and prove each answer on the iPhone | `ios-replace-previous-notification.md` | queued |
+| 7 | **Keep yesterday's still-due rows after 00:00**: a Magrib or Isha after midnight stays on screen and keeps its alarm, before v2.0 | `keep-still-due-rows-after-midnight.md` | queued |
+| 8 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context, and runs after every other session | `moonsighting-research.md` | queued, last |
 
-Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else.
-Sessions from 6 on sit in the order they were queued until the owner places them.
+Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else, and the
+moonsighting research runs after everything else. Sessions 5 to 7 sit in the order they were queued
+until the owner places them.
 
 ## Waiting on the owner, from session 1
 
