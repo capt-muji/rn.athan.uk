@@ -120,10 +120,10 @@ const formatCountdownAt = (at: Date, target: Date): string => {
 };
 
 /**
- * Formats a list day in the app's date style (Hijri when the preference is
- * on), matching the home screen's Day component.
+ * Formats a prayer's date in the app's date style (Hijri when the preference
+ * is on), matching the home screen's Day component.
  *
- * @param belongsToDate The Islamic day (YYYY-MM-DD)
+ * @param belongsToDate The prayer's Islamic day (YYYY-MM-DD)
  * @param hijriDate Whether the app's Hijri date preference is on
  */
 const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
@@ -159,10 +159,11 @@ const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayer
  * on screen with no readable row. Each entry
  * carries the full props snapshot for its segment: the upcoming prayer, the
  * segment bounds (for the live progress bar), the precomputed countdown
- * label, the list day's date, and the medium widget's day list.
+ * label, the upcoming prayer's date, and the medium widget's day list.
  * Adjacent entries always keep at least MIN_ENTRY_SPACING_MS apart: the
- * first entry is backdated when a boundary is too close to `now`, and steps
- * stop one spacing short of the boundary they precede.
+ * first entry is backdated when a boundary is too close to `now`, steps
+ * stop one spacing short of the boundary they precede, and a flip crowded by
+ * the entry before it waits for its spacing.
  *
  * @param now Current instant
  * @param sequence Prayer sequence in list order (must span `now`)
@@ -188,7 +189,10 @@ export const buildPrayerWidgetTimeline = (
     const { next } = current;
     const prev = findPreviousReadable(prayers, next);
     const countdownLabel = formatCountdownAt(labelAt, next.datetime);
-    const dateLabel = formatDateLabel(current.displayDate, settings.hijriDate);
+    // The upcoming prayer's own day, not the day on screen: a held day's list has no active row, so the
+    // layouts cannot draw it and show that prayer's name and time instead, and a real time must not sit
+    // under a day that has none
+    const dateLabel = formatDateLabel(next.belongsToDate, settings.hijriDate);
     const dayList = buildDayList(prayers, current);
 
     return {
@@ -215,26 +219,38 @@ export const buildPrayerWidgetTimeline = (
   let lastEmittedMs: number | null = null;
   let finalPrayer = segment.next;
 
-  while (segment) {
+  for (; segment; segment = segmentFrom(prayers, cursor)) {
     const boundaryMs = segment.boundary.getTime();
+    let segmentStartMs = cursor.getTime();
+    finalPrayer = segment.next;
+    cursor = segment.boundary;
 
-    // The first entry must date at or before `now` so the widget has content
-    // immediately, but the boundary flip still needs its 5 minutes of
-    // spacing: backdate the first entry when the boundary is imminent. An
-    // earlier-dated entry is already "active" at push time, so this is safe.
-    // What it shows was worked out at `now`, before the backdating.
-    if (lastEmittedMs === null && boundaryMs - cursor.getTime() < MIN_ENTRY_SPACING_MS) {
-      cursor = new Date(boundaryMs - MIN_ENTRY_SPACING_MS);
+    if (lastEmittedMs === null) {
+      // The first entry must date at or before `now` so the widget has content
+      // immediately, but the boundary flip still needs its 5 minutes of
+      // spacing: backdate the first entry when the boundary is imminent. An
+      // earlier-dated entry is already "active" at push time, so this is safe.
+      // What it shows was worked out at `now`, before the backdating.
+      if (boundaryMs - segmentStartMs < MIN_ENTRY_SPACING_MS) segmentStartMs = boundaryMs - MIN_ENTRY_SPACING_MS;
+    } else {
+      // Only the first entry may move earlier. Boundaries can crowd each other (a held day's 00:00 and the
+      // next night's Midnight fall a minute or two apart in early summer), and WidgetKit may coalesce
+      // entries closer than the spacing and silently skip a flip, so a crowded flip waits for its spacing
+      segmentStartMs = Math.max(segmentStartMs, lastEmittedMs + MIN_ENTRY_SPACING_MS);
     }
+
+    // A flip that had to wait until its own segment was over has nothing left to show: the next segment
+    // takes its place and shows what is current by then
+    if (segmentStartMs >= boundaryMs) continue;
 
     // The backdated first entry displays immediately, so its label must
     // describe the remaining time at the push — not at its backdated date
     // (which would show a phantom larger countdown, e.g. "5m" for a prayer
-    // only 2 minutes away).
-    const segmentStart = cursor;
+    // only 2 minutes away). A flip that waited describes its own date.
+    const segmentStart = new Date(segmentStartMs);
     const openingEntry = makeEntry(segment, segmentStart, lastEmittedMs === null ? now : segmentStart);
     entries.push(openingEntry);
-    lastEmittedMs = segmentStart.getTime();
+    lastEmittedMs = segmentStartMs;
     let lastSegmentEntry = openingEntry;
 
     // Stepped countdown entries: the grid is anchored to the boundary cutoff,
@@ -304,10 +320,6 @@ export const buildPrayerWidgetTimeline = (
     if (strandedByHorizon && boundaryMs - lastEmittedMs > COUNTDOWN_STEP_MS) {
       lastSegmentEntry.props.countdownLabel = '';
     }
-
-    finalPrayer = segment.next;
-    cursor = segment.boundary;
-    segment = segmentFrom(prayers, cursor);
   }
 
   // Terminal stale entry: once every real segment has passed, WidgetKit keeps
