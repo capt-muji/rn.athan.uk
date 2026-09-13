@@ -5,8 +5,65 @@
  * @see ai/adr/005-timing-system-overhaul.md
  */
 
-import { usePrayerSequence } from '@/hooks/usePrayerSequence';
+import { type PrayerWithStatus, usePrayerSequence } from '@/hooks/usePrayerSequence';
+import { isReadable } from '@/shared/sequence';
 import { ScheduleType } from '@/shared/types';
+
+interface ScheduleView {
+  /** The displayed list's rows */
+  prayers: PrayerWithStatus[];
+  /** Index of the next prayer on the displayed list (-1 when it is not on this list) */
+  nextPrayerIndex: number;
+  /** Index of the displayed list's first row with a readable time (-1 when it has none) */
+  firstReadableIndex: number;
+  /** Whether every row on the displayed list has passed */
+  isLastPrayerPassed: boolean;
+}
+
+/**
+ * The displayed list and what the rows need from it
+ *
+ * @param prayers The whole sequence with statuses (usePrayerSequence)
+ * @param displayDate The list day on screen
+ */
+export const computeScheduleView = (prayers: PrayerWithStatus[], displayDate: string | null): ScheduleView => {
+  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
+
+  return {
+    prayers: todayPrayers,
+    nextPrayerIndex: todayPrayers.findIndex((p) => p.isNext),
+    firstReadableIndex: todayPrayers.findIndex(isReadable),
+    isLastPrayerPassed: todayPrayers.every((p) => p.isPassed),
+  };
+};
+
+/**
+ * Whether a row joins the date-roll cascade, which dims the other rows in turn when a new day's list
+ * arrives with its first prayer next
+ *
+ * An unreadable row is never next, so "first prayer" is the list's first readable row, not row 0. On a
+ * fully readable list those are the same row, which keeps the cascade exactly as it was. A list with no
+ * row next has nothing to cascade from.
+ */
+export const isCascadeRow = (
+  schedule: Pick<ScheduleView, 'nextPrayerIndex' | 'firstReadableIndex'>,
+  index: number
+): boolean =>
+  schedule.nextPrayerIndex !== -1 &&
+  schedule.nextPrayerIndex === schedule.firstReadableIndex &&
+  index !== schedule.nextPrayerIndex;
+
+/**
+ * Opacity the active pill heads for
+ *
+ * With no row on the displayed list next, a list with no readable row left, there is no row to sit
+ * behind, so the pill fades rather than resting on a row that is not next (R11).
+ *
+ * @param nextPrayerIndex Index of the next prayer on the displayed list (-1 when it is not on it)
+ * @param isHiddenByOverlay Whether the open overlay hides the pill
+ */
+export const getPillOpacity = (nextPrayerIndex: number, isHiddenByOverlay: boolean): number =>
+  isHiddenByOverlay || nextPrayerIndex === -1 ? 0 : 1;
 
 /**
  * Hook for accessing filtered prayer schedule data
@@ -31,18 +88,10 @@ export const useSchedule = (type: ScheduleType) => {
   // Use sequence model (prayer-centric)
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
 
-  // Filter to today's prayers
-  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
-
-  // Calculate nextPrayerIndex relative to filtered todayPrayers
-  const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
-
   return {
-    prayers: todayPrayers,
+    ...computeScheduleView(prayers, displayDate),
     displayDate,
-    nextPrayerIndex: nextPrayerIndex >= 0 ? nextPrayerIndex : -1,
     isStandard,
-    isLastPrayerPassed: todayPrayers.every((p) => p.isPassed),
     isReady,
   };
 };

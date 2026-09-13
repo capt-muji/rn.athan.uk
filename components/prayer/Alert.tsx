@@ -9,9 +9,9 @@ import ALERT_ICONS from '@/assets/icons/svg/alerts';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
 import { useDerivedFill } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
-import { usePrayer } from '@/hooks/usePrayer';
+import { isShownOccurrenceUnavailable, usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
-import { useSchedule } from '@/hooks/useSchedule';
+import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
@@ -32,6 +32,9 @@ const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType; spoken: string }[] 
   { icon: Icon.BELL_RING, type: AlertType.Silent, spoken: 'silent' },
   { icon: Icon.SPEAKER, type: AlertType.Sound, spoken: 'sound' },
 ];
+
+// The alert sheet's opacity for a control that cannot be used, so the two read as the same state
+const UNAVAILABLE_BELL_STYLE = { opacity: 0.25 };
 
 interface Props {
   type: ScheduleType;
@@ -87,7 +90,12 @@ export default function Alert({ type, index }: Props) {
 
   const iconIndex = displayedAlert;
 
+  const NextOccurrencePrayer = usePrayer(type, index, true);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
+
+  // The same occurrence Time.tsx draws: the bell refuses exactly when the time on screen is --:--, since
+  // nothing can ever fire for it (R5). The saved preference is only read, never changed
+  const isUnavailable = isShownOccurrenceUnavailable(isSelectedForOverlay, Prayer, NextOccurrencePrayer);
 
   const previousDisplayDate = usePrevious(Schedule.displayDate);
   const isCascadeRoll =
@@ -95,8 +103,7 @@ export default function Alert({ type, index }: Props) {
     !isSelectedForOverlay &&
     !isPressed &&
     !Schedule.isLastPrayerPassed &&
-    Schedule.nextPrayerIndex === 0 &&
-    index !== 0;
+    isCascadeRow(Schedule, index);
   const previousIsSelected = usePrevious(isSelectedForOverlay);
   const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
 
@@ -164,12 +171,18 @@ export default function Alert({ type, index }: Props) {
           AnimScale.animate(1);
         }}
         accessibilityRole='button'
+        disabled={isUnavailable}
+        accessibilityState={isUnavailable ? { disabled: true } : undefined}
         // Named from the atom, not from `displayedAlert`: the glyph lags the
         // committed value through the change-bounce, and a screen reader must
         // hear the setting that is actually stored
-        accessibilityLabel={`${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`}
-        accessibilityHint='Opens the alert options for this prayer'
-        style={styles.iconContainer}>
+        accessibilityLabel={
+          isUnavailable
+            ? `${Prayer.english} notification: unavailable`
+            : `${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`
+        }
+        accessibilityHint={isUnavailable ? undefined : 'Opens the alert options for this prayer'}
+        style={isUnavailable ? [styles.iconContainer, UNAVAILABLE_BELL_STYLE] : styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
           <Animated.View style={AnimSwap.style}>
             <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>

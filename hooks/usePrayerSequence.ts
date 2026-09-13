@@ -7,6 +7,7 @@
 
 import { useAtomValue } from 'jotai';
 
+import { findNextReadable, isRowPassed } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { type Prayer, ScheduleType } from '@/shared/types';
 import {
@@ -18,25 +19,53 @@ import {
 
 /**
  * Prayer with derived status fields
- * Extends Prayer with isPassed and isNext computed from current time
+ * A row keeps its own shape, readable or not, with isPassed and isNext added
  */
-interface PrayerWithStatus extends Prayer {
-  /** Whether this prayer has passed (datetime < now) */
+export type PrayerWithStatus = Prayer & {
+  /** Whether this prayer has passed (isRowPassed in shared/sequence.ts) */
   isPassed: boolean;
   /** Whether this is the next upcoming prayer */
   isNext: boolean;
+};
+
+interface PrayerStatuses {
+  /** Every row with isPassed and isNext */
+  prayers: PrayerWithStatus[];
+  /** Index of the next prayer in the prayers array (-1 when no readable row is still to come) */
+  nextPrayerIndex: number;
 }
 
-interface UsePrayerSequenceResult {
-  /** All prayers with derived isPassed and isNext status */
-  prayers: PrayerWithStatus[];
-  /** The display date (belongsToDate of next prayer) */
+interface UsePrayerSequenceResult extends PrayerStatuses {
+  /** The display date (resolveDisplayDate in shared/sequence.ts) */
   displayDate: string | null;
-  /** Index of the next prayer in the prayers array (-1 if all passed) */
-  nextPrayerIndex: number;
   /** Whether the sequence is initialized */
   isReady: boolean;
 }
+
+/**
+ * Each row's status at a moment
+ *
+ * Taken from shared/sequence.ts rather than worked out here, so the rows, the countdown and the stores
+ * cannot disagree about which row is next or which rows have passed. Exported because the test tree has
+ * no renderer: a test that cannot reach this would have to copy it.
+ *
+ * @param rawPrayers The sequence, in list order
+ * @param now The moment to judge the rows at
+ */
+export const computePrayerStatuses = (rawPrayers: Prayer[], now: Date): PrayerStatuses => {
+  const next = findNextReadable(rawPrayers, now);
+  const nextPrayerIndex = next ? rawPrayers.indexOf(next) : -1;
+
+  const prayers = rawPrayers.map(
+    (prayer, index): PrayerWithStatus => ({
+      ...prayer,
+      isPassed: isRowPassed(rawPrayers, prayer, now),
+      isNext: index === nextPrayerIndex,
+    })
+  );
+
+  return { prayers, nextPrayerIndex };
+};
 
 /**
  * Returns the full prayer sequence for rendering prayer lists
@@ -50,7 +79,6 @@ interface UsePrayerSequenceResult {
  * const { prayers, displayDate, isReady } = usePrayerSequence(ScheduleType.Standard);
  * if (isReady) {
  *   prayers.forEach((prayer) => {
- *     // isPassed and isNext are derived from datetime comparison
  *     logger.debug({ prayer: prayer.english, isPassed: prayer.isPassed, isNext: prayer.isNext }, 'Prayer sequence state');
  *   });
  * }
@@ -63,23 +91,12 @@ export const usePrayerSequence = (type: ScheduleType): UsePrayerSequenceResult =
   const sequence = useAtomValue(sequenceAtom);
   const displayDate = useAtomValue(displayDateAtom);
 
-  // Calculate from current time
-  const now = TimeUtils.createInstant();
-  const rawPrayers = sequence?.prayers ?? [];
-  const nextPrayerIndex = rawPrayers.findIndex((p) => p.datetime > now);
-
-  // Add derived isPassed and isNext to each prayer
-  // isPassed = datetime < now (simple comparison, no date string needed)
-  const prayers: PrayerWithStatus[] = rawPrayers.map((prayer, index) => ({
-    ...prayer,
-    isPassed: prayer.datetime < now,
-    isNext: index === nextPrayerIndex,
-  }));
+  const { prayers, nextPrayerIndex } = computePrayerStatuses(sequence?.prayers ?? [], TimeUtils.createInstant());
 
   return {
     prayers,
     displayDate,
-    nextPrayerIndex: nextPrayerIndex >= 0 ? nextPrayerIndex : -1,
+    nextPrayerIndex,
     isReady: sequence !== null,
   };
 };

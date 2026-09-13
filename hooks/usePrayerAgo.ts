@@ -1,6 +1,7 @@
 import { getDefaultStore } from 'jotai/vanilla';
 import { useCallback, useEffect, useState } from 'react';
 
+import { isReadable } from '@/shared/sequence';
 import { createInstant, formatTimeAgo } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { getCountdownAtom } from '@/stores/countdown';
@@ -23,7 +24,7 @@ interface PrayerAgoState {
 export const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
   try {
     const prevPrayer = getPrevPrayer(type);
-    if (!prevPrayer) {
+    if (!prevPrayer || !isReadable(prevPrayer)) {
       return { prayerAgo: '', minutesElapsed: 0, isReady: false };
     }
 

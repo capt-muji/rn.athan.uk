@@ -4,6 +4,7 @@ import Animated, { Easing } from 'react-native-reanimated';
 
 import { useDerivedOpacity, useDerivedTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
+import { getPillOpacity } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
@@ -44,7 +45,9 @@ export default function ActiveBackground({ type }: Props) {
   const isHiddenByOverlay =
     overlay.isOn && overlay.scheduleType === type && overlay.selectedPrayerIndex !== nextPrayerIndex;
 
-  const veilStyle = useDerivedOpacity(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
+  const veilStyle = useDerivedOpacity(getPillOpacity(nextPrayerIndex, isHiddenByOverlay), {
+    duration: ANIMATION.duration,
+  });
 
   const isStandard = type === ScheduleType.Standard;
   const shadowStyle = isStandard ? SHADOW.prayer : SHADOW.prayerExtras;
