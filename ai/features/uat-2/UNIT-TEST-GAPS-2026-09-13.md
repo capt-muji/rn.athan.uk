@@ -159,7 +159,7 @@ Path abbreviations used in the tables:
 | D5 | Alarms for a hole: at-time and reminder skipped, earlier alarms for that day cancelled, window not widened, the next day's night rows | None. `SN:1405` "does not cancel the OS alarms when the prayer cache is empty (post-upgrade)", `SN:1419` "leaves the refresh gate open after bailing, so the next foreground retries" and `SN:1429` "does not stamp the background reschedule when the cache is empty" cover an empty cache only | No | GAP |
 | D6 | A whole week unreadable from tomorrow, inside the 3-day list window and the 2-3-day alarm window | None. The 60-day case at `API:202` starts 100 days out | No | GAP |
 | D7 | Today unreadable | `API:127` "rejects a time that is not zero-padded HH:mm", `API:133` "rejects a missing time rather than calling split on undefined", `API:140` "rejects a non-time placeholder, which is what high latitude sends for polar day", `API:146` "rejects an out-of-range time", `API:152` "rejects a day with no times at all", `API:156` "names the offending day, so the failure is diagnosable from one log line" | Partly. Single-day payloads cannot tell "today dropped" apart from "nothing readable", so a guard that throws only when both hold survives. All six also fail 00:00-00:59 BST (measured) | GAP |
-| D8 | Finding 67: wipe, then fetch; the next launch repeats it; `fetched_years` is lost | `SY:291` "clears cache except app version, What’s New tracker, and preferences before fetching"; `SY:328` "throws on API error"; `SY:584` "propagates API errors"; `SY:670` "saves yesterday's record back straight after the cache wipe"; `SY:684` "on 1 Jan keeps 31 Dec through the wipe, so last year is not downloaded again" | No. Nothing asserts what survives a failed refetch, or what a second launch does | GAP |
+| D8 | Finding 67: wipe, then fetch; the next launch repeats it; `fetched_years` is lost | `stores/__tests__/syncFetchBeforeWipe.test.ts` (1.26.33) compares every stored key across a failed refresh and the next launch, outside December and in it | Yes: each of those cases fails against the old order | Covered in 1.26.33 |
 | D9 | `--:--` per prayer, spec R1-R6 (`ai/prompts/unavailable-times-dashes.md`, session 3) | None (not implemented) | n/a | GAP |
 
 ## E. The first stored day's night rows
@@ -345,6 +345,7 @@ Path abbreviations used in the tables:
   - After `sync()` rejects, those days and `fetched_years` are still stored.
   - A second `sync()` wipes at most once.
 - **Closes:** D8.
+- **Closed in 1.26.33** by `stores/__tests__/syncFetchBeforeWipe.test.ts`. "A second `sync()` wipes at most once" no longer applies: a failed refresh now wipes nothing.
 
 #### 11. "treats an unreadable tomorrow as absent without borrowing a Magrib"
 

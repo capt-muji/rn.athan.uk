@@ -666,7 +666,9 @@ describe('clearAllExcept call sites', () => {
     const refreshKeeps = extractKeepList(sync, 'Database.clearAllExcept([', ']);');
 
     expect(upgradeKeeps).toHaveLength(5);
-    expect(refreshKeeps).toEqual(upgradeKeeps);
+    // A refresh also keeps the alarm records. An upgrade can change the identifier scheme, so records
+    // written under the old one go with it; a refresh cannot, and they describe what the OS holds
+    expect(refreshKeeps).toEqual([...upgradeKeeps, 'scheduled_notifications_', 'scheduled_reminders_'].sort());
   });
 });
 

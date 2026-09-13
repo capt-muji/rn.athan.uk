@@ -3940,6 +3940,245 @@ when a fetch fails and the old cache is still good — is a behaviour change the
 approve. Full brief: `ai/prompts/data-resilience-swap-not-wipe.md`, session 2 in
 `ai/prompts/README.md`.
 
+### CLOSED in session 2, 1.26.33, `fix/audit-67-fetch-before-wipe`
+
+**The wipe now waits for the download.** `updatePrayerData` fetches first. Only once the current
+year has arrived does `replacePrayerCache` clear the cache, carry yesterday across, save the year and
+mark it fetched, and nothing in that function awaits. `clearAllExcept` and `saveAllPrayers` are
+synchronous MMKV calls, so no render, countdown tick or other sync can find the cache empty between
+them. A fetch that fails for any reason leaves every stored key as it was. Scenario 3a still only adds next year, and never wipes.
+
+**Each item in the brief**
+
+| Item | Outcome |
+| --- | --- |
+| 1. Fetch, then clear and save with nothing awaited between | Done, for the standard branch and scenario 3b, with the protections the independent reviews showed the reorder needs (below). |
+| 2. What a failed fetch shows while today is still cached | Measured before asking. After the reorder a real user reaches it only on 1 January without 31 December, where the error screen stays all day and Refresh cannot fix it. December 3b with today cached needs the clock to go back a day. The owner ruled: fetch 31 December alone with the endpoint's `date=` parameter, and if the provider refuses it, dash only what needs 31 December. That depends on session 3's dashes, so it is queued there as R13 and R14, which 1.26.34 adds to that brief. |
+| 3. `fetched_years` | **Not** added to either keep-list. The reorder alone stops a failed fetch erasing it, and each swap writes it back for the year it saves. Kept through a wipe, it would vouch for next year's deleted days and December would never fetch them again. A mutant that keeps it fails. |
+| 4. Tomorrow shown as today, and recording dropped dates | Measured on three paths, below. The owner specified the fix as session 3's `--:--` rules and extended them (R7 to R12 and R15, which 1.26.34 adds to that brief). No interim code here, and recording dropped dates becomes unnecessary once a day is never dropped. |
+| 5. Tests spanning the range | Below. |
+| 6. Airplane mode across a forced sync on the 3T | Below, with a control on the old code first. |
+
+**The estimate above was wrong.** Moving one call past an `await` was not enough: the reorder needed
+the protections below, and a process killed inside the swap can still leave partial state (see
+Residual).
+
+**A condition a naive reorder gets wrong.** The old code asked `shouldFetchNextYear()` after the wipe
+had already deleted `fetched_years`, so in December it always reduced to `isDecember()`. Asked before
+the fetch it is false once next year is marked, and a December refresh would then fetch this year
+only and wipe next year's days. The December branch now asks `isDecember()` directly, which is what
+the old code did in effect. Only the new tests catch the naive version.
+
+**Independent reviews found four regressions in earlier versions of this change, all fixed.**
+
+1. **A late second swap cancelled alarms.** With today missing, the launch sync starts downloading;
+   the user leaves and returns, so the resume path starts a second. The first lands and the reschedule
+   starts writing `scheduled_notifications_*` records. The second lands mid-reschedule and its wipe
+   deletes them, and a sweep that finds some records cancels every alarm that has none. Reproduced
+   through the real sweep. The old order could not do this, because both wipes ran before either save.
+2. **The first fix froze every sync behind one stalled request.** It made later callers join the
+   download already under way. React Native's Android HTTP client has no timeout, so a request on a
+   connection that died silently would have held every later sync in the process, the background
+   re-arm included, until the alarms ran out after the two-day window. Reproduced.
+3. **One swap alone could still cancel alarms at midnight.** A refresh that starts just before 00:00
+   for a missing day is still downloading when the new day begins. The notification refresh at
+   00:00:02 finds the new day's times, arms Fajr and writes its records; the download lands and its
+   wipe deleted them, and the sweep cancelled the alarms and closed the 12-hour gate. The old order had
+   wiped first, which made that refresh stand down. Reproduced through the real sweep.
+4. **A December top-up did not count as a stored download.** Scenario 3a only adds next year, so it
+   left the overlap guard where it was. A refresh stalled from 30 November for a missing day, landing
+   after a 1 December sync had added next year, wiped next year's days and its marker, which then
+   waited for another December sync. The old order never got here: its stalled refresh had wiped at
+   the start, so the 1 December sync downloaded both years instead. Reproduced in a test.
+
+**The final design**
+
+- **The swap keeps the alarm records.** `scheduled_notifications_*` and `scheduled_reminders_*`
+  describe what the OS has armed, which a new timetable does not change. Nothing relied on a refresh
+  deleting them: both per-prayer paths re-arm every date by its deterministic identifier whatever a
+  record says, and staleness is judged by identifier alone. The upgrade wipe still drops them, since
+  an upgrade can change the identifier scheme (ISSUES #34), and `database.test.ts` pins that
+  difference between the two lists. Keeping them has one effect a user can notice, and the owner
+  approved it: when a new download finds an armed day unreadable, the reschedule cancels that day's
+  alarm. The fourth review also traced a gain, run neither in a test nor on the device: a refresh no longer leaves
+  armed alarms without records, which turning that alert off could not then cancel.
+- **Every caller downloads on its own**, as before this change, so a stalled request stalls only its
+  own caller. The second reviewer's suggested 30-second timeout was not taken: it would add a failure
+  that a slow connection never had, and a change in failure behaviour on this path needs the owner.
+- **A refresh wipes only if no other refresh has stored a download since it began.** `cacheWrites`
+  counts every stored download, scenario 3a's top-up included. A refresh that sees it move while
+  downloading adds its days without wiping, because a wipe could take days another refresh stored and
+  this download does not cover. An overtaken refresh still saves what it downloaded: the third review showed that
+  discarding it could leave 1 January missing.
+- **A failed download of next year keeps its stored days.** In December scenario 3b, when this year
+  arrives but next year's request fails, next year's stored days are read before the wipe and written
+  back. Its marker goes back only if it was set, and never without them. The old code lost them.
+
+**Tests.** `stores/__tests__/syncFetchBeforeWipe.test.ts` runs the real `sync()`, database, API client
+and clock helpers over weeks of cached days, and compares stored keys. The second column was run:
+the final file against the old `sync.ts` passes 11 tests and fails 9.
+
+| Test | Against the old order |
+| --- | --- |
+| Offline with today missing: every key survives, and again on the next launch | fails |
+| Online, the missing day still unreadable at the source: the same | fails |
+| December, offline: the same | fails |
+| December, this year failing while next year arrives: the same | fails |
+| 3 December, next year not out yet: nothing lost (the owner's original scenario) | passes, as it did |
+| A successful fetch swaps the year and keeps settings, version markers and alarm records | fails on the alarm records |
+| Nothing running during the swap finds the days missing | fails |
+| December brings next year back even when it was already marked | passes, as it did |
+| December keeps this year when next year is unpublished, and leaves next year unmarked | passes, as it did |
+| December keeps next year's stored days and marker when only next year's download fails | fails |
+| December carries next year's days without marking a year never marked | fails |
+| December does not restore next year's marker when none of its days are stored | passes, as it did |
+| Two overlapping refreshes, outside December and in December: the later download lacks a day the first stored, and changes nothing | passes, as it did |
+| Alarm records a reschedule writes while the download is on its way survive | passes, as it did |
+| A sync after a stalled one finishes on its own, and the stalled answer, arriving later and lacking a day, changes nothing | passes, as it did |
+| 1 January: the new year a refresh downloads after a 31 December wipe without it is kept | passes, as it did |
+| 31 December: next year from the second of two first launches is kept when the first lost it | passes, as it did |
+| A refresh stalled from 30 November into December does not wipe the 2027 days a newer refresh stored | passes, as it did |
+| A refresh stalled from 30 November does not wipe the 2027 days a 1 December top-up added | fails, since the old order downloads both years here |
+
+The fourth review showed the overlap tests could not see a second wipe: the later download matched
+the first, and the records now survive a wipe anyway. Each later download now lacks a day the first
+stored, so a second wipe shows.
+
+The order test in `stores/__tests__/sync.test.ts` now holds the fetch open and asserts nothing is
+cleared until it returns. Suite 1,222 to 1,242, green, and green in all four timezones of `yarn
+test:tz`. Coverage of the changed code is 100% of lines, branches and functions. What is still
+uncovered in `stores/sync.ts` (`triggerSyncLoadable`, the deferred widget push and the `isDev` branch)
+is untouched code, left to session 4. Every probe the reviewers wrote passes against the final code,
+the midnight and New Year ones through the real notification sweep. The one failure is a reviewer's
+own control for its rejection detector, which Jest intercepts.
+
+**Mutation sweep before the last round: 19 runs over `stores/sync.ts`, one mutant at a time, full
+suite each.** The two counter mutants are left out here and re-run on the final code below. The last
+round changed only the counter and the overlap tests, and added the 30 November top-up test.
+
+| Mutant | Result | Caught only by the new tests |
+| --- | --- | --- |
+| None (baseline) | 1,241 pass | |
+| December asks `shouldFetchNextYear()`, the naive reorder | killed, 2 fail | yes |
+| The swap never wipes | killed, 12 | no |
+| `fetched_years` kept through the wipe | killed, 4 | no |
+| Alarm records dropped by the wipe | killed, 4 | no |
+| Reminder records dropped by the wipe | killed, 4 | no |
+| The standard branch wipes before its fetch again | killed, 5 | no |
+| The December branch wipes before its fetch again | killed, 4 | yes |
+| December saves next year although this year failed | killed, 1 | yes |
+| Yesterday not carried across the swap | killed, 2 | no |
+| 3a swaps the cache instead of adding next year | killed, 1 | no |
+| An await between the wipe and the saves | killed, 1, and `sync.test.ts` errors | yes |
+| An overtaken refresh adds nothing, the earlier stand-down | killed, 1 | yes |
+| Next year's stored days dropped when its download fails | killed, 2 | yes |
+| Next year's marker restored without its days | killed, 1 | yes |
+| Next year marked whenever its days are carried | killed, 1 | yes |
+| A no-op | survived, as a control must | |
+
+**The counter again, on the final code: 7 runs, one mutant at a time, over `syncFetchBeforeWipe.test.ts`, `sync.test.ts` and `database.test.ts`**
+
+| Mutant | Result |
+| --- | --- |
+| None (baseline) | 120 pass |
+| Every refresh wipes, no guard | killed, 6 fail |
+| The guard inverted | killed, 16 |
+| Scenario 3a's top-up not counted | killed, 1: the 30 November top-up test |
+| The swap's download not counted | killed, 5 |
+| The standard branch reads the counter when it stores, not when it began | killed, 5 |
+| The December branch reads the counter when it stores | killed, 1 |
+
+**Measured before putting items 2 and 4 to the owner** (scratch Jest suites over the real modules)
+
+- On a day the cache lacks, the old resume path and the background task each took a 107-day cache
+  down to one day when their fetch failed. After this change they keep it.
+- Tomorrow's times sit in today's place, with no warning, on three paths: the app left open into the
+  missing day (Standard moves at the previous evening's Isha, Extras at its Duha), a resume during
+  that day, and a cold launch after the previous evening's Isha. A cold launch on the day itself shows
+  the error screen instead. No alarm is set for that day, and the next day's are not set until the app
+  refreshes on it.
+- The endpoint, with the production key: `year=2026` returns 365 days; `year=2024`, `2025` and `2027`
+  return HTTP 200 with no days; `date=2026-09-12` returns that day; `date=2025-12-31` and
+  `date=2027-01-01` return HTTP 404.
+
+**On the OnePlus 3T.** Storage was read by decoding `adb backup` archives: this MMKV keeps the true
+data length in `athan-storage.crc` at offset 28 and a CRC32 of the data at offset 0, and the data
+file's own header reads 0. The owner's data was backed up before anything was touched.
+
+*Control, the installed 1.26.28, whose data path is the old code:*
+
+| Step | Screen | Stored |
+| --- | --- | --- |
+| Before | the list | 112 days, 11 September to 31 December; `fetched_years` 2026; 1 alarm record |
+| Wi-Fi and data off, clock to 15 August, cold launch (activity created 15 Aug 12:00:03) | error screen | |
+| Clock back to 13 September, still offline, cold launch (new process 6037, activity created 10:33:00) | **error screen** | **0 days**, no `fetched_years`, no alarm record |
+
+*The failure path on the fixed code (build `7b2d03a7…`; no later round touched this path):*
+
+| Step | Screen | Stored |
+| --- | --- | --- |
+| Before, online | the list: 13 September, Fajr 04:57, Sunrise 06:29, Dhuhr 13:02, Asr 16:26, Magrib 19:23, Isha 20:37, as the live payload has them | 111 days, 12 September to 31 December; `fetched_years` 2026; 1 alarm record; 16 preferences |
+| Wi-Fi and data off, clock to 15 August, cold launch (new process 11048, activity created 15 Aug 12:00:09) | error screen, the honest answer, since 15 August is not cached | |
+| Clock back to 13 September, still offline, cold launch (new process 11405, activity created 13:04:40) | **the list, the same six times, served from the cache** | **111 days, every one byte-identical to before**; `fetched_years` 2026; 1 alarm record; 16 preferences |
+
+*The successful swap on the build before the last round (`34e52e27…`), with an alarm record in
+storage.* Removing today's record without moving the clock, which would have fired the owner's armed
+Fajr, took an edited backup: a delete entry for today's key appended to the MMKV log, the CRC32
+extended over it, and the result restored with `adb restore`.
+
+| Step | Screen | Stored and armed |
+| --- | --- | --- |
+| Edited backup | | 110 days, 12 September to 31 December without 13 September; 1 alarm record; 16 preferences |
+| Restored with the network off, cold launch | error screen, since today is missing | no Fajr alarm: a restore clears the app's alarms |
+| Network on and validated, cold launch (new process 14200, activity created 13:51:59) | **the list, 13 September's six times** | 111 days, 12 September to 31 December: 13 September downloaded, the other 110 byte-identical; `fetched_years` 2026; the alarm record; 16 preferences; no other key lost. Fajr for 14 September at 04:59 armed again |
+
+A first online launch eight seconds after Wi-Fi returned still showed the error screen, because the
+network was not yet validated. That is a harness error, and the relaunch once validated is the row
+above.
+
+Fajr for 14 September at 04:59 stayed armed in AlarmManager through every run except the restore,
+and was armed again by the swap. `preference_last_notification_schedule_check` disappears on every
+Android cold launch: `reopenRefreshGateOnColdLaunch` clears it on purpose, so that is not the wipe.
+
+*The final build (`61a47681…`), the one that ships.* The same edited backup, plus a planted key that
+neither keep-list names, `probe_before_swap`: a wipe removes it, and a save without a wipe would leave
+it.
+
+| Step | Screen | Stored and armed |
+| --- | --- | --- |
+| Before | | 111 days; 1 alarm record; 16 preferences; Fajr for 14 September at 04:59 armed |
+| Edited backup, restored | | today's day deleted and the planted key added, nothing else changed; the restore disarmed Fajr |
+| Network validated, cold launch (activity created 14:36:29) | **the list, 13 September's six times** | 111 days: 13 September downloaded, byte for byte the day the edit deleted, and no other day changed; **the planted key gone**, so the refresh wiped; the alarm record; 16 preferences; `fetched_years` 2026. Fajr for 14 September at 04:59 armed again |
+
+One more key went with that wipe: `popup_update_last_check`, which holds the update check to once a
+day. It is in neither keep-list, so the old order's wipe removed it on every refresh that wiped. The running
+app keeps the timestamp in memory and writes the key only when a check runs, so the next cold launch
+runs the check up to a day early. In the earlier run it was back before the backup was taken.
+
+**Not provable on the device, and why.** The overlap guard, the midnight race and the next-year carry
+rest on the tests, the mutants and the reviewers' probes through the real notification sweep.
+Production builds log nothing, overlapping downloads cannot be staged reliably, and December lies
+outside the provider's certificate window.
+
+**What this does not change.** The error screen's Refresh still clears the cache (owner ruling,
+finding 6). The kept cache helps the next launch, the resume path and the background task.
+
+**Not tried: finding 76's certificate window.** Moving the 3T's clock past 20 November would fire the
+owner's armed Fajr on the way, and moving it before 7 May risks arming alarms in the past if the fetch
+unexpectedly succeeds. A TLS failure takes the same path as the offline failure proven above.
+
+**Residual.** A process killed inside the synchronous swap, which lasts milliseconds, would leave the
+cache partly written. If today was not saved yet, the next launch finds it missing and fetches again.
+If it was, the app runs on the shortened cache until it reaches the first missing day, and fetches
+then. Before, the same exposure lasted as long as the network round trip.
+
+**Left for the owner.** The fifth review found one case the counter changes. In December, a next-year
+top-up that lands while a refresh for a missing day is still downloading turns that refresh's swap
+into an addition, so a day its download lacks keeps the copy stored before, and old days stay until
+the next swap. Nothing is copied from another day. It needs a day missing at 00:00 in December, a
+top-up crossing midnight and the provider dropping a day between downloads. The fix the review
+suggests is to carry next year across the standard branch's wipe and stop counting the top-up.
+
 ---
 
 ## 68. Istijaba across midnight, stated rather than implied

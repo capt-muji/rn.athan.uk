@@ -12,7 +12,7 @@ import * as Api from '@/api/client';
 import { APP_CONFIG } from '@/shared/config';
 import logger from '@/shared/logger';
 import * as TimeUtils from '@/shared/time';
-import { ScheduleType } from '@/shared/types';
+import { type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import * as Countdown from '@/stores/countdown';
 import * as Database from '@/stores/database';
 import * as ScheduleStore from '@/stores/schedule';
@@ -139,20 +139,77 @@ const isCurrentYearCached = (): boolean => {
 };
 
 /**
+ * How many downloads refreshes have stored. A refresh that sees this move while it was still
+ * downloading adds its days without wiping, because a wipe could take days that a newer refresh
+ * stored and this download does not cover
+ */
+let cacheWrites = 0;
+
+/**
+ * Stores a freshly fetched year: swapped in for the cache, or added to it when an overlapping
+ * refresh has already stored a download
+ *
+ * Nothing in here awaits: the wipe and the saves are synchronous MMKV calls, so nothing can find
+ * the cache empty between them, and a fetch that fails never gets this far to touch it
+ *
+ * @param prayers The year just fetched, validated and transformed
+ * @param year The year those prayers belong to
+ * @param writesAtStart `cacheWrites` as it stood when the refresh began
+ */
+const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: number, writesAtStart: number) => {
+  if (cacheWrites === writesAtStart) {
+    // Yesterday is carried across the wipe: the countdown bar and the Extras night leading into
+    // today both read it, and on 1 January it belongs to last year, which would be downloaded again
+    const today = TimeUtils.getTodayDateString();
+    const yesterday = TimeUtils.getPreviousDateString(today);
+    const yesterdayData = Database.getPrayerByDateString(yesterday);
+
+    // Not `fetched_years`: a marker may only vouch for days that are actually stored. Kept
+    // through the wipe, it would still claim next year after its days were gone, and December
+    // would stop retrying them. It is written back below for the year being saved
+    Database.clearAllExcept([
+      'app_installed_version',
+      'whats_new_shown_version',
+      // Losing this marker reads as "cache of unknown shape" on the next upgrade, which
+      // buys an unnecessary wipe, the opposite of what a full refresh just achieved
+      'cache_schema_version',
+      'preference_',
+      // Names and fonts never change, and measuring the widths again visibly reflows the prayer list
+      'prayer_max_english_width_',
+      // Alarm records describe what the OS has armed, which a new timetable does not change. A
+      // reschedule still writing them as the download lands would lose them, and its sweep would
+      // then cancel those alarms
+      'scheduled_notifications_',
+      'scheduled_reminders_',
+    ]);
+
+    if (yesterdayData) Database.saveAllPrayers([yesterdayData]);
+  } else {
+    logger.info('SYNC: An overlapping refresh already stored a download, adding this one without a wipe', { year });
+  }
+
+  Database.saveAllPrayers(prayers);
+  Database.markYearAsFetched(year);
+  cacheWrites += 1;
+};
+
+/**
  * Fetches and stores new prayer time data
- * 1. Cleans up old data (skipped when current year is already cached)
- * 2. Fetches current year (and optionally next year) data
- * 3. Saves data to local storage and marks years as fetched
+ * 1. Fetches current year (and optionally next year) data
+ * 2. Swaps the current year into the cache once it has arrived, except in scenario 3a, which only adds next year
+ * 3. Marks years as fetched
  */
 const updatePrayerData = async () => {
   logger.info('SYNC: Starting data refresh');
+  const writesAtStart = cacheWrites;
 
   try {
+    const currentYear = TimeUtils.getCurrentYear();
+
     // SCENARIO 3a: December, current year already cached - fetch next year only
     // Keeps cache intact: no wipe, no current-year refetch on every December retry
     // while the next year dataset is not yet published on the API
     if (shouldFetchNextYear() && isCurrentYearCached()) {
-      const currentYear = TimeUtils.getCurrentYear();
       const nextYear = currentYear + 1;
 
       try {
@@ -160,6 +217,7 @@ const updatePrayerData = async () => {
 
         Database.saveAllPrayers(nextYearData);
         Database.markYearAsFetched(nextYear);
+        cacheWrites += 1;
 
         logger.info('SYNC: Data refresh complete (next year only)', { nextYear });
       } catch (error) {
@@ -169,34 +227,10 @@ const updatePrayerData = async () => {
       return;
     }
 
-    // Clear prayer cache but preserve app version, What's New tracker, user
-    // preferences, and the cached prayer-name column widths (constants —
-    // deleting them forces a remeasure that visibly reflows the prayer list).
-    // Yesterday's record is carried across the wipe: the countdown bar and the
-    // Extras night leading into today both read it, and on Jan 1 it belongs to
-    // last year's dataset, which would otherwise be downloaded again in full
-    // for that one day (ISSUES #4)
-    const today = TimeUtils.getTodayDateString();
-    const yesterday = TimeUtils.getPreviousDateString(today);
-    const yesterdayData = Database.getPrayerByDateString(yesterday);
-
-    Database.clearAllExcept([
-      'app_installed_version',
-      'whats_new_shown_version',
-      // Losing this marker reads as "cache of unknown shape" on the next upgrade, which
-      // buys an unnecessary wipe — the opposite of what a full refresh just achieved
-      'cache_schema_version',
-      'preference_',
-      'prayer_max_english_width_',
-    ]);
-
-    if (yesterdayData) Database.saveAllPrayers([yesterdayData]);
-
     // SCENARIO 3b: December, current year not cached - Proactively fetch current year + next year
-    // Years settle independently: next year may not be populated on the API yet
-    // (empty dataset), which must not prevent the current year from being saved
-    if (shouldFetchNextYear()) {
-      const currentYear = TimeUtils.getCurrentYear();
+    // Next year may not be published yet, so its failure must not block this year's swap. The swap
+    // takes next year's days too, so this branch runs whenever it is December and puts them back
+    if (TimeUtils.isDecember()) {
       const nextYear = currentYear + 1;
 
       const [currentYearResult, nextYearResult] = await Promise.allSettled([
@@ -204,32 +238,36 @@ const updatePrayerData = async () => {
         Api.fetchYear(nextYear),
       ]);
 
-      if (currentYearResult.status === 'fulfilled') {
-        Database.saveAllPrayers(currentYearResult.value);
-        Database.markYearAsFetched(currentYear);
-      }
+      if (currentYearResult.status === 'rejected') throw currentYearResult.reason;
+
+      // Read before the wipe takes them, so a failed download of next year keeps what was stored
+      const storedNextYear = Database.getAllWithPrefix(`prayer_${nextYear}-`);
+      const nextYearWasFetched = Boolean(Database.getItem('fetched_years')?.[nextYear]);
+
+      replacePrayerCache(currentYearResult.value, currentYear, writesAtStart);
 
       if (nextYearResult.status === 'fulfilled') {
         Database.saveAllPrayers(nextYearResult.value);
         Database.markYearAsFetched(nextYear);
       } else {
+        if (storedNextYear.length > 0) {
+          Database.saveAllPrayers(storedNextYear);
+          if (nextYearWasFetched) Database.markYearAsFetched(nextYear);
+        }
+
         logger.warn('SYNC: Next year data not yet available, will retry on next sync', {
           nextYear,
           error: nextYearResult.reason,
         });
       }
 
-      if (currentYearResult.status === 'rejected') throw currentYearResult.reason;
-
       logger.info('SYNC: Data refresh complete (current + next year)', { currentYear, nextYear });
     }
     // SCENARIO 2: Standard sync - Fetch current year only
     else {
-      const currentYear = TimeUtils.getCurrentYear();
       const data = await Api.fetchYear(currentYear);
 
-      Database.saveAllPrayers(data);
-      Database.markYearAsFetched(currentYear);
+      replacePrayerCache(data, currentYear, writesAtStart);
 
       logger.info('SYNC: Data refresh complete (current year only)', { year: currentYear });
     }
