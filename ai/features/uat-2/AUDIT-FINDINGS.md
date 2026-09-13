@@ -3624,10 +3624,21 @@ apply on the shipped path; finding 46 names five sites and there are four.
 
 ## Two things the owner has to decide
 
-**What's New now silent-ships.** Finding 19's guard is the correct fix for the code defect, and
-it means every release from here shows no modal until the stamp in `shared/whatsNew.ts` is moved
-to the shipping version. The alternative — re-stamping the version and the items so the modal
-speaks with current copy — is a copy decision and was not made.
+**~~What's New now silent-ships.~~ RULED, 2026-09-13.** The owner's decision: *"the content of
+What's New should never change… you should update the What's New version and the 3 items inside,
+also update their version so that we can keep showing them, because we have not yet released to
+the store."*
+
+So the three items stay exactly as they are and their stamp moves with every version bump.
+Finding 19's guard is kept — it is still the correct fix, and with the stamps in step it presents
+the modal rather than suppressing it. Both halves now hold: the modal shows while unreleased, and
+a release that forgets to move the stamp silent-ships rather than heading someone else's notes
+with the current version.
+
+Made mechanical rather than remembered: `shared/__tests__/versionLockstep.test.ts` fails if
+`WHATS_NEW.version` or any non-null item stamp drifts from `app.json`, and the session's bump
+helper moves all four alongside the three version strings. Items parked at `version: null` are
+left parked.
 
 **~~Silent alerts may ring on Android.~~ REFUTED on the device — see finding 63 below. No change
 needed, and none should be made.**

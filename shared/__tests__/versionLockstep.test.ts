@@ -24,6 +24,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { VISIBLE_WHATS_NEW, WHATS_NEW } from '@/shared/whatsNew';
+
 const ROOT = join(__dirname, '..', '..');
 const GRADLE_PATH = join(ROOT, 'android', 'app', 'build.gradle');
 
@@ -72,5 +74,36 @@ describe('version lockstep', () => {
     }
 
     expect(gradleVersion).toBe(appJsonVersion());
+  });
+});
+
+// =============================================================================
+// WHAT'S NEW STAMP
+//
+// Owner ruling, 2026-09-13: the three items are not to change, and their version
+// stamp moves with every app.json bump, so the modal keeps showing until the first
+// store release. Finding 19's guard only presents the modal when WHATS_NEW.version
+// equals the installed version, so a stamp left behind silently stops it appearing —
+// which is exactly the silent-ship this pairing is meant to avoid while unreleased.
+// =============================================================================
+
+describe("the What's New stamp tracks app.json", () => {
+  const appVersion = JSON.parse(readFileSync(join(ROOT, 'app.json'), 'utf8')).expo.version as string;
+
+  it('stamps the release at the installed version', () => {
+    expect(WHATS_NEW?.version).toBe(appVersion);
+  });
+
+  it('stamps every shown item at the installed version, so none is filtered out', () => {
+    // A null stamp is a deliberately parked draft and stays parked; every item that
+    // carries a version must carry THIS one, or filterWhatsNewItems drops it
+    const stamped = (WHATS_NEW?.items ?? []).map((item) => item.version).filter((version) => version !== null);
+
+    expect(stamped).toEqual(stamped.map(() => appVersion));
+    expect(stamped.length).toBeGreaterThan(0);
+  });
+
+  it('still presents all three items', () => {
+    expect(VISIBLE_WHATS_NEW?.items).toHaveLength(3);
   });
 });

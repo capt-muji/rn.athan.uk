@@ -64,22 +64,22 @@ export interface WhatsNewRelease {
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewRelease | null = {
-  version: '1.24.30',
+  version: '1.26.18',
   items: [
     {
       title: 'Tablet support',
       body: 'Athan now supported on tablets',
-      version: '1.24.30',
+      version: '1.26.18',
     },
     {
       title: 'Athan sounds',
       body: 'New Athan sounds added',
-      version: '1.24.30',
+      version: '1.26.18',
     },
     {
       title: 'Reminder sounds',
       body: 'Every reminder now has its own sound',
-      version: '1.24.30',
+      version: '1.26.18',
     },
     {
       // PARKED: ships with the release that enables the widgets flag

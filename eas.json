@@ -29,8 +29,7 @@
         "ascAppId": "6740474033"
       },
       "android": {
-        "track": "alpha",
-        "serviceAccountKeyPath": "@secret:GOOGLE_SERVICE_ACCOUNT"
+        "track": "alpha"
       }
     }
   }
