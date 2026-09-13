@@ -8,7 +8,7 @@
 import { useAtomValue } from 'jotai';
 
 import { ScheduleType } from '@/shared/types';
-import { getBarProgressAtom, getBarWarningAtom } from '@/stores/countdown';
+import { getBarAvailableAtom, getBarProgressAtom, getBarWarningAtom } from '@/stores/countdown';
 import { extraNextPrayerAtom, standardNextPrayerAtom } from '@/stores/schedule';
 
 interface UseCountdownBarResult {
@@ -18,7 +18,19 @@ interface UseCountdownBarResult {
   isReady: boolean;
   /** Whether remaining time is within the warning threshold (exact, flips at second resolution) */
   isWarning: boolean;
+  /** Whether the bar can be worked out: a readable row before next, and next itself (R14) */
+  isAvailable: boolean;
 }
+
+/**
+ * Opacity the bar heads for
+ *
+ * A preview always shows. Otherwise the bar hides under the overlay, and while it cannot be worked out,
+ * where a bar would measure from a time nobody could read (R14). Opacity alone, so its space is kept and
+ * nothing below it moves.
+ */
+export const getBarOpacity = (isPreviewMode: boolean, overlayIsOn: boolean, isAvailable: boolean): number =>
+  isPreviewMode || (!overlayIsOn && isAvailable) ? 1 : 0;
 
 /**
  * Returns progress percentage between previous and next prayer
@@ -44,10 +56,12 @@ export const useCountdownBar = (type: ScheduleType): UseCountdownBarResult => {
   const nextPrayer = useAtomValue(nextPrayerAtom);
   const progress = useAtomValue(getBarProgressAtom(type));
   const isWarning = useAtomValue(getBarWarningAtom(type));
+  const isAvailable = useAtomValue(getBarAvailableAtom(type));
 
   return {
     progress,
     isReady: nextPrayer !== null,
     isWarning,
+    isAvailable,
   };
 };

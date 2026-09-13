@@ -245,6 +245,12 @@ export const PRAYER_TIMEZONE = 'Europe/London';
 // =============================================================================
 
 /**
+ * How a time the provider did not give readably is drawn (R2). Drawn only: it is never stored and never
+ * parsed, so nothing can mistake it for a time
+ */
+export const UNAVAILABLE_TIME = '--:--';
+
+/**
  * Global text styling configuration
  * Font family (Roboto) and size hierarchy for consistent typography across app
  */

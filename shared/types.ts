@@ -70,6 +70,18 @@ export interface IApiResponse {
   times: Record<string, IApiSingleTime>;
 }
 
+/** The six provider times every list row is built from */
+export type RequiredTimeName = 'fajr' | 'sunrise' | 'dhuhr' | 'asr' | 'magrib' | 'isha';
+
+/**
+ * A payload after api/client.ts has checked it: each of the six times is a readable HH:mm, or null
+ * where the provider's value was not
+ */
+export interface IValidatedApiResponse {
+  city: string;
+  times: Record<string, Record<RequiredTimeName, string | null>>;
+}
+
 /**
  * Transformed and enriched prayer times for a single day
  *
@@ -87,21 +99,26 @@ export interface IApiResponse {
  *
  * Stored in MMKV with key format: prayer_YYYY-MM-DD
  * Cache lifetime: Until next app upgrade (see stores/version.ts)
+ *
+ * A time is null when the provider's value was not a readable HH:mm (api/client.ts), and a derived
+ * time is null when the time it comes from is. Null rather than a placeholder string, because a
+ * placeholder type-checks everywhere and reaches arithmetic; `--:--` is how absence is drawn, never
+ * what is stored. Records written before times could be null are all strings, which this still reads.
  */
 export interface ISingleApiResponseTransformed {
   /** Calendar date in YYYY-MM-DD format */
   date: string;
   /** 6 main prayers from API (HH:mm format) */
-  fajr: string;
-  sunrise: string;
-  dhuhr: string;
-  asr: string;
-  magrib: string;
-  isha: string;
+  fajr: string | null;
+  sunrise: string | null;
+  dhuhr: string | null;
+  asr: string | null;
+  magrib: string | null;
+  isha: string | null;
   /** 3 derived extra prayers (HH:mm format) */
-  suhoor: string;
-  duha: string;
-  istijaba: string;
+  suhoor: string | null;
+  duha: string | null;
+  istijaba: string | null;
 }
 
 /**
@@ -222,6 +239,19 @@ export enum Icon {
 // See: ai/adr/005-timing-system-overhaul.md
 // =============================================================================
 
+/** What every row on a list has, whether or not its time could be read */
+interface PrayerRow {
+  /** Schedule type: 'standard' or 'extra' */
+  type: ScheduleType;
+  /** English name: "Fajr", "Isha", "Midnight", etc. */
+  english: string;
+  /** Arabic name: "الفجر", "العشاء", etc. */
+  arabic: string;
+  /** Which Islamic day this prayer belongs to (per ADR-004)
+   * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day) */
+  belongsToDate: string;
+}
+
 /**
  * Prayer with full datetime object
  *
@@ -230,30 +260,37 @@ export enum Icon {
  * - No midnight-crossing bugs possible
  * - belongsToDate tracks which Islamic day the prayer belongs to (per ADR-004)
  */
-export interface Prayer {
-  /** Schedule type: 'standard' or 'extra' */
-  type: ScheduleType;
-  /** English name: "Fajr", "Isha", "Midnight", etc. */
-  english: string;
-  /** Arabic name: "الفجر", "العشاء", etc. */
-  arabic: string;
+export interface ReadablePrayer extends PrayerRow {
   /** Full datetime - the actual moment in time (Date object) */
   datetime: Date;
   /** Original time string (for display purposes, e.g., "06:12") */
   time: string;
-  /** Which Islamic day this prayer belongs to (per ADR-004)
-   * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day) */
-  belongsToDate: string;
 }
 
 /**
- * Prayer sequence - single sorted array replacing yesterday/today/tomorrow structure
- * Contains 48-72 hours of prayers, sorted by datetime
+ * A row whose time could not be read, or could not be worked out because a time it depends on could
+ * not (see shared/prayer.ts). It is still on its list and is drawn as `--:--`, but it has no moment:
+ * it can never be next, never be counted down to, and never have an alert armed for it.
+ */
+export interface UnreadablePrayer extends PrayerRow {
+  datetime: null;
+  time: null;
+}
+
+/**
+ * One row of a list. A union rather than optional fields, so that anything doing arithmetic on a
+ * moment must first establish that the row has one (`isReadable` in shared/sequence.ts)
+ */
+export type Prayer = ReadablePrayer | UnreadablePrayer;
+
+/**
+ * Prayer sequence - single array replacing yesterday/today/tomorrow structure
+ * Contains 48-72 hours of prayers, in list order (compareListOrder in shared/sequence.ts)
  */
 export interface PrayerSequence {
   /** Schedule type: 'standard' or 'extra' */
   type: ScheduleType;
-  /** Prayers sorted by datetime, next 48-72 hours */
+  /** Prayers by list day, then position on the list; readable rows are therefore in time order */
   prayers: Prayer[];
 }
 
@@ -306,7 +343,8 @@ export enum CountdownKey {
 }
 
 export interface CountdownStore {
-  timeLeft: number;
+  /** Seconds left, or null while the overlay shows an occurrence whose time could not be read */
+  timeLeft: number | null;
   name: string;
 }
 

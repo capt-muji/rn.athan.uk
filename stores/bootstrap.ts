@@ -14,7 +14,9 @@
  * writes as before.
  *
  * Not hydrated (spinner path preserved):
- * - no cached data for today (fresh install, wiped cache, year gap)
+ * - none of the three days the sequences are built from is cached (fresh
+ *   install, wiped cache, year gap). One of them is enough: a day missing
+ *   among them shows as dashes (R7)
  * - a pending upgrade that will WIPE the cache — a version bump AND a moved
  *   cache shape marker. handleAppUpgrade inside sync() owns that wipe+refetch,
  *   and rows read under the old shape are exactly the wrong prayer times, so
@@ -31,10 +33,17 @@ import * as Database from '@/stores/database';
 import { setSequence } from '@/stores/schedule';
 import { cacheSchemaChanged, wasAppUpgraded } from '@/stores/version';
 
+/** Today and the two days after it, the span `setSequence` builds */
+const SEQUENCE_DAYS = [0, 1, 2];
+
 const hydrateFromCache = (): boolean => {
   const now = TimeUtils.createInstant();
-  const todayData = Database.getPrayerByDate(now);
-  if (!todayData) return false;
+  const today = TimeUtils.formatDateShort(now);
+  // Waiting for today alone kept the spinner over stored days, and offline it never went
+  const anyDayStored = SEQUENCE_DAYS.some((offset) =>
+    Database.getPrayerByDateString(TimeUtils.addDaysToDateString(today, offset))
+  );
+  if (!anyDayStored) return false;
 
   setSequence(ScheduleType.Standard, now);
   setSequence(ScheduleType.Extra, now);

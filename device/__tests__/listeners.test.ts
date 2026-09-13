@@ -38,7 +38,7 @@ jest.mock('@/stores/countdown', () => ({
   resyncCountdowns: () => mockResyncCountdowns(),
 }));
 
-const mockRefreshNotifications = jest.fn();
+const mockRefreshNotifications = jest.fn(() => Promise.resolve());
 const mockRegisterBackgroundTask = jest.fn();
 jest.mock('@/stores/notifications', () => ({
   refreshNotifications: () => mockRefreshNotifications(),
@@ -46,8 +46,16 @@ jest.mock('@/stores/notifications', () => ({
 }));
 
 const mockSync = jest.fn(() => Promise.resolve());
+const mockGetArmedDayChanges = jest.fn(() => 0);
 jest.mock('@/stores/sync', () => ({
   sync: () => mockSync(),
+  getArmedDayChanges: () => mockGetArmedDayChanges(),
+}));
+
+// A factory, so the error logs can be asserted (the generic '@/' mapping would win over the shared logger mock)
+jest.mock('@/shared/logger', () => ({
+  __esModule: true,
+  default: { info: jest.fn(), warn: jest.fn(), error: jest.fn(), debug: jest.fn() },
 }));
 
 const mockBumpResync = jest.fn();
@@ -75,7 +83,8 @@ const loadListeners = () => {
   jest.resetModules();
   const { AppState } = require('react-native');
   const { initializeListeners } = require('../listeners');
-  return { AppState, initializeListeners };
+  const logger = require('@/shared/logger').default;
+  return { AppState, initializeListeners, logger };
 };
 
 /** The handler AppState.addEventListener was registered with. */
@@ -199,6 +208,75 @@ describe('initializeListeners', () => {
     await Promise.resolve();
 
     expect(mockBumpResync).toHaveBeenCalledTimes(1);
+  });
+
+  // The refresh a resume starts runs before its sync stores anything, so only a refresh after the sync can arm what
+  // it stored: 1 January's Fajr, downloaded on the morning of 31 December
+  describe('re-arming what the resume sync stored', () => {
+    let armedDayChanges = 0;
+
+    beforeEach(() => {
+      armedDayChanges = 0;
+      mockGetArmedDayChanges.mockImplementation(() => armedDayChanges);
+    });
+
+    afterEach(() => {
+      mockGetArmedDayChanges.mockImplementation(() => 0);
+    });
+
+    /** Resumes from the background with this sync, and lets everything it sets off run */
+    const resume = async (syncing: () => Promise<void>) => {
+      mockSync.mockImplementationOnce(syncing);
+      const { AppState, initializeListeners, logger } = loadListeners();
+      initializeListeners(checkPermissions);
+      const handler = registeredHandler(AppState);
+
+      handler('background');
+      handler('active');
+      await new Promise((resolve) => setImmediate(resolve));
+
+      return logger;
+    };
+
+    it('refreshes once more after a sync that changed the days the alarms read', async () => {
+      await resume(async () => {
+        armedDayChanges += 1;
+      });
+
+      expect(mockRefreshNotifications).toHaveBeenCalledTimes(1);
+      expect(mockRefreshNotifications.mock.invocationCallOrder[0]).toBeGreaterThan(
+        mockSync.mock.invocationCallOrder[0]
+      );
+    });
+
+    it('does not refresh again after a sync that changed nothing', async () => {
+      await resume(async () => {});
+
+      expect(mockRefreshNotifications).not.toHaveBeenCalled();
+    });
+
+    it('does not refresh again after a sync that rejected, and logs the failure', async () => {
+      const logger = await resume(async () => {
+        armedDayChanges += 1;
+        throw new Error('network down');
+      });
+
+      expect(mockRefreshNotifications).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledWith('LISTENERS: Foreground sync failed', { error: expect.any(Error) });
+    });
+
+    it('logs a failed refresh after the sync as that, not as a failed sync', async () => {
+      mockRefreshNotifications.mockRejectedValueOnce(new Error('scheduling failed'));
+
+      const logger = await resume(async () => {
+        armedDayChanges += 1;
+      });
+
+      expect(logger.error).toHaveBeenCalledWith('LISTENERS: Refresh after foreground sync failed', {
+        error: expect.any(Error),
+      });
+      expect(logger.error).not.toHaveBeenCalledWith('LISTENERS: Foreground sync failed', expect.anything());
+    });
   });
 
   it('ignores a second call so the handler is never stacked', () => {
