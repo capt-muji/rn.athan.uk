@@ -117,11 +117,13 @@ const installHolding = (dates: string[], fetchedYears: Record<number, true>) => 
   Database.setItem(REMINDER_KEY, { id: 'reminder_standard_fajr_2026-09-15_10' });
 };
 
-type Answer = 'offline' | 'unpublished' | 'published' | { unreadable: string[] };
+/** An unreadable day is still in the answer with one time the app cannot read; a missing day is not in it at all */
+type Answer = 'offline' | 'unpublished' | 'published' | { unreadable: string[] } | { missing: string[] };
 
-const yearTimes = (year: number, unreadable: string[] = [], edition = DOWNLOADED) => {
+const yearTimes = (year: number, unreadable: string[] = [], edition = DOWNLOADED, missing: string[] = []) => {
   const times: Record<string, unknown> = {};
   for (const date of days(`${year}-01-01`, 365)) {
+    if (missing.includes(date)) continue;
     times[date] = unreadable.includes(date) ? { ...apiTimes(edition), sunrise: '-----' } : apiTimes(edition);
   }
   return times;
@@ -140,6 +142,7 @@ const serveYears = (answers: Record<number, Answer>) => {
 
     let times = {};
     if (answer === 'published') times = yearTimes(year);
+    else if (answer !== 'unpublished' && 'missing' in answer) times = yearTimes(year, [], DOWNLOADED, answer.missing);
     else if (answer !== 'unpublished') times = yearTimes(year, answer.unreadable);
 
     return { ok: true, status: 200, json: async () => ({ city: 'london', times }) };
@@ -204,14 +207,6 @@ describe('when the fetch fails', () => {
       error: 'Network request failed',
     },
     {
-      when: 'online, with the missing day still unreadable at the source',
-      now: '2026-09-14T08:00:00Z',
-      cached: septemberAroundHole,
-      marked: {},
-      answers: { 2026: { unreadable: [SEPTEMBER_HOLE] } },
-      error: `Malformed prayer time: ${SEPTEMBER_HOLE} is unreadable`,
-    },
-    {
       when: 'in December, offline',
       now: '2026-12-14T09:00:00Z',
       cached: decemberAroundHole,
@@ -241,6 +236,31 @@ describe('when the fetch fails', () => {
     // The next launch finds the same gap and tries again
     await expect(sync()).rejects.toThrow(error);
     expect(everythingStored()).toEqual(before);
+  });
+
+  it('stores a day that is still unreadable at the source with that time unreadable, and never downloads again for it', async () => {
+    jest.useFakeTimers({ now: new Date('2026-09-14T08:00:00Z') });
+    installHolding(septemberAroundHole, {});
+    serveYears({ 2026: { unreadable: [SEPTEMBER_HOLE] } });
+
+    await sync();
+
+    // The day is shown with Sunrise as --:-- rather than dropped, which is what used to start finding 67's loop
+    const today = Database.getPrayerByDateString(SEPTEMBER_HOLE);
+    expect(today).toEqual({
+      date: SEPTEMBER_HOLE,
+      ...apiTimes(DOWNLOADED),
+      sunrise: null,
+      suhoor: '04:31',
+      duha: null,
+      istijaba: '18:21',
+    });
+    expect(requestedYears()).toEqual([2026]);
+
+    await sync();
+    await sync();
+
+    expect(requestedYears()).toEqual([2026]);
   });
 
   it('on 3 December with the rest of the month cached, loses nothing while next year is not out', async () => {
@@ -439,7 +459,7 @@ describe('when the fetch succeeds', () => {
   it('lets a top-up without 1 January store its days but not the marker, so December asks again', async () => {
     jest.useFakeTimers({ now: new Date('2026-12-03T09:00:00Z') });
     installHolding(days('2026-11-15', 47), { 2026: true });
-    serveYears({ 2027: { unreadable: ['2027-01-01'] } });
+    serveYears({ 2027: { missing: ['2027-01-01'] } });
 
     await sync();
 
@@ -454,7 +474,7 @@ describe('when the fetch succeeds', () => {
   it("in December keeps next year's stored 1 January when the refresh's own download of next year lacks it", async () => {
     jest.useFakeTimers({ now: new Date('2026-12-14T09:00:00Z') });
     installHolding([...decemberAroundHole, ...days('2027-01-01', 40)], { 2027: true });
-    serveYears({ 2026: 'published', 2027: { unreadable: ['2027-01-01'] } });
+    serveYears({ 2026: 'published', 2027: { missing: ['2027-01-01'] } });
 
     await sync();
 
