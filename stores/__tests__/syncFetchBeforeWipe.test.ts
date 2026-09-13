@@ -40,13 +40,16 @@ jest.mock('@/api/client', () => ({
   fetchDay: (date: string) => mockFetchDay(date),
 }));
 
-jest.mock('@/stores/schedule', () => ({ setSequence: jest.fn() }));
+jest.mock('@/stores/schedule', () => ({ setSequence: jest.fn(), refreshSequence: jest.fn() }));
 jest.mock('@/stores/countdown', () => ({ startCountdowns: jest.fn() }));
 jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn() }));
 jest.mock('@/stores/version', () => ({ handleAppUpgrade: jest.fn() }));
 
+import { getDefaultStore } from 'jotai/vanilla';
+
 import { type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
+import { lastNotificationScheduleAtom } from '@/stores/notifications';
 import * as ScheduleStore from '@/stores/schedule';
 
 import { sync } from '../sync';
@@ -170,6 +173,11 @@ const septemberAroundHole = days('2026-08-24', 45).filter((date) => date !== SEP
 const DECEMBER_HOLE = '2026-12-14';
 const decemberAroundHole = days('2026-11-24', 38).filter((date) => date !== DECEMBER_HOLE);
 
+/** Lets a request nothing awaits land, and everything it sets off run. Microtasks only, so fake timers do not hold it */
+const settle = async () => {
+  for (let tick = 0; tick < 20; tick++) await Promise.resolve();
+};
+
 // =============================================================================
 // RESET BEFORE EACH TEST
 // =============================================================================
@@ -188,8 +196,8 @@ afterEach(() => {
 // =============================================================================
 
 describe('when the fetch fails', () => {
-  // Outside December a marked year with today missing is a latest answer that lacks today, which is not
-  // downloaded again, so those caches leave the year unmarked to make the refresh run
+  // A marked year with a later day stored has today as a gap in its answer, which is not downloaded again, so
+  // these caches either leave the year unmarked or stop before today, to make the refresh run
   const failures: {
     when: string;
     now: string;
@@ -207,18 +215,18 @@ describe('when the fetch fails', () => {
       error: 'Network request failed',
     },
     {
-      when: 'in December, offline',
+      when: 'in December, offline, with nothing of this year stored after today',
       now: '2026-12-14T09:00:00Z',
-      cached: decemberAroundHole,
+      cached: days('2026-11-24', 20),
       marked: { 2026: true },
       answers: { 2026: 'offline', 2027: 'offline' },
       error: 'Network request failed',
     },
     {
-      when: 'in December, with this year failing while next year arrives',
+      when: 'in December, with an unmarked year failing while next year arrives',
       now: '2026-12-14T09:00:00Z',
       cached: decemberAroundHole,
-      marked: { 2026: true },
+      marked: {},
       answers: { 2026: 'offline', 2027: 'published' },
       error: 'Network request failed',
     },
@@ -285,7 +293,7 @@ describe("when today is missing from this year's latest download", () => {
     jest.mocked(ScheduleStore.setSequence).mockClear();
   });
 
-  it('launches offline without asking, keeping every stored key, and the next sync does not ask either', async () => {
+  it('launches offline without asking when today is a gap inside the answer, keeping every stored key, and the next sync does not ask either', async () => {
     const now = new Date('2026-09-14T08:00:00Z');
     jest.useFakeTimers({ now });
     installHolding(septemberAroundHole, { 2026: true });
@@ -322,6 +330,93 @@ describe("when today is missing from this year's latest download", () => {
     await expect(sync()).rejects.toThrow('Network request failed');
 
     expect(requestedYears()).toEqual([year]);
+  });
+
+  it('asks again on 1 July and each launch after when the year was cut short at 30 June, and stores the rest once it is out', async () => {
+    jest.useFakeTimers({ now: new Date('2027-07-01T08:00:00Z') });
+    // December's download of 2027 held only 1 January to 30 June, and marked the year
+    installHolding(days('2027-01-01', 181), { 2027: true });
+    serveYears({ 2027: 'offline' });
+    const before = everythingStored();
+
+    await expect(sync()).rejects.toThrow('Network request failed');
+    jest.setSystemTime(new Date('2027-07-02T08:00:00Z'));
+    await expect(sync()).rejects.toThrow('Network request failed');
+
+    expect(requestedYears()).toEqual([2027, 2027]);
+    expect(everythingStored()).toEqual(before);
+
+    serveYears({ 2027: 'published' });
+    await sync();
+
+    expect(requestedYears()).toEqual([2027]);
+    expect(Database.getPrayerByDateString('2027-07-02')).not.toBeNull();
+  });
+
+  it('asks again when 31 December is missing, since nothing of the year comes after it', async () => {
+    jest.useFakeTimers({ now: new Date('2026-12-31T10:00:00Z') });
+    // Next year's days come after today and are stored and marked, but belong to another year's answer
+    installHolding([...days('2026-11-01', 60), ...days('2027-01-01', 40)], { 2026: true, 2027: true });
+    serveYears({ 2026: 'offline', 2027: 'offline' });
+    const before = everythingStored();
+
+    await expect(sync()).rejects.toThrow('Network request failed');
+
+    expect(requestedYears().sort()).toEqual([2026, 2027]);
+    expect(everythingStored()).toEqual(before);
+  });
+
+  it.each([
+    { nextYear: 'is offline too', answer: 'offline' as const, marked: { 2026: true }, nextYearStored: false },
+    { nextYear: 'arrives', answer: 'published' as const, marked: { 2026: true, 2027: true }, nextYearStored: true },
+  ])(
+    'in December with today a gap and this year offline, keeps every stored day and asks only for next year, which $nextYear',
+    async ({ answer, marked, nextYearStored }) => {
+      jest.useFakeTimers({ now: new Date('2026-12-14T09:00:00Z') });
+      installHolding(decemberAroundHole, { 2026: true });
+      serveYears({ 2026: 'offline', 2027: answer });
+      const daysBefore = decemberAroundHole.map((date) => Database.getPrayerByDateString(date));
+
+      await expect(sync()).resolves.toBeUndefined();
+
+      expect(requestedYears()).toEqual([2027]);
+      expect(decemberAroundHole.map((date) => Database.getPrayerByDateString(date))).toEqual(daysBefore);
+      expect(Database.getPrayerByDateString(DECEMBER_HOLE)).toBeNull();
+      expect(Database.getPrayerByDateString('2027-01-01') !== null).toBe(nextYearStored);
+      expect(Database.getItem('fetched_years')).toEqual(marked);
+    }
+  );
+});
+
+// =============================================================================
+// THE NOTIFICATION REFRESH GATE
+// =============================================================================
+
+describe('the notification refresh gate', () => {
+  const store = getDefaultStore();
+
+  it('reopens once a download stores today, after a reschedule stamped it with only the days around today to arm', async () => {
+    jest.useFakeTimers({ now: new Date('2026-09-14T08:00:00Z') });
+    installHolding(septemberAroundHole, {});
+    serveYears({ 2026: 'published' });
+    store.set(lastNotificationScheduleAtom, Date.now());
+
+    await sync();
+
+    expect(Database.getPrayerByDateString(SEPTEMBER_HOLE)).not.toBeNull();
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+  });
+
+  it('stays stamped when the download fails', async () => {
+    jest.useFakeTimers({ now: new Date('2026-09-14T08:00:00Z') });
+    installHolding(septemberAroundHole, {});
+    serveYears({ 2026: 'offline' });
+    const stamped = Date.now();
+    store.set(lastNotificationScheduleAtom, stamped);
+
+    await expect(sync()).rejects.toThrow('Network request failed');
+
+    expect(store.get(lastNotificationScheduleAtom)).toBe(stamped);
   });
 });
 
@@ -379,7 +474,7 @@ describe('when the fetch succeeds', () => {
 
   it('in December keeps this year when next year is not published yet, and leaves next year unmarked', async () => {
     jest.useFakeTimers({ now: new Date('2026-12-14T09:00:00Z') });
-    installHolding(decemberAroundHole, { 2026: true });
+    installHolding(decemberAroundHole, {});
     serveYears({ 2026: 'published', 2027: 'unpublished' });
 
     await sync();
@@ -405,7 +500,7 @@ describe('when the fetch succeeds', () => {
   it("in December carries next year's stored days without marking a year that was never marked", async () => {
     jest.useFakeTimers({ now: new Date('2026-12-14T09:00:00Z') });
     const january = days('2027-01-01', 40);
-    installHolding([...decemberAroundHole, ...january], { 2026: true });
+    installHolding([...decemberAroundHole, ...january], {});
     serveYears({ 2026: 'published', 2027: 'offline' });
 
     await sync();
@@ -523,39 +618,24 @@ const holdDays = () => {
   return held;
 };
 
-// Outside December the year stays unmarked, since a marked year whose latest answer lacks today is not downloaded again
-const overlapCases: {
-  when: string;
-  now: string;
-  cached: string[];
-  marked: Record<number, true>;
-  perSync: number;
-  lacking: string;
-}[] = [
+// Each year stays unmarked, since a marked year with later days stored has today as a gap, which is not downloaded again
+const overlapCases = [
   {
     when: 'outside December',
     now: '2026-09-14T08:00:00Z',
     cached: septemberAroundHole,
-    marked: {},
     perSync: 1,
     lacking: '2026-10-01',
   },
-  {
-    when: 'in December',
-    now: '2026-12-14T09:00:00Z',
-    cached: decemberAroundHole,
-    marked: { 2026: true },
-    perSync: 2,
-    lacking: '2026-12-20',
-  },
+  { when: 'in December', now: '2026-12-14T09:00:00Z', cached: decemberAroundHole, perSync: 2, lacking: '2026-12-20' },
 ];
 
 describe('when refreshes overlap', () => {
   it.each(overlapCases)(
     'swaps in the refresh that began later when the earlier one lands first, keeping alarm records: $when',
-    async ({ now, cached, marked, perSync, lacking }) => {
+    async ({ now, cached, perSync, lacking }) => {
       jest.useFakeTimers({ now: new Date(now) });
-      installHolding(cached, marked);
+      installHolding(cached, {});
       const held = holdRequests();
 
       const launch = sync();
@@ -578,9 +658,9 @@ describe('when refreshes overlap', () => {
 
   it.each(overlapCases)(
     'lets a download that began earlier change nothing when it lands after a later one: $when',
-    async ({ now, cached, marked, perSync, lacking }) => {
+    async ({ now, cached, perSync, lacking }) => {
       jest.useFakeTimers({ now: new Date(now) });
-      installHolding(cached, marked);
+      installHolding(cached, {});
       const held = holdRequests();
 
       const launch = sync();
@@ -738,12 +818,9 @@ describe('when refreshes overlap', () => {
     "lets a December refresh swap in the year when next year's top-up lands while it downloads, and next year $nextYear",
     async ({ answer, nextYearLacks }) => {
       jest.useFakeTimers({ now: new Date('2026-12-14T23:59:50Z') });
-      // With 14 December stored, the first sync only tops up next year. After 00:00 the second finds
-      // 15 December missing and downloads both years, which must still replace what was cached
-      installHolding(
-        days('2026-11-24', 38).filter((date) => date !== '2026-12-15'),
-        { 2026: true }
-      );
+      // With 14 December stored, the first sync only tops up next year. After 00:00 the second finds 15 December
+      // missing with nothing of this year after it and downloads both years, which must still replace what was cached
+      installHolding(days('2026-11-24', 21), { 2026: true });
       const held = holdRequests();
 
       const topUp = sync();
@@ -769,21 +846,20 @@ describe('when refreshes overlap', () => {
 
   it('swaps in each download that began later across midnight, so the newest answer decides every day', async () => {
     jest.useFakeTimers({ now: new Date('2026-12-13T23:59:50Z') });
-    // 13 and 14 December are missing, so launch and resume both download both years. The first download
-    // lacks 14 December and cannot get next year, so the background task after 00:00, finding next year
-    // still missing, downloads both again. Outside December nothing would: a marked year whose latest
-    // answer lacks today is not downloaded again
+    // 13 and 14 December are missing and this year is unmarked, so launch and resume both download both years.
+    // The launch's downloads fail, so the background task after 00:00 still finds this year unmarked and downloads
+    // both again while the resume's are on their way
     installHolding(
       days('2026-11-15', 45).filter((date) => date !== '2026-12-13' && date !== '2026-12-14'),
-      { 2026: true }
+      {}
     );
     const held = holdRequests();
 
     const launch = sync();
     const resumed = sync();
-    held[0]?.release('2026-12-14');
+    held[0]?.fail();
     held[1]?.fail();
-    await launch;
+    await expect(launch).rejects.toThrow('Network request failed');
 
     jest.setSystemTime(new Date('2026-12-14T00:00:05Z'));
     const background = sync();
@@ -803,17 +879,23 @@ describe('when refreshes overlap', () => {
 
   it('keeps next year from a top-up that began later when an earlier December refresh lands after it', async () => {
     jest.useFakeTimers({ now: new Date('2026-12-14T23:59:50Z') });
-    // 14 December is missing, so the first sync downloads both years. After 00:00 the second finds
-    // 15 December stored and next year unmarked, so it only tops up next year
-    installHolding(decemberAroundHole, { 2026: true });
+    // 14 December is missing and this year unmarked, so the first two syncs download both years. The second lands
+    // first without next year, marking this year with 15 December stored, so after 00:00 the third only tops up
+    // next year while the first is still on its way
+    installHolding(decemberAroundHole, {});
     const held = holdRequests();
 
     const refresh = sync();
+    const resumed = sync();
+    held[2]?.release();
+    held[3]?.fail();
+    await resumed;
+
     jest.setSystemTime(new Date('2026-12-15T00:00:10Z'));
     const topUp = sync();
-    expect(held.map((request) => request.year)).toEqual([2026, 2027, 2027]);
+    expect(held.map((request) => request.year)).toEqual([2026, 2027, 2026, 2027, 2027]);
 
-    held[2]?.release(undefined, NEWER);
+    held[4]?.release(undefined, NEWER);
     await topUp;
     // The older download of next year lacks 1 March and has older times, and must replace neither
     held[0]?.release();
@@ -827,10 +909,9 @@ describe('when refreshes overlap', () => {
 
   it('lets a top-up that began earlier change nothing when it lands after a December refresh that began later', async () => {
     jest.useFakeTimers({ now: new Date('2026-12-14T23:59:50Z') });
-    installHolding(
-      days('2026-11-24', 38).filter((date) => date !== '2026-12-15'),
-      { 2026: true }
-    );
+    // With 14 December stored the first sync only tops up next year, and after 00:00 the second finds nothing of
+    // this year after 15 December, so it downloads both years
+    installHolding(days('2026-11-24', 21), { 2026: true });
     const held = holdRequests();
 
     const topUp = sync();
@@ -875,19 +956,27 @@ describe('when refreshes overlap', () => {
 
   it('lets a top-up that began later remove a next-year day an earlier December refresh stored', async () => {
     jest.useFakeTimers({ now: new Date('2026-12-14T23:59:50Z') });
-    installHolding(decemberAroundHole, { 2026: true });
+    // 14 December is missing and this year unmarked, so the first two syncs download both years. The second lands
+    // first without next year, marking this year with 15 December stored, so after 00:00 the third only tops up
+    // next year while the first is still on its way
+    installHolding(decemberAroundHole, {});
     const held = holdRequests();
 
     const refresh = sync();
+    const resumed = sync();
+    held[2]?.release();
+    held[3]?.fail();
+    await resumed;
+
     jest.setSystemTime(new Date('2026-12-15T00:00:10Z'));
     const topUp = sync();
-    expect(held.map((request) => request.year)).toEqual([2026, 2027, 2027]);
+    expect(held.map((request) => request.year)).toEqual([2026, 2027, 2026, 2027, 2027]);
 
     held[0]?.release();
     held[1]?.release();
     await refresh;
     // The newer answer no longer has 1 March, so the earlier copy must go with the rest of the old one
-    held[2]?.release('2027-03-01', NEWER);
+    held[4]?.release('2027-03-01', NEWER);
     await topUp;
 
     expect(Database.getPrayerByDateString('2027-03-01')).toBeNull();
@@ -897,10 +986,10 @@ describe('when refreshes overlap', () => {
 
   it('stores next year from a December refresh whose year a later refresh already stored without next year', async () => {
     jest.useFakeTimers({ now: new Date('2026-12-14T23:59:50Z') });
-    // 14 and 15 December are missing, so both syncs download both years
+    // 14 and 15 December are missing and this year is unmarked, so both syncs download both years
     installHolding(
       decemberAroundHole.filter((date) => date !== '2026-12-15'),
-      { 2026: true }
+      {}
     );
     const held = holdRequests();
 
@@ -992,6 +1081,7 @@ describe('when refreshes overlap', () => {
     expect(heldDays.map((request) => request.date)).toEqual(['2026-12-31']);
     heldDays[0]?.release(NEWER);
     await newYear;
+    await settle();
 
     // The night before's requests began first, so their answers must not replace the newer ones
     held[0]?.release();
@@ -1016,11 +1106,12 @@ describe('when refreshes overlap', () => {
     const resumed = sync();
     expect(heldDays.map((request) => request.date)).toEqual(['2026-12-31', '2026-12-31']);
 
+    await Promise.all([launch, resumed]);
     heldDays[1]?.release(NEWER);
-    await resumed;
+    await settle();
     // The launch's request began first, so its answer must not replace the newer 31 December
     heldDays[0]?.release(DOWNLOADED);
-    await launch;
+    await settle();
 
     expect(requestedYears()).toEqual([]);
     expect(Database.getPrayerByDateString('2026-12-31')?.fajr).toBe(apiTimes(NEWER).fajr);
@@ -1046,6 +1137,7 @@ describe('when refreshes overlap', () => {
     expect(held).toHaveLength(4);
     heldDays[0]?.release(NEWER);
     await first;
+    await settle();
 
     // The second swap carries that 31 December as yesterday, and must still know which download it came from
     held[3]?.release();
@@ -1077,16 +1169,24 @@ describe('when refreshes overlap', () => {
 
   it('lets a complete next year from an earlier December refresh store after a later top-up lacking 1 January', async () => {
     jest.useFakeTimers({ now: new Date('2026-12-14T23:59:50Z') });
-    installHolding(decemberAroundHole, { 2026: true });
+    // 14 December is missing and this year unmarked, so the first two syncs download both years. The second lands
+    // first without next year, marking this year with 15 December stored, so after 00:00 the third only tops up
+    // next year while the first is still on its way
+    installHolding(decemberAroundHole, {});
     const held = holdRequests();
 
     const refresh = sync();
+    const resumed = sync();
+    held[2]?.release();
+    held[3]?.fail();
+    await resumed;
+
     jest.setSystemTime(new Date('2026-12-15T00:00:10Z'));
     const topUp = sync();
-    expect(held.map((request) => request.year)).toEqual([2026, 2027, 2027]);
+    expect(held.map((request) => request.year)).toEqual([2026, 2027, 2026, 2027, 2027]);
 
     // An answer without 1 January cannot vouch for next year, so it must not block the complete one
-    held[2]?.release('2027-01-01', NEWER);
+    held[4]?.release('2027-01-01', NEWER);
     await topUp;
     held[0]?.release();
     held[1]?.release();

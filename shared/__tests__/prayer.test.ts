@@ -971,6 +971,26 @@ describe('which rows lose their time when one field on a day cannot be read', ()
     }
   );
 
+  // An edited backup can store a day without one of its keys at all, which must read exactly like a null. The
+  // day's own stored Suhoor and Duha keys are still there, so only the rows read from the missing key lose a time
+  it.each([
+    ['fajr', [standardRow('2026-09-11', 'Fajr'), ...nightOf('2026-09-11')]],
+    ['asr', [standardRow('2026-09-11', 'Asr')]],
+    ['magrib', [standardRow('2026-09-11', 'Magrib'), extrasRow('2026-09-11', 'Istijaba'), ...nightOf('2026-09-12')]],
+  ] as [Field, string[]][])(
+    'a stored Friday 11 September without its %s key takes the time from the rows read from it, without throwing',
+    (field, expected) => {
+      storeDays(SEPTEMBER);
+      const readable = buildBoth('2026-09-10', 4);
+
+      const record = stored.get('2026-09-11') as ISingleApiResponseTransformed;
+      const withoutKey = Object.fromEntries(Object.entries(record).filter(([key]) => key !== field));
+      stored.set('2026-09-11', withoutKey as unknown as ISingleApiResponseTransformed);
+
+      expect(buildBoth('2026-09-10', 4)).toEqual(withoutTimes(readable, expected));
+    }
+  );
+
   it.each(RUNS)(
     'every field unreadable on %s takes every row of that day, Standard and Extras, and the night after it, and a day missing from storage does exactly the same',
     (_, days, firstList, date) => {

@@ -42,25 +42,27 @@ const shouldFetchNextYear = (): boolean => {
 };
 
 /**
- * Whether today is missing because the provider's latest answer for this year lacks it: the year is marked,
- * which even a download without today does, and some of its days are stored. The missing day shows as
- * dashes (R7). Downloading again would bring the same answer on every launch, and offline would put the
- * error screen, whose Refresh wipes, over the days that are readable
+ * Whether today is a gap inside this year's latest download rather than past its end: the year is marked,
+ * which even a download without today does, and a later day of it is stored. That day shows as dashes (R7).
+ * Downloading again would bring the same answer on every launch, and offline would put the error screen,
+ * whose Refresh wipes, over the days that are readable. An answer that stops before today was cut short
+ * instead, and only asking again can bring the rest, so it is downloaded as before
  */
-const latestAnswerLacksToday = (): boolean => {
+const isTodayGapInStoredYear = (): boolean => {
   const year = TimeUtils.getCurrentYear();
   if (!Database.getItem('fetched_years')?.[year]) return false;
 
-  // Keys alone, so a year of days is not parsed only to learn that one of them exists
-  return Database.database.getAllKeys().some((key) => key.startsWith(`prayer_${year}-`));
+  // Keys alone, so a year of days is not parsed only to learn that a later one exists. YYYY-MM-DD sorts as a date
+  const todayKey = `prayer_${TimeUtils.getTodayDateString()}`;
+  return Database.database.getAllKeys().some((key) => key.startsWith(`prayer_${year}-`) && key > todayKey);
 };
 
 /**
  * Reopens the 12-hour notification refresh gate, through the atom as `stores/version.ts` does
  *
- * 1 January's Midnight and Last Third are worked out from 31 December. A launch that could not get that
- * day still reschedules and stamps the gate, so a later sync storing the day would otherwise leave both
- * unarmed until the gate reopened. Failing here costs only that wait, never the times already stored
+ * A reschedule that ran before a download landed has already stamped the gate over the days it could find: the
+ * post-paint refresh with today missing and tomorrow stored, or 1 January without 31 December. Days arriving
+ * afterwards would stay unarmed until the gate reopened. Failing here costs only that wait, never stored times
  */
 const reopenNotificationGate = () => {
   try {
@@ -68,6 +70,15 @@ const reopenNotificationGate = () => {
   } catch (error) {
     logger.warn('SYNC: Failed to reopen the notification refresh gate', { error });
   }
+};
+
+/**
+ * Saves days a download brought, then reopens the gate so they can be armed (see reopenNotificationGate).
+ * Next year's days count too: on 31 December tomorrow's alarms come from them
+ */
+const saveDownloadedDays = (prayers: ISingleApiResponseTransformed[]) => {
+  Database.saveAllPrayers(prayers);
+  reopenNotificationGate();
 };
 
 // --- Actions ---
@@ -78,10 +89,64 @@ export const triggerSyncLoadable = () => {
 };
 
 /**
+ * Rebuilds both lists after a day they read from has landed
+ *
+ * setSequence rebuilds the rows from storage, which is what gives 1 January's night rows their times, but it skips
+ * a write whose rows are identical, as Standard's are when only 31 December arrives. The previous-prayer atoms
+ * read the list before from storage without depending on it, so without a new sequence they keep a stale null and
+ * the bar stays hidden until Fajr. refreshSequence always writes a new sequence, so they look again
+ */
+const rebuildSequences = () => {
+  for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
+    ScheduleStore.setSequence(type, TimeUtils.createInstant());
+    ScheduleStore.refreshSequence(type);
+  }
+};
+
+/**
+ * SCENARIO 1: 1 January without 31 December. The countdown bars need yesterday's last prayers, and the Extras
+ * night leading into today starts at 31 December's Magrib. Asked by year, the endpoint serves only the current
+ * year, so 31 December is asked for alone, by date. When neither answers, 1 January still shows with its night
+ * rows unreadable, and the next sync asks again because the day is still missing
+ *
+ * Not awaited: React Native's Android HTTP client has no timeout, so a stalled request would hold the launch
+ * spinner and the background task's re-arm for as long as it hangs. Today is already on screen when it is
+ * asked for, and both lists are rebuilt if the day lands
+ */
+const fetchLastDayOfPreviousYear = () => {
+  const previousYear = TimeUtils.getCurrentYear() - 1;
+  const lastDayOfPreviousYear = `${previousYear}-12-31`;
+  if (Database.getPrayerByDateString(lastDayOfPreviousYear)) return;
+
+  logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
+
+  // Takes its place in line as it begins, like a refresh, so an older download of last year landing later is dropped
+  const order = ++refreshesBegun;
+
+  Api.fetchDay(lastDayOfPreviousYear)
+    .then(
+      (fetchedDay) => {
+        if ((newestDownloadOfYear.get(previousYear) ?? 0) > order) return;
+
+        // Not `fetched_years`: one day is not a year, and a marker may only vouch for what is stored
+        saveDownloadedDays([fetchedDay]);
+        newestDownloadOfYear.set(previousYear, order);
+        logger.info('SYNC: Previous year Dec 31 fetched and saved');
+        rebuildSequences();
+      },
+      // A refusal and a failed fetch are the same to the owner, and neither may keep today off the screen
+      (error: unknown) => logger.warn('SYNC: Previous year Dec 31 not available, will retry on next sync', { error })
+    )
+    // Nothing awaits the request, so a failure storing the day or rebuilding the lists has to end here
+    .catch((error: unknown) => logger.error('SYNC: Failed to apply previous year Dec 31', { error }));
+};
+
+/**
  * Initialize or reinitialize the app's core state
  * 1. Sets up both standard and extra prayer sequences
  * 2. Starts the prayer time monitoring countdowns
- * 3. Pushes fresh data to the iOS widgets (failure-tolerant)
+ * 3. On 1 January without 31 December, asks for that day without waiting for it
+ * 4. Pushes fresh data to the iOS widgets (failure-tolerant)
  *
  * @param date Current London date
  * @param deferWidgetRefresh Fire the widget push without awaiting it — the
@@ -90,42 +155,14 @@ export const triggerSyncLoadable = () => {
  *   still awaits so iOS keeps the process alive until widgets are refreshed.
  */
 const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
-  // SCENARIO 1: 1 January without 31 December. The countdown bars need yesterday's last prayers, and the
-  // Extras night leading into today starts at 31 December's Magrib. Asked by year, the endpoint serves
-  // only the current year, so 31 December is asked for alone, by date. When neither answers, 1 January
-  // still shows with its night rows unreadable, and the next sync asks again because the day is still missing
-  if (TimeUtils.isJanuaryFirst(date)) {
-    const previousYear = TimeUtils.getCurrentYear() - 1;
-    const lastDayOfPreviousYear = `${previousYear}-12-31`;
-    const cachedPrevYearData = Database.getPrayerByDateString(lastDayOfPreviousYear);
-
-    if (!cachedPrevYearData) {
-      logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
-
-      // Takes its place in line like a refresh, so an older download of last year landing later is dropped
-      const order = ++refreshesBegun;
-      // A refusal and a failed fetch are the same to the owner, and neither may keep today off the screen
-      const fetchedDay = await Api.fetchDay(lastDayOfPreviousYear).catch((error: unknown) => {
-        logger.warn('SYNC: Previous year Dec 31 not available, will retry on next sync', { error });
-        return null;
-      });
-
-      // Not `fetched_years`: one day is not a year, and a marker may only vouch for what is stored
-      if (fetchedDay && (newestDownloadOfYear.get(previousYear) ?? 0) < order) {
-        Database.saveAllPrayers([fetchedDay]);
-        newestDownloadOfYear.set(previousYear, order);
-        logger.info('SYNC: Previous year Dec 31 fetched and saved');
-        reopenNotificationGate();
-      }
-    }
-  }
-
   // Initialize prayer sequences (prayer-centric model)
   // See: ai/adr/005-timing-system-overhaul.md
   ScheduleStore.setSequence(ScheduleType.Standard, date);
   ScheduleStore.setSequence(ScheduleType.Extra, date);
 
   Countdown.startCountdowns();
+
+  if (TimeUtils.isJanuaryFirst(date)) fetchLastDayOfPreviousYear();
 
   // Push fresh data to the iOS widgets (no-op off iOS, failure-tolerant).
   // Deferred path needs the explicit catch: an unhandled rejection here would
@@ -154,7 +191,7 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
  *    opt-in: leave the variable unset and isDev is true, so a bare local build
  *    refetches on every check. Only EXPO_PUBLIC_ENV=prod or =preview turns it
  *    off, which is what a shipped build gets.
- * 2. Today is not stored, unless this year's latest download simply lacks it (see latestAnswerLacksToday)
+ * 2. Today is not stored, unless it is only a gap inside this year's latest download (see isTodayGapInStoredYear)
  * 3. It's December and next year's data needs fetching
  */
 const needsDataUpdate = (): boolean => {
@@ -163,7 +200,7 @@ const needsDataUpdate = (): boolean => {
   const now = TimeUtils.createInstant();
   const data = Database.getPrayerByDate(now);
 
-  if (!data && !latestAnswerLacksToday()) return true;
+  if (!data && !isTodayGapInStoredYear()) return true;
 
   const needNewYear = shouldFetchNextYear();
   if (needNewYear) return true;
@@ -171,14 +208,18 @@ const needsDataUpdate = (): boolean => {
   return false;
 };
 
-// Check if the current year's data is already fetched and cached
+/**
+ * Whether this year needs no download of its own: marked with today stored, or today only a gap inside its latest
+ * answer. December then adds next year alone, so a phone offline keeps its days rather than getting the error
+ * screen, whose Refresh wipes them
+ */
 const isCurrentYearCached = (): boolean => {
   const fetchedYears = Database.getItem('fetched_years') || {};
   const currentYear = TimeUtils.getCurrentYear();
   const now = TimeUtils.createInstant();
   const todayData = Database.getPrayerByDate(now);
 
-  return Boolean(fetchedYears[currentYear]) && Boolean(todayData);
+  return (Boolean(fetchedYears[currentYear]) && Boolean(todayData)) || isTodayGapInStoredYear();
 };
 
 /** Taken as each refresh begins, so downloads can be ordered by when they were asked for */
@@ -262,7 +303,7 @@ const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: numb
     logger.info('SYNC: Adding this download without a wipe', { year, holdsToday: trusted });
   }
 
-  Database.saveAllPrayers(prayers);
+  saveDownloadedDays(prayers);
   Database.markYearAsFetched(year);
   if (trusted) newestDownloadOfYear.set(year, order);
 };
@@ -293,7 +334,7 @@ const storeNextYear = (prayers: ISingleApiResponseTransformed[], year: number, o
   if (!holdsAnchorDay(prayers, year)) return 'incomplete';
 
   Database.clearPrefix(`prayer_${year}-`);
-  Database.saveAllPrayers(prayers);
+  saveDownloadedDays(prayers);
   Database.markYearAsFetched(year);
   newestDownloadOfYear.set(year, order);
   return 'stored';
@@ -322,7 +363,7 @@ const updatePrayerData = async () => {
         const nextYearData = await Api.fetchYear(nextYear);
 
         const outcome = storeNextYear(nextYearData, nextYear, order);
-        if (outcome === 'incomplete') Database.saveAllPrayers(nextYearData);
+        if (outcome === 'incomplete') saveDownloadedDays(nextYearData);
 
         logger.info('SYNC: Data refresh complete (next year only)', { nextYear, outcome });
       } catch (error) {
@@ -355,7 +396,7 @@ const updatePrayerData = async () => {
       const outcome = nextYearResult.status === 'fulfilled' ? storeNextYear(ownNextYear, nextYear, order) : 'failed';
       if (outcome !== 'stored') restoreStoredYear(nextYear, storedNextYear);
       // Added after what was kept, so the days this incomplete download does have are the newer ones
-      if (outcome === 'incomplete') Database.saveAllPrayers(ownNextYear);
+      if (outcome === 'incomplete') saveDownloadedDays(ownNextYear);
 
       if (nextYearResult.status === 'rejected') {
         logger.warn('SYNC: Next year data not yet available, will retry on next sync', {

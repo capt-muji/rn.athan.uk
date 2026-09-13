@@ -127,7 +127,8 @@ const magribCrossesIntoNextDay = (magribTime: string): boolean => {
  * rather than strings for exactly this reason.
  */
 const getIstijabaTime = (rawData: ISingleApiResponseTransformed, date: string): Date | null => {
-  if (rawData.magrib === null) return null;
+  // Not `=== null`: a stored record can lack the key altogether (an edited backup), which must read as unreadable
+  if (typeof rawData.magrib !== 'string') return null;
 
   const magribDate = magribCrossesIntoNextDay(rawData.magrib) ? TimeUtils.addDaysToDateString(date, 1) : date;
   const magribInstant = createPrayerDatetime(magribDate, rawData.magrib);
@@ -163,7 +164,8 @@ export const getNightTimesForDay = (
 
   const magribTime = previousDay.magrib;
   const fajrTime = day.fajr;
-  if (magribTime === null || fajrTime === null) return null;
+  // A stored record can lack a key altogether, which is as unreadable as a null
+  if (typeof magribTime !== 'string' || typeof fajrTime !== 'string') return null;
 
   // Anchoring a post-midnight Magrib to the date it is filed under would start the night a
   // day early and stretch it to ~26h, throwing Islamic Midnight and Last Third past noon.
@@ -400,7 +402,8 @@ function createPrayersForSingleDay(
     }
 
     const prayerTime = rawData[name.toLowerCase() as keyof ISingleApiResponseTransformed];
-    if (prayerTime === null) return unreadable;
+    // Not `=== null`: a stored record can lack the key altogether (an edited backup), and `.split` below would throw
+    if (typeof prayerTime !== 'string') return unreadable;
 
     const [hours] = prayerTime.split(':').map(Number);
     const prayerDateString = adjustPrayerDateForMidnightCrossing(type, name, date, hours);
