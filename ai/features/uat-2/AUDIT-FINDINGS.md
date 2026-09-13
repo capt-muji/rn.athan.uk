@@ -3946,7 +3946,9 @@ approve. Full brief: `ai/prompts/data-resilience-swap-not-wipe.md`, session 2 in
 year has arrived does `replacePrayerCache` clear the cache, carry yesterday across, save the year and
 mark it fetched, and nothing in that function awaits. `clearAllExcept` and `saveAllPrayers` are
 synchronous MMKV calls, so no render, countdown tick or other sync can find the cache empty between
-them. A fetch that fails for any reason leaves every stored key as it was. Scenario 3a still only adds next year, and never wipes.
+them. A fetch that fails for any reason leaves every stored key as it was. Scenario 3a never wipes the
+cache. It downloads next year alone, and from 1.26.35 replaces next year's stored days when that
+download holds 1 January (see the follow-up below).
 
 **Each item in the brief**
 
@@ -3989,7 +3991,9 @@ the old code did in effect. Only the new tests catch the naive version.
    left the overlap guard where it was. A refresh stalled from 30 November for a missing day, landing
    after a 1 December sync had added next year, wiped next year's days and its marker, which then
    waited for another December sync. The old order never got here: its stalled refresh had wiped at
-   the start, so the 1 December sync downloaded both years instead. Reproduced in a test.
+   the start, so the 1 December sync downloaded both years instead. Reproduced in a test. 1.26.33
+   fixed it by counting the top-up, and 1.26.35 replaced the count with start order (see the
+   follow-up below).
 
 **The final design**
 
@@ -4005,18 +4009,25 @@ the old code did in effect. Only the new tests catch the naive version.
 - **Every caller downloads on its own**, as before this change, so a stalled request stalls only its
   own caller. The second reviewer's suggested 30-second timeout was not taken: it would add a failure
   that a slow connection never had, and a change in failure behaviour on this path needs the owner.
-- **A refresh wipes only if no other refresh has stored a download since it began.** `cacheWrites`
-  counts every stored download, scenario 3a's top-up included. A refresh that sees it move while
-  downloading adds its days without wiping, because a wipe could take days another refresh stored and
-  this download does not cover. An overtaken refresh still saves what it downloaded: the third review showed that
-  discarding it could leave 1 January missing.
-- **A failed download of next year keeps its stored days.** In December scenario 3b, when this year
-  arrives but next year's request fails, next year's stored days are read before the wipe and written
-  back. Its marker goes back only if it was set, and never without them. The old code lost them.
+- **A refresh wiped only if no other refresh had stored a download since it began (1.26.33).**
+  `cacheWrites` counted every stored download, scenario 3a's top-up included. A refresh that saw it
+  move while downloading added its days without wiping, because a wipe could take days another
+  refresh stored and this download did not cover. An overtaken refresh still saved what it
+  downloaded: the third review showed that discarding it could leave 1 January missing. 1.26.35
+  replaces the count with start order (see the follow-up below).
+- **A failed download of next year keeps its stored days, and so does a standard refresh's swap.** In
+  December scenario 3b, when this year arrives but next year's request fails, next year's stored days
+  are read before the wipe and written back. Its marker goes back only if it was set, and never
+  without them. The old code lost them. From 1.26.35 the standard branch carries next year's stored
+  days and marker across its own swap the same way, through the shared `readStoredYear` and
+  `restoreStoredYear`, so a refresh that began in November and lands after December stored next year
+  keeps them. 1.26.35 also restores next year in 3b when its own download is overtaken or lacks
+  1 January, and puts the marker back only when 1 January of that year is stored (see the follow-up
+  below).
 
 **Tests.** `stores/__tests__/syncFetchBeforeWipe.test.ts` runs the real `sync()`, database, API client
 and clock helpers over weeks of cached days, and compares stored keys. The second column was run:
-the final file against the old `sync.ts` passes 11 tests and fails 9.
+the final file (1.26.33) against the old `sync.ts` passes 11 tests and fails 9.
 
 | Test | Against the old order |
 | --- | --- |
@@ -4032,28 +4043,28 @@ the final file against the old `sync.ts` passes 11 tests and fails 9.
 | December keeps next year's stored days and marker when only next year's download fails | fails |
 | December carries next year's days without marking a year never marked | fails |
 | December does not restore next year's marker when none of its days are stored | passes, as it did |
-| Two overlapping refreshes, outside December and in December: the later download lacks a day the first stored, and changes nothing | passes, as it did |
+| Two overlapping refreshes, outside December and in December: the later download lacks a day the first stored, and changes nothing (1.26.33; replaced in 1.26.35, where the later download swaps in, see the follow-up) | passes, as it did |
 | Alarm records a reschedule writes while the download is on its way survive | passes, as it did |
 | A sync after a stalled one finishes on its own, and the stalled answer, arriving later and lacking a day, changes nothing | passes, as it did |
-| 1 January: the new year a refresh downloads after a 31 December wipe without it is kept | passes, as it did |
+| 1 January: the new year a refresh downloads after a 31 December wipe without it is kept (1.26.33; retitled and changed in 1.26.35) | passes, as it did |
 | 31 December: next year from the second of two first launches is kept when the first lost it | passes, as it did |
-| A refresh stalled from 30 November into December does not wipe the 2027 days a newer refresh stored | passes, as it did |
-| A refresh stalled from 30 November does not wipe the 2027 days a 1 December top-up added | fails, since the old order downloads both years here |
+| A refresh stalled from 30 November into December does not wipe the 2027 days a newer refresh stored (1.26.33; retitled and changed in 1.26.35) | passes, as it did |
+| A refresh stalled from 30 November does not wipe the 2027 days a 1 December top-up added (1.26.33; retitled in 1.26.35, see the follow-up) | fails, since the old order downloads both years here |
 
 The fourth review showed the overlap tests could not see a second wipe: the later download matched
 the first, and the records now survive a wipe anyway. Each later download now lacks a day the first
-stored, so a second wipe shows.
+stored, so a second wipe shows (1.26.33; in 1.26.35 the later download is meant to wipe).
 
 The order test in `stores/__tests__/sync.test.ts` now holds the fetch open and asserts nothing is
-cleared until it returns. Suite 1,222 to 1,242, green, and green in all four timezones of `yarn
-test:tz`. Coverage of the changed code is 100% of lines, branches and functions. What is still
+cleared until it returns. Suite in 1.26.33: 1,222 to 1,242, green, and green in all four timezones
+of `yarn test:tz`. Coverage of the changed code is 100% of lines, branches and functions. What is still
 uncovered in `stores/sync.ts` (`triggerSyncLoadable`, the deferred widget push and the `isDev` branch)
-is untouched code, left to session 4. Every probe the reviewers wrote passes against the final code,
+is untouched code, left to session 4. Every probe the reviewers wrote passes against 1.26.33's code,
 the midnight and New Year ones through the real notification sweep. The one failure is a reviewer's
 own control for its rejection detector, which Jest intercepts.
 
-**Mutation sweep before the last round: 19 runs over `stores/sync.ts`, one mutant at a time, full
-suite each.** The two counter mutants are left out here and re-run on the final code below. The last
+**Mutation sweep before 1.26.33's last round: 19 runs over `stores/sync.ts`, one mutant at a time, full
+suite each.** The two counter mutants are left out here and re-run on 1.26.33's final code below. That
 round changed only the counter and the overlap tests, and added the 30 November top-up test.
 
 | Mutant | Result | Caught only by the new tests |
@@ -4076,14 +4087,15 @@ round changed only the counter and the overlap tests, and added the 30 November 
 | Next year marked whenever its days are carried | killed, 1 | yes |
 | A no-op | survived, as a control must | |
 
-**The counter again, on the final code: 7 runs, one mutant at a time, over `syncFetchBeforeWipe.test.ts`, `sync.test.ts` and `database.test.ts`**
+**The counter again, on 1.26.33's final code: 7 runs, one mutant at a time, over
+`syncFetchBeforeWipe.test.ts`, `sync.test.ts` and `database.test.ts`**
 
 | Mutant | Result |
 | --- | --- |
 | None (baseline) | 120 pass |
 | Every refresh wipes, no guard | killed, 6 fail |
 | The guard inverted | killed, 16 |
-| Scenario 3a's top-up not counted | killed, 1: the 30 November top-up test |
+| Scenario 3a's top-up not counted | killed, 1: the 30 November top-up test. 1.26.35 replaces the count with start order (see the follow-up) |
 | The swap's download not counted | killed, 5 |
 | The standard branch reads the counter when it stores, not when it began | killed, 5 |
 | The December branch reads the counter when it stores | killed, 1 |
@@ -4121,7 +4133,7 @@ file's own header reads 0. The owner's data was backed up before anything was to
 | Wi-Fi and data off, clock to 15 August, cold launch (new process 11048, activity created 15 Aug 12:00:09) | error screen, the honest answer, since 15 August is not cached | |
 | Clock back to 13 September, still offline, cold launch (new process 11405, activity created 13:04:40) | **the list, the same six times, served from the cache** | **111 days, every one byte-identical to before**; `fetched_years` 2026; 1 alarm record; 16 preferences |
 
-*The successful swap on the build before the last round (`34e52e27…`), with an alarm record in
+*The successful swap on the build before 1.26.33's last round (`34e52e27…`), with an alarm record in
 storage.* Removing today's record without moving the clock, which would have fired the owner's armed
 Fajr, took an edited backup: a delete entry for today's key appended to the MMKV log, the CRC32
 extended over it, and the result restored with `adb restore`.
@@ -4140,7 +4152,7 @@ Fajr for 14 September at 04:59 stayed armed in AlarmManager through every run ex
 and was armed again by the swap. `preference_last_notification_schedule_check` disappears on every
 Android cold launch: `reopenRefreshGateOnColdLaunch` clears it on purpose, so that is not the wipe.
 
-*The final build (`61a47681…`), the one that ships.* The same edited backup, plus a planted key that
+*1.26.33's final build (`61a47681…`).* The same edited backup, plus a planted key that
 neither keep-list names, `probe_before_swap`: a wipe removes it, and a save without a wipe would leave
 it.
 
@@ -4172,12 +4184,197 @@ cache partly written. If today was not saved yet, the next launch finds it missi
 If it was, the app runs on the shortened cache until it reaches the first missing day, and fetches
 then. Before, the same exposure lasted as long as the network round trip.
 
-**Left for the owner.** The fifth review found one case the counter changes. In December, a next-year
-top-up that lands while a refresh for a missing day is still downloading turns that refresh's swap
-into an addition, so a day its download lacks keeps the copy stored before, and old days stay until
-the next swap. Nothing is copied from another day. It needs a day missing at 00:00 in December, a
-top-up crossing midnight and the provider dropping a day between downloads. The fix the review
-suggests is to carry next year across the standard branch's wipe and stop counting the top-up.
+### Follow-up in 1.26.35: a next-year top-up no longer turns a swap into an addition
+
+**The case.** The fifth review of 1.26.33 found it. In December, with today stored and marked, a sync
+takes scenario 3a and downloads next year alone. If the next day is missing when 00:00 passes, a
+second sync takes scenario 3b and downloads both years. In 1.26.33, a top-up that landed while that
+refresh was still downloading moved `cacheWrites`, so the refresh added its download instead of
+swapping it in. Old days stayed until the next swap, and a day the new download lacked kept the copy
+stored before. Nothing was copied from another day. It needs a day missing just after 00:00 in
+December and a top-up still downloading across midnight, and a stale day also needs the provider to
+drop that day between downloads. The owner ruled that every edge case gets fixed.
+
+**How the design got here.** 1.26.33 counted the top-up only so that a refresh stalled from November
+would not wipe the next year a top-up had added (regression 4). That protected next year by giving
+up the swap, so the same count also stopped the 3b refresh above, which ought to swap. The first
+1.26.35 draft stopped counting the top-up and carried next year across the standard branch's swap
+instead. The design review then showed that counting every store makes the newest download merge
+whenever an older refresh merged first, so an older copy of a day the newest download dropped
+survives. Counting wipes only was tried next, during review, and never shipped: it closed that one
+landing order and no other. The reviews showed that no counter can tell which of two overlapping
+downloads began later. An older download landing after a newer one could bring back a day the newer
+one dropped, or overwrite the newer times, and an older December refresh could replace a newer
+top-up's next year, keeping the older times.
+
+**A gap in plain start order, closed by an anchor day.** The design review of start order found it.
+`validateApiTimes` throws when today's times are malformed, not when today's key is missing. Under
+plain start order, a newest download lacking today would wipe and record its order. If an older
+download that has today landed first, the newest one removed today. If the newest landed first, the
+older one was dropped. Either way today was left empty.
+
+**The final design: the download that began last decides each year, if it holds its anchor day**
+
+- **Start order, not a count.** `refreshesBegun` gives each refresh its place in line as it begins.
+  `newestSwap` holds the newest refresh that has swapped the cache, and is set to a refresh's order
+  only when it wipes. `newestDownloadOfYear` holds, for each year, the newest refresh whose trusted
+  download of that year is stored.
+- **The anchor day.** `holdsAnchorDay(prayers, year)` checks the day a download must hold to be
+  trusted over what is stored: today for this year, and 1 January for a year still to come. A year
+  already past, such as the 31 December refresh landing on 1 January, needs nothing.
+- **`replacePrayerCache` drops a download when a refresh that began later already stored that
+  year.** Otherwise a download that holds its anchor day wipes when no later-begun refresh has
+  swapped, and adds when one has. That last case is an older refresh storing a year for which no newer
+  download is recorded, such as a 31 December refresh landing after a 1 January swap that carried
+  the stored 31 December rather than downloading it. A download without its anchor day is added
+  without a wipe and records no order, so a download that has today can still swap in after it.
+- **A wipe forgets the year entries it made stale.** It clears every `newestDownloadOfYear` entry
+  except next year's, which the caller puts back, and the year of the yesterday it carries. The code
+  review found the gap: a still-waiting older download holding the only copy of a year could be
+  dropped after a swap for another year had wiped that year, as when a clock set a year ahead is
+  then corrected.
+- **The 1 January fetch of last year takes its place in line.** `initializeAppState` takes an order
+  before it downloads last year for 31 December. It stores, marks and records that year only when no
+  later-begun download of it is stored, so between two overlapping downloads of last year, or a late
+  31 December refresh, the one that began last is kept. The code review found this too.
+- **`storeNextYear` returns `'stored'`, `'dropped'` or `'incomplete'`.** Scenario 3a's top-up and
+  3b's own next year both go through it. A download is dropped when a later-begun download of that
+  year is stored. One without 1 January is incomplete: nothing is cleared, marked or recorded.
+  Otherwise it clears that year's stored days first, so a day the newer answer lacks cannot survive
+  from an older download, then stores and marks the year.
+- **Scenario 3a adds an incomplete download's days unmarked**, so December asks again.
+- **Scenario 3b puts next year's stored days back** when its own download of next year failed, was
+  dropped or was incomplete. It reads them before its swap, and their marker goes back only with
+  1 January. An incomplete download is then added on top, so the days it does have are the newer
+  ones.
+- **Scenario 2 carries next year across its swap.** Once its download has landed, it reads next
+  year's stored days and marker, swaps, and puts them back, with nothing awaited in between, so a
+  refresh that began in November and lands after December stored next year keeps them.
+  `readStoredYear` and `restoreStoredYear` serve both branches.
+- **The marker goes back only if it was set and 1 January of that year is stored.** A marked year
+  stops December downloading it, so a marker over a partial year would leave the days before the
+  first stored one missing until 1 January, when a refresh finds today missing and downloads the
+  year. The rule stays "1 January required" because a year that has already begun cannot reach the
+  restore: a download landing on or after 2 January has no days of the old year, so
+  `validateApiTimes` throws for an empty year.
+
+**What is left.** Start order decides between downloads that hold their anchor day. Two cases are
+decided otherwise, on purpose: a download without its anchor day never wipes, so a day it lacks keeps
+its stored copy, and an older download that has the anchor day still swaps in over it. When the
+provider changes a day between two requests, which answer is kept follows these rules, not when the
+provider changed.
+
+**Tests.** In `stores/__tests__/syncFetchBeforeWipe.test.ts`, marked against 1.26.34's file:
+
+| Test | What it asserts |
+| --- | --- |
+| Swaps in the refresh that began later when the earlier one lands first, keeping alarm records (`it.each(overlapCases)`, outside December and in it; replaces "lets only the first to land wipe the cache") | Launch and resume both download. The earlier lands, an alarm record is written, then the later lands lacking a day (1 October, or 20 December). That day is gone and the alarm record is kept |
+| Lets a download that began earlier change nothing when it lands after a later one (`it.each(overlapCases)`, both cases, new) | The later lands first, lacking that day and carrying different times. When the earlier lands after it, every stored key is as the later one left it, so neither the day nor the older times come back |
+| Lets a December refresh swap in the year when next year's top-up lands while it downloads, and next year arrives, fails, or arrives lacking a day the top-up stored (`it.each`, three cases, new) | With 14 December stored and 15 December missing, the stored dates are exactly 14 to 31 December without 20 December, which 3b's download lacks, plus the 365 days of 2027, less 1 March in the third case: a newer complete download of next year removes a day it lacks. November goes. Both years stay marked. A download lacking 1 January, the anchor day, is incomplete and has its own test below |
+| Swaps in each download that began later across midnight, so the newest answer decides every day (new) | With 13 and 14 September missing, launch and resume both download, and the first lacks 14 September. The background task starts after 00:00, the resume lands, then the background download lands lacking 20 September. 20 September is gone and 14 September is stored |
+| Keeps next year from a top-up that began later when an earlier December refresh lands after it (new) | The top-up lands first, with different times. The older 3b download of 2027 lacks 1 March. 1 March stays stored, 1 January keeps the top-up's times, and both years stay marked |
+| Lets a top-up that began earlier change nothing when it lands after a December refresh that began later (new) | 3b's download of 2027 lacks 1 March and carries different times. When the older top-up lands after it, every stored key is unchanged |
+| On 1 January swaps in the new year a later refresh downloads, keeping 31 December, after a 31 December refresh (retitled and changed) | 31 December and 1 January are stored, and `fetched_years` is `{2027: true}`: the newer refresh swaps, and nothing reads the 2026 marker on 1 January |
+| Lets a refresh that stalled into December change nothing once a refresh that began later stored both years (retitled and changed) | The later refresh's download of 2026 lacks 20 December. When the stalled answer lands after it, every stored key is unchanged, and 2027 is still stored |
+| In December does not restore next year's marker when 1 January is not among its stored days (new) | With 30 days of 2027 from 14 January stored and marked, and next year's download failing, those days go back and the marker does not |
+| Lets a refresh that stalled into December swap in its year and keep the next year a newer sync only added (retitled and changed) | The stored dates are exactly 30 November to 31 December plus the 365 days of 2027, so 10 to 29 November going shows it wiped. Both years stay marked |
+| Drops every download that began before the newest stored one, not only the first to land after it (new) | Three syncs download on 14 September. The newest lands first, lacking 1 October and carrying different times. When the other two land after it, every stored key is unchanged |
+| Lets a top-up that began later remove a next-year day an earlier December refresh stored (new) | The 3b refresh lands both years, then the later top-up lands lacking 1 March, with different times. 1 March is gone, 1 January has the top-up's times, and both years stay marked |
+| Stores next year from a December refresh whose year a later refresh already stored without next year (new) | With 14 and 15 December missing, both syncs download both years. The later one stores 2026 while its 2027 request fails. When the earlier one lands after it, 1 January 2027 is stored and both years are marked |
+| Keeps today when the download that began later lacks it and lands after one that has it (new) | On 14 September the launch lands with today, then the resume lands without today and with different times. Today is still stored |
+| Lets a download that has today swap in after one that began later but lacks it (new) | The resume lands first, without today. The launch lands after it with today, and today is stored |
+| On 1 January adds 31 December from a refresh that began the night before and lands after the new year swap (new) | With 31 December stored and 2026 unmarked, the night before downloads both years. The new year's refresh lands first and carries the stored 31 December across its swap. When the older refresh lands, 31 December takes its downloaded times, 1 January is stored, and both years are marked |
+| On 1 January drops a 31 December refresh that lands after the new year's own download of last year (new) | With 31 December missing, the new year's refresh lands, then downloads 2026 for 31 December with different times. When the night before's answers land after it, 31 December keeps those times, 1 January is stored, and both years are marked |
+| Carries next year without its marker across a standard swap when 1 January is not stored, so December asks again (new) | On 20 November, with that day missing and 30 days of 2027 from 14 January stored and marked, the swap leaves exactly 19 November to 31 December plus those January days, and `fetched_years` is `{2026: true}`. A sync on 2 December then requests 2027 |
+| Lets a top-up without 1 January store its days but not the marker, so December asks again (new) | On 3 December, with 2027's 1 January unreadable at the source, 2 January is stored and `fetched_years` is `{2026: true}`. A second sync requests 2027 again |
+| In December keeps next year's stored 1 January when the refresh's own download of next year lacks it (new) | With 2027 stored from 1 January and marked, and 3b's download of 2027 lacking a readable 1 January, 1 January keeps its cached times, 2 January takes the downloaded times, 31 December 2027 is stored, and both years stay marked |
+| On 1 January swaps in a lone refresh from the night before, since last year needs no anchor day (new) | The refresh begun at 23:59:50 on 31 December lands after 00:00, when its download of 2026 holds only 31 December. The stored dates are exactly 31 December plus the 365 days of 2027, and both years are marked |
+| Lets a complete next year from an earlier December refresh store after a later top-up lacking 1 January (new) | The later top-up lands first, without 1 January and with different times. When the earlier 3b refresh lands with a complete 2027, 1 January is stored and both years are marked |
+| Keeps a download holding the only copy of its year after a swap for another year took that year (new) | On 14 September the resume lands. With the clock set to 14 September 2027, a sync swaps in 2027, taking all of 2026. With the clock corrected, the launch's older download lands, and 110 days of 2026 are stored |
+| Adds last year from two refreshes of the night before without wiping again after the new year swap (new) | With 31 December stored and 2026 unmarked, two syncs the night before download both years. The new year's refresh lands first, then `popup_update_last_check`, on no keep-list, is written. After both older refreshes land it is still there, 31 December has the second refresh's times, and 1 January is stored. An unnecessary second wipe would remove state like it, as the 3T run showed |
+| On 1 January keeps the newer of two downloads of last year when the one that began first lands last (new) | With 1 January stored and 31 December missing, launch and resume both skip the refresh and download last year. The resume's request began later and lands first with different times. When the launch's answer lands after it, 31 December keeps the resume's times and both years are marked |
+| On 1 January keeps last year's newer 31 December when a second new year swap carries it (new) | With 31 December missing, two syncs after 00:00 both refresh. The first lands and downloads 2026 for 31 December with different times. The second swaps, carrying that 31 December as yesterday. When the night before's answers land last, 31 December keeps the newer times and 1 January is stored |
+
+`stores/__tests__/sync.test.ts` gains a `clearPrefix` mock for the new database call, and a fixture
+fix with every assertion unchanged. `createMockYearData(year)` now builds that year's days in UTC,
+and the fetch mocks return the requested year. The old mock answered a 2027 request with 2026 dates,
+which the anchor check correctly refuses to mark.
+
+Against 1.26.34's code, run with the final test file over its `stores/sync.ts`, 22 of the file's 45
+tests fail and 23 pass. Eight of the new tests pass there too, because 1.26.34 already behaves that
+way in their cases: the today guard in both landing orders, the late 31 December refresh adding over
+the cache, a lone refresh from the night before, a complete next year after a top-up lacking
+1 January, a December refresh storing next year after its year was dropped, the only copy of a year
+after a swap for another year, and two refreshes of the night before adding last year without a
+second wipe. They are there to catch the new code regressing, and the mutation sweep below shows
+what each one catches.
+
+**Mutation sweep on 1.26.35: 33 mutants of `stores/sync.ts` and a no-op control, one at a time, full suite each**
+
+| Mutant | Result |
+| --- | --- |
+| None (baseline, in the mutation worktree) | 1,265 pass: the worktree has no `android/` or `ios/`, so `audioMatrix.test.ts` skips its two bundle checks |
+| The drop check removed | killed, 6 fail |
+| The drop check compares the wrong way | killed, 37 |
+| Every trusted download wipes | killed, 1: the two night-before refreshes that must not wipe again |
+| A download without today still wipes | killed, 1: keeps today when the later download lacks it |
+| The newest swap never recorded | killed, 1: the two night-before refreshes |
+| An addition also sets the newest swap | killed, 1: the two night-before refreshes |
+| A download without today records its order | killed, 1: a download that has today swaps in after one that lacks it |
+| This year never recorded | killed, 4 |
+| Stale year entries kept after a wipe | killed, 1: the only copy of a year after a swap for another year |
+| The wipe forgets next year's entry too | killed, 1: next year kept from a top-up that began later |
+| The wipe forgets yesterday's year too | killed, 1: last year's newer 31 December across a second new year swap |
+| The 1 January fetch takes no place in line | killed, 3 |
+| The 1 January fetch saves without its check | killed, 1: the newer of two downloads of last year |
+| The anchor is 1 January even for this year | killed, 21 |
+| Every download trusted | killed, 5 |
+| A past year needs an anchor too | killed, 1: a lone refresh from the night before |
+| Next year's drop check removed | killed, 3 |
+| Next year's anchor check removed | killed, 3 |
+| Next year not cleared before storing | killed, 1: a later top-up removes a next-year day |
+| Next year's order not recorded | killed, 3 |
+| The top-up discards an incomplete download | killed, 1: a top-up without 1 January |
+| December puts next year back even after storing its own | killed, 1: the third top-up case |
+| December adds an incomplete download before putting next year back | killed, 1: next year's stored 1 January kept |
+| December discards an incomplete download | killed, 1: next year's stored 1 January kept |
+| The standard branch does not put next year back | killed, 2 |
+| The standard branch reads next year after the wipe | killed, 2 |
+| The standard branch carries this year instead of next | killed, 6 |
+| December reads next year after the wipe | killed, 6 |
+| The marker ignores 1 January | killed, 2 |
+| The marker read as always set | killed, 1: next year's days carried without marking a year never marked |
+| The marker restored with no days | killed, 1: in `sync.test.ts`, the current year still saved when next year's fetch fails |
+| The marker restored unconditionally | killed, 3 |
+| Refreshes all share one place in line | killed, 26 |
+| A no-op | survived, as a control must |
+
+**Suite.** 1,242 to 1,267 tests, all passing, and passing again in each of the four timezones of
+`yarn test:tz`. `tsc` and `biome check . --error-on-warnings` are clean.
+
+**Coverage.** Every line, branch and function this change adds or alters in `stores/sync.ts` is
+covered. What stays uncovered there is untouched and unchanged since 1.26.33: `syncLoadable`,
+`triggerSyncLoadable`, the deferred widget push and the `isDev` branch.
+
+**On the device.** The final build (`3e604748…`, 1.26.35) on the OnePlus 3T, with the same edit as
+before: a fresh backup with today's day deleted and the planted key `probe_before_swap` added, then
+restored, which disarmed Fajr. A cold launch with the network validated (activity created 17:28:57)
+showed 13 September's six times. The store then held 111 days: 13 September downloaded, byte for byte
+the day the edit deleted, and no other day changed. The planted key was gone, so a lone refresh whose
+download holds today still wipes. The alarm record, 16 preferences and `fetched_years` 2026 were
+kept, and Fajr for 14 September at 04:59 was armed again. `popup_update_last_check` went with the
+wipe, as described above, and the reschedule rewrote `preference_last_notification_schedule_check`.
+December and its top-up cannot be staged on the phone, since December lies outside the provider's
+certificate window of 7 May to 20 November 2026 (finding 76). Overlapping downloads cannot be staged
+reliably, and a provider omission cannot be provoked from the live endpoint. Those cases rest on the
+tests and mutants above.
+
+**For session 3, found in review and outside this fix.** `validateApiTimes` (`api/client.ts`)
+throws for today only when today's times are malformed, not when today's key is missing. In 1.26.35
+a missing today key no longer lets a swap remove today, because a download without today no longer
+wipes. What is left for session 3's R7 (`ai/prompts/unavailable-times-dashes.md`) is any day the
+newest trusted download lacks: one the cache never had, or one a swap removed because the newer answer
+no longer has it.
 
 ---
 
