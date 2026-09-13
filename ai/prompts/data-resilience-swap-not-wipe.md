@@ -74,11 +74,22 @@ empty cache. This is not a rewrite; it is moving one call past an `await`.
    has, which is a **behaviour change the owner must approve** — do not ship it silently.
 3. Add `fetched_years` to the preserve list, or write it back with the save. Losing it buys
    nothing and costs a full re-download.
-4. Fix the hole case properly: a day the guard dropped should not put the app into a
-   wipe-and-redownload loop. Options to weigh — record the dropped dates so `needsDataUpdate`
-   can tell "hole we already know about" from "cache is stale", or let the schedule degrade to
-   the surrounding days rather than failing the whole screen. **The right answer is probably not
-   to re-fetch**: the endpoint will return the same unreadable day every time.
+4. **Repair the day instead of dropping it — this is now measured, see finding 69.** Averaging
+   the day before and the day after reconstructs any single missing day to **within one minute
+   on every field, worst case, across a real year**. London times drift 0–4 minutes a day and do
+   so smoothly. Dropping leaves the hole that causes the wipe loop; repairing removes the hole
+   entirely, so this fix and step 1 close the same wound from both ends.
+
+   Fall back to dropping only when the neighbours are themselves unreadable — a *block* of bad
+   days, which is what polar summer produces and where interpolation genuinely cannot help.
+   And whatever the rule, record the dropped dates so `needsDataUpdate` can tell "a hole we
+   already know about" from "the cache is stale": **re-fetching is never the answer**, because
+   the endpoint returns the same unreadable day every time.
+
+   **Two owner decisions gate this, and neither is the implementer's:** whether a reconstructed
+   prayer time is acceptable at all (accurate to a minute, but still a time the provider did not
+   give us, shown to someone about to pray — a religious call), and if so whether the app should
+   say so (any visible marker is a visual change and needs separate approval).
 5. Tests must span the range, per the standing fixture rule: multi-day payloads, a fetch that
    fails after the wipe point, a dropped day arriving as today, and the December branches. A
    single-day fixture cannot tell "cleared then failed" from "never cleared" — that is exactly
