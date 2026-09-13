@@ -196,8 +196,7 @@ afterEach(() => {
 // =============================================================================
 
 describe('when the fetch fails', () => {
-  // A marked year with a later day stored has today as a gap in its answer, which is not downloaded again, so
-  // these caches either leave the year unmarked or stop before today, to make the refresh run
+  // With nothing from today to today+2 stored there is nothing to show, so the failure still reaches the error screen
   const failures: {
     when: string;
     now: string;
@@ -207,9 +206,9 @@ describe('when the fetch fails', () => {
     error: string;
   }[] = [
     {
-      when: 'offline, with today missing from a cache whose year is unmarked',
+      when: 'offline, with nothing from today to today+2 stored',
       now: '2026-09-14T08:00:00Z',
-      cached: septemberAroundHole,
+      cached: days('2026-08-24', 21),
       marked: {},
       answers: { 2026: 'offline' },
       error: 'Network request failed',
@@ -222,29 +221,80 @@ describe('when the fetch fails', () => {
       answers: { 2026: 'offline', 2027: 'offline' },
       error: 'Network request failed',
     },
+  ];
+
+  // Days the lists can show never sit under the error screen, whose Refresh would wipe them (DASHES-DESIGN §9)
+  const failuresWithDaysToShow: {
+    when: string;
+    now: string;
+    cached: string[];
+    marked: Record<number, true>;
+    answers: Record<number, Answer>;
+  }[] = [
+    {
+      when: 'offline, with today missing and tomorrow stored in an unmarked year',
+      now: '2026-09-14T08:00:00Z',
+      cached: septemberAroundHole,
+      marked: {},
+      answers: { 2026: 'offline' },
+    },
     {
       when: 'in December, with an unmarked year failing while next year arrives',
       now: '2026-12-14T09:00:00Z',
       cached: decemberAroundHole,
       marked: {},
       answers: { 2026: 'offline', 2027: 'published' },
-      error: 'Network request failed',
+    },
+    {
+      when: 'in December, offline, with today stored and a refresh still needed for next year',
+      now: '2026-12-14T09:00:00Z',
+      cached: days('2026-12-01', 31),
+      marked: {},
+      answers: { 2026: 'offline', 2027: 'offline' },
     },
   ];
 
-  it.each(failures)('leaves every stored key as it was: $when', async ({ now, cached, marked, answers, error }) => {
-    jest.useFakeTimers({ now: new Date(now) });
-    installHolding(cached, marked);
-    serveYears(answers);
-    const before = everythingStored();
+  it.each(failuresWithDaysToShow)(
+    'shows the lists, keeps every stored key, and asks again on the next sync: $when',
+    async ({ now, cached, marked, answers }) => {
+      const instant = new Date(now);
+      jest.useFakeTimers({ now: instant });
+      installHolding(cached, marked);
+      serveYears(answers);
+      jest.mocked(ScheduleStore.setSequence).mockClear();
+      const before = everythingStored();
 
-    await expect(sync()).rejects.toThrow(error);
-    expect(everythingStored()).toEqual(before);
+      await expect(sync()).resolves.toBeUndefined();
 
-    // The next launch finds the same gap and tries again
-    await expect(sync()).rejects.toThrow(error);
-    expect(everythingStored()).toEqual(before);
-  });
+      expect(ScheduleStore.setSequence).toHaveBeenCalledWith(ScheduleType.Standard, instant);
+      expect(ScheduleStore.setSequence).toHaveBeenCalledWith(ScheduleType.Extra, instant);
+      expect(everythingStored()).toEqual(before);
+      const asked = requestedYears().length;
+      expect(asked).toBeGreaterThan(0);
+
+      await expect(sync()).resolves.toBeUndefined();
+
+      expect(requestedYears()).toHaveLength(2 * asked);
+      expect(everythingStored()).toEqual(before);
+    }
+  );
+
+  it.each(failures)(
+    'rejects and leaves every stored key as it was: $when',
+    async ({ now, cached, marked, answers, error }) => {
+      jest.useFakeTimers({ now: new Date(now) });
+      installHolding(cached, marked);
+      serveYears(answers);
+      const before = everythingStored();
+
+      await expect(sync()).rejects.toThrow(error);
+      expect(everythingStored()).toEqual(before);
+
+      // The next launch finds the same gap and tries again
+      await expect(sync()).rejects.toThrow(error);
+      expect(everythingStored()).toEqual(before);
+    }
+  );
 
   it('stores a day that is still unreadable at the source with that time unreadable, and never downloads again for it', async () => {
     jest.useFakeTimers({ now: new Date('2026-09-14T08:00:00Z') });
@@ -353,16 +403,25 @@ describe("when today is missing from this year's latest download", () => {
     expect(Database.getPrayerByDateString('2027-07-02')).not.toBeNull();
   });
 
-  it('asks again when 31 December is missing, since nothing of the year comes after it', async () => {
-    jest.useFakeTimers({ now: new Date('2026-12-31T10:00:00Z') });
-    // Next year's days come after today and are stored and marked, but belong to another year's answer
+  it('asks again when 31 December is missing, showing the lists and keeping every stored key while that fails offline', async () => {
+    const now = new Date('2026-12-31T10:00:00Z');
+    jest.useFakeTimers({ now });
+    // The 2026 answer stopped at 30 December. Next year's days come after today and are stored and marked, but
+    // belong to another year's answer, so nothing of 2026 does
     installHolding([...days('2026-11-01', 60), ...days('2027-01-01', 40)], { 2026: true, 2027: true });
     serveYears({ 2026: 'offline', 2027: 'offline' });
     const before = everythingStored();
 
-    await expect(sync()).rejects.toThrow('Network request failed');
+    await expect(sync()).resolves.toBeUndefined();
 
+    expect(ScheduleStore.setSequence).toHaveBeenCalledWith(ScheduleType.Standard, now);
+    expect(ScheduleStore.setSequence).toHaveBeenCalledWith(ScheduleType.Extra, now);
     expect(requestedYears().sort()).toEqual([2026, 2027]);
+    expect(everythingStored()).toEqual(before);
+
+    await expect(sync()).resolves.toBeUndefined();
+
+    expect(requestedYears().sort()).toEqual([2026, 2026, 2027, 2027]);
     expect(everythingStored()).toEqual(before);
   });
 
@@ -414,7 +473,8 @@ describe('the notification refresh gate', () => {
     const stamped = Date.now();
     store.set(lastNotificationScheduleAtom, stamped);
 
-    await expect(sync()).rejects.toThrow('Network request failed');
+    // The days around today are still stored, so the lists show
+    await expect(sync()).resolves.toBeUndefined();
 
     expect(store.get(lastNotificationScheduleAtom)).toBe(stamped);
   });
@@ -606,13 +666,17 @@ const holdRequests = () => {
   return held;
 };
 
-/** Holds each request for a single day until the test answers it with one edition of that day */
+/** Holds each request for a single day until the test answers it with one edition of that day, or refuses it */
 const holdDays = () => {
-  const held: { date: string; release: (edition: number) => void }[] = [];
+  const held: { date: string; release: (edition: number) => void; fail: () => void }[] = [];
   mockFetchDay.mockImplementation(
     (date: string) =>
-      new Promise<ISingleApiResponseTransformed>((resolve) => {
-        held.push({ date, release: (edition) => resolve({ ...cachedDay(date), ...apiTimes(edition) }) });
+      new Promise<ISingleApiResponseTransformed>((resolve, reject) => {
+        held.push({
+          date,
+          release: (edition) => resolve({ ...cachedDay(date), ...apiTimes(edition) }),
+          fail: () => reject(new Error('HTTP error! status: 404')),
+        });
       })
   );
   return held;
@@ -859,7 +923,8 @@ describe('when refreshes overlap', () => {
     const resumed = sync();
     held[0]?.fail();
     held[1]?.fail();
-    await expect(launch).rejects.toThrow('Network request failed');
+    // 15 December onwards is stored, so the failure shows those days rather than the error screen
+    await expect(launch).resolves.toBeUndefined();
 
     jest.setSystemTime(new Date('2026-12-14T00:00:05Z'));
     const background = sync();
@@ -887,7 +952,9 @@ describe('when refreshes overlap', () => {
 
     const refresh = sync();
     const resumed = sync();
-    held[2]?.release();
+    // Without 14 December the second is added without a wipe and takes no place in line, so the first still swaps
+    // when it lands, and has to put back the next year its wipe takes
+    held[2]?.release('2026-12-14');
     held[3]?.fail();
     await resumed;
 
@@ -1095,22 +1162,23 @@ describe('when refreshes overlap', () => {
     expect(Database.getItem('fetched_years')).toEqual({ 2027: true });
   });
 
-  it('on 1 January keeps the newer of two answers for 31 December when the one that began first lands last', async () => {
+  it('on 1 January keeps one request for 31 December on its way across syncs, and asks again once it has failed', async () => {
     jest.useFakeTimers({ now: new Date('2027-01-01T08:00:00Z') });
-    // 1 January is stored and 31 December is not, so both syncs skip the refresh and ask for that day alone
+    // 1 January is stored and 31 December is not, so every sync skips the refresh and needs that day alone
     installHolding(days('2027-01-01', 30), { 2027: true });
     serveYears({});
     const heldDays = holdDays();
 
-    const launch = sync();
-    const resumed = sync();
+    await Promise.all([sync(), sync()]);
+    await sync();
+    expect(heldDays.map((request) => request.date)).toEqual(['2026-12-31']);
+
+    heldDays[0]?.fail();
+    await settle();
+    await sync();
     expect(heldDays.map((request) => request.date)).toEqual(['2026-12-31', '2026-12-31']);
 
-    await Promise.all([launch, resumed]);
     heldDays[1]?.release(NEWER);
-    await settle();
-    // The launch's request began first, so its answer must not replace the newer 31 December
-    heldDays[0]?.release(DOWNLOADED);
     await settle();
 
     expect(requestedYears()).toEqual([]);

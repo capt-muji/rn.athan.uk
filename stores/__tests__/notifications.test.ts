@@ -80,6 +80,7 @@ jest.mock('@/stores/widget', () => ({
 
 jest.mock('@/stores/sync', () => ({
   sync: jest.fn(async () => undefined),
+  getArmedDayChanges: jest.fn(() => 0),
 }));
 
 // =============================================================================
@@ -999,6 +1000,19 @@ describe('rescheduleAllNotificationsFromBackground', () => {
     const lastSchedule = store.get(lastNotificationScheduleAtom);
     expect(lastSchedule).toBeGreaterThan(0);
   });
+
+  it('leaves the gate open when a download changed the days the alarms read while it rescheduled', async () => {
+    const { getArmedDayChanges } = jest.requireMock('@/stores/sync') as { getArmedDayChanges: jest.Mock };
+    getArmedDayChanges.mockReturnValueOnce(3).mockReturnValueOnce(4);
+
+    await rescheduleAllNotificationsFromBackground();
+
+    // It read the days before they changed, so a stamp would keep the new ones unarmed for twelve hours
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+    expect(logger.info).toHaveBeenCalledWith(
+      'BACKGROUND_TASK: Days changed during the reschedule, leaving the gate open for the next refresh'
+    );
+  });
 });
 
 // =============================================================================
@@ -1451,6 +1465,22 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     // Stamping here would buy 12 hours of silence on one moment of missing data
     expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+  });
+
+  it('leaves the refresh gate open when a download changed the days the alarms read while the refresh ran', async () => {
+    const { getArmedDayChanges } = jest.requireMock('@/stores/sync') as { getArmedDayChanges: jest.Mock };
+    getArmedDayChanges.mockReturnValueOnce(7).mockReturnValueOnce(8);
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    await refreshNotifications();
+
+    // The reschedule itself ran, but over days read before the download changed them
+    expect(scheduleMock).toHaveBeenCalled();
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+    expect(logger.info).toHaveBeenCalledWith(
+      'NOTIFICATION: Days changed during the refresh, leaving the gate open for the next one'
+    );
   });
 
   it('does not stamp the background reschedule when the cache is empty', async () => {

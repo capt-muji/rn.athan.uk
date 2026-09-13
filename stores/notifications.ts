@@ -28,7 +28,7 @@ import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber, resetStoredAtom } from '@/stores/storage';
-import { sync } from '@/stores/sync';
+import { getArmedDayChanges, sync } from '@/stores/sync';
 import * as PrayerWidgets from '@/stores/widget';
 
 const store = getDefaultStore();
@@ -1201,6 +1201,9 @@ export const refreshNotifications = async () => {
 
   return withSchedulingLock(async () => {
     try {
+      // Read before the reschedule reads the days, so days a download changes while it runs keep the gate open
+      const armedDayChangesBefore = getArmedDayChanges();
+
       // Foreground refresh gate — defer the widget push past the paint
       const rescheduled = await _rescheduleAllNotifications({ deferWidgetRefresh: true });
 
@@ -1209,6 +1212,12 @@ export const refreshNotifications = async () => {
       // app would believe it was up to date while nothing was armed.
       if (!rescheduled) {
         logger.warn('NOTIFICATION: Refresh skipped, timestamp not stamped — the next foreground will retry');
+        return;
+      }
+
+      // The download reopened the gate, and this reschedule read the days before they landed
+      if (getArmedDayChanges() !== armedDayChangesBefore) {
+        logger.info('NOTIFICATION: Days changed during the refresh, leaving the gate open for the next one');
         return;
       }
 
@@ -1251,12 +1260,21 @@ export const rescheduleAllNotificationsFromBackground = async () => {
 
   return withSchedulingLock(async () => {
     try {
+      // Read before the reschedule reads the days, as the foreground path does
+      const armedDayChangesBefore = getArmedDayChanges();
+
       const rescheduled = await _rescheduleAllNotifications();
 
       // Same rule as the foreground path: a bail must not be recorded as a
       // successful schedule, or the next foreground refresh would skip too
       if (!rescheduled) {
         logger.warn('BACKGROUND_TASK: Reschedule skipped (no prayer data), timestamp not stamped');
+        return;
+      }
+
+      // A download landing while it ran reopened the gate for days this reschedule read too early
+      if (getArmedDayChanges() !== armedDayChangesBefore) {
+        logger.info('BACKGROUND_TASK: Days changed during the reschedule, leaving the gate open for the next refresh');
         return;
       }
 

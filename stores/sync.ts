@@ -72,13 +72,53 @@ const reopenNotificationGate = () => {
   }
 };
 
+/** Bumped each time a download changes a day the lists or the alarms read */
+let armedDayChanges = 0;
+
 /**
- * Saves days a download brought, then reopens the gate so they can be armed (see reopenNotificationGate).
- * Next year's days count too: on 31 December tomorrow's alarms come from them
+ * How many downloads have changed a day from yesterday to today+2. A reschedule reads it before it reads the days,
+ * and stamps the gate only if it has not moved since: days that landed while it ran were read too late, and a stamp
+ * over the reopen would keep them unarmed for twelve hours
  */
-const saveDownloadedDays = (prayers: ISingleApiResponseTransformed[]) => {
+export const getArmedDayChanges = (): number => armedDayChanges;
+
+/** Yesterday to today+2 as stored: the days the lists and the alarms read */
+const readArmedDays = () => {
+  const today = TimeUtils.getTodayDateString();
+  return [-1, 0, 1, 2].map((offset) => {
+    const date = TimeUtils.addDaysToDateString(today, offset);
+    return { date, record: Database.getPrayerByDateString(date) };
+  });
+};
+
+const isSameRecord = (a: ISingleApiResponseTransformed | null, b: ISingleApiResponseTransformed | null) => {
+  if (!a || !b) return a === b;
+  // Every key either holds, so a stored day lacking one (an edited backup) differs from a download that has it
+  const keys = Object.keys({ ...a, ...b }) as (keyof ISingleApiResponseTransformed)[];
+  return keys.every((key) => a[key] === b[key]);
+};
+
+/**
+ * Saves days a download brought, and reopens the gate when that changed a day the lists or the alarms read (see
+ * reopenNotificationGate): one that was not stored, is no longer stored, or now holds other times. Next year's days
+ * count too: on 31 December tomorrow's alarms come from them. A download repeating what those days hold changes no
+ * alarm, and reopening for it would buy a full reschedule and widget push on every foreground, since December adds
+ * an incomplete next year on each sync and a year cut short is asked for on each sync
+ *
+ * @param armedBefore Those days as they were before the caller's own wipe or clear, which would make each look new
+ */
+const saveDownloadedDays = (prayers: ISingleApiResponseTransformed[], armedBefore = readArmedDays()) => {
   Database.saveAllPrayers(prayers);
+  if (armedBefore.every(({ date, record }) => isSameRecord(record, Database.getPrayerByDateString(date)))) return;
+
+  armedDayChanges += 1;
   reopenNotificationGate();
+};
+
+/** Whether any of today to today+2, the days the lists are built from, is stored: the test bootstrap hydrates on */
+const hasUsableDays = () => {
+  const today = TimeUtils.getTodayDateString();
+  return [0, 1, 2].some((offset) => Database.getPrayerByDateString(TimeUtils.addDaysToDateString(today, offset)));
 };
 
 // --- Actions ---
@@ -103,6 +143,9 @@ const rebuildSequences = () => {
   }
 };
 
+/** Whether a request for 31 December is still on its way */
+let lastDayRequestPending = false;
+
 /**
  * SCENARIO 1: 1 January without 31 December. The countdown bars need yesterday's last prayers, and the Extras
  * night leading into today starts at 31 December's Magrib. Asked by year, the endpoint serves only the current
@@ -117,6 +160,13 @@ const fetchLastDayOfPreviousYear = () => {
   const previousYear = TimeUtils.getCurrentYear() - 1;
   const lastDayOfPreviousYear = `${previousYear}-12-31`;
   if (Database.getPrayerByDateString(lastDayOfPreviousYear)) return;
+
+  // Each resume syncs, and without a timeout a hanging request would otherwise gain a twin on every one
+  if (lastDayRequestPending) {
+    logger.info('SYNC: Previous year Dec 31 already requested, waiting for that answer');
+    return;
+  }
+  lastDayRequestPending = true;
 
   logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
 
@@ -138,7 +188,10 @@ const fetchLastDayOfPreviousYear = () => {
       (error: unknown) => logger.warn('SYNC: Previous year Dec 31 not available, will retry on next sync', { error })
     )
     // Nothing awaits the request, so a failure storing the day or rebuilding the lists has to end here
-    .catch((error: unknown) => logger.error('SYNC: Failed to apply previous year Dec 31', { error }));
+    .catch((error: unknown) => logger.error('SYNC: Failed to apply previous year Dec 31', { error }))
+    .finally(() => {
+      lastDayRequestPending = false;
+    });
 };
 
 /**
@@ -263,6 +316,8 @@ const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: numb
     return;
   }
 
+  // Read before the wipe, which would make every day the alarms read look new
+  const armedBefore = readArmedDays();
   const trusted = holdsAnchorDay(prayers, year);
 
   if (trusted && newestSwap < order) {
@@ -303,7 +358,7 @@ const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: numb
     logger.info('SYNC: Adding this download without a wipe', { year, holdsToday: trusted });
   }
 
-  saveDownloadedDays(prayers);
+  saveDownloadedDays(prayers, armedBefore);
   Database.markYearAsFetched(year);
   if (trusted) newestDownloadOfYear.set(year, order);
 };
@@ -333,8 +388,10 @@ const storeNextYear = (prayers: ISingleApiResponseTransformed[], year: number, o
   if ((newestDownloadOfYear.get(year) ?? 0) > order) return 'dropped';
   if (!holdsAnchorDay(prayers, year)) return 'incomplete';
 
+  // Read before the clear, which would make next year's days the alarms read look new
+  const armedBefore = readArmedDays();
   Database.clearPrefix(`prayer_${year}-`);
-  saveDownloadedDays(prayers);
+  saveDownloadedDays(prayers, armedBefore);
   Database.markYearAsFetched(year);
   newestDownloadOfYear.set(year, order);
   return 'stored';
@@ -431,7 +488,7 @@ const updatePrayerData = async () => {
  * Flow:
  * 1. Checks for app upgrade and clears cache if needed
  * 2. Checks if data update is needed
- * 3. Fetches new data if required
+ * 3. Fetches new data if required, carrying on when that fails while today to today+2 still has a stored day
  * 4. Initializes app state with current date
  *
  * @param options.deferWidgetRefresh Don't block completion on the iOS widget
@@ -441,8 +498,16 @@ export const sync = async (options: { deferWidgetRefresh?: boolean } = {}) => {
   try {
     handleAppUpgrade();
 
-    if (needsDataUpdate()) await updatePrayerData();
-    else logger.info('SYNC: Data already up to date');
+    if (needsDataUpdate()) {
+      try {
+        await updatePrayerData();
+      } catch (error) {
+        // Only a launch with nothing usable stored may reach the error screen (DASHES-DESIGN §9): its Refresh wipes,
+        // and the lists bootstrap already showed would go with it. The next sync asks again for what is missing
+        if (!hasUsableDays()) throw error;
+        logger.warn('SYNC: Refresh failed, showing the days already stored', { error });
+      }
+    } else logger.info('SYNC: Data already up to date');
 
     const date = TimeUtils.createInstant();
 
