@@ -71,7 +71,13 @@ Re-verify the fix survives a real backup/restore cycle, not a simulated one:
    `service call alarm 2 i64` against `auto_time 0`.
 6. **The whole Extras schedule** — Midnight, Last Third, Suhoor, Duha, and Istijaba on a Friday —
    each one on the right list day, at the right instant, matching what the list shows.
-7. **What the user actually sees** — read the rendered values back off the device and compare
+7. **Istijaba across midnight, named by the owner.** It is always one hour before Magrib. A
+   Magrib at 01:20 puts it at 00:20 the same night; a Magrib at 00:40 puts it at **23:40 the
+   evening before**. Both are pinned in `shared/__tests__/nightTimes.test.ts` with the literal
+   date and clock, and the test was proved to bite by reverting the fix (6 failures). What is
+   *not* proved is the notification: fire both on the 3T with the clock driven to each Magrib
+   and read the scheduled time back, because a unit test cannot show that the alarm agrees.
+8. **What the user actually sees** — read the rendered values back off the device and compare
    them to the times the API returned, not to what the code computed. Same for the logs.
 
 ## Standing rules for this session
