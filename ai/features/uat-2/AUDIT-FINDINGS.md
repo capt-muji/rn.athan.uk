@@ -3963,3 +3963,86 @@ returns 43 green.
 Still unproven, and queued for the device sweep: **the notification.** A unit test cannot show
 that the scheduled alarm agrees with the row. Both Magrib values go on the 3T with the clock
 driven to each.
+
+---
+
+## 69. What "a broken day" actually means, measured against the live API
+
+The owner asked, 2026-09-13: *"How do you determine if a day is broken? What if it's correct and
+you just accidentally drop it? It seems very, very sensitive."* Answered by pulling the real
+endpoint rather than reasoning about it.
+
+### The check is a shape check, and nothing more
+
+`api/client.ts` tests six fields — `fajr, sunrise, dhuhr, asr, magrib, isha` — against
+`/^([01]\d|2[0-3]):[0-5]\d$/`. That is the whole test. **It asks "is this string a 24-hour
+`HH:MM`", and nothing about whether the time is plausible.** It does not know what season it is,
+does not compare against yesterday, does not check ordering. A Fajr of `03:00` in December would
+sail through — wrong by three hours and perfectly well-formed.
+
+| Value | Verdict |
+| --- | --- |
+| `"19:25"` | kept |
+| `"-----"`, `""`, `null`, field absent | dropped |
+| `"25:00"`, `"19:60"` | dropped |
+| `"7:30"` (no leading zero) | **dropped** — and the day is fine |
+| `"19:25:00"` (seconds), `" 19:25"` (space) | **dropped** — and the day is fine |
+
+### Measured against the live endpoint, 2026-09-13
+
+Pulled `year=2026&24hours=true` and ran the guard over it:
+
+| | |
+| --- | ---: |
+| days returned | 365 |
+| **days the guard would drop** | **0** |
+| time strings checked | 2,190 |
+| distinct string lengths seen | 1 (always 5) |
+| hours ever written with one digit | none |
+| days not in chronological order | 0 |
+
+**The format is rigid and the guard drops nothing on real data.** Also worth knowing: `year=2024`,
+`2025` and `2027` all return HTTP 200 with an empty `times` object — **the endpoint only serves
+the current year**, which is what the December next-year retry loop exists for.
+
+### The false-drop risk is real but self-announcing
+
+The three false-drop rows above all come from the *provider changing format*. A format change
+does not hit one day — it hits all 365 at once, so `todayDropped` is true, the guard throws, and
+the failure is loud. **It cannot silently lose a year to a format change.** What it can lose
+silently is a single anomalous day, which is precisely what it is for.
+
+### Dropping is still the wrong repair, and the data says what the right one is
+
+A dropped day leaves a hole, and finding 67 shows what that hole costs: a full wipe and re-download
+on every launch of the day it arrives. So measure the alternatives on the same real year — for
+every day, pretend it is unreadable and reconstruct it:
+
+| Field | Copy yesterday: worst error | **Interpolate from both neighbours: worst error** |
+| --- | ---: | ---: |
+| Fajr | 4 min | **1 min** |
+| Sunrise | 3 min | **1 min** |
+| Dhuhr | 1 min | **1 min** |
+| Asr | 2 min | **1 min** |
+| Magrib | 3 min | **1 min** |
+| Isha | 3 min | **1 min** |
+
+**Averaging the day before and the day after reconstructs any single missing day to within one
+minute, on every field, across the whole year** — worst case, not median. London times drift 0–4
+minutes a day and do so smoothly, which is why the midpoint is so close. The codebase already
+reasons this way: `getNightTimesForDay` substitutes a neighbouring day's Magrib when the previous
+day is not stored, on the grounds that it is "within a minute or two."
+
+So the better rule is: **repair, don't drop.** Interpolate when both neighbours are readable;
+fall back to dropping only when they are not — a block of unreadable days, which is what polar
+summer produces.
+
+**Two things the owner has to decide, and neither is mine to choose.**
+1. **Is a reconstructed prayer time acceptable at all?** It is accurate to a minute, but it is
+   still a time the provider did not give us, shown to someone about to pray. The alternative is
+   an honest gap. That is a religious call, not an engineering one.
+2. **If yes, should the app say so?** A quiet substitution and a marked one are different
+   products. Any visible marker is a visual change and needs approval separately.
+
+Recorded, not implemented. Folded into `ai/prompts/data-resilience-swap-not-wipe.md` (session 2),
+because it is the same code path as the wipe ordering and should be decided once.
