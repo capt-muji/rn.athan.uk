@@ -41,7 +41,7 @@ export interface PrayerWidgetSettings {
 export interface WidgetPrayerRow {
   /** English prayer name, e.g. "Fajr" */
   name: string;
-  /** Prayer time in HH:mm, e.g. "05:35" */
+  /** Prayer time in HH:mm, e.g. "05:35", or "--:--" when the source's time could not be read */
   time: string;
 }
 
@@ -89,13 +89,13 @@ export interface PrayerWidgetProps {
    * and both layouts fall back to the name plus the absolute time.
    */
   countdownLabel: string;
-  /** Date of the upcoming prayer in the app's format (Hijri when enabled) */
+  /** Date of the list day on screen in the app's format (Hijri when enabled) */
   dateLabel: string;
   /**
-   * The displayed day's prayers for the medium widget's list — the prayers
-   * of the upcoming prayer's belongsToDate (the list rolls to the next day
-   * exactly when the countdown target does, mirroring the app's displayDate
-   * semantics). Standard entries are chronological; extras entries are in
+   * The displayed day's prayers for the medium widget's list: the list day
+   * the app shows at the entry's moment (usually the upcoming prayer's day;
+   * a day with no readable time stays until 00:00 London at its end, as it
+   * does in the app). Standard entries are chronological; extras entries are in
    * canonical EXTRAS_ENGLISH order with Istijaba present only on Fridays
    * (4 rows normally, 5 on Fridays). Rows before the active one are past,
    * rows after it are upcoming. Absent on entries from older app versions
@@ -104,8 +104,9 @@ export interface PrayerWidgetProps {
   prayers?: WidgetPrayerRow[];
   /**
    * Index of the active (next) prayer within `prayers` — the row carrying
-   * the blue active background. -1 when the next prayer is not part of the
-   * displayed day (should not happen; guarded in the layout).
+   * the blue active background. -1 when the next prayer is not on the
+   * displayed day, which happens while a day with no readable time is held
+   * on screen (the medium layout then shows the single-prayer composition).
    */
   activeIndex?: number;
   /**
