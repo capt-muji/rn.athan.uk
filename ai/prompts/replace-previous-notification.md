@@ -1,7 +1,7 @@
 # Session: on Android, each notification replaces the one before it
 
-**Status: NOT STARTED. Queued by the owner on 2026-09-13 as session 6. Android only: iOS is session
-7 (`ios-replace-previous-notification.md`).**
+**Status: NOT STARTED. Queued by the owner on 2026-09-13, now session 5. Android only: iOS is
+session 6 (`ios-replace-previous-notification.md`).**
 
 ## The ask, in the owner's framing
 
