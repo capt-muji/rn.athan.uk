@@ -118,7 +118,8 @@ it — grep for `.datetime` and `.time` and work through what turns up:
 
 - `components/prayer/Time.tsx` — renders `Prayer.time`; the `--:--` lands here.
 - `components/prayer/Alert.tsx` and `components/sheets/screens/Alert.tsx` — R5. What the bell
-  looks like when disabled is a **visual decision the owner must approve.**
+  looks like when disabled is a **visual decision the owner must approve**, and the owner reviews
+  it on the device.
 - `components/countdown/Countdown.tsx` and `Bar.tsx` — what does the countdown count to when the
   next row is dashed? Skip to the next readable one, or show nothing? The progress bar needs a
   previous *and* a next.
@@ -144,6 +145,8 @@ it — grep for `.datetime` and `.time` and work through what turns up:
 > *"We heavily, heavily, heavily want to write tests for this to cover everything. And we should
 > have screenshots for it as well."*
 
+The screenshot half of that was withdrawn on 2026-09-13; see the "No screenshots" bullet below.
+
 - **Unit and integration**, table-driven, spanning the range. Per the standing fixture rule: a
   single-field fixture cannot tell "dashed that one prayer" from "dashed the day", which is the
   exact mistake that let finding 8 ship broken. Cover: one field, several fields, every field,
@@ -153,9 +156,11 @@ it — grep for `.datetime` and `.time` and work through what turns up:
   unfixed code is decorative.
 - **Mutation sweep** afterwards with `ai/features/uat-2/mutate.py`. Any survivor in this area is
   a branch nothing is watching.
-- **Screenshots into `evidence/`**, per the convention in `evidence/README.md`: a dashed single
-  prayer, a fully dashed day, the Extras list on a day whose night rows are dashed by the
-  previous day's Magrib, and the alert control in its disabled state.
+- **No screenshots.** The owner dropped them on 2026-09-13 and had the `evidence/` folder deleted.
+  Read these rendered rows from Maestro's live `hierarchy` instead: a dashed single prayer, a fully
+  dashed day, the Extras list on a day whose night rows are dashed by the previous day's Magrib, and
+  the alert control in its disabled state. Not `uiautomator dump`, which serves stale trees on the
+  3T (ai/AGENTS.md, Performance Design Rules, rule 10).
 - **Device verification on the 3T.** Drive it with mock data — this cannot be provoked from the
   real endpoint. Confirm no notification fires for a dashed prayer and that the readable ones on
   the same day still fire correctly.
