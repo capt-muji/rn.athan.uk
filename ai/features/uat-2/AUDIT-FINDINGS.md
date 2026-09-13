@@ -2599,6 +2599,20 @@ An independent reviewer was asked to attack the fix from a different angle. It c
 cutoff, London's one-to-one behaviour and the `belongsToDate` pairing, and found **one real
 regression the tests were arranged not to see**.
 
+**In plain terms, because this section was misread once (owner, 2026-09-13).** The bug is not
+about noon and it is not a new rule about when to subtract an hour. Istijaba has always been
+"one hour before Magrib" and still is. What changed is *what it subtracts from*.
+
+It used to subtract from Magrib's **clock reading** — the text `"01:47"` — which is arithmetic
+that wraps at midnight and carries no date. So when the Magrib fix moved Magrib's real moment
+onto the next day, Istijaba stayed behind on the old one: still reading 00:47, but 00:47 of the
+wrong day, which is 25 hours before Magrib instead of one. It now subtracts from Magrib's
+**instant** — an actual timestamp — so the date comes along for free and the gap is one hour by
+construction, whatever the clock says.
+
+Nothing about it triggers at 12:00. The only "after 12" rule anywhere near this is a separate
+one for Suhoor (finding 65), and it is a different function.
+
 **Istijaba fired 25 hours early whenever Magrib fell between 01:00 and 06:00.** Istijaba is
 `adjustTime(magrib, -60)`, modular clock arithmetic on a string. Below 01:00 the wrap past
 midnight cancelled the new date shift, which is why the original test — a single fixture at
@@ -3848,3 +3862,36 @@ weeks the sun does not set.
 **Why no test caught it:** all six rejection tests used a single-day payload, and with one day
 in the payload "drop the bad day" and "reject the whole year" produce identical output. The
 fixtures could not express blast radius. Multi-day cases were added in the fix.
+
+---
+
+## 66. The audio fingerprint: mono/stereo and sample rate identify what played
+
+The owner asked whether all the audio is mono. **It is not, and the split is useful.** Measured
+with `ffprobe` over `android/app/src/main/res/raw` — the 99 files the notification channels
+actually reference, rather than the source assets, which agree file for file:
+
+| Category | Files | Sample rate | Channels |
+| --- | ---: | ---: | --- |
+| Athans | 32 | 44100 Hz | mono |
+| Reminders | 66 | 22050 Hz | stereo |
+| `reminder.mp3` (the default) | 1 | 48000 Hz | stereo |
+| A system or fallback tone | — | 44100 Hz | **stereo** |
+
+So: the athans are all mono, the reminders are all stereo, and **nothing we ship is
+44100-stereo**. The four rows are mutually exclusive on two fields the audio flinger already
+prints, which is what made the finding 5 device proof possible — `44100 Hz, mono` in `dumpsys
+audio` was athan5 playing, `44100 Hz, stereo` was the system tone substituting for it.
+
+**Why this matters beyond one finding.** The next session has to confirm all 99 sounds play and
+that none of them falls back to a generic tone. Listening to 99 files sequentially is a session's
+work on its own; reading a fingerprint is a line of log per fire. The fingerprint proves the
+*category* — it cannot distinguish athan5 from athan6, since all 32 share it — so identity within
+a category still needs an ear. The plan that follows from that is in
+`ai/prompts/device-verification-sweep.md`: fingerprint all 99 to prove nothing fell back, then
+listen to the 32 athans to prove the selection maps to the right file.
+
+One inconsistency worth recording, not fixing: `reminder.mp3` is the only 48 kHz file, and the
+only reminder that is not 22050. It is the default reminder, so it is also the most-played file
+in the app. Nothing is wrong with it — it is comfortably under the iOS cliff at 22.785 s and it
+is the outlier that makes the fingerprint table finer rather than coarser.
