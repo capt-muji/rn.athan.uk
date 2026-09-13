@@ -13,6 +13,7 @@ import {
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   NOTIFICATION_REFRESH_HOURS,
+  NOTIFICATION_ROLLING_DAYS,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
@@ -21,6 +22,7 @@ import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import * as PrayerUtils from '@/shared/prayer';
+import { isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import { compareVersions } from '@/shared/versionUtils';
@@ -545,7 +547,7 @@ export const setReminderInterval = (scheduleType: ScheduleType, prayerIndex: num
  * @param sound Sound preference index
  * @returns Promise resolving to the attempted identifier — scheduled or, on
  *   failure, whatever OS notification the identifier already had — or null
- *   when the day was skipped (no data, past time, non-Friday Istijaba)
+ *   when the day was skipped (no readable time, past time, non-Friday Istijaba)
  */
 async function scheduleNotificationForDate(
   scheduleType: ScheduleType,
@@ -560,8 +562,16 @@ async function scheduleNotificationForDate(
   // and countdown show (Extras night rows fall on the night before `date`)
   const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
   if (!prayer) {
-    // No data for the day, or Istijaba outside Fridays (not on that day's list)
+    // Istijaba outside Fridays (not on that day's list)
     logger.info("Skipping prayer not on this day's list:", { date, englishName });
+    return null;
+  }
+
+  // No alert may fire for a time the provider did not give (R5). Skipping leaves this
+  // identifier unattempted, so an alarm armed for it before the data changed is cancelled
+  // as stale, while the saved preference stays and arms the next readable day (R6)
+  if (!isReadable(prayer)) {
+    logger.info('Skipping prayer with no readable time:', { date, englishName });
     return null;
   }
 
@@ -682,7 +692,7 @@ const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType
  * @param intervalMinutes Reminder interval in minutes
  * @returns Promise resolving to the attempted identifier — scheduled or, on
  *   failure, whatever OS reminder the identifier already had — or null when
- *   the day was skipped (past/imminent, non-Friday Istijaba)
+ *   the day was skipped (no readable time, past/imminent, non-Friday Istijaba)
  */
 async function scheduleReminderNotificationForDate(
   scheduleType: ScheduleType,
@@ -697,8 +707,14 @@ async function scheduleReminderNotificationForDate(
   // list and countdown show (Extras night rows fall on the night before `date`)
   const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
   if (!prayer) {
-    // No data for the day, or Istijaba outside Fridays (not on that day's list)
+    // Istijaba outside Fridays (not on that day's list)
     logger.info("REMINDER: Skipping prayer not on this day's list:", { date, englishName });
+    return null;
+  }
+
+  // There is nothing to count back from (R5); skipped exactly as the at-time path is
+  if (!isReadable(prayer)) {
+    logger.info('REMINDER: Skipping prayer with no readable time:', { date, englishName });
     return null;
   }
 
@@ -1036,8 +1052,19 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // ~1.5s after first content: scheduling then produces nothing, and the sweep
   // below would treat every notification the OS still holds as stale. Bailing
   // leaves the existing alarms alone; the next refresh runs once data exists.
-  if (!Database.getPrayerByDate(TimeUtils.createInstant())) {
-    logger.warn('NOTIFICATION: No prayer data for today — skipping reschedule so nothing is cancelled');
+  //
+  // The test is every list day any prayer arms, not today alone. An upgrade wipe
+  // still leaves all of them unstored, so it still bails; but one day missing
+  // from the payload (R7) is a day of unreadable rows, and treating it as an
+  // empty cache would stop the readable days around it from being armed.
+  const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS + 1);
+  if (!armedListDays.some((date) => Database.getPrayerByDateString(date))) {
+    logger.warn(
+      'NOTIFICATION: No prayer data for any day in the window — skipping reschedule so nothing is cancelled',
+      {
+        armedListDays,
+      }
+    );
     return false;
   }
 

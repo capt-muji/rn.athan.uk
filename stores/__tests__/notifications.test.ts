@@ -27,6 +27,7 @@ import {
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import type { ScheduledNotification } from '@/shared/notifications';
+import { transformApiData } from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -1395,6 +1396,32 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     expect(logger.error).toHaveBeenCalled();
   });
 
+  // -- deferred widget push ----------------------------------------------------
+
+  it('pushes the widgets only after the next frame on the foreground path', async () => {
+    const { refreshPrayerWidgets } = require('@/stores/widget');
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    await rescheduleAllNotifications();
+    expect(refreshPrayerWidgets).not.toHaveBeenCalled();
+
+    await jest.advanceTimersByTimeAsync(10);
+    expect(refreshPrayerWidgets).toHaveBeenCalledTimes(1);
+  });
+
+  it('logs a failed deferred push rather than rejecting, since nothing awaits it', async () => {
+    const { refreshPrayerWidgets } = require('@/stores/widget');
+    refreshPrayerWidgets.mockRejectedValueOnce(new Error('widget IO failed'));
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await jest.advanceTimersByTimeAsync(10);
+
+    expect(logger.warn).toHaveBeenCalledWith('WIDGET: Deferred push failed', { error: expect.any(Error) });
+  });
+
   // -- never lose alerts after an app update -----------------------------------
   //
   // An app can update itself in the background. On Android the update wipes the
@@ -1748,6 +1775,466 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
       const stored = Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
       expect(stored.map((record) => record.id)).toContain(failing);
+    });
+  });
+
+  // ==========================================================================
+  // UNREADABLE TIMES (session 3, ai/features/uat-2/DASHES-DESIGN.md §7)
+  //
+  // A row the provider gave no readable time for is drawn as --:-- and nothing may
+  // fire for it (R5), while the saved preference survives to arm the next readable
+  // day (R6). A day missing from the store is a day of such rows (R7), and a night
+  // row needs the previous day's own Magrib, never a borrowed one (finding 72), so a
+  // broken field reaches into the next list. Records go through the app's own
+  // transform with null where the provider's value was unreadable. Every expected
+  // instant was worked out separately, by UTC arithmetic and London's clock-change
+  // rule, not by the app's time helpers.
+  // ==========================================================================
+
+  describe('unreadable times', () => {
+    type Times = [string | null, string | null, string | null, string | null, string | null, string | null];
+    type Request = { identifier: string; trigger: { date: Date } };
+
+    const S = ScheduleType.Standard;
+    const E = ScheduleType.Extra;
+    const TIME_NAMES = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'] as const;
+
+    // London-shaped late-August times, every one readable
+    const AUG_28: Times = ['04:22', '06:08', '13:05', '16:51', '19:58', '21:23'];
+    const AUG_29: Times = ['04:23', '06:10', '13:05', '16:50', '19:55', '21:20'];
+    const AUG_30: Times = ['04:25', '06:11', '13:05', '16:49', '19:53', '21:18'];
+    const AUG_31: Times = ['04:27', '06:13', '13:04', '16:47', '19:51', '21:15'];
+    const SEP_01: Times = ['04:28', '06:15', '13:04', '16:45', '19:48', '21:12'];
+    const EVERY_TIME_UNREADABLE: Times = [null, null, null, null, null, null];
+
+    /** The same day with the named times unreadable */
+    const withUnreadable = (times: Times, ...names: (typeof TIME_NAMES)[number][]): Times =>
+      times.map((time, index) => (names.includes(TIME_NAMES[index]) ? null : time)) as Times;
+
+    /** Stores days as sync writes them: Suhoor, Duha and Istijaba derived by the app's own transform */
+    const storeDays = (days: Record<string, Times>) => {
+      for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(days)) {
+        const [stored] = transformApiData({
+          city: 'london',
+          times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
+        });
+        Database.database.set(`prayer_${date}`, JSON.stringify(stored));
+      }
+    };
+
+    /** Switches the named prayers to Silent, each with a Silent reminder */
+    const enable = (scheduleType: ScheduleType, names: readonly string[]) => {
+      const { english } = getPrayerArrays(scheduleType);
+      const isStandard = scheduleType === S;
+      for (const name of names) {
+        const index = english.indexOf(name);
+        if (index === -1) throw new Error(`${name} is not on the ${scheduleType} list`);
+        store.set((isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms)[index], AlertType.Silent);
+        store.set((isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[index], AlertType.Silent);
+      }
+    };
+
+    const athan = (scheduleType: ScheduleType, name: string, date: string) =>
+      prayerNotificationIdentifier(scheduleType, name, date);
+    const reminder = (scheduleType: ScheduleType, name: string, date: string) =>
+      reminderNotificationIdentifier(scheduleType, name, date, DEFAULT_REMINDER_INTERVAL as ReminderInterval);
+
+    /** An occurrence's at-time and reminder identifiers */
+    const ids = (occurrences: [ScheduleType, string, string][]) =>
+      occurrences
+        .flatMap(([scheduleType, name, date]) => [athan(scheduleType, name, date), reminder(scheduleType, name, date)])
+        .sort();
+
+    const minutesBefore = (instant: string, minutes: number) =>
+      new Date(Date.parse(instant) - minutes * 60_000).toISOString();
+
+    /** An occurrence's at-time trigger, and its reminder's DEFAULT_REMINDER_INTERVAL earlier */
+    const armedAt = (scheduleType: ScheduleType, name: string, date: string, instant: string): [string, string][] => [
+      [athan(scheduleType, name, date), instant],
+      [reminder(scheduleType, name, date), minutesBefore(instant, DEFAULT_REMINDER_INTERVAL)],
+    ];
+
+    /** Every identifier ever handed to the OS in this test, with the trigger it was last given */
+    const triggers = (): Record<string, string> =>
+      Object.fromEntries(
+        scheduleMock.mock.calls.map(([call]) => {
+          const request = call as Request;
+          return [request.identifier, request.trigger.date.toISOString()];
+        })
+      );
+
+    /** Every persisted alert and reminder preference, as stored */
+    const savedPreferences = () =>
+      Database.database
+        .getAllKeys()
+        .filter((key) => key.startsWith('preference_alert_') || key.startsWith('preference_reminder_'))
+        .sort()
+        .map((key) => [key, Database.database.getString(key)]);
+
+    it.each<{
+      name: string;
+      now: string;
+      days: Record<string, Times>;
+      firstDay: string;
+      nextDay: string;
+      midnight: string;
+      lastThird: string;
+    }>([
+      {
+        name: '1 January 2026 with no 31 December stored',
+        now: '2026-01-01T00:30:00Z',
+        days: {
+          '2026-01-01': ['06:26', '08:03', '12:09', '13:46', '16:05', '17:42'],
+          '2026-01-02': ['06:26', '08:03', '12:10', '13:47', '16:06', '17:43'],
+        },
+        firstDay: '2026-01-01',
+        nextDay: '2026-01-02',
+        midnight: '2026-01-01T23:15:00.000Z',
+        lastThird: '2026-01-02T01:39:00.000Z',
+      },
+      {
+        // The list the 3T armed from a borrowed Magrib and fired 21 minutes late
+        name: '29 March 2026 with no 28 March stored',
+        now: '2026-03-29T00:30:00Z',
+        days: {
+          '2026-03-29': ['05:07', '06:40', '13:10', '16:35', '19:32', '20:49'],
+          '2026-03-30': ['05:05', '06:38', '13:10', '16:36', '19:34', '20:51'],
+        },
+        firstDay: '2026-03-29',
+        nextDay: '2026-03-30',
+        midnight: '2026-03-29T23:18:00.000Z',
+        lastThird: '2026-03-30T00:54:00.000Z',
+      },
+    ])(
+      'arms no night row from a substituted Magrib on $name, and the next list at its exact instants (gap map item 2)',
+      async ({ now, days, firstDay, nextDay, midnight, lastThird }) => {
+        jest.setSystemTime(new Date(now));
+        storeDays(days);
+        enable(E, ['Midnight', 'Last Third']);
+
+        await rescheduleAllNotifications();
+
+        expect(triggers()).toEqual(
+          Object.fromEntries([
+            ...armedAt(E, 'Midnight', nextDay, midnight),
+            ...armedAt(E, 'Last Third', nextDay, lastThird),
+          ])
+        );
+        expect(osIdentifiers()).not.toContain(athan(E, 'Last Third', firstDay));
+        expect(osIdentifiers()).not.toContain(reminder(E, 'Last Third', firstDay));
+      }
+    );
+
+    it('skips an unreadable Asr today but arms it tomorrow, with Dhuhr and Magrib armed on both days', async () => {
+      storeDays({
+        '2026-08-28': AUG_28,
+        '2026-08-29': withUnreadable(AUG_29, 'asr'),
+        '2026-08-30': AUG_30,
+        '2026-08-31': AUG_31,
+      });
+      enable(S, ['Dhuhr', 'Asr', 'Magrib']);
+      const preferences = savedPreferences();
+
+      await rescheduleAllNotifications();
+
+      const expected = Object.fromEntries([
+        ...armedAt(S, 'Dhuhr', '2026-08-29', '2026-08-29T12:05:00.000Z'),
+        ...armedAt(S, 'Magrib', '2026-08-29', '2026-08-29T18:55:00.000Z'),
+        ...armedAt(S, 'Dhuhr', '2026-08-30', '2026-08-30T12:05:00.000Z'),
+        ...armedAt(S, 'Asr', '2026-08-30', '2026-08-30T15:49:00.000Z'),
+        ...armedAt(S, 'Magrib', '2026-08-30', '2026-08-30T18:53:00.000Z'),
+      ]);
+      // Exact equality: today's Asr and its reminder were never handed to the OS at all
+      expect(triggers()).toEqual(expected);
+      expect(osIdentifiers()).toEqual(Object.keys(expected).sort());
+      expect(logger.info).toHaveBeenCalledWith('Skipping prayer with no readable time:', {
+        date: '2026-08-29',
+        englishName: 'Asr',
+      });
+      expect(logger.info).toHaveBeenCalledWith('REMINDER: Skipping prayer with no readable time:', {
+        date: '2026-08-29',
+        englishName: 'Asr',
+      });
+
+      expect(savedPreferences()).toEqual(preferences);
+      expect(Database.database.getString('preference_alert_standard_asr')).toBe(String(AlertType.Silent));
+      expect(Database.database.getString('preference_reminder_alert_standard_asr')).toBe(String(AlertType.Silent));
+    });
+
+    it('cancels exactly the occurrence that turned unreadable, and re-arms it when readable data returns', async () => {
+      storeDays({ '2026-08-29': AUG_29, '2026-08-30': AUG_30 });
+      enable(S, ['Dhuhr', 'Asr']);
+      const preferences = savedPreferences();
+      const everyOccurrence = ids([
+        [S, 'Dhuhr', '2026-08-29'],
+        [S, 'Asr', '2026-08-29'],
+        [S, 'Dhuhr', '2026-08-30'],
+        [S, 'Asr', '2026-08-30'],
+      ]);
+
+      await rescheduleAllNotifications();
+      expect(osIdentifiers()).toEqual(everyOccurrence);
+
+      // Newly stored data can no longer read tomorrow's Asr
+      scheduleMock.mockClear();
+      cancelMock.mockClear();
+      storeDays({ '2026-08-30': withUnreadable(AUG_30, 'asr') });
+
+      await rescheduleAllNotifications();
+
+      expect(cancelCalls().sort()).toEqual(ids([[S, 'Asr', '2026-08-30']]));
+      expect(osIdentifiers()).toEqual(
+        ids([
+          [S, 'Dhuhr', '2026-08-29'],
+          [S, 'Asr', '2026-08-29'],
+          [S, 'Dhuhr', '2026-08-30'],
+        ])
+      );
+      expect(savedPreferences()).toEqual(preferences);
+
+      // And readable again
+      scheduleMock.mockClear();
+      cancelMock.mockClear();
+      storeDays({ '2026-08-30': AUG_30 });
+
+      await rescheduleAllNotifications();
+
+      expect(cancelCalls()).toEqual([]);
+      expect(osIdentifiers()).toEqual(everyOccurrence);
+      expect(triggers()).toMatchObject(Object.fromEntries(armedAt(S, 'Asr', '2026-08-30', '2026-08-30T15:49:00.000Z')));
+      expect(savedPreferences()).toEqual(preferences);
+    });
+
+    describe('an unreadable day at each position in the window', () => {
+      // At 09:00 BST on 29 Aug, today's Fajr, Suhoor and night rows are already past
+      beforeEach(() => {
+        enable(S, ['Fajr', 'Isha']);
+        enable(E, ['Midnight', 'Last Third', 'Suhoor']);
+
+        // 1 September is stored so that a window moved one day on would find it
+        storeDays({
+          '2026-08-28': AUG_28,
+          '2026-08-29': AUG_29,
+          '2026-08-30': AUG_30,
+          '2026-08-31': AUG_31,
+          '2026-09-01': SEP_01,
+        });
+      });
+
+      it('arms the whole window when every day reads (control for the table below)', async () => {
+        await rescheduleAllNotifications();
+
+        expect(osIdentifiers()).toEqual(
+          ids([
+            [S, 'Fajr', '2026-08-30'],
+            [S, 'Isha', '2026-08-29'],
+            [S, 'Isha', '2026-08-30'],
+            [E, 'Suhoor', '2026-08-30'],
+            [E, 'Midnight', '2026-08-30'],
+            [E, 'Midnight', '2026-08-31'],
+            [E, 'Last Third', '2026-08-30'],
+            [E, 'Last Third', '2026-08-31'],
+          ])
+        );
+      });
+
+      const positions: { position: string; day: string; armed: [ScheduleType, string, string][] }[] = [
+        {
+          // Tomorrow's night rows lose today's Magrib
+          position: 'today',
+          day: '2026-08-29',
+          armed: [
+            [S, 'Fajr', '2026-08-30'],
+            [S, 'Isha', '2026-08-30'],
+            [E, 'Suhoor', '2026-08-30'],
+            [E, 'Midnight', '2026-08-31'],
+            [E, 'Last Third', '2026-08-31'],
+          ],
+        },
+        {
+          // Tomorrow's night rows lose its Fajr, and the next list's lose its Magrib
+          position: 'tomorrow',
+          day: '2026-08-30',
+          armed: [[S, 'Isha', '2026-08-29']],
+        },
+        {
+          position: 'the extra list day the night rows use',
+          day: '2026-08-31',
+          armed: [
+            [S, 'Fajr', '2026-08-30'],
+            [S, 'Isha', '2026-08-29'],
+            [S, 'Isha', '2026-08-30'],
+            [E, 'Suhoor', '2026-08-30'],
+            [E, 'Midnight', '2026-08-30'],
+            [E, 'Last Third', '2026-08-30'],
+          ],
+        },
+      ];
+      const breakages: { breakage: string; apply: (date: string) => void }[] = [
+        { breakage: 'every time unreadable', apply: (date) => storeDays({ [date]: EVERY_TIME_UNREADABLE }) },
+        { breakage: 'missing from the store', apply: (date) => Database.database.remove(`prayer_${date}`) },
+      ];
+
+      it.each(positions.flatMap((position) => breakages.map((breakage) => ({ ...position, ...breakage }))))(
+        '$position, $breakage: arms every other day of the same window',
+        async ({ day, apply, armed }) => {
+          apply(day);
+          const preferences = savedPreferences();
+
+          await rescheduleAllNotifications();
+
+          expect(osIdentifiers()).toEqual(ids(armed));
+          expect(savedPreferences()).toEqual(preferences);
+        }
+      );
+    });
+
+    it('a broken Friday Magrib arms no Friday Istijaba and no Saturday Midnight or Last Third (gap map item 22)', async () => {
+      jest.setSystemTime(new Date('2026-10-16T00:30:00Z')); // Friday 01:30 BST
+      // The provider sent '-----' for Friday's Magrib, which validation stores as null
+      storeDays({
+        '2026-10-16': ['05:51', '07:23', '12:51', '15:31', null, '19:31'],
+        '2026-10-17': ['05:52', '07:25', '12:51', '15:30', '18:06', '19:29'],
+      });
+      enable(S, PRAYERS_ENGLISH);
+      enable(E, EXTRAS_ENGLISH);
+
+      await rescheduleAllNotifications();
+
+      // Friday's other five, and Saturday's Suhoor and Duha, at their own instants
+      expect(triggers()).toMatchObject(
+        Object.fromEntries([
+          ...armedAt(S, 'Fajr', '2026-10-16', '2026-10-16T04:51:00.000Z'),
+          ...armedAt(S, 'Sunrise', '2026-10-16', '2026-10-16T06:23:00.000Z'),
+          ...armedAt(S, 'Dhuhr', '2026-10-16', '2026-10-16T11:51:00.000Z'),
+          ...armedAt(S, 'Asr', '2026-10-16', '2026-10-16T14:31:00.000Z'),
+          ...armedAt(S, 'Isha', '2026-10-16', '2026-10-16T18:31:00.000Z'),
+          ...armedAt(E, 'Suhoor', '2026-10-17', '2026-10-17T04:32:00.000Z'),
+          ...armedAt(E, 'Duha', '2026-10-17', '2026-10-17T06:45:00.000Z'),
+        ])
+      );
+      for (const id of ids([
+        [S, 'Magrib', '2026-10-16'],
+        [E, 'Istijaba', '2026-10-16'],
+        [E, 'Midnight', '2026-10-17'],
+        [E, 'Last Third', '2026-10-17'],
+      ])) {
+        expect(Object.keys(triggers())).not.toContain(id);
+      }
+      // Nothing else: Friday's night rows have no 15 October, and 18 October is not stored
+      expect(osIdentifiers()).toEqual(
+        ids([
+          [S, 'Fajr', '2026-10-16'],
+          [S, 'Sunrise', '2026-10-16'],
+          [S, 'Dhuhr', '2026-10-16'],
+          [S, 'Asr', '2026-10-16'],
+          [S, 'Isha', '2026-10-16'],
+          [S, 'Fajr', '2026-10-17'],
+          [S, 'Sunrise', '2026-10-17'],
+          [S, 'Dhuhr', '2026-10-17'],
+          [S, 'Asr', '2026-10-17'],
+          [S, 'Magrib', '2026-10-17'],
+          [S, 'Isha', '2026-10-17'],
+          [E, 'Suhoor', '2026-10-16'],
+          [E, 'Duha', '2026-10-16'],
+          [E, 'Suhoor', '2026-10-17'],
+          [E, 'Duha', '2026-10-17'],
+        ])
+      );
+    });
+
+    describe('the empty-cache guard reads every day in the window (gap map items 11 and 21)', () => {
+      // Real London times for 12 and 13 September 2026
+      const SEP_12: Times = ['04:56', '06:28', '13:02', '16:27', '19:25', '20:39'];
+      const SEP_13: Times = ['04:57', '06:29', '13:02', '16:26', '19:23', '20:37'];
+
+      it('arms only the stored day while the days after it are missing, then bails once none in the window is stored', async () => {
+        jest.setSystemTime(new Date('2026-09-13T08:00:00Z')); // 09:00 BST
+        storeDays({ '2026-09-12': SEP_12, '2026-09-13': SEP_13 });
+        enable(S, PRAYERS_ENGLISH);
+        enable(E, EXTRAS_ENGLISH);
+        // Armed before 14 September went missing
+        const fajrTomorrow = athan(S, 'Fajr', '2026-09-14');
+        seedRecords([fajrTomorrow]);
+        osState.add(fajrTomorrow);
+
+        await refreshNotifications();
+
+        // Only 13 September's rows still to come; no night row from a missing 14 September
+        expect(osIdentifiers()).toEqual(
+          ids([
+            [S, 'Dhuhr', '2026-09-13'],
+            [S, 'Asr', '2026-09-13'],
+            [S, 'Magrib', '2026-09-13'],
+            [S, 'Isha', '2026-09-13'],
+          ])
+        );
+        expect(Object.keys(triggers()).every((id) => /_2026-09-13(_\d+)?$/.test(id))).toBe(true);
+        expect(Object.keys(triggers())).not.toContain(athan(E, 'Midnight', '2026-09-14'));
+        expect(cancelCalls()).toEqual([fajrTomorrow]);
+        const stamped = store.get(lastNotificationScheduleAtom);
+        expect(stamped).toBe(Date.parse('2026-09-13T08:00:00Z'));
+
+        // 14 September 08:00 BST: 14, 15 and 16 September are all missing
+        jest.setSystemTime(new Date('2026-09-14T07:00:00Z'));
+        const armedBefore = osIdentifiers();
+        scheduleMock.mockClear();
+        cancelMock.mockClear();
+
+        await refreshNotifications();
+
+        expect(logger.warn).toHaveBeenCalledWith(
+          'NOTIFICATION: Refresh skipped, timestamp not stamped — the next foreground will retry'
+        );
+        expect(scheduleMock).not.toHaveBeenCalled();
+        expect(cancelCalls()).toEqual([]);
+        expect(osIdentifiers()).toEqual(armedBefore);
+        expect(store.get(lastNotificationScheduleAtom)).toBe(stamped);
+      });
+
+      it('still runs when today is missing but tomorrow is stored: arms tomorrow, nothing for today, and stamps the gate', async () => {
+        jest.setSystemTime(new Date('2026-09-12T08:00:00Z')); // 09:00 BST on 12 September, which is not stored
+        storeDays({ '2026-09-13': SEP_13 });
+        enable(S, ['Fajr', 'Isha']);
+        // Armed before today went missing
+        const ishaToday = athan(S, 'Isha', '2026-09-12');
+        Database.addOneScheduledNotificationForPrayer(S, 5, notificationRecord(ishaToday, 'Isha'));
+        osState.add(ishaToday);
+
+        await refreshNotifications();
+
+        expect(triggers()).toEqual(
+          Object.fromEntries([
+            ...armedAt(S, 'Fajr', '2026-09-13', '2026-09-13T03:57:00.000Z'),
+            ...armedAt(S, 'Isha', '2026-09-13', '2026-09-13T19:37:00.000Z'),
+          ])
+        );
+        expect(cancelCalls()).toEqual([ishaToday]);
+        expect(osIdentifiers()).toEqual(
+          ids([
+            [S, 'Fajr', '2026-09-13'],
+            [S, 'Isha', '2026-09-13'],
+          ])
+        );
+        expect(store.get(lastNotificationScheduleAtom)).toBe(Date.parse('2026-09-12T08:00:00Z'));
+      });
+
+      it.each([
+        { label: 'today', date: '2026-08-29', outcome: 'runs' },
+        { label: 'tomorrow', date: '2026-08-30', outcome: 'runs' },
+        { label: 'the extra list day the night rows use', date: '2026-08-31', outcome: 'runs' },
+        { label: 'the day after the window', date: '2026-09-01', outcome: 'bails' },
+        { label: 'yesterday', date: '2026-08-28', outcome: 'bails' },
+      ])('with only $label stored, the reschedule $outcome', async ({ date, outcome }) => {
+        storeDays({ [date]: AUG_29 });
+        enable(S, ['Fajr']);
+        osState.add(fajrId(TODAY));
+
+        await refreshNotifications();
+
+        // Only a real reschedule stamps the gate
+        expect(store.get(lastNotificationScheduleAtom)).toBe(outcome === 'runs' ? FROZEN_NOW.getTime() : 0);
+      });
     });
   });
 });
