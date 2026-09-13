@@ -501,15 +501,14 @@ export const getPrayerForDate = (type: ScheduleType, english: string, date: stri
 /**
  * Returns the display order of prayers as a list of sequence indices.
  *
- * The prayer sequence is chronologically sorted (countdown/progress logic depends on
- * it), but the Extra page displays in canonical array order - EXTRAS_ENGLISH - so that
- * Friday Istijaba (magrib - 60 min) shows last instead of between Midnight and Last
- * Third (Midnight belongs to the displayed day while chronologically falling late
- * evening, which is what pushed Istijaba mid-list chronologically).
+ * createPrayerSequence already builds each list in canonical order, so for its rows this
+ * is the identity. It still ranks by EXTRAS_ENGLISH because rows gathered in time order
+ * would put Friday's Istijaba (Magrib − 60 min) between Midnight, which falls the evening
+ * before, and Last Third, instead of last.
  *
  * Standard prayers are chronological == canonical, so indices pass through unchanged.
  *
- * @param prayers Prayers for one display date (chronologically ordered)
+ * @param prayers Prayers for one display date
  * @param type Schedule type (Standard or Extra)
  * @returns Indices into the input array, in canonical display order
  *
