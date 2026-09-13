@@ -6,11 +6,12 @@
  * useAtomValue mocked. Rows come from real London 2026 times through the app's own builder (londonDays.ts).
  */
 
+import { canonicalDisplayOrder } from '@/shared/prayer';
 import { resolveDisplayDate } from '@/shared/sequence';
 import { ScheduleType } from '@/shared/types';
 
 import { computePrayerStatuses } from '../usePrayerSequence';
-import { computeScheduleView, getPillOpacity, isCascadeRow, useSchedule } from '../useSchedule';
+import { computeScheduleView, getPillOpacity, getPillRow, isCascadeRow, useSchedule } from '../useSchedule';
 import { type Breakage, london, sequenceFrom, storeLondonDays } from './londonDays';
 
 // Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
@@ -269,5 +270,90 @@ describe('useSchedule', () => {
       isLastPrayerPassed: true,
       isReady: false,
     });
+  });
+});
+
+// =============================================================================
+// THE PILL'S ROW
+// =============================================================================
+
+describe('getPillRow', () => {
+  // [next row as drawn, row held from the last commit, the pill's row]
+  it.each([
+    [4, 1, 4],
+    [0, 5, 0],
+    [3, 3, 3],
+    [-1, 5, 5],
+    [-1, 0, 0],
+  ])('next row %i, held row %i: %i', (nextVisualRow, heldRow, row) => {
+    expect(getPillRow(nextVisualRow, heldRow)).toBe(row);
+  });
+
+  // [scenario, type, first day, breakage, screens in turn, the pill's row and opacity on each]
+  it.each<[string, ScheduleType, string, Breakage, [string, string][], [number, number][]]>([
+    [
+      'Standard: Isha next, then a day missing from the store until 00:00, then Fajr next',
+      ScheduleType.Standard,
+      '2026-09-10',
+      { '2026-09-11': 'not stored' },
+      [
+        ['2026-09-10', '20:00'],
+        ['2026-09-10', '21:00'],
+        ['2026-09-11', '12:00'],
+        ['2026-09-11', '23:59'],
+        ['2026-09-12', '00:30'],
+      ],
+      [
+        [5, 1],
+        [5, 0],
+        [5, 0],
+        [5, 0],
+        [0, 1],
+      ],
+    ],
+    [
+      'Extras: Duha next, then a day missing from the store until 00:00, then Suhoor next',
+      ScheduleType.Extra,
+      '2026-09-10',
+      { '2026-09-11': 'not stored' },
+      [
+        ['2026-09-10', '05:00'],
+        ['2026-09-10', '12:00'],
+        ['2026-09-11', '23:59'],
+        ['2026-09-12', '00:30'],
+      ],
+      [
+        [3, 1],
+        [3, 0],
+        [3, 0],
+        [2, 1],
+      ],
+    ],
+    [
+      'Standard: every day readable, the pill moves only with next',
+      ScheduleType.Standard,
+      '2026-09-10',
+      {},
+      [
+        ['2026-09-11', '14:00'],
+        ['2026-09-11', '17:00'],
+        ['2026-09-11', '21:00'],
+      ],
+      [
+        [3, 1],
+        [4, 1],
+        [0, 1],
+      ],
+    ],
+  ])('%s', (_scenario, type, firstDay, breakage, moments, expected) => {
+    // Folded the way ActiveBackground holds its row from one commit to the next
+    let heldRow = 0;
+    const screens = moments.map(([date, time]) => {
+      const view = viewAt(type, firstDay, breakage, date, time);
+      heldRow = getPillRow(canonicalDisplayOrder(view.prayers, type).indexOf(view.nextPrayerIndex), heldRow);
+      return [heldRow, getPillOpacity(view.nextPrayerIndex, false)];
+    });
+
+    expect(screens).toEqual(expected);
   });
 });

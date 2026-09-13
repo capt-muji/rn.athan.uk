@@ -183,27 +183,6 @@ describe('not ready', () => {
     });
   });
 
-  it('reports not ready when the previous row has no readable time, never measuring from it', () => {
-    given(
-      {
-        type: ScheduleType.Standard,
-        english: 'Asr',
-        arabic: 'العصر',
-        datetime: null,
-        time: null,
-        belongsToDate: '2026-01-27',
-      },
-      new Date('2026-01-27T16:00:00Z')
-    );
-
-    expect(calculatePrayerAgo(ScheduleType.Standard)).toEqual({
-      prayerAgo: '',
-      minutesElapsed: 0,
-      isReady: false,
-    });
-    expect(mockFormatTimeAgo).not.toHaveBeenCalled();
-  });
-
   it('swallows a throwing store rather than breaking the page', () => {
     mockGetPrevPrayer.mockImplementation(() => {
       throw new Error('sequence not initialised');

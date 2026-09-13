@@ -56,10 +56,27 @@ export const computePrayerStatuses = (rawPrayers: Prayer[], now: Date): PrayerSt
   const next = findNextReadable(rawPrayers, now);
   const nextPrayerIndex = next ? rawPrayers.indexOf(next) : -1;
 
+  // isRowPassed reads only the judged row's own list day, so each row is handed that day's rows alone.
+  // Handed the whole sequence, every unreadable row scanned every row: over a lost week or fortnight that
+  // is a quadratic pass in each of the dozens of calls one sequence write makes, all on the frame the
+  // pill and the cascade start
+  const indicesByListDay = new Map<string, number[]>();
+  rawPrayers.forEach((prayer, index) => {
+    const indices = indicesByListDay.get(prayer.belongsToDate);
+    if (indices) indices.push(index);
+    else indicesByListDay.set(prayer.belongsToDate, [index]);
+  });
+
+  const isPassed: boolean[] = [];
+  for (const indices of indicesByListDay.values()) {
+    const dayRows = indices.map((index) => rawPrayers[index]);
+    for (const index of indices) isPassed[index] = isRowPassed(dayRows, rawPrayers[index], now);
+  }
+
   const prayers = rawPrayers.map(
     (prayer, index): PrayerWithStatus => ({
       ...prayer,
-      isPassed: isRowPassed(rawPrayers, prayer, now),
+      isPassed: isPassed[index],
       isNext: index === nextPrayerIndex,
     })
   );

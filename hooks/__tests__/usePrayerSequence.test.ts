@@ -9,8 +9,8 @@
  * Rows come from real London 2026 times through the app's own builder (londonDays.ts).
  */
 
-import { resolveDisplayDate } from '@/shared/sequence';
-import { ScheduleType } from '@/shared/types';
+import { isReadable, isRowPassed, resolveDisplayDate } from '@/shared/sequence';
+import { type Prayer, ScheduleType } from '@/shared/types';
 
 import { computePrayerStatuses, usePrayerSequence } from '../usePrayerSequence';
 import { type Breakage, listStatuses, london, sequenceFrom, storeLondonDays } from './londonDays';
@@ -34,6 +34,15 @@ jest.mock('@/stores/schedule', () => ({
   standardDisplayDateAtom: 'standardDisplayDateAtom',
   extraDisplayDateAtom: 'extraDisplayDateAtom',
 }));
+
+// The real rules, with isRowPassed watched so a test can see which rows each row is judged against
+jest.mock('@/shared/sequence', () => {
+  const actual = jest.requireActual<typeof import('@/shared/sequence')>('@/shared/sequence');
+  return { ...actual, isRowPassed: jest.fn(actual.isRowPassed) };
+});
+
+const { isRowPassed: referenceIsRowPassed } =
+  jest.requireActual<typeof import('@/shared/sequence')>('@/shared/sequence');
 
 beforeEach(() => mockAtomValues.clear());
 
@@ -301,5 +310,149 @@ describe('usePrayerSequence', () => {
       nextPrayerIndex: -1,
       isReady: false,
     });
+  });
+});
+
+// =============================================================================
+// ONE LIST DAY AT A TIME
+// =============================================================================
+
+const HOUR = 3_600_000;
+
+/**
+ * Every moment a status can change at, and a spread between: each readable row's instant and a millisecond
+ * either side, and every six hours from before the first list day to after the last
+ */
+const momentsAcross = (prayers: Prayer[]): Date[] => {
+  const moments = prayers
+    .filter(isReadable)
+    .flatMap((row) => [-1, 0, 1].map((offset) => new Date(row.datetime.getTime() + offset)));
+  const first = london(prayers[0].belongsToDate, '00:00').getTime() - HOUR;
+  const last = london(prayers[prayers.length - 1].belongsToDate, '23:00').getTime() + 3 * HOUR;
+
+  for (let moment = first; moment <= last; moment += 6 * HOUR) moments.push(new Date(moment));
+  return moments;
+};
+
+describe('computePrayerStatuses: each row judged against its own list day', () => {
+  // [scenario, type, first day, list days, breakage, whether an unreadable row is ever still to come (null:
+  //  the sequence has no unreadable row)]
+  it.each<[string, ScheduleType, string, number, Breakage, boolean | null]>([
+    ['Standard, every time readable', ScheduleType.Standard, '2026-09-10', 3, {}, null],
+    ['Standard, unreadable Asr', ScheduleType.Standard, '2026-09-10', 3, { '2026-09-11': ['asr'] }, true],
+    [
+      'Standard, unreadable Fajr and Magrib',
+      ScheduleType.Standard,
+      '2026-09-10',
+      3,
+      { '2026-09-11': ['fajr', 'magrib'] },
+      true,
+    ],
+    [
+      'Standard, a day with every time unreadable',
+      ScheduleType.Standard,
+      '2026-09-10',
+      3,
+      { '2026-09-11': [...EVERY_TIME] },
+      false,
+    ],
+    [
+      'Standard, Fajr and Isha unreadable every day',
+      ScheduleType.Standard,
+      '2026-09-10',
+      3,
+      { '2026-09-10': ['fajr', 'isha'], '2026-09-11': ['fajr', 'isha'], '2026-09-12': ['fajr', 'isha'] },
+      true,
+    ],
+    [
+      'Standard, a day missing from the store',
+      ScheduleType.Standard,
+      '2026-09-10',
+      3,
+      { '2026-09-11': 'not stored' },
+      false,
+    ],
+    [
+      'Standard, a lost fortnight after the stored days',
+      ScheduleType.Standard,
+      '2026-09-10',
+      17,
+      { '2026-09-11': ['asr'] },
+      true,
+    ],
+    ['Standard, a lost fortnight before the stored days', ScheduleType.Standard, '2026-08-27', 17, {}, false],
+    ['Extras, every stored time readable', ScheduleType.Extra, '2026-09-11', 3, {}, false],
+    [
+      "Extras, night rows unreadable from the day before's Magrib",
+      ScheduleType.Extra,
+      '2026-09-11',
+      3,
+      { '2026-09-10': ['magrib'] },
+      false,
+    ],
+    [
+      'Extras, unreadable Sunrise and Magrib',
+      ScheduleType.Extra,
+      '2026-09-10',
+      3,
+      { '2026-09-11': ['sunrise', 'magrib'] },
+      true,
+    ],
+    [
+      'Extras, a day missing from the store',
+      ScheduleType.Extra,
+      '2026-09-10',
+      3,
+      { '2026-09-11': 'not stored' },
+      false,
+    ],
+    ['Extras, a lost fortnight after the stored days', ScheduleType.Extra, '2026-09-10', 17, {}, false],
+    [
+      'Extras, a lost fortnight before the stored days',
+      ScheduleType.Extra,
+      '2026-08-27',
+      17,
+      { '2026-09-11': ['sunrise'] },
+      true,
+    ],
+  ])(
+    '%s: the same statuses as isRowPassed over the whole sequence, at every moment',
+    (_scenario, type, firstDay, dayCount, breakage, hasUpcomingUnreadable) => {
+      storeLondonDays(breakage);
+      const prayers = sequenceFrom(type, firstDay, dayCount);
+      const unreadableStates = new Set<boolean>();
+
+      for (const now of momentsAcross(prayers)) {
+        const statuses = computePrayerStatuses(prayers, now).prayers;
+
+        expect(statuses.map((row) => row.isPassed)).toEqual(
+          prayers.map((row) => referenceIsRowPassed(prayers, row, now))
+        );
+        for (const row of statuses) if (!isReadable(row)) unreadableStates.add(row.isPassed);
+      }
+
+      // The fixture must give the rule something to decide: unreadable rows seen passed, and where the
+      // breakage allows it, still to come
+      const expectedStates = hasUpcomingUnreadable === null ? [] : hasUpcomingUnreadable ? [false, true] : [true];
+      expect(new Set(prayers.map((row) => row.belongsToDate)).size).toBe(dayCount);
+      expect([...unreadableStates].sort()).toEqual(expectedStates);
+    }
+  );
+
+  it("hands isRowPassed only the judged row's own list day, so a lost fortnight costs a day's rows per row", () => {
+    storeLondonDays({ '2026-09-11': ['asr'] });
+    const prayers = sequenceFrom(ScheduleType.Standard, '2026-09-10', 17);
+    const watched = isRowPassed as jest.Mock;
+    watched.mockClear();
+
+    computePrayerStatuses(prayers, london('2026-09-11', '12:00'));
+
+    expect(prayers).toHaveLength(102);
+    expect(watched).toHaveBeenCalledTimes(102);
+    for (const [rows, row] of watched.mock.calls as [Prayer[], Prayer, Date][]) {
+      expect(rows).toHaveLength(6);
+      expect(rows).toContain(row);
+      expect(rows.every((candidate) => candidate.belongsToDate === row.belongsToDate)).toBe(true);
+    }
   });
 });

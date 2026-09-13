@@ -46,9 +46,9 @@ export const storeLondonDays = (breakage: Breakage = {}): void => {
 /** A London clock reading as an instant, whatever timezone the tests run in */
 export const london = (date: string, time: string): Date => createPrayerDatetime(date, time);
 
-/** The app's own three-day sequence, starting on a list day */
-export const sequenceFrom = (type: ScheduleType, firstDay: string): Prayer[] =>
-  createPrayerSequence(type, london(firstDay, '12:00'), 3).prayers;
+/** The app's own sequence, three list days unless told otherwise, starting on a list day */
+export const sequenceFrom = (type: ScheduleType, firstDay: string, dayCount = 3): Prayer[] =>
+  createPrayerSequence(type, london(firstDay, '12:00'), dayCount).prayers;
 
 interface RowWithStatus {
   english: string;

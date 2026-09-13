@@ -66,6 +66,19 @@ export const getPillOpacity = (nextPrayerIndex: number, isHiddenByOverlay: boole
   isHiddenByOverlay || nextPrayerIndex === -1 ? 0 : 1;
 
 /**
+ * The row the active pill sits on
+ *
+ * The next row's place while there is one. With none, the pill keeps the row it was on: it is fading out
+ * there, and sliding as well would sweep it across rows that are not next. When a next row returns, the
+ * pill slides to it from that row, as it does when a new day's list arrives.
+ *
+ * @param nextVisualRow The next row's place on the list as drawn (-1 when no row is next)
+ * @param heldRow The row the pill was on at the last commit (0 before the first)
+ */
+export const getPillRow = (nextVisualRow: number, heldRow: number): number =>
+  nextVisualRow >= 0 ? nextVisualRow : heldRow;
+
+/**
  * Hook for accessing filtered prayer schedule data
  *
  * Filters the prayer sequence to show only today's prayers (matching displayDate).

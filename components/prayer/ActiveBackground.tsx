@@ -1,10 +1,11 @@
 import { useAtomValue } from 'jotai';
+import { useEffect, useRef } from 'react';
 import { Platform, StyleSheet, type ViewStyle } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
 import { useDerivedOpacity, useDerivedTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { getPillOpacity } from '@/hooks/useSchedule';
+import { getPillOpacity, getPillRow } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
@@ -19,7 +20,7 @@ interface Props {
 const PILL_SLIDE_EASING = Easing.elastic(0.5);
 
 export default function ActiveBackground({ type }: Props) {
-  const { prayers, displayDate, isReady } = usePrayerSequence(type);
+  const { prayers, displayDate } = usePrayerSequence(type);
 
   // Filter prayers to today's prayers and find the next prayer index within that list
   // This gives us 0-5 for standard, 0-6 for extras (same as old schedule.nextIndex)
@@ -29,7 +30,14 @@ export default function ActiveBackground({ type }: Props) {
   // nextPrayerIndex indexes the sequence's rows; the pill sits on the row List actually renders
   const nextPrayerVisualRow = canonicalDisplayOrder(todayPrayers, type).indexOf(nextPrayerIndex);
 
-  const yPosition = (isReady && nextPrayerVisualRow >= 0 ? nextPrayerVisualRow : 0) * STYLES.prayer.height;
+  // Read in render and written after commit, so a list with no row next leaves the pill where it faded
+  const heldPillRow = useRef(0);
+  const pillRow = getPillRow(nextPrayerVisualRow, heldPillRow.current);
+  useEffect(() => {
+    heldPillRow.current = pillRow;
+  }, [pillRow]);
+
+  const yPosition = pillRow * STYLES.prayer.height;
 
   const translateStyle = useDerivedTranslateY(yPosition, {
     duration: ANIMATION.durationSlow,

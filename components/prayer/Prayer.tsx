@@ -68,9 +68,9 @@ export default function Prayer({ type, index }: Props) {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    // Name-based check: the row's sequence index shifts with display order, so an
-    // index comparison cannot identify Istijaba (the old ISTIJABA_INDEX check was
-    // dead since the list became chronological)
+    // By name rather than index: an index is only a row's place on its day's list, which
+    // depends on the list's order and on which rows that day has (Istijaba only on
+    // Fridays), while the name is the prayer itself
     if (!Schedule.isStandard && Prayer.english === 'Istijaba' && Prayer.isPassed) return;
 
     if (isSelectedForOverlay) closeOverlay();
