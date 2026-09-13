@@ -15,7 +15,9 @@ import * as TimeUtils from '@/shared/time';
 import { type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import * as Countdown from '@/stores/countdown';
 import * as Database from '@/stores/database';
+import { lastNotificationScheduleAtom } from '@/stores/notifications';
 import * as ScheduleStore from '@/stores/schedule';
+import { resetStoredAtom } from '@/stores/storage';
 import { handleAppUpgrade } from '@/stores/version';
 import * as PrayerWidgets from '@/stores/widget';
 
@@ -39,6 +41,35 @@ const shouldFetchNextYear = (): boolean => {
   return TimeUtils.isDecember() && !fetchedYears[nextYear];
 };
 
+/**
+ * Whether today is missing because the provider's latest answer for this year lacks it: the year is marked,
+ * which even a download without today does, and some of its days are stored. The missing day shows as
+ * dashes (R7). Downloading again would bring the same answer on every launch, and offline would put the
+ * error screen, whose Refresh wipes, over the days that are readable
+ */
+const latestAnswerLacksToday = (): boolean => {
+  const year = TimeUtils.getCurrentYear();
+  if (!Database.getItem('fetched_years')?.[year]) return false;
+
+  // Keys alone, so a year of days is not parsed only to learn that one of them exists
+  return Database.database.getAllKeys().some((key) => key.startsWith(`prayer_${year}-`));
+};
+
+/**
+ * Reopens the 12-hour notification refresh gate, through the atom as `stores/version.ts` does
+ *
+ * 1 January's Midnight and Last Third are worked out from 31 December. A launch that could not get that
+ * day still reschedules and stamps the gate, so a later sync storing the day would otherwise leave both
+ * unarmed until the gate reopened. Failing here costs only that wait, never the times already stored
+ */
+const reopenNotificationGate = () => {
+  try {
+    resetStoredAtom(lastNotificationScheduleAtom, 'preference_last_notification_schedule_check');
+  } catch (error) {
+    logger.warn('SYNC: Failed to reopen the notification refresh gate', { error });
+  }
+};
+
 // --- Actions ---
 export const triggerSyncLoadable = () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -59,26 +90,33 @@ export const triggerSyncLoadable = () => {
  *   still awaits so iOS keeps the process alive until widgets are refreshed.
  */
 const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
-  // SCENARIO 1: January 1st - Fetch previous year's Dec 31 data
-  // This is MANDATORY - CountdownBar needs yesterday's final prayer to calculate
-  // progress, and the Extras night leading into Jan 1 starts at Dec 31's Magrib
+  // SCENARIO 1: 1 January without 31 December. The countdown bars need yesterday's last prayers, and the
+  // Extras night leading into today starts at 31 December's Magrib. Asked by year, the endpoint serves
+  // only the current year, so 31 December is asked for alone, by date. When neither answers, 1 January
+  // still shows with its night rows unreadable, and the next sync asks again because the day is still missing
   if (TimeUtils.isJanuaryFirst(date)) {
     const previousYear = TimeUtils.getCurrentYear() - 1;
-    const cachedPrevYearData = Database.getPrayerByDateString(`${previousYear}-12-31`);
+    const lastDayOfPreviousYear = `${previousYear}-12-31`;
+    const cachedPrevYearData = Database.getPrayerByDateString(lastDayOfPreviousYear);
 
     if (!cachedPrevYearData) {
       logger.info('SYNC: Jan 1 detected, fetching previous year Dec 31 data');
 
       // Takes its place in line like a refresh, so an older download of last year landing later is dropped
       const order = ++refreshesBegun;
-      const fetchedPrevYearData = await Api.fetchYear(previousYear);
-      if ((newestDownloadOfYear.get(previousYear) ?? 0) < order) {
-        Database.saveAllPrayers(fetchedPrevYearData);
-        Database.markYearAsFetched(previousYear);
-        newestDownloadOfYear.set(previousYear, order);
-      }
+      // A refusal and a failed fetch are the same to the owner, and neither may keep today off the screen
+      const fetchedDay = await Api.fetchDay(lastDayOfPreviousYear).catch((error: unknown) => {
+        logger.warn('SYNC: Previous year Dec 31 not available, will retry on next sync', { error });
+        return null;
+      });
 
-      logger.info('SYNC: Previous year data fetched and saved');
+      // Not `fetched_years`: one day is not a year, and a marker may only vouch for what is stored
+      if (fetchedDay && (newestDownloadOfYear.get(previousYear) ?? 0) < order) {
+        Database.saveAllPrayers([fetchedDay]);
+        newestDownloadOfYear.set(previousYear, order);
+        logger.info('SYNC: Previous year Dec 31 fetched and saved');
+        reopenNotificationGate();
+      }
     }
   }
 
@@ -116,7 +154,7 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
  *    opt-in: leave the variable unset and isDev is true, so a bare local build
  *    refetches on every check. Only EXPO_PUBLIC_ENV=prod or =preview turns it
  *    off, which is what a shipped build gets.
- * 2. Schedule is empty (no data for today)
+ * 2. Today is not stored, unless this year's latest download simply lacks it (see latestAnswerLacksToday)
  * 3. It's December and next year's data needs fetching
  */
 const needsDataUpdate = (): boolean => {
@@ -125,7 +163,7 @@ const needsDataUpdate = (): boolean => {
   const now = TimeUtils.createInstant();
   const data = Database.getPrayerByDate(now);
 
-  if (!data) return true;
+  if (!data && !latestAnswerLacksToday()) return true;
 
   const needNewYear = shouldFetchNextYear();
   if (needNewYear) return true;

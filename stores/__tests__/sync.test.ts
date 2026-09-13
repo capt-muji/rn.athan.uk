@@ -30,9 +30,11 @@ jest.mock('@/shared/time', () => ({
 
 // Mock Api
 const mockFetchYear = jest.fn();
+const mockFetchDay = jest.fn();
 
 jest.mock('@/api/client', () => ({
   fetchYear: (year: number) => mockFetchYear(year),
+  fetchDay: (date: string) => mockFetchDay(date),
 }));
 
 // Mock Database
@@ -41,8 +43,10 @@ const mockSaveAllPrayers = jest.fn();
 const mockMarkYearAsFetched = jest.fn();
 const mockClearAllExcept = jest.fn();
 const mockGetItem = jest.fn();
+const mockGetAllKeys = jest.fn();
 
 jest.mock('@/stores/database', () => ({
+  database: { getAllKeys: () => mockGetAllKeys() },
   getPrayerByDate: (date: Date) => mockGetPrayerByDate(date),
   getPrayerByDateString: (date: string) => mockGetPrayerByDate(date),
   saveAllPrayers: (prayers: unknown) => mockSaveAllPrayers(prayers),
@@ -81,6 +85,17 @@ jest.mock('@/stores/version', () => ({
   handleAppUpgrade: () => mockHandleAppUpgrade(),
 }));
 
+// Mock the notification refresh gate
+const mockResetStoredAtom = jest.fn();
+
+jest.mock('@/stores/notifications', () => ({
+  lastNotificationScheduleAtom: 'lastNotificationScheduleAtom',
+}));
+
+jest.mock('@/stores/storage', () => ({
+  resetStoredAtom: (atom: unknown, key: string) => mockResetStoredAtom(atom, key),
+}));
+
 // Mock APP_CONFIG
 jest.mock('@/shared/config', () => ({
   APP_CONFIG: {
@@ -91,6 +106,7 @@ jest.mock('@/shared/config', () => ({
   isTest: () => true,
 }));
 
+import logger from '@/shared/logger';
 import { type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 
 // Import after mocks
@@ -123,6 +139,36 @@ const createMockYearData = (year = 2026) => {
   return data;
 };
 
+const actualTime = jest.requireActual<typeof import('@/shared/time')>('@/shared/time');
+
+/** Reads every mocked clock helper from one instant, in London as the app does, whatever the machine's timezone */
+const setClock = (instant: string) => {
+  const now = new Date(instant);
+  const today = actualTime.formatDateShort(now);
+  mockCreateLondonDate.mockReturnValue(now);
+  mockGetCurrentYear.mockReturnValue(Number(today.slice(0, 4)));
+  mockIsDecember.mockReturnValue(today.slice(5, 7) === '12');
+  mockIsJanuaryFirst.mockImplementation(actualTime.isJanuaryFirst);
+  return now;
+};
+
+/** Prayer days that behave like MMKV: read by date or by instant, emptied by the wipe, filled by saves */
+const storeHolding = (dates: string[]) => {
+  const stored = new Map(dates.map((date) => [date, createMockPrayerData(date)]));
+  mockGetPrayerByDate.mockImplementation(
+    (date: unknown) => stored.get(typeof date === 'string' ? date : actualTime.formatDateShort(date as Date)) ?? null
+  );
+  mockClearAllExcept.mockImplementation(() => stored.clear());
+  mockSaveAllPrayers.mockImplementation((records: ISingleApiResponseTransformed[]) => {
+    for (const record of records) stored.set(record.date, record);
+  });
+  mockGetAllKeys.mockImplementation(() => [...stored.keys()].map((date) => `prayer_${date}`));
+  return stored;
+};
+
+/** The date a device in that timezone shows at the instant */
+const deviceDate = (timeZone: string, instant: Date) => new Intl.DateTimeFormat('en-CA', { timeZone }).format(instant);
+
 // =============================================================================
 // RESET MOCKS BEFORE EACH TEST
 // =============================================================================
@@ -137,8 +183,10 @@ beforeEach(() => {
   mockIsDecember.mockReturnValue(false);
   mockIsJanuaryFirst.mockReturnValue(false);
   mockGetItem.mockReturnValue({});
+  mockGetAllKeys.mockReturnValue([]);
   mockGetPrayerByDate.mockReturnValue(createMockPrayerData('2026-01-20'));
   mockFetchYear.mockImplementation(async (year: number) => createMockYearData(year));
+  mockFetchDay.mockImplementation(async (date: string) => createMockPrayerData(date));
   mockHandleAppUpgrade.mockImplementation(() => {}); // Reset to noop
   mockSaveAllPrayers.mockImplementation(() => {});
   mockMarkYearAsFetched.mockImplementation(() => {});
@@ -277,6 +325,89 @@ describe('needsDataUpdate behavior', () => {
 
     // Should not fetch since both years are cached
     expect(mockFetchYear).not.toHaveBeenCalled();
+  });
+
+  // An unreadable day is still a stored day. Taken for a missing one, it would re-download the year on
+  // every launch (finding 67's loop), and the provider would keep answering with the same unreadable day
+  it.each([
+    {
+      which: 'every time is',
+      record: {
+        date: '2026-01-20',
+        fajr: null,
+        sunrise: null,
+        dhuhr: null,
+        asr: null,
+        magrib: null,
+        isha: null,
+        suhoor: null,
+        duha: null,
+        istijaba: null,
+      },
+    },
+    {
+      which: 'some times are',
+      record: { ...createMockPrayerData('2026-01-20'), fajr: null, suhoor: null, asr: null },
+    },
+  ])('fetches nothing when today is stored but $which unreadable', async ({ record }) => {
+    mockGetPrayerByDate.mockReturnValue(record);
+
+    await sync();
+
+    expect(mockFetchYear).not.toHaveBeenCalled();
+    expect(mockClearAllExcept).not.toHaveBeenCalled();
+    expect(mockSaveAllPrayers).not.toHaveBeenCalled();
+    expect(mockSetSequence).toHaveBeenCalledTimes(2);
+  });
+
+  // A day missing from the payload shows as dashes (R7). Downloading again would bring the same answer on
+  // every launch, and offline would put the error screen over the days that are readable
+  describe('when today is missing', () => {
+    beforeEach(() => {
+      mockGetPrayerByDate.mockReturnValue(null);
+    });
+
+    it('fetches nothing while this year is marked and some of its days are stored, since its latest answer lacks today', async () => {
+      mockGetItem.mockReturnValue({ 2026: true });
+      mockGetAllKeys.mockReturnValue(['app_installed_version', 'prayer_2026-01-19', 'prayer_2026-01-21']);
+
+      await expect(sync()).resolves.toBeUndefined();
+      await expect(sync()).resolves.toBeUndefined();
+
+      expect(mockFetchYear).not.toHaveBeenCalled();
+      expect(mockClearAllExcept).not.toHaveBeenCalled();
+      expect(mockSetSequence).toHaveBeenCalledTimes(4);
+      expect(mockStartCountdowns).toHaveBeenCalledTimes(2);
+    });
+
+    it.each([
+      { cache: 'is empty', marked: {}, keys: [] },
+      { cache: 'holds only last year', marked: { 2025: true }, keys: ['prayer_2025-12-30', 'prayer_2025-12-31'] },
+      {
+        cache: 'marks this year without any of its days',
+        marked: { 2025: true, 2026: true },
+        keys: ['prayer_2025-12-31', 'prayer_max_english_width_standard'],
+      },
+      { cache: 'holds days of this year it never marked', marked: {}, keys: ['prayer_2026-01-19'] },
+    ])('still downloads this year when the cache $cache', async ({ marked, keys }) => {
+      mockGetItem.mockReturnValue(marked);
+      mockGetAllKeys.mockReturnValue(keys);
+
+      await sync();
+
+      expect(mockFetchYear).toHaveBeenCalledWith(2026);
+    });
+
+    it('in December still downloads both years while next year is unmarked, as before', async () => {
+      mockIsDecember.mockReturnValue(true);
+      mockGetItem.mockReturnValue({ 2026: true });
+      mockGetAllKeys.mockReturnValue(['prayer_2026-12-13']);
+
+      await sync();
+
+      expect(mockFetchYear).toHaveBeenCalledWith(2026);
+      expect(mockFetchYear).toHaveBeenCalledWith(2027);
+    });
   });
 });
 
@@ -507,52 +638,237 @@ describe('December prefetch behavior', () => {
 });
 
 // =============================================================================
-// JANUARY 1ST EDGE CASE TESTS
+// 1 JANUARY WITHOUT 31 DECEMBER (R13)
 // =============================================================================
 
-describe('January 1st edge case', () => {
+describe('1 January without 31 December (R13)', () => {
+  const DECEMBER_31 = '2026-12-31';
+  let now: Date;
+  let stored: Map<string, ISingleApiResponseTransformed>;
+
   beforeEach(() => {
-    mockIsJanuaryFirst.mockReturnValue(true);
-    mockGetCurrentYear.mockReturnValue(2026);
+    now = setClock('2027-01-01T10:00:00Z');
+    mockGetItem.mockReturnValue({ 2027: true });
+    stored = storeHolding(['2027-01-01']);
   });
 
-  it('fetches previous year data when not cached', async () => {
-    // No previous year data
-    mockGetPrayerByDate
-      .mockReturnValueOnce(createMockPrayerData('2026-01-01')) // Current day exists
-      .mockReturnValueOnce(null); // Dec 31 2025 not cached
+  const expectTodayShown = (syncs = 1) => {
+    expect(mockSetSequence).toHaveBeenCalledWith(ScheduleType.Standard, now);
+    expect(mockSetSequence).toHaveBeenCalledWith(ScheduleType.Extra, now);
+    expect(mockSetSequence).toHaveBeenCalledTimes(2 * syncs);
+    expect(mockStartCountdowns).toHaveBeenCalledTimes(syncs);
+  };
+
+  it('asks for 31 December alone, never the whole of last year', async () => {
+    await expect(sync()).resolves.toBeUndefined();
+
+    expect(mockFetchDay).toHaveBeenCalledTimes(1);
+    expect(mockFetchDay).toHaveBeenCalledWith(DECEMBER_31);
+    expect(mockFetchYear).not.toHaveBeenCalled();
+    expectTodayShown();
+  });
+
+  it('stores 31 December before the sequences are built, so the night leading into today can read it', async () => {
+    await sync();
+
+    expect(mockSaveAllPrayers).toHaveBeenCalledTimes(1);
+    expect(mockSaveAllPrayers).toHaveBeenCalledWith([createMockPrayerData(DECEMBER_31)]);
+    expect(stored.get(DECEMBER_31)).toEqual(createMockPrayerData(DECEMBER_31));
+    expect(mockSaveAllPrayers.mock.invocationCallOrder[0]).toBeLessThan(mockSetSequence.mock.invocationCallOrder[0]);
+  });
+
+  it('leaves last year unmarked, since one day is not a year', async () => {
+    await sync();
+
+    expect(mockMarkYearAsFetched).not.toHaveBeenCalled();
+  });
+
+  it('reopens the notification refresh gate once 31 December is stored, so the night rows it gives can be armed', async () => {
+    await sync();
+
+    expect(mockResetStoredAtom).toHaveBeenCalledTimes(1);
+    expect(mockResetStoredAtom).toHaveBeenCalledWith(
+      'lastNotificationScheduleAtom',
+      'preference_last_notification_schedule_check'
+    );
+    expect(mockResetStoredAtom.mock.invocationCallOrder[0]).toBeGreaterThan(
+      mockSaveAllPrayers.mock.invocationCallOrder[0]
+    );
+  });
+
+  it('reopens the gate on the later sync that stores 31 December after the launch was refused it', async () => {
+    mockFetchDay.mockRejectedValueOnce(new Error('HTTP error! status: 404'));
+
+    await sync();
+    expect(mockResetStoredAtom).not.toHaveBeenCalled();
+
+    await sync();
+    expect(stored.has(DECEMBER_31)).toBe(true);
+    expect(mockResetStoredAtom).toHaveBeenCalledTimes(1);
+  });
+
+  it('still stores 31 December and shows today when the gate cannot be reopened', async () => {
+    const error = new Error('MMKV remove failed');
+    mockResetStoredAtom.mockImplementation(() => {
+      throw error;
+    });
+
+    await expect(sync()).resolves.toBeUndefined();
+
+    expect(stored.has(DECEMBER_31)).toBe(true);
+    expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('gate'), { error });
+    expectTodayShown();
+  });
+
+  it('still rejects on 1 January when the year download fails with nothing usable stored', async () => {
+    stored.clear();
+    mockGetItem.mockReturnValue({});
+    mockFetchYear.mockRejectedValue(new TypeError('Network request failed'));
+
+    await expect(sync()).rejects.toThrow('Network request failed');
+
+    expect(mockFetchDay).not.toHaveBeenCalled();
+    expect(mockSetSequence).not.toHaveBeenCalled();
+  });
+
+  it('asks nothing more once 31 December is stored', async () => {
+    await sync();
+    await sync();
+
+    expect(mockFetchDay).toHaveBeenCalledTimes(1);
+    expectTodayShown(2);
+  });
+
+  it.each([
+    { failure: 'refuses the day', error: new Error('HTTP error! status: 404') },
+    { failure: 'cannot be reached', error: new TypeError('Network request failed') },
+  ])('still shows 1 January and asks again on the next sync when the endpoint $failure', async ({ error }) => {
+    mockFetchDay.mockRejectedValue(error);
+
+    await expect(sync()).resolves.toBeUndefined();
+
+    expect(mockSaveAllPrayers).not.toHaveBeenCalled();
+    expect(mockMarkYearAsFetched).not.toHaveBeenCalled();
+    expect(mockResetStoredAtom).not.toHaveBeenCalled();
+    expect(stored.has(DECEMBER_31)).toBe(false);
+    expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('Dec 31'), { error });
+    expectTodayShown();
+
+    await expect(sync()).resolves.toBeUndefined();
+
+    expect(mockFetchDay).toHaveBeenCalledTimes(2);
+    expect(mockFetchDay).toHaveBeenNthCalledWith(2, DECEMBER_31);
+    expect(mockFetchYear).not.toHaveBeenCalled();
+    expectTodayShown(2);
+  });
+
+  it('still rejects when 31 December arrives but cannot be written, as every other failed write does', async () => {
+    mockSaveAllPrayers.mockImplementation(() => {
+      throw new Error('Database write failed');
+    });
+
+    await expect(sync()).rejects.toThrow('Database write failed');
+  });
+
+  it('fetches nothing when 31 December is already stored', async () => {
+    stored.set(DECEMBER_31, createMockPrayerData(DECEMBER_31));
 
     await sync();
 
-    expect(mockFetchYear).toHaveBeenCalledWith(2025);
+    expect(mockFetchDay).not.toHaveBeenCalled();
+    expect(mockFetchYear).not.toHaveBeenCalled();
+    expect(mockResetStoredAtom).not.toHaveBeenCalled();
+    expectTodayShown();
   });
 
-  it('skips previous year fetch when already cached', async () => {
-    // Previous year data exists
-    mockGetPrayerByDate.mockReturnValue(createMockPrayerData('2025-12-31'));
+  it.each([
+    { when: '31 December at 23:59:59 London', instant: '2026-12-31T23:59:59Z', devices: [] },
+    { when: '2 January at 00:00:00 London', instant: '2027-01-02T00:00:00Z', devices: [] },
+    {
+      when: '31 December in London while the device already reads 1 January',
+      instant: '2026-12-31T15:30:00Z',
+      devices: ['Asia/Tokyo', 'Pacific/Kiritimati'],
+    },
+  ])('fetches nothing on $when', async ({ instant, devices }) => {
+    const at = setClock(instant);
+    for (const timeZone of devices) expect(deviceDate(timeZone, at)).toBe('2027-01-01');
+    // Only the day on screen is stored, so a wrong 1 January would find its 31 December missing and ask
+    storeHolding([actualTime.formatDateShort(at)]);
+    mockGetItem.mockReturnValue({ 2026: true, 2027: true });
 
     await sync();
 
-    // Should not fetch 2025 since it's cached
-    expect(mockFetchYear).not.toHaveBeenCalledWith(2025);
+    expect(mockFetchDay).not.toHaveBeenCalled();
+    expect(mockFetchYear).not.toHaveBeenCalled();
   });
 
-  it('saves previous year data for CountdownBar progress', async () => {
-    const prevYearData = createMockYearData();
-    mockGetPrayerByDate.mockReturnValueOnce(createMockPrayerData('2026-01-01')).mockReturnValueOnce(null);
-    mockFetchYear.mockResolvedValue(prevYearData);
+  it('asks on 1 January in London while the device still reads 31 December', async () => {
+    const at = setClock('2027-01-01T04:30:00Z');
+    for (const timeZone of ['America/New_York', 'Pacific/Pago_Pago']) {
+      expect(deviceDate(timeZone, at)).toBe(DECEMBER_31);
+    }
 
     await sync();
 
-    expect(mockSaveAllPrayers).toHaveBeenCalledWith(prevYearData);
+    expect(mockFetchDay).toHaveBeenCalledTimes(1);
+    expect(mockFetchDay).toHaveBeenCalledWith(DECEMBER_31);
   });
 
-  it('marks previous year as fetched', async () => {
-    mockGetPrayerByDate.mockReturnValueOnce(createMockPrayerData('2026-01-01')).mockReturnValueOnce(null);
+  describe('when two syncs both find it missing', () => {
+    const older = createMockPrayerData(DECEMBER_31);
+    const newer = { ...createMockPrayerData(DECEMBER_31), magrib: '16:01' };
+    let answers: { resolve: (day: ISingleApiResponseTransformed) => void; reject: (error: Error) => void }[];
 
-    await sync();
+    beforeEach(() => {
+      answers = [];
+      mockFetchDay.mockImplementation(
+        () => new Promise<ISingleApiResponseTransformed>((resolve, reject) => answers.push({ resolve, reject }))
+      );
+    });
 
-    expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2025);
+    it('keeps the day from the sync that began later when the earlier answer lands after it', async () => {
+      const launch = sync();
+      const resumed = sync();
+      expect(mockFetchDay).toHaveBeenCalledTimes(2);
+
+      answers[1]?.resolve(newer);
+      await expect(resumed).resolves.toBeUndefined();
+      answers[0]?.resolve(older);
+      await expect(launch).resolves.toBeUndefined();
+
+      expect(stored.get(DECEMBER_31)).toBe(newer);
+      expect(mockSaveAllPrayers).toHaveBeenCalledTimes(1);
+      expect(mockMarkYearAsFetched).not.toHaveBeenCalled();
+      // The dropped answer stored nothing, so it has nothing to reopen the gate for
+      expect(mockResetStoredAtom).toHaveBeenCalledTimes(1);
+      expectTodayShown(2);
+    });
+
+    it('lets the later answer replace the earlier one when they land in the order they began', async () => {
+      const launch = sync();
+      const resumed = sync();
+
+      answers[0]?.resolve(older);
+      await expect(launch).resolves.toBeUndefined();
+      answers[1]?.resolve(newer);
+      await expect(resumed).resolves.toBeUndefined();
+
+      expect(stored.get(DECEMBER_31)).toBe(newer);
+      expect(mockSaveAllPrayers).toHaveBeenCalledTimes(2);
+    });
+
+    it('stores the earlier answer when the sync that began later was refused, since a refusal holds no day', async () => {
+      const launch = sync();
+      const resumed = sync();
+
+      answers[1]?.reject(new Error('HTTP error! status: 404'));
+      await expect(resumed).resolves.toBeUndefined();
+      answers[0]?.resolve(older);
+      await expect(launch).resolves.toBeUndefined();
+
+      expect(stored.get(DECEMBER_31)).toBe(older);
+      expectTodayShown(2);
+    });
   });
 });
 
@@ -662,19 +978,21 @@ describe('sync flow integration', () => {
     expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2027);
   });
 
-  it('completes January 1st edge case flow', async () => {
-    mockIsJanuaryFirst.mockReturnValue(true);
-    mockGetCurrentYear.mockReturnValue(2026);
-    // First call for needsDataUpdate, second for Dec 31 check
-    mockGetPrayerByDate
-      .mockReturnValueOnce(createMockPrayerData('2026-01-01')) // Data exists
-      .mockReturnValueOnce(null); // Dec 31 not cached
+  it('completes the 1 January flow with 31 December alone', async () => {
+    setClock('2027-01-01T10:00:00Z');
+    mockGetItem.mockReturnValue({ 2027: true });
+    storeHolding(['2027-01-01']);
 
     await sync();
 
-    expect(mockFetchYear).toHaveBeenCalledWith(2025);
-    expect(mockMarkYearAsFetched).toHaveBeenCalledWith(2025);
+    // Upgrade check, no refresh, the one day stored unmarked, then init
+    expect(mockHandleAppUpgrade).toHaveBeenCalled();
+    expect(mockFetchYear).not.toHaveBeenCalled();
+    expect(mockFetchDay).toHaveBeenCalledWith('2026-12-31');
+    expect(mockSaveAllPrayers).toHaveBeenCalledWith([createMockPrayerData('2026-12-31')]);
+    expect(mockMarkYearAsFetched).not.toHaveBeenCalled();
     expect(mockSetSequence).toHaveBeenCalledTimes(2);
+    expect(mockStartCountdowns).toHaveBeenCalled();
   });
 });
 
@@ -716,6 +1034,7 @@ describe('keeping yesterday through a data refresh (ISSUES #4)', () => {
 
     expect(mockFetchYear).toHaveBeenCalledWith(2026);
     expect(mockFetchYear).not.toHaveBeenCalledWith(2025);
+    expect(mockFetchDay).not.toHaveBeenCalled();
     expect(stored.has('2025-12-31')).toBe(true);
   });
 });
