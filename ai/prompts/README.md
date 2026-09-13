@@ -9,8 +9,9 @@ when it starts, and keep the brief itself in this directory.
 | --- | --- | --- | --- |
 | 1 | **Verify every feature on real hardware** — both phones, all 99 sounds, every notification, every Extras row, before/after midnight | `device-verification-sweep.md` | **NEXT** |
 | 2 | **Fetch before wipe** — never clear a usable cache for a fetch that might fail | `data-resilience-swap-not-wipe.md` | queued |
-| 3 | **Close the test-coverage gaps** — parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | queued |
-| 4 | **Moonsighting.com / Khalid Shaukat research** — v2.0 prerequisite, needs its own clean context | `moonsighting-research.md` | queued |
+| 3 | **`--:--` for unreadable times** — per prayer, not per day; the day is still shown | `unavailable-times-dashes.md` | queued |
+| 4 | **Close the test-coverage gaps** — parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | queued |
+| 5 | **Moonsighting.com / Khalid Shaukat research** — v2.0 prerequisite, needs its own clean context | `moonsighting-research.md` | queued |
 
 Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else.
 
@@ -27,6 +28,8 @@ Ordering is the owner's, given 2026-09-13: the device sweep runs before everythi
   into `uat-2`.
 - Never build on EAS and never push to it. EAS and the Expo MCP are read-only.
 - `releases.json` is untouchable.
-- Keep every visual exactly as it is — fixes change behaviour, never pixels.
+- Keep every visual exactly as it is — fixes change behaviour, never pixels. The one standing
+  exception is the `--:--` rendering in session 3, which the owner specified directly.
+- **Never copy, average or synthesise a prayer time.** Owner ruling, 2026-09-13, absolute.
 - Comments explain **why**, never what. The code already shows what.
 - Every change deep-reviewed by an agent with no stake in it, and verified on the device.
