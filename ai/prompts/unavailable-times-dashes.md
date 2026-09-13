@@ -111,6 +111,23 @@ Note the last two cross a day boundary: **a broken Magrib on Tuesday dashes Tues
 *and* Wednesday's Midnight and Last Third.** A test matrix that only breaks fields within one day
 will not see that.
 
+**The same two rows also dash when the day before is not stored at all (finding 72).** Today the app
+borrows the day's own Magrib in its place (`shared/prayer.ts:150`), which the standing rule above
+forbids, so an alarm built that way fires at the wrong instant: 21 minutes late on 29 March, proven
+on the 3T, and by the same arithmetic about 21 minutes early on 25 October (computed, not run). In
+real use it follows a dropped day, which R1 removes. It can also follow a 1 January whose cache has
+lost 31 December while last year's fetch fails, which R1 does not remove (traced, not run). Whatever
+the cause, show `--:--` and arm nothing, and replace `shared/__tests__/nightTimes.test.ts:194` and
+`:212`, which assert the borrowed values, with item 1 of
+`ai/features/uat-2/UNIT-TEST-GAPS-2026-09-13.md`.
+
+The owner's reading, 2026-09-13: *"And if the API doesn't provide data, then we will show dash, for
+example, in order to calculate midnights, the API must return Fajr and Magrib."* (Dictated; prayer
+names normalised.) The owner also raised the countdown and its bar, which stay open visual decisions
+(`Countdown.tsx` and `Bar.tsx`, listed below): *"I guess it's going to be dash dash dash maybe? I
+don't know. Um, And then for the countdown bar, what are we going to show? Because we can't
+calculate from dash dash dash dash."*
+
 ### Every consumer that assumes a row has an instant
 
 Each of these needs a decision and a test, and the list is the starting point, not the whole of

@@ -4170,8 +4170,9 @@ under the list day its identifier names, either side of 00:00 and across both cl
 real data and on mocks. Three exceptions are findings: an alarm armed from a substituted Magrib
 fires at the wrong instant (finding 72), Android refuses to post a 51st showing notification
 (finding 73), and yesterday's post-midnight rows lose their alarms after a reschedule (finding 74).
-The owner has accepted finding 73. Findings 72 and 74 wait on the owner's decision, findings 75
-and 77 are queued into session 4, and finding 76 has no session yet.
+The owner has accepted finding 73. Findings 72 and 74 are queued into sessions 3 and 8,
+findings 75 and 77 into session 4, and finding 76's certificate point into session 2. The rest of
+finding 76 has no session yet.
 
 ## How it was proven
 
@@ -4303,6 +4304,10 @@ code, not run.
 **Tests pin the defect.** `shared/__tests__/nightTimes.test.ts:194` and `:212` assert the
 substituted values as expected behaviour.
 
+**Queued into session 3** (`ai/prompts/unavailable-times-dashes.md`): when the day before is not
+stored, Midnight and Last Third show `--:--` and arm nothing, and gap-map item 1 replaces those two
+tests.
+
 ---
 
 ## 73. OWNER ACCEPTED: Android refuses an app's 51st showing notification
@@ -4390,8 +4395,9 @@ Saturday.
 and the Istijaba anchor), which is why they fired on the second when nothing rescheduled in
 between. Nothing handles the calendar day passing a list day that still has rows due.
 
-**Not fixed, and not in any queued session.** It waits on the owner's decision. The tests that
-describe the fix are items 6 and 17 of the gap map (finding 77).
+**Queued as session 8** (`ai/prompts/keep-still-due-rows-after-midnight.md`), direction confirmed by
+the owner, to land before v2.0. The tests that describe the fix are items 6 and 17 of the gap map
+(finding 77).
 
 Also traced from the code, not run, on the same root: `getYesterdayFinalPrayer`
 (`stores/schedule.ts:82-92`) rebuilds yesterday's last row from its clock reading with no midnight
@@ -4443,7 +4449,7 @@ that hour fails the pre-commit gate for no reason, because `yarn validate` runs 
 for rows either side of 00:00, and 7 of 7 for the clock reaching 00:00. The full map, with fixture
 values for every missing test, is `ai/features/uat-2/UNIT-TEST-GAPS-2026-09-13.md`. It is queued
 into session 4 (`ai/prompts/coverage-sweep.md`). The tests for findings 72 and 74 will fail
-against today's code by design, so they wait on the owner's decision about those fixes.
+against today's code by design, so sessions 3 and 8 write them together with those fixes.
 
 ## Harness errors this session, recorded so they are not read as app failures
 
