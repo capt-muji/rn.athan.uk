@@ -326,11 +326,13 @@ const startSequenceCountdown = (type: ScheduleType) => {
     writeDisplayCountdown(type);
   };
 
-  // The boundary is built from the cached next-prayer and display-date atoms (stores/schedule.ts), each worked
-  // out on its first read after the sequence changes. The screen subscribes them, so they are usually settled
-  // already; read here, they are settled by the time the countdown starts even when nothing has read them.
-  // First read on a tick after the boundary had passed, they would already name the one after it, and the
-  // countdown would hold at 1s until then.
+  // The boundary is built from the cached display-date and next-prayer atoms (stores/schedule.ts), each worked
+  // out on its first read after the sequence changes, so it is read here to settle both as the countdown starts.
+  // Above all the display date: nothing may have read it yet, since the Extra page mounts its Day and Countdown
+  // late and bootstrap starts the countdowns before anything mounts. First read on a tick after a day with no
+  // readable row had reached its 00:00, it would already be the next day, so there would be no 00:00 boundary
+  // left to refresh the sequence at, and that day could stay on screen past it. Likewise a next prayer first
+  // read after its moment would already name the one after it, holding the countdown at 1s until then.
   getNextBoundary(type);
 
   // Initial write before the first aligned tick — display-aware (ceil: never

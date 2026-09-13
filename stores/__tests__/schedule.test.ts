@@ -14,7 +14,7 @@
  * to the real implementations there; the describes above them script every answer instead.
  */
 
-import { createStore } from 'jotai';
+import { type Atom, createStore } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 // =============================================================================
@@ -983,6 +983,17 @@ const launchAt = (instant: string) => {
  */
 const moveClockTo = (instant: string) => jest.setSystemTime(new Date(instant));
 
+/**
+ * Subscriptions a test leaves on the shared default store. Stopped in afterEach whether or not the test's
+ * assertions passed, so a failure cannot leave atoms mounted for the tests after it.
+ */
+const testSubscriptions: (() => void)[] = [];
+
+/** Keeps atoms subscribed for the rest of a test, as the mounted screen does */
+const keepSubscribed = (...atoms: Atom<unknown>[]) => {
+  for (const subscribed of atoms) testSubscriptions.push(getDefaultStore().sub(subscribed, () => {}));
+};
+
 /** Every write to a schedule's sequence from now on, as the instant it happened */
 const recordSequenceWrites = (type: ScheduleType) => {
   const writes: string[] = [];
@@ -1029,6 +1040,7 @@ describe('on the real builder', () => {
   });
 
   afterEach(() => {
+    for (const stop of testSubscriptions.splice(0)) stop();
     jest.clearAllTimers();
     jest.useRealTimers();
   });
@@ -1317,12 +1329,7 @@ describe('on the real builder', () => {
       'moves on at $boundary ($type) after $restartName lands just past it, with new data written just before it',
       ({ type, launched, synced, launch, at, displayDate, countdown, restart, firstCheckMs }) => {
         const store = getDefaultStore();
-        const screenSubscriptions = [
-          standardNextPrayerAtom,
-          extraNextPrayerAtom,
-          standardDisplayDateAtom,
-          extraDisplayDateAtom,
-        ].map((subscribed) => store.sub(subscribed, () => {}));
+        keepSubscribed(standardNextPrayerAtom, extraNextPrayerAtom, standardDisplayDateAtom, extraDisplayDateAtom);
         const boundaryMs = Date.parse(at);
 
         storeDays(OCT_16_TO_20, launched);
@@ -1338,10 +1345,10 @@ describe('on the real builder', () => {
 
         moveClockTo(new Date(boundaryMs + 10).toISOString());
         const { writes, unsubscribe } = recordSequenceWrites(type);
+        testSubscriptions.push(unsubscribe);
         restart();
 
         jest.advanceTimersByTime(10_000);
-        for (const stop of [unsubscribe, ...screenSubscriptions]) stop();
 
         expect(writes).toEqual([new Date(boundaryMs + firstCheckMs).toISOString()]);
         expect(getDisplayDate(type)).toBe(displayDate);
@@ -1361,6 +1368,27 @@ describe('on the real builder', () => {
 
       expect(writes).toEqual(['2026-10-17T14:30:00.000Z']);
       expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 9360, name: 'Magrib' });
+    });
+
+    // Nothing subscribes to the display date here or reads it before 00:00, as when bootstrap starts the
+    // countdowns before anything mounts, or the Extra page has not mounted its Day yet
+    it('starts half a second before a day with no readable time ends at 00:00 and still moves on at it', () => {
+      storeDays(OCT_16_TO_20, { '2026-10-18': 'all' });
+      launchAt('2026-10-18T22:59:59.500Z');
+      const standardWrites = recordSequenceWrites(STANDARD);
+      const extraWrites = recordSequenceWrites(EXTRA);
+      testSubscriptions.push(standardWrites.unsubscribe, extraWrites.unsubscribe);
+
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 21301, name: 'Fajr' });
+
+      jest.advanceTimersByTime(500);
+
+      expect(standardWrites.writes).toEqual(['2026-10-18T23:00:00.000Z']);
+      expect(extraWrites.writes).toEqual(['2026-10-18T23:00:00.000Z']);
+      expect(Object.keys(rowsHeld(STANDARD))[0]).toBe('2026-10-19');
+      expect(Object.keys(rowsHeld(EXTRA))[0]).toBe('2026-10-19');
+      expect(getDisplayDate(STANDARD)).toBe('2026-10-19');
+      expect(getDisplayDate(EXTRA)).toBe('2026-10-19');
     });
 
     // Session 7's high-latitude shapes, where a list's last rows fall after 00:00. Launched just after 00:00 the
@@ -1406,15 +1434,14 @@ describe('on the real builder', () => {
     it.each(postMidnightIsha)(
       "hides the bar from a launch after 00:00 until Fajr while yesterday's Isha is still due: $title",
       ({ days, launch, ishaAt, listDay, fajrAt, sunriseAt }) => {
-        const store = getDefaultStore();
-        const screenSubscriptions = [
+        keepSubscribed(
           standardNextPrayerAtom,
           extraNextPrayerAtom,
           standardDisplayDateAtom,
           extraDisplayDateAtom,
           getBarAvailableAtom(STANDARD),
-          getBarAvailableAtom(EXTRA),
-        ].map((subscribed) => store.sub(subscribed, () => {}));
+          getBarAvailableAtom(EXTRA)
+        );
         const hidden = { next: row('Fajr', listDay, fajrAt), previous: null, barAvailable: false };
 
         Object.assign(LONDON_2026, days);
@@ -1422,7 +1449,7 @@ describe('on the real builder', () => {
         launchAt(launch);
         expect(observe(STANDARD)).toMatchObject(hidden);
 
-        // The ticker runs on past Isha; then the app returns to the foreground and syncs unchanged data
+        // The app stays open past Isha, then leaves and comes back, which resyncs and syncs unchanged data
         jest.advanceTimersByTime(Date.parse(ishaAt) + 5 * 60 * 1000 - Date.parse(launch));
         expect(observe(STANDARD)).toMatchObject(hidden);
 
@@ -1437,7 +1464,6 @@ describe('on the real builder', () => {
         expect(observe(STANDARD)).toMatchObject(hidden);
 
         jest.advanceTimersByTime(1);
-        for (const stop of screenSubscriptions) stop();
         expect(observe(STANDARD)).toMatchObject({
           next: row('Sunrise', listDay, sunriseAt),
           previous: row('Fajr', listDay, fajrAt),
