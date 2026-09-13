@@ -11,11 +11,11 @@ Read ai/prompts/device-verification-sweep.md and follow it. This is session 1 of
 ai/prompts/README.md — the full-device verification sweep. Do not drift into sessions 2-5.
 
 Before anything else, read: ai/prompts/README.md, ai/features/uat-2/AUDIT-FINDINGS.md (findings
-5, 65-71 especially), AGENTS.md, evidence/README.md.
+5, 65-71 especially), AGENTS.md.
 
 The API key is at ~/.config/athan/.api_key (mode 600). Read it from there. NEVER commit it.
 
-Devices: OnePlus 3T on adb (8f7ada76) — screenshots, clock-driving, the midnight matrix, DST
+Devices: OnePlus 3T on adb (8f7ada76): clock-driving, the midnight matrix, DST
 pairs, every notification-schedule dump. iPhone XS — audio only, and only once I have connected
 it; check `xcrun xctrace list devices` and ask me if it is offline. Run the two audio passes in
 parallel.
@@ -25,8 +25,8 @@ All 99 sounds play their own file. Prove it with the dumpsys fingerprint (44100 
 22050 stereo = reminder, 48000 stereo = the default reminder, 44100 stereo = a fallback tone and
 therefore a failure), then listen to each of the 32 athans, because all 32 share a fingerprint.
 
-Screenshots go in evidence/ with the naming convention in evidence/README.md. The filename must
-carry the claim.
+No screenshots: I dropped them on 2026-09-13 and had the evidence/ folder deleted. Prove device
+claims with dumps and logs, as the section "Evidence is dumps and logs, not screenshots" describes.
 
 Standing rules, all absolute:
 - Never touch uat. One finding, one branch, one commit, version-bumped, merged --no-ff into uat-2.
@@ -102,25 +102,21 @@ Re-verify the fix survives a real backup/restore cycle, not a simulated one:
 
 | Work | Device | Why |
 | --- | --- | --- |
-| **Screenshots and every UI/scheduling check** | **OnePlus 3T only** | It is the device whose buttons and layout are already known. *"We don't want to do all that work again on the iPhone XS."* |
+| **Every UI and scheduling check** | **OnePlus 3T only** | It is the device whose buttons and layout are already known. *"We don't want to do all that work again on the iPhone XS."* |
 | **Audio — all 99 sounds** | **Both phones** | iOS has a 30-second sound cliff and its own fallback path that Android cannot show. |
 
-So: the clock-driving, the midnight matrix, the DST pairs, the notification-schedule dumps and
-every screenshot happen on the 3T. The iPhone XS is brought in for the audio pass and nothing
-else.
+So: the clock-driving, the midnight matrix, the DST pairs and the notification-schedule dumps
+happen on the 3T. The iPhone XS is brought in for the audio pass and nothing else.
 
-## Screenshots go in `evidence/`
+## Evidence is dumps and logs, not screenshots
 
-A folder now exists at the repository root with the naming convention pinned in
-`evidence/README.md`:
-
-```
-<NNN>-<area>-<what-is-being-proved>-op3t.png
-```
-
-The filename must carry the claim, not a code identifier — a screenshot that needs a sentence to
-explain it is named wrong. Audio evidence is not a screenshot: it is the `dumpsys audio`
-fingerprint line plus the ear check, recorded in the findings entry.
+The owner dropped screenshots mid-session on 2026-09-13 and had the `evidence/` folder deleted in
+1.26.29: *"I don't care about the screenshots anymore... don't take screenshots of videos just for
+me. Matter of fact, delete the evidence folder."* Screenshots are no longer kept as proof. A device
+claim is proven by the `dumpsys` lines and logs, recorded in the findings entry. Audio evidence
+stays as it was: the `dumpsys audio` fingerprint line plus the ear check. Read rendered values
+from Maestro's `hierarchy`, which is live; on the 3T `uiautomator dump` serves stale trees
+(ai/AGENTS.md, Performance Design Rules, rule 10).
 
 ## The matrix to cover
 
