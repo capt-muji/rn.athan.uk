@@ -4245,6 +4245,12 @@ Pulled `year=2026&24hours=true` and ran the guard over it:
 `2025` and `2027` all return HTTP 200 with an empty `times` object — **the endpoint only serves
 the current year**, which is what the December next-year retry loop exists for.
 
+The single-day form was measured the same day, during session 2, for session 3's R13.
+`date=2026-09-12` returns HTTP 200 with one day as a flat object (`date`, `fajr`, `fajr_jamat`,
+`sunrise`, and so on). `date=2025-12-31`, `date=2025-09-13` and `date=2027-01-01` return HTTP 404
+with an `error` field. So in September neither parameter reaches outside the current year. Whether
+31 December is still served on 1 January cannot be checked before 1 January 2027.
+
 ### The false-drop risk is real but self-announcing
 
 The three false-drop rows above all come from the *provider changing format*. A format change
