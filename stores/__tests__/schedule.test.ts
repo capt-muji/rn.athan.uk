@@ -1370,8 +1370,8 @@ describe('on the real builder', () => {
       expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 9360, name: 'Magrib' });
     });
 
-    // Nothing subscribes to the display date here or reads it before 00:00, as when bootstrap starts the
-    // countdowns before anything mounts, or the Extra page has not mounted its Day yet
+    // Nothing but the countdown's own start read touches the display date before 00:00, as when bootstrap starts
+    // the countdowns before anything mounts, or the Extra page has not mounted its Day and List yet
     it('starts half a second before a day with no readable time ends at 00:00 and still moves on at it', () => {
       storeDays(OCT_16_TO_20, { '2026-10-18': 'all' });
       launchAt('2026-10-18T22:59:59.500Z');
