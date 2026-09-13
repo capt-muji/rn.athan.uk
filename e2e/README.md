@@ -100,10 +100,11 @@ verification, never infer visuals from pixels alone.
   confirm a specific test executed, filter by name:
   `yarn jest <file> -t "<phrase>"` and read the `N passed, M skipped` line; a
   name that does not exist reports 0 matched instead of quietly passing.
-- **Android 9 AX trees are STALE** in `uiautomator dump` — assert live text
-  via screencap pixel diffs, not AX dumps. Button coordinates from a fresh
-  dump are fine. On the 3T a dump once returned the tree of a package that
-  had since been uninstalled (`com.mugtaba.athan.fleettest`).
+- **Android 9 AX trees are STALE** in `uiautomator dump`. Read live text with
+  Maestro's `hierarchy`, which reads the live tree, or with screencap pixel
+  diffs, never AX dumps. Button coordinates from a fresh dump are fine. On
+  the 3T a dump once returned the tree of a package that had since been
+  uninstalled (`com.mugtaba.athan.fleettest`).
 - **`am start -W` after install is dexopt-inflated** (~4.9s) — discard.
 - **`dumpsys cpuinfo` is lifetime-cumulative, and `top -n 5 -d 5 -b` printed
   five identical snapshots on the 3T** — measure idle with
