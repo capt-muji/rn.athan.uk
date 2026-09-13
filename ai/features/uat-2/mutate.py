@@ -66,8 +66,8 @@ MUTATIONS = [
     ('shared/prayer.ts', "  if (previousDay?.date !== previousDate) return null;\n\n  const magribTime = previousDay.magrib;", "  const magribTime = previousDay?.date === previousDate ? previousDay.magrib : day.magrib;", 'Magrib borrowed for a missing previous day'),
     ('shared/prayer.ts', '    prayers.push(...createPrayersForSingleDay(type, date, rawData, previousDayData));', '    if (!rawData) {\n      previousDayData = null;\n      continue;\n    }\n    prayers.push(...createPrayersForSingleDay(type, date, rawData, previousDayData));', 'missing day skipped by the sequence'),
     ('shared/prayer.ts', 'time === null ? null : TimeUtils.adjustTime(time, minutesDiff)', 'TimeUtils.adjustTime(time as string, minutesDiff)', 'derived time computed from null'),
-    ('shared/prayer.ts', '  if (rawData.magrib === null) return null;\n', '', 'Istijaba kept when Magrib is null'),
-    ('shared/prayer.ts', 'if (magribTime === null || fajrTime === null) return null;', 'if (magribTime === null) return null;', 'night worked out from a null Fajr'),
+    ('shared/prayer.ts', "  if (typeof rawData.magrib !== 'string') return null;\n", '', 'Istijaba kept when Magrib is null'),
+    ('shared/prayer.ts', "if (typeof magribTime !== 'string' || typeof fajrTime !== 'string') return null;", "if (typeof magribTime !== 'string') return null;", 'night worked out from a null Fajr'),
 
     # --- session 3: shared/sequence.ts ---
     ('shared/sequence.ts', 'if (!isReadable(prayer) || prayer.datetime <= now) continue;', 'if (isReadable(prayer) && prayer.datetime <= now) continue;', 'unreadable row allowed to be next'),
@@ -99,10 +99,13 @@ MUTATIONS = [
     ('stores/notifications.ts', 'NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);', 'NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS + 1);', 'reschedule guard widened to three days'),
 
     # --- session 3: stores/sync.ts ---
-    ('stores/sync.ts', "logger.warn('SYNC: Previous year Dec 31 not available, will retry on next sync', { error });\n        return null;", "logger.warn('SYNC: Previous year Dec 31 not available, will retry on next sync', { error });\n        throw error;", 'Dec 31 day fetch rethrown'),
-    ('stores/sync.ts', '        Database.saveAllPrayers([fetchedDay]);\n', '        Database.saveAllPrayers([fetchedDay]);\n        Database.markYearAsFetched(previousYear);\n', 'year marked after a day fetch'),
-    ('stores/sync.ts', 'if (!data && !latestAnswerLacksToday()) return true;', 'if (!data) return true;', 'missing today re-fetched though year marked'),
-    ('stores/sync.ts', '        reopenNotificationGate();\n', '', 'notification gate not reopened after Dec 31'),
+    ('stores/sync.ts', '        rebuildSequences();\n', '', 'a late 31 December leaves the lists as they were'),
+    ('stores/sync.ts', 'if ((newestDownloadOfYear.get(previousYear) ?? 0) > order) return;', '', 'an older 31 December answer overwrites a newer one'),
+    ('stores/sync.ts', '        saveDownloadedDays([fetchedDay]);\n', '        saveDownloadedDays([fetchedDay]);\n        Database.markYearAsFetched(previousYear);\n', 'year marked after a day fetch'),
+    ('stores/sync.ts', 'if (!data && !isTodayGapInStoredYear()) return true;', 'if (!data) return true;', 'missing today re-fetched though it is a gap'),
+    ('stores/sync.ts', 'key.startsWith(`prayer_${year}-`) && key > todayKey', 'key.startsWith(`prayer_${year}-`) && key !== todayKey', 'a year cut short counts as a gap and is never fetched again'),
+    ('stores/sync.ts', ' || isTodayGapInStoredYear();', ';', 'December gap goes back to the error screen'),
+    ('stores/sync.ts', '  Database.saveAllPrayers(prayers);\n  reopenNotificationGate();\n', '  Database.saveAllPrayers(prayers);\n', 'notification gate not reopened after a stored download'),
 
     # --- session 3: stores/bootstrap.ts ---
     ('stores/bootstrap.ts', 'const anyDayStored = SEQUENCE_DAYS.some((offset) =>', 'const anyDayStored = [0].some((offset) =>', 'hydrate only when today is stored'),
@@ -114,7 +117,7 @@ MUTATIONS = [
     ('shared/widgetTimeline.ts', 'time: prayer.time ?? UNAVAILABLE_TIME', "time: prayer.time ?? ''", 'unreadable widget row drawn blank'),
 
     # --- session 3: hooks ---
-    ('hooks/usePrayerSequence.ts', 'isPassed: isRowPassed(rawPrayers, prayer, now),', 'isPassed: (prayer.datetime as unknown as Date) < now,', 'isPassed back to datetime < now'),
+    ('hooks/usePrayerSequence.ts', 'isPassed[index] = isRowPassed(dayRows, rawPrayers[index], now);', 'isPassed[index] = (rawPrayers[index].datetime as unknown as Date) < now;', 'isPassed back to datetime < now'),
     ('hooks/usePrayer.ts', '(findNextOccurrence(prayers, row) ?? row)', '(prayers.find((p) => p.english === row.english && (p.datetime as Date) > (row.datetime as Date)) ?? row)', 'next occurrence found by instant'),
 ]
 
