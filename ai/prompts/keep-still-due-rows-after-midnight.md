@@ -76,3 +76,11 @@ Write the failing tests before the fix, from `ai/features/uat-2/UNIT-TEST-GAPS-2
   then drive the clock to each post-midnight row and check it fires under its own list day. Silent
   alerts, so the phone stays quiet.
 - London must not change: every 2026 London row and alarm is the same before and after the fix.
+
+## Depends on an open question in session 3
+
+`unavailable-times-dashes.md`, "Open: ask the owner before building R8 and R9": when a day's last row
+is dashed, does the list move on after its last readable row or at 00:00 London? Follow the owner's
+answer here too, so the two sessions agree on when a day hands over. The question must cover this
+session's case too: where a readable row falls after 00:00, a move at 00:00 brings finding 74 back.
+On the mock's Friday with Isha dashed, the list would leave at 00:00 and drop the 00:40 Magrib.

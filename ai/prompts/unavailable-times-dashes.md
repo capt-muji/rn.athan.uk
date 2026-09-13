@@ -1,8 +1,9 @@
 # Session: an unreadable time shows `--:--`, and nothing else breaks
 
-**Status: NOT STARTED. Specified by the owner on 2026-09-13. Queued as session 3.** Explicitly
-*not* for the session it was raised in: *"this is definitely something to write very detailed,
-heavy, for another session to fix. Not in this session."*
+**Status: NOT STARTED. Specified by the owner on 2026-09-13, and extended by the owner the same day
+during session 2 (see "Owner additions", after the testing section). Queued as session 3.**
+Explicitly *not* for the session it was raised in: *"this is definitely something to write very
+detailed, heavy, for another session to fix. Not in this session."*
 
 **Likelihood is low and the owner said so** — *"it's most likely not going to happen because we
 trust the API"* — so this is insurance, not a fire. That changes the priority, not the depth.
@@ -116,17 +117,18 @@ borrows the day's own Magrib in its place (`shared/prayer.ts:150`), which the st
 forbids, so an alarm built that way fires at the wrong instant: 21 minutes late on 29 March, proven
 on the 3T, and by the same arithmetic about 21 minutes early on 25 October (computed, not run). In
 real use it follows a dropped day, which R1 removes. It can also follow a 1 January whose cache has
-lost 31 December while last year's fetch fails, which R1 does not remove (traced, not run). Whatever
-the cause, show `--:--` and arm nothing, and replace `shared/__tests__/nightTimes.test.ts:194` and
-`:212`, which assert the borrowed values, with item 1 of
-`ai/features/uat-2/UNIT-TEST-GAPS-2026-09-13.md`.
+lost 31 December while last year's fetch fails, which R1 does not remove (traced, not run; R13 below
+now covers it). Whatever the cause, show `--:--` and arm nothing, and replace
+`shared/__tests__/nightTimes.test.ts:194` and `:212`, which assert the borrowed values, with item 1
+of `ai/features/uat-2/UNIT-TEST-GAPS-2026-09-13.md`.
 
 The owner's reading, 2026-09-13: *"And if the API doesn't provide data, then we will show dash, for
 example, in order to calculate midnights, the API must return Fajr and Magrib."* (Dictated; prayer
-names normalised.) The owner also raised the countdown and its bar, which stay open visual decisions
-(`Countdown.tsx` and `Bar.tsx`, listed below): *"I guess it's going to be dash dash dash maybe? I
-don't know. Um, And then for the countdown bar, what are we going to show? Because we can't
-calculate from dash dash dash dash."*
+names normalised.) The owner also raised the countdown and its bar (`Countdown.tsx` and `Bar.tsx`,
+listed below), which R9 and R14 now answer, apart from R14's open choice and what the countdown
+shows on a fully dashed day (R11): *"I guess it's going to be dash dash dash maybe? I don't know.
+Um, And then for the countdown bar, what are we going to show? Because we can't calculate from dash
+dash dash dash."*
 
 ### Every consumer that assumes a row has an instant
 
@@ -138,8 +140,9 @@ it — grep for `.datetime` and `.time` and work through what turns up:
   looks like when disabled is a **visual decision the owner must approve**, and the owner reviews
   it on the device.
 - `components/countdown/Countdown.tsx` and `Bar.tsx` — what does the countdown count to when the
-  next row is dashed? Skip to the next readable one, or show nothing? The progress bar needs a
-  previous *and* a next.
+  next row is dashed? The owner answered in session 2: the next readable one (R9), apart from a fully
+  dashed day, which R11 still asks about. A bar that cannot be worked out is hidden or shown disabled
+  at 10%, never dashed (R14).
 - `stores/schedule.ts` — `createNextPrayerAtom`, `createPrevPrayerAtom`, `createDisplayDateAtom`,
   `refreshSequence`, `filterRelevantPrayers`, `shouldFetchMorePrayers`, and `prayerIdentity` /
   `sequenceSignature`, which must stay stable for a dashed row or the reschedule thrashes.
@@ -162,19 +165,27 @@ it — grep for `.datetime` and `.time` and work through what turns up:
 > *"We heavily, heavily, heavily want to write tests for this to cover everything. And we should
 > have screenshots for it as well."*
 
-The screenshot half of that was withdrawn on 2026-09-13; see the "No screenshots" bullet below.
+The screenshot half was withdrawn on 2026-09-13 as evidence, then asked for again the same day to
+approve the new visuals: see R15 in "Owner additions" below.
 
 - **Unit and integration**, table-driven, spanning the range. Per the standing fixture rule: a
   single-field fixture cannot tell "dashed that one prayer" from "dashed the day", which is the
   exact mistake that let finding 8 ship broken. Cover: one field, several fields, every field,
   a broken Magrib and its knock-on into the next day's night rows, and a broken day at each
   position in the rolling window.
+- **The owner's additions need their own cases:** a day missing from the payload, with its knock-on
+  into the next day's Midnight and Last Third (R7); a fully dashed day that the display date never
+  skips, from the handover R8 asks about to 00:00 London, with no highlight (R8, R11); a day whose
+  last row is dashed, once the owner has answered the open question below; the highlight and the
+  countdown passing a dashed row on both lists (R9); a dashed row going from dim to bright once
+  passed (R10); what a tap opens on a passed and on an upcoming dashed row (R12); both branches of
+  R13; and the bar that cannot be worked out (R14), once the owner has chosen.
 - **Break each new test deliberately** and confirm it fails. A test that passes against the
   unfixed code is decorative.
 - **Mutation sweep** afterwards with `ai/features/uat-2/mutate.py`. Any survivor in this area is
   a branch nothing is watching.
-- **No screenshots.** The owner dropped them on 2026-09-13 and had the `evidence/` folder deleted.
-  Read these rendered rows from Maestro's live `hierarchy` instead: a dashed single prayer, a fully
+- **Screenshots only for the owner's approval (R15), never as evidence.** The `evidence/` folder
+  stays deleted. Prove device claims from Maestro's live `hierarchy`: a dashed single prayer, a fully
   dashed day, the Extras list on a day whose night rows are dashed by the previous day's Magrib, and
   the alert control in its disabled state. Not `uiautomator dump`, which serves stale trees on the
   3T (ai/AGENTS.md, Performance Design Rules, rule 10).
@@ -184,11 +195,105 @@ The screenshot half of that was withdrawn on 2026-09-13; see the "No screenshots
 
 ---
 
+## Owner additions, 2026-09-13, raised during session 2
+
+Dictated while session 2 was running, in answer to what the app should do on a day it cannot
+read, and on 1 January. Prayer names normalised. These extend R1 to R6, and where they differ
+from anything else in this brief, these win. The owner refined the styling twice in the same
+conversation; the rules below are the latest word, and the quotes keep every version so the changes
+are visible. Where the owner has not decided, a rule says **ask**.
+
+| Rule | |
+| --- | --- |
+| **R7** | A day **missing from the payload altogether** (364 days returned, or a week lost) is a whole-day failure: every Standard and Extras row that day shows `--:--`. |
+| **R8** | A fully dashed day is **never skipped**. Today the display date is the day of the next prayer to come (`stores/schedule.ts`), and dashed rows can never be next, so without a rule the list would jump straight past the day. It stays on screen **until 00:00 London**, and the list then moves to the next day. **Ask** whether it comes on screen when the day before hands over, or only at 00:00; the owner's "for 24 hours" points to 00:00. |
+| **R9** | A dashed row is **never next**, on either list. The active highlight slides past it, with the usual transition, to the next readable prayer: with Magrib dashed, Asr hands straight over to Isha. |
+| **R10** | A dashed row otherwise keeps the styling its position gives any row: **dim while upcoming**, and **brightly lit once passed**, going from dim to bright with the usual transition when the highlight moves beyond it. |
+| **R11** | A **fully dashed day shows no active highlight** on any row until 00:00 London, because there is no prayer to put it on. The owner's first styling message counted every row of such a day as passed and brightly lit, and the later one did not revisit it. **Ask**, on screenshot (1), whether those rows are bright or dim, what the countdown shows, and which occurrence a tap opens. |
+| **R12** | Tapping a dashed row behaves as tapping any row does. The owner first put it as a dashed row being past, so its overlay shows the next occurrence, tomorrow's; with R10 that holds for a passed dashed row, while an upcoming one behaves as upcoming. Whichever occurrence the overlay shows, it shows `--:--` if that occurrence is unreadable. **Confirm on the screenshots below.** |
+| **R13** | **1 January with 31 December not cached** (fresh install, Refresh, or an old version first opened that day): fetch **31 December alone** with the endpoint's `date=YYYY-MM-DD` parameter, instead of the whole previous year. If the endpoint refuses it, 1 January still shows normally, and only 1 January's Midnight and Last Third show `--:--`. The countdown bars that need 31 December follow R14: the Standard bar until Fajr and the Extras bar until Suhoor. The owner did not separate a refusal from a failed fetch: **ask**. Today that case shows the error screen all day, and Refresh cannot fix it (traced from the code, not run on a device). |
+| **R14** | A countdown bar that cannot be worked out is **not dashed**. Either hide it, or show it disabled at 10% (the owner said "empty the bar and make it 10% capacity": **ask** whether that means fill or opacity), until a prayer it can use comes round. The owner has not chosen between the two, so show both as screenshots. |
+| **R15** | **Screenshots for the owner to approve or reject**, an explicit exception to the no-screenshots rule. Each one **without the overlay and with it**: (1) a fully dashed day; (2) a single dashed prayer; (3) Fajr and Magrib dashed, with Sunrise next; (4) tapping the dashed Fajr, which has passed; (5) tapping the dashed Magrib in that scene, which is still upcoming; (6) both countdown-bar options from R14, added because the owner has not chosen. Keep them out of the repo and out of `/tmp`. |
+
+> *"When it's not matching that, we will put dash dash colon dash dash, for the full day, for all
+> five prayers, and all extra times as well, because we can't calculate anything. If it's only one
+> out of those five, we put dash dash for only that one, and the rest are shown from the source."*
+
+> *"If it's completely missing a day ... we continue on and essentially refresh at midnight, English
+> midnight ... for 24 hours it will just show dash, dash, dash, dash ... until 12 o'clock AM, then it
+> will go to the next day and start calculating from the next day."*
+
+> *"Every prayer on the extras and the standard schedule should be treated as passed if it's dash,
+> dash, dash, dash ... if I tap on it, it should show me the overlay for the next occurrence, which
+> should be the next day. If the next day is also broken, it should also show dash dash."*
+
+> *"I think we should just keep it as brightly lit dash dash in all cases, regardless of whether it's
+> upcoming, it's past or it's next."* (Superseded by the next quote.)
+
+> *"If it's the full day, then the active background will not be on any of them ... we won't show the
+> active background, it will disappear. If the dashed prayer is just one prayer and it's not next and
+> it's not passed, it's an upcoming prayer, then we will give it the same styling. Just keep the same
+> styling ... If Magrib is dashed and Asr is not dashed, and the active next prayer is Asr, Asr will
+> have the active background. But after the countdown finishes, it will skip over Magrib and go
+> straight to Isha, in the same smoothness, same transition speed ... when Asr is still next, Magrib
+> will be dim. But after it passes Magrib, it will go to Isha, and now Isha is next. So Magrib will
+> now be brightly lit, and it will follow the same transition going from dim to bright. And same when
+> Magrib is dim and you tap on it, it will become bright. So it will keep the exact same behaviour."*
+
+> *"Please take some screenshots of this for me so I can see what it looks like, so I can improve or
+> disapprove ... at least three: the overlay of dash dash, a full day of dash dash, and a single
+> prayer dash dash."* And later: *"Show me Fajr being dashed and Sunrise being the next prayer ... and
+> tapping the Fajr dashed and tapping the Magrib dashed, Fajr is passed, but Magrib is upcoming. I want
+> you also to take screenshots before, without the overlay, and with the overlay."*
+
+> *"On January 1, if someone downloads on January 1, we can use this exact one to get yesterday's
+> one ... I'm pretty sure one day, yesterday, will exist. So let's go ahead with that logic. And if
+> it doesn't exist, we will simply show the dash dash dash for the things that we cannot calculate.
+> If it's the countdown bar, for example, we just won't show it, there's no need to show a dash. Or
+> maybe we will empty the bar and make it 10% capacity, just to show that it's disabled ... then it
+> will get enabled for the next prayer when it becomes available."*
+
+**Dependencies, restated by the owner:** anything worked out from a dashed time is dashed too.
+Midnight and Last Third need Magrib and Fajr, Suhoor needs Fajr, and Duha needs Sunrise. The graph
+above adds Istijaba, which needs Magrib.
+
+### What the endpoint serves, measured 2026-09-13 with the production key
+
+| Request | Answer |
+| --- | --- |
+| `year=2026` | HTTP 200, 365 days |
+| `year=2024`, `year=2025`, `year=2027` | HTTP 200, `times` empty |
+| `date=2026-09-12` | HTTP 200, one day as a flat object (`date`, `fajr`, `fajr_jamat`, `sunrise`, ...) |
+| `date=2025-12-31`, `date=2025-09-13`, `date=2027-01-01` | HTTP 404, with an `error` field |
+
+In September only the current year is served, by either parameter. The owner expects last year's
+31 December still to be there on 1 January, when the provider has only just rolled over. That
+cannot be checked before 1 January 2027, and the provider's TLS certificate runs only from 7 May to
+20 November 2026, so the 3T cannot reach the live endpoint with its clock on 1 January. Prove the
+request shape with a live call from the Mac, sending `24hours=true` as the year request does
+(`api/client.ts:14`), and both branches with unit tests.
+
+### Open: ask the owner before building R8 and R9
+
+When a day's **last** row is dashed (Isha, say), does the list move on after its last readable row,
+or at 00:00 London? R9 with today's display rule would move it on at Magrib, while session 8 keeps a
+day current until its last prayer has passed. Session 8 must follow the answer. Put session 8's case
+in the same question, and in R8's: where a readable row falls after 00:00, as the 00:40 Magrib does
+on session 8's mock, a move at 00:00 drops it while it is still due.
+
+What the owner said about a single dashed row after 00:00 settles which rows dash, not when the list
+moves on: *"if only Isha is missing, then only Isha will be dash dash, and everything else will have
+a number."*
+
+---
+
 ## Constraints
 
-- **The dashes are a visual change, and the owner has authorised exactly this one.** `--:--` in
-  place of a time, and an alert control that cannot be set. Anything beyond that — a banner, an
-  explanation, a colour, an icon — is a **new** visual decision and needs asking first.
+- **The dashes are a visual change, and the owner has authorised exactly these.** `--:--` in place
+  of a time, an alert control that cannot be set, and the styling in R9 to R11 and R14. Each is
+  subject to the owner's verdict on the R15 screenshots, which is also where R11 and R14 put their
+  open questions. Anything beyond that, such as a banner, an explanation, a colour or an icon, is a
+  **new** visual decision and needs asking first.
 - Never touch `uat`. One concern per commit, version-bumped, merged `--no-ff` into `uat-2`.
 - Comments explain why, never what.
 - Independent deep review before merge. This is the data path; it has already been broken once
