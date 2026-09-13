@@ -273,13 +273,23 @@ cannot be checked before 1 January 2027, and the provider's TLS certificate runs
 request shape with a live call from the Mac, sending `24hours=true` as the year request does
 (`api/client.ts:14`), and both branches with unit tests.
 
+**Measured again on 2026-09-13, after session 2.** With `24hours=true`, `date=2026-09-12`,
+`date=2026-01-01` and `date=2026-12-31` each return HTTP 200, and all six times match the same
+day in the `year=2026` download. Without `24hours=true` the same requests return afternoon times
+in 12-hour form, such as Dhuhr `01:02` for `13:02`, which still pass the `HH:MM` check
+(`TIME_PATTERN` in `api/client.ts`), so the single-day request must send it. `date=2025-12-31`
+still returns HTTP 404 with `No data found`, and `year=2025` returns no days. So the single-day
+request agrees with the year download at both ends of the current year and in the middle. Whether
+the provider still serves 31 December once 1 January has come can only be seen on 1 January 2027,
+which is why R13 keeps its fallback.
+
 ### Open: ask the owner before building R8 and R9
 
 When a day's **last** row is dashed (Isha, say), does the list move on after its last readable row,
-or at 00:00 London? R9 with today's display rule would move it on at Magrib, while session 8 keeps a
-day current until its last prayer has passed. Session 8 must follow the answer. Put session 8's case
+or at 00:00 London? R9 with today's display rule would move it on at Magrib, while session 7 keeps a
+day current until its last prayer has passed. Session 7 must follow the answer. Put session 7's case
 in the same question, and in R8's: where a readable row falls after 00:00, as the 00:40 Magrib does
-on session 8's mock, a move at 00:00 drops it while it is still due.
+on session 7's mock, a move at 00:00 drops it while it is still due.
 
 What the owner said about a single dashed row after 00:00 settles which rows dash, not when the list
 moves on: *"if only Isha is missing, then only Isha will be dash dash, and everything else will have
