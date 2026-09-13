@@ -4,6 +4,50 @@
 session** — before `coverage-sweep.md`, before `moonsighting-research.md`. The owner was explicit:
 *"absolutely before any other sessions, the next session."*
 
+## Paste this to start the session
+
+```
+Read ai/prompts/device-verification-sweep.md and follow it. This is session 1 of the queue in
+ai/prompts/README.md — the full-device verification sweep. Do not drift into sessions 2-5.
+
+Before anything else, read: ai/prompts/README.md, ai/features/uat-2/AUDIT-FINDINGS.md (findings
+5, 65-71 especially), AGENTS.md, evidence/README.md.
+
+The API key is at ~/.config/athan/.api_key (mode 600). Read it from there. NEVER commit it.
+
+Devices: OnePlus 3T on adb (3T_SERIAL) — screenshots, clock-driving, the midnight matrix, DST
+pairs, every notification-schedule dump. iPhone XS — audio only, and only once I have connected
+it; check `xcrun xctrace list devices` and ask me if it is offline. Run the two audio passes in
+parallel.
+
+Acceptance criterion, mine, verbatim: there is no notification that should ever be a generic one.
+All 99 sounds play their own file. Prove it with the dumpsys fingerprint (44100 mono = athan,
+22050 stereo = reminder, 48000 stereo = the default reminder, 44100 stereo = a fallback tone and
+therefore a failure), then listen to each of the 32 athans, because all 32 share a fingerprint.
+
+Screenshots go in evidence/ with the naming convention in evidence/README.md. The filename must
+carry the claim.
+
+Standing rules, all absolute:
+- Never touch uat. One finding, one branch, one commit, version-bumped, merged --no-ff into uat-2.
+- Never build on EAS and never push to it. EAS and the Expo MCP are READ ONLY. Builds are local.
+- releases.json is untouchable.
+- Keep every visual exactly as it is. Ask before touching a pixel.
+- Never copy, average or synthesise a prayer time. Not from yesterday, not from tomorrow, ever.
+- Comments explain WHY, never what. The code already shows what.
+- Every change deep-reviewed by an agent with no stake in it, then verified on hardware. A green
+  unit test is not evidence a notification fired; a fired notification is not evidence the right
+  file played. Both, every time.
+
+How to work: Opus 5 at max effort for everything, including every subagent. Work autonomously in
+a loop and do not stop to check in — I am not available to review. Use parallel agents in
+worktrees where the work divides cleanly, deep-diving reviewers rather than brief overviews.
+Put a compact progress table in EVERY response.
+
+Do the device testing yourself — change the clock, build, install, read the dumps. Do not hand me
+a recipe.
+```
+
 ## The ask, in the owner's framing
 
 > "I'm absolutely going to make you test from top to bottom, every single feature… read the data
