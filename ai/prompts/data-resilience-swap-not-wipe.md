@@ -74,22 +74,27 @@ empty cache. This is not a rewrite; it is moving one call past an `await`.
    has, which is a **behaviour change the owner must approve** — do not ship it silently.
 3. Add `fetched_years` to the preserve list, or write it back with the save. Losing it buys
    nothing and costs a full re-download.
-4. **Repair the day instead of dropping it — this is now measured, see finding 69.** Averaging
-   the day before and the day after reconstructs any single missing day to **within one minute
-   on every field, worst case, across a real year**. London times drift 0–4 minutes a day and do
-   so smoothly. Dropping leaves the hole that causes the wipe loop; repairing removes the hole
-   entirely, so this fix and step 1 close the same wound from both ends.
+4. **Never substitute a prayer time — owner ruling, 2026-09-13, absolute.** No copying from
+   yesterday or tomorrow, no averaging, no interpolation, no synthesised value of any kind. A
+   substituted time is indistinguishable from a real one on screen and someone prays to it; the
+   app's value is that it shows the provider's figure, not our best guess at it. Finding 69's
+   repair proposal is withdrawn; finding 70 carries the ruling.
 
-   Fall back to dropping only when the neighbours are themselves unreadable — a *block* of bad
-   days, which is what polar summer produces and where interpolation genuinely cannot help.
-   And whatever the rule, record the dropped dates so `needsDataUpdate` can tell "a hole we
-   already know about" from "the cache is stale": **re-fetching is never the answer**, because
-   the endpoint returns the same unreadable day every time.
+   **The defect to fix instead is that the app shows tomorrow as today.** Measured: with today's
+   record dropped, the 3-day sequence returns 12 rows instead of 18, the display date resolves to
+   tomorrow, and the user gets tomorrow's times rendered completely normally — no warning, no gap.
+   That is not a degraded screen, it is a confident wrong answer. The honest options are to fail
+   visibly for that day (the error screen and its Refresh already exist) or to show the
+   unavailable rows blank — the second is a visual change and needs separate approval.
 
-   **Two owner decisions gate this, and neither is the implementer's:** whether a reconstructed
-   prayer time is acceptable at all (accurate to a minute, but still a time the provider did not
-   give us, shown to someone about to pray — a religious call), and if so whether the app should
-   say so (any visible marker is a visual change and needs separate approval).
+   Also record the dropped dates so `needsDataUpdate` can tell "a hole we already know about"
+   from "the cache is stale". **Re-fetching is never the answer**: the endpoint returns the same
+   unreadable day every time.
+
+   A plausibility check is worth considering separately — a shape check cannot see a time that is
+   well-formed and wrong, and a day of six `00:00`s renders and schedules today without complaint.
+   **Its only permitted output is to fail honestly. Never to invent a replacement.**
+
 5. Tests must span the range, per the standing fixture rule: multi-day payloads, a fetch that
    fails after the wipe point, a dropped day arriving as today, and the December branches. A
    single-day fixture cannot tell "cleared then failed" from "never cleared" — that is exactly

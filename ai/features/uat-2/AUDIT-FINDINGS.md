@@ -4012,37 +4012,91 @@ does not hit one day — it hits all 365 at once, so `todayDropped` is true, the
 the failure is loud. **It cannot silently lose a year to a format change.** What it can lose
 silently is a single anomalous day, which is precisely what it is for.
 
-### Dropping is still the wrong repair, and the data says what the right one is
+### WITHDRAWN: this section originally recommended reconstructing a missing day
 
-A dropped day leaves a hole, and finding 67 shows what that hole costs: a full wipe and re-download
-on every launch of the day it arrives. So measure the alternatives on the same real year — for
-every day, pretend it is unreadable and reconstruct it:
+It proposed averaging the neighbouring days, and measured that it lands within a minute. **The
+owner rejected it outright and the recommendation is withdrawn** — see finding 70 for the ruling
+and the reasoning, which is better than mine was. The measurement is kept there because it is
+still evidence about how the data behaves; it is no longer a proposal.
 
-| Field | Copy yesterday: worst error | **Interpolate from both neighbours: worst error** |
-| --- | ---: | ---: |
-| Fajr | 4 min | **1 min** |
-| Sunrise | 3 min | **1 min** |
-| Dhuhr | 1 min | **1 min** |
-| Asr | 2 min | **1 min** |
-| Magrib | 3 min | **1 min** |
-| Isha | 3 min | **1 min** |
+---
 
-**Averaging the day before and the day after reconstructs any single missing day to within one
-minute, on every field, across the whole year** — worst case, not median. London times drift 0–4
-minutes a day and do so smoothly, which is why the midpoint is so close. The codebase already
-reasons this way: `getNightTimesForDay` substitutes a neighbouring day's Magrib when the previous
-day is not stored, on the grounds that it is "within a minute or two."
+## 70. OWNER RULING: never substitute a prayer time. And what the user actually sees today.
 
-So the better rule is: **repair, don't drop.** Interpolate when both neighbours are readable;
-fall back to dropping only when they are not — a block of unreadable days, which is what polar
-summer produces.
+> *"We absolutely never, ever, ever, ever want to copy a different prayer. We don't want to copy
+> yesterday or tomorrow, never, ever, ever do that."* — owner, 2026-09-13
 
-**Two things the owner has to decide, and neither is mine to choose.**
-1. **Is a reconstructed prayer time acceptable at all?** It is accurate to a minute, but it is
-   still a time the provider did not give us, shown to someone about to pray. The alternative is
-   an honest gap. That is a religious call, not an engineering one.
-2. **If yes, should the app say so?** A quiet substitution and a marked one are different
-   products. Any visible marker is a visual change and needs approval separately.
+**Absolute and permanent. No copying, no averaging, no interpolation, no synthesised value of any
+kind, for any field, under any circumstance.** Finding 69's repair recommendation is withdrawn.
 
-Recorded, not implemented. Folded into `ai/prompts/data-resilience-swap-not-wipe.md` (session 2),
-because it is the same code path as the wipe ordering and should be decided once.
+**The owner is right, and the reasoning is better than the one it replaced.** A substituted time
+is indistinguishable from a real one on screen — same row, same font, same countdown, same athan
+at the end of it. Someone prays to it. Landing within a minute does not make it London Prayer
+Times' figure, and the app's entire value is that it shows *their* number rather than the app's
+best guess at it. There is no honest way to display a time the source did not give.
+
+My own measurement also undercut the proposal, which I should have noticed before making it: one
+minute is the worst case *for a single isolated missing day sitting between two good ones* —
+exactly the case that barely happens. The realistic failures are a block of bad days or a format
+change, and those are precisely where interpolation degrades, silently.
+
+### What counts as "incorrect" — the exact answer
+
+**Only malformed is detected.** Six fields against `/^([01]\d|2[0-3]):[0-5]\d$/`. Nothing else.
+
+**A wrong but well-formed time is completely invisible.** Measured: a day whose six times are all
+`00:00` builds and renders every row without a murmur — Fajr, Sunrise, Dhuhr and Asr at 00:00 on
+the day; Magrib and Isha pushed to the next calendar day at 00:00 by the midnight-crossing rule,
+both still correctly grouped on the original list day. Six athans at midnight. **Nothing anywhere
+in the app objects.** `00:00` is a valid time, as the owner said.
+
+So: **"incorrect" today means unreadable. It has never meant implausible.** There is no
+plausibility check in the codebase — not against the season, not against yesterday, not against
+ordering within the day.
+
+### What the user sees when one prayer is malformed — measured, not inferred
+
+**One bad field drops the whole day.** All six prayers, not just the bad one. `validateApiTimes`
+works per day, and any one failing field takes the record out.
+
+Then, on that day, with today's record absent:
+
+| What happens | Measured |
+| --- | --- |
+| The app asks for its usual 3-day sequence | returns **12 rows, not 18** — the missing day is skipped |
+| The display date resolves from the next future prayer | **tomorrow** |
+| What is on screen | **tomorrow's date and tomorrow's times, rendered completely normally** |
+| Warning, gap, or error | **none** |
+
+**That is the real defect, and it is worse than a gap: the app shows a wrong answer
+confidently.** Someone opens it in the morning and reads tomorrow's Fajr as today's.
+
+Two consequences follow it:
+- Finding 67 — today's record missing means a full wipe and year re-download **on every launch
+  that day**, each one dropping the same day again.
+- The *following* day's Extras night rows are silently a few minutes out: `getNightTimesForDay`
+  falls back to the day's own Magrib when the previous day is not stored (measured: Midnight
+  00:00 and Last Third 01:40 from the wrong anchor).
+
+### What if an entire day is incorrect
+
+**Malformed throughout: identical to one bad field.** The day is dropped either way — there is no
+difference in outcome between one unreadable field and six, which is itself worth knowing.
+
+**Well-formed but wrong throughout: fully rendered, fully scheduled, entirely invisible.** This is
+the `00:00` case above.
+
+### Where this leaves the design, with substitution off the table
+
+The honest options, none implemented, all needing the owner's decision:
+
+1. **Fail visibly for that day** rather than silently showing tomorrow's. The error screen and its
+   Refresh button already exist. Honest, and the least code.
+2. **Show the day with the unavailable rows blank or dashed** — the finest-grained honest answer,
+   keeps the five readable prayers. A visual change, so it needs approval separately.
+3. **At minimum, stop presenting tomorrow as today.** Whatever else is decided, this one is not a
+   trade-off — it is the app being confidently wrong, and it should stop.
+
+Separately worth raising, and explicitly **not** as a trigger to substitute anything: a
+plausibility check would catch what a shape check cannot — a time that is well-formed and wrong.
+Its only permitted output is to fail honestly and say so. Never to invent a replacement.
