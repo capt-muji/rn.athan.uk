@@ -139,7 +139,7 @@ const getIstijabaTime = (rawData: ISingleApiResponseTransformed, date: string): 
  * Midnight and Last Third of the Extras list for a day: the night leading into it
  *
  * A night belongs to the day that follows it (ISSUES #29), so it runs from the
- * previous day's Magrib to this day's Fajr — two stored records, and both ends must
+ * previous day's Magrib to this day's Fajr: two stored records, and both ends must
  * come from the provider. There is no night to work out when either time is unreadable
  * or the day before is not stored. That day's Magrib is never borrowed in its place:
  * a night built from a borrowed Magrib put an alarm 21 minutes out beside March's

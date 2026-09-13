@@ -1053,18 +1053,18 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // below would treat every notification the OS still holds as stale. Bailing
   // leaves the existing alarms alone; the next refresh runs once data exists.
   //
-  // The test is every list day any prayer arms, not today alone. An upgrade wipe
-  // still leaves all of them unstored, so it still bails; but one day missing
-  // from the payload (R7) is a day of unreadable rows, and treating it as an
-  // empty cache would stop the readable days around it from being armed.
-  const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS + 1);
+  // The test is every list day that can arm a prayer, not today alone. An upgrade
+  // wipe still leaves all of them unstored, so it still bails; but one day missing
+  // from the payload (R7) is a day of unreadable rows, and treating it as an empty
+  // cache would stop the readable day beside it from being armed. The night rows'
+  // extra list day does not count: its rows need tomorrow's Magrib, so with only
+  // that day stored nothing can be armed, and stamping the gate would silence the
+  // next twelve hours.
+  const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
   if (!armedListDays.some((date) => Database.getPrayerByDateString(date))) {
-    logger.warn(
-      'NOTIFICATION: No prayer data for any day in the window — skipping reschedule so nothing is cancelled',
-      {
-        armedListDays,
-      }
-    );
+    logger.warn('NOTIFICATION: No prayer data for today or tomorrow, skipping reschedule so nothing is cancelled', {
+      armedListDays,
+    });
     return false;
   }
 

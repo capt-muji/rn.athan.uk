@@ -2222,7 +2222,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       it.each([
         { label: 'today', date: '2026-08-29', outcome: 'runs' },
         { label: 'tomorrow', date: '2026-08-30', outcome: 'runs' },
-        { label: 'the extra list day the night rows use', date: '2026-08-31', outcome: 'runs' },
+        // Its night rows need tomorrow's Magrib, so nothing could be armed and the gate must stay open
+        { label: 'the extra list day the night rows use', date: '2026-08-31', outcome: 'bails' },
         { label: 'the day after the window', date: '2026-09-01', outcome: 'bails' },
         { label: 'yesterday', date: '2026-08-28', outcome: 'bails' },
       ])('with only $label stored, the reschedule $outcome', async ({ date, outcome }) => {

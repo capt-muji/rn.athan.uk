@@ -37,9 +37,10 @@ const endOfListDay = (date: string): Date =>
 /**
  * Orders a sequence by list day, then by position on the list
  *
- * Not by moment, because an unreadable row has none. For readable rows the two orders agree: a list's
- * rows run in time order, and every list ends before the next begins (Isha before the next Fajr;
- * Istijaba, an hour before Magrib, before the night that Magrib starts).
+ * Not by moment, because an unreadable row has none. For London's readable rows the two orders agree:
+ * a list's rows run in time order, and every list ends before the next begins. They can part only at
+ * polar extremes (a night shorter than an hour puts Suhoor before Last Third), which is why no rule in
+ * this module reads a readable row's position as its time.
  */
 export const compareListOrder = (a: Prayer, b: Prayer): number => {
   if (a.belongsToDate !== b.belongsToDate) return a.belongsToDate < b.belongsToDate ? -1 : 1;
