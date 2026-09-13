@@ -1,0 +1,168 @@
+# Session 3 design: unreadable times show `--:--`
+
+Brief: `ai/prompts/unavailable-times-dashes.md` (R1 to R15). This is the design, written before any
+code so that review happens on paper. Where the brief says **ask**, the owner told this session to run
+autonomously, so each such point below carries a default taken from the owner's recorded words, and
+all of them go to the owner with the R15 screenshots.
+
+## 1. Representation
+
+- `ISingleApiResponseTransformed`: all nine time fields become `string | null`. `null` means the
+  provider's value was not a zero-padded 24-hour `HH:MM`. Suhoor, Duha and Istijaba are `null` when
+  their source (Fajr, Sunrise, Magrib) is. `--:--` is never stored.
+- `Prayer` becomes a union: `ReadablePrayer` (`datetime: Date`, `time: string`) or `UnreadablePrayer`
+  (`datetime: null`, `time: null`). `isReadable(prayer)` narrows it. Every consumer that does
+  arithmetic is forced by the compiler to narrow first.
+- A day **missing from the store** inside a requested range is built as a whole day of unreadable
+  rows (R7). Nothing is written for it, so the 1.26.35 anchor-day trust rules in `stores/sync.ts` are
+  untouched: a download without today is still added without a wipe.
+- No cache schema bump: every record already stored is a valid record of the new shape.
+
+## 2. Validation (`api/client.ts`)
+
+- `validateApiTimes` marks each malformed field `null` instead of dropping the day (R3).
+- It throws only when **no field in the whole filtered payload is readable** (a format change), so a
+  provider fault cannot replace a good cache with a year of dashes.
+- The `today is unreadable` throw goes (R1).
+- The four UTC fixture dates in `api/__tests__/client.test.ts` move to London dates (gap map item 7),
+  since this session rewrites those tests and they fail from 00:00 to 00:59 BST.
+
+## 3. Building rows (`shared/prayer.ts`)
+
+| Row | Unreadable when |
+| --- | --- |
+| Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha | its own field is `null`, or the day is not stored |
+| Suhoor | Fajr is |
+| Duha | Sunrise is |
+| Istijaba (Fridays) | Magrib is |
+| Midnight, Last Third of list D | D's Fajr is, **or** D−1's Magrib is, **or** D−1 is not stored (finding 72: no borrowed Magrib) |
+
+- An unreadable row keeps its name, its Arabic name and `belongsToDate`. It never reaches
+  `createPrayerDatetime`, `adjustPrayerDateForMidnightCrossing` or `calculateBelongsToDate`.
+- **Sequence order becomes list order**: list day, then canonical position (`PRAYERS_ENGLISH`,
+  `EXTRAS_ENGLISH`). For readable data this is identical to chronological order: within a list
+  the canonical order is chronological, and a list's last row always precedes the next list's first
+  (Isha before the next Fajr; Istijaba, being Magrib − 60, before the next night's Midnight). No time
+  logic may rely on array position any more; it asks for instants.
+- `createPrayersForDate(type, date)` is exported for the previous-day lookup (§4).
+
+## 4. Sequence rules (new pure module `shared/sequence.ts`, no React Native or MMKV imports)
+
+It has to be pure because `shared/widgetTimeline.ts` needs the same rules.
+
+| Question | Rule |
+| --- | --- |
+| **Next** (highlight, countdown, alarms' boundary) | The readable row with the smallest instant after now. An unreadable row is never next (R9). |
+| **Passed**, readable row | `datetime < now` (unchanged). |
+| **Passed**, unreadable row | By position (R10): passed when every readable row before it on its own list has passed, i.e. its canonical position is before the first readable row on its list that has not passed. A list with no readable row left counts all its unreadable rows as passed. |
+| **Display date** | The earliest list day in the sequence that either has a readable row still to come, or has **no readable row at all** and now is before 00:00 London at its end (R8). |
+| **Hold end** | When the list on screen has no readable row, 00:00 London at the end of that day. The countdown ticker, the foreground resync and the overlay's close boundary treat it as a boundary, exactly like a prayer, so the list moves on at 00:00 with nothing else due. |
+| **Previous** (bar, "ago" badge) | The latest readable row before next, on next's own list or the list before it. When the list before is not in the sequence, the store builds it from MMKV (`createPrayersForDate`), which also gives yesterday's post-midnight Isha its real instant (gap map L3). If neither list has one, there is no previous row and the bar cannot be worked out (R14). |
+| **Next occurrence** (overlay on a passed row) | The same prayer on the earliest later list day in the sequence, readable or not (R12), else the row itself as today. |
+| `prayerIdentity` | Unchanged, `english_belongsToDate`. |
+| `sequenceSignature` | Identity plus instant or `-`, so a row turning unreadable is a change and a stable unreadable row is not. |
+
+Behaviour this produces:
+
+- One unreadable Asr: Asr shows `--:--`, dim until Dhuhr passes, then bright; the highlight and the
+  countdown go from Dhuhr straight to Magrib; the bar runs Dhuhr to Magrib; the list moves on after Isha
+  as today.
+- Unreadable Fajr: bright (passed) from the moment its list is on screen, Sunrise next.
+- **Unreadable last row (Isha), the open question**: the list moves on after Magrib, the last readable
+  row, exactly as it moves on after the last row today. Chosen because it is the same rule for
+  every list (an Extras list ending in an unreadable Duha would otherwise hold past the next list's
+  Midnight, which falls before 00:00), it is R9's rule, and it agrees with session 7: a day stays
+  current until its last readable row has passed, so a readable 00:40 Magrib after an unreadable Isha
+  keeps its day on screen until 00:40.
+- **Fully unreadable day D (R8, R11)**: comes on screen when D−1 hands over (after D−1's last readable
+  row), stays until 00:00 London at the end of D, then D+1. No highlight. Every row bright (the owner's
+  first ruling, "treated as passed"). The countdown counts to the next readable prayer. A tap opens
+  the next occurrence, `--:--` if that is unreadable too. The bar is hidden: its previous row would
+  have to come from D or D−1's handover, and D has none.
+
+## 5. Countdown and bar (`stores/countdown.ts`, `hooks/useCountdownBar.ts`, `components/countdown/Bar.tsx`)
+
+- The ticker transitions at the next boundary (next readable instant or hold end).
+- `CountdownStore.timeLeft` becomes `number | null`. It is `null` only when the overlay targets an
+  unreadable occurrence, and the display atom renders it `--:--` (R12: whichever occurrence the
+  overlay shows, it shows `--:--` when unreadable).
+- A new bar-availability selector is false when previous or next is missing. **R14 default: the bar is
+  hidden** by opacity, keeping its space so nothing reflows. It comes back when a usable pair does.
+  The two other readings of "empty the bar and make it 10% capacity" (an empty track at 10% opacity,
+  and a 10% fill) are built only for the owner's screenshots.
+
+## 6. Rows (`components/prayer/*`, hooks)
+
+- `Time.tsx` renders `--:--` for a `null` time.
+- `Alert.tsx`: when the occurrence on screen is unreadable, the bell cannot be pressed
+  (`accessibilityState.disabled`) and shows the saved glyph at 25% opacity, the opacity the alert
+  sheet already uses for a control that cannot be used. **Owner approves on screenshot.** The saved
+  preference is never changed (R5).
+- `ActiveBackground.tsx` fades out when the list on screen has no next row (R11), using the overlay
+  veil's existing opacity animation.
+- The date-roll cascade condition `nextPrayerIndex === 0` becomes "next is the list's first readable
+  row", identical for readable data.
+- `usePrayerSequence` takes `isPassed`, `isNext` and the next index from `shared/sequence.ts`, so the
+  hooks and the stores cannot disagree.
+
+## 7. Alarms (`stores/notifications.ts`)
+
+- An unreadable occurrence is skipped like a day with no data: nothing armed, and an alarm armed for
+  it before the data changed is cancelled by the existing stale-cancel. The preference is untouched,
+  so it resumes on the next readable day (R5, R6).
+- The window stays the same list days; skipping one day does not move or shorten the others.
+- The empty-cache guard in `_rescheduleAllNotifications` bails only when **no day in the window is
+  stored** (it was "today is not stored"). Otherwise a day missing from the payload (R7) would stop
+  tomorrow's readable alarms being armed. An upgrade wipe still leaves every day unstored, so the
+  guard still holds there.
+
+## 8. Widgets (`shared/widgetTimeline.ts`)
+
+- Segments run between readable instants and hold ends. Each entry's day list is the display date at
+  that entry (`resolveDisplayDate`), rows show `--:--` for unreadable times, and `activeIndex` is -1
+  when next is not on that list, which the layouts already render without a pill.
+- The stale card anchors on the last readable row. A sequence with no readable row still yields no
+  entries. The widgets flag stays off; this keeps them correct for when it is on.
+
+## 9. 1 January (`stores/sync.ts`, `api/client.ts`) — R13
+
+- `fetchDay(date)` asks the endpoint for one day with `date=YYYY-MM-DD&24hours=true` and runs it
+  through the same filter, validation and transform. The mock path serves that day from
+  `MOCK_DATA_SIMPLE`.
+- On 1 January with no 31 December stored, `initializeAppState` fetches **31 December alone**, keeps
+  its place-in-line ordering, stores the day, and **does not mark the year fetched** (one day is not
+  a year).
+- **R13 default: a refusal and a failed fetch are the same**: it logs, carries on, and the next sync
+  tries again. `sync()` no longer rejects (gap map L6), 1 January shows, and only its Midnight and Last
+  Third show `--:--`, with the bars following R14 until Fajr (Standard) and Suhoor (Extras).
+
+## 10. Who can interleave with what
+
+| Caller | Touches | Interaction with this change |
+| --- | --- | --- |
+| Bootstrap hydrate (module load) | reads today, builds sequences | Today stored with `null`s still hydrates. A missing today still shows the spinner and waits for sync, as now. |
+| Launch sync, foreground sync, background task sync | download, swap, `initializeAppState` | Unchanged apart from the per-field validation. An unreadable today is stored, so `needsDataUpdate()` stays false and nothing re-fetches (finding 67's loop). The 1 January day fetch can overlap in two syncs: both save the same day under the existing ordering, and a failure no longer throws. |
+| Post-sync and post-paint notification refresh, sheet commit | `getPrayerForDate` per day | Unreadable occurrence → skipped → its old id stale-cancelled. The new window guard still bails on an empty cache. |
+| Countdown ticker | `refreshSequence` at a boundary | New boundary at hold end (00:00). Synchronous atom writes only. |
+| Resume listener | `checkOverlayBoundary`, `resyncCountdowns` | Both use the same boundary, so a hold end crossed while suspended is caught up. |
+| Overlay open and close | boundary | `canOpenOverlay` and the 2 s close use the boundary, so the list cannot change day under an open overlay at 00:00. |
+| Midnight | nothing reschedules at 00:00 | Unchanged for alarms. Only the list moves, by the ticker. |
+| December and 1 January | sync branches | Unchanged except §9. |
+
+## 11. Deliberately not changed
+
+- Finding 70's plausibility question (six `00:00`s) stays out.
+- Session 7's rebuild-from-calendar-day and alarm-window defects (L1, L2) stay out. L3 is fixed only
+  because the previous-row lookup now builds the day with the shared builder.
+- The Standard and Extras visuals beyond the rules above.
+
+## 12. Owner decisions taken by default (all shown on the R15 screenshots)
+
+| Question in the brief | Default |
+| --- | --- |
+| R8: when a fully unreadable day comes on screen | When the day before hands over; leaves at 00:00 London |
+| Open: a day whose last row is unreadable | Moves on after its last readable row |
+| R11: rows of a fully unreadable day | Bright; countdown to the next readable prayer; tap opens the next occurrence |
+| R13: refusal against a failed fetch | Treated the same; retried on the next sync |
+| R14: a bar that cannot be worked out | Hidden (screenshots of both 10% readings too) |
+| R5: the disabled bell | Saved glyph at 25% opacity, not pressable |
