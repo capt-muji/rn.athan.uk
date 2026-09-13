@@ -21,8 +21,9 @@ all of them go to the owner with the R15 screenshots.
 ## 2. Validation (`api/client.ts`)
 
 - `validateApiTimes` marks each malformed field `null` instead of dropping the day (R3).
-- It throws only when **no field in the whole filtered payload is readable** (a format change), so a
-  provider fault cannot replace a good cache with a year of dashes.
+- It throws only when **no field of any day from today onwards is readable** (a format change), so a
+  provider fault cannot replace a good cache with a year of dashes. Yesterday, which the filter keeps,
+  does not count: a still-readable yesterday must not rescue a payload that changed format today.
 - The `today is unreadable` throw goes (R1).
 - The four UTC fixture dates in `api/__tests__/client.test.ts` move to London dates (gap map item 7),
   since this session rewrites those tests and they fail from 00:00 to 00:59 BST.
@@ -61,6 +62,9 @@ It has to be pure because `shared/widgetTimeline.ts` needs the same rules.
 | **Next occurrence** (overlay on a passed row) | The same prayer on the earliest later list day in the sequence, readable or not (R12), else the row itself as today. |
 | `prayerIdentity` | Unchanged, `english_belongsToDate`. |
 | `sequenceSignature` | Identity plus instant or `-`, so a row turning unreadable is a change and a stable unreadable row is not. |
+| **Boundary caching** | The next boundary is a derived atom of the sequence, read by the ticker, the resume path and the overlay. Worked out afresh it would always lie after now, and no crossing could ever be seen. |
+| **What `refreshSequence` keeps** | Readable rows still to come; every row of the display date and of later list days (a list day's unreadable rows are kept or dropped whole, never left as remnants); the previous readable row. |
+| **No readable row ahead** | When a built or refreshed sequence has none, it grows a day at a time, to 14 days at most, so a lost week does not leave the countdown without a target. |
 
 Behaviour this produces:
 
@@ -124,7 +128,7 @@ Behaviour this produces:
 - The stale card anchors on the last readable row. A sequence with no readable row still yields no
   entries. The widgets flag stays off; this keeps them correct for when it is on.
 
-## 9. 1 January (`stores/sync.ts`, `api/client.ts`) — R13
+## 9. 1 January (`stores/sync.ts`, `api/client.ts`): R13
 
 - `fetchDay(date)` asks the endpoint for one day with `date=YYYY-MM-DD&24hours=true` and runs it
   through the same filter, validation and transform. The mock path serves that day from
@@ -133,8 +137,21 @@ Behaviour this produces:
   its place-in-line ordering, stores the day, and **does not mark the year fetched** (one day is not
   a year).
 - **R13 default: a refusal and a failed fetch are the same**: it logs, carries on, and the next sync
-  tries again. `sync()` no longer rejects (gap map L6), 1 January shows, and only its Midnight and Last
-  Third show `--:--`, with the bars following R14 until Fajr (Standard) and Suhoor (Extras).
+  tries again. That branch no longer rejects `sync()` (gap map L6), 1 January shows, and only its
+  Midnight and Last Third show `--:--`, with the bars following R14 until Fajr (Standard) and Suhoor
+  (Extras). A failed year download on a launch with no usable cache still rejects, as today.
+- A later sync that does store 31 December reopens the 12-hour notification gate, so the next
+  reschedule arms that night's rows.
+- Only one response is ever stored: a body whose `date` is not the requested date is a failure, so
+  another day's times can never be filed under 31 December.
+
+## 9a. A day missing from the payload (R7) at launch
+
+- `stores/bootstrap.ts` hydrates when any day from today to today+2 is stored.
+- `needsDataUpdate` does not re-download for a missing today once the current year is marked fetched
+  and at least one of its days is stored: the provider's newest answer lacked the day, and asking
+  again on every launch changes nothing while an offline launch would show the error screen instead of
+  the day. With nothing of the year stored, or the year unmarked, it still downloads.
 
 ## 10. Who can interleave with what
 
@@ -142,7 +159,7 @@ Behaviour this produces:
 | --- | --- | --- |
 | Bootstrap hydrate (module load) | reads today, builds sequences | Today stored with `null`s still hydrates. A missing today still shows the spinner and waits for sync, as now. |
 | Launch sync, foreground sync, background task sync | download, swap, `initializeAppState` | Unchanged apart from the per-field validation. An unreadable today is stored, so `needsDataUpdate()` stays false and nothing re-fetches (finding 67's loop). The 1 January day fetch can overlap in two syncs: both save the same day under the existing ordering, and a failure no longer throws. |
-| Post-sync and post-paint notification refresh, sheet commit | `getPrayerForDate` per day | Unreadable occurrence → skipped → its old id stale-cancelled. The new window guard still bails on an empty cache. |
+| Post-sync and post-paint notification refresh, sheet commit | `getPrayerForDate` per day | An unreadable occurrence is skipped, and the id armed for it earlier is stale-cancelled. The new window guard still bails on an empty cache. |
 | Countdown ticker | `refreshSequence` at a boundary | New boundary at hold end (00:00). Synchronous atom writes only. |
 | Resume listener | `checkOverlayBoundary`, `resyncCountdowns` | Both use the same boundary, so a hold end crossed while suspended is caught up. |
 | Overlay open and close | boundary | `canOpenOverlay` and the 2 s close use the boundary, so the list cannot change day under an open overlay at 00:00. |
@@ -166,3 +183,23 @@ Behaviour this produces:
 | R13: refusal against a failed fetch | Treated the same; retried on the next sync |
 | R14: a bar that cannot be worked out | Hidden (screenshots of both 10% readings too) |
 | R5: the disabled bell | Saved glyph at 25% opacity, not pressable |
+
+## 13. Consequences the owner should see with the screenshots
+
+Found by the design review, 2026-09-13. None is built around; each follows from the defaults above.
+
+- **The disabled bell locks the whole prayer's setting while it shows.** Alert preferences are per
+  prayer, not per day, so on a fully unreadable Standard day the user cannot change tomorrow's Fajr
+  alert for about 27 hours (about 40 on Extras).
+- **The hold is longer on Extras.** The Extras list hands over after Duha, so a fully unreadable Extras
+  day is on screen from about 07:00 the day before until 00:00 at its own end, about 40 hours.
+- **A partial Extras failure.** With Fajr and Sunrise unreadable on a non-Friday, that Extras list is
+  fully unreadable while the next list's Midnight is readable at about 23:00. That Midnight fires on
+  time but is never highlighted, because the dashed day is still on screen until 00:00.
+- **A passed unreadable Istijaba cannot be tapped**, exactly as a passed readable one cannot today.
+- **Unreadable Extras night rows show bright early.** R10 read literally lights them once the rows
+  above them have passed, which for a leading Midnight is as soon as its list is on screen.
+- **The iOS widget's bar** still starts from the entry's own date when no previous row exists, as it
+  does today; the layouts read missing bounds as the refresh card. Widgets are flagged off.
+- **Downgrading** to a build older than this change reads a stored `null` and fails its sync; Refresh
+  recovers it.
