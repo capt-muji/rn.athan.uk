@@ -13,6 +13,7 @@ import {
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   NOTIFICATION_REFRESH_HOURS,
+  NOTIFICATION_ROLLING_DAYS,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
@@ -21,12 +22,13 @@ import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import * as PrayerUtils from '@/shared/prayer';
+import { isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber, resetStoredAtom } from '@/stores/storage';
-import { sync } from '@/stores/sync';
+import { getArmedDayChanges, sync } from '@/stores/sync';
 import * as PrayerWidgets from '@/stores/widget';
 
 const store = getDefaultStore();
@@ -390,12 +392,11 @@ export const setSoundPreference = (selection: number) => store.set(soundPreferen
  * EXTRAS_ENGLISH — from its English name.
  *
  * Two index spaces reach this store and they are not the same thing. Row
- * indices from the prayer list are CHRONOLOGICAL: positions in the
- * datetime-sorted list of a day's prayers. Every atom array here is
- * CANONICAL: built positionally from the name constants, and the scheduler
- * iterates the same constants. The two coincide only while the canonical names
- * happen to be in chronological order, which is a property of the data rather
- * than a guarantee. This module already judged that assumption unsafe once —
+ * indices from the prayer list are positions in the day's rows as the sequence
+ * holds them. Every atom array here is CANONICAL: built positionally from the
+ * name constants, and the scheduler iterates the same constants. The two
+ * coincide only because the sequence happens to be built in that order, which
+ * is a property of the builder rather than a guarantee this store can rely on. This module already judged that assumption unsafe once —
  * see `migrateIndexKeyedAlertPreferences`, which exists because "the index only
  * maps to the intended prayer while data is canonical". The keys were fixed;
  * callers reaching them by row index were not.
@@ -419,7 +420,7 @@ export const canonicalPrayerIndex = (scheduleType: ScheduleType, prayerName: str
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Canonical index of the prayer in its schedule (0-based).
- *   Callers holding a chronological row index must map it through
+ *   Callers holding a row index from the list must map it through
  *   `canonicalPrayerIndex` first.
  * @returns Jotai atom for the prayer's alert type
  */
@@ -545,7 +546,7 @@ export const setReminderInterval = (scheduleType: ScheduleType, prayerIndex: num
  * @param sound Sound preference index
  * @returns Promise resolving to the attempted identifier — scheduled or, on
  *   failure, whatever OS notification the identifier already had — or null
- *   when the day was skipped (no data, past time, non-Friday Istijaba)
+ *   when the day was skipped (no readable time, past time, non-Friday Istijaba)
  */
 async function scheduleNotificationForDate(
   scheduleType: ScheduleType,
@@ -560,8 +561,16 @@ async function scheduleNotificationForDate(
   // and countdown show (Extras night rows fall on the night before `date`)
   const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
   if (!prayer) {
-    // No data for the day, or Istijaba outside Fridays (not on that day's list)
+    // Istijaba outside Fridays (not on that day's list)
     logger.info("Skipping prayer not on this day's list:", { date, englishName });
+    return null;
+  }
+
+  // No alert may fire for a time the provider did not give (R5). Skipping leaves this
+  // identifier unattempted, so an alarm armed for it before the data changed is cancelled
+  // as stale, while the saved preference stays and arms the next readable day (R6)
+  if (!isReadable(prayer)) {
+    logger.info('Skipping prayer with no readable time:', { date, englishName });
     return null;
   }
 
@@ -682,7 +691,7 @@ const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType
  * @param intervalMinutes Reminder interval in minutes
  * @returns Promise resolving to the attempted identifier — scheduled or, on
  *   failure, whatever OS reminder the identifier already had — or null when
- *   the day was skipped (past/imminent, non-Friday Istijaba)
+ *   the day was skipped (no readable time, past/imminent, non-Friday Istijaba)
  */
 async function scheduleReminderNotificationForDate(
   scheduleType: ScheduleType,
@@ -697,8 +706,14 @@ async function scheduleReminderNotificationForDate(
   // list and countdown show (Extras night rows fall on the night before `date`)
   const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
   if (!prayer) {
-    // No data for the day, or Istijaba outside Fridays (not on that day's list)
+    // Istijaba outside Fridays (not on that day's list)
     logger.info("REMINDER: Skipping prayer not on this day's list:", { date, englishName });
+    return null;
+  }
+
+  // There is nothing to count back from (R5); skipped exactly as the at-time path is
+  if (!isReadable(prayer)) {
+    logger.info('REMINDER: Skipping prayer with no readable time:', { date, englishName });
     return null;
   }
 
@@ -1036,8 +1051,19 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // ~1.5s after first content: scheduling then produces nothing, and the sweep
   // below would treat every notification the OS still holds as stale. Bailing
   // leaves the existing alarms alone; the next refresh runs once data exists.
-  if (!Database.getPrayerByDate(TimeUtils.createInstant())) {
-    logger.warn('NOTIFICATION: No prayer data for today — skipping reschedule so nothing is cancelled');
+  //
+  // The test is every list day that can arm a prayer, not today alone. An upgrade
+  // wipe still leaves all of them unstored, so it still bails; but one day missing
+  // from the payload (R7) is a day of unreadable rows, and treating it as an empty
+  // cache would stop the readable day beside it from being armed. The night rows'
+  // extra list day does not count: its rows need tomorrow's Magrib, so with only
+  // that day stored nothing can be armed, and stamping the gate would silence the
+  // next twelve hours.
+  const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
+  if (!armedListDays.some((date) => Database.getPrayerByDateString(date))) {
+    logger.warn('NOTIFICATION: No prayer data for today or tomorrow, skipping reschedule so nothing is cancelled', {
+      armedListDays,
+    });
     return false;
   }
 
@@ -1175,6 +1201,9 @@ export const refreshNotifications = async () => {
 
   return withSchedulingLock(async () => {
     try {
+      // Read before the reschedule reads the days, so days a download changes while it runs keep the gate open
+      const armedDayChangesBefore = getArmedDayChanges();
+
       // Foreground refresh gate — defer the widget push past the paint
       const rescheduled = await _rescheduleAllNotifications({ deferWidgetRefresh: true });
 
@@ -1183,6 +1212,12 @@ export const refreshNotifications = async () => {
       // app would believe it was up to date while nothing was armed.
       if (!rescheduled) {
         logger.warn('NOTIFICATION: Refresh skipped, timestamp not stamped — the next foreground will retry');
+        return;
+      }
+
+      // The download reopened the gate, and this reschedule read the days before they landed
+      if (getArmedDayChanges() !== armedDayChangesBefore) {
+        logger.info('NOTIFICATION: Days changed during the refresh, leaving the gate open for the next one');
         return;
       }
 
@@ -1225,12 +1260,21 @@ export const rescheduleAllNotificationsFromBackground = async () => {
 
   return withSchedulingLock(async () => {
     try {
+      // Read before the reschedule reads the days, as the foreground path does
+      const armedDayChangesBefore = getArmedDayChanges();
+
       const rescheduled = await _rescheduleAllNotifications();
 
       // Same rule as the foreground path: a bail must not be recorded as a
       // successful schedule, or the next foreground refresh would skip too
       if (!rescheduled) {
         logger.warn('BACKGROUND_TASK: Reschedule skipped (no prayer data), timestamp not stamped');
+        return;
+      }
+
+      // A download landing while it ran reopened the gate for days this reschedule read too early
+      if (getArmedDayChanges() !== armedDayChangesBefore) {
+        logger.info('BACKGROUND_TASK: Days changed during the reschedule, leaving the gate open for the next refresh');
         return;
       }
 

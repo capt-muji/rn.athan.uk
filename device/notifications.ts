@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
-import { AlertType, type Prayer, type ReminderInterval, type ScheduleType } from '@/shared/types';
+import { AlertType, type ReadablePrayer, type ReminderInterval, type ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
 export const updateAndroidChannel = async (sound: number) => {
@@ -53,7 +53,8 @@ export const reminderNotificationIdentifier = (
  *
  * @param scheduleType Schedule type (Standard or Extra) - part of the deterministic identifier
  * @param date Day of the list the prayer belongs to (YYYY-MM-DD) - part of the identifier
- * @param prayer The prayer as its list row has it (PrayerUtils.getPrayerForDate)
+ * @param prayer The prayer as its list row has it (PrayerUtils.getPrayerForDate). Readable only: a
+ *   row with no time has no moment to fire at
  * @param alertType Alert type (Off/Silent/Sound)
  * @param soundPreference Selected athan index
  * @returns Scheduled notification data
@@ -61,7 +62,7 @@ export const reminderNotificationIdentifier = (
 export const addOneScheduledNotificationForPrayer = async (
   scheduleType: ScheduleType,
   date: string,
-  prayer: Prayer,
+  prayer: ReadablePrayer,
   alertType: AlertType,
   soundPreference: number
 ): Promise<NotificationUtils.ScheduledNotification> => {
@@ -138,7 +139,8 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
  *
  * @param scheduleType Schedule type (Standard or Extra) - part of the deterministic identifier
  * @param date Day of the list the prayer belongs to (YYYY-MM-DD) - part of the identifier
- * @param prayer The prayer as its list row has it (PrayerUtils.getPrayerForDate)
+ * @param prayer The prayer as its list row has it (PrayerUtils.getPrayerForDate). Readable only: a
+ *   row with no time has nothing to count back from
  * @param intervalMinutes Minutes before prayer time
  * @param alertType Alert type (Off/Silent/Sound)
  * @returns Scheduled notification data
@@ -146,7 +148,7 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 export const addOneScheduledReminderForPrayer = async (
   scheduleType: ScheduleType,
   date: string,
-  prayer: Prayer,
+  prayer: ReadablePrayer,
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Promise<NotificationUtils.ScheduledNotification> => {
