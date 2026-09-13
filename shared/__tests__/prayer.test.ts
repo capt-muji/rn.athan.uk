@@ -116,6 +116,19 @@ describe('calculateBelongsToDate', () => {
       expect(result).toBe('2026-01-18'); // Before noon, stays same day
     });
 
+    // The pair with adjustPrayerDateForMidnightCrossing turns on hour 12 exactly: that side sends a
+    // Suhoor of 12:xx back a day by its clock string, and this side must bring it forward again, or the
+    // row lands on the previous day's list. The minutes either side of noon pin the boundary itself.
+    it.each([
+      ['Suhoor', '11:59', '2026-01-18'],
+      ['Suhoor', '12:00', '2026-01-19'],
+      ['Last Third', '11:59', '2026-01-18'],
+      ['Last Third', '12:00', '2026-01-19'],
+    ])('files %s at %s on calendar day 2026-01-18 under %s', (english, time, expected) => {
+      const datetime = createPrayerDatetime('2026-01-18', time);
+      expect(calculateBelongsToDate(ScheduleType.Extra, english, '2026-01-18', datetime)).toBe(expected);
+    });
+
     it('assigns Duha to current day', () => {
       const datetime = createPrayerDatetime('2026-01-19', '08:30');
       const result = calculateBelongsToDate(ScheduleType.Extra, 'Duha', '2026-01-19', datetime);

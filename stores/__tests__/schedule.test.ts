@@ -1775,5 +1775,34 @@ describe('on the real builder', () => {
       expect(getDefaultStore().get(standardSequenceAtom)).not.toBe(unreadable);
       expect(magrib17()).toBe(row('Magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'));
     });
+
+    // Only 18 October is stored, so the build on the 17th and the build after midnight hold the same
+    // readable rows, its six, and differ only in the days around it that have none. Those rows are part of
+    // the sequence's content: the later build must be written, not skipped as identical, or the store
+    // keeps a finished day and lacks the day after.
+    it('writes a rebuild whose readable rows are the same but whose unreadable days moved', () => {
+      storeDays(['2026-10-18']);
+
+      moveClockTo('2026-10-17T12:00:00.000Z');
+      setSequence(STANDARD, new Date());
+      const onThe17th = getDefaultStore().get(standardSequenceAtom);
+
+      expect(rowsHeld(STANDARD)).toEqual({
+        '2026-10-17': STANDARD_DASHED,
+        '2026-10-18': STANDARD_ROWS,
+        '2026-10-19': STANDARD_DASHED,
+      });
+
+      // 00:30 BST on the 18th, before its Fajr: nothing readable has passed and nothing needs extending
+      moveClockTo('2026-10-17T23:30:00.000Z');
+      setSequence(STANDARD, new Date());
+
+      expect(getDefaultStore().get(standardSequenceAtom)).not.toBe(onThe17th);
+      expect(rowsHeld(STANDARD)).toEqual({
+        '2026-10-18': STANDARD_ROWS,
+        '2026-10-19': STANDARD_DASHED,
+        '2026-10-20': STANDARD_DASHED,
+      });
+    });
   });
 });

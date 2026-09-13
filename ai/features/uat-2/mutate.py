@@ -3,59 +3,207 @@
 
 A test that passes against broken code is decorative. This measures that
 objectively instead of by opinion.
+
+Runs against the repository this script lives in (two directories above
+ai/features/uat-2/), so a worktree sweeps its own copy and never touches the
+main checkout.
+
+Each mutant runs only the tests related to the file it mutates:
+
+    npx jest --silent --findRelatedTests <mutated file>
+
+A mutant can only be caught by a test whose dependency graph reaches the
+mutated file; every other suite is guaranteed to pass against it, so running
+them adds minutes and cannot change a verdict. The flip side: a mutation in a
+file no test imports reports "no related tests", which is a survivor.
+
+Every pattern is a literal string that must occur EXACTLY ONCE in its file.
+A pattern found zero times is reported SKIP (the code it targeted has moved);
+one found more than once is reported SKIP (ambiguous) rather than guessing
+which occurrence was meant.
+
+Usage:
+    python3 ai/features/uat-2/mutate.py            # run every mutant
+    python3 ai/features/uat-2/mutate.py --check    # only verify patterns
+    python3 ai/features/uat-2/mutate.py 12 13      # run mutants by number
 """
-import re, subprocess, sys, shutil, os, tempfile
+import os
+import re
+import subprocess
+import sys
 
-REPO = '/Users/muji/repos/rn.athan.uk'
+REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))
 
-# (file, regex, replacement, label) — small semantic mutations, one at a time
+# A synchronous infinite loop ignores jest's testTimeout; a mutant that hangs is a detected mutant
+MUTANT_TIMEOUT_S = 600
+
+# (file, literal pattern, replacement, label) - small semantic mutations, one at a time
 MUTATIONS = [
-    ('shared/prayer.ts', r'hours < ISLAMIC_DAY\.EARLY_MORNING_CUTOFF_HOUR', 'hours <= ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR', 'small-hours cutoff < -> <='),
-    ('shared/prayer.ts', r"MIDNIGHT_CROSSING_PRAYERS\.includes\(prayerName\)", "prayerName === 'Isha'", 'drop Magrib from the date shift'),
-    ('shared/prayer.ts', r'TIME_ADJUSTMENTS\.istijaba \* 60_000', 'TIME_ADJUSTMENTS.istijaba * 60_001', 'istijaba offset off by 1ms/min'),
-    ('shared/prayer.ts', r'hours >= 12', 'hours > 12', 'night-row noon boundary >= -> >'),
-    ('shared/time.ts', r'length / 2', 'length / 2.01', 'islamic midnight midpoint drift'),
-    ('shared/time.ts', r'\(length \* 2\) / 3', '(length * 2) / 3.01', 'last third drift'),
-    ('shared/notifications.ts', r'NOTIFICATION_ROLLING_DAYS \+ \(isEveningBeforeRow \? 1 : 0\)', 'NOTIFICATION_ROLLING_DAYS', 'night rows lose their extra day'),
-    ('shared/notifications.ts', r'soundIndex \+ 1', 'soundIndex + 2', 'athan channel id off by one'),
-    ('api/client.ts', r'\^\(\[01\]\\d\|2\[0-3\]\):\[0-5\]\\d\$', r'^.*$', 'time pattern accepts anything'),
-    ('api/client.ts', r'if \(todayDropped\) throw', 'if (false && todayDropped) throw', 'today may be silently dropped'),
-    ('stores/notifications.ts', r'!Database\.getPrayerByDate\(TimeUtils\.createInstant\(\)\)', 'false', 'reschedule ignores an empty cache'),
-    ('stores/schedule.ts', r"\.map\(\(prayer\) => prayer\.datetime\.getTime\(\)\)\.join\('\|'\)", ".map((prayer) => prayer.datetime.getTime()).slice(0, 1).join('|')", 'sequence signature back to first-only'),
-    ('shared/widgetTimeline.ts', r'stepMs -= COUNTDOWN_STEP_MS', 'stepMs -= COUNTDOWN_STEP_MS * 1', 'no-op control (must SURVIVE)'),
-    ('shared/versionUtils.ts', r"\.replace\(/\^v/i, ''\)", '', 'version v-prefix strip removed'),
-    ('shared/constants.ts', r'Number\.isInteger\(envIntervalMinutes\)', 'Number.isFinite(envIntervalMinutes)', 'interval accepts fractions'),
+    # --- carried over from the uat-2 sweep (still present in the code) ---
+    ('shared/prayer.ts', 'hours < ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR', 'hours <= ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR', 'small-hours cutoff < -> <='),
+    ('shared/prayer.ts', 'MIDNIGHT_CROSSING_PRAYERS.includes(prayerName)', "prayerName === 'Isha'", 'drop Magrib from the date shift'),
+    ('shared/prayer.ts', 'TIME_ADJUSTMENTS.istijaba * 60_000', 'TIME_ADJUSTMENTS.istijaba * 60_001', 'istijaba offset off by 1ms/min'),
+    ('shared/prayer.ts', "hours >= 12) {\n      return TimeUtils.addDaysToDateString(calendarDate, 1);", "hours > 12) {\n      return TimeUtils.addDaysToDateString(calendarDate, 1);", 'night-row noon boundary >= -> >'),
+    ('shared/time.ts', 'length / 2', 'length / 2.01', 'islamic midnight midpoint drift'),
+    ('shared/time.ts', '(length * 2) / 3', '(length * 2) / 3.01', 'last third drift'),
+    ('shared/notifications.ts', 'NOTIFICATION_ROLLING_DAYS + (isEveningBeforeRow ? 1 : 0)', 'NOTIFICATION_ROLLING_DAYS', 'night rows lose their extra day'),
+    ('shared/notifications.ts', 'athan_${soundIndex + 1}_v2', 'athan_${soundIndex + 2}_v2', 'athan channel id off by one'),
+    ('api/client.ts', r'/^([01]\d|2[0-3]):[0-5]\d$/', r'/^.*$/', 'time pattern accepts anything'),
+    ('shared/versionUtils.ts', ".replace(/^v/i, '')", '', 'version v-prefix strip removed'),
+    ('shared/constants.ts', 'Number.isInteger(envIntervalMinutes)', 'Number.isFinite(envIntervalMinutes)', 'interval accepts fractions'),
+    ('shared/widgetTimeline.ts', 'stepMs -= COUNTDOWN_STEP_MS', 'stepMs -= COUNTDOWN_STEP_MS * 1', 'no-op control (must SURVIVE)'),
+
+    # --- session 3: api/client.ts ---
+    ('api/client.ts', '      day[field] = null;', '      day[field] = value as string;', 'malformed field kept instead of nulled'),
+    ('api/client.ts', 'typeof value === \'string\' && TIME_PATTERN.test(value)', 'TIME_PATTERN.test(value as string)', 'non-string field stringified and accepted'),
+    ('api/client.ts', 'if (!anyReadable) throw', 'if (false) throw', 'nothing-readable throw removed'),
+    ('api/client.ts', 'const counts = !holdsTodayOrLater || date >= today;', 'const counts = true;', 'nothing-readable check counts yesterday'),
+    ('api/client.ts', "Object.keys(apiData.times).some((date) => date >= today);", 'true;', 'payload without today judged as if it had it'),
+    ('api/client.ts', 'if (body?.date !== date) throw', 'if (false) throw', 'fetchDay date check removed'),
+    ('api/client.ts', "selector, '24hours=true'].join('&')", "selector, ...('date' in period ? [] : ['24hours=true'])].join('&')", '24hours=true dropped from the day URL'),
+
+    # --- session 3: shared/prayer.ts ---
+    ('shared/prayer.ts', "  if (previousDay?.date !== previousDate) return null;\n\n  const magribTime = previousDay.magrib;", "  const magribTime = previousDay?.date === previousDate ? previousDay.magrib : day.magrib;", 'Magrib borrowed for a missing previous day'),
+    ('shared/prayer.ts', '    prayers.push(...createPrayersForSingleDay(type, date, rawData, previousDayData));', '    if (!rawData) {\n      previousDayData = null;\n      continue;\n    }\n    prayers.push(...createPrayersForSingleDay(type, date, rawData, previousDayData));', 'missing day skipped by the sequence'),
+    ('shared/prayer.ts', 'time === null ? null : TimeUtils.adjustTime(time, minutesDiff)', 'TimeUtils.adjustTime(time as string, minutesDiff)', 'derived time computed from null'),
+    ('shared/prayer.ts', '  if (rawData.magrib === null) return null;\n', '', 'Istijaba kept when Magrib is null'),
+    ('shared/prayer.ts', 'if (magribTime === null || fajrTime === null) return null;', 'if (magribTime === null) return null;', 'night worked out from a null Fajr'),
+
+    # --- session 3: shared/sequence.ts ---
+    ('shared/sequence.ts', 'if (!isReadable(prayer) || prayer.datetime <= now) continue;', 'if (isReadable(prayer) && prayer.datetime <= now) continue;', 'unreadable row allowed to be next'),
+    ('shared/sequence.ts', 'if (readable.length === 0 && now < endOfListDay(date)) return date;', '', 'hold removed (unreadable day skipped)'),
+    ('shared/sequence.ts', '  return endOfListDay(displayDate);', '  return null;', 'hold end removed from the boundary'),
+    ('shared/sequence.ts', "TimeUtils.createPrayerDatetime(TimeUtils.addDaysToDateString(date, 1), '00:00')", "TimeUtils.createPrayerDatetime(date, '00:00')", 'hold ends at the start of the day'),
+    ('shared/sequence.ts', 'if (holdEnd && holdEnd < next.datetime) return holdEnd;', '', 'hold end ignored when a prayer is due'),
+    ('shared/sequence.ts', '    if (prayer.belongsToDate !== next.belongsToDate && prayer.belongsToDate !== listBefore) continue;\n', '', 'previous lookup unbounded'),
+    ('shared/sequence.ts', '.every((prayer) => prayer.datetime < now);', '.some((prayer) => prayer.datetime < now);', 'unreadable row passed by some, not every'),
+    ('shared/sequence.ts', 'prayer.belongsToDate <= row.belongsToDate) continue;', 'prayer.belongsToDate < row.belongsToDate) continue;', 'next occurrence may be the row itself'),
+
+    # --- session 3: stores/schedule.ts ---
+    ('stores/schedule.ts', 'return currentDisplayDate !== null && prayer.belongsToDate >= currentDisplayDate;', 'return currentDisplayDate !== null && prayer.belongsToDate === currentDisplayDate;', 'future unreadable days dropped by the filter'),
+    ('stores/schedule.ts', '  return store.get(nextBoundaryAtom);', '  const sequence = store.get(getSequenceAtom(type));\n  return sequence ? findNextBoundary(sequence.prayers, TimeUtils.createInstant()) : null;', 'boundary worked out fresh, not cached'),
+    ('stores/schedule.ts', '  if (prayers.length === 0) return prayers;\n', '  return prayers;\n', 'lost-week extension removed'),
+    ('stores/schedule.ts', 'sequence.prayers\n    .map((prayer) =>', 'sequence.prayers\n    .filter(isReadable)\n    .map((prayer) =>', 'signature ignores unreadable rows'),
+
+    # --- session 3: stores/countdown.ts ---
+    ('stores/countdown.ts', 'store.set(countdownAtom, { timeLeft: null, name: target.english });', 'store.set(countdownAtom, { timeLeft: 0, name: target.english });', 'null timeLeft written as 0'),
+    ('stores/countdown.ts', 'get(getNextPrayerAtom(type)) !== null && get(getPrevPrayerAtom(type)) !== null', 'true', 'bar availability always true'),
+    ('stores/countdown.ts', '    const boundary = getNextBoundary(type);\n\n    if (boundary && Date.now() >= boundary.getTime()) {\n      clearCountdown(countdownKey);', '    const boundary = getNextPrayer(type)?.datetime ?? null;\n\n    if (boundary && Date.now() >= boundary.getTime()) {\n      clearCountdown(countdownKey);', 'tick boundary back to next prayer only'),
+    ('stores/countdown.ts', '    const boundary = getNextBoundary(type);\n    if (boundary && Date.now() >= boundary.getTime()) {\n      refreshSequence(type);', '    const boundary = getNextPrayer(type)?.datetime ?? null;\n    if (boundary && Date.now() >= boundary.getTime()) {\n      refreshSequence(type);', 'resync boundary back to next prayer only'),
+    ('stores/countdown.ts', 'overlayBoundaryMs = getNextBoundary(type)?.getTime() ?? null;', 'overlayBoundaryMs = getNextPrayer(type)?.datetime.getTime() ?? null;', 'overlay deadline back to next prayer only'),
+
+    # --- session 3: stores/notifications.ts ---
+    ('stores/notifications.ts', "  if (!isReadable(prayer)) {\n    logger.info('Skipping prayer with no readable time:'", "  if (false) {\n    logger.info('Skipping prayer with no readable time:'", 'unreadable rows armed (at-time)'),
+    ('stores/notifications.ts', "  if (!isReadable(prayer)) {\n    logger.info('REMINDER: Skipping prayer with no readable time:'", "  if (false) {\n    logger.info('REMINDER: Skipping prayer with no readable time:'", 'unreadable rows armed (reminder)'),
+    ('stores/notifications.ts', 'if (!armedListDays.some((date) => Database.getPrayerByDateString(date))) {', 'if (!Database.getPrayerByDateString(armedListDays[0])) {', 'reschedule guard back to today only'),
+    ('stores/notifications.ts', 'NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);', 'NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS + 1);', 'reschedule guard widened to three days'),
+
+    # --- session 3: stores/sync.ts ---
+    ('stores/sync.ts', "logger.warn('SYNC: Previous year Dec 31 not available, will retry on next sync', { error });\n        return null;", "logger.warn('SYNC: Previous year Dec 31 not available, will retry on next sync', { error });\n        throw error;", 'Dec 31 day fetch rethrown'),
+    ('stores/sync.ts', '        Database.saveAllPrayers([fetchedDay]);\n', '        Database.saveAllPrayers([fetchedDay]);\n        Database.markYearAsFetched(previousYear);\n', 'year marked after a day fetch'),
+    ('stores/sync.ts', 'if (!data && !latestAnswerLacksToday()) return true;', 'if (!data) return true;', 'missing today re-fetched though year marked'),
+    ('stores/sync.ts', '        reopenNotificationGate();\n', '', 'notification gate not reopened after Dec 31'),
+
+    # --- session 3: stores/bootstrap.ts ---
+    ('stores/bootstrap.ts', 'const anyDayStored = SEQUENCE_DAYS.some((offset) =>', 'const anyDayStored = [0].some((offset) =>', 'hydrate only when today is stored'),
+
+    # --- session 3: shared/widgetTimeline.ts ---
+    ('shared/widgetTimeline.ts', "const segmentFrom = (prayers: Prayer[], at: Date): Segment | null => {\n", "const segmentFrom = (rawPrayers: Prayer[], at: Date): Segment | null => {\n  const prayers = rawPrayers.map((p) => (p.datetime === null ? { ...p, datetime: TimeUtils.createPrayerDatetime(p.belongsToDate, '12:00') } : p)) as Prayer[];\n", 'unreadable row used as a boundary'),
+    ('shared/widgetTimeline.ts', 'prayer.belongsToDate === segment.displayDate).sort(compareListOrder)', 'prayer.belongsToDate === segment.next.belongsToDate).sort(compareListOrder)', "day list from next's day, not display date"),
+    ('shared/widgetTimeline.ts', 'formatDateLabel(current.displayDate, settings.hijriDate)', 'formatDateLabel(current.next.belongsToDate, settings.hijriDate)', "date label from next's day, not display date"),
+    ('shared/widgetTimeline.ts', 'time: prayer.time ?? UNAVAILABLE_TIME', "time: prayer.time ?? ''", 'unreadable widget row drawn blank'),
+
+    # --- session 3: hooks ---
+    ('hooks/usePrayerSequence.ts', 'isPassed: isRowPassed(rawPrayers, prayer, now),', 'isPassed: (prayer.datetime as unknown as Date) < now,', 'isPassed back to datetime < now'),
+    ('hooks/usePrayer.ts', '(findNextOccurrence(prayers, row) ?? row)', '(prayers.find((p) => p.english === row.english && (p.datetime as Date) > (row.datetime as Date)) ?? row)', 'next occurrence found by instant'),
 ]
 
-def run_suite():
-    r = subprocess.run(['npx', 'jest', '--silent'], cwd=REPO, capture_output=True, text=True)
-    m = re.search(r'Tests:\s+(?:(\d+) failed, )?(\d+) passed', r.stderr + r.stdout)
-    failed = int(m.group(1)) if m and m.group(1) else 0
-    return failed
+W_LABEL = 46
+W_FILE = 28
 
-print(f"{'mutation':52s} {'file':26s} result")
-print('-' * 96)
-killed = survived = skipped = 0
-for path, pat, rep, label in MUTATIONS:
+
+def locate(path, pat):
     full = os.path.join(REPO, path)
+    if not os.path.exists(full):
+        return full, None, 0
     src = open(full).read()
-    new, n = re.subn(pat, rep, src, count=1)
-    if n == 0:
-        print(f"{label:52s} {path:26s} SKIP (pattern not found)")
-        skipped += 1
-        continue
-    backup = src
-    try:
-        open(full, 'w').write(new)
-        failed = run_suite()
-        if failed > 0:
-            print(f"{label:52s} {path:26s} killed  ({failed} tests failed)")
-            killed += 1
-        else:
-            print(f"{label:52s} {path:26s} *** SURVIVED — suite is blind ***")
-            survived += 1
-    finally:
-        open(full, 'w').write(backup)
+    return full, src, src.count(pat)
 
-print('-' * 96)
-print(f"killed {killed}   survived {survived}   skipped {skipped}")
+
+def run_related(full):
+    """Runs the tests related to one file; returns (verdict, detail)"""
+    try:
+        r = subprocess.run(
+            ['npx', 'jest', '--silent', '--findRelatedTests', full],
+            cwd=REPO, capture_output=True, text=True, timeout=MUTANT_TIMEOUT_S,
+        )
+    except subprocess.TimeoutExpired:
+        return 'killed', f'timed out after {MUTANT_TIMEOUT_S}s'
+
+    out = r.stderr + r.stdout
+    if re.search(r'No tests found', out):
+        return 'survived', 'no related tests'
+
+    tests = re.search(r'Tests:\s+(?:(\d+) failed, )?(?:\d+ skipped, )?(?:(\d+) passed, )?(\d+) total', out)
+    suites = re.search(r'Test Suites:\s+(?:(\d+) failed, )?', out)
+    failed_tests = int(tests.group(1)) if tests and tests.group(1) else 0
+    failed_suites = int(suites.group(1)) if suites and suites.group(1) else 0
+    total = int(tests.group(3)) if tests else 0
+
+    if failed_tests or failed_suites:
+        return 'killed', f'{failed_tests} tests / {failed_suites} suites failed of {total} tests'
+    if r.returncode != 0:
+        return 'error', f'jest exited {r.returncode} without a failure count'
+    return 'survived', f'{total} related tests passed'
+
+
+def main(argv):
+    check_only = '--check' in argv
+    picks = {int(a) for a in argv if a.isdigit()}
+
+    print(f'repo: {REPO}')
+    print(f"{'#':>3} {'mutation':{W_LABEL}s} {'file':{W_FILE}s} result")
+    print('-' * 120)
+    killed = survived = skipped = errors = 0
+
+    for number, (path, pat, rep, label) in enumerate(MUTATIONS, start=1):
+        if picks and number not in picks:
+            continue
+
+        full, src, count = locate(path, pat)
+        prefix = f'{number:>3} {label:{W_LABEL}s} {path:{W_FILE}s}'
+        if count != 1:
+            reason = 'pattern not found' if count == 0 else f'pattern matches {count} times'
+            print(f'{prefix} SKIP ({reason})')
+            skipped += 1
+            continue
+
+        if check_only:
+            print(f'{prefix} ok (matches once)')
+            continue
+
+        try:
+            open(full, 'w').write(src.replace(pat, rep, 1))
+            verdict, detail = run_related(full)
+        finally:
+            open(full, 'w').write(src)
+
+        if verdict == 'killed':
+            print(f'{prefix} killed  ({detail})', flush=True)
+            killed += 1
+        elif verdict == 'survived':
+            print(f'{prefix} *** SURVIVED - suite is blind *** ({detail})', flush=True)
+            survived += 1
+        else:
+            print(f'{prefix} ERROR ({detail})', flush=True)
+            errors += 1
+
+    print('-' * 120)
+    if check_only:
+        print(f'patterns checked: {len(MUTATIONS) - skipped} ok, {skipped} skip')
+    else:
+        print(f'killed {killed}   survived {survived}   skipped {skipped}   errors {errors}')
+
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
