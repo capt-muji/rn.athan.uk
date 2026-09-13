@@ -9,7 +9,7 @@
  * @see ai/features/uat-2/DASHES-DESIGN.md
  */
 
-import { atom } from 'jotai';
+import { type Atom, atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { TIME_CONSTANTS } from '@/shared/constants';
@@ -73,7 +73,7 @@ const findPreviousPrayer = (type: ScheduleType, prayers: Prayer[], next: Readabl
   const fromStorage = findPreviousReadable(PrayerUtils.createPrayersForDate(type, listBefore), next);
 
   if (!fromStorage) {
-    logger.warn('SCHEDULE: No readable row before next, progress bar unavailable', {
+    logger.info('SCHEDULE: No readable row before next, progress bar unavailable', {
       type,
       next: next.english,
       listBefore,
@@ -168,8 +168,9 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
  * - Isha at 1am on Jan 19 calendar date belongs to Jan 18 Islamic day
  * - Midnight at 23:17 on Jan 18 calendar date belongs to Jan 19 Islamic day
  *
- * Null when nothing in the sequence is still to come, such as the evening of 31 December before next
- * year is published. Consumers already handle null, which matches the no-sequence branch.
+ * Null when nothing in the sequence is still to come. A day that is not stored is a list of rows with no
+ * readable time, so on the evening of 31 December before next year is published this is 1 January, held
+ * on screen, rather than null. Consumers already handle null, which matches the no-sequence branch.
  *
  * @param type Schedule type (Standard or Extra)
  * @returns Derived atom resolving to date string (YYYY-MM-DD) | null
@@ -190,6 +191,12 @@ export const createDisplayDateAtom = (type: ScheduleType) => {
   });
 };
 
+/** The earlier of two instants, either of which may be missing */
+const earlierOf = (a: Date | null, b: Date | null): Date | null => {
+  if (!a || !b) return a ?? b;
+  return a < b ? a : b;
+};
+
 /**
  * Creates a derived atom that returns the next moment what the schedule shows changes: its next readable
  * prayer, or 00:00 London ending a list day on screen with no readable row
@@ -198,15 +205,23 @@ export const createDisplayDateAtom = (type: ScheduleType) => {
  * clock reaches this instant, and worked out afresh at that moment it would already be behind, giving the
  * boundary after it, so the list would never move on.
  *
+ * Never later than the next-prayer atom's own instant. Both are worked out on their first read after the
+ * sequence changes, and those reads can fall either side of a prayer: the countdown bar keeps the next
+ * prayer subscribed, so it is worked out the moment a sync writes new data, while this may not be read
+ * until the countdown restarts. Read after the prayer, the boundary alone would name the one after it while
+ * the countdown still showed the passed prayer at 1s, and nothing would move on until then.
+ *
  * @param type Schedule type (Standard or Extra)
+ * @param nextPrayerAtom The same schedule's next-prayer atom
  * @returns Derived atom resolving to the boundary instant, or null when nothing is still to come
  */
-const createNextBoundaryAtom = (type: ScheduleType) => {
+const createNextBoundaryAtom = (type: ScheduleType, nextPrayerAtom: Atom<ReadablePrayer | null>) => {
   return atom((get) => {
     const sequence = get(getSequenceAtom(type));
     if (!sequence) return null;
 
-    return findNextBoundary(sequence.prayers, TimeUtils.createInstant());
+    const boundary = findNextBoundary(sequence.prayers, TimeUtils.createInstant());
+    return earlierOf(get(nextPrayerAtom)?.datetime ?? null, boundary);
   });
 };
 
@@ -217,8 +232,8 @@ export const standardPrevPrayerAtom = createPrevPrayerAtom(ScheduleType.Standard
 export const extraPrevPrayerAtom = createPrevPrayerAtom(ScheduleType.Extra);
 export const standardDisplayDateAtom = createDisplayDateAtom(ScheduleType.Standard);
 export const extraDisplayDateAtom = createDisplayDateAtom(ScheduleType.Extra);
-const standardNextBoundaryAtom = createNextBoundaryAtom(ScheduleType.Standard);
-const extraNextBoundaryAtom = createNextBoundaryAtom(ScheduleType.Extra);
+const standardNextBoundaryAtom = createNextBoundaryAtom(ScheduleType.Standard, standardNextPrayerAtom);
+const extraNextBoundaryAtom = createNextBoundaryAtom(ScheduleType.Extra, extraNextPrayerAtom);
 
 // --- Actions ---
 

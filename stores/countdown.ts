@@ -326,9 +326,10 @@ const startSequenceCountdown = (type: ScheduleType) => {
     writeDisplayCountdown(type);
   };
 
-  // The boundary is worked out on its first read after the sequence changes, so it is read here, as the
-  // initial write reads the next prayer. Left to the first tick, a tick landing exactly on it would count it
-  // as already gone and the countdown would hold at 1s until the boundary after.
+  // The boundary is worked out on its first read after the sequence changes, so it is read here, alongside
+  // the initial write's read of the next prayer. Any first read made once the boundary has passed would
+  // already name the one after it, and the countdown would hold at 1s until then. A next prayer settled
+  // before this read is covered by the boundary never being later than it (stores/schedule.ts).
   getNextBoundary(type);
 
   // Initial write before the first aligned tick — display-aware (ceil: never

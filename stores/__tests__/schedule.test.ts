@@ -76,6 +76,7 @@ import {
   createDisplayDateAtom,
   createNextPrayerAtom,
   createPrevPrayerAtom,
+  extraNextPrayerAtom,
   extraSequenceAtom,
   getDisplayDate,
   getNextBoundary,
@@ -84,6 +85,7 @@ import {
   getSequenceAtom,
   refreshSequence,
   setSequence,
+  standardNextPrayerAtom,
   standardSequenceAtom,
 } from '../schedule';
 
@@ -1275,6 +1277,48 @@ describe('on the real builder', () => {
       });
     });
 
+    // The bar keeps the next-prayer atoms subscribed, so they are worked out the moment a sync writes new data,
+    // while the boundary is not worked out until something first reads it. Data landing just before Asr and a
+    // restart just after it left the next prayer on the passed Asr and the boundary on Magrib: nothing moved
+    // on, and the countdown held at 1s until 17:06.
+    it.each([
+      [
+        'a sync restarting the countdowns',
+        startCountdowns,
+        '2026-10-17T14:30:01.000Z',
+        ['Asr', ...Array(10).fill('Magrib')],
+      ],
+      ['a return to the foreground', resyncCountdowns, '2026-10-17T14:30:00.010Z', Array(11).fill('Magrib')],
+    ])(
+      'moves on from Asr after %s lands just past it, with new data written just before it',
+      (_, restart, transition, names) => {
+        const store = getDefaultStore();
+        const barSubscriptions = [standardNextPrayerAtom, extraNextPrayerAtom].map((nextAtom) =>
+          store.sub(nextAtom, () => {})
+        );
+
+        storeDays(OCT_16_TO_20, { '2026-10-19': ['magrib'] });
+        launchAt('2026-10-17T14:00:00.000Z');
+
+        storeDays(OCT_16_TO_20);
+        moveClockTo('2026-10-17T14:29:59.990Z');
+        setSequence(STANDARD, new Date());
+        setSequence(EXTRA, new Date());
+
+        moveClockTo('2026-10-17T14:30:00.010Z');
+        const { writes, unsubscribe } = recordSequenceWrites(STANDARD);
+        const countdown = recordCountdown(STANDARD);
+        restart();
+
+        jest.advanceTimersByTime(10_000);
+        for (const stop of [unsubscribe, countdown.unsubscribe, ...barSubscriptions]) stop();
+
+        expect(writes).toEqual([transition]);
+        expect(countdown.values.map(({ name }) => name)).toEqual(names);
+        expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 9350, name: 'Magrib' });
+      }
+    );
+
     it('starts half a second before a prayer and still moves on at it', () => {
       storeDays(OCT_16_TO_20);
       launchAt('2026-10-17T14:29:59.500Z');
@@ -1780,6 +1824,20 @@ describe('on the real builder', () => {
     // readable rows, its six, and differ only in the days around it that have none. Those rows are part of
     // the sequence's content: the later build must be written, not skipped as identical, or the store
     // keeps a finished day and lacks the day after.
+    // With nothing stored every row reads '-', so only each row's identity tells a fortnight from the one
+    // starting a day later
+    it('writes a rebuild a day later when nothing is stored, though every row of both is unreadable', () => {
+      moveClockTo('2026-10-17T12:00:00.000Z');
+      setSequence(STANDARD, new Date());
+      const onThe17th = getDefaultStore().get(standardSequenceAtom);
+
+      moveClockTo('2026-10-18T12:00:00.000Z');
+      setSequence(STANDARD, new Date());
+
+      expect(getDefaultStore().get(standardSequenceAtom)).not.toBe(onThe17th);
+      expect(Object.keys(rowsHeld(STANDARD))[0]).toBe('2026-10-18');
+    });
+
     it('writes a rebuild whose readable rows are the same but whose unreadable days moved', () => {
       storeDays(['2026-10-18']);
 
