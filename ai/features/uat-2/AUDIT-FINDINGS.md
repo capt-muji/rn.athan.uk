@@ -4642,7 +4642,7 @@ and needs asking.
 | --- | --- |
 | Tests | 3,382 in 56 suites, green in London and under New York, Tokyo, Kiritimati and Pago Pago (`yarn test:tz`) |
 | Coverage | No uncovered line or branch inside any line this session changed. Every changed file is at 100% except four whose gaps are in functions this session did not touch (`stores/countdown.ts`, `stores/notifications.ts`, `stores/sync.ts`, `device/notifications.ts`), left to session 4 |
-| Mutation (`mutate.py`, retargeted to the new code, each mutant against its related tests) | 58 of 59 killed; the survivor is the no-op control that must survive |
+| Mutation (`mutate.py`, retargeted to the new code, each mutant against its related tests) | 60 of 61 killed at the final code; the survivor is the no-op control that must survive |
 | Old against new, every boundary of London 2026 and a high-latitude mock at four offsets, both schedules, alarms and widget pushes | No change for readable data. The only differences are the removed substitution (1 January's night rows), yesterday's post-midnight Isha no longer placed 24 hours early (gap map L3), and days with no data now shown as `--:--` |
 | Red before green | Every new test was run against the code before its change |
 
