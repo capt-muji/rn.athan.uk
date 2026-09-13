@@ -3,6 +3,12 @@
 **Status: NOT STARTED. Raised by the owner on 2026-09-13, queued as session 2** (after the device
 verification sweep). Recorded as finding 67 in `ai/features/uat-2/AUDIT-FINDINGS.md`.
 
+## Paste this to start the session
+
+```
+Read ai/prompts/data-resilience-swap-not-wipe.md and follow it. It is session 2 of the queue in ai/prompts/README.md: read that first for the standing rules. Work in parallel as much as you can.
+```
+
 ## The owner's argument, which is correct
 
 > "Shouldn't we fetch first? Let that be successful, then filter it, then clear the cache, then
@@ -53,6 +59,11 @@ acceptable, but the current one is worse and it is ours.
 Second, smaller hole: `fetched_years` is **not** in the `clearAllExcept` preserve list, so a
 failed fetch also erases the record that anything was ever fetched. Nothing local can help the
 app recover; only the network can.
+
+Third, found in session 1 (finding 76): a phone whose clock is wrong may fail every fetch. The API's
+TLS certificate was valid only from 7 May to 20 November 2026 when read, so with the clock outside
+that window a fetch should fail, and the wipe would then leave the app without today's times.
+Session 1 did not try this on a device.
 
 ## Why the fix is cheap, and this is the key fact
 

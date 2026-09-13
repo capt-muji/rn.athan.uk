@@ -89,4 +89,4 @@ The full map, with the exact fixture values for each missing test, is
    payload when today is unreadable even though every other day reads"
 
 Items 1, 2 and 6 fail against today's code by design, because they describe the fixes for findings
-72 and 74. Write them only once the owner has decided those fixes.
+72 and 74. Sessions 3 and 8 write them together with those fixes.
