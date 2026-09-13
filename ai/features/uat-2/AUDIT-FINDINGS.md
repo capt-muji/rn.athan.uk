@@ -4675,7 +4675,15 @@ Maestro's live hierarchy. Alerts Silent only.
 - **Not visible to the hierarchy:** the bar and the highlight have no node, so they are proven by the unit tests and the
   screenshots, not the tree. The "ago" badge, which reads the same previous-prayer lookup as the bar, was absent in
   exactly the scenes where the bar has nothing to measure from.
-- The device run used the branch before the review-fix rounds; the final commit was rebuilt and checked again (below).
+- **Re-verified after the review-fix rounds**, on a build whose app code is `eb370a2`: Monday 14:00, Wednesday 06:00
+  and Friday 10:00 rendered exactly as before on both pages; the 00:00 hand-over again moved Friday to Saturday in
+  the same process; with Dhuhr and Asr Silent, a launch at Sunday 21:00 armed only Monday's Dhuhr (1789991640000),
+  which fired at 12:54:00.000 as `athan_standard_dhuhr_2026-09-21`, and Monday's unreadable Asr stayed unarmed.
+- **What the device cannot show:** the later commits change only the resume re-arm after a sync that stores days,
+  the retry of a stalled 31 December request, and a failed refresh that keeps usable days on screen. A mock build
+  never fails or changes a download, so those are proven by the unit tests alone.
+- **The phone was left as the owner had it:** their own 1.26.35 build (byte-identical APK), their data restored from
+  the backup taken before the session, automatic time back on, and their 2026-09-14 04:59:00 Fajr alarm armed again.
 
 **Defaults the owner has to rule on, with the R15 screenshots**
 
