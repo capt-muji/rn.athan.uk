@@ -18,6 +18,13 @@ Repo `rn.athan.uk`, commit `7075290` (1.26.28), analysed 2026-09-13. Read-only.
 
 **Oracle.** The independent standard-library recomputation of every 2026 London row, described in `AUDIT-FINDINGS.md` under "Session 1 of the queue".
 
+**Closed by session 3 (1.27.0, finding 71's closure).**
+- Items 1, 2, 11, 21, 22 and 23 are written, adapted where R7 and R13 changed the expectation (a missing day is now a day of `--:--` rows, and 1 January asks for 31 December alone).
+- Item 7: the client fixtures use London dates and run again under a clock pinned to 00:30 BST.
+- Item 17, the progress-bar half: yesterday's post-midnight Isha now has its real instant (L3), and a previous row still to come is never used.
+- Item 25, first two bullets: the schedule tests that re-implemented the filter call the real `refreshSequence`, and `usePrayerSequence`'s test runs the real code.
+- Sections D and E are closed. L3, L5 and L6 are fixed; L1, L2 and L4 stay with session 7 and session 4.
+
 **Device evidence since this map was drafted (`AUDIT-FINDINGS.md`, findings 72 to 77), and what it changes here.**
 - **What the device and the differential established.**
   - uat against uat-2 found no regression: 842 of 6,248 rows differ, and every one is an intended fix.

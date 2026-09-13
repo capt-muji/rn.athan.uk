@@ -1,7 +1,10 @@
 # Session: an unreadable time shows `--:--`, and nothing else breaks
 
-**Status: NOT STARTED. Specified by the owner on 2026-09-13, and extended by the owner the same day
-during session 2 (see "Owner additions", after the testing section). Queued as session 3.**
+**Status: DONE 2026-09-13 in 1.27.0 (`feat/audit-71-unreadable-dashes`). Every question this brief says to
+ask was answered with a default taken from the owner's recorded words, listed in
+`ai/features/uat-2/DASHES-DESIGN.md` §12 and §13 and in finding 71's closure, and those defaults and the R15
+screenshots wait for the owner's verdict.** Specified by the owner on 2026-09-13, and extended by the owner the
+same day during session 2 (see "Owner additions", after the testing section).
 Explicitly *not* for the session it was raised in: *"this is definitely something to write very
 detailed, heavy, for another session to fix. Not in this session."*
 
