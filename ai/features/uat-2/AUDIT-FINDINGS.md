@@ -4100,3 +4100,49 @@ The honest options, none implemented, all needing the owner's decision:
 Separately worth raising, and explicitly **not** as a trigger to substitute anything: a
 plausibility check would catch what a shape check cannot — a time that is well-formed and wrong.
 Its only permitted output is to fail honestly and say so. Never to invent a replacement.
+
+---
+
+## 71. OWNER SPEC: unreadable times render `--:--`, per prayer, and the day is still shown
+
+Specified 2026-09-13, in answer to finding 70's open question. **Queued as session 3, explicitly
+not for this session.** Full brief: `ai/prompts/unavailable-times-dashes.md`.
+
+| Rule | |
+| --- | --- |
+| R1 | A day with unreadable times is **still shown** — never dropped, never skipped |
+| R2 | An unreadable time renders `--:--` |
+| R3 | Breakage is **per prayer, not per day** — one bad Asr dashes Asr, the other five are fine |
+| R4 | A whole-day failure dashes every row, Standard **and** Extras |
+| R5 | No alert can be set against a dashed prayer, and none can fire for one |
+| R6 | Notifications, the rolling window and rescheduling account for dashed rows |
+
+**Broken means format only** — not `HH:MM` zero-padded 24-hour, the shape the endpoint actually
+returns (finding 69: 2,190 values, all five characters, all padded). Implausible-but-well-formed
+values are **out of scope** and must not be smuggled in; the six-`00:00` case stays finding 70's
+open question, and any future plausibility check may only fail honestly, never substitute.
+
+**This spec also closes three live defects**, which is the argument for doing it even though the
+owner rates it unlikely (*"we trust the API"*):
+
+1. One bad field currently drops **all six** prayers for that day. R3 ends that.
+2. The app then shows **tomorrow's times as today's**, rendered normally, with no warning. R1
+   ends that — the day is present, so nothing falls through.
+3. Finding 67's wipe loop **dissolves at the source**. That loop exists because a dropped day
+   leaves a hole in the cache; under R1 there is no hole, so `needsDataUpdate()` stays false and
+   no re-fetch happens. Verify this explicitly after the change.
+
+**The part most likely to be got wrong** is the derived-prayer graph, because two rows cross a
+day boundary: Suhoor follows Fajr, Duha follows Sunrise, Istijaba follows Magrib — and Midnight
+and Last Third need the *previous* day's Magrib and *this* day's Fajr. **A broken Magrib on
+Tuesday dashes Tuesday's Istijaba and Wednesday's Midnight and Last Third.** A test matrix
+confined to single days cannot see it.
+
+**Representation matters more than it looks.** A sentinel string `"--:--"` type-checks everywhere
+and reaches arithmetic silently; `null` with a nullable `datetime` makes the compiler enumerate
+every consumer, which is worth more here than any test, because the real risk is a consumer
+nobody remembered. Do not store the dashes — `--:--` is a rendering of absence, not a value.
+
+**Visual authority:** the owner authorised exactly `--:--` and an alert control that cannot be
+set. Anything further — a banner, an icon, a colour, an explanation — is a new visual decision
+and needs asking.
