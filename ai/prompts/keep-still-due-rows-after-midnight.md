@@ -39,11 +39,12 @@ London is not affected: the 2026 payload never puts Magrib or Isha after 00:00.
   still to come is never used (`findPreviousPrayer` in `stores/schedule.ts`).
 
 **The bar until this lands.** On high latitude, from 1.27.0, a launch after 00:00 while yesterday's
-post-midnight Isha is still due hides the progress bar and the "ago" badge until the next boundary,
-Fajr on both of the mock's shapes. That Isha is the only true previous row and it has not happened,
-and nothing rewrites the sequence when it passes: it is not a boundary, a return to the app refreshes
-only after one, and a sync rebuilds the same rows and skips the write. Keeping yesterday's list in
-the sequence removes this too. London is unaffected.
+post-midnight Isha is still due hides the progress bar and the "ago" badge until the next boundary:
+Fajr on both test shapes (the gap map's 00:01 Isha and the mock's Friday). On the Extras page the same
+happens after a Friday Istijaba past 00:00 (Magrib at 01:00 or later), hidden until Midnight. That row is
+the only true previous row and it has not happened, and nothing rewrites the sequence when it passes:
+it is not a boundary, a return to the app refreshes only after one, and a sync rebuilds the same rows
+and skips the write. Keeping yesterday's list in the sequence removes this too. London is unaffected.
 
 ## The direction, confirmed by the owner on 2026-09-13
 
@@ -61,8 +62,15 @@ Friday's list and cancels that alarm.
 ## Tests first
 
 Write the failing tests before the fix, from `ai/features/uat-2/UNIT-TEST-GAPS-2026-09-13.md`: item
-6 (a reschedule between 00:00 and a 00:01 Isha) and item 17 (the list and the progress bar at
-00:00:30). Both fail against today's code by design.
+6 (a reschedule between 00:00 and a 00:01 Isha) and the list half of item 17 (the list at 00:00:30).
+Both fail against today's code by design. The progress-bar half of item 17 was closed in session 3
+and is already green.
+
+Two `it.each` blocks in `stores/__tests__/schedule.test.ts` pin the interim behaviour described above
+(after a launch past 00:00, next is Fajr, there is no previous row, the bar is hidden): "has no bar while
+yesterday's post-midnight Isha is still to come" and the lookup test beside it. Once yesterday's list
+stays in the sequence, next at 00:00:30 becomes yesterday's Isha and those tests go red by design.
+Rewrite them for the new behaviour; do not delete them.
 
 ## How to run it
 
