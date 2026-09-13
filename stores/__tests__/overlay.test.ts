@@ -29,9 +29,9 @@ jest.mock('jotai/vanilla', () => ({
   }),
 }));
 
-const mockGetNextPrayer = jest.fn();
+const mockGetNextBoundary = jest.fn();
 jest.mock('@/stores/schedule', () => ({
-  getNextPrayer: (type: ScheduleType) => mockGetNextPrayer(type),
+  getNextBoundary: (type: ScheduleType) => mockGetNextBoundary(type),
 }));
 
 const mockArmOverlayBoundary = jest.fn();
@@ -55,7 +55,7 @@ const { closeOverlay, openOverlay, toggleOverlay } = require('../overlay');
 // =============================================================================
 
 const setNextPrayerIn = (ms: number) => {
-  mockGetNextPrayer.mockReturnValue({ english: 'Dhuhr', datetime: new Date(Date.now() + ms) });
+  mockGetNextBoundary.mockReturnValue(new Date(Date.now() + ms));
 };
 
 beforeEach(() => {
@@ -119,7 +119,7 @@ describe('openOverlay', () => {
   });
 
   it('allows opening when all prayers have passed (no next prayer)', () => {
-    mockGetNextPrayer.mockReturnValue(null);
+    mockGetNextBoundary.mockReturnValue(null);
 
     openOverlay(ScheduleType.Standard, 0);
 

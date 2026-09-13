@@ -4,10 +4,10 @@ import { StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useDerivedColor } from '@/hooks/useAnimation';
-import { usePrayer } from '@/hooks/usePrayer';
+import { getShownTime, usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
-import { useSchedule } from '@/hooks/useSchedule';
-import { ANIMATION, COLORS, SPACING, TEXT } from '@/shared/constants';
+import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
+import { ANIMATION, COLORS, SPACING, TEXT, UNAVAILABLE_TIME } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
@@ -32,15 +32,14 @@ export default function PrayerTime({ type, index }: Props) {
   const NextOccurrencePrayer = usePrayer(type, index, true);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
 
-  const displayTime = isSelectedForOverlay && Prayer.isPassed ? NextOccurrencePrayer.time : Prayer.time;
+  const displayTime = getShownTime(isSelectedForOverlay, Prayer, NextOccurrencePrayer) ?? UNAVAILABLE_TIME;
 
   const previousDisplayDate = usePrevious(Schedule.displayDate);
   const isCascadeRoll =
     previousDisplayDate !== Schedule.displayDate &&
     !isSelectedForOverlay &&
     !Schedule.isLastPrayerPassed &&
-    Schedule.nextPrayerIndex === 0 &&
-    index !== 0;
+    isCascadeRow(Schedule, index);
   const previousIsSelected = usePrevious(isSelectedForOverlay);
   const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
 

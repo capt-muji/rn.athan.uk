@@ -10,7 +10,7 @@
  * @see ai/adr/005-timing-system-overhaul.md
  */
 
-import type { Prayer, PrayerSequence, StoredPrayer, StoredPrayerSequence } from '@/shared/types';
+import type { Prayer, PrayerSequence, ReadablePrayer, StoredPrayer, StoredPrayerSequence } from '@/shared/types';
 import { ScheduleType } from '@/shared/types';
 
 // =============================================================================
@@ -648,8 +648,8 @@ const NOW = new Date('2026-01-18T10:00:00');
  * Find next prayer: First prayer with datetime > now
  * @see stores/schedule.ts → createNextPrayerAtom
  */
-export function deriveNextPrayer(prayers: Prayer[], now: Date): Prayer | undefined {
-  return prayers.find((p) => p.datetime > now);
+export function deriveNextPrayer(prayers: Prayer[], now: Date): ReadablePrayer | undefined {
+  return prayers.find((p): p is ReadablePrayer => p.datetime !== null && p.datetime > now);
 }
 
 /**
@@ -657,14 +657,14 @@ export function deriveNextPrayer(prayers: Prayer[], now: Date): Prayer | undefin
  * @see hooks/usePrayerSequence.ts → PrayerWithStatus.isPassed
  */
 export function deriveIsPassed(prayer: Prayer, now: Date): boolean {
-  return prayer.datetime < now;
+  return prayer.datetime !== null && prayer.datetime < now;
 }
 
 /**
  * Calculate countdown in seconds: datetime - now
  * @see stores/countdown.ts → startSequenceCountdown
  */
-export function deriveCountdown(prayer: Prayer, now: Date): number {
+export function deriveCountdown(prayer: ReadablePrayer, now: Date): number {
   return Math.floor((prayer.datetime.getTime() - now.getTime()) / 1000);
 }
 
@@ -673,7 +673,7 @@ export function deriveCountdown(prayer: Prayer, now: Date): number {
  * @see stores/schedule.ts → createPrevPrayerAtom
  */
 export function derivePrevPrayer(prayers: Prayer[], now: Date): Prayer | undefined {
-  const nextIndex = prayers.findIndex((p) => p.datetime > now);
+  const nextIndex = prayers.findIndex((p) => p.datetime !== null && p.datetime > now);
   return nextIndex > 0 ? prayers[nextIndex - 1] : undefined;
 }
 
@@ -694,7 +694,7 @@ export function deriveProgress(prayers: Prayer[], now: Date): number {
   const nextPrayer = deriveNextPrayer(prayers, now);
   const prevPrayer = derivePrevPrayer(prayers, now);
 
-  if (!nextPrayer || !prevPrayer) return 0;
+  if (!nextPrayer || !prevPrayer?.datetime) return 0;
 
   const total = nextPrayer.datetime.getTime() - prevPrayer.datetime.getTime();
   const elapsed = now.getTime() - prevPrayer.datetime.getTime();

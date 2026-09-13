@@ -1,184 +1,101 @@
 /**
  * Unit tests for hooks/useCountdownBar.ts
  *
- * Tests countdown bar progress calculation logic.
- * Note: React hook behavior requires @testing-library/react-hooks.
+ * The hook only reads atoms, so it is called directly with useAtomValue mocked. This file used to assert a
+ * local copy of the progress arithmetic, which lives in stores/countdown.ts and passed with the hook
+ * deleted. The bar's opacity decision is exported as getBarOpacity, since the test tree has no renderer.
  */
 
-import { type Prayer, ScheduleType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 
-// =============================================================================
-// MOCK SETUP
-// =============================================================================
+import { getBarOpacity, useCountdownBar } from '../useCountdownBar';
 
-jest.mock('@/shared/time', () => ({
-  createInstant: jest.fn(() => new Date('2026-01-27T10:00:00')),
-}));
+// Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
+const mockAtomValues = new Map<string, unknown>();
 
-jest.mock('jotai', () => ({
-  useAtomValue: jest.fn(),
-}));
+jest.mock('jotai', () => ({ useAtomValue: (atom: string) => mockAtomValues.get(atom) }));
 
 jest.mock('@/stores/schedule', () => ({
-  standardNextPrayerAtom: Symbol('standardNextPrayerAtom'),
-  extraNextPrayerAtom: Symbol('extraNextPrayerAtom'),
-  standardPrevPrayerAtom: Symbol('standardPrevPrayerAtom'),
-  extraPrevPrayerAtom: Symbol('extraPrevPrayerAtom'),
+  standardNextPrayerAtom: 'standardNextPrayerAtom',
+  extraNextPrayerAtom: 'extraNextPrayerAtom',
 }));
 
-// =============================================================================
-// TEST HELPERS
-// =============================================================================
+jest.mock('@/stores/countdown', () => ({
+  getBarProgressAtom: (type: string) => `${type}BarProgressAtom`,
+  getBarWarningAtom: (type: string) => `${type}BarWarningAtom`,
+  getBarAvailableAtom: (type: string) => `${type}BarAvailableAtom`,
+}));
 
-const createMockPrayer = (overrides: Partial<Prayer> = {}): Prayer => ({
-  type: ScheduleType.Standard,
-  english: 'Fajr',
-  arabic: 'الفجر',
-  datetime: new Date('2026-01-27T06:15:00'),
-  time: '06:15',
-  belongsToDate: '2026-01-27',
-  ...overrides,
-});
+interface BarAtoms {
+  next: object | null;
+  progress: number;
+  isWarning: boolean;
+  isAvailable: boolean;
+}
 
-/**
- * Mirrors the progress calculation from useCountdownBar
- */
-const calculateProgress = (
-  nextPrayer: Prayer | null,
-  prevPrayer: Prayer | null,
-  now: Date
-): { progress: number; isReady: boolean } => {
-  if (!nextPrayer || !prevPrayer) {
-    return { progress: 0, isReady: false };
-  }
-
-  const totalMs = nextPrayer.datetime.getTime() - prevPrayer.datetime.getTime();
-  const elapsedMs = now.getTime() - prevPrayer.datetime.getTime();
-  const progress = Math.min(100, Math.max(0, (elapsedMs / totalMs) * 100));
-
-  return { progress, isReady: true };
+const setBar = (type: ScheduleType, { next, progress, isWarning, isAvailable }: BarAtoms) => {
+  mockAtomValues.set(`${type}NextPrayerAtom`, next);
+  mockAtomValues.set(`${type}BarProgressAtom`, progress);
+  mockAtomValues.set(`${type}BarWarningAtom`, isWarning);
+  mockAtomValues.set(`${type}BarAvailableAtom`, isAvailable);
 };
 
+beforeEach(() => mockAtomValues.clear());
+
 // =============================================================================
-// PROGRESS CALCULATION TESTS
+// THE HOOK
 // =============================================================================
 
-describe('progress calculation', () => {
-  it('calculates 0% at start of interval', () => {
-    const prevPrayer = createMockPrayer({ datetime: new Date('2026-01-27T06:00:00') });
-    const nextPrayer = createMockPrayer({ datetime: new Date('2026-01-27T12:00:00') });
-    const now = new Date('2026-01-27T06:00:00');
+describe('useCountdownBar', () => {
+  it.each([
+    [ScheduleType.Standard, ScheduleType.Extra],
+    [ScheduleType.Extra, ScheduleType.Standard],
+  ])("%s: exposes isAvailable, progress and the warning from its own schedule's atoms", (type, other) => {
+    setBar(other, { next: {}, progress: 70, isWarning: true, isAvailable: true });
 
-    const result = calculateProgress(nextPrayer, prevPrayer, now);
+    setBar(type, { next: {}, progress: 40, isWarning: false, isAvailable: false });
+    expect(useCountdownBar(type)).toEqual({ progress: 40, isReady: true, isWarning: false, isAvailable: false });
 
-    expect(result.progress).toBe(0);
-    expect(result.isReady).toBe(true);
+    setBar(type, { next: {}, progress: 95, isWarning: true, isAvailable: true });
+    expect(useCountdownBar(type)).toEqual({ progress: 95, isReady: true, isWarning: true, isAvailable: true });
   });
 
-  it('calculates 50% at midpoint', () => {
-    const prevPrayer = createMockPrayer({ datetime: new Date('2026-01-27T06:00:00') });
-    const nextPrayer = createMockPrayer({ datetime: new Date('2026-01-27T12:00:00') });
-    const now = new Date('2026-01-27T09:00:00');
+  it('is not ready before there is a next prayer, and says so apart from availability', () => {
+    setBar(ScheduleType.Standard, { next: null, progress: 0, isWarning: false, isAvailable: false });
 
-    const result = calculateProgress(nextPrayer, prevPrayer, now);
-
-    expect(result.progress).toBe(50);
-  });
-
-  it('calculates 100% at end of interval', () => {
-    const prevPrayer = createMockPrayer({ datetime: new Date('2026-01-27T06:00:00') });
-    const nextPrayer = createMockPrayer({ datetime: new Date('2026-01-27T12:00:00') });
-    const now = new Date('2026-01-27T12:00:00');
-
-    const result = calculateProgress(nextPrayer, prevPrayer, now);
-
-    expect(result.progress).toBe(100);
+    expect(useCountdownBar(ScheduleType.Standard)).toEqual({
+      progress: 0,
+      isReady: false,
+      isWarning: false,
+      isAvailable: false,
+    });
   });
 });
 
 // =============================================================================
-// CLAMPING TESTS
+// OPACITY
 // =============================================================================
 
-describe('clamping', () => {
-  it('clamps to 0 when time is before prev prayer', () => {
-    const prevPrayer = createMockPrayer({ datetime: new Date('2026-01-27T06:00:00') });
-    const nextPrayer = createMockPrayer({ datetime: new Date('2026-01-27T12:00:00') });
-    const now = new Date('2026-01-27T05:00:00');
-
-    const result = calculateProgress(nextPrayer, prevPrayer, now);
-
-    expect(result.progress).toBe(0);
+describe('getBarOpacity', () => {
+  // [preview, overlay open, available, opacity]
+  it.each([
+    [true, false, true, 1],
+    [true, true, true, 1],
+    [true, false, false, 1],
+    [true, true, false, 1],
+    [false, false, true, 1],
+    [false, true, true, 0],
+    [false, false, false, 0],
+    [false, true, false, 0],
+  ])('preview %s, overlay open %s, available %s: %i', (isPreviewMode, overlayIsOn, isAvailable, opacity) => {
+    expect(getBarOpacity(isPreviewMode, overlayIsOn, isAvailable)).toBe(opacity);
   });
 
-  it('clamps to 100 when time is after next prayer', () => {
-    const prevPrayer = createMockPrayer({ datetime: new Date('2026-01-27T06:00:00') });
-    const nextPrayer = createMockPrayer({ datetime: new Date('2026-01-27T12:00:00') });
-    const now = new Date('2026-01-27T13:00:00');
-
-    const result = calculateProgress(nextPrayer, prevPrayer, now);
-
-    expect(result.progress).toBe(100);
-  });
-});
-
-// =============================================================================
-// MISSING PRAYER STATES
-// =============================================================================
-
-describe('missing prayers', () => {
-  it('returns not ready when nextPrayer is null', () => {
-    const prevPrayer = createMockPrayer();
-    const now = new Date('2026-01-27T10:00:00');
-
-    const result = calculateProgress(null, prevPrayer, now);
-
-    expect(result.progress).toBe(0);
-    expect(result.isReady).toBe(false);
-  });
-
-  it('returns not ready when prevPrayer is null', () => {
-    const nextPrayer = createMockPrayer();
-    const now = new Date('2026-01-27T10:00:00');
-
-    const result = calculateProgress(nextPrayer, null, now);
-
-    expect(result.progress).toBe(0);
-    expect(result.isReady).toBe(false);
-  });
-
-  it('returns not ready when both prayers are null', () => {
-    const now = new Date('2026-01-27T10:00:00');
-
-    const result = calculateProgress(null, null, now);
-
-    expect(result.progress).toBe(0);
-    expect(result.isReady).toBe(false);
-  });
-});
-
-// =============================================================================
-// EDGE CASES
-// =============================================================================
-
-describe('edge cases', () => {
-  it('handles very short intervals', () => {
-    const prevPrayer = createMockPrayer({ datetime: new Date('2026-01-27T06:00:00') });
-    const nextPrayer = createMockPrayer({ datetime: new Date('2026-01-27T06:01:00') });
-    const now = new Date('2026-01-27T06:00:30');
-
-    const result = calculateProgress(nextPrayer, prevPrayer, now);
-
-    expect(result.progress).toBe(50);
-  });
-
-  it('handles overnight intervals', () => {
-    const prevPrayer = createMockPrayer({ datetime: new Date('2026-01-26T20:00:00') });
-    const nextPrayer = createMockPrayer({ datetime: new Date('2026-01-27T06:00:00') });
-    const now = new Date('2026-01-27T01:00:00');
-
-    const result = calculateProgress(nextPrayer, prevPrayer, now);
-
-    expect(result.progress).toBe(50);
+  it('is the rule from before availability whenever the bar is available', () => {
+    for (const isPreviewMode of [true, false]) {
+      for (const overlayIsOn of [true, false]) {
+        expect(getBarOpacity(isPreviewMode, overlayIsOn, true)).toBe(isPreviewMode || !overlayIsOn ? 1 : 0);
+      }
+    }
   });
 });

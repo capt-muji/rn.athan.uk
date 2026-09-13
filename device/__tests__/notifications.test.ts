@@ -17,10 +17,16 @@ import {
   reminderNotificationIdentifier,
 } from '@/device/notifications';
 import { createPrayerDatetime } from '@/shared/time';
-import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
+import { AlertType, type ReadablePrayer, ScheduleType } from '@/shared/types';
 
-/** A list row as PrayerUtils.getPrayerForDate returns it */
-const row = (english: string, arabic: string, date: string, time: string, type = ScheduleType.Standard): Prayer => ({
+/** A readable list row as PrayerUtils.getPrayerForDate returns it */
+const row = (
+  english: string,
+  arabic: string,
+  date: string,
+  time: string,
+  type = ScheduleType.Standard
+): ReadablePrayer => ({
   type,
   english,
   arabic,
@@ -326,7 +332,7 @@ describe('trigger instants', () => {
   });
 
   // Midnight of the list for Sat 24 Oct 2026 falls on the night before: Fri 23 Oct 23:58 BST
-  const midnightOf24Oct: Prayer = {
+  const midnightOf24Oct: ReadablePrayer = {
     ...row('Midnight', 'نصف الليل', '2026-10-23', '23:58', ScheduleType.Extra),
     belongsToDate: '2026-10-24',
   };
@@ -347,7 +353,7 @@ describe('trigger instants', () => {
   });
 
   it('fires in the repeated hour of the clock-change night at the exact instant (01:00 GMT, not 01:00 BST)', async () => {
-    const lastThird: Prayer = {
+    const lastThird: ReadablePrayer = {
       type: ScheduleType.Extra,
       english: 'Last Third',
       arabic: 'آخر ثلث',

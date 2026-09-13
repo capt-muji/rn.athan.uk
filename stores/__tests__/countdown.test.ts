@@ -29,12 +29,15 @@ jest.mock('@/stores/schedule', () => {
   // require time (makeBarAtoms runs during module init), before outer const
   // declarations initialize — eager outer references would be TDZ errors
   const { atom } = require('jotai');
+  const getNextPrayer = jest.fn((_type: string): { english: string; datetime: Date } | null => ({
+    english: 'Fajr',
+    datetime: new Date('2026-01-20T06:15:00Z'),
+  }));
   return {
     refreshSequence: jest.fn(),
-    getNextPrayer: jest.fn(() => ({
-      english: 'Fajr',
-      datetime: new Date('2026-01-20T06:15:00Z'),
-    })),
+    getNextPrayer,
+    // Every list in these tests has a readable row ahead, so its boundary is whatever a test stubs as next
+    getNextBoundary: jest.fn((type: string) => getNextPrayer(type)?.datetime ?? null),
     getSequenceAtom: jest.fn((type: string) =>
       type === 'standard' ? mockStandardSequenceAtom : mockExtraSequenceAtom
     ),
