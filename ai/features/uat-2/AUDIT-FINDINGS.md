@@ -4646,6 +4646,37 @@ and needs asking.
 | Old against new, every boundary of London 2026 and a high-latitude mock at four offsets, both schedules, alarms and widget pushes | No change for readable data. The only differences are the removed substitution (1 January's night rows), yesterday's post-midnight Isha no longer placed 24 hours early (gap map L3), and days with no data now shown as `--:--` |
 | Red before green | Every new test was run against the code before its change |
 
+**Proven on the OnePlus 3T**
+
+Two local mock builds with the same fixed-date mock (`~/athan-device-sweep/session3/mocks-dashes.ts`): today's `uat-2`
+(466b568) as the control, then this branch. Clock driven per scene, fresh cold launch each time, rows read from
+Maestro's live hierarchy. Alerts Silent only.
+
+| Scene (2026, BST) | Control | This branch |
+| --- | --- | --- |
+| Mon 21 Sep 11:00 and 14:00, Asr unreadable | Error screen | Asr `--:--`; Dhuhr next, then Magrib; only Asr's bell disabled |
+| Wed 23 Sep 06:00, Fajr and Magrib unreadable | Error screen | Both `--:--`, Sunrise next; Extras Midnight, Last Third and Suhoor `--:--`, Duha next |
+| Thu 24 Sep 03:00 | Readable | Standard readable; Extras Midnight and Last Third `--:--` (Wednesday's Magrib), Suhoor next |
+| Thu 24 Sep 21:00, after Isha | Saturday's list | Friday 25 on screen, every row `--:--`, countdown to Saturday's Fajr |
+| Fri 25 Sep 10:00, missing from the mock | **Saturday's times under Friday**, night rows 00:01 and 01:44 from Saturday's own Magrib | Every Standard and Extras row `--:--`, Istijaba included; countdown to the next readable prayer |
+| Sat 26 Sep 03:00 | Readable | Extras Midnight and Last Third `--:--` (Friday missing) |
+| Sun 27 Sep 19:30, Isha unreadable | Error screen | The list has moved on to Monday 28 |
+| Tue 29 Sep 10:00, every field unreadable | Error screen | Every row `--:--` |
+
+- **00:00 with the app in front:** at Friday 23:59:55 the list still showed Friday's `--:--` rows; at 00:00:10 it showed
+  Saturday 26 with its times, in the same process with no relaunch.
+- **Taps:** the passed unreadable Fajr on Wednesday opened Thursday's 05:08; the upcoming unreadable Magrib showed
+  `--:--` in the row and the countdown; Friday's Dhuhr and Suhoor opened Saturday's 12:53 and 04:51; Monday's Asr opened
+  Tuesday's 16:08.
+- **Alarms:** with Dhuhr, Asr and Magrib Silent, Monday 21 Dhuhr was armed for 1789991640000 and fired at
+  12:54:00.001 as `athan_standard_dhuhr_2026-09-21`; Magrib for 1790013600000 fired at 19:00:00.007. Monday's unreadable
+  Asr was never armed and nothing fired between them. After Monday's cold launch Tuesday's Dhuhr, Asr and Magrib were
+  armed at their exact epochs, so the Asr preference survived the unreadable day.
+- **Not visible to the hierarchy:** the bar and the highlight have no node, so they are proven by the unit tests and the
+  screenshots, not the tree. The "ago" badge, which reads the same previous-prayer lookup as the bar, was absent in
+  exactly the scenes where the bar has nothing to measure from.
+- The device run used the branch before the review-fix rounds; the final commit was rebuilt and checked again (below).
+
 **Defaults the owner has to rule on, with the R15 screenshots**
 
 The brief said to ask these. The owner asked for the session to run on its own, so each was answered from the owner's
@@ -4667,6 +4698,8 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
 - New: a Friday handing over to a fully unreadable Saturday leaves the fading pill one row below Saturday's shorter
   list for its 200 ms fade.
 - New: on 31 December evening with next year unpublished, the list shows 1 January as `--:--` rather than an empty list.
+- New, from the device: a tap on a disabled bell reaches its row and opens that prayer's overlay, as a tap on the row does.
+  In the overlay of a passed unreadable row, the bell belongs to the next readable occurrence and can be pressed.
 
 ---
 
