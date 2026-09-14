@@ -23,5 +23,5 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
  * toArabicNumbers('Test') // 'Test'
  */
 export const toArabicNumbers = (text: string): string => {
-  return text.replace(/[0-9]/g, (digit) => ENGLISH_TO_ARABIC[digit] || digit);
+  return text.replace(/[0-9]/g, (digit) => ENGLISH_TO_ARABIC[digit]);
 };
