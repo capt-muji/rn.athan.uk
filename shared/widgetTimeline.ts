@@ -12,8 +12,8 @@
  * The widget has to follow exactly the rules the app's screens follow, so what
  * each entry shows comes from shared/sequence.ts rather than from positions in
  * the sequence: a row with no readable time is never a boundary and never
- * counted down to, and a list day with none stays on screen until 00:00 London
- * (ai/features/uat-2/DASHES-DESIGN.md §8).
+ * counted down to, and a list day with none, and the day before one, stays on
+ * screen until 00:00 London (ai/features/uat-2/DASHES-DESIGN.md §8).
  *
  * Schedule-agnostic: the same loop serves both the Standard sequence (home
  * + Lock widgets) and the Extra sequence (extras home + Lock widgets); both

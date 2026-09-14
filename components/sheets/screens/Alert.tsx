@@ -31,7 +31,7 @@ const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
 
 // Nothing the user can do fixes a time the timetable did not give, so this explains and reassures without asking
 // for an action: the saved setting returns by itself on the next occurrence with a readable time
-// The hard lines are all within about 10dp of each other, so the centred block reads as an even paragraph, and at
+// The hard lines are all within about 12dp of each other, so the centred block reads as an even paragraph, and at
 // the default font size (and up to Android's Large) each fits a 360dp phone inside the padding below without
 // wrapping a second time
 const UNAVAILABLE_MESSAGE = [
