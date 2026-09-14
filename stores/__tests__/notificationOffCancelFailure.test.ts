@@ -94,6 +94,8 @@ beforeEach(() => {
     osState.add(FAJR[position]);
   });
 
+  // The refused alarm is modelled as still armed, one of two Android shapes: the delegate may instead have
+  // disarmed it and kept it listed
   let refused = false;
   cancelMock.mockImplementation(async (identifier: string) => {
     if (identifier === FAJR[0] && !refused) {
