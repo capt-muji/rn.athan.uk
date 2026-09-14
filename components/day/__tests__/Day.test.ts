@@ -69,39 +69,68 @@ const findAll = (node: ReactNode, type: string): Element[] => {
 };
 
 const FAJR = 0;
+const DUHA = 3;
+const ISTIJABA = 4;
 
-describe('the Day header on the Standard page, Friday 11 September at 14:00 (real London 2026 days)', () => {
-  // [scenario, overlay, Hijri, the date line]
-  it.each<[string, OverlayStore, boolean, string]>([
+describe('the Day header on Friday 11 September at 14:00 (real London 2026 days)', () => {
+  // [scenario, page, overlay, Hijri, the date line]
+  it.each<[string, ScheduleType, OverlayStore, boolean, string]>([
     [
-      'overlay open on its passed Fajr: the next day that Fajr falls on',
+      'Standard page, overlay open on its passed Fajr: the next day that Fajr falls on',
+      ScheduleType.Standard,
       { isOn: true, selectedPrayerIndex: FAJR, scheduleType: ScheduleType.Standard },
       false,
       'Sat, 12 Sep 2026',
     ],
     [
-      'overlay closed, Hijri chosen',
+      'Standard page, overlay closed, Hijri chosen',
+      ScheduleType.Standard,
       { isOn: false, selectedPrayerIndex: FAJR, scheduleType: ScheduleType.Standard },
       true,
       'Rabiʻ I 29, 1448',
     ],
     [
-      'overlay open on its passed Fajr, Hijri chosen',
+      'Standard page, overlay open on its passed Fajr, Hijri chosen',
+      ScheduleType.Standard,
       { isOn: true, selectedPrayerIndex: FAJR, scheduleType: ScheduleType.Standard },
       true,
       'Rabiʻ II 1, 1448',
     ],
-  ])('%s', (_scenario, overlay, hijriEnabled, date) => {
+    [
+      'Extras page, overlay open on its passed Duha: the next day that Duha falls on',
+      ScheduleType.Extra,
+      { isOn: true, selectedPrayerIndex: DUHA, scheduleType: ScheduleType.Extra },
+      false,
+      'Sat, 12 Sep 2026',
+    ],
+    [
+      'Extras page, overlay open on its Istijaba still to come: its own day, not the day of the passed row 0',
+      ScheduleType.Extra,
+      { isOn: true, selectedPrayerIndex: ISTIJABA, scheduleType: ScheduleType.Extra },
+      false,
+      'Fri, 11 Sep 2026',
+    ],
+    [
+      'Standard page, overlay open on the Extras page: the list day on screen',
+      ScheduleType.Standard,
+      { isOn: true, selectedPrayerIndex: DUHA, scheduleType: ScheduleType.Extra },
+      false,
+      'Fri, 11 Sep 2026',
+    ],
+  ])('%s', (_scenario, type, overlay, hijriEnabled, date) => {
     storeLondonDays();
-    const prayers = sequenceFrom(ScheduleType.Standard, '2026-09-10');
     mockClock.now = london('2026-09-11', '14:00');
-    mockAtomValues.set('standardSequenceAtom', { type: ScheduleType.Standard, prayers });
-    mockAtomValues.set('standardDisplayDateAtom', resolveDisplayDate(prayers, mockClock.now));
+    for (const schedule of [ScheduleType.Standard, ScheduleType.Extra]) {
+      const prayers = sequenceFrom(schedule, '2026-09-10');
+      const prefix = schedule === ScheduleType.Standard ? 'standard' : 'extra';
+      mockAtomValues.set(`${prefix}SequenceAtom`, { type: schedule, prayers });
+      mockAtomValues.set(`${prefix}DisplayDateAtom`, resolveDisplayDate(prayers, mockClock.now));
+    }
     mockAtomValues.set('hijriDateEnabledAtom', hijriEnabled);
     mockStore.current = createStore();
     mockStore.current.set(overlayAtom, overlay);
 
-    const lines = findAll(Day({ type: ScheduleType.Standard }), 'Text').map((text) => text.props.children);
+    const lines = findAll(Day({ type }), 'Text').map((text) => text.props.children);
 
     expect(lines).toEqual(['London, UK', date]);
   });
