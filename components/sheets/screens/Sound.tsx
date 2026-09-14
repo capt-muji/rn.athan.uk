@@ -19,6 +19,7 @@ import {
 } from '@/stores/ui';
 
 import { Sheet, SoundItem } from '../parts';
+import { displayedSoundSelection, hasSoundDraft, isPreviewFinished, previewRemainingSeconds } from './soundSheet';
 
 const ITEM_GAP = SPACING.xs;
 
@@ -36,7 +37,7 @@ export default function BottomSheetSound() {
   const hasInitialized = useRef(false);
   const translateY = useSharedValue(0);
 
-  const currentSelection = tempSoundSelection ?? selectedSound;
+  const currentSelection = displayedSoundSelection(tempSoundSelection, selectedSound);
 
   // ONE player for the whole sheet (was one per row — 32 concurrent
   // AVPlayers exhausted audio resources on older devices, G.4/G.5). The hook
@@ -61,12 +62,15 @@ export default function BottomSheetSound() {
   // last payload until the replacement emits its own; a status from another
   // instance must never reap a freshly armed one (ISSUES #25).
   useEffect(() => {
-    if (playingIndex === null || status.id !== player.id) return;
-    if (!status.playing && status.currentTime > 0 && status.duration > 0) {
-      if (status.currentTime >= status.duration - 0.1) {
-        setPlayingSoundIndex(null);
-      }
-    }
+    const finished = isPreviewFinished({
+      playingIndex,
+      playerId: player.id,
+      statusId: status.id,
+      playing: status.playing,
+      currentTime: status.currentTime,
+      duration: status.duration,
+    });
+    if (finished) setPlayingSoundIndex(null);
   }, [playingIndex, player.id, status.id, status.playing, status.currentTime, status.duration]);
 
   const handlePlayPress = useCallback(
@@ -126,17 +130,22 @@ export default function BottomSheetSound() {
   // first value stays steady while iOS refines its provisional duration;
   // until the fresh player reports, the clip's tabulated seconds stand in
   // so the countdown lands in the same frame as the icon flip.
-  const playingRemainingSeconds =
-    playingIndex !== null
-      ? status.id === player.id && status.duration > 0
-        ? Math.max(0, Math.round(status.duration - status.currentTime))
-        : ATHAN_DURATION_SECONDS[playingIndex]
-      : 0;
+  const playingRemainingSeconds = previewRemainingSeconds(
+    {
+      playingIndex,
+      playerId: player.id,
+      statusId: status.id,
+      playing: status.playing,
+      currentTime: status.currentTime,
+      duration: status.duration,
+    },
+    ATHAN_DURATION_SECONDS
+  );
 
   const handleDismiss = useCallback(async () => {
     clearAudio();
 
-    if (tempSoundSelection === null) return;
+    if (!hasSoundDraft(tempSoundSelection)) return;
 
     // The commit persists before it schedules (the scheduler reads the
     // preference mid-flight) and rolls the preference back itself if either
