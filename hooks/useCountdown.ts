@@ -14,7 +14,7 @@ import { extraDisplayDateAtom, standardDisplayDateAtom } from '@/stores/schedule
 interface UseCountdownResult {
   /** Formatted countdown label (render-granular: changes only when the displayed string changes) */
   displayTime: string;
-  /** Name of the next prayer */
+  /** Name of the next prayer, or of the next list day's first row when no readable prayer is left */
   prayerName: string;
   /** Whether a list is on screen, so the countdown has something to show: a time, or --:-- */
   isReady: boolean;
