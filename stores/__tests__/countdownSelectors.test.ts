@@ -156,7 +156,7 @@ describe.each([
   };
 
   it.each([ScheduleType.Standard, ScheduleType.Extra])(
-    'fills the %s bar from its own previous and next rows, not the other page’s',
+    "fills the %s bar from its own previous and next rows, not the other page's",
     (type) => {
       const store = storeWithBothPairs();
 
@@ -166,7 +166,7 @@ describe.each([
   );
 
   it.each([ScheduleType.Standard, ScheduleType.Extra])(
-    'moves the %s bar on its own countdown’s tick, and on no other',
+    "moves the %s bar on its own countdown's tick, and on no other",
     (type) => {
       const store = storeWithBothPairs();
       const own = type === ScheduleType.Standard ? standardCountdownAtom : extraCountdownAtom;
@@ -184,8 +184,7 @@ describe.each([
     }
   );
 
-  // The next and previous atoms are each held from their own first read after the sequence changes, so read
-  // either side of a prayer's instant they can name the same row. The bar must then draw nothing, not a width
+  // Should the previous and next rows ever name the same instant, the bar draws nothing rather than a width
   // divided by zero
   it.each([ScheduleType.Standard, ScheduleType.Extra])(
     'draws an empty bar with no warning on %s when the previous and next rows are the same instant',
