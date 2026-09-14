@@ -67,7 +67,8 @@ describe('the alarm window either side of 00:00 on 18 October 2026', () => {
       'athan_standard_fajr_2026-10-18': '2026-10-18T04:54:00.000Z',
       'athan_standard_fajr_2026-10-19': '2026-10-19T04:55:00.000Z',
     });
-    // List 18's Midnight, due at 00:00:00, is the one list day that left a window
+    // List 18's Midnight fired 30 seconds ago, so it is not re-attempted and its identifier is cancelled; list 17, the
+    // day that left the window, was never armed
     expect(cancelCalls()).toEqual(['athan_extra_midnight_2026-10-18']);
     expect(osIdentifiers()).toEqual(Object.keys(triggers()).sort());
   });
