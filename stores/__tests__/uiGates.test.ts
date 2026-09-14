@@ -83,7 +83,7 @@ describe('bumpResync', () => {
 });
 
 describe('setPopupWhatsNewEnabled', () => {
-  it('raises and dismisses What’s New without touching the update prompt', () => {
+  it("raises and dismisses What's New without touching the update prompt", () => {
     setPopupWhatsNewEnabled(true);
     expect([store.get(popupWhatsNewEnabledAtom), store.get(popupUpdateEnabledAtom)]).toEqual([true, false]);
 
