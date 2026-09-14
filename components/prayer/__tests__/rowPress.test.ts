@@ -58,7 +58,12 @@ const show = (type: ScheduleType, breakage: Breakage, [date, time]: [string, str
 const tapsOnList = (type: ScheduleType, rowCount: number, isSelectedForOverlay: boolean) =>
   Array.from({ length: rowCount }, (_, index) => {
     const row = usePrayer(type, index);
-    const action = getRowPressAction(type === ScheduleType.Standard, row.english, row.isPassed, isSelectedForOverlay);
+    const action = getRowPressAction({
+      isStandard: type === ScheduleType.Standard,
+      english: row.english,
+      isPassed: row.isPassed,
+      isSelectedForOverlay,
+    });
     return `${row.english}: ${action}`;
   });
 

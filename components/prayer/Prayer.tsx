@@ -69,7 +69,12 @@ export default function Prayer({ type, index }: Props) {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    const action = getRowPressAction(Schedule.isStandard, Prayer.english, Prayer.isPassed, isSelectedForOverlay);
+    const action = getRowPressAction({
+      isStandard: Schedule.isStandard,
+      english: Prayer.english,
+      isPassed: Prayer.isPassed,
+      isSelectedForOverlay,
+    });
     if (action === 'close') closeOverlay();
     if (action === 'open') openOverlay(type, index);
   };
