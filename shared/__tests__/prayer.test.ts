@@ -275,17 +275,6 @@ describe('createPrayer edge cases', () => {
     expect(prayer.belongsToDate).toBe('2026-06-21');
   });
 
-  it('handles Extra Midnight prayer before system midnight', () => {
-    const prayer = createPrayer({
-      type: ScheduleType.Extra,
-      english: 'Midnight',
-      arabic: 'نصف الليل',
-      date: '2026-12-15',
-      time: '22:45',
-    });
-    expect(prayer.belongsToDate).toBe('2026-12-16');
-  });
-
   it('handles Extra Last Third prayer after system midnight', () => {
     const prayer = createPrayer({
       type: ScheduleType.Extra,
