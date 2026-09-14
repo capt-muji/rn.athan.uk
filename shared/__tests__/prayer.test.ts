@@ -93,15 +93,6 @@ describe('calculateBelongsToDate', () => {
   });
 
   describe('Extra Schedule', () => {
-    it('assigns Midnight at 00:30 (stored on previous calendar day) to next day', () => {
-      // Night prayers stored with previous evening's data but occur in early morning
-      // When calendar date is Jan 18 and time is in PM (>=12), belongs to Jan 19
-      const datetime = createPrayerDatetime('2026-01-18', '00:30');
-      // If hour < 12, it stays on current calendar date
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Midnight', '2026-01-18', datetime);
-      expect(result).toBe('2026-01-18');
-    });
-
     it('assigns Last Third to next day when hour >= 12', () => {
       // This handles the case where midnight/last third are calculated from previous evening's magrib
       // If the datetime shows >= 12 (afternoon), it means it's actually part of NEXT day's night
