@@ -224,7 +224,7 @@ footer { margin-top: 20px; padding-top: 22px; border-top: 1px solid var(--rule);
     <div><dt>4,380 / 4,380</dt><dd>cells where London's 2026 API equals East London Mosque's timetable</dd></div>
     <div><dt>3,652 / 3,652</dt><dd>days where London's Fajr follows the 1989 Blackburn chart, over ten timetable years</dd></div>
     <div><dt>365 / 365</dt><dd>days of 2026 Isha reproduced, once London's edited chart slots are applied</dd></div>
-    <div><dt>1,186 · 59</dt><dd>moonsighting.com pages and documents, all read in full</dd></div>
+    <div><dt>1,186 · 157 · 59</dt><dd>site pages, archived method-page versions and documents, all read in full</dd></div>
   </dl>
 
   <div class="shell">
@@ -257,7 +257,7 @@ footer { margin-top: 20px; padding-top: 22px; border-top: 1px solid var(--rule);
           <li><strong>The formula has a primary source.</strong>Shaukat's booklet <i>FAJR AND ISHA</i> (September 2015), §11, publishes the coefficients. They are exactly the ones <code>adhan</code> uses. <span class="chip ok">lead-verified</span></li>
           <li><strong>The published tables follow rules no page states in full.</strong>A seasonal function bounded by 18°; above 55°, also bounded by 1/7 of the night at the true latitude, with no slide to 60°. In polar night, plain 18° Fajr and Isha; in midnight sun, dashes. A model of this reproduces the tables within ±1 minute below about 66° in both hemispheres.</li>
           <li><strong>The method's machine-readable source is fragile.</strong><code>www.moonsighting.com/time_json.php</code> returns HTTP 500. The working copy is on the generator developer's personal host, with no terms. It changes the clock a day early in seven time zones.</li>
-          <li><strong>moonsighting.com has been dormant since spring 2024.</strong>No page publishes the formula, and none mentions London's unified timetable. From 2012 to 2017 it offered, by post, a booklet it said contained the algorithms.</li>
+          <li><strong>moonsighting.com has been dormant since spring 2024.</strong>No page publishes the formula, and none mentions London's unified timetable. From 2012 to 2016 it offered, by post, a booklet it said contained the algorithms.</li>
           <li><strong>The app has Asr labelled the wrong way round.</strong>API <code>asr</code> is the Shafi'i (one shadow) time and <code>asr_2</code> the Hanafi; <code>shared/types.ts</code> says the reverse. The app shows <code>asr</code>.</li>
         </ol>
       </section>
@@ -342,6 +342,7 @@ footer { margin-top: 20px; padding-top: 22px; border-top: 1px solid var(--rule);
               <li><span class="yr">Oct 2005</span>Miftahi, <i>Fajar and Isha</i>: Tables 5 and 6, the UK interval chart</li>
               <li><span class="yr">late 2006</span>Shaukat computes Hizbul Ulama's UK city tables, with his own function and no 1/7 rule; London's timetable is a different table</li>
               <li><span class="yr">1 Aug 2011</span>London adopts the unified timetable inside the M25 (Unified.pdf)</li>
+              <li><span class="yr">16 Aug 2011</span>moonsighting.com's revision of that date drops the Hizbul Ulama book links and the "amazing accuracy" claim for Blackburn</li>
               <li><span class="yr">from Jan 2015</span>Chart intervals on HMNAO sun times; sunrise − 3</li>
               <li><span class="yr">today</span>East London Mosque timetable → londonprayertimes.com API</li>
               <li class="end"><span class="yr">app</span>Athan: London's default, unchanged under the owner's plan</li>
@@ -385,22 +386,23 @@ Asr shadow = 1 Shafi'i · 2 Hanafi · 4/7 Ja'fari</div>
 
       <section id="highlat">
         <h2>Above 55°: nine written versions</h2>
-        <p class="kicker">Dated by archived page captures, as "capture (the page's own Updated line)". The published tables follow none of them exactly.</p>
+        <p class="kicker">Dated by the pages' own "Updated" lines, across every archived version of how-we.html (49) and faq_pt.html (80). The published tables follow none of them exactly.</p>
         <ol class="timeline">
           <li><span class="when">1998 – 2003</span><span>prayer.html: fixed 15°, "a value adopted by ISNA"; 1/7 of the night above 45°.</span></li>
           <li><span class="when">2003 – 2005</span><span>18° with the 1/7 rule; from October 2004 "a combination of 18 degrees, 15 degrees, and even 12 degrees".</span></li>
           <li><span class="when">May 2005</span><span>The latitude-season function arrives; 1/7 removed; near the Arctic Circle, "nearby lower latitudes".</span></li>
           <li><span class="when">Sep 2009</span><span>1/7 of the night returns, "between 55 - 66 degrees".</span></li>
-          <li><span class="when">May 2011</span><span>1/7 at 55–65°; above 65°, "nearest lower latitudes where the sun sets and rises". Booklet §10 uses this wording.</span></li>
+          <li><span class="when">May 2011</span><span>1/7 at 55–65°; above 65°, "nearest lower latitudes where the sun sets and rises" (from July 2012, "Aqrabul-Ayyam" or "Aqrabul-Bilad"). Booklet §10 uses this wording.</span></li>
           <li><span class="when">Oct 2013</span><span>how-we.html: pure 18° up to 30°, the 18° comparison from 30° to 55°, 1/7 at 55–60°, and a slide to 60° only "If day length is more than 18 hours or less than 6 hours".</span></li>
-          <li><span class="when">Jul 2016</span><span>The 18° comparison from the equator to 55°; the slide to 60° made unconditional; Fajr redefined as "Tabayyun".</span></li>
-          <li class="live"><span class="when">Jul 2017 → live</span><span>Above 60°: 1/7 at 60° "in summer", the functions "in winter".</span></li>
-          <li class="live"><span class="when">by Aug 2020 → live</span><span>faq_pt.html: Aqrabul-Bilaad, "decreasing the latitude by 0.1 degrees … until a latitude is reached where the sun sets". This contradicts how-we.html beside it.</span></li>
+          <li><span class="when">Nov 2014 – May 2015</span><span>The 18° comparison now runs from the equator to 55°, and the day-length test stays. This is booklet §12's exact wording.</span></li>
+          <li><span class="when">Jun 2015</span><span>The slide to 60° is made unconditional; Fajr is redefined as "Tabayyun".</span></li>
+          <li class="live"><span class="when">Jan 2017 → live</span><span>Above 60°: 1/7 at 60° "in summer", the functions "in winter".</span></li>
+          <li class="live"><span class="when">Aug 2020 → live</span><span>faq_pt.html: Aqrabul-Bilaad, "decreasing the latitude by 0.1 degrees … until a latitude is reached where the sun sets". This contradicts how-we.html beside it.</span></li>
           <li class="tables"><span class="when">the tables</span><span>1/7 of the night at the true latitude, no slide; polar night gives 18° Fajr and Isha with Sunrise and Maghrib dashed; midnight sun dashes all four. The slide to 60° makes the fit worse: Reykjavik matches 1/7 at its own latitude on 365 of 365 days.</span></li>
         </ol>
         <div class="callout info">
-          <p><strong>The booklet mixes page versions.</strong> §12 pairs the "equator to 55°" comparison (first captured July 2016) with the 18-hour day-length test (last captured October 2013). Whether that combination ever stood on the page is being checked now against every archived capture. <span class="chip run">being dated</span></p>
-          <p><strong>Shafaq General is described both ways.</strong> Since May 2019 how-we.html says "Shafaq General uses Shafaq Abyad in Summer and Shafaq Ahmer in Winter", the reverse of the sentence before it. The coefficients settle it: General is Ahmer-like in summer and Abyad-like in winter.</p>
+          <p><strong>The booklet mixes page versions.</strong> §10 is the site's 2011 wording. §12 is the wording how-we.html carried from November 2014 to May 2015, which the site had already replaced by the time the booklet was dated September 2015. <span class="chip ok">lead-verified</span></p>
+          <p><strong>Shafaq General is described both ways.</strong> Since March 2019 how-we.html says "Shafaq General uses Shafaq Abyad in Summer and Shafaq Ahmer in Winter", the reverse of the sentence before it. The coefficients settle it: General is Ahmer-like in summer and Abyad-like in winter.</p>
         </div>
       </section>
 
@@ -434,8 +436,8 @@ Asr shadow = 1 Shafi'i · 2 Hanafi · 4/7 Ja'fari</div>
         <p class="kicker">Every live path (1,186), 50 archived captures, and every page's hidden comments, scripts and attribute text, each read in full or as a full diff.</p>
         <ul>
           <li><strong>Seven pages carry the method:</strong> how-we, faq_pt, 3books, ever-wonder and the archived prayer, faq_ps and prayer-french pages. None states the coefficients. None mentions London's unified timetable or names a UK mosque that uses the times.</li>
-          <li><strong>The booklet was on offer, 2012 to 2017.</strong> "These algorithms are included in the booklet … a hard (xeroxed) copy of the manuscript can be sent by postage mail". It was removed from how-we by July 2016 and from faq_pt by November 2017. That the 2015 booklet is this manuscript fits, but is <span class="chip no">unverified</span></li>
-          <li><strong>Dormant since spring 2024.</strong> The last sighting reports are dated 7–10 April 2024. The newest "Updated" line is 3 April 2024. The last paid-link note reads "Paid up to 5/8/2024". The calculator's Apple MapKit tokens expired on 2023-08-01. Since 2025 the site sits behind a Cloudflare bot check.</li>
+          <li><strong>The booklet was on offer, 2012 to 2016.</strong> "These algorithms are included in the booklet … a hard (xeroxed) copy of the manuscript can be sent by postage mail". It appeared in May 2012 and left both pages in the revision dated 5 July 2016. That the 2015 booklet is this manuscript fits, but is <span class="chip no">unverified</span></li>
+          <li><strong>Dormant since spring 2024.</strong> The last sighting reports are dated 7–10 April 2024. The newest "Updated" line is 3 April 2024. The last paid-link note reads "Paid up to 5/8/2024". The calculator's Apple MapKit tokens expired on 2023-08-01. Since December 2022 the archive has intermittently captured a Cloudflare bot check in place of the pages.</li>
           <li><strong>The Islamic day.</strong> The site's calendars say dates "BEGIN AT SUNSET THE PRECEDING EVENING"; a hosted guest article dissents.</li>
           <li><strong>Documents (59 of 59).</strong> Shaukat computed Hizbul Ulama's 2007 UK directory. Its 2006 and 2009 tables are identical, apply no 1/7 rule even at Aberdeen, and carry errors: Belfast is computed at a point in Essex.</li>
         </ul>
@@ -498,18 +500,17 @@ Asr shadow = 1 Shafi'i · 2 Hanafi · 4/7 Ja'fari</div>
       <section id="open">
         <h2>Still open</h2>
         <ul>
-          <li><strong>Method-page dates.</strong> 9 of 58 how-we, 6 of 79 faq_pt and 6 of 34 pray.php archive versions were read; the rest are being fetched and diffed. <span class="chip run">in progress</span></li>
-          <li><strong>London boundary minutes.</strong> ±1 on 3 to 12 days per sun-based prayer; needs HMNAO's values. <span class="chip no">unverified</span></li>
+                    <li><strong>London boundary minutes.</strong> ±1 on 3 to 12 days per sun-based prayer; needs HMNAO's values. <span class="chip no">unverified</span></li>
           <li><strong>London's Asr.</strong> 353 and 356 of 365 in one agent's code; adhan gives 143 and 204. <span class="chip no">not reproduced</span></li>
           <li><strong>Years before 2026</strong> rest on ELM's PDFs, proven identical to the API only for 2024.</li>
-          <li><strong>Shafaq width in England.</strong> faq_pt has said 66–105 minutes since 2012; earlier pages and Miftahi's book say 66–100.</li>
+          <li><strong>Shafaq width in England.</strong> faq_pt has said 66–105 minutes since its revision of 16 August 2011; earlier pages and Miftahi's book say 66–100.</li>
+          <li><strong>16 August 2011.</strong> moonsighting.com removed the Hizbul Ulama book links two weeks after London adopted the timetable. Whether the two are connected is <span class="chip no">unverified</span></li>
           <li><strong>Endpoint.</strong> The cause of the www 500s, the McMurdo runs, Casablanca after 20 September, Palestine, uptime and consent, and the Sky Prayers apps.</li>
           <li><strong>Ports not run:</strong> Rust, C# and Dart.</li>
         </ul>
         <h3>Next session</h3>
         <ol>
-          <li>Pin every method-page change in the archive, including whether booklet §12 ever stood on how-we.html.</li>
-          <li>Reproduce London's Asr independently; seek HMNAO values within its terms.</li>
+                    <li>Reproduce London's Asr independently; seek HMNAO values within its terms.</li>
           <li>Measure Palestine; look into McMurdo and the Sky Prayers apps.</li>
           <li>One independent Opus reviewer attacks every claim, count and fixture.</li>
           <li>Bring the eleven questions to the owner.</li>
@@ -535,7 +536,7 @@ Asr shadow = 1 Shafi'i · 2 Hanafi · 4/7 Ja'fari</div>
       </section>
 
       <footer>
-        Prepared from <code>ai/features/moonsighting/RESEARCH-FINDINGS.md</code> on branch <code>research/moonsighting</code>. Prayer times shown are quoted from sources or derived from the saved API year; none was computed for this page. Marks: <span class="chip ok">lead-verified</span> re-checked by the lead against the primary source; <span class="chip no">unverified</span> not yet proven; <span class="chip run">in progress</span> work running now.
+        Prepared from <code>ai/features/moonsighting/RESEARCH-FINDINGS.md</code> on branch <code>research/moonsighting</code>. Prayer times shown are quoted from sources or derived from the saved API year; none was computed for this page. Marks: <span class="chip ok">lead-verified</span> re-checked by the lead against the primary source; <span class="chip no">unverified</span> not yet proven.
       </footer>
     </main>
   </div>
