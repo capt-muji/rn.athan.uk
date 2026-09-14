@@ -18,7 +18,7 @@ import {
   compareListOrder,
   findNextOccurrence,
   findNextReadable,
-  findPreviousReadable,
+  findPreviousRow,
   getDisplayHoldEnd,
   getNextBoundary,
   isReadable,
@@ -328,7 +328,7 @@ describe('findNextReadable', () => {
 });
 
 // =============================================================================
-// resolveDisplayDate, getDisplayHoldEnd, getNextBoundary, isRowPassed and findPreviousReadable together:
+// resolveDisplayDate, getDisplayHoldEnd, getNextBoundary, isRowPassed and findPreviousRow together:
 // walks through whole London days
 // =============================================================================
 
@@ -363,7 +363,7 @@ const walk = (title: string, sequence: Prayer[], moments: Moment[]) => {
           next: keyOf(next),
           hold: isoOrNull(getDisplayHoldEnd(prayers, moment.display)),
           boundary: isoOrNull(getNextBoundary(prayers, moment.now)),
-          previous: next ? keyOf(findPreviousReadable(prayers, next)) : null,
+          previous: next ? keyOf(findPreviousRow(prayers, next)) : null,
           passed: Object.fromEntries(passedKeys.map((k) => [k, isRowPassed(prayers, find(prayers, k), moment.now)])),
         }).toEqual({
           display: moment.display,
@@ -440,7 +440,7 @@ describe('a whole London day', () => {
         next: 'Magrib 2026-09-15',
         hold: null,
         boundary: 'Magrib 2026-09-15',
-        previous: 'Dhuhr 2026-09-15',
+        previous: null,
         passed: { 'Dhuhr 2026-09-15': false, 'Asr 2026-09-15': false },
       },
       {
@@ -450,7 +450,7 @@ describe('a whole London day', () => {
         next: 'Magrib 2026-09-15',
         hold: null,
         boundary: 'Magrib 2026-09-15',
-        previous: 'Dhuhr 2026-09-15',
+        previous: null,
         passed: { 'Dhuhr 2026-09-15': true, 'Asr 2026-09-15': true, 'Magrib 2026-09-15': false },
       },
       {
@@ -460,7 +460,7 @@ describe('a whole London day', () => {
         next: 'Magrib 2026-09-15',
         hold: null,
         boundary: 'Magrib 2026-09-15',
-        previous: 'Dhuhr 2026-09-15',
+        previous: null,
         passed: { 'Asr 2026-09-15': true },
       },
       {
@@ -527,7 +527,7 @@ describe('a whole London day', () => {
         next: 'Sunrise 2026-09-15',
         hold: null,
         boundary: 'Sunrise 2026-09-15',
-        previous: 'Isha 2026-09-14',
+        previous: null,
         passed: { 'Fajr 2026-09-15': true, 'Sunrise 2026-09-15': false },
       },
       {
@@ -537,7 +537,7 @@ describe('a whole London day', () => {
         next: 'Sunrise 2026-09-15',
         hold: null,
         boundary: 'Sunrise 2026-09-15',
-        previous: 'Isha 2026-09-14',
+        previous: null,
         passed: { 'Fajr 2026-09-15': true },
       },
       {
@@ -594,7 +594,7 @@ describe('a whole London day', () => {
         next: 'Fajr 2026-09-16',
         hold: null,
         boundary: 'Fajr 2026-09-16',
-        previous: 'Magrib 2026-09-15',
+        previous: null,
         passed: { 'Isha 2026-09-15': false },
       },
       {
@@ -604,7 +604,7 @@ describe('a whole London day', () => {
         next: 'Fajr 2026-09-16',
         hold: null,
         boundary: 'Fajr 2026-09-16',
-        previous: 'Magrib 2026-09-15',
+        previous: null,
         passed: { 'Isha 2026-09-15': true },
       },
       {
@@ -614,7 +614,7 @@ describe('a whole London day', () => {
         next: 'Fajr 2026-09-16',
         hold: null,
         boundary: 'Fajr 2026-09-16',
-        previous: 'Magrib 2026-09-15',
+        previous: null,
         passed: { 'Isha 2026-09-15': true },
       },
       {
@@ -624,7 +624,7 @@ describe('a whole London day', () => {
         next: 'Fajr 2026-09-16',
         hold: null,
         boundary: 'Fajr 2026-09-16',
-        previous: 'Magrib 2026-09-15',
+        previous: null,
         passed: { 'Isha 2026-09-15': true },
       },
     ]
@@ -641,7 +641,7 @@ describe('a whole London day', () => {
         next: 'Sunrise 2026-09-15',
         hold: null,
         boundary: 'Sunrise 2026-09-15',
-        previous: 'Isha 2026-09-14',
+        previous: null,
         passed: { 'Fajr 2026-09-15': true, 'Magrib 2026-09-15': false },
       },
       {
@@ -661,7 +661,7 @@ describe('a whole London day', () => {
         next: 'Isha 2026-09-15',
         hold: null,
         boundary: 'Isha 2026-09-15',
-        previous: 'Asr 2026-09-15',
+        previous: null,
         passed: { 'Magrib 2026-09-15': false },
       },
       {
@@ -671,7 +671,7 @@ describe('a whole London day', () => {
         next: 'Isha 2026-09-15',
         hold: null,
         boundary: 'Isha 2026-09-15',
-        previous: 'Asr 2026-09-15',
+        previous: null,
         passed: { 'Fajr 2026-09-15': true, 'Magrib 2026-09-15': true },
       },
     ]
@@ -837,7 +837,7 @@ describe('a whole London day', () => {
         next: 'Fajr 2026-09-26',
         hold: null,
         boundary: 'Fajr 2026-09-26',
-        previous: 'Magrib 2026-09-25',
+        previous: null,
         passed: { 'Isha 2026-09-25': false },
       },
       {
@@ -847,7 +847,7 @@ describe('a whole London day', () => {
         next: 'Fajr 2026-09-26',
         hold: null,
         boundary: 'Fajr 2026-09-26',
-        previous: 'Magrib 2026-09-25',
+        previous: null,
         passed: { 'Isha 2026-09-25': true },
       },
     ]
@@ -1461,7 +1461,8 @@ describe('an unreadable row at each position', () => {
         { offset: 0, display: c.last ? c.after : c.day, next: c.below, passed: c.first },
         { offset: 1, display: c.last ? c.after : c.day, next: c.below, passed: true },
       ]);
-      expect(keyOf(findPreviousReadable(prayers, findReadable(prayers, c.below)))).toBe(c.above);
+      // The unreadable row sits directly above `below`, so there is nothing to measure `below`'s bar from
+      expect(findPreviousRow(prayers, findReadable(prayers, c.below))).toBeNull();
     });
 
     it.each([...standardCases, ...extrasCases])('$list $english is never next', (c) => {
@@ -1930,10 +1931,10 @@ describe('isRowPassed', () => {
 });
 
 // =============================================================================
-// findPreviousReadable
+// findPreviousRow
 // =============================================================================
 
-describe('findPreviousReadable', () => {
+describe('findPreviousRow', () => {
   describe.each(ORDERS)('given %s', (_order, arrange) => {
     it.each([
       [
@@ -1955,29 +1956,30 @@ describe('findPreviousReadable', () => {
         'Isha 2026-09-14',
       ],
       [
-        'an unreadable Magrib is passed over',
+        'an unreadable Magrib above Isha leaves nothing, not Asr further up',
         [...standard('2026-09-14'), ...standard('2026-09-15', ['Magrib']), ...standard('2026-09-16')],
         'Isha 2026-09-15',
-        'Asr 2026-09-15',
+        null,
       ],
       [
-        'two unreadable rows are passed over',
+        'two unreadable rows above next leave nothing, though Sunrise has a time',
         [...standard('2026-09-15', ['Dhuhr', 'Asr'])],
         'Magrib 2026-09-15',
-        'Sunrise 2026-09-15',
+        null,
       ],
       [
-        'an unreadable Fajr reaches into the list before',
+        'an unreadable Fajr above Sunrise leaves nothing, not the list before',
         [...standard('2026-09-14'), ...standard('2026-09-15', ['Fajr'])],
         'Sunrise 2026-09-15',
-        'Isha 2026-09-14',
+        null,
       ],
       [
-        'unreadable rows on both lists are passed over',
-        [...standard('2026-09-14', ['Magrib', 'Isha']), ...standard('2026-09-15', ['Fajr'])],
-        'Sunrise 2026-09-15',
-        'Asr 2026-09-14',
+        "an unreadable Isha of the list before leaves nothing for the first row, not that list's Asr",
+        [...standard('2026-09-14', ['Magrib', 'Isha']), ...standard('2026-09-15')],
+        'Fajr 2026-09-15',
+        null,
       ],
+      ['the row above the last row of a list', [...standard('2026-09-14')], 'Isha 2026-09-14', 'Magrib 2026-09-14'],
       [
         "an unreadable list before is not crossed to an older list's row",
         [...standard('2026-09-14'), ...blankStandard('2026-09-15'), ...standard('2026-09-16')],
@@ -1997,61 +1999,70 @@ describe('findPreviousReadable', () => {
         null,
       ],
       [
-        'session 7: an unreadable Isha leaves the 00:40 Magrib',
+        'session 7: an unreadable Isha of the list before leaves nothing for Fajr, not the 00:40 Magrib',
         [...standard('2026-09-24'), ...standard('2026-09-25', ['Isha']), ...standard('2026-09-26')],
         'Fajr 2026-09-26',
-        'Magrib 2026-09-25',
+        null,
       ],
       ['across a year', [...standard('2026-12-31'), ...standard('2027-01-01')], 'Fajr 2027-01-01', 'Isha 2026-12-31'],
       [
-        'Extras: dashed night rows reach the list before',
+        'Extras: a dashed Last Third leaves nothing for Suhoor, not the list before',
         [...extras('2026-09-17'), ...extras('2026-09-18', ['Midnight', 'Last Third'])],
         'Suhoor 2026-09-18',
+        null,
+      ],
+      [
+        "Extras: Duha is a weekday list before's last row, for the next night's Midnight",
+        [...extras('2026-09-17'), ...extras('2026-09-18')],
+        'Midnight 2026-09-18',
         'Duha 2026-09-17',
       ],
       [
-        "Extras: a Friday's Istijaba is the list before's last row",
-        [...extras('2026-09-18'), ...extras('2026-09-19', ['Midnight', 'Last Third'])],
-        'Suhoor 2026-09-19',
+        "Extras: a Friday's Istijaba is the list before's last row, for Saturday's Midnight",
+        [...extras('2026-09-18'), ...extras('2026-09-19')],
+        'Midnight 2026-09-19',
         'Istijaba 2026-09-18',
       ],
       [
-        'Extras: one Magrib dashing Istijaba and the next night',
-        [...extras('2026-09-18', ['Istijaba']), ...extras('2026-09-19', ['Midnight', 'Last Third'])],
-        'Suhoor 2026-09-19',
-        'Duha 2026-09-18',
+        "Extras: a dashed Istijaba leaves nothing for Saturday's Midnight, not Friday's Duha",
+        [...extras('2026-09-18', ['Istijaba']), ...extras('2026-09-19')],
+        'Midnight 2026-09-19',
+        null,
       ],
     ])('%s', (_label, sequence, nextKey, expected) => {
       const prayers = arrange(sequence);
-      expect(keyOf(findPreviousReadable(prayers, findReadable(prayers, nextKey)))).toBe(expected);
+      expect(keyOf(findPreviousRow(prayers, findReadable(prayers, nextKey)))).toBe(expected);
     });
 
     it('the list before on its own, as the store adds it from storage', () => {
       const next = findReadable(standard('2026-09-15'), 'Fajr 2026-09-15');
-      expect(keyOf(findPreviousReadable(arrange(standard('2026-09-14')), next))).toBe('Isha 2026-09-14');
+      expect(keyOf(findPreviousRow(arrange(standard('2026-09-14')), next))).toBe('Isha 2026-09-14');
     });
 
-    it('a row at the same instant as next is not before it', () => {
+    it('the list before on its own gives nothing for a row that is not first on its list', () => {
+      const next = findReadable(standard('2026-09-15'), 'Sunrise 2026-09-15');
+      expect(findPreviousRow(arrange(standard('2026-09-14')), next)).toBeNull();
+    });
+
+    it('a row above next at the same instant is not before it, so there is nothing', () => {
       const prayers = arrange([
         ...standard('2026-09-15').filter((p) => p.english !== 'Dhuhr'),
         row(ScheduleType.Standard, 'Dhuhr', '2026-09-15', '16:21'),
       ]);
-      expect(keyOf(findPreviousReadable(prayers, findReadable(prayers, 'Asr 2026-09-15')))).toBe('Sunrise 2026-09-15');
+      expect(findPreviousRow(prayers, findReadable(prayers, 'Asr 2026-09-15'))).toBeNull();
     });
 
-    it('two rows tied at the latest instant give that instant', () => {
+    it('the row above is the one used, even when it shares its instant with the row above it', () => {
       const prayers = arrange([
         ...standard('2026-09-15').filter((p) => p.english !== 'Asr'),
         row(ScheduleType.Standard, 'Asr', '2026-09-15', '12:58'),
       ]);
-      const previous = findPreviousReadable(prayers, findReadable(prayers, 'Magrib 2026-09-15'));
-      expect(previous?.datetime.toISOString()).toBe('2026-09-15T11:58:00.000Z');
-      expect(['Dhuhr', 'Asr']).toContain(previous?.english);
+      expect(keyOf(findPreviousRow(prayers, findReadable(prayers, 'Magrib 2026-09-15')))).toBe('Asr 2026-09-15');
     });
   });
 
   it('nothing, for empty input', () => {
-    expect(findPreviousReadable([], findReadable(standard('2026-09-15'), 'Asr 2026-09-15'))).toBeNull();
+    expect(findPreviousRow([], findReadable(standard('2026-09-15'), 'Asr 2026-09-15'))).toBeNull();
   });
 });
 

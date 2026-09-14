@@ -34,7 +34,7 @@ import { UNAVAILABLE_TIME } from '@/shared/constants';
 import {
   compareListOrder,
   findNextReadable,
-  findPreviousReadable,
+  findPreviousRow,
   getNextBoundary,
   resolveDisplayDate,
 } from '@/shared/sequence';
@@ -189,7 +189,7 @@ export const buildPrayerWidgetTimeline = (
 
   const makeEntry = (current: Segment, date: Date, labelAt: Date = date): WidgetTimelineEntry<PrayerWidgetProps> => {
     const { next } = current;
-    const prev = findPreviousReadable(prayers, next);
+    const prev = findPreviousRow(prayers, next);
     const countdownLabel = formatCountdownAt(labelAt, next.datetime);
     // The upcoming prayer's own day, not the day on screen: a held day's list has no active row, so the
     // layouts cannot draw it and show that prayer's name and time instead, and a real time must not sit

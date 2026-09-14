@@ -80,7 +80,9 @@ MUTATIONS = [
     ('shared/sequence.ts', '  return endOfListDay(displayDate);', '  return null;', 'hold end removed from the boundary'),
     ('shared/sequence.ts', "TimeUtils.createPrayerDatetime(TimeUtils.addDaysToDateString(date, 1), '00:00')", "TimeUtils.createPrayerDatetime(date, '00:00')", 'hold ends at the start of the day'),
     ('shared/sequence.ts', 'if (holdEnd && holdEnd < next.datetime) return holdEnd;', '', 'hold end ignored when a prayer is due'),
-    ('shared/sequence.ts', '    if (prayer.belongsToDate !== next.belongsToDate && prayer.belongsToDate !== listBefore) continue;\n', '', 'previous lookup unbounded'),
+    ('shared/sequence.ts', ' || !isReadable(previous)', '', 'bar measured from a dashed row above'),
+    ('shared/sequence.ts', 'if (position > 0 && listPosition(prayer) >= position) continue;', '', 'previous taken from below next'),
+    ('shared/sequence.ts', 'const listDay = position > 0 ? next.belongsToDate : TimeUtils.getPreviousDateString(next.belongsToDate);', 'const listDay = next.belongsToDate;', 'first row never reaches the list before'),
     ('shared/sequence.ts', '.every((prayer) => prayer.datetime < now);', '.some((prayer) => prayer.datetime < now);', 'unreadable row passed by some, not every'),
     ('shared/sequence.ts', 'prayer.belongsToDate <= row.belongsToDate) continue;', 'prayer.belongsToDate < row.belongsToDate) continue;', 'next occurrence may be the row itself'),
 
