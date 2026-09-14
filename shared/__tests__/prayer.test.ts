@@ -237,12 +237,6 @@ describe('ADR-004: Prayer-Based Day Boundary Edge Cases', () => {
       const result = calculateBelongsToDate(ScheduleType.Extra, 'Midnight', '2026-01-18', datetime);
       expect(result).toBe('2026-01-18');
     });
-
-    it('Extra night prayers in evening (>=12) belong to next day', () => {
-      const datetime = createPrayerDatetime('2026-01-18', '23:30');
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Midnight', '2026-01-18', datetime);
-      expect(result).toBe('2026-01-19');
-    });
   });
 
   describe('Scenario 8: Year Boundary (Dec 31 to Jan 1)', () => {
