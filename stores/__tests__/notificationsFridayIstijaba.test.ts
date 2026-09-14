@@ -3,8 +3,7 @@
  *
  * Istijaba is an hour before Magrib's instant, so with Magrib at 01:20 it falls at 00:20 on Saturday, and with Magrib
  * at 00:40 at 23:40 on Friday. Either way it belongs to Friday's list, and Thursday's and Saturday's lists carry none,
- * whatever calendar day an instant of theirs would fall on. Every expected trigger was worked out separately, from
- * zoneinfo and the scheduling rules, not by the app's time helpers.
+ * whatever calendar day an instant of theirs would fall on.
  */
 
 jest.mock('@/stores/widget', () => ({

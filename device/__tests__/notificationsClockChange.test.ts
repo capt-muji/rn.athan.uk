@@ -2,8 +2,7 @@
  * Reminder triggers when a London clock change falls between a reminder and its row
  *
  * A reminder fires its interval of real time before the row's own instant. Counted back on the clock face instead,
- * October's repeated hour would put it an hour early. Every expected trigger is UTC arithmetic on the row's instant,
- * checked separately against zoneinfo.
+ * October's repeated hour would put it an hour early.
  */
 
 import { scheduleNotificationAsync } from 'expo-notifications';

@@ -2,8 +2,7 @@
  * Alarms for rows near 00:00, each armed at its own instant under the list day it belongs to
  *
  * High-latitude shapes, which London never has: a Standard row read either side of 00:00 and of 06:00, a Last Third
- * before and at 00:00, and a Fajr just after it. Every expected trigger and identifier was worked out separately,
- * from zoneinfo and the scheduling rules, not by the app's time helpers.
+ * before and at 00:00, and a Fajr just after it.
  */
 
 jest.mock('@/stores/widget', () => ({

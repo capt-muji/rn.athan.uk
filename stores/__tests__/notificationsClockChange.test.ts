@@ -2,8 +2,7 @@
  * Alarms across London's 2026 clock changes, armed through the real notifications store
  *
  * On 25 October 01:00 to 01:59 happens twice, and that list's Last Third is at the second 01:00. On 29 March 01:00 to
- * 01:59 never happens. Every expected trigger and identifier was worked out separately, from zoneinfo and the
- * scheduling rules, not by the app's time helpers.
+ * 01:59 never happens.
  */
 
 jest.mock('@/stores/widget', () => ({

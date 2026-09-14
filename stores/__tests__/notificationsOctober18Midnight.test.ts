@@ -1,8 +1,7 @@
 /**
  * The two Midnight alarms on London's 18 October 2026: list 18's at exactly 00:00:00 BST and list 19's at 23:59
  *
- * Both fall on the same calendar day, so only the list day in the identifier tells them apart. Every expected trigger
- * and identifier was worked out separately, from zoneinfo and the scheduling rules, not by the app's time helpers.
+ * Both fall on the same calendar day, so only the list day in the identifier tells them apart.
  */
 
 jest.mock('@/stores/widget', () => ({
