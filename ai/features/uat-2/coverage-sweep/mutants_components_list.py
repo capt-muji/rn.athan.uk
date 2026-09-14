@@ -49,6 +49,7 @@ mutate.MUTATIONS[:] = [
     (PRESS, ' && isPassed) return', ') return', 'an Istijaba still to come will not open'),
     (PRESS, "isSelectedForOverlay ? 'close' : 'open'", "isSelectedForOverlay ? 'open' : 'close'", 'close and open swapped'),
     (PRESS, "return 'none';", "return 'open';", 'a passed Istijaba opens'),
+    (PRESS, "  if (!isStandard && english === 'Istijaba' && isPassed) return 'none';\n  return isSelectedForOverlay ? 'close' : 'open';", "  if (isSelectedForOverlay) return 'close';\n  if (!isStandard && english === 'Istijaba' && isPassed) return 'none';\n  return 'open';", 'close checked before the passed Istijaba'),
 ]
 
 if __name__ == '__main__':
