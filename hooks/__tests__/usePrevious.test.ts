@@ -9,7 +9,6 @@
 import { usePrevious } from '../usePrevious';
 import { mountHook } from './hookHarness';
 
-// Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 jest.mock('react', () => require('./hookHarness').react);
 
 describe('usePrevious', () => {

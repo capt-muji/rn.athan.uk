@@ -8,7 +8,6 @@
 import { useAlertAnimations } from '../useAlertAnimations';
 import { mountHook } from './hookHarness';
 
-// Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 jest.mock('react', () => require('./hookHarness').react);
 jest.mock('react-native-reanimated', () => require('./reanimatedFake').reanimated);
 jest.mock('jotai', () => ({ useAtomValue: jest.fn() }));
