@@ -42,13 +42,26 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/.claude/', '<rootDir>/android/', '<rootDir>/ios/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
-    '^.+\\.tsx?$': ['babel-jest', { presets: ['@babel/preset-typescript'], plugins: ['@babel/plugin-transform-modules-commonjs'] }],
+    // The JSX transform is needed by any test that imports a .tsx file, and by coverage even when none does:
+    // Jest parses the instrumented output of an untested file without JSX support, and drops it instead of 0%.
+    '^.+\\.tsx?$': [
+      'babel-jest',
+      {
+        presets: ['@babel/preset-typescript'],
+        plugins: ['@babel/plugin-transform-modules-commonjs', ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }]],
+      },
+    ],
   },
-  // Coverage configuration
+  // widgets/ is left out: its layouts are serialized into the iOS widget extension's own JS runtime,
+  // and shared/__tests__/widgetContract.test.ts checks them by AST instead
   collectCoverageFrom: [
-    'hooks/**/*.ts',
-    'stores/**/*.ts',
-    'shared/**/*.ts',
+    'api/**/*.{ts,tsx}',
+    'app/**/*.{ts,tsx}',
+    'components/**/*.{ts,tsx}',
+    'device/**/*.{ts,tsx}',
+    'hooks/**/*.{ts,tsx}',
+    'stores/**/*.{ts,tsx}',
+    'shared/**/*.{ts,tsx}',
     '!**/*.d.ts',
     '!**/__mocks__/**',
     '!**/__tests__/**',

@@ -318,7 +318,7 @@ import { Prayer } from '@/components/Prayer';
 
 ### Testing (Jest)
 
-- Use Jest with babel-jest + @babel/preset-typescript (transform-only; typecheck lives in `tsc --noEmit`)
+- Use Jest with babel-jest + @babel/preset-typescript and the React JSX transform (transform-only; typecheck lives in `tsc --noEmit`)
 - Tests in `__tests__/` subdirectories
 - Run: `yarn test` or `yarn test:watch`
 - Mock RN modules in `shared/__mocks__/`
