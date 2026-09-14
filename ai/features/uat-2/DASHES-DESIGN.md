@@ -99,6 +99,10 @@ Behaviour this produces:
   built from the same next-prayer and display-date atoms as the boundary, so it flips on the same
   tick the list moves on at 00:00. No timer is added. A real overlay tap still counts to the
   occurrence it shows.
+- The countdown stays on screen whenever a list is (`useCountdown` is ready from the display date,
+  not the next prayer). After the last readable prayer in storage it shows `--:--` in place. In
+  1.27.1 the component rendered nothing there, which pulled the date and the whole list up the
+  page. The owner saw this live on the 3T, 2026-09-14, and it was fixed in 1.27.5.
 - A new bar-availability selector is false when previous or next is missing, or while the list is
   held. **R14, chosen by the owner (option A) on 2026-09-14: the bar is hidden** by opacity,
   keeping its space so nothing reflows. It comes back when a usable pair does. The two other
