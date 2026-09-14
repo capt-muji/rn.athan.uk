@@ -21,11 +21,15 @@ agent's full notes are in `~/athan-research/notes/`.
    - Every PDF, DOC and PPT the site carries **or once carried** was downloaded, from the live copy
      where it still exists and otherwise from the Wayback raw capture (58 of 59; `pdfs/manifest.json`).
      Each is being read in full (`notes/documents.md`).
-   - All 64 archived versions of the old `prayer.html` were fetched, to date each method change.
+   - All 64 archived versions of the old `prayer.html` were fetched and read in full, the first
+     whole and every line of each sequential diff, to date each method change
+     (`notes/prayer-history.md`).
 2. **The London unified timetable (step 2)**
    - The founding announcement, `Unified.pdf`, was read.
    - The UK lineage was traced through Hizbul Ulama's national tables and Miftahi's book.
-   - The London data diff, run without the app's API key, is in `notes/london.md`.
+   - The reference is the London Prayer Times API's own 2026 year. It was fetched once, with a key
+     the owner supplied for the purpose; the key is not stored and not committed. The London data
+     work is in `notes/london.md` and section 2.14.
 3. **The implementations (step 3)**
    - PrayerTimeAPI's source, and both `time_json.php` hosts measured, including the site's own
      `praytable.php`.
