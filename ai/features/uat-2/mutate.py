@@ -139,6 +139,7 @@ MUTATIONS = [
     ('hooks/usePrayer.ts', '(findNextOccurrence(prayers, row) ?? row)', '(prayers.find((p) => p.english === row.english && (p.datetime as Date) > (row.datetime as Date)) ?? row)', 'next occurrence found by instant'),
     ('hooks/usePrayer.ts', 'isUnavailable ? AlertType.Off : saved', 'saved', 'unavailable bell draws the saved glyph'),
     ('hooks/useCountdown.ts', 'isReady: displayDate !== null,', "isReady: displayTime !== '--:--',", 'countdown removed while it shows --:--'),
+    ('hooks/useCountdown.ts', 'type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom', 'extraDisplayDateAtom', "countdown ready from the other schedule's list day"),
 ]
 
 W_LABEL = 46
