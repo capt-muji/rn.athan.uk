@@ -3,7 +3,8 @@
  *
  * client.test.ts routes to the endpoint with isProd() and isPreview() both true, a pair no build ever
  * has, so nothing there shows that a production build, where only isProd() is true, requests real
- * times rather than serving the mock. This file runs each real build's pair, on a pinned clock.
+ * times rather than serving the mock. This file runs each real build's pair. The clock is pinned only
+ * so the dates are fixed; how the client reads London's date is covered by client.test.ts.
  */
 
 jest.mock('@/stores/database', () => ({
@@ -24,15 +25,12 @@ jest.mock('@/shared/logger', () => ({
   isPreview: () => mockIsPreview(),
 }));
 
-import { formatInTimeZone } from 'date-fns-tz';
-
 import { API_CONFIG } from '@/api/config';
-import { PRAYER_TIMEZONE } from '@/shared/constants';
 
 import { fetchDay, fetchYear } from '../client';
 
-/** London's date at the pinned instant, from date-fns-tz so shared/time.ts is not its own oracle */
-const londonToday = () => formatInTimeZone(Date.now(), PRAYER_TIMEZONE, 'yyyy-MM-dd');
+const PINNED_INSTANT = '2026-09-14T11:00:00Z';
+const TODAY = '2026-09-14';
 
 /** Times no mock day carries, so a result built from the mock cannot pass for this payload */
 const endpointDay = (date: string) => ({
@@ -73,54 +71,41 @@ const BUILDS = [
   { build: 'preview', prod: false, preview: true },
 ];
 
-const INSTANTS = [
-  { label: '00:30 BST on 14 September', iso: '2026-09-13T23:30:00Z' },
-  { label: '23:59:41 BST on 14 September', iso: '2026-09-14T22:59:41Z' },
-  { label: 'midday GMT on 15 January', iso: '2026-01-15T12:00:00Z' },
-];
-
-const CASES = BUILDS.flatMap((build) => INSTANTS.map((instant) => ({ ...build, ...instant })));
-
 beforeEach(() => {
   jest.clearAllMocks();
+  jest.useFakeTimers({ now: Date.parse(PINNED_INSTANT) });
 });
 
 afterEach(() => {
   jest.useRealTimers();
 });
 
-const pin = ({ iso, prod, preview }: { iso: string; prod: boolean; preview: boolean }) => {
-  jest.useFakeTimers({ now: Date.parse(iso) });
-  mockIsProd.mockReturnValue(prod);
-  mockIsPreview.mockReturnValue(preview);
-};
-
 describe('fetchYear by build', () => {
-  it.each(CASES)('a $build build at $label requests the year and returns its days', async (testCase) => {
-    pin(testCase);
-    const today = londonToday();
-    respondWith({ city: 'london', times: { [today]: endpointDay(today) } });
+  it.each(BUILDS)('a $build build requests the year and returns its days', async ({ prod, preview }) => {
+    mockIsProd.mockReturnValue(prod);
+    mockIsPreview.mockReturnValue(preview);
+    respondWith({ city: 'london', times: { [TODAY]: endpointDay(TODAY) } });
 
     const result = await fetchYear(2026);
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
     const [url] = (global.fetch as jest.Mock).mock.calls[0];
     expect(url).toBe(`${API_CONFIG.endpoint}?format=json&key=${API_CONFIG.key}&year=2026&24hours=true`);
-    expect(result).toStrictEqual([expectedDay(today)]);
+    expect(result).toStrictEqual([expectedDay(TODAY)]);
   });
 });
 
 describe('fetchDay by build', () => {
-  it.each(CASES)('a $build build at $label requests the day and returns it', async (testCase) => {
-    pin(testCase);
-    const today = londonToday();
-    respondWith(endpointDay(today));
+  it.each(BUILDS)('a $build build requests the day and returns it', async ({ prod, preview }) => {
+    mockIsProd.mockReturnValue(prod);
+    mockIsPreview.mockReturnValue(preview);
+    respondWith(endpointDay(TODAY));
 
-    const result = await fetchDay(today);
+    const result = await fetchDay(TODAY);
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
     const [url] = (global.fetch as jest.Mock).mock.calls[0];
-    expect(url).toBe(`${API_CONFIG.endpoint}?format=json&key=${API_CONFIG.key}&date=${today}&24hours=true`);
-    expect(result).toStrictEqual(expectedDay(today));
+    expect(url).toBe(`${API_CONFIG.endpoint}?format=json&key=${API_CONFIG.key}&date=${TODAY}&24hours=true`);
+    expect(result).toStrictEqual(expectedDay(TODAY));
   });
 });
