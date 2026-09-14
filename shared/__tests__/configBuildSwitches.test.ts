@@ -20,7 +20,7 @@ afterAll(() => {
 
 const loadConfig = () => require('../config') as typeof import('../config');
 
-/** Assigning undefined to process.env stores the string "undefined", so an unset variable is deleted */
+/** An unset variable is absent from the environment, so it is deleted rather than set to undefined */
 const setVariable = (name: string, value: string | undefined) => {
   if (value === undefined) delete process.env[name];
   else process.env[name] = value;
