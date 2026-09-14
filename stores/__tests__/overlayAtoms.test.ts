@@ -51,42 +51,65 @@ const storeWith = (overlay: OverlayStore) => {
 // VALUES
 // =============================================================================
 
-describe.each(overlayStates.map((overlay) => [describeState(overlay), overlay] as const))(
-  'with the overlay %s',
-  (_label, overlay) => {
-    const store = storeWith(overlay);
-    const ownsPage = (type: ScheduleType) => overlay.isOn && overlay.scheduleType === type;
+const ownsPage = (overlay: OverlayStore, type: ScheduleType) => overlay.isOn && overlay.scheduleType === type;
 
-    it('reports whether it is open', () => {
-      expect(store.get(overlayIsOnAtom)).toBe(overlay.isOn);
-    });
+/** The overlay states in which a read breaks the rule, so a failure names exactly those */
+const statesWhere = (breaksRule: (overlay: OverlayStore) => boolean) =>
+  overlayStates.filter(breaksRule).map(describeState);
 
-    it.each(SCHEDULES)('marks only the page it is open on as active: %s', (type) => {
-      expect(store.get(getOverlayActiveForTypeAtom(type))).toBe(ownsPage(type));
-    });
+const same = (a: number[], b: number[]) => a.length === b.length && a.every((value, position) => value === b[position]);
 
-    it.each(SCHEDULES)('gives the %s page the selected row while it owns that page, and row 0 otherwise', (type) => {
-      expect(store.get(getOverlaySelectedIndexForTypeAtom(type))).toBe(
-        ownsPage(type) ? overlay.selectedPrayerIndex : 0
-      );
-    });
+describe('in every overlay state', () => {
+  it('covers open and closed on every row of both pages, and reports whether it is open', () => {
+    expect(overlayStates).toHaveLength(2 * (ROWS[ScheduleType.Standard].length + ROWS[ScheduleType.Extra].length));
+    expect(statesWhere((overlay) => storeWith(overlay).get(overlayIsOnAtom) !== overlay.isOn)).toEqual([]);
+  });
 
-    it.each(SCHEDULES)(
-      'highlights exactly the selected row on the page it owns, and nothing on %s otherwise',
-      (type) => {
+  it.each(SCHEDULES)('marks the %s page active exactly while the overlay is open on it', (type) => {
+    expect(
+      statesWhere((overlay) => storeWith(overlay).get(getOverlayActiveForTypeAtom(type)) !== ownsPage(overlay, type))
+    ).toEqual([]);
+  });
+
+  it.each(SCHEDULES)(
+    'gives the %s page the selected row while the overlay is open on it, and row 0 otherwise',
+    (type) => {
+      expect(
+        statesWhere(
+          (overlay) =>
+            storeWith(overlay).get(getOverlaySelectedIndexForTypeAtom(type)) !==
+            (ownsPage(overlay, type) ? overlay.selectedPrayerIndex : 0)
+        )
+      ).toEqual([]);
+    }
+  );
+
+  it.each(SCHEDULES)('highlights only the selected row on the %s page while the overlay is open on it', (type) => {
+    expect(
+      statesWhere((overlay) => {
+        const store = storeWith(overlay);
         const highlighted = ROWS[type].filter((index) => store.get(getOverlaySelectedAtom(type, index)));
+        return !same(highlighted, ownsPage(overlay, type) ? [overlay.selectedPrayerIndex] : []);
+      })
+    ).toEqual([]);
+  });
 
-        expect(highlighted).toEqual(ownsPage(type) ? [overlay.selectedPrayerIndex] : []);
-      }
-    );
-
-    it.each(SCHEDULES)('veils every other row on the page it owns, and nothing on %s otherwise', (type) => {
-      const veiled = ROWS[type].filter((index) => store.get(getOverlayHiddenAtom(type, index)));
-
-      expect(veiled).toEqual(ownsPage(type) ? ROWS[type].filter((index) => index !== overlay.selectedPrayerIndex) : []);
-    });
-  }
-);
+  it.each(SCHEDULES)(
+    'veils every other row on the %s page while the overlay is open on it, and none otherwise',
+    (type) => {
+      expect(
+        statesWhere((overlay) => {
+          const store = storeWith(overlay);
+          const veiled = ROWS[type].filter((index) => store.get(getOverlayHiddenAtom(type, index)));
+          const expected = ownsPage(overlay, type)
+            ? ROWS[type].filter((index) => index !== overlay.selectedPrayerIndex)
+            : [];
+          return !same(veiled, expected);
+        })
+      ).toEqual([]);
+    }
+  );
+});
 
 describe('a row index the open page does not show', () => {
   // The index arrives from the tapped row, so a Thursday Extras list of four can still be asked about row 4
