@@ -1,0 +1,542 @@
+<title>Moonsighting Method Findings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+:root {
+  --ground: #F4F5F8;
+  --surface: #FFFFFF;
+  --ink: #16192B;
+  --muted: #5B6178;
+  --rule: #D9DCE6;
+  --accent: #3D3A8C;
+  --accent-soft: #E7E6F4;
+  --fault: #C2553F;
+  --fault-soft: #F7E5E0;
+  --ok: #2E7D5B;
+  --ok-soft: #DFF0E7;
+  --series2: #1F7A8C;
+  --code-bg: #EBEDF3;
+  --display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0F1220; --surface: #171B2E; --ink: #E7E8F0; --muted: #9AA0B8; --rule: #2A3049;
+    --accent: #A5A3F3; --accent-soft: #24274B; --fault: #F08A6E; --fault-soft: #3A2521;
+    --ok: #5FC39A; --ok-soft: #173327; --series2: #5CC6D6; --code-bg: #1F2439;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #0F1220; --surface: #171B2E; --ink: #E7E8F0; --muted: #9AA0B8; --rule: #2A3049;
+  --accent: #A5A3F3; --accent-soft: #24274B; --fault: #F08A6E; --fault-soft: #3A2521;
+  --ok: #5FC39A; --ok-soft: #173327; --series2: #5CC6D6; --code-bg: #1F2439;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--ground); color: var(--ink);
+  font: 16px/1.62 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+code, .mono { font-family: var(--mono); font-size: 0.88em; }
+code { background: var(--code-bg); padding: 0.08em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+strong { font-weight: 600; }
+
+.page { max-width: 1200px; margin: 0 auto; padding-inline: 20px; padding-block: 0 72px; }
+
+/* masthead */
+.masthead {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end;
+  padding-block: 56px 36px; border-bottom: 1px solid var(--rule);
+}
+.eyebrow { margin: 0 0 14px; font: 500 12px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 {
+  margin: 0; font-family: var(--display); font-weight: 500; font-size: clamp(2.3rem, 5.2vw, 3.7rem);
+  line-height: 1.04; letter-spacing: -0.015em; text-wrap: balance;
+}
+.lede { margin: 18px 0 0; max-width: 64ch; font-size: 1.12rem; color: var(--ink); }
+.lede em { font-style: normal; color: var(--muted); }
+.horizon { width: 250px; height: auto; }
+.horizon .hz { stroke: var(--ink); stroke-width: 1.2; }
+.horizon .arc { stroke: var(--muted); stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+.horizon .ray { stroke: var(--accent); stroke-width: 1.2; }
+.horizon .sun { fill: var(--fault); }
+.horizon .glow { fill: var(--accent-soft); }
+.horizon text { fill: var(--muted); font: 11px var(--mono); }
+.horizon .big { fill: var(--accent); font: 500 15px var(--mono); }
+
+.ledger {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0;
+  margin: 0; padding-block: 22px; border-bottom: 1px solid var(--rule);
+}
+.ledger div { padding-inline: 18px; border-left: 1px solid var(--rule); }
+.ledger div:first-child { padding-left: 0; border-left: 0; }
+.ledger dt { font: 500 1.45rem/1.2 var(--mono); font-variant-numeric: tabular-nums; color: var(--accent); }
+.ledger dd { margin: 4px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+
+/* layout */
+.shell { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 56px; padding-top: 40px; }
+.rail { position: sticky; top: 24px; align-self: start; font-size: 14px; }
+.rail p { margin: 0 0 10px; font: 500 11px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.rail ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.rail a { display: block; padding: 5px 0 5px 12px; border-left: 2px solid var(--rule); color: var(--muted); text-decoration: none; line-height: 1.35; }
+.rail a:hover { color: var(--ink); border-left-color: var(--accent); }
+.rail .branch { margin-top: 22px; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+main { min-width: 0; max-width: 78ch; }
+section { padding-block: 8px 44px; scroll-margin-top: 20px; }
+section + section { border-top: 1px solid var(--rule); padding-top: 40px; }
+h2 { margin: 0 0 6px; font-family: var(--display); font-weight: 500; font-size: 2rem; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+.kicker { margin: 0 0 22px; color: var(--muted); font-size: 15px; }
+h3 { margin: 30px 0 10px; font-size: 1.02rem; font-weight: 600; letter-spacing: 0.005em; text-wrap: balance; }
+p { margin: 0 0 14px; }
+ul, ol { margin: 0 0 16px; padding-left: 1.25em; }
+li { margin-bottom: 7px; }
+li::marker { color: var(--muted); }
+
+/* chips */
+.chip { display: inline-block; vertical-align: 0.1em; margin-left: 4px; padding: 1px 7px; border-radius: 99px; font: 500 10.5px/1.6 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.no { background: var(--fault-soft); color: var(--fault); }
+.chip.run { background: var(--accent-soft); color: var(--accent); }
+
+/* findings list */
+.brief { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; counter-reset: b; }
+.brief li { position: relative; margin: 0; padding: 16px 0 16px 46px; border-bottom: 1px solid var(--rule); counter-increment: b; }
+.brief li:last-child { border-bottom: 0; }
+.brief li::before { content: counter(b); position: absolute; left: 0; top: 16px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 500 13px/28px var(--mono); text-align: center; }
+.brief strong { display: block; margin-bottom: 3px; }
+
+/* tables */
+.tw { overflow-x: auto; margin: 6px 0 20px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; font-size: 12.5px; color: var(--muted); background: var(--ground); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.n, th.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.n { font-size: 13px; }
+.bad { color: var(--fault); font-weight: 500; }
+.good { color: var(--ok); font-weight: 500; }
+
+/* figures */
+figure { margin: 10px 0 26px; padding: 18px 18px 14px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+figure svg { display: block; width: 100%; height: auto; max-width: 100%; }
+figcaption { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 10px; padding: 0; list-style: none; font-size: 13px; color: var(--muted); }
+.legend li { margin: 0; display: inline-flex; align-items: center; gap: 7px; }
+.sw { display: inline-block; width: 22px; height: 0; border-top: 2.5px solid var(--accent); }
+.sw.fajr { border-top-color: var(--series2); }
+.sw.book { border-top: 2px dashed var(--muted); }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--fault); }
+.gm { stroke: var(--rule); stroke-width: 1; opacity: 0.6; }
+.g { stroke: var(--rule); stroke-width: 1; }
+.g0 { stroke: var(--muted); stroke-width: 1.2; }
+.axl { fill: var(--muted); font: 11px var(--mono); }
+.s-london { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.s-fajr { fill: none; stroke: var(--series2); stroke-width: 2; stroke-linejoin: round; }
+.s-book { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.thin { stroke-width: 1.3; }
+.mk { fill: var(--fault); stroke: var(--surface); stroke-width: 1; }
+.ann { fill: var(--ink); font: 11.5px var(--mono); }
+.lead { stroke: var(--muted); stroke-width: 1; }
+
+/* formula */
+.eq { margin: 6px 0 18px; padding: 14px 16px; border-radius: 8px; background: var(--code-bg); font: 13.5px/1.75 var(--mono); overflow-x: auto; white-space: pre; }
+
+/* timeline */
+.timeline { list-style: none; padding: 0; margin: 8px 0 22px; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--rule); }
+.timeline li { position: relative; display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 4px 18px; margin: 0; padding: 0 0 16px 30px; }
+.timeline li::before { content: ""; position: absolute; left: 3px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
+.timeline li.live::before { background: var(--accent); }
+.timeline li.tables::before { border-color: var(--fault); background: var(--fault); }
+.timeline .when { font: 500 13px/1.6 var(--mono); color: var(--accent); }
+.timeline li.tables .when { color: var(--fault); }
+
+/* lineage */
+.lanes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin: 10px 0 20px; }
+.lane h3 { margin-top: 0; }
+.lane ol { list-style: none; padding: 0; margin: 0; }
+.lane li { position: relative; margin: 0; padding: 0 0 14px 22px; font-size: 14.5px; }
+.lane li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.lane li:not(:last-child)::after { content: ""; position: absolute; left: 7px; top: 19px; bottom: 0; width: 1px; background: var(--rule); }
+.lane li.end::before { background: var(--ok); }
+.lane .yr { display: block; font: 500 12px/1.5 var(--mono); color: var(--muted); }
+
+.callout { margin: 8px 0 22px; padding: 14px 16px; border-left: 3px solid var(--fault); background: var(--fault-soft); border-radius: 0 8px 8px 0; }
+.callout.info { border-left-color: var(--accent); background: var(--accent-soft); }
+.callout p:last-child { margin-bottom: 0; }
+
+.qs { padding-left: 1.6em; }
+.qs li { margin-bottom: 12px; padding-left: 4px; }
+.qs li::marker { font-family: var(--mono); color: var(--accent); }
+
+footer { margin-top: 20px; padding-top: 22px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }
+
+@media (max-width: 1000px) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 8px; padding-top: 24px; }
+  .rail { position: static; }
+  .rail ol { display: flex; flex-wrap: wrap; gap: 6px; }
+  .rail a { border-left: 0; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 99px; background: var(--surface); }
+  .rail .branch { display: none; }
+  main { max-width: none; }
+}
+@media (max-width: 760px) {
+  .masthead { grid-template-columns: minmax(0, 1fr); padding-block: 36px 26px; }
+  .horizon { display: none; }
+  .ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; }
+  .ledger div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .lanes { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: minmax(0, 1fr); }
+  h2 { font-size: 1.65rem; }
+  figure { padding: 12px 10px 10px; }
+}
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div>
+      <p class="eyebrow">Athan v2.0 prerequisite · research findings · 14 September 2026</p>
+      <h1>Moonsighting Method Findings</h1>
+      <p class="lede">Can London's unified prayer timetable be rebuilt, to the minute, from Khalid Shaukat's Moonsighting Committee method? And what would a worldwide option rest on? <em>In short: London is not that method plus offsets, and the method's only machine-readable source is one developer's server.</em></p>
+    </div>
+    <svg class="horizon" viewBox="0 0 260 150" role="img" aria-label="The sun 18 degrees below the horizon, the classic twilight angle the method replaces with a function of latitude and season">
+      <path class="glow" d="M10 70 H250 V76 Q130 64 10 76 Z"/>
+      <line class="hz" x1="10" y1="70" x2="250" y2="70"/>
+      <path class="arc" d="M75 70 A30 30 0 0 0 76.5 79.3"/>
+      <line class="ray" x1="105" y1="70" x2="40" y2="70"/>
+      <line class="ray" x1="105" y1="70" x2="44" y2="90"/>
+      <circle class="sun" cx="38" cy="92" r="7"/>
+      <text class="big" x="118" y="100">18°</text>
+      <text x="118" y="118">the fixed angle</text>
+      <text x="118" y="132">the method replaces</text>
+      <text x="196" y="62">horizon</text>
+    </svg>
+  </header>
+
+  <dl class="ledger">
+    <div><dt>4,380 / 4,380</dt><dd>cells where London's 2026 API equals East London Mosque's timetable</dd></div>
+    <div><dt>3,652 / 3,652</dt><dd>days where London's Fajr follows the 1989 Blackburn chart, over ten timetable years</dd></div>
+    <div><dt>365 / 365</dt><dd>days of 2026 Isha reproduced, once London's edited chart slots are applied</dd></div>
+    <div><dt>1,186 · 59</dt><dd>moonsighting.com pages and documents, all read in full</dd></div>
+  </dl>
+
+  <div class="shell">
+    <nav class="rail" aria-label="Contents">
+      <p>Contents</p>
+      <ol>
+        <li><a href="#brief">In brief</a></li>
+        <li><a href="#london">London, rule by rule</a></li>
+        <li><a href="#lineage">Where it comes from</a></li>
+        <li><a href="#formula">The published formula</a></li>
+        <li><a href="#highlat">Above 55°: nine versions</a></li>
+        <li><a href="#endpoint">The endpoint</a></li>
+        <li><a href="#site">The site itself</a></li>
+        <li><a href="#impls">Implementations</a></li>
+        <li><a href="#app">What it means for the app</a></li>
+        <li><a href="#questions">Questions for the owner</a></li>
+        <li><a href="#open">Still open</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+      <div class="branch">Branch <code>research/moonsighting</code>. Nothing merged or pushed. Full text: <code>RESEARCH-FINDINGS.md</code> in <code>ai/features/moonsighting</code>.</div>
+    </nav>
+
+    <main>
+      <section id="brief">
+        <h2>In brief</h2>
+        <p class="kicker">Seven findings the rest of the page supports. Deltas are in minutes, and no prayer time on this page was computed or invented for it.</p>
+        <ol class="brief">
+          <li><strong>London's timetable is not the moonsighting.com method with offsets.</strong>Its Fajr and Isha are fixed intervals from sunrise and sunset, taken from the Blackburn observation chart (Miftahi, <i>Fajar and Isha</i>, Tables 5 and 6), with London's own edits. Sunrise is shown 3 minutes early. Dhuhr (+5) and Maghrib (+3) sit on HMNAO sun times.</li>
+          <li><strong>Against moonsighting.com, London differs on most days.</strong>London API minus the method's own table for 2026 (method 0): Fajr −7 to +6, Isha −4 to +11, sunrise −3 or −2, Dhuhr and Maghrib 0 or +1, Asr 0 to +2.</li>
+          <li><strong>The formula has a primary source.</strong>Shaukat's booklet <i>FAJR AND ISHA</i> (September 2015), §11, publishes the coefficients. They are exactly the ones <code>adhan</code> uses. <span class="chip ok">lead-verified</span></li>
+          <li><strong>The published tables follow rules no page states in full.</strong>A seasonal function bounded by 18°; above 55°, also bounded by 1/7 of the night at the true latitude, with no slide to 60°. In polar night, plain 18° Fajr and Isha; in midnight sun, dashes. A model of this reproduces the tables within ±1 minute below about 66° in both hemispheres.</li>
+          <li><strong>The method's machine-readable source is fragile.</strong><code>www.moonsighting.com/time_json.php</code> returns HTTP 500. The working copy is on the generator developer's personal host, with no terms. It changes the clock a day early in seven time zones.</li>
+          <li><strong>moonsighting.com has been dormant since spring 2024.</strong>No page publishes the formula, and none mentions London's unified timetable. From 2012 to 2017 it offered, by post, a booklet it said contained the algorithms.</li>
+          <li><strong>The app has Asr labelled the wrong way round.</strong>API <code>asr</code> is the Shafi'i (one shadow) time and <code>asr_2</code> the Hanafi; <code>shared/types.ts</code> says the reverse. The app shows <code>asr</code>.</li>
+        </ol>
+      </section>
+
+      <section id="london">
+        <h2>London, rule by rule</h2>
+        <p class="kicker">Reference: the London Prayer Times API's own 2026 year, fetched once with a key the owner supplied (not stored). East London Mosque is the stated source, and the two agree on every cell.</p>
+
+        <div class="tw"><table>
+          <thead><tr><th>Prayer</th><th>Rule London ships (2022–2026)</th><th class="n">2026 fit</th></tr></thead>
+          <tbody>
+            <tr><td>Fajr</td><td>(API sunrise + 3) − Table 5 interval</td><td class="n good">365 / 365</td></tr>
+            <tr><td>Isha</td><td>(API Maghrib − 3) + Table 6 interval, with London's edited slots</td><td class="n good">365 / 365</td></tr>
+            <tr><td>Sunrise</td><td>sun's sunrise, rounded, − 3</td><td class="n">359–363 / 365</td></tr>
+            <tr><td>Dhuhr</td><td>transit + 5, rounded</td><td class="n">362–363 / 365</td></tr>
+            <tr><td>Maghrib</td><td>sunset + 3, rounded</td><td class="n">360 / 365</td></tr>
+            <tr><td>Asr, API <code>asr</code></td><td>Mithl 1 (Shafi'i) <span class="chip no">not reproduced independently</span></td><td class="n">353 / 365</td></tr>
+            <tr><td>Asr, API <code>asr_2</code></td><td>Mithl 2 (Hanafi) <span class="chip no">not reproduced independently</span></td><td class="n">356 / 365</td></tr>
+          </tbody>
+        </table></div>
+        <p>Every miss in the sun-based rows is ±1 minute on a day when the computed event lies within 3.6 seconds of a half-minute. Closing those days needs HMNAO's own values. Its service returned 503, and its terms say personal use only. Fajr and Isha still come out exact because they are chained to the published sunrise and Maghrib.</p>
+
+        <h3>The chart under London's Fajr and Isha</h3>
+        <figure>
+          <ul class="legend">
+            <li><span class="sw fajr"></span>Fajr: minutes before sunrise (Table 5 and London identical)</li>
+            <li><span class="sw"></span>Isha: London, minutes after sunset</li>
+            <li><span class="sw book"></span>Isha: Miftahi's Table 6 as printed</li>
+            <li><span class="dot"></span>Day London edits</li>
+          </ul>
+          <svg viewBox="0 0 720 340" role="img" aria-label="Daily Fajr and Isha intervals for London in 2026: Fajr follows Miftahi Table 5 on every day; Isha follows Table 6 except on 20 edited days."><line class="gm" x1="46.0" x2="46.0" y1="14" y2="304"/><line class="gm" x1="102.1" x2="102.1" y1="14" y2="304"/><line class="gm" x1="152.7" x2="152.7" y1="14" y2="304"/><line class="gm" x1="208.7" x2="208.7" y1="14" y2="304"/><line class="gm" x1="263.0" x2="263.0" y1="14" y2="304"/><line class="gm" x1="319.0" x2="319.0" y1="14" y2="304"/><line class="gm" x1="373.3" x2="373.3" y1="14" y2="304"/><line class="gm" x1="429.3" x2="429.3" y1="14" y2="304"/><line class="gm" x1="485.4" x2="485.4" y1="14" y2="304"/><line class="gm" x1="539.6" x2="539.6" y1="14" y2="304"/><line class="gm" x1="595.7" x2="595.7" y1="14" y2="304"/><line class="gm" x1="649.9" x2="649.9" y1="14" y2="304"/><text class="axl" x="73.1" y="324" text-anchor="middle">Jan</text><text class="axl" x="129.2" y="324" text-anchor="middle">Feb</text><text class="axl" x="179.8" y="324" text-anchor="middle">Mar</text><text class="axl" x="235.9" y="324" text-anchor="middle">Apr</text><text class="axl" x="290.1" y="324" text-anchor="middle">May</text><text class="axl" x="346.2" y="324" text-anchor="middle">Jun</text><text class="axl" x="400.4" y="324" text-anchor="middle">Jul</text><text class="axl" x="456.5" y="324" text-anchor="middle">Aug</text><text class="axl" x="512.5" y="324" text-anchor="middle">Sep</text><text class="axl" x="566.8" y="324" text-anchor="middle">Oct</text><text class="axl" x="622.8" y="324" text-anchor="middle">Nov</text><text class="axl" x="677.1" y="324" text-anchor="middle">Dec</text><line class="g" x1="46" x2="706" y1="286.9" y2="286.9"/><text class="axl" x="38" y="290.9" text-anchor="end">50</text><line class="g" x1="46" x2="706" y1="252.8" y2="252.8"/><text class="axl" x="38" y="256.8" text-anchor="end">60</text><line class="g" x1="46" x2="706" y1="218.7" y2="218.7"/><text class="axl" x="38" y="222.7" text-anchor="end">70</text><line class="g" x1="46" x2="706" y1="184.6" y2="184.6"/><text class="axl" x="38" y="188.6" text-anchor="end">80</text><line class="g" x1="46" x2="706" y1="150.5" y2="150.5"/><text class="axl" x="38" y="154.5" text-anchor="end">90</text><line class="g" x1="46" x2="706" y1="116.4" y2="116.4"/><text class="axl" x="38" y="120.4" text-anchor="end">100</text><line class="g" x1="46" x2="706" y1="82.2" y2="82.2"/><text class="axl" x="38" y="86.2" text-anchor="end">110</text><line class="g" x1="46" x2="706" y1="48.1" y2="48.1"/><text class="axl" x="38" y="52.1" text-anchor="end">120</text><line class="g" x1="46" x2="706" y1="14.0" y2="14.0"/><text class="axl" x="38" y="18.0" text-anchor="end">130</text><path class="s-fajr" d="M46.0,116.4H187.0V119.8H190.7V123.2H197.9V126.6H201.5V130.0H206.9V133.4H239.5V130.0H244.9V126.6H250.3V123.2H255.8V119.8H261.2V116.4H263.0V112.9H266.6V109.5H270.2V106.1H273.8V102.7H277.5V99.3H281.1V95.9H284.7V92.5H288.3V89.1H291.9V85.6H295.5V82.2H299.2V78.8H302.8V75.4H304.6V72.0H306.4V68.6H310.0V65.2H313.6V61.8H317.2V58.4H320.8V54.9H324.5V51.5H328.1V48.1H331.7V44.7H335.3V41.3H338.9V37.9H340.7V34.5H353.4V37.9H358.8V41.3H364.2V44.7H367.9V48.1H373.3V51.5H375.1V54.9H378.7V58.4H384.1V61.8H387.8V65.2H393.2V68.6H396.8V72.0H402.2V75.4H405.8V78.8H411.3V82.2H414.9V85.6H418.5V89.1H422.1V92.5H425.7V95.9H429.3V99.3H433.0V102.7H436.6V106.1H442.0V109.5H447.4V112.9H452.8V116.4H458.3V119.8H463.7V123.2H469.1V126.6H474.5V130.0H480.0V133.4H512.5V136.8H517.9V140.2H523.4V143.6H528.8V147.1H534.2V150.5H539.6V147.1H546.9V143.6H552.3V140.2H557.7V136.8H563.2V133.4H568.6V130.0H575.8V126.6H579.4V123.2H584.8V119.8H590.3V116.4H601.1V112.9H606.5V109.5H612.0V106.1H617.4V102.7H622.8V99.3H677.1V102.7H684.3V106.1H695.2V112.9H700.6V116.4H706.0"/><path class="s-book" d="M46.0,116.4H102.1V123.2H105.7V126.6H109.3V130.0H112.9V133.4H116.5V136.8H123.8V140.2H131.0V143.6H138.2V147.1H145.5V150.5H152.7V153.9H156.3V157.3H159.9V160.7H163.5V164.1H167.2V167.5H174.4V170.9H181.6V174.4H188.8V177.8H196.1V181.2H203.3V184.6H212.4V188.0H223.2V191.4H237.7V194.8H248.5V198.2H253.9V201.6H259.4V208.5H263.0V225.5H264.8V235.8H268.4V252.8H273.8V235.8H277.5V225.5H281.1V218.7H284.7V208.5H290.1V205.1H295.5V201.6H301.0V198.2H306.4V194.8H311.8V191.4H317.2V188.0H320.8V184.6H326.3V181.2H333.5V177.8H337.1V174.4H340.7V170.9H346.2V174.4H349.8V177.8H355.2V181.2H357.0V184.6H360.6V188.0H366.1V191.4H369.7V194.8H371.5V198.2H373.3V201.6H378.7V205.1H384.1V208.5H389.6V211.9H395.0V215.3H400.4V218.7H405.8V222.1H411.3V225.5H416.7V228.9H422.1V232.4H429.3V228.9H438.4V225.5H447.4V222.1H456.5V218.7H465.5V215.3H472.7V211.9H480.0V208.5H485.4V205.1H490.8V201.6H496.2V198.2H503.5V194.8H510.7V191.4H521.6V188.0H528.8V184.6H539.6V181.2H543.3V177.8H550.5V170.9H561.3V164.1H575.8V157.3H583.0V150.5H595.7V147.1H599.3V143.6H602.9V140.2H606.5V136.8H610.2V133.4H617.4V130.0H624.6V126.6H631.9V123.2H639.1V119.8H646.3V116.4H706.0"/><path class="s-london" d="M46.0,116.4H102.1V119.8H103.9V123.2H105.7V126.6H109.3V130.0H112.9V133.4H116.5V136.8H123.8V140.2H131.0V143.6H138.2V147.1H145.5V150.5H152.7V153.9H156.3V157.3H159.9V160.7H163.5V164.1H167.2V167.5H174.4V170.9H181.6V174.4H188.8V177.8H196.1V181.2H203.3V184.6H212.4V188.0H223.2V191.4H237.7V194.8H248.5V198.2H253.9V201.6H259.4V205.1H284.7V208.5H290.1V205.1H295.5V201.6H301.0V198.2H306.4V194.8H311.8V191.4H317.2V188.0H320.8V184.6H326.3V181.2H333.5V177.8H337.1V174.4H340.7V170.9H349.8V174.4H353.4V177.8H355.2V181.2H357.0V184.6H360.6V188.0H366.1V191.4H369.7V194.8H371.5V198.2H373.3V201.6H378.7V205.1H384.1V208.5H389.6V211.9H395.0V215.3H400.4V218.7H405.8V222.1H411.3V225.5H416.7V228.9H422.1V232.4H429.3V228.9H438.4V225.5H447.4V222.1H456.5V218.7H465.5V215.3H472.7V211.9H480.0V208.5H485.4V205.1H490.8V201.6H496.2V198.2H503.5V194.8H510.7V191.4H521.6V188.0H528.8V184.6H539.6V181.2H543.3V177.8H550.5V170.9H561.3V164.1H575.8V157.3H583.0V150.5H595.7V147.1H599.3V143.6H602.9V140.2H606.5V136.8H610.2V133.4H617.4V130.0H624.6V126.6H631.9V123.2H639.1V119.8H648.1V116.4H706.0"/><circle class="mk" cx="103.0" cy="119.8" r="2.8"/><circle class="mk" cx="260.3" cy="205.1" r="2.8"/><circle class="mk" cx="262.1" cy="205.1" r="2.8"/><circle class="mk" cx="263.9" cy="205.1" r="2.8"/><circle class="mk" cx="265.7" cy="205.1" r="2.8"/><circle class="mk" cx="267.5" cy="205.1" r="2.8"/><circle class="mk" cx="269.3" cy="205.1" r="2.8"/><circle class="mk" cx="271.1" cy="205.1" r="2.8"/><circle class="mk" cx="272.9" cy="205.1" r="2.8"/><circle class="mk" cx="274.7" cy="205.1" r="2.8"/><circle class="mk" cx="276.5" cy="205.1" r="2.8"/><circle class="mk" cx="278.4" cy="205.1" r="2.8"/><circle class="mk" cx="280.2" cy="205.1" r="2.8"/><circle class="mk" cx="282.0" cy="205.1" r="2.8"/><circle class="mk" cx="283.8" cy="205.1" r="2.8"/><circle class="mk" cx="347.1" cy="170.9" r="2.8"/><circle class="mk" cx="348.9" cy="170.9" r="2.8"/><circle class="mk" cx="350.7" cy="174.4" r="2.8"/><circle class="mk" cx="352.5" cy="174.4" r="2.8"/><circle class="mk" cx="647.2" cy="119.8" r="2.8"/><line class="lead" x1="273.8" y1="256.2" x2="299.2" y2="275.0"/><text class="ann" x="302.8" y="280.1">1–12 May: the book dips to 60, London holds 74</text></svg>
+          <figcaption>Every day of 2026, derived from the API year: Fajr interval = (sunrise + 3) − Fajr; Isha interval = Isha − (Maghrib − 3). Fajr runs from 90 minutes (28 September) to 124 (13 June). In January both intervals are 100 minutes, so the lines overlap. The 20 marked days are where London's Isha departs from the printed chart.</figcaption>
+        </figure>
+
+        <h3>London minus the moonsighting.com table</h3>
+        <figure>
+          <ul class="legend">
+            <li><span class="sw fajr"></span>Fajr</li>
+            <li><span class="sw"></span>Isha</li>
+          </ul>
+          <svg viewBox="0 0 720 270" role="img" aria-label="London API minus moonsighting.com method 0, daily in 2026: Fajr from minus 7 to plus 6 minutes, Isha from minus 4 to plus 11 minutes."><line class="gm" x1="46.0" x2="46.0" y1="14" y2="234"/><line class="gm" x1="102.1" x2="102.1" y1="14" y2="234"/><line class="gm" x1="152.7" x2="152.7" y1="14" y2="234"/><line class="gm" x1="208.7" x2="208.7" y1="14" y2="234"/><line class="gm" x1="263.0" x2="263.0" y1="14" y2="234"/><line class="gm" x1="319.0" x2="319.0" y1="14" y2="234"/><line class="gm" x1="373.3" x2="373.3" y1="14" y2="234"/><line class="gm" x1="429.3" x2="429.3" y1="14" y2="234"/><line class="gm" x1="485.4" x2="485.4" y1="14" y2="234"/><line class="gm" x1="539.6" x2="539.6" y1="14" y2="234"/><line class="gm" x1="595.7" x2="595.7" y1="14" y2="234"/><line class="gm" x1="649.9" x2="649.9" y1="14" y2="234"/><text class="axl" x="73.1" y="254" text-anchor="middle">Jan</text><text class="axl" x="129.2" y="254" text-anchor="middle">Feb</text><text class="axl" x="179.8" y="254" text-anchor="middle">Mar</text><text class="axl" x="235.9" y="254" text-anchor="middle">Apr</text><text class="axl" x="290.1" y="254" text-anchor="middle">May</text><text class="axl" x="346.2" y="254" text-anchor="middle">Jun</text><text class="axl" x="400.4" y="254" text-anchor="middle">Jul</text><text class="axl" x="456.5" y="254" text-anchor="middle">Aug</text><text class="axl" x="512.5" y="254" text-anchor="middle">Sep</text><text class="axl" x="566.8" y="254" text-anchor="middle">Oct</text><text class="axl" x="622.8" y="254" text-anchor="middle">Nov</text><text class="axl" x="677.1" y="254" text-anchor="middle">Dec</text><line class="g" x1="46" x2="706" y1="194.0" y2="194.0"/><text class="axl" x="38" y="198.0" text-anchor="end">−5</text><line class="g0" x1="46" x2="706" y1="144.0" y2="144.0"/><text class="axl" x="38" y="148.0" text-anchor="end">0</text><line class="g" x1="46" x2="706" y1="94.0" y2="94.0"/><text class="axl" x="38" y="98.0" text-anchor="end">+5</text><line class="g" x1="46" x2="706" y1="44.0" y2="44.0"/><text class="axl" x="38" y="48.0" text-anchor="end">+10</text><path class="s-fajr thin" d="M46.0,134.0H53.2V144.0H56.8V134.0H58.7V144.0H69.5V154.0H71.3V144.0H76.7V154.0H85.8V164.0H87.6V154.0H93.0V164.0H100.2V174.0H102.1V164.0H103.9V174.0H105.7V164.0H107.5V174.0H109.3V164.0H112.9V174.0H123.8V184.0H127.4V174.0H134.6V184.0H145.5V194.0H167.2V204.0H172.6V194.0H174.4V204.0H181.6V214.0H183.4V204.0H187.0V194.0H188.8V204.0H190.7V194.0H192.5V184.0H194.3V194.0H196.1V184.0H197.9V164.0H201.5V154.0H205.1V144.0H208.7V134.0H212.4V124.0H214.2V134.0H216.0V124.0H217.8V114.0H226.8V104.0H234.1V94.0H237.7V84.0H239.5V94.0H243.1V84.0H244.9V104.0H248.5V94.0H250.3V104.0H253.9V94.0H255.8V104.0H259.4V94.0H261.2V104.0H266.6V114.0H270.2V124.0H272.0V114.0H273.8V124.0H277.5V134.0H279.3V124.0H281.1V134.0H282.9V124.0H284.7V134.0H288.3V144.0H290.1V134.0H291.9V144.0H293.7V134.0H295.5V154.0H297.3V144.0H301.0V154.0H304.6V164.0H310.0V174.0H311.8V164.0H313.6V174.0H317.2V184.0H322.7V174.0H324.5V184.0H326.3V194.0H335.3V204.0H337.1V194.0H338.9V204.0H340.7V214.0H342.5V204.0H348.0V194.0H353.4V184.0H355.2V174.0H357.0V164.0H360.6V174.0H362.4V164.0H366.1V174.0H367.9V164.0H373.3V154.0H376.9V164.0H378.7V154.0H384.1V144.0H400.4V154.0H402.2V144.0H405.8V134.0H407.6V144.0H411.3V134.0H413.1V144.0H414.9V134.0H418.5V124.0H420.3V134.0H423.9V124.0H433.0V114.0H440.2V124.0H442.0V114.0H443.8V104.0H445.6V114.0H447.4V104.0H449.2V114.0H454.7V104.0H461.9V114.0H463.7V104.0H469.1V94.0H470.9V104.0H474.5V94.0H476.4V104.0H481.8V94.0H485.4V104.0H489.0V114.0H498.1V124.0H501.7V134.0H510.7V144.0H512.5V134.0H516.1V144.0H517.9V134.0H519.8V144.0H521.6V134.0H523.4V124.0H525.2V134.0H527.0V124.0H530.6V114.0H534.2V104.0H537.8V94.0H539.6V114.0H541.5V104.0H543.3V114.0H548.7V124.0H550.5V114.0H552.3V124.0H557.7V134.0H566.8V144.0H575.8V154.0H577.6V144.0H579.4V164.0H583.0V154.0H584.8V164.0H586.7V174.0H588.5V164.0H590.3V174.0H599.3V164.0H601.1V184.0H604.7V174.0H606.5V184.0H608.4V194.0H610.2V184.0H612.0V194.0H613.8V184.0H615.6V194.0H617.4V204.0H619.2V194.0H622.8V214.0H624.6V204.0H631.9V194.0H633.7V204.0H639.1V194.0H653.6V184.0H655.4V194.0H660.8V184.0H675.3V174.0H677.1V164.0H678.9V174.0H680.7V164.0H684.3V154.0H695.2V134.0H697.0V144.0H700.6V134.0H706.0"/><path class="s-london thin" d="M46.0,114.0H47.8V104.0H49.6V94.0H58.7V84.0H67.7V74.0H69.5V84.0H71.3V74.0H73.1V64.0H74.9V74.0H76.7V64.0H82.2V54.0H84.0V64.0H85.8V54.0H89.4V44.0H91.2V54.0H93.0V44.0H96.6V34.0H98.4V44.0H100.2V34.0H102.1V44.0H105.7V54.0H109.3V64.0H120.1V74.0H121.9V64.0H123.8V74.0H125.6V64.0H131.0V74.0H134.6V64.0H140.0V74.0H143.6V64.0H145.5V74.0H147.3V64.0H149.1V74.0H150.9V64.0H152.7V74.0H154.5V64.0H156.3V84.0H158.1V74.0H159.9V84.0H161.7V74.0H163.5V94.0H165.3V84.0H167.2V94.0H169.0V84.0H170.8V94.0H172.6V84.0H174.4V94.0H179.8V84.0H181.6V94.0H185.2V84.0H188.8V94.0H192.5V84.0H194.3V94.0H205.1V84.0H206.9V94.0H208.7V84.0H212.4V94.0H216.0V84.0H217.8V94.0H219.6V84.0H221.4V74.0H223.2V94.0H225.0V84.0H232.2V74.0H234.1V84.0H235.9V74.0H239.5V84.0H241.3V74.0H255.8V84.0H257.6V74.0H259.4V84.0H263.0V74.0H272.0V64.0H275.6V74.0H282.9V84.0H284.7V94.0H288.3V104.0H290.1V84.0H291.9V94.0H293.7V104.0H295.5V94.0H297.3V104.0H299.2V94.0H302.8V104.0H304.6V94.0H315.4V104.0H317.2V94.0H333.5V84.0H340.7V74.0H342.5V84.0H346.2V94.0H349.8V104.0H351.6V114.0H353.4V124.0H355.2V134.0H357.0V144.0H360.6V154.0H364.2V144.0H366.1V154.0H371.5V164.0H373.3V174.0H375.1V164.0H378.7V174.0H382.3V164.0H384.1V174.0H387.8V164.0H389.6V174.0H395.0V184.0H396.8V164.0H400.4V174.0H409.5V164.0H411.3V184.0H413.1V174.0H416.7V184.0H418.5V174.0H420.3V164.0H422.1V184.0H423.9V174.0H429.3V154.0H434.8V144.0H438.4V134.0H442.0V124.0H443.8V134.0H447.4V124.0H449.2V134.0H465.5V124.0H467.3V134.0H480.0V124.0H483.6V134.0H485.4V124.0H496.2V114.0H498.1V124.0H503.5V114.0H505.3V124.0H510.7V114.0H516.1V124.0H534.2V134.0H537.8V124.0H539.6V114.0H541.5V124.0H543.3V114.0H546.9V124.0H550.5V104.0H555.9V114.0H559.5V124.0H561.3V104.0H566.8V114.0H575.8V104.0H583.0V94.0H588.5V104.0H595.7V94.0H597.5V104.0H599.3V94.0H602.9V84.0H604.7V94.0H606.5V84.0H610.2V74.0H613.8V84.0H617.4V74.0H621.0V84.0H624.6V74.0H626.4V84.0H631.9V74.0H637.3V84.0H639.1V74.0H642.7V84.0H648.1V74.0H649.9V84.0H651.8V74.0H653.6V84.0H657.2V94.0H666.2V104.0H675.3V114.0H678.9V124.0H687.9V134.0H689.7V124.0H695.2V114.0H697.0V124.0H698.8V114.0H706.0"/></svg>
+          <figcaption>London API minus moonsighting.com, method 0 (Hanafi, Shafaq General), at 51.5072, −0.1276, for every day of 2026. Positive means London is later.</figcaption>
+        </figure>
+
+        <h3>The Isha slots London edits</h3>
+        <p>Minutes after sunset; the book's printed value in brackets. Checked across ELM's files for 2015, 2017–2022, 2025 and 2026, and the 2024 API dump. <span class="chip ok">lead-verified</span></p>
+        <div class="tw"><table>
+          <thead><tr><th>Slot</th><th class="n">London (book)</th><th>Years</th></tr></thead>
+          <tbody>
+            <tr><td>1 Feb</td><td class="n">99 (98)</td><td>every year</td></tr>
+            <tr><td>29–30 Apr</td><td class="n">74 (73)</td><td>every year</td></tr>
+            <tr><td>1–12 May</td><td class="n">74 (68, 65, 65, 60, 60, 60, 65, 65, 68, 68, 70, 70)</td><td>every year; removes the book's dip</td></tr>
+            <tr><td>29 Nov</td><td class="n">99 (100)</td><td>every year</td></tr>
+            <tr><td>31 Mar</td><td class="n">79 (80)</td><td>2020 only</td></tr>
+            <tr><td>16 Jun</td><td class="n">84 (83)</td><td>2020, 2025, 2026</td></tr>
+            <tr><td>17 Jun</td><td class="n">84 (83)</td><td>2025, 2026</td></tr>
+            <tr><td>18–19 Jun</td><td class="n">83 (82)</td><td>2025, 2026</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout"><p><strong>No documented basis was found for any of these edits,</strong> in any ELM timetable from 2012 to 2026, ELM's explainer, Hizbul Ulama's articles or moonsighting.com. Software by Mohammed Arshad Baig, named in Miftahi's book, is a possible origin. <span class="chip no">unverified</span></p></div>
+
+        <h3>The rule has changed over the years</h3>
+        <div class="tw"><table>
+          <thead><tr><th>Era</th><th>Years</th><th>What differs</th></tr></thead>
+          <tbody>
+            <tr><td>A</td><td class="n">2012–2014</td><td>The timetable at adoption: no −3 on sunrise; Fajr close to moonsighting.com (340/365 in 2014); Isha matches nothing tested.</td></tr>
+            <tr><td>B1</td><td class="n">2015–2021</td><td>The chart rules above; sun best fitted at 51.5, −0.1275. The switch fell between 20 December 2014 and 9 January 2015, unannounced.</td></tr>
+            <tr><td>B2</td><td class="n">2022–2026</td><td>The same rules; sun best fitted at 51.5, −0.165, Hizbul Ulama's "LONDON" point (0°10′W). Who moved it, and why, is not documented.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="lineage">
+        <h2>Where each timetable comes from</h2>
+        <p class="kicker">Two lines of descent share one name. The London announcement credits Shaukat's model, but London's 2026 Fajr and Isha follow the Blackburn chart, not his function.</p>
+        <div class="lanes">
+          <div class="lane">
+            <h3>London's unified timetable</h3>
+            <ol>
+              <li><span class="yr">Sep 1987 – Aug 1988</span>Naked-eye Mushahadah in Blackburn (53.45°N), under Hizbul Ulama</li>
+              <li><span class="yr">2 Apr 1988 · 2 Jan 1989</span>Ulama agreements: observation over degree times; a chart goes to UK masjids</li>
+              <li><span class="yr">Oct 2005</span>Miftahi, <i>Fajar and Isha</i>: Tables 5 and 6, the UK interval chart</li>
+              <li><span class="yr">late 2006</span>Shaukat computes Hizbul Ulama's UK city tables, with his own function and no 1/7 rule; London's timetable is a different table</li>
+              <li><span class="yr">1 Aug 2011</span>London adopts the unified timetable inside the M25 (Unified.pdf)</li>
+              <li><span class="yr">from Jan 2015</span>Chart intervals on HMNAO sun times; sunrise − 3</li>
+              <li><span class="yr">today</span>East London Mosque timetable → londonprayertimes.com API</li>
+              <li class="end"><span class="yr">app</span>Athan: London's default, unchanged under the owner's plan</li>
+            </ol>
+          </div>
+          <div class="lane">
+            <h3>The moonsighting.com method</h3>
+            <ol>
+              <li><span class="yr">1998 – 2005</span>prayer.html: 15° (to 2003), then 18°, then a "function of latitude and seasons" (May 2005)</li>
+              <li><span class="yr">about a decade</span>Observations from Riyadh to Blackburn curve-fitted by day of year</li>
+              <li><span class="yr">Sep 2015</span>Booklet <i>FAJR AND ISHA</i>, §11: the coefficients</li>
+              <li><span class="yr">since 2011</span><code>pray.php</code> → <code>praytable.php</code>, developed by Ahmed Bu-khamsin</li>
+              <li><span class="yr">since Oct 2024</span><code>time_json.php</code> on <code>moonsighting.ahmedbukhamsin.sa</code>; the www copy returns 500</li>
+              <li class="end"><span class="yr">v2.0</span>Athan: a second option in London, the only option elsewhere</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="formula">
+        <h2>The published formula</h2>
+        <p class="kicker">Booklet §11, pp. 24–25. Minutes before sunrise (Fajr) or after sunset (Isha); φ is the absolute latitude in degrees.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Set</th><th class="n">A</th><th class="n">B</th><th class="n">C</th><th class="n">D</th></tr></thead>
+          <tbody>
+            <tr><td>Fajr</td><td class="n">75 + 28.65/55·φ</td><td class="n">75 + 19.44/55·φ</td><td class="n">75 + 32.74/55·φ</td><td class="n">75 + 48.10/55·φ</td></tr>
+            <tr><td>Isha, Shafaq Ahmer</td><td class="n">62 + 17.40/55·φ</td><td class="n">62 − 7.16/55·φ</td><td class="n">62 + 5.12/55·φ</td><td class="n">62 + 19.44/55·φ</td></tr>
+            <tr><td>Isha, Shafaq Abyad</td><td class="n">75 + 25.60/55·φ</td><td class="n">75 + 7.16/55·φ</td><td class="n">75 + 36.84/55·φ</td><td class="n">75 + 81.84/55·φ</td></tr>
+            <tr><td>Isha, Shafaq General</td><td class="n">75 + 25.60/55·φ</td><td class="n">75 + 2.05/55·φ</td><td class="n">75 − 9.21/55·φ</td><td class="n">75 + 6.14/55·φ</td></tr>
+          </tbody>
+        </table></div>
+        <div class="eq">day count DYY: 0 on 21 December (north), 0 on 21 June (south)
+segments   A→B over 91 days, B→C 46, C→D 46, D→C 46, C→B 46, B→A 91
+Fajr       = later of  (sunrise − MIN, 18° time)
+Isha       = earlier of (sunset + MIN, 18° time)
+Dhuhr      = solar noon + 5        Maghrib = sunset + 3   (+17 Ja'fari)
+Asr shadow = 1 Shafi'i · 2 Hanafi · 4/7 Ja'fari</div>
+        <p>The endpoint's <code>method</code> values match the site's calculator menu, unchanged since 2011: <span class="mono">0</span> Hanafi, Shafaq General (listed first); <span class="mono">1</span> Hanafi, Shafaq Abyad; <span class="mono">2</span> Shafi'i, Maliki, Hanbali (Ahmer); <span class="mono">3</span> Ja'fari. For London on 21 June 2026, Isha changes with method (22:42, 23:52 and 22:41), and method 2 puts the Shafi'i time in <code>asr</code>.</p>
+        <p>adhan 4.4.6's <code>MoonsightingCommittee</code> matches the endpoint to ±1 minute on five of six times up to 64°N. It departs in two ways. It tests the 55° threshold on signed latitude, so 1/7 never applies south of −55°. And it returns Invalid Date in polar night, where the tables print 18° times.</p>
+      </section>
+
+      <section id="highlat">
+        <h2>Above 55°: nine written versions</h2>
+        <p class="kicker">Dated by archived page captures, as "capture (the page's own Updated line)". The published tables follow none of them exactly.</p>
+        <ol class="timeline">
+          <li><span class="when">1998 – 2003</span><span>prayer.html: fixed 15°, "a value adopted by ISNA"; 1/7 of the night above 45°.</span></li>
+          <li><span class="when">2003 – 2005</span><span>18° with the 1/7 rule; from October 2004 "a combination of 18 degrees, 15 degrees, and even 12 degrees".</span></li>
+          <li><span class="when">May 2005</span><span>The latitude-season function arrives; 1/7 removed; near the Arctic Circle, "nearby lower latitudes".</span></li>
+          <li><span class="when">Sep 2009</span><span>1/7 of the night returns, "between 55 - 66 degrees".</span></li>
+          <li><span class="when">May 2011</span><span>1/7 at 55–65°; above 65°, "nearest lower latitudes where the sun sets and rises". Booklet §10 uses this wording.</span></li>
+          <li><span class="when">Oct 2013</span><span>how-we.html: pure 18° up to 30°, the 18° comparison from 30° to 55°, 1/7 at 55–60°, and a slide to 60° only "If day length is more than 18 hours or less than 6 hours".</span></li>
+          <li><span class="when">Jul 2016</span><span>The 18° comparison from the equator to 55°; the slide to 60° made unconditional; Fajr redefined as "Tabayyun".</span></li>
+          <li class="live"><span class="when">Jul 2017 → live</span><span>Above 60°: 1/7 at 60° "in summer", the functions "in winter".</span></li>
+          <li class="live"><span class="when">by Aug 2020 → live</span><span>faq_pt.html: Aqrabul-Bilaad, "decreasing the latitude by 0.1 degrees … until a latitude is reached where the sun sets". This contradicts how-we.html beside it.</span></li>
+          <li class="tables"><span class="when">the tables</span><span>1/7 of the night at the true latitude, no slide; polar night gives 18° Fajr and Isha with Sunrise and Maghrib dashed; midnight sun dashes all four. The slide to 60° makes the fit worse: Reykjavik matches 1/7 at its own latitude on 365 of 365 days.</span></li>
+        </ol>
+        <div class="callout info">
+          <p><strong>The booklet mixes page versions.</strong> §12 pairs the "equator to 55°" comparison (first captured July 2016) with the 18-hour day-length test (last captured October 2013). Whether that combination ever stood on the page is being checked now against every archived capture. <span class="chip run">being dated</span></p>
+          <p><strong>Shafaq General is described both ways.</strong> Since May 2019 how-we.html says "Shafaq General uses Shafaq Abyad in Summer and Shafaq Ahmer in Winter", the reverse of the sentence before it. The coefficients settle it: General is Ahmer-like in summer and Abyad-like in winter.</p>
+        </div>
+      </section>
+
+      <section id="endpoint">
+        <h2>The endpoint, as a contract</h2>
+        <p class="kicker">Measured on 14 September 2026. <code>moonsighting.ahmedbukhamsin.sa/time_json.php</code> equals the site's <code>praytable.php</code> cell for cell: London 6,570 of 6,570, Sydney 2,190 of 2,190.</p>
+        <ul>
+          <li><strong>Hosts.</strong> <code>www.moonsighting.com/time_json.php</code>: HTTP 500 with an empty body for every parameterised request. The bukhamsin host: 200 JSON, behind Cloudflare, with no terms of use and no Wayback history. The API moved there on 2024-10-31.</li>
+          <li><strong>Shape.</strong> A full year only (about 141 KB), no day or month query. Each <code>day</code> is <code>"Jan 01 Thu"</code>, with no year. Times are padded with trailing spaces. The field is <code>maghrib</code>.</li>
+          <li><strong>Errors arrive as HTTP 200.</strong> Omitting <code>both</code> or <code>time</code> puts a PHP warning before the JSON. A bad <code>tz</code> or <code>method</code> gives a PHP fatal error in the body. <code>lat=95</code> is accepted.</li>
+          <li><strong>High latitude.</strong> <code>-----</code> for undefined times; evening values after midnight with no day marker. At Longyearbyen the 18 April Fajr prints as <code>23:36</code>. McMurdo prints Fajr equal to Isha for days. <span class="chip no">cause unverified</span></li>
+        </ul>
+        <h3>The clock changes a day early in seven zones</h3>
+        <div class="tw"><table>
+          <thead><tr><th>Zone</th><th class="n">Endpoint jumps</th><th class="n">Real change</th></tr></thead>
+          <tbody>
+            <tr><td>Australia/Sydney</td><td class="n bad">Sat 4 Apr · Sat 3 Oct</td><td class="n">Sun 5 Apr · Sun 4 Oct</td></tr>
+            <tr><td>Australia/Adelaide</td><td class="n bad">Sat 4 Apr · Sat 3 Oct</td><td class="n">Sun 5 Apr · Sun 4 Oct</td></tr>
+            <tr><td>Pacific/Auckland</td><td class="n bad">Sat 4 Apr · Sat 26 Sep</td><td class="n">Sun 5 Apr · Sun 27 Sep</td></tr>
+            <tr><td>Antarctica/McMurdo</td><td class="n bad">Sat 4 Apr · Sat 26 Sep</td><td class="n">Sun 5 Apr · Sun 27 Sep</td></tr>
+            <tr><td>Asia/Beirut</td><td class="n bad">Sat 28 Mar · Sat 24 Oct</td><td class="n">Sun 29 Mar · Sun 25 Oct</td></tr>
+            <tr><td>Africa/Cairo</td><td class="n bad">Thu 23 Apr · Thu 29 Oct</td><td class="n">Fri 24 Apr · Fri 30 Oct</td></tr>
+            <tr><td>Asia/Jerusalem</td><td class="n bad">Thu 26 Mar · Sat 24 Oct</td><td class="n">Fri 27 Mar · Sun 25 Oct</td></tr>
+          </tbody>
+        </table></div>
+        <p>On those days all six times are an hour off. Each date's offset behaves as if sampled between 00:00 and 01:00 UTC the next day, so zones that change later, such as London and New York, come out right: 18 of the 26 zones in the wider sweep are correct on every day. After 20 September 2026, Casablanca follows an older tz rule (103 days at +1). Palestine was not measured. <span class="chip ok">lead-verified</span></p>
+      </section>
+
+      <section id="site">
+        <h2>The site itself</h2>
+        <p class="kicker">Every live path (1,186), 50 archived captures, and every page's hidden comments, scripts and attribute text, each read in full or as a full diff.</p>
+        <ul>
+          <li><strong>Seven pages carry the method:</strong> how-we, faq_pt, 3books, ever-wonder and the archived prayer, faq_ps and prayer-french pages. None states the coefficients. None mentions London's unified timetable or names a UK mosque that uses the times.</li>
+          <li><strong>The booklet was on offer, 2012 to 2017.</strong> "These algorithms are included in the booklet … a hard (xeroxed) copy of the manuscript can be sent by postage mail". It was removed from how-we by July 2016 and from faq_pt by November 2017. That the 2015 booklet is this manuscript fits, but is <span class="chip no">unverified</span></li>
+          <li><strong>Dormant since spring 2024.</strong> The last sighting reports are dated 7–10 April 2024. The newest "Updated" line is 3 April 2024. The last paid-link note reads "Paid up to 5/8/2024". The calculator's Apple MapKit tokens expired on 2023-08-01. Since 2025 the site sits behind a Cloudflare bot check.</li>
+          <li><strong>The Islamic day.</strong> The site's calendars say dates "BEGIN AT SUNSET THE PRECEDING EVENING"; a hosted guest article dissents.</li>
+          <li><strong>Documents (59 of 59).</strong> Shaukat computed Hizbul Ulama's 2007 UK directory. Its 2006 and 2009 tables are identical, apply no 1/7 rule even at Aberdeen, and carry errors: Belfast is computed at a point in Essex.</li>
+        </ul>
+      </section>
+
+      <section id="impls">
+        <h2>Implementations, measured</h2>
+        <p class="kicker">Implementation minus endpoint, in minutes, on reference dates in 2026. Everything that implements the seasonal function agrees at London; only adhan and its faithful copies also match Oslo in summer.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Implementation</th><th>What it computes</th><th class="n">Oslo 21 Jun<br>Fajr / Isha</th><th class="n">Tromsø 21 Dec</th><th class="n">Dhuhr / Maghrib</th></tr></thead>
+          <tbody>
+            <tr><td><strong>adhan 4.4.6</strong> and faithful copies</td><td>seasonal + 18° bound + 1/7 above 55°</td><td class="n good">−1 / 0</td><td class="n">Invalid Date</td><td class="n good">+5 / +3 match</td></tr>
+            <tr><td>islamic-network family: AlAdhan method 15, @praytime/core, mawaqit, kskhan77, muballighapp, adamarnap</td><td>seasonal function only</td><td class="n bad">−83 / +37</td><td class="n bad">+203 / −207</td><td class="n bad">−5 / −3</td></tr>
+            <tr><td>namaz 4.4.0</td><td>adhan fork, General Isha only</td><td class="n">−1 / 0</td><td class="n">Invalid Date</td><td class="n">Dhuhr +1</td></tr>
+            <tr><td>@masaajid/prayer-times 1.0.1</td><td>Abyad coefficients on its General path: London Isha <span class="bad">+70</span> on 21 June</td><td class="n">−1 / 0</td><td class="n">Invalid Date</td><td class="n">0 / +1</td></tr>
+            <tr><td>libmuslim, @islam-kit, salat-first, masjiduna-waqt, salahapi-php, piazan, @misque</td><td>labelled Moonsighting, not the method</td><td class="n bad">up to −112 / +110</td><td class="n">varies</td><td class="n">varies</td></tr>
+            <tr><td>Rust (sniper1720/mawaqit, adhaan), C# (arahmancsd)</td><td>read, not run</td><td class="n">–</td><td class="n">–</td><td class="n">–</td></tr>
+          </tbody>
+        </table></div>
+        <p>npm weekly downloads on 14 September 2026: adhan 26,697; every other candidate 150 or fewer. masjiduna-waqt's install hook downloads an unchecksummed binary when Bun is installed.</p>
+      </section>
+
+      <section id="app">
+        <h2>What it means for the app</h2>
+        <p class="kicker">Research only: nothing here is a change. Where each finding lands on <code>uat-2</code> at <code>466b568</code>.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Finding</th><th>Where</th><th>Effect</th></tr></thead>
+          <tbody>
+            <tr><td>Days come as an array, with no year</td><td><code>shared/types.ts</code> <code>IApiResponse</code>; <code>validateApiResponse</code>, <code>filterApiData</code>, <code>transformApiData</code></td><td>Dates become the indices "0" to "364"</td></tr>
+            <tr><td>Times padded with spaces</td><td><code>TIME_PATTERN</code> in <code>api/client.ts</code></td><td>Every day fails validation</td></tr>
+            <tr><td><code>maghrib</code>, not <code>magrib</code></td><td><code>REQUIRED_TIMES</code>, <code>IApiSingleTime</code>, Istijaba, night times</td><td>Maghrib missing on every day</td></tr>
+            <tr><td>One zone per request</td><td><code>PRAYER_TIMEZONE</code>, <code>shared/constants.ts:241</code>; <code>shared/time.ts</code> lines 26, 247, 320, 331</td><td>The constant becomes per-location state</td></tr>
+            <tr><td>Dashes and after-midnight values</td><td><code>validateApiTimes</code>; <code>transformApiData</code> and <code>getNightTimesForDay</code> in <code>shared/prayer.ts</code></td><td>Tromsø loses 118 days; derived times lose their base; a Fajr on the previous evening fits no rule</td></tr>
+            <tr><td>London shown as fixed</td><td><code>components/day/Day.tsx:56</code>, <code>widgets/PrayerWidget.tsx:204</code>, <code>device/updates.ts:15</code></td><td>Visual; needs the owner's say</td></tr>
+            <tr><td>Asr labels reversed</td><td><code>shared/types.ts</code></td><td>Comments wrong; the app shows the Shafi'i time</td></tr>
+            <tr><td>Hand-written fixture</td><td><code>mocks/timing-system-schema.ts</code></td><td>Its "Magrib 21:21 on 21 June" is not API data; the API gives 21:25</td></tr>
+          </tbody>
+        </table></div>
+        <p>The endpoint needs no key, so the London-only credential goes away. <code>stores/sync.ts</code>'s one-year-per-request model already fits. Whether the TLS 1.3 module is needed there is unmeasured.</p>
+      </section>
+
+      <section id="questions">
+        <h2>Questions for the owner</h2>
+        <p class="kicker">Decisions the research can inform but not make. Numbered as in section 5 of the findings.</p>
+        <ol class="qs">
+          <li><strong>The source for v2.0.</strong> Accept a dependency on the developer's host, on the site's HTML table, or ask Khalid Shaukat or Ahmed Bu-khamsin for a supported endpoint?</li>
+          <li><strong>The day-early clock change.</strong> Show those days as given, treat them as unreadable, report and wait, or allow a narrow, documented correction?</li>
+          <li><strong>Days with some fields missing.</strong> Should a derived time (Duha, Istijaba, night times) show <code>--:--</code> whenever its base is dashed?</li>
+          <li><strong>Which method a v2.0 user gets.</strong> A default among 0–3, or the user's choice? The site lists Shafaq General first but describes it both ways.</li>
+          <li><strong>London under v2.0.</strong> Confirm the API as London's default, with moonsighting.com as the second option. No London delta can be applied without synthesising times.</li>
+          <li><strong>Which rule above 55° is the method:</strong> one of the nine texts, or the published tables?</li>
+          <li><strong>adhan.</strong> A cross-check, an offline fallback, or not used? The never-synthesise rule suggests not as a source of shown times.</li>
+          <li><strong>Which Asr London users see.</strong> Keep <code>asr</code> (Shafi'i), switch to <code>asr_2</code> (Hanafi), or offer both? Fix the comments either way?</li>
+          <li><strong>Presenting the option in London.</strong> Say plainly that it is a different timetable from the user's mosque?</li>
+          <li><strong>Reconstructing London locally.</strong> Ruled out, or allowed as an offline check only?</li>
+          <li><strong>Asking about the edits.</strong> Contact East London Mosque or Hizbul Ulama about the 21 edited slots and the 2022 coordinate change?</li>
+        </ol>
+      </section>
+
+      <section id="open">
+        <h2>Still open</h2>
+        <ul>
+          <li><strong>Method-page dates.</strong> 9 of 58 how-we, 6 of 79 faq_pt and 6 of 34 pray.php archive versions were read; the rest are being fetched and diffed. <span class="chip run">in progress</span></li>
+          <li><strong>London boundary minutes.</strong> ±1 on 3 to 12 days per sun-based prayer; needs HMNAO's values. <span class="chip no">unverified</span></li>
+          <li><strong>London's Asr.</strong> 353 and 356 of 365 in one agent's code; adhan gives 143 and 204. <span class="chip no">not reproduced</span></li>
+          <li><strong>Years before 2026</strong> rest on ELM's PDFs, proven identical to the API only for 2024.</li>
+          <li><strong>Shafaq width in England.</strong> faq_pt has said 66–105 minutes since 2012; earlier pages and Miftahi's book say 66–100.</li>
+          <li><strong>Endpoint.</strong> The cause of the www 500s, the McMurdo runs, Casablanca after 20 September, Palestine, uptime and consent, and the Sky Prayers apps.</li>
+          <li><strong>Ports not run:</strong> Rust, C# and Dart.</li>
+        </ul>
+        <h3>Next session</h3>
+        <ol>
+          <li>Pin every method-page change in the archive, including whether booklet §12 ever stood on how-we.html.</li>
+          <li>Reproduce London's Asr independently; seek HMNAO values within its terms.</li>
+          <li>Measure Palestine; look into McMurdo and the Sky Prayers apps.</li>
+          <li>One independent Opus reviewer attacks every claim, count and fixture.</li>
+          <li>Bring the eleven questions to the owner.</li>
+        </ol>
+      </section>
+
+      <section id="sources">
+        <h2>Sources</h2>
+        <p class="kicker">All fetched 14 September 2026. Scratch material, scripts and raw responses are under <code>~/athan-research/</code>.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Source</th><th>Where</th></tr></thead>
+          <tbody>
+            <tr><td>Method pages</td><td><a href="https://www.moonsighting.com/how-we.html">how-we.html</a> (Updated 1 Mar 2024), <a href="https://www.moonsighting.com/faq_pt.html">faq_pt.html</a> (25 Aug 2020), with Wayback captures from 2003 to 2026</td></tr>
+            <tr><td>Old prayer page</td><td><code>moonsighting.com/prayer.html</code>, 64 Wayback captures, 1999–2025</td></tr>
+            <tr><td>Shaukat's booklet</td><td><i>FAJR AND ISHA</i> (Sep 2015), <code>booklet-fajr-isha.pdf</code> in the islamic-network repository, SHA-256 <code>d2faa6c1…5c08b63</code></td></tr>
+            <tr><td>Miftahi, <i>Fajar and Isha</i></td><td><code>moonsighting.com/articles/fajr&amp;isha-yam.pdf</code>, Wayback 20070410171730</td></tr>
+            <tr><td>London adoption</td><td><a href="http://www.hizbululama.org.uk/articles/english/Unified.pdf">Unified.pdf</a>; <a href="https://www.eastlondonmosque.org.uk/prayer-times-and-calendar-explained">ELM, prayer times explained</a></td></tr>
+            <tr><td>London API</td><td><a href="https://www.londonprayertimes.com/api">londonprayertimes.com/api</a>, 2026 year (the key is not stored)</td></tr>
+            <tr><td>Endpoint</td><td><code>moonsighting.ahmedbukhamsin.sa/time_json.php</code>; <code>www.moonsighting.com/praytable.php</code></td></tr>
+            <tr><td>Packages</td><td><a href="https://github.com/batoulapps/adhan-js">adhan-js</a> 4.4.6, <a href="https://github.com/PrayerTimeResearch/PrayerTimeAPI">PrayerTimeAPI</a>, <a href="https://github.com/islamic-network/prayer-times-moonsighting">islamic-network</a>, read with opensrc</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <footer>
+        Prepared from <code>ai/features/moonsighting/RESEARCH-FINDINGS.md</code> on branch <code>research/moonsighting</code>. Prayer times shown are quoted from sources or derived from the saved API year; none was computed for this page. Marks: <span class="chip ok">lead-verified</span> re-checked by the lead against the primary source; <span class="chip no">unverified</span> not yet proven; <span class="chip run">in progress</span> work running now.
+      </footer>
+    </main>
+  </div>
+</div>
