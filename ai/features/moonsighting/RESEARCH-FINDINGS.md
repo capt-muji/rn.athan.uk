@@ -312,8 +312,13 @@ TLS 1.3 alone (finding 43). Whether the moonsighting hosts need them has not bee
 ### 4.2 One prayer timezone for the whole app
 
 - `PRAYER_TIMEZONE = 'Europe/London'` (`shared/constants.ts:241`) is the only zone.
-- `shared/time.ts` reads it for every calendar-day and clock conversion: lines 26, 247, 320 and
-  331, and `createPrayerDatetime`.
+- `shared/time.ts` reads it in three places:
+  - `prayerClockFormatter` (line 26), which `prayerTimezoneOffset` and so `createPrayerDatetime`
+    use to turn every API clock reading into an instant;
+  - `formatHijriDateLong` (line 247);
+  - the Ramadan decoration check (lines 320 and 331).
+- The night-time code in `shared/prayer.ts` (`getNightTimesForDay`, lines 150–156) and the
+  Istijaba instant (lines 122–125) build on `createPrayerDatetime`.
 - The endpoint takes `tz` per request and returns clock times in that zone. So a worldwide client
   has to carry the location's zone from the request through storage and on to every date
   computation, and the constant becomes per-location state.
