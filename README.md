@@ -479,7 +479,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 
 ### Code Quality
 
-- **Testing**: Jest with babel-jest + @babel/preset-typescript for unit tests (`yarn test`); typechecking is a separate `tsc --noEmit` step
+- **Testing**: Jest with babel-jest + @babel/preset-typescript and the React JSX transform for unit tests (`yarn test`); typechecking is a separate `tsc --noEmit` step
 - **Type Safety**: Full TypeScript coverage with strict mode
 - **Linting**: Biome (lint + format, 120 char lines, 2 spaces, single quotes)
 - **Logging**: Pino logger (no console.log statements)
