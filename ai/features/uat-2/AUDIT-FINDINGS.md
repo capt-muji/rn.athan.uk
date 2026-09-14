@@ -4702,9 +4702,9 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
 - R13: a refusal and a failed fetch are handled the same, and retried on the next sync.
 - R14: the bar is hidden. **Ruled by the owner on 2026-09-14: keep it hidden (option A).**
 - R11, the countdown: **ruled by the owner on 2026-09-14.** While a fully unreadable day is on screen the countdown
-  shows `--:--` under `...` (1.27.9; 1.27.1 named the next prayer), not a count to the next day's first prayer; at that day's 00:00 it
-  shows the next day's real countdown. The 00:00 moment is the existing boundary the ticker already checks, so no
-  timer is added.
+  shows `--:--` under `...` (1.27.9; 1.27.1 named the next prayer), not a count to the next day's first prayer;
+  at that day's 00:00 it shows the next day's real countdown. The 00:00 moment is the existing boundary the
+  ticker already checks, so no timer is added.
 - R5: first built as the saved glyph at 25% opacity. **Ruled by the owner on 2026-09-14:** the Off glyph at the
   row's normal colour, bright when passed or selected and dim when upcoming. A tap buzzes and opens the alert sheet
   with a short message instead of options. Preferences are per prayer, so while it shows, tomorrow's alert for that
@@ -4728,7 +4728,7 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
   - From the design review: every sequence write settles the cached boundary, the previous row keeps its
     whole list day, and the countdown no longer freezes at 1s after the last readable prayer in storage.
   - 1.27.2 and 1.27.3 answer two more Code Reviewer rounds.
-  - 1.27.4 records round 2 in the queue index and the brief.
+  - 1.27.4 records round 2 in the queue index, the brief and finding 71, and makes two comments exact.
   - 1.27.5 was found by the owner, watching the 3T capture live. After the last readable prayer in the data, the
     whole countdown block vanished and the date and list moved up the page. It happened because `useCountdown`
     was ready only while a readable prayer was ahead. It is now ready whenever a list is on screen, so `--:--`
@@ -4746,6 +4746,7 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
     - an overlay on one page leaves the other page's `...` alone
     - the waiting name has a screen-reader label
     - `findPreviousRow` returns nothing when the row above next is missing rather than taking one further up
+  - 1.27.12 and 1.27.13 bring finding 71, the queue, the brief and two store comments in line with those rules.
   - Verification:
     - 3,598 tests pass.
     - Every changed line in hooks, stores and shared is covered.
