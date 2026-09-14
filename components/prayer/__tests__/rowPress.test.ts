@@ -128,4 +128,18 @@ describe('a tap on each row (real London 2026 days)', () => {
       'Istijaba: close',
     ]);
   });
+
+  it('checks a passed Istijaba before the highlight, so a highlighted one that has passed still does nothing', () => {
+    show(ScheduleType.Extra, { '2026-09-12': 'not stored' }, ['2026-09-11', '20:00']);
+    const istijaba = usePrayer(ScheduleType.Extra, 4);
+
+    expect(
+      getRowPressAction({
+        isStandard: false,
+        english: istijaba.english,
+        isPassed: istijaba.isPassed,
+        isSelectedForOverlay: true,
+      })
+    ).toBe('none');
+  });
 });
