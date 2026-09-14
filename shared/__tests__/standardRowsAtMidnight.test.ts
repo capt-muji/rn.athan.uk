@@ -10,6 +10,8 @@
  * time helpers.
  */
 
+import { formatInTimeZone } from 'date-fns-tz';
+
 import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shared/prayer';
 import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -64,7 +66,7 @@ describe('keeps a Standard row on its own list at the midnight and 06:00 boundar
 
   it.each(CASES)(
     '%s at %s is at %s, on %s by the clock, and stays on the 20 June list',
-    (english, time, at20, _fallsOn, at21) => {
+    (english, time, at20, fallsOn, at21) => {
       useRecords(twoDays(english, time));
       const rows = sequenceFor(ScheduleType.Standard, '2026-06-20', 2).filter((row) => row.english === english);
 
@@ -72,6 +74,7 @@ describe('keeps a Standard row on its own list at the midnight and 06:00 boundar
         ['2026-06-20', english, at20, time],
         ['2026-06-21', english, at21, time],
       ]);
+      expect(rows[0].datetime && formatInTimeZone(rows[0].datetime, 'Europe/London', 'yyyy-MM-dd')).toBe(fallsOn);
       // The alarms read one row at a time, from the day's own record rather than the sequence
       expect(getPrayerForDate(ScheduleType.Standard, english, '2026-06-20')).toEqual(rows[0]);
       expect(getPrayerForDate(ScheduleType.Standard, english, '2026-06-21')).toEqual(rows[1]);
