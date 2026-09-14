@@ -29,31 +29,43 @@ export const initialReminderType = (storedReminder: AlertType): AlertType.Silent
 export const initialReminderInterval = (storedInterval: number): ReminderInterval =>
   validateReminderInterval(storedInterval) ? (storedInterval as ReminderInterval) : DEFAULT_REMINDER_INTERVAL;
 
+export interface AthanSelection {
+  /** The athan type just tapped */
+  selected: AlertType;
+  /** The athan type the draft holds */
+  atTimeAlert: AlertType;
+}
+
 /**
  * Only the move from Off to an athan that can fire needs permission. Every other move either keeps an athan that
- * already needed it or turns the athan off.
+ * already needed it or turns the athan off. Named fields, because both are alert types and swapped positions would
+ * still compile.
  *
- * @param selected The athan type just tapped
- * @param atTimeAlert The athan type the draft holds
  * @returns Whether to ask before moving the selection
  */
-export const selectionNeedsPermission = (selected: AlertType, atTimeAlert: AlertType): boolean =>
+export const selectionNeedsPermission = ({ selected, atTimeAlert }: AthanSelection): boolean =>
   selected !== AlertType.Off && atTimeAlert === AlertType.Off;
+
+export interface ReminderToggle {
+  /** Whether the athan is on */
+  canEnableReminder: boolean;
+  /** Whether the reminder is on */
+  isReminderOn: boolean;
+  /** The reminder sound last chosen */
+  reminderType: AlertType.Silent | AlertType.Sound;
+}
 
 /**
  * A reminder without an athan never fires, so the toggle is locked while the athan is Off. Switching the reminder
- * back on restores the sound last chosen for it.
+ * back on restores the sound last chosen for it. Named fields, because the two flags would still compile swapped.
  *
- * @param canEnableReminder Whether the athan is on
- * @param isReminderOn Whether the reminder is on
- * @param reminderType The reminder sound last chosen
  * @returns The reminder after the press, or null when the press changes nothing
  */
-export const toggledReminder = (
-  canEnableReminder: boolean,
-  isReminderOn: boolean,
-  reminderType: AlertType.Silent | AlertType.Sound
-): AlertType | null => {
+export const toggledReminder = ({
+  canEnableReminder,
+  isReminderOn,
+  reminderType,
+}: ReminderToggle): AlertType | null => {
   if (!canEnableReminder) return null;
   return isReminderOn ? AlertType.Off : reminderType;
 };
