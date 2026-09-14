@@ -54,6 +54,9 @@ mutate.MUTATIONS[:] = [
     # --- the call sites in the components ---
     ('components/overlay/Overlay.tsx', 'getOverlayRow(prayers, displayDate, overlay.scheduleType, overlay.selectedPrayerIndex)', 'overlay.selectedPrayerIndex', 'call site: overlay row read as the sequence index'),
     ('components/overlay/Overlay.tsx', 'getOverlayRow(prayers, displayDate, overlay.scheduleType, overlay.selectedPrayerIndex)', 'getOverlayRow(prayers, displayDate, ScheduleType.Standard, overlay.selectedPrayerIndex)', 'call site: overlay row in Standard order'),
+    ('components/prayer/ActiveBackground.tsx', 'getActivePillRow(prayers, displayDate, type, heldPillRow.current)', 'getActivePillRow(prayers, displayDate, type, 0)', 'call site: held pill row dropped'),
+    ('components/prayer/ActiveBackground.tsx', 'getActivePillRow(prayers, displayDate, type, heldPillRow.current)', 'getActivePillRow(prayers, displayDate, ScheduleType.Standard, heldPillRow.current)', 'call site: pill row in Standard order'),
+    ('components/prayer/ActiveBackground.tsx', 'getActivePillOpacity(prayers, displayDate, type, overlay)', 'getActivePillOpacity(prayers, displayDate, ScheduleType.Standard, overlay)', 'call site: pill fade judged for the Standard page'),
 ]
 
 if __name__ == '__main__':
