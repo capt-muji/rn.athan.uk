@@ -4728,6 +4728,10 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
   - From the design review: every sequence write settles the cached boundary, the previous row keeps its
     whole list day, and the countdown no longer freezes at 1s after the last readable prayer in storage.
   - 1.27.2 and 1.27.3 answer two more Code Reviewer rounds.
+  - 1.27.5 was found by the owner, watching the 3T capture live. After the last readable prayer in the data, the
+    whole countdown block vanished and the date and list moved up the page. It happened because `useCountdown`
+    was ready only while a readable prayer was ahead. It is now ready whenever a list is on screen, so `--:--`
+    keeps its place.
   - Verification:
     - 3,580 tests pass.
     - Every changed line in hooks, stores and shared is covered.
