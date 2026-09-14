@@ -111,6 +111,14 @@ mutate.MUTATIONS[:] = [
      'const quarterHour = Math.floor(instant / QUARTER_HOUR_MS);',
      'const quarterHour = Math.round(instant / QUARTER_HOUR_MS);',
      'offset read at the nearest quarter hour'),
+
+    # --- control ---
+    # mutate.py counts a crashed suite as a kill, so no kill above is worth believing unless this no-op survives.
+    # It sits in shared/time.ts because that file's related tests include every suite the prayer.ts mutants run.
+    ('shared/time.ts',
+     'const quarterHour = Math.floor(instant / QUARTER_HOUR_MS);',
+     'const quarterHour = Math.floor((instant * 1) / QUARTER_HOUR_MS);',
+     'no-op control (must SURVIVE)'),
 ]
 
 if __name__ == '__main__':
