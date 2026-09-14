@@ -23,8 +23,8 @@ export const getShownDateSource = (
  * The date as Day prints it, Gregorian or Hijri
  *
  * Day is the only list-day consumer with no isReady gate, and both formatters throw on an empty date: the Hijri
- * one falls back to the Gregorian one from inside its own catch and throws again, uncaught. So no date prints
- * nothing.
+ * one falls back to the Gregorian one from inside its own catch and throws again, uncaught. With no date it
+ * prints nothing.
  *
  * @param dateSource The list day (getShownDateSource)
  * @param hijriEnabled Whether the Hijri date is chosen in settings
