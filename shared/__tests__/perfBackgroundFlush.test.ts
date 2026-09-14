@@ -93,7 +93,8 @@ const initMonitor = () => {
   perf.initPerfMonitor();
 
   const registration = appState.addEventListener.mock.calls.find(([event]) => event === 'change');
-  return { perf, onAppStateChange: registration?.[1] as ((state: string) => void) | undefined };
+  // Typed as present: each test asserts it is a function before calling it, so a missing listener fails
+  return { perf, onAppStateChange: registration?.[1] as (state: string) => void };
 };
 
 afterEach(() => {
@@ -111,12 +112,13 @@ describe('perf ring flush on app state changes', () => {
     expect(onAppStateChange).toBeInstanceOf(Function);
   });
 
-  it('writes the ring, with the marks since the last flush, when the app goes to the background', () => {
+  it('writes the ring, with every entry recorded so far, when the app goes to the background', () => {
     const { perf, onAppStateChange } = initMonitor();
     perf.perfMark('sheet_settings_present');
     expect(readFlushed().reason).toBe('init');
+    expect(onAppStateChange).toBeInstanceOf(Function);
 
-    onAppStateChange?.('background');
+    onAppStateChange('background');
 
     const flushed = readFlushed();
     expect(flushed.reason).toBe('background');
@@ -126,8 +128,9 @@ describe('perf ring flush on app state changes', () => {
   it.each(['active', 'inactive', 'unknown', 'extension'])('writes nothing when the app state becomes %s', (state) => {
     const { perf, onAppStateChange } = initMonitor();
     perf.perfMark('sheet_settings_present');
+    expect(onAppStateChange).toBeInstanceOf(Function);
 
-    onAppStateChange?.(state);
+    onAppStateChange(state);
 
     const flushed = readFlushed();
     expect(flushed.reason).toBe('init');
