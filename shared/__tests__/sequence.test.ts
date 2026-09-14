@@ -1806,7 +1806,9 @@ describe('boundaries over random unreadable patterns across the October 2026 clo
       }
 
       // A day with no readable time never comes on screen before its own 00:00 while the day before it holds
-      // readable rows (R8): that day keeps its place until then
+      // readable rows (R8): the day before keeps its place until then. A day before that is missing from the
+      // sequence is not waited for, by design, so across such a gap nothing is asserted
+      // (a sequence the store builds has no gap)
       if (!ownRows.some(isReadable)) {
         const dayBefore = DAYS[DAYS.indexOf(display) - 1];
         if (prayers.some((prayer) => prayer.belongsToDate === dayBefore && isReadable(prayer))) {

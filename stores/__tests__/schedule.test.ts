@@ -1401,10 +1401,10 @@ describe('on the real builder', () => {
 
     // A sync rebuild runs setSequence then refreshSequence without restarting the countdown, and when the rebuild
     // is identical and skipped, the refresh's write is the only one
-    it.each<[string, string[]]>([
-      ['only filters', OCT_16_TO_20],
-      ['fetches more days', ['2026-10-16', '2026-10-17', '2026-10-18']],
-    ])('moves on at Isha when a refresh that %s lands in the second before it', (_, dates) => {
+    it.each<[string, string[], boolean]>([
+      ['only filters', OCT_16_TO_20, false],
+      ['fetches more days', ['2026-10-16', '2026-10-17', '2026-10-18'], true],
+    ])('moves on at Isha when a refresh that %s lands in the second before it', (_, dates, fetches) => {
       keepSubscribed(standardDisplayDateAtom);
       storeDays(dates);
       launchAt('2026-10-17T18:00:00.000Z');
@@ -1412,6 +1412,9 @@ describe('on the real builder', () => {
 
       moveClockTo('2026-10-17T18:28:59.990Z');
       refreshSequence(STANDARD);
+      // The launch built the 17th to the 19th; only a refresh that fetched adds the 20th, so each case really takes
+      // the branch it is named for
+      expect(Object.keys(rowsHeld(STANDARD)).includes('2026-10-20')).toBe(fetches);
       moveClockTo('2026-10-17T18:29:00.010Z');
       jest.advanceTimersByTime(1000);
 

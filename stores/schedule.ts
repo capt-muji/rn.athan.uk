@@ -174,15 +174,16 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
  * Creates a derived atom that returns the display date
  *
  * The list day resolveDisplayDate picks: the earliest with a readable row still to come, or, until 00:00
- * London at its end, a list day with no readable row at all or the day before one. This can differ from
- * the calendar date due to
- * Islamic day boundaries:
+ * London at its end, a list day with no readable row at all, or the day before one that the sequence holds
+ * (unless a readable row of its own falls after that 00:00, which hands over at itself). This can differ
+ * from the calendar date due to Islamic day boundaries:
  * - Isha at 1am on Jan 19 calendar date belongs to Jan 18 Islamic day
  * - Midnight at 23:17 on Jan 18 calendar date belongs to Jan 19 Islamic day
  *
  * Null when nothing in the sequence is still to come. A day that is not stored is a list of rows with no
- * readable time, so on the evening of 31 December before next year is published this is 1 January, held
- * on screen, rather than null. Consumers already handle null, which matches the no-sequence branch.
+ * readable time, so on the evening of 31 December before next year is published this is 31 December,
+ * waiting until 00:00, and then 1 January, held on screen, rather than null. Consumers already handle
+ * null, which matches the no-sequence branch.
  *
  * @param type Schedule type (Standard or Extra)
  * @returns Derived atom resolving to date string (YYYY-MM-DD) | null
