@@ -130,13 +130,6 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
     return initialReminderType(reminder);
   });
   const [reminderInterval, setReminderInterval] = useState<ReminderInterval>(() => {
-    // The declared ReminderInterval is a cast the store makes over a raw MMKV
-    // number, so it is a claim rather than a guarantee. The old `|| DEFAULT`
-    // caught 0 and undefined but let any other stale number through: it would
-    // paint in the Stepper with both arrows dead, because REMINDER_INTERVALS
-    // .indexOf returns -1 and neither branch moves off it, and it would be
-    // committed straight into the reminder offset. Reachable the day
-    // REMINDER_INTERVALS changes, which is exactly when the cast stops holding.
     const stored = getReminderInterval(sheetState.type, sheetState.index);
     return initialReminderInterval(stored);
   });
