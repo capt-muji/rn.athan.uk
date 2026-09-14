@@ -4728,22 +4728,28 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
   - From the design review: every sequence write settles the cached boundary, the previous row keeps its
     whole list day, and the countdown no longer freezes at 1s after the last readable prayer in storage.
   - 1.27.2 and 1.27.3 answer two more Code Reviewer rounds.
-  - 1.27.9, owner ruling of 2026-09-14: a `--:--` countdown with no overlay open is named `...` instead of a
-    prayer, on both schedules. The overlay still names the prayer it shows. The fallback to the next list day's
-    first row (`getFirstRowAfterDisplay`, 1.27.1) is gone, since no name is needed.
-  - 1.27.8, owner ruling of 2026-09-14: the countdown bar and the "ago" badge measure only from the row just
-    above next on its list, or for a first row the list before's last row (`findPreviousRow`). When that row
-    is `--:--`, both hide. 1.27.0 used the latest readable row before next, which drew a longer bar across a
-    dashed prayer, as before Dhuhr on a day whose only readable prayer is Dhuhr.
   - 1.27.5 was found by the owner, watching the 3T capture live. After the last readable prayer in the data, the
     whole countdown block vanished and the date and list moved up the page. It happened because `useCountdown`
     was ready only while a readable prayer was ahead. It is now ready whenever a list is on screen, so `--:--`
     keeps its place.
+  - 1.27.6 and 1.27.7 tighten the countdown and bar hook tests so a read of the other schedule fails.
+  - 1.27.8, owner ruling of 2026-09-14: the countdown bar and the "ago" badge measure only from the row just
+    above next on its list, or for a first row the list before's last row (`findPreviousRow`). When that row
+    is `--:--`, both hide. 1.27.0 used the latest readable row before next, which drew a longer bar across a
+    dashed prayer, as before Dhuhr on a day whose only readable prayer is Dhuhr. A sweep of the whole 2024
+    London year by the reviewer found no difference on fully readable data.
+  - 1.27.9, owner ruling of 2026-09-14: a `--:--` countdown with no overlay open is named `...` instead of a
+    prayer, on both schedules. The overlay still names the prayer it shows. The fallback to the next list day's
+    first row (`getFirstRowAfterDisplay`, 1.27.1) is gone, since no name is needed.
+  - 1.27.10 and 1.27.11 answer the reviews of those two:
+    - an overlay on one page leaves the other page's `...` alone
+    - the waiting name has a screen-reader label
+    - `findPreviousRow` returns nothing when the row above next is missing rather than taking one further up
   - Verification:
-    - 3,580 tests pass.
+    - 3,595 tests pass.
     - Every changed line in hooks, stores and shared is covered.
-    - All 18 new or changed mutants are killed. Two of them hang the ticker, and the harness counts a timeout
-      as killed.
+    - Every new or changed mutant is killed. Two of them hang the ticker, and the harness counts a timeout as
+      killed.
     - The round-2 screens and videos were captured on the 3T from a mock build
       ([approval page](https://claude.ai/code/artifact/0120e640-db3d-47d5-b456-a94021b86a86)).
 

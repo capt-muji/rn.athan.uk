@@ -1944,6 +1944,12 @@ describe('findPreviousRow', () => {
         'Dhuhr 2026-09-15',
       ],
       [
+        'a row missing from its list gives nothing, not the row above it',
+        [...standard('2026-09-15').filter((prayer) => prayer.english !== 'Asr')],
+        'Magrib 2026-09-15',
+        null,
+      ],
+      [
         'rows after next are ignored, on its list and later ones',
         [...standard('2026-09-14'), ...standard('2026-09-15'), ...standard('2026-09-16')],
         'Sunrise 2026-09-15',
