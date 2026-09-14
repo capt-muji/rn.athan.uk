@@ -888,12 +888,15 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
         : undefined;
     const displayDate = blankNow ?? waiting ?? next.belongsToDate;
     const held = !readableOn(displayDate).some((prayer) => prayer.datetime.getTime() > instant);
-    const previous = readable.filter(
-      (prayer) =>
-        prayer.datetime < next.datetime &&
-        (prayer.belongsToDate === next.belongsToDate ||
-          prayer.belongsToDate === getPreviousDateString(next.belongsToDate))
-    );
+    // The bar measures from one row only: the row just above next on its list, or for a first row the last row of
+    // the list before. When that row has no time, or does not fall before next, there is no previous prayer
+    const position = listPosition(next);
+    const aboveDay = position > 0 ? next.belongsToDate : getPreviousDateString(next.belongsToDate);
+    const above = prayers
+      .filter((prayer) => prayer.belongsToDate === aboveDay && (position === 0 || listPosition(prayer) < position))
+      .sort((a, b) => listPosition(b) - listPosition(a))[0];
+    const previousMs =
+      above && isReadableRow(above) && above.datetime < next.datetime ? above.datetime.getTime() : null;
     const dayRows = prayers
       .filter((prayer) => prayer.belongsToDate === displayDate)
       .sort((a, b) => listPosition(a) - listPosition(b));
@@ -902,7 +905,7 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
       next,
       displayDate,
       boundaryMs: held ? Math.min(next.datetime.getTime(), endOfListDay(displayDate)) : next.datetime.getTime(),
-      previousMs: previous.length > 0 ? latest(previous).datetime.getTime() : null,
+      previousMs,
       rows: dayRows.map((prayer) => ({ name: prayer.english, time: prayer.time ?? '--:--' })),
       activeIndex: dayRows.indexOf(next),
     };

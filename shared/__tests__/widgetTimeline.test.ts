@@ -890,7 +890,7 @@ describe('unreadable rows', () => {
   const labelFor = (fromMs: number, targetMs: number): string =>
     formatCountdownMinutes(Math.max(1, Math.ceil((targetMs - fromMs) / 1000)));
 
-  it('lists an unreadable Asr as --:--, with the pill and the countdown going from Dhuhr straight to Magrib', () => {
+  it('lists an unreadable Asr as --:--, the pill and countdown going from Dhuhr to Magrib with no bar to measure', () => {
     const entries = buildPrayerWidgetTimeline(
       createPrayerDatetime('2026-06-15', '12:00'),
       standard(makeDayWithout('2026-06-15', ['Asr']), makeDayWithout('2026-06-16', ['Asr'])),
@@ -918,9 +918,10 @@ describe('unreadable rows', () => {
       expect(entry.props).toMatchObject({
         nextName: 'Magrib',
         nextEpochMs: magribMs,
-        prevEpochMs: dhuhrMs,
         activeIndex: 4,
       });
+      // The row above Magrib is the unreadable Asr, so there is no previous prayer and the bar starts at the entry
+      expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
       expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), magribMs));
     }
 
@@ -1159,7 +1160,6 @@ describe('unreadable rows', () => {
       expect(entry.props).toMatchObject({
         nextName: 'Suhoor',
         nextEpochMs: suhoorMs,
-        prevEpochMs: duhaMs,
         dateLabel: formatDateLong('2026-06-17'),
         activeIndex: 2,
         prayers: [
@@ -1170,6 +1170,8 @@ describe('unreadable rows', () => {
         ],
       });
       expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), suhoorMs));
+      // The row above Suhoor is the unreadable Last Third, so the bar starts at the entry, not at Duha
+      expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
     }
 
     expect(activeAt(entries, suhoorMs)?.props).toMatchObject({ nextName: 'Duha', activeIndex: 3 });
