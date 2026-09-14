@@ -9,13 +9,35 @@ Scratch material (crawl, PDFs, endpoint responses, scripts, agent notes) lives u
 
 ## 1. What was researched
 
-To be completed as each strand lands. Strands:
+The four steps of the brief, run by the lead in parallel with five Opus research agents. Each
+agent's full notes are in `~/athan-research/notes/`.
 
-1. The whole of moonsighting.com, every page and every PDF (brief step 1).
-2. The Unified Prayer Timetable for London and its delta from the base times (step 2).
-3. The implementations: PrayerTimeAPI and moonsighting.com's `time_json.php`, mawaqit, and
-   islamic-network (step 3).
-4. The packages, `adhan`'s `MoonsightingCommittee` first (step 4).
+1. **moonsighting.com, every page and every document (step 1)**
+   - The live site was link-walked twice, mining links in pages and in the site's JS menus. The
+     first crawl was stopped when it looped on `gregorian-calendar.php?YEAR`. The second pass
+     covered every link from saved pages, plus every page in the Wayback Machine's 5,875-URL index
+     for the domain (`crawl.py`, `crawl2.py`).
+   - Every page is being read in full by an agent (`notes/site.md`).
+   - Every PDF, DOC and PPT the site carries **or once carried** was downloaded, from the live copy
+     where it still exists and otherwise from the Wayback raw capture (58 of 59; `pdfs/manifest.json`).
+     Each is being read in full (`notes/documents.md`).
+   - All 64 archived versions of the old `prayer.html` were fetched, to date each method change.
+2. **The London unified timetable (step 2)**
+   - The founding announcement, `Unified.pdf`, was read.
+   - The UK lineage was traced through Hizbul Ulama's national tables and Miftahi's book.
+   - The London data diff, run without the app's API key, is in `notes/london.md`.
+3. **The implementations (step 3)**
+   - PrayerTimeAPI's source, and both `time_json.php` hosts measured, including the site's own
+     `praytable.php`.
+   - mawaqit, islamic-network, kskhan77 and muballighapp read with `opensrc` (`notes/implementations.md`).
+4. **The packages (step 4)**
+   - `adhan@4.4.6` read with `opensrc` and diffed against the endpoint, every day of 2026, for
+     twelve cities and three methods (`notes/adhan.md`, `adhan/results/`).
+   - An npm-wide search for other implementations (`notes/implementations.md`).
+
+Tools: WebFetch, `curl`, `agent-browser` and `opensrc`. The tinyfish and docs-mcp servers from
+`~/.config/opencode/AGENTS.md` are opencode-only and were not loaded in this Claude Code session.
+Nothing was built, no test suite ran, and no app code changed.
 
 ## 2. Confirmed so far
 
@@ -566,7 +588,40 @@ rather than from the app.
 
 ## 5. Open questions for the owner
 
-To be completed.
+Draft. The London and implementations strands may add to these.
+
+1. **The source for v2.0.** The machine-readable form of moonsighting.com's tables lives on the
+   generator developer's own host, `moonsighting.ahmedbukhamsin.sa`, while `www.moonsighting.com`'s
+   `time_json.php` returns 500. The site's own `praytable.php` works but returns HTML. Is a
+   dependency on one of these acceptable? Or should v2.0 ask Khalid Shaukat or Ahmed Bu-khamsin
+   for a supported endpoint, as the Hizbul Ulama tables once did by email?
+2. **The day-early clock change (section 2.12).** In Sydney, Auckland and Beirut, and probably
+   Egypt, Israel and Palestine, the endpoint's times are an hour off on two days a year. The
+   standing rule is that the app edits nothing the API returns. What should the app do on those
+   days?
+   - show them as given;
+   - treat the day as unreadable (`--:--`);
+   - report it to the source and wait;
+   - or allow a narrow, documented correction.
+3. **Days with some fields missing (section 4.4).** Above about 66°N the endpoint gives Isha with no
+   Maghrib, or Fajr with no Sunrise, on the same day. Duha, Istijaba and the night times are
+   derived from those fields. Should a derived time go to `--:--` whenever its base is missing,
+   even when the prayer beside it is shown?
+4. **Which method a v2.0 user gets.** The endpoint offers 0 (Hanafi, Shafaq General), 1 (Hanafi,
+   Shafaq Abyad), 2 (Shafi'i, Shafaq Ahmar) and 3 (Ja'fari). Shafaq General only appears on the
+   site after August 2011 (section 2.13). Is there a default, or does the user choose?
+5. **London under v2.0.** If London's unified timetable turns out to be the base plus a fixed
+   modification (section 3), a London user on the moonsighting base would see different times
+   from their mosque. There are two ways to handle it:
+   - keep londonprayertimes.com for London and use the base elsewhere;
+   - or apply London's documented delta, which the "edits nothing" rule forbids unless the owner
+     rules it is sourced rather than synthesised.
+6. **The text and the tables disagree above 60°** (sections 2.11, 2.13). how-we.html says to slide
+   to 60°, but the published tables do not. When text and tables disagree, which counts as "the
+   method"?
+7. **`adhan` as a fallback or cross-check.** It matches the endpoint to ±1 minute up to 64°N and
+   diverges beyond. Should it be used at all, as a check on the source, an offline fallback, or
+   not? The "never synthesise a prayer time" rule suggests not as a source of shown times.
 
 ## 6. Next session should
 
