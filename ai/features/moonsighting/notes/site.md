@@ -1,5 +1,7 @@
 # moonsighting.com: full site reading notes
 
+> **Lead note (2026-09-14):** §6.2, §6.3 and §8 date the method-page changes from 21 sampled captures. `notes/method-versions/method-versions.md` reads all 157 and supersedes those dates. For example, the booklet paragraph ran from May 2012 to July 2016, the unconditional slide to 60° dates from June 2015, and the first bot-check capture is from December 2022. RESEARCH-FINDINGS.md section 2.13 carries the corrected dates.
+
 Researcher: site-reading agent, 2026-09-14. This covers moonsighting.com HTML pages from crawl 1 and crawl 2 (both finished), plus the Wayback captures of pages that are 404 live.
 Not covered: the PDF documents, which are in `notes/documents.md`, and the full prayer.html history, which the lead is diffing under `pdfs/wayback/prayer-html/`.
 All quotes are verbatim, typos included. No prayer time is copied anywhere in this file. The Apple MapKit JWTs in `assets/js/apple_map.js` exist for three hostnames; their values are not reproduced.

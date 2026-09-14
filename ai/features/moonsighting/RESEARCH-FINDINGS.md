@@ -473,7 +473,10 @@ how-we.html. The Wayback Machine holds 64 distinct captures, by content digest, 
   capture. This replaces it. Two corrections: the page used **15° before 2003**, and 1/7 of the
   night was **absent from 2005 to 2009**.
 
-Dates are the capture timestamp, followed by the page's own "Updated" line.
+Dates are the capture timestamp, followed by the page's own "Updated" line. The how-we.html,
+faq_pt.html and pray.php rows come from every digest-distinct Wayback capture (49, 80 and 28, 157 of
+157 fetched) with every sequential diff read in full (`notes/method-versions/method-versions.md`).
+The lead re-checked each dated phrase by full-text search across all of them **[lead-verified]**.
 
 | Period | What the page says |
 | --- | --- |
@@ -489,16 +492,25 @@ Dates are the capture timestamp, followed by the page's own "Updated" line.
 | **2011-05-22 (May 3, 2011)** | The band becomes "**between 55° and 65°**". Above 65°: "calculate for nearest lower latitudes where the sun sets and rises". "With curve-fit technique, moonsighting.com came up with a function of latitude and seasons." "London, ENGLAND - Hanbali" is added as an email-request example. |
 | 2011-06-23, 2011-07-27 | Adds the Thanwi, Shami and Usmani citations: "(the UK in the summer months) ... one should stop eating 10 minutes before this time". |
 | **2011-08-27 (Aug 16, 2011)**, the last real capture | Rewritten about two weeks after London adopted the unified timetable on 1 August 2011. **Removed:** the email-request box, all DST and time-zone text, the Hizbul Ulama book and `prayers-uk.pdf` links, and the Blackburn minute figures. **Added:** "Prayer Times Definition We Use" (Maghrib "3 minutes after theoretical sunset"; Dhuhr "5 minutes after Zenith") and "Moonsighting.com uses a combination of **Shafaq Abyad in Winter and Shafaq Ahmer in summer** ... However, if one prefers strictly Shafaq Abyad (Hanafi) or strictly Shafaq Ahmer (Shafi'i, Maaliki, Hanbali), it can be calculated also." Karachi's figure changes from "16° to 18°" to "15° to 16°". **No reason is given for any of it.** |
-| how-we.html 2011-11-24 (Aug 16, 2011) | The first how-we capture carries the same text as prayer.html's last: 1/7 of the night at "55° and 65°", nearest lower latitudes above 65°, "algorithm ... is not yet included in the booklet". |
-| faq_pt.html 2012-12-05 (Aug 29, 2012) | "amazing accuracy", every "matching the Blackburn observations" sentence and the Hizbul Ulama download link are **removed**. The Blackburn figures become "94 to 122 minutes (14.6° to 10.6 degrees)" and "Red Shafaq disappears at 66 to 105 minutes (12° to 9.7°)", replacing 2008's "66 to 100". A new paragraph offers Shaukat's own ~28-page booklet: "**These algorithms are included in the booklet.**" |
-| **how-we.html 2014-02-09 (Oct 30, 2013)** | "**From equator to 30° latitude, for both Fajr & Isha, 18° depression angle is used** ... Between 30° and 55°, the 18° depression angle calculations are compared with the values given by the functions ... For Fajr, the later of the two and for Isha the earlier of the two." 1/7 of the night narrows to "**between 55° and 60°**". Above 60°: "If day length is more than 18 hours or less than 6 hours, then we slide down to 60°" (Hammerfest, Oslo, the Dar al-Ifta 18-hour fatwa). The booklet paragraph appears here too. The Usmani quotation changes "the UK" to "e.g., Northern Europe" and drops the 10-minute caution. |
-| **how-we.html 2016-07-23 (Jul 5, 2016)** | The pure-18° zone goes: "**From equator to 55°**, the 18° depression angle calculations are compared", with an outlier rationale. The Tabayyun redefinition is added ("We originally used Subh-Sadiq as a little bit earlier than Fajr-al-Mustatir ... started using the spread of light horizontally"). The day-length test goes: "at latitudes more than 60°, we slide down to 60°", unconditionally. **The booklet paragraph is removed.** |
-| how-we.html 2018-09-09 (Jul 4, 2017) | Above 60°: "Sab'u Lail **in summer**", plus "In winter, we use research by Moonsighting.com for Subh-Sadiq and Shafaq as functions of latitude and seasons". |
-| faq_pt.html 2017-11-24 (Jul 4, 2017) | The booklet paragraph is removed. Adds "up to 65 degrees latitude the sun rises and sets daily". |
-| how-we.html 2020-01-14 (May 17, 2019) | Adds "**Shafaq General uses Shafaq Abyad in Summer and Shafaq Ahmer in Winter**", the reverse of the sentence before it and of the >60° paragraph, which were not changed. |
-| faq_pt.html 2021-09-24 (Aug 25, 2020) | Adds Aqrabul-Bilaad "by decreasing the latitude by 0.1 degrees keeping the longitude the same ... until a latitude is reached where the sun sets" (Q1.2), a different rule from how-we's slide to 60°. "ISNA never had any official position" becomes "Since 2018 onwards, ISNA recommends using 15°". |
-| how-we.html 2022-05-17 (Sep 28, 2021) | Maghrib text rewritten. First lists the users: "1. https://github.com/PrayerTimeResearch/PrayerTimeAPI 2. https://github.com/islamic-network/prayer-times-moonsighting". |
-| how-we.html 2025-03-04 (Mar 1, 2024), and live | "°" becomes "degrees"; no change of substance. faq_pt is unchanged since Aug 25, 2020. |
+| faq_pt.html 2003-12-17 (Nov 5, 2003) | The fixed-15° answers are removed: "The real answer is that no degrees can be fixed for all latitudes", yet "18 degrees is considered appropriate by most Ulamaa of the world and I agree in general". |
+| faq_pt.html 2004-10-15 (Sep 11, 2004) | "for temperate latitudes (0 to 48.5 degrees latitude) sun at 18 degrees below horizon should be used for both Fajr and Isha", with 1/7 of the night above 48.5°. Blackburn: "between approximately 12 to 16 degrees". |
+| faq_pt.html 2006-02-09 (Nov 16, 2005) | faq_pt's first "function of latitude and seasons", with "the calculations matched observations with amazing accuracy" and "ISNA never had any official position". No capture exists between 2004-10-15 and 2006-02-09. |
+| faq_pt.html 2006-05-14 (May 11, 2006) | Blackburn: "Shafaq disappears at 66 to 100 minutes (9 to 13.6 egrees)" and "94 to 122 minutes (14.5 to 10.6 degrees)", with the Hizbul Ulama book link. |
+| **how-we.html 2011-11-24 and faq_pt.html 2011-11-23 (both Aug 16, 2011)** | how-we's first capture carries prayer.html's last text: 1/7 at "55° and 65°", nearest lower latitudes above 65°, the algorithm "not yet included in the booklet", and Usmani's "(the UK in the summer months)" with the 10-minute caution. **faq_pt's revision of the same date removes "amazing accuracy" and the Hizbul Ulama book link, and changes Blackburn to "66 to 105 minutes (12° to 9.7°)" and "14.6° to 10.6".** There is no faq_pt capture between 2009-08-27 and 2011-11-23. |
+| how-we.html 2012-05-06 (Apr 30, 2012) | The definitions gain Asr "4/7 for Shi'aa; 1 ... 2 for Hanafi", Shi'a Maghrib "17 minutes" and Tabayyan at high latitudes. The Usmani quotation becomes "e.g., Northern Europe", without the 10-minute caution. |
+| **how-we.html 2012-06-24 (May 27, 2012)** | The booklet paragraph arrives: "A new booklet of about 28 pages (8-1/2 x 11), "Fajr & Isha" has been written by Khalid Shaukat ... **These algorithms are included in the booklet.**" faq_pt adds it in its capture of 2012-12-05 (Aug 29, 2012). |
+| how-we.html 2012-08-14 (Jul 29, 2012) | Above 65°: "calculate on the basis of "Aqrabul-Ayyam" or "Aqrabul-Bilad"", replacing "nearest lower latitudes". |
+| **how-we.html 2014-02-09 (Oct 30, 2013)** | "**From equator to 30° latitude, for both Fajr & Isha, 18° depression angle is used** ... Between 30° and 55°, the 18° depression angle calculations are compared with the values given by the functions ... For Fajr, the later of the two and for Isha the earlier of the two." 1/7 of the night narrows to "**between 55° and 60°**". Above 60°: "If day length is more than 18 hours or less than 6 hours, then we slide down to 60°" (Hammerfest, Oslo, the Dar al-Ifta 18-hour fatwa). The booklet "also" gives "A solution for higher latitudes". There is no capture between 2013-03-06 and 2014-02-09. faq_pt's revision of the same date adds "up to 65 degrees latitude the sun rises and sets daily". |
+| **how-we.html 2014-12-15 (Nov 29, 2014)** | The two lines merge into "**From equator to 55°**, the 18° depression angle calculations are compared", and the day-length test stays. **This is booklet §12's exact combination.** It stands in the captures dated Nov 29, 2014, Feb 2, 2015 and May 13, 2015 **[lead-verified]**. |
+| **how-we.html 2015-07-29 (Jun 28, 2015)** | The day-length test goes: "at latitudes more than 60°, we slide down to 60°", unconditionally. The Tabayyun redefinition is added ("We originally used Subh-Sadiq as a little bit earlier than Fajr-al-Mustatir ... started using the spread of light horizontally"). Nov 12, 2015: the 55–60° Fajr candidate "Tabayyun" becomes "Subh Sadiq". |
+| how-we.html 2016-07-23 and faq_pt.html 2016-08-01 (both Jul 5, 2016) | **The booklet paragraph leaves both pages,** together with the hidden "Fajr Isha in UK Booklet URL" comments. |
+| how-we.html 2017-05-12 (Jan 16, 2017) | Above 60°: "Sab'u Lail **in summer**", plus "In winter, we use research by Moonsighting.com for Subh-Sadiq and Shafaq as functions of latitude and seasons". |
+| how-we.html 2019-03-28 (Mar 25, 2019) | Adds "**Shafaq General uses Shafaq Abyad in Summer and Shafaq Ahmer in Winter**", the reverse of the sentence before it and of the >60° paragraph, neither of which changed. |
+| faq_pt.html 2020-09-05 (Aug 25, 2020) | Adds Aqrabul-Bilaad "by decreasing the latitude by 0.1 degrees keeping the longitude the same ... until a latitude is reached where the sun sets" (Q1.2), a different rule from how-we's slide to 60°. "ISNA never had any official position" becomes "Since 2018 onwards, ISNA recommends using 15°". |
+| how-we.html 2021-05-06 (May 4, 2021) | First lists its users: "1. https://github.com/PrayerTimeResearch/PrayerTimeAPI 2. https://github.com/islamic-network/prayer-times-moonsighting". |
+| how-we.html 2022-05-17 (Sep 28, 2021) | Maghrib text rewritten ("Actual sunset can be 3 minutes after theoretical sunset reported in news papers and most Apps"). |
+| how-we.html 2024-03-16 (Mar 1, 2024), and live | "°" becomes "degrees"; no change of substance. faq_pt has not changed since Aug 25, 2020. The latest captures of both equal the live pages. |
+| pray.php, 23 real captures 2011–2026 | The method menu (0 Hanafi Shafaq General, 1 Hanafi Shafaq Abyad, 2 Shafi'i Maaliki Hanbali, 3 Jafriyyah) and the credits never change. "Calculation method by moonsighting.com" appears from 2012-04-19. |
 
 **What prayer.html never says, in any capture:**
 
@@ -506,7 +518,7 @@ Dates are the capture timestamp, followed by the page's own "Updated" line.
   are compared ... For Fajr, the later of the two and for Isha the earlier" does not appear. The
   only earlier-of/later-of rule on prayer.html compares against 1/7 of the night at 55–65/66°.
   adhan and the endpoint both apply the 18° comparison (section 2.11). It is first written on
-  how-we.html's October 2013 text, for 30–55°, and from the equator in the July 2016 text.
+  how-we.html's October 2013 text, for 30–55°, and from the equator from November 2014.
 - It never uses the term **"Shafaq General"**, nor mentions 60°, Oslo, Hammerfest,
   "Aqrabul-Bilad", Dar al-Ifta or the 18-hour fasting limit.
 - It never mentions an **online generator**. It campaigned against online calculators from 2002 to
@@ -531,16 +543,19 @@ Dates are the capture timestamp, followed by the page's own "Updated" line.
   2. 18/15/12 with 1/7 (2004);
   3. nearby latitudes, no 1/7 (2005);
   4. 1/7 at 55–66° (2009–2010);
-  5. 1/7 at 55–65°, then nearest lower latitudes (2011);
-  6. 1/7 at 55–60°, sliding to 60° only when the day is over 18 hours or under 6 (October 2013);
-  7. an unconditional slide to 60° (July 2016);
-  8. the slide in summer only, the functions in winter (July 2017, still live);
-  9. faq_pt's 0.1° Aqrabul-Bilaad iteration (by August 2020, still live beside rule 8).
+  5. 1/7 at 55–65°, then nearest lower latitudes (2011); from July 2012, "Aqrabul-Ayyam" or
+     "Aqrabul-Bilad" above 65°;
+  6. 1/7 at 55–60°, sliding to 60° only when the day is over 18 hours or under 6 (October 2013 to
+     May 2015; booklet §12);
+  7. an unconditional slide to 60° (June 2015);
+  8. the slide in summer only, the functions in winter (January 2017, still live);
+  9. faq_pt's 0.1° Aqrabul-Bilaad iteration (August 2020, still live beside rule 8).
 
   The published tables apply none of the slides (section 2.11), so **the text and the tables
   disagree above 60°**.
 - **London's source material was removed as London adopted.** Hizbul Ulama's book, the UK charts
-  and Blackburn's figures were on the page until July 2011 and gone by 16 August 2011. The same
+  and Blackburn's figures were on the page until July 2011 and gone by 16 August 2011. faq_pt.html's revision of the same date dropped its Hizbul Ulama link and its
+  "amazing accuracy" claim, and changed Blackburn's Shafaq figure from 66–100 to 66–105 minutes. The same
   revision introduced the Abyad-winter/Ahmer-summer Isha. Section 2.14 shows London's 2026 Isha
   follows the Blackburn chart, not that function. **UNVERIFIED:** whether the removal and London's
   adoption are connected. The page is silent.
@@ -1034,14 +1049,17 @@ with a per-page ledger in its §14 and the readers' notes in `notes/site-readnot
   "Do Not Click" joke pages, 6 FCNA calendars, 7 `praytable.php` responses, 2 PDFs and 9 JS files,
   read in full. 434 calendar-year pages, 418 `index.cgi` copies of the home page and 6 query-string
   duplicates, read as full diffs against their base page.
-- **Archive: 50 Wayback captures** of pages now 404, including the method-page versions below.
+- **Archive: 50 Wayback captures** of pages now 404.
+- **Method-page versions:** every digest-distinct capture of how-we.html (49), faq_pt.html (80) and
+  pray.php (28), 157 of 157 fetched, with every sequential diff read in full by a second agent
+  (`notes/method-versions/`). Its dates are in section 2.13.
 - **Hidden text:** the HTML comments and inline scripts of all 1,367 raw pages (523 distinct blocks),
   and every alt, title, value and meta text (626 distinct).
 - **Not reproduced:** Apple MapKit tokens, Google Maps keys, and members' and advertisers' e-mails and
   phone numbers. Two phone numbers in the readers' notes are redacted in the branch copy.
 - **Lead checks [lead-verified]:**
-  - every dated method-page claim in section 2.13, by full-text search across 9 how-we.html and 7
-    faq_pt.html captures;
+  - every dated method-page claim in section 2.13, by full-text search across all 49 how-we.html
+    and 80 faq_pt.html captures;
   - the MapKit token expiry, decoded from `assets/js/apple_map.js`;
   - the last report dates;
   - the paid-link comments;
@@ -1063,27 +1081,29 @@ with a per-page ledger in its §14 and the readers' notes in `notes/site-readnot
   Question F10": Shaukat's own notes on where Miftahi's book was linked. No comment or script holds
   method text.
 
-**The booklet with the formula was offered on the site, 2012 to 2017.**
+**The booklet with the formula was offered on the site, 2012 to 2016.**
 
-- **The offer.** faq_pt.html (capture 2012-12-05, "Updated August 29, 2012") and how-we.html (capture
-  2014-02-09, "Updated October 30, 2013"): "A booklet of about 28 pages (8-1/2 x 11), "Fajr & Isha" has
-  been written by Khalid Shaukat of moonsighting.com ... These algorithms are included in the booklet.
-  ... The booklet is not yet published, but a hard (xeroxed) copy of the manuscript can be sent by
-  postage mail (NOT by e-mail) upon request."
-- **Before it.** The 2010 French page and the August 2011 how-we say the algorithm is "not yet
-  included" in the older ~46-page "When to Pray Fajr & Isha".
-- **Its removal.** It is gone from how-we.html by the July 2016 capture, and from faq_pt.html by the
-  November 2017 capture.
+- **The offer.** how-we.html from the revision dated May 27, 2012, and faq_pt.html from August 29, 2012:
+  "A new booklet of about 28 pages (8-1/2 x 11), "Fajr & Isha" has been written by Khalid Shaukat of
+  moonsighting.com ... These algorithms are included in the booklet. ... This booklet is not yet
+  published". The October 2013 text adds "A solution for higher latitudes where sun does not set in
+  summer or does not rise in winter is also provided in this booklet."
+- **Before it.** The 2010 French page, and how-we.html up to April 30, 2012, say the algorithm is "not
+  yet included" in the older ~46-page "When to Pray Fajr & Isha".
+- **Its removal.** From early 2015 the sentence reads "... included in the booklet", with a copy sent
+  "by postage mail, for cost of xeroxing and mailing". The paragraph, and the hidden "Fajr Isha in UK
+  Booklet URL" comments, leave both pages in the revision dated July 5, 2016.
 - **The booklet in section 2.16** ("FAJR AND ISHA", September 2015, 27 pages, §11 coefficients) fits
   the description, and its date falls inside the window. **UNVERIFIED:** that it is the same
   manuscript. The site never links a file, and neither the crawl nor the Wayback index holds one.
-- **An inference, not stated anywhere: the booklet's two high-latitude texts match two different
-  how-we versions.**
-  - §10 (55–65°, then nearest lower latitudes) is the August 2011 wording.
-  - §12 pairs the "From equator to 55°" comparison, first captured in July 2016, with the 18-hour and
-    6-hour day-length test, last captured in the October 2013 text.
-  - No how-we capture between 2014-02-09 and 2016-07-23 was fetched, so whether §12 ever stood on
-    the page is open (section 3.3).
+- **The booklet's two high-latitude texts match two dated how-we versions [lead-verified].**
+  - §10 (55–65°, then nearest lower latitudes) is the August 2011 wording. It is on the page until at
+    least the capture dated August 29, 2012.
+  - §12 pairs the "From equator to 55°" comparison with the 18-hour and 6-hour day-length test. That
+    exact pairing stands on how-we.html in the captures dated November 29, 2014, February 2, 2015 and
+    May 13, 2015, and is gone by June 28, 2015.
+  - So the booklet dated September 2015 carries a 2011–2012 text and a late-2014-to-mid-2015 text, and
+    its §12 had already been replaced on the site by that date. Which was drafted first is unknown.
 
 **The site has been dormant since spring 2024.**
 
@@ -1097,7 +1117,8 @@ with a per-page ledger in its §14 and the readers' notes in `notes/site-readnot
 - **The calculator's map.** The Apple MapKit tokens for `www.moonsighting.com` and `moonsighting.com`
   expired on 2023-08-01 (issued 2022-08-01), so the live map, and the flow that requests the table,
   may fail.
-- **Bot protection.** The 2025 `pray.php` captures are Cloudflare verification pages.
+- **Bot protection.** Since 7 December 2022 the Wayback Machine has intermittently captured a Cloudflare
+  "One moment, please..." page in place of how-we.html and pray.php (faq_pt.html from September 2024).
 - **What this means for v2.0.** Nothing new should be expected from the site, and any dependence on it
   is on an unmaintained service (section 5, question 1).
 
@@ -1105,7 +1126,8 @@ with a per-page ledger in its §14 and the readers' notes in `notes/site-readnot
 
 - **Method values.** `pray.php`'s method values are 0 "Hanafi (Shafaq General)", 1 "Hanafi (Shafaq
   Abyad)", 2 "Shafi'i, Maaliki, Hanbali" and 3 "Jafriyyah (Ithna-Ashari)". The menu is the same in
-  every capture since 2011-10-17, with Shafaq General first. These are the `method` values the
+  every capture since 2011-10-17, with Shafaq General first and the default wherever the captured page
+  shows one. From March 2019 the default is set in script files that were not fetched (**UNVERIFIED**). These are the `method` values the
   endpoint takes (section 2.4).
 - **Credits.** The footer reads "Calculation method by moonsighting.com / Developed by Ahmed Bu-khamsin /
   Original code by PrayTimes.org". The 2011–2017 versions took time zones from a geonames account
@@ -1131,8 +1153,8 @@ with a per-page ledger in its §14 and the readers' notes in `notes/site-readnot
 - **Scope.** None of this touches prayer times, but it bears on how far any moonsighting.com table can
   be taken on trust.
 
-**Step 1 is complete.** Every document (section 2.17) and every site page (this section) is read.
-The one gap is the method pages' intermediate archive versions, listed in section 3.5.
+**Step 1 is complete.** Every document (section 2.17), every site page (this section) and every
+archived version of the three method pages (section 2.13) is read.
 
 ## 3. Uncertain or still being established
 
@@ -1168,21 +1190,21 @@ and every site page (section 2.18).
 - **The coefficients: resolved.** Shaukat's booklet §11 (September 2015) publishes them, and they equal
   adhan's (section 2.16).
 - **Shafaq width in England:** faq_pt 2.10 says "Red Shafaq disappears at 66 to 105 minutes"; the
-  2006 page, the 2008 faq_pt and Miftahi's book say 66 to 100. faq_pt changed between its November
-  2008 and December 2012 captures (section 2.13), with no reason given. Which figure is right is
+  2006 page, the 2008 faq_pt and Miftahi's book say 66 to 100. faq_pt changed in its revision dated
+  16 August 2011 (section 2.13), with no reason given. Which figure is right is
   unresolved.
 - **The rule above 55°** exists in at least nine written versions (section 2.13), five of them
   from the site's current era:
-  - booklet §10: 55–65°, then nearest lower latitudes (the August 2011 how-we wording);
+  - booklet §10: 55–65°, then nearest lower latitudes (how-we.html, August 2011 to at least August 2012);
   - booklet §12: the 0–55° comparison, 55–60°, and a slide to 60° only when the day is over 18
-    hours or under 6;
+    hours or under 6 (how-we.html, November 2014 to May 2015);
   - how-we.html October 2013: the same test, with pure 18° up to 30°;
-  - how-we.html since July 2017: the slide in summer, the functions in winter;
-  - faq_pt.html since 2020: Aqrabul-Bilaad in 0.1° steps until the sun sets.
+  - how-we.html since January 2017: the slide in summer, the functions in winter;
+  - faq_pt.html since August 2020: Aqrabul-Bilaad in 0.1° steps until the sun sets.
 
   Plus the published tables, which apply 1/7 at the true latitude with no slide. The owner has to rule
   which counts as the method (section 5).
-- **Is the 2015 booklet the manuscript the site offered from 2012 to 2017?** The description fits
+- **Is the 2015 booklet the manuscript the site offered from 2012 to 2016?** The description fits
   (section 2.18); no link or copy on the site confirms it.
 - **Documents:** all read, including the Urdu `articles/prayers-uk.pdf` and the two PPTs (section
   2.17). None publishes the formula. The Shaukat foreword the Urdu book mentions is not in any
@@ -1201,11 +1223,11 @@ and every site page (section 2.18).
 - **Documents: complete.** 59 of 59, with a page ledger (section 2.17).
 - **Site pages: complete.** 1,186 of 1,186 live paths, 50 archived captures, and all hidden comments,
   scripts and attribute text, each in full or as a full diff (section 2.18).
-- **Gap: the method pages' intermediate archive versions.** The Wayback index holds 58 digest-distinct
-  captures of how-we.html, 79 of faq_pt.html and 34 of pray.php. 9, 6 and 6 were fetched, chosen to
-  span each era. Adjacent captures that proved identical bound each change date, but the exact
-  dates, and whether booklet §12's wording ever stood on how-we.html, need the rest fetched and every
-  sequential diff read.
+- **Method-page versions: complete.** Every digest-distinct Wayback capture of how-we.html (49),
+  faq_pt.html (80) and pray.php (28), 157 of 157, with every sequential diff read in full
+  (`notes/method-versions/`). Section 2.13's dates come from it. They are bounded by the captures
+  that exist: none for how-we.html between March 2013 and February 2014, and none for faq_pt.html
+  between October 2004 and February 2006 or between August 2009 and November 2011.
 
 ## 4. How each finding would affect the app
 
@@ -1356,7 +1378,7 @@ Draft. The London and implementations strands may add to these.
    even when the prayer beside it is shown?
 4. **Which method a v2.0 user gets.** The endpoint offers 0 (Hanafi, Shafaq General), 1 (Hanafi,
    Shafaq Abyad), 2 (Shafi'i, Shafaq Ahmar) and 3 (Ja'fari). Shafaq General only appears on the
-   site after August 2011, and since May 2019 how-we.html describes it in two opposite ways (sections
+   site after August 2011, and since March 2019 how-we.html describes it in two opposite ways (sections
    2.13, 2.18). The site's own calculator lists it first. Is there a default, or does the user choose?
 5. **London under v2.0.** London's unified timetable is not the moonsighting.com base plus an
    offset. Its Fajr and Isha come from the Blackburn chart with 21 London edits, and its sun times
@@ -1386,10 +1408,7 @@ Draft. The London and implementations strands may add to these.
 
 ## 6. Next session should
 
-1. **Date every method-page change exactly.** Step 1 is complete (sections 2.17, 2.18). Fetch the
-   remaining digest-distinct Wayback captures of how-we.html (49), faq_pt.html (73) and pray.php (28),
-   read every sequential diff in full, and pin each change in section 2.13. In particular, settle
-   whether booklet §12's wording ever stood on how-we.html between February 2014 and July 2016.
+1. **Step 1 is closed** (sections 2.13, 2.17 and 2.18). Nothing remains to read there.
 2. **Close what remains of London** (section 3.1):
    - reproduce Asr independently of the London agent's code;
    - look for HMNAO's own values for the boundary days (respect the service's personal-use terms);
@@ -1419,7 +1438,7 @@ Draft. The London and implementations strands may add to these.
 | London Prayer Times home and API docs | <https://www.londonprayertimes.com/>, <https://www.londonprayertimes.com/api> | 2026-09-14 |
 | moonsighting.com JSON endpoint and fallback | <https://www.moonsighting.com/time_json.php>, <https://moonsighting.ahmedbukhamsin.sa/time_json.php> | 2026-09-14 |
 | moonsighting.com, every live page | 1,186 unique HTTP-200 paths, `~/athan-research/crawl.log`, `crawl2.log`; ledger `notes/site.md` §14 | 2026-09-14 |
-| how-we.html and faq_pt.html archived versions | Wayback `20111124161453`, `20140209182423`, `20160723193950`, `20180909185334`, `20200114093914`, `20220517141430`, `20240213100829`, `20250304071531`, `20260502180530` (how-we); `20030629145054`, `20081119135740`, `20121205081238`, `20171124133208`, `20210924153617`, `20250311175424` (faq_pt) | 2026-09-14 |
+| how-we.html, faq_pt.html and pray.php, every archived version | 157 digest-distinct Wayback captures, with digests, in `notes/method-versions/ledger.tsv` | 2026-09-14 |
 | moonsighting.com method pages | <https://www.moonsighting.com/how-we.html> (updated 2024-03-01), <https://www.moonsighting.com/faq_pt.html> (updated 2020-08-25) | 2026-09-14 |
 | moonsighting.com table generator | <https://www.moonsighting.com/pray.php>, `assets/js/apple_map.js`, <https://www.moonsighting.com/praytable.php> | 2026-09-14 |
 | Old prayer-times page, 64 captures | `http://www.moonsighting.com/prayer.html`, Wayback 19990221195144 to 20251016224039 (list in `~/athan-research/pdfs/wayback/prayer-html/captures.txt`) | 2026-09-14 |

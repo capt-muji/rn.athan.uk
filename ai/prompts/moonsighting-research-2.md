@@ -20,18 +20,16 @@ Research only. Nothing on that branch is merged or pushed without the owner's go
 - **Every document the site carried is read** (section 2.17). Shaukat computed Hizbul Ulama's
   2007 UK directory; its tables apply no 1/7-of-the-night rule and carry city errors.
 - **Every site page is read** (section 2.18): 1,186 of 1,186 live paths and 50 archived captures.
-  No page publishes the formula or mentions London's timetable. The site offered Shaukat's booklet,
-  "These algorithms are included in the booklet", from 2012 to 2017. The site has been dormant since
-  spring 2024.
-- **Unfinished:** the method pages' intermediate archive versions (section 3.5) and the small
-  remainders listed in sections 3.1 to 3.4. Notes are in `ai/features/moonsighting/notes/`.
+  No page publishes the formula or mentions London's timetable. From May 2012 to July 2016 the site
+  offered a booklet by post, saying "These algorithms are included in the booklet". The site has been
+  dormant since spring 2024.
+- **Every archived version of the method pages is read** (157 captures), and section 2.13 is dated
+  from them. Booklet §12's wording stood on how-we.html from November 2014 to May 2015.
+- **Unfinished:** the small remainders listed in sections 3.1 to 3.4. Notes are in `ai/features/moonsighting/notes/`.
 
 ## Do, in order
 
-1. **Method-page dates.** If section 3.5 still lists the gap, fetch the remaining digest-distinct
-   Wayback captures of how-we.html, faq_pt.html and pray.php (CDX lists in
-   `~/athan-research/site-reading/wayback/cdx__*.txt`, if that still exists; otherwise re-query the
-   CDX API). Read every sequential diff in full, and pin each change in section 2.13.
+1. **Step 1 is closed** (section 3.5). Go straight to the remainders.
 2. **Remainders** (sections 3.1 to 3.4):
    - reproduce London's Asr independently;
    - measure the day-early clock change in Palestine;
