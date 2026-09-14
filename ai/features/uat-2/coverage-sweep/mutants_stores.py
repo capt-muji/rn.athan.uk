@@ -105,6 +105,11 @@ mutate.MUTATIONS[:] = [
 
     # --- stores/notifications.ts: an off prayer whose cancel is refused ---
     ('stores/notifications.ts', '  await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);\n  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);', '  try {\n    await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);\n  } finally {\n    Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);\n  }', 'records dropped when the cancel is refused'),
+
+    # --- stores/notifications.ts: what a single commit files, found by the independent review ---
+    ('stores/notifications.ts', '_addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, reminderAlert)', '_addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, atTimeAlert)', "reminder armed with the at-time alert's type"),
+    ('stores/notifications.ts', '_addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, atTimeAlert)', '_addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, reminderAlert)', "at-time alert armed with the reminder's type"),
+    ('stores/notifications.ts', '_addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, atTimeAlert)', '_addMultipleScheduleNotificationsForPrayer(scheduleType, 0, englishName, arabicName, atTimeAlert)', 'at-time records filed under index 0'),
 ]
 
 if __name__ == '__main__':
