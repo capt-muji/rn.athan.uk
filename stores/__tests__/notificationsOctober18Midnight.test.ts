@@ -60,13 +60,13 @@ describe("18 October 2026's two Midnight alarms", () => {
 
   // List 18's reminder is due at 22:55:00Z, and a reminder less than 30 seconds ahead is not armed
   it.each([
-    { now: '2026-10-17T22:54:29.000Z', ahead: '31 s', reminderArmed: true },
-    { now: '2026-10-17T22:54:30.000Z', ahead: '30 s', reminderArmed: true },
-    { now: '2026-10-17T22:54:31.000Z', ahead: '29 s', reminderArmed: false },
-    { now: '2026-10-17T22:55:00.000Z', ahead: '0 s', reminderArmed: false },
-    { now: '2026-10-17T22:59:45.000Z', ahead: '-285 s', reminderArmed: false },
+    { now: '2026-10-17T22:54:29.000Z', offset: '31 s before', reminderArmed: true },
+    { now: '2026-10-17T22:54:30.000Z', offset: '30 s before', reminderArmed: true },
+    { now: '2026-10-17T22:54:31.000Z', offset: '29 s before', reminderArmed: false },
+    { now: '2026-10-17T22:55:00.000Z', offset: 'exactly at', reminderArmed: false },
+    { now: '2026-10-17T22:59:45.000Z', offset: '285 s after', reminderArmed: false },
   ])(
-    'at $now, $ahead before list 18’s reminder, still arms both Midnights (that reminder armed: $reminderArmed)',
+    'at $now, $offset list 18’s reminder, still arms both Midnights (that reminder armed: $reminderArmed)',
     async ({ now, reminderArmed }) => {
       jest.setSystemTime(new Date(now));
 
