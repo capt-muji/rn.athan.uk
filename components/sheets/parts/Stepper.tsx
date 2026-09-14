@@ -1,8 +1,10 @@
 import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { RADIUS, REMINDER_INTERVALS, SPACING, TEXT } from '@/shared/constants';
+import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import type { ReminderInterval } from '@/shared/types';
+
+import { stepReminderInterval } from './reminderStep';
 
 // =============================================================================
 // TYPES
@@ -33,9 +35,8 @@ export interface StepperProps {
  * />
  */
 export default function Stepper({ value, onDecrement, onIncrement, unit = 'min', disabled }: StepperProps) {
-  const currentIndex = REMINDER_INTERVALS.indexOf(value);
-  const canDecrement = !disabled && currentIndex > 0;
-  const canIncrement = !disabled && currentIndex < REMINDER_INTERVALS.length - 1;
+  const canDecrement = !disabled && stepReminderInterval(value, -1) !== null;
+  const canIncrement = !disabled && stepReminderInterval(value, 1) !== null;
 
   return (
     <View style={[styles.container, disabled && styles.disabled]}>

@@ -1,0 +1,71 @@
+/**
+ * The alert sheet's draft rules, pure so they can be tested without a renderer (same split as
+ * components/countdown/tipGeometry.ts).
+ *
+ * The draft is what closing the sheet commits. A stored value read wrongly into it does not stay on screen alone:
+ * the next change the user makes commits the misread value alongside their own.
+ */
+
+import { DEFAULT_REMINDER_INTERVAL, validateReminderInterval } from '@/shared/constants';
+import { AlertType, type ReminderInterval } from '@/shared/types';
+
+/**
+ * The sound the reminder toggle turns on with. An Off reminder still needs one, and silent is the choice that
+ * cannot surprise anyone with a sound they never picked.
+ *
+ * @param storedReminder The reminder alert saved for the prayer
+ * @returns The reminder sound the sheet opens on
+ */
+export const initialReminderType = (storedReminder: AlertType): AlertType.Silent | AlertType.Sound =>
+  storedReminder === AlertType.Sound ? AlertType.Sound : AlertType.Silent;
+
+/**
+ * The store's value is a cast over a raw MMKV number, so anything off the list is replaced before the commit can
+ * save an offset that has no reminder sound of its own.
+ *
+ * @param storedInterval The interval saved for the prayer, as MMKV holds it
+ * @returns The interval the sheet opens on
+ */
+export const initialReminderInterval = (storedInterval: number): ReminderInterval =>
+  validateReminderInterval(storedInterval) ? (storedInterval as ReminderInterval) : DEFAULT_REMINDER_INTERVAL;
+
+export interface AthanSelection {
+  /** The athan type just tapped */
+  selected: AlertType;
+  /** The athan type the draft holds */
+  atTimeAlert: AlertType;
+}
+
+/**
+ * Only the move from Off to an athan that can fire needs permission. Every other move either keeps an athan that
+ * already needed it or turns the athan off. Named fields, because both are alert types and swapped positions would
+ * still compile.
+ *
+ * @returns Whether to ask before moving the selection
+ */
+export const selectionNeedsPermission = ({ selected, atTimeAlert }: AthanSelection): boolean =>
+  selected !== AlertType.Off && atTimeAlert === AlertType.Off;
+
+export interface ReminderToggle {
+  /** Whether the athan is on */
+  canEnableReminder: boolean;
+  /** Whether the reminder is on */
+  isReminderOn: boolean;
+  /** The reminder sound last chosen */
+  reminderType: AlertType.Silent | AlertType.Sound;
+}
+
+/**
+ * A reminder without an athan never fires, so the toggle is locked while the athan is Off. Switching the reminder
+ * back on restores the sound last chosen for it. Named fields, because the two flags would still compile swapped.
+ *
+ * @returns The reminder after the press, or null when the press changes nothing
+ */
+export const toggledReminder = ({
+  canEnableReminder,
+  isReminderOn,
+  reminderType,
+}: ReminderToggle): AlertType | null => {
+  if (!canEnableReminder) return null;
+  return isReminderOn ? AlertType.Off : reminderType;
+};
