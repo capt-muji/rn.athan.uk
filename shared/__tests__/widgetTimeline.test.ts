@@ -12,6 +12,8 @@
 
 import { addDays } from 'date-fns';
 
+import { PRAYERS_ENGLISH } from '@/shared/constants';
+import { isReadable } from '@/shared/sequence';
 import {
   createPrayerDatetime,
   formatCountdownMinutes,
@@ -19,7 +21,13 @@ import {
   formatDateShort,
   formatHijriDateLong,
 } from '@/shared/time';
-import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
+import {
+  type Prayer,
+  type PrayerSequence,
+  type ReadablePrayer,
+  ScheduleType,
+  type UnreadablePrayer,
+} from '@/shared/types';
 import {
   buildPrayerWidgetTimeline,
   COUNTDOWN_STEP_MS,
@@ -52,7 +60,7 @@ const makePrayer = (
   arabic: string,
   belongsToDate?: string,
   type: ScheduleType = ScheduleType.Standard
-): Prayer => {
+): ReadablePrayer => {
   const datetime = createPrayerDatetime(date, time);
   return {
     type,
@@ -108,8 +116,8 @@ const EXTRA_TIMES = {
 const FRIDAY = '2026-06-19';
 
 /** Builds day X's extras prayers exactly as createPrayerSequence(Extra) would */
-const makeExtrasDay = (rawDate: string, isFriday: boolean): Prayer[] => {
-  const prayers: Prayer[] = [];
+const makeExtrasDay = (rawDate: string, isFriday: boolean): ReadablePrayer[] => {
+  const prayers: ReadablePrayer[] = [];
   const previousDay = formatDateShort(addDays(createPrayerDatetime(rawDate, '12:00'), -1));
 
   prayers.push(makePrayer(previousDay, EXTRA_TIMES.midnight, 'Midnight', 'منتصف الليل', rawDate, ScheduleType.Extra));
@@ -127,7 +135,7 @@ const makeExtrasDay = (rawDate: string, isFriday: boolean): Prayer[] => {
 /** Extras sequence spanning 2026-06-15 → 2026-06-20 (Friday 19 included) */
 const makeExtrasSequence = (): PrayerSequence => {
   const baseDay = createPrayerDatetime('2026-06-15', '12:00');
-  const prayers: Prayer[] = [];
+  const prayers: ReadablePrayer[] = [];
 
   for (let i = 0; i < 6; i++) {
     const day = addDays(baseDay, i);
@@ -180,7 +188,7 @@ describe('buildPrayerWidgetTimeline', () => {
     const sequence = makeSequence();
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
     const horizonMs = NOW.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
-    const boundaryMs = new Set(sequence.prayers.map((prayer) => prayer.datetime.getTime()));
+    const boundaryMs = new Set(sequence.prayers.filter(isReadable).map((prayer) => prayer.datetime.getTime()));
 
     for (const entry of entries) {
       if (entry.date.getTime() <= horizonMs) continue;
@@ -831,7 +839,7 @@ describe('volume and payload invariants', () => {
     // 16-day extras span (2026-06-14 → 2026-06-29) containing the Fridays
     // 2026-06-19 and 2026-06-26 — 4 rows per day, 5 on Fridays
     const baseDay = createPrayerDatetime('2026-06-14', '12:00');
-    const prayers: Prayer[] = [];
+    const prayers: ReadablePrayer[] = [];
     for (let i = 0; i < SPAN_DAYS; i++) {
       const day = addDays(baseDay, i);
       const dateString = formatDateShort(day);
@@ -848,5 +856,371 @@ describe('volume and payload invariants', () => {
 
     const payloadSize = JSON.stringify(entries).length;
     expect(payloadSize).toBeLessThan(200_000);
+  });
+});
+
+// =============================================================================
+// UNREADABLE ROWS
+//
+// A row the provider gave no readable time for has no moment, so the widget
+// follows the app's own rules for it (shared/sequence.ts): it is never a
+// boundary and never counted down to, it is drawn as --:--, and a list day
+// with no readable row stays on screen until 00:00 London
+// (ai/features/uat-2/DASHES-DESIGN.md §8).
+// =============================================================================
+
+describe('unreadable rows', () => {
+  const DASH = '--:--';
+  const at = (date: string, time: string): number => createPrayerDatetime(date, time).getTime();
+
+  /** The row as a provider fault leaves it: still on its list, with no time */
+  const unreadable = (prayer: Prayer): UnreadablePrayer => ({ ...prayer, datetime: null, time: null });
+
+  /** makeDay with the named rows unreadable */
+  const makeDayWithout = (date: string, names: readonly string[]): Prayer[] =>
+    makeDay(date).map((prayer) => (names.includes(prayer.english) ? unreadable(prayer) : prayer));
+
+  const standard = (...days: Prayer[][]): PrayerSequence => ({ type: ScheduleType.Standard, prayers: days.flat() });
+
+  /** The entry WidgetKit renders at `instant`: the last one dated at or before it */
+  const activeAt = <T extends { date: Date }>(entries: T[], instant: number): T | undefined =>
+    entries.filter((entry) => entry.date.getTime() <= instant).at(-1);
+
+  /** What a countdown to `targetMs` reads at `fromMs`, worked out independently of the builder */
+  const labelFor = (fromMs: number, targetMs: number): string =>
+    formatCountdownMinutes(Math.max(1, Math.ceil((targetMs - fromMs) / 1000)));
+
+  it('lists an unreadable Asr as --:--, the pill and countdown going from Dhuhr to Magrib with no bar to measure', () => {
+    const entries = buildPrayerWidgetTimeline(
+      createPrayerDatetime('2026-06-15', '12:00'),
+      standard(makeDayWithout('2026-06-15', ['Asr']), makeDayWithout('2026-06-16', ['Asr'])),
+      SETTINGS,
+      'light'
+    );
+    const dhuhrMs = at('2026-06-15', '13:10');
+    const magribMs = at('2026-06-15', '21:15');
+
+    expect(entries[0].props).toMatchObject({ nextName: 'Dhuhr', activeIndex: 2 });
+    expect(entries[0].props.prayers).toEqual([
+      { name: 'Fajr', time: '03:30' },
+      { name: 'Sunrise', time: '05:20' },
+      { name: 'Dhuhr', time: '13:10' },
+      { name: 'Asr', time: DASH },
+      { name: 'Magrib', time: '21:15' },
+      { name: 'Isha', time: '22:45' },
+    ]);
+
+    const afternoon = entries.filter((entry) => entry.date.getTime() >= dhuhrMs && entry.date.getTime() < magribMs);
+    expect(afternoon[0].date.getTime()).toBe(dhuhrMs);
+    // Eight hours of five-minute steps, so the loop below cannot pass on a handful of entries
+    expect(afternoon.length).toBeGreaterThan(90);
+    for (const entry of afternoon) {
+      expect(entry.props).toMatchObject({
+        nextName: 'Magrib',
+        nextEpochMs: magribMs,
+        activeIndex: 4,
+      });
+      // The row above Magrib is the unreadable Asr, so there is no previous prayer and the bar starts at the entry
+      expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
+      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), magribMs));
+    }
+
+    expect(entries.some((entry) => entry.props.nextName === 'Asr')).toBe(false);
+  });
+
+  it('gives an unreadable Asr no boundary: beyond the stepped horizon nothing flips at its clock reading', () => {
+    const pushAt = createPrayerDatetime('2026-06-15', '12:00');
+    const asrReadingMs = at('2026-06-16', '17:45');
+    const flipsAtAsrReading = (sequence: PrayerSequence): boolean =>
+      buildPrayerWidgetTimeline(pushAt, sequence, SETTINGS, 'light').some(
+        (entry) => entry.date.getTime() === asrReadingMs
+      );
+
+    // The same day with Asr readable does flip there, so the absence below is the rule and not the fixture
+    expect(flipsAtAsrReading(standard(makeDay('2026-06-15'), makeDay('2026-06-16')))).toBe(true);
+    expect(flipsAtAsrReading(standard(makeDay('2026-06-15'), makeDayWithout('2026-06-16', ['Asr'])))).toBe(false);
+  });
+
+  it('keeps the list before after its Isha until 00:00, then holds a day with no readable row until its own 00:00', () => {
+    const entries = buildPrayerWidgetTimeline(
+      createPrayerDatetime('2026-06-15', '20:00'),
+      standard(makeDay('2026-06-15'), makeDayWithout('2026-06-16', PRAYERS_ENGLISH), makeDay('2026-06-17')),
+      SETTINGS,
+      'light'
+    );
+    const ishaMs = at('2026-06-15', '22:45');
+    const dayStartMs = at('2026-06-16', '00:00');
+    const holdEndMs = at('2026-06-17', '00:00');
+    const fajrMs = at('2026-06-17', '03:30');
+
+    // The 15th's own rows stay listed with no active row between its Isha and its 00:00 (R8)
+    const waiting = entries.filter((entry) => entry.date.getTime() >= ishaMs && entry.date.getTime() < dayStartMs);
+    expect(waiting[0].date.getTime()).toBe(ishaMs);
+    for (const entry of waiting) {
+      expect(entry.props).toMatchObject({
+        nextName: 'Fajr',
+        nextEpochMs: fajrMs,
+        dateLabel: formatDateLong('2026-06-17'),
+        activeIndex: -1,
+      });
+      expect(entry.props.prayers?.map((row) => row.time)).toEqual([
+        '03:30',
+        '05:20',
+        '13:10',
+        '17:45',
+        '21:15',
+        '22:45',
+      ]);
+      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), fajrMs));
+    }
+
+    const held = entries.filter((entry) => entry.date.getTime() >= dayStartMs && entry.date.getTime() < holdEndMs);
+    expect(held[0].date.getTime()).toBe(dayStartMs);
+    for (const entry of held) {
+      expect(entry.props).toMatchObject({
+        nextName: 'Fajr',
+        nextTime: '03:30',
+        nextEpochMs: fajrMs,
+        // Fajr's own day: a list with no active row cannot be drawn, so the layouts show Fajr's name and
+        // time instead, and a real time must not sit under a day that has none
+        dateLabel: formatDateLong('2026-06-17'),
+        prayers: PRAYERS_ENGLISH.map((name) => ({ name, time: DASH })),
+        activeIndex: -1,
+      });
+      // Neither Fajr's list nor the list before it has a readable row ahead of Fajr, so there is no
+      // previous prayer and the bar starts at the entry itself
+      expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
+    }
+
+    // Past the stepped horizon exactly one entry is stranded and goes blank, as in any long segment
+    const labelled = held.filter((entry) => entry.props.countdownLabel !== '');
+    expect(held.length - labelled.length).toBe(1);
+    for (const entry of labelled) {
+      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), fajrMs));
+    }
+
+    expect(activeAt(entries, holdEndMs - 1000)?.props.prayers?.every((row) => row.time === DASH)).toBe(true);
+    const rollover = entries.find((entry) => entry.date.getTime() === holdEndMs);
+    expect(rollover?.props).toMatchObject({
+      nextName: 'Fajr',
+      nextEpochMs: fajrMs,
+      dateLabel: formatDateLong('2026-06-17'),
+      activeIndex: 0,
+    });
+    expect(rollover?.props.prayers?.map((row) => row.time)).toEqual([
+      '03:30',
+      '05:20',
+      '13:10',
+      '17:45',
+      '21:15',
+      '22:45',
+    ]);
+  });
+
+  it('starts inside a held day with no active row, and backdates the first entry before an imminent 00:00', () => {
+    const sequence = standard(
+      makeDay('2026-06-15'),
+      makeDayWithout('2026-06-16', PRAYERS_ENGLISH),
+      makeDay('2026-06-17')
+    );
+    const holdEndMs = at('2026-06-17', '00:00');
+    const fajrMs = at('2026-06-17', '03:30');
+
+    const afternoon = buildPrayerWidgetTimeline(
+      createPrayerDatetime('2026-06-16', '14:00'),
+      sequence,
+      SETTINGS,
+      'light'
+    );
+    expect(afternoon[0].date.getTime()).toBe(at('2026-06-16', '14:00'));
+    expect(afternoon[0].props).toMatchObject({
+      nextName: 'Fajr',
+      nextEpochMs: fajrMs,
+      prevEpochMs: at('2026-06-16', '14:00'),
+      countdownLabel: '13h 30m',
+      dateLabel: formatDateLong('2026-06-17'),
+      activeIndex: -1,
+    });
+
+    const pushMs = holdEndMs - 2 * 60 * 1000;
+    const lastMinutes = buildPrayerWidgetTimeline(new Date(pushMs), sequence, SETTINGS, 'light');
+    expect(lastMinutes[0].date.getTime()).toBe(holdEndMs - MIN_ENTRY_SPACING_MS);
+    expect(lastMinutes[0].props).toMatchObject({
+      countdownLabel: labelFor(pushMs, fajrMs),
+      dateLabel: formatDateLong('2026-06-17'),
+      activeIndex: -1,
+    });
+    expect(lastMinutes[1].date.getTime()).toBe(holdEndMs);
+    expect(lastMinutes[1].props).toMatchObject({ dateLabel: formatDateLong('2026-06-17'), activeIndex: 0 });
+  });
+
+  it('rolls the list to the next day at Magrib when Isha is unreadable', () => {
+    const entries = buildPrayerWidgetTimeline(
+      createPrayerDatetime('2026-06-15', '20:00'),
+      standard(makeDayWithout('2026-06-15', ['Isha']), makeDay('2026-06-16')),
+      SETTINGS,
+      'light'
+    );
+    const magribMs = at('2026-06-15', '21:15');
+
+    const before = activeAt(entries, magribMs - 1000);
+    expect(before?.props).toMatchObject({
+      nextName: 'Magrib',
+      activeIndex: 4,
+      dateLabel: formatDateLong('2026-06-15'),
+    });
+    expect(before?.props.prayers?.[5]).toEqual({ name: 'Isha', time: DASH });
+
+    const flip = activeAt(entries, magribMs);
+    expect(flip?.date.getTime()).toBe(magribMs);
+    expect(flip?.props).toMatchObject({
+      nextName: 'Fajr',
+      nextEpochMs: at('2026-06-16', '03:30'),
+      prevEpochMs: magribMs,
+      dateLabel: formatDateLong('2026-06-16'),
+      activeIndex: 0,
+    });
+
+    // The 16th's Isha is readable and counted down to in its turn; the 15th's list never targets its own
+    const fifteenth = entries.filter((entry) => entry.props.dateLabel === formatDateLong('2026-06-15'));
+    expect(fifteenth.length).toBeGreaterThan(0);
+    expect(fifteenth.map((entry) => entry.props.nextName)).not.toContain('Isha');
+  });
+
+  // Dhuhr at 03:33 kills the crowded-flip skip's `>=` becoming `===`, and at 03:35 it becoming `>`
+  it.each(['03:33', '03:35'])(
+    'keeps five minutes between entries when boundaries crowd together, showing what is current by then (Dhuhr %s)',
+    (dhuhr) => {
+      // Well-formed times a few minutes apart, which validation accepts (finding 70)
+      const date = '2026-06-15';
+      const crowded: Prayer[] = [
+        makePrayer(date, '03:30', 'Fajr', 'الفجر'),
+        makePrayer(date, '03:31', 'Sunrise', 'الشروق'),
+        makePrayer(date, dhuhr, 'Dhuhr', 'الظهر'),
+        makePrayer(date, '17:45', 'Asr', 'العصر'),
+        makePrayer(date, '21:15', 'Magrib', 'المغرب'),
+        makePrayer(date, '22:45', 'Isha', 'العشاء'),
+      ];
+      const entries = buildPrayerWidgetTimeline(
+        createPrayerDatetime(date, '03:00'),
+        standard(crowded),
+        SETTINGS,
+        'light'
+      );
+
+      for (let i = 1; i < entries.length; i++) {
+        expect(entries[i].date.getTime() - entries[i - 1].date.getTime()).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);
+      }
+
+      // Fajr's flip has its five minutes after the last step, so it stays on its boundary
+      expect(activeAt(entries, at(date, '03:30'))?.date.getTime()).toBe(at(date, '03:30'));
+      expect(activeAt(entries, at(date, '03:30'))?.props.nextName).toBe('Sunrise');
+
+      // Sunrise's flip has to wait until 03:35, when Dhuhr is due or has passed, so it would have nothing to show:
+      // the entry at 03:35 shows what is current then, counted from 03:35, and no entry ever counts down to Dhuhr
+      const settled = activeAt(entries, at(date, '03:35'));
+      expect(settled?.date.getTime()).toBe(at(date, '03:35'));
+      expect(settled?.props).toMatchObject({
+        nextName: 'Asr',
+        prevEpochMs: at(date, dhuhr),
+        countdownLabel: labelFor(at(date, '03:35'), at(date, '17:45')),
+        activeIndex: 3,
+      });
+      expect(entries.some((entry) => entry.props.nextName === 'Dhuhr')).toBe(false);
+    }
+  );
+
+  it('passes over unreadable night rows on an Extras list', () => {
+    // As when the 16th's Magrib is unreadable: the night leading into the 17th has no Midnight or Last Third
+    const prayers = ['2026-06-15', '2026-06-16', '2026-06-17', '2026-06-18'].flatMap((date) =>
+      makeExtrasDay(date, false).map((prayer) =>
+        date === '2026-06-17' && (prayer.english === 'Midnight' || prayer.english === 'Last Third')
+          ? unreadable(prayer)
+          : prayer
+      )
+    );
+    const entries = buildPrayerWidgetTimeline(
+      createPrayerDatetime('2026-06-16', '07:00'),
+      { type: ScheduleType.Extra, prayers },
+      SETTINGS,
+      'light'
+    );
+    const duhaMs = at('2026-06-16', '08:10');
+    const suhoorMs = at('2026-06-17', '05:55');
+
+    expect(entries[0].props).toMatchObject({
+      nextName: 'Duha',
+      activeIndex: 3,
+      dateLabel: formatDateLong('2026-06-16'),
+    });
+
+    const night = entries.filter((entry) => entry.date.getTime() >= duhaMs && entry.date.getTime() < suhoorMs);
+    expect(night[0].date.getTime()).toBe(duhaMs);
+    for (const entry of night) {
+      expect(entry.props).toMatchObject({
+        nextName: 'Suhoor',
+        nextEpochMs: suhoorMs,
+        dateLabel: formatDateLong('2026-06-17'),
+        activeIndex: 2,
+        prayers: [
+          { name: 'Midnight', time: DASH },
+          { name: 'Last Third', time: DASH },
+          { name: 'Suhoor', time: '05:55' },
+          { name: 'Duha', time: '08:10' },
+        ],
+      });
+      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), suhoorMs));
+      // The row above Suhoor is the unreadable Last Third, so the bar starts at the entry, not at Duha
+      expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
+    }
+
+    expect(activeAt(entries, suhoorMs)?.props).toMatchObject({ nextName: 'Duha', activeIndex: 3 });
+  });
+
+  it.each([
+    ['before those days', '2026-06-14'],
+    ['during those days', '2026-06-15'],
+    ['after those days', '2026-06-17'],
+  ])('builds no entries from a sequence with no readable row (%s)', (_label, date) => {
+    const sequence = standard(
+      makeDayWithout('2026-06-15', PRAYERS_ENGLISH),
+      makeDayWithout('2026-06-16', PRAYERS_ENGLISH)
+    );
+
+    expect(buildPrayerWidgetTimeline(createPrayerDatetime(date, '14:00'), sequence, SETTINGS, 'light')).toEqual([]);
+  });
+
+  it('flips to the stale card at the last readable row when only unreadable rows follow it', () => {
+    const sequence = standard(
+      makeDay('2026-06-15'),
+      makeDayWithout('2026-06-16', ['Isha']),
+      makeDayWithout('2026-06-17', PRAYERS_ENGLISH)
+    );
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
+    const magribMs = at('2026-06-16', '21:15');
+
+    expect(entries.at(-1)).toEqual({
+      date: new Date(magribMs),
+      props: {
+        v: WIDGET_PROPS_VERSION,
+        schedule: 'standard',
+        theme: 'light',
+        nextName: 'Magrib',
+        nextTime: '21:15',
+        nextEpochMs: magribMs,
+        prevEpochMs: magribMs,
+        countdownLabel: '0s',
+        dateLabel: formatDateLong('2026-06-16'),
+        stale: true,
+      },
+    });
+    expect(activeAt(entries, magribMs - 1000)?.props.nextName).toBe('Magrib');
+    expect(activeAt(entries, magribMs - 1000)?.props.stale).toBeUndefined();
+
+    // Nothing after that row can be counted down to, whether the push lands on its day or on the day after
+    expect(buildPrayerWidgetTimeline(new Date(magribMs + 1000), sequence, SETTINGS, 'light')).toEqual([]);
+    expect(buildPrayerWidgetTimeline(createPrayerDatetime('2026-06-17', '12:00'), sequence, SETTINGS, 'light')).toEqual(
+      []
+    );
   });
 });

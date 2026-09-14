@@ -1,21 +1,25 @@
 /**
  * Pure timeline builder for the Athan iOS widgets (standard + extras pairs).
  *
- * Builds timeline entries from a prayer sequence (one entry per prayer
- * boundary) for WidgetKit to render. WidgetKit cannot tick custom-format
+ * Builds timeline entries from a prayer sequence (one entry per boundary)
+ * for WidgetKit to render. WidgetKit cannot tick custom-format
  * text, so the countdown — which must mirror the app's exact formatTime
  * style — is precomputed per entry and refreshed by stepped entries every
  * five minutes (WidgetKit's minimum entry spacing) within a 24-hour
- * horizon; beyond it, entries flip only at prayer boundaries. The progress
+ * horizon; beyond it, entries flip only at boundaries. The progress
  * bar stays live on its own between entries via SwiftUI timer intervals.
  *
+ * The widget has to follow exactly the rules the app's screens follow, so what
+ * each entry shows comes from shared/sequence.ts rather than from positions in
+ * the sequence: a row with no readable time is never a boundary and never
+ * counted down to, and a list day with none, and the day before one, stays on
+ * screen until 00:00 London (ai/features/uat-2/DASHES-DESIGN.md §8).
+ *
  * Schedule-agnostic: the same loop serves both the Standard sequence (home
- * + Lock widgets) and the Extra sequence (extras home + Lock widgets); only
- * the day-list assembly differs — Standard rows stay chronological while
- * Extra rows sort into canonical EXTRAS_ENGLISH order (Istijaba last on
- * Fridays), mirroring the two app pages. Every entry stamps its schedule
- * and the caller's theme so the layouts can branch (the extras medium pill
- * renders rose; the theme selects the palette).
+ * + Lock widgets) and the Extra sequence (extras home + Lock widgets); both
+ * day lists read in their app page's order (Istijaba last on Fridays).
+ * Every entry stamps its schedule and the caller's theme so the layouts can
+ * branch (the extras medium pill renders rose; the theme selects the palette).
  *
  * Pure module: no React Native imports — deterministic and unit-testable.
  *
@@ -26,9 +30,16 @@
 
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
-import { EXTRAS_ENGLISH } from '@/shared/constants';
+import { UNAVAILABLE_TIME } from '@/shared/constants';
+import {
+  compareListOrder,
+  findNextReadable,
+  findPreviousRow,
+  getNextBoundary,
+  resolveDisplayDate,
+} from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
-import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
+import type { Prayer, PrayerSequence, ReadablePrayer } from '@/shared/types';
 import type { PrayerWidgetProps, PrayerWidgetSettings, WidgetPrayerRow, WidgetTheme } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
@@ -50,7 +61,7 @@ export const COUNTDOWN_STEP_MS = MIN_ENTRY_SPACING_MS;
 /**
  * How long from the push instant the countdown label stays stepped. Within
  * the horizon the label refreshes at the step cadence; beyond it, entries
- * flip only at prayer boundaries and carry NO countdown label at all — a
+ * flip only at boundaries and carry NO countdown label at all — a
  * label that cannot be refreshed before its boundary would over-read by the
  * whole segment, so the widget shows the name and the absolute time instead
  * (acceptable degradation for a widget the app has not refreshed in over a
@@ -61,6 +72,35 @@ export const COUNTDOWN_STEP_MS = MIN_ENTRY_SPACING_MS;
  * exactly one spacing before the boundary flip.
  */
 export const STEPPED_COUNTDOWN_HOURS = 24;
+
+/**
+ * What the widget shows from one boundary until the next: the prayer counted
+ * down to, the list day on screen, and when either changes
+ */
+interface Segment {
+  next: ReadablePrayer;
+  displayDate: string;
+  boundary: Date;
+}
+
+/**
+ * The segment starting at `at`, or null once no readable row is left to count
+ * down to
+ *
+ * A list day held on screen after the last readable row still ends at 00:00,
+ * but an entry has to name a prayer and count down to it, so the stale card
+ * takes over from that row instead.
+ */
+const segmentFrom = (prayers: Prayer[], at: Date): Segment | null => {
+  const next = findNextReadable(prayers, at);
+  const displayDate = resolveDisplayDate(prayers, at);
+  const boundary = getNextBoundary(prayers, at);
+
+  // A readable row still to come always has a list day on screen and a boundary; the last two checks
+  // only prove that to the compiler
+  if (!next || !displayDate || !boundary) return null;
+  return { next, displayDate, boundary };
+};
 
 /**
  * Formats the countdown for a timeline entry as a minute-ceil label
@@ -80,8 +120,8 @@ const formatCountdownAt = (at: Date, target: Date): string => {
 };
 
 /**
- * Formats the next prayer's date in the app's date style (Hijri when the
- * preference is on), matching the home screen's Day component.
+ * Formats a prayer's date in the app's date style (Hijri when the preference
+ * is on), matching the home screen's Day component.
  *
  * @param belongsToDate The prayer's Islamic day (YYYY-MM-DD)
  * @param hijriDate Whether the app's Hijri date preference is on
@@ -91,69 +131,49 @@ const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
 };
 
 /**
- * Canonical display rank of an extras prayer — its index in EXTRAS_ENGLISH
- * (Midnight, Last Third, Suhoor, Duha, Istijaba). Mirrors canonicalRank in
- * shared/prayer.ts without importing it: that module transitively pulls in
- * the MMKV database (React Native), which would break this pure module.
- * Unknown names rank last, stably.
- */
-const extrasCanonicalRank = (english: string): number => {
-  const rank = EXTRAS_ENGLISH.indexOf(english);
-  return rank === -1 ? EXTRAS_ENGLISH.length : rank;
-};
-
-/**
- * Builds the medium widget's day list for a segment: the prayers of the
- * upcoming prayer's belongsToDate, ordered exactly as the corresponding app
- * page shows them — chronological for Standard, canonical EXTRAS_ENGLISH
- * order for Extra (so Friday's Istijaba reads last, not mid-list). The list
- * rolls to the next day exactly when the countdown target does, mirroring
- * the app's displayDate semantics. The active row is the upcoming prayer
- * itself; rows before it have passed, rows after it are upcoming. Istijaba
+ * Builds the medium widget's day list for a segment: the rows of the list day
+ * on screen, in the order its app page lists them, with `--:--` for a time the
+ * provider did not give. It is the day on screen rather than the countdown
+ * target's own day because a day with no readable row, and the day before it
+ * once its last row has passed, stay on screen until 00:00 London while the
+ * countdown already runs to a later day (R8). Istijaba
  * appears only on Fridays by construction — the sequence itself excludes
  * it on non-Fridays (see getPrayerNamesForDate in shared/prayer.ts).
  *
- * @param prayers Chronologically sorted prayer sequence
- * @param next The upcoming prayer anchoring the displayed day
- * @param type The sequence's schedule type
- * @returns The day's rows and the active row index (-1 when `next` is not
- *   part of its own day — a malformed sequence; the layout degrades)
+ * @param prayers The prayer sequence
+ * @param segment The segment the list is for
+ * @returns The day's rows and the active row index (-1 when the prayer counted
+ *   down to is not on the day's list, as on a day with no readable row)
  */
-const buildDayList = (
-  prayers: Prayer[],
-  next: Prayer,
-  type: ScheduleType
-): { rows: WidgetPrayerRow[]; activeIndex: number } => {
-  const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === next.belongsToDate);
+const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayerRow[]; activeIndex: number } => {
+  const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === segment.displayDate).sort(compareListOrder);
+  const rows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time ?? UNAVAILABLE_TIME }));
 
-  if (type === ScheduleType.Extra) {
-    dayPrayers.sort((a, b) => extrasCanonicalRank(a.english) - extrasCanonicalRank(b.english));
-  }
-
-  const activeIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === next.datetime.getTime());
-  const rows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time }));
-
-  return { rows, activeIndex };
+  return { rows, activeIndex: dayPrayers.indexOf(segment.next) };
 };
 
 /**
- * Builds one timeline entry per prayer boundary, with stepped countdown
- * entries every COUNTDOWN_STEP_MS inside the stepped horizon, starting at
- * `now`, capped by a terminal stale entry after the final prayer. Each entry
+ * Builds one timeline entry per boundary, with stepped countdown entries
+ * every COUNTDOWN_STEP_MS inside the stepped horizon, starting at `now`,
+ * capped by a terminal stale entry after the last readable prayer. A boundary
+ * is a readable prayer's moment, or 00:00 London ending a list on screen that
+ * waits for its day to end (a day with no readable row, or the day before
+ * one). Each entry
  * carries the full props snapshot for its segment: the upcoming prayer, the
  * segment bounds (for the live progress bar), the precomputed countdown
  * label, the upcoming prayer's date, and the medium widget's day list.
  * Adjacent entries always keep at least MIN_ENTRY_SPACING_MS apart: the
- * first entry is backdated when a boundary is too close to `now`, and steps
- * stop one spacing short of the boundary they precede.
+ * first entry is backdated when a boundary is too close to `now`, steps
+ * stop one spacing short of the boundary they precede, and a flip crowded by
+ * the entry before it waits for its spacing.
  *
  * @param now Current instant
- * @param sequence Chronologically sorted prayer sequence (must span `now`)
+ * @param sequence Prayer sequence in list order (must span `now`)
  * @param settings The in-app settings snapshot the widget mirrors
  * @param theme Palette stamped on every entry — each gallery kind (the
  *   Light/Dark home pairs) receives its own theme-stamped timeline
  * @returns Chronological timeline entries ending with the stale guard, empty
- *  when the sequence does not cover `now`
+ *  when no readable prayer in the sequence is still to come
  */
 export const buildPrayerWidgetTimeline = (
   now: Date,
@@ -163,17 +183,19 @@ export const buildPrayerWidgetTimeline = (
 ): WidgetTimelineEntry<PrayerWidgetProps>[] => {
   const entries: WidgetTimelineEntry<PrayerWidgetProps>[] = [];
   const prayers = sequence.prayers;
-  if (prayers.length === 0) return entries;
 
-  const firstNextIndex = prayers.findIndex((prayer) => prayer.datetime.getTime() > now.getTime());
-  if (firstNextIndex === -1) return entries;
+  let segment = segmentFrom(prayers, now);
+  if (!segment) return entries;
 
-  const makeEntry = (date: Date, prevIndex: number, labelAt: Date = date): WidgetTimelineEntry<PrayerWidgetProps> => {
-    const next = prayers[prevIndex + 1];
-    const prev = prevIndex >= 0 ? prayers[prevIndex] : null;
+  const makeEntry = (current: Segment, date: Date, labelAt: Date = date): WidgetTimelineEntry<PrayerWidgetProps> => {
+    const { next } = current;
+    const prev = findPreviousRow(prayers, next);
     const countdownLabel = formatCountdownAt(labelAt, next.datetime);
+    // The upcoming prayer's own day, not the day on screen: a held day's list has no active row, so the
+    // layouts cannot draw it and show that prayer's name and time instead, and a real time must not sit
+    // under a day that has none
     const dateLabel = formatDateLabel(next.belongsToDate, settings.hijriDate);
-    const dayList = buildDayList(prayers, next, sequence.type);
+    const dayList = buildDayList(prayers, current);
 
     return {
       date,
@@ -196,29 +218,41 @@ export const buildPrayerWidgetTimeline = (
   const steppedUntilMs = now.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
   let cursor = now;
-  let prevIndex = firstNextIndex - 1;
   let lastEmittedMs: number | null = null;
+  let finalPrayer = segment.next;
 
-  while (prevIndex + 1 < prayers.length) {
-    const nextPrayer = prayers[prevIndex + 1];
-    const boundaryMs = nextPrayer.datetime.getTime();
+  for (; segment; segment = segmentFrom(prayers, cursor)) {
+    const boundaryMs = segment.boundary.getTime();
+    let segmentStartMs = cursor.getTime();
+    finalPrayer = segment.next;
+    cursor = segment.boundary;
 
-    // The first entry must date at or before `now` so the widget has content
-    // immediately, but the boundary flip still needs its 5 minutes of
-    // spacing: backdate the first entry when the boundary is imminent. An
-    // earlier-dated entry is already "active" at push time, so this is safe.
-    if (lastEmittedMs === null && boundaryMs - cursor.getTime() < MIN_ENTRY_SPACING_MS) {
-      cursor = new Date(boundaryMs - MIN_ENTRY_SPACING_MS);
+    if (lastEmittedMs === null) {
+      // The first entry must date at or before `now` so the widget has content
+      // immediately, but the boundary flip still needs its 5 minutes of
+      // spacing: backdate the first entry when the boundary is imminent. An
+      // earlier-dated entry is already "active" at push time, so this is safe.
+      // What it shows was worked out at `now`, before the backdating.
+      if (boundaryMs - segmentStartMs < MIN_ENTRY_SPACING_MS) segmentStartMs = boundaryMs - MIN_ENTRY_SPACING_MS;
+    } else {
+      // Only the first entry may move earlier. Boundaries can crowd each other (a held day's 00:00 and the
+      // next night's Midnight fall a minute or two apart in early summer), and WidgetKit may coalesce
+      // entries closer than the spacing and silently skip a flip, so a crowded flip waits for its spacing
+      segmentStartMs = Math.max(segmentStartMs, lastEmittedMs + MIN_ENTRY_SPACING_MS);
     }
+
+    // A flip that had to wait until its own segment was over has nothing left to show: the next segment
+    // takes its place and shows what is current by then
+    if (segmentStartMs >= boundaryMs) continue;
 
     // The backdated first entry displays immediately, so its label must
     // describe the remaining time at the push — not at its backdated date
     // (which would show a phantom larger countdown, e.g. "5m" for a prayer
-    // only 2 minutes away).
-    const segmentStart = cursor;
-    const openingEntry = makeEntry(segmentStart, prevIndex, lastEmittedMs === null ? now : segmentStart);
+    // only 2 minutes away). A flip that waited describes its own date.
+    const segmentStart = new Date(segmentStartMs);
+    const openingEntry = makeEntry(segment, segmentStart, lastEmittedMs === null ? now : segmentStart);
     entries.push(openingEntry);
-    lastEmittedMs = segmentStart.getTime();
+    lastEmittedMs = segmentStartMs;
     let lastSegmentEntry = openingEntry;
 
     // Stepped countdown entries: the grid is anchored to the boundary cutoff,
@@ -227,9 +261,8 @@ export const buildPrayerWidgetTimeline = (
     // when the segment length is not a multiple of the step — real prayer
     // times rarely are). When the horizon, not the boundary, caps the
     // segment, the plain aligned grid holds (staleness beyond the anchor is
-    // accepted degradation outside the stepped window). A boundary that
-    // somehow predates the segment start (duplicate prayer datetimes)
-    // yields no steps.
+    // accepted degradation outside the stepped window). A boundary within one
+    // spacing of the segment start yields no steps.
     if (segmentStart.getTime() < steppedUntilMs) {
       const boundaryCutoffMs = boundaryMs - MIN_ENTRY_SPACING_MS;
       const cappedByHorizon = boundaryCutoffMs > steppedUntilMs;
@@ -257,13 +290,13 @@ export const buildPrayerWidgetTimeline = (
 
       for (let index = stepsDescending.length - 1; index >= 0; index--) {
         const stepMs = stepsDescending[index] as number;
-        lastSegmentEntry = makeEntry(new Date(stepMs), prevIndex);
+        lastSegmentEntry = makeEntry(segment, new Date(stepMs));
         entries.push(lastSegmentEntry);
         lastEmittedMs = stepMs;
       }
 
       if (!cappedByHorizon && lastStepMs - lastEmittedMs >= MIN_ENTRY_SPACING_MS) {
-        lastSegmentEntry = makeEntry(new Date(lastStepMs), prevIndex);
+        lastSegmentEntry = makeEntry(segment, new Date(lastStepMs));
         entries.push(lastSegmentEntry);
         lastEmittedMs = lastStepMs;
       }
@@ -279,6 +312,8 @@ export const buildPrayerWidgetTimeline = (
     // the stale card. An empty label is the honest degradation — both
     // layouts already hide it and fall back to the name plus the absolute
     // time (see the length guards in PrayerWidget.tsx and LockPrayerWidget.tsx).
+    // The gap that matters runs to the boundary, not to the prayer: a held
+    // day's 00:00 entry refreshes the label even though the prayer is later.
     //
     // A gap the spacing floor forces (a segment too short for a second entry)
     // is left alone: that staleness is bounded by the segment and is the
@@ -287,19 +322,18 @@ export const buildPrayerWidgetTimeline = (
     if (strandedByHorizon && boundaryMs - lastEmittedMs > COUNTDOWN_STEP_MS) {
       lastSegmentEntry.props.countdownLabel = '';
     }
-
-    cursor = nextPrayer.datetime;
-    prevIndex += 1;
   }
 
   // Terminal stale entry: once every real segment has passed, WidgetKit keeps
   // re-rendering the final entry — make that a designed "open Athan to
   // refresh" card instead of silently stale times with clamped 0:00 countdowns.
-  // It flips exactly at the final prayer like every other boundary, pushed to
-  // the minimum spacing if the last emitted entry sits pathologically close.
-  const finalPrayer = prayers[prayers.length - 1];
+  // It flips at the last readable prayer, the last moment anything can be
+  // counted down to, like every other boundary, pushed to the minimum spacing
+  // if the last emitted entry sits pathologically close. Unreadable rows after
+  // that prayer give it nothing more to show.
   const finalEpochMs = finalPrayer.datetime.getTime();
-  const staleMs = Math.max(finalEpochMs, (lastEmittedMs ?? finalEpochMs) + MIN_ENTRY_SPACING_MS);
+  const lastEntryMs = entries[entries.length - 1].date.getTime();
+  const staleMs = Math.max(finalEpochMs, lastEntryMs + MIN_ENTRY_SPACING_MS);
   entries.push({
     date: new Date(staleMs),
     props: {

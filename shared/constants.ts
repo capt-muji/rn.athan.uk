@@ -245,6 +245,19 @@ export const PRAYER_TIMEZONE = 'Europe/London';
 // =============================================================================
 
 /**
+ * How a time the provider did not give readably is drawn (R2). Drawn only: it is never stored and never
+ * parsed, so nothing can mistake it for a time
+ */
+export const UNAVAILABLE_TIME = '--:--';
+
+/**
+ * The countdown's name while it shows UNAVAILABLE_TIME with no overlay open: the list on screen has no prayer
+ * left to count to, so none is named (owner ruling 2026-09-14). Three plain periods with no spaces; the overlay
+ * still names the prayer it shows
+ */
+export const COUNTDOWN_WAITING_NAME = '...';
+
+/**
  * Global text styling configuration
  * Font family (Roboto) and size hierarchy for consistent typography across app
  */

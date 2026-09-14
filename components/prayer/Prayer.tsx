@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated';
 import { useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
-import { useSchedule } from '@/hooks/useSchedule';
+import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
@@ -46,8 +46,7 @@ export default function Prayer({ type, index }: Props) {
     previousDisplayDate !== Schedule.displayDate &&
     !isSelectedForOverlay &&
     !Schedule.isLastPrayerPassed &&
-    Schedule.nextPrayerIndex === 0 &&
-    index !== 0;
+    isCascadeRow(Schedule, index);
   const previousIsSelected = usePrevious(isSelectedForOverlay);
   const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
 
@@ -69,9 +68,9 @@ export default function Prayer({ type, index }: Props) {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    // Name-based check: the row's sequence index shifts with display order, so an
-    // index comparison cannot identify Istijaba (the old ISTIJABA_INDEX check was
-    // dead since the list became chronological)
+    // By name rather than index: an index is only a row's place on its day's list, which
+    // depends on the list's order and on which rows that day has (Istijaba only on
+    // Fridays), while the name is the prayer itself
     if (!Schedule.isStandard && Prayer.english === 'Istijaba' && Prayer.isPassed) return;
 
     if (isSelectedForOverlay) closeOverlay();

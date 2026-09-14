@@ -236,6 +236,7 @@ The full Audacity projects for all Athan and reminder audio (for anyone who want
 - 💾 **Local Data Caching**: Entire year stored in MMKV v4
 - 🔄 **Automatic Yearly Refresh**: Detects year transition, fetches new data
 - 📱 **Full Offline Support**: Works after initial sync
+- ➖ **Unreadable Times**: A time the source sends unreadably, or a day it leaves out, shows as `--:--`, never a guessed time; everything else on that day still shows, and no alert fires for a `--:--` row
 - 🎯 **Precise Synchronization**: Countdown countdowns sync with system clock
 - ⬆️ **Smart App Upgrades**: Clears stale cache, preserves preferences
 
@@ -489,8 +490,8 @@ The codebase follows a clean architecture pattern with clear separation of conce
 The codebase follows established patterns for consistency:
 
 1. **Helper Function Extraction**: Complex logic extracted into named functions
-   - Example: `parseNightBoundaries()` in time.ts
-   - Example: `getYesterdayFinalPrayer()` in schedule.ts
+   - Example: `getNightTimes()` in time.ts
+   - Example: `getNightTimesForDay()` in prayer.ts
 
 2. **Section Comments**: Files organized with clear section headers
 
