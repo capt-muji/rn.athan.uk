@@ -50,6 +50,10 @@ mutate.MUTATIONS[:] = [
     (PRESS, "isSelectedForOverlay ? 'close' : 'open'", "isSelectedForOverlay ? 'open' : 'close'", 'close and open swapped'),
     (PRESS, "return 'none';", "return 'open';", 'a passed Istijaba opens'),
     (PRESS, "  if (!isStandard && english === 'Istijaba' && isPassed) return 'none';\n  return isSelectedForOverlay ? 'close' : 'open';", "  if (isSelectedForOverlay) return 'close';\n  if (!isStandard && english === 'Istijaba' && isPassed) return 'none';\n  return 'open';", 'close checked before the passed Istijaba'),
+
+    # --- the call sites in the components ---
+    ('components/overlay/Overlay.tsx', 'getOverlayRow(prayers, displayDate, overlay.scheduleType, overlay.selectedPrayerIndex)', 'overlay.selectedPrayerIndex', 'call site: overlay row read as the sequence index'),
+    ('components/overlay/Overlay.tsx', 'getOverlayRow(prayers, displayDate, overlay.scheduleType, overlay.selectedPrayerIndex)', 'getOverlayRow(prayers, displayDate, ScheduleType.Standard, overlay.selectedPrayerIndex)', 'call site: overlay row in Standard order'),
 ]
 
 if __name__ == '__main__':
