@@ -70,6 +70,12 @@ mutate.MUTATIONS[:] = [
     ('api/client.ts', 'if (!isProd() && !isPreview()) {\n    const mockDay', 'if (!isPreview()) {\n    const mockDay', 'production build serves the mock day'),
     ('api/client.ts', 'if (!isProd() && !isPreview()) return MOCK_DATA_SIMPLE;', 'if (!isProd()) return MOCK_DATA_SIMPLE;', 'preview build serves the mock year'),
     ('api/client.ts', 'if (!isProd() && !isPreview()) {\n    const mockDay', 'if (!isProd()) {\n    const mockDay', 'preview build serves the mock day'),
+
+    # --- review fixes ---
+    ('shared/time.ts', "  try {\n    const date = new Date();\n    const monthFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {\n      month: 'numeric',\n      timeZone: PRAYER_TIMEZONE,\n    });\n    const month = monthFmt.format(date);\n", "  let monthFmt: Intl.DateTimeFormat;\n  try {\n    monthFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {\n      month: 'numeric',\n      timeZone: PRAYER_TIMEZONE,\n    });\n  } catch {\n    return false;\n  }\n  const date = new Date();\n  const month = monthFmt.format(date);\n  try {\n", 'a failing Intl format throws into render'),
+    ('shared/notifications.ts', '    await createExtrasAndroidChannel();\n\n    const hasPermission', '    void createExtrasAndroidChannel();\n\n    const hasPermission', 'refresh starts before the extras channel exists'),
+    ('shared/notifications.ts', '    await createDefaultAndroidChannel();\n', '    void createDefaultAndroidChannel();\n', 'refresh starts before athan_1_v2 exists'),
+    ('shared/notifications.ts', '    await deleteLegacyAndroidAudioChannels();\n', '    void deleteLegacyAndroidAudioChannels();\n', 'refresh starts before the legacy deletes finish'),
 ]
 
 if __name__ == '__main__':
