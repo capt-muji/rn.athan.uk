@@ -3,8 +3,10 @@
  *
  * The test tree has no renderer, so a hook runs inside a modelled component: hook state lives in slots read back in
  * call order, effects run after the render that declared them when their dependencies changed (every due cleanup
- * before any new run), cleanups also run on unmount, and a state change renders again with the last props. Concurrent
- * rendering and StrictMode's double calls are not modelled, so nothing that depends on them is proven by these tests.
+ * before any new run), cleanups also run on unmount, and a state change renders again with the last props. State set
+ * while effects run is batched into one render after them; state set from a timer or callback renders at once for
+ * each set, where React would batch. Concurrent rendering and StrictMode's double calls are not modelled, so nothing
+ * that depends on them is proven by these tests.
  *
  * A test wires it in with `jest.mock('react', () => require('./hookHarness').react)`.
  */
@@ -25,6 +27,8 @@ interface Component {
   hookCount: number | null;
   effects: EffectRecord[];
   due: EffectRecord[];
+  isRunningEffects: boolean;
+  needsRender: boolean;
   isUnmounted: boolean;
   render: () => void;
 }
@@ -62,7 +66,8 @@ const useState = <T>(initial: T | (() => T)) => {
         const value = typeof next === 'function' ? (next as (previous: T) => T)(box.value) : next;
         if (component.isUnmounted || Object.is(value, box.value)) return;
         box.value = value;
-        component.render();
+        if (component.isRunningEffects) component.needsRender = true;
+        else component.render();
       },
     };
     return box;
@@ -111,6 +116,8 @@ export const mountHook = <Props, Result>(
     hookCount: null,
     effects: [],
     due: [],
+    isRunningEffects: false,
+    needsRender: false,
     isUnmounted: false,
     render: () => {
       if (rendering) throw new Error('Nested renders are not modelled');
@@ -127,11 +134,21 @@ export const mountHook = <Props, Result>(
 
       const due = component.due;
       component.due = [];
-      for (const record of due) record.cleanup?.();
-      for (const record of due) {
-        const cleanup = record.effect();
-        record.cleanup = typeof cleanup === 'function' ? (cleanup as () => void) : undefined;
-        record.hasRun = true;
+      component.isRunningEffects = true;
+      try {
+        for (const record of due) record.cleanup?.();
+        for (const record of due) {
+          const cleanup = record.effect();
+          record.cleanup = typeof cleanup === 'function' ? (cleanup as () => void) : undefined;
+          record.hasRun = true;
+        }
+      } finally {
+        component.isRunningEffects = false;
+      }
+
+      if (component.needsRender) {
+        component.needsRender = false;
+        component.render();
       }
     },
   };
@@ -143,6 +160,7 @@ export const mountHook = <Props, Result>(
       return result as Result;
     },
     rerender: (nextProps = props) => {
+      if (component.isUnmounted) throw new Error('An unmounted component cannot render');
       props = nextProps;
       component.render();
     },
