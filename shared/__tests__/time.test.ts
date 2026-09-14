@@ -806,10 +806,10 @@ describe('DST transitions', () => {
       expect(createPrayerDatetime('2026-03-29', '00:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
     });
 
-    it('maps the nonexistent skipped hour via the pre-transition offset', () => {
+    it('maps the nonexistent skipped hour via the post-transition offset', () => {
       // 01:30 wall time never exists on this date; createPrayerDatetime resolves it
-      // as if the old GMT offset still applied. No prayer time is read from the clock
-      // in this hour: the night rows are exact instants (getNightTimes)
+      // with the BST offset the clocks jump to, the same moment as 00:30 GMT. No prayer
+      // time is read from the clock in this hour: the night rows are exact instants (getNightTimes)
       expect(createPrayerDatetime('2026-03-29', '01:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
     });
 
