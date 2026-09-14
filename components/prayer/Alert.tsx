@@ -45,6 +45,9 @@ interface Props {
  * - At-time alert options (Off/Silent/Sound)
  * - Reminder toggle with options when enabled
  * - Reminder interval selection (5-30 min)
+ *
+ * While the occurrence on screen has no readable time, the sheet shows only a message saying why no alert
+ * can go off, and the bell draws Off (R5).
  */
 export default function Alert({ type, index }: Props) {
   // =============================================================================
@@ -88,8 +91,8 @@ export default function Alert({ type, index }: Props) {
   const NextOccurrencePrayer = usePrayer(type, index, true);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
 
-  // The same occurrence Time.tsx draws: the bell refuses exactly when the time on screen is --:--, since
-  // nothing can ever fire for it (R5). The saved preference is only read, never changed
+  // The same occurrence Time.tsx draws: the bell is unavailable exactly when the time on screen is --:--, since
+  // nothing can ever fire for it (R5), and its press explains that. The saved preference is only read, never changed
   const isUnavailable = isShownOccurrenceUnavailable(isSelectedForOverlay, Prayer, NextOccurrencePrayer);
 
   const iconIndex = getShownAlert(isUnavailable, displayedAlert);

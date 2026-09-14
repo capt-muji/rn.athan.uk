@@ -173,8 +173,9 @@ export const createPrevPrayerAtom = (type: ScheduleType) => {
 /**
  * Creates a derived atom that returns the display date
  *
- * The earliest list day with a readable row still to come, or a list day with no readable row at all
- * until 00:00 London at its end (resolveDisplayDate). This can differ from the calendar date due to
+ * The list day resolveDisplayDate picks: the earliest with a readable row still to come, or, until 00:00
+ * London at its end, a list day with no readable row at all or the day before one. This can differ from
+ * the calendar date due to
  * Islamic day boundaries:
  * - Isha at 1am on Jan 19 calendar date belongs to Jan 18 Islamic day
  * - Midnight at 23:17 on Jan 18 calendar date belongs to Jan 19 Islamic day
@@ -210,7 +211,7 @@ const earlierOf = (a: Date | null, b: Date | null): Date | null => {
 
 /**
  * Creates a derived atom that returns the next moment what the schedule shows changes: its next readable
- * prayer, or 00:00 London ending a list day on screen with no readable row
+ * prayer, or 00:00 London ending a list on screen that waits for its day to end
  *
  * Worked out from the next-prayer and display-date atoms only, never from a fresh reading of the clock. All
  * three are held until the sequence changes, but each is worked out on its own first read after that, and
@@ -558,7 +559,7 @@ export const getFirstRowAfterDisplay = (type: ScheduleType): Prayer | null => {
 
 /**
  * Gets the next moment what a schedule shows changes: its next readable prayer, or 00:00 London ending a
- * list day on screen with no readable row
+ * list on screen that waits for its day to end (a day with no readable row, or the day before one)
  *
  * The one boundary the countdown ticker, the foreground resync and the overlay's open guard and close
  * deadline all compare the clock against, so the list cannot change day under any of them unannounced.

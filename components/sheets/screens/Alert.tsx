@@ -31,12 +31,14 @@ const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
 
 // Nothing the user can do fixes a time the timetable did not give, so this explains and reassures without asking
 // for an action: the saved setting returns by itself on the next occurrence with a readable time
+// Each hard line is short enough to fit a 360dp phone inside the padding below, so no line wraps a second time
+// and the block stays an even, centred paragraph
 const UNAVAILABLE_MESSAGE = [
-  "This prayer's time isn't available right now,",
-  'so no alert will go off for it.',
+  "This prayer's time isn't available",
+  'right now, so no alert will go off.',
   '',
-  'Your alert setting is kept, and comes back',
-  'on its own once a time is available.',
+  'Your alert setting is kept, and it',
+  'comes back once a time is available.',
 ].join('\n');
 
 interface AlertSheetBodyRef {
@@ -300,13 +302,13 @@ const styles = StyleSheet.create({
     color: 'rgb(146, 184, 228)',
     width: 100,
   },
-  // Centred both ways in a box about as tall as the options it stands in for, and kept well inside the title's
-  // edge so the paragraph reads as a small block rather than a full-width line
+  // Centred both ways in a box about as tall as the options it stands in for. The short lines keep the block
+  // narrow and well inside the title's edge; the padding only guarantees that on the narrowest phones
   unavailable: {
     minHeight: 220,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: SPACING.xxxl * 2,
+    paddingHorizontal: SPACING.xxxl,
     paddingVertical: SPACING.xxxl,
     marginBottom: SPACING.md,
   },

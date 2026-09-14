@@ -42,8 +42,9 @@ export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextO
   isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
 
 /**
- * Whether the bell must refuse a press: the occurrence on screen has no readable time, so nothing could
- * ever fire for it (R5). The saved preference is left as it is, so it applies again to readable days.
+ * Whether the bell is unavailable: the occurrence on screen has no readable time, so nothing could ever
+ * fire for it, and a press explains that instead of offering options (R5). The saved preference is left
+ * as it is, so it applies again to readable days.
  */
 export const isShownOccurrenceUnavailable = (
   isSelectedForOverlay: boolean,

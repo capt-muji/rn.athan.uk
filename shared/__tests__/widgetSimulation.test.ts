@@ -864,25 +864,29 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
 
   const expectedAt = (instant: number) => {
     const upcoming = readable.filter((prayer) => prayer.datetime.getTime() > instant);
-    const displayDate = listDays.find((date) => {
-      const rows = readableOn(date);
-      if (rows.some((prayer) => prayer.datetime.getTime() > instant)) return true;
-      if (instant >= endOfListDay(date)) return false;
-      if (rows.length === 0) return true;
-      // The day before a list day with no readable time keeps its place until 00:00, unless a row of its own
-      // falls after that 00:00
-      const following = addDaysToDateString(date, 1);
-      return (
-        listDays.includes(following) &&
-        readableOn(following).length === 0 &&
-        rows.every((prayer) => prayer.datetime.getTime() <= endOfListDay(date))
-      );
-    });
-    if (upcoming.length === 0 || !displayDate) {
+    if (upcoming.length === 0) {
       throw new Error(`Nothing left to show at ${new Date(instant).toISOString()}`);
     }
-
     const next = earliest(upcoming);
+
+    // Worked out from moments rather than by walking list days: normally the next prayer's own day is on screen.
+    // A day with no readable time takes the screen for its own 24 hours, once nothing of an earlier day is still
+    // due; and the day of the prayer that passed last keeps it until its own 00:00 when the day after has none.
+    const blankDays = listDays.filter((date) => readableOn(date).length === 0);
+    const startOfListDay = (date: string): number => createPrayerDatetime(date, '00:00').getTime();
+    const blankNow = blankDays.find(
+      (date) => instant >= startOfListDay(date) && instant < endOfListDay(date) && next.belongsToDate > date
+    );
+    const passed = readable.filter((prayer) => prayer.datetime.getTime() <= instant);
+    const lastPassed = passed.length > 0 ? latest(passed) : null;
+    const waiting =
+      lastPassed &&
+      blankDays.includes(addDaysToDateString(lastPassed.belongsToDate, 1)) &&
+      instant < endOfListDay(lastPassed.belongsToDate) &&
+      next.belongsToDate > lastPassed.belongsToDate
+        ? lastPassed.belongsToDate
+        : undefined;
+    const displayDate = blankNow ?? waiting ?? next.belongsToDate;
     const held = !readableOn(displayDate).some((prayer) => prayer.datetime.getTime() > instant);
     const previous = readable.filter(
       (prayer) =>
