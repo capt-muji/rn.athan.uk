@@ -146,6 +146,26 @@ afterAll(() => {
 // =============================================================================
 
 describe.each(PRAYERS)('committing $type $name', ({ type, name, index, arabic, armed }) => {
+  const athanIds = Object.keys(armed).filter((id) => id.startsWith('athan_'));
+  const reminderIds = Object.keys(armed).filter((id) => id.startsWith('reminder_'));
+
+  /** What is filed for this prayer, as [id, alert type], sorted by id */
+  const filed = (records: { id: string; alertType: AlertType }[]) =>
+    records.map(({ id, alertType }) => [id, alertType]).sort(([a], [b]) => String(a).localeCompare(String(b)));
+
+  const withType = (ids: string[], alertType: AlertType) => filed(ids.map((id) => ({ id, alertType })));
+
+  /**
+   * The records a later Off commit or sweep reads: under this prayer's schedule and index, and nowhere else on
+   * that schedule, since a record filed under another prayer leaves this one's alarm with nothing to cancel it
+   */
+  const expectFiled = (athans: (string | AlertType)[][], reminders: (string | AlertType)[][]) => {
+    expect(filed(Database.getAllScheduledNotificationsForPrayer(type, index))).toEqual(athans);
+    expect(filed(Database.getAllScheduledRemindersForPrayer(type, index))).toEqual(reminders);
+    expect(filed(Database.getAllScheduledNotificationsForSchedule(type))).toEqual(athans);
+    expect(filed(Database.getAllScheduledRemindersForSchedule(type))).toEqual(reminders);
+  };
+
   beforeEach(() => {
     setReminderInterval(type, index, INTERVAL);
   });
@@ -155,15 +175,8 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, arabic, a
 
     expect(triggers()).toEqual(armed);
     expect([...osState].sort()).toEqual(Object.keys(armed).sort());
-    expect(
-      Database.getAllScheduledRemindersForPrayer(type, index)
-        .map((record) => record.id)
-        .sort()
-    ).toEqual(
-      Object.keys(armed)
-        .filter((id) => id.startsWith('reminder_'))
-        .sort()
-    );
+    // Each with its own alert type: the athan Silent and its reminder Sound
+    expectFiled(withType(athanIds, AlertType.Silent), withType(reminderIds, AlertType.Sound));
   });
 
   it('arms nothing while the at-time alert is off, whatever the reminder says, and cancels the reminders it had', async () => {
@@ -174,18 +187,18 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, arabic, a
     expect(scheduleMock).not.toHaveBeenCalled();
     expect(cancelMock.mock.calls.map(([id]) => id).sort()).toEqual(earlier.sort());
     expect([...osState]).toEqual([]);
-    expect(Database.getAllScheduledRemindersForPrayer(type, index)).toEqual([]);
+    expectFiled([], []);
   });
 
   it('arms the at-time alert alone and cancels the reminders it had when the reminder is off', async () => {
     seedReminder(type, name, index, TODAY);
     seedReminder(type, name, index, TOMORROW);
 
-    await updatePrayerNotifications(type, index, name, arabic, AlertType.Silent, AlertType.Off);
+    await updatePrayerNotifications(type, index, name, arabic, AlertType.Sound, AlertType.Off);
 
     const athansOnly = Object.fromEntries(Object.entries(armed).filter(([id]) => id.startsWith('athan_')));
     expect(triggers()).toEqual(athansOnly);
     expect([...osState].sort()).toEqual(Object.keys(athansOnly).sort());
-    expect(Database.getAllScheduledRemindersForPrayer(type, index)).toEqual([]);
+    expectFiled(withType(athanIds, AlertType.Sound), []);
   });
 });
