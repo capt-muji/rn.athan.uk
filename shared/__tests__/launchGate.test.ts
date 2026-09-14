@@ -26,13 +26,13 @@ const allRevealInputs = (): RevealInput[] => {
 
 describe('isWaitingForData', () => {
   it.each([
-    ['no stored days while sync loads', false, 'loading', true],
-    ['no stored days once sync has data', false, 'hasData', false],
-    ['no stored days once sync has failed, which shows the error screen', false, 'hasError', false],
-    ['a warm launch while sync loads', true, 'loading', false],
-    ['a warm launch once sync has data', true, 'hasData', false],
-    ['a warm launch once sync has failed', true, 'hasError', false],
-  ] as [string, boolean, SyncState, boolean][])('%s: waits %#', (_case, sequenceReady, syncState, waits) => {
+    ['no stored days while sync loads', true, false, 'loading'],
+    ['no stored days once sync has data', false, false, 'hasData'],
+    ['no stored days once sync has failed, which shows the error screen', false, false, 'hasError'],
+    ['a warm launch while sync loads', false, true, 'loading'],
+    ['a warm launch once sync has data', false, true, 'hasData'],
+    ['a warm launch once sync has failed', false, true, 'hasError'],
+  ] as [string, boolean, boolean, SyncState][])('%s: waits %s', (_case, waits, sequenceReady, syncState) => {
     expect(isWaitingForData(sequenceReady, syncState)).toBe(waits);
   });
 });
