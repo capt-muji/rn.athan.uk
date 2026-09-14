@@ -54,7 +54,7 @@ const show = (type: ScheduleType, breakage: Breakage, [date, time]: [string, str
 };
 
 /**
- * The header text, wired as Day wires it
+ * The header text from the inputs Day reads, for the functions alone; Day.test.ts calls Day itself
  *
  * @param overlayIndex The highlighted row's index on this page, or null while the overlay highlights nothing here,
  *   when Day's selected index atom reads 0
