@@ -40,6 +40,7 @@ const delayed = (delayMs: number, animation: Animation): Animation => ({ kind: '
 const configOf = (animation: unknown) => (animation as { config: unknown }).config;
 
 const easeIn = (t: number) => t * t;
+const easeOut = (t: number) => 1 - (1 - t) * (1 - t);
 
 const mountProgress = (target: number, options?: Options) => {
   const props: ProgressProps = { target, options };
@@ -84,15 +85,20 @@ describe('useDerivedProgress', () => {
   });
 
   it('keeps the timing it took when the target changed, though a re-render mid-transition brings other options', () => {
-    const cascade = { duration: ANIMATION.durationSlow, delay: ANIMATION.cascadeDelay };
+    const cascade = { duration: ANIMATION.durationSlow, delay: ANIMATION.cascadeDelay, easing: easeOut };
     const view = mountProgress(0, cascade);
 
     view.rerender({ target: 1, options: cascade });
-    const inFlight = delayed(ANIMATION.cascadeDelay, timing(1, { duration: ANIMATION.durationSlow }));
-    expect(view.result.value).toEqual(inFlight);
+    expect(view.result.value).toEqual(
+      delayed(ANIMATION.cascadeDelay, timing(1, { duration: ANIMATION.durationSlow, easing: easeOut }))
+    );
 
-    view.rerender({ target: 1, options: { duration: ANIMATION.durationFade } });
-    expect(view.result.value).toEqual(inFlight);
+    view.rerender({ target: 1, options: { duration: ANIMATION.durationFade, easing: easeIn, defaultTiming: true } });
+    const inFlight = view.result.value as unknown as Extract<Animation, { kind: 'delay' }>;
+    expect(inFlight).toEqual(
+      delayed(ANIMATION.cascadeDelay, timing(1, { duration: ANIMATION.durationSlow, easing: easeOut }))
+    );
+    expect((configOf(inFlight.animation) as { easing: unknown }).easing).toBe(easeOut);
 
     view.rerender({ target: 0, options: { duration: ANIMATION.durationFade } });
     expect(view.result.value).toEqual(timing(0, { duration: ANIMATION.durationFade }));
@@ -110,7 +116,7 @@ describe('useDerivedProgress', () => {
       { duration: ANIMATION.durationFade },
     ],
     ['defaultTiming on', { defaultTiming: true, duration: ANIMATION.durationSlow, easing: easeIn }, undefined],
-  ])('given %s, times the change with config %p', (_, options, config) => {
+  ])('given %s, times the change with the config that implies', (_, options, config) => {
     const view = mountProgress(0, options);
     view.rerender({ target: 1, options });
 
