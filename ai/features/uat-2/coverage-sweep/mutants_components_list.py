@@ -62,6 +62,9 @@ mutate.MUTATIONS[:] = [
     ('components/prayer/Prayer.tsx', 'isPassed: Prayer.isPassed,\n      isSelectedForOverlay,', 'isPassed: isSelectedForOverlay,\n      isSelectedForOverlay: Prayer.isPassed,', 'call site: passed and highlighted swapped'),
     ('components/prayer/Prayer.tsx', "if (action === 'open') openOverlay(type, index);", "if (action === 'open') openOverlay(type, 0);", 'call site: overlay opened on row 0'),
     ('components/prayer/Prayer.tsx', "if (action === 'open') openOverlay(type, index);", "if (action === 'open') openOverlay('standard' as ScheduleType, index);", 'call site: overlay opened on the Standard page'),
+    ('components/day/Day.tsx', 'usePrayer(type, overlaySelectedIndex, true)', 'usePrayer(type, 0, true)', "call site: header dated from row 0's occurrence"),
+    ('components/day/Day.tsx', 'getOverlayActiveForTypeAtom(type), [type]', 'getOverlayActiveForTypeAtom(ScheduleType.Standard), [type]', 'call site: header follows the Standard overlay only'),
+    ('components/day/Day.tsx', 'getOverlayActiveForTypeAtom(type), [type]', 'getOverlayActiveForTypeAtom(ScheduleType.Extra), [type]', 'call site: header follows the Extras overlay only'),
 ]
 
 if __name__ == '__main__':
