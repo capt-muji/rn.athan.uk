@@ -2,8 +2,8 @@
  * Unit tests for the permission fallbacks in hooks/useNotification.ts
  *
  * When notifications are refused, the settings dialog sends each platform to its own notification settings and reads
- * the permission again once opening them succeeds; and a permission API that throws counts as a refusal, so no alert
- * is saved that could never go off. Neither native call waits for the user to come back from Settings, so what that
+ * the permission again; and a permission API that throws counts as a refusal, so no alert is saved that could never
+ * go off. Neither native call waits for the user to come back from Settings, so what that
  * second read sees on a device is not shown here.
  */
 
@@ -57,7 +57,7 @@ describe('the settings dialog', () => {
     ['ios', [[]], []],
     ['android', [], [['android.settings.APP_NOTIFICATION_SETTINGS']]],
   ])(
-    "on %s, opens that platform's notification settings and answers with the permission read after opening them",
+    "on %s, opens that platform's notification settings and answers with the permission read again",
     async (os, openSettingsCalls, sendIntentCalls) => {
       platform.OS = os;
       getPermissions.mockResolvedValueOnce({ status: 'denied' }).mockResolvedValueOnce({ status: 'granted' });
