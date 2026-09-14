@@ -9,7 +9,6 @@
 import { useChromeDeferred } from '../useChromeDeferred';
 import { mountHook } from './hookHarness';
 
-// Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 jest.mock('react', () => require('./hookHarness').react);
 
 const frames = new Map<number, FrameRequestCallback>();
@@ -55,7 +54,7 @@ describe('useChromeDeferred', () => {
     paintFrame();
     expect(view.result).toBe(false);
 
-    jest.runOnlyPendingTimers();
+    jest.advanceTimersByTime(0);
     expect(view.result).toBe(true);
   });
 
@@ -66,7 +65,7 @@ describe('useChromeDeferred', () => {
 
     paintFrame();
     view.rerender();
-    jest.runOnlyPendingTimers();
+    jest.advanceTimersByTime(0);
 
     expect(view.result).toBe(true);
     expect(frameRequests).toBe(1);
@@ -79,7 +78,6 @@ describe('useChromeDeferred', () => {
     expect(frames.size).toBe(0);
 
     paintFrame();
-    jest.runAllTimers();
-    expect(view.result).toBe(false);
+    expect(jest.getTimerCount()).toBe(0);
   });
 });
