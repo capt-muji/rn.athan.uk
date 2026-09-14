@@ -13,7 +13,13 @@ import { getBarOpacity, useCountdownBar } from '../useCountdownBar';
 // Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 const mockAtomValues = new Map<string, unknown>();
 
-jest.mock('jotai', () => ({ useAtomValue: (atom: string) => mockAtomValues.get(atom) }));
+// An atom no test set throws, so a hook reading the other schedule's atom fails instead of reading undefined
+jest.mock('jotai', () => ({
+  useAtomValue: (atom: string) => {
+    if (!mockAtomValues.has(atom)) throw new Error(`Unexpected atom read: ${atom}`);
+    return mockAtomValues.get(atom);
+  },
+}));
 
 jest.mock('@/stores/schedule', () => ({
   standardNextPrayerAtom: 'standardNextPrayerAtom',
@@ -60,16 +66,19 @@ describe('useCountdownBar', () => {
     expect(useCountdownBar(type)).toEqual({ progress: 95, isReady: true, isWarning: true, isAvailable: true });
   });
 
-  it('is not ready before there is a next prayer, and says so apart from availability', () => {
-    setBar(ScheduleType.Standard, { next: null, progress: 0, isWarning: false, isAvailable: false });
+  it.each([ScheduleType.Standard, ScheduleType.Extra])(
+    '%s is not ready before there is a next prayer, and says so apart from availability',
+    (type) => {
+      setBar(type, { next: null, progress: 0, isWarning: false, isAvailable: false });
 
-    expect(useCountdownBar(ScheduleType.Standard)).toEqual({
-      progress: 0,
-      isReady: false,
-      isWarning: false,
-      isAvailable: false,
-    });
-  });
+      expect(useCountdownBar(type)).toEqual({
+        progress: 0,
+        isReady: false,
+        isWarning: false,
+        isAvailable: false,
+      });
+    }
+  );
 });
 
 // =============================================================================
