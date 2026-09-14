@@ -698,6 +698,125 @@ Method: every page of every text layer was read with the Read tool, with nothing
 ### B26. `wayback/timezone.html`
 - **Status:** 0 bytes on disk, so there is nothing to read. It is logged as an empty capture, and its site-level content is covered by `notes/site.md`.
 
+
+### B14a. urdu-uk-moonsight.pdf: all 16 scanned pages viewed (`png/urdu_p1–p16`)
+- **Page numbering:** the pages are printed 1–8 then 17–24. **Printed pp.9–16 are absent from the PDF**, so the file itself is incomplete; this is recorded as a gap in the source, not a reading gap.
+- **Title (p.1):** "برطانیہ میں رؤیت ہلال کا مسئلہ / برطانیہ میں سعودی رؤیت پر چلنے والوں سے سنبھلنے کی درخواست" ("The problem of moonsighting in Britain / a request to those following the Saudi sighting to take care").
+- **Content:**
+  - An Urdu polemic against the UK following Saudi announcements.
+  - Sighting is impossible under about 16 hours' age.
+  - The Hanafi requirement of "jamm-e-ghafir" (a large group) under a clear sky, citing Durr al-Mukhtar, Hidaya and Fatawa Haqqaniya.
+  - The Al-Watan "شهود المستحيل" witnesses (20 Jan 2005, over 80 years old), also covered by Roznama Jang London.
+  - Fatawa Rahimiyya.
+  - Letters from Mufti Taqi Usmani and Abul Hasan Ali Nadwi.
+  - p.17: al-Subki's fatwa that calculation denying possibility voids the testimony.
+  - p.18: Maulana Yaqub Kawi, Dewsbury Tablighi markaz, "۲۴ شعبان ۱۴۱۴ھ (۵ فروری ۱۹۹۴ء)".
+  - p.19: Burhanuddin Sambhali.
+  - p.20: Darul Uloom Deoband fatwa, Mufti Habibur Rahman, "۱۸ صفر ۱۴۲۴ھ (۲۰ اپریل ۲۰۰۳ء)": follow Morocco.
+  - pp.21–23: Mazahir Uloom, Ahmad Khanpuri, Yusuf Binnori, Khairul Madaris; the "۳۲ سال کا کیلنڈر گرینچ کے مطابق" claim; Ismail Kachhlawi "۱۶ جنوری ۱۹۹۲ء".
+  - p.24: appeal to ulama and mosque trustees.
+  - This is the Urdu source of the English fatwa digest in `wayback/fatwa_scholars.pdf` (C13).
+- **Only time-related phrase:** p.21, "جہاں طلوع وغیرہ میں زیادہ تفاوت نہ ہو" ("where there is not much difference in [sun]rise etc."). **No prayer-time content.**
+- **Pages read:** 16/16 (all present pages).
+
+### B15a. PPT embedded pictures, all extracted and viewed (`doc-reading/png/ppt/`, contact sheets `sheet_0–5.png`)
+- **astronomy-overview.ppt: 32 pictures.** Earth over sunset, night-lights map, meteor shower, pixelated planet discs (Mercury, Venus, Earth, Mars, Jupiter, Uranus, Neptune), Earth hemispheres, star-size comparisons ("Jupiter is about 1 pixel in size", "Antares is 16th brightest star in the sky"), Saturn, a solar-system diagram, the Apollo flag photo, Jupiter/Saturn/Sun size charts, a Halley 2024 orbit plot, Saturn ring tilt 1996–2000, Earth and Moon, Big Dipper / Polaris / Ursa Major, asteroids, a comet, and a thin black bar (#26).
+- **astronomy2009.ppt: 30 pictures.** All md5-identical to pictures in astronomy-overview; only 3483d96b (planets lineup) and c6b0ef14 (Halley/Pluto orbit) are unique to the overview deck.
+- **Title slides** (Quick Look): "Overview of Basic Astronomy" and "International Year of Astronomy (2009)".
+- **fcna-drsiddiqi.ppt:** one 103-byte all-black PNG. Title slide (Quick Look): "Islamic Lunar Calendar / Fiqh Council of North America".
+- **Unverified:** slide-by-slide layout (which picture sits on which slide). There is no PPT renderer (no LibreOffice); Quick Look gives only the first slide. The slide text is fully read (B15, B18) and every picture is viewed. **No prayer-time content in text or pictures.**
+
+### B10a. articles__moonsplit.doc rendered (Quick Look, 1 page)
+- The page shows the NASA rille photo and two "Straight Wall" CCD images, matching the text in B10. **1/1 page. No prayer-time content.**
+
+### B17a. eid-article.doc vs articles__eid-or-hajj.doc: complete token diff, read in full
+- **Sizes:** 3616 vs 4085 tokens, ratio 0.8438. Every hunk was printed and read.
+- **What the diff shows:** eid-article.doc is the **earlier draft**; eid-or-hajj ("Revised") is the rewrite.
+- **Wording changes:** "Way of the Prophet" → "Sunnah"; "arafah" → "Arafah"; "Islamic law" → "Sharia".
+- **Revised version adds:**
+  - an "Introduction" heading;
+  - the Eid prayer instituted in year 1 AH ("شرعت صلاة العيد سنة الأولى من الهجرة", Bayhaqi), with Hajj obligatory only in 9th/10th year;
+  - Ibn Umar's report of ten years of sacrifice in Madinah (Musnad Ahmad);
+  - "There is no evidence that any of the four rightly guided caliphs … tried to do it";
+  - the Fadail-cannot-ground-Ahkam argument;
+  - the 1427 Dhul-Hijja country lists (30 Dec vs 31 Dec 2006);
+  - references to Wahba al-Zuhayli and moonsighting.com/1427zhj.html.
+- **Draft only:** the 250-miles Makkah–Madinah argument and the "Makkan horizon … قياس" wording. The draft's 1426 country list (Tue 10 / Wed 11 Jan 2006, "UK" on Wednesday) is replaced in the revision.
+- **No prayer-time content in either.**
+
+### B27. ned-tour1966.doc, "N.E.D. Educational Tour 1966 (Third Year Engineering Class)", Khalid Shaukat
+- **Text read in full:** Word piece-table parse `text/wayback__ned-tour1966.doc.parsed.txt`, 140/140 lines, plus `strings.txt` 53/53.
+- **Contents:** a 12 March – 1 April 1966 student tour diary: Karachi, Kotri, Mohenjodaro, Sukkur, Multan, Daudkhel, Kala Bagh, Peshawar, Landikotal/Torkham, Warsak Dam, Dargai, Swat, Rawalpindi, Murree, Islamabad, Abbottabad, Lahore. The last lines are "PAGE 6" field codes.
+- **Other text files:** `ned-tour1966.clean.txt` and `.doc.txt` are raw binary dumps (the file is 15 MB because of embedded images); they contain no further prose.
+- **Embedded pictures:** see B27a.
+- **No prayer-time content.**
+
+### B28. compass.pdf, "COMPASS3.PDF", author Khalid Shaukat (9 pp.)
+- **Read:** text 2184/2184 lines, plus p.1 render.
+- **Contents:** a world list of cities by country (Afghanistan … Zimbabwe; US "Alphabetical within State") with one integer 0–39 each.
+  - UK entries: Aberdeen 26, Belfast 26, Birmingham 26, Blackburn 26, Bradford 26, Cambridge 27, Cardiff 27, Coventry 26, Dundee 26, Edinburgh 26, Glasgow 26, Leeds 26, Leicester 26, Liverpool 26, **London 26**, Manchester 26, Oldham 26, Oxford 26, Plymouth 27, Ramsgate 26, Scraborough [sic] 26, Sheffield 26, Stroud 27.
+  - The values wrap from 39 to 0 (Vancouver 0, Seattle 0, Mombasa 0), so they are a setting on a 40-division dial.
+- **Meaning (UNVERIFIED):** the document gives no heading, units or explanation; by its name it is a Qibla-compass dial setting.
+- **No prayer-time content.**
+
+### B29. 1444HijriCalendar.pdf (live), Hijri Committee of India, "Alruman Calendar 2022-2023"
+- **Read:** text 1191/1191 lines, plus all 6 renders (`png/hijri1444_p1–p6`). p.1 re-viewed this pass; the text layer matches the image (dates, phase codes FQ/FM/LQ/NM/UQ with UTC times, e.g. Muharram "NM UTC 08:17", Safar "NM UTC 21:54").
+- **Contents:** 12 months of 1444 AH in a Sunday-first grid. The month begins the day after conjunction ("UQ: Urjoonal Qadeem like"). Legend, Quran 9:36 and 55:5, and bank details. Eclipses marked: "OCTOBER 25 PARTIAL SOLAR ECLIPSE", "NOVEMBER 8 TOTAL LUNAR ECLIPSE", "APRIL 20 HYBRID SOLAR ECLIPSE", "MAY 05 LUNAR PENUMBRAL ECLIPSE".
+- **No prayer-time content.**
+
+
+### B30. twoeids.pdf = articles__twoeids.pdf (md5 4b04028…), "Two Eids; The root of the problem", Dr. Waheed Younis, Toronto (14 pp.)
+- **Text read:** 830/830 lines (the two text extractions are byte-identical). Figure pages 2–5 and 10–12 were rendered and viewed (C11).
+- **Content:**
+  - Elongation angle; "it takes around 17 to 40 hours from the conjunction to the first visibility"; "it can not be less than 15 hours".
+  - Table 1: Saudi month starts 1417–1423H with moon age at Makkah sunset.
+  - 1423H Zul-Hajj witnesses "kept seeing it until 17:50 whereas the moonset at that location was only at 17:18".
+  - Rebuttals 1–14.
+  - Suggested solution (Tables 2–3, flow chart Fig.6).
+  - North America spans 60°W–120°W, "only 16%" of the time a horizon split arises.
+- **Prayer-time mentions:** "salaat-ul-jumma" (analogy only). Qibla needs "spherical trigonometry". **No prayer-time content.**
+
+### B31. qibla-wy.pdf, "Qibla in North America", Dr. Waheed Younis, Toronto (11 pp., 2005-08-28)
+- **Text read:** 719/719 lines. Figure pages 2–7, 9 and 10 were viewed (C10).
+- **Content:**
+  - Great circle vs rhumb line; direction vs bearing.
+  - Formulas: cos p = cos a·cos b + sin a·sin b·cos∠BPA, and sin∠ABP = sin∠BPA·sin b / sin p.
+  - Boston worked example: Makkah "39°49′24″ E (=39.823333°E) and 21°25′24″ N (=21.423333°N)"; p = 90.3104°; "∠ABP = 60.1341°", "That is 60° from North to East".
+  - Table of 31 cities (C10).
+- **No prayer-time content.**
+
+
+### B32. articles__adha-paper.doc / .pdf, "Eid al-Adha is connected with Hajj", Dr. Zulfiqar Ali Shah (26 pp. pdf)
+- **Read:** doc text 503/503 lines in full. C5 showed the pdf and doc differ only in page numbers, headers and footnote placement (959 hunks, all read), so this covers the 26-page pdf.
+- **Argument:**
+  - It first sets out the local-sighting case: the Eids instituted in 1–2 AH before Hajj (6–9 AH); Tirmidhi's ten years of sacrifice in Madinah; Abdullah Saleem; Taqi Usmani.
+  - It then argues that Eid al-Adha rites follow the Hujjaj, citing Ibn Taymiyyah, Ibn Rajab, al-Baghawi, al-Sarakhsi, al-Nawawi and Ibn Qudamah ("الناس تبع للحاج"), and the hadith "صومكم يوم تصومون… وأضحاكم يوم تضحون".
+  - Conclusion: "Going with the Hajj is more beneficial (Maslahah)".
+  - 86 endnotes.
+- **Prayer-time mentions (fiqh only, no times):** Eid prayer timing follows the pilgrims' arrival at Mina; Takbeer of Tashreeq begins "عقيب صلاة الظهر من يوم النحر" and runs to "الصبح من آخر أيام التشريق" (varying opinions). **No prayer-time calculation content.**
+
+
+### B27a. ned-tour1966.doc: all 45 embedded pictures extracted and viewed
+- **Picture inventory:** the Data stream is 15,461,547 bytes, holding exactly 45 PICF blocks whose sizes sum to the whole stream. The blocks are 38 EMF (zlib-compressed, each wrapping one bitmap record type 81) and 7 JPEG.
+- **Rendering:** all 45 decoded.
+  - EMF pictures: `png/ned_emf/emf_00–37.bmp`, contact sheets `ned_emf/sheet_0–3.png`.
+  - JPEGs: `png/ned2/img_00–06.jpg`, contact sheet `ned2/sheet.png`.
+  - Two stray JPEG start markers inside EMF blocks 20 and 25 are compressed data, not extra images.
+- **Content:** black-and-white 1966 tour photos of students at the places in B27:
+  - train carriage "PASS. B4";
+  - Kotri Junction;
+  - barrages;
+  - brick ruins;
+  - a Multan gate;
+  - Peshawar University / Islamia College;
+  - the Khyber gate;
+  - a Landi Kotal tea table;
+  - "SUFAID MAHAL";
+  - "CIVIL HOSPITAL MURREE";
+  - Swat hills;
+  - a Lahore Fort / Badshahi strip (emf_37).
+- **Pages read:** 1 document plus 45/45 pictures. **No prayer-time content.**
+
 <!-- PART-B-BELOW -->
 
 # PART C. Redo log and completeness ledger (after the no-truncation directive)
@@ -918,4 +1037,164 @@ Earlier passes used character slices in a few places. Each one has been redone h
 - **Context, as printed:** 'He replied: "You should approximate the times." [Sahîh Muslim]. Therefore, for such situations, a suggestion by Fuqaha' is t…'
 - **Result:** a pure encoding artefact. **No words lost** in any of the 56 captures.
 
+
+### C12. prayers-uk.pdf, pp.10–16 (printed 357–351): prayer-time pages re-rendered at 150 dpi and translated sentence by sentence
+- **Renders:** `doc-reading/png/puk/puk_p01–p20.png` (150 dpi). The earlier 130-dpi set is `png/prayersuk_p1–p20.png`.
+- **This pass:** every sentence on pp.10–16 was re-read from the image. The translation below is faithful rather than loose; Urdu numerals are rendered as Western digits; brackets hold my notes.
+- **Corrections to A3:**
+  - (a) Asr: the page says only "سایہ اصلی کے دوگنا (مثلین)", "double the original shadow (mithlayn)". A3's gloss "plus noon shadow" is interpretation, not printed text.
+  - (b) Point (2) also refers the reader to the Urdu book for the Shar'i status. A3 omitted that.
+  - (c) p.13 is now translated in full.
+- **Heading, p.10:** "Clarification regarding the times given in the book"
+- **Points (1)–(4), p.10:**
+  - (1) "In the book the prayer times have been arranged according to the conventional Greenwich Mean Time (G.M.T.)."
+  - (2) "In the book the Fajr and Isha times are based on eyewitness observations, whereas the times of sunrise, zawal, and the three prayers Zuhr, Asr and Maghrib have been arranged by approximate calculation from the assumed theories of astronomy; for their 'Shar'i status' read my separate Urdu book 'The correct time of Isha in Britain'."
+  - (3) "In the book these times of the year-2007 calendar are prepared according to summer and winter time, in which the one-hour decrease or increase in March and October has also been made."
+  - (4) "The Zuhr time has been set from five minutes after the time of nisf al-nahar (half the day, or Midday); at this time the Zuhr prayer can be prayed without any doubt."
+  - (A) "The zawal minutes are counted thus: five precautionary minutes are counted before the assumed time of Midday, and the remaining five minutes are counted from exact Midday until zawal, i.e. the start of Zuhr time, as follows:"
+- **The five minutes, p.11:**
+  - (i) "One and a half minutes are for the last edge of the sun to leave the meridian completely, because the sun needs only one and a half minutes to decline fully from the meridian."
+  - (ii) "Then, keeping in view an area of thirty miles around the central point of the city whose Midday time this is, one more minute has been added, so that the time difference of that area relative to the city's central time is covered. This makes two and a half minutes; then for further precaution another two and a half minutes were included, so that all three together make five minutes."
+  - (iii) "If the five minutes before Midday are added to these five, a total of ten minutes is counted as the 'zawal of the sun'!"
+  - Note: "At Midday every prayer is haram; Zuhr time begins after the said ten minutes. In reality the makruh time is only the one and a half to two and a half minutes in which the sun declines from the meridian and moves fully away. But because observatory times are approximate, not definitive, instead of two and a half minutes the said ten minutes have been counted as makruh time as a precaution, to remove the uncertainty and expected shortfall of the calculation."
+- **Points (5)–(6), p.12:**
+  - (5) "The Asr time has been arranged by calculating the time when the shadow is double the original shadow (mithlayn); for the time of mithl-e-awwal, contact Dr Khalid Shaukat at the email shaukat@moonsighting.com."
+  - (6) "The Maghrib prayer times have been arranged not by the observatories' sunset times computed for sea level, but according to the maximum height above sea level. The detail is that three minutes have been added to the observatory's sunset times, so that no doubt remains that the sun has set. (Some people add five minutes instead of three. Although three minutes suffice, anyone who wants to add five minutes in total should add only two minutes to these three, not five, so that three and two together make five in total.)"
+  - (A), running on to p.13: "The observatory people give the sunrise and sunset times of every city and place according to sea level rather than the elevation of those places, because it is not possible to calculate sunrise and sunset correctly by taking into account the elevation of every place with its ups and downs. So the approximate sunrise and sunset times that they give by sea-level (Sea Level) reckoning, they give on the assumption that the earth is perfectly round, like a football! Yet it is not so. They themselves describe the surface around the assumed centres of the earth, the North and South poles (Northpol/SouthPol), over areas thousands of miles long and wide, as not exactly level like the sea surface but pitted, with highs and lows, and to a considerable degree flattened and depressed. Despite this, their arranging sunrise and sunset times while treating the whole earth as round like a 'football' at sea level is their technical compulsion. In reality, at that moment the sun has neither risen nor set: at the given sunset time, in clear weather, it is still before the eyes, which in their technical terminology they call refraction (Refraction), and it actually sets a little later; likewise, it is seen rising a little before their given sunrise times!"
+- **The sunrise correction, p.13:** "Note: In the book (the Maghrib time is in order, but) the sunrise times have been set equal to the observatory's sea-level times; therefore it is necessary to set the sunrise times by subtracting three minutes from each day's 'sunrise' times."
+- **Points (7)–(8), p.14:**
+  - (7) "The Isha and Fajr times follow the year-long observations, the detail of which is in my separate Urdu and English books ('Fajar and Esha' and 'The correct time of Isha in Britain', compiled by Molvi Yaqub Ahmad Miftahi); see there."
+  - (8) "It is well known that in Britain the clock must be moved one hour back or forward on the last Sunday of March and October. The times in the book follow the 2007 calendar, in which this decrease or increase has also been made; therefore for later years the decrease or increase need be made only for a few dates of these two months (not for all the months from March to October or October to March). For detail see:"
+- **(A), pp.14–15, the clock change as printed:**
+  - Quote: "It is well known that in Britain in October one hour is added to standard time, so that at sunrise the start of these hazy winter days is in more light, by the artificial method of moving the clock one hour forward. This protects against road traffic accidents, and gives people more daylight at the start of the day for leaving home for their daily work, for children going to madrasah and school, and for returning home in the evening. Then as soon as the days advance from cold to warmth and become bright and clear by March, this one-hour increase is restored to the original standard time from the last Sunday of March by moving the clock one hour back. In this way the cycle of moving the clock one hour forward and back continues twice every year, in October and March."
+  - [As printed. The direction is the reverse of UK practice, where clocks go back in October and forward in March. In this text's own terms "increase" = the winter setting and "decrease" = the summer setting, and points C and E below are consistent with that usage.]
+- **(B), p.15:** "On this basis the dates of the last Sunday of October and March in later years will change relative to those of previous years, and to the extent of the difference in dates, a minor change will be needed year by year in the times of those dates! For example, the last Sunday of March 2007 is the 25th whereas in 2008 it is the 30th; likewise the last Sunday of October 2007 is the 28th whereas in October 2008 it is the 26th. So in March 2008 the last-Sunday date differs by four days, and in October by two days."
+- **(C), p.15:** "In view of this difference, in March 2008 an increase of one hour will now be made in the times of the 25th together with the 26th, 27th, 28th and 29th, because they previously carried the decreased time, whereas from the 30th the one-hour-decreased time is already present."
+  - [Physically: 25–29 March are BST in the 2007-based tables but GMT in 2008, so the printed times for those dates are one hour late for 2008.]
+- **(D), p.16:** "Likewise there is a clear difference between the last Sunday of October 2007 and that of October 2008: the last Sunday falls 'two days earlier', on the 26th instead of the 28th."
+- **(E), p.16:** "In view of this difference, the increase of one hour will be made only on the two dates 26 and 27 October 2008, because on the later dates this increase is already present."
+- **Result, p.16:** "The result: from the 2007 times, each year a one-hour decrease or increase must be made only on some dates around the last Sunday of March and October, and the rest of the calendar stays as it is."
+  - Closing duʿa (Urdu and Arabic). Signed "Molvi Yaqub Ahmad Miftahi, Nazim Hizbul Ulama UK, Muharram al-Haram 1428 / January 2007".
+- **Consistency with the tables (C7):** the offsets stated here match what the tables show numerically:
+  - Zuhr = noon + 5
+  - Maghrib = sunset + 3
+  - Asr at mithlayn
+  - Sunrise printed at sea-level value, with −3 to be applied by the reader
+  - GMT with 2007 clock changes
+- **Page ledger:** prayers-uk.pdf 20/20 pages read visually (A3). Pages 10–16 were re-verified in this pass.
+
+### C13. Image and render checks for documents in PART B
+- **alwatanimpossible.pdf, 4/4 pages viewed** (`png/alwatan_p1–p4`).
+  - The Arabic original of Al-Watan "شهود المستحيل", Hamza al-Muzaini, dated "الخميس 10 ذو الحجة 1425هـ الموافق 20 يناير 2005م العدد (1574)".
+  - Same article as B7; the Arabic says the witnesses were each over eighty ("يتجاوز عمر كل واحد منهما الثمانين").
+  - Only prayer reference: "قبيل المغرب" ("just before Maghrib"). No prayer-time content.
+- **actual-saudi-dates.pdf, 2/2 pages viewed** (`png/misc/saudidates_p1–p2`).
+  - Blue marks "a day later than calculated date"; red marks "a day earlier".
+  - 1431 Shawwal and Zul-Hijja, and 1433 Ramadan, are highlighted yellow: "Cases when moon is easily visible somewhere on the globe".
+  - Red cells, for example: 1395 Zul-Hijja and Hajj; 1404 Muharram and Shawwal; 1425 Shawwal, Zul-Hijja and Hajj; 1428–1429.
+  - Blue cells, for example: 1390; 1407–1408; 1416; 1432 Shawwal; 1433–1435; 1436; 1439.
+  - No prayer-time content.
+- **images/eclipses/le2015sep28t.pdf, 1/1 viewed.** NASA/Espenak "Total Lunar Eclipse of 2015 Sep 28", "Greatest Eclipse = 02:48:16.8 TD (= 02:47:07.5 UT)", contacts P1 00:11:47 to P4 05:22:27 UT, dated "2009 Apr 29". No prayer-time content.
+- **images/eclipses/le2016mar23n.pdf, 1/1 viewed.** "Penumbral Lunar Eclipse of 2016 Mar 23", "Greatest Eclipse = 11:48:21.3 TD (= 11:47:11.8 UT)", P1 09:39:29 to P4 13:54:50 UT. No prayer-time content.
+- **fiji-eid.pdf, 1/1 viewed.** Fiji Muslim League, 8 August 2013: new moon sighted, Eid-ul-Fitr Friday 9 August 2013. Signed Mohammed Taabish Akbar. No prayer-time content.
+- **wayback/fatwa_scholars.pdf (5 pp., KAMIL KHAN, 2005-10-14): text 231/231 lines and all 5 renders viewed.**
+  - This is a different document from the 38-page articles/fatwa_scholars.pdf (C2).
+  - Contents: a digest of fatwas against following Saudi sighting in the UK and for following Morocco:
+    - Deoband, Mufti Habibur Rahman, 18 Safar 1424
+    - Mazahirul-uloom, 1 Sha'aban 1424
+    - Dhabail
+    - Nadwatul Ulama, 9 Jan 1992
+    - Khairul Madaris Multan, 24 Jumadal-Thani 1424
+    - Binori Town, 21 Ramadhan 1424
+    - Taqi Usmani, 19 Dhil-Hijja 1412 and 19 Rabiut-Thani 1413
+    - Manzoor Naumani retraction, 19 Nov 1990
+    - Darul Ifta Bradford, 16 Jan 1992
+    - Ahsanul Fatawa
+    - ECFR resolution
+  - Placeholder links "VIEW FULL IN TEXT IN URDU ENGLISH (PLEASE PLACE A HYPELINK TO THE PDF)" are printed in blue.
+  - Only time mention: Mazahirul-uloom's "countries … where there isn't a lot of difference between sunrise and sunset times". No prayer-time content.
+
 <!-- PART-C-BELOW -->
+
+
+# PART D. Final completeness ledger: every document, pages read out of total
+
+Coverage for each file is shown as pages read out of pages in the file. "Text" means the full text layer was read line by line with no truncation; "render" means pages were viewed as images. Identical copies were checked by md5; near-duplicates by complete diff. Section references point to the evidence in this file.
+
+## Live site (`pdfs/live/`)
+| File | Pages read / total | How | Prayer-time content | Ref |
+|---|---|---|---|---|
+| 1444HijriCalendar.pdf | 6/6 | text 1191/1191 + 6 renders | none | B29 |
+| actual-saudi-dates.pdf | 2/2 | text 500/500 + 2 renders | none | B1, C13 |
+| articles__louaysafi.pdf | 2/2 | text | none | B2 |
+| articles__moonsighting-in-saudi-arabia.pdf | 1/1 | text | none | B3 |
+| articles__suggested-global-islamic-calendar.pdf | 8/8 | text | stance only: calculated Salah times accepted, no method | B4 |
+
+## Wayback (`pdfs/wayback/`)
+| File | Pages read / total | How | Prayer-time content | Ref |
+|---|---|---|---|---|
+| articles__fajr&isha-yam.pdf = fajr&isha-yam.pdf (md5 identical) | 123/123 | text + figure renders | **YES**: Blackburn observations, Fajr/Isha model statements | A1 |
+| fajar&isha-a5.pdf | 123/123 | text + full diff vs A1 | **YES** | A2 |
+| fajarishainbritain1.pdf | 68/68 | text + full raw diff (lines 1–1663, all read) + renders | **YES** | A2, C11 |
+| articles__prayers-uk.pdf (Urdu) | 20/20 | visual (text layer unusable); pp.10–16 re-read at 150 dpi and translated | **YES**: GMT basis, Zuhr = midday+5, Asr mithlayn, Maghrib = sunset+3, sunrise −3, clock-change rule | A3, C12 |
+| articles__uk-prayercharts.pdf (2006) | 257/257 | parsed by date; full diff vs 2009 (identical on common dates); headers identical | **YES**: tables | A4, C6 |
+| articles__uk-prayercharts1.pdf (2009) | 537/537 | every city page read (18,470 by-date lines) + solar check | **YES**: tables | A4, C6–C8 |
+| prayer-html/ (64 captures, 1999–2025) + captures.txt | 64/64 captures | visible text vs .txt word check; all read | **YES**: method statement history | A6, C4, C4a |
+| prayer-french.html | 1/1 | text | **YES** | A5, C3 |
+| articles__moon_uk.pdf (v0.8) | 49/49 | text + figure renders | none | C1, C10 |
+| moon_uk.pdf (v0.7) | 47/47 | full diff vs v0.8; images md5-identical | none | C1 |
+| articles__fatwa_scholars.pdf | 38/38 | full diff vs moon_uk v0.8 pp.15–49 + own front matter | none | C2 |
+| fatwa_scholars.pdf (different 5-page doc) | 5/5 | text + 5 renders | none | C13 |
+| articles__adha-paper.pdf + .doc | 26/26 | doc text 503/503 + full pdf/doc diff | none (Takbeer timing fiqh only) | B32, C5 |
+| articles__eid-or-hajj.pdf + .doc | 10/10 | full diff vs eid-article (read in full) + pdf/doc diff + renders p1, p9 | none | B17a, C5, C11 |
+| eid-article.doc | 1 doc (no pagination) | text 219/219 + Quick Look page 1 | none | B17, B17a |
+| articles__twoeids.pdf = twoeids.pdf (md5 identical) | 14/14 | text 830/830 + figure renders | none | B30, C11 |
+| qibla-wy.pdf | 11/11 | text 719/719 + figure renders | none | B31, C10 |
+| compass.pdf | 9/9 | text 2184/2184 + p1 render | none (unexplained 0–39 dial numbers; London 26) | B28 |
+| muslimnames.pdf | 158/158 | text 11,160/11,160 + blank pages + 90 vector pages rendered | none | C9, C9a |
+| articles__urdu-uk-moonsight.pdf = urdu-uk-moonsight.pdf (md5 identical) | 16/16 | visual (scans); printed pp.9–16 absent from source | none | B14, B14a |
+| alwatanimpossible.pdf | 4/4 | 4 renders (text layer garbled) | none | B8, C13 |
+| al-watan-80-yr-witnesses.pdf + .doc | 3/3 | text + doc text 38/38 | none | B7 |
+| articles__Suggested Global Islamic Calendar 2nd meeting.pdf | 4/4 | text | one Fajr remark ("15º, 18º, 19º … no unified definition of Fajr") | B5 |
+| articles__ahillah.pdf | 10/10 | text + renders p5, p7 | none (day-begins-at-Fajr theology) | B9, C11 |
+| articles__louaysafi.doc | 1 doc | text 36/36 | none | B2 |
+| articles__moonsighting-in-saudi-arabia.doc = moonsighting-in-saudi-arabia.doc (md5 identical) | 1 doc | text 18/18 | none | B3 |
+| articles__moonsplit.doc | 1/1 | text 13/13 + Quick Look render | none | B10, B10a |
+| articles__pmi_pmp.pdf | 2/2 | text + renders | none (spam) | B11, C11 |
+| articles__quranic-calendar.pdf | 9/9 | text | none | B12 |
+| articles__relevance of ummul qura calendar.pdf | 4/4 | text | none | B13 |
+| astronomy-overview.ppt | 30 slides | all slide text (142/142 lines) + all 32 pictures + title slide | none | B15, B15a |
+| astronomy2009.ppt | 26 slides | all slide text (228/228) + all 30 pictures (subset of overview) + title slide | none | B15, B15a |
+| fcna-drsiddiqi.ppt | 14 slides | all slide text (186/186) + its 1 picture (black) + title slide | none | B18, B15a |
+| aashura1430.doc | 1 doc | text 10/10 | none | B6 |
+| ecfr-announcement.doc (Arabic) | 1 doc | text 56/56 | none | B16 |
+| rhcna.doc | 1 doc | text 19/19 | none | B22 |
+| saudi-announcement1434shw.doc | 1 doc | text 2/2 | none | B23 |
+| ned-tour1966.doc | 1 doc (6 printed pages) | text 140/140 (+ strings 53/53); all 45 embedded pictures viewed (B27a) | none | B27 |
+| fiji-eid.pdf | 1/1 | render | none | C13 |
+| images__eclipses__le2015sep28t.pdf | 1/1 | render | none | C13 |
+| images__eclipses__le2016mar23n.pdf | 1/1 | render | none | C13 |
+| images__revised-report-sa.pdf | 1/1 | text + render | none | B19, C11 |
+| mecca__introduction.pdf | 4/4 | text + render p2 | none (Fajr in Mecca as a calendar limit only) | B20, C11 |
+| ramadan1431 false claim.pdf | 2/2 | text + renders | none ("after Maghrib Salaat") | B21, C11 |
+| unity in calendar.pdf | 4/4 | text + 4 renders | none | B24, C11 |
+| yesmoonsighted.pdf | 4/4 | text + 4 renders | none | B25, C11 |
+| timezone.html | 0 bytes | nothing to read (empty capture) | n/a | B26 |
+
+## Redo note (character limits and truncation)
+- **Redone in full after the no-truncation directive** (C-series):
+  - moon_uk Arabic diff
+  - fatwa_scholars stats
+  - adha/eid pdf-doc diffs
+  - chart samples
+  - britain1 raw diff (lines 500–1663 read this session)
+- **Earlier scans that used partial reads** were superseded by these complete reads:
+  - muslimnames 1–11,160
+  - uk2009 by-date file in 700-line chunks
+- **Remaining unverified items, stated honestly:**
+  - PPT slide-by-slide picture placement (no renderer).
+  - actual-saudi-dates colour coding: now verified by render (C13).
+  - The meaning of the compass.pdf numbers.
+  - The Shaukat Foreword referred to in A3 is not on disk.
+  - Printed pp.9–16 of urdu-uk-moonsight are absent from the source file.
+- **Unobtainable documents: none.** Every manifest entry is on disk and read; timezone.html is an empty capture.
