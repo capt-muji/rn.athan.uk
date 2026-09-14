@@ -68,6 +68,7 @@ describe('the settings dialog', () => {
       await alertDialog._pressButton('Open Settings');
 
       await expect(answer).resolves.toBe(true);
+      expect(getPermissions).toHaveBeenCalledTimes(2);
       expect((Linking.openSettings as jest.Mock).mock.calls).toEqual(openSettingsCalls);
       expect((Linking.sendIntent as jest.Mock).mock.calls).toEqual(sendIntentCalls);
     }
