@@ -1,16 +1,17 @@
 /**
  * clearAllScheduledRemindersForPrayer in device/notifications.ts when a cancel fails
  *
- * One reminder the OS refuses to cancel must not leave the prayer's other reminders armed, and must not
- * reject: the caller clears the prayer's records next, and the reconciliation sweep then cancels the
- * OS entry that has no record. The failure is logged with the identifier that failed.
+ * Only Android can refuse a cancel (it rejects with ERR_NOTIFICATIONS_FAILED_TO_CANCEL; iOS removes the
+ * request and never rejects). One refused reminder must not leave the prayer's other reminders armed,
+ * and must not reject: the caller clears the prayer's records next, and the reconciliation sweep then
+ * cancels the OS entry that has no record. The failure is logged with the identifier that failed.
  */
 
 import { cancelScheduledNotificationAsync } from 'expo-notifications';
 
 import { clearAllScheduledRemindersForPrayer } from '@/device/notifications';
 import logger from '@/shared/logger';
-import { ScheduleType } from '@/shared/types';
+import { AlertType, ScheduleType } from '@/shared/types';
 
 const mockGetReminders = jest.fn();
 
@@ -30,8 +31,12 @@ const record = (id: string) => ({
   time: '05:04',
   englishName: 'Suhoor',
   arabicName: 'السحور',
-  alertType: 1,
+  alertType: AlertType.Silent,
 });
+
+/** The rejection expo-notifications' Android NotificationScheduler gives for a cancel that fails */
+const androidCancelFailure = () =>
+  Object.assign(new Error('Failed to cancel notification.'), { code: 'ERR_NOTIFICATIONS_FAILED_TO_CANCEL' });
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -49,7 +54,7 @@ describe('clearAllScheduledRemindersForPrayer', () => {
     { label: 'the last', failing: [IDS[2]] },
     { label: 'every', failing: IDS },
   ])('asks the OS to cancel every reminder and resolves when $label cancel fails', async ({ failing }) => {
-    const errors = new Map(failing.map((id) => [id, new Error(`No scheduled notification ${id}`)]));
+    const errors = new Map(failing.map((id) => [id, androidCancelFailure()]));
     (cancelScheduledNotificationAsync as jest.Mock).mockImplementation(async (id: string) => {
       const error = errors.get(id);
       if (error) throw error;
