@@ -284,7 +284,71 @@ or coefficient appears anywhere in the book.**
 
 ## 4. How each finding would affect the app
 
-To be completed.
+This is research, so nothing here is a change. It is where each finding lands in the code as it
+stands on `uat-2` at `466b568`. Sections still waiting on data are marked.
+
+### 4.1 The moonsighting.com endpoint does not fit the current client as it is
+
+Measured against `time_json.php` on 2026-09-14 (section 2.4), the current client would reject
+every day, for four reasons:
+
+| What the endpoint does | Where the app assumes otherwise | Effect if pointed at it unchanged |
+| --- | --- | --- |
+| `times` is an **array** of `{ day: "Jan 01 Thu", times: {...} }`, with no year and no ISO date | `IApiResponse.times: Record<string, IApiSingleTime>` keyed by `YYYY-MM-DD` (`shared/types.ts`); `validateApiResponse`, `filterApiData` (`TimeUtils.isDateYesterdayOrFuture(date)`) and `transformApiData` all iterate `Object.entries` and use the key as the date | The dates would be the array indices `"0"` to `"364"` |
+| Values are padded: `"06:25   "` | `TIME_PATTERN = /^([01]\d\|2[0-3]):[0-5]\d$/` in `validateApiTimes` (`api/client.ts`) is anchored | Every day fails the pattern and is dropped as unreadable, so the client throws `Malformed prayer time` or `Incomplete data received` |
+| The field is `maghrib` | `REQUIRED_TIMES` and `IApiSingleTime` use `magrib`, as do `transformApiData`, `adjustTime(times.magrib, …)` for Istijaba, and the night-time code | `magrib` is missing on every day |
+| Two Asr fields (`asr_s`, `asr_h`), with `asr` following the method; no `*_jamat` fields | `IApiSingleTime.asr` and `asr_2`, plus the jamat fields (typed but unused) | The type needs a mapping; nothing uses the jamat fields today |
+
+The request itself (`buildApiUrl` in `api/client.ts`, `API_CONFIG` in `api/config.ts`) would take
+`lat`, `lon`, `tz` and `method` in place of `key` and `city`. **The endpoint needs no key**, so
+the London-only credential goes away. The year-per-request model in `stores/sync.ts`
+(`Api.fetchYear(previousYear | currentYear | nextYear)`) already matches the endpoint's `year`
+parameter. The single-day and month requests that londonprayertimes.com offers have no equivalent
+on `time_json.php`.
+
+`modules/tls13` and `device/tls13.ts` exist only because `www.londonprayertimes.com` accepts
+TLS 1.3 alone (finding 43). Whether the moonsighting hosts need them has not been measured.
+
+### 4.2 One prayer timezone for the whole app
+
+- `PRAYER_TIMEZONE = 'Europe/London'` (`shared/constants.ts:241`) is the only zone.
+- `shared/time.ts` reads it for every calendar-day and clock conversion: lines 26, 247, 320 and
+  331, and `createPrayerDatetime`.
+- The endpoint takes `tz` per request and returns clock times in that zone. So a worldwide client
+  has to carry the location's zone from the request through storage and on to every date
+  computation, and the constant becomes per-location state.
+- Finding 46's London-pinned test oracles (62 tests still assert London's clock values and DST
+  rule), `nightTimes.test.ts` included, are the v2.0 test work this implies.
+
+### 4.3 London shown as a fixed place in the interface
+
+These are visual and copy, listed so they are not missed. Changing them needs the owner's say
+under the standing no-visual-change rule:
+
+- `components/day/Day.tsx:56` renders "London, UK";
+- `widgets/PrayerWidget.tsx:204` subtitle "Prayer times for London";
+- `device/updates.ts:15`, the App Store URL slug `athan-london`.
+
+### 4.4 High latitude (findings 44 and 47)
+
+**Waiting on the endpoint measurement at Reykjavik, Tromsø and Longyearbyen.** The documented
+method (section 2.5) promises a value every day at every latitude, by 1/7 of the night above 55°,
+sliding to 60°, and stepping latitude down 0.1° until the sun sets. If the endpoint really emits a
+time for every day, then:
+
+- the `"-----"` polar window that `validateApiTimes` was written for would not occur from this
+  source;
+- Magrib and Isha after midnight (finding 44's `adjustPrayerDateForMidnightCrossing`,
+  `calculateBelongsToDate`, `getNightTimesForDay` in `shared/prayer.ts`) would be exercised every
+  summer above about 60°.
+
+### 4.5 The London modification
+
+**Waiting on the London data diff (section 3).** The candidates are named in sections 2.8 and
+2.10. Whatever it turns out to be decides whether a v2.0 London user sees today's times from the
+moonsighting.com base, or needs London's delta applied on top. Applying one would contradict the
+standing rule that the app edits nothing the API returns, unless the delta comes from a source
+rather than from the app.
 
 ## 5. Open questions for the owner
 
