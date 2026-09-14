@@ -17,22 +17,22 @@ Research only. Nothing on that branch is merged or pushed without the owner's go
   adhan is the closest implementation; the islamic-network family (AlAdhan method 15) omits the
   18° bound, the 1/7 rule and the +5/+3 offsets; several npm packages that claim the method don't
   implement it.
-- **Unfinished:** the full reads of every site page and every document (step 1), and the small
-  remainders listed in sections 3.1 to 3.4. Work so far is in
+- **Every document the site carried is read** (section 2.17). Shaukat computed Hizbul Ulama's
+  2007 UK directory; its tables apply no 1/7-of-the-night rule and carry city errors.
+- **Unfinished:** the full read of every site page (step 1), if session 1's site agent did not
+  finish it, and the small remainders listed in sections 3.1 to 3.4. Work so far is in
   `ai/features/moonsighting/notes/`, with unfinished strands in `*.in-progress.md`.
 
 ## Do, in order
 
-1. **Step 1.** Finish the full reads of every live and archived moonsighting.com page and every
-   document. Start from the in-progress notes and the scratch material in `~/athan-research/`, if it
-   still exists; otherwise re-fetch. Include the Urdu `articles/prayers-uk.pdf` (read visually) and
-   the two PPTs. Confirm with counts. Fold anything new into section 2.
-2. **Step 3.** Finish:
-   - mawaqit, islamic-network (1x.ax), kskhan77, muballighapp and the npm candidates, each with
-     provenance and deltas in minutes;
-   - the day-early clock change in Egypt, Israel and Palestine, and on `praytable.php`;
-   - latitudes beyond 70°N and south of −55°;
-   - the endpoint's ownership, reliability and terms.
+1. **Step 1.** If `notes/site.in-progress.md` still exists, finish the full read of every live and
+   archived moonsighting.com page from it and from the scratch material in `~/athan-research/`, if
+   that still exists; otherwise re-fetch. Confirm with counts, and fold anything new into section 2.
+2. **Remainders** (sections 3.1 to 3.4):
+   - reproduce London's Asr independently;
+   - measure the day-early clock change in Palestine;
+   - look into the McMurdo polar-edge runs and the Sky Prayers apps;
+   - run the Rust, C# and Dart ports only if a decision depends on their numbers.
 3. **Review.** Run one independent Opus reviewer over the whole findings file. It should attack
    every claim, count and fixture, and re-derive the London counts from `data/london/`. Fix what it
    finds.
