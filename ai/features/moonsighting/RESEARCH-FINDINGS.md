@@ -389,6 +389,44 @@ Python's `zoneinfo`:
   client in those zones would ship an hour-wrong day twice a year unless the source is fixed, the
   day is rejected, or the owner rules otherwise (section 5).
 
+### 2.13 How the published method changed, 1999 to 2024
+
+**Source.** `http://www.moonsighting.com/prayer.html` was the site's prayer-times page before
+how-we.html.
+
+- **Captures.** The Wayback Machine holds 64 distinct captures, by content digest, from
+  1999-02-21 to 2025-10-16; 56 were downloaded to `~/athan-research/pdfs/wayback/prayer-html/`.
+- **Unusable captures.** The four from 2021 onwards are a bot-challenge page ("One moment,
+  please..."), not the page itself.
+- **Missing captures.** Eight failed to download and are being retried, among them 27 July 2011.
+- **A limit on reading.** The passages below were pulled by keyword and truncated per capture, so
+  this timeline records only what a capture **says**. That a capture is silent on a rule is not
+  evidence it lacked one.
+
+| Capture (page's own "Updated") | What it says about Fajr, Isha and high latitude |
+| --- | --- |
+| 2005-03 (10 Mar 2005). The 1999–2004 captures carry the same degree and 1/7 keywords but were not read line by line | "Fajr & Isha are calculated for Sun being 18 degrees below horizon". Where that is too early or late: "a combination of 18 degrees, 15 degrees, and even 12 degrees", framed as 1/7 of the night ("Fajr is sunrise minus 1/7th of the night and Isha is sunset plus 1/7th of the night"), and "In some cases, even this is impractical, so the times ... are kept in line with other days". Above 66.5°: "Manual calculations are needed". Timetables are sent by email on request. Booklet "When to Pray Fajr & Isha", about 48 pages, unpublished. |
+| 2005-11 (31 Oct 2005) onwards | "Calculations of Fajr & Isha based on the sun being 18° or 15° below horizon ... are wrong ... This has also been confirmed by Hizbul Ulama UK", citing Miftahi's "Fajar and Isha Time in Britain". Moonsighting.com "uses a complex formula as a function of Latitudes and Seasons based on actual observation". The function is "checked against all round the year observations of Blackburn, UK". |
+| 2011-06 (17 Jun 2011) | Still "provides correct schedule upon request through e-mail". Its example requests include "London, ENGLAND - Hanbali". Above 66.5°: "Some convention has to be adopted based on local civil time that is practical and does not cause hardship." |
+| **2011-08 (16 Aug 2011)**, two weeks after London adopted the unified timetable on 1 August 2011 | Rewritten as "Prayer Times Definition We Use" (the text that grew into how-we.html). The rules:<ul><li>Fajr is Subh Sadiq "when morning light in the sky spreads horizontally", and Maghrib is "3 minutes after theoretical sunset".</li><li>"Moonsighting.com uses a combination of Shafaq Abyad in Winter and Shafaq Ahmer in summer ... Transition from Abyad to Ahmer is used in Spring and fall seasons ... These formulae are good up to the 55° latitude."</li><li>"**At latitudes between 55° and 65°**, the rule of Sab'u Lail (1/7th of the night) is used ... Isha time is earlier of the two ... Fajr time is later of the two."</li><li>"At latitudes higher than 65° ... a suggestion by Fuqaha' is to calculate for nearest lower latitudes where the sun sets and rises".</li><li>The function was fitted by "curve-fit technique", and "Moonsighting.com algorithm for function of latitudes and seasons is not yet included in the booklet".</li></ul> |
+| French page, 2010-08 capture (section 2.9) | 1/7 of the night "between 55 and 66 degrees" |
+| how-we.html today (1 Mar 2024) | The 18° comparison up to 55°; 1/7 of the night from 55° to **60°**; above 60°, "slide down to 60degrees". Fajr: "We originally used Subh-Sadiq as a little bit earlier than Fajr-al-Mustatir ... but recently ... started using the spread of light horizontally ('Tabayyun')". Where the sun does not set, latitude is stepped down 0.1° (faq_pt 1.2). |
+
+What this establishes:
+
+- **The high-latitude band has been restated at least three times.** The 1/7-of-the-night band's
+  upper edge went 66° (2010), then 65° (2011), then 60° with a slide to 60° (2024). Section 2.11
+  measured that neither the endpoint nor adhan applies the slide today. So **the published text
+  and the published tables disagree above 60°**, and the tables look closer to the 2010–2011
+  wording.
+- **The Fajr definition has changed too.** It moved from "a little bit earlier than" the spread of
+  light to Tabayyun, the spread itself. The date of that switch is not given ("recently"). Any
+  London timetable fixed before the switch could differ from today's base in Fajr for that reason
+  alone. **UNVERIFIED:** whether this accounts for any part of the London delta (section 3).
+- **The 2011 rewrite and London's adoption are two weeks apart.** London adopted on 1 August 2011;
+  the page's "Updated" date is 16 August 2011. The documents seen so far do not say whether the two
+  are linked.
+
 ## 3. Uncertain or still being established
 
 - Why the `www.moonsighting.com/time_json.php` endpoint returns 500 while `praytable.php` works.
