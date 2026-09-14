@@ -32,7 +32,7 @@ mutate.MUTATIONS[:] = [
     (PILL, 'todayPrayers.findIndex((p) => p.isNext)', 'todayPrayers.findIndex((p) => !p.isPassed)', 'pill on the first row not passed'),
     (PILL, 'overlay.isOn && overlay.scheduleType', 'overlay.scheduleType', 'a closed overlay still hides the pill'),
     (PILL, ' && overlay.scheduleType === type', '', "the other page's overlay hides the pill"),
-    (PILL, 'overlay.selectedPrayerIndex !== nextPrayerIndex', 'overlay.selectedPrayerIndex !== nextPrayerVisualRow', 'selection compared with the drawn row'),
+    (PILL, 'overlay.selectedPrayerIndex !== nextPrayerIndex', 'overlay.selectedPrayerIndex !== canonicalDisplayOrder(prayers.filter((p) => p.belongsToDate === displayDate), type).indexOf(nextPrayerIndex)', 'selection compared with the drawn row'),
     (PILL, 'getPillRow(nextPrayerVisualRow, heldRow)', 'getPillRow(nextPrayerVisualRow, 0)', 'faded pill jumps to row 0'),
     (PILL, 'getPillOpacity(nextPrayerIndex, isHiddenByOverlay)', 'getPillOpacity(nextPrayerIndex, false)', 'overlay never hides the pill'),
 

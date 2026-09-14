@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { Platform, StyleSheet, type ViewStyle } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
-import { placeActivePill } from '@/components/prayer/activePill';
+import { getActivePillOpacity, getActivePillRow } from '@/components/prayer/activePill';
 import { useDerivedOpacity, useDerivedTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
@@ -20,12 +20,10 @@ const PILL_SLIDE_EASING = Easing.elastic(0.5);
 
 export default function ActiveBackground({ type }: Props) {
   const { prayers, displayDate } = usePrayerSequence(type);
-  const overlay = useAtomValue(overlayAtom);
 
   // Read in render and written after commit, so a list with no row next leaves the pill where it faded
   const heldPillRow = useRef(0);
-  const pill = placeActivePill(prayers, displayDate, type, overlay, heldPillRow.current);
-  const pillRow = pill.row;
+  const pillRow = getActivePillRow(prayers, displayDate, type, heldPillRow.current);
   useEffect(() => {
     heldPillRow.current = pillRow;
   }, [pillRow]);
@@ -40,7 +38,10 @@ export default function ActiveBackground({ type }: Props) {
   const activeColor =
     type === ScheduleType.Standard ? COLORS.prayer.activeBackground : COLORS.prayer.activeBackgroundExtras;
 
-  const veilStyle = useDerivedOpacity(pill.opacity, {
+  const overlay = useAtomValue(overlayAtom);
+  const pillOpacity = getActivePillOpacity(prayers, displayDate, type, overlay);
+
+  const veilStyle = useDerivedOpacity(pillOpacity, {
     duration: ANIMATION.duration,
   });
 
