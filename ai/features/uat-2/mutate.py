@@ -101,6 +101,8 @@ MUTATIONS = [
     ('stores/countdown.ts', '!selected && store.get(getDisplayHeldAtom(type))', 'store.get(getDisplayHeldAtom(type))', 'a real overlay tap shows --:-- while the list waits'),
     ('stores/schedule.ts', 'get(nextPrayerAtom)?.belongsToDate !== displayDate', 'get(nextPrayerAtom) === null', 'list waits only when nothing is next'),
     ('stores/schedule.ts', '  store.set(sequenceAtom, sequence);\n  settleBoundary(type);\n', '  store.set(sequenceAtom, sequence);\n', 'boundary not settled after a sync write'),
+    ('stores/schedule.ts', '    store.set(sequenceAtom, { type, prayers: mergedPrayers });\n    settleBoundary(type);\n', '    store.set(sequenceAtom, { type, prayers: mergedPrayers });\n', 'boundary not settled after a refresh that fetched'),
+    ('stores/schedule.ts', '    store.set(sequenceAtom, { type, prayers: relevantPrayers });\n    settleBoundary(type);\n', '    store.set(sequenceAtom, { type, prayers: relevantPrayers });\n', 'boundary not settled after a refresh that only filtered'),
     ('stores/schedule.ts', 'if (previous && prayer.belongsToDate >= previous.belongsToDate) return true;', 'if (prayer === previous) return true;', 'previous row kept without its list day'),
     ('stores/schedule.ts', '.sort(compareListOrder)[0] ?? null;', '.sort(compareListOrder).at(-1) ?? null;', 'countdown names the last later row'),
     ('stores/countdown.ts', ' ?? getFirstRowAfterDisplay(type)', '', 'countdown frozen after the last readable prayer'),

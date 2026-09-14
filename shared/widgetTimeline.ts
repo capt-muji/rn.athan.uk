@@ -134,8 +134,9 @@ const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
  * Builds the medium widget's day list for a segment: the rows of the list day
  * on screen, in the order its app page lists them, with `--:--` for a time the
  * provider did not give. It is the day on screen rather than the countdown
- * target's own day because a day with no readable row stays on screen until
- * 00:00 London while the countdown already runs to the day after (R8). Istijaba
+ * target's own day because a day with no readable row, and the day before it
+ * once its last row has passed, stay on screen until 00:00 London while the
+ * countdown already runs to a later day (R8). Istijaba
  * appears only on Fridays by construction — the sequence itself excludes
  * it on non-Fridays (see getPrayerNamesForDate in shared/prayer.ts).
  *

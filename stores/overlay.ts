@@ -30,7 +30,7 @@ const store = getDefaultStore();
 /**
  * Guards against the TRUE remaining milliseconds, not the displayed atom which
  * can be up to a second stale. The boundary is the next prayer, or 00:00 London
- * ending a list day on screen with no readable row, since the list changes day
+ * ending a list on screen that waits for its day to end, since the list changes day
  * at either. A schedule with nothing still to come has no boundary to straddle.
  */
 const canOpenOverlay = (type: ScheduleType): boolean => {

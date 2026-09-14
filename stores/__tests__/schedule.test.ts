@@ -1399,6 +1399,25 @@ describe('on the real builder', () => {
       expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Fajr' });
     });
 
+    // A sync rebuild runs setSequence then refreshSequence without restarting the countdown, and when the rebuild
+    // is identical and skipped, the refresh's write is the only one
+    it.each<[string, string[]]>([
+      ['only filters', OCT_16_TO_20],
+      ['fetches more days', ['2026-10-16', '2026-10-17', '2026-10-18']],
+    ])('moves on at Isha when a refresh that %s lands in the second before it', (_, dates) => {
+      keepSubscribed(standardDisplayDateAtom);
+      storeDays(dates);
+      launchAt('2026-10-17T18:00:00.000Z');
+      jest.advanceTimersByTime(2000);
+
+      moveClockTo('2026-10-17T18:28:59.990Z');
+      refreshSequence(STANDARD);
+      moveClockTo('2026-10-17T18:29:00.010Z');
+      jest.advanceTimersByTime(1000);
+
+      expect(getDisplayDate(STANDARD)).toBe('2026-10-18');
+    });
+
     it('starts half a second before a prayer and still moves on at it', () => {
       storeDays(OCT_16_TO_20);
       launchAt('2026-10-17T14:29:59.500Z');
