@@ -54,11 +54,11 @@ export const getSequenceAtom = (type: ScheduleType) => {
 /**
  * The row the countdown bar measures from
  *
- * Looked for in the sequence first. When next is a list's first row and the sequence does not hold the list before, that list is built from storage with
- * the same builder as the sequence, so a post-midnight Isha comes back at its own instant rather than 24
- * hours early (gap map L3). When that list's last row has no time either, as on a 1 January whose 31
- * December is not stored or after a day with no readable time, there is nothing to measure from and the
- * bar cannot be worked out (R13, R14).
+ * Looked for in the sequence first. When next is a list's first row and the sequence does not hold the list
+ * before, that list is built from storage with the same builder as the sequence, so a post-midnight Isha
+ * comes back at its own instant rather than 24 hours early (gap map L3). When that list's last row has no
+ * time, as on a 1 January whose 31 December is not stored or after a day with no readable time, there is
+ * nothing to measure from and the bar cannot be worked out (R13, R14).
  *
  * @param type Schedule type (Standard or Extra)
  * @param prayers The stored sequence
@@ -84,7 +84,7 @@ const findPreviousPrayer = (
   // from it, the bar would run backwards.
   if (fromStorage && fromStorage.datetime <= now) return fromStorage;
 
-  logger.info('SCHEDULE: No row with a time just above next, progress bar unavailable', {
+  logger.info('SCHEDULE: Row just above next is missing, has no time, or is still to come, progress bar unavailable', {
     type,
     next: next.english,
     listBefore,
