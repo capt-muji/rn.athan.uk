@@ -780,7 +780,9 @@ the charts; it is a possible origin, **UNVERIFIED**.
   Blackburn chart, with London's own edits. Sunrise is shown 3 minutes early. The underlying sun
   times come from HMNAO, not from moonsighting.com.
 - **Against the API in 2024–2026,** the moonsighting.com base at generic London (method 0) gives:
-  Fajr −7 to +6 minutes, Isha −4 to +11, sunrise +2 to +4, and Dhuhr, Asr and Maghrib 0 or +1.
+  Fajr −7 to +6 minutes, Isha −4 to +11, sunrise −4 to −2, Dhuhr and Maghrib 0 or +1, and Asr 0 to
+  +2 (API minus the base; in 2026 sunrise is −3 on 316 days and −2 on 49, and `asr_2` is +2 on 4 days)
+  **[lead-verified for 2026]**. An earlier version printed sunrise as +2 to +4, with the sign reversed.
 - **What exact replication in London needs:**
   - the interval table, which is year-independent except the June and 2020 edits
     (`~/athan-research/london/data/london_intervals_final.json`, 366 slots);
@@ -1321,8 +1323,8 @@ in London and the only option elsewhere), that means:
   `asr_2` as Shafi'i, the reverse of the data. The app shows `asr`, the Shafi'i (one shadow length)
   Asr. Which Asr a London user expects is an owner decision (section 5).
 - **London, moonsighting.com option:** a user who switches will see different times on most days.
-  Against the API in 2024–2026: Fajr −7 to +6 minutes, Isha −4 to +11, sunrise +2 to +4, and
-  Dhuhr, Asr and Maghrib 0 or +1. That is expected, not a bug, and the interface should not present
+  API minus moonsighting.com in 2024–2026: Fajr −7 to +6 minutes, Isha −4 to +11, sunrise −4 to
+  −2, Dhuhr and Maghrib 0 or +1, Asr 0 to +2 (section 2.15). That is expected, not a bug, and the interface should not present
   the two as the same timetable.
 - **Reproducing London locally** is possible to the minute for Fajr and Isha given the published
   sunrise and Maghrib, and to within ±1 on boundary days for the rest. That would synthesise times,
@@ -1373,7 +1375,7 @@ Draft. The London and implementations strands may add to these.
    length. `shared/types.ts` calls it Hanafi (section 2.14). Should London keep showing the Shafi'i
    time, switch to `asr_2` (Hanafi), or offer both? And should the comments be corrected either way?
 9. **How the moonsighting.com option is presented in London.** It differs from the London timetable
-   on most days: Fajr −7 to +6 minutes, Isha −4 to +11, sunrise +2 to +4 (section 4.5). Should the
+   on most days: Fajr −7 to +6 minutes, Isha −4 to +11, sunrise −4 to −2 (section 4.5). Should the
    app say plainly that it is a different timetable from the user's mosque?
 10. **Reconstructing London locally.** London's rule can be rebuilt: the chart with its edits,
     HMNAO-style sun times, and ±1 on boundary days (section 2.15). That would synthesise times, so it

@@ -304,6 +304,8 @@ The Fajr/Isha interval rules were unchanged across that switch (§2.2).
    - sunrise +2..+4;
    - Dhuhr, Asr and Maghrib 0/+1.
 
+   **Lead correction (2026-09-14):** these are API minus the base, and the sunrise sign is reversed. Measured for 2026, API sunrise minus base sunrise is −3 on 316 days and −2 on 49, so read "sunrise −4..−2". In 2026 `asr_2` is also +2 on 4 days.
+
 ---
 
 ## 6. Earlier findings still valid
