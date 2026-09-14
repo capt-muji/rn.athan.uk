@@ -46,7 +46,7 @@ Nine hooks sit at literal **0% statements and 0% functions**: `useCountdown`, `u
 `usePrayerAgo` at 56.52%. `hooks/` is the single biggest lever in the repository.
 
 Since these figures were taken, the dashes session (1.27.0 to 1.27.5) added real tests for `usePrayer`,
-`usePrayerSequence`, `useSchedule`, `usePrayerAgo` and `useCountdown`. Measure again before choosing where to
+`usePrayerSequence`, `useSchedule`, `usePrayerAgo`, `useCountdown` and `useCountdownBar`. Measure again before choosing where to
 start.
 
 Also at or near zero: `stores/bootstrap.ts` (0%), `stores/atoms/overlay.ts` (22.22%, 0% branch).
