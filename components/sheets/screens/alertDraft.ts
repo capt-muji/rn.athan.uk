@@ -21,7 +21,7 @@ export const initialReminderType = (storedReminder: AlertType): AlertType.Silent
 
 /**
  * The store's value is a cast over a raw MMKV number, so anything off the list is replaced before the commit can
- * save an offset the stepper cannot show.
+ * save an offset that has no reminder sound of its own.
  *
  * @param storedInterval The interval saved for the prayer, as MMKV holds it
  * @returns The interval the sheet opens on
