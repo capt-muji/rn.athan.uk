@@ -252,6 +252,8 @@ export const calculateBelongsToDate = (
   // day, so the grouping comes forward again and the row stays on the list of the Fajr it
   // precedes rather than on the previous day's
   if (type === ScheduleType.Extra) {
+    // Midnight and Last Third never reach this: createPrayersForSingleDay gives them exact instants, so their list
+    // day is pinned on the list path instead (extrasListsAtMidnight.test.ts, lastThirdAroundMidnight.test.ts)
     if (NIGHT_PRAYER_NAMES.includes(prayerEnglish as (typeof NIGHT_PRAYER_NAMES)[number]) && hours >= 12) {
       return TimeUtils.addDaysToDateString(calendarDate, 1);
     }

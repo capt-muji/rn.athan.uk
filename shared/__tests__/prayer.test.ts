@@ -93,24 +93,7 @@ describe('calculateBelongsToDate', () => {
   });
 
   describe('Extra Schedule', () => {
-    it('assigns Midnight at 00:30 (stored on previous calendar day) to next day', () => {
-      // Night prayers stored with previous evening's data but occur in early morning
-      // When calendar date is Jan 18 and time is in PM (>=12), belongs to Jan 19
-      const datetime = createPrayerDatetime('2026-01-18', '00:30');
-      // If hour < 12, it stays on current calendar date
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Midnight', '2026-01-18', datetime);
-      expect(result).toBe('2026-01-18');
-    });
-
-    it('assigns Last Third to next day when hour >= 12', () => {
-      // This handles the case where midnight/last third are calculated from previous evening's magrib
-      // If the datetime shows >= 12 (afternoon), it means it's actually part of NEXT day's night
-      const datetime = createPrayerDatetime('2026-01-18', '23:30'); // Late night, belongs to next day
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Last Third', '2026-01-18', datetime);
-      expect(result).toBe('2026-01-19');
-    });
-
-    it('assigns Suhoor to next day when hour >= 12', () => {
+    it('keeps a morning Suhoor (05:30) on its own calendar day', () => {
       const datetime = createPrayerDatetime('2026-01-18', '05:30'); // Early morning
       const result = calculateBelongsToDate(ScheduleType.Extra, 'Suhoor', '2026-01-18', datetime);
       expect(result).toBe('2026-01-18'); // Before noon, stays same day
@@ -254,12 +237,6 @@ describe('ADR-004: Prayer-Based Day Boundary Edge Cases', () => {
       const result = calculateBelongsToDate(ScheduleType.Extra, 'Midnight', '2026-01-18', datetime);
       expect(result).toBe('2026-01-18');
     });
-
-    it('Extra night prayers in evening (>=12) belong to next day', () => {
-      const datetime = createPrayerDatetime('2026-01-18', '23:30');
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Midnight', '2026-01-18', datetime);
-      expect(result).toBe('2026-01-19');
-    });
   });
 
   describe('Scenario 8: Year Boundary (Dec 31 to Jan 1)', () => {
@@ -296,17 +273,6 @@ describe('createPrayer edge cases', () => {
       time: '01:30',
     });
     expect(prayer.belongsToDate).toBe('2026-06-21');
-  });
-
-  it('handles Extra Midnight prayer before system midnight', () => {
-    const prayer = createPrayer({
-      type: ScheduleType.Extra,
-      english: 'Midnight',
-      arabic: 'نصف الليل',
-      date: '2026-12-15',
-      time: '22:45',
-    });
-    expect(prayer.belongsToDate).toBe('2026-12-16');
   });
 
   it('handles Extra Last Third prayer after system midnight', () => {
