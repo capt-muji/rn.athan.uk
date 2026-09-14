@@ -314,6 +314,24 @@ The Fajr/Isha interval rules were unchanged across that switch (§2.2).
 
 ---
 
+## 6b. London Central Mosque (ICC) 2026 calendar: checked, not a copy of the API
+Sources, fetched 2026-09-14:
+- https://www.iccuk.org/2026/ICC_Calendar_2026b.pdf (29 pages; text read in full, all 5,262 lines) → `london/icc2026/`.
+- https://www.iccuk.org/2026/ICC_Calendar_2026.pdf: 16 pages, image only (198 characters of text). Its daily times were not checked.
+- https://www.iccuk.org/2026/Ramadan_timetable_2026.pdf: image only. Its daily times were not checked.
+
+The only method note in the calendar is "Adjustments with respect to London, Please confirm with your local mosque.", plus a per-city minute-offset table (Birmingham … Manchester). It gives no Fajr/Isha basis.
+
+Comparison with the API (`data/icc2026_vs_api.txt`):
+- Rows were parsed by page and month and matched to the best API day.
+- **152/365** rows equal an API day on all six prayers. About 208 rows differ in every field.
+- The differences cluster in the BST months: late-March to October pages carry GMT-like or shifted values.
+- The calendar also has typos (";" and "." as separators).
+
+It is therefore a separately produced table, not a faithful UPTTL copy. It cannot confirm or explain the Isha edits.
+
+---
+
 ## 7. Open questions
 1. **Documented basis for the 21 Isha edits:** not found in any ELM, ICC, Noor Ul Islam, Hizbul Ulama or moonsighting.com source read. Hizbul Ulama's successor chart (if any), or the Baig software, may hold them. UNVERIFIED.
 2. **HMNAO's algorithm** for the boundary days: service unavailable (503), with personal-use-only terms.
