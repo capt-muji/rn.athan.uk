@@ -58,7 +58,7 @@ It has to be pure because `shared/widgetTimeline.ts` needs the same rules.
 | **Passed**, unreadable row | By position (R10): passed when every readable row before it on its own list has passed, i.e. its canonical position is before the first readable row on its list that has not passed. A list with no readable row left counts all its unreadable rows as passed. |
 | **Display date** | The earliest list day in the sequence that has a readable row still to come (even after its own 00:00, as a post-midnight Isha does), or that, before 00:00 London at its end, has **no readable row at all** or is **the day before a list day with no readable row** (R8). **Owner ruling 2026-09-14:** such a day comes on screen only at 00:00 at its own start. The day before keeps its place after its last readable row until then. The exception is a readable row of its own after that 00:00 (a post-midnight Magrib or Isha), which hands over at that row. A following day the sequence does not hold is not waited for (`waitsForItsEnd`, shared by both rules). |
 | **Hold end** | 00:00 London at the end of the list on screen when that list has no readable row, or waits for such a day. The countdown ticker, the foreground resync and the overlay's close boundary treat it as a boundary, exactly like a prayer, so the list moves on at 00:00 with nothing else due. |
-| **Held** (countdown, bar, "ago" badge) | The list on screen is not the next readable prayer's own list day, which is exactly when it has no readable row left to come. The countdown then shows `--:--` under the next prayer's name. The bar and the "ago" badge are hidden. With no readable prayer left at all, the countdown names the first row of the next list day instead of freezing at 1s. |
+| **Held** (countdown, bar, "ago" badge) | The list on screen is not the next readable prayer's own list day, which is exactly when it has no readable row left to come. The countdown then shows `--:--` under `...` (`COUNTDOWN_WAITING_NAME`, owner ruling 2026-09-14), on both schedules. The bar and the "ago" badge are hidden. With no readable prayer left at all it shows the same, instead of freezing at 1s. |
 | **Previous** (bar, "ago" badge) | **Owner ruling 2026-09-14:** only the row just above next on its list, or, for a first row, the list before's last row (`findPreviousRow`). When that row is `--:--` there is no previous row, so the bar and the "ago" badge hide rather than measure from a prayer further up. 1.27.0 used the latest readable row before next. When the list before is not in the sequence, the store builds it from MMKV (`createPrayersForDate`), which also gives yesterday's post-midnight Isha its real instant (gap map L3). If neither list has one, there is no previous row and the bar cannot be worked out (R14). A row still to come is never used: after a launch past 00:00, yesterday's post-midnight Isha (or, on Extras, a Friday Istijaba past 00:00) rebuilt from storage can fall between now and next, and no previous row is found until the sequence is next written, at the next boundary. |
 | **Next occurrence** (overlay on a passed row) | The same prayer on the earliest later list day in the sequence, readable or not (R12), else the row itself as today. |
 | `prayerIdentity` | Unchanged, `english_belongsToDate`. |
@@ -93,8 +93,9 @@ Behaviour this produces:
 - `CountdownStore.timeLeft` becomes `number | null`, which the display atom renders `--:--`. It is
   `null` when the overlay targets an unreadable occurrence (R12: whichever occurrence the overlay
   shows, it shows `--:--` when unreadable), and, **by the owner's ruling of 2026-09-14 (R11)**, when
-  no overlay row is selected and the list on screen has no readable time left to come. The
-  countdown keeps the next readable prayer's name. That "held" state is a cached atom per schedule
+  no overlay row is selected and the list on screen has no readable time left to come. Its
+  name is then `...` rather than the next prayer's (owner ruling 2026-09-14, both schedules), while
+  the overlay still names the prayer it shows, dashed or not. That "held" state is a cached atom per schedule
   (`getDisplayHeldAtom`): the display day is not the next readable prayer's own list day. It is
   built from the same next-prayer and display-date atoms as the boundary, so it flips on the same
   tick the list moves on at 00:00. No timer is added. A real overlay tap still counts to the
@@ -205,7 +206,7 @@ Behaviour this produces:
 | R11: rows of a fully unreadable day | Bright; tap opens the next occurrence (the countdown is ruled below) |
 | R13: refusal against a failed fetch | Treated the same; retried on the next sync |
 | R14: a bar that cannot be worked out | Hidden, space kept. **Owner chose this (option A) on 2026-09-14**, over both 10% readings |
-| R11: the countdown on a fully unreadable day | **Owner ruling 2026-09-14:** `--:--` under the next prayer's name while that day is on screen; at its 00:00 the next day's real countdown, through the 00:00 boundary that already exists, so no new timer |
+| R11: the countdown on a fully unreadable day | **Owner ruling 2026-09-14:** `--:--` under `...` (not the next prayer's name, ruled the same day) while that day is on screen; at its 00:00 the next day's real countdown, through the 00:00 boundary that already exists, so no new timer |
 | R5: the unavailable bell | **Owner rulings 2026-09-14:** the Off glyph at the row's normal colour. A tap buzzes and opens the sheet with a short message instead of options (the 25% opacity and the unpressable bell first built were rejected) |
 
 ## 13. Consequences the owner should see with the screenshots

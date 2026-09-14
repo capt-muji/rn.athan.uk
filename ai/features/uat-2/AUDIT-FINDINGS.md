@@ -4728,6 +4728,9 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
   - From the design review: every sequence write settles the cached boundary, the previous row keeps its
     whole list day, and the countdown no longer freezes at 1s after the last readable prayer in storage.
   - 1.27.2 and 1.27.3 answer two more Code Reviewer rounds.
+  - 1.27.9, owner ruling of 2026-09-14: a `--:--` countdown with no overlay open is named `...` instead of a
+    prayer, on both schedules. The overlay still names the prayer it shows. The fallback to the next list day's
+    first row (`getFirstRowAfterDisplay`, 1.27.1) is gone, since no name is needed.
   - 1.27.8, owner ruling of 2026-09-14: the countdown bar and the "ago" badge measure only from the row just
     above next on its list, or for a first row the list before's last row (`findPreviousRow`). When that row
     is `--:--`, both hide. 1.27.0 used the latest readable row before next, which drew a longer bar across a

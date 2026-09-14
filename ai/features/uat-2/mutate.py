@@ -93,21 +93,20 @@ MUTATIONS = [
     ('stores/schedule.ts', 'sequence.prayers\n    .map((prayer) =>', 'sequence.prayers\n    .filter(isReadable)\n    .map((prayer) =>', 'signature ignores unreadable rows'),
 
     # --- session 3: stores/countdown.ts ---
-    ('stores/countdown.ts', 'store.set(countdownAtom, { timeLeft: null, name: target.english });', 'store.set(countdownAtom, { timeLeft: 0, name: target.english });', 'null timeLeft written as 0'),
+    ('stores/countdown.ts', ': { timeLeft: null, name: selected.english }', ': { timeLeft: 0, name: selected.english }', 'null timeLeft written as 0'),
     ('stores/countdown.ts', 'get(getNextPrayerAtom(type)) !== null && get(getPrevPrayerAtom(type)) !== null', 'true', 'bar availability always true'),
     ('stores/countdown.ts', '    const boundary = getNextBoundary(type);\n\n    if (boundary && Date.now() >= boundary.getTime()) {\n      clearCountdown(countdownKey);', '    const boundary = getNextPrayer(type)?.datetime ?? null;\n\n    if (boundary && Date.now() >= boundary.getTime()) {\n      clearCountdown(countdownKey);', 'tick boundary back to next prayer only'),
     ('stores/countdown.ts', '    const boundary = getNextBoundary(type);\n    if (boundary && Date.now() >= boundary.getTime()) {\n      refreshSequence(type);', '    const boundary = getNextPrayer(type)?.datetime ?? null;\n    if (boundary && Date.now() >= boundary.getTime()) {\n      refreshSequence(type);', 'resync boundary back to next prayer only'),
     ('stores/countdown.ts', 'overlayBoundaryMs = getNextBoundary(type)?.getTime() ?? null;', 'overlayBoundaryMs = getNextPrayer(type)?.datetime.getTime() ?? null;', 'overlay deadline back to next prayer only'),
     ('stores/countdown.ts', ' && !get(getDisplayHeldAtom(type))', '', 'bar shown while the list waits for 00:00'),
-    ('stores/countdown.ts', '(!selected && store.get(getDisplayHeldAtom(type)))', 'false', 'countdown runs to a later day while the list waits'),
-    ('stores/countdown.ts', '!selected && store.get(getDisplayHeldAtom(type))', 'store.get(getDisplayHeldAtom(type))', 'a real overlay tap shows --:-- while the list waits'),
+    ('stores/countdown.ts', 'if (store.get(getDisplayHeldAtom(type))) {', 'if (false) {', 'countdown runs to a later day while the list waits'),
+    ('stores/countdown.ts', 'if (selected) {', 'if (selected && !store.get(getDisplayHeldAtom(type))) {', 'a real overlay tap ignored while the list waits'),
     ('stores/schedule.ts', 'get(nextPrayerAtom)?.belongsToDate !== displayDate', 'get(nextPrayerAtom) === null', 'list waits only when nothing is next'),
     ('stores/schedule.ts', '  store.set(sequenceAtom, sequence);\n  settleBoundary(type);\n', '  store.set(sequenceAtom, sequence);\n', 'boundary not settled after a sync write'),
     ('stores/schedule.ts', '    store.set(sequenceAtom, { type, prayers: mergedPrayers });\n    settleBoundary(type);\n', '    store.set(sequenceAtom, { type, prayers: mergedPrayers });\n', 'boundary not settled after a refresh that fetched'),
     ('stores/schedule.ts', '    store.set(sequenceAtom, { type, prayers: relevantPrayers });\n    settleBoundary(type);\n', '    store.set(sequenceAtom, { type, prayers: relevantPrayers });\n', 'boundary not settled after a refresh that only filtered'),
     ('stores/schedule.ts', 'if (previous && prayer.belongsToDate >= previous.belongsToDate) return true;', 'if (prayer === previous) return true;', 'previous row kept without its list day'),
-    ('stores/schedule.ts', '.sort(compareListOrder)[0] ?? null;', '.sort(compareListOrder).at(-1) ?? null;', 'countdown names the last later row'),
-    ('stores/countdown.ts', ' ?? getFirstRowAfterDisplay(type)', '', 'countdown frozen after the last readable prayer'),
+    ('stores/countdown.ts', 'name: COUNTDOWN_WAITING_NAME', "name: getNextPrayer(type)?.english ?? ''", 'a waiting countdown names a later prayer'),
     ('hooks/usePrayerAgo.ts', 'if (!prevPrayer || isDisplayHeld(type)) {', 'if (!prevPrayer) {', 'ago badge shown while the list waits'),
 
     # --- session 3: stores/notifications.ts ---

@@ -8,7 +8,7 @@
 import { type Atom, atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { COUNTDOWN_BAR, OVERLAY, UNAVAILABLE_TIME } from '@/shared/constants';
+import { COUNTDOWN_BAR, COUNTDOWN_WAITING_NAME, OVERLAY, UNAVAILABLE_TIME } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { perfMark } from '@/shared/perf';
 import { findNextOccurrence, isReadable, isRowPassed } from '@/shared/sequence';
@@ -20,7 +20,6 @@ import {
   extraNextPrayerAtom,
   extraPrevPrayerAtom,
   getDisplayHeldAtom,
-  getFirstRowAfterDisplay,
   getNextBoundary,
   getNextPrayer,
   getSequenceAtom,
@@ -394,32 +393,42 @@ const getOverlayTarget = (): Prayer | null => {
  * for the next tick. A passed display target holds at 1s via
  * getSecondsRemaining's clamp (the display contract never shows 0s) until
  * the boundary advance or a new selection retargets it; a missing overlay
- * target (stale index mid-roll) falls back to the next prayer. A target with
- * no readable time is written with no seconds, and so is the next prayer
- * while the list on screen has no readable time left to come. With no
- * readable prayer left at all, the first row of the next list day is named
- * instead; only with no list on screen is the atom left as it was.
+ * target (stale index mid-roll) falls back to the next prayer. A selected
+ * occurrence with no readable time is written with no seconds under its own
+ * name. While the list on screen has no readable time left to come, including
+ * after the last readable prayer in storage, the page shows no seconds under
+ * COUNTDOWN_WAITING_NAME; only with no list on screen is the atom left as it was.
  */
 const writeDisplayCountdown = (type: ScheduleType) => {
   const overlay = store.get(overlayAtom);
   const overlayOwnsPage = overlay.isOn && overlay.scheduleType === type;
-
-  const selected = overlayOwnsPage ? getOverlayTarget() : null;
-  const target = selected ?? getNextPrayer(type) ?? getFirstRowAfterDisplay(type);
-  if (!target) return;
-
   const countdownAtom = getCountdownAtom(type);
 
-  // The next prayer of a list waiting for its day to end belongs to a later day, so no count is shown under
-  // this one until the list moves on at 00:00 (R11). A row the overlay opens still counts to the occurrence
-  // the overlay itself shows
-  if (!isReadable(target) || (!selected && store.get(getDisplayHeldAtom(type)))) {
-    store.set(countdownAtom, { timeLeft: null, name: target.english });
+  // A row the overlay opens has something to show, so it is named and counted to, or --:-- when its time is
+  // unreadable, even while the list waits for its day to end
+  const selected = overlayOwnsPage ? getOverlayTarget() : null;
+  if (selected) {
+    store.set(
+      countdownAtom,
+      isReadable(selected)
+        ? { timeLeft: TimeUtils.getSecondsRemaining(selected.datetime), name: selected.english }
+        : { timeLeft: null, name: selected.english }
+    );
     return;
   }
 
-  const timeLeft = TimeUtils.getSecondsRemaining(target.datetime);
-  store.set(countdownAtom, { timeLeft, name: target.english });
+  // A list waiting for its day to end has no prayer of its own left: its next prayer belongs to a later day, so
+  // neither a count nor that prayer's name is shown until the list moves on at 00:00 (R11, owner rulings
+  // 2026-09-14). The held atom is also true once no readable prayer is left at all
+  if (store.get(getDisplayHeldAtom(type))) {
+    store.set(countdownAtom, { timeLeft: null, name: COUNTDOWN_WAITING_NAME });
+    return;
+  }
+
+  const next = getNextPrayer(type);
+  if (!next) return;
+
+  store.set(countdownAtom, { timeLeft: TimeUtils.getSecondsRemaining(next.datetime), name: next.english });
 };
 
 /**
