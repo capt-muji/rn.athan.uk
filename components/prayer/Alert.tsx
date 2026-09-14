@@ -9,7 +9,7 @@ import ALERT_ICONS from '@/assets/icons/svg/alerts';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
 import { useDerivedFill } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
-import { isShownOccurrenceUnavailable, usePrayer } from '@/hooks/usePrayer';
+import { getShownAlert, isShownOccurrenceUnavailable, usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
@@ -32,9 +32,6 @@ const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType; spoken: string }[] 
   { icon: Icon.BELL_RING, type: AlertType.Silent, spoken: 'silent' },
   { icon: Icon.SPEAKER, type: AlertType.Sound, spoken: 'sound' },
 ];
-
-// The alert sheet's opacity for a control that cannot be used, so the two read as the same state
-const UNAVAILABLE_BELL_STYLE = { opacity: 0.25 };
 
 interface Props {
   type: ScheduleType;
@@ -88,14 +85,14 @@ export default function Alert({ type, index }: Props) {
   // DERIVED STATE
   // =============================================================================
 
-  const iconIndex = displayedAlert;
-
   const NextOccurrencePrayer = usePrayer(type, index, true);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
 
   // The same occurrence Time.tsx draws: the bell refuses exactly when the time on screen is --:--, since
   // nothing can ever fire for it (R5). The saved preference is only read, never changed
   const isUnavailable = isShownOccurrenceUnavailable(isSelectedForOverlay, Prayer, NextOccurrencePrayer);
+
+  const iconIndex = getShownAlert(isUnavailable, displayedAlert);
 
   const previousDisplayDate = usePrevious(Schedule.displayDate);
   const isCascadeRoll =
@@ -129,8 +126,13 @@ export default function Alert({ type, index }: Props) {
   useEffect(() => {
     if (prevAlertRef.current === alertAtom) return;
     prevAlertRef.current = alertAtom;
+    // A bell that cannot be used draws Off whatever is saved, so a bounce would move a glyph that stays the same
+    if (isUnavailable) {
+      setDisplayedAlert(alertAtom);
+      return;
+    }
     playSwapBounce(alertAtom, setDisplayedAlert);
-  }, [alertAtom, playSwapBounce]);
+  }, [alertAtom, isUnavailable, playSwapBounce]);
 
   // =============================================================================
   // HANDLERS
@@ -139,8 +141,8 @@ export default function Alert({ type, index }: Props) {
   const handlePress = useCallback(async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    // Check permissions before opening sheet
-    if (alertAtom === AlertType.Off) {
+    // With no readable time there is nothing to set, so the sheet only says why, and no permission is asked for
+    if (!isUnavailable && alertAtom === AlertType.Off) {
       await ensurePermissions();
     }
 
@@ -151,8 +153,9 @@ export default function Alert({ type, index }: Props) {
       index: alertIndex,
       prayerEnglish: Prayer.english,
       prayerArabic: Prayer.arabic,
+      isUnavailable,
     });
-  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions]);
+  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions, isUnavailable]);
 
   // =============================================================================
   // RENDER
@@ -171,8 +174,6 @@ export default function Alert({ type, index }: Props) {
           AnimScale.animate(1);
         }}
         accessibilityRole='button'
-        disabled={isUnavailable}
-        accessibilityState={isUnavailable ? { disabled: true } : undefined}
         // Named from the atom, not from `displayedAlert`: the glyph lags the
         // committed value through the change-bounce, and a screen reader must
         // hear the setting that is actually stored
@@ -181,8 +182,10 @@ export default function Alert({ type, index }: Props) {
             ? `${Prayer.english} notification: unavailable`
             : `${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`
         }
-        accessibilityHint={isUnavailable ? undefined : 'Opens the alert options for this prayer'}
-        style={isUnavailable ? [styles.iconContainer, UNAVAILABLE_BELL_STYLE] : styles.iconContainer}>
+        accessibilityHint={
+          isUnavailable ? 'Explains why no alert can be set for this prayer' : 'Opens the alert options for this prayer'
+        }
+        style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
           <Animated.View style={AnimSwap.style}>
             <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>

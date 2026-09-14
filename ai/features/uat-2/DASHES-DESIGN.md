@@ -56,14 +56,15 @@ It has to be pure because `shared/widgetTimeline.ts` needs the same rules.
 | **Next** (highlight, countdown, alarms' boundary) | The readable row with the smallest instant after now. An unreadable row is never next (R9). |
 | **Passed**, readable row | `datetime < now` (unchanged). |
 | **Passed**, unreadable row | By position (R10): passed when every readable row before it on its own list has passed, i.e. its canonical position is before the first readable row on its list that has not passed. A list with no readable row left counts all its unreadable rows as passed. |
-| **Display date** | The earliest list day in the sequence that either has a readable row still to come, or has **no readable row at all** and now is before 00:00 London at its end (R8). |
-| **Hold end** | When the list on screen has no readable row, 00:00 London at the end of that day. The countdown ticker, the foreground resync and the overlay's close boundary treat it as a boundary, exactly like a prayer, so the list moves on at 00:00 with nothing else due. |
+| **Display date** | The earliest list day in the sequence, before 00:00 London at its end, that has a readable row still to come, or **no readable row at all**, or is **the day before a list day with no readable row** (R8). **Owner ruling 2026-09-14:** such a day comes on screen only at 00:00 at its own start. The day before keeps its place after its last readable row until then. The exception is a readable row of its own after that 00:00 (a post-midnight Magrib or Isha), which hands over at that row. A following day the sequence does not hold is not waited for (`waitsForItsEnd`, shared by both rules). |
+| **Hold end** | 00:00 London at the end of the list on screen when that list has no readable row, or waits for such a day. The countdown ticker, the foreground resync and the overlay's close boundary treat it as a boundary, exactly like a prayer, so the list moves on at 00:00 with nothing else due. |
+| **Held** (countdown, bar, "ago" badge) | The list on screen is not the next readable prayer's own list day, which is exactly when it has no readable row left to come. The countdown then shows `--:--` under the next prayer's name. The bar and the "ago" badge are hidden. With no readable prayer left at all, the countdown names the first row of the next list day instead of freezing at 1s. |
 | **Previous** (bar, "ago" badge) | The latest readable row before next, on next's own list or the list before it. When the list before is not in the sequence, the store builds it from MMKV (`createPrayersForDate`), which also gives yesterday's post-midnight Isha its real instant (gap map L3). If neither list has one, there is no previous row and the bar cannot be worked out (R14). A row still to come is never used: after a launch past 00:00, yesterday's post-midnight Isha (or, on Extras, a Friday Istijaba past 00:00) rebuilt from storage can fall between now and next, and no previous row is found until the sequence is next written, at the next boundary. |
 | **Next occurrence** (overlay on a passed row) | The same prayer on the earliest later list day in the sequence, readable or not (R12), else the row itself as today. |
 | `prayerIdentity` | Unchanged, `english_belongsToDate`. |
 | `sequenceSignature` | Identity plus instant or `-`, so a row turning unreadable is a change and a stable unreadable row is not. |
-| **Boundary caching** | The next boundary is a derived atom built from the cached next-prayer and display-date atoms (the earlier of next's instant and the display date's hold end), which the screen normally subscribes together, and the ticker reads it once as it starts so both are settled even when nothing is subscribed yet. The ticker, the resume path and the overlay all read it. Worked out afresh from the clock it would always lie after now, and no crossing could ever be seen. |
-| **What `refreshSequence` keeps** | Readable rows still to come; every row of the display date and of later list days (a list day's unreadable rows are kept or dropped whole, never left as remnants); the previous readable row. |
+| **Boundary caching** | The next boundary is a derived atom built from the cached next-prayer and display-date atoms (the earlier of next's instant and the display date's hold end), which the screen normally subscribes together, and the ticker reads it once as it starts so both are settled even when nothing is subscribed yet. The ticker, the resume path and the overlay all read it. Worked out afresh from the clock it would always lie after now, and no crossing could ever be seen. Every sequence write also reads it at once (`settleBoundary`). A screen with the bar switched off leaves the next prayer unsubscribed, and a write in the second before a prayer would otherwise leave the list on the wrong day with `--:--` for hours. |
+| **What `refreshSequence` keeps** | Readable rows still to come; every row of the display date and of later list days (a list day's unreadable rows are kept or dropped whole, never left as remnants); the previous readable row **with its whole list day**. Alone, that row would come on screen as a list of one if the day after it were rebuilt with no readable time. |
 | **No readable row ahead** | When a built or refreshed sequence has none, it grows a day at a time, to 14 days at most, so a lost week does not leave the countdown without a target. |
 
 Behaviour this produces:
@@ -78,30 +79,44 @@ Behaviour this produces:
   Midnight, which falls before 00:00), it is R9's rule, and it agrees with session 7: a day stays
   current until its last readable row has passed, so a readable 00:40 Magrib after an unreadable Isha
   keeps its day on screen until 00:40.
-- **Fully unreadable day D (R8, R11)**: comes on screen when D−1 hands over (after D−1's last readable
-  row), stays until 00:00 London at the end of D, then D+1. No highlight. Every row bright (the owner's
-  first ruling, "treated as passed"). The countdown counts to the next readable prayer. A tap opens
+- **Fully unreadable day D (R8, R11)**: D−1 stays on screen after its last readable row, with no active
+  row, `--:--` and no bar, until 00:00 London at D's start. D then comes on screen and stays until 00:00 at
+  its end, then D+1 (owner ruling 2026-09-14; 1.27.0 brought D on at D−1's last row). No highlight on D. Every row bright (the owner's
+  first ruling, "treated as passed"). The countdown shows `--:--` under the next readable prayer's
+  name until the list moves on (owner ruling 2026-09-14, section 5). A tap opens
   the next occurrence, `--:--` if that is unreadable too. The bar is hidden: its previous row would
   have to come from D or D−1's handover, and D has none.
 
 ## 5. Countdown and bar (`stores/countdown.ts`, `hooks/useCountdownBar.ts`, `components/countdown/Bar.tsx`)
 
 - The ticker transitions at the next boundary (next readable instant or hold end).
-- `CountdownStore.timeLeft` becomes `number | null`. It is `null` only when the overlay targets an
-  unreadable occurrence, and the display atom renders it `--:--` (R12: whichever occurrence the
-  overlay shows, it shows `--:--` when unreadable).
-- A new bar-availability selector is false when previous or next is missing. **R14 default: the bar is
-  hidden** by opacity, keeping its space so nothing reflows. It comes back when a usable pair does.
-  The two other readings of "empty the bar and make it 10% capacity" (an empty track at 10% opacity,
-  and a 10% fill) are built only for the owner's screenshots.
+- `CountdownStore.timeLeft` becomes `number | null`, which the display atom renders `--:--`. It is
+  `null` when the overlay targets an unreadable occurrence (R12: whichever occurrence the overlay
+  shows, it shows `--:--` when unreadable), and, **by the owner's ruling of 2026-09-14 (R11)**, when
+  no overlay row is selected and the list on screen has no readable time left to come. The
+  countdown keeps the next readable prayer's name. That "held" state is a cached atom per schedule
+  (`getDisplayHeldAtom`): the display day is not the next readable prayer's own list day. It is
+  built from the same next-prayer and display-date atoms as the boundary, so it flips on the same
+  tick the list moves on at 00:00. No timer is added. A real overlay tap still counts to the
+  occurrence it shows.
+- A new bar-availability selector is false when previous or next is missing, or while the list is
+  held. **R14, chosen by the owner (option A) on 2026-09-14: the bar is hidden** by opacity,
+  keeping its space so nothing reflows. It comes back when a usable pair does. The two other
+  readings of "empty the bar and make it 10% capacity" (an empty track at 10% opacity, and a 10%
+  fill) were built only for the owner's screenshots.
 
 ## 6. Rows (`components/prayer/*`, hooks)
 
 - `Time.tsx` renders `--:--` for a `null` time.
-- `Alert.tsx`: when the occurrence on screen is unreadable, the bell cannot be pressed
-  (`accessibilityState.disabled`) and shows the saved glyph at 25% opacity, the opacity the alert
-  sheet already uses for a control that cannot be used. **Owner approves on screenshot.** The saved
-  preference is never changed (R5).
+- `Alert.tsx`: when the occurrence on screen is unreadable, the bell draws the Off glyph
+  (`getShownAlert`) whatever is saved. It keeps the row's own colour, bright when the row is passed or
+  selected and dim when upcoming, exactly like any other bell. A tap still buzzes and opens the alert
+  sheet. Under its usual header, the sheet shows only a short message in the subtitle's colour, centred
+  well inside the title's edges: the time isn't available, no alert will go off, and the setting is kept
+  and comes back on its own. There is no action to take and no Refresh button, since nothing the user does
+  can supply a time the timetable did not give. The sheet commits nothing on close. **Owner rulings
+  2026-09-14**, replacing the 25% opacity and the unpressable bell first built. The saved preference is
+  never changed (R5).
 - `ActiveBackground.tsx` fades out when the list on screen has no next row (R11), using the overlay
   veil's existing opacity animation.
 - The date-roll cascade condition `nextPrayerIndex === 0` becomes "next is the list's first readable
@@ -181,22 +196,33 @@ Behaviour this produces:
 
 | Question in the brief | Default |
 | --- | --- |
-| R8: when a fully unreadable day comes on screen | When the day before hands over; leaves at 00:00 London |
+| R8: when a fully unreadable day comes on screen | **Owner ruling 2026-09-14:** at 00:00 London at its own start, the day before waiting after its last readable row; leaves at 00:00 at its end (1.27.0 brought it on when the day before handed over) |
 | Open: a day whose last row is unreadable | Moves on after its last readable row |
-| R11: rows of a fully unreadable day | Bright; countdown to the next readable prayer; tap opens the next occurrence |
+| R11: rows of a fully unreadable day | Bright; tap opens the next occurrence (the countdown is ruled below) |
 | R13: refusal against a failed fetch | Treated the same; retried on the next sync |
-| R14: a bar that cannot be worked out | Hidden (screenshots of both 10% readings too) |
-| R5: the disabled bell | Saved glyph at 25% opacity, not pressable |
+| R14: a bar that cannot be worked out | Hidden, space kept. **Owner chose this (option A) on 2026-09-14**, over both 10% readings |
+| R11: the countdown on a fully unreadable day | **Owner ruling 2026-09-14:** `--:--` under the next prayer's name while that day is on screen; at its 00:00 the next day's real countdown, through the 00:00 boundary that already exists, so no new timer |
+| R5: the unavailable bell | **Owner rulings 2026-09-14:** the Off glyph at the row's normal colour. A tap buzzes and opens the sheet with a short message instead of options (the 25% opacity and the unpressable bell first built were rejected) |
 
 ## 13. Consequences the owner should see with the screenshots
 
 Found by the design review, 2026-09-13. None is built around; each follows from the defaults above.
 
-- **The disabled bell locks the whole prayer's setting while it shows.** Alert preferences are per
-  prayer, not per day, so on a fully unreadable Standard day the user cannot change tomorrow's Fajr
-  alert for about 27 hours (about 40 on Extras).
-- **The hold is longer on Extras.** The Extras list hands over after Duha, so a fully unreadable Extras
-  day is on screen from about 07:00 the day before until 00:00 at its own end, about 40 hours.
+- **The unavailable bell locks the whole prayer's setting while it shows.** Alert preferences are per
+  prayer, not per day, so on a fully unreadable day the user cannot change tomorrow's alert for that
+  prayer for its 24 hours. The Off glyph also hides the saved setting until then.
+- **The wait before a dashed day is longer on Extras.** The Extras list's last row is Duha (Istijaba on a
+  Friday), so the readable Extras day before a fully unreadable one waits with no active row and `--:--`
+  from about 07:00 until 00:00. Standard waits only from Isha.
+- **The two pages can show different dates in the evening.** When only the Extras list of the next day
+  is fully unreadable, Standard moves on at Isha while Extras keeps today's list until 00:00.
+- **A day ending in a post-midnight row hands over at that row** (for example an Isha at 01:30), not at
+  its own 00:00.
+- **"Isha now" does not show** after the last row of a day before a fully unreadable one: there is no
+  previous row to measure from, as with the bar.
+- **After the last readable prayer in storage** (31 December before the next year is published), the
+  countdown shows `--:--` under the first row of the next list day rather than freezing at 1s. A cold
+  launch at that point still shows the error screen, as before.
 - **A partial Extras failure.** With Fajr and Sunrise unreadable on a non-Friday, that Extras list is
   fully unreadable while the next list's Midnight is readable at about 23:00. That Midnight fires on
   time but is never highlighted, because the dashed day is still on screen until 00:00.
@@ -206,7 +232,9 @@ Found by the design review, 2026-09-13. None is built around; each follows from 
 - **The iOS widget on a held day** shows the next readable prayer on its own day, not the held day's
   `--:--` list, because the medium layout draws its list only around an active row. Its
   `prevEpochMs` still falls back to the entry's own date when no previous row exists, as it does
-  today. Widgets are flagged off.
+  today. It also still counts down to that prayer, and draws a bar, while the app shows `--:--`: the
+  widget names that prayer's own day and time, so its count reads as that day's. Left as a known gap
+  because widgets are flagged off.
 - **Downgrading** to a build older than this change reads a stored `null` and fails its sync; Refresh
   recovers it.
 - **Known limits left in place, found by the last reviews.**

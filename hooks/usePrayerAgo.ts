@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { createInstant, formatTimeAgo } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { getCountdownAtom } from '@/stores/countdown';
-import { getPrevPrayer } from '@/stores/schedule';
+import { getPrevPrayer, isDisplayHeld } from '@/stores/schedule';
 
 interface PrayerAgoState {
   prayerAgo: string;
@@ -23,7 +23,8 @@ interface PrayerAgoState {
 export const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
   try {
     const prevPrayer = getPrevPrayer(type);
-    if (!prevPrayer) {
+    // A list waiting for its day to end shows --:-- and no bar, so it announces no row of a later day either
+    if (!prevPrayer || isDisplayHeld(type)) {
       return { prayerAgo: '', minutesElapsed: 0, isReady: false };
     }
 

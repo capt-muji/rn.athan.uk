@@ -940,7 +940,7 @@ describe('unreadable rows', () => {
     expect(flipsAtAsrReading(standard(makeDay('2026-06-15'), makeDayWithout('2026-06-16', ['Asr'])))).toBe(false);
   });
 
-  it('holds a day with no readable row on screen until 00:00 London, counting down to the next readable prayer', () => {
+  it('keeps the list before after its Isha until 00:00, then holds a day with no readable row until its own 00:00', () => {
     const entries = buildPrayerWidgetTimeline(
       createPrayerDatetime('2026-06-15', '20:00'),
       standard(makeDay('2026-06-15'), makeDayWithout('2026-06-16', PRAYERS_ENGLISH), makeDay('2026-06-17')),
@@ -948,11 +948,33 @@ describe('unreadable rows', () => {
       'light'
     );
     const ishaMs = at('2026-06-15', '22:45');
+    const dayStartMs = at('2026-06-16', '00:00');
     const holdEndMs = at('2026-06-17', '00:00');
     const fajrMs = at('2026-06-17', '03:30');
 
-    const held = entries.filter((entry) => entry.date.getTime() >= ishaMs && entry.date.getTime() < holdEndMs);
-    expect(held[0].date.getTime()).toBe(ishaMs);
+    // The 15th's own rows stay listed with no active row between its Isha and its 00:00 (R8)
+    const waiting = entries.filter((entry) => entry.date.getTime() >= ishaMs && entry.date.getTime() < dayStartMs);
+    expect(waiting[0].date.getTime()).toBe(ishaMs);
+    for (const entry of waiting) {
+      expect(entry.props).toMatchObject({
+        nextName: 'Fajr',
+        nextEpochMs: fajrMs,
+        dateLabel: formatDateLong('2026-06-17'),
+        activeIndex: -1,
+      });
+      expect(entry.props.prayers?.map((row) => row.time)).toEqual([
+        '03:30',
+        '05:20',
+        '13:10',
+        '17:45',
+        '21:15',
+        '22:45',
+      ]);
+      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), fajrMs));
+    }
+
+    const held = entries.filter((entry) => entry.date.getTime() >= dayStartMs && entry.date.getTime() < holdEndMs);
+    expect(held[0].date.getTime()).toBe(dayStartMs);
     for (const entry of held) {
       expect(entry.props).toMatchObject({
         nextName: 'Fajr',

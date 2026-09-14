@@ -240,6 +240,25 @@ const createNextBoundaryAtom = (
   });
 };
 
+/**
+ * Creates a derived atom that is true while the list on screen has no readable time left to come, which is
+ * exactly when it is not the next readable prayer's own list day
+ *
+ * The next prayer then belongs to a later day, so a countdown or a bar measured to it would run under a date
+ * that is not its own; both wait until the list moves on (R11, R14). Taken from the same cached atoms as the
+ * boundary, so it changes on the very tick the list does.
+ *
+ * @param nextPrayerAtom The same schedule's next-prayer atom
+ * @param displayDateAtom The same schedule's display-date atom
+ * @returns Derived atom, true while the list on screen waits for its day to end
+ */
+const createDisplayHeldAtom = (nextPrayerAtom: Atom<ReadablePrayer | null>, displayDateAtom: Atom<string | null>) => {
+  return atom((get) => {
+    const displayDate = get(displayDateAtom);
+    return displayDate !== null && get(nextPrayerAtom)?.belongsToDate !== displayDate;
+  });
+};
+
 // Pre-created derived atoms for convenience
 export const standardNextPrayerAtom = createNextPrayerAtom(ScheduleType.Standard);
 export const extraNextPrayerAtom = createNextPrayerAtom(ScheduleType.Extra);
@@ -253,6 +272,21 @@ const standardNextBoundaryAtom = createNextBoundaryAtom(
   standardDisplayDateAtom
 );
 const extraNextBoundaryAtom = createNextBoundaryAtom(ScheduleType.Extra, extraNextPrayerAtom, extraDisplayDateAtom);
+const standardDisplayHeldAtom = createDisplayHeldAtom(standardNextPrayerAtom, standardDisplayDateAtom);
+const extraDisplayHeldAtom = createDisplayHeldAtom(extraNextPrayerAtom, extraDisplayDateAtom);
+
+/**
+ * Works out a schedule's boundary straight after its sequence is written
+ *
+ * The boundary, the next prayer and the display date are each worked out on their first read after a write.
+ * A screen that has not mounted the next prayer (the bar switched off) leaves it to the tick's read up to a
+ * second later, on the far side of a prayer due in that second, while the mounted display date was worked
+ * out before it: the list would then wait on the wrong day, with --:-- for hours. Read together now, all
+ * three describe the same instant.
+ */
+const settleBoundary = (type: ScheduleType): void => {
+  store.get(type === ScheduleType.Standard ? standardNextBoundaryAtom : extraNextBoundaryAtom);
+};
 
 // --- Actions ---
 
@@ -321,6 +355,7 @@ export const setSequence = (type: ScheduleType, date: Date): void => {
   }
 
   store.set(sequenceAtom, sequence);
+  settleBoundary(type);
 
   logger.info('SEQUENCE: Set sequence', {
     type,
@@ -336,7 +371,9 @@ export const setSequence = (type: ScheduleType, date: Date): void => {
  * every row of the list day on screen and of the list days after it. Those rows are kept or dropped by
  * their list day as a whole, because a row with no readable time can never be "still to come": dropped
  * by time, a later day with no readable row would vanish and be skipped (R8), and a list on screen would
- * lose its unreadable rows. An earlier list day keeps nothing but the previous row.
+ * lose its unreadable rows. An earlier list day is kept, whole, only when it holds the previous row: left
+ * with that row alone, it would come on screen as a list of one if the day after it were rebuilt with no
+ * readable time, since the day before such a day stays on screen until 00:00 (R8).
  *
  * @param prayers The sequence
  * @param now Current instant
@@ -351,7 +388,7 @@ function filterRelevantPrayers(
 ): Prayer[] {
   return prayers.filter((prayer) => {
     if (isReadable(prayer) && prayer.datetime > now) return true;
-    if (prayer === previous) return true;
+    if (previous && prayer.belongsToDate >= previous.belongsToDate) return true;
     return currentDisplayDate !== null && prayer.belongsToDate >= currentDisplayDate;
   });
 }
@@ -437,6 +474,7 @@ export const refreshSequence = (type: ScheduleType): void => {
     );
 
     store.set(sequenceAtom, { type, prayers: mergedPrayers });
+    settleBoundary(type);
 
     logger.info('SEQUENCE: Refreshed with new prayers', {
       type,
@@ -447,6 +485,7 @@ export const refreshSequence = (type: ScheduleType): void => {
   } else {
     // Just update with filtered prayers (no new fetch needed)
     store.set(sequenceAtom, { type, prayers: relevantPrayers });
+    settleBoundary(type);
 
     logger.info('SEQUENCE: Refreshed (filtered passed prayers)', {
       type,
@@ -500,6 +539,24 @@ export const getDisplayDate = (type: ScheduleType): string | null => {
 };
 
 /**
+ * Gets the first row, in list order, of the list days after the one on screen
+ *
+ * What the countdown names when no readable prayer is left in the sequence at all, as on 31 December before the
+ * next year is published: every later row is unreadable, and without a name the countdown would stay on the
+ * last prayer it counted to, at 1s.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns The row, or null when there is no sequence, no list on screen or no later list day
+ */
+export const getFirstRowAfterDisplay = (type: ScheduleType): Prayer | null => {
+  const sequence = store.get(getSequenceAtom(type));
+  const displayDate = getDisplayDate(type);
+  if (!sequence || !displayDate) return null;
+
+  return sequence.prayers.filter((prayer) => prayer.belongsToDate > displayDate).sort(compareListOrder)[0] ?? null;
+};
+
+/**
  * Gets the next moment what a schedule shows changes: its next readable prayer, or 00:00 London ending a
  * list day on screen with no readable row
  *
@@ -513,3 +570,20 @@ export const getNextBoundary = (type: ScheduleType): Date | null => {
   const nextBoundaryAtom = type === ScheduleType.Standard ? standardNextBoundaryAtom : extraNextBoundaryAtom;
   return store.get(nextBoundaryAtom);
 };
+
+/**
+ * Gets the atom telling whether a schedule's list on screen has no readable time left to come
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Derived atom, true while the list on screen is not the next readable prayer's own list day
+ */
+export const getDisplayHeldAtom = (type: ScheduleType): Atom<boolean> =>
+  type === ScheduleType.Standard ? standardDisplayHeldAtom : extraDisplayHeldAtom;
+
+/**
+ * Gets whether a schedule's list on screen has no readable time left to come
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns True while the list on screen is not the next readable prayer's own list day
+ */
+export const isDisplayHeld = (type: ScheduleType): boolean => store.get(getDisplayHeldAtom(type));

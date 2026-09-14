@@ -19,6 +19,8 @@ import {
   extraDisplayDateAtom,
   extraNextPrayerAtom,
   extraPrevPrayerAtom,
+  getDisplayHeldAtom,
+  getFirstRowAfterDisplay,
   getNextBoundary,
   getNextPrayer,
   getSequenceAtom,
@@ -165,12 +167,18 @@ const makeBarWarningAtom = (type: ScheduleType) =>
   });
 
 /**
- * Whether the bar can be worked out: it needs a readable row on both sides of now (R14)
+ * Whether the bar can be worked out: it needs a readable row on both sides of now, on the list on screen (R14)
+ *
+ * A list with no readable time left to come can still sit before such a pair, as when the next list's Suhoor
+ * passes before 00:00, but that bar would run under a day it does not belong to while the countdown shows --:--.
  *
  * Deliberately free of the countdown atom, so it recomputes only when the sequence does, not every second.
  */
 const makeBarAvailableAtom = (type: ScheduleType) =>
-  atom((get) => get(getNextPrayerAtom(type)) !== null && get(getPrevPrayerAtom(type)) !== null);
+  atom(
+    (get) =>
+      get(getNextPrayerAtom(type)) !== null && get(getPrevPrayerAtom(type)) !== null && !get(getDisplayHeldAtom(type))
+  );
 
 const standardBarProgressAtom = makeBarProgressAtom(ScheduleType.Standard);
 const extraBarProgressAtom = makeBarProgressAtom(ScheduleType.Extra);
@@ -386,20 +394,25 @@ const getOverlayTarget = (): Prayer | null => {
  * getSecondsRemaining's clamp (the display contract never shows 0s) until
  * the boundary advance or a new selection retargets it; a missing overlay
  * target (stale index mid-roll) falls back to the next prayer. A target with
- * no readable time is written with no seconds, and one with nothing at all
- * leaves the atom as it was.
+ * no readable time is written with no seconds, and so is the next prayer
+ * while the list on screen has no readable time left to come. With no
+ * readable prayer left at all, the first row of the next list day is named
+ * instead; only with no list on screen is the atom left as it was.
  */
 const writeDisplayCountdown = (type: ScheduleType) => {
   const overlay = store.get(overlayAtom);
   const overlayOwnsPage = overlay.isOn && overlay.scheduleType === type;
 
   const selected = overlayOwnsPage ? getOverlayTarget() : null;
-  const target = selected ?? getNextPrayer(type);
+  const target = selected ?? getNextPrayer(type) ?? getFirstRowAfterDisplay(type);
   if (!target) return;
 
   const countdownAtom = getCountdownAtom(type);
 
-  if (!isReadable(target)) {
+  // The next prayer of a list waiting for its day to end belongs to a later day, so no count is shown under
+  // this one until the list moves on at 00:00 (R11). A row the overlay opens still counts to the occurrence
+  // the overlay itself shows
+  if (!isReadable(target) || (!selected && store.get(getDisplayHeldAtom(type)))) {
     store.set(countdownAtom, { timeLeft: null, name: target.english });
     return;
   }
