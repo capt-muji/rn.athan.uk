@@ -178,7 +178,7 @@ describe('no date to print', () => {
   });
 
   it.each([false, true])(
-    "prints nothing, and throws nothing, for an overlay on a Friday's Istijaba once Saturday's list is on screen (Hijri %s)",
+    "throws nothing for an overlay left on a Friday's Istijaba once Saturday's list is on screen, a state the close at the boundary never lets happen (Hijri %s)",
     (hijri) => {
       const displayDate = show(ScheduleType.Extra, {}, ['2026-09-11', '20:00']);
 
