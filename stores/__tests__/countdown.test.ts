@@ -49,7 +49,6 @@ jest.mock('@/stores/schedule', () => {
     extraPrevPrayerAtom: atom(null),
     // Every list in these tests is the next prayer's own list day, so none waits with --:--
     getDisplayHeldAtom: jest.fn(() => atom(false)),
-    getFirstRowAfterDisplay: jest.fn(() => null),
   };
 });
 

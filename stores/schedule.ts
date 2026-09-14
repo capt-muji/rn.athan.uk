@@ -541,24 +541,6 @@ export const getDisplayDate = (type: ScheduleType): string | null => {
 };
 
 /**
- * Gets the first row, in list order, of the list days after the one on screen
- *
- * What the countdown names when no readable prayer is left in the sequence at all, as on 31 December before the
- * next year is published: every later row is unreadable, and without a name the countdown would stay on the
- * last prayer it counted to, at 1s.
- *
- * @param type Schedule type (Standard or Extra)
- * @returns The row, or null when there is no sequence, no list on screen or no later list day
- */
-export const getFirstRowAfterDisplay = (type: ScheduleType): Prayer | null => {
-  const sequence = store.get(getSequenceAtom(type));
-  const displayDate = getDisplayDate(type);
-  if (!sequence || !displayDate) return null;
-
-  return sequence.prayers.filter((prayer) => prayer.belongsToDate > displayDate).sort(compareListOrder)[0] ?? null;
-};
-
-/**
  * Gets the next moment what a schedule shows changes: its next readable prayer, or 00:00 London ending a
  * list on screen that waits for its day to end (a day with no readable row, or the day before one)
  *
