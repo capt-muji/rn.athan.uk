@@ -110,7 +110,7 @@ describe('calculateBelongsToDate', () => {
       expect(result).toBe('2026-01-19');
     });
 
-    it('assigns Suhoor to next day when hour >= 12', () => {
+    it('keeps a morning Suhoor (05:30) on its own calendar day', () => {
       const datetime = createPrayerDatetime('2026-01-18', '05:30'); // Early morning
       const result = calculateBelongsToDate(ScheduleType.Extra, 'Suhoor', '2026-01-18', datetime);
       expect(result).toBe('2026-01-18'); // Before noon, stays same day
