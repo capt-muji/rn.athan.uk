@@ -1,5 +1,5 @@
 /**
- * A stale alarm the OS refuses to cancel during a reschedule (stores/notifications.ts, issue #15)
+ * A stale alarm the OS refuses to cancel during a reschedule (stores/notifications.ts)
  *
  * A reschedule arms the new window first and only then cancels the identifiers it no longer wants. One refused
  * cancel must not abort the rest of that batch or reject the reschedule, since everything already armed is correct.
@@ -60,16 +60,26 @@ const record = (id: string, date: string) => ({
   alertType: AlertType.Silent,
 });
 
+/** The reminder interval the user had before changing it to INTERVAL */
+const OLD_INTERVAL = 10 as ReminderInterval;
+
 const PATHS = [
   {
     path: 'at-time',
     id: (date: string) => prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date),
+    // Days that have rolled out of the window
+    stale: DAYS_BEFORE.map((date) => ({ id: prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date), date })),
     save: (id: string, date: string) =>
       Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, record(id, date)),
   },
   {
     path: 'reminder',
     id: (date: string) => reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', date, INTERVAL),
+    // The window's own days, still armed at the interval before the change
+    stale: WINDOW.map((date) => ({
+      id: reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', date, OLD_INTERVAL),
+      date,
+    })),
     save: (id: string, date: string) =>
       Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(id, date)),
   },
@@ -142,20 +152,20 @@ afterAll(() => {
 // TESTS
 // =============================================================================
 
-describe.each(PATHS)('on the $path path', ({ id, save }) => {
+describe.each(PATHS)('on the $path path', ({ stale, save }) => {
   /** The window armed for Fajr on both paths */
   const armedWindow = () => PATHS.flatMap((each) => WINDOW.map((date) => each.id(date))).sort();
 
   beforeEach(() => {
-    // The two days before the window, armed by an earlier reschedule
-    for (const date of DAYS_BEFORE) {
-      save(id(date), date);
-      osState.add(id(date));
+    // Armed by an earlier reschedule, and no longer wanted by this one
+    for (const { id, date } of stale) {
+      save(id, date);
+      osState.add(id);
     }
   });
 
   it('cancels the rest of the batch, logs the refusal, and has the sweep cancel the refused alarm on the retry', async () => {
-    const refused = id(DAYS_BEFORE[1]);
+    const refused = stale[1].id;
     refuseToCancel(refused, 1);
 
     await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
@@ -168,13 +178,13 @@ describe.each(PATHS)('on the $path path', ({ id, save }) => {
       count: 1,
       staleIds: [refused],
     });
-    expect(cancelsOf(id(DAYS_BEFORE[0]))).toBe(1);
+    expect(cancelsOf(stale[0].id)).toBe(1);
     expect(cancelsOf(refused)).toBe(2);
     expect([...osState].sort()).toEqual(armedWindow());
   });
 
   it('keeps the window armed when the OS refuses the retry too, and the next reschedule asks again', async () => {
-    const refused = id(DAYS_BEFORE[1]);
+    const refused = stale[1].id;
     refuseToCancel(refused, 2);
 
     await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
