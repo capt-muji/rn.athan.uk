@@ -156,6 +156,49 @@ The live site no longer links any prayer-time PDF. The Wayback Machine's URL ind
 `prayer-french.html` and `timezone.html`. Every PDF, DOC and PPT in that index is being downloaded
 (the live copy when it still exists, the Wayback raw capture otherwise) and read in full.
 
+### 2.8 The UK lineage: Hizbul Ulama's national tables, computed by Khalid Shaukat
+
+Both files are Wayback raw captures of documents moonsighting.com once hosted. Neither is linked
+from the live site.
+
+- **2006 edition.** `http://www.moonsighting.com/articles/uk-prayercharts.pdf`, capture
+  `20070810011835`; the PDF was created 2006-12-06; 257 pages.
+- **2009 edition.** `http://www.moonsighting.com/articles/uk-prayercharts1.pdf`, capture from
+  2010; the PDF was created 2009-09-08; 537 pages.
+- **Both** are titled "SALAT TIMETABLES FOR TOWNS AND CITIES IN THE UNITED KINGDOM", by Molvi
+  Yaqub Ahmed Miftahi of Hizbul Ulama UK (74 Upton Lane, London E7).
+
+What the notes say (2006 edition page 2; 2009 edition pages 2 to 4):
+
+- "These times have been kindly computed by Brother Khalid Shaukat". The 2009 edition adds that he
+  "has ensured that observatory calculated times have been adapted for accuracy as observatory
+  times do not take into account specific shariah requirements".
+- "The Fajar and Isha times shown are based on Mushahadah (naked eye observations) carried out by
+  Ulama under the direction of Hizbul Ulama UK, in Blackburn during September 1987 - August 1988."
+  Ulama from Jamiatul Ulama Bartaniya, Markazi Jamiatul Ulama and Hizbul Ulama UK agreed to adopt
+  them at meetings on 2 April 1988 and 2 January 1989, at Masjid Anisul Islam, Troy Street,
+  Blackburn, "rather than use degree times that have been shown to be incorrect". The full
+  argument is in Y. A. Miftahi's book "Fajar and Isha", with an Urdu book, "Bartaniya Me Isha Ka
+  Sahih Wakt", alongside it.
+- Zuhr is noon + 5 minutes, with the same 1.5 + 1 + 2.5 breakdown as how-we.html. Asr is Hanafi,
+  and Shafi'i Asr is available from Shaukat on request.
+- "Maghrib - 3 Minutes has already been added to calculated sunset ... Some Masajids add about 5
+  minutes to sunset. So, if you prefer to add five minutes to sunset instead of three you only need
+  to add a further two minutes to the maghrib time below." (2009)
+- "Sunrise - ... As the sunrise times given in the tables below are calculated sunrise times, it is
+  advised that a minimum of three minutes is taken away from the sunrise time given" (2009). The
+  2006 edition does not carry this sentence.
+- British Summer Time is built in, but "as this template is based on the 2007 calendar ... you may
+  need to adjust the times by one hour for a few days only" (2009).
+- The city pages include LONDON, EALING, HACKNEY and CROYDON. The 2006 LONDON page header is
+  `LONDON Lt=51:30N Lg= 0:10W GMT+ 0`.
+
+This is the documented ancestor of the London unified timetable: Shaukat's computation, Blackburn's
+observations, Hizbul Ulama as the UK body, five years before the 2011 adoption. The notes also name
+three places where a mosque may change the base, which makes them candidates for the London
+modification: Maghrib +2 (5 minutes after sunset in place of 3), Sunrise −3, and which Asr is used.
+Whether the London timetable applies any of them is being tested against real data (section 3).
+
 ## 3. Uncertain or still being established
 
 - Why the `www.moonsighting.com/time_json.php` endpoint returns 500 while `praytable.php` works.
