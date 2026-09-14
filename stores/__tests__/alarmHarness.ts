@@ -30,7 +30,7 @@ export type Times = [string, string, string, string, string, string];
 
 type Request = { identifier: string; trigger: { date: Date } };
 
-/** Real London times from londonprayertimes.com for 2026: both clock changes, and 18 October's two Midnights */
+/** Real London times for 2026: both clock changes, and 18 October's two Midnights */
 const LONDON_2026: Record<string, Times> = {
   '2026-03-27': ['04:11', '05:45', '12:11', '15:33', '18:28', '19:46'],
   '2026-03-28': ['04:09', '05:42', '12:11', '15:34', '18:30', '19:48'],
