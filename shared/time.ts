@@ -95,11 +95,11 @@ const prayerTimezoneOffset = (instant: number): number => {
 
 /**
  * Reads the prayer timezone's calendar and clock at an instant
- * @param instant Date or epoch milliseconds
+ * @param instant An exact instant
  * @returns Year, month (1-12), day, hour (0-23), minute and second there
  */
-const readPrayerClock = (instant: Date | number): PrayerClock => {
-  const ms = typeof instant === 'number' ? instant : instant.getTime();
+const readPrayerClock = (instant: Date): PrayerClock => {
+  const ms = instant.getTime();
   const clock = new Date(ms + prayerTimezoneOffset(ms));
 
   return {
