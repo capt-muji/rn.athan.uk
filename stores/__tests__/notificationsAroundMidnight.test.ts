@@ -72,22 +72,42 @@ describe('a Standard row read either side of 00:00 and of 06:00', () => {
 });
 
 describe('a Last Third before and at 00:00', () => {
-  it.each([
+  const SHAPES = [
     { when: 'at 23:00 BST, before 00:00', magrib: '17:00', fajr: '02:00', lastThird: '2026-06-20T22:00:00.000Z' },
     { when: 'at 00:00 BST', magrib: '18:00', fajr: '03:00', lastThird: '2026-06-20T23:00:00.000Z' },
-  ])('arms the 21 June list Last Third $when under that list day', async ({ magrib, fajr, lastThird }) => {
-    jest.setSystemTime(new Date('2026-06-20T19:00:00.000Z'));
-    // 19 and 22 June are not stored, so only list 21 has a night to arm
+  ];
+
+  const storeShape = (magrib: string, fajr: string) =>
     storeDays({
       '2026-06-20': ['02:40', '04:43', '13:02', '15:00', magrib, '19:00'],
       '2026-06-21': [fajr, '04:43', '13:02', '15:00', '19:00', '20:00'],
     });
+
+  it.each(SHAPES)('arms the 21 June list Last Third $when under that list day', async ({ magrib, fajr, lastThird }) => {
+    jest.setSystemTime(new Date('2026-06-20T19:00:00.000Z'));
+    // List 20's night is already over and 22 June is not stored, so only list 21 arms
+    storeShape(magrib, fajr);
     enable(ScheduleType.Extra, 'Last Third', 5);
 
     await rescheduleAllNotifications();
 
     expect(triggers()).toEqual(armedWithReminder(ScheduleType.Extra, 'Last Third', '2026-06-21', lastThird));
   });
+
+  it.each(SHAPES)(
+    'from 20:00 BST on 19 June arms only list 21, never a 20 June list whose day before is not stored ($when)',
+    async ({ magrib, fajr, lastThird }) => {
+      jest.setSystemTime(new Date('2026-06-19T19:00:00.000Z'));
+      // A night borrowed from 20 June's own Magrib would still be ahead here, so only refusing to borrow keeps list 20
+      // unarmed
+      storeShape(magrib, fajr);
+      enable(ScheduleType.Extra, 'Last Third', 5);
+
+      await rescheduleAllNotifications();
+
+      expect(triggers()).toEqual(armedWithReminder(ScheduleType.Extra, 'Last Third', '2026-06-21', lastThird));
+    }
+  );
 });
 
 describe('a Fajr just after 00:00', () => {
