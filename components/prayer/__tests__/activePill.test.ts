@@ -2,8 +2,8 @@
  * Unit tests for components/prayer/activePill.ts
  *
  * The pill belongs under the row List draws for the next prayer. The next prayer is an index into its day's rows
- * as the sequence holds them, and reading that index as the drawn row is the defect 1.24.4 found here and in the
- * overlay. Rows come from real London 2026 days through the app's own builder (hooks/__tests__/londonDays.ts).
+ * as the sequence holds them, and reading that index as the drawn row puts the pill against another prayer's row.
+ * Rows come from real London 2026 days through the app's own builder (hooks/__tests__/londonDays.ts).
  * The builder lists each day in the owner's order, where the index and the drawn row agree, so Extras lists are
  * also tested gathered in other orders, where they part.
  */
