@@ -78,9 +78,87 @@ Fetched 2026-09-14, without the API key.
 
   Raw responses: `~/athan-research/endpoint/moonsighting.ahmedbukhamsin.sa_london_2026_m{0,1,2}.json`.
 
+### 2.5 The method as moonsighting.com documents it
+
+Two pages carry the rules. <https://www.moonsighting.com/how-we.html> is headed "How We Calculate
+Muslim Prayer Times" and footed "Updated March 1, 2024". <https://www.moonsighting.com/faq_pt.html>
+is footed "Updated August 25, 2020". Both were fetched 2026-09-14 and are quoted here, not
+paraphrased into numbers.
+
+| Prayer | Documented rule | Source |
+| --- | --- | --- |
+| Fajr | Subh Sadiq, "when morning light in the sky starts spreadings horizontally"; at high latitude, Tabayyan, "when morning light in the sky has spread" | how-we |
+| Sunrise | "When the top of the sun's disk just appears above the horizon" | how-we |
+| Zuhr | "5 minutes after Zenith". The breakdown: 1.5 min for the disc to leave the zenith, plus 1 min for a 30-mile radius, plus 2.5 min safety | how-we, faq_pt 3.1–3.2 |
+| Asr | Shadow factor 1 (Shafi'i, Maliki, Hanbali), 2 (Hanafi), 4/7 (Shi'a), added to the noon shadow | how-we |
+| Maghrib | "For Sunni's, actual sunset is 3 minutes after theoretical sunset; for Shi'aas it is 17 minutes". Reasons: refraction, a 15–30 mile radius, and downward-sloping ground | how-we, faq_pt 5.1 |
+| Isha | Disappearance of Shafaq: red for Shafi'i, Maliki, Hanbali and Shi'a, white for Hanafi. "At high latitudes a combination of red and white shafaq criteria is used" | how-we |
+
+Fajr and Isha by latitude, from how-we:
+
+- **Where the model comes from.** Observations of Subh Sadiq and of Shafaq disappearing were
+  collected at Riyadh, Karachi, Tando Adam, Durban, Auckland, Sydney, Miami, Washington DC, Toronto,
+  High Wycombe, Dewsbury and Blackburn. They were curve-fitted into "a function of latitude and
+  seasons (day number of the solar year)".
+- **Equator to 55°.** "the 18degrees depression angle calculations are compared with the values
+  given by the functions of latitude and seasons and most favorable values are used, which means;
+  For Fajr, the later of the two and for Isha the earlier of the two."
+- **55° to 60°.** Fajr is the later of Subh Sadiq and "last 1/7th of the night". Isha is the
+  earlier of Shafaq and "first 1/7th of the night" (Sab'u Lail). The page cites Ashraf Ali Thanwi
+  (Imdadul Fatawa vol 2 p98) and Allamah Shami.
+- **Above 60°.** "we slide down to 60degrees and calculate Fajr & Isha using the rule of Sab'u Lail
+  in summer ... In winter, we use research by Moonsighting.com for Subh-Sadiq and Shafaq as
+  functions of latitude and seasons". Oslo at 60° is kept as the Aqrabul-Bilad anchor, citing Dar
+  al-Ifta.
+- **Where the sun does not set or rise** (faq_pt 1.2). "an iterative calculation process is used by
+  decreasing the latitude by 0.1 degrees keeping the longitude the same and recalculate Sunset time
+  and repeat this process until a latitude is reached where the sun sets".
+- **Shafaq General.** The page contradicts itself here. It says "Moonsighting.com uses Shafaq Ahmer
+  in summer when nights are short and Shafaq Abyad in winter", then "Shafaq General uses Shafaq
+  Abyad in Summer and Shafaq Ahmer in Winter", then again "Ahmer in summer ... Abyad in winter"
+  under the above-60° rule. **UNRESOLVED:** the implementations and the formula PDFs have to settle
+  which is meant.
+- **The coefficients of the latitude-and-season function are not on either page.** They are
+  being sought in the site's PDFs, current and archived (section 2.7), and in the implementations.
+- how-we names exactly two outside resources as using the method:
+  `github.com/PrayerTimeResearch/PrayerTimeAPI` and `github.com/islamic-network/prayer-times-moonsighting`.
+
+### 2.6 How the site's own tables are generated, and who built the generator
+
+- The timetable page <https://www.moonsighting.com/pray.php> credits: "Calculation method by
+  moonsighting.com / Developed by Ahmed Bu-khamsin / Original code by PrayTimes.org". It links
+  `twitter.com/techi50` and the Sky Prayers apps (Google Play `com.techiapps.skyprayers`, App
+  Store id439409680).
+- That page's script, `assets/js/apple_map.js` (header comment "This is the new file 01/08/2022"),
+  builds the table in `loadXMLDoc()` with
+  `GET praytable.php?year=&tz=&lat=&lon=&method=&both=&time=`. That is the same parameter set as
+  `time_json.php`, but it returns HTML. The time zone defaults to the browser's
+  `Intl.DateTimeFormat().resolvedOptions().timeZone`, or `tzlookup(lat, lon)` after the pin is
+  dragged. The Wayback Machine holds `praytable.php` captures from 2016 to 2024.
+- **The published table and the fallback JSON are identical, measured.** On 2026-09-14,
+  `https://www.moonsighting.com/praytable.php` for London (51.5072, -0.1276, Europe/London) 2026
+  returned HTTP 200. Every day and every column matched
+  `moonsighting.ahmedbukhamsin.sa/time_json.php`: 365 days × 6 columns × 3 methods = 6,570 cells,
+  **0 mismatches**.
+- The HTML table labels the columns by method: m0 `Asr(H)`/`Isha`, m1 `Asr(H)`/`Isha(H)`,
+  m2 `Asr(S)`/`Isha(S)`.
+- So `moonsighting.ahmedbukhamsin.sa` is the generator developer's own host, not an unrelated
+  mirror. The one-year check says its JSON is the site's published table in machine-readable form.
+  Whether that holds at every latitude is being measured.
+
+### 2.7 Prayer-time documents the site once carried
+
+The live site no longer links any prayer-time PDF. The Wayback Machine's URL index for
+`moonsighting.com/*` (5,875 URLs, fetched 2026-09-14) lists these, each captured with HTTP 200:
+`fajarishainbritain1.pdf` (2006), `fajar&isha-a5.pdf` (2006), `fajr&isha-yam.pdf` (2007),
+`articles/fajr&isha-yam.pdf` (2007), `articles/uk-prayercharts.pdf` (2007),
+`articles/prayers-uk.pdf` (2008), `articles/uk-prayercharts1.pdf` (2010), `prayer.html` (1999),
+`prayer-french.html` and `timezone.html`. Every PDF, DOC and PPT in that index is being downloaded
+(the live copy when it still exists, the Wayback raw capture otherwise) and read in full.
+
 ## 3. Uncertain or still being established
 
-- Why the `www.moonsighting.com` endpoint returns 500, and who operates the fallback host.
+- Why the `www.moonsighting.com/time_json.php` endpoint returns 500 while `praytable.php` works.
 - The exact London modification (per prayer, rule, fit).
 - Whether `adhan`'s `MoonsightingCommittee` reproduces the endpoint, and by how many minutes.
 - Which other implementations trace to Khalid Shaukat's committee.
