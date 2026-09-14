@@ -29,6 +29,16 @@ const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
   { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
 ];
 
+// Nothing the user can do fixes a time the timetable did not give, so this explains and reassures without asking
+// for an action: the saved setting returns by itself on the next occurrence with a readable time
+const UNAVAILABLE_MESSAGE = [
+  "This prayer's time isn't available right now,",
+  'so no alert will go off for it.',
+  '',
+  'Your alert setting is kept, and comes back',
+  'on its own once a time is available.',
+].join('\n');
+
 interface AlertSheetBodyRef {
   /** Values snapshotted at mount — the change-detection baseline for the deferred commit */
   getOriginalState: () => AlertMenuState;
@@ -76,7 +86,13 @@ export default function BottomSheetAlert() {
       scrollable={false}
       onDismiss={handleDismiss}
       perfName='sheet_alert'>
-      {sheetState && (
+      {sheetState?.isUnavailable && (
+        // No body is mounted, so its ref stays empty and the dismiss commits nothing
+        <View style={styles.unavailable}>
+          <Text style={styles.unavailableText}>{UNAVAILABLE_MESSAGE}</Text>
+        </View>
+      )}
+      {sheetState && !sheetState.isUnavailable && (
         <AlertSheetBody
           key={`${sheetState.type}:${sheetState.index}`}
           ref={bodyRef}
@@ -283,5 +299,23 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     color: 'rgb(146, 184, 228)',
     width: 100,
+  },
+  // Centred both ways in a box about as tall as the options it stands in for, and kept well inside the title's
+  // edge so the paragraph reads as a small block rather than a full-width line
+  unavailable: {
+    minHeight: 220,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: SPACING.xxxl * 2,
+    paddingVertical: SPACING.xxxl,
+    marginBottom: SPACING.md,
+  },
+  // The header subtitle's own dim colour and size
+  unavailableText: {
+    fontSize: TEXT.sizeDetail,
+    fontFamily: TEXT.family.regular,
+    color: 'rgba(86, 134, 189, 0.725)',
+    textAlign: 'center',
+    lineHeight: 22,
   },
 });

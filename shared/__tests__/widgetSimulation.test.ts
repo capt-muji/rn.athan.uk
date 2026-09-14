@@ -866,9 +866,16 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
     const upcoming = readable.filter((prayer) => prayer.datetime.getTime() > instant);
     const displayDate = listDays.find((date) => {
       const rows = readableOn(date);
+      if (rows.some((prayer) => prayer.datetime.getTime() > instant)) return true;
+      if (instant >= endOfListDay(date)) return false;
+      if (rows.length === 0) return true;
+      // The day before a list day with no readable time keeps its place until 00:00, unless a row of its own
+      // falls after that 00:00
+      const following = addDaysToDateString(date, 1);
       return (
-        rows.some((prayer) => prayer.datetime.getTime() > instant) ||
-        (rows.length === 0 && instant < endOfListDay(date))
+        listDays.includes(following) &&
+        readableOn(following).length === 0 &&
+        rows.every((prayer) => prayer.datetime.getTime() <= endOfListDay(date))
       );
     });
     if (upcoming.length === 0 || !displayDate) {
@@ -876,7 +883,7 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
     }
 
     const next = earliest(upcoming);
-    const held = readableOn(displayDate).length === 0;
+    const held = !readableOn(displayDate).some((prayer) => prayer.datetime.getTime() > instant);
     const previous = readable.filter(
       (prayer) =>
         prayer.datetime < next.datetime &&
@@ -1052,20 +1059,32 @@ describe.each([
     }
   });
 
-  it('holds the day with no readable time on screen until 00:00 London with no active row, then shows the day after', () => {
+  it('keeps the day before until 00:00, then holds the day with no readable time until its own 00:00 with no active row', () => {
+    const dayBefore = getPreviousDateString(HELD_DAY);
     const dayAfter = addDaysToDateString(HELD_DAY, 1);
+    const dayStartMs = endOfListDay(dayBefore);
     const holdEndMs = endOfListDay(HELD_DAY);
     const firstOfDayAfter = earliest(readableOn(dayAfter));
     const dashes = (type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_WEEKDAY).map(() => '--:--');
 
-    // Standard hands over after the 20th's Isha. The 20th's last Extras row, Duha, passed before the
-    // push, so on Extras the held day is on screen from the first entry
-    const handoverMs =
-      type === ScheduleType.Standard ? latest(readableOn('2024-10-20')).datetime.getTime() : REAL_PUSH_AT.getTime();
-    const held = entries.filter((entry) => entry.date.getTime() >= handoverMs && entry.date.getTime() < holdEndMs);
+    // Standard keeps the day before's list after its Isha, and Extras after its Duha, which passed before the
+    // push, with no active row until 00:00 (R8)
+    const waitStartMs =
+      type === ScheduleType.Standard ? latest(readableOn(dayBefore)).datetime.getTime() : REAL_PUSH_AT.getTime();
+    const waiting = entries.filter((entry) => entry.date.getTime() >= waitStartMs && entry.date.getTime() < dayStartMs);
+    expect(waiting.length).toBeGreaterThan(1);
+    for (const entry of waiting) {
+      expect(entry.props.prayers?.map((row) => row.time)).not.toEqual(dashes);
+      expect(entry.props).toMatchObject({
+        activeIndex: -1,
+        nextEpochMs: firstOfDayAfter.datetime.getTime(),
+        dateLabel: formatDateLong(dayAfter),
+      });
+    }
+
+    const held = entries.filter((entry) => entry.date.getTime() >= dayStartMs && entry.date.getTime() < holdEndMs);
     expect(held.length).toBeGreaterThan(1);
-    expect(held[0].date.getTime()).toBe(handoverMs);
-    expect(activeEntryAt(entries, handoverMs - 1000)?.props.prayers?.map((row) => row.time)).not.toEqual(dashes);
+    expect(held[0].date.getTime()).toBe(dayStartMs);
 
     for (const entry of held) {
       expect(entry.props.prayers?.map((row) => row.time)).toEqual(dashes);

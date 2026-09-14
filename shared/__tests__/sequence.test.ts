@@ -680,7 +680,7 @@ describe('a whole London day', () => {
   const blank15 = blankStandard('2026-09-15');
 
   walk(
-    'a fully unreadable list day: on screen from the handover to 00:00 London at its end',
+    'a fully unreadable list day: on screen from 00:00 London at its start to 00:00 at its end',
     [...standard('2026-09-14'), ...blank15, ...standard('2026-09-16')],
     [
       {
@@ -688,24 +688,44 @@ describe('a whole London day', () => {
         now: standardAt('Isha 2026-09-14', -1),
         display: '2026-09-14',
         next: 'Isha 2026-09-14',
-        hold: null,
+        hold: '2026-09-14T23:00:00.000Z',
         boundary: 'Isha 2026-09-14',
         previous: 'Magrib 2026-09-14',
         passed: allPassed(blank15),
       },
       {
-        label: "at the list before's Isha it comes on screen",
+        label: "at the list before's Isha that list stays on screen, waiting for 00:00",
         now: standardAt('Isha 2026-09-14'),
-        display: '2026-09-15',
+        display: '2026-09-14',
         next: 'Fajr 2026-09-16',
-        hold: '2026-09-15T23:00:00.000Z',
-        boundary: '2026-09-15T23:00:00.000Z',
+        hold: '2026-09-14T23:00:00.000Z',
+        boundary: '2026-09-14T23:00:00.000Z',
         previous: null,
         passed: allPassed(blank15),
       },
       {
         label: "1 ms after the list before's Isha",
         now: standardAt('Isha 2026-09-14', 1),
+        display: '2026-09-14',
+        next: 'Fajr 2026-09-16',
+        hold: '2026-09-14T23:00:00.000Z',
+        boundary: '2026-09-14T23:00:00.000Z',
+        previous: null,
+        passed: allPassed(blank15),
+      },
+      {
+        label: '1 ms before 00:00 London at its start',
+        now: at('2026-09-14T22:59:59.999Z'),
+        display: '2026-09-14',
+        next: 'Fajr 2026-09-16',
+        hold: '2026-09-14T23:00:00.000Z',
+        boundary: '2026-09-14T23:00:00.000Z',
+        previous: null,
+        passed: allPassed(blank15),
+      },
+      {
+        label: 'at 00:00 London at its start it comes on screen',
+        now: at('2026-09-14T23:00:00.000Z'),
         display: '2026-09-15',
         next: 'Fajr 2026-09-16',
         hold: '2026-09-15T23:00:00.000Z',
@@ -878,13 +898,22 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         now: standardAt('Isha 2026-09-15', -1),
         display: '2026-09-15',
         next: 'Isha 2026-09-15',
-        hold: null,
+        hold: '2026-09-15T23:00:00.000Z',
         boundary: 'Isha 2026-09-15',
         previous: 'Magrib 2026-09-15',
       },
       {
-        label: 'at the last readable row, with nothing readable left to count to',
+        label: 'at the last readable row its list waits for 00:00, with nothing readable left to count to',
         now: standardAt('Isha 2026-09-15'),
+        display: '2026-09-15',
+        next: null,
+        hold: '2026-09-15T23:00:00.000Z',
+        boundary: '2026-09-15T23:00:00.000Z',
+        previous: null,
+      },
+      {
+        label: 'at 00:00 London at its start the unreadable day comes on',
+        now: at('2026-09-15T23:00:00.000Z'),
         display: '2026-09-16',
         next: null,
         hold: '2026-09-16T23:00:00.000Z',
@@ -924,6 +953,15 @@ describe('where a fully unreadable list day sits in the sequence', () => {
       {
         label: "1 ms after the list before's Isha",
         now: standardAt('Isha 2026-09-14', 1),
+        display: '2026-09-14',
+        next: 'Fajr 2026-09-17',
+        hold: '2026-09-14T23:00:00.000Z',
+        boundary: '2026-09-14T23:00:00.000Z',
+        previous: null,
+      },
+      {
+        label: 'as the list before ends',
+        now: at('2026-09-14T23:00:00.000Z'),
         display: '2026-09-15',
         next: 'Fajr 2026-09-17',
         hold: '2026-09-15T23:00:00.000Z',
@@ -991,6 +1029,15 @@ describe('where a fully unreadable list day sits in the sequence', () => {
       {
         label: "1 ms after the list before's Isha",
         now: standardAt('Isha 2026-09-14', 1),
+        display: '2026-09-14',
+        next: 'Fajr 2026-09-18',
+        hold: '2026-09-14T23:00:00.000Z',
+        boundary: '2026-09-14T23:00:00.000Z',
+        previous: null,
+      },
+      {
+        label: 'as the list before ends',
+        now: at('2026-09-14T23:00:00.000Z'),
         display: '2026-09-15',
         next: 'Fajr 2026-09-18',
         hold: '2026-09-15T23:00:00.000Z',
@@ -1066,6 +1113,15 @@ describe('where a fully unreadable list day sits in the sequence', () => {
     [...standard('2026-09-14'), ...blankStandard('2026-09-15'), ...blankStandard('2026-09-16')],
     [
       {
+        label: "1 ms after the list before's Isha",
+        now: standardAt('Isha 2026-09-14', 1),
+        display: '2026-09-14',
+        next: null,
+        hold: '2026-09-14T23:00:00.000Z',
+        boundary: '2026-09-14T23:00:00.000Z',
+        previous: null,
+      },
+      {
         label: 'as the first ends',
         now: at('2026-09-15T23:00:00.000Z'),
         display: '2026-09-16',
@@ -1085,16 +1141,90 @@ describe('where a fully unreadable list day sits in the sequence', () => {
       },
     ]
   );
+
+  walk(
+    'after a list day whose Magrib and Isha fall after its own 00:00, handed over at that Isha instead',
+    [...standard('2026-09-24'), ...standard('2026-09-25'), ...blankStandard('2026-09-26')],
+    [
+      {
+        label: '1 ms after Asr',
+        now: standardAt('Asr 2026-09-25', 1),
+        display: '2026-09-25',
+        next: 'Magrib 2026-09-25',
+        hold: null,
+        boundary: 'Magrib 2026-09-25',
+        previous: 'Asr 2026-09-25',
+      },
+      {
+        label: '00:00 London is no boundary while its own rows are still to come',
+        now: at('2026-09-25T23:00:00.000Z'),
+        display: '2026-09-25',
+        next: 'Magrib 2026-09-25',
+        hold: null,
+        boundary: 'Magrib 2026-09-25',
+        previous: 'Asr 2026-09-25',
+      },
+      {
+        label: '1 ms before the 01:30 Isha',
+        now: at('2026-09-26T00:29:59.999Z'),
+        display: '2026-09-25',
+        next: 'Isha 2026-09-25',
+        hold: null,
+        boundary: 'Isha 2026-09-25',
+        previous: 'Magrib 2026-09-25',
+      },
+      {
+        label: 'at the 01:30 Isha the unreadable day comes on',
+        now: at('2026-09-26T00:30:00.000Z'),
+        display: '2026-09-26',
+        next: null,
+        hold: '2026-09-26T23:00:00.000Z',
+        boundary: '2026-09-26T23:00:00.000Z',
+        previous: null,
+      },
+    ]
+  );
+
+  walk(
+    'after a list day whose last row falls exactly at its own 00:00',
+    [
+      ...standard('2026-09-14').filter((prayer) => prayer.english !== 'Isha'),
+      row(ScheduleType.Standard, 'Isha', '2026-09-14', { clock: '00:00', on: '2026-09-15' }),
+      ...blankStandard('2026-09-15'),
+    ],
+    [
+      {
+        label: '1 ms before, the row and the end of its day are one boundary',
+        now: at('2026-09-14T22:59:59.999Z'),
+        display: '2026-09-14',
+        next: 'Isha 2026-09-14',
+        hold: '2026-09-14T23:00:00.000Z',
+        boundary: '2026-09-14T23:00:00.000Z',
+        previous: 'Magrib 2026-09-14',
+      },
+      {
+        label: 'at that instant the unreadable day comes on',
+        now: at('2026-09-14T23:00:00.000Z'),
+        display: '2026-09-15',
+        next: null,
+        hold: '2026-09-15T23:00:00.000Z',
+        boundary: '2026-09-15T23:00:00.000Z',
+        previous: null,
+      },
+    ]
+  );
 });
 
 describe('a fully unreadable list day across the 2026 clock changes', () => {
   describe.each([
-    // [list before, unreadable list day, list after, Isha of the list before, hold end, Fajr of the list after]
+    // [list before, unreadable list day, list after, Isha of the list before, 00:00 at its start, hold end,
+    // Fajr of the list after]
     [
       '2026-10-23',
       '2026-10-24',
       '2026-10-25',
       '2026-10-23T18:18:00.000Z',
+      '2026-10-23T23:00:00.000Z',
       '2026-10-24T23:00:00.000Z',
       '2026-10-25T04:50:00.000Z',
     ],
@@ -1103,6 +1233,7 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
       '2026-10-25',
       '2026-10-26',
       '2026-10-24T18:16:00.000Z',
+      '2026-10-24T23:00:00.000Z',
       '2026-10-26T00:00:00.000Z',
       '2026-10-26T04:52:00.000Z',
     ],
@@ -1111,6 +1242,7 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
       '2026-03-28',
       '2026-03-29',
       '2026-03-27T19:50:00.000Z',
+      '2026-03-28T00:00:00.000Z',
       '2026-03-29T00:00:00.000Z',
       '2026-03-29T04:42:00.000Z',
     ],
@@ -1119,10 +1251,11 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
       '2026-03-29',
       '2026-03-30',
       '2026-03-28T19:52:00.000Z',
+      '2026-03-29T00:00:00.000Z',
       '2026-03-29T23:00:00.000Z',
       '2026-03-30T04:40:00.000Z',
     ],
-  ])('%s, then %s unreadable, then %s', (before, blank, after, isha, holdEnd, fajr) => {
+  ])('%s, then %s unreadable, then %s', (before, blank, after, isha, dayStart, holdEnd, fajr) => {
     walk(
       'walk',
       [...standard(before), ...blankStandard(blank), ...standard(after)],
@@ -1132,13 +1265,31 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
           now: at(isha, -1),
           display: before,
           next: `Isha ${before}`,
-          hold: null,
+          hold: dayStart,
           boundary: isha,
           previous: `Magrib ${before}`,
         },
         {
-          label: "1 ms after the list before's Isha",
+          label: "1 ms after the list before's Isha it waits for 00:00",
           now: at(isha, 1),
+          display: before,
+          next: `Fajr ${after}`,
+          hold: dayStart,
+          boundary: dayStart,
+          previous: null,
+        },
+        {
+          label: '1 ms before 00:00 London at its start',
+          now: at(dayStart, -1),
+          display: before,
+          next: `Fajr ${after}`,
+          hold: dayStart,
+          boundary: dayStart,
+          previous: null,
+        },
+        {
+          label: 'at 00:00 London at its start',
+          now: at(dayStart),
           display: blank,
           next: `Fajr ${after}`,
           hold: holdEnd,
@@ -1189,14 +1340,24 @@ describe('an Extras list held while the next list opens before 00:00', () => {
         now: extrasAt('Duha 2026-12-10', -1),
         display: '2026-12-10',
         next: 'Duha 2026-12-10',
-        hold: null,
+        hold: '2026-12-11T00:00:00.000Z',
         boundary: 'Duha 2026-12-10',
         previous: 'Suhoor 2026-12-10',
         passed: allPassed(blank11),
       },
       {
-        label: '1 ms after Duha: held, and the next list opens before the hold ends',
+        label: '1 ms after Duha the list before waits for 00:00',
         now: extrasAt('Duha 2026-12-10', 1),
+        display: '2026-12-10',
+        next: 'Midnight 2026-12-12',
+        hold: '2026-12-11T00:00:00.000Z',
+        boundary: '2026-12-11T00:00:00.000Z',
+        previous: null,
+        passed: allPassed(blank11),
+      },
+      {
+        label: 'at 00:00 London Friday comes on, held, and the next list opens before the hold ends',
+        now: at('2026-12-11T00:00:00.000Z'),
         display: '2026-12-11',
         next: 'Midnight 2026-12-12',
         hold: '2026-12-12T00:00:00.000Z',
@@ -1363,6 +1524,30 @@ describe('resolveDisplayDate', () => {
         extrasAt('Duha 2026-09-18', 1),
         '2026-09-19',
       ],
+      [
+        'a readable list day stays after its last row until 00:00 when the next has no readable row',
+        [...standard('2026-09-14'), ...blankStandard('2026-09-15')],
+        at('2026-09-14T21:00:00.000Z'),
+        '2026-09-14',
+      ],
+      [
+        'and that unreadable day comes on at the 00:00',
+        [...standard('2026-09-14'), ...blankStandard('2026-09-15')],
+        at('2026-09-14T23:00:00.000Z'),
+        '2026-09-15',
+      ],
+      [
+        'a readable list day before a day missing from the sequence does not wait',
+        [...standard('2026-09-14'), ...standard('2026-09-16')],
+        at('2026-09-14T21:00:00.000Z'),
+        '2026-09-16',
+      ],
+      [
+        'Extras: a Friday whose last row is Istijaba waits for 00:00 before a Saturday with none',
+        [...extras('2026-09-18'), ...blankExtras('2026-09-19')],
+        at('2026-09-18T17:10:00.000Z'),
+        '2026-09-18',
+      ],
     ])('%s', (_label, sequence, now, expected) => {
       expect(resolveDisplayDate(arrange(sequence), now)).toBe(expected);
     });
@@ -1427,19 +1612,41 @@ describe('getDisplayHoldEnd', () => {
       ['no list on screen', [...standard('2026-09-15')], null],
       ['no list on screen, empty input', [] as Prayer[], null],
       [
-        'a list whose readable rows are all to come',
-        [...standard('2026-09-15'), ...blankStandard('2026-09-16')],
+        'a list whose readable rows are all to come, before a readable list day',
+        [...standard('2026-09-15'), ...standard('2026-09-16')],
         '2026-09-15',
       ],
       ['a list with only its last row readable', [...standard('2026-09-15', STANDARD_NAMES.slice(0, 5))], '2026-09-15'],
       ['a list with only its first row readable', [...standard('2026-09-15', STANDARD_NAMES.slice(1))], '2026-09-15'],
       [
-        'a Friday Extras list with only Istijaba readable',
-        [...extras('2026-09-18', EXTRAS_NAMES.slice(0, 4)), ...blankExtras('2026-09-19')],
-        '2026-09-18',
+        'a list before a list day the sequence does not hold',
+        [...standard('2026-09-15'), ...blankStandard('2026-09-17')],
+        '2026-09-15',
+      ],
+      [
+        'a list with readable rows after its own 00:00, before a list day with none',
+        [...standard('2026-09-25'), ...blankStandard('2026-09-26')],
+        '2026-09-25',
       ],
     ])('none for %s', (_label, sequence, displayDate) => {
       expect(getDisplayHoldEnd(arrange(sequence), displayDate)).toBeNull();
+    });
+
+    it.each([
+      [
+        'a list whose readable rows are all to come, before a list day with none',
+        [...standard('2026-09-15'), ...blankStandard('2026-09-16')],
+        '2026-09-15',
+        '2026-09-15T23:00:00.000Z',
+      ],
+      [
+        'a Friday Extras list with only Istijaba readable, before a Saturday with none',
+        [...extras('2026-09-18', EXTRAS_NAMES.slice(0, 4)), ...blankExtras('2026-09-19')],
+        '2026-09-18',
+        '2026-09-18T23:00:00.000Z',
+      ],
+    ])('00:00 at its end for %s', (_label, sequence, displayDate, iso) => {
+      expect(isoOrNull(getDisplayHoldEnd(arrange(sequence), displayDate))).toBe(iso);
     });
   });
 });
@@ -1491,6 +1698,24 @@ describe('getNextBoundary', () => {
         at('2026-09-16T11:00:00.000Z'),
         '2026-09-16T11:58:00.000Z',
       ],
+      [
+        'the end of a passed readable list day, before a list day with none',
+        [...standard('2026-09-15'), ...blankStandard('2026-09-16')],
+        at('2026-09-15T21:00:00.000Z'),
+        '2026-09-15T23:00:00.000Z',
+      ],
+      [
+        'a post-midnight Isha, not the 00:00 before it, ahead of a list day with none',
+        [...standard('2026-09-25'), ...blankStandard('2026-09-26')],
+        at('2026-09-25T23:50:00.000Z'),
+        '2026-09-26T00:30:00.000Z',
+      ],
+      [
+        'the end of the unreadable day, once that post-midnight Isha has handed over',
+        [...standard('2026-09-25'), ...blankStandard('2026-09-26')],
+        at('2026-09-26T00:40:00.000Z'),
+        '2026-09-26T23:00:00.000Z',
+      ],
       ['nothing, when every row has passed', [...standard('2026-09-15')], at('2026-09-16T11:00:00.000Z'), null],
       [
         'nothing, after a lone unreadable day has ended',
@@ -1502,6 +1727,75 @@ describe('getNextBoundary', () => {
     ])('%s', (_label, sequence, now, expected) => {
       expect(isoOrNull(getNextBoundary(arrange(sequence), now))).toBe(expected);
     });
+  });
+});
+
+// =============================================================================
+// Random unreadable patterns over a fortnight: every boundary is ahead, and nothing on screen changes before it
+// =============================================================================
+
+describe('boundaries over random unreadable patterns across the October 2026 clock change', () => {
+  const READINGS = ['05:50', '07:30', '12:45', '15:20', '17:55', '19:20'];
+  const DAYS = Array.from({ length: 14 }, (_, i) => `2026-10-${String(18 + i).padStart(2, '0')}`);
+  const FIRST_SAMPLE_MS = Date.parse('2026-10-17T20:00:00.000Z');
+  const LAST_SAMPLE_MS = Date.parse('2026-11-01T00:00:00.000Z');
+  const STEP_MS = 53 * 60 * 1000;
+
+  /** Days in list order; each whole day unreadable one time in four, otherwise each row one time in five */
+  const fortnight = (seed: number, dashes: boolean): Prayer[] => {
+    let state = seed;
+    const random = () => {
+      state = (state * 1103515245 + 12345) % 2147483648;
+      return state / 2147483648;
+    };
+
+    return DAYS.flatMap((day) => {
+      const wholeDay = dashes && random() < 0.25;
+      return STANDARD_NAMES.map((name, i) =>
+        row(ScheduleType.Standard, name, day, wholeDay || (dashes && random() < 0.2) ? null : READINGS[i])
+      );
+    });
+  };
+
+  const samples = (): Date[] => {
+    const out: Date[] = [];
+    for (let ms = FIRST_SAMPLE_MS; ms <= LAST_SAMPLE_MS; ms += STEP_MS) out.push(new Date(ms));
+    return out;
+  };
+
+  it.each(Array.from({ length: 16 }, (_, i) => i + 1))('seed %i', (seed) => {
+    const prayers = fortnight(seed, true);
+
+    for (const now of samples()) {
+      const display = resolveDisplayDate(prayers, now);
+      const boundary = getNextBoundary(prayers, now);
+      expect(boundary === null).toBe(display === null);
+      if (!boundary || !display) continue;
+
+      expect(boundary.getTime()).toBeGreaterThan(now.getTime());
+      const halfway = new Date((now.getTime() + boundary.getTime()) / 2);
+      expect(resolveDisplayDate(prayers, halfway)).toBe(display);
+      expect(resolveDisplayDate(prayers, new Date(boundary.getTime() - 1))).toBe(display);
+
+      // A list with no readable row left to come is on screen only as a day with none, or as the day before one
+      const ownRows = prayers.filter((prayer) => prayer.belongsToDate === display);
+      if (!ownRows.some((prayer) => isReadable(prayer) && prayer.datetime > now)) {
+        const following = prayers.filter((prayer) => prayer.belongsToDate === DAYS[DAYS.indexOf(display) + 1]);
+        const noneOwn = !ownRows.some(isReadable);
+        const noneFollowing = following.length > 0 && !following.some(isReadable);
+        expect(noneOwn || noneFollowing).toBe(true);
+      }
+    }
+  });
+
+  it('with every time readable, the list on screen is always the next prayer’s own list day', () => {
+    const prayers = fortnight(1, false);
+
+    for (const now of samples()) {
+      const next = findNextReadable(prayers, now);
+      if (!next) continue;
+      expect(resolveDisplayDate(prayers, now)).toBe(next.belongsToDate);
+    }
   });
 });
 

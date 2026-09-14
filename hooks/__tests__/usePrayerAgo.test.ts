@@ -22,6 +22,7 @@ import { type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
 const mockFormatTimeAgo = jest.fn();
 const mockCreateInstant = jest.fn();
 const mockGetPrevPrayer = jest.fn();
+const mockIsDisplayHeld = jest.fn((_type: unknown) => false);
 const mockSetState = jest.fn();
 const mockSubscribe = jest.fn();
 const mockEffects: (() => unknown)[] = [];
@@ -33,6 +34,7 @@ jest.mock('@/shared/time', () => ({
 
 jest.mock('@/stores/schedule', () => ({
   getPrevPrayer: (type: unknown) => mockGetPrevPrayer(type),
+  isDisplayHeld: (type: unknown) => mockIsDisplayHeld(type),
 }));
 
 jest.mock('@/stores/countdown', () => ({
@@ -181,6 +183,14 @@ describe('not ready', () => {
       minutesElapsed: 0,
       isReady: false,
     });
+  });
+
+  it('reports not ready while the list on screen waits for its day to end, though a previous prayer exists', () => {
+    given(createMockPrayer({ english: 'Suhoor' }), new Date('2026-01-27T06:15:30Z'));
+    mockIsDisplayHeld.mockReturnValueOnce(true);
+
+    expect(calculatePrayerAgo(ScheduleType.Extra)).toEqual({ prayerAgo: '', minutesElapsed: 0, isReady: false });
+    expect(mockIsDisplayHeld).toHaveBeenCalledWith(ScheduleType.Extra);
   });
 
   it('swallows a throwing store rather than breaking the page', () => {

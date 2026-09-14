@@ -8,9 +8,9 @@
  */
 
 import { resolveDisplayDate } from '@/shared/sequence';
-import { ScheduleType } from '@/shared/types';
+import { AlertType, ScheduleType } from '@/shared/types';
 
-import { getShownTime, isShownOccurrenceUnavailable, resolveOccurrence, usePrayer } from '../usePrayer';
+import { getShownAlert, getShownTime, isShownOccurrenceUnavailable, resolveOccurrence, usePrayer } from '../usePrayer';
 import { type Breakage, london, sequenceFrom, storeLondonDays } from './londonDays';
 
 // Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
@@ -175,7 +175,7 @@ describe('the occurrence a row shows, and its bell (real London 2026 days)', () 
     ['Dhuhr', DHUHR],
     ['Isha', ISHA],
   ])('on a list with no readable row, %s opens its readable next occurrence when selected', (english, index) => {
-    show(ScheduleType.Standard, '2026-09-10', { '2026-09-11': 'not stored' }, '2026-09-10', '21:00');
+    show(ScheduleType.Standard, '2026-09-10', { '2026-09-11': 'not stored' }, '2026-09-11', '09:00');
 
     const row = usePrayer(ScheduleType.Standard, index);
     const nextOccurrence = usePrayer(ScheduleType.Standard, index, true);
@@ -190,6 +190,17 @@ describe('the occurrence a row shows, and its bell (real London 2026 days)', () 
     expect(nextOccurrence.date).toBe('2026-09-12');
     expect(isShownOccurrenceUnavailable(false, row, nextOccurrence)).toBe(true);
     expect(isShownOccurrenceUnavailable(true, row, nextOccurrence)).toBe(false);
+  });
+});
+
+describe('getShownAlert', () => {
+  it.each([
+    ['Off', AlertType.Off],
+    ['Silent', AlertType.Silent],
+    ['Sound', AlertType.Sound],
+  ])('draws a saved %s as Off only while the occurrence on screen has no readable time', (_, saved) => {
+    expect(getShownAlert(true, saved)).toBe(AlertType.Off);
+    expect(getShownAlert(false, saved)).toBe(saved);
   });
 });
 
