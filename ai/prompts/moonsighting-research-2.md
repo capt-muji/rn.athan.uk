@@ -13,9 +13,13 @@ Research only. Nothing on that branch is merged or pushed without the owner's go
   changes the clock a day early in some timezones; at high latitude it emits `-----` (sections
   2.4, 2.6, 2.11 and 2.12).
 - **The method's history is dated** from 1999 to 2024 (section 2.13).
-- **Unfinished:** the full reads of every site page and every document (step 1), the
-  implementations and npm provenance (step 3), and the endpoint measurements in section 3.2.
-  The work so far is snapshotted in `ai/features/moonsighting/notes/*.in-progress.md`.
+- **The implementations are done** (section 2.16). The booklet's §11 publishes the coefficients;
+  adhan is the closest implementation; the islamic-network family (AlAdhan method 15) omits the
+  18° bound, the 1/7 rule and the +5/+3 offsets; several npm packages that claim the method don't
+  implement it.
+- **Unfinished:** the full reads of every site page and every document (step 1), and the small
+  remainders listed in sections 3.1 to 3.4. Work so far is in
+  `ai/features/moonsighting/notes/`, with unfinished strands in `*.in-progress.md`.
 
 ## Do, in order
 
