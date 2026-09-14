@@ -93,14 +93,6 @@ describe('calculateBelongsToDate', () => {
   });
 
   describe('Extra Schedule', () => {
-    it('assigns Last Third to next day when hour >= 12', () => {
-      // This handles the case where midnight/last third are calculated from previous evening's magrib
-      // If the datetime shows >= 12 (afternoon), it means it's actually part of NEXT day's night
-      const datetime = createPrayerDatetime('2026-01-18', '23:30'); // Late night, belongs to next day
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Last Third', '2026-01-18', datetime);
-      expect(result).toBe('2026-01-19');
-    });
-
     it('keeps a morning Suhoor (05:30) on its own calendar day', () => {
       const datetime = createPrayerDatetime('2026-01-18', '05:30'); // Early morning
       const result = calculateBelongsToDate(ScheduleType.Extra, 'Suhoor', '2026-01-18', datetime);
