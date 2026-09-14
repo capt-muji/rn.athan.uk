@@ -4746,7 +4746,8 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
     - an overlay on one page leaves the other page's `...` alone
     - the waiting name has a screen-reader label
     - `findPreviousRow` returns nothing when the row above next is missing rather than taking one further up
-  - 1.27.12 and 1.27.13 bring finding 71, the queue, the brief and two store comments in line with those rules.
+  - 1.27.12 to 1.27.14 bring finding 71, the queue, the brief, a store comment and a log message in line
+    with those rules.
   - Verification:
     - 3,598 tests pass.
     - Every changed line in hooks, stores and shared is covered.

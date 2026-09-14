@@ -84,11 +84,14 @@ const findPreviousPrayer = (
   // from it, the bar would run backwards.
   if (fromStorage && fromStorage.datetime <= now) return fromStorage;
 
-  logger.info('SCHEDULE: Row just above next is missing, has no time, or is still to come, progress bar unavailable', {
-    type,
-    next: next.english,
-    listBefore,
-  });
+  logger.info(
+    'SCHEDULE: Row just above next is missing, has no time, is out of order, or is still to come, progress bar unavailable',
+    {
+      type,
+      next: next.english,
+      listBefore,
+    }
+  );
 
   return null;
 };
