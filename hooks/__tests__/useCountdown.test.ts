@@ -11,7 +11,13 @@ import { ScheduleType } from '@/shared/types';
 // Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 const mockAtomValues = new Map<string, unknown>();
 
-jest.mock('jotai', () => ({ useAtomValue: (atom: string) => mockAtomValues.get(atom) }));
+// An atom no test set throws, so a hook reading the other schedule's atom fails instead of reading undefined
+jest.mock('jotai', () => ({
+  useAtomValue: (atom: string) => {
+    if (!mockAtomValues.has(atom)) throw new Error(`Unexpected atom read: ${atom}`);
+    return mockAtomValues.get(atom);
+  },
+}));
 
 jest.mock('@/stores/schedule', () => ({
   standardNextPrayerAtom: 'standardNextPrayerAtom',
@@ -27,7 +33,10 @@ jest.mock('@/stores/countdown', () => ({
 
 import { useCountdown } from '../useCountdown';
 
-/** What the stores hold for one schedule */
+/**
+ * What the stores hold for one schedule. `next` is not read by the hook any more; it is set so that the hook
+ * before 1.27.5, which was ready only while a next prayer existed, can still run these tests and fail
+ */
 const given = (
   type: ScheduleType,
   {
@@ -61,9 +70,9 @@ describe('useCountdown', () => {
     expect(useCountdown(ScheduleType.Standard)).toEqual({ displayTime: '--:--', prayerName: 'Fajr', isReady: true });
   });
 
-  it('is not ready before any list is on screen', () => {
-    given(ScheduleType.Extra, { next: null, displayDate: null, name: 'Fajr', display: '0s' });
+  it.each([ScheduleType.Standard, ScheduleType.Extra])('is not ready for %s before any list is on screen', (type) => {
+    given(type, { next: null, displayDate: null, name: 'Fajr', display: '0s' });
 
-    expect(useCountdown(ScheduleType.Extra).isReady).toBe(false);
+    expect(useCountdown(type).isReady).toBe(false);
   });
 });
