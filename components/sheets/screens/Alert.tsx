@@ -4,12 +4,13 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
-import { RADIUS, REMINDER_INTERVALS, SPACING, TEXT } from '@/shared/constants';
+import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { type AlertMenuState, AlertType, Icon, type ReminderInterval } from '@/shared/types';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
 import { SegmentedControl, type SegmentOption, Sheet, Stepper, Toggle } from '../parts';
+import { stepReminderInterval } from '../parts/reminderStep';
 import { initialReminderInterval, initialReminderType, selectionNeedsPermission, toggledReminder } from './alertDraft';
 
 const ALERT_OPTIONS: SegmentOption[] = [
@@ -225,13 +226,12 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
             <Stepper
               value={reminderInterval}
               onDecrement={() => {
-                const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
-                if (idx > 0) setReminderInterval(REMINDER_INTERVALS[idx - 1] as ReminderInterval);
+                const next = stepReminderInterval(reminderInterval, -1);
+                if (next !== null) setReminderInterval(next);
               }}
               onIncrement={() => {
-                const idx = REMINDER_INTERVALS.indexOf(reminderInterval);
-                if (idx < REMINDER_INTERVALS.length - 1)
-                  setReminderInterval(REMINDER_INTERVALS[idx + 1] as ReminderInterval);
+                const next = stepReminderInterval(reminderInterval, 1);
+                if (next !== null) setReminderInterval(next);
               }}
               unit='min'
               disabled={!isReminderOn}
