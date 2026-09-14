@@ -3,8 +3,10 @@
  *
  * London's real October nights open the 17 and 18 October lists at 00:00:00 and the 19 October list a
  * minute earlier, at 23:59 on the 18th. A row exactly at 00:00 reads the same day whether it is filed by
- * the day its night leads into or by the calendar day it falls on, and a midpoint of 22:59:30 reads 00:00
- * once rounded instead of floored, so only the lists either side can tell a working build from a broken one.
+ * the day its night leads into or by the calendar day it falls on, and each 23:59 Midnight comes from a
+ * midpoint of 23:59:30 that reads 00:00 once rounded instead of floored. Either break moves only the 23:59
+ * Midnights: the 19 and 20 October lists show both, and the 18 October list shows only the first, when the
+ * 19th's Midnight joins it.
  *
  * Expected instants are literals worked out independently (Python's zoneinfo), never by the app's own
  * time helpers.
@@ -74,7 +76,7 @@ describe('opens the 17 and 18 October lists at exactly 00:00:00 and the 19 Octob
     }
   );
 
-  it("files both Midnights that fall on 18 October under their own lists: the 18th's at 00:00:00, the 19th's at 23:59", () => {
+  it("files the five rows that fall on 18 October under their own lists: the 18th's four from Midnight at 00:00:00, and the 19th's Midnight at 23:59", () => {
     const onTheEighteenth = sequenceFor(ScheduleType.Extra, '2026-10-17', 4).filter(
       (row) => row.datetime !== null && formatInTimeZone(row.datetime, 'Europe/London', 'yyyy-MM-dd') === '2026-10-18'
     );
