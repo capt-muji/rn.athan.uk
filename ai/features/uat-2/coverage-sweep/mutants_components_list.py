@@ -59,6 +59,7 @@ mutate.MUTATIONS[:] = [
     ('components/prayer/ActiveBackground.tsx', 'getActivePillOpacity(prayers, displayDate, type, overlay)', 'getActivePillOpacity(prayers, displayDate, ScheduleType.Standard, overlay)', 'call site: pill fade judged for the Standard page'),
     ('components/day/Day.tsx', 'getShownDateSource(showOverlayDate, OverlayPrayer.date, date)', 'getShownDateSource(false, OverlayPrayer.date, date)', 'call site: overlay date never shown'),
     ('components/day/Day.tsx', 'formatShownDate(dateSource, hijriEnabled)', 'formatShownDate(dateSource, false)', 'call site: Hijri setting ignored'),
+    ('components/prayer/Prayer.tsx', 'isPassed: Prayer.isPassed,\n      isSelectedForOverlay,', 'isPassed: isSelectedForOverlay,\n      isSelectedForOverlay: Prayer.isPassed,', 'call site: passed and highlighted swapped'),
 ]
 
 if __name__ == '__main__':

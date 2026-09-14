@@ -54,7 +54,10 @@ const show = (type: ScheduleType, breakage: Breakage, [date, time]: [string, str
   return displayDate;
 };
 
-/** What a tap on each row of the list on screen does, top to bottom, with the overlay highlighting that row or not */
+/**
+ * What a tap on each row of the list on screen does, top to bottom, with the overlay highlighting that row or not.
+ * For the function alone: Prayer.test.ts calls Prayer itself
+ */
 const tapsOnList = (type: ScheduleType, rowCount: number, isSelectedForOverlay: boolean) =>
   Array.from({ length: rowCount }, (_, index) => {
     const row = usePrayer(type, index);
