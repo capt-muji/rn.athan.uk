@@ -66,7 +66,7 @@ describe('isRevealReady', () => {
     ]);
   });
 
-  it('never waits on a cold launch, which lifted the splash onto its spinner already', () => {
+  it('never reveals from this gate on a cold launch, which lifted the splash at its first commit', () => {
     const cold = allRevealInputs().filter((input) => input.coldLaunch);
 
     expect(cold).toHaveLength(16);
