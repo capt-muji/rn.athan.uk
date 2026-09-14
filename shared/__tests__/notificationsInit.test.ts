@@ -78,13 +78,29 @@ describe('initializeNotifications background task registration', () => {
 // =============================================================================
 
 describe('initializeNotifications on Android', () => {
-  it('deletes the legacy channels and creates both at-time channels before the refresh runs', async () => {
+  it('has deleted the legacy channels and created both at-time channels before the refresh runs', async () => {
     const current = loadFresh('android');
     loaded = current;
+    // A channel call is recorded only when it settles, and each start-up step settles sooner than the
+    // one before it, so a step the start-up does not wait for is still pending when the refresh begins,
+    // even while a later step is awaited
+    const created: string[] = [];
+    const deleted: string[] = [];
+    const settleAfter = (ms: number, done: string[], channelId: string) =>
+      new Promise<void>((resolve) =>
+        setTimeout(() => {
+          done.push(channelId);
+          resolve();
+        }, ms)
+      );
+    current.deleteChannel.mockImplementation((channelId: string) => settleAfter(100, deleted, channelId));
+    current.setChannel.mockImplementation((channelId: string) =>
+      settleAfter(channelId === 'athan_1_v2' ? 50 : 10, created, channelId)
+    );
     const seenAtRefresh: { created: string[]; deleted: string[] } = { created: [], deleted: [] };
     const refreshFn = jest.fn(async () => {
-      seenAtRefresh.created = current.setChannel.mock.calls.map((call) => call[0] as string);
-      seenAtRefresh.deleted = current.deleteChannel.mock.calls.map((call) => call[0] as string);
+      seenAtRefresh.created = [...created];
+      seenAtRefresh.deleted = [...deleted];
     });
 
     await current.initializeNotifications(jest.fn().mockResolvedValue(true), refreshFn);
