@@ -275,6 +275,120 @@ the observers did not set out to test degree times. Table 4 (p115) records, per 
 is a function of latitude and seasons"). Readers are referred to him for timetables. **No formula
 or coefficient appears anywhere in the book.**
 
+### 2.11 `adhan`'s `MoonsightingCommittee`: the source, and deltas in minutes
+
+The full notes, scripts and tables are in `~/athan-research/notes/adhan.md` and
+`~/athan-research/adhan/results/{tables,edges}.md`. The source quotes below were checked line by
+line against `adhan@4.4.6` (fetched with `opensrc`, MIT, repo `batoulapps/adhan-js`, npm latest,
+modified 2026-08-31).
+
+**What the code does**
+
+- `CalculationMethod.ts:45-54`: `new CalculationParameters('MoonsightingCommittee', 18, 18)` with
+  `methodAdjustments` `dhuhr: 5, maghrib: 3`. That is Zuhr noon + 5 and Maghrib sunset + 3, as
+  how-we.html says.
+- `Astronomical.ts:327-356`, `seasonAdjustedMorningTwilight`: minutes before sunrise, piecewise
+  linear in days since the winter solstice (`daysSinceSolstice`: day of year + 10 in the north;
+  day of year − 172, or − 173 in a leap year, in the south):
+
+  | Set | a | b | c | d |
+  | --- | --- | --- | --- | --- |
+  | Fajr | 75 + 28.65/55·\|lat\| | 75 + 19.44/55·\|lat\| | 75 + 32.74/55·\|lat\| | 75 + 48.1/55·\|lat\| |
+
+  The segments are `<91` (a→b), `<137` (b→c), `<183` (c→d), `<229` (d→c), `<275` (c→b), and
+  otherwise b→a.
+- `Astronomical.ts:358-400`, `seasonAdjustedEveningTwilight`: minutes after sunset, with the same
+  segments.
+
+  | Shafaq | a | b | c | d |
+  | --- | --- | --- | --- | --- |
+  | Ahmer | 62 + 17.4/55·\|lat\| | 62 − 7.16/55·\|lat\| | 62 + 5.12/55·\|lat\| | 62 + 19.44/55·\|lat\| |
+  | Abyad | 75 + 25.6/55·\|lat\| | 75 + 7.16/55·\|lat\| | 75 + 36.84/55·\|lat\| | 75 + 81.84/55·\|lat\| |
+  | General | 75 + 25.6/55·\|lat\| | 75 + 2.05/55·\|lat\| | 75 − 9.21/55·\|lat\| | 75 + 6.14/55·\|lat\| |
+
+- `PrayerTimes.ts:115-181`:
+  - Fajr is the **later** of the 18° time and the seasonal time; Isha is the **earlier** of the two.
+  - When `coordinates.latitude >= 55` (`HIGH_LATITUDE_THRESHOLD`, line 24), the 18° time is first
+    replaced by 1/7 of the night, then compared in the same way.
+  - The comparison uses **signed** latitude, so the 1/7 rule never applies south of −55°. This is
+    an adhan choice that no documented rule supports.
+
+**Where the coefficients come from, and how far they can be trusted**
+
+- **No primary source seen so far publishes them.** They are not on how-we.html or faq_pt.html,
+  nor in Miftahi's book or the UK tables. adhan's maintainer attributes them to "a document from
+  Khalid Shaukat" (adhan-js issue #78), which is not public.
+- **They agree with the one place Shaukat did publish figures:**
+  - The Blackburn ranges he quotes in Miftahi's book are Fajr 94–122 minutes and Shafaq 66–100
+    minutes. adhan's functions at 53.75°N give 94.00–122.00 and, for General, 66.00–100.02.
+  - The current faq_pt 2.10 says Shafaq takes "66 to 105 minutes", which matches none of adhan's
+    three Isha sets. **UNVERIFIED** which figure is current.
+- **The General coefficients settle how-we.html's contradiction (section 2.5).** Shafaq General is
+  Ahmer-like in summer and Abyad-like in winter.
+
+**Deltas against the endpoint.** All figures are adhan minus endpoint, in minutes, for every day
+of 2026 and all three methods. The endpoint's own methods map to adhan settings as
+m0 = General + Hanafi, m1 = Abyad + Hanafi and m2 = Ahmer + Shafi'i. That mapping was measured,
+not assumed: the wrong pairings match on at most 82 days.
+
+| City (lat) | Fajr exact / ±1 / ≥2 | Isha m0 exact / ±1 / ≥2 | Largest other |
+| --- | --- | --- | --- |
+| London (51.5) | 339 / 26 / 0 | 339 / 26 / 0 | Asr (Shafi'i) ±2 on 28 days |
+| Makkah (21.4) | 362 / 3 / 0 | 358 / 7 / 0 | none |
+| Jakarta (−6.2), Cape Town (−33.9) | 361 / 4 / 0, 355 / 10 / 0 | 357 / 8 / 0, 353 / 12 / 0 | none |
+| Sydney (−33.9) | ±60 on 2 days | ±60 on 2 days | the endpoint's daylight-saving error (2.12), not adhan |
+| New York, Toronto, Oslo, Helsinki, Anchorage, Reykjavik (to 64.1) | never ≥2 (Reykjavik Fajr 209 / 156 / 0) | never ≥2 | Asr ±3 to ±6 at 60–64°, October to February |
+| Tromsø (69.6) | −13 to −19 on boundary days; polar day and night differ entirely | −226 on 27 November | Asr −395 on 23 November, where adhan's Asr runs away with the sun below about 2° at noon |
+
+- Dhuhr and Maghrib match only with adhan's +5 and +3 in place. With them zeroed, no day matches.
+- Nearest-minute rounding reproduces the endpoint best.
+
+**How the two differ at high latitude**
+
+- **The slide to 60°.** Neither adhan nor the endpoint does it. how-we.html (2024) says it happens
+  above 60°. Both use local 1/7 of the night, which is what the 2010 page described (section 2.9).
+  Forcing the slide makes the fit worse, by up to 5 minutes at Anchorage and 20 at Reykjavik.
+- **Tromsø in polar day** (21 June): the endpoint prints `-----` for Fajr, Sunrise, Maghrib and
+  Isha. adhan's default returns Invalid Date for the same four. adhan's `PolarCircleResolution`
+  options fill them in, but by rules of its own:
+  - `AqrabBalad` steps latitude 0.5° while latitude is 65° or more, and moves every prayer.
+  - faq_pt 1.2 describes 0.1° steps.
+- **Tromsø in polar night** (21 December, and 48 days in all): the endpoint gives plain 18° times
+  (Fajr 06:28, Isha 16:56, both reproduced by rounded 18°) and `-----` for Sunrise and Maghrib. No
+  adhan option reproduces that.
+- **`HighLatitudeRule` has no effect under this method.** It changed zero instants, in any city,
+  on any day.
+
+**Verdict: none, as the brief asks.** Up to 64°N adhan and the endpoint agree to within one
+minute on five of the six times. Asr diverges more, and Tromsø differs by up to hours. The
+coefficients rest on an unpublished document that agrees with the only published ranges.
+
+### 2.12 The endpoint changes the clock a day early in some timezones
+
+Confirmed from the cached 2026 method-0 years. For each city, the day Dhuhr jumps by about 60
+minutes was compared with the day the zone's offset really changes, measured noon to noon with
+Python's `zoneinfo`:
+
+| Zone | Endpoint jumps | Real change | |
+| --- | --- | --- | --- |
+| Australia/Sydney | Sat 4 Apr, Sat 3 Oct | Sun 5 Apr, Sun 4 Oct | **a day early** |
+| Pacific/Auckland | Sat 4 Apr, Sat 26 Sep | Sun 5 Apr, Sun 27 Sep | **a day early** |
+| Asia/Beirut | Sat 28 Mar, Sat 24 Oct | Sun 29 Mar, Sun 25 Oct | **a day early** |
+| Europe/London, Helsinki, Oslo (and Tromsø) | 29 Mar, 25 Oct | 29 Mar, 25 Oct | correct |
+| America/New_York, Toronto, Chicago, Anchorage | 8 Mar, 1 Nov | 8 Mar, 1 Nov | correct |
+
+- On those two days a year, **every time the endpoint gives for those zones is 60 minutes off**.
+  For example, Sydney's Dhuhr is 13:04 on Friday 3 April and 12:03 on Saturday 4 April, although
+  Sydney stays on UTC+11 until 03:00 on Sunday 5 April. adhan, computed on the real offset, is
+  right on those days.
+- **INFERRED, not verified.** The three wrong zones all change their clocks after local midnight
+  but before 00:00 UTC of the next day. That fits the endpoint reading the offset at about
+  24:00 UTC of the date. If so, Egypt, Israel and Palestine would be affected too. Those zones,
+  and whether `praytable.php` shares the fault, are being measured.
+- **This matters because of the owner's rule that the app edits nothing the API returns.** A v2.0
+  client in those zones would ship an hour-wrong day twice a year unless the source is fixed, the
+  day is rejected, or the owner rules otherwise (section 5).
+
 ## 3. Uncertain or still being established
 
 - Why the `www.moonsighting.com/time_json.php` endpoint returns 500 while `praytable.php` works.
@@ -336,16 +450,37 @@ under the standing no-visual-change rule:
 
 ### 4.4 High latitude (findings 44 and 47)
 
-**Waiting on the endpoint measurement at Reykjavik, Tromsø and Longyearbyen.** The documented
-method (section 2.5) promises a value every day at every latitude, by 1/7 of the night above 55°,
-sliding to 60°, and stepping latitude down 0.1° until the sun sets. If the endpoint really emits a
-time for every day, then:
+The documented method promises a time every day (section 2.5). The endpoint does not deliver
+that, measured on 2026 method 0:
 
-- the `"-----"` polar window that `validateApiTimes` was written for would not occur from this
-  source;
-- Magrib and Isha after midnight (finding 44's `adjustPrayerDateForMidnightCrossing`,
-  `calculateBelongsToDate`, `getNightTimesForDay` in `shared/prayer.ts`) would be exercised every
-  summer above about 60°.
+- **Tromsø (69.6°N):**
+  - **118 of 365 days** carry `-----` in at least one field.
+  - Polar day, e.g. 21 June: Fajr, Sunrise, Maghrib and Isha are `-----`, and Dhuhr and Asr are
+    real times.
+  - Polar night, e.g. 21 December: Sunrise and Maghrib are `-----`, while Fajr 06:28 and Isha
+    16:56 are still given.
+  - The edge day of 27 November gives Isha 17:11 with Maghrib `-----`.
+- **Reykjavik (64.1°N):** no `-----` at all. Maghrib crosses midnight in summer, e.g. 21 June:
+  Maghrib 00:07, Isha 00:28.
+
+What this means for the current code:
+
+- **`validateApiTimes` (`api/client.ts`)** drops any day with an unreadable required field. At
+  Tromsø that is 118 days a year, and today's day throws. The `"-----"` shape the per-day guard
+  was written for (finding 47) is exactly what this source emits. The guard keeps the rest of the
+  year usable, as intended.
+- **Nothing in the app can represent a day with Isha but no Maghrib, or Fajr but no Sunrise.**
+  Session 3's per-prayer `--:--` rendering (`feat/audit-71-dashes`, 1.27.0 to 1.27.3, not merged
+  into `uat-2` at `466b568`) addresses display, but Duha
+  (`adjustTime(times.sunrise, 20)`), Istijaba (from Magrib) and the night times (from Magrib and
+  Fajr) all derive from fields that can be `-----` while their neighbours are real. The
+  derivations in `transformApiData` and `getNightTimesForDay` (`shared/prayer.ts`) would have to
+  say what a missing base does to each derived time. The owner's rule forbids substituting one.
+- **Magrib and Isha after midnight** are routine from about 60°N (Reykjavik above). They exercise
+  finding 44's fixes every summer: `adjustPrayerDateForMidnightCrossing`,
+  `calculateBelongsToDate`, `magribCrossesIntoNextDay` and `getNightTimesForDay` in
+  `shared/prayer.ts`.
+- Longyearbyen (78°N) and southern latitudes beyond −55° are still being measured.
 
 ### 4.5 The London modification
 
