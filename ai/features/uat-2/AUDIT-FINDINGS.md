@@ -4605,7 +4605,7 @@ and needs asking.
 | One unreadable time | That row shows `--:--`; every other row keeps its time (R1 to R3) | Nothing armed for that row; everything else as before |
 | Every time of a day unreadable, or the day missing from the payload | The day is still listed, every Standard and Extras row `--:--` (R4, R7) | Nothing armed that day; the days around it as before |
 | A time another row is worked out from | Suhoor (Fajr), Duha (Sunrise), Friday Istijaba (Magrib), and Midnight and Last Third (the day before's Magrib, the day's own Fajr) show `--:--` with it. No Magrib is borrowed any more (finding 72) | The same rows arm nothing |
-| The highlight and the countdown | Pass straight over an unreadable row (R9). The row is dim while a readable row above it is still to come and lights up once those have passed (R10). A list with no readable row left has no highlight (R11), and its countdown shows `--:--` under the next prayer's name until the list moves on at 00:00 (owner ruling 2026-09-14) | |
+| The highlight and the countdown | Pass straight over an unreadable row (R9). The row is dim while a readable row above it is still to come and lights up once those have passed (R10). A list with no readable row left has no highlight (R11), and its countdown shows `--:--` under `...` until the list moves on at 00:00 (owner rulings 2026-09-14) | |
 | A day with no readable time | Comes on screen at 00:00 London at its own start, the day before waiting after its last readable row with no active row, and stays until 00:00 at its end (R8, owner ruling 2026-09-14; 1.27.0 brought it on when the day before handed over) | |
 | A tap | A passed unreadable row opens its next occurrence; an upcoming one shows `--:--` in the row and in the countdown (R12) | |
 | The bell | On an unreadable occurrence it draws the Off glyph at the row's own colour. A tap opens the alert sheet with a short message instead of options (owner rulings 2026-09-14, replacing the 25% opacity and the unpressable bell first built). The setting itself is never changed (R5) | Resumes on the next readable day; an alarm armed before the data changed is cancelled (R6) |
@@ -4702,7 +4702,7 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
 - R13: a refusal and a failed fetch are handled the same, and retried on the next sync.
 - R14: the bar is hidden. **Ruled by the owner on 2026-09-14: keep it hidden (option A).**
 - R11, the countdown: **ruled by the owner on 2026-09-14.** While a fully unreadable day is on screen the countdown
-  shows `--:--` under the next prayer's name, not a count to the next day's first prayer; at that day's 00:00 it
+  shows `--:--` under `...` (1.27.9; 1.27.1 named the next prayer), not a count to the next day's first prayer; at that day's 00:00 it
   shows the next day's real countdown. The 00:00 moment is the existing boundary the ticker already checks, so no
   timer is added.
 - R5: first built as the saved glyph at 25% opacity. **Ruled by the owner on 2026-09-14:** the Off glyph at the
@@ -4728,6 +4728,7 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
   - From the design review: every sequence write settles the cached boundary, the previous row keeps its
     whole list day, and the countdown no longer freezes at 1s after the last readable prayer in storage.
   - 1.27.2 and 1.27.3 answer two more Code Reviewer rounds.
+  - 1.27.4 records round 2 in the queue index and the brief.
   - 1.27.5 was found by the owner, watching the 3T capture live. After the last readable prayer in the data, the
     whole countdown block vanished and the date and list moved up the page. It happened because `useCountdown`
     was ready only while a readable prayer was ahead. It is now ready whenever a list is on screen, so `--:--`
@@ -4746,7 +4747,7 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
     - the waiting name has a screen-reader label
     - `findPreviousRow` returns nothing when the row above next is missing rather than taking one further up
   - Verification:
-    - 3,595 tests pass.
+    - 3,598 tests pass.
     - Every changed line in hooks, stores and shared is covered.
     - Every new or changed mutant is killed. Two of them hang the ticker, and the harness counts a timeout as
       killed.
