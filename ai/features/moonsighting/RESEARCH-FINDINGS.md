@@ -199,6 +199,27 @@ three places where a mosque may change the base, which makes them candidates for
 modification: Maghrib +2 (5 minutes after sunset in place of 3), Sunrise −3, and which Asr is used.
 Whether the London timetable applies any of them is being tested against real data (section 3).
 
+### 2.9 The high-latitude rule has changed since about 2010
+
+- **Source.** The French prayer-times page, `http://www.moonsighting.com/prayer-french.html`, Wayback
+  capture `20100827001844`. The live site no longer serves it.
+- **The 2010 rule.** 1/7 of the night was used "Aux latitudes comprises entre 55 et 66 degrés"
+  (between 55 and 66 degrees): "Le `ichâ' commence à la fin du premier septième de la nuit, et le
+  fajr commence au dernier septième de la nuit". Near and above the Arctic Circle, the times of the
+  nearest lower latitude where the sun rises and sets.
+- **The rule today.** how-we.html (updated 2024-03-01) uses 1/7 of the night between 55° and 60°,
+  and above 60° "slide[s] down to 60degrees". So the band and the anchor latitude have moved.
+  **A client or package written against the older text will disagree with today's tables above
+  60°.**
+- **Shafaq in England.** The same page puts its disappearance at 66 to 100 minutes after sunset
+  (9° to 13.6°). The current faq_pt 2.10 says 66 to 105 minutes (12° to 9.7°).
+- **The algorithm was not published there.** Of the booklet "When to Pray Fajr & Isha" (about 46
+  pages), the page says: "L'algorithme de moonsighting.com pour la fonction basée sur la latitude et
+  la saison n'est pas encore inclu dans le livret" (moonsighting.com's latitude-and-season
+  algorithm is not yet included in the booklet). The booklet was sent by post only.
+- **Where the coefficients may be.** The paper recovered from the Wayback Machine,
+  `articles/fajr&isha-yam.pdf` (capture `20070410171730`), is being read for them.
+
 ## 3. Uncertain or still being established
 
 - Why the `www.moonsighting.com/time_json.php` endpoint returns 500 while `praytable.php` works.
