@@ -32,10 +32,11 @@ export interface PreviewPlayback {
 }
 
 /**
- * expo's status hook keeps the last payload across a player swap, so just after a row starts, the status can still
- * be the released player's finished one. Only a status from the current player may end the preview, or every
- * freshly started row would stop in the same commit. The tenth of a second covers a clip that stops a fraction
- * short of the duration it reported.
+ * expo's status hook keeps the last payload across a player swap. After a preview runs to its end, that payload
+ * reads as finished, so the next row started, the same row included, would take it as its own and stop in the same
+ * commit. A preview paused or switched mid-play leaves a payload that does not read as finished. Only a status from
+ * the current player may end the preview. The tenth of a second covers a clip that stops a fraction short of the
+ * duration it reported.
  *
  * @returns Whether the playing row should be cleared
  */
