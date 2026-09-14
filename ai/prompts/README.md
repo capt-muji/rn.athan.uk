@@ -14,8 +14,8 @@ when it starts, and keep the brief itself in this directory.
 | 5 | **Android: each notification replaces the one before it**: one shared tag, and notifications due at the same instant are left to the system | `replace-previous-notification.md` | queued |
 | 6 | **iOS: find a way for each notification to replace the one before it**: investigate, and prove each answer on the iPhone | `ios-replace-previous-notification.md` | queued |
 | 7 | **Keep yesterday's still-due rows after 00:00**: a Magrib or Isha after midnight stays on screen and keeps its alarm, before v2.0 | `keep-still-due-rows-after-midnight.md` | queued |
-| 8 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context, and runs after every other session | `moonsighting-research.md` | **RAN** 2026-09-14 on `research/moonsighting` (unmerged): London solved, step 1 and step 3 unfinished; findings in `ai/features/moonsighting/RESEARCH-FINDINGS.md` |
-| 9 | **Moonsighting research, session 2**: finish the full site and document reads, the implementations, and an independent review | `moonsighting-research-2.md` | queued, after session 8 |
+| 8 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context, and runs after every other session | `moonsighting-research.md` | **RAN** 2026-09-14 on `research/moonsighting` (unmerged). All four steps done: every page, document and archived method-page version read; London 2026 reproduced; implementations measured. Findings: `ai/features/moonsighting/RESEARCH-FINDINGS.md` |
+| 9 | **Moonsighting research, session 2**: help the owner read the findings, then the small remainders and an independent review | `moonsighting-research-2.md` | **PAUSED** by the owner 2026-09-14. The owner hasn't read the findings yet, section 5's 11 questions are unanswered, and whether the research is usable for v2.0 is open. Resume at step 1 of the brief; the start prompt is at its end |
 
 Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else, and the
 moonsighting research runs after everything else. Sessions 5 to 7 sit in the order they were queued
