@@ -60,6 +60,8 @@ mutate.MUTATIONS[:] = [
     ('components/day/Day.tsx', 'getShownDateSource(showOverlayDate, OverlayPrayer.date, date)', 'getShownDateSource(false, OverlayPrayer.date, date)', 'call site: overlay date never shown'),
     ('components/day/Day.tsx', 'formatShownDate(dateSource, hijriEnabled)', 'formatShownDate(dateSource, false)', 'call site: Hijri setting ignored'),
     ('components/prayer/Prayer.tsx', 'isPassed: Prayer.isPassed,\n      isSelectedForOverlay,', 'isPassed: isSelectedForOverlay,\n      isSelectedForOverlay: Prayer.isPassed,', 'call site: passed and highlighted swapped'),
+    ('components/prayer/Prayer.tsx', "if (action === 'open') openOverlay(type, index);", "if (action === 'open') openOverlay(type, 0);", 'call site: overlay opened on row 0'),
+    ('components/prayer/Prayer.tsx', "if (action === 'open') openOverlay(type, index);", "if (action === 'open') openOverlay('standard' as ScheduleType, index);", 'call site: overlay opened on the Standard page'),
 ]
 
 if __name__ == '__main__':
