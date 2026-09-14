@@ -2,8 +2,7 @@
  * The alarm window either side of 00:00 on London's 18 October 2026, where list 18's Midnight is at exactly 00:00:00
  *
  * Nothing reschedules because the clock reaches 00:00: the window a reschedule arms is counted from London's date
- * when it runs, and the next one moves it by one list day. Every expected trigger and identifier was worked out
- * separately, from zoneinfo and the scheduling rules, not by the app's time helpers.
+ * when it runs, and the next one moves it by one list day.
  */
 
 jest.mock('@/stores/widget', () => ({
