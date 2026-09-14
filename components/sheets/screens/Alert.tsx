@@ -150,7 +150,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
 
   const handleAlertSelect = useCallback(
     async (type: AlertType) => {
-      if (selectionNeedsPermission(type, atTimeAlert)) {
+      if (selectionNeedsPermission({ selected: type, atTimeAlert })) {
         // A denied prompt must leave the control where it was. commitAlertMenuChanges
         // re-checks permissions at dismiss and saves nothing without them, so moving
         // the selection anyway left the user believing the athan was armed for this
@@ -167,7 +167,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
   );
 
   const handleReminderToggle = useCallback(() => {
-    const next = toggledReminder(canEnableReminder, isReminderOn, reminderType);
+    const next = toggledReminder({ canEnableReminder, isReminderOn, reminderType });
     if (next !== null) setReminderAlert(next);
   }, [canEnableReminder, isReminderOn, reminderType]);
 

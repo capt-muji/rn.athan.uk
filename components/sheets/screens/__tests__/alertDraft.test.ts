@@ -57,7 +57,7 @@ describe('selectionNeedsPermission', () => {
     ['Sound', 'Silent', false],
     ['Sound', 'Sound', false],
   ] as const)('moving the athan from %s to %s asks for permission: %s', (from, to, asks) => {
-    expect(selectionNeedsPermission(TYPE_BY_NAME[to], TYPE_BY_NAME[from])).toBe(asks);
+    expect(selectionNeedsPermission({ selected: TYPE_BY_NAME[to], atTimeAlert: TYPE_BY_NAME[from] })).toBe(asks);
   });
 });
 
@@ -68,17 +68,23 @@ describe('toggledReminder', () => {
     [true, 'Silent'],
     [true, 'Sound'],
   ] as const)('is locked while the athan is Off (reminder on: %s, sound: %s)', (isReminderOn, reminderType) => {
-    expect(toggledReminder(false, isReminderOn, TYPE_BY_NAME[reminderType])).toBeNull();
+    expect(
+      toggledReminder({ canEnableReminder: false, isReminderOn, reminderType: TYPE_BY_NAME[reminderType] })
+    ).toBeNull();
   });
 
   it.each(['Silent', 'Sound'] as const)('switches an on reminder off whatever its sound (%s)', (reminderType) => {
-    expect(toggledReminder(true, true, TYPE_BY_NAME[reminderType])).toBe(AlertType.Off);
+    expect(
+      toggledReminder({ canEnableReminder: true, isReminderOn: true, reminderType: TYPE_BY_NAME[reminderType] })
+    ).toBe(AlertType.Off);
   });
 
   it.each(['Silent', 'Sound'] as const)(
     'switches an off reminder on with the sound last chosen (%s)',
     (reminderType) => {
-      expect(toggledReminder(true, false, TYPE_BY_NAME[reminderType])).toBe(TYPE_BY_NAME[reminderType]);
+      expect(
+        toggledReminder({ canEnableReminder: true, isReminderOn: false, reminderType: TYPE_BY_NAME[reminderType] })
+      ).toBe(TYPE_BY_NAME[reminderType]);
     }
   );
 });
