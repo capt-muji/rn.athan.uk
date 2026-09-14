@@ -950,18 +950,29 @@ Draft. The London and implementations strands may add to these.
 4. **Which method a v2.0 user gets.** The endpoint offers 0 (Hanafi, Shafaq General), 1 (Hanafi,
    Shafaq Abyad), 2 (Shafi'i, Shafaq Ahmar) and 3 (Ja'fari). Shafaq General only appears on the
    site after August 2011 (section 2.13). Is there a default, or does the user choose?
-5. **London under v2.0.** If London's unified timetable turns out to be the base plus a fixed
-   modification (section 3), a London user on the moonsighting base would see different times
-   from their mosque. There are two ways to handle it:
-   - keep londonprayertimes.com for London and use the base elsewhere;
-   - or apply London's documented delta, which the "edits nothing" rule forbids unless the owner
-     rules it is sourced rather than synthesised.
+5. **London under v2.0.** London's unified timetable is not the moonsighting.com base plus an
+   offset. Its Fajr and Isha come from the Blackburn chart with 21 London edits, and its sun times
+   from HMNAO (section 2.15). The owner's plan already keeps londonprayertimes.com as London's
+   default, with moonsighting.com as a second option. No London delta can be "applied" to the
+   moonsighting base without synthesising times. Is that plan confirmed as final for London?
 6. **The text and the tables disagree above 60°** (sections 2.11, 2.13). how-we.html says to slide
    to 60°, but the published tables do not. When text and tables disagree, which counts as "the
    method"?
 7. **`adhan` as a fallback or cross-check.** It matches the endpoint to ±1 minute up to 64°N and
    diverges beyond. Should it be used at all, as a check on the source, an offline fallback, or
    not? The "never synthesise a prayer time" rule suggests not as a source of shown times.
+8. **Which Asr London users see.** The app shows API `asr`, which is the Shafi'i Asr, one shadow
+   length. `shared/types.ts` calls it Hanafi (section 2.14). Should London keep showing the Shafi'i
+   time, switch to `asr_2` (Hanafi), or offer both? And should the comments be corrected either way?
+9. **How the moonsighting.com option is presented in London.** It differs from the London timetable
+   on most days: Fajr −7 to +6 minutes, Isha −4 to +11, sunrise +2 to +4 (section 4.5). Should the
+   app say plainly that it is a different timetable from the user's mosque?
+10. **Reconstructing London locally.** London's rule can be rebuilt: the chart with its edits,
+    HMNAO-style sun times, and ±1 on boundary days (section 2.15). That would synthesise times, so it
+    is outside the standing rule. Is it ruled out permanently, or allowed as an offline check only?
+11. **Asking for the undocumented edits.** East London Mosque or Hizbul Ulama could be asked for the
+    basis of the 21 edited Isha slots and the 2022 change of coordinates. Does the owner want to
+    make that contact?
 
 ## 6. Next session should
 
@@ -969,14 +980,14 @@ Draft. The London and implementations strands may add to these.
    and `notes/documents.in-progress.md`, until every page and document is confirmed read in full,
    with counts. Include the Urdu `prayers-uk.pdf` (read visually) and the PPTs. Fold anything new
    into section 2.
-2. **Close London to the minute.**
-   - Reproduce Dhuhr, Maghrib, both Asrs and sunrise on all 365 days of
-     `data/london/lpt-2026.json` by fitting the rounding mode and coordinates to the second.
-   - Transcribe Tables 5 and 6 from the page images into JSON.
-   - Find the basis for the 20 Isha days.
-   - Confirm East London Mosque's 2026 timetable is identical to the API.
-   - Fit previous years from independent sources. The owner's bar is zero unexplained minutes on
-     any day.
+2. **Close what remains of London.** Sections 2.14 and 2.15 already cover the chart rules,
+   the edits, the eras, the identity check and the image-verified tables.
+   - Reproduce Asr independently of the London agent's code. adhan's Asr gives only 143 and 204 of
+     365.
+   - Look for HMNAO's own values for the 3 to 12 boundary days per prayer. The service returned 503;
+     note its personal-use terms.
+   - Seek the documented basis for the 21 Isha edits and the 2022 change of coordinates. This depends
+     on the owner's answer to section 5, question 11.
 3. **Finish step 3.** Implementations and npm provenance with deltas in minutes; the day-early
    clock change in more zones and on `praytable.php`; high latitude beyond 70°N and south of −55°;
    the endpoint's ownership and reliability.
@@ -996,3 +1007,15 @@ Draft. The London and implementations strands may add to these.
 | Unified Prayer Times for London, general announcement | <http://www.hizbululama.org.uk/articles/english/Unified.pdf> | 2026-09-14 |
 | London Prayer Times home and API docs | <https://www.londonprayertimes.com/>, <https://www.londonprayertimes.com/api> | 2026-09-14 |
 | moonsighting.com JSON endpoint and fallback | <https://www.moonsighting.com/time_json.php>, <https://moonsighting.ahmedbukhamsin.sa/time_json.php> | 2026-09-14 |
+| moonsighting.com method pages | <https://www.moonsighting.com/how-we.html> (updated 2024-03-01), <https://www.moonsighting.com/faq_pt.html> (updated 2020-08-25) | 2026-09-14 |
+| moonsighting.com table generator | <https://www.moonsighting.com/pray.php>, `assets/js/apple_map.js`, <https://www.moonsighting.com/praytable.php> | 2026-09-14 |
+| Old prayer-times page, 64 captures | `http://www.moonsighting.com/prayer.html`, Wayback 19990221195144 to 20251016224039 (list in `~/athan-research/pdfs/wayback/prayer-html/captures.txt`) | 2026-09-14 |
+| French prayer-times page | `http://www.moonsighting.com/prayer-french.html`, Wayback 20100827001844 | 2026-09-14 |
+| Miftahi, *Fajar and Isha* (2005) | `http://www.moonsighting.com/articles/fajr&isha-yam.pdf`, Wayback 20070410171730 (also `fajarishainbritain1.pdf`, `fajar&isha-a5.pdf`) | 2026-09-14 |
+| Hizbul Ulama UK city timetables, 2006 and 2009 | `http://www.moonsighting.com/articles/uk-prayercharts.pdf` (Wayback 20070810011835), `articles/uk-prayercharts1.pdf` (Wayback 2010) | 2026-09-14 |
+| Every other document the site carried | `~/athan-research/pdfs/manifest.json` (58 of 59 recovered, source URL and capture per file) | 2026-09-14 |
+| Hizbul Ulama, "Why our fasting times and timetable are not wrong" (2011) | <http://www.hizbululama.org.uk/articles/english/Why_our_fasting_times_are_not_wrong.pdf> | 2026-09-14 |
+| East London Mosque, prayer times explained, and yearly timetables | <https://www.eastlondonmosque.org.uk/prayer-times-and-calendar-explained>, <https://www.eastlondonmosque.org.uk/prayer-times>; PDFs listed in `notes/london.md` §1 | 2026-09-14 |
+| London Prayer Times API, 2026 year | `https://www.londonprayertimes.com/api/times?format=json&year=2026&24hours=true` (key supplied by the owner, not stored) → `data/london/lpt-2026.json` | 2026-09-14 |
+| `adhan` 4.4.6 source | npm `adhan@4.4.6`, <https://github.com/batoulapps/adhan-js>, read with `opensrc` | 2026-09-14 |
+| PrayerTimeAPI and mawaqit sources | <https://github.com/PrayerTimeResearch/PrayerTimeAPI>, <https://github.com/mawaqit/prayer-times-moonsighting>, read with `opensrc` | 2026-09-14 |
