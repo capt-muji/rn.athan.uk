@@ -140,6 +140,15 @@ describe('refreshNotifications behind the 12-hour gate', () => {
   });
 
   it('leaves what the OS already holds untouched while the gate is closed, even for a prayer turned off since', async () => {
+    // Recorded as the reschedule that armed it left it, so a refresh that did run would cancel it
+    Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, {
+      id: FAJR_TODAY,
+      date: TODAY,
+      time: '12:00',
+      englishName: 'Fajr',
+      arabicName: 'الفجر',
+      alertType: AlertType.Sound,
+    });
     osState.add(FAJR_TODAY);
     store.set(standardPrayerAlertAtoms[0], AlertType.Off);
     store.set(lastNotificationScheduleAtom, NOW - HOUR);
