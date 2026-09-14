@@ -71,13 +71,26 @@ the PDF was created 2012-08-10).
 
 ### 2.3 The app's provider, londonprayertimes.com
 
-Fetched 2026-09-14, without the API key.
+Raw HTML of `/`, `/api`, `/news` and `/privacy`, fetched with `curl` on 2026-09-14 and read in
+full (saved in `~/athan-research/london/lpt-site/`). The earlier WebFetch summaries were replaced
+by these reads.
 
-- Home page: "Times sourced from East London Mosque. We publish the official timetable without
-  modification." and "The London Unified Prayer Times are used at a number of mosques in the
-  capital, including East London Mosque, London Central Mosque and Croydon ICT."
-- `/api`: parameters `format`, `key`, `date`, `year`, `month`, `city` ("london" is the only value)
-  and `24hours`. "We only provide times for London." Keys are issued by hand.
+- **Every page's footer:** "Times sourced from East London Mosque. We publish the official
+  timetable without modification." and "© London Unified Prayer Times".
+- **Home:** "Here you can find the Unified Islamic Prayer Timetable for London. The London Unified
+  Prayer Times are used at a number of mosques in the capital, including East London Mosque,
+  London Central Mosque and Croydon ICT. We publish the official timetable as provided; where
+  jama'ah times are shown, they reflect East London Mosque."
+- **`/api`, "Updated Sat 25th April 2026":**
+  - endpoint `http://www.londonprayertimes.com/api/times/`, method GET;
+  - required `format` (json or xml) and `key`;
+  - optional `date` (yyyy-mm-dd), `year`, `month`, `city` ("london") and `24hours` ("true");
+  - its notes read "2025 times added (24th Oct 2024)", "24 hour format functionality added
+    (22 May 2019)" and "Cities: We only provide times for London";
+  - keys are issued by hand: "We manually process this application".
+- **`/news`, 13 August 2025:** "This API has been running for over a decade, however the website
+  has just been through a refresh ... based on the official East London Mosque timetable ... The
+  LPT API is completely free for all use."
 - So the chain is: Khalid Shaukat's model → the London unified timetable (modified) → East London
   Mosque's published timetable → londonprayertimes.com → `api/client.ts`.
 
@@ -224,7 +237,14 @@ Whether the London timetable applies any of them is being tested against real da
 ### 2.9 The high-latitude rule has changed since about 2010
 
 - **Source.** The French prayer-times page, `http://www.moonsighting.com/prayer-french.html`, Wayback
-  capture `20100827001844`. The live site no longer serves it.
+  capture `20100827001844`, footed "Mise à jour 30 mars 2010" (updated 30 March 2010). The live
+  site no longer serves it. Read in full (21,689 characters of text).
+- **What else it says.**
+  - Timetables are still requested by email, with the city, country and school in the subject line.
+  - It links "Urdu letter – Ghaur Talab" as independent confirmation "par des scientifiques au
+    Pakistan en 2007".
+  - It links a page of "horaires des prières des grandes villes du Royaume-Uni" (prayer times for
+    the UK's major cities).
 - **The 2010 rule.** 1/7 of the night was used "Aux latitudes comprises entre 55 et 66 degrés"
   (between 55 and 66 degrees): "Le `ichâ' commence à la fin du premier septième de la nuit, et le
   fajr commence au dernier septième de la nuit". Near and above the Arctic Circle, the times of the
