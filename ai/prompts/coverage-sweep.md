@@ -45,7 +45,7 @@ Nine hooks sit at literal **0% statements and 0% functions**: `useCountdown`, `u
 `useChromeDeferred`, `usePrevious`, `useWindowDimensions`. `useAnimation` is at 14.92% and
 `usePrayerAgo` at 56.52%. `hooks/` is the single biggest lever in the repository.
 
-Since these figures were taken, the dashes session (1.27.0 to 1.27.5) added real tests for `usePrayer`,
+Since these figures were taken, the dashes session (1.27.0 to 1.27.14) added real tests for `usePrayer`,
 `usePrayerSequence`, `useSchedule`, `usePrayerAgo`, `useCountdown` and `useCountdownBar`. Measure again before choosing where to
 start.
 
