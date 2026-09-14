@@ -226,6 +226,7 @@ describe('alert sheet state functions', () => {
     index: 0,
     prayerEnglish: 'Fajr',
     prayerArabic: 'الفجر',
+    isUnavailable: false,
   };
 
   it('showAlertSheet sets state and calls present', () => {

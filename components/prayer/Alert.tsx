@@ -9,9 +9,9 @@ import ALERT_ICONS from '@/assets/icons/svg/alerts';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
 import { useDerivedFill } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
-import { usePrayer } from '@/hooks/usePrayer';
+import { getShownAlert, isShownOccurrenceUnavailable, usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
-import { useSchedule } from '@/hooks/useSchedule';
+import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
@@ -45,6 +45,9 @@ interface Props {
  * - At-time alert options (Off/Silent/Sound)
  * - Reminder toggle with options when enabled
  * - Reminder interval selection (5-30 min)
+ *
+ * While the occurrence on screen has no readable time, the sheet shows only a message saying why no alert
+ * can go off, and the bell draws Off (R5).
  */
 export default function Alert({ type, index }: Props) {
   // =============================================================================
@@ -53,8 +56,8 @@ export default function Alert({ type, index }: Props) {
 
   const [isPressed, setIsPressed] = useState(false);
 
-  // `index` is CHRONOLOGICAL — List hands each row its position in the
-  // datetime-sorted day — while the alert atoms and the scheduler are both
+  // `index` is the row's position in the day as the sequence holds it, while
+  // the alert atoms and the scheduler are both
   // CANONICAL, keyed off EXTRAS_ENGLISH/PRAYERS_ENGLISH order. Resolve by name
   // so the bell, the sheet it opens and the scheduler cannot drift apart if the
   // two orders ever stop coinciding. usePrayer has to run before the atom read
@@ -85,9 +88,14 @@ export default function Alert({ type, index }: Props) {
   // DERIVED STATE
   // =============================================================================
 
-  const iconIndex = displayedAlert;
-
+  const NextOccurrencePrayer = usePrayer(type, index, true);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
+
+  // The same occurrence Time.tsx draws: the bell is unavailable exactly when the time on screen is --:--, since
+  // nothing can ever fire for it (R5), and its press explains that. The saved preference is only read, never changed
+  const isUnavailable = isShownOccurrenceUnavailable(isSelectedForOverlay, Prayer, NextOccurrencePrayer);
+
+  const iconIndex = getShownAlert(isUnavailable, displayedAlert);
 
   const previousDisplayDate = usePrevious(Schedule.displayDate);
   const isCascadeRoll =
@@ -95,8 +103,7 @@ export default function Alert({ type, index }: Props) {
     !isSelectedForOverlay &&
     !isPressed &&
     !Schedule.isLastPrayerPassed &&
-    Schedule.nextPrayerIndex === 0 &&
-    index !== 0;
+    isCascadeRow(Schedule, index);
   const previousIsSelected = usePrevious(isSelectedForOverlay);
   const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
 
@@ -122,8 +129,13 @@ export default function Alert({ type, index }: Props) {
   useEffect(() => {
     if (prevAlertRef.current === alertAtom) return;
     prevAlertRef.current = alertAtom;
+    // A bell that cannot be used draws Off whatever is saved, so a bounce would move a glyph that stays the same
+    if (isUnavailable) {
+      setDisplayedAlert(alertAtom);
+      return;
+    }
     playSwapBounce(alertAtom, setDisplayedAlert);
-  }, [alertAtom, playSwapBounce]);
+  }, [alertAtom, isUnavailable, playSwapBounce]);
 
   // =============================================================================
   // HANDLERS
@@ -132,8 +144,8 @@ export default function Alert({ type, index }: Props) {
   const handlePress = useCallback(async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    // Check permissions before opening sheet
-    if (alertAtom === AlertType.Off) {
+    // With no readable time there is nothing to set, so the sheet only says why, and no permission is asked for
+    if (!isUnavailable && alertAtom === AlertType.Off) {
       await ensurePermissions();
     }
 
@@ -144,8 +156,9 @@ export default function Alert({ type, index }: Props) {
       index: alertIndex,
       prayerEnglish: Prayer.english,
       prayerArabic: Prayer.arabic,
+      isUnavailable,
     });
-  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions]);
+  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions, isUnavailable]);
 
   // =============================================================================
   // RENDER
@@ -167,8 +180,14 @@ export default function Alert({ type, index }: Props) {
         // Named from the atom, not from `displayedAlert`: the glyph lags the
         // committed value through the change-bounce, and a screen reader must
         // hear the setting that is actually stored
-        accessibilityLabel={`${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`}
-        accessibilityHint='Opens the alert options for this prayer'
+        accessibilityLabel={
+          isUnavailable
+            ? `${Prayer.english} notification: unavailable`
+            : `${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`
+        }
+        accessibilityHint={
+          isUnavailable ? 'Explains why no alert can be set for this prayer' : 'Opens the alert options for this prayer'
+        }
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
           <Animated.View style={AnimSwap.style}>
