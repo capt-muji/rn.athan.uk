@@ -20,7 +20,7 @@ agent's full notes are in `~/athan-research/notes/`.
    - Every page is being read in full by an agent (`notes/site.md`).
    - Every PDF, DOC and PPT the site carries **or once carried** was downloaded, from the live copy
      where it still exists and otherwise from the Wayback raw capture (58 of 59; `pdfs/manifest.json`).
-     Each is being read in full (`notes/documents.md`).
+     Each was read in full, with a page ledger (`notes/documents.md`, section 2.17).
    - All 64 archived versions of the old `prayer.html` were fetched and read in full, the first
      whole and every line of each sequential diff, to date each method change
      (`notes/prayer-history.md`).
@@ -915,12 +915,100 @@ minutes. Reference values are London, Oslo and Tromsø on 20 March, 21 June, 22 
   give 18° times.
 - Section 5 carries the resulting owner decisions.
 
+### 2.17 Every document the site carried: what they add
+
+**What was read.** All 59 documents moonsighting.com carries or once carried were read in full by the
+documents agent: `notes/documents.md` (1,200 lines, read in full by the lead), with a page-by-page
+ledger in PART D. None was unobtainable.
+
+- **Documents with prayer-time content:** the three editions of Miftahi's *Fajar and Isha*, the Urdu
+  *prayers-uk.pdf*, the 2006 and 2009 UK tables, the French page and the old `prayer.html`.
+- **Everything else** is about moonsighting, the Hijri calendar, Qibla, eclipses or unrelated
+  subjects, including one piece of spam.
+- **No document on the site publishes the Fajr/Isha formula or its coefficients.** The booklet that
+  does (section 2.16) reached the public through the islamic-network repository, not through the
+  site's own document links.
+
+**The Urdu book, `articles/prayers-uk.pdf`**
+
+- **What it is.** Wayback capture 20081230101850. It is the 20-page Urdu section of Hizbul Ulama's
+  2007 book "Fajar and Isha (part 1&2)", 366 pages, first printed Muharram 1428 / January 2007. Its
+  text layer is unusable, so it was read from rendered pages. The lead re-checked PDF page 11 against
+  the image.
+- **Who computed the UK times.** Page 5 says Dr Khalid Shaukat, at Hizbul Ulama's request, computed on
+  computer "for the whole of Britain, the times of the five daily prayers including Fajr and Isha,
+  sunrise and zawal, and the Qibla calculations". Before that, "for a long period" mosque committees
+  had only "a chart of the intervals" to add to their own sunrise and sunset. Mohammed Arshad Baig's
+  software is named as the other route.
+- **The clarifications (PDF pp. 10–16), by point:**
+  1. Times are in GMT.
+  2. Fajr and Isha rest on eyewitness observation. Sunrise, zawal, Zuhr, Asr and Maghrib are by
+     approximate astronomical calculation.
+  3. The book uses the 2007 calendar with its clock changes.
+  4. Zuhr is midday + 5 minutes: 1.5 + 1 + 2.5 **[lead-verified on the page image]**. Ten minutes in
+     all are counted as makruh.
+  5. Asr is at "double the original shadow (mithlayn)"; the earlier Asr is available from Shaukat.
+  6. Maghrib is observatory sea-level sunset + 3; anyone wanting 5 should add only 2 more.
+  - A note on p. 13: "sunrise times have been set equal to the observatory's sea-level times;
+    therefore it is necessary to set the sunrise times by subtracting three minutes".
+- **London's unified timetable applies that −3 itself,** as ELM states (section 2.15). The 2007 book
+  left it to the reader.
+
+**The UK tables, 2006 and 2009 editions, read and checked in full** (`notes/documents.md` A4, C6–C8)
+
+- **The two editions are identical.** All 31 cities they share match on every date and all six
+  columns (0 differences), so the 2006 book is an exact subset of the 2009 book's 49 cities.
+- **When they were generated.** Every header carries a magnetic-declination epoch of 2006.91 to
+  2006.94. They are the 2007-calendar directory Shaukat computed in late 2006.
+- **What they actually apply,** checked by the agent against an independent NOAA-style solar
+  calculation at each printed coordinate:
+  - Zuhr is noon + 4.3 to +5.7 minutes, median +5.0.
+  - Maghrib is sea-level sunset + 1.8 to +4.2, median +3.0.
+  - Sunrise is the unmodified calculated sunrise (median 0), so **the −3 advice is not applied in the
+    tables**.
+  - Asr is Hanafi, median −0.1.
+  - Fajr is 93 to 125 minutes before sunrise and Isha 65 to 100 minutes after Maghrib, **growing
+    slightly with latitude**. At Aberdeen (57°10′N) on 21 June, Fajr is 125 minutes before sunrise.
+  - **There is no 1/7-of-the-night rule even at Aberdeen and Dundee, above 55°N.** The tables predate
+    the site's 1/7 wording, which returns on prayer.html only in 2009 (section 2.13).
+- **Errors in the tables, as printed:**
+  - BELFAST is computed at "Lt=51:38N Lg=0:25E", a point in Essex; its Zuhr on 1 January is 12:07,
+    earlier than London's 12:09.
+  - COVENTRY is computed at longitude 0:30W, about 1° off.
+  - EALING and HACKNEY switch to BST on 26 March and back on 29 October, the 2006 dates. LONDON and
+    CROYDON use 2007's 25 March and 28 October.
+  - NOTTINGHAM has no 30 April row.
+  - MANCHESTER prints "9.17p" on 31 August.
+- **The LONDON page** (Lt 51:30N, Lg 0:10W, PDF pp. 321–331) was read in all 365 rows. For example,
+  21 June reads "2:44a 4:43a 1:07p 6:40p 9:25p 10:45p". Section 2.15 shows London's unified timetable
+  is a different table.
+
+**Miftahi's *Fajar and Isha*: three editions, fully diffed** (`notes/documents.md` A1, A2)
+
+- **Editions:**
+  - 2005-10-31, "Fajar and Isha Time in Britain", 68 pages;
+  - 2006-11-15, A5, 123 pages;
+  - 2006-12-07, 123 pages.
+- **Tables 4, 5 and 6 are identical in all three.** The only difference is the 2005 print of "144"
+  for 7 May, which later editions correct to "1-44".
+- **The 2005 edition dates the first Blackburn meeting "12 April 1988".** Later editions and the
+  Urdu book say 2 April 1988.
+- **Shaukat's "66 to 100 minutes … 94 to 122 minutes" quote is absent from the 2005 edition,** and
+  appears from November 2006.
+- **The sentence naming Shaukat's accompanying UK directory appears only in the 2006-12 build.** That
+  dates the directory to between 15 November and 7 December 2006, consistent with the tables' epoch.
+- **An inference, not stated in any document:** the website's Blackburn ranges ("93 to 123" and
+  "66 to 100" minutes) match the smoothed chart ranges of Tables 5 and 6 (90–124 and 60–100), not the
+  raw observations of Table 4.
+
+**Step 1's document half is complete.** The site-page half is still being read (section 3.5).
+
 ## 3. Uncertain or still being established
 
-State at the close of 2026-09-14. The site-page and document reads ran as agents and were interrupted
-repeatedly by API usage limits. The documents agent is still running; the site agent is paused. Their
-notes, as far as they had got, are in `notes/documents.in-progress.md` and `notes/site.in-progress.md`.
-Until each is finished and checked, treat its contents as **UNVERIFIED**.
+State at the close of 2026-09-14. The document read is finished (section 2.17). The site-page read ran
+as an agent, was interrupted repeatedly by API usage limits, and is still running. Its notes, as far
+as it had got, are in `notes/site.in-progress.md`. Until it is finished and checked, treat that file's
+contents as **UNVERIFIED**.
 
 ### 3.1 London (sections 2.14 and 2.15): closed except these
 
@@ -960,8 +1048,9 @@ Until each is finished and checked, treat its contents as **UNVERIFIED**.
   
   Plus the published tables, which apply 1/7 at the true latitude with no slide. The owner has to rule
   which counts as the method (section 5).
-- **Unread documents:** `articles/prayers-uk.pdf` (Urdu, visual read) and the two PPTs. The documents
-  agent is on them.
+- **Documents:** all read, including the Urdu `articles/prayers-uk.pdf` and the two PPTs (section
+  2.17). None publishes the formula. The Shaukat foreword the Urdu book mentions is not in any
+  file on disk.
 
 ### 3.4 Implementations and packages (section 2.16): closed except these
 
@@ -973,10 +1062,10 @@ Until each is finished and checked, treat its contents as **UNVERIFIED**.
 
 ### 3.5 Every page and every document
 
-- The full read of every live and archived site page (`notes/site.in-progress.md`) and of every
-  document (`notes/documents.in-progress.md`) was well advanced but not finished.
-- The brief's step 1 is not complete until both agents confirm every page and document was read in
-  full, with counts.
+- **Documents: complete.** 59 of 59, with a page ledger (section 2.17).
+- **Site pages: not complete.** The full read of every live and archived site page
+  (`notes/site.in-progress.md`) is still running. Step 1 closes when that agent confirms every page
+  was read in full, with counts.
 
 ## 4. How each finding would affect the app
 
@@ -1155,11 +1244,9 @@ Draft. The London and implementations strands may add to these.
 
 ## 6. Next session should
 
-1. **Finish step 1.**
-   - Finish the site-page read from `notes/site.in-progress.md`, and take the documents agent's final
-     notes (or finish them from `notes/documents.in-progress.md`).
-   - Both must confirm every page and document was read in full, with counts, including the Urdu
-     `prayers-uk.pdf` and the two PPTs. Fold anything new into section 2.
+1. **Finish step 1.** The documents are done (section 2.17). Finish the site-page read from
+   `notes/site.in-progress.md` until every live and archived page is confirmed read in full, with
+   counts, and fold anything new into section 2.
 2. **Close what remains of London** (section 3.1):
    - reproduce Asr independently of the London agent's code;
    - look for HMNAO's own values for the boundary days (respect the service's personal-use terms);
