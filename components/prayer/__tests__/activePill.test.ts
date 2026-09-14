@@ -9,12 +9,12 @@
  */
 
 import { type Breakage, london, sequenceFrom, storeLondonDays } from '@/hooks/__tests__/londonDays';
-import { computePrayerStatuses } from '@/hooks/usePrayerSequence';
+import { computePrayerStatuses, type PrayerWithStatus } from '@/hooks/usePrayerSequence';
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
 import { isReadable, resolveDisplayDate } from '@/shared/sequence';
 import { type OverlayStore, type Prayer, ScheduleType } from '@/shared/types';
 
-import { placeActivePill } from '../activePill';
+import { getActivePillOpacity, getActivePillRow } from '../activePill';
 
 jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
 
@@ -62,6 +62,18 @@ const momentsAcross = (prayers: Prayer[]): Date[] => {
   return moments.sort((a, b) => a - b).map((moment) => new Date(moment));
 };
 
+/** The pill's row and opacity, each from the function ActiveBackground calls for it */
+const placePill = (
+  prayers: PrayerWithStatus[],
+  displayDate: string | null,
+  type: ScheduleType,
+  overlay: OverlayStore,
+  heldRow: number
+) => ({
+  row: getActivePillRow(prayers, displayDate, type, heldRow),
+  opacity: getActivePillOpacity(prayers, displayDate, type, overlay),
+});
+
 /** The page at a London moment, as ActiveBackground receives it */
 const pageAt = (type: ScheduleType, breakage: Breakage, [date, time]: [string, string], order: ListOrder[1]) => {
   storeLondonDays(breakage);
@@ -74,7 +86,7 @@ const pageAt = (type: ScheduleType, breakage: Breakage, [date, time]: [string, s
 // THE ROW, THROUGH EVERY MOMENT
 // =============================================================================
 
-describe('placeActivePill across three real London days', () => {
+describe('the active pill across three real London days', () => {
   // [scenario, type, breakage, orders]
   it.each<[string, ScheduleType, Breakage, ListOrder[]]>([
     ['Standard, every time readable', ScheduleType.Standard, {}, LIST_ORDERS.slice(0, 1)],
@@ -114,7 +126,7 @@ describe('placeActivePill across three real London days', () => {
           const rows = statuses.filter((row) => row.belongsToDate === displayDate);
           const next = rows.find((row) => row.isNext);
 
-          const pill = placeActivePill(statuses, displayDate, type, CLOSED, heldRow);
+          const pill = placePill(statuses, displayDate, type, CLOSED, heldRow);
 
           const expected = next
             ? { row: drawnNames(type, rows).indexOf(next.english), opacity: 1 }
@@ -139,14 +151,14 @@ describe('placeActivePill across three real London days', () => {
     const { prayers, displayDate } = pageAt(ScheduleType.Standard, {}, ['2026-09-12', '22:00'], (rows) => rows);
 
     expect(displayDate).toBeNull();
-    expect(placeActivePill(prayers, displayDate, ScheduleType.Standard, CLOSED, 5)).toEqual({ row: 5, opacity: 0 });
+    expect(placePill(prayers, displayDate, ScheduleType.Standard, CLOSED, 5)).toEqual({ row: 5, opacity: 0 });
   });
 
   it("takes the next row from the list day on screen: Friday's Isha, not the sequence's first Isha", () => {
     const { prayers, displayDate } = pageAt(ScheduleType.Standard, {}, ['2026-09-11', '20:00'], (rows) => rows);
 
     expect(displayDate).toBe('2026-09-11');
-    expect(placeActivePill(prayers, displayDate, ScheduleType.Standard, CLOSED, 0)).toEqual({ row: 5, opacity: 1 });
+    expect(placePill(prayers, displayDate, ScheduleType.Standard, CLOSED, 0)).toEqual({ row: 5, opacity: 1 });
   });
 });
 
@@ -154,7 +166,7 @@ describe('placeActivePill across three real London days', () => {
 // THE PILL AND THE OVERLAY
 // =============================================================================
 
-describe('placeActivePill with the overlay', () => {
+describe('the active pill with the overlay', () => {
   const extras = (isOn: boolean, selectedPrayerIndex: number): OverlayStore => ({
     isOn,
     selectedPrayerIndex,
@@ -179,7 +191,7 @@ describe('placeActivePill with the overlay', () => {
   ])('%s: the pill stays on Istijaba at opacity %i', (_scenario, opacity, [, order], overlay) => {
     const { prayers, displayDate } = pageAt(ScheduleType.Extra, {}, ['2026-09-11', '12:00'], order);
 
-    expect(placeActivePill(prayers, displayDate, ScheduleType.Extra, overlay, 0)).toEqual({ row: 4, opacity });
+    expect(placePill(prayers, displayDate, ScheduleType.Extra, overlay, 0)).toEqual({ row: 4, opacity });
   });
 
   it.each([
@@ -194,6 +206,6 @@ describe('placeActivePill with the overlay', () => {
     );
 
     expect(displayDate).toBe('2026-09-11');
-    expect(placeActivePill(prayers, displayDate, ScheduleType.Extra, overlay, 3)).toEqual({ row: 3, opacity: 0 });
+    expect(placePill(prayers, displayDate, ScheduleType.Extra, overlay, 3)).toEqual({ row: 3, opacity: 0 });
   });
 });
