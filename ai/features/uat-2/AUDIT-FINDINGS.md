@@ -4727,6 +4727,14 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
   - The bell is drawn at the row's colour and opens the explanation sheet.
   - From the design review: every sequence write settles the cached boundary, the previous row keeps its
     whole list day, and the countdown no longer freezes at 1s after the last readable prayer in storage.
+  - 1.27.2 and 1.27.3 answer two more Code Reviewer rounds.
+  - Verification:
+    - 3,580 tests pass.
+    - Every changed line in hooks, stores and shared is covered.
+    - All 18 new or changed mutants are killed. Two of them hang the ticker, and the harness counts a timeout
+      as killed.
+    - The round-2 screens and videos were captured on the 3T from a mock build
+      ([approval page](https://claude.ai/code/artifact/0120e640-db3d-47d5-b456-a94021b86a86)).
 
 ---
 
