@@ -4,19 +4,13 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
-import {
-  DEFAULT_REMINDER_INTERVAL,
-  RADIUS,
-  REMINDER_INTERVALS,
-  SPACING,
-  TEXT,
-  validateReminderInterval,
-} from '@/shared/constants';
+import { RADIUS, REMINDER_INTERVALS, SPACING, TEXT } from '@/shared/constants';
 import { type AlertMenuState, AlertType, Icon, type ReminderInterval } from '@/shared/types';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
 import { SegmentedControl, type SegmentOption, Sheet, Stepper, Toggle } from '../parts';
+import { initialReminderInterval, initialReminderType, selectionNeedsPermission, toggledReminder } from './alertDraft';
 
 const ALERT_OPTIONS: SegmentOption[] = [
   { value: AlertType.Off, label: 'Off', icon: Icon.BELL_SLASH },
@@ -132,7 +126,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
   );
   const [reminderType, setReminderType] = useState<AlertType.Silent | AlertType.Sound>(() => {
     const reminder = getReminderAlertType(sheetState.type, sheetState.index);
-    return reminder === AlertType.Sound ? AlertType.Sound : AlertType.Silent;
+    return initialReminderType(reminder);
   });
   const [reminderInterval, setReminderInterval] = useState<ReminderInterval>(() => {
     // The declared ReminderInterval is a cast the store makes over a raw MMKV
@@ -143,7 +137,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
     // committed straight into the reminder offset. Reachable the day
     // REMINDER_INTERVALS changes, which is exactly when the cast stops holding.
     const stored = getReminderInterval(sheetState.type, sheetState.index);
-    return validateReminderInterval(stored) ? stored : DEFAULT_REMINDER_INTERVAL;
+    return initialReminderInterval(stored);
   });
 
   const originalStateRef = useRef<AlertMenuState>({
@@ -162,7 +156,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
 
   const handleAlertSelect = useCallback(
     async (type: AlertType) => {
-      if (type !== AlertType.Off && atTimeAlert === AlertType.Off) {
+      if (selectionNeedsPermission(type, atTimeAlert)) {
         // A denied prompt must leave the control where it was. commitAlertMenuChanges
         // re-checks permissions at dismiss and saves nothing without them, so moving
         // the selection anyway left the user believing the athan was armed for this
@@ -179,8 +173,8 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
   );
 
   const handleReminderToggle = useCallback(() => {
-    if (!canEnableReminder) return;
-    setReminderAlert(isReminderOn ? AlertType.Off : reminderType);
+    const next = toggledReminder(canEnableReminder, isReminderOn, reminderType);
+    if (next !== null) setReminderAlert(next);
   }, [canEnableReminder, isReminderOn, reminderType]);
 
   const handleReminderTypeSelect = useCallback((type: AlertType) => {
