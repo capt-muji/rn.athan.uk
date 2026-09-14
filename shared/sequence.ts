@@ -154,26 +154,28 @@ export const isRowPassed = (prayers: Prayer[], row: Prayer, now: Date): boolean 
 };
 
 /**
- * The row the countdown bar and the "ago" badge measure from: the latest readable row before next, on
- * next's own list or the list before it
+ * The row the countdown bar and the "ago" badge measure from: the row just above next on its list, or,
+ * for the first row of a list, the last row of the list before. Null when that row is not among `prayers`,
+ * has no readable time, or does not fall before next
  *
- * Unreadable rows in between are passed over, so an unreadable Magrib leaves a bar from Asr to Isha. It
- * looks no further back than the list before, so a list day with no readable row cannot stretch a bar
- * across itself; there is nothing to work one out from, and the bar is hidden instead (R14).
+ * Only that row, never one further up: a bar measured from an earlier prayer would span a prayer it passes
+ * over and read as the wrong gap, so an unreadable Magrib leaves no bar before Isha rather than a longer one
+ * from Asr, and the badge hides with it (owner ruling 2026-09-14, R14).
  *
  * @param prayers Rows to search. The caller adds the list before from storage when the sequence lacks it
  * @param next The next readable row
  */
-export const findPreviousReadable = (prayers: Prayer[], next: ReadablePrayer): ReadablePrayer | null => {
-  const listBefore = TimeUtils.getPreviousDateString(next.belongsToDate);
-  let previous: ReadablePrayer | null = null;
+export const findPreviousRow = (prayers: Prayer[], next: ReadablePrayer): ReadablePrayer | null => {
+  const position = listPosition(next);
+  const listDay = position > 0 ? next.belongsToDate : TimeUtils.getPreviousDateString(next.belongsToDate);
 
-  for (const prayer of prayers) {
-    if (!isReadable(prayer) || prayer.datetime >= next.datetime) continue;
-    if (prayer.belongsToDate !== next.belongsToDate && prayer.belongsToDate !== listBefore) continue;
-    if (!previous || prayer.datetime > previous.datetime) previous = prayer;
+  let previous: Prayer | null = null;
+  for (const prayer of rowsOfListDay(prayers, listDay)) {
+    if (position > 0 && listPosition(prayer) >= position) continue;
+    if (!previous || listPosition(prayer) > listPosition(previous)) previous = prayer;
   }
 
+  if (!previous || !isReadable(previous) || previous.datetime >= next.datetime) return null;
   return previous;
 };
 

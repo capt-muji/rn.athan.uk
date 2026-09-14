@@ -18,7 +18,7 @@ import * as PrayerUtils from '@/shared/prayer';
 import {
   compareListOrder,
   findNextReadable,
-  findPreviousReadable,
+  findPreviousRow,
   getDisplayHoldEnd,
   isReadable,
   resolveDisplayDate,
@@ -64,7 +64,7 @@ export const getSequenceAtom = (type: ScheduleType) => {
  * @param prayers The stored sequence
  * @param next The next readable row
  * @param now The moment the row is worked out
- * @returns The latest readable row before next, or null when there is none or it is still to come
+ * @returns The row just above next (findPreviousRow), or null when it is missing, unreadable or still to come
  */
 const findPreviousPrayer = (
   type: ScheduleType,
@@ -72,11 +72,11 @@ const findPreviousPrayer = (
   next: ReadablePrayer,
   now: Date
 ): ReadablePrayer | null => {
-  const inSequence = findPreviousReadable(prayers, next);
+  const inSequence = findPreviousRow(prayers, next);
   if (inSequence) return inSequence;
 
   const listBefore = TimeUtils.getPreviousDateString(next.belongsToDate);
-  const fromStorage = findPreviousReadable(PrayerUtils.createPrayersForDate(type, listBefore), next);
+  const fromStorage = findPreviousRow(PrayerUtils.createPrayersForDate(type, listBefore), next);
 
   // The sequence cannot hold a row between now and next, since that row would be next, but storage can: a
   // sequence built after 00:00 starts at the new calendar day and leaves out yesterday's Isha still to come
@@ -151,7 +151,7 @@ export const createNextPrayerAtom = (type: ScheduleType) => {
  * Used for progress bar calculation to show elapsed time since last prayer.
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Derived atom resolving to the latest readable prayer before next, or null when there is no
+ * @returns Derived atom resolving to the row just above next (findPreviousRow), or null when there is no
  * next prayer or nothing readable to measure from
  *
  * @see findPreviousPrayer - Where the list before comes from when the sequence does not hold it
@@ -369,7 +369,7 @@ export const setSequence = (type: ScheduleType, date: Date): void => {
 /**
  * Helper: Filter prayers to keep only relevant ones
  *
- * Keeps readable rows still to come, the previous readable row (for the progress bar: Isha→Fajr), and
+ * Keeps readable rows still to come, the row the progress bar measures from when it has a time, and
  * every row of the list day on screen and of the list days after it. Those rows are kept or dropped by
  * their list day as a whole, because a row with no readable time can never be "still to come": dropped
  * by time, a later day with no readable row would vanish and be skipped (R8), and a list on screen would
@@ -380,7 +380,7 @@ export const setSequence = (type: ScheduleType, date: Date): void => {
  * @param prayers The sequence
  * @param now Current instant
  * @param currentDisplayDate The list day on screen, or null when nothing is still to come
- * @param previous The previous readable row, or null
+ * @param previous The row the bar measures from (findPreviousRow), or null
  */
 function filterRelevantPrayers(
   prayers: Prayer[],
@@ -451,7 +451,7 @@ export const refreshSequence = (type: ScheduleType): void => {
 
   const currentDisplayDate = resolveDisplayDate(sequence.prayers, now);
   const next = findNextReadable(sequence.prayers, now);
-  const previous = next ? findPreviousReadable(sequence.prayers, next) : null;
+  const previous = next ? findPreviousRow(sequence.prayers, next) : null;
 
   // Filter relevant prayers using helper
   const relevantPrayers = filterRelevantPrayers(sequence.prayers, now, currentDisplayDate, previous);

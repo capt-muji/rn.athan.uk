@@ -1109,9 +1109,10 @@ describe('on the real builder', () => {
         after: {
           next: row('Isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
           displayDate: '2026-10-17',
-          previous: row('Asr', '2026-10-17', '2026-10-17T14:30:00.000Z'),
+          // The row above Isha is the unreadable Magrib, so there is nothing to measure the bar from
+          previous: null,
           countdown: { timeLeft: 14340, name: 'Isha' },
-          barAvailable: true,
+          barAvailable: false,
           held: {
             '2026-10-17': 'Fajr, Sunrise, Dhuhr, Asr, [Magrib], Isha',
             '2026-10-18': STANDARD_ROWS,
@@ -1140,11 +1141,11 @@ describe('on the real builder', () => {
         after: {
           next: row('Suhoor', '2026-10-18', '2026-10-18T04:34:00.000Z'),
           displayDate: '2026-10-18',
-          previous: row('Duha', '2026-10-17', '2026-10-17T06:45:00.000Z'),
+          // The row above Suhoor is the unreadable Last Third, so no bar, and nothing keeps the 17th
+          previous: null,
           countdown: { timeLeft: 78540, name: 'Suhoor' },
-          barAvailable: true,
+          barAvailable: false,
           held: {
-            '2026-10-17': EXTRAS_ROWS,
             '2026-10-18': '[Midnight], [Last Third], Suhoor, Duha',
             '2026-10-19': EXTRAS_ROWS,
           },
@@ -1171,11 +1172,11 @@ describe('on the real builder', () => {
         after: {
           next: row('Sunrise', '2026-10-18', '2026-10-18T06:27:00.000Z'),
           displayDate: '2026-10-18',
-          previous: row('Isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
+          // The row above Sunrise is the unreadable Fajr, so no bar, and nothing keeps the 17th
+          previous: null,
           countdown: { timeLeft: 43080, name: 'Sunrise' },
-          barAvailable: true,
+          barAvailable: false,
           held: {
-            '2026-10-17': STANDARD_ROWS,
             '2026-10-18': '[Fajr], Sunrise, Dhuhr, Asr, Magrib, Isha',
             '2026-10-19': STANDARD_ROWS,
           },
@@ -1202,11 +1203,11 @@ describe('on the real builder', () => {
         after: {
           next: row('Fajr', '2026-10-18', '2026-10-18T04:54:00.000Z'),
           displayDate: '2026-10-18',
-          previous: row('Magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'),
+          // The row before Fajr is the list before's unreadable Isha, so no bar, and nothing keeps the 17th
+          previous: null,
           countdown: { timeLeft: 42480, name: 'Fajr' },
-          barAvailable: true,
+          barAvailable: false,
           held: {
-            '2026-10-17': 'Fajr, Sunrise, Dhuhr, Asr, Magrib, [Isha]',
             '2026-10-18': STANDARD_ROWS,
             '2026-10-19': STANDARD_ROWS,
           },
