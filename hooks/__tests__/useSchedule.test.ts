@@ -74,10 +74,17 @@ describe('computeScheduleView', () => {
   });
 
   it('gives a list with no readable row no next row, no readable row, and every row passed', () => {
-    const view = viewAt(ScheduleType.Standard, '2026-09-10', { '2026-09-11': 'not stored' }, '2026-09-10', '21:00');
+    const view = viewAt(ScheduleType.Standard, '2026-09-10', { '2026-09-11': 'not stored' }, '2026-09-11', '09:00');
 
     expect(view.prayers).toHaveLength(6);
     expect(view).toMatchObject({ nextPrayerIndex: -1, firstReadableIndex: -1, isLastPrayerPassed: true });
+  });
+
+  it('gives the list before such a day, after its Isha, no next row and every row passed', () => {
+    const view = viewAt(ScheduleType.Standard, '2026-09-10', { '2026-09-11': 'not stored' }, '2026-09-10', '21:00');
+
+    expect(view.prayers).toHaveLength(6);
+    expect(view).toMatchObject({ nextPrayerIndex: -1, firstReadableIndex: 0, isLastPrayerPassed: true });
   });
 });
 

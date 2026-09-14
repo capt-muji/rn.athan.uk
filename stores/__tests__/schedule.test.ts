@@ -47,6 +47,7 @@ jest.mock('@/stores/database', () => ({
   getPrayerByDateString: (date: string) => mockGetPrayerByDateString(date),
 }));
 
+import { calculatePrayerAgo } from '@/hooks/usePrayerAgo';
 import { isRowPassed } from '@/shared/sequence';
 import {
   type CountdownStore,
@@ -80,6 +81,7 @@ import {
   extraNextPrayerAtom,
   extraSequenceAtom,
   getDisplayDate,
+  getFirstRowAfterDisplay,
   getNextBoundary,
   getNextPrayer,
   getPrevPrayer,
@@ -525,6 +527,30 @@ describe('createDisplayDateAtom', () => {
 // =============================================================================
 // setSequence TESTS
 // =============================================================================
+
+describe('getFirstRowAfterDisplay', () => {
+  it('names nothing with no sequence, with no list on screen, or with no later list day', () => {
+    const store = getDefaultStore();
+    mockCreateLondonDate.mockReturnValue(new Date('2026-01-20T12:00:00Z'));
+
+    store.set(standardSequenceAtom, null);
+    expect(getFirstRowAfterDisplay(ScheduleType.Standard)).toBeNull();
+
+    // Every row has passed, so no list is on screen
+    store.set(
+      standardSequenceAtom,
+      createMockSequence([createMockPrayer({ datetime: new Date('2026-01-20T06:15:00Z') })])
+    );
+    expect(getFirstRowAfterDisplay(ScheduleType.Standard)).toBeNull();
+
+    // A list is on screen, and nothing comes after its day
+    store.set(
+      standardSequenceAtom,
+      createMockSequence([createMockPrayer({ datetime: new Date('2026-01-20T18:15:00Z') })])
+    );
+    expect(getFirstRowAfterDisplay(ScheduleType.Standard)).toBeNull();
+  });
+});
 
 describe('setSequence', () => {
   beforeEach(() => {
@@ -1118,7 +1144,7 @@ describe('on the real builder', () => {
           countdown: { timeLeft: 78540, name: 'Suhoor' },
           barAvailable: true,
           held: {
-            '2026-10-17': 'Duha',
+            '2026-10-17': EXTRAS_ROWS,
             '2026-10-18': '[Midnight], [Last Third], Suhoor, Duha',
             '2026-10-19': EXTRAS_ROWS,
           },
@@ -1149,7 +1175,7 @@ describe('on the real builder', () => {
           countdown: { timeLeft: 43080, name: 'Sunrise' },
           barAvailable: true,
           held: {
-            '2026-10-17': 'Isha',
+            '2026-10-17': STANDARD_ROWS,
             '2026-10-18': '[Fajr], Sunrise, Dhuhr, Asr, Magrib, Isha',
             '2026-10-19': STANDARD_ROWS,
           },
@@ -1180,7 +1206,7 @@ describe('on the real builder', () => {
           countdown: { timeLeft: 42480, name: 'Fajr' },
           barAvailable: true,
           held: {
-            '2026-10-17': 'Magrib',
+            '2026-10-17': 'Fajr, Sunrise, Dhuhr, Asr, Magrib, [Isha]',
             '2026-10-18': STANDARD_ROWS,
             '2026-10-19': STANDARD_ROWS,
           },
@@ -1356,6 +1382,23 @@ describe('on the real builder', () => {
       }
     );
 
+    it('moves on at Isha when new data lands in the second before it while only the display date is subscribed', () => {
+      const store = getDefaultStore();
+      keepSubscribed(standardDisplayDateAtom);
+      storeDays(OCT_16_TO_20, { '2026-10-19': ['magrib'] });
+      launchAt('2026-10-17T18:00:00.000Z');
+      jest.advanceTimersByTime(2000);
+
+      storeDays(OCT_16_TO_20);
+      moveClockTo('2026-10-17T18:28:59.990Z');
+      setSequence(STANDARD, new Date());
+      moveClockTo('2026-10-17T18:29:00.010Z');
+      jest.advanceTimersByTime(1000);
+
+      expect(getDisplayDate(STANDARD)).toBe('2026-10-18');
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Fajr' });
+    });
+
     it('starts half a second before a prayer and still moves on at it', () => {
       storeDays(OCT_16_TO_20);
       launchAt('2026-10-17T14:29:59.500Z');
@@ -1379,7 +1422,7 @@ describe('on the real builder', () => {
       const extraWrites = recordSequenceWrites(EXTRA);
       testSubscriptions.push(standardWrites.unsubscribe, extraWrites.unsubscribe);
 
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 21301, name: 'Fajr' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
 
       jest.advanceTimersByTime(500);
 
@@ -1389,6 +1432,7 @@ describe('on the real builder', () => {
       expect(Object.keys(rowsHeld(EXTRA))[0]).toBe('2026-10-19');
       expect(getDisplayDate(STANDARD)).toBe('2026-10-19');
       expect(getDisplayDate(EXTRA)).toBe('2026-10-19');
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 21300, name: 'Fajr' });
     });
 
     // Session 7's high-latitude shapes, where a list's last rows fall after 00:00. Launched just after 00:00 the
@@ -1517,20 +1561,27 @@ describe('on the real builder', () => {
       jest.advanceTimersByTime(2000);
     });
 
-    it("comes on screen when the 17th's Isha passes, counting down to the next readable prayer with no bar", () => {
+    /** Crosses 00:00 London ending the 17th, which brings the 18th on screen */
+    const bringOnThe18th = () => {
+      moveClockTo('2026-10-17T22:59:59.000Z');
+      jest.advanceTimersByTime(1000);
+    };
+
+    it('keeps the 17th on screen after its Isha with --:-- and no bar, then brings the 18th on at 00:00', () => {
       expect(observe(STANDARD)).toEqual({
         next: row('Fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),
-        displayDate: '2026-10-18',
+        displayDate: '2026-10-17',
         previous: null,
-        countdown: { timeLeft: 123960, name: 'Fajr' },
+        countdown: { timeLeft: null, name: 'Fajr' },
         barAvailable: false,
-        held: { '2026-10-18': STANDARD_DASHED, '2026-10-19': STANDARD_ROWS },
+        held: { '2026-10-17': STANDARD_ROWS, '2026-10-18': STANDARD_DASHED, '2026-10-19': STANDARD_ROWS },
       });
+      expect(getDefaultStore().get(getCountdownDisplayAtom(STANDARD))).toBe('--:--');
       expect(observe(EXTRA)).toEqual({
         next: row('Suhoor', '2026-10-19', '2026-10-19T04:35:00.000Z'),
-        displayDate: '2026-10-18',
+        displayDate: '2026-10-17',
         previous: null,
-        countdown: { timeLeft: 122760, name: 'Suhoor' },
+        countdown: { timeLeft: null, name: 'Suhoor' },
         barAvailable: false,
         held: {
           '2026-10-17': EXTRAS_ROWS,
@@ -1538,9 +1589,29 @@ describe('on the real builder', () => {
           '2026-10-19': '[Midnight], [Last Third], Suhoor, Duha',
         },
       });
+
+      moveClockTo('2026-10-17T22:59:58.000Z');
+      const standardWrites = recordSequenceWrites(STANDARD);
+      const extraWrites = recordSequenceWrites(EXTRA);
+      testSubscriptions.push(standardWrites.unsubscribe, extraWrites.unsubscribe);
+      jest.advanceTimersByTime(4000);
+
+      expect(standardWrites.writes).toEqual(['2026-10-17T23:00:00.000Z']);
+      expect(extraWrites.writes).toEqual(['2026-10-17T23:00:00.000Z']);
+      expect(observe(STANDARD)).toMatchObject({
+        displayDate: '2026-10-18',
+        countdown: { timeLeft: null, name: 'Fajr' },
+        barAvailable: false,
+        held: { '2026-10-18': STANDARD_DASHED, '2026-10-19': STANDARD_ROWS },
+      });
+      expect(observe(EXTRA)).toMatchObject({
+        displayDate: '2026-10-18',
+        countdown: { timeLeft: null, name: 'Suhoor' },
+      });
     });
 
-    it('stays until 00:00 London, then moves to the 19th on exactly the 00:00:00.000 tick', () => {
+    it('stays until 00:00 London at its end, then moves to the 19th on exactly the 00:00:00.000 tick', () => {
+      bringOnThe18th();
       moveClockTo('2026-10-18T22:59:58.000Z');
       expect(getDisplayDate(STANDARD)).toBe('2026-10-18');
       expect(getDisplayDate(EXTRA)).toBe('2026-10-18');
@@ -1555,8 +1626,9 @@ describe('on the real builder', () => {
 
       expect(standardWrites.writes).toEqual(['2026-10-18T23:00:00.000Z']);
       expect(extraWrites.writes).toEqual(['2026-10-18T23:00:00.000Z']);
-      expect(standardCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([21301, 21300, 21299, 21298]);
-      expect(extraCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([20101, 20100, 20099, 20098]);
+      // --:-- until the 00:00 tick moves the list on, and the real countdown from that same tick
+      expect(standardCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([null, 21300, 21299, 21298]);
+      expect(extraCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([null, 20100, 20099, 20098]);
 
       expect(observe(STANDARD)).toEqual({
         next: row('Fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),
@@ -1586,8 +1658,8 @@ describe('on the real builder', () => {
       });
     });
 
-    it('catches up a 00:00 crossed while suspended when the app returns', () => {
-      expect(getDisplayDate(STANDARD)).toBe('2026-10-18');
+    it('catches up both 00:00s crossed while suspended when the app returns', () => {
+      expect(getDisplayDate(STANDARD)).toBe('2026-10-17');
       moveClockTo('2026-10-19T00:30:00.000Z');
 
       resyncCountdowns();
@@ -1598,7 +1670,25 @@ describe('on the real builder', () => {
       expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: 14700, name: 'Suhoor' });
     });
 
+    it('opens a passed row of the waiting 17th on the unreadable 18th, and a row of the 18th on the 19th', () => {
+      const store = getDefaultStore();
+
+      openOverlay(STANDARD, 0);
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      closeOverlay();
+
+      bringOnThe18th();
+      openOverlay(STANDARD, 0);
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 107700, name: 'Fajr' });
+      closeOverlay();
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+
+      openOverlay(STANDARD, 6);
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+    });
+
     it('closes an open overlay 2 seconds before 00:00 and refuses to open inside that window', () => {
+      bringOnThe18th();
       moveClockTo('2026-10-18T22:59:56.000Z');
       const store = getDefaultStore();
 
@@ -1633,13 +1723,16 @@ describe('on the real builder', () => {
 
     expect(observe(STANDARD)).toMatchObject({
       next: row('Fajr', '2026-10-20', '2026-10-20T04:57:00.000Z'),
-      displayDate: '2026-10-18',
-      countdown: { timeLeft: 210480, name: 'Fajr' },
+      displayDate: '2026-10-17',
+      countdown: { timeLeft: null, name: 'Fajr' },
       barAvailable: false,
     });
 
+    // The 17th waits for its 00:00 and each unreadable day holds in its turn, so the real countdown starts
+    // only at the 19th's own 00:00
     for (const [clock, holdEnd, nextListDay, timeLeft] of [
-      ['2026-10-18T22:59:58.000Z', '2026-10-18T23:00:00.000Z', '2026-10-19', 107818],
+      ['2026-10-17T22:59:58.000Z', '2026-10-17T23:00:00.000Z', '2026-10-18', null],
+      ['2026-10-18T22:59:58.000Z', '2026-10-18T23:00:00.000Z', '2026-10-19', null],
       ['2026-10-19T22:59:58.000Z', '2026-10-19T23:00:00.000Z', '2026-10-20', 21418],
     ] as const) {
       moveClockTo(clock);
@@ -1657,6 +1750,81 @@ describe('on the real builder', () => {
       expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft, name: 'Fajr' });
       expect(getDefaultStore().get(getBarAvailableAtom(STANDARD))).toBe(false);
     }
+  });
+
+  it('R8: opened during the evening wait, the list before stays until 00:00 through a return before it', () => {
+    storeDays(OCT_16_TO_20, { '2026-10-18': 'all' });
+    launchAt('2026-10-17T20:00:00.000Z');
+
+    expect(observe(STANDARD)).toMatchObject({
+      displayDate: '2026-10-17',
+      countdown: { timeLeft: null, name: 'Fajr' },
+      barAvailable: false,
+    });
+    expect(getNextBoundary(STANDARD)?.toISOString()).toBe('2026-10-17T23:00:00.000Z');
+
+    moveClockTo('2026-10-17T22:30:00.000Z');
+    resyncCountdowns();
+    expect(getDisplayDate(STANDARD)).toBe('2026-10-17');
+
+    moveClockTo('2026-10-17T23:30:00.000Z');
+    resyncCountdowns();
+    expect(getDisplayDate(STANDARD)).toBe('2026-10-18');
+    expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+  });
+
+  it('R8: back from a suspension that began the day before, during the evening wait', () => {
+    storeDays(OCT_16_TO_20, { '2026-10-18': 'all' });
+    launchAt('2026-10-16T11:00:00.000Z');
+
+    moveClockTo('2026-10-17T21:00:00.000Z');
+    resyncCountdowns();
+
+    expect(getDisplayDate(STANDARD)).toBe('2026-10-17');
+    expect(getDisplayDate(EXTRA)).toBe('2026-10-17');
+    expect(rowsHeld(STANDARD)['2026-10-17']).toBe(STANDARD_ROWS);
+    expect(getNextBoundary(STANDARD)?.toISOString()).toBe('2026-10-17T23:00:00.000Z');
+  });
+
+  it('R8 on Extras: a Friday ending at Istijaba keeps its list until 00:00 before a Saturday with none', () => {
+    storeDays(OCT_16_TO_20, { '2026-10-17': 'all' });
+    launchAt('2026-10-16T16:07:58.000Z');
+    const { writes, unsubscribe } = recordSequenceWrites(EXTRA);
+    testSubscriptions.push(unsubscribe);
+
+    jest.advanceTimersByTime(2000);
+    expect(writes).toEqual(['2026-10-16T16:08:00.000Z']);
+    expect(observe(EXTRA)).toMatchObject({
+      displayDate: '2026-10-16',
+      countdown: { timeLeft: null, name: 'Suhoor' },
+      barAvailable: false,
+    });
+    expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-10-16T23:00:00.000Z');
+
+    moveClockTo('2026-10-16T22:59:58.000Z');
+    jest.advanceTimersByTime(2000);
+    expect(writes).toEqual(['2026-10-16T16:08:00.000Z', '2026-10-16T23:00:00.000Z']);
+    expect(getDisplayDate(EXTRA)).toBe('2026-10-17');
+  });
+
+  it('R8: a day unreadable only on Extras keeps that list until 00:00 while Standard moves on at Isha', () => {
+    storeDays(OCT_16_TO_20, { '2026-10-18': ['fajr', 'sunrise'] });
+    launchAt('2026-10-17T18:28:58.000Z');
+    jest.advanceTimersByTime(2000);
+
+    expect(getDisplayDate(STANDARD)).toBe('2026-10-18');
+    expect(getNextPrayer(STANDARD)?.english).toBe('Dhuhr');
+    expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Dhuhr' });
+    expect(observe(EXTRA)).toMatchObject({
+      displayDate: '2026-10-17',
+      countdown: { timeLeft: null, name: 'Midnight' },
+      barAvailable: false,
+    });
+
+    moveClockTo('2026-10-17T22:59:58.000Z');
+    jest.advanceTimersByTime(2000);
+    expect(getDisplayDate(EXTRA)).toBe('2026-10-18');
+    expect(getDisplayDate(STANDARD)).toBe('2026-10-18');
   });
 
   it.each([
@@ -1710,6 +1878,7 @@ describe('on the real builder', () => {
 
     expect(getDisplayDate(EXTRA)).toBe('2026-09-26');
     expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-09-26T22:50:00.000Z');
+    expect(observe(EXTRA)).toMatchObject({ countdown: { timeLeft: null, name: 'Suhoor' }, barAvailable: false });
 
     moveClockTo('2026-09-26T22:49:58.000Z');
     const { writes, unsubscribe } = recordSequenceWrites(EXTRA);
@@ -1718,11 +1887,55 @@ describe('on the real builder', () => {
     expect(writes).toEqual(['2026-09-26T22:50:00.000Z']);
     expect(getDisplayDate(EXTRA)).toBe('2026-09-26');
     expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-09-26T23:00:00.000Z');
+    // Sunday's passed Suhoor could measure a bar to its Duha, but Saturday is still on screen with nothing to count
+    expect(observe(EXTRA)).toMatchObject({
+      next: row('Duha', '2026-09-27', '2026-09-27T02:20:00.000Z'),
+      previous: row('Suhoor', '2026-09-27', '2026-09-26T22:50:00.000Z'),
+      countdown: { timeLeft: null, name: 'Duha' },
+      barAvailable: false,
+    });
+    expect(calculatePrayerAgo(EXTRA).isReady).toBe(false);
 
     jest.advanceTimersByTime(10 * 60 * 1000);
     unsubscribe();
     expect(writes).toEqual(['2026-09-26T22:50:00.000Z', '2026-09-26T23:00:00.000Z']);
     expect(getDisplayDate(EXTRA)).toBe('2026-09-27');
+    expect(observe(EXTRA)).toMatchObject({ countdown: { timeLeft: 12000, name: 'Duha' }, barAvailable: true });
+    expect(calculatePrayerAgo(EXTRA).isReady).toBe(true);
+  });
+
+  it("keeps the 25th's lists on the same shapes: Extras until its 00:00, Standard until its 01:30 Isha", () => {
+    Object.assign(LONDON_2026, {
+      '2026-09-24': ['03:00', '05:00', '13:00', '17:00', '22:30', '23:40'],
+      '2026-09-25': ['02:30', '04:30', '13:00', '17:30', '00:40', '01:30'],
+      '2026-09-26': ['02:00', '04:00', '13:00', '17:30', '22:00', '23:30'],
+      '2026-09-27': ['00:10', '03:00', '13:00', '17:00', '21:00', '22:30'],
+      '2026-09-28': ['03:00', '05:00', '13:00', '17:00', '20:58', '22:30'],
+    });
+    storeDays(['2026-09-24', '2026-09-25', '2026-09-26', '2026-09-27', '2026-09-28'], { '2026-09-26': 'all' });
+    launchAt('2026-09-25T12:00:00.000Z');
+
+    // The 25th is a Friday, so its Extras list ends at Istijaba, at 23:40 an hour before the 00:40 Magrib
+    expect(getDisplayDate(EXTRA)).toBe('2026-09-25');
+    expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-09-25T22:40:00.000Z');
+
+    moveClockTo('2026-09-25T22:39:58.000Z');
+    const { writes, unsubscribe } = recordSequenceWrites(EXTRA);
+    testSubscriptions.push(unsubscribe);
+    jest.advanceTimersByTime(2000);
+    expect(getDisplayDate(EXTRA)).toBe('2026-09-25');
+    expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-09-25T23:00:00.000Z');
+
+    moveClockTo('2026-09-25T22:59:58.000Z');
+    jest.advanceTimersByTime(4000);
+
+    expect(writes).toEqual(['2026-09-25T22:40:00.000Z', '2026-09-25T23:00:00.000Z']);
+    expect(getDisplayDate(EXTRA)).toBe('2026-09-26');
+    expect(getDisplayDate(STANDARD)).toBe('2026-09-25');
+
+    moveClockTo('2026-09-26T00:29:58.000Z');
+    jest.advanceTimersByTime(4000);
+    expect(getDisplayDate(STANDARD)).toBe('2026-09-26');
   });
 
   // ---------------------------------------------------------------------------
@@ -1741,7 +1954,7 @@ describe('on the real builder', () => {
       '2026-10-24': STANDARD_DASHED,
     };
 
-    it("counts down across the whole week once tomorrow's Isha passes", () => {
+    it("keeps the far side of the week as next once tomorrow's Isha passes, with --:-- while a lost day shows", () => {
       storeDays(dates);
       launchAt('2026-10-16T12:00:00.000Z');
       expect(getNextPrayer(STANDARD)?.english).toBe('Asr');
@@ -1752,16 +1965,16 @@ describe('on the real builder', () => {
 
       expect(observe(STANDARD)).toEqual({
         next: row('Fajr', '2026-10-25', '2026-10-25T05:04:00.000Z'),
-        displayDate: '2026-10-18',
+        displayDate: '2026-10-17',
         previous: null,
-        countdown: { timeLeft: 642900, name: 'Fajr' },
+        countdown: { timeLeft: null, name: 'Fajr' },
         barAvailable: false,
-        held: { ...LOST_WEEK, '2026-10-25': STANDARD_ROWS },
+        held: { '2026-10-17': STANDARD_ROWS, ...LOST_WEEK, '2026-10-25': STANDARD_ROWS },
       });
       expect(observe(EXTRA)).toMatchObject({
         next: row('Suhoor', '2026-10-25', '2026-10-25T04:44:00.000Z'),
-        displayDate: '2026-10-18',
-        countdown: { timeLeft: 641700, name: 'Suhoor' },
+        displayDate: '2026-10-17',
+        countdown: { timeLeft: null, name: 'Suhoor' },
         barAvailable: false,
       });
     });
@@ -1774,7 +1987,7 @@ describe('on the real builder', () => {
         next: row('Fajr', '2026-10-25', '2026-10-25T05:04:00.000Z'),
         displayDate: '2026-10-20',
         previous: null,
-        countdown: { timeLeft: 407040, name: 'Fajr' },
+        countdown: { timeLeft: null, name: 'Fajr' },
         barAvailable: false,
         held: {
           '2026-10-20': STANDARD_DASHED,
@@ -1788,9 +2001,8 @@ describe('on the real builder', () => {
       expect(getNextBoundary(STANDARD)?.toISOString()).toBe('2026-10-20T23:00:00.000Z');
     });
 
-    it('stops growing at 14 list days when nothing readable is stored at all, leaving the countdown as it was', () => {
+    it("stops growing at 14 list days when nothing readable is stored at all, naming the next list's first row", () => {
       launchAt('2026-10-17T12:00:00.000Z');
-      const before = getDefaultStore().get(getCountdownAtom(STANDARD));
 
       jest.advanceTimersByTime(1000);
 
@@ -1799,7 +2011,24 @@ describe('on the real builder', () => {
       expect(getNextPrayer(STANDARD)).toBeNull();
       expect(getDisplayDate(STANDARD)).toBe('2026-10-17');
       expect(getNextBoundary(STANDARD)?.toISOString()).toBe('2026-10-17T23:00:00.000Z');
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toBe(before);
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: 'Midnight' });
+    });
+
+    it('shows --:-- after the last readable prayer in storage, rather than holding that prayer at 1s', () => {
+      storeDays(OCT_16_TO_20);
+      launchAt('2026-10-20T18:00:00.000Z');
+      const isha = getNextPrayer(STANDARD);
+      expect(isha?.english).toBe('Isha');
+
+      moveClockTo(new Date((isha?.datetime.getTime() ?? 0) - 2000).toISOString());
+      jest.advanceTimersByTime(3000);
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+
+      jest.advanceTimersByTime(60_000);
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      expect(getDefaultStore().get(getCountdownDisplayAtom(STANDARD))).toBe('--:--');
+      expect(getDisplayDate(STANDARD)).toBe('2026-10-20');
     });
   });
 
@@ -1876,7 +2105,10 @@ describe('on the real builder', () => {
     });
 
     closeOverlay();
-    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ ...next, timeLeft: (next.timeLeft ?? 0) - 1 });
+    expect(store.get(getCountdownAtom(STANDARD))).toEqual({
+      ...next,
+      timeLeft: next.timeLeft === null ? null : next.timeLeft - 1,
+    });
   });
 
   it('R11: Istijaba tapped on a Friday with no readable time opens itself, since next Friday is not in the sequence', () => {
@@ -1927,7 +2159,7 @@ describe('on the real builder', () => {
       });
     });
 
-    it("keeps the list before's last passed row for the progress bar, and nothing else of that list", () => {
+    it("keeps the list before whole while it holds the progress bar's last passed row", () => {
       storeDays(OCT_16_TO_20);
       moveClockTo('2026-10-17T18:00:00.000Z');
       setSequence(STANDARD, new Date());
@@ -1939,7 +2171,7 @@ describe('on the real builder', () => {
         next: row('Fajr', '2026-10-18', '2026-10-18T04:54:00.000Z'),
         displayDate: '2026-10-18',
         previous: row('Isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
-        held: { '2026-10-17': 'Isha', '2026-10-18': STANDARD_ROWS, '2026-10-19': STANDARD_ROWS },
+        held: { '2026-10-17': STANDARD_ROWS, '2026-10-18': STANDARD_ROWS, '2026-10-19': STANDARD_ROWS },
       });
     });
 
@@ -1966,10 +2198,16 @@ describe('on the real builder', () => {
       moveClockTo('2026-10-18T18:27:00.000Z');
       refreshSequence(STANDARD);
 
+      // The 18th's Isha has just passed and the 19th has no readable time, so the 18th waits for its 00:00
       expect(observe(STANDARD)).toMatchObject({
         next: row('Fajr', '2026-10-20', '2026-10-20T04:57:00.000Z'),
-        displayDate: '2026-10-19',
-        held: { '2026-10-19': STANDARD_DASHED, '2026-10-20': STANDARD_ROWS, '2026-10-21': STANDARD_DASHED },
+        displayDate: '2026-10-18',
+        held: {
+          '2026-10-18': STANDARD_ROWS,
+          '2026-10-19': STANDARD_DASHED,
+          '2026-10-20': STANDARD_ROWS,
+          '2026-10-21': STANDARD_DASHED,
+        },
       });
     });
   });

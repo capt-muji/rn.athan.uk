@@ -18,6 +18,8 @@ export interface AlertSheetState {
   index: number;
   prayerEnglish: string;
   prayerArabic: string;
+  /** The occurrence on screen has no readable time, so the sheet explains that instead of offering options */
+  isUnavailable: boolean;
 }
 
 /** Current alert sheet state (which prayer is being edited) */

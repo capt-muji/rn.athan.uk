@@ -343,7 +343,10 @@ export enum CountdownKey {
 }
 
 export interface CountdownStore {
-  /** Seconds left, or null while the overlay shows an occurrence whose time could not be read */
+  /**
+   * Seconds left, or null when there is nothing to count: the overlay shows an occurrence whose time could not
+   * be read, or the list on screen has no readable time left to come
+   */
   timeLeft: number | null;
   name: string;
 }

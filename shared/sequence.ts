@@ -4,8 +4,8 @@
  *
  * A row the provider gave no readable time for (`datetime: null`) has no moment, so none of these
  * rules may place it in time. It is never next, it counts as passed by where it sits on its list, and
- * a list day made only of such rows stays on screen until 00:00 London at its end instead of being
- * skipped. Nothing here invents a moment for it.
+ * a list day made only of such rows comes on screen at 00:00 London at its start and stays until
+ * 00:00 at its end instead of being skipped. Nothing here invents a moment for it.
  *
  * Pure: no React Native or MMKV imports, so the iOS widget timeline builder follows exactly the rules
  * the app's own screens do.
@@ -65,12 +65,30 @@ export const findNextReadable = (prayers: Prayer[], now: Date): ReadablePrayer |
 };
 
 /**
+ * Whether a list day with readable rows stays on screen after the last of them until 00:00 London at its end
+ *
+ * It does when the list day after it has no readable row, since that day comes on screen only at its own
+ * start (R8, owner ruling 2026-09-14). A readable row after the day's own 00:00 hands the list over at
+ * itself instead, and a following day the sequence does not hold is not waited for.
+ *
+ * @param readable The day's readable rows
+ */
+const waitsForItsEnd = (prayers: Prayer[], date: string, readable: ReadablePrayer[]): boolean => {
+  const end = endOfListDay(date);
+  if (readable.some((prayer) => prayer.datetime > end)) return false;
+
+  const following = rowsOfListDay(prayers, TimeUtils.addDaysToDateString(date, 1));
+  return following.length > 0 && !following.some(isReadable);
+};
+
+/**
  * The list day on screen
  *
  * The earliest list day that still has a readable row to come, which is how the list has always moved
  * on: after its last row. A list day with no readable row at all never has one, so that rule alone
- * would skip it and present the following day as today. It stays on screen instead until 00:00 London
- * at its end (R8).
+ * would skip it and present the following day as today. Instead it comes on screen at 00:00 London at
+ * its start, the day before keeping its place after its last row until then, and stays until 00:00 at
+ * its end (R8).
  *
  * @returns The list day (YYYY-MM-DD), or null when nothing in the sequence is still to come
  */
@@ -80,22 +98,26 @@ export const resolveDisplayDate = (prayers: Prayer[], now: Date): string | null 
   for (const date of listDays) {
     const readable = rowsOfListDay(prayers, date).filter(isReadable);
     if (readable.some((prayer) => prayer.datetime > now)) return date;
-    if (readable.length === 0 && now < endOfListDay(date)) return date;
+    if (now >= endOfListDay(date)) continue;
+    if (readable.length === 0 || waitsForItsEnd(prayers, date, readable)) return date;
   }
 
   return null;
 };
 
 /**
- * When a list held on screen gives way: 00:00 London at the end of a list day with no readable row, or
- * null when the list moves on after a prayer as usual
+ * When a list on screen gives way at 00:00 London at its end rather than after a prayer: a list day with
+ * no readable row, or one followed by such a day (waitsForItsEnd). Null when the list moves on after its
+ * last readable row as usual
  *
  * No prayer is due at that moment, so without it the list would wait for the next prayer before leaving
  * a day that has already ended.
  */
 export const getDisplayHoldEnd = (prayers: Prayer[], displayDate: string | null): Date | null => {
   if (!displayDate) return null;
-  if (rowsOfListDay(prayers, displayDate).some(isReadable)) return null;
+
+  const readable = rowsOfListDay(prayers, displayDate).filter(isReadable);
+  if (readable.length > 0 && !waitsForItsEnd(prayers, displayDate, readable)) return null;
   return endOfListDay(displayDate);
 };
 

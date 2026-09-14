@@ -9,7 +9,7 @@ import { useAtomValue } from 'jotai';
 
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { findNextOccurrence } from '@/shared/sequence';
-import { type Prayer, ScheduleType } from '@/shared/types';
+import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
 import { englishWidthExtraAtom, englishWidthStandardAtom } from '@/stores/ui';
 
 /** What a row needs to decide which occurrence it shows */
@@ -50,6 +50,14 @@ export const isShownOccurrenceUnavailable = (
   row: ShownRow,
   nextOccurrence: ShownRow
 ): boolean => getShownTime(isSelectedForOverlay, row, nextOccurrence) === null;
+
+/**
+ * The alert a bell draws: Off while its shown occurrence has no readable time, whatever is saved, since
+ * nothing can fire for it. Only the glyph says so; the bell keeps the row's own colour like any other, and
+ * the saved preference is left as it is (R5)
+ */
+export const getShownAlert = (isUnavailable: boolean, saved: AlertType): AlertType =>
+  isUnavailable ? AlertType.Off : saved;
 
 /**
  * Hook for accessing individual prayer data with derived status

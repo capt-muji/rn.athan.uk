@@ -71,7 +71,12 @@ MUTATIONS = [
 
     # --- session 3: shared/sequence.ts ---
     ('shared/sequence.ts', 'if (!isReadable(prayer) || prayer.datetime <= now) continue;', 'if (isReadable(prayer) && prayer.datetime <= now) continue;', 'unreadable row allowed to be next'),
-    ('shared/sequence.ts', 'if (readable.length === 0 && now < endOfListDay(date)) return date;', '', 'hold removed (unreadable day skipped)'),
+    ('shared/sequence.ts', 'if (readable.length === 0 || waitsForItsEnd(prayers, date, readable)) return date;', 'if (waitsForItsEnd(prayers, date, readable)) return date;', 'hold removed (unreadable day skipped)'),
+    ('shared/sequence.ts', 'if (readable.length === 0 || waitsForItsEnd(prayers, date, readable)) return date;', 'if (readable.length === 0) return date;', 'day before an unreadable day moves on at its last row'),
+    ('shared/sequence.ts', 'if (now >= endOfListDay(date)) continue;', '', 'a waiting or unreadable day never ends'),
+    ('shared/sequence.ts', 'if (readable.some((prayer) => prayer.datetime > end)) return false;', '', 'a day with a post-midnight row waits for its 00:00'),
+    ('shared/sequence.ts', 'return following.length > 0 && !following.some(isReadable);', 'return !following.some(isReadable);', 'a day missing from the sequence is waited for'),
+    ('shared/sequence.ts', 'if (readable.length > 0 && !waitsForItsEnd(prayers, displayDate, readable)) return null;', 'if (readable.length > 0) return null;', 'no hold end for a waiting readable day'),
     ('shared/sequence.ts', '  return endOfListDay(displayDate);', '  return null;', 'hold end removed from the boundary'),
     ('shared/sequence.ts', "TimeUtils.createPrayerDatetime(TimeUtils.addDaysToDateString(date, 1), '00:00')", "TimeUtils.createPrayerDatetime(date, '00:00')", 'hold ends at the start of the day'),
     ('shared/sequence.ts', 'if (holdEnd && holdEnd < next.datetime) return holdEnd;', '', 'hold end ignored when a prayer is due'),
@@ -91,6 +96,15 @@ MUTATIONS = [
     ('stores/countdown.ts', '    const boundary = getNextBoundary(type);\n\n    if (boundary && Date.now() >= boundary.getTime()) {\n      clearCountdown(countdownKey);', '    const boundary = getNextPrayer(type)?.datetime ?? null;\n\n    if (boundary && Date.now() >= boundary.getTime()) {\n      clearCountdown(countdownKey);', 'tick boundary back to next prayer only'),
     ('stores/countdown.ts', '    const boundary = getNextBoundary(type);\n    if (boundary && Date.now() >= boundary.getTime()) {\n      refreshSequence(type);', '    const boundary = getNextPrayer(type)?.datetime ?? null;\n    if (boundary && Date.now() >= boundary.getTime()) {\n      refreshSequence(type);', 'resync boundary back to next prayer only'),
     ('stores/countdown.ts', 'overlayBoundaryMs = getNextBoundary(type)?.getTime() ?? null;', 'overlayBoundaryMs = getNextPrayer(type)?.datetime.getTime() ?? null;', 'overlay deadline back to next prayer only'),
+    ('stores/countdown.ts', ' && !get(getDisplayHeldAtom(type))', '', 'bar shown while the list waits for 00:00'),
+    ('stores/countdown.ts', '(!selected && store.get(getDisplayHeldAtom(type)))', 'false', 'countdown runs to a later day while the list waits'),
+    ('stores/countdown.ts', '!selected && store.get(getDisplayHeldAtom(type))', 'store.get(getDisplayHeldAtom(type))', 'a real overlay tap shows --:-- while the list waits'),
+    ('stores/schedule.ts', 'get(nextPrayerAtom)?.belongsToDate !== displayDate', 'get(nextPrayerAtom) === null', 'list waits only when nothing is next'),
+    ('stores/schedule.ts', '  store.set(sequenceAtom, sequence);\n  settleBoundary(type);\n', '  store.set(sequenceAtom, sequence);\n', 'boundary not settled after a sync write'),
+    ('stores/schedule.ts', 'if (previous && prayer.belongsToDate >= previous.belongsToDate) return true;', 'if (prayer === previous) return true;', 'previous row kept without its list day'),
+    ('stores/schedule.ts', '.sort(compareListOrder)[0] ?? null;', '.sort(compareListOrder).at(-1) ?? null;', 'countdown names the last later row'),
+    ('stores/countdown.ts', ' ?? getFirstRowAfterDisplay(type)', '', 'countdown frozen after the last readable prayer'),
+    ('hooks/usePrayerAgo.ts', 'if (!prevPrayer || isDisplayHeld(type)) {', 'if (!prevPrayer) {', 'ago badge shown while the list waits'),
 
     # --- session 3: stores/notifications.ts ---
     ('stores/notifications.ts', "  if (!isReadable(prayer)) {\n    logger.info('Skipping prayer with no readable time:'", "  if (false) {\n    logger.info('Skipping prayer with no readable time:'", 'unreadable rows armed (at-time)'),
@@ -121,6 +135,7 @@ MUTATIONS = [
     # --- session 3: hooks ---
     ('hooks/usePrayerSequence.ts', 'isPassed[index] = isRowPassed(dayRows, rawPrayers[index], now);', 'isPassed[index] = (rawPrayers[index].datetime as unknown as Date) < now;', 'isPassed back to datetime < now'),
     ('hooks/usePrayer.ts', '(findNextOccurrence(prayers, row) ?? row)', '(prayers.find((p) => p.english === row.english && (p.datetime as Date) > (row.datetime as Date)) ?? row)', 'next occurrence found by instant'),
+    ('hooks/usePrayer.ts', 'isUnavailable ? AlertType.Off : saved', 'saved', 'unavailable bell draws the saved glyph'),
 ]
 
 W_LABEL = 46
