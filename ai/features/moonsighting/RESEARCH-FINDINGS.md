@@ -220,6 +220,61 @@ Whether the London timetable applies any of them is being tested against real da
 - **Where the coefficients may be.** The paper recovered from the Wayback Machine,
   `articles/fajr&isha-yam.pdf` (capture `20070410171730`), is being read for them.
 
+### 2.10 "Fajar and Isha" (Miftahi, 2005): the observations under the UK timings
+
+- **What it is.** Yaqub Ahmed Miftahi, *Fajar and Isha*, Hizbul Ulama UK, Ramadan 1426 /
+  October 2005, 123 pages (the PDF's metadata title is "Fajar&IshainBritain", created
+  2006-12-07).
+- **Where it came from.** Recovered from the Wayback capture `20070410171730` of
+  `http://www.moonsighting.com/articles/fajr&isha-yam.pdf`; the live site no longer serves it. It
+  is the book the Hizbul Ulama tables (section 2.8) cite as "the full background". Page numbers
+  below are the book's own.
+
+**The observation record.** The Mushahadah was carried out in Blackburn, Lancashire
+(Lat N53.45, Lon W02.29), from September 1987 to August 1988, by naked eye, "with a blank sheet":
+the observers did not set out to test degree times. Table 4 (p115) records, per month:
+
+- **Subha Sadiq** (first light to sunrise): 1h22m to 1h45m from September to April.
+- **Shafaq Ahmar** (sunset to the end of the red afterglow): 50m to 1h24m.
+- **Shafaq Abyadh** (sunset to the end of the whiteness): 1h12m to 3h16m.
+- **June 1988.** "On 12 and 13 June conditions of night - Shafaqe Abyadh - did not occur ... light
+  throughout, with shafaq and subha merging"; Shafaq Ahmar was still observed.
+- **July 1988.** Rain throughout; nothing observed.
+
+**The agreements.**
+
+1. **2 April 1988**, Masjid Anisul Islam, Blackburn (p110–112), after seven months: Mushahadah is
+   the basis, and the observatory's degree times are wrong. Timetables were prepared at once from
+   the seven-month chart, the unobserved months were fixed by Takdir for the time being, and days
+   lost to weather were to be filled "by the method of Takdir of Akrabul Ayyam".
+2. **2 January 1989** (p113–114), after the full year. The Ulama agreed:
+   1. "The beginning time of Fajar be determined by Akrabul Ayyam for those days where the
+      whiteness of Isha merged with the light of morning".
+   2. "For May and June Fajar beginning time be set at the recorded time of Tabayyun".
+   3. "During summer months, due to Haraj, and as permitted by the Sahibayn ... Isha time be phased
+      in using the disappearance of the red afterglow, Shafaqe Ahmar, as a basis, and towards the
+      end of summer, phase out towards Shafaqe Abyadh."
+
+   "Accordingly, a chart based on the agreement of the Ulama was distributed to UK Masajids."
+
+**The UK chart rule (p116–118).** Table 5, "TIME TABLE OF SUBHA SADIQ IN UK", and Table 6,
+"TIME TABLE OF ISHA IN UK", give an h-mm interval by day of the year:
+
+- "To fix the time of Subha Sadiq for your city, look at the Sunrise time for your city and deduct
+  the time shown on the chart for that day"; Isha is sunset plus Table 6.
+- For example, Table 5 has 2-00 on 6 June; Table 6 has 1-40 on 1 January and 1-19 on 1 June.
+- Mohammed Arshad Baig wrote a program that applies the charts, and the "Salat Timetables for
+  Towns and Cities in the UK" (section 2.8) is the accompanying directory.
+- **This is a different rule from moonsighting.com's latitude-and-season function.** It is a fixed
+  interval from sunrise and sunset, observed at one place (53.45N) and applied across the UK.
+- **UNVERIFIED:** whether the London unified timetable's Fajr and Isha follow this chart,
+  Shaukat's function, or a mix. The London data diff (section 3) tests it.
+
+**Where Shaukat appears in the book.** He is quoted repeatedly as an ally against fixed degrees
+(e.g. "A decade long research by Moonsighting.com found that the Subha or disappearance of Shafaq
+is a function of latitude and seasons"). Readers are referred to him for timetables. **No formula
+or coefficient appears anywhere in the book.**
+
 ## 3. Uncertain or still being established
 
 - Why the `www.moonsighting.com/time_json.php` endpoint returns 500 while `praytable.php` works.
