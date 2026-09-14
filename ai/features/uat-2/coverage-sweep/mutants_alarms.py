@@ -48,6 +48,10 @@ mutate.MUTATIONS[:] = [
 
     # --- 00:00 itself ---
     ('stores/countdown.ts', "      refreshSequence(type);\n      logger.debug('TICK: transition'", "      refreshSequence(type);\n      require('@/stores/notifications').rescheduleAllNotifications();\n      logger.debug('TICK: transition'", 'the ticker reschedules when a boundary passes'),
+
+    # --- a night without the day before, and which lists carry Istijaba ---
+    ('shared/prayer.ts', "  if (previousDay?.date !== previousDate) return null;\n\n  const magribTime = previousDay.magrib;", "  const magribTime = previousDay?.date === previousDate ? previousDay.magrib : day.magrib;", 'Magrib borrowed for a missing previous day'),
+    ('shared/prayer.ts', 'if (!TimeUtils.isFriday(date)) {', 'if (false) {', "Istijaba on every day's list"),
 ]
 
 if __name__ == '__main__':
