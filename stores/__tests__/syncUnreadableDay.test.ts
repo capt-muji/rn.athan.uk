@@ -217,7 +217,7 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
     expect(Database.getItem('fetched_years')).toEqual({ 2026: true });
     const afterDownload = everythingStored();
 
-    // A return to the app that evening, then launches on the day and the day after
+    // Whether to download is asked again on every sync: with the day still ahead, as today, and just behind
     for (const instant of ['2026-09-13T21:00:30Z', '2026-09-14T08:00:00Z', '2026-09-15T08:00:00Z']) {
       jest.setSystemTime(new Date(instant));
       await sync();
@@ -239,7 +239,7 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
       Object.keys(SEPTEMBER).filter((date) => date >= '2026-09-13' && (date !== THE_DAY || shape.stored !== null))
     );
     expect(Database.getItem('fetched_years')).toEqual({ 2026: true });
-    // The day is on screen as itself, never as the day after it
+    // Leaving the day out of the lists would put the next day's times under its date
     expect(onScreen(STANDARD)).toEqual({ listDay: THE_DAY, countdown: WAITING });
     expect(onScreen(EXTRA)).toEqual({ listDay: THE_DAY, countdown: WAITING });
   });
@@ -258,6 +258,8 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
     expect(onScreen(STANDARD)).toEqual({ listDay: '2026-09-13', countdown: WAITING });
     expect(onScreen(EXTRA)).toEqual({ listDay: '2026-09-13', countdown: WAITING });
 
+    // Setting the clock carries the pending tick along rather than firing it, so the next tick comes a whole second
+    // after the new time and each tick after it a second later: hours with nothing due pass in one jump
     jest.setSystemTime(new Date('2026-09-13T22:59:58Z'));
     const standardIntoTheDay = recordWrites(STANDARD);
     const extraIntoTheDay = recordWrites(EXTRA);
@@ -270,8 +272,17 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
     expect(rowsOf(STANDARD, THE_DAY)).toEqual(['[Fajr]', '[Sunrise]', '[Dhuhr]', '[Asr]', '[Magrib]', '[Isha]']);
     expect(rowsOf(EXTRA, THE_DAY)).toEqual(['[Midnight]', '[Last Third]', '[Suhoor]', '[Duha]']);
 
-    // The user comes back during the day, which syncs
+    // The first tick after a jump is where a boundary crossed in it would be caught, and none was, so it must leave the
+    // day as it is before the sync below rebuilds both lists
     jest.setSystemTime(new Date('2026-09-14T08:00:00Z'));
+    const standardDuringTheDay = recordWrites(STANDARD);
+    const extraDuringTheDay = recordWrites(EXTRA);
+    jest.advanceTimersByTime(1000);
+    expect(standardDuringTheDay).toEqual([]);
+    expect(extraDuringTheDay).toEqual([]);
+    expect(onScreen(STANDARD)).toEqual({ listDay: THE_DAY, countdown: WAITING });
+    expect(onScreen(EXTRA)).toEqual({ listDay: THE_DAY, countdown: WAITING });
+
     await sync();
     expect(onScreen(STANDARD)).toEqual({ listDay: THE_DAY, countdown: WAITING });
     expect(onScreen(EXTRA)).toEqual({ listDay: THE_DAY, countdown: WAITING });
@@ -287,6 +298,9 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
     expect(extraOutOfTheDay).toEqual(['2026-09-14T23:00:00.000Z']);
     expect(getDisplayDate(STANDARD)).toBe('2026-09-15');
     expect(getDisplayDate(EXTRA)).toBe('2026-09-15');
+    // The 15th's night starts at the 14th's Magrib, which the provider did not give, so nothing may stand in for it
+    expect(rowsOf(STANDARD, '2026-09-15')).toEqual(['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha']);
+    expect(rowsOf(EXTRA, '2026-09-15')).toEqual(['[Midnight]', '[Last Third]', 'Suhoor', 'Duha']);
     // --:-- until the 00:00 tick, then Fajr at 05:00 BST and Suhoor at 04:40 BST from that same tick
     expect(standardCountdown).toEqual([
       WAITING,
