@@ -67,6 +67,30 @@ Nothing on that branch is merged or pushed without the owner's go-ahead.
 4. **Section 5's eleven questions** stay open until the owner is ready. Bring them only when asked,
    and don't press for answers.
 
+## The owner's questions after pausing (2026-09-14)
+
+The owner asked these after the pause, having not yet read the findings. Session 1's short answers,
+drawn from the findings, follow. Step 1 should start from them.
+
+1. **How is London's unified timetable calculated, and who set it?** (Sections 2.2, 2.14 and 2.15.)
+   - **The sun times come from HMNAO:** sunrise − 3, noon + 5, sunset + 3, and Asr at one and at
+     two shadow lengths.
+   - **Fajr and Isha are fixed minute intervals by calendar date,** taken from the 1987–88 Blackburn
+     observations (Hizbul Ulama; Miftahi's Tables 5 and 6), with London's own edits.
+   - **Adoption.** The timetable was adopted on 1 August 2011 by the mosques named in Unified.pdf.
+   - **Unanswered:** who made the edits, and why.
+2. **Is it safe for the worldwide option?** No. The intervals were observed at one latitude (53.45°N),
+   in one hemisphere, and are meant for the UK.
+3. **What should the worldwide option use?** Session 1 recommends calculating the Moonsighting
+   Committee method on the device (adhan's `MoonsightingCommittee`) rather than calling the endpoint.
+   It needs owner rulings on:
+   - polar days;
+   - whether a calculation counts as a source under the never-synthesise rule (section 5, questions
+     1 and 7).
+4. **Where do mosque clocks, mawaqit and other apps get their times? Do they add offsets? Is any
+   calculation "correct"?** Not researched beyond section 2.16, where mawaqit's PHP copy implements
+   the seasonal function only. This is candidate research for session 2, if the owner wants it.
+
 ## Rules
 
 - **Stay out of the main checkout.** Another session may be working in
