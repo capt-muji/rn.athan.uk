@@ -636,12 +636,182 @@ London's times. Two facts do most of the work:
 
 Everything else sits on Shaukat's sunrise, noon + 5 and sunset + 3.
 
+### 2.15 London's unified timetable, rule by rule
+
+This section completes section 2.14. Sources:
+
+- The London agent's notes: `notes/london.md`, 368 lines, read in full by the lead. Scripts and
+  outputs are under `~/athan-research/london/`.
+- The lead's independent re-checks, marked **[lead-verified]**.
+
+**Source identity: PROVEN for 2026.** The London Prayer Times API year, East London Mosque's
+2026 timetable PDF and the table embedded in ELM's prayer-times web page agree on **4,380 of 4,380
+cells** (365 days × 12 fields), with 0 differences.
+
+- **[lead-verified]** API against the ELM PDF: 4,015 cells across the eleven like-named fields,
+  plus 365 cells of ELM `asr_1` against API `asr`. All identical.
+- The 13 real 2026 rows in the app's `shared/__tests__/nightTimes.test.ts` also equal the API.
+- For other years the ELM PDFs are the evidence. They are the provider's stated source, but their
+  identity to the API is **UNVERIFIED** except 2024. There, `mocks/full.ts` in the app repo is an
+  API dump (first committed as `mocks/data_full.ts` in `c78c36e`, 2024-11-16), and it fits the same
+  rules.
+
+**ELM's own statement of the rules.**
+<https://www.eastlondonmosque.org.uk/prayer-times-and-calendar-explained> ("Published: 22nd June,
+2018; Updated: 3rd July, 2026"), read in full by the agent:
+
+> "Fajr … The daybreak time is based on the work of Hizbul Ulama. The sunrise time is taken from
+> His Majesty's Nautical Almanac Office (HMNAO), with 3 minutes taken off for safety to allow
+> coverage of the whole M25 region." · "Zuhr … taken from HMNAO, with 5 minutes added" · "'Asr …
+> Mithl 1 and Mithl 2 … taken from HMNAO" · "Maghrib … taken from HMNAO, with 3 minutes added for
+> safety" · "'Ishā … based on the work of Hizbul Ulama."
+
+**Why it has this shape.** Hizbul Ulama, "Why our fasting times and timetable are not wrong"
+(Y. A. Miftahi, 19 August 2011):
+<http://www.hizbululama.org.uk/articles/english/Why_our_fasting_times_are_not_wrong.pdf>.
+It records:
+
+- the 2 January 1989 agreement: "First Light" generally, and "Tabayyun" in summer, for Fajr;
+  "Shafaqe Abyadh" generally, and "Shafaqe Ahmer" in summer, for Isha, "Phasing of times to get to
+  one method to the other";
+- that the Blackburn chart "can be applied to all parts of the UK using the gaps in twilight
+  length";
+- London's adoption, by "at least 36 organisations … just before Ramadan 1432 (July 2011)", after
+  a meeting "hosted by ICC at Regents Park, London, on Thursday 25th March 2010".
+
+**The rule London ships.** Era B2 covers the 2022 to 2026 timetables. The table gives exact days out
+of 365 for 2026.
+
+| Prayer | Rule | 2026 fit |
+| --- | --- | --- |
+| Fajr | (API sunrise + 3) − Table 5 interval | **365/365.** Across years: 3,652 of 3,652 days (2015, 2017–2022, 2024–2026) **[lead-verified]** |
+| Isha | (API Maghrib − 3) + Table 6 interval, with the edited slots below | **365/365** with the edits (345 without) **[lead-verified]** |
+| Sunrise | sun's sunrise, rounded to the nearest minute, − 3 | 359/365 at 51°30′N 0°10′W (agent's NOAA/Meeus code). **[lead-verified]** 363/365 with adhan's unrounded sunrise. Every miss is ±1 |
+| Dhuhr | transit + 5, rounded | 362/365 (agent); 363/365 with adhan **[lead-verified]** |
+| Maghrib | sunset + 3, rounded | 360/365 (agent); 360/365 with adhan **[lead-verified]** |
+| Asr, API `asr` | Mithl 1 (Shafi'i) | 353/365 in the agent's code, which treats the target as an apparent altitude with refraction. **Not independently reproduced:** adhan's Asr, which uses the noon declination, matches only 143/365 (mostly ±1). |
+| Asr, API `asr_2` | Mithl 2 (Hanafi) | 356/365 (agent); adhan 204/365. Same caveat. |
+
+- **The misses in the sun-based rows are rounding-boundary days.** On every miss, the agent's
+  computed event lies within 0.06 minutes (3.6 seconds) of a half-minute. ELM says these times
+  come from HMNAO.
+- **HMNAO's calculation is not public.** Its prayer-times service returned HTTP 503 on 2026-09-14,
+  and its terms say "for personal use only".
+- **Nothing tested closes those days,** so these minutes can only be matched with HMNAO's own
+  values. The agent tried a coordinate grid, the JPL DE421 ephemeris, the Astronomical Almanac
+  formulas, single-pass variants, a seasonal offset and rounding thresholds.
+- **Why Fajr and Isha still come out exact:** they are chained to the published sunrise and
+  Maghrib.
+
+**The Isha slots London edits.** Minutes after sunset; the book's value is in brackets.
+**[lead-verified]** across the ELM files for 2015, 2017–2022, 2025 and 2026, and the 2024 API dump.
+
+| Slot | London | Years |
+| --- | --- | --- |
+| 1 Feb | 99 (98) | every year |
+| 29–30 Apr | 74 (73) | every year |
+| 1–12 May | 74 (book: 68, 65, 65, 60, 60, 60, 65, 65, 68, 68, 70, 70) | every year; this removes the book's printed Abyad-to-Ahmer dip |
+| 29 Nov | 99 (100) | every year |
+| 31 Mar | 79 (80) | 2020 only |
+| 16 Jun | 84 (83) | 2020, 2025, 2026 |
+| 17 Jun | 84 (83) | 2025, 2026 |
+| 18–19 Jun | 83 (82) | 2025, 2026 |
+
+**No documented basis was found for any of these edits.** The agent searched every ELM timetable
+and calendar PDF from 2012 to 2026, the ELM explainer, Noor Ul Islam, the ICC, Hizbul Ulama's
+articles and moonsighting.com. Miftahi's book mentions software by Mohammed Arshad Baig that applies
+the charts; it is a possible origin, **UNVERIFIED**.
+
+**The rule has changed over time.**
+
+- **Era A, 2012 to 2014** (the timetable at adoption):
+  - no −3 on sunrise;
+  - Fajr close to the moonsighting.com base, m0 (340/365 in 2014);
+  - Isha matching nothing tested;
+  - 2013 and 2014 identical in GMT.
+- **The switch to era B** happened between 20 December 2014 and 9 January 2015, according to
+  Wayback snapshots of londonprayertimes.com. ELM's 2015 PDF was created 2014-10-17. No announcement
+  was found.
+- **Era B1, 2015 to 2021:** the chart rules above, with the sun computed best at 51.5, −0.1275.
+- **Era B2, 2022 to 2026:** the same chart rules, with the sun best at 51.5, −0.165, the Hizbul
+  Ulama "LONDON" point (0°10′W). Who changed the point, and why, is not documented.
+
+**What this means for the owner's question.**
+
+- **London's times are not the moonsighting.com method with small offsets.** Only Dhuhr (+5),
+  Maghrib (+3) and the two Asr shadow rules match the base. Fajr and Isha come from the 1989
+  Blackburn chart, with London's own edits. Sunrise is shown 3 minutes early. The underlying sun
+  times come from HMNAO, not from moonsighting.com.
+- **Against the API in 2024–2026,** the moonsighting.com base at generic London (method 0) gives:
+  Fajr −7 to +6 minutes, Isha −4 to +11, sunrise +2 to +4, and Dhuhr, Asr and Maghrib 0 or +1.
+- **What exact replication in London needs:**
+  - the interval table, which is year-independent except the June and 2020 edits
+    (`~/athan-research/london/data/london_intervals_final.json`, 366 slots);
+  - a sun calculation at 51°30′N 0°10′W, rounded to the nearest minute;
+  - the published sunrise and Maghrib, or HMNAO's values, for the 3 to 12 boundary days per prayer.
+  - That is a reconstruction of London's timetable, not the moonsighting.com method. **Using it as
+    a source of shown times would breach the standing rule against synthesising prayer times**
+    unless the owner rules otherwise (section 5).
+- **Finding 43's "21 June … Magrib 21:21" is not API data.** It is the hand-written example in
+  `mocks/timing-system-schema.ts`. The 2026 and 2024 API both give 21:25 for that date, and Fajr
+  02:40 against finding 43's 02:43, which is the moonsighting.com value.
+- **The Asr labels in the app are reversed** (section 2.14). The app shows the Shafi'i time.
+
 ## 3. Uncertain or still being established
 
-- Why the `www.moonsighting.com/time_json.php` endpoint returns 500 while `praytable.php` works.
-- The exact London modification (per prayer, rule, fit).
-- Whether `adhan`'s `MoonsightingCommittee` reproduces the endpoint, and by how many minutes.
-- Which other implementations trace to Khalid Shaukat's committee.
+State at the close of 2026-09-14. Three strands ran as research agents and were interrupted
+repeatedly by API usage limits: implementations, site pages and documents. Their notes, as far as
+they had got, are snapshotted in `notes/*.in-progress.md`. Until each is finished and checked
+against its sources, treat its contents as **UNVERIFIED**.
+
+### 3.1 London (sections 2.14 and 2.15): closed except these
+
+- **Boundary minutes.** Sunrise, Dhuhr, Maghrib and both Asrs miss by ±1 on 3 to 12 days per prayer
+  in 2026. Every miss sits within seconds of a half-minute. Matching them needs HMNAO's values
+  (service returned 503; terms say personal use only).
+- **Asr** is reproduced to 353 and 356 of 365 only by the London agent's refraction-corrected
+  calculation. It has not been independently reproduced: adhan's Asr gives 143 and 204.
+- **The 21 edited Isha slots** have no documented basis. The same goes for the 2022 change of
+  coordinates and the 2025 June edits.
+- **Years before 2026** rest on ELM's PDFs, which are not proven identical to the API (except
+  2024, via the app's own API dump).
+
+### 3.2 The endpoint, worldwide
+
+- Why `www.moonsighting.com/time_json.php` returns 500 while `praytable.php` works, and who
+  operates `moonsighting.ahmedbukhamsin.sa` beyond the site's "Developed by Ahmed Bu-khamsin" credit.
+- The day-early clock change (section 2.12). The mechanism is inferred, not proven. Still to
+  measure: Egypt, Israel and Palestine, and whether `praytable.php` shares the fault.
+- High latitude beyond Tromsø (Longyearbyen, 78°N), southern latitudes beyond −55°, and which
+  strings each field emits.
+- Uptime, rate limits and terms of use for either host, as a dependency for v2.0.
+
+### 3.3 The method's primary sources
+
+- **The coefficients** of the latitude-and-season functions have no public primary source found.
+  They match adhan's and every port's, and the ranges Shaukat published in 2005–2006. The document
+  adhan's maintainer cites is not public.
+- **Shafaq width in England:** faq_pt 2.10 says "66 to 105 minutes"; the 2006 page and Miftahi's
+  book say 66 to 100. Which one is current is unresolved.
+- **The polar rule:** the endpoint and adhan both ignore how-we.html's slide to 60°. The rule was
+  restated at least five times (section 2.13). The rule the published tables actually implement
+  above 60° needs a written source, or the owner's ruling that the tables are the method.
+- **Unread documents:** `articles/prayers-uk.pdf`, a 20-page Urdu document from 2008 with no usable
+  text layer, and the two PPTs. Confirm the documents agent read them.
+
+### 3.4 Implementations and packages
+
+- mawaqit, islamic-network (PHP, now on 1x.ax), kskhan77, muballighapp and the npm candidates:
+  provenance, formulas, deltas in minutes. In progress in `notes/implementations.in-progress.md`.
+- adhan is done (section 2.11).
+
+### 3.5 Every page and every document
+
+- The full read of every live and archived site page (`notes/site.in-progress.md`) and of every
+  document (`notes/documents.in-progress.md`) was well advanced but not finished when the limits
+  hit.
+- The brief's step 1 is not complete until both agents confirm every page and document was read
+  in full, with counts.
 
 ## 4. How each finding would affect the app
 
@@ -729,13 +899,32 @@ What this means for the current code:
   `shared/prayer.ts`.
 - Longyearbyen (78°N) and southern latitudes beyond −55° are still being measured.
 
-### 4.5 The London modification
+### 4.5 London: the API and the moonsighting.com method are different sources
 
-**Waiting on the London data diff (section 3).** The candidates are named in sections 2.8 and
-2.10. Whatever it turns out to be decides whether a v2.0 London user sees today's times from the
-moonsighting.com base, or needs London's delta applied on top. Applying one would contradict the
-standing rule that the app edits nothing the API returns, unless the delta comes from a source
-rather than from the app.
+Sections 2.14 and 2.15 settle it: London's unified timetable is not the moonsighting.com method with
+offsets.
+
+- **Fajr and Isha** come from the 1989 Blackburn chart with London's own edits.
+- **Sunrise** is shown 3 minutes early.
+- **The underlying sun times** come from HMNAO.
+
+For the owner's plan (the London API stays the London default, moonsighting.com is a second option
+in London and the only option elsewhere), that means:
+
+- **London, default source (today's app):** unchanged. `api/client.ts` keeps londonprayertimes.com.
+  The one defect found is the **Asr labels**: `shared/types.ts` documents API `asr` as Hanafi and
+  `asr_2` as Shafi'i, the reverse of the data. The app shows `asr`, the Shafi'i (one shadow length)
+  Asr. Which Asr a London user expects is an owner decision (section 5).
+- **London, moonsighting.com option:** a user who switches will see different times on most days.
+  Against the API in 2024–2026: Fajr −7 to +6 minutes, Isha −4 to +11, sunrise +2 to +4, and
+  Dhuhr, Asr and Maghrib 0 or +1. That is expected, not a bug, and the interface should not present
+  the two as the same timetable.
+- **Reproducing London locally** is possible to the minute for Fajr and Isha given the published
+  sunrise and Maghrib, and to within ±1 on boundary days for the rest. That would synthesise times,
+  which the standing rule forbids, so the research does not recommend it.
+- **Test fixtures:** `mocks/timing-system-schema.ts` carries a hand-written London example
+  (Magrib 21:21 on 21 June) that finding 43 quoted as if it were API data. The real 2026 value is
+  21:25. Any fixture meant to represent API output should come from `data/london/lpt-2026.json`.
 
 ## 5. Open questions for the owner
 
@@ -776,7 +965,28 @@ Draft. The London and implementations strands may add to these.
 
 ## 6. Next session should
 
-To be completed.
+1. **Finish step 1.** Resume or rerun the site and document reads from `notes/site.in-progress.md`
+   and `notes/documents.in-progress.md`, until every page and document is confirmed read in full,
+   with counts. Include the Urdu `prayers-uk.pdf` (read visually) and the PPTs. Fold anything new
+   into section 2.
+2. **Close London to the minute.**
+   - Reproduce Dhuhr, Maghrib, both Asrs and sunrise on all 365 days of
+     `data/london/lpt-2026.json` by fitting the rounding mode and coordinates to the second.
+   - Transcribe Tables 5 and 6 from the page images into JSON.
+   - Find the basis for the 20 Isha days.
+   - Confirm East London Mosque's 2026 timetable is identical to the API.
+   - Fit previous years from independent sources. The owner's bar is zero unexplained minutes on
+     any day.
+3. **Finish step 3.** Implementations and npm provenance with deltas in minutes; the day-early
+   clock change in more zones and on `praytable.php`; high latitude beyond 70°N and south of −55°;
+   the endpoint's ownership and reliability.
+4. **Run one agent at a time,** or at most two. In this session four Opus agents in parallel hit the
+   session limit twice and the weekly limit once. Each agent must save its notes after every step.
+5. **Review before the owner decides.** Put the findings through an independent Opus reviewer that
+   attacks the claims and the fixtures, then bring section 5's open questions to the owner.
+6. **Keep the standing rules:** research only, no app changes. Never commit or print the API key;
+   if the API must be called again, ask the owner for the key. Never copy, average or invent a
+   prayer time. Read 100% of every source.
 
 ## Sources
 
