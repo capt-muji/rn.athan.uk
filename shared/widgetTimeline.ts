@@ -156,8 +156,9 @@ const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayer
  * Builds one timeline entry per boundary, with stepped countdown entries
  * every COUNTDOWN_STEP_MS inside the stepped horizon, starting at `now`,
  * capped by a terminal stale entry after the last readable prayer. A boundary
- * is a readable prayer's moment, or 00:00 London at the end of a list day held
- * on screen with no readable row. Each entry
+ * is a readable prayer's moment, or 00:00 London ending a list on screen that
+ * waits for its day to end (a day with no readable row, or the day before
+ * one). Each entry
  * carries the full props snapshot for its segment: the upcoming prayer, the
  * segment bounds (for the live progress bar), the precomputed countdown
  * label, the upcoming prayer's date, and the medium widget's day list.
