@@ -393,7 +393,7 @@ const getOverlayTarget = (): Prayer | null => {
  * for the next tick. A passed display target holds at 1s via
  * getSecondsRemaining's clamp (the display contract never shows 0s) until
  * the boundary advance or a new selection retargets it; a missing overlay
- * target (stale index mid-roll) falls back to the next prayer. A selected
+ * target (stale index mid-roll) falls back to the page's own countdown. A selected
  * occurrence with no readable time is written with no seconds under its own
  * name. While the list on screen has no readable time left to come, including
  * after the last readable prayer in storage, the page shows no seconds under

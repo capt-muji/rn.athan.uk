@@ -107,6 +107,7 @@ MUTATIONS = [
     ('stores/schedule.ts', '    store.set(sequenceAtom, { type, prayers: relevantPrayers });\n    settleBoundary(type);\n', '    store.set(sequenceAtom, { type, prayers: relevantPrayers });\n', 'boundary not settled after a refresh that only filtered'),
     ('stores/schedule.ts', 'if (previous && prayer.belongsToDate >= previous.belongsToDate) return true;', 'if (prayer === previous) return true;', 'previous row kept without its list day'),
     ('stores/countdown.ts', 'name: COUNTDOWN_WAITING_NAME', "name: getNextPrayer(type)?.english ?? ''", 'a waiting countdown names a later prayer'),
+    ('stores/countdown.ts', 'overlay.isOn && overlay.scheduleType === type', 'overlay.isOn', "an overlay takes over the other page's countdown"),
     ('hooks/usePrayerAgo.ts', 'if (!prevPrayer || isDisplayHeld(type)) {', 'if (!prevPrayer) {', 'ago badge shown while the list waits'),
 
     # --- session 3: stores/notifications.ts ---

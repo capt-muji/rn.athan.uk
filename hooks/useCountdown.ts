@@ -14,7 +14,7 @@ import { extraDisplayDateAtom, standardDisplayDateAtom } from '@/stores/schedule
 interface UseCountdownResult {
   /** Formatted countdown label (render-granular: changes only when the displayed string changes) */
   displayTime: string;
-  /** Name of the next prayer, or of the next list day's first row when no readable prayer is left */
+  /** Name of the next prayer, the overlay's prayer, or `...` (COUNTDOWN_WAITING_NAME) while the list waits */
   prayerName: string;
   /** Whether a list is on screen, so the countdown has something to show: a time, or --:-- */
   isReady: boolean;
@@ -41,7 +41,7 @@ interface UseCountdownResult {
  */
 export const useCountdown = (type: ScheduleType): UseCountdownResult => {
   // Ready once a list is on screen, not only while a readable prayer is ahead. After the last readable prayer in
-  // storage (31 December before next year is published) the countdown shows --:-- under the next row's name, and
+  // storage (31 December before next year is published) the countdown shows --:-- under `...`, and
   // Countdown.tsx rendering nothing instead pulled the date and the whole list up the page
   const displayDateAtom = type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom;
   const displayDate = useAtomValue(displayDateAtom);
