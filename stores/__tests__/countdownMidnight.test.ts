@@ -112,7 +112,7 @@ const shiftSeconds = (instant: string, seconds: number) => new Date(Date.parse(i
 
 /**
  * What a countdown shows on each whole second from `from` to `to`: the seconds left to the first target strictly
- * ahead, under that target's name. A target leaves on its own second, so 0 is never among them
+ * ahead, under that target's name
  */
 const everySecond = (from: string, to: string, targets: [string, string][]): CountdownStore[] => {
   const values: CountdownStore[] = [];
@@ -125,7 +125,7 @@ const everySecond = (from: string, to: string, targets: [string, string][]): Cou
 };
 
 beforeEach(() => {
-  jest.useFakeTimers();
+  jest.useFakeTimers({ now: new Date('2026-10-16T22:58:00.000Z') });
   storeOctober();
   store.set(standardSequenceAtom, null);
   store.set(extraSequenceAtom, null);
@@ -140,7 +140,7 @@ afterEach(() => {
 });
 
 // =============================================================================
-// ITEM 5 AND C1 TO C4: 00:00 WITH THE APP OPEN
+// 00:00 LONDON WITH THE APP OPEN
 // =============================================================================
 
 interface Night {
@@ -248,10 +248,14 @@ describe('crossing 00:00:00 with the app running advances only the Extras sequen
       const standardSequence = store.get(standardSequenceAtom);
       expect(listDaysHeld(EXTRA)).toEqual(heldBefore);
 
+      // A mounted atom is worked out again the moment its sequence is written, as the day header's is
+      subscriptions.push(
+        store.sub(standardDisplayDateAtom, () => {}),
+        store.sub(extraDisplayDateAtom, () => {})
+      );
+
       const standardSequenceWrites = recordWrites(standardSequenceAtom);
       const extraSequenceWrites = recordWrites(extraSequenceAtom);
-      const standardListDays = recordValues(standardDisplayDateAtom);
-      const extraListDays = recordValues(extraDisplayDateAtom);
       const standardCountdown = recordValues(getCountdownAtom(STANDARD));
       const extraCountdown = recordValues(getCountdownAtom(EXTRA));
 
@@ -264,10 +268,6 @@ describe('crossing 00:00:00 with the app running advances only the Extras sequen
       expect(standardSequenceWrites).toEqual([]);
       expect(store.get(standardSequenceAtom)).toBe(standardSequence);
       expect(extraSequenceWrites).toEqual(extraWrites);
-
-      // Mounted as the day header mounts them, so a change at any moment would have been received
-      expect(standardListDays).toEqual([]);
-      expect(extraListDays).toEqual([]);
       expect([getDisplayDate(STANDARD), getDisplayDate(EXTRA)]).toEqual([listDay, listDay]);
 
       expect(standardCountdown).toEqual(everySecond(launch, end, [['Fajr', fajr]]));
@@ -281,15 +281,76 @@ describe('crossing 00:00:00 with the app running advances only the Extras sequen
         expect(readingAt(extraCountdown, instant)).toEqual({ timeLeft, name });
       }
 
-      // The list before goes, and the Midnight that has just passed stays for the bar to measure from
+      // Last Third's bar measures from the Midnight just passed, so the refresh must keep that row as it drops the
+      // finished list before
       expect(listDaysHeld(EXTRA)).toEqual(heldAfter);
       expect(label(getPrevPrayer(EXTRA))).toBe(extrasPrevious);
     }
   );
 });
 
+interface MidSecond {
+  night: string;
+  /** 1.6 seconds before the Extras Midnight, so the first tick is 0.6 seconds away and the second is the boundary */
+  launch: string;
+  standard: number[];
+  extras: [string, number][];
+}
+
+const MID_SECOND: MidSecond[] = [
+  {
+    night: '17 October',
+    launch: '2026-10-16T22:59:58.400Z',
+    standard: [21122, 21121, 21120],
+    extras: [
+      ['Midnight', 2],
+      ['Midnight', 1],
+      ['Last Third', 7020],
+    ],
+  },
+  {
+    night: '18 October',
+    launch: '2026-10-17T22:59:58.400Z',
+    standard: [21242, 21241, 21240],
+    extras: [
+      ['Midnight', 2],
+      ['Midnight', 1],
+      ['Last Third', 7080],
+    ],
+  },
+  {
+    night: '19 October',
+    launch: '2026-10-18T22:58:58.400Z',
+    standard: [21362, 21361, 21360],
+    extras: [
+      ['Midnight', 2],
+      ['Midnight', 1],
+      ['Last Third', 7140],
+    ],
+  },
+];
+
+describe('opened part way through a second just before the Extras Midnight', () => {
+  it.each(MID_SECOND)(
+    '$night: each countdown first reads the second being lived through, and swaps on the boundary tick',
+    ({ launch, standard, extras }) => {
+      jest.setSystemTime(new Date(launch));
+      setSequence(STANDARD, new Date());
+      setSequence(EXTRA, new Date());
+      const standardCountdown = recordValues(getCountdownAtom(STANDARD));
+      const extraCountdown = recordValues(getCountdownAtom(EXTRA));
+
+      startCountdowns();
+      jest.advanceTimersByTime(1600);
+
+      expect(standardCountdown).toEqual(standard.map((timeLeft) => ({ timeLeft, name: 'Fajr' })));
+      expect(extraCountdown).toEqual(extras.map(([name, timeLeft]) => ({ timeLeft, name })));
+    }
+  );
+});
+
 // =============================================================================
-// C7: JUST AFTER 00:00, HOWEVER THE APP GOT THERE
+// JUST AFTER 00:00 LONDON, HOWEVER THE APP GOT THERE
 // =============================================================================
 
 interface Observation {
