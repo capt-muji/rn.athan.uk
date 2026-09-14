@@ -569,8 +569,38 @@ as date, API, rule, API minus rule and interval used:
   May, so London's Isha departs from the 2005 chart there, by up to 14 minutes.
 - **The same page prints cells for days that do not exist:** April "31" 1-10 in Table 6, and
   June "31" 1-59 in Table 5.
-- **Next:** test whether the later chart editions (the 2006 and 2009 UK tables' London pages,
-  section 2.8) or another rule explain these 20 days. Until then they stand as **UNEXPLAINED**.
+- **Where London's Isha interval parts from the chart:**
+  - It holds **1-14 from 29 April to 12 May**, then rejoins the chart on 13 May (1-13) and 16 May
+    (1-14).
+  - Around the solstice it holds the chart's June peak of 1-24 through 17 June, where the chart
+    drops to 1-23 on the 16th. It then gives 1-23 on 18 and 19 June, where the chart has 1-22,
+    and rejoins the chart at 1-22 on the 20th.
+  - It steps from January's 1-40 to 1-39 on 1 February, where the chart says 1-38.
+  - It reaches November's 1-40 on the 30th, one day after the chart.
+  - The implied intervals for every day are in `~/athan-research/london/lpt-2026-intervals.json`.
+- **The later UK tables do not explain these days.** The Hizbul Ulama national tables computed by
+  Shaukat (section 2.8, parsed page by page by the documents agent) were compared date by date
+  with the API's implied intervals, Fajr as sunrise − Fajr and Isha as Isha − (Maghrib − 3):
+
+  | Edition, page | Fajr interval equal to the API | Isha interval equal to the API |
+  | --- | ---: | ---: |
+  | 2006, LONDON (Lt 51:30N, Lg 0:10W) | 32 / 357 | 11 / 357 |
+  | 2006, EALING LONDON | 34 / 365 | 29 / 365 |
+  | 2006, HACKNEY London | 34 / 357 | 12 / 357 |
+  | 2009, LONDON | 31 / 363 | 20 / 363 |
+  | 2009, EALING LONDON | 33 / 363 | 20 / 363 |
+  | 2009, HACKNEY London | 34 / 365 | 13 / 365 |
+
+  The tables' intervals change almost day by day, as a formula's would. For example, London 2006's
+  Fajr interval runs from 1-41 in early January down to 1-33 in mid-March and up to 2-00 in late
+  June. The API's intervals move in whole-minute steps held for days, as the chart's do. **So the
+  2006 and 2009 UK tables follow Shaukat's own latitude-and-season function, and London's unified
+  timetable does not.** Its Fajr and Isha follow the 1989 Blackburn chart instead.
+- **The UK tables dip in early May too**, to an Isha interval of 1-09 on 7 and 8 May (London 2006
+  and 2009). London's flat 1-14 overrides a dip present in both the chart and Shaukat's function.
+- **These 20 Isha days are UNEXPLAINED** by every source read so far. They look like manual
+  adjustments to the chart. The documented reason, and whether they recur in other years, are being
+  sought in East London Mosque and other mosques' published timetables and earlier years.
 
 **Dhuhr, Maghrib and Asr.** API minus base, method 0:
 
