@@ -64,26 +64,28 @@ It has to be pure because `shared/widgetTimeline.ts` needs the same rules.
 | `prayerIdentity` | Unchanged, `english_belongsToDate`. |
 | `sequenceSignature` | Identity plus instant or `-`, so a row turning unreadable is a change and a stable unreadable row is not. |
 | **Boundary caching** | The next boundary is a derived atom built from the cached next-prayer and display-date atoms (the earlier of next's instant and the display date's hold end), which the screen normally subscribes together, and the ticker reads it once as it starts so both are settled even when nothing is subscribed yet. The ticker, the resume path and the overlay all read it. Worked out afresh from the clock it would always lie after now, and no crossing could ever be seen. Every sequence write also reads it at once (`settleBoundary`). A screen with the bar switched off leaves the next prayer unsubscribed, and a write in the second before a prayer would otherwise leave the list on the wrong day with `--:--` for hours. |
-| **What `refreshSequence` keeps** | Readable rows still to come; every row of the display date and of later list days (a list day's unreadable rows are kept or dropped whole, never left as remnants); the previous readable row **with its whole list day**. Alone, that row would come on screen as a list of one if the day after it were rebuilt with no readable time. |
+| **What `refreshSequence` keeps** | Readable rows still to come; every row of the display date and of later list days (a list day's unreadable rows are kept or dropped whole, never left as remnants); the row the bar measures from (`findPreviousRow`), only when it has a time, **with its whole list day**. Alone, that row would come on screen as a list of one if the day after it were rebuilt with no readable time. When the row above next is dashed there is none to keep, so the list before goes at the next refresh. |
 | **No readable row ahead** | When a built or refreshed sequence has none, it grows a day at a time, to 14 days at most, so a lost week does not leave the countdown without a target. |
 
 Behaviour this produces:
 
 - One unreadable Asr: Asr shows `--:--`, dim until Dhuhr passes, then bright; the highlight and the
-  countdown go from Dhuhr straight to Magrib; the bar and the badge hide until Magrib passes, since the row above Magrib has no time; the list moves on after Isha
-  as today.
-- Unreadable Fajr: bright (passed) from the moment its list is on screen, Sunrise next.
+  countdown go from Dhuhr straight to Magrib; the bar and the badge hide until Magrib passes, since
+  the row above Magrib has no time; the list moves on after Isha as today.
+- Unreadable Fajr: bright (passed) from the moment its list is on screen, Sunrise next; the bar and
+  the badge hide until Sunrise passes, since the row above Sunrise has no time.
 - **Unreadable last row (Isha), the open question**: the list moves on after Magrib, the last readable
   row, exactly as it moves on after the last row today. Chosen because it is the same rule for
   every list (an Extras list ending in an unreadable Duha would otherwise hold past the next list's
   Midnight, which falls before 00:00), it is R9's rule, and it agrees with session 7: a day stays
   current until its last readable row has passed, so a readable 00:40 Magrib after an unreadable Isha
-  keeps its day on screen until 00:40.
+  keeps its day on screen until 00:40. The next list's Fajr then gets no bar or badge, since the row
+  before it, this list's Isha, has no time.
 - **Fully unreadable day D (R8, R11)**: D−1 stays on screen after its last readable row, with no active
   row, `--:--` and no bar, until 00:00 London at D's start. D then comes on screen and stays until 00:00 at
   its end, then D+1 (owner ruling 2026-09-14; 1.27.0 brought D on at D−1's last row). No highlight on D. Every row bright (the owner's
-  first ruling, "treated as passed"). The countdown shows `--:--` under the next readable prayer's
-  name until the list moves on (owner ruling 2026-09-14, section 5). A tap opens
+  first ruling, "treated as passed"). The countdown shows `--:--` under `...` until the list
+  moves on (owner rulings 2026-09-14, section 5). A tap opens
   the next occurrence, `--:--` if that is unreadable too. The bar is hidden: its previous row would
   have to come from D or D−1's handover, and D has none.
 

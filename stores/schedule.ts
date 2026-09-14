@@ -56,7 +56,7 @@ export const getSequenceAtom = (type: ScheduleType) => {
  *
  * Looked for in the sequence first. When it holds none, the list before next's is built from storage with
  * the same builder as the sequence, so a post-midnight Isha comes back at its own instant rather than 24
- * hours early (gap map L3). When that list has no readable row either, as on a 1 January whose 31
+ * hours early (gap map L3). When that list's last row has no time either, as on a 1 January whose 31
  * December is not stored or after a day with no readable time, there is nothing to measure from and the
  * bar cannot be worked out (R13, R14).
  *
@@ -80,8 +80,8 @@ const findPreviousPrayer = (
 
   // The sequence cannot hold a row between now and next, since that row would be next, but storage can: a
   // sequence built after 00:00 starts at the new calendar day and leaves out yesterday's Isha still to come
-  // (session 7). That Isha is the true previous row and it has not happened, so there is none yet; an earlier
-  // row would draw the bar across a prayer still due, and the Isha itself would draw it backwards.
+  // (session 7). That Isha is the true previous row and it has not happened, so there is none yet; measured
+  // from it, the bar would run backwards.
   if (fromStorage && fromStorage.datetime <= now) return fromStorage;
 
   logger.info('SCHEDULE: No readable row before next, progress bar unavailable', {
@@ -522,7 +522,7 @@ export const getNextPrayer = (type: ScheduleType): ReadablePrayer | null => {
  * Used for progress bar calculation
  *
  * @param type Schedule type (Standard or Extra)
- * @returns Previous readable prayer or null if not available
+ * @returns The row just above next when it has a time (findPreviousRow), or null
  */
 export const getPrevPrayer = (type: ScheduleType): ReadablePrayer | null => {
   const prevPrayerAtom = type === ScheduleType.Standard ? standardPrevPrayerAtom : extraPrevPrayerAtom;

@@ -175,7 +175,10 @@ export const findPreviousRow = (prayers: Prayer[], next: ReadablePrayer): Readab
     if (!previous || listPosition(prayer) > listPosition(previous)) previous = prayer;
   }
 
-  if (!previous || !isReadable(previous) || previous.datetime >= next.datetime) return null;
+  // Every list day holds each of its rows (only a Friday's Istijaba comes and goes, and it is last), so the row
+  // just above next sits one position up; a row found any higher means that one is missing, and is not it
+  if (!previous || (position > 0 && listPosition(previous) !== position - 1)) return null;
+  if (!isReadable(previous) || previous.datetime >= next.datetime) return null;
   return previous;
 };
 
