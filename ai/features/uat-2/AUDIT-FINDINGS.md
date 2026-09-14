@@ -4605,11 +4605,11 @@ and needs asking.
 | One unreadable time | That row shows `--:--`; every other row keeps its time (R1 to R3) | Nothing armed for that row; everything else as before |
 | Every time of a day unreadable, or the day missing from the payload | The day is still listed, every Standard and Extras row `--:--` (R4, R7) | Nothing armed that day; the days around it as before |
 | A time another row is worked out from | Suhoor (Fajr), Duha (Sunrise), Friday Istijaba (Magrib), and Midnight and Last Third (the day before's Magrib, the day's own Fajr) show `--:--` with it. No Magrib is borrowed any more (finding 72) | The same rows arm nothing |
-| The highlight and the countdown | Pass straight over an unreadable row (R9). The row is dim while a readable row above it is still to come and lights up once those have passed (R10). A list with no readable row left has no highlight (R11) | |
+| The highlight and the countdown | Pass straight over an unreadable row (R9). The row is dim while a readable row above it is still to come and lights up once those have passed (R10). A list with no readable row left has no highlight (R11), and its countdown shows `--:--` under the next prayer's name until the list moves on at 00:00 (owner ruling 2026-09-14) | |
 | A day with no readable time | Comes on screen at 00:00 London at its own start, the day before waiting after its last readable row with no active row, and stays until 00:00 at its end (R8, owner ruling 2026-09-14; 1.27.0 brought it on when the day before handed over) | |
 | A tap | A passed unreadable row opens its next occurrence; an upcoming one shows `--:--` in the row and in the countdown (R12) | |
 | The bell | On an unreadable occurrence it draws the Off glyph at the row's own colour. A tap opens the alert sheet with a short message instead of options (owner rulings 2026-09-14, replacing the 25% opacity and the unpressable bell first built). The setting itself is never changed (R5) | Resumes on the next readable day; an alarm armed before the data changed is cancelled (R6) |
-| The countdown bar | Hidden, keeping its space, when there is no readable row to measure from (R14) | |
+| The countdown bar | Hidden, keeping its space, when there is no readable row to measure from, or while the list on screen has no readable time left to come (R14); the "ago" badge hides with it then | |
 | 1 January without 31 December | Shows normally; only Midnight and Last Third are `--:--`, and the bars stay hidden until Fajr and Suhoor (R13, R14) | 31 December is asked for alone with `date=`, never holding up the launch. When it arrives the lists are rebuilt and the notification gate reopens |
 
 **The three live defects the brief named are gone**
@@ -4706,8 +4706,9 @@ recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
   shows the next day's real countdown. The 00:00 moment is the existing boundary the ticker already checks, so no
   timer is added.
 - R5: first built as the saved glyph at 25% opacity. **Ruled by the owner on 2026-09-14:** the Off glyph at the
-  row's normal colour, bright when passed or selected and dim when upcoming, still not pressable. Preferences are
-  per prayer, so while it shows, tomorrow's alert for that prayer cannot be changed.
+  row's normal colour, bright when passed or selected and dim when upcoming. A tap buzzes and opens the alert sheet
+  with a short message instead of options. Preferences are per prayer, so while it shows, tomorrow's alert for that
+  prayer cannot be changed.
 - New, from the reviews: a field the provider renames arrives unreadable on every day, and the payload is still
   stored (only a payload with nothing readable is refused), so that prayer would show `--:--` all year and arm
   nothing. Refusing a payload in which one field is unreadable on every day would keep the old cache instead.

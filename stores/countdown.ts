@@ -209,7 +209,8 @@ export const getBarWarningAtom = (type: ScheduleType) =>
  * Gets the bar-availability selector for a schedule type
  *
  * @param type - Schedule type (Standard or Extra)
- * @returns Atom that is true only when both the previous and the next prayer exist
+ * @returns Atom that is true only when both the previous and the next prayer exist and the list on screen
+ *   still has a readable time to come
  */
 export const getBarAvailableAtom = (type: ScheduleType): Atom<boolean> =>
   type === ScheduleType.Standard ? standardBarAvailableAtom : extraBarAvailableAtom;
@@ -268,8 +269,8 @@ const clearOverlayBoundary = () => {
 
 /**
  * Enforces the overlay's close deadline and refreshes it from the live next
- * boundary: a prayer, or the end of a list day on screen with no readable row,
- * so the list never changes day under an open overlay. The stored deadline is
+ * boundary: a prayer, or 00:00 ending a list on screen that waits for its day
+ * to end, so the list never changes day under an open overlay. The stored deadline is
  * checked first, so a resume data-refresh can never mask a boundary that
  * already elapsed.
  *
@@ -300,7 +301,7 @@ const checkOverlayBoundary = (): boolean => {
  *
  * Boundary detection always runs against the schedule's next boundary via
  * getNextBoundary(type): its next readable prayer, or 00:00 London ending a
- * list day on screen with no readable row, when the list must move on with no
+ * list on screen that waits for its day to end, when the list must move on with no
  * prayer due. The atom write is display-aware (ADR-014 countdown merge): while
  * the overlay is open on this schedule the page countdown atom carries the
  * SELECTED prayer's countdown, otherwise the next prayer's.
@@ -441,7 +442,7 @@ const startCountdowns = () => {
  * Recomputes the countdown immediately on foreground. The OS freezes the JS
  * timers while the app is backgrounded, so on return the tickers are stale:
  * this catches up any boundary crossed during the suspend (a prayer, or the
- * end of a list day on screen with no readable row) and rewrites the display
+ * 00:00 ending a list on screen that waits for its day to end) and rewrites the display
  * atoms before the first visible frame. The instant-resume equivalent of
  * "keep ticking in the background".
  */

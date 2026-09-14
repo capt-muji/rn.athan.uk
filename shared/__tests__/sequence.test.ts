@@ -1735,14 +1735,23 @@ describe('getNextBoundary', () => {
 // =============================================================================
 
 describe('boundaries over random unreadable patterns across the October 2026 clock change', () => {
-  const READINGS = ['05:50', '07:30', '12:45', '15:20', '17:55', '19:20'];
+  const READINGS: Reading[] = ['05:50', '07:30', '12:45', '15:20', '17:55', '19:20'];
   const DAYS = Array.from({ length: 14 }, (_, i) => `2026-10-${String(18 + i).padStart(2, '0')}`);
   const FIRST_SAMPLE_MS = Date.parse('2026-10-17T20:00:00.000Z');
   const LAST_SAMPLE_MS = Date.parse('2026-11-01T00:00:00.000Z');
   const STEP_MS = 53 * 60 * 1000;
 
-  /** Days in list order; each whole day unreadable one time in four, otherwise each row one time in five */
-  const fortnight = (seed: number, dashes: boolean): Prayer[] => {
+  const followingDate = (date: string): string =>
+    new Date(Date.UTC(Number(date.slice(0, 4)), Number(date.slice(5, 7)) - 1, Number(date.slice(8, 10)) + 1))
+      .toISOString()
+      .slice(0, 10);
+
+  /**
+   * Days in list order. With dashes, a day is missing from the sequence one time in twelve, wholly unreadable one
+   * time in four, and otherwise each row is unreadable one time in five. With late nights, Magrib and Isha fall
+   * after the day's own 00:00, as at high latitudes in summer.
+   */
+  const fortnight = (seed: number, dashes: boolean, lateNights: boolean): Prayer[] => {
     let state = seed;
     const random = () => {
       state = (state * 1103515245 + 12345) % 2147483648;
@@ -1750,9 +1759,17 @@ describe('boundaries over random unreadable patterns across the October 2026 clo
     };
 
     return DAYS.flatMap((day) => {
+      if (dashes && random() < 1 / 12) return [];
+      const readings: Reading[] = lateNights
+        ? [
+            ...READINGS.slice(0, 4),
+            { clock: '00:10', on: followingDate(day) },
+            { clock: '00:40', on: followingDate(day) },
+          ]
+        : READINGS;
       const wholeDay = dashes && random() < 0.25;
       return STANDARD_NAMES.map((name, i) =>
-        row(ScheduleType.Standard, name, day, wholeDay || (dashes && random() < 0.2) ? null : READINGS[i])
+        row(ScheduleType.Standard, name, day, wholeDay || (dashes && random() < 0.2) ? null : readings[i])
       );
     });
   };
@@ -1763,8 +1780,10 @@ describe('boundaries over random unreadable patterns across the October 2026 clo
     return out;
   };
 
-  it.each(Array.from({ length: 16 }, (_, i) => i + 1))('seed %i', (seed) => {
-    const prayers = fortnight(seed, true);
+  const SEEDS = Array.from({ length: 16 }, (_, i) => [i + 1, i % 2 === 1] as const);
+
+  it.each(SEEDS)('seed %i, Magrib and Isha after 00:00: %s', (seed, lateNights) => {
+    const prayers = fortnight(seed, true, lateNights);
 
     for (const now of samples()) {
       const display = resolveDisplayDate(prayers, now);
@@ -1780,23 +1799,35 @@ describe('boundaries over random unreadable patterns across the October 2026 clo
       // A list with no readable row left to come is on screen only as a day with none, or as the day before one
       const ownRows = prayers.filter((prayer) => prayer.belongsToDate === display);
       if (!ownRows.some((prayer) => isReadable(prayer) && prayer.datetime > now)) {
-        const following = prayers.filter((prayer) => prayer.belongsToDate === DAYS[DAYS.indexOf(display) + 1]);
+        const following = prayers.filter((prayer) => prayer.belongsToDate === followingDate(display));
         const noneOwn = !ownRows.some(isReadable);
         const noneFollowing = following.length > 0 && !following.some(isReadable);
         expect(noneOwn || noneFollowing).toBe(true);
       }
+
+      // A day with no readable time never comes on screen before its own 00:00 while the day before it holds
+      // readable rows (R8): that day keeps its place until then
+      if (!ownRows.some(isReadable)) {
+        const dayBefore = DAYS[DAYS.indexOf(display) - 1];
+        if (prayers.some((prayer) => prayer.belongsToDate === dayBefore && isReadable(prayer))) {
+          expect(now.getTime()).toBeGreaterThanOrEqual(createPrayerDatetime(display, '00:00').getTime());
+        }
+      }
     }
   });
 
-  it('with every time readable, the list on screen is always the next prayer’s own list day', () => {
-    const prayers = fortnight(1, false);
+  it.each([false, true])(
+    'with every time readable, the list on screen is always the next prayer’s own list day (late nights: %s)',
+    (lateNights) => {
+      const prayers = fortnight(1, false, lateNights);
 
-    for (const now of samples()) {
-      const next = findNextReadable(prayers, now);
-      if (!next) continue;
-      expect(resolveDisplayDate(prayers, now)).toBe(next.belongsToDate);
+      for (const now of samples()) {
+        const next = findNextReadable(prayers, now);
+        if (!next) continue;
+        expect(resolveDisplayDate(prayers, now)).toBe(next.belongsToDate);
+      }
     }
-  });
+  );
 });
 
 // =============================================================================
