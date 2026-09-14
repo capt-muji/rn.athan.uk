@@ -505,6 +505,101 @@ What this establishes:
   the page's "Updated" date is 16 August 2011. The documents seen so far do not say whether the two
   are linked.
 
+### 2.14 London 2026, reproduced from the API's own year: where it stands
+
+**The reference.** `https://www.londonprayertimes.com/api/times?format=json&year=2026&24hours=true`:
+
+- **Fetched once** on 2026-09-14 with the owner's key, which was never stored and never committed.
+- **Where it is:** saved at `~/athan-research/london/lpt-2026.json`, with the request, without the
+  key, in `lpt-2026.meta.json`.
+- **The check:** the key does not appear in the response.
+- **What it holds:** 365 days, 2026-01-01 to 2026-12-31, with no gaps. Every value is `HH:mm`.
+- **Fields:** `date`, `fajr`, `fajr_jamat`, `sunrise`, `dhuhr`, `dhuhr_jamat`, `asr`, `asr_2`,
+  `asr_jamat`, `magrib`, `magrib_jamat`, `isha`, `isha_jamat`.
+
+**The base** is `moonsighting.ahmedbukhamsin.sa/time_json.php` for London at 51.5072, −0.1276,
+Europe/London, 2026, method 0. It is identical to the site's `praytable.php` (section 2.6).
+
+**Fajr: reproduced on 365 of 365 days.** API `fajr` = (API `sunrise` + 3) − the Table 5 interval for
+that date.
+
+- **The table.** Table 5 is "TIME TABLE OF SUBHA SADIQ IN UK", page 117 of Miftahi's *Fajar and
+  Isha* (2005, section 2.10). A blank "-" carries the last printed value in that month's column
+  forward.
+- **Checked by eye.** The transcription was read from the page rendered at 300 dpi
+  (`~/athan-research/london/tables/table5_{top,bottom}.png`), not only from the PDF text layer.
+- **The script** is the inline check recorded in `~/athan-research/london/`. The implied intervals
+  for every day are in `lpt-2026-intervals.json`.
+
+**Sunrise: shown 3 minutes early.** API `sunrise` = base sunrise − 3 on 316 days, and base sunrise
+− 2 on 49. That is the 2009 Hizbul Ulama advice, "a minimum of three minutes is taken away from the
+sunrise time" (section 2.8). **UNVERIFIED:** the 49 days look like a rounding difference in the base
+sunrise, and are being pinned down to the second.
+
+**Isha: reproduced on 345 of 365 days.** API `isha` = (API `magrib` − 3) + the Table 6 interval
+(Table 6 is "TIME TABLE OF ISHA IN UK", page 118, image-verified in the same way). Every exception,
+as date, API, rule, API minus rule and interval used:
+
+| Date | API | Rule | Δ | Table 6 |
+| --- | --- | --- | ---: | --- |
+| 2026-02-01 | 18:29 | 18:28 | +1 | 1-38 |
+| 2026-04-29 | 21:35 | 21:34 | +1 | 1-13 |
+| 2026-04-30 | 21:36 | 21:35 | +1 | 1-13 |
+| 2026-05-01 | 21:38 | 21:32 | +6 | 1-08 |
+| 2026-05-02 | 21:40 | 21:31 | +9 | 1-05 |
+| 2026-05-03 | 21:41 | 21:32 | +9 | 1-05 |
+| 2026-05-04 | 21:43 | 21:29 | +14 | 1-00 |
+| 2026-05-05 | 21:44 | 21:30 | +14 | 1-00 |
+| 2026-05-06 | 21:46 | 21:32 | +14 | 1-00 |
+| 2026-05-07 | 21:48 | 21:39 | +9 | 1-05 |
+| 2026-05-08 | 21:49 | 21:40 | +9 | 1-05 |
+| 2026-05-09 | 21:51 | 21:45 | +6 | 1-08 |
+| 2026-05-10 | 21:52 | 21:46 | +6 | 1-08 |
+| 2026-05-11 | 21:54 | 21:50 | +4 | 1-10 |
+| 2026-05-12 | 21:55 | 21:51 | +4 | 1-10 |
+| 2026-06-16 | 22:44 | 22:43 | +1 | 1-23 |
+| 2026-06-17 | 22:45 | 22:44 | +1 | 1-23 |
+| 2026-06-18 | 22:44 | 22:43 | +1 | 1-22 |
+| 2026-06-19 | 22:44 | 22:43 | +1 | 1-22 |
+| 2026-11-29 | 17:36 | 17:37 | −1 | 1-40 |
+
+- **Early May is the book, not a misreading.** The rendered page really prints May 1-08, 1-05 on
+  the 2nd, 1-00 on the 4th, 1-05 on the 7th, 1-08 on the 9th and 1-10 on the 11th.
+- **London does not follow that dip.** The API's implied Isha interval keeps rising through early
+  May, so London's Isha departs from the 2005 chart there, by up to 14 minutes.
+- **The same page prints cells for days that do not exist:** April "31" 1-10 in Table 6, and
+  June "31" 1-59 in Table 5.
+- **Next:** test whether the later chart editions (the 2006 and 2009 UK tables' London pages,
+  section 2.8) or another rule explain these 20 days. Until then they stand as **UNEXPLAINED**.
+
+**Dhuhr, Maghrib and Asr.** API minus base, method 0:
+
+| Prayer | 0 | +1 | +2 |
+| --- | ---: | ---: | ---: |
+| Dhuhr | 309 | 56 | |
+| Maghrib | 306 | 59 | |
+| `asr` against the base's Shafi'i Asr | 210 | 155 | |
+| `asr_2` against the base's Hanafi Asr | 150 | 211 | 4 |
+
+- **The +1 skew** points at rounding or coordinates, not a rule. **UNVERIFIED** until reproduced to
+  the second.
+- **The two Asr fields are the other way round from the app's type comments.** The API's `asr` is
+  the **Shafi'i** Asr (one shadow length) and `asr_2` is the **Hanafi**. `shared/types.ts`
+  documents `asr` as "Hanafi calculation" and `asr_2` as "Shafi calculation", and the app shows
+  `asr`. Measured against the base on all 365 days: `asr` against Hanafi is never within 28
+  minutes, and `asr_2` against Shafi'i is never within 30.
+
+**What this means for London under the moonsighting method.** The base alone does not give
+London's times. Two facts do most of the work:
+
+- London's Fajr and Isha come from the Hizbul Ulama observation charts: intervals before sunrise
+  and after sunset, from the 1987–88 Blackburn observations. They do not come from moonsighting.com's
+  latitude-and-season function. Against the base's own Fajr and Isha, London is −7 to +6 minutes
+  (Fajr) and −4 to +11 minutes (Isha) apart, by season.
+- Sunrise is shown 3 minutes early.
+
+Everything else sits on Shaukat's sunrise, noon + 5 and sunset + 3.
+
 ## 3. Uncertain or still being established
 
 - Why the `www.moonsighting.com/time_json.php` endpoint returns 500 while `praytable.php` works.
