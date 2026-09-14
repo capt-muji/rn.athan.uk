@@ -18,7 +18,7 @@ interface UseCountdownBarResult {
   isReady: boolean;
   /** Whether remaining time is within the warning threshold (exact, flips at second resolution) */
   isWarning: boolean;
-  /** Whether the bar can be worked out: a readable row before next, and next itself (R14) */
+  /** Whether the bar can be worked out: next, and the row just above it with a time, on a list not waiting (R14) */
   isAvailable: boolean;
 }
 
