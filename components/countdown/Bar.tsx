@@ -12,7 +12,7 @@ import Animated, {
 
 import { TIP_OVAL_WIDTH, tipLeftForProgress } from '@/components/countdown/tipGeometry';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
-import { useCountdownBar } from '@/hooks/useCountdownBar';
+import { getBarOpacity, useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
@@ -54,6 +54,7 @@ interface Props {
  * - Pulsing tip indicator at the leading edge
  * - Respects reduced motion preferences
  * - Hides when overlay is active
+ * - Hides, keeping its space, while it cannot be worked out (R14)
  *
  * Preview mode: Pass `previewColor` and/or `previewProgress` to render a static
  * preview that bypasses the countdown hook and color atom.
@@ -65,6 +66,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     progress: elapsedProgress,
     isReady,
     isWarning: countdownWarning,
+    isAvailable,
   } = useCountdownBar(type ?? ScheduleType.Standard);
   const reducedMotion = useReducedMotion();
 
@@ -127,8 +129,8 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     prevWarning.current = isWarning;
   }, [progress, isWarning, reducedMotion, widthValue, colorValue, resync]);
 
-  // Overlay visibility is derived; reduced motion snaps it
-  const wrapperOpacityStyle = useDerivedOpacity(isPreviewMode || !overlayIsOn ? 1 : 0, {
+  // Overlay and availability visibility are derived; reduced motion snaps them
+  const wrapperOpacityStyle = useDerivedOpacity(getBarOpacity(isPreviewMode, overlayIsOn, isAvailable), {
     duration: reducedMotion ? 0 : ANIMATION.duration,
     easing: Easing.linear,
   });
@@ -163,7 +165,10 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       accessibilityRole='progressbar'
       accessibilityLabel={`Prayer countdown: ${Math.round(progress)} percent remaining`}
       accessibilityValue={{ min: 0, max: 100, now: progress }}
-      accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}>
+      accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}
+      // Hidden because it cannot be worked out, so no percentage may be announced for it
+      accessibilityElementsHidden={!isPreviewMode && !isAvailable}
+      importantForAccessibility={!isPreviewMode && !isAvailable ? 'no-hide-descendants' : 'auto'}>
       {/* Track (background trough) */}
       <Animated.View style={styles.track}>
         {/* Progress bar */}

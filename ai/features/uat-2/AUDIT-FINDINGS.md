@@ -3106,7 +3106,7 @@ Tests: 117 passed, 117 total
 
 | Test file | What it actually does | Verdict |
 | --- | --- | --- |
-| `useCountdown.test.ts` | **Worse than recorded.** `:12` mocks `@/shared/time` and `:32` requires `getSecondsBetween` back out of its own mock, so it asserts on the mock. Running it alone leaves `shared/time.ts` at **0% coverage**. It never imports the hook either. Four tests that can never fail for any production reason; the real helper is genuinely covered at `shared/__tests__/time.test.ts:461-476` with the same three cases. | Vacuous and redundant |
+| `useCountdown.test.ts` | **Worse than recorded.** `:12` mocks `@/shared/time` and `:32` requires `getSecondsBetween` back out of its own mock, so it asserts on the mock. Running it alone leaves `shared/time.ts` at **0% coverage**. It never imports the hook either. Four tests that can never fail for any production reason; the real helper is genuinely covered at `shared/__tests__/time.test.ts:461-476` with the same three cases. | Vacuous and redundant. Replaced in 1.27.5 by tests of the hook itself |
 | `useCountdownBar.test.ts` | Re-implements at `:46-60` under a comment saying it "mirrors the progress calculation from useCountdownBar". It mirrors a version that no longer exists: the hook now computes nothing and reads `getBarProgressAtom` at `:45`. It still mocks prev-prayer atoms the hook no longer imports. The real math is covered at `stores/__tests__/countdown.test.ts:702-708`. | Stale mirror |
 | `usePrayerSequence.test.ts` | Re-implements at `:50-66`, a faithful copy of the hook's `:68-84`. **`nextPrayerIndex`, `isPassed` and `isNext` appear in no other test file in the repository.** | The only real hole |
 | `useAnimation.test.ts` | Asserts `typeof === 'function'` for eight exports, with a docblock at `:3-13` stating plainly that worklets cannot run in Node. | Honestly labelled |
@@ -4596,6 +4596,166 @@ nobody remembered. Do not store the dashes — `--:--` is a rendering of absence
 set. Anything further — a banner, an icon, a colour, an explanation — is a new visual decision
 and needs asking.
 
+### CLOSED in session 3, 1.27.0, `feat/audit-71-unreadable-dashes`
+
+**What the user sees and hears now**
+
+| Situation | Screen | Alarms |
+| --- | --- | --- |
+| One unreadable time | That row shows `--:--`; every other row keeps its time (R1 to R3) | Nothing armed for that row; everything else as before |
+| Every time of a day unreadable, or the day missing from the payload | The day is still listed, every Standard and Extras row `--:--` (R4, R7) | Nothing armed that day; the days around it as before |
+| A time another row is worked out from | Suhoor (Fajr), Duha (Sunrise), Friday Istijaba (Magrib), and Midnight and Last Third (the day before's Magrib, the day's own Fajr) show `--:--` with it. No Magrib is borrowed any more (finding 72) | The same rows arm nothing |
+| The highlight and the countdown | Pass straight over an unreadable row (R9). The row is dim while a readable row above it is still to come and lights up once those have passed (R10). A list with no readable row left has no highlight (R11), and its countdown shows `--:--` under `...` until the list moves on at 00:00 (owner rulings 2026-09-14) | |
+| A day with no readable time | Comes on screen at 00:00 London at its own start, the day before waiting after its last readable row with no active row, and stays until 00:00 at its end (R8, owner ruling 2026-09-14; 1.27.0 brought it on when the day before handed over) | |
+| A tap | A passed unreadable row opens its next occurrence; an upcoming one shows `--:--` in the row and in the countdown (R12) | |
+| The bell | On an unreadable occurrence it draws the Off glyph at the row's own colour. A tap opens the alert sheet with a short message instead of options (owner rulings 2026-09-14, replacing the 25% opacity and the unpressable bell first built). The setting itself is never changed (R5) | Resumes on the next readable day; an alarm armed before the data changed is cancelled (R6) |
+| The countdown bar | Hidden, keeping its space, when there is no readable row to measure from, or while the list on screen has no readable time left to come (R14); the "ago" badge hides with it then | |
+| 1 January without 31 December | Shows normally; only Midnight and Last Third are `--:--`, and the bars stay hidden until Fajr and Suhoor (R13, R14) | 31 December is asked for alone with `date=`, never holding up the launch. When it arrives the lists are rebuilt and the notification gate reopens |
+
+**The three live defects the brief named are gone**
+- One unreadable field no longer drops its day: validation marks the field instead.
+- The next day is no longer presented as today, because every day is listed. Today's `uat-2`, built with the same
+  mock on the 3T, showed Saturday 26 September's list on Friday 25 September (a day missing from the mock) and the
+  error screen on the other four broken days.
+- An unreadable today no longer starts this finding's re-fetch loop. `syncFetchBeforeWipe.test.ts`, "stores a day that
+  is still unreadable at the source ... and never downloads again for it", downloads once and never again. A day
+  missing from inside a stored year is not downloaded again either, while a year that stops short still is.
+
+**Design, reviewed on paper before any code:** `ai/features/uat-2/DASHES-DESIGN.md`.
+- `Prayer` is `ReadablePrayer | UnreadablePrayer`, and stored times are `string | null`, so the compiler found every
+  consumer. `--:--` is only ever drawn, never stored.
+- The rules live in one pure module, `shared/sequence.ts`, which the stores, the hooks and the iOS widget builder share.
+- Sequences are built in list order, which equals time order for every readable London row.
+
+**Independent reviews, every finding fixed or put to the owner**
+
+| Review | What it found | Outcome |
+| --- | --- | --- |
+| Design, before code | A filter that could leave a one-row list; a boundary worked out afresh that no tick could ever see as crossed; a missing day re-downloading every launch and failing offline; a single-day answer that could file another day's times; a lost week unmounting the countdown; a still-readable yesterday rescuing a reformatted payload | Built into the design |
+| Data path | A year cut short never downloaded again; the same gap in December still reaching the error screen, whose Refresh wipes; the notification gate stamped before today's download landed; a stalled 31 December request holding the launch; a stored record missing a key crashing | Fixed and reviewed again |
+| Screen state | The countdown stuck at 1s for hours after a data write just before a prayer; the pill sliding while it faded | Fixed; the race needed a second round for a held day's 00:00 |
+| Widgets and cross-cutting | A held day's date printed under the next day's time; widget entries under five minutes apart; stale comments | Fixed |
+
+**Proof in code**
+
+| Check | Result |
+| --- | --- |
+| Tests | 3,420 in 57 suites, green in London and under New York, Tokyo, Kiritimati and Pago Pago (`yarn test:tz`) |
+| Coverage | No uncovered line or branch inside any line this session changed. Every changed file is at 100% except four whose gaps are in functions this session did not touch (`stores/countdown.ts`, `stores/notifications.ts`, `stores/sync.ts`, `device/notifications.ts`), left to session 4 |
+| Mutation (`mutate.py`, retargeted to the new code, each mutant against its related tests) | 60 of 61 killed at the final code; the survivor is the no-op control that must survive |
+| Old against new, every boundary of London 2026 and a high-latitude mock at four offsets, both schedules, alarms and widget pushes | No change for readable data. The only differences are the removed substitution (1 January's night rows), yesterday's post-midnight Isha no longer placed 24 hours early (gap map L3), and days with no data now shown as `--:--` |
+| Red before green | Every new test was run against the code before its change |
+
+**Proven on the OnePlus 3T**
+
+Two local mock builds with the same fixed-date mock (`~/athan-device-sweep/session3/mocks-dashes.ts`): today's `uat-2`
+(466b568) as the control, then this branch. Clock driven per scene, fresh cold launch each time, rows read from
+Maestro's live hierarchy. Alerts Silent only.
+
+| Scene (2026, BST) | Control | This branch |
+| --- | --- | --- |
+| Mon 21 Sep 11:00 and 14:00, Asr unreadable | Error screen | Asr `--:--`; Dhuhr next, then Magrib; only Asr's bell disabled |
+| Wed 23 Sep 06:00, Fajr and Magrib unreadable | Error screen | Both `--:--`, Sunrise next; Extras Midnight, Last Third and Suhoor `--:--`, Duha next |
+| Thu 24 Sep 03:00 | Readable | Standard readable; Extras Midnight and Last Third `--:--` (Wednesday's Magrib), Suhoor next |
+| Thu 24 Sep 21:00, after Isha | Saturday's list | Friday 25 on screen, every row `--:--`, countdown to Saturday's Fajr |
+| Fri 25 Sep 10:00, missing from the mock | **Saturday's times under Friday**, night rows 00:01 and 01:44 from Saturday's own Magrib | Every Standard and Extras row `--:--`, Istijaba included; countdown to the next readable prayer |
+| Sat 26 Sep 03:00 | Readable | Extras Midnight and Last Third `--:--` (Friday missing) |
+| Sun 27 Sep 19:30, Isha unreadable | Error screen | The list has moved on to Monday 28 |
+| Tue 29 Sep 10:00, every field unreadable | Error screen | Every row `--:--` |
+
+- **00:00 with the app in front:** at Friday 23:59:55 the list still showed Friday's `--:--` rows; at 00:00:10 it showed
+  Saturday 26 with its times, in the same process with no relaunch.
+- **Taps:** the passed unreadable Fajr on Wednesday opened Thursday's 05:08; the upcoming unreadable Magrib showed
+  `--:--` in the row and the countdown; Friday's Dhuhr and Suhoor opened Saturday's 12:53 and 04:51; Monday's Asr opened
+  Tuesday's 16:08.
+- **Alarms:** with Dhuhr, Asr and Magrib Silent, Monday 21 Dhuhr was armed for 1789991640000 and fired at
+  12:54:00.001 as `athan_standard_dhuhr_2026-09-21`; Magrib for 1790013600000 fired at 19:00:00.007. Monday's unreadable
+  Asr was never armed and nothing fired between them. After Monday's cold launch Tuesday's Dhuhr, Asr and Magrib were
+  armed at their exact epochs, so the Asr preference survived the unreadable day.
+- **Not visible to the hierarchy:** the bar and the highlight have no node, so they are proven by the unit tests and the
+  screenshots, not the tree. The "ago" badge, which reads the same previous-prayer lookup as the bar, was absent in
+  exactly the scenes where the bar has nothing to measure from.
+- **Re-verified after the review-fix rounds**, on a build whose app code is `eb370a2`: Monday 14:00, Wednesday 06:00
+  and Friday 10:00 matched the earlier capture on both pages, apart from a one-minute read-timing difference in
+  Wednesday 06:00's countdown and ago badge; the 00:00 hand-over again moved Friday to Saturday in
+  the same process; with Dhuhr and Asr Silent, a launch at Sunday 21:00 armed only Monday's Dhuhr (1789991640000),
+  which fired at 12:54:00.000 as `athan_standard_dhuhr_2026-09-21`, and Monday's unreadable Asr stayed unarmed.
+- **What the device did not show:** the later commits change only the resume re-arm after a sync that stores days
+  and the retry of a stalled 31 December request, plus comments. Keeping usable days on screen after a failed
+  refresh is in the tested build, but this mock cannot trigger it. The mock answers at once and fails only past its
+  last day, where nothing usable is stored, so the 31 December retry and the kept-days path cannot be reached on it.
+  The resume re-arm could be, by moving the clock back before a resume, but was not run. All three are proven by the
+  unit tests.
+- **The phone was left as the owner had it:** their own 1.26.35 build (byte-identical APK), their data restored from
+  the backup taken before the session, automatic time back on, and their 2026-09-14 04:59:00 Fajr alarm armed again.
+
+**Defaults the owner has to rule on, with the R15 screenshots**
+
+The brief said to ask these. The owner asked for the session to run on its own, so each was answered from the owner's
+recorded words and is listed in `DASHES-DESIGN.md` §12 and §13:
+- R8: a fully unreadable day arrives when the day before hands over and leaves at 00:00 London. On Extras that is
+  about 40 hours, because Extras hands over after Duha.
+- A day whose last row is unreadable moves on after its last readable row, the same rule as every other day and
+  as session 7's.
+- R11: every row of a fully unreadable day is bright. The countdown first counted to the next readable prayer;
+  the owner's ruling below replaced that.
+- R13: a refusal and a failed fetch are handled the same, and retried on the next sync.
+- R14: the bar is hidden. **Ruled by the owner on 2026-09-14: keep it hidden (option A).**
+- R11, the countdown: **ruled by the owner on 2026-09-14.** While a fully unreadable day is on screen the countdown
+  shows `--:--` under `...` (1.27.9; 1.27.1 named the next prayer), not a count to the next day's first prayer;
+  at that day's 00:00 it shows the next day's real countdown. The 00:00 moment is the existing boundary the
+  ticker already checks, so no timer is added.
+- R5: first built as the saved glyph at 25% opacity. **Ruled by the owner on 2026-09-14:** the Off glyph at the
+  row's normal colour, bright when passed or selected and dim when upcoming. A tap buzzes and opens the alert sheet
+  with a short message instead of options. Preferences are per prayer, so while it shows, tomorrow's alert for that
+  prayer cannot be changed.
+- New, from the reviews: a field the provider renames arrives unreadable on every day, and the payload is still
+  stored (only a payload with nothing readable is refused), so that prayer would show `--:--` all year and arm
+  nothing. Refusing a payload in which one field is unreadable on every day would keep the old cache instead.
+- New: the iOS medium widget shows the next readable prayer on a held day rather than a list of `--:--` rows, because
+  its layout draws a list only around an active row. Widgets are flagged off.
+- New: a Friday handing over to a fully unreadable Saturday leaves the fading pill one row below Saturday's shorter
+  list for its 200 ms fade.
+- New: on 31 December evening with next year unpublished, the list shows 1 January as `--:--` rather than an empty list.
+- New, from the device: a tap on a disabled bell reached its row and opened that prayer's overlay. Superseded in 1.27.1:
+  the bell opens the alert sheet with its message. In the overlay of a passed unreadable row, the bell belongs to the
+  next readable occurrence and opens the usual options.
+- **1.27.1, owner rulings of 2026-09-14:**
+  - A fully unreadable day comes on screen at its own 00:00, not at the day before's last row.
+  - The countdown shows `--:--` while the list on screen has no readable time left to come, with the bar
+    and the "ago" badge hidden.
+  - The bell is drawn at the row's colour and opens the explanation sheet.
+  - From the design review: every sequence write settles the cached boundary, the previous row keeps its
+    whole list day, and the countdown no longer freezes at 1s after the last readable prayer in storage.
+  - 1.27.2 and 1.27.3 answer two more Code Reviewer rounds.
+  - 1.27.4 records round 2 in the queue index, the brief and finding 71, and makes two comments exact.
+  - 1.27.5 was found by the owner, watching the 3T capture live. After the last readable prayer in the data, the
+    whole countdown block vanished and the date and list moved up the page. It happened because `useCountdown`
+    was ready only while a readable prayer was ahead. It is now ready whenever a list is on screen, so `--:--`
+    keeps its place.
+  - 1.27.6 and 1.27.7 tighten the countdown and bar hook tests so a read of the other schedule fails.
+  - 1.27.8, owner ruling of 2026-09-14: the countdown bar and the "ago" badge measure only from the row just
+    above next on its list, or for a first row the list before's last row (`findPreviousRow`). When that row
+    is `--:--`, both hide. 1.27.0 used the latest readable row before next, which drew a longer bar across a
+    dashed prayer, as before Dhuhr on a day whose only readable prayer is Dhuhr. A sweep of the whole 2024
+    London year by the reviewer found no difference on fully readable data.
+  - 1.27.9, owner ruling of 2026-09-14: a `--:--` countdown with no overlay open is named `...` instead of a
+    prayer, on both schedules. The overlay still names the prayer it shows. The fallback to the next list day's
+    first row (`getFirstRowAfterDisplay`, 1.27.1) is gone, since no name is needed.
+  - 1.27.10 and 1.27.11 answer the reviews of those two:
+    - an overlay on one page leaves the other page's `...` alone
+    - the waiting name has a screen-reader label
+    - `findPreviousRow` returns nothing when the row above next is missing rather than taking one further up
+  - 1.27.12 to 1.27.14 bring finding 71, the queue, the brief, a store comment and a log message in line
+    with those rules.
+  - Verification:
+    - 3,598 tests pass.
+    - Every changed line in hooks, stores and shared is covered.
+    - Every new or changed mutant is killed. Two of them hang the ticker, and the harness counts a timeout as
+      killed.
+    - The round-2 screens and videos were captured on the 3T from a mock build
+      ([approval page](https://claude.ai/code/artifact/0120e640-db3d-47d5-b456-a94021b86a86)).
+
 ---
 
 # Session 1 of the queue: device verification sweep, 2026-09-13
@@ -4755,6 +4915,11 @@ substituted values as expected behaviour.
 **Queued into session 3** (`ai/prompts/unavailable-times-dashes.md`): when the day before is not
 stored, Midnight and Last Third show `--:--` and arm nothing, and gap-map item 1 replaces those two
 tests.
+
+**CLOSED in session 3, 1.27.0.** `getNightTimesForDay` returns no night unless the day before is stored and both its
+Magrib and the day's Fajr are readable, and those two rows then show `--:--` and arm nothing. Gap-map items 1 and 2
+replace the tests that asserted the borrowed values, on 1 January and on 29 March, where the device had fired 21
+minutes late. The old-against-new comparison over London 2026 found this the only change to a night row.
 
 ---
 

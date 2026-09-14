@@ -29,6 +29,19 @@ const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
   { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
 ];
 
+// Nothing the user can do fixes a time the timetable did not give, so this explains and reassures without asking
+// for an action: the saved setting returns by itself on the next occurrence with a readable time
+// The hard lines are all within about 12dp of each other, so the centred block reads as an even paragraph, and at
+// the default font size (and up to Android's Large) each fits a 360dp phone inside the padding below without
+// wrapping a second time
+const UNAVAILABLE_MESSAGE = [
+  "This prayer's time isn't available",
+  'right now, so no alert will go off.',
+  '',
+  'Your alert setting is kept and will',
+  'return once a time is available.',
+].join('\n');
+
 interface AlertSheetBodyRef {
   /** Values snapshotted at mount — the change-detection baseline for the deferred commit */
   getOriginalState: () => AlertMenuState;
@@ -76,7 +89,13 @@ export default function BottomSheetAlert() {
       scrollable={false}
       onDismiss={handleDismiss}
       perfName='sheet_alert'>
-      {sheetState && (
+      {sheetState?.isUnavailable && (
+        // No body is mounted, so its ref stays empty and the dismiss commits nothing
+        <View style={styles.unavailable}>
+          <Text style={styles.unavailableText}>{UNAVAILABLE_MESSAGE}</Text>
+        </View>
+      )}
+      {sheetState && !sheetState.isUnavailable && (
         <AlertSheetBody
           key={`${sheetState.type}:${sheetState.index}`}
           ref={bodyRef}
@@ -283,5 +302,23 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     color: 'rgb(146, 184, 228)',
     width: 100,
+  },
+  // Centred both ways in a box about as tall as the options it stands in for. The short lines keep the block
+  // narrow and well inside the title's edge; the padding only guarantees that on the narrowest phones
+  unavailable: {
+    minHeight: 220,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: SPACING.xxxl,
+    paddingVertical: SPACING.xxxl,
+    marginBottom: SPACING.md,
+  },
+  // The header subtitle's own dim colour and size
+  unavailableText: {
+    fontSize: TEXT.sizeDetail,
+    fontFamily: TEXT.family.regular,
+    color: 'rgba(86, 134, 189, 0.725)',
+    textAlign: 'center',
+    lineHeight: 22,
   },
 });

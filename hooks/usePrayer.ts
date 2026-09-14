@@ -8,8 +8,57 @@
 import { useAtomValue } from 'jotai';
 
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { ScheduleType } from '@/shared/types';
+import { findNextOccurrence } from '@/shared/sequence';
+import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
 import { englishWidthExtraAtom, englishWidthStandardAtom } from '@/stores/ui';
+
+/** What a row needs to decide which occurrence it shows */
+interface ShownRow {
+  isPassed: boolean;
+  time: string | null;
+}
+
+/**
+ * The occurrence a row stands for: itself, or, for the overlay on a passed row, the same prayer on the
+ * next list day
+ *
+ * Found by list day, so a next occurrence whose time could not be read still opens, and draws as
+ * unreadable (R12). With no later list day in the sequence (Istijaba is weekly) the row stands for itself.
+ */
+export const resolveOccurrence = (prayers: Prayer[], row: Prayer, isPassed: boolean, isOverlay: boolean): Prayer =>
+  isPassed && isOverlay ? (findNextOccurrence(prayers, row) ?? row) : row;
+
+/**
+ * The time a row shows: its next occurrence's while the overlay has it selected and it has passed, its
+ * own otherwise. Null when that occurrence has no readable time
+ *
+ * The one choice behind both the time drawn and whether the bell can be used, so the two cannot describe
+ * different occurrences.
+ *
+ * @param row The row as usePrayer returns it
+ * @param nextOccurrence The same row from usePrayer with isOverlay
+ */
+export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextOccurrence: ShownRow): string | null =>
+  isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
+
+/**
+ * Whether the bell is unavailable: the occurrence on screen has no readable time, so nothing could ever
+ * fire for it, and a press explains that instead of offering options (R5). The saved preference is left
+ * as it is, so it applies again to readable days.
+ */
+export const isShownOccurrenceUnavailable = (
+  isSelectedForOverlay: boolean,
+  row: ShownRow,
+  nextOccurrence: ShownRow
+): boolean => getShownTime(isSelectedForOverlay, row, nextOccurrence) === null;
+
+/**
+ * The alert a bell draws: Off while its shown occurrence has no readable time, whatever is saved, since
+ * nothing can fire for it. Only the glyph says so; the bell keeps the row's own colour like any other, and
+ * the saved preference is left as it is (R5)
+ */
+export const getShownAlert = (isUnavailable: boolean, saved: AlertType): AlertType =>
+  isUnavailable ? AlertType.Off : saved;
 
 /**
  * Hook for accessing individual prayer data with derived status
@@ -55,12 +104,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
 
   const { isPassed, isNext } = prayer;
 
-  // Overlay: If prayer passed, show next occurrence (tomorrow's prayer)
-  // 3-day buffer contains all prayers sorted, so find next matching prayer name
-  // Fallback to original prayer if no future occurrence exists (e.g., weekly prayers like Istijaba)
-  const nextOccurrence =
-    isPassed && isOverlay ? prayers.find((p) => p.english === prayer.english && p.datetime > prayer.datetime) : null;
-  const displayPrayer = nextOccurrence ?? prayer;
+  const displayPrayer = resolveOccurrence(prayers, prayer, isPassed, isOverlay);
 
   return {
     ...displayPrayer,

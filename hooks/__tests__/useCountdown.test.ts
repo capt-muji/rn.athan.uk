@@ -1,74 +1,78 @@
 /**
  * Unit tests for hooks/useCountdown.ts
  *
- * Tests countdown calculation logic.
- * Note: React hook behavior requires @testing-library/react-hooks.
+ * The hook only reads atoms, so it is called directly with useAtomValue answering from a map. The file used to
+ * test a mocked getSecondsBetween instead, which proved nothing about the hook; Countdown.tsx renders nothing while
+ * the hook is not ready, so whether it is ready decides whether the page keeps its layout.
  */
 
-// =============================================================================
-// MOCK SETUP
-// =============================================================================
+import { ScheduleType } from '@/shared/types';
 
-jest.mock('@/shared/time', () => ({
-  createInstant: jest.fn(() => new Date('2026-01-27T10:00:00')),
-  getSecondsBetween: jest.fn((from: Date, to: Date) => Math.floor((to.getTime() - from.getTime()) / 1000)),
-}));
+// Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
+const mockAtomValues = new Map<string, unknown>();
 
+// An atom no test set throws, so a hook reading the other schedule's atom fails instead of reading undefined
 jest.mock('jotai', () => ({
-  useAtomValue: jest.fn(),
+  useAtomValue: (atom: string) => {
+    if (!mockAtomValues.has(atom)) throw new Error(`Unexpected atom read: ${atom}`);
+    return mockAtomValues.get(atom);
+  },
 }));
 
 jest.mock('@/stores/schedule', () => ({
-  standardNextPrayerAtom: Symbol('standardNextPrayerAtom'),
-  extraNextPrayerAtom: Symbol('extraNextPrayerAtom'),
+  standardNextPrayerAtom: 'standardNextPrayerAtom',
+  extraNextPrayerAtom: 'extraNextPrayerAtom',
+  standardDisplayDateAtom: 'standardDisplayDateAtom',
+  extraDisplayDateAtom: 'extraDisplayDateAtom',
 }));
 
-// =============================================================================
-// CALCULATION LOGIC TESTS
-// =============================================================================
+jest.mock('@/stores/countdown', () => ({
+  getCountdownNameAtom: (type: string) => `${type}CountdownNameAtom`,
+  getCountdownDisplayAtom: (type: string) => `${type}CountdownDisplayAtom`,
+}));
 
-describe('countdown calculation logic', () => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { getSecondsBetween } = require('@/shared/time');
+import { useCountdown } from '../useCountdown';
 
-  beforeEach(() => {
-    jest.clearAllMocks();
+/**
+ * What the stores hold for one schedule. `next` is not read by the hook any more; it is set so that the hook
+ * before 1.27.5, which was ready only while a next prayer existed, can still run these tests and fail
+ */
+const given = (
+  type: ScheduleType,
+  {
+    next,
+    displayDate,
+    name,
+    display,
+  }: { next: object | null; displayDate: string | null; name: string; display: string }
+) => {
+  mockAtomValues.set(`${type}NextPrayerAtom`, next);
+  mockAtomValues.set(`${type}DisplayDateAtom`, displayDate);
+  mockAtomValues.set(`${type}CountdownNameAtom`, name);
+  mockAtomValues.set(`${type}CountdownDisplayAtom`, display);
+};
+
+beforeEach(() => mockAtomValues.clear());
+
+describe('useCountdown', () => {
+  it.each([
+    [ScheduleType.Standard, 'Asr', '2h 5m'],
+    [ScheduleType.Extra, 'Suhoor', '6h 12m'],
+  ])('reads the %s schedule’s own name and time', (type, name, display) => {
+    given(type, { next: { english: name }, displayDate: '2026-10-17', name, display });
+
+    expect(useCountdown(type)).toEqual({ displayTime: display, prayerName: name, isReady: true });
   });
 
-  it('calculates positive seconds for future prayer', () => {
-    const now = new Date('2026-01-27T10:00:00');
-    const prayerTime = new Date('2026-01-27T12:30:00');
+  it('stays ready after the last readable prayer in storage, so --:-- keeps its place and the page does not move', () => {
+    given(ScheduleType.Standard, { next: null, displayDate: '2026-12-31', name: 'Fajr', display: '--:--' });
 
-    const seconds = getSecondsBetween(now, prayerTime);
-
-    expect(seconds).toBe(9000); // 2.5 hours
+    expect(useCountdown(ScheduleType.Standard)).toEqual({ displayTime: '--:--', prayerName: 'Fajr', isReady: true });
   });
 
-  it('calculates negative seconds for past prayer (clamped to 0 in hook)', () => {
-    const now = new Date('2026-01-27T15:00:00');
-    const prayerTime = new Date('2026-01-27T12:30:00');
+  it.each([ScheduleType.Standard, ScheduleType.Extra])('is not ready for %s before any list is on screen', (type) => {
+    given(type, { next: null, displayDate: null, name: 'Fajr', display: '0s' });
 
-    const seconds = getSecondsBetween(now, prayerTime);
-    const clampedSeconds = Math.max(0, seconds);
-
-    expect(seconds).toBe(-9000);
-    expect(clampedSeconds).toBe(0);
-  });
-
-  it('returns 0 for exact prayer time', () => {
-    const time = new Date('2026-01-27T12:30:00');
-
-    const seconds = getSecondsBetween(time, time);
-
-    expect(seconds).toBe(0);
-  });
-
-  it('handles overnight calculations', () => {
-    const now = new Date('2026-01-27T23:00:00');
-    const prayerTime = new Date('2026-01-28T06:00:00');
-
-    const seconds = getSecondsBetween(now, prayerTime);
-
-    expect(seconds).toBe(25200); // 7 hours
+    expect(useCountdown(type).isReady).toBe(false);
   });
 });

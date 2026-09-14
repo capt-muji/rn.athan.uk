@@ -22,10 +22,10 @@ jest.mock('@/stores/version', () => ({
   cacheSchemaChanged: () => mockCacheSchemaChanged(),
 }));
 
-const mockGetPrayerByDate = jest.fn();
+const mockGetPrayerByDateString = jest.fn();
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDate: (date: Date) => mockGetPrayerByDate(date),
+  getPrayerByDateString: (date: string) => mockGetPrayerByDateString(date),
 }));
 
 const mockSetSequence = jest.fn();
@@ -60,7 +60,13 @@ const cachedDay = { date: '2026-09-12', fajr: '04:45', isha: '20:30' };
 
 beforeEach(() => {
   jest.clearAllMocks();
-  mockGetPrayerByDate.mockReturnValue(cachedDay);
+  // Cleared mocks keep their implementations, so a sequence build made to fail must not leak into later cases
+  mockSetSequence.mockReset();
+  mockGetPrayerByDateString.mockReturnValue(cachedDay);
+});
+
+afterEach(() => {
+  jest.useRealTimers();
 });
 
 // =============================================================================
@@ -90,6 +96,8 @@ describe('bootstrapFromCache upgrade guard', () => {
     expect(mod.didBootstrapFromCache).toBe(false);
     expect(mockSetSequence).not.toHaveBeenCalled();
     expect(mockStartCountdowns).not.toHaveBeenCalled();
+    // Every day is stored here, so only the guard can have refused
+    expect(mockGetPrayerByDateString).not.toHaveBeenCalled();
   });
 
   it('skips hydration on a fresh install, where the marker is absent', () => {
@@ -97,7 +105,7 @@ describe('bootstrapFromCache upgrade guard', () => {
     // install has no stored version either - both halves of the guard hold
     mockWasAppUpgraded.mockReturnValue(true);
     mockCacheSchemaChanged.mockReturnValue(true);
-    mockGetPrayerByDate.mockReturnValue(null);
+    mockGetPrayerByDateString.mockReturnValue(null);
 
     const mod = requireFreshBootstrap();
 
@@ -133,10 +141,10 @@ describe('bootstrapFromCache upgrade guard', () => {
 // =============================================================================
 
 describe('bootstrapFromCache cache miss', () => {
-  it('skips hydration when today has no cached day', () => {
+  it('skips hydration when none of the days the sequences are built from is cached', () => {
     mockWasAppUpgraded.mockReturnValue(false);
     mockCacheSchemaChanged.mockReturnValue(false);
-    mockGetPrayerByDate.mockReturnValue(null);
+    mockGetPrayerByDateString.mockReturnValue(null);
 
     const mod = requireFreshBootstrap();
 
@@ -156,5 +164,73 @@ describe('bootstrapFromCache cache miss', () => {
 
     expect(mod.didBootstrapFromCache).toBe(false);
     expect(mockStartCountdowns).not.toHaveBeenCalled();
+  });
+});
+
+// =============================================================================
+// DAYS IT HYDRATES FROM (R7)
+// =============================================================================
+
+describe('bootstrapFromCache days it hydrates from', () => {
+  // 00:30 BST on 14 September in London, still 13 September in UTC
+  const LATE_BST = new Date('2026-09-13T23:30:00Z');
+
+  /** Stores only the given dates */
+  const storing = (dates: string[]) =>
+    mockGetPrayerByDateString.mockImplementation((date: string) => (dates.includes(date) ? cachedDay : null));
+
+  const askedDates = () => mockGetPrayerByDateString.mock.calls.map(([date]) => date);
+
+  beforeEach(() => {
+    mockWasAppUpgraded.mockReturnValue(false);
+    mockCacheSchemaChanged.mockReturnValue(false);
+  });
+
+  it("asks for London's today and the two days after it, whatever the machine's timezone", () => {
+    jest.useFakeTimers({ now: LATE_BST });
+    storing([]);
+
+    requireFreshBootstrap();
+
+    expect(askedDates()).toEqual(['2026-09-14', '2026-09-15', '2026-09-16']);
+  });
+
+  it.each([
+    { stored: 'tomorrow', dates: ['2026-09-15'] },
+    { stored: 'the day after tomorrow', dates: ['2026-09-16'] },
+  ])('hydrates a launch with today missing when only $stored is cached', ({ dates }) => {
+    jest.useFakeTimers({ now: LATE_BST });
+    storing(dates);
+
+    const mod = requireFreshBootstrap();
+
+    expect(mod.didBootstrapFromCache).toBe(true);
+    expect(mockSetSequence).toHaveBeenCalledWith(ScheduleType.Standard, LATE_BST);
+    expect(mockSetSequence).toHaveBeenCalledWith(ScheduleType.Extra, LATE_BST);
+    expect(mockStartCountdowns).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    { stored: 'yesterday', dates: ['2026-09-13'] },
+    { stored: 'the third day after today', dates: ['2026-09-17'] },
+  ])('keeps the spinner when only $stored is cached', ({ dates }) => {
+    jest.useFakeTimers({ now: LATE_BST });
+    storing(dates);
+
+    const mod = requireFreshBootstrap();
+
+    expect(mod.didBootstrapFromCache).toBe(false);
+    expect(mockSetSequence).not.toHaveBeenCalled();
+    expect(mockStartCountdowns).not.toHaveBeenCalled();
+  });
+
+  it('runs the days on into next year from 31 December', () => {
+    jest.useFakeTimers({ now: new Date('2026-12-31T12:00:00Z') });
+    storing(['2027-01-02']);
+
+    const mod = requireFreshBootstrap();
+
+    expect(askedDates()).toEqual(['2026-12-31', '2027-01-01', '2027-01-02']);
+    expect(mod.didBootstrapFromCache).toBe(true);
   });
 });

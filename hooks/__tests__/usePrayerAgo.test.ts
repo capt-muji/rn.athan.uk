@@ -11,7 +11,7 @@
  * missing-prayer path, and the guard around a throwing store.
  */
 
-import { type Prayer, ScheduleType } from '@/shared/types';
+import { type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
 
 // =============================================================================
 // MOCK SETUP
@@ -22,6 +22,10 @@ import { type Prayer, ScheduleType } from '@/shared/types';
 const mockFormatTimeAgo = jest.fn();
 const mockCreateInstant = jest.fn();
 const mockGetPrevPrayer = jest.fn();
+const mockIsDisplayHeld = jest.fn((_type: unknown) => false);
+const mockSetState = jest.fn();
+const mockSubscribe = jest.fn();
+const mockEffects: (() => unknown)[] = [];
 
 jest.mock('@/shared/time', () => ({
   createInstant: () => mockCreateInstant(),
@@ -30,20 +34,32 @@ jest.mock('@/shared/time', () => ({
 
 jest.mock('@/stores/schedule', () => ({
   getPrevPrayer: (type: unknown) => mockGetPrevPrayer(type),
+  isDisplayHeld: (type: unknown) => mockIsDisplayHeld(type),
 }));
 
-// The hook subscribes to the countdown atom; the pure function never touches it
 jest.mock('@/stores/countdown', () => ({
-  getCountdownAtom: jest.fn(),
+  getCountdownAtom: (type: string) => `${type}CountdownAtom`,
 }));
 
-import { calculatePrayerAgo } from '../usePrayerAgo';
+// No renderer exists in the test tree, so the hook runs against the three React hooks it uses: state from
+// its lazy initializer, callbacks as written, and effects collected to run by hand
+jest.mock('react', () => ({
+  useState: (initial: () => unknown) => [initial(), mockSetState],
+  useCallback: (callback: unknown) => callback,
+  useEffect: (effect: () => unknown) => mockEffects.push(effect),
+}));
+
+jest.mock('jotai/vanilla', () => ({
+  getDefaultStore: () => ({ sub: (atom: unknown, listener: unknown) => mockSubscribe(atom, listener) }),
+}));
+
+import { calculatePrayerAgo, usePrayerAgo } from '../usePrayerAgo';
 
 // =============================================================================
 // TEST HELPERS
 // =============================================================================
 
-const createMockPrayer = (overrides: Partial<Prayer> = {}): Prayer => ({
+const createMockPrayer = (overrides: Partial<ReadablePrayer> = {}): ReadablePrayer => ({
   type: ScheduleType.Standard,
   english: 'Fajr',
   arabic: 'الفجر',
@@ -61,6 +77,7 @@ const given = (prevPrayer: Prayer | null, now: Date) => {
 
 beforeEach(() => {
   jest.clearAllMocks();
+  mockEffects.length = 0;
   mockFormatTimeAgo.mockReturnValue('1m');
 });
 
@@ -168,6 +185,14 @@ describe('not ready', () => {
     });
   });
 
+  it('reports not ready while the list on screen waits for its day to end, though a previous prayer exists', () => {
+    given(createMockPrayer({ english: 'Suhoor' }), new Date('2026-01-27T06:15:30Z'));
+    mockIsDisplayHeld.mockReturnValueOnce(true);
+
+    expect(calculatePrayerAgo(ScheduleType.Extra)).toEqual({ prayerAgo: '', minutesElapsed: 0, isReady: false });
+    expect(mockIsDisplayHeld).toHaveBeenCalledWith(ScheduleType.Extra);
+  });
+
   it('swallows a throwing store rather than breaking the page', () => {
     mockGetPrevPrayer.mockImplementation(() => {
       throw new Error('sequence not initialised');
@@ -178,5 +203,66 @@ describe('not ready', () => {
       minutesElapsed: 0,
       isReady: false,
     });
+  });
+});
+
+// =============================================================================
+// THE HOOK
+// =============================================================================
+
+describe('usePrayerAgo', () => {
+  /** Runs the hook's effect and hands back the listener it subscribed */
+  const subscribeListener = () => {
+    for (const effect of mockEffects) effect();
+    return mockSubscribe.mock.calls[0][1] as () => void;
+  };
+
+  it('calculates its first state synchronously, before any tick', () => {
+    given(
+      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-27T12:00:00Z') }),
+      new Date('2026-01-27T12:05:00Z')
+    );
+    mockFormatTimeAgo.mockReturnValue('5m');
+
+    expect(usePrayerAgo(ScheduleType.Standard)).toEqual({
+      prayerAgo: 'Dhuhr 5m ago',
+      minutesElapsed: 5,
+      isReady: true,
+    });
+  });
+
+  it("rides its own schedule's countdown tick and unsubscribes on cleanup", () => {
+    const unsubscribe = jest.fn();
+    mockSubscribe.mockReturnValue(unsubscribe);
+    given(createMockPrayer(), new Date('2026-01-27T07:00:00Z'));
+
+    usePrayerAgo(ScheduleType.Extra);
+
+    expect(mockEffects).toHaveLength(1);
+    expect(mockEffects[0]()).toBe(unsubscribe);
+    expect(mockSubscribe).toHaveBeenCalledWith('extraCountdownAtom', expect.any(Function));
+  });
+
+  it('keeps the previous state on a tick that changes nothing, so nothing re-renders', () => {
+    given(createMockPrayer({ datetime: new Date('2026-01-27T10:00:00Z') }), new Date('2026-01-27T10:05:10Z'));
+    const initial = usePrayerAgo(ScheduleType.Standard);
+
+    mockCreateInstant.mockReturnValue(new Date('2026-01-27T10:05:40Z'));
+    subscribeListener()();
+    const update = mockSetState.mock.calls[0][0] as (previous: unknown) => unknown;
+
+    expect(update(initial)).toBe(initial);
+  });
+
+  it('hands over a new state once the text moves on', () => {
+    given(createMockPrayer({ datetime: new Date('2026-01-27T10:00:00Z') }), new Date('2026-01-27T10:05:10Z'));
+    const initial = usePrayerAgo(ScheduleType.Standard);
+
+    mockCreateInstant.mockReturnValue(new Date('2026-01-27T10:06:10Z'));
+    mockFormatTimeAgo.mockReturnValue('6m');
+    subscribeListener()();
+    const update = mockSetState.mock.calls[0][0] as (previous: unknown) => unknown;
+
+    expect(update(initial)).toEqual({ prayerAgo: 'Fajr 6m ago', minutesElapsed: 6, isReady: true });
   });
 });

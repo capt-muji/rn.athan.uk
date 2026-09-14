@@ -15,7 +15,7 @@ import { perfMark } from '@/shared/perf';
 import type { ScheduleType } from '@/shared/types';
 import { overlayAtom as overlayAtomImport } from '@/stores/atoms/overlay';
 import { armOverlayBoundary, clearOverlayBoundary, writeDisplayCountdown } from '@/stores/countdown';
-import { getNextPrayer } from '@/stores/schedule';
+import { getNextBoundary } from '@/stores/schedule';
 
 // Re-export for backward compatibility
 export { overlayAtom } from '@/stores/atoms/overlay';
@@ -29,13 +29,15 @@ const store = getDefaultStore();
 
 /**
  * Guards against the TRUE remaining milliseconds, not the displayed atom which
- * can be up to a second stale. An all-passed schedule has no boundary to straddle.
+ * can be up to a second stale. The boundary is the next prayer, or 00:00 London
+ * ending a list on screen that waits for its day to end, since the list changes day
+ * at either. A schedule with nothing still to come has no boundary to straddle.
  */
 const canOpenOverlay = (type: ScheduleType): boolean => {
-  const nextPrayer = getNextPrayer(type);
-  if (!nextPrayer) return true;
+  const boundary = getNextBoundary(type);
+  if (!boundary) return true;
 
-  return nextPrayer.datetime.getTime() - Date.now() > OVERLAY.closeWindowMs;
+  return boundary.getTime() - Date.now() > OVERLAY.closeWindowMs;
 };
 
 const openOverlay = (type: ScheduleType, index: number) => {
