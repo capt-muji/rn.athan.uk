@@ -19,6 +19,7 @@ import {
 } from '@/stores/ui';
 
 import { Sheet, SoundItem } from '../parts';
+import { displayedSoundSelection, hasSoundDraft } from './soundSheet';
 
 const ITEM_GAP = SPACING.xs;
 
@@ -36,7 +37,7 @@ export default function BottomSheetSound() {
   const hasInitialized = useRef(false);
   const translateY = useSharedValue(0);
 
-  const currentSelection = tempSoundSelection ?? selectedSound;
+  const currentSelection = displayedSoundSelection(tempSoundSelection, selectedSound);
 
   // ONE player for the whole sheet (was one per row — 32 concurrent
   // AVPlayers exhausted audio resources on older devices, G.4/G.5). The hook
@@ -136,7 +137,7 @@ export default function BottomSheetSound() {
   const handleDismiss = useCallback(async () => {
     clearAudio();
 
-    if (tempSoundSelection === null) return;
+    if (!hasSoundDraft(tempSoundSelection)) return;
 
     // The commit persists before it schedules (the scheduler reads the
     // preference mid-flight) and rolls the preference back itself if either
