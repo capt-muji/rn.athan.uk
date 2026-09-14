@@ -86,6 +86,7 @@ beforeEach(() => {
 
 const CLOSED: OverlayStore = { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Standard };
 const FAJR = 0;
+const DUHA = 3;
 const ISTIJABA = 4;
 
 describe('a tap on the row Prayer draws (real London 2026 days)', () => {
@@ -100,6 +101,16 @@ describe('a tap on the row Prayer draws (real London 2026 days)', () => {
       FAJR,
       'Fajr',
       { opened: [[ScheduleType.Standard, FAJR]], closed: 0 },
+    ],
+    [
+      'Extras on a Friday at noon, overlay closed: a tap on the passed Duha opens the overlay on it, on the Extras page',
+      ScheduleType.Extra,
+      {},
+      ['2026-09-11', '12:00'],
+      CLOSED,
+      DUHA,
+      'Duha',
+      { opened: [[ScheduleType.Extra, DUHA]], closed: 0 },
     ],
     [
       'Extras on a Friday before its Istijaba, overlay open on it: a tap closes the overlay',
