@@ -1,0 +1,1187 @@
+path	how_read	notes
+/	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/1429jmo.html	full	readnotes/reports-1429-1431.md
+/1429jmt.html	full	readnotes/reports-1429-1431.md
+/1429muh.html	full	readnotes/reports-1429-1431.md
+/1429rba.html	full	readnotes/reports-1429-1431.md
+/1429rbt.html	full	readnotes/reports-1429-1431.md
+/1429rjb.html	full	readnotes/reports-1429-1431.md
+/1429rmd.html	full	readnotes/reports-1429-1431.md
+/1429sfr.html	full	readnotes/reports-1429-1431.md
+/1429shb.html	full	readnotes/reports-1429-1431.md
+/1429shw.html	full	readnotes/reports-1429-1431.md
+/1429zhj.html	full	readnotes/reports-1429-1431.md
+/1429zqd.html	full	readnotes/reports-1429-1431.md
+/1430jmo.html	full	readnotes/reports-1429-1431.md
+/1430jmt.html	full	readnotes/reports-1429-1431.md
+/1430muh.html	full	readnotes/reports-1429-1431.md
+/1430rba.html	full	readnotes/reports-1429-1431.md
+/1430rbt.html	full	readnotes/reports-1429-1431.md
+/1430rjb.html	full	readnotes/reports-1429-1431.md
+/1430rmd.html	full	readnotes/reports-1429-1431.md
+/1430sfr.html	full	readnotes/reports-1429-1431.md
+/1430shb.html	full	readnotes/reports-1429-1431.md
+/1430shw.html	full	readnotes/reports-1429-1431.md
+/1430zhj.html	full	readnotes/reports-1429-1431.md
+/1430zqd.html	full	readnotes/reports-1429-1431.md
+/1431jmo.html	full	readnotes/reports-1429-1431.md
+/1431jmt.html	full	readnotes/reports-1429-1431.md
+/1431muh.html	full	readnotes/reports-1429-1431.md
+/1431rba.html	full	readnotes/reports-1429-1431.md
+/1431rbt.html	full	readnotes/reports-1429-1431.md
+/1431rjb.html	full	readnotes/reports-1429-1431.md
+/1431rmd.html	full	readnotes/reports-1429-1431.md
+/1431sfr.html	full	readnotes/reports-1429-1431.md
+/1431shb.html	full	readnotes/reports-1429-1431.md
+/1431shw.html	full	readnotes/reports-1429-1431.md
+/1431zhj.html	full	readnotes/reports-1429-1431.md
+/1431zqd.html	full	readnotes/reports-1429-1431.md
+/1435jmo.html	full	readnotes/reports-1435-1438.md
+/1435jmt.html	full	readnotes/reports-1435-1438.md
+/1435muh.html	full	readnotes/reports-1435-1438.md
+/1435rba.html	full	readnotes/reports-1435-1438.md
+/1435rbt.html	full	readnotes/reports-1435-1438.md
+/1435rjb.html	full	readnotes/reports-1435-1438.md
+/1435rmd.html	full	readnotes/reports-1435-1438.md
+/1435sfr.html	full	readnotes/reports-1435-1438.md
+/1435shb.html	full	readnotes/reports-1435-1438.md
+/1435shw.html	full	readnotes/reports-1435-1438.md
+/1435zhj.html	full	readnotes/reports-1435-1438.md
+/1435zqd.html	full	readnotes/reports-1435-1438.md
+/1436jmo.html	full	readnotes/reports-1435-1438.md
+/1436jmt.html	full	readnotes/reports-1435-1438.md
+/1436muh.html	full	readnotes/reports-1435-1438.md
+/1436rba.html	full	readnotes/reports-1435-1438.md
+/1436rbt.html	full	readnotes/reports-1435-1438.md
+/1436rjb.html	full	readnotes/reports-1435-1438.md
+/1436rmd.html	full	readnotes/reports-1435-1438.md
+/1436sfr.html	full	readnotes/reports-1435-1438.md
+/1436shb.html	full	readnotes/reports-1435-1438.md
+/1436shw.html	full	readnotes/reports-1435-1438.md
+/1436zhj.html	full	readnotes/reports-1435-1438.md
+/1436zqd.html	full	readnotes/reports-1435-1438.md
+/1438fcna.html	full (reports reader) + full diff vs 1438fcna	readnotes/reports-1435-1438.md + calendars-indexcgi-fcna-dups.md
+/1438jmo.html	full	readnotes/reports-1435-1438.md
+/1438jmt.html	full	readnotes/reports-1435-1438.md
+/1438muh.html	full	readnotes/reports-1435-1438.md
+/1438rba.html	full	readnotes/reports-1435-1438.md
+/1438rbt.html	full	readnotes/reports-1435-1438.md
+/1438rjb.html	full	readnotes/reports-1435-1438.md
+/1438rmd.html	full	readnotes/reports-1435-1438.md
+/1438rmd.html?mc_cid=3eea635ad3&mc_eid=cc4f6854b4	full diff vs /1438rmd.html (only SOURCE line differs)	readnotes/reports-1435-1438.md
+/1438sfr.html	full	readnotes/reports-1435-1438.md
+/1438shb.html	full	readnotes/reports-1435-1438.md
+/1438shw.html	full	readnotes/reports-1435-1438.md
+/1438zhj.html	full	readnotes/reports-1435-1438.md
+/1438zqd.html	full	readnotes/reports-1435-1438.md
+/1439fcna.html	full (reports reader) + full diff vs 1438fcna	readnotes/reports-1439-1440.md + calendars-indexcgi-fcna-dups.md
+/1439jmo.html	full	readnotes/reports-1439-1440.md
+/1439jmt.html	full	readnotes/reports-1439-1440.md
+/1439muh.html	full	readnotes/reports-1439-1440.md
+/1439rba.html	full	readnotes/reports-1439-1440.md
+/1439rbt.html	full	readnotes/reports-1439-1440.md
+/1439rjb.html	full	readnotes/reports-1439-1440.md
+/1439rmd.html	full	readnotes/reports-1439-1440.md
+/1439sfr.html	full	readnotes/reports-1439-1440.md
+/1439shb.html	full	readnotes/reports-1439-1440.md
+/1439shw.html	full	readnotes/reports-1439-1440.md
+/1439zhj.html	full	readnotes/reports-1439-1440.md
+/1439zhj.html?_e_pi_=7%2CPAGE_ID10%2C7730956992	full diff vs /1439zhj.html (only SOURCE line differs)	readnotes/reports-1439-1440.md
+/1439zqd.html	full	readnotes/reports-1439-1440.md
+/1440fcna.html	full (reports reader) + full diff vs 1438fcna	readnotes/reports-1439-1440.md + calendars-indexcgi-fcna-dups.md
+/1440jmo.html	full	readnotes/reports-1439-1440.md
+/1440jmt.html	full	readnotes/reports-1439-1440.md
+/1440muh.html	full	readnotes/reports-1439-1440.md
+/1440rba.html	full	readnotes/reports-1439-1440.md
+/1440rbt.html	full	readnotes/reports-1439-1440.md
+/1440rjb.html	full	readnotes/reports-1439-1440.md
+/1440rmd.html	full	readnotes/reports-1439-1440.md
+/1440sfr.html	full	readnotes/reports-1439-1440.md
+/1440shb.html	full	readnotes/reports-1439-1440.md
+/1440shw.html	full	readnotes/reports-1439-1440.md
+/1440zhj.html	full	readnotes/reports-1439-1440.md
+/1440zqd.html	full	readnotes/reports-1439-1440.md
+/1441fcna.html	full (reports reader) + full diff vs 1438fcna	readnotes/reports-1441-1442.md + calendars-indexcgi-fcna-dups.md
+/1441jmo.html	full	readnotes/reports-1441-1442.md
+/1441jmt.html	full	readnotes/reports-1441-1442.md
+/1441muh.html	full	readnotes/reports-1441-1442.md
+/1441rba.html	full	readnotes/reports-1441-1442.md
+/1441rbt.html	full	readnotes/reports-1441-1442.md
+/1441rjb.html	full	readnotes/reports-1441-1442.md
+/1441rmd.html	full	readnotes/reports-1441-1442.md
+/1441sfr.html	full	readnotes/reports-1441-1442.md
+/1441shb.html	full	readnotes/reports-1441-1442.md
+/1441shw.html	full	readnotes/reports-1441-1442.md
+/1441zhj.html	full	readnotes/reports-1441-1442.md
+/1441zqd.html	full	readnotes/reports-1441-1442.md
+/1442fcna.html	full (reports reader) + full diff vs 1438fcna	readnotes/reports-1441-1442.md + calendars-indexcgi-fcna-dups.md
+/1442jmo.html	full	readnotes/reports-1441-1442.md
+/1442jmt.html	full	readnotes/reports-1441-1442.md
+/1442muh.html	full	readnotes/reports-1441-1442.md
+/1442rba.html	full	readnotes/reports-1441-1442.md
+/1442rbt.html	full	readnotes/reports-1441-1442.md
+/1442rjb.html	full	readnotes/reports-1441-1442.md
+/1442rmd.html	full	readnotes/reports-1441-1442.md
+/1442sfr.html	full	readnotes/reports-1441-1442.md
+/1442shb.html	full	readnotes/reports-1441-1442.md
+/1442shw.html	full	readnotes/reports-1441-1442.md
+/1442zhj.html	full	readnotes/reports-1441-1442.md
+/1442zqd.html	full	readnotes/reports-1441-1442.md
+/1443fcna.html	full (reports reader) + full diff vs 1438fcna	readnotes/reports-1443-1444.md + calendars-indexcgi-fcna-dups.md
+/1443jmo.html	full	readnotes/reports-1443-1444.md
+/1443jmt.html	full	readnotes/reports-1443-1444.md
+/1443muh.html	full	readnotes/reports-1443-1444.md
+/1443rba.html	full	readnotes/reports-1443-1444.md
+/1443rbt.html	full	readnotes/reports-1443-1444.md
+/1443rjb.html	full	readnotes/reports-1443-1444.md
+/1443rmd.html	full	readnotes/reports-1443-1444.md
+/1443rmd.html?fbclid=IwAR1g6XlT2B43HV0av0J-onMZAPx1vsFMd-1-w7WwItLfQeGijk-OLRwjLa0	full diff vs /1443rmd.html (only SOURCE line differs)	readnotes/reports-1443-1444.md
+/1443sfr.html	full	readnotes/reports-1443-1444.md
+/1443shb.html	full	readnotes/reports-1443-1444.md
+/1443shw.html	full	readnotes/reports-1443-1444.md
+/1443zhj.html	full	readnotes/reports-1443-1444.md
+/1443zqd.html	full	readnotes/reports-1443-1444.md
+/1444HijriCalendar.pdf	full (extracted text, site agent)	site-reading/*.pdf.txt; notes/site.md §7
+/1444jmo.html	full	readnotes/reports-1443-1444.md
+/1444jmt.html	full	readnotes/reports-1443-1444.md
+/1444muh.html	full	readnotes/reports-1443-1444.md
+/1444rba.html	full	readnotes/reports-1443-1444.md
+/1444rbt.html	full	readnotes/reports-1443-1444.md
+/1444rjb.html	full	readnotes/reports-1443-1444.md
+/1444rmd.html	full	readnotes/reports-1443-1444.md
+/1444sfr.html	full	readnotes/reports-1443-1444.md
+/1444shb.html	full	readnotes/reports-1443-1444.md
+/1444shw.html	full	readnotes/reports-1443-1444.md
+/1444zhj.html	full	readnotes/reports-1443-1444.md
+/1444zqd.html	full	readnotes/reports-1443-1444.md
+/1445jmo.html	full	readnotes/reports-1445-1448.md
+/1445jmt.html	full	readnotes/reports-1445-1448.md
+/1445muh.html	full	readnotes/reports-1445-1448.md
+/1445rba.html	full	readnotes/reports-1445-1448.md
+/1445rbt.html	full	readnotes/reports-1445-1448.md
+/1445rjb.html	full	readnotes/reports-1445-1448.md
+/1445rmd.html	full	readnotes/reports-1445-1448.md
+/1445sfr.html	full	readnotes/reports-1445-1448.md
+/1445shb.html	full	readnotes/reports-1445-1448.md
+/1445shw.html	full	readnotes/reports-1445-1448.md
+/1445zhj.html	full	readnotes/reports-1445-1448.md
+/1445zqd.html	full	readnotes/reports-1445-1448.md
+/1446jmo.html	full	readnotes/reports-1445-1448.md
+/1446jmt.html	full	readnotes/reports-1445-1448.md
+/1446muh.html	full	readnotes/reports-1445-1448.md
+/1446rba.html	full	readnotes/reports-1445-1448.md
+/1446rbt.html	full	readnotes/reports-1445-1448.md
+/1446rjb.html	full	readnotes/reports-1445-1448.md
+/1446rmd.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1446sfr.html	full	readnotes/reports-1445-1448.md
+/1446shb.html	full	readnotes/reports-1445-1448.md
+/1446shw.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1446zhj.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1446zqd.html	full	readnotes/reports-1445-1448.md
+/1447jmo.html	full	readnotes/reports-1445-1448.md
+/1447jmt.html	full	readnotes/reports-1445-1448.md
+/1447muh.html	full	readnotes/reports-1445-1448.md
+/1447rba.html	full	readnotes/reports-1445-1448.md
+/1447rbt.html	full	readnotes/reports-1445-1448.md
+/1447rjb.html	full	readnotes/reports-1445-1448.md
+/1447rmd.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1447rmd.html?utm_source=chatgpt.com	full diff vs /1447rmd.html (only SOURCE line differs)	readnotes/reports-1445-1448.md
+/1447sfr.html	full	readnotes/reports-1445-1448.md
+/1447shb.html	full	readnotes/reports-1445-1448.md
+/1447shw.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1447zhj.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1447zqd.html	full	readnotes/reports-1445-1448.md
+/1448jmo.html	full	readnotes/reports-1445-1448.md
+/1448jmt.html	full	readnotes/reports-1445-1448.md
+/1448muh.html	full	readnotes/reports-1445-1448.md
+/1448rba.html	full	readnotes/reports-1445-1448.md
+/1448rbt.html	full	readnotes/reports-1445-1448.md
+/1448rjb.html	full	readnotes/reports-1445-1448.md
+/1448rmd.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1448sfr.html	full	readnotes/reports-1445-1448.md
+/1448shb.html	full	readnotes/reports-1445-1448.md
+/1448shw.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1448zhj.html	full diff vs /1445zhj.html (template)	readnotes/reports-1445-1448.md
+/1448zqd.html	full	readnotes/reports-1445-1448.md
+/3books.html	full	readnotes/site-pages-reread.md
+/about-us.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/actual-saudi-dates.pdf	full (extracted text, site agent)	site-reading/*.pdf.txt; notes/site.md §7
+/articles.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/articles/2eclipses.html	full	readnotes/site-pages-reread.md
+/articles/chronology.html	full	readnotes/site-pages-reread.md
+/articles/eid-on-4-days.html	full	readnotes/site-pages-reread.md
+/articles/full-moon-on-eidul-adha.html	full	readnotes/site-pages-reread.md
+/articles/hilal-manaazil.html	full	readnotes/site-pages-reread.md
+/articles/inventions.html	full	readnotes/site-pages-reread.md
+/articles/roleofislam.html	full	readnotes/site-pages-reread.md
+/articles/significance%20of%20urjoonal-qadeem.html	full	readnotes/site-pages-reread.md
+/articles/story-of-wise-man.html	full	readnotes/site-pages-reread.md
+/articles/when-hijri-calendar.html	full	readnotes/site-pages-reread.md
+/articles/why-islamic-dates-in-mess.html	full	readnotes/site-pages-reread.md
+/assets/bootstrap/js/bootstrap.min.js	full via fold	readnotes/js-files.md
+/assets/js/apple_map.js	full via fold	readnotes/js-files.md
+/assets/js/index.js	full via fold	readnotes/js-files.md
+/assets/js/jquery.min.js	full via fold	readnotes/js-files.md
+/assets/js/tz.js	full via fold	readnotes/js-files.md
+/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js	full via fold	readnotes/js-files.md
+/countries.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/dilaram.html	full	readnotes/site-pages-reread.md
+/dont/don_a.html	full	readnotes/site-pages-reread.md
+/dont/don_b.html	full	readnotes/site-pages-reread.md
+/dont/don_s.html	full	readnotes/site-pages-reread.md
+/dont/don_t.html	full	readnotes/site-pages-reread.md
+/dont/don_u.html	full	readnotes/site-pages-reread.md
+/dont/don_v.html	full	readnotes/site-pages-reread.md
+/dont/don_w.html	full	readnotes/site-pages-reread.md
+/dont/don_x.html	full	readnotes/site-pages-reread.md
+/dont/don_y.html	full	readnotes/site-pages-reread.md
+/dont/don_z.html	full	readnotes/site-pages-reread.md
+/dont/donlang.html	full	readnotes/site-pages-reread.md
+/dont/donot0.html	full	readnotes/site-pages-reread.md
+/dont/donot1.html	full	readnotes/site-pages-reread.md
+/dont/donot10.html	full	readnotes/site-pages-reread.md
+/dont/donot11.html	full	readnotes/site-pages-reread.md
+/dont/donot12.html	full	readnotes/site-pages-reread.md
+/dont/donot13.html	full	readnotes/site-pages-reread.md
+/dont/donot14.html	full	readnotes/site-pages-reread.md
+/dont/donot15.html	full	readnotes/site-pages-reread.md
+/dont/donot16.html	full	readnotes/site-pages-reread.md
+/dont/donot17.html	full	readnotes/site-pages-reread.md
+/dont/donot18.html	full	readnotes/site-pages-reread.md
+/dont/donot19.html	full	readnotes/site-pages-reread.md
+/dont/donot2.html	full	readnotes/site-pages-reread.md
+/dont/donot20.html	full	readnotes/site-pages-reread.md
+/dont/donot21.html	full	readnotes/site-pages-reread.md
+/dont/donot3.html	full	readnotes/site-pages-reread.md
+/dont/donot4.html	full	readnotes/site-pages-reread.md
+/dont/donot5.html	full	readnotes/site-pages-reread.md
+/dont/donot6.html	full	readnotes/site-pages-reread.md
+/dont/donot7.html	full	readnotes/site-pages-reread.md
+/dont/donot8.html	full	readnotes/site-pages-reread.md
+/dont/donot9.html	full	readnotes/site-pages-reread.md
+/dont/donoto0.html	full	readnotes/site-pages-reread.md
+/dont/donoto1.html	full	readnotes/site-pages-reread.md
+/dont/donoto2.html	full	readnotes/site-pages-reread.md
+/dont/donoto3.html	full	readnotes/site-pages-reread.md
+/dont/donoto4.html	full	readnotes/site-pages-reread.md
+/dont/donoto5.html	full	readnotes/site-pages-reread.md
+/dont/donoto6.html	full	readnotes/site-pages-reread.md
+/dont/donoto7.html	full	readnotes/site-pages-reread.md
+/dont/donoto8.html	full	readnotes/site-pages-reread.md
+/dont/dont0.html	full	readnotes/site-pages-reread.md
+/dont/dont1.html	full	readnotes/site-pages-reread.md
+/dont/dont10.html	full	readnotes/site-pages-reread.md
+/dont/dont2.html	full	readnotes/site-pages-reread.md
+/dont/dont3.html	full	readnotes/site-pages-reread.md
+/dont/dont4.html	full	readnotes/site-pages-reread.md
+/dont/dont5.html	full	readnotes/site-pages-reread.md
+/dont/dont6.html	full	readnotes/site-pages-reread.md
+/dont/dont7.html	full	readnotes/site-pages-reread.md
+/dont/dont8.html	full	readnotes/site-pages-reread.md
+/dont/dont9.html	full	readnotes/site-pages-reread.md
+/dont/dontc0.html	full	readnotes/site-pages-reread.md
+/dont/dontc1.html	full	readnotes/site-pages-reread.md
+/dont/dontc2.html	full	readnotes/site-pages-reread.md
+/dont/dontc3.html	full	readnotes/site-pages-reread.md
+/dont/dontc4.html	full	readnotes/site-pages-reread.md
+/dont/dontc5.html	full	readnotes/site-pages-reread.md
+/dont/dontc6.html	full	readnotes/site-pages-reread.md
+/dont/dontc7.html	full	readnotes/site-pages-reread.md
+/dont/dontc8.html	full	readnotes/site-pages-reread.md
+/dont/dontc9.html	full	readnotes/site-pages-reread.md
+/eclipses.html	full	readnotes/site-pages-reread.md
+/ever-wonder.html	full	readnotes/site-pages-reread.md
+/evolution.html	full	readnotes/site-pages-reread.md
+/faq_ms.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/faq_pt.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/faq_qd.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/fcna-uq-calendar.html	full	readnotes/site-pages-reread.md
+/fun-time.html	full	readnotes/site-pages-reread.md
+/globalcalendar.html	full	readnotes/site-pages-reread.md
+/gregorian-calendar.php	full	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1796	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1805	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1806	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1807	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1814	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1815	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1816	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1817	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1818	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1822	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1823	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1824	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1825	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1826	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1827	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1828	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1829	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1831	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1832	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1833	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1834	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1835	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1836	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1837	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1838	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1839	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1840	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1841	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1842	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1843	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1844	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1845	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1846	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1847	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1848	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1849	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1850	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1851	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1852	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1853	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1854	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1855	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1856	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1857	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1858	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1859	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1860	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1861	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1862	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1863	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1864	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1865	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1866	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1867	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1868	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1869	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1870	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1871	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1872	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1873	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1874	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1875	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1876	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1877	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1878	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1879	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1880	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1881	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1882	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1883	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1884	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1885	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1886	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1887	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1888	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1889	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1890	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1891	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1892	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1893	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1894	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1895	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1896	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1897	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1898	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1899	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1900	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1901	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1902	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1903	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1904	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1905	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1906	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1907	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1908	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1909	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1910	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1911	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1912	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1913	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1914	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1915	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1916	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1917	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1918	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1919	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1920	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1921	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1922	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1923	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1924	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1925	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1926	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1927	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1928	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1929	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1930	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1931	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1932	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1933	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1934	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1935	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1936	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1937	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1938	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1939	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1940	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1941	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1942	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1943	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1944	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1945	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1946	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1947	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1948	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1949	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1950	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1951	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1952	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1953	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1954	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1955	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1956	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1957	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1958	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1959	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1960	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1961	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1962	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1963	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1964	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1965	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1966	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1967	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1968	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1969	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1970	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1971	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1972	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1973	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1974	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1975	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1976	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1977	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1978	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1979	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1980	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1981	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1982	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1983	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1984	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1985	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1986	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1987	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1988	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1989	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1990	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1991	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1992	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1993	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1994	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1995	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1996	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1997	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1998	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?1999	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2000	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2001	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2002	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2003	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2004	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2005	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2006	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2007	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2008	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2009	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2010	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2011	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2012	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2013	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2014	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2015	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2016	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2017	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2018	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2019	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2020	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2021	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2022	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2023	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2024	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2025	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2026	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2027	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2028	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2029	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2030	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2031	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2032	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2033	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2034	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2035	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2036	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2037	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2038	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2039	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2040	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2041	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2042	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2043	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2044	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2045	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2046	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2047	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2048	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2049	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2050	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2051	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2052	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2053	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2054	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2055	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2056	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2057	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2058	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2059	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2060	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2061	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2062	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2063	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2064	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2065	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2066	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2067	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2068	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2069	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2070	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2071	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2072	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2073	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2074	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2075	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2076	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2077	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2078	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2079	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2080	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2081	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2082	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2083	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2084	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2085	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2086	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2087	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2088	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2089	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2090	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2091	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2092	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2093	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2094	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2095	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2096	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2097	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2098	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2099	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2100	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2101	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2102	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2103	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2104	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2105	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2106	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2107	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2108	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2109	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2110	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2111	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2112	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2113	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2114	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2115	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2116	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2117	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2118	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2119	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2120	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2121	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2122	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2123	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2124	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2125	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2126	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2127	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2128	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2129	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2130	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2131	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2132	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2133	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2134	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2135	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2136	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2137	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2138	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2139	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2140	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2141	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2142	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2143	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2144	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2145	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2146	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2147	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2148	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2149	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2150	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2151	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2152	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2153	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2154	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2155	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2156	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2157	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2158	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2159	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2160	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2161	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2162	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2163	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2164	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2165	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2166	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2167	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2168	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2169	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2170	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2171	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2172	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2173	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2174	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2175	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2176	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2177	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2178	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2179	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2180	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2181	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2182	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2183	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2184	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2185	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2186	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2187	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2188	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2189	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2190	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2191	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2192	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2193	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2194	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2195	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2196	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2197	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2198	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2199	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2200	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2201	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2202	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2203	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2204	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2205	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2206	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2207	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2208	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2209	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2210	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2211	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2212	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2213	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2214	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2215	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2216	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2217	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2218	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2219	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2220	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2221	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2222	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2223	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2224	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2225	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2226	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2227	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2228	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2229	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2230	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2233	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2234	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2235	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2236	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2237	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2238	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2239	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2244	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2245	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2246	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2247	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2248	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2255	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2256	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2257	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/gregorian-calendar.php?2266	full diff vs /gregorian-calendar.php	readnotes/calendars-indexcgi-fcna-dups.md
+/header.js	full via fold	readnotes/js-files.md
+/hijri-calendar.html	full	readnotes/site-pages-reread.md
+/how-countries.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/how-we.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/important-dates.html	full	readnotes/site-pages-reread.md
+/index.cgi/1438jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1438zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1439zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1440zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1441zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1442zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1443zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1444zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1445zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1446zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1447zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/1448zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/about-us.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1438zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1439zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1440zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1441zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1442zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1443zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1444zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1445zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1446zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1447zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/1448zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/about-us.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/don_a.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/header.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/mmenu.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/dont/moonsightingmenu.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/header.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/links.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/mmenu.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/moonphoto.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/moonsightingmenu.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/quranastronomy.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/shuraRamadan.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1438zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1439zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1440zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1441zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1442zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1443zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1444zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1445zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1446zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1447zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448jmo.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448jmt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448muh.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448rba.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448rbt.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448rjb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448rmd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448sfr.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448shb.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448shw.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448zhj.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/1448zqd.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/6monthdays.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/about-us.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/calendar.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/eclipses.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/firstqibla.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/header.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/mmenu.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/moonsightingmenu.js	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/index.cgi/ym/us/non.html	full diff vs /index.html	readnotes/calendars-indexcgi-fcna-dups.md
+/isra-meraj.html	full	readnotes/site-pages-reread.md
+/lectures.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/links.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/manikfan.html	full	readnotes/site-pages-reread.md
+/mcw.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/mmenu.js	full via fold	readnotes/js-files.md
+/moon.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/moonphotos.html	full	readnotes/site-pages-reread.md
+/moonsightingmenu.js	full via fold	readnotes/js-files.md
+/morocco-meeting.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/mosques.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/ned67warrenton.html	full	readnotes/site-pages-reread.md
+/perigee-apogee-new-full.html	full	readnotes/site-pages-reread.md
+/planets.html	full	readnotes/site-pages-reread.md
+/pray.php	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/praytable.php	full (structure only; no times copied)	readnotes/calendars-indexcgi-fcna-dups.md
+/praytable.php?year=&tz=&lat=&lon=&method=0&both=false&time=0	full (structure only; no times copied)	readnotes/calendars-indexcgi-fcna-dups.md
+/praytable.php?year=&tz=&lat=24&lon=24&method=0&both=false&time=0	full (structure only; no times copied)	readnotes/calendars-indexcgi-fcna-dups.md
+/praytable.php?year=&tz=&lat=24&lon=24&method=0&both=true&time=0	full (structure only; no times copied)	readnotes/calendars-indexcgi-fcna-dups.md
+/praytable.php?year=&tz=undefined&lat=&lon=&method=0&both=false&time=0	full (structure only; no times copied)	readnotes/calendars-indexcgi-fcna-dups.md
+/praytable.php?year=2020&tz=America/Chicago&lat=37.09024&lon=-95.712891&method=0&both=false&time=0	full (structure only; no times copied)	readnotes/calendars-indexcgi-fcna-dups.md
+/praytable.php?year=2024&tz=Etc/Unknown&lat=24.5247&lon=39.5692&method=0&both=false&time=0	full (structure only; no times copied)	readnotes/calendars-indexcgi-fcna-dups.md
+/qibla.html	full (site agent, Read tool incl. FORMS/LINKS)	notes/site.md §2–§6
+/ramadan-eid.html	full	readnotes/calendars-indexcgi-fcna-dups.md
+/ramadan-eid.html?fbclid=IwAR0aClfAQxbNaO_L-41_Jl0EIcaYBwMCMq4_Dqeg0ZJ-mT40tjBKKYlEoOk	full diff vs base (identical)	readnotes/calendars-indexcgi-fcna-dups.md
+/secondqibla.html	full	readnotes/site-pages-reread.md
+/soomu-hadith.html	full	readnotes/site-pages-reread.md
+/visibility.html	full	readnotes/calendars-indexcgi-fcna-dups.md
+/visibility.html?s=09	full diff vs base (identical)	readnotes/calendars-indexcgi-fcna-dups.md
+/what-hijri-calendar-should-be.html	full	readnotes/site-pages-reread.md
