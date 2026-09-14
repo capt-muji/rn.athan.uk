@@ -138,6 +138,7 @@ MUTATIONS = [
     ('hooks/usePrayerSequence.ts', 'isPassed[index] = isRowPassed(dayRows, rawPrayers[index], now);', 'isPassed[index] = (rawPrayers[index].datetime as unknown as Date) < now;', 'isPassed back to datetime < now'),
     ('hooks/usePrayer.ts', '(findNextOccurrence(prayers, row) ?? row)', '(prayers.find((p) => p.english === row.english && (p.datetime as Date) > (row.datetime as Date)) ?? row)', 'next occurrence found by instant'),
     ('hooks/usePrayer.ts', 'isUnavailable ? AlertType.Off : saved', 'saved', 'unavailable bell draws the saved glyph'),
+    ('hooks/useCountdown.ts', 'isReady: displayDate !== null,', "isReady: displayTime !== '--:--',", 'countdown removed while it shows --:--'),
 ]
 
 W_LABEL = 46

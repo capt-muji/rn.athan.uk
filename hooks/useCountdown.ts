@@ -9,14 +9,14 @@ import { useAtomValue } from 'jotai';
 
 import { ScheduleType } from '@/shared/types';
 import { getCountdownDisplayAtom, getCountdownNameAtom } from '@/stores/countdown';
-import { extraNextPrayerAtom, standardNextPrayerAtom } from '@/stores/schedule';
+import { extraDisplayDateAtom, standardDisplayDateAtom } from '@/stores/schedule';
 
 interface UseCountdownResult {
   /** Formatted countdown label (render-granular: changes only when the displayed string changes) */
   displayTime: string;
   /** Name of the next prayer */
   prayerName: string;
-  /** Whether the countdown is ready (sequence initialized) */
+  /** Whether a list is on screen, so the countdown has something to show: a time, or --:-- */
   isReady: boolean;
 }
 
@@ -40,14 +40,17 @@ interface UseCountdownResult {
  * const { displayTime, prayerName, isReady } = useCountdown(ScheduleType.Standard);
  */
 export const useCountdown = (type: ScheduleType): UseCountdownResult => {
-  const nextPrayerAtom = type === ScheduleType.Standard ? standardNextPrayerAtom : extraNextPrayerAtom;
-  const nextPrayer = useAtomValue(nextPrayerAtom);
+  // Ready once a list is on screen, not only while a readable prayer is ahead. After the last readable prayer in
+  // storage (31 December before next year is published) the countdown shows --:-- under the next row's name, and
+  // Countdown.tsx rendering nothing instead pulled the date and the whole list up the page
+  const displayDateAtom = type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom;
+  const displayDate = useAtomValue(displayDateAtom);
   const prayerName = useAtomValue(getCountdownNameAtom(type));
   const displayTime = useAtomValue(getCountdownDisplayAtom(type));
 
   return {
     displayTime,
     prayerName,
-    isReady: nextPrayer !== null,
+    isReady: displayDate !== null,
   };
 };
