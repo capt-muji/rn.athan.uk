@@ -3,7 +3,7 @@
 **Status: DONE 2026-09-13 in 1.27.0 (`feat/audit-71-unreadable-dashes`). Every question this brief says to
 ask was answered with a default taken from the owner's recorded words, listed in
 `ai/features/uat-2/DASHES-DESIGN.md` §12 and §13 and in finding 71's closure. Round 2, 2026-09-14 (1.27.1 to
-1.27.14 on `feat/audit-71-dashes`, not merged), built the owner's rulings on the screenshots:
+1.27.14 on `feat/audit-71-dashes`, merged into `uat-2` the same day), built the owner's rulings on the screenshots:
 - R8: a dashed day comes on only at its own 00:00
 - R11: the countdown shows `--:--` while waiting
 - R14: the bar stays hidden
