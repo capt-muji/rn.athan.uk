@@ -81,7 +81,6 @@ import {
   extraNextPrayerAtom,
   extraSequenceAtom,
   getDisplayDate,
-  getFirstRowAfterDisplay,
   getNextBoundary,
   getNextPrayer,
   getPrevPrayer,
@@ -527,30 +526,6 @@ describe('createDisplayDateAtom', () => {
 // =============================================================================
 // setSequence TESTS
 // =============================================================================
-
-describe('getFirstRowAfterDisplay', () => {
-  it('names nothing with no sequence, with no list on screen, or with no later list day', () => {
-    const store = getDefaultStore();
-    mockCreateLondonDate.mockReturnValue(new Date('2026-01-20T12:00:00Z'));
-
-    store.set(standardSequenceAtom, null);
-    expect(getFirstRowAfterDisplay(ScheduleType.Standard)).toBeNull();
-
-    // Every row has passed, so no list is on screen
-    store.set(
-      standardSequenceAtom,
-      createMockSequence([createMockPrayer({ datetime: new Date('2026-01-20T06:15:00Z') })])
-    );
-    expect(getFirstRowAfterDisplay(ScheduleType.Standard)).toBeNull();
-
-    // A list is on screen, and nothing comes after its day
-    store.set(
-      standardSequenceAtom,
-      createMockSequence([createMockPrayer({ datetime: new Date('2026-01-20T18:15:00Z') })])
-    );
-    expect(getFirstRowAfterDisplay(ScheduleType.Standard)).toBeNull();
-  });
-});
 
 describe('setSequence', () => {
   beforeEach(() => {
@@ -1445,7 +1420,7 @@ describe('on the real builder', () => {
       const extraWrites = recordSequenceWrites(EXTRA);
       testSubscriptions.push(standardWrites.unsubscribe, extraWrites.unsubscribe);
 
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
 
       jest.advanceTimersByTime(500);
 
@@ -1595,7 +1570,7 @@ describe('on the real builder', () => {
         next: row('Fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),
         displayDate: '2026-10-17',
         previous: null,
-        countdown: { timeLeft: null, name: 'Fajr' },
+        countdown: { timeLeft: null, name: '...' },
         barAvailable: false,
         held: { '2026-10-17': STANDARD_ROWS, '2026-10-18': STANDARD_DASHED, '2026-10-19': STANDARD_ROWS },
       });
@@ -1604,7 +1579,7 @@ describe('on the real builder', () => {
         next: row('Suhoor', '2026-10-19', '2026-10-19T04:35:00.000Z'),
         displayDate: '2026-10-17',
         previous: null,
-        countdown: { timeLeft: null, name: 'Suhoor' },
+        countdown: { timeLeft: null, name: '...' },
         barAvailable: false,
         held: {
           '2026-10-17': EXTRAS_ROWS,
@@ -1623,13 +1598,13 @@ describe('on the real builder', () => {
       expect(extraWrites.writes).toEqual(['2026-10-17T23:00:00.000Z']);
       expect(observe(STANDARD)).toMatchObject({
         displayDate: '2026-10-18',
-        countdown: { timeLeft: null, name: 'Fajr' },
+        countdown: { timeLeft: null, name: '...' },
         barAvailable: false,
         held: { '2026-10-18': STANDARD_DASHED, '2026-10-19': STANDARD_ROWS },
       });
       expect(observe(EXTRA)).toMatchObject({
         displayDate: '2026-10-18',
-        countdown: { timeLeft: null, name: 'Suhoor' },
+        countdown: { timeLeft: null, name: '...' },
       });
     });
 
@@ -1704,10 +1679,10 @@ describe('on the real builder', () => {
       openOverlay(STANDARD, 0);
       expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 107700, name: 'Fajr' });
       closeOverlay();
-      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
 
       openOverlay(STANDARD, 6);
-      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
     });
 
     it('closes an open overlay 2 seconds before 00:00 and refuses to open inside that window', () => {
@@ -1747,7 +1722,7 @@ describe('on the real builder', () => {
     expect(observe(STANDARD)).toMatchObject({
       next: row('Fajr', '2026-10-20', '2026-10-20T04:57:00.000Z'),
       displayDate: '2026-10-17',
-      countdown: { timeLeft: null, name: 'Fajr' },
+      countdown: { timeLeft: null, name: '...' },
       barAvailable: false,
     });
 
@@ -1770,7 +1745,10 @@ describe('on the real builder', () => {
       expect(extraWrites.writes).toEqual([holdEnd]);
       expect(getDisplayDate(STANDARD)).toBe(nextListDay);
       expect(getDisplayDate(EXTRA)).toBe(nextListDay);
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft, name: 'Fajr' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({
+        timeLeft,
+        name: timeLeft === null ? '...' : 'Fajr',
+      });
       expect(getDefaultStore().get(getBarAvailableAtom(STANDARD))).toBe(false);
     }
   });
@@ -1781,7 +1759,7 @@ describe('on the real builder', () => {
 
     expect(observe(STANDARD)).toMatchObject({
       displayDate: '2026-10-17',
-      countdown: { timeLeft: null, name: 'Fajr' },
+      countdown: { timeLeft: null, name: '...' },
       barAvailable: false,
     });
     expect(getNextBoundary(STANDARD)?.toISOString()).toBe('2026-10-17T23:00:00.000Z');
@@ -1793,7 +1771,7 @@ describe('on the real builder', () => {
     moveClockTo('2026-10-17T23:30:00.000Z');
     resyncCountdowns();
     expect(getDisplayDate(STANDARD)).toBe('2026-10-18');
-    expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+    expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
   });
 
   it('R8: back from a suspension that began the day before, during the evening wait', () => {
@@ -1819,7 +1797,7 @@ describe('on the real builder', () => {
     expect(writes).toEqual(['2026-10-16T16:08:00.000Z']);
     expect(observe(EXTRA)).toMatchObject({
       displayDate: '2026-10-16',
-      countdown: { timeLeft: null, name: 'Suhoor' },
+      countdown: { timeLeft: null, name: '...' },
       barAvailable: false,
     });
     expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-10-16T23:00:00.000Z');
@@ -1840,7 +1818,7 @@ describe('on the real builder', () => {
     expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Dhuhr' });
     expect(observe(EXTRA)).toMatchObject({
       displayDate: '2026-10-17',
-      countdown: { timeLeft: null, name: 'Midnight' },
+      countdown: { timeLeft: null, name: '...' },
       barAvailable: false,
     });
 
@@ -1901,7 +1879,7 @@ describe('on the real builder', () => {
 
     expect(getDisplayDate(EXTRA)).toBe('2026-09-26');
     expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-09-26T22:50:00.000Z');
-    expect(observe(EXTRA)).toMatchObject({ countdown: { timeLeft: null, name: 'Suhoor' }, barAvailable: false });
+    expect(observe(EXTRA)).toMatchObject({ countdown: { timeLeft: null, name: '...' }, barAvailable: false });
 
     moveClockTo('2026-09-26T22:49:58.000Z');
     const { writes, unsubscribe } = recordSequenceWrites(EXTRA);
@@ -1914,7 +1892,7 @@ describe('on the real builder', () => {
     expect(observe(EXTRA)).toMatchObject({
       next: row('Duha', '2026-09-27', '2026-09-27T02:20:00.000Z'),
       previous: row('Suhoor', '2026-09-27', '2026-09-26T22:50:00.000Z'),
-      countdown: { timeLeft: null, name: 'Duha' },
+      countdown: { timeLeft: null, name: '...' },
       barAvailable: false,
     });
     expect(calculatePrayerAgo(EXTRA).isReady).toBe(false);
@@ -1961,6 +1939,25 @@ describe('on the real builder', () => {
     expect(getDisplayDate(STANDARD)).toBe('2026-09-26');
   });
 
+  it("names a --:-- countdown '...' with no overlay on both schedules, and the tapped prayer with one", () => {
+    const store = getDefaultStore();
+    storeDays(OCT_16_TO_20, { '2026-10-18': 'all' });
+    launchAt('2026-10-18T11:00:00.000Z');
+
+    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
+    expect(store.get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: '...' });
+    expect(store.get(getCountdownDisplayAtom(STANDARD))).toBe('--:--');
+
+    // The overlay has a prayer to show, so it is named: here the 18th's Fajr opens the 19th's, which has a time
+    openOverlay(STANDARD, 0);
+    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Fajr' });
+    closeOverlay();
+    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
+
+    jest.advanceTimersByTime(1000);
+    expect(store.get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: '...' });
+  });
+
   // ---------------------------------------------------------------------------
   // A lost week: the countdown keeps a target on the far side of the gap
   // ---------------------------------------------------------------------------
@@ -1990,14 +1987,14 @@ describe('on the real builder', () => {
         next: row('Fajr', '2026-10-25', '2026-10-25T05:04:00.000Z'),
         displayDate: '2026-10-17',
         previous: null,
-        countdown: { timeLeft: null, name: 'Fajr' },
+        countdown: { timeLeft: null, name: '...' },
         barAvailable: false,
         held: { '2026-10-17': STANDARD_ROWS, ...LOST_WEEK, '2026-10-25': STANDARD_ROWS },
       });
       expect(observe(EXTRA)).toMatchObject({
         next: row('Suhoor', '2026-10-25', '2026-10-25T04:44:00.000Z'),
         displayDate: '2026-10-17',
-        countdown: { timeLeft: null, name: 'Suhoor' },
+        countdown: { timeLeft: null, name: '...' },
         barAvailable: false,
       });
     });
@@ -2010,7 +2007,7 @@ describe('on the real builder', () => {
         next: row('Fajr', '2026-10-25', '2026-10-25T05:04:00.000Z'),
         displayDate: '2026-10-20',
         previous: null,
-        countdown: { timeLeft: null, name: 'Fajr' },
+        countdown: { timeLeft: null, name: '...' },
         barAvailable: false,
         held: {
           '2026-10-20': STANDARD_DASHED,
@@ -2024,7 +2021,7 @@ describe('on the real builder', () => {
       expect(getNextBoundary(STANDARD)?.toISOString()).toBe('2026-10-20T23:00:00.000Z');
     });
 
-    it("stops growing at 14 list days when nothing readable is stored at all, naming the next list's first row", () => {
+    it("stops growing at 14 list days when nothing readable is stored at all, with '...' above --:--", () => {
       launchAt('2026-10-17T12:00:00.000Z');
 
       jest.advanceTimersByTime(1000);
@@ -2034,8 +2031,8 @@ describe('on the real builder', () => {
       expect(getNextPrayer(STANDARD)).toBeNull();
       expect(getDisplayDate(STANDARD)).toBe('2026-10-17');
       expect(getNextBoundary(STANDARD)?.toISOString()).toBe('2026-10-17T23:00:00.000Z');
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
-      expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: 'Midnight' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
+      expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: '...' });
     });
 
     it('shows --:-- after the last readable prayer in storage, rather than holding that prayer at 1s', () => {
@@ -2046,10 +2043,10 @@ describe('on the real builder', () => {
 
       moveClockTo(new Date((isha?.datetime.getTime() ?? 0) - 2000).toISOString());
       jest.advanceTimersByTime(3000);
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
 
       jest.advanceTimersByTime(60_000);
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
       expect(getDefaultStore().get(getCountdownDisplayAtom(STANDARD))).toBe('--:--');
       expect(getDisplayDate(STANDARD)).toBe('2026-10-20');
     });
