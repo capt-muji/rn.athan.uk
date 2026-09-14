@@ -15,6 +15,7 @@ import { useNotification } from '@/hooks/useNotification';
 import { APP_CONFIG } from '@/shared/config';
 import { COLORS, SIZE } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
+import { isRevealReady, isWaitingForData } from '@/shared/launchGate';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
@@ -150,7 +151,8 @@ export default function Index() {
   // warm launches keep the reveal-ready gate so the first revealed frame is
   // complete (the 1.22.5 no-icon-pop-in fix). The snapshot is taken during
   // the first render only — sync completing later can never re-latch the gate.
-  const coldLaunchRef = useRef(!sequenceReady && state === 'loading');
+  const waitingForData = isWaitingForData(sequenceReady, state);
+  const coldLaunchRef = useRef(waitingForData);
 
   useEffect(() => {
     if (coldLaunchRef.current) {
@@ -159,7 +161,7 @@ export default function Index() {
       SplashScreen.hideAsync();
     }
 
-    const contentExists = sequenceReady || state !== 'loading';
+    const contentExists = !isWaitingForData(sequenceReady, state);
     if (contentExists && !contentCommittedRef.current) {
       contentCommittedRef.current = true;
 
@@ -168,8 +170,13 @@ export default function Index() {
       perfMark('home_content');
       perfMeasure('js_to_content', 'perf_monitor_init');
     }
-    const revealReady =
-      !coldLaunchRef.current && contentExists && masjidIconLoaded && (!decorationsExpected || decorationsLoaded);
+    const revealReady = isRevealReady({
+      coldLaunch: coldLaunchRef.current,
+      contentExists,
+      masjidIconLoaded,
+      decorationsExpected,
+      decorationsLoaded,
+    });
     if (revealReady) {
       SplashScreen.hideAsync();
     }
@@ -190,7 +197,7 @@ export default function Index() {
 
   // Loading state only covers genuinely cache-less launches (fresh install,
   // upgrade wipe, year gap) — warm-cache launches render content immediately
-  if (!sequenceReady && state === 'loading') {
+  if (waitingForData) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
