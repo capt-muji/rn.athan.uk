@@ -226,7 +226,7 @@ Found by the design review, 2026-09-13. None is built around; each follows from 
 - **"Isha now" does not show** after the last row of a day before a fully unreadable one: there is no
   previous row to measure from, as with the bar.
 - **After the last readable prayer in storage** (31 December before the next year is published), the
-  countdown shows `--:--` under the first row of the next list day rather than freezing at 1s. A cold
+  countdown shows `--:--` under `...` rather than freezing at 1s. A cold
   launch at that point still shows the error screen, as before.
 - **A partial Extras failure.** With Fajr and Sunrise unreadable on a non-Friday, that Extras list is
   fully unreadable while the next list's Midnight is readable at about 23:00. That Midnight fires on

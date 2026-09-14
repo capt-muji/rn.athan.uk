@@ -1951,6 +1951,11 @@ describe('on the real builder', () => {
     // The overlay has a prayer to show, so it is named: here the 18th's Fajr opens the 19th's, which has a time
     openOverlay(STANDARD, 0);
     expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Fajr' });
+    // The overlay belongs to the Standard page, so once a tick has rewritten both pages the Extras page still
+    // shows its own waiting countdown
+    jest.advanceTimersByTime(1000);
+    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Fajr' });
+    expect(store.get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: '...' });
     closeOverlay();
     expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
 
