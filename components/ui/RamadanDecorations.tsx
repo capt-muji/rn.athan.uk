@@ -127,7 +127,8 @@ function useCloudConfigs(moonR: number, moonCy: number, moonBobMax: number, scre
     const heights = [smallH, largeH, topH];
     const hMin = Math.min(...heights);
     const hMax = Math.max(...heights);
-    const hRange = hMax - hMin || 1;
+    // Above 0 for any moon radius above 0: the top cloud is 1.5 times the large one, itself at least 1.3 times the small one
+    const hRange = hMax - hMin;
     const opacityFor = (h: number) => 0.27 + ((h - hMin) / hRange) * 0.24;
 
     // Same random direction for all
@@ -894,7 +895,7 @@ function SparkDot({
   const style = useAnimatedStyle(() => {
     const p = progress.value;
     // Fade in over first 30%, fade out over remaining 70%
-    const opacity = p < 0.3 ? (p / 0.3) * 0.85 : ((1 - p) / 0.7) * 0.85;
+    const opacity = 0.85 * Math.min(p / 0.3, (1 - p) / 0.7);
     return {
       opacity,
       transform: [{ translateY: -p * drift }],
