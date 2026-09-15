@@ -2,8 +2,8 @@
  * Real London days for the row hooks' tests, built into rows by the app's own builder
  *
  * Times from londonprayertimes.com for 2026, as in shared/__tests__/nightTimes.test.ts. 11 September 2026
- * is a Friday, so its Extras list has Istijaba. A test file using this must mock '@/stores/database' with
- * `getPrayerByDateString: jest.fn()`; storeLondonDays points that mock at the days.
+ * is a Friday, so its Extras list has Istijaba. A suite using storeLondonDays must mock '@/stores/database' with
+ * `getPrayerByDateString: jest.fn()`; a rendering suite uses saveLondonDays against the real database instead.
  */
 
 import { createPrayerSequence, transformApiData } from '@/shared/prayer';
@@ -21,26 +21,36 @@ const LONDON_2026: Record<string, Record<RequiredTimeName, string>> = {
 export type Breakage = Record<string, RequiredTimeName[] | 'not stored'>;
 
 /**
- * Stores the days with the given breakage
+ * The days as the app stores them, with the given breakage
  *
  * Unreadable times go through transformApiData as null, so Suhoor, Duha and Istijaba follow them exactly as
  * they do in the app.
  */
-export const storeLondonDays = (breakage: Breakage = {}): void => {
-  const stored = new Map<string, ISingleApiResponseTransformed>();
-
-  for (const [date, times] of Object.entries(LONDON_2026)) {
+const buildLondonDays = (breakage: Breakage): ISingleApiResponseTransformed[] =>
+  Object.entries(LONDON_2026).flatMap(([date, times]) => {
     const broken = breakage[date] ?? [];
-    if (broken === 'not stored') continue;
+    if (broken === 'not stored') return [];
 
     const validated: Record<RequiredTimeName, string | null> = { ...times };
     for (const name of broken) validated[name] = null;
 
-    const [record] = transformApiData({ city: 'london', times: { [date]: validated } });
-    stored.set(date, record);
-  }
+    return transformApiData({ city: 'london', times: { [date]: validated } });
+  });
+
+/** Points the mocked `getPrayerByDateString` at the days, for suites that mock '@/stores/database' */
+export const storeLondonDays = (breakage: Breakage = {}): void => {
+  const stored = new Map(buildLondonDays(breakage).map((day) => [day.date, day]));
 
   (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+};
+
+/** Saves the days through the real database, for suites that render against real storage */
+export const saveLondonDays = (breakage: Breakage = {}): void => {
+  // Saving only adds, so a day an earlier call saved would otherwise still be there
+  for (const [date, broken] of Object.entries(breakage)) {
+    if (broken === 'not stored') Database.removeItem(`prayer_${date}`);
+  }
+  Database.saveAllPrayers(buildLondonDays(breakage));
 };
 
 /** A London clock reading as an instant, whatever timezone the tests run in */
