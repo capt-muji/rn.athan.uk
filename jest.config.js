@@ -63,8 +63,7 @@ module.exports = {
       clearMocks: true,
       testEnvironment: 'node',
       testEnvironmentOptions: { customExportConditions: ['require', 'react-native'] },
-      // Metro compiles .svg files into components (react-native-svg-transformer); Jest has no such step
-      moduleNameMapper: { '\\.svg$': '<rootDir>/shared/__mocks__/svgFile.tsx', ...appModuleMocks },
+      moduleNameMapper: appModuleMocks,
       testMatch: ['**/__tests__/**/*.test.tsx'],
       testPathIgnorePatterns: ['/node_modules/', ...ignoredPaths],
       // A __mocks__ file anywhere under the root registers as the manual mock of the package it is named after, so the
@@ -75,6 +74,8 @@ module.exports = {
         '^(?!.*/node_modules/).+\\.tsx?$': appTransform,
         // React Native and the Expo libraries ship Flow and untranspiled ESM
         '^.+\\.(js|jsx|mjs|ts|tsx)$': ['babel-jest', { presets: ['babel-preset-expo'] }],
+        // Metro compiles .svg files into components (react-native-svg-transformer); here each one names its file
+        '^.+\\.svg$': '<rootDir>/__tests__/svgFileTransformer.js',
         // Images, audio and fonts become their file path, as in React Native's own preset
         '^.+\\.(bmp|gif|jpg|jpeg|png|psd|webp|mp3|mp4|wav|aac|m4a|ttf|otf)$': require.resolve(
           '@react-native/jest-preset/jest/assetFileTransformer.js'
