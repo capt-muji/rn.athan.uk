@@ -11,8 +11,8 @@ when it starts, and keep the brief itself in this directory.
 | 2 | **Fetch before wipe**: never clear a usable cache for a fetch that might fail | `data-resilience-swap-not-wipe.md` | **DONE** 2026-09-13, 1.26.33, finding 67 |
 | 3 | **`--:--` for unreadable times**: per prayer, not per day; the day is still shown. Extended by the owner during session 2: missing days, dashed-row styling, 1 January, screenshots to approve | `unavailable-times-dashes.md` | **DONE** 2026-09-13, 1.27.0, findings 71 and 72. Round 2 on 2026-09-14 (1.27.1 to 1.27.14, `feat/audit-71-dashes`, merged into `uat-2` the same day) built the owner's rulings on R5, R8, R11 and R14, the bar and "ago" badge measuring only from the prayer directly above next, and `...` above a waiting `--:--` countdown; choices C2, C5 to C10 and C13 on the approval page wait for the owner |
 | 4 | **Close the test-coverage gaps**: parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | **DONE** 2026-09-15, 1.27.16 to 1.27.137: statements 68.49 to 76.18 over every measured area, 3,598 to 4,089 tests, thresholds raised to 76 statements, 73 branches, 74 functions and 75 lines; findings 80 to 82 are session 6, and 79 waits for session 5's explanation |
-| 5 | **Reach 100% test coverage, and gate every commit on it**: answer the owner's coverage questions and explain findings 79 and 80 simply first; add a React renderer; `yarn validate` runs coverage; no commit or push without 100% coverage of the change | `coverage-100.md` | **NEXT** |
-| 6 | **An alert always does what its bell shows**: fix findings 80 to 82 (Ramadan splash, two Android cancel failures), and 79 (settings hang) only if the owner approves it after session 5; design reviewed first | `alert-integrity.md` | queued |
+| 5 | **Reach 100% test coverage, and gate every commit on it**: answer the owner's coverage questions and explain findings 79 and 80 simply first; add a React renderer; `yarn validate` runs coverage; no commit or push without 100% coverage of the change | `coverage-100.md` | **IN PROGRESS** 2026-09-15, branch `test/coverage-100` |
+| 6 | **An alert always does what its bell shows**: fix findings 79 to 82 (settings hang, Ramadan splash, two Android cancel failures); 79 approved by the owner after session 5's explanation; design reviewed first | `alert-integrity.md` | queued |
 | 7 | **Android: each notification replaces the one before it**: one shared tag, and notifications due at the same instant are left to the system | `replace-previous-notification.md` | queued |
 | 8 | **iOS: find a way for each notification to replace the one before it**: investigate, and prove each answer on the iPhone | `ios-replace-previous-notification.md` | queued |
 | 9 | **Keep yesterday's still-due rows after 00:00**: a Magrib or Isha after midnight stays on screen and keeps its alarm, before v2.0 | `keep-still-due-rows-after-midnight.md` | queued |
@@ -45,6 +45,14 @@ None of these is a session yet. Each needs the owner's decision first.
   (`coverage-100.md`).
 - **No commit and no push without 100% coverage of the change**, and 100% overall is the target, with reviewed,
   written exclusions only for genuinely meaningless code.
+
+## Decided by the owner, 2026-09-15, from session 5's answers
+
+- **Finding 79 gets fixed** in session 6, with the small fix: never wait forever, and read the permission when the user
+  comes back to the app.
+- **Finding 80: any start-up error always shows the error page**, so Refresh can be reached; the splash never stays
+  over it.
+- **Component tests follow one documented pattern** (`__tests__/README.md`) that later, weaker models can copy exactly.
 
 ## Also live, not sessions
 
