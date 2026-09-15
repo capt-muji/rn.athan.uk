@@ -14,12 +14,6 @@ import { showArabicNamesAtom } from '@/stores/ui';
 
 import Prayer from '../Prayer';
 
-// A tap gives a haptic, and the generated native module behind expo-haptics records no calls
-jest.mock('expo-haptics', () => ({
-  ...jest.requireActual<typeof import('expo-haptics')>('expo-haptics'),
-  impactAsync: jest.fn(() => Promise.resolve()),
-}));
-
 const FAJR = 0;
 const SUNRISE = 1;
 const DUHA = 3;

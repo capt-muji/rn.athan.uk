@@ -4,10 +4,9 @@
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
-import { Platform } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { london } from '@/hooks/__tests__/londonDays';
+import { london, onPlatform } from '@/__tests__/harness';
 import { decorationsEnabledAtom, decorationsLoadedAtom } from '@/stores/ui';
 
 import RamadanDecorations from '../RamadanDecorations';
@@ -29,9 +28,6 @@ const ALL_SPRITES = [
 ];
 
 const store = getDefaultStore();
-
-// Math.random, Reanimated and the platform are spied on or replaced by one test only
-afterEach(() => jest.restoreAllMocks());
 
 /**
  * Sets the London clock and pins Math.random, which sizes, places and steers the clouds
@@ -104,7 +100,7 @@ describe('the Ramadan decorations on Monday 15 February 2027 at 20:00, 8 Ramadan
     ['android', 0.1],
   ] as const)('draws the same sprites on %s, whichever way the clouds drift', async (os, random) => {
     setClock('2027-02-15', '20:00', random);
-    jest.replaceProperty(Platform, 'OS', os);
+    onPlatform(os);
 
     await render(<RamadanDecorations />);
 

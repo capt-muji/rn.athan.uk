@@ -10,13 +10,6 @@ import { setSettingsSheetModal } from '@/stores/ui';
 
 import SettingsButton from '../SettingsButton';
 
-// jest-expo turns the native ExpoHaptics.impactAsync into a jest.fn that expo-haptics awaits; expo-haptics's own
-// impactAsync is mocked so the call the app makes, and the style it asks for, can be observed
-jest.mock('expo-haptics', () => ({
-  ...jest.requireActual('expo-haptics'),
-  impactAsync: jest.fn(() => Promise.resolve()),
-}));
-
 // The button has no role, label or text to be found by, so it is reached as the root of what it renders
 
 describe('the settings button, with the settings sheet mounted', () => {
