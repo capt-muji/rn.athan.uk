@@ -10,7 +10,8 @@ Every test in this repo is a template for the next one. Follow this page exactly
 | Logic | `*.test.ts` | `unit` | Plain functions, stores and hooks, with `react-native` replaced by `shared/__mocks__/react-native.ts` |
 | Component | `*.test.tsx` | `components` | Real React Native components, rendered by React Native Testing Library |
 
-The extension decides the project. A `.test.ts` file never renders, and a `.test.tsx` file always does.
+The extension decides the project. A `.test.ts` file never renders, and a `.test.tsx` file always does. Run one project
+with `npx jest --selectProjects=components` (with the `=`; without it Jest reads the paths after it as project names).
 
 ## Where a suite lives
 
@@ -18,7 +19,8 @@ The extension decides the project. A `.test.ts` file never renders, and a `.test
   `components/prayer/__tests__/Alert.test.tsx`.
 - `app/` is the one exception. Expo Router loads every file under `app/` as a screen, a test included, so `app/`
   suites live in `__tests__/app/` at the repository root.
-- Shared set-up lives in `__tests__/harness.ts`. Nothing else is shared between suites.
+- Shared set-up lives in `__tests__/harness.ts`. Import `showLondonDay`, `london`, `Breakage` and `onPlatform` from
+  there, never from the files behind it.
 
 ## What a component suite asserts
 
@@ -32,7 +34,8 @@ Never assert:
 
 - **Snapshots.** `toMatchSnapshot` pins markup, not behaviour, and breaks on every harmless edit.
 - **Style values.** A colour or a margin is a design choice, and restating it in a test proves nothing. The one
-  exception is a rule the app must keep, such as an animated value that must start settled.
+  exception is a rule the app must keep, named in a comment beside the assertion: an animated value that must start
+  settled, a layout that must fill the screen, a layer that must stay displayed until its fade ends.
 - **Internals.** How many times a hook ran, which child component was used, or a component's local state.
 - **How an animation looks.** Smoothness and timing are checked on a device with frame evidence, not here.
 
@@ -81,19 +84,35 @@ The rules the example follows:
 The reference suites show the pattern, not complete coverage of their files. A suite you write covers every statement,
 branch and function of the file it tests.
 
+## Choosing inputs that can fail
+
+A test guards a line only if the input it uses would give a different result when that line is wrong.
+
+- **Never test at a starting value.** The overlay starts on index 0 of the Standard list, so a row that wrongly reads
+  index 0 passes every test that selects index 0. Select another row, on the other list too.
+- **Pick values that differ where the code could confuse them.** Dhuhr is 13:02 on both 11 and 12 September, so it
+  cannot show which day a row read; Sunrise (06:26, then 06:28) can.
+- **Cross boundaries on the side the rule decides.** 59.6 seconds rounds up and to the nearest alike; 59.4 seconds
+  tells ceil from round.
+
 ## Setting the app's state
 
 - **Every test starts from a fresh install.** Before each test, storage is emptied and every atom is back to its
-  initial value, and after each test pending timers are cleared and real timers restored (`jest.components.setup.js`).
+  initial value. After each test, pending timers are cleared, real timers restored, and every spy and replaced
+  property undone (`jest.components.setup.js`).
 - **Plain variables inside modules are not reset.** A module that sets itself up once, such as
   `initWidgetSettingsSync`, keeps its "already done" flag while the subscription it made is wiped with the atoms, so
   from the second test on it is silently inert. A suite that depends on such set-up tests it in its first test only,
   or loads the module fresh with `jest.isolateModules`.
-- Prayer data: `showLondonDay(date, time, breakage)` saves real London days from 10 to 12 September 2026 through the
-  real database, sets the clock and builds both lists. `breakage` marks times sent unreadably or days not stored.
-- Preferences: call the store setter the app itself uses (`setPrayerAlertType`, `setSoundPreference`), never an atom or
-  a storage key directly.
-- `showLondonDay` turns fake timers on. Move time with `await act(() => jest.advanceTimersByTime(ms))`.
+- **Prayer data:** `showLondonDay(date, time, breakage)` saves real London days from 10 to 12 September 2026 through
+  the real database, sets the clock and builds both lists. `breakage` marks times sent unreadably or days not stored.
+  For another date (the Ramadan season, say), set the clock with `jest.useFakeTimers({ now: london(date, time) })`.
+- **Preferences:** call the store setter the app itself uses (`setPrayerAlertType`, `setSoundPreference`). A preference
+  the app writes only from a component (`decorationsEnabledAtom`, `countdownBarShownAtom`, `showTimePassedAtom` and
+  `showArabicNamesAtom`, which Settings writes through `useAtom`) is written with `getDefaultStore().set(atom, value)`,
+  with a comment naming that component. Never write a storage key directly.
+- **Time:** `showLondonDay` turns fake timers on. Move time with `await act(() => jest.advanceTimersByTime(ms))`.
+- **Platform:** Jest loads React Native as iOS. `onPlatform('android', 29)` runs the rest of the test as Android API 29.
 
 ## Finding things on screen
 
@@ -103,19 +122,35 @@ Query the way a person finds things, in this order of preference:
 2. `screen.getByText('...')` for text, including a button that has no role;
 3. `screen.getByLabelText('...')` for a labelled control.
 
-A `testID` is a last resort, and adding one is a production change that needs review.
+Then, only where the app offers nothing a person could find it by:
+
+- **An icon** drawn from an `.svg` file carries its file name: `screen.getByTestId('svg:bell-ring')`.
+- **An image** renders as `RCTImageView`, which the library does not treat as an image: find it by the `source` it
+  draws.
+- **Something with no role, label or text** is reached from `screen.root`, with a comment saying why.
+
+A test that pins what is drawn, rather than what a screen reader reaches, queries with `{ includeHiddenElements: true }`,
+so a later accessibility fix does not read as a regression. Adding a `testID` to the app is a production change that
+needs review.
 
 ## Mocks
 
-- **Already mocked for every suite** in `jest.components.setup.js`, and never mocked again in a suite: Expo's native
-  modules (through jest-expo's setup), Reanimated and worklets, Gesture Handler, the bottom sheet, safe-area, and
-  expo-audio (which ships no Jest mock of its own, so the setup defines the three calls the app makes).
+- **Already mocked for every suite** in `jest.components.setup.js`, and never mocked again in a suite:
+  - Expo's native modules, through jest-expo's setup;
+  - Reanimated and worklets, with shared values that keep one value per component as the real hook does, so an
+    effect re-runs only when its dependencies change and a first-evaluation snap ends after the first frame;
+  - Gesture Handler, the bottom sheet and safe-area;
+  - `expo-haptics`, whose calls are jest functions: `expect(Haptics.impactAsync).toHaveBeenCalledWith(...)`;
+  - `expo-audio`, which ships no Jest mock of its own, so the setup defines the three calls the app makes.
+- **To watch a call into one of those** (`withTiming`, `withRepeat`, `cancelAnimation`, `useReducedMotion`), use
+  `jest.spyOn` on the module, calling through unless the test sets an input. Every spy is undone after each test.
 - **To observe or control a call** into a module those do not cover, mock that module in the suite, beside the imports,
   with a comment saying why: `components/ui/__tests__/Error.test.tsx` mocks `expo-updates` and `@/stores/version`,
   because Refresh wipes the cache and restarts the app.
 - **To change what a shared mock returns**, use `mockReturnValueOnce` or `mockImplementationOnce`. `clearMocks` is on
   for component suites, which resets call counts before each test but not return values, so a plain
-  `mockReturnValue` would leak into every later test in the file.
+  `mockReturnValue` would leak into every later test in the file. A queued `Once` answer that a failing test did not
+  use also survives, so reset it in `afterEach` where a test queues several.
 
 ## Before a test is trusted
 
@@ -129,3 +164,6 @@ A `testID` is a last resort, and adding one is a production change that needs re
    file that genuinely cannot be measured is listed in that script's `UNMEASURED`, with its reason.
 4. **No coverage ignore comments.** `istanbul ignore`, `c8 ignore` and `v8 ignore` report untested code as covered, and
    the gate refuses any changed file that holds one.
+5. **A line no honest test can reach** is not left uncovered and not hidden. Prove it unreachable, then either delete it
+   with no change in behaviour, or keep it where it protects the app from a future edit and test it with the input
+   that edit would bring (a prayer list without a name, a start-up that rejects).
