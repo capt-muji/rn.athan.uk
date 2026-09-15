@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+zero=0000000000000000000000000000000000000000
+measured=
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue
+
+  # Coverage is measured once, on the checked-out tree, which the gate requires every pushed commit to be
+  if [ -z "$measured" ]; then
+    yarn validate || exit 1
+    measured=1
+  fi
+
+  node scripts/check-changed-coverage.js --push "$local_sha" || exit 1
+done
