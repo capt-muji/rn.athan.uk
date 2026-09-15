@@ -6,9 +6,13 @@
  * How component tests are written here: __tests__/README.md.
  */
 
+import { Platform } from 'react-native';
+
 import { type Breakage, london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import { ScheduleType } from '@/shared/types';
 import { setSequence } from '@/stores/schedule';
+
+export { type Breakage, london };
 
 /**
  * Shows 10 to 12 September 2026 as stored London days, with the clock at a London reading and both lists built
@@ -30,4 +34,16 @@ export const showLondonDay = (date: string, time: string, breakage: Breakage = {
   setSequence(ScheduleType.Extra, now);
 
   return now;
+};
+
+/**
+ * Runs the rest of the test as Android or iOS. Jest loads React Native as iOS; both switches are undone after each
+ * test by jest.components.setup.js
+ *
+ * @param os The platform
+ * @param version What `Platform.Version` reads: Android's API level, or iOS's version string
+ */
+export const onPlatform = (os: 'ios' | 'android', version?: number | string): void => {
+  jest.replaceProperty(Platform, 'OS', os);
+  if (version !== undefined) jest.spyOn(Platform, 'Version', 'get').mockReturnValue(version);
 };
