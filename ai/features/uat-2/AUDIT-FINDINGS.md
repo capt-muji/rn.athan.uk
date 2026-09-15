@@ -5520,11 +5520,13 @@ with no clock change:
 
 Not checked on the device, with the reason:
 
-- `RamadanDecorations`' two lines. A production build cannot force the season, the mock-variant build drops every
-  `EXPO_PUBLIC_*` variable and replaces the owner's app (a data wipe and a restore from a two-day-old backup), and moving
-  the clock to Ramadan 2027 would fire the owner's armed alarms. The evidence instead: the fade is bit-identical over
-  1,020,008 progress values, `Math` is a worklets global, and the suite covers the file fully. A mock-build check is
-  available if the owner wants it.
+- `RamadanDecorations`' two lines, at the time of this note. The evidence then: the fade is bit-identical over
+  1,020,008 progress values, `Math` is a worklets global, and the suite covers the file fully. The reasons given then,
+  as corrected after the follow-up below: a production build cannot force the season (true); session 3's mock-variant
+  build drops every `EXPO_PUBLIC_*` variable (true, and one added variable overcomes it) and replaces the owner's app
+  with a data wipe (wrong: a mock build keeps its own `athan-storage-dev` and goes on over the owner's app with
+  `adb install -r`); moving the clock to Ramadan 2027 would fire the owner's armed alarms (true). The owner asked for
+  the check afterwards, and it ran with the season forced: see "Follow-up" below.
 - `stores/widget.ts` (iOS only, widgets off), `shared/perf.ts` (the monitor is off in production) and
   `shared/whatsNew.ts` (the visible release is unchanged by construction and by test).
 
@@ -5554,11 +5556,8 @@ Decisions waiting on the owner:
 - **`shared/__tests__/audioMatrix.test.ts` under load.** It decodes the reminder MP3s and timed out at 10 seconds twice
   while many agents ran (load average 314), failing the pre-commit hook until load fell. Now that every commit runs the
   full suite, a busy machine can block a commit: a longer timeout for that suite, or running it outside the hook.
-- **A device check of the Ramadan decorations** through a mock build, if wanted.
-- **Two cleanups in `RamadanDecorations.tsx`** (`MoonSparks` and `LanternSparks` cancel their sparks' animations on
-  unmount). The harness's shared values cancel on unmount as Reanimated's own hook does, so every test passes without
-  them, and on a device the hook cancels too. The guide's rule makes them candidates for deletion, which changes
-  production code, so they stay until the owner decides.
+- **The Ramadan decorations device check and the two spark cleanups** were decided by the owner after this note:
+  see "Follow-up" below.
 
 ## Harness notes, so they are not read as app failures
 
@@ -5567,17 +5566,87 @@ Decisions waiting on the owner:
   avoids it.
 - Agents shared the session scratchpad and one commit message was overwritten and made again; scratch now goes to
   `$TMPDIR` under area names.
-- `jest --selectProjects components <paths>` reads the paths as project names; `--selectProjects=components` does not.
+- A path written after `--selectProjects` is not applied, with or without the `=`, so the whole project runs (40
+  suites where one was meant). The path goes first, or `--testPathPatterns=<pattern>`. A reviewer found this after
+  the note first said otherwise; `__tests__/README.md` is corrected too (1.27.161).
 - "A worker process has failed to exit gracefully" appears in the unit project and predates this session.
 - `components/ui/__tests__/Error.test.tsx` failed once in one reviewer's loaded run and passed on the rerun.
 - Worktree agents must not link `android/` or `ios/`: the main checkout's prebuild version moves with every merge.
 
-## State left behind
+## State left behind (updated after the follow-up)
 
-- `uat-2` at 1.27.157 once this note merges (at 1.27.156 before it), merged locally and not pushed.
+- `uat-2` at 1.27.161 once the follow-up below merges, pushed to `origin/uat-2` with the owner's go-ahead.
   Nothing was built on or pushed to EAS, and `releases.json` is untouched.
-- The 3T runs the local production build 1.27.150 with the owner's data intact, automatic time untouched, and the
-  16 September 05:03 alarm armed when last read at 10:05.
-- The agents' branches (`test/cov-*`, `test/harness-*`, `merge/*` and `worktree-agent-*`) remain; this session's agent
-  worktrees under `.claude/worktrees/` are removed. The device evidence (dumps, the alarm readings, the APK and its build
-  report) is at `~/athan-device-sweep/session5/`.
+- The 3T runs the mock build of 1.27.159 at the owner's request, with Asr next on every opening, and automatic time on
+  and never moved. The owner's own data stays in `athan-storage` for the next production build. Of the owner's three
+  alarms, the 16:23 on 15 September is no longer armed, its time having passed; 05:03 and 16:21 on 16 September were
+  armed at 16:27 (`mockcheck/alarms-162739.txt`). While the mock build is installed, its own alert refresh may cancel
+  those and each background-task run seeds today again; installing a production build (`build-prod.zsh`) reschedules
+  from the real times.
+- The agents' branches (`test/cov-*`, `test/harness-*`, `merge/*` and `worktree-agent-*`) and the follow-up's branches
+  (`refactor/spark-cleanups`, `chore/mock-asr-next`, `test/mock-seeding` and `docs/session5-followup`) remain. This
+  session's agent worktrees under `.claude/worktrees/` are removed; the two still there are session 4's. The device
+  evidence is at `~/athan-device-sweep/session5/`: the 10:04 and 10:05 alarm readings in `device/`, the follow-up's
+  logcat files and its 16:27 alarm reading in `mockcheck/`, where four stale dumps are named `STALE-*`, and the three
+  APKs with their build reports in `build/`.
+
+## Follow-up: the owner's decisions after this note, 15 September 2026
+
+The owner approved the push to `uat-2`, asked for the two spark cleanups to be deleted as redundant, asked for the
+Ramadan decorations to be checked on the phone (moving the clock or forcing the season), and asked for a mock build
+whose next prayer is Asr, a minute away, every time the app is opened.
+
+- **1.27.158, the spark cleanups deleted.** `MoonSparks` (five gold dots around the moon's glow) and `LanternSparks`
+  (eight around the lantern's) cancelled their dots' loops in an effect cleanup. Each loop runs on a shared value from
+  `useSharedValue` in the same component, and Reanimated 4.6.0's hook cancels it on unmount itself
+  (`src/hook/useSharedValue.ts`, the file the bundle uses), before the removed cleanup would have run, so the second
+  cancel was a no-op. `RamadanDecorations`' own cleanup stays: turning decorations off returns null without unmounting,
+  and only that cleanup stops the parent's loops (the "turned off" test fails without it). Reviewed: merge.
+- **1.27.159, Asr next on every opening of a mock build.** `mocks/simple.ts` seeded today once, when the module loaded,
+  so a return from the background downloaded the same times and Asr had long passed. `MOCK_DATA_SIMPLE.times` is now a
+  getter that builds every day from the moment it is read: `api/client.ts` reads it once per download, and only a
+  launch, a return from the background and the background task download. Times carry no seconds, so Asr is the first
+  whole minute at least 60 seconds after the download (60 to 119 seconds away), with Fajr, Sunrise and Dhuhr a minute
+  apart before it and Magrib and Isha a minute apart after it. Every other day is unchanged value for value. The client
+  test that planted an unreadable mock day by editing the mock object now plants it through the getter, with its
+  assertions unchanged, and still fails when the mock day skips validation. Reviewed: merge.
+- **1.27.160, the mock's mechanism pinned.** 1.27.159's reviewer found that seeding today once at load passed all tests,
+  since `mocks/` is outside the coverage measure. `mocks/__tests__/simple.test.ts` pins the mechanism rather than the
+  offsets: a download puts Asr next, 60 to 119.999 seconds away, with Fajr, Sunrise and Dhuhr passed and Magrib and Isha
+  after it; a second download moves today and nothing else. The test's own review found its first version read times in
+  the machine's zone, as the mock wrote them, while the app reads London: the mock now writes with `formatPrayerTime`
+  and the test reads with `createPrayerDatetime`, so it holds under six zones, and the London 3T sees the same times.
+  It fails with today seeded once, Asr on the floor minute, Sunrise, Fajr or Magrib moved before Asr, and the mock
+  writing in the machine's zone under New York time. The descriptions of the mock in `e2e/README.md`, `ai/AGENTS.md`,
+  `ai/USAGE.md` and `e2e/scripts/idle-cpu.sh` were brought up to date, the idle script now waits 5.5 minutes, since Isha
+  can fall 4 minutes after a launch, and the mock's night note gives 06:00-23:55. Reviewed: merge, after its fixes were
+  checked.
+- **On the 3T**, the mock build of 1.27.159 (local Gradle, `EXPO_PUBLIC_ENV=local`, sha256 `61f5cd3b…0449`) went on
+  over the owner's 1.27.150 with `adb install -r` at 15:45. It was built from `db0b9c8f`, since rebased as `293655cc`
+  with the same tree. The owner's own data stays in `athan-storage`, which a mock build never opens. The owner's three
+  alarms (16:23 today, 05:03 and 16:21 tomorrow) read armed before the install and at 16:00, and every launch log shows
+  the notification sweep skipped with three pending; those two readings were not kept, and the one kept is from 16:27.
+  The screen was read from screenshots, not kept, because `uiautomator dump` fails while the countdown animates.
+  - Cold launch at 15:45:56, download at 15:45:58: Fajr 15:43, Sunrise 15:44, Dhuhr 15:45, Asr 15:47, Magrib 15:48,
+    Isha 15:49, every alert off. The screen was read at 15:47:15, after Asr had passed, with Magrib next in 45s.
+  - Home, then reopened at 15:48:43, after Asr had passed: a new download, and Asr 15:50 next, "1m".
+  - Back, then reopened at 15:49:05: a new download, and Asr 15:51 next, "1m 38s".
+- **The Ramadan decorations on the 3T, 15:54 to 16:00.** Moving the clock to Ramadan 2027 would have fired the owner's
+  three armed alarms at once and spent tomorrow's Fajr, so the season was forced instead: a second mock build of the
+  same tree, from `293655cc`, with `EXPO_PUBLIC_FORCE_RAMADAN=1`, which `isRamadan()` honours outside production
+  (sha256 `1df5eed6…34cb`), went on with `adb install -r`, and the plain mock build went back on afterwards.
+  - Cold launch at 15:54:26: the moon, both hanging stars, the lantern with its sparks, the clouds and the gold Ramadan
+    mosque icon were on screen. A few seconds later the moon, stars and lantern had bobbed, the sparks moved and the
+    clouds drifted. Asr was next, at 15:56.
+  - Settings showed "Show decorations", which only the season offers. Turned off at 15:57:15: the moon, stars, lantern,
+    sparks and clouds went, the standard blue mosque icon came back, and nothing else on the screen changed. Turning
+    decorations off unmounts `MoonSparks` and `LanternSparks`, the path the deleted cleanups covered.
+  - Turned on again at 15:59:46: every decoration and the gold icon came back.
+  - Logcat held no error line from React Native or the runtime across the launch and both toggles.
+- **The phone left as the owner asked.** The plain mock build of 1.27.159 went back on at 16:00. Cold launch at
+  16:00:20, download at 16:00:22: Fajr 15:58, Sunrise 15:59, Dhuhr 16:00, Asr 16:02 next ("1m 13s"), Magrib 16:03,
+  Isha 16:04.
+- **Device note.** `uiautomator dump` exited without dumping while the countdown ran, and a check that then read
+  `/sdcard/athan-ui.xml` got an earlier session's screen back as if it were current. The four dumps saved that way,
+  stamped 15:46 and 15:47, hold that earlier screen and are renamed `STALE-asr-cold-1*` in `mockcheck/`. The check
+  script now deletes the file first and requires the "dumped" line.
