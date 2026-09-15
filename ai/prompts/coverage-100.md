@@ -1,6 +1,6 @@
 # Session 5: reach 100% test coverage, and gate every commit on it
 
-**Status: queued 2026-09-15 by the owner as the next session.** Follows session 4 (`coverage-sweep.md`), whose record
+**Status: DONE 2026-09-15, 1.27.140 to 1.27.157.** The record is "Session 5 of the queue" in `ai/features/uat-2/AUDIT-FINDINGS.md`. Follows session 4 (`coverage-sweep.md`), whose record
 is "Session 4 of the queue" in `ai/features/uat-2/AUDIT-FINDINGS.md`.
 
 ## The owner's ask, 2026-09-15
