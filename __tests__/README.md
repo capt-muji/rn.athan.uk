@@ -11,7 +11,10 @@ Every test in this repo is a template for the next one. Follow this page exactly
 | Component | `*.test.tsx` | `components` | Real React Native components, rendered by React Native Testing Library |
 
 The extension decides the project. A `.test.ts` file never renders, and a `.test.tsx` file always does. Run one project
-with `npx jest --selectProjects=components` (with the `=`; without it Jest reads the paths after it as project names).
+with `npx jest --selectProjects=components`, and one suite with its path first:
+`npx jest components/prayer/__tests__/Alert.test.tsx --selectProjects=components`. A path written after
+`--selectProjects` is not applied, with or without the `=`, and the whole project runs; `--listTests` shows what a
+command will run.
 
 ## Where a suite lives
 
