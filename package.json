@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.27.155",
+  "version": "1.27.156",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -73,6 +73,7 @@
     "@babel/plugin-transform-react-jsx": "^7.29.7",
     "@babel/preset-typescript": "^7.29.0",
     "@biomejs/biome": "2.5.13",
+    "@jest/create-cache-key-function": "29.7.0",
     "@react-native/jest-preset": "0.86.3",
     "@testing-library/react-native": "14.0.1",
     "@types/jest": "^30.0.0",
