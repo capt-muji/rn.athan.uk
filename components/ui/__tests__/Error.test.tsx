@@ -5,6 +5,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Updates from 'expo-updates';
 
+import logger from '@/shared/logger';
 import { clearUpgradeCache } from '@/stores/version';
 
 import ErrorScreen from '../Error';
@@ -24,5 +25,15 @@ describe('the error screen after a launch that failed', () => {
     const [clearedAt] = jest.mocked(clearUpgradeCache).mock.invocationCallOrder;
     const [reloadedAt] = jest.mocked(Updates.reloadAsync).mock.invocationCallOrder;
     expect(clearedAt).toBeLessThan(reloadedAt);
+  });
+
+  it('logs a reload that fails rather than letting the failure escape the press', async () => {
+    const refused = new Error('reload refused');
+    jest.mocked(Updates.reloadAsync).mockRejectedValueOnce(refused);
+    await render(<ErrorScreen />);
+
+    await fireEvent.press(screen.getByText('Refresh'));
+
+    expect(logger.error).toHaveBeenCalledWith('ERROR SCREEN: Reload failed', { error: refused });
   });
 });
