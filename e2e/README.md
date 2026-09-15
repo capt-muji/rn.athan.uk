@@ -86,9 +86,10 @@ verification, never infer visuals from pixels alone.
   the mock (`stores/database.ts`, AUDIT #25), the fabricated rows stay in
   `athan-storage-dev` and a prod or preview build installed over the top never
   reads them — but they persist for the next local build, so a stale mock day
-  is still a live confound within dev. The tell is `fajr: addMinutes(-3)` in
-  `mocks/simple.ts`: TODAY's six rows are launch-relative, so a "Fajr" three
-  minutes before the current clock is the mock, not a bug. Logging is disabled
+  is still a live confound within dev. The tell is in `mocks/simple.ts`:
+  TODAY's six rows are seeded from each download (every launch and every return
+  to the app), with Asr next a minute or two away and Fajr a few minutes before
+  the clock, so a "Fajr" minutes before the current clock is the mock, not a bug. Logging is disabled
   in prod and preview (`shared/logger.ts`), so the only build that gives both
   real data and logs is none of them — on a real-data device run, the alarm
   dump is the evidence and an empty logcat proves nothing either way.
@@ -110,8 +111,9 @@ verification, never infer visuals from pixels alone.
   five identical snapshots on the 3T** — measure idle with
   `scripts/idle-cpu.sh` (per-thread `/proc` deltas over 60s).
 - **Idle must be measured past the mock's compressed window**: today's six
-  mock prayers sit at launch −3…+3 min, so sample ≥4.5 min after a cold launch
-  (idle-cpu.sh does). At night (00:00–06:00) the mock's Isha becomes a
+  mock prayers sit from 3 min before a download to 4 min after it, and every
+  return to the app downloads again, so sample ≥5.5 min after a cold launch
+  without leaving the app (idle-cpu.sh does). At night (00:00–06:00) the mock's Isha becomes a
   post-midnight Isha and the day-roll fires early — test day-rolls in daytime.
 - **`expo run:android --device` takes a device NAME, not an adb serial**: with
   a serial it prebuilds, then fails — and a `| tail` pipe reports exit 0.
