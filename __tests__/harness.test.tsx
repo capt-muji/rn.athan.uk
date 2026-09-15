@@ -77,11 +77,14 @@ describe("useSharedValue, which behaves as Reanimated's own hook", () => {
 
 // The last test checks that the switches made before it were undone, so these run in this order
 describe('onPlatform, switching to Android', () => {
-  // [what Platform.select is given, what Android's own select answers]
+  /** Set by the test before the last, so the last fails when run alone, where there would be no switch to undo */
+  let switchedInTheTestBefore = false;
+
+  // [what Platform.select is given, what Android's own select answers], each an answer iOS's select would not give
   it.each<[Record<string, string>, string]>([
     [{ ios: 'ios', android: 'android' }, 'android'],
     [{ ios: 'ios', default: 'default' }, 'default'],
-    [{ native: 'native', default: 'default' }, 'native'],
+    [{ ios: 'ios', native: 'native', default: 'default' }, 'native'],
     [{ android: 'android', native: 'native', default: 'default' }, 'android'],
   ])('selects from %j as Android does: %s', (spec, answer) => {
     onPlatform('android');
@@ -94,25 +97,52 @@ describe('onPlatform, switching to Android', () => {
   it('opens the Play Store from a module that reads the platform as it loads, switched and loaded fresh', async () => {
     // Read before the fresh load, so this is the same mock the module calls once the load is over
     const openURL = jest.mocked(Linking.openURL);
-    let updates: typeof import('@/device/updates') | undefined;
+    // Assigned inside the callback, which runs before the next line; a failed load throws there
+    let updates!: typeof import('@/device/updates');
     jest.isolateModules(() => {
       require('@/__tests__/harness').onPlatform('android');
       updates = require('@/device/updates');
     });
 
-    await updates?.openStore();
+    await updates.openStore();
 
     expect(openURL).toHaveBeenCalledWith(expect.stringMatching(/^market:\/\//));
   });
 
+  // React loads again inside jest.isolateModules too, and hooks fail on any React but the one rendering them, so the
+  // callback points React at the one this file renders with before it loads the component
+  it('renders a component that calls hooks and reads the platform as it loads, switched and loaded fresh', async () => {
+    // Taken before the callback: taken inside it, these would be the fresh copies the mocks are there to replace
+    const sharedReact = {
+      react: require('react'),
+      jsx: require('react/jsx-runtime'),
+      jsxDev: require('react/jsx-dev-runtime'),
+    };
+    // Assigned inside the callback, which runs before the render; a failed load throws there
+    let FreshPlatformAtLoad!: typeof import('@/__tests__/PlatformAtLoad').default;
+    jest.isolateModules(() => {
+      jest.doMock('react', () => sharedReact.react);
+      jest.doMock('react/jsx-runtime', () => sharedReact.jsx);
+      jest.doMock('react/jsx-dev-runtime', () => sharedReact.jsxDev);
+      require('@/__tests__/harness').onPlatform('android');
+      FreshPlatformAtLoad = require('@/__tests__/PlatformAtLoad').default;
+    });
+
+    await render(<FreshPlatformAtLoad />);
+
+    expect(screen.getByText('Android')).toBeOnTheScreen();
+  });
+
   it('reads Android API 29 from Platform.OS and Platform.Version', () => {
     onPlatform('android', 29);
+    switchedInTheTestBefore = true;
 
     expect(Platform.OS).toBe('android');
     expect(Platform.Version).toBe(29);
   });
 
   it('is back on iOS in the next test', () => {
+    expect(switchedInTheTestBefore).toBe(true);
     expect(Platform.OS).toBe('ios');
     expect(Platform.Version).toBe(IOS_VERSION);
     expect(Platform.select({ ios: 'ios', android: 'android' })).toBe('ios');
@@ -150,17 +180,22 @@ describe('expo-haptics, whose calls are recorded', () => {
 
 // The second test reads what the first left behind, so the two run in this order
 describe('every test, which starts from a fresh install', () => {
+  /** Set by the first test, so the second fails when run alone, where nothing would have been written */
+  let wroteInTheTestBefore = false;
+
   it('holds a value it writes to storage and an atom it sets for as long as it runs', () => {
     // A key of the harness's own, since what is pinned is that storage is emptied whatever the app keeps in it
     Database.setItem('harness_written', true);
     // The atom itself, since what is pinned is that every atom goes back to its initial value
     getDefaultStore().set(overlayAtom, { isOn: true, selectedPrayerIndex: 3, scheduleType: ScheduleType.Extra });
+    wroteInTheTestBefore = true;
 
     expect(Database.getItem('harness_written')).toBe(true);
     expect(getDefaultStore().get(overlayAtom)).toMatchObject({ isOn: true, selectedPrayerIndex: 3 });
   });
 
   it('finds neither in the next test', () => {
+    expect(wroteInTheTestBefore).toBe(true);
     expect(Database.getItem('harness_written')).toBeNull();
     expect(getDefaultStore().get(overlayAtom)).toEqual({
       isOn: false,

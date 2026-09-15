@@ -121,16 +121,43 @@ A test guards a line only if the input it uses would give a different result whe
   never reads (`__tests__/harness.test.tsx` pins this).
 
   ```tsx
-  let updates: typeof import('@/device/updates') | undefined;
+  // Assigned inside the callback, which runs before the next line; a failed load throws there
+  let updates!: typeof import('@/device/updates');
   jest.isolateModules(() => {
     require('@/__tests__/harness').onPlatform('android');
     updates = require('@/device/updates');
   });
   ```
 
-  React loads again inside the callback too, so a plain module or a component that calls no hook (`Modal.tsx`) can be
-  tested this way, but a component that calls hooks (`Sheet.tsx`) throws when rendered from a fresh load, and this
-  guide has no pattern for it yet.
+  React loads again inside the callback too, and hooks fail on any React but the one rendering them: React's own, a
+  mocked library's (Reanimated, safe-area) and React Native's, which load during render. So a component that calls
+  hooks (`Sheet.tsx`) is loaded fresh with React pointed at the React the suite renders with, and rendered with the
+  library imported at the top of the suite, as in any test. Take the three React modules before the callback: taken
+  inside it they are the fresh copies, and every hook throws "Cannot read properties of null". Rendering with a fresh
+  React and the library's `pure` entry instead works only for a component calling React's own hooks, so it is not used.
+  `__tests__/harness.test.tsx` pins this, and the music glyph test in
+  `components/sheets/screens/__tests__/Settings.test.tsx` uses it. `jest.doMock` lasts for the rest of the file, so a
+  later fresh load in the same file gets this React rather than a fresh one: a test that needs a fresh React goes in a
+  file of its own.
+
+  ```tsx
+  const sharedReact = {
+    react: require('react'),
+    jsx: require('react/jsx-runtime'),
+    jsxDev: require('react/jsx-dev-runtime'),
+  };
+  // Assigned inside the callback, which runs before the render; a failed load throws there
+  let FreshSheet!: typeof import('@/components/sheets/parts/Sheet').default;
+  jest.isolateModules(() => {
+    jest.doMock('react', () => sharedReact.react);
+    jest.doMock('react/jsx-runtime', () => sharedReact.jsx);
+    jest.doMock('react/jsx-dev-runtime', () => sharedReact.jsxDev);
+    require('@/__tests__/harness').onPlatform('android');
+    FreshSheet = require('@/components/sheets/parts/Sheet').default;
+  });
+
+  await render(<FreshSheet {...props} />);
+  ```
 
 ## Finding things on screen
 
