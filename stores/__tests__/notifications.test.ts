@@ -335,6 +335,94 @@ describe('migrateIndexKeyedAlertPreferences', () => {
       expect(Database.database.contains('preference_reminder_interval_extra_4')).toBe(false);
     });
   });
+
+  // The migration looks each index key up by the name it was written against and writes through that name's atoms,
+  // with no check that the name is still on today's list. These pin that it always is, so a constants change that
+  // drops or reorders a prayer fails here instead of silently losing a saved alert
+  describe('the lists the index keys were written against', () => {
+    const KINDS = ['alert', 'reminder_alert', 'reminder_interval'] as const;
+
+    const clearKeys = (type: string) => {
+      for (const key of Database.database.getAllKeys()) {
+        if (KINDS.some((kind) => key.startsWith(`preference_${kind}_${type}_`))) Database.database.remove(key);
+      }
+    };
+
+    const savedUnderNames = (type: string, names: readonly string[]) =>
+      KINDS.map((kind) =>
+        names.map((name) => Database.database.getString(`preference_${kind}_${type}_${name.toLowerCase()}`))
+      );
+
+    // A preference atom reads storage once, when it is created, so a key left behind here would become the starting
+    // value of any atom a later test creates
+    afterEach(() => {
+      clearKeys('standard');
+      clearKeys('extra');
+    });
+
+    it.each<{ list: string; type: string; storedVersion: string | null; written: string[] }>([
+      {
+        list: 'the Standard list',
+        type: 'standard',
+        storedVersion: null,
+        written: ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'],
+      },
+      {
+        list: 'the Extras list before 1.0.27',
+        type: 'extra',
+        storedVersion: '1.0.26',
+        written: ['Last Third', 'Suhoor', 'Duha', 'Istijaba'],
+      },
+      {
+        list: 'the Extras list from 1.0.27',
+        type: 'extra',
+        storedVersion: '1.0.27',
+        written: ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'],
+      },
+    ])(
+      'moves every index key written against $list onto the prayer of that name',
+      ({ type, storedVersion, written }) => {
+        clearKeys(type);
+        // Off keeps every prayer silent for the suites below; the intervals tell the positions apart
+        written.forEach((_, index) => {
+          Database.database.set(`preference_alert_${type}_${index}`, '0');
+          Database.database.set(`preference_reminder_alert_${type}_${index}`, '0');
+          Database.database.set(`preference_reminder_interval_${type}_${index}`, String(5 * (index + 1)));
+        });
+
+        migrateIndexKeyedAlertPreferences(storedVersion);
+
+        expect(savedUnderNames(type, written)).toEqual([
+          written.map(() => '0'),
+          written.map(() => '0'),
+          written.map((_, index) => String(5 * (index + 1))),
+        ]);
+      }
+    );
+
+    // the schedule's key segment, today's list, and its alert, reminder and interval atoms
+    it.each([
+      [
+        'standard',
+        PRAYERS_ENGLISH,
+        [standardPrayerAlertAtoms, standardReminderAlertAtoms, standardReminderIntervalAtoms],
+      ],
+      ['extra', EXTRAS_ENGLISH, [extraPrayerAlertAtoms, extraReminderAlertAtoms, extraReminderIntervalAtoms]],
+    ])(
+      'holds one %s alert, reminder and interval atom per name on the list, each saved under that name',
+      (type, names, atomArrays) => {
+        clearKeys(type);
+        const store = createStore();
+
+        for (const atoms of atomArrays) {
+          for (const [index, atom] of atoms.entries()) store.set(atom, index + 1);
+        }
+
+        expect(atomArrays.map((atoms) => atoms.length)).toEqual(KINDS.map(() => names.length));
+        expect(savedUnderNames(type, names)).toEqual(KINDS.map(() => names.map((_, index) => String(index + 1))));
+      }
+    );
+  });
 });
 
 // =============================================================================

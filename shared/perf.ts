@@ -49,9 +49,10 @@ interface RingEntry {
 
 type PerfModule = typeof import('react-native-performance');
 type PerfPerformance = PerfModule['default'];
+type PerfStorage = ReturnType<typeof createMMKV>;
 
 let perfModule: PerfModule | null = null;
-let perfStorage: ReturnType<typeof createMMKV> | null = null;
+let perfStorage: PerfStorage | null = null;
 const ring: RingEntry[] = [];
 let seq = 0;
 let epochOffset = 0;
@@ -99,39 +100,49 @@ const toRingEntry = (entry: {
   };
 };
 
-/** Writes the ring snapshot to MMKV (bounded, overwrite-per-flush) */
-const flushRing = (reason: string) => {
-  if (!perfStorage) return;
-
+/**
+ * Writes the ring snapshot to MMKV (bounded, overwrite-per-flush)
+ *
+ * Takes the storage rather than reading a module variable, so a flush cannot be written before the storage exists.
+ */
+const flushRing = (storage: PerfStorage, reason: string) => {
   const payload = { v: 1, reason, flushedAt: Date.now(), count: ring.length, entries: ring };
-  perfStorage.set(RING_KEY, JSON.stringify(payload));
+  storage.set(RING_KEY, JSON.stringify(payload));
 };
 
-/** Observer callback for mark/measure entries: ring + MMKV + pino stream */
-const recordEntries = (list: {
-  getEntries: () => Array<{ name: string; entryType: string; startTime: number; duration?: number; detail?: unknown }>;
-}) => {
-  for (const entry of list.getEntries()) {
-    const ringEntry = toRingEntry(entry);
-    ring.push(ringEntry);
+/** Observer callback for mark/measure entries: ring + MMKV + pino stream, flushing into the storage it was built with */
+const recordEntriesInto =
+  (storage: PerfStorage) =>
+  (list: {
+    getEntries: () => Array<{
+      name: string;
+      entryType: string;
+      startTime: number;
+      duration?: number;
+      detail?: unknown;
+    }>;
+  }) => {
+    for (const entry of list.getEntries()) {
+      const ringEntry = toRingEntry(entry);
+      ring.push(ringEntry);
 
-    if (ring.length > RING_CAPACITY) {
-      ring.splice(0, ring.length - RING_CAPACITY);
+      if (ring.length > RING_CAPACITY) {
+        ring.splice(0, ring.length - RING_CAPACITY);
+      }
+
+      // Live pino stream: measures at info (the numbers that matter), marks at
+      // debug. Single-line JSON payloads — syslog/logcat stay greppable.
+      if (ringEntry.type === 'measure') {
+        logger.info(`PERF_MEASURE ${JSON.stringify(ringEntry)}`);
+      } else {
+        logger.debug(`PERF_MARK ${JSON.stringify(ringEntry)}`);
+      }
     }
 
-    // Live pino stream: measures at info (the numbers that matter), marks at
-    // debug. Single-line JSON payloads — syslog/logcat stay greppable.
-    if (ringEntry.type === 'measure') {
-      logger.info(`PERF_MEASURE ${JSON.stringify(ringEntry)}`);
-    } else {
-      logger.debug(`PERF_MARK ${JSON.stringify(ringEntry)}`);
+    if (ring.length % FLUSH_THRESHOLD === 0 && ring.length > 0) {
+      flushRing(storage, 'threshold');
     }
-  }
-
-  if (ring.length % FLUSH_THRESHOLD === 0 && ring.length > 0) {
-    flushRing('threshold');
-  }
-};
+  };
 
 /**
  * Idempotently derives launch-phase measures from native marks.
@@ -155,9 +166,10 @@ const measureLaunchPhases = (performance: PerfPerformance) => {
   }
 };
 
-const handleAppStateChange = (state: string) => {
+/** App state listener that flushes into the storage it was built with when the app goes to the background */
+const flushOnBackgroundInto = (storage: PerfStorage) => (state: string) => {
   if (state === 'background') {
-    flushRing('background');
+    flushRing(storage, 'background');
   }
 };
 
@@ -181,8 +193,10 @@ export const initPerfMonitor = (): void => {
   // subtracting it gives the epoch of module load — the zero only while the
   // require above happens to be what loaded it. now() has no such coupling.
   epochOffset = Date.now() - lib.default.now();
-  perfStorage = createMMKV({ id: MMKV_ID });
+  const storage = createMMKV({ id: MMKV_ID });
+  perfStorage = storage;
 
+  const recordEntries = recordEntriesInto(storage);
   new lib.PerformanceObserver(recordEntries).observe({ type: 'mark', buffered: true });
   new lib.PerformanceObserver(recordEntries).observe({ type: 'measure', buffered: true });
   new lib.PerformanceObserver(() => measureLaunchPhases(lib.default)).observe({
@@ -190,7 +204,7 @@ export const initPerfMonitor = (): void => {
     buffered: true,
   });
 
-  AppState.addEventListener('change', handleAppStateChange);
+  AppState.addEventListener('change', flushOnBackgroundInto(storage));
 
   // Replay pre-init marks in capture order so the import-time window appears
   // in the timeline ahead of perf_monitor_init (true epoch in detail.at)
@@ -199,7 +213,7 @@ export const initPerfMonitor = (): void => {
   }
 
   lib.default.mark('perf_monitor_init');
-  flushRing('init');
+  flushRing(storage, 'init');
 };
 
 /**
@@ -235,9 +249,9 @@ export const perfMeasure = (name: string, startMark: string, detail?: Record<str
 
 /** Flushes the ring buffer to MMKV immediately (e.g. before a measurement run ends) */
 export const perfFlush = (reason = 'manual'): void => {
-  if (!PERF_ENABLED || !perfModule) return;
+  if (!PERF_ENABLED || !perfStorage) return;
 
-  flushRing(reason);
+  flushRing(perfStorage, reason);
 };
 
 /** Test/inspection access to the in-memory ring (empty when disabled) */
