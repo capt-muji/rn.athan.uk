@@ -56,7 +56,7 @@ Off that path:
 
 | Order | Session | Brief | Plan | Status | Planned at | Needs first |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 6. An alert always does what its bell shows (findings 79 to 82) | `ai/prompts/alert-integrity.md` | `ai/plans/06-alert-integrity/PLAN.md` | NOT PLANNED | | nothing |
+| 1 | 6. An alert always does what its bell shows (findings 79 to 82) | `ai/prompts/alert-integrity.md` | `ai/plans/06-alert-integrity/PLAN.md` | PLANNING | | nothing |
 | 2 | 7. Android: each notification replaces the one before it | `ai/prompts/replace-previous-notification.md` | `ai/plans/07-replace-previous-notification/PLAN.md` | NOT PLANNED | | set when planned |
 | 3 | 8. iOS: a way for each notification to replace the one before it | `ai/prompts/ios-replace-previous-notification.md` | `ai/plans/08-ios-replace-previous-notification/PLAN.md` | NOT PLANNED | | set when planned |
 | 4 | 9. Keep yesterday's still-due rows after 00:00 | `ai/prompts/keep-still-due-rows-after-midnight.md` | `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` | NOT PLANNED | | set when planned |
@@ -75,6 +75,9 @@ row above.
 - The dashes approval page's open choices C2, C5 to C10 and C13 (session 3).
 - Finding 74: a Suhoor wrapped onto the evening before loses a day of buffer.
 - Leftover notification channels on the OnePlus 3T (cosmetic).
+- The athan sound change: a failed re-arm shows the old sound in Settings while some alarms keep the new one. On
+  2026-09-15 the owner approved it as its own session. Its brief, its row and its place in the order are still to be
+  written.
 
 ## Files here
 

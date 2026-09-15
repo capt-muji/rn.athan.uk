@@ -72,6 +72,25 @@ None of these is a session yet. Each needs the owner's decision first.
   over it.
 - **Component tests follow one documented pattern** (`__tests__/README.md`) that later, weaker models can copy exactly.
 
+## Decided by the owner, 2026-09-15, while planning session 6
+
+- **An alert sheet change (every at-time, reminder and interval change) is all or nothing, in both directions.** When
+  the phone does not accept every part of a change, the app undoes the whole change, bell and alarms together: a failed
+  arm when turning on puts the bell back and cancels what did arm; a refused cancel when turning off puts the bell back
+  and re-arms that setting. A refused Off change therefore shows the bell on again, with its alarms matching it: the
+  owner put a truthful bell above the Off tap taking effect. If the phone refuses the undo too, the app tries again at
+  the next launch, return to the app or background run; this was explained to the owner as a limit of the phone, the
+  one case where the state waits for a later event, and the owner confirmed the all-or-nothing rule. The owner's words:
+  "If the alert fail to schedule, then I shouldn't have sound on. It should be sound off."
+- **Both directions are fixed in session 6**, inside finding 81's step.
+- **The athan sound change has the same gap** (Settings shows the old sound again while some alarms keep the new one)
+  and **becomes its own session later**, not part of session 6. Its brief is not written yet, so it has no row in the
+  table above. It waits in "Waiting on the owner, not yet sessions" in `ai/plans/README.md`.
+- **Finding 79 is proven on the 3T with the owner's hands:** the owner unlocks the phone and flips Athan's notification
+  switch when the execution session asks.
+- **The 3T ends every session on the latest `uat-2` build, as a mock build with the Asr-next mock data** (Fajr 2 to 3
+  minutes past, Asr 60 to 119 seconds away). Production builds are installed only for the proofs that need real times.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their
