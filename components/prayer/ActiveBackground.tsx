@@ -3,11 +3,10 @@ import { useEffect, useRef } from 'react';
 import { Platform, StyleSheet, type ViewStyle } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
+import { getActivePillOpacity, getActivePillRow } from '@/components/prayer/activePill';
 import { useDerivedOpacity, useDerivedTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { getPillOpacity, getPillRow } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
-import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
 
@@ -22,17 +21,9 @@ const PILL_SLIDE_EASING = Easing.elastic(0.5);
 export default function ActiveBackground({ type }: Props) {
   const { prayers, displayDate } = usePrayerSequence(type);
 
-  // Filter prayers to today's prayers and find the next prayer index within that list
-  // This gives us 0-5 for standard, 0-6 for extras (same as old schedule.nextIndex)
-  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
-  const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
-
-  // nextPrayerIndex indexes the sequence's rows; the pill sits on the row List actually renders
-  const nextPrayerVisualRow = canonicalDisplayOrder(todayPrayers, type).indexOf(nextPrayerIndex);
-
   // Read in render and written after commit, so a list with no row next leaves the pill where it faded
   const heldPillRow = useRef(0);
-  const pillRow = getPillRow(nextPrayerVisualRow, heldPillRow.current);
+  const pillRow = getActivePillRow(prayers, displayDate, type, heldPillRow.current);
   useEffect(() => {
     heldPillRow.current = pillRow;
   }, [pillRow]);
@@ -47,13 +38,10 @@ export default function ActiveBackground({ type }: Props) {
   const activeColor =
     type === ScheduleType.Standard ? COLORS.prayer.activeBackground : COLORS.prayer.activeBackgroundExtras;
 
-  // The pill fades out while the overlay is open unless its row IS the selected
-  // one (the selected next prayer keeps it, as the old copied row did)
   const overlay = useAtomValue(overlayAtom);
-  const isHiddenByOverlay =
-    overlay.isOn && overlay.scheduleType === type && overlay.selectedPrayerIndex !== nextPrayerIndex;
+  const pillOpacity = getActivePillOpacity(prayers, displayDate, type, overlay);
 
-  const veilStyle = useDerivedOpacity(getPillOpacity(nextPrayerIndex, isHiddenByOverlay), {
+  const veilStyle = useDerivedOpacity(pillOpacity, {
     duration: ANIMATION.duration,
   });
 

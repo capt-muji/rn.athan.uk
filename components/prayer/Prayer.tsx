@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
+import { getRowPressAction } from '@/components/prayer/rowPress';
 import { useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
@@ -68,13 +69,14 @@ export default function Prayer({ type, index }: Props) {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    // By name rather than index: an index is only a row's place on its day's list, which
-    // depends on the list's order and on which rows that day has (Istijaba only on
-    // Fridays), while the name is the prayer itself
-    if (!Schedule.isStandard && Prayer.english === 'Istijaba' && Prayer.isPassed) return;
-
-    if (isSelectedForOverlay) closeOverlay();
-    else openOverlay(type, index);
+    const action = getRowPressAction({
+      isStandard: Schedule.isStandard,
+      english: Prayer.english,
+      isPassed: Prayer.isPassed,
+      isSelectedForOverlay,
+    });
+    if (action === 'close') closeOverlay();
+    if (action === 'open') openOverlay(type, index);
   };
 
   return (
