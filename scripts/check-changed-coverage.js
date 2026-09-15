@@ -9,6 +9,9 @@
  * Coverage is measured on the working tree, so the tree must be exactly what is being committed or pushed: an unstaged
  * or untracked test would cover a file whose commit does not carry that test.
  *
+ * A commit that only weakens or deletes a test changes no source file, so this gate passes it; the global coverage
+ * thresholds in jest.config.js, at 100, are what refuse it.
+ *
  *   node scripts/check-changed-coverage.js --staged        the files staged for this commit
  *   node scripts/check-changed-coverage.js --push <sha>    the files of every commit up to <sha> that no remote has
  */
