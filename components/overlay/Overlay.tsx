@@ -93,17 +93,17 @@ export default function Overlay() {
 
   // Info box positioned below prayer row (for first 3 items)
   const computedStyleInfoBoxBelow: ViewStyle = {
-    top: (listMeasurements?.pageY ?? 0) + visualRowIndex * STYLES.prayer.height + STYLES.prayer.height + SPACING.sm,
-    left: listMeasurements?.pageX ?? 0,
-    width: listMeasurements?.width ?? 0,
+    top: listMeasurements.pageY + visualRowIndex * STYLES.prayer.height + STYLES.prayer.height + SPACING.sm,
+    left: listMeasurements.pageX,
+    width: listMeasurements.width,
     height: INFO_BOX_HEIGHT,
   };
 
   // Info box positioned above prayer row (for items 4+)
   const computedStyleInfoBoxAbove: ViewStyle = {
-    top: (listMeasurements?.pageY ?? 0) + visualRowIndex * STYLES.prayer.height - INFO_BOX_HEIGHT - SPACING.sm,
-    left: listMeasurements?.pageX ?? 0,
-    width: listMeasurements?.width ?? 0,
+    top: listMeasurements.pageY + visualRowIndex * STYLES.prayer.height - INFO_BOX_HEIGHT - SPACING.sm,
+    left: listMeasurements.pageX,
+    width: listMeasurements.width,
     height: INFO_BOX_HEIGHT,
     justifyContent: 'flex-end',
   };
