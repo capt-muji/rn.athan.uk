@@ -8,14 +8,12 @@ import * as BackgroundTask from 'expo-background-task';
 import * as Notifications from 'expo-notifications';
 import * as SplashScreen from 'expo-splash-screen';
 import { getDefaultStore } from 'jotai';
-import { Platform } from 'react-native';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { london, onPlatform, saveLondonDays, showLondonDay } from '@/__tests__/harness';
 import { fetchYear } from '@/api/client';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
 import { checkForUpdates, openStore } from '@/device/updates';
-import { london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import { mockExpoConfig, resetMockExpoConfig } from '@/shared/__mocks__/expo-constants';
 import { APP_CONFIG } from '@/shared/config';
 import { BACKGROUND_TASK_NAME } from '@/shared/constants';
@@ -154,7 +152,6 @@ beforeEach(() => {
 
 afterEach(() => {
   resetMockExpoConfig();
-  jest.restoreAllMocks();
 });
 
 describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 installed", () => {
@@ -431,7 +428,7 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
     setPrayerAlertType(ScheduleType.Standard, ASR, AlertType.Sound);
     await refreshNotifications();
     jest.mocked(Notifications.scheduleNotificationAsync).mockClear();
-    jest.replaceProperty(Platform, 'OS', 'android');
+    onPlatform('android');
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
