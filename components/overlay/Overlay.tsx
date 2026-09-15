@@ -5,22 +5,14 @@ import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
+import { getOverlayExplanation, getOverlayRow } from '@/components/overlay/overlayContent';
 import { PrayerExplanation } from '@/components/prayer';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import {
-  ANIMATION,
-  EXTRAS_ENGLISH,
-  EXTRAS_EXPLANATIONS,
-  EXTRAS_EXPLANATIONS_ARABIC,
-  OVERLAY,
-  SPACING,
-  STYLES,
-} from '@/shared/constants';
+import { ANIMATION, OVERLAY, SPACING, STYLES } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
-import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { closeOverlay, overlayAtom } from '@/stores/overlay';
 import { measurementsListAtom } from '@/stores/ui';
@@ -86,9 +78,7 @@ export default function Overlay() {
   // selectedPrayerIndex indexes the sequence's rows; position uses the row List actually renders
   const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
   const { prayers, displayDate } = usePrayerSequence(overlay.scheduleType);
-  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
-  const displayRow = canonicalDisplayOrder(todayPrayers, overlay.scheduleType).indexOf(overlay.selectedPrayerIndex);
-  const visualRowIndex = displayRow >= 0 ? displayRow : overlay.selectedPrayerIndex;
+  const visualRowIndex = getOverlayRow(prayers, displayDate, overlay.scheduleType, overlay.selectedPrayerIndex);
 
   const catcherRegions = buildCatcherRegions({
     windowWidth: window.width,
@@ -120,11 +110,10 @@ export default function Overlay() {
 
   const computedStyleInfoBox = showInfoBoxAbove ? computedStyleInfoBoxAbove : computedStyleInfoBoxBelow;
 
-  const prayerName = isExtra ? selectedPrayer.english : null;
-  // Explanations follow EXTRAS_ENGLISH order, so the text is looked up by name
-  const explanationIndex = EXTRAS_ENGLISH.indexOf(selectedPrayer.english);
-  const explanation = isExtra ? EXTRAS_EXPLANATIONS[explanationIndex] : null;
-  const explanationArabic = isExtra ? EXTRAS_EXPLANATIONS_ARABIC[explanationIndex] : null;
+  const { prayerName, explanation, explanationArabic } = getOverlayExplanation(
+    overlay.scheduleType,
+    selectedPrayer.english
+  );
 
   return (
     <Reanimated.View style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
