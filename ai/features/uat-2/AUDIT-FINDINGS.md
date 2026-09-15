@@ -5132,3 +5132,241 @@ the second as "recently noisy". In the ninth, the second arrived just outside An
 window and its sound cut over the first. Every sound was the app's own file, never a default.
 Which posted first varied from run to run. The Android brief, `replace-previous-notification.md`,
 has the table.
+
+---
+
+# Session 4 of the queue: the coverage sweep, 2026-09-14 and 15
+
+The brief is `ai/prompts/coverage-sweep.md`. Eight Opus agents worked in parallel, one per area, each in its own
+worktree. Every area's commits were reviewed by an independent Opus Code Reviewer, and every area's review
+fixes were reviewed a second time; the alarms and lists reports were written before that second review. Two
+one-line fixes whose exact wording a reviewer supplied and verified (a comment in `alertDraft.ts` and an
+assertion in `notificationSettingsFallback.test.ts`) were applied without a third review. Each new test was
+shown failing against a named mutant before it was trusted, and each area kept its own
+mutation pass in `ai/features/uat-2/coverage-sweep/mutants_<area>.py`. The areas merged into `uat-2` commit by
+commit, one version bump each: 1.27.16 and 1.27.17 for the configuration, 1.27.18 to 1.27.135 for the areas,
+1.27.136 for the thresholds and 1.27.137 for this note.
+
+## The measure was wrong before a test was written
+
+`collectCoverageFrom` listed only `hooks/`, `stores/` and `shared/`. Widening it was not enough on its own. Jest parses
+the instrumented output of an untested file without JSX support, so every untested `.tsx` file failed with "Support
+for the experimental syntax 'jsx' isn't currently enabled" and dropped out of the report instead of counting at 0%.
+
+- 1.27.16 measures `api/`, `app/`, `components/`, `device/`, `hooks/`, `stores/` and `shared/`, each as `.ts` and
+  `.tsx`, and adds `@babel/plugin-transform-react-jsx` to the babel-jest transform.
+- 1.27.17 declares that plugin in `package.json` (owner approved) at the range `yarn.lock` already resolved to 7.29.7.
+
+| Measure | Old config (1.25.44) | New globs, no JSX transform | Every area counted (1.27.16) | After the sweep (1.27.135) |
+| --- | ---: | ---: | ---: | ---: |
+| Statements | 85.77 | 93.09 | 68.49 | **76.18** (2,876 of 3,775) |
+| Branches | 78.80 | 92.15 | 62.64 | **73.69** (1,230 of 1,669) |
+| Functions | 78.29 | 87.93 | 63.54 | **74.87** (581 of 776) |
+| Lines | 87.20 | 93.89 | 68.49 | **75.70** (2,565 of 3,388) |
+| Tests | 1,080 | 3,596, 2 skipped | 3,598 | **4,089** in 109 suites |
+
+The second column comes from the configuration review's run on the parent commit, without `android/` and `ios/`.
+
+By folder after the sweep: `api/`, `hooks/`, `stores/atoms/` and `components/day/` are at 100%; `shared/` 99.74,
+`stores/` 99.63, `device/` 96.72 statements. What stays low is `.tsx` markup with no renderer: `app/` and
+`components/ui/`, `components/modals/` and `components/sheets/` at 0 to 12.3%, `components/countdown/` 7.35,
+`components/prayer/` 36.9 and `components/overlay/` 67.69.
+
+`coverageThreshold` moves from 60 branches, 60 functions, 70 lines and 70 statements, which the old narrow config
+could never fail and the widened one failed on statements and lines, to 73, 74, 75 and 76, the result rounded down
+(1.27.136). No gate runs `jest --coverage`, so the thresholds bind only a run that asks for coverage.
+
+## Per area
+
+| Area | Versions | What it now pins | Mutants | Production change |
+| --- | --- | --- | --- | --- |
+| Countdown and sync across 00:00 | 1.27.18 to 1.27.22 | the running app crossing 00:00 moves only the Extras list, once; a day missing or unreadable inside a stored year is stored as such, never downloaded again, and shown from its own 00:00 to the next | 22 killed | none |
+| shared/, device/, api/ | 1.27.23 to 1.27.40 | build switches, the logger gate, notification start-up waiting for its channels, the perf flush, Ramadan with a failing Intl, channel creation, reminder cancel failure, a production build fetching real times | 49 killed, plus 8 existing api mutants | two unreachable arms removed |
+| Alarms | 1.27.41 to 1.27.53 | both 18 October Midnights, the 25 October Last Third and reminders in the repeated hour, rows either side of 00:00 and 06:00, Friday Istijaba, the reschedule window either side of 00:00 | 27 killed | none |
+| hooks/ | 1.27.54 to 1.27.71 | every hook file at full coverage through a plain hook harness and a Reanimated fake | 68 of 69 killed, 1 equivalent | none |
+| Sheets, modals, ui, app/ | 1.27.72 to 1.27.83 | the alert sheet's draft rules, the reminder stepper, the launch splash gate, the athan sheet's selection and preview finished-check | 38 killed | five pure extractions |
+| stores/ remainder | 1.27.84 to 1.27.102 | overlay atoms, countdown, notification guards and the refresh gate, sync, ui, version | 75 killed, plus 34 existing | none |
+| Lists and clock readings | 1.27.103 to 1.27.118 | the 17 to 20 October lists at 00:00 and 23:59, Standard rows at 23:59 to 06:00, Last Third and Fajr near 00:00, every skipped and repeated 2026 reading | 23 killed, control survives | a why-comment in `shared/prayer.ts` |
+| Prayer-list components | 1.27.119 to 1.27.135 | the overlay's row and explanation, the active pill, the Day header date, a row tap, and each component's call site | 41 killed | four pure extractions |
+
+Every extraction was proven equal to the inline code it replaced, over the inputs each proof enumerated (from 8
+cases to 20,157,444), and the prayer-list components were proven render-identical to `58ce534` over 425,254
+renders with the same hooks in the same order.
+
+## Test gaps that were worse than a missing line
+
+- `api/__tests__/client.test.ts` set `isProd()` and `isPreview()` both true, a pair no build has. A client serving the
+  mock's invented times to every production user passed all 912 of its tests.
+- The March case of gap-map item 9 (finding 77) could not catch a reminder counted on the clock face: it lands
+  in the skipped hour, which resolves to the same instant for every interval. The 25 October Last Third catches it.
+- Four `prayer.test.ts` tests sent Midnight or Last Third through `calculateBelongsToDate`, a path those rows never
+  take. They were replaced by list-path tests; one real break (Last Third filed by its calendar day) was caught by no
+  test before.
+- The "format fails" Ramadan rows assigned over a getter-only `format` and so threw in the constructor instead.
+- A borrowed-Magrib alarm fixture had its night already over at the test's clock, so the mutant could not be seen.
+- Tests of the same kind were left in place in `prayer.test.ts`: the two Last Third rows of "files %s at %s on
+  calendar day 2026-01-18 under %s", "creates Extra prayer correctly", "Extra night prayers before noon stay on
+  calendar date" and "handles Extra Last Third prayer after system midnight".
+
+Two map expectations were reversed by later owner rulings: a day missing or unreadable inside a stored year is never
+downloaded again, on the day itself included (finding 67's closure, R7); and since R8 a list day with no readable time
+comes on screen at its own 00:00.
+
+## Deliberately not covered
+
+- `widgets/`: the owner deferred iOS widgets on 2026-09-14.
+- `jsx-runtime-shim.ts` (only Metro resolves it), `mocks/simple.ts`, `app.config.ts`, `plugins/`, `modules/tls13`.
+- The rest of each `.tsx` component: markup and animation, whose correctness is frame evidence on a device. No
+  renderer is installed. No committed test guards the pill's hook order; the harness proves it today.
+- `shared/perf.ts:104` (a failed `createMMKV` throws at module scope first), `shared/whatsNew.ts:187-189` (content
+  gated), `stores/notifications.ts` line 257 (`wasAppUpgraded` compares the same stored value first, outside any
+  try) and the branches at 317 and 323 (unreachable with today's constants).
+- `device/tls13.ts` (0%) and `stores/widget.ts:180` and `:232`: in no area's scope, so nobody examined them and no
+  reason is recorded.
+
+## Production changes and the device check
+
+Eleven production changes that move code reached the app, besides one comment in `shared/prayer.ts`: two
+unreachable arms removed (`toArabicNumbers`'s `|| digit`, `readPrayerClock`'s epoch-number arm), five extractions
+from the sheets and app (alert sheet draft rules, reminder stepper, launch splash gate, athan selection, preview
+finished-check) and four from the prayer list (overlay row and explanation, active pill, Day header date, row tap).
+Each was proven equal to the code it replaced before it merged.
+
+On the OnePlus 3T, a local production build of `uat-2` at 1.27.135 (`3d77a266`, Gradle, the owner's debug certificate,
+the real API key in the bundle, sha256 `07899bb6dd3f...c765`) went on over the owner's 1.27.15 with `adb install -r`
+at 04:40 on 15 September 2026, keeping the owner's data. Checked at the real time, with no clock change and no
+force-stop, against an independent `zoneinfo` reading of the provider's saved 2026 payload:
+
+- The installed `versionName` read 1.27.135. A warm launch (HOME, `am kill`, `am start`) lifted the splash onto the
+  list.
+- Standard list: Fajr 05:00, Sunrise 06:32, Dhuhr 13:01, Asr 16:23, Magrib 19:18, Isha 20:33, header
+  "Tue, 15 Sep 2026", the pill on Fajr as the next prayer, later rows dimmed, the badge "Isha 8h 5m ago".
+- Extras list: Midnight 00:10, Last Third 01:47, Suhoor 04:40, Duha 06:52, no Istijaba on a Tuesday; after Suhoor
+  passed at 04:40, the pill moved to Duha and the badge read "Suhoor 1m ago".
+- Tapping Suhoor at 04:41 opened the overlay on its next occurrence: 04:43 on "Wed, 16 Sep 2026", with the explanation
+  box below the row, "20 mins before Fajr" in English and "٢٠ دقيقة قبل الفجر" in Arabic-Indic digits. A second tap
+  closed it: the next screenshot, `overlay-duha.png` at 04:41:19, shows the list with no overlay.
+- Armed alarms (`dumpsys alarm`, read at 04:43): exactly two notification alarms, `2026-09-15 05:00:00.000` and
+  `2026-09-16 05:03:00.000`, the two list days of Fajr, the only prayer the owner has on, beside the 2036
+  `ACTION_FORCE_STOP_RESCHEDULE` entry that Android's WorkManager keeps for every app that uses it.
+
+A second pass, finding each row by its clickable container, tapped Duha, Midnight, Last Third and the Suhoor and
+Fajr bells between 04:44 and 04:45:
+
+- Duha (upcoming, row 3): the box sits above the row, "20 mins after Sunrise" and "٢٠ دقيقة بعد الشروق", header
+  "Tue, 15 Sep 2026".
+- Midnight (passed, row 0): the overlay opens on Wed 16 Sep at 00:10 with the box below the row, and its Arabic line
+  carries no digits.
+- Last Third (passed, row 1): Wed 16 Sep at 01:48, box below the row; both next occurrences match the oracle.
+- Suhoor's bell opens its alert sheet on the saved Off, with the reminder toggle and stepper locked while the athan is
+  Off; BACK closes it with nothing committed, and every row is back in the list.
+- Fajr's bell opens its alert sheet on the saved Sound, with the reminder toggle usable and off and its sound and
+  "Before 20 min" greyed until the reminder is on; BACK closes it with nothing committed.
+
+Its Isha tap found no row, because the swipe back to the Standard page had not landed when it read the screen, so a
+third run, with no log of its own, tapped Isha at 04:47:
+
+- Isha on the Standard page (upcoming, the last row) opens the overlay on today's Isha: header "Tue, 15 Sep 2026",
+  countdown "15h 46m" at 04:47, the other rows veiled, and no explanation box, which only Extras rows carry.
+
+The first pass logged 17 passes and 10 failures, none of them the app's. It matched a row by its bare name, which the
+countdown title above the list also carries, so the Duha tap and the Fajr bell tap landed on the title, and the BACK
+meant to close that sheet left the app. It parsed `origWhen ` where Android 9 prints `when=`, so it counted no
+alarms. The uiautomator dumps taken with an overlay or an alert sheet open show only the list beneath it, so every
+overlay and sheet check above comes from the screenshots, and the dumps prove only which row was tapped and that the
+list came back.
+
+## 79. `ensurePermissions` never settles when Settings cannot open, and reads the answer too early
+
+`hooks/useNotification.ts:37-44`. The "Open Settings" handler awaits `Linking.openSettings()` or
+`Linking.sendIntent('android.settings.APP_NOTIFICATION_SETTINGS')` and only then calls `resolve`. If that call
+rejects, or `getPermissionsAsync` rejects after it, the promise never settles: tapping the bell of a prayer saved
+Off, with permission denied, never opens the alert sheet and gives no feedback (`components/prayer/Alert.tsx:148-150`).
+React Native rejects `sendIntent` when no activity resolves the action (`IntentModule.kt:210-215`). Measured with a
+Jest probe of both platform branches, not seen on a device. Separately, read from source and not run: both native
+calls resolve as soon as Settings opens (`IntentModule.kt:248-249`, `RCTLinkingManager.mm:172-173`) and the
+permission is read at once, so on Android the answer is almost certainly still "denied". Suggested fix: catch in the
+handler and `resolve(false)`; read the permission when the app returns to the foreground.
+
+## 80. During Ramadan, an exception in `sync()` on a warm launch leaves the splash over the error screen
+
+A warm launch with `state` at `hasError` renders `ErrorScreen` instead of `Navigation`. `RamadanDecorations`, the only
+caller of `markDecorationsLoaded`, never mounts, and nothing else calls `hideAsync`, so Refresh cannot be reached. The
+window is 15 Sha'ban to the end of Ramadan with decorations on (the default). A failed download does not reach it:
+`stores/sync.ts:510-518` keeps a launch with a stored day off the error screen. An exception from `handleAppUpgrade`
+(`:508`) or `initializeAppState` (`:528`) before the sprites report does. A worse case, traced and not run:
+`stores/bootstrap.ts:48-49` stores the Standard sequence before building Extra, so a throw there classifies the
+launch as warm, `initializeAppState` repeats the throw, and the splash could stick on every launch inside the
+decoration window. Not checked: whether rendering with Standard set and Extra null throws first, in which case
+expo-router's `Try` hides the splash. The fix changes when the splash lifts: pass
+`decorationsExpected && state !== 'hasError'`, with a `hasError` test row and a forced-throw mock build on the 3T.
+
+## 81. A refused Android cancel during an Off commit loses the prayer's other alarms and every reminder
+
+Switching a prayer Off calls `updatePrayerNotifications`. `clearAllScheduledNotificationForPrayer` sends every cancel,
+then rejects on the refused one, so its records stay. The reminder clear catches each failure and succeeds, so every
+reminder for that prayer is cancelled and deleted. `commitAlertMenuChanges` then writes the original alert back
+(`hooks/useNotification.ts:218-220`). Probe at 2026-08-29 09:00 BST with reminders on: an hour later the OS held
+only `athan_standard_fajr_2026-08-29`. The 12-hour gate stops a resume from re-arming, so in the worst case
+tomorrow's alarms for that prayer are missed unless the background task runs, the app is cold-launched (Android
+reopens the gate then), a download changes an armed day, or the prayer is committed again. On Android the delegate
+disarms the alarm before removing its stored request, so the refused alarm may be gone too while still listed. iOS
+cannot hit it: its cancel cannot reject.
+
+## 82. One refused cancel releases the scheduling lock while other prayers are still arming
+
+`_rescheduleAllNotifications` (`stores/notifications.ts:1071-1076`) and the per-prayer loops (`:891-906` at-time,
+`:922-942` reminders) use `Promise.all`. One refused Off cancel rejects the whole operation straight away,
+`withSchedulingLock` frees the queue, and the next queued work (an alert-sheet commit, the retry after sync at
+`app/index.tsx:139`, a resume refresh) runs beside the leftovers. Probe: Fajr Off with a refused cancel and Dhuhr
+still scheduling; the refresh rejects, Dhuhr is committed Off, the pending work finishes, and Dhuhr is Off with both
+its alarms armed and recorded. It heals on the next refresh. Android only. Suggested design: let every per-prayer
+operation settle before rethrowing, so the lock is held until all work has ended. Scheduling logic is the owner's
+decision.
+
+## Two choices for the owner
+
+- Whether `yarn validate` should run `jest --coverage`, so the new thresholds bind every commit.
+- Whether to add a React renderer, so component markup and animation wiring can be tested.
+
+## Also noted, not findings
+
+- `fetchRawData` does not await `validateApiResponse` inside its try, so an HTTP error skips that catch's log. It could
+  never print: pino is disabled in production and preview builds.
+- A bell held through the date change dims without its row's stagger (`components/prayer/Alert.tsx:104`), pre-existing.
+- A phone clock set back after a refresh keeps the 12-hour gate shut for longer than 12 hours (by reading).
+- `createTimingAnimation`'s `customConfig` parameter in `hooks/useAnimation.ts` has no caller.
+- The sheets' own close and commit paths have no test, and nothing pins the order of `ALERT_CONFIGS`.
+- Reported by the sheets agent and not checked here: the stepper's disabled arrows are labelled "Decrease to 0 min"
+  and "Increase to 35 min", and the settings intent carries no `APP_PACKAGE` extra.
+
+## Harness notes, so they are not read as app failures
+
+- Agent worktrees were created at `86ab401` (`uat`), not at the session's HEAD; each agent reset its clean branch.
+- `yarn validate` runs `biome check .` over untracked files, so jest JSON left in a worktree fails the hook.
+- An offline `yarn install` against the global cache left eight empty package folders that would have broken the next
+  install; they were removed and the lockfile was proven with a scratch cache.
+- Two orphaned `jest --findRelatedTests shared/sequence.ts` runs, started at 04:59 and 05:09 on 2026-09-14 by an
+  earlier mutation pass, were still running at 18:50. Stopping their parents left four workers, three at about 100%
+  CPU, which the owner stopped.
+- At 23:35 an Xcode update made `/usr/bin/git` refuse every command until the licence was accepted; the Command Line
+  Tools git kept working.
+- lint-staged 15.5.2 keeps its backup in the stash list every worktree shares and drops it by position, so two
+  worktrees committing at once can drop each other's backup. No commit this session was affected.
+- The usage limit stopped the agents three times. Each was resumed with its context, except two authors whose
+  worktrees the harness could not verify while git was broken; fresh agents applied their review fixes in the same
+  worktrees.
+
+## State left behind
+
+- `uat-2` at 1.27.137 once this note merges (at 1.27.136, `fa9b351e`, before it), merged locally and not pushed.
+  Nothing was built on or pushed to EAS, and `releases.json` is untouched.
+- The 3T runs the local production build 1.27.135 with the owner's data intact, automatic time untouched, and its two
+  Fajr alarms armed when last read at 04:43.
+- Six agent worktrees are removed. Two (`agent-a4a4f7792d3c40794`, alarms, and `agent-a602d3fc9ff621f86`, countdown
+  and sync) are still locked by the agent harness and were left alone; both areas are merged. Every
+  `worktree-agent-*` branch remains. Each worktree's scratch evidence (mutant
+  logs, oracle scripts, equivalence runs) is archived at `~/athan-device-sweep/session4/worktree-scratch/`, and the
+  device check's dumps, screenshots and scripts sit beside it. The prod-build worktree at
+  `~/athan-device-sweep/worktrees/prod-build`, detached at `3d77a266`, is left in place.
+- The per-area reports and the resume notes are local, in `.claude/coverage-sweep/` (excluded from git).

@@ -1,6 +1,7 @@
 # Session: close the test-coverage gaps
 
-**Status: NOT STARTED. Queued by the owner on 2026-09-12, to run after the code-audit sessions.**
+**Status: DONE 2026-09-15, 1.27.16 to 1.27.137. The record is "Session 4 of the queue" in
+`ai/features/uat-2/AUDIT-FINDINGS.md`.**
 
 ## The ask, in the owner's framing
 
