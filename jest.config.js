@@ -66,12 +66,13 @@ module.exports = {
     '!**/__mocks__/**',
     '!**/__tests__/**',
   ],
+  // Just under the measured result, so a change that drops coverage fails `jest --coverage` instead of passing quietly
   coverageThreshold: {
     global: {
-      branches: 60,
-      functions: 60,
-      lines: 70,
-      statements: 70,
+      branches: 73,
+      functions: 74,
+      lines: 75,
+      statements: 76,
     },
   },
   // Test timeout for async operations
