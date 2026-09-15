@@ -187,15 +187,15 @@ describe('the music glyph beside Change athan, Friday 11 September 2026 at 14:00
       jsx: require('react/jsx-runtime'),
       jsxDev: require('react/jsx-dev-runtime'),
     };
-    let FreshSettingsSheet: typeof SettingsSheet | undefined;
+    // Assigned inside the callback, which runs before the render; a failed load throws there
+    let FreshSettingsSheet!: typeof SettingsSheet;
     jest.isolateModules(() => {
       jest.doMock('react', () => sharedReact.react);
       jest.doMock('react/jsx-runtime', () => sharedReact.jsx);
       jest.doMock('react/jsx-dev-runtime', () => sharedReact.jsxDev);
-      jest.replaceProperty(require('react-native').Platform, 'OS', os);
+      require('@/__tests__/harness').onPlatform(os);
       FreshSettingsSheet = require('../Settings').default;
     });
-    if (!FreshSettingsSheet) throw new Error('The settings sheet did not load');
 
     await render(<FreshSettingsSheet />);
 
