@@ -786,12 +786,6 @@ function MoonSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: number }
         )
       );
     });
-
-    // An unmounted shared value whose withRepeat(-1) was never cancelled keeps its
-    // worklet scheduled, so the parent's visibility gate alone does not stop these
-    return () => {
-      for (const value of progress) cancelAnimation(value);
-    };
   }, [p0, p1, p2, p3, p4]);
 
   return (
@@ -843,12 +837,6 @@ function LanternSparks({ cx, cy, glowR }: { cx: number; cy: number; glowR: numbe
         )
       );
     });
-
-    // An unmounted shared value whose withRepeat(-1) was never cancelled keeps its
-    // worklet scheduled, so the parent's visibility gate alone does not stop these
-    return () => {
-      for (const value of progress) cancelAnimation(value);
-    };
   }, [p0, p1, p2, p3, p4, p5, p6, p7]);
 
   return (
