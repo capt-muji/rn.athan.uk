@@ -6,7 +6,13 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!**/.agents", "!**/metro.config.js", "!**/jest.config.js"]
+    "includes": [
+      "**",
+      "!**/.agents",
+      "!**/metro.config.js",
+      "!**/jest.config.js",
+      "!**/ai/features/moonsighting"
+    ]
   },
   "formatter": {
     "enabled": true,
