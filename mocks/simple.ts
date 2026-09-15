@@ -1,6 +1,6 @@
 import { addDays, subDays } from 'date-fns';
 
-import { formatDateShort } from '@/shared/time';
+import { formatDateShort, formatPrayerTime } from '@/shared/time';
 import type { IApiResponse } from '@/shared/types';
 
 /**
@@ -24,15 +24,15 @@ import type { IApiResponse } from '@/shared/types';
 // skips to the following day's Fajr and the rollover cascade fires early.
 // An Isha can fall after 00:00 (high latitudes in summer; the app goes global
 // in v2.0) and is handled by the rules above. To test the Magrib->Isha handoff
-// and day rollover cleanly, simulate during 06:00-23:59.
+// and day rollover cleanly, simulate during 06:00-23:55: from 23:56 a download
+// puts Isha past 00:00, from 23:57 Magrib, and from 23:58 Asr, which reads as
+// the day before.
 
 const MINUTE = 60_000;
 
-/** HH:mm, a whole number of minutes from an instant */
-export const addMinutes = (from: Date, minutesToAdd: number) => {
-  const date = new Date(from.getTime() + minutesToAdd * MINUTE);
-  return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-};
+/** HH:mm in London, as the API sends it and the app reads it, a whole number of minutes from an instant */
+export const addMinutes = (from: Date, minutesToAdd: number) =>
+  formatPrayerTime(new Date(from.getTime() + minutesToAdd * MINUTE));
 
 /**
  * Every day around the download, with TODAY's six rows seeded from it
