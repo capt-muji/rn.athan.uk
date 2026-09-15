@@ -229,7 +229,8 @@ const pushScheduleTimelines = async (
   schedule: ScheduleType,
   options?: { reuseCachedSequence?: boolean }
 ): Promise<void> => {
-  if (Platform.OS !== 'ios' || !FEATURE_FLAGS.widgets) return;
+  // No platform or flag check here: every push starts from refreshPrayerWidgets, which has one, or from the flip timer,
+  // which only a push arms, and neither the platform nor the build's flags change while the app runs
 
   // Captured inside the try, consumed by the `finally` re-arm below, so every
   // exit from here — success, native throw, or empty build — leaves the chain
