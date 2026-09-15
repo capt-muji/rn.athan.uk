@@ -14,10 +14,6 @@ import { setMeasurementsList } from '@/stores/ui';
 
 import Overlay from '../Overlay';
 
-// A Close press fires a haptic. jest-expo already mocks the native ExpoHaptics module, so this mocks the JavaScript
-// call the layer makes, which is what the suite observes
-jest.mock('expo-haptics', () => ({ ...jest.requireActual('expo-haptics'), impactAsync: jest.fn() }));
-
 // Opening and closing are measured for the device performance runs, which read the pairing of names
 jest.mock('@/shared/perf', () => ({ perfMark: jest.fn(), perfMeasure: jest.fn() }));
 

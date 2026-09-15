@@ -87,11 +87,21 @@ jest.mock('./node_modules/react-native-reanimated/src/initializers', () => ({ in
 // snap never ends, so "settled on the first frame, animated on a change" could not be tested at all
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
-  const { useState } = require('react');
+  const { useEffect, useState } = require('react');
   // The mock's own version calls no React hook: it builds a plain value, which this keeps for the component's life
   const createSharedValue = Reanimated.useSharedValue;
-  const useSharedValue = (initialValue) => useState(() => createSharedValue(initialValue))[0];
-  return { ...Reanimated, __esModule: Reanimated.__esModule, useSharedValue };
+  const reanimated = { ...Reanimated };
+  // As in react-native-reanimated/src/hook/useSharedValue.ts: a function initial value is called once on mount, and
+  // the value's animation is cancelled on unmount
+  reanimated.useSharedValue = (initialValue) => {
+    const [value] = useState(() =>
+      createSharedValue(typeof initialValue === 'function' ? initialValue() : initialValue)
+    );
+    // Looked up on the module at unmount, so a suite's jest.spyOn(Reanimated, 'cancelAnimation') sees the call
+    useEffect(() => () => reanimated.cancelAnimation(value), [value]);
+    return value;
+  };
+  return reanimated;
 });
 jest.mock('@gorhom/bottom-sheet', () => require('@gorhom/bottom-sheet/mock'));
 jest.mock('react-native-safe-area-context', () => require('react-native-safe-area-context/jest/mock').default);
@@ -101,6 +111,9 @@ require('react-native-gesture-handler/jestSetup');
 // real enums, and a suite checks a haptic with `expect(Haptics.impactAsync).toHaveBeenCalledWith(...)`
 jest.mock('expo-haptics', () => ({
   ...jest.requireActual('expo-haptics'),
+  // Babel marks a module as ESM with a property the spread does not copy, and without the mark `import * as Haptics`
+  // receives a copy of this object, which a suite's jest.spyOn would change while the app kept calling the original
+  __esModule: true,
   impactAsync: jest.fn(() => Promise.resolve()),
   notificationAsync: jest.fn(() => Promise.resolve()),
   selectionAsync: jest.fn(() => Promise.resolve()),

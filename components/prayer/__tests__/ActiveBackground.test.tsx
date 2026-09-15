@@ -3,18 +3,14 @@
  */
 
 import { act, render, screen } from '@testing-library/react-native';
-import { Platform } from 'react-native';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { onPlatform, showLondonDay } from '@/__tests__/harness';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
 
 import ActiveBackground from '../ActiveBackground';
 
 const FAJR = 0;
-
-// Puts back the platform and version an Android test sets
-afterEach(() => jest.restoreAllMocks());
 
 describe('the pill on Friday 11 September 2026 at 14:00', () => {
   it.each([ScheduleType.Standard, ScheduleType.Extra])(
@@ -51,8 +47,7 @@ describe('the Standard pill on Saturday 12 September 2026 at 22:00, before a day
 describe('the pill on Android, Friday 11 September 2026 at 14:00', () => {
   // Android 9 drops a view that has rounded corners and a box shadow together, and the pill has rounded corners
   it('carries no shadow on API 28', async () => {
-    jest.replaceProperty(Platform, 'OS', 'android');
-    jest.spyOn(Platform, 'Version', 'get').mockReturnValue(28);
+    onPlatform('android', 28);
     showLondonDay('2026-09-11', '14:00');
 
     await render(<ActiveBackground type={ScheduleType.Standard} />);
@@ -63,8 +58,7 @@ describe('the pill on Android, Friday 11 September 2026 at 14:00', () => {
   it.each([ScheduleType.Standard, ScheduleType.Extra])(
     'carries its shadow on the %s list from API 29',
     async (type) => {
-      jest.replaceProperty(Platform, 'OS', 'android');
-      jest.spyOn(Platform, 'Version', 'get').mockReturnValue(29);
+      onPlatform('android', 29);
       showLondonDay('2026-09-11', '14:00');
 
       await render(<ActiveBackground type={type} />);
