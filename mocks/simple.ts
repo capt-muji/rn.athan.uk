@@ -25,36 +25,38 @@ import type { IApiResponse } from '@/shared/types';
 // An Isha can fall after 00:00 (high latitudes in summer; the app goes global
 // in v2.0) and is handled by the rules above. To test the Magrib->Isha handoff
 // and day rollover cleanly, simulate during 06:00-23:59.
-const now = new Date();
 
-// Launch-relative time seeder. TODAY's six rows are built from it (below), so
-// a mock day always has prayers just behind and just ahead of the clock —
-// which is also the tell that a device is serving mock data (see e2e/README).
-// 1.21.2 hardcoded TODAY and left this unused; 1.24.7 made it load-bearing
-// again without amending the note, so it read "not currently called" while
-// six call sites used it.
-export const addMinutes = (minutesToAdd: number) => {
-  const date = new Date(now.getTime() + minutesToAdd * 60000);
+const MINUTE = 60_000;
+
+/** HH:mm, a whole number of minutes from an instant */
+export const addMinutes = (from: Date, minutesToAdd: number) => {
+  const date = new Date(from.getTime() + minutesToAdd * MINUTE);
   return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 };
 
-const dayBeforeYesterday = formatDateShort(subDays(now, 2));
-const yesterday = formatDateShort(subDays(now, 1));
-const today = formatDateShort(now);
-const daysAhead = Array.from({ length: 10 }, (_, i) => i + 1);
-const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.map((d) =>
-  formatDateShort(addDays(now, d))
-);
+/**
+ * Every day around the download, with TODAY's six rows seeded from it
+ *
+ * Asr is the first whole minute at least 60 seconds after the download, since times carry no seconds, so Asr is
+ * always next on opening the app, 60 to 119 seconds away. The other five sit a minute apart either side of it.
+ */
+const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
+  const asrAt = new Date(Math.ceil((downloadedAt.getTime() + MINUTE) / MINUTE) * MINUTE);
 
-// Realistic London times copied verbatim from mocks/full.ts, EXCEPT TODAY,
-// whose six rows are launch-relative (addMinutes above). The days around it
-// (dayBeforeYesterday, yesterday, day1, day2) are 2024-04-23 through
-// 2024-04-27 carrying the API's real spring solar drift; days 3-10 ahead
-// keep the 2024-08-28 → 2024-09-09 autumn block. Jamat fields are unused
-// placeholders.
-export const MOCK_DATA_SIMPLE: IApiResponse = {
-  city: 'london',
-  times: {
+  const dayBeforeYesterday = formatDateShort(subDays(downloadedAt, 2));
+  const yesterday = formatDateShort(subDays(downloadedAt, 1));
+  const today = formatDateShort(downloadedAt);
+  const daysAhead = Array.from({ length: 10 }, (_, i) => i + 1);
+  const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.map((d) =>
+    formatDateShort(addDays(downloadedAt, d))
+  );
+
+  // Realistic London times copied verbatim from mocks/full.ts, EXCEPT TODAY.
+  // The days around it (dayBeforeYesterday, yesterday, day1, day2) are
+  // 2024-04-23 through 2024-04-27 carrying the API's real spring solar drift;
+  // days 3-10 ahead keep the 2024-08-28 → 2024-09-09 autumn block. Jamat
+  // fields are unused placeholders.
+  return {
     [dayBeforeYesterday]: {
       date: dayBeforeYesterday,
       fajr: '04:10',
@@ -87,12 +89,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(-3),
-      sunrise: addMinutes(-2),
-      dhuhr: addMinutes(-1),
-      asr: addMinutes(1),
-      magrib: addMinutes(2),
-      isha: addMinutes(3),
+      fajr: addMinutes(asrAt, -4),
+      sunrise: addMinutes(asrAt, -3),
+      dhuhr: addMinutes(asrAt, -2),
+      asr: addMinutes(asrAt, 0),
+      magrib: addMinutes(asrAt, 1),
+      isha: addMinutes(asrAt, 2),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -250,5 +252,14 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       magrib_jamat: '00:00',
       isha_jamat: '00:00',
     },
+  };
+};
+
+export const MOCK_DATA_SIMPLE: IApiResponse = {
+  city: 'london',
+  // A getter, so every download (launch, return from the background, the background task) seeds today afresh, while
+  // nothing re-seeds it as the app stays open and Asr can pass
+  get times() {
+    return buildTimes(new Date());
   },
 };

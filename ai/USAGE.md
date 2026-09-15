@@ -16,23 +16,24 @@ Read ai/AGENTS.md and begin as Orchestrator.
 
 The mock feed (`mocks/simple.ts`, active whenever `EXPO_PUBLIC_ENV` is not
 `prod`/`preview` — the default for local Release builds) builds TODAY's prayer
-times **relative to app launch**. Edit the offsets to stage transitions.
+times **relative to each download**: every launch, return from the background
+and background-task run seeds them afresh, and nothing re-seeds them while the
+app stays open. Edit the offsets to stage transitions.
 
-Current committed resting state — every transition is a 2-minute wait:
+Current committed resting state — Asr is next every time the app is opened:
 
 ```ts
-// mocks/simple.ts — [today] block
-fajr: addMinutes(-10),   // passed 10m before launch
-sunrise: addMinutes(-8), // passed
-dhuhr: addMinutes(-6),   // passed
-asr: addMinutes(-4),     // passed
-magrib: addMinutes(2),   // +2m → flip to Isha
-isha: addMinutes(4),     // +4m → flip to next day's Fajr (footer day swaps)
-// [day1] block: fajr: addMinutes(6) closes the 2-minute chain
+// mocks/simple.ts — [today] block; asrAt is the first whole minute at least 60s after the download
+fajr: addMinutes(asrAt, -4),    // 2-3 min ago
+sunrise: addMinutes(asrAt, -3), // 1-2 min ago
+dhuhr: addMinutes(asrAt, -2),   // under a minute ago
+asr: addMinutes(asrAt, 0),      // next, 60-119s away
+magrib: addMinutes(asrAt, 1),   // a minute after Asr
+isha: addMinutes(asrAt, 2),     // a minute after Magrib
 ```
 
-Offsets are minutes **from launch** (negative = already passed). Tighten or
-widen them to stage whatever transition you want to watch.
+Offsets are minutes **from Asr** (negative = before it). Tighten or widen them
+to stage whatever transition you want to watch.
 
 **Night-testing constraint (00:00–05:59):** the intended midnight-crossing
 rules apply — `adjustPrayerDateForMidnightCrossing` moves a Standard Isha in
@@ -40,7 +41,7 @@ that window to *tomorrow's* datetime, and `calculateBelongsToDate` assigns it
 to *yesterday's* Islamic day. Correct for a real post-midnight Isha (real
 London Isha never lands there), but a night-time mock triggers both: at the
 Magrib→Isha handoff the countdown skips to the next day's Fajr and the
-rollover cascade fires early. The +2/+4/+6 chain keeps its real-time gaps at
+rollover cascade fires early. The one-minute chain keeps its real-time gaps at
 any hour, but the app's list view cascades cleanly only 06:00–23:59.
 Countdown ticking and pre-Isha transitions are unaffected at any hour.
 
@@ -67,9 +68,8 @@ xcrun simctl spawn $UDID log stream --predicate 'eventMessage CONTAINS "TICK"' -
 #    text directly (e.g. "Fajr", "1m 42s", "Magrib 1m ago")
 ```
 
-Transitions land on the wall second containing each target (mock targets are
-launch-relative, i.e. arbitrary sub-second phase; real prayer times are
-minute-exact, so real transitions fire within ~20ms of the :00 boundary).
+Mock targets are whole minutes, like real prayer times, so transitions fire
+within ~20ms of the :00 boundary.
 
 ### What healthy looks like
 
