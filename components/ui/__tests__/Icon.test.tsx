@@ -24,8 +24,8 @@ describe('an icon drawn without an animation', () => {
 });
 
 // Animated icons are built once per icon type for as long as the module lives, so each test animates a type no
-// earlier test has. Every .svg loads as one shared mock, so the icons themselves cannot be told apart: what a build's
-// argument pins is that a type drawn for the first time is built, rather than handed another type's cached build
+// earlier test has. A build's argument pins that a type drawn for the first time is built, rather than handed another
+// type's cached build
 describe('an icon driven by an animation', () => {
   it('builds the animated icon for its type and draws it with the style its animation drives', async () => {
     const build = jest.spyOn(Animated, 'createAnimatedComponent');

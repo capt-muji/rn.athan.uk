@@ -19,8 +19,8 @@ with `npx jest --selectProjects=components` (with the `=`; without it Jest reads
   `components/prayer/__tests__/Alert.test.tsx`.
 - `app/` is the one exception. Expo Router loads every file under `app/` as a screen, a test included, so `app/`
   suites live in `__tests__/app/` at the repository root.
-- Shared set-up lives in `__tests__/harness.ts`. Import `showLondonDay`, `london`, `Breakage` and `onPlatform` from
-  there, never from the files behind it.
+- Shared set-up lives in `__tests__/harness.ts`. Import `showLondonDay`, `saveLondonDays`, `london`, `Breakage` and
+  `onPlatform` from there, never from the files behind it.
 
 ## What a component suite asserts
 
@@ -112,7 +112,25 @@ A test guards a line only if the input it uses would give a different result whe
   `showArabicNamesAtom`, which Settings writes through `useAtom`) is written with `getDefaultStore().set(atom, value)`,
   with a comment naming that component. Never write a storage key directly.
 - **Time:** `showLondonDay` turns fake timers on. Move time with `await act(() => jest.advanceTimersByTime(ms))`.
-- **Platform:** Jest loads React Native as iOS. `onPlatform('android', 29)` runs the rest of the test as Android API 29.
+- **Platform:** Jest loads React Native as iOS. `onPlatform('android', 29)` runs the rest of the test as Android API 29:
+  `Platform.OS`, `Platform.Version` and `Platform.select` all answer as Android. A value a module works out as it
+  loads is not read again: `Platform.select` at the top of `components/modals/Modal.tsx` and
+  `components/sheets/parts/Sheet.tsx`, and `IS_IOS` in `device/updates.ts`. A test of such a value loads the module
+  fresh inside `jest.isolateModules` and switches the platform inside the same callback, through a harness required
+  there: React Native loads again inside the callback, so a switch made outside it changes a copy the fresh module
+  never reads (`__tests__/harness.test.tsx` pins this).
+
+  ```tsx
+  let updates: typeof import('@/device/updates') | undefined;
+  jest.isolateModules(() => {
+    require('@/__tests__/harness').onPlatform('android');
+    updates = require('@/device/updates');
+  });
+  ```
+
+  React loads again inside the callback too, so a plain module or a component that calls no hook (`Modal.tsx`) can be
+  tested this way, but a component that calls hooks (`Sheet.tsx`) throws when rendered from a fresh load, and this
+  guide has no pattern for it yet.
 
 ## Finding things on screen
 
@@ -137,8 +155,11 @@ needs review.
 
 - **Already mocked for every suite** in `jest.components.setup.js`, and never mocked again in a suite:
   - Expo's native modules, through jest-expo's setup;
-  - Reanimated and worklets, with shared values that keep one value per component as the real hook does, so an
-    effect re-runs only when its dependencies change and a first-evaluation snap ends after the first frame;
+  - Reanimated and worklets. `useSharedValue` behaves as the real hook: one value for the component's life (a
+    function initial value is called once, on mount) whose animation is cancelled on unmount, so an effect that
+    depends on a shared value re-runs only when that value changes, and a first-evaluation snap ends after the first
+    frame. The published mock still returns a new `useDerivedValue` result and a new `useAnimatedRef` ref on every
+    render, so an effect that depends on either runs on every render;
   - Gesture Handler, the bottom sheet and safe-area;
   - `expo-haptics`, whose calls are jest functions: `expect(Haptics.impactAsync).toHaveBeenCalledWith(...)`;
   - `expo-audio`, which ships no Jest mock of its own, so the setup defines the three calls the app makes.
