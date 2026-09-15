@@ -5,17 +5,13 @@
 import { act, render, screen } from '@testing-library/react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { showLondonDay } from '@/__tests__/harness';
-import { type Breakage, london } from '@/hooks/__tests__/londonDays';
+import { type Breakage, london, showLondonDay } from '@/__tests__/harness';
 import { ScheduleType } from '@/shared/types';
 import { checkOverlayBoundary, resyncCountdowns, startCountdowns } from '@/stores/countdown';
 import { openOverlay } from '@/stores/overlay';
 import { bumpResync } from '@/stores/ui';
 
 import Bar from '../Bar';
-
-// Reduce Motion is a phone setting one test turns on with a spy, restored so it cannot reach the next test
-afterEach(() => jest.restoreAllMocks());
 
 const ASR = 3;
 
@@ -85,7 +81,7 @@ describe('the Standard bar on Friday 11 September 2026, between Dhuhr at 13:02 a
   });
 
   // Pins only that the snap branch runs with Reduce Motion on and still reports the refill: Reanimated's published
-  // mock builds a new shared value each render and finishes every timing at once, so no snap can be told apart
+  // mock finishes every timing at once, so a snap and an animation leave the same width
   it('crosses Asr straight to 100 percent with Reduce Motion on', async () => {
     jest.spyOn(Reanimated, 'useReducedMotion').mockReturnValue(true);
     showLondonDay('2026-09-11', '16:28');

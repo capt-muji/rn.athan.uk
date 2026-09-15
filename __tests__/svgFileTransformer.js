@@ -5,14 +5,18 @@ const path = require('node:path');
 
 module.exports = {
   process: (_source, filename) => {
-    const testID = JSON.stringify(`svg:${path.basename(filename, '.svg')}`);
+    const name = JSON.stringify(`svg:${path.basename(filename, '.svg')}`);
     return {
       code: [
         "const { createElement } = require('react');",
         "const Svg = require('react-native-svg').default;",
-        `const SvgFile = (props) => createElement(Svg, { testID: ${testID}, ...props });`,
+        // A caller passing testID={undefined} would otherwise overwrite the name with undefined
+        `const SvgFile = (props) => createElement(Svg, { ...props, testID: props.testID ?? ${name} });`,
         'module.exports = { __esModule: true, default: SvgFile };',
       ].join('\n'),
     };
   },
+  // Jest's own cache key covers the .svg file and the config but not this transformer, so without this an edit here
+  // would keep serving drawings compiled by the old version
+  getCacheKey: require('@jest/create-cache-key-function').default([__filename]),
 };

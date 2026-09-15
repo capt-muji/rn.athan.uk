@@ -5,8 +5,8 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 
+import { london, saveLondonDays } from '@/__tests__/harness';
 import { fetchYear } from '@/api/client';
-import { london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import { mockExpoConfig, resetMockExpoConfig } from '@/shared/__mocks__/expo-constants';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';

@@ -4,9 +4,8 @@
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
-import { Platform } from 'react-native';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { onPlatform, showLondonDay } from '@/__tests__/harness';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
@@ -29,10 +28,6 @@ const FIRST_FRAME_MS = 50;
 const standardPage = () => screen.getByText('London, UK');
 
 describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it('shows the Standard and Extras lists once the first frame has passed', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<Navigation />);
@@ -93,7 +88,7 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
 
   it('shows the Standard list on Android', async () => {
     showLondonDay('2026-09-11', '14:00');
-    jest.replaceProperty(Platform, 'OS', 'android');
+    onPlatform('android');
 
     await render(<Navigation />);
 
