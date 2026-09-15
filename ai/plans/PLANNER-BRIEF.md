@@ -12,12 +12,18 @@ guess, and it will guess wrong. A Claude audit session checks the executed resul
 makes the audit a formality.
 
 **Show the model, always** (owner, 2026-09-15). The owner tracks which model does what:
-- Start every response with `Model: Claude Opus 5 (planning session)`.
+- Start every response with `🤖  Model: Claude Opus 5 (planning session)`: the robot emoji and two spaces come first.
 - Name the model every time you mention a subagent, in text, headings and tables, such as
   `Code Reviewer (Claude Opus 5)`.
 - Give every progress table a Model column.
 - Write the same rule into every plan, for the executor: section 11's subagent table has a Model column, and section
-  12's report starts with `Model: GLM 5.3 (execution session)`.
+  12's report starts with `🤖  Model: GLM 5.3 (execution session)`.
+
+**Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
+put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
+
+**Mark the owner's words** (owner, 2026-09-15). When a response quotes the owner's own words, start the quote with the
+whale emoji and two spaces (`🐋  `).
 
 ## 1. Read first, in full, in this order
 
