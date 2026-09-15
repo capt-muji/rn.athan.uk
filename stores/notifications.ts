@@ -250,12 +250,8 @@ const usesPreMidnightExtras = (storedVersion: string | null): boolean => {
   // A fresh install has no index keys at all, so the array chosen cannot matter
   if (!storedVersion) return false;
 
-  try {
-    return compareVersions(storedVersion, EXTRAS_MIDNIGHT_VERSION) < 0;
-  } catch {
-    // An unreadable version is not evidence of an old install; migrate as today
-    return false;
-  }
+  // No try: wasAppUpgraded (stores/version.ts:99) has already compared this value, unguarded, before the migration runs
+  return compareVersions(storedVersion, EXTRAS_MIDNIGHT_VERSION) < 0;
 };
 
 /**
@@ -320,7 +316,6 @@ export const migrateIndexKeyedAlertPreferences = (storedVersion: string | null):
       const alertAtom = alertAtoms[currentIndex];
       const reminderAtom = reminderAtoms[currentIndex];
       const intervalAtom = intervalAtoms[currentIndex];
-      if (!alertAtom || !reminderAtom || !intervalAtom) return;
 
       migrate(`preference_alert_${type}_${index}`, `preference_alert_${type}_${name}`, alertAtom);
       migrate(`preference_reminder_alert_${type}_${index}`, `preference_reminder_alert_${type}_${name}`, reminderAtom);
