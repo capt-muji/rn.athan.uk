@@ -17,12 +17,6 @@ import { getAlertSheetState } from '@/stores/ui';
 
 import Alert from '../Alert';
 
-// A press gives a haptic, and the generated native module behind expo-haptics records no calls
-jest.mock('expo-haptics', () => ({
-  ...jest.requireActual<typeof import('expo-haptics')>('expo-haptics'),
-  impactAsync: jest.fn(() => Promise.resolve()),
-}));
-
 const FAJR = 0;
 const SUNRISE = 1;
 
