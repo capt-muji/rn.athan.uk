@@ -1,6 +1,6 @@
 # Session: keep yesterday's still-due rows after 00:00
 
-**Status: NOT STARTED. Queued on 2026-09-13 from session 1's finding 74, now session 7. It must land
+**Status: NOT STARTED. Queued on 2026-09-13 from session 1's finding 74, now session 9. It must land
 before v2.0 adds any city where Magrib or Isha can fall after 00:00.**
 
 ## The problem

@@ -1,11 +1,11 @@
 # Session: find a way on iOS for each notification to replace the one before it
 
-**Status: NOT STARTED. Queued by the owner on 2026-09-13, now session 6. Research first, and build
+**Status: NOT STARTED. Queued by the owner on 2026-09-13, now session 8. Research first, and build
 only what the owner chooses from what the research proves.**
 
 ## The ask
 
-The same as session 5 (`replace-previous-notification.md`), on iOS: the newest notification the app
+The same as session 7 (`replace-previous-notification.md`), on iOS: the newest notification the app
 produces is the only one left showing. Session 1 argued from Apple's documentation that iOS may not
 allow this for notifications scheduled on the phone. The owner does not accept that without proof:
 
