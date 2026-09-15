@@ -1,7 +1,7 @@
-# Session 6: an alert always does what its bell shows (findings 80 to 82, and 79 if approved)
+# Session 6: an alert always does what its bell shows (findings 79 to 82)
 
 **Status: queued 2026-09-15 at the owner's request, after session 5 (`coverage-100.md`); the owner left the split
-to the assistant. Finding 79 is in scope only if the owner approves it after session 5's explanation.** The four
+to the assistant. The owner approved finding 79 on 2026-09-15 after session 5's explanation.** The four
 findings are written up
 under "Session 4 of the queue" in `ai/features/uat-2/AUDIT-FINDINGS.md`, with their probes in
 `.claude/coverage-sweep/review-artifacts/` (local).
@@ -18,6 +18,15 @@ under "Session 4 of the queue" in `ai/features/uat-2/AUDIT-FINDINGS.md`, with th
 - Rare cases still matter: "a lot of edge cases do happen in production when you have a lot of users."
 - Waiting for "the next refresh" to heal a wrong state is not acceptable.
 - Minimise every chance of an error, including finding 80's.
+
+## The owner's decisions after session 5's explanation, 2026-09-15
+
+- **79 is fixed, with the small fix session 5 proposed:** a failure to open the phone's notification settings, or to
+  read the permission, answers "no" so the app never waits forever; and the permission is read when the user comes
+  back to the app, not the instant the settings screen opens.
+- **80: any error during start-up always shows the error page.** The owner's words: "if there's an app error, we should
+  always show the error page so that the user can actually reset, click the reset button". The splash must never stay
+  over a screen that has something to show, and the error screen is such a screen whatever the season or setting.
 
 ## The four findings
 
