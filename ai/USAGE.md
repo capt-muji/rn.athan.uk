@@ -42,7 +42,7 @@ to *yesterday's* Islamic day. Correct for a real post-midnight Isha (real
 London Isha never lands there), but a night-time mock triggers both: at the
 Magrib→Isha handoff the countdown skips to the next day's Fajr and the
 rollover cascade fires early. The one-minute chain keeps its real-time gaps at
-any hour, but the app's list view cascades cleanly only 06:00–23:59.
+any hour, but the app's list view cascades cleanly only 06:00–23:55.
 Countdown ticking and pre-Isha transitions are unaffected at any hour.
 
 ### Rerun the simulation (iPhone 16 sim, Release, mock data)

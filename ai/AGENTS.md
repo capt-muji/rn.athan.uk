@@ -157,7 +157,7 @@ purpose, because that tag tracks the Node LTS line.
 │   └── __mocks__/         # Module mocks for testing
 ├── device/                # Platform-specific code
 ├── mocks/                 # Test fixtures
-│   ├── simple.ts          # Launch-relative mock API data (dev mode)
+│   ├── simple.ts          # Mock API data, today seeded at each download (dev mode)
 │   ├── full.ts            # Full-year reference dataset (structure reference, unused)
 │   └── timing-system-schema.ts  # Timing system type reference (unused)
 ├── assets/                # Icons, images, audio (athans/ 32 mp3s + reminders/ 66 prayer×interval mp3s)
