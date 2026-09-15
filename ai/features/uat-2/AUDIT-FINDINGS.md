@@ -5370,3 +5370,214 @@ decision.
   device check's dumps, screenshots and scripts sit beside it. The prod-build worktree at
   `~/athan-device-sweep/worktrees/prod-build`, detached at `3d77a266`, is left in place.
 - The per-area reports and the resume notes are local, in `.claude/coverage-sweep/` (excluded from git).
+
+# Session 5 of the queue: a React renderer, 100% coverage, and a gate on every commit, 2026-09-15
+
+The brief is `ai/prompts/coverage-100.md`. The session's first response answered the owner's six questions: why 76%,
+whether the gap was frontend, what would be meaningless to test, the industry standard with sources, how long 100%
+would take, and findings 79 and 80 in plain words. After it, the owner approved finding 79's small fix for session 6 and
+ruled that any start-up error must show the error page (finding 80). Both are recorded in `ai/prompts/alert-integrity.md`
+(1.27.141).
+
+## Before and after
+
+| Measure | Session start (1.27.139) | End (1.27.156) |
+| --- | ---: | ---: |
+| Statements | 76.18 (2,876 of 3,775) | **100** (3,772 of 3,772) |
+| Branches | 73.69 (1,230 of 1,669) | **100** (1,642 of 1,642) |
+| Functions | 74.87 (581 of 776) | **100** (778 of 778) |
+| Lines | 75.70 (2,565 of 3,388) | **100** (3,387 of 3,387) |
+| Tests | 4,089 in 109 suites | **4,472** in 152 suites |
+| Global thresholds | 76, 73, 74, 75 | **100** on all four |
+
+886 of the 899 uncovered statements at the start were component markup in `.tsx` files that no test could render; the
+other 13 were in five `.ts` files. The measured totals shrank by three statements where unreachable code was removed.
+
+## The renderer and the harness (1.27.140, 1.27.145, 1.27.153, 1.27.156)
+
+- React Native Testing Library 14.0.1 with test-renderer 1.2.0, React Native's own Jest setup and resolver
+  (`@react-native/jest-preset` 0.86.3), and Expo's generated native module mocks (jest-expo 57.0.5's setup file only,
+  so the project keeps its Jest 30 transform). Each version was checked against React 19.2.3, React Native 0.86.3,
+  Jest 30.5.1 and Node 24 on the registry before install.
+- `jest.config.js` runs two projects: `unit` for `*.test.ts` and `components` for `*.test.tsx`. Both compile app source
+  through one transform, so their coverage merges per file with identical statement maps; a reviewer compared all 106
+  measured files.
+- Every component test starts from a fresh install: MMKV emptied and every atom reset on the one default store the app's
+  modules captured; timers, spies and replaced properties are restored after each test.
+- 1.27.145 fixed what the area reviews found the harness hid. Reanimated's published mock built a new shared value on
+  every render, so no test could tell "settled on mount" from "animated on a change", and a dropped effect dependency in
+  `RamadanDecorations` passed every suite (it now fails two tests). expo-haptics now records its calls, and each `.svg`
+  names its file, where one shared mock had made the Apple and Android badges indistinguishable.
+- 1.27.153 closed the harness review: `onPlatform` switches `Platform.select` as well as `OS` and `Version` (React
+  Native's iOS file hard-codes `select`, so an "Android" test had run iOS branches), shared values call a function
+  initializer once and cancel their animation on unmount as the real hook does, and `__tests__/harness.test.tsx` (18
+  tests, each shown failing against a break of the harness) pins the harness itself. Every merged suite was aligned with
+  the guide.
+- 1.27.156 closed the second harness review. The guide had said a component that calls hooks could not be rendered
+  from a fresh load, while `Settings.test.tsx` already did it: the component loaded fresh with React pointed at the
+  suite's own. The guide now gives that pattern, pinned by a harness test that renders a component calling a Reanimated
+  hook and a React Native hook, loaded as Android. A first attempt, a fresh React with the library's `pure` entry, passed
+  only on a fixture calling React's own hook; its reviewer rendered `Sheet.tsx` with it, saw it fail, and it was replaced
+  before merge. The two order-dependent test pairs now fail when run alone, a `Platform.select` row that iOS would have
+  answered the same is replaced by one it would not, and `@jest/create-cache-key-function`, which the SVG transformer
+  imports, is declared in `package.json`.
+- `__tests__/README.md` is the written pattern every suite follows, for later and weaker models: where suites live, what
+  they may assert, choosing inputs that can fail (never a starting value), setting state, finding elements, mocks, and
+  what to do with a line no honest test can reach.
+
+## The gate (1.27.140, 1.27.155)
+
+- `yarn validate` runs `jest --coverage`, so the global thresholds bind every commit. They are 100 on all four measures
+  from 1.27.155.
+- `scripts/check-changed-coverage.js`, run by pre-commit (`--staged`) and the new pre-push (`--push <sha>`), refuses:
+  a changed source file below 100% statements, branches, functions or lines; a coverage ignore comment; code changes
+  left outside the commit; a push of anything but the checked-out tree; and changed source outside the measure unless
+  its folder is listed in `UNMEASURED` with its reason.
+- Proven on five real commits on throwaway branches, since removed:
+
+| Commit attempted | Result |
+| --- | --- |
+| An uncovered function in `shared/text.ts` | Refused: `shared/text.ts: statements 5/6, branches 0/2, functions 2/3` |
+| The same function behind `istanbul ignore next` | Refused: a coverage ignore comment |
+| The function covered only by a test left out of the commit | Refused: stage or stash `shared/__tests__/gateProof.test.ts` |
+| Deleting `device/__tests__/tls13.test.ts`, the only suite covering its file | Refused: statements 99.92% does not meet the global threshold of 100% |
+| Deleting one SettingsButton test whose lines other tests also run | **Accepted**: coverage did not change |
+
+The last row is the gate's limit, stated plainly: the thresholds catch a deleted or weakened test only when coverage
+drops. A redundant test's loss is caught by review and by the break passes, not by the gate.
+
+Written exclusions (`UNMEASURED` in the gate script): `widgets/` (the iOS widget runtime, checked by AST),
+`plugins/` and `app.config.ts` (build time), `metro.config.js`, `jsx-runtime-shim.ts` (Metro only), `modules/`
+(Kotlin; its JavaScript surface is measured), `assets/` (asset registries), `mocks/`, `e2e/`, `scripts/`, `.agents/`,
+and the Jest configuration files. Nothing inside the measured folders is excluded.
+
+## Per area
+
+Eight Opus agents worked in parallel worktrees, one per area; every area was reviewed by an independent Opus Code
+Reviewer, and every review fix was verified by its reviewer or by the breaks it named.
+
+| Area | Versions | Break results | Production change |
+| --- | --- | --- | --- |
+| Ramadan decorations | 1.27.142, 1.27.143 | all caught but three position-only breaks; a fourth is caught since 1.27.145 | two branches removed with identical values |
+| ui and modals | 1.27.144 | 42 of 42, and 7 more after review | none |
+| Countdown and overlay | 1.27.146, 1.27.147 | 41 of 56, and 10 more after review | six unreachable fallbacks in `Overlay.tsx` |
+| Prayer rows | 1.27.148 | 50 of 62, and 6 more after review | none |
+| Remainder `.ts` | 1.27.149, 1.27.150 | every break caught, including the migration guard and perf check | see below |
+| App screens | 1.27.151 | 60 of 64, and 4 more after review | none |
+| Sheet parts | 1.27.152 | 87 of 94, and 11 of 12 for the settle-on-mount rule | none |
+| Sheet screens | 1.27.154 | 76 of 79, and every review break | none |
+
+Surviving breaks were animation values no component test can observe, colours, or guards proven redundant; each is
+listed in its commit body.
+
+Reviews found fixture blind spots of the kind the owner has warned about, and each was fixed before merge: overlay tests
+that only ever selected index 0, where the overlay starts; alert-sheet commits that only ever saved Fajr on the Standard
+list; a rounding test at 59.6 seconds, where ceil and round agree; update tests that passed only because of test order;
+settings toggles checked only in the store.
+
+## Lines no honest test could reach
+
+Rule used: prove the line unreachable, then delete it with no change in behaviour, or keep it where it protects the app
+from a future edit and test it with the input that edit would bring.
+
+- **Deleted, behaviour identical:** `RamadanDecorations`' `hRange || 1` (always above 0 for any moon radius above 0) and
+  its spark fade branch (`0.85 * Math.min(...)`, bit-identical over 1,020,008 progress values; `Math` is a worklets
+  global); `Overlay`'s six `?? 0` on non-nullable list measurements; `usesPreMidnightExtras`' try/catch (the same
+  comparison runs unguarded first in `wasAppUpgraded`); the widget push's repeated platform check; the preference
+  migration's second guard (its atom arrays mirror the searched list, pinned by invariant tests); perf's null-storage
+  check (the flush now receives its storage).
+- **Kept and tested:** the migration guard for a prayer name today's lists lack, since removing it would turn a future
+  prayer-name edit into an error page on every launch, tested with the store loaded over a list without Duha; the
+  launch's notification start-up `.catch`, tested with a start-up that rejects; the alert sheet's locked-control
+  guards, tested with a Toggle and Stepper that call back while locked.
+- **Extracted and tested:** What's New's visible-release rule.
+- **Pinned as the owner's rule:** the Android music-glyph size and lift in `Settings.tsx` (commit `9c853868`, "fixed
+  music icon android"), loaded fresh on each platform.
+
+## Production changes and the device check
+
+Production code changed in `components/overlay/Overlay.tsx`, `components/ui/RamadanDecorations.tsx`,
+`stores/notifications.ts`, `stores/widget.ts`, `shared/perf.ts` and `shared/whatsNew.ts`. Every change was proven
+behaviour-identical and reviewed.
+
+On the OnePlus 3T, a local production build of `uat-2` at 1.27.150 (`ede5361a`, Gradle, the owner's debug certificate,
+the real API key in the bundle, sha256 `81cbb92e…c97575`) went on over the owner's 1.27.135 with `adb install -r` at
+10:05 on 15 September 2026, keeping the owner's data. The later versions added tests only. Checked at the real time,
+with no clock change:
+
+- The installed `versionName` read 1.27.150, and a cold launch (HOME, `am kill`, launcher intent) showed the app, not
+  the error screen: the upgrade's migration ran clean.
+- The owner's alarm for 16 September at 05:03 (`when=1789531380000`) was armed before the install and armed again after
+  it under a new alarm record, so the upgrade's forced reschedule ran and kept the time.
+- Standard list: Fajr 05:00, Sunrise 06:32, Dhuhr 13:01, Asr 16:23, Magrib 19:18, Isha 20:33, header "Tue, 15 Sep
+  2026", countdown "Dhuhr 2h 54m" at 10:06, badge "Sunrise 3h 34m ago": the times session 4 read against the provider's
+  payload.
+- Extras list: header "Wed, 16 Sep 2026", Midnight 00:10, Last Third 01:48, Suhoor 04:43, Duha 06:54.
+- Tapping Duha opened the overlay on its next occurrence ("Duha 20h 46m" at 10:07, "Wed, 16 Sep 2026") with the
+  explanation box above the row, pointing at it and inside the content column, reading "20 mins after Sunrise" and
+  "٢٠ دقيقة بعد الشروق": the placement session 4 recorded for Duha before Overlay's fallbacks were removed. A second
+  tap closed it and the list came back.
+
+Not checked on the device, with the reason:
+
+- `RamadanDecorations`' two lines. A production build cannot force the season, the mock-variant build drops every
+  `EXPO_PUBLIC_*` variable and replaces the owner's app (a data wipe and a restore from a two-day-old backup), and moving
+  the clock to Ramadan 2027 would fire the owner's armed alarms. The evidence instead: the fade is bit-identical over
+  1,020,008 progress values, `Math` is a worklets global, and the suite covers the file fully. A mock-build check is
+  available if the owner wants it.
+- `stores/widget.ts` (iOS only, widgets off), `shared/perf.ts` (the monitor is off in production) and
+  `shared/whatsNew.ts` (the visible release is unchanged by construction and by test).
+
+## For the owner: what the tests surfaced, not changed
+
+Accessibility (labels and roles change no pixels, but each is a production change for the owner to approve):
+
+- The countdown bar under an open overlay is invisible but still read by a screen reader, and the four close targets
+  stay readable through the 200 ms close fade.
+- Modal marks only its card as modal (iOS only), and its alert role is not exposed, so the list behind stays reachable.
+- The settings button, each sound row's play button, the colour picker's close and Done buttons, the launch spinner and
+  the page dots have no accessible name; the update prompt's Later and Update buttons have no role; the segmented
+  control does not announce disabled; the labelled toggle's switch has no name.
+- On iOS a pressable row absorbs its children, so VoiceOver cannot reach a sound row's play button on its own, and the
+  colour row reads "Reset" even on the default colour, where Reset is invisible and disabled.
+- The stepper's disabled arrows read "Decrease to 0 min" and "Increase to 35 min".
+
+Behaviour:
+
+- Pressing a labelled toggle's label changes it without the haptic its switch gives.
+- In measurement builds only, a sheet settling at its second snap point is measured as a close.
+- The decorations' splash gate counts load-end events, not distinct sprites.
+
+Decisions waiting on the owner:
+
+- **The accessibility fixes above**, one by one or together.
+- **`shared/__tests__/audioMatrix.test.ts` under load.** It decodes the reminder MP3s and timed out at 10 seconds twice
+  while many agents ran (load average 314), failing the pre-commit hook until load fell. Now that every commit runs the
+  full suite, a busy machine can block a commit: a longer timeout for that suite, or running it outside the hook.
+- **A device check of the Ramadan decorations** through a mock build, if wanted.
+- **Two cleanups in `RamadanDecorations.tsx`** (`MoonSparks` and `LanternSparks` cancel their sparks' animations on
+  unmount). The harness's shared values cancel on unmount as Reanimated's own hook does, so every test passes without
+  them, and on a device the hook cancels too. The guide's rule makes them candidates for deletion, which changes
+  production code, so they stay until the owner decides.
+
+## Harness notes, so they are not read as app failures
+
+- The usage limit stopped every agent twice; each resumed from its worktree with nothing lost.
+- Background Jest runs hung at 0% CPU twice, apparently waiting on watchman after repeated recrawls; `--watchman=false`
+  avoids it.
+- Agents shared the session scratchpad and one commit message was overwritten and made again; scratch now goes to
+  `$TMPDIR` under area names.
+- `jest --selectProjects components <paths>` reads the paths as project names; `--selectProjects=components` does not.
+- "A worker process has failed to exit gracefully" appears in the unit project and predates this session.
+- `components/ui/__tests__/Error.test.tsx` failed once in one reviewer's loaded run and passed on the rerun.
+- Worktree agents must not link `android/` or `ios/`: the main checkout's prebuild version moves with every merge.
+
+## State left behind
+
+- `uat-2` at 1.27.157 once this note merges (at 1.27.156 before it), merged locally and not pushed.
+  Nothing was built on or pushed to EAS, and `releases.json` is untouched.
+- The 3T runs the local production build 1.27.150 with the owner's data intact, automatic time untouched, and the
+  16 September 05:03 alarm armed when last read at 10:05.
+- The agents' branches (`test/cov-*`, `test/harness-*`, `merge/*` and `worktree-agent-*`) remain; this session's agent
+  worktrees under `.claude/worktrees/` are removed. The device evidence (dumps, the alarm readings, the APK and its build
+  report) is at `~/athan-device-sweep/session5/`.
