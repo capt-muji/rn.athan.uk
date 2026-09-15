@@ -3,11 +3,11 @@ import { memo, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
+import { formatShownDate, getShownDateSource } from '@/components/day/shownDate';
 import { Masjid } from '@/components/ui';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { ANIMATION, COLORS, SCREEN, SPACING, TEXT } from '@/shared/constants';
-import { formatDateLong, formatHijriDateLong } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { getOverlayActiveForTypeAtom, getOverlaySelectedIndexForTypeAtom } from '@/stores/atoms/overlay';
 import { extraDisplayDateAtom, standardDisplayDateAtom } from '@/stores/schedule';
@@ -34,21 +34,13 @@ export default function Day({ type }: Props) {
   const showOverlayDate = useAtomValue(useMemo(() => getOverlayActiveForTypeAtom(type), [type]));
   const overlaySelectedIndex = useAtomValue(useMemo(() => getOverlaySelectedIndexForTypeAtom(type), [type]));
   const OverlayPrayer = usePrayer(type, overlaySelectedIndex, true);
-  const dateSource = showOverlayDate ? OverlayPrayer.date : date;
+  const dateSource = getShownDateSource(showOverlayDate, OverlayPrayer.date, date);
 
   const masjidOpacityStyle = useDerivedOpacity(showOverlayDate ? 0 : 1, { duration: ANIMATION.duration });
 
   // Hijri formatting is expensive on the floor device (umalqura Intl) — memo
   // so overlay toggles never re-format an unchanged date string
-  const formattedDate = useMemo(() => {
-    // Day is the only belongsToDate consumer with no isReady gate — List,
-    // usePrayer and useSchedule all have one. Coercing a null date to '' sent
-    // `''.split('-').map(Number)` into an Invalid Date, and date-fns `format`
-    // throws on it; the Hijri branch is no safer, because it calls
-    // formatDateLong from inside its own catch and throws again, uncaught.
-    if (!dateSource) return '';
-    return hijriEnabled ? formatHijriDateLong(dateSource) : formatDateLong(dateSource);
-  }, [hijriEnabled, dateSource]);
+  const formattedDate = useMemo(() => formatShownDate(dateSource, hijriEnabled), [hijriEnabled, dateSource]);
 
   return (
     <View style={styles.container}>
