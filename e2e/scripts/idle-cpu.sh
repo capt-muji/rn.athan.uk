@@ -23,12 +23,12 @@ sleep 12
 a shell am force-stop com.mugtaba.athan
 sleep 2
 
-# Launch early in a minute so the mock's launch-relative prayers land on known minutes
+# Launch early in a minute so the prayers the mock seeds from this launch's download land on known minutes
 while :; do s=$(date +%S); s=${s#0}; (( s >= 5 && s <= 30 )) && break; sleep 1; done
 a shell am start -n com.mugtaba.athan/.MainActivity >/dev/null
 M=$(( $(date +%s) / 60 * 60 ))
-echo "== untouched until $(date -r $((M + 270)) +%H:%M:%S) (today's mock prayers end ~$(date -r $((M + 180)) +%H:%M:%S))"
-while (( $(date +%s) < M + 270 )); do sleep 2; done
+echo "== untouched until $(date -r $((M + 330)) +%H:%M:%S) (today's mock prayers end ~$(date -r $((M + 240)) +%H:%M:%S))"
+while (( $(date +%s) < M + 330 )); do sleep 2; done
 
 # pidof emits every matching process, space separated: strip the CR only and
 # split on whitespace. Deleting the spaces too welds two pids into one number
