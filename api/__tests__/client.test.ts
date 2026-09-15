@@ -896,9 +896,13 @@ describe('fetchDay', () => {
 
     it('sends the mock day through validation', async () => {
       const date = lastMockDate();
-      const raw = MOCK_DATA_SIMPLE.times[date];
-      const original = raw.asr;
-      raw.asr = '-----';
+      const times = MOCK_DATA_SIMPLE.times;
+      const raw = times[date];
+      // The mock builds its days afresh on every read, so an edit to one read's copy would never reach the client:
+      // the unreadable day is planted through the getter instead
+      const planted = jest
+        .spyOn(MOCK_DATA_SIMPLE, 'times', 'get')
+        .mockReturnValue({ ...times, [date]: { ...raw, asr: '-----' } });
 
       try {
         const day = await fetchDay(date);
@@ -911,7 +915,7 @@ describe('fetchDay', () => {
           value: '"-----"',
         });
       } finally {
-        raw.asr = original;
+        planted.mockRestore();
       }
     });
 
