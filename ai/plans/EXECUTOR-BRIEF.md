@@ -29,9 +29,15 @@ project's memory notes, which were written for Claude sessions. Where they diffe
 - Never create or edit anything under `~/.claude/`: memory notes, `CLAUDE.md`, agents or settings. Record what you
   learn in the plan folder's `LOG.md`.
 
-**Show the model, always** (owner, 2026-09-15). Start every response with `Model: GLM 5.3 (execution session)`. Name the
-model every time you mention a subagent, in text, headings and tables: `Code Reviewer (GLM 5.3)`,
-`vision (GLM 5.3 Flash)`. The progress table has a Model column (section 6).
+**Show the model, always** (owner, 2026-09-15). Start every response with `🤖  Model: GLM 5.3 (execution session)`:
+the robot emoji and two spaces come first. Name the model every time you mention a subagent, in text, headings and
+tables: `Code Reviewer (GLM 5.3)`, `vision (GLM 5.3 Flash)`. The progress table has a Model column (section 6).
+
+**Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
+put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
+
+**Mark the owner's words** (owner, 2026-09-15). When a response quotes the owner's own words, start the quote with the
+whale emoji and two spaces (`🐋  `).
 
 ## 1. Start of session
 
@@ -245,7 +251,8 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 
 - **Style.** Plain, short English. No jargon without a one-line explanation. Never claim something the output did not
   show.
-- **Model line.** The first line of every response is `Model: GLM 5.3 (execution session)`.
+- **Model and time lines.** The first line of every response is `🤖  Model: GLM 5.3 (execution session)`, and the second
+  is `Time: ` followed by the output of `date '+%H:%M:%S %d.%m.%Y'`, run before writing the response.
 - **The progress table.** Every response ends with it, in this format:
 
 | Task | Model | What it checks | Why it matters | Outcome | Status |

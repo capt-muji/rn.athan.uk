@@ -164,7 +164,8 @@ Only the agents listed may be used.
 
 ## 12. Report to the owner
 
-The final message, starting `Model: GLM 5.3 (execution session)`:
+The final message, starting with `🤖  Model: GLM 5.3 (execution session)` and a `Time:` line from
+`date '+%H:%M:%S %d.%m.%Y'`:
 - a few plain sentences on what changed and what was proven;
 - the progress table (format in `EXECUTOR-BRIEF.md`);
 - any decision now waiting on the owner;

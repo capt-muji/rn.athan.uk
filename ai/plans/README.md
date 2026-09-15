@@ -13,8 +13,13 @@ A plan is good when an executor that cannot make judgement calls never has to ma
 
 ## What the owner types
 
-Open a terminal in `/Users/muji/repos/rn.athan.uk`. Start the launcher for the phase, then paste its prompt. Use a
-fresh session each time.
+**One command, every time: `athan-next`.** It reads the table below, picks the next step (plan, execute or audit), shows
+which model it chose, and starts that session with its prompt as the first message. When the session ends, press
+Enter for the next step, or Ctrl+C to stop. `athan-next --dry-run` only prints the next step. The command lives in the
+owner's Claude Code setup on this Mac, outside the repository.
+
+What `athan-next` runs, for reference or for starting a step by hand in a fresh session. For an execution step it
+names the row's plan file in place of "the next plan", as that plan folder's `PROMPT.md` does:
 
 | Phase | Start with | Paste |
 | --- | --- | --- |
