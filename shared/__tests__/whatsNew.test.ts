@@ -10,9 +10,12 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { FEATURE_FLAGS } from '@/shared/flags';
+
 import {
   filterWhatsNewItems,
   getPlatformBadges,
+  getVisibleWhatsNew,
   MAX_WHATS_NEW_ARCHIVE,
   MAX_WHATS_NEW_BODY_LENGTH,
   MAX_WHATS_NEW_ITEMS,
@@ -228,6 +231,16 @@ describe('filterWhatsNewItems', () => {
     const visible = filterWhatsNewItems(items, '1.13.0', flagsOn);
     expect(visible.map((entry) => entry.title)).toEqual(['Now']);
   });
+
+  it('hides a flagged item when given no flags, since the build ships with widgets off', () => {
+    const items = [item({ title: 'Now' }), item({ title: 'Flagged', flags: ['widgets'] })];
+    // The premise: jest.setup.js leaves the widgets flag as it ships
+    expect(FEATURE_FLAGS.widgets).toBe(false);
+
+    const visible = filterWhatsNewItems(items, '1.13.0');
+
+    expect(visible.map((entry) => entry.title)).toEqual(['Now']);
+  });
 });
 
 describe('VISIBLE_WHATS_NEW', () => {
@@ -262,5 +275,36 @@ describe('VISIBLE_WHATS_NEW', () => {
     expect(parked?.title).toBe('Home & Lock widgets');
     expect(parked?.flags).toEqual(['widgets']);
     expect((VISIBLE_WHATS_NEW?.items ?? []).map((entry) => entry.title)).not.toContain('Home & Lock widgets');
+  });
+});
+
+describe('getVisibleWhatsNew', () => {
+  const flagsOn = { widgets: true };
+  const flagsOff = { widgets: false };
+
+  it('presents nothing for a silent release', () => {
+    expect(getVisibleWhatsNew(null, flagsOn)).toBeNull();
+  });
+
+  it('presents nothing when no item of the release is visible in the build', () => {
+    const hidden = release([
+      item({ title: 'Old', version: '1.12.0' }),
+      item({ title: 'Parked', version: null }),
+      item({ title: 'Flagged', flags: ['widgets'] }),
+    ]);
+
+    expect(getVisibleWhatsNew(hidden, flagsOff)).toBeNull();
+  });
+
+  it('presents the release with only the items the build may show, judged by the flags it is given', () => {
+    const mixed = release([
+      item({ title: 'Now' }),
+      item({ title: 'Old', version: '1.12.0' }),
+      item({ title: 'Flagged', flags: ['widgets'] }),
+    ]);
+
+    expect(getVisibleWhatsNew(mixed, flagsOn)).toEqual(
+      release([item({ title: 'Now' }), item({ title: 'Flagged', flags: ['widgets'] })])
+    );
   });
 });

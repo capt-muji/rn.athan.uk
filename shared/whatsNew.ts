@@ -179,15 +179,25 @@ export const filterWhatsNewItems = (
   items.filter((item) => item.version === releaseVersion && !(item.flags ?? []).some((flag) => !flags[flag]));
 
 /**
- * The release as this build may present it: WHATS_NEW reduced to the
- * current version's visible items, or null when nothing remains
- * (silent-ship semantics apply everywhere downstream).
+ * A release as a build may present it: reduced to its own version's visible
+ * items, or null when nothing remains (silent-ship semantics apply everywhere
+ * downstream). Pure: the parameters keep tests deterministic.
+ *
+ * @param release - Bundled release content (null = silent release)
+ * @param flags - Enabled-flag record of the build presenting it
+ * @returns The release with only its visible items, or null
  */
-export const VISIBLE_WHATS_NEW: WhatsNewRelease | null = (() => {
-  if (!WHATS_NEW) return null;
-  const items = filterWhatsNewItems(WHATS_NEW.items, WHATS_NEW.version);
-  return items.length > 0 ? { ...WHATS_NEW, items } : null;
-})();
+export const getVisibleWhatsNew = (
+  release: WhatsNewRelease | null,
+  flags: Record<FeatureFlagId, boolean>
+): WhatsNewRelease | null => {
+  if (!release) return null;
+  const items = filterWhatsNewItems(release.items, release.version, flags);
+  return items.length > 0 ? { ...release, items } : null;
+};
+
+/** WHATS_NEW as this build may present it */
+export const VISIBLE_WHATS_NEW: WhatsNewRelease | null = getVisibleWhatsNew(WHATS_NEW, FEATURE_FLAGS);
 
 /**
  * Returns the platform availability badges for an item

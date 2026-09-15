@@ -355,6 +355,19 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
     mockFakeLib.emit('nativeLaunchEnd', 'react-native-mark');
     expect(launchMeasures('launch_native')).toHaveLength(1);
   });
+
+  it('writes nothing, and does not throw, when flushed before the monitor has started', () => {
+    process.env.EXPO_PUBLIC_PERF_MONITOR = '1';
+    const perf = requirePerf();
+    // Instances from earlier tests stay in the list, so a flush that wrote would show as a new instance or a new ring
+    const instancesBefore = mockMmkvInstances.length;
+    const ringsBefore = mockMmkvInstances.map((instance) => instance.getString('perf_ring'));
+
+    expect(() => perf.perfFlush('early')).not.toThrow();
+
+    expect(mockMmkvInstances).toHaveLength(instancesBefore);
+    expect(mockMmkvInstances.map((instance) => instance.getString('perf_ring'))).toEqual(ringsBefore);
+  });
 });
 
 // =============================================================================
