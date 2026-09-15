@@ -54,10 +54,13 @@ beforeEach(() => {
   mockResetAtomState.current();
 });
 
-// A timer a test left pending would otherwise fire in the next test, on that test's clock
+// A timer a test left pending would otherwise fire in the next test, on that test's clock, and a spy or a replaced
+// property (onPlatform in the harness) would otherwise stay in place. Restoring touches only spies and replaced
+// properties, never the jest functions the mocks below are built from
 afterEach(() => {
   jest.clearAllTimers();
   jest.useRealTimers();
+  jest.restoreAllMocks();
 });
 
 // =============================================================================
@@ -79,10 +82,30 @@ jest.mock('./node_modules/react-native-reanimated/src/initializers', () => ({ in
 
 // The native libraries' own published Jest mocks, so a rendered component runs against what each library says its
 // JavaScript surface does rather than a stand-in written here
-jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'));
+// The published mock builds a new shared value on every render, where the real hook keeps one for the component's
+// life. Left as it is, every effect that depends on a shared value re-runs on every render, and a first-evaluation
+// snap never ends, so "settled on the first frame, animated on a change" could not be tested at all
+jest.mock('react-native-reanimated', () => {
+  const Reanimated = require('react-native-reanimated/mock');
+  const { useState } = require('react');
+  // The mock's own version calls no React hook: it builds a plain value, which this keeps for the component's life
+  const createSharedValue = Reanimated.useSharedValue;
+  const useSharedValue = (initialValue) => useState(() => createSharedValue(initialValue))[0];
+  return { ...Reanimated, __esModule: Reanimated.__esModule, useSharedValue };
+});
 jest.mock('@gorhom/bottom-sheet', () => require('@gorhom/bottom-sheet/mock'));
 jest.mock('react-native-safe-area-context', () => require('react-native-safe-area-context/jest/mock').default);
 require('react-native-gesture-handler/jestSetup');
+
+// expo-haptics calls a generated native mock that a test cannot read, so its calls are jest functions here, with its
+// real enums, and a suite checks a haptic with `expect(Haptics.impactAsync).toHaveBeenCalledWith(...)`
+jest.mock('expo-haptics', () => ({
+  ...jest.requireActual('expo-haptics'),
+  impactAsync: jest.fn(() => Promise.resolve()),
+  notificationAsync: jest.fn(() => Promise.resolve()),
+  selectionAsync: jest.fn(() => Promise.resolve()),
+  performAndroidHapticsAsync: jest.fn(() => Promise.resolve()),
+}));
 
 // expo-audio patches its native AudioPlayer class as it loads and ships no Jest mock, and jest-expo's generated native
 // mocks have no classes. These are the three calls the app makes, with the player fields it reads. Every render gets
