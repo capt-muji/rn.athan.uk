@@ -105,13 +105,14 @@ module.exports = {
   testTimeout: 10000,
   // The summary is what scripts/check-changed-coverage.js reads; the per-file table is one --coverageReporters=text away
   coverageReporters: ['json-summary', 'text-summary'],
-  // Just under the measured result, so a change that drops coverage fails `jest --coverage` instead of passing quietly
+  // Every measured file is fully covered. The per-file gate sees only changed source, so these thresholds are what
+  // refuse a commit that weakens or deletes a test without touching the code it covered
   coverageThreshold: {
     global: {
-      branches: 73,
-      functions: 74,
-      lines: 75,
-      statements: 76,
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
     },
   },
 };

@@ -179,7 +179,7 @@ needs review.
    Put the file back. A test that still passes against the broken line guards nothing.
 2. **Never edit a test to make it pass.** A failing test is a finding about the code or about the test's premise, and
    the difference is decided before anything changes.
-3. **Coverage.** `yarn validate` measures coverage. The pre-commit and pre-push hooks run
+3. **Coverage.** `yarn validate` measures coverage, and fails below 100% on any of the four measures across the app, which is what catches a commit that weakens or deletes a test. The pre-commit and pre-push hooks run
    `scripts/check-changed-coverage.js`, which refuses any changed source file below 100% statements, branches,
    functions and lines, and refuses to run while source or test files have changes that are not being committed. A
    file that genuinely cannot be measured is listed in that script's `UNMEASURED`, with its reason.
