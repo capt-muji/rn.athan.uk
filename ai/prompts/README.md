@@ -25,6 +25,24 @@ for findings 80 to 82 to be fixed, so those became sessions 5 and 6 and the sess
 old 5 to 9 are now 7 to 11. Documents written before 2026-09-15 use the old numbers. Sessions 7 to 9 sit in the order
 they were queued until the owner places them.
 
+## Planned by Claude, executed by GLM (owner, 2026-09-15)
+
+From session 6 on, each queued session is first planned in full by Claude in its own planning session, then executed by
+GLM in Claude Code from that plan, then audited by Claude before anything is pushed. The programme, its status table
+and the prompts the owner types are in `ai/plans/README.md`. A session's status in the table above changes to DONE only
+when its plan is audited, or when its plan row is OWNER-LED and the owner says it is finished.
+
+Decided by the owner on 2026-09-15:
+- **Code reviews during execution run on GLM,** as subagents of the GLM session. A Claude audit session checks each
+  executed plan as a whole, and only planning and audit sessions push `uat-2`.
+- **In an execution session, `ai/plans/EXECUTOR-BRIEF.md` and the plan take precedence** over the Claude-only global
+  instructions and memory notes that session also loads.
+- **Execution sessions start with `claude-glm`,** which is GLM 5.3 through the home gateway, with GLM 5.3 Flash for the
+  `vision` subagent. Planning and audit sessions start with `claude-plan`, which is Opus 5 at xhigh effort.
+- **Nothing of OpenCode's is changed** by any session.
+- **Every response shows the model in use**, for the session and for every subagent, in text, headings and tables, so
+  the owner can track which model did what.
+
 ## Waiting on the owner, from session 1
 
 None of these is a session yet. Each needs the owner's decision first.
