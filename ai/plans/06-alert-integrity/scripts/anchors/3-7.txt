@@ -1,0 +1,2 @@
+  await Promise.all([
+    _addAllScheduleNotificationsForSchedule(ScheduleType.Standard),

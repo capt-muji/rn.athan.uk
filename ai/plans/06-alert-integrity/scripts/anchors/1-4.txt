@@ -1,0 +1,2 @@
+// Cast Alert to our mock type for test access
+const alertMock = Alert as unknown as AlertMock;

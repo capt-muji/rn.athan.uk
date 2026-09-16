@@ -1,0 +1,6 @@
+  // Every cancel is let land before a refusal is reported: the scheduling lock is released on the rejection, and a
+  // cancel still on its way could remove an alarm the next operation has just armed under the same identifier
+  const promises = notifications.map((notification) => Notifications.cancelScheduledNotificationAsync(notification.id));
+  const results = await Promise.allSettled(promises);
+  const refusal = results.find((result): result is PromiseRejectedResult => result.status === 'rejected');
+  if (refusal) throw refusal.reason;
