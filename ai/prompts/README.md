@@ -101,6 +101,28 @@ None of these is a session yet. Each needs the owner's decision first.
 - **The 3T ends every session on the latest `uat-2` build, as a mock build with the Asr-next mock data** (Fajr 2 to 3
   minutes past, Asr 60 to 119 seconds away). Production builds are installed only for the proofs that need real times.
 
+## Decided by the owner, 2026-09-16, while planning session 6b
+
+- **A call into the notification system that has not answered in 15 seconds is treated as refused.** The owner's
+  words: "maybe give up after 15s instead of 30s? same as option 1 but shorter". Since session 6 the scheduling queue
+  waits for every piece of work it started, so one native call that never answers would stop the app arming or
+  cancelling anything for the rest of that run, with the bell already showing the user's choice. A timed-out call is
+  undone like any other refusal and the prayer is marked for repair.
+- **A prayer the phone refused is repaired on its own, not by a full reschedule.** The app marks that prayer and, on
+  the next launch or return to the app, redoes only that prayer. The 12-hour cycle keeps its present meaning. The
+  owner chose this after asking whether the first proposal was expensive and being shown the measurement on their own
+  3T: a full pass on returning from background took 118 ms and 123 ms
+  (`~/athan-device-sweep/session5/mockcheck/reopen.logcat.txt`), against 47, 55, 52 and 50 ms for a production build
+  with one alert on (`AUDIT-FINDINGS.md`, "Measured on the device"). Repairing one prayer is about a tenth of that
+  work.
+- **The refusal is forced on the 3T with a throwaway build.** The owner's words: "I don't want to see it, but I will
+  let you do as much testing as you need to to ensure it is absolutely bulletproof. So yes, you can build whatever you
+  want, you can throw away whatever you want. It needs to be bulletproof. I don't need to see it. I trust you to do
+  it."
+- **The 3T is always left unlocked, with Athan open and "Stay awake" on.** The owner's words: "I have purposefully
+  left the screen unlocked, and the app is open and stay awake is on... This should be the state always." No session
+  changes that setting unless it is deliberately testing lock or sleep behaviour, and it puts it straight back.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their
