@@ -46,7 +46,10 @@ A numbered list of the situations that make the executor STOP and ask the owner,
 At minimum:
 - any anchor count other than 1;
 - a test failing that the plan does not expect;
-- a reviewer finding the plan's section 10 does not answer;
+- a break printing `BREAK NOT APPLIED`;
+- a reviewer finding the plan's section 10 does not answer and that touches something the plan fixed;
+- anything the step does not answer that the executor would otherwise have to decide, with the question
+  "The plan does not say `<X>`. What should it be?";
 - anything touching visuals, prayer times, `releases.json`, `uat` or EAS.
 
 ## 3. Pre-flight
@@ -63,7 +66,9 @@ where `<k>` is the first step in section 6's checklist not ticked DONE (1 for a 
 - for steps `<k>` onward, every anchor on code that no earlier step of this plan changes. Each anchor is saved in full
   in `scripts/anchors/<step>-<n>.txt`, and this prints `1`:
   `python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' <anchor file> <source file>`.
-  Never use `grep -c` for an anchor: it counts lines, not occurrences, and splits a multi-line anchor;
+  Never use `grep -c` for an anchor: it counts lines, not occurrences, and splits a multi-line anchor. Never use
+  plain `grep` to look for a string holding `${...}` either: BSD `grep` reads the `$` as an anchor and reports 0
+  matches for a string that is there. Use `grep -F`, or the Python count above;
 - each tool the plan needs, with its check command and expected output, such as `adb -s 8f7ada76 get-state` printing
   `device`.
 
@@ -161,8 +166,10 @@ PASS verdict (`AUDITOR-BRIEF.md` section 4).
 
 - **Symptom table.** A table of symptom, cause and action. Include this session's own risks, and point to the general
   table in `EXECUTOR-BRIEF.md`.
-- **Anticipated review fixes.** Each is given word for word; these are the only fixes the executor may make without
-  asking.
+- **Anticipated review fixes.** Each is given word for word. They are the only fixes the executor may make to
+  anything the plan fixed. A reviewer finding that touches only code the plan did not give, and changes no name,
+  signature, log line, behaviour or test the plan specified, the executor applies itself and records in `LOG.md`
+  (`EXECUTOR-BRIEF.md` section 4, item 8).
 - **Stopping part-way.** For each step, the files to restore with `git checkout --` and the new files to delete, as
   `EXECUTOR-BRIEF.md` section 4a uses (it also restores `app.json` and `package.json`).
 

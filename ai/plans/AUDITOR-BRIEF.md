@@ -60,8 +60,8 @@ Remove it when done, and always before 00:00, when a nightly job clears build fo
    - versions in sequence;
    - commit messages as the plan wrote them, with the version filled in.
 
-   Where a plan hands the executor finished files to copy (plans written before 2026-09-16), the diff must equal
-   those files exactly.
+   Where a step hands the executor finished files to copy (such as every step of session 6b, and any step a replan
+   left untouched), the diff must equal those files exactly.
 3. **The tests still guard.** Run each step's break script from the scratch worktree's root, after
    `grep -n /Users/muji/repos/rn.athan.uk <script>` prints nothing. Every break still fails its named tests. Rerun the
    red check for at least the riskiest step, by reverting its change in the scratch worktree.
