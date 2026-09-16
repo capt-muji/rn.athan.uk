@@ -46,9 +46,10 @@ whale emoji and two spaces (`🐋  `).
    1. If any row is EXECUTED, stop: tell the owner to run the audit prompt first, and give it from
       `ai/plans/README.md`.
    2. Run `git log --oneline origin/uat-2..uat-2 -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json'`.
-      If it prints anything, those are unaudited code commits: take only a row that is READY or IN PROGRESS and whose
-      `LOG.md` records a commit that command printed. If there is no such row, stop: tell the owner to run the planning
-      prompt when a row is NEEDS REPLAN, and the audit prompt otherwise.
+      If it prints anything, those are unaudited code commits: take only a row that is IN PROGRESS and whose `LOG.md`
+      records a commit that command printed, which is this plan's own unfinished work. Never take a READY row here: an
+      audit repairs what it finds and never hands work back (owner, 2026-09-16). If there is no such row, stop: tell
+      the owner to run the planning prompt when a row is NEEDS REPLAN, and the audit prompt otherwise.
    3. If the owner's prompt names a plan file, take that row. Its status must be READY or IN PROGRESS, and its "Needs
       first" rows must be DONE. If not, tell the owner which, and stop.
    4. Otherwise take the first row, in the order column, that is IN PROGRESS (resume it).

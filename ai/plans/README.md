@@ -6,17 +6,36 @@
    call, owner decision, design choice and design review happens here.
 2. **Execution (GLM in Claude Code).** One execution session per plan carries it out exactly as written, including a
    code review of every commit by a GLM subagent. It never pushes.
-3. **Audit (Claude).** One short audit session per executed plan checks the whole result against the plan, fixes or
-   sends back what is wrong, and pushes `uat-2`.
+3. **Audit (Claude).** An audit session checks the executed plan against the plan, fixes whatever is wrong itself, and
+   pushes `uat-2`. Work is never handed back to the executor (owner, 2026-09-16); a large repair may take more than one
+   audit session, and every one of them is Claude's.
 
 A plan is good when an executor that cannot make judgement calls never has to make one.
 
 ## What the owner types
 
-**One command, every time: `athan-next`.** It reads the table below, picks the next step (plan, execute or audit), shows
-which model it chose, and starts that session with its prompt as the first message. When the session ends, press
-Enter for the next step, or Ctrl+C to stop. `athan-next --dry-run` only prints the next step. The command lives in the
-owner's Claude Code setup on this Mac, outside the repository.
+**One command per session: `athan-next`.** It reads the table below, picks the next step (plan, execute or audit),
+shows which model it chose, and starts that session with its prompt as the first message. When that session ends it
+starts the next step on its own after a ten-second countdown, until the audit has pushed the session it carried; then
+it stops, and the owner runs `athan-next` again for the next session. It also stops, starting nothing else, when a
+step exits non-zero, when a step changed neither the status table nor `uat-2`, and when nothing can run. Ctrl+C during
+a countdown ends it. `athan-next --all` carries straight on into the next session; `athan-next --dry-run` only prints
+the next step.
+
+Three guards stop a run that is going round in circles unattended, because each turn of one spends the allowance
+this programme exists to protect. The first: the same step, for the same row, in the same status, three times over
+without any code being committed. The second: a budget for each kind of step within one carried session, because
+steps can cycle without repeating, such as a pre-flight setting NEEDS REPLAN, a planner refreshing it and the
+pre-flight failing again. Execution runs on the owner's own gateway and is cheap, so it has six; planning has two and
+auditing three, because those spend the Claude allowance, and under `--all` they start again each time a session
+actually reaches DONE. The third: a ceiling of twelve sessions for a whole run, which nothing clears, so the run is
+bounded however wrong the other two turn out to be. Ctrl+C reaches `athan-next` only during a countdown: while a
+session is up, Claude Code reads Ctrl+C itself.
+
+The command is a plain Python script, not a Claude session: it holds no context of its own and cannot compact. It
+never reads what a session printed; it reads the step's exit code, the status table and git's commit lists. Each step
+is its own process, so each starts with a fresh context, and only the planning and audit steps use the Claude
+subscription. It lives in the owner's Claude Code setup on this Mac, outside the repository.
 
 What `athan-next` runs, for reference or for starting a step by hand in a fresh session. For an execution step it
 names the row's plan file in place of "the next plan", as that plan folder's `PROMPT.md` does:
@@ -36,10 +55,24 @@ names the row's plan file in place of "the next plan", as that plan folder's `PR
 - Both launchers and the `vision` subagent live in the owner's Claude Code setup on this Mac, outside the repository.
   No gateway address, domain or key is ever written into this repository, and nothing of OpenCode's is changed.
 
-**Order.**
-1. Run the planning prompt once per row, until every row is READY, OWNER-LED or BLOCKED.
-2. Then, for each row in the order column, run the execution prompt and then the audit prompt. The next execution
-   waits until the audit has set DONE.
+**Order: one session at a time.** Plan it, execute it, audit it, and only then plan the next one. The owner asked on
+2026-09-16 which order gives the best quality; this is the answer, and `athan-next` enforces it.
+
+1. Plan the first row that needs planning: a PLANNING row is resumed, and a NEEDS REPLAN row refreshed, before a NOT
+   PLANNED row is started.
+2. Execute that row.
+3. Audit it. The audit fixes whatever the executor got wrong, itself, then sets the row DONE and pushes `uat-2`. It
+   never hands work back to the executor (owner, 2026-09-16).
+4. Only then plan the next row.
+
+**The invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED.** A BLOCKED or OWNER-LED
+row waits on the owner and holds no merged code of its own, so more than one of those may sit in the table at
+once. A plan is written against one
+`uat-2` commit and carries that commit's code verbatim: its anchors, the lines around them, the tests' expected
+numbers, and owner decisions taken while looking at it. A row ahead of it changes that code, so a plan written early
+is stale before it runs, and a stale anchor that still matches by text is worse than one that fails, because nothing
+catches it. Replanning costs what planning cost, so planning ahead is not faster; it is the same work done twice.
+Sessions 6 and 6b both change `stores/notifications.ts` and `device/notifications.ts`, which is how this was found.
 
 The planning prompt resumes a plan left at PLANNING and refreshes one at NEEDS REPLAN, before it starts a new one.
 The execution prompt resumes a plan left at IN PROGRESS, before it starts a new one.
@@ -99,8 +132,9 @@ row above.
   "Needs first".
 - **An execution session** sets IN PROGRESS, EXECUTED, NEEDS REPLAN or BLOCKED. It commits and merges into `uat-2` on
   this Mac, and never pushes.
-- **An audit session** sets DONE for an EXECUTED row, or READY again with audit-fix steps added to the plan. Auditing
-  an unfinished plan leaves its status as it is.
+- **An audit session** sets DONE for an EXECUTED row. It never sets a row back to READY: what the executor got wrong,
+  the audit repairs itself. Auditing an unfinished plan leaves its status as it is, so the executor carries on with the
+  plan it has not finished. That is the executor resuming its own work, not work handed back to it.
 - **Pushing.** Only planning and audit sessions push `uat-2`, and only when every commit on `uat-2` that is not yet on
   `origin/uat-2` has been audited. A planning session that finds unaudited commits asks the owner to run the audit
   prompt first, unless it is replanning a NEEDS REPLAN row, which it does without pushing.
