@@ -1,4 +1,4 @@
-# Planning session brief (for Claude)
+# Planning session brief
 
 You are the planner: the architect, the security designer, the overseer and the project manager of ONE queued
 session. You decide **everything**. The executor decides **nothing**. You do not execute the session. You change no
@@ -26,13 +26,13 @@ there is a defect.
 
 Everything the executor must achieve is **measurable by the executor itself**, so it knows when it is finished and
 right: the named tests, red before green, 100% coverage of what it changed, every break caught, tsc, Biome, and the
-invariant. A Claude audit session checks the result before it is pushed, and now also reads the code the executor
+invariant. An audit session checks the result before it is pushed, and now also reads the code the executor
 wrote, not only that it matched a script.
 
 **Show the model, always** (owner, 2026-09-15). The owner tracks which model does what:
-- Start every response with `🤖  Model: Claude Opus 5 (planning session)`: the robot emoji and two spaces come first.
+- Start every response with `🤖  Model: GLM 5.3 (planning session)`: the robot emoji and two spaces come first.
 - Name the model every time you mention a subagent, in text, headings and tables, such as
-  `Code Reviewer (Claude Opus 5)`.
+  `Code Reviewer (GLM 5.3)`.
 - Give every progress table a Model column.
 - Write the same rule into every plan, for the executor: section 11's subagent table has a Model column, and section
   12's report starts with `🤖  Model: GLM 5.3 (execution session)`.
@@ -122,7 +122,7 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    `ai/prompts/README.md`'s decided section. Never leave a decision for the execution session.
 5. **Design.** Choose the approach. Write the invariant as one sentence a test can check. List the alternatives
    rejected, with reasons. Behaviour changes to notifications, data or the schedule get a design review before you
-   write steps: spawn a `Software Architect` or `Code Reviewer` subagent (model `opus`) with the design and the code
+   write steps: spawn a `Software Architect` or `Code Reviewer` subagent with the design and the code
    map, asking it to attack the design. Fix what it finds and record the review in section 5.
 6. **Cut the work into steps.** The standing rule: one finding, one branch, one commit, version-bumped, merged `--no-ff`
    into `uat-2`. A step must be small enough that its change fits in the plan verbatim. Order steps so each leaves
@@ -186,8 +186,8 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    read, name the `vision` subagent and write its exact question; the executor cannot see images.
 10. **Write the records** (template section 8), **the report** (template section 12), and the plan folder's `PROMPT.md`
     and `LOG.md` (section 5 below).
-11. **Review the plan as the executor would read it.** Spawn a `Code Reviewer` subagent (model `opus`, isolation
-    `worktree`) with this instruction: "Read /Users/muji/repos/rn.athan.uk/ai/plans/EXECUTOR-BRIEF.md, then the plan
+11. **Review the plan as the executor would read it.** Spawn a `Code Reviewer` subagent, in a scratch worktree of its
+    own, with this instruction: "Read /Users/muji/repos/rn.athan.uk/ai/plans/EXECUTOR-BRIEF.md, then the plan
     folder at /Users/muji/repos/rn.athan.uk/ai/plans/<folder>/ (not committed yet, so read it by this absolute path),
     as the implementer it is written for: capable of building what it specifies, and never allowed to decide what to
     build. List:
@@ -236,8 +236,8 @@ The plan is not READY until every line below is true.
   implementation, name in the contract the thing that carries it, so the break has a stable target: a constant with
   a given name, a helper with a given signature.
 - Every commit message, review prompt, merge message and records text is written out in full.
-- Every subagent call names its type, its isolation and its full prompt. No `model` override: the executor's
-  subagents run on GLM.
+- Every subagent call names its type, its isolation and its full prompt. No `model` override: every subagent
+  inherits GLM 5.3.
 - Section 2.2 lists every situation that makes the executor stop, each with the question it asks the owner.
 - Section 10 gives the anticipated review fixes word for word, and each step's files to restore.
 - None of the vague words listed in `TEMPLATE.md` appears in an instruction.
@@ -270,9 +270,9 @@ The plan is not READY until every line below is true.
   `steps/<k>-<name>.md`, listed in section 6's checklist in order. Scripts go in `scripts/`, and anchors in
   `scripts/anchors/`, written out in full.
 - **`PROMPT.md`.** Every plan folder gets one, holding exactly three lines:
-  - `Execution session (start with claude-glm). Read ai/plans/EXECUTOR-BRIEF.md and execute ai/plans/<folder>/PLAN.md.`
-  - `Audit session (start with claude-plan). Read ai/plans/AUDITOR-BRIEF.md and audit ai/plans/<folder>/PLAN.md.`
-  - `Planning session (start with claude-plan). Read ai/plans/PLANNER-BRIEF.md and replan ai/plans/<folder>/PLAN.md.`
+  - `Execution session. Read ai/plans/EXECUTOR-BRIEF.md and execute ai/plans/<folder>/PLAN.md.`
+  - `Audit session. Read ai/plans/AUDITOR-BRIEF.md and audit ai/plans/<folder>/PLAN.md.`
+  - `Planning session. Read ai/plans/PLANNER-BRIEF.md and replan ai/plans/<folder>/PLAN.md.`
 - **`LOG.md`.** It starts with only the heading `# Execution log: Session <N>`.
 - **Subagents.** Pick the executor's subagents from this list only, with these uses:
 
@@ -338,7 +338,7 @@ The plan is not READY until every line below is true.
   - the API key is never committed;
   - nothing of OpenCode's is changed.
 - **Reviews.** Every changed line is reviewed by a `Code Reviewer` subagent before merge. In execution sessions that
-  reviewer runs on GLM, and a Claude audit checks each executed plan before it is pushed (owner, 2026-09-15). A "fix
+  reviewer runs on GLM 5.3, and an audit session checks each executed plan before it is pushed (owner, 2026-09-15). A "fix
   first" verdict is fixed and verified by the same reviewer, so its worktree is not removed until the final verdict.
 
 ## 7. Session-specific notes known on 2026-09-15
@@ -384,7 +384,7 @@ The plan is not READY until every line below is true.
   - If they have not, mark the row OWNER-LED, with a short reading guide as the plan.
   - If they have, plan the remaining research as executable steps.
   - Its brief's own rules conflict with the executor brief: its research worktree and branch, `--no-verify`, no merge
-    or push, and Opus agents. Ask the owner which apply, and write the plan so the executor never meets the conflict.
+    or push, and its own subagent models. Ask the owner which apply, and write the plan so the executor never meets the conflict.
 
 ## 8. Finishing a planning session
 
@@ -398,7 +398,7 @@ The plan is not READY until every line below is true.
 
    Bump the patch version in the three places. Commit with a message that says which session was planned and what the
    plan covers. The hook runs the full suite.
-4. **Review.** A `Code Reviewer` (model `opus`, isolation `worktree`) reviews the whole range since the skeleton
+4. **Review.** A `Code Reviewer`, in a scratch worktree of its own, reviews the whole range since the skeleton
    commit. It checks the plan's accuracy against the code at "Planned at", and the quality bar. Fix what it finds.
    Section 0 applies: verify once if the plan changed, and never start a third round.
 5. **Merge and push.**
@@ -412,10 +412,9 @@ The plan is not READY until every line below is true.
    - anything BLOCKED;
    - the progress table.
 
-   Then give the next prompt, with its launcher: when you set the row READY, the execution prompt with `claude-glm`
-   for it, because each session is planned, executed and audited before the next one is planned (`README.md`,
-   "Order"). When you set it OWNER-LED or BLOCKED instead, say which, and give the owner `athan-next`, which starts
-   whatever can run next.
+   Then end with the four-line handoff from the `athan-next` skill, section 5: when you set the row READY, the job
+   next is executing it, because each session is planned, executed and audited before the next one is planned
+   (`README.md`, "Order"). When you set it OWNER-LED or BLOCKED instead, say which, and what it waits on.
 
 ## 9. Replanning a NEEDS REPLAN row
 

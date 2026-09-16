@@ -1,4 +1,4 @@
-# Execution session brief (for GLM in Claude Code)
+# Execution session brief
 
 You are the executor: the implementer. A stronger model has already been the architect for this session. It made
 every decision and wrote them down as a plan. Your job is to build ONE plan, step by step, to the acceptance criteria
@@ -38,21 +38,21 @@ kind. **A step whose part 5 tells you to copy a file the plan carries is a step 
 about the plan as a whole; its section 6 checklist may mark it too. Do exactly what such a step says: **where a step
 dictates rather than specifies, the dictation wins**, whatever the rest of this brief expects you to write yourself.
 
-**This brief and the plan come first** (owner, 2026-09-15). This session also loads `~/.claude/CLAUDE.md` and the
-project's memory notes, which were written for Claude sessions. Where they differ from this brief, this brief wins:
-- Use only the subagents the plan names, and invoke no skill the plan does not name.
-- Never pass `model` to a subagent, although a memory note says every subagent runs on Opus. In this session every
-  model runs on GLM.
+**This brief and the plan come first** (owner, 2026-09-15). This session also loads the harness's own instructions and
+the project's memory notes. Where they differ from this brief, this brief wins:
+- Use only the subagents the plan names, and invoke no skill the plan does not name, beyond the `athan-next` skill
+  that chose this step.
+- Never pass `model` to a subagent: every subagent inherits GLM 5.3.
 - Stop and ask as this brief says, although a memory note says to run without check-ins.
-- Never run `sleep` in the foreground. Start every long command in the background (the Bash tool's
-  `run_in_background`), and wait for the notification that it finished. A background command may wait inside itself,
+- Never run `sleep` in the foreground. Start every long command in the background (the shell tool's `background`
+  parameter), and wait for the notification that it finished. A background command may wait inside itself,
   but only in a loop of `sleep 15` or shorter that checks its condition on every pass (`ai/AGENTS.md` section 7).
 - The git, commit, review and `tsc` steps in this brief are the owner's instruction for this programme. They replace
   `ai/AGENTS.md` sections 7, 10 and 13 where those differ.
 - You cannot see images. Never open a `.png`, `.jpg` or video frame with Read. Ask the `vision` subagent, giving it the
   file path and the plan's exact question.
-- Never create or edit anything under `~/.claude/`: memory notes, `CLAUDE.md`, agents or settings. Record what you
-  learn in the plan folder's `LOG.md`.
+- Never create or edit anything in the harness's own configuration, under `~/.config/opencode/` or `~/.claude/`:
+  memory notes, agents or settings. Record what you learn in the plan folder's `LOG.md`.
 
 **Show the model, always** (owner, 2026-09-15). Start every response with `🤖  Model: GLM 5.3 (execution session)`:
 the robot emoji and two spaces come first. Name the model every time you mention a subagent, in text, headings and
@@ -337,7 +337,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 2. **Status.** Set the row in `ai/plans/README.md` to EXECUTED. Never change the table in `ai/prompts/README.md`: the
    audit session does.
 3. **Docs commit.** Make an `executed` docs commit (section 4b). Do not push.
-4. **Worktrees.** Once every verdict is in, remove the worktrees your reviewers left:
-   `git worktree remove --force .claude/worktrees/<agent id>`, for this session's agents only.
-5. **Report.** Report to the owner as the plan's section 12 says. End with the audit prompt from `ai/plans/README.md`,
-   started with `claude-plan`.
+4. **Worktrees.** Once every verdict is in, remove the scratch worktrees your reviewers used:
+   `git worktree remove --force <path>`, for this session's worktrees only.
+5. **Report.** Report to the owner as the plan's section 12 says. End with the four-line handoff from the
+   `athan-next` skill, section 5.
