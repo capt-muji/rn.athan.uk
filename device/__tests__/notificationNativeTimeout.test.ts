@@ -121,23 +121,28 @@ describe('a call into the notification system that never answers', () => {
     await failed;
   });
 
-  it("makes clearing a prayer's alarms fail after fifteen seconds", async () => {
+  it("reports the alarm as refused when clearing a prayer's alarms is the call that hangs", async () => {
     (cancelScheduledNotificationAsync as jest.Mock).mockImplementation(neverAnswers);
     const cleared = clearAllScheduledNotificationForPrayer(ScheduleType.Standard, 5);
-    const failed = expect(cleared).rejects.toThrow(`cancelling ${ISHA_ID} did not answer in 15000 ms`);
 
     await jest.advanceTimersByTimeAsync(15_000);
 
-    await failed;
+    await expect(cleared).resolves.toEqual([ISHA_ID]);
+    expect(logger.warn).toHaveBeenCalledWith('NOTIFICATION SYSTEM: Failed to cancel notification:', {
+      id: ISHA_ID,
+      error: expect.objectContaining({
+        message: expect.stringContaining(`cancelling ${ISHA_ID} did not answer in 15000 ms`),
+      }),
+    });
   });
 
-  it("logs and carries on when clearing a prayer's reminders is the call that hangs", async () => {
+  it("reports the reminder as refused when clearing a prayer's reminders is the call that hangs", async () => {
     (cancelScheduledNotificationAsync as jest.Mock).mockImplementation(neverAnswers);
     const cleared = clearAllScheduledRemindersForPrayer(ScheduleType.Standard, 5);
 
     await jest.advanceTimersByTimeAsync(15_000);
-    await cleared;
 
+    await expect(cleared).resolves.toEqual([ISHA_REMINDER_ID]);
     expect(logger.warn).toHaveBeenCalledWith('REMINDER SYSTEM: Failed to cancel reminder:', {
       id: ISHA_REMINDER_ID,
       error: expect.objectContaining({

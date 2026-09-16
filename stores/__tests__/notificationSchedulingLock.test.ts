@@ -16,14 +16,12 @@ import * as PrayerUtils from '@/shared/prayer';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
+  commitPrayerAlertChange,
   lastNotificationScheduleAtom,
   refreshNotifications,
-  setPrayerAlertType,
-  setReminderAlertType,
   setReminderInterval,
   standardPrayerAlertAtoms,
   standardReminderAlertAtoms,
-  updatePrayerNotifications,
 } from '@/stores/notifications';
 
 jest.mock('@/shared/logger', () => ({
@@ -52,6 +50,16 @@ const WINDOW = [TODAY, TOMORROW];
 const INTERVAL = 15 as ReminderInterval;
 const FAJR = 0;
 const DHUHR = 2;
+
+/** The three settings an alert sheet closes on */
+const alerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertType.Off) => ({
+  atTimeAlert,
+  reminderAlert,
+  reminderInterval: INTERVAL,
+});
+
+/** Every alert of a prayer switched off */
+const OFF = alerts(AlertType.Off);
 
 const athanIds = (name: string) =>
   WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, name, date));
@@ -199,15 +207,16 @@ describe('an operation queued behind one that fails part way', () => {
     const refresh = refreshNotifications();
     await flush();
 
-    setPrayerAlertType(ScheduleType.Standard, DHUHR, AlertType.Off);
-    const commit = updatePrayerNotifications(ScheduleType.Standard, DHUHR, 'Dhuhr', '', AlertType.Off, AlertType.Off);
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', '', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
 
-    expect({ refreshed: refreshed.status, committed: committed.status, dhuhr: armedFor('Dhuhr') }).toEqual({
-      refreshed: 'rejected',
-      committed: 'fulfilled',
+    // A refused cancel no longer rejects the refresh: it marks the prayer. What the lock still guarantees is that the
+    // commit ran only after every piece of the refresh had landed, which is what the empty Dhuhr proves
+    expect({ refreshed: refreshed.status, committed, dhuhr: armedFor('Dhuhr') }).toEqual({
+      refreshed: 'fulfilled',
+      committed: { status: 'fulfilled', value: true },
       dhuhr: [],
     });
   });
@@ -221,15 +230,14 @@ describe('an operation queued behind one that fails part way', () => {
     const refresh = refreshNotifications();
     await flush();
 
-    setPrayerAlertType(ScheduleType.Standard, DHUHR, AlertType.Off);
-    const commit = updatePrayerNotifications(ScheduleType.Standard, DHUHR, 'Dhuhr', '', AlertType.Off, AlertType.Off);
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', '', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
 
-    expect({ refreshed: refreshed.status, committed: committed.status, dhuhr: armedFor('Dhuhr') }).toEqual({
-      refreshed: 'rejected',
-      committed: 'fulfilled',
+    expect({ refreshed: refreshed.status, committed, dhuhr: armedFor('Dhuhr') }).toEqual({
+      refreshed: 'fulfilled',
+      committed: { status: 'fulfilled', value: true },
       dhuhr: [],
     });
   });
@@ -241,15 +249,14 @@ describe('an operation queued behind one that fails part way', () => {
     const refresh = refreshNotifications();
     await flush();
 
-    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    const commit = updatePrayerNotifications(ScheduleType.Standard, FAJR, 'Fajr', '', AlertType.Silent, AlertType.Off);
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', '', alerts(AlertType.Silent), OFF);
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
 
-    expect({ refreshed: refreshed.status, committed: committed.status, fajr: armedFor('Fajr') }).toEqual({
-      refreshed: 'rejected',
-      committed: 'fulfilled',
+    expect({ refreshed: refreshed.status, committed, fajr: armedFor('Fajr') }).toEqual({
+      refreshed: 'fulfilled',
+      committed: { status: 'fulfilled', value: true },
       fajr: athanIds('Fajr'),
     });
   });
@@ -259,27 +266,26 @@ describe('an operation queued behind one that fails part way', () => {
     armedEarlier(FAJR, 'Fajr', reminderIds('Fajr'), Database.addOneScheduledReminderForPrayer);
     refusedCancels.add(athanIds('Fajr')[0]);
     holdsCancel = (id) => id === reminderIds('Fajr')[1];
-    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Off);
-    const turnOff = updatePrayerNotifications(ScheduleType.Standard, FAJR, 'Fajr', '', AlertType.Off, AlertType.Off);
+    const turnOff = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', '', OFF, alerts(AlertType.Silent));
     await flush();
 
-    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    const turnOn = updatePrayerNotifications(
+    const turnOn = commitPrayerAlertChange(
       ScheduleType.Standard,
       FAJR,
       'Fajr',
       '',
-      AlertType.Silent,
-      AlertType.Silent
+      alerts(AlertType.Silent, AlertType.Silent),
+      OFF
     );
     await flush();
     releaseHeld();
     const [off, on] = await Promise.allSettled([turnOff, turnOn]);
 
-    expect({ off: off.status, on: on.status, fajr: armedFor('Fajr') }).toEqual({
-      off: 'rejected',
-      on: 'fulfilled',
+    // The phone refused one of the Off commit's cancels, so it answers false. Its undo is skipped because the second
+    // commit already owns the prayer, which is what leaves the second commit's own setting standing
+    expect({ off, on, fajr: armedFor('Fajr') }).toEqual({
+      off: { status: 'fulfilled', value: false },
+      on: { status: 'fulfilled', value: true },
       fajr: [...athanIds('Fajr'), ...reminderIds('Fajr')].sort(),
     });
   });
@@ -298,8 +304,7 @@ describe('an operation queued behind one that fails part way', () => {
     const refresh = refreshNotifications();
     await flush();
 
-    setPrayerAlertType(ScheduleType.Standard, DHUHR, AlertType.Off);
-    const commit = updatePrayerNotifications(ScheduleType.Standard, DHUHR, 'Dhuhr', '', AlertType.Off, AlertType.Off);
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', '', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
@@ -329,8 +334,7 @@ describe('an operation queued behind one that fails part way', () => {
       const refresh = refreshNotifications();
       await flush();
 
-      setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Off);
-      const commit = updatePrayerNotifications(ScheduleType.Standard, FAJR, 'Fajr', '', AlertType.Off, AlertType.Off);
+      const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', '', OFF, alerts(AlertType.Silent));
       await flush();
       releaseHeld();
       const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
@@ -346,8 +350,8 @@ describe('an operation queued behind one that fails part way', () => {
 
 describe('a call into the notification system that never answers', () => {
   it('gives up on listing the pending notifications after fifteen seconds', async () => {
-    // The sweep reads the list inside the lock, so a list that never answers would hold the queue for the rest of
-    // the process
+    // The sweep reads the list inside the lock, so a list that never answers would hold the queue for the rest of the
+    // process
     store.set(standardPrayerAlertAtoms[FAJR], AlertType.Silent);
     getAllMock.mockImplementation(() => new Promise(() => undefined));
     const refresh = refreshNotifications();
@@ -372,8 +376,7 @@ describe('an operation that fails before its own work begins', () => {
     await flush();
     info.mockImplementation(() => undefined);
 
-    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    await updatePrayerNotifications(ScheduleType.Standard, FAJR, 'Fajr', '', AlertType.Silent, AlertType.Off);
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', '', alerts(AlertType.Silent), OFF);
 
     await failed;
     expect(armedFor('Fajr')).toEqual(athanIds('Fajr').sort());
