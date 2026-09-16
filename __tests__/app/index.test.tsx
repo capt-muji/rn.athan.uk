@@ -321,6 +321,33 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
 
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
+
+  // No day of 2027 is stored, so the failed download leaves nothing usable and sync fails
+  it('lifts the splash onto the error screen, without waiting for decorations that screen never draws', async () => {
+    showRamadanLists();
+    markMasjidIconLoaded();
+    jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
+
+    await render(<Index />);
+
+    expect(await screen.findByText('Something went wrong.')).toBeOnTheScreen();
+    expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('holds the splash over the error screen until its Masjid icon has loaded, then lifts it', async () => {
+    showRamadanLists();
+    jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
+    await render(<Index />);
+    await screen.findByText('Something went wrong.');
+    const beforeIcon = jest.mocked(SplashScreen.hideAsync).mock.calls.length;
+
+    await act(() => markMasjidIconLoaded());
+
+    expect({ beforeIcon, afterIcon: jest.mocked(SplashScreen.hideAsync).mock.calls.length }).toEqual({
+      beforeIcon: 0,
+      afterIcon: 1,
+    });
+  });
 });
 
 describe('alerts and the settling window, Friday 11 September 2026 at 14:00', () => {
