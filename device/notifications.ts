@@ -84,6 +84,7 @@ export const addOneScheduledNotificationForPrayer = async (
   // the device's default notification tone, so the alarm rings a generic ding instead
   // of the athan (device-verified on the 3T, see AUDIT-FINDINGS finding 5)
   if (alertType === AlertType.Sound && Platform.OS === 'android') {
+    // Each of these bounds its own call into the notification system (shared/notifications.ts)
     if (NotificationUtils.isDailyPrayer(englishName)) {
       await NotificationUtils.createAthanAndroidChannel(soundPreference);
     } else {
@@ -92,15 +93,18 @@ export const addOneScheduledNotificationForPrayer = async (
   }
 
   try {
-    const id = await Notifications.scheduleNotificationAsync({
-      identifier,
-      content,
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.DATE,
-        date: triggerDate,
-        channelId: atTimeChannelId,
-      },
-    });
+    const id = await NotificationUtils.withNativeTimeout(
+      Notifications.scheduleNotificationAsync({
+        identifier,
+        content,
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.DATE,
+          date: triggerDate,
+          channelId: atTimeChannelId,
+        },
+      }),
+      `arming ${identifier}`
+    );
 
     const notification = { id, date, time, englishName, arabicName, alertType };
     logger.info('NOTIFICATION SYSTEM: Scheduled:', { ...notification, identifier });
@@ -112,7 +116,10 @@ export const addOneScheduledNotificationForPrayer = async (
 };
 
 export const cancelScheduledNotificationById = async (notificationId: string) => {
-  await Notifications.cancelScheduledNotificationAsync(notificationId);
+  await NotificationUtils.withNativeTimeout(
+    Notifications.cancelScheduledNotificationAsync(notificationId),
+    `cancelling ${notificationId}`
+  );
 
   logger.info('NOTIFICATION SYSTEM: Cancelled:', notificationId);
 };
@@ -122,7 +129,12 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 
   // Every cancel is let land before a refusal is reported: the scheduling lock is released on the rejection, and a
   // cancel still on its way could remove an alarm the next operation has just armed under the same identifier
-  const promises = notifications.map((notification) => Notifications.cancelScheduledNotificationAsync(notification.id));
+  const promises = notifications.map((notification) =>
+    NotificationUtils.withNativeTimeout(
+      Notifications.cancelScheduledNotificationAsync(notification.id),
+      `cancelling ${notification.id}`
+    )
+  );
   const results = await Promise.allSettled(promises);
   const refusal = results.find((result): result is PromiseRejectedResult => result.status === 'rejected');
   if (refusal) throw refusal.reason;
@@ -165,19 +177,23 @@ export const addOneScheduledReminderForPrayer = async (
     : undefined;
 
   if (isAndroidSound) {
+    // Bounds its own call into the notification system (shared/notifications.ts)
     await NotificationUtils.createReminderAndroidChannel(englishName, intervalMinutes);
   }
 
   try {
-    const id = await Notifications.scheduleNotificationAsync({
-      identifier,
-      content,
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.DATE,
-        date: triggerDate,
-        channelId: reminderChannelId,
-      },
-    });
+    const id = await NotificationUtils.withNativeTimeout(
+      Notifications.scheduleNotificationAsync({
+        identifier,
+        content,
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.DATE,
+          date: triggerDate,
+          channelId: reminderChannelId,
+        },
+      }),
+      `arming ${identifier}`
+    );
 
     const notification = { id, date, time, englishName, arabicName, alertType };
     logger.info('REMINDER SYSTEM: Scheduled:', { ...notification, identifier });
@@ -198,9 +214,10 @@ export const clearAllScheduledRemindersForPrayer = async (scheduleType: Schedule
 
   // Cancel all reminders
   const promises = reminders.map((reminder) =>
-    Notifications.cancelScheduledNotificationAsync(reminder.id).catch((error) =>
-      logger.warn('REMINDER SYSTEM: Failed to cancel reminder:', { id: reminder.id, error })
-    )
+    NotificationUtils.withNativeTimeout(
+      Notifications.cancelScheduledNotificationAsync(reminder.id),
+      `cancelling ${reminder.id}`
+    ).catch((error) => logger.warn('REMINDER SYSTEM: Failed to cancel reminder:', { id: reminder.id, error }))
   );
   await Promise.all(promises);
 

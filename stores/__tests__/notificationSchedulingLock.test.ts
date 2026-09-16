@@ -11,6 +11,7 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
+import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -341,4 +342,40 @@ describe('an operation queued behind one that fails part way', () => {
       });
     }
   );
+});
+
+describe('a call into the notification system that never answers', () => {
+  it('gives up on listing the pending notifications after fifteen seconds', async () => {
+    // The sweep reads the list inside the lock, so a list that never answers would hold the queue for the rest of
+    // the process
+    store.set(standardPrayerAlertAtoms[FAJR], AlertType.Silent);
+    getAllMock.mockImplementation(() => new Promise(() => undefined));
+    const refresh = refreshNotifications();
+    const failed = expect(refresh).rejects.toThrow('listing the pending notifications did not answer in 15000 ms');
+
+    await jest.advanceTimersByTimeAsync(15_000);
+
+    await failed;
+  });
+});
+
+describe('an operation that fails before its own work begins', () => {
+  it('leaves the queue able to run the next operation', async () => {
+    // The lock writes its own log line before the try that the operation runs in, so a logger that throws takes the
+    // whole queue down with it: every later operation's callback is skipped and nothing is ever armed again
+    const info = logger.info as jest.Mock;
+    info.mockImplementation((message: string) => {
+      if (message === 'NOTIFICATION: Starting refreshNotifications') throw new Error('Log sink unavailable');
+    });
+    const refresh = refreshNotifications();
+    const failed = expect(refresh).rejects.toThrow('Log sink unavailable');
+    await flush();
+    info.mockImplementation(() => undefined);
+
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    await updatePrayerNotifications(ScheduleType.Standard, FAJR, 'Fajr', '', AlertType.Silent, AlertType.Off);
+
+    await failed;
+    expect(armedFor('Fajr')).toEqual(athanIds('Fajr').sort());
+  });
 });
