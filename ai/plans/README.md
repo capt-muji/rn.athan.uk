@@ -1,66 +1,54 @@
-# Plans: Claude plans and audits every queued session, GLM executes the plans
+# Plans: every queued session is planned, then executed, then audited, one at a time
 
-**Why this exists.** On 2026-09-15 the owner's Claude allowance was running low. The owner split the work:
+**Why this exists.** On 2026-09-15 the owner's Claude allowance was running low, so the work was split into three
+sessions with separate jobs and fresh contexts. On 2026-09-17 that allowance ran out and the whole programme moved to
+OpenCode on GLM 5.3, with GLM 5.3 Flash for reading images. The split is what matters and it has not changed; what
+left these pages is the model names, so a session now says which job it is doing rather than which model it is:
 
-1. **Planning (Claude).** One planning session per queued session is the architect: it makes every decision, does the
+1. **Planning.** One planning session per queued session is the architect: it makes every decision, does the
    design and its review, takes the owner's rulings, and writes a plan that SPECIFIES the work completely. Since
    2026-09-16 that means contracts, names, behaviour, the tests to write and the acceptance criteria, not the
    executor's keystrokes: "giving it so much information that you are confident that the Executor can do its job
    perfectly" (owner). A question the executor has to ask is a defect in the plan.
-2. **Execution (GLM in Claude Code).** One execution session per plan builds it to those acceptance criteria,
-   including a code review of every commit by a GLM subagent. It chooses HOW; it never chooses WHAT. It never pushes.
-3. **Audit (Claude).** An audit session checks the executed plan against the plan, fixes whatever is wrong itself, and
+2. **Execution.** One execution session per plan builds it to those acceptance criteria, including a code review of
+   every commit by a subagent. It chooses HOW; it never chooses WHAT. It never pushes.
+3. **Audit.** An audit session checks the executed plan against the plan, fixes whatever is wrong itself, and
    pushes `uat-2`. Work is never handed back to the executor (owner, 2026-09-16); a large repair may take more than one
-   audit session, and every one of them is Claude's.
+   audit session, and every one of them is the auditor's.
 
 A plan is good when an executor that makes no decisions never has to make one, and can tell for itself when its work
 is finished and right.
 
 ## What the owner types
 
-**One command per session: `athan-next`.** It reads the table below, picks the next step (plan, execute or audit),
-shows which model it chose, and starts that session with its prompt as the first message. When that session ends it
-starts the next step on its own after a ten-second countdown, until the audit has pushed the session it carried; then
-it stops, and the owner runs `athan-next` again for the next session. It also stops, starting nothing else, when a
-step exits non-zero, when a step changed neither the status table nor `uat-2`, and when nothing can run. Ctrl+C during
-a countdown ends it. `athan-next --all` carries straight on into the next session; `athan-next --dry-run` only prints
-the next step.
+**One prompt per step: `athan-next`.** It loads the skill at `.agents/skills/athan-next/SKILL.md`, which reads the
+table below and git, works out whether the next step is planning, execution or audit, runs that one step, and stops.
+The same prompt starts the step after it, so the owner never has to remember where the programme stopped. If a session
+ever fails to load the skill on the bare word, `Use the athan-next skill.` names it outright.
 
-Three guards stop a run that is going round in circles unattended, because each turn of one spends the allowance
-this programme exists to protect. The first: the same step, for the same row, in the same status, three times over
-without any code being committed. The second: a budget for each kind of step within one carried session, because
-steps can cycle without repeating, such as a pre-flight setting NEEDS REPLAN, a planner refreshing it and the
-pre-flight failing again. Execution runs on the owner's own gateway and is cheap, so it has six; planning has two and
-auditing three, because those spend the Claude allowance, and under `--all` they start again each time a session
-actually reaches DONE. The third: a ceiling of twelve sessions for a whole run, which nothing clears, so the run is
-bounded however wrong the other two turn out to be. Ctrl+C reaches `athan-next` only during a countdown: while a
-session is up, Claude Code reads Ctrl+C itself.
+Every step runs in OpenCode on GLM 5.3, and the `vision` subagent reads images on GLM 5.3 Flash. A step is one
+session that the owner starts, so nothing chains on unattended and no guard is needed against a run going round in
+circles. Every session ends with a four-line handoff naming the job just done, the row it moved, and the job that
+comes next.
 
-The command is a plain Python script, not a Claude session: it holds no context of its own and cannot compact. It
-never reads what a session printed; it reads the step's exit code, the status table and git's commit lists. Each step
-is its own process, so each starts with a fresh context, and only the planning and audit steps use the Claude
-subscription. It lives in the owner's Claude Code setup on this Mac, outside the repository.
+For starting one step by hand, and for the plan folders' `PROMPT.md`, which names the row's plan file in place of "the
+next plan":
 
-What `athan-next` runs, for reference or for starting a step by hand in a fresh session. For an execution step it
-names the row's plan file in place of "the next plan", as that plan folder's `PROMPT.md` does:
-
-| Phase | Start with | Paste |
+| Phase | Brief | Paste |
 | --- | --- | --- |
-| Plan | `claude-plan` | `Planning session. Read ai/plans/PLANNER-BRIEF.md and plan the next session in ai/plans/README.md.` |
-| Execute | `claude-glm` | `Execution session. Read ai/plans/EXECUTOR-BRIEF.md and execute the next plan in ai/plans/README.md.` |
-| Audit | `claude-plan` | `Audit session. Read ai/plans/AUDITOR-BRIEF.md and audit the next plan in ai/plans/README.md.` |
+| Plan | `ai/plans/PLANNER-BRIEF.md` | `Planning session. Read ai/plans/PLANNER-BRIEF.md and plan the next session in ai/plans/README.md.` |
+| Execute | `ai/plans/EXECUTOR-BRIEF.md` | `Execution session. Read ai/plans/EXECUTOR-BRIEF.md and execute the next plan in ai/plans/README.md.` |
+| Audit | `ai/plans/AUDITOR-BRIEF.md` | `Audit session. Read ai/plans/AUDITOR-BRIEF.md and audit the next plan in ai/plans/README.md.` |
 
-- `claude-plan` starts Claude Code on the owner's Claude subscription with Claude Opus 5 (`claude-opus-5`) at xhigh
-  effort.
-- `claude-glm` starts Claude Code on GLM 5.3 through the owner's own LLM gateway, at max effort, which its subagents
-  inherit (proven 2026-09-15). The session is locked to the two GLM models: every model alias maps to GLM 5.3, and
-  asking for any other model falls back to GLM 5.3, so nothing in it can spend the Claude allowance. The haiku alias
-  maps to GLM 5.3 Flash, which the `vision` subagent uses at max effort to read images.
-- Both launchers and the `vision` subagent live in the owner's Claude Code setup on this Mac, outside the repository.
-  No gateway address, domain or key is ever written into this repository, and nothing of OpenCode's is changed.
+**What this replaced (2026-09-17).** Until this date the owner ran a Python command, also called `athan-next`, that
+lived in a Claude Code setup outside the repository and started each step with one of two launchers: `claude-plan` for
+planning and audit on Claude Opus 5 at xhigh effort, `claude-glm` for execution on GLM 5.3. The command chose the
+step, chained the next one after a ten-second countdown, and carried three guards that existed to protect the Claude
+allowance. With one model doing all three jobs in OpenCode, the routing it did is the skill's section 2, and the
+guards went with the chaining. No gateway address, domain or key is ever written into this repository.
 
 **Order: one session at a time.** Plan it, execute it, audit it, and only then plan the next one. The owner asked on
-2026-09-16 which order gives the best quality; this is the answer, and `athan-next` enforces it.
+2026-09-16 which order gives the best quality; this is the answer, and the skill enforces it.
 
 1. Plan the first row that needs planning: a PLANNING row is resumed, and a NEEDS REPLAN row refreshed, before a NOT
    PLANNED row is started.
@@ -125,6 +113,8 @@ row above.
 
 ## Files here
 
+- `.agents/skills/athan-next/SKILL.md`, outside this folder: the skill the owner's one prompt loads. It picks the
+  next step from the table above and git, runs it, and stops.
 - `PLANNER-BRIEF.md`: the whole job of a planning session.
 - `EXECUTOR-BRIEF.md`: the whole job of an execution session: precedence, rules, traps, the step loop.
 - `AUDITOR-BRIEF.md`: the whole job of an audit session.

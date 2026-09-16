@@ -24,7 +24,7 @@ see fit", "update any", "relevant", "handle edge cases", "should", "try", "ensur
 | --- | --- |
 | Brief | `ai/prompts/<brief>.md` |
 | Planned at | `<uat-2 sha>` (version <x.y.z>), <date> |
-| Planned by | Claude, planning session on <date> |
+| Planned by | Planning session on <date>, GLM 5.3 |
 | Needs first | <Order numbers of rows in ai/plans/README.md that must be DONE, or "nothing"> |
 | Steps | <count>, each one branch, one commit, one version |
 | Device | <none / OnePlus 3T with a local production build / mock build / iPhone> |
@@ -191,5 +191,5 @@ The final message, starting with `🤖  Model: GLM 5.3 (execution session)` and 
 - a few plain sentences on what changed and what was proven;
 - the progress table (format in `EXECUTOR-BRIEF.md`);
 - any decision now waiting on the owner;
-- the audit prompt from `ai/plans/README.md`, started with `claude-plan`.
+- the four-line handoff from the `athan-next` skill, section 5.
 ```
