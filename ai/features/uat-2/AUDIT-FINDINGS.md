@@ -5694,3 +5694,53 @@ Finding 81 is not closed here: it moved to session 6b (`ai/prompts/alert-all-or-
 
 The 3T runs the mock build of `5881b9f2` with the Asr-next mock data, automatic time on. Nothing was built on or pushed
 to EAS, and `releases.json` is untouched. The evidence is in `~/athan-device-sweep/session6/`.
+
+# Session 6b of the queue: finding 81, 16 September 2026
+
+The brief is `ai/prompts/alert-all-or-nothing.md`, planned by Claude in `ai/plans/06b-alert-all-or-nothing/PLAN.md`
+and executed by GLM 5.3, with a GLM 5.3 Code Reviewer on every commit. The last code commit is `8dde8df3`
+(1.27.190), and the records commit that carries this note follows it; the last suite run reported
+`Tests:       4501 passed, 4501 total`, at 100% statements, branches, functions and lines.
+
+## 81. CLOSED: an alert sheet change is all or nothing, in both directions
+
+A refusal is now answered rather than thrown or swallowed. Both device clears report the identifiers the phone
+refused; the store clears delete only the records of the cancels it took and keep the record of a refused cancel whose
+alarm can still fire; the per-day schedulers say whether they were refused; and the multi-day schedulers no longer
+clear the records before they start, so a day whose stored row cannot be read keeps its record with its alarm.
+
+`commitPrayerAlertChange` replaces `updatePrayerNotifications`. It writes the saved settings, does the work, and on
+any refusal or failure writes them back and applies them again inside the SAME lock acquisition: a second acquisition
+was measured running behind whatever was already queued, which read the half-undone prayer and acted on it. A prayer
+the phone refused carries a generation-stamped mark under `preference_notification_repair_*`, the one prefix both
+cache wipes keep, and while it stands every launch, return to the app and background run runs the existing full
+reschedule narrowed to the marked prayers, so the empty-cache bail, the day-change check and the sweep all still run.
+An operation that finds the generation moved touches nothing: not the settings, not the alarms, not the mark.
+
+A call into the notification system that has not answered in fifteen seconds is treated as refused (owner,
+2026-09-16), which is what stops one silent native call holding the scheduling queue for the rest of the process. A
+call given up on also reopens the twelve-hour gate, because it can still land afterwards and arm an alarm with no
+record, which only the sweep can find. Start-up no longer loses its refresh to an Android channel it cannot create.
+
+Proven by `stores/__tests__/notificationAlertCommit.test.ts` (25 tests over the nine combinations an alert sheet can
+close on, both lists, and eight ways the phone can refuse), and by every break of step 2 failing its named tests.
+
+On the 3T, on a local production build of `8dde8df3`: turning Isha on Silent with its reminder armed exactly its
+future athan and reminder instants, and turning it off cancelled exactly those and left the owner's other alarms
+(`alarms-isha-on.txt`, `alarms-isha-off.txt`, checked by `isha_alarms.py` against the saved 2026 payload). On a
+throwaway build whose first at-time cancel is refused, switching Magrib off put the bell back on by itself with its
+alarm re-armed (`refuse-off.logcat.txt`, and the screenshot read by vision as SILENT, mapped from its description of
+the app's bell-with-arcs Silent glyph; the plan's VISION_BELL wording calls that glyph SOUND, a defect recorded in
+the session 6b LOG). On a second throwaway build whose first cancel never answers, the app gave up after fifteen
+seconds and the change was put back, exactly as any other refusal. Neither throwaway build was committed or merged: the build script copies the patched
+file into its own detached worktree and restores it afterwards.
+
+Two limits are written down rather than fixed (`ai/plans/06b-alert-all-or-nothing/PLAN.md` section 5.6): six serial
+fifteen-second limits can hold the lock for ninety seconds in the worst case, and `commitSoundSelection` still
+restores its preference without its alarms, which is its own session.
+
+## State left behind
+
+The 3T runs the mock build of `8dde8df3` with the Asr-next mock data, unlocked, with Athan open and "Stay awake"
+on, and automatic time never moved. Nothing was built on or pushed to EAS, and `releases.json` is untouched. The
+evidence is in `~/athan-device-sweep/session6b/`.
