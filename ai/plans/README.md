@@ -101,10 +101,11 @@ Off that path:
 | 6 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED | | set when planned |
 
 - **Session 6b was planned under the previous rules**, on the morning of 2026-09-16, before "specify, do not
-  dictate" was written that afternoon. Its plan hands the executor finished files under
+  dictate" was written that afternoon. Every one of its steps hands the executor finished files under
   `ai/plans/06b-alert-all-or-nothing/files/` and tells it to copy them, and it is executed exactly as written: where a
-  plan dictates rather than specifies, the dictation wins (`EXECUTOR-BRIEF.md`). Every plan from session 7 on follows
-  the new rules.
+  STEP dictates rather than specifies, the dictation wins (`EXECUTOR-BRIEF.md`). Every plan from session 7 on is
+  written to the new rules, and a replan may still leave a `files` step it did not have to touch, so each step says
+  which kind it is, in its own part 5 and in the plan's section 6 checklist.
 - "Planned at" is the `uat-2` commit the plan's anchors were verified against.
 - "Needs first" lists the order numbers of the rows that must be DONE before this plan is executed, such as `1`, or
   `nothing`. A planning session replaces "set when planned".

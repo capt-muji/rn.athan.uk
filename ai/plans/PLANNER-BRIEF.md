@@ -43,6 +43,20 @@ put its output on the line after the model line, such as `Time: 17:59:03 15.09.2
 **Mark the owner's words** (owner, 2026-09-15). When a response quotes the owner's own words, start the quote with the
 whale emoji and two spaces (`🐋  `).
 
+## 0. One review, then stop
+
+**A review is a gate, not a conversation** (owner, 2026-09-16, after this rule was broken three times in one
+session).
+
+- **Documents get ONE review.** A change to briefs, templates, plans, records, or anything else a person reads and no
+  machine runs, is reviewed once. Apply the findings that change what someone would actually do; note the rest in the
+  commit message and move on. **Never review the fixes to a review of a document.**
+- **Code gets at most TWO rounds.** One review, one verification of its fixes. After that, apply what is clearly
+  right, write what is not into the commit or `LOG.md`, and go on.
+- **A finding that changes no instruction anyone acts on never earns a round.** A missing comma, a clumsy sentence, a
+  heading: fix it silently in the same commit, or leave it.
+- Iterating past this spends the owner's allowance on wording. It is the wrong answer however good each finding is.
+
 ## 1. Read first, in full, in this order
 
 Read every file below completely. No `head`, no partial reads, no summaries of files you are planning against: the
@@ -114,6 +128,8 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    into `uat-2`. A step must be small enough that its change fits in the plan verbatim. Order steps so each leaves
    `uat-2` green.
 7. **Specify each step so completely that no question can arise** (template section 6). Give the executor:
+   - **Which kind of step it is.** Mark it in section 6's checklist as `(specified)` or `(files)`, and make the step's
+     own part 5 say the same, because that part is what the executor reads when it is running the step.
    - **Where the change goes.** The exact files, and an anchor for each place, saved in full under `scripts/anchors/`,
      so it never has to search.
    - **The contract of everything it adds or changes.** For each function: its name, its signature, what it answers,
@@ -130,14 +146,18 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
      tests, the failure each must show BEFORE the change, `Tests:` and coverage lines after it, `tsc` and Biome
      exiting 0, and the break script ending `ALL AS EXPECTED: 1`.
    - **The break script**, in full. Every decision the code makes gets a break, and each break names the test expected
-     to fail. This is what proves the executor's own tests are worth anything, so it is yours, not its.
+     to fail. This is what proves the executor's own tests are worth anything, so it is yours, not its. Two rules it
+     must obey, repeated here because this is where you write it: every break's search text is text the plan itself
+     fixes (section 4's bar), and when a substitution changes nothing the script prints `BREAK NOT APPLIED: <label>`
+     and counts it as not caught, because both other briefs depend on that exact string.
    - **The commit message**, in full, starting `<VERSION> - `.
    - **The review prompt**, in full, listing what the reviewer must check about the code the executor wrote: every
      contract kept, every acceptance criterion met, the owner's rules, and nothing beyond the step.
    - **Section 10's anticipated review fixes,** word for word, for anything that touches what the plan fixed. You
      have not seen the code the executor will write, so you cannot predict an ordinary quality note about it, and you
-     do not try: `EXECUTOR-BRIEF.md` section 4, item 8 lets the executor apply a finding that touches only code the
-     plan did not give and changes nothing the plan fixed, and record it in `LOG.md` for the audit.
+     do not try: `EXECUTOR-BRIEF.md` section 4, item 8 gives the three conditions under which the executor applies a
+     finding itself and records it in `LOG.md` for the audit. Never restate those three conditions in your own words:
+     point at them, so there is one wording and the executor cannot pick between two.
    - **The files to restore** if the step stops part-way.
 
    Write the code out in full ONLY where the contract cannot carry it: a verbatim block the executor must match
@@ -378,9 +398,9 @@ The plan is not READY until every line below is true.
 
    Bump the patch version in the three places. Commit with a message that says which session was planned and what the
    plan covers. The hook runs the full suite.
-4. **Review.** A `Code Reviewer` (model `opus`, isolation `worktree`) reviews the whole range since the skeleton commit.
-   It checks the plan's accuracy against the code at "Planned at", and the quality bar. Fix what it finds, and have it
-   verify.
+4. **Review.** A `Code Reviewer` (model `opus`, isolation `worktree`) reviews the whole range since the skeleton
+   commit. It checks the plan's accuracy against the code at "Planned at", and the quality bar. Fix what it finds.
+   Section 0 applies: verify once if the plan changed, and never start a third round.
 5. **Merge and push.**
    `git checkout uat-2 && git merge --no-ff <branch> -m "Merge <branch> into uat-2: session <N> planned, reviewed"`,
    then `git push origin uat-2`, which is allowed only if section 2 found no unaudited commits. The owner approved
