@@ -22,14 +22,15 @@ step exits non-zero, when a step changed neither the status table nor `uat-2`, a
 a countdown ends it. `athan-next --all` carries straight on into the next session; `athan-next --dry-run` only prints
 the next step.
 
-Two guards stop a run that is going round in circles unattended, because each turn of one spends the allowance this
-programme exists to protect. The first: the same step, for the same row, in the same status, three times over without
-any code being committed. The second: a budget for each kind of step within one carried session, because steps can
-cycle without repeating, such as a pre-flight setting NEEDS REPLAN, a planner refreshing it and the pre-flight failing
-again. Execution runs on the owner's own gateway and is cheap, so it has six; planning has two and auditing three,
-because those spend the Claude allowance. Under `--all` those budgets start again each time a session actually
-reaches DONE, and a whole run stops at twelve sessions however it got there. Ctrl+C reaches `athan-next` only during a countdown: while a session is up,
-Claude Code reads Ctrl+C itself.
+Three guards stop a run that is going round in circles unattended, because each turn of one spends the allowance
+this programme exists to protect. The first: the same step, for the same row, in the same status, three times over
+without any code being committed. The second: a budget for each kind of step within one carried session, because
+steps can cycle without repeating, such as a pre-flight setting NEEDS REPLAN, a planner refreshing it and the
+pre-flight failing again. Execution runs on the owner's own gateway and is cheap, so it has six; planning has two and
+auditing three, because those spend the Claude allowance, and under `--all` they start again each time a session
+actually reaches DONE. The third: a ceiling of twelve sessions for a whole run, which nothing clears, so the run is
+bounded however wrong the other two turn out to be. Ctrl+C reaches `athan-next` only during a countdown: while a
+session is up, Claude Code reads Ctrl+C itself.
 
 The command is a plain Python script, not a Claude session: it holds no context of its own and cannot compact. It
 never reads what a session printed; it reads the step's exit code, the status table and git's commit lists. Each step
