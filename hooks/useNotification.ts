@@ -1,5 +1,5 @@
 import * as Notifications from 'expo-notifications';
-import { Alert, Linking, Platform } from 'react-native';
+import { Alert, AppState, Linking } from 'react-native';
 
 import * as Device from '@/device/notifications';
 import logger from '@/shared/logger';
@@ -18,8 +18,39 @@ Notifications.setNotificationHandler({
 });
 
 /**
+ * Resolves the first time the app is active again after it has left the foreground
+ *
+ * Listening starts before Settings opens, so the move to the background that opening it causes cannot be missed. An
+ * active state with no departure before it is not a return.
+ *
+ * @returns The return, and a way to stop listening when Settings never opened
+ */
+const listenForReturnToApp = () => {
+  let markReturned!: () => void;
+  const returned = new Promise<void>((resolve) => {
+    markReturned = resolve;
+  });
+  let leftApp = false;
+
+  const subscription = AppState.addEventListener('change', (state) => {
+    if (state !== 'active') {
+      leftApp = true;
+      return;
+    }
+    if (!leftApp) return;
+
+    subscription.remove();
+    markReturned();
+  });
+
+  return { returned, stop: () => subscription.remove() };
+};
+
+/**
  * Shows a dialog prompting user to enable notifications in settings
- * @returns Promise resolving to true if user grants permission after visiting settings
+ * @returns Promise resolving to true if the permission is granted once the user is back from settings, and to false
+ *   when the user cancels or dismisses the dialog, Settings cannot open, or the permission cannot be read, so the
+ *   caller never waits forever
  */
 const showSettingsDialog = (): Promise<boolean> => {
   return new Promise((resolve) => {
@@ -35,15 +66,34 @@ const showSettingsDialog = (): Promise<boolean> => {
         {
           text: 'Open Settings',
           onPress: async () => {
-            if (Platform.OS === 'ios') await Linking.openSettings();
-            else await Linking.sendIntent('android.settings.APP_NOTIFICATION_SETTINGS');
+            const returnToApp = listenForReturnToApp();
 
-            // Check if permissions were granted after returning from settings
-            const { status: finalStatus } = await Notifications.getPermissionsAsync();
-            resolve(finalStatus === 'granted');
+            try {
+              // The app's own settings page on both platforms: Android closes its notification settings page at once
+              // when the request names no package
+              await Linking.openSettings();
+            } catch (error) {
+              returnToApp.stop();
+              logger.error('NOTIFICATION: Failed to open notification settings:', error);
+              resolve(false);
+              return;
+            }
+
+            // Opening answers as Settings opens, when the permission cannot have changed yet
+            await returnToApp.returned;
+
+            try {
+              const { status: finalStatus } = await Notifications.getPermissionsAsync();
+              resolve(finalStatus === 'granted');
+            } catch (error) {
+              logger.error('NOTIFICATION: Failed to read notification permissions after settings:', error);
+              resolve(false);
+            }
           },
         },
-      ]
+      ],
+      // Android reports a dialog closed without a button, such as by a second dialog replacing it, only here
+      { onDismiss: () => resolve(false) }
     );
   });
 };
