@@ -21,10 +21,14 @@ step exits non-zero, when a step changed neither the status table nor `uat-2`, a
 a countdown ends it. `athan-next --all` carries straight on into the next session; `athan-next --dry-run` only prints
 the next step.
 
-The command is a plain Python script, not a Claude session: it holds no context of its own and never reads what a
-session said, only whether the step exited cleanly and whether the status table or `uat-2` changed. Each step is its
-own process, so each starts with a fresh context, and only the planning and audit steps use the Claude subscription.
-It lives in the owner's Claude Code setup on this Mac, outside the repository.
+It also stops when the same step has run three times over with its row's status unchanged, because a step that keeps
+restarting is not getting further on its own and would spend the allowance unattended. Ctrl+C reaches `athan-next`
+only during a countdown: while a session is up, Claude Code reads Ctrl+C itself.
+
+The command is a plain Python script, not a Claude session: it holds no context of its own and cannot compact. It
+never reads what a session printed; it reads the step's exit code, the status table and git's commit lists. Each step
+is its own process, so each starts with a fresh context, and only the planning and audit steps use the Claude
+subscription. It lives in the owner's Claude Code setup on this Mac, outside the repository.
 
 What `athan-next` runs, for reference or for starting a step by hand in a fresh session. For an execution step it
 names the row's plan file in place of "the next plan", as that plan folder's `PROMPT.md` does:
@@ -50,12 +54,13 @@ names the row's plan file in place of "the next plan", as that plan folder's `PR
 1. Plan the first row that needs planning: a PLANNING row is resumed, and a NEEDS REPLAN row refreshed, before a NOT
    PLANNED row is started.
 2. Execute that row.
-3. Audit it. On PASS the audit sets it DONE and pushes `uat-2`. A SEND BACK sets it READY again and pushes nothing, so
-   the next step is another execution, then another audit.
+3. Audit it. The audit fixes whatever the executor got wrong, itself, then sets the row DONE and pushes `uat-2`. It
+   never hands work back to the executor (owner, 2026-09-16).
 4. Only then plan the next row.
 
-**The invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED.** A BLOCKED or OWNER-LED row
-waits on the owner and holds no merged code of its own, so more than one of those may sit in the table at once. A plan is written against one
+**The invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED.** A BLOCKED or OWNER-LED
+row waits on the owner and holds no merged code of its own, so more than one of those may sit in the table at
+once. A plan is written against one
 `uat-2` commit and carries that commit's code verbatim: its anchors, the lines around them, the tests' expected
 numbers, and owner decisions taken while looking at it. A row ahead of it changes that code, so a plan written early
 is stale before it runs, and a stale anchor that still matches by text is worse than one that fails, because nothing
@@ -120,8 +125,8 @@ row above.
   "Needs first".
 - **An execution session** sets IN PROGRESS, EXECUTED, NEEDS REPLAN or BLOCKED. It commits and merges into `uat-2` on
   this Mac, and never pushes.
-- **An audit session** sets DONE for an EXECUTED row, or READY again with audit-fix steps added to the plan. Auditing
-  an unfinished plan leaves its status as it is.
+- **An audit session** sets DONE for an EXECUTED row. It never sets a row back to READY: what the executor got wrong,
+  the audit repairs itself. Auditing an unfinished plan leaves its status as it is.
 - **Pushing.** Only planning and audit sessions push `uat-2`, and only when every commit on `uat-2` that is not yet on
   `origin/uat-2` has been audited. A planning session that finds unaudited commits asks the owner to run the audit
   prompt first, unless it is replanning a NEEDS REPLAN row, which it does without pushing.

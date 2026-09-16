@@ -338,8 +338,7 @@ The plan is not READY until every line below is true.
    answer. Read that first, in the plan folder's `LOG.md` and its last commit.
 2. **Refresh.** Diff `uat-2` against the plan's "Planned at" for every file the plan anchors on. Rewrite only the
    affected anchors, steps and expected outputs. Rerun the scratch-worktree proofs for those steps.
-3. **Keep finished work.** Keep every step already DONE, ticked, with its commit. Keep every audit-fix step an audit
-   session wrote, unticked, before the first unticked step.
+3. **Keep finished work.** Keep every step already DONE, ticked, with its commit.
 4. **Finish** as in section 8, with status READY and a new "Planned at". If `uat-2` holds unaudited commits from this
    plan, do not push; tell the owner to run the audit prompt first.
 
