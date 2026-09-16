@@ -1,9 +1,14 @@
 # Plan template
 
 Every plan uses these sections, with these headings, in this order. A section with nothing to say keeps its heading
-and says "None", with the reason. The executor reads the plan top to bottom and does exactly what it says, so every
-instruction is concrete: a command, a file, an exact piece of code, an expected output, and what to do when the output
-differs.
+and says "None", with the reason.
+
+The plan SPECIFIES; it does not dictate (owner, 2026-09-16). The executor builds what the plan describes, and decides
+nothing: every instruction is concrete enough that two competent implementers would do the same thing. That means a
+command with its expected output, a file and the anchor that locates the place in it, the contract of every function
+the step adds or changes, the tests the executor must write and what each must prove, and the acceptance criteria the
+executor checks its own work against. Code is written out verbatim only where the contract cannot carry it: a log
+line, a message a person reads, a formula whose every term matters.
 
 Words a plan never uses inside an instruction, because each hands a decision to the executor: "as appropriate", "as
 needed", "if necessary", "etc.", "and so on", "similar", "consider", "figure out", "decide", "clean up", "refactor as you
@@ -99,13 +104,17 @@ exactly these parts:
 2. **Branch:** `git checkout -b <type>/<name> uat-2`.
 3. **Files:** the exact list. Nothing else may change, apart from `ai/plans/README.md` and this folder's `PLAN.md` and
    `LOG.md`.
-4. **Tests first (red).** The full contents of each new or changed test, in a code block with its path. The command
-   that runs only those tests, path first. The exact failing test names expected, and the failure line expected. If
-   any other test fails, or these pass, STOP.
-5. **Change.** The exact code: full new functions, or before-and-after blocks that the executor finds by the anchor
-   and replaces. Nothing is left for the executor to write. Comments explain why, never what.
-6. **Green.** The same command; every named test passes. Then `npx tsc --noEmit` and
-   `npx biome check . --error-on-warnings`, both expected to exit 0.
+4. **Tests first (red).** For each suite, its path and whether it is new, and then one row per test: the test's
+   name, exactly what it proves, the inputs it uses and what it asserts. Name the existing tests that change, with
+   why, and the ones that must not. The command that runs only those suites, path first. The exact failing test names
+   expected, and the failure line expected. If any other test fails, or these pass, STOP.
+5. **Change.** The contract of everything the step adds or changes: for each function, its name, its signature, what
+   it answers, what it must never do, and the exact text of every log line it writes; for each stored value, its key,
+   its type and what each value means. The behaviour it must keep, as the invariant from section 5. Names are the
+   plan's, so the tests and the review can refer to them. Code verbatim only where the contract cannot carry it.
+   Comments explain why, never what.
+6. **Green.** The same command; every named test passes, with the exact `Tests:` line expected. Then
+   `npx tsc --noEmit` and `npx biome check . --error-on-warnings`, both expected to exit 0.
 7. **Breaks.** A bash script, given in full, that for each break copies the file, applies one exact `perl`
    substitution, checks the file changed, runs the named tests, expects them to fail, and restores the file. The
    expected result for each break. It ends with `ALL AS EXPECTED: 1`. Every path in it is relative to the repository

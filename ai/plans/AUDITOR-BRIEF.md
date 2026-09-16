@@ -49,13 +49,19 @@ Remove it when done, and always before 00:00, when a nightly job clears build fo
 1. **The range.** `git log --oneline origin/uat-2..uat-2` lists only step commits, their merges, docs commits,
    planning commits and audit commits of plans in `ai/plans/README.md`. Reread every planning and audit commit in it;
    each one reread counts as checked for section 4's push rule. Anything else is a finding.
-2. **Plan against commits.** For every step, the commit's diff equals the plan's change and tests. Compare them
-   verbatim:
-   - no extra file, line or comment;
-   - no missing test;
-   - no changed expectation;
+2. **Plan against commits.** For every step, the commit does what the plan specified, and nothing else. The plan
+   gives contracts and acceptance criteria, not the executor's keystrokes, so read the code it wrote and judge it:
+   - every function the plan named exists with that name and signature, answers what the contract says, and writes
+     the log lines with the text the plan gave;
+   - every test the plan listed exists, proves what the plan said it proves, and uses the inputs the plan named;
+   - no extra file, and no behaviour the plan did not ask for;
+   - the code is as good as the plan's own standard: comments explain why, nothing is dead, nothing is duplicated,
+     and no owner rule is bent;
    - versions in sequence;
    - commit messages as the plan wrote them, with the version filled in.
+
+   Where a plan hands the executor finished files to copy (plans written before 2026-09-16), the diff must equal
+   those files exactly.
 3. **The tests still guard.** Run each step's break script from the scratch worktree's root, after
    `grep -n /Users/muji/repos/rn.athan.uk <script>` prints nothing. Every break still fails its named tests. Rerun the
    red check for at least the riskiest step, by reverting its change in the scratch worktree.
