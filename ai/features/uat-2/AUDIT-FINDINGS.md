@@ -5650,3 +5650,47 @@ whose next prayer is Asr, a minute away, every time the app is opened.
   `/sdcard/athan-ui.xml` got an earlier session's screen back as if it were current. The four dumps saved that way,
   stamped 15:46 and 15:47, hold that earlier screen and are renamed `STALE-asr-cold-1*` in `mockcheck/`. The check
   script now deletes the file first and requires the "dumped" line.
+
+# Session 6 of the queue: findings 79, 80 and 82, 16 September 2026
+
+The brief is `ai/prompts/alert-integrity.md`, planned by Claude in `ai/plans/06-alert-integrity/PLAN.md` and executed
+by GLM 5.3, with a GLM 5.3 Code Reviewer on every commit. `uat-2` ends at 5881b9f2 (1.27.179); the last suite run
+reported `Tests:       4494 passed, 4494 total`, at 100% statements, branches, functions and lines.
+
+## 79. CLOSED: Open Settings always answers
+
+The dialog's Open Settings button opens the app's own settings page on both platforms, answers no when the dialog is
+dismissed without a button, Settings cannot open or the permission cannot be read, removes its app state listener, and
+otherwise reads the permission the first time the app is active again after leaving for Settings. On Android the old
+request named no package, and the 3T closed that settings page at once (checked while planning). On the 3T, with
+Athan's notifications switched off, tapping Silent in Isha's sheet, opening Settings, allowing notifications on Athan's
+App info page and pressing Back left Silent selected (`~/athan-device-sweep/session6/79-back-from-settings.png`, read
+by vision). Before this fix the source read the permission as Settings opened (finding 79, by reading).
+
+## 80. CLOSED: a start-up error lifts the splash, in Ramadan too
+
+The splash waits for the Ramadan decorations only while sync has not failed, because the error screen never draws
+them. On the 3T, a Ramadan mock build whose download deletes today to day 2 and throws, launched over stored lists:
+at `b5159305` the splash stayed up (`80-before-throw.png`); at 5881b9f2 the error screen showed with its Refresh button
+(`80-after-throw.png`). The forced throw lived only in a mocks file outside the repository.
+
+## 82. CLOSED: the scheduling lock waits for every piece of work
+
+Every scheduling operation now waits for each day, prayer, schedule group and cancel it started before a failure is
+reported, so the next operation in the queue never runs beside work still landing
+(`stores/__tests__/notificationSchedulingLock.test.ts`). A refusal cannot be caused on a phone, so that path is proven by
+the unit tests. On the 3T's production build the changed code still arms and cancels exactly: turning Isha on (Silent,
+reminder 5 minutes) armed exactly its future athan and reminder instants, and turning it Off cancelled exactly those,
+leaving the owner's other alarms (`alarms-isha-on.txt`, `alarms-isha-off.txt`, checked by `isha_alarms.py` against the
+saved 2026 payload).
+
+Two limits the design review recorded, taken up in session 6b: a day whose stored row cannot be read still loses its
+record while its alarm stays armed (as before this change), and a native call that never answers now holds the lock even
+when another piece has failed.
+
+Finding 81 is not closed here: it moved to session 6b (`ai/prompts/alert-all-or-nothing.md`).
+
+## State left behind
+
+The 3T runs the mock build of 5881b9f2 with the Asr-next mock data, automatic time on. Nothing was built on or pushed
+to EAS, and `releases.json` is untouched. The evidence is in `~/athan-device-sweep/session6/`.

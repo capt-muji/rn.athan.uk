@@ -328,8 +328,8 @@ before it settles.
 
 - [x] Step 1: DONE in 3499b765
 - [x] Step 2: DONE in b6e2bf26
-- [ ] Step 3: The scheduling lock waits for every piece of work before reporting a failure (finding 82)
-- [ ] Device proof: section 7
+- [x] Step 3: DONE in 5881b9f2
+- [x] Device proof: DONE
 
 Each step is written out in full in its own file, in this order:
 1. `ai/plans/06-alert-integrity/steps/1-open-settings-answers.md`
