@@ -352,7 +352,8 @@ clock. The owner receives no screenshots: only the `vision` subagent (GLM 5.3 Fl
    hands on the phone about halfway through." 
 2. Run `mkdir -p ~/athan-device-sweep/session6/build ~/athan-device-sweep/session6/mocks`.
 3. Run `cp ai/plans/06-alert-integrity/scripts/mocks/force-sync-throw.ts.txt ~/athan-device-sweep/session6/mocks/force-sync-throw.ts`.
-4. Run `git rev-parse uat-2` and write the sha in `LOG.md` as `FINAL=<sha>`. Every `<FINAL>` below is that sha.
+4. Run `git rev-parse uat-2` and write the sha in `LOG.md` as `FINAL=<sha>`. Every `<FINAL>` below is that sha, which
+   section 8.1 quotes in its short form.
 5. Run `adb -s 8f7ada76 get-state`. Expected: `device`.
 6. Run `adb -s 8f7ada76 shell settings get global auto_time`. Expected: `1`.
 7. Run `adb -s 8f7ada76 shell dumpsys window policy | grep -c 'showing=true' || true`. Expected: `0`. `1` means the
@@ -544,7 +545,8 @@ stay-awake setting off. The owner's production data stays in `athan-storage` for
 Append this to the end of `ai/features/uat-2/AUDIT-FINDINGS.md`, replacing each placeholder with the value measured:
 
 - `<DATE>`: the date the device proof ended, as `D Month YYYY`;
-- `<FINAL>`: the sha from section 7.0;
+- `<FINAL>`: the first eight characters of the sha from section 7.0, which is how `AUDIT-FINDINGS.md` quotes a sha
+  and how this template quotes `b5159305` below (the build commands in section 7 take the full sha);
 - `<VERSION>`: `package.json`'s version at `<FINAL>`;
 - `<TESTS>`: the `Tests:` line of step 3's commit log;
 - `<M>`: the reminder minutes read in section 7.3;
