@@ -1,0 +1,5 @@
+  const attempts = await settleAll(
+    nextXDays.map((date) =>
+      scheduleNotificationForDate(scheduleType, prayerIndex, date, englishName, arabicName, alertType, sound)
+    )
+  );

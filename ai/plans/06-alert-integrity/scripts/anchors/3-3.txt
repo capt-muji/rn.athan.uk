@@ -1,0 +1,3 @@
+  const attempts = await Promise.all(
+    nextXDays.map((date) =>
+      scheduleReminderNotificationForDate(

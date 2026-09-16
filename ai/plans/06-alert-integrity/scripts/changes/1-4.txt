@@ -1,0 +1,10 @@
+// Cast Alert to our mock type for test access
+const alertMock = Alert as unknown as AlertMock;
+
+/** The app leaving for Settings and coming back, reported to every app state listener the dialog added */
+const returnFromSettings = () => {
+  for (const [, listener] of (AppState.addEventListener as jest.Mock).mock.calls) {
+    listener('background');
+    listener('active');
+  }
+};
