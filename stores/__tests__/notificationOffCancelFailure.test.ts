@@ -2,10 +2,11 @@
  * A prayer whose alert is off while the OS refuses to cancel an alarm it still holds (stores/notifications.ts)
  *
  * A reschedule clears an off prayer through `clearAllScheduledNotificationForPrayer`, which cancels every recorded
- * alarm and deletes the records only once all of those cancels have landed. When one is refused the reschedule
- * rejects, so the gate stays open, and the records stay, so the next refresh cancels that alarm again. The records
- * are the only way back to it when no other alert is on: with no records at all the sweep refuses to cancel anything
- * the OS holds, since after an app update that is exactly what it must not do.
+ * alarm and then deletes the record of each cancel the phone accepted. A refused cancel is answered, not thrown: its
+ * record is kept, because that record is the only way back to an alarm the phone still holds (with no records at all
+ * the sweep refuses to cancel anything the OS holds, since after an app update that is exactly what it must not do),
+ * and the prayer is marked to be put right. The next launch or return to the app then redoes that prayer alone, even
+ * though the twelve-hour gate is shut, and asks for the cancel again.
  */
 
 import * as Notifications from 'expo-notifications';
@@ -37,7 +38,7 @@ const store = getDefaultStore();
 // 09:00 BST on Saturday 29 August 2026, with every time of today and tomorrow at 12:00 BST
 const NOW = Date.parse('2026-08-29T08:00:00.000Z');
 const WINDOW = ['2026-08-29', '2026-08-30'];
-const HOUR = 3_600_000;
+const MINUTE = 60_000;
 
 const FAJR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date));
 const DHUHR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', date));
@@ -138,19 +139,36 @@ describe.each([
     store.set(standardPrayerAlertAtoms[2], dhuhr);
   });
 
-  it('rejects the refresh with its records kept and the gate open, and the next refresh cancels the alarm', async () => {
-    await expect(refreshNotifications()).rejects.toBe(refusal);
+  it('finishes the refresh, keeps only the refused record, and asks again on the next return to the app', async () => {
+    await expect(refreshNotifications()).resolves.toBeUndefined();
 
     expect(osState.has(FAJR[0])).toBe(true);
     expect(osState.has(FAJR[1])).toBe(false);
-    expect(fajrRecords()).toEqual([...FAJR].sort());
-    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+    // Only the alarm the phone still holds keeps its record; the one it cancelled loses its own
+    expect(fajrRecords()).toEqual([FAJR[0]]);
+    expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
 
-    jest.setSystemTime(NOW + HOUR);
+    // One minute on, the twelve-hour gate is shut, so only a prayer marked to be put right makes this do anything
+    jest.setSystemTime(NOW + MINUTE);
     await expect(refreshNotifications()).resolves.toBeUndefined();
 
     expect([...osState].sort()).toEqual([...armedAfter].sort());
     expect(fajrRecords()).toEqual([]);
-    expect(store.get(lastNotificationScheduleAtom)).toBe(NOW + HOUR);
+    // Putting one prayer right is not a full pass, so it does not close the gate for the next twelve hours
+    expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
+  });
+
+  it('stops asking once the phone has taken the cancel', async () => {
+    await expect(refreshNotifications()).resolves.toBeUndefined();
+    jest.setSystemTime(NOW + MINUTE);
+    await expect(refreshNotifications()).resolves.toBeUndefined();
+
+    jest.setSystemTime(NOW + 2 * MINUTE);
+    cancelMock.mockClear();
+    scheduleMock.mockClear();
+    await expect(refreshNotifications()).resolves.toBeUndefined();
+
+    expect(cancelMock).not.toHaveBeenCalled();
+    expect(scheduleMock).not.toHaveBeenCalled();
   });
 });
