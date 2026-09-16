@@ -16,6 +16,10 @@ put its output on the line after the model line, such as `Time: 17:59:03 15.09.2
 **Mark the owner's words** (owner, 2026-09-15). When a response quotes the owner's own words, start the quote with the
 whale emoji and two spaces (`🐋  `).
 
+**One review, then stop** (owner, 2026-09-16). Your own `AUDIT.md` and the docs commit that carries it are reviewed
+once. Apply what changes what someone would do, note the rest in the commit, and never review the fixes to a review of
+a document. `PLANNER-BRIEF.md` section 0 has the rule in full.
+
 ## 1. Read first, in full
 
 1. `ai/plans/README.md`.
@@ -67,7 +71,10 @@ Remove it when done, and always before 00:00, when a nightly job clears build fo
    red check for at least the riskiest step, by reverting its change in the scratch worktree.
 4. **The whole suite.** Run `yarn validate` in the scratch worktree. It passes with 100% on all four measures.
 5. **Reviews.** `LOG.md` records a review verdict for every step commit; reread each docs commit yourself. Read the
-   commits a reviewer asked to fix, and check each fix was one the plan's section 10 gives word for word.
+   commits a reviewer asked to fix. Each fix is either one the plan's section 10 gives word for word, or one the
+   executor applied under `EXECUTOR-BRIEF.md` section 4, item 8, which it must have recorded in `LOG.md`. A fix of
+   the second kind is not a finding in itself: check that it really met all three of that item's conditions, and then
+   judge the code as you judge the rest. A fix of that kind with no `LOG.md` entry IS a finding.
 6. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-device-sweep/session<N>/`.
    Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use
    read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.

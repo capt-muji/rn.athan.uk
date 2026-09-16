@@ -47,7 +47,8 @@ At minimum:
 - any anchor count other than 1;
 - a test failing that the plan does not expect;
 - a break printing `BREAK NOT APPLIED`;
-- a reviewer finding the plan's section 10 does not answer and that touches something the plan fixed;
+- a reviewer finding the plan's section 10 does not answer and that does not meet all three conditions in
+  `EXECUTOR-BRIEF.md` section 4, item 8;
 - anything the step does not answer that the executor would otherwise have to decide, with the question
   "The plan does not say `<X>`. What should it be?";
 - anything touching visuals, prayer times, `releases.json`, `uat` or EAS.
@@ -95,8 +96,11 @@ Behaviour changes only; write "None" for docs-only or test-only plans.
 
 Section 6 starts with the checklist the executor ticks, one line per step:
 
-- [ ] Step 1: <title>
-- [ ] Step 2: <title>
+- [ ] Step 1: <title> (specified)
+- [ ] Step 2: <title> (files)
+
+`(specified)` means the executor builds the step from its contracts; `(files)` means it copies the finished files the
+plan carries. The step's own part 5 says which it is, and this marker repeats it.
 
 Then one subsection per step. A step is one branch, one commit, one version, one review, one merge. Each step has
 exactly these parts:
@@ -121,16 +125,18 @@ exactly these parts:
 6. **Green.** The same command; every named test passes, with the exact `Tests:` line expected. Then
    `npx tsc --noEmit` and `npx biome check . --error-on-warnings`, both expected to exit 0.
 7. **Breaks.** A bash script, given in full, that for each break copies the file, applies one exact `perl`
-   substitution, checks the file changed, runs the named tests, expects them to fail, and restores the file. The
-   expected result for each break. It ends with `ALL AS EXPECTED: 1`. Every path in it is relative to the repository
-   root, and it runs from that root.
+   substitution, checks the file changed, runs the named tests, expects them to fail, and restores the file. When the
+   substitution changed nothing it prints `BREAK NOT APPLIED: <label>` and counts the break as not caught: both
+   briefs depend on that exact string. The expected result for each break. It ends with `ALL AS EXPECTED: 1`. Every
+   path in it is relative to the repository root, and it runs from that root.
 8. **Version and commit.** The version command (next patch after `uat-2`'s `package.json`). The files to add, by name.
    The full commit message, in a heredoc, starting `<VERSION> - `; the executor replaces `<VERSION>` with the version
    the command printed. The pre-commit hook runs the full suite and the coverage gate: in the commit log, the last
    `Tests:` line ends `passed, <n> total`, and four `100%` coverage lines are present.
 9. **Review.** The subagent type, and the full prompt to give it, in a code block. What a "merge" verdict looks like.
-   A "fix first" verdict: the executor applies only fixes the plan's section 10 gives word for word; any other finding
-   is a STOP.
+   A "fix first" verdict is handled by `EXECUTOR-BRIEF.md` section 4, item 8, and this part says so rather than
+   restating it: a fix section 10 gives word for word, or a fix meeting all three of that item's conditions, is
+   applied; anything else is a STOP.
 10. **Merge.** `git checkout uat-2 && git merge --no-ff <branch> -m "<message>"`, with the exact message.
 11. **Done when:** the checks, as commands with expected output.
 
@@ -167,9 +173,9 @@ PASS verdict (`AUDITOR-BRIEF.md` section 4).
 - **Symptom table.** A table of symptom, cause and action. Include this session's own risks, and point to the general
   table in `EXECUTOR-BRIEF.md`.
 - **Anticipated review fixes.** Each is given word for word. They are the only fixes the executor may make to
-  anything the plan fixed. A reviewer finding that touches only code the plan did not give, and changes no name,
-  signature, log line, behaviour or test the plan specified, the executor applies itself and records in `LOG.md`
-  (`EXECUTOR-BRIEF.md` section 4, item 8).
+  anything the plan fixed. A reviewer finding that meets all three conditions in `EXECUTOR-BRIEF.md` section 4, item
+  8, the executor applies itself and records in `LOG.md`; those three conditions are written there and are never
+  restated here in different words.
 - **Stopping part-way.** For each step, the files to restore with `git checkout --` and the new files to delete, as
   `EXECUTOR-BRIEF.md` section 4a uses (it also restores `app.json` and `package.json`).
 
