@@ -16,6 +16,10 @@ put its output on the line after the model line, such as `Time: 17:59:03 15.09.2
 **Mark the owner's words** (owner, 2026-09-15). When a response quotes the owner's own words, start the quote with the
 whale emoji and two spaces (`🐋  `).
 
+**One review, then stop** (owner, 2026-09-16). Your own `AUDIT.md` and the docs commit that carries it are reviewed
+once. Apply what changes what someone would do, note the rest in the commit, and never review the fixes to a review of
+a document. `PLANNER-BRIEF.md` section 0 has the rule in full.
+
 ## 1. Read first, in full
 
 1. `ai/plans/README.md`.
@@ -49,19 +53,28 @@ Remove it when done, and always before 00:00, when a nightly job clears build fo
 1. **The range.** `git log --oneline origin/uat-2..uat-2` lists only step commits, their merges, docs commits,
    planning commits and audit commits of plans in `ai/plans/README.md`. Reread every planning and audit commit in it;
    each one reread counts as checked for section 4's push rule. Anything else is a finding.
-2. **Plan against commits.** For every step, the commit's diff equals the plan's change and tests. Compare them
-   verbatim:
-   - no extra file, line or comment;
-   - no missing test;
-   - no changed expectation;
+2. **Plan against commits.** For every step, the commit does what the plan specified, and nothing else. The plan
+   gives contracts and acceptance criteria, not the executor's keystrokes, so read the code it wrote and judge it:
+   - every function the plan named exists with that name and signature, answers what the contract says, and writes
+     the log lines with the text the plan gave;
+   - every test the plan listed exists, proves what the plan said it proves, and uses the inputs the plan named;
+   - no extra file, and no behaviour the plan did not ask for;
+   - the code is as good as the plan's own standard: comments explain why, nothing is dead, nothing is duplicated,
+     and no owner rule is bent;
    - versions in sequence;
    - commit messages as the plan wrote them, with the version filled in.
+
+   Where a step hands the executor finished files to copy (such as every step of session 6b, and any step a replan
+   left untouched), the diff must equal those files exactly.
 3. **The tests still guard.** Run each step's break script from the scratch worktree's root, after
    `grep -n /Users/muji/repos/rn.athan.uk <script>` prints nothing. Every break still fails its named tests. Rerun the
    red check for at least the riskiest step, by reverting its change in the scratch worktree.
 4. **The whole suite.** Run `yarn validate` in the scratch worktree. It passes with 100% on all four measures.
 5. **Reviews.** `LOG.md` records a review verdict for every step commit; reread each docs commit yourself. Read the
-   commits a reviewer asked to fix, and check each fix was one the plan's section 10 gives word for word.
+   commits a reviewer asked to fix. Each fix is either one the plan's section 10 gives word for word, or one the
+   executor applied under `EXECUTOR-BRIEF.md` section 4, item 8, which it must have recorded in `LOG.md`. A fix of
+   the second kind is not a finding in itself: check that it really met all three of that item's conditions, and then
+   judge the code as you judge the rest. A fix of that kind with no `LOG.md` entry IS a finding.
 6. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-device-sweep/session<N>/`.
    Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use
    read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.

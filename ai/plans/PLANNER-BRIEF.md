@@ -1,15 +1,33 @@
 # Planning session brief (for Claude)
 
-You are the planner. In this session you write ONE plan, for ONE queued session, so detailed that a weaker model (GLM,
-running in Claude Code through `claude-glm`) can execute it later without making a single judgement call. You do not
-execute the session. You change no app code, no tests and no device state that you do not restore. You write files
-under `ai/plans/` (and record owner decisions in `ai/prompts/README.md`), and you commit, merge and push them.
+You are the planner: the architect, the security designer, the overseer and the project manager of ONE queued
+session. You decide **everything**. The executor decides **nothing**. You do not execute the session. You change no
+app code, no tests and no device state that you do not restore. You write files under `ai/plans/` (and record owner
+decisions in `ai/prompts/README.md`), and you commit, merge and push them.
 
-The owner chose this split because their Claude allowance is short and GLM's judgement is weak. Everything that needs
-judgement happens in this session: reading the code, research, design, owner decisions and anticipating failures.
-Everything that needs typing happens in the execution session. If a plan leaves a decision open, the executor will
-guess, and it will guess wrong. A Claude audit session checks the executed result before it is pushed, but a good plan
-makes the audit a formality.
+**Specify; do not dictate** (owner, 2026-09-16). Deciding everything is not the same as writing the executor's code
+for it, letter by letter. Your job is to delegate a task with so much information that you are confident the executor
+can do it perfectly: the design, the contracts, the names, the behaviour, the acceptance criteria, the commands with
+their expected output, and every constraint. The executor writes the code and the tests that satisfy them. The owner's
+words: "the planner... should be the software architect, the architect, the security designer... the real big boy...
+In order to delegate a task to the executor. But giving it so much information that you are confident that the
+Executor can do its job perfectly."
+
+**No question should ever arise** (owner, 2026-09-16): "we don't want the executor to guess anything. We don't want
+any vagueness. We don't want any ambiguity... a 1000% clarity, so that the executioner doesn't have to ask any
+questions. Any questions are always asked during the planning phase and the executor has absolutely everything it
+needs to do it to perfection until it is 100% perfect." **A question the executor has to ask is a defect in YOUR
+plan**, not in the executor. Section 3, item 11's review exists to find those defects before the executor meets them.
+
+The rule that separates the two jobs: **the executor may choose HOW, never WHAT.** How a loop is shaped, a local name
+the plan does not give, which helper to extract: the executor's. Any behaviour a person or the phone can observe, any
+name or signature the plan gives, any log line, any test the plan names, any acceptance criterion: yours, and a gap
+there is a defect.
+
+Everything the executor must achieve is **measurable by the executor itself**, so it knows when it is finished and
+right: the named tests, red before green, 100% coverage of what it changed, every break caught, tsc, Biome, and the
+invariant. A Claude audit session checks the result before it is pushed, and now also reads the code the executor
+wrote, not only that it matched a script.
 
 **Show the model, always** (owner, 2026-09-15). The owner tracks which model does what:
 - Start every response with `🤖  Model: Claude Opus 5 (planning session)`: the robot emoji and two spaces come first.
@@ -24,6 +42,20 @@ put its output on the line after the model line, such as `Time: 17:59:03 15.09.2
 
 **Mark the owner's words** (owner, 2026-09-15). When a response quotes the owner's own words, start the quote with the
 whale emoji and two spaces (`🐋  `).
+
+## 0. One review, then stop
+
+**A review is a gate, not a conversation** (owner, 2026-09-16, after this rule was broken three times in one
+session).
+
+- **Documents get ONE review.** A change to briefs, templates, plans, records, or anything else a person reads and no
+  machine runs, is reviewed once. Apply the findings that change what someone would actually do; note the rest in the
+  commit message and move on. **Never review the fixes to a review of a document.**
+- **Code gets at most TWO rounds.** One review, one verification of its fixes. After that, apply what is clearly
+  right, write what is not into the commit or `LOG.md`, and go on.
+- **A finding that changes no instruction anyone acts on never earns a round.** A missing comma, a clumsy sentence, a
+  heading: fix it silently in the same commit, or leave it.
+- Iterating past this spends the owner's allowance on wording. It is the wrong answer however good each finding is.
 
 ## 1. Read first, in full, in this order
 
@@ -95,21 +127,52 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
 6. **Cut the work into steps.** The standing rule: one finding, one branch, one commit, version-bumped, merged `--no-ff`
    into `uat-2`. A step must be small enough that its change fits in the plan verbatim. Order steps so each leaves
    `uat-2` green.
-7. **Write each step completely** (template section 6):
-   - **Anchors:** saved in full under `scripts/anchors/`.
-   - **The tests first,** in full, following `__tests__/README.md`. Choose inputs that can fail, across the range the
-     rule spans: the owner's fixture-blind-spot rule.
-   - **The code change,** in full.
-   - **The break script.** Every decision the code makes gets a break, and each break names the test expected to fail.
-   - **The commit message,** in full, starting `<VERSION> - `.
-   - **The review prompt,** in full.
-   - **Section 10's anticipated review fixes,** word for word, and the files to restore if the step stops part-way.
-8. **Prove the risky parts before you write them down.** The executor cannot recover from a plan that is wrong. Work in
-   a scratch worktree outside the repo and outside `/tmp`:
+7. **Specify each step so completely that no question can arise** (template section 6). Give the executor:
+   - **Which kind of step it is.** Mark it in section 6's checklist as `(specified)` or `(files)`, and make the step's
+     own part 5 say the same, because that part is what the executor reads when it is running the step.
+   - **Where the change goes.** The exact files, and an anchor for each place, saved in full under `scripts/anchors/`,
+     so it never has to search.
+   - **The contract of everything it adds or changes.** For each function: its name, its signature, what it answers,
+     what it must never do, the errors it may throw, and the log lines it writes, with their exact text. For each
+     stored value: its key, its type and what each value means. Names are yours, not the executor's, so that the
+     tests you name and the reviews you write refer to the same thing it built.
+   - **The behaviour, as an invariant a test can check**, in one sentence, plus every case that invariant has to hold
+     in, including the interleavings (section 3, item 2's concurrency table).
+   - **The tests it must write.** One line per test: its name, exactly what it proves, the inputs it uses, and what it
+     must assert. Choose inputs that can fail, across the range the rule spans: the owner's fixture-blind-spot rule.
+     They follow `__tests__/README.md`, which the executor also reads. Say which existing tests change and why, and
+     which must not.
+   - **The acceptance criteria**, as things the executor can check itself: the exact command that runs the named
+     tests, the failure each must show BEFORE the change, `Tests:` and coverage lines after it, `tsc` and Biome
+     exiting 0, and the break script ending `ALL AS EXPECTED: 1`.
+   - **The break script**, in full. Every decision the code makes gets a break, and each break names the test expected
+     to fail. This is what proves the executor's own tests are worth anything, so it is yours, not its. Two rules it
+     must obey, repeated here because this is where you write it: every break's search text is text the plan itself
+     fixes (section 4's bar), and when a substitution changes nothing the script prints `BREAK NOT APPLIED: <label>`
+     and counts it as not caught, because both other briefs depend on that exact string.
+   - **The commit message**, in full, starting `<VERSION> - `.
+   - **The review prompt**, in full, listing what the reviewer must check about the code the executor wrote: every
+     contract kept, every acceptance criterion met, the owner's rules, and nothing beyond the step.
+   - **Section 10's anticipated review fixes,** word for word, for anything that touches what the plan fixed. You
+     have not seen the code the executor will write, so you cannot predict an ordinary quality note about it, and you
+     do not try: `EXECUTOR-BRIEF.md` section 4, item 8 gives the three conditions under which the executor applies a
+     finding itself and records it in `LOG.md` for the audit. Never restate those three conditions in your own words:
+     point at them, so there is one wording and the executor cannot pick between two.
+   - **The files to restore** if the step stops part-way.
+
+   Write the code out in full ONLY where the contract cannot carry it: a verbatim block the executor must match
+   exactly, such as a log line, a message the user sees, or a formula whose every term matters. Never paste a whole
+   file as the change.
+8. **Prove the risky parts before you write them down, then throw the proof away.** The executor cannot recover from
+   a plan that is wrong, so you spike the risky parts yourself and the plan records what the spike TAUGHT you: that
+   the approach builds, the trap it hides, the line a test fails on before the change, the totals the suite reports.
+   The spike's code does not become the plan. Work in a scratch worktree outside the repo and outside `/tmp`:
    `git worktree add --detach ~/athan-device-sweep/worktrees/plan-<N> uat-2`, with `node_modules` symlinked from the
    main checkout.
-   - Write each new test and run it against today's code, to confirm it fails for the reason the plan states.
-   - Apply the planned change and confirm it passes tsc, Biome and the named tests.
+   - Write a throwaway version of each new test and run it against today's code, to confirm it fails for the reason
+     the plan states, and record that failure line in the plan.
+   - Build the change there and confirm it passes tsc, Biome and the named tests, so you know the contract you are
+     specifying is buildable. Record the totals in the plan; delete the code.
    - Run at least the breaks you are least sure of, and the pre-flight script.
    - Record the observed output in the plan as the expected output.
    - Remove the worktree when done (`git worktree remove --force <path>`), and always before 00:00, when a nightly job
@@ -126,12 +189,19 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
 11. **Review the plan as the executor would read it.** Spawn a `Code Reviewer` subagent (model `opus`, isolation
     `worktree`) with this instruction: "Read /Users/muji/repos/rn.athan.uk/ai/plans/EXECUTOR-BRIEF.md, then the plan
     folder at /Users/muji/repos/rn.athan.uk/ai/plans/<folder>/ (not committed yet, so read it by this absolute path),
-    as a literal-minded executor that cannot make judgement calls. List:
-    - every place you would have to guess;
+    as the implementer it is written for: capable of building what it specifies, and never allowed to decide what to
+    build. List:
+    - every place you would have to guess, and every place where two competent implementers would do different
+      things: those are the same defect;
+    - every question you would have to ask the owner, because the plan should leave none;
     - every command that would fail or print something the plan does not predict;
     - every anchor that does not count exactly 1;
     - every forbidden vague word;
-    - every step whose tests would not fail before the change.
+    - every function you are asked to write whose contract does not say what it answers, what it must never do, or
+      what it logs;
+    - every test you are asked to write whose row does not say what it proves, the inputs it uses, or what it asserts;
+    - every step whose tests would not fail before the change;
+    - every acceptance criterion you could not check for yourself.
 
     Verify anchors against uat-2 at <sha>." Fix everything it finds. A second round is required if the first found
     more than five problems.
@@ -149,10 +219,22 @@ The plan is not READY until every line below is true.
 - Every wait in a plan's command or script is a loop of `sleep 15` or shorter that checks its condition on every pass,
   run in the background. `devcheck.py wait` is never given more than 15 seconds.
 - Every command states its expected output, or the exact lines to look for, and what to do when they differ.
-- Every new or changed test is written out in full, and was run in the scratch worktree to fail before and pass after.
-- Every code change is written out in full, and was applied in the scratch worktree to pass tsc, Biome and the named
-  tests.
-- Every break is an exact substitution, with the tests expected to fail.
+- **The question test.** Read every instruction and ask: could two competent implementers do different things here?
+  If yes, it is not specified, and you decide it now. This is the bar the whole plan is measured against.
+- Every new or changed test is specified: its name, exactly what it proves, the inputs it uses, what it asserts, and
+  the failure it must show before the change. A throwaway version was run in the scratch worktree to confirm that
+  failure, and the plan records its first failing line.
+- Every function the step adds or changes has its contract in the plan: name, signature, what it answers, what it must
+  never do, and the exact text of every log line. Code is written out verbatim only where the contract cannot carry
+  it, and never as a whole file.
+- The change was built in the scratch worktree to confirm it passes tsc, Biome and the named tests, and the plan
+  records the totals it reported.
+- Every break is an exact substitution, with the tests expected to fail. **Its search text is text the plan itself
+  fixes**: a log line, a named constant, a signature a contract gives, a key, a message. A break whose search text
+  could only match the code your own spike happened to write is not a break, because the executor writes different
+  code and the substitution silently does nothing. Where a decision can only be broken by touching the
+  implementation, name in the contract the thing that carries it, so the break has a stable target: a constant with
+  a given name, a helper with a given signature.
 - Every commit message, review prompt, merge message and records text is written out in full.
 - Every subagent call names its type, its isolation and its full prompt. No `model` override: the executor's
   subagents run on GLM.
@@ -173,6 +255,9 @@ The plan is not READY until every line below is true.
 
 ## 5. Writing for the executor
 
+- **The executor is capable, and it never chooses.** Write to an implementer that can build what you specify but must
+  never decide what to build. Give it the contract and the acceptance, not the keystrokes; give it every decision, not
+  one of them to make.
 - **Sentences.** Short. One instruction per numbered item. Imperative verbs. No pronouns whose referent is more than
   one sentence back. No dashes as punctuation; use commas, colons or brackets.
 - **Repetition.** Repeat a critical constraint inside the step that needs it, even if section 2 already said it. The
@@ -313,9 +398,9 @@ The plan is not READY until every line below is true.
 
    Bump the patch version in the three places. Commit with a message that says which session was planned and what the
    plan covers. The hook runs the full suite.
-4. **Review.** A `Code Reviewer` (model `opus`, isolation `worktree`) reviews the whole range since the skeleton commit.
-   It checks the plan's accuracy against the code at "Planned at", and the quality bar. Fix what it finds, and have it
-   verify.
+4. **Review.** A `Code Reviewer` (model `opus`, isolation `worktree`) reviews the whole range since the skeleton
+   commit. It checks the plan's accuracy against the code at "Planned at", and the quality bar. Fix what it finds.
+   Section 0 applies: verify once if the plan changed, and never start a third round.
 5. **Merge and push.**
    `git checkout uat-2 && git merge --no-ff <branch> -m "Merge <branch> into uat-2: session <N> planned, reviewed"`,
    then `git push origin uat-2`, which is allowed only if section 2 found no unaudited commits. The owner approved
@@ -337,7 +422,10 @@ The plan is not READY until every line below is true.
 1. **Read why.** The executor recorded why it stopped: the missing anchor, the unexpected failure, or the owner's
    answer. Read that first, in the plan folder's `LOG.md` and its last commit.
 2. **Refresh.** Diff `uat-2` against the plan's "Planned at" for every file the plan anchors on. Rewrite only the
-   affected anchors, steps and expected outputs. Rerun the scratch-worktree proofs for those steps.
+   affected anchors, steps and expected outputs. Rerun the scratch-worktree proofs for those steps. A step you
+   rewrite is rewritten to today's rules, as contracts; a step you do not touch keeps whatever it already has, files
+   included. Mark each step in the plan's section 6 checklist as `specified` or `files`, so the executor knows which
+   kind it is running.
 3. **Keep finished work.** Keep every step already DONE, ticked, with its commit.
 4. **Finish** as in section 8, with status READY and a new "Planned at". If `uat-2` holds unaudited commits from this
    plan, do not push; tell the owner to run the audit prompt first.
