@@ -235,43 +235,31 @@ export const useNotification = () => {
       return false;
     }
 
-    // Save preferences first (optimistic update)
-    NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, currentState.atTimeAlert);
-    NotificationStore.setReminderAlertType(scheduleType, prayerIndex, currentState.reminderAlert);
-    NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);
+    // The store writes the preferences, does the work and, when the phone refuses any part of it, puts BOTH back
+    // inside the same lock acquisition. Doing that here made the undo a second acquisition, which anything queued
+    // meanwhile ran in front of (measured while planning session 6b). Deliberately no error haptic: an on-device
+    // feel-test (owner, 2026-09-08) found expo-haptics' Heavy single-shot indistinguishable from the normal Light
+    // feedback, so the revert plays visually only — the icon snapping back is the signal.
+    const committed = await NotificationStore.commitPrayerAlertChange(
+      scheduleType,
+      prayerIndex,
+      englishName,
+      arabicName,
+      currentState,
+      originalState
+    );
 
-    try {
-      await NotificationStore.updatePrayerNotifications(
-        scheduleType,
-        prayerIndex,
-        englishName,
-        arabicName,
-        currentState.atTimeAlert,
-        currentState.reminderAlert
-      );
+    logger.info('NOTIFICATION: Alert menu changes settled:', {
+      scheduleType,
+      prayerIndex,
+      englishName,
+      atTimeChanged,
+      reminderChanged,
+      currentState,
+      committed,
+    });
 
-      logger.info('NOTIFICATION: Committed alert menu changes:', {
-        scheduleType,
-        prayerIndex,
-        englishName,
-        atTimeChanged,
-        reminderChanged,
-        currentState,
-      });
-
-      return true;
-    } catch (error) {
-      // Rollback preferences on failure. Deliberately no error haptic: an
-      // on-device feel-test (owner, 2026-09-08) found expo-haptics' Heavy
-      // single-shot indistinguishable from the normal Light feedback, so the
-      // revert plays visually only — the icon snapping back is the signal.
-      NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, originalState.atTimeAlert);
-      NotificationStore.setReminderAlertType(scheduleType, prayerIndex, originalState.reminderAlert);
-      NotificationStore.setReminderInterval(scheduleType, prayerIndex, originalState.reminderInterval);
-
-      logger.error('NOTIFICATION: Failed to commit alert menu changes, rolled back:', error);
-      return false;
-    }
+    return committed;
   };
 
   /**
