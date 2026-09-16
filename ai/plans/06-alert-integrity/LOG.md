@@ -29,7 +29,7 @@
 - Green: `Tests: 7 passed, 7 total`; coverage run `Test Suites: 47 passed, 47 total`, `Tests: 959 passed, 959 total`, two rows `notifications.ts | 100 | 100 | 100 | 100`; tsc exit 0; Biome `No fixes applied.`
 - Breaks: 8 lines `BREAK 3 AS EXPECTED`, last line `ALL AS EXPECTED: 1`.
 - Hook: last `Tests:` line `Tests:       4494 passed, 4494 total`; `Statements   : 100% ( 3801/3801 )`, `Branches     : 100% ( 1649/1649 )`, `Functions    : 100% ( 785/785 )`, `Lines        : 100% ( 3412/3412 )`; no `Coverage gate:` line.
-- Review: Code Reviewer (GLM 5.3), verdict `merge`, 1 round; one cosmetic note (a trailing blank line at LOG.md's end), fix none required before merge; the extra blank line was removed when this record was appended.
+- Review: Code Reviewer (GLM 5.3), verdict `merge`, 1 round; one cosmetic note (a trailing blank line at LOG.md's end), fix none required before merge. Contrary to what this record first claimed, the blank line was not removed then; the audit session removed it on 2026-09-16.
 
 ## Device proof (section 7)
 
@@ -45,4 +45,3 @@
 - 7.4: BUILD-MOCK OK, versionName 1.27.179; install Success; home, am kill, relaunch (`Starting: Intent`), waited 10s; vision read mock-final.png: YES (Asr highlighted, countdown 1m 3s).
 - 7.5: stayon false; auto_time `1`; versionName=1.27.179; alarms-end holds the 2036 WorkManager alarm and 3 NOTIFICATION_EVENT alarms; `copied 0` devcheck prod-cold files (the cold screen read printed `DUMP FAILED` while the countdown ran, as the plan allows).
 - Reality Checker (GLM 5.3): every claim this session's evidence owns is PROVEN (including independent re-runs of isha_alarms.py against the saved dumps, which printed AS EXPECTED again); the one NOT PROVEN line is the planning-time observation "the 3T closed that settings page at once (checked while planning)", which section 8.1 itself labels as checked while planning and no session-6 file could bear on. Final line: `evidence holds`.
-
