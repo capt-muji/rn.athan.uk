@@ -1,0 +1,17 @@
+  const result = new Promise<T>((resolve, reject) => {
+    schedulingQueue = schedulingQueue.then(async () => {
+      logger.info(`NOTIFICATION: Starting ${operationName}`);
+      perfMeasure(`sched_${operationName}_queue_wait`, `sched_${operationName}_enqueue`);
+      perfMark(`sched_${operationName}_start`);
+      try {
+        const value = await operation();
+        perfMeasure(`sched_${operationName}`, `sched_${operationName}_start`);
+        resolve(value);
+      } catch (error) {
+        perfMeasure(`sched_${operationName}`, `sched_${operationName}_start`);
+        reject(error);
+      }
+    });
+  });
+
+  return result;
