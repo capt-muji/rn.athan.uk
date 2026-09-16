@@ -327,7 +327,7 @@ before it settles.
 ## 6. Steps
 
 - [x] Step 1: DONE in 3499b765
-- [ ] Step 2: A start-up error lifts the splash onto the error screen, in Ramadan too (finding 80)
+- [x] Step 2: DONE in b6e2bf26
 - [ ] Step 3: The scheduling lock waits for every piece of work before reporting a failure (finding 82)
 - [ ] Device proof: section 7
 
