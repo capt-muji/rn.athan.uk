@@ -69,7 +69,9 @@ export default function Index() {
   // visibility condition, computed synchronously so the gate knows at the
   // first commit — the component itself mounts chrome-deferred a frame later)
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
-  const decorationsExpected = isRamadan() && decorationsEnabled;
+  // The error screen never mounts the decorations, so waiting for their sprites there would hold the splash over the
+  // one screen whose Refresh can recover the app
+  const decorationsExpected = isRamadan() && decorationsEnabled && state !== 'hasError';
   const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
   const installedVersion = getInstalledVersion();
   // Overlay + modals mount past the first content frame (launch chrome defer)
