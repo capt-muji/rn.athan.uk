@@ -1,0 +1,7 @@
+  if (alertType === AlertType.Sound && Platform.OS === 'android') {
+    if (NotificationUtils.isDailyPrayer(englishName)) {
+      await NotificationUtils.createAthanAndroidChannel(soundPreference);
+    } else {
+      await NotificationUtils.createExtrasAndroidChannel();
+    }
+  }
