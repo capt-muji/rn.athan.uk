@@ -12,7 +12,8 @@ when it starts, and keep the brief itself in this directory.
 | 3 | **`--:--` for unreadable times**: per prayer, not per day; the day is still shown. Extended by the owner during session 2: missing days, dashed-row styling, 1 January, screenshots to approve | `unavailable-times-dashes.md` | **DONE** 2026-09-13, 1.27.0, findings 71 and 72. Round 2 on 2026-09-14 (1.27.1 to 1.27.14, `feat/audit-71-dashes`, merged into `uat-2` the same day) built the owner's rulings on R5, R8, R11 and R14, the bar and "ago" badge measuring only from the prayer directly above next, and `...` above a waiting `--:--` countdown; choices C2, C5 to C10 and C13 on the approval page wait for the owner |
 | 4 | **Close the test-coverage gaps**: parallel agents per area, widen `collectCoverageFrom` first | `coverage-sweep.md` | **DONE** 2026-09-15, 1.27.16 to 1.27.137: statements 68.49 to 76.18 over every measured area, 3,598 to 4,089 tests, thresholds raised to 76 statements, 73 branches, 74 functions and 75 lines; findings 80 to 82 are session 6, and 79 waits for session 5's explanation |
 | 5 | **Reach 100% test coverage, and gate every commit on it**: answer the owner's coverage questions and explain findings 79 and 80 simply first; add a React renderer; `yarn validate` runs coverage; no commit or push without 100% coverage of the change | `coverage-100.md` | **DONE** 2026-09-15, 1.27.140 to 1.27.157: a React renderer and one documented test pattern (`__tests__/README.md`), coverage from 76.18% to 100% on all four measures over every measured file (4,089 to 4,472 tests), global thresholds at 100, and a pre-commit and pre-push gate refusing any change below 100%; accessibility findings and two decisions for the owner in "Session 5 of the queue" in `AUDIT-FINDINGS.md` |
-| 6 | **An alert always does what its bell shows**: fix findings 79 to 82 (settings hang, Ramadan splash, two Android cancel failures); 79 approved by the owner after session 5's explanation; design reviewed first | `alert-integrity.md` | queued |
+| 6 | **An alert always does what its bell shows**: fix findings 79, 80 and 82 (settings hang, Ramadan splash, the scheduling lock released early); 79 approved by the owner after session 5's explanation; design reviewed first. Finding 81 moved to session 6b on 2026-09-15 | `alert-integrity.md` | queued |
+| 6b | **An alert sheet change is all or nothing, both directions**: finding 81, with the sturdier design the first design review asked for, reviewed again before building | `alert-all-or-nothing.md` | queued, runs after session 6 |
 | 7 | **Android: each notification replaces the one before it**: one shared tag, and notifications due at the same instant are left to the system | `replace-previous-notification.md` | queued |
 | 8 | **iOS: find a way for each notification to replace the one before it**: investigate, and prove each answer on the iPhone | `ios-replace-previous-notification.md` | queued |
 | 9 | **Keep yesterday's still-due rows after 00:00**: a Magrib or Isha after midnight stays on screen and keeps its alarm, before v2.0 | `keep-still-due-rows-after-midnight.md` | queued |
@@ -82,10 +83,19 @@ None of these is a session yet. Each needs the owner's decision first.
   the next launch, return to the app or background run; this was explained to the owner as a limit of the phone, the
   one case where the state waits for a later event, and the owner confirmed the all-or-nothing rule. The owner's words:
   "If the alert fail to schedule, then I shouldn't have sound on. It should be sound off."
-- **Both directions are fixed in session 6**, inside finding 81's step.
+- **Both directions are fixed inside finding 81's step.** Later the same evening the owner split finding 81 out of
+  session 6 into session 6b (`alert-all-or-nothing.md`), because the design review asked for a sturdier design than
+  would fit before midnight: session 6 plans findings 79, 80 and 82, and session 6b plans finding 81 after it.
 - **The athan sound change has the same gap** (Settings shows the old sound again while some alarms keep the new one)
   and **becomes its own session later**, not part of session 6. Its brief is not written yet, so it has no row in the
   table above. It waits in "Waiting on the owner, not yet sessions" in `ai/plans/README.md`.
+- **Open Settings opens Athan's own settings page on both platforms** (`Linking.openSettings`, the App info page on
+  Android): the plan review found, and the planner checked on the 3T, that Android 9 closes its app notification page at
+  once when the request names no package, as the app's request does today. The owner chose the App info page over
+  adding the package name.
+- **A late return carries on where you left off.** If the user taps Open Settings and comes back to Athan hours later,
+  the app reads the permission then and finishes what was started: the sheet opens, or the chosen option becomes
+  selected. Nothing is saved until the sheet closes, as today. Owner, 2026-09-16, while planning session 6.
 - **Finding 79 is proven on the 3T with the owner's hands:** the owner unlocks the phone and flips Athan's notification
   switch when the execution session asks.
 - **The 3T ends every session on the latest `uat-2` build, as a mock build with the Asr-next mock data** (Fajr 2 to 3

@@ -1,0 +1,2 @@
+  const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
+  const decorationsExpected = isRamadan() && decorationsEnabled;

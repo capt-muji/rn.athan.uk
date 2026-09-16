@@ -1,0 +1,23 @@
+  return result;
+}
+
+/**
+ * Waits for every piece of scheduling work to end, then rejects with the first failure, if any
+ *
+ * Promise.all rejects at the first failure while the rest is still running, and the scheduling lock is released with
+ * it: the next operation in the queue would then arm or cancel beside work that is still landing.
+ *
+ * @param work The pieces of work, already started
+ * @returns Each piece's result, in order
+ */
+const settleAll = async <T>(work: Promise<T>[]): Promise<T[]> => {
+  const results = await Promise.allSettled(work);
+  const failure = results.find((result): result is PromiseRejectedResult => result.status === 'rejected');
+  if (failure) throw failure.reason;
+
+  return results.map((result) => (result as PromiseFulfilledResult<T>).value);
+};
+
+// =============================================================================
+// HELPERS
+// =============================================================================
