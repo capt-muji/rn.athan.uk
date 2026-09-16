@@ -1,0 +1,4 @@
+  const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
+  // The error screen never mounts the decorations, so waiting for their sprites there would hold the splash over the
+  // one screen whose Refresh can recover the app
+  const decorationsExpected = isRamadan() && decorationsEnabled && state !== 'hasError';

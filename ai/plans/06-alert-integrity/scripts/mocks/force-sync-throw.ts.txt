@@ -1,0 +1,275 @@
+import { addDays, subDays } from 'date-fns';
+
+import { addDaysToDateString, formatDateShort, formatPrayerTime, getTodayDateString } from '@/shared/time';
+import type { IApiResponse } from '@/shared/types';
+
+/**
+ * Mock data for testing prayer times
+ *
+ * MIDNIGHT PRAYER TESTING:
+ * - Midnight is the midpoint of the night leading into a day: the previous
+ *   day's Magrib to this day's Fajr
+ * - Example: Magrib 16:14 → Fajr 05:35 (next day)
+ *   Night duration: 13h 21m → Midnight ≈ 22:54
+ * - Worked out when the lists are built (shared/prayer.ts getNightTimesForDay),
+ *   from two consecutive days below
+ * - Check Page 2 (Extras) to see Midnight as first prayer
+ */
+
+// Simulating during 00:00-05:59: the intended midnight-crossing rules apply.
+// shared/prayer.ts moves a Standard Isha in that window to TOMORROW's datetime
+// (adjustPrayerDateForMidnightCrossing) and assigns it to YESTERDAY's Islamic
+// day (calculateBelongsToDate) - correct for a real post-midnight Isha, but a
+// night-time mock triggers both: at the Magrib->Isha handoff the countdown
+// skips to the following day's Fajr and the rollover cascade fires early.
+// An Isha can fall after 00:00 (high latitudes in summer; the app goes global
+// in v2.0) and is handled by the rules above. To test the Magrib->Isha handoff
+// and day rollover cleanly, simulate during 06:00-23:55: from 23:56 a download
+// puts Isha past 00:00, from 23:57 Magrib, and from 23:58 Asr, which reads as
+// the day before.
+
+const MINUTE = 60_000;
+
+/** HH:mm in London, as the API sends it and the app reads it, a whole number of minutes from an instant */
+export const addMinutes = (from: Date, minutesToAdd: number) =>
+  formatPrayerTime(new Date(from.getTime() + minutesToAdd * MINUTE));
+
+/**
+ * Every day around the download, with TODAY's six rows seeded from it
+ *
+ * Asr is the first whole minute at least 60 seconds after the download, since times carry no seconds, so Asr is
+ * always next on opening the app, 60 to 119 seconds away. The other five sit a minute apart either side of it.
+ */
+const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
+  const asrAt = new Date(Math.ceil((downloadedAt.getTime() + MINUTE) / MINUTE) * MINUTE);
+
+  const dayBeforeYesterday = formatDateShort(subDays(downloadedAt, 2));
+  const yesterday = formatDateShort(subDays(downloadedAt, 1));
+  const today = formatDateShort(downloadedAt);
+  const daysAhead = Array.from({ length: 10 }, (_, i) => i + 1);
+  const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.map((d) =>
+    formatDateShort(addDays(downloadedAt, d))
+  );
+
+  // Realistic London times copied verbatim from mocks/full.ts, EXCEPT TODAY.
+  // The days around it (dayBeforeYesterday, yesterday, day1, day2) are
+  // 2024-04-23 through 2024-04-27 carrying the API's real spring solar drift;
+  // days 3-10 ahead keep the 2024-08-28 → 2024-09-09 autumn block. Jamat
+  // fields are unused placeholders.
+  return {
+    [dayBeforeYesterday]: {
+      date: dayBeforeYesterday,
+      fajr: '04:10',
+      sunrise: '05:44',
+      dhuhr: '13:04',
+      asr: '16:56',
+      magrib: '20:14',
+      isha: '21:27',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [yesterday]: {
+      date: yesterday,
+      fajr: '04:07',
+      sunrise: '05:42',
+      dhuhr: '13:04',
+      asr: '16:56',
+      magrib: '20:16',
+      isha: '21:29',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [today]: {
+      date: today,
+      fajr: addMinutes(asrAt, -4),
+      sunrise: addMinutes(asrAt, -3),
+      dhuhr: addMinutes(asrAt, -2),
+      asr: addMinutes(asrAt, 0),
+      magrib: addMinutes(asrAt, 1),
+      isha: addMinutes(asrAt, 2),
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day1]: {
+      date: day1,
+      fajr: '04:03',
+      sunrise: '05:38',
+      dhuhr: '13:03',
+      asr: '16:58',
+      magrib: '20:19',
+      isha: '21:31',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day2]: {
+      date: day2,
+      fajr: '04:00',
+      sunrise: '05:36',
+      dhuhr: '13:03',
+      asr: '16:58',
+      magrib: '20:21',
+      isha: '21:33',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day3]: {
+      date: day3,
+      fajr: '04:40',
+      sunrise: '06:12',
+      dhuhr: '13:05',
+      asr: '16:42',
+      magrib: '19:47',
+      isha: '20:58',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day4]: {
+      date: day4,
+      fajr: '04:42',
+      sunrise: '06:14',
+      dhuhr: '13:05',
+      asr: '16:40',
+      magrib: '19:45',
+      isha: '20:56',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day5]: {
+      date: day5,
+      fajr: '04:44',
+      sunrise: '06:16',
+      dhuhr: '13:05',
+      asr: '16:39',
+      magrib: '19:42',
+      isha: '20:54',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day6]: {
+      date: day6,
+      fajr: '04:45',
+      sunrise: '06:17',
+      dhuhr: '13:04',
+      asr: '16:37',
+      magrib: '19:40',
+      isha: '20:52',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day7]: {
+      date: day7,
+      fajr: '04:47',
+      sunrise: '06:19',
+      dhuhr: '13:04',
+      asr: '16:36',
+      magrib: '19:38',
+      isha: '20:50',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day8]: {
+      date: day8,
+      fajr: '04:48',
+      sunrise: '06:20',
+      dhuhr: '13:04',
+      asr: '16:34',
+      magrib: '19:36',
+      isha: '20:49',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day9]: {
+      date: day9,
+      fajr: '04:50',
+      sunrise: '06:22',
+      dhuhr: '13:03',
+      asr: '16:33',
+      magrib: '19:33',
+      isha: '20:46',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+    [day10]: {
+      date: day10,
+      fajr: '04:52',
+      sunrise: '06:24',
+      dhuhr: '13:03',
+      asr: '16:31',
+      magrib: '19:31',
+      isha: '20:44',
+      fajr_jamat: '00:00',
+      dhuhr_jamat: '00:00',
+      asr_2: '00:00',
+      asr_jamat: '00:00',
+      magrib_jamat: '00:00',
+      isha_jamat: '00:00',
+    },
+  };
+};
+
+export const MOCK_DATA_SIMPLE: IApiResponse = {
+  city: 'london',
+  // A getter, so every download (launch, return from the background, the background task) seeds today afresh, while
+  // nothing re-seeds it as the app stays open and Asr can pass
+  get times() {
+    const downloadedAt = new Date();
+    // Session 6 device proof only, never committed: a download in the second half of a minute deletes today to day 2
+    // and throws, so sync fails on a launch that has already drawn its lists, as any start-up error would
+    if (downloadedAt.getSeconds() >= 30) {
+      const { database } = require('@/stores/database');
+      const today = getTodayDateString();
+      for (const offset of [0, 1, 2]) database.remove(`prayer_${addDaysToDateString(today, offset)}`);
+      require('@/shared/logger').default.error('SESSION6 FORCED SYNC THROW');
+      throw new Error('SESSION6 FORCED SYNC THROW');
+    }
+    return buildTimes(downloadedAt);
+  },
+};
