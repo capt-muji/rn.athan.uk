@@ -5654,7 +5654,7 @@ whose next prayer is Asr, a minute away, every time the app is opened.
 # Session 6 of the queue: findings 79, 80 and 82, 16 September 2026
 
 The brief is `ai/prompts/alert-integrity.md`, planned by Claude in `ai/plans/06-alert-integrity/PLAN.md` and executed
-by GLM 5.3, with a GLM 5.3 Code Reviewer on every commit. `uat-2` ends at 5881b9f2 (1.27.179); the last suite run
+by GLM 5.3, with a GLM 5.3 Code Reviewer on every commit. `uat-2` ends at `5881b9f2` (1.27.179); the last suite run
 reported `Tests:       4494 passed, 4494 total`, at 100% statements, branches, functions and lines.
 
 ## 79. CLOSED: Open Settings always answers
@@ -5671,7 +5671,7 @@ by vision). Before this fix the source read the permission as Settings opened (f
 
 The splash waits for the Ramadan decorations only while sync has not failed, because the error screen never draws
 them. On the 3T, a Ramadan mock build whose download deletes today to day 2 and throws, launched over stored lists:
-at `b5159305` the splash stayed up (`80-before-throw.png`); at 5881b9f2 the error screen showed with its Refresh button
+at `b5159305` the splash stayed up (`80-before-throw.png`); at `5881b9f2` the error screen showed with its Refresh button
 (`80-after-throw.png`). The forced throw lived only in a mocks file outside the repository.
 
 ## 82. CLOSED: the scheduling lock waits for every piece of work
@@ -5692,5 +5692,5 @@ Finding 81 is not closed here: it moved to session 6b (`ai/prompts/alert-all-or-
 
 ## State left behind
 
-The 3T runs the mock build of 5881b9f2 with the Asr-next mock data, automatic time on. Nothing was built on or pushed
+The 3T runs the mock build of `5881b9f2` with the Asr-next mock data, automatic time on. Nothing was built on or pushed
 to EAS, and `releases.json` is untouched. The evidence is in `~/athan-device-sweep/session6/`.
