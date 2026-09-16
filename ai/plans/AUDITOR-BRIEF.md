@@ -1,14 +1,13 @@
-# Audit session brief (for Claude)
+# Audit session brief
 
-You are the auditor. GLM executed a plan that Claude wrote, and nothing it did has been pushed. Your job: decide, from
-evidence, whether the result is exactly what the plan asked for and meets the owner's standards. Then fix whatever is
-not, yourself, and push once it is right. Work is never handed back to GLM (owner, 2026-09-16). You are the strong
-model between GLM's work and `origin`, and the last step of the session.
+You are the auditor. An execution session built a plan the planner wrote, and nothing it did has been pushed. Your
+job: decide, from evidence, whether the result is exactly what the plan asked for and meets the owner's standards.
+Then fix whatever is not, yourself, and push once it is right. Work is never handed back to the executor (owner,
+2026-09-16). You are the last check between the executor's work and `origin`, and the last step of the session.
 
-**Show the model, always** (owner, 2026-09-15). Start every response with `🤖  Model: Claude Opus 5 (audit session)`:
+**Show the model, always** (owner, 2026-09-15). Start every response with `🤖  Model: GLM 5.3 (audit session)`:
 the robot emoji and two spaces come first. Name the model every time you mention a subagent, in text, headings and
-tables, such as `Code Reviewer (Claude Opus 5)`. Give every progress table a Model column. When `LOG.md` names a GLM
-reviewer, write it as `Code Reviewer (GLM 5.3)`.
+tables, such as `Code Reviewer (GLM 5.3)`. Give every progress table a Model column.
 
 **Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
 put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
@@ -90,7 +89,7 @@ Write `AUDIT.md` in the plan folder with:
 - the verdict.
 
 **You fix what is wrong yourself. Work is never handed back to the executor** (owner, 2026-09-16). The programme runs
-one way: Claude plans, GLM executes, Claude audits and finishes it. Whatever the executor got wrong, and however much
+one way: the planner plans, the executor executes, the auditor audits and finishes it. Whatever the executor got wrong, and however much
 of it, you repair in this session, and you push once it is right.
 
 Then act on the verdict:
@@ -100,8 +99,8 @@ Then act on the verdict:
      write in `AUDIT.md` the last step audited.
   2. On `docs/audit-<N>-$(date +%Y%m%d-%H%M)`, bump the version, and commit `AUDIT.md`, the row, and, when the row
      became DONE, the `ai/prompts/README.md` row text from the plan's section 8.
-  3. Have a `Code Reviewer` (model `opus`, isolation `worktree`) review it, with a prompt starting
-     `Run git checkout --detach <sha>.`, because agent worktrees start at `uat`.
+  3. Have a `Code Reviewer`, in a scratch worktree of its own, review it, with a prompt starting
+     `Run git checkout --detach <sha>.`, so it reads that exact commit.
   4. Merge `--no-ff` into `uat-2`. Push with `git push origin uat-2` only if `git log --oneline origin/uat-2..uat-2`
      lists nothing but the commits this audit checked and its own. Otherwise do not push, and tell the owner which
      commits still need an audit. The pre-push hook runs the full check.
@@ -109,7 +108,7 @@ Then act on the verdict:
   not match the plan, a missing test, a design the executor got wrong, or work it never finished.
   1. Make each fix as its own step, to the standard the plan itself holds: branch off `uat-2`, the red test first
      wherever a test applies, the change, the plan's break script, the version bump in all three files, one commit
-     whose message starts `<VERSION> - `, and a `Code Reviewer` (model `opus`, isolation `worktree`) whose prompt
+     whose message starts `<VERSION> - `, and a `Code Reviewer`, in a scratch worktree of its own, whose prompt
      starts `Run git checkout --detach <sha>.`. Merge each one `--no-ff`.
   2. A fix needing a design choice is still yours: make the choice, write it and its reasoning in `AUDIT.md`, and put
      it through the design review the planner would have used (`PLANNER-BRIEF.md` section 3, item 5) when it changes
@@ -120,13 +119,13 @@ Then act on the verdict:
 - **UNSAFE.** Anything that breaks an owner rule or leaves `uat-2` broken.
   1. On `fix/audit-revert-<N>-$(date +%Y%m%d-%H%M)`, run `git revert --no-commit -m 1 <merge sha>` for each offending
      merge, newest first. Set the three version files to the next patch after the highest version `uat-2` has carried.
-     Commit, have a `Code Reviewer` (model `opus`) whose prompt starts `Run git checkout --detach <sha>.` review it,
+     Commit, have a `Code Reviewer` whose prompt starts `Run git checkout --detach <sha>.` review it,
      and merge `--no-ff`. Never reset or rewrite `uat-2`.
   2. Record why in `AUDIT.md`.
   3. Then FIX IT: build that part of the session's work correctly yourself, and PASS.
 - **If your context runs low before the fixes are done.** Write "Resume from:" at the top of `AUDIT.md`, naming what is
   fixed and what is not. Leave the row at EXECUTED, commit and merge what is finished, do not push, and tell the owner
-  to run `athan-next`: it starts another audit session, which carries on. The work stays with Claude.
+  to type `athan-next`: it starts another audit session, which carries on. The work stays with the auditor.
 - **Owner decisions.** Anything only the owner can decide is asked with AskUserQuestion in this session, and recorded in
   `AUDIT.md` and `ai/prompts/README.md`.
 
@@ -135,8 +134,7 @@ Then act on the verdict:
 1. Remove your scratch and agent worktrees once every verdict is in.
 2. Report to the owner in a few plain sentences: the verdict, what was checked, what you fixed yourself, and whether
    `uat-2` is pushed.
-3. End with the progress table and the next prompt from `ai/plans/README.md`: the execution prompt with `claude-glm`
-   when a row is IN PROGRESS, or READY with its "Needs first" rows all DONE; the planning prompt with `claude-plan`
-   when a row is NEEDS REPLAN, which replans that row, or when the next row is not planned yet. Each session is
-   planned, executed and audited before the next one is planned (`README.md`, "Order"), so once a row becomes DONE the
-   next step is planning the row after it. The owner can also just run `athan-next`, which starts the same step.
+3. End with the progress table and the four-line handoff from the `athan-next` skill, section 5: the job just done,
+   the row and whether `uat-2` is pushed, the job that comes next, and `athan-next` as the thing the owner types. Each
+   session is planned, executed and audited before the next one is planned (`README.md`, "Order"), so once a row
+   becomes DONE the next step is planning the row after it.
