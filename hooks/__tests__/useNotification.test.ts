@@ -9,7 +9,7 @@
  */
 
 import * as Notifications from 'expo-notifications';
-import { Alert, Linking } from 'react-native';
+import { Alert, AppState, Linking } from 'react-native';
 
 import { type AlertMenuState, AlertType, ScheduleType } from '@/shared/types';
 
@@ -31,6 +31,14 @@ interface AlertMock {
 
 // Cast Alert to our mock type for test access
 const alertMock = Alert as unknown as AlertMock;
+
+/** The app leaving for Settings and coming back, reported to every app state listener the dialog added */
+const returnFromSettings = () => {
+  for (const [, listener] of (AppState.addEventListener as jest.Mock).mock.calls) {
+    listener('background');
+    listener('active');
+  }
+};
 
 // =============================================================================
 // MOCK SETUP
@@ -108,7 +116,8 @@ describe('showSettingsDialog', () => {
       expect(Alert.alert).toHaveBeenCalledWith(
         'Enable Notifications',
         'Prayer time notifications are disabled. Would you like to enable them in settings?',
-        expect.any(Array)
+        expect.any(Array),
+        { onDismiss: expect.any(Function) }
       );
 
       // Simulate cancel to resolve the promise
@@ -163,7 +172,10 @@ describe('showSettingsDialog', () => {
 
       await new Promise((resolve) => setTimeout(resolve, 10));
 
-      await alertMock._pressButton('Open Settings');
+      const pressed = alertMock._pressButton('Open Settings');
+      await new Promise((resolve) => setTimeout(resolve, 10));
+      returnFromSettings();
+      await pressed;
 
       await permissionPromise;
 
@@ -183,7 +195,10 @@ describe('showSettingsDialog', () => {
 
       await new Promise((resolve) => setTimeout(resolve, 10));
 
-      await alertMock._pressButton('Open Settings');
+      const pressed = alertMock._pressButton('Open Settings');
+      await new Promise((resolve) => setTimeout(resolve, 10));
+      returnFromSettings();
+      await pressed;
 
       const result = await permissionPromise;
       expect(result).toBe(true);
@@ -202,7 +217,10 @@ describe('showSettingsDialog', () => {
 
       await new Promise((resolve) => setTimeout(resolve, 10));
 
-      await alertMock._pressButton('Open Settings');
+      const pressed = alertMock._pressButton('Open Settings');
+      await new Promise((resolve) => setTimeout(resolve, 10));
+      returnFromSettings();
+      await pressed;
 
       const result = await permissionPromise;
       expect(result).toBe(false);
