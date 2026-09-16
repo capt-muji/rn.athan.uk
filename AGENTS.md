@@ -17,3 +17,31 @@ Please read and follow: **ai/AGENTS.md**
 ```
 Read ai/AGENTS.md and begin as Orchestrator.
 ```
+
+## Tool Routing
+
+Reach for these without being asked. Every command below already exists in this
+repo — run them, don't reinvent them.
+
+| Work | Route to |
+|---|---|
+| Drive a device: tap, type, scroll, screenshot | `mobile-mcp` |
+| Author or run a flow | `maestro mcp`, flows in `e2e/flows/*.yaml` |
+| iOS build / simulator | `xcodebuildmcp` |
+| Expo/EAS API question | the matching `expo-*` / `eas-*` skill |
+| "Are alarms actually armed?" | `yarn check:device` |
+| Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
+| Perf regression vs baseline | `e2e/scripts/baseline-compare.sh e2e/flows/<flow>.yaml` |
+| Before calling anything done | `yarn validate` (tsc + biome + jest) |
+
+Maestro needs `export PATH="$HOME/.maestro/bin:$PATH"`.
+
+Scripts measure; the `vision` subagent interprets (global AGENTS.md covers when to
+delegate to it).
+
+**Alarm times only mean anything on a production build.** Local builds run the mock
+API, whose prayers sit either side of launch. Everything else in `check:device` is
+build-agnostic.
+
+Before measuring anything, read `e2e/README.md` — its Gotchas section documents
+Metro's env-blindness and the dev-env confound, and each one cost real time.
