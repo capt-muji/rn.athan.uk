@@ -2,15 +2,19 @@
 
 **Why this exists.** On 2026-09-15 the owner's Claude allowance was running low. The owner split the work:
 
-1. **Planning (Claude).** One planning session per queued session writes one extremely detailed plan. Every judgement
-   call, owner decision, design choice and design review happens here.
-2. **Execution (GLM in Claude Code).** One execution session per plan carries it out exactly as written, including a
-   code review of every commit by a GLM subagent. It never pushes.
+1. **Planning (Claude).** One planning session per queued session is the architect: it makes every decision, does the
+   design and its review, takes the owner's rulings, and writes a plan that SPECIFIES the work completely. Since
+   2026-09-16 that means contracts, names, behaviour, the tests to write and the acceptance criteria, not the
+   executor's keystrokes: "giving it so much information that you are confident that the Executor can do its job
+   perfectly" (owner). A question the executor has to ask is a defect in the plan.
+2. **Execution (GLM in Claude Code).** One execution session per plan builds it to those acceptance criteria,
+   including a code review of every commit by a GLM subagent. It chooses HOW; it never chooses WHAT. It never pushes.
 3. **Audit (Claude).** An audit session checks the executed plan against the plan, fixes whatever is wrong itself, and
    pushes `uat-2`. Work is never handed back to the executor (owner, 2026-09-16); a large repair may take more than one
    audit session, and every one of them is Claude's.
 
-A plan is good when an executor that cannot make judgement calls never has to make one.
+A plan is good when an executor that makes no decisions never has to make one, and can tell for itself when its work
+is finished and right.
 
 ## What the owner types
 
@@ -90,12 +94,16 @@ Off that path:
 | Order | Session | Brief | Plan | Status | Planned at | Needs first |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 6. An alert always does what its bell shows (findings 79, 80 and 82) | `ai/prompts/alert-integrity.md` | `ai/plans/06-alert-integrity/PLAN.md` | DONE | `b5159305` | nothing |
-| 2 | 6b. An alert sheet change is all or nothing, both directions (finding 81) | `ai/prompts/alert-all-or-nothing.md` | `ai/plans/06b-alert-all-or-nothing/PLAN.md` | PLANNING | `e046bf77` | 1 |
+| 2 | 6b. An alert sheet change is all or nothing, both directions (finding 81) | `ai/prompts/alert-all-or-nothing.md` | `ai/plans/06b-alert-all-or-nothing/PLAN.md` | PLANNING | `03cc5688` | 1 |
 | 3 | 7. Android: each notification replaces the one before it | `ai/prompts/replace-previous-notification.md` | `ai/plans/07-replace-previous-notification/PLAN.md` | NOT PLANNED | | set when planned |
 | 4 | 8. iOS: a way for each notification to replace the one before it | `ai/prompts/ios-replace-previous-notification.md` | `ai/plans/08-ios-replace-previous-notification/PLAN.md` | NOT PLANNED | | set when planned |
 | 5 | 9. Keep yesterday's still-due rows after 00:00 | `ai/prompts/keep-still-due-rows-after-midnight.md` | `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` | NOT PLANNED | | set when planned |
 | 6 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED | | set when planned |
 
+- **Session 6b was planned on 2026-09-16 under the previous rules**, before "specify, do not dictate", so its plan
+  hands the executor finished files under `ai/plans/06b-alert-all-or-nothing/files/` and tells it to copy them. It is
+  executed exactly as written: where a plan dictates rather than specifies, the dictation wins
+  (`EXECUTOR-BRIEF.md`). Every plan from session 7 on follows the new rules.
 - "Planned at" is the `uat-2` commit the plan's anchors were verified against.
 - "Needs first" lists the order numbers of the rows that must be DONE before this plan is executed, such as `1`, or
   `nothing`. A planning session replaces "set when planned".
