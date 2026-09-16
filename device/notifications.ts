@@ -124,22 +124,50 @@ export const cancelScheduledNotificationById = async (notificationId: string) =>
   logger.info('NOTIFICATION SYSTEM: Cancelled:', notificationId);
 };
 
-export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+/**
+ * Cancels every recorded at-time alarm for one prayer
+ *
+ * Every cancel is let land before any refusal is reported: the scheduling lock is released on a rejection, and a
+ * cancel still on its way could remove an alarm the next operation has just armed under the same identifier.
+ *
+ * A refusal is reported rather than thrown, so the caller can delete the records of the cancels that landed and keep
+ * the record of the one that did not: that record is the only way back to an alarm the phone still holds.
+ *
+ * @returns The identifiers the phone refused to cancel
+ */
+export const clearAllScheduledNotificationForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number
+): Promise<string[]> => {
   const notifications = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
-  // Every cancel is let land before a refusal is reported: the scheduling lock is released on the rejection, and a
-  // cancel still on its way could remove an alarm the next operation has just armed under the same identifier
-  const promises = notifications.map((notification) =>
-    NotificationUtils.withNativeTimeout(
-      Notifications.cancelScheduledNotificationAsync(notification.id),
-      `cancelling ${notification.id}`
+  const results = await Promise.allSettled(
+    notifications.map((notification) =>
+      NotificationUtils.withNativeTimeout(
+        Notifications.cancelScheduledNotificationAsync(notification.id),
+        `cancelling ${notification.id}`
+      )
     )
   );
-  const results = await Promise.allSettled(promises);
-  const refusal = results.find((result): result is PromiseRejectedResult => result.status === 'rejected');
-  if (refusal) throw refusal.reason;
 
-  logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', { scheduleType, prayerIndex });
+  const refused: string[] = [];
+  results.forEach((result, position) => {
+    if (result.status !== 'rejected') return;
+    refused.push(notifications[position].id);
+    logger.warn('NOTIFICATION SYSTEM: Failed to cancel notification:', {
+      id: notifications[position].id,
+      error: result.reason,
+    });
+  });
+
+  logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', {
+    scheduleType,
+    prayerIndex,
+    cancelled: notifications.length - refused.length,
+    refused: refused.length,
+  });
+
+  return refused;
 };
 
 // =============================================================================
@@ -205,21 +233,44 @@ export const addOneScheduledReminderForPrayer = async (
 };
 
 /**
- * Cancels all scheduled reminders for a specific prayer
+ * Cancels every recorded reminder for one prayer
+ *
+ * Reports what the phone refused rather than swallowing it. Swallowing was finding 81's other half: the caller then
+ * deleted every reminder record, so a reminder the phone had refused to cancel stayed armed with nothing left to
+ * find it by.
+ *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
+ * @returns The identifiers the phone refused to cancel
  */
-export const clearAllScheduledRemindersForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+export const clearAllScheduledRemindersForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number
+): Promise<string[]> => {
   const reminders = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
-  // Cancel all reminders
-  const promises = reminders.map((reminder) =>
-    NotificationUtils.withNativeTimeout(
-      Notifications.cancelScheduledNotificationAsync(reminder.id),
-      `cancelling ${reminder.id}`
-    ).catch((error) => logger.warn('REMINDER SYSTEM: Failed to cancel reminder:', { id: reminder.id, error }))
+  const results = await Promise.allSettled(
+    reminders.map((reminder) =>
+      NotificationUtils.withNativeTimeout(
+        Notifications.cancelScheduledNotificationAsync(reminder.id),
+        `cancelling ${reminder.id}`
+      )
+    )
   );
-  await Promise.all(promises);
 
-  logger.info('REMINDER SYSTEM: Cancelled all reminders for prayer:', { scheduleType, prayerIndex });
+  const refused: string[] = [];
+  results.forEach((result, position) => {
+    if (result.status !== 'rejected') return;
+    refused.push(reminders[position].id);
+    logger.warn('REMINDER SYSTEM: Failed to cancel reminder:', { id: reminders[position].id, error: result.reason });
+  });
+
+  logger.info('REMINDER SYSTEM: Cancelled all reminders for prayer:', {
+    scheduleType,
+    prayerIndex,
+    cancelled: reminders.length - refused.length,
+    refused: refused.length,
+  });
+
+  return refused;
 };

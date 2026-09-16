@@ -33,6 +33,7 @@ import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, S
 import * as Database from '@/stores/database';
 import {
   canonicalPrayerIndex,
+  commitPrayerAlertChange,
   createPrayerAlertAtom,
   createReminderAlertAtom,
   createReminderIntervalAtom,
@@ -58,7 +59,6 @@ import {
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
   unregisterBackgroundTask,
-  updatePrayerNotifications,
 } from '@/stores/notifications';
 
 // Explicit logger mock: the moduleNameMapper's generic '^@/(.*)$' key resolves
@@ -86,6 +86,13 @@ jest.mock('@/stores/sync', () => ({
 // =============================================================================
 // getPrayerArrays HELPER TESTS
 // =============================================================================
+
+/** The three settings an alert sheet closes on */
+const sheetAlerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertType.Off) => ({
+  atTimeAlert,
+  reminderAlert,
+  reminderInterval: DEFAULT_REMINDER_INTERVAL as ReminderInterval,
+});
 
 describe('getPrayerArrays', () => {
   describe('Standard schedule', () => {
@@ -1684,7 +1691,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
   // -- single-prayer toggle path ----------------------------------------------
 
-  it('updatePrayerNotifications replaces in place without cancelling live identifiers', async () => {
+  it('a commit replaces in place without cancelling live identifiers', async () => {
     seedPrayerWindow();
     const todayId = fajrId(TODAY);
     const tomorrowId = fajrId(TOMORROW);
@@ -1692,13 +1699,20 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     osState.add(todayId);
     osState.add(tomorrowId);
 
-    await updatePrayerNotifications(ScheduleType.Standard, 0, 'Fajr', 'الفجر', AlertType.Sound, AlertType.Off);
+    await commitPrayerAlertChange(
+      ScheduleType.Standard,
+      0,
+      'Fajr',
+      'الفجر',
+      sheetAlerts(AlertType.Sound),
+      sheetAlerts(AlertType.Off)
+    );
 
     expect(cancelMock).not.toHaveBeenCalled();
     expect(osIdentifiers()).toEqual([todayId, tomorrowId].sort());
   });
 
-  it('updatePrayerNotifications turning alerts off cancels only that prayer', async () => {
+  it('a commit turning alerts off cancels only that prayer', async () => {
     seedPrayerWindow();
     const todayId = fajrId(TODAY);
     const ishaTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'Isha', TODAY);
@@ -1707,7 +1721,14 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     osState.add(todayId);
     osState.add(ishaTodayId);
 
-    await updatePrayerNotifications(ScheduleType.Standard, 0, 'Fajr', 'الفجر', AlertType.Off, AlertType.Off);
+    await commitPrayerAlertChange(
+      ScheduleType.Standard,
+      0,
+      'Fajr',
+      'الفجر',
+      sheetAlerts(AlertType.Off),
+      sheetAlerts(AlertType.Sound)
+    );
 
     expect(osState.has(todayId)).toBe(false);
     expect(osState.has(ishaTodayId)).toBe(true);

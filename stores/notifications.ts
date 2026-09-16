@@ -24,7 +24,7 @@ import { perfMark, perfMeasure } from '@/shared/perf';
 import * as PrayerUtils from '@/shared/prayer';
 import { isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
-import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
+import { type AlertMenuState, AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber, resetStoredAtom } from '@/stores/storage';
@@ -102,6 +102,24 @@ const reopenNotificationRefreshGate = (): void => {
   }
 };
 
+/**
+ * Whether the alarm a record names can still fire.
+ *
+ * A record dated D fires no later than late on D, and an Extras night row fires on the evening BEFORE the day it is
+ * filed under, so any record dated before today is spent. A refusal to cancel an alarm whose moment has passed is not
+ * worth undoing a change for, and keeping its record would make every later clear ask for it again for ever.
+ *
+ * @param record One of the prayer's stored alarm records
+ */
+const canStillFire = (record: NotificationUtils.ScheduledNotification): boolean =>
+  record.date >= TimeUtils.getTodayDateString();
+
+/** What one day's scheduling attempt came to: the identifier it tried, and whether the phone refused it */
+type ScheduleAttempt = { identifier: string | null; refused: boolean };
+
+/** A day with nothing to arm: no row on that list, no readable time, or a moment already past */
+const SKIPPED_DAY: ScheduleAttempt = { identifier: null, refused: false };
+
 // =============================================================================
 // HELPERS
 // =============================================================================
@@ -127,18 +145,23 @@ export const getPrayerArrays = (scheduleType: ScheduleType) => {
  * abort the batch; the post-reschedule sweep retries any survivors.
  *
  * @param ids Identifiers to cancel at the OS level
+ * @returns The identifiers the phone refused, so the caller can tell whether the prayer needs repairing
  */
-const _cancelStaleNotificationIds = async (ids: string[]) => {
-  if (ids.length === 0) return;
+const _cancelStaleNotificationIds = async (ids: string[]): Promise<string[]> => {
+  if (ids.length === 0) return [];
 
-  const promises = ids.map((id) =>
-    Device.cancelScheduledNotificationById(id).catch((error) =>
-      logger.warn('NOTIFICATION: Failed to cancel stale notification:', { id, error })
-    )
-  );
-  await Promise.all(promises);
+  const results = await Promise.allSettled(ids.map((id) => Device.cancelScheduledNotificationById(id)));
+
+  const refused: string[] = [];
+  results.forEach((result, position) => {
+    if (result.status !== 'rejected') return;
+    refused.push(ids[position]);
+    logger.warn('NOTIFICATION: Failed to cancel stale notification:', { id: ids[position], error: result.reason });
+  });
 
   logger.info('NOTIFICATION: Cancelled stale notifications:', { count: ids.length, ids });
+
+  return refused;
 };
 
 // =============================================================================
@@ -253,6 +276,131 @@ export const standardReminderIntervalAtoms = PRAYERS_ENGLISH.map((prayerName) =>
 export const extraReminderIntervalAtoms = EXTRAS_ENGLISH.map((prayerName) =>
   createReminderIntervalAtom(ScheduleType.Extra, prayerName)
 );
+
+// =============================================================================
+// REPAIR MARKS
+// =============================================================================
+
+/** A prayer with nothing to put right */
+const NOT_MARKED = 0;
+
+/**
+ * Builds a prayer's repair mark: the number saying whether its bell and its alarms may disagree, and which change
+ * left them that way.
+ *
+ * `preference_` is the only prefix BOTH wipes keep (`UPGRADE_KEEP_PREFIXES` in `stores/version.ts` and
+ * `replacePrayerCache`'s keep list in `stores/sync.ts`), so a mark can never be lost while the alarms it describes
+ * survive. The key does not match `INDEX_KEY_PATTERN`, so the preference migration leaves it alone.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerName English prayer name
+ */
+const createPrayerRepairMark = (scheduleType: ScheduleType, prayerName: string) => {
+  const type = scheduleType === ScheduleType.Standard ? 'standard' : 'extra';
+  const key = `preference_notification_repair_${type}_${prayerName.toLowerCase()}`;
+
+  return { key, atom: atomWithStorageNumber(key, NOT_MARKED) };
+};
+
+/**
+ * The marks, built ONCE at module evaluation, exactly as the alert atoms above are.
+ *
+ * Never build one where it is needed: `getOnInit: true` reads storage at creation, so two atoms over the same key
+ * hold different values from the moment either is written (`stores/storage.ts`, THE RULE).
+ */
+const standardPrayerRepairMarks = PRAYERS_ENGLISH.map((prayerName) =>
+  createPrayerRepairMark(ScheduleType.Standard, prayerName)
+);
+
+/** The Extras' marks; see standardPrayerRepairMarks */
+const extraPrayerRepairMarks = EXTRAS_ENGLISH.map((prayerName) =>
+  createPrayerRepairMark(ScheduleType.Extra, prayerName)
+);
+
+/**
+ * The mark for one prayer
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Canonical index of the prayer in its schedule
+ */
+const getPrayerRepairMark = (scheduleType: ScheduleType, prayerIndex: number) =>
+  (scheduleType === ScheduleType.Standard ? standardPrayerRepairMarks : extraPrayerRepairMarks)[prayerIndex];
+
+/**
+ * The generation of a prayer's mark, and `NOT_MARKED` when it carries none
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Canonical index of the prayer in its schedule
+ */
+const prayerRepairGeneration = (scheduleType: ScheduleType, prayerIndex: number): number =>
+  store.get(getPrayerRepairMark(scheduleType, prayerIndex).atom);
+
+/**
+ * Marks a prayer as needing to be put right, and answers with the generation of this mark.
+ *
+ * The generation is the stored number plus one, per prayer. It says WHICH change marked the prayer, so an operation
+ * that later finds a different number knows a newer change owns the prayer now, and touches nothing: not the
+ * preferences, not the alarms, not the mark.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Canonical index of the prayer in its schedule
+ * @returns The generation of the mark just written
+ */
+const markPrayerForRepair = (scheduleType: ScheduleType, prayerIndex: number): number => {
+  const { atom, key } = getPrayerRepairMark(scheduleType, prayerIndex);
+  const generation = store.get(atom) + 1;
+
+  store.set(atom, generation);
+  logger.info('NOTIFICATION: Marked a prayer to be put right', { key, generation });
+
+  return generation;
+};
+
+/**
+ * Clears a prayer's mark, unless a newer change has marked it since.
+ *
+ * `resetStoredAtom` removes the key as well as putting the atom back: `store.set(atom, NOT_MARKED)` would leave the
+ * key behind, and anything that later looked for marks by key would find every prayer ever marked.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Canonical index of the prayer in its schedule
+ * @param generation The generation the operation started with
+ */
+const clearPrayerRepairMark = (scheduleType: ScheduleType, prayerIndex: number, generation: number): void => {
+  if (generation === NOT_MARKED) return;
+
+  const { atom, key } = getPrayerRepairMark(scheduleType, prayerIndex);
+  if (store.get(atom) !== generation) return;
+
+  resetStoredAtom(atom, key);
+};
+
+/** One prayer, named the way the scheduling paths take it */
+type MarkedPrayer = { scheduleType: ScheduleType; prayerIndex: number };
+
+/** Every prayer whose bell and alarms may disagree, and nothing else */
+const markedPrayers = (): MarkedPrayer[] =>
+  [
+    ...standardPrayerRepairMarks.map((_mark, prayerIndex) => ({
+      scheduleType: ScheduleType.Standard,
+      prayerIndex,
+    })),
+    ...extraPrayerRepairMarks.map((_mark, prayerIndex) => ({ scheduleType: ScheduleType.Extra, prayerIndex })),
+  ].filter(({ scheduleType, prayerIndex }) => prayerRepairGeneration(scheduleType, prayerIndex) !== NOT_MARKED);
+
+/** The prayers of each schedule a pass is to touch, and no others */
+type PrayerFilter = { standard: ReadonlySet<number>; extra: ReadonlySet<number> };
+
+/**
+ * Turns a list of marked prayers into the filter a reschedule takes
+ * @param prayers The marked prayers
+ */
+const onlyThesePrayers = (prayers: MarkedPrayer[]): PrayerFilter => ({
+  standard: new Set(
+    prayers.filter(({ scheduleType }) => scheduleType === ScheduleType.Standard).map(({ prayerIndex }) => prayerIndex)
+  ),
+  extra: new Set(
+    prayers.filter(({ scheduleType }) => scheduleType === ScheduleType.Extra).map(({ prayerIndex }) => prayerIndex)
+  ),
+});
 
 /** The persisted-number atoms the migration writes through. */
 type MigratableAtom = (typeof standardPrayerAlertAtoms)[number];
@@ -576,9 +724,9 @@ export const setReminderInterval = (scheduleType: ScheduleType, prayerIndex: num
  * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
  * @param sound Sound preference index
- * @returns Promise resolving to the attempted identifier — scheduled or, on
- *   failure, whatever OS notification the identifier already had — or null
- *   when the day was skipped (no readable time, past time, non-Friday Istijaba)
+ * @returns The attempted identifier — scheduled or, on failure, whatever OS notification the identifier already had
+ *   — or null when the day was skipped (no readable time, past time, non-Friday Istijaba), and whether the phone
+ *   refused it. A refusal is answered rather than thrown so the caller can tell a day that armed from one that did not
  */
 async function scheduleNotificationForDate(
   scheduleType: ScheduleType,
@@ -588,14 +736,14 @@ async function scheduleNotificationForDate(
   arabicName: string,
   alertType: AlertType,
   sound: number
-): Promise<string | null> {
+): Promise<ScheduleAttempt> {
   // The list row itself: the notification fires at exactly the moment the list
   // and countdown show (Extras night rows fall on the night before `date`)
   const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
   if (!prayer) {
     // Istijaba outside Fridays (not on that day's list)
     logger.info("Skipping prayer not on this day's list:", { date, englishName });
-    return null;
+    return SKIPPED_DAY;
   }
 
   // No alert may fire for a time the provider did not give (R5). Skipping leaves this
@@ -603,13 +751,13 @@ async function scheduleNotificationForDate(
   // as stale, while the saved preference stays and arms the next readable day (R6)
   if (!isReadable(prayer)) {
     logger.info('Skipping prayer with no readable time:', { date, englishName });
-    return null;
+    return SKIPPED_DAY;
   }
 
   // Skip past prayers
   if (prayer.datetime <= TimeUtils.createInstant()) {
     logger.info('Skipping past prayer:', { date, time: prayer.time, englishName });
-    return null;
+    return SKIPPED_DAY;
   }
 
   const identifier = Device.prayerNotificationIdentifier(scheduleType, englishName, date);
@@ -624,7 +772,7 @@ async function scheduleNotificationForDate(
     );
 
     await Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, notification);
-    return notification.id;
+    return { identifier: notification.id, refused: false };
   } catch (error) {
     logger.error('Failed to schedule prayer notification:', error);
 
@@ -634,7 +782,7 @@ async function scheduleNotificationForDate(
     const survivedNotification = { id: identifier, date, time: prayer.time, englishName, arabicName, alertType };
     Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, survivedNotification);
 
-    return identifier;
+    return { identifier, refused: true };
   }
 }
 
@@ -662,9 +810,10 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   englishName: string,
   arabicName: string,
   alertType: AlertType
-) => {
+): Promise<number> => {
+  // The records are NOT cleared first. A day whose stored row cannot be read rejects outside its own try, and
+  // clearing first left that day's record gone while its alarm stayed armed, with nothing left to find it by
   const existingRecords = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
-  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
   const nextXDays = NotificationUtils.genScheduleDatesForPrayer(scheduleType, englishName);
   const sound = getSoundPreference();
@@ -678,31 +827,64 @@ const _addMultipleScheduleNotificationsForPrayer = async (
     )
   );
 
-  const attemptedIds = new Set(attempts.filter((id): id is string => id !== null));
-  const staleIds = existingRecords.map((record) => record.id).filter((id) => !attemptedIds.has(id));
+  const attemptedIds = new Set(
+    attempts.map((attempt) => attempt.identifier).filter((identifier): identifier is string => identifier !== null)
+  );
+  const staleRecords = existingRecords.filter((record) => !attemptedIds.has(record.id));
 
-  await _cancelStaleNotificationIds(staleIds);
+  // Removed one at a time, and before the cancels: a stale identifier the phone then refuses is left with no record,
+  // which is exactly what lets the post-reschedule sweep find it and ask again
+  for (const record of staleRecords) {
+    Database.removeOneScheduledNotificationForPrayer(scheduleType, prayerIndex, record.id);
+  }
+
+  const refusedStale = new Set(await _cancelStaleNotificationIds(staleRecords.map((record) => record.id)));
 
   logger.info('NOTIFICATION: Scheduled multiple notifications:', {
     scheduleType,
     prayerIndex,
     englishName,
     scheduledDays: attemptedIds.size,
-    staleCancelled: staleIds.length,
+    staleCancelled: staleRecords.length,
   });
+
+  const refusedDays = attempts.filter((attempt) => attempt.refused).length;
+  const refusedStaleThatCanFire = staleRecords.filter(
+    (record) => refusedStale.has(record.id) && canStillFire(record)
+  ).length;
+
+  return refusedDays + refusedStaleThatCanFire;
 };
 
 /**
  * Clears all scheduled notifications for a specific prayer
  *
- * Cancels notifications via Expo API and removes database records.
+ * Cancels every recorded alarm, then deletes the record of each cancel the phone accepted. The record of a refused
+ * cancel is KEPT while its alarm can still fire, because that record is the only way back to an alarm the phone still
+ * holds: with no records at all the sweep refuses to cancel anything, since after an app update that is exactly what
+ * it must not do. A refused cancel whose moment has passed is dropped with the rest.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @returns How many refused cancels left an alarm that can still fire
  */
-const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-  await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex);
-  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
+const clearAllScheduledNotificationForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number
+): Promise<number> => {
+  const records = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
+  const refused = new Set(await Device.clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex));
+
+  let refusedThatCanFire = 0;
+  for (const record of records) {
+    if (refused.has(record.id) && canStillFire(record)) {
+      refusedThatCanFire += 1;
+      continue;
+    }
+    Database.removeOneScheduledNotificationForPrayer(scheduleType, prayerIndex, record.id);
+  }
+
+  return refusedThatCanFire;
 };
 
 // =============================================================================
@@ -721,9 +903,9 @@ const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType
  * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
  * @param intervalMinutes Reminder interval in minutes
- * @returns Promise resolving to the attempted identifier — scheduled or, on
- *   failure, whatever OS reminder the identifier already had — or null when
- *   the day was skipped (no readable time, past/imminent, non-Friday Istijaba)
+ * @returns The attempted identifier — scheduled or, on failure, whatever OS reminder the identifier already had — or
+ *   null when the day was skipped (no readable time, past or imminent, non-Friday Istijaba), and whether the phone
+ *   refused it
  */
 async function scheduleReminderNotificationForDate(
   scheduleType: ScheduleType,
@@ -733,20 +915,20 @@ async function scheduleReminderNotificationForDate(
   arabicName: string,
   alertType: AlertType,
   intervalMinutes: ReminderInterval
-): Promise<string | null> {
+): Promise<ScheduleAttempt> {
   // The list row itself: the reminder counts back from exactly the moment the
   // list and countdown show (Extras night rows fall on the night before `date`)
   const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
   if (!prayer) {
     // Istijaba outside Fridays (not on that day's list)
     logger.info("REMINDER: Skipping prayer not on this day's list:", { date, englishName });
-    return null;
+    return SKIPPED_DAY;
   }
 
   // There is nothing to count back from (R5); skipped exactly as the at-time path is
   if (!isReadable(prayer)) {
     logger.info('REMINDER: Skipping prayer with no readable time:', { date, englishName });
-    return null;
+    return SKIPPED_DAY;
   }
 
   // Calculate reminder trigger time
@@ -763,7 +945,7 @@ async function scheduleReminderNotificationForDate(
       intervalMinutes,
       secondsUntilReminder,
     });
-    return null;
+    return SKIPPED_DAY;
   }
 
   const identifier = Device.reminderNotificationIdentifier(scheduleType, englishName, date, intervalMinutes);
@@ -778,7 +960,7 @@ async function scheduleReminderNotificationForDate(
     );
 
     await Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, notification);
-    return notification.id;
+    return { identifier: notification.id, refused: false };
   } catch (error) {
     logger.error('Failed to schedule reminder:', error);
 
@@ -787,7 +969,7 @@ async function scheduleReminderNotificationForDate(
     const survivedReminder = { id: identifier, date, time: prayer.time, englishName, arabicName, alertType };
     Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, survivedReminder);
 
-    return identifier;
+    return { identifier, refused: true };
   }
 }
 
@@ -812,9 +994,9 @@ const _addMultipleScheduleRemindersForPrayer = async (
   englishName: string,
   arabicName: string,
   alertType: AlertType
-) => {
+): Promise<number> => {
+  // Not cleared first, for the same reason as the at-time path above
   const existingRecords = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
-  Database.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
   const nextXDays = NotificationUtils.genScheduleDatesForPrayer(scheduleType, englishName);
   const intervalMinutes = getReminderInterval(scheduleType, prayerIndex);
@@ -836,38 +1018,68 @@ const _addMultipleScheduleRemindersForPrayer = async (
     )
   );
 
-  const attemptedIds = new Set(attempts.filter((id): id is string => id !== null));
-  const staleIds = existingRecords.map((record) => record.id).filter((id) => !attemptedIds.has(id));
+  const attemptedIds = new Set(
+    attempts.map((attempt) => attempt.identifier).filter((identifier): identifier is string => identifier !== null)
+  );
+  const staleRecords = existingRecords.filter((record) => !attemptedIds.has(record.id));
 
-  await _cancelStaleNotificationIds(staleIds);
+  for (const record of staleRecords) {
+    Database.removeOneScheduledReminderForPrayer(scheduleType, prayerIndex, record.id);
+  }
+
+  const refusedStale = new Set(await _cancelStaleNotificationIds(staleRecords.map((record) => record.id)));
 
   logger.info('REMINDER: Scheduled multiple reminders:', {
     scheduleType,
     prayerIndex,
     englishName,
     scheduledDays: attemptedIds.size,
-    staleCancelled: staleIds.length,
+    staleCancelled: staleRecords.length,
   });
+
+  const refusedDays = attempts.filter((attempt) => attempt.refused).length;
+  const refusedStaleThatCanFire = staleRecords.filter(
+    (record) => refusedStale.has(record.id) && canStillFire(record)
+  ).length;
+
+  return refusedDays + refusedStaleThatCanFire;
 };
 
 /**
  * Clears all scheduled reminders for a specific prayer
  *
- * Cancels reminders via Expo API and removes database records.
+ * Keeps the record of a refused cancel whose reminder can still fire, exactly as the at-time clear above does. Before
+ * this, every reminder record was deleted whatever the phone said, so a reminder the phone had refused to cancel
+ * stayed armed with nothing left to find it by: finding 81's other half.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @returns How many refused cancels left a reminder that can still fire
  */
-const clearAllScheduledRemindersForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
-  await Device.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
-  Database.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+const clearAllScheduledRemindersForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number
+): Promise<number> => {
+  const records = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+  const refused = new Set(await Device.clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex));
+
+  let refusedThatCanFire = 0;
+  for (const record of records) {
+    if (refused.has(record.id) && canStillFire(record)) {
+      refusedThatCanFire += 1;
+      continue;
+    }
+    Database.removeOneScheduledReminderForPrayer(scheduleType, prayerIndex, record.id);
+  }
+
+  return refusedThatCanFire;
 };
 
 /**
- * Atomically updates all notifications and reminders for a single prayer
+ * Makes the phone match one prayer's at-time and reminder settings
  *
- * Wraps clear+schedule in a single lock acquisition to prevent race conditions.
- * At-time and reminder operations run in parallel (independent MMKV keys and OS notification IDs).
+ * The at-time and reminder halves run in parallel: independent MMKV keys and independent identifiers. Both halves are
+ * let finish before anything is reported, so the scheduling lock is never released while work is still landing.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
@@ -875,36 +1087,162 @@ const clearAllScheduledRemindersForPrayer = async (scheduleType: ScheduleType, p
  * @param arabicName Arabic prayer name
  * @param atTimeAlert At-time alert type (Off, Silent, Sound)
  * @param reminderAlert Reminder alert type (Off, Silent, Sound)
+ * @returns How many parts of the work the phone refused that can still fire
  */
-export const updatePrayerNotifications = async (
+const applyPrayerAlerts = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
   arabicName: string,
   atTimeAlert: AlertType,
   reminderAlert: AlertType
-) => {
+): Promise<number> => {
+  const work: Promise<number>[] = [];
+
+  work.push(
+    atTimeAlert !== AlertType.Off
+      ? _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, atTimeAlert)
+      : clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex)
+  );
+
+  // Constraint: a reminder is kept only while the at-time alert is on too
+  work.push(
+    atTimeAlert !== AlertType.Off && reminderAlert !== AlertType.Off
+      ? _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, reminderAlert)
+      : clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex)
+  );
+
+  const refusals = await settleAll(work);
+
+  return refusals[0] + refusals[1];
+};
+
+/**
+ * Writes one prayer's three saved settings
+ *
+ * At-time first, and never reordered: `setPrayerAlertType` forces the reminder Off whenever the at-time value is Off,
+ * so writing the reminder first would lose it.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param state The three settings to write
+ */
+const applyPrayerPreferences = (scheduleType: ScheduleType, prayerIndex: number, state: AlertMenuState): void => {
+  setPrayerAlertType(scheduleType, prayerIndex, state.atTimeAlert);
+  setReminderAlertType(scheduleType, prayerIndex, state.reminderAlert);
+  setReminderInterval(scheduleType, prayerIndex, state.reminderInterval);
+};
+
+/**
+ * Puts a prayer back to the settings it had, bell and alarms together
+ *
+ * Runs inside the acquisition whose work failed, never as a second one: the scheduling lock is a queue, so anything
+ * enqueued meanwhile would otherwise run between the failure and the undo, read a half-undone prayer and act on it
+ * (measured while planning session 6b).
+ *
+ * @param generation The generation of the mark this change wrote before it began
+ */
+const undoPrayerAlertChange = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  englishName: string,
+  arabicName: string,
+  previous: AlertMenuState,
+  generation: number
+): Promise<void> => {
+  // A change that finds the generation moved touches nothing: a newer change owns this prayer now, and its own work
+  // decides what the bell and the alarms say
+  if (prayerRepairGeneration(scheduleType, prayerIndex) !== generation) {
+    logger.info('NOTIFICATION: A newer alert change owns this prayer, leaving it alone', { prayerIndex, englishName });
+    return;
+  }
+
+  applyPrayerPreferences(scheduleType, prayerIndex, previous);
+
+  try {
+    const refusals = await applyPrayerAlerts(
+      scheduleType,
+      prayerIndex,
+      englishName,
+      arabicName,
+      previous.atTimeAlert,
+      previous.reminderAlert
+    );
+    if (refusals === 0) {
+      clearPrayerRepairMark(scheduleType, prayerIndex, generation);
+      return;
+    }
+
+    logger.warn('NOTIFICATION: The phone refused part of putting the prayer back; it stays marked to be put right', {
+      englishName,
+      refusals,
+    });
+  } catch (error) {
+    logger.error('NOTIFICATION: Putting the prayer back failed; it stays marked to be put right:', error);
+  }
+};
+
+/**
+ * Commits one alert sheet change: all of it, or none of it
+ *
+ * The saved settings move first, because the schedulers read the interval from its atom while they run. If the phone
+ * refuses or fails any part of the change, the settings AND the alarms go back to what they were, inside this same
+ * acquisition. If the phone refuses that too, the prayer stays marked and the next launch, return to the app or
+ * background run applies its saved settings again.
+ *
+ * The mark is written BEFORE the settings move, so a process death between the two still leaves something saying the
+ * bell and the alarms may disagree.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param englishName English prayer name
+ * @param arabicName Arabic prayer name
+ * @param next The settings the user closed the sheet on
+ * @param previous The settings the sheet was opened with
+ * @returns Whether the new settings landed in full
+ */
+export const commitPrayerAlertChange = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  englishName: string,
+  arabicName: string,
+  next: AlertMenuState,
+  previous: AlertMenuState
+): Promise<boolean> => {
+  const generation = markPrayerForRepair(scheduleType, prayerIndex);
+  applyPrayerPreferences(scheduleType, prayerIndex, next);
+
   return withSchedulingLock(async () => {
-    const promises: Promise<void>[] = [];
+    let refusals: number;
 
-    if (atTimeAlert !== AlertType.Off) {
-      promises.push(
-        _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, atTimeAlert)
+    try {
+      refusals = await applyPrayerAlerts(
+        scheduleType,
+        prayerIndex,
+        englishName,
+        arabicName,
+        next.atTimeAlert,
+        next.reminderAlert
       );
-    } else {
-      promises.push(clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex));
+    } catch (error) {
+      logger.error('NOTIFICATION: The alert change failed, putting the prayer back:', error);
+      await undoPrayerAlertChange(scheduleType, prayerIndex, englishName, arabicName, previous, generation);
+      return false;
     }
 
-    if (atTimeAlert !== AlertType.Off && reminderAlert !== AlertType.Off) {
-      promises.push(
-        _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, reminderAlert)
-      );
-    } else {
-      promises.push(clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex));
+    if (refusals === 0) {
+      clearPrayerRepairMark(scheduleType, prayerIndex, generation);
+      return true;
     }
 
-    await settleAll(promises);
-  }, 'updatePrayerNotifications');
+    logger.warn('NOTIFICATION: The phone refused part of the alert change, putting the prayer back', {
+      englishName,
+      refusals,
+    });
+    await undoPrayerAlertChange(scheduleType, prayerIndex, englishName, arabicName, previous, generation);
+
+    return false;
+  }, 'commitPrayerAlertChange');
 };
 
 /**
@@ -915,12 +1253,18 @@ export const updatePrayerNotifications = async (
  * exactly the intended set, healing any settings commit that was interrupted
  * by process death (issue #15).
  */
-const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleType) => {
+const _addAllScheduleNotificationsForSchedule = async (
+  scheduleType: ScheduleType,
+  only?: ReadonlySet<number>
+): Promise<(number | null)[]> => {
   logger.info('NOTIFICATION: Scheduling all notifications for schedule:', { scheduleType });
 
   const { english: prayers, arabic: arabicPrayers } = getPrayerArrays(scheduleType);
 
-  const promises = prayers.map(async (_, index) => {
+  const promises = prayers.map(async (_, index): Promise<number | null> => {
+    // null, not 0: a prayer this pass never looked at has not been shown to be right, so its mark must stay
+    if (only && !only.has(index)) return null;
+
     const alertType = getPrayerAlertType(scheduleType, index);
     if (alertType === AlertType.Off) {
       return clearAllScheduledNotificationForPrayer(scheduleType, index);
@@ -935,8 +1279,10 @@ const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleTyp
     );
   });
 
-  await settleAll(promises);
+  const refusals = await settleAll(promises);
   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
+
+  return refusals;
 };
 
 /**
@@ -946,12 +1292,18 @@ const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleTyp
  * are enabled; everything else is actively cleared so the post-reschedule
  * sweep sees records that describe exactly the intended set (see above).
  */
-const _addAllScheduleRemindersForSchedule = async (scheduleType: ScheduleType) => {
+const _addAllScheduleRemindersForSchedule = async (
+  scheduleType: ScheduleType,
+  only?: ReadonlySet<number>
+): Promise<(number | null)[]> => {
   logger.info('REMINDER: Scheduling all reminders for schedule:', { scheduleType });
 
   const { english: prayers, arabic: arabicPrayers } = getPrayerArrays(scheduleType);
 
-  const promises = prayers.map(async (_, index) => {
+  const promises = prayers.map(async (_, index): Promise<number | null> => {
+    // null, not 0; see the at-time path above
+    if (only && !only.has(index)) return null;
+
     const reminderAlertType = getReminderAlertType(scheduleType, index);
 
     // Constraint: reminder requires at-time alert to be enabled
@@ -971,8 +1323,10 @@ const _addAllScheduleRemindersForSchedule = async (scheduleType: ScheduleType) =
     );
   });
 
-  await settleAll(promises);
+  const refusals = await settleAll(promises);
   logger.info('REMINDER: Rescheduled all reminders for schedule:', { scheduleType });
+
+  return refusals;
 };
 
 /**
@@ -1063,6 +1417,38 @@ const _sweepStaleScheduledNotifications = async () => {
 };
 
 /**
+ * Marks every prayer this pass could not finish, and clears the mark of every prayer it did
+ *
+ * A prayer is put right only when this pass did BOTH halves of its work and the phone refused nothing. A prayer the
+ * pass never looked at (null on either half) keeps whatever mark it had.
+ *
+ * @param atTime Refusals per prayer on the at-time half, null where the pass skipped the prayer
+ * @param reminder The same for the reminder half
+ * @param generationsBefore Each prayer's mark as it stood when this pass began
+ */
+const settlePrayerRepairMarks = (
+  scheduleType: ScheduleType,
+  atTime: (number | null)[],
+  reminder: (number | null)[],
+  generationsBefore: number[]
+): void => {
+  atTime.forEach((atTimeRefusals, prayerIndex) => {
+    const reminderRefusals = reminder[prayerIndex];
+    if (atTimeRefusals === null || reminderRefusals === null) return;
+
+    // A pass that finds the generation moved touches nothing: a newer change owns this prayer now
+    if (prayerRepairGeneration(scheduleType, prayerIndex) !== generationsBefore[prayerIndex]) return;
+
+    if (atTimeRefusals + reminderRefusals > 0) {
+      markPrayerForRepair(scheduleType, prayerIndex);
+      return;
+    }
+
+    clearPrayerRepairMark(scheduleType, prayerIndex, generationsBefore[prayerIndex]);
+  });
+};
+
+/**
  * Reschedules all notifications for both Standard and Extra schedules (internal)
  *
  * Schedule-first strategy (issue #15): nothing is bulk-cancelled. Same-identifier
@@ -1072,7 +1458,7 @@ const _sweepStaleScheduledNotifications = async () => {
  * longer leave the app with zero scheduled notifications — unrefreshed prayers
  * keep their previous alarms until the next successful refresh.
  */
-const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boolean } = {}) => {
+const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boolean; only?: PrayerFilter } = {}) => {
   // Log current preference state for debugging preference-reset reports
   const preferenceSnapshot = PRAYERS_ENGLISH.map((prayer, i) => ({
     prayer,
@@ -1102,13 +1488,25 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
     return false;
   }
 
+  // Read before any work begins, and inside this lock acquisition: the check that decided to run a repair happened
+  // outside it, and a change committed since then owns its prayer now
+  const generationsBefore = {
+    [ScheduleType.Standard]: PRAYERS_ENGLISH.map((_prayer, index) =>
+      prayerRepairGeneration(ScheduleType.Standard, index)
+    ),
+    [ScheduleType.Extra]: EXTRAS_ENGLISH.map((_prayer, index) => prayerRepairGeneration(ScheduleType.Extra, index)),
+  };
+
   // Schedule all enabled notifications and reminders for both schedules
-  await settleAll([
-    _addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
-    _addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
-    _addAllScheduleRemindersForSchedule(ScheduleType.Standard),
-    _addAllScheduleRemindersForSchedule(ScheduleType.Extra),
+  const [standardAtTime, extraAtTime, standardReminder, extraReminder] = await settleAll([
+    _addAllScheduleNotificationsForSchedule(ScheduleType.Standard, options.only?.standard),
+    _addAllScheduleNotificationsForSchedule(ScheduleType.Extra, options.only?.extra),
+    _addAllScheduleRemindersForSchedule(ScheduleType.Standard, options.only?.standard),
+    _addAllScheduleRemindersForSchedule(ScheduleType.Extra, options.only?.extra),
   ]);
+
+  settlePrayerRepairMarks(ScheduleType.Standard, standardAtTime, standardReminder, generationsBefore.standard);
+  settlePrayerRepairMarks(ScheduleType.Extra, extraAtTime, extraReminder, generationsBefore.extra);
 
   // Heal the OS to match the database: cancel strays, verify counts
   await _sweepStaleScheduledNotifications();
@@ -1228,8 +1626,20 @@ export const reopenRefreshGateOnColdLaunch = (): void => {
 
 export const refreshNotifications = async () => {
   if (!shouldRescheduleNotifications()) {
-    logger.info(`NOTIFICATION: Skipping reschedule, last schedule was within ${NOTIFICATION_REFRESH_HOURS} hours`);
-    return;
+    const marked = markedPrayers();
+    if (marked.length === 0) {
+      logger.info(`NOTIFICATION: Skipping reschedule, last schedule was within ${NOTIFICATION_REFRESH_HOURS} hours`);
+      return;
+    }
+
+    // The same reschedule, narrowed to the prayers whose bell and alarms may disagree: its empty-cache bail, its
+    // day-change check and its sweep all still run, and one prayer costs about a tenth of the whole pass (owner,
+    // 2026-09-16). The twelve-hour gate keeps its own meaning and is not stamped here
+    logger.info('NOTIFICATION: Putting right the prayers the phone refused, instead of a full reschedule', { marked });
+
+    return withSchedulingLock(async () => {
+      await _rescheduleAllNotifications({ deferWidgetRefresh: true, only: onlyThesePrayers(marked) });
+    }, 'repairMarkedPrayers');
   }
 
   logger.info('NOTIFICATION: Starting notification refresh');

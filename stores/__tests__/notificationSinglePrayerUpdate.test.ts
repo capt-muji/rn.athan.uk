@@ -1,5 +1,5 @@
 /**
- * Committing one prayer's alert sheet: `updatePrayerNotifications` (stores/notifications.ts)
+ * Committing one prayer's alert sheet: `commitPrayerAlertChange` (stores/notifications.ts)
  *
  * The sheet saves the at-time alert, the reminder alert and the interval, then calls this. A reminder is armed only
  * while both the at-time alert and the reminder are on, counting back the saved interval from the prayer's own
@@ -15,7 +15,7 @@ import { EXTRAS_ARABIC, EXTRAS_ENGLISH, PRAYERS_ARABIC, PRAYERS_ENGLISH } from '
 import { transformApiData } from '@/shared/prayer';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
-import { setReminderInterval, updatePrayerNotifications } from '@/stores/notifications';
+import { commitPrayerAlertChange, setReminderInterval } from '@/stores/notifications';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -45,6 +45,16 @@ const DAYS: Record<string, string[]> = {
 };
 
 const INTERVAL = 15 as ReminderInterval;
+
+/** The three settings an alert sheet closes on */
+const alerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertType.Off) => ({
+  atTimeAlert,
+  reminderAlert,
+  reminderInterval: INTERVAL,
+});
+
+/** Every alert of a prayer switched off */
+const OFF = alerts(AlertType.Off);
 
 const scheduleMock = jest.mocked(Notifications.scheduleNotificationAsync);
 const cancelMock = jest.mocked(Notifications.cancelScheduledNotificationAsync);
@@ -171,7 +181,7 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, arabic, a
   });
 
   it('arms the prayer at its instant and its reminder the saved interval before, on every day still to come', async () => {
-    await updatePrayerNotifications(type, index, name, arabic, AlertType.Silent, AlertType.Sound);
+    await commitPrayerAlertChange(type, index, name, arabic, alerts(AlertType.Silent, AlertType.Sound), OFF);
 
     expect(triggers()).toEqual(armed);
     expect([...osState].sort()).toEqual(Object.keys(armed).sort());
@@ -182,7 +192,7 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, arabic, a
   it('arms nothing while the at-time alert is off, whatever the reminder says, and cancels the reminders it had', async () => {
     const earlier = [seedReminder(type, name, index, TODAY), seedReminder(type, name, index, TOMORROW)];
 
-    await updatePrayerNotifications(type, index, name, arabic, AlertType.Off, AlertType.Sound);
+    await commitPrayerAlertChange(type, index, name, arabic, alerts(AlertType.Off, AlertType.Sound), OFF);
 
     expect(scheduleMock).not.toHaveBeenCalled();
     expect(cancelMock.mock.calls.map(([id]) => id).sort()).toEqual(earlier.sort());
@@ -194,7 +204,7 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, arabic, a
     seedReminder(type, name, index, TODAY);
     seedReminder(type, name, index, TOMORROW);
 
-    await updatePrayerNotifications(type, index, name, arabic, AlertType.Sound, AlertType.Off);
+    await commitPrayerAlertChange(type, index, name, arabic, alerts(AlertType.Sound, AlertType.Off), OFF);
 
     const athansOnly = Object.fromEntries(Object.entries(armed).filter(([id]) => id.startsWith('athan_')));
     expect(triggers()).toEqual(athansOnly);

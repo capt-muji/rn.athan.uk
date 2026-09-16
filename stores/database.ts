@@ -219,6 +219,20 @@ export const addOneScheduledNotificationForPrayer = (
 };
 
 /**
+ * Removes one scheduled notification record for a prayer
+ *
+ * The records are deleted one identifier at a time rather than by prefix, so the record of a cancel the phone refused
+ * can be kept: that record is the only way back to an alarm the OS still holds, since the sweep refuses to cancel
+ * anything when no records exist at all.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @param id Identifier of the notification whose record to remove
+ */
+export const removeOneScheduledNotificationForPrayer = (scheduleType: ScheduleType, prayerIndex: number, id: string) =>
+  removeItem(`scheduled_notifications_${scheduleType}_${prayerIndex}_${id}`);
+
+/**
  * Gets all scheduled notifications for a schedule type
  * @param scheduleType Schedule type (Standard or Extra)
  * @returns Array of scheduled notifications
@@ -297,6 +311,18 @@ export const getAllScheduledRemindersForSchedule = (
   logger.info('REMINDER DB: Read:', reminders);
   return reminders;
 };
+
+/**
+ * Removes one scheduled reminder record for a prayer
+ *
+ * Deleted one identifier at a time, for the same reason as the at-time records above.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @param id Identifier of the reminder whose record to remove
+ */
+export const removeOneScheduledReminderForPrayer = (scheduleType: ScheduleType, prayerIndex: number, id: string) =>
+  removeItem(`scheduled_reminders_${scheduleType}_${prayerIndex}_${id}`);
 
 /**
  * Clears all scheduled reminder records for a specific prayer
