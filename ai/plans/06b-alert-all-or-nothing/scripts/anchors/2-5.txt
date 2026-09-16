@@ -1,0 +1,4 @@
+    // Save preferences first (optimistic update)
+    NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, currentState.atTimeAlert);
+    NotificationStore.setReminderAlertType(scheduleType, prayerIndex, currentState.reminderAlert);
+    NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);

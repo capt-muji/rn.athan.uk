@@ -1,0 +1,26 @@
+# Session 6b: the sha256 each file must have BEFORE its step replaces it.
+# Checked by scripts/anchor-check.sh. A file that does not match means the plan is out of date: NEEDS REPLAN.
+# A path listed as NEW must not exist yet.
+
+[step1]
+7ee2d238a0e7017827b8a1f746d39908ec07a26169717f1ccc11d0a947af4146  device/notifications.ts
+d0ac823f2f7a4e81346bb685ee542e77deb62e89be22a32c3f91b73b5ba39d35  shared/notifications.ts
+5258a3bf9ef8b925de3e47a376e06b2a9c669a49ac7c5c64439f264889a56f3c  stores/__tests__/notificationSchedulingLock.test.ts
+0a79b93d1c9e68921032202d09313c14e86751705e0d4fe5019db331243ad6b8  stores/notifications.ts
+NEW  device/__tests__/notificationNativeTimeout.test.ts
+NEW  shared/__tests__/notificationNativeTimeout.test.ts
+NEW  stores/__tests__/notificationGateReopenFailure.test.ts
+
+[step2]
+8a147a9ef7d9770ebfe1ce0a154633f82c4cb71134c03fd6bd280deb6a812c26  device/__tests__/notificationNativeTimeout.test.ts
+978d01e32a67e6e156a7b369734381d845e65884399a9d2a2dbbf2d8d0ab18bd  device/__tests__/reminderCancelFailure.test.ts
+d8dcc6d30129f628ea4241065185cacbdaf052869c638f47617f9b8ebea7eed6  device/notifications.ts
+4d9ae86ba9ac802ba2a47f3342e6f2323f9ffeadc026ed86bc57a563ffbcb66c  hooks/__tests__/useNotification.test.ts
+2c6686062929973cca85bb4c0b89da4b8b748c9dba17ab70773c8ec8057eb4fd  hooks/useNotification.ts
+f7db61c6bb0f297a53dc081b67603cfc96f881549573b716f61c00e7fac903c8  stores/__tests__/notificationOffCancelFailure.test.ts
+5be9bafd61910056d7b358fb4ecf1d581bca0c74963a1477357efe400154676f  stores/__tests__/notificationSchedulingLock.test.ts
+c8edfd822f80d6ec8cc50504ec0a5c92168f76a37c8ca3f6596809fc05345caa  stores/__tests__/notificationSinglePrayerUpdate.test.ts
+47de2932419a0f06bfe38a15ec6791348b544bc9d22d06a14ee8d2a10e1ee5b8  stores/__tests__/notifications.test.ts
+b804947f7ff6076dc09b7ffd778081c7650d17320dae723031d5e1bf22fbe755  stores/database.ts
+4ee19cf420b799be87fb13ee1219abf7c496bdaa638e6f3b564c3171998c8f56  stores/notifications.ts
+NEW  stores/__tests__/notificationAlertCommit.test.ts
