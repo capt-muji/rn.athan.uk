@@ -29,7 +29,9 @@ whale emoji and two spaces (`🐋  `).
 1. Take the first row, in the order column, whose status is EXECUTED.
 2. If there is none, but `git log --oneline origin/uat-2..uat-2` lists commits, those are unaudited execution commits
    from a plan left IN PROGRESS, NEEDS REPLAN or BLOCKED. Audit them against their plan's ticked steps; the verdict
-   rules in section 4 apply to those steps only.
+   rules in section 4 apply to those steps only. Section 4's FIX IT covers what those steps got wrong, not the steps
+   that have not run: leave the row's status alone, and the executor carries on with its own unfinished plan
+   afterwards, which is not work handed back to it.
 3. If there is nothing to audit, tell the owner, and give the next prompt from `ai/plans/README.md`.
 
 ## 3. What to check
