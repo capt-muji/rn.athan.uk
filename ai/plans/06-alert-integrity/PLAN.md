@@ -375,7 +375,7 @@ clock. The owner receives no screenshots: only the `vision` subagent (GLM 5.3 Fl
    in the background, writing to `$TMPDIR/install-80-before.log`.
    Expected: a line containing `Success`, then a state line with `version ['1.27.164']`.
 3. Run `python3 ai/plans/06-alert-integrity/scripts/device/launch80.py seed before-seed > $TMPDIR/launch80-before-seed.log 2>&1`
-   in the background; it takes up to 90 seconds. Expected in the log: one line starting `LAUNCH80 seed before-seed`
+   in the background; it waits for the second window it needs, so it takes up to two minutes. Expected in the log: one line starting `LAUNCH80 seed before-seed`
    with `forced-throw-lines 0 fatal 0`.
 4. Run `python3 ai/plans/06-alert-integrity/scripts/device/launch80.py throw before-throw > $TMPDIR/launch80-before-throw.log 2>&1`
    in the background. Expected in the log: one line starting `LAUNCH80 throw before-throw` with `forced-throw-lines` 1
