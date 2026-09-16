@@ -6,8 +6,9 @@
    call, owner decision, design choice and design review happens here.
 2. **Execution (GLM in Claude Code).** One execution session per plan carries it out exactly as written, including a
    code review of every commit by a GLM subagent. It never pushes.
-3. **Audit (Claude).** One short audit session per executed plan checks the whole result against the plan, fixes or
-   sends back what is wrong, and pushes `uat-2`.
+3. **Audit (Claude).** An audit session checks the executed plan against the plan, fixes whatever is wrong itself, and
+   pushes `uat-2`. Work is never handed back to the executor (owner, 2026-09-16); a large repair may take more than one
+   audit session, and every one of them is Claude's.
 
 A plan is good when an executor that cannot make judgement calls never has to make one.
 
@@ -21,9 +22,13 @@ step exits non-zero, when a step changed neither the status table nor `uat-2`, a
 a countdown ends it. `athan-next --all` carries straight on into the next session; `athan-next --dry-run` only prints
 the next step.
 
-It also stops when the same step has run three times over with its row's status unchanged, because a step that keeps
-restarting is not getting further on its own and would spend the allowance unattended. Ctrl+C reaches `athan-next`
-only during a countdown: while a session is up, Claude Code reads Ctrl+C itself.
+Two guards stop a run that is going round in circles unattended, because each turn of one spends the allowance this
+programme exists to protect. The first: the same step, for the same row, in the same status, three times over without
+any code being committed. The second: a budget for each kind of step within one carried session, because steps can
+cycle without repeating, such as a pre-flight setting NEEDS REPLAN, a planner refreshing it and the pre-flight failing
+again. Execution runs on the owner's own gateway and is cheap, so it has six; planning has two and auditing three,
+because those spend the Claude allowance. Ctrl+C reaches `athan-next` only during a countdown: while a session is up,
+Claude Code reads Ctrl+C itself.
 
 The command is a plain Python script, not a Claude session: it holds no context of its own and cannot compact. It
 never reads what a session printed; it reads the step's exit code, the status table and git's commit lists. Each step
@@ -126,7 +131,8 @@ row above.
 - **An execution session** sets IN PROGRESS, EXECUTED, NEEDS REPLAN or BLOCKED. It commits and merges into `uat-2` on
   this Mac, and never pushes.
 - **An audit session** sets DONE for an EXECUTED row. It never sets a row back to READY: what the executor got wrong,
-  the audit repairs itself. Auditing an unfinished plan leaves its status as it is.
+  the audit repairs itself. Auditing an unfinished plan leaves its status as it is, so the executor carries on with the
+  plan it has not finished. That is the executor resuming its own work, not work handed back to it.
 - **Pushing.** Only planning and audit sessions push `uat-2`, and only when every commit on `uat-2` that is not yet on
   `origin/uat-2` has been audited. A planning session that finds unaudited commits asks the owner to run the audit
   prompt first, unless it is replanning a NEEDS REPLAN row, which it does without pushing.
