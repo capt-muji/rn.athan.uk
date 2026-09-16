@@ -120,9 +120,12 @@ export const cancelScheduledNotificationById = async (notificationId: string) =>
 export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
   const notifications = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
-  // Cancel all notifications
+  // Every cancel is let land before a refusal is reported: the scheduling lock is released on the rejection, and a
+  // cancel still on its way could remove an alarm the next operation has just armed under the same identifier
   const promises = notifications.map((notification) => Notifications.cancelScheduledNotificationAsync(notification.id));
-  await Promise.all(promises);
+  const results = await Promise.allSettled(promises);
+  const refusal = results.find((result): result is PromiseRejectedResult => result.status === 'rejected');
+  if (refusal) throw refusal.reason;
 
   logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', { scheduleType, prayerIndex });
 };

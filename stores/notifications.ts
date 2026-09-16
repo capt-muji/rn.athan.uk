@@ -65,6 +65,23 @@ async function withSchedulingLock<T>(operation: () => Promise<T>, operationName:
   return result;
 }
 
+/**
+ * Waits for every piece of scheduling work to end, then rejects with the first failure, if any
+ *
+ * Promise.all rejects at the first failure while the rest is still running, and the scheduling lock is released with
+ * it: the next operation in the queue would then arm or cancel beside work that is still landing.
+ *
+ * @param work The pieces of work, already started
+ * @returns Each piece's result, in order
+ */
+const settleAll = async <T>(work: Promise<T>[]): Promise<T[]> => {
+  const results = await Promise.allSettled(work);
+  const failure = results.find((result): result is PromiseRejectedResult => result.status === 'rejected');
+  if (failure) throw failure.reason;
+
+  return results.map((result) => (result as PromiseFulfilledResult<T>).value);
+};
+
 // =============================================================================
 // HELPERS
 // =============================================================================
@@ -635,7 +652,7 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   // Schedule notifications for each day in parallel. Each result is the
   // attempted identifier (null only when the day was skipped), so a failed
   // scheduling keeps the existing OS notification alive instead of staling it.
-  const attempts = await Promise.all(
+  const attempts = await settleAll(
     nextXDays.map((date) =>
       scheduleNotificationForDate(scheduleType, prayerIndex, date, englishName, arabicName, alertType, sound)
     )
@@ -785,7 +802,7 @@ const _addMultipleScheduleRemindersForPrayer = async (
   // Schedule reminders for each day in parallel. Each result is the attempted
   // identifier (null only when skipped) — a failed scheduling keeps the
   // existing OS reminder alive instead of staling it (see above).
-  const attempts = await Promise.all(
+  const attempts = await settleAll(
     nextXDays.map((date) =>
       scheduleReminderNotificationForDate(
         scheduleType,
@@ -866,7 +883,7 @@ export const updatePrayerNotifications = async (
       promises.push(clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex));
     }
 
-    await Promise.all(promises);
+    await settleAll(promises);
   }, 'updatePrayerNotifications');
 };
 
@@ -898,7 +915,7 @@ const _addAllScheduleNotificationsForSchedule = async (scheduleType: ScheduleTyp
     );
   });
 
-  await Promise.all(promises);
+  await settleAll(promises);
   logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });
 };
 
@@ -934,7 +951,7 @@ const _addAllScheduleRemindersForSchedule = async (scheduleType: ScheduleType) =
     );
   });
 
-  await Promise.all(promises);
+  await settleAll(promises);
   logger.info('REMINDER: Rescheduled all reminders for schedule:', { scheduleType });
 };
 
@@ -1063,7 +1080,7 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   }
 
   // Schedule all enabled notifications and reminders for both schedules
-  await Promise.all([
+  await settleAll([
     _addAllScheduleNotificationsForSchedule(ScheduleType.Standard),
     _addAllScheduleNotificationsForSchedule(ScheduleType.Extra),
     _addAllScheduleRemindersForSchedule(ScheduleType.Standard),
