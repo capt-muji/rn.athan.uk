@@ -447,8 +447,8 @@ verdict "design needs changes". Every finding was answered before a step was wri
 
 - [x] Step 1: a call into the notification system answers within fifteen seconds
       (`steps/1-native-call-timeout.md`) DONE in baa4fc7f
-- [ ] Step 2: an alert sheet change is all or nothing, in both directions (`steps/2-all-or-nothing.md`)
-- [ ] Step 3: the device proof (section 7), which makes no commit of its own until section 8's records commit
+- [x] Step 2: an alert sheet change is all or nothing, in both directions (`steps/2-all-or-nothing.md`) DONE in e99d7099
+- [x] Step 3: the device proof (section 7), which makes no commit of its own until section 8's records commit DONE in 8dde8df3
 
 Each step is one branch, one commit, one version, one review, one merge. Both steps' finished files are saved under
 `ai/plans/06b-alert-all-or-nothing/files/step1/` and `files/step2/`, mirroring the repository's own paths.
