@@ -56,8 +56,13 @@ def main():
     adb('shell', f'am kill {PKG}', timeout=10)
     started = adb('shell', 'date "+%H:%M:%S"', timeout=10).strip()
     adb('shell', f'am start -n {PKG}/.MainActivity', timeout=15)
+    # Waits for what this launch is for, checking on every pass, and gives up after twenty five seconds
     for _ in range(5):
         time.sleep(5)
+        if kind == 'throw' and 'SESSION6 FORCED SYNC THROW' in adb('logcat', '-d', '-s', 'ReactNativeJS:V', timeout=20):
+            break
+        if kind == 'seed' and PKG in adb('shell', 'dumpsys window | grep -m1 mCurrentFocus', timeout=20):
+            break
 
     png = OUT / f'80-{label}.png'
     data = adb('exec-out', 'screencap -p', timeout=25, binary=True)

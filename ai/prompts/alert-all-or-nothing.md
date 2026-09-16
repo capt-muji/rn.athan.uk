@@ -60,13 +60,13 @@ The athan SOUND change (commitSoundSelection) has the same gap but is queued for
 
 | Caller | Path | Lock operation | Gate |
 | --- | --- | --- | --- |
-| Launch, 1.5 s after mount | app/index.tsx: reopenRefreshGateOnColdLaunch (Android), initializeNotifications -> checkInitialPermissions -> refreshNotifications -> registerBackgroundTask | refreshNotifications | 12 h gate |
+| Launch, 1.5 s after mount | app/index.tsx: reopenRefreshGateOnColdLaunch (Android), initializeNotifications, then checkInitialPermissions, refreshNotifications and registerBackgroundTask | refreshNotifications | 12 h gate |
 | After launch sync lands | app/index.tsx effect on state hasData | refreshNotifications | 12 h gate |
-| Return from background | device/listeners.ts: initializeNotifications -> refreshNotifications; then sync().then(refreshNotifications if a download changed an armed day) | refreshNotifications | 12 h gate |
-| Background task | device/tasks.ts -> rescheduleAllNotificationsFromBackground: sync() OUTSIDE the lock, then the lock | backgroundReschedule | none; stamps on success |
-| Alert sheet close | components/sheets/screens/Alert.tsx handleDismiss -> commitAlertMenuChanges: prefs written first, then updatePrayerNotifications | updatePrayerNotifications | none |
-| Sound sheet close | commitSoundSelection -> rescheduleAllNotifications | rescheduleAllNotifications | none |
-| A download | stores/sync.ts saveDownloadedDays -> reopenNotificationGate (atom RESET), outside the lock | none | reopens |
+| Return from background | device/listeners.ts: initializeNotifications then refreshNotifications; then sync().then(refreshNotifications if a download changed an armed day) | refreshNotifications | 12 h gate |
+| Background task | device/tasks.ts calls rescheduleAllNotificationsFromBackground: sync() OUTSIDE the lock, then the lock | backgroundReschedule | none; stamps on success |
+| Alert sheet close | components/sheets/screens/Alert.tsx handleDismiss then commitAlertMenuChanges: prefs written first, then updatePrayerNotifications | updatePrayerNotifications | none |
+| Sound sheet close | commitSoundSelection then rescheduleAllNotifications | rescheduleAllNotifications | none |
+| A download | stores/sync.ts saveDownloadedDays then reopenNotificationGate (atom RESET), outside the lock | none | reopens |
 | Midnight | countdown only; no scheduling call | none | none |
 | Stalled network | fetch never settles: the after-sync refresh, the resume refresh-after-sync and the background task's lock never run; the 1.5 s launch refresh and the resume refresh still run | unchanged | unchanged |
 
