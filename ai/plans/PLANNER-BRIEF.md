@@ -44,11 +44,11 @@ owner's rule is 100% of every source.
 
 ## 2. Pick the session
 
-**One session at a time.** If any row is READY, IN PROGRESS or EXECUTED, that row is in flight: do not plan or resume
-any other row. Tell the owner to run `athan-next`, which starts the step that row needs, and stop. The two exceptions
-are a NEEDS REPLAN row, which is the in-flight row being repaired (section 9), and a plan the owner's prompt names. A
-plan written while a row ahead of it is unfinished is written against code that row is about to change
-(`README.md`, "Order").
+**One session at a time.** If any row is PLANNING, READY, IN PROGRESS or EXECUTED, that row is the one in flight. Do
+not start or resume a plan for any other row: a PLANNING row is resumed (item 3.1), a NEEDS REPLAN row is repaired
+(section 9), and a plan the owner's prompt names is taken as named. In every other case, tell the owner to run
+`athan-next`, which starts the step that row needs, and stop. A plan written while a row ahead of it is unfinished is
+written against code that row is about to change (`README.md`, "Order").
 
 1. **Unaudited commits.** Run `git log --oneline origin/uat-2..uat-2`. If it lists commits and no row is NEEDS
    REPLAN, stop: tell the owner to run the audit prompt first. If a row is NEEDS REPLAN, replan only that row
@@ -62,7 +62,8 @@ plan written while a row ahead of it is unfinished is written against code that 
    4. BLOCKED or OWNER-LED: ask the owner whether its reason still holds. If not, set it to NOT PLANNED and plan it. If
       it still holds, leave the row as it is and take the next row. If the owner says an OWNER-LED row is finished,
       set it, and its `ai/prompts/README.md` row, to DONE.
-4. **Nothing left.** If no row is left, tell the owner planning is complete, and give them the execution prompt.
+4. **Nothing left.** If no row is left to plan, tell the owner, and give them `athan-next`, which starts whatever can
+   run next.
 
 As soon as the plan skeleton exists, set the row to PLANNING, commit and merge it (section 8's branch and review
 rules), and push it unless section 2 found unaudited commits. That way a session cut off by a limit leaves a trace.
@@ -113,9 +114,10 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    - Record the observed output in the plan as the expected output.
    - Remove the worktree when done (`git worktree remove --force <path>`), and always before 00:00, when a nightly job
      clears build folders. Never commit from it.
-   - Every row ahead of this one is DONE before this plan is written (section 2), so the scratch worktree starts at
-     `uat-2` itself and no step is ever proven against code that is not merged. If a step seems to need an unmerged
-     plan's changes applied first, stop and ask the owner: the order has been broken.
+   - No row ahead of this one is PLANNING, READY, IN PROGRESS or EXECUTED while this plan is written (section 2), and
+     a BLOCKED or OWNER-LED row ahead holds no merged code of its own, so the scratch worktree starts at `uat-2` itself
+     and no step is ever proven against code that is not merged. If a step seems to need an unmerged plan's changes
+     applied first, stop and ask the owner: the order has been broken.
 9. **Write the device proof** (template section 7), including the safety reading of `dumpsys alarm` before any clock
    change, the list of alarms the executor will see, and the build the phone is left on. Where a screenshot must be
    read, name the `vision` subagent and write its exact question; the executor cannot see images.
@@ -325,9 +327,10 @@ The plan is not READY until every line below is true.
    - anything BLOCKED;
    - the progress table.
 
-   Then give the next prompt, with its launcher: the execution prompt with `claude-glm` for the row you just planned,
-   because each session is planned, executed and audited before the next one is planned (`README.md`, "Order"). The
-   owner can also simply run `athan-next`, which picks that same step.
+   Then give the next prompt, with its launcher: when you set the row READY, the execution prompt with `claude-glm`
+   for it, because each session is planned, executed and audited before the next one is planned (`README.md`,
+   "Order"). When you set it OWNER-LED or BLOCKED instead, say which, and give the owner `athan-next`, which starts
+   whatever can run next.
 
 ## 9. Replanning a NEEDS REPLAN row
 

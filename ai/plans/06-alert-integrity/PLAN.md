@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Brief | `ai/prompts/alert-integrity.md` |
-| Planned at | `b5159305` (version 1.27.164), 2026-09-15; later commits on `uat-2` before execution are this plan's docs only |
+| Planned at | `b5159305` (version 1.27.164), 2026-09-15; the commits on `uat-2` since then change documents only, none of the files this plan anchors on |
 | Planned by | Claude, planning session on 2026-09-15 |
 | Needs first | nothing |
 | Steps | 3, each one branch, one commit, one version, then the device proof |
