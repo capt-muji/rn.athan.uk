@@ -1,0 +1,11 @@
+  it('lifts the splash without waiting for decorations that are turned off', async () => {
+    showRamadanLists();
+    markMasjidIconLoaded();
+    // The Settings toggle writes this preference through its atom, and the store has no setter for it
+    getDefaultStore().set(decorationsEnabledAtom, false);
+
+    await render(<Index />);
+
+    expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
+  });
+});
