@@ -21,7 +21,8 @@ fill: STOP and ask.
 - a reviewer asks for something the plan does not give word for word.
 
 Then tell the owner, in two or three plain sentences, what you expected, what you saw, and the question from the plan's
-section 2.2, and wait. A wrong guess costs the owner far more than a question.
+section 2.2 or, when section 2.2 has none for what you hit, your own question in one sentence. Then wait. A wrong guess
+costs the owner far more than a question.
 
 **You know when you are finished, and it is not "when the code runs".** A step is finished when every acceptance
 criterion the plan gives is met: the named tests failed for the reason the plan gave BEFORE the change and pass after
@@ -30,9 +31,10 @@ it, `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0, the b
 predicts. Keep working until all of them hold. Missing one is not a finding to report: it is work still to do, unless
 the plan itself says otherwise.
 
-**A plan that hands you finished code follows its own words.** Some plans, written before 2026-09-16, carry whole
-files under their `files/` folder and tell you to copy them. Do exactly that: where a plan dictates rather than
-specifies, the dictation wins.
+**A step that hands you finished code follows its own words.** Some steps carry whole files under their plan's
+`files/` folder and tell you to copy them, every step of session 6b among them, and a replanned plan can hold one of
+each kind: its section 6 checklist marks which each step is. Do exactly that: **where a plan dictates rather than
+specifies, the dictation wins**, whatever the rest of this brief expects you to write yourself.
 
 **This brief and the plan come first** (owner, 2026-09-15). This session also loads `~/.claude/CLAUDE.md` and the
 project's memory notes, which were written for Claude sessions. Where they differ from this brief, this brief wins:
@@ -122,7 +124,8 @@ whale emoji and two spaces (`🐋  `).
   - Never add `istanbul ignore`, `c8 ignore` or `v8 ignore`.
   - Never delete a test the plan does not tell you to delete.
 - **Changes.**
-  - Every change follows the plan's code exactly.
+  - Every change matches the plan's contracts exactly: the names, signatures, behaviour and log-line text it gives.
+    Where the plan gives code verbatim, that code is used verbatim.
   - Comments explain why, never what.
   - Every commit is one step: one branch, one version bump, one review, one merge.
 - **Reviews.** Every commit is reviewed by the `Code Reviewer` subagent the plan names, with the plan's prompt, before
@@ -185,8 +188,8 @@ Do these for each step in the plan, in order. Do not start a step until the prev
    gives, and every log line with the exact text the plan gives. Where the plan gives code verbatim, use it verbatim,
    and where it tells you to copy a file it carries, copy that file and change nothing in it. Find each place by its
    anchor text, not by line number. Comments explain why, never what. Nothing beyond what the step's contracts
-   describe: a helper you find yourself wanting that the plan does not mention is a sign you have misread it, so
-   reread the step before you write it.
+   describe: a helper you find yourself wanting that the plan does not mention is a sign you may have misread it, so
+   reread the step, and extract it only if the step's contracts still need it.
 4. **Green.** Run the plan's command. Every named test passes. Then run `npx tsc --noEmit` and
    `npx biome check . --error-on-warnings`; both exit 0.
 5. **Breaks.** Save and run the plan's break script with `bash`, from the repository root. It must end
@@ -204,11 +207,14 @@ Do these for each step in the plan, in order. Do not start a step until the prev
    the commit's sha filled in. Never pass `model`.
    - **"Merge":** go on.
    - **"Fix first":**
-     - Apply a fix only when the plan's section 10 gives that exact fix. Amend the commit (it is not merged), then send
-       the SAME reviewer, with SendMessage, the new sha and the fixes made.
+     - Apply a fix when the plan's section 10 gives that exact fix. Amend the commit (it is not merged), then send the
+       SAME reviewer, with SendMessage, the new sha and the fixes made.
+     - Apply a fix, without asking, when ALL of these hold: it touches only code the plan did not give verbatim; it
+       changes no name, signature, log-line text, behaviour or test the plan specified; and it leaves every acceptance
+       criterion met. That is the reviewer doing the job this programme gives it over code you wrote. Write the
+       finding and what you did in `LOG.md` for the audit, amend, and send the same reviewer the new sha.
      - Any other finding: STOP. Give the owner each finding in the reviewer's words. If the owner wants any of them
-       applied, that is NEEDS REPLAN (section 4a, then section 4b). Never write a fix the plan does not give word for
-       word.
+       applied, that is NEEDS REPLAN (section 4a, then section 4b).
      - Do not remove the reviewer's worktree before its final verdict.
    - **Three rounds without "merge":** STOP and ask.
 9. **Merge.** Merge into `uat-2` with the plan's command and message.
@@ -306,7 +312,9 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 | An anchor is not found, or is found more than once | NEEDS REPLAN (section 1, item 4) |
 | A test fails that the plan did not name | STOP and ask. Do not edit the test |
 | Coverage below 100% at commit | STOP and ask. Never add an ignore comment |
-| tsc or Biome errors in code written exactly as the plan gave it | STOP and ask. Quote the error |
+| A break prints `BREAK NOT APPLIED` | The plan's substitution does not match the code you wrote. STOP and ask; never reshape your code to fit a break |
+| tsc or Biome errors in code the plan gave verbatim | STOP and ask. Quote the error |
+| tsc or Biome errors in code you wrote from a contract | Fix your code, keeping the contract. It is work still to do, not a finding |
 | The hook fails only because `audioMatrix.test.ts` timed out | Wait for the load to fall (section 3) and commit again, up to 3 times |
 | `versionLockstep.test.ts` fails | The three version numbers differ: set all three to the step's version and commit again |
 | Jest hangs at 0% CPU | Kill it and rerun once; a second hang means STOP |
