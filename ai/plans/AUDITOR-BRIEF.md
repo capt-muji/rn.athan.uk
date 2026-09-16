@@ -114,4 +114,6 @@ Then act on the verdict:
 2. Report to the owner in a few plain sentences: the verdict, what was checked, what was fixed or sent back, and whether
    `uat-2` is pushed.
 3. End with the progress table and the next prompt from `ai/plans/README.md`: the execution prompt with `claude-glm`
-   for the next READY row, or the planning prompt with `claude-plan` if a row needs planning.
+   when a row is READY or IN PROGRESS, otherwise the planning prompt with `claude-plan` for the next row that is not
+   planned. Each session is planned, executed and audited before the next one is planned (`README.md`, "Order"), so
+   once a row becomes DONE the next step is planning the row after it.

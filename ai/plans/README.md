@@ -36,10 +36,20 @@ names the row's plan file in place of "the next plan", as that plan folder's `PR
 - Both launchers and the `vision` subagent live in the owner's Claude Code setup on this Mac, outside the repository.
   No gateway address, domain or key is ever written into this repository, and nothing of OpenCode's is changed.
 
-**Order.**
-1. Run the planning prompt once per row, until every row is READY, OWNER-LED or BLOCKED.
-2. Then, for each row in the order column, run the execution prompt and then the audit prompt. The next execution
-   waits until the audit has set DONE.
+**Order: one session at a time.** Plan it, execute it, audit it, and only then plan the next one. The owner asked on
+2026-09-16 which order gives the best quality; this is the answer, and `athan-next` enforces it.
+
+1. Plan the first row that is not planned.
+2. Execute that row.
+3. Audit it. The audit sets it DONE and pushes `uat-2`.
+4. Only then plan the next row.
+
+**The invariant: at most one row at a time is past NOT PLANNED and not yet DONE.** A plan is written against one
+`uat-2` commit and carries that commit's code verbatim: its anchors, the lines around them, the tests' expected
+numbers, and owner decisions taken while looking at it. A row ahead of it changes that code, so a plan written early
+is stale before it runs, and a stale anchor that still matches by text is worse than one that fails, because nothing
+catches it. Replanning costs what planning cost, so planning ahead is not faster; it is the same work done twice.
+Sessions 6 and 6b both change `stores/notifications.ts` and `device/notifications.ts`, which is how this was found.
 
 The planning prompt resumes a plan left at PLANNING and refreshes one at NEEDS REPLAN, before it starts a new one.
 The execution prompt resumes a plan left at IN PROGRESS, before it starts a new one.
