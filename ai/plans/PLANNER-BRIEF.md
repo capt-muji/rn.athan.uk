@@ -132,8 +132,13 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    - **The break script**, in full. Every decision the code makes gets a break, and each break names the test expected
      to fail. This is what proves the executor's own tests are worth anything, so it is yours, not its.
    - **The commit message**, in full, starting `<VERSION> - `.
-   - **The review prompt**, in full, listing what the reviewer must check about the code the executor wrote.
-   - **Section 10's anticipated review fixes,** word for word, and the files to restore if the step stops part-way.
+   - **The review prompt**, in full, listing what the reviewer must check about the code the executor wrote: every
+     contract kept, every acceptance criterion met, the owner's rules, and nothing beyond the step.
+   - **Section 10's anticipated review fixes,** word for word, for anything that touches what the plan fixed. You
+     have not seen the code the executor will write, so you cannot predict an ordinary quality note about it, and you
+     do not try: `EXECUTOR-BRIEF.md` section 4, item 8 lets the executor apply a finding that touches only code the
+     plan did not give and changes nothing the plan fixed, and record it in `LOG.md` for the audit.
+   - **The files to restore** if the step stops part-way.
 
    Write the code out in full ONLY where the contract cannot carry it: a verbatim block the executor must match
    exactly, such as a log line, a message the user sees, or a formula whose every term matters. Never paste a whole
@@ -204,7 +209,12 @@ The plan is not READY until every line below is true.
   it, and never as a whole file.
 - The change was built in the scratch worktree to confirm it passes tsc, Biome and the named tests, and the plan
   records the totals it reported.
-- Every break is an exact substitution, with the tests expected to fail.
+- Every break is an exact substitution, with the tests expected to fail. **Its search text is text the plan itself
+  fixes**: a log line, a named constant, a signature a contract gives, a key, a message. A break whose search text
+  could only match the code your own spike happened to write is not a break, because the executor writes different
+  code and the substitution silently does nothing. Where a decision can only be broken by touching the
+  implementation, name in the contract the thing that carries it, so the break has a stable target: a constant with
+  a given name, a helper with a given signature.
 - Every commit message, review prompt, merge message and records text is written out in full.
 - Every subagent call names its type, its isolation and its full prompt. No `model` override: the executor's
   subagents run on GLM.
@@ -392,7 +402,10 @@ The plan is not READY until every line below is true.
 1. **Read why.** The executor recorded why it stopped: the missing anchor, the unexpected failure, or the owner's
    answer. Read that first, in the plan folder's `LOG.md` and its last commit.
 2. **Refresh.** Diff `uat-2` against the plan's "Planned at" for every file the plan anchors on. Rewrite only the
-   affected anchors, steps and expected outputs. Rerun the scratch-worktree proofs for those steps.
+   affected anchors, steps and expected outputs. Rerun the scratch-worktree proofs for those steps. A step you
+   rewrite is rewritten to today's rules, as contracts; a step you do not touch keeps whatever it already has, files
+   included. Mark each step in the plan's section 6 checklist as `specified` or `files`, so the executor knows which
+   kind it is running.
 3. **Keep finished work.** Keep every step already DONE, ticked, with its commit.
 4. **Finish** as in section 8, with status READY and a new "Planned at". If `uat-2` holds unaudited commits from this
    plan, do not push; tell the owner to run the audit prompt first.
