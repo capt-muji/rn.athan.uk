@@ -6,8 +6,10 @@ minute and, in the second half, deletes today to day 2 and throws. So:
   launch80.py seed <label>    starts the launch while the device clock reads second 0 to 10: the download stores days
   launch80.py throw <label>   starts the launch while the device clock reads second 30 to 38: the launch draws the
                               stored lists first, then sync fails
-Each launch is HOME, am kill, then the launcher activity (never force-stop), then 25 seconds of settling in steps of
-15 seconds or less, then a screenshot and the React Native log lines, saved as
+Each launch is HOME, am kill, then the launcher activity (never force-stop), then up to 25 seconds of settling in
+5-second steps, stopping as soon as the launch has done what this run is for: a seed launch waits for the line the
+download writes when it has stored the days, a throw launch for the forced throw. Then a screenshot and the React
+Native log lines, saved as
 ~/athan-device-sweep/session6/80-<label>.png and 80-<label>.logcat.txt. It prints one summary line starting "LAUNCH80".
 """
 import re
@@ -56,12 +58,12 @@ def main():
     adb('shell', f'am kill {PKG}', timeout=10)
     started = adb('shell', 'date "+%H:%M:%S"', timeout=10).strip()
     adb('shell', f'am start -n {PKG}/.MainActivity', timeout=15)
-    # Waits for what this launch is for, checking on every pass, and gives up after twenty five seconds
+    # Waits for what this launch is for, checking on every pass: the download's own line for a seed launch, the forced
+    # throw for a throw launch. Five passes of five seconds, so the sleeping stops after twenty five
+    wanted = 'SESSION6 FORCED SYNC THROW' if kind == 'throw' else 'SYNC: Data refresh complete'
     for _ in range(5):
         time.sleep(5)
-        if kind == 'throw' and 'SESSION6 FORCED SYNC THROW' in adb('logcat', '-d', '-s', 'ReactNativeJS:V', timeout=20):
-            break
-        if kind == 'seed' and PKG in adb('shell', 'dumpsys window | grep -m1 mCurrentFocus', timeout=20):
+        if wanted in adb('logcat', '-d', '-s', 'ReactNativeJS:V', timeout=10):
             break
 
     png = OUT / f'80-{label}.png'
