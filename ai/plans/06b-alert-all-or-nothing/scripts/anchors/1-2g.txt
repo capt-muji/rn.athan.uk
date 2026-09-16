@@ -1,0 +1,5 @@
+  const promises = reminders.map((reminder) =>
+    Notifications.cancelScheduledNotificationAsync(reminder.id).catch((error) =>
+      logger.warn('REMINDER SYSTEM: Failed to cancel reminder:', { id: reminder.id, error })
+    )
+  );

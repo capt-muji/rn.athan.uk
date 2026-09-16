@@ -1,0 +1,3 @@
+  const results = await Promise.allSettled(promises);
+  const refusal = results.find((result): result is PromiseRejectedResult => result.status === 'rejected');
+  if (refusal) throw refusal.reason;

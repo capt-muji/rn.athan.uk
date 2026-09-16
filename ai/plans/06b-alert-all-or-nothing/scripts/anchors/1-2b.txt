@@ -1,0 +1,9 @@
+    const id = await Notifications.scheduleNotificationAsync({
+      identifier,
+      content,
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.DATE,
+        date: triggerDate,
+        channelId: atTimeChannelId,
+      },
+    });
