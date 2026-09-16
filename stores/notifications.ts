@@ -46,23 +46,28 @@ let schedulingQueue: Promise<void> = Promise.resolve();
  */
 async function withSchedulingLock<T>(operation: () => Promise<T>, operationName: string): Promise<T> {
   perfMark(`sched_${operationName}_enqueue`, { operation: operationName });
-  const result = new Promise<T>((resolve, reject) => {
-    schedulingQueue = schedulingQueue.then(async () => {
-      logger.info(`NOTIFICATION: Starting ${operationName}`);
-      perfMeasure(`sched_${operationName}_queue_wait`, `sched_${operationName}_enqueue`);
-      perfMark(`sched_${operationName}_start`);
-      try {
-        const value = await operation();
-        perfMeasure(`sched_${operationName}`, `sched_${operationName}_start`);
-        resolve(value);
-      } catch (error) {
-        perfMeasure(`sched_${operationName}`, `sched_${operationName}_start`);
-        reject(error);
-      }
-    });
+
+  const run = schedulingQueue.then(async () => {
+    logger.info(`NOTIFICATION: Starting ${operationName}`);
+    perfMeasure(`sched_${operationName}_queue_wait`, `sched_${operationName}_enqueue`);
+    perfMark(`sched_${operationName}_start`);
+    try {
+      return await operation();
+    } finally {
+      perfMeasure(`sched_${operationName}`, `sched_${operationName}_start`);
+      // A call given up on can still land and arm an alarm with no record, and only the sweep can find one of those
+      if (NotificationUtils.takeNativeCallTimedOut()) reopenNotificationRefreshGate();
+    }
   });
 
-  return result;
+  // The queue itself must stay fulfilled whatever the operation did: a rejected chain makes every later
+  // .then(onFulfilled) skip its callback, so nothing would ever schedule again in this process
+  schedulingQueue = run.then(
+    () => undefined,
+    () => undefined
+  );
+
+  return run;
 }
 
 /**
@@ -80,6 +85,21 @@ const settleAll = async <T>(work: Promise<T>[]): Promise<T[]> => {
   if (failure) throw failure.reason;
 
   return results.map((result) => (result as PromiseFulfilledResult<T>).value);
+};
+
+/**
+ * Reopens the twelve-hour gate, so the next foreground runs a full reschedule and its sweep.
+ *
+ * Through the atom, never the key: `stores/storage.ts`'s THE RULE. Failing costs only that one reschedule, so it is
+ * logged and swallowed rather than taking the operation down with it.
+ */
+const reopenNotificationRefreshGate = (): void => {
+  try {
+    resetStoredAtom(lastNotificationScheduleAtom, 'preference_last_notification_schedule_check');
+    logger.warn('NOTIFICATION: A call ran out of time, so the next foreground does a full reschedule and its sweep');
+  } catch (error) {
+    logger.warn('NOTIFICATION: Failed to reopen the refresh gate after a call ran out of time', { error });
+  }
 };
 
 // =============================================================================
@@ -1006,7 +1026,10 @@ const _sweepStaleScheduledNotifications = async () => {
     ...Database.getAllScheduledRemindersForSchedule(ScheduleType.Extra),
   ];
 
-  const scheduled = await Notifications.getAllScheduledNotificationsAsync();
+  const scheduled = await NotificationUtils.withNativeTimeout(
+    Notifications.getAllScheduledNotificationsAsync(),
+    'listing the pending notifications'
+  );
   const osIdentifiers = scheduled.map((request) => request.identifier);
 
   // Never cancel everything on the strength of no bookkeeping at all. An app
