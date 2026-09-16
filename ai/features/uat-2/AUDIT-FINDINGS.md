@@ -5729,10 +5729,13 @@ On the 3T, on a local production build of `8dde8df3`: turning Isha on Silent wit
 future athan and reminder instants, and turning it off cancelled exactly those and left the owner's other alarms
 (`alarms-isha-on.txt`, `alarms-isha-off.txt`, checked by `isha_alarms.py` against the saved 2026 payload). On a
 throwaway build whose first at-time cancel is refused, switching Magrib off put the bell back on by itself with its
-alarm re-armed (`refuse-off.logcat.txt`, and the screenshot read by vision as SILENT, mapped from its description of
-the app's bell-with-arcs Silent glyph; the plan's VISION_BELL wording calls that glyph SOUND, a defect recorded in
-the session 6b LOG). On a second throwaway build whose first cancel never answers, the app gave up after fifteen
-seconds and the change was put back, exactly as any other refusal. Neither throwaway build was committed or merged: the build script copies the patched
+alarm re-armed (`refuse-off.logcat.txt`, and the screenshot read by vision as a bell with ringing arcs and no line
+struck through it, which is the app's Silent glyph: the plan's VISION_BELL wording described no case that fitted it,
+so vision answered SOUND on the arcs alone, and the audit has corrected the prompt). On a second throwaway build
+whose first cancel never answers, the app gave the call up as refused and the change was put back, exactly as any
+other refusal. The audit timed that give-up off `hang-off2.logcat.txt`: the fifteen seconds run on wall clock, but
+the timer can only fire while the app is running, so with Athan in the background it did not fire until the app came
+back — 41.8 seconds of wall clock after the call began, and 34 ms after the app resumed. Neither throwaway build was committed or merged: the build script copies the patched
 file into its own detached worktree and restores it afterwards.
 
 Two limits are written down rather than fixed (`ai/plans/06b-alert-all-or-nothing/PLAN.md` section 5.6): six serial
