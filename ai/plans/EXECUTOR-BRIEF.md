@@ -18,7 +18,8 @@ fill: STOP and ask.
 - a file does not contain the plan's anchor;
 - a test fails that the plan did not expect, or a test the plan says must fail passes;
 - you cannot satisfy the plan's acceptance criteria without deciding something it does not give;
-- a reviewer asks for something the plan does not give word for word.
+- a reviewer asks for something the plan does not give word for word, and section 4, item 8's three conditions do
+  not all hold.
 
 Then tell the owner, in two or three plain sentences, what you expected, what you saw, and the question from the plan's
 section 2.2 or, when section 2.2 has none for what you hit, your own question in one sentence. Then wait. A wrong guess
@@ -32,9 +33,10 @@ predicts. Keep working until all of them hold. Missing one is not a finding to r
 the plan itself says otherwise.
 
 **A step that hands you finished code follows its own words.** Some steps carry whole files under their plan's
-`files/` folder and tell you to copy them, every step of session 6b among them, and a replanned plan can hold one of
-each kind: its section 6 checklist marks which each step is. Do exactly that: **where a plan dictates rather than
-specifies, the dictation wins**, whatever the rest of this brief expects you to write yourself.
+`files/` folder and tell you to copy them, every step of session 6b among them, and one plan can hold one step of each
+kind. **A step whose part 5 tells you to copy a file the plan carries is a step of that kind**, whatever else is said
+about the plan as a whole; its section 6 checklist may mark it too. Do exactly what such a step says: **where a step
+dictates rather than specifies, the dictation wins**, whatever the rest of this brief expects you to write yourself.
 
 **This brief and the plan come first** (owner, 2026-09-15). This session also loads `~/.claude/CLAUDE.md` and the
 project's memory notes, which were written for Claude sessions. Where they differ from this brief, this brief wins:
@@ -211,12 +213,14 @@ Do these for each step in the plan, in order. Do not start a step until the prev
        SAME reviewer, with SendMessage, the new sha and the fixes made.
      - Apply a fix, without asking, when ALL of these hold: it touches only code the plan did not give verbatim; it
        changes no name, signature, log-line text, behaviour or test the plan specified; and it leaves every acceptance
-       criterion met. That is the reviewer doing the job this programme gives it over code you wrote. Write the
-       finding and what you did in `LOG.md` for the audit, amend, and send the same reviewer the new sha.
+       criterion met. That is the reviewer doing the job this programme gives it over code you wrote. Run the step's
+       break script again and confirm it still ends `ALL AS EXPECTED: 1`, because an edit to your own code can move
+       the text a break substitutes. Then write the finding and what you did in `LOG.md` for the audit, amend, and
+       send the same reviewer the new sha.
      - Any other finding: STOP. Give the owner each finding in the reviewer's words. If the owner wants any of them
        applied, that is NEEDS REPLAN (section 4a, then section 4b).
      - Do not remove the reviewer's worktree before its final verdict.
-   - **Three rounds without "merge":** STOP and ask.
+   - **Two rounds without "merge":** STOP and ask. A review is a gate, not a conversation.
 9. **Merge.** Merge into `uat-2` with the plan's command and message.
 10. **Done when.** Run the step's checks. Tick the step in the plan's section 6 checklist (`- [x] Step k: DONE in
     <sha>`). Append to `LOG.md`:
@@ -312,13 +316,15 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 | An anchor is not found, or is found more than once | NEEDS REPLAN (section 1, item 4) |
 | A test fails that the plan did not name | STOP and ask. Do not edit the test |
 | Coverage below 100% at commit | STOP and ask. Never add an ignore comment |
-| A break prints `BREAK NOT APPLIED` | The plan's substitution does not match the code you wrote. STOP and ask; never reshape your code to fit a break |
+| A break prints `BREAK NOT APPLIED` on a step you built from contracts | The plan's substitution does not match the code you wrote. STOP and ask; never reshape your code to fit a break |
+| A break prints `BREAK NOT APPLIED` on a step whose files you copied | The file no longer holds what the plan expects: NEEDS REPLAN (section 1, item 4) |
+| This table and the plan's own section 10 table give different actions for one symptom | The plan's table wins: it was written for this step |
 | tsc or Biome errors in code the plan gave verbatim | STOP and ask. Quote the error |
 | tsc or Biome errors in code you wrote from a contract | Fix your code, keeping the contract. It is work still to do, not a finding |
 | The hook fails only because `audioMatrix.test.ts` timed out | Wait for the load to fall (section 3) and commit again, up to 3 times |
 | `versionLockstep.test.ts` fails | The three version numbers differ: set all three to the step's version and commit again |
 | Jest hangs at 0% CPU | Kill it and rerun once; a second hang means STOP |
-| A reviewer asks for a fix the plan's section 10 does not give | STOP and ask (section 4, item 8) |
+| A reviewer asks for a fix the plan's section 10 does not give | Section 4, item 8: apply it yourself ONLY when all three of its conditions hold, and record it in `LOG.md`; otherwise STOP and ask |
 | `git merge` reports a conflict | `git merge --abort`, then STOP and ask |
 | The owner's answer changes a step's code, tests or commands | NEEDS REPLAN; never write the change yourself |
 | A build script prints `FAILED` | STOP and ask. Quote the line |
