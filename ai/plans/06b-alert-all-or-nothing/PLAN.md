@@ -404,10 +404,17 @@ Four interleavings the design is built for, each with a test that fails without 
   is the whole point: before this, it did not.
 - **A timed-out call can still land afterwards** and arm an alarm with no record. Decision 14 answers it by reopening
   the gate, so the next foreground runs a full reschedule and its sweep.
-- **The fifteen seconds are wall time, not foreground time.** If the phone suspends the process mid-commit and the
-  timer fires on the thaw before the native answer does, a call the phone actually made is treated as refused and the
-  change is put back. Section 7.4 probes exactly that on the 3T. The two Android hang modes found in the native source
-  never answer at all, so they cannot be affected.
+- **The fifteen seconds run on wall clock, but the give-up can only land while the app is running.** Section 7.3
+  probed this on the 3T, and the audit of 2026-09-16 timed the answer off
+  `~/athan-device-sweep/session6b/hang-off2.logcat.txt`: the JS thread went quiet at 16:37:31.502, as the app was
+  sent to the background (`LOG.md`'s 7.3 retry entry times the HOME press at 16:37:25 to 32), and wrote nothing at
+  all until the resume woke it at 16:38:13.260. The fifteen-second timer fired 34 ms later, at 16:38:13.294 — 41.8
+  seconds of wall clock after the call began, not fifteen. The deadline itself had passed long before: had the
+  countdown paused with the thread, it would have had fifteen seconds still to run and fired around 16:38:28. So a
+  hang the phone sleeps through is not given up on until the user comes back, and, on the thaw, a call the phone
+  really did make races against a timer whose deadline has already passed, which treats it as refused and puts the
+  change back. The two Android hang modes found in the native source never answer at all, so they cannot be
+  affected.
 - **A stale OS entry the sweep cannot cancel** is retried by the next pass for that prayer, which the refusal has
   marked, and by the sweep that pass ends in.
 - **`commitSoundSelection` keeps today's rollback**, which restores the preference but not the alarms (decision 17).
@@ -434,7 +441,7 @@ verdict "design needs changes". Every finding was answered before a step was wri
 | Major 6: the mark atoms must be module-scope singletons (measured: two atoms over one key disagree) | Section 4.2's third fact, and the code builds eleven atoms once |
 | Major 7: a key scan would report every prayer ever marked (measured: `store.set(atom, 0)` leaves the key) | The marks are read through the atoms and cleared with `resetStoredAtom` |
 | Major 8: the generation was under-specified in three places | Decisions 9 and 10, and the generations are read inside the lock |
-| Major 9: the fifteen seconds are wall time, so a suspended process can turn work the phone did into a refusal | Section 5.6's third item, and section 7.4 probes it on the 3T |
+| Major 9: the fifteen seconds are wall time, so a suspended process can turn work the phone did into a refusal | Section 5.6's third item, and section 7.3 probes it on the 3T |
 | Minor 10: a hang in the start-up channel calls prevents the refresh rather than delaying it | Piece 2: start-up carries on past a channel failure |
 | Minor 11: `clearTimeout` must be in a `finally` | Piece 1, and a test asserts no timer is left armed |
 | Minor 12: keep `withSchedulingLock` async, keep the log and perf marks, `perfMeasure` in a `finally` | Piece 3 |
@@ -580,9 +587,10 @@ The `vision` prompt `VISION_BELL`:
 Read the image at <path>. It is a screenshot of an Android phone running a prayer times app, showing a list of prayer
 names with times and a bell icon at the right of each row. Look ONLY at the row whose name is Magrib. Answer with
 exactly one word:
-OFF if that row's bell has a diagonal line struck through it;
-SILENT if that row's bell has no line through it and no sound waves beside it;
-SOUND if that row's icon is a speaker with sound waves;
+OFF if that row's icon is a bell with a diagonal line struck through it;
+SILENT if that row's icon is a bell with NO line struck through it. The app's Silent glyph is a RINGING bell, so
+short curved arcs beside the bell still mean SILENT;
+SOUND if that row's icon is a loudspeaker rather than a bell;
 OTHER if you cannot find a row named Magrib.
 ```
 
@@ -650,6 +658,10 @@ mid-commit could come back to a timer that has already fired (`PLAN.md` section 
 Append this to `ai/features/uat-2/AUDIT-FINDINGS.md`, at the end of the file. Replace only the values named
 `<LIKE_THIS>`, each with what this session measured.
 
+**This is the pre-audit form of the note.** The audit of 2026-09-16 amended the appended text itself with two things
+the template cannot produce: what `vision` actually described, and the timing it took off `hang-off2.logcat.txt`.
+The note in `AUDIT-FINDINGS.md` is the one that shipped; this template is kept as the plan wrote it.
+
 ```markdown
 # Session 6b of the queue: finding 81, 16 September 2026
 
@@ -686,9 +698,10 @@ future athan and reminder instants, and turning it off cancelled exactly those a
 (`alarms-isha-on.txt`, `alarms-isha-off.txt`, checked by `isha_alarms.py` against the saved 2026 payload). On a
 throwaway build whose first at-time cancel is refused, switching Magrib off put the bell back on by itself with its
 alarm re-armed (`refuse-off.logcat.txt`, and the screenshot read by vision as `<VISION_REFUSE>`). On a second
-throwaway build whose first cancel never answers, the app gave up after fifteen seconds and `<HANG_OUTCOME>`. Write
-`<HANG_OUTCOME>` as `the change was put back, exactly as any other refusal` when vision answered `SILENT` in section
-7.3, and as `the phone answered before the limit, so the change stood` when it answered `OFF`. Neither throwaway build was committed or merged: the build script copies the patched
+throwaway build whose first cancel never answers, `<HANG_OUTCOME>`. Write
+`<HANG_OUTCOME>` as `the app gave the call up as refused and put the change back, exactly as any other refusal` when
+vision answered `SILENT` in section 7.3, and as `the phone answered before the limit, so the change stood` when it
+answered `OFF`. Neither throwaway build was committed or merged: the build script copies the patched
 file into its own detached worktree and restores it afterwards.
 
 Two limits are written down rather than fixed (`ai/plans/06b-alert-all-or-nothing/PLAN.md` section 5.6): six serial
