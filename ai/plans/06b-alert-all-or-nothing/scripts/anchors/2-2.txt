@@ -1,0 +1,8 @@
+export const updatePrayerNotifications = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  englishName: string,
+  arabicName: string,
+  atTimeAlert: AlertType,
+  reminderAlert: AlertType
+) => {
