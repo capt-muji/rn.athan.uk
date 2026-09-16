@@ -1,0 +1,6 @@
+      expect(Alert.alert).toHaveBeenCalledWith(
+        'Enable Notifications',
+        'Prayer time notifications are disabled. Would you like to enable them in settings?',
+        expect.any(Array),
+        { onDismiss: expect.any(Function) }
+      );

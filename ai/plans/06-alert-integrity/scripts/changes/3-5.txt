@@ -1,0 +1,2 @@
+  await settleAll(promises);
+  logger.info('NOTIFICATION: Rescheduled all notifications for schedule:', { scheduleType });

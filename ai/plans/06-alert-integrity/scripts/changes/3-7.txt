@@ -1,0 +1,2 @@
+  await settleAll([
+    _addAllScheduleNotificationsForSchedule(ScheduleType.Standard),

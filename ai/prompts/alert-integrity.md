@@ -1,4 +1,9 @@
-# Session 6: an alert always does what its bell shows (findings 79 to 82)
+# Session 6: an alert always does what its bell shows (findings 79, 80 and 82, after the split below)
+
+**Split on 2026-09-15 by the owner, while planning:** this session covers findings 79, 80 and 82. Finding 81 (a
+refused Android cancel during an Off commit, and the all-or-nothing rule for every alert sheet change) moved to session
+6b, `ai/prompts/alert-all-or-nothing.md`, because its first design did not survive review and the sturdier design could
+not be planned and reviewed before midnight.
 
 **Status: queued 2026-09-15 at the owner's request, after session 5 (`coverage-100.md`); the owner left the split
 to the assistant. The owner approved finding 79 on 2026-09-15 after session 5's explanation.** The four
