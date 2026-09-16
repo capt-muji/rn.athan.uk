@@ -3,7 +3,8 @@
 **Status: queued 2026-09-15 by the owner, split out of session 6 (`alert-integrity.md`) while that session was being
 planned.** Plan it in its own planning session (`ai/plans/PLANNER-BRIEF.md`). Its plan anchors on the code session 6's
 step 3 changes (`stores/notifications.ts` and `device/notifications.ts` with `settleAll`), so its row's "Needs first" is
-`1` and its anchors are verified in a scratch worktree with session 6's steps applied.
+`1` and it is planned only after session 6 is DONE, so its anchors are verified against the merged code on `uat-2`
+(`ai/plans/README.md`, "Order").
 
 ## The owner's rule and decisions, 2026-09-15
 

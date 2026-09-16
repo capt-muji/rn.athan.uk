@@ -13,10 +13,18 @@ A plan is good when an executor that cannot make judgement calls never has to ma
 
 ## What the owner types
 
-**One command, every time: `athan-next`.** It reads the table below, picks the next step (plan, execute or audit), shows
-which model it chose, and starts that session with its prompt as the first message. When the session ends, press
-Enter for the next step, or Ctrl+C to stop. `athan-next --dry-run` only prints the next step. The command lives in the
-owner's Claude Code setup on this Mac, outside the repository.
+**One command per session: `athan-next`.** It reads the table below, picks the next step (plan, execute or audit),
+shows which model it chose, and starts that session with its prompt as the first message. When that session ends it
+starts the next step on its own after a ten-second countdown, until the audit has pushed the session it carried; then
+it stops, and the owner runs `athan-next` again for the next session. It also stops, starting nothing else, when a
+step exits non-zero, when a step changed neither the status table nor `uat-2`, and when nothing can run. Ctrl+C during
+a countdown ends it. `athan-next --all` carries straight on into the next session; `athan-next --dry-run` only prints
+the next step.
+
+The command is a plain Python script, not a Claude session: it holds no context of its own and never reads what a
+session said, only whether the step exited cleanly and whether the status table or `uat-2` changed. Each step is its
+own process, so each starts with a fresh context, and only the planning and audit steps use the Claude subscription.
+It lives in the owner's Claude Code setup on this Mac, outside the repository.
 
 What `athan-next` runs, for reference or for starting a step by hand in a fresh session. For an execution step it
 names the row's plan file in place of "the next plan", as that plan folder's `PROMPT.md` does:
@@ -39,12 +47,15 @@ names the row's plan file in place of "the next plan", as that plan folder's `PR
 **Order: one session at a time.** Plan it, execute it, audit it, and only then plan the next one. The owner asked on
 2026-09-16 which order gives the best quality; this is the answer, and `athan-next` enforces it.
 
-1. Plan the first row that is not planned.
+1. Plan the first row that needs planning: a PLANNING row is resumed, and a NEEDS REPLAN row refreshed, before a NOT
+   PLANNED row is started.
 2. Execute that row.
-3. Audit it. The audit sets it DONE and pushes `uat-2`.
+3. Audit it. On PASS the audit sets it DONE and pushes `uat-2`. A SEND BACK sets it READY again and pushes nothing, so
+   the next step is another execution, then another audit.
 4. Only then plan the next row.
 
-**The invariant: at most one row at a time is past NOT PLANNED and not yet DONE.** A plan is written against one
+**The invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED.** A BLOCKED or OWNER-LED row
+waits on the owner and holds no merged code of its own, so more than one of those may sit in the table at once. A plan is written against one
 `uat-2` commit and carries that commit's code verbatim: its anchors, the lines around them, the tests' expected
 numbers, and owner decisions taken while looking at it. A row ahead of it changes that code, so a plan written early
 is stale before it runs, and a stale anchor that still matches by text is worse than one that fails, because nothing
