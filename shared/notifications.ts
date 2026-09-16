@@ -16,6 +16,61 @@ export interface ScheduledNotification {
 }
 
 /**
+ * How long one call into the notification system may take before it is treated as refused.
+ *
+ * Owner, 2026-09-16. A healthy phone answers in milliseconds, so this can only be reached by a call that is never
+ * coming back.
+ */
+const NATIVE_CALL_TIMEOUT_MS = 15_000;
+
+/** Set when a call runs out of time, and read once by the scheduling lock; see takeNativeCallTimedOut */
+let nativeCallTimedOut = false;
+
+/**
+ * Whether a call has run out of time since this was last asked, and forgets it.
+ *
+ * A call given up on can still land afterwards and arm an alarm this app has no record of. Only the post-reschedule
+ * sweep can find one of those, so the scheduling lock uses this to reopen the twelve-hour gate, which puts a full
+ * reschedule and its sweep on the next foreground.
+ */
+export const takeNativeCallTimedOut = (): boolean => {
+  const timedOut = nativeCallTimedOut;
+  nativeCallTimedOut = false;
+  return timedOut;
+};
+
+/**
+ * Rejects when a call into the notification system does not answer.
+ *
+ * expo-notifications' Android service answers through a ResultReceiver that is sent only from its catch of
+ * `Exception`, so an `Error` on the worker thread, or a receiver that has gone, leaves the promise pending for ever.
+ * The scheduling queue waits for every piece of work it started (finding 82), so one such call would otherwise stop
+ * the app arming or cancelling anything for the rest of the process, with the bell already showing what the user
+ * picked.
+ *
+ * @param work The call into the notification system, already started
+ * @param description What that call was doing, for the rejection its caller logs
+ * @returns What the call resolved with, when it answered in time
+ */
+export const withNativeTimeout = async <T>(work: Promise<T>, description: string): Promise<T> => {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+
+  const timeout = new Promise<never>((_resolve, reject) => {
+    timer = setTimeout(() => {
+      nativeCallTimedOut = true;
+      reject(new Error(`NOTIFICATION SYSTEM: ${description} did not answer in ${NATIVE_CALL_TIMEOUT_MS} ms`));
+    }, NATIVE_CALL_TIMEOUT_MS);
+  });
+
+  try {
+    // Promise.race attaches a handler to both, so the loser settling later is never an unhandled rejection
+    return await Promise.race([work, timeout]);
+  } finally {
+    clearTimeout(timer);
+  }
+};
+
+/**
  * The 5 daily prayers whose at-time notifications play the user's selected
  * athan. Every other at-time prayer (Sunrise + all extras) plays the fixed
  * built-in reminder sound instead (ISSUES.md #23 — note this boundary is
@@ -228,14 +283,17 @@ export const createDefaultAndroidChannel = async () => {
 
   const channelId = athanAndroidChannelId(0);
 
-  await Notifications.setNotificationChannelAsync(channelId, {
-    name: 'Athan 1',
-    sound: 'athan1.mp3',
-    importance: Notifications.AndroidImportance.MAX,
-    enableVibrate: true,
-    vibrationPattern: [0, 250, 250, 250],
-    bypassDnd: true,
-  });
+  await withNativeTimeout(
+    Notifications.setNotificationChannelAsync(channelId, {
+      name: 'Athan 1',
+      sound: 'athan1.mp3',
+      importance: Notifications.AndroidImportance.MAX,
+      enableVibrate: true,
+      vibrationPattern: [0, 250, 250, 250],
+      bypassDnd: true,
+    }),
+    `creating the ${channelId} channel`
+  );
 };
 
 /** Channel IDs created this session — skips repeat setNotificationChannelAsync calls across reschedules */
@@ -257,14 +315,17 @@ export const createExtrasAndroidChannel = async () => {
   if (Platform.OS !== 'android') return;
   if (extrasChannelCreated) return;
 
-  await Notifications.setNotificationChannelAsync(extrasAndroidChannelId, {
-    name: 'Extra Times',
-    sound: EXTRAS_NOTIFICATION_SOUND,
-    importance: Notifications.AndroidImportance.MAX,
-    enableVibrate: true,
-    vibrationPattern: [0, 250, 250, 250],
-    bypassDnd: true,
-  });
+  await withNativeTimeout(
+    Notifications.setNotificationChannelAsync(extrasAndroidChannelId, {
+      name: 'Extra Times',
+      sound: EXTRAS_NOTIFICATION_SOUND,
+      importance: Notifications.AndroidImportance.MAX,
+      enableVibrate: true,
+      vibrationPattern: [0, 250, 250, 250],
+      bypassDnd: true,
+    }),
+    `creating the ${extrasAndroidChannelId} channel`
+  );
 
   extrasChannelCreated = true;
 };
@@ -284,14 +345,17 @@ export const createAthanAndroidChannel = async (soundIndex: number) => {
   const channelId = athanAndroidChannelId(soundIndex);
   if (createdAthanChannels.has(channelId)) return;
 
-  await Notifications.setNotificationChannelAsync(channelId, {
-    name: `Athan ${soundIndex + 1}`,
-    sound: `athan${soundIndex + 1}.mp3`,
-    importance: Notifications.AndroidImportance.MAX,
-    enableVibrate: true,
-    vibrationPattern: [0, 250, 250, 250],
-    bypassDnd: true,
-  });
+  await withNativeTimeout(
+    Notifications.setNotificationChannelAsync(channelId, {
+      name: `Athan ${soundIndex + 1}`,
+      sound: `athan${soundIndex + 1}.mp3`,
+      importance: Notifications.AndroidImportance.MAX,
+      enableVibrate: true,
+      vibrationPattern: [0, 250, 250, 250],
+      bypassDnd: true,
+    }),
+    `creating the ${channelId} channel`
+  );
 
   createdAthanChannels.add(channelId);
 };
@@ -308,14 +372,17 @@ export const createReminderAndroidChannel = async (englishName: string, interval
 
   const slug = prayerNameSlug(englishName);
 
-  await Notifications.setNotificationChannelAsync(channelId, {
-    name: `${englishName} in ${intervalMinutes}m Reminder`,
-    sound: `reminder_${slug}_${intervalMinutes}.mp3`,
-    importance: Notifications.AndroidImportance.HIGH,
-    enableVibrate: true,
-    vibrationPattern: [0, 250, 250, 250],
-    bypassDnd: true,
-  });
+  await withNativeTimeout(
+    Notifications.setNotificationChannelAsync(channelId, {
+      name: `${englishName} in ${intervalMinutes}m Reminder`,
+      sound: `reminder_${slug}_${intervalMinutes}.mp3`,
+      importance: Notifications.AndroidImportance.HIGH,
+      enableVibrate: true,
+      vibrationPattern: [0, 250, 250, 250],
+      bypassDnd: true,
+    }),
+    `creating the ${channelId} channel`
+  );
 
   createdReminderChannels.add(channelId);
 };
@@ -332,7 +399,10 @@ export const deleteLegacyAndroidAudioChannels = async () => {
   const legacyAthanIds = Array.from({ length: 16 }, (_, i) => `athan_${i + 1}`);
   const legacyChannelIds = ['reminder', ...legacyAthanIds];
   const promises = legacyChannelIds.map((channelId) =>
-    Notifications.deleteNotificationChannelAsync(channelId).catch(() => undefined)
+    withNativeTimeout(
+      Notifications.deleteNotificationChannelAsync(channelId),
+      `deleting the ${channelId} channel`
+    ).catch(() => undefined)
   );
   await Promise.all(promises);
 };
@@ -351,9 +421,16 @@ export const initializeNotifications = async (
   registerBackgroundTaskFn?: () => Promise<void>
 ) => {
   try {
-    await deleteLegacyAndroidAudioChannels();
-    await createDefaultAndroidChannel();
-    await createExtrasAndroidChannel();
+    // A channel that cannot be created changes how a notification sounds, never whether it fires, so it must not stop
+    // the refresh: the launch and the return from the background are two of the three events on which a prayer the
+    // phone refused is put right again
+    try {
+      await deleteLegacyAndroidAudioChannels();
+      await createDefaultAndroidChannel();
+      await createExtrasAndroidChannel();
+    } catch (error) {
+      logger.error('NOTIFICATION: Failed to prepare the Android channels, carrying on:', error);
+    }
 
     const hasPermission = await checkPermissions();
     if (hasPermission) {
