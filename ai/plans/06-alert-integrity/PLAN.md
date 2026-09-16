@@ -355,8 +355,9 @@ clock. The owner receives no screenshots: only the `vision` subagent (GLM 5.3 Fl
 4. Run `git rev-parse uat-2` and write the sha in `LOG.md` as `FINAL=<sha>`. Every `<FINAL>` below is that sha.
 5. Run `adb -s 8f7ada76 get-state`. Expected: `device`.
 6. Run `adb -s 8f7ada76 shell settings get global auto_time`. Expected: `1`.
-7. Run `adb -s 8f7ada76 shell dumpsys window policy | grep -c 'showing=true'`. Expected: `0`. `1` means the phone is
-   locked: section 2.2, item 8.
+7. Run `adb -s 8f7ada76 shell dumpsys window policy | grep -c 'showing=true' || true`. Expected: `0`. `1` means the
+   phone is locked: section 2.2, item 8. The `|| true` is needed because `grep -c` exits 1 when it counts none, which
+   here is the good path.
 8. Run `adb -s 8f7ada76 shell svc power stayon usb`, so the screen stays on while the cable is in. Section 7.5 turns it
    back off.
 9. Run `adb -s 8f7ada76 shell dumpsys alarm > ~/athan-device-sweep/session6/alarms-start.txt`, then
@@ -375,11 +376,12 @@ clock. The owner receives no screenshots: only the `vision` subagent (GLM 5.3 Fl
    in the background, writing to `$TMPDIR/install-80-before.log`.
    Expected: a line containing `Success`, then a state line with `version ['1.27.164']`.
 3. Run `python3 ai/plans/06-alert-integrity/scripts/device/launch80.py seed before-seed > $TMPDIR/launch80-before-seed.log 2>&1`
-   in the background; it waits for the second window it needs, so it takes up to two minutes. Expected in the log: one line starting `LAUNCH80 seed before-seed`
-   with `forced-throw-lines 0 fatal 0`.
+   in the background; before it launches it waits for the right point in the device's minute, so it takes up to two
+   minutes. Expected in the log: one line starting `LAUNCH80 seed before-seed` with `forced-throw-lines 0 fatal 0`.
+   `forced-throw-lines` 1 or more on a seed launch: section 10.1's row for it.
 4. Run `python3 ai/plans/06-alert-integrity/scripts/device/launch80.py throw before-throw > $TMPDIR/launch80-before-throw.log 2>&1`
-   in the background. Expected in the log: one line starting `LAUNCH80 throw before-throw` with `forced-throw-lines` 1
-   or more and `fatal 0`.
+   in the background; it waits for its own point in the device's minute, so it too takes up to two minutes. Expected
+   in the log: one line starting `LAUNCH80 throw before-throw` with `forced-throw-lines` 1 or more and `fatal 0`.
 5. Spawn `vision` with the prompt `VISION_80` below, for `~/athan-device-sweep/session6/80-before-throw.png`. Expected
    answer: `SPLASH`.
    - `ERROR`: the decorations won the race this time. Repeat items 3 to 5 with the labels `before-seed-2` and
@@ -398,7 +400,8 @@ clock. The owner receives no screenshots: only the `vision` subagent (GLM 5.3 Fl
    line naming that version.
 3. Run `python3 ai/plans/06-alert-integrity/scripts/device/launch80.py seed after-seed > $TMPDIR/launch80-after-seed.log 2>&1`,
    then `python3 ai/plans/06-alert-integrity/scripts/device/launch80.py throw after-throw > $TMPDIR/launch80-after-throw.log 2>&1`,
-   each in the background, with the same expectations as 7.1 items 3 and 4.
+   each in the background, with the same expectations as 7.1 items 3 and 4, and each taking up to two minutes for the
+   same reason.
 4. Spawn `vision` with `VISION_80` for `~/athan-device-sweep/session6/80-after-throw.png`. Expected: `ERROR`. Any
    other answer: repeat item 3 and this item once with the labels `after-seed-2` and `after-throw-2`; still not
    `ERROR`: section 2.2, item 6.
@@ -630,6 +633,7 @@ The general table is `EXECUTOR-BRIEF.md` section 7. This session's own:
 | `set-version.sh` prints `VERSIONS DIFFER` | A version file was edited by hand | Restore `app.json`, `package.json` and `android/app/build.gradle` to `uat-2`'s version with `git checkout -- app.json package.json` and `perl -pi -e 's/versionName "[^"]*"/versionName "<uat-2 version>"/' android/app/build.gradle`, then run it again once |
 | `launch80.py` prints `LAUNCH80 FAILED: the device clock never reached second` | adb answered too slowly | Run the same command again once; a second failure: STOP |
 | `forced-throw-lines 0` on a throw launch | The launch began outside the second-half window, or the download came from the background task first | Repeat the seed and throw pair once with new labels; still 0: STOP |
+| `forced-throw-lines` 1 or more on a seed launch | The seed's own download ran past second 30 of the minute, so it threw and deleted today to day 2, leaving nothing for the throw launch to draw | Repeat that seed launch once with a new label, then go on to the throw launch; a second seed that throws: STOP |
 | `isha_alarms.py` prints `ISHA TOO CLOSE` | Isha or its reminder is within 30 minutes | Wait as the item that printed it says: section 7.3 item 5 repeats items 4 and 5, item 15 repeats item 14 and itself, item 18 repeats item 17 and itself |
 | The phone shows Android's lock screen | The keyguard came back | Section 2.2, item 8 |
 | A background build prints `another Android build or bundler is running` | Two builds at once | Wait for the first build's notification, then start the second |
