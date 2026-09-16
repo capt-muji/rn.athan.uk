@@ -27,7 +27,8 @@ programme exists to protect. The first: the same step, for the same row, in the 
 any code being committed. The second: a budget for each kind of step within one carried session, because steps can
 cycle without repeating, such as a pre-flight setting NEEDS REPLAN, a planner refreshing it and the pre-flight failing
 again. Execution runs on the owner's own gateway and is cheap, so it has six; planning has two and auditing three,
-because those spend the Claude allowance. Ctrl+C reaches `athan-next` only during a countdown: while a session is up,
+because those spend the Claude allowance. Under `--all` those budgets start again each time a session actually
+reaches DONE, and a whole run stops at twelve sessions however it got there. Ctrl+C reaches `athan-next` only during a countdown: while a session is up,
 Claude Code reads Ctrl+C itself.
 
 The command is a plain Python script, not a Claude session: it holds no context of its own and cannot compact. It
