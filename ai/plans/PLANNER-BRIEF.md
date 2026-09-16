@@ -44,6 +44,12 @@ owner's rule is 100% of every source.
 
 ## 2. Pick the session
 
+**One session at a time.** If any row is READY, IN PROGRESS or EXECUTED, that row is in flight: do not plan or resume
+any other row. Tell the owner to run `athan-next`, which starts the step that row needs, and stop. The two exceptions
+are a NEEDS REPLAN row, which is the in-flight row being repaired (section 9), and a plan the owner's prompt names. A
+plan written while a row ahead of it is unfinished is written against code that row is about to change
+(`README.md`, "Order").
+
 1. **Unaudited commits.** Run `git log --oneline origin/uat-2..uat-2`. If it lists commits and no row is NEEDS
    REPLAN, stop: tell the owner to run the audit prompt first. If a row is NEEDS REPLAN, replan only that row
    (section 9), and push nothing in this session.
@@ -107,8 +113,9 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    - Record the observed output in the plan as the expected output.
    - Remove the worktree when done (`git worktree remove --force <path>`), and always before 00:00, when a nightly job
      clears build folders. Never commit from it.
-   - For a plan whose steps build on an earlier plan's code that is not yet on `uat-2`, apply that plan's steps in the
-     scratch worktree first, and name both commits in "Planned at".
+   - Every row ahead of this one is DONE before this plan is written (section 2), so the scratch worktree starts at
+     `uat-2` itself and no step is ever proven against code that is not merged. If a step seems to need an unmerged
+     plan's changes applied first, stop and ask the owner: the order has been broken.
 9. **Write the device proof** (template section 7), including the safety reading of `dumpsys alarm` before any clock
    change, the list of alarms the executor will see, and the build the phone is left on. Where a screenshot must be
    read, name the `vision` subagent and write its exact question; the executor cannot see images.
@@ -262,9 +269,8 @@ The plan is not READY until every line below is true.
 - **Session 7, `replace-previous-notification.md`.**
   - Android: one shared notification tag. Notifications due at the same instant are left to the system (owner,
     2026-09-13).
-  - If its design touches code that session 6's plan changes, "Needs first" is `1`, and those anchors are verified in
-    a scratch worktree with session 6's steps applied; "Planned at" names both commits. Otherwise "Needs first" is
-    `nothing`.
+  - It is planned only after every row before it is DONE, so its anchors are verified against `uat-2` itself.
+    "Needs first" names the rows it depends on, and "Planned at" is the one `uat-2` commit it was verified against.
 - **Session 8, `ios-replace-previous-notification.md`.**
   - Research first. The owner rejects "impossible" without proof on the iPhone.
   - Physical-iPhone tooling is `xcrun devicectl` and `pymobiledevice3`, with `DEVELOPMENT_TEAM=9V3WAU9Z54`
@@ -319,8 +325,9 @@ The plan is not READY until every line below is true.
    - anything BLOCKED;
    - the progress table.
 
-   Then give the next prompt, with its launcher: the planning prompt with `claude-plan` while any row still needs
-   planning, otherwise the execution prompt with `claude-glm`.
+   Then give the next prompt, with its launcher: the execution prompt with `claude-glm` for the row you just planned,
+   because each session is planned, executed and audited before the next one is planned (`README.md`, "Order"). The
+   owner can also simply run `athan-next`, which picks that same step.
 
 ## 9. Replanning a NEEDS REPLAN row
 
