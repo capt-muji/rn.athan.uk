@@ -443,9 +443,10 @@ OTHER for anything else.
    Expected: a line starting `Starting: Intent`, and after it, possibly, a line starting `Warning: Activity not started`.
 7. Ask the owner, word for word: "On the 3T, Android's notification settings for Athan are open. Please turn OFF 'Show
    notifications' for Athan, then reply 'done'. Please don't touch anything else."
-8. Run `adb -s 8f7ada76 shell dumpsys notification | grep 'AppSettings: com.mugtaba.athan'` and write the line to
-   `LOG.md`. Expected (unverified while planning, so it is recorded, not required): the line contains
-   `importance=NONE`.
+8. Run `adb -s 8f7ada76 shell dumpsys notification | grep 'AppSettings: com.mugtaba.athan' || true` and write the
+   line to `LOG.md`. Expected (unverified while planning, so it is recorded, not required): the line contains
+   `importance=NONE`. The `|| true` is needed because no match is a permitted outcome here and `grep` exits 1
+   when it matches nothing.
 9. Run `adb -s 8f7ada76 shell am start -n com.mugtaba.athan/.MainActivity`. Expected: a line starting
    `Starting: Intent`, and after it, possibly, a line starting `Warning: Activity not started`.
 10. Ask the owner, word for word: "Athan is open. Please do these in order, then reply 'done' and leave the phone

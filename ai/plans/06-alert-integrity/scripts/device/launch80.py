@@ -8,10 +8,10 @@ minute and, in the second half, deletes today to day 2 and throws. So:
                               stored lists first, then sync fails
 Each launch is HOME, am kill, then the launcher activity (never force-stop), then up to 25 seconds of settling in
 5-second steps, stopping as soon as the launch has done what this run is for: a seed launch waits for the line the
-download writes when it has stored the days, a throw launch for the forced throw. Waiting for the second window plus
-that settling takes up to two minutes in all. Then a screenshot and the React
-Native log lines, saved as
-~/athan-device-sweep/session6/80-<label>.png and 80-<label>.logcat.txt. It prints one summary line starting "LAUNCH80".
+download writes when it has stored the days, a throw launch for the forced throw. Waiting for the right point in the
+device's minute, plus that settling, takes up to two minutes in all. Then a screenshot and the React Native log
+lines, saved as ~/athan-device-sweep/session6/80-<label>.png and 80-<label>.logcat.txt. It prints one summary line
+starting "LAUNCH80".
 """
 import re
 import subprocess
