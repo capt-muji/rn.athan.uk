@@ -8,6 +8,8 @@ form, compared as plain strings, inclusively. The window is required: the events
 survives `logcat -c` and holds entries from every clock epoch the proof drove, and a
 real-epoch stamp (09-17) sorts above a mock-epoch window (09-13), so only a two-sided
 window keeps older epochs out of the count.
+Exits 2 on a wrong argument count or a window bound that is not an MM-DD HH:MM:SS stamp;
+0 otherwise.
 
 Prints "POSTS <n>" (notification_enqueue events for the package inside the window),
 "MUTED <n>" ("Muting recently noisy" system lines inside the window; this device drops

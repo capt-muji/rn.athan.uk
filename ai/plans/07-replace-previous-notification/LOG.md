@@ -128,7 +128,9 @@ three of `EXECUTOR-BRIEF.md` section 4, item 8's conditions: it touches only cod
 give verbatim, it changes no name, signature, behaviour, log line or test, and every acceptance
 criterion stays met. Re-verified after the edit: `breaks-1.sh` ended `ALL AS EXPECTED: 1`
 (`$TMPDIR/breaks-1-recheck.log`), `npx tsc --noEmit` exit 0, `npx biome check . --error-on-warnings`
-clean. ### Step 1 record
+clean. The commit was amended and the same reviewer resent the new sha.
+
+### Step 1 record
 
 - Step 1 (one shared notification tag, through a config plugin) on branch `feat/shared-notification-tag`,
   built by the predecessor session and finished by this one.
@@ -496,13 +498,26 @@ The 7.2 phase's evidence and the owner's two rulings stand; the 7.3 phase must b
 item 1 once a single driver owns the phone. This session touches nothing further until the owner
 says who drives.
 
+The owner answered 12:41 17.09.2026, after a plain-language explanation of the two-driver
+situation: **this session finishes; the owner is closing the 11:45 session's window**. Re-run
+planned from 7.2 item 1 with everything already settled: Magrib disarmed, both readings rulings
+recorded, both APKs built and verified.
+
+### Reset to a clean slate, 12:43 17.09.2026
+
+The interrupted Fajr sheet was still open (uncommitted: my three plus-taps had taken the stepper to
+20 min; Fajr's stored athan was still off). Set clean before closing it, since every close commits:
+Off (250,1030), reminder switch off (926,1266), back. The post-commit alarm dump holds exactly the
+pre-7.3 baseline again: `NOTIFICATION_EVENT` 2 (Asr 2026-09-17 16:34, Asr 2026-09-18 16:33), the
+screen re-woken and `stayon usb` re-set after the other session's cleanup let it lock. No clock
+drive runs until the old session's window (PID 45558) is gone.
+
 ## Plan amended by the planning session, 12:51 17.09.2026 (GLM 5.3, planning session)
 
 The owner's 12:31 question (the two 7.2 item 11 letter-divergences, `POSTS 0` and `TRAY 1`) was
 delegated entirely to the planning session by the orchestrator at 12:39, after the owner's 12:34 answer
 (continue with corrected readings). Both diagnoses were re-verified from the live device and the saved
-evidence before the plan was touched (reads only; the phone was not driven, and it stays as the 12:36
-wrap-up left it: new build 1.27.198, real clock, `auto_time` 1):
+evidence before the plan was touched (reads only; this session drove nothing):
 
 1. `POSTS 0`: a live `logcat -b events -d` holds `09-12 16:42:30.095 ... notification_enqueue:
    [10186,21055,com.mugtaba.athan,0,athan-notification,0,Notification(channel=expo_notifications_fallback_notification_channel`
@@ -517,8 +532,8 @@ wrap-up left it: new build 1.27.198, real clock, `auto_time` 1):
    only sweep-like events in the window. Android cancels an app's posted notifications on package
    replace; the plan's pile-survives-the-update model was wrong.
 
-The amendment, on branch `docs/plan-7-20260917-1252`, version 1.27.199, merged `--no-ff` into `uat-2`
-and pushed (same sha range this entry's commit lands in):
+The amendment, on branch `docs/plan-7-20260917-1252`, version 1.27.199 with the review fix-ups at
+1.27.200, merged `--no-ff` into `uat-2` and pushed:
 
 - `scripts/device/posts.py` re-derived from the events buffer. It now reads a combined
   `logcat -d -b system,events` save and counts `notification_enqueue` lines for the package inside an
@@ -539,23 +554,19 @@ and pushed (same sha range this entry's commit lands in):
 - Every other acceptance line is untouched, and 7.2 item 11's already-measured readings stand as the
   owner ruled at 12:34: `ASR_POSTS=1`, `ASR_MUTED=0`, `TRAY 1` with the one shared-tag line.
 
-Resume from: the device proof at 7.3 item 1, re-run (the 12:36 snap consumed the phase's armed state
-and interrupted item 2 mid-sheet), under the amended letter, with one driver owning the phone. The row
-stays IN PROGRESS; the working tree holds only this folder's plan files; nothing else changed.
+Resume from: the device proof's final run at 7.2 item 1, under the amended letter, per the owner's
+go-now answer below. The interrupted 7.3 attempt's armed state was consumed by the 12:36 snap, and the
+12:43 reset above returned the mock storage to the pre-7.3 baseline, so the final run re-records
+`TRAY_START` from wherever the tray then stands. The row stays IN PROGRESS; the working tree holds
+only this folder's plan files; nothing else changed.
 
-The owner answered 12:41 17.09.2026, after a plain-language explanation of the two-driver
-situation: **this session finishes; the owner is closing the 11:45 session's window**. Re-run
-planned from 7.2 item 1 with everything already settled: Magrib disarmed, both readings rulings
-recorded, both APKs built and verified.
+The owner answered at about 13:02 17.09.2026 (the run's own log starts 13:03:06): **go now** — the
+final run starts with the old window merely
+parked (it cannot act unless its pending question is answered; closing it at any time is safe).
+File names for this run keep the plan's own names where free (`fire-pair.*`, `fire-fajr.*`,
+`tray-end.txt`, `alarms-end.txt`, `mock-final.png`); re-taken readings carry `-3`/`-2` suffixes.
 
-### Reset to a clean slate, 12:43 17.09.2026
-
-The interrupted Fajr sheet was still open (uncommitted: my three plus-taps had taken the stepper to
-20 min; Fajr's stored athan was still off). Set clean before closing it, since every close commits:
-Off (250,1030), reminder switch off (926,1266), back. The post-commit alarm dump holds exactly the
-pre-7.3 baseline again: `NOTIFICATION_EVENT` 2 (Asr 2026-09-17 16:34, Asr 2026-09-18 16:33), the
-screen re-woken and `stayon usb` re-set after the other session's cleanup let it lock. No clock
-drive runs until the old session's window (PID 45558) is gone.
+### 7.2 final run
 
 
 
