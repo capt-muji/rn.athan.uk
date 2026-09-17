@@ -1,0 +1,5 @@
+export const genNextXDays = (numberOfDays: number): string[] => {
+  const today = TimeUtils.getTodayDateString();
+
+  return Array.from({ length: numberOfDays }, (_, i) => TimeUtils.addDaysToDateString(today, i));
+};
