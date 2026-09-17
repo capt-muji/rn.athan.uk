@@ -193,6 +193,21 @@ None of these is a session yet. Each needs the owner's decision first.
   the iOS pile stays until the user clears it. The research stands recorded in
   `ai/features/uat-2/AUDIT-FINDINGS.md` ("Session 8 of the queue") should this ever be revisited.
 
+## Decided by the owner, 2026-09-17, while planning session 9
+
+- **A day hands over after its last readable row, never at 00:00 while a readable row of that day is
+  still to come.** The owner confirmed, as one rule, their 2026-09-13 words ("A day stays current
+  until its last prayer has passed, not until 00 for both the screen and the alarms. Exactly,
+  exactly, exactly.") and session 3's 2026-09-14 default (a day whose last row is unreadable moves on
+  after its last readable row): the rule holds even when the readable row falls after 00:00 London,
+  so on the high-latitude mock a Friday with Isha dashed still keeps its list until the 00:40 Magrib
+  has passed, and nothing moves at 00:00 while a readable row is still due. Session 3's dashes
+  behaviour and session 9's still-due rows now share the one hand-over rule.
+- **The evening-Suhoor buffer loss stays out of session 9.** A Suhoor wrapped onto the evening before
+  its list day (a Fajr before 00:20, high latitude only) loses a day of alarm buffer, but the owner
+  declined to fold it into session 9: that session fixes the post-midnight rows only, and this
+  defect keeps its place in "Waiting on the owner, not yet sessions" in `ai/plans/README.md`.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their
