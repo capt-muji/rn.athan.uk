@@ -168,6 +168,24 @@ None of these is a session yet. Each needs the owner's decision first.
   orchestrator on 2026-09-17: the replan decides everything itself, commits, reviews, merges and pushes
   per its brief's conventions, leaves the row READY, and brings `uat-2`'s unpushed commits current.
 
+## Decided by the owner, 2026-09-17, while planning session 8
+
+- **The iOS study runs on the iPhone XS, as throwaway builds, and nothing merges.** The deliverable
+  is a finding with the best achievable behaviours and their costs, and the owner chooses from it
+  later; the brief's "nothing is built until the owner chooses" stands.
+- **The owner does nothing during the study.** Their words: "you do everything". The study needs no
+  tap, no gesture and no unlock schedule: it asks for provisional notification authorization (no
+  dialog), drives the phone from the Mac, and the one case that could still need the owner (the
+  phone locked at the foreground phase) stops and asks for a single unlock.
+- **The study runs under its own app id, `com.mugtaba.athan.experiments`.** The owner's installed
+  Athan (1.26.28) and its data are never touched. On-the-fly provisioning of the new id was proven
+  while planning; if it fails at execution time the executor stops and asks rather than falling
+  back.
+- **No subagents in these sessions, for now.** The owner's instruction at the start of this
+  programme's move into OpenCode-driven sessions: "Do everything yourself. Do not use any
+  subagents for now." Planning, including its review, ran without any; the plan carries the rule
+  into execution and audit.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their

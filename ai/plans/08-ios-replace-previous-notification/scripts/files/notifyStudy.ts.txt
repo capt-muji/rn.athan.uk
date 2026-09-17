@@ -1,0 +1,264 @@
+/**
+ * WORKTREE-ONLY STUDY HARNESS — never merged, never committed to uat-2.
+ *
+ * Driven entirely from the Mac: no tap, no gesture, no owner hand. It asks for
+ * PROVISIONAL notification authorization (no system dialog), schedules
+ * short-fuse test notifications and reads back what iOS actually holds, one
+ * phase per cold launch, selected by the persisted cursor. Every observable
+ * step logs one single-line NOTIFY-STUDY record through console.log, which
+ * React Native forwards to the system log and pymobiledevice3 captures.
+ * Logging is console.log on purpose: the app's pino logger is disabled in
+ * release builds, and this file never meets a lint run.
+ */
+import { activate as keepAwakeActivate, deactivate as keepAwakeDeactivate } from 'expo-keep-awake';
+import * as Notifications from 'expo-notifications';
+import { AppState, type AppStateStatus } from 'react-native';
+
+import * as Database from '@/stores/database';
+
+const CURSOR_KEY = 'notify_study_cursor';
+const THREAD_ID = 'athan-study';
+
+const readCursor = (): number => Number(Database.database.getString(CURSOR_KEY) ?? '0');
+const writeCursor = (value: number): void => {
+  Database.database.set(CURSOR_KEY, String(value));
+};
+
+const phaseAtLaunch = readCursor();
+
+const sleep = (seconds: number) => new Promise<void>((resolve) => setTimeout(resolve, seconds * 1000));
+
+const log = (line: string) => {
+  console.log(`NOTIFY-STUDY ${line}`);
+};
+
+type DeliveredEntry = { id: string; title: string; thread: string };
+
+const readDelivered = async (): Promise<DeliveredEntry[]> => {
+  const list = await Notifications.getPresentedNotificationsAsync();
+  return list.map((notification) => ({
+    id: notification.request.identifier,
+    title: notification.request.content.title ?? '',
+    thread: notification.request.content.threadIdentifier ?? '',
+  }));
+};
+
+const dumpDelivered = async (label: string): Promise<DeliveredEntry[]> => {
+  const entries = await readDelivered();
+  log(`${label} DELIVERED ${JSON.stringify(entries)}`);
+  return entries;
+};
+
+const dumpPending = async (label: string): Promise<void> => {
+  const pending = await Notifications.getAllScheduledNotificationsAsync();
+  log(`${label} PENDING ${JSON.stringify(pending.map((request) => request.identifier))}`);
+};
+
+const scheduleOne = (identifier: string, title: string, seconds: number, threadIdentifier?: string): void => {
+  const content = threadIdentifier
+    ? { title, sound: false, data: { study: true }, threadIdentifier }
+    : { title, sound: false, data: { study: true } };
+
+  Notifications.scheduleNotificationAsync({
+    identifier,
+    // The extra key rides the plain object through the bridge; only the patched
+    // pod (variant B) applies it to UNMutableNotificationContent.
+    content: content as Notifications.NotificationContentInput,
+    trigger: { type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL, seconds },
+  })
+    .then(() => {
+      log(`SCHEDULED ${JSON.stringify({ identifier, title, seconds, thread: threadIdentifier ?? null })}`);
+    })
+    .catch((error: unknown) => {
+      log(`SCHEDULE-FAILED ${JSON.stringify({ identifier, error: String(error) })}`);
+    });
+};
+
+const dismissAll = async (label: string): Promise<void> => {
+  await Notifications.dismissAllNotificationsAsync();
+  log(`${label} DISMISSED-ALL`);
+};
+
+// The one foreground-dependent mechanism under study (phase 2, the LAST study
+// phase): while the app is foregrounded, can the arriving notification's
+// handler clear the earlier delivered ones? Registered once at module
+// evaluation; which behavior it has was decided by the cursor before any
+// phase ran.
+Notifications.setNotificationHandler({
+  handleNotification: async (notification) => {
+    const incomingId = notification.request.identifier;
+
+    if (phaseAtLaunch === 4) {
+      const before = await readDelivered();
+      log(
+        `P2 HANDLER ${JSON.stringify({
+          id: incomingId,
+          deliveredBefore: before.length,
+          incomingPresent: before.some((entry) => entry.id === incomingId),
+        })}`
+      );
+      for (const entry of before) {
+        if (entry.id === incomingId) continue;
+        await Notifications.dismissNotificationAsync(entry.id);
+      }
+      log(`P2 CLEARED ${JSON.stringify({ kept: incomingId, cleared: before.filter((e) => e.id !== incomingId).length })}`);
+    }
+
+    return { shouldShowBanner: true, shouldShowList: true, shouldPlaySound: false, shouldSetBadge: false };
+  },
+});
+
+// Phase 1 (cursor 0 -> 1): does re-scheduling under a DELIVERED notification's
+// identifier replace the delivered one? Apple documents replacement for
+// "previously scheduled" requests only; this measures the delivered side.
+const runPhase1 = async (): Promise<void> => {
+  log(`P1 START ${JSON.stringify({ state: AppState.currentState })}`);
+  await sleep(6);
+  scheduleOne('x1', 'P1 first', 10);
+  await sleep(4);
+  await dumpPending('P1');
+  await sleep(12);
+  await dumpDelivered('P1-AFTER-FIRST');
+  await sleep(4);
+  scheduleOne('x1', 'P1 second', 10);
+  await sleep(4);
+  await dumpPending('P1-AFTER-SECOND');
+  await sleep(12);
+  await dumpDelivered('P1-FINAL');
+  writeCursor(1);
+  log('P1 DONE');
+  keepAwakeDeactivate();
+};
+
+// Phase 2 (cursor 4 -> 5): the foreground handler clears earlier delivered
+// notifications. Needs the app active; on a locked phone it logs LOCKED and
+// leaves the cursor untouched so the next cold launch retries. Runs LAST so a
+// locked phone costs nothing until this point.
+const runPhase2 = async (): Promise<void> => {
+  log(`P2 START ${JSON.stringify({ state: AppState.currentState })}`);
+  await sleep(10);
+  if (AppState.currentState !== 'active') {
+    log('P2 LOCKED');
+    keepAwakeDeactivate();
+    return;
+  }
+  await sleep(4);
+  scheduleOne('x2a', 'P2 A', 10);
+  await sleep(22);
+  scheduleOne('x2b', 'P2 B', 10);
+  await sleep(22);
+  scheduleOne('x2c', 'P2 C', 10);
+  await sleep(12);
+  await dumpDelivered('P2-FINAL');
+  writeCursor(5);
+  log('P2 DONE');
+  keepAwakeDeactivate();
+};
+
+// Phase 3a (cursor 1 -> 2): schedule three, then hand control back so the
+// driver can kill the app before they fire.
+const runPhase3a = async (): Promise<void> => {
+  log(`P3A START ${JSON.stringify({ state: AppState.currentState })}`);
+  await sleep(8);
+  scheduleOne('x3a', 'P3 A', 12);
+  scheduleOne('x3b', 'P3 B', 20);
+  scheduleOne('x3c', 'P3 C', 28);
+  await sleep(2);
+  writeCursor(2);
+  log('P3A DONE');
+};
+
+// Phase 3b (cursor 2 -> 3): the app runs again; measure what was delivered
+// while it was dead, then clear everything in one call.
+const runPhase3b = async (): Promise<void> => {
+  log(`P3B START ${JSON.stringify({ state: AppState.currentState })}`);
+  await sleep(2);
+  await dumpDelivered('P3-BEFORE');
+  await sleep(3);
+  await dismissAll('P3');
+  await sleep(5);
+  await dumpDelivered('P3-AFTER');
+  writeCursor(3);
+  log('P3 DONE');
+  keepAwakeDeactivate();
+};
+
+// Phase 4 (cursor 3 -> 4): thread grouping. A one-notification probe first:
+// only the patched pod (variant B) copies threadIdentifier onto the system
+// content, and the delivered set says which build is running. An unpatched
+// build logs UNPATCHED and leaves the cursor alone, so the driver can install
+// variant B and relaunch. Variant B's three same-thread deliveries then report
+// their threadIdentifier back from the delivered set.
+const runPhase4 = async (): Promise<void> => {
+  log(`P4 START ${JSON.stringify({ state: AppState.currentState, thread: THREAD_ID })}`);
+  await sleep(8);
+  scheduleOne('x4p', 'P4 probe', 6, THREAD_ID);
+  await sleep(12);
+  const probe = await readDelivered();
+  const patched = probe.some((entry) => entry.id === 'x4p' && entry.thread === THREAD_ID);
+  log(`P4 PROBE ${JSON.stringify({ patched, probe })}`);
+  if (!patched) {
+    log('P4 UNPATCHED');
+    keepAwakeDeactivate();
+    return;
+  }
+  scheduleOne('x4a', 'P4 A', 6, THREAD_ID);
+  scheduleOne('x4b', 'P4 B', 14, THREAD_ID);
+  scheduleOne('x4c', 'P4 C', 22, THREAD_ID);
+  await sleep(30);
+  await dumpDelivered('P4-FINAL');
+  writeCursor(4);
+  log('P4 DONE');
+  keepAwakeDeactivate();
+};
+
+// Cursor 5: cleanup launch. Leaves zero delivered notifications behind.
+const runCleanup = async (): Promise<void> => {
+  log('P5 START');
+  await sleep(2);
+  await dismissAll('P5');
+  await sleep(5);
+  await dumpDelivered('P5-FINAL');
+  log('P5 CLEANED');
+  keepAwakeDeactivate();
+};
+
+export const runNotifyStudy = async (): Promise<void> => {
+  const permission = await Notifications.requestPermissionsAsync({ ios: { allowProvisional: true } });
+  log(
+    `PERM ${JSON.stringify({
+      granted: permission.granted,
+      status: permission.status,
+      iosStatus: permission.ios?.status ?? null,
+    })}`
+  );
+
+  AppState.addEventListener('change', (state: AppStateStatus) => {
+    log(`STATE ${state}`);
+  });
+
+  keepAwakeActivate();
+
+  const cursor = readCursor();
+  log(`RUN ${JSON.stringify({ cursor, phaseAtLaunch })}`);
+
+  switch (cursor) {
+    case 0:
+      await runPhase1();
+      return;
+    case 1:
+      await runPhase3a();
+      return;
+    case 2:
+      await runPhase3b();
+      return;
+    case 3:
+      await runPhase4();
+      return;
+    case 4:
+      await runPhase2();
+      return;
+    default:
+      await runCleanup();
+  }
+};
