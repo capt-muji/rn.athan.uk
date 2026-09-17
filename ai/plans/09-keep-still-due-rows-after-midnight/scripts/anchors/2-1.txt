@@ -1,0 +1,2 @@
+export const getPrayerForDate = (type: ScheduleType, english: string, date: string): Prayer | null =>
+  createPrayersForDate(type, date).find((prayer) => prayer.english === english) ?? null;
