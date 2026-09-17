@@ -317,8 +317,8 @@ disposable with it.
    a second `SCHEDULED {"identifier":"x1",...}` with `"title":"P1 second"`,
    `P1-AFTER-SECOND PENDING ["x1"]` (the first copy has already delivered, so the one pending
    request is the second), and then the answer: `P1-FINAL DELIVERED [...]`. **Predicted two
-   entries; measured ONE, `[{"id":"x1","title":"P1 second","thread":""}]`, sixty times over
-   (58 in a stuck-cursor loop that ran the phase repeatedly, 2 in the clean run): iOS replaces
+   entries; measured ONE, `[{"id":"x1","title":"P1 second","thread":""}]`, fifty-nine times
+   (58 in a stuck-cursor loop that ran the phase repeatedly, 1 in the clean run): iOS replaces
    the delivered notification when its identifier is scheduled again.** The dumps do not
    distinguish whether the delivered copy flips at add-time or when the new one fires; the net
    behaviour, only the newest showing, is what they prove. A `SCHEDULE-FAILED` line or any other

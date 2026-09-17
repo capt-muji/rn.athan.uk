@@ -5781,7 +5781,7 @@ asked for: no (the owner unlocked once, unprompted, before the run)). Nothing wa
 
 - **Reusing a DELIVERED notification's identifier replaces it.** After `x1` "P1 first" had
   delivered, scheduling `x1` "P1 second" left the delivered set holding exactly
-  `[{"id":"x1","title":"P1 second","thread":""}]` (P1-FINAL; sixty consistent observations).
+  `[{"id":"x1","title":"P1 second","thread":""}]` (P1-FINAL; fifty-nine consistent observations).
   Apple's documentation promises this only for "previously scheduled" requests; the phone does
   it for delivered ones too. The dumps do not distinguish add-time from fire-time replacement;
   only the newest shows, which is what matters. NOTE for the app: one shared identifier for
