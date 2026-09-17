@@ -207,6 +207,12 @@ None of these is a session yet. Each needs the owner's decision first.
   its list day (a Fajr before 00:20, high latitude only) loses a day of alarm buffer, but the owner
   declined to fold it into session 9: that session fixes the post-midnight rows only, and this
   defect keeps its place in "Waiting on the owner, not yet sessions" in `ai/plans/README.md`.
+- **The step 2 coverage gap is closed by a test, not by narrowing the change.** The step 2 commit was
+  refused by the 100% coverage gate: no test the plan named ever called `canStillFire` with a record
+  older than yesterday, so its `return false` branch was unreachable as specified. The owner chose
+  "add the missing test" over merging without it (2026-09-17); the plan was refreshed with a sixth
+  alarm test that refuses a cancel of a record two days old and asserts the record is dropped, and a
+  fifth break pinning the same decision.
 
 ## Also live, not sessions
 
