@@ -138,6 +138,14 @@ None of these is a session yet. Each needs the owner's decision first.
   nested subagents ("Subagent depth limit reached"); the owner asked for the limit to be looked at and
   fixed if simple. The setting took effect immediately in the live session. Execution and audit sessions
   need it too: their Code Reviewer subagents sit one level down.
+- **A planning session commits and pushes its own final docs commit to `uat-2`.** The owner will not
+  commit by hand. Relayed by the orchestrator on 2026-09-17, after the execution session stopped on the
+  planning work sitting uncommitted: the plan files land on `uat-2` inside the planning session itself.
+- **The fixed-days mock's date keying is the planning session's to decide.** Relayed by the orchestrator
+  on 2026-09-17, after the execution session found the mock's blocks keyed two days early against the
+  plan's device-proof predictions and its own docstring. The planning session re-keyed every date two
+  days later (2026-09-08 to 2026-09-19) so each prediction sits on the date the proof drives the clock
+  to; the prayer values are unchanged.
 
 ## Also live, not sessions
 
