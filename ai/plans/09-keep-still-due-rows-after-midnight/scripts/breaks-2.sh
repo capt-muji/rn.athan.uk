@@ -36,4 +36,6 @@ brk 2c shared/notifications.ts 's/const first = startDate \?\? TimeUtils\.getTod
 
 brk 2d stores/notifications.ts 's/return TimeUtils\.createInstant\(\) < cutoff;/return false;/' "keeps the record of a refused cancel of a still-due yesterday alarm, so the repair can reach it"
 
+brk 2e stores/notifications.ts 's/if \(record\.date !== TimeUtils\.getPreviousDateString\(today\)\) return false;/if (record.date !== TimeUtils.getPreviousDateString(today)) return true;/' "drops the record of a refused cancel of an alarm older than yesterday, spent like any passed moment"
+
 echo "ALL AS EXPECTED: $all"
