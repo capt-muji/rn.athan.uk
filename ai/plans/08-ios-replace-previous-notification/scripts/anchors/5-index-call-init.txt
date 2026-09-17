@@ -1,0 +1,3 @@
+      initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
+        logger.error('Failed to initialize notifications:', error)
+      );
