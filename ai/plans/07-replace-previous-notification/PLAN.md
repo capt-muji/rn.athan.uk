@@ -396,7 +396,8 @@ predicted relative to what this phase records, never as fixed numbers.
     `python3 ai/plans/07-replace-previous-notification/scripts/device/tray.py ~/athan-device-sweep/session7/tray-asr.txt`.
     Expected: `POSTS 1` (exactly one enqueue event; its printed line holds
     `com.mugtaba.athan,0,athan-notification,0,Notification(channel=expo_notifications_fallback_notification_channel`;
-    the old PendingIntent delivered nothing), `MUTED 0` (nothing else was due in the 90 seconds), `TRAY 1`
+    the old PendingIntent delivered nothing), `MUTED 0` (the source records 0 on this device; nothing
+    else was due in the 90 seconds), `TRAY 1`
     with exactly one `NOTIFY tag=athan-notification` line whose channel is
     `expo_notifications_fallback_notification_channel` (a Silent alert's channel). The pile recorded as
     `TRAY_START` and `PILE` in 7.0 appears nowhere in the Notification List: item 7's package replace
