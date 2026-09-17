@@ -37,7 +37,9 @@ build_variant() {
     > "$log" 2>&1
   grep -m1 '\*\* BUILD SUCCEEDED \*\*' "$log"
   local app=ios/build/Build/Products/Release-iphoneos/AthanLab.app
-  security cms -D -i "$app/embedded.mobileprovision" 2>/dev/null | grep -m1 'com.mugtaba.athan.experiments'
+  # Fixed-string: the raw pattern's dots are regex-any and would match the
+  # keychain line where the plist dump renders them as spaces.
+  security cms -D -i "$app/embedded.mobileprovision" 2>/dev/null | grep -F -m1 'com.mugtaba.athan.experiments'
   mkdir -p "$OUT/variant${label}"
   rm -rf "$OUT/variant${label}/AthanLab.app"
   cp -R "$app" "$OUT/variant${label}/AthanLab.app"
@@ -46,8 +48,25 @@ build_variant() {
 
 build_variant A
 
+# Variant B: expo compiles the ExpoNotifications pod straight from
+# node_modules (the Pods project references it there), and the worktree's
+# node_modules is a symlink to the main checkout, which this script must
+# never touch. So the worktree gets its own node_modules: every package and
+# dot-entry symlinked, expo-notifications alone a real, patched copy, and
+# pod install run again so the Pods project points at the worktree's copy.
+rm node_modules
+mkdir node_modules
+for entry in "$REPO"/node_modules/* "$REPO"/node_modules/.*; do
+  name=${entry:t}
+  [ "$name" = "." ] && continue
+  [ "$name" = ".." ] && continue
+  [ "$name" = "expo-notifications" ] && continue
+  ln -s "$entry" "node_modules/$name"
+done
+cp -R "$REPO/node_modules/expo-notifications" node_modules/expo-notifications
 python3 "$PLAN/scripts/splice-pod.py" \
-  ios/Pods/expo-notifications/ios/ExpoNotifications/Notifications/NotificationRecords.swift
+  node_modules/expo-notifications/ios/ExpoNotifications/Notifications/NotificationRecords.swift
+(cd ios && pod install > "$OUT/pod-reinstall-variant-b.log" 2>&1)
 build_variant B
 
 echo "STUDY BUILDS OK"
