@@ -123,6 +123,22 @@ None of these is a session yet. Each needs the owner's decision first.
   left the screen unlocked, and the app is open and stay awake is on... This should be the state always." No session
   changes that setting unless it is deliberately testing lock or sleep behaviour, and it puts it straight back.
 
+## Decided by the owner, 2026-09-17, while planning session 7
+
+- **The notifications stacked by earlier builds stay in the tray.** The owner's words: "The users can
+  swipe away the ones that were there before... the old ones can just be cleared away by hand. We don't
+  want to make extra work for us." No cleanup or dismissal code is built with the shared tag.
+- **Same-instant Sound pairs keep the system's behaviour, one sound at a time.** Shown that the second of
+  two Sound notifications landing in the same second is muted and its post can stop the first's sound
+  mid-play, the owner answered: "I only ever heard 1 make a sound... we should stack them. The user, it's
+  up to the user... I don't think anything breaks." Their earlier ruling (2026-09-13, finding 78) stands:
+  the system decides, as long as no default sound ever plays; the device proof measures what actually
+  plays.
+- **The repository's `opencode.json` sets `experimental.subagent_depth` to 2.** The harness blocked
+  nested subagents ("Subagent depth limit reached"); the owner asked for the limit to be looked at and
+  fixed if simple. The setting took effect immediately in the live session. Execution and audit sessions
+  need it too: their Code Reviewer subagents sit one level down.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their
