@@ -5,6 +5,7 @@
 | Brief | `ai/prompts/replace-previous-notification.md` |
 | Planned at | `fc2dd139` (version 1.27.195), 2026-09-17 |
 | Planned by | Planning session on 2026-09-17, GLM 5.3 |
+| Amended | 2026-09-17: the posts reading re-derived from the system's `notification_enqueue` events and the tray model corrected for package-replace cancellation (owner, 12:34 ruling and 12:39 delegation); see `LOG.md` |
 | Needs first | nothing |
 | Steps | 1, one branch, one commit, one version, then the device proof |
 | Device | OnePlus 3T: a mock build of the parent commit, the new mock build, then the latest mock build with the Asr-next data |
@@ -20,9 +21,11 @@ and always has a pile to clear.
 
 When this plan is DONE, the newest notification the app produces is the only one showing: reminder or
 at-time, Standard or Extras, silent or sound. Each post lands under one shared tag and id, so Android
-replaces what was showing before. Notifications that were stacked by builds before this change stay in the
-tray until the user swipes them away: the owner decided that on 2026-09-17, and no cleanup code is built.
-Scheduling is untouched: identifiers, alarms, the sweep and every bell keep today's behaviour exactly.
+replaces what was showing before. No cleanup code is built for the notifications stacked by earlier
+builds: the owner decided that on 2026-09-17. Android itself cancels an app's posted notifications when
+its package is replaced (verified on the 3T on 2026-09-17, LOG.md's 12:31 and 12:33 readings), so a user
+updating from a stacking build has the pile cleared by the update, not by the app. Scheduling is
+untouched: identifiers, alarms, the sweep and every bell keep today's behaviour exactly.
 
 The owner notices in the notification shade only: after any fire, one notification, never a pile.
 
@@ -42,8 +45,13 @@ The owner's rules that apply, quoted:
 
 ### 2.1 Taken
 
-1. **The tray keeps whatever was stacked before the update.** Owner, 2026-09-17, quoted above; recorded in
-   `ai/prompts/README.md`. No dismissal call is added anywhere.
+1. **No dismissal call is added anywhere, and the pile does not survive an update.** Owner, 2026-09-17,
+   quoted above, with the corrected readings ruled at 12:34 the same day; recorded in
+   `ai/prompts/README.md`. Android cancels an app's posted notifications when its package is replaced,
+   verified on the 3T during 7.2 (LOG.md, 12:31 and 12:33): the installs moved every stacked notification
+   into `dumpsys notification`'s archive, so from the update on the tray holds only what the new build
+   posts. The model this plan first carried, a pile surviving the update, was wrong; the decision's code
+   consequence, no dismissal code anywhere, is unchanged.
 2. **Same-instant pairs are left to the system, including the sound consequence.** The design review found
    that when two Sound notifications land in the same second, the second is muted and its post can stop the
    first's sound mid-play, leaving about a second of athan. The owner was shown exactly that and chose to go
@@ -100,10 +108,11 @@ STOP, append what you saw to `LOG.md`, and ask the owner the question given, whe
    nor `*walarm*:ACTION_FORCE_STOP_RESCHEDULE`**, or holds more app alarms than section 7 predicts at that
    point. Ask: "The alarm dump at section 7 `<item>` holds `<line>`. What do I do?" A clock drive fires
    every armed alarm it passes, so this check comes before every drive.
-8. **`tray.py` prints a `TRAY` count other than `TRAY_START` plus one after a fire, or a second `NOTIFY`
-   line with the tag `athan-notification`.** Ask: "After the fire in section 7 `<item>`, the tray holds
-   `<tray.py output>`. What do I do?" (The pile `TRAY_START` recorded at the start stays by decision 1;
-   only the shared-tag count is asserted.)
+8. **`tray.py` prints a `TRAY` count other than 1 after a fire, a second `NOTIFY` line with the tag
+   `athan-notification`, or any `NOTIFY` line whose tag is one of `PILE`'s.** Ask: "After the fire in
+   section 7 `<item>`, the tray holds `<tray.py output>`. What do I do?" (The package replace of each
+   install cancels the app's posted notifications, so from 7.2 item 11 on the tray holds only the shared
+   tag's own notification; only that count is asserted.)
 9. **`posts.py` prints a `POSTS` count other than the one section 7 predicts.** Ask: "The fire in section 7
    `<item>` produced `<posts.py output>`. What do I do?"
 10. **A `read` of a sheet shows a title other than the prayer section 7 says was tapped, or a control the
@@ -226,7 +235,8 @@ None: the plugin is new. The suites that cover what it touches but must not chan
   posts would sometimes reach the stacking delegate: the feature would work or not at random.
 - **A JavaScript-only change:** expo-notifications offers no API for the tag; no amount of JS changes the
   tag a post carries.
-- **Clearing the old pile on update:** the owner explicitly declined the extra work (decision 1).
+- **Clearing the old pile on update:** the owner explicitly declined the extra work (decision 1), and
+  Android's package-replace cancellation clears the pile without any code anyway.
 
 ## 5. Design
 
@@ -261,7 +271,7 @@ None: the plugin is new. The suites that cover what it touches but must not chan
 
 ## 6. Steps
 
-- [ ] Step 1: One shared notification tag, through a config plugin (specified)
+- [x] Step 1: DONE in 45754e6094c5e7d1724fdb24ff97b9e18f3c47cb
 - [ ] Device proof: section 7
 
 The step is written out in full in `ai/plans/07-replace-previous-notification/steps/1-shared-tag-plugin.md`.
@@ -296,11 +306,13 @@ planning), so a wrong coordinate is caught, never guessed around.
    means the phone is locked: section 2.2, item 11.
 8. Run `adb -s 8f7ada76 shell svc power stayon usb`.
 9. Run `python3 ai/plans/07-replace-previous-notification/scripts/device/tray.py ~/athan-device-sweep/session7/tray-start.txt`.
-   Expected: `TRAY` followed by 0, 1 or 2, each `NOTIFY` line's tag an `athan_...` or `reminder_...`
-   identifier (today's stacking, left alone by decision 1), never `athan-notification`. Write the count
-   in `LOG.md` as `TRAY_START=<n>` and list the tags as `PILE=<tags>`: every later tray reading predicts
-   this pile plus exactly one shared-tag notification, because decision 1 keeps the pile and the plan has
-   no way and no reason to remove it. Anything else: section 2.2, item 8.
+   Expected: `TRAY` followed by any count, one `NOTIFY` line per notification the installed build last
+   left showing. Write the count in `LOG.md` as `TRAY_START=<n>` and list the tags as `PILE=<tags>`.
+   The pile does not survive this proof's installs: Android cancels an app's posted notifications when
+   its package is replaced (verified on the 3T on 2026-09-17, LOG.md's 12:31 and 12:33 readings), so
+   from 7.2 item 11 on every tray reading is exactly one notification, the shared tag's own.
+   `TRAY_START` and `PILE` are recorded so the findings text can name what the replace cancelled.
+   Anything else: section 2.2, item 8.
 10. Run `adb -s 8f7ada76 shell dumpsys alarm > ~/athan-device-sweep/session7/alarms-start.txt`, then
     `grep -A1 'com.mugtaba.athan}' ~/athan-device-sweep/session7/alarms-start.txt | grep -o 'tag=\*walarm\*:[A-Za-z_.]*' | sort | uniq -c`.
     Expected: one line ending `tag=*walarm*:ACTION_FORCE_STOP_RESCHEDULE` with count 1 (the year-2036
@@ -379,15 +391,19 @@ predicted relative to what this phase records, never as fixed numbers.
     `python3 ~/athan-device-sweep/session5/bin/devcheck.py clock '2026-09-12 16:42:30'`, then
     `python3 ~/athan-device-sweep/session5/bin/devcheck.py wait 15`.
 11. Save the log and read the posts and the tray:
-    `adb -s 8f7ada76 shell logcat -d > ~/athan-device-sweep/session7/fire-asr.logcat.txt`, then
-    `python3 ai/plans/07-replace-previous-notification/scripts/device/posts.py ~/athan-device-sweep/session7/fire-asr.logcat.txt | tee $TMPDIR/posts-asr.txt`, then
+    `adb -s 8f7ada76 shell logcat -d -b system,events > ~/athan-device-sweep/session7/fire-asr.logcat.txt`, then
+    `python3 ai/plans/07-replace-previous-notification/scripts/device/posts.py ~/athan-device-sweep/session7/fire-asr.logcat.txt '09-12 16:42:30' '09-12 16:47:30' | tee $TMPDIR/posts-asr.txt`, then
     `python3 ai/plans/07-replace-previous-notification/scripts/device/tray.py ~/athan-device-sweep/session7/tray-asr.txt`.
-    Expected: `POSTS 1` (exactly one post; the old PendingIntent delivered nothing), `MUTED 0` (nothing
-    else was due in the 90 seconds), `TRAY <TRAY_START + 1>` with exactly one `NOTIFY
-    tag=athan-notification` line whose channel is `expo_notifications_fallback_notification_channel` (a
-    Silent alert's channel); the other `TRAY_START` lines are the preserved pile's old tags, unchanged.
-    `POSTS 2`, or `TRAY` above `TRAY_START + 1`, or two `athan-notification` lines: section 2.2, items 8
-    and 9: that is the duplicate this phase exists to rule out. Write `POSTS`, `MUTED` and `TRAY` in
+    Expected: `POSTS 1` (exactly one enqueue event; its printed line holds
+    `com.mugtaba.athan,0,athan-notification,0,Notification(channel=expo_notifications_fallback_notification_channel`;
+    the old PendingIntent delivered nothing), `MUTED 0` (the source records 0 on this device; nothing
+    else was due in the 90 seconds), `TRAY 1`
+    with exactly one `NOTIFY tag=athan-notification` line whose channel is
+    `expo_notifications_fallback_notification_channel` (a Silent alert's channel). The pile recorded as
+    `TRAY_START` and `PILE` in 7.0 appears nowhere in the Notification List: item 7's package replace
+    cancelled it, and its tags sit only in the tray save's archive section. `POSTS 2`, a `TRAY` count
+    other than 1, two `athan-notification` lines, or a `PILE` tag as a `NOTIFY` line: section 2.2, items
+    8 and 9: that is the duplicate this phase exists to rule out. Write `POSTS`, `MUTED` and `TRAY` in
     `LOG.md`.
 
 ### 7.3 Replace, channel-crossing, and the same-instant pair
@@ -418,26 +434,31 @@ predicted relative to what this phase records, never as fixed numbers.
    `alarms-before-pair.txt` whose every armed instant is at or after 04:22. Anything else: section 2.2,
    item 7.
 5. The same-instant pair: `adb -s 8f7ada76 shell logcat -c`,
-   `devcheck.py clock '2026-09-13 04:22:00'`, `wait 15`, then the logcat, `posts.py` and `tray.py` saves of
-   7.2 item 11 with the labels `fire-pair.logcat.txt`, `posts-pair.txt`, `tray-pair.txt`. Expected:
-   `POSTS 2` (both notifications posted), `MUTED 0` or `MUTED 1` (recorded either way), `TRAY
-   <TRAY_START + 1>` with exactly one `NOTIFY tag=athan-notification` whose channel is `reminder_fajr_20`
+   `devcheck.py clock '2026-09-13 04:22:00'`, `wait 15`, then
+   `adb -s 8f7ada76 shell logcat -d -b system,events > ~/athan-device-sweep/session7/fire-pair.logcat.txt`, then
+   `python3 ai/plans/07-replace-previous-notification/scripts/device/posts.py ~/athan-device-sweep/session7/fire-pair.logcat.txt '09-13 04:22:00' '09-13 04:27:00' | tee $TMPDIR/posts-pair.txt`, then
+   `python3 ai/plans/07-replace-previous-notification/scripts/device/tray.py ~/athan-device-sweep/session7/tray-pair.txt`.
+   Expected: `POSTS 2` (both notifications posted, each printed line holding
+   `com.mugtaba.athan,0,athan-notification,0`), `MUTED 0` or `MUTED 1` (recorded either way), `TRAY 1`
+   with exactly one `NOTIFY tag=athan-notification` whose channel is `reminder_fajr_20`
    or `extras_at_time` and never `expo_notifications_fallback_notification_channel`. The surviving title
    is whichever posted last; the plan does not predict it, and the owner ruled the system decides
-   (decision 2). `TRAY` above `TRAY_START + 1`, two `athan-notification` lines, or a fallback channel:
+   (decision 2). A `TRAY` count other than 1, two `athan-notification` lines, or a fallback channel:
    section 2.2, items 8 and 9. Write the three numbers in `LOG.md`.
 6. The channel-crossing replace, twenty minutes later, firing nothing on the way (the next armed instant
    after the pair is Fajr at 04:42): `adb -s 8f7ada76 shell logcat -c`,
    `devcheck.py clock '2026-09-13 04:42:00'`, `wait 20`, then the same three saves with the labels
-   `fire-fajr.*`. Expected: `POSTS 1`, `TRAY <TRAY_START + 1>` with exactly one
-   `NOTIFY tag=athan-notification channel=athan_1_v2` line (the default athan), with `MUTED 0`. The notification
-   showing on the reminder's channel was replaced by one on the athan's channel, exactly as its own
-   channel says. Anything else: section 2.2, items 8 and 9.
+   `fire-fajr.logcat.txt`, `posts-fajr.txt`, `tray-fajr.txt` (the posts window
+   `'09-13 04:42:00' '09-13 04:47:00'`). Expected: `POSTS 1`, its printed line holding
+   `com.mugtaba.athan,0,athan-notification,0,Notification(channel=athan_1_v2`, and `TRAY 1` with exactly
+   one `NOTIFY tag=athan-notification channel=athan_1_v2` line (the default athan), with `MUTED 0`. The
+   notification showing on the reminder's channel was replaced by one on the athan's channel, exactly as
+   its own channel says. Anything else: section 2.2, items 8 and 9.
 
 ### 7.4 Four fires, one shared-tag notification
 
 Run `python3 ai/plans/07-replace-previous-notification/scripts/device/tray.py ~/athan-device-sweep/session7/tray-end.txt`.
-Expected: `TRAY <TRAY_START + 1>` with exactly one `NOTIFY tag=athan-notification`. Four shared-tag posts
+Expected: `TRAY 1` with exactly one `NOTIFY tag=athan-notification`. Four shared-tag posts
 have happened since 7.2 (Asr, the pair's two, Fajr) and they left exactly one notification between them:
 finding 73's 50-notification cap cannot be reached by this app again. Write it in `LOG.md`.
 
@@ -493,7 +514,8 @@ measured:
 - `<TESTS>`: the `Tests:` line of step 1's commit log;
 - `<OLD_ALARMS>`, `<AFTER_UPDATE_ALARMS>`, `<PAIR_ALARMS>`: the alarm counts `LOG.md` records in sections
   7.2 and 7.3;
-- `<TRAY_START>`: the tray count `LOG.md` records in section 7.0 (the preserved pile);
+- `<TRAY_START>`: the tray count `LOG.md` records in section 7.0 (the pile the update's package replace
+  cancelled);
 - `<ASR_POSTS>`, `<PAIR_POSTS>`, `<PAIR_MUTED>`, `<FAJR_POSTS>`: the `posts.py` numbers `LOG.md` records;
 - `<PAIR_CHANNEL>`: the surviving pair notification's channel from `tray-pair.txt`.
 
@@ -515,27 +537,32 @@ cancelling and the stored requests keep the app's unique identifiers. The suite
 `plugins/__tests__/replacePreviousNotification.test.ts` pins the manifest surgery, the Kotlin, the plugin's
 place in `app.json` and `app.config.ts`, and the upstream seams the change rides on (the open
 `presentNotification`, the protected-open `getPresentationDelegate`, the library's single posting site, its
-receiver's declaration and actions).
+receiver's declaration and actions). Posts in this proof are counted from the system's
+`notification_enqueue` events (owner, 2026-09-17): this device drops the
+`NotificationService: enqueueNotificationInternal` DEBUG lines the plan first read, while the events
+buffer logs every enqueue.
 
 On the 3T (mock builds of the parent and the new commit, the clock driven to the fixed mock days):
 
 - **The artifact:** the new APK's own manifest holds the app's receiver and not expo's (7.1).
 - **The update path:** alarms armed by the stacking build (<OLD_ALARMS>) were still in AlarmManager after
   the update alongside the re-armed ones (<AFTER_UPDATE_ALARMS>), and driving to the instant produced
-  exactly <ASR_POSTS> post and a tray of <TRAY_START> plus one, exactly one of them under the shared tag:
-  the old build's PendingIntents, whose receiver is no
-  longer in the manifest, delivered nothing. No duplicates.
+  exactly <ASR_POSTS> post and a tray of exactly one, under the shared tag: the old build's
+  PendingIntents, whose receiver is no longer in the manifest, delivered nothing. No duplicates. The
+  <TRAY_START> notifications stacked before the update were cancelled by the package replace itself
+  (they sit in the tray save's archive section): Android clears an app's posted notifications when its
+  package is replaced, so the update removed the pile without the app dismissing anything.
 - **Replace:** a Sound reminder on `reminder_fajr_20` and, twenty minutes later, the athan on `athan_1_v2`:
-  <PAIR_POSTS> posts at the shared instant left the tray at the pile it started with (<TRAY_START>
-  notifications stacked before the update, still there by the owner's ruling) plus exactly one under the
-  shared tag on `<PAIR_CHANNEL>` (Android muted <PAIR_MUTED> of them as recently noisy), and the athan's
-  fire left exactly one shared-tag notification on `athan_1_v2`. After four fires the shared-tag count was
+  <PAIR_POSTS> posts at the shared instant left the tray at exactly one under the shared tag on
+  `<PAIR_CHANNEL>` (<PAIR_MUTED> muted, recorded), and the athan's fire left exactly one shared-tag
+  notification on `athan_1_v2`. After four fires the shared-tag count was
   one: finding 73's 50-notification cap is unreachable through this app's posts.
 - Every sound that played was the app's own file or none: the owner's one condition held.
 
-The owner's rulings carried here: notifications stacked before the update stay for the user to swipe
-(2026-09-17); same-instant pairs are left to the system, one sound at a time, which the owner's own earlier
-nine-run test had already shown (2026-09-13 and 2026-09-17).
+The owner's rulings carried here: no cleanup code for notifications stacked by earlier builds
+(2026-09-17), Android's own package-replace cancellation clearing that pile at the update, verified
+during this proof; same-instant pairs are left to the system, one sound at a time, which the owner's own
+earlier nine-run test had already shown (2026-09-13 and 2026-09-17).
 
 iOS is session 8 (`ai/prompts/ios-replace-previous-notification.md`).
 
@@ -551,7 +578,8 @@ on or pushed to EAS, and `releases.json` is untouched. The evidence is in `~/ath
 - **`ai/prompts/README.md`, for the auditor to apply on PASS:** replace row 7's last cell `queued` with
   `**DONE** <DATE>, <step 1 version>: every Android notification posts under one shared tag, so the newest
   replaces the one before it; the update path, a same-instant Sound pair and a channel-crossing replace
-  proven on the 3T. The old stacked pile stays for the user to swipe (owner, 2026-09-17)`.
+  proven on the 3T. The update itself clears the old stacked pile: Android cancels an app's posted
+  notifications on package replace (no dismissal code, owner, 2026-09-17)`.
 
 ### 8.3 Docs commit
 
@@ -638,8 +666,9 @@ Time: <output of date '+%H:%M:%S %d.%m.%Y'>
 
 Session 7 is executed and waits for its audit. One commit, merged into uat-2 on this Mac, not pushed:
 - A config plugin posts every Android notification under one shared tag, so the newest replaces the one
-  before it. Scheduling, identifiers and every bell are untouched; the notifications stacked before the
-  update stay for you to swipe, as you decided.
+  before it. Scheduling, identifiers and every bell are untouched; the notifications stacked by earlier
+  builds are cleared by the update itself, because Android cancels an app's posted notifications on
+  package replace, so no cleanup code was needed.
 - Proven on the 3T with the clock driven: the update produced no duplicate posts, a same-instant Sound pair
   left one notification with at most one sound, and an athan replaced a reminder across channels, with the
   tray holding exactly one notification after four fires.
