@@ -1,0 +1,3 @@
+export const setSequence = (type: ScheduleType, date: Date): void => {
+  const sequenceAtom = getSequenceAtom(type);
+  const built = PrayerUtils.createPrayerSequence(type, date, 3);

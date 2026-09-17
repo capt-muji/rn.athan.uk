@@ -1,0 +1,4 @@
+jest.mock('@/shared/prayer', () => ({
+  createPrayerSequence: (...args: unknown[]) => mockCreatePrayerSequence(...args),
+  createPrayersForDate: (type: ScheduleType, date: string) => mockCreatePrayersForDate(type, date),
+}));
