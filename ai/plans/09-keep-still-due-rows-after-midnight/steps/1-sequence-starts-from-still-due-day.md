@@ -365,8 +365,8 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
 
 7. **Breaks.** Run `bash ai/plans/09-keep-still-due-rows-after-midnight/scripts/breaks-1.sh > $TMPDIR/breaks-1.log 2>&1`
    in the background. It takes about 40 seconds. Expected: three lines starting `BREAK 1`, each saying
-   `AS EXPECTED` (1a and 1c each with `Tests: 2 failed, 225 passed, 227 total`; 1b with
-   `Tests: 27 failed, 200 passed, 227 total`, because inverting the look-back mis-sizes every London
+   `AS EXPECTED` (1a and 1c each with `Tests: 2 failed, 219 passed, 221 total`; 1b with
+   `Tests: 27 failed, 194 passed, 221 total`, because inverting the look-back mis-sizes every London
    sequence too), and the last line `ALL AS EXPECTED: 1`. A line saying `NOT AS EXPECTED` or `the
    substitution did not change`: STOP and ask "break `<name>` did not behave as the plan says:
    `<that line>`; what do I do?". Afterwards, `git status --porcelain` must list only this step's
