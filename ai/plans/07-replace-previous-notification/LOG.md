@@ -568,9 +568,158 @@ File names for this run keep the plan's own names where free (`fire-pair.*`, `fi
 
 ### 7.2 final run
 
+Items 1-5 (13:03-13:05): old build `Success` 1.27.197 on the real clock, backward drive to
+2026-09-12 08:00, clean `cold old-cold-3` (Asr silent, Magrib off), Asr bell tapped (the sheet read
+flaked once, `DUMP FAILED`, so the arming is proven by the dump below), Silent tapped, back, wait 10.
+Item 6 (`alarms-old-armed-3.txt`): `NOTIFICATION_EVENT` 4 — the phase's own Asr 2026-09-12 16:42 and
+2026-09-13 16:40, plus two real-date Asr alarms (2026-09-17 16:34, 2026-09-18 16:33) stranded by the
+re-run itself: my 12:43 disarm armed them under the NEW build's receiver, and the old build's sweep
+cannot cancel our-receiver PendingIntents (the plan's section 4.1 orphan class, inverted). Recorded
+`OLD_ALARMS=4` with the residue named. Items 7-8: new build `Success` 1.27.198;
+`alarms-after-update-3.txt` count 4 = `AFTER_UPDATE_ALARMS` (the bound's letter holds). Item 9
+(`alarms-before-asr-3.txt`): six armed, every instant at or after 16:42 (the Asr pair doubled as the
+dead-old double materialized; the residue beyond). Items 10-11: `logcat -c`, drive to 16:42:30, wait
+15; the events buffer (cleared by this session just before the drive, so the window is exact) holds
+exactly one enqueue — `09-12 16:42:30.092 ... com.mugtaba.athan,0,athan-notification,0` on the
+fallback channel; `tray-asr-3.txt` reads `TRAY 1` with that one notification; `fire-asr-3.logcat.txt`
+re-saved as `logcat -d -b system,events` and the amended `posts.py` call prints `POSTS 1`, `MUTED 0`,
+`REFUSED 0`. The dead double delivered nothing. `ASR_POSTS=1`, `ASR_MUTED=0`, `TRAY 1`.
 
+### 7.3 final run, to the item 4 stop
 
+Item 1: drive to 2026-09-13 03:00 (nothing armed on the way), clean `cold new-cold-2` (Sunday,
+Fajr 04:42 next, Asr silent held). Item 2: Fajr sheet opened (`new-fajr-sheet-f2` after one flaked
+read); the stepper already read 20 min — the interrupted 12:36 arming had stored interval 20 — so
+the plan's three plus taps were SKIPPED (they would have landed 35, not the plan's 20); Sound,
+reminder switch, reminder Sound tapped; `new-fajr-20-f` verifies `20 min` and `Increase to 25 min`;
+back, wait 10. Item 3: Extras swipe, Suhoor sheet (`new-suhoor-sheet` reads `Suhoor`, row time
+04:22 — the pair instant), Sound, back, wait 10.
 
+Item 4 (`alarms-pair.txt`): `PAIR_ALARMS=11`. The eight the plan enumerates are armed exactly as
+written — 09-13 04:22 ×2 (Suhoor and the reminder), 04:42, 16:40 ×2 (the dead double), 09-14 04:24
+×2, 04:44, 16:39 — nine alarms, inside every multiplicity the plan gives. The two real-date residue
+alarms (09-17 16:34, 09-18 16:33) also remain: nothing the app does cancels them (no stored request
+names them any more), they sit at or after 04:22, and they push the count past the plan's bound
+(`AFTER_UPDATE_ALARMS` + 5 = 9). They fire only at 7.5's `auto` return, where no value is asserted.
+The plan's letters for item 4 cannot be satisfied while the residue exists, so per section 2.2,
+item 7: asking the owner. The phone is frozen at 03:02 on 2026-09-13; if the answer waits past real
+~14:40 the pair fires on its own, and its enqueue records survive in the events buffer either way
+(`posts.py`'s windows are device-clock stamps).
 
+The owner answered 13:16 17.09.2026: **continue, orphans expected** — the two real-date orphans are
+recorded as expected re-run residue (named in LOG.md and the findings text), `PAIR_ALARMS=11` with
+the nine pair-phase alarms inside every multiplicity the plan gives, and the proof continues to
+7.3 items 4b-6 and 7.4-7.5 as written.
+
+[Superseded about four minutes later by the owner's replan-from-scratch order, given to this
+session's re-ask of the same question; see the correction entry of 13:41. — sixth successor]
+
+## Resumed, 13:19 17.09.2026 (GLM 5.3, execution session, sixth successor)
+
+The orchestrator's resume note still describes the 12:36 wrap-up state (real clock, `auto_time` 1),
+so it predates the final run above; the predecessor's item-4 question never reached the owner
+because its reply was thrown away. Verified by reads only, before anything else ran:
+
+- Repository: checkout on `uat-2` = `origin/uat-2` = `b6e2df27` (the amendment, 1.27.200); the tree
+  holds only this `LOG.md` modified. Pre-flight for k=2: `VERSION 1.27.200`, `NEEDS FIRST nothing`,
+  `PREFLIGHT OK`.
+- No other driver: no devcheck or adb client process runs (the 11:42 window, PID 45558, sits
+  dormant on its unanswered question, as the owner left it); the final-run session's process is
+  gone, its last artifact `alarms-pair.txt` written 13:12.
+- Phone: `device`, mock clock `2026-09-13 03:06` and ticking, `auto_time` 0, keyguard clear, new
+  build 1.27.198. Alarm tags: `NOTIFICATION_EVENT` 11, `ACTION_FORCE_STOP_RESCHEDULE` 1 — the
+  item-4 stop state, unchanged.
+- `alarms-pair.txt` re-derived from its alarm headers: 09-13 04:22 ×2, 09-13 04:42, 09-13 16:40 ×2,
+  09-14 04:24 ×2, 09-14 04:44, 09-14 16:39 (the plan's eight, each once or twice) plus the two
+  real-date residue alarms 2026-09-17 16:34 and 2026-09-18 16:33: `PAIR_ALARMS=11`, as recorded.
+
+Re-asking the predecessor's section 2.2 item 7 question, with the plan's wording: "The alarm dump
+at section 7.3 item 4 holds 11 app alarms — the plan's eight armed exactly as written, plus two
+real-date Asr alarms (2026-09-17 16:34 and 2026-09-18 16:33) that no action the plan permits can
+cancel. What do I do?" Options offered: license the residue and proceed (items 5-6 and 7.4 run as
+written, the deviation recorded); purge the residue by a device action (one forward drive past
+2026-09-18 16:33 fires them along with everything else, then 7.3 re-runs from item 1 and its dump
+holds exactly the eight, about 40 minutes); or NEEDS REPLAN. Timing: the pair fires on its own at
+device 04:22, about real 14:30; an answer after that adds a re-arm cycle (drive back to 03:00,
+cold launch, the stored preferences re-arm the eight) before items 5 and 6 can run.
+
+## STOP, 13:25 17.09.2026: the owner ordered a replan from scratch (GLM 5.3, execution session)
+
+The owner answered the item-4 question at about 13:20:
+
+🐋  "You seem to be asking me a lot of questions. Perhaps we should replan this entire task and
+execute it properly like stop all the sessions, replan everything, execute it, etc. Like do it
+from scratch again."
+
+Applied as NEEDS REPLAN (`EXECUTOR-BRIEF.md` section 7: the owner's answer changes the plan; never
+write the change myself). Step 1 stays merged and DONE; the device proof stops mid-run and the plan
+returns to the planning session for a full refresh and one clean re-execution.
+
+**Device anomaly, recorded before the cleanup.** Between this session's 13:15 reads and 13:21 the
+device clock returned to real time with `auto_time` 1, though this session issued no clock or
+settings command (its only device actions were reads (`dumpsys alarm`, `date`, `dumpsys package`,
+a tray dump) plus `svc power stayon false` at the end). The jump consumed the phase's armed alarms;
+the events buffer holds the fires: five `notification_enqueue` entries at 09-17 13:22:11, every one
+under `athan-notification` (fallback, `reminder_fajr_20`, `extras_at_time`, `athan_1_v2`,
+fallback), posted by the app process the alarms woke, with two `Muting recently noisy` lines beside
+them. The tray afterwards reads `TRAY 1` with exactly one shared-tag notification
+(`tray-after-replan.txt`): five posts inside 100ms left one showing. The two real-date residue
+alarms (09-17 16:34, 09-18 16:33) remain armed and will fire on their own under the shared tag.
+
+**Cleanup per section 10.3:** the clock and `auto_time` were already real when read at 13:21, so no
+`devcheck.py auto` was needed; `svc power stayon false` set, keyguard clear (`showing=true` count
+0), `auto_time` 1 verified, and the phone is left on the new build 1.27.198, the last one installed.
+The owner's real alerts are not active on this mock build; the replan decides the end state. The
+11:42 window (PID 45558) still sits in the process list on its unanswered question; the owner said
+they are closing it, and the replan should find it gone.
+
+The row moves to NEEDS REPLAN; the replan docs commit follows (`EXECUTOR-BRIEF.md` section 4b).
+
+## Correction and collision record, 13:41 17.09.2026 (GLM 5.3, execution session, sixth successor)
+
+Written for the replan session, after the docs commit's review exposed what this session could not
+see while it worked. Three corrections and one collision:
+
+1. **The 13:16 ruling above is real and was superseded.** The predecessor did not die at its 13:12
+   item-4 stop: it was continued by its sessionID, asked its question, and the owner answered at
+   13:16 ("continue, orphans expected", the entry above). While this session verified state
+   (13:14-13:19, reads only), the predecessor was already executing that license and ran 7.3 items
+   4b-6, 7.4 and into 7.5. This session's Resumed entry ("the predecessor's item-4 question never
+   reached the owner because its reply was thrown away") was therefore wrong, and its STOP entry's
+   opening ("The owner answered the item-4 question at about 13:20") is true only of this session's
+   re-ask: the owner, answering the same question a second time inside four minutes, ordered the
+   whole task replanned from scratch. The 13:20 order supersedes the 13:16 license.
+
+2. **The "device anomaly" was the predecessor's 7.5.** The clock return to real time at about 13:21
+   was its `devcheck.py auto` (7.5 item 2), not an unexplained event: the five `notification_enqueue`
+   entries at 09-17 13:22:11 are the `AUTO_FIRES` the plan's 7.5 item 2 records (no value asserted).
+   This session's `svc power stayon false` (13:24) landed mid-7.5 and could have let the screen sleep
+   under its final cold launch and screenshot; the screen stayed awake and its 13:27-13:29 artifacts
+   (`final-cold`, `mock-final.png`, `alarms-end.txt`) exist.
+
+3. **The shared tree collided.** At about 13:30 the predecessor detached the main checkout at
+   `45754e60` (its plan's REALITY_CHECK step), which rewrote the plan files to their pre-amendment
+   state and wiped this session's records from the working tree; this session put its branch back at
+   13:37. Everything this session recorded survives in this branch's commit (amended after this
+   entry). The predecessor's Reality Checker reads the main checkout's paths, so it saw the
+   pre-amendment PLAN.md and a LOG.md missing every device-proof reading (then this branch's files
+   mid-read): its verdict cannot judge the amended plan. Its own post-13:16 records (7.3 items 4b-6,
+   7.4, 7.5 readings) were wiped from the tree with everything else and survive only in the sweep
+   folder `~/athan-device-sweep/session7/` and its process. The predecessor session must be stopped
+   before the replan runs (the owner's 13:20 order stops every session); only the orchestrator can
+   stop it.
+
+4. **Review round 1 (Code Reviewer, GLM 5.3): fix first.** Finding 1 asked for the 13:16 paragraph's
+   deletion on the belief the ruling never happened; corrected instead, per the truth in item 1, by
+   marking it superseded — deleting it would erase a real owner ruling from the record. Finding 2
+   (the reads parenthetical listing a write among the reads) is reworded as the reviewer specified.
+   Both fixes touch only this session's own LOG prose, change nothing the plan specifies, and leave
+   the docs commit's acceptance (the status row and LOG.md match what happened) met; recorded here
+   per `EXECUTOR-BRIEF.md` section 4, item 8.
+
+The phone at handoff: real clock, `auto_time` 1, `stayon false`, keyguard clear, installed build
+`versionName=1.27.198` (the predecessor's final mock APK of the same `FINAL` commit is also 1.27.198,
+so which of the two is installed cannot be read from the version alone). The row on `uat-2` once
+this branch merges: NEEDS REPLAN. The replan re-baselines the phone, the plan and the proof.
 
 
