@@ -64,6 +64,12 @@ describe('genNextXDays', () => {
     expect(days[0]).toBe(prayerZoneDate());
   });
 
+  it('starts from a given start date when one is given', () => {
+    const days = genNextXDays(3, '2026-08-28');
+
+    expect(days).toEqual(['2026-08-28', '2026-08-29', '2026-08-30']);
+  });
+
   it('generates consecutive days', () => {
     const days = genNextXDays(3);
     const date0 = new Date(days[0]);
