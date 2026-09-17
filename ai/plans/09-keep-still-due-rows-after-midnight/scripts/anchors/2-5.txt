@@ -1,0 +1,2 @@
+export const genScheduleDatesForPrayer = (scheduleType: ScheduleType, englishName: string): string[] =>
+  genNextXDays(rollingDaysForPrayer(scheduleType, englishName));

@@ -1,0 +1,2 @@
+const mockCreatePrayerSequence = jest.fn();
+const mockCreatePrayersForDate = jest.fn((_type: ScheduleType, _date: string): Prayer[] => []);
