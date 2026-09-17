@@ -154,7 +154,7 @@ VERSION <the version uat-2 carries, 1.27.211 or higher>
 NEEDS FIRST nothing
 ANCHOR <id> <file> 1
 <one line per anchor of step <k>>
-STEP1 PRESENT
+STEP1 PRESENT <only printed when <k> is 2 or 3>
 MOCK KEYED
 PREFLIGHT OK
 ```
