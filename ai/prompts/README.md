@@ -147,6 +147,18 @@ None of these is a session yet. Each needs the owner's decision first.
   days later (2026-09-08 to 2026-09-19) so each prediction sits on the date the proof drives the clock
   to; the prayer values are unchanged.
 
+## Decided by the owner, 2026-09-17, during session 7's device proof
+
+- **Session 7's posts reading comes from the system's `notification_enqueue` events, and the tray is
+  asserted as exactly one shared-tag notification.** The owner's 12:34 answer to the 12:31 question,
+  relayed with the 12:39 delegation to the planning session: this device drops the
+  `NotificationService: enqueueNotificationInternal` DEBUG lines the plan first read, while the events
+  buffer logs every post; and Android cancels an app's posted notifications on package replace, so the
+  update itself cleared the stacked pile and `TRAY` reads 1 after each fire. No dismissal code exists;
+  the earlier "the tray keeps whatever was stacked before the update" ruling keeps only its code
+  consequence. The planning session amended the plan letter to match (version 1.27.199): 7.2 item 11's
+  measured readings stand, and execution resumes at 7.3 with the row still IN PROGRESS.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their
