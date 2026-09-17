@@ -288,8 +288,8 @@ prove London unchanged; `shared/__tests__/constants.test.ts` pins the ceiling ar
 
 ## 6. Steps
 
-- [ ] Step 1: the sequence starts from the earliest list day that is still current (specified;
-      `steps/1-sequence-starts-from-still-due-day.md`)
+- [x] Step 1: the sequence starts from the earliest list day that is still current (specified;
+      `steps/1-sequence-starts-from-still-due-day.md`) DONE in 248d971d10b055e449743af6f065300e97123305
 - [ ] Step 2: the alarm window starts from the still-due list day, and a refused cancel keeps its
       record (specified; `steps/2-alarm-window-and-refusal-records.md`)
 - [ ] Device proof: section 7
