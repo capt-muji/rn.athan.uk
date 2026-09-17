@@ -93,4 +93,42 @@ proof reads. No file was changed; the tree is as the planning session left it.
 Question to the owner, the plan's section 3 words: "The pre-flight failed: `PREFLIGHT FAILED: the
 branch is docs/plan-7-20260917-0800, not uat-2`. What do I do?" Asked 08:05 17.09.2026.
 
+The owner answered at 08:06 17.09.2026: **resume the planning session** (of the three options offered:
+resume planning, this session merges without pushing, or wait). The planning session therefore finishes
+its own `PLANNER-BRIEF.md` section 8, item 5 ritual for `0f36e7e5`: merge
+`docs/plan-7-20260917-0800` into `uat-2`, then push. This execution session merges and pushes nothing
+and step 1 stays unstarted; it resumes with this plan's pre-flight once that merge is on `uat-2`.
+
+## Resumed, 11:45 17.09.2026 (GLM 5.3, execution session, second successor)
+
+The planning merge landed (`uat-2` = `origin/uat-2` = `aaabb12a`, which carries the re-keyed mock). The
+predecessor execution session completed step 1 through its commit and died before part 9; LOG.md held
+no "Resume from" note, so this session reconstructed the state from git and the predecessor's
+`$TMPDIR` logs, all still present and all matching the plan's expectations:
+
+- pre-flight `bash $TMPDIR/preflight-7.sh 1` (08:11) preceded the red run, so it passed;
+- red: `Cannot find module '../replacePreviousNotification'`, `Tests: 0 total` (`$TMPDIR/red-1.log`);
+- green: `Tests: 10 passed, 10 total` (`$TMPDIR/green-1.log`);
+- breaks: 1a/1b/1c/1e `1 failed, 9 passed, 10 total`, 1d `2 failed, 8 passed, 10 total`, last line
+  `ALL AS EXPECTED: 1` (`$TMPDIR/breaks-1.log`);
+- commit `1fa6913a` (1.27.198) on `feat/shared-notification-tag` off `aaabb12a`, hook log
+  (`$TMPDIR/commit-1.log`): last `Tests: 4511 passed, 4511 total`, `Statements/Branches/Functions/Lines`
+  all `100%`, no `Coverage gate:` line. The checkout was left detached at the commit; this session
+  moved it back onto the branch (same sha, no file change).
+
+The pre-flight was not re-run on resume: its branch check requires `uat-2`, which is necessarily false
+mid-step on the step branch; every check it performs was served at 08:11 before the step started.
+
+### Step 1 review, round 1 (Code Reviewer, GLM 5.3): fix first
+
+One finding: `plugins/replacePreviousNotification.js` carries three of the step's four required
+why-comment subjects but not the fourth, "why the manifest edits are guarded (prebuild re-runs)". The
+reviewer's exact fix (a two-line comment above `const hasOurs`) was applied verbatim. It meets all
+three of `EXECUTOR-BRIEF.md` section 4, item 8's conditions: it touches only code the plan did not
+give verbatim, it changes no name, signature, behaviour, log line or test, and every acceptance
+criterion stays met. Re-verified after the edit: `breaks-1.sh` ended `ALL AS EXPECTED: 1`
+(`$TMPDIR/breaks-1-recheck.log`), `npx tsc --noEmit` exit 0, `npx biome check . --error-on-warnings`
+clean. The commit was amended and the same reviewer resent the new sha.
+
+
 
