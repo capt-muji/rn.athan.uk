@@ -4,7 +4,9 @@
 # Run from the repository root:
 #   zsh ai/plans/08-ios-replace-previous-notification/scripts/build-study.sh
 # Ends: STUDY BUILDS OK
-set -euo pipefail
+# No pipefail: `grep -m1`/`grep -q` exit on their match and SIGPIPE a
+# still-writing producer, turning successes into failures.
+set -eu
 
 REPO=/Users/muji/repos/rn.athan.uk
 PLAN=$REPO/ai/plans/08-ios-replace-previous-notification

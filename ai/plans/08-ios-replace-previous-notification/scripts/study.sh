@@ -11,7 +11,9 @@
 # Screenshots are corroboration only: without a gesture no Mac-side tool can
 # show Notification Center, so the load-bearing evidence is the NOTIFY-STUDY
 # log lines the app itself writes. Nobody but the audit session reads images.
-set -uo pipefail
+# No pipefail: `grep -q` exits on its match and SIGPIPEs a still-writing
+# producer (tail), turning every successful wait into a failure.
+set -u
 
 UDID=00008020-0015585C22D2002E
 BUNDLE=com.mugtaba.athan.experiments
