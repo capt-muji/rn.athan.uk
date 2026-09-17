@@ -3,8 +3,8 @@
 | Field | Value |
 | --- | --- |
 | Brief | `ai/prompts/keep-still-due-rows-after-midnight.md` |
-| Planned at | `07042baf` (version 1.27.210), 2026-09-17 |
-| Planned by | Planning session on 2026-09-17, GLM 5.3 (design review: Software Architect on GLM 5.3) |
+| Planned at | `7289894a` (version 1.27.214), 2026-09-17; refreshed the same evening after the step 2 coverage stop |
+| Planned by | Planning session on 2026-09-17, GLM 5.3 (design review: Software Architect on GLM 5.3); replanned 2026-09-17, GLM 5.3, after the owner ordered the missing coverage test added |
 | Needs first | nothing |
 | Steps | 2, each one branch, one commit, one version; then the device proof, section 7 |
 | Device | OnePlus 3T: the installed 1.27.202 mock build is baselined (purge and disarm), then mock builds of `uat-2` head, then the final Asr-next mock build |
@@ -89,6 +89,13 @@ The owner's rules that apply, quoted:
    `athan-storage` is never touched because a mock build only opens `athan-storage-dev`.
 10. **Two steps, the screen half first.** Planner: each leaves `uat-2` green, each is one branch, one
     commit, one version, one review.
+11. **The step 2 coverage gap is closed by a test, not by narrowing the change.** Owner, 2026-09-17,
+    answering the executor's stop: the step 2 commit was refused by the 100% coverage gate because no
+    named test ever called `canStillFire` with a record older than yesterday (`stores/notifications.ts`
+    line 120's `return false`). The owner chose "add the missing test" over merging without it, so the
+    refreshed step 2 carries a sixth alarm test that refuses a cancel of a record two days old and
+    asserts the record is dropped, and a fifth break pins the same decision. Recorded in
+    `ai/prompts/README.md`.
 
 ### 2.2 The executor must not decide
 
@@ -144,13 +151,13 @@ $TMPDIR/preflight-9.sh <k>`, where `<k>` is the first item of section 6's checkl
 
 The script is saved as `ai/plans/09-keep-still-due-rows-after-midnight/scripts/preflight.sh`. It
 checks the checkout, the branch, the tree (only the three plan files may be dirty), `origin/uat-2`,
-the version (never lower than 1.27.211, the planning commit's), "Needs first", this step's anchors,
-step 1's work being present when `<k>` is 2 or 3, the fixed-days mock's keying on the five driven
+the version (never lower than 1.27.214, the refreshed planning commit's), "Needs first", this step's
+anchors, step 1's work being present when `<k>` is 2 or 3, the fixed-days mock's keying on the five driven
 dates, the device scripts, jest, node, python3, perl, `android/app/build.gradle`, `mocks/simple.ts`,
 and the 3T itself. Expected output:
 
 ```text
-VERSION <the version uat-2 carries, 1.27.211 or higher>
+VERSION <the version uat-2 carries, 1.27.214 or higher>
 NEEDS FIRST nothing
 ANCHOR <id> <file> 1
 <one line per anchor of step <k>>
@@ -173,7 +180,7 @@ PREFLIGHT OK
 | `shared/prayer.ts` | The list builders over storage: `createPrayerSequence` (explicit start day), `createPrayersForDate`, `getPrayerForDate`. Midnight/Last Third and Istijaba carry exact instants; Magrib and Isha in the small hours shift their instant to the next calendar day and keep their own list day | Step 1 adds `firstStillDueListDay`; step 2 adds `firstStillDueListDayForPrayer` |
 | `stores/schedule.ts` | Holds the sequences and the derived atoms. `setSequence` builds three list days from a start instant and skips identical writes; `refreshSequence` filters passed rows and fetches more, keeping still-to-cue rows; `findPreviousPrayer` falls back to the list before from storage with a guard against a still-to-come row | Step 1 changes where `setSequence` starts |
 | `shared/notifications.ts` | The window arithmetic: `genNextXDays` (today-anchored), `rollingDaysForPrayer` (2 list days, 3 for Midnight and Last Third), `genScheduleDatesForPrayer` (the single source both schedule paths read) | Step 2 gives `genNextXDays` an optional start and `genScheduleDatesForPrayer` the still-due start |
-| `stores/notifications.ts` | The scheduling paths, the stale-cancel, the repair marks, the sweep, the empty-cache guard, `canStillFire` | Step 2 changes `canStillFire` and one comment only |
+| `stores/notifications.ts` | The scheduling paths, the stale-cancel, the repair marks, the sweep, the empty-cache guard, `canStillFire` | Step 2 changes `canStillFire`, its `ISLAMIC_DAY,` import line and one comment only |
 | `stores/sync.ts`, `stores/bootstrap.ts`, `device/listeners.ts`, `stores/countdown.ts` | The rebuild and tick paths that call `setSequence` (launch, foreground return, bootstrap) and the boundary ticker | Read only: they inherit the fix |
 | `shared/constants.ts` + `shared/__tests__/constants.test.ts` | `NOTIFICATION_ROLLING_DAYS = 2` with the iOS 64-pending ceiling computed from `rollingDaysForPrayer` | Read only: the window length is untouched, so the ceiling proof stands |
 | `stores/__tests__/alarmHarness.ts` | The in-memory OS the alarm suites arm through | Read only: step 2's tests import more of it |
@@ -181,11 +188,10 @@ PREFLIGHT OK
 ### 4.2 Anchors
 
 Every anchor is saved in full under `scripts/anchors/`, listed in `anchors/manifest.txt`, and counted
-by `scripts/check-anchors.sh`. All were counted 1 at `07042baf`, with one exception the manifest
-carries: **anchor `2-2`** anchors the import line step 1 itself inserts
-(`import { findNextReadable } from '@/shared/sequence';`), so it cannot exist at `07042baf`; it was
-counted 1 in the planning spike's post-step-1 tree and counts 1 again when step 2's part 0 runs. Its
-file is `shared/prayer.ts`.
+by `scripts/check-anchors.sh`. All were counted 1 at `07042baf`, and all eleven of step 2's were
+counted 1 again at `7289894a` after step 1 merged: anchor `2-2` anchors the import line step 1
+inserts (`import { findNextReadable } from '@/shared/sequence';`), which now sits on `uat-2` itself.
+Its file is `shared/prayer.ts`.
 
 | Anchor | File | What it locates | Used by |
 | --- | --- | --- | --- |
@@ -277,21 +283,29 @@ prove London unchanged; `shared/__tests__/constants.test.ts` pins the ceiling ar
   identity-skip, the interleavings, London byte-identical across both clock changes and 1 January,
   the widget layer, and the ceiling arithmetic.
 - **Spike.** The whole change was built in a throwaway worktree at `07042baf` and thrown away, as the
-  brief requires. Measured there, and quoted in the steps: the step 1 red run
+  brief requires, and rebuilt at `7289894a` for the replan from the executor's saved step 2 work,
+  with the owner's missing test added, and thrown away again. Measured there, and quoted in the
+  steps: the step 1 red run
   (`Tests: 10 failed, 211 passed, 221 total`) with each named failure's first line; the step 2 red
-  run (`Tests: 11 failed, 193 passed, 204 total`); both green runs; the step-1-only tree passing the
+  run (`Tests: 11 failed, 194 passed, 205 total`); both green runs (step 2:
+  `Tests: 205 passed, 205 total`); the step-1-only tree passing the
   whole suite at `Tests: 2 skipped, 4515 passed, 4517 total`; the final tree at
-  `Tests: 2 skipped, 4527 passed, 4529 total` (159 suites) with `npx tsc --noEmit` and
-  `npx biome check . --error-on-warnings` both exit 0; and all seven breaks landing
-  (`ALL AS EXPECTED: 1`). One trap the spike caught that the plan carries: `Date.parse` rejects an
-  unpadded `T6:00`, so `canStillFire`'s cutoff hour is padded.
+  `Tests: 2 skipped, 4528 passed, 4530 total` (159 suites) with `npx tsc --noEmit` and
+  `npx biome check . --error-on-warnings` both exit 0, coverage 100% on all four measures; and all
+  eight breaks landing (`ALL AS EXPECTED: 1`, step 2's five including the replan's `2e`). One trap
+  the spike caught that the plan carries: `Date.parse` rejects an
+  unpadded `T6:00`, so `canStillFire`'s cutoff hour is padded. One more, caught by the replan's own
+  first attempt: a `perl` substitution whose search text holds a bare `(` opens a regex group instead
+  of matching the literal parenthesis, so break `2e`'s search text escapes both of `if (...)`'s
+  parens.
 
 ## 6. Steps
 
 - [x] Step 1: the sequence starts from the earliest list day that is still current (specified;
       `steps/1-sequence-starts-from-still-due-day.md`) DONE in 248d971d10b055e449743af6f065300e97123305
 - [ ] Step 2: the alarm window starts from the still-due list day, and a refused cancel keeps its
-      record (specified; `steps/2-alarm-window-and-refusal-records.md`)
+      record (specified; `steps/2-alarm-window-and-refusal-records.md`; refreshed 2026-09-17 with the
+      sixth alarm test and break `2e`, the owner's answer to the coverage stop)
 - [ ] Device proof: section 7
 
 Each step is written out in full in its file under `steps/`, is one branch, one commit, one version,
