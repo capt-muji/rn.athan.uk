@@ -186,6 +186,13 @@ None of these is a session yet. Each needs the owner's decision first.
   subagents for now." Planning, including its review, ran without any; the plan carries the rule
   into execution and audit.
 
+## Decided by the owner, 2026-09-17, after session 8
+
+- **iOS needs no build.** The owner's words: "We already have the Android fixed... iOS, they can
+  swipe away, it's not a problem. We can just ignore iOS." Session 8's four options are declined;
+  the iOS pile stays until the user clears it. The research stands recorded in
+  `ai/features/uat-2/AUDIT-FINDINGS.md` ("Session 8 of the queue") should this ever be revisited.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their
