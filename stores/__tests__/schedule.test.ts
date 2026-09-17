@@ -34,9 +34,15 @@ jest.mock('@/shared/time', () => ({
 const mockCreatePrayerSequence = jest.fn();
 const mockCreatePrayersForDate = jest.fn((_type: ScheduleType, _date: string): Prayer[] => []);
 
+// The scripted describes above the real builder need no look-back, so the default answers today
+const mockFirstStillDueListDay = jest.fn((_type: ScheduleType, now: Date) =>
+  jest.requireActual('@/shared/time').formatDateShort(now)
+);
+
 jest.mock('@/shared/prayer', () => ({
   createPrayerSequence: (...args: unknown[]) => mockCreatePrayerSequence(...args),
   createPrayersForDate: (type: ScheduleType, date: string) => mockCreatePrayersForDate(type, date),
+  firstStillDueListDay: (type: ScheduleType, now: Date) => mockFirstStillDueListDay(type, now),
 }));
 
 // Mock Database: the rest of the module is real, for the stores the countdown pulls in
@@ -583,7 +589,12 @@ describe('setSequence', () => {
 
     setSequence(ScheduleType.Standard, date);
 
-    expect(mockCreatePrayerSequence).toHaveBeenCalledWith(ScheduleType.Standard, date, 3);
+    // Nothing is stored, so the earliest still-due list day is today and the build starts at its anchor
+    expect(mockCreatePrayerSequence).toHaveBeenCalledWith(
+      ScheduleType.Standard,
+      new Date('2026-01-20T12:00:00.000Z'),
+      3
+    );
   });
 
   it('sets the sequence in the correct atom for Standard', () => {
@@ -605,7 +616,7 @@ describe('setSequence', () => {
 
     setSequence(ScheduleType.Extra, date);
 
-    expect(mockCreatePrayerSequence).toHaveBeenCalledWith(ScheduleType.Extra, date, 3);
+    expect(mockCreatePrayerSequence).toHaveBeenCalledWith(ScheduleType.Extra, new Date('2026-01-20T12:00:00.000Z'), 3);
   });
 });
 
@@ -1025,10 +1036,11 @@ describe('on the real builder', () => {
   beforeEach(() => {
     jest.useFakeTimers();
 
-    const { createPrayerSequence, createPrayersForDate } = actualPrayer();
+    const { createPrayerSequence, createPrayersForDate, firstStillDueListDay } = actualPrayer();
     mockCreateLondonDate.mockImplementation(() => new Date());
     mockCreatePrayerSequence.mockImplementation(createPrayerSequence);
     mockCreatePrayersForDate.mockImplementation(createPrayersForDate);
+    mockFirstStillDueListDay.mockImplementation(firstStillDueListDay);
     mockGetPrayerByDateString.mockImplementation((date: string) => storedDays.get(date) ?? null);
 
     const store = getDefaultStore();
@@ -1433,12 +1445,10 @@ describe('on the real builder', () => {
       expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 21300, name: 'Fajr' });
     });
 
-    // Session 7's high-latitude shapes, where a list's last rows fall after 00:00. Launched just after 00:00 the
-    // sequence starts at the new calendar day (session 7 has still to change that), so yesterday's Isha still to
-    // come is only in storage, and a bar measured from it would run backwards. That Isha is the only true
-    // previous row, so the bar stays hidden until the next boundary rewrites the sequence: the Isha passing is
-    // not a boundary, a return to the foreground refreshes only after one, and a sync rebuilds the same rows and
-    // skips the write.
+    // The high-latitude shapes finding 74 was proven on: a list's last rows fall after 00:00, and the
+    // owner ruled a day stays current until its last readable row has passed, not until 00:00
+    // (2026-09-13, confirmed with the dashed-times rule 2026-09-17). A launch after 00:00 therefore
+    // builds from yesterday while yesterday still has a row to come
     const postMidnightIsha = [
       {
         title: 'Isha at 00:01',
@@ -1449,6 +1459,9 @@ describe('on the real builder', () => {
           ])
         ),
         launch: '2026-06-20T23:00:30.000Z',
+        yesterday: '2026-06-20',
+        next: row('Isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
+        previous: row('Magrib', '2026-06-20', '2026-06-20T20:25:00.000Z'),
         isha: row('Isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
         ishaAt: '2026-06-20T23:01:00.000Z',
         listDay: '2026-06-21',
@@ -1465,6 +1478,9 @@ describe('on the real builder', () => {
           '2026-09-28': ['03:00', '05:00', '13:00', '17:00', '20:58', '22:30'],
         },
         launch: '2026-09-25T23:00:30.000Z',
+        yesterday: '2026-09-25',
+        next: row('Magrib', '2026-09-25', '2026-09-25T23:40:00.000Z'),
+        previous: row('Asr', '2026-09-25', '2026-09-25T16:30:00.000Z'),
         isha: row('Isha', '2026-09-25', '2026-09-26T00:30:00.000Z'),
         ishaAt: '2026-09-26T00:30:00.000Z',
         listDay: '2026-09-26',
@@ -1474,55 +1490,50 @@ describe('on the real builder', () => {
     ];
 
     it.each(postMidnightIsha)(
-      "hides the bar from a launch after 00:00 until Fajr while yesterday's Isha is still due: $title",
-      ({ days, launch, ishaAt, listDay, fajrAt, sunriseAt }) => {
-        keepSubscribed(
-          standardNextPrayerAtom,
-          extraNextPrayerAtom,
-          standardDisplayDateAtom,
-          extraDisplayDateAtom,
-          getBarAvailableAtom(STANDARD),
-          getBarAvailableAtom(EXTRA)
-        );
-        const hidden = { next: row('Fajr', listDay, fajrAt), previous: null, barAvailable: false };
+      "keeps yesterday's list on screen from a launch after 00:00, with the bar measured into its still-due rows: $title",
+      ({ days, launch, yesterday, next, previous, isha, ishaAt, listDay, fajrAt }) => {
+        keepSubscribed(standardNextPrayerAtom, standardDisplayDateAtom, getBarAvailableAtom(STANDARD));
 
         Object.assign(LONDON_2026, days);
         storeDays(Object.keys(days));
         launchAt(launch);
-        expect(observe(STANDARD)).toMatchObject(hidden);
 
-        // The app stays open past Isha, then leaves and comes back, which resyncs and syncs unchanged data
-        jest.advanceTimersByTime(Date.parse(ishaAt) + 5 * 60 * 1000 - Date.parse(launch));
-        expect(observe(STANDARD)).toMatchObject(hidden);
-
-        resyncCountdowns();
-        setSequence(STANDARD, new Date());
-        setSequence(EXTRA, new Date());
-        startCountdowns();
-        expect(observe(STANDARD)).toMatchObject(hidden);
-
-        moveClockTo(new Date(Date.parse(fajrAt) - 2000).toISOString());
-        jest.advanceTimersByTime(1999);
-        expect(observe(STANDARD)).toMatchObject(hidden);
-
-        jest.advanceTimersByTime(1);
         expect(observe(STANDARD)).toMatchObject({
-          next: row('Sunrise', listDay, sunriseAt),
-          previous: row('Fajr', listDay, fajrAt),
+          displayDate: yesterday,
+          next,
+          previous,
+          barAvailable: true,
+        });
+
+        // The app stays open past yesterday's last row, the boundary the list was waiting for
+        jest.advanceTimersByTime(Date.parse(ishaAt) + 5 * 60 * 1000 - Date.parse(launch));
+
+        expect(observe(STANDARD)).toMatchObject({
+          displayDate: listDay,
+          next: row('Fajr', listDay, fajrAt),
+          previous: isha,
           barAvailable: true,
         });
       }
     );
 
     it.each(postMidnightIsha)(
-      "takes yesterday's post-midnight Isha as the previous row only from its own instant: $title",
+      'never takes a still-to-come row from storage as the previous row, whatever the sequence holds: $title',
       ({ days, launch, isha, ishaAt, listDay, fajrAt }) => {
-        const next = row('Fajr', listDay, fajrAt);
         Object.assign(LONDON_2026, days);
         storeDays(Object.keys(days));
-        launchAt(launch);
+        jest.setSystemTime(new Date(launch));
 
-        // Whenever the sequence is written, the previous row is looked up at that moment
+        // The sequence a build before this fix produced, starting at the new calendar day: without
+        // yesterday, so the row above next is looked for in storage. A future edit that brings such a
+        // sequence back must not measure the bar from a row that has not happened
+        getDefaultStore().set(standardSequenceAtom, {
+          type: STANDARD,
+          prayers: actualPrayer().createPrayerSequence(STANDARD, new Date(`${listDay}T12:00:00Z`), 3).prayers,
+        });
+
+        const next = row('Fajr', listDay, fajrAt);
+        // Whenever the previous row is looked up, the sequence has just been written
         moveClockTo(new Date(Date.parse(ishaAt) - 1).toISOString());
         refreshSequence(STANDARD);
         expect(observe(STANDARD)).toMatchObject({ next, previous: null, barAvailable: false });
