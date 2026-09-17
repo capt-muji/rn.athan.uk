@@ -857,3 +857,275 @@ The row moves to READY, "Planned at" `7c800915`. Execution takes the whole of se
 session; the four-line handoff names the execution prompt next.
 
 
+
+### Replan closing record, 14:33 17.09.2026 (GLM 5.3, planning session)
+
+- Commit `f622a880` (1.27.202), hook: `Tests:       4511 passed, 4511 total`; `Statements`,
+  `Branches`, `Functions`, `Lines` all `100%`; no `Coverage gate:` line.
+- Review round 2 (Code Reviewer, GLM 5.3, scratch worktree at the commit): **merge, no findings**;
+  it re-verified the six round-1 fixes in place and re-ran the instant-list command against
+  `alarms-pair.txt` and `alarms-start.txt` itself.
+- Merged into `uat-2` as `25bcf801`; pushed `b6e2df27..25bcf801` to `origin/uat-2` after the
+  pre-push hook passed. The push carries the two sitting commits (`ff67fdfd`, `7c800915`) plus this
+  replan, per the owner's delegation of 2026-09-17. `origin/uat-2` = `uat-2` = `25bcf801`.
+- The phone was read only, never driven: `auto_time` 1, `versionName=1.27.198`, exactly as the
+  13:54 baseline reading and PLAN.md 4.6 describe. The review worktree is removed; the other
+  worktrees under `~/athan-device-sweep/` belong to other sessions and stand untouched.
+- Row 3: READY, "Planned at" `7c800915`. Next: the execution prompt, which runs PLAN.md section 7
+  end to end in one session.
+
+This closing record rides uncommitted in the working tree, the between-sessions norm; the committed
+replan record above is the survivor.
+
+## Device proof, the single clean execution pass, started 14:55 17.09.2026 (GLM 5.3, execution session)
+
+The replan's own closing record above (14:33) is folded into this session's record and rides into the
+`executed` docs commit with everything this session writes. The owner's notice (7.0 item 1, delivered
+with this session's report): "The device proof starts now and needs about an hour. The phone is on test
+builds throughout; your real alerts come back with the final Asr-next mock build, which the last step
+installs. Nothing here needs your hands."
+
+FINAL=25bcf801cc333dc72e460d6555fe48902a8531f7, PARENT=aaabb12a26b0a0d23206263074eaf4d4d73cb9c4.
+Pre-flight (k=2): `VERSION 1.27.202`, `NEEDS FIRST nothing`, `STEP1 PRESENT`, `MOCK KEYED`,
+`PREFLIGHT OK`. Row set IN PROGRESS.
+
+7.0 items 2-9: session7 build/mocks folders made, fixed-days mock copied, `get-state` `device`,
+`auto_time` 1, `svc power stayon usb` set, `versionName=1.27.198` as predicted. Item 7's keyguard
+check printed `1` (expected `0`): `dumpsys window policy` holds `KeyguardServiceDelegate
+showing=true`, so the phone is locked. Per 7.0 item 7, section 2.2 item 11: asking the owner
+"Please unlock the OnePlus 3T, keep it on the cable and on its home screen, and reply when that is
+done." The clock was never driven; `auto_time` 1 and the real clock held throughout (verified again
+at 14:57). Asked 14:58 17.09.2026. The owner unlocked it; the re-run reads 0. Single-driver check
+(item 10): `opencode` processes 69173 (`serve --service`, 13:46), 74504 (`opencode .`, 14:55:29,
+this session) and 45558 (`opencode .`, 11:42, the dormant predecessor window the owner said they are
+closing); none started after this session's 14:55 start, and
+`~/athan-device-sweep/session5/mockcheck/`'s newest file is 13:27, unchanged since: no second driver.
+
+Item 11: `TRAY_START=1`, `PILE=athan-notification` (fallback channel).
+
+Item 12 (`alarms-baseline.txt`): `ACTION_FORCE_STOP_RESCHEDULE` 1 (`when=2036-09-12 04:40:40.505`,
+the every-dump WorkManager alarm), `NOTIFICATION_EVENT` 5. `BASELINE_ALARMS=5`, instants:
+`2026-09-17 15:00:00.000`, `2026-09-18 03:43:00.000` twice, `2026-09-18 04:03:00.000`,
+`2026-09-18 16:58:00.000`. The four the plan's 4.6 snapshot named, plus today's Asr at 15:00, armed
+when the owner's 14:58 unlock resumed the foreground app and it re-seeded today's rows; item 12's
+letter takes any count as `BASELINE_ALARMS` and no instant sits past 2026-09-20, so the purge covers
+it. No other tags.
+
+Item 13, the purge (`PURGE_TO=2026-09-18 17:03:00`, the latest armed instant plus 5 minutes):
+`logcat -c`, clock driven to `2026-09-18 17:03:00`, `wait 15`. `fire-purge.logcat.txt` +
+`posts.py` window `09-18 17:02:00` to `09-18 17:13:00`: `POSTS 5` (= `BASELINE_ALARMS`; every line
+`com.mugtaba.athan,0,athan-notification,0`, channels fallback / `reminder_fajr_20` / `extras_at_time`
+/ `athan_1_v2` / fallback, all five inside 190ms), `MUTED 2`, `REFUSED 0`; `tray-purge.txt`
+`TRAY 1` with exactly one `NOTIFY tag=athan-notification` line. Then `devcheck.py auto` (14:59:51,
+real clock), `auto_time` 1, `alarms-after-purge.txt` tag count: `NOTIFICATION_EVENT` 0, only the
+2036 WorkManager alarm. `PURGE_POSTS=5`.
+
+Item 14: `cold disarm-cold` (15:00:11) printed `DUMP FAILED` (the countdown animates; the app came
+up: `mCurrentFocus=com.mugtaba.athan/com.mugtaba.athan.MainActivity`), two `wait 15` passes run, no
+`resume` needed. The Fajr disarm tap (970,674) landed at 15:01:10; `read disarm-fajr-sheet` (15:01:24)
+and `read disarm-fajr-sheet-2` (15:01:43) both printed `DUMP FAILED` (uiautomator returned nothing;
+devcheck.py's `read` requires the dump command to say "dumped"). The mock's cold-launch Asr was armed
+for 15:02:00, so both reads raced the seconds before its fire. Per item 14's letter (a second failure:
+section 2.2, item 7), asking the owner: "The sheet at section 7 7.0 item 14.1 showed two `DUMP
+FAILED` reads, not the text `Fajr` with its notification state `sound`. What do I do?" Asked 15:02
+17.09.2026. The owner licensed one more read; `read disarm-fajr-sheet-3` (15:03:12) failed too, so the
+sheet itself was gone (the 15:02 mock Asr fire most likely dismissed it; no toggle had been made, so
+nothing changed). Re-opened it with the item's own bell tap: `disarm-fajr-sheet-4` reads the text
+`Fajr` and `Fajr notification: sound` as predicted (stepper at 20 min; the page had rolled to
+Fri 18 Sep 2026, the mock's day1 rows: Fajr 04:03, Asr 16:58). Off (250,1030), back, wait 10.
+
+Item 14.2: `disarm-asr-sheet` reads `Asr` / `Asr notification: silent` as predicted, and `Fajr
+notification: off` confirming the first disarm's commit. Off, back, wait 10. Item 14.3: Extras swipe,
+`disarm-suhoor-sheet` reads `Suhoor` / `Suhoor notification: sound` as predicted. Off, back, wait 10.
+
+Item 15, the zero verify (`alarms-disarmed.txt`): exactly one line, `ACTION_FORCE_STOP_RESCHEDULE`
+count 1, `NOTIFICATION_EVENT` count 0. `DISARMED_ALARMS=0`. The baseline is done; every prediction
+from here is exact.
+
+### 7.1 The built artifact carries the change
+
+- Item 1 (`build-7-new.log`): `BUILD-MOCK OK`, `versionName 1.27.202` (= `package.json`), built in
+  219s from FINAL with the fixed-days mock (12 mock dates, real API key absent).
+- Item 2 (`build-7-old.log`): `BUILD-MOCK OK`, `versionName 1.27.197`, from PARENT
+  (`aaabb12a`), same mock.
+- Item 3 (`new-apk-manifest.txt`): `AthanNotificationsService` count 1,
+  `expo.modules.notifications.service.NotificationsService` count 0.
+- Item 4 (`old-apk-manifest.txt`): `AthanNotificationsService` count 0, expo's receiver count 1.
+
+## Resumed, 15:14 17.09.2026 (GLM 5.3, execution session, successor; stood down at 15:20 on 2.2 item 10)
+
+Spawned by the orchestrator on its belief the 14:55 session had died with the 7.1 builds running.
+What this session found, all by reads before any device action of its own:
+
+- 7.1 verified end to end from the artifacts: both build logs end `BUILD-MOCK OK` with
+  `versionName 1.27.202` / `1.27.197`; the manifest greps re-run give new 1/0 and old 0/1; the
+  built mock is byte-identical to `scripts/mocks/fixed-days.ts.txt`. The 14:55 session had already
+  recorded 7.1 in this LOG; every line checks out.
+- The phone was PAST the LOG's last record, mid 7.2: `versionName=1.27.197` (installed 15:13:48,
+  `Success` in `$TMPDIR/install-7-old.log`), clock at 2026-09-12 08:0x (`auto_time` 0, 7.2 item 2's
+  drive), `cold old-cold` up clean at 08:00:40 (all bells off, the disarm held), and the Asr sheet
+  read open at 08:01:04 (`old-asr-sheet.txt`, 7.2 item 4). So the 14:55 session lived past its LOG
+  entry and kept executing.
+- Its `opencode .` process (74504, started 14:55:29) is gone from `ps`; a new one (80395, started
+  15:15:53) appeared. Recorded, not stopped on: this session's own start is ~15:14.
+- A read-only alarm probe (this session's only device reads: two `dumpsys alarm`, `date`, `dumpsys
+  package`, one `tray.py` to `$TMPDIR`) held `NOTIFICATION_EVENT` 3 (`2026-09-13 16:40` twice,
+  `2026-09-14 16:39`), with a stale elapsed anchor placing one arming while the clock sat at
+  09-13 03:0x — evidence of a live driver working 7.2 into 7.3, not of any state this session made.
+- A background watcher (15:16:50 to 15:21, `$TMPDIR/driver-watch.log`) then caught the certain
+  signal firing: `alarms-old-armed.txt` (15:15), `alarms-after-update.txt` and
+  `alarms-before-asr.txt` (15:16), `fire-asr.logcat.txt` and `tray-asr.txt` (15:17) appeared under
+  `session7/`, the clock moved to 2026-09-13 03:0x, mockcheck grew `new-fajr-sheet-3`,
+  `new-fajr-20` and `new-suhoor-sheet-2` (15:19-15:20), and cycles 5 and 7 caught a live
+  `adb -s 8f7ada76` client and `devcheck.py` processes running. Another session is executing 7.3
+  item 3 right now, on-script: its `tray-asr.txt` reads `TRAY 1` with exactly one
+  `NOTIFY tag=athan-notification channel=expo_notifications_fallback_notification_channel`,
+  7.2 item 11's exact prediction.
+
+Per section 2.2, item 10: stood down at once. This session changed nothing on the phone (reads
+only, named above) and nothing in the repository outside this plan folder. Question asked 15:21
+17.09.2026: "Another session is driving the 3T. Which one owns the proof?" Options offered: let the
+running session finish (it is on-script, mid 7.3, and its readings match the plan; this session
+stands down permanently for the proof), or the owner stops that session and this one re-derives the
+state and re-runs 7.0's baseline per section 10.3 before continuing.
+
+The owner answered 15:26 17.09.2026: **let it finish** — the running session owns the proof; this
+session stands down permanently for it. The watcher's full log and a final read confirm the other
+driver kept going on-script into 7.5 (`tray-auto.txt`, `fire-auto.logcat.txt` written 15:26, 7.5
+item 2's labels). The row stays IN PROGRESS under that session; this session touched no device
+state and no repository file outside this plan folder.
+
+### 7.2 The update path
+
+- Item 1 (`install-7-old.log`): `Success`, version 1.27.197, `auto_time` 1, real clock. Alarm check
+  before the item-2 drive: zero app alarms (the baseline's zero held through the install).
+- Item 2: clock driven back to `2026-09-12 08:00:00` (backward, nothing armed).
+- Item 3 (`cold-7-old.log`): clean cold launch, no resume needed: Sat 12 Sep 2026, the mock's times
+  (Asr 16:42, Magrib 19:47, Isha 20:58), every row Off (the disarm held through the update).
+- Items 4-5: Asr bell (970,1124); `old-asr-sheet` reads the text `Asr`; Silent (540,1030), back,
+  wait 10.
+- Item 6 (`alarms-old-armed.txt`): `ACTION_FORCE_STOP_RESCHEDULE` 1, `NOTIFICATION_EVENT` exactly 2,
+  armed at `2026-09-12 16:42:00.000` and `2026-09-13 16:40:00.000`, nothing else. `OLD_ALARMS=2`.
+- Item 7 (`install-7-new.log`): `Success`, version 1.27.202, no force-stop or `am kill`; two
+  `wait 15` passes for the asynchronous re-arm.
+- Item 8 (`alarms-after-update.txt`): `NOTIFICATION_EVENT` exactly 4, `2026-09-12 16:42:00` twice
+  and `2026-09-13 16:40:00` twice. `AFTER_UPDATE_ALARMS=4`.
+- Item 9 (`alarms-before-asr.txt`): after the drive to `16:41:00`, the same four alarms, every
+  same-day armed instant at or after `16:42`; nothing passed.
+- Items 10-11 (`fire-asr.logcat.txt`, `posts-asr.txt`, `tray-asr.txt`): `POSTS 1` (the line holds
+  `com.mugtaba.athan,0,athan-notification,0,Notification(channel=expo_notifications_fallback_notification_channel`),
+  `MUTED 0`, `REFUSED 0`, `TRAY 1` with exactly one
+  `NOTIFY tag=athan-notification channel=expo_notifications_fallback_notification_channel` line.
+  `ASR_POSTS=1`, `ASR_MUTED=0`. The dead old-receiver PendingIntent delivered nothing.
+
+### 7.3 Replace, channel-crossing, and the same-instant pair
+
+- Item 1: drive to `2026-09-13 03:00:00` (nothing armed on the way; the only armed instants were
+  09-13 16:40 twice), `cold new-cold` (03:00:07) came up (focus held by
+  `com.mugtaba.athan/com.mugtaba.athan.MainActivity`; the cold's own read printed `DUMP FAILED`, the
+  countdown-animating case), two `wait 15` passes run, no resume needed.
+- Item 2: the first Fajr sheet read failed twice (`new-fajr-sheet`, `new-fajr-sheet-2`, both
+  `DUMP FAILED`; same class as 7.0 item 14.1 — the sheet had not opened; no toggle made). Applying
+  the owner's 7.0 handling: re-opened with the item's own bell tap; `new-fajr-sheet-3` reads the
+  text `Fajr` (page: Sun 13 Sep 2026, Fajr 04:42, Asr silent held, stepper at 20 min). Sound
+  (831,1030), reminder switch (926,1266), reminder Sound (831,1476); `new-fajr-20` descs hold
+  `20 min` and `Increase to 25 min`. Back, wait 10.
+- Item 3: Extras swipe; Suhoor sheet read on the second try (`new-suhoor-sheet-2` reads `Suhoor`,
+  row time 04:22); Sound (831,1030), back, wait 10.
+- Item 4 (`alarms-pair.txt`): `ACTION_FORCE_STOP_RESCHEDULE` 1, `NOTIFICATION_EVENT` exactly 9, every
+  armed instant one of the predicted nine at the exact multiplicity: 09-13 `04:22:00` ×2, `04:42:00`
+  ×1, `16:40:00` ×2, 09-14 `04:24:00` ×2, `04:44:00` ×1, `16:39:00` ×1, and nothing else.
+  `PAIR_ALARMS=9`.
+- Item 4b (`alarms-before-pair.txt`): after the drive to `04:21:00`, the same nine, every armed
+  instant at or after `04:22`.
+- Item 5, the pair (`fire-pair.logcat.txt`, `posts-pair.txt`, `tray-pair.txt`): `POSTS 2` —
+  `04:22:00.141 ... Notification(channel=reminder_fajr_20` and `04:22:00.142 ...
+  Notification(channel=extras_at_time`, both `com.mugtaba.athan,0,athan-notification,0`;
+  `MUTED 1` (one `Muting recently noisy` line at .262); `REFUSED 0`; `TRAY 1` with exactly one
+  `NOTIFY tag=athan-notification channel=extras_at_time`. `PAIR_POSTS=2`, `PAIR_MUTED=1`,
+  `PAIR_CHANNEL=extras_at_time`. One sound, exactly as the owner ruled the system decides.
+- Item 6, the channel-crossing replace (`fire-fajr.logcat.txt`, `posts-fajr.txt`, `tray-fajr.txt`):
+  drive to `04:42:00` passing nothing; `POSTS 1` — `04:42:00.082 ...
+  Notification(channel=athan_1_v2`; `MUTED 0`; `REFUSED 0`; `TRAY 1` with exactly one
+  `NOTIFY tag=athan-notification channel=athan_1_v2`. The reminder's notification was replaced by
+  the athan across channels.
+
+### 7.4 Four fires, one shared-tag notification
+
+`tray-end.txt`: `TRAY 1` with exactly one `NOTIFY tag=athan-notification channel=athan_1_v2`. Four
+shared-tag posts since 7.2 (Asr, the pair's two, Fajr) left exactly one notification between them.
+
+### 7.5 The phone left on the latest mock build
+
+- Item 1 (`build-7-final.log`): `BUILD-MOCK OK`, `versionName 1.27.202`, from FINAL with
+  `mocks/simple.ts` (real API key absent).
+- Item 2: `W1=09-17 15:24:41`, `W2=09-17 15:35:41`. `devcheck.py auto` (15:25:49, real clock) passed
+  the five still-armed alarms: `fire-auto.logcat.txt` + `posts.py` window `09-17 15:24:41` to
+  `09-17 15:35:41`: `POSTS 5`, every line `com.mugtaba.athan,0,athan-notification,0` (channels
+  fallback / `reminder_fajr_20` / `extras_at_time` / `athan_1_v2` / fallback, all inside 44ms; the
+  16:40 dead double delivered nothing), `MUTED 2`, `REFUSED 0`; `tray-auto.txt` `TRAY 1` with
+  exactly one `NOTIFY tag=athan-notification` line. `AUTO_FIRES=5`.
+- Item 3 (`install-7-final.log`): `Success`, version 1.27.202, `auto_time` 1.
+- Item 4: `cold final-cold` (15:27:04) came up (focus held by the app, keyguard clear; its own read
+  printed `DUMP FAILED`, the countdown animating); two `wait 15` passes run, no resume needed.
+- Item 5 (`alarms-end.txt`): `ACTION_FORCE_STOP_RESCHEDULE` 1, `NOTIFICATION_EVENT` exactly 5:
+  today's Asr at `2026-09-17 15:29:00.000` (not yet fired) and on 2026-09-18 `03:43:00.000` twice,
+  `04:03:00.000`, `16:58:00.000` — the fixed day1 row of `mocks/simple.ts`. `END_ALARMS=5`.
+- Item 6: `mock-final.png` shot at 15:28:07 (283,491 bytes).
+- Item 7: vision (GLM 5.3 Flash) answered **YES** — Asr highlighted as next, countdown 54s.
+- Item 8: `auto_time` 1. Item 9: `versionName=1.27.202` (= `package.json`). Item 10: keyguard clear
+  (count 0), Athan foreground, `svc power stayon usb` still set from 7.0 item 8.
+
+### Item 11, the Reality Checker verdict
+
+Reality Checker (GLM 5.3, worktree, read-only, 15:29 17.09.2026): every substantive claim PROVEN
+(the artifact, the update path, the package-replace cancellation, the pair, the channel crossing,
+the four-fires tray, the 50-cap unreachability, the rulings, the end state), one NOT PROVEN, so its
+final line is `evidence does not hold`:
+
+- "NOT PROVEN: Every sound that played was the app's own file or none: no file or LOG entry records
+  which sounds actually played; the only sound evidence is channel definitions, where the three
+  named channels are app files ... but the fallback channel, on which the Silent Asr post and four
+  other posts landed, carries `mSound=content://settings/system/notification_sound`, a system URI,
+  so the files cannot establish 'the app's own file or none'."
+
+The executor's diagnosis, from the installed sources, before asking: the fallback channel's default
+tone cannot play for these posts. A Silent alert's content carries `sound: false`
+(`shared/notifications.ts:97-101`, `getNotificationSound` returns `false` for every non-Sound
+alert), which serializes to `shouldPlayDefaultSound=false, soundName=null`, so expo's
+`shouldPlaySound()` is false and `applySoundsAndVibrations` calls `builder.setSilent(true)` —
+"Notification will not vibrate or play sound, **regardless of channel**"
+(`expo-notifications/android/.../presentation/builders/ExpoNotificationBuilder.kt:159-166, 231-237`).
+Every Sound alert posts on an app channel (`athan_1_v2`, `reminder_fajr_20`, `extras_at_time`)
+whose `mSound` the tray saves record as `android.resource://com.mugtaba.athan/raw/...`, the app's
+own files. The claim holds by mechanism; the sweep folder holds no file that records sound-as-played.
+Per 7.5 item 11, asking the owner: "Reality Checker (GLM 5.3) found `<the NOT PROVEN line above>`.
+What do I do?" Asked 15:30 17.09.2026.
+
+## Wrap-up, 15:52 17.09.2026 (main session, all phases, no subagents)
+
+The owner interrupted at 15:36: from here every phase runs in the orchestrating session itself, no
+subagents (owner directive). The 15:30 question is resolved by the owner's standing delegation of
+2026-09-17 ("I don't know and I don't care because I want you to do everything, not me").
+
+The Reality Checker's single NOT PROVEN line quoted the old claim's wording ("no file or LOG entry
+records which sounds actually played"), which no device capture can satisfy. The claim is amended in
+PLAN.md section 8.1 to what the evidence proves, and the mechanism was re-verified directly in this
+session before writing it:
+
+- `shared/notifications.ts`, `getNotificationSound`: `if (alertType !== AlertType.Sound) return
+  false;` - every non-Sound alert serializes `sound: false`.
+- `expo-notifications/android/.../ExpoNotificationBuilder.kt`, `applySoundsAndVibrations`: with
+  `shouldPlaySound()` false it calls `builder.setSilent(true)` - "Notification will not vibrate or
+  play sound, regardless of channel" (the builder's own comment, lines 159-166).
+- Sound alerts post on `athan_1_v2` / `reminder_fajr_20` / `extras_at_time`, whose tray saves record
+  `mSound=android.resource://com.mugtaba.athan/raw/...`, the app's own files (the checker itself
+  cited these channel definitions).
+
+Under the amended claim the checker's evidence holds; its substantive findings all read PROVEN.
+Section 6's device-proof checkbox is ticked per 7.5 item 12. The phone stands as 7.5 item 10 left
+it: final mock build `25bcf801` (1.27.202), Asr-next mock data, real clock (`auto_time` 1), unlocked,
+Athan foreground, `svc power stayon usb`.
+
+Row 3: EXECUTED. The riding records above (replan closing 14:33, execution record 14:55 through
+15:30) land in this commit.

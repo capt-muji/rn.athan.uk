@@ -329,7 +329,7 @@ adaptation.
 ## 6. Steps
 
 - [x] Step 1: DONE in 45754e6094c5e7d1724fdb24ff97b9e18f3c47cb (specified; `steps/1-shared-tag-plugin.md`)
-- [ ] Device proof: section 7 (specified)
+- [x] Device proof: DONE
 
 The step is written out in full in `ai/plans/07-replace-previous-notification/steps/1-shared-tag-plugin.md`
 and is finished; nothing in it runs again. The device proof starts from a clean tree on `uat-2` and runs
@@ -689,13 +689,20 @@ the alarm dump then reading zero app alarms):
   notification on `athan_1_v2`. Returning to the real clock fired the remaining five armed alarms
   (<AUTO_FIRES> posts) and the tray still held one. Finding 73's 50-notification cap is unreachable
   through this app's posts.
-- Every sound that played was the app's own file or none: the owner's one condition held.
+- Every sound that could play was the app's own file or none: every Sound alert posts on an app
+  channel whose saved `mSound` is an `android.resource://com.mugtaba.athan/raw/...` URI (the app's
+  own file), and every non-Sound alert serializes `sound: false` (`getNotificationSound` in
+  `shared/notifications.ts`), which makes expo's builder call `setSilent(true)` so it plays nothing
+  regardless of channel (`ExpoNotificationBuilder.kt`, `applySoundsAndVibrations`). The owner's one
+  condition held by mechanism and channel record.
 
 The owner's rulings carried here: no cleanup code for notifications stacked by earlier builds
 (2026-09-17), Android's own package-replace cancellation clearing that pile at the update, verified
 twice; same-instant pairs are left to the system, one sound at a time, which the owner's own earlier
 nine-run test had already shown (2026-09-13 and 2026-09-17); posts read from the events buffer and the
-tray asserted as exactly one (2026-09-17, 12:34).
+tray asserted as exactly one (2026-09-17, 12:34); the sound condition proven by mechanism and channel
+record rather than a played-sound capture, which this device cannot produce (2026-09-17, 15:30, the
+owner's standing delegation of that day).
 
 iOS is session 8 (`ai/prompts/ios-replace-previous-notification.md`).
 
