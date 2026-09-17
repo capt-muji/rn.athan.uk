@@ -9,7 +9,7 @@ import {
   PRAYERS_ENGLISH,
   TIME_ADJUSTMENTS,
 } from '@/shared/constants';
-import { findNextReadable } from '@/shared/sequence';
+import { findNextReadable, isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { createPrayerDatetime } from '@/shared/time';
 import {
@@ -503,6 +503,28 @@ export const createPrayersForDate = (type: ScheduleType, date: string): Prayer[]
  */
 export const getPrayerForDate = (type: ScheduleType, english: string, date: string): Prayer | null =>
   createPrayersForDate(type, date).find((prayer) => prayer.english === english) ?? null;
+
+/**
+ * The earliest list day one prayer's alarm window must cover: yesterday while yesterday's own row of
+ * that prayer is readable and still to come, today otherwise.
+ *
+ * The window counted from today alone made a reschedule between 00:00 and a post-midnight row treat
+ * that row's alarm as stale and cancel it (finding 74), so both scheduling paths start from here. The
+ * answer is per prayer, not per list: yesterday's Isha still to come does not move Fajr's window, whose
+ * yesterday row has long passed.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @param englishName English prayer name
+ * @param now The instant the start day is worked out for
+ * @returns The YYYY-MM-DD of the earliest list day whose row of this prayer can still fire
+ */
+export const firstStillDueListDayForPrayer = (type: ScheduleType, englishName: string, now: Date): string => {
+  const today = TimeUtils.formatDateShort(now);
+  const yesterday = TimeUtils.getPreviousDateString(today);
+
+  const row = getPrayerForDate(type, englishName, yesterday);
+  return row !== null && isReadable(row) && row.datetime > now ? yesterday : today;
+};
 
 /**
  * The earliest list day a sequence must start from: yesterday while yesterday's list still has a

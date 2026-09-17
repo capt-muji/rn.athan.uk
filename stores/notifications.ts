@@ -12,6 +12,7 @@ import {
   DEFAULT_REMINDER_INTERVAL,
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
+  ISLAMIC_DAY,
   NOTIFICATION_REFRESH_HOURS,
   NOTIFICATION_ROLLING_DAYS,
   PRAYERS_ARABIC,
@@ -105,14 +106,25 @@ const reopenNotificationRefreshGate = (): void => {
 /**
  * Whether the alarm a record names can still fire.
  *
- * A record dated D fires no later than late on D, and an Extras night row fires on the evening BEFORE the day it is
- * filed under, so any record dated before today is spent. A refusal to cancel an alarm whose moment has passed is not
- * worth undoing a change for, and keeping its record would make every later clear ask for it again for ever.
+ * A record dated D normally fires no later than late on D, but a post-midnight row of yesterday's
+ * list fires after 00:00 today (finding 74), and no row of any list falls later than the 06:00 cutoff
+ * on the day after its own. Yesterday therefore counts until that cutoff, and anything earlier is
+ * spent: a refusal to cancel an alarm whose moment has passed is not worth undoing a change for, and
+ * keeping its record would make every later clear ask for it again for ever.
  *
  * @param record One of the prayer's stored alarm records
  */
-const canStillFire = (record: NotificationUtils.ScheduledNotification): boolean =>
-  record.date >= TimeUtils.getTodayDateString();
+const canStillFire = (record: NotificationUtils.ScheduledNotification): boolean => {
+  const today = TimeUtils.getTodayDateString();
+  if (record.date >= today) return true;
+  if (record.date !== TimeUtils.getPreviousDateString(today)) return false;
+
+  const cutoff = TimeUtils.createPrayerDatetime(
+    today,
+    `${String(ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR).padStart(2, '0')}:00`
+  );
+  return TimeUtils.createInstant() < cutoff;
+};
 
 /** What one day's scheduling attempt came to: the identifier it tried, and whether the phone refused it */
 type ScheduleAttempt = { identifier: string | null; refused: boolean };
@@ -1473,13 +1485,17 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // below would treat every notification the OS still holds as stale. Bailing
   // leaves the existing alarms alone; the next refresh runs once data exists.
   //
-  // The test is every list day that can arm a prayer, not today alone. An upgrade
-  // wipe still leaves all of them unstored, so it still bails; but one day missing
-  // from the payload (R7) is a day of unreadable rows, and treating it as an empty
-  // cache would stop the readable day beside it from being armed. The night rows'
-  // extra list day does not count: its rows need tomorrow's Magrib, so with only
-  // that day stored nothing can be armed, and stamping the gate would silence the
-  // next twelve hours.
+  // The test is every list day that can arm a prayer from today on, not today
+  // alone: while yesterday still has a row due the windows start there, but
+  // reading yesterday too would treat an unstored yesterday as an empty cache
+  // between 00:00 and that row, and bailing is the safe direction anyway, since
+  // it arms nothing, cancels nothing and the download that lands reopens the
+  // gate. An upgrade wipe still leaves all of these unstored, so it still bails;
+  // but one day missing from the payload (R7) is a day of unreadable rows, and
+  // treating it as an empty cache would stop the readable day beside it from
+  // being armed. The night rows' extra list day does not count: its rows need
+  // tomorrow's Magrib, so with only that day stored nothing can be armed, and
+  // stamping the gate would silence the next twelve hours.
   const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
   if (!armedListDays.some((date) => Database.getPrayerByDateString(date))) {
     logger.warn('NOTIFICATION: No prayer data for today or tomorrow, skipping reschedule so nothing is cancelled', {

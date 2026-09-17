@@ -11,6 +11,7 @@ import {
   createPrayersForDate,
   filterApiData,
   firstStillDueListDay,
+  firstStillDueListDayForPrayer,
   getCascadeDelay,
   getLongestPrayerNameIndex,
   getPrayerForDate,
@@ -1402,5 +1403,65 @@ describe('firstStillDueListDay', () => {
     const shape = ['01:32', '02:58', '13:31', '17:31', '01:20', '01:44'];
     storeTimes(Object.fromEntries(['2026-06-25', '2026-06-26', '2026-06-27', '2026-06-28'].map((d) => [d, shape])));
     expect(firstStillDueListDay(ScheduleType.Extra, new Date('2026-06-26T23:05:00.000Z'))).toBe('2026-06-26');
+  });
+});
+
+describe('firstStillDueListDayForPrayer', () => {
+  const ISHA_AT_0001 = ['02:40', '04:43', '13:02', '17:20', '21:25', '00:01'];
+  const days = Object.fromEntries(
+    ['2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'].map((d) => [d, ISHA_AT_0001])
+  );
+
+  it("answers yesterday while yesterday's own row of the prayer is still to come", () => {
+    storeTimes(days);
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+      '2026-06-20'
+    );
+  });
+
+  it('answers today for a prayer whose yesterday row has passed, while another row is still to come', () => {
+    storeTimes(days);
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Fajr', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+      '2026-06-21'
+    );
+  });
+
+  it('treats a row at exactly the asking instant as passed, as the scheduler does', () => {
+    storeTimes(days);
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Isha', new Date('2026-06-20T23:01:00.000Z'))).toBe(
+      '2026-06-21'
+    );
+  });
+
+  it('answers yesterday for a Magrib and an Isha that both fall after midnight', () => {
+    const shape = ['01:30', '02:55', '13:30', '17:30', '00:01', '00:25'];
+    storeTimes(Object.fromEntries(['2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'].map((d) => [d, shape])));
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Magrib', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+      '2026-06-20'
+    );
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+      '2026-06-20'
+    );
+  });
+
+  it("answers today when yesterday's own row of the prayer is unreadable", () => {
+    storeTimes({
+      '2026-06-20': ['02:40', '04:43', '13:02', '17:20', '21:25', null],
+      '2026-06-21': ISHA_AT_0001,
+    });
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+      '2026-06-21'
+    );
+  });
+
+  it('answers yesterday for a Friday Istijaba that falls after midnight, and today beside it', () => {
+    const shape = ['01:32', '02:58', '13:31', '17:31', '01:20', '01:44'];
+    storeTimes(Object.fromEntries(['2026-06-25', '2026-06-26', '2026-06-27', '2026-06-28'].map((d) => [d, shape])));
+    expect(firstStillDueListDayForPrayer(ScheduleType.Extra, 'Istijaba', new Date('2026-06-26T23:05:00.000Z'))).toBe(
+      '2026-06-26'
+    );
+    expect(firstStillDueListDayForPrayer(ScheduleType.Extra, 'Duha', new Date('2026-06-26T23:05:00.000Z'))).toBe(
+      '2026-06-27'
+    );
   });
 });
