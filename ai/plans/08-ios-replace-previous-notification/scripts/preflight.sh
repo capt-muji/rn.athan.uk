@@ -1,7 +1,9 @@
 #!/bin/bash
 # Session 8 pre-flight. Run: bash $TMPDIR/preflight-8.sh <k>
 # <k> is always 1 here: the plan has one checklist item, the study.
-set -uo pipefail
+# No pipefail: a `grep -q` that exits on its match SIGPIPEs a still-writing
+# command and would turn a success into a failure.
+set -u
 REPO=/Users/muji/repos/rn.athan.uk
 PLAN=$REPO/ai/plans/08-ios-replace-previous-notification
 UDID=00008020-0015585C22D2002E
@@ -13,7 +15,7 @@ replan() { echo "PREFLIGHT NEEDS REPLAN: $1"; exit 1; }
 [ "$(pwd)" = "$REPO" ] || fail "wrong checkout"
 [ "$(git branch --show-current)" = "uat-2" ] || fail "not on uat-2 (on $(git branch --show-current))"
 
-ALLOWED='^?? ai/plans/08-ios-replace-previous-notification/|^ M ai/plans/README.md|^ M ai/plans/08-ios-replace-previous-notification/'
+ALLOWED='^(\?\? | M )(ai/plans/08-ios-replace-previous-notification/|ai/plans/README.md)'
 DIRTY=$(git status --porcelain | grep -Ev "$ALLOWED" || true)
 [ -z "$DIRTY" ] || fail "unexpected working-tree changes: $DIRTY"
 
@@ -57,10 +59,17 @@ check_anchor 6-pod-interruptionlevel.txt \
 # Tools.
 xcodebuild -version >/dev/null 2>&1 || fail "xcodebuild is unavailable"
 pymobiledevice3 version >/dev/null 2>&1 || fail "pymobiledevice3 is unavailable"
-xcrun devicectl list devices 2>/dev/null | grep -q "$UDID" || fail "iPhone XS $UDID is not visible to devicectl"
-xcrun devicectl device info apps --device "$UDID" 2>/dev/null | grep -q 'com.mugtaba.athan.experiments' \
-  && echo "NOTE a study build is already installed; the study will continue from its cursor" \
-  || true
+VISIBLE=0
+for _ in 1 2 3; do
+  DEVICE_LIST=$(xcrun devicectl list devices 2>/dev/null || true)
+  if grep -q "$UDID" <<<"$DEVICE_LIST"; then VISIBLE=1; break; fi
+  sleep 5
+done
+[ "$VISIBLE" = "1" ] || fail "iPhone XS $UDID is not visible to devicectl"
+INSTALLED_STUDY=$(xcrun devicectl device info apps --device "$UDID" 2>/dev/null || true)
+if grep -q 'com.mugtaba.athan.experiments' <<<"$INSTALLED_STUDY"; then
+  echo "NOTE a study build is already installed; the study will continue from its cursor"
+fi
 [ -d "$REPO/node_modules/expo-keep-awake" ] || fail "expo-keep-awake is not in node_modules"
 
 echo "PREFLIGHT OK"
