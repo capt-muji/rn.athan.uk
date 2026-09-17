@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 
 import { NOTIFICATION_ROLLING_DAYS } from '@/shared/constants';
 import logger from '@/shared/logger';
+import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 
@@ -209,10 +210,10 @@ export const findStaleScheduledNotificationIds = (
  * Generates X consecutive dates starting from given date (inclusive)
  * Index 0 is the start date (today if not specified)
  */
-export const genNextXDays = (numberOfDays: number): string[] => {
-  const today = TimeUtils.getTodayDateString();
+export const genNextXDays = (numberOfDays: number, startDate?: string): string[] => {
+  const first = startDate ?? TimeUtils.getTodayDateString();
 
-  return Array.from({ length: numberOfDays }, (_, i) => TimeUtils.addDaysToDateString(today, i));
+  return Array.from({ length: numberOfDays }, (_, i) => TimeUtils.addDaysToDateString(first, i));
 };
 
 /**
@@ -246,7 +247,10 @@ export const rollingDaysForPrayer = (scheduleType: ScheduleType, englishName: st
  * the at-time and reminder windows cannot drift apart.
  */
 export const genScheduleDatesForPrayer = (scheduleType: ScheduleType, englishName: string): string[] =>
-  genNextXDays(rollingDaysForPrayer(scheduleType, englishName));
+  genNextXDays(
+    rollingDaysForPrayer(scheduleType, englishName),
+    PrayerUtils.firstStillDueListDayForPrayer(scheduleType, englishName, TimeUtils.createInstant())
+  );
 
 /**
  * Android channel ID for an at-time Athan sound
