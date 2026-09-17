@@ -64,6 +64,9 @@ Send exactly the phase prompt, then the three orchestration lines:
 
 ```
 Do the whole job the brief describes, end to end, and stop only when it is finished or the brief tells you to stop.
+An owner decision is yours to ask for, not mine: call the `question` tool and wait. It reaches the owner and their
+answer comes back to you, so never guess a decision and never hand one up to the orchestrator. Give every option both
+a `label` and a `description`, or the call fails validation.
 Write your record in the plan folder as the brief says, because your reply is thrown away.
 Reply with the brief's four-line handoff and nothing else: no report, no summary, no diffs, no file listings.
 ```
@@ -79,7 +82,11 @@ Re-read section 1. The subagent's four lines are a courtesy; the table and git a
 | The phase moved the row on (PLANNING or NEEDS REPLAN became READY, READY became IN PROGRESS then EXECUTED, EXECUTED became DONE) | Spawn the next phase from section 2 |
 | The row is unchanged but the phase committed to `uat-2` | Spawn the same phase again: it is getting somewhere and left a "Resume from" note |
 | The row is unchanged and nothing was committed | Stop. Two of these in a row means the phase cannot finish by itself |
-| The subagent says it needs an owner decision, or a row went BLOCKED or OWNER-LED | Stop and report it |
+| A row went BLOCKED or OWNER-LED, or the owner must hold a device | Stop and report it |
+
+**Resuming rather than respawning.** A subagent that stopped because its context ran low is replaced by a fresh one,
+which reads the "Resume from" note its predecessor wrote. A subagent that stopped for any other reason is continued
+by passing its `sessionID` back: it keeps everything it had worked out, which is cheaper and safer than starting cold.
 
 ## 5. Budgets, because nobody is watching
 
@@ -91,7 +98,8 @@ most because it legitimately resumes itself across context limits. Exceed any of
 Stop as soon as one of these is true, and never start another phase after it:
 
 - the row is DONE and `uat-2` has no unpushed commits: the session is finished, which is where this skill stops;
-- a phase needs an owner decision, a device the owner must hold, or a row is BLOCKED or OWNER-LED;
+- a row is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such as holding a device or tapping a screen.
+  An owner decision is not one of these: the phase asks the owner itself and carries on;
 - section 4 or section 5 says stop;
 - a subagent fails outright.
 
