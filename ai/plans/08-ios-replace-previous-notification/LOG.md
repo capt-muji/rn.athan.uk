@@ -55,8 +55,8 @@ Measured, from `~/athan-device-sweep/session8/study-syslog.txt` (this run only):
 - **Phase 1:** `P1-AFTER-FIRST DELIVERED [{"id":"x1","title":"P1 first"}]`, then the same
   identifier scheduled again, then
   `P1-FINAL DELIVERED [{"id":"x1","title":"P1 second"}]`: ONE entry, the second. The plan
-  predicted two; the phone replaces the delivered notification. 60 consistent observations
-  (58 in round 2, 2 in round 3). The mechanism (flip at add-time or at fire-time) is not
+  predicted two; the phone replaces the delivered notification. 59 consistent observations
+  (58 in round 2, 1 in round 3). The mechanism (flip at add-time or at fire-time) is not
   distinguished by the dumps; the net behaviour is.
 - **Phase 3:** `P3-BEFORE DELIVERED` held FOUR entries: x3a, x3b, x3c delivered with the app
   killed between launches, plus phase 1's leftover x1 (the plan predicted three and forgot the
