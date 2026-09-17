@@ -17,8 +17,8 @@ git fetch origin uat-2 > /dev/null 2>&1 || fail "git fetch origin uat-2 failed"
 git merge-base --is-ancestor origin/uat-2 uat-2 || fail "uat-2 does not contain origin/uat-2"
 version=$(node -p 'require("./package.json").version')
 echo "VERSION $version"
-node -e 'const [a,b,c]=process.argv[1].split(".").map(Number);process.exit(a>1||(a===1&&(b>27||(b===27&&c>=211)))?0:1)' "$version" \
-  || fail "version $version is lower than the planned 1.27.211"
+node -e 'const [a,b,c]=process.argv[1].split(".").map(Number);process.exit(a>1||(a===1&&(b>27||(b===27&&c>=214)))?0:1)' "$version" \
+  || fail "version $version is lower than the planned 1.27.214"
 echo "NEEDS FIRST nothing"
 dir=ai/plans/09-keep-still-due-rows-after-midnight/scripts
 while read -r step anchor source from; do

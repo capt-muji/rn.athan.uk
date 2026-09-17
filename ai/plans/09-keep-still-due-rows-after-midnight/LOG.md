@@ -75,6 +75,23 @@ section 4a the unfinished step was saved
 carried no commit). Step 1 stays merged at `248d971d`. Resume: step 2, part 4 (red), against the
 refreshed plan.
 
+## Replanned, 2026-09-17 (planning session, GLM 5.3)
 
-
-
+- Step 2 is refreshed, not rewritten: the contracts, anchors and existing five alarm tests are
+  unchanged (all eleven step 2 anchors counted 1 at `7289894a`). What changed: a sixth alarm test
+  (`drops the record of a refused cancel of an alarm older than yesterday, spent like any passed
+  moment`), break `2e` pinning the same decision, and every count the extra test moves (red
+  `Tests: 11 failed, 194 passed, 205 total`; green `Tests: 205 passed, 205 total`; the commit's
+  `Tests:` line ending `passed, 4530 total`; the breaks' totals).
+- Re-proved in the throwaway worktree `~/athan-device-sweep/worktrees/plan-9b` at `7289894a`: the
+  executor's saved patch applied, the new test added, red and green exactly as above, `tsc` and
+  Biome exit 0, the full suite `Tests: 2 skipped, 4528 passed, 4530 total` with 100% statements,
+  branches, functions and lines (the uncovered `stores/notifications.ts` branch is covered now), and
+  all five breaks `AS EXPECTED` ending `ALL AS EXPECTED: 1`. The worktree was removed afterwards.
+- Resume: step 2 from its part 0, against this refreshed plan; the saved patch is proven but the
+  executor builds the step from the plan's contracts as before.
+- The refreshed files (`steps/2-alarm-window-and-refusal-records.md`, `scripts/breaks-2.sh`,
+  `scripts/preflight.sh`, `PLAN.md`, this `LOG.md`, `ai/plans/README.md` and `ai/prompts/README.md`)
+  are committed and merged to `uat-2` by this replan session before the execution prompt runs
+  (owner, 2026-09-17: the planning session commits its own docs), so the executor starts from a
+  clean tree holding exactly this plan.
