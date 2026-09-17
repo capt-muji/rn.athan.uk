@@ -80,16 +80,25 @@ The owner's rules that apply, quoted:
    `getPresentedNotificationsAsync`. Screenshots are taken and saved as corroboration only: no
    Mac-side tool can show Notification Center, and no claim in the finding rests on an image.
 7. **One phase per cold launch, selected by a persisted cursor, and the whole study is
-   restartable.** Planner: the cursor (`notify_study_cursor`, in the study app's own storage) makes
-   any interruption resumable by re-running the driver, which reads the cursor from the `RUN` log
-   line each launch writes. The foreground-dependent phase runs last (cursor 4) so a locked phone
+   restartable.** Planner, revised in execution: the cursor is a never-firing PENDING
+   NOTIFICATION in iOS's own notification store (`study-cursor-<n>`, scheduled with a far-future
+   time-interval trigger, older cursors cancelled after the new one is scheduled), because the
+   first design kept it in the app's MMKV and every relaunch read it back as 0 (58 identical
+   phase-1 runs; `LOG.md`). The native store is persistent by construction and is the very system
+   under study. Any interruption resumes by re-running the driver, which reads the cursor from
+   the `RUN` log line each launch writes, and a stuck-cursor guard ends a non-advancing run
+   within three launches. The foreground-dependent phase runs last (cursor 4) so a locked phone
    costs nothing until then.
-8. **Variant B's thread patch is two lines in the worktree's Pods copy.** Planner:
-   expo-notifications parses a `threadIdentifier` off the JS content but never applies it to
-   `UNMutableNotificationContent` (section 4.2); the study patches exactly that gap in
-   `ios/Pods/.../NotificationRecords.swift`, in the throwaway worktree only, never in
-   `node_modules`. A probe notification reports through the delivered set whether the running build
-   is patched, so the driver can never mistake variant A for B.
+8. **Variant B's thread patch is two lines in a private copy of the expo-notifications package
+    inside the worktree's own `node_modules`.** Planner: expo-notifications parses a
+    `threadIdentifier` off the JS content but never applies it to `UNMutableNotificationContent`
+    (section 4.2). The Pods project compiles the pod straight from `node_modules`, and the
+    worktree's `node_modules` starts as a symlink to the main checkout's, which no step may touch:
+    so for variant B the build script replaces the symlink with a directory of per-package
+    symlinks plus ONE real copy, `expo-notifications`, patches exactly that gap in the copy, and
+    re-runs `pod install` so the Pods project points at the worktree's own copy. A probe
+    notification reports through the delivered set whether the running build is patched, so the
+    driver can never mistake variant A for B.
 9. **No subagent is used anywhere in this plan.** Owner, 2026-09-17: *"Do everything yourself. Do
    not use any subagents for now."* The plan review the planner brief asks for was performed by the
    planning session itself, reading the plan as its executor (section 5).
@@ -218,8 +227,10 @@ same tree the planning sessions left (4,511 tests, 100% on all four measures at 
   one phase that needs an active app.
 - **Building the real permission dialog in and having someone tap Allow:** the study app is
   disposable and provisional authorization exists precisely for no-dialog delivery.
-- **Patch `node_modules` for variant B:** the worktree's `node_modules` is a symlink to the main
-  checkout's; patching it would reach the owner's repository. The Pods copy is the worktree's own.
+- **Patch the main checkout's `node_modules` for variant B:** the worktree's `node_modules` is a
+  symlink to the owner's checkout, so the build script replaces it (per-package symlinks plus one
+  real, patched copy of `expo-notifications`) before the variant B build. The main checkout is
+  never written.
 - **Screenshots as evidence:** without a gesture no tool reaches Notification Center; an image can
   show a banner or a lock screen at best. The delivered-set logs are the evidence; images only
   corroborate.
@@ -255,7 +266,8 @@ same tree the planning sessions left (4,511 tests, 100% on all four measures at 
 
 ## 6. Steps
 
-- [ ] Study run: section 7 (files)
+- [x] Study run: DONE (section 7; rounds 1 and 2 stopped on harness and cursor bugs, round 3
+  completed end to end; `LOG.md` records all three)
 
 There is no code step: nothing merges. The study run is of the `(files)` kind: the executor runs
 the scripts this plan carries, compares their output with the predictions in section 7, and changes
@@ -279,10 +291,11 @@ disposable with it.
    first time (prebuild, pods, one full compile); variant B's rebuild is incremental.
 2. Expected, in order: `APPJSON SPLICE OK`, `INDEX SPLICE OK`, the prebuild finishing with
    `✔ Finished prebuild`, pod install ending `Pod installation complete!`, `** BUILD SUCCEEDED **`,
-   the provisioning grep printing
-   `<string>9V3WAU9Z54.com.mugtaba.athan.experiments</string>`, `VARIANT A OK: ...`, `POD SPLICE OK`,
-   the same build and profile lines again, `VARIANT B OK: ...`, and the final line
-   `STUDY BUILDS OK`. Anything else: section 2.2, item 3.
+   the provisioning grep printing one profile line naming `com.mugtaba.athan.experiments`,
+   `VARIANT A OK: ...`, then the worktree's `node_modules` being rebuilt (per-package symlinks plus
+   the real copy), `POD SPLICE OK`, a second `Pod installation complete!` (its log is
+   `$OUT/pod-reinstall-variant-b.log`), the same build and profile lines again, `VARIANT B OK: ...`,
+   and the final line `STUDY BUILDS OK`. Anything else: section 2.2, item 3.
 3. The script leaves the worktree at `~/athan-device-sweep/worktrees/study-8` in place (variant B's
    pod patch lives only there); remove it only at the very end of the session, after the records.
 
@@ -297,26 +310,29 @@ disposable with it.
    every launch.
 2. **Cursor 0, phase 1: does re-scheduling under a delivered notification's identifier replace
    the delivered one?** Expected log lines, in order: `NOTIFY-STUDY PERM {...}` with
-   `"iosStatus":2` (provisional, granted by iOS with no dialog; expo's own `granted`/`status`
+   `"iosStatus":3` (provisional, granted by iOS with no dialog; expo's own `granted`/`status`
    fields map provisional to `false`/`undetermined`, and the study never gates on them),
    `RUN {"cursor":0,...}`, `P1 START {...}`, `SCHEDULED {"identifier":"x1",...}`,
    `P1 PENDING ["x1"]`, `P1-AFTER-FIRST DELIVERED [{"id":"x1","title":"P1 first","thread":""}]`,
    a second `SCHEDULED {"identifier":"x1",...}` with `"title":"P1 second"`,
    `P1-AFTER-SECOND PENDING ["x1"]` (the first copy has already delivered, so the one pending
-   request is the second), and then the answer: `P1-FINAL DELIVERED [...]`. **The plan predicts
-   two entries, `"P1 first"` and `"P1 second"`** (Apple's replacement promise covers the
-   scheduled request, not the delivered notification), and the measurement stands either way: one
-   entry means iOS does replace delivered ones, two means it does not. Whatever it is, quote it in
-   the records; a different count or a `SCHEDULE-FAILED` is section 2.2, item 7.
+   request is the second), and then the answer: `P1-FINAL DELIVERED [...]`. **Predicted two
+   entries; measured ONE, `[{"id":"x1","title":"P1 second","thread":""}]`, sixty times over
+   (58 in a stuck-cursor loop that ran the phase repeatedly, 2 in the clean run): iOS replaces
+   the delivered notification when its identifier is scheduled again.** The dumps do not
+   distinguish whether the delivered copy flips at add-time or when the new one fires; the net
+   behaviour, only the newest showing, is what they prove. A `SCHEDULE-FAILED` line or any other
+   delivered count is section 2.2, item 7.
 3. **Cursor 1, phase 3a: schedule three, then die.** Expected: `RUN {"cursor":1,...}`, `P3A START`,
    three `SCHEDULED` lines (x3a, x3b, x3c, firing 12, 20 and 28 seconds after scheduling),
    `P3A DONE`. The script then kills the app (`KILLED pid=<n>`) within a few seconds of that line,
    comfortably before the first fire, and waits out all three deliveries with the app dead.
 4. **Cursor 2, phase 3b: what delivered while dead, and one call clears it.** Expected:
-   `RUN {"cursor":2,...}`, `P3B START`, `P3-BEFORE DELIVERED [{"id":"x3a",...},{"id":"x3b",...},{"id":"x3c",...}]`
-   (three entries: delivery needs no app, provisional or not), `P3 DISMISSED-ALL`,
-   `P3-AFTER DELIVERED []` (one call, empty tray), `P3 DONE`. The `P3-BEFORE` count not being 3 is
-   section 2.2, item 7.
+   `RUN {"cursor":2,...}`, `P3B START`, `P3-BEFORE DELIVERED` holding FOUR entries — x3a, x3b
+   and x3c delivered with the app killed between launches, plus phase 1's leftover x1 (the
+   original prediction of three forgot that nothing clears x1 after phase 1; corrected in
+   execution) — then `P3 DISMISSED-ALL` and `P3-AFTER DELIVERED []` (one call, empty tray),
+   `P3 DONE`. Any other count is section 2.2, item 7.
 5. **Cursor 3, phase 4: thread grouping.** The script installs variant B as phase 3 completes, so
    this launch runs it directly. Expected: `RUN {"cursor":3,...}`, `P4 START {...}`, `SCHEDULED
    {"identifier":"x4p",...,"thread":"athan-study"}`, `P4 PROBE {"patched":true,...}` (the probe's
@@ -364,10 +380,10 @@ untouched, nothing of the study installed.
 
 ### 8.1 Findings text
 
-Append this to the end of `ai/features/uat-2/AUDIT-FINDINGS.md`, replacing each placeholder with
-the value the digest measured. Placeholders: `<DATE>`, `<P1_FINAL>`, `<P3_BEFORE>`, `<P3_AFTER>`,
-`<P4_FINAL>`, `<P2_HANDLER>`, `<P2_FINAL>`, `<P2_STATE>`, `<LOCKED_ASKED>` (`no` unless the script
-exited 3 and the owner unlocked), `<TESTS>` (the docs commit's hook `Tests:` line).
+Append this to the end of `ai/features/uat-2/AUDIT-FINDINGS.md`, with `<DATE>` (17 September
+2026), `<LOCKED_ASKED>` (no: the owner unlocked once, unprompted, before the run) and `<TESTS>`
+(the last hook `Tests:` line, 4511 passed, 4511 total) filled in; every other value below is the
+measured one, quoted from `LOG.md` and the digest:
 
 ```markdown
 # Session 8 of the queue: what iOS can and cannot do, <DATE>
@@ -402,31 +418,42 @@ asked for: <LOCKED_ASKED>). Nothing was built, nothing merged: the choice is the
 
 ## What the phone measured
 
-- **Reusing a delivered notification's identifier does not remove it.** Re-scheduling `x1` after
-  its first copy had delivered left the delivered set at <P1_FINAL>: both notifications stayed.
-  The pending request WAS replaced, exactly as documented. Replacing what shows is therefore not
-  reachable by identifier reuse.
+- **Reusing a DELIVERED notification's identifier replaces it.** After `x1` "P1 first" had
+  delivered, scheduling `x1` "P1 second" left the delivered set holding exactly
+  `[{"id":"x1","title":"P1 second","thread":""}]` (P1-FINAL; sixty consistent observations).
+  Apple's documentation promises this only for "previously scheduled" requests; the phone does
+  it for delivered ones too. The dumps do not distinguish add-time from fire-time replacement;
+  only the newest shows, which is what matters. NOTE for the app: one shared identifier for
+  everything is NOT therefore viable, because on iOS the identifier is also the PENDING key —
+  a shared id would leave the app able to hold one pending notification at a time, and the
+  2-day rolling buffer needs one per prayer and day.
 - **Delivery needs no app, and one call clears everything.** Three notifications scheduled and
-  then delivered with the app killed: <P3_BEFORE>. One `dismissAllNotificationsAsync` on the next
-  launch: <P3_AFTER>. Clearing on every app run works, and costs only that runs are the only
-  moments it happens.
+  then delivered with the app killed between launches: `P3-BEFORE` held them beside phase 1's
+  leftover (four entries). One `dismissAllNotificationsAsync` on the next launch:
+  `P3-AFTER DELIVERED []`. Clearing on every app run works, and costs only that runs are the
+  only moments it happens.
 - **The foreground handler can clear the earlier ones.** With the app active, each arriving
-  notification's handler dismissed every earlier delivered one (<P2_HANDLER>): after three
-  deliveries, one notification remained (<P2_FINAL>), the newest. The app state at the phase was
-  <P2_STATE>. This is the only moment iOS gives app code at delivery, and it exists only in the
-  foreground.
-- **Grouping by thread works, behind a two-line native change.** The study's variant B patched the
-  worktree's Pods copy to copy `threadIdentifier` onto the system content; the delivered set
-  reported it back on every notification (<P4_FINAL>). Visual grouping is Apple's documented
-  behaviour of that field. Provisional delivery is quiet (no banner, no sound), which none of the
-  measurements above depends on.
+  notification's handler dismissed every earlier delivered one (x2a cleared 4 — phase 4's
+  leftovers — then x2b cleared 1, x2c cleared 1; `incomingPresent:false` each time: the arriving
+  notification is NOT yet in the delivered set when the handler runs). After three deliveries,
+  one notification remained (P2-FINAL: exactly `x2c`, the newest). This is the only moment iOS
+  gives app code at delivery, and it exists only while the app is foregrounded.
+- **Grouping by thread works, behind a two-line native change.** The study's variant B patched
+  the worktree's private copy of expo-notifications to copy `threadIdentifier` onto the system
+  content; the delivered set reported `"thread":"athan-study"` on every notification
+  (`P4 PROBE {"patched":true}`, P4-FINAL: four threaded entries). Visual grouping is Apple's
+  documented behaviour of that field. Provisional delivery is quiet (no banner, no sound), which
+  none of the measurements above depends on.
 
 ## The answer to session 1's question
 
-iOS cannot replace a delivered notification, by identifier or any API. What it offers is: clear
-delivered notifications whenever the app runs (one call), clear the earlier ones from the
-foreground handler the instant a new one arrives, and group everything into one stack with a
-two-line native change so the user clears the app's notifications in one swipe.
+iOS DOES replace a delivered notification, but only when the app itself schedules again under
+the same identifier: there is no delivery-time hook for local notifications (the service
+extension is remote-only), so the system cannot swap the old one out as each new notification
+arrives on its own. What the app CAN do, all measured: clear delivered notifications with one
+call whenever it runs; clear the earlier ones from the foreground handler the instant a new one
+arrives while the app is open; and group everything into one stack with a two-line native
+change, so the user clears the app's notifications in one swipe.
 
 ## The options for the owner, nothing built
 
@@ -447,9 +474,9 @@ screenshots as corroboration). `uat-2` carries this note and nothing else new; t
 reported `<TESTS>`.
 ```
 
-If a measurement contradicts a `**...**` claim in that text (for instance `<P1_FINAL>` holds one
-entry, not two), the executor STOPs before writing the records: that is section 2.2, item 7, and
-the finding's wording is the planning session's to correct, not the executor's.
+The findings text above already carries the measured values, corrected by the planning session
+(the executor's two divergences from the original predictions, phase 1's single entry and phase
+3's four, are folded in, with the corrections marked where they happened).
 
 ### 8.2 Table rows
 
