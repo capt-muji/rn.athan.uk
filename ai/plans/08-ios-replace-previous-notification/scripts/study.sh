@@ -1,25 +1,23 @@
 #!/bin/zsh
-# Session 8 study driver. Runs every phase on the iPhone XS from this Mac:
-# no tap, no gesture, no owner hand. Restartable: it reads the app's own
-# cursor (the NOTIFY-STUDY RUN line each launch logs) and continues from
-# wherever the study stands. Run from the repository root:
+# Session 8 study driver, round 3. One variant (B: the pod that applies
+# threadIdentifier, self-proven by the phase-4 probe), one install, every
+# phase selected by the app's own cursor (a never-firing pending
+# notification in iOS's store), every wait bounded, and a stuck-cursor guard
+# that ends the run inside three cycles instead of looping forever.
+# Run from the repository root:
 #   zsh ai/plans/08-ios-replace-previous-notification/scripts/study.sh
 # Ends STUDY RUN DONE. Exit codes: 2 a wait timed out or a precondition is
 # missing, 3 phase 2 found the phone locked (the owner unlocks once, then
-# this script is re-run), 4 phase 4 reported UNPATCHED twice.
+# this script is re-run), 4 phase 4 reported UNPATCHED, 5 cursor stuck.
 #
-# Screenshots are corroboration only: without a gesture no Mac-side tool can
-# show Notification Center, so the load-bearing evidence is the NOTIFY-STUDY
-# log lines the app itself writes. Nobody but the audit session reads images.
-# No pipefail: `grep -q` exits on its match and SIGPIPEs a still-writing
-# producer (tail), turning every successful wait into a failure.
+# Screenshots are corroboration only; the load-bearing evidence is the
+# NOTIFY-STUDY log lines the app itself writes.
 set -u
 
 UDID=00008020-0015585C22D2002E
 BUNDLE=com.mugtaba.athan.experiments
 OUT=/Users/muji/athan-device-sweep/session8
 SYSLOG=$OUT/study-syslog.txt
-INSTALL_A=$OUT/variantA/AthanLab.app
 INSTALL_B=$OUT/variantB/AthanLab.app
 
 mkdir -p "$OUT"
@@ -68,22 +66,20 @@ kill_study_app() {
   fi
 }
 
-# The syslog capture spans the whole run; rotate any earlier capture to a
-# unique name so no restart ever overwrites evidence, and every wait below
-# reads this run's lines only.
 if [ -f "$SYSLOG" ]; then mv "$SYSLOG" "$SYSLOG.$(date +%Y%m%d-%H%M%S)"; fi
 PYTHONUNBUFFERED=1 pymobiledevice3 syslog live > "$SYSLOG" 2> "$OUT/syslog-stderr.txt" &
 SYSLOG_PID=$!
 trap 'kill $SYSLOG_PID 2>/dev/null' EXIT
 
-xcrun devicectl list devices 2>/dev/null | grep -m1 "$UDID" || { echo "DEVICE MISSING: $UDID"; exit 2; }
-[ -d "$INSTALL_A" ] || { echo "MISSING BUILD: $INSTALL_A (run build-study.sh)"; exit 2; }
-[ -d "$INSTALL_B" ] || { echo "MISSING BUILD: $INSTALL_B (run build-study.sh)"; exit 2; }
+DEVICE_LIST=$(xcrun devicectl list devices 2>/dev/null || true)
+grep -q "$UDID" <<<"$DEVICE_LIST" || { echo "DEVICE MISSING: $UDID"; exit 2; }
+[ -d "$INSTALL_B" ] || { echo "MISSING BUILD: $INSTALL_B"; exit 2; }
 
 shot 00-baseline.png
-install_variant "$INSTALL_A"
-INSTALLED_B=0
+install_variant "$INSTALL_B"
 
+LAST_CURSOR=-1
+STUCK=0
 while true; do
   OFFSET=$(($(stat -f%z "$SYSLOG" 2>/dev/null || echo 0) + 1))
   launch
@@ -92,6 +88,19 @@ while true; do
   CURSOR=$(echo "$RUN_LINE" | sed -E 's/.*"cursor":([0-9]+).*/\1/')
   OFFSET=$(($(stat -f%z "$SYSLOG") + 1))
   echo "PHASE CURSOR=$CURSOR"
+
+  if [ "$CURSOR" = "$LAST_CURSOR" ]; then
+    STUCK=$((STUCK+1))
+  else
+    STUCK=0
+    LAST_CURSOR=$CURSOR
+  fi
+  if [ $STUCK -ge 2 ]; then
+    echo "CURSOR STUCK at $CURSOR across three launches: the cursor is not advancing."
+    echo "Last NOTIFY-STUDY lines:"
+    grep 'NOTIFY-STUDY' "$SYSLOG" | tail -8
+    exit 5
+  fi
 
   case "$CURSOR" in
     0)
@@ -107,24 +116,8 @@ while true; do
     2)
       wait_for 'NOTIFY-STUDY P3 DONE' 'phase 3b' "$OFFSET" 12
       sleep 5; shot 03-after-p3-clear.png
-      # Phase 4 is next and needs variant B; install it now so the cursor-3
-      # launch runs it directly. The case-3 branch below is restart safety.
-      if [ "$INSTALLED_B" -eq 0 ]; then
-        install_variant "$INSTALL_B"
-        INSTALLED_B=1
-      fi
       ;;
     3)
-      # Phase 4 needs variant B (the pod that applies threadIdentifier). If
-      # this launch is still running variant A, it logs P4 UNPATCHED and keeps
-      # the cursor; install B and try again, once.
-      if [ "$INSTALLED_B" -eq 0 ]; then
-        install_variant "$INSTALL_B"
-        INSTALLED_B=1
-        launch
-        wait_for 'NOTIFY-STUDY RUN' 'the cursor line after installing B' "$OFFSET" 12
-        OFFSET=$(($(stat -f%z "$SYSLOG") + 1))
-      fi
       wait_for 'NOTIFY-STUDY P4 (DONE|UNPATCHED)' 'phase 4' "$OFFSET" 18
       if tail -c +"$OFFSET" "$SYSLOG" | grep -q 'NOTIFY-STUDY P4 UNPATCHED'; then
         install_variant "$INSTALL_B"
@@ -142,8 +135,8 @@ while true; do
     4)
       wait_for 'NOTIFY-STUDY P2 (DONE|LOCKED)' 'phase 2' "$OFFSET" 18
       if tail -c +"$OFFSET" "$SYSLOG" | grep -q 'NOTIFY-STUDY P2 LOCKED'; then
-        echo 'PHASE 2 LOCKED: the phone is locked. Ask the owner to unlock it once'
-        echo '(nothing else is needed), then re-run this script.'
+        echo 'PHASE 2 LOCKED: the phone is locked. The owner is asked to unlock it once;'
+        echo 'then this script is re-run and continues from the cursor.'
         exit 3
       fi
       sleep 5; shot 05-after-p2.png
@@ -157,9 +150,6 @@ done
 
 kill $SYSLOG_PID 2>/dev/null
 trap - EXIT
-# Every capture this phone run produced, oldest first (study-syslog.txt sorts
-# before its timestamped rotations), so a study that needed a restart yields
-# one digest holding all of its phases.
 cat "$OUT"/study-syslog.txt "$OUT"/study-syslog.txt.* 2>/dev/null | grep 'NOTIFY-STUDY' > "$OUT/study-digest.txt"
 
 # Leave the phone as it was found: nothing of the study stays installed. The

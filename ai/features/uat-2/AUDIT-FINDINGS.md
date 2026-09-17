@@ -5747,3 +5747,89 @@ restores its preference without its alarms, which is its own session.
 The 3T runs the mock build of `8dde8df3` with the Asr-next mock data, unlocked, with Athan open and "Stay awake"
 on, and automatic time never moved. Nothing was built on or pushed to EAS, and `releases.json` is untouched. The
 evidence is in `~/athan-device-sweep/session6b/`.
+# Session 8 of the queue: what iOS can and cannot do, 17 September 2026
+
+The brief is `ai/prompts/ios-replace-previous-notification.md`, planned in
+`ai/plans/08-ios-replace-previous-notification/PLAN.md` and executed with no subagents (owner,
+2026-09-17: the session does everything itself). The study ran on the iPhone XS
+(`00008020-0015585C22D2002E`, iOS 18.7.10) as a throwaway app, `com.mugtaba.athan.experiments`:
+the owner's installed Athan was never addressed by any step. Driven entirely from the Mac
+(`xcrun devicectl`, `pymobiledevice3`): provisional authorization meant no permission dialog, so
+the whole study needed no tap from anyone (owner, 2026-09-17: "you do everything"; one unlock was
+asked for: no (the owner unlocked once, unprompted, before the run)). Nothing was built, nothing merged: the choice is the owner's.
+
+## The documented facts, read before anything ran (17 September 2026)
+
+- Apple, on `UNNotificationRequest.identifier`: "If you use the same identifier when scheduling a
+  new notification, the system removes the previously scheduled notification with that identifier
+  and replaces it with the new one." Scheduled: delivered notifications are not mentioned.
+- `UNUserNotificationCenter`'s entire delivered surface is `getDeliveredNotifications`,
+  `removeDeliveredNotifications(withIdentifiers:)` and `removeAllDeliveredNotifications()`. No API
+  replaces a delivered notification's content.
+- A notification service extension runs for remote notifications only, and only with
+  `mutable-content: 1`. A local notification never reaches it: nothing of the app runs at a local
+  notification's delivery.
+- `threadIdentifier` groups notifications visually (Apple, `UNMutableNotificationContent`), and
+  expo-notifications 57.0.18 parses the field off the JavaScript content but never applies it to
+  the system content: `NotificationContentInput` has no such field, and
+  `toUNMutableNotificationContent()` copies neither it nor `targetContentIdentifier`.
+- expo-notifications 57.0.18 exposes `getPresentedNotificationsAsync`, `dismissNotificationAsync`
+  and `dismissAllNotificationsAsync` to JavaScript, each mapped one-to-one onto the Apple calls
+  above.
+
+## What the phone measured
+
+- **Reusing a DELIVERED notification's identifier replaces it.** After `x1` "P1 first" had
+  delivered, scheduling `x1` "P1 second" left the delivered set holding exactly
+  `[{"id":"x1","title":"P1 second","thread":""}]` (P1-FINAL; sixty consistent observations).
+  Apple's documentation promises this only for "previously scheduled" requests; the phone does
+  it for delivered ones too. The dumps do not distinguish add-time from fire-time replacement;
+  only the newest shows, which is what matters. NOTE for the app: one shared identifier for
+  everything is NOT therefore viable, because on iOS the identifier is also the PENDING key —
+  a shared id would leave the app able to hold one pending notification at a time, and the
+  2-day rolling buffer needs one per prayer and day.
+- **Delivery needs no app, and one call clears everything.** Three notifications scheduled and
+  then delivered with the app killed between launches: `P3-BEFORE` held them beside phase 1's
+  leftover (four entries). One `dismissAllNotificationsAsync` on the next launch:
+  `P3-AFTER DELIVERED []`. Clearing on every app run works, and costs only that runs are the
+  only moments it happens.
+- **The foreground handler can clear the earlier ones.** With the app active, each arriving
+  notification's handler dismissed every earlier delivered one (x2a cleared 4 — phase 4's
+  leftovers — then x2b cleared 1, x2c cleared 1; `incomingPresent:false` each time: the arriving
+  notification is NOT yet in the delivered set when the handler runs). After three deliveries,
+  one notification remained (P2-FINAL: exactly `x2c`, the newest). This is the only moment iOS
+  gives app code at delivery, and it exists only while the app is foregrounded.
+- **Grouping by thread works, behind a two-line native change.** The study's variant B patched
+  the worktree's private copy of expo-notifications to copy `threadIdentifier` onto the system
+  content; the delivered set reported `"thread":"athan-study"` on every notification
+  (`P4 PROBE {"patched":true}`, P4-FINAL: four threaded entries). Visual grouping is Apple's
+  documented behaviour of that field. Provisional delivery is quiet (no banner, no sound), which
+  none of the measurements above depends on.
+
+## The answer to session 1's question
+
+iOS DOES replace a delivered notification, but only when the app itself schedules again under
+the same identifier: there is no delivery-time hook for local notifications (the service
+extension is remote-only), so the system cannot swap the old one out as each new notification
+arrives on its own. What the app CAN do, all measured: clear delivered notifications with one
+call whenever it runs; clear the earlier ones from the foreground handler the instant a new one
+arrives while the app is open; and group everything into one stack with a two-line native
+change, so the user clears the app's notifications in one swipe.
+
+## The options for the owner, nothing built
+
+1. **Do nothing.** The pile stays until cleared by hand.
+2. **Clear on every app run** (launch, return to foreground, background refresh): no native
+   change; notifications still stack between runs.
+3. **Foreground handler plus clear on every run**: still no native change; while the app is open
+   the newest is the only one showing; between runs they still stack.
+4. **Thread grouping** (the two-line pod patch, via patch-package or a small local module):
+   every notification stays inside one grouped stack, cleared with one swipe; not
+   newest-only, but no pile. Combineable with 2 or 3.
+
+## State left behind
+
+The phone exactly as found: the study app uninstalled, the owner's Athan 1.26.28 untouched
+throughout. The evidence is in `~/athan-device-sweep/session8/` (digest, full syslog, build logs,
+screenshots as corroboration). `uat-2` carries this note and nothing else new; the last suite run
+reported `Tests: 4511 passed, 4511 total`.
