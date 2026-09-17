@@ -343,17 +343,20 @@ const sequenceSignature = (sequence: PrayerSequence): string =>
  */
 export const setSequence = (type: ScheduleType, date: Date): void => {
   const sequenceAtom = getSequenceAtom(type);
-  const built = PrayerUtils.createPrayerSequence(type, date, 3);
+  // One instant decides the whole build. After 00:00 it starts from yesterday while yesterday's list
+  // still has a row to come, or a rebuild drops those rows off the screen (finding 74)
+  const firstDate = PrayerUtils.firstStillDueListDay(type, date);
+  const built = PrayerUtils.createPrayerSequence(type, TimeUtils.getDayAnchor(firstDate), 3);
   const sequence: PrayerSequence = {
     type,
-    prayers: extendUntilReadable(type, built.prayers, TimeUtils.createInstant()),
+    prayers: extendUntilReadable(type, built.prayers, date),
   };
 
   const current = store.get(sequenceAtom);
   if (current && sequenceSignature(current) === sequenceSignature(sequence)) {
     logger.info('SEQUENCE: Set sequence skipped (identical)', {
       type,
-      startDate: TimeUtils.formatDateShort(date),
+      startDate: firstDate,
       prayerCount: sequence.prayers.length,
     });
     return;
@@ -364,7 +367,7 @@ export const setSequence = (type: ScheduleType, date: Date): void => {
 
   logger.info('SEQUENCE: Set sequence', {
     type,
-    startDate: TimeUtils.formatDateShort(date),
+    startDate: firstDate,
     prayerCount: sequence.prayers.length,
   });
 };

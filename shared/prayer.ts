@@ -9,6 +9,7 @@ import {
   PRAYERS_ENGLISH,
   TIME_ADJUSTMENTS,
 } from '@/shared/constants';
+import { findNextReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { createPrayerDatetime } from '@/shared/time';
 import {
@@ -502,6 +503,27 @@ export const createPrayersForDate = (type: ScheduleType, date: string): Prayer[]
  */
 export const getPrayerForDate = (type: ScheduleType, english: string, date: string): Prayer | null =>
   createPrayersForDate(type, date).find((prayer) => prayer.english === english) ?? null;
+
+/**
+ * The earliest list day a sequence must start from: yesterday while yesterday's list still has a
+ * readable row to come, today otherwise.
+ *
+ * A day stays current until its last readable row has passed, not until 00:00 (owner, 2026-09-13), and
+ * a row filed under yesterday can fall after midnight (a Magrib or Isha in the small hours, a Friday
+ * Istijaba beside them; finding 74). A build that started at today's calendar day left those rows off
+ * the screen the moment the list was rebuilt. No earlier day can qualify: a row of the day before
+ * yesterday's list falls no later than 05:59 on yesterday, which any moment today is already past.
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @param now The instant the start day is worked out for
+ * @returns The YYYY-MM-DD of the earliest list day that is still current
+ */
+export const firstStillDueListDay = (type: ScheduleType, now: Date): string => {
+  const today = TimeUtils.formatDateShort(now);
+  const yesterday = TimeUtils.getPreviousDateString(today);
+
+  return findNextReadable(createPrayersForDate(type, yesterday), now) ? yesterday : today;
+};
 
 /**
  * Returns the display order of prayers as a list of sequence indices.
