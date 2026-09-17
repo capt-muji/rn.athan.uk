@@ -358,7 +358,7 @@ predicted relative to what this phase records, never as fixed numbers.
    the mock storage's saved preferences armed). An armed instant before 2026-09-12 16:40 other than none,
    or after 2026-09-13 17:00: section 2.2, item 7. Write the count in `LOG.md` as `OLD_ALARMS=<n>` and
    note, from the dump's `when=` lines, which instants between 08:00 and 16:42 on 2026-09-12 are armed:
-   driving to item 8's minute passes exactly those.
+   driving to item 9's minute passes exactly those.
 7. Install the new build over it, keeping the data, with NO force-stop or `am kill` in between (the update's
    own re-arm is what holds the alarms):
    `python3 ~/athan-device-sweep/session5/bin/devcheck.py install ~/athan-device-sweep/session7/build/athan-7-new.apk > $TMPDIR/install-7-new.log 2>&1`.
