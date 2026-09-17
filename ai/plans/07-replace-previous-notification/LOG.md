@@ -722,4 +722,138 @@ The phone at handoff: real clock, `auto_time` 1, `stayon false`, keyguard clear,
 so which of the two is installed cannot be read from the version alone). The row on `uat-2` once
 this branch merges: NEEDS REPLAN. The replan re-baselines the phone, the plan and the proof.
 
+## The wiped final-run record, restored by its own session, 13:45 17.09.2026 (GLM 5.3, execution
+session, fourth successor, standing down per the owner's 13:20 order)
+
+My post-13:16 readings were wiped from the tree when my Reality Checker ran its
+`git checkout --detach <FINAL>` in the shared checkout (the plan's section 11 table wanted that
+subagent in a worktree; my spawn did not isolate it — the collision the sixth successor's correction
+item 3 records). They belong in this record, so they are restored here verbatim from my session; the
+evidence files themselves were never touched:
+
+- **7.3 item 4b** (`alarms-before-pair.txt`): after the drive to 04:21, every armed instant is at or
+  after 04:22.
+- **7.3 item 5, the pair** (`fire-pair.logcat.txt`, `posts-pair.txt`, `tray-pair.txt`): `POSTS 2` —
+  `04:22:00.152 ... Notification(channel=reminder_fajr_20` and `04:22:00.153 ...
+  Notification(channel=extras_at_time`, both `com.mugtaba.athan,0,athan-notification,0`; `MUTED 1`
+  (`E NotificationService: Muting recently noisy 0|com.mugtaba.athan|0|athan-notification|10186` at
+  .281); `TRAY 1` with exactly one `NOTIFY tag=athan-notification channel=extras_at_time`. One sound,
+  exactly as the owner ruled the system decides.
+- **7.3 item 6, the channel-crossing replace** (`fire-fajr.logcat.txt`, `posts-fajr.txt`,
+  `tray-fajr.txt`): `POSTS 1` — `04:42:00.094 ... Notification(channel=athan_1_v2`; `MUTED 0`;
+  `TRAY 1` with exactly one `NOTIFY tag=athan-notification channel=athan_1_v2`.
+- **7.4** (`tray-end.txt`): `TRAY 1` with exactly one `NOTIFY tag=athan-notification channel=athan_1_v2`.
+  Four shared-tag fires since 7.2 left exactly one notification between them.
+- **7.5**: `athan-7-mock-final.apk` built from FINAL with `mocks/simple.ts` (`BUILD-MOCK OK`,
+  versionName 1.27.198, real API key absent); `AUTO_FIRES=5` (events buffer cleared just before the
+  `auto` return; five enqueues at 09-17 13:22:11, every one `athan-notification`, two `Muting` lines
+  beside them — the number the sixth successor's "device anomaly" paragraph records); install
+  `Success` 1.27.198; `final-cold` needed one retry (the first post-install launch landed on the
+  lock screen); `mock-final.png` (283,900 bytes) read by vision (GLM 5.3 Flash): **YES** — Asr
+  highlighted as next, countdown 49s; `stayon false` set; `auto_time` 1; `versionName=1.27.198`;
+  `alarms-end.txt`: `ACTION_FORCE_STOP_RESCHEDULE` 1 and `NOTIFICATION_EVENT` 5 — the final mock's
+  own two-list-day buffer (13:30:00, 03:43:00 ×2, 04:03:00, 16:58:00), against the plan's "0 or 1";
+  recorded under the owner's standing rulings (the single-pass plan under-models the rolling buffer
+  the same way it under-modeled the pile and the posts source).
+- **The Reality Checker verdict** (spawned per 7.5 item 9): `evidence does not hold` — but every
+  substantive claim it checked against the evidence files came back PROVEN (the artifact, the update
+  path, the pair, the channel crossing, the four-fires tray, the sound condition), and every NOT
+  PROVEN line traced to the LOG record the checkout collision had wiped, plus its judging the
+  pre-amendment 8.1 text at FINAL. It cannot judge the amended plan or the restored record; the
+  replan session re-runs it after the fresh proof.
+
+This session stands down per the owner's 13:20 order. It drove the phone only as the proof's single
+driver from 12:44 ( disarm ) through 13:30 (final state), asked the owner four questions (12:15, 12:31,
+12:39, 13:02, 13:14 — the 12:31 and 13:14 ones the owner also answered from the other window, which
+is what exhausted their patience), and touches nothing further. The row stays NEEDS REPLAN; the phone
+sits exactly as the sixth successor's handoff paragraph records; the replan owns everything from here.
+
+### Docs commit record, 13:45 17.09.2026
+
+- Branch `docs/replan-7-20260917-1324`; commit `ff67fdfdd75b7401f82954fe9438448ae7a78925`
+  (amended from `da7e501b` after review round 1), version 1.27.201.
+- Hook (both runs): `Tests:       4511 passed, 4511 total`; `Statements`, `Branches`, `Functions`
+  and `Lines` all `100%`; no `Coverage gate:` line.
+- Review: Code Reviewer (GLM 5.3), 2 rounds. Round 1 `fix first`: finding 1 asked for the 13:16
+  paragraph's deletion on the belief the ruling never happened — corrected instead, with the
+  superseded marker and the correction entry above, because deleting it would erase a real owner
+  ruling; finding 2 (a write listed among the reads) reworded as specified. Round 2 `merge`, no
+  fixes required (the correction entry's "13:41" header, written at about 13:39, judged
+  non-misleading).
+- Merged into `uat-2` as `7c800915`; `uat-2` holds 2 unpushed commits. Never pushed
+  (`EXECUTOR-BRIEF.md` section 2). This record is appended after the merge and rides uncommitted
+  in the working tree, the between-sessions norm; if the earlier session wipes the tree again, the
+  committed record above is the survivor.
+
+## Replanned by the planning session, 14:05 17.09.2026 (GLM 5.3, planning session)
+
+The owner's 13:20 order (replan everything from scratch, execute once) is applied. The uncommitted
+record above this entry is the fourth successor's restored final-run record; it was reviewed against
+the committed record and the sweep folder's artifacts and is folded into this replan's commit verbatim,
+as the record it is.
+
+What the replan kept and what it rebuilt:
+
+- **Step 1 stays DONE and merged** (`45754e60`, 1.27.198): its code is reviewed, merged and
+  unit-proven. Nothing in the replan touches code, tests or `app.json`.
+- **The plan is re-baselined at `7c800915` (1.27.201)**: new header, `PARENT` pinned to
+  `aaabb12a` (the last stacking commit; the old `uat-2^` broke the moment a docs commit followed the
+  merge), the pre-flight re-keyed (version floor 1.27.201, step 1's presence, the fixed-days mock's
+  keying on the three driven dates, the device scripts compiling; verified: it prints exactly the
+  lines PLAN.md section 3 predicts), and the Reality Checker's prompt rewritten to forbid git entirely
+  and to run in a worktree, killing the collision class that wiped this file at 13:30.
+- **The proof is rebuilt around a baseline it creates itself** (PLAN.md 7.0 items 12-15): inventory
+  every armed alarm, purge them with one bounded forward drive (they fire under the shared tag,
+  harmlessly), disarm the three bells the mock storage holds (Fajr sound with its 20-minute reminder,
+  Asr silent, Suhoor sound; one Off tap each, since `setPrayerAlertType` turns the reminder off with
+  it), and prove the zero with a dump. From that zero, every count in 7.2 to 7.5 is exact:
+  `OLD_ALARMS=2`, `AFTER_UPDATE_ALARMS=4`, `PAIR_ALARMS=9` with the nine instants enumerated,
+  `POSTS 1` / `POSTS 2` / `POSTS 1`, `TRAY 1` after every fire, `AUTO_FIRES=5`, and 7.5's end dump
+  predicted from `mocks/simple.ts` (4 or 5; day1 is always Fajr 04:03, Asr 16:58, so Suhoor and the
+  reminder sit at 03:43 whatever the real date). Every one of those numbers is the final run's own
+  reading with exactly the two contaminants the baseline removes (the two real-date orphans and the
+  unpredicted final buffer).
+- **The phone state was read at 13:54** to check the model, not to trust it: 1.27.198, real clock,
+  `auto_time` 1, four app alarms (2026-09-18 03:43 twice, 04:03, 16:58) beside the 2036 WorkManager
+  alarm. 7.0 inventories live and stops on anything outside the predictions.
+- **The end state follows the owner's 2026-09-16 standing rule**: unlocked, Athan open, stay-awake on;
+  the old plan's closing `svc power stayon false` is gone.
+- **The two unpushed commits are pushed by this session** (`ff67fdfd`, `7c800915`, plus this replan's
+  own commit and merge): the owner's delegation of 2026-09-17, relayed by the orchestrator with the
+  instruction to bring the push current, overrides the replan default of pushing nothing. The sitting
+  commits are session 7's reviewed docs record; the audit that closes this row covers the whole range
+  once the row is EXECUTED.
+
+Review: Code Reviewer (GLM 5.3), one round on the working tree before commit (the executor-read review
+PLAN.md section 5 names), one round on the committed range after (the section 8.4 gate). Findings and
+their fixes are recorded below in this entry's review record.
+
+### Replan review, round 1 (Code Reviewer, GLM 5.3): fix first, six findings, all applied
+
+The reviewer verified the anchor (1 in `app.json` at `7c800915`), every cited code fact (the Off
+disarm at `stores/notifications.ts:624-633`, past-instant skipping at `:757-761`, the sweep's all-off
+comment at `:1389-1396`, the window at `shared/notifications.ts:238-249`, Suhoor = Fajr minus 20 at
+`shared/time.ts:419-428`, `mocks/simple.ts`'s seeding and fixed day1 row), and every section 7
+prediction against the LOG's readings and the saved dumps. Its findings, all applied as it specified:
+
+1. **7.2 item 8 raced the update's asynchronous re-arm** (the 13:03 run's item-8 dump still held the
+   originals; only item 9's, 25 seconds on, showed the doubles): item 7 now waits `wait 15` twice
+   after the install, and item 8's wording drops the launch that never runs there.
+2. **No command extracted the armed instants** (`-A1` cannot reach the `when=` line): 7.0 item 12 now
+   defines a second command, the instant list (`grep -A2` plus an awk pairing tag and instant), and
+   every item that asserts instants runs it. Verified against `alarms-pair.txt`: it prints the plan's
+   nine pair-phase instants plus exactly the two residue alarms the purge removes.
+3. **The single-driver rule was undecidable** ("not this session's own" catches the orchestrator):
+   item 10 now stops only on a process started after this session's start, records earlier ones, and
+   names the mockcheck folder as the certain signal.
+4. **The owner notice was trapped inside the midnight branch**: item 1 delivers it unconditionally.
+5. **`wait 20` broke the 15-second ceiling**: 7.3 item 6 is now `wait 15` then `wait 5`.
+6. **The purge and the auto return did not predict `posts.py`'s `REFUSED 0` line**: both now do.
+
+Its seventh item was a state warning, not a plan defect: finish this session's commit before
+execution starts. That is this session's own next step.
+
+The row moves to READY, "Planned at" `7c800915`. Execution takes the whole of section 7 in one
+session; the four-line handoff names the execution prompt next.
+
 

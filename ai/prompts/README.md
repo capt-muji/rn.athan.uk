@@ -158,6 +158,15 @@ None of these is a session yet. Each needs the owner's decision first.
   the earlier "the tray keeps whatever was stacked before the update" ruling keeps only its code
   consequence. The planning session amended the plan letter to match (version 1.27.199): 7.2 item 11's
   measured readings stand, and execution resumes at 7.3 with the row still IN PROGRESS.
+- **Session 7 is replanned from scratch and executed once.** The owner's 13:20 order, after the proof
+  had asked four questions in an hour: "You seem to be asking me a lot of questions. Perhaps we should
+  replan this entire task and execute it properly like stop all the sessions, replan everything,
+  execute it, etc. Like do it from scratch again." Step 1's merged code stays; the plan and the device
+  proof were rebuilt (version 1.27.202) around a baseline the proof creates itself, so the single
+  execution runs with every count predicted and no question left to ask.
+- **The planning session owns every planning question, and the push.** Owner delegation relayed by the
+  orchestrator on 2026-09-17: the replan decides everything itself, commits, reviews, merges and pushes
+  per its brief's conventions, leaves the row READY, and brings `uat-2`'s unpushed commits current.
 
 ## Also live, not sessions
 
