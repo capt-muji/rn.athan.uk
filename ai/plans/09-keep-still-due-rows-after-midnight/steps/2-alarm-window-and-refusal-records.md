@@ -4,7 +4,8 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
 `/Users/muji/repos/rn.athan.uk`. This step is **specified**: you build it from the contracts below.
 
 0. **Anchor check.** Run `bash ai/plans/09-keep-still-due-rows-after-midnight/scripts/check-anchors.sh 2`.
-   Expected: one line per anchor `2-1` to `2-11`, each ending in `1`, then `ANCHORS OK`. Anchor `2-2`
+   Expected: one line per anchor `2-1` to `2-11`, in the manifest's order, each ending in `1`, then
+   `ANCHORS OK`. Anchor `2-2`
    anchors the import line step 1 inserted, so it counts 1 only because step 1 is merged; any count
    other than `1` (including for `2-2`) means NEEDS REPLAN (`EXECUTOR-BRIEF.md` section 1, item 4).
 
@@ -263,10 +264,35 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
        );
        expect(records).toContain('athan_standard_isha_2026-06-20');
      });
+
+     it('drops the record of a refused cancel of an alarm older than yesterday, spent like any passed moment', async () => {
+       jest.setSystemTime(new Date('2026-06-20T20:00:00.000Z'));
+       storeDays(days(ISHA_AT_0001));
+       enable(ScheduleType.Standard, 'Isha', 5);
+
+       await rescheduleAllNotifications();
+
+       // Two evenings later the 20th's alarm is long past; the phone refuses to cancel it anyway
+       jest.setSystemTime(new Date('2026-06-22T19:00:00.000Z'));
+       const cancelBase = (Notifications.cancelScheduledNotificationAsync as jest.Mock).getMockImplementation();
+       (Notifications.cancelScheduledNotificationAsync as jest.Mock).mockImplementation(async (id: string) => {
+         if (id === 'athan_standard_isha_2026-06-20') throw new Error('refused');
+         return cancelBase?.(id);
+       });
+       setPrayerAlertType(ScheduleType.Standard, 5, AlertType.Off);
+
+       await rescheduleAllNotifications();
+
+       // The OS still holds the refused alarm, but its moment is past and its record is spent: keeping
+       // it would make every later clear ask for it again for ever
+       expect(osIdentifiers()).toContain('athan_standard_isha_2026-06-20');
+       const records = Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 5).map((record) => record.id);
+       expect(records).toEqual([]);
+     });
    });
    ```
 
-   The five `it`s:
+   The six `it`s:
 
    | # | `it` name | Proves | Inputs | Asserts |
    | --- | --- | --- | --- | --- |
@@ -275,6 +301,7 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
    | 3 | `keeps a Friday Istijaba that falls after midnight armed, while the Saturday list carries none` | The Extras crossing row, gap map item 6's third row; Saturday's list has no Istijaba to arm | 25 to 28 June 2026, Magrib 01:20; Istijaba Silent with reminder; second reschedule 00:05 BST on the 27th | The 26th's Istijaba and its reminder alone, re-attempted at `2026-06-26T23:20:00.000Z`, nothing cancelled |
    | 4 | `lets the window move on the moment the still-due row has passed, as the scheduler skips past rows` | The window is not wider: at exactly the row's instant the yesterday ids are stale again | As 1; second reschedule at exactly `2026-06-20T23:01:00.000Z` | Both 20th ids cancelled; final OS the 21st's and 22nd's pairs |
    | 5 | `keeps the record of a refused cancel of a still-due yesterday alarm, so the repair can reach it` | `canStillFire` counts a still-due yesterday record (design review finding 1) | As 1; the OS refuses to cancel the 20th's at-time; the bell turned Off through the app's own setter | The OS still holds the alarm AND its record survives in `getAllScheduledNotificationsForPrayer` |
+   | 6 | `drops the record of a refused cancel of an alarm older than yesterday, spent like any passed moment` | The look-back's far edge: only yesterday counts, so a refused cancel of anything older is spent and its record dropped, the mirror of row 5 (owner, 2026-09-17, the coverage stop) | As 1; second reschedule 20:00 BST on 22 June; the OS refuses to cancel the 20th's at-time; the bell turned Off through the app's own setter | The OS still holds the refused alarm AND every at-time record of the prayer is gone (`[]`) |
 
    **In `shared/__tests__/notifications.test.ts`** (existing suite): insert before anchor `2-10`'s
    `it('generates consecutive days', ...)` this test verbatim:
@@ -297,7 +324,7 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
 
    Run: `npx jest stores/__tests__/notificationsAroundMidnight.test.ts shared/__tests__/prayer.test.ts shared/__tests__/notifications.test.ts --watchman=false --selectProjects=unit > $TMPDIR/red-2.log 2>&1`.
 
-   Expected in `$TMPDIR/red-2.log`: `Tests: 11 failed, 193 passed, 204 total`, failing exactly:
+   Expected in `$TMPDIR/red-2.log`: `Tests: 11 failed, 194 passed, 205 total`, failing exactly:
    - the six `firstStillDueListDayForPrayer ›` cases, each with
      `TypeError: (0 , _prayer.firstStillDueListDayForPrayer) is not a function`;
    - `keeps yesterday's list Isha armed, re-attempted under its own identifier`,
@@ -308,9 +335,12 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
 
    And passing, by design: `lets the window move on the moment the still-due row has passed, as the
    scheduler skips past rows` (today's window already cancels exactly those ids at that instant; the
-   test pins the boundary against a future `>=` slip). Any other test failing, or any of the named
-   eleven passing: STOP and ask "the step 2 red run printed `<Tests line>`; the plan expects exactly
-   the eleven named failures; what do I do?".
+   test pins the boundary against a future `>=` slip) and `drops the record of a refused cancel of an
+   alarm older than yesterday, spent like any passed moment` (the old date test dropped older records
+   too, and only yesterday is new; the test pins the far edge the change must not move). Any other
+   test failing, or any of the named eleven passing: STOP and ask "the step 2 red run printed
+   `<Tests line>`; the plan expects exactly the eleven named failures and the two named passes; what
+   do I do?".
 
 5. **Change.** Build the contracts:
 
@@ -441,7 +471,7 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
 
 6. **Green.**
    1. Run the red command again, writing to `$TMPDIR/green-2.log`. Expected: `Test Suites: 3 passed,
-      3 total`, `Tests: 204 passed, 204 total`.
+      3 total`, `Tests: 205 passed, 205 total`.
    2. Run `npx tsc --noEmit`. Expected: exit 0 and no output. (If Biome has not yet organized the
       edited files' imports, run `npx biome check --write shared/prayer.ts shared/notifications.ts
       stores/notifications.ts stores/__tests__/notificationsAroundMidnight.test.ts
@@ -451,9 +481,10 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
    4. Any difference: STOP and ask "step 2 green printed `<line>`; what do I do?".
 
 7. **Breaks.** Run `bash ai/plans/09-keep-still-due-rows-after-midnight/scripts/breaks-2.sh > $TMPDIR/breaks-2.log 2>&1`
-   in the background. It takes about 50 seconds. Expected: four lines starting `BREAK 2`, each saying
-   `AS EXPECTED` (2a `Tests: 3 failed, 201 passed, 204 total`; 2b `Tests: 2 failed, 202 passed, 204
-   total`; 2c `Tests: 4 failed, 200 passed, 204 total`; 2d `Tests: 1 failed, 203 passed, 204 total`),
+   in the background. It takes about 3 minutes. Expected: five lines starting `BREAK 2`, each saying
+   `AS EXPECTED` (2a `Tests: 3 failed, 202 passed, 205 total`; 2b `Tests: 2 failed, 203 passed, 205
+   total`; 2c `Tests: 4 failed, 201 passed, 205 total`; 2d `Tests: 1 failed, 204 passed, 205 total`;
+   2e `Tests: 1 failed, 204 passed, 205 total`),
    and the last line `ALL AS EXPECTED: 1`. A line saying `NOT AS EXPECTED` or `the substitution did
    not change`: STOP and ask "break `<name>` did not behave as the plan says: `<that line>`; what do
    I do?". Afterwards, `git status --porcelain` must list only this step's files and the three plan
@@ -474,8 +505,10 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
       `set-version.sh` printed.
    4. Run `git commit -F $TMPDIR/msg-2.txt > $TMPDIR/commit-2.log 2>&1` in the background, with the
       hang check from `EXECUTOR-BRIEF.md` section 3.
-   5. Expected in `$TMPDIR/commit-2.log`: the last `Tests:` line is
-      `Tests: 2 skipped, 4527 passed, 4529 total` with no `failed`; the lines `Statements   : 100%`,
+   5. Expected in `$TMPDIR/commit-2.log`: the last `Tests:` line ends `passed, 4530 total` with no
+      `failed`, `Tests: 2 skipped, 4528 passed, 4530 total` in a checkout without the native folders
+      and `Tests: 4530 passed, 4530 total` in one that holds them (the benign difference `LOG.md`'s
+      Events entry explains); the lines `Statements   : 100%`,
       `Branches     : 100%`, `Functions    : 100%` and `Lines        : 100%`; no line starting
       `Coverage gate:`. If only `shared/__tests__/audioMatrix.test.ts` timed out, follow
       `EXECUTOR-BRIEF.md` section 3. Any other failure: STOP and ask "the step 2 commit failed with
@@ -501,7 +534,8 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
      (found by the design review; the old date test would have deleted it).
    - Gap map item 6's three shapes pinned (Isha, Magrib, Friday Istijaba) with the exact OS ids before
      and after the 00:00:30 reschedule, the boundary at the row's own instant, and the refused-cancel
-     record. London windows are byte-identical (suite-pinned): no London row is ever still due after
+     records: kept while the alarm is still due, dropped once older than yesterday. London windows
+     are byte-identical (suite-pinned): no London row is ever still due after
      00:00.
    ```
 
@@ -533,10 +567,10 @@ This file is part of `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md`. R
    3. The window arithmetic still fits the iOS 64-pending ceiling: rollingDaysForPrayer and
       NOTIFICATION_ROLLING_DAYS are untouched and constants.test.ts still passes.
    4. The test edits match the step's verbatim blocks and table rows exactly: the six
-      firstStillDueListDayForPrayer tests, the new alarm describe's five tests with their exact OS-id
+      firstStillDueListDayForPrayer tests, the new alarm describe's six tests with their exact OS-id
       and trigger expectations, the import block replacement, and the genNextXDays start test.
    5. Every test follows __tests__/README.md, asserts what its row says, and would fail if the line it
-      guards were broken; the red run's eleven named failures and the one by-design pass are exactly
+      guards were broken; the red run's eleven named failures and the two by-design passes are exactly
       what the step predicts.
    6. Comments explain why, never what, and no comment restates the code.
    7. The version in app.json and package.json is the next patch after the parent commit's
