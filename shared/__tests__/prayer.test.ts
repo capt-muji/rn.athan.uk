@@ -10,6 +10,7 @@ import {
   createPrayerSequence,
   createPrayersForDate,
   filterApiData,
+  firstStillDueListDay,
   getCascadeDelay,
   getLongestPrayerNameIndex,
   getPrayerForDate,
@@ -1338,5 +1339,68 @@ describe('never copies, averages or synthesises a prayer time', () => {
     expect(readable.filter((row) => row.at === null).map(keyOf)).toEqual(nightOf('2026-10-16'));
     expect(checked.length).toBeGreaterThan(250);
     expect(violations).toEqual([]);
+  });
+});
+
+// =============================================================================
+// firstStillDueListDay: the earliest list day that is still current (finding 74; owner 2026-09-13:
+// a day stays current until its last readable row has passed)
+// =============================================================================
+
+/** Stores the given days (FIELDS order) as a download is stored, replacing whatever was stored */
+const storeTimes = (days: Record<string, string[] | (string | null)[]>) => {
+  const times: IValidatedApiResponse['times'] = {};
+  for (const [date, values] of Object.entries(days)) {
+    const entry = {} as Record<Field, string | null>;
+    FIELDS.forEach((field, index) => {
+      entry[field] = values[index] ?? null;
+    });
+    times[date] = entry;
+  }
+
+  stored.clear();
+  for (const record of transformApiData({ city: 'London', times })) stored.set(record.date, record);
+};
+
+describe('firstStillDueListDay', () => {
+  // 2026-06-20's Isha falls at 00:01 BST on the 21st, so between 00:00 and 00:01 the 20th is still current
+  const ISHA_AT_0001 = ['02:40', '04:43', '13:02', '17:20', '21:25', '00:01'];
+  const days = Object.fromEntries(
+    ['2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'].map((d) => [d, ISHA_AT_0001])
+  );
+
+  it("answers yesterday while yesterday's list still has a readable row to come", () => {
+    storeTimes(days);
+    expect(firstStillDueListDay(ScheduleType.Standard, new Date('2026-06-20T23:00:30.000Z'))).toBe('2026-06-20');
+  });
+
+  it("answers today once yesterday's last row has passed", () => {
+    storeTimes(days);
+    expect(firstStillDueListDay(ScheduleType.Standard, new Date('2026-06-21T01:00:00.000Z'))).toBe('2026-06-21');
+  });
+
+  it('answers today when yesterday is not stored', () => {
+    storeTimes({ '2026-06-21': ISHA_AT_0001 });
+    expect(firstStillDueListDay(ScheduleType.Standard, new Date('2026-06-20T23:00:30.000Z'))).toBe('2026-06-21');
+  });
+
+  it("answers today when every row of yesterday's list is unreadable", () => {
+    storeTimes({
+      '2026-06-20': ['02:40', '04:43', '13:02', '17:20', '21:25', '00:01'].map(() => null),
+      '2026-06-21': ISHA_AT_0001,
+    });
+    expect(firstStillDueListDay(ScheduleType.Standard, new Date('2026-06-20T23:00:30.000Z'))).toBe('2026-06-21');
+  });
+
+  it('answers today for London days, whose last row always falls before midnight', () => {
+    storeDays(['2026-10-16', '2026-10-17', '2026-10-18']);
+    expect(firstStillDueListDay(ScheduleType.Standard, new Date('2026-10-17T23:30:00.000Z'))).toBe('2026-10-18');
+  });
+
+  it('answers yesterday for the Extras list while its Friday Istijaba is still to come', () => {
+    // 26 June 2026 is a Friday; its Istijaba falls at 00:20 BST on the Saturday
+    const shape = ['01:32', '02:58', '13:31', '17:31', '01:20', '01:44'];
+    storeTimes(Object.fromEntries(['2026-06-25', '2026-06-26', '2026-06-27', '2026-06-28'].map((d) => [d, shape])));
+    expect(firstStillDueListDay(ScheduleType.Extra, new Date('2026-06-26T23:05:00.000Z'))).toBe('2026-06-26');
   });
 });
