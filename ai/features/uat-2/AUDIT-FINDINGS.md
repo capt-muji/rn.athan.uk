@@ -5920,3 +5920,26 @@ next-alarm-clock slot). The notification shade before/after pair is at
 own eyes. jest totals 4535 passed, 4535 total. Known carried notes: `USE_EXACT_ALARM` is
 Play-policy reserved for alarm-like apps, which this app is; the store release gate stays closed
 until session 16.
+
+# Session 13 of the queue: agent tooling, 2026-09-18
+
+The brief is `ai/plans/SDK58-PROGRAMME.md` §13. `@expo/agent-cli` 1.0.16 was investigated
+against this repository: `status` exits 0 with the project brief (SDK 58.0.0-preview.3, CNG,
+dev client, Expo Go not compatible, 14 reasons), and `smoke --ios` exits 0: it built the iOS
+development client locally (pod install plus xcodebuild Debug), booted the iPhone 17 Pro Max
+simulator, opened the app through the `athan://` deep link and reported zero runtime errors
+(planner baseline 450.7 s; the executor's run is in `~/athan-device-sweep/session13/`). The
+dev-launcher launch URL `athan://expo-development-client/?url=<URL-encoded Metro URL>` was
+verified on that dev build: each link loads the app from Metro (the dev mock re-seeds on every
+load) and the flags `disableFab=1` and `disableAutoLaunch=1` write the dev menu's persisted
+preferences exactly (`EXDevMenuShowFloatingActionButton`, `EXDevMenuShowsAtLaunch`,
+`EXDevMenuIsOnboardingFinished` read back from the app's plist). On iOS 26.5 scene-life-cycle
+builds the dev-menu FAB never renders at all, proven with the preference forced on, so
+`disableFab`'s visible effect there is nothing to hide; the Android form is source-verified
+only, because the local Android debug-build path currently fails (Gradle wrapper 9.3.1 against
+AGP's 9.4.1 floor; with 9.4.1 the Kotlin plugin double-applies), recorded as a machine note.
+The rulings (all autonomous; the owner was away): adopt narrowly with four forbidden commands,
+no devDependency, iOS simulator as the verification platform, findings in
+`ai/features/agent-tooling/FINDINGS.md`, the not-run list. The guidance landed in the root
+`AGENTS.md` routing table and `ai/AGENTS.md` §6, including the Device Hub location. Zero
+app-code changes; the 3T untouched, still on the mock build of 1.27.227.
