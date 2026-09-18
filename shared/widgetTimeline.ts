@@ -36,12 +36,20 @@ import {
   findNextReadable,
   findPreviousRow,
   getNextBoundary,
+  isReadable,
   resolveDisplayDate,
 } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import type { Prayer, PrayerSequence, ReadablePrayer } from '@/shared/types';
-import type { PrayerWidgetProps, PrayerWidgetSettings, WidgetPrayerRow, WidgetTheme } from '@/shared/widgetTypes';
-import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
+import type {
+  AndroidWidgetDay,
+  PrayerWidgetAndroidProps,
+  PrayerWidgetProps,
+  PrayerWidgetSettings,
+  WidgetPrayerRow,
+  WidgetTheme,
+} from '@/shared/widgetTypes';
+import { ANDROID_SNAPSHOT_VERSION, WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
 /**
  * Minimum spacing between adjacent timeline entries. WidgetKit guidance asks
@@ -351,4 +359,63 @@ export const buildPrayerWidgetTimeline = (
   });
 
   return entries;
+};
+
+/**
+ * Builds the Android widget snapshot: one day entry per list day of the
+ * sequence (each row's name, time and epoch, unreadable rows as `--:--` with
+ * a null epoch), the London midnight starting each day, the day's display
+ * label, and the horizon (the last readable prayer) past which renders go
+ * stale. The Android layout computes the next prayer, label, day list and
+ * active row AT RENDER TIME from this data, so any render inside the window
+ * is correct without the app pushing again.
+ *
+ * Answers null when the sequence holds no readable prayer: the caller skips
+ * the push rather than storing an empty window.
+ *
+ * Pure: reads nothing, calls no clock, throws on nothing.
+ *
+ * @param sequence Prayer sequence in list order (the push layer builds it
+ *   from yesterday, matching the timeline builder)
+ * @param settings The in-app settings snapshot the widget mirrors
+ */
+export const buildPrayerWidgetSnapshot = (
+  sequence: PrayerSequence,
+  settings: PrayerWidgetSettings
+): Omit<PrayerWidgetAndroidProps, 'theme' | 'size'> | null => {
+  const days: AndroidWidgetDay[] = [];
+  const dayIndexes = new Map<string, number>();
+  let horizonEpochMs: number | null = null;
+
+  for (const prayer of sequence.prayers) {
+    const existingIndex = dayIndexes.get(prayer.belongsToDate);
+    let day = existingIndex !== undefined ? days[existingIndex] : undefined;
+    if (day === undefined) {
+      day = {
+        dateLabel: formatDateLabel(prayer.belongsToDate, settings.hijriDate),
+        startEpochMs: TimeUtils.getDayAnchor(prayer.belongsToDate).getTime(),
+        rows: [],
+      };
+      days.push(day);
+      dayIndexes.set(prayer.belongsToDate, days.length - 1);
+    }
+
+    if (isReadable(prayer)) {
+      day.rows.push({ name: prayer.english, time: prayer.time, epochMs: prayer.datetime.getTime() });
+      horizonEpochMs = Math.max(horizonEpochMs ?? Number.NEGATIVE_INFINITY, prayer.datetime.getTime());
+    } else {
+      day.rows.push({ name: prayer.english, time: UNAVAILABLE_TIME, epochMs: null });
+    }
+  }
+
+  if (horizonEpochMs === null) {
+    return null;
+  }
+
+  return {
+    v: ANDROID_SNAPSHOT_VERSION,
+    schedule: sequence.type,
+    days,
+    horizonEpochMs,
+  };
 };
