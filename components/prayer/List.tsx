@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useEffect, useRef } from 'react';
-import { InteractionManager, StyleSheet, View } from 'react-native';
+import { StyleSheet, View, type ViewInstance } from 'react-native';
 
 import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
@@ -21,7 +21,7 @@ export default function List({ type }: Props) {
   // See: ai/adr/005-timing-system-overhaul.md
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
   const isStandard = type === ScheduleType.Standard;
-  const listRef = useRef<View>(null);
+  const listRef = useRef<ViewInstance>(null);
   const isFirstRender = useRef(true);
   const countdownBarShown = useAtomValue(countdownBarShownAtom);
   // Live window size: a resize (iPad multitasking, Mac window) re-centers
@@ -63,12 +63,13 @@ export default function List({ type }: Props) {
 
     if (!isStandard) return;
 
-    // Wait for layout to settle after countdown bar is added/removed
-    const handle = InteractionManager.runAfterInteractions(() => {
+    // Wait for layout to settle after countdown bar is added/removed; RN 0.88 removed
+    // InteractionManager.runAfterInteractions, and the idle callback is its replacement
+    const handle = requestIdleCallback(() => {
       measureList();
     });
 
-    return () => handle.cancel();
+    return () => cancelIdleCallback(handle);
   }, [countdownBarShown, isStandard, windowWidth, windowHeight]);
 
   // Show nothing if sequence not ready

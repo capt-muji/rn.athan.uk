@@ -919,6 +919,6 @@ const styles = StyleSheet.create({
   },
   // scaleY must pivot at the wire's attachment point (top), not the center
   wireOrigin: {
-    transformOrigin: ['50%', '0%'],
+    transformOrigin: ['50%', '0%', 0],
   } as const,
 });
