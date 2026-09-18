@@ -252,7 +252,8 @@ None of these is a session yet. Each needs the owner's decision first.
   (the plan's transcription reflowed what the spike had verified).
 - **tls13 moves to `compileSdk 37`** as its own commit: the SDK 58 production build failed at
   `:tls13:checkReleaseAarMetadata` against the module's pinned 36. The module's wider
-  modernisation stays session 14's.
+  modernisation stays session 14's (superseded 2026-09-18: session 14 was cancelled by the
+  owner while planning it; see the section below).
 - **The 3T was rebooted** when `adb install` wedged twice; the owner did the reboot.
 - **The `Alarm clock:` sub-block plus the next-alarm-clock slot is the alarm-clock proof** on the
   3T: its Android 9 dump carries no 0x8 bit in `flags=`, so the plan's `flg=0x9` prediction
@@ -260,6 +261,19 @@ None of these is a session yet. Each needs the owner's decision first.
 - **The two records phrases adjusted to the measured form**: the alarm-dump wording above, and
   the large icon sitting "where Android places it (the right on the 3T)". Everything else
   verbatim.
+
+## Decided by the owner, 2026-09-18, while planning session 14
+
+- **Session 14 (the Expo Modules 2.0 spike on `modules/tls13`) is cancelled outright, never
+  re-queued.** The planning session found the brief's premise false: in the installed
+  `expo-modules-core` 58.0.3 (the newest published 58.x) the Modules 2.0 API exists only as
+  iOS Swift macros; no published package ships the Kotlin annotation API that the
+  Android-only `modules/tls13` would need, and the `expo-migrate-module` skill is
+  Swift-only. The 3T proof the row wanted already ran in session 12. The owner's words:
+  "Okay, skip this session. We don't care about it. We don't want it. Let's just ignore it.
+  Not defer it. Just cancel this straight up. We don't want to do it ever again. At least
+  not until the very far future, which will be never." The module stays on the 1.0 DSL; the
+  row is CANCELLED in `ai/plans/README.md`, and `SDK58-PROGRAMME.md` §14 carries the finding.
 
 ## Decided autonomously by the planner, 2026-09-18, while planning session 13 (the owner was away; recorded for revisit)
 

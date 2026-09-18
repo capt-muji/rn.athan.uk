@@ -187,6 +187,24 @@ changes.
 
 ## 14. Expo Modules 2.0 spike on modules/tls13
 
+**CANCELLED by the owner, 2026-09-18, while planning this row; never re-queued.** Their words:
+"Okay, skip this session. We don't care about it. We don't want it. Let's just ignore it. Not
+defer it. Just cancel this straight up. We don't want to do it ever again. At least not until
+the very far future, which will be never."
+
+The planning session's finding behind the cancellation: the "both platforms" fact below is
+wrong for the installed SDK. In `expo-modules-core` 58.0.3 (the newest published 58.x,
+2026-09-16) the 2.0 API exists only as Swift macros (`ios/Core/ExpoModulesMacros.swift`;
+`@expo/expo-modules-macros-plugin` ships an `apple` directory only), no Kotlin `@JS` or
+`@ExpoModule` annotation exists anywhere in the installed tree, the changelog tags every 2.0
+entry `[iOS]`, and the blog post says Android is "still in the works". `modules/tls13`
+declares `"platforms": ["android"]`, so there is no Swift side to migrate and nothing on the
+Kotlin side to migrate to; the `expo-migrate-module` skill is Swift-only and not installed.
+The 3T verification this row wanted (SDK 58 release build, real data, cold launch, TLS fetch
+on Android 9) already ran in session 12's proof ("the release TLS fetch works with
+compileSdk 37", session 12 `LOG.md`, 2026-09-18). The module stays on the 1.0 DSL
+indefinitely. The brief below is kept as the historical record.
+
 **Goal.** Learn Expo Modules 2.0 by migrating our one local module; keep it only if the 3T
 proves TLS still installs before any HTTP client on Android 9.
 
@@ -373,7 +391,7 @@ nothing in the SDK 58 programme conflicts with it.
 | Async web routes, web features | No |
 | Prebuilt expo-modules-core | Free win |
 | Faster module calls | Free |
-| Expo Modules 2.0 | Spike now, session 14 |
+| Expo Modules 2.0 | Cancelled, session 14 (owner, 2026-09-18): iOS-only in SDK 58, no Kotlin authoring API to migrate to; row never re-queued |
 | SwiftPM | No, CocoaPods stays |
 | Fingerprint balanced | Verify in session 12 |
 | R8 | Keep on, watch first release build |
