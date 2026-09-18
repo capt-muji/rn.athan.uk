@@ -63,7 +63,19 @@ module.exports = {
       clearMocks: true,
       testEnvironment: 'node',
       testEnvironmentOptions: { customExportConditions: ['require', 'react-native'] },
-      moduleNameMapper: appModuleMocks,
+      // jest 30 consults react-native's exports allow-list before any resolver packageFilter, and 0.88 stops
+      // exporting ./src/private/*: RN's own virtualized-lists and the jest-preset mocks deep-import from there,
+      // so each of those requires is mapped to its file by path. The @react-native/jest-preset resolver that
+      // deletes the exports field worked up to jest 29 and is kept, but no longer suffices.
+      moduleNameMapper: {
+        '^react-native/src/private/featureflags/ReactNativeFeatureFlags$':
+          '<rootDir>/node_modules/react-native/src/private/featureflags/ReactNativeFeatureFlags.js',
+        '^react-native/src/private/types/(HostComponent|HostInstance)$':
+          '<rootDir>/node_modules/react-native/src/private/types/$1.js',
+        '^react-native/src/private/webapis/errors/DOMException.js$':
+          '<rootDir>/node_modules/react-native/src/private/webapis/errors/DOMException.js',
+        ...appModuleMocks,
+      },
       testMatch: ['**/__tests__/**/*.test.tsx'],
       testPathIgnorePatterns: ['/node_modules/', ...ignoredPaths],
       // A __mocks__ file anywhere under the root registers as the manual mock of the package it is named after, so the
