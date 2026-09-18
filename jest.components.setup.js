@@ -133,3 +133,25 @@ jest.mock('expo-audio', () => {
     useAudioPlayerStatus: jest.fn(() => status),
   };
 });
+
+// React Native installs requestIdleCallback and cancelIdleCallback as timer globals (Libraries/Core/setUpTimers),
+// but its Jest preset replaces the timer globals without providing the idle pair. The prayer list schedules its
+// re-measure through one, so the suite defines the same shape on a timer the tests can flush with
+// jest.runOnlyPendingTimers(); the handle map makes a cancel stop its callback, as on a phone
+const idleTimers = new Map();
+let nextIdleHandle = 0;
+globalThis.requestIdleCallback = (callback) => {
+  const handle = ++nextIdleHandle;
+  const timer = setTimeout(() => {
+    idleTimers.delete(handle);
+    callback({ didTimeout: false, timeRemaining: () => 50 });
+  }, 0);
+  idleTimers.set(handle, timer);
+  return handle;
+};
+globalThis.cancelIdleCallback = (handle) => {
+  const timer = idleTimers.get(handle);
+  if (timer === undefined) return;
+  clearTimeout(timer);
+  idleTimers.delete(handle);
+};

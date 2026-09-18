@@ -34,3 +34,52 @@ Planning-session record, 2026-09-18 (GLM 5.3), for the auditor:
   Caskroom copy blocked the upgrade; the old `/Applications` bundle went to the Trash via Finder
   after TCC refused the terminal an unlink) and verified build-tools 37.0.0, platform android-37.0
   and the commandlinetools cask current. The pre-flight checks all of it.
+
+Execution-session record, 2026-09-18 (GLM 5.3):
+
+- Pre-flight `bash $TMPDIR/preflight-12.sh 1`: `version 1.27.221`, `PREFLIGHT OK`. Row 6 set IN
+  PROGRESS; branch `upgrade/sdk-58-beta` off `uat-2`.
+- Step 1 red: the appended idle-callback test failed as the plan describes (`1 failed, 10 passed,
+  11 total`, failing at `jest.spyOn(globalThis, 'requestIdleCallback')` because no idle pair exists
+  on the SDK 57 tree). Jest 30.5.1's exact message is ``Property `requestIdleCallback` does not
+  exist in the provided object`` rather than the plan's quoted "is not a function; undefined given
+  instead"; same line, same cause (jest-mock words an absent property differently from a
+  non-function one).
+- Step 1 `yarn install` (after the package.json wave): exit 0, `Done in 22.49s`, lockfile saved.
+  It printed unmet/incorrect peer warnings the plan's tables do not name (verified by grep over
+  the plan folder). Installed versions checked one by one: every package resolves to exactly the
+  plan's table (`expo` 58.0.0-preview.3, `expo-router` 58.0.4, RN 0.88.0-rc.0, reanimated 4.6.0,
+  worklets 0.12.2, `jest-expo` 58.0.2, gesture-handler 3.2.1, pager-view 9.0.4, safe-area 5.9.1,
+  screens 4.27.0, svg 15.15.5, performance 7.0.0, edge-to-edge 1.8.2, dev-client 58.0.3, audio
+  58.0.0, widgets 58.0.3, @expo/ui 58.0.3, updates 58.0.5, task-manager 58.0.4, notifications
+  58.0.3, jest-preset 0.88.0-rc.0). No wave drift. STOPPED per PLAN.md 2.2 ("yarn install warns of
+  an unmet peer dependency the plan's table does not name. Ask with the warning's text") and asked
+  the owner with the warning text.
+- Owner ruling on the peer warnings (2026-09-18, via the question channel): packages that depend
+  on each other move in sync; when an updated package has a peer that also needs updating, update
+  it. Applied: `@expo/log-box@~58.0.3` and `@expo/metro-runtime@~58.0.3` (expo-router 58's direct
+  peers), `@expo/dom-webview@~58.0.0` (@expo/log-box's peer), `react-dom@19.2.3` (exact match to
+  the unchanged react 19.2.3; silences expo-router's radix-ui tab peers), all as dependencies, and
+  `@react-native/metro-config@0.88.0-rc.0` (worklets' peer, exact match to RN) as a devDependency.
+  Versions resolved from the registry with `npm view`. Final `yarn install`: exit 0, `Done in
+  2.48s`, and the only remaining warnings are the three with no in-sync release to move to:
+  reanimated 4.6.0 and worklets 0.12.2 declare `react-native@0.83 - 0.87` (they are SDK 58's own
+  pins; no 0.88-aware release exists), and jest-expo's nested jest-watch-typeahead wants jest ≤ 29
+  (jest 30 stays deliberately ahead per the plan). These five package.json rows go beyond step 1's
+  table by the owner's ruling, recorded here for the auditor.
+- Owner re-confirmed the five peer packages on 2026-09-18 via the orchestrator's question channel:
+  KEEP ALL FIVE. Not revisited.
+- Step 1 green: full suite `159 passed / 4531 passed, 4531 total` with four 100% coverage lines
+  (exactly the plan's numbers); biome exit 0. `npx tsc --noEmit` FAILED with 8 errors in 5 files
+  step 1's migrations do not cover: app/Screen.tsx(36), components/overlay/Overlay.tsx(119) x2,
+  components/prayer/ActiveBackground.tsx(72) x3, components/prayer/Explanation.tsx(44),
+  components/ui/Glow.tsx(27). Root cause isolated: the gitignored, generated `expo-env.d.ts`
+  (present in this checkout, absent in the spike's bare worktree) references `expo/types`, whose
+  SDK 58 `react-native-web.d.ts` unconditionally merges web CSS properties into RN's ViewStyle
+  (`position` gains 'fixed'/'sticky'), so ViewStyle stops being assignable to View's style prop.
+  Proven: `mv expo-env.d.ts expo-env.d.ts.hold && npx tsc --noEmit` exits 0 with 0 errors;
+  restored afterwards. This is PLAN.md 2.2's "tsc error the plan's migrations do not cover" stop:
+  asked the owner "The plan does not say what to do with a strict-types error in these files. What
+  should it be?" with the findings. Owner ruling: DELETE `expo-env.d.ts` (gitignored, generated;
+  not a committed change). Deleted; `npx tsc --noEmit` now exits 0. If an Expo command recreates
+  it during the device proof, delete it again and note it here.
