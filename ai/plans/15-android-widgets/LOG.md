@@ -69,3 +69,49 @@ Resume from: Step 3 (dual-platform layout), contract-suite red first.
   coverage gate (correctly) rejecting the split commit.
 
 Resume from: Step 5 (push layer), red suite first.
+
+## Step 5: Android push layer + flip timers — DONE (f1888a11, merged ccf08f87)
+
+- Red: 4 tests in `widgetAndroid.test.ts`; final suite carries 8 (stamps,
+  contract fields, minute-flip reload, rollover re-push, empty cache,
+  all-past window, native-throw tolerance, settings-sync re-push) plus the
+  dedicated `widgetAndroidFlagOff.test.ts` (the widgetFlagOff pattern).
+- The plan's in-file flag-gate variant proved order-dependent: jest's
+  isolateModules does not isolate the store's LAZY widget require (it
+  resolves after the isolate closes, against the outer registry). Probed
+  empirically; the dedicated-file form is immune and matches repo
+  precedent. Break (a) verified caught against it.
+- Coverage loop: three uncovered decisions closed with tests (empty
+  snapshot, null next row, native catch) and one dead gate line removed
+  (neither-ios-nor-android return). Validate green: 4571/4571, 100/100/
+  100/100. Breaks both caught.
+- Git slip: a stray checkout landed the commit straight on uat-2; recovered
+  by re-pointing the branch at the commit sha and merging --no-ff. History
+  verified clean (ccf08f87).
+- Timing diagnosis recorded for the future: widgetSettingsSync.test.ts
+  passes in 0.5s but jest hangs at EXIT solo (the flip chains' always-rearm
+  timers hold handles; workers are force-exited in full runs). Solo runs of
+  widget suites use --forceExit; the timeout budget stays small.
+
+Resume from: Step 6 (PNG assets + drawable plugin), asset tests red first.
+
+## Step 6: widget PNG assets + config plugin — DONE (merged 899ee392)
+
+- Generator: Pillow, palette as the layout's exact CSS strings via a css()
+  parser (test pins subset relation); per-orb gaussian blurs; pill shadow
+  margins; committed outputs (builds never need Pillow).
+- 10 PNGs at 3x; pill images carry shadow margin (464x110 / 482x128) —
+  the layout draws them into the 140x22dp row box, the margin bleeds the
+  shadow. Moon mark is a crescent + four-point spark standing in for
+  moon.stars.fill.
+- Plugin test drives the real mod with a temp project root: byte-equal,
+  idempotent. Done-when verified: flagged prebuild lands all ten drawables
+  in res/drawable-nodpi.
+- Breaks both caught (removed PNG; palette drift). Validate 4574/4574 at
+  100/100/100/100.
+- Test-side iterations logged: layout builds drawable names via constants
+  and a template literal, so the existence test enumerates the plan's ten
+  names and cross-checks the layout's literals/prefixes; the palette regex
+  needed a strict-numeric form to ignore the css() docstring example.
+
+Resume from: Step 7 (records + docs), then the device proof on the 3T.

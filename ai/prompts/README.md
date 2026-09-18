@@ -310,3 +310,20 @@ None of these is a session yet. Each needs the owner's decision first.
 - **Never copy, average or synthesise a prayer time.** Owner ruling, 2026-09-13, absolute.
 - Comments explain **why**, never what. The code already shows what.
 - Every change deep-reviewed by an agent with no stake in it, and verified on the device.
+
+## Decided by the owner, 2026-09-18, while planning session 15
+
+- **An `androidWidgets` feature flag, off by default, mirrors the iOS `widgets` flag's lifecycle.**
+  Each platform's widgets toggle independently; the owner flips Android's on after judging the 3T
+  styling and performance proof.
+- **Android widget refresh model:** render-time computation from a carried 14-day window (label,
+  active row, day list and stale state recomputed at every render), minute-fresh while the app
+  runs, refreshed by the existing background task every ~3-6h with the app closed, the stale card
+  past the horizon, and a frozen last frame only under force-stop. The owner's stated goal: the
+  user should never need to open the app.
+- **Styling parity via pre-rendered PNGs** (cards + orbs, pill, moon mark) baked from the exact iOS
+  palette, tried as an experiment the owner will judge visually and on performance (60fps target,
+  30fps floor). Glance cannot draw blur, strokes, shadows or letter-spacing; medium/semibold text
+  weights render as regular.
+- **Session 17's goal widened:** widget data horizons beyond 14 days on both platforms, toward
+  "the user never needs to open the app"; 30 days is the floor of the ambition, not the ceiling.
