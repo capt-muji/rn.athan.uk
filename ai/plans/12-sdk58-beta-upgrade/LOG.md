@@ -96,3 +96,25 @@ Execution-session record, 2026-09-18 (GLM 5.3):
   path working). Reviewer also re-ran the two List breaks and tsc/biome on the detached commit:
   all as specified. Post-merge on uat-2: tsc exit 0, biome exit 0, full suite 4531 passed. Merge
   sha `736da06d`.
+- Step 2 red: both new delivery tests failed `Expected: "alarmClock" / Received: undefined`
+  (`2 failed, 23 passed, 25 total`). Green: `25 passed, 25 total`; full suite
+  `4533 passed, 4533 total` (the plan's number); tsc exit 0. Biome flagged one trailing blank
+  line my appended block left at the end of the test file; removed (formatting only, code I wrote
+  from the contract), biome then exit 0. Breaks `bash $TMPDIR/breaks-12-2.sh`: `caught: constant
+  becomes bestEffort`, `caught: at-time delivery dropped`, `caught: reminder delivery dropped`,
+  `caught=3 missed=0`, `ALL AS EXPECTED: 1`. Version 1.27.223 in the three files.
+- Step 2 DONE: branch `feat/alarm-clock-delivery`, commit `3b7ebefd` (1.27.223). Hook's last line:
+  `Tests: 4533 passed, 4533 total` with `Statements 100% (3969/3969)`, `Branches 100% (1712/1712)`,
+  `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Break script last line `ALL AS EXPECTED: 1`.
+  Review verdict MERGE, Code Reviewer (GLM 5.3), one round, no findings. Merge sha `a8ae4d70`.
+- Step 3 red: the new suite failed exactly as predicted (`Expected: "./assets/icons/config/
+  icon-ios.png" / Received: undefined`). After adding the largeIcon line, the suite passes
+  (1/1) and tsc exits 0, but Biome rejects the line shape of ONE expression in
+  `shared/__tests__/nativeConfig.test.ts`, whose content the plan gives verbatim: the plan wraps
+  `const entry = (loadAppConfigFresh().plugins ?? []).find(` across three lines; Biome 2.5.13
+  wants the find on one line with the cast wrapped (quoted in the question). The spike's own saved
+  copy, `~/athan-device-sweep/session12/spike-nativeConfig.test.ts` (the version that passed every
+  gate while planning), formats it exactly as Biome wants — the plan's transcription reflowed it.
+  EXECUTOR-BRIEF section 7 ("tsc or Biome errors in code the plan gave verbatim: STOP and ask"):
+  asked the owner. Owner ruling: APPLY BIOME'S LINE SHAPE to that one expression, tokens unchanged,
+  the rest byte-identical to the plan. Applied; recorded for the auditor.
