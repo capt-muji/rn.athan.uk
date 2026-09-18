@@ -35,7 +35,8 @@ for order and status. Verified facts carry their source. Facts re-verified 2026-
    documented, session 13).
 10. **Adopted beyond the upgrade**: `delivery: 'alarmClock'` (session 12), `largeIcon`
     notification icon on Android (session 12; owner wants the icon on the left, asset picked
-    from on-device screenshots).
+    from on-device screenshots; reverted 1.27.231 the same day, owner-rejected on the shade
+    proof).
 
 ## Environment refresh (before session 12 executes)
 
@@ -363,7 +364,7 @@ nothing in the SDK 58 programme conflicts with it.
 | Foreground flip | Wanted; no-op for us (handler matches the new default); verify |
 | iOS delegate forwarding | No |
 | `threadIdentifier` | No grouping |
-| `largeIcon` | Yes, adopt, session 12, asset from screenshots |
+| `largeIcon` | Yes, adopt, session 12, asset from screenshots; reverted 1.27.231 the same day (owner rejected the shade proof) |
 | Android widgets | Definitely; own session (15) |
 | Live Activities | Not us, double-checked (our staleness is the deliberate terminal card) |
 | @expo/ui spacing/Host changes | Care later; widgets flag is OFF so inert now |
