@@ -328,3 +328,36 @@ told):
 - Owner-facing costs this session: 22 subagent spawns in total (5 step reviewers, the tls13
   review across 2 rounds, 2 docs-commit reviews, and 13 vision reads, counting retakes of bad
   or stale captures); 7 owner questions via the channel, all answered same-day.
+
+Revert record, 2026-09-18 (execution subagent, GLM 5.3, owner away; rulings below):
+
+- Owner rejection (2026-09-18): after reviewing the AFTER half of the 7.5 shade proof pair,
+  `/Users/muji/athan-device-sweep/session12/shade-after-open.png` (the review artifact; the
+  owner deleted the session12 PNGs after reviewing them, so the path no longer resolves), the
+  owner ruled the full-square icon box on every Android notification unwanted. The large icon
+  from step 3 (`ae92414d`, 1.27.224) is reverted; everything else from session 12 stays (the
+  SDK 58 wave, alarmClock delivery, the nested widget config, tls13 compileSdk 37).
+- The revert: the `largeIcon` entry is gone from the expo-notifications plugin in `app.json`
+  (nothing else in that plugin config touched) and the `declares the Android large icon`
+  expectation is gone from `shared/__tests__/nativeConfig.test.ts`; that file keeps its
+  widget-nesting tests, `nested` helper and config loaders, and its header no longer names the
+  icon. No asset deleted (`icon-ios.png` remains the iOS app icon; the small notification icon
+  unchanged). Row 6's brief in `ai/plans/README.md` no longer names the large icon.
+- Gates: `yarn validate` green before the commit (tsc 0, biome 0, `Test Suites: 160 passed,
+  160 total`, `Tests: 4534 passed, 4534 total`; 4535 before, the removed expectation is the
+  difference; coverage 100% statements/branches/functions/lines). Commit `19573d93` (1.27.231)
+  on branch `revert/notification-large-icon`; the pre-commit hook's suite matched (4534 passed,
+  all four 100% coverage lines). Merged as `7a9650bd`.
+- Autonomous rulings (owner away, recorded for later review): (1) the first validate failed one
+  test, `versionLockstep` "keeps the Android versionName in step when a prebuild is present"
+  (expected 1.27.231, received 1.27.230): this checkout holds the git-ignored `android/`
+  prebuild dir and the session-12 ritual bumps "the three files", so `android/app/build.gradle`
+  `versionName` was bumped to 1.27.231 and again to 1.27.232 for this docs commit; it is
+  git-ignored and rides no commit. (2) The record runs as its own version-bumped docs commit
+  per the every-commit-bump rule, merged with session-12-style messages; no reviewer subagent
+  was spawned for this surgical two-line config revert (the diff was read line by line twice),
+  so the merge messages do not claim "reviewed". (3) Row 6's brief column was read as the
+  "notes" that mention the large icon; the Needs-first cell does not mention it.
+- This record rides the docs commit (1.27.232, branch `docs/revert-12-20260918-1731`).
+  `releases.json` untouched; no store release concern (rides uat-2 like every session-12
+  commit). Push to `origin/uat-2` completes the ritual.
