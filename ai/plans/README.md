@@ -86,7 +86,7 @@ Off that path:
 | 3 | 7. Android: each notification replaces the one before it | `ai/prompts/replace-previous-notification.md` | `ai/plans/07-replace-previous-notification/PLAN.md` | DONE | `7c800915` | nothing |
 | 4 | 8. iOS: a way for each notification to replace the one before it | `ai/prompts/ios-replace-previous-notification.md` | `ai/plans/08-ios-replace-previous-notification/PLAN.md` | DONE | `fa3337b3` | nothing |
 | 5 | 9. Keep yesterday's still-due rows after 00:00 | `ai/prompts/keep-still-due-rows-after-midnight.md` | `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` | DONE | `7289894a` | nothing |
-| 6 | 12. SDK 58 beta upgrade + alarmClock + largeIcon | `ai/plans/SDK58-PROGRAMME.md` §12 | `ai/plans/12-sdk58-beta-upgrade/PLAN.md` | NOT PLANNED | | env refresh (owner: macOS 27; agent: `brew upgrade --cask android-studio android-commandlinetools` before execution) |
+| 6 | 12. SDK 58 beta upgrade + alarmClock + largeIcon | `ai/plans/SDK58-PROGRAMME.md` §12 | `ai/plans/12-sdk58-beta-upgrade/PLAN.md` | PLANNING | | env refresh (owner: macOS 27; agent: `brew upgrade --cask android-studio android-commandlinetools` before execution) |
 | 7 | 13. Agent tooling: `@expo/agent-cli` + dev-launcher niceties | `ai/plans/SDK58-PROGRAMME.md` §13 | `ai/plans/13-agent-tooling/PLAN.md` | NOT PLANNED | | 6 |
 | 8 | 14. Expo Modules 2.0 spike: `modules/tls13` | `ai/plans/SDK58-PROGRAMME.md` §14 | `ai/plans/14-expo-modules-2-spike/PLAN.md` | NOT PLANNED | | 6 |
 | 9 | 15. Android home-screen widgets | `ai/plans/SDK58-PROGRAMME.md` §15 | `ai/plans/15-android-widgets/PLAN.md` | NOT PLANNED | | 6 |
