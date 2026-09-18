@@ -112,4 +112,39 @@ The owner can overturn any ruling by editing this file and `ai/AGENTS.md` §6.
 
 ## Dev-launcher URL verification
 
-<written by step 2>
+### Measured on the iPhone 17 Pro Max simulator (AB4F4466-05CC-4C7F-A451-187E1DC6C6A0), 2026-09-18
+
+| Proof | What was opened | Screenshot | vision's answer (GLM 5.3 Flash) |
+| --- | --- | --- | --- |
+| A: plain link | `athan://expo-development-client/?url=http%3A%2F%2F127.0.0.1%3A8081` | `devlauncher-A-default.png` | no dev FAB, dev-menu onboarding sheet over the lower screen (see the divergence note), app up behind it, countdown 1m 2s |
+| B: both flags | `…&disableFab=1&disableAutoLaunch=1` (same link, flags appended) | `devlauncher-B-flags.png` | no dev FAB, no dev menu, app up, countdown 1m 32s |
+| C: plain relaunch | `simctl launch com.mugtaba.athan` | `devlauncher-C-persist.png` | no dev FAB, no dev menu at launch, app up, countdown 1m 3s |
+| D: FAB control | preference forced on (`defaults write … EXDevMenuShowFloatingActionButton -bool true`), then the plain link | `devlauncher-D-fabcontrol.png` | still no dev FAB, app up, countdown 1m 38s |
+
+The exact launch URL shape, verified: the flags belong on the OUTER link (a flag inside
+the encoded `url` value is ignored; expo-dev-launcher's own tests pin that), and the
+value must be exactly `1`. Proof B's plist read-back
+(`~/athan-device-sweep/session13/devlauncher-B-prefs.txt`): after the flagged link,
+`EXDevMenuShowFloatingActionButton => false`, `EXDevMenuShowsAtLaunch => false`,
+`EXDevMenuIsOnboardingFinished => true`, all three persisted through proof C's plain
+relaunch. The different countdown times between A and B prove each link re-loaded the app
+from Metro (the dev mock re-seeds at every load). The iOS 26.5 finding: the dev-menu FAB
+(an opaque blue circle with a white gear, a different thing from the app's own
+translucent hex-nut settings button at bottom-centre) never renders on this
+scene-life-cycle dev build, with the preference forced on (proof D), so `disableFab`'s
+visible effect here is nothing to hide; its effect is the persisted preference. Android
+parses the same flags (`DevLauncherController.kt:144-151`, value exactly `1`) and the
+generated manifest registers `athan` and `exp+athan`; on an Android emulator the Metro
+host is `10.0.2.2:8081`. Source-verified only, not device-verified, because the local
+Android debug-build path is blocked (machine notes above).
+
+Divergence from the plan's expected answers, recorded honestly (executor ruling, owner
+away): proof A's link opened onto the dev menu's first-run onboarding sheet ("This is the
+developer menu…"), because the step's own preference reset had deleted
+`EXDevMenuIsOnboardingFinished` and a genuinely fresh install has not finished onboarding.
+The planner's baseline A ran in a container where onboarding was already finished, which
+is why the plan predicted "none". The sheet changes nothing A exists to prove: the link
+still loaded the app from Metro (countdown `1m 2s`, a different seed from B's `1m 32s`)
+with no dev FAB anywhere, and proof B's flagged link finished onboarding, exactly as its
+plist (`EXDevMenuIsOnboardingFinished => true`) records.
+
