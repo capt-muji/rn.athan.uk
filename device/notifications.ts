@@ -101,6 +101,7 @@ export const addOneScheduledNotificationForPrayer = async (
           type: Notifications.SchedulableTriggerInputTypes.DATE,
           date: triggerDate,
           channelId: atTimeChannelId,
+          delivery: NotificationUtils.ALARM_CLOCK_DELIVERY,
         },
       }),
       `arming ${identifier}`
@@ -218,6 +219,7 @@ export const addOneScheduledReminderForPrayer = async (
           type: Notifications.SchedulableTriggerInputTypes.DATE,
           date: triggerDate,
           channelId: reminderChannelId,
+          delivery: NotificationUtils.ALARM_CLOCK_DELIVERY,
         },
       }),
       `arming ${identifier}`

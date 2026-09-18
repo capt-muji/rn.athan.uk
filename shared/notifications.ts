@@ -87,6 +87,13 @@ const DAILY_PRAYERS = new Set(['fajr', 'dhuhr', 'asr', 'magrib', 'isha']);
 export const EXTRAS_NOTIFICATION_SOUND = 'reminder.mp3';
 
 /**
+ * The Android delivery class every trigger this app schedules asks for. Alarm-clock alarms are
+ * never deferred by OEM battery policy (ISSUES #17), which is why every at-time alert and every
+ * reminder carries it, silent ones included.
+ */
+export const ALARM_CLOCK_DELIVERY: Notifications.NotificationDelivery = 'alarmClock';
+
+/**
  * Whether an at-time notification for this prayer plays the selected athan
  */
 export const isDailyPrayer = (englishName: string): boolean => DAILY_PRAYERS.has(englishName.toLowerCase());
