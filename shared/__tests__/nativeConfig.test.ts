@@ -31,8 +31,24 @@ const pluginProps = (name: string): Record<string, unknown> => {
   return entry?.[1] ?? {};
 };
 
+const nested = (widget: Record<string, unknown>): { supportedFamilies?: unknown } | undefined =>
+  widget.ios as { supportedFamilies?: unknown } | undefined;
+
 describe('the expo-notifications plugin config', () => {
   it('declares the Android large icon', () => {
     expect(pluginProps('expo-notifications').largeIcon).toBe('./assets/icons/config/icon-ios.png');
+  });
+});
+
+describe('the expo-widgets plugin config', () => {
+  it('carries every widget nested under ios with no deprecated top-level keys', () => {
+    const widgets = pluginProps('expo-widgets').widgets as Array<Record<string, unknown>>;
+    expect(widgets).not.toHaveLength(0);
+
+    for (const widget of widgets) {
+      expect(Array.isArray(nested(widget)?.supportedFamilies)).toBe(true);
+      expect(widget.supportedFamilies).toBeUndefined();
+      expect(widget.contentMarginsDisabled).toBeUndefined();
+    }
   });
 });
