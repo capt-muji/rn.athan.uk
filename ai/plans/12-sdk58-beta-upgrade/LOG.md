@@ -118,3 +118,14 @@ Execution-session record, 2026-09-18 (GLM 5.3):
   EXECUTOR-BRIEF section 7 ("tsc or Biome errors in code the plan gave verbatim: STOP and ask"):
   asked the owner. Owner ruling: APPLY BIOME'S LINE SHAPE to that one expression, tokens unchanged,
   the rest byte-identical to the plan. Applied; recorded for the auditor.
+- Step 3 green: suite `1 passed, 1 total`; full suite `Test Suites: 160 passed, 160 total`,
+  `Tests: 4534 passed, 4534 total` (the plan's numbers, the new suite is the 160th); tsc 0;
+  biome 0 after the ruling. Breaks `bash $TMPDIR/breaks-12-3.sh`: `caught: largeIcon swapped`,
+  `caught: largeIcon dropped`, `caught=2 missed=0`, `ALL AS EXPECTED: 1`. Version 1.27.224 in
+  the three files.
+- Step 3 DONE: branch `feat/notification-large-icon`, commit `ae92414d` (1.27.224). Hook's last
+  line: `Tests: 4534 passed, 4534 total` with `Statements 100% (3969/3969)`,
+  `Branches 100% (1712/1712)`, `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Break
+  script last line `ALL AS EXPECTED: 1`. Review verdict MERGE, Code Reviewer (GLM 5.3), one
+  round, no findings (it mechanically verified the sanctioned line-shape deviation is
+  token-identical). Merge sha `e60532db`.
