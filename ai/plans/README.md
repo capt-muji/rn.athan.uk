@@ -78,6 +78,8 @@ Off that path:
   session refreshes it.
 - **BLOCKED:** waiting on the owner. The reason is written in the row.
 - **OWNER-LED:** the owner's own reading or decisions. There is nothing for an executor to run.
+- **CANCELLED:** the owner closed the row before it was planned. Nothing runs it, and it is never
+  re-planned or re-queued without the owner.
 
 | Order | Session | Brief | Plan | Status | Planned at | Needs first |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -88,7 +90,7 @@ Off that path:
 | 5 | 9. Keep yesterday's still-due rows after 00:00 | `ai/prompts/keep-still-due-rows-after-midnight.md` | `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` | DONE | `7289894a` | nothing |
 | 6 | 12. SDK 58 beta upgrade + alarmClock | `ai/plans/SDK58-PROGRAMME.md` §12 | `ai/plans/12-sdk58-beta-upgrade/PLAN.md` | DONE | `a2498afa` | nothing (the env refresh finished on 2026-09-18: macOS 27 and Xcode 27 by the owner, the Android Studio cask upgrade and SDK check by the planning session; the plan's pre-flight verifies it) |
 | 7 | 13. Agent tooling: `@expo/agent-cli` + dev-launcher niceties | `ai/plans/SDK58-PROGRAMME.md` §13 | `ai/plans/13-agent-tooling/PLAN.md` | DONE | `423e2db1` | 6 |
-| 8 | 14. Expo Modules 2.0 spike: `modules/tls13` | `ai/plans/SDK58-PROGRAMME.md` §14 | `ai/plans/14-expo-modules-2-spike/PLAN.md` | NOT PLANNED | | 6 |
+| 8 | 14. Expo Modules 2.0 spike: `modules/tls13` | `ai/plans/SDK58-PROGRAMME.md` §14 | none (cancelled before a plan was written) | CANCELLED 2026-09-18 (owner): Modules 2.0 in SDK 58 beta is iOS-only, no Kotlin authoring API exists to migrate `modules/tls13` to, and the 3T TLS proof already ran in session 12; never re-queue | | nothing |
 | 9 | 15. Android home-screen widgets | `ai/plans/SDK58-PROGRAMME.md` §15 | `ai/plans/15-android-widgets/PLAN.md` | NOT PLANNED | | 6 |
 | 10 | 17. iOS widget timeline horizon: 14 to 30 days | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | NOT PLANNED | | 6 |
 | 11 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
