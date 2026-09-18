@@ -271,6 +271,14 @@ it is sequenced late and split.
 
 ## 17. iOS widget timeline horizon, 14 to 30 days
 
+Owner ruling while planning session 15 (2026-09-18) widened the goal: the
+horizon should grow until the user never needs to open the app on either
+platform ("I don't want the user to have to open the app at all... maybe we
+can make it 1 year"). Android already computes at render time from carried
+data (session 15), so its horizon is pure payload size; iOS stays bounded
+by WidgetKit entry budget. The feasibility math below remains the starting
+point, with "30 days" as the floor of the ambition rather than the ceiling.
+
 **Goal.** Answer "can the widget timeline cover 30 days instead of 14 without bloating the
 payload or breaking WidgetKit rules", and do it if sound.
 
