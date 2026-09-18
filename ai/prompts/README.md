@@ -19,6 +19,7 @@ when it starts, and keep the brief itself in this directory.
 | 9 | **Keep yesterday's still-due rows after 00:00**: a Magrib or Isha after midnight stays on screen and keeps its alarm, before v2.0 | `keep-still-due-rows-after-midnight.md` | **DONE** 18 September 2026, 1.27.213 to 1.27.216: yesterday's still-due rows stay on the screen and keep their alarms after 00:00 (a day stays current until its last readable row has passed); proven on the 3T on the brief's five fixed high-latitude days, from a zero baseline the proof created itself: Friday's list still on screen after a midnight cold launch, both alarms re-attempted and fired, the window moved on once the rows passed; London byte-identical |
 | 10 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context, and runs after every other session | `moonsighting-research.md` | **RAN** 2026-09-14 on branch `research/moonsighting`. All four steps done: every page, document and archived method-page version read; London 2026 reproduced; implementations measured. Findings: `ai/features/moonsighting/RESEARCH-FINDINGS.md` |
 | 11 | **Moonsighting research, session 2**: help the owner read the findings, then the small remainders and an independent review | `moonsighting-research-2.md` | **PAUSED** by the owner 2026-09-14. The owner hasn't read the findings yet, section 5's 11 questions are unanswered, and whether the research is usable for v2.0 is open. Resume at step 1 of the brief; the start prompt is at its end |
+| 12 | **SDK 58 beta upgrade + alarmClock + largeIcon**: the beta wave, alarm-clock delivery on every notification, the mosque large icon | `ai/plans/SDK58-PROGRAMME.md` §12 | **DONE** 18 September 2026, 1.27.222 to 1.27.229: RN 0.88.0-rc.0, every alarm `window=0` with the `Alarm clock:` sub-block, the mosque icon on every notification; proven on the 3T |
 
 Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else, and the
 moonsighting research runs after everything else. On 2026-09-15 the owner queued the coverage session next and asked
@@ -232,6 +233,31 @@ None of these is a session yet. Each needs the owner's decision first.
   waiting on an Android 10+ device beside the 3T. Queued in `ai/plans/README.md`'s waiting list.
 - **Session 12 moves strictly the SDK wave.** The everything-to-latest sweep (jotai 3, husky 9,
   lint-staged 17, the rest) is its own session, also queued in the waiting list.
+
+## Decided by the owner, 2026-09-18, during session 12's execution
+
+- **The five peer-sync packages stay.** When the wave's `yarn install` warned of peers the plan's
+  table did not name, the owner ruled that packages that depend on each other move in sync:
+  `@expo/log-box` and `@expo/metro-runtime` (expo-router 58's peers), `@expo/dom-webview`,
+  `react-dom` 19.2.3 and `@react-native/metro-config` joined the wave, and the owner re-confirmed
+  all five. The three remaining warnings (reanimated and worklets declare `react-native 0.83 to
+  0.87`; jest-expo's nested watch-typeahead wants jest 29) have no in-sync release to move to and
+  stand.
+- **`expo-env.d.ts` is deleted, not worked around.** The generated, gitignored file pulled
+  `expo/types` web CSS properties into RN's `ViewStyle` and broke tsc on five files; the owner
+  ruled the file goes. If an Expo command recreates it, delete it again.
+- **The step 3 test takes Biome's line shape** on its one `find` expression, tokens unchanged
+  (the plan's transcription reflowed what the spike had verified).
+- **tls13 moves to `compileSdk 37`** as its own commit: the SDK 58 production build failed at
+  `:tls13:checkReleaseAarMetadata` against the module's pinned 36. The module's wider
+  modernisation stays session 14's.
+- **The 3T was rebooted** when `adb install` wedged twice; the owner did the reboot.
+- **The `Alarm clock:` sub-block plus the next-alarm-clock slot is the alarm-clock proof** on the
+  3T: its Android 9 dump carries no 0x8 bit in `flags=`, so the plan's `flg=0x9` prediction
+  described Android-12-class dumps. The records text says the measured form.
+- **The two records phrases adjusted to the measured form**: the alarm-dump wording above, and
+  the large icon sitting "where Android places it (the right on the 3T)". Everything else
+  verbatim.
 
 ## Also live, not sessions
 
