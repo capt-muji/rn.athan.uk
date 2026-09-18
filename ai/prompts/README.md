@@ -214,6 +214,25 @@ None of these is a session yet. Each needs the owner's decision first.
   alarm test that refuses a cancel of a record two days old and asserts the record is dropped, and a
   fifth break pinning the same decision.
 
+## Decided by the owner, 2026-09-18, while planning session 12
+
+- **Alarm-clock delivery for every notification, silent ones and reminders included.** The owner's
+  words: "We want to always, always to be alarmed. Okay, alarm clock always." One delivery class
+  everywhere on Android; an alert the phone defers is an alert missed, whatever it sounds like.
+- **The status-bar alarm icon cannot be hidden, and that is accepted as the cost.** The owner asked
+  to hide it if possible; no app API suppresses the system's alarm icon while `setAlarmClock` alarms
+  are armed, and the plan says so plainly. The 3T proof reports what the phone actually shows, and
+  the whole adoption can still be reverted after the owner sees it.
+- **The Android notification large icon is `assets/icons/config/icon-ios.png`**, the full-square
+  mosque art (a vision read at 64dp: recognizable; the adaptive-icon foreground collapses to a
+  speck). The owner's words: "I want to see a before and after, so take screenshots of both... maybe
+  I will revert to this." The device proof leaves both shade screenshots at named paths for the
+  owner's own eyes.
+- **`react-native-edge-to-edge` stays at 1.8.2; the built-in RN switch is its own later session**,
+  waiting on an Android 10+ device beside the 3T. Queued in `ai/plans/README.md`'s waiting list.
+- **Session 12 moves strictly the SDK wave.** The everything-to-latest sweep (jotai 3, husky 9,
+  lint-staged 17, the rest) is its own session, also queued in the waiting list.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their
