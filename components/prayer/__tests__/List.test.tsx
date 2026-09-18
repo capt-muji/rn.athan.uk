@@ -145,3 +145,19 @@ describe('the Extras list on Friday 11 September 2026 at 14:00', () => {
     expect(measureInWindow).not.toHaveBeenCalled();
   });
 });
+
+describe('the Standard list on Friday 11 September 2026 at 14:00', () => {
+  it('asks for the re-measure through a cancellable idle callback', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const idle = jest.spyOn(globalThis, 'requestIdleCallback');
+    const cancelIdle = jest.spyOn(globalThis, 'cancelIdleCallback');
+    await render(<List type={ScheduleType.Standard} />);
+    idle.mockClear();
+
+    await act(() => getDefaultStore().set(countdownBarShownAtom, false));
+
+    expect(idle).toHaveBeenCalledTimes(1);
+    await screen.unmount();
+    expect(cancelIdle).toHaveBeenCalledWith(idle.mock.results[0].value);
+  });
+});
