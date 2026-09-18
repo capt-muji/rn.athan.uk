@@ -179,7 +179,10 @@ describe('the plugin wiring', () => {
     delete process.env.EXPO_PUBLIC_WIDGETS;
     let names: string[] = [];
     jest.isolateModules(() => {
-      const config = require('../../app.config').default as import('expo/config').ExpoConfig;
+      const loaded = require('../../app.config').default as
+        | import('expo/config').ExpoConfig
+        | ((ctx: { platform?: string }) => import('expo/config').ExpoConfig);
+      const config = typeof loaded === 'function' ? loaded({ platform: 'ios' }) : loaded;
       names = pluginNames(config);
     });
 

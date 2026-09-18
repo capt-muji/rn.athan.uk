@@ -22,15 +22,48 @@ if (androidSuffix && config.android?.package) {
 // tsx; shared/__tests__/flags.test.ts pins the two in lockstep). Stripping
 // the plugin removes the widget extension from the native build entirely.
 const widgetsEnabled = process.env.EXPO_PUBLIC_WIDGETS === '1';
+const androidWidgetsEnabled = process.env.EXPO_PUBLIC_ANDROID_WIDGETS === '1';
 const pluginName = (plugin: unknown): string | null => {
   if (typeof plugin === 'string') return plugin;
   if (Array.isArray(plugin) && typeof plugin[0] === 'string') return plugin[0];
   return null;
 };
 
-if (!widgetsEnabled) {
-  config.plugins = (config.plugins ?? []).filter((plugin) => pluginName(plugin) !== 'expo-widgets');
-}
+// Android widgets ride their own flag. An android-only config resolution
+// (this CLI never passes ctx.platform, so the platform comes from the
+// normalized CLI argv — 'expo prebuild -p android' evaluates this file with
+// argv ['prebuild', 'android'] — or the EXPO_WIDGETS_ANDROID env override
+// for non-CLI resolvers) keeps the expo-widgets plugin with its Android
+// code generation on, and drops config.ios with it: the plugin's iOS side
+// would otherwise generate a widget extension whenever ios.bundleIdentifier
+// exists, and an android-only build never reads ios config.
+const argvTokens = process.argv.map((token) => token.replace(/^--?platform=?/i, '').toLowerCase());
+const androidOnlyResolution =
+  (argvTokens.includes('android') && !argvTokens.includes('ios')) || process.env.EXPO_WIDGETS_ANDROID === '1';
+
+const enableAndroidWidgets = (expoConfig: ExpoConfig): ExpoConfig => {
+  expoConfig.ios = undefined;
+  expoConfig.plugins = (expoConfig.plugins ?? []).map((plugin) => {
+    if (pluginName(plugin) !== 'expo-widgets') return plugin;
+    const [, props] = plugin as [string, Record<string, unknown>];
+    return ['expo-widgets', { ...props, enableAndroid: true }];
+  });
+  return expoConfig;
+};
+
+const stripWidgetsPlugin = (expoConfig: ExpoConfig): ExpoConfig => {
+  expoConfig.plugins = (expoConfig.plugins ?? []).filter((plugin) => pluginName(plugin) !== 'expo-widgets');
+  return expoConfig;
+};
+
+const resolveConfig = ({ platform }: { platform?: string }): ExpoConfig => {
+  if (platform === 'android' || (platform === undefined && androidOnlyResolution && androidWidgetsEnabled)) {
+    if (androidWidgetsEnabled) return enableAndroidWidgets(config);
+    return stripWidgetsPlugin(config);
+  }
+  if (!widgetsEnabled) return stripWidgetsPlugin(config);
+  return config;
+};
 
 // The build contract: EXPO_PUBLIC_ENV and EXPO_PUBLIC_API_KEY reach a release build from the
 // EAS dashboard environment, so nothing in a checkout proves they arrived. Neither failure is
@@ -59,4 +92,4 @@ if (contractApplies && (!apiKey || apiKey === PLACEHOLDER_API_KEY)) {
   );
 }
 
-export default config;
+export default resolveConfig;

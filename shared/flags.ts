@@ -39,6 +39,15 @@ export const FEATURE_FLAGS = {
    * acceptance protocol. Full trail in ISSUES.md G.1 item 0.
    */
   widgets: process.env.EXPO_PUBLIC_WIDGETS === '1',
+  /**
+   * Android home-screen widgets (expo-widgets' Android implementation,
+   * SDK 58). Same lifecycle as the iOS flag: disabled unless the variable is
+   * exactly '1'. Flip condition: the owner judging the session 15 device
+   * proof (styling parity screenshots + performance on the 3T) and choosing
+   * to release. The push paths return early and the prebuild android
+   * resolution strips the plugin while this is off.
+   */
+  androidWidgets: process.env.EXPO_PUBLIC_ANDROID_WIDGETS === '1',
 } as const;
 
 export type FeatureFlagId = keyof typeof FEATURE_FLAGS;
