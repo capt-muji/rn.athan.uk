@@ -383,3 +383,39 @@ describe('trigger instants', () => {
     expect(record).toMatchObject({ date: '2026-10-24', time: '23:58', englishName: 'Midnight' });
   });
 });
+
+// =============================================================================
+// DELIVERY CLASS (ISSUES #17: alarm-clock alarms are never deferred by OEM battery policy)
+// =============================================================================
+
+describe('trigger delivery class', () => {
+  beforeEach(() => {
+    (scheduleNotificationAsync as jest.Mock).mockClear();
+  });
+
+  it('arms the at-time notification in the alarm-clock class', async () => {
+    await addOneScheduledNotificationForPrayer(
+      ScheduleType.Standard,
+      '2026-09-01',
+      row('Isha', 'العشاء', '2026-09-01', '21:00'),
+      AlertType.Silent,
+      0
+    );
+
+    const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
+    expect(trigger.delivery).toBe('alarmClock');
+  });
+
+  it('arms the reminder in the alarm-clock class', async () => {
+    await addOneScheduledReminderForPrayer(
+      ScheduleType.Standard,
+      '2026-09-01',
+      row('Isha', 'العشاء', '2026-09-01', '21:00'),
+      15,
+      AlertType.Silent
+    );
+
+    const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
+    expect(trigger.delivery).toBe('alarmClock');
+  });
+});
