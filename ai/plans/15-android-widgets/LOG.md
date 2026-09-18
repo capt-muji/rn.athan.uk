@@ -115,3 +115,19 @@ Resume from: Step 6 (PNG assets + drawable plugin), asset tests red first.
   needed a strict-numeric form to ignore the css() docstring example.
 
 Resume from: Step 7 (records + docs), then the device proof on the 3T.
+
+## Step 7: docs + queue records — DONE (merged 34f37cf5)
+
+- AGENTS.md flag catalog gains androidWidgets with its refresh model and
+  the generator regeneration note; SDK58-PROGRAMME §17 carries the owner's
+  widened goal (30 days is the floor, not the ceiling); the four session-15
+  owner rulings recorded in ai/prompts/README.md; row 9 EXECUTED.
+- One more stray-commit-on-uat-2 slip recovered by re-pointing the branch
+  and merging --no-ff (34f37cf5). Version-lockstep caught the gradle
+  versionName lag twice this session; noted for future steps to bump all
+  three in one go.
+
+Resume from: the device proof (build running via
+session15/bin/build-prod-widgets.zsh — the session-3 script strips
+EXPO_PUBLIC_* env, so the variant appends the flag to the build worktree's
+.env, the build-mock-ramadan precedent).
