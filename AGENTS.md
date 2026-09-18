@@ -28,6 +28,7 @@ repo — run them, don't reinvent them.
 | Drive a device: tap, type, scroll, screenshot | `mobile-mcp` |
 | Author or run a flow | `maestro mcp`, flows in `e2e/flows/*.yaml` |
 | iOS build / simulator | `xcodebuildmcp` |
+| Expo project brief, dev-server smoke loop | `npx @expo/agent-cli status` / `smoke --ios` (rules in ai/AGENTS.md §6) |
 | Expo/EAS API question | the matching `expo-*` / `eas-*` skill |
 | "Are alarms actually armed?" | `yarn check:device` |
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
