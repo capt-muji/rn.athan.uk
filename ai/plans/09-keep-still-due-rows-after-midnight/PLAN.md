@@ -303,10 +303,8 @@ prove London unchanged; `shared/__tests__/constants.test.ts` pins the ceiling ar
 
 - [x] Step 1: the sequence starts from the earliest list day that is still current (specified;
       `steps/1-sequence-starts-from-still-due-day.md`) DONE in 248d971d10b055e449743af6f065300e97123305
-- [ ] Step 2: the alarm window starts from the still-due list day, and a refused cancel keeps its
-      record (specified; `steps/2-alarm-window-and-refusal-records.md`; refreshed 2026-09-17 with the
-      sixth alarm test and break `2e`, the owner's answer to the coverage stop)
-- [ ] Device proof: section 7
+- [x] Step 2: DONE in 88be6ef004112cb2faf7358bd757ebfbabf07ca8
+- [x] Device proof: DONE
 
 Each step is written out in full in its file under `steps/`, is one branch, one commit, one version,
 one review, one merge, and leaves `uat-2` green. Do not start a step until the previous one is
