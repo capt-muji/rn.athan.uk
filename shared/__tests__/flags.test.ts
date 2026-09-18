@@ -16,10 +16,13 @@ const loadFlagsFresh = () => {
   return holder.flags as typeof import('../flags');
 };
 
-const loadAppConfigFresh = () => {
+const loadAppConfigFresh = (platform?: string): import('expo/config').ExpoConfig => {
   const holder: { config?: import('expo/config').ExpoConfig } = {};
   jest.isolateModules(() => {
-    holder.config = require('../../app.config').default;
+    const loaded = require('../../app.config').default as
+      | import('expo/config').ExpoConfig
+      | ((ctx: { platform?: string }) => import('expo/config').ExpoConfig);
+    holder.config = typeof loaded === 'function' ? loaded({ platform }) : loaded;
   });
   return holder.config as import('expo/config').ExpoConfig;
 };
@@ -66,6 +69,35 @@ describe('FEATURE_FLAGS.widgets parsing', () => {
   });
 });
 
+describe('FEATURE_FLAGS.androidWidgets parsing', () => {
+  const setAndroidEnv = (value: string | undefined) => {
+    if (value === undefined) {
+      delete process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
+    } else {
+      process.env.EXPO_PUBLIC_ANDROID_WIDGETS = value;
+    }
+  };
+
+  afterEach(() => {
+    setAndroidEnv(undefined);
+  });
+
+  it('is disabled when the variable is absent', () => {
+    setAndroidEnv(undefined);
+    expect(loadFlagsFresh().FEATURE_FLAGS.androidWidgets).toBe(false);
+  });
+
+  it('is enabled only for the exact string 1', () => {
+    setAndroidEnv('1');
+    expect(loadFlagsFresh().FEATURE_FLAGS.androidWidgets).toBe(true);
+  });
+
+  it.each(['0', '', 'true', 'yes', '2', 'on'])('is disabled for %p', (value) => {
+    setAndroidEnv(value);
+    expect(loadFlagsFresh().FEATURE_FLAGS.androidWidgets).toBe(false);
+  });
+});
+
 // =============================================================================
 // app.config.ts CONTRACT
 // =============================================================================
@@ -92,5 +124,128 @@ describe('app.config widget plugin parity', () => {
     const config = loadAppConfigFresh();
     expect(config.android?.package).toBe('com.mugtaba.athan');
     expect(config.name).toBe('Athan');
+  });
+});
+
+// =============================================================================
+// ANDROID WIDGET PLUGIN RESOLUTION
+// =============================================================================
+
+const withCliArgv = (tokens: string[], run: () => void): void => {
+  const originalArgv = process.argv;
+  process.argv = ['/usr/local/bin/node', 'prebuild', ...tokens];
+  try {
+    run();
+  } finally {
+    process.argv = originalArgv;
+  }
+};
+
+const widgetsPluginEntry = (config: import('expo/config').ExpoConfig): [string, Record<string, unknown>] | null => {
+  const entry = (config.plugins ?? []).find(
+    (plugin: unknown): plugin is [string, Record<string, unknown>] =>
+      Array.isArray(plugin) && typeof plugin[0] === 'string' && plugin[0] === 'expo-widgets'
+  );
+  return entry ?? null;
+};
+
+describe('app config android widget resolution', () => {
+  const setAndroidEnv = (value: string | undefined) => {
+    if (value === undefined) {
+      delete process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
+    } else {
+      process.env.EXPO_PUBLIC_ANDROID_WIDGETS = value;
+    }
+  };
+
+  afterEach(() => {
+    setAndroidEnv(undefined);
+    delete process.env.EXPO_WIDGETS_ANDROID;
+  });
+
+  it('enables expo-widgets android codegen when the android flag is on', () => {
+    setAndroidEnv('1');
+    let config!: import('expo/config').ExpoConfig;
+    withCliArgv(['android'], () => {
+      config = loadAppConfigFresh('android');
+    });
+    const entry = widgetsPluginEntry(config);
+    expect(entry).not.toBeNull();
+    expect(entry?.[1].enableAndroid).toBe(true);
+    expect(config.ios).toBeUndefined();
+
+    const widgets = (entry?.[1].widgets as Array<Record<string, unknown>>) ?? [];
+    const home = widgets.filter((widget) => widget.android != null);
+    const locks = widgets.filter((widget) => widget.name === 'PrayerLockWidget' || widget.name === 'ExtrasLockWidget');
+    expect(home).toHaveLength(8);
+    expect(home.map((widget) => widget.name).sort()).toEqual(
+      [
+        'ExtrasWidget',
+        'ExtrasWidgetDark',
+        'ExtrasWidgetDarkMedium',
+        'ExtrasWidgetMedium',
+        'PrayerWidget',
+        'PrayerWidgetDark',
+        'PrayerWidgetDarkMedium',
+        'PrayerWidgetMedium',
+      ].sort()
+    );
+    for (const widget of home) {
+      const android = widget.android as Record<string, unknown>;
+      expect(android.resizeMode).toBe('none');
+      expect(android.initialLayout).toBe('./widgets/PrayerWidget');
+      expect(android.targetCellWidth).toBe(/Medium/.test(String(widget.name)) ? 4 : 2);
+      expect(android.targetCellHeight).toBe(2);
+    }
+    for (const lock of locks) {
+      expect(lock.android).toBeNull();
+    }
+  });
+
+  it('strips expo-widgets on the android resolution when the android flag is off', () => {
+    setAndroidEnv(undefined);
+    let config!: import('expo/config').ExpoConfig;
+    withCliArgv(['android'], () => {
+      config = loadAppConfigFresh('android');
+    });
+    expect(pluginNames(config)).not.toContain('expo-widgets');
+  });
+
+  it('treats EXPO_WIDGETS_ANDROID as a platform signal, gated by the flag', () => {
+    setAndroidEnv('1');
+    process.env.EXPO_WIDGETS_ANDROID = '1';
+    let forcedAndroid!: import('expo/config').ExpoConfig;
+    withCliArgv([], () => {
+      forcedAndroid = loadAppConfigFresh(undefined);
+    });
+    expect(pluginNames(forcedAndroid)).toContain('expo-widgets');
+    expect(forcedAndroid.ios).toBeUndefined();
+
+    setAndroidEnv(undefined);
+    let flagStillGates!: import('expo/config').ExpoConfig;
+    withCliArgv([], () => {
+      flagStillGates = loadAppConfigFresh(undefined);
+    });
+    expect(pluginNames(flagStillGates)).not.toContain('expo-widgets');
+  });
+
+  it('keeps the ios resolution ruled by the ios flag only', () => {
+    setAndroidEnv('1');
+    setEnv(undefined);
+    let flagOff!: import('expo/config').ExpoConfig;
+    withCliArgv(['ios'], () => {
+      flagOff = loadAppConfigFresh('ios');
+    });
+    expect(pluginNames(flagOff)).not.toContain('expo-widgets');
+
+    setEnv('1');
+    let flagOn!: import('expo/config').ExpoConfig;
+    withCliArgv(['ios'], () => {
+      flagOn = loadAppConfigFresh('ios');
+    });
+    const entry = widgetsPluginEntry(flagOn);
+    expect(entry).not.toBeNull();
+    expect(entry?.[1].enableAndroid).toBeUndefined();
+    expect(flagOn.ios?.bundleIdentifier).toBe('com.mugtaba.athan');
   });
 });
