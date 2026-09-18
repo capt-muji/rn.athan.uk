@@ -37,8 +37,8 @@ import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { type PrayerSequence, ScheduleType } from '@/shared/types';
-import { buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
-import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
+import { buildPrayerWidgetSnapshot, buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
+import type { PrayerWidgetAndroidProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 
 // Widget layout modules are required LAZILY inside the iOS-only push paths:
@@ -155,7 +155,9 @@ const sequenceFor = (schedule: ScheduleType, startDate: Date): PrayerSequence =>
  * next sync. Idempotent; no-op off iOS.
  */
 export const initWidgetSettingsSync = (): void => {
-  if (settingsSyncInitialized || Platform.OS !== 'ios' || !FEATURE_FLAGS.widgets) return;
+  const iosEligible = Platform.OS === 'ios' && FEATURE_FLAGS.widgets;
+  const androidEligible = Platform.OS === 'android' && FEATURE_FLAGS.androidWidgets;
+  if (settingsSyncInitialized || (!iosEligible && !androidEligible)) return;
   settingsSyncInitialized = true;
 
   const store = getDefaultStore();
@@ -314,8 +316,153 @@ const pushScheduleTimelines = async (
  * label-flip timers handle the in-between minute pushes themselves.
  */
 export const refreshPrayerWidgets = async (): Promise<void> => {
-  if (Platform.OS !== 'ios' || !FEATURE_FLAGS.widgets) return;
+  if (Platform.OS === 'ios' && !FEATURE_FLAGS.widgets) return;
+  if (Platform.OS === 'android' && !FEATURE_FLAGS.androidWidgets) return;
+
+  if (Platform.OS === 'android') {
+    await pushScheduleAndroid(ScheduleType.Standard);
+    await pushScheduleAndroid(ScheduleType.Extra);
+    return;
+  }
 
   await pushScheduleTimelines(ScheduleType.Standard);
   await pushScheduleTimelines(ScheduleType.Extra);
+};
+
+// =============================================================================
+// ANDROID PUSH PATH
+// Android widgets have no timeline: each kind stores one snapshot and the
+// layout computes its content at render time, so pushes carry data (the
+// window) and the flip chain only triggers re-renders (reload).
+// =============================================================================
+
+/** One home kind's stamp: every kind renders its own theme at a fixed size. */
+interface AndroidKindStamp {
+  widget: { updateSnapshot: (props: PrayerWidgetAndroidProps) => void; reload: () => void };
+  theme: 'light' | 'dark';
+  size: 'small' | 'medium';
+}
+
+const androidKindsFor = (schedule: ScheduleType): AndroidKindStamp[] => {
+  const home = getHomeWidgets();
+  if (schedule === ScheduleType.Standard) {
+    return [
+      { widget: home.PrayerWidget, theme: 'light', size: 'small' },
+      { widget: home.PrayerWidgetMedium, theme: 'light', size: 'medium' },
+      { widget: home.PrayerWidgetDark, theme: 'dark', size: 'small' },
+      { widget: home.PrayerWidgetDarkMedium, theme: 'dark', size: 'medium' },
+    ];
+  }
+  return [
+    { widget: home.ExtrasWidget, theme: 'light', size: 'small' },
+    { widget: home.ExtrasWidgetMedium, theme: 'light', size: 'medium' },
+    { widget: home.ExtrasWidgetDark, theme: 'dark', size: 'small' },
+    { widget: home.ExtrasWidgetDarkMedium, theme: 'dark', size: 'medium' },
+  ];
+};
+
+/** The earliest readable epoch still in the future: the countdown target. */
+const nextFutureEpochMs = (
+  snapshot: Omit<PrayerWidgetAndroidProps, 'theme' | 'size'>,
+  nowMs: number
+): number | null => {
+  let earliest: number | null = null;
+  for (const day of snapshot.days) {
+    for (const row of day.rows) {
+      if (row.epochMs === null || row.epochMs <= nowMs) continue;
+      if (earliest === null || row.epochMs < earliest) earliest = row.epochMs;
+    }
+  }
+  return earliest;
+};
+
+/** Re-renders a schedule's home kinds from their stored snapshots. */
+const reloadAndroidKinds = (schedule: ScheduleType): void => {
+  for (const kind of androidKindsFor(schedule)) {
+    kind.widget.reload();
+  }
+};
+
+/**
+ * Arms ONE schedule's Android flip chain: while the countdown target is
+ * still ahead, every minute flip reloads the four home kinds (the render
+ * recomputes the label from the epochs); once the target has passed, a full
+ * re-push takes over so the widget rolls onto the next prayer with fresh
+ * data. Always leaves a timer behind, mirroring the iOS chain's invariant.
+ */
+const scheduleLabelFlipReload = (schedule: ScheduleType, targetEpochMs: number | null): void => {
+  const existing = flipPushTimers[schedule];
+  if (existing !== null) {
+    clearTimeout(existing);
+    flipPushTimers[schedule] = null;
+  }
+
+  const msUntilFlip = (targetEpochMs === null ? null : msUntilMinuteFlip(targetEpochMs)) ?? FLIP_RETRY_MS;
+
+  flipPushTimers[schedule] = setTimeout(() => {
+    flipPushTimers[schedule] = null;
+    if (targetEpochMs !== null && targetEpochMs > Date.now()) {
+      reloadAndroidKinds(schedule);
+      scheduleLabelFlipReload(schedule, targetEpochMs);
+      return;
+    }
+    void pushScheduleAndroid(schedule, { reuseCachedSequence: true });
+  }, msUntilFlip);
+};
+
+/**
+ * Pushes ONE schedule's snapshot to its four home kinds on Android. Full
+ * refreshes rebuild the sequence; flip-driven re-pushes reuse the cache,
+ * exactly like the iOS timeline path.
+ */
+const pushScheduleAndroid = async (
+  schedule: ScheduleType,
+  options?: { reuseCachedSequence?: boolean }
+): Promise<void> => {
+  let flipTargetEpochMs: number | null = null;
+
+  try {
+    const now = TimeUtils.createInstant();
+    const today = TimeUtils.getTodayDateString();
+    const yesterday = TimeUtils.getPreviousDateString(today);
+    const startDate = TimeUtils.getDayAnchor(yesterday);
+    const settings = readWidgetSettings();
+
+    const sequence = options?.reuseCachedSequence
+      ? sequenceFor(schedule, startDate)
+      : rebuildSequence(schedule, startDate);
+
+    const snapshot = buildPrayerWidgetSnapshot(sequence, settings);
+    if (snapshot === null) {
+      logger.warn('WIDGET: Empty snapshot built — prayer cache is likely empty', { schedule });
+      return;
+    }
+
+    const nextEpoch = nextFutureEpochMs(snapshot, now.getTime());
+    const nextRow = (() => {
+      for (const day of snapshot.days) {
+        for (const row of day.rows) {
+          if (row.epochMs !== null && row.epochMs === nextEpoch) return row;
+        }
+      }
+      return null;
+    })();
+
+    for (const kind of androidKindsFor(schedule)) {
+      kind.widget.updateSnapshot({ ...snapshot, theme: kind.theme, size: kind.size });
+    }
+
+    flipTargetEpochMs = nextEpoch;
+
+    const scheduleLabel = schedule === ScheduleType.Standard ? 'Standard' : 'Extras';
+    logger.info(`WIDGET: ${scheduleLabel} snapshot pushed`, {
+      next: nextRow?.name,
+      nextAt: nextRow?.time,
+    });
+  } catch (error) {
+    logger.warn('WIDGET: Failed to refresh widget snapshots', { schedule, error });
+  } finally {
+    if (flipTargetEpochMs === null) sequenceCache[schedule] = null;
+    scheduleLabelFlipReload(schedule, flipTargetEpochMs);
+  }
 };
