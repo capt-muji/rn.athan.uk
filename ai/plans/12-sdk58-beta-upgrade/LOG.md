@@ -140,3 +140,41 @@ Execution-session record, 2026-09-18 (GLM 5.3):
   `Branches 100% (1712/1712)`, `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Break
   script last line `ALL AS EXPECTED: 1`. Review verdict MERGE, Code Reviewer (GLM 5.3), one
   round, no findings. Merge sha `d3405d4f`.
+- Step 5 (docs-only, red skipped by design): the whole table was read back against package.json
+  after the edits, every row agrees. Breaks `bash $TMPDIR/breaks-12-5.sh` printed exactly
+  `caught=0 missed=0` and `ALL AS EXPECTED: 1`. Green: tsc 0, biome 0, full suite
+  `Tests: 4535 passed, 4535 total`. Version 1.27.226 in the three files.
+- Step 5 DONE: branch `docs/agent-md-sdk58-stack`, commit `b69db171` (1.27.226). Hook's last
+  line: `Tests: 4535 passed, 4535 total` with `Statements 100% (3969/3969)`,
+  `Branches 100% (1712/1712)`, `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Review
+  verdict MERGE, Code Reviewer (GLM 5.3), one round, no findings. Merge sha `de7e8bb8`.
+
+Device proof (section 7), 2026-09-18:
+
+- 7.0 `yarn install` in the main checkout: `Done in 0.33s` (node_modules already matched the
+  merged lock). Fingerprint policy: `npx expo config --type prebuild` exit 0, grep -i
+  runtimeversion finds nothing (grep exit 1) — no runtimeVersion policy, as the plan predicts.
+  `expo-env.d.ts` not recreated by the config read.
+- 7.1 cold launch of the mock build at 13:41:30 (devcheck `cold`; its uiautomator read failed on
+  the known countdown-animation limitation, irrelevant here). Shade opened and both before
+  screenshots taken (shade-before.png 13:42:27, shade-before-open.png 13:42:28). vision
+  (GLM 5.3 Flash) on shade-before-open.png: "No: the Athan notification's title 'Isha now' sits
+  alone at the left margin with no square image or thumbnail beside it (unlike the WhatsApp
+  notification above, which has a circular avatar). The only graphic is the small ~39×39 px app
+  icon in the header row: a hollow, vivid-purple outline shape (RGB 90, 58, 247) resembling a
+  badge/shield with a dome-like bump on top and a downward point at the bottom, placed left of
+  the 'Athan • 4h' label." Expected baseline confirmed: no large square image, only the small
+  glyph.
+- 7.2 production build FAILED (the plan's section 10 row): `zsh
+  ~/athan-device-sweep/session3/bin/build-prod.zsh uat-2
+  ~/athan-device-sweep/session12/athan-sdk58-prod.apk` exited 1 after `BUILD FAILED in 4m 45s`
+  (728 tasks executed). Quoted lines from
+  `~/athan-device-sweep/session12/logs/athan-sdk58-prod.gradle.log`: "Execution failed for task
+  ':tls13:checkReleaseAarMetadata' ... 1. Dependency ':expo-modules-core' requires libraries and
+  applications that depend on it to compile against version 37 or later of the Android APIs.
+  :tls13 is currently compiled against android-36. ... 2. Dependency ':react-native-worklets'
+  requires libraries and applications that depend on it to compile against version 37 or later of
+  the Android APIs." Root cause: this repo's own local Expo module
+  `modules/tls13/android/build.gradle` line 10 hardcodes `compileSdk 36`; no plan step lists that
+  file (the module's own modernisation is session 14, per SDK58-PROGRAMME.md). STOPPED and asked
+  the owner, quoting the lines.
