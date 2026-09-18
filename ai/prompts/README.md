@@ -19,7 +19,7 @@ when it starts, and keep the brief itself in this directory.
 | 9 | **Keep yesterday's still-due rows after 00:00**: a Magrib or Isha after midnight stays on screen and keeps its alarm, before v2.0 | `keep-still-due-rows-after-midnight.md` | **DONE** 18 September 2026, 1.27.213 to 1.27.216: yesterday's still-due rows stay on the screen and keep their alarms after 00:00 (a day stays current until its last readable row has passed); proven on the 3T on the brief's five fixed high-latitude days, from a zero baseline the proof created itself: Friday's list still on screen after a midnight cold launch, both alarms re-attempted and fired, the window moved on once the rows passed; London byte-identical |
 | 10 | **Moonsighting.com / Khalid Shaukat research**: v2.0 prerequisite, needs its own clean context, and runs after every other session | `moonsighting-research.md` | **RAN** 2026-09-14 on branch `research/moonsighting`. All four steps done: every page, document and archived method-page version read; London 2026 reproduced; implementations measured. Findings: `ai/features/moonsighting/RESEARCH-FINDINGS.md` |
 | 11 | **Moonsighting research, session 2**: help the owner read the findings, then the small remainders and an independent review | `moonsighting-research-2.md` | **PAUSED** by the owner 2026-09-14. The owner hasn't read the findings yet, section 5's 11 questions are unanswered, and whether the research is usable for v2.0 is open. Resume at step 1 of the brief; the start prompt is at its end |
-| 12 | **SDK 58 beta upgrade + alarmClock + largeIcon**: the beta wave, alarm-clock delivery on every notification, the mosque large icon | `ai/plans/SDK58-PROGRAMME.md` §12 | **DONE** 18 September 2026, 1.27.222 to 1.27.229: RN 0.88.0-rc.0, every alarm `window=0` with the `Alarm clock:` sub-block, the mosque icon on every notification; proven on the 3T |
+| 12 | **SDK 58 beta upgrade + alarmClock**: the beta wave, alarm-clock delivery on every notification | `ai/plans/SDK58-PROGRAMME.md` §12 | **DONE** 18 September 2026, 1.27.222 to 1.27.229: RN 0.88.0-rc.0, every alarm `window=0` with the `Alarm clock:` sub-block, the mosque icon on every notification until the owner rejected it on the shade proof (reverted 1.27.231); proven on the 3T |
 
 Ordering is the owner's, given 2026-09-13: the device sweep runs before everything else, and the
 moonsighting research runs after everything else. On 2026-09-15 the owner queued the coverage session next and asked
@@ -228,7 +228,8 @@ None of these is a session yet. Each needs the owner's decision first.
   mosque art (a vision read at 64dp: recognizable; the adaptive-icon foreground collapses to a
   speck). The owner's words: "I want to see a before and after, so take screenshots of both... maybe
   I will revert to this." The device proof leaves both shade screenshots at named paths for the
-  owner's own eyes.
+  owner's own eyes. The owner reverted it on 2026-09-18 after that proof (`19573d93`, 1.27.231);
+  everything else from session 12 stays.
 - **`react-native-edge-to-edge` stays at 1.8.2; the built-in RN switch is its own later session**,
   waiting on an Android 10+ device beside the 3T. Queued in `ai/plans/README.md`'s waiting list.
 - **Session 12 moves strictly the SDK wave.** The everything-to-latest sweep (jotai 3, husky 9,
