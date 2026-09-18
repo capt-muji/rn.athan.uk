@@ -110,7 +110,8 @@ describe('widget function closure', () => {
           if (
             parentType === 'TSTypeReference' ||
             parentType === 'TSQualifiedName' ||
-            parentType === 'TSTypeParameterInstantiation'
+            parentType === 'TSTypeParameterInstantiation' ||
+            parentType === 'TSTypeAliasDeclaration'
           ) {
             return;
           }
@@ -313,6 +314,15 @@ describe('palette literals', () => {
 // =============================================================================
 // 3. STATIC IMPORTS ONLY (dynamic import breaks the widget transform)
 // =============================================================================
+
+describe('Android runtime names', () => {
+  it('home widget imports jetpack-compose and detects the platform by its globals', () => {
+    const source = readFileSync(WIDGET_FILES[0].path, 'utf8');
+    expect(source).toContain("from '@expo/ui/jetpack-compose'");
+    expect(source).toContain("from '@expo/ui/jetpack-compose/modifiers'");
+    expect(source).toContain("typeof Column !== 'undefined'");
+  });
+});
 
 describe('static import discipline', () => {
   it('widget layout files contain no dynamic import()', () => {
