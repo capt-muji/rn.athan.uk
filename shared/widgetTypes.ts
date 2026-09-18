@@ -14,6 +14,13 @@
 export const WIDGET_PROPS_VERSION = 4;
 
 /**
+ * Current schema version of the Android widget snapshot contract. Android has
+ * no timeline: one snapshot carries the whole window and the layout computes
+ * what to show at render time. Bump when the snapshot shape changes.
+ */
+export const ANDROID_SNAPSHOT_VERSION = 1;
+
+/**
  * Which palette a home widget renders: 'light' or 'dark'. This is a
  * timeline-entry property, not a user setting — the gallery offers a Light
  * and a Dark kind per schedule, and each kind receives its own
@@ -115,4 +122,51 @@ export interface PrayerWidgetProps {
    * card instead of silently stale times. Absent on normal entries.
    */
   stale?: boolean;
+}
+
+/**
+ * One row of the Android widget's carried data. `epochMs` is null for rows
+ * whose time could not be read: they render as `--:--` and can never be the
+ * next prayer.
+ */
+export interface AndroidWidgetDayRow {
+  /** English prayer name, e.g. "Fajr" */
+  name: string;
+  /** Prayer time in HH:mm, or "--:--" when unreadable */
+  time: string;
+  /** The prayer's moment as epoch ms, or null when the row is unreadable */
+  epochMs: number | null;
+}
+
+/**
+ * One day of the Android snapshot: the list-day label the app would show,
+ * the London midnight starting the day (the render-time day picker compares
+ * against it), and the day's rows in its page's order.
+ */
+export interface AndroidWidgetDay {
+  /** The day's date in the app's display format (Hijri when enabled) */
+  dateLabel: string;
+  /** London midnight starting this day, as epoch ms */
+  startEpochMs: number;
+  rows: AndroidWidgetDayRow[];
+}
+
+/**
+ * The Android widget snapshot: everything the layout needs to compute its
+ * content at ANY render instant inside the carried window. The theme and
+ * size are stamped per widget kind by the push layer, not the builder.
+ */
+export interface PrayerWidgetAndroidProps {
+  /** Snapshot schema version (ANDROID_SNAPSHOT_VERSION) */
+  v: number;
+  /** Which schedule the snapshot describes */
+  schedule: 'standard' | 'extra';
+  /** Palette, stamped per kind (the gallery's Light/Dark pairs) */
+  theme: WidgetTheme;
+  /** Which size composition to render, stamped per kind */
+  size: 'small' | 'medium';
+  /** The window's days, in order */
+  days: AndroidWidgetDay[];
+  /** The last readable prayer in the window: renders past this go stale */
+  horizonEpochMs: number;
 }
