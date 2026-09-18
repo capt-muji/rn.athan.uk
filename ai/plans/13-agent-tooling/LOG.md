@@ -76,4 +76,58 @@ the table exactly (`1m 2s` / `1m 32s` / `1m 3s` / `1m 38s`; A and B different se
   reset, and restoring the template wording would falsify vision's reading).
 - Merge `62ef4683` into `uat-2` (`--no-ff`, reviewed).
 
+## Step 3: routing docs — branch `docs/agent-tooling-routing`
+
+- Anchor counts 3-1 (AGENTS.md) and 3-2 (ai/AGENTS.md) both 1.
+- One routing row inserted between the xcodebuildmcp row and the Expo/EAS skill row; three
+  bullets added after the physical-iPhone-XS bullet, before section 7. The plan's three
+  `grep -F '- **…'` green-check commands needed `--` to stop grep parsing the leading dash
+  as an option (how-to detail only; the lines found are the plan's).
+- Breaks `breaks-13-3.sh`: `caught=7 missed=0`, `ALL AS EXPECTED: 1`. tsc and Biome exit 0.
+- Commit `58839b07`, version `1.27.238`; hook `Tests:       4534 passed, 4534 total`,
+  coverage lines all `100%`. `git show --stat HEAD` listed exactly `AGENTS.md`,
+  `ai/AGENTS.md`, `app.json`, `package.json` and the two plan files.
+- Review: Code Reviewer (GLM 5.3), 1 round, verdict **merge** (bullets byte-identical,
+  placement exact, facts all traced to the FINDINGS; its one nitpick — the row's unversioned
+  `npx @expo/agent-cli` spelling vs the bullet's `@latest` — is the plan's own verbatim text).
+- Merge `7b71d3e9` into `uat-2` (`--no-ff`, reviewed).
+
+### AUTONOMOUS RULING 4: evidence preserved for the two claims the Reality Checker could not prove
+
+The plan's Reality Checker (section 11) returned a non-empty list: the records text's
+claims "the 3T untouched, still on the mock build of 1.27.227" and "(pod install plus
+xcodebuild Debug)" were true but had no preserved artifact — the section 7 adb check had
+run with output only in the session transcript, and the build mechanism lived in machine
+state. The plan holds the records text until every claim has its evidence, so the
+executor preserved the evidence rather than changing the text (both artifacts are
+read-only observations of state the session itself produced, saved under
+`~/athan-device-sweep/session13/`, outside the repository):
+
+- `device-3t-check.txt` — the three section 7 adb commands rerun at 20:03:15:
+  `device`, `auto_time 1`, `versionName=1.27.227`.
+- `ios-build-evidence.txt` — `.expo/agent-cli-last-build.json` (19:36:31),
+  `.expo/xcodebuild.log` ending `** BUILD SUCCEEDED **` with the
+  `Debug-iphonesimulator/Athan.app` product (19:36:18) and 3,369 Debug-configuration
+  references, `ios/Podfile.lock` rewritten 19:30:33 and `ios/Pods` 19:36:09 — the
+  executor's smoke window (19:29:59 to 19:36:34; the run's screenshot is
+  `smoke-2026-09-18T18-36-30-679Z.png`, 18:36:30 UTC = 19:36:30 local).
+
+The Reality Checker was then re-run with the same prompt; empty list required before the
+records text is applied (result recorded below).
+
+## Finish
+
+- Section 7 3T check: `device`, `auto_time` 1, `versionName=1.27.227` (rerun and preserved
+  in `~/athan-device-sweep/session13/device-3t-check.txt` under ruling 4).
+- Reality Checker (GLM 5.3) on merge sha `7b71d3e9`: first run listed two claims without a
+  preserved artifact (ruling 4); re-run after the artifacts: **empty list**, every claim in
+  the section 8 records text proven.
+- Records text applied verbatim under `# Session 13 of the queue: agent tooling,
+  2026-09-18` in `ai/features/uat-2/AUDIT-FINDINGS.md`; row 7 in `ai/plans/README.md` set
+  EXECUTED; `ai/prompts/README.md` untouched (the auditor's).
+- Executed docs commit below; nothing pushed (the audit session pushes).
+
+
+
+
 
