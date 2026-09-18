@@ -5892,3 +5892,31 @@ The 3T runs the final Asr-next mock build of `88be6ef0` (4 alarms, all on the re
 or its tomorrow), real clock, automatic time on, unlocked with Athan open and stay-awake on (the
 owner's standing rule). Nothing was built on or pushed to EAS, and `releases.json` is untouched. The
 evidence is in `~/athan-device-sweep/session9/`.
+
+# Session 12 of the queue: the SDK 58 beta wave, alarm-clock delivery and the large icon, 2026-09-18
+
+`uat-2` moved to the SDK 58 beta (expo 58.0.0-preview.3, RN 0.88.0-rc.0) with the wave's full pin
+set, and every notification the app schedules now asks Android for alarm-clock class delivery
+(upstream #49687; ISSUES #17's fix). Every Android notification carries the full-square mosque
+art as its large icon (owner's asset choice, from a vision read of both candidates at 64dp).
+RN 0.88's API removals this repo met: `InteractionManager.runAfterInteractions` (the prayer
+list's re-measure moved to the `requestIdleCallback` pair) and the 2-tuple `transformOrigin`
+(now `['50%', '0%', 0]`; RN 0.88 invariants exactly three values). Jest 30 consults RN's
+narrowed `exports` allow-list, so the `react-native/src/private/*` deep imports RN's own
+virtualized-lists still makes are mapped to files by path in `jest.config.js`.
+
+Measured on the 3T, production build 1.27.227: every armed alarm reads `window=0` with the
+`Alarm clock:` sub-block and holds the system's next-alarm-clock slot (this Android 9 dump's
+`flags=` field carries no alarm-clock bit; the 0x9/0x5 readings are Android-12-class dumps); a
+prayer fired at the minute in the foreground with the banner, the mosque large icon where
+Android places it (the right on the 3T) and no deferral; the alarm row count equalled the app's
+armament (5 rows, 0 logged schedules - the release build's logger emits no `Scheduled:` lines,
+so the logcat cross-count is not measurable in a release build); R8 release build with 0
+missing-class warnings; sheets, the countdown-bar toggle re-measure and the overlay all correct
+under gesture-handler 3. The status-bar alarm icon: no alarm-clock icon shows in the 3T's status
+bar while alarm-clock alarms are armed (OxygenOS 9 does not surface the AlarmManager
+next-alarm-clock slot). The notification shade before/after pair is at
+`~/athan-device-sweep/session12/shade-before-open.png` and `shade-after-open.png` for the owner's
+own eyes. jest totals 4535 passed, 4535 total. Known carried notes: `USE_EXACT_ALARM` is
+Play-policy reserved for alarm-like apps, which this app is; the store release gate stays closed
+until session 16.
