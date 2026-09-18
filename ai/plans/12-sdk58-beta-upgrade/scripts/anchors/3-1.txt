@@ -1,0 +1,3 @@
+        "expo-notifications",
+        {
+          "icon": "./assets/icons/config/icon-android-notification.png",

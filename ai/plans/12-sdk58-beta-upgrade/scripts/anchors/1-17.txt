@@ -1,0 +1,6 @@
+    await layOutList();
+
+    expect(getMeasurementsList()).toEqual({ pageX: 12, pageY: 240, width: 366, height: 342 });
+  });
+
+  it('measures nothing on a later layout once its place is stored', async () => {

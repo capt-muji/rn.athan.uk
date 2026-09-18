@@ -1,0 +1,6 @@
+/**
+ * Fixed built-in audio for at-time Sunrise + extras notifications
+ * (assets/audio/reminders/reminder.mp3 — owner-created, not user-selectable)
+ */
+export const EXTRAS_NOTIFICATION_SOUND = 'reminder.mp3';
+
