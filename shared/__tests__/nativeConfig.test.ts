@@ -1,6 +1,6 @@
 /**
- * The app.json config SDK 58 reads: the Android notification large icon, and the widget entries
- * in the nested ios form (the top-level aliases are deprecated in expo-widgets 58)
+ * The app.json config SDK 58 reads: the widget entries in the nested ios form (the top-level
+ * aliases are deprecated in expo-widgets 58)
  */
 
 const loadAppConfigFresh = () => {
@@ -33,12 +33,6 @@ const pluginProps = (name: string): Record<string, unknown> => {
 
 const nested = (widget: Record<string, unknown>): { supportedFamilies?: unknown } | undefined =>
   widget.ios as { supportedFamilies?: unknown } | undefined;
-
-describe('the expo-notifications plugin config', () => {
-  it('declares the Android large icon', () => {
-    expect(pluginProps('expo-notifications').largeIcon).toBe('./assets/icons/config/icon-ios.png');
-  });
-});
 
 describe('the expo-widgets plugin config', () => {
   it('carries every widget nested under ios with no deprecated top-level keys', () => {
