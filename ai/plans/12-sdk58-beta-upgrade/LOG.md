@@ -83,3 +83,16 @@ Execution-session record, 2026-09-18 (GLM 5.3):
   should it be?" with the findings. Owner ruling: DELETE `expo-env.d.ts` (gitignored, generated;
   not a committed change). Deleted; `npx tsc --noEmit` now exits 0. If an Expo command recreates
   it during the device proof, delete it again and note it here.
+- Step 1 gates, in order: `yarn test:tz` four zones each `Tests: 4531 passed, 4531 total`, exit 0
+  (run on the branch pre-commit; the version bump after it changes no test behaviour);
+  `bash $TMPDIR/breaks-12-1.sh` printed `caught: idle scheduler`, `caught: cancel stops nothing`,
+  `caught: mapper to nowhere`, `caught=3 missed=0`, `ALL AS EXPECTED: 1`; tree clean of break-bak
+  files afterwards. Version 1.27.222 set in app.json, package.json, android/app/build.gradle.
+- Step 1 DONE: branch `upgrade/sdk-58-beta`, commit `a7cad721` (1.27.222). Hook's last line:
+  `Tests: 4531 passed, 4531 total` with `Statements 100% (3968/3968)`, `Branches 100% (1712/1712)`,
+  `Functions 100% (826/826)`, `Lines 100% (3565/3565)`. Break script last line `ALL AS EXPECTED: 1`.
+  Review verdict MERGE, Code Reviewer (GLM 5.3), one round, no findings (the five owner-ruled peer
+  packages were checked against the committed LOG record and accepted as the plan's own escalation
+  path working). Reviewer also re-ran the two List breaks and tsc/biome on the detached commit:
+  all as specified. Post-merge on uat-2: tsc exit 0, biome exit 0, full suite 4531 passed. Merge
+  sha `736da06d`.
