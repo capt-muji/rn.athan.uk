@@ -168,3 +168,78 @@ notes and disclosures, none of them a defect in what shipped. Row 6 of `ai/plans
 DONE, the `ai/prompts/README.md` row is applied from the plan's section 8 (with the same
 measured-form adjustment the owner ruled for the findings text: the row says `window=0` with the
 `Alarm clock:` sub-block, not the Android-12-class `flg=0x9` reading), and `uat-2` is pushed.
+
+## 4. Revert audit, 2026-09-18 (post-DONE): the large-icon revert
+
+| Field | Value |
+| --- | --- |
+| Audited by | Audit session on GLM 5.3, 2026-09-18 |
+| Scope | `e2b1f784..9f385d95` on `uat-2`: the revert `19573d93` (1.27.231) with merge `7a9650bd`, the docs commit `84b2bd4d` (1.27.232) with merge `9f385d95` |
+| Reason | The owner reviewed the session 12 shade proof pair on 2026-09-18 and rejected the Android notification large icon introduced by `ae92414d` (step 3) |
+| Verdict | PASS, with three records repairs made by this audit. `uat-2` pushed. |
+
+### 4.1 What I checked, with the proof for each
+
+1. **The range.** `git log --oneline e2b1f784..9f385d95` lists exactly the four commits above.
+   `git diff --stat e2b1f784..9f385d95` touches five files: `app.json`, `package.json`,
+   `shared/__tests__/nativeConfig.test.ts`, this folder's `LOG.md` and `ai/plans/README.md`.
+   `git diff 7a9650bd^1 7a9650bd` and `git diff 9f385d95^1 9f385d95` equal their branch
+   commits' diffs, so both merges are clean.
+2. **Scope of the revert.** `git show 19573d93` changes exactly: the version cells, the one
+   `largeIcon` line under `icon` in the expo-notifications plugin, and in `nativeConfig.test.ts`
+   the `declares the Android large icon` describe block plus the header sentence that named it.
+   No session-12 feature was collateral, verified on the tree at `9f385d95`:
+   `modules/tls13/android/build.gradle` still reads `compileSdk 37`; `ALARM_CLOCK_DELIVERY`
+   still lives in `shared/notifications.ts` (the constant) and at both trigger sites in
+   `device/notifications.ts`; `package.json` still pins `expo` `58.0.0-preview.3`; the widget
+   entries stay nested under `ios` in `app.json`.
+3. **Completeness.** A repo-wide grep for `largeIcon`, `large icon` and `large-icon` leaves only
+   historical records (this folder's `PLAN.md`, `LOG.md` and step file, the session 12 section
+   of `ai/features/uat-2/AUDIT-FINDINGS.md`, the programme doc's session 12 brief), an
+   unrelated play-button comment in `shared/constants.ts`, and three live documents that still
+   asserted the icon adopted (findings FR1 to FR3, fixed below). Red check in the scratch
+   worktree `~/athan-device-sweep/worktrees/audit-12r` at `uat-2`: with the `largeIcon` line
+   restored in `app.json`, `npx jest shared/__tests__/nativeConfig.test.ts --watchman=false
+   --selectProjects=unit` passes 1/1, so no orphan guard pins the removed entry anywhere.
+   Worktree removed afterwards.
+4. **Gates, rerun by this audit.** `yarn validate` at `9f385d95` in the main checkout: exit 0,
+   `Test Suites: 160 passed, 160 total`, `Tests: 4534 passed, 4534 total`, coverage 100% on all
+   four measures (3969/3969 statements, 1712/1712 branches, 826/826 functions, 3566/3566
+   lines), matching the LOG's claim; the count is the pre-revert 4535 minus the removed
+   expectation. `android/app/build.gradle` `versionName` reads 1.27.232 in this checkout, so
+   autonomous ruling 1 (the git-ignored lockstep bump) held.
+5. **Records.** The LOG revert record names the owner's rejection, the exact revert contents,
+   the gates and the three autonomous rulings; I judge each ruling sound. The lockstep bump is
+   the ritual `EXECUTOR-BRIEF.md` section 4 item 6 prescribes. The docs-commit shape follows
+   section 4b. The row-6 brief reading picked the right cell. The row 6 brief in
+   `ai/plans/README.md` no longer names the large icon. `git diff e2b1f784..9f385d95 --
+   releases.json` is empty, so `releases.json` is untouched.
+6. **Push state.** After `git fetch origin`: `origin/uat-2` sits at `9f385d95`, equal to
+   `uat-2`; `uat` still sits at `86ab4018`, untouched.
+
+### 4.2 Findings
+
+- **FR1, records, fixed.** `ai/AGENTS.md`'s SDK 58 programme entry still said "Also adopted: the
+  Android notification `largeIcon`", present tense, in the memory every session reads first.
+  Annotated with the revert: 1.27.231, owner-rejected on the shade proof.
+- **FR2, records, fixed.** `ai/prompts/README.md` (the audit-owned file; the executor is barred
+  from it) still titled queue row 12 "+largeIcon", and its planning-decision bullet ended on the
+  owner's reserved right to revert without the outcome. The row now mirrors row 6's title, and
+  both the row and the bullet carry the revert.
+- **FR3, records, fixed.** `ai/plans/SDK58-PROGRAMME.md`'s adoption summary (item 10) and ruling
+  log cell still read "Yes, adopt" with no trace of the same-day revert; planners of sessions 13
+  to 17 read this file as their brief. Both annotated.
+- **FR4, process, noted.** The revert and its docs commit reached `origin/uat-2` without a Code
+  Reviewer pass or a prior audit. The executor disclosed this in LOG ruling 2 and kept
+  "reviewed" out of the merge messages. This audit is that review: the diff read line by line,
+  the gates rerun, completeness proven. No defect in what shipped.
+- **FR5, history, left as written.** The session 12 plan, step file, programme brief and
+  findings narrative still describe the icon as shipped. They are accurate for their time, and
+  the LOG revert record is the arc's continuation. Rewriting them would falsify history.
+
+### 4.3 Verdict
+
+**PASS.** The revert touches exactly what the owner rejected and nothing else; no session-12
+feature was collateral; nothing orphaned remains after this audit's three records repairs; the
+gates pass at 100% on all four measures; the records tell the truth. The repairs and this
+section ride the docs commit 1.27.233, reviewed once by Code Reviewer (GLM 5.3); `uat-2` pushed.
