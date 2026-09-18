@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.242",
+    "version": "1.27.243",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -202,6 +202,14 @@
               "ios": {
                 "supportedFamilies": ["systemSmall"],
                 "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 110,
+                "minHeight": 110,
+                "targetCellWidth": 2,
+                "targetCellHeight": 2,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
               }
             },
             {
@@ -211,6 +219,14 @@
               "ios": {
                 "supportedFamilies": ["systemSmall"],
                 "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 110,
+                "minHeight": 110,
+                "targetCellWidth": 2,
+                "targetCellHeight": 2,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
               }
             },
             {
@@ -220,6 +236,14 @@
               "ios": {
                 "supportedFamilies": ["systemMedium"],
                 "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 250,
+                "minHeight": 110,
+                "targetCellWidth": 4,
+                "targetCellHeight": 2,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
               }
             },
             {
@@ -229,6 +253,14 @@
               "ios": {
                 "supportedFamilies": ["systemMedium"],
                 "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 250,
+                "minHeight": 110,
+                "targetCellWidth": 4,
+                "targetCellHeight": 2,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
               }
             },
             {
@@ -238,6 +270,14 @@
               "ios": {
                 "supportedFamilies": ["systemSmall"],
                 "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 110,
+                "minHeight": 110,
+                "targetCellWidth": 2,
+                "targetCellHeight": 2,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
               }
             },
             {
@@ -247,6 +287,14 @@
               "ios": {
                 "supportedFamilies": ["systemSmall"],
                 "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 110,
+                "minHeight": 110,
+                "targetCellWidth": 2,
+                "targetCellHeight": 2,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
               }
             },
             {
@@ -256,6 +304,14 @@
               "ios": {
                 "supportedFamilies": ["systemMedium"],
                 "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 250,
+                "minHeight": 110,
+                "targetCellWidth": 4,
+                "targetCellHeight": 2,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
               }
             },
             {
@@ -265,6 +321,14 @@
               "ios": {
                 "supportedFamilies": ["systemMedium"],
                 "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 250,
+                "minHeight": 110,
+                "targetCellWidth": 4,
+                "targetCellHeight": 2,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
               }
             },
             {
@@ -273,7 +337,8 @@
               "description": "Live countdown to the next prayer on your Lock Screen.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
-              }
+              },
+              "android": null
             },
             {
               "name": "ExtrasLockWidget",
@@ -281,7 +346,8 @@
               "description": "Live countdown to the next extra time on your Lock Screen.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
-              }
+              },
+              "android": null
             }
           ]
         }
