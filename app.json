@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.223",
+    "version": "1.27.224",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -74,6 +74,7 @@
         "expo-notifications",
         {
           "icon": "./assets/icons/config/icon-android-notification.png",
+          "largeIcon": "./assets/icons/config/icon-ios.png",
           "sounds": [
             "./assets/audio/athans/athan1.mp3",
             "./assets/audio/athans/athan2.mp3",
