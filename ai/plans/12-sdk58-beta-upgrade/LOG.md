@@ -129,3 +129,14 @@ Execution-session record, 2026-09-18 (GLM 5.3):
   script last line `ALL AS EXPECTED: 1`. Review verdict MERGE, Code Reviewer (GLM 5.3), one
   round, no findings (it mechanically verified the sanctioned line-shape deviation is
   token-identical). Merge sha `e60532db`.
+- Step 4 red: the new widgets test failed `Expected: true / Received: false` at
+  `Array.isArray(nested(widget)?.supportedFamilies)`, step 3's test still passing (`1 failed,
+  1 passed, 2 total`). Green: `2 passed, 2 total`; full suite `Test Suites: 160 passed`,
+  `Tests: 4535 passed, 4535 total` (the plan's number); tsc 0; biome 0. Breaks
+  `bash $TMPDIR/breaks-12-4.sh`: `caught: lock widget un-nested`, `caught: margins alias
+  returns`, `caught=2 missed=0`, `ALL AS EXPECTED: 1`. Version 1.27.225 in the three files.
+- Step 4 DONE: branch `chore/widgets-nested-ios-config`, commit `2d257511` (1.27.225). Hook's
+  last line: `Tests: 4535 passed, 4535 total` with `Statements 100% (3969/3969)`,
+  `Branches 100% (1712/1712)`, `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Break
+  script last line `ALL AS EXPECTED: 1`. Review verdict MERGE, Code Reviewer (GLM 5.3), one
+  round, no findings. Merge sha `d3405d4f`.
