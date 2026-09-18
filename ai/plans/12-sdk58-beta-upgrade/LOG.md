@@ -297,3 +297,34 @@ Device proof (section 7), 2026-09-18:
   Writing the text as-is would be false. Asked the owner how to word the records. Owner ruling
   (2026-09-18): ADJUST BOTH PHRASES to the measured form, everything else verbatim; both changes
   recorded here for the auditor.
+
+Final report record (the reply itself is discarded; this is what section 12 asked the owner be
+told):
+
+- The wave landed: `uat-2` runs the SDK 58 beta (expo 58.0.0-preview.3, RN 0.88.0-rc.0) with the
+  full pin set plus the five owner-ruled sync peers; every notification is alarm-clock class;
+  the mosque icon rides every Android notification. Jest 4535 of 4535, four 100% coverage
+  lines, tsc and biome clean, all four timezones green.
+- What the 3T proved: every armed notification alarm carries `window=0` + the `Alarm clock:`
+  sub-block and holds the system's next-alarm-clock slot; a prayer fired at the minute in the
+  foreground with no deferral; sheets, the countdown-bar-toggle re-measure (overlay row at the
+  row's true post-toggle position, pixel-matched) and the overlay all correct under
+  gesture-handler 3; R8 warnings 0. The status-bar shows NO alarm-clock icon on this phone
+  (OxygenOS 9 does not surface it — a disclosure, not a gate).
+- The shade before/after pair, for the owner's own eyes:
+  `/Users/muji/athan-device-sweep/session12/shade-before-open.png` and
+  `/Users/muji/athan-device-sweep/session12/shade-after-open.png` — the owner looks at these two
+  files and may order the large icon reverted (it sits where Android places it, the right on the
+  3T; the asset is the owner's choice).
+- Decisions taken by the owner during execution (all recorded above in this LOG): keep the five
+  peer packages; delete `expo-env.d.ts`; Biome's line shape in the step-3 test; tls13
+  compileSdk 37; reboot the phone; accept the `Alarm clock:` sub-block as the dumpsys proof;
+  adjust the two records phrases. The large icon's fate (revert or keep) is the one decision
+  still open, on the owner's own eyes.
+- Left behind: the phone on the mock build of the merged head (Asr next at every opening),
+  unlocked, Athan open, automatic time on; the production APK at
+  `~/athan-device-sweep/session12/athan-sdk58-prod.apk` for the audit; nothing pushed; 14
+  unpushed commits on `uat-2` await the audit.
+- Owner-facing costs this session: 22 subagent spawns in total (5 step reviewers, the tls13
+  review across 2 rounds, 2 docs-commit reviews, and 13 vision reads, counting retakes of bad
+  or stale captures); 7 owner questions via the channel, all answered same-day.
