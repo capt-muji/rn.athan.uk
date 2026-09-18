@@ -86,7 +86,13 @@ Off that path:
 | 3 | 7. Android: each notification replaces the one before it | `ai/prompts/replace-previous-notification.md` | `ai/plans/07-replace-previous-notification/PLAN.md` | DONE | `7c800915` | nothing |
 | 4 | 8. iOS: a way for each notification to replace the one before it | `ai/prompts/ios-replace-previous-notification.md` | `ai/plans/08-ios-replace-previous-notification/PLAN.md` | DONE | `fa3337b3` | nothing |
 | 5 | 9. Keep yesterday's still-due rows after 00:00 | `ai/prompts/keep-still-due-rows-after-midnight.md` | `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` | DONE | `7289894a` | nothing |
-| 6 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED | | set when planned |
+| 6 | 12. SDK 58 beta upgrade + alarmClock + largeIcon | `ai/plans/SDK58-PROGRAMME.md` §12 | `ai/plans/12-sdk58-beta-upgrade/PLAN.md` | NOT PLANNED | | env refresh (owner: macOS 27; agent: `brew upgrade --cask android-studio android-commandlinetools` before execution) |
+| 7 | 13. Agent tooling: `@expo/agent-cli` + dev-launcher niceties | `ai/plans/SDK58-PROGRAMME.md` §13 | `ai/plans/13-agent-tooling/PLAN.md` | NOT PLANNED | | 6 |
+| 8 | 14. Expo Modules 2.0 spike: `modules/tls13` | `ai/plans/SDK58-PROGRAMME.md` §14 | `ai/plans/14-expo-modules-2-spike/PLAN.md` | NOT PLANNED | | 6 |
+| 9 | 15. Android home-screen widgets | `ai/plans/SDK58-PROGRAMME.md` §15 | `ai/plans/15-android-widgets/PLAN.md` | NOT PLANNED | | 6 |
+| 10 | 17. iOS widget timeline horizon: 14 to 30 days | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | NOT PLANNED | | 6 |
+| 11 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
+| 12 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
 
 - **Session 6b was planned under the previous rules**, on the morning of 2026-09-16, before "specify, do not
   dictate" was written that afternoon. Every one of its steps hands the executor finished files under
@@ -110,6 +116,12 @@ row above.
 - The athan sound change: a failed re-arm shows the old sound in Settings while some alarms keep the new one. On
   2026-09-15 the owner approved it as its own session. Its brief, its row and its place in the order are still to be
   written.
+- The five deferred owner features of 2026-09-18, detailed in `SDK58-PROGRAMME.md` under "Deferred owner features",
+  sequenced after the SDK 58 programme and before moonsighting: D1 sound through silent mode, D2 qibla finder,
+  D3 rolling buffer 2 days to 1 plus a second reminder, D4 localization for v2.0, D5 location for v2.0. Each becomes a
+  row only after the owner specs and schedules it.
+- Informational: the update-prompt switch from `releases.json` to store data is ISSUES #35, pending; production iOS
+  already reads the App Store via iTunes Lookup. Nothing in the SDK 58 programme conflicts with it.
 
 ## Files here
 
@@ -125,6 +137,8 @@ row above.
   - `LOG.md`: written by the executor as it works: each step's commit, the outputs it compared, and any stop with its
     reason;
   - `AUDIT.md`: written by the auditor: what it checked, what it found, and its verdict.
+- `SDK58-PROGRAMME.md`: the briefs for queue rows 12 through 17 (the SDK 58 beta programme) plus the deferred owner
+  features D1 to D5 and the ruling log behind them.
 
 ## Who changes a status, and who pushes
 
