@@ -7,7 +7,7 @@ version = '0.1.0'
 android {
     namespace "expo.modules.tls13"
 
-    compileSdk 36
+    compileSdk 37
 
     defaultConfig {
         minSdk 24
