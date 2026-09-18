@@ -1,0 +1,6 @@
+    // Wait for layout to settle after countdown bar is added/removed
+    const handle = InteractionManager.runAfterInteractions(() => {
+      measureList();
+    });
+
+    return () => handle.cancel();

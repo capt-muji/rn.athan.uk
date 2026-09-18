@@ -1,0 +1,4 @@
+    useAudioPlayer: jest.fn(() => player),
+    useAudioPlayerStatus: jest.fn(() => status),
+  };
+});

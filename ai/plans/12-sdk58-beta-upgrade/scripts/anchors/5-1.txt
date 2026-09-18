@@ -1,0 +1,2 @@
+Verified against `package.json` on 2026-09-12 at app version 1.25.0, after the Expo SDK
+57 patch wave. When these drift again, `package.json` is the source of truth.
