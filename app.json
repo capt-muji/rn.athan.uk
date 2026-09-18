@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.241",
+    "version": "1.27.242",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -199,61 +199,89 @@
               "name": "PrayerWidget",
               "displayName": "Next Prayer (Light)",
               "description": "A countdown to the next prayer.",
-              "ios": { "supportedFamilies": ["systemSmall"], "contentMarginsDisabled": true }
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "contentMarginsDisabled": true
+              }
             },
             {
               "name": "ExtrasWidget",
               "displayName": "Extra Times (Light)",
               "description": "A countdown to the next extra time.",
-              "ios": { "supportedFamilies": ["systemSmall"], "contentMarginsDisabled": true }
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "contentMarginsDisabled": true
+              }
             },
             {
               "name": "PrayerWidgetMedium",
               "displayName": "Next Prayer (Light)",
               "description": "A countdown to the next prayer.",
-              "ios": { "supportedFamilies": ["systemMedium"], "contentMarginsDisabled": true }
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "contentMarginsDisabled": true
+              }
             },
             {
               "name": "ExtrasWidgetMedium",
               "displayName": "Extra Times (Light)",
               "description": "A countdown to the next extra time.",
-              "ios": { "supportedFamilies": ["systemMedium"], "contentMarginsDisabled": true }
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "contentMarginsDisabled": true
+              }
             },
             {
               "name": "PrayerWidgetDark",
               "displayName": "Next Prayer (Dark)",
               "description": "A countdown to the next prayer.",
-              "ios": { "supportedFamilies": ["systemSmall"], "contentMarginsDisabled": true }
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "contentMarginsDisabled": true
+              }
             },
             {
               "name": "ExtrasWidgetDark",
               "displayName": "Extra Times (Dark)",
               "description": "A countdown to the next extra time.",
-              "ios": { "supportedFamilies": ["systemSmall"], "contentMarginsDisabled": true }
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "contentMarginsDisabled": true
+              }
             },
             {
               "name": "PrayerWidgetDarkMedium",
               "displayName": "Next Prayer (Dark)",
               "description": "A countdown to the next prayer.",
-              "ios": { "supportedFamilies": ["systemMedium"], "contentMarginsDisabled": true }
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "contentMarginsDisabled": true
+              }
             },
             {
               "name": "ExtrasWidgetDarkMedium",
               "displayName": "Extra Times (Dark)",
               "description": "A countdown to the next extra time.",
-              "ios": { "supportedFamilies": ["systemMedium"], "contentMarginsDisabled": true }
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "contentMarginsDisabled": true
+              }
             },
             {
               "name": "PrayerLockWidget",
               "displayName": "Next Prayer",
               "description": "Live countdown to the next prayer on your Lock Screen.",
-              "ios": { "supportedFamilies": ["accessoryRectangular", "accessoryInline"] }
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              }
             },
             {
               "name": "ExtrasLockWidget",
               "displayName": "Extra Times",
               "description": "Live countdown to the next extra time on your Lock Screen.",
-              "ios": { "supportedFamilies": ["accessoryRectangular", "accessoryInline"] }
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              }
             }
           ]
         }
