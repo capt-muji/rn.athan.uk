@@ -1,0 +1,6 @@
+              "name": "PrayerWidget",
+              "displayName": "Next Prayer (Light)",
+              "description": "A countdown to the next prayer.",
+              "contentMarginsDisabled": true,
+              "supportedFamilies": ["systemSmall"]
+            },

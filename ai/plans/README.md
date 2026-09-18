@@ -86,7 +86,7 @@ Off that path:
 | 3 | 7. Android: each notification replaces the one before it | `ai/prompts/replace-previous-notification.md` | `ai/plans/07-replace-previous-notification/PLAN.md` | DONE | `7c800915` | nothing |
 | 4 | 8. iOS: a way for each notification to replace the one before it | `ai/prompts/ios-replace-previous-notification.md` | `ai/plans/08-ios-replace-previous-notification/PLAN.md` | DONE | `fa3337b3` | nothing |
 | 5 | 9. Keep yesterday's still-due rows after 00:00 | `ai/prompts/keep-still-due-rows-after-midnight.md` | `ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` | DONE | `7289894a` | nothing |
-| 6 | 12. SDK 58 beta upgrade + alarmClock + largeIcon | `ai/plans/SDK58-PROGRAMME.md` §12 | `ai/plans/12-sdk58-beta-upgrade/PLAN.md` | PLANNING | | env refresh (owner: macOS 27; agent: `brew upgrade --cask android-studio android-commandlinetools` before execution) |
+| 6 | 12. SDK 58 beta upgrade + alarmClock + largeIcon | `ai/plans/SDK58-PROGRAMME.md` §12 | `ai/plans/12-sdk58-beta-upgrade/PLAN.md` | READY | `a2498afa` | nothing (the env refresh finished on 2026-09-18: macOS 27 and Xcode 27 by the owner, the Android Studio cask upgrade and SDK check by the planning session; the plan's pre-flight verifies it) |
 | 7 | 13. Agent tooling: `@expo/agent-cli` + dev-launcher niceties | `ai/plans/SDK58-PROGRAMME.md` §13 | `ai/plans/13-agent-tooling/PLAN.md` | NOT PLANNED | | 6 |
 | 8 | 14. Expo Modules 2.0 spike: `modules/tls13` | `ai/plans/SDK58-PROGRAMME.md` §14 | `ai/plans/14-expo-modules-2-spike/PLAN.md` | NOT PLANNED | | 6 |
 | 9 | 15. Android home-screen widgets | `ai/plans/SDK58-PROGRAMME.md` §15 | `ai/plans/15-android-widgets/PLAN.md` | NOT PLANNED | | 6 |
@@ -109,6 +109,14 @@ Off that path:
 A planning session may turn one of these into a plan only after the owner approves it in that session; it then adds a
 row above.
 - The accessibility fixes listed in "Session 5 of the queue" in `ai/features/uat-2/AUDIT-FINDINGS.md`.
+- The edge-to-edge built-in switch: drop `react-native-edge-to-edge` for RN's `edgeToEdgeEnabled`
+  (its README recommends this on RN 0.86+; the package stays at 1.8.2 until then). Waits on an
+  Android 10+ device beside the 3T, because the package's `enforceNavigationBarContrast` setting
+  guards a scrim only those phones show (owner, 2026-09-18, while planning session 12).
+- The bump-everything-to-latest session: every package not already moved by the SDK wave, major
+  versions included (`jotai` 3, `husky` 9, `lint-staged` 17, `@biomejs/biome`, `test-renderer`), on
+  its own branch with the full gates (owner, 2026-09-18, while planning session 12: the SDK wave is
+  strictly the SDK wave; this is everything else).
 - `shared/__tests__/audioMatrix.test.ts` timing out under load: a longer timeout, or running it outside the hook.
 - The dashes approval page's open choices C2, C5 to C10 and C13 (session 3).
 - Finding 74: a Suhoor wrapped onto the evening before loses a day of buffer.
