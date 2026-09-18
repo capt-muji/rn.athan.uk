@@ -279,7 +279,7 @@ findings and their consequences are recorded in this folder's `LOG.md`.
 ## 6. Steps
 
 - [x] Step 1: The SDK 58 package wave and the RN 0.88 migrations (specified) — `steps/1-sdk58-package-wave.md` — DONE in a7cad721
-- [ ] Step 2: Every notification moves to alarm-clock delivery (specified) — `steps/2-alarm-clock-delivery.md`
+- [x] Step 2: Every notification moves to alarm-clock delivery (specified) — `steps/2-alarm-clock-delivery.md` — DONE in 3b7ebefd
 - [ ] Step 3: The Android notification large icon (specified) — `steps/3-notification-large-icon.md`
 - [ ] Step 4: The widget entries move to the nested ios form (specified) — `steps/4-nested-widgets-config.md`
 - [ ] Step 5: ai/AGENTS.md stack table re-derived against SDK 58 (specified) — `steps/5-agent-md-stack-docs.md`
