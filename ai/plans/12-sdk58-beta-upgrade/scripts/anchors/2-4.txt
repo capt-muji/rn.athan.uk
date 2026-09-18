@@ -1,0 +1,5 @@
+    expect(request.trigger.date.toISOString()).toBe('2026-10-23T22:43:00.000Z');
+    expect(request.identifier).toBe('reminder_extra_midnight_2026-10-24_15');
+    expect(record).toMatchObject({ date: '2026-10-24', time: '23:58', englishName: 'Midnight' });
+  });
+});
