@@ -260,6 +260,20 @@ None of these is a session yet. Each needs the owner's decision first.
   the large icon sitting "where Android places it (the right on the 3T)". Everything else
   verbatim.
 
+## Decided autonomously by the planner, 2026-09-18, while planning session 13 (the owner was away; recorded for revisit)
+
+- **`@expo/agent-cli` adopted narrowly and NOT made a devDependency.** npx-based usage documented
+  in the root `AGENTS.md` routing table and `ai/AGENTS.md` §6; four commands forbidden in sessions
+  (`agents:setup`, `skills:sync`, `deploy`, every `--eas` flag), and `smoke --android` forbidden
+  while the 3T is connected. Revisit at session 16 (SDK 58 stable re-pin).
+- **The dev-launcher verification runs on the iOS simulator**, not the 3T (which holds the
+  owner's app) and not the Android emulator: the planner measured the local Android debug-build
+  path failing twice over (Gradle wrapper 9.3.1 against AGP's 9.4.1 floor; with 9.4.1 the Kotlin
+  plugin double-applies), recorded as a machine note in `ai/features/agent-tooling/FINDINGS.md`
+  and not fixed. The Android form of the URL is source-verified.
+- **The findings live in `ai/features/agent-tooling/FINDINGS.md`** per the moonsighting
+  `ai/features/` precedent.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their

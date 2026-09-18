@@ -1,0 +1,2 @@
+| iOS build / simulator | `xcodebuildmcp` |
+| Expo/EAS API question | the matching `expo-*` / `eas-*` skill |
