@@ -12,7 +12,10 @@ const loadAppConfigFresh = () => {
     const previousFlag = process.env.EXPO_PUBLIC_WIDGETS;
     process.env.EXPO_PUBLIC_WIDGETS = '1';
     try {
-      holder.config = require('../../app.config').default;
+      const loaded = require('../../app.config').default as
+        | import('expo/config').ExpoConfig
+        | ((ctx: { platform?: string }) => import('expo/config').ExpoConfig);
+      holder.config = typeof loaded === 'function' ? loaded({ platform: 'ios' }) : loaded;
     } finally {
       if (previousFlag === undefined) {
         delete process.env.EXPO_PUBLIC_WIDGETS;
