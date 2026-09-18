@@ -27,12 +27,8 @@ count_anchor() {
 [ "$(count_anchor /dev/null /dev/null)" = "0" ] # sanity: python method available
 
 if [ "$STEP" -le 1 ]; then
-  A='{
-              "name": "PrayerWidget",
-              "displayName": "Next Prayer (Light)",
-              "description": "A countdown to the next prayer.",
-              "ios": { "supportedFamilies": ["systemSmall"], "contentMarginsDisabled": true }
-            },'
+  A='              "name": "PrayerWidget",
+              "displayName": "Next Prayer (Light)",'
   C="$(printf '%s' "$A" | python3 -c 'import sys;print(open("app.json").read().count(sys.stdin.read()))')"
   [ "$C" = "1" ] || { echo "PREFLIGHT FAIL: A1 count $C"; exit 1; }
 fi
