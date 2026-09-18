@@ -255,7 +255,7 @@ changes).
 
 - [x] Step 1: `@expo/agent-cli` status and smoke against this repo, findings and rulings recorded (specified), step file `steps/1-agent-cli-findings.md` — DONE in `9836dac5`
 - [x] Step 2: dev-launcher launch URL verified on the iOS simulator dev build, recorded (specified), step file `steps/2-devlauncher-url.md` — DONE in `006a574a`
-- [ ] Step 3: the guidance wired into `AGENTS.md` and `ai/AGENTS.md` (specified), step file `steps/3-tool-routing-docs.md`
+- [x] Step 3: the guidance wired into `AGENTS.md` and `ai/AGENTS.md` (specified), step file `steps/3-tool-routing-docs.md` — DONE in `58839b07`
 
 Each step is `(specified)`: the executor builds it from the contracts and verbatim texts the step
 file carries. Read the step file in full before starting it.
