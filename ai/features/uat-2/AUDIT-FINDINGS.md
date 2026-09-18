@@ -5833,3 +5833,62 @@ The phone exactly as found: the study app uninstalled, the owner's Athan 1.26.28
 throughout. The evidence is in `~/athan-device-sweep/session8/` (digest, full syslog, build logs,
 screenshots as corroboration). `uat-2` carries this note and nothing else new; the last suite run
 reported `Tests: 4511 passed, 4511 total`.
+# Session 9 of the queue: yesterday's still-due rows stay on screen and keep their alarms, 18 September 2026
+
+The brief is `ai/prompts/keep-still-due-rows-after-midnight.md`, planned in
+`ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` by a GLM 5.3 planning session (design review:
+Software Architect on GLM 5.3, whose finding about `canStillFire` is part of the change), executed on
+GLM 5.3 with a GLM 5.3 Code Reviewer on every commit. `uat-2` ends at `88be6ef0` (1.27.216); the
+last suite run reported `Tests:       4530 passed, 4530 total`, at 100% statements, branches, functions and lines.
+
+## 74. CLOSED: a day stays current until its last readable row has passed
+
+Two changes, one rule (owner, 2026-09-13, confirmed with the dashed-times rule 2026-09-17):
+
+- **The screen.** `firstStillDueListDay` (`shared/prayer.ts`) answers the earliest list day that
+  still has a readable row to come, looking back exactly one day (provably enough: a row of any
+  earlier list falls before 06:00 of the day after its own), and `setSequence` builds from it, so a
+  launch or foreground sync after 00:00 keeps yesterday's list on screen with its post-midnight rows
+  counted down to, the bar and the ago badge measured into them. The interim behaviour (the bar and
+  badge hiding until the next day's Fajr) is gone with its cause; the two tests that pinned it are
+  rewritten for the ruling, and the storage guard that kept the bar from running backwards is
+  re-pinned through a hand-built pre-fix sequence.
+- **The alarms.** `firstStillDueListDayForPrayer` answers the same question per prayer, and
+  `genScheduleDatesForPrayer` starts both scheduling paths there, so a reschedule between 00:00 and a
+  still-due row re-attempts its alarm under its own identifier instead of cancelling it as stale. The
+  window keeps its length (it is [yesterday, today] while yesterday is due, and moves on the moment
+  the row passes), so the iOS 64-pending ceiling arithmetic stands untouched. `canStillFire` counts a
+  record of yesterday's list until the 06:00 cutoff, so a refused cancel of a still-due yesterday
+  alarm keeps the record the repair needs (found by the design review; the old date test deleted it
+  and left a live alarm with no handle). Known edge, accepted: while yesterday is still due (at most
+  about six hours), the newest list day is unarmed until the next reschedule, which the 12-hour gate
+  and the 6-hour background task bound; a silence beyond that needs both refresh layers starved for
+  over a day, which the pre-fix code also needed.
+
+On the 3T, from the baseline the proof created itself (every armed alarm purged with one bounded
+forward drive, 4 posts; the three bells the last session left stored turned Off; the dump
+proven zero), on the brief's five fixed high-latitude days with the clock on Friday 25 September 2026:
+
+- Friday's Magrib and Isha armed Silent: exactly 4 alarms, at 00:40 and 01:30 under
+  Friday's list day and at Saturday's own 22:00 and 23:30.
+- A cold launch at 00:00:40 (which on Android also forces a full reschedule) kept Friday's list on
+  screen (vision-read: header, rows, countdown into the 00:40 Magrib), rebuilt the sequence from
+  2026-09-25 (logcat), and left exactly 4 alarms: both of Friday's re-attempted
+  under their own `athan_standard_*_2026-09-25` identifiers, neither cancelled. Finding 74's
+  cancellation never happened.
+- Driving the clock to each row: 1 post at 00:40 and 1 post at 01:30, each on
+  the Silent fallback channel, the tray holding exactly one shared-tag notification throughout.
+- A reschedule after the rows passed: exactly 4 alarms, Saturday's and Sunday's;
+  Friday's gone. The list and countdown had rolled to Saturday (vision-read).
+
+London is unchanged by mechanism and by suite: no London row is ever still due after 00:00, so both
+helpers always answer today and every London sequence and window stays byte-identical, pinned across
+the 2026 payload, both clock changes and 1 January. The evening-Suhoor buffer loss (gap map L4)
+stays a separate owner decision, declined for this session on 2026-09-17.
+
+## State left behind
+
+The 3T runs the final Asr-next mock build of `88be6ef0` (4 alarms, all on the real today
+or its tomorrow), real clock, automatic time on, unlocked with Athan open and stay-awake on (the
+owner's standing rule). Nothing was built on or pushed to EAS, and `releases.json` is untouched. The
+evidence is in `~/athan-device-sweep/session9/`.
