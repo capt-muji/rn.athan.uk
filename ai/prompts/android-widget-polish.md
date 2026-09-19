@@ -16,18 +16,23 @@ alarm permissions for prayer notifications; a native receiver calling
 or hybrid (exact alarms at minute flips while a recent app session arms them, boundaries after).
 Owner expectation to design against: minute-visible countdown movement without opening the app.
 
-## 2. Solid cards (Android only)
+## 2. Solid cards, keep the glow (Android only)
 
-All 8 Android widgets render with translucent/faded backgrounds; the owner dislikes it. Cards
-must be SOLID on Android, both themes, all 8 (iOS keeps its translucent design). The card
-backgrounds are the generated PNGs (`scripts/generate-widget-assets.py`): bake them opaque
-(same palette colours, alpha 1.0) for Android.
+All 8 Android widgets render with translucent/faded backgrounds; the owner dislikes ONLY the
+fade. Keep the card styling exactly as designed (the dark cards keep their glow orbs; the
+light cards keep their look) and make the base OPAQUE - alpha 1.0 instead of the 0.92/0.88
+translucency - for both themes, all 8. (Owner, verbatim: "I still like the glow that you
+have on the dark cards... make it solid with the glow or the PNG or whatever you did.")
+iOS keeps its translucent design. The card backgrounds are the generated PNGs
+(`scripts/generate-widget-assets.py`).
 
 ## 3. Footer alignment
 
-The "DDD · Lon" footer's vertical position differs across the 8 widgets; 7 sit too low, the
-dark medium is "almost good". All 8 must share one vertical position with more bottom padding.
-(The owner accepts the dark medium's current height as the reference, maybe a touch higher.)
+The "DDD · Lon" footer's vertical position differs across the 8 widgets; 7 sit too low, and
+the dark medium (the closest of the eight) is STILL a little low too. Push EVERY widget's
+footer up from the bottom edge with more bottom padding - including the dark medium - and
+make all 8 share one uniform height. Do not treat any current widget as the finished
+reference.
 
 ## 4. Active pill (the next-prayer highlight)
 
