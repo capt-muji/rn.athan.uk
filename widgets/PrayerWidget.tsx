@@ -260,9 +260,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
   // The native tree converter keeps only color/size/weight/style/decoration
   // from the text style - letterSpacing dies at the Kotlin boundary - so the
-  // eyebrow's tracking is delivered glyph-wise: a narrow no-break space (U+202F,
-  // about 1.5sp at 14sp) between letters, reading like iOS's kerning.
-  const tracked = (text: string): string => text.split('').join('\u202f');
+  // eyebrow's tracking is delivered glyph-wise: a hair space (U+200A, about 1sp
+  // at 14sp) between letters, reading like iOS's kerning.
+  const tracked = (text: string): string => text.split('').join('\u200a');
 
   const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
     <ATimeEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
