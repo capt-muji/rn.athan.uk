@@ -577,6 +577,48 @@ describe('home widget renderer', () => {
       expect(spacerAbove).toBeDefined();
     });
 
+    it('bounds the active pill to the list column, not the card remainder', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
+      const nodes = collect(tree);
+      const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
+      expect(pill).toBeDefined();
+      // The pill's ancestor column is a fixed 148dp box: at full widget
+      // width the pill must not stretch across the dead space right of the
+      // rows (owner finding 2026-09-19)
+      const listColumn = nodes.find(
+        (node) =>
+          node.marker === 'Box' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'width' && mod.value === 148
+          ) &&
+          collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
+      );
+      expect(listColumn).toBeDefined();
+    });
+
+    it("rolls the medium day list to the next prayer's day after the last row passes", () => {
+      // 20:00 on DAY_ONE: Isha (19:40) has passed, next is DAY_TWO's Fajr —
+      // the list must show DAY_TWO with Fajr active (owner finding
+      // 2026-09-19), not fall back to the hero alone
+      freezeNow(at(DAY_ONE, '20:00'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
+      const nodes = collect(tree);
+      const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
+      expect(pill).toBeDefined();
+      const spacerAbove = nodes.find(
+        (node) =>
+          node.marker === 'Spacer' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'height' && mod.value === 0
+          )
+      );
+      expect(spacerAbove).toBeDefined();
+      const texts = textsOf(tree);
+      expect(texts).toContain('Fajr');
+      expect(texts).toContain('05:30');
+    });
+
     it('centers the stale card and the neutral card horizontally', () => {
       const centeredColumnWith = (tree: unknown, text: string): boolean =>
         collect(tree).some(

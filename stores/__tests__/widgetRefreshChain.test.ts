@@ -73,6 +73,14 @@ describe('the native refresh chain arm call', () => {
     expect(mockArm).toHaveBeenCalledTimes(2);
   });
 
+  it('survives the native arm throwing: surfaces stay best-effort', async () => {
+    (mockArm as unknown as jest.Mock).mockImplementationOnce(() => {
+      throw new Error('native module gone');
+    });
+    await expect(refreshPrayerWidgets()).resolves.toBeUndefined();
+    expect(mockArm).toHaveBeenCalledTimes(1);
+  });
+
   it('never arms on iOS, whatever the flags say', async () => {
     const mockArmIos = jest.fn();
     let refreshed: Promise<void> = new Promise((resolve) => resolve());
