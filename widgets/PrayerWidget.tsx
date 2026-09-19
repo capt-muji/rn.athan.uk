@@ -7,13 +7,17 @@
 // them on iOS, the jetpack globals on Android, and the body never needs
 // to know which.
 import { Box, Column, Row } from '@expo/ui/jetpack-compose';
+// Canonical modifier names, same rule as the components above: the Android
+// runtime's globals answer these spellings. padding is the one collision
+// with swift-ui's modifier of the same name, so the Android calls go
+// through a local positional cast inside the widget body.
 import {
-  fillMaxHeight as androidFillMaxHeight,
-  fillMaxSize as androidFillMaxSize,
-  fillMaxWidth as androidFillMaxWidth,
-  height as androidHeight,
-  padding as androidPadding,
-  width as androidWidth,
+  fillMaxHeight,
+  fillMaxSize,
+  fillMaxWidth,
+  height,
+  type ModifierConfig,
+  width,
 } from '@expo/ui/jetpack-compose/modifiers';
 import { Circle, HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
@@ -101,6 +105,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     contentScale?: 'fit' | 'fillBounds';
     modifiers?: unknown[];
   }) => ReactNode;
+  const APad = padding as unknown as (start: number, top: number, end: number, bottom: number) => ModifierConfig;
 
   // Theme and schedule arrive on the entry — each gallery kind receives
   // its own timeline, so the palette is fixed at placement. The props-less
@@ -224,9 +229,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   );
 
   const ACard = (footer: string | null, content: ReactNode) => (
-    <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[androidFillMaxSize()]}>
-      <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[androidFillMaxSize()]} />
-      <Box contentAlignment='center' modifiers={[androidFillMaxSize(), androidPadding(13, 13, 13, 24)]}>
+    <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[fillMaxSize()]}>
+      <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
+      <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(13, 13, 13, 24)]}>
         {content}
       </Box>
       {footer === null ? null : AText(footer, 9, 'normal', palette.footer)}
@@ -261,7 +266,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       null,
       <Column>
         {AText('Athan', 15, '600', palette.hero)}
-        <Spacer modifiers={[androidHeight(5)]} />
+        <Spacer modifiers={[height(5)]} />
         {AText('Prayer times for London', 12, 'normal', palette.secondary)}
       </Column>
     );
@@ -270,16 +275,16 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     ACard(
       null,
       <Column>
-        <AImageEl source={{ uri: A_MOON_NAME }} contentScale='fit' modifiers={[androidWidth(26), androidHeight(26)]} />
-        <Spacer modifiers={[androidHeight(7)]} />
+        <AImageEl source={{ uri: A_MOON_NAME }} contentScale='fit' modifiers={[width(26), height(26)]} />
+        <Spacer modifiers={[height(7)]} />
         {AText('Out of date', 14, '600', palette.hero)}
-        <Spacer modifiers={[androidHeight(7)]} />
+        <Spacer modifiers={[height(7)]} />
         {isMedium ? (
           AText('Open Athan to refresh', 12, 'normal', palette.secondary)
         ) : (
           <Column>
             {AText('Open Athan', 12, 'normal', palette.secondary)}
-            <Spacer modifiers={[androidHeight(1)]} />
+            <Spacer modifiers={[height(1)]} />
             {AText('to refresh', 12, 'normal', palette.secondary)}
           </Column>
         )}
@@ -313,9 +318,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const trio = (
       <Column>
         {AText(next.name.toUpperCase(), 12, 'bold', palette.eyebrow)}
-        <Spacer modifiers={[androidHeight(6)]} />
+        <Spacer modifiers={[height(6)]} />
         {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
-        <Spacer modifiers={[androidHeight(6)]} />
+        <Spacer modifiers={[height(6)]} />
         {AText(next.time, 13, 'normal', palette.secondary)}
       </Column>
     );
@@ -341,34 +346,32 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
       return (
-        <Row
-          verticalAlignment='center'
-          modifiers={[androidFillMaxWidth(), androidHeight(ROW_HEIGHT), androidPadding(10, 0, 10, 0)]}>
+        <Row verticalAlignment='center' modifiers={[fillMaxWidth(), height(ROW_HEIGHT), APad(10, 0, 10, 0)]}>
           {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
-          <Spacer modifiers={[androidFillMaxWidth()]} />
+          <Spacer modifiers={[fillMaxWidth()]} />
           {AText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
         </Row>
       );
     };
 
     return (
-      <Box contentAlignment='topStart' modifiers={[androidFillMaxSize()]}>
-        <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[androidFillMaxSize()]} />
-        <Row modifiers={[androidFillMaxSize(), androidPadding(13, 13, 20, 13)]}>
-          <Box contentAlignment='bottomCenter' modifiers={[androidFillMaxHeight(), androidFillMaxWidth(0.48)]}>
-            <Box contentAlignment='center' modifiers={[androidFillMaxSize(), androidPadding(0, 0, 0, 24)]}>
+      <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
+        <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
+        <Row modifiers={[fillMaxSize(), APad(13, 13, 20, 13)]}>
+          <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), fillMaxWidth(0.48)]}>
+            <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
               {trio}
             </Box>
             {AText(footer, 9, 'normal', palette.footer)}
           </Box>
-          <Box contentAlignment='center' modifiers={[androidFillMaxHeight(), androidFillMaxWidth(0.52)]}>
+          <Box contentAlignment='center' modifiers={[fillMaxHeight(), fillMaxWidth(0.52)]}>
             <Box contentAlignment='topStart'>
               <Column>
-                <Spacer modifiers={[androidHeight(activeIndex * ROW_HEIGHT)]} />
+                <Spacer modifiers={[height(activeIndex * ROW_HEIGHT)]} />
                 <AImageEl
                   source={{ uri: A_PILL_NAME }}
                   contentScale='fillBounds'
-                  modifiers={[androidFillMaxWidth(), androidHeight(ROW_HEIGHT)]}
+                  modifiers={[fillMaxWidth(), height(ROW_HEIGHT)]}
                 />
               </Column>
               <Column>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
