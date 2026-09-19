@@ -244,12 +244,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   );
 
   const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
-    <ATimeEl
-      color={color}
-      style={{ fontSize: size, fontWeight: weight }}
-      maxLines={1}
-      textAlign='end'
-      modifiers={[fillMaxWidth()]}>
+    <ATimeEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
       {text}
     </ATimeEl>
   );
@@ -404,16 +399,23 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           </Box>
           <Box contentAlignment='center' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[fillMaxWidth()]}>
-              <Column>
-                <Spacer modifiers={[height(activeIndex * ROW_HEIGHT)]} />
-                <AImageEl
-                  source={{ uri: A_PILL_NAME }}
-                  contentScale='fillBounds'
-                  modifiers={[fillMaxWidth(), height(ROW_HEIGHT)]}
-                />
-              </Column>
-              <Column>{dayRows.map((row, index) => ARowName(row, index))}</Column>
-              <Column>{dayRows.map((row, index) => ARowTime(row, index))}</Column>
+              <Box contentAlignment='topStart' modifiers={[fillMaxWidth()]}>
+                <Column>
+                  <Spacer modifiers={[height(activeIndex * ROW_HEIGHT)]} />
+                  <AImageEl
+                    source={{ uri: A_PILL_NAME }}
+                    contentScale='fillBounds'
+                    modifiers={[fillMaxWidth(), height(ROW_HEIGHT)]}
+                  />
+                </Column>
+                <Column>{dayRows.map((row, index) => ARowName(row, index))}</Column>
+              </Box>
+              {/* Times hug the right edge via their own alignment box:
+                  fillWidth+textAlign proved unreliable in this stack (the
+                  times kept rendering at the names' origin on device) */}
+              <Box contentAlignment='centerEnd' modifiers={[fillMaxWidth(), fillMaxHeight()]}>
+                <Column>{dayRows.map((row, index) => ARowTime(row, index))}</Column>
+              </Box>
             </Box>
           </Box>
         </Row>
