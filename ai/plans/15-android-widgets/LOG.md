@@ -166,3 +166,28 @@ EXPO_PUBLIC_* env, so the variant appends the flag to the build worktree's
 
 Resume from: v3 device build (proguard + canonical names); then placement
 of all 8, the 16 screenshots, the frame audit, iOS simulator proof, audit.
+
+## Steps 10-11: canonical modifiers + midnight day boundaries — DONE (c8b79ff0, eb8a3a33)
+
+- v3 device: composition ran, widget failed on `Property 'android-Height'
+  doesn't exist` — the modifier factories were aliased too (height as
+  androidHeight). Same rule applied: canonical names (fillMaxSize/
+  fillMaxWidth/fillMaxHeight/height/width), with padding — the one
+  swift-ui collision — behind a local positional cast. A contract test now
+  BANS aliased @expo/ui imports in widget files outright, naming both
+  device failures (1.27.253/254).
+- v4 device: the small dark card RENDERED — SUHOOR / 1h 50m / 04:49 /
+  Sat · Lon, palette matching the iOS design, countdown consistent with
+  the wall clock (render-time computation working). The medium (4x2)
+  rendered at the right size with the right card art but hero-only:
+  at 03:09 the day picker kept YESTERDAY — startEpochMs used getDayAnchor,
+  which is a noon anchor by design. Snapshot now stamps
+  createPrayerDatetime(date, '00:00') (DST-safe London midnight); a 03:00
+  renderer freeze pins the class (1.27.255). Local repro via a debug
+  extras fixture around 03:09 (deleted after the fix).
+- Known cosmetic note for the styling review: the small card's footer sits
+  ~7px above the card's bottom edge (bottomCenter alignment, no bottom
+  inset on the footer itself).
+
+Resume from: v5 device build (day-boundary fix); re-place the medium,
+place the remaining six, then the screenshot/stale/perf/iOS-sim pass.
