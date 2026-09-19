@@ -47,8 +47,8 @@ and opened at the end.
    device proofs) and EXECUTOR-BRIEF's "the owner receives no screenshots".
 6. **Planner.** Grid recipe: `minWidth` is the only lever. Small `minWidth 160dp` (lands 2 cells on 4-col
    grids, 3 on 5-col, 3 on 6-col: always ~half the usable width; on the measured 3T grid, 3 of 5 columns =
-   567px of 1080 = 52.5% and, at 2 rows tall, a near-square 567x540 like iOS). Medium `minWidth 400dp`
-   (exceeds every common grid's full span, so launchers clamp to 100%: 5 of 5 on the 3T = 973px). Both
+   567px of 1080 = 52.5% and, at 2 rows tall, a near-square 567x540 like iOS). Medium `minWidth 310dp`
+   (the standard formula's 5-cell value; 400dp computed to 7 cells on the 3T, which HIDES over-wide providers instead of clamping, found in the device pass). Both
    `minHeight 110dp` (2 rows) and `resizeMode "both"` (owner wants resizable). The plugin-written
    `targetCellWidth/Height` attributes are stripped after expo-widgets writes them, because a fixed cell
    count is grid-dependent (4 cells on an 8x8 grid is 25%, not 50%) and Android 12+ prefers them over
@@ -163,7 +163,7 @@ echo "PREFLIGHT OK"
   off or the platform is iOS. Native invariant (device-proven): with the app killed, a placed widget's
   countdown label advances within 90 seconds without any app process running.
 - **Sizing invariant:** `dumpsys appwidget` after install shows `minWidth` 160dp encoded (160<<8|1 = 40961)
-  for small kinds and 400dp (102401) for mediums, `resizeMode=3` (both), and no `targetCell` attributes in
+  for small kinds and 310dp (79361) for mediums, `resizeMode=3` (both), and no `targetCell` attributes in
   `android/app/src/main/res/xml/*` provider files after prebuild.
 - **Styling invariants:** generator writes opaque cards `#fcfcfe`/`#1a1a5c`; pill PNGs carry no shadow and
   are 26dp tall; radius 16pt; layout pill height 26 anchored `-2`; footer bottom pad 16 on all 8 Android
@@ -178,7 +178,7 @@ echo "PREFLIGHT OK"
 - [ ] Step 1: mock resting state: Asr next at +3 minutes (specified)
 - [ ] Step 2: opaque cards, shadowless 26dp pill, 16pt radius in the generator + PNGs (specified)
 - [ ] Step 3: footer lift 16, pill vertical padding, stale/neutral centering in the shared layout (specified)
-- [ ] Step 4: grid sizing 160/400dp + resizable + targetCell strip (specified)
+- [ ] Step 4: grid sizing 160/310dp + resizable + targetCell strip (specified)
 - [ ] Step 5: native minute-refresh chain, modules/widgetrefresh (specified)
 - [ ] Prove pass: mock build, place, screenshot every state, self-refresh + sizing proof, records
 
@@ -273,7 +273,7 @@ echo "PREFLIGHT OK"
 10. **Merge.** `--no-ff widgets/layout-polish-15b`.
 11. **Done when:** renderer suite green, hook green.
 
-### Step 4: grid sizing 160/400dp, resizable, targetCell stripped
+### Step 4: grid sizing 160/310dp, resizable, targetCell stripped
 
 1. **Goal:** smalls request half the grid width and mediums the full width on any launcher; both resizable;
    `targetCell*` never reaches the manifest XML.
