@@ -216,6 +216,12 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const ROW_TEXT_SIZE = 12;
   const ROW_CORNER_RADIUS = 4;
   const LIST_WIDTH = 140;
+  // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
+  // one bottom offset, both sizes, both themes, both schedules.
+  const FOOTER_BOTTOM_PAD = 16;
+  // The active pill clears its row's text vertically (owner ruling
+  // 2026-09-19): 2dp above and below the 22dp row.
+  const PILL_VPAD = 2;
   // Fixed hero width: a fillMaxWidth fraction on the first Row child let
   // the hero take the full card and squeezed the day list to zero width in
   // Glance (caught on the 3T: the medium rendered hero-only, centered).
@@ -257,11 +263,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const ACard = (footer: string | null, content: ReactNode) => (
     <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[fillMaxSize()]}>
       <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
-      <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(13, 13, 13, 24)]}>
+      <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(13, 13, 13, FOOTER_BOTTOM_PAD + 18)]}>
         {content}
       </Box>
       {footer === null ? null : (
-        <Row modifiers={[height(16), APad(0, 0, 0, 6)]} verticalAlignment='center'>
+        <Row modifiers={[height(16), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]} verticalAlignment='center'>
           {AText(footer, 9, 'normal', palette.footer)}
         </Row>
       )}
@@ -294,7 +300,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const ANeutral = () =>
     ACard(
       null,
-      <Column>
+      <Column horizontalAlignment='center'>
         {AText('Athan', 15, '600', palette.hero)}
         <Spacer modifiers={[height(5)]} />
         {AText('Prayer times for London', 12, 'normal', palette.secondary)}
@@ -304,7 +310,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const AStale = () =>
     ACard(
       null,
-      <Column>
+      <Column horizontalAlignment='center'>
         <AImageEl source={{ uri: A_MOON_NAME }} contentScale='fit' modifiers={[width(26), height(26)]} />
         <Spacer modifiers={[height(7)]} />
         {AText('Out of date', 14, '600', palette.hero)}
@@ -312,7 +318,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         {isMedium ? (
           AText('Open Athan to refresh', 12, 'normal', palette.secondary)
         ) : (
-          <Column>
+          <Column horizontalAlignment='center'>
             {AText('Open Athan', 12, 'normal', palette.secondary)}
             <Spacer modifiers={[height(1)]} />
             {AText('to refresh', 12, 'normal', palette.secondary)}
@@ -398,7 +404,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     return (
       <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
         <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
-        <Row modifiers={[fillMaxSize(), APad(13, 13, 20, 13)]}>
+        <Row modifiers={[fillMaxSize(), APad(13, 13, 20, FOOTER_BOTTOM_PAD)]}>
           <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
             <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
               {trio}
@@ -408,11 +414,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           <Box contentAlignment='center' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[fillMaxWidth()]}>
               <Column>
-                <Spacer modifiers={[height(activeIndex * ROW_HEIGHT)]} />
+                <Spacer modifiers={[height(Math.max(0, activeIndex * ROW_HEIGHT - PILL_VPAD))]} />
                 <AImageEl
                   source={{ uri: A_PILL_NAME }}
                   contentScale='fillBounds'
-                  modifiers={[fillMaxWidth(), height(ROW_HEIGHT)]}
+                  modifiers={[fillMaxWidth(), height(ROW_HEIGHT + 2 * PILL_VPAD)]}
                 />
               </Column>
               <Column>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
@@ -693,8 +699,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
               cornerRadius: ROW_CORNER_RADIUS,
             }),
             shadow({ radius: pillShadow.radius, x: pillShadow.x, y: pillShadow.y, color: pillShadow.color }),
-            frame({ height: ROW_HEIGHT }),
-            offset({ y: pillY }),
+            frame({ height: ROW_HEIGHT + 2 * PILL_VPAD }),
+            offset({ y: pillY - PILL_VPAD }),
           ]}
         />
       );

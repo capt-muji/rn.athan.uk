@@ -85,9 +85,15 @@ const MODIFIER_NAMES = [
   'textCase',
 ];
 
+// Positional captures: the Android composition calls the swift-ui padding
+// through a positional cast (start, top, end, bottom), so multi-argument
+// calls keep every value; single-object calls stay unwrapped
 const SWIFT_MODIFIERS = MODIFIER_NAMES.reduce(
   (acc: Record<string, (value: unknown) => { modifier: string; value: unknown }>, name) => {
-    acc[name] = (value: unknown) => ({ modifier: name, value });
+    acc[name] = (...args: unknown[]) => ({
+      modifier: name,
+      value: args.length === 0 ? undefined : args.length === 1 ? args[0] : args,
+    });
     return acc;
   },
   {}
@@ -95,7 +101,12 @@ const SWIFT_MODIFIERS = MODIFIER_NAMES.reduce(
 
 const ANDROID_MODIFIERS = ['fillMaxHeight', 'fillMaxSize', 'fillMaxWidth', 'height', 'padding', 'width'].reduce(
   (acc: Record<string, (value?: unknown) => { modifier: string; value: unknown }>, name) => {
-    acc[name] = (value?: unknown) => ({ modifier: name, value });
+    // Positional captures: padding(0, 0, 0, 16) must keep all four values,
+    // single-argument calls stay unwrapped, zero-argument calls stay undefined
+    acc[name] = (...args: unknown[]) => ({
+      modifier: name,
+      value: args.length === 0 ? undefined : args.length === 1 ? args[0] : args,
+    });
     return acc;
   },
   {}
@@ -261,6 +272,22 @@ describe('home widget renderer', () => {
       const pill = collect(tree).find((node) => node.marker === 'RoundedRectangle');
       const styles = (pill?.props.modifiers as Array<{ modifier: string; value: unknown }>) ?? [];
       expect(styles.some((style) => style.modifier === 'foregroundStyle' && style.value === '#db2777')).toBe(true);
+    });
+
+    // Owner ruling 2026-09-19: the pill gains 2dp vertical padding (its
+    // shadow stays on iOS)
+    it('pads the medium pill 2dp above and below its 22dp row, keeping its shadow', () => {
+      const tree = renderHome(liveProps(), 'systemMedium');
+      const pill = collect(tree).find((node) => node.marker === 'RoundedRectangle');
+      expect(pill).toBeDefined();
+      const styles = (pill?.props.modifiers as Array<{ modifier: string; value: unknown }>) ?? [];
+      expect(
+        styles.some((style) => style.modifier === 'frame' && (style.value as { height?: number }).height === 26)
+      ).toBe(true);
+      expect(styles.some((style) => style.modifier === 'offset' && (style.value as { y?: number }).y === 64)).toBe(
+        true
+      );
+      expect(styles.some((style) => style.modifier === 'shadow')).toBe(true);
     });
 
     it('falls back to the hero composition when the day list is not renderable', () => {
@@ -494,6 +521,75 @@ describe('home widget renderer', () => {
       );
       if (nextDay) nextDay.dateLabel = 'Rajab 1, 1448';
       expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1 · Lon');
+    });
+
+    // Owner ruling 2026-09-19: one uniform lifted footer on all 8 kinds
+    it('lifts the footer row 16dp above the card bottom on the small kinds', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      for (const theme of ['light', 'dark'] as const) {
+        const tree = renderTree(layouts.PrayerWidget(androidProps({ theme }), { colorScheme: 'light' }));
+        const footerRow = collect(tree).find(
+          (node) =>
+            node.marker === 'Row' &&
+            textsOf(node).some((text) => text.includes('· Lon')) &&
+            (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+              (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[0,0,0,16]'
+            )
+        );
+        expect(footerRow).toBeDefined();
+      }
+    });
+
+    it('pads the medium composition 16dp at the bottom, both themes', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      for (const theme of ['light', 'dark'] as const) {
+        const tree = renderTree(
+          layouts.PrayerWidget(androidProps({ theme, size: 'medium' }), { colorScheme: 'light' })
+        );
+        const outerRow = collect(tree).find(
+          (node) =>
+            node.marker === 'Row' &&
+            (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+              (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,20,16]'
+            )
+        );
+        expect(outerRow).toBeDefined();
+      }
+    });
+
+    it('pads the active pill 2dp above and below its row', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
+      const nodes = collect(tree);
+      const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
+      expect(pill).toBeDefined();
+      expect(pill?.props.modifiers).toEqual(
+        expect.arrayContaining([{ modifier: 'fillMaxWidth' }, { modifier: 'height', value: 26 }])
+      );
+      // Asr is row 3: the pill sits 2dp above its row top (3*22 - 2)
+      const spacerAbove = nodes.find(
+        (node) =>
+          node.marker === 'Spacer' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'height' && mod.value === 3 * 22 - 2
+          )
+      );
+      expect(spacerAbove).toBeDefined();
+    });
+
+    it('centers the stale card and the neutral card horizontally', () => {
+      const centeredColumnWith = (tree: unknown, text: string): boolean =>
+        collect(tree).some(
+          (node) =>
+            node.marker === 'Column' && node.props.horizontalAlignment === 'center' && textsOf(node).includes(text)
+        );
+      // Neutral: no props at all
+      expect(centeredColumnWith(renderTree(layouts.PrayerWidget(null, { colorScheme: 'light' })), 'Athan')).toBe(true);
+      // Stale: render instant past the carried horizon
+      freezeNow(at(DAY_TWO, '23:59') + 14 * 24 * 3_600_000);
+      expect(
+        centeredColumnWith(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })), 'Out of date')
+      ).toBe(true);
     });
   });
 });
