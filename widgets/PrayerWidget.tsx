@@ -96,7 +96,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // Locals serialize with the body; only free identifiers would not.
   const ATextEl = Text as unknown as (elementProps: {
     color?: string;
-    style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600' };
+    style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600'; letterSpacing?: number };
+    fontWeight?: 'normal' | 'bold' | '600';
     maxLines?: number;
     children?: string;
   }) => ReactNode;
@@ -214,7 +215,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // radius keeps the app's pill-to-row proportion.
   const ROW_HEIGHT = 22;
   const ROW_TEXT_SIZE = 12;
-  const ROW_CORNER_RADIUS = 4;
+  const ROW_CORNER_RADIUS = 6;
   const LIST_WIDTH = 148;
   // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
   // one bottom offset, both sizes, both themes, both schedules.
@@ -249,8 +250,21 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const A_MOON_NAME = isDark ? 'athan_widget_moon_dark' : 'athan_widget_moon_light';
   const A_PILL_NAME = `athan_widget_pill_${isExtra ? 'extra' : 'standard'}_${theme}`;
 
-  const AText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
-    <ATextEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
+  // The runtime has read the weight from either the top level or the style
+  // object across versions, so both carry it: a silently-dropped weight is
+  // invisible in the tree but obvious on glass (owner finding 2026-09-19)
+  const AText = (
+    text: string,
+    size: number,
+    weight: 'normal' | 'bold' | '600',
+    color: string,
+    letterSpacing?: number
+  ) => (
+    <ATextEl
+      color={color}
+      fontWeight={weight}
+      style={{ fontSize: size, fontWeight: weight, ...(letterSpacing === undefined ? {} : { letterSpacing }) }}
+      maxLines={1}>
       {text}
     </ATextEl>
   );
@@ -268,8 +282,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         {content}
       </Box>
       {footer === null ? null : (
-        <Row modifiers={[height(FOOTER_BOTTOM_PAD + 14), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]} verticalAlignment='center'>
-          {AText(footer, 9, 'normal', palette.footer)}
+        <Row modifiers={[height(FOOTER_BOTTOM_PAD + 18), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]} verticalAlignment='center'>
+          {AText(footer, 12, 'normal', palette.footer)}
         </Row>
       )}
     </Box>
@@ -355,7 +369,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const footer = AFooter(nextDayLabel);
     const trio = (
       <Column horizontalAlignment='center'>
-        {AText(next.name.toUpperCase(), 12, 'bold', palette.eyebrow)}
+        {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow, 0.5)}
         <Spacer modifiers={[height(6)]} />
         {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
         <Spacer modifiers={[height(6)]} />
@@ -411,11 +425,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
               {trio}
             </Box>
-            {AText(footer, 9, 'normal', palette.footer)}
+            {AText(footer, 12, 'normal', palette.footer)}
           </Box>
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
-              <Column modifiers={[APad(4, 0, 4, 0)]}>
+              <Column>
                 <Spacer modifiers={[height(Math.max(0, activeIndex * ROW_HEIGHT - PILL_VPAD))]} />
                 <AImageEl
                   source={{ uri: A_PILL_NAME }}
@@ -600,7 +614,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         <VStack spacing={6}>
           <Text
             modifiers={[
-              font({ size: 12, weight: 'bold' }),
+              font({ size: 14, weight: 'bold' }),
               foregroundStyle(palette.eyebrow),
               textCase('uppercase'),
               kerning(0.5),
@@ -634,7 +648,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         <Spacer />
         <Text
           modifiers={[
-            font({ size: 9, weight: 'medium' }),
+            font({ size: 12, weight: 'medium' }),
             foregroundStyle(palette.footer),
             kerning(0.4),
             lineLimit(1),
