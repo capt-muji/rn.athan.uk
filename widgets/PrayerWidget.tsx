@@ -30,6 +30,7 @@ import {
   lineLimit,
   minimumScaleFactor,
   monospacedDigit,
+  multilineTextAlignment,
   offset,
   padding,
   scaleEffect,
@@ -292,9 +293,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     </Box>
   );
 
-  // The minute-ceil countdown, mirroring formatCountdownMinutes in
-  // shared/time.ts: seconds never render, the value rounds up, and it never
-  // reads below one minute.
+  // Android's countdown is computed at render time, so it carries the format
+  // itself: hours and minutes only, rounded up, never reading below a minute.
+  // iOS needs no equivalent — SwiftUI ticks its own timer from the segment.
   const ALabel = (targetEpochMs: number, nowMs: number): string => {
     const totalMinutes = Math.max(1, Math.ceil((targetEpochMs - nowMs) / 60000));
     const hours = Math.floor(totalMinutes / 60);
@@ -518,11 +519,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
   // The light theme renders no orbs — only the dark cards carry the blur.
   const Blobs = () => {
-    // DIAGNOSTIC 2026-09-19: orbs off on every kind, to see whether the four
-    // blurred circles are what pushes a render past WidgetKit's deadline.
-    return null;
-
-    // biome-ignore lint/correctness/noUnreachable: diagnostic short-circuit above
     if (!orbs) {
       return null;
     }
@@ -612,28 +608,28 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // standard 6-row list still lays the hero column 1pt short of the
     // smalls' inset, so a half-point lift restores it (the runtime applies
     // the offset at double strength).
-    // DIAGNOSTIC 2026-09-19: forced to 0. A 4-row cap left the standard
-    // mediums black while the 4-row extras mediums rendered, so row count is
-    // ruled out and this half-point offset is the only difference left.
-    const footerLift = 0;
+    const footerLift = isMedium && rows.length >= 6 ? 0.5 : 0;
 
-    // DIAGNOSTIC 2026-09-19: A/B of the two system-ticking text forms, which
-    // update every second with no timeline entries at all. Extras kinds render
-    // dateStyle 'relative', standard kinds render timerInterval. The swift-ui
-    // types only describe the string form, so the extra props ride this cast.
+    // iOS renders Text(timerInterval:) in its own process, so the countdown
+    // ticks every second with no timeline entry behind it. The swift-ui types
+    // only describe the string form, so the timer props ride this cast.
     const TickingTextEl = Text as unknown as (elementProps: {
-      date?: Date;
-      dateStyle?: 'timer' | 'relative' | 'offset' | 'date' | 'time';
       timerInterval?: { lower: Date; upper: Date };
       countsDown?: boolean;
       modifiers?: unknown[];
     }) => ReactNode;
 
+    // Both trailing modifiers are load-bearing for a text that redraws every
+    // second: Text(timerInterval:) reserves a worst-case width and leaves its
+    // glyphs against the leading edge of it, and proportional digits would
+    // shuffle the whole string sideways on every tick.
     const heroModifiers = [
       font({ size: 26, weight: 'bold' }),
       foregroundStyle(palette.hero),
       lineLimit(1),
       minimumScaleFactor(0.6),
+      monospacedDigit(),
+      multilineTextAlignment('center'),
     ];
 
     // The hero column — the small widget's centered trio plus the footer,
@@ -653,15 +649,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             ]}>
             {entry.nextName}
           </Text>
-          {/* No monospacedDigit on the countdown: fixed-width digits air out
-              the "11" in "11h 55m" so the value stops reading as one number
-              (owner finding 2026-09-19). Entries are static renders, so
-              digit-width jitter between them is never seen. */}
+          {/* Bounded by the segment rather than by the render clock, so the
+              archived view is a pure function of its entry. */}
           <TickingTextEl
-            timerInterval={{ lower: new Date(), upper: new Date(entry.nextEpochMs) }}
+            timerInterval={{ lower: new Date(entry.prevEpochMs), upper: new Date(entry.nextEpochMs) }}
             countsDown
             modifiers={heroModifiers}
-          />{' '}
+          />
           <Text
             modifiers={[
               font({ size: 13, weight: 'regular' }),
@@ -733,11 +727,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       const ActivePill = () => (
         <RoundedRectangle
           cornerRadius={ROW_CORNER_RADIUS}
-          // DIAGNOSTIC 2026-09-19: shadow and strokeBorder dropped. Blur proved
-          // to be what broke the dark smalls; shadow is rasterised the same way,
-          // and it is the only effect of that class on the medium layout.
           modifiers={[
             foregroundStyle(palette.pillFill),
+            strokeBorder({
+              color: palette.pillStroke,
+              style: { lineWidth: 1 },
+              shape: 'roundedRectangle',
+              cornerRadius: ROW_CORNER_RADIUS,
+            }),
+            shadow({ radius: pillShadow.radius, x: pillShadow.x, y: pillShadow.y, color: pillShadow.color }),
             frame({ height: ROW_HEIGHT + 2 * PILL_VPAD }),
             offset({ y: pillY - PILL_VPAD }),
           ]}

@@ -1,6 +1,7 @@
-import { Image, Text, VStack } from '@expo/ui/swift-ui';
+import { HStack, Image, Text, VStack } from '@expo/ui/swift-ui';
 import { font, foregroundStyle, frame, lineLimit, monospacedDigit } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
+import type { ReactNode } from 'react';
 
 import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 
@@ -10,8 +11,9 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * Standard schedule, 'ExtrasLockWidget' the Extra schedule. Lock Screen
  * accessories render in vibrant monochrome — white with opacity hierarchy —
  * so the two kinds are visually identical; only the timeline data differs.
- * The rectangular face pairs the countdown with the prayer name and puts
- * the absolute HH:mm below — the countdown reads once, beside the name.
+ * The rectangular face pairs the ticking countdown with the prayer name and
+ * puts the absolute HH:mm below; the inline face carries the name and the
+ * absolute time only (see the concatenation note at its branch).
  * The circular face is fully unregistered since 1.14.1 (it existed in
  * store builds for ~a day before its 1.9.1 retirement, so the orphan
  * freeze risk was accepted — see ai/AGENTS.md).
@@ -87,41 +89,52 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       );
     }
 
-    // Countdown as a minute-ceil label, precomputed per timeline entry.
-    // Entries from a v1 app version lack the label — degrade to the absolute
-    // time instead of a system timer (whose colon format we don't use).
-    const hasCountdownLabel = typeof props.countdownLabel === 'string' && props.countdownLabel.length > 0;
+    // iOS ticks Text(timerInterval:) itself, every second, with no timeline
+    // entry behind it. The swift-ui types only describe the string form, so
+    // the timer props ride this cast.
+    const TickingTextEl = Text as unknown as (elementProps: {
+      timerInterval?: { lower: Date; upper: Date };
+      countsDown?: boolean;
+      modifiers?: unknown[];
+    }) => ReactNode;
 
+    const segment = { lower: new Date(props.prevEpochMs), upper: new Date(props.nextEpochMs) };
+
+    // accessoryInline is a single system-rendered line and cannot hold a
+    // ticking timer beside other text: SwiftUI stops updating a timer Text
+    // the moment it is concatenated. The absolute time is the more useful
+    // half in a slot this small, so inline carries that and no countdown.
     if (environment.widgetFamily === 'accessoryInline') {
-      const countdownModifiers = [monospacedDigit(), foregroundStyle(WHITE_SECONDARY)];
-
       return (
         <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
           {props.nextName} {props.nextTime}
-          {hasCountdownLabel ? (
-            <>
-              {' '}
-              · <Text modifiers={countdownModifiers}>{props.countdownLabel}</Text>
-            </>
-          ) : null}
         </Text>
       );
     }
 
-    // accessoryRectangular (default): the prayer with its countdown, the
-    // absolute time below
-    const rectangularModifiers = [
-      font({ size: 11, weight: 'medium' }),
-      monospacedDigit(),
-      foregroundStyle(WHITE_SECONDARY),
-    ];
-
-    const header = hasCountdownLabel ? `${props.nextName} · ${props.countdownLabel}` : props.nextName;
-
+    // accessoryRectangular (default): the prayer beside its ticking
+    // countdown, the absolute time below. The timer is its own Text so it
+    // keeps updating, which is what splits this line into an HStack.
     return (
       <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>{header}</Text>
-        <Text modifiers={rectangularModifiers}>{props.nextTime}</Text>
+        <HStack spacing={4}>
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {props.nextName}
+          </Text>
+          <TickingTextEl
+            timerInterval={segment}
+            countsDown
+            modifiers={[
+              font({ size: 14, weight: 'bold' }),
+              monospacedDigit(),
+              foregroundStyle(WHITE_SECONDARY),
+              lineLimit(1),
+            ]}
+          />
+        </HStack>
+        <Text modifiers={[font({ size: 11, weight: 'medium' }), monospacedDigit(), foregroundStyle(WHITE_SECONDARY)]}>
+          {props.nextTime}
+        </Text>
       </VStack>
     );
   } catch {
