@@ -215,7 +215,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const ROW_HEIGHT = 22;
   const ROW_TEXT_SIZE = 12;
   const ROW_CORNER_RADIUS = 4;
-  const LIST_WIDTH = 140;
+  const LIST_WIDTH = 148;
   // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
   // one bottom offset, both sizes, both themes, both schedules.
   const FOOTER_BOTTOM_PAD = 16;
@@ -225,12 +225,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // Fixed hero width: a fillMaxWidth fraction on the first Row child let
   // the hero take the full card and squeezed the day list to zero width in
   // Glance (caught on the 3T: the medium rendered hero-only, centered).
-  // 128dp leaves the list column ~132dp - enough for the 130dp rows
-  // (8dp insets + 70dp name + 44dp time); at 150 the rows squeezed and
-  // the times ellipsized to "12:…"
-  const HERO_WIDTH = 128;
-  const ROW_NAME_WIDTH = 70;
-  const ROW_TIME_WIDTH = 44;
+  // 132dp with the 148dp list splits the full-width medium roughly in half
+  // and stays inside the 4-cell medium on clamping launchers.
+  const HERO_WIDTH = 132;
+  const ROW_NAME_WIDTH = 76;
+  const ROW_TIME_WIDTH = 46;
 
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
@@ -362,14 +361,14 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       </Column>
     );
 
-    // The on-screen day holds the render instant; the counted-down prayer
-    // may belong to a later day, in which case there is no active row and
-    // the medium falls back to the hero alone — the iOS layout's listValid
-    // rule. An empty-days snapshot degenerates to the same hero-only path.
-    const emptyDay: PrayerWidgetAndroidProps['days'][number] = { dateLabel: '', startEpochMs: 0, rows: [] };
-    let onScreenDay = emptyDay;
+    // The on-screen day follows the NEXT prayer's day, not the calendar
+    // day: after today's Isha the list rolls to tomorrow with Fajr active,
+    // exactly when the countdown target rolls (the app's and iOS's rule).
+    type ADay = PrayerWidgetAndroidProps['days'][number];
+    const fallbackDay: ADay = { dateLabel: '', startEpochMs: 0, rows: [] };
+    let onScreenDay = fallbackDay;
     for (const day of input.days) {
-      if (day.startEpochMs <= nowMs) onScreenDay = day;
+      if (day.rows.some((row) => row === next)) onScreenDay = day;
     }
     const dayRows = onScreenDay.rows;
     const activeIndex = dayRows.indexOf(next);
@@ -412,8 +411,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             </Box>
             {AText(footer, 9, 'normal', palette.footer)}
           </Box>
-          <Box contentAlignment='center' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
-            <Box contentAlignment='topStart' modifiers={[fillMaxWidth()]}>
+          <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
+            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
               <Column>
                 <Spacer modifiers={[height(Math.max(0, activeIndex * ROW_HEIGHT - PILL_VPAD))]} />
                 <AImageEl

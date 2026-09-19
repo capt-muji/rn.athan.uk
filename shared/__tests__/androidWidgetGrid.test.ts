@@ -52,6 +52,9 @@ describe('android widget grid strip plugin', () => {
     expect(stripped).not.toContain('targetCellHeight');
     expect(stripped).toContain('android:minWidth="160dp"');
     expect(stripped).toContain('android:resizeMode="horizontal|vertical"');
+    // The horizontal morph needs room to shrink below the declared span
+    expect(stripped).toContain('android:minResizeWidth="160dp"');
+    expect(stripped).toContain('android:minResizeHeight="110dp"');
     expect(readFileSync(untouched, 'utf8')).toContain('<layout');
 
     // Idempotent: a second run changes nothing and does not throw
