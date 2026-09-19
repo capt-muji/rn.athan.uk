@@ -106,6 +106,17 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     modifiers?: unknown[];
   }) => ReactNode;
   const APad = padding as unknown as (start: number, top: number, end: number, bottom: number) => ModifierConfig;
+  // The time column's Text spans the full list width and right-justifies via
+  // textAlign (converter-supported); the cast carries the jetpack-only
+  // textAlign prop past the swift-ui typing, like ATextEl/AImageEl
+  const ATimeEl = Text as unknown as (elementProps: {
+    color?: string;
+    style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600' };
+    maxLines?: number;
+    textAlign?: 'end';
+    modifiers?: ModifierConfig[];
+    children?: string;
+  }) => ReactNode;
 
   // Theme and schedule arrive on the entry — each gallery kind receives
   // its own timeline, so the palette is fixed at placement. The props-less
@@ -232,6 +243,17 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     </ATextEl>
   );
 
+  const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
+    <ATimeEl
+      color={color}
+      style={{ fontSize: size, fontWeight: weight }}
+      maxLines={1}
+      textAlign='end'
+      modifiers={[fillMaxWidth()]}>
+      {text}
+    </ATimeEl>
+  );
+
   const ACard = (footer: string | null, content: ReactNode) => (
     <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[fillMaxSize()]}>
       <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
@@ -346,14 +368,26 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       return ACard(footer, trio);
     }
 
-    const ARowLine = (row: ARow, index: number) => {
+    // Names and times render as overlayed layers, not one Row: a
+    // fillMaxWidth Spacer between them starves the trailing time to zero
+    // width in Glance (same starvation class as the hero column). Times
+    // right-justify via textAlign on a full-width Text.
+    const ARowName = (row: ARow, index: number) => {
+      const rowColor =
+        index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
+      return (
+        <Row verticalAlignment='center' modifiers={[height(ROW_HEIGHT), APad(10, 0, 10, 0)]}>
+          {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
+        </Row>
+      );
+    };
+
+    const ARowTime = (row: ARow, index: number) => {
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
       return (
         <Row verticalAlignment='center' modifiers={[fillMaxWidth(), height(ROW_HEIGHT), APad(10, 0, 10, 0)]}>
-          {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
-          <Spacer modifiers={[fillMaxWidth()]} />
-          {AText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
+          {ATimeText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
         </Row>
       );
     };
@@ -378,7 +412,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
                   modifiers={[fillMaxWidth(), height(ROW_HEIGHT)]}
                 />
               </Column>
-              <Column>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
+              <Column>{dayRows.map((row, index) => ARowName(row, index))}</Column>
+              <Column>{dayRows.map((row, index) => ARowTime(row, index))}</Column>
             </Box>
           </Box>
         </Row>
