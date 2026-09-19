@@ -257,7 +257,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(13, 13, 13, 24)]}>
         {content}
       </Box>
-      {footer === null ? null : AText(footer, 9, 'normal', palette.footer)}
+      {footer === null ? null : (
+        <Row modifiers={[height(16), APad(0, 0, 0, 6)]} verticalAlignment='center'>
+          {AText(footer, 9, 'normal', palette.footer)}
+        </Row>
+      )}
     </Box>
   );
 
