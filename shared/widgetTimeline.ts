@@ -79,7 +79,7 @@ export const COUNTDOWN_STEP_MS = MIN_ENTRY_SPACING_MS;
  * everywhere mathematically impossible); the final step always anchors
  * exactly one spacing before the boundary flip.
  */
-export const STEPPED_COUNTDOWN_HOURS = 24;
+export const STEPPED_COUNTDOWN_HOURS = 4;
 
 /**
  * What the widget shows from one boundary until the next: the prayer counted
