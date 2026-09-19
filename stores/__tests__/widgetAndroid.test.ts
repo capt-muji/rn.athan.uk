@@ -25,7 +25,7 @@ jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: false, androidWid
 import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
-import { createInstant, formatDateShort } from '@/shared/time';
+import { createInstant, formatDateShort, formatPrayerTime } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
@@ -55,12 +55,24 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
   istijaba: '16:00',
 });
 
-const seedPrayerCache = (days: number) => {
+const seedPrayerCache = (days: number, todayRelative = false) => {
   const now = createInstant();
   const data: ISingleApiResponseTransformed[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(now, offset);
-    data.push(makeDayData(formatDateShort(day)));
+    const dayDatum = makeDayData(formatDateShort(day));
+    if (todayRelative && offset === 0) {
+      // Wall-clock-independent: put every today prayer within minutes of
+      // now, so the rollover test's bounded chunked advance always
+      // crosses the next boundary regardless of when the suite runs
+      const shift = (field: 'asr' | 'magrib' | 'isha', minutes: number) => {
+        dayDatum[field] = formatPrayerTime(new Date(now.getTime() + minutes * 60_000));
+      };
+      shift('asr', 2);
+      shift('magrib', 4);
+      shift('isha', 6);
+    }
+    data.push(dayDatum);
   }
   Database.saveAllPrayers(data);
 };
@@ -162,7 +174,7 @@ describe('Android snapshot pushes', () => {
   });
 
   it('rolls the window over when the flip target has passed', async () => {
-    seedPrayerCache(3);
+    seedPrayerCache(3, true);
 
     await refreshPrayerWidgets();
     expect((PrayerWidget.updateSnapshot as jest.Mock).mock.calls.length).toBe(1);
