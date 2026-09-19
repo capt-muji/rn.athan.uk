@@ -343,7 +343,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
     const footer = AFooter(nextDayLabel);
     const trio = (
-      <Column>
+      <Column horizontalAlignment='center'>
         {AText(next.name.toUpperCase(), 12, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(6)]} />
         {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
@@ -381,7 +381,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
       return (
-        <Row verticalAlignment='center' modifiers={[height(ROW_HEIGHT)]}>
+        <Row verticalAlignment='center' modifiers={[height(ROW_HEIGHT), APad(8, 0, 8, 0)]}>
           <Box contentAlignment='centerStart' modifiers={[height(ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
             {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
           </Box>
