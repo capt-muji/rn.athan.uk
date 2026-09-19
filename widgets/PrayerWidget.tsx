@@ -96,9 +96,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // Locals serialize with the body; only free identifiers would not.
   const ATextEl = Text as unknown as (elementProps: {
     color?: string;
-    style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600'; letterSpacing?: number };
+    style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600' };
     fontWeight?: 'normal' | 'bold' | '600';
-    letterSpacing?: number;
     maxLines?: number;
     children?: string;
   }) => ReactNode;
@@ -253,22 +252,17 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // The runtime has read the weight from either the top level or the style
   // object across versions, so both carry it: a silently-dropped weight is
   // invisible in the tree but obvious on glass (owner finding 2026-09-19)
-  const AText = (
-    text: string,
-    size: number,
-    weight: 'normal' | 'bold' | '600',
-    color: string,
-    letterSpacing?: number
-  ) => (
-    <ATextEl
-      color={color}
-      fontWeight={weight}
-      letterSpacing={letterSpacing}
-      style={{ fontSize: size, fontWeight: weight, ...(letterSpacing === undefined ? {} : { letterSpacing }) }}
-      maxLines={1}>
+  const AText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
+    <ATextEl color={color} fontWeight={weight} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
       {text}
     </ATextEl>
   );
+
+  // The native tree converter keeps only color/size/weight/style/decoration
+  // from the text style - letterSpacing dies at the Kotlin boundary - so the
+  // eyebrow's tracking is delivered glyph-wise: a thin space (U+2009, about
+  // 2sp at 14sp) between letters, reading like iOS's kerning.
+  const tracked = (text: string): string => text.split('').join('\u2009');
 
   const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
     <ATimeEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
@@ -370,7 +364,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const footer = AFooter(nextDayLabel);
     const trio = (
       <Column horizontalAlignment='center'>
-        {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow, 0.8)}
+        {AText(tracked(next.name.toUpperCase()), 14, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(6)]} />
         {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
         <Spacer modifiers={[height(6)]} />
