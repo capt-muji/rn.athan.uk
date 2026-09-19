@@ -375,7 +375,7 @@ describe('home widget renderer', () => {
 
       // 15:20 minus 14:08:30 is 71.5 minutes: ceil makes it "1h 12m"
       expect(textsOf(tree)).toContain('1h 12m');
-      expect(textsOf(tree)).toContain('A\u202fS\u202fR');
+      expect(textsOf(tree)).toContain('A\u200aS\u200aR');
       expect(textsOf(tree)).toContain('15:20');
     });
 
@@ -383,18 +383,18 @@ describe('home widget renderer', () => {
       const props = androidProps({});
 
       freezeNow(at(DAY_ONE, '14:08'));
-      expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain('A\u202fS\u202fR');
+      expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain('A\u200aS\u200aR');
 
       // A prayer's own instant already belongs to the next segment: at
       // exactly 15:20 the widget counts down to Magrib, never to Asr
       freezeNow(at(DAY_ONE, '15:20'));
       expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain(
-        'M\u202fA\u202fG\u202fR\u202fI\u202fB'
+        'M\u200aA\u200aG\u200aR\u200aI\u200aB'
       );
 
       freezeNow(at(DAY_ONE, '16:00'));
       expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain(
-        'M\u202fA\u202fG\u202fR\u202fI\u202fB'
+        'M\u200aA\u200aG\u200aR\u200aI\u200aB'
       );
     });
 
