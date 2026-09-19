@@ -18,6 +18,15 @@ if (androidSuffix && config.android?.package) {
   config.name = `${config.name} ${nameSuffix}`;
 }
 
+// EXPO_IOS_SUFFIX gives a local device build its own bundle id so it installs
+// BESIDE the App Store app (iOS refuses a dev-signed install over a
+// store-signed one), mirroring the Android fleettest pattern
+const iosSuffix = process.env.EXPO_IOS_SUFFIX;
+if (iosSuffix && config.ios?.bundleIdentifier) {
+  config.ios.bundleIdentifier = `${config.ios.bundleIdentifier}.${iosSuffix}`;
+  if (!androidSuffix) config.name = `${config.name} ${nameSuffix}`;
+}
+
 // Feature-flag mirror of shared/flags.ts (importing TS files here would need
 // tsx; shared/__tests__/flags.test.ts pins the two in lockstep). Stripping
 // the plugin removes the widget extension from the native build entirely.
