@@ -98,6 +98,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     color?: string;
     style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600'; letterSpacing?: number };
     fontWeight?: 'normal' | 'bold' | '600';
+    letterSpacing?: number;
     maxLines?: number;
     children?: string;
   }) => ReactNode;
@@ -214,9 +215,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // center between equal Spacers (see the list column below). The corner
   // radius keeps the app's pill-to-row proportion.
   const ROW_HEIGHT = 22;
-  const ROW_TEXT_SIZE = 12;
+  const ROW_TEXT_SIZE = 13;
   const ROW_CORNER_RADIUS = 6;
-  const LIST_WIDTH = 148;
+  const LIST_WIDTH = 162;
   // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
   // one bottom offset, both sizes, both themes, both schedules.
   const FOOTER_BOTTOM_PAD = 16;
@@ -227,12 +228,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // Fixed hero width: a fillMaxWidth fraction on the first Row child let
   // the hero take the full card and squeezed the day list to zero width in
   // Glance (caught on the 3T: the medium rendered hero-only, centered).
-  // 176dp spans the card's full LEFT HALF up to the list's edge (owner
-  // finding 2026-09-19): the trio centers exactly where the eye expects
-  // the half's midpoint, with the 148dp list flush right.
-  const HERO_WIDTH = 176;
-  const ROW_NAME_WIDTH = 76;
-  const ROW_TIME_WIDTH = 46;
+  // 170dp with the 162dp list: the trio centers in the left region and the
+  // list expands LEFT off its right anchor for the 13sp rows' air.
+  const HERO_WIDTH = 170;
+  const ROW_NAME_WIDTH = 82;
+  const ROW_TIME_WIDTH = 54;
 
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
@@ -263,6 +263,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     <ATextEl
       color={color}
       fontWeight={weight}
+      letterSpacing={letterSpacing}
       style={{ fontSize: size, fontWeight: weight, ...(letterSpacing === undefined ? {} : { letterSpacing }) }}
       maxLines={1}>
       {text}
@@ -369,7 +370,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const footer = AFooter(nextDayLabel);
     const trio = (
       <Column horizontalAlignment='center'>
-        {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow, 0.5)}
+        {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow, 0.8)}
         <Spacer modifiers={[height(6)]} />
         {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
         <Spacer modifiers={[height(6)]} />
