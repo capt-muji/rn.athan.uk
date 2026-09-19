@@ -375,7 +375,7 @@ describe('home widget renderer', () => {
 
       // 15:20 minus 14:08:30 is 71.5 minutes: ceil makes it "1h 12m"
       expect(textsOf(tree)).toContain('1h 12m');
-      expect(textsOf(tree)).toContain('ASR');
+      expect(textsOf(tree)).toContain('A\u2009S\u2009R');
       expect(textsOf(tree)).toContain('15:20');
     });
 
@@ -383,15 +383,19 @@ describe('home widget renderer', () => {
       const props = androidProps({});
 
       freezeNow(at(DAY_ONE, '14:08'));
-      expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain('ASR');
+      expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain('A\u2009S\u2009R');
 
       // A prayer's own instant already belongs to the next segment: at
       // exactly 15:20 the widget counts down to Magrib, never to Asr
       freezeNow(at(DAY_ONE, '15:20'));
-      expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain('MAGRIB');
+      expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain(
+        'M\u2009A\u2009G\u2009R\u2009I\u2009B'
+      );
 
       freezeNow(at(DAY_ONE, '16:00'));
-      expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain('MAGRIB');
+      expect(textsOf(renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' })))).toContain(
+        'M\u2009A\u2009G\u2009R\u2009I\u2009B'
+      );
     });
 
     it('renders the stale card past the horizon', () => {

@@ -113,10 +113,11 @@ internal object WidgetRefreshScheduler {
     fun armNext(context: Context) {
         val appContext = context.applicationContext
         val alarmManager = appContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        // 1s past the edge: the countdown label is minute-ceil, so a render
-        // just past the boundary always carries the new minute
-        var atMillis = (System.currentTimeMillis() / MINUTE_MS + 1) * MINUTE_MS + 1_000
-        if (atMillis < System.currentTimeMillis() + 500) atMillis += MINUTE_MS
+        // 500ms past the edge: the countdown label is minute-ceil and the
+        // chain is wall-clock synced (owner ruling 2026-09-19), so the flip
+        // lands within half a second of the system minute change
+        var atMillis = (System.currentTimeMillis() / MINUTE_MS + 1) * MINUTE_MS + 500
+        if (atMillis < System.currentTimeMillis() + 250) atMillis += MINUTE_MS
         val pending = PendingIntent.getBroadcast(
             appContext,
             0,
