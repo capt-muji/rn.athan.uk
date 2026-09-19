@@ -598,6 +598,25 @@ describe('home widget renderer', () => {
           collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
       );
       expect(listColumn).toBeDefined();
+      // The pill WRAPS the row content with air on both sides: it starts
+      // before the first letter (4dp inset vs the rows' 12dp), never inside
+      // the word (owner finding 2026-09-19)
+      const pillColumn = nodes.find(
+        (node) =>
+          node.marker === 'Column' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[4,0,4,0]'
+          )
+      );
+      const rowsColumn = nodes.find(
+        (node) =>
+          node.marker === 'Column' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[12,0,12,0]'
+          )
+      );
+      expect(pillColumn).toBeDefined();
+      expect(rowsColumn).toBeDefined();
     });
 
     it("rolls the medium day list to the next prayer's day after the last row passes", () => {
