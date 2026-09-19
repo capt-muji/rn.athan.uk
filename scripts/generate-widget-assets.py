@@ -24,7 +24,7 @@ MEDIUM_W, MEDIUM_H = 250, 110
 PILL_W, PILL_H = 140, 24
 MOON = 26
 CARD_RADIUS_PT = 13
-PILL_RADIUS_PT = 6
+PILL_RADIUS_PT = 5
 
 def css(color: str) -> tuple:
     """Parses '#rrggbb' / '#rrggbbaa' / 'rgba(r, g, b, a)' into an RGBA
@@ -66,7 +66,6 @@ ORBS_MEDIUM = {
 PILLS = {
     "standard_light": {
         "fill": css("#4f46e5"),
-        "stroke": css("rgba(79, 70, 229, 0.35)"),
     },
     "extra_light": {
         "fill": css("#db2777"),
@@ -133,8 +132,6 @@ def pill(spec: dict) -> Image.Image:
         [0, 0, width - 1, height - 1],
         radius=radius,
         fill=spec["fill"],
-        outline=spec["stroke"],
-        width=SCALE,
     )
     return canvas
 

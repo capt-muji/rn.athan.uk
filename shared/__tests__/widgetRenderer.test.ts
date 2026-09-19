@@ -593,7 +593,7 @@ describe('home widget renderer', () => {
         (node) =>
           node.marker === 'Box' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'width' && mod.value === 148
+            (mod) => mod.modifier === 'width' && mod.value === 162
           ) &&
           collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
       );
@@ -617,6 +617,17 @@ describe('home widget renderer', () => {
           )
       );
       expect(rowsColumn).toBeDefined();
+      // The list's fixed geometry: wider boxes give the 13sp rows air
+      // between the names and the times without fill-based spacing
+      const rowsRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'height' && mod.value === 22
+          ) &&
+          textsOf(node).includes('Fajr')
+      );
+      expect(rowsRow).toBeDefined();
     });
 
     it("rolls the medium day list to the next prayer's day after the last row passes", () => {
