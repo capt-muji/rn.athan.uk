@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.278",
+    "version": "1.27.279",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -237,7 +237,7 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 400,
+                "minWidth": 310,
                 "minHeight": 110,
                 "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
@@ -252,7 +252,7 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 400,
+                "minWidth": 310,
                 "minHeight": 110,
                 "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
@@ -297,7 +297,7 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 400,
+                "minWidth": 310,
                 "minHeight": 110,
                 "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
@@ -312,7 +312,7 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 400,
+                "minWidth": 310,
                 "minHeight": 110,
                 "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
