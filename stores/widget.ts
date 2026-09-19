@@ -32,6 +32,7 @@
 import { getDefaultStore } from 'jotai';
 import { Platform } from 'react-native';
 
+import { armWidgetRefreshChain } from '@/modules/widgetrefresh';
 import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
@@ -322,6 +323,13 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
   if (Platform.OS === 'android') {
     await pushScheduleAndroid(ScheduleType.Standard);
     await pushScheduleAndroid(ScheduleType.Extra);
+    // The native minute-refresh chain keeps the widgets ticking after the
+    // host pauses this process's JS timers (owner ruling 2026-09-19)
+    try {
+      armWidgetRefreshChain();
+    } catch (error) {
+      logger.warn('WIDGET: Failed to arm the native refresh chain', { error });
+    }
     return;
   }
 
