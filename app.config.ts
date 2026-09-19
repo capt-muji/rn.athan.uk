@@ -48,7 +48,7 @@ const enableAndroidWidgets = (expoConfig: ExpoConfig): ExpoConfig => {
     const [, props] = plugin as [string, Record<string, unknown>];
     return ['expo-widgets', { ...props, enableAndroid: true }];
   });
-  expoConfig.plugins = [...(expoConfig.plugins ?? []), './plugins/androidWidgetAssets'];
+  expoConfig.plugins = [...(expoConfig.plugins ?? []), './plugins/androidWidgetAssets', './plugins/androidWidgetGrid'];
   return expoConfig;
 };
 
