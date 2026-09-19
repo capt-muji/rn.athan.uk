@@ -224,10 +224,10 @@ describe('palette literals', () => {
       '#ff69b4', // eyebrow + stale mark
       'rgba(173, 193, 254, 0.54)', // secondary — smalls
       'rgba(173, 193, 254, 0.6)', // upcoming rows — smalls
-      'rgba(156, 169, 222, 0.38)', // footer — smalls
+      'rgba(173, 193, 254, 0.54)', // footer — smalls, at the absolute time's contrast (owner ruling 2026-09-19)
       'rgba(160, 182, 228, 0.54)', // secondary — mediums, blue-grey
       'rgba(160, 182, 228, 0.6)', // upcoming rows — mediums, blue-grey
-      'rgba(146, 164, 212, 0.38)', // footer — mediums, blue-grey
+      'rgba(160, 182, 228, 0.54)', // footer — mediums, at the absolute time's contrast
       '#a123aa', // extras pill
       '#0847e5', // standard pill — app prayer.activeBackground
       'rgba(10, 30, 140, 0.5)', // pill depth shadow — standard, deep blue
@@ -278,10 +278,10 @@ describe('palette literals', () => {
       '#ff69b4',
       'rgba(173, 193, 254, 0.54)',
       'rgba(173, 193, 254, 0.6)',
-      'rgba(156, 169, 222, 0.38)',
+      'rgba(173, 193, 254, 0.54)',
       'rgba(160, 182, 228, 0.54)',
       'rgba(160, 182, 228, 0.6)',
-      'rgba(146, 164, 212, 0.38)',
+      'rgba(160, 182, 228, 0.54)',
       '#a123aa',
       '#0847e5',
       'rgba(10, 30, 140, 0.5)',

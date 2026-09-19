@@ -163,7 +163,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     eyebrow: '#ff69b4',
     hero: '#ffffff',
     secondary: isMedium ? 'rgba(160, 182, 228, 0.54)' : 'rgba(173, 193, 254, 0.54)',
-    footer: isMedium ? 'rgba(146, 164, 212, 0.38)' : 'rgba(156, 169, 222, 0.38)',
+    // The footer reads at the absolute time's contrast on dark: the old
+    // 0.38-alpha wash faded into the card (owner finding 2026-09-19)
+    footer: isMedium ? 'rgba(160, 182, 228, 0.54)' : 'rgba(173, 193, 254, 0.54)',
     staleIcon: '#ff69b4',
     rowPassed: '#ffffff',
     rowUpcoming: isMedium ? 'rgba(160, 182, 228, 0.6)' : 'rgba(173, 193, 254, 0.6)',
@@ -214,6 +216,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // center between equal Spacers (see the list column below). The corner
   // radius keeps the app's pill-to-row proportion.
   const ROW_HEIGHT = 22;
+  // Android rows sit exactly as tall as the active pill (24dp), so every
+  // slot in the list is uniform and the pill never crowds its neighbours
+  // (owner finding 2026-09-19); iOS keeps its 22pt rows - the owner's
+  // reference look
+  const A_ROW_HEIGHT = 24;
   const ROW_TEXT_SIZE = 13;
   const ROW_CORNER_RADIUS = 6;
   const LIST_WIDTH = 162;
@@ -401,11 +408,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
       return (
-        <Row verticalAlignment='center' modifiers={[height(ROW_HEIGHT)]}>
-          <Box contentAlignment='centerStart' modifiers={[height(ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
+        <Row verticalAlignment='center' modifiers={[height(A_ROW_HEIGHT)]}>
+          <Box contentAlignment='centerStart' modifiers={[height(A_ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
             {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
           </Box>
-          <Box contentAlignment='centerEnd' modifiers={[height(ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
+          <Box contentAlignment='centerEnd' modifiers={[height(A_ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
             {ATimeText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
           </Box>
         </Row>
@@ -425,11 +432,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
               <Column>
-                <Spacer modifiers={[height(Math.max(0, activeIndex * ROW_HEIGHT - PILL_VPAD))]} />
+                <Spacer modifiers={[height(Math.max(0, activeIndex * A_ROW_HEIGHT - PILL_VPAD))]} />
                 <AImageEl
                   source={{ uri: A_PILL_NAME }}
                   contentScale='fillBounds'
-                  modifiers={[fillMaxWidth(), height(ROW_HEIGHT + 2 * PILL_VPAD)]}
+                  modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT + 2 * PILL_VPAD)]}
                 />
               </Column>
               <Column modifiers={[APad(12, 0, 12, 0)]}>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
