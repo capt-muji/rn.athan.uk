@@ -79,7 +79,7 @@ const getLockWidgets = (): LockWidgets => {
 /** Days of prayer boundaries scheduled ahead — the widget re-reads this
  *  stored timeline when it runs out, so this is how long the widget stays
  *  correct without the app opening. */
-const TIMELINE_DAYS = 3;
+const TIMELINE_DAYS = 14;
 
 /**
  * Reads the slice of in-app settings the widgets mirror. The widget has no
