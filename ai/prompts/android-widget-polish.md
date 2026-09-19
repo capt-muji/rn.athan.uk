@@ -49,12 +49,21 @@ The widget cards' four corners are "very bendy, very soft, too rounded" on Andro
 radius stronger (smaller) in the generator (`CARD_RADIUS_PT = 22` today; pick the sharper
 value in planning against iOS's look on the 3T).
 
-## 6. Resizable + square-ish smalls
+## 6. Grid-aligned sizing: small = 50% width, medium = 100% width, resizable
 
-Make the Android widgets resizable (`resizeMode`). The 4 smalls currently land thin-and-tall
-(2 cells wide x 3 tall on the 3T launcher, 364x540px); the owner wants them closer to square
-like iOS. Planning must decide the min-dimension recipe (minWidth/minHeight/targetCell) that
-lands squarer spans on OxygenOS and allows resizing; mediums resizable too.
+Make the Android widgets resizable AND aligned to the home-screen grid:
+- SMALLS: 50% of screen width (2 of 4 columns). Today they land thin-and-tall (2 cells wide
+  x 3 tall on the 3T launcher, 364x540px); the owner wants them closer to square like iOS.
+- MEDIUMS: 100% of screen width. Today they take ~90% and leave an unusable ~10% strip where
+  nothing else fits - "we might as well make it extend to 100%".
+
+RESEARCH ITEM for planning (the owner asked for the investigation): how much control the
+appwidget-provider declaration (`minWidth`/`minHeight`/`targetCellWidth`/`targetCellHeight`)
+actually gives over the launcher's chosen span on OEM launchers (OxygenOS 3T first, stock
+Android second), and what recipe lands 2-of-4 and 4-of-4 spans reliably. `targetCell*` only
+applies on API 31+; the 3T is API 28, so minWidth arithmetic is the lever there. Also verify
+how `resizeMode` interacts with the initial span. Decide the final recipe in planning and
+prove it on the 3T with screenshots.
 
 ## 7. Stale card centering
 
