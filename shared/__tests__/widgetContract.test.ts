@@ -111,7 +111,8 @@ describe('widget function closure', () => {
             parentType === 'TSTypeReference' ||
             parentType === 'TSQualifiedName' ||
             parentType === 'TSTypeParameterInstantiation' ||
-            parentType === 'TSTypeAliasDeclaration'
+            parentType === 'TSTypeAliasDeclaration' ||
+            parentType === 'TSFunctionType'
           ) {
             return;
           }
