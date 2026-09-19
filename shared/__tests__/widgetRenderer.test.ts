@@ -205,26 +205,24 @@ describe('home widget renderer', () => {
 
   describe('iOS path (swift-ui globals)', () => {
     const layouts = loadLayouts('ios');
+    const renderHome = (props: unknown, family: string): unknown =>
+      renderTree(layouts.PrayerWidget(props, { colorScheme: 'light', widgetFamily: family }));
+    const liveProps = () => ({
+      v: 4,
+      schedule: 'standard' as const,
+      theme: 'light' as const,
+      nextName: 'Asr',
+      nextTime: '15:20',
+      nextEpochMs: at(DAY_ONE, '15:20'),
+      prevEpochMs: at(DAY_ONE, '12:45'),
+      countdownLabel: '1h 12m',
+      dateLabel: 'Saturday, 17 October',
+      prayers: TIMES.map(([name, time]) => ({ name, time })),
+      activeIndex: 3,
+    });
 
     it('renders the precomputed countdown label from props in the swift-ui composition', () => {
-      const tree = renderTree(
-        layouts.PrayerWidget(
-          {
-            v: 4,
-            schedule: 'standard',
-            theme: 'light',
-            nextName: 'Asr',
-            nextTime: '15:20',
-            nextEpochMs: at(DAY_ONE, '15:20'),
-            prevEpochMs: at(DAY_ONE, '12:45'),
-            countdownLabel: '1h 12m',
-            dateLabel: 'Saturday, 17 October',
-            prayers: TIMES.map(([name, time]) => ({ name, time })),
-            activeIndex: 3,
-          },
-          { colorScheme: 'light', widgetFamily: 'systemSmall' }
-        )
-      );
+      const tree = renderHome(liveProps(), 'systemSmall');
 
       const markers = new Set(collect(tree).map((node) => node.marker));
       expect(markers.has('VStack')).toBe(true);
@@ -232,6 +230,107 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('1h 12m');
       expect(textsOf(tree)).toContain('Asr');
       expect(textsOf(tree)).toContain('15:20');
+      // Footer shortens the long label: "Saturday, 17 October" -> "Saturday · Lon"
+      // (single-token day labels render whole; two-token ones shorten, below)
+      expect(textsOf(tree)).toContain('Saturday · Lon');
+    });
+
+    it('hides the countdown when the entry predates the label field', () => {
+      const tree = renderHome({ ...liveProps(), countdownLabel: '' }, 'systemSmall');
+      const all = textsOf(tree);
+      expect(all).toContain('Asr');
+      expect(all).toContain('15:20');
+      expect(all).not.toContain('1h 12m');
+    });
+
+    it('renders the medium day list with the active pill in the standard palette', () => {
+      const tree = renderHome(liveProps(), 'systemMedium');
+      const all = textsOf(tree);
+      for (const [name, time] of TIMES) {
+        expect(all).toContain(name);
+        expect(all).toContain(time);
+      }
+      const pill = collect(tree).find((node) => node.marker === 'RoundedRectangle');
+      expect(pill).toBeDefined();
+      const styles = (pill?.props.modifiers as Array<{ modifier: string; value: unknown }>) ?? [];
+      expect(styles.some((style) => style.modifier === 'foregroundStyle' && style.value === '#4f46e5')).toBe(true);
+    });
+
+    it('colors the extras medium pill rose', () => {
+      const tree = renderHome({ ...liveProps(), schedule: 'extra' }, 'systemMedium');
+      const pill = collect(tree).find((node) => node.marker === 'RoundedRectangle');
+      const styles = (pill?.props.modifiers as Array<{ modifier: string; value: unknown }>) ?? [];
+      expect(styles.some((style) => style.modifier === 'foregroundStyle' && style.value === '#db2777')).toBe(true);
+    });
+
+    it('falls back to the hero composition when the day list is not renderable', () => {
+      const tree = renderHome({ ...liveProps(), activeIndex: -1 }, 'systemMedium');
+      expect(collect(tree).some((node) => node.marker === 'RoundedRectangle')).toBe(false);
+      expect(textsOf(tree)).toContain('1h 12m');
+    });
+
+    it('draws the blur orbs on dark and none on light', () => {
+      const dark = renderHome({ ...liveProps(), theme: 'dark' }, 'systemSmall');
+      const light = renderHome(liveProps(), 'systemSmall');
+      expect(collect(dark).filter((node) => node.marker === 'Circle').length).toBe(4);
+      expect(collect(light).filter((node) => node.marker === 'Circle').length).toBe(0);
+    });
+
+    it('draws the oversized medium orbs on a dark medium card', () => {
+      const darkMedium = renderHome({ ...liveProps(), theme: 'dark' }, 'systemMedium');
+      expect(collect(darkMedium).filter((node) => node.marker === 'Circle').length).toBe(4);
+    });
+
+    it('renders a legacy entry with no list fields as the hero alone and the bare city footer', () => {
+      const legacy = {
+        v: 4,
+        schedule: 'standard' as const,
+        theme: 'light' as const,
+        nextName: 'Asr',
+        nextTime: '15:20',
+        nextEpochMs: at(DAY_ONE, '15:20'),
+        prevEpochMs: at(DAY_ONE, '12:45'),
+        countdownLabel: '1h 12m',
+        dateLabel: '',
+      };
+      const tree = renderHome(legacy, 'systemMedium');
+      const all = textsOf(tree);
+      expect(all).toContain('1h 12m');
+      expect(all).toContain('Lon');
+      expect(collect(tree).some((node) => node.marker === 'RoundedRectangle')).toBe(false);
+    });
+
+    it('shortens a Hijri footer to the month prefix', () => {
+      const tree = renderHome({ ...liveProps(), dateLabel: 'Rajab 1, 1448' }, 'systemSmall');
+      expect(textsOf(tree)).toContain('Raj 1 · Lon');
+    });
+
+    it('renders the stale card per family', () => {
+      const small = renderHome({ ...liveProps(), stale: true }, 'systemSmall');
+      expect(textsOf(small)).toContain('Out of date');
+      expect(textsOf(small)).toContain('Open Athan');
+      expect(textsOf(small)).toContain('to refresh');
+
+      const medium = renderHome({ ...liveProps(), stale: true }, 'systemMedium');
+      expect(textsOf(medium)).toContain('Open Athan to refresh');
+    });
+
+    it('degrades a legacy entry without segment bounds to the stale card', () => {
+      const legacy = { ...liveProps() } as Record<string, unknown>;
+      delete legacy.nextEpochMs;
+      expect(textsOf(renderHome(legacy, 'systemSmall'))).toContain('Out of date');
+    });
+
+    it('renders the neutral card without props and on a rendering error', () => {
+      expect(textsOf(renderHome(null, 'systemSmall'))).toContain('Prayer times for London');
+
+      const poisoned: Record<string, unknown> = { ...liveProps() };
+      Object.defineProperty(poisoned, 'dateLabel', {
+        get(): string {
+          throw new Error('boom');
+        },
+      });
+      expect(textsOf(renderHome(poisoned, 'systemSmall'))).toContain('Open the app to refresh');
     });
   });
 
@@ -276,6 +375,37 @@ describe('home widget renderer', () => {
       expect(all).toContain('to refresh');
     });
 
+    it('renders the one-line stale card at medium size', () => {
+      freezeNow(androidProps({}).horizonEpochMs + 60_000);
+      const all = textsOf(renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' })));
+      expect(all).toContain('Open Athan to refresh');
+    });
+
+    it('picks the dark palette from the system scheme when props are absent', () => {
+      const tree = renderTree(layouts.PrayerWidget(null, { colorScheme: 'dark' }));
+      const images = collect(tree).filter((node) => node.marker === 'Image');
+      const sources = images.map((node) => (node.props.source as { uri?: string })?.uri);
+      expect(sources).toContain('athan_widget_card_dark_small');
+    });
+
+    it('renders the dark card under the android runtime', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ theme: 'dark' }), { colorScheme: 'light' }));
+      const sources = collect(tree)
+        .filter((node) => node.marker === 'Image')
+        .map((node) => (node.props.source as { uri?: string })?.uri);
+      expect(sources).toContain('athan_widget_card_dark_small');
+    });
+
+    it('falls back to the bare city footer when the day label is empty', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const blank = androidProps({});
+      for (const day of blank.days) {
+        day.dateLabel = '';
+      }
+      expect(textsOf(renderTree(layouts.PrayerWidget(blank, { colorScheme: 'light' })))).toContain('Lon');
+    });
+
     it('stamps the composition from props.size, not widgetFamily', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const small = collect(
@@ -313,6 +443,42 @@ describe('home widget renderer', () => {
       const all = textsOf(renderTree(layouts.PrayerWidget(null, { colorScheme: 'light' })));
       expect(all).toContain('Athan');
       expect(all).toContain('Prayer times for London');
+    });
+
+    it('renders the neutral card for an iOS-shaped entry under the android runtime', () => {
+      const all = textsOf(
+        renderTree(
+          layouts.PrayerWidget(
+            { v: 4, schedule: 'standard', theme: 'light', nextName: 'Asr', nextTime: '15:20' },
+            { colorScheme: 'light' }
+          )
+        )
+      );
+      expect(all).toContain('Athan');
+      expect(all).toContain('Prayer times for London');
+    });
+
+    it('labels a sub-hour countdown without an hours segment', () => {
+      freezeNow(at(DAY_ONE, '15:01'));
+      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toContain('19m');
+    });
+
+    it('labels an exact-hour countdown without a minutes segment', () => {
+      freezeNow(at(DAY_ONE, '14:20'));
+      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toContain('1h');
+    });
+
+    it('shortens a two-token Hijri-style footer to the month prefix', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const hijri = androidProps({});
+      const firstDay = hijri.days[0];
+      if (!firstDay) throw new Error('fixture day missing');
+      firstDay.dateLabel = 'Rajab 1, 1448';
+      const nextDay = hijri.days.find((day) =>
+        day.rows.some((row) => row === day.rows.find((r) => r.epochMs !== null && r.epochMs > at(DAY_ONE, '14:08')))
+      );
+      if (nextDay) nextDay.dateLabel = 'Rajab 1, 1448';
+      expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1 · Lon');
     });
   });
 });
