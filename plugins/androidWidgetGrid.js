@@ -26,18 +26,12 @@ const withAndroidWidgetGrid = (config) => {
         const full = path.join(xmlDir, file);
         const source = fs.readFileSync(full, 'utf8');
         if (!source.includes('<appwidget-provider')) continue;
-        // minResize defaults to minWidth, which would pin each kind to its
-        // default span and block the horizontal 50%-to-100% resize (owner
-        // ruling 2026-09-19): 160dp lets every kind shrink to the small span
-        let stripped = source
+        // targetCell is grid-relative (a fixed cell count breaks the
+        // fractional 50%/100% spans on 4, 5 and 8 column launchers alike)
+        // and Android 12+ prefers it over minWidth, so it never ships
+        const stripped = source
           .replace(/\s+android:targetCellWidth="[^"]*"/g, '')
           .replace(/\s+android:targetCellHeight="[^"]*"/g, '');
-        if (!stripped.includes('android:minResizeWidth')) {
-          stripped = stripped.replace(
-            /(\s+android:minHeight="[^"]*")/,
-            '$1\n  android:minResizeWidth="160dp"\n  android:minResizeHeight="110dp"'
-          );
-        }
         if (stripped !== source) fs.writeFileSync(full, stripped);
       }
       return modConfig;

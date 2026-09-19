@@ -8,7 +8,7 @@ bitmaps. Every color here is a byte-identical literal from the palette in
 widgets/PrayerWidget.tsx; shared/__tests__/widgetAssets.test.ts pins that
 this file's literals stay a subset of the layout's palette.
 
-Scale: 3x the dp box (small 110dp, medium 250x110dp, pill 140x26dp, moon
+Scale: 3x the dp box (small 110dp, medium 250x110dp, pill 140x24dp, moon
 26dp). Regenerate with Pillow after changing the palette: python3
 scripts/generate-widget-assets.py
 """
@@ -21,9 +21,9 @@ from PIL import Image, ImageDraw, ImageFilter
 SCALE = 3
 SMALL = 110
 MEDIUM_W, MEDIUM_H = 250, 110
-PILL_W, PILL_H = 140, 26
+PILL_W, PILL_H = 140, 24
 MOON = 26
-CARD_RADIUS_PT = 16
+CARD_RADIUS_PT = 13
 PILL_RADIUS_PT = 4
 
 def css(color: str) -> tuple:
