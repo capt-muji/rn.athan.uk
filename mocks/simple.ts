@@ -37,11 +37,13 @@ export const addMinutes = (from: Date, minutesToAdd: number) =>
 /**
  * Every day around the download, with TODAY's six rows seeded from it
  *
- * Asr is the first whole minute at least 60 seconds after the download, since times carry no seconds, so Asr is
- * always next on opening the app, 60 to 119 seconds away. The other five sit a minute apart either side of it.
+ * Asr is the first whole minute at least 3 minutes after the download, since times carry no seconds, so Asr is
+ * always next on opening the app, 180 to 239 seconds away: a 3-minute runway to watch the countdown. The
+ * three prayers before it sit a minute apart ending one minute before the download (Fajr -3m, Sunrise -2m,
+ * Dhuhr -1m from the download), and Magrib and Isha follow Asr a minute apart.
  */
 const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
-  const asrAt = new Date(Math.ceil((downloadedAt.getTime() + MINUTE) / MINUTE) * MINUTE);
+  const asrAt = new Date(Math.ceil((downloadedAt.getTime() + 3 * MINUTE) / MINUTE) * MINUTE);
 
   const dayBeforeYesterday = formatDateShort(subDays(downloadedAt, 2));
   const yesterday = formatDateShort(subDays(downloadedAt, 1));
@@ -89,9 +91,9 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(asrAt, -4),
-      sunrise: addMinutes(asrAt, -3),
-      dhuhr: addMinutes(asrAt, -2),
+      fajr: addMinutes(asrAt, -6),
+      sunrise: addMinutes(asrAt, -5),
+      dhuhr: addMinutes(asrAt, -4),
       asr: addMinutes(asrAt, 0),
       magrib: addMinutes(asrAt, 1),
       isha: addMinutes(asrAt, 2),
