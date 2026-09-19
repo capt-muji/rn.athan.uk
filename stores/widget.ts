@@ -377,7 +377,7 @@ const nextFutureEpochMs = (
   let earliest: number | null = null;
   for (const day of snapshot.days) {
     for (const row of day.rows) {
-      if (row.epochMs === null || row.epochMs <= nowMs) continue;
+      if (row.epochMs <= nowMs) continue;
       if (earliest === null || row.epochMs < earliest) earliest = row.epochMs;
     }
   }
@@ -450,7 +450,7 @@ const pushScheduleAndroid = async (
     const nextRow = (() => {
       for (const day of snapshot.days) {
         for (const row of day.rows) {
-          if (row.epochMs !== null && row.epochMs === nextEpoch) return row;
+          if (row.epochMs === nextEpoch) return row;
         }
       }
       return null;
