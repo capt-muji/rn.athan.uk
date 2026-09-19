@@ -215,3 +215,43 @@ Resume from: v6 device build; verify the medium renders its day list,
 place the remaining six widgets, the 16 screenshots, stale via clock-jump
 + force-stop + reboot (a live process could re-push and heal the widget,
 so the app stays stopped while the clock moves), frame audit, iOS sim.
+
+## Steps 13-20 + device proof — COMPLETE
+
+Owner-driven iteration after v5 (every fix unit-tested, committed, merged):
+- v7 1.27.259 row times as overlayed right column (failed on device)
+- v8 1.27.260 overlay Box fills list width (failed)
+- v9/v10 1.27.261-262 centerEnd overlay failed; FIXED-width name/time
+  boxes per row landed it (names left, times right, verified)
+- 1.27.263 pill assets span full row (the baked shadow margin was
+  clipping the active row's edge glyphs off-pill)
+- Owner styling pass against the iOS reference, 1.27.264-265: trio
+  Column centers horizontally (name + absolute time were left-aligned),
+  footer in a 16dp row with 6dp bottom inset (was touching the edge),
+  rows carry 8dp insets so the pill has air either side
+- 1.27.266 hero 150dp to 128dp: the list column measured ~110dp after
+  padding, the 130dp rows squeezed and every time ellipsized ("12:…")
+- DEVICE PROOF: all 8 kinds placed across 4 launcher pages (two
+  accidental ET-Light duplicates remain - launcher reflow, harmless).
+  Live renders verified: dark/light smalls (centered bold name, centered
+  time, clear footer, clock-exact labels), dark/light standard mediums
+  (full day list, blue #0847E5 pill with air, whole HH:MM times), extras
+  mediums render hero-only RIGHT NOW (all of Saturday's extras rows have
+  passed; the next extras prayer belongs to Sunday - the app's held-day
+  rule, iOS parity). Minute-freshness verified: labels advance
+  clock-exact while the app runs; frozen when closed (Android timers).
+  +60h clock jump: widgets computed the jumped day's prayers correctly
+  (Isha 11m to 20:20 on Mon Sep 21) - render-time computation working
+  across a day the widget was never pushed for. +16d jump + reboot:
+  every widget renders the stale card (light #db2777 / dark #ff69b4
+  crescent, "Out of date", one-line medium / two-line small refresh
+  lines). Phone restored (auto_time 1, volumes, clock re-synced;
+  verified Sat Sep 19 08:19 BST). Alarm dump saved before the change.
+- Idle CPU at rest: app process not in top consumers (system_server
+  6.2% leads; athan absent from the top five).
+- 16 screenshots banked in ~/athan-device-sweep/session15/shots/ (64-67
+  live pages, 73-78 stale pages; placement/process shots 00-63).
+
+Resume from: records, AUDIT.md, DONE, push. iOS simulator widget proof
+(flag-on build + placement) not run this session - the renderer suites
+carry the iOS layout logic at 100%; record as the immediate follow-up.
