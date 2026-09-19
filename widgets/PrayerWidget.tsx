@@ -432,7 +432,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           </Box>
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
-              <Column>
+              <Column modifiers={[APad(0, 0.5, 0, 0)]}>
                 <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
                 <AImageEl
                   source={{ uri: A_PILL_NAME }}
