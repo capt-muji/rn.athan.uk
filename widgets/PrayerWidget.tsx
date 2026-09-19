@@ -337,7 +337,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     for (const day of input.days) {
       for (const row of day.rows) {
         const epoch = row.epochMs;
-        if (epoch === null || epoch <= nowMs) continue;
+        // 0 is the unavailable encoding; snapshots stored by older builds may still hold null
+        if (!(epoch > nowMs)) continue;
         if (nextEpoch === null || epoch < nextEpoch) {
           next = row;
           nextEpoch = epoch;
@@ -346,7 +347,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       }
     }
 
-    if (nowMs > input.horizonEpochMs || next === null || next.epochMs === null) {
+    if (nowMs > input.horizonEpochMs || next === null || !(next.epochMs > 0)) {
       return <AStale />;
     }
 

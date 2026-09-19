@@ -125,17 +125,19 @@ export interface PrayerWidgetProps {
 }
 
 /**
- * One row of the Android widget's carried data. `epochMs` is null for rows
+ * One row of the Android widget's carried data. `epochMs` is 0 for rows
  * whose time could not be read: they render as `--:--` and can never be the
- * next prayer.
+ * next prayer (0 predates every epoch the app deals in). JSON null cannot
+ * cross the Kotlin bridge nested inside the snapshot's maps and lists, so
+ * 0 is the unavailable encoding.
  */
 export interface AndroidWidgetDayRow {
   /** English prayer name, e.g. "Fajr" */
   name: string;
   /** Prayer time in HH:mm, or "--:--" when unreadable */
   time: string;
-  /** The prayer's moment as epoch ms, or null when the row is unreadable */
-  epochMs: number | null;
+  /** The prayer's moment as epoch ms, or 0 when the row is unreadable */
+  epochMs: number;
 }
 
 /**
