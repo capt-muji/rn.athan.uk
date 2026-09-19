@@ -203,7 +203,7 @@ describe('app config android widget resolution', () => {
       // the only lever, so no targetCell keys exist and both axes resize
       expect(android.resizeMode).toBe('both');
       expect(android.initialLayout).toBe('./widgets/PrayerWidget');
-      expect(android.minWidth).toBe(/Medium/.test(String(widget.name)) ? 400 : 160);
+      expect(android.minWidth).toBe(/Medium/.test(String(widget.name)) ? 310 : 160);
       expect(android.minHeight).toBe(110);
       expect(android.targetCellWidth).toBeUndefined();
       expect(android.targetCellHeight).toBeUndefined();
