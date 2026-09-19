@@ -1,0 +1,108 @@
+diff --git a/node_modules/expo-widgets/ios/Widgets/EntryView.swift b/node_modules/expo-widgets/ios/Widgets/EntryView.swift
+index 0e6138e..c14364f 100644
+--- a/node_modules/expo-widgets/ios/Widgets/EntryView.swift
++++ b/node_modules/expo-widgets/ios/Widgets/EntryView.swift
+@@ -2,6 +2,54 @@ import SwiftUI
+ import ExpoModulesCore
+ import WidgetKit
+ 
++/// Caches the view built for one entry render.
++///
++/// SwiftUI evaluates `body` whenever the view is invalidated, and every
++/// evaluation here re-runs the JS layout, rebuilds the whole native view tree
++/// and re-converts every node's props through the dynamic props machinery.
++/// That is milliseconds for a handful of views and seconds for a few dozen, so
++/// a moderately sized widget exhausts the extension's CPU budget (50% over
++/// 180s) and iOS terminates it mid-render. WidgetKit then has no render to
++/// show and falls back to its "Please adopt containerBackground API"
++/// diagnostic, which makes a pure performance failure look like a missing
++/// modifier.
++///
++/// The render is a pure function of the layout, the entry's props and the
++/// environment, so repeat evaluations can reuse the result. The key covers all
++/// three, and the short lifetime bounds how long a timeline pushed seconds ago
++/// could be served from an older render.
++private final class WidgetsRenderCache {
++  static let shared = WidgetsRenderCache()
++
++  private struct CachedRender {
++    let view: WidgetsDynamicView
++    let storedAt: Date
++  }
++
++  private let lock = NSLock()
++  private var renders: [String: CachedRender] = [:]
++  /// Enough for the entries WidgetKit renders in one pass; cleared wholesale
++  /// rather than evicted one by one, because the cost of a miss is one render.
++  private let capacity = 16
++  private let lifetime: TimeInterval = 5
++
++  func view(forKey key: String, build: () -> WidgetsDynamicView) -> WidgetsDynamicView {
++    lock.lock()
++    defer { lock.unlock() }
++
++    if let cached = renders[key], Date().timeIntervalSince(cached.storedAt) < lifetime {
++      return cached.view
++    }
++
++    let built = build()
++    if renders.count >= capacity {
++      renders.removeAll()
++    }
++    renders[key] = CachedRender(view: built, storedAt: Date())
++    return built
++  }
++}
++
+ public struct WidgetsEntryView: View {
+   @Environment(\.self) var environment
+   var entry: WidgetsTimelineProvider.Entry
+@@ -16,8 +64,8 @@ public struct WidgetsEntryView: View {
+     return env
+   }
+ 
+-  private var widgetEnvironmentString: String? {
+-    guard let data = try? JSONSerialization.data(withJSONObject: widgetEnvironment),
++  private func environmentString(for environment: [String: Any]) -> String? {
++    guard let data = try? JSONSerialization.data(withJSONObject: environment),
+           let jsonString = String(data: data, encoding: .utf8) else {
+         return nil
+     }
+@@ -25,11 +73,32 @@ public struct WidgetsEntryView: View {
+   }
+ 
+   public var body: some View {
+-    if let layout = WidgetsLayoutRegistry.layout(for: entry.name) {
+-      let node = evaluateLayout(layout: layout, props: entry.props, environment: widgetEnvironment)
+-      WidgetsDynamicView(name: entry.name, kind: .widget, node: node, entryIndex: entry.entryIndex, environmentString: widgetEnvironmentString)
+-    } else {
+-      WidgetsDynamicView(name: entry.name, kind: .widget, node: createRedBox(message: "No layout found for \(WidgetsStorage.appGroupIdentifier ?? "")::\(entry.name)"), entryIndex: entry.entryIndex, environmentString: widgetEnvironmentString)
++    // Built once per evaluation: the environment dictionary is read twice
++    // otherwise, once for the layout call and once for its JSON form.
++    let resolvedEnvironment = widgetEnvironment
++    let resolvedEnvironmentString = environmentString(for: resolvedEnvironment)
++    let entryTimestamp = Int(entry.date.timeIntervalSince1970 * 1000)
++    let cacheKey = "\(entry.name)|\(entry.entryIndex ?? -1)|\(entryTimestamp)|\(resolvedEnvironmentString ?? "")"
++
++    WidgetsRenderCache.shared.view(forKey: cacheKey) {
++      guard let layout = WidgetsLayoutRegistry.layout(for: entry.name) else {
++        return WidgetsDynamicView(
++          name: entry.name,
++          kind: .widget,
++          node: createRedBox(message: "No layout found for \(WidgetsStorage.appGroupIdentifier ?? "")::\(entry.name)"),
++          entryIndex: entry.entryIndex,
++          environmentString: resolvedEnvironmentString
++        )
++      }
++
++      let node = evaluateLayout(layout: layout, props: entry.props, environment: resolvedEnvironment)
++      return WidgetsDynamicView(
++        name: entry.name,
++        kind: .widget,
++        node: node,
++        entryIndex: entry.entryIndex,
++        environmentString: resolvedEnvironmentString
++      )
+     }
+   }
+ }
