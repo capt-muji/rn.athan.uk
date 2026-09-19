@@ -173,6 +173,8 @@ describe('app config android widget resolution', () => {
     expect(entry).not.toBeNull();
     expect(entry?.[1].enableAndroid).toBe(true);
     expect(config.ios).toBeUndefined();
+    expect(pluginNames(config)).toContain('./plugins/androidWidgetAssets');
+    expect(pluginNames(config)).toContain('./plugins/androidWidgetGrid');
 
     const widgets = (entry?.[1].widgets as Array<Record<string, unknown>>) ?? [];
     const home = widgets.filter((widget) => widget.android != null);
@@ -192,10 +194,14 @@ describe('app config android widget resolution', () => {
     );
     for (const widget of home) {
       const android = widget.android as Record<string, unknown>;
-      expect(android.resizeMode).toBe('none');
+      // Grid-agnostic sizing (owner ruling 2026-09-19): minWidth arithmetic is
+      // the only lever, so no targetCell keys exist and both axes resize
+      expect(android.resizeMode).toBe('both');
       expect(android.initialLayout).toBe('./widgets/PrayerWidget');
-      expect(android.targetCellWidth).toBe(/Medium/.test(String(widget.name)) ? 4 : 2);
-      expect(android.targetCellHeight).toBe(2);
+      expect(android.minWidth).toBe(/Medium/.test(String(widget.name)) ? 400 : 160);
+      expect(android.minHeight).toBe(110);
+      expect(android.targetCellWidth).toBeUndefined();
+      expect(android.targetCellHeight).toBeUndefined();
     }
     for (const lock of locks) {
       expect(lock.android).toBeNull();

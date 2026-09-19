@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.274",
+    "version": "1.27.275",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -207,11 +207,9 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 110,
+                "minWidth": 160,
                 "minHeight": 110,
-                "targetCellWidth": 2,
-                "targetCellHeight": 2,
-                "resizeMode": "none",
+                "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -224,11 +222,9 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 110,
+                "minWidth": 160,
                 "minHeight": 110,
-                "targetCellWidth": 2,
-                "targetCellHeight": 2,
-                "resizeMode": "none",
+                "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -241,11 +237,9 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 250,
+                "minWidth": 400,
                 "minHeight": 110,
-                "targetCellWidth": 4,
-                "targetCellHeight": 2,
-                "resizeMode": "none",
+                "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -258,11 +252,9 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 250,
+                "minWidth": 400,
                 "minHeight": 110,
-                "targetCellWidth": 4,
-                "targetCellHeight": 2,
-                "resizeMode": "none",
+                "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -275,11 +267,9 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 110,
+                "minWidth": 160,
                 "minHeight": 110,
-                "targetCellWidth": 2,
-                "targetCellHeight": 2,
-                "resizeMode": "none",
+                "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -292,11 +282,9 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 110,
+                "minWidth": 160,
                 "minHeight": 110,
-                "targetCellWidth": 2,
-                "targetCellHeight": 2,
-                "resizeMode": "none",
+                "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -309,11 +297,9 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 250,
+                "minWidth": 400,
                 "minHeight": 110,
-                "targetCellWidth": 4,
-                "targetCellHeight": 2,
-                "resizeMode": "none",
+                "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -326,11 +312,9 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 250,
+                "minWidth": 400,
                 "minHeight": 110,
-                "targetCellWidth": 4,
-                "targetCellHeight": 2,
-                "resizeMode": "none",
+                "resizeMode": "both",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
