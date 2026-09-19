@@ -65,7 +65,7 @@ describe('android widget assets', () => {
     // translucent literals below are deliberately NOT reused, so the exact
     // opaque forms are pinned instead of the subset rule.
     expect(generator).toContain('CARD_LIGHT = css("#fcfcfe")');
-    expect(generator).toContain('CARD_DARK = css("#1a1a5c")');
+    expect(generator).toContain('CARD_DARK = css("#352489")');
     expect(generator).toContain('CARD_RADIUS_PT = 13');
     // The pill carries vertical padding (1dp above and below its 22dp row)
     // and NO drop shadow on Android: 24dp tall, shadow-free.
@@ -79,7 +79,7 @@ describe('android widget assets', () => {
     expect(generatorColors.length).toBeGreaterThan(10);
 
     const outside = generatorColors.filter(
-      (color) => !layoutColors.has(color) && color !== '#fcfcfe' && color !== '#1a1a5c'
+      (color) => !layoutColors.has(color) && color !== '#fcfcfe' && color !== '#352489'
     );
     expect(outside).toEqual([]);
   });

@@ -19,9 +19,8 @@ import {
   type ModifierConfig,
   width,
 } from '@expo/ui/jetpack-compose/modifiers';
-import { Circle, HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+import { HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
-  blur,
   containerBackground,
   font,
   foregroundStyle,
@@ -33,7 +32,6 @@ import {
   multilineTextAlignment,
   offset,
   padding,
-  scaleEffect,
   shadow,
   strokeBorder,
   textCase,
@@ -58,8 +56,8 @@ import type { PrayerWidgetAndroidProps, PrayerWidgetProps } from '@/shared/widge
  * system appearance; only the props-less gallery placeholder falls back
  * to the system color scheme.
  *
- * systemSmall — a translucent card with soft orb glow, a centered trio
- * (bold prayer name, minute-ceil countdown hero, absolute HH:mm) over the
+ * systemSmall — a translucent card, a centered trio
+ * (bold prayer name, ticking countdown hero, absolute HH:mm) over the
  * day · city footer. Identical for both schedules.
  *
  * systemMedium — the left half repeats the small trio; the right half
@@ -133,21 +131,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const entry = props === null ? null : (props as PrayerWidgetProps);
 
   // Two self-contained palettes: text colors and the active-pill
-  // treatment. The orb lighting is DARK-only — the light cards sit on
-  // their plain translucent background. Fixed-size orbs are capped at
-  // 170pt — anything larger inflates the card ZStack past the system slot
-  // and pushes the standard list's flush footer into the card's bottom
-  // edge (verified at 185pt). The main orb rides high off-center
-  // (ambient light, not a spot); the bottom-left orb anchors near the
-  // left edge; the below-list orb sits centered under the day list to
-  // fill the dark bottom-center. Small cards mirror their bottom-left
-  // orb onto the bottom right at 75% strength to lift the dark corner.
+  // treatment.
   const LIGHT = {
     card: 'rgba(252, 252, 254, 0.92)',
     eyebrow: '#db2777',
     hero: '#1e1b2e',
     secondary: 'rgba(42, 68, 130, 0.42)',
-    footer: 'rgba(42, 68, 130, 0.34)',
+    footer: 'rgba(42, 68, 130, 0.255)',
     staleIcon: '#db2777',
     rowPassed: '#2f3d5c',
     rowUpcoming: 'rgba(42, 68, 130, 0.32)',
@@ -160,16 +150,17 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const DARK = {
-    card: 'rgba(26, 26, 92, 0.88)',
+    card: 'rgba(53, 36, 137, 0.88)',
     eyebrow: '#ff69b4',
     hero: '#ffffff',
-    secondary: isMedium ? 'rgba(160, 182, 228, 0.54)' : 'rgba(173, 193, 254, 0.54)',
-    // The footer reads at the absolute time's contrast on dark: the old
-    // 0.38-alpha wash faded into the card (owner finding 2026-09-19)
-    footer: isMedium ? 'rgba(160, 182, 228, 0.54)' : 'rgba(173, 193, 254, 0.54)',
+    // One blue-purple whisper per slot (owner ruling 2026-09-20): the
+    // absolute time is the base, upcoming rows sit a quarter fainter,
+    // the footer half — same tint, three strengths, both sizes
+    secondary: 'rgba(173, 193, 254, 0.54)',
+    footer: 'rgba(173, 193, 254, 0.27)',
     staleIcon: '#ff69b4',
     rowPassed: '#ffffff',
-    rowUpcoming: isMedium ? 'rgba(160, 182, 228, 0.6)' : 'rgba(173, 193, 254, 0.6)',
+    rowUpcoming: 'rgba(173, 193, 254, 0.405)',
     activeRowText: isExtra ? '#ffeaf4' : '#e3eaff',
     pillFill: isExtra ? '#a123aa' : '#0847e5',
     pillStroke: isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)',
@@ -179,37 +170,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       x: 0,
       y: 2,
     },
-    orbsSmall: {
-      top: 'rgba(128, 0, 255, 0.25)',
-      bottom: 'rgba(128, 0, 255, 0.45)',
-      center: 'rgba(165, 180, 252, 0.3)',
-      topSize: 85,
-      topY: -38,
-      bottomSize: 130,
-      bottomX: -70,
-      centerSize: 34,
-      corner: { color: 'rgba(128, 0, 255, 0.34)', size: 130, x: 70, y: 60, blur: 40 },
-    },
-    orbsMedium: {
-      top: 'rgba(155, 30, 255, 0.22)',
-      bottom: 'rgba(128, 0, 255, 0.45)',
-      center: 'rgba(130, 145, 240, 0.3)',
-      topSize: 165,
-      topY: -75,
-      bottomSize: 195,
-      bottomX: -110,
-      centerSize: 44,
-      corner: { color: 'rgba(55, 75, 235, 0.17)', size: 255, x: 95, y: 58, blur: 75 },
-    },
   };
 
   const palette = isDark ? DARK : LIGHT;
-  const orbs = isDark ? (isMedium ? DARK.orbsMedium : DARK.orbsSmall) : null;
-  // The top orb's x and blur anchor to each family's absolute card coords —
-  // center-relative offsets land it in the small card's corner on medium.
-  const topOrbX = isMedium ? -5 : 30;
-  const topOrbBlur = isMedium ? 60 : 38;
-  const bottomOrbBlur = isMedium ? 82 : 40;
 
   // Fixed row height keeps the floating pill's offset exact and the
   // spacing static. Six 22pt rows fill the systemMedium inner height
@@ -225,6 +188,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const A_ROW_HEIGHT = 24;
   const ROW_TEXT_SIZE = 13;
   const ROW_CORNER_RADIUS = 6;
+  // The iOS medium's list block, squeezed ~10% (owner ruling 2026-09-20):
+  // narrower rows pull the list's left edge in, and the freed width lets
+  // the hero trio center between the card's edge and the list.
+  const MEDIUM_LIST_WIDTH = 146;
+  // Android keeps the wider list: its rows are 24dp and its medium is wider.
   const LIST_WIDTH = 162;
   // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
   // one bottom offset, both sizes, both themes, both schedules.
@@ -461,7 +429,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
     return (
       <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
-        <Blobs />
         <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Spacer />
           <Image systemName='moon.stars.fill' size={26} color={palette.staleIcon} />
@@ -505,70 +472,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     }
     return androidRender(androidProps);
   }
-
-  // The glow lighting — three blurred orbs: a main orb above the hero, a
-  // bottom-left orb, and a small centered orb rising through the countdown.
-  // An orb larger than the card's layout height inflates the card's content
-  // area and pushes the footer toward the bottom edge — oversized orbs
-  // (the medium 165s–195s) therefore render from a 94pt layout frame scaled up
-  // via scaleEffect, a visual transform that cannot affect layout; the
-  // blur divides by the scale to land the same softness.
-  const OVERSIZE_ORB_LAYOUT = 94;
-  const orbLayoutSize = (size: number): number => (size > 155 ? OVERSIZE_ORB_LAYOUT : size);
-  const orbScale = (size: number): number => size / orbLayoutSize(size);
-
-  // The light theme renders no orbs — only the dark cards carry the blur.
-  const Blobs = () => {
-    if (!orbs) {
-      return null;
-    }
-    const bottomLayoutSize = orbLayoutSize(orbs.bottomSize);
-    const bottomScale = orbScale(orbs.bottomSize);
-    const topLayoutSize = orbLayoutSize(orbs.topSize);
-    const topScale = orbScale(orbs.topSize);
-    const cornerLayoutSize = orbLayoutSize(orbs.corner.size);
-    const cornerScale = orbScale(orbs.corner.size);
-
-    return (
-      <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-        <Circle
-          modifiers={[
-            frame({ width: topLayoutSize, height: topLayoutSize }),
-            scaleEffect(topScale),
-            offset({ x: topOrbX, y: orbs.topY }),
-            foregroundStyle(orbs.top),
-            blur(topOrbBlur / topScale),
-          ]}
-        />
-        <Circle
-          modifiers={[
-            frame({ width: bottomLayoutSize, height: bottomLayoutSize }),
-            scaleEffect(bottomScale),
-            offset({ x: orbs.bottomX, y: 60 }),
-            foregroundStyle(orbs.bottom),
-            blur(bottomOrbBlur / bottomScale),
-          ]}
-        />
-        <Circle
-          modifiers={[
-            frame({ width: orbs.centerSize, height: orbs.centerSize }),
-            offset({ x: 0, y: 8 }),
-            foregroundStyle(orbs.center),
-            blur(30),
-          ]}
-        />
-        <Circle
-          modifiers={[
-            frame({ width: cornerLayoutSize, height: cornerLayoutSize }),
-            scaleEffect(cornerScale),
-            offset({ x: orbs.corner.x, y: orbs.corner.y }),
-            foregroundStyle(orbs.corner.color),
-            blur(orbs.corner.blur / cornerScale),
-          ]}
-        />
-      </ZStack>
-    );
-  };
 
   try {
     // Every timeline entry has passed, or an older app version wrote the
@@ -624,7 +527,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // glyphs against the leading edge of it, and proportional digits would
     // shuffle the whole string sideways on every tick.
     const heroModifiers = [
-      font({ size: 26, weight: 'bold' }),
+      font({ size: 22, weight: 'bold' }),
       foregroundStyle(palette.hero),
       lineLimit(1),
       minimumScaleFactor(0.6),
@@ -744,23 +647,28 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
       return (
         <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
-          <Blobs />
           <HStack
             spacing={14}
             modifiers={[
               padding({ leading: 13, trailing: 20, top: 13, bottom: 13 }),
               frame({ maxWidth: Infinity, maxHeight: Infinity }),
             ]}>
+            {/* The hero column takes everything the list leaves, so the
+                trio centers exactly between the card's left edge and the
+                list — equal air both sides (owner ruling 2026-09-20). */}
             <HeroColumn />
-            {/* The list column: the row block (pill + rows) centers
+            {/* The list column: a fixed-width block flush against the
+                card's right inset. The row block (pill + rows) centers
                 vertically between equal Spacers — Infinity frames do not
                 make stacks greedy in the widget runtime, so Spacer-
                 centering is the only reliable vertical centering. The
                 standard 6-row list fills the card's inner height exactly;
                 the extras 4/5-row lists get symmetric insets. */}
-            <VStack spacing={0} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+            <VStack spacing={0} modifiers={[frame({ width: MEDIUM_LIST_WIDTH, maxHeight: Infinity })]}>
               <Spacer minLength={0} />
-              <ZStack alignment='top' modifiers={[frame({ width: LIST_WIDTH }), padding({ leading: 4, trailing: 4 })]}>
+              <ZStack
+                alignment='top'
+                modifiers={[frame({ width: MEDIUM_LIST_WIDTH }), padding({ leading: 4, trailing: 4 })]}>
                 <ActivePill />
                 <VStack spacing={0} alignment='leading' modifiers={[frame({ maxWidth: Infinity })]}>
                   {rows.map((row, index) => (
@@ -778,7 +686,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // systemSmall (or the medium fallback): the hero alone fills the card.
     return (
       <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
-        <Blobs />
         <VStack spacing={0} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <HeroColumn />
         </VStack>
