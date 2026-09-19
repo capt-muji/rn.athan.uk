@@ -92,9 +92,10 @@ Off that path:
 | 7 | 13. Agent tooling: `@expo/agent-cli` + dev-launcher niceties | `ai/plans/SDK58-PROGRAMME.md` §13 | `ai/plans/13-agent-tooling/PLAN.md` | DONE | `423e2db1` | 6 |
 | 8 | 14. Expo Modules 2.0 spike: `modules/tls13` | `ai/plans/SDK58-PROGRAMME.md` §14 | none (cancelled before a plan was written) | CANCELLED 2026-09-18 (owner): Modules 2.0 in SDK 58 beta is iOS-only, no Kotlin authoring API exists to migrate `modules/tls13` to, and the 3T TLS proof already ran in session 12; never re-queue | | nothing |
 | 9 | 15. Android home-screen widgets | `ai/plans/SDK58-PROGRAMME.md` §15 | `ai/plans/15-android-widgets/PLAN.md` | DONE | `0ec4fe70` | 6 |
-| 10 | 17. iOS widget timeline horizon: 14 to 30 days | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | NOT PLANNED | | 6 |
-| 11 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
-| 12 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
+| 10 | 15b. Android widget polish + self-refresh + mock build loop | `ai/prompts/android-widget-polish.md` | `ai/plans/15b-android-widget-polish/PLAN.md` | NOT PLANNED | | 9 |
+| 11 | 17. iOS widget timeline horizon: 14 to 30 days | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | NOT PLANNED | | 6 |
+| 12 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
+| 13 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
 
 - **Session 6b was planned under the previous rules**, on the morning of 2026-09-16, before "specify, do not
   dictate" was written that afternoon. Every one of its steps hands the executor finished files under
