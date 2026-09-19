@@ -220,6 +220,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // the hero take the full card and squeezed the day list to zero width in
   // Glance (caught on the 3T: the medium rendered hero-only, centered)
   const HERO_WIDTH = 150;
+  const ROW_NAME_WIDTH = 70;
+  const ROW_TIME_WIDTH = 44;
 
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
@@ -367,22 +369,21 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // fillMaxWidth Spacer between them starves the trailing time to zero
     // width in Glance (same starvation class as the hero column). Times
     // right-justify via textAlign on a full-width Text.
-    const ARowName = (row: ARow, index: number) => {
+    // One self-contained row: fixed-width name and time boxes with pure
+    // alignment (topStart / topEnd). Every fill-based or overlay-based
+    // two-column attempt mislaid the times in the Glance stack (three
+    // device-caught failures); fixed boxes with small slack render exactly.
+    const ARowLine = (row: ARow, index: number) => {
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
       return (
-        <Row verticalAlignment='center' modifiers={[height(ROW_HEIGHT), APad(10, 0, 10, 0)]}>
-          {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
-        </Row>
-      );
-    };
-
-    const ARowTime = (row: ARow, index: number) => {
-      const rowColor =
-        index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
-      return (
-        <Row verticalAlignment='center' modifiers={[fillMaxWidth(), height(ROW_HEIGHT), APad(10, 0, 10, 0)]}>
-          {ATimeText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
+        <Row verticalAlignment='center' modifiers={[height(ROW_HEIGHT)]}>
+          <Box contentAlignment='centerStart' modifiers={[height(ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
+            {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
+          </Box>
+          <Box contentAlignment='centerEnd' modifiers={[height(ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
+            {ATimeText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
+          </Box>
         </Row>
       );
     };
@@ -399,23 +400,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           </Box>
           <Box contentAlignment='center' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[fillMaxWidth()]}>
-              <Box contentAlignment='topStart' modifiers={[fillMaxWidth()]}>
-                <Column>
-                  <Spacer modifiers={[height(activeIndex * ROW_HEIGHT)]} />
-                  <AImageEl
-                    source={{ uri: A_PILL_NAME }}
-                    contentScale='fillBounds'
-                    modifiers={[fillMaxWidth(), height(ROW_HEIGHT)]}
-                  />
-                </Column>
-                <Column>{dayRows.map((row, index) => ARowName(row, index))}</Column>
-              </Box>
-              {/* Times hug the right edge via their own alignment box:
-                  fillWidth+textAlign proved unreliable in this stack (the
-                  times kept rendering at the names' origin on device) */}
-              <Box contentAlignment='centerEnd' modifiers={[fillMaxWidth(), fillMaxHeight()]}>
-                <Column>{dayRows.map((row, index) => ARowTime(row, index))}</Column>
-              </Box>
+              <Column>
+                <Spacer modifiers={[height(activeIndex * ROW_HEIGHT)]} />
+                <AImageEl
+                  source={{ uri: A_PILL_NAME }}
+                  contentScale='fillBounds'
+                  modifiers={[fillMaxWidth(), height(ROW_HEIGHT)]}
+                />
+              </Column>
+              <Column>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
             </Box>
           </Box>
         </Row>
