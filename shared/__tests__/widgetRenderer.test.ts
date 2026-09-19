@@ -439,6 +439,16 @@ describe('home widget renderer', () => {
       expect(mediumTexts).toContain('Dhuhr');
     });
 
+    it('picks the new day before noon: a morning render shows the second day, never yesterday', () => {
+      // Device-caught regression class (03:09 on the 3T): a noon-anchored
+      // day boundary kept yesterday on screen through every morning
+      freezeNow(at(DAY_TWO, '03:00'));
+      const morning = textsOf(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }))
+      );
+      expect(morning).toContain('Dhuhr');
+    });
+
     it('renders the neutral card without props', () => {
       const all = textsOf(renderTree(layouts.PrayerWidget(null, { colorScheme: 'light' })));
       expect(all).toContain('Athan');
