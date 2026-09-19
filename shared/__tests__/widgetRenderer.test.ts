@@ -571,14 +571,14 @@ describe('home widget renderer', () => {
       const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
       expect(pill).toBeDefined();
       expect(pill?.props.modifiers).toEqual(
-        expect.arrayContaining([{ modifier: 'fillMaxWidth' }, { modifier: 'height', value: 26 }])
+        expect.arrayContaining([{ modifier: 'fillMaxWidth' }, { modifier: 'height', value: 24 }])
       );
       // Asr is row 3: the pill sits 1dp above its row top (3*22 - 1)
       const spacerAbove = nodes.find(
         (node) =>
           node.marker === 'Spacer' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'height' && mod.value === 3 * 24 - 1
+            (mod) => mod.modifier === 'height' && mod.value === 3 * 24
           )
       );
       expect(spacerAbove).toBeDefined();

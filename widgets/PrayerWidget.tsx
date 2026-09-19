@@ -217,9 +217,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // radius keeps the app's pill-to-row proportion.
   const ROW_HEIGHT = 22;
   // Android rows sit exactly as tall as the active pill (24dp), so every
-  // slot in the list is uniform and the pill never crowds its neighbours
-  // (owner finding 2026-09-19); iOS keeps its 22pt rows - the owner's
-  // reference look
+  // slot in the list is uniform, the pill slot EQUALS the row slot (no
+  // overhang, no off-grid stretch: a 1px row-text offset the owner can see)
+  // and the air comes from the row being taller than its 13sp text; iOS
+  // keeps its 22pt rows - the owner's reference look
   const A_ROW_HEIGHT = 24;
   const ROW_TEXT_SIZE = 13;
   const ROW_CORNER_RADIUS = 6;
@@ -432,11 +433,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
               <Column>
-                <Spacer modifiers={[height(Math.max(0, activeIndex * A_ROW_HEIGHT - PILL_VPAD))]} />
+                <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
                 <AImageEl
                   source={{ uri: A_PILL_NAME }}
                   contentScale='fillBounds'
-                  modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT + 2 * PILL_VPAD)]}
+                  modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
                 />
               </Column>
               <Column modifiers={[APad(12, 0, 12, 0)]}>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
