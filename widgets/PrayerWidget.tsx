@@ -518,6 +518,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
   // The light theme renders no orbs — only the dark cards carry the blur.
   const Blobs = () => {
+    // DIAGNOSTIC 2026-09-19: orbs off on every kind, to see whether the four
+    // blurred circles are what pushes a render past WidgetKit's deadline.
+    return null;
+
+    // biome-ignore lint/correctness/noUnreachable: diagnostic short-circuit above
     if (!orbs) {
       return null;
     }
@@ -607,7 +612,29 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // standard 6-row list still lays the hero column 1pt short of the
     // smalls' inset, so a half-point lift restores it (the runtime applies
     // the offset at double strength).
-    const footerLift = isMedium && rows.length >= 6 ? 0.5 : 0;
+    // DIAGNOSTIC 2026-09-19: forced to 0. A 4-row cap left the standard
+    // mediums black while the 4-row extras mediums rendered, so row count is
+    // ruled out and this half-point offset is the only difference left.
+    const footerLift = 0;
+
+    // DIAGNOSTIC 2026-09-19: A/B of the two system-ticking text forms, which
+    // update every second with no timeline entries at all. Extras kinds render
+    // dateStyle 'relative', standard kinds render timerInterval. The swift-ui
+    // types only describe the string form, so the extra props ride this cast.
+    const TickingTextEl = Text as unknown as (elementProps: {
+      date?: Date;
+      dateStyle?: 'timer' | 'relative' | 'offset' | 'date' | 'time';
+      timerInterval?: { lower: Date; upper: Date };
+      countsDown?: boolean;
+      modifiers?: unknown[];
+    }) => ReactNode;
+
+    const heroModifiers = [
+      font({ size: 26, weight: 'bold' }),
+      foregroundStyle(palette.hero),
+      lineLimit(1),
+      minimumScaleFactor(0.6),
+    ];
 
     // The hero column — the small widget's centered trio plus the footer,
     // shared verbatim by both families so the countdown reads identically.
@@ -626,18 +653,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             ]}>
             {entry.nextName}
           </Text>
-          {typeof entry.countdownLabel === 'string' && entry.countdownLabel.length > 0 ? (
-            <Text
-              modifiers={[
-                font({ size: 26, weight: 'bold' }),
-                monospacedDigit(),
-                foregroundStyle(palette.hero),
-                lineLimit(1),
-                minimumScaleFactor(0.6),
-              ]}>
-              {entry.countdownLabel}
-            </Text>
-          ) : null}{' '}
+          {/* No monospacedDigit on the countdown: fixed-width digits air out
+              the "11" in "11h 55m" so the value stops reading as one number
+              (owner finding 2026-09-19). Entries are static renders, so
+              digit-width jitter between them is never seen. */}
+          <TickingTextEl
+            timerInterval={{ lower: new Date(), upper: new Date(entry.nextEpochMs) }}
+            countsDown
+            modifiers={heroModifiers}
+          />{' '}
           <Text
             modifiers={[
               font({ size: 13, weight: 'regular' }),
@@ -709,15 +733,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       const ActivePill = () => (
         <RoundedRectangle
           cornerRadius={ROW_CORNER_RADIUS}
+          // DIAGNOSTIC 2026-09-19: shadow and strokeBorder dropped. Blur proved
+          // to be what broke the dark smalls; shadow is rasterised the same way,
+          // and it is the only effect of that class on the medium layout.
           modifiers={[
             foregroundStyle(palette.pillFill),
-            strokeBorder({
-              color: palette.pillStroke,
-              style: { lineWidth: 1 },
-              shape: 'roundedRectangle',
-              cornerRadius: ROW_CORNER_RADIUS,
-            }),
-            shadow({ radius: pillShadow.radius, x: pillShadow.x, y: pillShadow.y, color: pillShadow.color }),
             frame({ height: ROW_HEIGHT + 2 * PILL_VPAD }),
             offset({ y: pillY - PILL_VPAD }),
           ]}
