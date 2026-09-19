@@ -167,11 +167,18 @@ describe('Android snapshot pushes', () => {
     await refreshPrayerWidgets();
     expect((PrayerWidget.updateSnapshot as jest.Mock).mock.calls.length).toBe(1);
 
-    // Advance past every epoch in the window: the flip chain fires, sees the
-    // target gone, and re-pushes a fresh snapshot
-    await jest.advanceTimersByTimeAsync(5 * 24 * 3600 * 1000);
+    // Advance in half-hour chunks until the flip chain fires with its
+    // target gone and re-pushes a fresh snapshot. Any seeded next prayer is
+    // under six hours away, so the loop is bounded well below the suite
+    // timeout (a single multi-hour advance would walk every minute-flip
+    // timer one by one).
+    let pushes = 1;
+    for (let chunk = 0; chunk < 12 && pushes === 1; chunk++) {
+      await jest.advanceTimersByTimeAsync(30 * 60 * 1000);
+      pushes = (PrayerWidget.updateSnapshot as jest.Mock).mock.calls.length;
+    }
 
-    expect((PrayerWidget.updateSnapshot as jest.Mock).mock.calls.length).toBeGreaterThan(1);
+    expect(pushes).toBeGreaterThan(1);
   });
 
   it('swallows a native updateSnapshot throw and logs it', async () => {
