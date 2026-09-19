@@ -414,7 +414,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             {AText(footer, 9, 'normal', palette.footer)}
           </Box>
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
-            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH), APad(8, 0, 8, 0)]}>
+            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
               <Column modifiers={[APad(4, 0, 4, 0)]}>
                 <Spacer modifiers={[height(Math.max(0, activeIndex * ROW_HEIGHT - PILL_VPAD))]} />
                 <AImageEl
@@ -423,7 +423,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
                   modifiers={[fillMaxWidth(), height(ROW_HEIGHT + 2 * PILL_VPAD)]}
                 />
               </Column>
-              <Column>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
+              <Column modifiers={[APad(12, 0, 12, 0)]}>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
             </Box>
           </Box>
         </Row>
