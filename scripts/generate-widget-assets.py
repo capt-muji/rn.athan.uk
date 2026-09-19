@@ -8,7 +8,7 @@ bitmaps. Every color here is a byte-identical literal from the palette in
 widgets/PrayerWidget.tsx; shared/__tests__/widgetAssets.test.ts pins that
 this file's literals stay a subset of the layout's palette.
 
-Scale: 3x the dp box (small 110dp, medium 250x110dp, pill 140x22dp, moon
+Scale: 3x the dp box (small 110dp, medium 250x110dp, pill 140x26dp, moon
 26dp). Regenerate with Pillow after changing the palette: python3
 scripts/generate-widget-assets.py
 """
@@ -21,9 +21,9 @@ from PIL import Image, ImageDraw, ImageFilter
 SCALE = 3
 SMALL = 110
 MEDIUM_W, MEDIUM_H = 250, 110
-PILL_W, PILL_H = 140, 22
+PILL_W, PILL_H = 140, 26
 MOON = 26
-CARD_RADIUS_PT = 22
+CARD_RADIUS_PT = 16
 PILL_RADIUS_PT = 4
 
 def css(color: str) -> tuple:
@@ -43,9 +43,12 @@ def css(color: str) -> tuple:
 
 
 # Palette literals (byte-identical strings from widgets/PrayerWidget.tsx;
-# shared/__tests__/widgetAssets.test.ts pins the subset relation)
-CARD_LIGHT = css("rgba(252, 252, 254, 0.92)")
-CARD_DARK = css("rgba(26, 26, 92, 0.88)")
+# shared/__tests__/widgetAssets.test.ts pins the subset relation). The two
+# card bases are the Android-only OPAQUE forms: iOS keeps its translucent
+# cards, Android renders these bitmaps over the wallpaper (owner ruling
+# 2026-09-19), so alpha 1.0 keeps the wallpaper from showing through.
+CARD_LIGHT = css("#fcfcfe")
+CARD_DARK = css("#1a1a5c")
 
 ORBS_SMALL = {
     "top": {"color": css("rgba(128, 0, 255, 0.25)"), "size": 85, "x": 30, "y": -38, "blur": 38},
@@ -64,30 +67,18 @@ PILLS = {
     "standard_light": {
         "fill": css("#4f46e5"),
         "stroke": css("rgba(79, 70, 229, 0.35)"),
-        "shadow": css("rgba(10, 42, 155, 0.4)"),
-        "shadow_radius": 6,
-        "shadow_y": 3,
     },
     "extra_light": {
         "fill": css("#db2777"),
         "stroke": css("rgba(219, 39, 119, 0.35)"),
-        "shadow": css("rgba(110, 0, 107, 0.35)"),
-        "shadow_radius": 6,
-        "shadow_y": 3,
     },
     "standard_dark": {
         "fill": css("#0847e5"),
         "stroke": css("rgba(8, 71, 229, 0.35)"),
-        "shadow": css("rgba(10, 30, 140, 0.5)"),
-        "shadow_radius": 9,
-        "shadow_y": 2,
     },
     "extra_dark": {
         "fill": css("#a123aa"),
         "stroke": css("rgba(146, 0, 162, 0.35)"),
-        "shadow": css("rgba(95, 10, 115, 0.5)"),
-        "shadow_radius": 9,
-        "shadow_y": 2,
     },
 }
 
@@ -133,23 +124,13 @@ def pill(spec: dict) -> Image.Image:
     width = PILL_W * SCALE
     height = PILL_H * SCALE
     radius = PILL_RADIUS_PT * SCALE
-    # Horizontal margin is ZERO: the pill image must span its full row
-    # width, or the row's first and last glyphs render off-pill (pale
-    # active-row text on the light card was unreadable there). The shadow
-    # spreads vertically only, from the y-offset blur.
-    margin_x = 0
-    margin_y = spec["shadow_radius"] * SCALE + 4
-    canvas = Image.new("RGBA", (width + 2 * margin_x, height + 2 * margin_y), (0, 0, 0, 0))
-
-    shadow = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
-    ImageDraw.Draw(shadow).rounded_rectangle(
-        [margin_x, margin_y, margin_x + width - 1, margin_y + height - 1], radius=radius, fill=spec["shadow"]
-    )
-    shadow = shadow.filter(ImageFilter.GaussianBlur(spec["shadow_radius"] * SCALE))
-    canvas.alpha_composite(shadow, (0, spec["shadow_y"] * SCALE))
+    # Shadow-free and margin-free (owner ruling 2026-09-19: the 3T renders
+    # the pill's drop shadow badly): the image spans its full row width and
+    # its padded height exactly, and the layout stretches it 1:1 vertically.
+    canvas = Image.new("RGBA", (width, height), (0, 0, 0, 0))
 
     ImageDraw.Draw(canvas).rounded_rectangle(
-        [margin_x, margin_y, margin_x + width - 1, margin_y + height - 1],
+        [0, 0, width - 1, height - 1],
         radius=radius,
         fill=spec["fill"],
         outline=spec["stroke"],
