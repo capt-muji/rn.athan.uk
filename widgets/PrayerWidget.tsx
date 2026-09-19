@@ -218,8 +218,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const LIST_WIDTH = 140;
   // Fixed hero width: a fillMaxWidth fraction on the first Row child let
   // the hero take the full card and squeezed the day list to zero width in
-  // Glance (caught on the 3T: the medium rendered hero-only, centered)
-  const HERO_WIDTH = 150;
+  // Glance (caught on the 3T: the medium rendered hero-only, centered).
+  // 128dp leaves the list column ~132dp - enough for the 130dp rows
+  // (8dp insets + 70dp name + 44dp time); at 150 the rows squeezed and
+  // the times ellipsized to "12:…"
+  const HERO_WIDTH = 128;
   const ROW_NAME_WIDTH = 70;
   const ROW_TIME_WIDTH = 44;
 
