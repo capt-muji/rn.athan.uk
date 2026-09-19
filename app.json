@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.249",
+    "version": "1.27.250",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -42,6 +42,9 @@
       [
         "expo-build-properties",
         {
+          "android": {
+            "extraProguardRules": "# Glance composes widgets through WorkManager; R8 strips OverwritingInputMerger's constructor without these keeps (verified on the 3T: the widget stays on its loading layout forever and logcat shows WM-InputMerger NoSuchMethodException)\n-keep class androidx.work.** { *; }\n-keep class androidx.glance.** { *; }\n-dontwarn androidx.work.**\n-dontwarn androidx.glance.**"
+          },
           "ios": {
             "deploymentTarget": "16.4"
           }
