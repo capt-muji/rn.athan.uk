@@ -43,12 +43,15 @@ const androidOnlyResolution =
 
 const enableAndroidWidgets = (expoConfig: ExpoConfig): ExpoConfig => {
   expoConfig.ios = undefined;
-  expoConfig.plugins = (expoConfig.plugins ?? []).map((plugin) => {
-    if (pluginName(plugin) !== 'expo-widgets') return plugin;
+  // The grid strip must run AFTER expo-widgets writes the provider XMLs:
+  // dangerous mods execute last-registered-first, so it registers BEFORE
+  // the expo-widgets entry
+  expoConfig.plugins = (expoConfig.plugins ?? []).flatMap((plugin) => {
+    if (pluginName(plugin) !== 'expo-widgets') return [plugin];
     const [, props] = plugin as [string, Record<string, unknown>];
-    return ['expo-widgets', { ...props, enableAndroid: true }];
+    return ['./plugins/androidWidgetGrid', ['expo-widgets', { ...props, enableAndroid: true }]];
   });
-  expoConfig.plugins = [...(expoConfig.plugins ?? []), './plugins/androidWidgetAssets', './plugins/androidWidgetGrid'];
+  expoConfig.plugins = [...(expoConfig.plugins ?? []), './plugins/androidWidgetAssets'];
   return expoConfig;
 };
 

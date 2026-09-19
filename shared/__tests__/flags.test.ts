@@ -175,6 +175,11 @@ describe('app config android widget resolution', () => {
     expect(config.ios).toBeUndefined();
     expect(pluginNames(config)).toContain('./plugins/androidWidgetAssets');
     expect(pluginNames(config)).toContain('./plugins/androidWidgetGrid');
+    // Dangerous mods run last-registered-first: the strip must sit BEFORE
+    // expo-widgets so it executes after the provider XMLs are written
+    expect(pluginNames(config).indexOf('./plugins/androidWidgetGrid')).toBeLessThan(
+      pluginNames(config).indexOf('expo-widgets')
+    );
 
     const widgets = (entry?.[1].widgets as Array<Record<string, unknown>>) ?? [];
     const home = widgets.filter((widget) => widget.android != null);
