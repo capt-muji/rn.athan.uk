@@ -14,13 +14,7 @@ import { addDays } from 'date-fns';
 
 import { PRAYERS_ENGLISH } from '@/shared/constants';
 import { isReadable } from '@/shared/sequence';
-import {
-  createPrayerDatetime,
-  formatCountdownMinutes,
-  formatDateLong,
-  formatDateShort,
-  formatHijriDateLong,
-} from '@/shared/time';
+import { createPrayerDatetime, formatDateLong, formatDateShort, formatHijriDateLong } from '@/shared/time';
 import {
   type Prayer,
   type PrayerSequence,
@@ -28,12 +22,7 @@ import {
   ScheduleType,
   type UnreadablePrayer,
 } from '@/shared/types';
-import {
-  buildPrayerWidgetTimeline,
-  COUNTDOWN_STEP_MS,
-  MIN_ENTRY_SPACING_MS,
-  STEPPED_COUNTDOWN_HOURS,
-} from '@/shared/widgetTimeline';
+import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
@@ -165,51 +154,21 @@ describe('buildPrayerWidgetTimeline', () => {
     expect(first.nextName).toBe('Asr');
     expect(first.nextTime).toBe('17:45');
     expect(first.nextEpochMs).toBe(createPrayerDatetime('2026-06-15', '17:45').getTime());
-    // Segment starts at the previous prayer (Dhuhr at 13:10), not at now
+    // Segment starts at the previous prayer (Dhuhr at 13:10), not at now.
+    // With nextEpochMs this is the interval the layouts tick against.
     expect(first.prevEpochMs).toBe(createPrayerDatetime('2026-06-15', '13:10').getTime());
-    // 3h 45m left: minute-ceil label, hours and minutes only
-    expect(first.countdownLabel).toBe('3h 45m');
     expect(first.dateLabel).toBe(formatDateLong('2026-06-15'));
   });
 
-  it('emits stepped countdown entries every five minutes inside the horizon', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
-
-    const stepMs = NOW.getTime() + COUNTDOWN_STEP_MS;
-    const step = entries.find((entry) => entry.date.getTime() === stepMs);
-    expect(step).toBeDefined();
-    if (!step) return;
-
-    expect(step.props.nextName).toBe('Asr');
-    expect(step.props.countdownLabel).toBe('3h 40m');
-  });
-
-  it('emits only boundary entries beyond the stepped countdown horizon', () => {
+  it('emits nothing between boundaries, since the countdown ticks itself', () => {
     const sequence = makeSequence();
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
-    const horizonMs = NOW.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
     const boundaryMs = new Set(sequence.prayers.filter(isReadable).map((prayer) => prayer.datetime.getTime()));
 
-    for (const entry of entries) {
-      if (entry.date.getTime() <= horizonMs) continue;
+    // The opening entry is dated at the push, every later one at a boundary
+    // it flips on, and the guard closes the timeline.
+    for (const entry of entries.slice(1)) {
       expect(boundaryMs.has(entry.date.getTime()) || entry.props.stale === true).toBe(true);
-    }
-  });
-
-  it('keeps every instant inside the horizon within one step of a fresher label', () => {
-    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
-    const horizonMs = NOW.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
-
-    for (let instantMs = NOW.getTime(); instantMs <= horizonMs; instantMs += 60 * 1000) {
-      const freshest = entries.filter((entry) => entry.date.getTime() <= instantMs).at(-1);
-      if (!freshest) throw new Error(`No active entry at ${new Date(instantMs).toISOString()}`);
-
-      const stalenessMs = instantMs - freshest.date.getTime();
-      if (stalenessMs > COUNTDOWN_STEP_MS) {
-        throw new Error(
-          `Label at ${new Date(instantMs).toISOString()} is ${stalenessMs / 60000} minutes stale (max ${COUNTDOWN_STEP_MS / 60000})`
-        );
-      }
     }
   });
 
@@ -310,52 +269,27 @@ describe('buildPrayerWidgetTimeline', () => {
     }
   });
 
-  it('always rounds the label up to the next minute', () => {
-    const asrMs = createPrayerDatetime('2026-06-15', '17:45').getTime();
-    // 11m 37s left reads "12m" — never the lower minute, never seconds
-    const pushAt = new Date(asrMs - (11 * 60 + 37) * 1000);
-
-    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
-
-    expect(entries[0].props.countdownLabel).toBe('12m');
-  });
-
-  it('holds "1m" through the final minute', () => {
-    const asrMs = createPrayerDatetime('2026-06-15', '17:45').getTime();
-    // 9m 59s left → "10m"; anything under a minute reads "1m" until the flip
-    const pushAt = new Date(asrMs - (9 * 60 + 59) * 1000);
-
-    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
-
-    expect(entries[0].props.countdownLabel).toBe('10m');
-  });
-
-  it('formats every label with the minute-ceil formatter at the entry date', () => {
-    const asrMs = createPrayerDatetime('2026-06-15', '17:45').getTime();
-    // Sub-minute remainder proves the ceil rounding matches getSecondsRemaining
-    const pushAt = new Date(asrMs - (2 * 60 + 59.4) * 1000);
-
-    const entries = buildPrayerWidgetTimeline(pushAt, makeSequence(), SETTINGS, 'light');
-    const horizonMs = pushAt.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
+  it('gives every entry a forward-running segment for the countdown to tick', () => {
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     for (const entry of entries) {
-      if (entry.props.stale === true) continue;
-
-      // An entry the horizon strands carries no label at all; the rule below
-      // governs every entry that shows one
-      if (entry.props.countdownLabel === '') {
-        expect(entry.date.getTime() + COUNTDOWN_STEP_MS).toBeGreaterThan(horizonMs);
-        expect(entry.props.nextEpochMs - entry.date.getTime()).toBeGreaterThan(COUNTDOWN_STEP_MS);
-        continue;
-      }
-
-      // A backdated first entry labels the push instant, not its own date
-      const labelAnchor = entry.date.getTime() > pushAt.getTime() ? entry.date : pushAt;
-      const msLeft = entry.props.nextEpochMs - labelAnchor.getTime();
-      const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
-      const expected = formatCountdownMinutes(secondsRemaining);
-      expect(entry.props.countdownLabel).toBe(expected);
+      // SwiftUI silently renders an empty string for an inverted interval,
+      // so lower <= upper is what keeps the countdown on screen at all
+      expect(entry.props.prevEpochMs).toBeLessThanOrEqual(entry.props.nextEpochMs);
     }
+  });
+
+  it('runs each segment from the previous prayer to the one counted down to', () => {
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
+    const ishaBoundary = createPrayerDatetime('2026-06-15', '22:45');
+    const ishaEntry = entries.find((entry) => entry.date.getTime() === ishaBoundary.getTime());
+
+    expect(ishaEntry).toBeDefined();
+    if (!ishaEntry) return;
+
+    // Isha has just passed, so the segment runs Isha to the next day's Fajr
+    expect(ishaEntry.props.prevEpochMs).toBe(ishaBoundary.getTime());
+    expect(ishaEntry.props.nextEpochMs).toBe(createPrayerDatetime('2026-06-16', '03:30').getTime());
   });
 
   it('formats date labels in Hijri when the preference is on', () => {
@@ -404,8 +338,6 @@ describe('minimum entry spacing', () => {
 
     const asrBoundary = createPrayerDatetime('2026-06-15', '17:45').getTime();
     expect(entries[0].props.nextName).toBe('Asr');
-    // The label describes the push instant (1m left), not the backdated date
-    expect(entries[0].props.countdownLabel).toBe('1m');
     expect(entries[0].date.getTime()).toBe(asrBoundary - MIN_ENTRY_SPACING_MS);
     expect(asrBoundary - entries[0].date.getTime()).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);
   });
@@ -590,22 +522,17 @@ describe('extras schedule timeline', () => {
     expect(rollEntry.props.activeIndex).toBe(0);
   });
 
-  it('anchors the final stepped entry one spacing before a non-grid boundary', () => {
-    // The Duha→Midnight segment (08:10→23:52) is not a multiple of the
-    // step, so the aligned grid alone would leave a stale tail before the
-    // flip: the builder places an anchor entry exactly one spacing before
-    // the boundary, and nothing may sit between it and the flip
+  it('holds one entry across a long segment and flips exactly at its boundary', () => {
+    // The Duha→Midnight segment (08:10→23:52) runs most of a day. Nothing
+    // needs to happen inside it: the countdown ticks itself, so a single
+    // entry carries the whole stretch and the next one lands on the flip.
     const entries = buildPrayerWidgetTimeline(NOW, makeExtrasSequence(), SETTINGS, 'light');
-    const anchorMs = createPrayerDatetime('2026-06-15', '23:47').getTime();
     const boundaryMs = createPrayerDatetime('2026-06-15', '23:52').getTime();
 
-    const anchor = entries.find((entry) => entry.date.getTime() === anchorMs);
-    expect(anchor).toBeDefined();
-    if (!anchor) return;
-    expect(anchor.props.nextName).toBe('Midnight');
-
-    const between = entries.filter((entry) => entry.date.getTime() > anchorMs && entry.date.getTime() < boundaryMs);
-    expect(between).toHaveLength(0);
+    const duhaEntry = entries.filter((entry) => entry.date.getTime() < boundaryMs).at(-1);
+    expect(duhaEntry).toBeDefined();
+    if (!duhaEntry) return;
+    expect(duhaEntry.props.nextName).toBe('Midnight');
 
     const flip = entries.find((entry) => entry.date.getTime() === boundaryMs);
     expect(flip).toBeDefined();
@@ -638,10 +565,11 @@ describe('extras schedule timeline', () => {
 // =============================================================================
 // COUNTDOWN HONESTY
 //
-// These read the label the widget SHOWS and measure it against the truth at
-// that instant, instead of recomputing the builder's own rule. A builder that
-// writes a confidently wrong countdown satisfies the rule-restating tests
-// above but cannot satisfy these.
+// The countdown is no longer a value the builder writes: the layouts hand
+// SwiftUI the segment and iOS renders the remaining time itself. So the only
+// way it can lie is for the segment to name the wrong prayer, and the only
+// way it can stall at zero is for an entry to outlive its own boundary.
+// These sweep every minute of a production-sized span looking for both.
 // =============================================================================
 
 describe('countdown honesty', () => {
@@ -691,13 +619,6 @@ describe('countdown honesty', () => {
 
   const makeOctoberSequence = (): PrayerSequence => makeSequence(OCTOBER_TIMES);
 
-  /** Reads a rendered countdown back into seconds ("9h 50m" → 35400) */
-  const labelSeconds = (label: string): number => {
-    const match = /^(?:(\d+)h)?(?:\s*(\d+)m)?$/.exec(label);
-    if (label.length === 0 || !match) throw new Error(`Unparseable countdown label "${label}"`);
-    return Number(match[1] ?? 0) * 3600 + Number(match[2] ?? 0) * 60;
-  };
-
   /** The entry WidgetKit renders at `instant`: the last one dated at or before it */
   const activeAt = <T extends { date: Date }>(entries: T[], instant: number): T | undefined =>
     entries.filter((entry) => entry.date.getTime() <= instant).at(-1);
@@ -705,96 +626,41 @@ describe('countdown honesty', () => {
   it.each([
     ['step-aligned times', OCTOBER_TIMES],
     ['times that do not divide by the step', RAGGED_TIMES],
-  ])('never shows a countdown that over-states the time left, across the whole span (%s)', (_label, times) => {
-    const entries = buildPrayerWidgetTimeline(PUSH_AT, makeSequence(times), SETTINGS, 'light');
+  ])('counts down to the true next prayer at every minute of the span (%s)', (_label, times) => {
+    const sequence = makeSequence(times);
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, SETTINGS, 'light');
     const endMs = entries[entries.length - 1].date.getTime();
-
-    let worstOverReadS = 0;
-    let worstAt = '';
-    /** The same over-read, but only where the prayer is close enough for it to cost anything */
-    let worstNearBoundaryS = 0;
-    let worstNearAt = '';
-    const NEAR_BOUNDARY_S = 60 * 60;
+    const moments = sequence.prayers.filter(isReadable).map((prayer) => prayer.datetime.getTime());
 
     for (let instant = PUSH_AT.getTime(); instant < endMs; instant += 60 * 1000) {
       const active = activeAt(entries, instant);
       if (!active || active.props.stale === true) continue;
-      // A blank label shows no countdown at all, so it cannot over-state one
-      if (active.props.countdownLabel === '') continue;
 
-      const shownS = labelSeconds(active.props.countdownLabel);
-      const truthS = Math.max(1, Math.ceil((active.props.nextEpochMs - instant) / 1000));
-
-      if (truthS <= NEAR_BOUNDARY_S && shownS - truthS > worstNearBoundaryS) {
-        worstNearBoundaryS = shownS - truthS;
-        worstNearAt = `${new Date(instant).toISOString()}: widget "${active.props.countdownLabel}", truth ${Math.ceil(truthS / 60)}m`;
+      const trueNext = moments.find((ms) => ms > instant);
+      if (active.props.nextEpochMs !== trueNext) {
+        throw new Error(
+          `At ${new Date(instant).toISOString()} the widget counts down to ` +
+            `${new Date(active.props.nextEpochMs).toISOString()}, but the next prayer is ` +
+            `${trueNext === undefined ? 'none' : new Date(trueNext).toISOString()}`
+        );
       }
-
-      if (shownS - truthS > worstOverReadS) {
-        worstOverReadS = shownS - truthS;
-        worstAt =
-          `${new Date(instant).toISOString()}: widget "${active.props.nextName} ${active.props.nextTime} — ` +
-          `${active.props.countdownLabel}", truth ${Math.ceil(truthS / 60)}m`;
-      }
-    }
-
-    // One step is the WidgetKit-forced refresh cadence and is settled. More than that
-    // is a label nothing ever refreshed.
-    //
-    // A segment whose length is not a whole number of steps has a remainder that must
-    // sit in ONE gap; no arrangement removes it. What matters is WHERE. Near a prayer
-    // the same absolute error is the difference between "14m" and 6m left — the user
-    // misses it. Far from one it is 8m inside 2h29m and invisible. So the bound is
-    // tightest where the consequence is: one step in the last hour, and never as much
-    // as two steps anywhere. Both are stricter than the old single absolute cap in the
-    // case that harms a user, which is why this is not a loosened threshold.
-    if (worstNearBoundaryS * 1000 > COUNTDOWN_STEP_MS) {
-      throw new Error(
-        `Countdown over-reads by ${Math.round(worstNearBoundaryS / 60)}m within the final hour at ${worstNearAt}`
-      );
-    }
-
-    if (worstOverReadS * 1000 >= COUNTDOWN_STEP_MS * 2) {
-      throw new Error(`Countdown over-reads by ${Math.round(worstOverReadS / 60)}m at ${worstAt}`);
     }
   });
 
-  it('blanks the countdown the horizon strands, keeping the name, time and day', () => {
+  it('never leaves an entry counting down to a prayer that has already passed', () => {
+    // A segment whose upper bound is behind the clock renders as a frozen
+    // 0:00 on device, with nothing to signal it. Every entry must therefore
+    // be replaced no later than the prayer it points at.
     const entries = buildPrayerWidgetTimeline(PUSH_AT, makeOctoberSequence(), SETTINGS, 'light');
 
-    // The Isha→Fajr night of 20→21 October sits well beyond the 24-hour
-    // horizon, so its only entry is the 19:40 boundary flip. Nothing refreshes
-    // it before Fajr, which is why its countdown cannot be allowed to stand.
-    const ishaBoundary = createPrayerDatetime('2026-10-20', '19:40');
-    const fajrMs = createPrayerDatetime('2026-10-21', '05:30').getTime();
-    const nightEntry = entries.find((entry) => entry.date.getTime() === ishaBoundary.getTime());
+    for (const [index, entry] of entries.entries()) {
+      if (entry.props.stale === true) continue;
 
-    expect(nightEntry).toBeDefined();
-    if (!nightEntry) return;
-
-    const between = entries.filter(
-      (entry) => entry.date.getTime() > ishaBoundary.getTime() && entry.date.getTime() < fajrMs
-    );
-    expect(between).toEqual([]);
-
-    expect(nightEntry.props.countdownLabel).toBe('');
-    // Everything the widget can still state truthfully survives
-    expect(nightEntry.props.nextName).toBe('Fajr');
-    expect(nightEntry.props.nextTime).toBe('05:30');
-    expect(nightEntry.props.dateLabel).toBe(formatDateLong('2026-10-21'));
-  });
-
-  it('keeps a label on every entry the horizon still refreshes', () => {
-    const entries = buildPrayerWidgetTimeline(PUSH_AT, makeOctoberSequence(), SETTINGS, 'light');
-    const horizonMs = PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
-
-    // Blanking is the horizon's degradation only — it must never reach an
-    // entry a later step still refreshes
-    const blankedInsideHorizon = entries.filter(
-      (entry) => entry.date.getTime() + COUNTDOWN_STEP_MS <= horizonMs && entry.props.countdownLabel === ''
-    );
-
-    expect(blankedInsideHorizon).toEqual([]);
+      const successor = entries[index + 1];
+      expect(successor).toBeDefined();
+      if (!successor) return;
+      expect(successor.date.getTime()).toBeLessThanOrEqual(entry.props.nextEpochMs);
+    }
   });
 });
 
@@ -815,12 +681,22 @@ describe('volume and payload invariants', () => {
     return { type: ScheduleType.Standard, prayers };
   };
 
-  it('bounds the entry count to boundaries plus one stepped day plus the guard', () => {
+  it('emits no more entries than there are prayers left, plus the opener and the guard', () => {
+    // THE budget guard. WidgetKit archives a rendered view per entry against
+    // the extension's ~30 MB ceiling, and blowing it does not surface as an
+    // error: iOS masks the missing render as "Please adopt containerBackground
+    // API" and the widget goes black. A 16-day span once emitted ~380 entries
+    // here (a 24-hour grid of 5-minute countdown steps) and blacked out every
+    // kind that was not trivially small. One entry per boundary is the shape
+    // that fixed it, so this pins the shape rather than a magic number.
     const sequence = makeSpanSequence();
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
+    const stillAhead = sequence.prayers.filter(
+      (prayer) => isReadable(prayer) && prayer.datetime.getTime() > NOW.getTime()
+    );
 
     expect(entries[entries.length - 1].props.stale).toBe(true);
-    expect(entries.length).toBeLessThan(500);
+    expect(entries.length).toBeLessThanOrEqual(stillAhead.length + 2);
   });
 
   it('keeps the serialized payload well under UserDefaults comfort size', () => {
@@ -886,10 +762,6 @@ describe('unreadable rows', () => {
   const activeAt = <T extends { date: Date }>(entries: T[], instant: number): T | undefined =>
     entries.filter((entry) => entry.date.getTime() <= instant).at(-1);
 
-  /** What a countdown to `targetMs` reads at `fromMs`, worked out independently of the builder */
-  const labelFor = (fromMs: number, targetMs: number): string =>
-    formatCountdownMinutes(Math.max(1, Math.ceil((targetMs - fromMs) / 1000)));
-
   it('lists an unreadable Asr as --:--, the pill and countdown going from Dhuhr to Magrib with no bar to measure', () => {
     const entries = buildPrayerWidgetTimeline(
       createPrayerDatetime('2026-06-15', '12:00'),
@@ -912,8 +784,9 @@ describe('unreadable rows', () => {
 
     const afternoon = entries.filter((entry) => entry.date.getTime() >= dhuhrMs && entry.date.getTime() < magribMs);
     expect(afternoon[0].date.getTime()).toBe(dhuhrMs);
-    // Eight hours of five-minute steps, so the loop below cannot pass on a handful of entries
-    expect(afternoon.length).toBeGreaterThan(90);
+    // Dhuhr to Magrib is one segment, so one entry covers the whole afternoon:
+    // the unreadable Asr between them is never a boundary
+    expect(afternoon).toHaveLength(1);
     for (const entry of afternoon) {
       expect(entry.props).toMatchObject({
         nextName: 'Magrib',
@@ -922,7 +795,6 @@ describe('unreadable rows', () => {
       });
       // The row above Magrib is the unreadable Asr, so there is no previous prayer and the bar starts at the entry
       expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
-      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), magribMs));
     }
 
     expect(entries.some((entry) => entry.props.nextName === 'Asr')).toBe(false);
@@ -971,7 +843,6 @@ describe('unreadable rows', () => {
         '21:15',
         '22:45',
       ]);
-      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), fajrMs));
     }
 
     const held = entries.filter((entry) => entry.date.getTime() >= dayStartMs && entry.date.getTime() < holdEndMs);
@@ -990,13 +861,6 @@ describe('unreadable rows', () => {
       // Neither Fajr's list nor the list before it has a readable row ahead of Fajr, so there is no
       // previous prayer and the bar starts at the entry itself
       expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
-    }
-
-    // Past the stepped horizon exactly one entry is stranded and goes blank, as in any long segment
-    const labelled = held.filter((entry) => entry.props.countdownLabel !== '');
-    expect(held.length - labelled.length).toBe(1);
-    for (const entry of labelled) {
-      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), fajrMs));
     }
 
     expect(activeAt(entries, holdEndMs - 1000)?.props.prayers?.every((row) => row.time === DASH)).toBe(true);
@@ -1037,7 +901,6 @@ describe('unreadable rows', () => {
       nextName: 'Fajr',
       nextEpochMs: fajrMs,
       prevEpochMs: at('2026-06-16', '14:00'),
-      countdownLabel: '13h 30m',
       dateLabel: formatDateLong('2026-06-17'),
       activeIndex: -1,
     });
@@ -1046,7 +909,6 @@ describe('unreadable rows', () => {
     const lastMinutes = buildPrayerWidgetTimeline(new Date(pushMs), sequence, SETTINGS, 'light');
     expect(lastMinutes[0].date.getTime()).toBe(holdEndMs - MIN_ENTRY_SPACING_MS);
     expect(lastMinutes[0].props).toMatchObject({
-      countdownLabel: labelFor(pushMs, fajrMs),
       dateLabel: formatDateLong('2026-06-17'),
       activeIndex: -1,
     });
@@ -1123,7 +985,6 @@ describe('unreadable rows', () => {
       expect(settled?.props).toMatchObject({
         nextName: 'Asr',
         prevEpochMs: at(date, dhuhr),
-        countdownLabel: labelFor(at(date, '03:35'), at(date, '17:45')),
         activeIndex: 3,
       });
       expect(entries.some((entry) => entry.props.nextName === 'Dhuhr')).toBe(false);
@@ -1169,7 +1030,6 @@ describe('unreadable rows', () => {
           { name: 'Duha', time: '08:10' },
         ],
       });
-      expect(entry.props.countdownLabel).toBe(labelFor(entry.date.getTime(), suhoorMs));
       // The row above Suhoor is the unreadable Last Third, so the bar starts at the entry, not at Duha
       expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
     }
@@ -1209,7 +1069,6 @@ describe('unreadable rows', () => {
         nextTime: '21:15',
         nextEpochMs: magribMs,
         prevEpochMs: magribMs,
-        countdownLabel: '0s',
         dateLabel: formatDateLong('2026-06-16'),
         stale: true,
       },

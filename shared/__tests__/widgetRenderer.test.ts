@@ -8,13 +8,12 @@
  * component sources and expo-widgets' createWidget capture), expands the
  * element tree the way the runtime does, and asserts the rendered content:
  *
- * - iOS: the precomputed countdown label from props renders in the swift-ui
+ * - iOS: the segment renders as a self-ticking timer interval in the swift-ui
  *   composition (regression guard for the Android additions)
  * - Android: the label, active row, day list and stale state are computed
  *   at render time from the snapshot epochs, stamped by props.size
  *
- * The Android label formula must equal formatCountdownMinutes in
- * shared/time.ts; boundary crossings advance the widget without a new push.
+ * Boundary crossings advance the Android widget without a new push.
  */
 
 type MarkerNode = { marker: string; props: Record<string, unknown> };
@@ -77,6 +76,7 @@ const MODIFIER_NAMES = [
   'lineLimit',
   'minimumScaleFactor',
   'monospacedDigit',
+  'multilineTextAlignment',
   'offset',
   'padding',
   'scaleEffect',
@@ -160,6 +160,16 @@ const textsOf = (tree: unknown): string[] =>
       return String(Array.isArray(children) ? children.join('') : (children ?? ''));
     });
 
+/**
+ * The self-ticking countdown: a Text carrying a timerInterval instead of a
+ * string. iOS renders it in its own process, so it holds no text to read and
+ * only its interval can be asserted.
+ */
+const tickingIntervalOf = (tree: unknown): { lower: Date; upper: Date } | undefined =>
+  collect(tree).find((node) => node.marker === 'Text' && node.props.timerInterval !== undefined)?.props.timerInterval as
+    | { lower: Date; upper: Date }
+    | undefined;
+
 // =============================================================================
 // FIXTURE: a two-day standard window with mid-window boundaries
 // =============================================================================
@@ -226,32 +236,42 @@ describe('home widget renderer', () => {
       nextTime: '15:20',
       nextEpochMs: at(DAY_ONE, '15:20'),
       prevEpochMs: at(DAY_ONE, '12:45'),
-      countdownLabel: '1h 12m',
       dateLabel: 'Saturday, 17 October',
       prayers: TIMES.map(([name, time]) => ({ name, time })),
       activeIndex: 3,
     });
 
-    it('renders the precomputed countdown label from props in the swift-ui composition', () => {
+    it('counts the segment down as a ticking interval in the swift-ui composition', () => {
       const tree = renderHome(liveProps(), 'systemSmall');
 
       const markers = new Set(collect(tree).map((node) => node.marker));
       expect(markers.has('VStack')).toBe(true);
       expect(markers.has('Column')).toBe(false);
-      expect(textsOf(tree)).toContain('1h 12m');
       expect(textsOf(tree)).toContain('Asr');
       expect(textsOf(tree)).toContain('15:20');
       // Footer shortens the long label: "Saturday, 17 October" -> "Saturday · Lon"
       // (single-token day labels render whole; two-token ones shorten, below)
       expect(textsOf(tree)).toContain('Saturday · Lon');
+
+      // The countdown is the segment itself, handed to iOS to tick
+      expect(tickingIntervalOf(tree)).toEqual({
+        lower: new Date(at(DAY_ONE, '12:45')),
+        upper: new Date(at(DAY_ONE, '15:20')),
+      });
     });
 
-    it('hides the countdown when the entry predates the label field', () => {
-      const tree = renderHome({ ...liveProps(), countdownLabel: '' }, 'systemSmall');
-      const all = textsOf(tree);
-      expect(all).toContain('Asr');
-      expect(all).toContain('15:20');
-      expect(all).not.toContain('1h 12m');
+    it('centers the ticking countdown, which SwiftUI would otherwise leave leading', () => {
+      // Text(timerInterval:) reserves a worst-case width and parks its glyphs
+      // against the leading edge of it, which reads as an off-center hero
+      const tree = renderHome(liveProps(), 'systemSmall');
+      const timer = collect(tree).find((node) => node.marker === 'Text' && node.props.timerInterval !== undefined);
+      const styles = (timer?.props.modifiers as Array<{ modifier: string; value: unknown }>) ?? [];
+
+      expect(styles.some((style) => style.modifier === 'multilineTextAlignment' && style.value === 'center')).toBe(
+        true
+      );
+      // A per-second redraw with proportional digits shuffles sideways
+      expect(styles.some((style) => style.modifier === 'monospacedDigit')).toBe(true);
     });
 
     it('renders the medium day list with the active pill in the standard palette', () => {
@@ -293,7 +313,8 @@ describe('home widget renderer', () => {
     it('falls back to the hero composition when the day list is not renderable', () => {
       const tree = renderHome({ ...liveProps(), activeIndex: -1 }, 'systemMedium');
       expect(collect(tree).some((node) => node.marker === 'RoundedRectangle')).toBe(false);
-      expect(textsOf(tree)).toContain('1h 12m');
+      expect(tickingIntervalOf(tree)).toBeDefined();
+      expect(textsOf(tree)).toContain('Asr');
     });
 
     it('draws the blur orbs on dark and none on light', () => {
@@ -317,12 +338,11 @@ describe('home widget renderer', () => {
         nextTime: '15:20',
         nextEpochMs: at(DAY_ONE, '15:20'),
         prevEpochMs: at(DAY_ONE, '12:45'),
-        countdownLabel: '1h 12m',
         dateLabel: '',
       };
       const tree = renderHome(legacy, 'systemMedium');
       const all = textsOf(tree);
-      expect(all).toContain('1h 12m');
+      expect(tickingIntervalOf(tree)).toBeDefined();
       expect(all).toContain('Lon');
       expect(collect(tree).some((node) => node.marker === 'RoundedRectangle')).toBe(false);
     });

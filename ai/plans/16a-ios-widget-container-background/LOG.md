@@ -1,8 +1,11 @@
 # Session 16a — iOS widgets: "Please adopt containerBackground API"
 
-Status: **ROOT CAUSE FOUND AND PROVEN.** All 8 iOS widget kinds render on the XS for the first time.
-Work is NOT finished: the device build carries deliberate diagnostics that must be reverted, and a
-design decision is open. Nothing is committed or pushed.
+Status: **ROOT CAUSE FOUND AND PROVEN.** Part 2 (2026-09-20) reverted every diagnostic, took the
+design decision, and rebuilt. See section 13 at the bottom for part 2; sections 1 to 12 are the
+evening of 2026-09-19 and are kept as written, including the parts part 2 corrects.
+
+Two claims below were wrong and are corrected in section 13: the hybrid's entry-count arithmetic
+(§6) and "nothing is committed" (§12).
 
 Date: 2026-09-19 (evening, single long session). Device: iPhone XS, iOS 18.7.10, UDID
 `00008020-0015585C22D2002E`. Build on device at handoff: **1.27.306**.
@@ -452,3 +455,120 @@ git push -u origin fix/ios-widget-archive-budget
 ```
 
 Remember the diagnostics in section 4b are in that diff and must not reach `uat-2`.
+
+---
+
+# Part 2 — 2026-09-20
+
+## 13. What part 2 changed
+
+Version **1.27.307**. `yarn validate` green: tsc, biome, 4611 tests, 100% coverage.
+
+### 13a. Two corrections to the record above
+
+**§12 "nothing is committed" was stale.** The work was already on
+`wip/16a-ios-widget-archive-budget` as `25ffe2ee` plus the docs commit `d9c9f29b`.
+
+**§6's hybrid arithmetic was wrong.** It claimed the hybrid would cost "about 12 entries a day"
+from one entry per boundary plus one at T-10min. A static label is frozen for the whole life of its
+entry, so with boundary-only entries a 19:30 Magrib to 21:00 Isha segment would still read
+"1h 30m" at 20:55. The static branch always needed its 5-minute grid; `timerInterval` only removes
+the last two steps of a segment. The hybrid would have cost roughly what the stepped design cost.
+
+### 13b. The design decision the owner took
+
+**Pure `timerInterval` on all 10 kinds. No hybrid.** iOS redraws `Text(timerInterval:)` every
+second in its own process, so the countdown needs no timeline entries at all. That let the entire
+stepped-countdown mechanism be deleted:
+
+| Knob | Session start | Part 1 | Part 2 |
+| --- | --- | --- | --- |
+| `STEPPED_COUNTDOWN_HOURS` | 24 (288 entries) | 4 (48 entries) | **deleted** |
+| `TIMELINE_DAYS` | 14 (~98 entries) | 3 (~21) | **14 (~98)** |
+| Entries per push | ~388 (black) | ~54 (rendered) | **~99** |
+
+The two knobs cost wildly different amounts: a stepped hour is 12 entries, a timeline day is about
+7. The old tuning spent 74% of its archive on one day of countdown freshness and 25% on two weeks
+of offline runway. Part 1 cut both; part 2 deletes the expensive one and restores the cheap one.
+
+`TIMELINE_DAYS` also feeds the **Android** snapshot window, so part 1's cut to 3 had silently
+shortened Android's carried window from 14 days to 3. Restoring 14 fixes that too.
+
+Rejected: `TIMELINE_DAYS = 1`. The sequence would cover today only, so the stale card would appear
+after every Isha and sit there until the next push — hours, every night. This is §8.3's recorded
+mistake. The background task cannot cover it: it is 6 hours in production (not 3), `dasd` defers
+it, a force-quit kills it until the next app open, and Background App Refresh off kills it
+entirely. Timeline length is the safety net for exactly the users the task cannot reach.
+
+### 13c. Diagnostics reverted (§4b / §4bb, all of them)
+
+- Orbs restored (the `return null` and its `biome-ignore` deleted).
+- Pill `strokeBorder` and `shadow` restored.
+- `footerLift` restored to `isMedium && rows.length >= 6 ? 0.5 : 0`.
+- The stale A/B comment about `dateStyle 'relative'` deleted, and the stray `{' '}` after the hero.
+
+### 13d. Two device bugs the owner reported, both diagnosed
+
+**Extras mediums showing `1 min, 10 secs`.** That is `dateStyle: 'relative'`, which only ever
+existed in the 1.27.304 A/B build. The current source has no `relative` path at all: line 622 was
+a stale comment while the JSX rendered `timerInterval` unconditionally. Those two kinds were
+serving **archived views from two builds earlier**. Most likely every kind was, and only the
+extras mediums revealed it. Confirm after this build: if they still lag, it is a genuine per-kind
+push failure.
+
+**The hero countdown sitting left instead of centred.** Root cause found in SwiftUI, not in our
+layout: `Text(timerInterval:)` reserves a fixed worst-case width so the card does not jiggle as
+digits change, and parks its glyphs against the leading edge of that reserved box. The `VStack`
+centres the view; the digits sit left inside it. Never visible before because the static
+`Text(countdownLabel)` sized itself to its content. Fixed with `multilineTextAlignment('center')`.
+`monospacedDigit()` is back on the hero for the same class of reason: it was removed in part 1
+because fixed-width digits made a static "11h 55m" read as loose digits, but a clock redrawing
+every second needs fixed widths or the whole string shuffles sideways.
+
+### 13e. Dead code removed
+
+`countdownLabel` is gone from the props contract (`WIDGET_PROPS_VERSION` 4 to 5), from the builder,
+and from both layouts. `formatCountdownMinutes` in `shared/time.ts` went with it: it had zero
+callers left. Android is unaffected, it carries its own copy inside the widget body because the
+`'widget'` directive cannot reference module scope.
+
+`accessoryInline` is the one place that lost a countdown. SwiftUI stops updating a timer Text once
+it is concatenated, and inline is a single system-rendered line, so it now shows the name and the
+absolute time only. The rectangular face keeps the countdown, in an `HStack` so the timer stays a
+Text of its own.
+
+### 13f. Tests
+
+The suite moved from 5 red files to green, and the shape changed rather than the thresholds:
+
+- **New budget guard** in `widgetTimeline.test.ts`: entries may not exceed the prayers still ahead
+  plus two. That is the guard that would have caught the original ~380-entry regression, and
+  nothing in the suite had one.
+- **Countdown honesty** rewritten. The old tests measured a label the builder wrote against the
+  truth. There is no label now, so they sweep every minute of a production span asserting the
+  segment always ends at the true next prayer, plus a new test that no entry outlives its own
+  boundary (an entry whose upper bound is behind the clock is exactly the frozen `0:00` the owner
+  saw).
+- **12 golden SHA-256 digests re-golded.** Their old premise ("same bytes as before unreadable rows
+  landed") died with a deliberate builder change, so they are renamed `REAL_YEAR_TIMELINES` and
+  documented as a byte-stability pin to re-gold on purpose, never to silence.
+- `mocks/__tests__/simple.test.ts` rewritten for the spread mock, with a new test that every prayer
+  still ahead is at least 5 minutes from the next. Fajr sits 4 minutes before Sunrise, which is
+  fine: a passed prayer is only the segment's lower bound and never becomes an entry.
+- The renderer harness was missing `multilineTextAlignment`, so the layout threw and every iOS test
+  silently asserted against the `NeutralCard` fallback. Worth remembering: a missing modifier stub
+  does not fail loudly, it swaps the whole tree.
+
+### 13g. Still open
+
+1. **Device verification of this build.** Do all 10 kinds render with the orbs, pill stroke and
+   shadow back at ~99 entries? That combination has never run. If anything blacks out, the styling
+   is the variable to drop first, and the fallback is pre-rendered PNGs (§7 item 4).
+2. **Do the extras mediums heal?** See 13d.
+3. **Rollover.** With the spread mock the flips to watch are Sunrise to Dhuhr at about +6 minutes
+   from launch (a 5-minute gap, exactly on WidgetKit's floor) and Dhuhr to Asr at about +50
+   (comfortable). A stall on the first and a clean roll on the second is a spacing artifact, not a
+   bug.
+4. **Queue row 13 (session 17, "timeline horizon 14 to 30 days") is now cheap.** At one entry per
+   boundary, 30 days is roughly 200 entries. Whether that fits is the same device question as 1.
+5. **The expo-widgets memoisation patch** still wants an explicit owner decision before any PR.
