@@ -200,10 +200,10 @@ describe('app config android widget resolution', () => {
     for (const widget of home) {
       const android = widget.android as Record<string, unknown>;
       // Grid-agnostic sizing (owner ruling 2026-09-19): minWidth arithmetic is
-      // the only lever, so no targetCell keys exist. Horizontal-only resize
-      // (owner ruling 2026-09-19): 50% to 100% morphs the composition, no
-      // vertical resizing.
-      expect(android.resizeMode).toBe('horizontal');
+      // the only lever, so no targetCell keys exist. Sizes are locked like
+      // iOS (owner ruling 2026-09-19): small = 50%, medium = 100%, the eight
+      // kinds ARE the size choices.
+      expect(android.resizeMode).toBe('none');
       expect(android.initialLayout).toBe('./widgets/PrayerWidget');
       expect(android.minWidth).toBe(/Medium/.test(String(widget.name)) ? 310 : 160);
       expect(android.minHeight).toBe(110);

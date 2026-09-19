@@ -66,10 +66,10 @@ describe('android widget assets', () => {
     // opaque forms are pinned instead of the subset rule.
     expect(generator).toContain('CARD_LIGHT = css("#fcfcfe")');
     expect(generator).toContain('CARD_DARK = css("#1a1a5c")');
-    expect(generator).toContain('CARD_RADIUS_PT = 16');
-    // The pill carries vertical padding (2dp above and below its 22dp row)
-    // and NO drop shadow on Android: 26dp tall, shadow-free.
-    expect(generator).toContain('PILL_W, PILL_H = 140, 26');
+    expect(generator).toContain('CARD_RADIUS_PT = 13');
+    // The pill carries vertical padding (1dp above and below its 22dp row)
+    // and NO drop shadow on Android: 24dp tall, shadow-free.
+    expect(generator).toContain('PILL_W, PILL_H = 140, 24');
     expect(generator).not.toContain('"shadow"');
 
     const layoutColors = new Set(collectColorLiterals(layout).map((color) => color.replace(/\s/g, '').toLowerCase()));
