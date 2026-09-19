@@ -276,15 +276,15 @@ describe('home widget renderer', () => {
 
     // Owner ruling 2026-09-19: the pill gains 2dp vertical padding (its
     // shadow stays on iOS)
-    it('pads the medium pill 2dp above and below its 22dp row, keeping its shadow', () => {
+    it('pads the medium pill 1dp above and below its 22dp row, keeping its shadow', () => {
       const tree = renderHome(liveProps(), 'systemMedium');
       const pill = collect(tree).find((node) => node.marker === 'RoundedRectangle');
       expect(pill).toBeDefined();
       const styles = (pill?.props.modifiers as Array<{ modifier: string; value: unknown }>) ?? [];
       expect(
-        styles.some((style) => style.modifier === 'frame' && (style.value as { height?: number }).height === 26)
+        styles.some((style) => style.modifier === 'frame' && (style.value as { height?: number }).height === 24)
       ).toBe(true);
-      expect(styles.some((style) => style.modifier === 'offset' && (style.value as { y?: number }).y === 64)).toBe(
+      expect(styles.some((style) => style.modifier === 'offset' && (style.value as { y?: number }).y === 65)).toBe(
         true
       );
       expect(styles.some((style) => style.modifier === 'shadow')).toBe(true);
@@ -537,6 +537,9 @@ describe('home widget renderer', () => {
             )
         );
         expect(footerRow).toBeDefined();
+        // The row must be taller than its bottom padding, or the 9sp footer
+        // text clips to nothing on device (owner finding 2026-09-19)
+        expect(footerRow?.props.modifiers).toEqual(expect.arrayContaining([{ modifier: 'height', value: 30 }]));
       }
     });
 
@@ -564,14 +567,14 @@ describe('home widget renderer', () => {
       const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
       expect(pill).toBeDefined();
       expect(pill?.props.modifiers).toEqual(
-        expect.arrayContaining([{ modifier: 'fillMaxWidth' }, { modifier: 'height', value: 26 }])
+        expect.arrayContaining([{ modifier: 'fillMaxWidth' }, { modifier: 'height', value: 24 }])
       );
-      // Asr is row 3: the pill sits 2dp above its row top (3*22 - 2)
+      // Asr is row 3: the pill sits 1dp above its row top (3*22 - 1)
       const spacerAbove = nodes.find(
         (node) =>
           node.marker === 'Spacer' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'height' && mod.value === 3 * 22 - 2
+            (mod) => mod.modifier === 'height' && mod.value === 3 * 22 - 1
           )
       );
       expect(spacerAbove).toBeDefined();

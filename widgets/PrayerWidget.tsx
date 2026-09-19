@@ -220,14 +220,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // one bottom offset, both sizes, both themes, both schedules.
   const FOOTER_BOTTOM_PAD = 16;
   // The active pill clears its row's text vertically (owner ruling
-  // 2026-09-19): 2dp above and below the 22dp row.
-  const PILL_VPAD = 2;
+  // 2026-09-19): 1dp above and below the 22dp row, aligned with the row's
+  // own side insets.
+  const PILL_VPAD = 1;
   // Fixed hero width: a fillMaxWidth fraction on the first Row child let
   // the hero take the full card and squeezed the day list to zero width in
   // Glance (caught on the 3T: the medium rendered hero-only, centered).
-  // 132dp with the 148dp list splits the full-width medium roughly in half
-  // and stays inside the 4-cell medium on clamping launchers.
-  const HERO_WIDTH = 132;
+  // 160dp centers the trio inside the card's LEFT HALF (owner finding
+  // 2026-09-19), with the 148dp list flush right.
+  const HERO_WIDTH = 160;
   const ROW_NAME_WIDTH = 76;
   const ROW_TIME_WIDTH = 46;
 
@@ -266,7 +267,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         {content}
       </Box>
       {footer === null ? null : (
-        <Row modifiers={[height(16), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]} verticalAlignment='center'>
+        <Row modifiers={[height(FOOTER_BOTTOM_PAD + 14), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]} verticalAlignment='center'>
           {AText(footer, 9, 'normal', palette.footer)}
         </Row>
       )}
@@ -390,7 +391,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
       return (
-        <Row verticalAlignment='center' modifiers={[height(ROW_HEIGHT), APad(8, 0, 8, 0)]}>
+        <Row verticalAlignment='center' modifiers={[height(ROW_HEIGHT)]}>
           <Box contentAlignment='centerStart' modifiers={[height(ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
             {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
           </Box>
@@ -412,7 +413,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             {AText(footer, 9, 'normal', palette.footer)}
           </Box>
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
-            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
+            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH), APad(8, 0, 8, 0)]}>
               <Column>
                 <Spacer modifiers={[height(Math.max(0, activeIndex * ROW_HEIGHT - PILL_VPAD))]} />
                 <AImageEl
