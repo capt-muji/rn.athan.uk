@@ -205,6 +205,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const ROW_TEXT_SIZE = 12;
   const ROW_CORNER_RADIUS = 4;
   const LIST_WIDTH = 140;
+  // Fixed hero width: a fillMaxWidth fraction on the first Row child let
+  // the hero take the full card and squeezed the day list to zero width in
+  // Glance (caught on the 3T: the medium rendered hero-only, centered)
+  const HERO_WIDTH = 150;
 
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
@@ -358,13 +362,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
         <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
         <Row modifiers={[fillMaxSize(), APad(13, 13, 20, 13)]}>
-          <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), fillMaxWidth(0.48)]}>
+          <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
             <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
               {trio}
             </Box>
             {AText(footer, 9, 'normal', palette.footer)}
           </Box>
-          <Box contentAlignment='center' modifiers={[fillMaxHeight(), fillMaxWidth(0.52)]}>
+          <Box contentAlignment='center' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart'>
               <Column>
                 <Spacer modifiers={[height(activeIndex * ROW_HEIGHT)]} />
