@@ -1,11 +1,12 @@
-import {
-  Image as AndroidImage,
-  Row as AndroidRow,
-  Spacer as AndroidSpacer,
-  Text as AndroidText,
-  Box,
-  Column,
-} from '@expo/ui/jetpack-compose';
+// Jetpack names enter unaliased on purpose: the Android widget runtime
+// injects @expo/ui/jetpack-compose's exports as globals under their
+// canonical names, and the serialized layout body's identifiers resolve
+// against those globals — an alias like `Text as Text` compiles
+// app-side but is undefined in the widget runtime (caught on the 3T).
+// Text/Image/Spacer are shared spellings: the swift-ui globals answer
+// them on iOS, the jetpack globals on Android, and the body never needs
+// to know which.
+import { Box, Column, Row } from '@expo/ui/jetpack-compose';
 import {
   fillMaxHeight as androidFillMaxHeight,
   fillMaxSize as androidFillMaxSize,
@@ -84,6 +85,22 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // runtime instead of sharing an abstraction that can drift both ways.
   const isAndroidRuntime = typeof Column !== 'undefined';
   const androidProps = props !== null && 'days' in props ? (props as PrayerWidgetAndroidProps) : null;
+
+  // The Android composition spells Text/Image like iOS does (each runtime's
+  // globals answer their own platform), but the app-side types come from
+  // swift-ui alone, so the jetpack prop shapes ride these local casts.
+  // Locals serialize with the body; only free identifiers would not.
+  const ATextEl = Text as unknown as (elementProps: {
+    color?: string;
+    style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600' };
+    maxLines?: number;
+    children?: string;
+  }) => ReactNode;
+  const AImageEl = Image as unknown as (elementProps: {
+    source?: { uri: string };
+    contentScale?: 'fit' | 'fillBounds';
+    modifiers?: unknown[];
+  }) => ReactNode;
 
   // Theme and schedule arrive on the entry — each gallery kind receives
   // its own timeline, so the palette is fixed at placement. The props-less
@@ -201,14 +218,14 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const A_PILL_NAME = `athan_widget_pill_${isExtra ? 'extra' : 'standard'}_${theme}`;
 
   const AText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
-    <AndroidText color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
+    <ATextEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
       {text}
-    </AndroidText>
+    </ATextEl>
   );
 
   const ACard = (footer: string | null, content: ReactNode) => (
     <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[androidFillMaxSize()]}>
-      <AndroidImage source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[androidFillMaxSize()]} />
+      <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[androidFillMaxSize()]} />
       <Box contentAlignment='center' modifiers={[androidFillMaxSize(), androidPadding(13, 13, 13, 24)]}>
         {content}
       </Box>
@@ -244,7 +261,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       null,
       <Column>
         {AText('Athan', 15, '600', palette.hero)}
-        <AndroidSpacer modifiers={[androidHeight(5)]} />
+        <Spacer modifiers={[androidHeight(5)]} />
         {AText('Prayer times for London', 12, 'normal', palette.secondary)}
       </Column>
     );
@@ -253,20 +270,16 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     ACard(
       null,
       <Column>
-        <AndroidImage
-          source={{ uri: A_MOON_NAME }}
-          contentScale='fit'
-          modifiers={[androidWidth(26), androidHeight(26)]}
-        />
-        <AndroidSpacer modifiers={[androidHeight(7)]} />
+        <AImageEl source={{ uri: A_MOON_NAME }} contentScale='fit' modifiers={[androidWidth(26), androidHeight(26)]} />
+        <Spacer modifiers={[androidHeight(7)]} />
         {AText('Out of date', 14, '600', palette.hero)}
-        <AndroidSpacer modifiers={[androidHeight(7)]} />
+        <Spacer modifiers={[androidHeight(7)]} />
         {isMedium ? (
           AText('Open Athan to refresh', 12, 'normal', palette.secondary)
         ) : (
           <Column>
             {AText('Open Athan', 12, 'normal', palette.secondary)}
-            <AndroidSpacer modifiers={[androidHeight(1)]} />
+            <Spacer modifiers={[androidHeight(1)]} />
             {AText('to refresh', 12, 'normal', palette.secondary)}
           </Column>
         )}
@@ -278,11 +291,17 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
     type ARow = PrayerWidgetAndroidProps['days'][number]['rows'][number];
     let next: ARow | null = null;
+    let nextEpoch: number | null = null;
+    let nextDayLabel = '';
     for (const day of input.days) {
       for (const row of day.rows) {
         const epoch = row.epochMs;
         if (epoch === null || epoch <= nowMs) continue;
-        if (next === null || epoch < (next.epochMs ?? Number.POSITIVE_INFINITY)) next = row;
+        if (nextEpoch === null || epoch < nextEpoch) {
+          next = row;
+          nextEpoch = epoch;
+          nextDayLabel = day.dateLabel;
+        }
       }
     }
 
@@ -290,14 +309,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       return <AStale />;
     }
 
-    const nextDay = input.days.find((day) => day.rows.some((row) => row === next));
-    const footer = AFooter(nextDay?.dateLabel ?? '');
+    const footer = AFooter(nextDayLabel);
     const trio = (
       <Column>
         {AText(next.name.toUpperCase(), 12, 'bold', palette.eyebrow)}
-        <AndroidSpacer modifiers={[androidHeight(6)]} />
+        <Spacer modifiers={[androidHeight(6)]} />
         {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
-        <AndroidSpacer modifiers={[androidHeight(6)]} />
+        <Spacer modifiers={[androidHeight(6)]} />
         {AText(next.time, 13, 'normal', palette.secondary)}
       </Column>
     );
@@ -305,12 +323,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // The on-screen day holds the render instant; the counted-down prayer
     // may belong to a later day, in which case there is no active row and
     // the medium falls back to the hero alone — the iOS layout's listValid
-    // rule.
-    let onScreenDay = input.days[0];
+    // rule. An empty-days snapshot degenerates to the same hero-only path.
+    const emptyDay: PrayerWidgetAndroidProps['days'][number] = { dateLabel: '', startEpochMs: 0, rows: [] };
+    let onScreenDay = emptyDay;
     for (const day of input.days) {
       if (day.startEpochMs <= nowMs) onScreenDay = day;
     }
-    const dayRows = onScreenDay?.rows ?? [];
+    const dayRows = onScreenDay.rows;
     const activeIndex = dayRows.indexOf(next);
     const listValid = dayRows.length > 0 && activeIndex >= 0 && activeIndex < dayRows.length;
 
@@ -322,20 +341,20 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
       return (
-        <AndroidRow
+        <Row
           verticalAlignment='center'
           modifiers={[androidFillMaxWidth(), androidHeight(ROW_HEIGHT), androidPadding(10, 0, 10, 0)]}>
           {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
-          <AndroidSpacer modifiers={[androidFillMaxWidth()]} />
+          <Spacer modifiers={[androidFillMaxWidth()]} />
           {AText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
-        </AndroidRow>
+        </Row>
       );
     };
 
     return (
       <Box contentAlignment='topStart' modifiers={[androidFillMaxSize()]}>
-        <AndroidImage source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[androidFillMaxSize()]} />
-        <AndroidRow modifiers={[androidFillMaxSize(), androidPadding(13, 13, 20, 13)]}>
+        <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[androidFillMaxSize()]} />
+        <Row modifiers={[androidFillMaxSize(), androidPadding(13, 13, 20, 13)]}>
           <Box contentAlignment='bottomCenter' modifiers={[androidFillMaxHeight(), androidFillMaxWidth(0.48)]}>
             <Box contentAlignment='center' modifiers={[androidFillMaxSize(), androidPadding(0, 0, 0, 24)]}>
               {trio}
@@ -345,8 +364,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           <Box contentAlignment='center' modifiers={[androidFillMaxHeight(), androidFillMaxWidth(0.52)]}>
             <Box contentAlignment='topStart'>
               <Column>
-                <AndroidSpacer modifiers={[androidHeight(activeIndex * ROW_HEIGHT)]} />
-                <AndroidImage
+                <Spacer modifiers={[androidHeight(activeIndex * ROW_HEIGHT)]} />
+                <AImageEl
                   source={{ uri: A_PILL_NAME }}
                   contentScale='fillBounds'
                   modifiers={[androidFillMaxWidth(), androidHeight(ROW_HEIGHT)]}
@@ -355,7 +374,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
               <Column>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
             </Box>
           </Box>
-        </AndroidRow>
+        </Row>
       </Box>
     );
   };
@@ -437,8 +456,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const bottomScale = orbScale(orbs.bottomSize);
     const topLayoutSize = orbLayoutSize(orbs.topSize);
     const topScale = orbScale(orbs.topSize);
-    const cornerLayoutSize = orbs.corner ? orbLayoutSize(orbs.corner.size) : 0;
-    const cornerScale = orbs.corner ? orbScale(orbs.corner.size) : 1;
+    const cornerLayoutSize = orbLayoutSize(orbs.corner.size);
+    const cornerScale = orbScale(orbs.corner.size);
 
     return (
       <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
@@ -468,17 +487,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             blur(30),
           ]}
         />
-        {orbs.corner ? (
-          <Circle
-            modifiers={[
-              frame({ width: cornerLayoutSize, height: cornerLayoutSize }),
-              scaleEffect(cornerScale),
-              offset({ x: orbs.corner.x, y: orbs.corner.y }),
-              foregroundStyle(orbs.corner.color),
-              blur(orbs.corner.blur / cornerScale),
-            ]}
-          />
-        ) : null}
+        <Circle
+          modifiers={[
+            frame({ width: cornerLayoutSize, height: cornerLayoutSize }),
+            scaleEffect(cornerScale),
+            offset({ x: orbs.corner.x, y: orbs.corner.y }),
+            foregroundStyle(orbs.corner.color),
+            blur(orbs.corner.blur / cornerScale),
+          ]}
+        />
       </ZStack>
     );
   };
@@ -501,7 +518,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     let dayPart = '';
     if (dateTokens.length === 1) {
       dayPart = dateTokens[0];
-    } else if (dateTokens.length > 1) {
+    } else {
       const monthPrefix = dateTokens[0].slice(0, 3);
       const dayNumber = dateTokens[dateTokens.length - 1];
       dayPart = `${monthPrefix} ${dayNumber}`;

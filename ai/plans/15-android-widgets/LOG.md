@@ -131,3 +131,38 @@ Resume from: the device proof (build running via
 session15/bin/build-prod-widgets.zsh — the session-3 script strips
 EXPO_PUBLIC_* env, so the variant appends the flag to the build worktree's
 .env, the build-mock-ramadan precedent).
+
+## Step 8: Glance through minification — DONE (f8afcac0, merged 21111e47)
+
+- Device: the first placed widget stayed on its loading layout forever;
+  logcat showed `WM-InputMerger: NoSuchMethodException <init> []` for
+  androidx.work.OverwritingInputMerger — R8 stripped the constructor in
+  the minified release build, killing the WorkManager worker that composes
+  every Glance update at birth.
+- Fix: expo-build-properties android.extraProguardRules keeps
+  androidx.work.** and androidx.glance.** (verified picked up by the v2
+  build; debug and iOS unaffected).
+
+## Step 9: canonical jetpack names + widgets in coverage — DONE (merged b5e20806)
+
+- Device (v2): composition now ran but the widget rendered "Property
+  'AndroidText' doesn't exist" — the runtime injects jetpack globals under
+  their canonical names and my aliased imports (Text as AndroidText...)
+  resolved to nothing in the widget runtime. Aliases removed; the Android
+  composition spells Text/Image/Spacer like iOS and each runtime's globals
+  answer their platform; local typed casts carry the jetpack prop shapes
+  app-side. Dead defensive branches introduced with the aliases removed
+  (scan-tracked day label, empty-day seed, required orb corner, plain else
+  for the footer token split).
+- widgets/ enters jest coverage (jest.config.js collectCoverageFrom) with
+  the renderer suites carrying it: iOS home path at full branch depth
+  (medium list, dark + oversized medium orbs, extras rose pill, stale per
+  family, legacy entries, neutral, rendering-error catch, label-less hero,
+  footer token arms), a new lock-widget suite (rectangular, inline, stale
+  per family, placeholder, error catch), and the Android path's
+  render-time tests plus dark/medium/one-line-stale/empty-label arms.
+  Closure walker: type-alias declarations and function-type parameters are
+  not value references. Validate: 4601/4601 at 100/100/100/100.
+
+Resume from: v3 device build (proguard + canonical names); then placement
+of all 8, the 16 screenshots, the frame audit, iOS simulator proof, audit.
