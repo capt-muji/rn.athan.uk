@@ -191,3 +191,27 @@ of all 8, the 16 screenshots, the frame audit, iOS simulator proof, audit.
 
 Resume from: v5 device build (day-boundary fix); re-place the medium,
 place the remaining six, then the screenshot/stale/perf/iOS-sim pass.
+
+## Step 12: fixed hero width — DONE (26a7b9ed)
+
+- v5 device: the medium STILL rendered hero-only, centered in the wide
+  card. Diagnosis by pixel shape: the medium branch RUNS; fillMaxWidth(0.48)
+  on the Row's hero Box let Glance measure the hero at full card width,
+  starving the day-list Box to zero. The hero now takes a fixed 150dp
+  column; the list fills the remainder. (Suspected first: stale props and
+  the noon anchor — the noon anchor WAS a real second bug, fixed in step
+  11, but not this one.)
+- Mock-build incident during debugging: session15/bin/build-mock-widgets
+  initially unset EXPO_ANDROID_SUFFIX (inherited from the session-3
+  script) and installed the mock OVER com.mugtaba.athan on the owner's
+  device. Restored the production v5 immediately; the owner's data was
+  never touched (install -r keeps it; the mock build uses the
+  athan-storage-dev id). The variant script now forces the fleettest
+  suffix, and its applicationId/package assertions accept the suffixed id.
+  A debuggable-variant attempt died on the missing embedded bundle
+  (debug builds expect Metro); abandoned.
+
+Resume from: v6 device build; verify the medium renders its day list,
+place the remaining six widgets, the 16 screenshots, stale via clock-jump
++ force-stop + reboot (a live process could re-push and heal the widget,
+so the app stays stopped while the clock moves), frame audit, iOS sim.
