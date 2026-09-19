@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+group = 'expo.modules.widgetrefresh'
+version = '0.1.0'
+
+android {
+    namespace "expo.modules.widgetrefresh"
+
+    compileSdk 37
+
+    defaultConfig {
+        minSdk 24
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation project(':expo-modules-core')
+}
