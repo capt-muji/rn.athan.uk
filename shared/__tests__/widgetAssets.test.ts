@@ -57,9 +57,20 @@ describe('android widget assets', () => {
     }
   });
 
-  it('generator color literals are a subset of the layout palette', () => {
+  it('bakes the Android-only card and geometry contract, and keeps every other literal in the layout palette', () => {
     const generator = readFileSync(GENERATOR_PATH, 'utf8');
     const layout = readFileSync(LAYOUT_PATH, 'utf8');
+
+    // Android cards are OPAQUE (owner ruling 2026-09-19): the iOS palette's
+    // translucent literals below are deliberately NOT reused, so the exact
+    // opaque forms are pinned instead of the subset rule.
+    expect(generator).toContain('CARD_LIGHT = css("#fcfcfe")');
+    expect(generator).toContain('CARD_DARK = css("#1a1a5c")');
+    expect(generator).toContain('CARD_RADIUS_PT = 16');
+    // The pill carries vertical padding (2dp above and below its 22dp row)
+    // and NO drop shadow on Android: 26dp tall, shadow-free.
+    expect(generator).toContain('PILL_W, PILL_H = 140, 26');
+    expect(generator).not.toContain('"shadow"');
 
     const layoutColors = new Set(collectColorLiterals(layout).map((color) => color.replace(/\s/g, '').toLowerCase()));
     expect(layoutColors.size).toBeGreaterThan(10);
@@ -67,7 +78,9 @@ describe('android widget assets', () => {
     const generatorColors = [...collectColorLiterals(generator).map((color) => color.replace(/\s/g, '').toLowerCase())];
     expect(generatorColors.length).toBeGreaterThan(10);
 
-    const outside = generatorColors.filter((color) => !layoutColors.has(color));
+    const outside = generatorColors.filter(
+      (color) => !layoutColors.has(color) && color !== '#fcfcfe' && color !== '#1a1a5c'
+    );
     expect(outside).toEqual([]);
   });
 
