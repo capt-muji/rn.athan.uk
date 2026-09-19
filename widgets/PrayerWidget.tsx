@@ -403,7 +403,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             {AText(footer, 9, 'normal', palette.footer)}
           </Box>
           <Box contentAlignment='center' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
-            <Box contentAlignment='topStart'>
+            <Box contentAlignment='topStart' modifiers={[fillMaxWidth()]}>
               <Column>
                 <Spacer modifiers={[height(activeIndex * ROW_HEIGHT)]} />
                 <AImageEl
