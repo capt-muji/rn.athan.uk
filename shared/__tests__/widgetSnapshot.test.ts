@@ -118,9 +118,7 @@ describe('buildPrayerWidgetSnapshot', () => {
     const snapshot = buildPrayerWidgetSnapshot(sequence, SETTINGS);
     if (!snapshot) return;
 
-    const epochs = snapshot.days.flatMap((day) =>
-      day.rows.map((row) => row.epochMs).filter((ms): ms is number => ms !== null)
-    );
+    const epochs = snapshot.days.flatMap((day) => day.rows.map((row) => row.epochMs).filter((ms) => ms > 0));
     expect(snapshot.horizonEpochMs).toBe(Math.max(...epochs));
   });
 
@@ -160,7 +158,7 @@ describe('buildPrayerWidgetSnapshot', () => {
     );
     const row = day?.rows.find((candidate) => candidate.name === 'Asr' && candidate.time === UNAVAILABLE_TIME);
     expect(row).toBeDefined();
-    expect(row?.epochMs).toBeNull();
+    expect(row?.epochMs).toBe(0);
   });
 
   it('answers null when the sequence has no readable prayer', () => {
