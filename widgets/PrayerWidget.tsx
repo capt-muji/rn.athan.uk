@@ -226,9 +226,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // Fixed hero width: a fillMaxWidth fraction on the first Row child let
   // the hero take the full card and squeezed the day list to zero width in
   // Glance (caught on the 3T: the medium rendered hero-only, centered).
-  // 160dp centers the trio inside the card's LEFT HALF (owner finding
-  // 2026-09-19), with the 148dp list flush right.
-  const HERO_WIDTH = 160;
+  // 176dp spans the card's full LEFT HALF up to the list's edge (owner
+  // finding 2026-09-19): the trio centers exactly where the eye expects
+  // the half's midpoint, with the 148dp list flush right.
+  const HERO_WIDTH = 176;
   const ROW_NAME_WIDTH = 76;
   const ROW_TIME_WIDTH = 46;
 
@@ -313,7 +314,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       <Column horizontalAlignment='center'>
         <AImageEl source={{ uri: A_MOON_NAME }} contentScale='fit' modifiers={[width(26), height(26)]} />
         <Spacer modifiers={[height(7)]} />
-        {AText('Out of date', 14, '600', palette.hero)}
+        {AText('Out of date', 14, 'bold', palette.hero)}
         <Spacer modifiers={[height(7)]} />
         {isMedium ? (
           AText('Open Athan to refresh', 12, 'normal', palette.secondary)
@@ -414,7 +415,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           </Box>
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH), APad(8, 0, 8, 0)]}>
-              <Column>
+              <Column modifiers={[APad(4, 0, 4, 0)]}>
                 <Spacer modifiers={[height(Math.max(0, activeIndex * ROW_HEIGHT - PILL_VPAD))]} />
                 <AImageEl
                   source={{ uri: A_PILL_NAME }}
@@ -446,7 +447,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Spacer />
           <Image systemName='moon.stars.fill' size={26} color={palette.staleIcon} />
-          <Text modifiers={[font({ size: 14, weight: 'semibold' }), foregroundStyle(palette.hero)]}>Out of date</Text>
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(palette.hero)]}>Out of date</Text>
           {environment.widgetFamily === 'systemMedium' ? (
             refreshLine('Open Athan to refresh')
           ) : (
