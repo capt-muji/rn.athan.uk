@@ -24,7 +24,7 @@ MEDIUM_W, MEDIUM_H = 250, 110
 PILL_W, PILL_H = 140, 24
 MOON = 26
 CARD_RADIUS_PT = 13
-PILL_RADIUS_PT = 4
+PILL_RADIUS_PT = 6
 
 def css(color: str) -> tuple:
     """Parses '#rrggbb' / '#rrggbbaa' / 'rgba(r, g, b, a)' into an RGBA
