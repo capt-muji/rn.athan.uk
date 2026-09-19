@@ -133,18 +133,23 @@ def pill(spec: dict) -> Image.Image:
     width = PILL_W * SCALE
     height = PILL_H * SCALE
     radius = PILL_RADIUS_PT * SCALE
-    margin = spec["shadow_radius"] * SCALE + 4
-    canvas = Image.new("RGBA", (width + 2 * margin, height + 2 * margin), (0, 0, 0, 0))
+    # Horizontal margin is ZERO: the pill image must span its full row
+    # width, or the row's first and last glyphs render off-pill (pale
+    # active-row text on the light card was unreadable there). The shadow
+    # spreads vertically only, from the y-offset blur.
+    margin_x = 0
+    margin_y = spec["shadow_radius"] * SCALE + 4
+    canvas = Image.new("RGBA", (width + 2 * margin_x, height + 2 * margin_y), (0, 0, 0, 0))
 
     shadow = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
     ImageDraw.Draw(shadow).rounded_rectangle(
-        [margin, margin, margin + width - 1, margin + height - 1], radius=radius, fill=spec["shadow"]
+        [margin_x, margin_y, margin_x + width - 1, margin_y + height - 1], radius=radius, fill=spec["shadow"]
     )
     shadow = shadow.filter(ImageFilter.GaussianBlur(spec["shadow_radius"] * SCALE))
     canvas.alpha_composite(shadow, (0, spec["shadow_y"] * SCALE))
 
     ImageDraw.Draw(canvas).rounded_rectangle(
-        [margin, margin, margin + width - 1, margin + height - 1],
+        [margin_x, margin_y, margin_x + width - 1, margin_y + height - 1],
         radius=radius,
         fill=spec["fill"],
         outline=spec["stroke"],
