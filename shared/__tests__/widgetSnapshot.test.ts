@@ -129,16 +129,12 @@ describe('buildPrayerWidgetSnapshot', () => {
     const snapshot = buildPrayerWidgetSnapshot(sequence, SETTINGS);
     if (!snapshot) return;
 
-    // 2026-10-17 00:00 London is 23:00 UTC on the 16th (BST); the 20th is
-    // GMT after the fall-back, so its midnight is 00:00 UTC. The anchor is
-    // derived, not asserted against a hard epoch: recompute it the same
-    // documented way and require equality.
-    const { getDayAnchor } = jest.requireActual('@/shared/time') as typeof import('@/shared/time');
     for (const day of snapshot.days) {
       expect(day.rows.length).toBeGreaterThan(0);
     }
+    const { createPrayerDatetime } = jest.requireActual('@/shared/time') as typeof import('@/shared/time');
     const firstDay = snapshot.days[0];
-    expect(firstDay?.startEpochMs).toBe(getDayAnchor('2026-10-17').getTime());
+    expect(firstDay?.startEpochMs).toBe(createPrayerDatetime('2026-10-17', '00:00').getTime());
   });
 
   it('dateLabel honors the hijri preference per day', () => {
