@@ -393,7 +393,11 @@ export const buildPrayerWidgetSnapshot = (
     if (day === undefined) {
       day = {
         dateLabel: formatDateLabel(prayer.belongsToDate, settings.hijriDate),
-        startEpochMs: TimeUtils.getDayAnchor(prayer.belongsToDate).getTime(),
+        // London midnight STARTING the date (createPrayerDatetime resolves
+        // the offset at the instant, DST-safe) — the render-time day picker
+        // compares wall-clock days, and getDayAnchor's noon anchor would
+        // keep yesterday picked through every morning
+        startEpochMs: TimeUtils.createPrayerDatetime(prayer.belongsToDate, '00:00').getTime(),
         rows: [],
       };
       days.push(day);
