@@ -408,7 +408,7 @@ export const buildPrayerWidgetSnapshot = (
       day.rows.push({ name: prayer.english, time: prayer.time, epochMs: prayer.datetime.getTime() });
       horizonEpochMs = Math.max(horizonEpochMs ?? Number.NEGATIVE_INFINITY, prayer.datetime.getTime());
     } else {
-      day.rows.push({ name: prayer.english, time: UNAVAILABLE_TIME, epochMs: null });
+      day.rows.push({ name: prayer.english, time: UNAVAILABLE_TIME, epochMs: 0 });
     }
   }
 

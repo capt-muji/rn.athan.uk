@@ -517,7 +517,7 @@ describe('home widget renderer', () => {
       if (!firstDay) throw new Error('fixture day missing');
       firstDay.dateLabel = 'Rajab 1, 1448';
       const nextDay = hijri.days.find((day) =>
-        day.rows.some((row) => row === day.rows.find((r) => r.epochMs !== null && r.epochMs > at(DAY_ONE, '14:08')))
+        day.rows.some((row) => row === day.rows.find((r) => r.epochMs > at(DAY_ONE, '14:08')))
       );
       if (nextDay) nextDay.dateLabel = 'Rajab 1, 1448';
       expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1 · Lon');
