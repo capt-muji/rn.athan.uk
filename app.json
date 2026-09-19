@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.279",
+    "version": "1.27.280",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -209,7 +209,7 @@
               "android": {
                 "minWidth": 160,
                 "minHeight": 110,
-                "resizeMode": "both",
+                "resizeMode": "horizontal",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -224,7 +224,7 @@
               "android": {
                 "minWidth": 160,
                 "minHeight": 110,
-                "resizeMode": "both",
+                "resizeMode": "horizontal",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -239,7 +239,7 @@
               "android": {
                 "minWidth": 310,
                 "minHeight": 110,
-                "resizeMode": "both",
+                "resizeMode": "horizontal",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -254,7 +254,7 @@
               "android": {
                 "minWidth": 310,
                 "minHeight": 110,
-                "resizeMode": "both",
+                "resizeMode": "horizontal",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -269,7 +269,7 @@
               "android": {
                 "minWidth": 160,
                 "minHeight": 110,
-                "resizeMode": "both",
+                "resizeMode": "horizontal",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -284,7 +284,7 @@
               "android": {
                 "minWidth": 160,
                 "minHeight": 110,
-                "resizeMode": "both",
+                "resizeMode": "horizontal",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -299,7 +299,7 @@
               "android": {
                 "minWidth": 310,
                 "minHeight": 110,
-                "resizeMode": "both",
+                "resizeMode": "horizontal",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
@@ -314,7 +314,7 @@
               "android": {
                 "minWidth": 310,
                 "minHeight": 110,
-                "resizeMode": "both",
+                "resizeMode": "horizontal",
                 "initialLayout": "./widgets/PrayerWidget"
               }
             },
