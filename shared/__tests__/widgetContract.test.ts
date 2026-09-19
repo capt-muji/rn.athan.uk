@@ -200,14 +200,14 @@ describe('palette literals', () => {
     // Dusk", owner-approved): navy-violet card on every size, pink name,
     // white hero, periwinkle-tinted small texts with blue-grey medium
     // texts, app indigo + muted magenta pills, neutral violet depth
-    // shadow, merged violet/electric-violet/blue orb glows.
+    // shadow. The orb glows are gone (owner ruling 2026-09-20).
     const anchors = [
       // Light palette
       'rgba(252, 252, 254, 0.92)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
-      'rgba(42, 68, 130, 0.34)',
+      'rgba(42, 68, 130, 0.255)',
       '#4f46e5',
       '#fce7f3',
       'rgba(10, 42, 155, 0.4)',
@@ -217,30 +217,20 @@ describe('palette literals', () => {
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
       // Dark palette — Violet Dusk
-      'rgba(26, 26, 92, 0.88)', // card — every dark size
+      'rgba(53, 36, 137, 0.88)', // card — every dark size
       '#ffffff', // hero / passed rows
       '#e3eaff', // active row text — standard, white + hint of blue
       '#ffeaf4', // active row text — extras, white + hint of pink
       '#ff69b4', // eyebrow + stale mark
-      'rgba(173, 193, 254, 0.54)', // secondary — smalls
-      'rgba(173, 193, 254, 0.6)', // upcoming rows — smalls
-      'rgba(173, 193, 254, 0.54)', // footer — smalls, at the absolute time's contrast (owner ruling 2026-09-19)
-      'rgba(160, 182, 228, 0.54)', // secondary — mediums, blue-grey
-      'rgba(160, 182, 228, 0.6)', // upcoming rows — mediums, blue-grey
-      'rgba(160, 182, 228, 0.54)', // footer — mediums, at the absolute time's contrast
+      'rgba(173, 193, 254, 0.54)', // secondary — the base whisper, both sizes
+      'rgba(173, 193, 254, 0.405)', // upcoming rows — a quarter fainter than the base (owner ruling 2026-09-20)
+      'rgba(173, 193, 254, 0.27)', // footer — half the base
       '#a123aa', // extras pill
       '#0847e5', // standard pill — app prayer.activeBackground
       'rgba(10, 30, 140, 0.5)', // pill depth shadow — standard, deep blue
       'rgba(95, 10, 115, 0.5)', // pill depth shadow — extras, deep pinky purple
       'rgba(146, 0, 162, 0.35)', // extras stroke
       'rgba(8, 71, 229, 0.35)', // standard stroke
-      'rgba(128, 0, 255, 0.25)', // small top glow
-      'rgba(128, 0, 255, 0.45)', // small + medium bottom-left glow
-      'rgba(128, 0, 255, 0.34)', // small bottom-right glow
-      'rgba(165, 180, 252, 0.3)', // small center glow
-      'rgba(155, 30, 255, 0.22)', // medium top glow — electric violet
-      'rgba(130, 145, 240, 0.3)', // medium center glow
-      'rgba(55, 75, 235, 0.17)', // medium bottom-right glow — blue
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -264,7 +254,7 @@ describe('palette literals', () => {
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
-      'rgba(42, 68, 130, 0.34)',
+      'rgba(42, 68, 130, 0.255)',
       '#4f46e5',
       '#fce7f3',
       'rgba(10, 42, 155, 0.4)',
@@ -274,27 +264,17 @@ describe('palette literals', () => {
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
       // Home widget — dark Violet Dusk
-      'rgba(26, 26, 92, 0.88)',
+      'rgba(53, 36, 137, 0.88)',
       '#ff69b4',
       'rgba(173, 193, 254, 0.54)',
-      'rgba(173, 193, 254, 0.6)',
-      'rgba(173, 193, 254, 0.54)',
-      'rgba(160, 182, 228, 0.54)',
-      'rgba(160, 182, 228, 0.6)',
-      'rgba(160, 182, 228, 0.54)',
+      'rgba(173, 193, 254, 0.405)',
+      'rgba(173, 193, 254, 0.27)',
       '#a123aa',
       '#0847e5',
       'rgba(10, 30, 140, 0.5)',
       'rgba(95, 10, 115, 0.5)',
       'rgba(146, 0, 162, 0.35)',
       'rgba(8, 71, 229, 0.35)',
-      'rgba(128, 0, 255, 0.25)',
-      'rgba(128, 0, 255, 0.45)',
-      'rgba(128, 0, 255, 0.34)',
-      'rgba(165, 180, 252, 0.3)',
-      'rgba(155, 30, 255, 0.22)',
-      'rgba(130, 145, 240, 0.3)',
-      'rgba(55, 75, 235, 0.17)',
       '#e3eaff',
       '#ffeaf4',
     ].map(normalizeColor);
