@@ -150,6 +150,101 @@ Also changed as diagnostics/tuning:
 - `mocks/simple.ts` — today's offsets spread to give a range (see section 5). Owner asked for this;
   it is not a bug, but it replaced the previous standing resting state.
 
+### 4bb. STYLING RESTORE LIST — exact originals, copy/paste
+
+Owner's read (and I agree): **the real cost was entry count, not styling.** Effects only mattered
+because each one multiplied across ~372 archived views. At ~6-12 entries the archive budget has
+roughly 30-60x more headroom, so **expect ALL of this to come back as it was**. Restore it, then
+verify on device; only fall back to PNGs if something still fails.
+
+All four are in `widgets/PrayerWidget.tsx`.
+
+**1. Orbs / blobs — restore the dark-theme glow**
+
+Currently the component early-returns. Delete the diagnostic `return null;` and its
+`biome-ignore lint/correctness/noUnreachable` comment so the body reads:
+
+```tsx
+  const Blobs = () => {
+    if (!orbs) {
+      return null;
+    }
+```
+
+Everything below it (the four `Circle`s with `blur`, `scaleEffect`, `offset`, `foregroundStyle`) is
+untouched and still correct. This restores: top orb, bottom-left orb, centre orb and the corner orb,
+on dark kinds only. Light kinds never drew orbs.
+
+**2. Active pill — restore the outline and the depth shadow**
+
+In `ActivePill`, the modifiers array was reduced to three entries. Restore it to:
+
+```tsx
+          modifiers={[
+            foregroundStyle(palette.pillFill),
+            strokeBorder({
+              color: palette.pillStroke,
+              style: { lineWidth: 1 },
+              shape: 'roundedRectangle',
+              cornerRadius: ROW_CORNER_RADIUS,
+            }),
+            shadow({ radius: pillShadow.radius, x: pillShadow.x, y: pillShadow.y, color: pillShadow.color }),
+            frame({ height: ROW_HEIGHT + 2 * PILL_VPAD }),
+            offset({ y: pillY - PILL_VPAD }),
+          ]}
+```
+
+and delete the `// DIAGNOSTIC 2026-09-19: shadow and strokeBorder dropped...` comment above it.
+
+**3. Footer lift — restore the half-point nudge**
+
+Replace the hardcoded `const footerLift = 0;` (and its three-line diagnostic comment) with the
+original:
+
+```tsx
+    const footerLift = isMedium && rows.length >= 6 ? 0.5 : 0;
+```
+
+This was a wrong hypothesis of mine, never a real fault. It exists because the medium's 6-row list
+lays the hero column 1pt short of the smalls' inset, and the runtime applies Text `offset()` at
+double strength.
+
+**4. Hero countdown — decide first, then restore**
+
+Currently renders `TickingTextEl` with `timerInterval` (Apple's colon clock) for all 8 kinds. The
+original custom-format hero was:
+
+```tsx
+          {typeof entry.countdownLabel === 'string' && entry.countdownLabel.length > 0 ? (
+            <Text
+              modifiers={[
+                font({ size: 26, weight: 'bold' }),
+                foregroundStyle(palette.hero),
+                lineLimit(1),
+                minimumScaleFactor(0.6),
+              ]}>
+              {entry.countdownLabel}
+            </Text>
+          ) : null}{' '}
+```
+
+Note `monospacedDigit()` is deliberately ABSENT from that list — the owner asked for it earlier in
+the session because fixed-width digits made "11h 55m" read as loose separate digits. Keep it absent.
+
+If the hybrid (section 6) is chosen, this branches on time-to-prayer instead: custom label beyond
+10 minutes, `timerInterval` inside the final 10. If pure `timerInterval` is chosen, delete the
+`TickingTextEl` cast and `heroModifiers` only if they become unused.
+
+**5. Imports to re-check after restoring**
+
+`blur`, `scaleEffect`, `shadow` and `strokeBorder` are imported at the top of the file. They are
+currently unused-or-unreachable while the diagnostics are in place; after restoring 1 and 2 they are
+all used again. If the hero drops `TickingTextEl`, confirm `font`/`lineLimit`/`minimumScaleFactor`
+are still referenced.
+
+**6. Nothing else was touched visually.** Palettes, card colours, row colours, fonts, sizes,
+spacings, the eyebrow kerning, the footer text and the Android composition are all untouched.
+
 ### 4c. Test suite is RED
 
 `yarn validate` fails. Causes:
