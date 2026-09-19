@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.293",
+    "version": "1.27.294",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -336,7 +336,8 @@
               },
               "android": null
             }
-          ]
+          ],
+          "groupIdentifier": "group.com.mugtaba.athan"
         }
       ]
     ],
