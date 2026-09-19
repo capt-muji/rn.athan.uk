@@ -99,8 +99,10 @@ module.exports = {
       ],
     },
   ],
-  // widgets/ is left out: its layouts are serialized into the iOS widget extension's own JS runtime,
-  // and shared/__tests__/widgetContract.test.ts checks them by AST instead
+  // widgets/ entered coverage with the renderer suites (session 15): the layouts are evaluated
+  // against mocked platform component globals in shared/__tests__/widgetRenderer.test.ts and
+  // widgetLockRenderer.test.ts, so every branch is measured on both platforms; the AST contract
+  // suite still guards what the runtimes pin down structurally
   collectCoverageFrom: [
     'api/**/*.{ts,tsx}',
     'app/**/*.{ts,tsx}',
@@ -108,6 +110,7 @@ module.exports = {
     'device/**/*.{ts,tsx}',
     'hooks/**/*.{ts,tsx}',
     'stores/**/*.{ts,tsx}',
+    'widgets/**/*.{ts,tsx}',
     'shared/**/*.{ts,tsx}',
     '!**/*.d.ts',
     '!**/__mocks__/**',
