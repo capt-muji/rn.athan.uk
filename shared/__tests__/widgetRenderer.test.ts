@@ -612,10 +612,10 @@ describe('home widget renderer', () => {
           collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
       );
       expect(pillColumn).toBeDefined();
-      // Pixel-audited on the 3T: the digit ink sat 21px/18px inside the pill
-      // (text 1.5px low); the 0.5dp top pad re-centres the ink band
+      // Pixel-audited on the 3T, then owner-tuned: the pill sits 1dp low so
+      // the digit ink band reads dead-center against its edges
       expect(pillColumn?.props.modifiers).toEqual(
-        expect.arrayContaining([{ modifier: 'padding', value: [0, 0.5, 0, 0] }])
+        expect.arrayContaining([{ modifier: 'padding', value: [0, 1, 0, 0] }])
       );
       const rowsColumn = nodes.find(
         (node) =>
