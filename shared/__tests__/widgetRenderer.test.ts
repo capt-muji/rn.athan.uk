@@ -408,14 +408,19 @@ describe('home widget renderer', () => {
 
     it('stamps the composition from props.size, not widgetFamily', () => {
       freezeNow(at(DAY_ONE, '14:08'));
-      const small = collect(
-        renderTree(layouts.PrayerWidget(androidProps({ size: 'small' }), { colorScheme: 'light' }))
-      );
       const mediumTree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
       const medium = collect(mediumTree);
 
       expect(medium.some((node) => node.marker === 'Row')).toBe(true);
-      expect(small.some((node) => node.marker === 'Row')).toBe(false);
+      const pillIn = (tree: unknown): boolean =>
+        collect(tree).some(
+          (node) =>
+            node.marker === 'Image' &&
+            String((node.props.source as { uri?: string })?.uri ?? '').startsWith('athan_widget_pill_')
+        );
+      expect(pillIn(mediumTree)).toBe(true);
+      const smallTree = renderTree(layouts.PrayerWidget(androidProps({ size: 'small' }), { colorScheme: 'light' }));
+      expect(pillIn(smallTree)).toBe(false);
 
       // The medium day list carries every row of the on-screen day and the
       // active pill image behind the Asr row
