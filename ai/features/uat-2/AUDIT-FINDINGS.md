@@ -5943,3 +5943,19 @@ no devDependency, iOS simulator as the verification platform, findings in
 `ai/features/agent-tooling/FINDINGS.md`, the not-run list. The guidance landed in the root
 `AGENTS.md` routing table and `ai/AGENTS.md` §6, including the Device Hub location. Zero
 app-code changes; the 3T untouched, still on the mock build of 1.27.227.
+
+## Session 15b of the queue
+
+Session 15b (1.27.271-1.27.282, merged to uat-2) delivered the owner's eight widget rulings plus three
+owner-review rounds: opaque Android cards with the glow kept, uniform lifted footer on all 8 kinds, the
+active pill vertically padded (1dp) and shadowless on Android with its row's side insets, card radius 13pt,
+grid-agnostic sizing (small 160dp = 3-of-5 columns measured 567x540px near-square; medium 310dp = full grid
+width, owner-confirmed 100%), horizontally locked sizes like iOS (resizeMode none), the stale card centered
+with a bold "Out of date" title, the Asr+3m mock resting state, and the native exact-alarm minute-refresh
+chain (modules/widgetrefresh) that keeps placed widgets ticking with no JS: proven live (DUHA 14m -> 13m
+across 66s with the app cached and zero pushes; Isha -> next-day Fajr rollover with the list and pill
+correct). Two crash-class defects found by the device pass: JSON null epochs cannot cross the KLDI bridge
+(unavailable rows now carry epochMs 0; session 15 never met it on real API data) and 400dp minWidth made
+mediums invisible on the 3T's launcher (ceil((minWidth+30)/70) spans, over-wide providers hidden; 310dp is
+the 5-cell value). The Android widgets still do not open the app on tap: expo-widgets routes taps only for
+layout buttons; tracked as the possible @expo/ui Button follow-up.
