@@ -323,6 +323,30 @@ describe('Android runtime names', () => {
     expect(source).toContain("from '@expo/ui/jetpack-compose/modifiers'");
     expect(source).toContain("typeof Column !== 'undefined'");
   });
+
+  it('never aliases an @expo/ui import: the widget runtimes inject canonical names only', () => {
+    // Two device-caught failures back this rule (AndroidText, android-Height):
+    // an alias compiles app-side but resolves to nothing against the runtime
+    // globals, and the widget renders "Property 'X' doesn't exist".
+    for (const { name, path } of WIDGET_FILES) {
+      const ast = parseFile(path);
+      const aliased: string[] = [];
+      traverse(ast, {
+        ImportDeclaration(importPath: NodePath<ImportDeclaration>) {
+          if (!importPath.node.source.value.startsWith('@expo/ui/')) return;
+          for (const specifier of importPath.node.specifiers) {
+            if (specifier.type !== 'ImportSpecifier') continue;
+            const importedNode = specifier.imported;
+            const imported = importedNode.type === 'Identifier' ? importedNode.name : importedNode.value;
+            if (imported !== specifier.local.name) {
+              aliased.push(`${imported} as ${specifier.local.name}`);
+            }
+          }
+        },
+      });
+      expect(`${name}: ${aliased.join(', ')}`).toBe(`${name}: `);
+    }
+  });
 });
 
 describe('static import discipline', () => {
