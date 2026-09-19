@@ -17,6 +17,8 @@ jest.mock('react-native', () => ({
 
 jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: false, androidWidgets: false } }));
 
+jest.mock('@/modules/widgetrefresh', () => ({ armWidgetRefreshChain: jest.fn() }));
+
 import { addDays } from 'date-fns';
 
 import { createInstant, formatDateShort } from '@/shared/time';
@@ -72,5 +74,8 @@ describe('refreshPrayerWidgets android flag gate', () => {
       expect(kind.updateTimeline).not.toHaveBeenCalled();
       expect(kind.reload).not.toHaveBeenCalled();
     }
+    // The native refresh chain arms with the flag on only
+    const { armWidgetRefreshChain } = require('@/modules/widgetrefresh') as { armWidgetRefreshChain: jest.Mock };
+    expect(armWidgetRefreshChain).not.toHaveBeenCalled();
   });
 });
