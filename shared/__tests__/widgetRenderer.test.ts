@@ -317,16 +317,16 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('Asr');
     });
 
-    it('draws the blur orbs on dark and none on light', () => {
-      const dark = renderHome({ ...liveProps(), theme: 'dark' }, 'systemSmall');
-      const light = renderHome(liveProps(), 'systemSmall');
-      expect(collect(dark).filter((node) => node.marker === 'Circle').length).toBe(4);
-      expect(collect(light).filter((node) => node.marker === 'Circle').length).toBe(0);
-    });
-
-    it('draws the oversized medium orbs on a dark medium card', () => {
-      const darkMedium = renderHome({ ...liveProps(), theme: 'dark' }, 'systemMedium');
-      expect(collect(darkMedium).filter((node) => node.marker === 'Circle').length).toBe(4);
+    it('draws no orbs on any theme or size', () => {
+      // The glow lighting is gone by owner ruling (2026-09-20): blur is the
+      // single most expensive effect in the widget archive, and the flat
+      // translucent card reads cleaner. Pin that it stays gone.
+      for (const family of ['systemSmall', 'systemMedium'] as const) {
+        for (const theme of ['light', 'dark'] as const) {
+          const tree = renderHome({ ...liveProps(), theme }, family);
+          expect(collect(tree).filter((node) => node.marker === 'Circle')).toHaveLength(0);
+        }
+      }
     });
 
     it('renders a legacy entry with no list fields as the hero alone and the bare city footer', () => {

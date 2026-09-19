@@ -572,3 +572,47 @@ The suite moved from 5 red files to green, and the shape changed rather than the
 4. **Queue row 13 (session 17, "timeline horizon 14 to 30 days") is now cheap.** At one entry per
    boundary, 30 days is roughly 200 entries. Whether that fits is the same device question as 1.
 5. **The expo-widgets memoisation patch** still wants an explicit owner decision before any PR.
+
+---
+
+# Part 3 — 2026-09-20, late
+
+Baseline `83ff87a3` (part 2) was committed and pushed to the branch first, per the owner. Everything
+below is UNCOMMITTED on top of it, awaiting the owner's device review. Version **1.27.308**.
+
+## 14. Part 3 changes
+
+All five owner rulings from the 1.27.307 review:
+
+1. **Orbs deleted everywhere.** iOS: `Blobs`, both orb palettes, the oversize-orb machinery, the
+   `Circle`/`blur`/`scaleEffect` imports, and the stale-card's usage. Android: the orb blocks in
+   `scripts/generate-widget-assets.py`; the dark card PNGs regenerated flat (31KB to 2KB). Tests:
+   the two orb renderer tests replaced by one that pins zero `Circle`s on every theme and size;
+   the contract test's anchors and allowed-literal lists updated. Blur was the single most
+   expensive effect in the widget archive, so this also widens the archive margin again.
+2. **iOS medium list squeezed ~10%**: `MEDIUM_LIST_WIDTH = 146` (Android keeps its own 162).
+3. **The hero trio now centers between the card's left edge and the list**: the list column went
+   from a half-share greedy column to a fixed-width block flush against the right inset, and the
+   hero column takes everything left over. Equal air both sides of the trio.
+4. **Hero countdown 26pt to 24pt**: six digits plus two colons ("12:00:00") must fit the medium's
+   now-narrower left region.
+5. **Footer faded 25% on all themes, both platforms** (the palette is shared): light 0.34 to 0.255
+   alpha, dark 0.54 to 0.405. Note for review: the dark footer sat at 0.54 precisely because the
+   old 0.38-alpha wash "faded into the card" (owner finding 2026-09-19). 0.405 is between the two;
+   judge it on glass.
+
+## 15. The new mock resting state
+
+Fajr -3, Sunrise -2, Dhuhr -1 (passed), Asr +12h, Magrib +12h+1m, Isha +12h+2m — built to show the
+six-digit colon clock. Two implementation constraints shaped it:
+
+- Times are same-day `HH:mm` strings, so "+12h" crosses midnight after a noon launch. The long
+  block is keyed on whichever day it actually lands on: tomorrow after noon, today before it. At
+  any launch time the countdown reads exactly twelve hours.
+- The passed rows anchor on the download's own minute floor, not the rounded-up anchor minute: an
+  `anchor - 1` row lands up to a minute in the FUTURE on a mid-minute download and becomes the
+  next prayer, defeating the point. Caught by the sub-minute `it.each` cases, not by eye.
+
+The 5-minute-spacing mock test from part 2 is gone: Magrib and Isha sit 1 minute after Asr by
+design here, which WidgetKit will coalesce. This resting state is for LOOKING at the countdown,
+not for rollover testing; the part 2 spread was the rollover rig.
