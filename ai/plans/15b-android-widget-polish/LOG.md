@@ -72,3 +72,42 @@ screenshots this session (all under `~/athan-device-sweep/session15b/shots/`).
   cards; owner accepted ("that's okay I guess"). Possible follow-up via an @expo/ui Button wrapper.
 - Screenshots for the owner: `~/athan-device-sweep/session15b/shots/` (grid research, picker states,
   placements, chain proof, stale attempt).
+
+## Post-audit owner review rounds 5-12 + the one-app build-out (same evening, same agent)
+
+The owner stayed hands-on after the audit; every round is committed, hook-green, merged and pushed:
+
+- 1.27.285-1.27.287 rounds 5-6: borderless 5pt pill, dual-channel weight, footer 12sp, name 14sp,
+  13sp list rows in a wider 162dp right-anchored column, hero 170dp.
+- 1.27.288 round 7: eyebrow tracking delivered GLYPH-WISE (thin spaces) - the native Android tree
+  converter keeps only color/size/weight/style/decoration/alignment from TextStyle, letterSpacing
+  dies at the Kotlin boundary (ExpoWidgetEmittableTree.kt). Mock runway re-tightened to Asr +1min.
+  Wall-minute edge +500ms.
+- 1.27.289-1.27.292 rounds 8-11: tracking halved to hair spaces, dark footer lifted to the absolute
+  time's contrast (contract anchors updated), Android rows at the pill's 24dp (iOS 22pt untouched,
+  the owner's reference), pill slot exactly equal to the row slot.
+- 1.27.293-1.27.294: iOS local builds take EXPO_IOS_SUFFIX; widget app group pinned
+  (group.com.mugtaba.athan) in app.json.
+- 1.27.295 round 12 (THE SAFE COMMIT per the owner: fd406397): trio gap equalised (top spacer 2dp),
+  pill nudged 1dp low after a vision pixel audit measured the ink 21px/18px inside the pill. The
+  owner still sees residual pill misalignment - OPEN ITEM, carried to the follow-ups.
+
+## The one-app build-out (owner ruling: ONE app per phone, real IDs, mocks)
+
+- Android: fleettest + store apps uninstalled; real-id mock build script
+  (session15b/bin/build-mock-realid.zsh) built com.mugtaba.athan with widgets on; installed,
+  pushing clean.
+- iOS: store app uninstalled from the XS; real-id dev build (mock env) installed via devicectl.
+
+## The iOS containerBackground saga (root cause found; residual work queued as row 11)
+
+Symptom: every iOS widget showed "Please adopt container background API". Dead ends investigated:
+JS tree/modifier registry/rgba parsing/linking all verified fine; xcodebuild env passing did not fix
+it. ROOT CAUSE: Metro reads build flags from the repo-root .env (untracked), which lacked
+EXPO_PUBLIC_WIDGETS - every iOS bundle compiled with widgets OFF, so the app never registered
+layouts and iOS 17+ masks the empty render with that diagnostic (SDK 57 showed the same empty state
+as the red "No layout found" box). FIX: EXPO_PUBLIC_WIDGETS=1 appended to .env + full rebuild +
+device reboot - widgets then rendered and opened the app on tap (owner-verified). Residuals (stuck
+kinds until first push, first-placement placeholder, 5-min entry cadence vs Android's 60s) queued
+as row 11 (16a) with the full dossier in ai/prompts/ios-widget-container-background.md. Android
+tap-to-open queued as row 12 (15c) in ai/prompts/android-widget-tap-open.md.
