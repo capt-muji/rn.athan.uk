@@ -924,5 +924,176 @@ uat-2 (1.27.316) without its own feature branch, because the executor forgot to 
 the 1.27.315 merge; the merge command in the build invocation was a no-op against the
 already-merged branch. Content correct, convention broken once.
 
+## 38. Layout 2 CONFIRMED centred; layout 1 countdown restyled (1.27.317)
+
+On the 1.27.316 glass the owner confirmed both Layout 2 widgets centred ("That's great. They
+have been centred.") — which also closes the mechanism question: containerRelativeFrame DID act
+in the accessory slot; the earlier left reads were the timer's leading-parked ink. Session 16a's
+lock centring is CLOSED. The owner then restyled Layout 1's countdown live: smaller, and the
+absolute time's colour — 14pt bold white became 12pt bold in WHITE_SECONDARY (1.27.317, suites
+26 passed, hook 4618 passed + 1 skip). Owner's words: "it just feels like too many colours.
+Maybe make the countdown the same colour as the absolute time as well." The owner closed the XS
+pass on 1.27.317: "Good, XS closed."
+
+## 39. Step 5: spread-mock rollover — PASSED (throwaway branch, never merged)
+
+Throwaway branch `throwaway/16a-spread-mock` carried the part-1 spread (fajr -4, sunrise +0,
+dhuhr +5, asr +49, magrib +59, isha +419). Metro served the branch tree; the sim app relaunched
+13:13:09 and pushed Standard with Sunrise next at 13:15 (66 entries). The owner watched the
+13:15:00 crossing on the glass: **"Flipped instantly"** — the boundary flip landed on the
+boundary, no 0:00 sit. The §27.2/§30 stall was the 1-minute mock spacing, as diagnosed; the
+crowding logic needs no fix. Branch deleted; standing mock restored (simple.test.ts 4 passed).
+
+## 40. Step 6: patch A/B — moved to the REAL device (owner redirect)
+
+First attempt ran on the simulator with a per-PID CPU sampler; the owner redirected mid-run:
+"do all your measurements in the real device". Simulator numbers discarded. The XS protocol:
+identical launch-push cycles per side, metric = `ExpoWidgetsTarget.cpu_resource` crash counter
+(what the patch exists to prevent), distinguished by timestamp; two Release builds (A: committed
+tree 1.27.317; B: throwaway uncommitted 1.27.318 with the patch flipped out of node_modules and
+patch-package finding no patch file). Baseline counter before the A/B: 10 (newest 11:04); by
+the A/B's start it stood at 12 (the 12:11 and 12:23 install-burst kills, both WITH the patch).
+
+## 41. Step 6 result: NO MEASURABLE DIFFERENCE — patch verdict to the owner
+
+Real-device A/B (owner redirect), identical treatment per side: install, launch once, then six
+launch-push cycles 15s apart; metric = `ExpoWidgetsTarget.cpu_resource` counter, distinguished
+by timestamp.
+
+| Side | Build | Install + cycles | New kills |
+| --- | --- | --- | --- |
+| WITH patch | 1.27.317 (committed tree) | 13:29-13:32 | 0 (counter 12) |
+| WITHOUT patch | 1.27.318 (throwaway, pristine expo-widgets, WidgetsRenderCache count 0) | 13:38-13:39 | 0 (counter 12) |
+
+Both sides also survived their INSTALL burst. Context: the two kills added earlier today (12:11,
+12:23) both happened WITH the patch, at the 1.27.314/1.27.315 install bursts — sporadic
+install-time events, patch or not. Conclusion the numbers support: at the current entry count
+(~63-99), the entry-budget redesign, not the memoisation patch, is what stopped the CPU kills;
+the patch shows no measurable benefit in this rig. Caveat: one run per side, kill-counter
+evidence only. Tree and phone restored to the committed state (1.27.317, patch present,
+shasum 6df33b8b587195cea4de98155bf21d9a9bd3fdf8, yarn.lock untouched, phone rebooted on 1.27.317).
+The verdict (keep / remove the patch, and the PR question) goes to the owner.
+
+## 42. Placement dimension added (owner), then the owner's orb control
+
+The owner asked for fresh-placement testing, then ran it hands-on: removed all 8 home widgets and
+re-added per side. Light small placements were clean on BOTH sides (no mask, live content,
+counter stays 12). DARK small placement: **flashed the containerBackground mask 1-2 seconds,
+then a stale value, then settled** on side B (no patch); **clean, no flash** on side A (patch).
+Counter never moved (12 throughout the placement tests).
+
+The owner then challenged the attribution — "are you sure it's the patch and not the orbs?" — and
+ordered the control: NO patch + NO orbs (throwaway 1.27.318 on `throwaway/16a-orbless`,
+OrbLight early-returns null, patch aside, pristine expo-widgets re-verified).
+
+## 43. CONTROL RESULT: the orbs own the flash, not the patch
+
+| Configuration | Fresh DARK placement |
+| --- | --- |
+| patch + orbs (1.27.317) | clean |
+| no patch + orbs (1.27.318) | mask flash, then stale value, then settles |
+| no patch + NO orbs (1.27.318 control) | **clean on landing** (gallery previews were black a few seconds on cold start — the known reinstall gallery warm-up) |
+
+The owner's suspicion was right: the runtime-blur orbs' first cold render exceeds WidgetKit's
+first-pass patience; the memoisation patch hides that cost by caching (making repeat body
+evaluations free within 5 seconds). The patch verdict is therefore COUPLED to the deferred
+nebula verdict: baked-orb PNGs or dropped orbs make renders cheap and the patch pointless;
+runtime-blur orbs need the patch (or accept a 1-2 second mask on fresh dark placements).
+Everything restored after the control: patch back in node_modules (WidgetsRenderCache count 3),
+tree at the committed state (renderer suite 33 passed), phone reinstalled to 1.27.317 and
+rebooted. Counter at close: 12.
+
+## 44. The coupled verdict, landed (owner): drop orbs, drop patch
+
+Owner: "Drop orbs, drop patch", and the flat card keeps today's indigo-black
+rgba(18, 14, 40, 0.95). Landed as two commits:
+
+1. **1.27.318** — OrbLight, the NEBULA constants and the Circle/blur/scaleEffect imports
+   deleted; renderer pins zero Circles on every theme (red 1 failed / 32 passed against the
+   orb code); the contract drops the three nebula literals from the anchor and allowed lists;
+   break on the pinned card literal caught (2 failed); hook 4618 passed + 1 skip. Android's
+   PNG bake was already flat (no script change needed).
+2. **1.27.319** — patches/expo-widgets+58.0.3.patch, the postinstall hook and the patch-package
+   devDependency removed; node_modules/expo-widgets verified pristine (WidgetsRenderCache
+   count 0); yarn.lock updated; hook 4618 passed + 1 skip. The upstream PR idea dies with it.
+
+Final build 1.27.319 (flat + patchless) building for the XS's closing verification: a fresh dark
+placement must be clean with NO patch and NO orbs (the control's result, now as the shipped
+state).
+
+## 45. Shipped state verified on the XS — "Clean, closed"
+
+1.27.319 installed, rebooted, launched. The owner's closing gesture — remove and re-add the
+dark small — landed clean: flat indigo-black card, live content, no mask. The iPhone story is
+closed on the build that ships. Phone left on 1.27.319, rebooted, automatic time on.
+
+## 46. Step 7: Android 3T (1.27.319) — reinstall detour, owner-ordered
+
+Fleettest release built (16m51s), installed 14:59:24, doubled launch, crash grep 0. The owner
+then reported the 3T holds TWO apps (original `com.mugtaba.athan` + fleettest) and the widget
+picker only lists the ORIGINAL's widgets; they ordered both uninstalled and both compiled fresh.
+Executed: both uninstalled (owner's explicit order, overriding the standing never-uninstall
+default); the current fleettest APK (saved aside) reinstalled and launched; a plain-id
+(`com.mugtaba.athan`, no suffix) release build from the same tree running for the second slot.
+Both apps expose the 8 home kinds; the picker should then list both groups.
+
+The owner then ruled the phone down to ONE app: "just have the original, no fleet test... no
+one on this phone is using the original, so we can just delete and reuse the original as we
+want." Both uninstalled, only `com.mugtaba.athan` reinstalled, 3T rebooted. STANDING CHANGE:
+the 3T carries the original-id build from now on; fleettest is off this phone.
+
+## 47. The picker came back EMPTY — root cause: EXPO_PUBLIC_ANDROID_WIDGETS was never in .env
+
+After the one-app reinstall the owner could no longer find Athan widgets in the picker at all.
+Diagnosis: `.env` carries `EXPO_PUBLIC_WIDGETS=1` but NOT `EXPO_PUBLIC_ANDROID_WIDGETS`, and
+`app.config.ts` gates every Android widget provider on that flag — both of this session's
+earlier Android builds (fleettest and plain-id) shipped WIDGET-LESS APKs. The widgets the owner
+saw earlier in the picker belonged to the OLD pre-existing app, which the ordered uninstall
+deleted. Fix: `EXPO_PUBLIC_ANDROID_WIDGETS=1` appended to the local `.env` (the committed
+catalog `.env.example` line 19 already documents it, default 0), re-prebuilt — the manifest now
+carries the appwidget providers — and a fresh plain-id release build with the flag exported on
+the run command too. DURABLE LESSON for the 3T ritual: the Android widget flag must be present
+at BOTH prebuild and bundle time; a build without it silently produces a picker-less app.
+
+## 48. Simulator rebuilt and flat — "Flat, as shipped"
+
+The owner asked for the sim to be rebuilt (it still wore the orbs). DerivedData cleaned (the
+extension binary had the old patched Swift), Debug rebuilt at 1.27.319, Metro restarted clean
+with both widget flags exported, app reinstalled, timelines pushed, extension refreshed. The
+owner confirmed the four dark widgets are the flat indigo-black card. Sim closed.
+
+## 49. Step 7 closed and the session state at EXECUTED
+
+Flagged plain-id build (7m44s) installed 16:13:25, doubled launch, zero crashes. Owner: "Athan
+listed, live" — picker and widgets green on the original-id-only 3T. Every device now sits at
+its happy state: XS on 1.27.319 (flat, patchless, all centring closed, clean placements), sim
+rebuilt flat, 3T original-id flagged build with widgets live.
+
+Session totals: 1.27.313 to 1.27.319 committed (plus the planning commit 1.27.297 and the
+checkpoint merge), six owner rulings recorded in ai/prompts/README.md, two durable lessons
+(the PNG-decoder red-scan fix is a tooling note; the EXPO_PUBLIC_ANDROID_WIDGETS .env gap is a
+ritual rule), one process slip (the direct-on-uat-2 commit of 1.27.316), and one explicit gate:
+the PNG-orb bake does NOT begin until the owner says go, on a new branch, reintroducing the orb
+exactly as shipped before converting to PNG (format ruled: PNG, alpha plus lossless).
+EOF-adjacent: the A/B throwaway builds never merged; their APKs live under
+~/athan-device-sweep/16a-ab/.
+
+
+
+
+
+
+
+First attempt ran on the simulator with a per-PID CPU sampler; the owner redirected mid-run:
+"do all your measurements in the real device". Simulator numbers discarded. The XS protocol:
+identical launch-push cycles per side, metric = `ExpoWidgetsTarget.cpu_resource` crash counter
+(what the patch exists to prevent), distinguished by timestamp; side B (patch removed) measured
+first-built-then-A, phone ends on the committed-state build. Baseline counter before the A/B:
+10 (newest 11:04). Two Release builds (A: committed tree 1.27.317; B: tree bumped to a
+throwaway uncommitted 1.27.318 with the patch flipped out of node_modules and patch-package
+finding no patch file).
+
+
+
 
 
