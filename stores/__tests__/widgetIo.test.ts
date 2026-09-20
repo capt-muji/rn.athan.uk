@@ -25,7 +25,7 @@ import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 import { readWidgetSettings, refreshPrayerWidgets } from '@/stores/widget';
-import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import { ExtrasLockWidget, ExtrasLockWidget2, PrayerLockWidget, PrayerLockWidget2 } from '@/widgets/LockPrayerWidget';
 import {
   ExtrasWidget,
   ExtrasWidgetDark,
@@ -68,8 +68,10 @@ const mediumPush = () => (PrayerWidgetMedium.updateTimeline as jest.Mock).mock.c
 const resetWidgetMocks = () => {
   (PrayerWidget.updateTimeline as jest.Mock).mockReset();
   (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
+  (PrayerLockWidget2.updateTimeline as jest.Mock).mockReset();
   (ExtrasWidget.updateTimeline as jest.Mock).mockReset();
   (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
+  (ExtrasLockWidget2.updateTimeline as jest.Mock).mockReset();
   (PrayerWidgetDark.updateTimeline as jest.Mock).mockReset();
   (ExtrasWidgetDark.updateTimeline as jest.Mock).mockReset();
   (PrayerWidgetMedium.updateTimeline as jest.Mock).mockReset();

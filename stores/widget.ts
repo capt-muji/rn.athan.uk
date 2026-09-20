@@ -158,7 +158,7 @@ const msUntilMinuteFlip = (targetEpochMs: number): number | null => {
 };
 
 /**
- * Pushes ONE schedule's timelines to its five widget kinds — light small +
+ * Pushes ONE schedule's timelines to its six widget kinds — light small +
  * medium + lock share the light entries; the dark small + medium pair gets
  * the theme-stamped dark copy. The sequence is always rebuilt: every caller
  * is a data, settings or launch event, so reading through a cache here could
@@ -206,6 +206,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
       home.PrayerWidget.updateTimeline(lightEntries);
       home.PrayerWidgetMedium.updateTimeline(lightEntries);
       lock.PrayerLockWidget.updateTimeline(lightEntries);
+      lock.PrayerLockWidget2.updateTimeline(lightEntries);
       home.PrayerWidgetDark.updateTimeline(darkEntries);
       home.PrayerWidgetDarkMedium.updateTimeline(darkEntries);
     } else {
@@ -214,6 +215,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
       home.ExtrasWidget.updateTimeline(lightEntries);
       home.ExtrasWidgetMedium.updateTimeline(lightEntries);
       lock.ExtrasLockWidget.updateTimeline(lightEntries);
+      lock.ExtrasLockWidget2.updateTimeline(lightEntries);
       home.ExtrasWidgetDark.updateTimeline(darkEntries);
       home.ExtrasWidgetDarkMedium.updateTimeline(darkEntries);
     }

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.310",
+    "version": "1.27.312",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -320,7 +320,7 @@
             },
             {
               "name": "PrayerLockWidget",
-              "displayName": "Next Prayer",
+              "displayName": "Next Prayer (Layout 1)",
               "description": "Live countdown to the next prayer on your Lock Screen.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
@@ -329,8 +329,26 @@
             },
             {
               "name": "ExtrasLockWidget",
-              "displayName": "Extra Times",
+              "displayName": "Extra Times (Layout 1)",
               "description": "Live countdown to the next extra time on your Lock Screen.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
+            },
+            {
+              "name": "PrayerLockWidget2",
+              "displayName": "Next Prayer (Layout 2)",
+              "description": "Next prayer, absolute time and countdown on one centred line.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
+            },
+            {
+              "name": "ExtrasLockWidget2",
+              "displayName": "Extra Times (Layout 2)",
+              "description": "Next extra time, absolute time and countdown on one centred line.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
               },
