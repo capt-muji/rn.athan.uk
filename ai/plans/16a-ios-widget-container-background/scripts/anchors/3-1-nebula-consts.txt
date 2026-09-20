@@ -1,0 +1,3 @@
+  const NEBULA_BLUE = 'rgba(58, 118, 255, 0.35)';
+  const NEBULA_MAGENTA = 'rgba(228, 74, 154, 0.40)';
+  const NEBULA_HAZE = 'rgba(90, 58, 158, 0.25)';
