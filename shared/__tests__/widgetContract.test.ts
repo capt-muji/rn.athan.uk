@@ -216,21 +216,21 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.32)',
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
-      // Dark palette — Violet Dusk
-      'rgba(18, 14, 40, 0.95)', // card — every dark size
+      // Dark palette — Gradient Deep (owner pick 2026-09-20)
+      'rgba(2, 13, 38, 0.95)', // card — every dark size
       '#ffffff', // hero / passed rows
-      '#e3eaff', // active row text — standard, white + hint of blue
+      '#cad8ed', // active row text — standard, white + hint of slate blue
       '#ffeaf4', // active row text — extras, white + hint of pink
       '#ff69b4', // eyebrow + stale mark
-      'rgba(173, 193, 254, 0.54)', // secondary — the base whisper, both sizes
-      'rgba(173, 193, 254, 0.405)', // upcoming rows — a quarter fainter than the base (owner ruling 2026-09-20)
-      'rgba(173, 193, 254, 0.27)', // footer — half the base
+      'rgba(138, 169, 214, 0.54)', // secondary — the base whisper, both sizes
+      'rgba(138, 169, 214, 0.405)', // upcoming rows — a quarter fainter than the base (owner ruling 2026-09-20)
+      'rgba(138, 169, 214, 0.27)', // footer — half the base
       '#a123aa', // extras pill
-      '#0847e5', // standard pill — app prayer.activeBackground
-      'rgba(10, 30, 140, 0.5)', // pill depth shadow — standard, deep blue
+      '#2743e0', // standard pill — the app gradient's blue, deepened
+      'rgba(21, 37, 123, 0.5)', // pill depth shadow — standard, deep blue
       'rgba(95, 10, 115, 0.5)', // pill depth shadow — extras, deep pinky purple
       'rgba(146, 0, 162, 0.35)', // extras stroke
-      'rgba(8, 71, 229, 0.35)', // standard stroke
+      'rgba(39, 67, 224, 0.35)', // standard stroke
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -264,19 +264,20 @@ describe('palette literals', () => {
       'rgba(219, 39, 119, 0.35)',
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
-      // Home widget — dark Violet Dusk
-      'rgba(18, 14, 40, 0.95)',
+      // Home widget — dark Gradient Deep (owner pick 2026-09-20: the app
+      // screen gradient's start, deepened; whispers from the app's muted text)
+      'rgba(2, 13, 38, 0.95)',
       '#ff69b4',
-      'rgba(173, 193, 254, 0.54)',
-      'rgba(173, 193, 254, 0.405)',
-      'rgba(173, 193, 254, 0.27)',
+      'rgba(138, 169, 214, 0.54)',
+      'rgba(138, 169, 214, 0.405)',
+      'rgba(138, 169, 214, 0.27)',
       '#a123aa',
-      '#0847e5',
-      'rgba(10, 30, 140, 0.5)',
+      '#2743e0',
+      'rgba(21, 37, 123, 0.5)',
       'rgba(95, 10, 115, 0.5)',
       'rgba(146, 0, 162, 0.35)',
-      'rgba(8, 71, 229, 0.35)',
-      '#e3eaff',
+      'rgba(39, 67, 224, 0.35)',
+      '#cad8ed',
       '#ffeaf4',
     ].map(normalizeColor);
 
