@@ -48,7 +48,7 @@ def css(color: str) -> tuple:
 # cards, Android renders these bitmaps over the wallpaper (owner ruling
 # 2026-09-19), so alpha 1.0 keeps the wallpaper from showing through.
 CARD_LIGHT = css("#fcfcfe")
-CARD_DARK = css("#352489")
+CARD_DARK = css("#252387")
 
 PILLS = {
     "standard_light": {
@@ -59,8 +59,8 @@ PILLS = {
         "stroke": css("rgba(219, 39, 119, 0.35)"),
     },
     "standard_dark": {
-        "fill": css("#0847e5"),
-        "stroke": css("rgba(8, 71, 229, 0.35)"),
+        "fill": css("#2743e0"),
+        "stroke": css("rgba(39, 67, 224, 0.35)"),
     },
     "extra_dark": {
         "fill": css("#a123aa"),
