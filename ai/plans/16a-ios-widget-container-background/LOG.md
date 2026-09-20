@@ -1078,6 +1078,51 @@ exactly as shipped before converting to PNG (format ruled: PNG, alpha plus lossl
 EOF-adjacent: the A/B throwaway builds never merged; their APKs live under
 ~/athan-device-sweep/16a-ab/.
 
+## 50. Owner investigation: does Android need the entry-budget optimisation, and is the countdown minute-synced? (no code changes)
+
+**1. No. The iOS failure mode cannot exist on Android.** WidgetKit pre-renders and archives a
+view for EVERY timeline entry against a ~30 MB budget — entry count times view size was the
+whole 372-entry failure. Android/Glance has no timeline and no archive: one data snapshot per
+kind (the 14-day window as epoch rows in SharedPreferences, a few KB), renders on demand, the
+label recomputed at every render (`ALabel`, minute-ceil from `Date.now()`). Android was already
+designed cheap for the same class of reason the iOS orbs died: Glance cannot blur, so every
+card is a pre-baked PNG.
+
+**2. Yes, wall-clock synced by design and measured on the 3T.** The native chain
+(`modules/widgetrefresh/WidgetRefreshScheduler`) arms an exact alarm
+(`setExactAndAllowWhileIdle`, `RTC_WAKEUP`) at the NEXT wall-minute edge +500ms (the +500ms is
+deliberate: the label is minute-ceil, flipping exactly at the edge would race the ceil),
+self-re-arms only while widgets are placed, and re-arms on boot and package-replace. Measured
+16:24: label read 11h 40m at +0.3s past the edge and 11h 39m by +8.6s; the next minute ticked
+again (11h 38m at 16:25:10) — every-minute freshness with the flip inside the first seconds
+after each system minute change. Known, accepted edges: force-stop ends the chain until the
+next app open; without exact-alarm permission deep-doze coalesces (screen off, next fire
+catches up); a manual clock jump self-corrects at the next edge (≤60 s).
+
+**3. Efficiency notes found, none recommended as changes:**
+- `patchCompositionSize` JSON-parses every placed kind's stored props each tick just to compare
+  one field; a static cache would skip it. Sub-millisecond cost; not worth churn.
+- 1440 exact alarms/day while widgets are placed is the battery price of always-minute-fresh
+  widgets — the owner's explicit 2026-09-19 ruling ("the user never needs to open the app").
+  No cheaper design keeps the glance fresh; noted as the accepted cost, matching the standing
+  widgets-release note.
+- No-op render skipping is pointless: the minute-ceil label changes every minute by
+  construction.
+- Render cadence and data cadence are already decoupled (minute renders from epochs; data
+  re-pushed by the background task ~3-6h; the 14-day window carries the gap).
+
+## 51. Investigation follow-ups ruled on by the owner: accept the cost, no changes
+
+The owner questioned the 1440-alarms-a-day figure and proposed cutting the horizon to 2 days.
+Explained: the alarms are the Android minute-render cadence (est. ~1%/day worst case, only while
+widgets are placed); the 14 days is entries on iOS (~7/day, comfortably in budget) and KBs of
+JSON on Android, and is the hedge for iOS's non-guaranteed background task (force-quit, BAR off,
+dasd deferrals). Offered the screen-on-gated tick as a queued session (~90% fewer wake-ups) and
+advised against the horizon cut. Owner ruling 2026-09-20: "Accept the cost, no session" — the
+chain stays as built, the horizon stays 14 days, no follow-up queued. The screen-gating idea is
+recorded here should it ever be revisited.
+
+
 
 
 
