@@ -8,6 +8,7 @@ import {
   lineLimit,
   minimumScaleFactor,
   monospacedDigit,
+  multilineTextAlignment,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 import type { ReactNode } from 'react';
@@ -179,7 +180,13 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
         <TickingTextEl
           timerInterval={segment}
           countsDown
-          modifiers={[font({ size: 14, weight: 'bold' }), monospacedDigit(), foregroundStyle(WHITE), lineLimit(1)]}
+          modifiers={[
+            font({ size: 14, weight: 'bold' }),
+            monospacedDigit(),
+            multilineTextAlignment('center'),
+            foregroundStyle(WHITE),
+            lineLimit(1),
+          ]}
         />
       </VStack>
     );
@@ -336,6 +343,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
             modifiers={[
               font({ size: 12, weight: 'medium' }),
               monospacedDigit(),
+              multilineTextAlignment('center'),
               foregroundStyle(WHITE_SECONDARY),
               lineLimit(1),
               minimumScaleFactor(0.6),
