@@ -224,11 +224,11 @@ Checklist (the executor ticks one line per finished step):
 
 - [x] Step 1: Land the 16a checkpoint on `uat-2` (merge) DONE in `61346fa7`
 - [x] Step 2: Centre all four lock kinds with `containerRelativeFrame` (specified) DONE in `0448b271`
-- [x] Step 3: Nebula iteration and verdict landing (specified, branch-dependent) DONE, branch D: deferred 2026-09-20 (owner), committed study state stands
-- [ ] Step 4: XS build and the owner's eyeball pass (device)
-- [ ] Step 5: Spread-mock rollover proof on the simulator (device, throwaway build)
-- [ ] Step 6: Memoisation patch A/B measurement (device, throwaway builds)
-- [ ] Step 7: Android compile and 3T install (device)
+- [x] Step 3: Nebula iteration and verdict landing (specified, branch-dependent) DONE in `1.27.318` — deferral superseded by the owner's drop ruling from the A/B evidence
+- [x] Step 4: XS build and the owner's eyeball pass (device) DONE on `1.27.319`, all four checkpoints closed (with owner-directed amendments 1.27.315-1.27.317)
+- [x] Step 5: Spread-mock rollover proof (device, throwaway build) DONE — "Flipped instantly"
+- [x] Step 6: Memoisation patch A/B (device, throwaway builds) DONE — no measurable benefit; verdicts landed 1.27.318/1.27.319
+- [x] Step 7: Android compile and 3T install (device) DONE — flagged build 1.27.319, original-id only (owner ruling), widgets listed and live
 - [ ] Step 8: Records and EXECUTED (docs)
 
 Each step is specified in `steps/<k>-<name>.md` in this folder, with the parts the template requires. Steps 1 and 4 to 8 change no app code (step 8 changes docs only); their "Tests first" and "Breaks" parts say "None" with the reason.

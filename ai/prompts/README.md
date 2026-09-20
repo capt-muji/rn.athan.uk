@@ -314,6 +314,25 @@ None of these is a session yet. Each needs the owner's decision first.
   rather than chasing the centring — "remove the countdown timer from layout 2... it should just
   be the prayer name and the absolute time, remove the dot after it, and the countdown after it,
   and then centre align it horizontally in the whole widget." Landed 1.27.316.
+- **The nebula orbs are dropped and the memoisation patch with them** (owner, 2026-09-20, from
+  the real-device A/B): the fresh-placement containerBackground flash was the orbs' render cost,
+  not the patch's absence — the no-patch no-orb control placed clean — so the orbs go, the dark
+  card stays today's flat indigo-black `rgba(18, 14, 40, 0.95)`, and the patch, its postinstall
+  hook and the patch-package devDependency are removed. The upstream PR idea dies with the
+  patch. Landed 1.27.318 and 1.27.319.
+- **The 3T carries the original-id app only, no fleettest** (owner, 2026-09-20): "just have the
+  original, no fleet test... no one on this phone is using the original, so we can just delete
+  and reuse the original as we want." Session-end state on the 3T is a plain `com.mugtaba.athan`
+  build. Durable lesson attached: Android widget builds need `EXPO_PUBLIC_ANDROID_WIDGETS=1`
+  present at prebuild and bundle time or the APK silently ships picker-less.
+- **The PNG-orb bake is attempted as this session's tail experiment, not declined** (owner,
+  2026-09-20, correcting an earlier "stay flat" answer mid-ruling): "at the end of this session,
+  once we get everything working on all the devices, once we're at a happy state, then we...
+  make it work. You'll end up creating a new branch and we'll do the testing on there." HARD
+  GATE (owner, same ruling): the bake does NOT begin until the owner explicitly says go. On the
+  branch: reintroduce the orb exactly as previously shipped, then convert to PNG (format ruled:
+  PNG, for alpha plus losslessness; JPEG has no transparency and band-destroys gradients). The
+  owner judges look and placement on the XS. Flat stands if it loses.
 
 ## Also live, not sessions
 
