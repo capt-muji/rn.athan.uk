@@ -222,9 +222,9 @@ The design review (PLANNER-BRIEF section 3, item 5) ran as the owner's live ques
 
 Checklist (the executor ticks one line per finished step):
 
-- [ ] Step 1: Land the 16a checkpoint on `uat-2` (merge)
-- [ ] Step 2: Centre all four lock kinds with `containerRelativeFrame` (specified)
-- [ ] Step 3: Nebula iteration and verdict landing (specified, branch-dependent)
+- [x] Step 1: Land the 16a checkpoint on `uat-2` (merge) DONE in `61346fa7`
+- [x] Step 2: Centre all four lock kinds with `containerRelativeFrame` (specified) DONE in `0448b271`
+- [x] Step 3: Nebula iteration and verdict landing (specified, branch-dependent) DONE, branch D: deferred 2026-09-20 (owner), committed study state stands
 - [ ] Step 4: XS build and the owner's eyeball pass (device)
 - [ ] Step 5: Spread-mock rollover proof on the simulator (device, throwaway build)
 - [ ] Step 6: Memoisation patch A/B measurement (device, throwaway builds)
