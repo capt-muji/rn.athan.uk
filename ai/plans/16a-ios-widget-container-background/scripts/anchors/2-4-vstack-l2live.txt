@@ -1,0 +1,8 @@
+      <VStack
+        modifiers={[
+          frame({ maxWidth: Infinity, maxHeight: Infinity }),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+        ]}>
+        <HStack spacing={3}>
+          <Text
+            modifiers={[

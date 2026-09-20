@@ -1,0 +1,3 @@
+    expect(textsOf(renderTreeFor2(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
+  });
+});
