@@ -150,22 +150,23 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const DARK = {
-    card: 'rgba(18, 14, 40, 0.95)',
+    card: 'rgba(2, 13, 38, 0.95)',
     eyebrow: '#ff69b4',
     hero: '#ffffff',
-    // One blue-purple whisper per slot (owner ruling 2026-09-20): the
-    // absolute time is the base, upcoming rows sit a quarter fainter,
-    // the footer half — same tint, three strengths, both sizes
-    secondary: 'rgba(173, 193, 254, 0.54)',
-    footer: 'rgba(173, 193, 254, 0.27)',
+    // One slate-blue whisper per slot (owner ruling 2026-09-20): the app's
+    // muted-text tint over a deepened screen-gradient start. The absolute
+    // time is the base, upcoming rows sit a quarter fainter, the footer
+    // half — same tint, three strengths, both sizes
+    secondary: 'rgba(138, 169, 214, 0.54)',
+    footer: 'rgba(138, 169, 214, 0.27)',
     staleIcon: '#ff69b4',
     rowPassed: '#ffffff',
-    rowUpcoming: 'rgba(173, 193, 254, 0.405)',
-    activeRowText: isExtra ? '#ffeaf4' : '#e3eaff',
-    pillFill: isExtra ? '#a123aa' : '#0847e5',
-    pillStroke: isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)',
+    rowUpcoming: 'rgba(138, 169, 214, 0.405)',
+    activeRowText: isExtra ? '#ffeaf4' : '#cad8ed',
+    pillFill: isExtra ? '#a123aa' : '#2743e0',
+    pillStroke: isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(39, 67, 224, 0.35)',
     pillShadow: {
-      color: isExtra ? 'rgba(95, 10, 115, 0.5)' : 'rgba(10, 30, 140, 0.5)',
+      color: isExtra ? 'rgba(95, 10, 115, 0.5)' : 'rgba(21, 37, 123, 0.5)',
       radius: 9,
       x: 0,
       y: 2,
@@ -175,11 +176,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const palette = isDark ? DARK : LIGHT;
 
   // Fixed row height keeps the floating pill's offset exact and the
-  // spacing static. Six 22pt rows fill the systemMedium inner height
-  // exactly, so the standard list sits flush; the shorter extras lists
-  // center between equal Spacers (see the list column below). The corner
-  // radius keeps the app's pill-to-row proportion.
-  const ROW_HEIGHT = 22;
+  // spacing static. The pill is exactly the row's height (owner ruling
+  // 2026-09-20): uniform slots like Android. Six 23pt rows overrun the
+  // systemMedium inner height by a few points and center between equal
+  // Spacers, spilling evenly into the card padding; the shorter extras
+  // lists center between equal Spacers (see the list column below). The
+  // corner radius keeps the app's pill-to-row proportion.
+  const ROW_HEIGHT = 23;
   // Android rows sit exactly as tall as the active pill (24dp), so every
   // slot in the list is uniform, the pill slot EQUALS the row slot (no
   // overhang, no off-grid stretch: a 1px row-text offset the owner can see)
@@ -197,10 +200,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
   // one bottom offset, both sizes, both themes, both schedules.
   const FOOTER_BOTTOM_PAD = 16;
-  // The active pill clears its row's text vertically (owner ruling
-  // 2026-09-19): 1dp above and below the 22dp row, aligned with the row's
-  // own side insets.
-  const PILL_VPAD = 1;
+  // The pill matches its row exactly (owner ruling 2026-09-20, replacing
+  // the 2026-09-19 overhang): same height as the row, no overhang —
+  // uniform list slots, both schedules.
+  const PILL_VPAD = 0;
   // Fixed hero width: a fillMaxWidth fraction on the first Row child let
   // the hero take the full card and squeezed the day list to zero width in
   // Glance (caught on the 3T: the medium rendered hero-only, centered).
@@ -505,11 +508,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
     // minLength 0 on the list column's Spacers removes their default
     // minimum, which inflated the HStack's height and pushed the shared
-    // hero column's footer past the card's 13pt inset. After that the
-    // standard 6-row list still lays the hero column 1pt short of the
-    // smalls' inset, so a half-point lift restores it (the runtime applies
+    // hero column's footer past the card's 13pt inset. The standard 6-row
+    // list at 23pt rows overruns the inner height by ~6pt, dragging the
+    // footer that far below the extras medium's flush inset (owner ruling
+    // 2026-09-20: the standard footer must sit exactly where the extras
+    // footer sits), so the offset pulls it back up (the runtime applies
     // the offset at double strength).
-    const footerLift = isMedium && rows.length >= 6 ? 0.5 : 0;
+    const footerLift = isMedium && rows.length >= 6 ? -3 : 0;
 
     // iOS renders Text(timerInterval:) in its own process, so the countdown
     // ticks every second with no timeline entry behind it. The swift-ui types
