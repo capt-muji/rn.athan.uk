@@ -878,3 +878,20 @@ side (1.27.312, the higher; the plan's step 2 bumps from it). Not the section-10
 (nobody else moved uat-2); recorded here for the audit. `yarn validate` run recorded in the
 session scratchpad log.
 
+## 34. Step 2: lock centring (0448b271, 1.27.313, merged b0270f58)
+
+Red exactly as planned: 7 failed / 8 passed (`relativeIndex` -1 vs 0; `alignment` "leading").
+Green: 15 lock renderer + 10 contract passed; tsc 0; Biome clean. Breaks: both CAUGHT, restore
+run 15 passed, `ALL ASPECTED` no, `ALL AS EXPECTED: 1`. Hook: 4617 passed + 1 skip, four 100%
+lines. Self-review recorded: anchors 2-2 (three) and 2-3 (two) changed identically, L2 live
+carries the modifier innermost, no other file changed.
+
+## 35. Step 3: nebula deferred (branch D)
+
+The owner deferred the verdict at round 1 (2026-09-20, "Defer the verdict"): no iteration edits
+were made, the committed study state stands (card rgba(18, 14, 40, 0.95), NEBULA_BLUE/MAGENTA/HAZE).
+Rig state recorded: sim booted, Metro restarted, both timelines pushed from the branch tip
+(Standard 63 entries Asr 12:06; Extras 43 entries Duha 12:21), baseline screenshot at
+~/athan-device-sweep/16a-nebula-round/000-baseline.png, red-error scan 0 (first scan's 125,581
+was a broken PNG filter decoder, fixed in-session). No code change; docs-only commit.
+
