@@ -856,3 +856,25 @@ that flips are instant; if a stall appears even there, there is a real bug in th
 
 `athan-next` works as normal — the queue is in ai/plans/README.md, and this LOG (parts 7-8) is
 the 16a handoff: read §26-31 before changing anything. Machines and loops in §28.
+
+---
+
+# Part 9 — 2026-09-20, planned and executed by one session (owner: no subagents)
+
+## 32. Planning (1.27.297, merged 33381bb1, pushed)
+
+Plan: `ai/plans/16a-ios-widget-container-background/PLAN.md`, 8 steps, 14 anchors cut at
+`0506f608`. Owner decisions taken live and recorded in `ai/prompts/README.md`: centre both lock
+layouts (containerRelativeFrame, no Spacers); nebula adjust-first then verdict; the memoisation
+patch is measured with/without before any PR decision; the owner eyeballs every screen; no
+subagents at all. Spike evidence in PLAN section 5: red 7 failed / 8 passed, green 15, tsc and
+Biome clean, both breaks caught.
+
+## 33. Step 1: checkpoint merged (61346fa7)
+
+The merge conflicted on `app.json` and `package.json` only: the planning commit's 1.27.297 bump
+and the checkpoint's 1.27.312 bump both descend from 1.27.296. Resolved by taking the checkpoint
+side (1.27.312, the higher; the plan's step 2 bumps from it). Not the section-10 conflict class
+(nobody else moved uat-2); recorded here for the audit. `yarn validate` run recorded in the
+session scratchpad log.
+
