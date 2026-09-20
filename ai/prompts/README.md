@@ -289,6 +289,27 @@ None of these is a session yet. Each needs the owner's decision first.
 - **The findings live in `ai/features/agent-tooling/FINDINGS.md`** per the moonsighting
   `ai/features/` precedent.
 
+## Decided by the owner, 2026-09-20, while planning session 16a
+
+- **Both lock layouts centre**, via `containerRelativeFrame({ axes: 'horizontal' })`: a real
+  SwiftUI attribute, no Spacer pairs (the 2026-09-20 ruling stands: "no empty-view tricks,
+  nothing hacky"). iOS 16 renders leading (the modifier needs 17); accepted as degradation.
+- **Nebula: adjust first.** One owner-steered iteration round on the simulator, then the
+  verdict: keep as runtime blur, keep and bake PNGs, or drop. Deferring the verdict is allowed
+  and changes nothing.
+- **The expo-widgets memoisation patch is measured before any PR decision.** The owner's words:
+  "we're going to remove this patch and try and see if it works without it and see the
+  difference in CPU before versus after... Maybe it's not even a fix we want to do." Session
+  16a's execution measures both sides on the simulator; the PR is not opened.
+- **The owner eyeballs every screen.** No vision subagent; every visual checkpoint is the owner
+  looking at the actual device or simulator and answering the plan's question.
+- **No subagents at all** (re-affirmed 2026-09-20): "I want you to do everything yourself, no
+  subagents." Reviews are the session's own recorded diff reviews; the audit is the independent
+  gate.
+- The six commits on `wip/16a-ios-widget-archive-budget` (1.27.306 to 1.27.312) are session
+  16a's own work, landed on `uat-2` by its plan's step 1; `25ffe2ee`'s diagnostics were
+  reverted inside that range, so the merged tree is clean.
+
 ## Also live, not sessions
 
 - `audit-changes-2.md` — the audit brief currently being worked through. Findings and their
