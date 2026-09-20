@@ -1,0 +1,7 @@
+        <VStack
+          alignment='leading'
+          spacing={1}
+          modifiers={[
+            frame({ maxWidth: Infinity, maxHeight: Infinity }),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
