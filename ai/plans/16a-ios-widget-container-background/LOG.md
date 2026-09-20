@@ -895,3 +895,34 @@ Rig state recorded: sim booted, Metro restarted, both timelines pushed from the 
 ~/athan-device-sweep/16a-nebula-round/000-baseline.png, red-error scan 0 (first scan's 125,581
 was a broken PNG filter decoder, fixed in-session). No code change; docs-only commit.
 
+## 36. Step 4: XS eyeball pass (build 1.27.314, then the 1.27.315 amendment)
+
+Build succeeded, installed, launched, phone rebooted per ritual. Crash counter before the
+checkpoints: 10 (checkpoint baseline 9; the newest report `cpu_resource-2026-09-20-110436.ips`
+timestamps 11:04, over an hour BEFORE this session's install, so nothing new from this build).
+
+Owner's checkpoints, verbatim readings:
+1. All 12 kinds render live. CLOSED.
+2. Centring, MIXED: Layout 1's name+time line centred, but the countdown ink parked left;
+   Layout 2 read left-aligned. Diagnosed as the home hero's 13d mechanism (Text(timerInterval:)
+   reserves worst-case width, parks glyphs leading). Fix landed as 1.27.315: multilineTextAlignment
+   ('center') on both lock ticking Texts; red 1 failed / 15 passed, green 16 passed, break caught,
+   hook 4618 passed + 1 skip. Rebuild + re-verification follows; see 37.
+3. Dark kinds as committed (deferred study state). CLOSED.
+4. First placement with the app swiped away: LIVE content within seconds, verified by the owner
+   on TWO fresh placements (medium extras light, small extras light). The brief's residual item 2
+   is closed: placement serves the stored timeline, not the placeholder.
+
+## 37. Layout 2 ruling (1.27.316) and the process slip
+
+After 1.27.315 the owner closed Layout 1 ("completely fine") and ruled Layout 2 down instead of
+fixing its centring: the countdown and the dot are REMOVED; Layout 2 carries the prayer name and
+the absolute time on one centred line. Landed with the suite rewritten (red 1 failed / 15 passed
+against the old dot+timer line; green 16; break re-inserting the dot into layout 2 caught; hook
+4618 passed + 1 skip). PROCESS SLIP, recorded for the audit: this commit landed DIRECTLY on
+uat-2 (1.27.316) without its own feature branch, because the executor forgot to cut one after
+the 1.27.315 merge; the merge command in the build invocation was a no-op against the
+already-merged branch. Content correct, convention broken once.
+
+
+

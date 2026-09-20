@@ -181,10 +181,10 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
           timerInterval={segment}
           countsDown
           modifiers={[
-            font({ size: 14, weight: 'bold' }),
+            font({ size: 12, weight: 'bold' }),
             monospacedDigit(),
             multilineTextAlignment('center'),
-            foregroundStyle(WHITE),
+            foregroundStyle(WHITE_SECONDARY),
             lineLimit(1),
           ]}
         />
