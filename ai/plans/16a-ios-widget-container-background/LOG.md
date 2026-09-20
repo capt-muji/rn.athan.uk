@@ -817,3 +817,42 @@ the state at the checkpoint and the queue for the next session.
   silently-broken app group, Maestro resets the sim home screen (reboot restores), stale
   test-runner app processes must be killed by PID.
 - Metro may or may not still be running; restart with `yarn start` if dead.
+
+---
+
+# Part 8 — 2026-09-20, two rulings before the checkpoint close
+
+## 29. Lock centring: NO Spacers (owner ruling)
+
+The Spacer-pair idea for centring the lock content is REJECTED: no empty-view tricks, nothing
+hacky that can break across iOS versions. Centring must come from a real attribute — an
+alignment modifier (`multilineTextAlignment`, a stack alignment prop, or whatever the runtime
+honours in the accessory slot). Next session starts from the §27 finding (VStack already defaults
+centre; the wrapping HStack hugs the leading edge of an unstretched root) and finds the
+attribute-based fix. Verify on device before trusting it.
+
+## 30. The 5-minute entry floor, explained precisely (owner question)
+
+The owner's feared scenario — "user adds the widget with 3 minutes left, timer hits 0, then sits
+stuck for 2 more minutes" — DOES NOT HAPPEN. The builder backdates the first entry when the
+boundary is under 5 minutes away (`segmentStartMs = boundaryMs - MIN_ENTRY_SPACING_MS`), so the
+next flip lands exactly 5 minutes after the backdated first, i.e. exactly ON the boundary. The
+timer hits 0:00 and the flip fires in the same moment.
+
+What the owner OBSERVED is a different, mock-only shape: the resting mock puts THREE boundaries
+1 minute apart (Asr +1, Magrib +2, Isha +3). The third flip cannot land at +3 (only 1 minute
+after the +2 flip), so the builder dates it at lastEntry + 5 = +7 — the widget shows Magrib at
+0:00 for ~4 minutes before flipping to Isha. The floor only delays a flip when TWO boundaries
+fall within 5 minutes of each other; real London prayer gaps are tens of minutes to hours, so
+flips land exactly on boundaries. The one real-data case (a held day's 00:00 crowding the next
+Midnight in early summer) is handled by the same wait and is covered by the virtual-fortnight
+tests ("a flip crowded by the entry before it waits for its spacing").
+
+`timerInterval` is not involved in the wait at all — it ticks to 0:00 exactly; what waits is the
+timeline ENTRY flip. NEXT SESSION TASK: verify on device with the spread mock (5+ minute gaps)
+that flips are instant; if a stall appears even there, there is a real bug in the crowding logic.
+
+## 31. Continuation
+
+`athan-next` works as normal — the queue is in ai/plans/README.md, and this LOG (parts 7-8) is
+the 16a handoff: read §26-31 before changing anything. Machines and loops in §28.
