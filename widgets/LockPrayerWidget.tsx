@@ -1,24 +1,31 @@
-import { Image, Text, VStack } from '@expo/ui/swift-ui';
-import { font, foregroundStyle, frame, lineLimit, monospacedDigit } from '@expo/ui/swift-ui/modifiers';
+import { HStack, Image, Text, VStack } from '@expo/ui/swift-ui';
+import {
+  containerBackground,
+  font,
+  foregroundStyle,
+  frame,
+  lineLimit,
+  minimumScaleFactor,
+  monospacedDigit,
+} from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
+import type { ReactNode } from 'react';
 
 import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
- * Lock Screen widget layouts (accessoryRectangular + accessoryInline),
- * registered twice on one shared layout: 'PrayerLockWidget' renders the
- * Standard schedule, 'ExtrasLockWidget' the Extra schedule. Lock Screen
- * accessories render in vibrant monochrome — white with opacity hierarchy —
- * so the two kinds are visually identical; only the timeline data differs.
- * The rectangular face pairs the countdown with the prayer name and puts
- * the absolute HH:mm below — the countdown reads once, beside the name.
- * The circular face is fully unregistered since 1.14.1 (it existed in
- * store builds for ~a day before its 1.9.1 retirement, so the orphan
- * freeze risk was accepted — see ai/AGENTS.md).
- * All layout helpers must live inside this function — the 'widget'
- * directive serializes only this function body into the widget extension's
- * separate JS runtime, where @expo/ui components and modifiers resolve as
- * globals.
+ * Lock Screen widget layouts (accessoryRectangular + accessoryInline).
+ * Accessories render in vibrant monochrome, so every kind uses white with
+ * opacity hierarchy and lets the system tint. Two compositions per
+ * schedule: Layout 1 (name + absolute time, countdown beneath, leading)
+ * and Layout 2 (one centred line — the rectangular face can span half the
+ * lock screen). A timer Text stops ticking once concatenated, so the
+ * inline faces carry the name and absolute time only, and every ticking
+ * element is its own Text. The circular face stays unregistered since
+ * 1.14.1 (store builds carried it for ~a day; the orphan freeze risk was
+ * accepted — see ai/AGENTS.md). All helpers must live inside each
+ * function: the 'widget' directive serializes the body alone, and @expo/ui
+ * identifiers resolve as globals in the extension's JS runtime.
  */
 const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
@@ -34,14 +41,26 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   const neutralForFamily = () => {
     if (environment.widgetFamily === 'accessoryInline') {
       return (
-        <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text
+          modifiers={[
+            font({ size: 12, weight: 'medium' }),
+            foregroundStyle(WHITE),
+            lineLimit(1),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
           Athan — prayer times
         </Text>
       );
     }
 
     return (
-      <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+      <VStack
+        alignment='leading'
+        spacing={1}
+        modifiers={[
+          frame({ maxWidth: Infinity, maxHeight: Infinity }),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+        ]}>
         <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
           ATHAN
         </Text>
@@ -65,7 +84,13 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     if (props.stale === true || !segmentValid) {
       if (environment.widgetFamily === 'accessoryInline') {
         return (
-          <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Text
+            modifiers={[
+              font({ size: 12, weight: 'medium' }),
+              foregroundStyle(WHITE),
+              lineLimit(1),
+              containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+            ]}>
             Athan — open to refresh times
           </Text>
         );
@@ -75,7 +100,13 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       // stale-card icon, rendered here in the system's vibrant monochrome)
       // above the out-of-date title and refresh call
       return (
-        <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+        <VStack
+          alignment='leading'
+          spacing={1}
+          modifiers={[
+            frame({ maxWidth: Infinity, maxHeight: Infinity }),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
           <Image systemName='moon.stars.fill' size={14} color={WHITE} />
           <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             Out of date
@@ -87,41 +118,63 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       );
     }
 
-    // Countdown as a minute-ceil label, precomputed per timeline entry.
-    // Entries from a v1 app version lack the label — degrade to the absolute
-    // time instead of a system timer (whose colon format we don't use).
-    const hasCountdownLabel = typeof props.countdownLabel === 'string' && props.countdownLabel.length > 0;
+    // iOS ticks Text(timerInterval:) itself, every second, with no timeline
+    // entry behind it. The swift-ui types only describe the string form, so
+    // the timer props ride this cast.
+    const TickingTextEl = Text as unknown as (elementProps: {
+      timerInterval?: { lower: Date; upper: Date };
+      countsDown?: boolean;
+      modifiers?: unknown[];
+    }) => ReactNode;
 
+    const segment = { lower: new Date(props.prevEpochMs), upper: new Date(props.nextEpochMs) };
+
+    // accessoryInline is a single system-rendered line and cannot hold a
+    // ticking timer beside other text: SwiftUI stops updating a timer Text
+    // the moment it is concatenated. The absolute time is the more useful
+    // half in a slot this small, so inline carries that and no countdown.
     if (environment.widgetFamily === 'accessoryInline') {
-      const countdownModifiers = [monospacedDigit(), foregroundStyle(WHITE_SECONDARY)];
-
       return (
-        <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text
+          modifiers={[
+            font({ size: 12, weight: 'medium' }),
+            foregroundStyle(WHITE),
+            lineLimit(1),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
           {props.nextName} {props.nextTime}
-          {hasCountdownLabel ? (
-            <>
-              {' '}
-              · <Text modifiers={countdownModifiers}>{props.countdownLabel}</Text>
-            </>
-          ) : null}
         </Text>
       );
     }
 
-    // accessoryRectangular (default): the prayer with its countdown, the
-    // absolute time below
-    const rectangularModifiers = [
-      font({ size: 11, weight: 'medium' }),
-      monospacedDigit(),
-      foregroundStyle(WHITE_SECONDARY),
-    ];
-
-    const header = hasCountdownLabel ? `${props.nextName} · ${props.countdownLabel}` : props.nextName;
-
+    // The timer is its own Text or it stops ticking.
     return (
-      <VStack alignment='leading' spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>{header}</Text>
-        <Text modifiers={rectangularModifiers}>{props.nextTime}</Text>
+      <VStack
+        alignment='leading'
+        spacing={1}
+        modifiers={[
+          frame({ maxWidth: Infinity, maxHeight: Infinity }),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+        ]}>
+        <HStack spacing={4}>
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {props.nextName}
+          </Text>
+          <Text
+            modifiers={[
+              font({ size: 12, weight: 'medium' }),
+              monospacedDigit(),
+              foregroundStyle(WHITE_SECONDARY),
+              lineLimit(1),
+            ]}>
+            {props.nextTime}
+          </Text>
+        </HStack>
+        <TickingTextEl
+          timerInterval={segment}
+          countsDown
+          modifiers={[font({ size: 14, weight: 'bold' }), monospacedDigit(), foregroundStyle(WHITE), lineLimit(1)]}
+        />
       </VStack>
     );
   } catch {
@@ -134,3 +187,160 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
 // standard pair and the extras pair (see widgets/PrayerWidget.tsx).
 export const PrayerLockWidget = createWidget('PrayerLockWidget', AthanLockWidget);
 export const ExtrasLockWidget = createWidget('ExtrasLockWidget', AthanLockWidget);
+
+// A separate self-contained function: the 'widget' directive serializes
+// each body alone, so nothing can be shared across the two layouts.
+const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
+  'widget';
+
+  const WHITE = '#ffffff';
+  const WHITE_SECONDARY = 'rgba(255, 255, 255, 0.6)';
+
+  const neutralForFamily = () => {
+    if (environment.widgetFamily === 'accessoryInline') {
+      return (
+        <Text
+          modifiers={[
+            font({ size: 12, weight: 'medium' }),
+            foregroundStyle(WHITE),
+            lineLimit(1),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
+          Athan — prayer times
+        </Text>
+      );
+    }
+
+    return (
+      <VStack
+        alignment='leading'
+        spacing={1}
+        modifiers={[
+          frame({ maxWidth: Infinity, maxHeight: Infinity }),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+        ]}>
+        <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+          ATHAN
+        </Text>
+        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          Open to load times
+        </Text>
+      </VStack>
+    );
+  };
+
+  if (props == null) {
+    return neutralForFamily();
+  }
+
+  try {
+    const segmentValid = typeof props.nextEpochMs === 'number' && typeof props.prevEpochMs === 'number';
+    if (props.stale === true || !segmentValid) {
+      if (environment.widgetFamily === 'accessoryInline') {
+        return (
+          <Text
+            modifiers={[
+              font({ size: 12, weight: 'medium' }),
+              foregroundStyle(WHITE),
+              lineLimit(1),
+              containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+            ]}>
+            Athan — open to refresh times
+          </Text>
+        );
+      }
+
+      return (
+        <VStack
+          alignment='leading'
+          spacing={1}
+          modifiers={[
+            frame({ maxWidth: Infinity, maxHeight: Infinity }),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
+          <Image systemName='moon.stars.fill' size={14} color={WHITE} />
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            Out of date
+          </Text>
+          <Text modifiers={[font({ size: 11, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+            Open app to refresh
+          </Text>
+        </VStack>
+      );
+    }
+
+    const TickingTextEl = Text as unknown as (elementProps: {
+      timerInterval?: { lower: Date; upper: Date };
+      countsDown?: boolean;
+      modifiers?: unknown[];
+    }) => ReactNode;
+
+    const segment = { lower: new Date(props.prevEpochMs), upper: new Date(props.nextEpochMs) };
+
+    if (environment.widgetFamily === 'accessoryInline') {
+      return (
+        <Text
+          modifiers={[
+            font({ size: 12, weight: 'medium' }),
+            foregroundStyle(WHITE),
+            lineLimit(1),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
+          {props.nextName} {props.nextTime}
+        </Text>
+      );
+    }
+
+    // Centred because the rectangular face can span half the lock screen —
+    // a left-anchored line would float off-balance in the wide slot. The
+    // timer stays its own Text or it stops ticking.
+    return (
+      <VStack
+        modifiers={[
+          frame({ maxWidth: Infinity, maxHeight: Infinity }),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+        ]}>
+        <HStack spacing={3}>
+          <Text
+            modifiers={[
+              font({ size: 12, weight: 'bold' }),
+              foregroundStyle(WHITE),
+              lineLimit(1),
+              minimumScaleFactor(0.6),
+            ]}>
+            {props.nextName}
+          </Text>
+          <Text
+            modifiers={[
+              font({ size: 12, weight: 'medium' }),
+              monospacedDigit(),
+              foregroundStyle(WHITE_SECONDARY),
+              lineLimit(1),
+              minimumScaleFactor(0.6),
+            ]}>
+            {props.nextTime}
+          </Text>
+          <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+            ·
+          </Text>
+          <TickingTextEl
+            timerInterval={segment}
+            countsDown
+            modifiers={[
+              font({ size: 12, weight: 'medium' }),
+              monospacedDigit(),
+              foregroundStyle(WHITE_SECONDARY),
+              lineLimit(1),
+              minimumScaleFactor(0.6),
+            ]}
+          />
+        </HStack>
+      </VStack>
+    );
+  } catch {
+    return neutralForFamily();
+  }
+};
+
+export const PrayerLockWidget2 = createWidget('PrayerLockWidget2', AthanLockWidgetCentred);
+export const ExtrasLockWidget2 = createWidget('ExtrasLockWidget2', AthanLockWidgetCentred);

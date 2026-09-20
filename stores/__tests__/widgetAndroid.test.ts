@@ -30,7 +30,7 @@ import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
-import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import { ExtrasLockWidget, ExtrasLockWidget2, PrayerLockWidget, PrayerLockWidget2 } from '@/widgets/LockPrayerWidget';
 import {
   ExtrasWidget,
   ExtrasWidgetDark,
@@ -97,7 +97,9 @@ const resetMocks = () => {
   (PrayerLockWidget.updateSnapshot as jest.Mock).mockReset();
   (ExtrasLockWidget.updateSnapshot as jest.Mock).mockReset();
   (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
+  (PrayerLockWidget2.updateTimeline as jest.Mock).mockReset();
   (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
+  (ExtrasLockWidget2.updateTimeline as jest.Mock).mockReset();
 };
 
 describe('Android snapshot pushes', () => {
@@ -191,6 +193,42 @@ describe('Android snapshot pushes', () => {
     }
 
     expect(pushes).toBeGreaterThan(1);
+  });
+
+  it('arms the next flip a whole minute out when the target sits on an exact minute', async () => {
+    jest.setSystemTime(Math.ceil(Date.now() / 60_000) * 60_000);
+    seedPrayerCache(3, true);
+
+    await refreshPrayerWidgets();
+
+    // Prayer times carry no seconds, so from an exact minute the target is a
+    // whole number of minutes away: the flip is the NEXT minute rather than a
+    // zero-delay timer firing on the instant the push finished
+    await jest.advanceTimersByTimeAsync(59_000);
+    expect(PrayerWidget.reload).not.toHaveBeenCalled();
+
+    await jest.advanceTimersByTimeAsync(1_500);
+    expect(PrayerWidget.reload).toHaveBeenCalled();
+  });
+
+  it('retries a minute later when a slow native push ends past the target it armed on', async () => {
+    seedPrayerCache(3, true);
+    const pushStartedAt = Date.now();
+    // The native call overruns the prayer the chain was counting down to. A
+    // flip delay computed from a target already behind would be negative and
+    // spin the chain, so a passed target falls back to a plain retry.
+    (PrayerWidget.updateSnapshot as jest.Mock).mockImplementationOnce(() => {
+      jest.setSystemTime(pushStartedAt + 3 * 60_000);
+    });
+
+    await refreshPrayerWidgets();
+    expect((PrayerWidget.updateSnapshot as jest.Mock).mock.calls.length).toBe(1);
+
+    await jest.advanceTimersByTimeAsync(59_000);
+    expect((PrayerWidget.updateSnapshot as jest.Mock).mock.calls.length).toBe(1);
+
+    await jest.advanceTimersByTimeAsync(2_000);
+    expect((PrayerWidget.updateSnapshot as jest.Mock).mock.calls.length).toBe(2);
   });
 
   it('swallows a native updateSnapshot throw and logs it', async () => {

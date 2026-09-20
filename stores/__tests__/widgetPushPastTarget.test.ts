@@ -1,5 +1,5 @@
 /**
- * The widgets' minute re-push after a native push that runs past the prayer it was counting down to
+ * A native push that runs past the prayer it was counting down to leaves no timer behind
  */
 
 import { london, saveLondonDays } from '@/hooks/__tests__/londonDays';
@@ -10,7 +10,6 @@ import { PrayerWidget } from '@/widgets/PrayerWidget';
 jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: true } }));
 
 const PUSH_STARTS_BEFORE_DHUHR_MS = 400;
-const RETRY_MS = 60_000;
 
 afterEach(() => {
   jest.clearAllTimers();
@@ -22,28 +21,24 @@ afterEach(() => {
 describe('the Standard widgets on Friday 11 September 2026, pushed 400 ms before Dhuhr at 13:02', () => {
   // where the native push ends, and how far past Dhuhr that is in ms
   it.each([
-    // With no time left, a minute-flip delay and the retry are both one minute, apart from LABEL_FLIP_EPSILON_MS: this
-    // row tells the passed-target check from its absence only through that epsilon, and a zero epsilon would hide it
     ['at the moment of Dhuhr', 0],
     ['100 ms after Dhuhr', 100],
-  ])('pushes again a minute after a native push that ends %s', async (_end, pastMs) => {
+  ])('pushes once and arms nothing when the native push ends %s', async (_end, pastMs) => {
     const dhuhr = london('2026-09-11', '13:02').getTime();
     jest.useFakeTimers({ now: dhuhr - PUSH_STARTS_BEFORE_DHUHR_MS });
     saveLondonDays();
     const pushedAt: number[] = [];
-    jest
-      .mocked(PrayerWidget.updateTimeline)
-      .mockImplementationOnce(() => {
-        pushedAt.push(Date.now());
-        jest.setSystemTime(dhuhr + pastMs);
-      })
-      .mockImplementationOnce(() => {
-        pushedAt.push(Date.now());
-      });
+    jest.mocked(PrayerWidget.updateTimeline).mockImplementation(() => {
+      pushedAt.push(Date.now());
+      jest.setSystemTime(dhuhr + pastMs);
+    });
 
     await refreshPrayerWidgets();
     await jest.advanceTimersByTimeAsync(90_000);
 
-    expect(pushedAt).toEqual([dhuhr - PUSH_STARTS_BEFORE_DHUHR_MS, dhuhr + pastMs + RETRY_MS]);
+    // Overrunning the target used to arm a retry a minute out. Nothing is armed
+    // now: the next push rides data (sync, reschedule, background task), never a
+    // clock, because each one costs a WidgetKit reload per kind (ISSUES.md §G.1)
+    expect(pushedAt).toEqual([dhuhr - PUSH_STARTS_BEFORE_DHUHR_MS]);
   });
 });
