@@ -37,13 +37,13 @@ export const addMinutes = (from: Date, minutesToAdd: number) =>
 /**
  * Every day around the download, with TODAY's six rows seeded from it
  *
- * Asr is the first whole minute at least 1 minute after the download, since times carry no seconds, so Asr is
- * always next on opening the app, 60 to 119 seconds away: a tight runway to watch the countdown tick and the
- * day roll over. Fajr sits 3 minutes before the download, then every prayer 1 minute apart to Isha 3 minutes
- * after it.
+ * Asr is the first whole minute at least 1 minute after the download. Fajr, Sunrise and Dhuhr sit 3, 2
+ * and 1 minutes before the download's own minute; Asr, Magrib and Isha ride 1, 2 and 3 minutes past the
+ * anchor — a tight runway that rolls a boundary roughly every minute.
  */
 const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
   const asrAt = new Date(Math.ceil((downloadedAt.getTime() + MINUTE) / MINUTE) * MINUTE);
+  const minuteFloor = new Date(Math.floor(downloadedAt.getTime() / MINUTE) * MINUTE);
 
   const dayBeforeYesterday = formatDateShort(subDays(downloadedAt, 2));
   const yesterday = formatDateShort(subDays(downloadedAt, 1));
@@ -54,10 +54,8 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
   );
 
   // Realistic London times copied verbatim from mocks/full.ts, EXCEPT TODAY.
-  // The days around it (dayBeforeYesterday, yesterday, day1, day2) are
-  // 2024-04-23 through 2024-04-27 carrying the API's real spring solar drift;
-  // days 3-10 ahead keep the 2024-08-28 → 2024-09-09 autumn block. Jamat
-  // fields are unused placeholders.
+  // The days around it carry the API's real spring solar drift; Jamat fields
+  // are unused placeholders.
   return {
     [dayBeforeYesterday]: {
       date: dayBeforeYesterday,
@@ -91,12 +89,12 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(asrAt, -4),
-      sunrise: addMinutes(asrAt, -3),
-      dhuhr: addMinutes(asrAt, -2),
-      asr: addMinutes(asrAt, 0),
-      magrib: addMinutes(asrAt, 1),
-      isha: addMinutes(asrAt, 2),
+      fajr: addMinutes(minuteFloor, -3),
+      sunrise: addMinutes(minuteFloor, -2),
+      dhuhr: addMinutes(minuteFloor, -1),
+      asr: addMinutes(asrAt, 1),
+      magrib: addMinutes(asrAt, 2),
+      isha: addMinutes(asrAt, 3),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',

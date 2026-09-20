@@ -16,13 +16,18 @@
  * Light/Dark kinds) — it never follows the system appearance. WidgetKit
  * renders each entry at its own date.
  *
- * While the app runs, PER-SCHEDULE label-flip schedulers re-push at each
- * countdown target's minute change: a standard flip re-pushes only the five
- * standard kinds, an extras flip only the five extras kinds (each schedule
- * pushes independently — one failing or empty schedule never blocks the
- * other; see ISSUES.md §G.1 for the render-cost context). Flip pushes
- * reuse a cached multi-day prayer sequence, so the per-minute pushes never
- * re-read the prayer DB — only data- or settings-driven refreshes do.
+ * iOS pushes only when the data behind the widget changes: launch and
+ * foreground sync, a notification reschedule, a widget-visible setting, and
+ * the background task. There is deliberately NO per-minute re-push. Each
+ * push costs a WidgetKit reload per kind, and a reload re-renders every
+ * entry in that kind's timeline — measured at 5 to 13 CPU-seconds per kind
+ * on an A12. Ten kinds a minute exceeded the extension's CPU budget (50%
+ * over 180s), so iOS killed it mid-render and WidgetKit masked the missing
+ * render as "Please adopt containerBackground API" (ISSUES.md §G.1).
+ * Nothing user-visible is lost: iOS suspends JS timers the moment the app
+ * leaves the foreground, so those pushes only ever ran while the widget was
+ * impossible to look at. Between pushes the stepped timeline entries carry
+ * the countdown, which is what the home screen reads from anyway.
  *
  * @see shared/widgetTimeline.ts - pure timeline builder
  * @see widgets/PrayerWidget.tsx - home screen widget layouts (both schedules)
@@ -112,42 +117,8 @@ const flipPushTimers: { [schedule in ScheduleType]: ReturnType<typeof setTimeout
   [ScheduleType.Extra]: null,
 };
 
-interface CachedSequence {
-  key: string;
-  sequence: PrayerSequence;
-}
-
-/**
- * Cache of the multi-day prayer sequences, keyed by the London wall date of
- * the sequence's start (yesterday). Label-flip pushes fire every minute while
- * the app runs and only the head entry's label changes, so they reuse this
- * cache instead of re-reading ~30 days of MMKV records and re-running the
- * timezone math each time. Invalidation is by construction: the date key
- * rolls over at London midnight, and every full refresh (data sync,
- * notification reschedule, settings change) rebuilds before caching — so a
- * wipe or data change can never serve a stale sequence.
- */
-const sequenceCache: { [schedule in ScheduleType]: CachedSequence | null } = {
-  [ScheduleType.Standard]: null,
-  [ScheduleType.Extra]: null,
-};
-
-const sequenceCacheKey = (startDate: Date): string => TimeUtils.formatDateShort(startDate);
-
-const rebuildSequence = (schedule: ScheduleType, startDate: Date): PrayerSequence => {
-  const sequence = PrayerUtils.createPrayerSequence(schedule, startDate, TIMELINE_DAYS + 1);
-  sequenceCache[schedule] = { key: sequenceCacheKey(startDate), sequence };
-  return sequence;
-};
-
-const sequenceFor = (schedule: ScheduleType, startDate: Date): PrayerSequence => {
-  const cached = sequenceCache[schedule];
-  const key = sequenceCacheKey(startDate);
-  if (cached?.key === key) {
-    return cached.sequence;
-  }
-  return rebuildSequence(schedule, startDate);
-};
+const buildSequence = (schedule: ScheduleType, startDate: Date): PrayerSequence =>
+  PrayerUtils.createPrayerSequence(schedule, startDate, TIMELINE_DAYS + 1);
 
 /**
  * Keeps the widgets aligned with in-app settings: any change to a
@@ -187,58 +158,20 @@ const msUntilMinuteFlip = (targetEpochMs: number): number | null => {
 };
 
 /**
- * Arms ONE schedule's label-flip push: the minute-ceil label changes exactly
- * when the remaining time crosses a whole minute, so each push re-arms at
- * that schedule's next flip — its widget re-renders within a quarter second
- * of every true minute change on its own countdown. Re-arms from fresh data
- * on every push; a suspended (backgrounded) timer coalesces into one fire on
- * foreground, which doubles as a refresh when the user returns.
- *
- * ALWAYS leaves a timer behind. A timer that has already fired has cleared
- * its own slot, and this is the only site that arms a new one, so any path
- * that declined to re-arm would end the chain for the life of the process —
- * the widget would then freeze at whatever minute the failure happened on,
- * with nothing to signal it. `null` (nothing usable was built) and a target
- * already in the past both fall back to a plain retry.
- */
-const scheduleLabelFlipPush = (schedule: ScheduleType, targetEpochMs: number | null): void => {
-  const existing = flipPushTimers[schedule];
-  if (existing !== null) {
-    clearTimeout(existing);
-    flipPushTimers[schedule] = null;
-  }
-
-  const msUntilFlip = (targetEpochMs === null ? null : msUntilMinuteFlip(targetEpochMs)) ?? FLIP_RETRY_MS;
-
-  flipPushTimers[schedule] = setTimeout(() => {
-    flipPushTimers[schedule] = null;
-    void pushScheduleTimelines(schedule, { reuseCachedSequence: true });
-  }, msUntilFlip);
-};
-
-/**
- * Pushes ONE schedule's timelines to its five widget kinds — light small +
+ * Pushes ONE schedule's timelines to its six widget kinds — light small +
  * medium + lock share the light entries; the dark small + medium pair gets
- * the theme-stamped dark copy. Label-flip pushes (`reuseCachedSequence`)
- * skip the sequence rebuild; full refreshes always rebuild it first so data
- * and settings changes can never read through the cache.
+ * the theme-stamped dark copy. The sequence is always rebuilt: every caller
+ * is a data, settings or launch event, so reading through a cache here could
+ * only serve something older than the change that triggered the push.
  *
  * iOS only and failure-tolerant per schedule: widgets are a surface, not a
  * critical path, so any error is logged and swallowed. Safe to call at every
  * point where fresh data or preferences are known (sync, notification
  * refresh, background task, settings changes).
  */
-const pushScheduleTimelines = async (
-  schedule: ScheduleType,
-  options?: { reuseCachedSequence?: boolean }
-): Promise<void> => {
-  // No platform or flag check here: every push starts from refreshPrayerWidgets, which has one, or from the flip timer,
-  // which only a push arms, and neither the platform nor the build's flags change while the app runs
-
-  // Captured inside the try, consumed by the `finally` re-arm below, so every
-  // exit from here — success, native throw, or empty build — leaves the chain
-  // armed. Stays null until entries exist to flip on.
-  let flipTargetEpochMs: number | null = null;
+const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
+  // No platform or flag check here: every push starts from refreshPrayerWidgets, which has one, and neither the
+  // platform nor the build's flags change while the app runs
 
   try {
     const now = TimeUtils.createInstant();
@@ -251,9 +184,7 @@ const pushScheduleTimelines = async (
     // starts at the real previous prayer (yesterday's Isha or last extra
     // time) instead of `now` — the same reason the app's countdown bar
     // fetches yesterday's data.
-    const sequence = options?.reuseCachedSequence
-      ? sequenceFor(schedule, startDate)
-      : rebuildSequence(schedule, startDate);
+    const sequence = buildSequence(schedule, startDate);
 
     const lightEntries = buildPrayerWidgetTimeline(now, sequence, settings, 'light');
     const darkEntries = buildPrayerWidgetTimeline(now, sequence, settings, 'dark');
@@ -266,11 +197,6 @@ const pushScheduleTimelines = async (
       return;
     }
 
-    // Taken BEFORE the native calls: entries this good deserve the true
-    // cadence even if a push throws, so a native failure retries on the next
-    // real minute flip rather than on a generic timer.
-    flipTargetEpochMs = lightEntries[0].props.nextEpochMs;
-
     // The lazy requires register all widget layouts into the app group as a
     // side effect of module evaluation — required before updateTimeline works
     // (first iOS push pays the registration; Android never reaches here)
@@ -280,6 +206,7 @@ const pushScheduleTimelines = async (
       home.PrayerWidget.updateTimeline(lightEntries);
       home.PrayerWidgetMedium.updateTimeline(lightEntries);
       lock.PrayerLockWidget.updateTimeline(lightEntries);
+      lock.PrayerLockWidget2.updateTimeline(lightEntries);
       home.PrayerWidgetDark.updateTimeline(darkEntries);
       home.PrayerWidgetDarkMedium.updateTimeline(darkEntries);
     } else {
@@ -288,6 +215,7 @@ const pushScheduleTimelines = async (
       home.ExtrasWidget.updateTimeline(lightEntries);
       home.ExtrasWidgetMedium.updateTimeline(lightEntries);
       lock.ExtrasLockWidget.updateTimeline(lightEntries);
+      lock.ExtrasLockWidget2.updateTimeline(lightEntries);
       home.ExtrasWidgetDark.updateTimeline(darkEntries);
       home.ExtrasWidgetDarkMedium.updateTimeline(darkEntries);
     }
@@ -300,13 +228,6 @@ const pushScheduleTimelines = async (
     });
   } catch (error) {
     logger.warn('WIDGET: Failed to refresh widget timelines', { schedule, error });
-  } finally {
-    // Nothing usable came out, so the cached sequence is either empty or the
-    // very thing that failed: drop it, or the retry would reuse it and repeat
-    // the same failure every minute instead of re-reading a healed cache.
-    if (flipTargetEpochMs === null) sequenceCache[schedule] = null;
-
-    scheduleLabelFlipPush(schedule, flipTargetEpochMs);
   }
 };
 
@@ -414,19 +335,17 @@ const scheduleLabelFlipReload = (schedule: ScheduleType, targetEpochMs: number |
       scheduleLabelFlipReload(schedule, targetEpochMs);
       return;
     }
-    void pushScheduleAndroid(schedule, { reuseCachedSequence: true });
+    void pushScheduleAndroid(schedule);
   }, msUntilFlip);
 };
 
 /**
- * Pushes ONE schedule's snapshot to its four home kinds on Android. Full
- * refreshes rebuild the sequence; flip-driven re-pushes reuse the cache,
- * exactly like the iOS timeline path.
+ * Pushes ONE schedule's snapshot to its four home kinds on Android. Pushes are
+ * rare — a full refresh, or a flip chain reaching its target — so each one
+ * reads the prayer days afresh; the per-minute flips in between only reload
+ * the kinds, which re-renders from the snapshot already in place.
  */
-const pushScheduleAndroid = async (
-  schedule: ScheduleType,
-  options?: { reuseCachedSequence?: boolean }
-): Promise<void> => {
+const pushScheduleAndroid = async (schedule: ScheduleType): Promise<void> => {
   let flipTargetEpochMs: number | null = null;
 
   try {
@@ -436,9 +355,7 @@ const pushScheduleAndroid = async (
     const startDate = TimeUtils.getDayAnchor(yesterday);
     const settings = readWidgetSettings();
 
-    const sequence = options?.reuseCachedSequence
-      ? sequenceFor(schedule, startDate)
-      : rebuildSequence(schedule, startDate);
+    const sequence = buildSequence(schedule, startDate);
 
     const snapshot = buildPrayerWidgetSnapshot(sequence, settings);
     if (snapshot === null) {
@@ -470,7 +387,6 @@ const pushScheduleAndroid = async (
   } catch (error) {
     logger.warn('WIDGET: Failed to refresh widget snapshots', { schedule, error });
   } finally {
-    if (flipTargetEpochMs === null) sequenceCache[schedule] = null;
     scheduleLabelFlipReload(schedule, flipTargetEpochMs);
   }
 };

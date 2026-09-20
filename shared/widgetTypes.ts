@@ -11,7 +11,7 @@
  * shape changes: it lets layouts detect and tolerate entries written by an
  * older app version still sitting in the shared timeline store.
  */
-export const WIDGET_PROPS_VERSION = 4;
+export const WIDGET_PROPS_VERSION = 5;
 
 /**
  * Current schema version of the Android widget snapshot contract. Android has
@@ -55,9 +55,9 @@ export interface WidgetPrayerRow {
 /**
  * Timeline props pushed to all four widgets at every prayer boundary (the
  * standard pair and the extras pair each receive their own schedule's
- * timeline). One timeline entry per prayer segment; within the stepped
- * countdown horizon the builder additionally emits one entry every five
- * minutes so the precomputed countdown label stays close to the truth.
+ * timeline). Exactly one entry per prayer segment: the countdown ticks
+ * itself from the segment bounds, so nothing in the card changes between
+ * boundaries and extra entries would only cost archive budget.
  */
 export interface PrayerWidgetProps {
   /** Props schema version (WIDGET_PROPS_VERSION) for cross-release tolerance */
@@ -83,19 +83,12 @@ export interface PrayerWidgetProps {
   nextTime: string;
   /** Upcoming prayer datetime as epoch ms */
   nextEpochMs: number;
-  /** Start of the current segment (previous prayer) as epoch ms */
-  prevEpochMs: number;
   /**
-   * Countdown to the upcoming prayer as a minute-ceil label ("2h", "1h 12m",
-   * "9m", "1m") computed for the entry's date — seconds never render, and
-   * the value rounds up so it holds until the true minute flips.
-   *
-   * EMPTY when the builder cannot refresh it before its boundary (an entry
-   * beyond the stepped countdown horizon): a label that has to hold for a
-   * whole segment would over-read by hours, so no countdown is shown at all
-   * and both layouts fall back to the name plus the absolute time.
+   * Start of the current segment (previous prayer) as epoch ms. With
+   * nextEpochMs this is the interval the layouts hand to SwiftUI's ticking
+   * countdown, which iOS redraws every second without a timeline entry.
    */
-  countdownLabel: string;
+  prevEpochMs: number;
   /** Date of the upcoming prayer in the app's format (Hijri when enabled) */
   dateLabel: string;
   /**

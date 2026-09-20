@@ -126,8 +126,7 @@ describe('formatTime', () => {
     /**
      * forceHideSeconds suppresses seconds only BESIDE another unit. Under a
      * minute the parts list is empty and `shared/time.ts:552` falls back to
-     * "Ns", so seconds still render — which is why the flag cannot stand in for
-     * formatCountdownMinutes. No caller passes it today.
+     * "Ns", so seconds still render. No caller passes it today.
      */
     it('lets forceHideSeconds suppress seconds only beside another unit', () => {
       expect(formatTime(3665, true, true)).toBe('1h 1m');
