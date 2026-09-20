@@ -317,12 +317,14 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('Asr');
     });
 
-    it('draws the three-orb nebula on dark and nothing on light', () => {
-      // The owner's nebula reference: light lives in the upper half only
+    it('draws no runtime orbs on any theme', () => {
+      // Owner ruling 2026-09-20: the dark kinds go flat. The runtime blur
+      // orbs cost the cold first render (the patch A/B's control isolated
+      // them as the cause of the placement mask flash).
       for (const family of ['systemSmall', 'systemMedium'] as const) {
         const dark = renderHome({ ...liveProps(), theme: 'dark' }, family);
         const light = renderHome({ ...liveProps(), theme: 'light' }, family);
-        expect(collect(dark).filter((node) => node.marker === 'Circle')).toHaveLength(3);
+        expect(collect(dark).filter((node) => node.marker === 'Circle')).toHaveLength(0);
         expect(collect(light).filter((node) => node.marker === 'Circle')).toHaveLength(0);
       }
     });
