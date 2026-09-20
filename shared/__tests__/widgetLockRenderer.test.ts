@@ -47,6 +47,7 @@ const SWIFT_UI = {
 
 const MODIFIERS = [
   'containerBackground',
+  'containerRelativeFrame',
   'font',
   'foregroundStyle',
   'frame',
@@ -222,5 +223,40 @@ describe('lock widget renderer', () => {
       },
     });
     expect(textsOf(renderTreeFor2(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
+  });
+
+  it.each([
+    ['layout 1 live', () => renderTreeFor(LIVE_PROPS, 'accessoryRectangular')],
+    ['layout 1 stale', () => renderTreeFor({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular')],
+    ['layout 1 placeholder', () => renderTreeFor(null, 'accessoryRectangular')],
+    ['layout 2 live', () => renderTreeFor2(LIVE_PROPS, 'accessoryRectangular')],
+    ['layout 2 stale', () => renderTreeFor2({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular')],
+    ['layout 2 placeholder', () => renderTreeFor2(null, 'accessoryRectangular')],
+  ])('sizes %s to the widget container before filling the slot', (_label, renderPath) => {
+    const tree = renderPath() as MarkerNode;
+    const modifiers = (tree.props.modifiers ?? []) as Array<{ modifier: string; value: unknown }>;
+    const relativeIndex = modifiers.findIndex((entry) => entry.modifier === 'containerRelativeFrame');
+    const frameIndex = modifiers.findIndex((entry) => entry.modifier === 'frame');
+
+    // The accessory slot proposes no width the root can stretch into, so the
+    // root takes the widget container's own width FIRST (innermost modifier)
+    // and the stack's default centring finally has room to act in.
+    expect(relativeIndex).toBe(0);
+    expect(frameIndex).toBeGreaterThan(relativeIndex);
+    expect(modifiers[relativeIndex]?.value).toEqual({ axes: 'horizontal' });
+  });
+
+  it('keeps the container-width modifier off the inline faces and centres both live blocks', () => {
+    for (const render of [renderTreeFor, renderTreeFor2]) {
+      const inlineTree = render(LIVE_PROPS, 'accessoryInline') as MarkerNode;
+      const inlineModifiers = JSON.stringify(inlineTree.props.modifiers ?? []);
+      expect(inlineModifiers).not.toContain('containerRelativeFrame');
+    }
+
+    // Centring is the stack default; a leading alignment would undo it.
+    const liveRoot = renderTreeFor(LIVE_PROPS, 'accessoryRectangular') as MarkerNode;
+    const liveRoot2 = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular') as MarkerNode;
+    expect(liveRoot.props.alignment).toBeUndefined();
+    expect(liveRoot2.props.alignment).toBeUndefined();
   });
 });
