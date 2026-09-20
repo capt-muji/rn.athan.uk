@@ -333,6 +333,14 @@ None of these is a session yet. Each needs the owner's decision first.
   branch: reintroduce the orb exactly as previously shipped, then convert to PNG (format ruled:
   PNG, for alpha plus losslessness; JPEG has no transparency and band-destroys gradients). The
   owner judges look and placement on the XS. Flat stands if it loses.
+- **Android lock screen widgets: queued as session 18, investigation first** (owner,
+  2026-09-20): "make this an entire session of its own... let's try to do it on the 3T first.
+  Deep investigation." Brief at `ai/prompts/android-lock-screen-widgets.md`, row 15 in
+  `ai/plans/README.md` (moonsighting stays absolute last). The brief leads with the platform
+  truth to verify: Android removed lock screen widgets in 5.0 and has no API on any modern
+  device including the 3T; the leading candidate vehicle is a persistent lock-screen
+  notification carrying a system-ticked countdown chronometer, to be proven on the 3T before
+  the owner rules on building anything.
 
 ## Also live, not sessions
 
