@@ -40,3 +40,4 @@ idb-dsyms/
 idb-dylibs/
 idb-frameworks/
 idb-test-bundles/
+.codegraph/

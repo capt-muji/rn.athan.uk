@@ -4,6 +4,11 @@
     "subagent_depth": 2
   },
   "mcp": {
+    "codegraph": {
+      "type": "local",
+      "command": ["/Users/muji/.local/bin/codegraph", "serve", "--mcp"],
+      "enabled": true
+    },
     "expo": {
       "type": "remote",
       "url": "https://mcp.expo.dev/mcp",
