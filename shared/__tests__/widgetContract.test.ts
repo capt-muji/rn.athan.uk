@@ -217,7 +217,7 @@ describe('palette literals', () => {
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
       // Dark palette — Violet Dusk
-      'rgba(53, 36, 137, 0.88)', // card — every dark size
+      'rgba(18, 14, 40, 0.95)', // card — every dark size
       '#ffffff', // hero / passed rows
       '#e3eaff', // active row text — standard, white + hint of blue
       '#ffeaf4', // active row text — extras, white + hint of pink
@@ -231,6 +231,9 @@ describe('palette literals', () => {
       'rgba(95, 10, 115, 0.5)', // pill depth shadow — extras, deep pinky purple
       'rgba(146, 0, 162, 0.35)', // extras stroke
       'rgba(8, 71, 229, 0.35)', // standard stroke
+      'rgba(58, 118, 255, 0.35)', // nebula blue mass (owner reference, 2026-09-20)
+      'rgba(228, 74, 154, 0.40)', // nebula magenta rim
+      'rgba(90, 58, 158, 0.25)', // nebula violet haze
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -249,6 +252,7 @@ describe('palette literals', () => {
       // Lock Screen accessory widgets
       '#ffffff',
       'rgba(255, 255, 255, 0.6)',
+      'rgba(0, 0, 0, 0)',
       // Home widget — light Cotton Candy
       'rgba(252, 252, 254, 0.92)',
       '#db2777',
@@ -264,7 +268,7 @@ describe('palette literals', () => {
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
       // Home widget — dark Violet Dusk
-      'rgba(53, 36, 137, 0.88)',
+      'rgba(18, 14, 40, 0.95)',
       '#ff69b4',
       'rgba(173, 193, 254, 0.54)',
       'rgba(173, 193, 254, 0.405)',
@@ -275,6 +279,9 @@ describe('palette literals', () => {
       'rgba(95, 10, 115, 0.5)',
       'rgba(146, 0, 162, 0.35)',
       'rgba(8, 71, 229, 0.35)',
+      'rgba(58, 118, 255, 0.35)',
+      'rgba(228, 74, 154, 0.4)',
+      'rgba(90, 58, 158, 0.25)',
       '#e3eaff',
       '#ffeaf4',
     ].map(normalizeColor);
@@ -374,7 +381,7 @@ describe('static import discipline', () => {
 
 describe('widget directive', () => {
   for (const { name, path } of WIDGET_FILES) {
-    it(`${name}: has exactly one widget-directive function`, () => {
+    it(`${name}: has exactly one widget-directive function per layout`, () => {
       const ast = parseFile(path);
       let count = 0;
 
@@ -388,7 +395,9 @@ describe('widget directive', () => {
         },
       });
 
-      expect(count).toBe(1);
+      // The home module holds one layout; the lock module holds two (its
+      // layouts differ only in composition and share nothing by reference)
+      expect(count).toBe(name === 'PrayerLockWidget' ? 2 : 1);
     });
   }
 });

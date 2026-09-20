@@ -30,7 +30,7 @@ import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
-import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import { ExtrasLockWidget, ExtrasLockWidget2, PrayerLockWidget, PrayerLockWidget2 } from '@/widgets/LockPrayerWidget';
 import {
   ExtrasWidget,
   ExtrasWidgetDark,
@@ -97,7 +97,9 @@ const resetMocks = () => {
   (PrayerLockWidget.updateSnapshot as jest.Mock).mockReset();
   (ExtrasLockWidget.updateSnapshot as jest.Mock).mockReset();
   (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
+  (PrayerLockWidget2.updateTimeline as jest.Mock).mockReset();
   (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
+  (ExtrasLockWidget2.updateTimeline as jest.Mock).mockReset();
 };
 
 describe('Android snapshot pushes', () => {

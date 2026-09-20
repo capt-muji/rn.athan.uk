@@ -249,9 +249,9 @@ describe('home widget renderer', () => {
       expect(markers.has('Column')).toBe(false);
       expect(textsOf(tree)).toContain('Asr');
       expect(textsOf(tree)).toContain('15:20');
-      // Footer shortens the long label: "Saturday, 17 October" -> "Saturday · Lon"
+      // Footer keeps only the day: "Saturday, 17 October" -> "Saturday"
       // (single-token day labels render whole; two-token ones shorten, below)
-      expect(textsOf(tree)).toContain('Saturday · Lon');
+      expect(textsOf(tree)).toContain('Saturday');
 
       // The countdown is the segment itself, handed to iOS to tick
       expect(tickingIntervalOf(tree)).toEqual({
@@ -317,15 +317,13 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('Asr');
     });
 
-    it('draws no orbs on any theme or size', () => {
-      // The glow lighting is gone by owner ruling (2026-09-20): blur is the
-      // single most expensive effect in the widget archive, and the flat
-      // translucent card reads cleaner. Pin that it stays gone.
+    it('draws the three-orb nebula on dark and nothing on light', () => {
+      // The owner's nebula reference: light lives in the upper half only
       for (const family of ['systemSmall', 'systemMedium'] as const) {
-        for (const theme of ['light', 'dark'] as const) {
-          const tree = renderHome({ ...liveProps(), theme }, family);
-          expect(collect(tree).filter((node) => node.marker === 'Circle')).toHaveLength(0);
-        }
+        const dark = renderHome({ ...liveProps(), theme: 'dark' }, family);
+        const light = renderHome({ ...liveProps(), theme: 'light' }, family);
+        expect(collect(dark).filter((node) => node.marker === 'Circle')).toHaveLength(3);
+        expect(collect(light).filter((node) => node.marker === 'Circle')).toHaveLength(0);
       }
     });
 
@@ -343,13 +341,13 @@ describe('home widget renderer', () => {
       const tree = renderHome(legacy, 'systemMedium');
       const all = textsOf(tree);
       expect(tickingIntervalOf(tree)).toBeDefined();
-      expect(all).toContain('Lon');
+      expect(all).not.toContain('·');
       expect(collect(tree).some((node) => node.marker === 'RoundedRectangle')).toBe(false);
     });
 
     it('shortens a Hijri footer to the month prefix', () => {
       const tree = renderHome({ ...liveProps(), dateLabel: 'Rajab 1, 1448' }, 'systemSmall');
-      expect(textsOf(tree)).toContain('Raj 1 · Lon');
+      expect(textsOf(tree)).toContain('Raj 1');
     });
 
     it('renders the stale card per family', () => {
@@ -448,13 +446,13 @@ describe('home widget renderer', () => {
       expect(sources).toContain('athan_widget_card_dark_small');
     });
 
-    it('falls back to the bare city footer when the day label is empty', () => {
+    it('renders an empty footer when the day label is empty', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const blank = androidProps({});
       for (const day of blank.days) {
         day.dateLabel = '';
       }
-      expect(textsOf(renderTree(layouts.PrayerWidget(blank, { colorScheme: 'light' })))).toContain('Lon');
+      expect(textsOf(renderTree(layouts.PrayerWidget(blank, { colorScheme: 'light' })))).toContain('');
     });
 
     it('stamps the composition from props.size, not widgetFamily', () => {
@@ -544,7 +542,7 @@ describe('home widget renderer', () => {
         day.rows.some((row) => row === day.rows.find((r) => r.epochMs > at(DAY_ONE, '14:08')))
       );
       if (nextDay) nextDay.dateLabel = 'Rajab 1, 1448';
-      expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1 · Lon');
+      expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1');
     });
 
     // Owner ruling 2026-09-19: one uniform lifted footer on all 8 kinds
@@ -555,12 +553,13 @@ describe('home widget renderer', () => {
         const footerRow = collect(tree).find(
           (node) =>
             node.marker === 'Row' &&
-            textsOf(node).some((text) => text.includes('· Lon')) &&
             (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
               (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[0,0,0,16]'
             )
         );
         expect(footerRow).toBeDefined();
+        // The footer is the day alone now — no separator, no city
+        expect(textsOf(footerRow).join('')).not.toContain('·');
         // The row must be taller than its bottom padding, or the footer
         // text clips to nothing on device (owner finding 2026-09-19)
         expect(footerRow?.props.modifiers).toEqual(expect.arrayContaining([{ modifier: 'height', value: 34 }]));

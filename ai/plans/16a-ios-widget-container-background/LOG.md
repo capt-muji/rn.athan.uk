@@ -616,3 +616,204 @@ six-digit colon clock. Two implementation constraints shaped it:
 The 5-minute-spacing mock test from part 2 is gone: Magrib and Isha sit 1 minute after Asr by
 design here, which WidgetKit will coalesce. This resting state is for LOOKING at the countdown,
 not for rollover testing; the part 2 spread was the rollover rig.
+
+---
+
+# Part 4 — 2026-09-20, overnight colour sweep
+
+## 16. The deliverable
+
+**/Users/muji/athan-device-sweep/16a-dark-cards/** — 50 home-screen screenshots of the four dark
+kinds (Next Prayer + Extra Times, small + medium), one per card colour, plus COLORS.md indexing
+every design. 42 solids across every dark hue family (neutrals, blues, indigos, violets, magentas,
+reds, browns, olives, greens, teals) and 8 very soft same-hue gradients with varied directions.
+Each capture passed a red-error pixel scan; four were spot-measured by vision and matched their
+named base to the channel under the card's 0.88 alpha. Everything else in the widgets was the
+committed 1.27.310 look; only the card background moved. The tree is back at `e4149396` for
+`widgets/PrayerWidget.tsx`; nothing from the sweep is committed.
+
+The gradient lever was a `CARD_WASH` const rendered as a `RoundedRectangle` with a
+`foregroundStyle` linearGradient behind the content — inert at null, patched per design by the
+driver. It is documented here rather than kept in the tree; re-adding it is ten lines when the
+owner picks a gradient.
+
+## 17. Three durable lessons from the night
+
+1. **`expo start` poisons tsc.** It regenerates the gitignored `expo-env.d.ts`, whose
+   `/// <reference types="expo/types" />` widens RN's `ViewStyle` with CSS `position` values and
+   trips tsc on five app files that are fine. Symptom: pre-commit validate fails after a green run
+   minutes earlier, with no relevant diff. Fix: delete `expo-env.d.ts` (it regenerates harmlessly).
+   Proven by typechecking HEAD in a clean worktree: green; the working tree with the file: red.
+2. **A stale incremental Debug build can break the widget app group silently.** The sim app pushed
+   timelines "successfully" while cfprefsd never saw the group domain — the extension read an empty
+   suite and every widget showed the red "No layout found" box. `yarn clean` + full reinstall +
+   prebuild + pod install + a from-scratch xcodebuild (DerivedData wiped) fixed it completely.
+   The in-app round-trip (`updateTimeline` reads back the layout it just wrote) is NOT evidence the
+   suite persisted — it can be served from the process's own defaults cache.
+3. **Maestro's iOS driver resets the home screen layout.** After running a flow, the sim's pages
+   collapsed to one, the owner's four placements vanished, and the widget gallery's app list went
+   empty (WidgetKit's gallery index had also dropped Athan after the reinstall). A simulator
+   SHUTDOWN+BOOT brought the placements back rendering and restored the gallery index — the
+   documented "reboot after install" lesson applies to simulators too, and Spotlight opened by a
+   stray top-swipe only cleared after a full reboot as well.
+
+## 18. The sweep loop (for the next colour session)
+
+Metro + Debug app + dev-launcher auto-launch. Per design, ~35s, no builds: patch the two literals
+in `widgets/PrayerWidget.tsx` (dark card rgba + wash), `simctl terminate`+`launch` (the launcher
+auto-loads the last Metro bundle; the openurl deep link is only a fallback — it plants "Open in
+Athan?" dialogs), poll the Metro log for the next "WIDGET: Standard timeline pushed", terminate the
+app, `pkill -f ExpoWidgetsTarget`, wait 12s for the reload render, screenshot, red-scan. The wait
+matters: a 5s wait captured stale renders. Driver kept at
+/private/.../opencode/flows/sweep.py with designs.json (temp, not in repo).
+
+## 19. Tree state at handoff
+
+`widgets/PrayerWidget.tsx` and everything else match `e4149396` except `yarn.lock`: the mandated
+`yarn clean` deleted it and the fresh resolve bumped the jest family 30.5.1 to 30.5.2 (patch).
+Nothing else drifted (diffed against a backup of the old lock). Metro is still running for the
+owner's next iteration; the sim shows the committed baseline colour.
+
+---
+
+# Part 5 — 2026-09-20, the orb colour study
+
+## 20. The deliverable
+
+**/Users/muji/athan-device-sweep/16a-dark-cards/** — 125 screenshots, one per design, plus
+COLORS.md indexing every card and both orb colours by exact rgba. 25 dark cards (black through
+graphite/slate/gunmetal, midnight/navy/prussian/ocean, teal/pine/forest/moss, espresso/umber/rust,
+maroon/oxblood/wine, plum/violet/indigo/purple/aubergine/ink) × 5 orb treatments, each treatment
+DERIVED from its own card's hue: lifted tints and ±12° leans only, so the background and both orbs
+coexist as one surface rather than clashing (the owner's ruling after the deliberately chaotic
+round was rejected). Every pair carries different alphas per orb.
+
+## 21. The orb geometry that survived the day's steering
+
+Two UNEQUAL blurred circles reading as one light source and its echo: a dominant pool (260pt on
+medium, 125pt small) rising from beneath leaned one way, and a smaller catch-light (170pt/85pt)
+from above leaned the other. Centres sit well off the card so only the falloff shows; blur is
+proportional to orb size (34/18) because a fixed heavy blur dissolved the small orb into flat
+haze; orbs wider than 155pt render from a capped layout frame scaled visually (the old
+layout-inflation lesson). Small and medium share one palette; only geometry scales.
+
+The iteration ladder, for the record: corner orbs (rejected: looked like corners) → centres fully
+off-card with heavy blur (rejected: read as a flat linear gradient, invisible on smalls) →
+proportional blur with visible arcs (approved direction) → asymmetric source-plus-echo (final).
+
+## 22. Next steps when the owner picks
+
+1. Owner names a favourite by number from COLORS.md.
+2. Re-add the OrbLight layer with the chosen literals (the layer pattern is documented above;
+   it rode the working tree through the sweep and was reverted after).
+3. Bake the chosen card + orbs into the PNG pipeline (scripts/generate-widget-assets.py carries
+   the Android card bake already) for archive-budget efficiency — the owner's stated plan.
+4. Then the committed dark palette, the Android PNGs and the contract/asset tests all move
+   together in one version bump.
+
+## 23. Tree state
+
+`widgets/PrayerWidget.tsx` matches `e4149396` again (sweep edits reverted); the sim shows the
+committed baseline. Modified: this LOG and `yarn.lock` (the mandated clean's jest patch bump).
+Metro stays up for the iteration session.
+
+## 24. Deferred owner question — dash-day behaviour across widgets (2026-09-20)
+
+The owner asked, to be addressed AFTER the layout work: what do the widgets show when a prayer is
+unreadable (`--:--`) or a whole day is missing? Current state, from the record:
+
+- The timeline builder SKIPS unreadable rows as boundaries (they can never be counted down to) and
+  `buildDayList` renders them as `--:--` rows. A day with NO readable row is held on screen until
+  00:00 London, then the next day takes over; while held, the medium shows the held day's dashes
+  list with no active row and the hero shows the next READABLE prayer (possibly another day's) —
+  the virtual-fortnight tests pin this ("keeps the day before until 00:00, then holds the day with
+  no readable time").
+- So: dashes DO appear in the medium list; the countdown never targets a dash; there is no
+  "out of date" card for dash days — the stale card only fires when the whole timeline has passed
+  (the terminal guard), which by construction needs every readable prayer to have passed.
+- Android's snapshot marks unreadable rows epochMs 0 / `--:--` and its render-time picker skips
+  them as next-prayer candidates; the 3T lesson (null vs 0 in the KLDI bridge) is recorded.
+- The lock widgets follow the same timeline (next READABLE prayer), so a dash day never changes
+  what they count down to.
+
+Open design question for the owner: whether the held dash-day list on the medium is the desired
+presentation on a widget (it mirrors the app's DASHES-DESIGN ruling), or whether widgets should
+degrade to the single-prayer composition during a held dash day. **CLOSED 2026-09-20 (owner):
+accepted as-is — the case is rare enough (a day with no readable time at all) that the faithful
+mirror of the app is fine; no change.**
+
+## 25. Session 16a part 6 — lock layouts, footer trim, lock containerBackground (1.27.312)
+
+- Lock screen now carries FOUR kinds: Layout 1 (name + absolute time, ticking countdown beneath,
+  leading) and Layout 2 (name, time, dot, countdown on ONE centred line — the rectangular face can
+  span half the lock screen, so centring balances it). Display names carry "(Layout 1/2)". Inline
+  faces identical across kinds (timer Text stops ticking once concatenated).
+- Every lock return path now applies a TRANSPARENT containerBackground: iOS 17's conformance check
+  fires on accessories too, and that was the lock widgets' "Please adopt containerBackground API"
+  failure. Vibrant rendering is untouched by the transparent value.
+- Home footers on ALL kinds, both platforms: the `· Lon` city marker is gone; the footer is the
+  day alone ("Sat" / "Raj 1"). Centring unchanged (iOS hero column; Android bottom-centre row).
+- Tests: lock renderer suite covers both layouts' happy paths and all fallbacks; contract pins two
+  widget-directive functions in the lock module and the new nebula + transparent literals; the
+  stores suites mock the two new kinds. `yarn validate` green at 100%.
+
+---
+
+# Part 7 — 2026-09-20, checkpoint handoff (1.27.312)
+
+Committed and pushed to `wip/16a-ios-widget-archive-budget` ONLY (never uat). Everything below is
+the state at the checkpoint and the queue for the next session.
+
+## 26. What is in the checkpoint
+
+- **Lock screen: 4 kinds, 2 layouts.** Layout 1 (name + absolute time, ticking countdown beneath,
+  leading) and Layout 2 (name, time, dot, countdown on one line, intended centred). Transparent
+  `containerBackground` on every lock return path — this FIXED the lock widgets'
+  "Please adopt containerBackground API" failure (owner-confirmed working on the XS).
+- **Footers day-only everywhere** (all 8 home kinds, iOS + Android): "Sat" / "Raj 1", no dot, no
+  city. Centring unchanged.
+- **Nebula orbs on dark home kinds** (study state, NOT final): card `rgba(18, 14, 40, 0.95)`,
+  three unequal blurred circles — haze, electric blue mass upper-centre, magenta rim — from the
+  owner's nebula reference image. Light theme untouched. Verdict pending.
+- **Dash-day ruling CLOSED**: held dashes list + hero to next readable prayer accepted as-is.
+- `yarn validate` green, 100% coverage, 4610 tests + 1 skip (Android-network skip).
+
+## 27. Queue for the next session, in order
+
+1. **Lock content centring (owner report: all 4 lock widgets left-aligned).** Investigation
+   finding already in hand: `@expo/ui` `VStackView.swift` line 37 DEFAULTS to `.center`
+   (`props.alignment?.toHorizontalAlignment() ?? .center`), so Layout 2's centring fails for a
+   different reason — in the accessory slot the root layout almost certainly does not stretch,
+   so the wrapping HStack hugs the leading edge (same class as the "Infinity frames do not make
+   stacks greedy in the widget runtime" lesson). The proven fix pattern is Spacer-pairs:
+   `HStack { Spacer(minLength 0), <content>, Spacer(minLength 0) }` with the HStack greedy —
+   exactly how the medium list vertically centres. Also decide whether Layout 1 should stay
+   leading by design or centre too (owner's words implied all four look left-aligned and that
+   may be unwanted for both).
+2. **Countdown stuck at 0:00** (owner observed; home AND lock). Almost certainly the mock: the
+   ladder spaces Magrib/Isha 1 minute past Asr, BELOW WidgetKit's 5-minute entry floor, so the
+   boundary flip gets pushed to the next entry that clears the floor — the timer hits 0 and sits
+   for up to ~1 minute before rolling. Real London gaps are 30+ minutes, so this should never
+   show on production data. VERIFY with the spread mock (5+ minute gaps) before touching code;
+   if it still stalls there, it is a genuine bug in the boundary entry spacing.
+3. **Android compile** of everything since the reset (footer trim + AFooter change touch the
+   Android widget JS; the new lock kinds are iOS-only with `"android": null`). 3T ritual per
+   AGENTS.md. Not yet done at this checkpoint.
+4. **Nebula verdict**: keep/adjust/drop on device. If keep, bake card+orbs into the PNG pipeline
+   (scripts/generate-widget-assets.py) for archive-budget efficiency. NOTE: two
+   `ExpoWidgetsTarget.cpu_resource` kills (08:19, 10:10) both landed at INSTALL-time push bursts
+   since the orbs returned — one per install, none in steady use yet. If steady-state kills
+   appear, PNG baking stops being optional.
+5. **Upstream PR** for patches/expo-widgets+58.0.3.patch still awaits explicit owner go-ahead.
+
+## 28. Machines and loops
+
+- iPhone XS `00008020-0015585C22D2002E` on 1.27.312 (all 12 kinds). Crash counter: 9.
+- Simulator "iPhone XS replica (18)" `EB00ED20-949A-4834-99A9-668F971EB53C` (iPhone 14 body,
+  iOS 18.5), 4 dark home widgets + Athan in dock, baseline palette. The 35s colour-sweep loop
+  (edit → relaunch → pkill extension → screenshot) is documented in §18; the driver script was
+  temp-only, recreate from that section. Gotchas that cost hours, all in §17-§21: `expo start`
+  regenerates `expo-env.d.ts` which poisons tsc (delete it), full `yarn clean`+rebuild fixes a
+  silently-broken app group, Maestro resets the sim home screen (reboot restores), stale
+  test-runner app processes must be killed by PID.
+- Metro may or may not still be running; restart with `yarn start` if dead.
