@@ -19,20 +19,20 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * Lock Screen widget layouts (accessoryRectangular + accessoryInline).
  * Accessories render in vibrant monochrome, so every kind uses white with
  * opacity hierarchy and lets the system tint. Two compositions per
- * schedule: Layout 1 (name + absolute time, countdown beneath) and
- * Layout 2 (name, time, dot, countdown on one line) — both centre: the
- * accessory slot proposes no width a root could stretch into (a frame's
- * maxWidth cannot act there), so every rectangular root takes the widget
- * container's own width with containerRelativeFrame and lets the stack's
- * default centring place the block. iOS 16 renders leading (the modifier
- * needs 17), accepted on the three-year-old floor. A timer Text stops
- * ticking once concatenated, so the inline faces carry the name and
- * absolute time only, and every ticking element is its own Text. The
- * circular face stays unregistered since 1.14.1 (store builds carried it
- * for ~a day; the orphan freeze risk was accepted — see ai/AGENTS.md). All
- * helpers must live inside each function: the 'widget' directive
- * serializes the body alone, and @expo/ui identifiers resolve as globals
- * in the extension's JS runtime.
+ * schedule: Layout 1 (name + absolute time, ticking countdown beneath) and
+ * Layout 2 (name + absolute time on one centred line; no countdown and no
+ * dot, owner ruling 2026-09-20) — both centre: the accessory slot proposes
+ * no width a root could stretch into (a frame's maxWidth cannot act
+ * there), so every rectangular root takes the widget container's own width
+ * with containerRelativeFrame and lets the stack's default centring place
+ * the block. iOS 16 renders leading (the modifier needs 17), accepted on
+ * the three-year-old floor. A timer Text stops ticking once concatenated,
+ * so the inline faces carry the name and absolute time only, and every
+ * ticking element is its own Text. The circular face stays unregistered
+ * since 1.14.1 (store builds carried it for ~a day; the orphan freeze risk
+ * was accepted — see ai/AGENTS.md). All helpers must live inside each
+ * function: the 'widget' directive serializes the body alone, and @expo/ui
+ * identifiers resolve as globals in the extension's JS runtime.
  */
 const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
@@ -282,14 +282,6 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       );
     }
 
-    const TickingTextEl = Text as unknown as (elementProps: {
-      timerInterval?: { lower: Date; upper: Date };
-      countsDown?: boolean;
-      modifiers?: unknown[];
-    }) => ReactNode;
-
-    const segment = { lower: new Date(props.prevEpochMs), upper: new Date(props.nextEpochMs) };
-
     if (environment.widgetFamily === 'accessoryInline') {
       return (
         <Text
@@ -305,8 +297,9 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
     }
 
     // Centred because the rectangular face can span half the lock screen —
-    // a left-anchored line would float off-balance in the wide slot. The
-    // timer stays its own Text or it stops ticking.
+    // a left-anchored line would float off-balance in the wide slot. Just
+    // the name and the absolute time (owner ruling 2026-09-20): the dot and
+    // the countdown are gone from this layout.
     return (
       <VStack
         modifiers={[
@@ -314,7 +307,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <HStack spacing={3}>
+        <HStack spacing={4}>
           <Text
             modifiers={[
               font({ size: 12, weight: 'bold' }),
@@ -334,21 +327,6 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
             ]}>
             {props.nextTime}
           </Text>
-          <Text modifiers={[font({ size: 12, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
-            ·
-          </Text>
-          <TickingTextEl
-            timerInterval={segment}
-            countsDown
-            modifiers={[
-              font({ size: 12, weight: 'medium' }),
-              monospacedDigit(),
-              multilineTextAlignment('center'),
-              foregroundStyle(WHITE_SECONDARY),
-              lineLimit(1),
-              minimumScaleFactor(0.6),
-            ]}
-          />
         </HStack>
       </VStack>
     );
