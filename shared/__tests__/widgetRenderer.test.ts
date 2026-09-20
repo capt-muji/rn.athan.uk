@@ -294,17 +294,17 @@ describe('home widget renderer', () => {
       expect(styles.some((style) => style.modifier === 'foregroundStyle' && style.value === '#db2777')).toBe(true);
     });
 
-    // Owner ruling 2026-09-19: the pill gains 2dp vertical padding (its
-    // shadow stays on iOS)
-    it('pads the medium pill 1dp above and below its 22dp row, keeping its shadow', () => {
+    // Owner ruling 2026-09-20 (replacing 2026-09-19): the pill is exactly
+    // its row's height — uniform slots, like Android (its shadow stays on iOS)
+    it('matches the medium pill to its 23dp row exactly, keeping its shadow', () => {
       const tree = renderHome(liveProps(), 'systemMedium');
       const pill = collect(tree).find((node) => node.marker === 'RoundedRectangle');
       expect(pill).toBeDefined();
       const styles = (pill?.props.modifiers as Array<{ modifier: string; value: unknown }>) ?? [];
       expect(
-        styles.some((style) => style.modifier === 'frame' && (style.value as { height?: number }).height === 24)
+        styles.some((style) => style.modifier === 'frame' && (style.value as { height?: number }).height === 23)
       ).toBe(true);
-      expect(styles.some((style) => style.modifier === 'offset' && (style.value as { y?: number }).y === 65)).toBe(
+      expect(styles.some((style) => style.modifier === 'offset' && (style.value as { y?: number }).y === 69)).toBe(
         true
       );
       expect(styles.some((style) => style.modifier === 'shadow')).toBe(true);
