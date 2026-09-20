@@ -45,13 +45,18 @@ const SWIFT_UI = {
   VStack: marker('VStack'),
 };
 
-const MODIFIERS = ['font', 'foregroundStyle', 'frame', 'lineLimit', 'monospacedDigit'].reduce(
-  (acc: Record<string, (value: unknown) => { modifier: string; value: unknown }>, name) => {
-    acc[name] = (value: unknown) => ({ modifier: name, value });
-    return acc;
-  },
-  {}
-);
+const MODIFIERS = [
+  'containerBackground',
+  'font',
+  'foregroundStyle',
+  'frame',
+  'lineLimit',
+  'minimumScaleFactor',
+  'monospacedDigit',
+].reduce((acc: Record<string, (value: unknown) => { modifier: string; value: unknown }>, name) => {
+  acc[name] = (value: unknown) => ({ modifier: name, value });
+  return acc;
+}, {});
 
 type WidgetModule = Record<string, (props: unknown, environment: unknown) => unknown>;
 
@@ -116,6 +121,8 @@ describe('lock widget renderer', () => {
   const layouts = loadLayouts();
   const renderTreeFor = (props: unknown, family: string): unknown =>
     renderTree(layouts.PrayerLockWidget(props, { colorScheme: 'light', widgetFamily: family }));
+  const renderTreeFor2 = (props: unknown, family: string): unknown =>
+    renderTree(layouts.PrayerLockWidget2(props, { colorScheme: 'light', widgetFamily: family }));
   const render = (props: unknown, family: string): string[] => textsOf(renderTreeFor(props, family));
 
   /** The self-ticking countdown carries an interval instead of text */
@@ -138,7 +145,7 @@ describe('lock widget renderer', () => {
     return found;
   };
 
-  it('pairs the name with a ticking countdown and puts the absolute time below', () => {
+  it('pairs the name with the absolute time and puts the ticking countdown below', () => {
     const tree = renderTreeFor(LIVE_PROPS, 'accessoryRectangular');
 
     expect(textsOf(tree)).toContain('Asr');
@@ -149,13 +156,27 @@ describe('lock widget renderer', () => {
     });
   });
 
+  it('lays out the centred one-liner as name, time, dot, countdown', () => {
+    const tree = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular');
+    const all = textsOf(tree);
+
+    expect(all).toContain('Asr');
+    expect(all).toContain('15:20');
+    expect(all).toContain('·');
+    expect(tickingIntervalOf(tree)).toEqual({
+      lower: new Date(LIVE_PROPS.prevEpochMs),
+      upper: new Date(LIVE_PROPS.nextEpochMs),
+    });
+  });
+
   it('leaves the countdown off the inline face, which cannot tick one', () => {
-    // SwiftUI stops updating a timer Text once it is concatenated, and inline
-    // is a single system-rendered line, so the absolute time carries it
     const tree = renderTreeFor(LIVE_PROPS, 'accessoryInline');
+    const tree2 = renderTreeFor2(LIVE_PROPS, 'accessoryInline');
 
     expect(textsOf(tree).join(' ')).toContain('Asr 15:20');
     expect(tickingIntervalOf(tree)).toBeUndefined();
+    expect(textsOf(tree2).join(' ')).toContain('Asr 15:20');
+    expect(tickingIntervalOf(tree2)).toBeUndefined();
   });
 
   it('degrades a stale entry to the refresh card per family', () => {
@@ -182,5 +203,24 @@ describe('lock widget renderer', () => {
       },
     });
     expect(render(poisoned, 'accessoryRectangular')).toContain('Open to load times');
+  });
+
+  it('degrades the centred layout to the same fallbacks', () => {
+    expect(textsOf(renderTreeFor2({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular'))).toContain('Out of date');
+    expect(textsOf(renderTreeFor2({ ...LIVE_PROPS, stale: true }, 'accessoryInline'))).toContain(
+      'Athan — open to refresh times'
+    );
+    expect(textsOf(renderTreeFor2(null, 'accessoryRectangular'))).toContain('Open to load times');
+    expect(textsOf(renderTreeFor2(null, 'accessoryInline'))).toContain('Athan — prayer times');
+    const legacy = { ...LIVE_PROPS } as Record<string, unknown>;
+    delete legacy.nextEpochMs;
+    expect(textsOf(renderTreeFor2(legacy, 'accessoryRectangular'))).toContain('Out of date');
+    const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
+    Object.defineProperty(poisoned, 'nextName', {
+      get(): string {
+        throw new Error('boom');
+      },
+    });
+    expect(textsOf(renderTreeFor2(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
   });
 });

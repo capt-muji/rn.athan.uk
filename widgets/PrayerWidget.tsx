@@ -19,8 +19,9 @@ import {
   type ModifierConfig,
   width,
 } from '@expo/ui/jetpack-compose/modifiers';
-import { HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+import { Circle, HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
+  blur,
   containerBackground,
   font,
   foregroundStyle,
@@ -32,6 +33,7 @@ import {
   multilineTextAlignment,
   offset,
   padding,
+  scaleEffect,
   shadow,
   strokeBorder,
   textCase,
@@ -150,7 +152,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const DARK = {
-    card: 'rgba(53, 36, 137, 0.88)',
+    card: 'rgba(18, 14, 40, 0.95)',
     eyebrow: '#ff69b4',
     hero: '#ffffff',
     // One blue-purple whisper per slot (owner ruling 2026-09-20): the
@@ -173,6 +175,12 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const palette = isDark ? DARK : LIGHT;
+
+  // The owner's nebula reference drives these: light lives in the upper
+  // half, darkness pools below, nothing lights the bottom edge.
+  const NEBULA_BLUE = 'rgba(58, 118, 255, 0.35)';
+  const NEBULA_MAGENTA = 'rgba(228, 74, 154, 0.40)';
+  const NEBULA_HAZE = 'rgba(90, 58, 158, 0.25)';
 
   // Fixed row height keeps the floating pill's offset exact and the
   // spacing static. Six 22pt rows fill the systemMedium inner height
@@ -276,12 +284,12 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // "Mon · Lon" from a Gregorian label, "Raj 1 · Lon" from a Hijri one —
   // the same token shortening the iOS footer performs.
   const AFooter = (label: string): string => {
-    const datePrefix = typeof label === 'string' && label.length > 0 ? label.split(',')[0] : '';
+    const datePrefix = typeof label === 'string' && label.length > 0 ? (label.split(',')[0] as string) : '';
     const dateTokens = datePrefix.split(' ');
-    if (dateTokens.length === 1) return dateTokens[0] ? `${dateTokens[0]} · Lon` : 'Lon';
+    if (dateTokens.length === 1) return dateTokens[0];
     const monthPrefix = dateTokens[0].slice(0, 3);
     const dayNumber = dateTokens[dateTokens.length - 1];
-    return `${monthPrefix} ${dayNumber} · Lon`;
+    return `${monthPrefix} ${dayNumber}`;
   };
 
   const ANeutral = () =>
@@ -481,22 +489,20 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       return <StaleCard />;
     }
 
-    // Footer: the next prayer's date marker, then the short city.
-    // Gregorian yields "Mon · Lon"; Hijri yields "Raj 1 · Lon". NOTE: plain
-    // string separator only — the extension's JS runtime does not split on
-    // regex separators (/\s+/ silently returns the whole string).
+    // Footer: the next prayer's day marker alone. NOTE: plain string
+    // separator only — the extension's JS runtime does not split on regex
+    // separators (/\s+/ silently returns the whole string).
     const datePrefix =
       typeof entry.dateLabel === 'string' && entry.dateLabel.length > 0 ? entry.dateLabel.split(',')[0] : '';
     const dateTokens = datePrefix.split(' ');
-    let dayPart = '';
+    let footer = '';
     if (dateTokens.length === 1) {
-      dayPart = dateTokens[0];
+      footer = dateTokens[0];
     } else {
       const monthPrefix = dateTokens[0].slice(0, 3);
       const dayNumber = dateTokens[dateTokens.length - 1];
-      dayPart = `${monthPrefix} ${dayNumber}`;
+      footer = `${monthPrefix} ${dayNumber}`;
     }
-    const footer = dayPart ? `${dayPart} · Lon` : 'Lon';
 
     // The medium list is only renderable with a complete day snapshot:
     // entries from older app versions or a malformed sequence fall back to
@@ -534,6 +540,54 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       monospacedDigit(),
       multilineTextAlignment('center'),
     ];
+
+    // The reference-image lighting: a large vivid violet source centred
+    // just above the top edge, its lower half blazing into the card, and a
+    // fainter echo tucked into the upper-right edge. Nothing lights the
+    // bottom — the base itself is the deep indigo-black floor. Orbs wider
+    // than 155pt render from a capped layout frame scaled visually, or
+    // they inflate the card's layout.
+    // Dark kinds only — light renders nothing. Orbs wider than 155pt
+    // render from a capped layout frame scaled visually, or they inflate
+    // the card's layout and push the footer out.
+    const OrbLight = () => {
+      if (!isDark) {
+        return null;
+      }
+      const specs = isMedium
+        ? {
+            haze: { size: 200, out: { x: 55, y: 35 }, blur: 34 },
+            blue: { size: 170, out: { x: 15, y: 30 }, blur: 30 },
+            rim: { size: 90, out: { x: 42, y: 32 }, blur: 22 },
+          }
+        : {
+            haze: { size: 105, out: { x: 30, y: 22 }, blur: 18 },
+            blue: { size: 90, out: { x: 8, y: 18 }, blur: 16 },
+            rim: { size: 48, out: { x: 23, y: 20 }, blur: 12 },
+          };
+      const orbFor = (spec: { size: number; out: { x: number; y: number }; blur: number }, color: string) => {
+        const layoutSize = Math.min(spec.size, 150);
+        const scale = spec.size / layoutSize;
+        return (
+          <Circle
+            modifiers={[
+              frame({ width: layoutSize, height: layoutSize }),
+              scaleEffect(scale),
+              offset({ x: spec.out.x, y: spec.out.y }),
+              foregroundStyle(color),
+              blur(spec.blur / scale),
+            ]}
+          />
+        );
+      };
+      return (
+        <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          {orbFor(specs.haze, NEBULA_HAZE)}
+          {orbFor(specs.blue, NEBULA_BLUE)}
+          {orbFor(specs.rim, NEBULA_MAGENTA)}
+        </ZStack>
+      );
+    };
 
     // The hero column — the small widget's centered trio plus the footer,
     // shared verbatim by both families so the countdown reads identically.
@@ -647,6 +701,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
       return (
         <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
+          <OrbLight />
           <HStack
             spacing={14}
             modifiers={[
@@ -686,6 +741,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // systemSmall (or the medium fallback): the hero alone fills the card.
     return (
       <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
+        <OrbLight />
         <VStack spacing={0} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <HeroColumn />
         </VStack>
