@@ -178,17 +178,16 @@ describe('lock widget renderer', () => {
     });
   });
 
-  it('lays out the centred one-liner as name, time, dot, countdown', () => {
+  it('lays out the centred one-liner as the name and the absolute time', () => {
     const tree = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular');
     const all = textsOf(tree);
 
+    // Owner ruling 2026-09-20: no countdown and no dot in Layout 2 — the
+    // rectangular face carries the name and absolute time, centred.
     expect(all).toContain('Asr');
     expect(all).toContain('15:20');
-    expect(all).toContain('·');
-    expect(tickingIntervalOf(tree)).toEqual({
-      lower: new Date(LIVE_PROPS.prevEpochMs),
-      upper: new Date(LIVE_PROPS.nextEpochMs),
-    });
+    expect(all).not.toContain('·');
+    expect(tickingIntervalOf(tree)).toBeUndefined();
   });
 
   it('leaves the countdown off the inline face, which cannot tick one', () => {
@@ -281,14 +280,13 @@ describe('lock widget renderer', () => {
     expect(liveRoot2.props.alignment).toBeUndefined();
   });
 
-  it('centres the ticking digits inside their reserved frame, both layouts', () => {
+  it('centres the ticking digits inside their reserved frame', () => {
     // Text(timerInterval:) reserves a worst-case width and parks its glyphs
     // against the leading edge of it (the home hero's §13d lesson); without
     // this modifier the countdown ink reads left-aligned on the glass.
-    for (const render of [renderTreeFor, renderTreeFor2]) {
-      const tree = render(LIVE_PROPS, 'accessoryRectangular');
-      const found = collectTickingModifiers(tree);
-      expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
-    }
+    // Layout 2 carries no countdown since the owner's 2026-09-20 ruling.
+    const tree = renderTreeFor(LIVE_PROPS, 'accessoryRectangular');
+    const found = collectTickingModifiers(tree);
+    expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
   });
 });
