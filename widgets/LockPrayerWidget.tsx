@@ -1,6 +1,7 @@
 import { HStack, Image, Text, VStack } from '@expo/ui/swift-ui';
 import {
   containerBackground,
+  containerRelativeFrame,
   font,
   foregroundStyle,
   frame,
@@ -17,15 +18,20 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * Lock Screen widget layouts (accessoryRectangular + accessoryInline).
  * Accessories render in vibrant monochrome, so every kind uses white with
  * opacity hierarchy and lets the system tint. Two compositions per
- * schedule: Layout 1 (name + absolute time, countdown beneath, leading)
- * and Layout 2 (one centred line — the rectangular face can span half the
- * lock screen). A timer Text stops ticking once concatenated, so the
- * inline faces carry the name and absolute time only, and every ticking
- * element is its own Text. The circular face stays unregistered since
- * 1.14.1 (store builds carried it for ~a day; the orphan freeze risk was
- * accepted — see ai/AGENTS.md). All helpers must live inside each
- * function: the 'widget' directive serializes the body alone, and @expo/ui
- * identifiers resolve as globals in the extension's JS runtime.
+ * schedule: Layout 1 (name + absolute time, countdown beneath) and
+ * Layout 2 (name, time, dot, countdown on one line) — both centre: the
+ * accessory slot proposes no width a root could stretch into (a frame's
+ * maxWidth cannot act there), so every rectangular root takes the widget
+ * container's own width with containerRelativeFrame and lets the stack's
+ * default centring place the block. iOS 16 renders leading (the modifier
+ * needs 17), accepted on the three-year-old floor. A timer Text stops
+ * ticking once concatenated, so the inline faces carry the name and
+ * absolute time only, and every ticking element is its own Text. The
+ * circular face stays unregistered since 1.14.1 (store builds carried it
+ * for ~a day; the orphan freeze risk was accepted — see ai/AGENTS.md). All
+ * helpers must live inside each function: the 'widget' directive
+ * serializes the body alone, and @expo/ui identifiers resolve as globals
+ * in the extension's JS runtime.
  */
 const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
@@ -55,9 +61,9 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
 
     return (
       <VStack
-        alignment='leading'
         spacing={1}
         modifiers={[
+          containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
@@ -101,9 +107,9 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       // above the out-of-date title and refresh call
       return (
         <VStack
-          alignment='leading'
           spacing={1}
           modifiers={[
+            containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
@@ -150,9 +156,9 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     // The timer is its own Text or it stops ticking.
     return (
       <VStack
-        alignment='leading'
         spacing={1}
         modifiers={[
+          containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
@@ -213,9 +219,9 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
 
     return (
       <VStack
-        alignment='leading'
         spacing={1}
         modifiers={[
+          containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
@@ -252,9 +258,9 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
 
       return (
         <VStack
-          alignment='leading'
           spacing={1}
           modifiers={[
+            containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
@@ -297,6 +303,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
     return (
       <VStack
         modifiers={[
+          containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
