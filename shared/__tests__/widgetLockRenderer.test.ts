@@ -54,6 +54,7 @@ const MODIFIERS = [
   'lineLimit',
   'minimumScaleFactor',
   'monospacedDigit',
+  'multilineTextAlignment',
 ].reduce((acc: Record<string, (value: unknown) => { modifier: string; value: unknown }>, name) => {
   acc[name] = (value: unknown) => ({ modifier: name, value });
   return acc;
@@ -138,6 +139,26 @@ describe('lock widget renderer', () => {
         const markerNode = node as MarkerNode;
         if (markerNode.marker === 'Text' && markerNode.props.timerInterval !== undefined) {
           found = markerNode.props.timerInterval;
+        }
+        walk(markerNode.props.children);
+      }
+    };
+    walk(tree);
+    return found;
+  };
+
+  /** The modifiers of the self-ticking countdown Text */
+  const collectTickingModifiers = (tree: unknown): Array<{ modifier: string; value: unknown }> => {
+    let found: Array<{ modifier: string; value: unknown }> = [];
+    const walk = (node: unknown): void => {
+      if (Array.isArray(node)) {
+        for (const child of node) walk(child);
+        return;
+      }
+      if (node !== null && typeof node === 'object' && 'marker' in node) {
+        const markerNode = node as MarkerNode;
+        if (markerNode.marker === 'Text' && markerNode.props.timerInterval !== undefined) {
+          found = (markerNode.props.modifiers ?? []) as Array<{ modifier: string; value: unknown }>;
         }
         walk(markerNode.props.children);
       }
@@ -258,5 +279,16 @@ describe('lock widget renderer', () => {
     const liveRoot2 = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular') as MarkerNode;
     expect(liveRoot.props.alignment).toBeUndefined();
     expect(liveRoot2.props.alignment).toBeUndefined();
+  });
+
+  it('centres the ticking digits inside their reserved frame, both layouts', () => {
+    // Text(timerInterval:) reserves a worst-case width and parks its glyphs
+    // against the leading edge of it (the home hero's §13d lesson); without
+    // this modifier the countdown ink reads left-aligned on the glass.
+    for (const render of [renderTreeFor, renderTreeFor2]) {
+      const tree = render(LIVE_PROPS, 'accessoryRectangular');
+      const found = collectTickingModifiers(tree);
+      expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
+    }
   });
 });
