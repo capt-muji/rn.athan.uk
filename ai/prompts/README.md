@@ -325,14 +325,15 @@ None of these is a session yet. Each needs the owner's decision first.
   and reuse the original as we want." Session-end state on the 3T is a plain `com.mugtaba.athan`
   build. Durable lesson attached: Android widget builds need `EXPO_PUBLIC_ANDROID_WIDGETS=1`
   present at prebuild and bundle time or the APK silently ships picker-less.
-- **The PNG-orb bake is attempted as this session's tail experiment, not declined** (owner,
-  2026-09-20, correcting an earlier "stay flat" answer mid-ruling): "at the end of this session,
-  once we get everything working on all the devices, once we're at a happy state, then we...
-  make it work. You'll end up creating a new branch and we'll do the testing on there." HARD
-  GATE (owner, same ruling): the bake does NOT begin until the owner explicitly says go. On the
-  branch: reintroduce the orb exactly as previously shipped, then convert to PNG (format ruled:
-  PNG, for alpha plus losslessness; JPEG has no transparency and band-destroys gradients). The
-  owner judges look and placement on the XS. Flat stands if it loses.
+- **The PNG-orb bake ran as this session's tail experiment and is now CLOSED FOR GOOD** (owner,
+  2026-09-20, final ruling): the experiment compared runtime blur against a baked PNG card on
+  the XS; the flash proved a marginal first-render race (same configuration flashed once, clean
+  another time), and the owner then ruled: "completely, completely remove the orbs. Anything to
+  do with the orbs, just keep it flat for both Android and iOS, just keep it completely,
+  completely flat." The experiment branch was discarded without merging; both platforms stay
+  flat from 1.27.318. The look design continues from the flat base in the owner's next session.
+  Durable lessons kept: PIL `paste` with a mask replaces pixels (use `alpha_composite`); SwiftUI
+  `Image(assetName:)` needs a real asset catalog, not loose bundle PNGs.
 - **Android lock screen widgets: queued as session 18, investigation first** (owner,
   2026-09-20): "make this an entire session of its own... let's try to do it on the 3T first.
   Deep investigation." Brief at `ai/prompts/android-lock-screen-widgets.md`, row 15 in
