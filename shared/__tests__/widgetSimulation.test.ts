@@ -9,10 +9,6 @@
  *
  * - segment: the entry's prev/next prayers are exactly the prayers
  *   surrounding the instant, so the countdown interval always brackets it
- * - countdown label: matches the minute-ceil formatter
- *   (formatCountdownMinutes) evaluated at the entry's date
- * - staleness: inside the stepped horizon the active entry is never more
- *   than one countdown step old
  * - date label: the next prayer's Islamic day, in the app's date format
  * - staleness guard: never before the stale entry's date, always after it
  * - spacing: every adjacent entry pair keeps the WidgetKit minimum
@@ -46,7 +42,6 @@ import { createPrayerSequence, transformApiData } from '@/shared/prayer';
 import {
   addDaysToDateString,
   createPrayerDatetime,
-  formatCountdownMinutes,
   formatDateLong,
   formatDateShort,
   getPreviousDateString,
@@ -60,12 +55,7 @@ import {
   type RequiredTimeName,
   ScheduleType,
 } from '@/shared/types';
-import {
-  buildPrayerWidgetTimeline,
-  COUNTDOWN_STEP_MS,
-  MIN_ENTRY_SPACING_MS,
-  STEPPED_COUNTDOWN_HOURS,
-} from '@/shared/widgetTimeline';
+import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
 import * as Database from '@/stores/database';
 
@@ -162,7 +152,6 @@ describe('virtual week model test', () => {
   // real entry sits within the minimum spacing of it
   const lastRealEntryMs = entries[entries.length - 2].date.getTime();
   const staleDateMs = Math.max(finalPrayer.datetime.getTime(), lastRealEntryMs + MIN_ENTRY_SPACING_MS);
-  const horizonMs = PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
   /** Every interesting instant: entry dates, prayers, stale — all ±1s */
   const sampleInstants = (): number[] => {
@@ -247,33 +236,6 @@ describe('virtual week model test', () => {
         throw new Error(`Countdown interval does not bracket ${new Date(instant).toISOString()}`);
       }
 
-      // An entry the horizon strands — no further step fits inside the
-      // horizon and the boundary is still more than a step away — shows no
-      // countdown at all, because one computed at its date would over-read
-      // by the whole remaining gap. Every other entry carries the minute-ceil
-      // value at its own date (the push instant for a backdated first entry).
-      if (props.countdownLabel === '') {
-        const noStepFits = active.date.getTime() + COUNTDOWN_STEP_MS > horizonMs;
-        const boundaryFarther = nextMs - active.date.getTime() > COUNTDOWN_STEP_MS;
-        if (!noStepFits || !boundaryFarther) {
-          throw new Error(
-            `Countdown blanked without cause at ${new Date(instant).toISOString()}: entry dated ` +
-              `${active.date.toISOString()}, horizon ${new Date(horizonMs).toISOString()}, boundary ${new Date(nextMs).toISOString()}`
-          );
-        }
-      } else {
-        const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
-        const msLeft = nextMs - labelAnchorMs;
-        const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
-        const expectedLabel = formatCountdownMinutes(secondsRemaining);
-        if (props.countdownLabel !== expectedLabel) {
-          throw new Error(
-            `Countdown label mismatch at ${new Date(instant).toISOString()}: entry says ` +
-              `"${props.countdownLabel}", app formatter says "${expectedLabel}"`
-          );
-        }
-      }
-
       // The date label is the next prayer's Islamic day in the app format
       if (props.dateLabel !== formatDateLong(nextPrayer.belongsToDate)) {
         throw new Error(
@@ -300,13 +262,6 @@ describe('virtual week model test', () => {
       }
       if (props.prayers?.[expectedActiveIndex]?.name !== props.nextName) {
         throw new Error(`Active row is not the countdown target at ${new Date(instant).toISOString()}`);
-      }
-
-      // Inside the stepped horizon the label is never more than one step old
-      if (instant <= horizonMs && instant - active.date.getTime() > COUNTDOWN_STEP_MS) {
-        throw new Error(
-          `Label at ${new Date(instant).toISOString()} is ${(instant - active.date.getTime()) / 60000} minutes stale (max one step)`
-        );
       }
     }
   });
@@ -468,7 +423,6 @@ describe('extras virtual week model test', () => {
   const finalPrayer = prayers[prayers.length - 1];
   const lastRealEntryMs = entries[entries.length - 2].date.getTime();
   const staleDateMs = Math.max(finalPrayer.datetime.getTime(), lastRealEntryMs + MIN_ENTRY_SPACING_MS);
-  const horizonMs = PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
   const sampleInstants = (): number[] => {
     const instants = new Set<number>();
@@ -545,24 +499,6 @@ describe('extras virtual week model test', () => {
         throw new Error(`Segment mismatch at ${new Date(instant).toISOString()}`);
       }
 
-      // An entry the horizon strands shows no countdown (see the standard
-      // sweep); every other entry carries the minute-ceil value at its date
-      if (props.countdownLabel === '') {
-        const noStepFits = active.date.getTime() + COUNTDOWN_STEP_MS > horizonMs;
-        const boundaryFarther = nextMs - active.date.getTime() > COUNTDOWN_STEP_MS;
-        if (!noStepFits || !boundaryFarther) {
-          throw new Error(`Countdown blanked without cause at ${new Date(instant).toISOString()}`);
-        }
-      } else {
-        const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
-        const msLeft = nextMs - labelAnchorMs;
-        const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
-        const expectedLabel = formatCountdownMinutes(secondsRemaining);
-        if (props.countdownLabel !== expectedLabel) {
-          throw new Error(`Countdown label mismatch at ${new Date(instant).toISOString()}`);
-        }
-      }
-
       // The date label is the next prayer's Islamic day in the app format
       if (props.dateLabel !== formatDateLong(nextPrayer.belongsToDate)) {
         throw new Error(`Date label mismatch at ${new Date(instant).toISOString()}`);
@@ -602,15 +538,6 @@ describe('extras virtual week model test', () => {
 
       // Inside the stepped horizon the label is never more than two steps
       // old. One step is the design cadence, but a segment whose length is
-      // not a multiple of the step (real prayer times rarely are) must
-      // absorb the remainder somewhere: with WidgetKit's 5-minute spacing
-      // floor, a uniform one-step grid cannot hit both the segment start
-      // and the boundary anchor — one gap of up to two steps is
-      // mathematically unavoidable (the builder places it mid-segment and
-      // guarantees the anchor sits exactly one spacing before the flip).
-      if (instant <= horizonMs && instant - active.date.getTime() > 2 * COUNTDOWN_STEP_MS) {
-        throw new Error(`Label at ${new Date(instant).toISOString()} is more than two steps stale`);
-      }
     }
   });
 
@@ -708,25 +635,28 @@ describe('fully readable real sequences', () => {
   const records = storedDays({}, []);
 
   /**
-   * SHA-256 of every timeline each case builds, from shared/widgetTimeline.ts as it was before a row
-   * could be unreadable (1d855ea). A sequence with no unreadable row meets the same rules it met then,
-   * so it must get the same bytes: a mismatch here is a change to the widgets, not to unreadable rows.
+   * SHA-256 of every timeline each case builds, over a year of real London data. These pin the builder's
+   * exact output: a mismatch means what the widgets SHOW changed, so treat it as a deliberate design
+   * change to re-gold, never as a test to silence.
+   *
+   * Last re-golded when the countdown moved to a SwiftUI timer interval and the five-minute stepped
+   * entries were deleted (session 16a) — the fix for the archive-budget blackout.
    */
-  const BEFORE_UNREADABLE_ROWS: [string, string][] = [
-    ['2024-01-10', '492a066d5ea2782f16f7f4cf874c152e4f7194809c555d7315dfb5eeae674dcf'],
-    ['2024-02-20', 'c42d7e3aa9a4a6dbf6f2f62d6af864c51de3f5358e7ba00581a1ab51b9632b4c'],
+  const REAL_YEAR_TIMELINES: [string, string][] = [
+    ['2024-01-10', '5049d110f76ea186316fb833984d1f3978c3a27acfea62591f0dc25056075328'],
+    ['2024-02-20', 'eef7b2330b71a09dbd858a53358775288acf2c841a089d39416192797434b806'],
     // Across the spring clock change (31 March)
-    ['2024-03-24', 'b896daf2ec4c97130f8cb6493c8d5db6e78d87a84b96448e335748a90b4a3abb'],
-    ['2024-04-15', '68aa9c4bb72be0dfdac083cadc5ebf3acbd3f668cb4ac5904e683bb20be1f3aa'],
-    ['2024-05-06', '7c076269cd8dde076d3dce9eda28bf779ed00b0a194b6feca1fb244dcd56473c'],
-    ['2024-06-14', '94decf789e374a02e5e0c7d8484cb67161b4edb3684b4e1544cf0062f50aac05'],
-    ['2024-07-01', 'e3188e71bfeffe8a8f36c5589c3e871ce5d5f5136fbf8854e223b33ccc73782c'],
-    ['2024-08-12', 'fa62e666290d3b7464083a0313c56031ee488dc306e6fae553c85b94326e76c7'],
-    ['2024-09-02', 'f594a06bbe8d92f6281ab2bfd69399f8ad991dba08bb096717cb47de8750de73'],
+    ['2024-03-24', '27e918bef398be897713f4a06c717553d1876312e84e0e44ffc6770721a9e771'],
+    ['2024-04-15', '2c369132ebb212c9e1ecf669bd07c1d324e3220aef834695071d2b76096ea54e'],
+    ['2024-05-06', 'e39cc602d75e10b64873441264b349d40ecff6454fffaa406b281693242b7780'],
+    ['2024-06-14', '6be1ee27287846b66b9dbcda3e9ecf7b14b4c0e59723b833176d9aa6f1162d66'],
+    ['2024-07-01', '495df1f97098cee939ae8abae52c4bb6ddbaf21835b28e5b611c8adb3da395d2'],
+    ['2024-08-12', 'ee5483cc3889bf1bc28339ca78e93304b6a35c8a1d37f65557438b078827e984'],
+    ['2024-09-02', '229adbd8d9a7a6447f1d834de52e9eef6a8ba51ef03317ebe775160dfd118f29'],
     // Across the autumn clock change (27 October)
-    ['2024-10-20', 'ad586ecbc6da3078503e290236e2b0454d6ce025360ca85245a24b7ab01a2f83'],
-    ['2024-11-11', 'a90e1a5586905cf1a114422c12671abcada70897c8d2d0a686dd3f87af45d36c'],
-    ['2024-12-15', '089098062d794ee1fda0316dcbe78e4bc721428e90edff5a343a10bbecc71cf6'],
+    ['2024-10-20', 'e09ffc45a502758142ea642f9b3df449d9c0b2beacc74e69f7678f245f14ad20'],
+    ['2024-11-11', '339f5a17afe71dde06aed2c807ac2319f78fbe8b816f44f9e574d3d4cf2c6f61'],
+    ['2024-12-15', 'c8897481277c1ac852c9466028899b787bda891c19e11641d7a167bbd2785195'],
   ];
 
   /** Midnight, noon, and two minutes before and exactly on every row of the push day's list */
@@ -739,7 +669,7 @@ describe('fully readable real sequences', () => {
       .flatMap((prayer) => [new Date(prayer.datetime.getTime() - 2 * 60 * 1000), prayer.datetime]),
   ];
 
-  it.each(BEFORE_UNREADABLE_ROWS)('builds the same bytes as before from the span starting %s', (firstDate, digest) => {
+  it.each(REAL_YEAR_TIMELINES)('builds byte-identical timelines from the span starting %s', (firstDate, digest) => {
     const hash = createHash('sha256');
 
     for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
@@ -918,12 +848,10 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
 const mismatchAt = (
   entry: WidgetTimelineEntry<PrayerWidgetProps>,
   instant: number,
-  expected: ReturnType<ReturnType<typeof rulesFor>['expectedAt']>,
-  pushMs: number
+  expected: ReturnType<ReturnType<typeof rulesFor>['expectedAt']>
 ): string | null => {
   const { props } = entry;
   const at = new Date(instant).toISOString();
-  const horizonMs = pushMs + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
   if (
     props.nextName !== expected.next.english ||
@@ -951,21 +879,7 @@ const mismatchAt = (
     );
   }
 
-  // A blank label is only for an entry the horizon strands short of its boundary, which for a held day is
-  // 00:00 rather than the prayer counted down to
-  if (props.countdownLabel === '') {
-    const noStepFits = entry.date.getTime() + COUNTDOWN_STEP_MS > horizonMs;
-    const boundaryFarther = expected.boundaryMs - entry.date.getTime() > COUNTDOWN_STEP_MS;
-    return noStepFits && boundaryFarther ? null : `Countdown blanked without cause at ${at}`;
-  }
-
-  const labelAnchorMs = Math.max(entry.date.getTime(), pushMs);
-  const expectedLabel = formatCountdownMinutes(
-    Math.max(1, Math.ceil((expected.next.datetime.getTime() - labelAnchorMs) / 1000))
-  );
-  return props.countdownLabel === expectedLabel
-    ? null
-    : `Countdown label mismatch at ${at}: entry says "${props.countdownLabel}", expected "${expectedLabel}"`;
+  return null;
 };
 
 describe.each([
@@ -986,7 +900,6 @@ describe.each([
   const lastReadable = latest(readable);
   const lastRealEntryMs = entries[entries.length - 2].date.getTime();
   const staleDateMs = Math.max(lastReadable.datetime.getTime(), lastRealEntryMs + MIN_ENTRY_SPACING_MS);
-  const horizonMs = REAL_PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
   const sampleInstants = (): number[] => {
     const instants = new Set<number>();
@@ -1033,12 +946,8 @@ describe.each([
       }
       if (active.props.stale === true) throw new Error(`Stale card active too early at ${at}`);
 
-      const problem = mismatchAt(active, instant, expectedAt(instant), REAL_PUSH_AT.getTime());
+      const problem = mismatchAt(active, instant, expectedAt(instant));
       if (problem) throw new Error(problem);
-
-      if (instant <= horizonMs && instant - active.date.getTime() > 2 * COUNTDOWN_STEP_MS) {
-        throw new Error(`Label at ${at} is more than two steps stale`);
-      }
     }
   });
 
@@ -1079,7 +988,8 @@ describe.each([
     const waitStartMs =
       type === ScheduleType.Standard ? latest(readableOn(dayBefore)).datetime.getTime() : REAL_PUSH_AT.getTime();
     const waiting = entries.filter((entry) => entry.date.getTime() >= waitStartMs && entry.date.getTime() < dayStartMs);
-    expect(waiting.length).toBeGreaterThan(1);
+    // The wait is one segment, so one entry carries it to 00:00
+    expect(waiting.length).toBeGreaterThanOrEqual(1);
     for (const entry of waiting) {
       expect(entry.props.prayers?.map((row) => row.time)).not.toEqual(dashes);
       expect(entry.props).toMatchObject({
@@ -1090,7 +1000,8 @@ describe.each([
     }
 
     const held = entries.filter((entry) => entry.date.getTime() >= dayStartMs && entry.date.getTime() < holdEndMs);
-    expect(held.length).toBeGreaterThan(1);
+    // The whole hold is one segment: 00:00 opens it and the day's own 00:00 ends it
+    expect(held.length).toBeGreaterThanOrEqual(1);
     expect(held[0].date.getTime()).toBe(dayStartMs);
 
     for (const entry of held) {
@@ -1215,7 +1126,7 @@ describe.each([ScheduleType.Standard, ScheduleType.Extra])(
 
         for (const entry of entries.slice(0, -1)) {
           const moment = Math.max(entry.date.getTime(), pushAt.getTime());
-          const problem = mismatchAt(entry, moment, rules.expectedAt(moment), pushAt.getTime());
+          const problem = mismatchAt(entry, moment, rules.expectedAt(moment));
           if (problem) wrong.push(`${label}: ${problem}`);
         }
 

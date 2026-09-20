@@ -39,18 +39,24 @@ const marker = (name: string) => {
 };
 
 const SWIFT_UI = {
+  HStack: marker('HStack'),
   Image: marker('Image'),
   Text: marker('Text'),
   VStack: marker('VStack'),
 };
 
-const MODIFIERS = ['font', 'foregroundStyle', 'frame', 'lineLimit', 'monospacedDigit'].reduce(
-  (acc: Record<string, (value: unknown) => { modifier: string; value: unknown }>, name) => {
-    acc[name] = (value: unknown) => ({ modifier: name, value });
-    return acc;
-  },
-  {}
-);
+const MODIFIERS = [
+  'containerBackground',
+  'font',
+  'foregroundStyle',
+  'frame',
+  'lineLimit',
+  'minimumScaleFactor',
+  'monospacedDigit',
+].reduce((acc: Record<string, (value: unknown) => { modifier: string; value: unknown }>, name) => {
+  acc[name] = (value: unknown) => ({ modifier: name, value });
+  return acc;
+}, {});
 
 type WidgetModule = Record<string, (props: unknown, environment: unknown) => unknown>;
 
@@ -101,44 +107,76 @@ const textsOf = (tree: unknown): string[] => {
 };
 
 const LIVE_PROPS = {
-  v: 4,
+  v: 5,
   schedule: 'standard',
   theme: 'light',
   nextName: 'Asr',
   nextTime: '15:20',
   nextEpochMs: Date.parse('2026-10-17T15:20:00'),
   prevEpochMs: Date.parse('2026-10-17T12:45:00'),
-  countdownLabel: '1h 12m',
   dateLabel: 'Saturday, 17 October',
 };
 
 describe('lock widget renderer', () => {
   const layouts = loadLayouts();
-  const render = (props: unknown, family: string): string[] =>
-    textsOf(renderTree(layouts.PrayerLockWidget(props, { colorScheme: 'light', widgetFamily: family })));
+  const renderTreeFor = (props: unknown, family: string): unknown =>
+    renderTree(layouts.PrayerLockWidget(props, { colorScheme: 'light', widgetFamily: family }));
+  const renderTreeFor2 = (props: unknown, family: string): unknown =>
+    renderTree(layouts.PrayerLockWidget2(props, { colorScheme: 'light', widgetFamily: family }));
+  const render = (props: unknown, family: string): string[] => textsOf(renderTreeFor(props, family));
 
-  it('renders the rectangular header as name plus label with the absolute time below', () => {
-    const all = render(LIVE_PROPS, 'accessoryRectangular');
-    expect(all).toContain('Asr · 1h 12m');
-    expect(all).toContain('15:20');
+  /** The self-ticking countdown carries an interval instead of text */
+  const tickingIntervalOf = (tree: unknown): unknown => {
+    let found: unknown;
+    const walk = (node: unknown): void => {
+      if (Array.isArray(node)) {
+        for (const child of node) walk(child);
+        return;
+      }
+      if (node !== null && typeof node === 'object' && 'marker' in node) {
+        const markerNode = node as MarkerNode;
+        if (markerNode.marker === 'Text' && markerNode.props.timerInterval !== undefined) {
+          found = markerNode.props.timerInterval;
+        }
+        walk(markerNode.props.children);
+      }
+    };
+    walk(tree);
+    return found;
+  };
+
+  it('pairs the name with the absolute time and puts the ticking countdown below', () => {
+    const tree = renderTreeFor(LIVE_PROPS, 'accessoryRectangular');
+
+    expect(textsOf(tree)).toContain('Asr');
+    expect(textsOf(tree)).toContain('15:20');
+    expect(tickingIntervalOf(tree)).toEqual({
+      lower: new Date(LIVE_PROPS.prevEpochMs),
+      upper: new Date(LIVE_PROPS.nextEpochMs),
+    });
   });
 
-  it('drops to the bare name when the entry predates the label field', () => {
-    const all = render({ ...LIVE_PROPS, countdownLabel: '' }, 'accessoryRectangular');
+  it('lays out the centred one-liner as name, time, dot, countdown', () => {
+    const tree = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular');
+    const all = textsOf(tree);
+
     expect(all).toContain('Asr');
-    expect(all.some((text) => text.includes('·'))).toBe(false);
+    expect(all).toContain('15:20');
+    expect(all).toContain('·');
+    expect(tickingIntervalOf(tree)).toEqual({
+      lower: new Date(LIVE_PROPS.prevEpochMs),
+      upper: new Date(LIVE_PROPS.nextEpochMs),
+    });
   });
 
-  it('renders the inline line as name, time and label', () => {
-    const all = render(LIVE_PROPS, 'accessoryInline');
-    expect(all.join(' ')).toContain('Asr 15:20');
-    expect(all.join(' ')).toContain('1h 12m');
-  });
+  it('leaves the countdown off the inline face, which cannot tick one', () => {
+    const tree = renderTreeFor(LIVE_PROPS, 'accessoryInline');
+    const tree2 = renderTreeFor2(LIVE_PROPS, 'accessoryInline');
 
-  it('hides the label segment inline when it is empty', () => {
-    const all = render({ ...LIVE_PROPS, countdownLabel: '' }, 'accessoryInline');
-    expect(all.join(' ')).toContain('Asr 15:20');
-    expect(all.join(' ')).not.toContain('1h 12m');
+    expect(textsOf(tree).join(' ')).toContain('Asr 15:20');
+    expect(tickingIntervalOf(tree)).toBeUndefined();
+    expect(textsOf(tree2).join(' ')).toContain('Asr 15:20');
+    expect(tickingIntervalOf(tree2)).toBeUndefined();
   });
 
   it('degrades a stale entry to the refresh card per family', () => {
@@ -165,5 +203,24 @@ describe('lock widget renderer', () => {
       },
     });
     expect(render(poisoned, 'accessoryRectangular')).toContain('Open to load times');
+  });
+
+  it('degrades the centred layout to the same fallbacks', () => {
+    expect(textsOf(renderTreeFor2({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular'))).toContain('Out of date');
+    expect(textsOf(renderTreeFor2({ ...LIVE_PROPS, stale: true }, 'accessoryInline'))).toContain(
+      'Athan — open to refresh times'
+    );
+    expect(textsOf(renderTreeFor2(null, 'accessoryRectangular'))).toContain('Open to load times');
+    expect(textsOf(renderTreeFor2(null, 'accessoryInline'))).toContain('Athan — prayer times');
+    const legacy = { ...LIVE_PROPS } as Record<string, unknown>;
+    delete legacy.nextEpochMs;
+    expect(textsOf(renderTreeFor2(legacy, 'accessoryRectangular'))).toContain('Out of date');
+    const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
+    Object.defineProperty(poisoned, 'nextName', {
+      get(): string {
+        throw new Error('boom');
+      },
+    });
+    expect(textsOf(renderTreeFor2(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
   });
 });

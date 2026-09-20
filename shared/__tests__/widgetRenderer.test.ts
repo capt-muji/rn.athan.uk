@@ -8,13 +8,12 @@
  * component sources and expo-widgets' createWidget capture), expands the
  * element tree the way the runtime does, and asserts the rendered content:
  *
- * - iOS: the precomputed countdown label from props renders in the swift-ui
+ * - iOS: the segment renders as a self-ticking timer interval in the swift-ui
  *   composition (regression guard for the Android additions)
  * - Android: the label, active row, day list and stale state are computed
  *   at render time from the snapshot epochs, stamped by props.size
  *
- * The Android label formula must equal formatCountdownMinutes in
- * shared/time.ts; boundary crossings advance the widget without a new push.
+ * Boundary crossings advance the Android widget without a new push.
  */
 
 type MarkerNode = { marker: string; props: Record<string, unknown> };
@@ -77,6 +76,7 @@ const MODIFIER_NAMES = [
   'lineLimit',
   'minimumScaleFactor',
   'monospacedDigit',
+  'multilineTextAlignment',
   'offset',
   'padding',
   'scaleEffect',
@@ -160,6 +160,16 @@ const textsOf = (tree: unknown): string[] =>
       return String(Array.isArray(children) ? children.join('') : (children ?? ''));
     });
 
+/**
+ * The self-ticking countdown: a Text carrying a timerInterval instead of a
+ * string. iOS renders it in its own process, so it holds no text to read and
+ * only its interval can be asserted.
+ */
+const tickingIntervalOf = (tree: unknown): { lower: Date; upper: Date } | undefined =>
+  collect(tree).find((node) => node.marker === 'Text' && node.props.timerInterval !== undefined)?.props.timerInterval as
+    | { lower: Date; upper: Date }
+    | undefined;
+
 // =============================================================================
 // FIXTURE: a two-day standard window with mid-window boundaries
 // =============================================================================
@@ -226,32 +236,42 @@ describe('home widget renderer', () => {
       nextTime: '15:20',
       nextEpochMs: at(DAY_ONE, '15:20'),
       prevEpochMs: at(DAY_ONE, '12:45'),
-      countdownLabel: '1h 12m',
       dateLabel: 'Saturday, 17 October',
       prayers: TIMES.map(([name, time]) => ({ name, time })),
       activeIndex: 3,
     });
 
-    it('renders the precomputed countdown label from props in the swift-ui composition', () => {
+    it('counts the segment down as a ticking interval in the swift-ui composition', () => {
       const tree = renderHome(liveProps(), 'systemSmall');
 
       const markers = new Set(collect(tree).map((node) => node.marker));
       expect(markers.has('VStack')).toBe(true);
       expect(markers.has('Column')).toBe(false);
-      expect(textsOf(tree)).toContain('1h 12m');
       expect(textsOf(tree)).toContain('Asr');
       expect(textsOf(tree)).toContain('15:20');
-      // Footer shortens the long label: "Saturday, 17 October" -> "Saturday · Lon"
+      // Footer keeps only the day: "Saturday, 17 October" -> "Saturday"
       // (single-token day labels render whole; two-token ones shorten, below)
-      expect(textsOf(tree)).toContain('Saturday · Lon');
+      expect(textsOf(tree)).toContain('Saturday');
+
+      // The countdown is the segment itself, handed to iOS to tick
+      expect(tickingIntervalOf(tree)).toEqual({
+        lower: new Date(at(DAY_ONE, '12:45')),
+        upper: new Date(at(DAY_ONE, '15:20')),
+      });
     });
 
-    it('hides the countdown when the entry predates the label field', () => {
-      const tree = renderHome({ ...liveProps(), countdownLabel: '' }, 'systemSmall');
-      const all = textsOf(tree);
-      expect(all).toContain('Asr');
-      expect(all).toContain('15:20');
-      expect(all).not.toContain('1h 12m');
+    it('centers the ticking countdown, which SwiftUI would otherwise leave leading', () => {
+      // Text(timerInterval:) reserves a worst-case width and parks its glyphs
+      // against the leading edge of it, which reads as an off-center hero
+      const tree = renderHome(liveProps(), 'systemSmall');
+      const timer = collect(tree).find((node) => node.marker === 'Text' && node.props.timerInterval !== undefined);
+      const styles = (timer?.props.modifiers as Array<{ modifier: string; value: unknown }>) ?? [];
+
+      expect(styles.some((style) => style.modifier === 'multilineTextAlignment' && style.value === 'center')).toBe(
+        true
+      );
+      // A per-second redraw with proportional digits shuffles sideways
+      expect(styles.some((style) => style.modifier === 'monospacedDigit')).toBe(true);
     });
 
     it('renders the medium day list with the active pill in the standard palette', () => {
@@ -293,19 +313,18 @@ describe('home widget renderer', () => {
     it('falls back to the hero composition when the day list is not renderable', () => {
       const tree = renderHome({ ...liveProps(), activeIndex: -1 }, 'systemMedium');
       expect(collect(tree).some((node) => node.marker === 'RoundedRectangle')).toBe(false);
-      expect(textsOf(tree)).toContain('1h 12m');
+      expect(tickingIntervalOf(tree)).toBeDefined();
+      expect(textsOf(tree)).toContain('Asr');
     });
 
-    it('draws the blur orbs on dark and none on light', () => {
-      const dark = renderHome({ ...liveProps(), theme: 'dark' }, 'systemSmall');
-      const light = renderHome(liveProps(), 'systemSmall');
-      expect(collect(dark).filter((node) => node.marker === 'Circle').length).toBe(4);
-      expect(collect(light).filter((node) => node.marker === 'Circle').length).toBe(0);
-    });
-
-    it('draws the oversized medium orbs on a dark medium card', () => {
-      const darkMedium = renderHome({ ...liveProps(), theme: 'dark' }, 'systemMedium');
-      expect(collect(darkMedium).filter((node) => node.marker === 'Circle').length).toBe(4);
+    it('draws the three-orb nebula on dark and nothing on light', () => {
+      // The owner's nebula reference: light lives in the upper half only
+      for (const family of ['systemSmall', 'systemMedium'] as const) {
+        const dark = renderHome({ ...liveProps(), theme: 'dark' }, family);
+        const light = renderHome({ ...liveProps(), theme: 'light' }, family);
+        expect(collect(dark).filter((node) => node.marker === 'Circle')).toHaveLength(3);
+        expect(collect(light).filter((node) => node.marker === 'Circle')).toHaveLength(0);
+      }
     });
 
     it('renders a legacy entry with no list fields as the hero alone and the bare city footer', () => {
@@ -317,19 +336,18 @@ describe('home widget renderer', () => {
         nextTime: '15:20',
         nextEpochMs: at(DAY_ONE, '15:20'),
         prevEpochMs: at(DAY_ONE, '12:45'),
-        countdownLabel: '1h 12m',
         dateLabel: '',
       };
       const tree = renderHome(legacy, 'systemMedium');
       const all = textsOf(tree);
-      expect(all).toContain('1h 12m');
-      expect(all).toContain('Lon');
+      expect(tickingIntervalOf(tree)).toBeDefined();
+      expect(all).not.toContain('·');
       expect(collect(tree).some((node) => node.marker === 'RoundedRectangle')).toBe(false);
     });
 
     it('shortens a Hijri footer to the month prefix', () => {
       const tree = renderHome({ ...liveProps(), dateLabel: 'Rajab 1, 1448' }, 'systemSmall');
-      expect(textsOf(tree)).toContain('Raj 1 · Lon');
+      expect(textsOf(tree)).toContain('Raj 1');
     });
 
     it('renders the stale card per family', () => {
@@ -428,13 +446,13 @@ describe('home widget renderer', () => {
       expect(sources).toContain('athan_widget_card_dark_small');
     });
 
-    it('falls back to the bare city footer when the day label is empty', () => {
+    it('renders an empty footer when the day label is empty', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const blank = androidProps({});
       for (const day of blank.days) {
         day.dateLabel = '';
       }
-      expect(textsOf(renderTree(layouts.PrayerWidget(blank, { colorScheme: 'light' })))).toContain('Lon');
+      expect(textsOf(renderTree(layouts.PrayerWidget(blank, { colorScheme: 'light' })))).toContain('');
     });
 
     it('stamps the composition from props.size, not widgetFamily', () => {
@@ -524,7 +542,7 @@ describe('home widget renderer', () => {
         day.rows.some((row) => row === day.rows.find((r) => r.epochMs > at(DAY_ONE, '14:08')))
       );
       if (nextDay) nextDay.dateLabel = 'Rajab 1, 1448';
-      expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1 · Lon');
+      expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1');
     });
 
     // Owner ruling 2026-09-19: one uniform lifted footer on all 8 kinds
@@ -535,12 +553,13 @@ describe('home widget renderer', () => {
         const footerRow = collect(tree).find(
           (node) =>
             node.marker === 'Row' &&
-            textsOf(node).some((text) => text.includes('· Lon')) &&
             (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
               (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[0,0,0,16]'
             )
         );
         expect(footerRow).toBeDefined();
+        // The footer is the day alone now — no separator, no city
+        expect(textsOf(footerRow).join('')).not.toContain('·');
         // The row must be taller than its bottom padding, or the footer
         // text clips to nothing on device (owner finding 2026-09-19)
         expect(footerRow?.props.modifiers).toEqual(expect.arrayContaining([{ modifier: 'height', value: 34 }]));

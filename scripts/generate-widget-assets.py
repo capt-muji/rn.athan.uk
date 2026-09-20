@@ -2,9 +2,9 @@
 """Generates the Android widget PNG assets in assets/widgets/.
 
 The widget renderer (Jetpack Glance via expo-widgets) cannot draw blur,
-strokes, shadows or rounded containers, so the iOS design's card + orb
-lighting, the active pill and the stale moon mark ship as pre-rendered
-bitmaps. Every color here is a byte-identical literal from the palette in
+strokes, shadows or rounded containers, so the iOS design's card, the
+active pill and the stale moon mark ship as pre-rendered bitmaps. Every
+color here is a byte-identical literal from the palette in
 widgets/PrayerWidget.tsx; shared/__tests__/widgetAssets.test.ts pins that
 this file's literals stay a subset of the layout's palette.
 
@@ -16,7 +16,7 @@ scripts/generate-widget-assets.py
 import argparse
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 
 SCALE = 3
 SMALL = 110
@@ -48,20 +48,7 @@ def css(color: str) -> tuple:
 # cards, Android renders these bitmaps over the wallpaper (owner ruling
 # 2026-09-19), so alpha 1.0 keeps the wallpaper from showing through.
 CARD_LIGHT = css("#fcfcfe")
-CARD_DARK = css("#1a1a5c")
-
-ORBS_SMALL = {
-    "top": {"color": css("rgba(128, 0, 255, 0.25)"), "size": 85, "x": 30, "y": -38, "blur": 38},
-    "bottom": {"color": css("rgba(128, 0, 255, 0.45)"), "size": 130, "x": -70, "y": 60, "blur": 40},
-    "center": {"color": css("rgba(165, 180, 252, 0.3)"), "size": 34, "x": 0, "y": 8, "blur": 30},
-    "corner": {"color": css("rgba(128, 0, 255, 0.34)"), "size": 130, "x": 70, "y": 60, "blur": 40},
-}
-ORBS_MEDIUM = {
-    "top": {"color": css("rgba(155, 30, 255, 0.22)"), "size": 165, "x": -5, "y": -75, "blur": 60},
-    "bottom": {"color": css("rgba(128, 0, 255, 0.45)"), "size": 195, "x": -110, "y": 60, "blur": 82},
-    "center": {"color": css("rgba(130, 145, 240, 0.3)"), "size": 44, "x": 0, "y": 8, "blur": 30},
-    "corner": {"color": css("rgba(55, 75, 235, 0.17)"), "size": 255, "x": 95, "y": 58, "blur": 75},
-}
+CARD_DARK = css("#352489")
 
 PILLS = {
     "standard_light": {
@@ -85,10 +72,8 @@ MOON_LIGHT = css("#db2777")
 MOON_DARK = css("#ff69b4")
 
 
-def rounded_card(width_pt: int, height_pt: int, fill, orbs: dict | None) -> Image.Image:
-    """A rounded translucent card, optionally carrying the blurred orb glows
-    clipped to the card shape. Orb coordinates are card-center-relative, as
-    in the iOS composition."""
+def rounded_card(width_pt: int, height_pt: int, fill) -> Image.Image:
+    """A rounded card clipped to its shape."""
     width = width_pt * SCALE
     height = height_pt * SCALE
     radius = CARD_RADIUS_PT * SCALE
@@ -97,26 +82,7 @@ def rounded_card(width_pt: int, height_pt: int, fill, orbs: dict | None) -> Imag
     ImageDraw.Draw(mask).rounded_rectangle([0, 0, width - 1, height - 1], radius=radius, fill=255)
     solid = Image.new("RGBA", (width, height), fill)
     card.paste(solid, (0, 0), mask)
-
-    if orbs is None:
-        return card
-
-    cx = width // 2
-    cy = height // 2
-    for orb in orbs.values():
-        size = orb["size"] * SCALE
-        x = orb["x"] * SCALE
-        y = orb["y"] * SCALE
-        left = cx + x - size // 2
-        top = cy + y - size // 2
-        glow = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-        ImageDraw.Draw(glow).ellipse([left, top, left + size, top + size], fill=orb["color"])
-        glow = glow.filter(ImageFilter.GaussianBlur(orb["blur"] * SCALE))
-        card.alpha_composite(glow)
-
-    clipped = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    clipped.paste(card, (0, 0), mask)
-    return clipped
+    return card
 
 
 def pill(spec: dict) -> Image.Image:
@@ -186,10 +152,10 @@ def main() -> None:
     out.mkdir(parents=True, exist_ok=True)
 
     outputs = {
-        "athan_widget_card_light_small": rounded_card(SMALL, SMALL, CARD_LIGHT, None),
-        "athan_widget_card_light_medium": rounded_card(MEDIUM_W, MEDIUM_H, CARD_LIGHT, None),
-        "athan_widget_card_dark_small": rounded_card(SMALL, SMALL, CARD_DARK, ORBS_SMALL),
-        "athan_widget_card_dark_medium": rounded_card(MEDIUM_W, MEDIUM_H, CARD_DARK, ORBS_MEDIUM),
+        "athan_widget_card_light_small": rounded_card(SMALL, SMALL, CARD_LIGHT),
+        "athan_widget_card_light_medium": rounded_card(MEDIUM_W, MEDIUM_H, CARD_LIGHT),
+        "athan_widget_card_dark_small": rounded_card(SMALL, SMALL, CARD_DARK),
+        "athan_widget_card_dark_medium": rounded_card(MEDIUM_W, MEDIUM_H, CARD_DARK),
         "athan_widget_pill_standard_light": pill(PILLS["standard_light"]),
         "athan_widget_pill_extra_light": pill(PILLS["extra_light"]),
         "athan_widget_pill_standard_dark": pill(PILLS["standard_dark"]),
