@@ -309,6 +309,11 @@ None of these is a session yet. Each needs the owner's decision first.
 - The six commits on `wip/16a-ios-widget-archive-budget` (1.27.306 to 1.27.312) are session
   16a's own work, landed on `uat-2` by its plan's step 1; `25ffe2ee`'s diagnostics were
   reverted inside that range, so the merged tree is clean.
+- **Lock Layout 2 carries no countdown** (owner, during 16a's device pass): after the tick
+  centring fixed Layout 1 but Layout 2 still read left-aligned, the owner ruled its content down
+  rather than chasing the centring — "remove the countdown timer from layout 2... it should just
+  be the prayer name and the absolute time, remove the dot after it, and the countdown after it,
+  and then centre align it horizontally in the whole widget." Landed 1.27.316.
 
 ## Also live, not sessions
 
