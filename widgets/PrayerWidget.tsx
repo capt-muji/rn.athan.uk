@@ -19,9 +19,8 @@ import {
   type ModifierConfig,
   width,
 } from '@expo/ui/jetpack-compose/modifiers';
-import { Circle, HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+import { HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
-  blur,
   containerBackground,
   font,
   foregroundStyle,
@@ -33,7 +32,6 @@ import {
   multilineTextAlignment,
   offset,
   padding,
-  scaleEffect,
   shadow,
   strokeBorder,
   textCase,
@@ -175,12 +173,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const palette = isDark ? DARK : LIGHT;
-
-  // The owner's nebula reference drives these: light lives in the upper
-  // half, darkness pools below, nothing lights the bottom edge.
-  const NEBULA_BLUE = 'rgba(58, 118, 255, 0.35)';
-  const NEBULA_MAGENTA = 'rgba(228, 74, 154, 0.40)';
-  const NEBULA_HAZE = 'rgba(90, 58, 158, 0.25)';
 
   // Fixed row height keeps the floating pill's offset exact and the
   // spacing static. Six 22pt rows fill the systemMedium inner height
@@ -541,54 +533,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       multilineTextAlignment('center'),
     ];
 
-    // The reference-image lighting: a large vivid violet source centred
-    // just above the top edge, its lower half blazing into the card, and a
-    // fainter echo tucked into the upper-right edge. Nothing lights the
-    // bottom — the base itself is the deep indigo-black floor. Orbs wider
-    // than 155pt render from a capped layout frame scaled visually, or
-    // they inflate the card's layout.
-    // Dark kinds only — light renders nothing. Orbs wider than 155pt
-    // render from a capped layout frame scaled visually, or they inflate
-    // the card's layout and push the footer out.
-    const OrbLight = () => {
-      if (!isDark) {
-        return null;
-      }
-      const specs = isMedium
-        ? {
-            haze: { size: 200, out: { x: 55, y: 35 }, blur: 34 },
-            blue: { size: 170, out: { x: 15, y: 30 }, blur: 30 },
-            rim: { size: 90, out: { x: 42, y: 32 }, blur: 22 },
-          }
-        : {
-            haze: { size: 105, out: { x: 30, y: 22 }, blur: 18 },
-            blue: { size: 90, out: { x: 8, y: 18 }, blur: 16 },
-            rim: { size: 48, out: { x: 23, y: 20 }, blur: 12 },
-          };
-      const orbFor = (spec: { size: number; out: { x: number; y: number }; blur: number }, color: string) => {
-        const layoutSize = Math.min(spec.size, 150);
-        const scale = spec.size / layoutSize;
-        return (
-          <Circle
-            modifiers={[
-              frame({ width: layoutSize, height: layoutSize }),
-              scaleEffect(scale),
-              offset({ x: spec.out.x, y: spec.out.y }),
-              foregroundStyle(color),
-              blur(spec.blur / scale),
-            ]}
-          />
-        );
-      };
-      return (
-        <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-          {orbFor(specs.haze, NEBULA_HAZE)}
-          {orbFor(specs.blue, NEBULA_BLUE)}
-          {orbFor(specs.rim, NEBULA_MAGENTA)}
-        </ZStack>
-      );
-    };
-
     // The hero column — the small widget's centered trio plus the footer,
     // shared verbatim by both families so the countdown reads identically.
     const HeroColumn = () => (
@@ -701,7 +645,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
       return (
         <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
-          <OrbLight />
           <HStack
             spacing={14}
             modifiers={[
@@ -741,7 +684,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // systemSmall (or the medium fallback): the hero alone fills the card.
     return (
       <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
-        <OrbLight />
         <VStack spacing={0} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <HeroColumn />
         </VStack>

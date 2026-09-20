@@ -231,9 +231,6 @@ describe('palette literals', () => {
       'rgba(95, 10, 115, 0.5)', // pill depth shadow — extras, deep pinky purple
       'rgba(146, 0, 162, 0.35)', // extras stroke
       'rgba(8, 71, 229, 0.35)', // standard stroke
-      'rgba(58, 118, 255, 0.35)', // nebula blue mass (owner reference, 2026-09-20)
-      'rgba(228, 74, 154, 0.40)', // nebula magenta rim
-      'rgba(90, 58, 158, 0.25)', // nebula violet haze
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -279,9 +276,6 @@ describe('palette literals', () => {
       'rgba(95, 10, 115, 0.5)',
       'rgba(146, 0, 162, 0.35)',
       'rgba(8, 71, 229, 0.35)',
-      'rgba(58, 118, 255, 0.35)',
-      'rgba(228, 74, 154, 0.4)',
-      'rgba(90, 58, 158, 0.25)',
       '#e3eaff',
       '#ffeaf4',
     ].map(normalizeColor);
