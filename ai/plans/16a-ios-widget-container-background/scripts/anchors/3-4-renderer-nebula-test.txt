@@ -1,0 +1,9 @@
+    it('draws the three-orb nebula on dark and nothing on light', () => {
+      // The owner's nebula reference: light lives in the upper half only
+      for (const family of ['systemSmall', 'systemMedium'] as const) {
+        const dark = renderHome({ ...liveProps(), theme: 'dark' }, family);
+        const light = renderHome({ ...liveProps(), theme: 'light' }, family);
+        expect(collect(dark).filter((node) => node.marker === 'Circle')).toHaveLength(3);
+        expect(collect(light).filter((node) => node.marker === 'Circle')).toHaveLength(0);
+      }
+    });

@@ -1,0 +1,9 @@
+const MODIFIERS = [
+  'containerBackground',
+  'font',
+  'foregroundStyle',
+  'frame',
+  'lineLimit',
+  'minimumScaleFactor',
+  'monospacedDigit',
+].reduce((acc: Record<string, (value: unknown) => { modifier: string; value: unknown }>, name) => {

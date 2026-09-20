@@ -1,0 +1,29 @@
+    // The timer is its own Text or it stops ticking.
+    return (
+      <VStack
+        alignment='leading'
+        spacing={1}
+        modifiers={[
+          frame({ maxWidth: Infinity, maxHeight: Infinity }),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+        ]}>
+        <HStack spacing={4}>
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {props.nextName}
+          </Text>
+          <Text
+            modifiers={[
+              font({ size: 12, weight: 'medium' }),
+              monospacedDigit(),
+              foregroundStyle(WHITE_SECONDARY),
+              lineLimit(1),
+            ]}>
+            {props.nextTime}
+          </Text>
+        </HStack>
+        <TickingTextEl
+          timerInterval={segment}
+          countsDown
+          modifiers={[font({ size: 14, weight: 'bold' }), monospacedDigit(), foregroundStyle(WHITE), lineLimit(1)]}
+        />
+      </VStack>
