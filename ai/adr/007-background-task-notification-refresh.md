@@ -37,6 +37,11 @@ ADR-001 established a rolling window notification buffer that refreshes when the
 
 Implement a **dual-layer notification refresh strategy**:
 
+> The interval figures written through this section are the original 2026-01 draft's.
+> They have been retuned twice since; the Revision History at the foot of this file is
+> authoritative, and `shared/constants.ts` is the source of truth. The structure
+> described here — two layers, one shared lock, always a full reschedule — is unchanged.
+
 ### Layer 1: Foreground Refresh (Primary)
 
 - Reduce `NOTIFICATION_REFRESH_HOURS` from 12 to 4 hours
@@ -288,4 +293,5 @@ If background tasks cause issues:
 | 2026-01-26 | muji   | Initial draft |
 | 2026-08-29 | muji   | Corrected §Decision 4 + architecture diagram: `withSchedulingLock` is a sequential queue (no skip, no drops), not the skip-based lock the draft described. Documented that task registration runs on launch AND foreground-return (idempotent `isTaskRegisteredAsync` guard) — the foreground-return path previously omitted registration (ISSUES #9). Status: Proposed → Accepted. |
 | 2026-09-02 (rev 3) | muji   | Interval retune after on-device verification: background 3h → **6h** (more OS-lenient; dasd rate-limits aggressive cadences; 8 attempts per required 1-per-48h), foreground gate 4h → **12h** (foreground layer demoted to pure fallback — the background task is now primary). Rationale: only 1 successful run per 48h is needed to roll the 2-day window. |
+| 2026-09-23 (rev 4) | muji   | Interval retune after the OnePlus 8T went silent: background 6h → **3h**, foreground gate 12h → **2h**. What changed is the requirement, not the evidence. Rev 3 sized both numbers against "how long may the rolling window go unrefreshed", where 6h was generous. The 8T showed a second and harsher job: after a reboot on an OEM that suppresses the boot broadcast, the background task is the ONLY thing that can recover a phone whose alarms are gone, and its interval is the ceiling on how long that phone stays silent (measured: `Minimum latency: +5h59m59s998ms`, so Magrib and Isha both passed unrecovered). 3h is not the sub-hour band rev 3 avoided: every dasd `group is full` deferral was measured at 15 minutes or below, and the XS verified 180 minutes delivering on schedule (ISSUES #8). `earliestBeginDate` is a floor, not a request rate, so a shorter one cannot make iOS run the task less often. The foreground gate goes to 2h so an opened app is never the slower of the two to notice lost alarms; it costs one timestamp comparison and no OS scheduler, so nothing rations it. Collision is not why the two differ — `withSchedulingLock` is a sequential queue, so overlapping passes serialise rather than conflict. Evidence: `ai/features/reboot-rearm/EVIDENCE.md`. |
 | 2026-09-02 | muji   | Unit correction + always-re-register (ISSUES #8 fix, 1.18.0): `minimumInterval` is MINUTES — the draft's `3 * 60 * 60` seconds scheduled the task +7.5 days out on iOS and Android. `registerBackgroundTask` now unregisters before registering so persisted options refresh every launch (the old `isTaskRegisteredAsync` early-return let a stale 10800 persist forever). Device-verified on iPhone XS/iOS 18.7.10: natural fires in foreground/backgrounded states, dasd windows match the interval exactly, dasd rate-limits sub-hour cadences (180-min value is safe). |

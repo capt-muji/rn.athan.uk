@@ -196,10 +196,13 @@ describe('validateReminderInterval', () => {
 
 // =============================================================================
 // BACKGROUND TASK INTERVAL RESOLUTION TESTS (ISSUES.md #8)
-// minimumInterval is MINUTES — resolution: env override > dev 15 > prod 360 (6h)
+// minimumInterval is MINUTES — resolution: env override > dev 15 > prod BACKGROUND_TASK_INTERVAL_HOURS * 60
 // =============================================================================
 
 describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
+  /** Derived, never literal: the ship interval changes and these cases must follow it */
+  const PRODUCTION_INTERVAL_MINUTES = BACKGROUND_TASK_INTERVAL_HOURS * 60;
+
   const requireFreshConstants = () => {
     let mod: typeof import('../constants');
     jest.isolateModules(() => {
@@ -214,10 +217,10 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     process.env.NODE_ENV = 'test';
   });
 
-  it('resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 (360) outside development without env', () => {
+  it('resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 outside development without env', () => {
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 
   it('resolves to 15 in development builds (fast iteration)', () => {
@@ -236,14 +239,14 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = 'soon';
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 
   it('ignores a non-positive env override', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '0';
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 
   // ISSUES.md #8 was seconds passed where minutes were expected: 10800 scheduled the
@@ -252,14 +255,14 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '10800';
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 
   it('ignores an override below the Android WorkManager floor of 15 minutes', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '0.001';
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 
   it('honours the lowest rung the interval ladder actually uses', () => {
@@ -272,12 +275,12 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
   });
 
   // iOS reads the option with `as? Int`: a fraction fails the cast and silently falls back to
-  // 12 hours, while Android truncates — 20 minutes on one platform, 12 hours on the other
+  // the ship interval, while Android truncates — 20 minutes on one platform, hours on the other
   it('ignores a fractional override, which the two platforms would read differently', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '20.5';
     process.env.NODE_ENV = 'test';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 
   it('honours a full day, the highest value that is still a choice', () => {
@@ -292,7 +295,7 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '45';
     process.env.EXPO_PUBLIC_ENV = 'prod';
     const mod = requireFreshConstants();
-    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 });
 
@@ -411,10 +414,12 @@ describe('the rolling horizon is two list days, not 48 hours', () => {
     expect(hoursToTomorrowsLastPrayer).toBeLessThan(NOTIFICATION_ROLLING_DAYS * 24);
   });
 
-  it('gives the background task two full attempts inside that floor, not eight', () => {
+  // The buffer only needs ONE run inside the floor to keep rolling. Spare attempts are what
+  // absorb a deferred or skipped run, so the margin is the point rather than the exact count
+  it('leaves the background task spare attempts inside that floor', () => {
     const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
     const attempts = Math.floor(hoursToTomorrowsLastPrayer / BACKGROUND_TASK_INTERVAL_HOURS);
 
-    expect(attempts).toBe(2);
+    expect(attempts).toBeGreaterThan(1);
   });
 });

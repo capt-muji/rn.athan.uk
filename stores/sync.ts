@@ -78,7 +78,7 @@ let armedDayChanges = 0;
 /**
  * How many downloads have changed a day from yesterday to today+2. A reschedule reads it before it reads the days,
  * and stamps the gate only if it has not moved since: days that landed while it ran were read too late, and a stamp
- * over the reopen would keep them unarmed for twelve hours
+ * over the reopen would keep them unarmed until the gate reopens
  */
 export const getArmedDayChanges = (): number => armedDayChanges;
 
