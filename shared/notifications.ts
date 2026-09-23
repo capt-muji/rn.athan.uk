@@ -31,7 +31,7 @@ let nativeCallTimedOut = false;
  * Whether a call has run out of time since this was last asked, and forgets it.
  *
  * A call given up on can still land afterwards and arm an alarm this app has no record of. Only the post-reschedule
- * sweep can find one of those, so the scheduling lock uses this to reopen the twelve-hour gate, which puts a full
+ * sweep can find one of those, so the scheduling lock uses this to reopen the refresh gate, which puts a full
  * reschedule and its sweep on the next foreground.
  */
 export const takeNativeCallTimedOut = (): boolean => {

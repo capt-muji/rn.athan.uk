@@ -6,7 +6,7 @@
  * record is kept, because that record is the only way back to an alarm the phone still holds (with no records at all
  * the sweep refuses to cancel anything the OS holds, since after an app update that is exactly what it must not do),
  * and the prayer is marked to be put right. The next launch or return to the app then redoes that prayer alone, even
- * though the twelve-hour gate is shut, and asks for the cancel again.
+ * though the refresh gate is shut, and asks for the cancel again.
  */
 
 import * as Notifications from 'expo-notifications';
@@ -148,13 +148,13 @@ describe.each([
     expect(fajrRecords()).toEqual([FAJR[0]]);
     expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
 
-    // One minute on, the twelve-hour gate is shut, so only a prayer marked to be put right makes this do anything
+    // One minute on, the refresh gate is shut, so only a prayer marked to be put right makes this do anything
     jest.setSystemTime(NOW + MINUTE);
     await expect(refreshNotifications()).resolves.toBeUndefined();
 
     expect([...osState].sort()).toEqual([...armedAfter].sort());
     expect(fajrRecords()).toEqual([]);
-    // Putting one prayer right is not a full pass, so it does not close the gate for the next twelve hours
+    // Putting one prayer right is not a full pass, so it does not close the gate for the next full interval
     expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
   });
 

@@ -1,5 +1,5 @@
 /**
- * The 12-hour notification refresh gate, and a reschedule that fails part way (stores/notifications.ts)
+ * The notification refresh gate, and a reschedule that fails part way (stores/notifications.ts)
  *
  * Every foreground asks `refreshNotifications`, so the gate is what stops a full reschedule on each resume. When
  * it is still closed nothing may be scheduled, cancelled or stamped. When a reschedule throws, the caller must
@@ -12,6 +12,7 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier } from '@/device/notifications';
+import { NOTIFICATION_REFRESH_HOURS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -114,13 +115,17 @@ afterAll(() => {
 // THE GATE
 // =============================================================================
 
-describe('refreshNotifications behind the 12-hour gate', () => {
+// Derived from the constant rather than written out: the cadence is retuned from time to time and
+// these boundaries must follow it, not pin the value it happened to have when they were written
+const GATE = NOTIFICATION_REFRESH_HOURS * HOUR;
+
+describe('refreshNotifications behind the refresh gate', () => {
   it.each([
     { since: 'no time at all', ms: 0, runs: false },
-    { since: '1 hour', ms: HOUR, runs: false },
-    { since: '1 millisecond short of 12 hours', ms: 12 * HOUR - 1, runs: false },
-    { since: 'exactly 12 hours', ms: 12 * HOUR, runs: true },
-    { since: '13 hours', ms: 13 * HOUR, runs: true },
+    { since: 'half the gate', ms: GATE / 2, runs: false },
+    { since: '1 millisecond short of the gate', ms: GATE - 1, runs: false },
+    { since: 'exactly the gate', ms: GATE, runs: true },
+    { since: 'an hour past the gate', ms: GATE + HOUR, runs: true },
   ])('with the last reschedule $since ago, runs: $runs', async ({ ms, runs }) => {
     const stamped = NOW - ms;
     store.set(lastNotificationScheduleAtom, stamped);
@@ -135,7 +140,9 @@ describe('refreshNotifications behind the 12-hour gate', () => {
       expect(cancelMock).not.toHaveBeenCalled();
       expect(getAllMock).not.toHaveBeenCalled();
       expect(store.get(lastNotificationScheduleAtom)).toBe(stamped);
-      expect(logger.info).toHaveBeenCalledWith('NOTIFICATION: Skipping reschedule, last schedule was within 12 hours');
+      expect(logger.info).toHaveBeenCalledWith(
+        `NOTIFICATION: Skipping reschedule, last schedule was within ${NOTIFICATION_REFRESH_HOURS} hours`
+      );
     }
   });
 
