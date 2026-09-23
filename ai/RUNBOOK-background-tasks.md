@@ -398,7 +398,7 @@ ISSUES #14 adb ground-truth checklist —
 1. `minimumInterval` is **MINUTES** (expo-background-task docs; iOS ×60 for
    earliestBeginDate; Android `Duration.ofMinutes`). We passed 10800 SECONDS
    = 7.5 DAYS on both platforms. Now: `BACKGROUND_TASK_INTERVAL_MINUTES`
-   (shared/constants.ts) — env `EXPO_PUBLIC_BG_INTERVAL_MINUTES` → dev 15 → prod **360 (6h)**. Foreground gate: `NOTIFICATION_REFRESH_HOURS` = **12h** (pure fallback; background layer is primary). ADR-007 rev 3.
+   (shared/constants.ts) — env `EXPO_PUBLIC_BG_INTERVAL_MINUTES` → dev 15 → prod **180 (3h)**. Foreground gate: `NOTIFICATION_REFRESH_HOURS` = **2h**, deliberately the tighter of the two so an opened app is never the slower to notice lost alarms. ADR-007 rev 4 (was 360/12h under rev 3; the rows above were measured then and their 360 figures stand as history).
 2. `registerBackgroundTask` (stores/notifications.ts) ALWAYS unregisters-then-
    registers — persisted options can never go stale (self-heals old installs).
 3. Task body (`rescheduleAllNotificationsFromBackground`) awaits `sync()` first

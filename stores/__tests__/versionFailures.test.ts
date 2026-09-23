@@ -4,7 +4,7 @@
  * `handleAppUpgrade` runs first in every launch sync, and a throw there rejects the sync: the error screen goes up,
  * and on a launch with nothing stored its only button wipes. Two of its steps may therefore fail quietly. A config
  * that cannot be read counts as no version at all, which skips the check without stamping anything. A gate that
- * cannot be reopened costs at most one twelve-hour wait for the forced reschedule, and never the version stamp, the
+ * cannot be reopened costs at most one gate wait for the forced reschedule, and never the version stamp, the
  * cache shape marker or the preference migration that must run before any alarm is armed.
  */
 

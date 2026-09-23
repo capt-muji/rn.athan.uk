@@ -1,5 +1,5 @@
 /**
- * Reopening the twelve-hour gate after a call ran out of time, when the write itself fails (stores/notifications.ts)
+ * Reopening the refresh gate after a call ran out of time, when the write itself fails (stores/notifications.ts)
  *
  * A call the app gave up on can still land afterwards and arm an alarm it has no record of, so the gate is reopened to
  * put a full reschedule and its sweep on the next foreground. Failing to reopen it costs only that one reschedule, so
