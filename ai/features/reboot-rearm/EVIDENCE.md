@@ -264,3 +264,46 @@ Two things follow, and both matter:
 So #19 explains why the alarms were lost. It does not explain why they stayed lost.
 The twelve-hour gate does, and that is what rev 4 and the 1.25.30 cold-launch re-arm
 between them close.
+
+## 14. expo-background-task demands a network this app does not need
+
+Raised by the owner on reading the 3T soak: the app is offline-first, the rolling buffer is
+computed from the MMKV cache, and the API is touched about once a year. So why should a
+network constraint stop the refresh from running at all?
+
+It should not. The constraint is the library's, hardcoded, and not ours to configure:
+
+```kotlin
+// expo-background-task/android/.../BackgroundTaskScheduler.kt:107
+val constraints = Constraints.Builder()
+  .setRequiredNetworkType(NetworkType.CONNECTED)
+  .build()
+```
+
+```swift
+// expo-background-task/ios/BackgroundTaskScheduler.swift:93
+request.requiresNetworkConnectivity = true
+```
+
+Both platforms, unconditional. `BackgroundTaskOptions` exposes `minimumInterval` and nothing
+else, so there is no supported way to drop it.
+
+**What it costs us.** `rescheduleAllNotificationsFromBackground` calls `sync()` first, but
+that call is already best-effort and wrapped in its own try/catch precisely so a failed
+fetch cannot stop the reschedule; the arming that follows reads the cache. So the work the
+task exists to do needs no network at all, and a device offline overnight, in airplane mode,
+or holding a stale connectivity flag silently loses its unattended recovery. On the 3T that
+is not hypothetical: the job sat unrun for 3h16m behind this flag while the device pinged
+8.8.8.8 at 0% loss.
+
+**What it did NOT cost us.** It is not the cause of the 8T's silence. That phone's job
+recorded `Satisfied constraints: CONNECTIVITY ... Unsatisfied: TIMING_DELAY DEADLINE IDLE`,
+so the network was fine and it was simply waiting out the six-hour interval. The two
+findings are independent.
+
+**Where it leaves us.** A real upstream limitation, worth an issue or PR against
+expo-background-task asking for the constraint to be opt-out, since an offline-capable app
+has no reason to carry it. Until then the mitigation is the layer we already have: the
+foreground gate re-arms on the next open, which needs nothing from the network. Recorded
+rather than worked around, because patching a node_modules constraint would be invisible to
+the next person and would not survive an install.
