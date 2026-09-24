@@ -294,3 +294,38 @@ longer matched, so biome kept failing on a one-line JSON nobody authors by hand.
 `yarn validate` now passes end to end for the first time this session: tsc clean, biome
 clean, 169 suites, 4620 tests, 100% statements, branches, functions and lines. Branch
 pushed with the hook running, not bypassed.
+
+## 3T soak result — headless run proven, natural fire NOT proven (2026-09-24 06:23)
+
+The window came and went while the bench was unattended. At 06:23 the job was overdue by
+3h16m and had not run, and the reason is in the dump rather than in the change:
+
+```
+Satisfied constraints:   TIMING_DELAY DEVICE_NOT_DOZING BACKGROUND_NOT_RESTRICTED
+Unsatisfied constraints: CONNECTIVITY
+```
+
+`TIMING_DELAY` is satisfied, so the 3-hour interval elapsed exactly as asked. What blocked
+the run is `CONNECTIVITY`, and that is an environment fault, not a policy one: the 3T holds
+a validated WiFi link (`VALIDATED`, SSID "Hallway 5GHz", signal -63) and pings 8.8.8.8 with
+0% loss from the same shell. JobScheduler's own view of the constraint is stale, a known
+Android 9 quirk on this handset, and `expo-background-task` requires network by design
+(`requiresNetworkConnectivity = true` on iOS, `NetworkRequest INTERNET&VALIDATED` here).
+
+Forcing the job proves the half that is ours:
+
+```
+cmd jobscheduler run -f com.mugtaba.athan.fleettest 7
+BackgroundTaskConsumer: Executing task 'NOTIFICATION_REFRESH_TASK'
+TaskService: Started headless task 1 to keep JS timers alive
+```
+
+The app had no process before this and the task still ran, which is the headless path the
+whole rolling buffer depends on. The alarm set stayed correct at 4 and the next run
+re-enqueued at `+2h58m32s956ms`.
+
+**What this does and does not establish.** The task body, the headless launch and the
+180-minute re-enqueue are all verified. A natural, unforced fire at the 3-hour mark is NOT,
+because the OS never scheduled one while the constraint read unsatisfied. That is a gap in
+the evidence and is recorded as such rather than glossed: re-run the soak on a device whose
+connectivity flag is healthy before claiming the natural cadence.
