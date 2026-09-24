@@ -43,7 +43,7 @@ import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
 import { type PrayerSequence, ScheduleType } from '@/shared/types';
-import { buildPrayerWidgetSnapshot, buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
+import { buildPrayerWidgetSnapshot, buildPrayerWidgetTimeline, TIMELINE_DAYS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetAndroidProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 
@@ -75,13 +75,6 @@ const getLockWidgets = (): LockWidgets => {
   lockWidgets = loaded;
   return loaded;
 };
-
-/** Days of prayer boundaries scheduled ahead — the widget re-reads this
- *  stored timeline when it runs out, so this is how long the widget stays
- *  correct without the app opening. 30 costs ~185 iOS entries and ~78KB;
- *  a year would cost ~2195 and ~929KB, and WidgetKit answers an over-budget
- *  timeline with a silently black widget, never an error. */
-const TIMELINE_DAYS = 30;
 
 /**
  * Reads the slice of in-app settings the widgets mirror. The widget has no
