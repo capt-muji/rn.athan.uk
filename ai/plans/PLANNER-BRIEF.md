@@ -29,13 +29,15 @@ right: the named tests, red before green, 100% coverage of what it changed, ever
 invariant. An audit session checks the result before it is pushed, and now also reads the code the executor
 wrote, not only that it matched a script.
 
-**Show the model, always** (owner, 2026-09-15). The owner tracks which model does what:
-- Start every response with `🤖  Model: GLM 5.3 (planning session)`: the robot emoji and two spaces come first.
-- Name the model every time you mention a subagent, in text, headings and tables, such as
-  `Code Reviewer (GLM 5.3)`.
-- Give every progress table a Model column.
-- Write the same rule into every plan, for the executor: section 11's subagent table has a Model column, and section
-  12's report starts with `🤖  Model: GLM 5.3 (execution session)`.
+**Never name a model** (owner, 2026-09-24, replacing the 2026-09-15 "show the model" rule). The harness chooses the
+model, and these pages are read by different models across the life of this build, so a model name dates the page
+and misleads the next reader:
+- Start every response with `Planning session`.
+- Name a subagent by its job, never by its model: a subagent always runs the same model as the session that spawned
+  it, for every task including reading an image.
+- No progress table carries a Model column.
+- Write the same rule into every plan: section 11 names no model, and section 12's report starts with
+  `Execution session`.
 
 **Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
 put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
@@ -237,7 +239,7 @@ The plan is not READY until every line below is true.
   a given name, a helper with a given signature.
 - Every commit message, review prompt, merge message and records text is written out in full.
 - Every subagent call names its type, its isolation and its full prompt. No `model` override: every subagent
-  inherits GLM 5.3.
+  runs the same model as the session that spawns it.
 - Section 2.2 lists every situation that makes the executor stop, each with the question it asks the owner.
 - Section 10 gives the anticipated review fixes word for word, and each step's files to restore.
 - None of the vague words listed in `TEMPLATE.md` appears in an instruction.
@@ -279,7 +281,7 @@ The plan is not READY until every line below is true.
 | Agent type | Use it for |
 | --- | --- |
 | `Code Reviewer` | Every commit, before its merge (standing rule). Isolation `worktree`. Its prompt must start with `git checkout --detach <sha>`, because worktrees start at `uat`. |
-| `vision` | Every image the plan needs read (screenshots, frames). The prompt gives the path and one exact question. It runs on GLM 5.3 Flash. |
+| `vision` | Every image the plan needs read (screenshots, frames). The prompt gives the path and one exact question. It runs this session's own model. |
 | `Mobile App Builder` | Only when a step needs native Android or iOS knowledge the plan cannot spell out, such as reading a Kotlin module; never to write the change the plan gives verbatim. |
 | `Test Results Analyzer` | When a full-suite run fails in a way the plan's section 10 does not cover. It reports the cause, and the executor then STOPs. |
 | `Accessibility Auditor` | Only in plans approved for accessibility work. |
@@ -338,7 +340,7 @@ The plan is not READY until every line below is true.
   - the API key is never committed;
   - nothing of OpenCode's is changed.
 - **Reviews.** Every changed line is reviewed by a `Code Reviewer` subagent before merge. In execution sessions that
-  reviewer runs on GLM 5.3, and an audit session checks each executed plan before it is pushed (owner, 2026-09-15). A "fix
+  reviewer runs this session's own model, and an audit session checks each executed plan before it is pushed (owner, 2026-09-15). A "fix
   first" verdict is fixed and verified by the same reviewer, so its worktree is not removed until the final verdict.
 
 ## 7. Session-specific notes known on 2026-09-15
