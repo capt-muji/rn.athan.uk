@@ -1,0 +1,7 @@
+  it('carries a 7-day horizon', () => {
+    // A week is the survival time the owner judged enough for a widget whose
+    // app is never opened (owner 2026-09-24). Every bound below is an upper
+    // bound and the fixtures scale with the constant, so a shrunk horizon would
+    // satisfy them all. This is what notices.
+    expect(TIMELINE_DAYS).toBe(7);
+  });

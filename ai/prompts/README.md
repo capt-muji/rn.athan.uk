@@ -43,6 +43,30 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-09-25, while planning session 20
+
+- **The widget timeline horizon drops from 7 days to 3.** The horizon is how long a widget stays
+  correct with no app launch and no background refresh. The owner judged three days enough
+  because the background task runs every 3 hours and the foreground refresh every 2, so a phone
+  in ordinary use re-pushes dozens of times inside the window. Measured with the real builder:
+  3 days is 23 iOS entries and 9,771 bytes per standard kind, where 7 was 47 and 20,183, against
+  the ~380 entries that caused the session 16a blackout. ACCEPTED RISK, put to the owner twice
+  before they confirmed: a phone whose background refresh has stopped entirely (an iOS
+  force-quit, the ISSUES #36 reboot case, a long-idle install) shows the designed "Out of date"
+  card after 3 days instead of 7.
+- **G.2's investigation ends without a code change** (owner: a light investigation, and the
+  planner's finding on the evidence). The ~5s blank card at placement is not entry count: the
+  count sits far below the failure point at either horizon. What a freshly placed widget pays is
+  the widget extension's cold start, which evaluates a 153KB JavaScript bundle in JavaScriptCore
+  before it can draw, and the same delay appears in the picker's preview, where no placement
+  timeline exists yet. Nothing in this repository runs before that.
+- **`ios.initialLayout` is recorded, not wired.** `app.json` gives every Android kind an
+  `android.initialLayout` and no iOS kind an `ios.initialLayout`, so the expo-widgets plugin
+  writes an empty embedded iOS layout registry. It is the first thing to try if the window still
+  bothers the owner once the flag is on. Not done in session 20: it changes the native prebuild
+  and is only provable on the XS, which the owner holds, and the flag must be flipped first
+  (row 16) or there is no extension in the build to observe.
+
 ## Decided by the owner, 2026-09-24, while planning session 15d
 
 - **The Android widget learns its width from a props stamp, not from a Glance fraction.** The
