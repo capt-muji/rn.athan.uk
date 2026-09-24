@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -u
-cd /Users/muji/repos/rn.athan.uk || exit 1
+# REPO_ROOT lets an audit run this against its own worktree; the default is the
+# main checkout, which is where the executor runs it
+cd "${REPO_ROOT:-/Users/muji/repos/rn.athan.uk}" || exit 1
 FILE=widgets/PrayerWidget.tsx
 SUITE=shared/__tests__/widgetRenderer.test.ts
 CAUGHT=0
