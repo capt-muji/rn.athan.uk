@@ -1,0 +1,14 @@
+    const ARowLine = (row: ARow, index: number) => {
+      const rowColor =
+        index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
+      return (
+        <Row verticalAlignment='center' modifiers={[height(A_ROW_HEIGHT)]}>
+          <Box contentAlignment='centerStart' modifiers={[height(A_ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
+            {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
+          </Box>
+          <Box contentAlignment='centerEnd' modifiers={[height(A_ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
+            {ATimeText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
+          </Box>
+        </Row>
+      );
+    };

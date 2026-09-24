@@ -1,0 +1,20 @@
+    private fun patchCompositionSize(context: Context, manager: AppWidgetManager, kind: String, ids: IntArray) {
+        var widestDp = 0
+        for (id in ids) {
+            val options: Bundle = manager.getAppWidgetOptions(id) ?: continue
+            val minWidthDp = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH, 0)
+            if (minWidthDp > widestDp) widestDp = minWidthDp
+        }
+        if (widestDp <= 0) return
+        val desired = if (widestDp >= MEDIUM_COMPOSITION_MIN_DP) "medium" else "small"
+
+        val preferences = context.applicationContext.getSharedPreferences(WIDGETS_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        val key = "__expo_widgets_${kind}_props"
+        val stored = preferences.getString(key, null) ?: return
+        val patched = runCatching {
+            val props = JSONObject(stored)
+            if (props.optString("size") == desired) return
+            props.put("size", desired).toString()
+        }.getOrNull() ?: return
+        preferences.edit().putString(key, patched).commit()
+    }
