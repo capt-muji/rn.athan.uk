@@ -1,0 +1,8 @@
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
+
+    expect(entries[entries.length - 1].props.stale).toBe(true);
+    expect(entries.length).toBeLessThan(60);
+
+    const payloadSize = JSON.stringify(entries).length;
+    expect(payloadSize).toBeLessThan(200_000);
+  });
