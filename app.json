@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.27.364",
+    "version": "1.27.365",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -207,7 +207,7 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 160,
+                "minWidth": 110,
                 "minHeight": 110,
                 "resizeMode": "none",
                 "initialLayout": "./widgets/PrayerWidget"
@@ -222,7 +222,7 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 160,
+                "minWidth": 110,
                 "minHeight": 110,
                 "resizeMode": "none",
                 "initialLayout": "./widgets/PrayerWidget"
@@ -237,8 +237,8 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 310,
-                "minHeight": 110,
+                "minWidth": 250,
+                "minHeight": 150,
                 "resizeMode": "none",
                 "initialLayout": "./widgets/PrayerWidget"
               }
@@ -252,8 +252,8 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 310,
-                "minHeight": 110,
+                "minWidth": 250,
+                "minHeight": 150,
                 "resizeMode": "none",
                 "initialLayout": "./widgets/PrayerWidget"
               }
@@ -267,7 +267,7 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 160,
+                "minWidth": 110,
                 "minHeight": 110,
                 "resizeMode": "none",
                 "initialLayout": "./widgets/PrayerWidget"
@@ -282,7 +282,7 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 160,
+                "minWidth": 110,
                 "minHeight": 110,
                 "resizeMode": "none",
                 "initialLayout": "./widgets/PrayerWidget"
@@ -297,8 +297,8 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 310,
-                "minHeight": 110,
+                "minWidth": 250,
+                "minHeight": 150,
                 "resizeMode": "none",
                 "initialLayout": "./widgets/PrayerWidget"
               }
@@ -312,8 +312,8 @@
                 "contentMarginsDisabled": true
               },
               "android": {
-                "minWidth": 310,
-                "minHeight": 110,
+                "minWidth": 250,
+                "minHeight": 150,
                 "resizeMode": "none",
                 "initialLayout": "./widgets/PrayerWidget"
               }
