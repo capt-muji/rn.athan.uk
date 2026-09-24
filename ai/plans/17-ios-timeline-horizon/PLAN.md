@@ -292,7 +292,7 @@ and session 16a's entry-budget finding in `ai/AGENTS.md`. What it found:
 #!/usr/bin/env bash
 set -u
 cd /Users/muji/repos/rn.athan.uk || exit 1
-FILE=stores/widget.ts
+FILE=shared/widgetTimeline.ts
 SUITE=shared/__tests__/widgetTimeline.test.ts
 CAUGHT=0
 TOTAL=0
@@ -317,18 +317,24 @@ run_break() {
 }
 
 run_break "the horizon falls back to a fortnight" \
-  "const TIMELINE_DAYS = 30;" \
-  "const TIMELINE_DAYS = 14;"
+  "export const TIMELINE_DAYS = 30;" \
+  "export const TIMELINE_DAYS = 14;"
+
+run_break "the horizon overruns the entry budget" \
+  "export const TIMELINE_DAYS = 30;" \
+  "export const TIMELINE_DAYS = 365;"
 
 echo "caught $CAUGHT of $TOTAL"
 [ "$CAUGHT" = "$TOTAL" ] && echo "ALL AS EXPECTED: 1"
 ```
 
-   **This break is expected to print `NOT CAUGHT` until step 2 lands, and that is the honest result, not a failure of
-   this step.** Nothing in the suite reads the constant yet. Run it here to see that for yourself, record the output
-   in `LOG.md`, and go on: step 2 is the step that makes it `caught`, and its part 7 runs this same script and
-   requires `ALL AS EXPECTED: 1`. Do NOT invent a test here to make it green early; the guard belongs with the
-   volume block it protects.
+   Two breaks, because the horizon can be wrong in two directions and they are caught by different tests: a shrink to
+   14 by `carries a 30-day horizon`, and a jump to a year by the entry and payload bounds. The search text is the
+   exported constant step 2 moves into `shared/widgetTimeline.ts`.
+
+   **This script belongs to step 2 and is run there.** At step 1 the constant is still private in `stores/widget.ts`,
+   no test can read it, and the script cannot pass; step 1's part 7 says so and records the `NOT CAUGHT` line as
+   evidence for why step 2 exists.
 
 8. **Version and commit.** Run `node -p "require('./package.json').version"` on `uat-2` and take the next patch. Set
    it in `app.json`, `package.json` and `android/app/build.gradle` (`versionName`); all three must match.
@@ -383,24 +389,45 @@ touched.
 
 2. **Branch:** `git checkout -b test/17-volume-guard-30 uat-2`
 
-3. **Files:** `shared/__tests__/widgetTimeline.test.ts`. Nothing else, apart from `ai/plans/README.md` and this
-   folder's `PLAN.md` and `LOG.md`.
+3. **Files:** `shared/widgetTimeline.ts`, `shared/__tests__/widgetTimeline.test.ts`, `stores/widget.ts`. Nothing
+   else, apart from `ai/plans/README.md` and this folder's `PLAN.md` and `LOG.md`. The two source files are in this
+   step because the constant moves (part 4); `stores/widget.ts` loses the constant and gains the import, nothing
+   more.
 
-4. **Tests first (red).** Suite: `shared/__tests__/widgetTimeline.test.ts` (existing). No test is added: three
-   existing tests change their span, and one gains an assertion. Red is measured by part 7's break script, which is
-   step 1's script and must now end `ALL AS EXPECTED: 1`.
+4. **Tests first (red).** Suite: `shared/__tests__/widgetTimeline.test.ts` (existing).
+
+   **Corrected during execution, 2026-09-24.** As first written, this step moved the fixture spans to a literal 31
+   and the break stayed `NOT CAUGHT`, because no test could read `TIMELINE_DAYS`: it was a private constant in
+   `stores/widget.ts`, which imports react-native and `@/modules/widgetrefresh`, so a pure unit test cannot import
+   it. A guard that hard-codes the span it is guarding is not a guard, so the step now does this instead, and the
+   text below is what shipped:
+
+   - `TIMELINE_DAYS` MOVES to `shared/widgetTimeline.ts`, exported, beside `MIN_ENTRY_SPACING_MS`, which is the same
+     kind of shared widget constant. `stores/widget.ts` imports it. The doc comment moves with it and gains one line
+     saying why it lives there.
+   - Both fixture spans in the suite become `TIMELINE_DAYS + 1`, so they track the constant instead of restating it.
+   - One test is ADDED, `carries a 30-day horizon`, asserting `TIMELINE_DAYS` is 30.
+
+   That last test earns its place: every other bound in the block is an UPPER bound, and the fixtures now scale with
+   the constant, so SHRINKING the horizon satisfies all of them. The execution session measured exactly that: with
+   only the upper bounds, a break to 14 days passed. The horizon is a product decision, so one test asserts the
+   number and the rest guard the budgets.
+
+   Red is measured by part 7's break script, which must end `ALL AS EXPECTED: 1`.
 
    | What changes | Change | Why |
    | --- | --- | --- |
-   | `SPAN_DAYS` at anchor `1-2` | `16` becomes `31` | The pushed span is `TIMELINE_DAYS + 1`, so the guard must measure 31 to measure production |
+   | `SPAN_DAYS` at anchor `1-2` | `16` becomes `TIMELINE_DAYS + 1` | The pushed span IS `TIMELINE_DAYS + 1`, so the guard reads the constant rather than restating a number that can drift from it |
+   | `SPAN_DAYS` in the DST block (line 603) | `16` becomes `TIMELINE_DAYS + 1` | Same reason. Its comment already claimed to be "the span stores/widget.ts pushes" while hard-coding 16 |
    | The block's heading comment | `(16-day span, as pushed in production)` becomes `(31-day span, as pushed in production)` | The comment states the span; a stale one misleads |
    | `bounds the extras entry count and payload under the same budgets` | Its `SPAN_DAYS` use follows the constant; its comment's span and Friday list become `31-day extras span (2026-06-14 → 2026-07-14) containing the Fridays 2026-06-19, 2026-06-26, 2026-07-03 and 2026-07-10`, which the planning session computed | The comment names the Fridays inside a 16-day window, and a stale list misleads |
 
-   One assertion is ADDED, to `emits no more entries than there are prayers left, plus the opener and the guard`:
+   One assertion is ADDED, and one test:
 
-   | Test | Added assertion | What it proves | Inputs |
+   | Test | Added | What it proves | Inputs |
    | --- | --- | --- | --- |
-   | `emits no more entries than there are prayers left, plus the opener and the guard` | `expect(entries.length).toBeLessThan(250);` | The entry budget, as an absolute number rather than a ratio. The existing bound is relative to the prayers ahead, so it holds at ANY horizon and would not notice a jump to a year. 250 sits above the measured 185 and far below session 16a's ~380 failure | The existing 31-day standard span |
+   | `emits no more entries than there are prayers left, plus the opener and the guard` | `expect(entries.length).toBeLessThan(250);` | The entry budget, as an absolute number rather than a ratio. The existing bound is relative to the prayers ahead, so it holds at ANY horizon and would not notice a jump to a year. 250 sits above the measured 185 and far below session 16a's ~380 failure | The 31-day standard span |
+   | `carries a 30-day horizon` (NEW) | `expect(TIMELINE_DAYS).toBe(30);` | The horizon itself. Every other bound is an upper bound over a fixture that scales with the constant, so shrinking the horizon passes them all; this is what notices | None |
 
    Command: `npx jest shared/__tests__/widgetTimeline.test.ts --watchman=false --selectProjects=unit`
 
@@ -408,23 +435,28 @@ touched.
    measured the values these tests will see at 31 days: 185 entries and 79,998 bytes for the standard span, both
    inside the bounds. If the payload assertion fails, the horizon is not affordable and the plan is wrong: STOP.
 
-5. **Change.** This step is `(specified)`. Only the span constant, the comments that state it, and the one added
-   assertion. No bound is relaxed: the 200 KB payload guard and the `stillAhead.length + 2` entry bound stay exactly
-   as they are (section 5, design review item 4).
+5. **Change.** This step is `(specified)`. The constant moves to `shared/widgetTimeline.ts` as part 4 describes, the
+   two fixture spans read it, the comments that state a span are corrected, and the two assertions are added. No
+   bound is relaxed: the 200 KB payload guard and the `stillAhead.length + 2` entry bound stay exactly as they are
+   (section 5, design review item 4).
+
+   One stale comment is also corrected, on `keeps the serialized payload well under UserDefaults comfort size`: it
+   cited "155KB across ~380 entries" from the shape session 16a deleted. It now cites the measured ~78 KB across
+   ~185, and says that the 200 KB budget is the only automatic warning that the horizon has grown too far, so the
+   horizon moves and the budget does not.
 
    The invariant this step keeps: the volume guards measure the span production pushes, and both budgets still hold.
 
-6. **Green.** The command above passes. Then `npx tsc --noEmit` and `npx biome check . --error-on-warnings`, both
-   exit 0. Then the three widget suites together: `Tests:       163 passed, 163 total`, unchanged, because no test
-   was added or removed.
+6. **Green.** The command above passes with `Tests:       52 passed, 52 total`. Then `npx tsc --noEmit` and
+   `npx biome check . --error-on-warnings`, both exit 0. Then the three widget suites together:
+   `Tests:       164 passed, 164 total`, one more than step 1's 163, which is `carries a 30-day horizon`.
 
-7. **Breaks.** Run step 1's script again: `bash $TMPDIR/breaks-17-1.sh`.
+7. **Breaks.** Run step 1's script, now against the moved constant: `bash $TMPDIR/breaks-17-1.sh`.
 
-   Expected now: `caught: the horizon falls back to a fortnight`, then `caught 1 of 1`, then `ALL AS EXPECTED: 1`.
-   The break reverts the constant to 14, which makes the 31-day fixture disagree with the pushed span and fails the
-   volume block. This is what makes step 1's change guarded, and it is why the two steps are in this order. A
-   `BREAK NOT APPLIED` line means STOP (section 2.2, item 3). Afterwards `git status --porcelain` must list no
-   `.bak` file.
+   Expected: `caught: the horizon falls back to a fortnight`, `caught: the horizon overruns the entry budget`, then
+   `caught 2 of 2`, then `ALL AS EXPECTED: 1`. This is what makes step 1's change guarded, and it is why the two
+   steps are in this order. A `BREAK NOT APPLIED` line means STOP (section 2.2, item 3). Afterwards
+   `git status --porcelain` must list no `.bak` file.
 
 8. **Version and commit.** Next patch after `uat-2`'s `package.json`, set in all three places. Add by name:
    `shared/__tests__/widgetTimeline.test.ts`, `app.json`, `package.json`, plus the three plan files when changed.
@@ -447,18 +479,19 @@ that the horizon has grown too far, and 78KB against it is the headroom.
 ```
 
 9. **Review.** The session reviews the diff itself, against this list, and records the verdict in `LOG.md`:
-   - only the span, the comments stating it, and the one added assertion changed;
+   - the constant moved to `shared/widgetTimeline.ts` and `stores/widget.ts` only lost it and gained the import;
+   - both fixture spans read `TIMELINE_DAYS + 1` rather than a literal;
    - no bound was relaxed, and the 200 KB guard is untouched;
-   - the added assertion is an absolute entry bound, and its number is above the measured value;
+   - the added assertions are an absolute entry bound above the measured value, and the horizon itself;
    - `widgetSimulation.test.ts` was not widened;
-   - the three widget suites still report 163 tests.
+   - the three widget suites report 164 tests, one more than step 1.
 
 10. **Merge.** `git checkout uat-2 && git merge --no-ff test/17-volume-guard-30 -m "Merge test/17-volume-guard-30 into uat-2: the volume guard measures the 30-day horizon, reviewed"`
 
 11. **Done when:**
     - `npx jest shared/__tests__/widgetTimeline.test.ts --watchman=false --selectProjects=unit` passes;
     - `bash $TMPDIR/breaks-17-1.sh` ends `ALL AS EXPECTED: 1`;
-    - the three widget suites report `Tests:       163 passed, 163 total`;
+    - the three widget suites report `Tests:       164 passed, 164 total`;
     - `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0;
     - `git log --oneline -1 uat-2` shows the merge.
 
