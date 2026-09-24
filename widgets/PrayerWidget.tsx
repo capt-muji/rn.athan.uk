@@ -150,17 +150,21 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const DARK = {
-    card: 'rgba(2, 13, 38, 0.95)',
-    eyebrow: '#ff69b4',
-    hero: '#ffffff',
+    // A hint of slate lifts the near-black toward graphite (owner 2026-09-24).
+    card: 'rgba(9, 21, 47, 0.95)',
+    // Softened off pure #ff69b4 and #ffffff: both were bright enough to sting
+    // against a near-black card, so the pink takes a little white and the
+    // whites take a little of the slate tint (owner 2026-09-24).
+    eyebrow: '#f774b6',
+    hero: '#f6f8fc',
     // One slate-blue whisper per slot (owner ruling 2026-09-20): the app's
     // muted-text tint over a deepened screen-gradient start. The absolute
     // time is the base, upcoming rows sit a quarter fainter, the footer
     // half — same tint, three strengths, both sizes
     secondary: 'rgba(138, 169, 214, 0.54)',
     footer: 'rgba(138, 169, 214, 0.27)',
-    staleIcon: '#ff69b4',
-    rowPassed: '#ffffff',
+    staleIcon: '#f774b6',
+    rowPassed: '#f6f8fc',
     rowUpcoming: 'rgba(138, 169, 214, 0.405)',
     activeRowText: isExtra ? '#ffeaf4' : '#cad8ed',
     pillFill: isExtra ? '#a123aa' : '#2743e0',
