@@ -1,0 +1,8 @@
+    expect(entries[entries.length - 1].props.stale).toBe(true);
+    expect(entries.length).toBeLessThanOrEqual(stillAhead.length + 2);
+    // The bound above is relative to the prayers ahead, so it holds at ANY
+    // horizon and would not notice a jump to a year. This one would: 7 days
+    // emits 40 here and 10 days would emit 58. A bound derived from
+    // TIMELINE_DAYS would follow the horizon up and guard nothing.
+    expect(entries.length).toBeLessThan(60);
+  });
