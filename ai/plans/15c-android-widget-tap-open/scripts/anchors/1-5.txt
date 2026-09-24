@@ -1,0 +1,6 @@
+private fun ReadableMap.toPeekButton(converterContext: WidgetConverterContext, source: String): Emittable {
+  val props = props<WidgetButtonProps>(converterContext)
+  val children = children()
+  val action =
+    props.target?.let { target -> WidgetInteraction(source, target).toGlanceAction(converterContext.applicationContext) }
+  val modifier = props.buttonModifier(converterContext)

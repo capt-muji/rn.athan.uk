@@ -1,0 +1,10 @@
+@OptimizedComposeProps
+internal data class WidgetButtonProps(
+  val colors: ButtonColors = ButtonColors(),
+  val contentPadding: ContentPaddingRecord? = null,
+  val enabled: Boolean = true,
+  val label: String? = null,
+  val modifiers: ModifierList = emptyList(),
+  val target: String? = null
+) : ComposeProps
+

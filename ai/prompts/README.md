@@ -69,6 +69,26 @@ history — "a session now says which job it is doing rather than which model".)
   misleads the next reader. This supersedes the "Show the model" wording in `PLANNER-BRIEF.md`,
   `EXECUTOR-BRIEF.md` and `AUDITOR-BRIEF.md`, and the Model columns those briefs ask for.
 
+## Decided by the owner, 2026-09-24, while planning session 15c
+
+- **The widget tap rides a patched `expo-widgets`, not a provider subclass of our own.** The patch
+  gives the library's existing `Button` an `openApp` prop that maps to Glance's `actionStartActivity`,
+  so the launcher starts the app directly. The rejected alternative, a config plugin writing a
+  provider base class that starts the app when the tap broadcast arrives, depends on Android's
+  background-activity-launch rules granting a broadcast receiver permission to start an activity,
+  which the 3T on Android 9 cannot prove either way.
+- **A tap opens the app the way its launcher icon does**, not a forced navigation to a screen. The
+  app resumes what it was last showing, or cold-starts to the main screen.
+- **All eight kinds, the whole card, every state**: both sizes, both themes, both schedules, and the
+  live, out-of-date and placeholder cards. The entire card is the tap target, so there is nothing to
+  aim at.
+- **No upstream PR in this session.** 🐋  "don't just create PRs, only as a last resort". The patch is
+  proven on two Android versions here, and the finding is recorded for a later session to raise.
+- **Genuinely test it, before and after.** 🐋  "we have to test them before and after, then we go into
+  the actual tests... Don't write comments. And if you do, make sure they are very, very compact and
+  they explain the why." The patch is fifty lines in one file with one comment, and the tap is proven
+  on two Android versions before anything is called done.
+
 ## Decided by the owner, 2026-09-20, while planning session 16a
 
 - **Both lock layouts centre**, via `containerRelativeFrame({ axes: 'horizontal' })`: a real
