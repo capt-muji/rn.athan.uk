@@ -161,7 +161,16 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   shorter unattended recovery is the whole of the remedy.
 - **Evidence**: `ai/features/reboot-rearm/EVIDENCE.md` (every reading, both devices).
 
-### 37. [OPEN — upstream] The background task refuses to run without a network it does not use
+### 37. [PATCHED locally, PR OPEN upstream] The background task refuses to run without a network it does not use
+
+- **Upstream PR (ours)**: [expo/expo#50581](https://github.com/expo/expo/pull/50581), opened
+  2026-09-24 against `main` from `capt-muji:feat/background-task-requires-network-connectivity`.
+  Adds `requiresNetworkConnectivity?: boolean` to `BackgroundTaskOptions`, default `true`, with
+  XCTest coverage on iOS and the package's first Android unit tests. Anonymous: no app name, no
+  repo link, no serials, no bundle ids. Also commented on
+  [#48122](https://github.com/expo/expo/issues/48122#issuecomment-5809639597) with the
+  three-device reproduction and the run-time-versus-enqueue-time finding.
+  **STATE: open, awaiting first maintainer review. Check it every session.**
 
 - **Found**: owner question during the 1.27.326 soak, 2026-09-24. This app is offline-first:
   the rolling buffer is armed from the MMKV cache and the API is fetched about once a year.
@@ -181,12 +190,35 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   was merely waiting out its six-hour interval. The two are independent.
 - **Mitigation today**: the foreground gate, which needs nothing from the network and re-arms
   on the next app open (#36).
-- **Next**: an upstream issue or PR asking for the constraint to be opt-out. Patching the
-  constraint inside `node_modules` is rejected: invisible to the next reader and gone on the
-  next install.
+- **Enqueue time or run time? RUN TIME** (answered 2026-09-24, WorkManager source plus device):
+  `SystemJobInfoConverter.convert()` maps the constraint onto the `JobInfo` at enqueue, and
+  JobScheduler then tracks it continuously (`Tracking: CONNECTIVITY TIME`), moving it between
+  the satisfied and unsatisfied lists as the link changes. So a device that regains a network
+  runs the job late rather than never. The exposure is the length of the offline window, not
+  permanent loss. iOS matches by Apple's contract: the condition defers the launch.
+- **Fixed locally (1.27.336)**: `patches/expo-background-task+58.0.3.patch` adds
+  `requiresNetwork?: boolean` to `BackgroundTaskOptions`, **defaulting `true` so no existing
+  caller changes behaviour**, and `registerBackgroundTask` passes `false`. Proven on all three
+  devices, including a headless cold-start execution with the radio off.
+- **The patch must remove the `publication` block too.** `expo-module.config.json` declares a
+  `local-maven-repo` publication, so Gradle consumes the module's **prebuilt AAR** and never
+  compiles `android/src`. A source-only patch builds clean and changes nothing at runtime
+  (the shipped AAR's bytecode still holds `registerTask(Context, long)` and
+  `NetworkType.CONNECTED`). Verify any native patch by runtime behaviour, never by a green build.
+- **Faster than waiting out the interval**: `cmd jobscheduler run` **without** `-f` refuses a
+  job whose constraints are unmet and says so, giving an immediate verdict. `-f` bypasses
+  constraints and proves nothing about them.
+- **Upstream is stale, so we lead**: issue
+  [#48122](https://github.com/expo/expo/issues/48122) is open and unassigned since 2026-07-25;
+  PR [#48469](https://github.com/expo/expo/pull/48469) has sat in **draft with zero reviews
+  since 2026-08-04**. That PR also defaults the option to `false`, silently dropping the
+  requirement for every existing user, and ships no tests. Ours defaults `true` and carries
+  XCTest coverage in the package's existing `ios/Tests` pattern.
 - **Full write-up**: `ai/features/reboot-rearm/ISSUE-37-NETWORK-CONSTRAINT.md` — the exact
   library lines, the measurements, why #36 is unrelated, four options with trade-offs, the
   open questions for a debugging session and the repro commands.
+- **Device evidence**: `ai/features/reboot-rearm/ISSUE-37-EVIDENCE.md` — before/after dumps per
+  device, the Find X8 patched-vs-unpatched control run, and the device matrix.
 
 ---
 

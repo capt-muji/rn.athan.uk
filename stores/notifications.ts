@@ -1786,13 +1786,19 @@ export const registerBackgroundTask = async () => {
       logger.info('BACKGROUND_TASK: Unregistered for options refresh', { taskName: BACKGROUND_TASK_NAME });
     }
 
+    // The reschedule arms alarms from the MMKV cache and treats its sync() as
+    // best-effort, so a network is never needed. Left required, the scheduler
+    // withholds the task from an offline phone and the window stops rolling
+    // (ISSUES #37). `requiresNetworkConnectivity` comes from patches/expo-background-task.
     await BackgroundTask.registerTaskAsync(BACKGROUND_TASK_NAME, {
       minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
+      requiresNetworkConnectivity: false,
     });
 
     logger.info('BACKGROUND_TASK: Task registered successfully', {
       taskName: BACKGROUND_TASK_NAME,
       minimumIntervalMinutes: BACKGROUND_TASK_INTERVAL_MINUTES,
+      requiresNetworkConnectivity: false,
     });
   } catch (error) {
     // Log but don't throw - background task is a fallback, not critical
