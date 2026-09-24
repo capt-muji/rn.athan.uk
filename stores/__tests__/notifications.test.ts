@@ -598,7 +598,7 @@ describe('soundPreferenceAtom', () => {
 // =============================================================================
 // shouldRescheduleNotifications TESTS
 // ADR-001: Rolling Window Notification Buffer
-// - Refresh every NOTIFICATION_REFRESH_HOURS (4 hours)
+// - Refresh every NOTIFICATION_REFRESH_HOURS
 // - Returns true when refresh is needed, false otherwise
 // =============================================================================
 
@@ -1118,7 +1118,7 @@ describe('rescheduleAllNotificationsFromBackground', () => {
 
       await rescheduleAllNotificationsFromBackground();
 
-      // A stamp would keep the new days unarmed for twelve hours
+      // A stamp would keep the new days unarmed until the gate reopens
       expect(store.get(lastNotificationScheduleAtom)).toBe(0);
       expect(logger.info).toHaveBeenCalledWith(
         'BACKGROUND_TASK: Days changed during the reschedule, leaving the gate open for the next refresh'
@@ -1146,8 +1146,8 @@ describe('Background task constants', () => {
     expect(BACKGROUND_TASK_NAME).toBe('NOTIFICATION_REFRESH_TASK');
   });
 
-  it('BACKGROUND_TASK_INTERVAL_HOURS is 6 hours', () => {
-    expect(BACKGROUND_TASK_INTERVAL_HOURS).toBe(6);
+  it('BACKGROUND_TASK_INTERVAL_HOURS is 3 hours', () => {
+    expect(BACKGROUND_TASK_INTERVAL_HOURS).toBe(3);
   });
 
   it('BACKGROUND_TASK_INTERVAL_MINUTES is a positive number of minutes', () => {
@@ -1155,16 +1155,21 @@ describe('Background task constants', () => {
     // production resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 (Jest runs with
     // NODE_ENV=test, so the development 15-minute fast-iteration branch is not taken)
     expect(BACKGROUND_TASK_INTERVAL_MINUTES).toBe(BACKGROUND_TASK_INTERVAL_HOURS * 60);
-    expect(BACKGROUND_TASK_INTERVAL_MINUTES).toBe(360);
   });
 
-  it('foreground and background intervals are offset (not equal)', () => {
-    // ADR-007: Intervals are offset to reduce collision risk
-    expect(NOTIFICATION_REFRESH_HOURS).not.toBe(BACKGROUND_TASK_INTERVAL_HOURS);
+  it('NOTIFICATION_REFRESH_HOURS is 2 hours', () => {
+    expect(NOTIFICATION_REFRESH_HOURS).toBe(2);
   });
 
-  it('background interval is above Android minimum (15 min)', () => {
-    expect(BACKGROUND_TASK_INTERVAL_HOURS * 60).toBeGreaterThan(15);
+  // An opened app must never be the slower of the two to notice lost alarms: the gate costs
+  // one timestamp comparison and no OS scheduler, so nothing rations it (ADR-007 rev 4)
+  it('the foreground gate reopens sooner than the background task runs', () => {
+    expect(NOTIFICATION_REFRESH_HOURS).toBeLessThan(BACKGROUND_TASK_INTERVAL_HOURS);
+  });
+
+  // Above the sub-hour band where dasd answers "group is full" (RUNBOOK §1, measured at 15 min)
+  it('background interval stays out of the iOS rate-limited band', () => {
+    expect(BACKGROUND_TASK_INTERVAL_HOURS).toBeGreaterThanOrEqual(1);
   });
 });
 

@@ -1,5 +1,5 @@
 /**
- * The 12-hour notification refresh gate, and a reschedule that fails part way (stores/notifications.ts)
+ * The notification refresh gate, and a reschedule that fails part way (stores/notifications.ts)
  *
  * Every foreground asks `refreshNotifications`, so the gate is what stops a full reschedule on each resume. When
  * it is still closed nothing may be scheduled, cancelled or stamped. When a reschedule throws, the caller must
@@ -12,6 +12,7 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier } from '@/device/notifications';
+import { NOTIFICATION_REFRESH_HOURS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -114,13 +115,17 @@ afterAll(() => {
 // THE GATE
 // =============================================================================
 
-describe('refreshNotifications behind the 12-hour gate', () => {
+// Derived from the constant rather than written out: the cadence is retuned from time to time and
+// these boundaries must follow it, not pin the value it happened to have when they were written
+const GATE = NOTIFICATION_REFRESH_HOURS * HOUR;
+
+describe('refreshNotifications behind the refresh gate', () => {
   it.each([
     { since: 'no time at all', ms: 0, runs: false },
-    { since: '1 hour', ms: HOUR, runs: false },
-    { since: '1 millisecond short of 12 hours', ms: 12 * HOUR - 1, runs: false },
-    { since: 'exactly 12 hours', ms: 12 * HOUR, runs: true },
-    { since: '13 hours', ms: 13 * HOUR, runs: true },
+    { since: 'half the gate', ms: GATE / 2, runs: false },
+    { since: '1 millisecond short of the gate', ms: GATE - 1, runs: false },
+    { since: 'exactly the gate', ms: GATE, runs: true },
+    { since: 'an hour past the gate', ms: GATE + HOUR, runs: true },
   ])('with the last reschedule $since ago, runs: $runs', async ({ ms, runs }) => {
     const stamped = NOW - ms;
     store.set(lastNotificationScheduleAtom, stamped);
@@ -135,7 +140,9 @@ describe('refreshNotifications behind the 12-hour gate', () => {
       expect(cancelMock).not.toHaveBeenCalled();
       expect(getAllMock).not.toHaveBeenCalled();
       expect(store.get(lastNotificationScheduleAtom)).toBe(stamped);
-      expect(logger.info).toHaveBeenCalledWith('NOTIFICATION: Skipping reschedule, last schedule was within 12 hours');
+      expect(logger.info).toHaveBeenCalledWith(
+        `NOTIFICATION: Skipping reschedule, last schedule was within ${NOTIFICATION_REFRESH_HOURS} hours`
+      );
     }
   });
 
@@ -213,5 +220,63 @@ describe('when the reschedule throws part way', () => {
     expect(queued).toEqual({ status: 'fulfilled', value: undefined });
     expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
     expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
+  });
+});
+
+// =============================================================================
+// LOSING THE ALARMS WITHOUT LOSING THE STAMP (ISSUES #36)
+// =============================================================================
+
+/**
+ * The shape of the 8T's silence, which no test held before it happened: a reboot or an OEM
+ * kill empties AlarmManager while `lastNotificationScheduleAtom` survives untouched, so the
+ * gate reads "recently done" over a phone that has nothing armed at all.
+ *
+ * `osState` is the OS side and the atom is ours, so clearing one and leaving the other is
+ * exactly the divergence, and the test can then ask the question the user asked: does opening
+ * the app bring the alarms back?
+ */
+describe('alarms lost while the stamp survives', () => {
+  const armEverything = async () => {
+    store.set(lastNotificationScheduleAtom, 0);
+    await refreshNotifications();
+  };
+
+  it('leaves the app silent on its own, because the gate believes the work is recent', async () => {
+    await armEverything();
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    await refreshNotifications();
+
+    // This is the defect, pinned rather than fixed here: nothing re-arms while the stamp stands
+    expect(osState.size).toBe(0);
+    expect(shouldRescheduleNotifications()).toBe(false);
+  });
+
+  it('re-arms the full set once the cold launch reopens the gate', async () => {
+    await armEverything();
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    // What `reopenRefreshGateOnColdLaunch` does on Android, spelled out so this suite stays
+    // platform-free: the cold-launch path itself is covered in coldLaunchRearm.test.ts
+    store.set(lastNotificationScheduleAtom, 0);
+    await refreshNotifications();
+
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+  });
+
+  it('re-arms unattended when the background task runs, with the stamp left alone', async () => {
+    await armEverything();
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    // The background task never consults the gate, which is why it recovers a phone nobody opens
+    await rescheduleAllNotificationsFromBackground();
+
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
   });
 });

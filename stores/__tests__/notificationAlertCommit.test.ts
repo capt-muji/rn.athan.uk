@@ -4,7 +4,7 @@
  * When the phone takes every part of a change, the saved settings and the alarms are the new ones. When it refuses or
  * fails any part, both go back to what they were, inside the same lock acquisition. When it refuses that too, the
  * prayer is marked, and the next launch or return to the app applies its saved settings again, even though the
- * twelve-hour gate is shut.
+ * refresh gate is shut.
  */
 
 import * as Notifications from 'expo-notifications';
@@ -552,14 +552,14 @@ describe('a change the phone refuses to put back', () => {
     expect(armedFor('Fajr')).toEqual([athanIds('Fajr')[0]]);
 
     // The phone starts taking them again, and the next return to the app puts the prayer right, although the
-    // twelve-hour gate is shut
+    // refresh gate is shut
     refusedCancels.clear();
     refusedSchedules.clear();
     jest.setSystemTime(NOW + MINUTE);
     await expect(refreshNotifications()).resolves.toBeUndefined();
 
     expect(armedFor('Fajr')).toEqual([...athanIds('Fajr')].sort());
-    // Putting one prayer right is not a full pass, so it does not close the gate for the next twelve hours
+    // Putting one prayer right is not a full pass, so it does not close the gate for the next full interval
     expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
   });
 

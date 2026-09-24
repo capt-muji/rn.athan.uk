@@ -227,7 +227,7 @@ The full Audacity projects for all Athan and reminder audio (for anyone who want
 - 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer (at-time and reminder)
 - ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval — every prayer × interval plays its own custom audio (see [Reminder Audio Sources](#-reminder-audio-sources))
 - 📢 **Selectable Athan Sounds**: Every sound linked to its source (see [Athan Audio Sources](#-athan-audio-sources))
-- 📅 **Smart Notification Buffer**: 2-day rolling schedule that keeps renewing itself in the background (~every 6 hours) even if the app is never opened
+- 📅 **Smart Notification Buffer**: 2-day rolling schedule that keeps renewing itself in the background (~every 3 hours) even if the app is never opened
 - 🛡️ **Sequential Scheduling Queue**: Operations queued and executed in order, never dropped
 - 🪪 **Deterministic Notification IDs**: `athan_<schedule>_<prayer>_<date>` (reminders include the interval) — re-scheduling with the same ID replaces in place on both platforms, so orphaned alarms can never double-fire
 

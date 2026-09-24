@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { View, type ViewStyle } from 'react-native';
+import { View, type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Countdown } from '@/components/countdown';
@@ -24,7 +24,7 @@ export default function Screen({ type }: Props) {
   const chromeDeferred = useChromeDeferred();
   const deferContent = type === ScheduleType.Extra && !chromeDeferred;
 
-  const computedStyles: ViewStyle = {
+  const computedStyles: ViewProps['style'] = {
     paddingTop: insets.top + SCREEN.paddingTop,
     paddingBottom: insets.bottom,
     maxWidth: SIZE.contentMaxWidth,
