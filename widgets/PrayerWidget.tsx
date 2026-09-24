@@ -195,8 +195,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // narrower rows pull the list's left edge in, and the freed width lets
   // the hero trio center between the card's edge and the list.
   const MEDIUM_LIST_WIDTH = 146;
-  // Android keeps the wider list: its rows are 24dp and its medium is wider.
-  const LIST_WIDTH = 162;
+  // Fallback until a native tick stamps the real grant.
+  const ANDROID_MEDIUM_MIN_WIDTH = 310;
+  const CARD_PAD_START = 13;
+  const CARD_PAD_END = 20;
   // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
   // one bottom offset, both sizes, both themes, both schedules.
   const FOOTER_BOTTOM_PAD = 16;
@@ -204,14 +206,17 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // the 2026-09-19 overhang): same height as the row, no overhang —
   // uniform list slots, both schedules.
   const PILL_VPAD = 0;
-  // Fixed hero width: a fillMaxWidth fraction on the first Row child let
-  // the hero take the full card and squeezed the day list to zero width in
-  // Glance (caught on the 3T: the medium rendered hero-only, centered).
-  // 170dp with the 162dp list: the trio centers in the left region and the
-  // list expands LEFT off its right anchor for the 13sp rows' air.
-  const HERO_WIDTH = 170;
-  const ROW_NAME_WIDTH = 82;
-  const ROW_TIME_WIDTH = 54;
+  // Shares, not dp: minWidth is a floor the launcher may grant exactly, and
+  // fixed columns summing past it overflow the Row, which Glance clips (the
+  // X8's sliced names). Glance's own fractions are unreachable — expo-widgets'
+  // converter drops fillMaxWidth's fraction and ignores weight, which is what
+  // starved the list on the 3T — so the grant rides the snapshot instead.
+  // REFERENCE_* are the owner-approved 3T proportions.
+  const REFERENCE_INNER_WIDTH = 347;
+  const REFERENCE_HERO_WIDTH = 170;
+  const REFERENCE_NAME_WIDTH = 82;
+  const REFERENCE_TIME_WIDTH = 54;
+  const ROW_TEXT_MIN_SIZE = 10;
 
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
@@ -369,6 +374,20 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       return ACard(footer, trio);
     }
 
+    const stampedWidth = input.grantedWidthDp;
+    const grantedWidth = typeof stampedWidth === 'number' && stampedWidth > 0 ? stampedWidth : ANDROID_MEDIUM_MIN_WIDTH;
+    const innerWidth = grantedWidth - CARD_PAD_START - CARD_PAD_END;
+    const scale = innerWidth / REFERENCE_INNER_WIDTH;
+    const HERO_WIDTH = Math.round(REFERENCE_HERO_WIDTH * scale);
+    // Remainder, not its own rounded share: two rounded shares can sum a dp
+    // past the inner width, and a dp of overflow clips.
+    const LIST_WIDTH = innerWidth - HERO_WIDTH;
+    const ROW_NAME_WIDTH = Math.round(REFERENCE_NAME_WIDTH * scale);
+    const ROW_TIME_WIDTH = Math.round(REFERENCE_TIME_WIDTH * scale);
+    // Glance has no autoshrink, so text scales with its box or "Last Third"
+    // clips at 13sp in a narrowed name column.
+    const rowTextSize = Math.max(ROW_TEXT_MIN_SIZE, Math.min(ROW_TEXT_SIZE, Math.round(ROW_TEXT_SIZE * scale)));
+
     // Names and times render as overlayed layers, not one Row: a
     // fillMaxWidth Spacer between them starves the trailing time to zero
     // width in Glance (same starvation class as the hero column). Times
@@ -383,10 +402,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       return (
         <Row verticalAlignment='center' modifiers={[height(A_ROW_HEIGHT)]}>
           <Box contentAlignment='centerStart' modifiers={[height(A_ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
-            {AText(row.name, ROW_TEXT_SIZE, 'normal', rowColor)}
+            {AText(row.name, rowTextSize, 'normal', rowColor)}
           </Box>
           <Box contentAlignment='centerEnd' modifiers={[height(A_ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
-            {ATimeText(row.time, ROW_TEXT_SIZE, 'bold', rowColor)}
+            {ATimeText(row.time, rowTextSize, 'bold', rowColor)}
           </Box>
         </Row>
       );
@@ -395,7 +414,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     return (
       <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
         <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
-        <Row modifiers={[fillMaxSize(), APad(13, 13, 20, FOOTER_BOTTOM_PAD)]}>
+        <Row modifiers={[fillMaxSize(), APad(CARD_PAD_START, 13, CARD_PAD_END, FOOTER_BOTTOM_PAD)]}>
           <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
             <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
               {trio}

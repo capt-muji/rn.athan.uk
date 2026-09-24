@@ -607,18 +607,20 @@ describe('home widget renderer', () => {
 
     it('bounds the active pill to the list column, not the card remainder', () => {
       freezeNow(at(DAY_ONE, '14:08'));
-      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380 }), { colorScheme: 'light' })
+      );
       const nodes = collect(tree);
       const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
       expect(pill).toBeDefined();
-      // The pill's ancestor column is a fixed 148dp box: at full widget
-      // width the pill must not stretch across the dead space right of the
-      // rows (owner finding 2026-09-19)
+      // The pill's ancestor column is the list's share of the granted width:
+      // at full widget width the pill must not stretch across the dead space
+      // right of the rows (owner finding 2026-09-19)
       const listColumn = nodes.find(
         (node) =>
           node.marker === 'Box' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'width' && mod.value === 162
+            (mod) => mod.modifier === 'width' && mod.value === 177
           ) &&
           collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
       );
@@ -657,6 +659,138 @@ describe('home widget renderer', () => {
           textsOf(node).includes('Fajr')
       );
       expect(rowsRow).toBeDefined();
+    });
+
+    // The medium's columns are shares of the width the launcher granted, so
+    // the same helpers read them back at any grant
+    const mediumBoxWidths = (grantedWidthDp?: number): number[] => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const props = grantedWidthDp === undefined ? { size: 'medium' } : { size: 'medium', grantedWidthDp };
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps(props as Partial<PrayerWidgetAndroidProps>), { colorScheme: 'light' })
+      );
+      return collect(tree).flatMap((node) =>
+        node.marker !== 'Box'
+          ? []
+          : ((node.props.modifiers as { modifier: string; value: unknown }[] | undefined) ?? []).flatMap((mod) =>
+              mod.modifier === 'width' && typeof mod.value === 'number' ? [mod.value] : []
+            )
+      );
+    };
+
+    // The list is the widest box the medium renders and the hero the next
+    // widest: the name and time boxes are shares of the list
+    const heroAndList = (grantedWidthDp?: number): { hero: number; list: number } => {
+      const sorted = [...mediumBoxWidths(grantedWidthDp)].sort((a, b) => b - a);
+      return { hero: sorted[1] as number, list: sorted[0] as number };
+    };
+
+    const rowNameFontSizes = (grantedWidthDp: number): number[] => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+      );
+      return collect(tree).flatMap((node) => {
+        if (node.marker !== 'Text') return [];
+        const text = node.props.children;
+        if (typeof text !== 'string' || !['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'].includes(text)) {
+          return [];
+        }
+        const size = (node.props.style as { fontSize?: number } | undefined)?.fontSize;
+        return typeof size === 'number' ? [size] : [];
+      });
+    };
+
+    // The name box is the row's leading box: the widths a row renders are
+    // the name box and the time box, in that order
+    const rowBoxWidths = (grantedWidthDp: number): { name: number; time: number } => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+      );
+      const fajrRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'height' && mod.value === 24
+          ) &&
+          textsOf(node).includes('Fajr')
+      );
+      const widths = collect(fajrRow).flatMap((node) =>
+        node.marker !== 'Box'
+          ? []
+          : ((node.props.modifiers as { modifier: string; value: unknown }[] | undefined) ?? []).flatMap((mod) =>
+              mod.modifier === 'width' && typeof mod.value === 'number' ? [mod.value] : []
+            )
+      );
+      return { name: widths[0] as number, time: widths[1] as number };
+    };
+
+    it('sizes the row name and time boxes from the granted width', () => {
+      // The name box is what clipped on the X8, so it is pinned directly
+      // rather than inferred from the list column
+      expect(rowBoxWidths(380)).toEqual({ name: 82, time: 54 });
+      expect(rowBoxWidths(310)).toEqual({ name: 65, time: 43 });
+      expect(rowBoxWidths(258)).toEqual({ name: 53, time: 35 });
+    });
+
+    it('sizes the medium columns from the granted width', () => {
+      // 360dp is the Find X8's grant under its 480 display-size override:
+      // inner 327, so the hero's 170/347 share rounds to 160 and the list
+      // takes the 167 remainder
+      const { hero, list } = heroAndList(360);
+      expect(hero).toBe(160);
+      expect(list).toBe(167);
+    });
+
+    it('never lets the medium columns sum past the granted width', () => {
+      // The invariant, across every grant both phones and a re-columned home
+      // grid can produce: one dp of overflow is one clipped glyph in Glance
+      for (const granted of [380, 360, 330, 310, 285, 258]) {
+        const { hero, list } = heroAndList(granted);
+        expect(hero + list).toBe(granted - 33);
+      }
+    });
+
+    it('falls back to the declared minimum when the width is not stamped', () => {
+      // A fresh JS push cannot know the grant, so the layout uses the
+      // provider's declared 310dp until the next native tick stamps it
+      const { hero, list } = heroAndList(undefined);
+      expect(hero).toBe(136);
+      expect(list).toBe(141);
+    });
+
+    it('shrinks the row text with the box so long names are not clipped', () => {
+      // Glance cannot shrink text to fit, so a name box narrowed by a tight
+      // grant would clip the longest names at a fixed 13sp
+      const sizes = rowNameFontSizes(309);
+      expect(sizes.length).toBeGreaterThan(0);
+      expect(new Set(sizes)).toEqual(new Set([10]));
+    });
+
+    it('never shrinks the row text below its legible floor', () => {
+      // The scale alone reaches 9sp at 286dp and 8sp at 258dp: below the
+      // floor the rows stop being readable, so it clamps rather than follow
+      expect(new Set(rowNameFontSizes(286))).toEqual(new Set([10]));
+      expect(new Set(rowNameFontSizes(258))).toEqual(new Set([10]));
+    });
+
+    it('falls back to the declared minimum when the stamped width is not usable', () => {
+      // The native tick stamps 0 for a kind it cannot measure; treating that
+      // as a real grant would subtract the padding from nothing and drive
+      // every column negative
+      const { hero, list } = heroAndList(0);
+      expect(hero).toBe(136);
+      expect(list).toBe(141);
+    });
+
+    it('keeps the row text at 13sp when the grant is generous', () => {
+      // The 3T's grant returns the approved look unchanged, and a grant
+      // wider than the reference (a tablet, or a wide home grid) must not
+      // grow the text past it: the look is settled, so the scale only shrinks
+      expect(new Set(rowNameFontSizes(380))).toEqual(new Set([13]));
+      expect(new Set(rowNameFontSizes(420))).toEqual(new Set([13]));
+      expect(new Set(rowNameFontSizes(560))).toEqual(new Set([13]));
     });
 
     it("rolls the medium day list to the next prayer's day after the last row passes", () => {
