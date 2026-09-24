@@ -403,11 +403,10 @@ echo "ALL AS EXPECTED: $CAUGHT"
    Commit with `git commit -F $TMPDIR/msg-1.txt` in the background. In the log, the last `Tests:` line must end
    `passed, 4647 total` and four `100%` coverage lines must be present.
 
-9. **Review.** `Code Reviewer`, isolation `worktree`. Prompt:
+9. **Review.** The session reviews this commit itself, with no subagent (section 11, the owner's instruction of
+   2026-09-25). Read it with `git show <sha>` and work through this checklist, recording the verdict in `LOG.md`:
 
    ```
-   Run git checkout --detach <sha>.
-
    Review this commit against its plan, ai/plans/20-g2-blank-card-and-horizon/PLAN.md step 1.
 
    Check:
@@ -567,11 +566,10 @@ echo "ALL AS EXPECTED: $CAUGHT"
    Commit with `git commit -F $TMPDIR/msg-2.txt` in the background. The last `Tests:` line must end
    `passed, 4647 total`, with four `100%` coverage lines.
 
-9. **Review.** `Code Reviewer`, isolation `worktree`. Prompt:
+9. **Review.** The session reviews this commit itself, with no subagent (section 11, the owner's instruction of
+   2026-09-25). Read it with `git show <sha>` and work through this checklist, recording the verdict in `LOG.md`:
 
    ```
-   Run git checkout --detach <sha>.
-
    Review this commit against its plan, ai/plans/20-g2-blank-card-and-horizon/PLAN.md step 2.
 
    Check every factual claim it makes against the installed tree, because the
@@ -725,12 +723,15 @@ Then follow `EXECUTOR-BRIEF.md` section 4a in full.
 
 ## 11. Subagents in this plan
 
-| Step | Agent type | Isolation | Why | Prompt |
-| --- | --- | --- | --- | --- |
-| 1 | `Code Reviewer` | `worktree` | The standing rule: every commit is reviewed before its merge | Step 1, part 9 |
-| 2 | `Code Reviewer` | `worktree` | The same, and this commit's whole point is factual accuracy, so the reviewer re-checks each claim against the installed tree | Step 2, part 9 |
+**None. The owner instructed on 2026-09-25 that this session uses no subagents at all, and that the one session does
+the planning, the execution and the audit itself.** That instruction overrides the standing "every commit is reviewed
+by a `Code Reviewer` subagent" rule for this plan.
 
-No model is named: a subagent always runs the spawning session's own model. No other agent type may be used.
+Every commit is still reviewed before its merge. The session performs the review itself, against the checklist each
+step's part 9 gives, reading the commit with `git show <sha>` and verifying each factual claim with the commands
+listed there. The verdict and what it checked are recorded in `LOG.md`, exactly as a subagent's verdict would be.
+
+This plan needs no image read and no parallel work, which are the only two jobs a subagent would have been right for.
 
 ## 12. Report to the owner
 
