@@ -6,7 +6,7 @@
 // Text/Image/Spacer are shared spellings: the swift-ui globals answer
 // them on iOS, the jetpack globals on Android, and the body never needs
 // to know which.
-import { Box, Column, Row } from '@expo/ui/jetpack-compose';
+import { Box, Button, Column, Row } from '@expo/ui/jetpack-compose';
 // Canonical modifier names, same rule as the components above: the Android
 // runtime's globals answer these spellings. padding is the one collision
 // with swift-ui's modifier of the same name, so the Android calls go
@@ -37,7 +37,7 @@ import {
   textCase,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
-import type { ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
 import type { PrayerWidgetAndroidProps, PrayerWidgetProps } from '@/shared/widgetTypes';
 
@@ -255,19 +255,34 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     </ATimeEl>
   );
 
-  const ACard = (footer: string | null, content: ReactNode) => (
-    <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[fillMaxSize()]}>
-      <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
-      <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(13, 13, 13, FOOTER_BOTTOM_PAD + 18)]}>
-        {content}
-      </Box>
-      {footer === null ? null : (
-        <Row modifiers={[height(FOOTER_BOTTOM_PAD + 18), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]} verticalAlignment='center'>
-          {AText(footer, 12, 'normal', palette.footer)}
-        </Row>
-      )}
-    </Box>
+  const AButtonEl = Button as unknown as (elementProps: {
+    openApp?: boolean;
+    modifiers?: ModifierConfig[];
+    children?: ReactNode;
+  }) => ReactElement;
+
+  const AOpenApp = (content: ReactNode): ReactElement => (
+    <AButtonEl openApp modifiers={[fillMaxSize()]}>
+      {content}
+    </AButtonEl>
   );
+
+  const ACard = (footer: string | null, content: ReactNode) =>
+    AOpenApp(
+      <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[fillMaxSize()]}>
+        <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
+        <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(13, 13, 13, FOOTER_BOTTOM_PAD + 18)]}>
+          {content}
+        </Box>
+        {footer === null ? null : (
+          <Row
+            modifiers={[height(FOOTER_BOTTOM_PAD + 18), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]}
+            verticalAlignment='center'>
+            {AText(footer, 12, 'normal', palette.footer)}
+          </Row>
+        )}
+      </Box>
+    );
 
   // Android's countdown is computed at render time, so it carries the format
   // itself: hours and minutes only, rounded up, never reading below a minute.
@@ -411,7 +426,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       );
     };
 
-    return (
+    return AOpenApp(
       <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
         <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
         <Row modifiers={[fillMaxSize(), APad(CARD_PAD_START, 13, CARD_PAD_END, FOOTER_BOTTOM_PAD)]}>
