@@ -169,3 +169,84 @@ The widget's granted width falls below what a fixed layout assumes whenever the 
 is narrower than the one the constants were tuned on, and a user can cause that on any phone by
 re-columning their home screen. The proportional layout holds at every width measured, down to
 the 258dp a 6-column grid yields on the X8 at native density.
+
+## Fixed: tapping an Android widget opens the app (session 15c, 2026-09-24)
+
+Tapping an Android widget did nothing, and no arrangement of `expo-widgets`' own API
+could change that. The library has one tap primitive, `Button`, and its click sends a
+broadcast to the widget's own provider, which re-evaluates the layout's press handler
+and reloads the widget (`WidgetInteractionAction.kt`). No code path in the library
+starts an activity, so a tap could redraw the card and never open the app.
+
+`patches/expo-widgets+58.0.3.patch` gives `Button` one optional boolean, `openApp`.
+When set, the converter builds Glance's own `actionStartActivity` against the package's
+launch intent instead of the interaction broadcast. The prop defaults false, so every
+existing `Button` behaves exactly as before. The layout wraps every Android
+composition in one such button, which covers all eight kinds and all three states: the
+live card, the out-of-date card and the placeholder.
+
+Measured at 1.27.349, on the production package, with the app killed immediately
+before each tap:
+
+| Device | Android | App before the tap | Logcat | App after the tap |
+| --- | --- | --- | --- | --- |
+| OnePlus 3T | 9 (API 28) | `pidof` empty | `I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] dat=glance-action:/CALLBACK?appWidgetId=3&viewId=2131362200&viewSize=370.0.dp x 205.0.dp&extraData=268435456 flg=0x10000000 pkg=com.mugtaba.athan cmp=com.mugtaba.athan/.MainActivity (has extras)} from uid 10191 pid -1` | pid 22537, and `MainActivity` became the resumed activity |
+| athan_test_avd (emulator) | 15 (API 35) | `pidof` empty | `I/ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] dat=glance-action:/... flg=0x10000000 pkg=com.mugtaba.athan cmp=com.mugtaba.athan/.MainActivity (has extras)} with LAUNCH_SINGLE_TASK from uid 10207 (realCallingUid=10176) (BAL_ALLOW_VISIBLE_WINDOW) result code=0` | pid 3944 |
+
+Neither log contains `Background activity launch blocked`.
+
+The Android 15 reading is the one that matters most, and it came from an emulator
+rather than a phone: the Find X8 went back to its user on 2026-09-24, leaving the 3T,
+on Android 9, as the only physical Android device. Android 9 predates every
+background-activity-launch restriction, so it could never have shown whether the tap
+survives them. `BAL_ALLOW_VISIBLE_WINDOW` is the system stating that the check ran and
+passed.
+
+### Killing the app before the tap is harder than it looks
+
+`am kill` is `killBackgroundProcesses`, which skips a process that is not currently in
+the background. On both devices a WorkManager job (`SystemJobService`) runs every few
+minutes and, while it runs, the process sits at `vis` with a service attached, so the
+kill silently does nothing and `pidof` keeps printing the same pid. The widget render
+then warms the process again within seconds of it dying, so even a successful kill is
+followed by a respawn before a separate `adb` call can tap.
+
+Both readings here were taken by killing and tapping inside ONE on-device shell, which
+closes that gap:
+
+```
+adb -s <serial> shell 'am kill com.mugtaba.athan; sleep 1; echo "BEFORE=[$(pidof com.mugtaba.athan)]"; input tap <x> <y>; sleep 3; echo "AFTER=[$(pidof com.mugtaba.athan)]"'
+```
+
+Waiting for `dumpsys activity services com.mugtaba.athan` to report no `ServiceRecord`
+before the kill is what makes the kill land at all.
+
+### Why the launch is not blocked
+
+A widget tap is not a background activity launch by the app. The launcher sends the
+`PendingIntent` itself, and AOSP's `RemoteViews.getLaunchOptions` attaches
+`MODE_BACKGROUND_ACTIVITY_START_ALLOW_ALWAYS` to it, with the comment "If the user
+interacts with a visible element it is safe to assume they consent that something is
+going to start." That is why the tap works with the app dead, and after a reboot with
+the app never opened: the `PendingIntent` lives in the `RemoteViews` the system holds.
+
+### Not raised upstream
+
+The owner ruled on 2026-09-24 that a PR is a last resort and that the change is proven
+on devices first. It is a candidate for a future session.
+
+### The capture trap, for whoever writes the next patch
+
+`npx patch-package expo-widgets` with no filter produces a patch of about 193,000
+lines. `expo-widgets` builds in place, so `android/build/` holds compiled classes,
+AARs and Gradle caches, and `bundle/build/` holds Metro output including
+`ExpoWidgetsLayoutRegistry.imports.js`, which contains the absolute path of whichever
+machine ran the build. The capture must carry `--include '^android/src/'`, which yields
+51 lines and one file.
+
+### `uiautomator dump` is still unusable on the 3T
+
+It returned `ERROR: null root node returned by UiTestAutomationBridge` for every
+attempt on the launcher. The widget's tap coordinates were found instead by decoding
+the `screencap` PNG and scanning it for the card's bright block, which put the medium
+card at roughly y 700 to 1250, full width, so its centre is (540, 975).
