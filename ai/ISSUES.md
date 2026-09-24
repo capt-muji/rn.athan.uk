@@ -1,9 +1,9 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-09-23 — #36 added (lost alarms stayed lost; the refresh gate trusted a
-timestamp). Ledger compacted 2026-09-20: closed issues moved to the one-line index at the bottom
-(full detail in git history); open issues keep their detail verbatim. Open now: #10, #17, #27,
-G.1, G.2, #35.
+Last updated: 2026-09-24 — #36 added and fixed (lost alarms stayed lost, because the refresh gate
+trusted a timestamp), #37 opened (the background task demands a network it does not use). Ledger
+compacted 2026-09-20: closed issues moved to the one-line index at the bottom (full detail in git
+history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2, #35.
 
 Notes: the fleet gained a Huawei/Honor phone 2026-09-09 (owner-installed 1.24.1 via the EAS
 link; its USB never enumerated on the Mac). Upstream watches dropped: #44540 (closed upstream via
@@ -160,6 +160,30 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   identically, and battery/auto-launch toggles are ruled out as a user-facing fix, so a
   shorter unattended recovery is the whole of the remedy.
 - **Evidence**: `ai/features/reboot-rearm/EVIDENCE.md` (every reading, both devices).
+
+### 37. [OPEN — upstream] The background task refuses to run without a network it does not use
+
+- **Found**: owner question during the 1.27.326 soak, 2026-09-24. This app is offline-first:
+  the rolling buffer is armed from the MMKV cache and the API is fetched about once a year.
+  The background refresh needs no network, and `rescheduleAllNotificationsFromBackground`
+  already treats its `sync()` as best-effort in its own try/catch so a failed fetch cannot
+  stop the reschedule.
+- **Cause (library, hardcoded, both platforms)**: `Constraints.Builder()
+  .setRequiredNetworkType(NetworkType.CONNECTED)` in expo-background-task's
+  `BackgroundTaskScheduler.kt:107`, and `request.requiresNetworkConnectivity = true` in
+  `BackgroundTaskScheduler.swift:93`. `BackgroundTaskOptions` carries `minimumInterval` and
+  nothing else, so there is no supported way to drop it.
+- **Cost**: a phone offline overnight, in airplane mode, or holding a stale connectivity flag
+  loses its unattended recovery entirely. Measured on the 3T: the job sat unrun for 3h16m
+  behind this constraint while the device pinged 8.8.8.8 at 0% loss, and Google's own
+  `tachyon` was blocked by the same flag, so the staleness is device-wide rather than ours.
+- **NOT the cause of #36**: the 8T's job recorded `Satisfied constraints: CONNECTIVITY` and
+  was merely waiting out its six-hour interval. The two are independent.
+- **Mitigation today**: the foreground gate, which needs nothing from the network and re-arms
+  on the next app open (#36).
+- **Next**: an upstream issue or PR asking for the constraint to be opt-out. Patching the
+  constraint inside `node_modules` is rejected: invisible to the next reader and gone on the
+  next install.
 
 ---
 
