@@ -63,11 +63,16 @@ and is worth raising in the same breath: the two paths should agree.
 
 The fleet as tested:
 
-| Device | OS | API | Path taken | Constrained |
-| --- | --- | --- | --- | --- |
-| OnePlus 3T | Android 9 | 28 | OneTimeWork | yes |
-| Oppo Find X8 | ColorOS 16 | (to confirm) | OneTimeWork | yes |
-| iPhone XS | iOS 18.7.x | — | BGProcessingTask | yes |
+| Device | Serial | OS | API | Path taken | Constrained | Flag state as found |
+| --- | --- | --- | --- | --- | --- | --- |
+| OnePlus 3T | `3T_SERIAL` | Android 9 | 28 | OneTimeWork | yes | **stuck unsatisfied** with a validated link |
+| Oppo Find X8 | `X8_SERIAL` | Android 16 (ColorOS `16.0.10.500`) | 36 | OneTimeWork | yes | satisfied |
+| iPhone XS | `IPHONE_UDID` | iOS 18.7.x | — | BGProcessingTask | yes | n/a |
+
+Both ends of the supported Android range are covered by the fleet: API 28 and API 36, seven
+major versions apart, and both take the constrained path. The permission differs across them
+(`SCHEDULE_EXACT_ALARM` on API 31, auto-granted `USE_EXACT_ALARM` on API 36) but the network
+constraint does not.
 
 ---
 
