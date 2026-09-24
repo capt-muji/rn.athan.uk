@@ -633,12 +633,8 @@ describe('home widget renderer', () => {
           collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
       );
       expect(listColumn).toBeDefined();
-      // The pill WRAPS the row content with 12dp of air each side and no more:
-      // it starts where the dead space to the left of the rows ends, so its
-      // trailing edge lands 12dp past the times instead of at the column's own
-      // edge (owner ruling 2026-09-24, replacing the 2026-09-19 full-column
-      // pill). At a 380dp grant the list is 177dp and the name and time boxes
-      // sum to 136dp, so the pill is 160dp and starts 17dp in.
+      // The pill wraps the text now, not the column (owner 2026-09-24): at this
+      // 380dp grant the list is 177 and the text 136, so the pill starts 17 in.
       const pillColumn = collect(tree).find(
         (node) =>
           node.marker === 'Column' &&
@@ -671,8 +667,6 @@ describe('home widget renderer', () => {
       expect(rowsRow).toBeDefined();
     });
 
-    // The pill's leading inset and the rows' leading inset, read back from the
-    // two sibling columns the medium list stacks
     const pillAndRowsLead = (grantedWidthDp: number): { pill: number; rows: number } => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
@@ -694,13 +688,8 @@ describe('home widget renderer', () => {
     };
 
     it('gives the active pill equal air each side of the row text, at every grant', () => {
-      // The owner saw the pill "perfectly aligned on the left, but on the right
-      // side, it's extended even further out": it filled the list column while
-      // the rows sat 12dp inside it, so every dp of slack landed right of the
-      // times, 21dp of it at a 310dp grant and more as the screen widened. The
-      // pill now wraps the text with the same 12dp the owner approved on the
-      // left, and where a narrow grant cannot afford 12 it shrinks both sides
-      // together rather than overflowing the column.
+      // The owner saw the pill "extended even further out" on the right: it
+      // filled the column while the rows sat 12dp in, so the slack landed there.
       for (const granted of [380, 360, 330, 310, 285, 258, 236, 220, 200]) {
         const { pill, rows } = pillAndRowsLead(granted);
         const { name, time } = rowBoxWidths(granted);
@@ -711,9 +700,8 @@ describe('home widget renderer', () => {
         expect(left).toBe(right);
         expect(left).toBeLessThanOrEqual(12);
         expect(left).toBeGreaterThan(0);
-        // A margin taken as a flat 12dp stays symmetric on a narrow grant by
-        // pushing the pill's own inset negative, which is a pill wider than the
-        // column it sits in: the air has to come out of the margin instead
+        // A flat 12 stays symmetric on a narrow grant by going negative here,
+        // which is a pill wider than its own column
         expect(pill).toBeGreaterThanOrEqual(0);
         expect(rows + name + time).toBeLessThanOrEqual(list);
       }
