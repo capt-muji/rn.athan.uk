@@ -1,0 +1,14 @@
+export interface PrayerWidgetAndroidProps {
+  /** Snapshot schema version (ANDROID_SNAPSHOT_VERSION) */
+  v: number;
+  /** Which schedule the snapshot describes */
+  schedule: 'standard' | 'extra';
+  /** Palette, stamped per kind (the gallery's Light/Dark pairs) */
+  theme: WidgetTheme;
+  /** Which size composition to render, stamped per kind */
+  size: 'small' | 'medium';
+  /** The window's days, in order */
+  days: AndroidWidgetDay[];
+  /** The last readable prayer in the window: renders past this go stale */
+  horizonEpochMs: number;
+}

@@ -1,0 +1,12 @@
+    return (
+      <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
+        <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
+        <Row modifiers={[fillMaxSize(), APad(13, 13, 20, FOOTER_BOTTOM_PAD)]}>
+          <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
+            <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
+              {trio}
+            </Box>
+            {AText(footer, 12, 'normal', palette.footer)}
+          </Box>
+          <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
+            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
