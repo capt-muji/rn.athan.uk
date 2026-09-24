@@ -586,7 +586,7 @@ describe('home widget renderer', () => {
           (node) =>
             node.marker === 'Row' &&
             (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-              (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,20,16]'
+              (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
             )
         );
         expect(outerRow).toBeDefined();
@@ -644,13 +644,13 @@ describe('home widget renderer', () => {
       // Pixel-audited on the 3T, then owner-tuned: the pill sits 1dp low so
       // the digit ink band reads dead-center against its edges
       expect(pillColumn?.props.modifiers).toEqual(
-        expect.arrayContaining([{ modifier: 'padding', value: [17, 1, 0, 0] }])
+        expect.arrayContaining([{ modifier: 'padding', value: [14, 1, 0, 0] }])
       );
       const rowsColumn = nodes.find(
         (node) =>
           node.marker === 'Column' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[29,0,0,0]'
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[26,0,0,0]'
           )
       );
       expect(rowsColumn).toBeDefined();
@@ -686,6 +686,30 @@ describe('home widget renderer', () => {
       const rowsColumn = collect(tree).find((node) => node.marker === 'Column' && textsOf(node).includes('Fajr'));
       return { pill: leadOf(pillColumn), rows: leadOf(rowsColumn) };
     };
+
+    it('splits the medium in half and centres the trio in its own half, both themes', () => {
+      // The trio's Column carried horizontalAlignment center with no width, so
+      // it shrink-wrapped its text and parked at its parent's start: the owner
+      // saw the countdown sitting left of its half on both themes. A Column
+      // only centres what it is wide enough to centre.
+      for (const theme of ['light', 'dark'] as const) {
+        freezeNow(at(DAY_ONE, '14:08'));
+        const tree = renderTree(
+          layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, theme }), { colorScheme: 'light' })
+        );
+        const trio = collect(tree).find(
+          (node) => node.marker === 'Column' && node.props.horizontalAlignment === 'center'
+        );
+        expect(trio?.props.modifiers).toEqual(expect.arrayContaining([{ modifier: 'fillMaxWidth', value: undefined }]));
+      }
+
+      // Equal halves, and equal card padding so those halves sit where the
+      // card's own quarters are
+      for (const granted of [560, 420, 380, 360, 330, 310, 258]) {
+        const { hero, list } = heroAndList(granted);
+        expect(Math.abs(hero - list)).toBeLessThanOrEqual(1);
+      }
+    });
 
     it('gives the active pill equal air each side of the row text, at every grant', () => {
       // The owner saw the pill "extended even further out" on the right: it
@@ -775,9 +799,9 @@ describe('home widget renderer', () => {
     it('sizes the row name and time boxes from the granted width', () => {
       // The name box is what clipped on the X8, so it is pinned directly
       // rather than inferred from the list column
-      expect(rowBoxWidths(380)).toEqual({ name: 82, time: 54 });
-      expect(rowBoxWidths(310)).toEqual({ name: 65, time: 43 });
-      expect(rowBoxWidths(258)).toEqual({ name: 53, time: 35 });
+      expect(rowBoxWidths(380)).toEqual({ name: 84, time: 55 });
+      expect(rowBoxWidths(310)).toEqual({ name: 67, time: 44 });
+      expect(rowBoxWidths(258)).toEqual({ name: 55, time: 36 });
     });
 
     it('sizes the medium columns from the granted width', () => {
@@ -785,7 +809,7 @@ describe('home widget renderer', () => {
       // inner 327, so the hero's 170/347 share rounds to 160 and the list
       // takes the 167 remainder
       const { hero, list } = heroAndList(360);
-      expect(hero).toBe(160);
+      expect(hero).toBe(167);
       expect(list).toBe(167);
     });
 
@@ -794,7 +818,7 @@ describe('home widget renderer', () => {
       // grid can produce: one dp of overflow is one clipped glyph in Glance
       for (const granted of [380, 360, 330, 310, 285, 258]) {
         const { hero, list } = heroAndList(granted);
-        expect(hero + list).toBe(granted - 33);
+        expect(hero + list).toBe(granted - 26);
       }
     });
 
@@ -802,8 +826,8 @@ describe('home widget renderer', () => {
       // A fresh JS push cannot know the grant, so the layout uses the
       // provider's declared 310dp until the next native tick stamps it
       const { hero, list } = heroAndList(undefined);
-      expect(hero).toBe(136);
-      expect(list).toBe(141);
+      expect(hero).toBe(142);
+      expect(list).toBe(142);
     });
 
     it('shrinks the row text with the box so long names are not clipped', () => {
@@ -811,7 +835,7 @@ describe('home widget renderer', () => {
       // grant would clip the longest names at a fixed 13sp
       const sizes = rowNameFontSizes(309);
       expect(sizes.length).toBeGreaterThan(0);
-      expect(new Set(sizes)).toEqual(new Set([10]));
+      expect(new Set(sizes)).toEqual(new Set([11]));
     });
 
     it('never shrinks the row text below its legible floor', () => {
@@ -826,8 +850,8 @@ describe('home widget renderer', () => {
       // as a real grant would subtract the padding from nothing and drive
       // every column negative
       const { hero, list } = heroAndList(0);
-      expect(hero).toBe(136);
-      expect(list).toBe(141);
+      expect(hero).toBe(142);
+      expect(list).toBe(142);
     });
 
     it('keeps the row text at 13sp when the grant is generous', () => {
