@@ -148,6 +148,30 @@ side bearing.
 (finding 40) and the 7-day horizon. The colour fix (finding 39) is in checkpoint
 1 and survives both reverts.
 
+## Owner-requested work after the reverts, all landed and verified on the 3T
+
+| Version | What | Verified |
+| --- | --- | --- |
+| 1.27.369 | The dark palette softens: eyebrow `#ff69b4` to `#f774b6`, hero and passed rows `#ffffff` to `#f6f8fc`, card `rgba(2, 13, 38)` to `rgba(9, 21, 47)` | Measured on the 3T: the new pink at 3,800px, the new hero at 6,768px, the new card at 780,540px, and every old value at zero. All three shifts measure 12 to 14 units of colour distance, gentle by design |
+| 1.27.370 | The medium splits in half and centres its trio | 50/50 halves within 1dp at every grant from 258 to 560dp, pinned by a new test that fails on the previous code |
+
+**The centring bug is the most useful find of the session.** The trio's `Column`
+carried `horizontalAlignment='center'` with no width. A Column that shrink-wraps
+its content has nothing to centre WITHIN, so it parked at its parent's leading
+edge and the trio sat 17dp left of its own half's centre, measured from the
+device screenshot. Two smaller causes stacked on it: `HERO_WIDTH` was 170/347 of
+the inner width rather than half, and the card padding was 13 leading against 20
+trailing, together worth another 4.8dp.
+
+It was reported on the dark theme and then on the light. One code path serves
+both, so both were wrong and one fix cured both, which the new test proves by
+asserting the fill modifier on each theme.
+
+DURABLE LESSON for `ai/AGENTS.md`: in a Glance composition an alignment only
+acts inside the space its container occupies, so a shrink-wrapped container
+centres nothing. Any `horizontalAlignment` that must position content inside a
+larger box needs `fillMaxWidth()` beside it.
+
 ## Raised mid-execution by the owner: full iOS/Android visual parity
 
 The owner asked for the Android widgets to match the iPhone exactly: sizing,
