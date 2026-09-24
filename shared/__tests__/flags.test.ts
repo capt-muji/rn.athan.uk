@@ -205,9 +205,6 @@ describe('app config android widget resolution', () => {
       // kinds ARE the size choices.
       expect(android.resizeMode).toBe('none');
       expect(android.initialLayout).toBe('./widgets/PrayerWidget');
-      // Reverted to these on device evidence (owner 2026-09-24): declaring the
-      // small 110x110 and the medium 250x150 made the launcher hand both kinds
-      // a TALL box, not a square, because a cell is taller than it is wide
       expect(android.minWidth).toBe(/Medium/.test(String(widget.name)) ? 310 : 160);
       expect(android.minHeight).toBe(110);
       expect(android.targetCellWidth).toBeUndefined();
