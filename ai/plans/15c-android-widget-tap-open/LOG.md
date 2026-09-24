@@ -95,3 +95,55 @@ row now records it.
 
 After the fix: `caught 6 of 6`, then `ALL AS EXPECTED: 1`. `grep -c openApp` on the converter printed `2`
 afterwards, so `node_modules` came back intact, and no `.bak` file was left.
+
+Green: `Tests:       6 passed, 6 total`, `tsc` and Biome both 0.
+
+Review: the session reviewed the suite itself against the step's eight checks, one round, verdict merge. Six tests,
+each asserting what its name says; the patch filename is built from the installed version rather than written out,
+so a dependency bump fails the test; nothing is mocked (`grep -c jest.mock` is 0); the machine-path check scans the
+whole patch text rather than one line; the doc comment says why in one paragraph.
+
+Commit `8ce7ffaf`, version 1.27.348, merged as `1144ab42`. The hook reported
+`Tests:       4644 passed, 4644 total` with four 100% coverage lines.
+
+## Step 4: Device proof on the 3T and an Android 15 emulator
+
+Branch `proof/15c-device`, version 1.27.349, commit `432d87ca` made before the build so the build had a committed
+sha to check out.
+
+Safety: `auto_time` read `1` before and after, and no step in this session changed the clock. The alarm dump was read
+first. It showed the app's alarms plus two far-future ones, `2105564951212` (2036-09-20) for `com.mugtaba.athan` and
+`2105594232559` for `com.mugtaba.athan.fleettest`. The plan named a 2036 alarm at `2104803640505`; the id and the
+exact instant differ because this is the same self-rearming class of alarm re-armed since the plan was written, and
+the year is the same. Nothing unexpected was armed.
+
+Build: `zsh ~/athan-device-sweep/session15/bin/build-prod-widgets.zsh 432d87ca ~/athan-device-sweep/session15c/athan-15c-prod.apk`
+ended `BUILD-PROD OK`, 68,828,566 bytes, `com.mugtaba.athan` versionName 1.27.349, in 394s. The build worktree
+carried both halves of the change: `grep -c openApp` on its converter printed 2, and its layout held the wrapper.
+Installed with `adb install -r` on both devices, which kept the 3T's 8 placements.
+
+| Device | Reading A (before) | Reading B (logcat) | Reading C (after) |
+| --- | --- | --- | --- |
+| OnePlus 3T, Android 9 | `pidof` empty | `I/ActivityManager: START ... dat=glance-action:/CALLBACK?appWidgetId=3&viewId=2131362200&viewSize=370.0.dp x 205.0.dp ... cmp=com.mugtaba.athan/.MainActivity` | pid 22537, `MainActivity` resumed |
+| athan_test_avd, Android 15 | `pidof` empty | `I/ActivityTaskManager: START ... cmp=com.mugtaba.athan/.MainActivity} with LAUNCH_SINGLE_TASK from uid 10207 (realCallingUid=10176) (BAL_ALLOW_VISIBLE_WINDOW) result code=0` | pid 3944 |
+
+Neither log holds `Background activity launch blocked`. Logs saved as `~/athan-device-sweep/session15c/3t-tap.log`
+and `emulator-tap.log`.
+
+**Two traps this step hit, both recorded in the findings.** First, `am kill` is `killBackgroundProcesses` and skips a
+process that is not currently in the background: a WorkManager `SystemJobService` job held the app at `vis` on both
+devices, so the kill silently did nothing while `pidof` kept printing the same pid. Waiting for
+`dumpsys activity services com.mugtaba.athan` to report no `ServiceRecord` is what made the kill land. Second, the
+widget render warms the process again within seconds, so a kill in one `adb` call and a tap in the next always found
+the app alive; both readings were taken by killing and tapping inside ONE on-device shell.
+
+The emulator had no widget placed, being a fresh image. The plan's sequence placed one: long-press the home screen
+with `input swipe 540 1600 540 1600 900`, tap `Widgets`, tap the `Athan` group, then
+`input draganddrop 781 2149 540 900 2000`. `dumpsys appwidget | grep -c host.callbacks` then printed 1.
+
+The 3T's tap coordinates could not come from `uiautomator dump`, which returned
+`ERROR: null root node returned by UiTestAutomationBridge`. They came from decoding the `screencap` PNG and scanning
+it for the card's bright block, which put the medium card's centre at (540, 975).
+
+Afterwards: the emulator was killed, `auto_time` reads `1`, the 3T holds 8 placements and runs the 1.27.349
+production build.

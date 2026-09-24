@@ -361,10 +361,10 @@ The spike's code was deleted and does not become the plan.
 
 ## 6. Steps
 
-- [ ] Step 1: The library's Button can open the app (specified)
-- [ ] Step 2: Every Android card is an open-the-app tap target (specified)
-- [ ] Step 3: The patch and the seam it rides on are pinned by tests (specified)
-- [ ] Step 4: Device proof on the 3T and an Android 15 emulator (specified)
+- [x] Step 1: DONE in `0a7d72ab`
+- [x] Step 2: DONE in `92c09b4f`
+- [x] Step 3: DONE in `8ce7ffaf`
+- [x] Step 4: DONE in `432d87ca`
 
 ### Step 1: The library's Button can open the app
 
