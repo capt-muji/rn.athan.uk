@@ -48,11 +48,11 @@ def css(color: str) -> tuple:
 # cards, Android renders these bitmaps over the wallpaper (owner ruling
 # 2026-09-19), so alpha 1.0 keeps the wallpaper from showing through.
 #
-# CARD_DARK is iOS's rgba(2, 13, 38, 0.95) over black, which is what the iPhone
+# CARD_DARK is iOS's rgba(9, 21, 47, 0.95) over black, which is what the iPhone
 # actually shows on a dark wallpaper (owner 2026-09-24). CARD_LIGHT keeps the
 # alpha dropped instead: over black it would read grey.
 CARD_LIGHT = css("#fcfcfe")
-CARD_DARK = css("#020c24")
+CARD_DARK = css("#09142d")
 
 PILLS = {
     "standard_light": {
@@ -73,7 +73,7 @@ PILLS = {
 }
 
 MOON_LIGHT = css("#db2777")
-MOON_DARK = css("#ff69b4")
+MOON_DARK = css("#f774b6")
 
 
 def rounded_card(width_pt: int, height_pt: int, fill) -> Image.Image:

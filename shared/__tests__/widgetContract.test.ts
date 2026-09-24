@@ -217,11 +217,11 @@ describe('palette literals', () => {
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
       // Dark palette — Gradient Deep (owner pick 2026-09-20)
-      'rgba(2, 13, 38, 0.95)', // card — every dark size
-      '#ffffff', // hero / passed rows
+      'rgba(9, 21, 47, 0.95)', // card — every dark size
+      '#f6f8fc', // hero / passed rows
       '#cad8ed', // active row text — standard, white + hint of slate blue
       '#ffeaf4', // active row text — extras, white + hint of pink
-      '#ff69b4', // eyebrow + stale mark
+      '#f774b6', // eyebrow + stale mark
       'rgba(138, 169, 214, 0.54)', // secondary — the base whisper, both sizes
       'rgba(138, 169, 214, 0.405)', // upcoming rows — a quarter fainter than the base (owner ruling 2026-09-20)
       'rgba(138, 169, 214, 0.27)', // footer — half the base
@@ -266,8 +266,9 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.32)',
       // Home widget — dark Gradient Deep (owner pick 2026-09-20: the app
       // screen gradient's start, deepened; whispers from the app's muted text)
-      'rgba(2, 13, 38, 0.95)',
-      '#ff69b4',
+      'rgba(9, 21, 47, 0.95)',
+      '#f6f8fc',
+      '#f774b6',
       'rgba(138, 169, 214, 0.54)',
       'rgba(138, 169, 214, 0.405)',
       'rgba(138, 169, 214, 0.27)',
