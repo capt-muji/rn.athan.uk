@@ -189,3 +189,4 @@ One line each; a session's row moves here when it closes. Full detail is in git 
 - 10. `moonsighting-research.md` — CLOSED — v2.0 prerequisite moonsighting research
 - 12. `SDK58-PROGRAMME.md` §12 — CLOSED — SDK 58 beta alarmClock wave
 - 13. `SDK58-PROGRAMME.md` §13 — CLOSED — agent CLI and dev-launcher tooling
+- 15c. `android-widget-tap-open.md` — CLOSED — tapping an Android widget opens the app
