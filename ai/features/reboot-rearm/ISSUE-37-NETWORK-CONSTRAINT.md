@@ -45,6 +45,30 @@ export type BackgroundTaskOptions = {
 
 Installed version: `expo-background-task@58.0.3`.
 
+### Which platforms and versions it actually hits
+
+Not uniform, and the asymmetry is itself a finding. Android has two scheduling paths and
+**only one of them applies the constraint**:
+
+| Path | Condition | Constraint applied? | Line |
+| --- | --- | --- | --- |
+| `OneTimeWorkRequest` + `setInitialDelay` | `SDK_INT >= O` (API 26+) | **yes**, `.setConstraints(constraints)` | :124 |
+| `PeriodicWorkRequest` | `SDK_INT < O` (API 25 and below) | **no**, `builder.build()` with no constraints | :149-155 |
+| iOS `BGProcessingTaskRequest` | all versions | **yes**, `requiresNetworkConnectivity = true` | Swift :93 |
+
+So every device this app ships to is affected on Android, because `minSdk` is 24 but the
+API 26+ branch covers effectively the whole fleet, and every iOS device is affected. The
+pre-API-26 branch escaping the constraint looks like an oversight rather than a decision,
+and is worth raising in the same breath: the two paths should agree.
+
+The fleet as tested:
+
+| Device | OS | API | Path taken | Constrained |
+| --- | --- | --- | --- | --- |
+| OnePlus 3T | Android 9 | 28 | OneTimeWork | yes |
+| Oppo Find X8 | ColorOS 16 | (to confirm) | OneTimeWork | yes |
+| iPhone XS | iOS 18.7.x | — | BGProcessingTask | yes |
+
 ---
 
 ## 2. Why this app does not need it
