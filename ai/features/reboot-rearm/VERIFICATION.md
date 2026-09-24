@@ -329,3 +329,17 @@ re-enqueued at `+2h58m32s956ms`.
 because the OS never scheduled one while the constraint read unsatisfied. That is a gap in
 the evidence and is recorded as such rather than glossed: re-run the soak on a device whose
 connectivity flag is healthy before claiming the natural cadence.
+
+### The stale CONNECTIVITY flag is device-wide, not ours
+
+Worth isolating before anyone reads the soak gap as a defect in the change. A WiFi off/on
+cycle did not clear it, and the same `Unsatisfied constraints: CONNECTIVITY` is sitting on
+other packages' jobs on the same device:
+
+- `com.google.android.apps.tachyon`
+- `com.qualcomm.qti.qms.service.connectionsecurity`
+- `com.mugtaba.athan.fleettest`
+
+Google's own app is stuck behind the identical flag while the device pings 8.8.8.8 at 0%
+loss. So the blocked run is this 3T's JobScheduler, not the 3-hour interval and not
+expo-background-task. Verifying the natural cadence needs a device without this fault.
