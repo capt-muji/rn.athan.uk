@@ -160,6 +160,12 @@ export interface PrayerWidgetAndroidProps {
   theme: WidgetTheme;
   /** Which size composition to render, stamped per kind */
   size: 'small' | 'medium';
+  /**
+   * Launcher-granted width in dp, stamped by the native tick. Optional
+   * because only native can read a grant: the JS push renders at the
+   * declared minimum until the next tick.
+   */
+  grantedWidthDp?: number;
   /** The window's days, in order */
   days: AndroidWidgetDay[];
   /** The last readable prayer in the window: renders past this go stale */

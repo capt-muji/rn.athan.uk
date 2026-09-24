@@ -57,12 +57,17 @@ history — "a session now says which job it is doing rather than which model".)
 - **Widget sizes stay locked** (`resizeMode="none"`, re-affirmed while planning 15d). The eight
   kinds ARE the size choices, as session 15b ruled. The granted width still changes without a
   resize, when a user re-columns the home grid or changes display size, and the stamp tracks it.
-- **No subagents at all, on every task, from now on.** The owner's standing rule, given while
-  planning 15d and extended to all future work: one session does the planning, the execution and
-  the audit itself, start to finish. No `Code Reviewer`, no `vision`, no scratch-worktree agents.
-  Reviews are the session's own re-reading of its diff; images are read by the owner, who is
-  asked a direct question instead. This supersedes the review and `vision` wording in
-  `PLANNER-BRIEF.md`, `EXECUTOR-BRIEF.md` and `AUDITOR-BRIEF.md`.
+- **The main session does the planning, the execution and the audit itself**, start to finish,
+  looping on its own work until it is right. Reviewing, finding and fixing is the session's own
+  job, not something handed to a reviewer.
+- **A subagent must run the same model as the session that spawns it.** The owner's rule, given
+  2026-09-24 and verified that day: no mixed-model work, for any task, vision included. A
+  subagent is a way to parallelise or to get fresh eyes on the session's own work, never a way
+  to reach a different model.
+- **No model names in this repository.** The harness chooses the model, and the same pages are
+  read by different models over the months of this build, so naming one dates the page and
+  misleads the next reader. This supersedes the "Show the model" wording in `PLANNER-BRIEF.md`,
+  `EXECUTOR-BRIEF.md` and `AUDITOR-BRIEF.md`, and the Model columns those briefs ask for.
 
 ## Decided by the owner, 2026-09-20, while planning session 16a
 
