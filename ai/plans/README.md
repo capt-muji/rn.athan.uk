@@ -95,7 +95,7 @@ Off that path:
 | 11 | 16a. iOS widgets: finish the containerBackground fix (stuck kinds, first-placement UX, cadence table) | `ai/prompts/ios-widget-container-background.md` | `ai/plans/16a-ios-widget-container-background/PLAN.md` | DONE | `0506f608` (tip of `wip/16a-ios-widget-archive-budget`, which the plan's step 1 lands on `uat-2`) | nothing |
 | 12 | 15d. Android widgets: proportional sizing, they break outside the 3T | `ai/prompts/android-widget-proportional-sizing.md` | `ai/plans/15d-android-widget-proportional-sizing/PLAN.md` | DONE | `7b38e5a6` | nothing |
 | 13 | 15c. Android widgets open the app on tap | `ai/prompts/android-widget-tap-open.md` | `ai/plans/15c-android-widget-tap-open/PLAN.md` | DONE | `31416a38` | nothing |
-| 14 | 17. iOS widget timeline horizon: 14 to 30 days | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | NOT PLANNED | | 6 |
+| 14 | 17. Widget timeline horizon: 14 to 30 days, both platforms | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | READY | `53d9baba` | nothing |
 | 15 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
 | 16 | 18. Android lock screen widgets: deep investigation, 3T first | `ai/prompts/android-lock-screen-widgets.md` | none (investigation-first session, queued 2026-09-20) | NOT PLANNED | | nothing (the 3T's verdict gates any follow-up) |
 | 17 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
@@ -114,6 +114,12 @@ Off that path:
 
 A planning session may turn one of these into a plan only after the owner approves it in that session; it then adds a
 row above.
+- The iOS widgets flag: `expo-widgets` 58.0.1 shipped the SwiftUI view-identity fix (#49810, "Preserve SwiftUI view
+  identity across widget and Live Activity updates"), and the installed 58.0.3's `ios/Widgets/DynamicView.swift`
+  renders `AnyView(view).id(child.childIdentity)` with no `UUID()` anywhere: the random-per-render identity hack that
+  `shared/flags.ts` names as the reason `widgets` is OFF is gone. That file's JSDoc flip condition also requires
+  verification on the iPhone XS per the G.1 acceptance protocol, which no session has run. Found while planning
+  session 17 (2026-09-24), which needed to know whether an iOS device proof was possible.
 - The accessibility fixes listed in "Session 5 of the queue" in `ai/features/uat-2/AUDIT-FINDINGS.md`.
 - The edge-to-edge built-in switch: drop `react-native-edge-to-edge` for RN's `edgeToEdgeEnabled`
   (its README recommends this on RN 0.86+; the package stays at 1.8.2 until then). Waits on an
