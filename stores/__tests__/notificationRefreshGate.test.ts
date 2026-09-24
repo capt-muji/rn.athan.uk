@@ -222,3 +222,61 @@ describe('when the reschedule throws part way', () => {
     expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
   });
 });
+
+// =============================================================================
+// LOSING THE ALARMS WITHOUT LOSING THE STAMP (ISSUES #36)
+// =============================================================================
+
+/**
+ * The shape of the 8T's silence, which no test held before it happened: a reboot or an OEM
+ * kill empties AlarmManager while `lastNotificationScheduleAtom` survives untouched, so the
+ * gate reads "recently done" over a phone that has nothing armed at all.
+ *
+ * `osState` is the OS side and the atom is ours, so clearing one and leaving the other is
+ * exactly the divergence, and the test can then ask the question the user asked: does opening
+ * the app bring the alarms back?
+ */
+describe('alarms lost while the stamp survives', () => {
+  const armEverything = async () => {
+    store.set(lastNotificationScheduleAtom, 0);
+    await refreshNotifications();
+  };
+
+  it('leaves the app silent on its own, because the gate believes the work is recent', async () => {
+    await armEverything();
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    await refreshNotifications();
+
+    // This is the defect, pinned rather than fixed here: nothing re-arms while the stamp stands
+    expect(osState.size).toBe(0);
+    expect(shouldRescheduleNotifications()).toBe(false);
+  });
+
+  it('re-arms the full set once the cold launch reopens the gate', async () => {
+    await armEverything();
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    // What `reopenRefreshGateOnColdLaunch` does on Android, spelled out so this suite stays
+    // platform-free: the cold-launch path itself is covered in coldLaunchRearm.test.ts
+    store.set(lastNotificationScheduleAtom, 0);
+    await refreshNotifications();
+
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+  });
+
+  it('re-arms unattended when the background task runs, with the stamp left alone', async () => {
+    await armEverything();
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    // The background task never consults the gate, which is why it recovers a phone nobody opens
+    await rescheduleAllNotificationsFromBackground();
+
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+  });
+});
