@@ -296,8 +296,8 @@ The spike's code was deleted and does not become the plan.
 
 ## 6. Steps
 
-- [ ] Step 1: The snapshot carries the granted width, and the medium computes its columns from it (specified)
-- [ ] Step 2: folded into step 1, see the correction below
+- [x] Step 1: DONE in 609d28be (amended), merged 56e51a40
+- [x] Step 2: folded into step 1, DONE with it
 - [ ] Step 3: The native tick stamps the granted width (specified)
 - [ ] Step 4: Device proof on both phones, three densities (specified)
 
