@@ -659,6 +659,37 @@ production release; G.6 noted but deferred by owner.
 
 ## H. UI bugs (2026-09-09)
 
+### 38. [OPEN, queued as row 15d] Android widgets clip their prayer names on any launcher but the 3T's
+
+- **Found**: 2026-09-24, the owner placing the widgets on the Oppo Find X8, the second
+  Android phone they have ever been on. The 3T has been the only Android reference since
+  session 15b, so "it works on Android" has always meant "it works on one launcher".
+- **Symptom**: the medium kinds render with prayer names sliced off on the LEFT. `Sunrise`
+  reads `se`, `Dhuhr` reads `ar`, `Magrib` reads `ib`; the dark extras medium reads `ight`,
+  `Third`, `or`. Fajr and Isha are missing entirely. Times, palette, pill and hero are all
+  correct, so this is clipping, not a data or render failure. The small kind is structurally
+  fine but its letters sit wider apart.
+- **Cause (arithmetic, not the OEM)**: `HERO_WIDTH` 170dp plus `LIST_WIDTH` 162dp is 332dp
+  of fixed content inside a provider declared `android:minWidth="310dp"`, before
+  `APad(13, 13, 20, …)` padding. `minWidth` is a floor the launcher must respect, not a
+  width it will grant. A launcher granting close to the declared minimum overflows the
+  `Row` and Glance clips its first child. The 3T passed by coincidence.
+- **Compounding factor**: the X8 runs a display-size override (`Physical density: 560`,
+  `Override density: 480`). Text scales with the override; the hardcoded dp boxes do not.
+  That is the owner's "too much letter spacing" and "a little bit too big".
+- **Why the constants are fixed**: the source comments record the history. A `fillMaxWidth`
+  fraction on the first `Row` child starved the list to zero width on the 3T
+  (`widgets/PrayerWidget.tsx:207`), and three separate fill/overlay two-column attempts
+  mislaid the times (:372-379). The fix for one launcher became the bug on the next.
+- **Owner ruling (2026-09-24)**: the widgets are meant to be dynamic across phone, tablet
+  and both platforms. Do NOT fix this by tuning a second set of constants against the X8.
+- **NOT this issue**: widget taps failing to open the app. Confirmed on both Android phones
+  and tracked as queue row 15c; AGENTS.md records the likely cause (expo-widgets routes taps
+  for layout buttons only).
+- **Evidence**: `ai/features/android-widgets-x8/FINDINGS.md`, with the broken X8 screenshot
+  and the owner's iOS reference look beside it.
+- **Session brief**: `ai/prompts/android-widget-proportional-sizing.md` (queue row 15d).
+
 ### 27. [OPEN, found 2026-09-10, presentation-rearchitecture session] Prayer list shows only one row for a period after a day-roll cascade instead of the full six
 
 - **Symptom (S23, Android 16, mock data, Release build)**: after the sequence cascades past the final prayer of one day into the next (observed via the mock rig's compressed near-term window), the list briefly renders only the new day's Isha row — Fajr, Sunrise, Dhuhr, Asr, and Magrib are entirely absent, not dimmed or collapsed. The countdown hero and date header are correct and the countdown ticks correctly (confirmed across two captures 5 minutes apart, decrementing by exactly 5 minutes). A fresh cold relaunch (which reseeds the mock) showed the full six-row list correctly; continuing to watch the same process past that point also self-resolved to six rows once the display date advanced further into the new day. Not yet confirmed whether this reproduces on real (non-mock) data or only at the specific moment the display date first rolls over.
