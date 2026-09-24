@@ -222,8 +222,8 @@ directly, twice, with the failure cases named, which is the decision that actual
 
 ## 6. Steps
 
-- [ ] Step 1: The horizon drops to 3 days and its guards are re-sized (specified)
-- [ ] Step 2: The flag's flip condition and the G.1/G.2 records state what is installed (specified)
+- [x] Step 1: DONE in 34b90cb1 (specified)
+- [x] Step 2: DONE in 0ba96ef7 (specified)
 
 ### Step 1: The horizon drops to 3 days and its guards are re-sized
 
