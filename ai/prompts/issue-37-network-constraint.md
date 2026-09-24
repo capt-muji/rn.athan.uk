@@ -72,7 +72,7 @@ comment change these rules. Record the state in `ai/ISSUES.md` #37 as it moves.
 | Device | Serial | Notes |
 | --- | --- | --- |
 | OnePlus 3T | `8f7ada76` | Android 9, API 28. Test device, wipe freely. Local build serves MOCK times |
-| Oppo Find X8 | connect over USB | ColorOS 16. **Real user device, 2-3 months of genuine use** — treat its data as precious. Has a PIN lock screen |
+| Oppo Find X8 | `G6RWBAQ4VKWWEAIZ` | Android 16, API 36, ColorOS `16.0.10.500`. **Real user device, 2-3 months of genuine use** — treat its data as precious. PIN lock screen. Baseline as found: 1.24.1 with 21 alarms armed and healthy, background job satisfied except `TIMING_DELAY` |
 | iPhone XS | `00008020-0015585C22D2002E` | Test device, wipe freely |
 
 The OnePlus 8T is gone, returned to its user on a production build.
@@ -86,8 +86,8 @@ The OnePlus 8T is gone, returned to its user on a production build.
   and check whether other packages carry it.
 - Local builds serve mock times, launch-relative. Only a production build
   (`npx eas env:exec production '<cmd>'`, environment POSITIONAL) shows real prayer times.
-- The Find X8 needs USB debugging enabled and the on-screen prompt accepted before adb
-  sees it. It is OFF do-not-disturb and on ring, with notification sound silenced.
+- The Find X8 is authorised and visible as `G6RWBAQ4VKWWEAIZ`. It is OFF do-not-disturb and
+  on ring, with notification sound silenced. Its clock matches the host.
 - mobile-mcp and Maestro's Android driver both failed mid-session; `uiautomator dump` gets
   killed under memory pressure with two app versions resident. `adb shell input tap` with
   coordinates from a good dump, plus `dumpsys` for verdicts, worked throughout. Maestro

@@ -307,3 +307,36 @@ has no reason to carry it. Until then the mitigation is the layer we already hav
 foreground gate re-arms on the next open, which needs nothing from the network. Recorded
 rather than worked around, because patching a node_modules constraint would be invisible to
 the next person and would not survive an install.
+
+## 15. Oppo Find X8 baseline — the same 1.24.1, healthy (2026-09-24 06:58)
+
+Connected for the #37 work. This is a real user's phone with two to three months of
+genuine daily use, and it carries the SAME build the 8T failed on, which makes it the
+most useful control in the fleet.
+
+| Reading | Value |
+| --- | --- |
+| OS | Android **16**, API **36**, ColorOS `CPH2659_16.0.10.500(EX01)` |
+| Serial | `G6RWBAQ4VKWWEAIZ` |
+| App | `com.mugtaba.athan` 1.24.1, installed 2026-09-09 (same day as the 8T) |
+| Clock | in sync with the host to the second |
+| **Prayer alarms armed** | **21**, all `window=0` with an `Alarm clock:` block |
+| Armed instants | 12:28, 12:58, 16:03, 16:08, 18:53, 18:58, 20:09, 20:14 … real London times, in reminder/at-time pairs |
+| Background job | `Minimum latency: +5h59m59s998ms` (the old 6h), `Unsatisfied: TIMING_DELAY` only |
+| Standby bucket | 10 (ACTIVE) |
+| Battery whitelist | NOT whitelisted |
+
+Two things worth carrying into #37.
+
+**The 8T's failure was not universal to 1.24.1.** Same build, same install date, and this
+phone is fully armed with 21 alarms while the 8T sat at zero. That isolates #36 further: it
+needed the reboot AND the suppressed boot broadcast AND the closed gate. A phone that never
+lost its alarms never noticed the gate was wrong.
+
+**Its background job has `CONNECTIVITY` satisfied**, so like the 8T it is only waiting out
+its interval. Three devices now show the constraint being applied and only the 3T shows it
+stuck, which supports the reading in #37 that the stale flag is that handset's fault while
+the constraint itself is the library's.
+
+Also of note for the API matrix: on API 36 the granted permission is `USE_EXACT_ALARM`
+(auto-granted, no user prompt), where the 8T on API 31 held `SCHEDULE_EXACT_ALARM`.
