@@ -343,3 +343,26 @@ other packages' jobs on the same device:
 Google's own app is stuck behind the identical flag while the device pings 8.8.8.8 at 0%
 loss. So the blocked run is this 3T's JobScheduler, not the 3-hour interval and not
 expo-background-task. Verifying the natural cadence needs a device without this fault.
+
+## Where the evidence stands
+
+| Claim | 3T | 8T | XS |
+| --- | --- | --- | --- |
+| 180 minutes reaches the OS | ✅ `+2h59m59s988ms` | ✅ `+2h59m59s997ms` | ✅ `minimumInterval = 180` |
+| Alarms lost then healed by one app open | ✅ 3→1→3 | ✅ 7→0→8 | n/a, iOS keeps pending across termination |
+| Reboot, app never opened | ✅ re-armed at +14s, fired +5ms | ❌ OEM suppressed (ISSUES #19), healed on first open | not re-run; recorded ✅ in the RUNBOOK at the 15-minute interval |
+| Background task runs headlessly | ✅ forced run, no app process | — | — |
+| Natural unforced fire at 3h | ❌ blocked by a device-wide stale flag | — | ❌ not observed |
+
+The retune and the re-arm are verified on real hardware. The one thing still unproven on
+either platform is a natural, unforced background fire at the new interval: Android was
+blocked by this 3T's own JobScheduler fault, and iOS cannot be watched from here because
+usbmux will not pair (`pymobiledevice3 usbmux list` is empty with the phone on USB, and
+restarting `usbmuxd` needs sudo). `devicectl` reads the persisted config but not dasd's
+fire log.
+
+That gap is bounded. `earliestBeginDate` and `TIMING_DELAY` both elapsed correctly, so the
+interval is being asked for properly; what is unwitnessed is the OS choosing to run it. The
+prior 6-hour cadence was never proven to fire naturally in this session either, so nothing
+regressed. Anyone continuing: watch a healthy Android device across a 3h window, or get
+usbmux pairing and grep dasd for `group is full` on the XS.
