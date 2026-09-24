@@ -68,9 +68,10 @@ describe('android widget assets', () => {
     expect(generator).toContain('CARD_LIGHT = css("#fcfcfe")');
     expect(generator).toContain('CARD_DARK = css("#020c24")');
     expect(generator).toContain('CARD_RADIUS_PT = 13');
-    // The Android pill is 24dp tall and shadow-free — exactly the Android
-    // row height (owner ruling 2026-09-19), no overhang.
-    expect(generator).toContain('PILL_W, PILL_H = 140, 24');
+    // Shadow-free and exactly the row height, which now equals iOS's 23
+    // (owner 2026-09-24: Android mirrors iOS value for value).
+    expect(generator).toContain('PILL_W, PILL_H = 140, 23');
+    expect(generator).toContain('PILL_RADIUS_PT = 6');
     expect(generator).not.toContain('"shadow"');
 
     const layoutColors = new Set(collectColorLiterals(layout).map((color) => color.replace(/\s/g, '').toLowerCase()));
