@@ -34,3 +34,129 @@ Version at start 1.27.360, planned at 1.27.357.
   reference constant or sizing arithmetic moved, and nothing outside
   `widgets/PrayerWidget.tsx` and `shared/__tests__/widgetRenderer.test.ts`
   changed besides the version and plan files.
+
+## Step 2: The Android dark card matches iOS
+
+- Branch `fix/19-android-dark-card`, commit `b9b66457` (amended once, for the
+  comment rewrite below), version 1.27.362, merged `173ca58f`.
+- Red: `bakes the Android-only card and geometry contract...` failed on
+  `Expected substring: "CARD_DARK = css(\"#020c24\")"`, the plan's line.
+- Regeneration rewrote exactly the two dark card PNGs, and the medium's centre
+  pixel read `(2, 12, 36, 255)`, the predicted value.
+- Green: `Tests: 3 passed, 3 total`; tsc and Biome 0. Breaks: 3 of 3,
+  `ALL AS EXPECTED: 1`. Hook: 170 suites, 4646 tests.
+- **Amended before merge, on the owner's instruction**: every comment written
+  this session was too long and several explained WHAT rather than WHY. All of
+  them were cut back (`widgets/PrayerWidget.tsx`, the generator, both test
+  files). Tests and Biome re-run green after the rewrite.
+- Review: the session's own, one round, verdict merge. `CARD_DARK` is the iOS
+  colour over black, `CARD_LIGHT` untouched, two PNGs changed, both test pins
+  moved together, no layout palette colour touched.
+
+## Step 3: The timeline horizon drops to 7 days
+
+- Branch `fix/19-horizon-seven-days`, commit `8d2621c8`, version 1.27.363,
+  merged `068d85d7`.
+- Red: the three predicted failures, with the predicted numbers: `Received: 178`
+  for the entry bound, `Received: 30` for the horizon, `Received: 121` for the
+  extras bound.
+- Green: `Tests: 52 passed, 52 total`; tsc and Biome 0. Breaks: 3 of 3,
+  `ALL AS EXPECTED: 1`. Hook: 170 suites, 4646 tests.
+- Review: the session's own, one round, verdict merge. The constant is 7, both
+  bounds are literals sized between what 7 days emits and what 10 would, the
+  200KB budget is unchanged, and the extras fixture comment names the right
+  span and Friday for an 8-day window.
+
+## Step 5a: the 3T, measured rather than eyeballed
+
+The `vision` subagent was unavailable, so the screenshot was measured in Python
+instead of described, which is stronger evidence anyway.
+
+- Build: `build-prod-widgets.zsh uat-2` ended `BUILD-PROD OK`, versionName
+  1.27.363, real API key, arm64-v8a, 333s. Installed with `install -r`
+  (`Success`), launched, and the widget refresh alarm was seen firing in
+  logcat.
+- The owner already had eight widgets placed, including a dark medium, so no
+  placement was needed.
+- **The pill (finding 40): fixed, and symmetric on glass.** Measuring the
+  standard dark pill band in `3t-widgets.png`: the pill spans x 566..974 and
+  the active row's text spans x 600..940, giving a **34px left gap and a 34px
+  right gap** across every row of the glyph band. At 420dpi that is 12.9dp each
+  side, which is the 12dp gutter plus antialiasing. The reported overhang is
+  gone.
+- **The card (finding 39): the baked colour is on screen.** The dominant pixel
+  inside the dark medium card is exactly `rgb(2, 12, 36)`, both above the pill
+  and below the rows: `#020c24`, the iOS colour over black.
+- Alarms were read before any device work
+  (`~/athan-device-sweep/session19/alarms-before.txt`, 15 lines) and no clock
+  was changed, so nothing could fire.
+- The phone is left on this production build with automatic time on.
+
+## Step 5b: the iPhone XS, blocked on a USB connection
+
+The XS answers `xcrun devicectl list devices` as `connected`, but that is the
+network pairing: `pymobiledevice3 usbmux list` returns `[]`, so the syslog
+capture the G.1 acceptance protocol depends on cannot run, and neither can the
+crash-report pull. The protocol needs the phone on the cable.
+
+Step 4 is therefore NOT run: its part 0 gate is explicit that the flag flips
+only after the protocol passes.
+
+## Checkpoint 1, and the two reverts after it
+
+`checkpoint-1-android-good` tags `068d85d7`, the state the owner called 🐋  "it
+looks identical actually to iOS... right now it's actually perfect", with its APK
+and screenshot saved under `~/athan-device-sweep/session19/`.
+
+Two attempts followed, both on the owner's instruction, and both reverted on the
+owner's device evidence. Neither is a defect in the plan: the plan's four jobs
+are untouched by either.
+
+| Version | What it tried | Outcome |
+| --- | --- | --- |
+| 1.27.364 | Copy every iOS metric to Android value for value | REVERTED in 1.27.367. The medium's left content sat too far left and the day list rendered "really tiny" |
+| 1.27.365 | Square smalls (110x110) and full-width mediums (250x150) | REVERTED in 1.27.366. Both kinds came out as tall rectangles, and the medium lost its prayer times |
+
+**The metric copy failed for a structural reason.** iOS's values are tuned for a
+329x155pt card; the Android medium is 380x110dp. A padding or a gutter is judged
+by its relationship to the space around it, so the same number reads differently
+in a card of a different shape. The platform-specific tuning that looked like
+drift WAS the shape difference.
+
+**The box-size change failed because I mis-modelled the launcher.** I assumed a
+grid cell is square, so equal minWidth and minHeight would give a square widget.
+A cell is TALLER than it is wide, so 110x110 produced a portrait box. The
+original 160x110 was a landscape declaration compensating for exactly that, and
+nothing recorded why. My arithmetic table verified the INNER layout across 180 to
+560dp and was still correct; the declared box is a different question that only a
+device can answer.
+
+**Two durable facts, now in `PARITY.md`:** an appwidget cell is not square, so
+never infer a widget's shape from its dp declaration (read it back from
+`dumpsys appwidget`, where `min=(WxH)` is `dp << 8`); and Android keeps each
+widget's box from the moment it was placed, so a declaration change is invisible
+until the widget is removed and re-added.
+
+1.27.367 restores the widget look to checkpoint 1 byte for byte, confirmed by
+regenerating the PNGs and diffing against the tag: the only difference from the
+tag anywhere is the version string. Re-verified on the 3T after install: 771,501
+pixels of `rgb(2,12,36)` (the checkpoint dark card), the indigo gone, and the
+extras pill symmetric at 34px left and 39px right, the 5px being the glyph's own
+side bearing.
+
+**What this session KEEPS from its own plan:** the pill wrapping its row text
+(finding 40) and the 7-day horizon. The colour fix (finding 39) is in checkpoint
+1 and survives both reverts.
+
+## Raised mid-execution by the owner: full iOS/Android visual parity
+
+The owner asked for the Android widgets to match the iPhone exactly: sizing,
+proportions, padding, font, letter spacing, everything except shadows, keeping
+Android's own time format. That is outside this plan's four jobs, and the
+measurement behind it is in `PARITY.md` beside this log. The headline: the two
+cards are different shapes (iOS 329x155pt, Android 380x110dp, an inner height
+of 129 against 81), so a 6-row list at iOS's 23pt rows needs 138dp of height
+that Android does not have. Colour parity is done; several typographic gaps are
+single literals; three of the values involved were tuned by the owner on device
+in earlier sessions, and the card's height is the one change that risks the
+widget vanishing from the 3T picker, which is how session 15b lost it at 400dp.
