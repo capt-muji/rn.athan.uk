@@ -242,3 +242,28 @@ recur.
 the owner should know: the clean install wiped the user's own preferences (sound choice,
 reminders, Extras), and this is a LOCAL build running mock times, so the armed instants are
 launch-relative and meaningless. A production build is required before the phone goes back.
+
+## 8T handed back — production build (2026-09-24 01:15)
+
+Rebuilt with the production environment injected the documented way:
+
+```
+npx eas env:exec production 'cd android && ./gradlew assembleRelease -q'
+```
+
+The first attempt was a Gradle no-op (unchanged APK timestamp), so the bundle and apk
+outputs were deleted to force a re-bundle. Confirmed the right artifact by finding the
+production API key in `index.android.bundle`, rather than trusting the command exited 0.
+
+| Check | Reading |
+| --- | --- |
+| Package | `com.mugtaba.athan`, the only athan package on the device |
+| Version | 1.27.326 (`versionCode=1000000`) |
+| Times on screen | 05:18, 06:47, 12:58, 16:08, **18:58**, **20:14** |
+| Background job | `Minimum latency: +2h59m59s997ms` |
+
+Those are real London times, not the launch-relative mocks a local build serves, and the
+last two are the Maghrib and Isha that started this investigation.
+
+Left for the owner to do: the app has no preferences set, because the clean install wiped
+MMKV. The user re-picks their alerts, sound and reminders.
