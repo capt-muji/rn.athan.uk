@@ -1,0 +1,13 @@
+/**
+ * Days of prayer boundaries each push carries, on both platforms. The widget
+ * re-reads its stored timeline when it runs out, so this is how long a widget
+ * stays correct without the app opening. 30 costs ~185 iOS entries and ~78KB;
+ * a year would cost ~2195 and ~929KB, and WidgetKit answers an over-budget
+ * timeline with a silently black widget, never an error.
+ *
+ * It lives here rather than beside its caller so the volume guards can measure
+ * the span that actually ships: `stores/widget.ts` imports react-native and a
+ * native module, which a pure unit test cannot.
+ */
+export const TIMELINE_DAYS = 30;
+

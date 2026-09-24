@@ -1,0 +1,10 @@
+              <Column modifiers={[APad(0, 1, 0, 0)]}>
+                <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
+                <AImageEl
+                  source={{ uri: A_PILL_NAME }}
+                  contentScale='fillBounds'
+                  modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
+                />
+              </Column>
+              <Column modifiers={[APad(12, 0, 12, 0)]}>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
+            </Box>
