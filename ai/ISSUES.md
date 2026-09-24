@@ -1,8 +1,9 @@
 # Issue Ledger — rn.athan.uk
 
-Last updated: 2026-09-20 — ledger compacted. Closed issues moved to the one-line index at the
-bottom (full detail in git history); open issues keep their detail verbatim. Open now: #10, #17,
-#27, G.1, G.2, #35.
+Last updated: 2026-09-24 — #36 added and fixed (lost alarms stayed lost, because the refresh gate
+trusted a timestamp), #37 opened (the background task demands a network it does not use). Ledger
+compacted 2026-09-20: closed issues moved to the one-line index at the bottom (full detail in git
+history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2, #35.
 
 Notes: the fleet gained a Huawei/Honor phone 2026-09-09 (owner-installed 1.24.1 via the EAS
 link; its USB never enumerated on the Mac). Upstream watches dropped: #44540 (closed upstream via
@@ -126,6 +127,66 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   (1.5.2, scheduled during the revoke-era) remain inexact until the store app updates and
   reschedules — the 1.18.x reschedule-on-open self-heals them on update; (c) "early" fires
   remain #11 clock-skew territory (not app-fixable).
+
+### 36. [FIXED 1.27.326 — device-verified] Lost alarms stayed lost, because the refresh gate trusted a timestamp
+
+- **Reported**: the 8T's user had all 6 standard prayers on Sound and heard nothing after
+  Asr. Notification history showed the last fire at 16:10; Magrib (~18:58) and Isha (~20:07)
+  never arrived.
+- **Found on the device (2026-09-23)**: 82 pending alarm batches, none belonging to the app.
+  Ruled out by reading, not by assumption: `stopped=false`, process alive,
+  `SCHEDULE_EXACT_ALARM granted=true`, standby bucket ACTIVE, clock in sync with the host,
+  `zen_mode=0` with every Zen Log line `set_zen_mode: off`, `ringer mode muted streams 0x0`,
+  `STREAM_NOTIFICATION` unmuted at 14/16, channels `mImportance=5` and not deleted. Neither
+  Do Not Disturb nor silent mode was involved.
+- **Sequence**: reboot at ~16:45 (`bootreason: shutdown,userrequested`) cleared every alarm;
+  no app process existed until 18:50:48, so expo-notifications' boot receiver never ran
+  (#19's OnePlus Auto-launch mechanism); and then **18 app opens armed nothing**, because
+  `refreshNotifications` read a recent `lastNotificationScheduleAtom` and skipped while zero
+  alarms existed. The stamp is not evidence that alarms exist, and nothing reconciled the two.
+- **Reproduced on demand** on the same 8T: `am force-stop` then launch leaves 0 prayer alarms
+  after 30s in the foreground, while logcat proves `initializeNotifications` ran.
+- **The fix is two things, both already on uat-2 before this investigation**:
+  `reopenRefreshGateOnColdLaunch` (1.25.30) clears the stamp on every Android cold launch, and
+  `createAthanAndroidChannel` at schedule time (1.25.35) stops the selected athan falling back
+  to the default tone. Verified on the 3T: force-stop cut 4 armed alarms to 1, and one cold
+  launch restored 4.
+- **Retuned with it (ADR-007 rev 4)**: `BACKGROUND_TASK_INTERVAL_HOURS` 6 → 3 and
+  `NOTIFICATION_REFRESH_HOURS` 12 → 2. The background interval is the ceiling on how long an
+  unattended phone stays silent after losing its alarms — measured at `+5h59m59s998ms` on the
+  8T, which is why Magrib and Isha were never recovered.
+- **What remains OEM-bound**: a phone whose boot broadcast is suppressed and whose app is
+  never opened still waits for the background task. Our own boot receiver would be suppressed
+  identically, and battery/auto-launch toggles are ruled out as a user-facing fix, so a
+  shorter unattended recovery is the whole of the remedy.
+- **Evidence**: `ai/features/reboot-rearm/EVIDENCE.md` (every reading, both devices).
+
+### 37. [OPEN — upstream] The background task refuses to run without a network it does not use
+
+- **Found**: owner question during the 1.27.326 soak, 2026-09-24. This app is offline-first:
+  the rolling buffer is armed from the MMKV cache and the API is fetched about once a year.
+  The background refresh needs no network, and `rescheduleAllNotificationsFromBackground`
+  already treats its `sync()` as best-effort in its own try/catch so a failed fetch cannot
+  stop the reschedule.
+- **Cause (library, hardcoded, both platforms)**: `Constraints.Builder()
+  .setRequiredNetworkType(NetworkType.CONNECTED)` in expo-background-task's
+  `BackgroundTaskScheduler.kt:107`, and `request.requiresNetworkConnectivity = true` in
+  `BackgroundTaskScheduler.swift:93`. `BackgroundTaskOptions` carries `minimumInterval` and
+  nothing else, so there is no supported way to drop it.
+- **Cost**: a phone offline overnight, in airplane mode, or holding a stale connectivity flag
+  loses its unattended recovery entirely. Measured on the 3T: the job sat unrun for 3h16m
+  behind this constraint while the device pinged 8.8.8.8 at 0% loss, and Google's own
+  `tachyon` was blocked by the same flag, so the staleness is device-wide rather than ours.
+- **NOT the cause of #36**: the 8T's job recorded `Satisfied constraints: CONNECTIVITY` and
+  was merely waiting out its six-hour interval. The two are independent.
+- **Mitigation today**: the foreground gate, which needs nothing from the network and re-arms
+  on the next app open (#36).
+- **Next**: an upstream issue or PR asking for the constraint to be opt-out. Patching the
+  constraint inside `node_modules` is rejected: invisible to the next reader and gone on the
+  next install.
+- **Full write-up**: `ai/features/reboot-rearm/ISSUE-37-NETWORK-CONSTRAINT.md` — the exact
+  library lines, the measurements, why #36 is unrelated, four options with trade-offs, the
+  open questions for a debugging session and the repro commands.
 
 ---
 
@@ -683,8 +744,8 @@ characterised).
 - #14 — Exact-alarm / power-state observability module (wontfix)
 - #15 — Zero-notification window during global reschedule (fixed)
 - #16 — iOS 64-pending cap constrains any horizon increase (wontfix)
-- #18 — Android force-stop cancels ALL scheduled alarms; recovery is next app open only (accepted)
-- #19 — 8T lost the WorkManager chain + alarms on every reboot unless OnePlus Auto-launch is enabled (mitigated)
+- #18 — Android force-stop cancels scheduled alarms; recovery is next app open only (accepted). Re-measured 2026-09-23 on the 3T: 4 armed, 1 survived — the imminent `setAlarmClock` one. A single-alarm test can therefore show a survivor and read as "force-stop is harmless"; the buffer is still destroyed and the recovery rule is unchanged
+- #19 — 8T lost the WorkManager chain + alarms on every reboot unless OnePlus Auto-launch is enabled (mitigated). Recurred 2026-09-23 on the user's 8T: see #36, which is the part that is ours to fix
 - #20 — Post-reboot headless background-task body never completes; reboot persistence is chain-only (accepted)
 - #21 — Android 9 TLS 1.3-only API blocked every real fetch (fixed)
 - #22 — "Sunrise" wrapped to two lines on the 3T (fixed)
