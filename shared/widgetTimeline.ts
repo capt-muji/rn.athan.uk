@@ -62,17 +62,18 @@ export const MIN_ENTRY_SPACING_MS = 5 * 60 * 1000;
 /**
  * Days of prayer boundaries each push carries, on both platforms. The widget
  * re-reads its stored timeline when it runs out, so this is how long a widget
- * stays correct without the app opening, and a week is what the owner judged
- * enough for a phone that never refreshes in the background (owner
- * 2026-09-24). 7 costs 40 iOS entries and ~17KB, where 30 cost 178 and ~75KB;
- * WidgetKit answers an over-budget timeline with a silently black widget,
- * never an error.
+ * stays correct with no app launch and no background refresh. Three days is
+ * what the owner judged enough (owner 2026-09-25): the background task runs
+ * every 3 hours and the foreground refresh every 2, so a phone in ordinary use
+ * re-pushes dozens of times inside the window. 3 costs 23 iOS entries and
+ * ~9.8KB, where 7 cost 47 and ~20KB; WidgetKit answers an over-budget timeline
+ * with a silently black widget, never an error.
  *
  * It lives here rather than beside its caller so the volume guards can measure
  * the span that actually ships: `stores/widget.ts` imports react-native and a
  * native module, which a pure unit test cannot.
  */
-export const TIMELINE_DAYS = 7;
+export const TIMELINE_DAYS = 3;
 
 /**
  * What the widget shows from one boundary until the next: the prayer counted
