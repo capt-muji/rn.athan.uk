@@ -94,11 +94,12 @@ Off that path:
 | 9 | 15. Android home-screen widgets | `ai/plans/SDK58-PROGRAMME.md` §15 | `ai/plans/15-android-widgets/PLAN.md` | DONE | `0ec4fe70` | 6 |
 | 10 | 15b. Android widget polish + self-refresh + mock build loop | `ai/prompts/android-widget-polish.md` | `ai/plans/15b-android-widget-polish/PLAN.md` | DONE | `825c4ce5` | 9 |
 | 11 | 16a. iOS widgets: finish the containerBackground fix (stuck kinds, first-placement UX, cadence table) | `ai/prompts/ios-widget-container-background.md` | `ai/plans/16a-ios-widget-container-background/PLAN.md` | EXECUTED | `0506f608` (tip of `wip/16a-ios-widget-archive-budget`, which the plan's step 1 lands on `uat-2`) | nothing |
-| 12 | 15c. Android widgets open the app on tap | `ai/prompts/android-widget-tap-open.md` | none (investigate WidgetInteractionAction first) | NOT PLANNED | | nothing |
-| 13 | 17. iOS widget timeline horizon: 14 to 30 days | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | NOT PLANNED | | 6 |
-| 14 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
-| 15 | 18. Android lock screen widgets: deep investigation, 3T first | `ai/prompts/android-lock-screen-widgets.md` | none (investigation-first session, queued 2026-09-20) | NOT PLANNED | | nothing (the 3T's verdict gates any follow-up) |
-| 16 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
+| 12 | 15d. Android widgets: proportional sizing, they break outside the 3T | `ai/features/android-widgets-x8/FINDINGS.md` | none (root cause found 2026-09-24, needs planning) | NOT PLANNED | | nothing (both Android phones on the bench) |
+| 13 | 15c. Android widgets open the app on tap | `ai/prompts/android-widget-tap-open.md` | none (investigate WidgetInteractionAction first) | NOT PLANNED | | nothing (owner confirms it fails on the 3T AND the X8, 2026-09-24) |
+| 14 | 17. iOS widget timeline horizon: 14 to 30 days | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | NOT PLANNED | | 6 |
+| 15 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
+| 16 | 18. Android lock screen widgets: deep investigation, 3T first | `ai/prompts/android-lock-screen-widgets.md` | none (investigation-first session, queued 2026-09-20) | NOT PLANNED | | nothing (the 3T's verdict gates any follow-up) |
+| 17 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
 
 - **Session 6b was planned under the previous rules**, on the morning of 2026-09-16, before "specify, do not
   dictate" was written that afternoon. Every one of its steps hands the executor finished files under
