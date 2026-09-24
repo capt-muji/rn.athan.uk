@@ -87,6 +87,20 @@ history — "a session now says which job it is doing rather than which model".)
 - **All four go in one later session, not the session that found them.** 🐋  "I think you should
   address all of them in the next session. This session is now too long."
 
+## Decided by the owner, 2026-09-24, while planning session 19
+
+- **The iOS flag flips now, rather than waiting for G.2.** Asked directly, because flipping the
+  flag is what makes G.2's few-second blank card visible to real users. The owner chose to flip;
+  G.2 is the next queued row, so the gap is one session.
+- **The iPhone XS is on the bench and the owner does the taps.** The XS was deliberately
+  disconnected on 2026-09-12; it answers `devicectl` again. The owner places all eight home kinds
+  by hand and reports what they see after ten minutes, which is the G.1 acceptance protocol.
+- **The active pill keeps a fixed 12dp margin, not one that scales with the widget's width.**
+  Offered both; the owner chose the fixed margin, because 12dp is the left inset they had already
+  called "perfectly aligned" and mirroring it is the smallest change that answers the complaint.
+  The planning session added the clamp underneath: below about a 236dp grant both sides shrink
+  together rather than pushing the pill outside its own column.
+
 ## Decided by the owner, 2026-09-24, while planning session 15c
 
 - **The widget tap rides a patched `expo-widgets`, not a provider subclass of our own.** The patch
