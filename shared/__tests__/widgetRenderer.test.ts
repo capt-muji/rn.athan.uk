@@ -633,10 +633,12 @@ describe('home widget renderer', () => {
           collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
       );
       expect(listColumn).toBeDefined();
-      // The pill WRAPS the row content with air on both sides: it spans the
-      // full column (no inset) while the row text sits 12dp in, so the pill
-      // leads the first letter and trails the time, never inside the word
-      // (owner ruling 2026-09-19)
+      // The pill WRAPS the row content with 12dp of air each side and no more:
+      // it starts where the dead space to the left of the rows ends, so its
+      // trailing edge lands 12dp past the times instead of at the column's own
+      // edge (owner ruling 2026-09-24, replacing the 2026-09-19 full-column
+      // pill). At a 380dp grant the list is 177dp and the name and time boxes
+      // sum to 136dp, so the pill is 160dp and starts 17dp in.
       const pillColumn = collect(tree).find(
         (node) =>
           node.marker === 'Column' &&
@@ -646,13 +648,13 @@ describe('home widget renderer', () => {
       // Pixel-audited on the 3T, then owner-tuned: the pill sits 1dp low so
       // the digit ink band reads dead-center against its edges
       expect(pillColumn?.props.modifiers).toEqual(
-        expect.arrayContaining([{ modifier: 'padding', value: [0, 1, 0, 0] }])
+        expect.arrayContaining([{ modifier: 'padding', value: [17, 1, 0, 0] }])
       );
       const rowsColumn = nodes.find(
         (node) =>
           node.marker === 'Column' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[12,0,12,0]'
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[29,0,0,0]'
           )
       );
       expect(rowsColumn).toBeDefined();
@@ -667,6 +669,54 @@ describe('home widget renderer', () => {
           textsOf(node).includes('Fajr')
       );
       expect(rowsRow).toBeDefined();
+    });
+
+    // The pill's leading inset and the rows' leading inset, read back from the
+    // two sibling columns the medium list stacks
+    const pillAndRowsLead = (grantedWidthDp: number): { pill: number; rows: number } => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+      );
+      const leadOf = (node: unknown): number => {
+        const mods = ((node as MarkerNode)?.props?.modifiers as { modifier: string; value: unknown }[]) ?? [];
+        const found = mods.find((mod) => mod.modifier === 'padding');
+        const value = (found?.value ?? []) as number[];
+        return value[0] as number;
+      };
+      const pillColumn = collect(tree).find(
+        (node) =>
+          node.marker === 'Column' &&
+          collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
+      );
+      const rowsColumn = collect(tree).find((node) => node.marker === 'Column' && textsOf(node).includes('Fajr'));
+      return { pill: leadOf(pillColumn), rows: leadOf(rowsColumn) };
+    };
+
+    it('gives the active pill equal air each side of the row text, at every grant', () => {
+      // The owner saw the pill "perfectly aligned on the left, but on the right
+      // side, it's extended even further out": it filled the list column while
+      // the rows sat 12dp inside it, so every dp of slack landed right of the
+      // times, 21dp of it at a 310dp grant and more as the screen widened. The
+      // pill now wraps the text with the same 12dp the owner approved on the
+      // left, and where a narrow grant cannot afford 12 it shrinks both sides
+      // together rather than overflowing the column.
+      for (const granted of [380, 360, 330, 310, 285, 258, 236, 220, 200]) {
+        const { pill, rows } = pillAndRowsLead(granted);
+        const { name, time } = rowBoxWidths(granted);
+        const { list } = heroAndList(granted);
+        const left = rows - pill;
+        const right = list - (rows + name + time);
+
+        expect(left).toBe(right);
+        expect(left).toBeLessThanOrEqual(12);
+        expect(left).toBeGreaterThan(0);
+        // A margin taken as a flat 12dp stays symmetric on a narrow grant by
+        // pushing the pill's own inset negative, which is a pill wider than the
+        // column it sits in: the air has to come out of the margin instead
+        expect(pill).toBeGreaterThanOrEqual(0);
+        expect(rows + name + time).toBeLessThanOrEqual(list);
+      }
     });
 
     // The medium's columns are shares of the width the launcher granted, so
