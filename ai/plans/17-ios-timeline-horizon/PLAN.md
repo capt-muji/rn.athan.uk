@@ -229,8 +229,8 @@ and session 16a's entry-budget finding in `ai/AGENTS.md`. What it found:
 
 ## 6. Steps
 
-- [ ] Step 1: The horizon is 30 days (specified)
-- [ ] Step 2: The volume guard measures the horizon it ships (specified)
+- [x] Step 1: DONE in `86bf6597`
+- [x] Step 2: DONE in `2cdce940`
 
 ### Step 1: The horizon is 30 days
 

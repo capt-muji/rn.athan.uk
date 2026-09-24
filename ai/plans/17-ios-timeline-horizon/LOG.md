@@ -60,3 +60,17 @@ exited 0.
 
 Breaks: `bash $TMPDIR/breaks-17-1.sh` printed `caught: the horizon falls back to a fortnight`,
 `caught: the horizon overruns the entry budget`, `caught 2 of 2`, then `ALL AS EXPECTED: 1`. No `.bak` file left.
+
+Commit `2cdce940`, version 1.27.354, merged as `5d2f4c43`. The hook reported
+`Tests:       4645 passed, 4645 total` with four 100% coverage lines.
+
+Review: the session reviewed the diff itself against the step's six checks, one round, verdict merge. The constant
+moved to `shared/widgetTimeline.ts` and `stores/widget.ts` only lost it and gained the import; both fixture spans
+read `TIMELINE_DAYS + 1`; no bound was relaxed, with both 200 KB payload guards and the `stillAhead.length + 2`
+relative bound intact beside the new absolute one; `widgetSimulation.test.ts` is not in the diff; the three widget
+suites report 164.
+
+## Finishing
+
+`ai/AGENTS.md` gained the horizon invariant from the plan's section 8, with the constant's new home recorded.
+The row is EXECUTED.
