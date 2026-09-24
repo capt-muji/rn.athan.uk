@@ -96,11 +96,12 @@ Off that path:
 | 12 | 15d. Android widgets: proportional sizing, they break outside the 3T | `ai/prompts/android-widget-proportional-sizing.md` | `ai/plans/15d-android-widget-proportional-sizing/PLAN.md` | DONE | `7b38e5a6` | nothing |
 | 13 | 15c. Android widgets open the app on tap | `ai/prompts/android-widget-tap-open.md` | `ai/plans/15c-android-widget-tap-open/PLAN.md` | DONE | `31416a38` | nothing |
 | 14 | 17. Widget timeline horizon: 14 to 30 days, both platforms | `ai/plans/SDK58-PROGRAMME.md` §17 | `ai/plans/17-ios-timeline-horizon/PLAN.md` | DONE | `53d9baba` | nothing |
-| 15 | 19. Widget polish: Android dark colours match iOS, the active pill overhang, the horizon to 7 days, the iOS flag on | `ai/prompts/widget-polish-and-horizon.md` | `ai/plans/19-widget-polish-and-horizon/PLAN.md` | EXECUTED (steps 1 to 3 and 5a done; step 4, the iOS flag flip, is NOT done: it waits on the G.1 acceptance protocol, which needs the owner to place eight widgets on the XS) | `5926e35f` | nothing |
-| 16 | 20. G.2: the ~5s blank card when a widget is placed | `ai/ISSUES.md` G.2 | none (queued 2026-09-24) | NOT PLANNED | | nothing (15's flag flip makes it user-visible on iOS, so the two are read together) |
-| 17 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
-| 18 | 18. Android lock screen widgets: deep investigation, 3T first | `ai/prompts/android-lock-screen-widgets.md` | none (investigation-first session, queued 2026-09-20) | NOT PLANNED | | nothing (the 3T's verdict gates any follow-up) |
-| 19 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
+| 15 | 19. Widget polish: Android dark colours match iOS, the active pill overhang, the horizon to 7 days, the iOS flag on | `ai/prompts/widget-polish-and-horizon.md` | `ai/plans/19-widget-polish-and-horizon/PLAN.md` | DONE (steps 1 to 3 and the 3T proof; step 4, the iOS flag flip, was correctly not started and is re-queued as row 16a) | `5926e35f` | nothing |
+| 16 | 19b. The iOS widgets flag: run the G.1 acceptance protocol on the XS, then flip it | `ai/plans/19-widget-polish-and-horizon/PLAN.md` step 4 | that plan's step 4 and step 5b, both written and unrun | NOT PLANNED (owner-led: the protocol needs the owner to place eight widgets and leave them ten minutes) | `5926e35f` | nothing (the XS already carries the build and the crash baseline is recorded, see that plan's AUDIT.md section 9) |
+| 17 | 20. G.2: the ~5s blank card when a widget is placed | `ai/ISSUES.md` G.2 | none (queued 2026-09-24) | NOT PLANNED | | nothing (16's flag flip makes it user-visible on iOS, so the two are read together) |
+| 18 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
+| 19 | 18. Android lock screen widgets: deep investigation, 3T first | `ai/prompts/android-lock-screen-widgets.md` | none (investigation-first session, queued 2026-09-20) | NOT PLANNED | | nothing (the 3T's verdict gates any follow-up) |
+| 20 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
 
 - **Session 6b was planned under the previous rules**, on the morning of 2026-09-16, before "specify, do not
   dictate" was written that afternoon. Every one of its steps hands the executor finished files under
@@ -116,12 +117,6 @@ Off that path:
 
 A planning session may turn one of these into a plan only after the owner approves it in that session; it then adds a
 row above.
-- The iOS widgets flag: `expo-widgets` 58.0.1 shipped the SwiftUI view-identity fix (#49810, "Preserve SwiftUI view
-  identity across widget and Live Activity updates"), and the installed 58.0.3's `ios/Widgets/DynamicView.swift`
-  renders `AnyView(view).id(child.childIdentity)` with no `UUID()` anywhere: the random-per-render identity hack that
-  `shared/flags.ts` names as the reason `widgets` is OFF is gone. That file's JSDoc flip condition also requires
-  verification on the iPhone XS per the G.1 acceptance protocol, which no session has run. Found while planning
-  session 17 (2026-09-24), which needed to know whether an iOS device proof was possible.
 - The accessibility fixes listed in "Session 5 of the queue" in `ai/features/uat-2/AUDIT-FINDINGS.md`.
 - The edge-to-edge built-in switch: drop `react-native-edge-to-edge` for RN's `edgeToEdgeEnabled`
   (its README recommends this on RN 0.86+; the package stays at 1.8.2 until then). Waits on an
