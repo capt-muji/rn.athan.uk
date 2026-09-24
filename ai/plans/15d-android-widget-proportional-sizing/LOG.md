@@ -58,3 +58,31 @@ rather than the inner width, so a grant below 33dp would still produce negative 
 exceeds the list column below a 231dp grant. Both sit far under the provider's declared 310dp floor, which is the
 narrowest a launcher may offer. They are noted for the audit rather than guarded, because a guard for an
 unreachable state is untestable and would not be covered.
+
+## Step 3: the native tick stamps the granted width
+
+Branch `feat/15d-stamp-granted-width`, version 1.27.341, commit 22e0f333.
+
+`patchCompositionSize` now writes both stamps in its single existing `commit()`, and its early return compares both,
+so a re-grant that keeps the same composition still reaches the layout. That is the case the session added for: a
+home-grid change from 4 to 5 columns, or a display-size change, hands the widget a different width without being a
+resize at all, and the widgets are declared `resizeMode="none"`.
+
+No Jest suite covers this file: the unit project compiles TypeScript only, and the module's own test covers the JS
+binding, which is unchanged and still passes. The proof is step 4's device run. No break script for the same reason:
+every substitution would report NOT CAUGHT regardless of correctness, which would be false evidence.
+
+**Self-review by a same-model subagent.** All eight checks passed. Two findings worth keeping:
+
+- **`OPTION_APPWIDGET_MIN_WIDTH` is the correct read, and the choice is load-bearing.** The launcher reports a range
+  because one instance is laid out at two widths: MIN is the PORTRAIT bound, MAX the landscape one. Reading MAX
+  would let the columns sum past the real portrait width and reintroduce exactly the clipping this session fixes.
+  The reasoning now sits in the function's KDoc, because the next reader will otherwise wonder why the smaller of
+  the two is used.
+- **A pre-existing read-modify-write race was identified, not introduced here.** The tick reads the stored props,
+  parses, then commits; a JS push landing between those points is overwritten by the tick writing back the stale
+  snapshot with fresh stamps. It has been that way since the `size` stamp shipped in 15b, this commit adds a field
+  to the same block without widening the window, and the Android snapshot carries a multi-day window so a single
+  lost push usually renders identically. Recorded for the audit, not fixed here.
+
+One comment was tightened: it explained the same point the file header already made, six lines above.
