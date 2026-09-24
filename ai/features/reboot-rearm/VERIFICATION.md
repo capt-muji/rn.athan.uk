@@ -190,3 +190,55 @@ captured the block above.
 
 Also worth knowing: this shell has no `timeout` binary. Backgrounding a capture and
 killing it by recorded PID is the pattern that works.
+
+## 8T results — the user's own phone, 1.24.1 replaced by 1.27.326 (2026-09-24 00:58–01:09)
+
+Clean install of the REAL package (`com.mugtaba.athan`, no fleettest suffix) at the owner's
+instruction: uninstall then install, so MMKV went with it and the app came up with no
+preferences. Five daily prayers set back to Sound for the test.
+
+### Interval, before and after on the same handset ✅
+
+| | 1.24.1 | 1.27.326 |
+| --- | --- | --- |
+| Job `Minimum latency` | +5h59m59s998ms | **+2h59m59s997ms** |
+| `registerTaskAsync` options | — | `{minimumInterval=180.0}` |
+
+### The regression, on the phone that reported it ✅
+
+| Step | 1.24.1 (measured earlier tonight) | 1.27.326 |
+| --- | --- | --- |
+| Armed | — | 7 |
+| After `am force-stop` | 0 | 0 |
+| **After one cold launch** | **0** | **8** |
+
+The 1.24.1 column is not inferred: the same `force-stop` then doubled `am start` sequence
+was run on it at 22:56 and left zero alarms after 30s in the foreground, with logcat
+showing `TaskService: Registered task` so initialisation had definitely completed.
+
+### Reboot, app never opened — the OEM ceiling, reproduced ✅❌
+
+Rebooted 01:03:42 with 8 armed.
+
+| Reading | Value |
+| --- | --- |
+| Alarms from +4min to +5.5min, every 14s | **0** |
+| App process | **0**, never started |
+| Alarms after ONE app open | **8**, all `window=0` |
+
+This is ISSUES #19 exactly: OxygenOS 12 never delivered the boot broadcast, so
+expo-notifications' re-arm never ran and no process existed to run it. The 3T, on the same
+build, restored its alarms unattended at +14s. The OEM half is not fixable from inside the
+app and was never claimed to be.
+
+What IS fixed is everything after that. On 1.24.1 the phone stayed at zero through 18 app
+opens; on 1.27.326 the first open restores the full set. The user's lived failure —
+Magrib and Isha passing in silence with the app opened repeatedly in between — cannot
+recur.
+
+### Left on the device
+
+1.27.326, five daily prayers on Sound, 8 alarms armed, background job due in 3h. Two things
+the owner should know: the clean install wiped the user's own preferences (sound choice,
+reminders, Extras), and this is a LOCAL build running mock times, so the armed instants are
+launch-relative and meaningless. A production build is required before the phone goes back.
