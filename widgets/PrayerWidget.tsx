@@ -133,7 +133,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // Two self-contained palettes: text colors and the active-pill
   // treatment.
   const LIGHT = {
-    card: 'rgba(252, 252, 254, 0.92)',
+    card: '#fcfcfe',
     eyebrow: '#db2777',
     hero: '#1e1b2e',
     secondary: 'rgba(42, 68, 130, 0.42)',
@@ -150,7 +150,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const DARK = {
-    card: 'rgba(2, 13, 38, 0.95)',
+    card: '#101a3d',
     eyebrow: '#ff69b4',
     hero: '#ffffff',
     // One slate-blue whisper per slot (owner ruling 2026-09-20): the app's
