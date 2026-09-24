@@ -25,8 +25,8 @@ try() {
   mv "$FILE.bak" "$FILE"
 }
 
-try "the dark card drifts back to the bright purple" 'CARD_DARK = css("#020c24")' 'CARD_DARK = css("#252387")'
-try "the dark card drifts to any other colour" 'CARD_DARK = css("#020c24")' 'CARD_DARK = css("#030d25")'
+try "the dark card drifts back to the bright purple" 'CARD_DARK = css("#09142d")' 'CARD_DARK = css("#252387")'
+try "the dark card drifts to any other colour" 'CARD_DARK = css("#09142d")' 'CARD_DARK = css("#030d25")'
 try "a pill colour drifts off the layout palette" 'css("#2743e0")' 'css("#2743e1")'
 
 echo "caught $CAUGHT of $TOTAL"

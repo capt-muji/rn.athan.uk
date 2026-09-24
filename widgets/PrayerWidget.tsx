@@ -217,7 +217,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // X8's sliced names). Glance's own fractions are unreachable — expo-widgets'
   // converter drops fillMaxWidth's fraction and ignores weight, which is what
   // starved the list on the 3T — so the grant rides the snapshot instead.
-  // REFERENCE_* are the owner-approved 3T proportions.
+  // REFERENCE_* are the owner-approved 3T proportions the row boxes scale from.
   const REFERENCE_INNER_WIDTH = 347;
   const REFERENCE_NAME_WIDTH = 82;
   const REFERENCE_TIME_WIDTH = 54;
@@ -404,10 +404,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const grantedWidth = typeof stampedWidth === 'number' && stampedWidth > 0 ? stampedWidth : ANDROID_MEDIUM_MIN_WIDTH;
     const innerWidth = grantedWidth - CARD_PAD_START - CARD_PAD_END;
     const scale = innerWidth / REFERENCE_INNER_WIDTH;
-    // Half the inner width each, so the trio centres in the left half and the
-    // list owns the right (owner 2026-09-24). The reference proportion was
-    // 170/347, within 3dp of half, and an exact half is what makes the two
-    // centres predictable at every grant.
+    // Half each, so the trio's centre and the card's quarter coincide at every
+    // grant (owner 2026-09-24). The old 170/347 share sat 3dp off that.
     const HERO_WIDTH = Math.floor(innerWidth / 2);
     // Remainder, not its own rounded share: two rounded shares can sum a dp
     // past the inner width, and a dp of overflow clips.
