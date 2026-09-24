@@ -43,6 +43,27 @@ history — "a session now says which job it is doing rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-09-24, while planning session 15d
+
+- **The Android widget learns its width from a props stamp, not from a Glance fraction.** The
+  layout's columns are shares of the width the launcher actually granted, which
+  `modules/widgetrefresh` stamps into each kind's props from `OPTION_APPWIDGET_MIN_WIDTH`,
+  beside the `size` stamp it already writes. Chosen over patching `expo-widgets`' converter so
+  the layout's correctness never depends on a patched dependency. The converter bug is recorded
+  for a future upstream PR, not fixed in this session.
+- **Both Android phones stay on the bench for session 15d.** The Find X8 returns to its user
+  afterwards, so the device proof runs on both phones while it is here: at each phone's native
+  density and under a display-size override.
+- **Widget sizes stay locked** (`resizeMode="none"`, re-affirmed while planning 15d). The eight
+  kinds ARE the size choices, as session 15b ruled. The granted width still changes without a
+  resize, when a user re-columns the home grid or changes display size, and the stamp tracks it.
+- **No subagents at all, on every task, from now on.** The owner's standing rule, given while
+  planning 15d and extended to all future work: one session does the planning, the execution and
+  the audit itself, start to finish. No `Code Reviewer`, no `vision`, no scratch-worktree agents.
+  Reviews are the session's own re-reading of its diff; images are read by the owner, who is
+  asked a direct question instead. This supersedes the review and `vision` wording in
+  `PLANNER-BRIEF.md`, `EXECUTOR-BRIEF.md` and `AUDITOR-BRIEF.md`.
+
 ## Decided by the owner, 2026-09-20, while planning session 16a
 
 - **Both lock layouts centre**, via `containerRelativeFrame({ axes: 'horizontal' })`: a real

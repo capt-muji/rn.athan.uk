@@ -1,0 +1,8 @@
+  // Fixed hero width: a fillMaxWidth fraction on the first Row child let
+  // the hero take the full card and squeezed the day list to zero width in
+  // Glance (caught on the 3T: the medium rendered hero-only, centered).
+  // 170dp with the 162dp list: the trio centers in the left region and the
+  // list expands LEFT off its right anchor for the 13sp rows' air.
+  const HERO_WIDTH = 170;
+  const ROW_NAME_WIDTH = 82;
+  const ROW_TIME_WIDTH = 54;
