@@ -3,7 +3,7 @@
 Last updated: 2026-09-24 — #36 added and fixed (lost alarms stayed lost, because the refresh gate
 trusted a timestamp), #37 opened (the background task demands a network it does not use). Ledger
 compacted 2026-09-20: closed issues moved to the one-line index at the bottom (full detail in git
-history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, #39, #40, G.1, G.2, #35.
+history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2, #35.
 
 Notes: the fleet gained a Huawei/Honor phone 2026-09-09 (owner-installed 1.24.1 via the EAS
 link; its USB never enumerated on the Mac). Upstream watches dropped: #44540 (closed upstream via
@@ -669,7 +669,7 @@ production release; G.6 noted but deferred by owner.
 
 ## H. UI bugs (2026-09-09)
 
-### 39. [OPEN, queued as row 15] Android's dark widget palette never matched iOS
+### 39. [CLOSED 2026-09-24, session 19] Android's dark widget palette never matched iOS
 
 - **Found**: 2026-09-24, the owner comparing the two platforms side by side.
 - **Symptom**: the Android dark card is a bright, vibrant purple; the iOS dark card is a very
@@ -683,8 +683,12 @@ production release; G.6 noted but deferred by owner.
   satisfies.
 - **Fix**: composite the iOS colour over black for the opaque equivalent, and audit the rest of
   the dark palette for the same drift rather than the card alone.
+- **CLOSED 2026-09-24**: the audit found the card was the ONLY drift (11 generator literals, two
+  outside the layout palette, both the deliberate opaque card forms). The owner then softened the
+  whole dark theme, so what shipped is `rgba(9, 21, 47, 0.95)` on both platforms with `#09142d`
+  baked for Android. Verified on the 3T: 780,540 pixels of the new card, zero of the old.
 
-### 40. [OPEN, queued as row 15] The Android active pill overhangs the times
+### 40. [CLOSED 2026-09-24, session 19] The Android active pill overhangs the times
 
 - **Found**: 2026-09-24, the owner on an Android phone: "perfectly aligned on the left, but on
   the right side, it's extended even further out."
@@ -698,6 +702,10 @@ production release; G.6 noted but deferred by owner.
 - **Distinct from the 2026-09-19 finding** already covered by
   `bounds the active pill to the list column, not the card remainder`: that bounded the pill to
   the COLUMN, and this is the pill inside that column, so the guard tightens rather than changes.
+- **CLOSED 2026-09-24**: the pill column takes the dead space as a leading inset and the rows take
+  that inset plus one 12dp gutter, so both margins are the 12dp the owner approved on the left. A
+  grant too narrow for 12dp each side halves the slack instead, which keeps the sides equal and the
+  pill inside its column. Measured on the 3T at 34px left and 34px right.
 - **Owner ruling**: bound the pill to the text, keeping equal breathing room each side.
 
 ### 38. [OPEN, queued as row 15d] Android widgets clip their prayer names on any launcher but the 3T's
