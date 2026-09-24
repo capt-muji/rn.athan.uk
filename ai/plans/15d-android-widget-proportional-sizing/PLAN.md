@@ -296,13 +296,18 @@ The spike's code was deleted and does not become the plan.
 
 ## 6. Steps
 
-- [ ] Step 1: The medium composition computes its columns from the granted width (specified)
-- [ ] Step 2: The snapshot carries the granted width (specified)
+- [ ] Step 1: The snapshot carries the granted width, and the medium computes its columns from it (specified)
+- [ ] Step 2: folded into step 1, see the correction below
 - [ ] Step 3: The native tick stamps the granted width (specified)
 - [ ] Step 4: Device proof on both phones, three densities (specified)
 
-Steps 2 and 1 are ordered deliberately: step 1 changes only `widgets/PrayerWidget.tsx` and reads the field through an
-optional access that type-checks before the field exists, so each step leaves `uat-2` green on its own.
+**Correction, made while executing 2026-09-24.** The plan originally claimed step 1 could land before step 2 because
+the layout reads the field "through an optional access that type-checks before the field exists". That is false:
+`tsc` rejects reading an undeclared property, with
+`widgets/PrayerWidget.tsx(387,32): error TS2339: Property 'grantedWidthDp' does not exist on type
+'PrayerWidgetAndroidProps'`. The contract must exist before the code that reads it, so step 1 carries
+`shared/widgetTypes.ts` and step 2's field with it. Step 2 is therefore folded into step 1, and the checklist above
+records it as DONE by step 1. Each step still leaves `uat-2` green, which was the point of the ordering.
 
 ### Step 1: The medium composition computes its columns from the granted width
 
@@ -311,8 +316,9 @@ optional access that type-checks before the field exists, so each step leaves `u
 1. **Goal:** the Android medium composition derives every column width from the width the launcher granted, so the
    columns can never sum past the card.
 2. **Branch:** `git checkout -b fix/15d-proportional-medium uat-2`
-3. **Files:** `widgets/PrayerWidget.tsx`, `shared/__tests__/widgetRenderer.test.ts`. Nothing else may change, apart
-   from `ai/plans/README.md` and this folder's `PLAN.md` and `LOG.md`.
+3. **Files:** `widgets/PrayerWidget.tsx`, `shared/widgetTypes.ts`, `shared/__tests__/widgetRenderer.test.ts`. Nothing
+   else may change, apart from `ai/plans/README.md` and this folder's `PLAN.md` and `LOG.md`. `shared/widgetTypes.ts`
+   is here because of the correction above: the field must exist before the layout can read it.
 4. **Tests first (red).** Suite: `shared/__tests__/widgetRenderer.test.ts` (existing).
 
    One existing test CHANGES, because it pins the width this step makes dynamic:
@@ -859,12 +865,16 @@ Record all three. The invariant to check by hand: `hero + list` equals `innerWid
 python3 ~/athan-device-sweep/session5/bin/devcheck.py shot ~/athan-device-sweep/session15d/<phone>-<density>.png
 ```
 
-The session cannot see images and no `vision` subagent may be used (section 11). The OWNER reads the screen. Ask
-them this exact question, naming the phone and density, and WAIT for the answer:
+The session cannot see images. Spawn a subagent on the SAME model as this session (section 11), give it the
+screenshot's absolute path, and ask it this exact question:
 
-> Please look at the `<phone>` home screen, at the medium prayer widget. Read its day list from top to bottom: the
-> prayer name on the left and the time on the right. Is every prayer name complete, or is any of them cut off at its
-> left edge or missing letters? If any is cut off, which rows, and what do they read instead?
+> This screenshot is an Android home screen showing a prayer-times widget. Read the widget's day list from top to
+> bottom and write out each row exactly as it appears: the prayer name on the left, the time on the right. If any
+> prayer name is cut off at its left edge or missing letters, say which rows and what you see instead. Do not guess
+> at what a truncated word was meant to be. Report only what is visible.
+
+When the owner is present, ask them the same question about the phone in front of them instead; their reading wins
+over a subagent's.
 
 A PASS is: every row's name is complete, no row is missing letters from its left edge, the times are still
 right-aligned, and the pill still spans the list block. On the 3T additionally: the medium is NOT hero-only and the
@@ -1010,16 +1020,17 @@ After restoring, follow `EXECUTOR-BRIEF.md` section 4a.
 
 ## 11. Subagents in this plan
 
-**None, and none are permitted.** The owner's standing rule, given 2026-09-24 and recorded in
-`ai/prompts/README.md`: no subagents at all, on this task or any future one. One session does the planning, the
-execution and the audit itself, start to finish.
+**None required.** The session does the planning, the execution and the audit itself, looping on its own work until
+it is right (`ai/prompts/README.md`, 2026-09-24).
 
-This replaces two things the briefs would otherwise require:
+A subagent may be spawned, but only on the SAME model as the session that spawns it, for any task including reading
+an image. No model is named here or anywhere in this repository: the harness chooses it, and these pages are read by
+different models over the life of the build.
 
 | Instead of | This plan does |
 | --- | --- |
-| A `Code Reviewer` subagent per commit | The session reviews its own diff before each merge, against the checklist in each step's part 9, and records the findings in `LOG.md` |
-| A `vision` subagent reading each screenshot | The session asks the OWNER the question in section 7, Reading C, and waits for the answer. The owner is the only reader of images in this programme |
+| A reviewer subagent per commit | The session reviews its own diff before each merge, against the checklist in each step's part 9, and records the verdict and every finding in `LOG.md` |
+| A vision subagent reading each screenshot | The session asks the OWNER the question in section 7, Reading C, and waits. A same-model subagent may read the screenshot instead when the owner is away |
 
 ## 12. Report to the owner
 
