@@ -69,6 +69,24 @@ history — "a session now says which job it is doing rather than which model".)
   misleads the next reader. This supersedes the "Show the model" wording in `PLANNER-BRIEF.md`,
   `EXECUTOR-BRIEF.md` and `AUDITOR-BRIEF.md`, and the Model columns those briefs ask for.
 
+## Decided by the owner, 2026-09-24, after testing sessions 15c and 17 on the XS and Android
+
+- **The widget horizon drops from 30 days to 7.** Taken after the session showed the black
+  "containerBackground" card is ISSUES G.2, not the horizon, and that the horizon is the widget's
+  survival time when background refreshes do not happen. The owner accepts that a user whose
+  Background App Refresh is off, or who force-quits, has a stale widget after a week.
+- **Android's dark widget colours match iOS exactly.** 🐋  "I want Android to match exactly like
+  iPhone actually." iOS's near-black navy is the reference; Android's bright purple `#252387` is
+  the drift. The Android card is a generated rounded rectangle, not a screenshot.
+- **The Android active pill is bounded to the text, not the list column.** The owner chose this
+  over shifting the times alone: 🐋  "shift the whole list to the right and then make the active
+  background smaller on the left side". Measured overhang past the times: 21dp at a 310dp grant,
+  31dp at 400dp.
+- **The iOS widgets flag is turned on.** 🐋  "Yes, we do want to turn it on. It should be on
+  anyway." The G.1 acceptance protocol on the XS is part of that job, not a formality.
+- **All four go in one later session, not the session that found them.** 🐋  "I think you should
+  address all of them in the next session. This session is now too long."
+
 ## Decided by the owner, 2026-09-24, while planning session 15c
 
 - **The widget tap rides a patched `expo-widgets`, not a provider subclass of our own.** The patch

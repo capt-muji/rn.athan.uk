@@ -3,7 +3,7 @@
 Last updated: 2026-09-24 — #36 added and fixed (lost alarms stayed lost, because the refresh gate
 trusted a timestamp), #37 opened (the background task demands a network it does not use). Ledger
 compacted 2026-09-20: closed issues moved to the one-line index at the bottom (full detail in git
-history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2, #35.
+history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, #39, #40, G.1, G.2, #35.
 
 Notes: the fleet gained a Huawei/Honor phone 2026-09-09 (owner-installed 1.24.1 via the EAS
 link; its USB never enumerated on the Mac). Upstream watches dropped: #44540 (closed upstream via
@@ -656,8 +656,49 @@ production release; G.6 noted but deferred by owner.
   the G.1 layout fix lands. Sim note: on iOS 18.5 sim placements render
   within seconds (owner witnessed), so ~60 s is largely a DEVICE/
   reload-latency phenomenon.
+- **2026-09-24 update (owner, on the XS at 1.27.337)**: still open, and now
+  about **5 s** rather than ~60 s, seen both on placement and while PREVIEWING
+  the widget in the picker. The owner asked whether session 17's horizon rise
+  from 14 to 30 days caused it: it did NOT. The XS was running 1.27.337, whose
+  `TIMELINE_DAYS` is 14, and session 17's build was never installed on it. The
+  horizon cannot be the cause and shortening it is not a fix; the horizon was
+  separately dropped to 7 days for its own reason (widget survival without
+  background refresh), which leaves this unchanged. Queued as its own row, and
+  read together with the row that flips the iOS widgets flag on, because that
+  flip is what makes this user-visible.
 
 ## H. UI bugs (2026-09-09)
+
+### 39. [OPEN, queued as row 15] Android's dark widget palette never matched iOS
+
+- **Found**: 2026-09-24, the owner comparing the two platforms side by side.
+- **Symptom**: the Android dark card is a bright, vibrant purple; the iOS dark card is a very
+  dark near-black navy. The owner wants Android to match iOS exactly.
+- **Cause**: two separate literals that were never reconciled. iOS's `DARK.card` in
+  `widgets/PrayerWidget.tsx` is `rgba(2, 13, 38, 0.95)`; Android's `CARD_DARK` in
+  `scripts/generate-widget-assets.py` is `#252387`. Android's card is a pre-rendered opaque
+  bitmap (Glance draws no rounded corners, strokes or shadows), so it carries its own colour
+  rather than reading the layout's palette. `shared/__tests__/widgetAssets.test.ts` pins the
+  script's literals as a SUBSET of the layout palette, which a drifted-but-present colour
+  satisfies.
+- **Fix**: composite the iOS colour over black for the opaque equivalent, and audit the rest of
+  the dark palette for the same drift rather than the card alone.
+
+### 40. [OPEN, queued as row 15] The Android active pill overhangs the times
+
+- **Found**: 2026-09-24, the owner on an Android phone: "perfectly aligned on the left, but on
+  the right side, it's extended even further out."
+- **Symptom**: the active-row background extends past the prayer times on the right, while
+  looking correct on the left. It worsens as the screen widens.
+- **Cause (arithmetic)**: in the medium composition the pill is `fillMaxWidth()` inside a Box of
+  `width(LIST_WIDTH)`, so it spans the whole list column, while the rows sit in a sibling column
+  padded `APad(12, 0, 12, 0)`. The name and time columns do not fill the remainder, so the slack
+  lands to the right of the times: 21dp at a 310dp grant, 27dp at 360dp, 31dp at 400dp. The left
+  edge reads as a deliberate 12dp inset, which is why only the right looks wrong.
+- **Distinct from the 2026-09-19 finding** already covered by
+  `bounds the active pill to the list column, not the card remainder`: that bounded the pill to
+  the COLUMN, and this is the pill inside that column, so the guard tightens rather than changes.
+- **Owner ruling**: bound the pill to the text, keeping equal breathing room each side.
 
 ### 38. [OPEN, queued as row 15d] Android widgets clip their prayer names on any launcher but the 3T's
 
