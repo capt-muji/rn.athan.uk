@@ -298,7 +298,7 @@ The spike's code was deleted and does not become the plan.
 
 - [x] Step 1: DONE in 609d28be (amended), merged 56e51a40
 - [x] Step 2: folded into step 1, DONE with it
-- [ ] Step 3: The native tick stamps the granted width (specified)
+- [x] Step 3: DONE in 170a5dc0, merged c833df34
 - [ ] Step 4: Device proof on both phones, three densities (specified)
 
 **Correction, made while executing 2026-09-24.** The plan originally claimed step 1 could land before step 2 because
