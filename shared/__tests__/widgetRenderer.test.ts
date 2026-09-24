@@ -59,6 +59,7 @@ const SWIFT_UI = {
 
 const JETPACK = (android: boolean) => ({
   Box: android ? marker('Box') : undefined,
+  Button: android ? marker('Button') : undefined,
   Column: android ? marker('Column') : undefined,
   Image: android ? marker('Image') : undefined,
   Row: android ? marker('Row') : undefined,
@@ -239,6 +240,13 @@ describe('home widget renderer', () => {
       dateLabel: 'Saturday, 17 October',
       prayers: TIMES.map(([name, time]) => ({ name, time })),
       activeIndex: 3,
+    });
+
+    it('leaves the iOS composition untouched by the Android tap target', () => {
+      for (const family of ['systemSmall', 'systemMedium']) {
+        const tree = renderHome(liveProps(), family);
+        expect(collect(tree).filter((node) => node.marker === 'Button')).toHaveLength(0);
+      }
     });
 
     it('counts the segment down as a ticking interval in the swift-ui composition', () => {
@@ -813,6 +821,51 @@ describe('home widget renderer', () => {
       const texts = textsOf(tree);
       expect(texts).toContain('Fajr');
       expect(texts).toContain('05:30');
+    });
+
+    it('opens the app from a tap anywhere on the small card', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })) as MarkerNode;
+      expect(tree.marker).toBe('Button');
+      expect(tree.props.openApp).toBe(true);
+    });
+
+    it('opens the app from a tap anywhere on the medium card', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380 }), { colorScheme: 'light' })
+      ) as MarkerNode;
+      expect(tree.marker).toBe('Button');
+      expect(tree.props.openApp).toBe(true);
+    });
+
+    it('stretches the tap target over the whole card', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })) as MarkerNode;
+      expect(tree.props.modifiers).toEqual([{ modifier: 'fillMaxSize', value: undefined }]);
+    });
+
+    it('opens the app from a tap on the out-of-date card', () => {
+      freezeNow(androidProps({}).horizonEpochMs + 60_000);
+      const tree = renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })) as MarkerNode;
+      expect(tree.marker).toBe('Button');
+      expect(tree.props.openApp).toBe(true);
+      expect(textsOf(tree)).toContain('Out of date');
+    });
+
+    it('opens the app from a tap on the placeholder card', () => {
+      const tree = renderTree(layouts.PrayerWidget(null, { colorScheme: 'light' })) as MarkerNode;
+      expect(tree.marker).toBe('Button');
+      expect(tree.props.openApp).toBe(true);
+      expect(textsOf(tree)).toContain('Prayer times for London');
+    });
+
+    it('wraps each Android card in exactly one tap target', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      for (const props of [androidProps({}), androidProps({ size: 'medium', grantedWidthDp: 380 }), null]) {
+        const tree = renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' }));
+        expect(collect(tree).filter((node) => node.marker === 'Button')).toHaveLength(1);
+      }
     });
 
     it('centers the stale card and the neutral card horizontally', () => {
