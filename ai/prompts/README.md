@@ -247,3 +247,8 @@ One line each; a session's row moves here when it closes. Full detail is in git 
 - 13. `SDK58-PROGRAMME.md` §13 — CLOSED — agent CLI and dev-launcher tooling
 - 15c. `android-widget-tap-open.md` — CLOSED — tapping an Android widget opens the app
 - 17. `SDK58-PROGRAMME.md` §17 — CLOSED — widget horizon 14 to 30 days, a year measured and ruled out
+- 20. `ai/ISSUES.md` G.2 — DONE 2026-09-25 (session 20) — the widget timeline horizon is 3 days on the
+  owner's ruling, its volume guard re-sized to 22, and the iOS widgets flag's flip condition corrected
+  to state what is installed (the G.1 identity fix shipped in expo-widgets 58.0.1). G.2's blank card
+  investigated: not entry count, but the widget extension's cold start. G.2 stays OPEN until the flag
+  is on and a placement can be observed.
