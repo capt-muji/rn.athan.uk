@@ -201,8 +201,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const MEDIUM_LIST_WIDTH = 146;
   // Fallback until a native tick stamps the real grant.
   const ANDROID_MEDIUM_MIN_WIDTH = 310;
+  // Equal, or the two halves are not equal and the trio's centre drifts left of
+  // the card's quarter however the columns are split (owner 2026-09-24).
   const CARD_PAD_START = 13;
-  const CARD_PAD_END = 20;
+  const CARD_PAD_END = 13;
   // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
   // one bottom offset, both sizes, both themes, both schedules.
   const FOOTER_BOTTOM_PAD = 16;
@@ -217,7 +219,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // starved the list on the 3T — so the grant rides the snapshot instead.
   // REFERENCE_* are the owner-approved 3T proportions.
   const REFERENCE_INNER_WIDTH = 347;
-  const REFERENCE_HERO_WIDTH = 170;
   const REFERENCE_NAME_WIDTH = 82;
   const REFERENCE_TIME_WIDTH = 54;
   const ROW_TEXT_MIN_SIZE = 10;
@@ -369,8 +370,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     }
 
     const footer = AFooter(nextDayLabel);
+    // fillMaxWidth is what makes horizontalAlignment mean anything: a Column
+    // that shrink-wraps its text centres nothing and parks at its parent's
+    // start, which read as the trio sitting left of its half (owner 2026-09-24).
     const trio = (
-      <Column horizontalAlignment='center'>
+      <Column horizontalAlignment='center' modifiers={[fillMaxWidth()]}>
         {AText(tracked(next.name.toUpperCase()), 14, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(2)]} />
         {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
@@ -400,7 +404,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const grantedWidth = typeof stampedWidth === 'number' && stampedWidth > 0 ? stampedWidth : ANDROID_MEDIUM_MIN_WIDTH;
     const innerWidth = grantedWidth - CARD_PAD_START - CARD_PAD_END;
     const scale = innerWidth / REFERENCE_INNER_WIDTH;
-    const HERO_WIDTH = Math.round(REFERENCE_HERO_WIDTH * scale);
+    // Half the inner width each, so the trio centres in the left half and the
+    // list owns the right (owner 2026-09-24). The reference proportion was
+    // 170/347, within 3dp of half, and an exact half is what makes the two
+    // centres predictable at every grant.
+    const HERO_WIDTH = Math.floor(innerWidth / 2);
     // Remainder, not its own rounded share: two rounded shares can sum a dp
     // past the inner width, and a dp of overflow clips.
     const LIST_WIDTH = innerWidth - HERO_WIDTH;
