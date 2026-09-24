@@ -665,7 +665,7 @@ describe('countdown honesty', () => {
 });
 
 // =============================================================================
-// VOLUME & PAYLOAD INVARIANTS (31-day span, as pushed in production)
+// VOLUME & PAYLOAD INVARIANTS (8-day span, as pushed in production)
 // =============================================================================
 
 describe('volume and payload invariants', () => {
@@ -698,17 +698,18 @@ describe('volume and payload invariants', () => {
     expect(entries[entries.length - 1].props.stale).toBe(true);
     expect(entries.length).toBeLessThanOrEqual(stillAhead.length + 2);
     // The bound above is relative to the prayers ahead, so it holds at ANY
-    // horizon and would not notice a jump to a year. This one would: 250 sits
-    // above the 185 a 30-day horizon emits and far below the ~380 that failed.
-    expect(entries.length).toBeLessThan(250);
+    // horizon and would not notice a jump to a year. This one would: 7 days
+    // emits 40 here and 10 days would emit 58. A bound derived from
+    // TIMELINE_DAYS would follow the horizon up and guard nothing.
+    expect(entries.length).toBeLessThan(60);
   });
 
-  it('carries a 30-day horizon', () => {
-    // The owner's goal is that the widget never needs the app opened; 30 days
-    // is how far that reaches inside the entry budget. The bounds below are all
-    // upper bounds, and the fixture scales with the constant, so shrinking the
-    // horizon would satisfy every one of them. This is what notices.
-    expect(TIMELINE_DAYS).toBe(30);
+  it('carries a 7-day horizon', () => {
+    // A week is the survival time the owner judged enough for a widget whose
+    // app is never opened (owner 2026-09-24). Every bound below is an upper
+    // bound and the fixtures scale with the constant, so a shrunk horizon would
+    // satisfy them all. This is what notices.
+    expect(TIMELINE_DAYS).toBe(7);
   });
 
   it('keeps the serialized payload well under UserDefaults comfort size', () => {
@@ -716,7 +717,7 @@ describe('volume and payload invariants', () => {
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     // The medium widget's day list (six rows + activeIndex per entry) is the
-    // payload driver. A 30-day horizon measures ~78KB across ~185 entries,
+    // payload driver. A 7-day horizon measures ~17KB across 40 entries,
     // trivial for the app-group UserDefaults plist (parsed once per widget
     // reload), so the comfort budget is 200KB. That budget is also the only
     // automatic warning that the horizon has grown too far: raise the horizon,
@@ -726,9 +727,8 @@ describe('volume and payload invariants', () => {
   });
 
   it('bounds the extras entry count and payload under the same budgets', () => {
-    // 31-day extras span (2026-06-14 → 2026-07-14) containing the Fridays
-    // 2026-06-19, 2026-06-26, 2026-07-03 and 2026-07-10 — 4 rows per day,
-    // 5 on Fridays
+    // 8-day extras span (2026-06-14 to 2026-06-21) containing the Friday
+    // 2026-06-19: 4 rows per day, 5 on that Friday
     const baseDay = createPrayerDatetime('2026-06-14', '12:00');
     const prayers: ReadablePrayer[] = [];
     for (let i = 0; i < SPAN_DAYS; i++) {
@@ -743,7 +743,7 @@ describe('volume and payload invariants', () => {
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     expect(entries[entries.length - 1].props.stale).toBe(true);
-    expect(entries.length).toBeLessThan(500);
+    expect(entries.length).toBeLessThan(60);
 
     const payloadSize = JSON.stringify(entries).length;
     expect(payloadSize).toBeLessThan(200_000);
