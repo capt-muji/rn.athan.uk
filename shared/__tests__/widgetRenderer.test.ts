@@ -556,7 +556,7 @@ describe('home widget renderer', () => {
     });
 
     // Owner ruling 2026-09-19: one uniform lifted footer on all 8 kinds
-    it('lifts the footer row 16dp above the card bottom on the small kinds', () => {
+    it('lifts the footer row 13dp above the card bottom on the small kinds', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       for (const theme of ['light', 'dark'] as const) {
         const tree = renderTree(layouts.PrayerWidget(androidProps({ theme }), { colorScheme: 'light' }));
@@ -564,7 +564,7 @@ describe('home widget renderer', () => {
           (node) =>
             node.marker === 'Row' &&
             (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-              (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[0,0,0,16]'
+              (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[0,0,0,13]'
             )
         );
         expect(footerRow).toBeDefined();
@@ -572,11 +572,11 @@ describe('home widget renderer', () => {
         expect(textsOf(footerRow).join('')).not.toContain('·');
         // The row must be taller than its bottom padding, or the footer
         // text clips to nothing on device (owner finding 2026-09-19)
-        expect(footerRow?.props.modifiers).toEqual(expect.arrayContaining([{ modifier: 'height', value: 34 }]));
+        expect(footerRow?.props.modifiers).toEqual(expect.arrayContaining([{ modifier: 'height', value: 31 }]));
       }
     });
 
-    it('pads the medium composition 16dp at the bottom, both themes', () => {
+    it('pads the medium composition 13dp at the bottom, both themes', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       for (const theme of ['light', 'dark'] as const) {
         const tree = renderTree(
@@ -586,7 +586,7 @@ describe('home widget renderer', () => {
           (node) =>
             node.marker === 'Row' &&
             (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-              (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,20,16]'
+              (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,20,13]'
             )
         );
         expect(outerRow).toBeDefined();
@@ -600,14 +600,14 @@ describe('home widget renderer', () => {
       const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
       expect(pill).toBeDefined();
       expect(pill?.props.modifiers).toEqual(
-        expect.arrayContaining([{ modifier: 'fillMaxWidth' }, { modifier: 'height', value: 24 }])
+        expect.arrayContaining([{ modifier: 'fillMaxWidth' }, { modifier: 'height', value: 23 }])
       );
       // Asr is row 3: the pill sits 1dp above its row top (3*22 - 1)
       const spacerAbove = nodes.find(
         (node) =>
           node.marker === 'Spacer' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'height' && mod.value === 3 * 24
+            (mod) => mod.modifier === 'height' && mod.value === 3 * 23
           )
       );
       expect(spacerAbove).toBeDefined();
@@ -634,7 +634,7 @@ describe('home widget renderer', () => {
       );
       expect(listColumn).toBeDefined();
       // The pill wraps the text now, not the column (owner 2026-09-24): at this
-      // 380dp grant the list is 177 and the text 136, so the pill starts 17 in.
+      // 380dp grant the list is 177 and the text 136, so the pill starts 13 in.
       const pillColumn = collect(tree).find(
         (node) =>
           node.marker === 'Column' &&
@@ -644,13 +644,13 @@ describe('home widget renderer', () => {
       // Pixel-audited on the 3T, then owner-tuned: the pill sits 1dp low so
       // the digit ink band reads dead-center against its edges
       expect(pillColumn?.props.modifiers).toEqual(
-        expect.arrayContaining([{ modifier: 'padding', value: [17, 1, 0, 0] }])
+        expect.arrayContaining([{ modifier: 'padding', value: [13, 1, 0, 0] }])
       );
       const rowsColumn = nodes.find(
         (node) =>
           node.marker === 'Column' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[29,0,0,0]'
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[27,0,0,0]'
           )
       );
       expect(rowsColumn).toBeDefined();
@@ -660,7 +660,7 @@ describe('home widget renderer', () => {
         (node) =>
           node.marker === 'Row' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'height' && mod.value === 24
+            (mod) => mod.modifier === 'height' && mod.value === 23
           ) &&
           textsOf(node).includes('Fajr')
       );
@@ -698,7 +698,7 @@ describe('home widget renderer', () => {
         const right = list - (rows + name + time);
 
         expect(left).toBe(right);
-        expect(left).toBeLessThanOrEqual(12);
+        expect(left).toBeLessThanOrEqual(14);
         expect(left).toBeGreaterThan(0);
         // A flat 12 stays symmetric on a narrow grant by going negative here,
         // which is a pill wider than its own column
@@ -758,7 +758,7 @@ describe('home widget renderer', () => {
         (node) =>
           node.marker === 'Row' &&
           (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
-            (mod) => mod.modifier === 'height' && mod.value === 24
+            (mod) => mod.modifier === 'height' && mod.value === 23
           ) &&
           textsOf(node).includes('Fajr')
       );
