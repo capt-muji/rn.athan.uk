@@ -565,6 +565,7 @@ Use these prompts to start specialized sessions:
 | **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
 | **Code audit (changes, part 2)** | `ai/prompts/audit-changes-2.md` | Continues task 20 from 1.25.30; carries what part 1 learned about `inlineRequires`, mock contamination and the hook |
 | **Large-screen adaptation** | `ai/prompts/large-screen-adaptation.md` | Resumable feature: phone-view scaling for iPad/tablet/desktop-web (tracker inside) |
+| **ISSUES #37 network constraint** | `ai/prompts/issue-37-network-constraint.md` | expo-background-task refuses to run the refresh without a network the refresh never uses |
 
 **Quick Start Examples:**
 
