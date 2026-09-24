@@ -1,9 +1,9 @@
 # Plans: every queued session is planned, then executed, then audited, one at a time
 
-**Why this exists.** On 2026-09-15 the owner's Claude allowance was running low, so the work was split into three
-sessions with separate jobs and fresh contexts. On 2026-09-17 that allowance ran out and the whole programme moved to
-OpenCode on GLM 5.3, with GLM 5.3 Flash for reading images. The split is what matters and it has not changed; what
-left these pages is the model names, so a session now says which job it is doing rather than which model it is:
+**Why this exists.** On 2026-09-15 the owner's model allowance was running low, so the work was split into three
+sessions with separate jobs and fresh contexts. The split is what matters and it has not changed. What has left these
+pages is the model names: the harness chooses the model, these pages are read by different models across the life of
+the build, and a name in the text only dates it. A session says which JOB it is doing, never which model it is.
 
 1. **Planning.** One planning session per queued session is the architect: it makes every decision, does the
    design and its review, takes the owner's rulings, and writes a plan that SPECIFIES the work completely. Since
@@ -26,9 +26,9 @@ table below and git, works out whether the next step is planning, execution or a
 The same prompt starts the step after it, so the owner never has to remember where the programme stopped. If a session
 ever fails to load the skill on the bare word, `Use the athan-next skill.` names it outright.
 
-Every step runs in OpenCode on GLM 5.3, and the `vision` subagent reads images on GLM 5.3 Flash. A step is one
-session that the owner starts, so nothing chains on unattended and no guard is needed against a run going round in
-circles. Every session ends with a four-line handoff naming the job just done, the row it moved, and the job that
+A step is one session that the owner starts, so nothing chains on unattended and no guard is needed against a run
+going round in circles. A session may spawn a subagent, which always runs that session's own model, for every task
+including reading an image (owner, 2026-09-24). Every session ends with a four-line handoff naming the job just done, the row it moved, and the job that
 comes next.
 
 For starting one step by hand, and for the plan folders' `PROMPT.md`, which names the row's plan file in place of "the
@@ -41,11 +41,10 @@ next plan":
 | Audit | `ai/plans/AUDITOR-BRIEF.md` | `Audit session. Read ai/plans/AUDITOR-BRIEF.md and audit the next plan in ai/plans/README.md.` |
 
 **What this replaced (2026-09-17).** Until this date the owner ran a Python command, also called `athan-next`, that
-lived in a Claude Code setup outside the repository and started each step with one of two launchers: `claude-plan` for
-planning and audit on Claude Opus 5 at xhigh effort, `claude-glm` for execution on GLM 5.3. The command chose the
-step, chained the next one after a ten-second countdown, and carried three guards that existed to protect the Claude
-allowance. With one model doing all three jobs in OpenCode, the routing it did is the skill's section 2, and the
-guards went with the chaining. No gateway address, domain or key is ever written into this repository.
+lived outside the repository and started each step with one of two launchers, one for planning and audit and one for
+execution. The command chose the step, chained the next one after a ten-second countdown, and carried three guards
+that existed to protect a model allowance. With one session doing all three jobs, the routing it did is the skill's
+section 2, and the guards went with the chaining. No gateway address, domain or key is ever written into this repository.
 
 **Order: one session at a time.** Plan it, execute it, audit it, and only then plan the next one. The owner asked on
 2026-09-16 which order gives the best quality; this is the answer, and the skill enforces it.
