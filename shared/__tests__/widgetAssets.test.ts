@@ -66,7 +66,7 @@ describe('android widget assets', () => {
     // opaque forms are pinned instead of the subset rule. Dark is iOS's
     // rgba(2, 13, 38, 0.95) over black, to match the iPhone (owner 2026-09-24).
     expect(generator).toContain('CARD_LIGHT = css("#fcfcfe")');
-    expect(generator).toContain('CARD_DARK = css("#020c24")');
+    expect(generator).toContain('CARD_DARK = css("#09142d")');
     expect(generator).toContain('CARD_RADIUS_PT = 13');
     // The Android pill is 24dp tall and shadow-free — exactly the Android
     // row height (owner ruling 2026-09-19), no overhang.
@@ -80,7 +80,7 @@ describe('android widget assets', () => {
     expect(generatorColors.length).toBeGreaterThan(10);
 
     const outside = generatorColors.filter(
-      (color) => !layoutColors.has(color) && color !== '#fcfcfe' && color !== '#020c24'
+      (color) => !layoutColors.has(color) && color !== '#fcfcfe' && color !== '#09142d'
     );
     expect(outside).toEqual([]);
   });
